@@ -738,34 +738,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalGetAudioDeviceSpec([NotNull] int index, [NotNull] int isCapture, out SdlAudioSpec spec);
-
-        /// <summary>
-        ///     Sdl the delay using the specified ms
-        /// </summary>
-        /// <param name="ms">The ms</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_Delay", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalDelay([NotNull] uint ms);
-
-        /// <summary>
-        ///     Sdl the get ticks
-        /// </summary>
-        /// <returns>The int 32</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetTicks", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern uint InternalGetTicks();
-
-        /// <summary>
-        ///     Sdl the get ticks 64
-        /// </summary>
-        /// <returns>The int 64</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetTicks64", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern ulong InternalGetTicks64();
-
+        
         /// <summary>
         ///     Sdl the get performance counter
         /// </summary>
@@ -970,16 +943,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlWinRtDeviceFamily InternalWinRTGetDeviceFamily();
-
-        /// <summary>
-        ///     Sdl the is tablet
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_IsTablet", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalIsTablet();
-
+        
         /// <summary>
         ///     Sdl the get window wm info using the specified window
         /// </summary>
@@ -990,15 +954,6 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlBool InternalGetWindowWMInfo([NotNull] IntPtr window, ref SdlSysWmInfo info);
-
-        /// <summary>
-        ///     Internals the sdl get base path
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetBasePath", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGetBasePath();
 
         /// <summary>
         ///     Internals the sdl get pref path using the specified org

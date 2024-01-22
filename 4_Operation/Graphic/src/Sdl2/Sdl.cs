@@ -8337,52 +8337,6 @@ namespace Alis.Core.Graphic.Sdl2
         }
 
         /// <summary>
-        ///     Describes whether sdl ticks passed
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The bool</returns>
-        public static bool TicksPassed([NotNull] uint a, [NotNull] uint b) => (int) (b - a) <= 0;
-
-        /// <summary>
-        ///     Delays the ms
-        /// </summary>
-        /// <param name="ms">The ms</param>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Delay([NotNull] uint ms)
-        {
-            Validator.ValidateInput(ms);
-            NativeSdl.InternalDelay(ms);
-        }
-
-        /// <summary>
-        ///     Internals the sdl get ticks
-        /// </summary>
-        /// <returns>The uint</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint GetTicks()
-        {
-            uint result = NativeSdl.InternalGetTicks();
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Gets the ticks 64
-        /// </summary>
-        /// <returns>The ulong</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong GetTicks64()
-        {
-            ulong result = NativeSdl.InternalGetTicks64();
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
         ///     Gets the performance counter
         /// </summary>
         /// <returns>The ulong</returns>
@@ -8697,19 +8651,6 @@ namespace Alis.Core.Graphic.Sdl2
         }
 
         /// <summary>
-        ///     Sdl the is tablet
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool SdlIsTablet()
-        {
-            SdlBool result = NativeSdl.InternalIsTablet();
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
         ///     Sdl the get window wm info using the specified window
         /// </summary>
         /// <param name="window">The window</param>
@@ -8724,20 +8665,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-
-        /// <summary>
-        ///     Sdl the get base path
-        /// </summary>
-        /// <returns>The string</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string SdlGetBasePath()
-        {
-            string result = NativeSdl.InternalGetBasePath();
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
+        
         /// <summary>
         ///     Sdl the get pref path using the specified org
         /// </summary>
