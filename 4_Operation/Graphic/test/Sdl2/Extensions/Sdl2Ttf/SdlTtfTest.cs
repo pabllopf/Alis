@@ -1125,7 +1125,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             {
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
 
-                IntPtr result = SdlTtf.RenderTextSolid(font, text, new SdlColor(255, 255, 255));
+                IntPtr result = SdlTtf.RenderTextSolid(font, text, new SdlColor(255, 255, 255, 255));
                 Assert.NotEqual(IntPtr.Zero, result);
                 
                 SdlTtf.CloseFont(font);
@@ -1164,7 +1164,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             {
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
 
-                IntPtr result = SdlTtf.RenderUtf8Solid(font, text, new SdlColor(255, 255, 255));
+                IntPtr result = SdlTtf.RenderUtf8Solid(font, text, new SdlColor(255, 255, 255, 255));
                 Assert.NotEqual(IntPtr.Zero, result);
                 
                 SdlTtf.CloseFont(font);
@@ -1203,7 +1203,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             {
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
 
-                IntPtr result = SdlTtf.RenderUnicodeSolid(font, text, new SdlColor(255, 255, 255));
+                IntPtr result = SdlTtf.RenderUnicodeSolid(font, text, new SdlColor(255, 255, 255, 255));
                 Assert.NotEqual(IntPtr.Zero, result);
                 
                 SdlTtf.CloseFont(font);
@@ -1242,7 +1242,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             {
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
 
-                IntPtr result = SdlTtf.RenderTextSolidWrapped(font, text, new SdlColor(255, 255, 255), wrapLength);
+                IntPtr result = SdlTtf.RenderTextSolidWrapped(font, text, new SdlColor(255, 255, 255, 255), wrapLength);
                 Assert.NotEqual(IntPtr.Zero, result);
                 
                 SdlTtf.CloseFont(font);
@@ -1282,7 +1282,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             {
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
 
-                IntPtr result = SdlTtf.RenderUtf8SolidWrapped(font, text, new SdlColor(255, 255, 255), wrapLength);
+                IntPtr result = SdlTtf.RenderUtf8SolidWrapped(font, text, new SdlColor(255, 255, 255, 255), wrapLength);
                 Assert.NotEqual(IntPtr.Zero, result);
                 
                 SdlTtf.CloseFont(font);
@@ -1321,7 +1321,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             {
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
 
-                IntPtr result = SdlTtf.RenderUnicodeSolidWrapped(font, text, new SdlColor(255, 255, 255), wrapLength);
+                IntPtr result = SdlTtf.RenderUnicodeSolidWrapped(font, text, new SdlColor(255, 255, 255, 255), wrapLength);
                 Assert.NotEqual(IntPtr.Zero, result);
                 
                 SdlTtf.CloseFont(font);
@@ -1359,7 +1359,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             {
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
 
-                IntPtr result = SdlTtf.RenderGlyphSolid(font, ch, new SdlColor(255, 255, 255));
+                IntPtr result = SdlTtf.RenderGlyphSolid(font, ch, new SdlColor(255, 255, 255, 255));
                 Assert.NotEqual(IntPtr.Zero, result);
                 
                 SdlTtf.CloseFont(font);
@@ -1398,7 +1398,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             {
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
 
-                IntPtr result = SdlTtf.RenderGlyph32Solid(font, ch, new SdlColor(255, 255, 255));
+                IntPtr result = SdlTtf.RenderGlyph32Solid(font, ch, new SdlColor(255, 255, 255, 255));
                 Assert.NotEqual(IntPtr.Zero, result);
                 
                 SdlTtf.CloseFont(font);
@@ -1429,8 +1429,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255);
-            SdlColor bg = new SdlColor(0, 0, 0);
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
+            SdlColor bg = new SdlColor(0, 0, 0, 255);
 
             // Act & Assert
             try
@@ -1467,8 +1467,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255);
-            SdlColor bg = new SdlColor(0, 0, 0);
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
+            SdlColor bg = new SdlColor(0, 0, 0, 255);
 
             // Act & Assert
             try
@@ -1505,8 +1505,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255);
-            SdlColor bg = new SdlColor(0, 0, 0);
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
+            SdlColor bg = new SdlColor(0, 0, 0, 255);
 
             // Act & Assert
             try
@@ -1544,8 +1544,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255);
-            SdlColor bg = new SdlColor(0, 0, 0);
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
+            SdlColor bg = new SdlColor(0, 0, 0, 255);
 
             // Act & Assert
             try
@@ -1584,8 +1584,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255);
-            SdlColor bg = new SdlColor(0, 0, 0);
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
+            SdlColor bg = new SdlColor(0, 0, 0, 255);
 
             // Act & Assert
             try
@@ -1623,8 +1623,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255);
-            SdlColor bg = new SdlColor(0, 0, 0);
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
+            SdlColor bg = new SdlColor(0, 0, 0, 255);
 
             // Act & Assert
             try
@@ -1661,8 +1661,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255);
-            SdlColor bg = new SdlColor(0, 0, 0);
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
+            SdlColor bg = new SdlColor(0, 0, 0, 255);
 
             // Act & Assert
             try
@@ -1699,8 +1699,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255);
-            SdlColor bg = new SdlColor(0, 0, 0);
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
+            SdlColor bg = new SdlColor(0, 0, 0, 255);
 
             // Act & Assert
             try
@@ -1737,7 +1737,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255);
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
 
             // Act & Assert
             try
@@ -1775,7 +1775,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255);
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
 
             // Act & Assert
             try
@@ -1814,7 +1814,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255);
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
 
             // Act & Assert
             try
@@ -1853,7 +1853,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255);
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
 
             // Act & Assert
             try
@@ -1892,7 +1892,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255);
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
 
             // Act & Assert
             try
@@ -1930,7 +1930,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255);
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
 
             // Act & Assert
             try
@@ -1969,7 +1969,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255);
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
 
             // Act & Assert
             try
@@ -2040,7 +2040,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const int index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255);
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
 
             // Act & Assert
             try
