@@ -2077,7 +2077,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             // Act & Assert
             try
             {
-                SdlVersion version = SdlTtf.GetTtfVersion();
+                SdlVersion version = SdlTtf.GetVersion();
                 Assert.Equal(2, version.major);
                 Assert.Equal(0, version.minor);
                 Assert.Equal(16, version.patch);

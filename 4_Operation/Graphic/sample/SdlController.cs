@@ -122,8 +122,8 @@ namespace Alis.Core.Graphic.Sample
             }
 
             // GET VERSION SDL2
-            Sdl.GetVersion(out SdlVersion version);
-            Console.WriteLine($"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
+            SdlVersion versionSdl2 = Sdl.GetVersion();
+            Console.WriteLine($"SDL2 VERSION {versionSdl2.major}.{versionSdl2.minor}.{versionSdl2.patch}");
 
             /*
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
@@ -188,7 +188,7 @@ namespace Alis.Core.Graphic.Sample
             }
             
             SdlTtf.Init();
-            Console.WriteLine($"SDL_TTF Version: {SdlTtf.GetTtfVersion().major}.{SdlTtf.GetTtfVersion().minor}.{SdlTtf.GetTtfVersion().patch}");
+            Console.WriteLine($"SDL_TTF Version: {SdlTtf.GetVersion().major}.{SdlTtf.GetVersion().minor}.{SdlTtf.GetVersion().patch}");
             
             Console.WriteLine("Platform: " + EmbeddedDllClass.GetCurrentPlatform());
             Console.WriteLine("Processor: " + RuntimeInformation.ProcessArchitecture);

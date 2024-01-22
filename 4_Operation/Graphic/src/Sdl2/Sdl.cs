@@ -1161,7 +1161,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The sdl patch level
         /// </summary>
-        public static readonly int GlCompiledVersion = VersionNum(MajorVersion, MinorVersion, PatchLevel);
+        public static int GetGlCompiledVersion() => MajorVersion * 1000 + MinorVersion * 100 + PatchLevel;   
 
         /// <summary>
         ///     The sdl pixel format unknown
@@ -2008,45 +2008,18 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SdlVersion Version() => new SdlVersion(MajorVersion, MinorVersion, PatchLevel);
-
-        /// <summary>
-        ///     Sdl the version num using the specified x
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="z">The </param>
-        /// <returns>The int</returns>
-        public static int VersionNum([NotNull] int x, [NotNull] int y, [NotNull] int z) => x * 1000 + y * 100 + z;
-
-        /// <summary>
-        ///     Describes whether sdl version at least
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="z">The </param>
-        /// <returns>The bool</returns>
-        public static bool VersionAtLeast([NotNull] int x, [NotNull] int y, [NotNull] int z) => GlCompiledVersion >= VersionNum(x, y, z);
-
+        
         /// <summary>
         ///     Sdl the get version using the specified ver
         /// </summary>
-        /// <param name="ver">The ver</param>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void GetVersion(out SdlVersion ver)
+        public static SdlVersion GetVersion()
         {
-            ver = default(SdlVersion);
-            NativeSdl.InternalGetVersion(out ver);
+            NativeSdl.InternalGetVersion(out SdlVersion version);
+            return version;
         }
-
-        /// <summary>
-        ///     Sdl the get revision
-        /// </summary>
-        /// <returns>The string</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string GetRevision() => NativeSdl.InternalGetRevision();
-
+        
         /// <summary>
         ///     Sdl the get revision number
         /// </summary>
@@ -8819,19 +8792,6 @@ namespace Alis.Core.Graphic.Sdl2
         public static int SdlGetCpuCacheLineSize()
         {
             int result = NativeSdl.InternalGetCPUCacheLineSize();
-            Validator.ValidateOutput(result);
-            return result;
-        }
-        
-        /// <summary>
-        ///     Sdl the has 3 d now
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool SdlHas3DNow()
-        {
-            SdlBool result = NativeSdl.InternalHas3DNow();
             Validator.ValidateOutput(result);
             return result;
         }
