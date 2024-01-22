@@ -1041,87 +1041,6 @@ namespace Alis.Core.Graphic.Sdl2
         internal static extern int InternalGetCPUCacheLineSize();
 
         /// <summary>
-        ///     Sdl the has rdtsc
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_HasRDTSC", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalHasRdtsc();
-
-        /// <summary>
-        ///     Sdl the has alti vec
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_HasAltiVec", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalHasAltiVec();
-
-        /// <summary>
-        ///     Sdl the has mmx
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_HasMMX", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalHasMMX();
-
-        /// <summary>
-        ///     Sdl the has sse
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_HasSSE", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalHasSSE();
-
-        /// <summary>
-        ///     Sdl the has sse 2
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_HasSSE2", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalHasSSE2();
-
-        /// <summary>
-        ///     Sdl the has sse 3
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_HasSSE3", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalHasSSE3();
-
-        /// <summary>
-        ///     Sdl the has sse 41
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_HasSSE41", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalHasSSE41();
-
-        /// <summary>
-        ///     Sdl the has sse 42
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_HasSSE42", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalHasSSE42();
-
-        /// <summary>
-        ///     Sdl the has avx
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_HasAVX", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalHasAVX();
-
-        /// <summary>
         ///     Internals the sdl set clipboard text using the specified text
         /// </summary>
         /// <param name="text">The text</param>
@@ -2202,16 +2121,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalJoystickSetVirtualButton([NotNull] IntPtr joystick, [NotNull] int button, [NotNull] byte value);
-
-        /// <summary>
-        ///     Sdl the has avx 2
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_HasAVX2", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalHasAVX2();
-
+        
         /// <summary>
         ///     Sdl the malloc using the specified size
         /// </summary>
@@ -2362,77 +2272,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern long InternalRwWrite([NotNull] IntPtr context, [NotNull] IntPtr ptr, [NotNull] IntPtr size, [NotNull] IntPtr maxNum);
-
-        /// <summary>
-        ///     Sdl the read u 8 using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <returns>The byte</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_ReadU8", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern byte InternalReadU8([NotNull] IntPtr src);
-
-        /// <summary>
-        ///     Sdl the read le 16 using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <returns>The int 16</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_ReadLE16", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern ushort InternalReadLE16([NotNull] IntPtr src);
-
-        /// <summary>
-        ///     Sdl the read be 16 using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <returns>The int 16</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_ReadBE16", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern ushort InternalReadBE16([NotNull] IntPtr src);
-
-        /// <summary>
-        ///     Sdl the read le 32 using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <returns>The int 32</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_ReadLE32", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern uint InternalReadLE32([NotNull] IntPtr src);
-
-        /// <summary>
-        ///     Sdl the read be 32 using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <returns>The int 32</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_ReadBE32", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern uint InternalReadBE32([NotNull] IntPtr src);
-
-        /// <summary>
-        ///     Sdl the read le 64 using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <returns>The int 64</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_ReadLE64", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern ulong InternalReadLE64([NotNull] IntPtr src);
-
-        /// <summary>
-        ///     Sdl the read be 64 using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <returns>The int 64</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_ReadBE64", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern ulong InternalReadBE64([NotNull] IntPtr src);
-
+        
         /// <summary>
         ///     Sdl the write u 8 using the specified dst
         /// </summary>
@@ -6734,14 +6574,5 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalGlGetCurrentContext();
-
-        /// <summary>
-        ///     Sdl the has neon
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_HasNEON", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalHasNeon();
     }
 }
