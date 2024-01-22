@@ -24,7 +24,8 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: | 
+          dotnet-version: |
+            5.0.x
             6.0.x
             7.0.x
             8.0.x
@@ -53,7 +54,8 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: | 
+          dotnet-version: |
+            5.0.x
             6.0.x
             7.0.x
             8.0.x
@@ -82,7 +84,8 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: | 
+          dotnet-version: |
+            5.0.x
             6.0.x
             7.0.x
             8.0.x
