@@ -2288,7 +2288,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_Init", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalInit([NotNull] uint flags);
+        internal static extern int InternalInit([NotNull] SdlInit flags);
 
         /// <summary>
         ///     Sdl the init sub system using the specified flags

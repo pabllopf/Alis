@@ -112,7 +112,7 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         public static void Run()
         {
-            if (Sdl.Init(Sdl.InitEverything) < 0)
+            if (Sdl.Init(SdlInit.InitEverything) < 0)
             {
                 Logger.Exception($@"There was an issue initializing SDL. {Sdl.GetError()}");
             }
@@ -420,9 +420,7 @@ namespace Alis.Core.Graphic.Sample
         {
             Sdl.SetHint(Sdl.HintXInputEnabled, "0");
             Sdl.SetHint(Sdl.SdlHintJoystickThread, "1");
-            Sdl.Init(Sdl.InitEverything);
-
-
+            
             for (int i = 0; i < Sdl.NumJoysticks(); i++)
             {
                 IntPtr myJoystick = Sdl.JoystickOpen(i);

@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlTest.cs
+//  File: SdlInit.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -27,53 +27,53 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
-using Xunit;
+using System;
 
-namespace Alis.Core.Graphic.Test.Sdl2
+namespace Alis.Core.Graphic.Sdl2.Enums
 {
-    /// <summary>
-    /// The sdl test class
-    /// </summary>
-    public class SdlTest
+    [Flags]
+    public enum SdlInit : uint
     {
         /// <summary>
-        /// Tests that test
+        ///     The sdl init timer
         /// </summary>
-        [Fact]
-        public void Test()
-        {
-            Assert.True(true);
-        }
-        
-        [Fact]
-        public void TestInit()
-        {
-            // Arrange
-            const SdlInit expected = SdlInit.InitEverything;
+        InitTimer = 0x00000001,
 
-            // Act
-            int result = Sdl.Init(expected);
+        /// <summary>
+        ///     The sdl init audio
+        /// </summary>
+        InitAudio = 0x00000010,
 
-            // Assert
-            Assert.Equal(0, result);
-        }
-        
-        [Fact]
-        public void TestGetGlCompiledVersion()
-        {
-            // Arrange
-            const int expectedVersion = Sdl.MajorVersion * 1000 + Sdl.MinorVersion * 100 + Sdl.PatchLevel;
+        /// <summary>
+        ///     The sdl init video
+        /// </summary>
+        InitVideo = 0x00000020,
 
-            // Act
-            int actualVersion = Sdl.GetGlCompiledVersion();
+        /// <summary>
+        ///     The sdl init joystick
+        /// </summary>
+        InitJoystick = 0x00000200,
 
-            // Assert
-            Assert.Equal(expectedVersion, actualVersion);
-        }
+        /// <summary>
+        ///     The sdl init haptic
+        /// </summary>
+        InitHaptic = 0x00001000,
+
+        /// <summary>
+        ///     The sdl init game controller
+        /// </summary>
+        InitGameController = 0x00002000,
+
+        /// <summary>
+        ///     The sdl init events
+        /// </summary>
+        InitEvents = 0x00004000,
+
+        /// <summary>
+        ///     The sdl init sensor
+        /// </summary>
+        InitSensor = 0x00008000,
         
-        
-        
+        InitEverything = InitTimer | InitAudio | InitVideo | InitJoystick | InitHaptic | InitGameController | InitEvents | InitSensor,
     }
 }

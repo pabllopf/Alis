@@ -91,57 +91,7 @@ namespace Alis.Core.Graphic.Sdl2
         ///     The sdl rw ops memory ro
         /// </summary>
         public const uint RwOpsMemoryRo = 5;
-
-        /// <summary>
-        ///     The sdl init timer
-        /// </summary>
-        public const uint InitTimer = 0x00000001;
-
-        /// <summary>
-        ///     The sdl init audio
-        /// </summary>
-        public const uint InitAudio = 0x00000010;
-
-        /// <summary>
-        ///     The sdl init video
-        /// </summary>
-        public const uint InitVideo = 0x00000020;
-
-        /// <summary>
-        ///     The sdl init joystick
-        /// </summary>
-        public const uint InitJoystick = 0x00000200;
-
-        /// <summary>
-        ///     The sdl init haptic
-        /// </summary>
-        public const uint InitHaptic = 0x00001000;
-
-        /// <summary>
-        ///     The sdl init game controller
-        /// </summary>
-        public const uint InitGameController = 0x00002000;
-
-        /// <summary>
-        ///     The sdl init events
-        /// </summary>
-        public const uint InitEvents = 0x00004000;
-
-        /// <summary>
-        ///     The sdl init sensor
-        /// </summary>
-        public const uint InitSensor = 0x00008000;
-
-        /// <summary>
-        ///     The sdl init no parachute
-        /// </summary>
-        public const uint InitNoParachute = 0x00100000;
-
-        /// <summary>
-        ///     The sdl init sensor
-        /// </summary>
-        public const uint InitEverything = InitTimer | InitAudio | InitVideo | InitEvents | InitJoystick | InitHaptic | InitGameController | InitSensor;
-
+        
         /// <summary>
         ///     The sdl hint framebuffer acceleration
         /// </summary>
@@ -1779,7 +1729,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Init([NotNull] uint flags)
+        public static int Init([NotNull] SdlInit flags)
         {
             Validator.ValidateInput(flags);
             int result = NativeSdl.InternalInit(flags);
