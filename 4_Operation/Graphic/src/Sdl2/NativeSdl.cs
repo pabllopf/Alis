@@ -2289,17 +2289,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalInit([NotNull] SdlInit flags);
-
-        /// <summary>
-        ///     Sdl the init sub system using the specified flags
-        /// </summary>
-        /// <param name="flags">The flags</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_InitSubSystem", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalInitSubSystem([NotNull] uint flags);
-
+        
         /// <summary>
         ///     Sdl the quit
         /// </summary>
@@ -2307,16 +2297,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalQuit();
-
-        /// <summary>
-        ///     Sdl the quit sub system using the specified flags
-        /// </summary>
-        /// <param name="flags">The flags</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_QuitSubSystem", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalQuitSubSystem([NotNull] uint flags);
-
+        
         /// <summary>
         ///     Sdl the was init using the specified flags
         /// </summary>
