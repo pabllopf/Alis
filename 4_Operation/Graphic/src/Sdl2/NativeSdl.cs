@@ -4542,53 +4542,6 @@ namespace Alis.Core.Graphic.Sdl2
         internal static extern int InternalHapticRumbleInit([NotNull] IntPtr haptic);
         
         /// <summary>
-        ///     Sdl the simd get alignment
-        /// </summary>
-        /// <returns>The uint</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SIMDGetAlignment", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern uint InternalSimdGetAlignment();
-
-        /// <summary>
-        ///     Sdl the simd alloc using the specified len
-        /// </summary>
-        /// <param name="len">The len</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SIMDAlloc", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalSimdAlloc([NotNull] uint len);
-
-        /// <summary>
-        ///     Sdl the simd realloc using the specified ptr
-        /// </summary>
-        /// <param name="ptr">The ptr</param>
-        /// <param name="len">The len</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SIMDRealloc", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalSimdRealloc([NotNull] IntPtr ptr, [NotNull] uint len);
-
-        /// <summary>
-        ///     Sdl the simd free using the specified ptr
-        /// </summary>
-        /// <param name="ptr">The ptr</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SIMDFree", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalSimdFree(IntPtr ptr);
-
-        /// <summary>
-        ///     Sdl the has arms imd
-        /// </summary>
-        [DllImport(NativeLibName, EntryPoint = "SDL_HasARMSIMD", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalHasArmSimd();
-        
-        /// <summary>
         ///     Sdl the gl get drawable size using the specified window
         /// </summary>
         /// <param name="window">The window</param>
