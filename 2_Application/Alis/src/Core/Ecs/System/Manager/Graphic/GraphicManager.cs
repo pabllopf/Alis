@@ -308,7 +308,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         private void InitRenderWindow()
         {
-            if (Sdl.Init(Sdl.InitEverything) < 0)
+            if (Sdl.Init(SdlInit.InitEverything) < 0)
             {
                 Console.WriteLine($@"There was an issue initializing SDL. {Sdl.GetError()}");
             }
