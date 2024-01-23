@@ -740,24 +740,6 @@ namespace Alis.Core.Graphic.Sdl2
         internal static extern int InternalGetAudioDeviceSpec([NotNull] int index, [NotNull] int isCapture, out SdlAudioSpec spec);
         
         /// <summary>
-        ///     Sdl the get performance counter
-        /// </summary>
-        /// <returns>The int 64</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetPerformanceCounter", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern ulong InternalGetPerformanceCounter();
-
-        /// <summary>
-        ///     Sdl the get performance frequency
-        /// </summary>
-        /// <returns>The int 64</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetPerformanceFrequency", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern ulong InternalGetPerformanceFrequency();
-
-        /// <summary>
         ///     Sdl the add timer using the specified interval
         /// </summary>
         /// <param name="interval">The interval</param>
@@ -810,132 +792,6 @@ namespace Alis.Core.Graphic.Sdl2
         internal static extern IntPtr InternalRenderGetD3D11Device([NotNull] IntPtr renderer);
 
         /// <summary>
-        ///     Sdl the i phone set animation callback using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="interval">The interval</param>
-        /// <param name="callback">The callback</param>
-        /// <param name="callbackParam">The callback param</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_iPhoneSetAnimationCallback", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalIPhoneSetAnimationCallback(IntPtr window, [NotNull] int interval, SdlIPhoneAnimationCallback callback, IntPtr callbackParam);
-
-        /// <summary>
-        ///     Sdl the android get jni env
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_AndroidGetJNIEnv", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalAndroidGetJNIEnv();
-
-        /// <summary>
-        ///     Sdl the android get activity
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_AndroidGetActivity", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalAndroidGetActivity();
-
-        /// <summary>
-        ///     Sdl the is android tv
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_IsAndroidTV", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalIsAndroidTV();
-
-        /// <summary>
-        ///     Sdl the is chromebook
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_IsChromebook", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalIsChromebook();
-
-        /// <summary>
-        ///     Sdl the is de x mode
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_IsDeXMode", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalIsDeXMode();
-
-        /// <summary>
-        ///     Sdl the android back button
-        /// </summary>
-        [DllImport(NativeLibName, EntryPoint = "SDL_AndroidBackButton", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalAndroidBackButton();
-
-        /// <summary>
-        ///     Internals the sdl android get internal storage path
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_AndroidGetInternalStoragePath", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalAndroidGetInternalStoragePath();
-
-        /// <summary>
-        ///     Sdl the android get external storage state
-        /// </summary>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_AndroidGetExternalStorageState", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalAndroidGetExternalStorageState();
-
-        /// <summary>
-        ///     Internals the sdl android get external storage path
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_AndroidGetExternalStoragePath", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalAndroidGetExternalStoragePath();
-
-        /// <summary>
-        ///     Sdl the get android sdk version
-        /// </summary>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetAndroidSDKVersion", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalGetAndroidSDKVersion();
-
-        /// <summary>
-        ///     Internals the sdl android request permission using the specified permission
-        /// </summary>
-        /// <param name="permission">The permission</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_AndroidRequestPermission", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalAndroidRequestPermission([NotNull] string permission);
-
-        /// <summary>
-        ///     Internals the sdl android show toast using the specified message
-        /// </summary>
-        /// <param name="message">The message</param>
-        /// <param name="duration">The duration</param>
-        /// <param name="gravity">The gravity</param>
-        /// <param name="xOffset">The offset</param>
-        /// <param name="yOffset">The offset</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_AndroidShowToast", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalAndroidShowToast([NotNull] string message, [NotNull] int duration, [NotNull] int gravity, [NotNull] int xOffset, [NotNull] int yOffset);
-
-        /// <summary>
         ///     Sdl the win rt get device family
         /// </summary>
         /// <returns>The sdl win rt device family</returns>
@@ -954,47 +810,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlBool InternalGetWindowWMInfo([NotNull] IntPtr window, ref SdlSysWmInfo info);
-
-        /// <summary>
-        ///     Internals the sdl get pref path using the specified org
-        /// </summary>
-        /// <param name="org">The org</param>
-        /// <param name="app">The app</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetPrefPath", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGetPrefPath([NotNull] string org, [NotNull] string app);
-
-        /// <summary>
-        ///     Sdl the get power info using the specified secs
-        /// </summary>
-        /// <param name="secs">The secs</param>
-        /// <param name="pct">The pct</param>
-        /// <returns>The sdl power state</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetPowerInfo", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlPowerState InternalGetPowerInfo(out int secs, out int pct);
-
-        /// <summary>
-        ///     Sdl the get cpu count
-        /// </summary>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetCPUCount", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalGetCPUCount();
-
-        /// <summary>
-        ///     Sdl the get cpu cache line size
-        /// </summary>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetCPUCacheLineSize", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalGetCPUCacheLineSize();
-
+        
         /// <summary>
         ///     Internals the sdl set clipboard text using the specified text
         /// </summary>
@@ -6293,16 +6109,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalRenderGetMetalCommandEncoder([NotNull] IntPtr renderer);
-
-        /// <summary>
-        ///     Sdl the i phone set event pump using the specified enabled
-        /// </summary>
-        /// <param name="enabled">The enabled</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_iPhoneSetEventPump", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalIPhoneSetEventPump([NotNull] SdlBool enabled);
-
+        
         /// <summary>
         ///     Sdl the set window position using the specified window
         /// </summary>
