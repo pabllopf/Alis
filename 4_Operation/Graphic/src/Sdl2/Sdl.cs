@@ -8083,5 +8083,31 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
+        
+        /// <summary>
+        ///     Internals the sdl get performance frequency
+        /// </summary>
+        /// <returns>The ulong</returns>
+        [return: NotNull]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static ulong GetPerformanceFrequency()
+        {
+            ulong result = NativeSdl.InternalGetPerformanceFrequency();
+            Validator.ValidateOutput(result);
+            return result;
+        }
+        
+        /// <summary>
+        ///     Gets the performance counter
+        /// </summary>
+        /// <returns>The ulong</returns>
+        [return: NotNull]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static ulong GetPerformanceCounter()
+        {
+            ulong result = NativeSdl.InternalGetPerformanceCounter();
+            Validator.ValidateOutput(result);
+            return result;
+        }
     }
 }

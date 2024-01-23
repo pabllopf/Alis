@@ -5850,5 +5850,23 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalGlGetCurrentContext();
+        
+        /// <summary>
+        ///     Sdl the get performance frequency
+        /// </summary>
+        /// <returns>The int 64</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetPerformanceFrequency", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static extern ulong InternalGetPerformanceFrequency();
+        
+         /// <summary>
+                ///     Sdl the get performance counter
+                /// </summary>
+                /// <returns>The int 64</returns>
+                [DllImport(NativeLibName, EntryPoint = "SDL_GetPerformanceCounter", CallingConvention = CallingConvention.Cdecl)]
+                [return: NotNull]
+                [MethodImpl(MethodImplOptions.AggressiveInlining)]
+                internal static extern ulong InternalGetPerformanceCounter();
     }
 }
