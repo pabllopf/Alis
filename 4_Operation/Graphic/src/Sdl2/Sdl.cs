@@ -1736,20 +1736,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-
-        /// <summary>
-        ///     Inits the sub system using the specified flags
-        /// </summary>
-        /// <param name="flags">The flags</param>
-        /// <returns>The int</returns>
-        public static int InitSubSystem([NotNull] uint flags)
-        {
-            Validator.ValidateInput(flags);
-            int result = NativeSdl.InternalInitSubSystem(flags);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
+        
         /// <summary>
         ///     Sdl the quit
         /// </summary>
@@ -1758,18 +1745,6 @@ namespace Alis.Core.Graphic.Sdl2
         public static void Quit()
         {
             NativeSdl.InternalQuit();
-        }
-
-        /// <summary>
-        ///     Quits the sub system using the specified flags
-        /// </summary>
-        /// <param name="flags">The flags</param>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void QuitSubSystem([NotNull] uint flags)
-        {
-            Validator.ValidateInput(flags);
-            NativeSdl.InternalQuitSubSystem(flags);
         }
 
         /// <summary>
