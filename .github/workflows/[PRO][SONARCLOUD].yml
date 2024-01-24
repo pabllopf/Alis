@@ -59,9 +59,9 @@ jobs:
         shell: powershell
         run: |
           dotnet tool install --global dotnet-coverage
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=/**/coverage.xml
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=/**/coverage.net6.0.xml
           dotnet build ./alis.sln --configuration Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:Analyze=true -f net6.0 --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly
-          dotnet test ./alis.sln -f net6.0 /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:MergeWith=./coverage.xml
+          dotnet test ./alis.sln -f net6.0 /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./coverage.xml
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
 
