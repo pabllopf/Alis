@@ -58,10 +58,14 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          dotnet tool install --global JetBrains.dotCover.GlobalTool
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.dotnet.excludeTestProjects=true /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html
+          dotnet tool install --global coverlet.console
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.dotnet.excludeTestProjects=true /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths=coverage.xml
           dotnet build ./alis.sln --configuration Release /p:Analyze=true -f net6.0 --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly
-          dotnet dotcover test --dcReportType=HTML
+          coverlet .\CovExample.Tests\bin\Debug\net6.0\CovExample.Tests.dll
+            --target "dotnet" 
+            --targetargs "test --no-build --configuration Release /p:Analyze=true -f net6.0 --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly"
+            -f=opencover 
+            -o="coverage.xml"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
 
