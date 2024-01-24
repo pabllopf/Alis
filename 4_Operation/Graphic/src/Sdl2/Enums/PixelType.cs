@@ -32,7 +32,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
     /// <summary>
     ///     The sdl pixel type enum
     /// </summary>
-    public enum Type
+    public enum TypePixel
     {
         /// <summary>
         ///     The sdl pixel type unknown sdl pixel type
