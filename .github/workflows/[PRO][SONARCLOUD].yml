@@ -60,12 +60,11 @@ jobs:
         run: |
           dotnet tool install --global dotnet-coverage
           dotnet tool install --global dotnet-reportgenerator-globaltool
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=/coverage/coverage.xml
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=/coverage/SonarQube.xml
           dotnet build ./alis.sln --configuration Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:Analyze=true -f net6.0 --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly
           dotnet test ./alis.sln -f net6.0 /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./coverage.xml
           $coverage_files = (Get-ChildItem -Recurse -Filter 'coverage.net6.0.xml' | Where-Object { $_.FullName -like '*test*' } | ForEach-Object { $_.FullName }) -join ';'
-          reportgenerator "-reports:$coverage_files" "-targetdir:./coverage" -reporttypes:Cobertura
-          Rename-Item -Path './coverage/Cobertura.xml' -NewName 'coverage.xml'
+          reportgenerator "-reports:${coverage_file}" "-targetdir:./coverage" -reporttypes:SonarQube
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
 
