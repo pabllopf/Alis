@@ -58,7 +58,7 @@ namespace Alis.Core.Graphic.Sdl2
         ///     Initializes a new instance of the <see cref="Sdl" /> class
         /// </summary>
         static NativeSdl() => new EmbeddedDllClass().ExtractEmbeddedDlls("sdl2", Sdl2Dlls.GlSdlDllBytes, Assembly.GetAssembly(typeof(Sdl2Dlls)));
-        
+
         /// <summary>
         ///     Sdl the joystick is haptic using the specified joystick
         /// </summary>
@@ -629,7 +629,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalGetAudioDeviceSpec([NotNull] int index, [NotNull] int isCapture, out SdlAudioSpec spec);
-        
+
         /// <summary>
         ///     Sdl the add timer using the specified interval
         /// </summary>
@@ -690,7 +690,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlWinRtDeviceFamily InternalWinRTGetDeviceFamily();
-        
+
         /// <summary>
         ///     Sdl the get window wm info using the specified window
         /// </summary>
@@ -701,7 +701,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlBool InternalGetWindowWMInfo([NotNull] IntPtr window, ref SdlSysWmInfo info);
-        
+
         /// <summary>
         ///     Internals the sdl set clipboard text using the specified text
         /// </summary>
@@ -1783,7 +1783,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalJoystickSetVirtualButton([NotNull] IntPtr joystick, [NotNull] int button, [NotNull] byte value);
-        
+
         /// <summary>
         ///     Sdl the malloc using the specified size
         /// </summary>
@@ -1996,7 +1996,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalInit([NotNull] SdlInit flags);
-        
+
         /// <summary>
         ///     Sdl the quit
         /// </summary>
@@ -2004,7 +2004,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalQuit();
-        
+
         /// <summary>
         ///     Sdl the was init using the specified flags
         /// </summary>
@@ -2014,7 +2014,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern uint InternalWasInit([NotNull] uint flags);
-        
+
         /// <summary>
         ///     Sdl the clear hints
         /// </summary>
@@ -2075,7 +2075,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalGetError();
-        
+
         /// <summary>
         ///     Sdl the clear error
         /// </summary>
@@ -2083,7 +2083,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalClearError();
-        
+
         /// <summary>
         ///     Internals the sdl set error using the specified fmt and arg list
         /// </summary>
@@ -2144,7 +2144,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalGetVersion(out SdlVersion ver);
-        
+
         /// <summary>
         ///     Sdl the get revision number
         /// </summary>
@@ -5830,7 +5830,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalRenderGetMetalCommandEncoder([NotNull] IntPtr renderer);
-        
+
         /// <summary>
         ///     Sdl the set window position using the specified window
         /// </summary>
@@ -5850,7 +5850,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalGlGetCurrentContext();
-        
+
         /// <summary>
         ///     Sdl the get performance frequency
         /// </summary>
@@ -5859,14 +5859,15 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern ulong InternalGetPerformanceFrequency();
-        
-         /// <summary>
-                ///     Sdl the get performance counter
-                /// </summary>
-                /// <returns>The int 64</returns>
-                [DllImport(NativeLibName, EntryPoint = "SDL_GetPerformanceCounter", CallingConvention = CallingConvention.Cdecl)]
-                [return: NotNull]
-                [MethodImpl(MethodImplOptions.AggressiveInlining)]
-                internal static extern ulong InternalGetPerformanceCounter();
+
+        /// <summary>
+        ///     Sdl the get performance counter
+        /// </summary>
+        /// <returns>The int 64</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetPerformanceCounter", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static extern ulong InternalGetPerformanceCounter();
+
     }
 }
