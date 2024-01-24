@@ -60,9 +60,9 @@ jobs:
         run: |
           dotnet tool install --global dotnet-coverage
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.dotnet.excludeTestProjects=true /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=/**/coverage.xml
-          dotnet build ./alis.sln --configuration Release /p:Analyze=true /p:TargetFramework=net6.0 --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly
-          dotnet test ./alis.sln --configuration Release /p:Analyze=true /p:TargetFramework=net6.0 --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly
-          dotnet-coverage collect "dotnet test /p:Analyze=true" -f xml -o "coverage.xml"
+          dotnet build ./alis.sln --configuration Release /p:Analyze=true -f netstandard2.0 --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly
+          dotnet test ./alis.sln --configuration Release /p:Analyze=true -f netstandard2.0 --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly
+          dotnet-coverage collect "dotnet test ./alis.sln --configuration Release /p:Analyze=true -f netstandard2.0" -f xml -o "coverage.xml"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
 
