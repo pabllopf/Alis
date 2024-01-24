@@ -1,8 +1,4 @@
 <Project>
-    <PropertyGroup>
-        <Analize>false</Analize>
-    </PropertyGroup>
-    
     <PropertyGroup Condition="
         $(AssemblyName.Contains('App')) == true OR
         $(AssemblyName.Contains('Template')) == true OR
