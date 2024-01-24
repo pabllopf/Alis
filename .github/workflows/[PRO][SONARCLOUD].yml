@@ -60,8 +60,7 @@ jobs:
         run: |
           dotnet tool install --global JetBrains.dotCover.GlobalTool
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.dotnet.excludeTestProjects=true /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html
-          dotnet build ./alis.sln --configuration Release /p:Analyze=true -f net6.0 --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly –no-incremental
-          dotnet dotcover test --dcReportType=HTML
+          dotnet build ./alis.sln --configuration Release /p:Analyze=true -f net6.0 --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
 
