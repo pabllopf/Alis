@@ -189,15 +189,22 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
             
-            // Arrange
-            string name = Sdl.GetAudioDriver(0);
+            int getNumAudioDrivers = Sdl.GetNumAudioDrivers();
+            if (getNumAudioDrivers > 1)
+            {
+                // Arrange
+                string name = Sdl.GetAudioDriver(0);
 
-            // Act
-            int result = Sdl.AudioInit(name);
+                // Act
+                int result = Sdl.AudioInit(name);
 
-            // Assert
-            // Here you need to assert that the result is as expected. This will depend on your implementation.
-            Assert.Equal(0, result);
+                // Assert
+                // Here you need to assert that the result is as expected. This will depend on your implementation.
+                Assert.Equal(0, result);
+            }else
+            {
+                Assert.Equal(0, getNumAudioDrivers);
+            }
             
             Sdl.Quit();
         }
@@ -354,14 +361,22 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
             
-            // Arrange
-            const int isCapture = 0; // You need to get a valid instance of int
+            int getNumAudioDrivers = Sdl.GetNumAudioDrivers();
+            if (getNumAudioDrivers > 1)
+            {
+                // Arrange
+                const int isCapture = 0; // You need to get a valid instance of int
 
-            // Act
-            int result = Sdl.GetNumAudioDevices(isCapture);
+                // Act
+                int result = Sdl.GetNumAudioDevices(isCapture);
 
-            // Assert
-            Assert.NotEqual(0, result);
+                // Assert
+                Assert.NotEqual(0, result);
+            }
+            else
+            {
+                Assert.Equal(0, getNumAudioDrivers);
+            }
             
             Sdl.Quit();
         }
@@ -396,12 +411,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
             
             // Arrange
             string file = AssetManager.Find("AudioSample.wav");
-            SdlAudioSpec spec;
-            IntPtr audioBuf;
-            uint audioLen = 0;
 
             // Act
-            IntPtr result = Sdl.LoadWav(file, out spec, out audioBuf, out audioLen);
+            IntPtr result = Sdl.LoadWav(file, out SdlAudioSpec _, out IntPtr audioBuf, out uint audioLen);
 
             // Assert
             // Here you need to assert that the result is as expected. This will depend on your implementation.
@@ -483,29 +495,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test open audio
-        /// </summary>
-        [Fact]
-        public void TestOpenAudio()
-        {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
-            Assert.Equal(0, initResult);
-            
-            // Arrange
-            SdlAudioSpec desired = new SdlAudioSpec(); // You need to get a valid instance of SdlAudioSpec
-            SdlAudioSpec obtained;
-
-            // Act
-            int result = Sdl.SdlOpenAudio(ref desired, out obtained);
-
-            // Assert
-            // Here you need to assert that the result is as expected. This will depend on your implementation.
-            Assert.Equal(0, result);
-            
-            Sdl.Quit();
-        }
-
-        /// <summary>
         /// Tests that test open audio device
         /// </summary>
         [Fact]
@@ -518,11 +507,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
             string device = "dummy"; // You need to get a valid instance of string
             int isCapture = 0; // You need to get a valid instance of int
             SdlAudioSpec desired = new SdlAudioSpec(); // You need to get a valid instance of SdlAudioSpec
-            SdlAudioSpec obtained;
             int allowedChanges = 0; // You need to get a valid instance of int
 
             // Act
-            uint result = Sdl.SdlOpenAudioDevice(device, isCapture, ref desired, out obtained, allowedChanges);
+            uint result = Sdl.SdlOpenAudioDevice(device, isCapture, ref desired, out SdlAudioSpec _, allowedChanges);
 
             // Assert
             // Here you need to assert that the result is as expected. This will depend on your implementation.

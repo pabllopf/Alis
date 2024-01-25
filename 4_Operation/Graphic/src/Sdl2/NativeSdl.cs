@@ -387,29 +387,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalMixAudioFormat([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [NotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [NotNull] byte[] src, [NotNull] ushort format, [NotNull] uint len, [NotNull] int volume);
-
-        /// <summary>
-        ///     Sdl the open audio using the specified desired
-        /// </summary>
-        /// <param name="desired">The desired</param>
-        /// <param name="obtained">The obtained</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_OpenAudio", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalOpenAudio(ref SdlAudioSpec desired, out SdlAudioSpec obtained);
-
-        /// <summary>
-        ///     Sdl the open audio using the specified desired
-        /// </summary>
-        /// <param name="desired">The desired</param>
-        /// <param name="obtained">The obtained</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_OpenAudio", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalOpenAudio(ref SdlAudioSpec desired, [NotNull] IntPtr obtained);
-
+        
         /// <summary>
         ///     Sdl the open audio device using the specified device
         /// </summary>
