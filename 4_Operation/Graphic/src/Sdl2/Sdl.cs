@@ -7653,39 +7653,6 @@ namespace Alis.Core.Graphic.Sdl2
         }
 
         /// <summary>
-        ///     Sdl the open audio using the specified desired
-        /// </summary>
-        /// <param name="desired">The desired</param>
-        /// <param name="obtained">The obtained</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SdlOpenAudio(ref SdlAudioSpec desired, out SdlAudioSpec obtained)
-        {
-            Validator.ValidateInput(desired);
-            int result = NativeSdl.InternalOpenAudio(ref desired, out obtained);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Sdl the open audio using the specified desired
-        /// </summary>
-        /// <param name="desired">The desired</param>
-        /// <param name="obtained">The obtained</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SdlOpenAudio(ref SdlAudioSpec desired, [NotNull] IntPtr obtained)
-        {
-            Validator.ValidateInput(obtained);
-            Validator.ValidateInput(desired);
-            int result = NativeSdl.InternalOpenAudio(ref desired, obtained);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
         ///     Sdl the open audio device using the specified device
         /// </summary>
         /// <param name="device">The device</param>
