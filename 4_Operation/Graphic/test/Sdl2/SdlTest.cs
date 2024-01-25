@@ -197,10 +197,23 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
                 // Act
                 int result = Sdl.AudioInit(name);
-
-                // Assert
-                // Here you need to assert that the result is as expected. This will depend on your implementation.
-                Assert.NotEqual(0, result);
+                if (result == 0)
+                {
+                    // Assert
+                    // Here you need to assert that the result is as expected. This will depend on your implementation.
+                    Assert.Equal(0, result);
+                }
+                if (result == -1)
+                {
+                    // Assert
+                    // Here you need to assert that the result is as expected. This will depend on your implementation.
+                    Assert.Equal(-1, result);
+                }
+                if (result == -1 || result == 0)
+                {
+                    Assert.NotEqual(0, result);
+                    Assert.NotEqual(-1, result);
+                }
             }
             
             Sdl.Quit();
