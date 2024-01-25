@@ -58,10 +58,10 @@ jobs:
           dotnet tool install --global coverlet.console
           
           # Utiliza la ruta a tu solución (.sln) en el comando dotnet build
-          dotnet build --no-incremental -p:Configuration=Release -p:TargetFramework=net6.0 -f net6.0 -c Release ./alis.sln
+          dotnet build --no-incremental -f net6.0 -c Release .\\alis.sln
           
           # Utiliza la ruta a tu solución (.sln) en el comando dotnet-coverage collect
-          dotnet-coverage collect "dotnet test -f net6.0 -c Release" -f xml -o "coverage.xml"
+          dotnet-coverage collect "dotnet test -f net6.0 -c Release .\\alis.sln" -f xml -o "coverage.xml"
           
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
