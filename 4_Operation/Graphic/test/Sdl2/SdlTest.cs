@@ -97,6 +97,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
                 // Act
                 Sdl.GameControllerClose(controller);
+            }else
+            {
+                Assert.Equal(0, controllersAvailable);
             }
             
             Sdl.Quit();
