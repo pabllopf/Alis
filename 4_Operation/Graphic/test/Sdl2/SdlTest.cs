@@ -91,7 +91,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             
             // Arrange
             int controllersAvailable = Sdl.NumJoysticks();
-            if (controllersAvailable > 1)
+            if (controllersAvailable >= 1)
             {
                 IntPtr controller = Sdl.GameControllerOpen(0);
 
@@ -116,7 +116,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             
             // Arrange
             int controllersAvailable = Sdl.NumJoysticks();
-            if (controllersAvailable > 1)
+            if (controllersAvailable >= 1)
             {
                 IntPtr controller = Sdl.GameControllerOpen(0);
 
@@ -125,6 +125,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
                 // Assert
                 Assert.Equal(0, result);
+            }else
+            {
+                Assert.Equal(0, controllersAvailable);
             }
             Sdl.Quit();
         }
@@ -140,7 +143,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             
             // Arrange
             int controllersAvailable = Sdl.NumJoysticks();
-            if (controllersAvailable > 1)
+            if (controllersAvailable >= 1)
             {
                 IntPtr gameController = Sdl.GameControllerOpen(0);
 
@@ -152,6 +155,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
                 // Assert
                 Assert.Equal(SdlBool.SdlTrue, result);
+            }else
+            {
+                Assert.Equal(0, controllersAvailable);
             }
             Sdl.Quit();
         }
@@ -167,7 +173,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             
             // Arrange
             int controllersAvailable = Sdl.NumJoysticks();
-            if (controllersAvailable > 1)
+            if (controllersAvailable >= 1)
             {
                 IntPtr gameController = Sdl.GameControllerOpen(0);
 
@@ -179,6 +185,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
                 // Assert
                 Assert.Equal(SdlBool.SdlTrue, result);
+            }else
+            {
+                Assert.Equal(0, controllersAvailable);
             }
             
             Sdl.Quit();
@@ -193,7 +202,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, initResult);
             
             int getNumAudioDrivers = Sdl.GetNumAudioDrivers();
-            if (getNumAudioDrivers > 1)
+            if (getNumAudioDrivers >= 1)
             {
                 // Arrange
                 string name = Sdl.GetAudioDriver(0);
@@ -243,7 +252,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, initResult);
             
             int audioDevices = Sdl.GetNumAudioDevices(0);
-            if (audioDevices > 1)
+            if (audioDevices >= 1)
             {
                 string nameAudioDevice = Sdl.GetAudioDeviceName(0, 0);
                 
@@ -262,6 +271,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
                 
                 // Act
                 Sdl.CloseAudioDevice(dev);
+            }else
+            {
+                Assert.Equal(0, audioDevices);
             }
             
             Sdl.Quit();
@@ -365,7 +377,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, initResult);
             
             int gNumAudioDevices = Sdl.GetNumAudioDevices(0);
-            if (gNumAudioDevices > 1)
+            if (gNumAudioDevices >= 1)
             {
                 // Arrange
                 const int isCapture = 0; // You need to get a valid instance of int
