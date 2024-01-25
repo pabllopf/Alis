@@ -13,6 +13,12 @@
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
 
+        <PackageReference Include="OpenCover" Version="4.7.922" />
+        <PackageReference Include="coverlet.msbuild" Version="2.7.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        
         <Content Include="$(SolutionDir).config/xunit.runner.json" LinkBase="." Pack="true" Visible="true" PackagePath=".">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>

@@ -19,27 +19,4 @@
         <TargetFramework1>netstandard2.0;netstandard2.1</TargetFramework1>
         <TargetFramework2>net5.0;net6.0;net7.0;net8.0</TargetFramework2>
     </PropertyGroup>
-
-    <PropertyGroup Condition="
-        ($(AssemblyName.Contains('App')) == true OR
-        $(AssemblyName.Contains('Template')) == true OR
-        $(AssemblyName.Contains('Sample')) == true OR
-        $(AssemblyName.Contains('Test')) == true OR
-        $(AssemblyName.Contains('Benchmark')) == true) AND
-        '$(Analize)' == 'true'">
-        <TargetFramework1>net6.0</TargetFramework1>
-        <TargetFramework2></TargetFramework2>
-        <SonarQubeExclude>true</SonarQubeExclude>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="
-        $(AssemblyName.Contains('Test')) == false AND 
-        $(AssemblyName.Contains('App')) == false AND
-        $(AssemblyName.Contains('Template')) == false AND
-        $(AssemblyName.Contains('Sample')) == false AND
-        $(AssemblyName.Contains('Benchmark')) == false AND
-        '$(Analize)' == 'true'">
-        <TargetFramework1>netstandard2.0</TargetFramework1>
-        <TargetFramework2></TargetFramework2>
-    </PropertyGroup>
 </Project>
