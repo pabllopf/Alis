@@ -361,8 +361,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
             
-            int getNumAudioDrivers = Sdl.GetNumAudioDrivers();
-            if (getNumAudioDrivers > 1)
+            int gNumAudioDevices = Sdl.GetNumAudioDevices(0);
+            if (gNumAudioDevices > 1)
             {
                 // Arrange
                 const int isCapture = 0; // You need to get a valid instance of int
@@ -375,7 +375,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             }
             else
             {
-                Assert.Equal(0, getNumAudioDrivers);
+                Assert.Equal(0, gNumAudioDevices);
             }
             
             Sdl.Quit();
