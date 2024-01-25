@@ -60,8 +60,9 @@ jobs:
         run: |
           dotnet tool install --global dotnet-coverage
           dotnet tool install --global coverlet.console
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths=coverage.xml
-          dotnet build --no-incremental coverlet --target "dotnet"  --targetargs "test --no-build" -f=opencover -o="coverage.xml"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+          dotnet build --no-incremental
+          dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
 
