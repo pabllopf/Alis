@@ -39,14 +39,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
     public class SdlTest
     {
         /// <summary>
-        /// Tests that test
+        /// Tests that test init
         /// </summary>
-        [Fact]
-        public void Test()
-        {
-            Assert.True(true);
-        }
-        
         [Fact]
         public void TestInit()
         {
@@ -60,6 +54,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, result);
         }
         
+        /// <summary>
+        /// Tests that test get gl compiled version
+        /// </summary>
         [Fact]
         public void TestGetGlCompiledVersion()
         {
