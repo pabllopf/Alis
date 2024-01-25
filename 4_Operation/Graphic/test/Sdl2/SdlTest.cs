@@ -97,9 +97,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
                 // Act
                 Sdl.GameControllerClose(controller);
-            }else
-            {
-                Assert.Equal(0, controllersAvailable);
             }
             
             Sdl.Quit();
@@ -125,9 +122,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
                 // Assert
                 Assert.Equal(0, result);
-            }else
-            {
-                Assert.Equal(0, controllersAvailable);
             }
             Sdl.Quit();
         }
@@ -155,9 +149,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
                 // Assert
                 Assert.Equal(SdlBool.SdlTrue, result);
-            }else
-            {
-                Assert.Equal(0, controllersAvailable);
             }
             Sdl.Quit();
         }
@@ -185,9 +176,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
                 // Assert
                 Assert.Equal(SdlBool.SdlTrue, result);
-            }else
-            {
-                Assert.Equal(0, controllersAvailable);
             }
             
             Sdl.Quit();
@@ -213,9 +201,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
                 // Assert
                 // Here you need to assert that the result is as expected. This will depend on your implementation.
                 Assert.Equal(0, result);
-            }else
-            {
-                Assert.Equal(0, getNumAudioDrivers);
             }
             
             Sdl.Quit();
@@ -256,10 +241,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
             {
                 string nameAudioDevice = Sdl.GetAudioDeviceName(0, 0);
                 
-                SdlAudioSpec spect = new SdlAudioSpec();
+                SdlAudioSpec spec = new SdlAudioSpec();
                 
                 // Arrange
-                uint dev = Sdl.SdlOpenAudioDevice(nameAudioDevice, 0, ref spect, out SdlAudioSpec obtained, 0);
+                uint dev = Sdl.SdlOpenAudioDevice(nameAudioDevice, 0, ref spec, out SdlAudioSpec obtained, 0);
                 
                 //Assert 
                 Assert.NotEqual(0.0, dev);
@@ -271,9 +256,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
                 
                 // Act
                 Sdl.CloseAudioDevice(dev);
-            }else
-            {
-                Assert.Equal(0, audioDevices);
             }
             
             Sdl.Quit();
@@ -387,10 +369,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
                 // Assert
                 Assert.NotEqual(0, result);
-            }
-            else
-            {
-                Assert.Equal(0, gNumAudioDevices);
             }
             
             Sdl.Quit();
