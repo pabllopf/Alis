@@ -1753,7 +1753,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint WasInit([NotNull] uint flags)
+        public static uint WasInit([NotNull] SdlInit flags)
         {
             Validator.ValidateInput(flags);
             uint result = NativeSdl.InternalWasInit(flags);
@@ -6399,7 +6399,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int NumJoysticks() => NativeSdl.InternalNumJoysticks();
+        public static int NumJoysticks()
+        {
+            int result = NativeSdl.InternalNumJoysticks();
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Joysticks the get device guid using the specified device index
@@ -7035,27 +7040,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             NativeSdl.InternalGameControllerClose(gameController);
         }
-
-        /// <summary>
-        ///     Sdl the game controller get apple sf symbols name for button using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="button">The button</param>
-        /// <returns>The string</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string GameControllerGetAppleSfSymbolsNameForButton([NotNull] IntPtr gameController, SdlGameControllerButton button) => NativeSdl.InternalGameControllerGetAppleSFSymbolsNameForButton(gameController, button);
-
-        /// <summary>
-        ///     Sdl the game controller get apple sf symbols name for axis using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="axis">The axis</param>
-        /// <returns>The string</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string GameControllerGetAppleSfSymbolsNameForAxis([NotNull] IntPtr gameController, SdlGameControllerAxis axis) => NativeSdl.InternalGameControllerGetAppleSFSymbolsNameForAxis(gameController, axis);
-
+        
         /// <summary>
         ///     Internals the sdl game controller from instance id using the specified joy id
         /// </summary>
@@ -7267,7 +7252,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GameControllerSendEffect([NotNull] IntPtr gameController, [NotNull] IntPtr data, [NotNull] int size) => NativeSdl.InternalGameControllerSendEffect(gameController, data, size);
 
-        ///     Joysticks the is haptic using the specified joystick
+
+        /// <summary>
+        /// Joysticks the is haptic using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The int</returns>
@@ -7506,17 +7493,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             NativeSdl.InternalAudioQuit();
         }
-
-        /// <summary>
-        ///     Closes the audio
-        /// </summary>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void CloseAudio()
-        {
-            NativeSdl.InternalCloseAudio();
-        }
-
+        
         /// <summary>
         ///     Closes the audio device using the specified dev
         /// </summary>
@@ -7527,25 +7504,21 @@ namespace Alis.Core.Graphic.Sdl2
         {
             NativeSdl.InternalCloseAudioDevice(dev);
         }
-
-        /// <summary>
-        ///     Frees the wav using the specified audio buf
-        /// </summary>
-        /// <param name="audioBuf">The audio buf</param>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void FreeWav([NotNull] IntPtr audioBuf)
-        {
-            NativeSdl.InternalFreeWAV(audioBuf);
-        }
-
+        
         /// <summary>
         ///     Sdl the get audio device name using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <param name="isCapture">The is capture</param>
         /// <returns>The string</returns>
-        public static string GetAudioDeviceName([NotNull] int index, [NotNull] int isCapture) => NativeSdl.InternalGetAudioDeviceName(index, isCapture);
+        public static string GetAudioDeviceName([NotNull] int index, [NotNull] int isCapture)
+        {
+            Validator.ValidateInput(index);
+            Validator.ValidateInput(isCapture);
+            var result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetAudioDeviceName(index, isCapture));
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Gets the audio device status using the specified dev
@@ -7561,23 +7534,26 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The string</returns>
-        public static string GetAudioDriver([NotNull] int index) => NativeSdl.InternalGetAudioDriver(index);
-
-        /// <summary>
-        ///     Gets the audio status
-        /// </summary>
-        /// <returns>The sdl audio status</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlAudioStatus GetAudioStatus() => NativeSdl.InternalGetAudioStatus();
-
+        public static string GetAudioDriver([NotNull] int index)
+        {
+            Validator.ValidateInput(index);
+            string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetAudioDriver(index));
+            Validator.ValidateOutput(result);
+            return result;
+        }
+        
         /// <summary>
         ///     Sdl the get current audio driver
         /// </summary>
         /// <returns>The string</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string GetCurrentAudioDriver() => NativeSdl.InternalGetCurrentAudioDriver();
+        public static string GetCurrentAudioDriver()
+        {
+            string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetCurrentAudioDriver());
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Gets the num audio devices using the specified is capture
@@ -7605,17 +7581,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="audioLen">The audio len</param>
         /// <returns>The int ptr</returns>
         public static IntPtr LoadWav([NotNull] string file, out SdlAudioSpec spec, out IntPtr audioBuf, out uint audioLen) => NativeSdl.InternalLoadWAV_RW(RwFromFile(file, "rb"), 1, out spec, out audioBuf, out audioLen);
-
-        /// <summary>
-        ///     Locks the audio
-        /// </summary>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void LockAudio()
-        {
-            NativeSdl.InternalLockAudio();
-        }
-
+        
         /// <summary>
         ///     Locks the audio device using the specified dev
         /// </summary>
@@ -7788,17 +7754,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateInput(pauseOn);
             NativeSdl.InternalPauseAudioDevice(dev, pauseOn);
         }
-
-        /// <summary>
-        ///     Sdl the unlock audio
-        /// </summary>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SdlUnlockAudio()
-        {
-            NativeSdl.InternalUnlockAudio();
-        }
-
+        
         /// <summary>
         ///     Sdl the unlock audio device using the specified dev
         /// </summary>
@@ -7809,71 +7765,6 @@ namespace Alis.Core.Graphic.Sdl2
         {
             Validator.ValidateInput(dev);
             NativeSdl.InternalUnlockAudioDevice(dev);
-        }
-
-        /// <summary>
-        ///     Sdl the queue audio using the specified dev
-        /// </summary>
-        /// <param name="dev">The dev</param>
-        /// <param name="data">The data</param>
-        /// <param name="len">The len</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SdlQueueAudio([NotNull] uint dev, [NotNull] IntPtr data, [NotNull] uint len)
-        {
-            Validator.ValidateInput(dev);
-            Validator.ValidateInput(data);
-            Validator.ValidateInput(len);
-            int result = NativeSdl.InternalQueueAudio(dev, data, len);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Sdl the dequeue audio using the specified dev
-        /// </summary>
-        /// <param name="dev">The dev</param>
-        /// <param name="data">The data</param>
-        /// <param name="len">The len</param>
-        /// <returns>The uint</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint SdlDequeueAudio([NotNull] uint dev, [NotNull] IntPtr data, [NotNull] uint len)
-        {
-            Validator.ValidateInput(dev);
-            Validator.ValidateInput(data);
-            Validator.ValidateInput(len);
-            uint result = NativeSdl.InternalDequeueAudio(dev, data, len);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Sdl the get queued audio size using the specified dev
-        /// </summary>
-        /// <param name="dev">The dev</param>
-        /// <returns>The uint</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint SdlGetQueuedAudioSize([NotNull] uint dev)
-        {
-            Validator.ValidateInput(dev);
-            uint result = NativeSdl.InternalGetQueuedAudioSize(dev);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Sdl the clear queued audio using the specified dev
-        /// </summary>
-        /// <param name="dev">The dev</param>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SdlClearQueuedAudio([NotNull] uint dev)
-        {
-            Validator.ValidateInput(dev);
-            NativeSdl.InternalClearQueuedAudio(dev);
         }
 
         /// <summary>

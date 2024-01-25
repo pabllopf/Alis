@@ -18,4 +18,12 @@
     <ItemGroup>
       <Folder Include="Sdl2\Enums\" />
     </ItemGroup>
+
+    <ItemGroup>
+      <None Update="Assets\AudioSample.wav">
+        <LinkBase>Assets/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+    </ItemGroup>
 </Project>

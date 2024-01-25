@@ -260,14 +260,6 @@ namespace Alis.Core.Graphic.Sdl2
         internal static extern void InternalAudioQuit();
 
         /// <summary>
-        ///     Sdl the close audio
-        /// </summary>
-        [DllImport(NativeLibName, EntryPoint = "SDL_CloseAudio", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalCloseAudio();
-
-        /// <summary>
         ///     Sdl the close audio device using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
@@ -275,16 +267,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalCloseAudioDevice([NotNull] uint dev);
-
-        /// <summary>
-        ///     Sdl the free wav using the specified audio buf
-        /// </summary>
-        /// <param name="audioBuf">The audio buf</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_FreeWAV", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalFreeWAV([NotNull] IntPtr audioBuf);
-
+        
         /// <summary>
         ///     Internals the sdl get audio device name using the specified index
         /// </summary>
@@ -294,7 +277,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetAudioDeviceName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGetAudioDeviceName([NotNull] int index, [NotNull] int isCapture);
+        internal static extern IntPtr InternalGetAudioDeviceName([NotNull] int index, [NotNull] int isCapture);
 
         /// <summary>
         ///     Sdl the get audio device status using the specified dev
@@ -314,17 +297,8 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetAudioDriver", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGetAudioDriver([NotNull] int index);
-
-        /// <summary>
-        ///     Sdl the get audio status
-        /// </summary>
-        /// <returns>The sdl audio status</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetAudioStatus", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlAudioStatus InternalGetAudioStatus();
-
+        internal static extern IntPtr InternalGetAudioDriver([NotNull] int index);
+        
         /// <summary>
         ///     Internals the sdl get current audio driver
         /// </summary>
@@ -332,7 +306,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetCurrentAudioDriver", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGetCurrentAudioDriver();
+        internal static extern IntPtr InternalGetCurrentAudioDriver();
 
         /// <summary>
         ///     Sdl the get num audio devices using the specified is capture
@@ -366,15 +340,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalLoadWAV_RW([NotNull] IntPtr src, [NotNull] int freeSrc, out SdlAudioSpec spec, out IntPtr audioBuf, out uint audioLen);
-
-        /// <summary>
-        ///     Sdl the lock audio
-        /// </summary>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LockAudio", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalLockAudio();
-
+        
         /// <summary>
         ///     Sdl the lock audio device using the specified dev
         /// </summary>
@@ -492,14 +458,6 @@ namespace Alis.Core.Graphic.Sdl2
         internal static extern void InternalPauseAudioDevice([NotNull] uint dev, [NotNull] int pauseOn);
 
         /// <summary>
-        ///     Sdl the unlock audio
-        /// </summary>
-        [DllImport(NativeLibName, EntryPoint = "SDL_UnlockAudio", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalUnlockAudio();
-
-        /// <summary>
         ///     Sdl the unlock audio device using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
@@ -507,50 +465,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalUnlockAudioDevice([NotNull] uint dev);
-
-        /// <summary>
-        ///     Sdl the queue audio using the specified dev
-        /// </summary>
-        /// <param name="dev">The dev</param>
-        /// <param name="data">The data</param>
-        /// <param name="len">The len</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_QueueAudio", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalQueueAudio([NotNull] uint dev, [NotNull] IntPtr data, [NotNull] uint len);
-
-        /// <summary>
-        ///     Sdl the dequeue audio using the specified dev
-        /// </summary>
-        /// <param name="dev">The dev</param>
-        /// <param name="data">The data</param>
-        /// <param name="len">The len</param>
-        /// <returns>The uint</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_DequeueAudio", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern uint InternalDequeueAudio([NotNull] uint dev, [NotNull] IntPtr data, [NotNull] uint len);
-
-        /// <summary>
-        ///     Sdl the get queued audio size using the specified dev
-        /// </summary>
-        /// <param name="dev">The dev</param>
-        /// <returns>The int 32</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetQueuedAudioSize", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern uint InternalGetQueuedAudioSize([NotNull] uint dev);
-
-        /// <summary>
-        ///     Sdl the clear queued audio using the specified dev
-        /// </summary>
-        /// <param name="dev">The dev</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_ClearQueuedAudio", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalClearQueuedAudio([NotNull] uint dev);
-
+        
         /// <summary>
         ///     Sdl the new audio stream using the specified src format
         /// </summary>
@@ -2013,7 +1928,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_WasInit", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern uint InternalWasInit([NotNull] uint flags);
+        internal static extern uint InternalWasInit([NotNull] SdlInit flags);
 
         /// <summary>
         ///     Sdl the clear hints
@@ -3813,29 +3728,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalGameControllerClose([NotNull] IntPtr gameController);
-
-        /// <summary>
-        ///     Internals the sdl game controller get apple sf symbols name for button using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="button">The button</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAppleSFSymbolsNameForButton", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGameControllerGetAppleSFSymbolsNameForButton([NotNull] IntPtr gameController, SdlGameControllerButton button);
-
-        /// <summary>
-        ///     Internals the sdl game controller get apple sf symbols name for axis using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="axis">The axis</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAppleSFSymbolsNameForAxis", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGameControllerGetAppleSFSymbolsNameForAxis([NotNull] IntPtr gameController, SdlGameControllerAxis axis);
-
+        
         /// <summary>
         ///     Sdl the game controller from instance id using the specified joy id
         /// </summary>
