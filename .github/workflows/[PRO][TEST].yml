@@ -31,10 +31,10 @@ jobs:
             8.0.x
 
       - name: Dotnet test Debug
-        run: dotnet test alis.sln --configuration Debug
+        run: dotnet test alis.sln -c Debug
 
       - name: Dotnet test Release
-        run: dotnet test alis.sln --configuration Release
+        run: dotnet test alis.sln -c Release
 
       - uses: dorny/test-reporter@v1
         with:
@@ -61,10 +61,10 @@ jobs:
             8.0.x
 
       - name: Dotnet test Debug
-        run: dotnet test alis.sln --configuration Debug
+        run: dotnet test alis.sln -c Debug
 
       - name: Dotnet test Release
-        run: dotnet test alis.sln --configuration Release
+        run: dotnet test alis.sln -c Release
 
       - uses: dorny/test-reporter@v1
         with:
@@ -91,10 +91,10 @@ jobs:
             8.0.x
         
       - name: Dotnet test Debug
-        run: dotnet test alis.sln --configuration Debug
+        run: dotnet test alis.sln -c Debug
 
       - name: Dotnet test Release
-        run: dotnet test alis.sln --configuration Release
+        run: dotnet test alis.sln -c Release
 
       - uses: dorny/test-reporter@v1
         with:
