@@ -31,11 +31,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: |
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
+          dotnet-version: 6.0.x  # Specify the version you want to use
             
       - name: Cache SonarCloud scanner
         id: cache-sonar-scanner
@@ -60,9 +56,14 @@ jobs:
         run: |
           dotnet tool install --global dotnet-coverage
           dotnet tool install --global coverlet.console
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
-          dotnet build --no-incremental
+          
+          # Utiliza la ruta a tu solución (.sln) en el comando dotnet build
+          dotnet build --no-incremental -p:Configuration=Release -p:TargetFramework=net6.0 ./alis.sln
+          
+          # Utiliza la ruta a tu solución (.sln) en el comando dotnet-coverage collect
           dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
+          
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
 
