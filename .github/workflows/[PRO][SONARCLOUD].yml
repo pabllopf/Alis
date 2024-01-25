@@ -58,7 +58,7 @@ jobs:
           dotnet tool install --global coverlet.console
           
           # Utiliza la ruta a tu solución (.sln) en el comando dotnet build
-          dotnet build --no-incremental -p:Configuration=Release -p:TargetFramework=net6.0 ./alis.sln
+          dotnet build --no-incremental -p:Configuration=Release -p:TargetFramework=net6.0 -f net6.0 ./alis.sln
           
           # Utiliza la ruta a tu solución (.sln) en el comando dotnet-coverage collect
           dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
