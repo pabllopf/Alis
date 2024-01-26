@@ -230,20 +230,10 @@ namespace Alis.Core.Graphic.Sample
 
             //SDL_BlitSurface(fg_surface, NULL, bg_surface, &rect);
             Sdl.BlitSurface(fg_surface, IntPtr.Zero, bg_surface, ref rect);
-
-            //SDL_FreeSurface(fg_surface);
-            Sdl.FreeSurface(fg_surface);
-
-
-            // surface without alpha
-            //Sdl.SetSurfaceBlendMode(surface, SdlBlendMode.SdlBlendModeBlend);
-
+            
             // Create a texture from the surface
             textureFont1 = Sdl.CreateTextureFromSurface(renderer, bg_surface);
-
-            // define alpha of the texture
-            //Sdl.SetTextureAlphaMod(textureFont1, 255);
-
+            
             // Get the width and height of the texture
             Sdl.QueryTexture(textureFont1, out _, out _, out int textureWidth, out int textureHeight);
 
