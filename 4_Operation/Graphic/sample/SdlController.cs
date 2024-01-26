@@ -279,12 +279,12 @@ namespace Alis.Core.Graphic.Sample
             };
 
             // Load the image from the specified path.
-            Image imageTile = new Image("Assets/tile000.bmp");
+            IntPtr imageTilePtr = Sdl.LoadBmp("Assets/tile000.bmp");
 
             // Create a new texture from the image.
-            Texture textureTile = new Texture(renderer, imageTile, tileRectangleI);
+            IntPtr textureTile = Sdl.CreateTextureFromSurface(renderer, imageTilePtr);
 
-            Sprite sprite = new Sprite(textureTile, new Depth(1));
+            
 
             while (_running)
             {
@@ -367,7 +367,7 @@ namespace Alis.Core.Graphic.Sample
                 
                 Sdl.RenderCopy(renderer, textureFont1, IntPtr.Zero, ref dstRectFont1);
 
-                sprite.Draw(renderer);
+                Sdl.RenderCopy(renderer, textureTile, IntPtr.Zero, ref tileRectangleI);
 
                 Sdl.RenderDrawRects(renderer, new[] {rectBorder, rectFilled}, 2);
 

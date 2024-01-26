@@ -690,22 +690,7 @@ namespace Alis.Core.Graphic.Sdl2
         ///     The sdl hint linux joystick classic
         /// </summary>
         public const string HintLinuxJoystickClassic = "SDL_LINUX_JOYSTICK_CLASSIC";
-
-        /// <summary>
-        ///     The sdl major version
-        /// </summary>
-        public const int MajorVersion = 2;
-
-        /// <summary>
-        ///     The sdl minor version
-        /// </summary>
-        public const int MinorVersion = 0;
-
-        /// <summary>
-        ///     The sdl patch level
-        /// </summary>
-        public const int PatchLevel = 18;
-
+        
         /// <summary>
         ///     The sdl window pos undefined mask
         /// </summary>
@@ -1110,7 +1095,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The sdl patch level
         /// </summary>
-        public static int GetGlCompiledVersion() => MajorVersion * 1000 + MinorVersion * 100 + PatchLevel;   
+        public static int GetGlCompiledVersion() => 2 * 1000 + 0 * 100 + 18;   
 
         /// <summary>
         ///     The sdl pixel format unknown
@@ -1385,52 +1370,6 @@ namespace Alis.Core.Graphic.Sdl2
         public static uint Fourcc(byte a, byte b, byte c, byte d) => (uint) (a | (b << 8) | (c << 16) | (d << 24));
 
         /// <summary>
-        ///     Malloc the size
-        /// </summary>
-        /// <param name="size">The size</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr Malloc([NotNull, NotZero] int size)
-        {
-            Validator.ValidateInput(size);
-            IntPtr result = NativeSdl.InternalMalloc(size);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Frees the mem block
-        /// </summary>
-        /// <param name="memBlock">The mem block</param>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Free([NotNull] IntPtr memBlock)
-        {
-            Validator.ValidateInput(memBlock);
-            NativeSdl.InternalFree(memBlock);
-        }
-
-        /// <summary>
-        ///     Mem the cpy using the specified dst
-        /// </summary>
-        /// <param name="dst">The dst</param>
-        /// <param name="src">The src</param>
-        /// <param name="len">The len</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr MemCpy([NotNull] IntPtr dst, [NotNull] IntPtr src, [NotNull] IntPtr len)
-        {
-            Validator.ValidateInput(dst);
-            Validator.ValidateInput(src);
-            Validator.ValidateInput(len);
-            IntPtr result = NativeSdl.InternalMemCpy(dst, src, len);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
         ///     Sdl the rw from file using the specified file
         /// </summary>
         /// <param name="file">The file</param>
@@ -1445,29 +1384,6 @@ namespace Alis.Core.Graphic.Sdl2
             IntPtr result = NativeSdl.InternalRWFromFile(file, mode);
             Validator.ValidateOutput(result);
             return result;
-        }
-
-        /// <summary>
-        ///     Internal the sdl alloc rw
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr AllocRw()
-        {
-            IntPtr result = NativeSdl.InternalAllocRW();
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Free the rw using the specified area
-        /// </summary>
-        /// <param name="area">The area</param>
-        public static void FreeRw([NotNull] IntPtr area)
-        {
-            Validator.ValidateInput(area);
-            NativeSdl.InternalFreeRW(area);
         }
 
         /// <summary>
@@ -1687,16 +1603,6 @@ namespace Alis.Core.Graphic.Sdl2
         }
         
         /// <summary>
-        ///     Sdl the clear error
-        /// </summary>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void ClearError()
-        {
-            NativeSdl.InternalClearError();
-        }
-
-        /// <summary>
         ///     Sdl the get error
         /// </summary>
         /// <returns>The string</returns>
@@ -1760,6 +1666,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
+        
         /// <summary>
         ///     Clears the hints
         /// </summary>
@@ -1780,7 +1687,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static string GetHint([NotNull] string name)
         {
             Validator.ValidateInput(name);
-            string result = NativeSdl.InternalGetHint(name);
+            string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetHint(name));
             Validator.ValidateOutput(result);
             return result;
         }
@@ -1839,118 +1746,11 @@ namespace Alis.Core.Graphic.Sdl2
         }
 
         /// <summary>
-        ///     Sdl the show message box using the specified message box data
-        /// </summary>
-        /// <param name="messageBoxData">The message box data</param>
-        /// <param name="buttonId">The button id</param>
-        /// <returns>The result</returns>
-        public static int ShowMessageBox(ref SdlMessageBoxData messageBoxData, out int buttonId)
-        {
-            InternalSdlMessageBoxData data = new InternalSdlMessageBoxData
-            {
-                flags = messageBoxData.flags,
-                window = messageBoxData.window,
-                title = NativeSdl.AllocUtf8(messageBoxData.title),
-                message = NativeSdl.AllocUtf8(messageBoxData.message),
-                numButtons = messageBoxData.numButtons
-            };
-
-            InternalSdlMessageBoxButtonData[] buttons = new InternalSdlMessageBoxButtonData[messageBoxData.numButtons];
-            IntPtr buttonsPtr = IntPtr.Zero;
-
-            try
-            {
-                for (int i = 0; i < messageBoxData.numButtons; i++)
-                {
-                    buttons[i] = new InternalSdlMessageBoxButtonData
-                    {
-                        flags = messageBoxData.buttons[i].flags,
-                        buttonId = messageBoxData.buttons[i].buttonId,
-                        text = NativeSdl.AllocUtf8(messageBoxData.buttons[i].text)
-                    };
-                }
-
-                buttonsPtr = Marshal.AllocHGlobal(buttons.Length * Marshal.SizeOf<InternalSdlMessageBoxButtonData>());
-                for (int i = 0; i < buttons.Length; i++)
-                {
-                    IntPtr buttonPtr = buttonsPtr + i * Marshal.SizeOf<InternalSdlMessageBoxButtonData>();
-                    Marshal.StructureToPtr(buttons[i], buttonPtr, false);
-                }
-
-                data.buttons = buttonsPtr;
-
-                IntPtr colorSchemePtr = IntPtr.Zero;
-                if (messageBoxData.colorScheme.colors != null)
-                {
-                    colorSchemePtr = Marshal.AllocHGlobal(Marshal.SizeOf<SdlMessageBoxColorScheme>());
-                    Marshal.StructureToPtr(messageBoxData.colorScheme, colorSchemePtr, false);
-                }
-
-                int result = NativeSdl.InternalShowMessageBox(ref data, out buttonId);
-
-                for (int i = 0; i < messageBoxData.numButtons; i++)
-                {
-                    NativeSdl.InternalFree(buttons[i].text);
-                }
-
-                NativeSdl.InternalFree(data.message);
-                NativeSdl.InternalFree(data.title);
-
-                if (colorSchemePtr != IntPtr.Zero)
-                {
-                    Marshal.DestroyStructure<SdlMessageBoxColorScheme>(colorSchemePtr);
-                    Marshal.FreeHGlobal(colorSchemePtr);
-                }
-
-                return result;
-            }
-            finally
-            {
-                if (buttonsPtr != IntPtr.Zero)
-                {
-                    Marshal.FreeHGlobal(buttonsPtr);
-                }
-            }
-        }
-
-        /// <summary>
-        ///     Sdl the show simple message box using the specified flags
-        /// </summary>
-        /// <param name="flags">The flags</param>
-        /// <param name="title">The title</param>
-        /// <param name="message">The message</param>
-        /// <param name="window">The window</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int ShowSimpleMessageBox(SdlMessageBoxFlags flags, [NotNull] string title, [NotNull] string message, [NotNull] IntPtr window) => NativeSdl.InternalShowSimpleMessageBox(flags, title, message, window);
-
-        /// <summary>
-        ///     Sdl the version
-        /// </summary>
-        /// <returns>The sdl version</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlVersion Version() => new SdlVersion(MajorVersion, MinorVersion, PatchLevel);
-        
-        /// <summary>
         ///     Sdl the get version using the specified ver
         /// </summary>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlVersion GetVersion()
-        {
-            NativeSdl.InternalGetVersion(out SdlVersion version);
-            return version;
-        }
-        
-        /// <summary>
-        ///     Sdl the get revision number
-        /// </summary>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetRevisionNumber() => NativeSdl.InternalGetRevisionNumber();
+        public static SdlVersion GetVersion() => new SdlVersion(2, 0, 18);
 
         /// <summary>
         ///     Sdl the window pos undefined display using the specified x
@@ -2549,7 +2349,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int BindTexture([NotNull] IntPtr texture, out float texW, out float texH) => NativeSdl.InternalGL_BindTexture(texture, out texW, out texH);
+        public static int BindTexture([NotNull] IntPtr texture, out float texW, out float texH)
+        {
+            Validator.ValidateInput(texture);
+            return NativeSdl.InternalGlBindTexture(texture, out texW, out texH);
+        }
 
         /// <summary>
         ///     Gls the create context using the specified window
@@ -2558,7 +2362,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr CreateContext([NotNull] IntPtr window) => NativeSdl.InternalGL_CreateContext(window);
+        public static IntPtr CreateContext([NotNull] IntPtr window) => NativeSdl.InternalGlCreateContext(window);
 
         /// <summary>
         ///     Gls the delete context using the specified context
@@ -2568,7 +2372,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void DeleteContext([NotNull] IntPtr context)
         {
-            NativeSdl.InternalGL_DeleteContext(context);
+            NativeSdl.InternalGlDeleteContext(context);
         }
 
         /// <summary>
@@ -2578,7 +2382,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The result</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int LoadLibrary([NotNull] string path) => NativeSdl.InternalGL_LoadLibrary(path);
+        public static int LoadLibrary([NotNull] string path) => NativeSdl.InternalGlLoadLibrary(path);
 
         /// <summary>
         ///     Sdl the gl get proc address using the specified proc
@@ -2587,7 +2391,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetProcAddress([NotNull] string proc) => NativeSdl.InternalGL_GetProcAddress(proc);
+        public static IntPtr GetProcAddress([NotNull] string proc) => NativeSdl.InternalGlGetProcAddress(proc);
 
         /// <summary>
         ///     Gls the unload library
@@ -2596,7 +2400,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void UnloadLibrary()
         {
-            NativeSdl.InternalGL_UnloadLibrary();
+            NativeSdl.InternalGlUnloadLibrary();
         }
 
         /// <summary>
@@ -2606,7 +2410,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool ExtensionSupported([NotNull] string extension) => NativeSdl.InternalGL_ExtensionSupported(extension);
+        public static SdlBool ExtensionSupported([NotNull] string extension) => NativeSdl.InternalGlExtensionSupported(extension);
 
         /// <summary>
         ///     Gls the reset attributes
@@ -2615,7 +2419,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void ResetAttributes()
         {
-            NativeSdl.InternalGL_ResetAttributes();
+            NativeSdl.InternalGlResetAttributes();
         }
 
         /// <summary>
@@ -2626,7 +2430,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetAttribute([NotNull] SdlGlAttr attr, out int value) => NativeSdl.InternalGL_GetAttribute(attr, out value);
+        public static int GetAttribute([NotNull] SdlGlAttr attr, out int value) => NativeSdl.InternalGlGetAttribute(attr, out value);
 
         /// <summary>
         ///     Gls the get swap interval
@@ -2634,7 +2438,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetSwapInterval() => NativeSdl.InternalGL_GetSwapInterval();
+        public static int GetSwapInterval() => NativeSdl.InternalGlGetSwapInterval();
 
         /// <summary>
         ///     Gls the make current using the specified window
@@ -2644,7 +2448,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int MakeCurrent([NotNull] IntPtr window, [NotNull] IntPtr context) => NativeSdl.InternalGL_MakeCurrent(window, context);
+        public static int MakeCurrent([NotNull] IntPtr window, [NotNull] IntPtr context) => NativeSdl.InternalGlMakeCurrent(window, context);
 
 
         /// <summary>
@@ -2653,7 +2457,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetCurrentWindow() => NativeSdl.InternalGL_GetCurrentWindow();
+        public static IntPtr GetCurrentWindow() => NativeSdl.InternalGlGetCurrentWindow();
 
         /// <summary>
         ///     Gls the get current context
@@ -2673,7 +2477,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void GetDrawableSize([NotNull] IntPtr window, out int w, out int h)
         {
-            NativeSdl.InternalGL_GetDrawableSize(window, out w, out h);
+            NativeSdl.InternalGlGetDrawableSize(window, out w, out h);
         }
 
         /// <summary>
@@ -2684,7 +2488,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetAttributeByInt([NotNull] SdlGlAttr attr, [NotNull] int value) => NativeSdl.InternalGL_SetAttribute(attr, value);
+        public static int SetAttributeByInt([NotNull] SdlGlAttr attr, [NotNull] int value) => NativeSdl.InternalGlSetAttribute(attr, value);
 
         /// <summary>
         ///     Sdl the gl set attribute using the specified attr
@@ -2698,7 +2502,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             Validator.ValidateInput(attr);
             Validator.ValidateInput(profile);
-            int result = NativeSdl.InternalGL_SetAttribute(attr, (int) profile);
+            int result = NativeSdl.InternalGlSetAttribute(attr, (int) profile);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -2713,7 +2517,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static int SetSwapInterval([NotNull] int interval)
         {
             Validator.ValidateInput(interval);
-            int result = NativeSdl.InternalGL_SetSwapInterval(interval);
+            int result = NativeSdl.InternalGlSetSwapInterval(interval);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -2727,7 +2531,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static void SwapWindow([NotNull] IntPtr window)
         {
             Validator.ValidateInput(window);
-            NativeSdl.InternalGL_SwapWindow(window);
+            NativeSdl.InternalGlSwapWindow(window);
         }
 
         /// <summary>
@@ -2740,7 +2544,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static int UnbindTexture([NotNull] IntPtr texture)
         {
             Validator.ValidateInput(texture);
-            int result = NativeSdl.InternalGL_UnbindTexture(texture);
+            int result = NativeSdl.InternalGlUnbindTexture(texture);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -3166,32 +2970,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-
-        /// <summary>
-        ///     Sdl the video init using the specified driver name
-        /// </summary>
-        /// <param name="driverName">The driver name</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int VideoInit([NotNull] string driverName)
-        {
-            Validator.ValidateInput(driverName);
-            int result = NativeSdl.InternalVideoInit(driverName);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Video the quit
-        /// </summary>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void VideoQuit()
-        {
-            NativeSdl.InternalVideoQuit();
-        }
-
+        
         /// <summary>
         ///     Sets the window hit test using the specified window
         /// </summary>
@@ -7329,7 +7108,13 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr SensorOpen([NotNull] int deviceIndex) => NativeSdl.InternalSensorOpen(deviceIndex);
+        public static IntPtr SensorOpen([NotNull] int deviceIndex)
+        {
+            Validator.ValidateInput(deviceIndex);
+            var result = NativeSdl.InternalSensorOpen(deviceIndex);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Sensors the from instance id using the specified instance id
@@ -7851,23 +7636,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-
         
-        /// <summary>
-        ///     Removes the timer using the specified id
-        /// </summary>
-        /// <param name="id">The id</param>
-        /// <returns>The sdl bool</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool RemoveTimer([NotNull] int id)
-        {
-            Validator.ValidateInput(id);
-            SdlBool result = NativeSdl.InternalRemoveTimer(id);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
         /// <summary>
         ///     Sets the windows message hook using the specified callback
         /// </summary>
