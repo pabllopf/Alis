@@ -69,7 +69,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, initResult);
             
             // Arrange
-            const int expectedVersion = Sdl.MajorVersion * 1000 + Sdl.MinorVersion * 100 + Sdl.PatchLevel;
+            const int expectedVersion = 2 * 1000 + 0 * 100 + 18;
 
             // Act
             int actualVersion = Sdl.GetGlCompiledVersion();
@@ -589,6 +589,140 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Here you need to assert that the Audio Device was unlocked. This will depend on your implementation.
             
             Sdl.Quit();
+        }
+        
+        /// <summary>
+        /// Tests that test fourcc
+        /// </summary>
+        [Fact]
+        public void TestFourcc()
+        {
+            // Arrange
+            byte a = 0x01;
+            byte b = 0x02;
+            byte c = 0x03;
+            byte d = 0x04;
+
+            uint expected = 0x04030201;
+
+            // Act
+            uint result = Sdl.Fourcc(a, b, c, d);
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
+        
+        /// <summary>
+        /// Tests that test get version
+        /// </summary>
+        [Fact]
+        public void TestGetVersion()
+        {
+            // Act
+            SdlVersion result = Sdl.GetVersion();
+
+            // Assert
+            Assert.Equal(2, result.major);
+            Assert.Equal(0, result.minor);
+            Assert.Equal(18, result.patch);
+        }
+        
+        /// <summary>
+        /// Tests that test get performance frequency
+        /// </summary>
+        [Fact]
+        public void TestGetPerformanceFrequency()
+        {
+            // Act
+            ulong result = Sdl.GetPerformanceFrequency();
+
+            // Assert
+            Assert.True(result > 0);
+        }
+        
+        /// <summary>
+        /// Tests that test get performance counter
+        /// </summary>
+        [Fact]
+        public void TestGetPerformanceCounter()
+        {
+            // Act
+            ulong result = Sdl.GetPerformanceCounter();
+
+            // Assert
+            Assert.True(result > 0);
+        }
+        
+        /// <summary>
+        /// Tests that test sensor open
+        /// </summary>
+        [Fact]
+        public void TestSensorOpen()
+        {
+            // Arrange
+            const int deviceIndex = 0; 
+            int numSensors = Sdl.NumSensors();
+            if (numSensors >= 1)
+            {
+                // Act
+                IntPtr result = Sdl.SensorOpen(deviceIndex);
+
+                // Assert
+                Assert.NotEqual(IntPtr.Zero, result);
+            }
+        }
+        
+        /// <summary>
+        /// Tests that test clear hints
+        /// </summary>
+        [Fact]
+        public void TestClearHints()
+        {
+            // Act
+            Exception exception = Record.Exception(() => Sdl.ClearHints());
+
+            // Assert
+            Assert.Null(exception);
+        }
+        
+        
+        /// <summary>
+        /// Tests that test set hint
+        /// </summary>
+        [Fact]
+        public void TestSetHint()
+        {
+            // Arrange
+            const string name = "testName"; 
+            const string value = "testValue"; 
+
+            // Act
+            SdlBool result = Sdl.SetHint(name, value);
+
+            // Assert
+            Assert.Equal(SdlBool.SdlTrue, result);
+        }
+        
+        /// <summary>
+        /// Tests that test get hint
+        /// </summary>
+        [Fact]
+        public void TestGetHint()
+        {
+            // Arrange
+            const string name = "testName"; 
+            const string value = "testValue"; 
+            
+            // Act
+            SdlBool setResult = Sdl.SetHint(name, value);
+            Assert.Equal(SdlBool.SdlTrue, setResult);
+
+            // Act
+            string result = Sdl.GetHint(name);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(value, result);
         }
     }
 }

@@ -82,24 +82,5 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The data
         /// </summary>
         public readonly float float5;
-
-        /// <summary>
-        ///     Gets or sets the value of the text
-        /// </summary>
-        public float[] Data
-        {
-            get
-            {
-                return new[]
-                {
-                    float0,
-                    float1,
-                    float2,
-                    float3,
-                    float4,
-                    float5
-                };
-            }
-        }
     }
 }

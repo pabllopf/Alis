@@ -68,19 +68,5 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The length
         /// </summary>
         public readonly int length;
-
-        /// <summary>
-        ///     Gets or sets the value of the text
-        /// </summary>
-        public byte[] Text
-        {
-            get
-            {
-                byte[] textBytes = new byte[Sdl.TextEditingEventTextSize];
-                Marshal.Copy(textPtr, textBytes, 0, Sdl.TextEditingEventTextSize);
-                return textBytes;
-            }
-            set => Marshal.Copy(value, 0, textPtr, Sdl.TextEditingEventTextSize);
-        }
     }
 }
