@@ -2374,16 +2374,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             NativeSdl.InternalGlDeleteContext(context);
         }
-
-        /// <summary>
-        ///     Sdl the gl load library using the specified path
-        /// </summary>
-        /// <param name="path">The path</param>
-        /// <returns>The result</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int LoadLibrary([NotNull] string path) => NativeSdl.InternalGlLoadLibrary(path);
-
+        
         /// <summary>
         ///     Sdl the gl get proc address using the specified proc
         /// </summary>
@@ -2392,16 +2383,6 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetProcAddress([NotNull] string proc) => NativeSdl.InternalGlGetProcAddress(proc);
-
-        /// <summary>
-        ///     Gls the unload library
-        /// </summary>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void UnloadLibrary()
-        {
-            NativeSdl.InternalGlUnloadLibrary();
-        }
 
         /// <summary>
         ///     Sdl the gl extension supported using the specified extension
@@ -4654,30 +4635,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             NativeSdl.InternalCalculateGammaRamp(gamma, ramp);
         }
-
-
-        /// <summary>
-        ///     Frees the format using the specified format
-        /// </summary>
-        /// <param name="format">The format</param>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void FreeFormat([NotNull] IntPtr format)
-        {
-            NativeSdl.InternalFreeFormat(format);
-        }
-
-        /// <summary>
-        ///     Frees the palette using the specified palette
-        /// </summary>
-        /// <param name="palette">The palette</param>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void FreePalette([NotNull] IntPtr palette)
-        {
-            NativeSdl.InternalFreePalette(palette);
-        }
-
+        
         /// <summary>
         ///     Sdl the get pixel format name using the specified format
         /// </summary>
@@ -5074,17 +5032,15 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int FillRects([NotNull] IntPtr dst, [In] RectangleI[] rects, [NotNull] int count, [NotNull] uint color) => NativeSdl.InternalFillRects(dst, rects, count, color);
-
-        /// <summary>
-        ///     Frees the surface using the specified surface
-        /// </summary>
-        /// <param name="surface">The surface</param>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void FreeSurface([NotNull] IntPtr surface)
+        public static int FillRects([NotNull] IntPtr dst, [In] RectangleI[] rects, [NotNull] int count, [NotNull] uint color)
         {
-            NativeSdl.InternalFreeSurface(surface);
+            Validator.ValidateInput(dst);
+            Validator.ValidateInput(rects);
+            Validator.ValidateInput(count);
+            Validator.ValidateInput(color);
+            int result = NativeSdl.InternalFillRects(dst, rects, count, color);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -5096,7 +5052,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void GetClipRect([NotNull] IntPtr surface, out RectangleI rect)
         {
+            Validator.ValidateInput(surface);
             NativeSdl.InternalGetClipRect(surface, out rect);
+            Validator.ValidateOutput(rect);
         }
 
         /// <summary>
@@ -7055,7 +7013,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int NumHaptics() => NativeSdl.InternalNumHaptics();
+        public static int NumHaptics()
+        {
+            int result = NativeSdl.InternalNumHaptics();
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Nums the sensors

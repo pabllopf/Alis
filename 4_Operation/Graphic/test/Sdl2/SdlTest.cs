@@ -597,6 +597,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestFourcc()
         {
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            
             // Arrange
             byte a = 0x01;
             byte b = 0x02;
@@ -618,6 +621,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGetVersion()
         {
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            
             // Act
             SdlVersion result = Sdl.GetVersion();
 
@@ -633,6 +639,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGetPerformanceFrequency()
         {
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            
             // Act
             ulong result = Sdl.GetPerformanceFrequency();
 
@@ -646,6 +655,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGetPerformanceCounter()
         {
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            
             // Act
             ulong result = Sdl.GetPerformanceCounter();
 
@@ -659,6 +671,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestSensorOpen()
         {
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            
             // Arrange
             const int deviceIndex = 0; 
             int numSensors = Sdl.NumSensors();
@@ -678,6 +693,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestClearHints()
         {
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            
             // Act
             Exception exception = Record.Exception(() => Sdl.ClearHints());
 
@@ -692,6 +710,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestSetHint()
         {
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            
             // Arrange
             const string name = "testName"; 
             const string value = "testValue"; 
@@ -709,6 +730,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGetHint()
         {
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            
             // Arrange
             const string name = "testName"; 
             const string value = "testValue"; 
@@ -723,6 +747,24 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Assert
             Assert.NotNull(result);
             Assert.Equal(value, result);
+        }
+        
+        [Fact]
+        public void TestNumHaptics()
+        {
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            
+            // Arrange
+            // No arrangement needed as we are testing a static method without inputs
+
+            // Act
+            int result = Sdl.NumHaptics();
+
+            // Assert
+            Assert.IsType<int>(result);
+            Assert.True(result >= 0);
+            // Add more assertions as needed based on your expected results
         }
     }
 }

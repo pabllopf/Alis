@@ -2413,15 +2413,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalGlGetProcAddress([NotNull] string proc);
-
-        /// <summary>
-        ///     Sdl the gl unload library
-        /// </summary>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GL_UnloadLibrary", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalGlUnloadLibrary();
-
+        
         /// <summary>
         ///     Internals the sdl gl extension supported using the specified extension
         /// </summary>
@@ -2540,25 +2532,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalCalculateGammaRamp(float gamma, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] ramp);
-
-        /// <summary>
-        ///     Sdl the free format using the specified format
-        /// </summary>
-        /// <param name="format">The format</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_FreeFormat", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalFreeFormat([NotNull] IntPtr format);
-
-        /// <summary>
-        ///     Sdl the free palette using the specified palette
-        /// </summary>
-        /// <param name="palette">The palette</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_FreePalette", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalFreePalette([NotNull] IntPtr palette);
-
+        
         /// <summary>
         ///     Internals the sdl get pixel format name using the specified format
         /// </summary>
@@ -2878,16 +2852,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalFillRects([NotNull] IntPtr dst, [In] RectangleI[] rects, [NotNull] int count, [NotNull] uint color);
-
-        /// <summary>
-        ///     Sdl the free surface using the specified surface
-        /// </summary>
-        /// <param name="surface">The surface</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_FreeSurface", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalFreeSurface([NotNull] IntPtr surface);
-
+        
         /// <summary>
         ///     Sdl the get clip rect using the specified surface
         /// </summary>
