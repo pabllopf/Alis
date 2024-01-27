@@ -2313,20 +2313,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalGetPixelFormatName([NotNull] uint format);
-
-        /// <summary>
-        ///     Sdl the get rgb using the specified pixel
-        /// </summary>
-        /// <param name="pixel">The pixel</param>
-        /// <param name="format">The format</param>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetRGB", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalGetRGB([NotNull] uint pixel, [NotNull] IntPtr format, out byte r, out byte g, out byte b);
-
+        
         /// <summary>
         ///     Sdl the get rgba using the specified pixel
         /// </summary>
