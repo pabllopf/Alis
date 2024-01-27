@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: SdlBool.cs
+//  File: RwOps.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,18 +30,38 @@
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl bool enum
+    /// The rw ops enum
     /// </summary>
-    public enum SdlBool
+    public enum RwOps : uint
     {
         /// <summary>
-        ///     The sdl false sdl bool
+        ///     The sdl rw ops unknown
         /// </summary>
-        False = 0,
+        RwOpsUnknown = 0,
 
         /// <summary>
-        ///     The sdl true sdl bool
+        ///     The sdl rw ops win file
         /// </summary>
-        True = 1
+        RwOpsWinFile = 1,
+
+        /// <summary>
+        ///     The sdl rw ops std file
+        /// </summary>
+        RwOpsStdFile = 2,
+
+        /// <summary>
+        ///     The sdl rw ops jni file
+        /// </summary>
+        RwOpsJniFile = 3,
+
+        /// <summary>
+        ///     The sdl rw ops memory
+        /// </summary>
+        RwOpsMemory = 4,
+
+        /// <summary>
+        ///     The sdl rw ops memory ro
+        /// </summary>
+        RwOpsMemoryRo = 5,
     }
 }

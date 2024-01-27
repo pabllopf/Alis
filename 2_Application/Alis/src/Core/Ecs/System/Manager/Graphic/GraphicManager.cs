@@ -335,27 +335,27 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
             {
-                Sdl.SetHint(Sdl.HintRenderDriver, "direct3d");
+                Sdl.SetHint(SdlHint.HintRenderDriver, "direct3d");
             }
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.OSX)
             {
-                Sdl.SetHint(Sdl.HintRenderDriver, "opengl");
+                Sdl.SetHint(SdlHint.HintRenderDriver, "opengl");
             }
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Linux)
             {
-                Sdl.SetHint(Sdl.HintRenderDriver, "opengl");
+                Sdl.SetHint(SdlHint.HintRenderDriver, "opengl");
             }
 
 
             // Create the window
             // create the window which should be able to have a valid OpenGL context and is resizable
-            SdlWindowFlags flags = SdlWindowFlags.SdlWindowShown;
+            SdlWindowFlags flags = SdlWindowFlags.WindowShown;
 
             if (VideoGame.Instance.Settings.Graphic.Window.IsWindowResizable)
             {
-                flags |= SdlWindowFlags.SdlWindowResizable;
+                flags |= SdlWindowFlags.WindowResizable;
             }
 
             // Creates a new SDL window at the center of the screen with the given width and height.
