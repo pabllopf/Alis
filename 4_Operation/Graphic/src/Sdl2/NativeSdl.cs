@@ -103,7 +103,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetDeviceName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalSensorGetDeviceName([NotNull] int deviceIndex);
+        internal static extern IntPtr InternalSensorGetDeviceName([NotNull] int deviceIndex);
 
         /// <summary>
         ///     Sdl the sensor get device type using the specified device index
@@ -163,7 +163,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalSensorGetName([NotNull] IntPtr sensor);
+        internal static extern IntPtr InternalSensorGetName([NotNull] IntPtr sensor);
 
         /// <summary>
         ///     Sdl the sensor get type using the specified sensor
@@ -772,7 +772,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetScancodeName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGetScancodeName(SdlScancode scancode);
+        internal static extern IntPtr InternalGetScancodeName(SdlScancode scancode);
 
         /// <summary>
         ///     Internals the sdl get scancode from name using the specified name
@@ -792,7 +792,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGetKeyName(SdlKeycode key);
+        internal static extern IntPtr InternalGetKeyName(SdlKeycode key);
 
         /// <summary>
         ///     Internals the sdl get key from name using the specified name
@@ -1251,7 +1251,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalJoystickName([NotNull] IntPtr joystick);
+        internal static extern IntPtr InternalJoystickName([NotNull] IntPtr joystick);
 
         /// <summary>
         ///     Internals the sdl joystick name for index using the specified device index
@@ -1261,7 +1261,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickNameForIndex", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalJoystickNameForIndex([NotNull] int deviceIndex);
+        internal static extern IntPtr InternalJoystickNameForIndex([NotNull] int deviceIndex);
 
         /// <summary>
         ///     Sdl the joystick num axes using the specified joystick
@@ -1459,7 +1459,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetSerial", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalJoystickGetSerial([NotNull] IntPtr joystick);
+        internal static extern IntPtr InternalJoystickGetSerial([NotNull] IntPtr joystick);
 
         /// <summary>
         ///     Sdl the joystick get type using the specified joystick
@@ -2132,7 +2132,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowTitle", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGetWindowTitle([NotNull] IntPtr window);
+        internal static extern IntPtr InternalGetWindowTitle([NotNull] IntPtr window);
 
         /// <summary>
         ///     Sdl the gl bind texture using the specified texture
@@ -2312,7 +2312,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetPixelFormatName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGetPixelFormatName([NotNull] uint format);
+        internal static extern IntPtr InternalGetPixelFormatName([NotNull] uint format);
 
         /// <summary>
         ///     Sdl the get rgb using the specified pixel
@@ -2926,7 +2926,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetClipboardText", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGetClipboardText();
+        internal static extern IntPtr InternalGetClipboardText();
 
         /// <summary>
         ///     Sdl the joystick set virtual hat using the specified joystick
@@ -3022,7 +3022,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerMappingForIndex", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGameControllerMappingForIndex([NotNull] int mappingIndex);
+        internal static extern IntPtr InternalGameControllerMappingForIndex([NotNull] int mappingIndex);
 
         /// <summary>
         ///     Internals the sdl game controller add mappings from rw using the specified rw
@@ -3043,7 +3043,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerMappingForGUID", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGameControllerMappingForGUID(Guid guid);
+        internal static extern IntPtr InternalGameControllerMappingForGUID(Guid guid);
 
         /// <summary>
         ///     Internals the sdl game controller mapping using the specified game controller
@@ -3053,7 +3053,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerMapping", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGameControllerMapping([NotNull] IntPtr gameController);
+        internal static extern IntPtr InternalGameControllerMapping([NotNull] IntPtr gameController);
 
         /// <summary>
         ///     Sdl the is game controller using the specified joystick index
@@ -3073,7 +3073,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerNameForIndex", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGameControllerNameForIndex([NotNull] int joystickIndex);
+        internal static extern IntPtr InternalGameControllerNameForIndex([NotNull] int joystickIndex);
 
         /// <summary>
         ///     Internals the sdl game controller mapping for device index using the specified joystick index
@@ -3083,7 +3083,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerMappingForDeviceIndex", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGameControllerMappingForDeviceIndex([NotNull] int joystickIndex);
+        internal static extern IntPtr InternalGameControllerMappingForDeviceIndex([NotNull] int joystickIndex);
 
         /// <summary>
         ///     Sdl the game controller open using the specified joystick index
@@ -3103,7 +3103,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGameControllerName([NotNull] IntPtr gameController);
+        internal static extern IntPtr InternalGameControllerName([NotNull] IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller get vendor using the specified game controller
@@ -3143,7 +3143,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetSerial", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGameControllerGetSerial([NotNull] IntPtr gameController);
+        internal static extern IntPtr InternalGameControllerGetSerial([NotNull] IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller get attached using the specified game controller
@@ -3201,7 +3201,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetStringForAxis", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGameControllerGetStringForAxis(SdlGameControllerAxis axis);
+        internal static extern IntPtr InternalGameControllerGetStringForAxis(SdlGameControllerAxis axis);
 
         /// <summary>
         ///     Internals the sdl game controller get bind for axis using the specified game controller
@@ -3243,7 +3243,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetStringForButton", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGameControllerGetStringForButton(SdlGameControllerButton button);
+        internal static extern IntPtr InternalGameControllerGetStringForButton(SdlGameControllerButton button);
 
         /// <summary>
         ///     Internals the sdl game controller get bind for button using the specified game controller
