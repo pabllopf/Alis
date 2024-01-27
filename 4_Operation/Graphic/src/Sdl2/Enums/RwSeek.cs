@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: RwOps.cs
+//  File: RwSeek.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,7 +30,7 @@
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    /// The rw seek enum
+    ///     The rw seek enum
     /// </summary>
     public enum RwSeek
     {

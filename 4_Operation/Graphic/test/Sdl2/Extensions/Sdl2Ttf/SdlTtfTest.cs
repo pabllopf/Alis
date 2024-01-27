@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlTtfTest.cs
+//  File: SdlTtfTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -38,22 +38,22 @@ using Xunit;
 namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 {
     /// <summary>
-    /// The sdl ttf test class
+    ///     The sdl ttf test class
     /// </summary>
     public class SdlTtfTest
     {
         /// <summary>
-        /// Tests that byte swapped unicode test
+        ///     Tests that byte swapped unicode test
         /// </summary>
         [Fact]
         public void ByteSwappedUnicodeTest()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Act & Assert
             try
             {
@@ -63,7 +63,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            }finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -71,17 +72,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that open font index no exception thrown
+        ///     Tests that open font index no exception thrown
         /// </summary>
         [Fact]
         public void OpenFontIndex_NoExceptionThrown()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -92,22 +93,23 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             {
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 Assert.NotEqual(IntPtr.Zero, font);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
             }
         }
 
-        
+
         /// <summary>
-        /// Tests that set font size test
+        ///     Tests that set font size test
         /// </summary>
         /// <exception cref="Exception">Error setting font size</exception>
         [Fact]
@@ -115,11 +117,11 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const int newPtSize = 16;
@@ -136,7 +138,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -144,18 +147,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that get font style test
+        ///     Tests that get font style test
         /// </summary>
         [Fact]
         public void GetFontStyle_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
@@ -166,13 +169,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.GetFontStyle(font);
                 Assert.Equal(0, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -180,18 +184,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that set font style test
+        ///     Tests that set font style test
         /// </summary>
         [Fact]
         public void SetFontStyle_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
@@ -203,13 +207,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 SdlTtf.SetFontStyle(font, SdlTtf.TtfStyleItalic);
                 int result = SdlTtf.GetFontStyle(font);
                 Assert.Equal(2, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -217,18 +222,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that get font outline test
+        ///     Tests that get font outline test
         /// </summary>
         [Fact]
         public void GetFontOutline_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
@@ -239,13 +244,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.GetFontOutline(font);
                 Assert.Equal(0, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -253,18 +259,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that set font outline test
+        ///     Tests that set font outline test
         /// </summary>
         [Fact]
         public void SetFontOutline_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
@@ -276,13 +282,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 SdlTtf.SetFontOutline(font, 1);
                 int result = SdlTtf.GetFontOutline(font);
                 Assert.Equal(1, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -290,18 +297,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that get font hinting test
+        ///     Tests that get font hinting test
         /// </summary>
         [Fact]
         public void GetFontHinting_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
@@ -312,13 +319,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.GetFontHinting(font);
                 Assert.Equal(0, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -326,18 +334,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that set font hinting test
+        ///     Tests that set font hinting test
         /// </summary>
         [Fact]
         public void SetFontHinting_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
@@ -350,12 +358,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 int result = SdlTtf.GetFontHinting(font);
                 Assert.Equal(0, result);
                 SdlTtf.CloseFont(font);
-                
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -363,18 +371,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that font height test
+        ///     Tests that font height test
         /// </summary>
         [Fact]
         public void FontHeight_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -386,13 +394,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.FontHeight(font);
                 Assert.Equal(15, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -400,18 +409,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that font ascent test
+        ///     Tests that font ascent test
         /// </summary>
         [Fact]
         public void FontAscent_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -423,13 +432,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.FontAscent(font);
                 Assert.Equal(11, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -437,18 +447,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that font line skip test
+        ///     Tests that font line skip test
         /// </summary>
         [Fact]
         public void FontLineSkip_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -460,13 +470,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.FontLineSkip(font);
                 Assert.Equal(15, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -474,18 +485,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that get font kerning test
+        ///     Tests that get font kerning test
         /// </summary>
         [Fact]
         public void GetFontKerning_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -497,13 +508,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 long result = SdlTtf.GetFontKerning(font);
                 Assert.Equal(1, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -511,17 +523,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that set font kerning test
+        ///     Tests that set font kerning test
         /// </summary>
         [Fact]
         public void SetFontKerning_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -535,13 +547,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 SdlTtf.SetFontKerning(font, kerning);
                 long result = SdlTtf.GetFontKerning(font);
                 Assert.Equal(0, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -549,17 +562,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that font faces test
+        ///     Tests that font faces test
         /// </summary>
         [Fact]
         public void FontFaces_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -571,13 +584,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr result = SdlTtf.FontFaces(font);
                 Assert.NotEqual(IntPtr.Zero, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -585,18 +599,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that font descent test
+        ///     Tests that font descent test
         /// </summary>
         [Fact]
         public void FontDescent_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -608,13 +622,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.FontDescent(font);
                 Assert.Equal(-3, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -622,18 +637,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that font face is fixed width test
+        ///     Tests that font face is fixed width test
         /// </summary>
         [Fact]
         public void FontFaceIsFixedWidth_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -645,13 +660,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.FontFaceIsFixedWidth(font);
                 Assert.Equal(0, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -659,18 +675,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that font face style name test
+        ///     Tests that font face style name test
         /// </summary>
         [Fact]
         public void FontFaceStyleName_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -682,13 +698,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 string result = SdlTtf.FontFaceStyleName(font);
                 Assert.Equal("Regular", result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -696,18 +713,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that glyph is provided test
+        ///     Tests that glyph is provided test
         /// </summary>
         [Fact]
         public void GlyphIsProvided_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -720,13 +737,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.GlyphIsProvided(font, ch);
                 Assert.Equal(35, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -734,18 +752,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that glyph is provided 32 test
+        ///     Tests that glyph is provided 32 test
         /// </summary>
         [Fact]
         public void GlyphIsProvided32_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -758,13 +776,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.GlyphIsProvided32(font, ch);
                 Assert.Equal(35, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -772,18 +791,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that glyph metrics test
+        ///     Tests that glyph metrics test
         /// </summary>
         [Fact]
         public void GlyphMetrics_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -801,13 +820,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 Assert.Equal(-1, minY);
                 Assert.Equal(9, maxY);
                 Assert.Equal(8, advance);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -815,18 +835,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that glyph metrics 32 test
+        ///     Tests that glyph metrics 32 test
         /// </summary>
         [Fact]
         public void GlyphMetrics32_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -844,13 +864,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 Assert.Equal(-1, minY);
                 Assert.Equal(9, maxY);
                 Assert.Equal(8, advance);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -858,18 +879,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that size text test
+        ///     Tests that size text test
         /// </summary>
         [Fact]
         public void SizeText_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -884,13 +905,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 Assert.Equal(0, result);
                 Assert.Equal(85, w);
                 Assert.Equal(15, h);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -898,18 +920,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that size utf 8 test
+        ///     Tests that size utf 8 test
         /// </summary>
         [Fact]
         public void SizeUtf8_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -924,13 +946,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 Assert.Equal(0, result);
                 Assert.NotEqual(0, w);
                 Assert.NotEqual(0, h);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -938,17 +961,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that size unicode test
+        ///     Tests that size unicode test
         /// </summary>
         [Fact]
         public void SizeUnicode_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -963,13 +986,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 Assert.Equal(0, result);
                 Assert.NotEqual(0, w);
                 Assert.NotEqual(0, h);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -977,18 +1001,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that measure text test
+        ///     Tests that measure text test
         /// </summary>
         [Fact]
         public void MeasureText_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -1005,32 +1029,33 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 Assert.Equal(0, result);
                 Assert.Equal(0, extent);
                 Assert.Equal(0, count);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
-            } 
+            }
         }
 
         /// <summary>
-        /// Tests that measure utf 8 test
+        ///     Tests that measure utf 8 test
         /// </summary>
         [Fact]
         public void MeasureUtf8_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -1047,13 +1072,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 Assert.Equal(0, result);
                 Assert.Equal(0, extent);
                 Assert.Equal(0, count);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -1061,17 +1087,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that measure unicode test
+        ///     Tests that measure unicode test
         /// </summary>
         [Fact]
         public void MeasureUnicode_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -1088,33 +1114,34 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 Assert.Equal(0, result);
                 Assert.Equal(0, extent);
                 Assert.Equal(0, count);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
             }
         }
 
-        
+
         /// <summary>
-        /// Tests that render text solid test
+        ///     Tests that render text solid test
         /// </summary>
         [Fact]
         public void RenderTextSolid_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -1128,13 +1155,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 
                 IntPtr result = SdlTtf.RenderTextSolid(font, text, new SdlColor(255, 255, 255, 255));
                 Assert.NotEqual(IntPtr.Zero, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -1142,18 +1170,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that render utf 8 solid test
+        ///     Tests that render utf 8 solid test
         /// </summary>
         [Fact]
         public void RenderUtf8Solid_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -1167,13 +1195,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 
                 IntPtr result = SdlTtf.RenderUtf8Solid(font, text, new SdlColor(255, 255, 255, 255));
                 Assert.NotEqual(IntPtr.Zero, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -1181,18 +1210,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that render unicode solid test
+        ///     Tests that render unicode solid test
         /// </summary>
         [Fact]
         public void RenderUnicodeSolid_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -1206,13 +1235,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 
                 IntPtr result = SdlTtf.RenderUnicodeSolid(font, text, new SdlColor(255, 255, 255, 255));
                 Assert.NotEqual(IntPtr.Zero, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -1220,17 +1250,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that render text solid wrapped test
+        ///     Tests that render text solid wrapped test
         /// </summary>
         [Fact]
         public void RenderTextSolidWrapped_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             const string text = "Hello World";
             const int wrapLength = 10;
@@ -1245,13 +1275,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 
                 IntPtr result = SdlTtf.RenderTextSolidWrapped(font, text, new SdlColor(255, 255, 255, 255), wrapLength);
                 Assert.NotEqual(IntPtr.Zero, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }
             finally
             {
                 SdlTtf.Quit();
@@ -1260,14 +1290,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that ttf render utf 8 solid wrapped test
+        ///     Tests that ttf render utf 8 solid wrapped test
         /// </summary>
         [Fact]
         public void RenderUtf8SolidWrapped_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
 
@@ -1285,13 +1315,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 
                 IntPtr result = SdlTtf.RenderUtf8SolidWrapped(font, text, new SdlColor(255, 255, 255, 255), wrapLength);
                 Assert.NotEqual(IntPtr.Zero, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -1299,17 +1330,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that render unicode solid wrapped test
+        ///     Tests that render unicode solid wrapped test
         /// </summary>
         [Fact]
         public void RenderUnicodeSolidWrapped_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             const string text = "Hello World";
             const int wrapLength = 10;
@@ -1324,13 +1355,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 
                 IntPtr result = SdlTtf.RenderUnicodeSolidWrapped(font, text, new SdlColor(255, 255, 255, 255), wrapLength);
                 Assert.NotEqual(IntPtr.Zero, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -1338,17 +1370,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that render glyph solid test
+        ///     Tests that render glyph solid test
         /// </summary>
         [Fact]
         public void RenderGlyphSolid_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             const int ch = 0x0041;
             string file = AssetManager.Find("FontSample.otf");
@@ -1362,13 +1394,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 
                 IntPtr result = SdlTtf.RenderGlyphSolid(font, ch, new SdlColor(255, 255, 255, 255));
                 Assert.NotEqual(IntPtr.Zero, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -1376,18 +1409,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that render glyph 32 solid test
+        ///     Tests that render glyph 32 solid test
         /// </summary>
         [Fact]
         public void RenderGlyph32Solid_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
-            
+
+
             // Arrange
             const int ch = 0x0041;
             string file = AssetManager.Find("FontSample.otf");
@@ -1401,160 +1434,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 
                 IntPtr result = SdlTtf.RenderGlyph32Solid(font, ch, new SdlColor(255, 255, 255, 255));
                 Assert.NotEqual(IntPtr.Zero, result);
-                
-                SdlTtf.CloseFont(font);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail($"No expected exception, but was thrown: {ex}");
-            }  finally
-            {
-                SdlTtf.Quit();
-                Sdl.Quit();
-            }
-        }
 
-        /// <summary>
-        /// Tests that render text shaded test
-        /// </summary>
-        [Fact]
-        public void RenderTextShaded_Test()
-        {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
-            Assert.Equal(0, sdlInit);
-            
-            int sdlTtf = SdlTtf.Init();
-            Assert.Equal(0, sdlTtf);
-            
-            const string text = "Hello World";
-            string file = AssetManager.Find("FontSample.otf");
-            const int ptSize = 12;
-            const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255, 255);
-            SdlColor bg = new SdlColor(0, 0, 0, 255);
-
-            // Act & Assert
-            try
-            {
-                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
-                IntPtr resultPtr = SdlTtf.RenderTextShaded(font, text, fg, bg);
-                Assert.NotEqual(IntPtr.Zero, resultPtr);
-                
-                SdlTtf.CloseFont(font);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail($"No expected exception, but was thrown: {ex}");
-            }  finally
-            {
-                SdlTtf.Quit();
-                Sdl.Quit();
-            }
-        }
-
-        /// <summary>
-        /// Tests that render utf 8 shaded test
-        /// </summary>
-        [Fact]
-        public void RenderUtf8Shaded_Test()
-        {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
-            Assert.Equal(0, sdlInit);
-            
-            int sdlTtf = SdlTtf.Init();
-            Assert.Equal(0, sdlTtf);
-            
-            const string text = "Hello World";
-            string file = AssetManager.Find("FontSample.otf");
-            const int ptSize = 12;
-            const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255, 255);
-            SdlColor bg = new SdlColor(0, 0, 0, 255);
-
-            // Act & Assert
-            try
-            {
-                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
-                IntPtr resultPtr = SdlTtf.RenderUtf8Shaded(font, text, fg, bg);
-                Assert.NotEqual(IntPtr.Zero, resultPtr);
-                
-                SdlTtf.CloseFont(font);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail($"No expected exception, but was thrown: {ex}");
-            }  finally
-            {
-                SdlTtf.Quit();
-                Sdl.Quit();
-            }
-        }
-
-        /// <summary>
-        /// Tests that render unicode shaded test
-        /// </summary>
-        [Fact]
-        public void RenderUnicodeShaded_Test()
-        {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
-            Assert.Equal(0, sdlInit);
-            
-            int sdlTtf = SdlTtf.Init();
-            Assert.Equal(0, sdlTtf);
-            
-            const string text = "Hello World";
-            string file = AssetManager.Find("FontSample.otf");
-            const int ptSize = 12;
-            const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255, 255);
-            SdlColor bg = new SdlColor(0, 0, 0, 255);
-
-            // Act & Assert
-            try
-            {
-                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
-                IntPtr resultPtr = SdlTtf.RenderUnicodeShaded(font, text, fg, bg);
-                Assert.NotEqual(IntPtr.Zero, resultPtr);
-                
-                SdlTtf.CloseFont(font);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail($"No expected exception, but was thrown: {ex}");
-            }  finally
-            {
-                SdlTtf.Quit();
-                Sdl.Quit();
-            }
-        }
-
-        /// <summary>
-        /// Tests that render text shaded wrapped test
-        /// </summary>
-        [Fact]
-        public void RenderTextShadedWrapped_Test()
-        {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
-            Assert.Equal(0, sdlInit);
-            
-            int sdlTtf = SdlTtf.Init();
-            Assert.Equal(0, sdlTtf);
-            
-            const string text = "Hello World";
-            const int wrapLength = 10;
-            string file = AssetManager.Find("FontSample.otf");
-            const int ptSize = 12;
-            const long index = 0;
-            SdlColor fg = new SdlColor(255, 255, 255, 255);
-            SdlColor bg = new SdlColor(0, 0, 0, 255);
-
-            // Act & Assert
-            try
-            {
-                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
-                IntPtr resultPtr = SdlTtf.RenderTextShadedWrapped(font, text, fg, bg, wrapLength);
-                Assert.NotEqual(IntPtr.Zero, resultPtr);
-                
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
@@ -1569,17 +1449,174 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that render utf 8 shaded wrapped test
+        ///     Tests that render text shaded test
+        /// </summary>
+        [Fact]
+        public void RenderTextShaded_Test()
+        {
+            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, sdlInit);
+
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+
+            const string text = "Hello World";
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12;
+            const long index = 0;
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
+            SdlColor bg = new SdlColor(0, 0, 0, 255);
+
+            // Act & Assert
+            try
+            {
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                IntPtr resultPtr = SdlTtf.RenderTextShaded(font, text, fg, bg);
+                Assert.NotEqual(IntPtr.Zero, resultPtr);
+
+                SdlTtf.CloseFont(font);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex}");
+            }
+            finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
+        }
+
+        /// <summary>
+        ///     Tests that render utf 8 shaded test
+        /// </summary>
+        [Fact]
+        public void RenderUtf8Shaded_Test()
+        {
+            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, sdlInit);
+
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+
+            const string text = "Hello World";
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12;
+            const long index = 0;
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
+            SdlColor bg = new SdlColor(0, 0, 0, 255);
+
+            // Act & Assert
+            try
+            {
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                IntPtr resultPtr = SdlTtf.RenderUtf8Shaded(font, text, fg, bg);
+                Assert.NotEqual(IntPtr.Zero, resultPtr);
+
+                SdlTtf.CloseFont(font);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex}");
+            }
+            finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
+        }
+
+        /// <summary>
+        ///     Tests that render unicode shaded test
+        /// </summary>
+        [Fact]
+        public void RenderUnicodeShaded_Test()
+        {
+            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, sdlInit);
+
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+
+            const string text = "Hello World";
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12;
+            const long index = 0;
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
+            SdlColor bg = new SdlColor(0, 0, 0, 255);
+
+            // Act & Assert
+            try
+            {
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                IntPtr resultPtr = SdlTtf.RenderUnicodeShaded(font, text, fg, bg);
+                Assert.NotEqual(IntPtr.Zero, resultPtr);
+
+                SdlTtf.CloseFont(font);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex}");
+            }
+            finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
+        }
+
+        /// <summary>
+        ///     Tests that render text shaded wrapped test
+        /// </summary>
+        [Fact]
+        public void RenderTextShadedWrapped_Test()
+        {
+            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, sdlInit);
+
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+
+            const string text = "Hello World";
+            const int wrapLength = 10;
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12;
+            const long index = 0;
+            SdlColor fg = new SdlColor(255, 255, 255, 255);
+            SdlColor bg = new SdlColor(0, 0, 0, 255);
+
+            // Act & Assert
+            try
+            {
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                IntPtr resultPtr = SdlTtf.RenderTextShadedWrapped(font, text, fg, bg, wrapLength);
+                Assert.NotEqual(IntPtr.Zero, resultPtr);
+
+                SdlTtf.CloseFont(font);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex}");
+            }
+            finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
+        }
+
+        /// <summary>
+        ///     Tests that render utf 8 shaded wrapped test
         /// </summary>
         [Fact]
         public void RenderUtf8ShadedWrapped_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             const string text = "Hello World";
             const int wrapLength = 10;
             string file = AssetManager.Find("FontSample.otf");
@@ -1594,13 +1631,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderUtf8ShadedWrapped(font, text, fg, bg, wrapLength);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -1608,17 +1646,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that render unicode shaded wrapped test
+        ///     Tests that render unicode shaded wrapped test
         /// </summary>
         [Fact]
         public void RenderUnicodeShadedWrapped_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             const string text = "Hello World";
             const int wrapLength = 10;
             string file = AssetManager.Find("FontSample.otf");
@@ -1633,13 +1671,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderUnicodeShadedWrapped(font, text, fg, bg, wrapLength);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -1647,17 +1686,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that render glyph shaded test
+        ///     Tests that render glyph shaded test
         /// </summary>
         [Fact]
         public void RenderGlyphShaded_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             const int ch = 0x0041;
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -1671,13 +1710,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderGlyphShaded(font, ch, fg, bg);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -1685,17 +1725,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that render glyph 32 shaded test
+        ///     Tests that render glyph 32 shaded test
         /// </summary>
         [Fact]
         public void RenderGlyph32Shaded_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             const int ch = 0x0041;
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -1709,13 +1749,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderGlyph32Shaded(font, ch, fg, bg);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -1723,17 +1764,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that render text blended test
+        ///     Tests that render text blended test
         /// </summary>
         [Fact]
         public void RenderTextBlended_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -1746,13 +1787,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderTextBlended(font, text, fg);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -1760,17 +1802,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that render unicode blended test
+        ///     Tests that render unicode blended test
         /// </summary>
         [Fact]
         public void RenderUnicodeBlended_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -1784,13 +1826,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderUnicodeBlended(font, text, fg);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -1798,17 +1841,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that render text blended wrapped test
+        ///     Tests that render text blended wrapped test
         /// </summary>
         [Fact]
         public void RenderTextBlendedWrapped_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             const string text = "Hello World";
             const int wrapLength = 10;
@@ -1823,13 +1866,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderTextBlendedWrapped(font, text, fg, wrapLength);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -1837,17 +1881,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that render utf 8 blended wrapped test
+        ///     Tests that render utf 8 blended wrapped test
         /// </summary>
         [Fact]
         public void RenderUtf8BlendedWrapped_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             const string text = "Hello World";
             const int wrapLength = 10;
@@ -1862,13 +1906,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderUtf8BlendedWrapped(font, text, fg, wrapLength);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -1876,17 +1921,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that render unicode blended wrapped test
+        ///     Tests that render unicode blended wrapped test
         /// </summary>
         [Fact]
         public void RenderUnicodeBlendedWrapped_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             const string text = "Hello World";
             const int wrapLength = 10;
@@ -1901,13 +1946,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderUnicodeBlendedWrapped(font, text, fg, wrapLength);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -1915,17 +1961,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that render glyph blended test
+        ///     Tests that render glyph blended test
         /// </summary>
         [Fact]
         public void RenderGlyphBlended_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             const int ch = 0x0041;
             string file = AssetManager.Find("FontSample.otf");
@@ -1939,32 +1985,33 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderGlyphBlended(font, ch, fg);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
             }
         }
 
-        
+
         /// <summary>
-        /// Tests that render glyph 32 blended test
+        ///     Tests that render glyph 32 blended test
         /// </summary>
         [Fact]
         public void RenderGlyph32Blended_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             const int ch = 0x0041;
             string file = AssetManager.Find("FontSample.otf");
@@ -1978,13 +2025,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderGlyph32Blended(font, ch, fg);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -1992,17 +2040,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that set direction test
+        ///     Tests that set direction test
         /// </summary>
         [Fact]
         public void SetDirection_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             const int direction = 1;
 
@@ -2023,19 +2071,19 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             }
         }
 
-        
+
         /// <summary>
-        /// Tests that render utf 8 blended test
+        ///     Tests that render utf 8 blended test
         /// </summary>
         [Fact]
         public void RenderUtf8Blended_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -2049,13 +2097,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderUtf8Blended(font, text, fg);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            }  
+            }
             finally
             {
                 SdlTtf.Quit();
@@ -2064,17 +2112,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that get ttf version test
+        ///     Tests that get ttf version test
         /// </summary>
         [Fact]
         public void GetTtfVersion_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Act & Assert
             try
             {
@@ -2095,17 +2143,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that open font test
+        ///     Tests that open font test
         /// </summary>
         [Fact]
         public void OpenFont_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -2115,13 +2163,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             {
                 IntPtr font = SdlTtf.OpenFont(file, ptSize);
                 Assert.NotEqual(IntPtr.Zero, font);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -2129,17 +2178,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that get font kerning size glyphs 32 test
+        ///     Tests that get font kerning size glyphs 32 test
         /// </summary>
         [Fact]
         public void GetFontKerningSizeGlyphs32_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -2153,13 +2202,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.GetFontKerningSizeGlyphs32(font, previousCh, ch);
                 Assert.Equal(0, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -2167,17 +2217,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that get font kerning size glyphs test
+        ///     Tests that get font kerning size glyphs test
         /// </summary>
         [Fact]
         public void GetFontKerningSizeGlyphs_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -2191,13 +2241,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.GetFontKerningSizeGlyphs(font, previousCh, ch);
                 Assert.Equal(0, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
@@ -2205,17 +2256,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that get font kerning size test
+        ///     Tests that get font kerning size test
         /// </summary>
         [Fact]
         public void GetFontKerningSize_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -2229,50 +2280,29 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.GetFontKerningSize(font, previousCh, ch);
                 Assert.Equal(0, result);
-                
+
                 SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
             }
         }
-        
+
         /// <summary>
-        /// Tests that set error test
+        ///     Tests that set error test
         /// </summary>
         [Fact]
         public void SetError_Test()
         {
             int resultSdl = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, resultSdl);
-            
-            // Act & Assert
-            try
-            {
-                SdlTtf.SetError("Test");
-                string result = SdlTtf.GetError();
-                Assert.Equal("Test", result);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }
-        }
-        
-        /// <summary>
-        /// Tests that get error test
-        /// </summary>
-        [Fact]
-        public void GetError_Test()
-        {
-            int resultSdl = Sdl.Init(SdlInit.InitEverything);
-            Assert.Equal(0, resultSdl);
-            
+
             // Act & Assert
             try
             {
@@ -2287,17 +2317,39 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that was init test
+        ///     Tests that get error test
+        /// </summary>
+        [Fact]
+        public void GetError_Test()
+        {
+            int resultSdl = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, resultSdl);
+
+            // Act & Assert
+            try
+            {
+                SdlTtf.SetError("Test");
+                string result = SdlTtf.GetError();
+                Assert.Equal("Test", result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            }
+        }
+
+        /// <summary>
+        ///     Tests that was init test
         /// </summary>
         [Fact]
         public void WasInit_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Act & Assert
             try
             {
@@ -2307,26 +2359,26 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();
             }
-            
         }
 
         /// <summary>
-        /// Tests that quit test
+        ///     Tests that quit test
         /// </summary>
         [Fact]
         public void Quit_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Act & Assert
             try
             {
@@ -2337,24 +2389,25 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }  finally
+            }
+            finally
             {
                 Sdl.Quit();
             }
         }
 
         /// <summary>
-        /// Tests that close font test
+        ///     Tests that close font test
         /// </summary>
         [Fact]
         public void CloseFont_Test()
         {
             int sdlInit = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, sdlInit);
-            
+
             int sdlTtf = SdlTtf.Init();
             Assert.Equal(0, sdlTtf);
-            
+
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -2369,7 +2422,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }  finally
+            }
+            finally
             {
                 SdlTtf.Quit();
                 Sdl.Quit();

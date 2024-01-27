@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
-    /// The sdl vertex test class
+    ///     The sdl vertex test class
     /// </summary>
     public class SdlVertexTest
     {
         /// <summary>
-        /// Tests that sdl vertex has correct field count
+        ///     Tests that sdl vertex has correct field count
         /// </summary>
         [Fact]
         public void SdlVertex_HasCorrectFieldCount()
@@ -48,9 +48,9 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             FieldInfo[] fields = typeof(SdlVertex).GetFields();
             Assert.Equal(3, fields.Length);
         }
-        
+
         /// <summary>
-        /// Tests that sdl vertex position field is of type point f
+        ///     Tests that sdl vertex position field is of type point f
         /// </summary>
         [Fact]
         public void SdlVertex_PositionField_IsOfTypePointF()
@@ -61,7 +61,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         }
 
         /// <summary>
-        /// Tests that sdl vertex color field is of type sdl color
+        ///     Tests that sdl vertex color field is of type sdl color
         /// </summary>
         [Fact]
         public void SdlVertex_ColorField_IsOfTypeSdlColor()
@@ -72,7 +72,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         }
 
         /// <summary>
-        /// Tests that sdl vertex tex coordinate field is of type point f
+        ///     Tests that sdl vertex tex coordinate field is of type point f
         /// </summary>
         [Fact]
         public void SdlVertex_TexCoordinateField_IsOfTypePointF()
@@ -81,9 +81,9 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             Assert.NotNull(texCoordinateField);
             Assert.Equal(typeof(PointF), texCoordinateField.FieldType);
         }
-        
+
         /// <summary>
-        /// Tests that sdl vertex position field initializes correctly
+        ///     Tests that sdl vertex position field initializes correctly
         /// </summary>
         [Fact]
         public void SdlVertex_PositionField_InitializesCorrectly()
@@ -93,7 +93,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         }
 
         /// <summary>
-        /// Tests that sdl vertex color field initializes correctly
+        ///     Tests that sdl vertex color field initializes correctly
         /// </summary>
         [Fact]
         public void SdlVertex_ColorField_InitializesCorrectly()
@@ -103,7 +103,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         }
 
         /// <summary>
-        /// Tests that sdl vertex tex coordinate field initializes correctly
+        ///     Tests that sdl vertex tex coordinate field initializes correctly
         /// </summary>
         [Fact]
         public void SdlVertex_TexCoordinateField_InitializesCorrectly()

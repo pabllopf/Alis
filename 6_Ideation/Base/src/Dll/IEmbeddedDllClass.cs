@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:i.cs
+//  File: IEmbeddedDllClass.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -33,12 +33,12 @@ using System.Reflection;
 namespace Alis.Core.Aspect.Base.Dll
 {
     /// <summary>
-    /// The embedded dll interface
+    ///     The embedded dll interface
     /// </summary>
     public interface IEmbeddedDllClass
     {
         /// <summary>
-        /// Extracts the embedded dlls using the specified dll name
+        ///     Extracts the embedded dlls using the specified dll name
         /// </summary>
         /// <param name="dllName">The dll name</param>
         /// <param name="dllBytes">The dll bytes</param>

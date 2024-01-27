@@ -32,7 +32,7 @@ using System;
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    /// The sdl init enum
+    ///     The sdl init enum
     /// </summary>
     [Flags]
     public enum SdlInit : uint
@@ -76,10 +76,10 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         ///     The sdl init sensor
         /// </summary>
         InitSensor = 0x00008000,
-        
+
         /// <summary>
-        /// The init everything sdl init
+        ///     The init everything sdl init
         /// </summary>
-        InitEverything = InitTimer | InitAudio | InitVideo | InitJoystick | InitHaptic | InitGameController | InitEvents | InitSensor,
+        InitEverything = InitTimer | InitAudio | InitVideo | InitJoystick | InitHaptic | InitGameController | InitEvents | InitSensor
     }
 }

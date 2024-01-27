@@ -108,7 +108,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         ///     The sdl window event close sdl window event id
         /// </summary>
         SdlWindowEventClose,
-        
+
         /// <summary>
         ///     The sdl window event take focus sdl window event id
         /// </summary>
@@ -118,7 +118,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         ///     The sdl window event hit test sdl window event id
         /// </summary>
         SdlWindowEventHitTest,
-        
+
         /// <summary>
         ///     The sdl window event icc prof changed sdl window event id
         /// </summary>

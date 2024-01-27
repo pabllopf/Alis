@@ -52,14 +52,14 @@ namespace Alis.Core.Aspect.Base.Dll
             string extension = GetDllExtension();
             string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string dllPath = Path.Combine(currentDirectory, $"{dllName}.{extension}");
-            
+
             if (!File.Exists(dllPath))
             {
                 OSPlatform currentPlatform = GetCurrentPlatform();
                 Architecture currentArchitecture = RuntimeInformation.ProcessArchitecture;
-                
+
                 PlatformInfo platformInfo = new PlatformInfo(currentPlatform, currentArchitecture);
-                
+
                 if (dllBytes.TryGetValue(platformInfo, out string resourceName))
                 {
                     ExtractZipFile(dllPath, LoadResource(resourceName, assembly));
@@ -67,8 +67,8 @@ namespace Alis.Core.Aspect.Base.Dll
                 }
             }
         }
-        
-        
+
+
         /// <summary>
         ///     Gets the dll extension
         /// </summary>

@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Math.Definition
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Color"/> class
+        ///     Initializes a new instance of the <see cref="Color" /> class
         /// </summary>
         /// <param name="r">The </param>
         /// <param name="g">The </param>

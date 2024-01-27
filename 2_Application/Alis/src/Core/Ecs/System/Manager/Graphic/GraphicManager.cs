@@ -445,7 +445,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 IntPtr icon = Sdl.LoadBmp(VideoGame.Instance.Settings.General.Icon);
                 Sdl.SetWindowIcon(_window, icon);
             }
-            
+
             // INIT SDL_TTF
             Console.WriteLine(SdlTtf.Init() < 0 ? $"There was an issue initializing SDL_TTF. {Sdl.GetError()}" : "SDL_TTF Initialized");
 

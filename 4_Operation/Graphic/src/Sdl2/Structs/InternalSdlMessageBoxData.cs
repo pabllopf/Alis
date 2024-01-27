@@ -57,7 +57,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The message
         /// </summary>
-        public IntPtr message; 
+        public IntPtr message;
 
         /// <summary>
         ///     The num buttons
@@ -72,6 +72,6 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The color scheme
         /// </summary>
-        public IntPtr colorScheme; 
+        public IntPtr colorScheme;
     }
 }

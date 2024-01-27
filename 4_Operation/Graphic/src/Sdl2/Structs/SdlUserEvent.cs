@@ -61,11 +61,11 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The data
         /// </summary>
-        public IntPtr data1; 
+        public IntPtr data1;
 
         /// <summary>
         ///     The data
         /// </summary>
-        public IntPtr data2; 
+        public IntPtr data2;
     }
 }

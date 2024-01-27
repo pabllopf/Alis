@@ -30,7 +30,7 @@
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    /// The audio allow enum
+    ///     The audio allow enum
     /// </summary>
     public enum AudioAllow : uint
     {

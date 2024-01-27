@@ -58,10 +58,10 @@ namespace Alis.Core.Ecs.Component.Render
             Path = path;
 
             Texture = Sdl.CreateTextureFromSurface(VideoGame.Instance.GraphicManager.Renderer, Sdl.LoadBmp(path));
-            
+
             // get the size of sprite.Image.Texture
             Sdl.QueryTexture(Texture, out _, out _, out int w, out int h);
-            
+
             Size = new Vector2(w, h);
         }
 

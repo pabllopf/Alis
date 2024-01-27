@@ -50,12 +50,12 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The touch id
         /// </summary>
-        public readonly long touchId; 
+        public readonly long touchId;
 
         /// <summary>
         ///     The finger id
         /// </summary>
-        public readonly long fingerId; 
+        public readonly long fingerId;
 
         /// <summary>
         ///     The

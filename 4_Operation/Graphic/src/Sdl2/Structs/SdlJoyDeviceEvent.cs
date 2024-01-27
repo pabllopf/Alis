@@ -51,6 +51,6 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The which
         /// </summary>
-        public readonly int which; 
+        public readonly int which;
     }
 }

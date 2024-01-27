@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlTest.cs
+//  File: SdlTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -38,12 +38,12 @@ using Xunit;
 namespace Alis.Core.Graphic.Test.Sdl2
 {
     /// <summary>
-    /// The sdl test class
+    ///     The sdl test class
     /// </summary>
     public class SdlTest
     {
         /// <summary>
-        /// Tests that test init
+        ///     Tests that test init
         /// </summary>
         [Fact]
         public void TestInit()
@@ -61,7 +61,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get gl compiled version
+        ///     Tests that test get gl compiled version
         /// </summary>
         [Fact]
         public void TestGetGlCompiledVersion()
@@ -82,7 +82,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test game controller close
+        ///     Tests that test game controller close
         /// </summary>
         [Fact]
         public void TestGameControllerClose()
@@ -104,7 +104,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test game controller set led
+        ///     Tests that test game controller set led
         /// </summary>
         [Fact]
         public void TestGameControllerSetLed()
@@ -129,7 +129,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test game controller has axis
+        ///     Tests that test game controller has axis
         /// </summary>
         [Fact]
         public void TestGameControllerHasAxis()
@@ -157,7 +157,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test game controller has button
+        ///     Tests that test game controller has button
         /// </summary>
         [Fact]
         public void TestGameControllerHasButton()
@@ -185,7 +185,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test audio init
+        ///     Tests that test audio init
         /// </summary>
         [Fact]
         public void TestAudioInit()
@@ -215,7 +215,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
                         break;
                 }
 
-                if (result != -1 && result != 0)
+                if ((result != -1) && (result != 0))
                 {
                     Assert.NotEqual(0, result);
                     Assert.NotEqual(-1, result);
@@ -226,7 +226,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test audio quit
+        ///     Tests that test audio quit
         /// </summary>
         [Fact]
         public void TestAudioQuit()
@@ -247,7 +247,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test close audio device
+        ///     Tests that test close audio device
         /// </summary>
         [Fact]
         public void TestCloseAudioDevice()
@@ -281,7 +281,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get audio device name
+        ///     Tests that test get audio device name
         /// </summary>
         [Fact]
         public void TestGetAudioDeviceName()
@@ -304,7 +304,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get audio device status
+        ///     Tests that test get audio device status
         /// </summary>
         [Fact]
         public void TestGetAudioDeviceStatus()
@@ -326,7 +326,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get audio driver
+        ///     Tests that test get audio driver
         /// </summary>
         [Fact]
         public void TestGetAudioDriver()
@@ -349,7 +349,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get current audio driver
+        ///     Tests that test get current audio driver
         /// </summary>
         [Fact]
         public void TestGetCurrentAudioDriver()
@@ -369,7 +369,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get num audio devices
+        ///     Tests that test get num audio devices
         /// </summary>
         [Fact]
         public void TestGetNumAudioDevices()
@@ -394,7 +394,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get num audio drivers
+        ///     Tests that test get num audio drivers
         /// </summary>
         [Fact]
         public void TestGetNumAudioDrivers()
@@ -413,7 +413,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test load wav
+        ///     Tests that test load wav
         /// </summary>
         [Fact]
         public void TestLoadWav()
@@ -437,7 +437,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test lock audio device
+        ///     Tests that test lock audio device
         /// </summary>
         [Fact]
         public void TestLockAudioDevice()
@@ -457,7 +457,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test mix audio
+        ///     Tests that test mix audio
         /// </summary>
         [Fact]
         public void TestMixAudio()
@@ -481,7 +481,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test mix audio format
+        ///     Tests that test mix audio format
         /// </summary>
         [Fact]
         public void TestMixAudioFormat()
@@ -507,7 +507,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test open audio device
+        ///     Tests that test open audio device
         /// </summary>
         [Fact]
         public void TestOpenAudioDevice()
@@ -532,7 +532,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test pause audio
+        ///     Tests that test pause audio
         /// </summary>
         [Fact]
         public void TestPauseAudio()
@@ -553,7 +553,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test pause audio device
+        ///     Tests that test pause audio device
         /// </summary>
         [Fact]
         public void TestPauseAudioDevice()
@@ -575,7 +575,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test unlock audio device
+        ///     Tests that test unlock audio device
         /// </summary>
         [Fact]
         public void TestUnlockAudioDevice()
@@ -596,7 +596,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test fourcc
+        ///     Tests that test fourcc
         /// </summary>
         [Fact]
         public void TestFourcc()
@@ -620,7 +620,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get version
+        ///     Tests that test get version
         /// </summary>
         [Fact]
         public void TestGetVersion()
@@ -638,7 +638,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get performance frequency
+        ///     Tests that test get performance frequency
         /// </summary>
         [Fact]
         public void TestGetPerformanceFrequency()
@@ -654,7 +654,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get performance counter
+        ///     Tests that test get performance counter
         /// </summary>
         [Fact]
         public void TestGetPerformanceCounter()
@@ -670,7 +670,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sensor open
+        ///     Tests that test sensor open
         /// </summary>
         [Fact]
         public void TestSensorOpen()
@@ -692,7 +692,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test clear hints
+        ///     Tests that test clear hints
         /// </summary>
         [Fact]
         public void TestClearHints()
@@ -709,7 +709,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
 
         /// <summary>
-        /// Tests that test set hint
+        ///     Tests that test set hint
         /// </summary>
         [Fact]
         public void TestSetHint()
@@ -729,7 +729,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get hint
+        ///     Tests that test get hint
         /// </summary>
         [Fact]
         public void TestGetHint()
@@ -754,7 +754,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test num haptics
+        ///     Tests that test num haptics
         /// </summary>
         [Fact]
         public void TestNumHaptics()
@@ -771,7 +771,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test set hint should return true when valid hint is passed
+        ///     Tests that test set hint should return true when valid hint is passed
         /// </summary>
         [Fact]
         public void TestSetHint_ShouldReturnTrue_WhenValidHintIsPassed()
@@ -793,7 +793,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get hint should return correct value when valid hint is passed
+        ///     Tests that test get hint should return correct value when valid hint is passed
         /// </summary>
         [Fact]
         public void TestGetHint_ShouldReturnCorrectValue_WhenValidHintIsPassed()
@@ -816,7 +816,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test num haptics should return non negative value
+        ///     Tests that test num haptics should return non negative value
         /// </summary>
         [Fact]
         public void TestNumHaptics_ShouldReturnNonNegativeValue()
@@ -835,7 +835,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test clear hints should not throw exception
+        ///     Tests that test clear hints should not throw exception
         /// </summary>
         [Fact]
         public void TestClearHints_ShouldNotThrowException()
@@ -854,7 +854,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get performance counter should return non zero value
+        ///     Tests that test get performance counter should return non zero value
         /// </summary>
         [Fact]
         public void TestGetPerformanceCounter_ShouldReturnNonZeroValue()
@@ -873,7 +873,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get performance frequency should return non zero value
+        ///     Tests that test get performance frequency should return non zero value
         /// </summary>
         [Fact]
         public void TestGetPerformanceFrequency_ShouldReturnNonZeroValue()
@@ -892,7 +892,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test internal render get metal command encoder should return expected value
+        ///     Tests that test internal render get metal command encoder should return expected value
         /// </summary>
         [Fact]
         public void TestInternalRenderGetMetalCommandEncoder_ShouldReturnExpectedValue()
@@ -913,7 +913,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test internal set window position should not throw exception
+        ///     Tests that test internal set window position should not throw exception
         /// </summary>
         [Fact]
         public void TestInternalSetWindowPosition_ShouldNotThrowException()
@@ -936,7 +936,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test internal gl get current context should return expected value
+        ///     Tests that test internal gl get current context should return expected value
         /// </summary>
         [Fact]
         public void TestInternalGlGetCurrentContext_ShouldReturnExpectedValue()
@@ -955,7 +955,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test internal get performance frequency should return non zero value
+        ///     Tests that test internal get performance frequency should return non zero value
         /// </summary>
         [Fact]
         public void TestInternalGetPerformanceFrequency_ShouldReturnNonZeroValue()
@@ -974,7 +974,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test internal get performance counter should return non zero value
+        ///     Tests that test internal get performance counter should return non zero value
         /// </summary>
         [Fact]
         public void TestInternalGetPerformanceCounter_ShouldReturnNonZeroValue()
@@ -993,7 +993,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl init should return zero when init everything is passed
+        ///     Tests that test sdl init should return zero when init everything is passed
         /// </summary>
         [Fact]
         public void TestSdlInit_ShouldReturnZero_WhenInitEverythingIsPassed()
@@ -1008,7 +1008,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl get version should return expected version
+        ///     Tests that test sdl get version should return expected version
         /// </summary>
         [Fact]
         public void TestSdlGetVersion_ShouldReturnExpectedVersion()
@@ -1029,7 +1029,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl get performance counter should return non zero value
+        ///     Tests that test sdl get performance counter should return non zero value
         /// </summary>
         [Fact]
         public void TestSdlGetPerformanceCounter_ShouldReturnNonZeroValue()
@@ -1048,7 +1048,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl get performance frequency should return non zero value
+        ///     Tests that test sdl get performance frequency should return non zero value
         /// </summary>
         [Fact]
         public void TestSdlGetPerformanceFrequency_ShouldReturnNonZeroValue()
@@ -1067,7 +1067,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl num haptics should return non negative value
+        ///     Tests that test sdl num haptics should return non negative value
         /// </summary>
         [Fact]
         public void TestSdlNumHaptics_ShouldReturnNonNegativeValue()
@@ -1086,7 +1086,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl clear hints should not throw exception
+        ///     Tests that test sdl clear hints should not throw exception
         /// </summary>
         [Fact]
         public void TestSdlClearHints_ShouldNotThrowException()
@@ -1105,7 +1105,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl set hint should return true when valid hint is passed
+        ///     Tests that test sdl set hint should return true when valid hint is passed
         /// </summary>
         [Fact]
         public void TestSdlSetHint_ShouldReturnTrue_WhenValidHintIsPassed()
@@ -1127,7 +1127,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl get hint should return correct value when valid hint is passed
+        ///     Tests that test sdl get hint should return correct value when valid hint is passed
         /// </summary>
         [Fact]
         public void TestSdlGetHint_ShouldReturnCorrectValue_WhenValidHintIsPassed()
@@ -1150,7 +1150,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test load file should return expected value
+        ///     Tests that test load file should return expected value
         /// </summary>
         [Fact]
         public void TestLoadFile_ShouldReturnExpectedValue()
@@ -1172,7 +1172,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get error should return expected value
+        ///     Tests that test get error should return expected value
         /// </summary>
         [Fact]
         public void TestGetError_ShouldReturnExpectedValue()
@@ -1191,7 +1191,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test set error should not throw exception
+        ///     Tests that test set error should not throw exception
         /// </summary>
         [Fact]
         public void TestSetError_ShouldNotThrowException()
@@ -1212,7 +1212,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test was init should return expected value
+        ///     Tests that test was init should return expected value
         /// </summary>
         [Fact]
         public void TestWasInit_ShouldReturnExpectedValue()
@@ -1233,7 +1233,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get hint should return expected value
+        ///     Tests that test get hint should return expected value
         /// </summary>
         [Fact]
         public void TestGetHint_ShouldReturnExpectedValue()
@@ -1254,7 +1254,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test set hint should return expected value
+        ///     Tests that test set hint should return expected value
         /// </summary>
         [Fact]
         public void TestSetHint_ShouldReturnExpectedValue()
@@ -1276,7 +1276,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test set hint with priority should return expected value
+        ///     Tests that test set hint with priority should return expected value
         /// </summary>
         [Fact]
         public void TestSetHintWithPriority_ShouldReturnExpectedValue()
@@ -1299,7 +1299,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get hint boolean should return expected value
+        ///     Tests that test get hint boolean should return expected value
         /// </summary>
         [Fact]
         public void TestGetHintBoolean_ShouldReturnExpectedValue()
@@ -1321,7 +1321,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get version should return expected value
+        ///     Tests that test get version should return expected value
         /// </summary>
         [Fact]
         public void TestGetVersion_ShouldReturnExpectedValue()
@@ -1340,7 +1340,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test window pos undefined display should return expected value
+        ///     Tests that test window pos undefined display should return expected value
         /// </summary>
         [Fact]
         public void TestWindowPosUndefinedDisplay_ShouldReturnExpectedValue()
@@ -1361,7 +1361,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test window pos is undefined should return expected value
+        ///     Tests that test window pos is undefined should return expected value
         /// </summary>
         [Fact]
         public void TestWindowPosIsUndefined_ShouldReturnExpectedValue()
@@ -1382,7 +1382,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test window pos centered display should return expected value
+        ///     Tests that test window pos centered display should return expected value
         /// </summary>
         [Fact]
         public void TestWindowPosCenteredDisplay_ShouldReturnExpectedValue()
@@ -1403,7 +1403,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test window pos is centered should return expected value
+        ///     Tests that test window pos is centered should return expected value
         /// </summary>
         [Fact]
         public void TestWindowPosIsCentered_ShouldReturnExpectedValue()
@@ -1424,7 +1424,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test create window should return non null pointer
+        ///     Tests that test create window should return non null pointer
         /// </summary>
         [Fact]
         public void TestCreateWindow_ShouldReturnNonNullPointer()
@@ -1467,7 +1467,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test create window and renderer should return non null pointers
+        ///     Tests that test create window and renderer should return non null pointers
         /// </summary>
         [Fact]
         public void TestCreateWindowAndRenderer_ShouldReturnNonNullPointers()
@@ -1502,12 +1502,12 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Assert
             Assert.True(result >= 0 || result == -1);
-            
+
             Sdl.Quit();
         }
 
         /// <summary>
-        /// Tests that test destroy window should not throw exception
+        ///     Tests that test destroy window should not throw exception
         /// </summary>
         [Fact]
         public void TestDestroyWindow_ShouldNotThrowException()
@@ -1534,7 +1534,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get closest display mode should return expected value
+        ///     Tests that test get closest display mode should return expected value
         /// </summary>
         [Fact]
         public void TestGetClosestDisplayMode_ShouldReturnExpectedValue()
@@ -1556,7 +1556,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get current display mode should return expected value
+        ///     Tests that test get current display mode should return expected value
         /// </summary>
         [Fact]
         public void TestGetCurrentDisplayMode_ShouldReturnExpectedValue()
@@ -1577,7 +1577,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get current video driver should return expected value
+        ///     Tests that test get current video driver should return expected value
         /// </summary>
         [Fact]
         public void TestGetCurrentVideoDriver_ShouldReturnExpectedValue()
@@ -1596,7 +1596,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get desktop display mode should return expected value
+        ///     Tests that test get desktop display mode should return expected value
         /// </summary>
         [Fact]
         public void TestGetDesktopDisplayMode_ShouldReturnExpectedValue()
@@ -1617,7 +1617,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get display name should return expected value
+        ///     Tests that test get display name should return expected value
         /// </summary>
         [Fact]
         public void TestGetDisplayName_ShouldReturnExpectedValue()
@@ -1638,7 +1638,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get display bounds should return expected value
+        ///     Tests that test get display bounds should return expected value
         /// </summary>
         [Fact]
         public void TestGetDisplayBounds_ShouldReturnExpectedValue()
@@ -1659,7 +1659,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get display dpi should return expected value
+        ///     Tests that test get display dpi should return expected value
         /// </summary>
         [Fact]
         public void TestGetDisplayDpi_ShouldReturnExpectedValue()
@@ -1680,7 +1680,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get display mode should return expected value
+        ///     Tests that test get display mode should return expected value
         /// </summary>
         [Fact]
         public void TestGetDisplayMode_ShouldReturnExpectedValue()
@@ -1702,7 +1702,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get display usable bounds should return expected value
+        ///     Tests that test get display usable bounds should return expected value
         /// </summary>
         [Fact]
         public void TestGetDisplayUsableBounds_ShouldReturnExpectedValue()
@@ -1723,7 +1723,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get num display modes should return expected value
+        ///     Tests that test get num display modes should return expected value
         /// </summary>
         [Fact]
         public void TestGetNumDisplayModes_ShouldReturnExpectedValue()
@@ -1744,7 +1744,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get num video displays should return expected value
+        ///     Tests that test get num video displays should return expected value
         /// </summary>
         [Fact]
         public void TestGetNumVideoDisplays_ShouldReturnExpectedValue()
@@ -1763,7 +1763,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get num video drivers should return expected value
+        ///     Tests that test get num video drivers should return expected value
         /// </summary>
         [Fact]
         public void TestGetNumVideoDrivers_ShouldReturnExpectedValue()
@@ -1782,7 +1782,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get video driver should return expected value
+        ///     Tests that test get video driver should return expected value
         /// </summary>
         [Fact]
         public void TestGetVideoDriver_ShouldReturnExpectedValue()
@@ -1803,7 +1803,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get window brightness should return expected value
+        ///     Tests that test get window brightness should return expected value
         /// </summary>
         [Fact]
         public void TestGetWindowBrightness_ShouldReturnExpectedValue()
@@ -1824,13 +1824,13 @@ namespace Alis.Core.Graphic.Test.Sdl2
             float result = Sdl.GetWindowBrightness(window);
 
             // Assert
-            Assert.True(result >= 0.0f && result <= 1.0f);
+            Assert.True((result >= 0.0f) && (result <= 1.0f));
 
             Sdl.Quit();
         }
 
         /// <summary>
-        /// Tests that test set window opacity should return expected value
+        ///     Tests that test set window opacity should return expected value
         /// </summary>
         [Fact]
         public void TestSetWindowOpacity_ShouldReturnExpectedValue()
@@ -1858,7 +1858,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get window opacity should return expected value
+        ///     Tests that test get window opacity should return expected value
         /// </summary>
         [Fact]
         public void TestGetWindowOpacity_ShouldReturnExpectedValue()
@@ -1885,7 +1885,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test set window modal for should return expected value
+        ///     Tests that test set window modal for should return expected value
         /// </summary>
         [Fact]
         public void TestSetWindowModalFor_ShouldReturnExpectedValue()
@@ -1913,7 +1913,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test set window input focus should return expected value
+        ///     Tests that test set window input focus should return expected value
         /// </summary>
         [Fact]
         public void TestSetWindowInputFocus_ShouldReturnExpectedValue()
@@ -1940,7 +1940,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get window data should return expected value
+        ///     Tests that test get window data should return expected value
         /// </summary>
         [Fact]
         public void TestGetWindowData_ShouldReturnExpectedValue()
@@ -1968,7 +1968,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get window display index should return expected value
+        ///     Tests that test get window display index should return expected value
         /// </summary>
         [Fact]
         public void TestGetWindowDisplayIndex_ShouldReturnExpectedValue()
@@ -1995,7 +1995,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl audio stream clear should not throw exception
+        ///     Tests that test sdl audio stream clear should not throw exception
         /// </summary>
         [Fact]
         public void TestSdlAudioStreamClear_ShouldNotThrowException()
@@ -2016,7 +2016,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl free audio stream should not throw exception
+        ///     Tests that test sdl free audio stream should not throw exception
         /// </summary>
         [Fact]
         public void TestSdlFreeAudioStream_ShouldNotThrowException()
@@ -2037,7 +2037,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl get audio device spec should return expected value
+        ///     Tests that test sdl get audio device spec should return expected value
         /// </summary>
         [Fact]
         public void TestSdlGetAudioDeviceSpec_ShouldReturnExpectedValue()
@@ -2059,7 +2059,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl open audio device should return expected value
+        ///     Tests that test sdl open audio device should return expected value
         /// </summary>
         [Fact]
         public void TestSdlOpenAudioDevice_ShouldReturnExpectedValue()
@@ -2083,7 +2083,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl pause audio should not throw exception
+        ///     Tests that test sdl pause audio should not throw exception
         /// </summary>
         [Fact]
         public void TestSdlPauseAudio_ShouldNotThrowException()
@@ -2104,7 +2104,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl pause audio device should not throw exception
+        ///     Tests that test sdl pause audio device should not throw exception
         /// </summary>
         [Fact]
         public void TestSdlPauseAudioDevice_ShouldNotThrowException()
@@ -2126,7 +2126,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl unlock audio device should not throw exception
+        ///     Tests that test sdl unlock audio device should not throw exception
         /// </summary>
         [Fact]
         public void TestSdlUnlockAudioDevice_ShouldNotThrowException()
@@ -2147,7 +2147,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl new audio stream should return expected value
+        ///     Tests that test sdl new audio stream should return expected value
         /// </summary>
         [Fact]
         public void TestSdlNewAudioStream_ShouldReturnExpectedValue()
@@ -2173,7 +2173,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl audio stream put should return expected value
+        ///     Tests that test sdl audio stream put should return expected value
         /// </summary>
         [Fact]
         public void TestSdlAudioStreamPut_ShouldReturnExpectedValue()
@@ -2196,7 +2196,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl audio stream get should return expected value
+        ///     Tests that test sdl audio stream get should return expected value
         /// </summary>
         [Fact]
         public void TestSdlAudioStreamGet_ShouldReturnExpectedValue()
@@ -2219,7 +2219,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl audio stream available should return expected value
+        ///     Tests that test sdl audio stream available should return expected value
         /// </summary>
         [Fact]
         public void TestSdlAudioStreamAvailable_ShouldReturnExpectedValue()
@@ -2240,7 +2240,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test mix audio format should not throw exception
+        ///     Tests that test mix audio format should not throw exception
         /// </summary>
         [Fact]
         public void TestMixAudioFormat_ShouldNotThrowException()
@@ -2265,7 +2265,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test lock sensors should not throw exception
+        ///     Tests that test lock sensors should not throw exception
         /// </summary>
         [Fact]
         public void TestLockSensors_ShouldNotThrowException()
@@ -2284,7 +2284,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test unlock sensors should not throw exception
+        ///     Tests that test unlock sensors should not throw exception
         /// </summary>
         [Fact]
         public void TestUnlockSensors_ShouldNotThrowException()
@@ -2303,7 +2303,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl audio bit size should return expected value
+        ///     Tests that test sdl audio bit size should return expected value
         /// </summary>
         [Fact]
         public void TestSdlAudioBitSize_ShouldReturnExpectedValue()
@@ -2324,7 +2324,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl audio is float should return expected value
+        ///     Tests that test sdl audio is float should return expected value
         /// </summary>
         [Fact]
         public void TestSdlAudioIsFloat_ShouldReturnExpectedValue()
@@ -2345,7 +2345,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl audio is big endian should return expected value
+        ///     Tests that test sdl audio is big endian should return expected value
         /// </summary>
         [Fact]
         public void TestSdlAudioIsBigEndian_ShouldReturnExpectedValue()
@@ -2366,7 +2366,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl audio is signed should return expected value
+        ///     Tests that test sdl audio is signed should return expected value
         /// </summary>
         [Fact]
         public void TestSdlAudioIsSigned_ShouldReturnExpectedValue()
@@ -2387,7 +2387,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl audio is int should return expected value
+        ///     Tests that test sdl audio is int should return expected value
         /// </summary>
         [Fact]
         public void TestSdlAudioIsInt_ShouldReturnExpectedValue()
@@ -2408,7 +2408,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl audio is little endian should return expected value
+        ///     Tests that test sdl audio is little endian should return expected value
         /// </summary>
         [Fact]
         public void TestSdlAudioIsLittleEndian_ShouldReturnExpectedValue()
@@ -2429,7 +2429,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl audio is unsigned should return expected value
+        ///     Tests that test sdl audio is unsigned should return expected value
         /// </summary>
         [Fact]
         public void TestSdlAudioIsUnsigned_ShouldReturnExpectedValue()
@@ -2450,7 +2450,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test audio init should return expected value
+        ///     Tests that test audio init should return expected value
         /// </summary>
         [Fact]
         public void TestAudioInit_ShouldReturnExpectedValue()
@@ -2471,7 +2471,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test sdl mix audio format should not throw exception
+        ///     Tests that test sdl mix audio format should not throw exception
         /// </summary>
         [Fact]
         public void TestSdlMixAudioFormat_ShouldNotThrowException()
@@ -2496,7 +2496,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test open audio device should return expected value
+        ///     Tests that test open audio device should return expected value
         /// </summary>
         [Fact]
         public void TestOpenAudioDevice_ShouldReturnExpectedValue()
@@ -2520,7 +2520,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get window display mode should return expected value
+        ///     Tests that test get window display mode should return expected value
         /// </summary>
         [Fact]
         public void TestGetWindowDisplayMode_ShouldReturnExpectedValue()
@@ -2541,7 +2541,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get window flags should return expected value
+        ///     Tests that test get window flags should return expected value
         /// </summary>
         [Fact]
         public void TestGetWindowFlags_ShouldReturnExpectedValue()
@@ -2562,7 +2562,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get window from id should return expected value
+        ///     Tests that test get window from id should return expected value
         /// </summary>
         [Fact]
         public void TestGetWindowFromId_ShouldReturnExpectedValue()
@@ -2583,7 +2583,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get window gamma ramp should return expected value
+        ///     Tests that test get window gamma ramp should return expected value
         /// </summary>
         [Fact]
         public void TestGetWindowGammaRamp_ShouldReturnExpectedValue()
@@ -2607,7 +2607,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get window grab should return expected value
+        ///     Tests that test get window grab should return expected value
         /// </summary>
         [Fact]
         public void TestGetWindowGrab_ShouldReturnExpectedValue()
@@ -2628,7 +2628,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get window keyboard grab should return expected value
+        ///     Tests that test get window keyboard grab should return expected value
         /// </summary>
         [Fact]
         public void TestGetWindowKeyboardGrab_ShouldReturnExpectedValue()
@@ -2649,7 +2649,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get window mouse grab should return expected value
+        ///     Tests that test get window mouse grab should return expected value
         /// </summary>
         [Fact]
         public void TestGetWindowMouseGrab_ShouldReturnExpectedValue()
@@ -2670,7 +2670,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get window id should return expected value
+        ///     Tests that test get window id should return expected value
         /// </summary>
         [Fact]
         public void TestGetWindowId_ShouldReturnExpectedValue()
@@ -2691,7 +2691,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get window pixel format should return expected value
+        ///     Tests that test get window pixel format should return expected value
         /// </summary>
         [Fact]
         public void TestGetWindowPixelFormat_ShouldReturnExpectedValue()
@@ -2712,7 +2712,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test start text input should not throw exception
+        ///     Tests that test start text input should not throw exception
         /// </summary>
         [Fact]
         public void TestStartTextInput_ShouldNotThrowException()
@@ -2731,7 +2731,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test is text input active should return expected value
+        ///     Tests that test is text input active should return expected value
         /// </summary>
         [Fact]
         public void TestIsTextInputActive_ShouldReturnExpectedValue()
@@ -2750,7 +2750,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test stop text input should not throw exception
+        ///     Tests that test stop text input should not throw exception
         /// </summary>
         [Fact]
         public void TestStopTextInput_ShouldNotThrowException()
@@ -2769,7 +2769,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test set text input rect should not throw exception
+        ///     Tests that test set text input rect should not throw exception
         /// </summary>
         [Fact]
         public void TestSetTextInputRect_ShouldNotThrowException()
@@ -2790,7 +2790,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test has screen keyboard support should return expected value
+        ///     Tests that test has screen keyboard support should return expected value
         /// </summary>
         [Fact]
         public void TestHasScreenKeyboardSupport_ShouldReturnExpectedValue()
@@ -2809,7 +2809,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test is screen keyboard shown should return expected value
+        ///     Tests that test is screen keyboard shown should return expected value
         /// </summary>
         [Fact]
         public void TestIsScreenKeyboardShown_ShouldReturnExpectedValue()
@@ -2830,7 +2830,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get mouse focus should return expected value
+        ///     Tests that test get mouse focus should return expected value
         /// </summary>
         [Fact]
         public void TestGetMouseFocus_ShouldReturnExpectedValue()
@@ -2849,7 +2849,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get mouse state out x and y should return expected value
+        ///     Tests that test get mouse state out x and y should return expected value
         /// </summary>
         [Fact]
         public void TestGetMouseStateOutXAndY_ShouldReturnExpectedValue()
@@ -2870,7 +2870,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that test get global mouse state out x and out y should return expected value
+        ///     Tests that test get global mouse state out x and out y should return expected value
         /// </summary>
         [Fact]
         public void TestGetGlobalMouseStateOutXAndOutY_ShouldReturnExpectedValue()

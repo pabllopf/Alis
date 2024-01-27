@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: SdlKeyMod.cs
+//  File: SdlKeymod.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -101,7 +101,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         ///     The k mod scroll sdl key mod
         /// </summary>
         KModScroll = 0x8000,
-        
+
         /// <summary>
         ///     The k mod ctrl sdl key mod
         /// </summary>

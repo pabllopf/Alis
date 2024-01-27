@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: SdlSysWmType.cs
+//  File: SdlSyswmType.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -102,6 +102,6 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         /// <summary>
         ///     The sdl sys wm kms drm sdl sys wm type
         /// </summary>
-        SdlSysWmKmsDrm 
+        SdlSysWmKmsDrm
     }
 }

@@ -62,7 +62,7 @@
         <EmbeddedResource Condition="$(IsX64) == true AND $(IsLinux) == true" Include="$(ProjectDir)/resources/**/linux-x64/*linux-x64*.zip"/>
         <EmbeddedResource Condition="$(IsX86) == true AND $(IsLinux) == true" Include="$(ProjectDir)/resources/**/linux-x86/*linux-x86*.zip"/>
     </ItemGroup>
-    
+
     <ItemGroup Condition="
         $(AssemblyName.Contains('Test')) == False AND
         $(AssemblyName.Contains('App.Installer')) == False AND 
@@ -266,7 +266,7 @@
         <EmbeddedResource Condition="$(IsX86) == true AND $(IsLinux) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/linux-x86/*linux-x86*.zip"/>
 
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
-        
+
         <!-- Include all the .md files in the output -->
         <Content Include="$(ProjectDir)bin/Release/lib/net5.0/*.md" Visible="true" PackagePath="lib/net5.0/"/>
         <Content Include="$(ProjectDir)bin/Release/lib/net6.0/*.md" Visible="true" PackagePath="lib/net6.0/"/>
@@ -274,7 +274,7 @@
         <Content Include="$(ProjectDir)bin/Release/lib/net8.0/*.md" Visible="true" PackagePath="lib/net8.0/"/>
         <Content Include="$(ProjectDir)bin/Release/lib/netstandard2.0/*.md" Visible="true" PackagePath="lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/lib/netstandard2.1/*.md" Visible="true" PackagePath="lib/netstandard2.1/"/>
-        
+
         <!-- Include all the .dll runtimes of /lib/linux-arm64/lib/runtime -->
         <Content Include="$(ProjectDir)bin/Release/linux-arm64/lib/net5.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm64/lib/net5.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-arm64/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm64/lib/net6.0/"/>
@@ -282,7 +282,7 @@
         <Content Include="$(ProjectDir)bin/Release/linux-arm64/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm64/lib/net8.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-arm64/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm64/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-arm64/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/linux-arm64/lib/netstandard2.1/"/>
-        
+
         <!-- Include all the .dll runtimes of /lib/linux-arm/lib/runtime -->
         <Content Include="$(ProjectDir)bin/Release/linux-arm/lib/net5.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm/lib/net5.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-arm/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm/lib/net6.0/"/>
@@ -290,7 +290,7 @@
         <Content Include="$(ProjectDir)bin/Release/linux-arm/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm/lib/net8.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-arm/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-arm/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/linux-arm/lib/netstandard2.1/"/>
-        
+
         <!-- Include all the .dll runtimes of /lib/linux-x64/lib/runtime -->
         <Content Include="$(ProjectDir)bin/Release/linux-x64/lib/net5.0/*.dll" Visible="true" PackagePath="runtimes/linux-x64/lib/net5.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-x64/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/linux-x64/lib/net6.0/"/>
@@ -306,7 +306,7 @@
         <Content Include="$(ProjectDir)bin/Release/linux-x86/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/linux-x86/lib/net8.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-x86/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/linux-x86/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-x86/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/linux-x86/lib/netstandard2.1/"/>
-        
+
         <!-- Include all the .dll runtimes of /lib/osx-arm64/lib/runtime -->
         <Content Include="$(ProjectDir)bin/Release/osx-arm64/lib/net5.0/*.dll" Visible="true" PackagePath="runtimes/osx-arm64/lib/net5.0/"/>
         <Content Include="$(ProjectDir)bin/Release/osx-arm64/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/osx-arm64/lib/net6.0/"/>
@@ -314,7 +314,7 @@
         <Content Include="$(ProjectDir)bin/Release/osx-arm64/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/osx-arm64/lib/net8.0/"/>
         <Content Include="$(ProjectDir)bin/Release/osx-arm64/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/osx-arm64/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/osx-arm64/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/osx-arm64/lib/netstandard2.1/"/>
-        
+
         <!-- Include all the .dll runtimes of /lib/osx-x64/lib/runtime -->
         <Content Include="$(ProjectDir)bin/Release/osx-x64/lib/net5.0/*.dll" Visible="true" PackagePath="runtimes/osx-x64/lib/net5.0/"/>
         <Content Include="$(ProjectDir)bin/Release/osx-x64/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/osx-x64/lib/net6.0/"/>
@@ -322,7 +322,7 @@
         <Content Include="$(ProjectDir)bin/Release/osx-x64/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/osx-x64/lib/net8.0/"/>
         <Content Include="$(ProjectDir)bin/Release/osx-x64/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/osx-x64/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/osx-x64/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/osx-x64/lib/netstandard2.1/"/>
-        
+
         <!-- Include all the .dll runtimes of /lib/win-arm/lib/runtime -->
         <Content Include="$(ProjectDir)bin/Release/win-arm/lib/net5.0/*.dll" Visible="true" PackagePath="runtimes/win-arm/lib/net5.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-arm/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/win-arm/lib/net6.0/"/>
@@ -330,7 +330,7 @@
         <Content Include="$(ProjectDir)bin/Release/win-arm/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/win-arm/lib/net8.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-arm/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/win-arm/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-arm/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/win-arm/lib/netstandard2.1/"/>
-        
+
         <!-- Include all the .dll runtimes of /lib/win-arm64/lib/runtime -->
         <Content Include="$(ProjectDir)bin/Release/win-arm64/lib/net5.0/*.dll" Visible="true" PackagePath="runtimes/win-arm64/lib/net5.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-arm64/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/win-arm64/lib/net6.0/"/>
@@ -338,7 +338,7 @@
         <Content Include="$(ProjectDir)bin/Release/win-arm64/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/win-arm64/lib/net8.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-arm64/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/win-arm64/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-arm64/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/win-arm64/lib/netstandard2.1/"/>
-        
+
         <!-- Include all the .dll runtimes of /lib/win-x64/lib/runtime -->
         <Content Include="$(ProjectDir)bin/Release/win-x64/lib/net5.0/*.dll" Visible="true" PackagePath="runtimes/win-x64/lib/net5.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-x64/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/win-x64/lib/net6.0/"/>
@@ -346,7 +346,7 @@
         <Content Include="$(ProjectDir)bin/Release/win-x64/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/win-x64/lib/net8.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-x64/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/win-x64/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-x64/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/win-x64/lib/netstandard2.1/"/>
-        
+
         <!-- Include all the .dll runtimes of /lib/win-x86/lib/runtime -->
         <Content Include="$(ProjectDir)bin/Release/win-x86/lib/net5.0/*.dll" Visible="true" PackagePath="runtimes/win-x86/lib/net5.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-x86/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/win-x86/lib/net6.0/"/>

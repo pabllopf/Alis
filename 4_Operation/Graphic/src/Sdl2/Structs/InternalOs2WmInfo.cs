@@ -44,7 +44,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         public IntPtr hwnd;
 
         /// <summary>
-        ///     Refers to frame  
+        ///     Refers to frame
         /// </summary>
         public IntPtr hwndFrame;
     }

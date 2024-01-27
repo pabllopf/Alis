@@ -61,17 +61,17 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The button
         /// </summary>
-        public readonly byte button; 
+        public readonly byte button;
 
         /// <summary>
         ///     The state
         /// </summary>
-        public readonly byte state; 
+        public readonly byte state;
 
         /// <summary>
         ///     The clicks
         /// </summary>
-        public readonly byte clicks; 
+        public readonly byte clicks;
 
         /// <summary>
         ///     The padding

@@ -41,18 +41,18 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
     /// <summary>
     ///     The native sdl ttf class
     /// </summary>
-    internal static class NativeSdlTtf 
+    internal static class NativeSdlTtf
     {
         /// <summary>
         ///     The native lib name
         /// </summary>
         private const string NativeLibName = "sdl2_ttf";
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="SdlTtf" /> class
         /// </summary>
         static NativeSdlTtf() => new EmbeddedDllClass().ExtractEmbeddedDlls("sdl2_ttf", Sdl2Dlls.GlSdlTtfDllBytes, Assembly.GetAssembly(typeof(Sdl2Dlls)));
-        
+
         /// <summary>
         ///     Ttf the glyph is provided 32 using the specified font
         /// </summary>
@@ -287,7 +287,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern IntPtr InternalFontFaceStyleName([NotNull] IntPtr font);
-        
+
         /// <summary>
         ///     Ttf the font face is fixed width using the specified font
         /// </summary>
@@ -339,7 +339,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_RenderUNICODE_Solid_Wrapped", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true,CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "TTF_RenderUNICODE_Solid_Wrapped", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern IntPtr InternalRenderUnicodeSolidWrapped([NotNull] IntPtr font, [NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapLength);
@@ -643,7 +643,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern IntPtr InternalOpenFont([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string file, [NotNull, NotZero] int ptSize);
-        
+
         /// <summary>
         ///     Internals the ttf open font index using the specified file
         /// </summary>
@@ -655,7 +655,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern IntPtr InternalOpenFontIndex([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string file, [NotNull, NotZero] int ptSize, [NotNull, NotZero] long index);
-        
+
         /// <summary>
         ///     Ttf the set font size using the specified font
         /// </summary>

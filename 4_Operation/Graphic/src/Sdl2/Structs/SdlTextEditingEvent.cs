@@ -68,9 +68,9 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The length
         /// </summary>
         public readonly int length;
-        
+
         /// <summary>
-        /// Gets the value of the text
+        ///     Gets the value of the text
         /// </summary>
         public string Text => Marshal.PtrToStringAnsi(textPtr);
     }

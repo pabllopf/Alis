@@ -39,6 +39,5 @@ namespace Alis.Core.Aspect.Fluent
         /// </summary>
         /// <returns>The origin</returns>
         TOrigin Build();
-        
     }
 }

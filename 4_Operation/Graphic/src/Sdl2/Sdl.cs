@@ -406,7 +406,7 @@ namespace Alis.Core.Graphic.Sdl2
         ///     The audio f32lsb
         /// </summary>
         public const ushort AudioF32 = AudioF32Lsb;
-        
+
         /// <summary>
         ///     The sdl mix max volume
         /// </summary>
@@ -421,14 +421,6 @@ namespace Alis.Core.Graphic.Sdl2
         ///     The sdl android external storage write
         /// </summary>
         public const int AndroidExternalStorageWrite = 0x02;
-
-        /// <summary>
-        ///     The sdl patch level
-        /// </summary>
-        public static int GetGlCompiledVersion()
-        {
-            return 2 * 1000 + 0 * 100 + 18;
-        }
 
         /// <summary>
         ///     The sdl pixel format unknown
@@ -691,6 +683,11 @@ namespace Alis.Core.Graphic.Sdl2
         public static readonly ushort GlAudioF32Sys = BitConverter.IsLittleEndian ? AudioF32Lsb : AudioF32Msb;
 
         /// <summary>
+        ///     The sdl patch level
+        /// </summary>
+        public static int GetGlCompiledVersion() => 2 * 1000 + 0 * 100 + 18;
+
+        /// <summary>
         ///     Sdl the fourcc using the specified a
         /// </summary>
         /// <param name="a">The </param>
@@ -700,10 +697,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Fourcc(byte a, byte b, byte c, byte d)
-        {
-            return (uint) (a | (b << 8) | (c << 16) | (d << 24));
-        }
+        public static uint Fourcc(byte a, byte b, byte c, byte d) => (uint) (a | (b << 8) | (c << 16) | (d << 24));
 
         /// <summary>
         ///     Sdl the rw from file using the specified file
@@ -721,7 +715,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Sdl the load file using the specified file
         /// </summary>
@@ -737,7 +731,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Sdl the get error
         /// </summary>
@@ -777,7 +771,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Sdl the quit
         /// </summary>
@@ -802,7 +796,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Clears the hints
         /// </summary>
@@ -886,50 +880,35 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlVersion GetVersion()
-        {
-            return new SdlVersion(2, 0, 18);
-        }
+        public static SdlVersion GetVersion() => new SdlVersion(2, 0, 18);
 
         /// <summary>
         ///     Sdl the window pos undefined display using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The int</returns>
-        public static int WindowPosUndefinedDisplay([NotNull] int x)
-        {
-            return WindowPosUndefinedMask | x;
-        }
+        public static int WindowPosUndefinedDisplay([NotNull] int x) => WindowPosUndefinedMask | x;
 
         /// <summary>
         ///     Describes whether sdl window pos is undefined
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool WindowPosIsUndefined([NotNull] int x)
-        {
-            return (x & 0xFFFF0000) == WindowPosUndefinedMask;
-        }
+        public static bool WindowPosIsUndefined([NotNull] int x) => (x & 0xFFFF0000) == WindowPosUndefinedMask;
 
         /// <summary>
         ///     Sdl the window pos centered display using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The int</returns>
-        public static int WindowPosCenteredDisplay([NotNull] int x)
-        {
-            return WindowPosCenteredMask | x;
-        }
+        public static int WindowPosCenteredDisplay([NotNull] int x) => WindowPosCenteredMask | x;
 
         /// <summary>
         ///     Describes whether sdl window pos is centered
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool WindowPosIsCentered([NotNull] int x)
-        {
-            return (x & 0xFFFF0000) == WindowPosCenteredMask;
-        }
+        public static bool WindowPosIsCentered([NotNull] int x) => (x & 0xFFFF0000) == WindowPosCenteredMask;
 
         /// <summary>
         ///     Sdl the create window using the specified title
@@ -971,7 +950,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateInput(height);
             return NativeSdl.InternalCreateWindowAndRenderer(width, height, windowFlags, out window, out renderer);
         }
-        
+
         /// <summary>
         ///     Sdl the destroy window using the specified window
         /// </summary>
@@ -983,7 +962,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateInput(window);
             NativeSdl.InternalDestroyWindow(window);
         }
-        
+
         /// <summary>
         ///     Sdl the get closest display mode using the specified display index
         /// </summary>
@@ -1092,7 +1071,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Gets the display mode using the specified display index
         /// </summary>
@@ -1120,10 +1099,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetDisplayUsableBounds([NotNull] int displayIndex, out RectangleI rect)
-        {
-            return NativeSdl.InternalGetDisplayUsableBounds(displayIndex, out rect);
-        }
+        public static int GetDisplayUsableBounds([NotNull] int displayIndex, out RectangleI rect) => NativeSdl.InternalGetDisplayUsableBounds(displayIndex, out rect);
 
 
         /// <summary>
@@ -1133,10 +1109,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetNumDisplayModes([NotNull] int displayIndex)
-        {
-            return NativeSdl.InternalGetNumDisplayModes(displayIndex);
-        }
+        public static int GetNumDisplayModes([NotNull] int displayIndex) => NativeSdl.InternalGetNumDisplayModes(displayIndex);
 
         /// <summary>
         ///     Gets the num video displays
@@ -1144,10 +1117,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetNumVideoDisplays()
-        {
-            return NativeSdl.InternalGetNumVideoDisplays();
-        }
+        public static int GetNumVideoDisplays() => NativeSdl.InternalGetNumVideoDisplays();
 
         /// <summary>
         ///     Gets the num video drivers
@@ -1155,10 +1125,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetNumVideoDrivers()
-        {
-            return NativeSdl.InternalGetNumVideoDrivers();
-        }
+        public static int GetNumVideoDrivers() => NativeSdl.InternalGetNumVideoDrivers();
 
         /// <summary>
         ///     Sdl the get video driver using the specified index
@@ -1167,10 +1134,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The string</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string GetVideoDriver([NotNull] int index)
-        {
-            return Marshal.PtrToStringAnsi(NativeSdl.InternalGetVideoDriver(index));
-        }
+        public static string GetVideoDriver([NotNull] int index) => Marshal.PtrToStringAnsi(NativeSdl.InternalGetVideoDriver(index));
 
         /// <summary>
         ///     Gets the window brightness using the specified window
@@ -1179,10 +1143,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The float</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float GetWindowBrightness([NotNull] IntPtr window)
-        {
-            return NativeSdl.InternalGetWindowBrightness(window);
-        }
+        public static float GetWindowBrightness([NotNull] IntPtr window) => NativeSdl.InternalGetWindowBrightness(window);
 
         /// <summary>
         ///     Sets the window opacity using the specified window
@@ -1192,10 +1153,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetWindowOpacity([NotNull] IntPtr window, [NotNull] float opacity)
-        {
-            return NativeSdl.InternalSetWindowOpacity(window, opacity);
-        }
+        public static int SetWindowOpacity([NotNull] IntPtr window, [NotNull] float opacity) => NativeSdl.InternalSetWindowOpacity(window, opacity);
 
         /// <summary>
         ///     Gets the window opacity using the specified window
@@ -1205,10 +1163,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetWindowOpacity([NotNull] IntPtr window, out float outOpacity)
-        {
-            return NativeSdl.InternalGetWindowOpacity(window, out outOpacity);
-        }
+        public static int GetWindowOpacity([NotNull] IntPtr window, out float outOpacity) => NativeSdl.InternalGetWindowOpacity(window, out outOpacity);
 
         /// <summary>
         ///     Sets the window modal for using the specified modal window
@@ -1218,10 +1173,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetWindowModalFor([NotNull] IntPtr modalWindow, [NotNull] IntPtr parentWindow)
-        {
-            return NativeSdl.InternalSetWindowModalFor(modalWindow, parentWindow);
-        }
+        public static int SetWindowModalFor([NotNull] IntPtr modalWindow, [NotNull] IntPtr parentWindow) => NativeSdl.InternalSetWindowModalFor(modalWindow, parentWindow);
 
         /// <summary>
         ///     Sets the window input focus using the specified window
@@ -1230,10 +1182,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetWindowInputFocus([NotNull] IntPtr window)
-        {
-            return NativeSdl.InternalSetWindowInputFocus(window);
-        }
+        public static int SetWindowInputFocus([NotNull] IntPtr window) => NativeSdl.InternalSetWindowInputFocus(window);
 
         /// <summary>
         ///     Sdl the get window data using the specified window
@@ -1243,10 +1192,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetWindowData([NotNull] IntPtr window, [NotNull] string name)
-        {
-            return NativeSdl.InternalGetWindowData(window, name);
-        }
+        public static IntPtr GetWindowData([NotNull] IntPtr window, [NotNull] string name) => NativeSdl.InternalGetWindowData(window, name);
 
         /// <summary>
         ///     Gets the window display index using the specified window
@@ -1255,10 +1201,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetWindowDisplayIndex([NotNull] IntPtr window)
-        {
-            return NativeSdl.InternalGetWindowDisplayIndex(window);
-        }
+        public static int GetWindowDisplayIndex([NotNull] IntPtr window) => NativeSdl.InternalGetWindowDisplayIndex(window);
 
         /// <summary>
         ///     Gets the window display mode using the specified window
@@ -1275,7 +1218,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Gets the window flags using the specified window
         /// </summary>
@@ -1464,10 +1407,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetWindowSurface([NotNull] IntPtr window)
-        {
-            return NativeSdl.InternalGetWindowSurface(window);
-        }
+        public static IntPtr GetWindowSurface([NotNull] IntPtr window) => NativeSdl.InternalGetWindowSurface(window);
 
         /// <summary>
         ///     Sdl the get window title using the specified window
@@ -1506,10 +1446,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr CreateContext([NotNull] IntPtr window)
-        {
-            return NativeSdl.InternalGlCreateContext(window);
-        }
+        public static IntPtr CreateContext([NotNull] IntPtr window) => NativeSdl.InternalGlCreateContext(window);
 
         /// <summary>
         ///     Gls the delete context using the specified context
@@ -1521,7 +1458,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             NativeSdl.InternalGlDeleteContext(context);
         }
-        
+
         /// <summary>
         ///     Sdl the gl get proc address using the specified proc
         /// </summary>
@@ -1529,10 +1466,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetProcAddress([NotNull] string proc)
-        {
-            return NativeSdl.InternalGlGetProcAddress(proc);
-        }
+        public static IntPtr GetProcAddress([NotNull] string proc) => NativeSdl.InternalGlGetProcAddress(proc);
 
         /// <summary>
         ///     Sdl the gl extension supported using the specified extension
@@ -1541,10 +1475,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool ExtensionSupported([NotNull] string extension)
-        {
-            return NativeSdl.InternalGlExtensionSupported(extension);
-        }
+        public static SdlBool ExtensionSupported([NotNull] string extension) => NativeSdl.InternalGlExtensionSupported(extension);
 
         /// <summary>
         ///     Gls the reset attributes
@@ -1564,10 +1495,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetAttribute([NotNull] SdlGlAttr attr, out int value)
-        {
-            return NativeSdl.InternalGlGetAttribute(attr, out value);
-        }
+        public static int GetAttribute([NotNull] SdlGlAttr attr, out int value) => NativeSdl.InternalGlGetAttribute(attr, out value);
 
         /// <summary>
         ///     Gls the get swap interval
@@ -1575,10 +1503,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetSwapInterval()
-        {
-            return NativeSdl.InternalGlGetSwapInterval();
-        }
+        public static int GetSwapInterval() => NativeSdl.InternalGlGetSwapInterval();
 
         /// <summary>
         ///     Gls the make current using the specified window
@@ -1588,10 +1513,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int MakeCurrent([NotNull] IntPtr window, [NotNull] IntPtr context)
-        {
-            return NativeSdl.InternalGlMakeCurrent(window, context);
-        }
+        public static int MakeCurrent([NotNull] IntPtr window, [NotNull] IntPtr context) => NativeSdl.InternalGlMakeCurrent(window, context);
 
 
         /// <summary>
@@ -1600,10 +1522,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetCurrentWindow()
-        {
-            return NativeSdl.InternalGlGetCurrentWindow();
-        }
+        public static IntPtr GetCurrentWindow() => NativeSdl.InternalGlGetCurrentWindow();
 
         /// <summary>
         ///     Gls the get current context
@@ -1639,10 +1558,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetAttributeByInt([NotNull] SdlGlAttr attr, [NotNull] int value)
-        {
-            return NativeSdl.InternalGlSetAttribute(attr, value);
-        }
+        public static int SetAttributeByInt([NotNull] SdlGlAttr attr, [NotNull] int value) => NativeSdl.InternalGlSetAttribute(attr, value);
 
         /// <summary>
         ///     Sdl the gl set attribute using the specified attr
@@ -1714,7 +1630,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateInput(window);
             NativeSdl.InternalHideWindow(window);
         }
-        
+
         /// <summary>
         ///     Maximizes the window using the specified window
         /// </summary>
@@ -2111,7 +2027,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Sets the window hit test using the specified window
         /// </summary>
@@ -2233,7 +2149,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Creates the renderer using the specified window
         /// </summary>
@@ -2243,10 +2159,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr CreateRenderer([NotNull] IntPtr window, [NotNull] int index, SdlRendererFlags flags)
-        {
-            return NativeSdl.InternalCreateRenderer(window, index, flags);
-        }
+        public static IntPtr CreateRenderer([NotNull] IntPtr window, [NotNull] int index, SdlRendererFlags flags) => NativeSdl.InternalCreateRenderer(window, index, flags);
 
         /// <summary>
         ///     Creates the software renderer using the specified surface
@@ -2255,10 +2168,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr CreateSoftwareRenderer([NotNull] IntPtr surface)
-        {
-            return NativeSdl.InternalCreateSoftwareRenderer(surface);
-        }
+        public static IntPtr CreateSoftwareRenderer([NotNull] IntPtr surface) => NativeSdl.InternalCreateSoftwareRenderer(surface);
 
         /// <summary>
         ///     Creates the texture using the specified renderer
@@ -2271,10 +2181,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr CreateTexture([NotNull] IntPtr renderer, [NotNull] uint format, [NotNull] int access, [NotNull] int w, [NotNull] int h)
-        {
-            return NativeSdl.InternalCreateTexture(renderer, format, access, w, h);
-        }
+        public static IntPtr CreateTexture([NotNull] IntPtr renderer, [NotNull] uint format, [NotNull] int access, [NotNull] int w, [NotNull] int h) => NativeSdl.InternalCreateTexture(renderer, format, access, w, h);
 
         /// <summary>
         ///     Creates the texture from surface using the specified renderer
@@ -2284,10 +2191,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr CreateTextureFromSurface([NotNull] IntPtr renderer, [NotNull] IntPtr surface)
-        {
-            return NativeSdl.InternalCreateTextureFromSurface(renderer, surface);
-        }
+        public static IntPtr CreateTextureFromSurface([NotNull] IntPtr renderer, [NotNull] IntPtr surface) => NativeSdl.InternalCreateTextureFromSurface(renderer, surface);
 
         /// <summary>
         ///     Destroys the renderer using the specified renderer
@@ -2317,10 +2221,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetNumRenderDrivers()
-        {
-            return NativeSdl.InternalGetNumRenderDrivers();
-        }
+        public static int GetNumRenderDrivers() => NativeSdl.InternalGetNumRenderDrivers();
 
         /// <summary>
         ///     Gets the render draw blend mode using the specified renderer
@@ -2330,10 +2231,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetRenderDrawBlendMode([NotNull] IntPtr renderer, out SdlBlendMode blendMode)
-        {
-            return NativeSdl.InternalGetRenderDrawBlendMode(renderer, out blendMode);
-        }
+        public static int GetRenderDrawBlendMode([NotNull] IntPtr renderer, out SdlBlendMode blendMode) => NativeSdl.InternalGetRenderDrawBlendMode(renderer, out blendMode);
 
         /// <summary>
         ///     Sets the texture scale mode using the specified texture
@@ -2343,10 +2241,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetTextureScaleMode([NotNull] IntPtr texture, SdlScaleMode scaleMode)
-        {
-            return NativeSdl.InternalSetTextureScaleMode(texture, scaleMode);
-        }
+        public static int SetTextureScaleMode([NotNull] IntPtr texture, SdlScaleMode scaleMode) => NativeSdl.InternalSetTextureScaleMode(texture, scaleMode);
 
         /// <summary>
         ///     Gets the texture scale mode using the specified texture
@@ -2356,10 +2251,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetTextureScaleMode([NotNull] IntPtr texture, out SdlScaleMode scaleMode)
-        {
-            return NativeSdl.InternalGetTextureScaleMode(texture, out scaleMode);
-        }
+        public static int GetTextureScaleMode([NotNull] IntPtr texture, out SdlScaleMode scaleMode) => NativeSdl.InternalGetTextureScaleMode(texture, out scaleMode);
 
         /// <summary>
         ///     Sets the texture user data using the specified texture
@@ -2369,10 +2261,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetTextureUserData([NotNull] IntPtr texture, [NotNull] IntPtr userdata)
-        {
-            return NativeSdl.InternalSetTextureUserData(texture, userdata);
-        }
+        public static int SetTextureUserData([NotNull] IntPtr texture, [NotNull] IntPtr userdata) => NativeSdl.InternalSetTextureUserData(texture, userdata);
 
         /// <summary>
         ///     Internals the sdl get texture user data using the specified texture
@@ -2381,10 +2270,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetTextureUserData([NotNull] IntPtr texture)
-        {
-            return NativeSdl.InternalGetTextureUserData(texture);
-        }
+        public static IntPtr GetTextureUserData([NotNull] IntPtr texture) => NativeSdl.InternalGetTextureUserData(texture);
 
         /// <summary>
         ///     Gets the render draw color using the specified renderer
@@ -2397,10 +2283,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetRenderDrawColor([NotNull] IntPtr renderer, out byte r, out byte g, out byte b, out byte a)
-        {
-            return NativeSdl.InternalGetRenderDrawColor(renderer, out r, out g, out b, out a);
-        }
+        public static int GetRenderDrawColor([NotNull] IntPtr renderer, out byte r, out byte g, out byte b, out byte a) => NativeSdl.InternalGetRenderDrawColor(renderer, out r, out g, out b, out a);
 
         /// <summary>
         ///     Gets the render driver info using the specified index
@@ -2410,10 +2293,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetRenderDriverInfo([NotNull] int index, out SdlRendererInfo info)
-        {
-            return NativeSdl.InternalGetRenderDriverInfo(index, out info);
-        }
+        public static int GetRenderDriverInfo([NotNull] int index, out SdlRendererInfo info) => NativeSdl.InternalGetRenderDriverInfo(index, out info);
 
         /// <summary>
         ///     Gets the renderer using the specified window
@@ -2422,10 +2302,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetRenderer([NotNull] IntPtr window)
-        {
-            return NativeSdl.InternalGetRenderer(window);
-        }
+        public static IntPtr GetRenderer([NotNull] IntPtr window) => NativeSdl.InternalGetRenderer(window);
 
         /// <summary>
         ///     Gets the renderer info using the specified renderer
@@ -2435,10 +2312,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetRendererInfo([NotNull] IntPtr renderer, out SdlRendererInfo info)
-        {
-            return NativeSdl.InternalGetRendererInfo(renderer, out info);
-        }
+        public static int GetRendererInfo([NotNull] IntPtr renderer, out SdlRendererInfo info) => NativeSdl.InternalGetRendererInfo(renderer, out info);
 
         /// <summary>
         ///     Gets the renderer output size using the specified renderer
@@ -2449,10 +2323,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetRendererOutputSize([NotNull] IntPtr renderer, out int w, out int h)
-        {
-            return NativeSdl.InternalGetRendererOutputSize(renderer, out w, out h);
-        }
+        public static int GetRendererOutputSize([NotNull] IntPtr renderer, out int w, out int h) => NativeSdl.InternalGetRendererOutputSize(renderer, out w, out h);
 
         /// <summary>
         ///     Gets the texture alpha mod using the specified texture
@@ -2462,10 +2333,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetTextureAlphaMod([NotNull] IntPtr texture, out byte alpha)
-        {
-            return NativeSdl.InternalGetTextureAlphaMod(texture, out alpha);
-        }
+        public static int GetTextureAlphaMod([NotNull] IntPtr texture, out byte alpha) => NativeSdl.InternalGetTextureAlphaMod(texture, out alpha);
 
         /// <summary>
         ///     Gets the texture blend mode using the specified texture
@@ -2475,10 +2343,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetTextureBlendMode([NotNull] IntPtr texture, out SdlBlendMode blendMode)
-        {
-            return NativeSdl.InternalGetTextureBlendMode(texture, out blendMode);
-        }
+        public static int GetTextureBlendMode([NotNull] IntPtr texture, out SdlBlendMode blendMode) => NativeSdl.InternalGetTextureBlendMode(texture, out blendMode);
 
         /// <summary>
         ///     Gets the texture color mod using the specified texture
@@ -2490,10 +2355,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetTextureColorMod([NotNull] IntPtr texture, out byte r, out byte g, out byte b)
-        {
-            return NativeSdl.InternalGetTextureColorMod(texture, out r, out g, out b);
-        }
+        public static int GetTextureColorMod([NotNull] IntPtr texture, out byte r, out byte g, out byte b) => NativeSdl.InternalGetTextureColorMod(texture, out r, out g, out b);
 
         /// <summary>
         ///     Locks the texture using the specified texture
@@ -2505,10 +2367,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int LockTexture([NotNull] IntPtr texture, ref RectangleI rect, out IntPtr pixels, out int pitch)
-        {
-            return NativeSdl.InternalLockTexture(texture, ref rect, out pixels, out pitch);
-        }
+        public static int LockTexture([NotNull] IntPtr texture, ref RectangleI rect, out IntPtr pixels, out int pitch) => NativeSdl.InternalLockTexture(texture, ref rect, out pixels, out pitch);
 
         /// <summary>
         ///     Locks the texture using the specified texture
@@ -2520,10 +2379,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int LockTexture([NotNull] IntPtr texture, [NotNull] IntPtr rect, out IntPtr pixels, out int pitch)
-        {
-            return NativeSdl.InternalLockTexture(texture, rect, out pixels, out pitch);
-        }
+        public static int LockTexture([NotNull] IntPtr texture, [NotNull] IntPtr rect, out IntPtr pixels, out int pitch) => NativeSdl.InternalLockTexture(texture, rect, out pixels, out pitch);
 
         /// <summary>
         ///     Locks the texture to surface using the specified texture
@@ -2534,10 +2390,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int LockTextureToSurface([NotNull] IntPtr texture, ref RectangleI rect, out IntPtr surface)
-        {
-            return NativeSdl.InternalLockTextureToSurface(texture, ref rect, out surface);
-        }
+        public static int LockTextureToSurface([NotNull] IntPtr texture, ref RectangleI rect, out IntPtr surface) => NativeSdl.InternalLockTextureToSurface(texture, ref rect, out surface);
 
         /// <summary>
         ///     Locks the texture to surface using the specified texture
@@ -2548,10 +2401,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int LockTextureToSurface([NotNull] IntPtr texture, [NotNull] IntPtr rect, out IntPtr surface)
-        {
-            return NativeSdl.InternalLockTextureToSurface(texture, rect, out surface);
-        }
+        public static int LockTextureToSurface([NotNull] IntPtr texture, [NotNull] IntPtr rect, out IntPtr surface) => NativeSdl.InternalLockTextureToSurface(texture, rect, out surface);
 
         /// <summary>
         ///     Queries the texture using the specified texture
@@ -2564,10 +2414,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int QueryTexture([NotNull] IntPtr texture, out uint format, out int access, out int w, out int h)
-        {
-            return NativeSdl.InternalQueryTexture(texture, out format, out access, out w, out h);
-        }
+        public static int QueryTexture([NotNull] IntPtr texture, out uint format, out int access, out int w, out int h) => NativeSdl.InternalQueryTexture(texture, out format, out access, out w, out h);
 
         /// <summary>
         ///     Renders the clear using the specified renderer
@@ -2576,10 +2423,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderClear([NotNull] IntPtr renderer)
-        {
-            return NativeSdl.InternalRenderClear(renderer);
-        }
+        public static int RenderClear([NotNull] IntPtr renderer) => NativeSdl.InternalRenderClear(renderer);
 
         /// <summary>
         ///     Renders the copy using the specified renderer
@@ -2591,10 +2435,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopy([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect)
-        {
-            return NativeSdl.InternalRenderCopy(renderer, texture, ref srcRect, ref dstRect);
-        }
+        public static int RenderCopy([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect) => NativeSdl.InternalRenderCopy(renderer, texture, ref srcRect, ref dstRect);
 
         /// <summary>
         ///     Renders the copy using the specified renderer
@@ -2606,10 +2447,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopy([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, ref RectangleI dstRect)
-        {
-            return NativeSdl.InternalRenderCopy(renderer, texture, srcRect, ref dstRect);
-        }
+        public static int RenderCopy([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, ref RectangleI dstRect) => NativeSdl.InternalRenderCopy(renderer, texture, srcRect, ref dstRect);
 
         /// <summary>
         ///     Renders the copy using the specified renderer
@@ -2621,10 +2459,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopy([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, [NotNull] IntPtr dstRect)
-        {
-            return NativeSdl.InternalRenderCopy(renderer, texture, ref srcRect, dstRect);
-        }
+        public static int RenderCopy([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, [NotNull] IntPtr dstRect) => NativeSdl.InternalRenderCopy(renderer, texture, ref srcRect, dstRect);
 
         /// <summary>
         ///     Renders the copy using the specified renderer
@@ -2636,10 +2471,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopy([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, [NotNull] IntPtr dstRect)
-        {
-            return NativeSdl.InternalRenderCopy(renderer, texture, srcRect, dstRect);
-        }
+        public static int RenderCopy([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, [NotNull] IntPtr dstRect) => NativeSdl.InternalRenderCopy(renderer, texture, srcRect, dstRect);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -2654,10 +2486,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle, ref PointI center, SdlRendererFlip flip)
-        {
-            return NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, ref dstRect, angle, ref center, flip);
-        }
+        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle, ref PointI center, SdlRendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, ref dstRect, angle, ref center, flip);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -2672,10 +2501,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, ref RectangleI dstRect, double angle, ref PointI center, SdlRendererFlip flip)
-        {
-            return NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, ref dstRect, angle, ref center, flip);
-        }
+        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, ref RectangleI dstRect, double angle, ref PointI center, SdlRendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, ref dstRect, angle, ref center, flip);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -2690,10 +2516,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, [NotNull] IntPtr dstRect, double angle, ref PointI center, SdlRendererFlip flip)
-        {
-            return NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, dstRect, angle, ref center, flip);
-        }
+        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, [NotNull] IntPtr dstRect, double angle, ref PointI center, SdlRendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, dstRect, angle, ref center, flip);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -2708,10 +2531,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle, [NotNull] IntPtr center, SdlRendererFlip flip)
-        {
-            return NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, ref dstRect, angle, center, flip);
-        }
+        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle, [NotNull] IntPtr center, SdlRendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, ref dstRect, angle, center, flip);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -2726,10 +2546,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, [NotNull] IntPtr dstRect, double angle, ref PointI center, SdlRendererFlip flip)
-        {
-            return NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, dstRect, angle, ref center, flip);
-        }
+        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, [NotNull] IntPtr dstRect, double angle, ref PointI center, SdlRendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, dstRect, angle, ref center, flip);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -2744,10 +2561,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, ref RectangleI dstRect, double angle, [NotNull] IntPtr center, SdlRendererFlip flip)
-        {
-            return NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, ref dstRect, angle, center, flip);
-        }
+        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, ref RectangleI dstRect, double angle, [NotNull] IntPtr center, SdlRendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, ref dstRect, angle, center, flip);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -2762,10 +2576,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, [NotNull] IntPtr dstRect, double angle, [NotNull] IntPtr center, SdlRendererFlip flip)
-        {
-            return NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, dstRect, angle, center, flip);
-        }
+        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, [NotNull] IntPtr dstRect, double angle, [NotNull] IntPtr center, SdlRendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, dstRect, angle, center, flip);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -2780,10 +2591,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, [NotNull] IntPtr dstRect, double angle, [NotNull] IntPtr center, SdlRendererFlip flip)
-        {
-            return NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, dstRect, angle, center, flip);
-        }
+        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, [NotNull] IntPtr dstRect, double angle, [NotNull] IntPtr center, SdlRendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, dstRect, angle, center, flip);
 
         /// <summary>
         ///     Renders the draw line using the specified renderer
@@ -2796,10 +2604,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderDrawLine([NotNull] IntPtr renderer, [NotNull] int x1, [NotNull] int y1, [NotNull] int x2, [NotNull] int y2)
-        {
-            return NativeSdl.InternalRenderDrawLine(renderer, x1, y1, x2, y2);
-        }
+        public static int RenderDrawLine([NotNull] IntPtr renderer, [NotNull] int x1, [NotNull] int y1, [NotNull] int x2, [NotNull] int y2) => NativeSdl.InternalRenderDrawLine(renderer, x1, y1, x2, y2);
 
         /// <summary>
         ///     Renders the draw lines using the specified renderer
@@ -2810,10 +2615,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderDrawLines([NotNull] IntPtr renderer, [In] PointI[] points, [NotNull] int count)
-        {
-            return NativeSdl.InternalRenderDrawLines(renderer, points, count);
-        }
+        public static int RenderDrawLines([NotNull] IntPtr renderer, [In] PointI[] points, [NotNull] int count) => NativeSdl.InternalRenderDrawLines(renderer, points, count);
 
         /// <summary>
         ///     Renders the draw point using the specified renderer
@@ -2824,10 +2626,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderDrawPoint([NotNull] IntPtr renderer, [NotNull] int x, [NotNull] int y)
-        {
-            return NativeSdl.InternalRenderDrawPoint(renderer, x, y);
-        }
+        public static int RenderDrawPoint([NotNull] IntPtr renderer, [NotNull] int x, [NotNull] int y) => NativeSdl.InternalRenderDrawPoint(renderer, x, y);
 
         /// <summary>
         ///     Renders the draw points using the specified renderer
@@ -2838,10 +2637,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderDrawPoints([NotNull] IntPtr renderer, [In] PointI[] points, [NotNull] int count)
-        {
-            return NativeSdl.InternalRenderDrawPoints(renderer, points, count);
-        }
+        public static int RenderDrawPoints([NotNull] IntPtr renderer, [In] PointI[] points, [NotNull] int count) => NativeSdl.InternalRenderDrawPoints(renderer, points, count);
 
         /// <summary>
         ///     Renders the draw rect using the specified renderer
@@ -2851,10 +2647,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderDrawRect([NotNull] IntPtr renderer, ref RectangleI rect)
-        {
-            return NativeSdl.InternalRenderDrawRect(renderer, ref rect);
-        }
+        public static int RenderDrawRect([NotNull] IntPtr renderer, ref RectangleI rect) => NativeSdl.InternalRenderDrawRect(renderer, ref rect);
 
         /// <summary>
         ///     Renders the draw rect using the specified renderer
@@ -2864,10 +2657,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderDrawRect([NotNull] IntPtr renderer, [NotNull] IntPtr rect)
-        {
-            return NativeSdl.InternalRenderDrawRect(renderer, rect);
-        }
+        public static int RenderDrawRect([NotNull] IntPtr renderer, [NotNull] IntPtr rect) => NativeSdl.InternalRenderDrawRect(renderer, rect);
 
         /// <summary>
         ///     Renders the draw rects using the specified renderer
@@ -2878,10 +2668,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderDrawRects([NotNull] IntPtr renderer, [In] RectangleI[] rects, [NotNull] int count)
-        {
-            return NativeSdl.InternalRenderDrawRects(renderer, rects, count);
-        }
+        public static int RenderDrawRects([NotNull] IntPtr renderer, [In] RectangleI[] rects, [NotNull] int count) => NativeSdl.InternalRenderDrawRects(renderer, rects, count);
 
         /// <summary>
         ///     Renders the fill rect using the specified renderer
@@ -2891,10 +2678,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderFillRect([NotNull] IntPtr renderer, ref RectangleI rect)
-        {
-            return NativeSdl.InternalRenderFillRect(renderer, ref rect);
-        }
+        public static int RenderFillRect([NotNull] IntPtr renderer, ref RectangleI rect) => NativeSdl.InternalRenderFillRect(renderer, ref rect);
 
         /// <summary>
         ///     Renders the fill rect using the specified renderer
@@ -2904,10 +2688,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderFillRect([NotNull] IntPtr renderer, [NotNull] IntPtr rect)
-        {
-            return NativeSdl.InternalRenderFillRect(renderer, rect);
-        }
+        public static int RenderFillRect([NotNull] IntPtr renderer, [NotNull] IntPtr rect) => NativeSdl.InternalRenderFillRect(renderer, rect);
 
         /// <summary>
         ///     Renders the fill rects using the specified renderer
@@ -2918,10 +2699,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderFillRects([NotNull] IntPtr renderer, [In] RectangleI[] rects, [NotNull] int count)
-        {
-            return NativeSdl.InternalRenderFillRects(renderer, rects, count);
-        }
+        public static int RenderFillRects([NotNull] IntPtr renderer, [In] RectangleI[] rects, [NotNull] int count) => NativeSdl.InternalRenderFillRects(renderer, rects, count);
 
         /// <summary>
         ///     Renders the copy f using the specified renderer
@@ -2933,10 +2711,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst)
-        {
-            return NativeSdl.InternalRenderCopyF(renderer, texture, ref srcRect, ref dst);
-        }
+        public static int RenderCopyF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst) => NativeSdl.InternalRenderCopyF(renderer, texture, ref srcRect, ref dst);
 
         /// <summary>
         ///     Renders the copy f using the specified renderer
@@ -2948,10 +2723,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, ref RectangleF dst)
-        {
-            return NativeSdl.InternalRenderCopyF(renderer, texture, srcRect, ref dst);
-        }
+        public static int RenderCopyF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, ref RectangleF dst) => NativeSdl.InternalRenderCopyF(renderer, texture, srcRect, ref dst);
 
         /// <summary>
         ///     Renders the copy f using the specified renderer
@@ -2963,10 +2735,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, [NotNull] IntPtr dstRect)
-        {
-            return NativeSdl.InternalRenderCopyF(renderer, texture, ref srcRect, dstRect);
-        }
+        public static int RenderCopyF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, [NotNull] IntPtr dstRect) => NativeSdl.InternalRenderCopyF(renderer, texture, ref srcRect, dstRect);
 
         /// <summary>
         ///     Renders the copy f using the specified renderer
@@ -2978,10 +2747,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, [NotNull] IntPtr dstRect)
-        {
-            return NativeSdl.InternalRenderCopyF(renderer, texture, srcRect, dstRect);
-        }
+        public static int RenderCopyF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, [NotNull] IntPtr dstRect) => NativeSdl.InternalRenderCopyF(renderer, texture, srcRect, dstRect);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -2996,10 +2762,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, ref PointF center, SdlRendererFlip flip)
-        {
-            return NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, ref dst, angle, ref center, flip);
-        }
+        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, ref PointF center, SdlRendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, ref dst, angle, ref center, flip);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -3014,10 +2777,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, ref RectangleF dst, double angle, ref PointF center, SdlRendererFlip flip)
-        {
-            return NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, ref dst, angle, ref center, flip);
-        }
+        public static int RenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, ref RectangleF dst, double angle, ref PointF center, SdlRendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, ref dst, angle, ref center, flip);
 
         /// <summary>
         ///     Renders the copy ex f using the specified renderer
@@ -3032,10 +2792,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyExF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, [NotNull] IntPtr dstRect, double angle, ref PointF center, SdlRendererFlip flip)
-        {
-            return NativeSdl.InternalRenderCopyExF(renderer, texture, ref srcRect, dstRect, angle, ref center, flip);
-        }
+        public static int RenderCopyExF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, [NotNull] IntPtr dstRect, double angle, ref PointF center, SdlRendererFlip flip) => NativeSdl.InternalRenderCopyExF(renderer, texture, ref srcRect, dstRect, angle, ref center, flip);
 
         /// <summary>
         ///     Renders the copy ex f using the specified renderer
@@ -3050,10 +2807,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyExF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, [NotNull] IntPtr center, SdlRendererFlip flip)
-        {
-            return NativeSdl.InternalRenderCopyExF(renderer, texture, ref srcRect, ref dst, angle, center, flip);
-        }
+        public static int RenderCopyExF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, [NotNull] IntPtr center, SdlRendererFlip flip) => NativeSdl.InternalRenderCopyExF(renderer, texture, ref srcRect, ref dst, angle, center, flip);
 
         /// <summary>
         ///     Renders the copy ex f using the specified renderer
@@ -3068,10 +2822,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyExF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, [NotNull] IntPtr dstRect, double angle, ref PointF center, SdlRendererFlip flip)
-        {
-            return NativeSdl.InternalRenderCopyExF(renderer, texture, srcRect, dstRect, angle, ref center, flip);
-        }
+        public static int RenderCopyExF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, [NotNull] IntPtr dstRect, double angle, ref PointF center, SdlRendererFlip flip) => NativeSdl.InternalRenderCopyExF(renderer, texture, srcRect, dstRect, angle, ref center, flip);
 
 
         /// <summary>
@@ -3087,10 +2838,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyExF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, ref RectangleF dst, double angle, [NotNull] IntPtr center, SdlRendererFlip flip)
-        {
-            return NativeSdl.InternalRenderCopyExF(renderer, texture, srcRect, ref dst, angle, center, flip);
-        }
+        public static int RenderCopyExF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, ref RectangleF dst, double angle, [NotNull] IntPtr center, SdlRendererFlip flip) => NativeSdl.InternalRenderCopyExF(renderer, texture, srcRect, ref dst, angle, center, flip);
 
 
         /// <summary>
@@ -3106,10 +2854,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyExF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, [NotNull] IntPtr dstRect, double angle, [NotNull] IntPtr center, SdlRendererFlip flip)
-        {
-            return NativeSdl.InternalRenderCopyExF(renderer, texture, ref srcRect, dstRect, angle, center, flip);
-        }
+        public static int RenderCopyExF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, [NotNull] IntPtr dstRect, double angle, [NotNull] IntPtr center, SdlRendererFlip flip) => NativeSdl.InternalRenderCopyExF(renderer, texture, ref srcRect, dstRect, angle, center, flip);
 
 
         /// <summary>
@@ -3125,10 +2870,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyExF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, [NotNull] IntPtr dstRect, double angle, [NotNull] IntPtr center, SdlRendererFlip flip)
-        {
-            return NativeSdl.InternalRenderCopyExF(renderer, texture, srcRect, dstRect, angle, center, flip);
-        }
+        public static int RenderCopyExF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, [NotNull] IntPtr dstRect, double angle, [NotNull] IntPtr center, SdlRendererFlip flip) => NativeSdl.InternalRenderCopyExF(renderer, texture, srcRect, dstRect, angle, center, flip);
 
 
         /// <summary>
@@ -3143,10 +2885,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderGeometry([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [In] SdlVertex[] vertices, [NotNull] int numVertices, [In] [NotNull] int[] indices, [NotNull] int numIndices)
-        {
-            return NativeSdl.InternalRenderGeometry(renderer, texture, vertices, numVertices, indices, numIndices);
-        }
+        public static int RenderGeometry([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [In] SdlVertex[] vertices, [NotNull] int numVertices, [In] [NotNull] int[] indices, [NotNull] int numIndices) => NativeSdl.InternalRenderGeometry(renderer, texture, vertices, numVertices, indices, numIndices);
 
         /// <summary>
         ///     Renders the draw point f using the specified renderer
@@ -3157,10 +2896,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderDrawPointF([NotNull] IntPtr renderer, float x, float y)
-        {
-            return NativeSdl.InternalRenderDrawPointF(renderer, x, y);
-        }
+        public static int RenderDrawPointF([NotNull] IntPtr renderer, float x, float y) => NativeSdl.InternalRenderDrawPointF(renderer, x, y);
 
         /// <summary>
         ///     Renders the draw points f using the specified renderer
@@ -3171,10 +2907,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderDrawPointsF(IntPtr renderer, [In] PointF[] points, [NotNull] int count)
-        {
-            return NativeSdl.InternalRenderDrawPointsF(renderer, points, count);
-        }
+        public static int RenderDrawPointsF(IntPtr renderer, [In] PointF[] points, [NotNull] int count) => NativeSdl.InternalRenderDrawPointsF(renderer, points, count);
 
         /// <summary>
         ///     Renders the draw line f using the specified renderer
@@ -3187,10 +2920,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderDrawLineF([NotNull] IntPtr renderer, float x1, float y1, float x2, float y2)
-        {
-            return NativeSdl.InternalRenderDrawLineF(renderer, x1, y1, x2, y2);
-        }
+        public static int RenderDrawLineF([NotNull] IntPtr renderer, float x1, float y1, float x2, float y2) => NativeSdl.InternalRenderDrawLineF(renderer, x1, y1, x2, y2);
 
 
         /// <summary>
@@ -3202,10 +2932,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderDrawLinesF([NotNull] IntPtr renderer, [In] PointF[] points, [NotNull] int count)
-        {
-            return NativeSdl.InternalRenderDrawLinesF(renderer, points, count);
-        }
+        public static int RenderDrawLinesF([NotNull] IntPtr renderer, [In] PointF[] points, [NotNull] int count) => NativeSdl.InternalRenderDrawLinesF(renderer, points, count);
 
 
         /// <summary>
@@ -3216,10 +2943,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderDrawRectF([NotNull] IntPtr renderer, ref RectangleF rect)
-        {
-            return NativeSdl.InternalRenderDrawRectF(renderer, ref rect);
-        }
+        public static int RenderDrawRectF([NotNull] IntPtr renderer, ref RectangleF rect) => NativeSdl.InternalRenderDrawRectF(renderer, ref rect);
 
 
         /// <summary>
@@ -3230,10 +2954,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderDrawRectF([NotNull] IntPtr renderer, [NotNull] IntPtr rect)
-        {
-            return NativeSdl.InternalRenderDrawRectF(renderer, rect);
-        }
+        public static int RenderDrawRectF([NotNull] IntPtr renderer, [NotNull] IntPtr rect) => NativeSdl.InternalRenderDrawRectF(renderer, rect);
 
 
         /// <summary>
@@ -3245,10 +2966,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderDrawRectsF([NotNull] IntPtr renderer, [In] RectangleF[] rects, [NotNull] int count)
-        {
-            return NativeSdl.InternalRenderDrawRectsF(renderer, rects, count);
-        }
+        public static int RenderDrawRectsF([NotNull] IntPtr renderer, [In] RectangleF[] rects, [NotNull] int count) => NativeSdl.InternalRenderDrawRectsF(renderer, rects, count);
 
 
         /// <summary>
@@ -3259,10 +2977,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderFillRectF([NotNull] IntPtr renderer, RectangleF rect)
-        {
-            return NativeSdl.InternalRenderFillRectF(renderer, rect);
-        }
+        public static int RenderFillRectF([NotNull] IntPtr renderer, RectangleF rect) => NativeSdl.InternalRenderFillRectF(renderer, rect);
 
         /// <summary>
         ///     Renders the fill rect f using the specified renderer
@@ -3272,10 +2987,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderFillRectF([NotNull] IntPtr renderer, [NotNull] IntPtr rect)
-        {
-            return NativeSdl.InternalRenderFillRectF(renderer, rect);
-        }
+        public static int RenderFillRectF([NotNull] IntPtr renderer, [NotNull] IntPtr rect) => NativeSdl.InternalRenderFillRectF(renderer, rect);
 
         /// <summary>
         ///     Renders the fill rects f using the specified renderer
@@ -3286,10 +2998,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderFillRectsF([NotNull] IntPtr renderer, [In] RectangleF[] rects, [NotNull] int count)
-        {
-            return NativeSdl.InternalRenderFillRectsF(renderer, rects, count);
-        }
+        public static int RenderFillRectsF([NotNull] IntPtr renderer, [In] RectangleF[] rects, [NotNull] int count) => NativeSdl.InternalRenderFillRectsF(renderer, rects, count);
 
 
         /// <summary>
@@ -3373,10 +3082,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderGetViewport([NotNull] IntPtr renderer, out RectangleI rect)
-        {
-            return NativeSdl.InternalRenderGetViewport(renderer, out rect);
-        }
+        public static int RenderGetViewport([NotNull] IntPtr renderer, out RectangleI rect) => NativeSdl.InternalRenderGetViewport(renderer, out rect);
 
         /// <summary>
         ///     Renders the present using the specified renderer
@@ -3400,10 +3106,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderReadPixels([NotNull] IntPtr renderer, ref RectangleI rect, [NotNull] uint format, [NotNull] IntPtr pixels, [NotNull] int pitch)
-        {
-            return NativeSdl.InternalRenderReadPixels(renderer, ref rect, format, pixels, pitch);
-        }
+        public static int RenderReadPixels([NotNull] IntPtr renderer, ref RectangleI rect, [NotNull] uint format, [NotNull] IntPtr pixels, [NotNull] int pitch) => NativeSdl.InternalRenderReadPixels(renderer, ref rect, format, pixels, pitch);
 
 
         /// <summary>
@@ -3414,10 +3117,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderSetClipRect([NotNull] IntPtr renderer, ref RectangleI rect)
-        {
-            return NativeSdl.InternalRenderSetClipRect(renderer, ref rect);
-        }
+        public static int RenderSetClipRect([NotNull] IntPtr renderer, ref RectangleI rect) => NativeSdl.InternalRenderSetClipRect(renderer, ref rect);
 
 
         /// <summary>
@@ -3428,10 +3128,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderSetClipRect([NotNull] IntPtr renderer, [NotNull] IntPtr rect)
-        {
-            return NativeSdl.InternalRenderSetClipRect(renderer, rect);
-        }
+        public static int RenderSetClipRect([NotNull] IntPtr renderer, [NotNull] IntPtr rect) => NativeSdl.InternalRenderSetClipRect(renderer, rect);
 
 
         /// <summary>
@@ -3443,10 +3140,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderSetLogicalSize([NotNull] IntPtr renderer, [NotNull] int w, [NotNull] int h)
-        {
-            return NativeSdl.InternalRenderSetLogicalSize(renderer, w, h);
-        }
+        public static int RenderSetLogicalSize([NotNull] IntPtr renderer, [NotNull] int w, [NotNull] int h) => NativeSdl.InternalRenderSetLogicalSize(renderer, w, h);
 
 
         /// <summary>
@@ -3458,10 +3152,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderSetScale([NotNull] IntPtr renderer, float scaleX, float scaleY)
-        {
-            return NativeSdl.InternalRenderSetScale(renderer, scaleX, scaleY);
-        }
+        public static int RenderSetScale([NotNull] IntPtr renderer, float scaleX, float scaleY) => NativeSdl.InternalRenderSetScale(renderer, scaleX, scaleY);
 
 
         /// <summary>
@@ -3472,10 +3163,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderSetIntegerScale([NotNull] IntPtr renderer, SdlBool enable)
-        {
-            return NativeSdl.InternalRenderSetIntegerScale(renderer, enable);
-        }
+        public static int RenderSetIntegerScale([NotNull] IntPtr renderer, SdlBool enable) => NativeSdl.InternalRenderSetIntegerScale(renderer, enable);
 
         /// <summary>
         ///     Renders the set viewport using the specified renderer
@@ -3485,10 +3173,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderSetViewport([NotNull] IntPtr renderer, ref RectangleI rect)
-        {
-            return NativeSdl.InternalRenderSetViewport(renderer, ref rect);
-        }
+        public static int RenderSetViewport([NotNull] IntPtr renderer, ref RectangleI rect) => NativeSdl.InternalRenderSetViewport(renderer, ref rect);
 
 
         /// <summary>
@@ -3499,10 +3184,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetRenderDrawBlendMode([NotNull] IntPtr renderer, SdlBlendMode blendMode)
-        {
-            return NativeSdl.InternalSetRenderDrawBlendMode(renderer, blendMode);
-        }
+        public static int SetRenderDrawBlendMode([NotNull] IntPtr renderer, SdlBlendMode blendMode) => NativeSdl.InternalSetRenderDrawBlendMode(renderer, blendMode);
 
         /// <summary>
         ///     Sets the render draw color using the specified renderer
@@ -3515,10 +3197,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetRenderDrawColor([NotNull] IntPtr renderer, [NotNull] byte r, [NotNull] byte g, [NotNull] byte b, [NotNull] byte a)
-        {
-            return NativeSdl.InternalSetRenderDrawColor(renderer, r, g, b, a);
-        }
+        public static int SetRenderDrawColor([NotNull] IntPtr renderer, [NotNull] byte r, [NotNull] byte g, [NotNull] byte b, [NotNull] byte a) => NativeSdl.InternalSetRenderDrawColor(renderer, r, g, b, a);
 
 
         /// <summary>
@@ -3529,10 +3208,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetRenderTarget([NotNull] IntPtr renderer, [NotNull] IntPtr texture)
-        {
-            return NativeSdl.InternalSetRenderTarget(renderer, texture);
-        }
+        public static int SetRenderTarget([NotNull] IntPtr renderer, [NotNull] IntPtr texture) => NativeSdl.InternalSetRenderTarget(renderer, texture);
 
         /// <summary>
         ///     Sets the texture alpha mod using the specified texture
@@ -3542,10 +3218,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetTextureAlphaMod([NotNull] IntPtr texture, [NotNull] byte alpha)
-        {
-            return NativeSdl.InternalSetTextureAlphaMod(texture, alpha);
-        }
+        public static int SetTextureAlphaMod([NotNull] IntPtr texture, [NotNull] byte alpha) => NativeSdl.InternalSetTextureAlphaMod(texture, alpha);
 
 
         /// <summary>
@@ -3556,10 +3229,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetTextureBlendMode([NotNull] IntPtr texture, SdlBlendMode blendMode)
-        {
-            return NativeSdl.InternalSetTextureBlendMode(texture, blendMode);
-        }
+        public static int SetTextureBlendMode([NotNull] IntPtr texture, SdlBlendMode blendMode) => NativeSdl.InternalSetTextureBlendMode(texture, blendMode);
 
 
         /// <summary>
@@ -3572,10 +3242,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetTextureColorMod([NotNull] IntPtr texture, [NotNull] byte r, [NotNull] byte g, [NotNull] byte b)
-        {
-            return NativeSdl.InternalSetTextureColorMod(texture, r, g, b);
-        }
+        public static int SetTextureColorMod([NotNull] IntPtr texture, [NotNull] byte r, [NotNull] byte g, [NotNull] byte b) => NativeSdl.InternalSetTextureColorMod(texture, r, g, b);
 
 
         /// <summary>
@@ -3599,10 +3266,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int UpdateTexture([NotNull] IntPtr texture, ref RectangleI rect, [NotNull] IntPtr pixels, [NotNull] int pitch)
-        {
-            return NativeSdl.InternalUpdateTexture(texture, ref rect, pixels, pitch);
-        }
+        public static int UpdateTexture([NotNull] IntPtr texture, ref RectangleI rect, [NotNull] IntPtr pixels, [NotNull] int pitch) => NativeSdl.InternalUpdateTexture(texture, ref rect, pixels, pitch);
 
         /// <summary>
         ///     Updates the texture using the specified texture
@@ -3614,10 +3278,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int UpdateTexture([NotNull] IntPtr texture, [NotNull] IntPtr rect, [NotNull] IntPtr pixels, [NotNull] int pitch)
-        {
-            return NativeSdl.InternalUpdateTexture(texture, rect, pixels, pitch);
-        }
+        public static int UpdateTexture([NotNull] IntPtr texture, [NotNull] IntPtr rect, [NotNull] IntPtr pixels, [NotNull] int pitch) => NativeSdl.InternalUpdateTexture(texture, rect, pixels, pitch);
 
         /// <summary>
         ///     Updates the nv texture using the specified texture
@@ -3631,10 +3292,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int UpdateNvTexture([NotNull] IntPtr texture, ref RectangleI rect, [NotNull] IntPtr yPlane, [NotNull] int yPitch, [NotNull] IntPtr uvPlane, [NotNull] int uvPitch)
-        {
-            return NativeSdl.InternalUpdateNVTexture(texture, ref rect, yPlane, yPitch, uvPlane, uvPitch);
-        }
+        public static int UpdateNvTexture([NotNull] IntPtr texture, ref RectangleI rect, [NotNull] IntPtr yPlane, [NotNull] int yPitch, [NotNull] IntPtr uvPlane, [NotNull] int uvPitch) => NativeSdl.InternalUpdateNVTexture(texture, ref rect, yPlane, yPitch, uvPlane, uvPitch);
 
         /// <summary>
         ///     Renders the target supported using the specified renderer
@@ -3643,10 +3301,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool RenderTargetSupported([NotNull] IntPtr renderer)
-        {
-            return NativeSdl.InternalRenderTargetSupported(renderer);
-        }
+        public static SdlBool RenderTargetSupported([NotNull] IntPtr renderer) => NativeSdl.InternalRenderTargetSupported(renderer);
 
         /// <summary>
         ///     Gets the render target using the specified renderer
@@ -3655,10 +3310,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetRenderTarget([NotNull] IntPtr renderer)
-        {
-            return NativeSdl.InternalGetRenderTarget(renderer);
-        }
+        public static IntPtr GetRenderTarget([NotNull] IntPtr renderer) => NativeSdl.InternalGetRenderTarget(renderer);
 
         /// <summary>
         ///     Renders the get metal layer using the specified renderer
@@ -3667,10 +3319,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderGetMetalLayer([NotNull] IntPtr renderer)
-        {
-            return NativeSdl.InternalRenderGetMetalLayer(renderer);
-        }
+        public static IntPtr RenderGetMetalLayer([NotNull] IntPtr renderer) => NativeSdl.InternalRenderGetMetalLayer(renderer);
 
         /// <summary>
         ///     Renders the get metal command encoder using the specified renderer
@@ -3679,10 +3328,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderGetMetalCommandEncoder([NotNull] IntPtr renderer)
-        {
-            return NativeSdl.InternalRenderGetMetalCommandEncoder(renderer);
-        }
+        public static IntPtr RenderGetMetalCommandEncoder([NotNull] IntPtr renderer) => NativeSdl.InternalRenderGetMetalCommandEncoder(renderer);
 
         /// <summary>
         ///     Renders the set v sync using the specified renderer
@@ -3692,10 +3338,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderSetVSync([NotNull] IntPtr renderer, [NotNull] int vsync)
-        {
-            return NativeSdl.InternalRenderSetVSync(renderer, vsync);
-        }
+        public static int RenderSetVSync([NotNull] IntPtr renderer, [NotNull] int vsync) => NativeSdl.InternalRenderSetVSync(renderer, vsync);
 
         /// <summary>
         ///     Renders the is clip enabled using the specified renderer
@@ -3704,10 +3347,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool RenderIsClipEnabled([NotNull] IntPtr renderer)
-        {
-            return NativeSdl.InternalRenderIsClipEnabled(renderer);
-        }
+        public static SdlBool RenderIsClipEnabled([NotNull] IntPtr renderer) => NativeSdl.InternalRenderIsClipEnabled(renderer);
 
         /// <summary>
         ///     Renders the flush using the specified renderer
@@ -3716,10 +3356,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderFlush([NotNull] IntPtr renderer)
-        {
-            return NativeSdl.InternalRenderFlush(renderer);
-        }
+        public static int RenderFlush([NotNull] IntPtr renderer) => NativeSdl.InternalRenderFlush(renderer);
 
         /// <summary>
         ///     Sdl the define pixel fourcc using the specified a
@@ -3731,10 +3368,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint SdlDefinePixelFourcc([NotNull] byte a, [NotNull] byte b, [NotNull] byte c, [NotNull] byte d)
-        {
-            return Fourcc(a, b, c, d);
-        }
+        public static uint SdlDefinePixelFourcc([NotNull] byte a, [NotNull] byte b, [NotNull] byte c, [NotNull] byte d) => Fourcc(a, b, c, d);
 
         /// <summary>
         ///     Sdl the define pixel format using the specified type
@@ -3747,10 +3381,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint SdlDefinePixelFormat(TypePixel typePixel, [NotNull] uint order, PackedLayout layout, [NotNull] byte bits, [NotNull] byte bytes)
-        {
-            return (uint) ((1 << 28) | ((byte) typePixel << 24) | ((byte) order << 20) | ((byte) layout << 16) | (bits << 8) | bytes);
-        }
+        public static uint SdlDefinePixelFormat(TypePixel typePixel, [NotNull] uint order, PackedLayout layout, [NotNull] byte bits, [NotNull] byte bytes) => (uint) ((1 << 28) | ((byte) typePixel << 24) | ((byte) order << 20) | ((byte) layout << 16) | (bits << 8) | bytes);
 
         /// <summary>
         ///     Sdl the pixel flag using the specified x
@@ -3759,10 +3390,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The byte</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static byte SdlPixelFlag([NotNull] uint x)
-        {
-            return (byte) ((x >> 28) & 0x0F);
-        }
+        public static byte SdlPixelFlag([NotNull] uint x) => (byte) ((x >> 28) & 0x0F);
 
         /// <summary>
         ///     Sdl the pixel type using the specified x
@@ -3771,10 +3399,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The byte</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static byte SdlPixelType([NotNull] uint x)
-        {
-            return (byte) ((x >> 24) & 0x0F);
-        }
+        public static byte SdlPixelType([NotNull] uint x) => (byte) ((x >> 24) & 0x0F);
 
         /// <summary>
         ///     Sdl the pixel order using the specified x
@@ -3783,10 +3408,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The byte</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static byte SdlPixelOrder([NotNull] uint x)
-        {
-            return (byte) ((x >> 20) & 0x0F);
-        }
+        public static byte SdlPixelOrder([NotNull] uint x) => (byte) ((x >> 20) & 0x0F);
 
         /// <summary>
         ///     Sdl the pixel layout using the specified x
@@ -3795,10 +3417,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The byte</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static byte SdlPixelLayout([NotNull] uint x)
-        {
-            return (byte) ((x >> 16) & 0x0F);
-        }
+        public static byte SdlPixelLayout([NotNull] uint x) => (byte) ((x >> 16) & 0x0F);
 
         /// <summary>
         ///     Sdl the bits per pixel using the specified x
@@ -3807,10 +3426,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The byte</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static byte SdlBitsPerPixel([NotNull] uint x)
-        {
-            return (byte) ((x >> 8) & 0xFF);
-        }
+        public static byte SdlBitsPerPixel([NotNull] uint x) => (byte) ((x >> 8) & 0xFF);
 
         /// <summary>
         ///     Sdl the bytes per pixel using the specified x
@@ -3940,10 +3556,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool SdlIsPixelFormatFour([NotNull] uint format)
-        {
-            return (format == 0) && (SdlPixelFlag(format) != 1);
-        }
+        public static bool SdlIsPixelFormatFour([NotNull] uint format) => (format == 0) && (SdlPixelFlag(format) != 1);
 
         /// <summary>
         ///     Allow the format using the specified pixel format
@@ -3952,10 +3565,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr AllocFormat([NotNull] uint pixelFormat)
-        {
-            return NativeSdl.InternalAllocFormat(pixelFormat);
-        }
+        public static IntPtr AllocFormat([NotNull] uint pixelFormat) => NativeSdl.InternalAllocFormat(pixelFormat);
 
         /// <summary>
         ///     Allow the palette using the specified n colors
@@ -3964,10 +3574,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr AllocPalette([NotNull] int nColors)
-        {
-            return NativeSdl.InternalAllocPalette(nColors);
-        }
+        public static IntPtr AllocPalette([NotNull] int nColors) => NativeSdl.InternalAllocPalette(nColors);
 
         /// <summary>
         ///     Calculates the gamma ramp using the specified gamma
@@ -3980,7 +3587,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             NativeSdl.InternalCalculateGammaRamp(gamma, ramp);
         }
-        
+
         /// <summary>
         ///     Sdl the get pixel format name using the specified format
         /// </summary>
@@ -4038,10 +3645,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint MapRgb([NotNull] IntPtr format, byte r, [NotNull] byte g, [NotNull] byte b)
-        {
-            return NativeSdl.InternalMapRGB(format, r, g, b);
-        }
+        public static uint MapRgb([NotNull] IntPtr format, byte r, [NotNull] byte g, [NotNull] byte b) => NativeSdl.InternalMapRGB(format, r, g, b);
 
 
         /// <summary>
@@ -4055,10 +3659,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint MapRgba([NotNull] IntPtr format, [NotNull] byte r, [NotNull] byte g, [NotNull] byte b, [NotNull] byte a)
-        {
-            return NativeSdl.InternalMapRGBA(format, r, g, b, a);
-        }
+        public static uint MapRgba([NotNull] IntPtr format, [NotNull] byte r, [NotNull] byte g, [NotNull] byte b, [NotNull] byte a) => NativeSdl.InternalMapRGBA(format, r, g, b, a);
 
         /// <summary>
         ///     Mask the to pixel format enum using the specified bpp
@@ -4071,10 +3672,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint MasksToPixelFormatEnum([NotNull] int bpp, [NotNull] uint rMask, [NotNull] uint gMask, [NotNull] uint bMask, [NotNull] uint aMask)
-        {
-            return NativeSdl.InternalMasksToPixelFormatEnum(bpp, rMask, gMask, bMask, aMask);
-        }
+        public static uint MasksToPixelFormatEnum([NotNull] int bpp, [NotNull] uint rMask, [NotNull] uint gMask, [NotNull] uint bMask, [NotNull] uint aMask) => NativeSdl.InternalMasksToPixelFormatEnum(bpp, rMask, gMask, bMask, aMask);
 
         /// <summary>
         ///     Pixels the format enum to masks using the specified format
@@ -4088,10 +3686,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool FormatEnumToMasks([NotNull] uint format, out int bpp, out uint rMask, out uint gMask, out uint bMask, out uint aMask)
-        {
-            return NativeSdl.InternalPixelFormatEnumToMasks(format, out bpp, out rMask, out gMask, out bMask, out aMask);
-        }
+        public static SdlBool FormatEnumToMasks([NotNull] uint format, out int bpp, out uint rMask, out uint gMask, out uint bMask, out uint aMask) => NativeSdl.InternalPixelFormatEnumToMasks(format, out bpp, out rMask, out gMask, out bMask, out aMask);
 
 
         /// <summary>
@@ -4104,10 +3699,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetPaletteColors([NotNull] IntPtr palette, [In] SdlColor[] colors, [NotNull] int firstColor, [NotNull] int nColors)
-        {
-            return NativeSdl.InternalSetPaletteColors(palette, colors, firstColor, nColors);
-        }
+        public static int SetPaletteColors([NotNull] IntPtr palette, [In] SdlColor[] colors, [NotNull] int firstColor, [NotNull] int nColors) => NativeSdl.InternalSetPaletteColors(palette, colors, firstColor, nColors);
 
 
         /// <summary>
@@ -4118,10 +3710,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetPixelFormatPalette([NotNull] IntPtr format, [NotNull] IntPtr palette)
-        {
-            return NativeSdl.InternalSetPixelFormatPalette(format, palette);
-        }
+        public static int SetPixelFormatPalette([NotNull] IntPtr format, [NotNull] IntPtr palette) => NativeSdl.InternalSetPixelFormatPalette(format, palette);
 
 
         /// <summary>
@@ -4130,10 +3719,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="p">The </param>
         /// <param name="r">The </param>
         /// <returns>The sdl bool</returns>
-        public static SdlBool PointInRect(ref PointI p, ref RectangleI r)
-        {
-            return (p.x >= r.x) && (p.x < r.x + r.w) && (p.y >= r.y) && (p.y < r.y + r.h) ? SdlBool.True : SdlBool.False;
-        }
+        public static SdlBool PointInRect(ref PointI p, ref RectangleI r) => (p.x >= r.x) && (p.x < r.x + r.w) && (p.y >= r.y) && (p.y < r.y + r.h) ? SdlBool.True : SdlBool.False;
 
         /// <summary>
         ///     Encloses the points using the specified points
@@ -4145,10 +3731,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool EnclosePoints([In] PointI[] points, [NotNull] int count, ref RectangleI clip, out RectangleI result)
-        {
-            return NativeSdl.InternalEnclosePoints(points, count, ref clip, out result);
-        }
+        public static SdlBool EnclosePoints([In] PointI[] points, [NotNull] int count, ref RectangleI clip, out RectangleI result) => NativeSdl.InternalEnclosePoints(points, count, ref clip, out result);
 
         /// <summary>
         ///     Has the intersection using the specified a
@@ -4158,10 +3741,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool HasIntersection(ref RectangleI a, ref RectangleI b)
-        {
-            return NativeSdl.InternalHasIntersection(ref a, ref b);
-        }
+        public static SdlBool HasIntersection(ref RectangleI a, ref RectangleI b) => NativeSdl.InternalHasIntersection(ref a, ref b);
 
         /// <summary>
         ///     Intersects the rect using the specified a
@@ -4172,10 +3752,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool IntersectRect(ref RectangleI a, ref RectangleI b, out RectangleI result)
-        {
-            return NativeSdl.InternalIntersectRect(ref a, ref b, out result);
-        }
+        public static SdlBool IntersectRect(ref RectangleI a, ref RectangleI b, out RectangleI result) => NativeSdl.InternalIntersectRect(ref a, ref b, out result);
 
         /// <summary>
         ///     Intersects the rect and line using the specified rect
@@ -4188,10 +3765,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool IntersectRectAndLine(ref RectangleI rect, ref int x1, ref int y1, ref int x2, ref int y2)
-        {
-            return NativeSdl.InternalIntersectRectAndLine(ref rect, ref x1, ref y1, ref x2, ref y2);
-        }
+        public static SdlBool IntersectRectAndLine(ref RectangleI rect, ref int x1, ref int y1, ref int x2, ref int y2) => NativeSdl.InternalIntersectRectAndLine(ref rect, ref x1, ref y1, ref x2, ref y2);
 
         /// <summary>
         ///     Sdl the rect empty using the specified r
@@ -4200,10 +3774,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool RectEmpty(ref RectangleI r)
-        {
-            return r.w <= 0 || r.h <= 0 ? SdlBool.True : SdlBool.False;
-        }
+        public static SdlBool RectEmpty(ref RectangleI r) => r.w <= 0 || r.h <= 0 ? SdlBool.True : SdlBool.False;
 
         /// <summary>
         ///     Sdl the rect equals using the specified a
@@ -4213,10 +3784,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool RectEquals(ref RectangleI a, ref RectangleI b)
-        {
-            return (a.x == b.x) && (a.y == b.y) && (a.w == b.w) && (a.h == b.h) ? SdlBool.True : SdlBool.False;
-        }
+        public static SdlBool RectEquals(ref RectangleI a, ref RectangleI b) => (a.x == b.x) && (a.y == b.y) && (a.w == b.w) && (a.h == b.h) ? SdlBool.True : SdlBool.False;
 
         /// <summary>
         ///     Unions the rect using the specified a
@@ -4359,10 +3927,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr ConvertSurfaceFormat([NotNull] IntPtr src, [NotNull] uint pixelFormat, [NotNull] uint flags)
-        {
-            return NativeSdl.InternalConvertSurfaceFormat(src, pixelFormat, flags);
-        }
+        public static IntPtr ConvertSurfaceFormat([NotNull] IntPtr src, [NotNull] uint pixelFormat, [NotNull] uint flags) => NativeSdl.InternalConvertSurfaceFormat(src, pixelFormat, flags);
 
         /// <summary>
         ///     Creates the rgb surface with format using the specified flags
@@ -4375,10 +3940,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr CreateRgbSurfaceWithFormat([NotNull] uint flags, [NotNull] int width, [NotNull] int height, [NotNull] int depth, [NotNull] uint format)
-        {
-            return NativeSdl.InternalCreateRGBSurfaceWithFormat(flags, width, height, depth, format);
-        }
+        public static IntPtr CreateRgbSurfaceWithFormat([NotNull] uint flags, [NotNull] int width, [NotNull] int height, [NotNull] int depth, [NotNull] uint format) => NativeSdl.InternalCreateRGBSurfaceWithFormat(flags, width, height, depth, format);
 
 
         /// <summary>
@@ -4393,10 +3955,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr CreateRgbSurfaceWithFormatFrom([NotNull] IntPtr pixels, [NotNull] int width, [NotNull] int height, [NotNull] int depth, [NotNull] int pitch, [NotNull] uint format)
-        {
-            return NativeSdl.InternalCreateRGBSurfaceWithFormatFrom(pixels, width, height, depth, pitch, format);
-        }
+        public static IntPtr CreateRgbSurfaceWithFormatFrom([NotNull] IntPtr pixels, [NotNull] int width, [NotNull] int height, [NotNull] int depth, [NotNull] int pitch, [NotNull] uint format) => NativeSdl.InternalCreateRGBSurfaceWithFormatFrom(pixels, width, height, depth, pitch, format);
 
 
         /// <summary>
@@ -4408,10 +3967,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int FillRect([NotNull] IntPtr dst, ref RectangleI rect, [NotNull] uint color)
-        {
-            return NativeSdl.InternalFillRect(dst, ref rect, color);
-        }
+        public static int FillRect([NotNull] IntPtr dst, ref RectangleI rect, [NotNull] uint color) => NativeSdl.InternalFillRect(dst, ref rect, color);
 
         /// <summary>
         ///     Fills the rect using the specified dst
@@ -4422,10 +3978,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int FillRect([NotNull] IntPtr dst, [NotNull] IntPtr rect, [NotNull] uint color)
-        {
-            return NativeSdl.InternalFillRect(dst, rect, color);
-        }
+        public static int FillRect([NotNull] IntPtr dst, [NotNull] IntPtr rect, [NotNull] uint color) => NativeSdl.InternalFillRect(dst, rect, color);
 
         /// <summary>
         ///     Fills the rects using the specified dst
@@ -4469,10 +4022,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool HasColorKey([NotNull] IntPtr surface)
-        {
-            return NativeSdl.InternalHasColorKey(surface);
-        }
+        public static SdlBool HasColorKey([NotNull] IntPtr surface) => NativeSdl.InternalHasColorKey(surface);
 
         /// <summary>
         ///     Gets the color key using the specified surface
@@ -4482,10 +4032,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetColorKey([NotNull] IntPtr surface, out uint key)
-        {
-            return NativeSdl.InternalGetColorKey(surface, out key);
-        }
+        public static int GetColorKey([NotNull] IntPtr surface, out uint key) => NativeSdl.InternalGetColorKey(surface, out key);
 
         /// <summary>
         ///     Gets the surface alpha mod using the specified surface
@@ -4495,10 +4042,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetSurfaceAlphaMod([NotNull] IntPtr surface, out byte alpha)
-        {
-            return NativeSdl.InternalGetSurfaceAlphaMod(surface, out alpha);
-        }
+        public static int GetSurfaceAlphaMod([NotNull] IntPtr surface, out byte alpha) => NativeSdl.InternalGetSurfaceAlphaMod(surface, out alpha);
 
         /// <summary>
         ///     Gets the surface blend mode using the specified surface
@@ -4508,10 +4052,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetSurfaceBlendMode([NotNull] IntPtr surface, out SdlBlendMode blendMode)
-        {
-            return NativeSdl.InternalGetSurfaceBlendMode(surface, out blendMode);
-        }
+        public static int GetSurfaceBlendMode([NotNull] IntPtr surface, out SdlBlendMode blendMode) => NativeSdl.InternalGetSurfaceBlendMode(surface, out blendMode);
 
         /// <summary>
         ///     Gets the surface color mod using the specified surface
@@ -4523,10 +4064,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetSurfaceColorMod([NotNull] IntPtr surface, out byte r, out byte g, out byte b)
-        {
-            return NativeSdl.InternalGetSurfaceColorMod(surface, out r, out g, out b);
-        }
+        public static int GetSurfaceColorMod([NotNull] IntPtr surface, out byte r, out byte g, out byte b) => NativeSdl.InternalGetSurfaceColorMod(surface, out r, out g, out b);
 
         /// <summary>
         ///     Sdl the load bmp using the specified file
@@ -4535,10 +4073,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr LoadBmp([NotNull] string file)
-        {
-            return NativeSdl.InternalLoadBMP_RW(RwFromFile(file, "rb"), 1);
-        }
+        public static IntPtr LoadBmp([NotNull] string file) => NativeSdl.InternalLoadBMP_RW(RwFromFile(file, "rb"), 1);
 
         /// <summary>
         ///     Locks the surface using the specified surface
@@ -4547,10 +4082,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int LockSurface([NotNull] IntPtr surface)
-        {
-            return NativeSdl.InternalLockSurface(surface);
-        }
+        public static int LockSurface([NotNull] IntPtr surface) => NativeSdl.InternalLockSurface(surface);
 
         /// <summary>
         ///     Lowers the blit using the specified src
@@ -4562,10 +4094,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int LowerBlit([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect)
-        {
-            return NativeSdl.InternalLowerBlit(src, ref srcRect, dst, ref dstRect);
-        }
+        public static int LowerBlit([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect) => NativeSdl.InternalLowerBlit(src, ref srcRect, dst, ref dstRect);
 
         /// <summary>
         ///     Lowers the blit scaled using the specified src
@@ -4577,10 +4106,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int LowerBlitScaled([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect)
-        {
-            return NativeSdl.InternalLowerBlitScaled(src, ref srcRect, dst, ref dstRect);
-        }
+        public static int LowerBlitScaled([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect) => NativeSdl.InternalLowerBlitScaled(src, ref srcRect, dst, ref dstRect);
 
         /// <summary>
         ///     Sdl the save bmp using the specified surface
@@ -4590,10 +4116,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SaveBmp([NotNull] IntPtr surface, [NotNull] string file)
-        {
-            return NativeSdl.InternalSaveBMP_RW(surface, RwFromFile(file, "wb"), 1);
-        }
+        public static int SaveBmp([NotNull] IntPtr surface, [NotNull] string file) => NativeSdl.InternalSaveBMP_RW(surface, RwFromFile(file, "wb"), 1);
 
         /// <summary>
         ///     Sets the clip rect using the specified surface
@@ -4603,10 +4126,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool SetClipRect([NotNull] IntPtr surface, ref RectangleI rect)
-        {
-            return NativeSdl.InternalSetClipRect(surface, ref rect);
-        }
+        public static SdlBool SetClipRect([NotNull] IntPtr surface, ref RectangleI rect) => NativeSdl.InternalSetClipRect(surface, ref rect);
 
         /// <summary>
         ///     Sets the color key using the specified surface
@@ -4617,10 +4137,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetColorKey([NotNull] IntPtr surface, [NotNull] int flag, [NotNull] uint key)
-        {
-            return NativeSdl.InternalSetColorKey(surface, flag, key);
-        }
+        public static int SetColorKey([NotNull] IntPtr surface, [NotNull] int flag, [NotNull] uint key) => NativeSdl.InternalSetColorKey(surface, flag, key);
 
         /// <summary>
         ///     Sets the surface alpha mod using the specified surface
@@ -4630,10 +4147,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetSurfaceAlphaMod([NotNull] IntPtr surface, [NotNull] byte alpha)
-        {
-            return NativeSdl.InternalSetSurfaceAlphaMod(surface, alpha);
-        }
+        public static int SetSurfaceAlphaMod([NotNull] IntPtr surface, [NotNull] byte alpha) => NativeSdl.InternalSetSurfaceAlphaMod(surface, alpha);
 
         /// <summary>
         ///     Sets the surface blend mode using the specified surface
@@ -4643,10 +4157,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetSurfaceBlendMode([NotNull] IntPtr surface, SdlBlendMode blendMode)
-        {
-            return NativeSdl.InternalSetSurfaceBlendMode(surface, blendMode);
-        }
+        public static int SetSurfaceBlendMode([NotNull] IntPtr surface, SdlBlendMode blendMode) => NativeSdl.InternalSetSurfaceBlendMode(surface, blendMode);
 
         /// <summary>
         ///     Sets the surface color mod using the specified surface
@@ -4658,10 +4169,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetSurfaceColorMod([NotNull] IntPtr surface, [NotNull] byte r, [NotNull] byte g, [NotNull] byte b)
-        {
-            return NativeSdl.InternalSetSurfaceColorMod(surface, r, g, b);
-        }
+        public static int SetSurfaceColorMod([NotNull] IntPtr surface, [NotNull] byte r, [NotNull] byte g, [NotNull] byte b) => NativeSdl.InternalSetSurfaceColorMod(surface, r, g, b);
 
         /// <summary>
         ///     Sets the surface palette using the specified surface
@@ -4671,10 +4179,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetSurfacePalette([NotNull] IntPtr surface, [NotNull] IntPtr palette)
-        {
-            return NativeSdl.InternalSetSurfacePalette(surface, palette);
-        }
+        public static int SetSurfacePalette([NotNull] IntPtr surface, [NotNull] IntPtr palette) => NativeSdl.InternalSetSurfacePalette(surface, palette);
 
         /// <summary>
         ///     Sets the surface rle using the specified surface
@@ -4684,10 +4189,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetSurfaceRle([NotNull] IntPtr surface, [NotNull] int flag)
-        {
-            return NativeSdl.InternalSetSurfaceRLE(surface, flag);
-        }
+        public static int SetSurfaceRle([NotNull] IntPtr surface, [NotNull] int flag) => NativeSdl.InternalSetSurfaceRLE(surface, flag);
 
         /// <summary>
         ///     Has the surface rle using the specified surface
@@ -4696,10 +4198,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool HasSurfaceRle([NotNull] IntPtr surface)
-        {
-            return NativeSdl.InternalHasSurfaceRLE(surface);
-        }
+        public static SdlBool HasSurfaceRle([NotNull] IntPtr surface) => NativeSdl.InternalHasSurfaceRLE(surface);
 
         /// <summary>
         ///     Soft the stretch using the specified src
@@ -4711,10 +4210,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SoftStretch([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect)
-        {
-            return NativeSdl.InternalSoftStretch(src, ref srcRect, dst, ref dstRect);
-        }
+        public static int SoftStretch([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect) => NativeSdl.InternalSoftStretch(src, ref srcRect, dst, ref dstRect);
 
         /// <summary>
         ///     Soft the stretch linear using the specified src
@@ -4726,10 +4222,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SoftStretchLinear([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect)
-        {
-            return NativeSdl.InternalSoftStretchLinear(src, ref srcRect, dst, ref dstRect);
-        }
+        public static int SoftStretchLinear([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect) => NativeSdl.InternalSoftStretchLinear(src, ref srcRect, dst, ref dstRect);
 
         /// <summary>
         ///     Unlocks the surface using the specified surface
@@ -4752,10 +4245,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int UpperBlit([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect)
-        {
-            return NativeSdl.InternalUpperBlit(src, ref srcRect, dst, ref dstRect);
-        }
+        public static int UpperBlit([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect) => NativeSdl.InternalUpperBlit(src, ref srcRect, dst, ref dstRect);
 
         /// <summary>
         ///     Uppers the blit scaled using the specified src
@@ -4767,10 +4257,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int UpperBlitScaled([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect)
-        {
-            return NativeSdl.InternalUpperBlitScaled(src, ref srcRect, dst, ref dstRect);
-        }
+        public static int UpperBlitScaled([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect) => NativeSdl.InternalUpperBlitScaled(src, ref srcRect, dst, ref dstRect);
 
         /// <summary>
         ///     Duplicates the surface using the specified surface
@@ -4779,10 +4266,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr DuplicateSurface([NotNull] IntPtr surface)
-        {
-            return NativeSdl.InternalDuplicateSurface(surface);
-        }
+        public static IntPtr DuplicateSurface([NotNull] IntPtr surface) => NativeSdl.InternalDuplicateSurface(surface);
 
         /// <summary>
         ///     Has the clipboard text
@@ -4790,10 +4274,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool HasClipboardText()
-        {
-            return NativeSdl.InternalHasClipboardText();
-        }
+        public static SdlBool HasClipboardText() => NativeSdl.InternalHasClipboardText();
 
         /// <summary>
         ///     Sdl the get clipboard text
@@ -4815,10 +4296,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The result</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetClipboardText([NotNull] string text)
-        {
-            return NativeSdl.InternalSetClipboardText(text);
-        }
+        public static int SetClipboardText([NotNull] string text) => NativeSdl.InternalSetClipboardText(text);
 
         /// <summary>
         ///     Pumps the events
@@ -4841,10 +4319,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int PeepEvents([Out] SdlEvent[] events, [NotNull] int numEvents, SdlEventAction action, SdlEventType minType, SdlEventType maxType)
-        {
-            return NativeSdl.InternalPeepEvents(events, numEvents, action, minType, maxType);
-        }
+        public static int PeepEvents([Out] SdlEvent[] events, [NotNull] int numEvents, SdlEventAction action, SdlEventType minType, SdlEventType maxType) => NativeSdl.InternalPeepEvents(events, numEvents, action, minType, maxType);
 
 
         /// <summary>
@@ -4854,10 +4329,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool HasEvent(SdlEventType type)
-        {
-            return NativeSdl.InternalHasEvent(type);
-        }
+        public static SdlBool HasEvent(SdlEventType type) => NativeSdl.InternalHasEvent(type);
 
         /// <summary>
         ///     Has the events using the specified min type
@@ -4867,10 +4339,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool HasEvents(SdlEventType minType, SdlEventType maxType)
-        {
-            return NativeSdl.InternalHasEvents(minType, maxType);
-        }
+        public static SdlBool HasEvents(SdlEventType minType, SdlEventType maxType) => NativeSdl.InternalHasEvents(minType, maxType);
 
         /// <summary>
         ///     Flushes the event using the specified type
@@ -4902,10 +4371,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int PollEvent(out SdlEvent sdlEvent)
-        {
-            return NativeSdl.InternalPollEvent(out sdlEvent);
-        }
+        public static int PollEvent(out SdlEvent sdlEvent) => NativeSdl.InternalPollEvent(out sdlEvent);
 
         /// <summary>
         ///     Waits the event using the specified sdl event
@@ -4914,10 +4380,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int WaitEvent(out SdlEvent sdlEvent)
-        {
-            return NativeSdl.InternalWaitEvent(out sdlEvent);
-        }
+        public static int WaitEvent(out SdlEvent sdlEvent) => NativeSdl.InternalWaitEvent(out sdlEvent);
 
         /// <summary>
         ///     Waits the event timeout using the specified sdl event
@@ -4927,10 +4390,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int WaitEventTimeout(out SdlEvent sdlEvent, [NotNull] int timeout)
-        {
-            return NativeSdl.InternalWaitEventTimeout(out sdlEvent, timeout);
-        }
+        public static int WaitEventTimeout(out SdlEvent sdlEvent, [NotNull] int timeout) => NativeSdl.InternalWaitEventTimeout(out sdlEvent, timeout);
 
         /// <summary>
         ///     Pushes the event using the specified sdl event
@@ -4939,10 +4399,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int PushEvent(ref SdlEvent sdlEvent)
-        {
-            return NativeSdl.InternalPushEvent(ref sdlEvent);
-        }
+        public static int PushEvent(ref SdlEvent sdlEvent) => NativeSdl.InternalPushEvent(ref sdlEvent);
 
         /// <summary>
         ///     Sets the event filter using the specified filter
@@ -5025,10 +4482,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The byte</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static byte GetEventState(SdlEventType type)
-        {
-            return NativeSdl.InternalEventState(type, Query);
-        }
+        public static byte GetEventState(SdlEventType type) => NativeSdl.InternalEventState(type, Query);
 
         /// <summary>
         ///     Registers the events using the specified num events
@@ -5037,10 +4491,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint RegisterEvents([NotNull] int numEvents)
-        {
-            return NativeSdl.InternalRegisterEvents(numEvents);
-        }
+        public static uint RegisterEvents([NotNull] int numEvents) => NativeSdl.InternalRegisterEvents(numEvents);
 
         /// <summary>
         ///     Sdl the scancode to keycode using the specified x
@@ -5049,10 +4500,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl keycode</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlKeycode ScanCodeToKeyCode(SdlScancode x)
-        {
-            return (SdlKeycode) ((int) x | KScancodeMask);
-        }
+        public static SdlKeycode ScanCodeToKeyCode(SdlScancode x) => (SdlKeycode) ((int) x | KScancodeMask);
 
         /// <summary>
         ///     Gets the keyboard focus
@@ -5060,10 +4508,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetKeyboardFocus()
-        {
-            return NativeSdl.InternalGetKeyboardFocus();
-        }
+        public static IntPtr GetKeyboardFocus() => NativeSdl.InternalGetKeyboardFocus();
 
         /// <summary>
         ///     Gets the keyboard state using the specified num keys
@@ -5072,10 +4517,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetKeyboardState(out int numKeys)
-        {
-            return NativeSdl.InternalGetKeyboardState(out numKeys);
-        }
+        public static IntPtr GetKeyboardState(out int numKeys) => NativeSdl.InternalGetKeyboardState(out numKeys);
 
         /// <summary>
         ///     Gets the mod state
@@ -5083,10 +4525,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl key mod</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlKeyMod GetModState()
-        {
-            return NativeSdl.InternalGetModState();
-        }
+        public static SdlKeyMod GetModState() => NativeSdl.InternalGetModState();
 
         /// <summary>
         ///     Sets the mod state using the specified mod state
@@ -5106,10 +4545,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl keycode</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlKeycode GetKeyFromScancode(SdlScancode scancode)
-        {
-            return NativeSdl.InternalGetKeyFromScancode(scancode);
-        }
+        public static SdlKeycode GetKeyFromScancode(SdlScancode scancode) => NativeSdl.InternalGetKeyFromScancode(scancode);
 
         /// <summary>
         ///     Gets the scancode from key using the specified key
@@ -5118,10 +4554,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl scancode</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlScancode GetScancodeFromKey(SdlKeycode key)
-        {
-            return NativeSdl.InternalGetScancodeFromKey(key);
-        }
+        public static SdlScancode GetScancodeFromKey(SdlKeycode key) => NativeSdl.InternalGetScancodeFromKey(key);
 
         /// <summary>
         ///     Sdl the get scancode name using the specified scancode
@@ -5145,10 +4578,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl scancode</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlScancode GetScancodeFromName([NotNull] string name)
-        {
-            return NativeSdl.InternalGetScancodeFromName(name);
-        }
+        public static SdlScancode GetScancodeFromName([NotNull] string name) => NativeSdl.InternalGetScancodeFromName(name);
 
         /// <summary>
         ///     Sdl the get key name using the specified key
@@ -5159,7 +4589,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string SGetKeyName(SdlKeycode key)
         {
-           Validator.ValidateInput(key);
+            Validator.ValidateInput(key);
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetKeyName(key));
             Validator.ValidateOutput(result);
             return result;
@@ -5172,10 +4602,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl keycode</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlKeycode GetKeyFromName([NotNull] string name)
-        {
-            return NativeSdl.InternalGetKeyFromName(name);
-        }
+        public static SdlKeycode GetKeyFromName([NotNull] string name) => NativeSdl.InternalGetKeyFromName(name);
 
         /// <summary>
         ///     Starts the text input
@@ -5193,10 +4620,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool IsTextInputActive()
-        {
-            return NativeSdl.InternalIsTextInputActive();
-        }
+        public static SdlBool IsTextInputActive() => NativeSdl.InternalIsTextInputActive();
 
         /// <summary>
         ///     Stops the text input
@@ -5254,10 +4678,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetMouseFocus()
-        {
-            return NativeSdl.InternalGetMouseFocus();
-        }
+        public static IntPtr GetMouseFocus() => NativeSdl.InternalGetMouseFocus();
 
         /// <summary>
         ///     Gets the mouse state using the specified x
@@ -5267,10 +4688,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint GetMouseStateOutXAndY(out int x, out int y)
-        {
-            return NativeSdl.InternalGetMouseState(out x, out y);
-        }
+        public static uint GetMouseStateOutXAndY(out int x, out int y) => NativeSdl.InternalGetMouseState(out x, out y);
 
         /// <summary>
         ///     Gets the mouse state using the specified x
@@ -5280,10 +4698,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint GetMouseStateXAndYOut([NotNull] IntPtr x, out int y)
-        {
-            return NativeSdl.InternalGetMouseState(x, out y);
-        }
+        public static uint GetMouseStateXAndYOut([NotNull] IntPtr x, out int y) => NativeSdl.InternalGetMouseState(x, out y);
 
         /// <summary>
         ///     Gets the mouse state using the specified x
@@ -5293,10 +4708,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint GetMouseStateXOutAndY(out int x, [NotNull] IntPtr y)
-        {
-            return NativeSdl.InternalGetMouseState(out x, y);
-        }
+        public static uint GetMouseStateXOutAndY(out int x, [NotNull] IntPtr y) => NativeSdl.InternalGetMouseState(out x, y);
 
         /// <summary>
         ///     Gets the mouse state using the specified x
@@ -5306,10 +4718,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint GetMouseStateToXAndY([NotNull] IntPtr x, [NotNull] IntPtr y)
-        {
-            return NativeSdl.InternalGetMouseState(x, y);
-        }
+        public static uint GetMouseStateToXAndY([NotNull] IntPtr x, [NotNull] IntPtr y) => NativeSdl.InternalGetMouseState(x, y);
 
         /// <summary>
         ///     Gets the global mouse state using the specified x
@@ -5319,10 +4728,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint GetGlobalMouseStateOutXAndOutY(out int x, out int y)
-        {
-            return NativeSdl.InternalGetGlobalMouseState(out x, out y);
-        }
+        public static uint GetGlobalMouseStateOutXAndOutY(out int x, out int y) => NativeSdl.InternalGetGlobalMouseState(out x, out y);
 
         /// <summary>
         ///     Gets the global mouse state using the specified x
@@ -5332,10 +4738,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint GetGlobalMouseStateXAndYOut([NotNull] IntPtr x, out int y)
-        {
-            return NativeSdl.InternalGetGlobalMouseState(x, out y);
-        }
+        public static uint GetGlobalMouseStateXAndYOut([NotNull] IntPtr x, out int y) => NativeSdl.InternalGetGlobalMouseState(x, out y);
 
         /// <summary>
         ///     Gets the global mouse state using the specified x
@@ -5345,10 +4748,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint GetGlobalMouseStateOutXAndY(out int x, [NotNull] IntPtr y)
-        {
-            return NativeSdl.InternalGetGlobalMouseState(out x, y);
-        }
+        public static uint GetGlobalMouseStateOutXAndY(out int x, [NotNull] IntPtr y) => NativeSdl.InternalGetGlobalMouseState(out x, y);
 
         /// <summary>
         ///     Gets the global mouse state using the specified x
@@ -5358,10 +4758,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint GetGlobalMouseStateXAndY([NotNull] IntPtr x, [NotNull] IntPtr y)
-        {
-            return NativeSdl.InternalGetGlobalMouseState(x, y);
-        }
+        public static uint GetGlobalMouseStateXAndY([NotNull] IntPtr x, [NotNull] IntPtr y) => NativeSdl.InternalGetGlobalMouseState(x, y);
 
         /// <summary>
         ///     Gets the relative mouse state using the specified x
@@ -5371,10 +4768,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint GetRelativeMouseState(out int x, out int y)
-        {
-            return NativeSdl.InternalGetRelativeMouseState(out x, out y);
-        }
+        public static uint GetRelativeMouseState(out int x, out int y) => NativeSdl.InternalGetRelativeMouseState(out x, out y);
 
         /// <summary>
         ///     Warps the mouse in window using the specified window
@@ -5397,10 +4791,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int WarpMouseGlobal([NotNull] int x, [NotNull] int y)
-        {
-            return NativeSdl.InternalWarpMouseGlobal(x, y);
-        }
+        public static int WarpMouseGlobal([NotNull] int x, [NotNull] int y) => NativeSdl.InternalWarpMouseGlobal(x, y);
 
         /// <summary>
         ///     Sets the relative mouse mode using the specified enabled
@@ -5409,10 +4800,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetRelativeMouseMode(SdlBool enabled)
-        {
-            return NativeSdl.InternalSetRelativeMouseMode(enabled);
-        }
+        public static int SetRelativeMouseMode(SdlBool enabled) => NativeSdl.InternalSetRelativeMouseMode(enabled);
 
         /// <summary>
         ///     Captures the mouse using the specified enabled
@@ -5421,10 +4809,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int CaptureMouse([NotNull] SdlBool enabled)
-        {
-            return NativeSdl.InternalCaptureMouse(enabled);
-        }
+        public static int CaptureMouse([NotNull] SdlBool enabled) => NativeSdl.InternalCaptureMouse(enabled);
 
         /// <summary>
         ///     Gets the relative mouse mode
@@ -5432,10 +4817,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool GetRelativeMouseMode()
-        {
-            return NativeSdl.InternalGetRelativeMouseMode();
-        }
+        public static SdlBool GetRelativeMouseMode() => NativeSdl.InternalGetRelativeMouseMode();
 
         /// <summary>
         ///     Creates the cursor using the specified data
@@ -5449,10 +4831,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr CreateCursor([NotNull] IntPtr data, [NotNull] IntPtr mask, [NotNull] int w, [NotNull] int h, [NotNull] int hotX, [NotNull] int hotY)
-        {
-            return NativeSdl.InternalCreateCursor(data, mask, w, h, hotX, hotY);
-        }
+        public static IntPtr CreateCursor([NotNull] IntPtr data, [NotNull] IntPtr mask, [NotNull] int w, [NotNull] int h, [NotNull] int hotX, [NotNull] int hotY) => NativeSdl.InternalCreateCursor(data, mask, w, h, hotX, hotY);
 
         /// <summary>
         ///     Creates the color cursor using the specified surface
@@ -5463,10 +4842,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr CreateColorCursor([NotNull] IntPtr surface, [NotNull] int hotX, [NotNull] int hotY)
-        {
-            return NativeSdl.InternalCreateColorCursor(surface, hotX, hotY);
-        }
+        public static IntPtr CreateColorCursor([NotNull] IntPtr surface, [NotNull] int hotX, [NotNull] int hotY) => NativeSdl.InternalCreateColorCursor(surface, hotX, hotY);
 
         /// <summary>
         ///     Creates the system cursor using the specified id
@@ -5475,10 +4851,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr CreateSystemCursor(SdlSystemCursor id)
-        {
-            return NativeSdl.InternalCreateSystemCursor(id);
-        }
+        public static IntPtr CreateSystemCursor(SdlSystemCursor id) => NativeSdl.InternalCreateSystemCursor(id);
 
         /// <summary>
         ///     Sets the cursor using the specified cursor
@@ -5497,10 +4870,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetCursor()
-        {
-            return NativeSdl.InternalGetCursor();
-        }
+        public static IntPtr GetCursor() => NativeSdl.InternalGetCursor();
 
         /// <summary>
         ///     Frees the cursor using the specified cursor
@@ -5520,10 +4890,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int ShowCursor([NotNull] int toggle)
-        {
-            return NativeSdl.InternalShowCursor(toggle);
-        }
+        public static int ShowCursor([NotNull] int toggle) => NativeSdl.InternalShowCursor(toggle);
 
         /// <summary>
         ///     Sdl the button using the specified x
@@ -5532,10 +4899,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Button([NotNull] uint x)
-        {
-            return (uint) (1 << ((int) x - 1));
-        }
+        public static uint Button([NotNull] uint x) => (uint) (1 << ((int) x - 1));
 
         /// <summary>
         ///     Gets the num touch devices
@@ -5543,10 +4907,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetNumTouchDevices()
-        {
-            return NativeSdl.InternalGetNumTouchDevices();
-        }
+        public static int GetNumTouchDevices() => NativeSdl.InternalGetNumTouchDevices();
 
         /// <summary>
         ///     Gets the touch device using the specified index
@@ -5555,10 +4916,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The long</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long GetTouchDevice([NotNull] int index)
-        {
-            return NativeSdl.InternalGetTouchDevice(index);
-        }
+        public static long GetTouchDevice([NotNull] int index) => NativeSdl.InternalGetTouchDevice(index);
 
         /// <summary>
         ///     Gets the num touch fingers using the specified touch id
@@ -5567,10 +4925,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetNumTouchFingers(long touchId)
-        {
-            return NativeSdl.InternalGetNumTouchFingers(touchId);
-        }
+        public static int GetNumTouchFingers(long touchId) => NativeSdl.InternalGetNumTouchFingers(touchId);
 
         /// <summary>
         ///     Gets the touch finger using the specified touch id
@@ -5580,10 +4935,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetTouchFinger([NotNull] long touchId, [NotNull] int index)
-        {
-            return NativeSdl.InternalGetTouchFinger(touchId, index);
-        }
+        public static IntPtr GetTouchFinger([NotNull] long touchId, [NotNull] int index) => NativeSdl.InternalGetTouchFinger(touchId, index);
 
         /// <summary>
         ///     Gets the touch device type using the specified touch id
@@ -5592,10 +4944,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl touch device type</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlTouchDeviceType GetTouchDeviceType([NotNull] long touchId)
-        {
-            return NativeSdl.InternalGetTouchDeviceType(touchId);
-        }
+        public static SdlTouchDeviceType GetTouchDeviceType([NotNull] long touchId) => NativeSdl.InternalGetTouchDeviceType(touchId);
 
 
         /// <summary>
@@ -5608,10 +4957,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickRumble([NotNull] IntPtr joystick, [NotNull] ushort lowFrequencyRumble, [NotNull] ushort highFrequencyRumble, [NotNull] uint durationMs)
-        {
-            return NativeSdl.InternalJoystickRumble(joystick, lowFrequencyRumble, highFrequencyRumble, durationMs);
-        }
+        public static int JoystickRumble([NotNull] IntPtr joystick, [NotNull] ushort lowFrequencyRumble, [NotNull] ushort highFrequencyRumble, [NotNull] uint durationMs) => NativeSdl.InternalJoystickRumble(joystick, lowFrequencyRumble, highFrequencyRumble, durationMs);
 
         /// <summary>
         ///     Joysticks the rumble triggers using the specified joystick
@@ -5623,10 +4969,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickRumbleTriggers([NotNull] IntPtr joystick, [NotNull] ushort leftRumble, [NotNull] ushort rightRumble, [NotNull] uint durationMs)
-        {
-            return NativeSdl.InternalJoystickRumbleTriggers(joystick, leftRumble, rightRumble, durationMs);
-        }
+        public static int JoystickRumbleTriggers([NotNull] IntPtr joystick, [NotNull] ushort leftRumble, [NotNull] ushort rightRumble, [NotNull] uint durationMs) => NativeSdl.InternalJoystickRumbleTriggers(joystick, leftRumble, rightRumble, durationMs);
 
         /// <summary>
         ///     Joysticks the close using the specified joystick
@@ -5646,10 +4989,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickEventState([NotNull] int state)
-        {
-            return NativeSdl.InternalJoystickEventState(state);
-        }
+        public static int JoystickEventState([NotNull] int state) => NativeSdl.InternalJoystickEventState(state);
 
         /// <summary>
         ///     Joysticks the get axis using the specified joystick
@@ -5659,10 +4999,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The short</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static short JoystickGetAxis([NotNull] IntPtr joystick, [NotNull] int axis)
-        {
-            return NativeSdl.InternalJoystickGetAxis(joystick, axis);
-        }
+        public static short JoystickGetAxis([NotNull] IntPtr joystick, [NotNull] int axis) => NativeSdl.InternalJoystickGetAxis(joystick, axis);
 
         /// <summary>
         ///     Joysticks the get axis initial state using the specified joystick
@@ -5673,10 +5010,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool JoystickGetAxisInitialState([NotNull] IntPtr joystick, [NotNull] int axis, out ushort state)
-        {
-            return NativeSdl.InternalJoystickGetAxisInitialState(joystick, axis, out state);
-        }
+        public static SdlBool JoystickGetAxisInitialState([NotNull] IntPtr joystick, [NotNull] int axis, out ushort state) => NativeSdl.InternalJoystickGetAxisInitialState(joystick, axis, out state);
 
         /// <summary>
         ///     Joysticks the get ball using the specified joystick
@@ -5688,10 +5022,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickGetBall([NotNull] IntPtr joystick, [NotNull] int ball, out int dx, out int dy)
-        {
-            return NativeSdl.InternalJoystickGetBall(joystick, ball, out dx, out dy);
-        }
+        public static int JoystickGetBall([NotNull] IntPtr joystick, [NotNull] int ball, out int dx, out int dy) => NativeSdl.InternalJoystickGetBall(joystick, ball, out dx, out dy);
 
         /// <summary>
         ///     Joysticks the get button using the specified joystick
@@ -5701,10 +5032,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The byte</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static byte JoystickGetButton([NotNull] IntPtr joystick, [NotNull] int button)
-        {
-            return NativeSdl.InternalJoystickGetButton(joystick, button);
-        }
+        public static byte JoystickGetButton([NotNull] IntPtr joystick, [NotNull] int button) => NativeSdl.InternalJoystickGetButton(joystick, button);
 
         /// <summary>
         ///     Joysticks the get hat using the specified joystick
@@ -5714,10 +5042,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The byte</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static byte JoystickGetHat([NotNull] IntPtr joystick, [NotNull] int hat)
-        {
-            return NativeSdl.InternalJoystickGetHat(joystick, hat);
-        }
+        public static byte JoystickGetHat([NotNull] IntPtr joystick, [NotNull] int hat) => NativeSdl.InternalJoystickGetHat(joystick, hat);
 
         /// <summary>
         ///     Sdl the joystick name using the specified joystick
@@ -5743,8 +5068,8 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string JoystickNameForIndex([NotNull] int deviceIndex)
         {
-           Validator.ValidateInput(deviceIndex);
-           string result = Marshal.PtrToStringAnsi(NativeSdl.InternalJoystickNameForIndex(deviceIndex));
+            Validator.ValidateInput(deviceIndex);
+            string result = Marshal.PtrToStringAnsi(NativeSdl.InternalJoystickNameForIndex(deviceIndex));
             Validator.ValidateOutput(result);
             return result;
         }
@@ -5756,10 +5081,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickNumAxes([NotNull] IntPtr joystick)
-        {
-            return NativeSdl.InternalJoystickNumAxes(joystick);
-        }
+        public static int JoystickNumAxes([NotNull] IntPtr joystick) => NativeSdl.InternalJoystickNumAxes(joystick);
 
         /// <summary>
         ///     Joysticks the num balls using the specified joystick
@@ -5768,10 +5090,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickNumBalls([NotNull] IntPtr joystick)
-        {
-            return NativeSdl.InternalJoystickNumBalls(joystick);
-        }
+        public static int JoystickNumBalls([NotNull] IntPtr joystick) => NativeSdl.InternalJoystickNumBalls(joystick);
 
         /// <summary>
         ///     Joysticks the num buttons using the specified joystick
@@ -5780,10 +5099,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickNumButtons([NotNull] IntPtr joystick)
-        {
-            return NativeSdl.InternalJoystickNumButtons(joystick);
-        }
+        public static int JoystickNumButtons([NotNull] IntPtr joystick) => NativeSdl.InternalJoystickNumButtons(joystick);
 
         /// <summary>
         ///     Joysticks the num hats using the specified joystick
@@ -5792,10 +5108,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickNumHats([NotNull] IntPtr joystick)
-        {
-            return NativeSdl.InternalJoystickNumHats(joystick);
-        }
+        public static int JoystickNumHats([NotNull] IntPtr joystick) => NativeSdl.InternalJoystickNumHats(joystick);
 
         /// <summary>
         ///     Joysticks the open using the specified device index
@@ -5804,10 +5117,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr JoystickOpen([NotNull] int deviceIndex)
-        {
-            return NativeSdl.InternalJoystickOpen(deviceIndex);
-        }
+        public static IntPtr JoystickOpen([NotNull] int deviceIndex) => NativeSdl.InternalJoystickOpen(deviceIndex);
 
         /// <summary>
         ///     Joysticks the update
@@ -5839,10 +5149,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The guid</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Guid JoystickGetDeviceGuid([NotNull] int deviceIndex)
-        {
-            return NativeSdl.InternalJoystickGetDeviceGUID(deviceIndex);
-        }
+        public static Guid JoystickGetDeviceGuid([NotNull] int deviceIndex) => NativeSdl.InternalJoystickGetDeviceGUID(deviceIndex);
 
         /// <summary>
         ///     Joysticks the get guid using the specified joystick
@@ -5851,10 +5158,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The guid</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Guid JoystickGetGuid(IntPtr joystick)
-        {
-            return NativeSdl.InternalJoystickGetGUID(joystick);
-        }
+        public static Guid JoystickGetGuid(IntPtr joystick) => NativeSdl.InternalJoystickGetGUID(joystick);
 
         /// <summary>
         ///     Joysticks the get guid string using the specified guid
@@ -5876,10 +5180,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The guid</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Guid JoystickGetGuidFromString([NotNull] string pchGuid)
-        {
-            return NativeSdl.InternalJoystickGetGUIDFromString(pchGuid);
-        }
+        public static Guid JoystickGetGuidFromString([NotNull] string pchGuid) => NativeSdl.InternalJoystickGetGUIDFromString(pchGuid);
 
         /// <summary>
         ///     Joysticks the get device vendor using the specified device index
@@ -5888,10 +5189,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The ushort</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ushort JoystickGetDeviceVendor([NotNull] int deviceIndex)
-        {
-            return NativeSdl.InternalJoystickGetDeviceVendor(deviceIndex);
-        }
+        public static ushort JoystickGetDeviceVendor([NotNull] int deviceIndex) => NativeSdl.InternalJoystickGetDeviceVendor(deviceIndex);
 
         /// <summary>
         ///     Joysticks the get device product using the specified device index
@@ -5900,10 +5198,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The ushort</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ushort JoystickGetDeviceProduct([NotNull] int deviceIndex)
-        {
-            return NativeSdl.InternalJoystickGetDeviceProduct(deviceIndex);
-        }
+        public static ushort JoystickGetDeviceProduct([NotNull] int deviceIndex) => NativeSdl.InternalJoystickGetDeviceProduct(deviceIndex);
 
         /// <summary>
         ///     Joysticks the get device product version using the specified device index
@@ -5912,10 +5207,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The ushort</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ushort JoystickGetDeviceProductVersion([NotNull] int deviceIndex)
-        {
-            return NativeSdl.InternalJoystickGetDeviceProductVersion(deviceIndex);
-        }
+        public static ushort JoystickGetDeviceProductVersion([NotNull] int deviceIndex) => NativeSdl.InternalJoystickGetDeviceProductVersion(deviceIndex);
 
         /// <summary>
         ///     Joysticks the get device type using the specified device index
@@ -5924,10 +5216,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl joystick type</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlJoystickType JoystickGetDeviceType([NotNull] int deviceIndex)
-        {
-            return NativeSdl.InternalJoystickGetDeviceType(deviceIndex);
-        }
+        public static SdlJoystickType JoystickGetDeviceType([NotNull] int deviceIndex) => NativeSdl.InternalJoystickGetDeviceType(deviceIndex);
 
         /// <summary>
         ///     Joysticks the get device instance id using the specified device index
@@ -5936,10 +5225,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickGetDeviceInstanceId([NotNull] int deviceIndex)
-        {
-            return NativeSdl.InternalJoystickGetDeviceInstanceID(deviceIndex);
-        }
+        public static int JoystickGetDeviceInstanceId([NotNull] int deviceIndex) => NativeSdl.InternalJoystickGetDeviceInstanceID(deviceIndex);
 
         /// <summary>
         ///     Joysticks the get vendor using the specified joystick
@@ -5948,10 +5234,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The ushort</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ushort JoystickGetVendor([NotNull] IntPtr joystick)
-        {
-            return NativeSdl.InternalJoystickGetVendor(joystick);
-        }
+        public static ushort JoystickGetVendor([NotNull] IntPtr joystick) => NativeSdl.InternalJoystickGetVendor(joystick);
 
         /// <summary>
         ///     Joysticks the get product using the specified joystick
@@ -5960,10 +5243,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The ushort</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ushort JoystickGetProduct([NotNull] IntPtr joystick)
-        {
-            return NativeSdl.InternalJoystickGetProduct(joystick);
-        }
+        public static ushort JoystickGetProduct([NotNull] IntPtr joystick) => NativeSdl.InternalJoystickGetProduct(joystick);
 
         /// <summary>
         ///     Joysticks the get product version using the specified joystick
@@ -5972,10 +5252,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The ushort</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ushort JoystickGetProductVersion([NotNull] IntPtr joystick)
-        {
-            return NativeSdl.InternalJoystickGetProductVersion(joystick);
-        }
+        public static ushort JoystickGetProductVersion([NotNull] IntPtr joystick) => NativeSdl.InternalJoystickGetProductVersion(joystick);
 
         /// <summary>
         ///     Sdl the joystick get serial using the specified joystick
@@ -5999,10 +5276,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl joystick type</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlJoystickType JoystickGetType([NotNull] IntPtr joystick)
-        {
-            return NativeSdl.InternalJoystickGetType(joystick);
-        }
+        public static SdlJoystickType JoystickGetType([NotNull] IntPtr joystick) => NativeSdl.InternalJoystickGetType(joystick);
 
         /// <summary>
         ///     Joysticks the get attached using the specified joystick
@@ -6011,10 +5285,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool JoystickGetAttached([NotNull] IntPtr joystick)
-        {
-            return NativeSdl.InternalJoystickGetAttached(joystick);
-        }
+        public static SdlBool JoystickGetAttached([NotNull] IntPtr joystick) => NativeSdl.InternalJoystickGetAttached(joystick);
 
         /// <summary>
         ///     Joysticks the instance id using the specified joystick
@@ -6023,10 +5294,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickInstanceId([NotNull] IntPtr joystick)
-        {
-            return NativeSdl.InternalJoystickInstanceID(joystick);
-        }
+        public static int JoystickInstanceId([NotNull] IntPtr joystick) => NativeSdl.InternalJoystickInstanceID(joystick);
 
         /// <summary>
         ///     Joysticks the current power level using the specified joystick
@@ -6035,10 +5303,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl joystick power level</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlJoystickPowerLevel JoystickCurrentPowerLevel([NotNull] IntPtr joystick)
-        {
-            return NativeSdl.InternalJoystickCurrentPowerLevel(joystick);
-        }
+        public static SdlJoystickPowerLevel JoystickCurrentPowerLevel([NotNull] IntPtr joystick) => NativeSdl.InternalJoystickCurrentPowerLevel(joystick);
 
         /// <summary>
         ///     Joysticks the from instance id using the specified instance id
@@ -6047,10 +5312,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr JoystickFromInstanceId([NotNull] int instanceId)
-        {
-            return NativeSdl.InternalJoystickFromInstanceID(instanceId);
-        }
+        public static IntPtr JoystickFromInstanceId([NotNull] int instanceId) => NativeSdl.InternalJoystickFromInstanceID(instanceId);
 
         /// <summary>
         ///     Locks the joysticks
@@ -6079,10 +5341,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr JoystickFromPlayerIndex([NotNull] int playerIndex)
-        {
-            return NativeSdl.InternalJoystickFromPlayerIndex(playerIndex);
-        }
+        public static IntPtr JoystickFromPlayerIndex([NotNull] int playerIndex) => NativeSdl.InternalJoystickFromPlayerIndex(playerIndex);
 
         /// <summary>
         ///     Joysticks the set player index using the specified joystick
@@ -6106,10 +5365,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SdlJoystickAttachVirtual([NotNull] int type, [NotNull] int nAxes, [NotNull] int nButtons, [NotNull] int nHats)
-        {
-            return NativeSdl.InternalJoystickAttachVirtual(type, nAxes, nButtons, nHats);
-        }
+        public static int SdlJoystickAttachVirtual([NotNull] int type, [NotNull] int nAxes, [NotNull] int nButtons, [NotNull] int nHats) => NativeSdl.InternalJoystickAttachVirtual(type, nAxes, nButtons, nHats);
 
         /// <summary>
         ///     Joysticks the detach virtual using the specified device index
@@ -6118,10 +5374,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickDetachVirtual([NotNull] int deviceIndex)
-        {
-            return NativeSdl.InternalJoystickDetachVirtual(deviceIndex);
-        }
+        public static int JoystickDetachVirtual([NotNull] int deviceIndex) => NativeSdl.InternalJoystickDetachVirtual(deviceIndex);
 
         /// <summary>
         ///     Joysticks the is virtual using the specified device index
@@ -6130,10 +5383,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool JoystickIsVirtual([NotNull] int deviceIndex)
-        {
-            return NativeSdl.InternalJoystickIsVirtual(deviceIndex);
-        }
+        public static SdlBool JoystickIsVirtual([NotNull] int deviceIndex) => NativeSdl.InternalJoystickIsVirtual(deviceIndex);
 
         /// <summary>
         ///     Joysticks the set virtual axis using the specified joystick
@@ -6144,10 +5394,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickSetVirtualAxis([NotNull] IntPtr joystick, [NotNull] int axis, short value)
-        {
-            return NativeSdl.InternalJoystickSetVirtualAxis(joystick, axis, value);
-        }
+        public static int JoystickSetVirtualAxis([NotNull] IntPtr joystick, [NotNull] int axis, short value) => NativeSdl.InternalJoystickSetVirtualAxis(joystick, axis, value);
 
         /// <summary>
         ///     Joysticks the set virtual button using the specified joystick
@@ -6158,10 +5405,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickSetVirtualButton([NotNull] IntPtr joystick, [NotNull] int button, [NotNull] byte value)
-        {
-            return NativeSdl.InternalJoystickSetVirtualButton(joystick, button, value);
-        }
+        public static int JoystickSetVirtualButton([NotNull] IntPtr joystick, [NotNull] int button, [NotNull] byte value) => NativeSdl.InternalJoystickSetVirtualButton(joystick, button, value);
 
         /// <summary>
         ///     Joysticks the set virtual hat using the specified joystick
@@ -6172,10 +5416,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickSetVirtualHat([NotNull] IntPtr joystick, [NotNull] int hat, [NotNull] byte value)
-        {
-            return NativeSdl.InternalJoystickSetVirtualHat(joystick, hat, value);
-        }
+        public static int JoystickSetVirtualHat([NotNull] IntPtr joystick, [NotNull] int hat, [NotNull] byte value) => NativeSdl.InternalJoystickSetVirtualHat(joystick, hat, value);
 
         /// <summary>
         ///     Joysticks the has led using the specified joystick
@@ -6184,10 +5425,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool JoystickHasLed([NotNull] IntPtr joystick)
-        {
-            return NativeSdl.InternalJoystickHasLED(joystick);
-        }
+        public static SdlBool JoystickHasLed([NotNull] IntPtr joystick) => NativeSdl.InternalJoystickHasLED(joystick);
 
         /// <summary>
         ///     Joysticks the has rumble using the specified joystick
@@ -6196,10 +5434,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool JoystickHasRumble([NotNull] IntPtr joystick)
-        {
-            return NativeSdl.InternalJoystickHasRumble(joystick);
-        }
+        public static SdlBool JoystickHasRumble([NotNull] IntPtr joystick) => NativeSdl.InternalJoystickHasRumble(joystick);
 
         /// <summary>
         ///     Joysticks the has rumble triggers using the specified joystick
@@ -6208,10 +5443,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool JoystickHasRumbleTriggers([NotNull] IntPtr joystick)
-        {
-            return NativeSdl.InternalJoystickHasRumbleTriggers(joystick);
-        }
+        public static SdlBool JoystickHasRumbleTriggers([NotNull] IntPtr joystick) => NativeSdl.InternalJoystickHasRumbleTriggers(joystick);
 
 
         /// <summary>
@@ -6224,10 +5456,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickSetLed([NotNull] IntPtr joystick, [NotNull] byte red, [NotNull] byte green, [NotNull] byte blue)
-        {
-            return NativeSdl.InternalJoystickSetLED(joystick, red, green, blue);
-        }
+        public static int JoystickSetLed([NotNull] IntPtr joystick, [NotNull] byte red, [NotNull] byte green, [NotNull] byte blue) => NativeSdl.InternalJoystickSetLED(joystick, red, green, blue);
 
         /// <summary>
         ///     Joysticks the send effect using the specified joystick
@@ -6238,10 +5467,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickSendEffect([NotNull] IntPtr joystick, [NotNull] IntPtr data, [NotNull] int size)
-        {
-            return NativeSdl.InternalJoystickSendEffect(joystick, data, size);
-        }
+        public static int JoystickSendEffect([NotNull] IntPtr joystick, [NotNull] IntPtr data, [NotNull] int size) => NativeSdl.InternalJoystickSendEffect(joystick, data, size);
 
         /// <summary>
         ///     Sdl the game controller add mapping using the specified mapping string
@@ -6250,10 +5476,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The result</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerAddMapping([NotNull] string mappingString)
-        {
-            return NativeSdl.InternalGameControllerAddMapping(mappingString);
-        }
+        public static int GameControllerAddMapping([NotNull] string mappingString) => NativeSdl.InternalGameControllerAddMapping(mappingString);
 
         /// <summary>
         ///     Games the controller num mappings
@@ -6261,10 +5484,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerNumMappings()
-        {
-            return NativeSdl.InternalGameControllerNumMappings();
-        }
+        public static int GameControllerNumMappings() => NativeSdl.InternalGameControllerNumMappings();
 
         /// <summary>
         ///     Sdl the game controller mapping for index using the specified mapping index
@@ -6288,10 +5508,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerAddMappingsFromFile([NotNull] string file)
-        {
-            return NativeSdl.InternalGameControllerAddMappingsFromRW(RwFromFile(file, "rb"), 1);
-        }
+        public static int GameControllerAddMappingsFromFile([NotNull] string file) => NativeSdl.InternalGameControllerAddMappingsFromRW(RwFromFile(file, "rb"), 1);
 
         /// <summary>
         ///     Sdl the game controller mapping for guid using the specified guid
@@ -6302,7 +5519,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GameControllerMappingForGuid(Guid guid)
         {
-           Validator.ValidateInput(guid);
+            Validator.ValidateInput(guid);
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerMappingForGUID(guid));
             Validator.ValidateOutput(result);
             return result;
@@ -6330,10 +5547,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool IsGameController([NotNull] int joystickIndex)
-        {
-            return NativeSdl.InternalIsGameController(joystickIndex);
-        }
+        public static SdlBool IsGameController([NotNull] int joystickIndex) => NativeSdl.InternalIsGameController(joystickIndex);
 
         /// <summary>
         ///     Sdl the game controller name for index using the specified joystick index
@@ -6344,7 +5558,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GameControllerNameForIndex([NotNull] int joystickIndex)
         {
-           Validator.ValidateInput(joystickIndex);
+            Validator.ValidateInput(joystickIndex);
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerNameForIndex(joystickIndex));
             Validator.ValidateOutput(result);
             return result;
@@ -6359,7 +5573,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GameControllerMappingForDeviceIndex([NotNull] int joystickIndex)
         {
-           Validator.ValidateInput(joystickIndex);
+            Validator.ValidateInput(joystickIndex);
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerMappingForDeviceIndex(joystickIndex));
             Validator.ValidateOutput(result);
             return result;
@@ -6372,10 +5586,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GameControllerOpen([NotNull] int joystickIndex)
-        {
-            return NativeSdl.InternalGameControllerOpen(joystickIndex);
-        }
+        public static IntPtr GameControllerOpen([NotNull] int joystickIndex) => NativeSdl.InternalGameControllerOpen(joystickIndex);
 
         /// <summary>
         ///     Sdl the game controller name using the specified game controller
@@ -6399,10 +5610,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The ushort</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ushort GameControllerGetVendor([NotNull] IntPtr gameController)
-        {
-            return NativeSdl.InternalGameControllerGetVendor(gameController);
-        }
+        public static ushort GameControllerGetVendor([NotNull] IntPtr gameController) => NativeSdl.InternalGameControllerGetVendor(gameController);
 
         /// <summary>
         ///     Games the controller get product using the specified game controller
@@ -6411,10 +5619,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The ushort</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ushort GameControllerGetProduct([NotNull] IntPtr gameController)
-        {
-            return NativeSdl.InternalGameControllerGetProduct(gameController);
-        }
+        public static ushort GameControllerGetProduct([NotNull] IntPtr gameController) => NativeSdl.InternalGameControllerGetProduct(gameController);
 
         /// <summary>
         ///     Games the controller get product version using the specified game controller
@@ -6423,10 +5628,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The ushort</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ushort GameControllerGetProductVersion([NotNull] IntPtr gameController)
-        {
-            return NativeSdl.InternalGameControllerGetProductVersion(gameController);
-        }
+        public static ushort GameControllerGetProductVersion([NotNull] IntPtr gameController) => NativeSdl.InternalGameControllerGetProductVersion(gameController);
 
 
         /// <summary>
@@ -6451,10 +5653,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool GameControllerGetAttached([NotNull] IntPtr gameController)
-        {
-            return NativeSdl.InternalGameControllerGetAttached(gameController);
-        }
+        public static SdlBool GameControllerGetAttached([NotNull] IntPtr gameController) => NativeSdl.InternalGameControllerGetAttached(gameController);
 
         /// <summary>
         ///     Games the controller get joystick using the specified game controller
@@ -6463,10 +5662,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GameControllerGetJoystick([NotNull] IntPtr gameController)
-        {
-            return NativeSdl.InternalGameControllerGetJoystick(gameController);
-        }
+        public static IntPtr GameControllerGetJoystick([NotNull] IntPtr gameController) => NativeSdl.InternalGameControllerGetJoystick(gameController);
 
         /// <summary>
         ///     Games the controller event state using the specified state
@@ -6475,10 +5671,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerEventState([NotNull] int state)
-        {
-            return NativeSdl.InternalGameControllerEventState(state);
-        }
+        public static int GameControllerEventState([NotNull] int state) => NativeSdl.InternalGameControllerEventState(state);
 
         /// <summary>
         ///     Games the controller update
@@ -6497,10 +5690,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl game controller axis</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlGameControllerAxis GameControllerGetAxisFromString([NotNull] string pchString)
-        {
-            return NativeSdl.InternalGameControllerGetAxisFromString(pchString);
-        }
+        public static SdlGameControllerAxis GameControllerGetAxisFromString([NotNull] string pchString) => NativeSdl.InternalGameControllerGetAxisFromString(pchString);
 
         /// <summary>
         ///     Sdl the game controller get string for axis using the specified axis
@@ -6549,10 +5739,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The short</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static short GameControllerGetAxis([NotNull] IntPtr gameController, SdlGameControllerAxis axis)
-        {
-            return NativeSdl.InternalGameControllerGetAxis(gameController, axis);
-        }
+        public static short GameControllerGetAxis([NotNull] IntPtr gameController, SdlGameControllerAxis axis) => NativeSdl.InternalGameControllerGetAxis(gameController, axis);
 
         /// <summary>
         ///     Sdl the game controller get button from string using the specified pch string
@@ -6561,10 +5748,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl game controller button</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlGameControllerButton GameControllerGetButtonFromString([NotNull] string pchString)
-        {
-            return NativeSdl.InternalGameControllerGetButtonFromString(pchString);
-        }
+        public static SdlGameControllerButton GameControllerGetButtonFromString([NotNull] string pchString) => NativeSdl.InternalGameControllerGetButtonFromString(pchString);
 
         /// <summary>
         ///     Sdl the game controller get string for button using the specified button
@@ -6616,10 +5800,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The byte</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static byte GameControllerGetButton([NotNull] IntPtr gameController, SdlGameControllerButton button)
-        {
-            return NativeSdl.InternalGameControllerGetButton(gameController, button);
-        }
+        public static byte GameControllerGetButton([NotNull] IntPtr gameController, SdlGameControllerButton button) => NativeSdl.InternalGameControllerGetButton(gameController, button);
 
         /// <summary>
         ///     Games the controller rumble using the specified game controller
@@ -6631,10 +5812,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerRumble([NotNull] IntPtr gameController, [NotNull] ushort lowFrequencyRumble, [NotNull] ushort highFrequencyRumble, [NotNull] uint durationMs)
-        {
-            return NativeSdl.InternalGameControllerRumble(gameController, lowFrequencyRumble, highFrequencyRumble, durationMs);
-        }
+        public static int GameControllerRumble([NotNull] IntPtr gameController, [NotNull] ushort lowFrequencyRumble, [NotNull] ushort highFrequencyRumble, [NotNull] uint durationMs) => NativeSdl.InternalGameControllerRumble(gameController, lowFrequencyRumble, highFrequencyRumble, durationMs);
 
         /// <summary>
         ///     Games the controller rumble triggers using the specified game controller
@@ -6646,10 +5824,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerRumbleTriggers([NotNull] IntPtr gameController, [NotNull] ushort leftRumble, [NotNull] ushort rightRumble, [NotNull] uint durationMs)
-        {
-            return NativeSdl.InternalGameControllerRumbleTriggers(gameController, leftRumble, rightRumble, durationMs);
-        }
+        public static int GameControllerRumbleTriggers([NotNull] IntPtr gameController, [NotNull] ushort leftRumble, [NotNull] ushort rightRumble, [NotNull] uint durationMs) => NativeSdl.InternalGameControllerRumbleTriggers(gameController, leftRumble, rightRumble, durationMs);
 
         /// <summary>
         ///     Games the controller close using the specified game controller
@@ -6661,7 +5836,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             NativeSdl.InternalGameControllerClose(gameController);
         }
-        
+
         /// <summary>
         ///     Internals the sdl game controller from instance id using the specified joy id
         /// </summary>
@@ -6669,10 +5844,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GameControllerFromInstanceId([NotNull] int joyId)
-        {
-            return NativeSdl.InternalGameControllerFromInstanceID(joyId);
-        }
+        public static IntPtr GameControllerFromInstanceId([NotNull] int joyId) => NativeSdl.InternalGameControllerFromInstanceID(joyId);
 
         /// <summary>
         ///     Games the controller type for index using the specified joystick index
@@ -6681,10 +5853,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl game controller type</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlGameControllerType GameControllerTypeForIndex([NotNull] int joystickIndex)
-        {
-            return NativeSdl.InternalGameControllerTypeForIndex(joystickIndex);
-        }
+        public static SdlGameControllerType GameControllerTypeForIndex([NotNull] int joystickIndex) => NativeSdl.InternalGameControllerTypeForIndex(joystickIndex);
 
         /// <summary>
         ///     Games the controller get type using the specified game controller
@@ -6693,10 +5862,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl game controller type</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlGameControllerType GameControllerGetType([NotNull] IntPtr gameController)
-        {
-            return NativeSdl.InternalGameControllerGetType(gameController);
-        }
+        public static SdlGameControllerType GameControllerGetType([NotNull] IntPtr gameController) => NativeSdl.InternalGameControllerGetType(gameController);
 
         /// <summary>
         ///     Games the controller from player index using the specified player index
@@ -6705,10 +5871,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GameControllerFromPlayerIndex([NotNull] int playerIndex)
-        {
-            return NativeSdl.InternalGameControllerFromPlayerIndex(playerIndex);
-        }
+        public static IntPtr GameControllerFromPlayerIndex([NotNull] int playerIndex) => NativeSdl.InternalGameControllerFromPlayerIndex(playerIndex);
 
 
         /// <summary>
@@ -6731,10 +5894,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool GameControllerHasLed([NotNull] IntPtr gameController)
-        {
-            return NativeSdl.InternalGameControllerHasLED(gameController);
-        }
+        public static SdlBool GameControllerHasLed([NotNull] IntPtr gameController) => NativeSdl.InternalGameControllerHasLED(gameController);
 
 
         /// <summary>
@@ -6744,10 +5904,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool GameControllerHasRumble([NotNull] IntPtr gameController)
-        {
-            return NativeSdl.InternalGameControllerHasRumble(gameController);
-        }
+        public static SdlBool GameControllerHasRumble([NotNull] IntPtr gameController) => NativeSdl.InternalGameControllerHasRumble(gameController);
 
         /// <summary>
         ///     Games the controller has rumble triggers using the specified game controller
@@ -6756,10 +5913,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool GameControllerHasRumbleTriggers([NotNull] IntPtr gameController)
-        {
-            return NativeSdl.InternalGameControllerHasRumbleTriggers(gameController);
-        }
+        public static SdlBool GameControllerHasRumbleTriggers([NotNull] IntPtr gameController) => NativeSdl.InternalGameControllerHasRumbleTriggers(gameController);
 
         /// <summary>
         ///     Games the controller set led using the specified game controller
@@ -6771,10 +5925,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerSetLed([NotNull] IntPtr gameController, [NotNull] byte red, [NotNull] byte green, [NotNull] byte blue)
-        {
-            return NativeSdl.InternalGameControllerSetLED(gameController, red, green, blue);
-        }
+        public static int GameControllerSetLed([NotNull] IntPtr gameController, [NotNull] byte red, [NotNull] byte green, [NotNull] byte blue) => NativeSdl.InternalGameControllerSetLED(gameController, red, green, blue);
 
 
         /// <summary>
@@ -6785,10 +5936,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool GameControllerHasAxis([NotNull] IntPtr gameController, SdlGameControllerAxis axis)
-        {
-            return NativeSdl.InternalGameControllerHasAxis(gameController, axis);
-        }
+        public static SdlBool GameControllerHasAxis([NotNull] IntPtr gameController, SdlGameControllerAxis axis) => NativeSdl.InternalGameControllerHasAxis(gameController, axis);
 
         /// <summary>
         ///     Games the controller has button using the specified game controller
@@ -6798,10 +5946,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool GameControllerHasButton([NotNull] IntPtr gameController, SdlGameControllerButton button)
-        {
-            return NativeSdl.InternalGameControllerHasButton(gameController, button);
-        }
+        public static SdlBool GameControllerHasButton([NotNull] IntPtr gameController, SdlGameControllerButton button) => NativeSdl.InternalGameControllerHasButton(gameController, button);
 
         /// <summary>
         ///     Games the controller get num touchpads using the specified game controller
@@ -6810,10 +5955,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerGetNumTouchpads([NotNull] IntPtr gameController)
-        {
-            return NativeSdl.InternalGameControllerGetNumTouchpads(gameController);
-        }
+        public static int GameControllerGetNumTouchpads([NotNull] IntPtr gameController) => NativeSdl.InternalGameControllerGetNumTouchpads(gameController);
 
         /// <summary>
         ///     Games the controller get num touchpad fingers using the specified game controller
@@ -6823,10 +5965,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerGetNumTouchpadFingers([NotNull] IntPtr gameController, [NotNull] int touchpad)
-        {
-            return NativeSdl.InternalGameControllerGetNumTouchpadFingers(gameController, touchpad);
-        }
+        public static int GameControllerGetNumTouchpadFingers([NotNull] IntPtr gameController, [NotNull] int touchpad) => NativeSdl.InternalGameControllerGetNumTouchpadFingers(gameController, touchpad);
 
         /// <summary>
         ///     Games the controller get touchpad finger using the specified game controller
@@ -6841,10 +5980,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerGetTouchpadFinger([NotNull] IntPtr gameController, [NotNull] int touchpad, [NotNull] int finger, out byte state, out float x, out float y, out float pressure)
-        {
-            return NativeSdl.InternalGameControllerGetTouchpadFinger(gameController, touchpad, finger, out state, out x, out y, out pressure);
-        }
+        public static int GameControllerGetTouchpadFinger([NotNull] IntPtr gameController, [NotNull] int touchpad, [NotNull] int finger, out byte state, out float x, out float y, out float pressure) => NativeSdl.InternalGameControllerGetTouchpadFinger(gameController, touchpad, finger, out state, out x, out y, out pressure);
 
         /// <summary>
         ///     Games the controller has sensor using the specified game controller
@@ -6854,10 +5990,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool GameControllerHasSensor([NotNull] IntPtr gameController, SdlSensorType type)
-        {
-            return NativeSdl.InternalGameControllerHasSensor(gameController, type);
-        }
+        public static SdlBool GameControllerHasSensor([NotNull] IntPtr gameController, SdlSensorType type) => NativeSdl.InternalGameControllerHasSensor(gameController, type);
 
         /// <summary>
         ///     Games the controller set sensor enabled using the specified game controller
@@ -6868,10 +6001,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerSetSensorEnabled([NotNull] IntPtr gameController, SdlSensorType type, SdlBool enabled)
-        {
-            return NativeSdl.InternalGameControllerSetSensorEnabled(gameController, type, enabled);
-        }
+        public static int GameControllerSetSensorEnabled([NotNull] IntPtr gameController, SdlSensorType type, SdlBool enabled) => NativeSdl.InternalGameControllerSetSensorEnabled(gameController, type, enabled);
 
         /// <summary>
         ///     Games the controller is sensor enabled using the specified game controller
@@ -6881,10 +6011,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool GameControllerIsSensorEnabled([NotNull] IntPtr gameController, SdlSensorType type)
-        {
-            return NativeSdl.InternalGameControllerIsSensorEnabled(gameController, type);
-        }
+        public static SdlBool GameControllerIsSensorEnabled([NotNull] IntPtr gameController, SdlSensorType type) => NativeSdl.InternalGameControllerIsSensorEnabled(gameController, type);
 
 
         /// <summary>
@@ -6897,10 +6024,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerGetSensorData([NotNull] IntPtr gameController, SdlSensorType type, [NotNull] IntPtr data, [NotNull] int numValues)
-        {
-            return NativeSdl.InternalGameControllerGetSensorData(gameController, type, data, numValues);
-        }
+        public static int GameControllerGetSensorData([NotNull] IntPtr gameController, SdlSensorType type, [NotNull] IntPtr data, [NotNull] int numValues) => NativeSdl.InternalGameControllerGetSensorData(gameController, type, data, numValues);
 
         /// <summary>
         ///     Games the controller get sensor data rate using the specified game controller
@@ -6910,10 +6034,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The float</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float GameControllerGetSensorDataRate([NotNull] IntPtr gameController, SdlSensorType type)
-        {
-            return NativeSdl.InternalGameControllerGetSensorDataRate(gameController, type);
-        }
+        public static float GameControllerGetSensorDataRate([NotNull] IntPtr gameController, SdlSensorType type) => NativeSdl.InternalGameControllerGetSensorDataRate(gameController, type);
 
 
         /// <summary>
@@ -6925,23 +6046,17 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerSendEffect([NotNull] IntPtr gameController, [NotNull] IntPtr data, [NotNull] int size)
-        {
-            return NativeSdl.InternalGameControllerSendEffect(gameController, data, size);
-        }
+        public static int GameControllerSendEffect([NotNull] IntPtr gameController, [NotNull] IntPtr data, [NotNull] int size) => NativeSdl.InternalGameControllerSendEffect(gameController, data, size);
 
 
         /// <summary>
-        /// Joysticks the is haptic using the specified joystick
+        ///     Joysticks the is haptic using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickIsHaptic([NotNull] IntPtr joystick)
-        {
-            return NativeSdl.InternalJoystickIsHaptic(joystick);
-        }
+        public static int JoystickIsHaptic([NotNull] IntPtr joystick) => NativeSdl.InternalJoystickIsHaptic(joystick);
 
         /// <summary>
         ///     Mouses the is haptic
@@ -6949,10 +6064,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int MouseIsHaptic()
-        {
-            return NativeSdl.InternalMouseIsHaptic();
-        }
+        public static int MouseIsHaptic() => NativeSdl.InternalMouseIsHaptic();
 
         /// <summary>
         ///     Nums the haptics
@@ -6973,10 +6085,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int NumSensors()
-        {
-            return NativeSdl.InternalNumSensors();
-        }
+        public static int NumSensors() => NativeSdl.InternalNumSensors();
 
         /// <summary>
         ///     Sdl the sensor get device name using the specified device index
@@ -7000,10 +6109,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl sensor type</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlSensorType SensorGetDeviceType([NotNull] int deviceIndex)
-        {
-            return NativeSdl.InternalSensorGetDeviceType(deviceIndex);
-        }
+        public static SdlSensorType SensorGetDeviceType([NotNull] int deviceIndex) => NativeSdl.InternalSensorGetDeviceType(deviceIndex);
 
         /// <summary>
         ///     Sensors the get device non portable type using the specified device index
@@ -7012,10 +6118,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SensorGetDeviceNonPortableType([NotNull] int deviceIndex)
-        {
-            return NativeSdl.InternalSensorGetDeviceNonPortableType(deviceIndex);
-        }
+        public static int SensorGetDeviceNonPortableType([NotNull] int deviceIndex) => NativeSdl.InternalSensorGetDeviceNonPortableType(deviceIndex);
 
         /// <summary>
         ///     Sensors the get device instance id using the specified device index
@@ -7024,10 +6127,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SensorGetDeviceInstanceId([NotNull] int deviceIndex)
-        {
-            return NativeSdl.InternalSensorGetDeviceInstanceID(deviceIndex);
-        }
+        public static int SensorGetDeviceInstanceId([NotNull] int deviceIndex) => NativeSdl.InternalSensorGetDeviceInstanceID(deviceIndex);
 
         /// <summary>
         ///     Sensors the open using the specified device index
@@ -7051,10 +6151,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr SensorFromInstanceId([NotNull] int instanceId)
-        {
-            return NativeSdl.InternalSensorFromInstanceID(instanceId);
-        }
+        public static IntPtr SensorFromInstanceId([NotNull] int instanceId) => NativeSdl.InternalSensorFromInstanceID(instanceId);
 
         /// <summary>
         ///     Sdl the sensor get name using the specified sensor
@@ -7078,10 +6175,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl sensor type</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlSensorType SensorGetType([NotNull] IntPtr sensor)
-        {
-            return NativeSdl.InternalSensorGetType(sensor);
-        }
+        public static SdlSensorType SensorGetType([NotNull] IntPtr sensor) => NativeSdl.InternalSensorGetType(sensor);
 
         /// <summary>
         ///     Sensors the get non portable type using the specified sensor
@@ -7090,10 +6184,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SensorGetNonPortableType([NotNull] IntPtr sensor)
-        {
-            return NativeSdl.InternalSensorGetNonPortableType(sensor);
-        }
+        public static int SensorGetNonPortableType([NotNull] IntPtr sensor) => NativeSdl.InternalSensorGetNonPortableType(sensor);
 
         /// <summary>
         ///     Sensors the get instance id using the specified sensor
@@ -7102,10 +6193,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SensorGetInstanceId([NotNull] IntPtr sensor)
-        {
-            return NativeSdl.InternalSensorGetInstanceID(sensor);
-        }
+        public static int SensorGetInstanceId([NotNull] IntPtr sensor) => NativeSdl.InternalSensorGetInstanceID(sensor);
 
         /// <summary>
         ///     Sensors the get data using the specified sensor
@@ -7116,10 +6204,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SensorGetData([NotNull] IntPtr sensor, float[] data, [NotNull] int numValues)
-        {
-            return NativeSdl.InternalSensorGetData(sensor, data, numValues);
-        }
+        public static int SensorGetData([NotNull] IntPtr sensor, float[] data, [NotNull] int numValues) => NativeSdl.InternalSensorGetData(sensor, data, numValues);
 
         /// <summary>
         ///     Sensors the close using the specified sensor
@@ -7167,70 +6252,49 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The ushort</returns>
-        public static ushort SdlAudioBitSize([NotNull] ushort x)
-        {
-            return (ushort) (x & AudioMaskBitSize);
-        }
+        public static ushort SdlAudioBitSize([NotNull] ushort x) => (ushort) (x & AudioMaskBitSize);
 
         /// <summary>
         ///     Describes whether sdl audio is float
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsFloat([NotNull] ushort x)
-        {
-            return (x & AudioMaskDatatype) != 0;
-        }
+        public static bool SdlAudioIsFloat([NotNull] ushort x) => (x & AudioMaskDatatype) != 0;
 
         /// <summary>
         ///     Describes whether sdl audio is big endian
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsBigEndian([NotNull] ushort x)
-        {
-            return (x & AudioMaskEndian) != 0;
-        }
+        public static bool SdlAudioIsBigEndian([NotNull] ushort x) => (x & AudioMaskEndian) != 0;
 
         /// <summary>
         ///     Describes whether sdl audio is signed
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsSigned([NotNull] ushort x)
-        {
-            return (x & AudioMaskSigned) != 0;
-        }
+        public static bool SdlAudioIsSigned([NotNull] ushort x) => (x & AudioMaskSigned) != 0;
 
         /// <summary>
         ///     Describes whether sdl audio is int
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsInt([NotNull] ushort x)
-        {
-            return (x & AudioMaskDatatype) == 0;
-        }
+        public static bool SdlAudioIsInt([NotNull] ushort x) => (x & AudioMaskDatatype) == 0;
 
         /// <summary>
         ///     Describes whether sdl audio is little endian
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsLittleEndian([NotNull] ushort x)
-        {
-            return (x & AudioMaskEndian) == 0;
-        }
+        public static bool SdlAudioIsLittleEndian([NotNull] ushort x) => (x & AudioMaskEndian) == 0;
 
         /// <summary>
         ///     Describes whether sdl audio is unsigned
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsUnsigned([NotNull] ushort x)
-        {
-            return (x & AudioMaskSigned) == 0;
-        }
+        public static bool SdlAudioIsUnsigned([NotNull] ushort x) => (x & AudioMaskSigned) == 0;
 
         /// <summary>
         ///     Sdl the audio init using the specified driver name
@@ -7254,7 +6318,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             NativeSdl.InternalAudioQuit();
         }
-        
+
         /// <summary>
         ///     Closes the audio device using the specified dev
         /// </summary>
@@ -7265,7 +6329,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             NativeSdl.InternalCloseAudioDevice(dev);
         }
-        
+
         /// <summary>
         ///     Sdl the get audio device name using the specified index
         /// </summary>
@@ -7288,10 +6352,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl audio status</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlAudioStatus GetAudioDeviceStatus([NotNull] uint dev)
-        {
-            return NativeSdl.InternalGetAudioDeviceStatus(dev);
-        }
+        public static SdlAudioStatus GetAudioDeviceStatus([NotNull] uint dev) => NativeSdl.InternalGetAudioDeviceStatus(dev);
 
         /// <summary>
         ///     Sdl the get audio driver using the specified index
@@ -7305,7 +6366,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Sdl the get current audio driver
         /// </summary>
@@ -7326,10 +6387,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetNumAudioDevices([NotNull] int isCapture)
-        {
-            return NativeSdl.InternalGetNumAudioDevices(isCapture);
-        }
+        public static int GetNumAudioDevices([NotNull] int isCapture) => NativeSdl.InternalGetNumAudioDevices(isCapture);
 
         /// <summary>
         ///     Gets the num audio drivers
@@ -7499,7 +6557,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateInput(pauseOn);
             NativeSdl.InternalPauseAudioDevice(dev, pauseOn);
         }
-        
+
         /// <summary>
         ///     Sdl the unlock audio device using the specified dev
         /// </summary>
@@ -7629,7 +6687,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Internals the sdl get performance frequency
         /// </summary>
@@ -7642,7 +6700,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Gets the performance counter
         /// </summary>

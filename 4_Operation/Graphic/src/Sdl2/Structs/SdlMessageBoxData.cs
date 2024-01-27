@@ -47,17 +47,17 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The window
         /// </summary>
-        public IntPtr window; 
+        public IntPtr window;
 
         /// <summary>
         ///     The title
         /// </summary>
-        public string title; 
+        public string title;
 
         /// <summary>
         ///     The message
         /// </summary>
-        public string message; 
+        public string message;
 
         /// <summary>
         ///     The num buttons
@@ -72,6 +72,6 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The color scheme
         /// </summary>
-        public SdlMessageBoxColorScheme colorScheme; 
+        public SdlMessageBoxColorScheme colorScheme;
     }
 }
