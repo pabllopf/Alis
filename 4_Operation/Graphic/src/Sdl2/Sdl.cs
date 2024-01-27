@@ -3604,22 +3604,6 @@ namespace Alis.Core.Graphic.Sdl2
         }
 
         /// <summary>
-        ///     Gets the rgb using the specified pixel
-        /// </summary>
-        /// <param name="pixel">The pixel</param>
-        /// <param name="format">The format</param>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void GetRgb([NotNull] uint pixel, [NotNull] IntPtr format, out byte r, out byte g, out byte b)
-        {
-            NativeSdl.InternalGetRGB(pixel, format, out r, out g, out b);
-        }
-
-
-        /// <summary>
         ///     Gets the rgba using the specified pixel
         /// </summary>
         /// <param name="pixel">The pixel</param>

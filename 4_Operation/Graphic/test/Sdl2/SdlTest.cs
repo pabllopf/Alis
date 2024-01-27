@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Data.Resource;
+using Alis.Core.Aspect.Math.Shape.Point;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
@@ -1495,10 +1496,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Sdl.SetSwapInterval(1);
 
             // create the window which should be able to have a valid OpenGL context and is resizable
-            SdlWindowFlags flags = SdlWindowFlags.WindowOpengl | SdlWindowFlags.WindowResizable | SdlWindowFlags.WindowMaximized;
+            const SdlWindowFlags flags = SdlWindowFlags.WindowOpengl | SdlWindowFlags.WindowResizable | SdlWindowFlags.WindowMaximized;
 
             // Act
-            int result = Sdl.CreateWindowAndRenderer(width, height, flags, out IntPtr window, out IntPtr renderer);
+            int result = Sdl.CreateWindowAndRenderer(width, height, flags, out IntPtr _, out IntPtr _);
 
             // Assert
             Assert.True(result >= 0 || result == -1);
@@ -2722,7 +2723,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, initResult);
 
             // Act
-            Exception exception = Record.Exception(() => Sdl.StartTextInput());
+            Exception exception = Record.Exception(Sdl.StartTextInput);
 
             // Assert
             Assert.Null(exception);
@@ -2760,7 +2761,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, initResult);
 
             // Act
-            Exception exception = Record.Exception(() => Sdl.StopTextInput());
+            Exception exception = Record.Exception(Sdl.StopTextInput);
 
             // Assert
             Assert.Null(exception);
@@ -2858,10 +2859,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
 
-            int x, y;
-
             // Act
-            uint result = Sdl.GetMouseStateOutXAndY(out x, out y);
+            uint result = Sdl.GetMouseStateOutXAndY(out int _, out int _);
 
             // Assert
             Assert.Equal(0.0, result);
@@ -2879,14 +2878,98 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
 
-            int x, y;
-
             // Act
-            uint result = Sdl.GetGlobalMouseStateOutXAndOutY(out x, out y);
+            uint result = Sdl.GetGlobalMouseStateOutXAndOutY(out int _, out int _);
 
             // Assert
             Assert.Equal(0.0, result);
 
+            Sdl.Quit();
+        }
+        
+        /// <summary>
+        /// Tests that sdl is pixel format four test
+        /// </summary>
+        [Fact]
+        public void SdlIsPixelFormatFourTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            
+            uint format = 0;
+            bool result = Sdl.SdlIsPixelFormatFour(format);
+            Assert.True(result);
+            
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that alloc format test
+        /// </summary>
+        [Fact]
+        public void AllocFormatTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            
+            uint pixelFormat = 0;
+            IntPtr result = Sdl.AllocFormat(pixelFormat);
+            Assert.NotEqual(IntPtr.Zero, result);
+            
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that alloc palette test
+        /// </summary>
+        [Fact]
+        public void AllocPaletteTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            
+            int nColors = 256;
+            IntPtr result = Sdl.AllocPalette(nColors);
+            Assert.NotEqual(IntPtr.Zero, result);
+            
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that calculate gamma ramp test
+        /// </summary>
+        [Fact]
+        public void CalculateGammaRampTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            
+            float gamma = 1.0f;
+            ushort[] ramp = new ushort[256];
+            Sdl.CalculateGammaRamp(gamma, ramp);
+            Assert.NotEmpty(ramp);
+            
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get pixel format name test
+        /// </summary>
+        [Fact]
+        public void GetPixelFormatNameTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            
+            uint format = 0;
+            string result = Sdl.GetPixelFormatName(format);
+            Assert.NotNull(result);
+            
             Sdl.Quit();
         }
     }
