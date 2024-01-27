@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: SdlBool.cs
+//  File: AudioAllow.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,18 +30,33 @@
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl bool enum
+    /// The audio allow enum
     /// </summary>
-    public enum SdlBool
+    public enum AudioAllow : uint
     {
         /// <summary>
-        ///     The sdl false sdl bool
+        ///     The sdl audio allow frequency change
         /// </summary>
-        False = 0,
+        AudioAllowFrequencyChange = 0x00000001,
 
         /// <summary>
-        ///     The sdl true sdl bool
+        ///     The sdl audio allow format change
         /// </summary>
-        True = 1
+        AudioAllowFormatChange = 0x00000002,
+
+        /// <summary>
+        ///     The sdl audio allow channels change
+        /// </summary>
+        AudioAllowChannelsChange = 0x00000004,
+
+        /// <summary>
+        ///     The sdl audio allow samples change
+        /// </summary>
+        AudioAllowSamplesChange = 0x00000008,
+
+        /// <summary>
+        ///     The sdl audio allow samples change
+        /// </summary>
+        AudioAllowAnyChange = AudioAllowFrequencyChange | AudioAllowFormatChange | AudioAllowChannelsChange | AudioAllowSamplesChange
     }
 }

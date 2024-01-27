@@ -246,15 +246,15 @@ namespace Alis.App.Engine
             Sdl.SetSwapInterval(1);
 
             // create the window which should be able to have a valid OpenGL context and is resizable
-            SdlWindowFlags flags = SdlWindowFlags.SdlWindowOpengl | SdlWindowFlags.SdlWindowResizable | SdlWindowFlags.SdlWindowMaximized;
+            SdlWindowFlags flags = SdlWindowFlags.WindowOpengl | SdlWindowFlags.WindowResizable | SdlWindowFlags.WindowMaximized;
             if (fullscreen)
             {
-                flags |= SdlWindowFlags.SdlWindowFullscreen;
+                flags |= SdlWindowFlags.WindowFullscreen;
             }
 
             if (highDpi)
             {
-                flags |= SdlWindowFlags.SdlWindowAllowHighDpi;
+                flags |= SdlWindowFlags.WindowAllowHighDpi;
             }
 
             _window = Sdl.CreateWindow(NameEngine, Sdl.WindowPosCentered, Sdl.WindowPosCentered, widthWindow, heightWindow, flags);
@@ -679,7 +679,7 @@ namespace Alis.App.Engine
 
             // SDL_CaptureMouse() let the OS know e.g. that our imgui drag outside the SDL window boundaries shouldn't e.g. trigger the OS window resize cursor.
             bool anyMouseButtonDown = ImGui.IsAnyMouseDown();
-            Sdl.CaptureMouse(anyMouseButtonDown ? SdlBool.SdlTrue : SdlBool.SdlFalse);
+            Sdl.CaptureMouse(anyMouseButtonDown ? SdlBool.True : SdlBool.False);
         }
 
         /// <summary>

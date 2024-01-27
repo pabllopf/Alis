@@ -523,56 +523,6 @@ namespace Alis.Core.Graphic.Sdl2
         internal static extern int InternalGetAudioDeviceSpec([NotNull] int index, [NotNull] int isCapture, out SdlAudioSpec spec);
         
         /// <summary>
-        ///     Sdl the set windows message hook using the specified callback
-        /// </summary>
-        /// <param name="callback">The callback</param>
-        /// <param name="userdata">The userdata</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowsMessageHook", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalSetWindowsMessageHook([NotNull] SdlWindowsMessageHook callback, [NotNull] IntPtr userdata);
-
-        /// <summary>
-        ///     Sdl the render get d 3 d 9 device using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_RenderGetD3D9Device", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalRenderGetD3D9Device([NotNull] IntPtr renderer);
-
-        /// <summary>
-        ///     Sdl the render get d 3 d 11 device using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_RenderGetD3D11Device", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalRenderGetD3D11Device([NotNull] IntPtr renderer);
-
-        /// <summary>
-        ///     Sdl the win rt get device family
-        /// </summary>
-        /// <returns>The sdl win rt device family</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_WinRTGetDeviceFamily", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlWinRtDeviceFamily InternalWinRTGetDeviceFamily();
-
-        /// <summary>
-        ///     Sdl the get window wm info using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="info">The info</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowWMInfo", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalGetWindowWMInfo([NotNull] IntPtr window, ref SdlSysWmInfo info);
-
-        /// <summary>
         ///     Internals the sdl set clipboard text using the specified text
         /// </summary>
         /// <param name="text">The text</param>
@@ -1677,37 +1627,6 @@ namespace Alis.Core.Graphic.Sdl2
         internal static extern IntPtr InternalLoadFile([NotNull] string file, out IntPtr dataSize);
 
         /// <summary>
-        ///     Sdl the set main ready
-        /// </summary>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SetMainReady", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalSetMainReady();
-
-        /// <summary>
-        ///     Sdl the win rt run app using the specified main function
-        /// </summary>
-        /// <param name="mainFunction">The main function</param>
-        /// <param name="reserved">The reserved</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_WinRTRunApp", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalWinRTRunApp(SdlMainFunc mainFunction, [NotNull] IntPtr reserved);
-
-        /// <summary>
-        ///     Sdl the ui kit run app using the specified argc
-        /// </summary>
-        /// <param name="argc">The argc</param>
-        /// <param name="argv">The argv</param>
-        /// <param name="mainFunction">The main function</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_UIKitRunApp", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalUIKitRunApp([NotNull] int argc, IntPtr argv, SdlMainFunc mainFunction);
-
-        /// <summary>
         ///     Sdl the init using the specified flags
         /// </summary>
         /// <param name="flags">The flags</param>
@@ -1833,17 +1752,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalCreateWindowAndRenderer([NotNull] int width, [NotNull] int height, [NotNull] SdlWindowFlags windowFlags, out IntPtr window, out IntPtr renderer);
-
-        /// <summary>
-        ///     Sdl the create window from using the specified data
-        /// </summary>
-        /// <param name="data">The data</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindowFrom", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalCreateWindowFrom([NotNull] IntPtr data);
-
+        
         /// <summary>
         ///     Sdl the destroy window using the specified window
         /// </summary>
@@ -1852,23 +1761,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalDestroyWindow([NotNull] IntPtr window);
-
-        /// <summary>
-        ///     Sdl the disable screen saver
-        /// </summary>
-        [DllImport(NativeLibName, EntryPoint = "SDL_DisableScreenSaver", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalDisableScreenSaver();
-
-        /// <summary>
-        ///     Sdl the enable screen saver
-        /// </summary>
-        [DllImport(NativeLibName, EntryPoint = "SDL_EnableScreenSaver", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalEnableScreenSaver();
-
+        
         /// <summary>
         ///     Sdl the get closest display mode using the specified display index
         /// </summary>
@@ -1899,7 +1792,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetCurrentVideoDriver", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGetCurrentVideoDriver();
+        internal static extern IntPtr InternalGetCurrentVideoDriver();
 
         /// <summary>
         ///     Sdl the get desktop display mode using the specified display index
@@ -1945,17 +1838,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalGetDisplayDPI([NotNull] int displayIndex, out float dDpi, out float hDpi, out float vDpi);
-
-        /// <summary>
-        ///     Sdl the get display orientation using the specified display index
-        /// </summary>
-        /// <param name="displayIndex">The display index</param>
-        /// <returns>The sdl display orientation</returns>
-        [DllImport(NativeLibName, EntryPoint = "SdlDisplayOrientation", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlDisplayOrientation InternalGetDisplayOrientation([NotNull] int displayIndex);
-
+        
         /// <summary>
         ///     Sdl the get display mode using the specified display index
         /// </summary>
@@ -2101,18 +1984,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalGetWindowDisplayMode([NotNull] IntPtr window, out SdlDisplayMode mode);
-
-        /// <summary>
-        ///     Sdl the get window icc profile using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="mode">The mode</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowICCProfile", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalGetWindowICCProfile([NotNull] IntPtr window, out IntPtr mode);
-
+        
         /// <summary>
         ///     Sdl the get window flags using the specified window
         /// </summary>
@@ -3712,16 +3584,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalHideWindow([NotNull] IntPtr window);
-
-        /// <summary>
-        ///     Sdl the is screen saver enabled
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_IsScreenSaverEnabled", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalIsScreenSaverEnabled();
-
+        
         /// <summary>
         ///     Sdl the maximize window using the specified window
         /// </summary>
@@ -4065,121 +3928,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlBlendMode InternalComposeCustomBlendMode([NotNull] SdlBlendFactor srcColorFactor, [NotNull] SdlBlendFactor dstColorFactor, [NotNull] SdlBlendOperation colorOperation, [NotNull] SdlBlendFactor srcAlphaFactor, [NotNull] SdlBlendFactor dstAlphaFactor, [NotNull] SdlBlendOperation alphaOperation);
-
-        /// <summary>
-        ///     Internals the sdl vulkan load library using the specified path
-        /// </summary>
-        /// <param name="path">The path</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_Vulkan_LoadLibrary", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalVulkan_LoadLibrary([NotNull] string path);
-
-        /// <summary>
-        ///     Sdl the vulkan get vk get instance proc addr
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_Vulkan_GetVkGetInstanceProcAddr", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalVulkan_GetVkGetInstanceProcAddr();
-
-        /// <summary>
-        ///     Sdl the vulkan unload library
-        /// </summary>
-        [DllImport(NativeLibName, EntryPoint = "SDL_Vulkan_UnloadLibrary", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalVulkan_UnloadLibrary();
-
-        /// <summary>
-        ///     Sdl the vulkan get instance extensions using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="pCount">The count</param>
-        /// <param name="pNames">The names</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_Vulkan_GetInstanceExtensions", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalVulkan_GetInstanceExtensions([NotNull] IntPtr window, out uint pCount, [NotNull] IntPtr pNames);
-
-        /// <summary>
-        ///     Sdl the vulkan get instance extensions using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="pCount">The count</param>
-        /// <param name="pNames">The names</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_Vulkan_GetInstanceExtensions", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalVulkan_GetInstanceExtensions([NotNull] IntPtr window, out uint pCount, [NotNull] IntPtr[] pNames);
-
-        /// <summary>
-        ///     Sdl the vulkan create surface using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="instance">The instance</param>
-        /// <param name="surface">The surface</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_Vulkan_CreateSurface", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalVulkan_CreateSurface([NotNull] IntPtr window, [NotNull] IntPtr instance, out ulong surface);
-
-        /// <summary>
-        ///     Sdl the vulkan get drawable size using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_Vulkan_GetDrawableSize", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalVulkan_GetDrawableSize([NotNull] IntPtr window, out int w, out int h);
-
-        /// <summary>
-        ///     Sdl the metal create view using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_Metal_CreateView", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalMetal_CreateView([NotNull] IntPtr window);
-
-        /// <summary>
-        ///     Sdl the metal destroy view using the specified view
-        /// </summary>
-        /// <param name="view">The view</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_Metal_DestroyView", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalMetal_DestroyView([NotNull] IntPtr view);
-
-        /// <summary>
-        ///     Sdl the metal get layer using the specified view
-        /// </summary>
-        /// <param name="view">The view</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_Metal_GetLayer", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalMetal_GetLayer([NotNull] IntPtr view);
-
-        /// <summary>
-        ///     Sdl the metal get drawable size using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_Metal_GetDrawableSize", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalMetal_GetDrawableSize([NotNull] IntPtr window, out int w, out int h);
-
+        
         /// <summary>
         ///     Sdl the create renderer using the specified window
         /// </summary>

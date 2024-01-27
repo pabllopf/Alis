@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Data.Resource;
+using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -149,7 +150,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
                 SdlBool result = Sdl.GameControllerHasAxis(gameController, axis);
 
                 // Assert
-                Assert.Equal(SdlBool.SdlTrue, result);
+                Assert.Equal(SdlBool.True, result);
             }
 
             Sdl.Quit();
@@ -177,7 +178,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
                 SdlBool result = Sdl.GameControllerHasButton(gameController, button);
 
                 // Assert
-                Assert.Equal(SdlBool.SdlTrue, result);
+                Assert.Equal(SdlBool.True, result);
             }
 
             Sdl.Quit();
@@ -724,7 +725,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             SdlBool result = Sdl.SetHint(name, value);
 
             // Assert
-            Assert.Equal(SdlBool.SdlTrue, result);
+            Assert.Equal(SdlBool.True, result);
         }
 
         /// <summary>
@@ -742,7 +743,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Act
             SdlBool setResult = Sdl.SetHint(name, value);
-            Assert.Equal(SdlBool.SdlTrue, setResult);
+            Assert.Equal(SdlBool.True, setResult);
 
             // Act
             string result = Sdl.GetHint(name);
@@ -786,7 +787,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             SdlBool result = Sdl.SetHint(name, value);
 
             // Assert
-            Assert.Equal(SdlBool.SdlTrue, result);
+            Assert.Equal(SdlBool.True, result);
 
             Sdl.Quit();
         }
@@ -1120,7 +1121,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             SdlBool result = Sdl.SetHint(name, value);
 
             // Assert
-            Assert.Equal(SdlBool.SdlTrue, result);
+            Assert.Equal(SdlBool.True, result);
 
             Sdl.Quit();
         }
@@ -1144,6 +1145,1570 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Assert
             Assert.Equal(value, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test load file should return expected value
+        /// </summary>
+        [Fact]
+        public void TestLoadFile_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            string file = "testFile";
+
+            // Act
+            IntPtr result = Sdl.LoadFile(file, out IntPtr dataSize);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result);
+            Assert.Equal(IntPtr.Zero, dataSize);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get error should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetError_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            string result = Sdl.GetError();
+
+            // Assert
+            Assert.NotNull(result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test set error should not throw exception
+        /// </summary>
+        [Fact]
+        public void TestSetError_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            const string errorMessage = "Test error message";
+
+            // Act
+            Exception exception = Record.Exception(() => Sdl.SetError(errorMessage));
+
+            // Assert
+            Assert.Null(exception);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test was init should return expected value
+        /// </summary>
+        [Fact]
+        public void TestWasInit_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            SdlInit flags = SdlInit.InitEverything;
+
+            // Act
+            uint result = Sdl.WasInit(flags);
+
+            // Assert
+            Assert.Equal((uint) flags, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get hint should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetHint_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            string name = "TestHint";
+
+            // Act
+            string result = Sdl.GetHint(name);
+
+            // Assert
+            Assert.Null(result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test set hint should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSetHint_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            string name = "TestHint";
+            string value = "TestValue";
+
+            // Act
+            SdlBool result = Sdl.SetHint(name, value);
+
+            // Assert
+            Assert.Equal(SdlBool.True, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test set hint with priority should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSetHintWithPriority_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            string name = "TestHint";
+            string value = "TestValue";
+            SdlHintPriority priority = SdlHintPriority.SdlHintOverride;
+
+            // Act
+            SdlBool result = Sdl.SetHintWithPriority(name, value, priority);
+
+            // Assert
+            Assert.Equal(SdlBool.True, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get hint boolean should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetHintBoolean_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            string name = "TestHint";
+            SdlBool defaultValue = SdlBool.False;
+
+            // Act
+            SdlBool result = Sdl.GetHintBoolean(name, defaultValue);
+
+            // Assert
+            Assert.Equal(defaultValue, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get version should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetVersion_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            SdlVersion result = Sdl.GetVersion();
+
+            // Assert
+            Assert.Equal(new SdlVersion(2, 0, 18), result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test window pos undefined display should return expected value
+        /// </summary>
+        [Fact]
+        public void TestWindowPosUndefinedDisplay_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int x = 10;
+
+            // Act
+            int result = Sdl.WindowPosUndefinedDisplay(x);
+
+            // Assert
+            Assert.Equal(Sdl.WindowPosUndefinedMask | x, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test window pos is undefined should return expected value
+        /// </summary>
+        [Fact]
+        public void TestWindowPosIsUndefined_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int x = Sdl.WindowPosUndefinedMask;
+
+            // Act
+            bool result = Sdl.WindowPosIsUndefined(x);
+
+            // Assert
+            Assert.True(result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test window pos centered display should return expected value
+        /// </summary>
+        [Fact]
+        public void TestWindowPosCenteredDisplay_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int x = 10;
+
+            // Act
+            int result = Sdl.WindowPosCenteredDisplay(x);
+
+            // Assert
+            Assert.Equal(Sdl.WindowPosCenteredMask | x, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test window pos is centered should return expected value
+        /// </summary>
+        [Fact]
+        public void TestWindowPosIsCentered_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int x = Sdl.WindowPosCenteredMask;
+
+            // Act
+            bool result = Sdl.WindowPosIsCentered(x);
+
+            // Assert
+            Assert.True(result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test create window should return non null pointer
+        /// </summary>
+        [Fact]
+        public void TestCreateWindow_ShouldReturnNonNullPointer()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            string title = "Test Window";
+            int x = 10;
+            int y = 10;
+            int w = 800;
+            int h = 600;
+
+            // CONFIG THE SDL2 AN OPENGL CONFIGURATION
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
+            Sdl.SetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextMajorVersion, 3);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextMinorVersion, 2);
+
+            Sdl.SetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlDoubleBuffer, 1);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlDepthSize, 24);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlAlphaSize, 8);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlStencilSize, 8);
+
+            // Enable vsync
+            Sdl.SetSwapInterval(1);
+
+            // create the window which should be able to have a valid OpenGL context and is resizable
+            SdlWindowFlags flags = SdlWindowFlags.WindowOpengl | SdlWindowFlags.WindowResizable | SdlWindowFlags.WindowMaximized;
+
+            // Act
+            IntPtr result = Sdl.CreateWindow(title, x, y, w, h, flags);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test create window and renderer should return non null pointers
+        /// </summary>
+        [Fact]
+        public void TestCreateWindowAndRenderer_ShouldReturnNonNullPointers()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int width = 800;
+            int height = 600;
+
+            // CONFIG THE SDL2 AN OPENGL CONFIGURATION
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
+            Sdl.SetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextMajorVersion, 3);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextMinorVersion, 2);
+
+            Sdl.SetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlDoubleBuffer, 1);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlDepthSize, 24);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlAlphaSize, 8);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlStencilSize, 8);
+
+            // Enable vsync
+            Sdl.SetSwapInterval(1);
+
+            // create the window which should be able to have a valid OpenGL context and is resizable
+            SdlWindowFlags flags = SdlWindowFlags.WindowOpengl | SdlWindowFlags.WindowResizable | SdlWindowFlags.WindowMaximized;
+
+            // Act
+            int result = Sdl.CreateWindowAndRenderer(width, height, flags, out IntPtr window, out IntPtr renderer);
+
+            // Assert
+            Assert.Equal(-1, result);
+            Assert.Equal(IntPtr.Zero, window);
+            Assert.Equal(IntPtr.Zero, renderer);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test destroy window should not throw exception
+        /// </summary>
+        [Fact]
+        public void TestDestroyWindow_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            string title = "Test Window";
+            int x = 10;
+            int y = 10;
+            int w = 800;
+            int h = 600;
+            SdlWindowFlags flags = SdlWindowFlags.WindowShown;
+            IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
+
+            // Act
+            Exception exception = Record.Exception(() => Sdl.DestroyWindow(window));
+
+            // Assert
+            Assert.Null(exception);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get closest display mode should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetClosestDisplayMode_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int displayIndex = 0;
+            SdlDisplayMode mode = new SdlDisplayMode();
+
+            // Act
+            IntPtr result = Sdl.GetClosestDisplayMode(displayIndex, ref mode, out SdlDisplayMode _);
+
+            // Assert
+            Assert.NotEqual(IntPtr.Zero, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get current display mode should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetCurrentDisplayMode_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int displayIndex = 0;
+
+            // Act
+            int result = Sdl.GetCurrentDisplayMode(displayIndex, out SdlDisplayMode _);
+
+            // Assert
+            Assert.Equal(0, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get current video driver should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetCurrentVideoDriver_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            string result = Sdl.GetCurrentVideoDriver();
+
+            // Assert
+            Assert.NotNull(result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get desktop display mode should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetDesktopDisplayMode_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int displayIndex = 0;
+
+            // Act
+            int result = Sdl.GetDesktopDisplayMode(displayIndex, out SdlDisplayMode _);
+
+            // Assert
+            Assert.Equal(0, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get display name should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetDisplayName_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int index = 0;
+
+            // Act
+            string result = Sdl.GetDisplayName(index);
+
+            // Assert
+            Assert.NotNull(result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get display bounds should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetDisplayBounds_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int displayIndex = 0;
+
+            // Act
+            int result = Sdl.GetDisplayBounds(displayIndex, out RectangleI _);
+
+            // Assert
+            Assert.Equal(0, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get display dpi should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetDisplayDpi_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int displayIndex = 0;
+
+            // Act
+            int result = Sdl.GetDisplayDpi(displayIndex, out float _, out float _, out float _);
+
+            // Assert
+            Assert.Equal(0, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get display mode should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetDisplayMode_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int displayIndex = 0;
+            int modeIndex = 0;
+
+            // Act
+            int result = Sdl.GetDisplayMode(displayIndex, modeIndex, out SdlDisplayMode _);
+
+            // Assert
+            Assert.Equal(0, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get display usable bounds should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetDisplayUsableBounds_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int displayIndex = 0;
+
+            // Act
+            int result = Sdl.GetDisplayUsableBounds(displayIndex, out RectangleI _);
+
+            // Assert
+            Assert.Equal(0, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get num display modes should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetNumDisplayModes_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int displayIndex = 0;
+
+            // Act
+            int result = Sdl.GetNumDisplayModes(displayIndex);
+
+            // Assert
+            Assert.True(result >= 0);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get num video displays should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetNumVideoDisplays_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            int result = Sdl.GetNumVideoDisplays();
+
+            // Assert
+            Assert.True(result >= 0);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get num video drivers should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetNumVideoDrivers_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            int result = Sdl.GetNumVideoDrivers();
+
+            // Assert
+            Assert.True(result >= 0);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get video driver should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetVideoDriver_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int index = 0;
+
+            // Act
+            string result = Sdl.GetVideoDriver(index);
+
+            // Assert
+            Assert.NotNull(result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get window brightness should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetWindowBrightness_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            string title = "Test Window";
+            int x = 10;
+            int y = 10;
+            int w = 800;
+            int h = 600;
+            SdlWindowFlags flags = SdlWindowFlags.WindowShown;
+            IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
+
+            // Act
+            float result = Sdl.GetWindowBrightness(window);
+
+            // Assert
+            Assert.True(result >= 0.0f && result <= 1.0f);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test set window opacity should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSetWindowOpacity_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            string title = "Test Window";
+            int x = 10;
+            int y = 10;
+            int w = 800;
+            int h = 600;
+            SdlWindowFlags flags = SdlWindowFlags.WindowShown;
+            IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
+            float opacity = 0.5f;
+
+            // Act
+            int result = Sdl.SetWindowOpacity(window, opacity);
+
+            // Assert
+            Assert.Equal(-1, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get window opacity should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetWindowOpacity_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            string title = "Test Window";
+            int x = 10;
+            int y = 10;
+            int w = 800;
+            int h = 600;
+            SdlWindowFlags flags = SdlWindowFlags.WindowShown;
+            IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
+
+            // Act
+            int result = Sdl.GetWindowOpacity(window, out float _);
+
+            // Assert
+            Assert.Equal(-1, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test set window modal for should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSetWindowModalFor_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            const string title = "Test Window";
+            const int x = 10;
+            const int y = 10;
+            const int w = 800;
+            const int h = 600;
+            const SdlWindowFlags flags = SdlWindowFlags.WindowShown;
+            IntPtr modalWindow = Sdl.CreateWindow(title, x, y, w, h, flags);
+            IntPtr parentWindow = Sdl.CreateWindow(title, x, y, w, h, flags);
+
+            // Act
+            int result = Sdl.SetWindowModalFor(modalWindow, parentWindow);
+
+            // Assert
+            Assert.Equal(-1, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test set window input focus should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSetWindowInputFocus_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            string title = "Test Window";
+            int x = 10;
+            int y = 10;
+            int w = 800;
+            int h = 600;
+            SdlWindowFlags flags = SdlWindowFlags.WindowShown;
+            IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
+
+            // Act
+            int result = Sdl.SetWindowInputFocus(window);
+
+            // Assert
+            Assert.Equal(-1, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get window data should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetWindowData_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            string title = "Test Window";
+            int x = 10;
+            int y = 10;
+            int w = 800;
+            int h = 600;
+            SdlWindowFlags flags = SdlWindowFlags.WindowShown;
+            IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
+            string name = "Test Data";
+
+            // Act
+            IntPtr result = Sdl.GetWindowData(window, name);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get window display index should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetWindowDisplayIndex_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            string title = "Test Window";
+            int x = 10;
+            int y = 10;
+            int w = 800;
+            int h = 600;
+            SdlWindowFlags flags = SdlWindowFlags.WindowShown;
+            IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
+
+            // Act
+            int result = Sdl.GetWindowDisplayIndex(window);
+
+            // Assert
+            Assert.True(result <= 0);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl audio stream clear should not throw exception
+        /// </summary>
+        [Fact]
+        public void TestSdlAudioStreamClear_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr stream = IntPtr.Zero; // Initialize your stream here
+
+            // Act
+            Exception exception = Record.Exception(() => Sdl.SdlAudioStreamClear(stream));
+
+            // Assert
+            Assert.Null(exception);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl free audio stream should not throw exception
+        /// </summary>
+        [Fact]
+        public void TestSdlFreeAudioStream_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr stream = IntPtr.Zero; // Initialize your stream here
+
+            // Act
+            Exception exception = Record.Exception(() => Sdl.SdlFreeAudioStream(stream));
+
+            // Assert
+            Assert.Null(exception);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl get audio device spec should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSdlGetAudioDeviceSpec_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int index = 0;
+            int isCapture = 0;
+
+            // Act
+            int result = Sdl.SdlGetAudioDeviceSpec(index, isCapture, out SdlAudioSpec _);
+
+            // Assert
+            Assert.Equal(0, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl open audio device should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSdlOpenAudioDevice_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            string device = "Test Device";
+            int isCapture = 0;
+            SdlAudioSpec desired = new SdlAudioSpec();
+            int allowedChanges = 0;
+
+            // Act
+            uint result = Sdl.SdlOpenAudioDevice(device, isCapture, ref desired, out SdlAudioSpec _, allowedChanges);
+
+            // Assert
+            Assert.Equal(0.0, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl pause audio should not throw exception
+        /// </summary>
+        [Fact]
+        public void TestSdlPauseAudio_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int pauseOn = 1;
+
+            // Act
+            Exception exception = Record.Exception(() => Sdl.SdlPauseAudio(pauseOn));
+
+            // Assert
+            Assert.Null(exception);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl pause audio device should not throw exception
+        /// </summary>
+        [Fact]
+        public void TestSdlPauseAudioDevice_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            uint dev = 1; // Initialize your device here
+            int pauseOn = 1;
+
+            // Act
+            Exception exception = Record.Exception(() => Sdl.SdlPauseAudioDevice(dev, pauseOn));
+
+            // Assert
+            Assert.Null(exception);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl unlock audio device should not throw exception
+        /// </summary>
+        [Fact]
+        public void TestSdlUnlockAudioDevice_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            uint dev = 1; // Initialize your device here
+
+            // Act
+            Exception exception = Record.Exception(() => Sdl.SdlUnlockAudioDevice(dev));
+
+            // Assert
+            Assert.Null(exception);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl new audio stream should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSdlNewAudioStream_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            ushort srcFormat = 1;
+            byte srcChannels = 1;
+            int srcRate = 44100;
+            ushort dstFormat = 1;
+            byte dstChannels = 1;
+            int dstRate = 44100;
+
+            // Act
+            IntPtr result = Sdl.SdlNewAudioStream(srcFormat, srcChannels, srcRate, dstFormat, dstChannels, dstRate);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl audio stream put should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSdlAudioStreamPut_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr stream = IntPtr.Zero; // Initialize your stream here
+            IntPtr buf = IntPtr.Zero; // Initialize your buffer here
+            int len = 0; // Initialize your length here
+
+            // Act
+            int result = Sdl.SdlAudioStreamPut(stream, buf, len);
+
+            // Assert
+            Assert.Equal(-1, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl audio stream get should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSdlAudioStreamGet_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr stream = IntPtr.Zero; // Initialize your stream here
+            IntPtr buf = IntPtr.Zero; // Initialize your buffer here
+            int len = 0; // Initialize your length here
+
+            // Act
+            int result = Sdl.SdlAudioStreamGet(stream, buf, len);
+
+            // Assert
+            Assert.Equal(-1, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl audio stream available should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSdlAudioStreamAvailable_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr stream = IntPtr.Zero; // Initialize your stream here
+
+            // Act
+            int result = Sdl.SdlAudioStreamAvailable(stream);
+
+            // Assert
+            Assert.True(result >= 0);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test mix audio format should not throw exception
+        /// </summary>
+        [Fact]
+        public void TestMixAudioFormat_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            byte[] dst = new byte[10];
+            byte[] src = new byte[10];
+            ushort format = 1;
+            uint len = 10;
+            int volume = 1;
+
+            // Act
+            Exception exception = Record.Exception(() => Sdl.MixAudioFormat(dst, src, format, len, volume));
+
+            // Assert
+            Assert.Null(exception);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test lock sensors should not throw exception
+        /// </summary>
+        [Fact]
+        public void TestLockSensors_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            Exception exception = Record.Exception(Sdl.LockSensors);
+
+            // Assert
+            Assert.Null(exception);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test unlock sensors should not throw exception
+        /// </summary>
+        [Fact]
+        public void TestUnlockSensors_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            Exception exception = Record.Exception(Sdl.UnlockSensors);
+
+            // Assert
+            Assert.Null(exception);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl audio bit size should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSdlAudioBitSize_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            ushort x = 1;
+
+            // Act
+            ushort result = Sdl.SdlAudioBitSize(x);
+
+            // Assert
+            Assert.Equal(x & Sdl.AudioMaskBitSize, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl audio is float should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSdlAudioIsFloat_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            ushort x = 1;
+
+            // Act
+            bool result = Sdl.SdlAudioIsFloat(x);
+
+            // Assert
+            Assert.False(result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl audio is big endian should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSdlAudioIsBigEndian_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            ushort x = 1;
+
+            // Act
+            bool result = Sdl.SdlAudioIsBigEndian(x);
+
+            // Assert
+            Assert.False(result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl audio is signed should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSdlAudioIsSigned_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            ushort x = 1;
+
+            // Act
+            bool result = Sdl.SdlAudioIsSigned(x);
+
+            // Assert
+            Assert.False(result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl audio is int should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSdlAudioIsInt_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            ushort x = 1;
+
+            // Act
+            bool result = Sdl.SdlAudioIsInt(x);
+
+            // Assert
+            Assert.True(result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl audio is little endian should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSdlAudioIsLittleEndian_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            ushort x = 1;
+
+            // Act
+            bool result = Sdl.SdlAudioIsLittleEndian(x);
+
+            // Assert
+            Assert.True(result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl audio is unsigned should return expected value
+        /// </summary>
+        [Fact]
+        public void TestSdlAudioIsUnsigned_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            ushort x = 1;
+
+            // Act
+            bool result = Sdl.SdlAudioIsUnsigned(x);
+
+            // Assert
+            Assert.True(result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test audio init should return expected value
+        /// </summary>
+        [Fact]
+        public void TestAudioInit_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            string driverName = "driverName";
+
+            // Act
+            int result = Sdl.AudioInit(driverName);
+
+            // Assert
+            Assert.Equal(-1, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl mix audio format should not throw exception
+        /// </summary>
+        [Fact]
+        public void TestSdlMixAudioFormat_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            byte[] dst = new byte[10];
+            byte[] src = new byte[10];
+            ushort format = 1;
+            uint len = 10;
+            int volume = 1;
+
+            // Act
+            Exception exception = Record.Exception(() => Sdl.MixAudioFormat(dst, src, format, len, volume));
+
+            // Assert
+            Assert.Null(exception);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test open audio device should return expected value
+        /// </summary>
+        [Fact]
+        public void TestOpenAudioDevice_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr device = IntPtr.Zero;
+            int isCapture = 0;
+            SdlAudioSpec desired = new SdlAudioSpec();
+            int allowedChanges = 0;
+
+            // Act
+            uint result = Sdl.OpenAudioDevice(device, isCapture, ref desired, out SdlAudioSpec _, allowedChanges);
+
+            // Assert
+            Assert.NotEqual(0.0, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get window display mode should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetWindowDisplayMode_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetWindowDisplayMode(window, out SdlDisplayMode _);
+
+            // Assert
+            Assert.Equal(-1, result);
+
+            Sdl.Quit();
+        }
+        
+        /// <summary>
+        /// Tests that test get window flags should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetWindowFlags_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            uint result = Sdl.GetWindowFlags(window);
+
+            // Assert
+            Assert.Equal(0.0, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get window from id should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetWindowFromId_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            uint id = 1;
+
+            // Act
+            IntPtr result = Sdl.GetWindowFromId(id);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get window gamma ramp should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetWindowGammaRamp_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+            ushort[] red = new ushort[256];
+            ushort[] green = new ushort[256];
+            ushort[] blue = new ushort[256];
+
+            // Act
+            int result = Sdl.GetWindowGammaRamp(window, red, green, blue);
+
+            // Assert
+            Assert.Equal(-1, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get window grab should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetWindowGrab_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            SdlBool result = Sdl.GetWindowGrab(window);
+
+            // Assert
+            Assert.Equal(SdlBool.False, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get window keyboard grab should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetWindowKeyboardGrab_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            SdlBool result = Sdl.GetWindowKeyboardGrab(window);
+
+            // Assert
+            Assert.Equal(SdlBool.False, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get window mouse grab should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetWindowMouseGrab_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            SdlBool result = Sdl.GetWindowMouseGrab(window);
+
+            // Assert
+            Assert.Equal(SdlBool.False, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get window id should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetWindowId_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            uint result = Sdl.GetWindowId(window);
+
+            // Assert
+            Assert.Equal(0.0, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get window pixel format should return expected value
+        /// </summary>
+        [Fact]
+        public void TestGetWindowPixelFormat_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            uint result = Sdl.GetWindowPixelFormat(window);
+
+            // Assert
+            Assert.Equal(0.0, result);
 
             Sdl.Quit();
         }

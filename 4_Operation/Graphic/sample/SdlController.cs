@@ -143,21 +143,21 @@ namespace Alis.Core.Graphic.Sample
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
             {
-                Sdl.SetHint(Sdl.HintRenderDriver, "direct3d");
+                Sdl.SetHint(SdlHint.HintRenderDriver, "direct3d");
             }
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.OSX)
             {
-                Sdl.SetHint(Sdl.HintRenderDriver, "opengl");
+                Sdl.SetHint(SdlHint.HintRenderDriver, "opengl");
             }
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Linux)
             {
-                Sdl.SetHint(Sdl.HintRenderDriver, "opengl");
+                Sdl.SetHint(SdlHint.HintRenderDriver, "opengl");
             }
 
             // create the window which should be able to have a valid OpenGL context and is resizable
-            SdlWindowFlags flags = SdlWindowFlags.SdlWindowResizable | SdlWindowFlags.SdlWindowShown;
+            SdlWindowFlags flags = SdlWindowFlags.WindowResizable | SdlWindowFlags.WindowShown;
 
             // Creates a new SDL window at the center of the screen with the given width and height.
             IntPtr window = Sdl.CreateWindow("Sample", Sdl.WindowPosCentered, Sdl.WindowPosCentered, Width, Height, flags);
@@ -408,8 +408,8 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         private static void Sdlinput()
         {
-            Sdl.SetHint(Sdl.HintXInputEnabled, "0");
-            Sdl.SetHint(Sdl.SdlHintJoystickThread, "1");
+            Sdl.SetHint(SdlHint.HintXInputEnabled, "0");
+            Sdl.SetHint(SdlHint.SdlHintJoystickThread, "1");
             
             for (int i = 0; i < Sdl.NumJoysticks(); i++)
             {

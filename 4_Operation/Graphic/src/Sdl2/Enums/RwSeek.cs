@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: SdlBool.cs
+//  File: RwOps.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,18 +30,23 @@
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl bool enum
+    /// The rw seek enum
     /// </summary>
-    public enum SdlBool
+    public enum RwSeek : int
     {
         /// <summary>
-        ///     The sdl false sdl bool
+        ///     The rw seek set
         /// </summary>
-        False = 0,
+        RwSeekSet = 0,
 
         /// <summary>
-        ///     The sdl true sdl bool
+        ///     The rw seek cur
         /// </summary>
-        True = 1
+        RwSeekCur = 1,
+
+        /// <summary>
+        ///     The rw seek end
+        /// </summary>
+        RwSeekEnd = 2
     }
 }
