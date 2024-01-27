@@ -245,7 +245,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="driverName">The driver name</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_AudioInit", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_AudioInit", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalAudioInit([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string driverName);
@@ -410,7 +410,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="obtained">The obtained</param>
         /// <param name="allowedChanges">The allowed changes</param>
         /// <returns>The uint</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_OpenAudioDevice", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_OpenAudioDevice", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern uint InternalOpenAudioDevice([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string device, [NotNull] int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, [NotNull] int allowedChanges);
@@ -527,7 +527,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="text">The text</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SetClipboardText", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_SetClipboardText", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalSetClipboardText([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string text);
@@ -779,7 +779,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The sdl scancode</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetScancodeFromName", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetScancodeFromName", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlScancode InternalGetScancodeFromName([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string name);
@@ -799,7 +799,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The sdl keycode</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyFromName", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyFromName",CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true,  CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlKeycode InternalGetKeyFromName([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string name);
@@ -1356,7 +1356,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="guid">The guid</param>
         /// <param name="pszGuid">The psz guid</param>
         /// <param name="cbGuid">The cb guid</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetGUIDString", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetGUIDString", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalJoystickGetGUIDString(Guid guid, [NotNull] byte[] pszGuid, [NotNull] int cbGuid);
@@ -1366,7 +1366,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="pchGuid">The pch guid</param>
         /// <returns>The guid</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetGUIDFromString", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetGUIDFromString", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern Guid InternalJoystickGetGUIDFromString([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string pchGuid);
@@ -1610,7 +1610,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="file">The file</param>
         /// <param name="mode">The mode</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_RWFromFile", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_RWFromFile", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalRWFromFile([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string file, [NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string mode);
@@ -1621,7 +1621,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="file">The file</param>
         /// <param name="dataSize">The data size</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LoadFile", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_LoadFile", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalLoadFile([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string file, out IntPtr dataSize);
@@ -1667,7 +1667,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetHint", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetHint", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalGetHint([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string name);
@@ -1678,7 +1678,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="name">The name</param>
         /// <param name="value">The value</param>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SetHint", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_SetHint", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlBool InternalSetHint([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string name, [NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string value);
@@ -1690,7 +1690,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="value">The value</param>
         /// <param name="priority">The priority</param>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SetHintWithPriority", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_SetHintWithPriority", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlBool InternalSetHintWithPriority([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string name, [NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string value, SdlHintPriority priority);
@@ -1701,7 +1701,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="name">The name</param>
         /// <param name="defaultValue">The default value</param>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetHintBoolean", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetHintBoolean", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlBool InternalGetHintBoolean([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string name, SdlBool defaultValue);
@@ -1719,7 +1719,7 @@ namespace Alis.Core.Graphic.Sdl2
         ///     Internals the sdl set error using the specified fmt and arg list
         /// </summary>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SetError", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_SetError", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalSetError([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string fmtAndArgList);
@@ -1734,7 +1734,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="h">The </param>
         /// <param name="flags">The flags</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindow", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindow", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalCreateWindow([NotNull] [NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string title, [NotNull] int x, [NotNull] int y, [NotNull] int w, [NotNull] int h, [NotNull] SdlWindowFlags flags);
@@ -1959,7 +1959,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="name">The name</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowData", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowData", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalGetWindowData([NotNull] IntPtr window, [NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string name);
@@ -2170,7 +2170,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="path">The path</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GL_LoadLibrary", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GL_LoadLibrary", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalGlLoadLibrary([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string path);
@@ -2180,7 +2180,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="proc">The proc</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GL_GetProcAddress", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GL_GetProcAddress", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalGlGetProcAddress([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string proc);
@@ -2190,7 +2190,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="extension">The extension</param>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GL_ExtensionSupported", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GL_ExtensionSupported", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlBool InternalGlExtensionSupported([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string extension);
@@ -3000,7 +3000,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="mappingString">The mapping string</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerAddMapping", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerAddMapping", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true,  CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalGameControllerAddMapping([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string mappingString);
@@ -3188,7 +3188,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller axis</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAxisFromString", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAxisFromString", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true,  CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlGameControllerAxis InternalGameControllerGetAxisFromString([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string pchString);
@@ -3230,7 +3230,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller button</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetButtonFromString", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetButtonFromString", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlGameControllerButton InternalGameControllerGetButtonFromString([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string pchString);
@@ -3639,7 +3639,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="name">The name</param>
         /// <param name="userdata">The userdata</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowData", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowData", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true,  CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalSetWindowData([NotNull] IntPtr window, [NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string name, [NotNull] IntPtr userdata);
@@ -3814,7 +3814,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="title">The title</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowTitle", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowTitle", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalSetWindowTitle([NotNull] IntPtr window, [NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string title);
