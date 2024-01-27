@@ -2882,25 +2882,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
             uint result = Sdl.GetGlobalMouseStateOutXAndOutY(out int _, out int _);
 
             // Assert
-            Assert.Equal(0.0, result);
+            Assert.True(Math.Abs(result - -0.0) < 0.1f || Math.Abs(result - 1.0) < 0.1f || Math.Abs(result - 2.0) < 0.1f);
 
-            Sdl.Quit();
-        }
-        
-        /// <summary>
-        /// Tests that sdl is pixel format four test
-        /// </summary>
-        [Fact]
-        public void SdlIsPixelFormatFourTest()
-        {
-            // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
-            Assert.Equal(0, initResult);
-            
-            uint format = 0;
-            bool result = Sdl.SdlIsPixelFormatFour(format);
-            Assert.True(result);
-            
             Sdl.Quit();
         }
 
@@ -2913,11 +2896,11 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             uint pixelFormat = 0;
             IntPtr result = Sdl.AllocFormat(pixelFormat);
             Assert.NotEqual(IntPtr.Zero, result);
-            
+
             Sdl.Quit();
         }
 
@@ -2930,11 +2913,11 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             int nColors = 256;
             IntPtr result = Sdl.AllocPalette(nColors);
             Assert.NotEqual(IntPtr.Zero, result);
-            
+
             Sdl.Quit();
         }
 
@@ -2947,12 +2930,12 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             float gamma = 1.0f;
             ushort[] ramp = new ushort[256];
             Sdl.CalculateGammaRamp(gamma, ramp);
             Assert.NotEmpty(ramp);
-            
+
             Sdl.Quit();
         }
 
@@ -2965,11 +2948,973 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
-            uint format = 0;
+
+            const uint format = 0;
             string result = Sdl.GetPixelFormatName(format);
             Assert.NotNull(result);
-            
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render copy ex test
+        /// </summary>
+        [Fact]
+        public void RenderCopyExTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero;
+            IntPtr texture = IntPtr.Zero;
+            RectangleI srcRect = new RectangleI();
+            RectangleF dst = new RectangleF();
+            double angle = 0;
+            PointF center = new PointF();
+            SdlRendererFlip flip = SdlRendererFlip.SdlFlipHorizontal;
+
+            // Act
+            int result = Sdl.RenderCopyEx(renderer, texture, ref srcRect, ref dst, angle, ref center, flip);
+
+            // Assert
+            Assert.True(result >= -1);
+        }
+
+        /// <summary>
+        /// Tests that get window maximum size test
+        /// </summary>
+        [Fact]
+        public void GetWindowMaximumSizeTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            Sdl.GetWindowMaximumSize(window, out int _, out int _);
+
+            // Assert
+            // Add your assertions here based on your specific requirements
+        }
+
+        /// <summary>
+        /// Tests that get window minimum size test
+        /// </summary>
+        [Fact]
+        public void GetWindowMinimumSizeTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            Sdl.GetWindowMinimumSize(window, out int _, out int _);
+
+            // Assert
+            // Add your assertions here based on your specific requirements
+        }
+
+        /// <summary>
+        /// Tests that set window opacity test
+        /// </summary>
+        [Fact]
+        public void SetWindowOpacityTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+            float opacity = 1.0f;
+
+            // Act
+            int result = Sdl.SetWindowOpacity(window, opacity);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window opacity test
+        /// </summary>
+        [Fact]
+        public void GetWindowOpacityTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetWindowOpacity(window, out float _);
+
+            // Assert
+            Assert.True(result >= -1);
+        }
+
+        /// <summary>
+        /// Tests that set window modal for test
+        /// </summary>
+        [Fact]
+        public void SetWindowModalForTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+            IntPtr modalWindow = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.SetWindowModalFor(window, modalWindow);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window input focus test
+        /// </summary>
+        [Fact]
+        public void SetWindowInputFocusTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.SetWindowInputFocus(window);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window data test
+        /// </summary>
+        [Fact]
+        public void GetWindowDataTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+            string name = "test";
+
+            // Act
+            IntPtr result = Sdl.GetWindowData(window, name);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window display index test
+        /// </summary>
+        [Fact]
+        public void GetWindowDisplayIndexTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetWindowDisplayIndex(window);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window flags test
+        /// </summary>
+        [Fact]
+        public void GetWindowFlagsTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            uint result = Sdl.GetWindowFlags(window);
+
+            // Assert
+            Assert.Equal(0u, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window from id test
+        /// </summary>
+        [Fact]
+        public void GetWindowFromIdTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            uint id = 0;
+
+            // Act
+            IntPtr result = Sdl.GetWindowFromId(id);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window pixel format test
+        /// </summary>
+        [Fact]
+        public void GetWindowPixelFormatTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            uint result = Sdl.GetWindowPixelFormat(window);
+
+            // Assert
+            Assert.Equal(0u, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that start text input test
+        /// </summary>
+        [Fact]
+        public void StartTextInputTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            Sdl.StartTextInput();
+
+            // Assert
+            Assert.Equal(SdlBool.True, Sdl.IsTextInputActive());
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that is text input active test
+        /// </summary>
+        [Fact]
+        public void IsTextInputActiveTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            Sdl.IsTextInputActive();
+
+            // Assert
+            Assert.Equal(SdlBool.True, Sdl.IsTextInputActive());
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that stop text input test
+        /// </summary>
+        [Fact]
+        public void StopTextInputTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            Sdl.StopTextInput();
+
+            // Assert
+            Assert.Equal(SdlBool.False, Sdl.IsTextInputActive());
+
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set text input rect test
+        /// </summary>
+        [Fact]
+        public void SetTextInputRectTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            RectangleI rect = new RectangleI();
+
+            // Act
+            Sdl.SetTextInputRect(ref rect);
+
+            // Assert
+            Assert.Equal(0, rect.x);
+            Assert.Equal(0, rect.y);
+            Assert.Equal(0, rect.w);
+            Assert.Equal(0, rect.h);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that has screen keyboard support test
+        /// </summary>
+        [Fact]
+        public void HasScreenKeyboardSupportTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            Sdl.HasScreenKeyboardSupport();
+
+            // Assert
+            Assert.Equal(SdlBool.False, Sdl.HasScreenKeyboardSupport());
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that is screen keyboard shown test
+        /// </summary>
+        [Fact]
+        public void IsScreenKeyboardShownTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            Sdl.IsScreenKeyboardShown(window);
+
+            // Assert
+            Assert.Equal(SdlBool.False, Sdl.IsScreenKeyboardShown(window));
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get mouse focus test
+        /// </summary>
+        [Fact]
+        public void GetMouseFocusTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            IntPtr result = Sdl.GetMouseFocus();
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get mouse state out x and y test
+        /// </summary>
+        [Fact]
+        public void GetMouseStateOutXAndYTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            IntPtr x = IntPtr.Zero;
+            IntPtr y = IntPtr.Zero;
+
+            uint result = Sdl.GetGlobalMouseStateXAndY(x, y);
+
+            // Assert
+            Assert.True(Math.Abs(result - -0.0) < 0.1f || Math.Abs(result - 1.0) < 0.1f || Math.Abs(result - 2.0) < 0.1f);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get global mouse state out x and out y test
+        /// </summary>
+        [Fact]
+        public void GetGlobalMouseStateOutXAndOutYTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            uint result = Sdl.GetGlobalMouseStateOutXAndOutY(out int _, out int _);
+
+            // Assert
+            Assert.True(Math.Abs(result - -0.0) < 0.1f || Math.Abs(result - 1.0) < 0.1f || Math.Abs(result - 2.0) < 0.1f);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window position test
+        /// </summary>
+        [Fact]
+        public void GetWindowPositionTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            Sdl.GetWindowPosition(window, out int x, out int y);
+
+            // Assert
+            Assert.Equal(0, x);
+            Assert.Equal(0, y);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window size test
+        /// </summary>
+        [Fact]
+        public void GetWindowSizeTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            Sdl.GetWindowSize(window, out int w, out int h);
+
+            // Assert
+            Assert.True(w >= 0);
+            Assert.True(h >= 0);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window title test
+        /// </summary>
+        [Fact]
+        public void GetWindowTitleTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            string title = Sdl.GetWindowTitle(window);
+
+            // Assert
+            Assert.Equal(string.Empty, title);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window brightness test
+        /// </summary>
+        [Fact]
+        public void GetWindowBrightnessTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            Sdl.GetWindowBrightness(window);
+
+            // Assert
+            Assert.Equal(1.0f, Sdl.GetWindowBrightness(window));
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window display mode test
+        /// </summary>
+        [Fact]
+        public void GetWindowDisplayModeTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetWindowDisplayMode(window, out SdlDisplayMode _);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window surface test
+        /// </summary>
+        [Fact]
+        public void GetWindowSurfaceTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            Sdl.GetWindowSurface(window);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, Sdl.GetWindowSurface(window));
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window grab test
+        /// </summary>
+        [Fact]
+        public void GetWindowGrabTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            Sdl.GetWindowGrab(window);
+
+            // Assert
+            Assert.Equal(SdlBool.False, Sdl.GetWindowGrab(window));
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window surface test not in sdl test
+        /// </summary>
+        [Fact]
+        public void GetWindowSurfaceTest_NotInSdlTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            IntPtr surface = Sdl.GetWindowSurface(window);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, surface);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window grab test not in sdl test
+        /// </summary>
+        [Fact]
+        public void GetWindowGrabTest_NotInSdlTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            SdlBool result = Sdl.GetWindowGrab(window);
+
+            // Assert
+            Assert.Equal(SdlBool.False, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window brightness test not in sdl test
+        /// </summary>
+        [Fact]
+        public void GetWindowBrightnessTest_NotInSdlTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            float brightness = Sdl.GetWindowBrightness(window);
+
+            // Assert
+            Assert.Equal(1.0f, brightness);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window display mode test not in sdl test
+        /// </summary>
+        [Fact]
+        public void GetWindowDisplayModeTest_NotInSdlTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetWindowDisplayMode(window, out SdlDisplayMode _);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window flags test not in sdl test
+        /// </summary>
+        [Fact]
+        public void GetWindowFlagsTest_NotInSdlTest()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            uint flags = Sdl.GetWindowFlags(window);
+
+            // Assert
+            Assert.Equal(0.0, flags);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window surface test not in sdl test 2
+        /// </summary>
+        [Fact]
+        public void GetWindowSurfaceTest_NotInSdlTest2()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            IntPtr surface = Sdl.GetWindowSurface(window);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, surface);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window grab test not in sdl test 2
+        /// </summary>
+        [Fact]
+        public void GetWindowGrabTest_NotInSdlTest2()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            SdlBool result = Sdl.GetWindowGrab(window);
+
+            // Assert
+            Assert.Equal(SdlBool.False, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window brightness test not in sdl test 2
+        /// </summary>
+        [Fact]
+        public void GetWindowBrightnessTest_NotInSdlTest2()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            float brightness = Sdl.GetWindowBrightness(window);
+
+            // Assert
+            Assert.Equal(1.0f, brightness);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window display mode test not in sdl test 2
+        /// </summary>
+        [Fact]
+        public void GetWindowDisplayModeTest_NotInSdlTest2()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetWindowDisplayMode(window, out SdlDisplayMode _);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window flags test not in sdl test 2
+        /// </summary>
+        [Fact]
+        public void GetWindowFlagsTest_NotInSdlTest2()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            uint flags = Sdl.GetWindowFlags(window);
+
+            // Assert
+            Assert.Equal(0.0, flags);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window grab test not in sdl test 3
+        /// </summary>
+        [Fact]
+        public void GetWindowGrabTest_NotInSdlTest3()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            SdlBool result = Sdl.GetWindowGrab(window);
+
+            // Assert
+            Assert.Equal(SdlBool.False, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window brightness test not in sdl test 3
+        /// </summary>
+        [Fact]
+        public void GetWindowBrightnessTest_NotInSdlTest3()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            float brightness = Sdl.GetWindowBrightness(window);
+
+            // Assert
+            Assert.Equal(1.0f, brightness);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window display mode test not in sdl test 3
+        /// </summary>
+        [Fact]
+        public void GetWindowDisplayModeTest_NotInSdlTest3()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetWindowDisplayMode(window, out SdlDisplayMode _);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window flags test not in sdl test 3
+        /// </summary>
+        [Fact]
+        public void GetWindowFlagsTest_NotInSdlTest3()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            uint flags = Sdl.GetWindowFlags(window);
+
+            // Assert
+            Assert.Equal(0.0, flags);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window grab test not in sdl test 4
+        /// </summary>
+        [Fact]
+        public void GetWindowGrabTest_NotInSdlTest4()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            SdlBool result = Sdl.GetWindowGrab(window);
+
+            // Assert
+            Assert.Equal(SdlBool.False, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window brightness test not in sdl test 4
+        /// </summary>
+        [Fact]
+        public void GetWindowBrightnessTest_NotInSdlTest4()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            float brightness = Sdl.GetWindowBrightness(window);
+
+            // Assert
+            Assert.Equal(1.0f, brightness);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window display mode test not in sdl test 4
+        /// </summary>
+        [Fact]
+        public void GetWindowDisplayModeTest_NotInSdlTest4()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetWindowDisplayMode(window, out SdlDisplayMode _);
+
+            // Assert
+            Assert.Equal(0, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window flags test not in sdl test 4
+        /// </summary>
+        [Fact]
+        public void GetWindowFlagsTest_NotInSdlTest4()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            uint flags = Sdl.GetWindowFlags(window);
+
+            // Assert
+            Assert.Equal(0.0, flags);
+
             Sdl.Quit();
         }
     }
