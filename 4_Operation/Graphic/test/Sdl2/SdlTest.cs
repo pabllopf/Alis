@@ -55,10 +55,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Assert
             Assert.Equal(0, result);
-            
+
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that test get gl compiled version
         /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
             const int expectedVersion = 2 * 1000 + 0 * 100 + 18;
 
@@ -76,10 +76,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Assert
             Assert.Equal(expectedVersion, actualVersion);
-            
+
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that test game controller close
         /// </summary>
@@ -88,7 +88,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
             int controllersAvailable = Sdl.NumJoysticks();
             if (controllersAvailable >= 1)
@@ -98,10 +98,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
                 // Act
                 Sdl.GameControllerClose(controller);
             }
-            
+
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that test game controller set led
         /// </summary>
@@ -110,7 +110,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
             int controllersAvailable = Sdl.NumJoysticks();
             if (controllersAvailable >= 1)
@@ -123,6 +123,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
                 // Assert
                 Assert.Equal(0, result);
             }
+
             Sdl.Quit();
         }
 
@@ -134,7 +135,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
             int controllersAvailable = Sdl.NumJoysticks();
             if (controllersAvailable >= 1)
@@ -150,6 +151,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
                 // Assert
                 Assert.Equal(SdlBool.SdlTrue, result);
             }
+
             Sdl.Quit();
         }
 
@@ -161,7 +163,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
             int controllersAvailable = Sdl.NumJoysticks();
             if (controllersAvailable >= 1)
@@ -177,9 +179,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
                 // Assert
                 Assert.Equal(SdlBool.SdlTrue, result);
             }
-            
+
             Sdl.Quit();
         }
+
         /// <summary>
         /// Tests that test audio init
         /// </summary>
@@ -188,7 +191,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             int getNumAudioDrivers = Sdl.GetNumAudioDrivers();
             if (getNumAudioDrivers >= 1)
             {
@@ -217,7 +220,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
                     Assert.NotEqual(-1, result);
                 }
             }
-            
+
             Sdl.Quit();
         }
 
@@ -229,16 +232,16 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Act
             Sdl.AudioQuit();
             uint result = Sdl.WasInit(SdlInit.InitAudio);
-            
+
             // Assert
             // Here you need to assert that the Audio was quit. This will depend on your implementation.
             Assert.Equal(16.0, result);
-            
-            
+
+
             Sdl.Quit();
         }
 
@@ -250,17 +253,17 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             int audioDevices = Sdl.GetNumAudioDevices(0);
             if (audioDevices >= 1)
             {
                 string nameAudioDevice = Sdl.GetAudioDeviceName(0, 0);
-                
+
                 SdlAudioSpec spec = new SdlAudioSpec();
-                
+
                 // Arrange
                 uint dev = Sdl.SdlOpenAudioDevice(nameAudioDevice, 0, ref spec, out SdlAudioSpec obtained, 0);
-                
+
                 //Assert 
                 Assert.NotEqual(0.0, dev);
                 Assert.NotEqual(0.0, obtained.size);
@@ -268,14 +271,14 @@ namespace Alis.Core.Graphic.Test.Sdl2
                 Assert.NotEqual(0.0, obtained.format);
                 Assert.NotEqual(0.0, obtained.channels);
                 Assert.NotEqual(0.0, obtained.samples);
-                
+
                 // Act
                 Sdl.CloseAudioDevice(dev);
             }
-            
+
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that test get audio device name
         /// </summary>
@@ -284,7 +287,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
             int index = 0; // You need to get a valid instance of int
             int isCapture = 0; // You need to get a valid instance of int
@@ -295,7 +298,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Assert
             // Here you need to assert that the result is as expected. This will depend on your implementation.
             Assert.NotEqual("", result);
-            
+
             Sdl.Quit();
         }
 
@@ -307,7 +310,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
             uint dev = 0; // You need to get a valid instance of uint
 
@@ -317,7 +320,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Assert
             // Here you need to assert that the result is as expected. This will depend on your implementation.
             Assert.Equal(SdlAudioStatus.SdlAudioStopped, result);
-            
+
             Sdl.Quit();
         }
 
@@ -329,7 +332,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
             int index = 0; // You need to get a valid instance of int
 
@@ -340,10 +343,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Here you need to assert that the result is as expected. This will depend on your implementation.
             Assert.NotNull(result);
             Assert.NotEqual("", result);
-            
+
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that test get current audio driver
         /// </summary>
@@ -352,7 +355,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Act
             string result = Sdl.GetCurrentAudioDriver();
 
@@ -360,7 +363,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Here you need to assert that the result is as expected. This will depend on your implementation.
             Assert.NotNull(result);
             Assert.NotEqual("", result);
-            
+
             Sdl.Quit();
         }
 
@@ -372,7 +375,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             int gNumAudioDevices = Sdl.GetNumAudioDevices(0);
             if (gNumAudioDevices >= 1)
             {
@@ -385,7 +388,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
                 // Assert
                 Assert.NotEqual(0, result);
             }
-            
+
             Sdl.Quit();
         }
 
@@ -397,14 +400,14 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Act
             int result = Sdl.GetNumAudioDrivers();
 
             // Assert
             // Here you need to assert that the result is as expected. This will depend on your implementation.
             Assert.NotEqual(0, result);
-            
+
             Sdl.Quit();
         }
 
@@ -416,7 +419,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
             string file = AssetManager.Find("AudioSample.wav");
 
@@ -428,10 +431,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(5954560.0, audioLen);
             Assert.NotEqual(IntPtr.Zero, result);
             Assert.NotEqual(IntPtr.Zero, audioBuf);
-            
+
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that test lock audio device
         /// </summary>
@@ -440,15 +443,15 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
             const uint dev = 0; // You need to get a valid instance of uint
 
             // Act
             Sdl.LockAudioDevice(dev);
-            
+
             Assert.Equal(SdlAudioStatus.SdlAudioStopped, Sdl.GetAudioDeviceStatus(dev));
-            
+
             Sdl.Quit();
         }
 
@@ -460,7 +463,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
             byte[] dst = new byte[10]; // You need to get a valid instance of byte array
             byte[] src = new byte[10]; // You need to get a valid instance of byte array
@@ -469,10 +472,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Act
             Sdl.MixAudio(dst, src, len, volume);
-            
+
             Assert.Equal(0, dst[0]);
             Assert.Equal(0, dst[1]);
-            
+
             Sdl.Quit();
         }
 
@@ -484,7 +487,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
             IntPtr dst = new IntPtr(); // You need to get a valid instance of IntPtr
             IntPtr src = new IntPtr(); // You need to get a valid instance of IntPtr
@@ -498,7 +501,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Assert
             Assert.Equal(0, dst.ToInt32());
             Assert.Equal(0, src.ToInt32());
-            
+
             Sdl.Quit();
         }
 
@@ -510,7 +513,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
             string device = "dummy"; // You need to get a valid instance of string
             int isCapture = 0; // You need to get a valid instance of int
@@ -523,7 +526,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Assert
             // Here you need to assert that the result is as expected. This will depend on your implementation.
             Assert.Equal(0.0, result);
-            
+
             Sdl.Quit();
         }
 
@@ -535,7 +538,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
             int pauseOn = 0; // You need to get a valid instance of int
 
@@ -544,7 +547,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Assert
             // Here you need to assert that the Audio was paused. This will depend on your implementation.
-            
+
             Sdl.Quit();
         }
 
@@ -556,7 +559,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
             uint dev = 0; // You need to get a valid instance of uint
             int pauseOn = 0; // You need to get a valid instance of int
@@ -566,10 +569,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Assert
             Assert.Equal(SdlAudioStatus.SdlAudioStopped, Sdl.GetAudioDeviceStatus(dev));
-            
+
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that test unlock audio device
         /// </summary>
@@ -578,7 +581,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
             uint dev = 0; // You need to get a valid instance of uint
 
@@ -587,10 +590,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Assert
             // Here you need to assert that the Audio Device was unlocked. This will depend on your implementation.
-            
+
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that test fourcc
         /// </summary>
@@ -599,7 +602,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
             byte a = 0x01;
             byte b = 0x02;
@@ -614,7 +617,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Assert
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         /// Tests that test get version
         /// </summary>
@@ -623,7 +626,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Act
             SdlVersion result = Sdl.GetVersion();
 
@@ -632,7 +635,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, result.minor);
             Assert.Equal(18, result.patch);
         }
-        
+
         /// <summary>
         /// Tests that test get performance frequency
         /// </summary>
@@ -641,14 +644,14 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Act
             ulong result = Sdl.GetPerformanceFrequency();
 
             // Assert
             Assert.True(result > 0);
         }
-        
+
         /// <summary>
         /// Tests that test get performance counter
         /// </summary>
@@ -657,14 +660,14 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Act
             ulong result = Sdl.GetPerformanceCounter();
 
             // Assert
             Assert.True(result > 0);
         }
-        
+
         /// <summary>
         /// Tests that test sensor open
         /// </summary>
@@ -673,9 +676,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
-            const int deviceIndex = 0; 
+            const int deviceIndex = 0;
             int numSensors = Sdl.NumSensors();
             if (numSensors >= 1)
             {
@@ -686,7 +689,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
                 Assert.NotEqual(IntPtr.Zero, result);
             }
         }
-        
+
         /// <summary>
         /// Tests that test clear hints
         /// </summary>
@@ -695,15 +698,15 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Act
-            Exception exception = Record.Exception(() => Sdl.ClearHints());
+            Exception exception = Record.Exception(Sdl.ClearHints);
 
             // Assert
             Assert.Null(exception);
         }
-        
-        
+
+
         /// <summary>
         /// Tests that test set hint
         /// </summary>
@@ -712,10 +715,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
-            const string name = "testName"; 
-            const string value = "testValue"; 
+            const string name = "testName";
+            const string value = "testValue";
 
             // Act
             SdlBool result = Sdl.SetHint(name, value);
@@ -723,7 +726,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Assert
             Assert.Equal(SdlBool.SdlTrue, result);
         }
-        
+
         /// <summary>
         /// Tests that test get hint
         /// </summary>
@@ -732,11 +735,11 @@ namespace Alis.Core.Graphic.Test.Sdl2
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Arrange
-            const string name = "testName"; 
-            const string value = "testValue"; 
-            
+            const string name = "testName";
+            const string value = "testValue";
+
             // Act
             SdlBool setResult = Sdl.SetHint(name, value);
             Assert.Equal(SdlBool.SdlTrue, setResult);
@@ -748,15 +751,15 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.NotNull(result);
             Assert.Equal(value, result);
         }
-        
+
+        /// <summary>
+        /// Tests that test num haptics
+        /// </summary>
         [Fact]
         public void TestNumHaptics()
         {
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
-            // Arrange
-            // No arrangement needed as we are testing a static method without inputs
 
             // Act
             int result = Sdl.NumHaptics();
@@ -764,7 +767,385 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Assert
             Assert.IsType<int>(result);
             Assert.True(result >= 0);
-            // Add more assertions as needed based on your expected results
+        }
+
+        /// <summary>
+        /// Tests that test set hint should return true when valid hint is passed
+        /// </summary>
+        [Fact]
+        public void TestSetHint_ShouldReturnTrue_WhenValidHintIsPassed()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            const string name = "testName";
+            const string value = "testValue";
+
+            // Act
+            SdlBool result = Sdl.SetHint(name, value);
+
+            // Assert
+            Assert.Equal(SdlBool.SdlTrue, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get hint should return correct value when valid hint is passed
+        /// </summary>
+        [Fact]
+        public void TestGetHint_ShouldReturnCorrectValue_WhenValidHintIsPassed()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            const string name = "testName";
+            const string value = "testValue";
+            Sdl.SetHint(name, value);
+
+            // Act
+            string result = Sdl.GetHint(name);
+
+            // Assert
+            Assert.Equal(value, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test num haptics should return non negative value
+        /// </summary>
+        [Fact]
+        public void TestNumHaptics_ShouldReturnNonNegativeValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            int result = Sdl.NumHaptics();
+
+            // Assert
+            Assert.True(result >= 0);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test clear hints should not throw exception
+        /// </summary>
+        [Fact]
+        public void TestClearHints_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            Exception exception = Record.Exception(Sdl.ClearHints);
+
+            // Assert
+            Assert.Null(exception);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get performance counter should return non zero value
+        /// </summary>
+        [Fact]
+        public void TestGetPerformanceCounter_ShouldReturnNonZeroValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            ulong result = Sdl.GetPerformanceCounter();
+
+            // Assert
+            Assert.True(result > 0);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test get performance frequency should return non zero value
+        /// </summary>
+        [Fact]
+        public void TestGetPerformanceFrequency_ShouldReturnNonZeroValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            ulong result = Sdl.GetPerformanceFrequency();
+
+            // Assert
+            Assert.True(result > 0);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test internal render get metal command encoder should return expected value
+        /// </summary>
+        [Fact]
+        public void TestInternalRenderGetMetalCommandEncoder_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = new IntPtr(); // You need to get a valid instance of IntPtr
+
+            // Act
+            IntPtr result = Sdl.RenderGetMetalCommandEncoder(renderer);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test internal set window position should not throw exception
+        /// </summary>
+        [Fact]
+        public void TestInternalSetWindowPosition_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr window = new IntPtr(); // You need to get a valid instance of IntPtr
+            int x = 0;
+            int y = 0;
+
+            // Act
+            Exception exception = Record.Exception(() => Sdl.SetWindowPosition(window, x, y));
+
+            // Assert
+            Assert.Null(exception);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test internal gl get current context should return expected value
+        /// </summary>
+        [Fact]
+        public void TestInternalGlGetCurrentContext_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            IntPtr result = Sdl.GetCurrentContext();
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test internal get performance frequency should return non zero value
+        /// </summary>
+        [Fact]
+        public void TestInternalGetPerformanceFrequency_ShouldReturnNonZeroValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            ulong result = Sdl.GetPerformanceFrequency();
+
+            // Assert
+            Assert.True(result > 0);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test internal get performance counter should return non zero value
+        /// </summary>
+        [Fact]
+        public void TestInternalGetPerformanceCounter_ShouldReturnNonZeroValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            ulong result = Sdl.GetPerformanceCounter();
+
+            // Assert
+            Assert.True(result > 0);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl init should return zero when init everything is passed
+        /// </summary>
+        [Fact]
+        public void TestSdlInit_ShouldReturnZero_WhenInitEverythingIsPassed()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+
+            // Assert
+            Assert.Equal(0, initResult);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl get version should return expected version
+        /// </summary>
+        [Fact]
+        public void TestSdlGetVersion_ShouldReturnExpectedVersion()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            SdlVersion result = Sdl.GetVersion();
+
+            // Assert
+            Assert.Equal(2, result.major);
+            Assert.Equal(0, result.minor);
+            Assert.Equal(18, result.patch);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl get performance counter should return non zero value
+        /// </summary>
+        [Fact]
+        public void TestSdlGetPerformanceCounter_ShouldReturnNonZeroValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            ulong result = Sdl.GetPerformanceCounter();
+
+            // Assert
+            Assert.True(result > 0);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl get performance frequency should return non zero value
+        /// </summary>
+        [Fact]
+        public void TestSdlGetPerformanceFrequency_ShouldReturnNonZeroValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            ulong result = Sdl.GetPerformanceFrequency();
+
+            // Assert
+            Assert.True(result > 0);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl num haptics should return non negative value
+        /// </summary>
+        [Fact]
+        public void TestSdlNumHaptics_ShouldReturnNonNegativeValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            int result = Sdl.NumHaptics();
+
+            // Assert
+            Assert.True(result >= 0);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl clear hints should not throw exception
+        /// </summary>
+        [Fact]
+        public void TestSdlClearHints_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            Exception exception = Record.Exception(Sdl.ClearHints);
+
+            // Assert
+            Assert.Null(exception);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl set hint should return true when valid hint is passed
+        /// </summary>
+        [Fact]
+        public void TestSdlSetHint_ShouldReturnTrue_WhenValidHintIsPassed()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            const string name = "testName";
+            const string value = "testValue";
+
+            // Act
+            SdlBool result = Sdl.SetHint(name, value);
+
+            // Assert
+            Assert.Equal(SdlBool.SdlTrue, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl get hint should return correct value when valid hint is passed
+        /// </summary>
+        [Fact]
+        public void TestSdlGetHint_ShouldReturnCorrectValue_WhenValidHintIsPassed()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            const string name = "testName";
+            const string value = "testValue";
+            Sdl.SetHint(name, value);
+
+            // Act
+            string result = Sdl.GetHint(name);
+
+            // Assert
+            Assert.Equal(value, result);
+
+            Sdl.Quit();
         }
     }
 }

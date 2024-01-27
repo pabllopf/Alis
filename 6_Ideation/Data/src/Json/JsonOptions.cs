@@ -273,7 +273,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>A newly created insance of this class with all values copied.</returns>
         public virtual JsonOptions Clone()
         {
-            var clone = new JsonOptions
+            JsonOptions clone = new JsonOptions
             {
                 AfterWriteObjectCallback = AfterWriteObjectCallback,
                 ApplyEntryCallback = ApplyEntryCallback,
