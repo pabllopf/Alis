@@ -121,11 +121,11 @@ namespace Alis.Core.Aspect.Data.Json
             if (!message.StartsWith(Prefix, StringComparison.Ordinal))
                 return -1;
 
-            var pos = message.IndexOf(':', Prefix.Length);
+            int pos = message.IndexOf(':', Prefix.Length);
             if (pos < 0)
                 return -1;
 
-            return int.TryParse(message.Substring(Prefix.Length, pos - Prefix.Length), NumberStyles.None, CultureInfo.InvariantCulture, out var i) ? i : -1;
+            return int.TryParse(message.Substring(Prefix.Length, pos - Prefix.Length), NumberStyles.None, CultureInfo.InvariantCulture, out int i) ? i : -1;
         }
     }
 }

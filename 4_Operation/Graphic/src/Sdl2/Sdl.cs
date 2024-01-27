@@ -1385,161 +1385,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-
-        /// <summary>
-        ///     Rws the from fp using the specified fp
-        /// </summary>
-        /// <param name="fp">The fp</param>
-        /// <param name="autoClose">The auto close</param>
-        /// <returns>The int ptr</returns>
-        public static IntPtr RwFromFp([NotNull] IntPtr fp, [NotNull] SdlBool autoClose)
-        {
-            Validator.ValidateInput(fp);
-            Validator.ValidateInput(autoClose);
-            IntPtr result = NativeSdl.InternalRWFromFP(fp, autoClose);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Rws the from mem using the specified mem
-        /// </summary>
-        /// <param name="mem">The mem</param>
-        /// <param name="size">The size</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RwFromMem([NotNull] IntPtr mem, [NotNull] int size)
-        {
-            Validator.ValidateInput(mem);
-            Validator.ValidateInput(size);
-            IntPtr result = NativeSdl.InternalRWFromMem(mem, size);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Rws the from const mem using the specified mem
-        /// </summary>
-        /// <param name="mem">The mem</param>
-        /// <param name="size">The size</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RwFromConstMem([NotNull] IntPtr mem, [NotNull] int size)
-        {
-            Validator.ValidateInput(mem);
-            Validator.ValidateInput(size);
-            IntPtr result = NativeSdl.InternalRWFromConstMem(mem, size);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Rws the size using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        /// <returns>The long</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long RwSize([NotNull] IntPtr context)
-        {
-            Validator.ValidateInput(context);
-            long result = NativeSdl.InternalRwSize(context);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Rws the seek using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="whence">The whence</param>
-        /// <returns>The long</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long RwSeek([NotNull] IntPtr context, [NotNull] long offset, [NotNull] int whence)
-        {
-            Validator.ValidateInput(context);
-            Validator.ValidateInput(offset);
-            Validator.ValidateInput(whence);
-            long result = NativeSdl.InternalRwSeek(context, offset, whence);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Rws the tell using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        /// <returns>The long</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long RwTell([NotNull] IntPtr context)
-        {
-            Validator.ValidateInput(context);
-            long result = NativeSdl.InternalRwTell(context);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Rws the read using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        /// <param name="ptr">The ptr</param>
-        /// <param name="size">The size</param>
-        /// <param name="maxNum">The max num</param>
-        /// <returns>The long</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long RwRead([NotNull] IntPtr context, [NotNull] IntPtr ptr, [NotNull] IntPtr size, [NotNull] IntPtr maxNum)
-        {
-            Validator.ValidateInput(context);
-            Validator.ValidateInput(ptr);
-            Validator.ValidateInput(size);
-            Validator.ValidateInput(maxNum);
-            long result = NativeSdl.InternalRwRead(context, ptr, size, maxNum);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Rws the write using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        /// <param name="ptr">The ptr</param>
-        /// <param name="size">The size</param>
-        /// <param name="maxNum">The max num</param>
-        /// <returns>The long</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long RwWrite([NotNull] IntPtr context, [NotNull] IntPtr ptr, [NotNull] IntPtr size, [NotNull] IntPtr maxNum)
-        {
-            Validator.ValidateInput(context);
-            Validator.ValidateInput(ptr);
-            Validator.ValidateInput(size);
-            Validator.ValidateInput(maxNum);
-            long result = NativeSdl.InternalRwWrite(context, ptr, size, maxNum);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-        /// <summary>
-        ///     Rws the close using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        /// <returns>The long</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long RwClose([NotNull] IntPtr context)
-        {
-            Validator.ValidateInput(context);
-            long result = NativeSdl.InternalRwClose(context);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
+        
         /// <summary>
         ///     Sdl the load file using the specified file
         /// </summary>
@@ -2446,7 +2292,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetCurrentContext() => NativeSdl.InternalGlGetCurrentContext();
+        public static IntPtr GetCurrentContext()
+        {
+            IntPtr result = NativeSdl.InternalGlGetCurrentContext();
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Gls the get drawable size using the specified window
@@ -7074,7 +6925,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static IntPtr SensorOpen([NotNull] int deviceIndex)
         {
             Validator.ValidateInput(deviceIndex);
-            var result = NativeSdl.InternalSensorOpen(deviceIndex);
+            IntPtr result = NativeSdl.InternalSensorOpen(deviceIndex);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -7263,7 +7114,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             Validator.ValidateInput(index);
             Validator.ValidateInput(isCapture);
-            var result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetAudioDeviceName(index, isCapture));
+            string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetAudioDeviceName(index, isCapture));
             Validator.ValidateOutput(result);
             return result;
         }
