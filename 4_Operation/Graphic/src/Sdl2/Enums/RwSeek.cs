@@ -32,7 +32,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
     /// <summary>
     /// The rw seek enum
     /// </summary>
-    public enum RwSeek : int
+    public enum RwSeek
     {
         /// <summary>
         ///     The rw seek set
