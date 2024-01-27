@@ -240,6 +240,9 @@ namespace Alis.Core.Graphic.Sample
             // Create a destination intPtr dstRect
             dstRectFont1 = new RectangleI(0, 0, textureWidth, textureHeight);
             
+            IntPtr icon = Sdl.LoadBmp(AssetManager.Find("logo.bmp"));
+            Sdl.SetWindowIcon(window, icon);
+            
             Sdlinput();
 
             // Rectangle to be drawn outline.
