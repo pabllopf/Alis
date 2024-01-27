@@ -55,7 +55,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         /// <summary>
         ///     The window event
         /// </summary>
-        public readonly SdlWindowEventId windowEvent; 
+        public readonly SdlWindowEventId windowEvent;
 
         /// <summary>
         ///     The padding

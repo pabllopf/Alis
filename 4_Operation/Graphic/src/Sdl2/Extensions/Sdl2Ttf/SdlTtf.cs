@@ -39,7 +39,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
     /// <summary>
     ///     The sdl ttf extern class
     /// </summary>
-    public static class SdlTtf 
+    public static class SdlTtf
     {
         /// <summary>
         ///     The unicode bom native
@@ -100,7 +100,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         ///     The ttf hinting light subpixel
         /// </summary>
         public const int TtfHintingLightSubpixel = 4;
-        
+
         /// <summary>
         ///     Ttf the byte swapped unicode using the specified swapped
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Internals the ttf open font index using the specified file
         /// </summary>
@@ -145,7 +145,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Ttf the set font size using the specified font
         /// </summary>
@@ -1173,7 +1173,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Ttf the get error
         /// </summary>

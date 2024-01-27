@@ -90,7 +90,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The data
         /// </summary>
-        public IntPtr data; 
+        public IntPtr data;
 
         // Envelope
         /// <summary>

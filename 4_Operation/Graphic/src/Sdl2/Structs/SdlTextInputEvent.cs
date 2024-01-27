@@ -220,7 +220,8 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         {
             get
             {
-                byte[] textBytes = {
+                byte[] textBytes =
+                {
                     byte0,
                     byte1,
                     byte2,

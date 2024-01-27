@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NativeSdlTest.cs
+//  File: NativeSdlTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Core.Graphic.Test.Sdl2
 {
     /// <summary>
-    /// The native sdl test class
+    ///     The native sdl test class
     /// </summary>
     public class NativeSdlTest
     {
         /// <summary>
-        /// Tests that test
+        ///     Tests that test
         /// </summary>
         [Fact]
         public void Test()

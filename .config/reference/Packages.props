@@ -8,7 +8,7 @@
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
 
-        
+
         <PackageReference Include="coverlet.collector" Version="6.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -19,8 +19,8 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
 
-        <PackageReference Include="OpenCover" Version="4.7.922" />
-        
+        <PackageReference Include="OpenCover" Version="4.7.922"/>
+
         <Content Include="$(SolutionDir).config/xunit.runner.json" LinkBase="." Pack="true" Visible="true" PackagePath=".">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>

@@ -266,7 +266,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalCloseAudioDevice([NotNull] uint dev);
-        
+
         /// <summary>
         ///     Internals the sdl get audio device name using the specified index
         /// </summary>
@@ -297,7 +297,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalGetAudioDriver([NotNull] int index);
-        
+
         /// <summary>
         ///     Internals the sdl get current audio driver
         /// </summary>
@@ -339,7 +339,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalLoadWAV_RW([NotNull] IntPtr src, [NotNull] int freeSrc, out SdlAudioSpec spec, out IntPtr audioBuf, out uint audioLen);
-        
+
         /// <summary>
         ///     Sdl the lock audio device using the specified dev
         /// </summary>
@@ -386,7 +386,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalMixAudioFormat([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [NotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [NotNull] byte[] src, [NotNull] ushort format, [NotNull] uint len, [NotNull] int volume);
-        
+
         /// <summary>
         ///     Sdl the open audio device using the specified device
         /// </summary>
@@ -442,7 +442,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalUnlockAudioDevice([NotNull] uint dev);
-        
+
         /// <summary>
         ///     Sdl the new audio stream using the specified src format
         /// </summary>
@@ -521,7 +521,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalGetAudioDeviceSpec([NotNull] int index, [NotNull] int isCapture, out SdlAudioSpec spec);
-        
+
         /// <summary>
         ///     Internals the sdl set clipboard text using the specified text
         /// </summary>
@@ -799,7 +799,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The sdl keycode</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyFromName",CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true,  CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyFromName", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlKeycode InternalGetKeyFromName([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string name);
@@ -1603,7 +1603,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalJoystickSetVirtualButton([NotNull] IntPtr joystick, [NotNull] int button, [NotNull] byte value);
-        
+
         /// <summary>
         ///     Internals the sdl rw from file using the specified file
         /// </summary>
@@ -1614,7 +1614,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalRWFromFile([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string file, [NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string mode);
-        
+
         /// <summary>
         ///     Internals the sdl load file using the specified file
         /// </summary>
@@ -1714,7 +1714,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalGetError();
-        
+
         /// <summary>
         ///     Internals the sdl set error using the specified fmt and arg list
         /// </summary>
@@ -1723,7 +1723,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalSetError([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string fmtAndArgList);
-        
+
         /// <summary>
         ///     Internals the sdl create window using the specified title
         /// </summary>
@@ -1752,7 +1752,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalCreateWindowAndRenderer([NotNull] int width, [NotNull] int height, [NotNull] SdlWindowFlags windowFlags, out IntPtr window, out IntPtr renderer);
-        
+
         /// <summary>
         ///     Sdl the destroy window using the specified window
         /// </summary>
@@ -1761,7 +1761,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalDestroyWindow([NotNull] IntPtr window);
-        
+
         /// <summary>
         ///     Sdl the get closest display mode using the specified display index
         /// </summary>
@@ -1838,7 +1838,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalGetDisplayDPI([NotNull] int displayIndex, out float dDpi, out float hDpi, out float vDpi);
-        
+
         /// <summary>
         ///     Sdl the get display mode using the specified display index
         /// </summary>
@@ -1984,7 +1984,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalGetWindowDisplayMode([NotNull] IntPtr window, out SdlDisplayMode mode);
-        
+
         /// <summary>
         ///     Sdl the get window flags using the specified window
         /// </summary>
@@ -2184,7 +2184,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalGlGetProcAddress([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string proc);
-        
+
         /// <summary>
         ///     Internals the sdl gl extension supported using the specified extension
         /// </summary>
@@ -2303,7 +2303,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalCalculateGammaRamp(float gamma, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] ramp);
-        
+
         /// <summary>
         ///     Internals the sdl get pixel format name using the specified format
         /// </summary>
@@ -2623,7 +2623,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalFillRects([NotNull] IntPtr dst, [In] RectangleI[] rects, [NotNull] int count, [NotNull] uint color);
-        
+
         /// <summary>
         ///     Sdl the get clip rect using the specified surface
         /// </summary>
@@ -3000,7 +3000,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="mappingString">The mapping string</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerAddMapping", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true,  CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerAddMapping", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalGameControllerAddMapping([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string mappingString);
@@ -3188,7 +3188,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller axis</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAxisFromString", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true,  CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAxisFromString", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlGameControllerAxis InternalGameControllerGetAxisFromString([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string pchString);
@@ -3301,7 +3301,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalGameControllerClose([NotNull] IntPtr gameController);
-        
+
         /// <summary>
         ///     Sdl the game controller from instance id using the specified joy id
         /// </summary>
@@ -3584,7 +3584,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalHideWindow([NotNull] IntPtr window);
-        
+
         /// <summary>
         ///     Sdl the maximize window using the specified window
         /// </summary>
@@ -3639,7 +3639,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="name">The name</param>
         /// <param name="userdata">The userdata</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowData", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true,  CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowData", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalSetWindowData([NotNull] IntPtr window, [NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string name, [NotNull] IntPtr userdata);
@@ -3849,7 +3849,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalUpdateWindowSurfaceRects([NotNull] IntPtr window, [In] RectangleI[] rects, [NotNull] int numRects);
-        
+
         /// <summary>
         ///     Sdl the set window hit test using the specified window
         /// </summary>
@@ -3928,7 +3928,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlBlendMode InternalComposeCustomBlendMode([NotNull] SdlBlendFactor srcColorFactor, [NotNull] SdlBlendFactor dstColorFactor, [NotNull] SdlBlendOperation colorOperation, [NotNull] SdlBlendFactor srcAlphaFactor, [NotNull] SdlBlendFactor dstAlphaFactor, [NotNull] SdlBlendOperation alphaOperation);
-        
+
         /// <summary>
         ///     Sdl the create renderer using the specified window
         /// </summary>
@@ -4308,7 +4308,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalRenderCopyEx([NotNull] IntPtr renderer, [NotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, ref PointF center, SdlRendererFlip flip);
 
-        
+
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
         /// </summary>
@@ -4590,7 +4590,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalRenderCopyF([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [NotNull] IntPtr srcRect, [NotNull] IntPtr dstRect);
-        
+
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
         /// </summary>

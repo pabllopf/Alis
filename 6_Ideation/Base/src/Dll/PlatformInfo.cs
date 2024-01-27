@@ -33,22 +33,12 @@ using Alis.Core.Aspect.Math.Util;
 namespace Alis.Core.Aspect.Base.Dll
 {
     /// <summary>
-    /// The platform info class
+    ///     The platform info class
     /// </summary>
     public class PlatformInfo
     {
         /// <summary>
-        /// Gets the value of the platform
-        /// </summary>
-        public OSPlatform Platform { get; }
-        
-        /// <summary>
-        /// Gets the value of the arch
-        /// </summary>
-        public Architecture Arch { get; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PlatformInfo"/> class
+        ///     Initializes a new instance of the <see cref="PlatformInfo" /> class
         /// </summary>
         /// <param name="platform">The platform</param>
         /// <param name="arch">The arch</param>
@@ -57,9 +47,19 @@ namespace Alis.Core.Aspect.Base.Dll
             Platform = platform;
             Arch = arch;
         }
-        
+
         /// <summary>
-        /// Describes whether this instance equals
+        ///     Gets the value of the platform
+        /// </summary>
+        public OSPlatform Platform { get; }
+
+        /// <summary>
+        ///     Gets the value of the arch
+        /// </summary>
+        public Architecture Arch { get; }
+
+        /// <summary>
+        ///     Describes whether this instance equals
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The bool</returns>
@@ -67,19 +67,16 @@ namespace Alis.Core.Aspect.Base.Dll
         {
             if (obj is PlatformInfo other)
             {
-                return Platform == other.Platform && Arch == other.Arch;
+                return (Platform == other.Platform) && (Arch == other.Arch);
             }
 
             return false;
         }
 
         /// <summary>
-        /// Gets the hash code
+        ///     Gets the hash code
         /// </summary>
         /// <returns>The int</returns>
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Platform, Arch);
-        }
+        public override int GetHashCode() => HashCode.Combine(Platform, Arch);
     }
 }

@@ -51,17 +51,17 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The which
         /// </summary>
-        public readonly int which; 
+        public readonly int which;
 
         /// <summary>
         ///     The hat
         /// </summary>
-        public readonly byte hat; 
+        public readonly byte hat;
 
         /// <summary>
         ///     The hat value
         /// </summary>
-        public readonly byte hatValue; 
+        public readonly byte hatValue;
 
         /// <summary>
         ///     The padding

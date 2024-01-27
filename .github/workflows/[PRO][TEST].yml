@@ -74,7 +74,7 @@ jobs:
   
   Run_Test_On_Ubuntu_Latest:
     runs-on: ubuntu-latest
-        
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -89,7 +89,7 @@ jobs:
             6.0.x
             7.0.x
             8.0.x
-        
+
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
 

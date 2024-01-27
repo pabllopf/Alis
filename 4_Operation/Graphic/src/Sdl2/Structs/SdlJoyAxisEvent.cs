@@ -51,7 +51,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The which
         /// </summary>
-        public readonly int which; 
+        public readonly int which;
 
         /// <summary>
         ///     The axis
@@ -76,7 +76,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The axis value
         /// </summary>
-        public readonly short axisValue; 
+        public readonly short axisValue;
 
         /// <summary>
         ///     The padding

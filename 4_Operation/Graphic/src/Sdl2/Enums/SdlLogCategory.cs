@@ -78,7 +78,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         ///     The sdl log category test sdl log category
         /// </summary>
         SdlLogCategoryTest,
-        
+
         /// <summary>
         ///     The sdl log category reserved1 sdl log category
         /// </summary>

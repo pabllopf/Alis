@@ -30,9 +30,9 @@
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    /// The sdl hint class
+    ///     The sdl hint class
     /// </summary>
-    public static class SdlHint 
+    public static class SdlHint
     {
         /// <summary>
         ///     The sdl hint framebuffer acceleration

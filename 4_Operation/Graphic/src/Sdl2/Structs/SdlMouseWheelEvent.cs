@@ -61,26 +61,26 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The
         /// </summary>
-        public readonly int x; 
+        public readonly int x;
 
         /// <summary>
         ///     The
         /// </summary>
-        public readonly int y; 
+        public readonly int y;
 
         /// <summary>
         ///     The direction
         /// </summary>
-        public readonly uint direction; 
+        public readonly uint direction;
 
         /// <summary>
         ///     The precise
         /// </summary>
-        public readonly float preciseX; 
+        public readonly float preciseX;
 
         /// <summary>
         ///     The precise
         /// </summary>
-        public readonly float preciseY; 
+        public readonly float preciseY;
     }
 }

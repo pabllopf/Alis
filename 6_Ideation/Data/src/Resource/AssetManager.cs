@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Data.Resource
 
             // Search for the file in the "assets" folder and its subdirectories
             string[] files = Directory.GetFiles(assetsDirectory, assetName, SearchOption.AllDirectories);
-            
+
             // Check if there is more than one file with the same name
             if (files.Length > 1)
             {

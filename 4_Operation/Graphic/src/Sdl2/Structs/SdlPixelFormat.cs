@@ -46,7 +46,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The palette
         /// </summary>
-        public IntPtr palette; 
+        public IntPtr palette;
 
         /// <summary>
         ///     The bits per pixel
@@ -126,6 +126,6 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The next
         /// </summary>
-        public IntPtr next; 
+        public IntPtr next;
     }
 }

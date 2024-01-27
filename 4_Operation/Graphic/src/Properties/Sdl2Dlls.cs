@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: SdlDlls.cs
+//  File: Sdl2Dlls.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -58,7 +58,7 @@ namespace Alis.Core.Graphic.Properties
             {new PlatformInfo(OSPlatform.OSX, Architecture.Arm64), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2.zip"},
             {new PlatformInfo(OSPlatform.OSX, Architecture.Arm), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2.zip"}
         };
-        
+
         /// <summary>
         ///     The sdl2 ttf
         /// </summary>

@@ -34,7 +34,6 @@ using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
@@ -99,11 +98,12 @@ namespace Alis.Core.Graphic.Sample
         private static SdlEvent _sdlEvent;
 
         /// <summary>
-        /// The texture font
+        ///     The texture font
         /// </summary>
         private static IntPtr textureFont1;
+
         /// <summary>
-        /// The dst rect font
+        ///     The dst rect font
         /// </summary>
         private static RectangleI dstRectFont1;
 
@@ -186,14 +186,14 @@ namespace Alis.Core.Graphic.Sample
             {
                 Logger.Info("Renderer created");
             }
-            
+
             SdlTtf.Init();
             Console.WriteLine($"SDL_TTF Version: {SdlTtf.GetVersion().major}.{SdlTtf.GetVersion().minor}.{SdlTtf.GetVersion().patch}");
-            
+
             Console.WriteLine("Platform: " + EmbeddedDllClass.GetCurrentPlatform());
             Console.WriteLine("Processor: " + RuntimeInformation.ProcessArchitecture);
-            
-             int outlineSize = 1;
+
+            int outlineSize = 1;
 
             // Load the font
             IntPtr font = SdlTtf.OpenFont(AssetManager.Find("FontSample.otf"), 55);
@@ -230,19 +230,19 @@ namespace Alis.Core.Graphic.Sample
 
             //SDL_BlitSurface(fg_surface, NULL, bg_surface, &rect);
             Sdl.BlitSurface(fg_surface, IntPtr.Zero, bg_surface, ref rect);
-            
+
             // Create a texture from the surface
             textureFont1 = Sdl.CreateTextureFromSurface(renderer, bg_surface);
-            
+
             // Get the width and height of the texture
             Sdl.QueryTexture(textureFont1, out _, out _, out int textureWidth, out int textureHeight);
 
             // Create a destination intPtr dstRect
             dstRectFont1 = new RectangleI(0, 0, textureWidth, textureHeight);
-            
+
             IntPtr icon = Sdl.LoadBmp(AssetManager.Find("logo.bmp"));
             Sdl.SetWindowIcon(window, icon);
-            
+
             Sdlinput();
 
             // Rectangle to be drawn outline.
@@ -277,7 +277,6 @@ namespace Alis.Core.Graphic.Sample
             // Create a new texture from the image.
             IntPtr textureTile = Sdl.CreateTextureFromSurface(renderer, imageTilePtr);
 
-            
 
             while (_running)
             {
@@ -357,7 +356,7 @@ namespace Alis.Core.Graphic.Sample
 
                 // Draws a filled rectangle.
                 //Sdl.RenderFillRect(renderer, ref rectFilled);
-                
+
                 Sdl.RenderCopy(renderer, textureFont1, IntPtr.Zero, ref dstRectFont1);
 
                 Sdl.RenderCopy(renderer, textureTile, IntPtr.Zero, ref tileRectangleI);
@@ -413,7 +412,7 @@ namespace Alis.Core.Graphic.Sample
         {
             Sdl.SetHint(SdlHint.HintXInputEnabled, "0");
             Sdl.SetHint(SdlHint.SdlHintJoystickThread, "1");
-            
+
             for (int i = 0; i < Sdl.NumJoysticks(); i++)
             {
                 IntPtr myJoystick = Sdl.JoystickOpen(i);

@@ -37,22 +37,22 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         /// <summary>
         ///     The sdl system cursor arrow sdl system cursor
         /// </summary>
-        SdlSystemCursorArrow, 
+        SdlSystemCursorArrow,
 
         /// <summary>
         ///     The sdl system cursor ibe am sdl system cursor
         /// </summary>
-        SdlSystemCursorIbeAm, 
+        SdlSystemCursorIbeAm,
 
         /// <summary>
         ///     The sdl system cursor wait sdl system cursor
         /// </summary>
-        SdlSystemCursorWait, 
+        SdlSystemCursorWait,
 
         /// <summary>
         ///     The sdl system cursor crosshair sdl system cursor
         /// </summary>
-        SdlSystemCursorCrosshair, 
+        SdlSystemCursorCrosshair,
 
         /// <summary>
         ///     The sdl system cursor wait arrow sdl system cursor
@@ -62,37 +62,37 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         /// <summary>
         ///     The sdl system cursor size n wse sdl system cursor
         /// </summary>
-        SdlSystemCursorSizeNwSe, 
+        SdlSystemCursorSizeNwSe,
 
         /// <summary>
         ///     The sdl system cursor size nes w sdl system cursor
         /// </summary>
-        SdlSystemCursorSizeNesW, 
+        SdlSystemCursorSizeNesW,
 
         /// <summary>
         ///     The sdl system cursor size we sdl system cursor
         /// </summary>
-        SdlSystemCursorSizeWe, 
+        SdlSystemCursorSizeWe,
 
         /// <summary>
         ///     The sdl system cursor size ns sdl system cursor
         /// </summary>
-        SdlSystemCursorSizeNs, 
+        SdlSystemCursorSizeNs,
 
         /// <summary>
         ///     The sdl system cursor size all sdl system cursor
         /// </summary>
-        SdlSystemCursorSizeAll, 
+        SdlSystemCursorSizeAll,
 
         /// <summary>
         ///     The sdl system cursor no sdl system cursor
         /// </summary>
-        SdlSystemCursorNo, 
+        SdlSystemCursorNo,
 
         /// <summary>
         ///     The sdl system cursor hand sdl system cursor
         /// </summary>
-        SdlSystemCursorHand, 
+        SdlSystemCursorHand,
 
         /// <summary>
         ///     The sdl num system cursors sdl system cursor

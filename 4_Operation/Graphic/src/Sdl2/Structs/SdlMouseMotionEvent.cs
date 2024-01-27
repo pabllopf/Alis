@@ -61,7 +61,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The state
         /// </summary>
-        public readonly byte state; 
+        public readonly byte state;
 
         /// <summary>
         ///     The padding

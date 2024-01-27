@@ -30,7 +30,7 @@
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    /// The rw ops enum
+    ///     The rw ops enum
     /// </summary>
     public enum RwOps : uint
     {
@@ -62,6 +62,6 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         /// <summary>
         ///     The sdl rw ops memory ro
         /// </summary>
-        RwOpsMemoryRo = 5,
+        RwOpsMemoryRo = 5
     }
 }
