@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Data.Resource;
@@ -2629,9 +2630,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Sdl.Quit();
         }
 
-        /// <summary>
-        /// Tests that poll event valid event returns expected int
-        /// </summary>
         [Fact]
         public void PollEvent_ValidEvent_ReturnsExpectedInt()
         {
@@ -2642,20 +2640,16 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = 0;
 
             // Act
-            try
+            Task.Run(() =>
             {
-                Task.Run(() => { result = Sdl.PollEvent(out SdlEvent _); });
-            }
-            catch (Exception ex)
-            {
-                // Handle or log the exception here
-                Console.WriteLine($"An error occurred: {ex.Message}");
-            }
+                result = Sdl.PollEvent(out SdlEvent _);
+                Task.Delay(1000);
+            });
 
             Assert.True(result >= -1);
             Sdl.Quit();
         }
-
+        
         /// <summary>
         /// Tests that push event valid event returns expected int
         /// </summary>
