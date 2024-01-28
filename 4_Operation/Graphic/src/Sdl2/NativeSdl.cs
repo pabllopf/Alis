@@ -239,25 +239,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalUnlockSensors();
-
-        /// <summary>
-        ///     Internals the sdl audio init using the specified driver name
-        /// </summary>
-        /// <param name="driverName">The driver name</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_AudioInit", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalAudioInit([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string driverName);
-
-        /// <summary>
-        ///     Sdl the audio quit
-        /// </summary>
-        [DllImport(NativeLibName, EntryPoint = "SDL_AudioQuit", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalAudioQuit();
-
+        
         /// <summary>
         ///     Sdl the close audio device using the specified dev
         /// </summary>
@@ -677,16 +659,6 @@ namespace Alis.Core.Graphic.Sdl2
         internal static extern void InternalDelEventWatch(SdlEventFilter filter, [NotNull] IntPtr userdata);
 
         /// <summary>
-        ///     Sdl the filter events using the specified filter
-        /// </summary>
-        /// <param name="filter">The filter</param>
-        /// <param name="userdata">The userdata</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_FilterEvents", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalFilterEvents(SdlEventFilter filter, IntPtr userdata);
-
-        /// <summary>
         ///     Sdl the event state using the specified type
         /// </summary>
         /// <param name="type">The type</param>
@@ -1089,15 +1061,6 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalShowCursor([NotNull] int toggle);
-
-        /// <summary>
-        ///     Sdl the get num touch devices
-        /// </summary>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetNumTouchDevices", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalGetNumTouchDevices();
 
         /// <summary>
         ///     Sdl the get touch device using the specified index

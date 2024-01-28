@@ -4424,18 +4424,6 @@ namespace Alis.Core.Graphic.Sdl2
         }
 
         /// <summary>
-        ///     Filters the events using the specified filter
-        /// </summary>
-        /// <param name="filter">The filter</param>
-        /// <param name="userdata">The userdata</param>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void FilterEvents([NotNull] SdlEventFilter filter, [NotNull] IntPtr userdata)
-        {
-            NativeSdl.InternalFilterEvents(filter, userdata);
-        }
-
-        /// <summary>
         ///     Sdl the get event state using the specified type
         /// </summary>
         /// <param name="type">The type</param>
@@ -4953,18 +4941,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return (uint) (1 << ((int) x - 1));
         }
-
-        /// <summary>
-        ///     Gets the num touch devices
-        /// </summary>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetNumTouchDevices()
-        {
-            return NativeSdl.InternalGetNumTouchDevices();
-        }
-
+        
         /// <summary>
         ///     Gets the touch device using the specified index
         /// </summary>
@@ -6654,30 +6631,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return (x & AudioMaskSigned) == 0;
         }
-
-        /// <summary>
-        ///     Sdl the audio init using the specified driver name
-        /// </summary>
-        /// <param name="driverName">The driver name</param>
-        /// <returns>The int</returns>
-        public static int AudioInit([NotNull] string driverName)
-        {
-            Validator.ValidateInput(driverName);
-            var result = NativeSdl.InternalAudioInit(driverName);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Audio the quit
-        /// </summary>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AudioQuit()
-        {
-            NativeSdl.InternalAudioQuit();
-        }
-
+        
         /// <summary>
         ///     Closes the audio device using the specified dev
         /// </summary>
