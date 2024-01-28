@@ -2263,37 +2263,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlBool InternalRenderIsClipEnabled([NotNull] IntPtr renderer);
-
-        /// <summary>
-        ///     Sdl the render flush using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_RenderFlush", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderFlush([NotNull] IntPtr renderer);
-
-        /// <summary>
-        ///     Sdl the alloc format using the specified pixel format
-        /// </summary>
-        /// <param name="pixelFormat">The pixel format</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_AllocFormat", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalAllocFormat([NotNull] uint pixelFormat);
-
-        /// <summary>
-        ///     Sdl the alloc palette using the specified n colors
-        /// </summary>
-        /// <param name="nColors">The n colors</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_AllocPalette", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalAllocPalette([NotNull] int nColors);
-
+        
         /// <summary>
         ///     Sdl the calculate gamma ramp using the specified gamma
         /// </summary>
@@ -2687,43 +2657,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalLoadBMP_RW([NotNull] IntPtr src, [NotNull] int freeSrc);
-
-        /// <summary>
-        ///     Sdl the lock surface using the specified surface
-        /// </summary>
-        /// <param name="surface">The surface</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LockSurface", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalLockSurface([NotNull] IntPtr surface);
-
-        /// <summary>
-        ///     Sdl the lower blit using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="srcRect">The src rect</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstRect">The dst rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LowerBlit", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalLowerBlit([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect);
-
-        /// <summary>
-        ///     Sdl the lower blit scaled using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="srcRect">The src rect</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstRect">The dst rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LowerBlitScaled", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalLowerBlitScaled([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect);
-
+        
         /// <summary>
         ///     Internals the sdl save bmp rw using the specified surface
         /// </summary>
@@ -2825,42 +2759,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlBool InternalHasSurfaceRLE([NotNull] IntPtr surface);
-
-        /// <summary>
-        ///     Sdl the soft stretch using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="srcRect">The src rect</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstRect">The dst rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SoftStretch", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalSoftStretch([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect);
-
-        /// <summary>
-        ///     Sdl the soft stretch linear using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="srcRect">The src rect</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstRect">The dst rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SoftStretchLinear", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalSoftStretchLinear([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect);
-
-        /// <summary>
-        ///     Sdl the unlock surface using the specified surface
-        /// </summary>
-        /// <param name="surface">The surface</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_UnlockSurface", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalUnlockSurface([NotNull] IntPtr surface);
-
+        
         /// <summary>
         ///     Sdl the upper blit using the specified src
         /// </summary>
@@ -2886,17 +2785,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalUpperBlitScaled([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect);
-
-        /// <summary>
-        ///     Sdl the duplicate surface using the specified surface
-        /// </summary>
-        /// <param name="surface">The surface</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_DuplicateSurface", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalDuplicateSurface([NotNull] IntPtr surface);
-
+        
         /// <summary>
         ///     Sdl the has clipboard text
         /// </summary>

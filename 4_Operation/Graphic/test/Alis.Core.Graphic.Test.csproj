@@ -25,5 +25,10 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <CopyToPublishDirectory>Always</CopyToPublishDirectory>
         </None>
+        <None Update="Assets\tile000.bmp">
+          <LinkBase>Assets/</LinkBase>
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+          <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+        </None>
     </ItemGroup>
 </Project>

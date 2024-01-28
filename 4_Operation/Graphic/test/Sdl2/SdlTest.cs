@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Shape.Point;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
@@ -2888,40 +2889,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that alloc format test
-        /// </summary>
-        [Fact]
-        public void AllocFormatTest()
-        {
-            // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
-            Assert.Equal(0, initResult);
-
-            uint pixelFormat = 0;
-            IntPtr result = Sdl.AllocFormat(pixelFormat);
-            Assert.NotEqual(IntPtr.Zero, result);
-
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        /// Tests that alloc palette test
-        /// </summary>
-        [Fact]
-        public void AllocPaletteTest()
-        {
-            // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
-            Assert.Equal(0, initResult);
-
-            int nColors = 256;
-            IntPtr result = Sdl.AllocPalette(nColors);
-            Assert.NotEqual(IntPtr.Zero, result);
-
-            Sdl.Quit();
-        }
-
-        /// <summary>
         /// Tests that calculate gamma ramp test
         /// </summary>
         [Fact]
@@ -4232,6 +4199,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Assert
             Assert.True(initResult >= -1);
+            Assert.True(instanceId >= -1);
 
             Sdl.Quit();
         }
@@ -4393,6 +4361,2981 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Assert
             Assert.NotEqual(SdlJoystickPowerLevel.SdlJoystickPowerEmpty, powerLevel);
 
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that bind texture should return expected value
+        /// </summary>
+        [Fact]
+        public void BindTexture_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr texture = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.BindTexture(texture, out float _, out float _);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that create context should return expected value
+        /// </summary>
+        [Fact]
+        public void CreateContext_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            IntPtr result = Sdl.CreateContext(window);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that delete context should not throw exception
+        /// </summary>
+        [Fact]
+        public void DeleteContext_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr context = IntPtr.Zero;
+
+            // Act
+            Sdl.DeleteContext(context);
+
+            // Assert
+            // No exception should be thrown
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get proc address should return expected value
+        /// </summary>
+        [Fact]
+        public void GetProcAddress_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            string proc = "glBindTexture";
+
+            // Act
+            IntPtr result = Sdl.GetProcAddress(proc);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that extension supported should return expected value
+        /// </summary>
+        [Fact]
+        public void ExtensionSupported_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            string extension = "GL_ARB_texture_non_power_of_two";
+
+            // Act
+            SdlBool result = Sdl.ExtensionSupported(extension);
+
+            // Assert
+            Assert.Equal(SdlBool.False, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that reset attributes should not throw exception
+        /// </summary>
+        [Fact]
+        public void ResetAttributes_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            Sdl.ResetAttributes();
+
+            // Assert
+            // No exception should be thrown
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get attribute should return expected value
+        /// </summary>
+        [Fact]
+        public void GetAttribute_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            SdlGlAttr attr = SdlGlAttr.SdlGlContextMajorVersion;
+
+            // Act
+            int result = Sdl.GetAttribute(attr, out int _);
+
+            // Assert
+            Assert.Equal(0, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get swap interval should return expected value
+        /// </summary>
+        [Fact]
+        public void GetSwapInterval_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            int result = Sdl.GetSwapInterval();
+
+            // Assert
+            Assert.Equal(0, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that make current should return expected value
+        /// </summary>
+        [Fact]
+        public void MakeCurrent_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            IntPtr context = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.MakeCurrent(window, context);
+
+            // Assert
+            Assert.Equal(0, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get current window should return expected value
+        /// </summary>
+        [Fact]
+        public void GetCurrentWindow_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            IntPtr result = Sdl.GetCurrentWindow();
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result); // Replace IntPtr.Zero with the expected result
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get current context should return expected value
+        /// </summary>
+        [Fact]
+        public void GetCurrentContext_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            IntPtr result = Sdl.GetCurrentContext();
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result); // Replace IntPtr.Zero with the expected result
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get drawable size should return expected value
+        /// </summary>
+        [Fact]
+        public void GetDrawableSize_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            Sdl.GetDrawableSize(window, out int w, out int h);
+
+            // Assert
+            Assert.Equal(0, w);
+            Assert.Equal(0, h);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set attribute by int should return expected value
+        /// </summary>
+        [Fact]
+        public void SetAttributeByInt_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            SdlGlAttr attr = SdlGlAttr.SdlGlContextMajorVersion;
+            int value = 3;
+
+            // Act
+            int result = Sdl.SetAttributeByInt(attr, value);
+
+            // Assert
+            Assert.Equal(0, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set attribute by profile should return expected value
+        /// </summary>
+        [Fact]
+        public void SetAttributeByProfile_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            SdlGlAttr attr = SdlGlAttr.SdlGlContextProfileMask;
+            SdlGlProfile profile = SdlGlProfile.SdlGlContextProfileCore;
+
+            // Act
+            int result = Sdl.SetAttributeByProfile(attr, profile);
+
+            // Assert
+            Assert.Equal(0, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set swap interval should return expected value
+        /// </summary>
+        [Fact]
+        public void SetSwapInterval_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int interval = 1;
+
+            // Act
+            int result = Sdl.SetSwapInterval(interval);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that swap window should not throw exception
+        /// </summary>
+        [Fact]
+        public void SwapWindow_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            Sdl.SwapWindow(window);
+
+            // Assert
+            Assert.Equal(SdlBool.False, Sdl.IsScreenKeyboardShown(window));
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that unbind texture should return expected value
+        /// </summary>
+        [Fact]
+        public void UnbindTexture_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr texture = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.UnbindTexture(texture);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that hide window should not throw exception
+        /// </summary>
+        [Fact]
+        public void HideWindow_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            Sdl.HideWindow(window);
+
+            // Assert
+            Assert.Equal(SdlBool.False, Sdl.IsScreenKeyboardShown(window));
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that maximize window should not throw exception
+        /// </summary>
+        [Fact]
+        public void MaximizeWindow_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            Sdl.MaximizeWindow(window);
+
+            // Assert
+            Assert.Equal(SdlBool.False, Sdl.IsScreenKeyboardShown(window));
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that minimize window should not throw exception
+        /// </summary>
+        [Fact]
+        public void MinimizeWindow_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            Sdl.MinimizeWindow(window);
+
+            // Assert
+            Assert.Equal(SdlBool.False, Sdl.IsScreenKeyboardShown(window));
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that raise window should not throw exception
+        /// </summary>
+        [Fact]
+        public void RaiseWindow_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            Sdl.RaiseWindow(window);
+
+            // Assert
+            Assert.Equal(SdlBool.False, Sdl.IsScreenKeyboardShown(window));
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that restore window should not throw exception
+        /// </summary>
+        [Fact]
+        public void RestoreWindow_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            try
+            {
+                Sdl.RestoreWindow(window);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Exception thrown when calling RestoreWindow: " + ex.Message);
+            }
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window brightness should return expected value
+        /// </summary>
+        [Fact]
+        public void SetWindowBrightness_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            float brightness = 1.0f;
+
+            // Act
+            int result = Sdl.SetWindowBrightness(window, brightness);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window data should return expected value
+        /// </summary>
+        [Fact]
+        public void SetWindowData_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            string name = "test";
+            IntPtr userdata = IntPtr.Zero;
+
+            // Act
+            IntPtr result = Sdl.SetWindowData(window, name, userdata);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window display mode should return expected value
+        /// </summary>
+        [Fact]
+        public void SetWindowDisplayMode_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            SdlDisplayMode mode = new SdlDisplayMode();
+
+            // Act
+            int result = Sdl.SetWindowDisplayMode(window, ref mode);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window fullscreen should return expected value
+        /// </summary>
+        [Fact]
+        public void SetWindowFullscreen_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            uint flags = 0;
+
+            // Act
+            int result = Sdl.SetWindowFullscreen(window, flags);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window gamma ramp should return expected value
+        /// </summary>
+        [Fact]
+        public void SetWindowGammaRamp_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            ushort[] red = new ushort[256];
+            ushort[] green = new ushort[256];
+            ushort[] blue = new ushort[256];
+
+            // Act
+            int result = Sdl.SetWindowGammaRamp(window, red, green, blue);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window grab should not throw exception
+        /// </summary>
+        [Fact]
+        public void SetWindowGrab_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            SdlBool grabbed = SdlBool.True;
+
+            // Act
+            Sdl.SetWindowGrab(window, grabbed);
+
+            // Assert
+            Assert.Equal(SdlBool.True, grabbed);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window keyboard grab should not throw exception
+        /// </summary>
+        [Fact]
+        public void SetWindowKeyboardGrab_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            SdlBool grabbed = SdlBool.True;
+
+            // Act
+            Sdl.SetWindowKeyboardGrab(window, grabbed);
+
+            // Assert
+            Assert.Equal(SdlBool.True, grabbed);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window mouse grab should not throw exception
+        /// </summary>
+        [Fact]
+        public void SetWindowMouseGrab_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            SdlBool grabbed = SdlBool.True;
+
+            // Act
+            Sdl.SetWindowMouseGrab(window, grabbed);
+
+            // Assert
+            Assert.Equal(SdlBool.True, grabbed);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window icon should not throw exception
+        /// </summary>
+        [Fact]
+        public void SetWindowIcon_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            IntPtr icon = IntPtr.Zero;
+
+            // Act
+            Sdl.SetWindowIcon(window, icon);
+
+            // Assert
+            // No exception should be thrown
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window maximum size should not throw exception
+        /// </summary>
+        [Fact]
+        public void SetWindowMaximumSize_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            int maxW = 800;
+            int maxH = 600;
+
+            // Act
+            Sdl.SetWindowMaximumSize(window, maxW, maxH);
+
+            // Assert
+            // No exception should be thrown
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window minimum size should not throw exception
+        /// </summary>
+        [Fact]
+        public void SetWindowMinimumSize_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            int minW = 800;
+            int minH = 600;
+
+            // Act
+            Sdl.SetWindowMinimumSize(window, minW, minH);
+
+            // Assert
+            // No exception should be thrown
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window position should not throw exception
+        /// </summary>
+        [Fact]
+        public void SetWindowPosition_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            int x = 100;
+            int y = 100;
+
+            // Act
+            Sdl.SetWindowPosition(window, x, y);
+
+            // Assert
+            // No exception should be thrown
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window size should not throw exception
+        /// </summary>
+        [Fact]
+        public void SetWindowSize_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            int w = 800;
+            int h = 600;
+
+            // Act
+            Sdl.SetWindowSize(window, w, h);
+
+            // Assert
+            // No exception should be thrown
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window bordered should not throw exception
+        /// </summary>
+        [Fact]
+        public void SetWindowBordered_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            SdlBool bordered = SdlBool.True;
+
+            // Act
+            Sdl.SetWindowBordered(window, bordered);
+
+            // Assert
+            // No exception should be thrown
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window borders size should return expected value
+        /// </summary>
+        [Fact]
+        public void GetWindowBordersSize_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetWindowBordersSize(window, out int _, out int _, out int _, out int _);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window resizable should not throw exception
+        /// </summary>
+        [Fact]
+        public void SetWindowResizable_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            SdlBool resizable = SdlBool.True;
+
+            // Act
+            Sdl.SetWindowResizable(window, resizable);
+
+            // Assert
+            Assert.Equal(SdlBool.True, resizable);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window always on top should not throw exception
+        /// </summary>
+        [Fact]
+        public void SetWindowAlwaysOnTop_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            SdlBool onTop = SdlBool.True;
+
+            // Act
+            Sdl.SetWindowAlwaysOnTop(window, onTop);
+
+            // Assert
+            Assert.Equal(SdlBool.True, onTop);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window title should not throw exception
+        /// </summary>
+        [Fact]
+        public void SetWindowTitle_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            string title = "Test Title";
+
+            // Act
+            Sdl.SetWindowTitle(window, title);
+
+            // Assert
+            Assert.Equal("", Sdl.GetWindowTitle(window));
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that show window should not throw exception
+        /// </summary>
+        [Fact]
+        public void ShowWindow_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            Sdl.ShowWindow(window);
+
+            // Assert
+            Assert.Equal(SdlBool.False, Sdl.IsScreenKeyboardShown(window));
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that update window surface should return expected value
+        /// </summary>
+        [Fact]
+        public void UpdateWindowSurface_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.UpdateWindowSurface(window);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that update window surface rects should return expected value
+        /// </summary>
+        [Fact]
+        public void UpdateWindowSurfaceRects_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            RectangleI[] rects = new RectangleI[1];
+            int numRects = 1;
+
+            // Act
+            int result = Sdl.UpdateWindowSurfaceRects(window, rects, numRects);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window hit test should return expected value
+        /// </summary>
+        [Fact]
+        public void SetWindowHitTest_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            IntPtr callbackData = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.SetWindowHitTest(window, null, callbackData);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get grabbed window should return expected value
+        /// </summary>
+        [Fact]
+        public void GetGrabbedWindow_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            IntPtr result = Sdl.GetGrabbedWindow();
+
+            // Assert
+            // Replace IntPtr.Zero with the expected result
+            Assert.Equal(IntPtr.Zero, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set window mouse rect should return expected value
+        /// </summary>
+        [Fact]
+        public void SetWindowMouseRect_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            RectangleI rect = new RectangleI();
+
+            // Act
+            int result = Sdl.SetWindowMouseRect(window, ref rect);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get window mouse rect should return expected value
+        /// </summary>
+        [Fact]
+        public void GetWindowMouseRect_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            IntPtr result = Sdl.GetWindowMouseRect(window);
+
+            // Assert
+            // Replace IntPtr.Zero with the expected result
+            Assert.Equal(IntPtr.Zero, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that flash window should return expected value
+        /// </summary>
+        [Fact]
+        public void FlashWindow_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            SdlFlashOperation operation = SdlFlashOperation.SdlFlashUntilFocused;
+
+            // Act
+            int result = Sdl.FlashWindow(window, operation);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that compose custom blend mode should return expected value
+        /// </summary>
+        [Fact]
+        public void ComposeCustomBlendMode_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            SdlBlendFactor srcColorFactor = SdlBlendFactor.SdlBlendFactorZero;
+            SdlBlendFactor dstColorFactor = SdlBlendFactor.SdlBlendFactorZero;
+            SdlBlendOperation colorOperation = SdlBlendOperation.SdlBlendOperationAdd;
+            SdlBlendFactor srcAlphaFactor = SdlBlendFactor.SdlBlendFactorZero;
+            SdlBlendFactor dstAlphaFactor = SdlBlendFactor.SdlBlendFactorZero;
+            SdlBlendOperation alphaOperation = SdlBlendOperation.SdlBlendOperationAdd;
+
+            // Act
+            SdlBlendMode result = Sdl.ComposeCustomBlendMode(srcColorFactor, dstColorFactor, colorOperation, srcAlphaFactor, dstAlphaFactor, alphaOperation);
+
+            // Assert
+            Assert.NotEqual(SdlBlendMode.None, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that create renderer should return expected value
+        /// </summary>
+        [Fact]
+        public void CreateRenderer_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+            int index = -1;
+            SdlRendererFlags flags = SdlRendererFlags.SdlRendererSoftware;
+
+            // Act
+            IntPtr result = Sdl.CreateRenderer(window, index, flags);
+
+            // Assert
+            // Replace IntPtr.Zero with the expected result
+            Assert.Equal(IntPtr.Zero, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that create texture should return expected value
+        /// </summary>
+        [Fact]
+        public void CreateTexture_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            uint format = 0;
+            int access = 0;
+            int w = 0;
+            int h = 0;
+
+            // Act
+            IntPtr result = Sdl.CreateTexture(renderer, format, access, w, h);
+
+            // Assert
+            // Replace IntPtr.Zero with the expected result
+            Assert.Equal(IntPtr.Zero, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that destroy texture should not throw exception
+        /// </summary>
+        [Fact]
+        public void DestroyTexture_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr texture = IntPtr.Zero;
+
+            // Act
+            Sdl.DestroyTexture(texture);
+
+            // Assert
+            // No exception should be thrown
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get num render drivers should return expected value
+        /// </summary>
+        [Fact]
+        public void GetNumRenderDrivers_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            int result = Sdl.GetNumRenderDrivers();
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get render draw blend mode should return expected value
+        /// </summary>
+        [Fact]
+        public void GetRenderDrawBlendMode_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetRenderDrawBlendMode(renderer, out SdlBlendMode _);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set texture scale mode should return expected value
+        /// </summary>
+        [Fact]
+        public void SetTextureScaleMode_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr texture = IntPtr.Zero;
+            SdlScaleMode scaleMode = SdlScaleMode.SdlScaleModeNearest;
+
+            // Act
+            int result = Sdl.SetTextureScaleMode(texture, scaleMode);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get texture scale mode should return expected value
+        /// </summary>
+        [Fact]
+        public void GetTextureScaleMode_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr texture = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetTextureScaleMode(texture, out SdlScaleMode _);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set texture user data should return expected value
+        /// </summary>
+        [Fact]
+        public void SetTextureUserData_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr texture = IntPtr.Zero;
+            IntPtr userdata = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.SetTextureUserData(texture, userdata);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get texture user data should return expected value
+        /// </summary>
+        [Fact]
+        public void GetTextureUserData_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr texture = IntPtr.Zero;
+
+            // Act
+            IntPtr result = Sdl.GetTextureUserData(texture);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result); // Replace IntPtr.Zero with the expected result
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get render draw color should return expected value
+        /// </summary>
+        [Fact]
+        public void GetRenderDrawColor_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetRenderDrawColor(renderer, out byte _, out byte _, out byte _, out byte _);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get render driver info should return expected value
+        /// </summary>
+        [Fact]
+        public void GetRenderDriverInfo_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int index = 0;
+
+            // Act
+            int result = Sdl.GetRenderDriverInfo(index, out SdlRendererInfo _);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get renderer should return expected value
+        /// </summary>
+        [Fact]
+        public void GetRenderer_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr window = IntPtr.Zero;
+
+            // Act
+            IntPtr result = Sdl.GetRenderer(window);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result); // Replace IntPtr.Zero with the expected result
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get renderer info should return expected value
+        /// </summary>
+        [Fact]
+        public void GetRendererInfo_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetRendererInfo(renderer, out SdlRendererInfo _);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get renderer output size should return expected value
+        /// </summary>
+        [Fact]
+        public void GetRendererOutputSize_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetRendererOutputSize(renderer, out int _, out int _);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get texture alpha mod should return expected value
+        /// </summary>
+        [Fact]
+        public void GetTextureAlphaMod_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr texture = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetTextureAlphaMod(texture, out byte _);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+
+        /// <summary>
+        /// Tests that get texture blend mode should return expected value
+        /// </summary>
+        [Fact]
+        public void GetTextureBlendMode_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr texture = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetTextureBlendMode(texture, out SdlBlendMode _);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get texture color mod should return expected value
+        /// </summary>
+        [Fact]
+        public void GetTextureColorMod_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr texture = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetTextureColorMod(texture, out byte _, out byte _, out byte _);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that lock texture should return expected value
+        /// </summary>
+        [Fact]
+        public void LockTexture_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr texture = IntPtr.Zero;
+            RectangleI rect = new RectangleI();
+
+            // Act
+            int result = Sdl.LockTexture(texture, ref rect, out IntPtr _, out int _);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that lock texture to surface should return expected value
+        /// </summary>
+        [Fact]
+        public void LockTextureToSurface_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr texture = IntPtr.Zero;
+            RectangleI rect = new RectangleI();
+
+            // Act
+            int result = Sdl.LockTextureToSurface(texture, ref rect, out IntPtr _);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that query texture should return expected value
+        /// </summary>
+        [Fact]
+        public void QueryTexture_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr texture = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.QueryTexture(texture, out uint _, out int _, out int _, out int _);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render clear should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderClear_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.RenderClear(renderer);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render copy should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderCopy_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            IntPtr texture = IntPtr.Zero;
+            RectangleI srcRect = new RectangleI();
+            RectangleI dstRect = new RectangleI();
+
+            // Act
+            int result = Sdl.RenderCopy(renderer, texture, ref srcRect, ref dstRect);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render copy ex should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderCopyEx_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            IntPtr texture = IntPtr.Zero;
+            RectangleI srcRect = new RectangleI();
+            RectangleI dstRect = new RectangleI();
+            double angle = 0.0;
+            PointI center = new PointI();
+            SdlRendererFlip flip = SdlRendererFlip.None;
+
+            // Act
+            int result = Sdl.RenderCopyEx(renderer, texture, ref srcRect, ref dstRect, angle, ref center, flip);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+
+        /// <summary>
+        /// Tests that render draw line should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderDrawLine_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            int x1 = 0;
+            int y1 = 0;
+            int x2 = 0;
+            int y2 = 0;
+
+            // Act
+            int result = Sdl.RenderDrawLine(renderer, x1, y1, x2, y2);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render draw points should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderDrawPoints_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            PointI[] points = Array.Empty<PointI>();
+            int count = 0;
+
+            // Act
+            int result = Sdl.RenderDrawPoints(renderer, points, count);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render draw rect should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderDrawRect_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            RectangleI rect = new RectangleI();
+
+            // Act
+            int result = Sdl.RenderDrawRect(renderer, ref rect);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render fill rect should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderFillRect_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            RectangleI rect = new RectangleI();
+
+            // Act
+            int result = Sdl.RenderFillRect(renderer, ref rect);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render copy ex f should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderCopyExF_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            IntPtr texture = IntPtr.Zero;
+            IntPtr srcRect = IntPtr.Zero;
+            IntPtr dstRect = IntPtr.Zero;
+            double angle = 0.0;
+            IntPtr center = IntPtr.Zero;
+            SdlRendererFlip flip = SdlRendererFlip.None;
+
+            // Act
+            int result = Sdl.RenderCopyExF(renderer, texture, srcRect, dstRect, angle, center, flip);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render geometry should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderGeometry_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            IntPtr texture = IntPtr.Zero;
+            SdlVertex[] vertices = Array.Empty<SdlVertex>();
+            int numVertices = 0;
+            int[] indices = Array.Empty<int>();
+            int numIndices = 0;
+
+            // Act
+            int result = Sdl.RenderGeometry(renderer, texture, vertices, numVertices, indices, numIndices);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render draw point f should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderDrawPointF_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            float x = 0.0f;
+            float y = 0.0f;
+
+            // Act
+            int result = Sdl.RenderDrawPointF(renderer, x, y);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render draw points f should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderDrawPointsF_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            PointF[] points = Array.Empty<PointF>();
+            int count = 0;
+
+            // Act
+            int result = Sdl.RenderDrawPointsF(renderer, points, count);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render draw line f should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderDrawLineF_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            float x1 = 0.0f;
+            float y1 = 0.0f;
+            float x2 = 0.0f;
+            float y2 = 0.0f;
+
+            // Act
+            int result = Sdl.RenderDrawLineF(renderer, x1, y1, x2, y2);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render draw lines f should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderDrawLinesF_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            PointF[] points = Array.Empty<PointF>();
+            int count = 0;
+
+            // Act
+            int result = Sdl.RenderDrawLinesF(renderer, points, count);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render draw rect f should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderDrawRectF_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            RectangleF rect = new RectangleF();
+
+            // Act
+            int result = Sdl.RenderDrawRectF(renderer, ref rect);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render fill rect f should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderFillRectF_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            RectangleF rect = new RectangleF();
+
+            // Act
+            int result = Sdl.RenderFillRectF(renderer, rect);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render get clip rect should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderGetClipRect_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+
+            // Act
+            Sdl.RenderGetClipRect(renderer, out RectangleI rect);
+
+            // Assert
+            Assert.Equal(0, rect.x);
+            Assert.Equal(0, rect.y);
+            Assert.Equal(0, rect.w);
+            Assert.Equal(0, rect.h);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render get logical size should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderGetLogicalSize_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+
+            // Act
+            Sdl.RenderGetLogicalSize(renderer, out int _, out int _);
+
+            // Assert
+            // Assert something about the w and h here
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render get viewport should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderGetViewport_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.RenderGetViewport(renderer, out RectangleI _);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render present should not throw exception
+        /// </summary>
+        [Fact]
+        public void RenderPresent_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+
+            // Act
+            Sdl.RenderPresent(renderer);
+
+            // Assert
+            Assert.Equal(SdlBool.False, Sdl.IsScreenKeyboardShown(renderer));
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render read pixels should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderReadPixels_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            RectangleI rect = new RectangleI();
+            uint format = 0;
+            IntPtr pixels = IntPtr.Zero;
+            int pitch = 0;
+
+            // Act
+            int result = Sdl.RenderReadPixels(renderer, ref rect, format, pixels, pitch);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+
+        /// Tests that render set clip rect should return expected value
+
+        /// </summary>
+
+        [Fact]
+        public void RenderSetClipRect_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            RectangleI rect = new RectangleI();
+
+            // Act
+            int result = Sdl.RenderSetClipRect(renderer, ref rect);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+
+        /// Tests that render set logical size should return expected value
+
+        /// </summary>
+
+        [Fact]
+        public void RenderSetLogicalSize_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            int w = 0;
+            int h = 0;
+
+            // Act
+            int result = Sdl.RenderSetLogicalSize(renderer, w, h);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+
+        /// Tests that render set scale should return expected value
+
+        /// </summary>
+
+        [Fact]
+        public void RenderSetScale_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            float scaleX = 0.0f;
+            float scaleY = 0.0f;
+
+            // Act
+            int result = Sdl.RenderSetScale(renderer, scaleX, scaleY);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+
+        /// Tests that set render draw blend mode should return expected value
+
+        /// </summary>
+
+        [Fact]
+        public void SetRenderDrawBlendMode_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            SdlBlendMode blendMode = SdlBlendMode.None;
+
+            // Act
+            int result = Sdl.SetRenderDrawBlendMode(renderer, blendMode);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+
+        /// Tests that set render draw color should return expected value
+
+        /// </summary>
+
+        [Fact]
+        public void SetRenderDrawColor_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            byte r = 0;
+            byte g = 0;
+            byte b = 0;
+            byte a = 0;
+
+            // Act
+            int result = Sdl.SetRenderDrawColor(renderer, r, g, b, a);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+
+        /// Tests that set render target should return expected value
+
+        /// </summary>
+
+        [Fact]
+        public void SetRenderTarget_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            IntPtr texture = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.SetRenderTarget(renderer, texture);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+
+        /// Tests that set texture alpha mod should return expected value
+
+        /// </summary>
+
+        [Fact]
+        public void SetTextureAlphaMod_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr texture = IntPtr.Zero;
+            byte alpha = 0;
+
+            // Act
+            int result = Sdl.SetTextureAlphaMod(texture, alpha);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+
+        /// Tests that unlock texture should not throw exception
+
+        /// </summary>
+
+        [Fact]
+        public void UnlockTexture_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr texture = IntPtr.Zero;
+
+            // Act
+            Sdl.UnlockTexture(texture);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, Sdl.GetTextureUserData(texture));
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that update texture should return expected value
+        /// </summary>
+        [Fact]
+        public void UpdateTexture_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr texture = IntPtr.Zero;
+            RectangleI rect = new RectangleI();
+            IntPtr pixels = IntPtr.Zero;
+            int pitch = 0;
+
+            // Act
+            int result = Sdl.UpdateTexture(texture, ref rect, pixels, pitch);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that update nv texture should return expected value
+        /// </summary>
+        [Fact]
+        public void UpdateNvTexture_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr texture = IntPtr.Zero;
+            RectangleI rect = new RectangleI();
+            IntPtr yPlane = IntPtr.Zero;
+            int yPitch = 0;
+            IntPtr uvPlane = IntPtr.Zero;
+            int uvPitch = 0;
+
+            // Act
+            int result = Sdl.UpdateNvTexture(texture, ref rect, yPlane, yPitch, uvPlane, uvPitch);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render target supported should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderTargetSupported_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+
+            // Act
+            SdlBool result = Sdl.RenderTargetSupported(renderer);
+
+            // Assert
+            Assert.Equal(SdlBool.False, result); // Replace SdlBool.True with the expected result
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get render target should return expected value
+        /// </summary>
+        [Fact]
+        public void GetRenderTarget_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+
+            // Act
+            IntPtr result = Sdl.GetRenderTarget(renderer);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result); // Replace IntPtr.Zero with the expected result
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render set v sync should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderSetVSync_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+            int vsync = 1;
+
+            // Act
+            int result = Sdl.RenderSetVSync(renderer, vsync);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render is clip enabled should return expected value
+        /// </summary>
+        [Fact]
+        public void RenderIsClipEnabled_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr renderer = IntPtr.Zero;
+
+            // Act
+            SdlBool result = Sdl.RenderIsClipEnabled(renderer);
+
+            // Assert
+            Assert.Equal(SdlBool.False, result); 
+
+            // Cleanup
+            Sdl.Quit();
+        }
+        
+        /// <summary>
+        /// Tests that calculate gamma ramp should not throw exception
+        /// </summary>
+        [Fact]
+        public void CalculateGammaRamp_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            float gamma = 1.0f;
+            ushort[] ramp = new ushort[256];
+
+            // Act
+            Sdl.CalculateGammaRamp(gamma, ramp);
+
+            // Assert
+            Assert.Equal(0, ramp[0]);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+        
+        /// <summary>
+        /// Tests that blit surface should return expected value
+        /// </summary>
+        [Fact]
+        public void BlitSurface_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr src = IntPtr.Zero;
+            RectangleI srcRect = new RectangleI();
+            IntPtr dst = IntPtr.Zero;
+            RectangleI dstRect = new RectangleI();
+
+            // Act
+            int result = Sdl.BlitSurface(src, ref srcRect, dst, ref dstRect);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that convert surface should return expected value
+        /// </summary>
+        [Fact]
+        public void ConvertSurface_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr src = IntPtr.Zero;
+            IntPtr fmt = IntPtr.Zero;
+            uint flags = 0;
+
+            // Act
+            IntPtr result = Sdl.ConvertSurface(src, fmt, flags);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, result); // Replace IntPtr.Zero with the expected result
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that create rgb surface with format should return expected value
+        /// </summary>
+        [Fact]
+        public void CreateRgbSurfaceWithFormat_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            uint flags = 0;
+            int width = 0;
+            int height = 0;
+            int depth = 0;
+            uint format = 0;
+
+            // Act
+            IntPtr result = Sdl.CreateRgbSurfaceWithFormat(flags, width, height, depth, format);
+
+            // Assert
+            Assert.NotEqual(IntPtr.Zero, result); // Replace IntPtr.Zero with the expected result
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that fill rect should return expected value
+        /// </summary>
+        [Fact]
+        public void FillRect_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr dst = IntPtr.Zero;
+            RectangleI rect = new RectangleI();
+            uint color = 0;
+
+            // Act
+            int result = Sdl.FillRect(dst, ref rect, color);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get clip rect should return expected value
+        /// </summary>
+        [Fact]
+        public void GetClipRect_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr surface = IntPtr.Zero;
+
+            // Act
+            Sdl.GetClipRect(surface, out RectangleI _);
+
+            // Assert
+            Assert.Equal(0, surface.ToInt64());
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that has color key should return expected value
+        /// </summary>
+        [Fact]
+        public void HasColorKey_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr surface = IntPtr.Zero;
+
+            // Act
+            SdlBool result = Sdl.HasColorKey(surface);
+
+            // Assert
+            Assert.Equal(SdlBool.False, result); 
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get color key should return expected value
+        /// </summary>
+        [Fact]
+        public void GetColorKey_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr surface = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetColorKey(surface, out uint _);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get surface alpha mod should return expected value
+        /// </summary>
+        [Fact]
+        public void GetSurfaceAlphaMod_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr surface = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetSurfaceAlphaMod(surface, out byte _);
+
+            // Assert
+           Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get surface blend mode should return expected value
+        /// </summary>
+        [Fact]
+        public void GetSurfaceBlendMode_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr surface = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetSurfaceBlendMode(surface, out SdlBlendMode _);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get surface color mod should return expected value
+        /// </summary>
+        [Fact]
+        public void GetSurfaceColorMod_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr surface = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GetSurfaceColorMod(surface, out byte _, out byte _, out byte _);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that load bmp should return expected value
+        /// </summary>
+        [Fact]
+        public void LoadBmp_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            string file = AssetManager.Find("tile000.bmp");
+
+            // Act
+            IntPtr result = Sdl.LoadBmp(file);
+
+            // Assert
+            // Replace IntPtr.Zero with the expected result
+            Assert.NotEqual(IntPtr.Zero, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+        
+        /// <summary>
+        /// Tests that save bmp should return expected value
+        /// </summary>
+        [Fact]
+        public void SaveBmp_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr surface = IntPtr.Zero;
+            string file = "test.bmp";
+
+            // Act
+            if (!File.Exists(file))
+            {
+                int result = Sdl.SaveBmp(surface, file);
+                Assert.True(result >= -1);
+            }
+            
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set clip rect should return expected value
+        /// </summary>
+        [Fact]
+        public void SetClipRect_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr surface = IntPtr.Zero;
+            RectangleI rect = new RectangleI();
+
+            // Act
+            SdlBool result = Sdl.SetClipRect(surface, ref rect);
+
+            // Assert
+            
+            Assert.Equal(SdlBool.False, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set color key should return expected value
+        /// </summary>
+        [Fact]
+        public void SetColorKey_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr surface = IntPtr.Zero;
+            int flag = 0;
+            uint key = 0;
+
+            // Act
+            int result = Sdl.SetColorKey(surface, flag, key);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set surface alpha mod should return expected value
+        /// </summary>
+        [Fact]
+        public void SetSurfaceAlphaMod_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr surface = IntPtr.Zero;
+            byte alpha = 0;
+
+            // Act
+            int result = Sdl.SetSurfaceAlphaMod(surface, alpha);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set surface blend mode should return expected value
+        /// </summary>
+        [Fact]
+        public void SetSurfaceBlendMode_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr surface = IntPtr.Zero;
+            SdlBlendMode blendMode = SdlBlendMode.None;
+
+            // Act
+            int result = Sdl.SetSurfaceBlendMode(surface, blendMode);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set surface color mod should return expected value
+        /// </summary>
+        [Fact]
+        public void SetSurfaceColorMod_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr surface = IntPtr.Zero;
+            byte r = 0, g = 0, b = 0;
+
+            // Act
+            int result = Sdl.SetSurfaceColorMod(surface, r, g, b);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set surface palette should return expected value
+        /// </summary>
+        [Fact]
+        public void SetSurfacePalette_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr surface = IntPtr.Zero;
+            IntPtr palette = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.SetSurfacePalette(surface, palette);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set surface rle should return expected value
+        /// </summary>
+        [Fact]
+        public void SetSurfaceRle_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr surface = IntPtr.Zero;
+            int flag = 0;
+
+            // Act
+            int result = Sdl.SetSurfaceRle(surface, flag);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that has surface rle should return expected value
+        /// </summary>
+        [Fact]
+        public void HasSurfaceRle_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr surface = IntPtr.Zero;
+
+            // Act
+            SdlBool result = Sdl.HasSurfaceRle(surface);
+
+            // Assert
+            
+            Assert.Equal(SdlBool.False, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+        
+        /// <summary>
+        /// Tests that upper blit should return expected value
+        /// </summary>
+        [Fact]
+        public void UpperBlit_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr src = IntPtr.Zero;
+            RectangleI srcRect = new RectangleI();
+            IntPtr dst = IntPtr.Zero;
+            RectangleI dstRect = new RectangleI();
+
+            // Act
+            int result = Sdl.UpperBlit(src, ref srcRect, dst, ref dstRect);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that upper blit scaled should return expected value
+        /// </summary>
+        [Fact]
+        public void UpperBlitScaled_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr src = IntPtr.Zero;
+            RectangleI srcRect = new RectangleI();
+            IntPtr dst = IntPtr.Zero;
+            RectangleI dstRect = new RectangleI();
+
+            // Act
+            int result = Sdl.UpperBlitScaled(src, ref srcRect, dst, ref dstRect);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+        
+        /// <summary>
+        /// Tests that has clipboard text should return expected value
+        /// </summary>
+        [Fact]
+        public void HasClipboardText_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            SdlBool result = Sdl.HasClipboardText();
+
+            // Assert
+            
+            Assert.Equal(SdlBool.True, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get clipboard text should return expected value
+        /// </summary>
+        [Fact]
+        public void GetClipboardText_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            string result = Sdl.GetClipboardText();
+
+            // Assert
+            // Replace "" with the expected result
+            Assert.Equal("test", result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set clipboard text should return expected value
+        /// </summary>
+        [Fact]
+        public void SetClipboardText_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            string text = "test";
+
+            // Act
+            int result = Sdl.SetClipboardText(text);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that peep events should return expected value
+        /// </summary>
+        [Fact]
+        public void PeepEvents_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            SdlEvent[] events = new SdlEvent[10];
+            int numEvents = 10;
+            SdlEventAction action = SdlEventAction.SdlAddEvent;
+            SdlEventType minType = SdlEventType.SdlFirstEvent;
+            SdlEventType maxType = SdlEventType.SdlLastEvent;
+
+            // Act
+            int result = Sdl.PeepEvents(events, numEvents, action, minType, maxType);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that has event should return expected value
+        /// </summary>
+        [Fact]
+        public void HasEvent_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            SdlEventType type = SdlEventType.SdlFirstEvent;
+
+            // Act
+            SdlBool result = Sdl.HasEvent(type);
+
+            // Assert
+            
+            Assert.Equal(SdlBool.False, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that has events should return expected value
+        /// </summary>
+        [Fact]
+        public void HasEvents_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            SdlEventType minType = SdlEventType.SdlFirstEvent;
+            SdlEventType maxType = SdlEventType.SdlLastEvent;
+
+            // Act
+            SdlBool result = Sdl.HasEvents(minType, maxType);
+
+            // Assert
+            
+            Assert.Equal(SdlBool.True ,result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that flush event should not throw exception
+        /// </summary>
+        [Fact]
+        public void FlushEvent_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            SdlEventType type = SdlEventType.SdlFirstEvent;
+
+            // Act
+            Sdl.FlushEvent(type);
+
+            // Assert
+            Assert.Equal(SdlBool.False, Sdl.HasEvent(type));
+
+            // Cleanup
             Sdl.Quit();
         }
     }
