@@ -4040,19 +4040,6 @@ namespace Alis.Core.Graphic.Sdl2
         internal static extern int InternalLockTexture([NotNull] IntPtr texture, ref RectangleI rect, out IntPtr pixels, out int pitch);
 
         /// <summary>
-        ///     Sdl the lock texture using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="rect">The rect</param>
-        /// <param name="pixels">The pixels</param>
-        /// <param name="pitch">The pitch</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LockTexture", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalLockTexture([NotNull] IntPtr texture, [NotNull] IntPtr rect, out IntPtr pixels, out int pitch);
-
-        /// <summary>
         ///     Sdl the lock texture to surface using the specified texture
         /// </summary>
         /// <param name="texture">The texture</param>
