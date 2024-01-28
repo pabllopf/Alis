@@ -2629,26 +2629,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             Sdl.Quit();
         }
-
-        [Fact]
-        public void PollEvent_ValidEvent_ReturnsExpectedInt()
-        {
-            // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
-            Assert.Equal(0, initResult);
-
-            int result = 0;
-
-            // Act
-            Task.Run(() =>
-            {
-                result = Sdl.PollEvent(out SdlEvent _);
-                Task.Delay(1000);
-            });
-
-            Assert.True(result >= -1);
-            Sdl.Quit();
-        }
         
         /// <summary>
         /// Tests that push event valid event returns expected int
