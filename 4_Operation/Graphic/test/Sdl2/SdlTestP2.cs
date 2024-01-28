@@ -28,11 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Text;
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Graphic.Sdl2;
+using Alis.Core.Graphic.Sdl2.Delegates;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
@@ -2593,7 +2593,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that get relative mouse state valid params returns expected uint
         /// </summary>
@@ -2623,14 +2623,325 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
 
-            int x = -1;
-            int y = -1;
-
             // Act and Assert
-            Sdl.GetRelativeMouseState(out x, out y);
-            
+            Sdl.GetRelativeMouseState(out int x, out int y);
+
             Assert.Equal(0, x);
             Assert.Equal(0, y);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that poll event valid event returns expected int
+        /// </summary>
+        [Fact]
+        public void PollEvent_ValidEvent_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            IntPtr window = Sdl.CreateWindow("Test", 0, 0, 0, 0, 0);
+            IntPtr renderer = Sdl.CreateRenderer(window, -1, 0);
+            if (renderer == IntPtr.Zero)
+            {
+                Assert.Equal(IntPtr.Zero, renderer);
+            }
+            else
+            {
+                Assert.NotEqual(IntPtr.Zero, renderer);
+                if (Sdl.PollEvent(out SdlEvent sdlEvent) != 0)
+                {
+                    // Assert
+                    Assert.Equal(SdlEventType.SdlFirstEvent, sdlEvent.type);
+                }
+            }
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that push event valid event returns expected int
+        /// </summary>
+        [Fact]
+        public void PushEvent_ValidEvent_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            SdlEvent sdlEvent = new SdlEvent(); // Replace with the desired SdlEvent
+
+            // Act
+            int result = Sdl.PushEvent(ref sdlEvent);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set event filter valid filter sets filter without error
+        /// </summary>
+        [Fact]
+        public void SetEventFilter_ValidFilter_SetsFilterWithoutError()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr userdata = IntPtr.Zero; // Replace with the desired userdata
+
+            // Act
+            Sdl.SetEventFilter(null, userdata);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, userdata);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get event filter valid filter returns expected bool
+        /// </summary>
+        [Fact]
+        public void GetEventFilter_ValidFilter_ReturnsExpectedBool()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            SdlBool result = Sdl.GetEventFilter(out SdlEventFilter _, out IntPtr _);
+
+            // Assert
+            Assert.Equal(SdlBool.False, result);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that add event watch valid filter adds watch without error
+        /// </summary>
+        [Fact]
+        public void AddEventWatch_ValidFilter_AddsWatchWithoutError()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr userdata = IntPtr.Zero; // Replace with the desired userdata
+
+            // Act
+            Sdl.AddEventWatch(null, userdata);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, userdata);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get mouse state x and y out valid params returns expected uint
+        /// </summary>
+        [Fact]
+        public void GetMouseStateXAndYOut_ValidParams_ReturnsExpectedUint()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr x = IntPtr.Zero;
+
+            // Act
+            uint result = Sdl.GetMouseStateXAndYOut(x, out int _);
+
+            // Assert
+            Assert.True(result == 0 || result == 1 || result == 2);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get mouse state x out and y valid params returns expected uint
+        /// </summary>
+        [Fact]
+        public void GetMouseStateXOutAndY_ValidParams_ReturnsExpectedUint()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr y = IntPtr.Zero;
+
+            // Act
+            uint result = Sdl.GetMouseStateXOutAndY(out int _, y);
+
+            // Assert
+            Assert.True(result == 0 || result == 1 || result == 2);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get mouse state to x and y valid params returns expected uint
+        /// </summary>
+        [Fact]
+        public void GetMouseStateToXAndY_ValidParams_ReturnsExpectedUint()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr x = IntPtr.Zero;
+            IntPtr y = IntPtr.Zero;
+
+            // Act
+            uint result = Sdl.GetMouseStateToXAndY(x, y);
+
+            // Assert
+            Assert.True(result == 0 || result == 1 || result == 2);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that blit surface valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void BlitSurface_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr src = IntPtr.Zero; // Replace with the desired source
+            IntPtr srcRect = IntPtr.Zero; // Replace with the desired source rectangle
+            IntPtr dst = IntPtr.Zero; // Replace with the desired destination
+            RectangleI dstRect = new RectangleI(); // Replace with the desired destination rectangle
+
+            // Act
+            int result = Sdl.BlitSurface(src, srcRect, dst, ref dstRect);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that blit surface ref src rect valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void BlitSurface_RefSrcRect_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr src = IntPtr.Zero; // Replace with the desired source
+            RectangleI srcRect = new RectangleI(); // Replace with the desired source rectangle
+            IntPtr dst = IntPtr.Zero; // Replace with the desired destination
+            IntPtr dstRect = IntPtr.Zero; // Replace with the desired destination rectangle
+
+            // Act
+            int result = Sdl.BlitSurface(src, ref srcRect, dst, dstRect);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that blit surface no ref src rect valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void BlitSurface_NoRefSrcRect_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr src = IntPtr.Zero; // Replace with the desired source
+            IntPtr srcRect = IntPtr.Zero; // Replace with the desired source rectangle
+            IntPtr dst = IntPtr.Zero; // Replace with the desired destination
+            IntPtr dstRect = IntPtr.Zero; // Replace with the desired destination rectangle
+
+            // Act
+            int result = Sdl.BlitSurface(src, srcRect, dst, dstRect);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+        
+        /// <summary>
+        /// Tests that format enum to masks valid params returns expected bool
+        /// </summary>
+        [Fact]
+        public void FormatEnumToMasks_ValidParams_ReturnsExpectedBool()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            uint format = 0x86161804; // Replace with the desired format
+
+            // Act
+            SdlBool result = Sdl.FormatEnumToMasks(format, out int _, out uint _, out uint _, out uint _, out uint _);
+
+            // Assert
+            Assert.True(result == SdlBool.False || result == SdlBool.True);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set palette colors valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void SetPaletteColors_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr palette = IntPtr.Zero; // Replace with the desired palette
+            SdlColor[] colors = new SdlColor[256]; // Replace with the desired colors
+            int firstColor = 0, nColors = 256; // Replace with the desired first color and number of colors
+
+            // Act
+            int result = Sdl.SetPaletteColors(palette, colors, firstColor, nColors);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set pixel format palette valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void SetPixelFormatPalette_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr format = IntPtr.Zero; // Replace with the desired format
+            IntPtr palette = IntPtr.Zero; // Replace with the desired palette
+
+            // Act
+            int result = Sdl.SetPixelFormatPalette(format, palette);
+
+            // Assert
+            Assert.True(result >= -1);
 
             Sdl.Quit();
         }

@@ -831,27 +831,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        ///     Tests that test internal render get metal command encoder should return expected value
-        /// </summary>
-        [Fact]
-        public void TestInternalRenderGetMetalCommandEncoder_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
-            Assert.Equal(0, initResult);
-
-            IntPtr renderer = new IntPtr();
-
-            // Act
-            IntPtr result = Sdl.RenderGetMetalCommandEncoder(renderer);
-
-            // Assert
-            Assert.Equal(IntPtr.Zero, result);
-
-            Sdl.Quit();
-        }
-
-        /// <summary>
         ///     Tests that test internal set window position should not throw exception
         /// </summary>
         [Fact]

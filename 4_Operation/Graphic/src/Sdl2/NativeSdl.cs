@@ -567,28 +567,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalPollEvent(out SdlEvent sdlEvent);
-
-        /// <summary>
-        ///     Sdl the wait event using the specified  event
-        /// </summary>
-        /// <param name="sdlEvent">The event</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_WaitEvent", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalWaitEvent(out SdlEvent sdlEvent);
-
-        /// <summary>
-        ///     Sdl the wait event timeout using the specified  event
-        /// </summary>
-        /// <param name="sdlEvent">The event</param>
-        /// <param name="timeout">The timeout</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_WaitEventTimeout", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalWaitEventTimeout(out SdlEvent sdlEvent, [NotNull] int timeout);
-
+        
         /// <summary>
         ///     Sdl the push event using the specified  event
         /// </summary>
@@ -2207,61 +2186,6 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalGetPixelFormatName([NotNull] uint format);
         
-        /// <summary>
-        ///     Sdl the get rgba using the specified pixel
-        /// </summary>
-        /// <param name="pixel">The pixel</param>
-        /// <param name="format">The format</param>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        /// <param name="a">The </param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetRGBA", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalGetRGBA([NotNull] uint pixel, [NotNull] IntPtr format, out byte r, out byte g, out byte b, out byte a);
-
-        /// <summary>
-        ///     Sdl the map rgb using the specified format
-        /// </summary>
-        /// <param name="format">The format</param>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The uint</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_MapRGB", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern uint InternalMapRGB([NotNull] IntPtr format, byte r, [NotNull] byte g, [NotNull] byte b);
-
-        /// <summary>
-        ///     Sdl the map rgba using the specified format
-        /// </summary>
-        /// <param name="format">The format</param>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        /// <param name="a">The </param>
-        /// <returns>The uint</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_MapRGBA", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern uint InternalMapRGBA([NotNull] IntPtr format, [NotNull] byte r, [NotNull] byte g, [NotNull] byte b, [NotNull] byte a);
-
-        /// <summary>
-        ///     Sdl the masks to pixel format enum using the specified bpp
-        /// </summary>
-        /// <param name="bpp">The bpp</param>
-        /// <param name="rMask">The r mask</param>
-        /// <param name="gMask">The g mask</param>
-        /// <param name="bMask">The b mask</param>
-        /// <param name="aMask">The a mask</param>
-        /// <returns>The uint</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_MasksToPixelFormatEnum", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern uint InternalMasksToPixelFormatEnum([NotNull] int bpp, [NotNull] uint rMask, [NotNull] uint gMask, [NotNull] uint bMask, [NotNull] uint aMask);
-
         /// <summary>
         ///     Sdl the pixel format enum to masks using the specified format
         /// </summary>
@@ -4837,27 +4761,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalGetRenderTarget([NotNull] IntPtr renderer);
-
-        /// <summary>
-        ///     Sdl the render get metal layer using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_RenderGetMetalLayer", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalRenderGetMetalLayer([NotNull] IntPtr renderer);
-
-        /// <summary>
-        ///     Sdl the render get metal command encoder using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_RenderGetMetalCommandEncoder", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalRenderGetMetalCommandEncoder([NotNull] IntPtr renderer);
-
+        
         /// <summary>
         ///     Sdl the set window position using the specified window
         /// </summary>
