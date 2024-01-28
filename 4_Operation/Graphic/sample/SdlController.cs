@@ -160,7 +160,7 @@ namespace Alis.Core.Graphic.Sample
             SdlWindowFlags flags = SdlWindowFlags.WindowResizable | SdlWindowFlags.WindowShown;
 
             // Creates a new SDL window at the center of the screen with the given width and height.
-            IntPtr window = Sdl.CreateWindow("Sample", Sdl.WindowPosCentered, Sdl.WindowPosCentered, Width, Height, flags);
+            IntPtr window = Sdl.CreateWindow("Sample", (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, Width, Height, flags);
 
             // Check if the window was created successfully.
             if (window == IntPtr.Zero)

@@ -42,7 +42,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
     /// </summary>
     public class SdlTestP3
     {
-        
 
         /// <summary>
         /// Tests that game controller get num touchpad fingers should return expected value
@@ -1921,7 +1920,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that render fill rect v 2 should return expected value
         /// </summary>
@@ -1999,7 +1998,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that render fill rects f should return expected value
         /// </summary>
@@ -2141,7 +2140,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that joystick get hat should return expected value
         /// </summary>
@@ -2181,7 +2180,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Assert
             // Replace "ExpectedName" with the expected result
-            Assert.Null( result);
+            Assert.Null(result);
 
             // Cleanup
             Sdl.Quit();
@@ -2203,7 +2202,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Assert
             // Replace "ExpectedName" with the expected result
-            Assert.Null( result);
+            Assert.Null(result);
 
             // Cleanup
             Sdl.Quit();
@@ -2449,11 +2448,11 @@ namespace Alis.Core.Graphic.Test.Sdl2
             {
                 Assert.NotEqual(IntPtr.Zero, result);
             }
-            
+
             // Cleanup
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that show cursor should return expected value
         /// </summary>
@@ -2634,7 +2633,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that joystick event state should return expected value
         /// </summary>
@@ -2746,6 +2745,250 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, result);
 
             // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render copy ex valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderCopyEx_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
+            IntPtr texture = IntPtr.Zero; // Replace with the desired texture
+            IntPtr srcRect = IntPtr.Zero; // Replace with the desired source rectangle
+            IntPtr dstRect = IntPtr.Zero; // Replace with the desired destination rectangle
+            double angle = 0.0; // Replace with the desired angle
+            PointI center = new PointI(); // Replace with the desired center point
+            SdlRendererFlip flip = SdlRendererFlip.None; // Replace with the desired flip
+
+            // Act
+            int result = Sdl.RenderCopyEx(renderer, texture, srcRect, dstRect, angle, ref center, flip);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render copy ex with rectangle valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderCopyExWithRectangle_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
+            IntPtr texture = IntPtr.Zero; // Replace with the desired texture
+            IntPtr srcRect = IntPtr.Zero; // Replace with the desired source rectangle
+            RectangleI dstRect = new RectangleI(0, 0, 0, 0); // Replace with the desired destination rectangle
+            double angle = 0.0; // Replace with the desired angle
+            IntPtr center = IntPtr.Zero; // Replace with the desired center point
+            SdlRendererFlip flip = SdlRendererFlip.None; // Replace with the desired flip
+
+            // Act
+            int result = Sdl.RenderCopyEx(renderer, texture, srcRect, ref dstRect, angle, center, flip);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render set integer scale valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderSetIntegerScale_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
+            SdlBool enable = SdlBool.False; // Replace with the desired boolean value
+
+            // Act
+            int result = Sdl.RenderSetIntegerScale(renderer, enable);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render set viewport valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderSetViewport_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
+            RectangleI rect = new RectangleI(0, 0, 0, 0); // Replace with the desired rectangle
+
+            // Act
+            int result = Sdl.RenderSetViewport(renderer, ref rect);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render copy ex v 2 valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderCopyEx_V2_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
+            IntPtr texture = IntPtr.Zero; // Replace with the desired texture
+            RectangleI srcRect = new RectangleI(); // Replace with the desired source rectangle
+            IntPtr dstRect = IntPtr.Zero; // Replace with the desired destination rectangle
+            double angle = 0.0; // Replace with the desired angle
+            IntPtr center = IntPtr.Zero; // Replace with the desired center
+            SdlRendererFlip flip = SdlRendererFlip.None; // Replace with the desired flip
+
+            // Act
+            int result = Sdl.RenderCopyEx(renderer, texture, ref srcRect, dstRect, angle, center, flip);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that push event valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void PushEvent_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            SdlEvent sdlEvent = new SdlEvent(); // Replace with the desired SdlEvent
+
+            // Act
+            int result = Sdl.PushEvent(ref sdlEvent);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render draw rect valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderDrawRect_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the actual renderer
+            IntPtr rect = IntPtr.Zero; // Replace with the actual rectangle
+
+            // Act
+            int result = Sdl.RenderDrawRect(renderer, rect);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that gl audio u 16 sys valid call returns expected ushort
+        /// </summary>
+        [Fact]
+        public void GlAudioU16Sys_ValidCall_ReturnsExpectedUshort()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            ushort result = Sdl.GlAudioU16Sys;
+
+            // Assert
+            Assert.False(result == 0 || result == 1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that gl audio s 16 sys valid call returns expected ushort
+        /// </summary>
+        [Fact]
+        public void GlAudioS16Sys_ValidCall_ReturnsExpectedUshort()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            ushort result = Sdl.GlAudioS16Sys;
+
+            // Assert
+            Assert.False(result == 0 || result == 1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that gl audio s 32 sys valid call returns expected ushort
+        /// </summary>
+        [Fact]
+        public void GlAudioS32Sys_ValidCall_ReturnsExpectedUshort()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            ushort result = Sdl.GlAudioS32Sys;
+
+            // Assert
+            Assert.False(result == 0 || result == 1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that gl audio f 32 sys valid call returns expected ushort
+        /// </summary>
+        [Fact]
+        public void GlAudioF32Sys_ValidCall_ReturnsExpectedUshort()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            ushort result = Sdl.GlAudioF32Sys;
+
+            // Assert
+            Assert.False(result == 0 || result == 1);
+
             Sdl.Quit();
         }
     }

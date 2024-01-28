@@ -41,12 +41,12 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The type
         /// </summary>
-        [FieldOffset(0)] public readonly SdlEventType type;
+        [FieldOffset(0)] public SdlEventType type;
 
         /// <summary>
         ///     The type sharp
         /// </summary>
-        [FieldOffset(0)] public readonly SdlEventType typeFSharp;
+        [FieldOffset(0)] public SdlEventType typeFSharp;
 
         /// <summary>
         ///     The display

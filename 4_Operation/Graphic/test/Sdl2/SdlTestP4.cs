@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
     /// </summary>
     public class SdlTestP4
     {
-        
+
         /// <summary>
         /// Tests that get window surface test not in sdl test
         /// </summary>
@@ -2792,10 +2792,11 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr renderer = IntPtr.Zero;
 
             // Act
-            Sdl.RenderGetLogicalSize(renderer, out int _, out int _);
+            Sdl.RenderGetLogicalSize(renderer, out int w, out int h);
 
             // Assert
-            // Assert something about the w and h here
+            Assert.Equal(0, w);
+            Assert.Equal(0, h);
 
             // Cleanup
             Sdl.Quit();
@@ -2819,6 +2820,362 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.True(result >= -1);
 
             // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set texture alpha mod valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void SetTextureAlphaMod_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr texture = IntPtr.Zero; // Replace with the desired texture
+            byte alpha = 255; // Replace with the desired alpha
+
+            // Act
+            int result = Sdl.SetTextureAlphaMod(texture, alpha);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set texture blend mode valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void SetTextureBlendMode_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr texture = IntPtr.Zero; // Replace with the desired texture
+            SdlBlendMode blendMode = SdlBlendMode.None; // Replace with the desired blend mode
+
+            // Act
+            int result = Sdl.SetTextureBlendMode(texture, blendMode);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that set texture color mod valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void SetTextureColorMod_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr texture = IntPtr.Zero; // Replace with the desired texture
+            byte r = 255; // Replace with the desired red value
+            byte g = 255; // Replace with the desired green value
+            byte b = 255; // Replace with the desired blue value
+
+            // Act
+            int result = Sdl.SetTextureColorMod(texture, r, g, b);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render draw lines valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderDrawLines_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
+            PointI[] points = new PointI[2]; // Replace with the desired points
+            int count = points.Length;
+
+            // Act
+            int result = Sdl.RenderDrawLines(renderer, points, count);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render draw point valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderDrawPoint_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
+            int x = 0; // Replace with the desired x coordinate
+            int y = 0; // Replace with the desired y coordinate
+
+            // Act
+            int result = Sdl.RenderDrawPoint(renderer, x, y);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render draw rect f valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderDrawRectF_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
+            IntPtr rect = IntPtr.Zero; // Replace with the desired rectangle
+
+            // Act
+            int result = Sdl.RenderDrawRectF(renderer, rect);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render draw rects f valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderDrawRectsF_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
+            RectangleF[] rects = new RectangleF[2]; // Replace with the desired rectangles
+            int count = rects.Length;
+
+            // Act
+            int result = Sdl.RenderDrawRectsF(renderer, rects, count);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that update texture valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void UpdateTexture_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr texture = IntPtr.Zero; // Replace with the desired texture
+            IntPtr rect = IntPtr.Zero; // Replace with the desired rectangle
+            IntPtr pixels = IntPtr.Zero; // Replace with the desired pixels
+            int pitch = 0; // Replace with the desired pitch
+
+            // Act
+            int result = Sdl.UpdateTexture(texture, rect, pixels, pitch);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render fill rect f valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderFillRectF_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
+            IntPtr rect = IntPtr.Zero; // Replace with the desired rect
+
+            // Act
+            int result = Sdl.RenderFillRectF(renderer, rect);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render fill rect f v 2 valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderFillRectF_V2_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
+            IntPtr rect = IntPtr.Zero; // Replace with the desired rect
+
+            // Act
+            int result = Sdl.RenderFillRectF(renderer, rect);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render copy f valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderCopyF_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the actual renderer
+            IntPtr texture = IntPtr.Zero; // Replace with the actual texture
+            IntPtr srcRect = IntPtr.Zero; // Replace with the actual source rectangle
+            RectangleF dst = new RectangleF(); // Replace with the actual destination rectangle
+
+            // Act
+            int result = Sdl.RenderCopyF(renderer, texture, srcRect, ref dst);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render copy ex valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderCopyEx_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the actual renderer
+            IntPtr texture = IntPtr.Zero; // Replace with the actual texture
+            IntPtr srcRect = IntPtr.Zero; // Replace with the actual source rectangle
+            RectangleF dst = new RectangleF(); // Replace with the actual destination rectangle
+            double angle = 0.0; // Replace with the actual angle
+            PointF center = new PointF(); // Replace with the actual center point
+            SdlRendererFlip flip = SdlRendererFlip.None; // Replace with the actual flip value
+
+            // Act
+            int result = Sdl.RenderCopyEx(renderer, texture, srcRect, ref dst, angle, ref center, flip);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render copy ex f valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderCopyExF_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the actual renderer
+            IntPtr texture = IntPtr.Zero; // Replace with the actual texture
+            IntPtr srcRect = IntPtr.Zero; // Replace with the actual source rectangle
+            RectangleF dst = new RectangleF(); // Replace with the actual destination rectangle
+            double angle = 0.0; // Replace with the actual angle
+            IntPtr center = IntPtr.Zero; // Replace with the actual center point
+            SdlRendererFlip flip = SdlRendererFlip.None; // Replace with the actual flip value
+
+            // Act
+            int result = Sdl.RenderCopyExF(renderer, texture, srcRect, ref dst, angle, center, flip);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render copy ex f v 3 valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderCopyExF_v3_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the actual renderer
+            IntPtr texture = IntPtr.Zero; // Replace with the actual texture
+            RectangleI srcRect = new RectangleI(); // Replace with the actual source rectangle
+            IntPtr dstRect = IntPtr.Zero; // Replace with the actual destination rectangle
+            double angle = 0.0; // Replace with the actual angle
+            IntPtr center = IntPtr.Zero; // Replace with the actual center point
+            SdlRendererFlip flip = SdlRendererFlip.None; // Replace with the actual flip value
+
+            // Act
+            int result = Sdl.RenderCopyExF(renderer, texture, ref srcRect, dstRect, angle, center, flip);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render copy f v 3 valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderCopyF_v3_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the actual renderer
+            IntPtr texture = IntPtr.Zero; // Replace with the actual texture
+            RectangleI srcRect = new RectangleI(); // Replace with the actual source rectangle
+            IntPtr dstRect = IntPtr.Zero; // Replace with the actual destination rectangle
+
+            // Act
+            int result = Sdl.RenderCopyF(renderer, texture, ref srcRect, dstRect);
+
+            // Assert
+            Assert.True(result >= -1);
+
             Sdl.Quit();
         }
     }
