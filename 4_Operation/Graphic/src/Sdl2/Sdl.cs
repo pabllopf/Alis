@@ -3198,15 +3198,18 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         /// <param name="pixel">The pixel</param>
         /// <param name="format">The format</param>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        /// <param name="a">The </param>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void GetRgba([NotNull] uint pixel, [NotNull] IntPtr format, out byte r, out byte g, out byte b, out byte a)
+        public static SdlColor GetRgba([NotNull] uint pixel, [NotNull] IntPtr format)
         {
-            NativeSdl.InternalGetRGBA(pixel, format, out r, out g, out b, out a);
+            Validator.ValidateInput(format);
+            Validator.ValidateInput(pixel);
+            NativeSdl.InternalGetRGBA(pixel, format, out byte r, out byte g, out byte b, out byte a);
+            Validator.ValidateOutput(r);
+            Validator.ValidateOutput(g);
+            Validator.ValidateOutput(b);
+            Validator.ValidateOutput(a);
+            return new SdlColor(r, g, b, a);
         }
 
         /// <summary>
@@ -4682,7 +4685,13 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickNumHats([NotNull] IntPtr joystick) => NativeSdl.InternalJoystickNumHats(joystick);
+        public static int JoystickNumHats([NotNull] IntPtr joystick)
+        {
+            Validator.ValidateInput(joystick);
+            int result = NativeSdl.InternalJoystickNumHats(joystick);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Joysticks the open using the specified device index
@@ -4691,7 +4700,13 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr JoystickOpen([NotNull] int deviceIndex) => NativeSdl.InternalJoystickOpen(deviceIndex);
+        public static IntPtr JoystickOpen([NotNull] int deviceIndex)
+        {
+            Validator.ValidateInput(deviceIndex);
+            IntPtr result = NativeSdl.InternalJoystickOpen(deviceIndex);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Joysticks the update

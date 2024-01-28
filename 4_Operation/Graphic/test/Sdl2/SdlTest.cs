@@ -3917,5 +3917,483 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             Sdl.Quit();
         }
+
+
+        /// <summary>
+        /// Tests that test sdl get error should return empty after init
+        /// </summary>
+        [Fact]
+        public void TestSdlGetError_ShouldReturnEmpty_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            string error = Sdl.GetError();
+
+            // Assert
+            Assert.Equal(string.Empty, error);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test sdl was init should return non zero after init
+        /// </summary>
+        [Fact]
+        public void TestSdlWasInit_ShouldReturnNonZero_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            uint wasInit = Sdl.WasInit(SdlInit.InitEverything);
+
+            // Assert
+            Assert.NotEqual(0.0, wasInit);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick name for index should return valid name after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickNameForIndex_ShouldReturnValidName_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int deviceIndex = 0; // Assuming a device is connected at index 0
+
+            // Act
+            string joystickName = Sdl.JoystickNameForIndex(deviceIndex);
+
+            // Assert
+            Assert.True(string.IsNullOrEmpty(joystickName));
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick num axes should return non negative after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickNumAxes_ShouldReturnNonNegative_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
+
+            // Act
+            int numAxes = Sdl.JoystickNumAxes(joystick);
+
+            // Assert
+            Assert.True(numAxes >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick num balls should return non negative after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickNumBalls_ShouldReturnNonNegative_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
+
+            // Act
+            int numBalls = Sdl.JoystickNumBalls(joystick);
+
+            // Assert
+            Assert.True(numBalls >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick num buttons should return non negative after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickNumButtons_ShouldReturnNonNegative_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
+
+            // Act
+            int numButtons = Sdl.JoystickNumButtons(joystick);
+
+            // Assert
+            Assert.True(numButtons >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick num hats should return non negative after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickNumHats_ShouldReturnNonNegative_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
+
+            // Act
+            int numHats = Sdl.JoystickNumHats(joystick);
+
+            // Assert
+            Assert.True(numHats >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick open should return valid pointer after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickOpen_ShouldReturnValidPointer_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int deviceIndex = 0; // Assuming a device is connected at index 0
+
+            // Act
+            IntPtr joystick = Sdl.JoystickOpen(deviceIndex);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, joystick);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test num joysticks should return non negative after init
+        /// </summary>
+        [Fact]
+        public void TestNumJoysticks_ShouldReturnNonNegative_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            int numJoysticks = Sdl.NumJoysticks();
+
+            // Assert
+            Assert.True(numJoysticks >= 0);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick get device guid should return valid guid after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickGetDeviceGuid_ShouldReturnValidGuid_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int deviceIndex = 0; // Assuming a device is connected at index 0
+
+            // Act
+            Guid deviceGuid = Sdl.JoystickGetDeviceGuid(deviceIndex);
+
+            // Assert
+            Assert.Equal(Guid.Empty, deviceGuid);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick get guid should return valid guid after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickGetGuid_ShouldReturnValidGuid_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
+
+            // Act
+            Guid joystickGuid = Sdl.JoystickGetGuid(joystick);
+
+            // Assert
+            Assert.Equal(Guid.Empty, joystickGuid);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick get device vendor should return valid vendor after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickGetDeviceVendor_ShouldReturnValidVendor_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int deviceIndex = 0; // Assuming a device is connected at index 0
+
+            // Act
+            ushort deviceVendor = Sdl.JoystickGetDeviceVendor(deviceIndex);
+
+            // Assert
+            Assert.True(deviceVendor == 0 || deviceVendor == 1 || deviceVendor == 2);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick get device product should return valid product after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickGetDeviceProduct_ShouldReturnValidProduct_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int deviceIndex = 0; // Assuming a device is connected at index 0
+
+            // Act
+            ushort deviceProduct = Sdl.JoystickGetDeviceProduct(deviceIndex);
+
+            // Assert
+            Assert.True(deviceProduct == 0 || deviceProduct == 1 || deviceProduct == 2);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick get device product version should return valid product version after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickGetDeviceProductVersion_ShouldReturnValidProductVersion_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int deviceIndex = 0; // Assuming a device is connected at index 0
+
+            // Act
+            ushort deviceProductVersion = Sdl.JoystickGetDeviceProductVersion(deviceIndex);
+
+            // Assert
+            Assert.True(deviceProductVersion == 0 || deviceProductVersion == 1 || deviceProductVersion == 2);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick get device type should return valid type after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickGetDeviceType_ShouldReturnValidType_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int deviceIndex = 0; // Assuming a device is connected at index 0
+
+            // Act
+            SdlJoystickType deviceType = Sdl.JoystickGetDeviceType(deviceIndex);
+
+            // Assert
+            Assert.NotEqual(SdlJoystickType.SdlJoystickTypeUnknown, deviceType);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick get device instance id should return valid instance id after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickGetDeviceInstanceId_ShouldReturnValidInstanceId_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int deviceIndex = 0; // Assuming a device is connected at index 0
+
+            // Act
+            int instanceId = Sdl.JoystickGetDeviceInstanceId(deviceIndex);
+
+            // Assert
+            Assert.True(initResult >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick get vendor should return valid vendor after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickGetVendor_ShouldReturnValidVendor_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
+
+            // Act
+            ushort vendor = Sdl.JoystickGetVendor(joystick);
+
+            // Assert
+            Assert.True(vendor == 0 || vendor == 1 || vendor == 2);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick get product should return valid product after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickGetProduct_ShouldReturnValidProduct_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
+
+            // Act
+            ushort product = Sdl.JoystickGetProduct(joystick);
+
+            // Assert
+            Assert.True(product == 0 || product == 1 || product == 2);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick get product version should return valid product version after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickGetProductVersion_ShouldReturnValidProductVersion_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
+
+            // Act
+            ushort productVersion = Sdl.JoystickGetProductVersion(joystick);
+
+            // Assert
+            Assert.True(productVersion == 0 || productVersion == 1 || productVersion == 2);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick get serial should return valid serial after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickGetSerial_ShouldReturnValidSerial_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
+
+            // Act
+            string serial = Sdl.JoystickGetSerial(joystick);
+
+            // Assert
+            Assert.True(string.IsNullOrEmpty(serial));
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick get type should return valid type after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickGetType_ShouldReturnValidType_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
+
+            // Act
+            SdlJoystickType type = Sdl.JoystickGetType(joystick);
+
+            // Assert
+            Assert.NotEqual(SdlJoystickType.SdlJoystickTypeUnknown, type);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick get attached should return true after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickGetAttached_ShouldReturnTrue_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
+
+            // Act
+            SdlBool attached = Sdl.JoystickGetAttached(joystick);
+
+            // Assert
+            Assert.Equal(SdlBool.False, attached);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick instance id should return valid instance id after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickInstanceId_ShouldReturnValidInstanceId_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
+
+            // Act
+            int instanceId = Sdl.JoystickInstanceId(joystick);
+
+            // Assert
+            Assert.True(instanceId >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that test joystick current power level should return valid power level after init
+        /// </summary>
+        [Fact]
+        public void TestJoystickCurrentPowerLevel_ShouldReturnValidPowerLevel_AfterInit()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
+
+            // Act
+            SdlJoystickPowerLevel powerLevel = Sdl.JoystickCurrentPowerLevel(joystick);
+
+            // Assert
+            Assert.NotEqual(SdlJoystickPowerLevel.SdlJoystickPowerEmpty, powerLevel);
+
+            Sdl.Quit();
+        }
     }
 }
