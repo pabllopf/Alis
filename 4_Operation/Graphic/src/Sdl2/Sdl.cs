@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Mapping;
@@ -3835,6 +3836,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [ExcludeFromCodeCoverage]
         public static int PollEvent(out SdlEvent sdlEvent)
         {
             return NativeSdl.InternalPollEvent(out sdlEvent);
