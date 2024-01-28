@@ -513,15 +513,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalSetClipboardText([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string text);
-
-        /// <summary>
-        ///     Sdl the pump events
-        /// </summary>
-        [DllImport(NativeLibName, EntryPoint = "SDL_PumpEvents", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalPumpEvents();
-
+        
         /// <summary>
         ///     Sdl the peep events using the specified events
         /// </summary>
@@ -565,17 +557,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalFlushEvent(SdlEventType type);
-
-        /// <summary>
-        ///     Sdl the flush events using the specified min
-        /// </summary>
-        /// <param name="min">The min</param>
-        /// <param name="max">The max</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_FlushEvents", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalFlushEvents(SdlEventType min, SdlEventType max);
-
+        
         /// <summary>
         ///     Sdl the poll event using the specified  event
         /// </summary>
@@ -892,29 +874,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern uint InternalGetGlobalMouseState(out int x, out int y);
-
-        /// <summary>
-        ///     Sdl the get global mouse state using the specified x
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <returns>The int 32</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetGlobalMouseState", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern uint InternalGetGlobalMouseState([NotNull] IntPtr x, out int y);
-
-        /// <summary>
-        ///     Sdl the get global mouse state using the specified x
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <returns>The int 32</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetGlobalMouseState", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern uint InternalGetGlobalMouseState(out int x, [NotNull] IntPtr y);
-
+        
         /// <summary>
         ///     Sdl the get global mouse state using the specified x
         /// </summary>
@@ -2340,68 +2300,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalSetPixelFormatPalette([NotNull] IntPtr format, [NotNull] IntPtr palette);
-
-        /// <summary>
-        ///     Sdl the enclose points using the specified points
-        /// </summary>
-        /// <param name="points">The points</param>
-        /// <param name="count">The count</param>
-        /// <param name="clip">The clip</param>
-        /// <param name="result">The result</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_EnclosePoints", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalEnclosePoints([In] PointI[] points, [NotNull] int count, ref RectangleI clip, out RectangleI result);
-
-        /// <summary>
-        ///     Sdl the has intersection using the specified a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_HasIntersection", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalHasIntersection(ref RectangleI a, ref RectangleI b);
-
-        /// <summary>
-        ///     Sdl the intersect rect using the specified a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <param name="result">The result</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_IntersectRect", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalIntersectRect(ref RectangleI a, ref RectangleI b, out RectangleI result);
-
-        /// <summary>
-        ///     Sdl the intersect rect and line using the specified rect
-        /// </summary>
-        /// <param name="rect">The rect</param>
-        /// <param name="x1">The </param>
-        /// <param name="y1">The </param>
-        /// <param name="x2">The </param>
-        /// <param name="y2">The </param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_IntersectRectAndLine", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalIntersectRectAndLine(ref RectangleI rect, ref int x1, ref int y1, ref int x2, ref int y2);
-
-        /// <summary>
-        ///     Sdl the union rect using the specified a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <param name="result">The result</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_UnionRect", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalUnionRect(RectangleI a, RectangleI b, out RectangleI result);
-
+        
         /// <summary>
         ///     Sdl the blit surface using the specified src
         /// </summary>
@@ -2465,19 +2364,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalConvertSurface([NotNull] IntPtr src, [NotNull] IntPtr fmt, [NotNull] uint flags);
-
-        /// <summary>
-        ///     Sdl the convert surface format using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="pixelFormat">The pixel format</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_ConvertSurfaceFormat", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalConvertSurfaceFormat([NotNull] IntPtr src, [NotNull] uint pixelFormat, [NotNull] uint flags);
-
+        
         /// <summary>
         ///     Sdl the create rgb surface with format using the specified flags
         /// </summary>

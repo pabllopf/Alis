@@ -3567,8 +3567,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return NativeSdl.InternalMapRGB(format, r, g, b);
         }
-
-
+        
         /// <summary>
         ///     Maps the rgba using the specified format
         /// </summary>
@@ -3617,8 +3616,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return NativeSdl.InternalPixelFormatEnumToMasks(format, out bpp, out rMask, out gMask, out bMask, out aMask);
         }
-
-
+        
         /// <summary>
         ///     Sets the palette colors using the specified palette
         /// </summary>
@@ -3633,8 +3631,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return NativeSdl.InternalSetPaletteColors(palette, colors, firstColor, nColors);
         }
-
-
+        
         /// <summary>
         ///     Sets the pixel format palette using the specified format
         /// </summary>
@@ -3646,116 +3643,6 @@ namespace Alis.Core.Graphic.Sdl2
         public static int SetPixelFormatPalette([NotNull] IntPtr format, [NotNull] IntPtr palette)
         {
             return NativeSdl.InternalSetPixelFormatPalette(format, palette);
-        }
-
-
-        /// <summary>
-        ///     Sdl the point in rect using the specified p
-        /// </summary>
-        /// <param name="p">The </param>
-        /// <param name="r">The </param>
-        /// <returns>The sdl bool</returns>
-        public static SdlBool PointInRect(ref PointI p, ref RectangleI r)
-        {
-            return (p.x >= r.x) && (p.x < r.x + r.w) && (p.y >= r.y) && (p.y < r.y + r.h) ? SdlBool.True : SdlBool.False;
-        }
-
-        /// <summary>
-        ///     Encloses the points using the specified points
-        /// </summary>
-        /// <param name="points">The points</param>
-        /// <param name="count">The count</param>
-        /// <param name="clip">The clip</param>
-        /// <param name="result">The result</param>
-        /// <returns>The sdl bool</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool EnclosePoints([In] PointI[] points, [NotNull] int count, ref RectangleI clip, out RectangleI result)
-        {
-            return NativeSdl.InternalEnclosePoints(points, count, ref clip, out result);
-        }
-
-        /// <summary>
-        ///     Has the intersection using the specified a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The sdl bool</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool HasIntersection(ref RectangleI a, ref RectangleI b)
-        {
-            return NativeSdl.InternalHasIntersection(ref a, ref b);
-        }
-
-        /// <summary>
-        ///     Intersects the rect using the specified a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <param name="result">The result</param>
-        /// <returns>The sdl bool</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool IntersectRect(ref RectangleI a, ref RectangleI b, out RectangleI result)
-        {
-            return NativeSdl.InternalIntersectRect(ref a, ref b, out result);
-        }
-
-        /// <summary>
-        ///     Intersects the rect and line using the specified rect
-        /// </summary>
-        /// <param name="rect">The rect</param>
-        /// <param name="x1">The </param>
-        /// <param name="y1">The </param>
-        /// <param name="x2">The </param>
-        /// <param name="y2">The </param>
-        /// <returns>The sdl bool</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool IntersectRectAndLine(ref RectangleI rect, ref int x1, ref int y1, ref int x2, ref int y2)
-        {
-            return NativeSdl.InternalIntersectRectAndLine(ref rect, ref x1, ref y1, ref x2, ref y2);
-        }
-
-        /// <summary>
-        ///     Sdl the rect empty using the specified r
-        /// </summary>
-        /// <param name="r">The </param>
-        /// <returns>The sdl bool</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool RectEmpty(ref RectangleI r)
-        {
-            return r.w <= 0 || r.h <= 0 ? SdlBool.True : SdlBool.False;
-        }
-
-        /// <summary>
-        ///     Sdl the rect equals using the specified a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The sdl bool</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool RectEquals(ref RectangleI a, ref RectangleI b)
-        {
-            return (a.x == b.x) && (a.y == b.y) && (a.w == b.w) && (a.h == b.h) ? SdlBool.True : SdlBool.False;
-        }
-
-        /// <summary>
-        ///     Unions the rect using the specified a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <param name="result">The result</param>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void UnionRect(RectangleI a, RectangleI b, out RectangleI result)
-        {
-            Validator.ValidateInput(a);
-            Validator.ValidateInput(b);
-            NativeSdl.InternalUnionRect(a, b, out result);
         }
         
         /// <summary>
@@ -3861,21 +3748,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-
-        /// <summary>
-        ///     Converts the surface format using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="pixelFormat">The pixel format</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr ConvertSurfaceFormat([NotNull] IntPtr src, [NotNull] uint pixelFormat, [NotNull] uint flags)
-        {
-            return NativeSdl.InternalConvertSurfaceFormat(src, pixelFormat, flags);
-        }
-
+        
         /// <summary>
         ///     Creates the rgb surface with format using the specified flags
         /// </summary>
@@ -4223,17 +4096,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return NativeSdl.InternalSetClipboardText(text);
         }
-
-        /// <summary>
-        ///     Pumps the events
-        /// </summary>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void PumpEvents()
-        {
-            NativeSdl.InternalPumpEvents();
-        }
-
+        
         /// <summary>
         ///     Peeps the events using the specified events
         /// </summary>
@@ -4286,19 +4149,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             NativeSdl.InternalFlushEvent(type);
         }
-
-        /// <summary>
-        ///     Flushes the events using the specified min
-        /// </summary>
-        /// <param name="min">The min</param>
-        /// <param name="max">The max</param>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void FlushEvents(SdlEventType min, SdlEventType max)
-        {
-            NativeSdl.InternalFlushEvents(min, max);
-        }
-
+        
         /// <summary>
         ///     Polls the event using the specified sdl event
         /// </summary>
@@ -4715,33 +4566,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return NativeSdl.InternalGetGlobalMouseState(out x, out y);
         }
-
-        /// <summary>
-        ///     Gets the global mouse state using the specified x
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <returns>The uint</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint GetGlobalMouseStateXAndYOut([NotNull] IntPtr x, out int y)
-        {
-            return NativeSdl.InternalGetGlobalMouseState(x, out y);
-        }
-
-        /// <summary>
-        ///     Gets the global mouse state using the specified x
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <returns>The uint</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint GetGlobalMouseStateOutXAndY(out int x, [NotNull] IntPtr y)
-        {
-            return NativeSdl.InternalGetGlobalMouseState(out x, y);
-        }
-
+        
         /// <summary>
         ///     Gets the global mouse state using the specified x
         /// </summary>
