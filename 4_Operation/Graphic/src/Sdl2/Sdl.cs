@@ -47,56 +47,6 @@ namespace Alis.Core.Graphic.Sdl2
     public static class Sdl
     {
         /// <summary>
-        ///     The sdl window pos undefined mask
-        /// </summary>
-        public const int WindowPosUndefinedMask = 0x1FFF0000;
-
-        /// <summary>
-        ///     The sdl window pos centered mask
-        /// </summary>
-        public const int WindowPosCenteredMask = 0x2FFF0000;
-
-        /// <summary>
-        ///     The sdl window pos undefined
-        /// </summary>
-        public const int WindowPosUndefined = 0x1FFF0000;
-
-        /// <summary>
-        ///     The sdl window pos centered
-        /// </summary>
-        public const int WindowPosCentered = 0x2FFF0000;
-
-        /// <summary>
-        ///     The sdl sw surface
-        /// </summary>
-        public const uint SwSurface = 0x00000000;
-
-        /// <summary>
-        ///     The sdl pre alloc
-        /// </summary>
-        public const uint PreAlloc = 0x00000001;
-
-        /// <summary>
-        ///     The sdl rle accel
-        /// </summary>
-        public const uint RleAccel = 0x00000002;
-
-        /// <summary>
-        ///     The sdl dont free
-        /// </summary>
-        public const uint DontFree = 0x00000004;
-
-        /// <summary>
-        ///     The sdl pressed
-        /// </summary>
-        public const byte Pressed = 1;
-
-        /// <summary>
-        ///     The sdl released
-        /// </summary>
-        public const byte Released = 0;
-
-        /// <summary>
         ///     The sdl text editing event text size
         /// </summary>
         public const int TextEditingEventTextSize = 32;
@@ -155,168 +105,7 @@ namespace Alis.Core.Graphic.Sdl2
         ///     The sdl button x2
         /// </summary>
         public const uint ButtonX2 = 5;
-
-        /// <summary>
-        ///     The max value
-        /// </summary>
-        public const uint TouchMouseId = uint.MaxValue;
-
-        /// <summary>
-        ///     The sdl hat centered
-        /// </summary>
-        public const byte HatCentered = 0x00;
-
-        /// <summary>
-        ///     The sdl hat up
-        /// </summary>
-        public const byte HatUp = 0x01;
-
-        /// <summary>
-        ///     The sdl hat right
-        /// </summary>
-        public const byte HatRight = 0x02;
-
-        /// <summary>
-        ///     The sdl hat down
-        /// </summary>
-        public const byte HatDown = 0x04;
-
-        /// <summary>
-        ///     The sdl hat left
-        /// </summary>
-        public const byte HatLeft = 0x08;
-
-        /// <summary>
-        ///     The sdl hat up
-        /// </summary>
-        public const byte HatRightUp = HatRight | HatUp;
-
-        /// <summary>
-        ///     The sdl hat down
-        /// </summary>
-        public const byte HatRightDown = HatRight | HatDown;
-
-        /// <summary>
-        ///     The sdl hat up
-        /// </summary>
-        public const byte HatLeftUp = HatLeft | HatUp;
-
-        /// <summary>
-        ///     The sdl hat down
-        /// </summary>
-        public const byte HatLeftDown = HatLeft | HatDown;
-
-
-        /// <summary>
-        ///     The sdl iphone max g force
-        /// </summary>
-        public const float IphoneMaxGForce = 5.0f;
-
-        /// <summary>
-        ///     The sdl haptic constant
-        /// </summary>
-        public const ushort HapticConstant = 1 << 0;
-
-        /// <summary>
-        ///     The sdl haptic sine
-        /// </summary>
-        public const ushort HapticSine = 1 << 1;
-
-        /// <summary>
-        ///     The sdl haptic left right
-        /// </summary>
-        public const ushort HapticLeftRight = 1 << 2;
-
-        /// <summary>
-        ///     The sdl haptic triangle
-        /// </summary>
-        public const ushort HapticTriangle = 1 << 3;
-
-        /// <summary>
-        ///     The sdl haptic saw tooth up
-        /// </summary>
-        public const ushort HapticSawToothUp = 1 << 4;
-
-        /// <summary>
-        ///     The sdl haptic saw tooth down
-        /// </summary>
-        public const ushort HapticSawToothDown = 1 << 5;
-
-        /// <summary>
-        ///     The sdl haptic spring
-        /// </summary>
-        public const ushort HapticSpring = 1 << 7;
-
-        /// <summary>
-        ///     The sdl haptic damper
-        /// </summary>
-        public const ushort HapticDamper = 1 << 8;
-
-        /// <summary>
-        ///     The sdl haptic inertia
-        /// </summary>
-        public const ushort HapticInertia = 1 << 9;
-
-        /// <summary>
-        ///     The sdl haptic friction
-        /// </summary>
-        public const ushort HapticFriction = 1 << 10;
-
-        /// <summary>
-        ///     The sdl haptic custom
-        /// </summary>
-        public const ushort HapticCustom = 1 << 11;
-
-        /// <summary>
-        ///     The sdl haptic gain
-        /// </summary>
-        public const ushort HapticGain = 1 << 12;
-
-        /// <summary>
-        ///     The sdl haptic auto center
-        /// </summary>
-        public const ushort HapticAutoCenter = 1 << 13;
-
-        /// <summary>
-        ///     The sdl haptic status
-        /// </summary>
-        public const ushort HapticStatus = 1 << 14;
-
-        /// <summary>
-        ///     The sdl haptic pause
-        /// </summary>
-        public const ushort HapticPauseVar = 1 << 15;
-
-        /// <summary>
-        ///     The sdl haptic polar
-        /// </summary>
-        public const byte HapticPolar = 0;
-
-        /// <summary>
-        ///     The sdl haptic cartesian
-        /// </summary>
-        public const byte HapticCartesian = 1;
-
-        /// <summary>
-        ///     The sdl haptic spherical
-        /// </summary>
-        public const byte HapticSpherical = 2;
-
-        /// <summary>
-        ///     The sdl haptic steering axis
-        /// </summary>
-        public const byte HapticSteeringAxis = 3;
-
-        /// <summary>
-        ///     The sdl haptic infinity
-        /// </summary>
-        public const uint HapticInfinity = 4294967295U;
-
-        /// <summary>
-        ///     The sdl standard gravity
-        /// </summary>
-        public const float StandardGravity = 9.80665f;
-
+        
         /// <summary>
         ///     The sdl audio mask bit size
         /// </summary>
@@ -688,7 +477,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         public static int WindowPosUndefinedDisplay([NotNull] int x)
         {
-            return WindowPosUndefinedMask | x;
+            return (int) (WindowPos.WindowPosUndefinedMask | (WindowPos) x);
         }
 
         /// <summary>
@@ -698,7 +487,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The bool</returns>
         public static bool WindowPosIsUndefined([NotNull] int x)
         {
-            return (x & 0xFFFF0000) == WindowPosUndefinedMask;
+            return (x & 0xFFFF0000) == (long) WindowPos.WindowPosUndefinedMask;
         }
 
         /// <summary>
@@ -708,7 +497,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         public static int WindowPosCenteredDisplay([NotNull] int x)
         {
-            return WindowPosCenteredMask | x;
+            return (int) (WindowPos.WindowPosCenteredMask | (WindowPos) x);
         }
 
         /// <summary>
@@ -718,7 +507,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The bool</returns>
         public static bool WindowPosIsCentered([NotNull] int x)
         {
-            return (x & 0xFFFF0000) == WindowPosCenteredMask;
+            return (x & 0xFFFF0000) == (long) WindowPos.WindowPosCenteredMask;
         }
 
         /// <summary>
@@ -3032,8 +2821,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return NativeSdl.InternalRenderDrawRectF(renderer, rect);
         }
-
-
+        
         /// <summary>
         ///     Renders the draw rects f using the specified renderer
         /// </summary>
@@ -3230,8 +3018,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return NativeSdl.InternalRenderSetClipRect(renderer, rect);
         }
-
-
+        
         /// <summary>
         ///     Renders the set logical size using the specified renderer
         /// </summary>
@@ -3287,8 +3074,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return NativeSdl.InternalRenderSetViewport(renderer, ref rect);
         }
-
-
+        
         /// <summary>
         ///     Sets the render draw blend mode using the specified renderer
         /// </summary>
@@ -3674,26 +3460,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return NativeSdl.InternalCreateRGBSurfaceWithFormat(flags, width, height, depth, format);
         }
-
-
-        /// <summary>
-        ///     Creates the rgb surface with format from using the specified pixels
-        /// </summary>
-        /// <param name="pixels">The pixels</param>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="depth">The depth</param>
-        /// <param name="pitch">The pitch</param>
-        /// <param name="format">The format</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr CreateRgbSurfaceWithFormatFrom([NotNull] IntPtr pixels, [NotNull] int width, [NotNull] int height, [NotNull] int depth, [NotNull] int pitch, [NotNull] uint format)
-        {
-            return NativeSdl.InternalCreateRGBSurfaceWithFormatFrom(pixels, width, height, depth, pitch, format);
-        }
-
-
+        
         /// <summary>
         ///     Fills the rect using the specified dst
         /// </summary>
@@ -4059,9 +3826,10 @@ namespace Alis.Core.Graphic.Sdl2
         {
             NativeSdl.InternalFlushEvent(type);
         }
-        
+
+
         /// <summary>
-        ///     Polls the event using the specified sdl event
+        /// Polls the event using the specified sdl event
         /// </summary>
         /// <param name="sdlEvent">The sdl event</param>
         /// <returns>The int</returns>
@@ -4071,7 +3839,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return NativeSdl.InternalPollEvent(out sdlEvent);
         }
-        
+
         /// <summary>
         ///     Pushes the event using the specified sdl event
         /// </summary>
@@ -4095,33 +3863,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             NativeSdl.InternalSetEventFilter(filter, userdata);
         }
-
-        /// <summary>
-        ///     Sdl the get event filter using the specified filter
-        /// </summary>
-        /// <param name="filter">The filter</param>
-        /// <param name="userdata">The userdata</param>
-        /// <returns>The ret val</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool GetEventFilter(out SdlEventFilter filter, out IntPtr userdata)
-        {
-            SdlBool val = NativeSdl.InternalGetEventFilter(out IntPtr result, out userdata);
-            if (result != IntPtr.Zero)
-            {
-                filter = (SdlEventFilter) Marshal.GetDelegateForFunctionPointer(
-                    result,
-                    typeof(SdlEventFilter)
-                );
-            }
-            else
-            {
-                filter = null;
-            }
-
-            return val;
-        }
-
+        
         /// <summary>
         ///     Adds the event watch using the specified filter
         /// </summary>

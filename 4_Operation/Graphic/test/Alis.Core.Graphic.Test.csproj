@@ -14,11 +14,7 @@
         <PublishReadyToRunShowWarnings>false</PublishReadyToRunShowWarnings>
         <IsTrimmable>false</IsTrimmable>
     </PropertyGroup>
-
-    <ItemGroup>
-        <Folder Include="Sdl2\Enums\"/>
-    </ItemGroup>
-
+    
     <ItemGroup>
         <None Update="Assets\AudioSample.wav">
             <LinkBase>Assets/</LinkBase>

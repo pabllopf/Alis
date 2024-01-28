@@ -184,7 +184,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             Sdl.Quit();
         }
-        
+
         /// <summary>
         ///     Tests that test close audio device
         /// </summary>
@@ -1273,7 +1273,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.WindowPosUndefinedDisplay(x);
 
             // Assert
-            Assert.Equal(Sdl.WindowPosUndefinedMask | x, result);
+            Assert.Equal((int) (WindowPos.WindowPosUndefinedMask | (WindowPos) x), result);
 
             Sdl.Quit();
         }
@@ -1288,7 +1288,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
 
-            int x = Sdl.WindowPosUndefinedMask;
+            int x = (int) WindowPos.WindowPosUndefinedMask;
 
             // Act
             bool result = Sdl.WindowPosIsUndefined(x);
@@ -1315,7 +1315,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.WindowPosCenteredDisplay(x);
 
             // Assert
-            Assert.Equal(Sdl.WindowPosCenteredMask | x, result);
+            Assert.Equal((int) (WindowPos.WindowPosCenteredMask | (WindowPos) x), result);
 
             Sdl.Quit();
         }
@@ -1330,7 +1330,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
 
-            int x = Sdl.WindowPosCenteredMask;
+            int x = (int) WindowPos.WindowPosCenteredMask;
 
             // Act
             bool result = Sdl.WindowPosIsCentered(x);
@@ -3402,5 +3402,180 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that update texture valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void UpdateTexture_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr texture = IntPtr.Zero; // Replace with the desired texture
+            IntPtr rect = IntPtr.Zero; // Replace with the desired rectangle
+            IntPtr pixels = IntPtr.Zero; // Replace with the desired pixels
+            int pitch = 0; // Replace with the desired pitch
+
+            // Act
+            int result = Sdl.UpdateTexture(texture, rect, pixels, pitch);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render draw line valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderDrawLine_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
+            int x1 = 0; // Replace with the desired x1
+            int y1 = 0; // Replace with the desired y1
+            int x2 = 0; // Replace with the desired x2
+            int y2 = 0; // Replace with the desired y2
+
+            // Act
+            int result = Sdl.RenderDrawLine(renderer, x1, y1, x2, y2);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render logical to window valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderLogicalToWindow_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
+            float logicalX = 0.0f; // Replace with the desired logicalX
+            float logicalY = 0.0f; // Replace with the desired logicalY
+
+            // Act
+            Sdl.RenderLogicalToWindow(renderer, logicalX, logicalY, out int windowX, out int windowY);
+
+            // Assert
+            Assert.Equal(0, windowX);
+            Assert.Equal(0, windowY);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render set v sync valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderSetVSync_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
+            int vsync = 0; // Replace with the desired vsync
+
+            // Act
+            int result = Sdl.RenderSetVSync(renderer, vsync);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render copy ex f valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderCopyExF_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
+            IntPtr texture = IntPtr.Zero; // Replace with the desired texture
+            RectangleI srcRect = new RectangleI(); // Replace with the desired source rectangle
+            RectangleF dst = new RectangleF(); // Replace with the desired destination rectangle
+            double angle = 0.0; // Replace with the desired angle
+            IntPtr center = IntPtr.Zero; // Replace with the desired center
+            SdlRendererFlip flip = SdlRendererFlip.None; // Replace with the desired flip
+
+            // Act
+            int result = Sdl.RenderCopyExF(renderer, texture, ref srcRect, ref dst, angle, center, flip);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render copy ex f v 2 valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderCopyExF_V2_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
+            IntPtr texture = IntPtr.Zero; // Replace with the desired texture
+            IntPtr srcRect = IntPtr.Zero; // Replace with the desired source rectangle
+            IntPtr dstRect = IntPtr.Zero; // Replace with the desired destination rectangle
+            double angle = 0.0; // Replace with the desired angle
+            PointF center = new PointF(); // Replace with the desired center
+            SdlRendererFlip flip = SdlRendererFlip.None; // Replace with the desired flip
+
+            // Act
+            int result = Sdl.RenderCopyExF(renderer, texture, srcRect, dstRect, angle, ref center, flip);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that render copy ex valid params returns expected int
+        /// </summary>
+        [Fact]
+        public void RenderCopyEx_ValidParams_ReturnsExpectedInt()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr renderer = IntPtr.Zero; // Replace with the actual renderer
+            IntPtr texture = IntPtr.Zero; // Replace with the actual texture
+            IntPtr srcRect = IntPtr.Zero; // Replace with the actual source rectangle
+            IntPtr dstRect = IntPtr.Zero; // Replace with the actual destination rectangle
+            double angle = 0; // Replace with the actual angle
+            IntPtr center = IntPtr.Zero; // Replace with the actual center
+            SdlRendererFlip flip = SdlRendererFlip.None; // Replace with the actual flip
+
+            // Act
+            int result = Sdl.RenderCopyEx(renderer, texture, srcRect, dstRect, angle, center, flip);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
     }
 }

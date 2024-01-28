@@ -148,34 +148,5 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// </summary>
         /// <returns>The string</returns>
         public string GetName() => Marshal.PtrToStringAnsi(name);
-
-        /// <summary>
-        ///     Gets or sets the value of the text
-        /// </summary>
-        public int[] TextureFormats
-        {
-            get
-            {
-                return new[]
-                {
-                    textureFormats0,
-                    textureFormats1,
-                    textureFormats2,
-                    textureFormats3,
-                    textureFormats4,
-                    textureFormats5,
-                    textureFormats6,
-                    textureFormats7,
-                    textureFormats8,
-                    textureFormats9,
-                    textureFormats10,
-                    textureFormats11,
-                    textureFormats12,
-                    textureFormats13,
-                    textureFormats14,
-                    textureFormats15
-                };
-            }
-        }
     }
 }

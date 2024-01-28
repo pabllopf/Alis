@@ -2302,22 +2302,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalCreateRGBSurfaceWithFormat([NotNull] uint flags, [NotNull] int width, [NotNull] int height, [NotNull] int depth, [NotNull] uint format);
-
-        /// <summary>
-        ///     Sdl the create rgb surface with format from using the specified pixels
-        /// </summary>
-        /// <param name="pixels">The pixels</param>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="depth">The depth</param>
-        /// <param name="pitch">The pitch</param>
-        /// <param name="format">The format</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_CreateRGBSurfaceWithFormatFrom", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalCreateRGBSurfaceWithFormatFrom([NotNull] IntPtr pixels, [NotNull] int width, [NotNull] int height, [NotNull] int depth, [NotNull] int pitch, [NotNull] uint format);
-
+        
         /// <summary>
         ///     Sdl the fill rect using the specified dst
         /// </summary>

@@ -256,7 +256,7 @@ namespace Alis.App.Engine
                 flags |= SdlWindowFlags.WindowAllowHighDpi;
             }
 
-            _window = Sdl.CreateWindow(NameEngine, Sdl.WindowPosCentered, Sdl.WindowPosCentered, widthWindow, heightWindow, flags);
+            _window = Sdl.CreateWindow(NameEngine, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, widthWindow, heightWindow, flags);
             _glContext = CreateGlContext(_window);
 
             // compile the shader program

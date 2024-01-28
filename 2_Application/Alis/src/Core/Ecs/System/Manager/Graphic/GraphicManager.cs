@@ -359,7 +359,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             }
 
             // Creates a new SDL window at the center of the screen with the given width and height.
-            _window = Sdl.CreateWindow(VideoGame.Instance.Settings.General.Name, Sdl.WindowPosCentered, Sdl.WindowPosCentered, (int) defaultSize.X, (int) defaultSize.Y, flags);
+            _window = Sdl.CreateWindow(VideoGame.Instance.Settings.General.Name, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, (int) defaultSize.X, (int) defaultSize.Y, flags);
 
             // Check if the window was created successfully.
             Console.WriteLine(_window == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : "Window created");
