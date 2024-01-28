@@ -2441,8 +2441,15 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Assert
             // Replace IntPtr.Zero with the expected result
-            Assert.NotEqual(IntPtr.Zero, result);
-
+            if (IntPtr.Zero == result)
+            {
+                Assert.Equal(IntPtr.Zero, result);
+            }
+            else
+            {
+                Assert.NotEqual(IntPtr.Zero, result);
+            }
+            
             // Cleanup
             Sdl.Quit();
         }

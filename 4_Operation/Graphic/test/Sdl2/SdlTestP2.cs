@@ -2294,8 +2294,14 @@ namespace Alis.Core.Graphic.Test.Sdl2
             SdlKeyMod result = Sdl.GetModState();
 
             // Assert
-            // Replace SdlKeyMod.None with the expected result
-            Assert.Equal(SdlKeyMod.None, result);
+            if (SdlKeyMod.None != result)
+            {
+                Assert.Equal(SdlKeyMod.None, result);
+            }
+            else
+            {
+                Assert.Equal(SdlKeyMod.None, result);
+            }
 
             // Cleanup
             Sdl.Quit();
