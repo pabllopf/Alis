@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
-    /// The sdl text input event test class
+    ///     The sdl text input event test class
     /// </summary>
     public class SdlTextInputEventTest
     {
         /// <summary>
-        /// Tests that text valid call returns expected byte array
+        ///     Tests that text valid call returns expected byte array
         /// </summary>
         [Fact]
         public void Text_ValidCall_ReturnsExpectedByteArray()
@@ -49,13 +49,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
 
-            SdlTextInputEvent textInputEvent = new SdlTextInputEvent(); 
+            SdlTextInputEvent textInputEvent = new SdlTextInputEvent();
 
             // Act
             byte[] result = textInputEvent.Text;
 
             // Assert
-            Assert.NotEqual(new byte[] { 0 }, result);
+            Assert.NotEqual(new byte[] {0}, result);
 
             Sdl.Quit();
         }
