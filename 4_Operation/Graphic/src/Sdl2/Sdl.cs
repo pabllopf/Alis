@@ -3138,34 +3138,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SdlBool RenderIsClipEnabled([NotNull] IntPtr renderer) => NativeSdl.InternalRenderIsClipEnabled(renderer);
-
-        /// <summary>
-        ///     Renders the flush using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderFlush([NotNull] IntPtr renderer) => NativeSdl.InternalRenderFlush(renderer);
         
-        /// <summary>
-        ///     Allow the format using the specified pixel format
-        /// </summary>
-        /// <param name="pixelFormat">The pixel format</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr AllocFormat([NotNull] uint pixelFormat) => NativeSdl.InternalAllocFormat(pixelFormat);
-
-        /// <summary>
-        ///     Allow the palette using the specified n colors
-        /// </summary>
-        /// <param name="nColors">The colors</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr AllocPalette([NotNull] int nColors) => NativeSdl.InternalAllocPalette(nColors);
-
         /// <summary>
         ///     Calculates the gamma ramp using the specified gamma
         /// </summary>
@@ -3377,20 +3350,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateInput(b);
             NativeSdl.InternalUnionRect(a, b, out result);
         }
-
-        /// <summary>
-        ///     Describes whether sdl must lock
-        /// </summary>
-        /// <param name="surface">The surface</param>
-        /// <returns>The bool</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool SdlMustLock([NotNull] IntPtr surface)
-        {
-            SdlSurface sur = Marshal.PtrToStructure<SdlSurface>(surface);
-            return (sur.flags & RleAccel) != 0;
-        }
-
+        
         /// <summary>
         ///     Blit the surface using the specified src
         /// </summary>
@@ -3651,40 +3611,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr LoadBmp([NotNull] string file) => NativeSdl.InternalLoadBMP_RW(RwFromFile(file, "rb"), 1);
-
-        /// <summary>
-        ///     Locks the surface using the specified surface
-        /// </summary>
-        /// <param name="surface">The surface</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int LockSurface([NotNull] IntPtr surface) => NativeSdl.InternalLockSurface(surface);
-
-        /// <summary>
-        ///     Lowers the blit using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="srcRect">The src rect</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstRect">The dst rect</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int LowerBlit([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect) => NativeSdl.InternalLowerBlit(src, ref srcRect, dst, ref dstRect);
-
-        /// <summary>
-        ///     Lowers the blit scaled using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="srcRect">The src rect</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstRect">The dst rect</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int LowerBlitScaled([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect) => NativeSdl.InternalLowerBlitScaled(src, ref srcRect, dst, ref dstRect);
-
+        
         /// <summary>
         ///     Sdl the save bmp using the specified surface
         /// </summary>
@@ -3776,42 +3703,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SdlBool HasSurfaceRle([NotNull] IntPtr surface) => NativeSdl.InternalHasSurfaceRLE(surface);
-
-        /// <summary>
-        ///     Soft the stretch using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="srcRect">The src rect</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstRect">The dst rect</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SoftStretch([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect) => NativeSdl.InternalSoftStretch(src, ref srcRect, dst, ref dstRect);
-
-        /// <summary>
-        ///     Soft the stretch linear using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="srcRect">The src rect</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstRect">The dst rect</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SoftStretchLinear([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect) => NativeSdl.InternalSoftStretchLinear(src, ref srcRect, dst, ref dstRect);
-
-        /// <summary>
-        ///     Unlocks the surface using the specified surface
-        /// </summary>
-        /// <param name="surface">The surface</param>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void UnlockSurface([NotNull] IntPtr surface)
-        {
-            NativeSdl.InternalUnlockSurface(surface);
-        }
-
+        
         /// <summary>
         ///     Uppers the blit using the specified src
         /// </summary>
@@ -3835,16 +3727,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int UpperBlitScaled([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect) => NativeSdl.InternalUpperBlitScaled(src, ref srcRect, dst, ref dstRect);
-
-        /// <summary>
-        ///     Duplicates the surface using the specified surface
-        /// </summary>
-        /// <param name="surface">The surface</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr DuplicateSurface([NotNull] IntPtr surface) => NativeSdl.InternalDuplicateSurface(surface);
-
+        
         /// <summary>
         ///     Has the clipboard text
         /// </summary>
