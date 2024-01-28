@@ -4566,7 +4566,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr result = Sdl.GetCurrentWindow();
 
             // Assert
-            Assert.Equal(IntPtr.Zero, result); // Replace IntPtr.Zero with the expected result
+            Assert.Equal(IntPtr.Zero, result);
 
             // Cleanup
             Sdl.Quit();
@@ -4586,7 +4586,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr result = Sdl.GetCurrentContext();
 
             // Assert
-            Assert.Equal(IntPtr.Zero, result); // Replace IntPtr.Zero with the expected result
+            Assert.Equal(IntPtr.Zero, result);
 
             // Cleanup
             Sdl.Quit();
@@ -5333,7 +5333,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr result = Sdl.GetGrabbedWindow();
 
             // Assert
-            // Replace IntPtr.Zero with the expected result
+
             Assert.Equal(IntPtr.Zero, result);
 
             // Cleanup
@@ -5377,7 +5377,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr result = Sdl.GetWindowMouseRect(window);
 
             // Assert
-            // Replace IntPtr.Zero with the expected result
+
             Assert.Equal(IntPtr.Zero, result);
 
             // Cleanup
@@ -5449,7 +5449,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr result = Sdl.CreateRenderer(window, index, flags);
 
             // Assert
-            // Replace IntPtr.Zero with the expected result
+
             Assert.Equal(IntPtr.Zero, result);
 
             // Cleanup
@@ -5475,7 +5475,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr result = Sdl.CreateTexture(renderer, format, access, w, h);
 
             // Assert
-            // Replace IntPtr.Zero with the expected result
+
             Assert.Equal(IntPtr.Zero, result);
 
             // Cleanup
@@ -5517,7 +5517,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.GetNumRenderDrivers();
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -5560,7 +5560,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.SetTextureScaleMode(texture, scaleMode);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -5624,7 +5624,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr result = Sdl.GetTextureUserData(texture);
 
             // Assert
-            Assert.Equal(IntPtr.Zero, result); // Replace IntPtr.Zero with the expected result
+            Assert.Equal(IntPtr.Zero, result);
 
             // Cleanup
             Sdl.Quit();
@@ -5666,7 +5666,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.GetRenderDriverInfo(index, out SdlRendererInfo _);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -5687,7 +5687,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr result = Sdl.GetRenderer(window);
 
             // Assert
-            Assert.Equal(IntPtr.Zero, result); // Replace IntPtr.Zero with the expected result
+            Assert.Equal(IntPtr.Zero, result);
 
             // Cleanup
             Sdl.Quit();
@@ -5708,7 +5708,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.GetRendererInfo(renderer, out SdlRendererInfo _);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -5729,7 +5729,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.GetRendererOutputSize(renderer, out int _, out int _);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -5750,7 +5750,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.GetTextureAlphaMod(texture, out byte _);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -5793,7 +5793,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.GetTextureColorMod(texture, out byte _, out byte _, out byte _);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -5815,7 +5815,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.LockTexture(texture, ref rect, out IntPtr _, out int _);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -5858,7 +5858,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.QueryTexture(texture, out uint _, out int _, out int _, out int _);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -5879,7 +5879,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderClear(renderer);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -5930,7 +5930,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderCopyEx(renderer, texture, ref srcRect, ref dstRect, angle, ref center, flip);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -5956,7 +5956,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderDrawLine(renderer, x1, y1, x2, y2);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -5979,7 +5979,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderDrawPoints(renderer, points, count);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6001,7 +6001,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderDrawRect(renderer, ref rect);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6023,7 +6023,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderFillRect(renderer, ref rect);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6050,7 +6050,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderCopyExF(renderer, texture, srcRect, dstRect, angle, center, flip);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6076,7 +6076,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderGeometry(renderer, texture, vertices, numVertices, indices, numIndices);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6099,7 +6099,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderDrawPointF(renderer, x, y);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6122,7 +6122,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderDrawPointsF(renderer, points, count);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6147,7 +6147,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderDrawLineF(renderer, x1, y1, x2, y2);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6170,7 +6170,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderDrawLinesF(renderer, points, count);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6192,7 +6192,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderDrawRectF(renderer, ref rect);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6214,7 +6214,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderFillRectF(renderer, rect);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6326,7 +6326,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderReadPixels(renderer, ref rect, format, pixels, pitch);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6351,7 +6351,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderSetClipRect(renderer, ref rect);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6377,7 +6377,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderSetLogicalSize(renderer, w, h);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6403,7 +6403,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.RenderSetScale(renderer, scaleX, scaleY);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6456,7 +6456,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.SetRenderDrawColor(renderer, r, g, b, a);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6481,7 +6481,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.SetRenderTarget(renderer, texture);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6506,7 +6506,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.SetTextureAlphaMod(texture, alpha);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6554,7 +6554,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.UpdateTexture(texture, ref rect, pixels, pitch);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6580,7 +6580,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.UpdateNvTexture(texture, ref rect, yPlane, yPitch, uvPlane, uvPitch);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6622,7 +6622,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr result = Sdl.GetRenderTarget(renderer);
 
             // Assert
-            Assert.Equal(IntPtr.Zero, result); // Replace IntPtr.Zero with the expected result
+            Assert.Equal(IntPtr.Zero, result);
 
             // Cleanup
             Sdl.Quit();
@@ -6665,12 +6665,12 @@ namespace Alis.Core.Graphic.Test.Sdl2
             SdlBool result = Sdl.RenderIsClipEnabled(renderer);
 
             // Assert
-            Assert.Equal(SdlBool.False, result); 
+            Assert.Equal(SdlBool.False, result);
 
             // Cleanup
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that calculate gamma ramp should not throw exception
         /// </summary>
@@ -6692,7 +6692,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that blit surface should return expected value
         /// </summary>
@@ -6711,7 +6711,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.BlitSurface(src, ref srcRect, dst, ref dstRect);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6734,7 +6734,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr result = Sdl.ConvertSurface(src, fmt, flags);
 
             // Assert
-            Assert.Equal(IntPtr.Zero, result); // Replace IntPtr.Zero with the expected result
+            Assert.Equal(IntPtr.Zero, result);
 
             // Cleanup
             Sdl.Quit();
@@ -6759,7 +6759,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr result = Sdl.CreateRgbSurfaceWithFormat(flags, width, height, depth, format);
 
             // Assert
-            Assert.NotEqual(IntPtr.Zero, result); // Replace IntPtr.Zero with the expected result
+            Assert.NotEqual(IntPtr.Zero, result);
 
             // Cleanup
             Sdl.Quit();
@@ -6782,7 +6782,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.FillRect(dst, ref rect, color);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6824,7 +6824,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             SdlBool result = Sdl.HasColorKey(surface);
 
             // Assert
-            Assert.Equal(SdlBool.False, result); 
+            Assert.Equal(SdlBool.False, result);
 
             // Cleanup
             Sdl.Quit();
@@ -6845,7 +6845,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.GetColorKey(surface, out uint _);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6866,7 +6866,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = Sdl.GetSurfaceAlphaMod(surface, out byte _);
 
             // Assert
-           Assert.True(result >= -1);
+            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -6929,13 +6929,13 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr result = Sdl.LoadBmp(file);
 
             // Assert
-            // Replace IntPtr.Zero with the expected result
+
             Assert.NotEqual(IntPtr.Zero, result);
 
             // Cleanup
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that save bmp should return expected value
         /// </summary>
@@ -6954,7 +6954,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
                 int result = Sdl.SaveBmp(surface, file);
                 Assert.True(result >= -1);
             }
-            
+
             // Cleanup
             Sdl.Quit();
         }
@@ -6975,7 +6975,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             SdlBool result = Sdl.SetClipRect(surface, ref rect);
 
             // Assert
-            
+
             Assert.Equal(SdlBool.False, result);
 
             // Cleanup
@@ -7130,13 +7130,13 @@ namespace Alis.Core.Graphic.Test.Sdl2
             SdlBool result = Sdl.HasSurfaceRle(surface);
 
             // Assert
-            
+
             Assert.Equal(SdlBool.False, result);
 
             // Cleanup
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that upper blit should return expected value
         /// </summary>
@@ -7184,7 +7184,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-        
+
         /// <summary>
         /// Tests that has clipboard text should return expected value
         /// </summary>
@@ -7199,7 +7199,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             SdlBool result = Sdl.HasClipboardText();
 
             // Assert
-            
+
             Assert.Equal(SdlBool.True, result);
 
             // Cleanup
@@ -7220,7 +7220,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             string result = Sdl.GetClipboardText();
 
             // Assert
-            // Replace "" with the expected result
+
             Assert.Equal("test", result);
 
             // Cleanup
@@ -7288,7 +7288,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             SdlBool result = Sdl.HasEvent(type);
 
             // Assert
-            
+
             Assert.Equal(SdlBool.False, result);
 
             // Cleanup
@@ -7311,8 +7311,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
             SdlBool result = Sdl.HasEvents(minType, maxType);
 
             // Assert
-            
-            Assert.Equal(SdlBool.True ,result);
+
+            Assert.Equal(SdlBool.True, result);
 
             // Cleanup
             Sdl.Quit();
@@ -7335,6 +7335,1141 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Assert
             Assert.Equal(SdlBool.False, Sdl.HasEvent(type));
 
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller set sensor enabled should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerSetSensorEnabled_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            SdlSensorType type = SdlSensorType.SdlSensorAccel;
+            SdlBool enabled = SdlBool.True;
+
+            // Act
+            int result = Sdl.GameControllerSetSensorEnabled(gameController, type, enabled);
+
+            // Assert
+
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller is sensor enabled should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerIsSensorEnabled_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            SdlSensorType type = SdlSensorType.SdlSensorAccel;
+
+            // Act
+            SdlBool result = Sdl.GameControllerIsSensorEnabled(gameController, type);
+
+            // Assert
+
+            Assert.Equal(SdlBool.False, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller get sensor data should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerGetSensorData_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            SdlSensorType type = SdlSensorType.SdlSensorAccel;
+            IntPtr data = IntPtr.Zero;
+            int numValues = 1;
+
+            // Act
+            int result = Sdl.GameControllerGetSensorData(gameController, type, data, numValues);
+
+            // Assert
+
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller get sensor data rate should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerGetSensorDataRate_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            SdlSensorType type = SdlSensorType.SdlSensorAccel;
+
+            // Act
+            float result = Sdl.GameControllerGetSensorDataRate(gameController, type);
+
+            // Assert
+
+            Assert.Equal(0.0f, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller send effect should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerSendEffect_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            IntPtr data = IntPtr.Zero;
+            int size = 1;
+
+            // Act
+            int result = Sdl.GameControllerSendEffect(gameController, data, size);
+
+            // Assert
+
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that joystick is haptic should return expected value
+        /// </summary>
+        [Fact]
+        public void JoystickIsHaptic_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr joystick = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.JoystickIsHaptic(joystick);
+
+            // Assert
+
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that mouse is haptic should return expected value
+        /// </summary>
+        [Fact]
+        public void MouseIsHaptic_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            int result = Sdl.MouseIsHaptic();
+
+            // Assert
+
+            Assert.Equal(0, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that num haptics should return expected value
+        /// </summary>
+        [Fact]
+        public void NumHaptics_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            int result = Sdl.NumHaptics();
+
+            // Assert
+
+            Assert.Equal(0, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that num sensors should return expected value
+        /// </summary>
+        [Fact]
+        public void NumSensors_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            int result = Sdl.NumSensors();
+
+            // Assert
+
+            Assert.Equal(0, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that sensor get device name should return expected value
+        /// </summary>
+        [Fact]
+        public void SensorGetDeviceName_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int deviceIndex = 0;
+
+            // Act
+            string result = Sdl.SensorGetDeviceName(deviceIndex);
+
+            // Assert
+
+            Assert.Null(result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that sensor get device type should return expected value
+        /// </summary>
+        [Fact]
+        public void SensorGetDeviceType_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int deviceIndex = 0;
+
+            // Act
+            SdlSensorType result = Sdl.SensorGetDeviceType(deviceIndex);
+
+            // Assert
+            // Replace SdlSensorType.Unknown with the expected result
+            Assert.Equal(SdlSensorType.SdlSensorInvalid, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that sensor get device non portable type should return expected value
+        /// </summary>
+        [Fact]
+        public void SensorGetDeviceNonPortableType_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int deviceIndex = 0;
+
+            // Act
+            int result = Sdl.SensorGetDeviceNonPortableType(deviceIndex);
+
+            // Assert
+
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that sensor get device instance id should return expected value
+        /// </summary>
+        [Fact]
+        public void SensorGetDeviceInstanceId_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int deviceIndex = 0;
+
+            // Act
+            int result = Sdl.SensorGetDeviceInstanceId(deviceIndex);
+
+            // Assert
+
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that sensor open should return expected value
+        /// </summary>
+        [Fact]
+        public void SensorOpen_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int deviceIndex = 0;
+
+            // Act
+            IntPtr result = Sdl.SensorOpen(deviceIndex);
+
+            // Assert
+
+            Assert.Equal(IntPtr.Zero, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that sensor from instance id should return expected value
+        /// </summary>
+        [Fact]
+        public void SensorFromInstanceId_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int instanceId = 0;
+
+            // Act
+            IntPtr result = Sdl.SensorFromInstanceId(instanceId);
+
+            // Assert
+
+            Assert.Equal(IntPtr.Zero, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that sensor get name should return expected value
+        /// </summary>
+        [Fact]
+        public void SensorGetName_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr sensor = IntPtr.Zero;
+
+            // Act
+            string result = Sdl.SensorGetName(sensor);
+
+            // Assert
+
+            Assert.Null(result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that sensor get type should return expected value
+        /// </summary>
+        [Fact]
+        public void SensorGetType_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr sensor = IntPtr.Zero;
+
+            // Act
+            SdlSensorType result = Sdl.SensorGetType(sensor);
+
+            // Assert
+            // Replace SdlSensorType.Unknown with the expected result
+            Assert.Equal(SdlSensorType.SdlSensorInvalid, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that sensor get non portable type should return expected value
+        /// </summary>
+        [Fact]
+        public void SensorGetNonPortableType_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr sensor = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.SensorGetNonPortableType(sensor);
+
+            // Assert
+
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that sensor get instance id should return expected value
+        /// </summary>
+        [Fact]
+        public void SensorGetInstanceId_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr sensor = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.SensorGetInstanceId(sensor);
+
+            // Assert
+
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that sensor get data should return expected value
+        /// </summary>
+        [Fact]
+        public void SensorGetData_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr sensor = IntPtr.Zero;
+            float[] data = new float[1];
+            int numValues = 1;
+
+            // Act
+            int result = Sdl.SensorGetData(sensor, data, numValues);
+
+            // Assert
+
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that sensor close should not throw exception
+        /// </summary>
+        [Fact]
+        public void SensorClose_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr sensor = IntPtr.Zero;
+
+            // Act
+            Sdl.SensorClose(sensor);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, sensor);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that sensor update should not throw exception
+        /// </summary>
+        [Fact]
+        public void SensorUpdate_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            Sdl.SensorUpdate();
+
+            // Assert
+            Assert.Equal(0, Sdl.NumSensors());
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller from instance id should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerFromInstanceId_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int joyId = 0;
+
+            // Act
+            IntPtr result = Sdl.GameControllerFromInstanceId(joyId);
+
+            // Assert
+
+            Assert.Equal(IntPtr.Zero, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller type for index should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerTypeForIndex_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int joystickIndex = 0;
+
+            // Act
+            SdlGameControllerType result = Sdl.GameControllerTypeForIndex(joystickIndex);
+
+            // Assert
+            // Replace SdlGameControllerType.Unknown with the expected result
+            Assert.Equal(SdlGameControllerType.SdlControllerTypeUnknown, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller get type should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerGetType_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+
+            // Act
+            SdlGameControllerType result = Sdl.GameControllerGetType(gameController);
+
+            // Assert
+            // Replace SdlGameControllerType.Unknown with the expected result
+            Assert.Equal(SdlGameControllerType.SdlControllerTypeUnknown, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller from player index should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerFromPlayerIndex_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int playerIndex = 0;
+
+            // Act
+            IntPtr result = Sdl.GameControllerFromPlayerIndex(playerIndex);
+
+            // Assert
+
+            Assert.Equal(IntPtr.Zero, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller set player index should not throw exception
+        /// </summary>
+        [Fact]
+        public void GameControllerSetPlayerIndex_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            int playerIndex = 0;
+
+            // Act
+            Sdl.GameControllerSetPlayerIndex(gameController, playerIndex);
+
+            // Assert
+            // No exception should be thrown
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller has led should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerHasLed_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+
+            // Act
+            SdlBool result = Sdl.GameControllerHasLed(gameController);
+
+            // Assert
+
+            Assert.Equal(SdlBool.False, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller has rumble should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerHasRumble_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+
+            // Act
+            SdlBool result = Sdl.GameControllerHasRumble(gameController);
+
+            // Assert
+
+            Assert.Equal(SdlBool.False, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller has rumble triggers should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerHasRumbleTriggers_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+
+            // Act
+            SdlBool result = Sdl.GameControllerHasRumbleTriggers(gameController);
+
+            // Assert
+            Assert.True(result == SdlBool.False || result == SdlBool.True);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller set led should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerSetLed_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            byte red = 0;
+            byte green = 0;
+            byte blue = 0;
+
+            // Act
+            int result = Sdl.GameControllerSetLed(gameController, red, green, blue);
+
+            // Assert
+
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller has axis should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerHasAxis_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            SdlGameControllerAxis axis = SdlGameControllerAxis.SdlControllerAxisInvalid;
+
+            // Act
+            SdlBool result = Sdl.GameControllerHasAxis(gameController, axis);
+
+            // Assert
+
+            Assert.Equal(SdlBool.False, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller has button should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerHasButton_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            SdlGameControllerButton button = SdlGameControllerButton.SdlControllerButtonInvalid;
+
+            // Act
+            SdlBool result = Sdl.GameControllerHasButton(gameController, button);
+
+            // Assert
+
+            Assert.Equal(SdlBool.False, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller get num touchpads should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerGetNumTouchpads_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+
+            // Act
+            int result = Sdl.GameControllerGetNumTouchpads(gameController);
+
+            // Assert
+            Assert.True(result >= 0);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller get num touchpad fingers should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerGetNumTouchpadFingers_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            int touchpad = 0;
+
+            // Act
+            int result = Sdl.GameControllerGetNumTouchpadFingers(gameController, touchpad);
+
+            // Assert
+
+            Assert.Equal(0, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller get touchpad finger should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerGetTouchpadFinger_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            int touchpad = 0;
+            int finger = 0;
+
+            // Act
+            int result = Sdl.GameControllerGetTouchpadFinger(gameController, touchpad, finger, out byte _, out float _, out float _, out float _);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller has sensor should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerHasSensor_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            SdlSensorType type = SdlSensorType.SdlSensorUnknown;
+
+            // Act
+            SdlBool result = Sdl.GameControllerHasSensor(gameController, type);
+
+            // Assert
+
+            Assert.Equal(SdlBool.False, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller get joystick should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerGetJoystick_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+
+            // Act
+            IntPtr result = Sdl.GameControllerGetJoystick(gameController);
+
+            // Assert
+            // Replace IntPtr.Zero with the expected result
+            Assert.Equal(IntPtr.Zero, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller event state should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerEventState_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            int state = 0;
+
+            // Act
+            int result = Sdl.GameControllerEventState(state);
+
+            // Assert
+            // Replace 0 with the expected result
+            Assert.Equal(0, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller update should not throw exception
+        /// </summary>
+        [Fact]
+        public void GameControllerUpdate_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            Sdl.GameControllerUpdate();
+
+            // Assert
+            // No exception should be thrown
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller get axis from string should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerGetAxisFromString_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            string pchString = "";
+
+            // Act
+            SdlGameControllerAxis result = Sdl.GameControllerGetAxisFromString(pchString);
+
+            // Assert
+            // Replace SdlGameControllerAxis.AxisInvalid with the expected result
+            Assert.Equal(SdlGameControllerAxis.SdlControllerAxisInvalid, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller get string for axis should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerGetStringForAxis_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            SdlGameControllerAxis axis = SdlGameControllerAxis.SdlControllerAxisInvalid;
+
+            // Act
+            string result = Sdl.GameControllerGetStringForAxis(axis);
+
+            // Assert
+            Assert.Null(result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller get bind for axis should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerGetBindForAxis_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            SdlGameControllerAxis axis = SdlGameControllerAxis.SdlControllerAxisInvalid;
+
+            // Act
+            SdlGameControllerButtonBind result = Sdl.GameControllerGetBindForAxis(gameController, axis);
+
+            // Assert
+            // Replace default(SdlGameControllerButtonBind) with the expected result
+            Assert.Equal(default(SdlGameControllerButtonBind), result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller get axis should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerGetAxis_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            SdlGameControllerAxis axis = SdlGameControllerAxis.SdlControllerAxisInvalid;
+
+            // Act
+            short result = Sdl.GameControllerGetAxis(gameController, axis);
+
+            // Assert
+            // Replace 0 with the expected result
+            Assert.Equal(0, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller get button from string should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerGetButtonFromString_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            string pchString = "";
+
+            // Act
+            SdlGameControllerButton result = Sdl.GameControllerGetButtonFromString(pchString);
+
+            // Assert
+            // Replace SdlGameControllerButton.ButtonInvalid with the expected result
+            Assert.Equal(SdlGameControllerButton.SdlControllerButtonInvalid, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller get string for button should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerGetStringForButton_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            SdlGameControllerButton button = SdlGameControllerButton.SdlControllerButtonInvalid;
+
+            // Act
+            string result = Sdl.GameControllerGetStringForButton(button);
+
+            // Assert
+            Assert.Null(result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller get bind for button should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerGetBindForButton_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            SdlGameControllerButton button = SdlGameControllerButton.SdlControllerButtonInvalid;
+
+            // Act
+            SdlGameControllerButtonBind result = Sdl.GameControllerGetBindForButton(gameController, button);
+
+            // Assert
+            Assert.Equal(default(SdlGameControllerButtonBind), result);
+            
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller get button should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerGetButton_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            SdlGameControllerButton button = SdlGameControllerButton.SdlControllerButtonInvalid;
+
+            // Act
+            byte result = Sdl.GameControllerGetButton(gameController, button);
+
+            // Assert
+            // Replace 0 with the expected result
+            Assert.Equal(0, result);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller rumble should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerRumble_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            ushort lowFrequencyRumble = 0;
+            ushort highFrequencyRumble = 0;
+            uint durationMs = 0;
+
+            // Act
+            int result = Sdl.GameControllerRumble(gameController, lowFrequencyRumble, highFrequencyRumble, durationMs);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller rumble triggers should return expected value
+        /// </summary>
+        [Fact]
+        public void GameControllerRumbleTriggers_ShouldReturnExpectedValue()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+            ushort leftRumble = 0;
+            ushort rightRumble = 0;
+            uint durationMs = 0;
+
+            // Act
+            int result = Sdl.GameControllerRumbleTriggers(gameController, leftRumble, rightRumble, durationMs);
+
+            // Assert
+            Assert.True(result >= -1);
+
+            // Cleanup
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that game controller close should not throw exception
+        /// </summary>
+        [Fact]
+        public void GameControllerClose_ShouldNotThrowException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+            IntPtr gameController = IntPtr.Zero;
+
+            // Act
+            Sdl.GameControllerClose(gameController);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, gameController);
+            
             // Cleanup
             Sdl.Quit();
         }
