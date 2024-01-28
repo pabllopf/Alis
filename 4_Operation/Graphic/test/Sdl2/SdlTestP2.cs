@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Text;
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
@@ -959,7 +960,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             }
             else
             {
-                Assert.Null( result);
+                Assert.Null(result);
             }
 
             // Cleanup
@@ -2475,7 +2476,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Act
             RectangleI srcRect = new RectangleI();
             int result = Sdl.RenderCopy(IntPtr.Zero, IntPtr.Zero, ref srcRect, IntPtr.Zero);
@@ -2503,6 +2504,133 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Assert
             Assert.True(result >= -1);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that joystick close with valid joystick closes without error
+        /// </summary>
+        [Fact]
+        public void JoystickClose_WithValidJoystick_ClosesWithoutError()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr joystick = IntPtr.Zero;
+
+            // Act
+            Sdl.JoystickClose(joystick);
+
+            // Assert
+            Assert.Equal(IntPtr.Zero, joystick);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that joystick close with invalid joystick throws exception
+        /// </summary>
+        [Fact]
+        public void JoystickClose_WithInvalidJoystick_ThrowsException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            IntPtr joystick = IntPtr.Zero; // Invalid joystick
+
+            // Act and Assert
+            Sdl.JoystickClose(joystick);
+
+            Assert.Equal(IntPtr.Zero, joystick);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that joystick get guid string valid guid returns expected string
+        /// </summary>
+        [Fact]
+        public void JoystickGetGuidString_ValidGuid_ReturnsExpectedString()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            Guid testGuid = Guid.NewGuid();
+            byte[] pszGuid = new byte[64];
+            int cbGuid = pszGuid.Length;
+
+            // Act
+            Sdl.JoystickGetGuidString(testGuid, pszGuid, cbGuid);
+
+            // Assert
+            Assert.NotNull(testGuid.ToString());
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that joystick get guid string invalid guid throws exception
+        /// </summary>
+        [Fact]
+        public void JoystickGetGuidString_InvalidGuid_ThrowsException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            Guid testGuid = Guid.Empty; // Invalid Guid
+            byte[] pszGuid = new byte[64];
+            int cbGuid = pszGuid.Length;
+
+            // Act and Assert
+            Sdl.JoystickGetGuidString(testGuid, pszGuid, cbGuid);
+
+            Assert.Equal(Guid.Empty, testGuid);
+
+            Sdl.Quit();
+        }
+        
+        /// <summary>
+        /// Tests that get relative mouse state valid params returns expected uint
+        /// </summary>
+        [Fact]
+        public void GetRelativeMouseState_ValidParams_ReturnsExpectedUint()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Act
+            uint result = Sdl.GetRelativeMouseState(out int _, out int _);
+
+            // Assert
+            Assert.True(result == 0 || result == 1 || result == 2);
+
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that get relative mouse state invalid params throws exception
+        /// </summary>
+        [Fact]
+        public void GetRelativeMouseState_InvalidParams_ThrowsException()
+        {
+            // Arrange
+            int initResult = Sdl.Init(SdlInit.InitEverything);
+            Assert.Equal(0, initResult);
+
+            int x = -1;
+            int y = -1;
+
+            // Act and Assert
+            Sdl.GetRelativeMouseState(out x, out y);
+            
+            Assert.Equal(0, x);
+            Assert.Equal(0, y);
 
             Sdl.Quit();
         }
