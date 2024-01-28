@@ -4051,20 +4051,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return NativeSdl.InternalLoadBMP_RW(RwFromFile(file, "rb"), 1);
         }
-
-        /// <summary>
-        ///     Sdl the save bmp using the specified surface
-        /// </summary>
-        /// <param name="surface">The surface</param>
-        /// <param name="file">The file</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SaveBmp([NotNull] IntPtr surface, [NotNull] string file)
-        {
-            return NativeSdl.InternalSaveBMP_RW(surface, RwFromFile(file, "wb"), 1);
-        }
-
+        
         /// <summary>
         ///     Sets the clip rect using the specified surface
         /// </summary>

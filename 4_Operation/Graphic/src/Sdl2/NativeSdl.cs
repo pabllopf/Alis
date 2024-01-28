@@ -2620,18 +2620,6 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalLoadBMP_RW([NotNull] IntPtr src, [NotNull] int freeSrc);
-        
-        /// <summary>
-        ///     Internals the sdl save bmp rw using the specified surface
-        /// </summary>
-        /// <param name="surface">The surface</param>
-        /// <param name="src">The src</param>
-        /// <param name="freeSrc">The free src</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SaveBMP_RW", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalSaveBMP_RW([NotNull] IntPtr surface, [NotNull] IntPtr src, [NotNull] int freeSrc);
 
         /// <summary>
         ///     Sdl the set clip rect using the specified surface
