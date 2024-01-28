@@ -503,7 +503,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The rw ops</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RwFromFile([NotNull] string file, [NotNull] string mode)
+        private static IntPtr RwFromFile([NotNull] string file, [NotNull] string mode)
         {
             Validator.ValidateInput(file);
             Validator.ValidateInput(mode);
@@ -3457,31 +3457,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return NativeSdl.InternalGetRenderTarget(renderer);
         }
-
-        /// <summary>
-        ///     Renders the get metal layer using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderGetMetalLayer([NotNull] IntPtr renderer)
-        {
-            return NativeSdl.InternalRenderGetMetalLayer(renderer);
-        }
-
-        /// <summary>
-        ///     Renders the get metal command encoder using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderGetMetalCommandEncoder([NotNull] IntPtr renderer)
-        {
-            return NativeSdl.InternalRenderGetMetalCommandEncoder(renderer);
-        }
-
+        
         /// <summary>
         ///     Renders the set v sync using the specified renderer
         /// </summary>
@@ -3533,73 +3509,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-
-        /// <summary>
-        ///     Gets the rgba using the specified pixel
-        /// </summary>
-        /// <param name="pixel">The pixel</param>
-        /// <param name="format">The format</param>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlColor GetRgba([NotNull] uint pixel, [NotNull] IntPtr format)
-        {
-            Validator.ValidateInput(format);
-            Validator.ValidateInput(pixel);
-            NativeSdl.InternalGetRGBA(pixel, format, out byte r, out byte g, out byte b, out byte a);
-            Validator.ValidateOutput(r);
-            Validator.ValidateOutput(g);
-            Validator.ValidateOutput(b);
-            Validator.ValidateOutput(a);
-            return new SdlColor(r, g, b, a);
-        }
-
-        /// <summary>
-        ///     Maps the rgb using the specified format
-        /// </summary>
-        /// <param name="format">The format</param>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The uint</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint MapRgb([NotNull] IntPtr format, byte r, [NotNull] byte g, [NotNull] byte b)
-        {
-            return NativeSdl.InternalMapRGB(format, r, g, b);
-        }
         
-        /// <summary>
-        ///     Maps the rgba using the specified format
-        /// </summary>
-        /// <param name="format">The format</param>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        /// <param name="a">The </param>
-        /// <returns>The uint</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint MapRgba([NotNull] IntPtr format, [NotNull] byte r, [NotNull] byte g, [NotNull] byte b, [NotNull] byte a)
-        {
-            return NativeSdl.InternalMapRGBA(format, r, g, b, a);
-        }
-
-        /// <summary>
-        ///     Mask the to pixel format enum using the specified bpp
-        /// </summary>
-        /// <param name="bpp">The bpp</param>
-        /// <param name="rMask">The mask</param>
-        /// <param name="gMask">The mask</param>
-        /// <param name="bMask">The mask</param>
-        /// <param name="aMask">The mask</param>
-        /// <returns>The uint</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint MasksToPixelFormatEnum([NotNull] int bpp, [NotNull] uint rMask, [NotNull] uint gMask, [NotNull] uint bMask, [NotNull] uint aMask)
-        {
-            return NativeSdl.InternalMasksToPixelFormatEnum(bpp, rMask, gMask, bMask, aMask);
-        }
-
         /// <summary>
         ///     Pixels the format enum to masks using the specified format
         /// </summary>
@@ -4161,32 +4071,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return NativeSdl.InternalPollEvent(out sdlEvent);
         }
-
-        /// <summary>
-        ///     Waits the event using the specified sdl event
-        /// </summary>
-        /// <param name="sdlEvent">The sdl event</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int WaitEvent(out SdlEvent sdlEvent)
-        {
-            return NativeSdl.InternalWaitEvent(out sdlEvent);
-        }
-
-        /// <summary>
-        ///     Waits the event timeout using the specified sdl event
-        /// </summary>
-        /// <param name="sdlEvent">The sdl event</param>
-        /// <param name="timeout">The timeout</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int WaitEventTimeout(out SdlEvent sdlEvent, [NotNull] int timeout)
-        {
-            return NativeSdl.InternalWaitEventTimeout(out sdlEvent, timeout);
-        }
-
+        
         /// <summary>
         ///     Pushes the event using the specified sdl event
         /// </summary>
