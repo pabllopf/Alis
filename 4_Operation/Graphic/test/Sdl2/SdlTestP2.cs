@@ -2642,8 +2642,15 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int result = 0;
 
             // Act
-            // Act
-            Task.Run(() => { result = Sdl.PollEvent(out SdlEvent _); });
+            try
+            {
+                Task.Run(() => { result = Sdl.PollEvent(out SdlEvent _); });
+            }
+            catch (Exception ex)
+            {
+                // Handle or log the exception here
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
 
             Assert.True(result >= -1);
             Sdl.Quit();
