@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: NativeSdl.cs
+//  File:NativeSdl.cs
 // 
-//  Author: Pablo Perdomo Falcón
+//  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -239,7 +239,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalUnlockSensors();
-        
+
         /// <summary>
         ///     Sdl the close audio device using the specified dev
         /// </summary>
@@ -513,7 +513,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalSetClipboardText([NotNull, NotEmpty, MarshalAs(UnmanagedType.LPStr)] string text);
-        
+
         /// <summary>
         ///     Sdl the peep events using the specified events
         /// </summary>
@@ -557,7 +557,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalFlushEvent(SdlEventType type);
-        
+
         /// <summary>
         ///     Sdl the poll event using the specified  event
         /// </summary>
@@ -567,7 +567,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalPollEvent(out SdlEvent sdlEvent);
-        
+
         /// <summary>
         ///     Sdl the push event using the specified  event
         /// </summary>
@@ -853,7 +853,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern uint InternalGetGlobalMouseState(out int x, out int y);
-        
+
         /// <summary>
         ///     Sdl the get global mouse state using the specified x
         /// </summary>
@@ -2165,7 +2165,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlBool InternalRenderIsClipEnabled([NotNull] IntPtr renderer);
-        
+
         /// <summary>
         ///     Sdl the calculate gamma ramp using the specified gamma
         /// </summary>
@@ -2185,7 +2185,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalGetPixelFormatName([NotNull] uint format);
-        
+
         /// <summary>
         ///     Sdl the pixel format enum to masks using the specified format
         /// </summary>
@@ -2224,7 +2224,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalSetPixelFormatPalette([NotNull] IntPtr format, [NotNull] IntPtr palette);
-        
+
         /// <summary>
         ///     Sdl the blit surface using the specified src
         /// </summary>
@@ -2288,7 +2288,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalConvertSurface([NotNull] IntPtr src, [NotNull] IntPtr fmt, [NotNull] uint flags);
-        
+
         /// <summary>
         ///     Sdl the create rgb surface with format using the specified flags
         /// </summary>
@@ -2302,7 +2302,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalCreateRGBSurfaceWithFormat([NotNull] uint flags, [NotNull] int width, [NotNull] int height, [NotNull] int depth, [NotNull] uint format);
-        
+
         /// <summary>
         ///     Sdl the fill rect using the specified dst
         /// </summary>
@@ -2506,7 +2506,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlBool InternalHasSurfaceRLE([NotNull] IntPtr surface);
-        
+
         /// <summary>
         ///     Sdl the upper blit using the specified src
         /// </summary>
@@ -2532,7 +2532,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalUpperBlitScaled([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect);
-        
+
         /// <summary>
         ///     Sdl the has clipboard text
         /// </summary>
@@ -4746,7 +4746,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalGetRenderTarget([NotNull] IntPtr renderer);
-        
+
         /// <summary>
         ///     Sdl the set window position using the specified window
         /// </summary>

@@ -28,8 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Shape.Point;
@@ -42,12 +40,12 @@ using Xunit;
 namespace Alis.Core.Graphic.Test.Sdl2
 {
     /// <summary>
-    /// The sdl test class
+    ///     The sdl test class
     /// </summary>
     public class SdlTestP2
     {
         /// <summary>
-        /// Tests that render present should not throw exception
+        ///     Tests that render present should not throw exception
         /// </summary>
         [Fact]
         public void RenderPresent_ShouldNotThrowException()
@@ -68,7 +66,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render read pixels should return expected value
+        ///     Tests that render read pixels should return expected value
         /// </summary>
         [Fact]
         public void RenderReadPixels_ShouldReturnExpectedValue()
@@ -93,11 +91,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-
-        /// Tests that render set clip rect should return expected value
-
+        ///     Tests that render set clip rect should return expected value
         /// </summary>
-
         [Fact]
         public void RenderSetClipRect_ShouldReturnExpectedValue()
         {
@@ -118,11 +113,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-
-        /// Tests that render set logical size should return expected value
-
+        ///     Tests that render set logical size should return expected value
         /// </summary>
-
         [Fact]
         public void RenderSetLogicalSize_ShouldReturnExpectedValue()
         {
@@ -144,11 +136,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-
-        /// Tests that render set scale should return expected value
-
+        ///     Tests that render set scale should return expected value
         /// </summary>
-
         [Fact]
         public void RenderSetScale_ShouldReturnExpectedValue()
         {
@@ -170,11 +159,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-
-        /// Tests that set render draw blend mode should return expected value
-
+        ///     Tests that set render draw blend mode should return expected value
         /// </summary>
-
         [Fact]
         public void SetRenderDrawBlendMode_ShouldReturnExpectedValue()
         {
@@ -195,11 +181,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-
-        /// Tests that set render draw color should return expected value
-
+        ///     Tests that set render draw color should return expected value
         /// </summary>
-
         [Fact]
         public void SetRenderDrawColor_ShouldReturnExpectedValue()
         {
@@ -223,11 +206,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-
-        /// Tests that set render target should return expected value
-
+        ///     Tests that set render target should return expected value
         /// </summary>
-
         [Fact]
         public void SetRenderTarget_ShouldReturnExpectedValue()
         {
@@ -248,11 +228,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-
-        /// Tests that set texture alpha mod should return expected value
-
+        ///     Tests that set texture alpha mod should return expected value
         /// </summary>
-
         [Fact]
         public void SetTextureAlphaMod_ShouldReturnExpectedValue()
         {
@@ -273,11 +250,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-
-        /// Tests that unlock texture should not throw exception
-
+        ///     Tests that unlock texture should not throw exception
         /// </summary>
-
         [Fact]
         public void UnlockTexture_ShouldNotThrowException()
         {
@@ -297,7 +271,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that update texture should return expected value
+        ///     Tests that update texture should return expected value
         /// </summary>
         [Fact]
         public void UpdateTexture_ShouldReturnExpectedValue()
@@ -321,7 +295,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that update nv texture should return expected value
+        ///     Tests that update nv texture should return expected value
         /// </summary>
         [Fact]
         public void UpdateNvTexture_ShouldReturnExpectedValue()
@@ -347,7 +321,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render target supported should return expected value
+        ///     Tests that render target supported should return expected value
         /// </summary>
         [Fact]
         public void RenderTargetSupported_ShouldReturnExpectedValue()
@@ -368,7 +342,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get render target should return expected value
+        ///     Tests that get render target should return expected value
         /// </summary>
         [Fact]
         public void GetRenderTarget_ShouldReturnExpectedValue()
@@ -389,7 +363,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render set v sync should return expected value
+        ///     Tests that render set v sync should return expected value
         /// </summary>
         [Fact]
         public void RenderSetVSync_ShouldReturnExpectedValue()
@@ -411,7 +385,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render is clip enabled should return expected value
+        ///     Tests that render is clip enabled should return expected value
         /// </summary>
         [Fact]
         public void RenderIsClipEnabled_ShouldReturnExpectedValue()
@@ -432,7 +406,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that calculate gamma ramp should not throw exception
+        ///     Tests that calculate gamma ramp should not throw exception
         /// </summary>
         [Fact]
         public void CalculateGammaRamp_ShouldNotThrowException()
@@ -454,7 +428,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that blit surface should return expected value
+        ///     Tests that blit surface should return expected value
         /// </summary>
         [Fact]
         public void BlitSurface_ShouldReturnExpectedValue()
@@ -478,7 +452,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that convert surface should return expected value
+        ///     Tests that convert surface should return expected value
         /// </summary>
         [Fact]
         public void ConvertSurface_ShouldReturnExpectedValue()
@@ -501,7 +475,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that create rgb surface with format should return expected value
+        ///     Tests that create rgb surface with format should return expected value
         /// </summary>
         [Fact]
         public void CreateRgbSurfaceWithFormat_ShouldReturnExpectedValue()
@@ -526,7 +500,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that fill rect should return expected value
+        ///     Tests that fill rect should return expected value
         /// </summary>
         [Fact]
         public void FillRect_ShouldReturnExpectedValue()
@@ -549,7 +523,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get clip rect should return expected value
+        ///     Tests that get clip rect should return expected value
         /// </summary>
         [Fact]
         public void GetClipRect_ShouldReturnExpectedValue()
@@ -570,7 +544,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that has color key should return expected value
+        ///     Tests that has color key should return expected value
         /// </summary>
         [Fact]
         public void HasColorKey_ShouldReturnExpectedValue()
@@ -591,7 +565,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get color key should return expected value
+        ///     Tests that get color key should return expected value
         /// </summary>
         [Fact]
         public void GetColorKey_ShouldReturnExpectedValue()
@@ -612,7 +586,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get surface alpha mod should return expected value
+        ///     Tests that get surface alpha mod should return expected value
         /// </summary>
         [Fact]
         public void GetSurfaceAlphaMod_ShouldReturnExpectedValue()
@@ -633,7 +607,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get surface blend mode should return expected value
+        ///     Tests that get surface blend mode should return expected value
         /// </summary>
         [Fact]
         public void GetSurfaceBlendMode_ShouldReturnExpectedValue()
@@ -654,7 +628,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get surface color mod should return expected value
+        ///     Tests that get surface color mod should return expected value
         /// </summary>
         [Fact]
         public void GetSurfaceColorMod_ShouldReturnExpectedValue()
@@ -675,7 +649,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that load bmp should return expected value
+        ///     Tests that load bmp should return expected value
         /// </summary>
         [Fact]
         public void LoadBmp_ShouldReturnExpectedValue()
@@ -697,7 +671,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set clip rect should return expected value
+        ///     Tests that set clip rect should return expected value
         /// </summary>
         [Fact]
         public void SetClipRect_ShouldReturnExpectedValue()
@@ -720,7 +694,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set color key should return expected value
+        ///     Tests that set color key should return expected value
         /// </summary>
         [Fact]
         public void SetColorKey_ShouldReturnExpectedValue()
@@ -743,7 +717,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set surface alpha mod should return expected value
+        ///     Tests that set surface alpha mod should return expected value
         /// </summary>
         [Fact]
         public void SetSurfaceAlphaMod_ShouldReturnExpectedValue()
@@ -765,7 +739,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set surface blend mode should return expected value
+        ///     Tests that set surface blend mode should return expected value
         /// </summary>
         [Fact]
         public void SetSurfaceBlendMode_ShouldReturnExpectedValue()
@@ -787,7 +761,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set surface color mod should return expected value
+        ///     Tests that set surface color mod should return expected value
         /// </summary>
         [Fact]
         public void SetSurfaceColorMod_ShouldReturnExpectedValue()
@@ -809,7 +783,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set surface palette should return expected value
+        ///     Tests that set surface palette should return expected value
         /// </summary>
         [Fact]
         public void SetSurfacePalette_ShouldReturnExpectedValue()
@@ -831,7 +805,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set surface rle should return expected value
+        ///     Tests that set surface rle should return expected value
         /// </summary>
         [Fact]
         public void SetSurfaceRle_ShouldReturnExpectedValue()
@@ -853,7 +827,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that has surface rle should return expected value
+        ///     Tests that has surface rle should return expected value
         /// </summary>
         [Fact]
         public void HasSurfaceRle_ShouldReturnExpectedValue()
@@ -875,7 +849,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that upper blit should return expected value
+        ///     Tests that upper blit should return expected value
         /// </summary>
         [Fact]
         public void UpperBlit_ShouldReturnExpectedValue()
@@ -899,7 +873,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that upper blit scaled should return expected value
+        ///     Tests that upper blit scaled should return expected value
         /// </summary>
         [Fact]
         public void UpperBlitScaled_ShouldReturnExpectedValue()
@@ -923,7 +897,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that has clipboard text should return expected value
+        ///     Tests that has clipboard text should return expected value
         /// </summary>
         [Fact]
         public void HasClipboardText_ShouldReturnExpectedValue()
@@ -943,7 +917,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get clipboard text should return expected value
+        ///     Tests that get clipboard text should return expected value
         /// </summary>
         [Fact]
         public void GetClipboardText_ShouldReturnExpectedValue()
@@ -966,7 +940,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set clipboard text should return expected value
+        ///     Tests that set clipboard text should return expected value
         /// </summary>
         [Fact]
         public void SetClipboardText_ShouldReturnExpectedValue()
@@ -987,7 +961,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that peep events should return expected value
+        ///     Tests that peep events should return expected value
         /// </summary>
         [Fact]
         public void PeepEvents_ShouldReturnExpectedValue()
@@ -1012,7 +986,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that has event should return expected value
+        ///     Tests that has event should return expected value
         /// </summary>
         [Fact]
         public void HasEvent_ShouldReturnExpectedValue()
@@ -1034,7 +1008,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that has events should return expected value
+        ///     Tests that has events should return expected value
         /// </summary>
         [Fact]
         public void HasEvents_ShouldReturnExpectedValue()
@@ -1057,7 +1031,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that flush event should not throw exception
+        ///     Tests that flush event should not throw exception
         /// </summary>
         [Fact]
         public void FlushEvent_ShouldNotThrowException()
@@ -1078,7 +1052,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller set sensor enabled should return expected value
+        ///     Tests that game controller set sensor enabled should return expected value
         /// </summary>
         [Fact]
         public void GameControllerSetSensorEnabled_ShouldReturnExpectedValue()
@@ -1102,7 +1076,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller is sensor enabled should return expected value
+        ///     Tests that game controller is sensor enabled should return expected value
         /// </summary>
         [Fact]
         public void GameControllerIsSensorEnabled_ShouldReturnExpectedValue()
@@ -1125,7 +1099,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get sensor data should return expected value
+        ///     Tests that game controller get sensor data should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetSensorData_ShouldReturnExpectedValue()
@@ -1150,7 +1124,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get sensor data rate should return expected value
+        ///     Tests that game controller get sensor data rate should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetSensorDataRate_ShouldReturnExpectedValue()
@@ -1173,7 +1147,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller send effect should return expected value
+        ///     Tests that game controller send effect should return expected value
         /// </summary>
         [Fact]
         public void GameControllerSendEffect_ShouldReturnExpectedValue()
@@ -1197,7 +1171,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick is haptic should return expected value
+        ///     Tests that joystick is haptic should return expected value
         /// </summary>
         [Fact]
         public void JoystickIsHaptic_ShouldReturnExpectedValue()
@@ -1219,7 +1193,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that mouse is haptic should return expected value
+        ///     Tests that mouse is haptic should return expected value
         /// </summary>
         [Fact]
         public void MouseIsHaptic_ShouldReturnExpectedValue()
@@ -1240,7 +1214,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that num haptics should return expected value
+        ///     Tests that num haptics should return expected value
         /// </summary>
         [Fact]
         public void NumHaptics_ShouldReturnExpectedValue()
@@ -1261,7 +1235,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that num sensors should return expected value
+        ///     Tests that num sensors should return expected value
         /// </summary>
         [Fact]
         public void NumSensors_ShouldReturnExpectedValue()
@@ -1282,7 +1256,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sensor get device name should return expected value
+        ///     Tests that sensor get device name should return expected value
         /// </summary>
         [Fact]
         public void SensorGetDeviceName_ShouldReturnExpectedValue()
@@ -1304,7 +1278,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sensor get device type should return expected value
+        ///     Tests that sensor get device type should return expected value
         /// </summary>
         [Fact]
         public void SensorGetDeviceType_ShouldReturnExpectedValue()
@@ -1326,7 +1300,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sensor get device non portable type should return expected value
+        ///     Tests that sensor get device non portable type should return expected value
         /// </summary>
         [Fact]
         public void SensorGetDeviceNonPortableType_ShouldReturnExpectedValue()
@@ -1348,7 +1322,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sensor get device instance id should return expected value
+        ///     Tests that sensor get device instance id should return expected value
         /// </summary>
         [Fact]
         public void SensorGetDeviceInstanceId_ShouldReturnExpectedValue()
@@ -1370,7 +1344,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sensor open should return expected value
+        ///     Tests that sensor open should return expected value
         /// </summary>
         [Fact]
         public void SensorOpen_ShouldReturnExpectedValue()
@@ -1392,7 +1366,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sensor from instance id should return expected value
+        ///     Tests that sensor from instance id should return expected value
         /// </summary>
         [Fact]
         public void SensorFromInstanceId_ShouldReturnExpectedValue()
@@ -1414,7 +1388,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sensor get name should return expected value
+        ///     Tests that sensor get name should return expected value
         /// </summary>
         [Fact]
         public void SensorGetName_ShouldReturnExpectedValue()
@@ -1436,7 +1410,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sensor get type should return expected value
+        ///     Tests that sensor get type should return expected value
         /// </summary>
         [Fact]
         public void SensorGetType_ShouldReturnExpectedValue()
@@ -1458,7 +1432,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sensor get non portable type should return expected value
+        ///     Tests that sensor get non portable type should return expected value
         /// </summary>
         [Fact]
         public void SensorGetNonPortableType_ShouldReturnExpectedValue()
@@ -1480,7 +1454,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sensor get instance id should return expected value
+        ///     Tests that sensor get instance id should return expected value
         /// </summary>
         [Fact]
         public void SensorGetInstanceId_ShouldReturnExpectedValue()
@@ -1502,7 +1476,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sensor get data should return expected value
+        ///     Tests that sensor get data should return expected value
         /// </summary>
         [Fact]
         public void SensorGetData_ShouldReturnExpectedValue()
@@ -1526,7 +1500,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sensor close should not throw exception
+        ///     Tests that sensor close should not throw exception
         /// </summary>
         [Fact]
         public void SensorClose_ShouldNotThrowException()
@@ -1547,7 +1521,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sensor update should not throw exception
+        ///     Tests that sensor update should not throw exception
         /// </summary>
         [Fact]
         public void SensorUpdate_ShouldNotThrowException()
@@ -1567,7 +1541,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller from instance id should return expected value
+        ///     Tests that game controller from instance id should return expected value
         /// </summary>
         [Fact]
         public void GameControllerFromInstanceId_ShouldReturnExpectedValue()
@@ -1589,7 +1563,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller type for index should return expected value
+        ///     Tests that game controller type for index should return expected value
         /// </summary>
         [Fact]
         public void GameControllerTypeForIndex_ShouldReturnExpectedValue()
@@ -1611,7 +1585,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get type should return expected value
+        ///     Tests that game controller get type should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetType_ShouldReturnExpectedValue()
@@ -1633,7 +1607,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller from player index should return expected value
+        ///     Tests that game controller from player index should return expected value
         /// </summary>
         [Fact]
         public void GameControllerFromPlayerIndex_ShouldReturnExpectedValue()
@@ -1655,7 +1629,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller set player index should not throw exception
+        ///     Tests that game controller set player index should not throw exception
         /// </summary>
         [Fact]
         public void GameControllerSetPlayerIndex_ShouldNotThrowException()
@@ -1677,7 +1651,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller has led should return expected value
+        ///     Tests that game controller has led should return expected value
         /// </summary>
         [Fact]
         public void GameControllerHasLed_ShouldReturnExpectedValue()
@@ -1699,7 +1673,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller has rumble should return expected value
+        ///     Tests that game controller has rumble should return expected value
         /// </summary>
         [Fact]
         public void GameControllerHasRumble_ShouldReturnExpectedValue()
@@ -1721,7 +1695,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller has rumble triggers should return expected value
+        ///     Tests that game controller has rumble triggers should return expected value
         /// </summary>
         [Fact]
         public void GameControllerHasRumbleTriggers_ShouldReturnExpectedValue()
@@ -1742,7 +1716,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller set led should return expected value
+        ///     Tests that game controller set led should return expected value
         /// </summary>
         [Fact]
         public void GameControllerSetLed_ShouldReturnExpectedValue()
@@ -1767,7 +1741,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller has axis should return expected value
+        ///     Tests that game controller has axis should return expected value
         /// </summary>
         [Fact]
         public void GameControllerHasAxis_ShouldReturnExpectedValue()
@@ -1790,7 +1764,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller has button should return expected value
+        ///     Tests that game controller has button should return expected value
         /// </summary>
         [Fact]
         public void GameControllerHasButton_ShouldReturnExpectedValue()
@@ -1813,7 +1787,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get num touchpads should return expected value
+        ///     Tests that game controller get num touchpads should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetNumTouchpads_ShouldReturnExpectedValue()
@@ -1834,7 +1808,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get window surface should return expected value
+        ///     Tests that get window surface should return expected value
         /// </summary>
         [Fact]
         public void GetWindowSurface_ShouldReturnExpectedValue()
@@ -1855,7 +1829,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get window grab should return expected value
+        ///     Tests that get window grab should return expected value
         /// </summary>
         [Fact]
         public void GetWindowGrab_ShouldReturnExpectedValue()
@@ -1876,7 +1850,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that warp mouse in window should execute without exception
+        ///     Tests that warp mouse in window should execute without exception
         /// </summary>
         [Fact]
         public void WarpMouseInWindow_ShouldExecuteWithoutException()
@@ -1899,7 +1873,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that warp mouse global should return expected value
+        ///     Tests that warp mouse global should return expected value
         /// </summary>
         [Fact]
         public void WarpMouseGlobal_ShouldReturnExpectedValue()
@@ -1922,7 +1896,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set relative mouse mode should return expected value
+        ///     Tests that set relative mouse mode should return expected value
         /// </summary>
         [Fact]
         public void SetRelativeMouseMode_ShouldReturnExpectedValue()
@@ -1944,7 +1918,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that capture mouse should return expected value
+        ///     Tests that capture mouse should return expected value
         /// </summary>
         [Fact]
         public void CaptureMouse_ShouldReturnExpectedValue()
@@ -1966,7 +1940,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get relative mouse mode should return expected value
+        ///     Tests that get relative mouse mode should return expected value
         /// </summary>
         [Fact]
         public void GetRelativeMouseMode_ShouldReturnExpectedValue()
@@ -1987,7 +1961,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that create cursor should return expected value
+        ///     Tests that create cursor should return expected value
         /// </summary>
         [Fact]
         public void CreateCursor_ShouldReturnExpectedValue()
@@ -2014,7 +1988,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that create color cursor should return expected value
+        ///     Tests that create color cursor should return expected value
         /// </summary>
         [Fact]
         public void CreateColorCursor_ShouldReturnExpectedValue()
@@ -2038,7 +2012,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that create system cursor should return expected value
+        ///     Tests that create system cursor should return expected value
         /// </summary>
         [Fact]
         public void CreateSystemCursor_ShouldReturnExpectedValue()
@@ -2066,7 +2040,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set cursor should execute without exception
+        ///     Tests that set cursor should execute without exception
         /// </summary>
         [Fact]
         public void SetCursor_ShouldExecuteWithoutException()
@@ -2087,7 +2061,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get cursor should return expected value
+        ///     Tests that get cursor should return expected value
         /// </summary>
         [Fact]
         public void GetCursor_ShouldReturnExpectedValue()
@@ -2114,7 +2088,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that free cursor should execute without exception
+        ///     Tests that free cursor should execute without exception
         /// </summary>
         [Fact]
         public void FreeCursor_ShouldExecuteWithoutException()
@@ -2135,7 +2109,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that show cursor should return expected value
+        ///     Tests that show cursor should return expected value
         /// </summary>
         [Fact]
         public void ShowCursor_ShouldReturnExpectedValue()
@@ -2157,7 +2131,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that del event watch should execute without exception
+        ///     Tests that del event watch should execute without exception
         /// </summary>
         [Fact]
         public void DelEventWatch_ShouldExecuteWithoutException()
@@ -2178,7 +2152,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get event state should return expected value
+        ///     Tests that get event state should return expected value
         /// </summary>
         [Fact]
         public void GetEventState_ShouldReturnExpectedValue()
@@ -2200,7 +2174,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that register events should return expected value
+        ///     Tests that register events should return expected value
         /// </summary>
         [Fact]
         public void RegisterEvents_ShouldReturnExpectedValue()
@@ -2222,7 +2196,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that scan code to key code should return expected value
+        ///     Tests that scan code to key code should return expected value
         /// </summary>
         [Fact]
         public void ScanCodeToKeyCode_ShouldReturnExpectedValue()
@@ -2244,7 +2218,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get keyboard focus should return expected value
+        ///     Tests that get keyboard focus should return expected value
         /// </summary>
         [Fact]
         public void GetKeyboardFocus_ShouldReturnExpectedValue()
@@ -2265,7 +2239,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get keyboard state should return expected value
+        ///     Tests that get keyboard state should return expected value
         /// </summary>
         [Fact]
         public void GetKeyboardState_ShouldReturnExpectedValue()
@@ -2286,7 +2260,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get mod state should return expected value
+        ///     Tests that get mod state should return expected value
         /// </summary>
         [Fact]
         public void GetModState_ShouldReturnExpectedValue()
@@ -2313,7 +2287,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set mod state should execute without exception
+        ///     Tests that set mod state should execute without exception
         /// </summary>
         [Fact]
         public void SetModState_ShouldExecuteWithoutException()
@@ -2334,7 +2308,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get key from scancode should return expected value
+        ///     Tests that get key from scancode should return expected value
         /// </summary>
         [Fact]
         public void GetKeyFromScancode_ShouldReturnExpectedValue()
@@ -2356,7 +2330,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get scancode from key should return expected value
+        ///     Tests that get scancode from key should return expected value
         /// </summary>
         [Fact]
         public void GetScancodeFromKey_ShouldReturnExpectedValue()
@@ -2378,7 +2352,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get scancode name should return expected value
+        ///     Tests that get scancode name should return expected value
         /// </summary>
         [Fact]
         public void GetScancodeName_ShouldReturnExpectedValue()
@@ -2400,7 +2374,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get scancode from name should return expected value
+        ///     Tests that get scancode from name should return expected value
         /// </summary>
         [Fact]
         public void GetScancodeFromName_ShouldReturnExpectedValue()
@@ -2422,7 +2396,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get key name should return expected value
+        ///     Tests that get key name should return expected value
         /// </summary>
         [Fact]
         public void GetKeyName_ShouldReturnExpectedValue()
@@ -2444,7 +2418,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get key from name should return expected value
+        ///     Tests that get key from name should return expected value
         /// </summary>
         [Fact]
         public void GetKeyFromName_ShouldReturnExpectedValue()
@@ -2466,7 +2440,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy with rectangle i returns expected result
+        ///     Tests that render copy with rectangle i returns expected result
         /// </summary>
         [Fact]
         public void RenderCopy_WithRectangleI_ReturnsExpectedResult()
@@ -2486,7 +2460,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy with int ptr returns expected result
+        ///     Tests that render copy with int ptr returns expected result
         /// </summary>
         [Fact]
         public void RenderCopy_WithIntPtr_ReturnsExpectedResult()
@@ -2507,7 +2481,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick close with valid joystick closes without error
+        ///     Tests that joystick close with valid joystick closes without error
         /// </summary>
         [Fact]
         public void JoystickClose_WithValidJoystick_ClosesWithoutError()
@@ -2528,7 +2502,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick close with invalid joystick throws exception
+        ///     Tests that joystick close with invalid joystick throws exception
         /// </summary>
         [Fact]
         public void JoystickClose_WithInvalidJoystick_ThrowsException()
@@ -2548,7 +2522,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get guid string valid guid returns expected string
+        ///     Tests that joystick get guid string valid guid returns expected string
         /// </summary>
         [Fact]
         public void JoystickGetGuidString_ValidGuid_ReturnsExpectedString()
@@ -2571,7 +2545,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get guid string invalid guid throws exception
+        ///     Tests that joystick get guid string invalid guid throws exception
         /// </summary>
         [Fact]
         public void JoystickGetGuidString_InvalidGuid_ThrowsException()
@@ -2593,7 +2567,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get relative mouse state valid params returns expected uint
+        ///     Tests that get relative mouse state valid params returns expected uint
         /// </summary>
         [Fact]
         public void GetRelativeMouseState_ValidParams_ReturnsExpectedUint()
@@ -2612,7 +2586,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get relative mouse state invalid params throws exception
+        ///     Tests that get relative mouse state invalid params throws exception
         /// </summary>
         [Fact]
         public void GetRelativeMouseState_InvalidParams_ThrowsException()
@@ -2629,9 +2603,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             Sdl.Quit();
         }
-        
+
         /// <summary>
-        /// Tests that push event valid event returns expected int
+        ///     Tests that push event valid event returns expected int
         /// </summary>
         [Fact]
         public void PushEvent_ValidEvent_ReturnsExpectedInt()
@@ -2652,7 +2626,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set event filter valid filter sets filter without error
+        ///     Tests that set event filter valid filter sets filter without error
         /// </summary>
         [Fact]
         public void SetEventFilter_ValidFilter_SetsFilterWithoutError()
@@ -2673,7 +2647,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that add event watch valid filter adds watch without error
+        ///     Tests that add event watch valid filter adds watch without error
         /// </summary>
         [Fact]
         public void AddEventWatch_ValidFilter_AddsWatchWithoutError()
@@ -2694,7 +2668,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get mouse state x and y out valid params returns expected uint
+        ///     Tests that get mouse state x and y out valid params returns expected uint
         /// </summary>
         [Fact]
         public void GetMouseStateXAndYOut_ValidParams_ReturnsExpectedUint()
@@ -2715,7 +2689,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get mouse state x out and y valid params returns expected uint
+        ///     Tests that get mouse state x out and y valid params returns expected uint
         /// </summary>
         [Fact]
         public void GetMouseStateXOutAndY_ValidParams_ReturnsExpectedUint()
@@ -2736,7 +2710,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get mouse state to x and y valid params returns expected uint
+        ///     Tests that get mouse state to x and y valid params returns expected uint
         /// </summary>
         [Fact]
         public void GetMouseStateToXAndY_ValidParams_ReturnsExpectedUint()
@@ -2758,7 +2732,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that blit surface valid params returns expected int
+        ///     Tests that blit surface valid params returns expected int
         /// </summary>
         [Fact]
         public void BlitSurface_ValidParams_ReturnsExpectedInt()
@@ -2782,7 +2756,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that blit surface ref src rect valid params returns expected int
+        ///     Tests that blit surface ref src rect valid params returns expected int
         /// </summary>
         [Fact]
         public void BlitSurface_RefSrcRect_ValidParams_ReturnsExpectedInt()
@@ -2806,7 +2780,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that blit surface no ref src rect valid params returns expected int
+        ///     Tests that blit surface no ref src rect valid params returns expected int
         /// </summary>
         [Fact]
         public void BlitSurface_NoRefSrcRect_ValidParams_ReturnsExpectedInt()
@@ -2830,7 +2804,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that format enum to masks valid params returns expected bool
+        ///     Tests that format enum to masks valid params returns expected bool
         /// </summary>
         [Fact]
         public void FormatEnumToMasks_ValidParams_ReturnsExpectedBool()
@@ -2851,7 +2825,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set palette colors valid params returns expected int
+        ///     Tests that set palette colors valid params returns expected int
         /// </summary>
         [Fact]
         public void SetPaletteColors_ValidParams_ReturnsExpectedInt()
@@ -2874,7 +2848,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set pixel format palette valid params returns expected int
+        ///     Tests that set pixel format palette valid params returns expected int
         /// </summary>
         [Fact]
         public void SetPixelFormatPalette_ValidParams_ReturnsExpectedInt()
@@ -2896,7 +2870,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that fill rect valid params returns expected int
+        ///     Tests that fill rect valid params returns expected int
         /// </summary>
         [Fact]
         public void FillRect_ValidParams_ReturnsExpectedInt()
@@ -2919,7 +2893,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that fill rects valid params returns expected int
+        ///     Tests that fill rects valid params returns expected int
         /// </summary>
         [Fact]
         public void FillRects_ValidParams_ReturnsExpectedInt()
@@ -2943,7 +2917,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy ex valid params returns expected int
+        ///     Tests that render copy ex valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderCopyEx_ValidParams_ReturnsExpectedInt()
@@ -2970,7 +2944,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy ex with int ptr src rect valid params returns expected int
+        ///     Tests that render copy ex with int ptr src rect valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderCopyEx_WithIntPtrSrcRect_ValidParams_ReturnsExpectedInt()
@@ -2997,7 +2971,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy ex with int ptr dst rect valid params returns expected int
+        ///     Tests that render copy ex with int ptr dst rect valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderCopyEx_WithIntPtrDstRect_ValidParams_ReturnsExpectedInt()
@@ -3024,7 +2998,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy ex with int ptr center valid params returns expected int
+        ///     Tests that render copy ex with int ptr center valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderCopyEx_WithIntPtrCenter_ValidParams_ReturnsExpectedInt()
@@ -3051,7 +3025,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy f valid params returns expected int
+        ///     Tests that render copy f valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderCopyF_ValidParams_ReturnsExpectedInt()
@@ -3075,7 +3049,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy ex v 2 valid params returns expected int
+        ///     Tests that render copy ex v 2 valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderCopyEx_v2_ValidParams_ReturnsExpectedInt()
@@ -3102,7 +3076,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render set clip rect valid params returns expected int
+        ///     Tests that render set clip rect valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderSetClipRect_ValidParams_ReturnsExpectedInt()
@@ -3124,7 +3098,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy ex f valid params returns expected int
+        ///     Tests that render copy ex f valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderCopyExF_ValidParams_ReturnsExpectedInt()
@@ -3151,7 +3125,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that gl button l mask valid call returns expected uint
+        ///     Tests that gl button l mask valid call returns expected uint
         /// </summary>
         [Fact]
         public void GlButtonLMask_ValidCall_ReturnsExpectedUint()
@@ -3170,7 +3144,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that gl button m mask valid call returns expected uint
+        ///     Tests that gl button m mask valid call returns expected uint
         /// </summary>
         [Fact]
         public void GlButtonMMask_ValidCall_ReturnsExpectedUint()
@@ -3189,7 +3163,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that gl button r mask valid call returns expected uint
+        ///     Tests that gl button r mask valid call returns expected uint
         /// </summary>
         [Fact]
         public void GlButtonRMask_ValidCall_ReturnsExpectedUint()
@@ -3208,7 +3182,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that gl button x 1 mask valid call returns expected uint
+        ///     Tests that gl button x 1 mask valid call returns expected uint
         /// </summary>
         [Fact]
         public void GlButtonX1Mask_ValidCall_ReturnsExpectedUint()
@@ -3227,7 +3201,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that gl button x 2 mask valid call returns expected uint
+        ///     Tests that gl button x 2 mask valid call returns expected uint
         /// </summary>
         [Fact]
         public void GlButtonX2Mask_ValidCall_ReturnsExpectedUint()
