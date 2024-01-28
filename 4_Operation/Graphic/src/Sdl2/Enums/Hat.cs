@@ -30,7 +30,7 @@
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    /// The hat enum
+    ///     The hat enum
     /// </summary>
     public enum Hat : byte
     {
@@ -77,6 +77,6 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         /// <summary>
         ///     The sdl hat down
         /// </summary>
-        HatLeftDown = HatLeft | HatDown,
+        HatLeftDown = HatLeft | HatDown
     }
 }

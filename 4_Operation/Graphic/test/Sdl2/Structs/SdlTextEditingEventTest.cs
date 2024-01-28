@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
-    /// The sdl text editing event test class
+    ///     The sdl text editing event test class
     /// </summary>
     public class SdlTextEditingEventTest
     {
         /// <summary>
-        /// Tests that text valid call returns expected string
+        ///     Tests that text valid call returns expected string
         /// </summary>
         [Fact]
         public void Text_ValidCall_ReturnsExpectedString()
@@ -49,7 +49,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             int initResult = Sdl.Init(SdlInit.InitEverything);
             Assert.Equal(0, initResult);
 
-            SdlTextEditingEvent textEditingEvent = new SdlTextEditingEvent(); 
+            SdlTextEditingEvent textEditingEvent = new SdlTextEditingEvent();
 
             // Act
             string result = textEditingEvent.Text;
