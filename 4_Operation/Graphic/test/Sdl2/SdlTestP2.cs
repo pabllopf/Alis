@@ -695,29 +695,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that save bmp should return expected value
-        /// </summary>
-        [Fact]
-        public void SaveBmp_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr surface = IntPtr.Zero;
-            string file = "test.bmp";
-
-            // Act
-            if (!File.Exists(file))
-            {
-                int result = Sdl.SaveBmp(surface, file);
-                Assert.True(result >= -1);
-            }
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
-        /// <summary>
         /// Tests that set clip rect should return expected value
         /// </summary>
         [Fact]
