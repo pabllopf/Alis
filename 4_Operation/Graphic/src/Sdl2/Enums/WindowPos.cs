@@ -32,10 +32,10 @@ using System;
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    /// The window pos enum
+    ///     The window pos enum
     /// </summary>
     [Flags]
-    public enum WindowPos : int
+    public enum WindowPos
     {
         /// <summary>
         ///     The sdl window pos undefined mask
@@ -55,6 +55,6 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         /// <summary>
         ///     The sdl window pos centered
         /// </summary>
-        WindowPosCentered = 0x2FFF0000,
+        WindowPosCentered = 0x2FFF0000
     }
 }

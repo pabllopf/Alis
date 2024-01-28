@@ -38,13 +38,12 @@ using Xunit;
 namespace Alis.Core.Graphic.Test.Sdl2
 {
     /// <summary>
-    /// The sdl test class
+    ///     The sdl test class
     /// </summary>
     public class SdlTestP3
     {
-
         /// <summary>
-        /// Tests that game controller get num touchpad fingers should return expected value
+        ///     Tests that game controller get num touchpad fingers should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetNumTouchpadFingers_ShouldReturnExpectedValue()
@@ -67,7 +66,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get touchpad finger should return expected value
+        ///     Tests that game controller get touchpad finger should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetTouchpadFinger_ShouldReturnExpectedValue()
@@ -90,7 +89,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller has sensor should return expected value
+        ///     Tests that game controller has sensor should return expected value
         /// </summary>
         [Fact]
         public void GameControllerHasSensor_ShouldReturnExpectedValue()
@@ -113,7 +112,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get joystick should return expected value
+        ///     Tests that game controller get joystick should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetJoystick_ShouldReturnExpectedValue()
@@ -135,7 +134,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller event state should return expected value
+        ///     Tests that game controller event state should return expected value
         /// </summary>
         [Fact]
         public void GameControllerEventState_ShouldReturnExpectedValue()
@@ -157,7 +156,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller update should not throw exception
+        ///     Tests that game controller update should not throw exception
         /// </summary>
         [Fact]
         public void GameControllerUpdate_ShouldNotThrowException()
@@ -177,7 +176,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get axis from string should return expected value
+        ///     Tests that game controller get axis from string should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetAxisFromString_ShouldReturnExpectedValue()
@@ -199,7 +198,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get string for axis should return expected value
+        ///     Tests that game controller get string for axis should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetStringForAxis_ShouldReturnExpectedValue()
@@ -220,7 +219,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get bind for axis should return expected value
+        ///     Tests that game controller get bind for axis should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetBindForAxis_ShouldReturnExpectedValue()
@@ -243,7 +242,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get axis should return expected value
+        ///     Tests that game controller get axis should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetAxis_ShouldReturnExpectedValue()
@@ -266,7 +265,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get button from string should return expected value
+        ///     Tests that game controller get button from string should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetButtonFromString_ShouldReturnExpectedValue()
@@ -288,7 +287,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get string for button should return expected value
+        ///     Tests that game controller get string for button should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetStringForButton_ShouldReturnExpectedValue()
@@ -309,7 +308,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get bind for button should return expected value
+        ///     Tests that game controller get bind for button should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetBindForButton_ShouldReturnExpectedValue()
@@ -331,7 +330,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get button should return expected value
+        ///     Tests that game controller get button should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetButton_ShouldReturnExpectedValue()
@@ -354,7 +353,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller rumble should return expected value
+        ///     Tests that game controller rumble should return expected value
         /// </summary>
         [Fact]
         public void GameControllerRumble_ShouldReturnExpectedValue()
@@ -378,7 +377,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller rumble triggers should return expected value
+        ///     Tests that game controller rumble triggers should return expected value
         /// </summary>
         [Fact]
         public void GameControllerRumbleTriggers_ShouldReturnExpectedValue()
@@ -402,7 +401,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller close should not throw exception
+        ///     Tests that game controller close should not throw exception
         /// </summary>
         [Fact]
         public void GameControllerClose_ShouldNotThrowException()
@@ -423,7 +422,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick set led should return expected value
+        ///     Tests that joystick set led should return expected value
         /// </summary>
         [Fact]
         public void JoystickSetLed_ShouldReturnExpectedValue()
@@ -448,7 +447,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick send effect should return expected value
+        ///     Tests that joystick send effect should return expected value
         /// </summary>
         [Fact]
         public void JoystickSendEffect_ShouldReturnExpectedValue()
@@ -472,7 +471,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller add mapping should return expected value
+        ///     Tests that game controller add mapping should return expected value
         /// </summary>
         [Fact]
         public void GameControllerAddMapping_ShouldReturnExpectedValue()
@@ -494,7 +493,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller num mappings should return expected value
+        ///     Tests that game controller num mappings should return expected value
         /// </summary>
         [Fact]
         public void GameControllerNumMappings_ShouldReturnExpectedValue()
@@ -515,7 +514,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller mapping for index should return expected value
+        ///     Tests that game controller mapping for index should return expected value
         /// </summary>
         [Fact]
         public void GameControllerMappingForIndex_ShouldReturnExpectedValue()
@@ -537,7 +536,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller add mappings from file should return expected value
+        ///     Tests that game controller add mappings from file should return expected value
         /// </summary>
         [Fact]
         public void GameControllerAddMappingsFromFile_ShouldReturnExpectedValue()
@@ -559,7 +558,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller mapping for guid should return expected value
+        ///     Tests that game controller mapping for guid should return expected value
         /// </summary>
         [Fact]
         public void GameControllerMappingForGuid_ShouldReturnExpectedValue()
@@ -581,7 +580,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller mapping should return expected value
+        ///     Tests that game controller mapping should return expected value
         /// </summary>
         [Fact]
         public void GameControllerMapping_ShouldReturnExpectedValue()
@@ -603,7 +602,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that is game controller should return expected value
+        ///     Tests that is game controller should return expected value
         /// </summary>
         [Fact]
         public void IsGameController_ShouldReturnExpectedValue()
@@ -625,7 +624,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller name for index should return expected value
+        ///     Tests that game controller name for index should return expected value
         /// </summary>
         [Fact]
         public void GameControllerNameForIndex_ShouldReturnExpectedValue()
@@ -647,7 +646,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller mapping for device index should return expected value
+        ///     Tests that game controller mapping for device index should return expected value
         /// </summary>
         [Fact]
         public void GameControllerMappingForDeviceIndex_ShouldReturnExpectedValue()
@@ -669,7 +668,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller open should return expected value
+        ///     Tests that game controller open should return expected value
         /// </summary>
         [Fact]
         public void GameControllerOpen_ShouldReturnExpectedValue()
@@ -691,7 +690,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller name should return expected value
+        ///     Tests that game controller name should return expected value
         /// </summary>
         [Fact]
         public void GameControllerName_ShouldReturnExpectedValue()
@@ -713,7 +712,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get vendor should return expected value
+        ///     Tests that game controller get vendor should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetVendor_ShouldReturnExpectedValue()
@@ -735,7 +734,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get product should return expected value
+        ///     Tests that game controller get product should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetProduct_ShouldReturnExpectedValue()
@@ -757,7 +756,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get product version should return expected value
+        ///     Tests that game controller get product version should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetProductVersion_ShouldReturnExpectedValue()
@@ -779,7 +778,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get serial should return expected value
+        ///     Tests that game controller get serial should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetSerial_ShouldReturnExpectedValue()
@@ -801,7 +800,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that game controller get attached should return expected value
+        ///     Tests that game controller get attached should return expected value
         /// </summary>
         [Fact]
         public void GameControllerGetAttached_ShouldReturnExpectedValue()
@@ -823,7 +822,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get vendor should return expected value
+        ///     Tests that joystick get vendor should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetVendor_ShouldReturnExpectedValue()
@@ -845,7 +844,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get product should return expected value
+        ///     Tests that joystick get product should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetProduct_ShouldReturnExpectedValue()
@@ -867,7 +866,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get product version should return expected value
+        ///     Tests that joystick get product version should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetProductVersion_ShouldReturnExpectedValue()
@@ -889,7 +888,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get serial should return expected value
+        ///     Tests that joystick get serial should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetSerial_ShouldReturnExpectedValue()
@@ -911,7 +910,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get type should return expected value
+        ///     Tests that joystick get type should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetType_ShouldReturnExpectedValue()
@@ -933,7 +932,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get attached should return expected value
+        ///     Tests that joystick get attached should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetAttached_ShouldReturnExpectedValue()
@@ -955,7 +954,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick instance id should return expected value
+        ///     Tests that joystick instance id should return expected value
         /// </summary>
         [Fact]
         public void JoystickInstanceId_ShouldReturnExpectedValue()
@@ -977,7 +976,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick current power level should return expected value
+        ///     Tests that joystick current power level should return expected value
         /// </summary>
         [Fact]
         public void JoystickCurrentPowerLevel_ShouldReturnExpectedValue()
@@ -999,7 +998,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick from instance id should return expected value
+        ///     Tests that joystick from instance id should return expected value
         /// </summary>
         [Fact]
         public void JoystickFromInstanceId_ShouldReturnExpectedValue()
@@ -1021,7 +1020,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that lock joysticks should not throw exception
+        ///     Tests that lock joysticks should not throw exception
         /// </summary>
         [Fact]
         public void LockJoysticks_ShouldNotThrowException()
@@ -1041,7 +1040,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that unlock joysticks should not throw exception
+        ///     Tests that unlock joysticks should not throw exception
         /// </summary>
         [Fact]
         public void UnlockJoysticks_ShouldNotThrowException()
@@ -1061,7 +1060,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick from player index should return expected value
+        ///     Tests that joystick from player index should return expected value
         /// </summary>
         [Fact]
         public void JoystickFromPlayerIndex_ShouldReturnExpectedValue()
@@ -1083,7 +1082,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick set player index should not throw exception
+        ///     Tests that joystick set player index should not throw exception
         /// </summary>
         [Fact]
         public void JoystickSetPlayerIndex_ShouldNotThrowException()
@@ -1105,7 +1104,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sdl joystick attach virtual should return expected value
+        ///     Tests that sdl joystick attach virtual should return expected value
         /// </summary>
         [Fact]
         public void SdlJoystickAttachVirtual_ShouldReturnExpectedValue()
@@ -1130,7 +1129,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick detach virtual should return expected value
+        ///     Tests that joystick detach virtual should return expected value
         /// </summary>
         [Fact]
         public void JoystickDetachVirtual_ShouldReturnExpectedValue()
@@ -1152,7 +1151,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick is virtual should return expected value
+        ///     Tests that joystick is virtual should return expected value
         /// </summary>
         [Fact]
         public void JoystickIsVirtual_ShouldReturnExpectedValue()
@@ -1174,7 +1173,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick set virtual axis should return expected value
+        ///     Tests that joystick set virtual axis should return expected value
         /// </summary>
         [Fact]
         public void JoystickSetVirtualAxis_ShouldReturnExpectedValue()
@@ -1198,7 +1197,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick set virtual button should return expected value
+        ///     Tests that joystick set virtual button should return expected value
         /// </summary>
         [Fact]
         public void JoystickSetVirtualButton_ShouldReturnExpectedValue()
@@ -1222,7 +1221,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick set virtual hat should return expected value
+        ///     Tests that joystick set virtual hat should return expected value
         /// </summary>
         [Fact]
         public void JoystickSetVirtualHat_ShouldReturnExpectedValue()
@@ -1246,7 +1245,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick has led should return expected value
+        ///     Tests that joystick has led should return expected value
         /// </summary>
         [Fact]
         public void JoystickHasLed_ShouldReturnExpectedValue()
@@ -1268,7 +1267,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick has rumble should return expected value
+        ///     Tests that joystick has rumble should return expected value
         /// </summary>
         [Fact]
         public void JoystickHasRumble_ShouldReturnExpectedValue()
@@ -1290,7 +1289,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick has rumble triggers should return expected value
+        ///     Tests that joystick has rumble triggers should return expected value
         /// </summary>
         [Fact]
         public void JoystickHasRumbleTriggers_ShouldReturnExpectedValue()
@@ -1312,7 +1311,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set window display mode v 2 should return expected value
+        ///     Tests that set window display mode v 2 should return expected value
         /// </summary>
         [Fact]
         public void SetWindowDisplayMode_v2_ShouldReturnExpectedValue()
@@ -1335,7 +1334,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set window mouse rect v 2 should return expected value
+        ///     Tests that set window mouse rect v 2 should return expected value
         /// </summary>
         [Fact]
         public void SetWindowMouseRect_v2_ShouldReturnExpectedValue()
@@ -1358,7 +1357,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that create software renderer should return expected value
+        ///     Tests that create software renderer should return expected value
         /// </summary>
         [Fact]
         public void CreateSoftwareRenderer_ShouldReturnExpectedValue()
@@ -1380,7 +1379,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that create texture from surface should return expected value
+        ///     Tests that create texture from surface should return expected value
         /// </summary>
         [Fact]
         public void CreateTextureFromSurface_ShouldReturnExpectedValue()
@@ -1403,7 +1402,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that destroy renderer should execute without exception
+        ///     Tests that destroy renderer should execute without exception
         /// </summary>
         [Fact]
         public void DestroyRenderer_ShouldExecuteWithoutException()
@@ -1424,7 +1423,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that lock texture to surface v 2 should return expected value
+        ///     Tests that lock texture to surface v 2 should return expected value
         /// </summary>
         [Fact]
         public void LockTextureToSurface_V2_ShouldReturnExpectedValue()
@@ -1447,7 +1446,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sensor get instance id v 2 should return expected value
+        ///     Tests that sensor get instance id v 2 should return expected value
         /// </summary>
         [Fact]
         public void SensorGetInstanceId_v2_ShouldReturnExpectedValue()
@@ -1469,7 +1468,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sensor get data v 2 should return expected value
+        ///     Tests that sensor get data v 2 should return expected value
         /// </summary>
         [Fact]
         public void SensorGetData_v2_ShouldReturnExpectedValue()
@@ -1493,7 +1492,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sensor close should execute without exception
+        ///     Tests that sensor close should execute without exception
         /// </summary>
         [Fact]
         public void SensorClose_ShouldExecuteWithoutException()
@@ -1514,7 +1513,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sensor update should execute without exception
+        ///     Tests that sensor update should execute without exception
         /// </summary>
         [Fact]
         public void SensorUpdate_ShouldExecuteWithoutException()
@@ -1534,7 +1533,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that lock sensors should execute without exception
+        ///     Tests that lock sensors should execute without exception
         /// </summary>
         [Fact]
         public void LockSensors_ShouldExecuteWithoutException()
@@ -1554,7 +1553,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that unlock sensors should execute without exception
+        ///     Tests that unlock sensors should execute without exception
         /// </summary>
         [Fact]
         public void UnlockSensors_ShouldExecuteWithoutException()
@@ -1574,7 +1573,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that sdl audio bit size should return expected value
+        ///     Tests that sdl audio bit size should return expected value
         /// </summary>
         [Fact]
         public void SdlAudioBitSize_ShouldReturnExpectedValue()
@@ -1596,7 +1595,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get product v 3 should return expected value
+        ///     Tests that joystick get product v 3 should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetProduct_V3_ShouldReturnExpectedValue()
@@ -1618,7 +1617,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get product version v 3 should return expected value
+        ///     Tests that joystick get product version v 3 should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetProductVersion_V3_ShouldReturnExpectedValue()
@@ -1640,7 +1639,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get serial v 3 should return expected value
+        ///     Tests that joystick get serial v 3 should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetSerial_V3_ShouldReturnExpectedValue()
@@ -1662,7 +1661,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get type v 3 should return expected value
+        ///     Tests that joystick get type v 3 should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetType_V3_ShouldReturnExpectedValue()
@@ -1684,7 +1683,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get attached v 3 should return expected value
+        ///     Tests that joystick get attached v 3 should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetAttached_V3_ShouldReturnExpectedValue()
@@ -1706,7 +1705,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick instance id v 3 should return expected value
+        ///     Tests that joystick instance id v 3 should return expected value
         /// </summary>
         [Fact]
         public void JoystickInstanceId_V3_ShouldReturnExpectedValue()
@@ -1728,7 +1727,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick current power level v 3 should return expected value
+        ///     Tests that joystick current power level v 3 should return expected value
         /// </summary>
         [Fact]
         public void JoystickCurrentPowerLevel_V3_ShouldReturnExpectedValue()
@@ -1750,7 +1749,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick from instance id v 3 should return expected value
+        ///     Tests that joystick from instance id v 3 should return expected value
         /// </summary>
         [Fact]
         public void JoystickFromInstanceId_V3_ShouldReturnExpectedValue()
@@ -1772,7 +1771,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy v 2 should return expected value
+        ///     Tests that render copy v 2 should return expected value
         /// </summary>
         [Fact]
         public void RenderCopy_V2_ShouldReturnExpectedValue()
@@ -1797,7 +1796,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy ex v 2 should return expected value
+        ///     Tests that render copy ex v 2 should return expected value
         /// </summary>
         [Fact]
         public void RenderCopyEx_V2_ShouldReturnExpectedValue()
@@ -1825,7 +1824,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render draw line v 2 should return expected value
+        ///     Tests that render draw line v 2 should return expected value
         /// </summary>
         [Fact]
         public void RenderDrawLine_V2_ShouldReturnExpectedValue()
@@ -1851,7 +1850,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render draw points v 2 should return expected value
+        ///     Tests that render draw points v 2 should return expected value
         /// </summary>
         [Fact]
         public void RenderDrawPoints_V2_ShouldReturnExpectedValue()
@@ -1875,7 +1874,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render draw rect v 2 should return expected value
+        ///     Tests that render draw rect v 2 should return expected value
         /// </summary>
         [Fact]
         public void RenderDrawRect_V2_ShouldReturnExpectedValue()
@@ -1898,7 +1897,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render draw rects should return expected value
+        ///     Tests that render draw rects should return expected value
         /// </summary>
         [Fact]
         public void RenderDrawRects_ShouldReturnExpectedValue()
@@ -1922,7 +1921,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render fill rect v 2 should return expected value
+        ///     Tests that render fill rect v 2 should return expected value
         /// </summary>
         [Fact]
         public void RenderFillRect_V2_ShouldReturnExpectedValue()
@@ -1945,11 +1944,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-
-        /// Tests that render fill rects should return expected value
-
+        ///     Tests that render fill rects should return expected value
         /// </summary>
-
         [Fact]
         public void RenderFillRects_ShouldReturnExpectedValue()
         {
@@ -1972,11 +1968,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-
-        /// Tests that render copy f should return expected value
-
+        ///     Tests that render copy f should return expected value
         /// </summary>
-
         [Fact]
         public void RenderCopyF_ShouldReturnExpectedValue()
         {
@@ -2000,7 +1993,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render fill rects f should return expected value
+        ///     Tests that render fill rects f should return expected value
         /// </summary>
         [Fact]
         public void RenderFillRectsF_ShouldReturnExpectedValue()
@@ -2024,7 +2017,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render get clip rect v 2 should return expected value
+        ///     Tests that render get clip rect v 2 should return expected value
         /// </summary>
         [Fact]
         public void RenderGetClipRect_V2_ShouldReturnExpectedValue()
@@ -2046,7 +2039,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render get logical size v 2 should return expected value
+        ///     Tests that render get logical size v 2 should return expected value
         /// </summary>
         [Fact]
         public void RenderGetLogicalSize_V2_ShouldReturnExpectedValue()
@@ -2069,7 +2062,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render get scale should return expected value
+        ///     Tests that render get scale should return expected value
         /// </summary>
         [Fact]
         public void RenderGetScale_ShouldReturnExpectedValue()
@@ -2092,7 +2085,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render window to logical should return expected value
+        ///     Tests that render window to logical should return expected value
         /// </summary>
         [Fact]
         public void RenderWindowToLogical_ShouldReturnExpectedValue()
@@ -2117,7 +2110,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render logical to window should return expected value
+        ///     Tests that render logical to window should return expected value
         /// </summary>
         [Fact]
         public void RenderLogicalToWindow_ShouldReturnExpectedValue()
@@ -2142,7 +2135,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get hat should return expected value
+        ///     Tests that joystick get hat should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetHat_ShouldReturnExpectedValue()
@@ -2165,7 +2158,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick name should return expected value
+        ///     Tests that joystick name should return expected value
         /// </summary>
         [Fact]
         public void JoystickName_ShouldReturnExpectedValue()
@@ -2187,7 +2180,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick name for index should return expected value
+        ///     Tests that joystick name for index should return expected value
         /// </summary>
         [Fact]
         public void JoystickNameForIndex_ShouldReturnExpectedValue()
@@ -2209,7 +2202,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick num axes should return expected value
+        ///     Tests that joystick num axes should return expected value
         /// </summary>
         [Fact]
         public void JoystickNumAxes_ShouldReturnExpectedValue()
@@ -2231,7 +2224,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick num balls should return expected value
+        ///     Tests that joystick num balls should return expected value
         /// </summary>
         [Fact]
         public void JoystickNumBalls_ShouldReturnExpectedValue()
@@ -2253,7 +2246,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick num buttons should return expected value
+        ///     Tests that joystick num buttons should return expected value
         /// </summary>
         [Fact]
         public void JoystickNumButtons_ShouldReturnExpectedValue()
@@ -2275,7 +2268,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick num hats should return expected value
+        ///     Tests that joystick num hats should return expected value
         /// </summary>
         [Fact]
         public void JoystickNumHats_ShouldReturnExpectedValue()
@@ -2297,7 +2290,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick open should return expected value
+        ///     Tests that joystick open should return expected value
         /// </summary>
         [Fact]
         public void JoystickOpen_ShouldReturnExpectedValue()
@@ -2319,7 +2312,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick update should not throw exception
+        ///     Tests that joystick update should not throw exception
         /// </summary>
         [Fact]
         public void JoystickUpdate_ShouldNotThrowException()
@@ -2339,7 +2332,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that num joysticks should return expected value
+        ///     Tests that num joysticks should return expected value
         /// </summary>
         [Fact]
         public void NumJoysticks_ShouldReturnExpectedValue()
@@ -2360,7 +2353,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get device guid should return expected value
+        ///     Tests that joystick get device guid should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetDeviceGuid_ShouldReturnExpectedValue()
@@ -2382,7 +2375,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get guid should return expected value
+        ///     Tests that joystick get guid should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetGuid_ShouldReturnExpectedValue()
@@ -2404,7 +2397,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get guid from string should return expected value
+        ///     Tests that joystick get guid from string should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetGuidFromString_ShouldReturnExpectedValue()
@@ -2426,7 +2419,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get cursor should return expected value
+        ///     Tests that get cursor should return expected value
         /// </summary>
         [Fact]
         public void GetCursor_ShouldReturnExpectedValue()
@@ -2454,7 +2447,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that show cursor should return expected value
+        ///     Tests that show cursor should return expected value
         /// </summary>
         [Fact]
         public void ShowCursor_ShouldReturnExpectedValue()
@@ -2476,7 +2469,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that button should return expected value
+        ///     Tests that button should return expected value
         /// </summary>
         [Fact]
         public void Button_ShouldReturnExpectedValue()
@@ -2497,7 +2490,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get touch device should return expected value
+        ///     Tests that get touch device should return expected value
         /// </summary>
         [Fact]
         public void GetTouchDevice_ShouldReturnExpectedValue()
@@ -2518,7 +2511,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get num touch fingers should return expected value
+        ///     Tests that get num touch fingers should return expected value
         /// </summary>
         [Fact]
         public void GetNumTouchFingers_ShouldReturnExpectedValue()
@@ -2540,7 +2533,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get touch finger should return expected value
+        ///     Tests that get touch finger should return expected value
         /// </summary>
         [Fact]
         public void GetTouchFinger_ShouldReturnExpectedValue()
@@ -2563,7 +2556,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get touch device type should return expected value
+        ///     Tests that get touch device type should return expected value
         /// </summary>
         [Fact]
         public void GetTouchDeviceType_ShouldReturnExpectedValue()
@@ -2585,7 +2578,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick rumble should return expected value
+        ///     Tests that joystick rumble should return expected value
         /// </summary>
         [Fact]
         public void JoystickRumble_ShouldReturnExpectedValue()
@@ -2610,7 +2603,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick rumble triggers should return expected value
+        ///     Tests that joystick rumble triggers should return expected value
         /// </summary>
         [Fact]
         public void JoystickRumbleTriggers_ShouldReturnExpectedValue()
@@ -2635,7 +2628,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick event state should return expected value
+        ///     Tests that joystick event state should return expected value
         /// </summary>
         [Fact]
         public void JoystickEventState_ShouldReturnExpectedValue()
@@ -2657,7 +2650,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get axis should return expected value
+        ///     Tests that joystick get axis should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetAxis_ShouldReturnExpectedValue()
@@ -2680,7 +2673,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get axis initial state should return expected value
+        ///     Tests that joystick get axis initial state should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetAxisInitialState_ShouldReturnExpectedValue()
@@ -2703,7 +2696,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get ball should return expected value
+        ///     Tests that joystick get ball should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetBall_ShouldReturnExpectedValue()
@@ -2726,7 +2719,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that joystick get button should return expected value
+        ///     Tests that joystick get button should return expected value
         /// </summary>
         [Fact]
         public void JoystickGetButton_ShouldReturnExpectedValue()
@@ -2749,7 +2742,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy ex valid params returns expected int
+        ///     Tests that render copy ex valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderCopyEx_ValidParams_ReturnsExpectedInt()
@@ -2776,7 +2769,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy ex with rectangle valid params returns expected int
+        ///     Tests that render copy ex with rectangle valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderCopyExWithRectangle_ValidParams_ReturnsExpectedInt()
@@ -2803,7 +2796,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render set integer scale valid params returns expected int
+        ///     Tests that render set integer scale valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderSetIntegerScale_ValidParams_ReturnsExpectedInt()
@@ -2825,7 +2818,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render set viewport valid params returns expected int
+        ///     Tests that render set viewport valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderSetViewport_ValidParams_ReturnsExpectedInt()
@@ -2847,7 +2840,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy ex v 2 valid params returns expected int
+        ///     Tests that render copy ex v 2 valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderCopyEx_V2_ValidParams_ReturnsExpectedInt()
@@ -2874,7 +2867,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that push event valid params returns expected int
+        ///     Tests that push event valid params returns expected int
         /// </summary>
         [Fact]
         public void PushEvent_ValidParams_ReturnsExpectedInt()
@@ -2895,7 +2888,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render draw rect valid params returns expected int
+        ///     Tests that render draw rect valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderDrawRect_ValidParams_ReturnsExpectedInt()
@@ -2917,7 +2910,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that gl audio u 16 sys valid call returns expected ushort
+        ///     Tests that gl audio u 16 sys valid call returns expected ushort
         /// </summary>
         [Fact]
         public void GlAudioU16Sys_ValidCall_ReturnsExpectedUshort()
@@ -2936,7 +2929,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that gl audio s 16 sys valid call returns expected ushort
+        ///     Tests that gl audio s 16 sys valid call returns expected ushort
         /// </summary>
         [Fact]
         public void GlAudioS16Sys_ValidCall_ReturnsExpectedUshort()
@@ -2955,7 +2948,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that gl audio s 32 sys valid call returns expected ushort
+        ///     Tests that gl audio s 32 sys valid call returns expected ushort
         /// </summary>
         [Fact]
         public void GlAudioS32Sys_ValidCall_ReturnsExpectedUshort()
@@ -2974,7 +2967,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that gl audio f 32 sys valid call returns expected ushort
+        ///     Tests that gl audio f 32 sys valid call returns expected ushort
         /// </summary>
         [Fact]
         public void GlAudioF32Sys_ValidCall_ReturnsExpectedUshort()

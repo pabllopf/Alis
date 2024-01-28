@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: SdlTest.cs
+//  File:SdlTestP1.cs
 // 
-//  Author: Pablo Perdomo Falcón
+//  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -2784,7 +2784,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that calculate gamma ramp test
+        ///     Tests that calculate gamma ramp test
         /// </summary>
         [Fact]
         public void CalculateGammaRampTest()
@@ -2802,7 +2802,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get pixel format name test
+        ///     Tests that get pixel format name test
         /// </summary>
         [Fact]
         public void GetPixelFormatNameTest()
@@ -2819,7 +2819,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy ex test
+        ///     Tests that render copy ex test
         /// </summary>
         [Fact]
         public void RenderCopyExTest()
@@ -2844,7 +2844,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get window maximum size test
+        ///     Tests that get window maximum size test
         /// </summary>
         [Fact]
         public void GetWindowMaximumSizeTest()
@@ -2863,7 +2863,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get window minimum size test
+        ///     Tests that get window minimum size test
         /// </summary>
         [Fact]
         public void GetWindowMinimumSizeTest()
@@ -2882,7 +2882,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set window opacity test
+        ///     Tests that set window opacity test
         /// </summary>
         [Fact]
         public void SetWindowOpacityTest()
@@ -2904,7 +2904,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get window opacity test
+        ///     Tests that get window opacity test
         /// </summary>
         [Fact]
         public void GetWindowOpacityTest()
@@ -2923,7 +2923,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set window modal for test
+        ///     Tests that set window modal for test
         /// </summary>
         [Fact]
         public void SetWindowModalForTest()
@@ -2945,7 +2945,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set window input focus test
+        ///     Tests that set window input focus test
         /// </summary>
         [Fact]
         public void SetWindowInputFocusTest()
@@ -2966,7 +2966,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get window data test
+        ///     Tests that get window data test
         /// </summary>
         [Fact]
         public void GetWindowDataTest()
@@ -2988,7 +2988,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get window display index test
+        ///     Tests that get window display index test
         /// </summary>
         [Fact]
         public void GetWindowDisplayIndexTest()
@@ -3009,7 +3009,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get window flags test
+        ///     Tests that get window flags test
         /// </summary>
         [Fact]
         public void GetWindowFlagsTest()
@@ -3030,7 +3030,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get window from id test
+        ///     Tests that get window from id test
         /// </summary>
         [Fact]
         public void GetWindowFromIdTest()
@@ -3051,7 +3051,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get window pixel format test
+        ///     Tests that get window pixel format test
         /// </summary>
         [Fact]
         public void GetWindowPixelFormatTest()
@@ -3072,7 +3072,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that start text input test
+        ///     Tests that start text input test
         /// </summary>
         [Fact]
         public void StartTextInputTest()
@@ -3091,7 +3091,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that is text input active test
+        ///     Tests that is text input active test
         /// </summary>
         [Fact]
         public void IsTextInputActiveTest()
@@ -3110,7 +3110,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that stop text input test
+        ///     Tests that stop text input test
         /// </summary>
         [Fact]
         public void StopTextInputTest()
@@ -3130,7 +3130,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that set text input rect test
+        ///     Tests that set text input rect test
         /// </summary>
         [Fact]
         public void SetTextInputRectTest()
@@ -3154,7 +3154,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that has screen keyboard support test
+        ///     Tests that has screen keyboard support test
         /// </summary>
         [Fact]
         public void HasScreenKeyboardSupportTest()
@@ -3173,7 +3173,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that is screen keyboard shown test
+        ///     Tests that is screen keyboard shown test
         /// </summary>
         [Fact]
         public void IsScreenKeyboardShownTest()
@@ -3194,7 +3194,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get mouse focus test
+        ///     Tests that get mouse focus test
         /// </summary>
         [Fact]
         public void GetMouseFocusTest()
@@ -3213,7 +3213,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get mouse state out x and y test
+        ///     Tests that get mouse state out x and y test
         /// </summary>
         [Fact]
         public void GetMouseStateOutXAndYTest()
@@ -3235,7 +3235,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get global mouse state out x and out y test
+        ///     Tests that get global mouse state out x and out y test
         /// </summary>
         [Fact]
         public void GetGlobalMouseStateOutXAndOutYTest()
@@ -3254,7 +3254,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get window position test
+        ///     Tests that get window position test
         /// </summary>
         [Fact]
         public void GetWindowPositionTest()
@@ -3276,7 +3276,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get window size test
+        ///     Tests that get window size test
         /// </summary>
         [Fact]
         public void GetWindowSizeTest()
@@ -3298,7 +3298,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get window title test
+        ///     Tests that get window title test
         /// </summary>
         [Fact]
         public void GetWindowTitleTest()
@@ -3319,7 +3319,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get window brightness test
+        ///     Tests that get window brightness test
         /// </summary>
         [Fact]
         public void GetWindowBrightnessTest()
@@ -3340,7 +3340,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get window display mode test
+        ///     Tests that get window display mode test
         /// </summary>
         [Fact]
         public void GetWindowDisplayModeTest()
@@ -3361,7 +3361,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get window surface test
+        ///     Tests that get window surface test
         /// </summary>
         [Fact]
         public void GetWindowSurfaceTest()
@@ -3382,7 +3382,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that get window grab test
+        ///     Tests that get window grab test
         /// </summary>
         [Fact]
         public void GetWindowGrabTest()
@@ -3403,7 +3403,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that update texture valid params returns expected int
+        ///     Tests that update texture valid params returns expected int
         /// </summary>
         [Fact]
         public void UpdateTexture_ValidParams_ReturnsExpectedInt()
@@ -3427,7 +3427,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render draw line valid params returns expected int
+        ///     Tests that render draw line valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderDrawLine_ValidParams_ReturnsExpectedInt()
@@ -3452,7 +3452,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render logical to window valid params returns expected int
+        ///     Tests that render logical to window valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderLogicalToWindow_ValidParams_ReturnsExpectedInt()
@@ -3476,7 +3476,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render set v sync valid params returns expected int
+        ///     Tests that render set v sync valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderSetVSync_ValidParams_ReturnsExpectedInt()
@@ -3498,7 +3498,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy ex f valid params returns expected int
+        ///     Tests that render copy ex f valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderCopyExF_ValidParams_ReturnsExpectedInt()
@@ -3525,7 +3525,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy ex f v 2 valid params returns expected int
+        ///     Tests that render copy ex f v 2 valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderCopyExF_V2_ValidParams_ReturnsExpectedInt()
@@ -3552,7 +3552,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        /// Tests that render copy ex valid params returns expected int
+        ///     Tests that render copy ex valid params returns expected int
         /// </summary>
         [Fact]
         public void RenderCopyEx_ValidParams_ReturnsExpectedInt()
