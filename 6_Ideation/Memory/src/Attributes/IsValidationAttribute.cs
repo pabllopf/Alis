@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NotEmptyAttributeTest.cs
+//  File:ValidationAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,12 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Memory.Test.Attributes
+using System;
+
+namespace Alis.Core.Aspect.Memory.Attributes
 {
     /// <summary>
-    ///     The not empty attribute test class
+    ///     The validation attribute class
     /// </summary>
-    public class NotEmptyAttributeTest
+    /// <seealso cref="Attribute" />
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
+    public abstract class IsValidationAttribute : Attribute
     {
+        /// <summary>
+        ///     Validates the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <param name="name"></param>
+        public abstract void Validate(object value, string name);
     }
 }

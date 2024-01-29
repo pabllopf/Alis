@@ -105,9 +105,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         ///     Ttf the byte swapped unicode using the specified swapped
         /// </summary>
         /// <param name="swapped">The swapped</param>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void ByteSwappedUnicode([NotNull, NotZero] int swapped)
+        public static void ByteSwappedUnicode([IsNotNull, IsNotZero] int swapped)
         {
             Validator.ValidateInput(swapped);
             NativeSdlTtf.InternalByteSwappedUnicode(swapped);
@@ -118,7 +118,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         /// <exception cref="Exception">InternalInit failed</exception>
         /// <returns>The result</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Init()
         {
@@ -134,9 +134,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="ptSize">The pt size</param>
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr OpenFontIndex([NotNull, NotEmpty] string file, [NotNull, NotZero] int ptSize, [NotNull, NotZero] long index)
+        public static IntPtr OpenFontIndex([IsNotNull, IsNotEmpty] string file, [IsNotNull, IsNotZero] int ptSize, [IsNotNull, IsNotZero] long index)
         {
             Validator.ValidateInput(file);
             Validator.ValidateInput(ptSize);
@@ -152,9 +152,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <param name="ptSize">The pt size</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetFontSize([NotNull] IntPtr font, [NotNull, NotZero] int ptSize)
+        public static int SetFontSize([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] int ptSize)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(ptSize);
@@ -168,9 +168,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetFontStyle([NotNull] IntPtr font)
+        public static int GetFontStyle([IsNotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             int result = NativeSdlTtf.InternalGetFontStyle(font);
@@ -184,7 +184,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <param name="style">The style</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SetFontStyle([NotNull] IntPtr font, [NotNull, NotZero] int style)
+        public static void SetFontStyle([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] int style)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(style);
@@ -196,9 +196,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetFontOutline([NotNull] IntPtr font)
+        public static int GetFontOutline([IsNotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             int result = NativeSdlTtf.InternalGetFontOutline(font);
@@ -211,9 +211,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="outline">The outline</param>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SetFontOutline([NotNull] IntPtr font, [NotNull, NotZero] int outline)
+        public static void SetFontOutline([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] int outline)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(outline);
@@ -225,9 +225,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetFontHinting([NotNull] IntPtr font)
+        public static int GetFontHinting([IsNotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             int result = NativeSdlTtf.InternalGetFontHinting(font);
@@ -241,7 +241,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <param name="hinting">The hinting</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SetFontHinting([NotNull] IntPtr font, [NotNull, NotZero] int hinting)
+        public static void SetFontHinting([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] int hinting)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(hinting);
@@ -253,9 +253,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int FontHeight([NotNull] IntPtr font)
+        public static int FontHeight([IsNotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             int result = NativeSdlTtf.InternalFontHeight(font);
@@ -268,9 +268,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int FontAscent([NotNull] IntPtr font)
+        public static int FontAscent([IsNotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             int result = NativeSdlTtf.InternalFontAscent(font);
@@ -283,9 +283,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int FontDescent([NotNull] IntPtr font)
+        public static int FontDescent([IsNotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             int result = NativeSdlTtf.InternalFontDescent(font);
@@ -298,9 +298,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int FontLineSkip([NotNull] IntPtr font)
+        public static int FontLineSkip([IsNotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             int result = NativeSdlTtf.InternalFontLineSkip(font);
@@ -313,9 +313,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetFontKerning([NotNull] IntPtr font)
+        public static int GetFontKerning([IsNotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             int result = NativeSdlTtf.InternalGetFontKerning(font);
@@ -328,9 +328,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="allowed">The allowed</param>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SetFontKerning([NotNull] IntPtr font, [NotNull, NotZero] int allowed)
+        public static void SetFontKerning([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] int allowed)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(allowed);
@@ -342,9 +342,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr FontFaces([NotNull] IntPtr font)
+        public static IntPtr FontFaces([IsNotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             IntPtr result = NativeSdlTtf.InternalFontFaces(font);
@@ -357,9 +357,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int FontFaceIsFixedWidth([NotNull] IntPtr font)
+        public static int FontFaceIsFixedWidth([IsNotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             int result = NativeSdlTtf.InternalFontFaceIsFixedWidth(font);
@@ -372,9 +372,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string FontFaceStyleName([NotNull] IntPtr font)
+        public static string FontFaceStyleName([IsNotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             string result = Marshal.PtrToStringAnsi(NativeSdlTtf.InternalFontFaceStyleName(font));
@@ -388,7 +388,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <param name="ch">The ch</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GlyphIsProvided(IntPtr font, ushort ch)
         {
@@ -405,9 +405,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <param name="ch">The ch</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GlyphIsProvided32([NotNull] IntPtr font, [NotNull, NotZero] uint ch)
+        public static int GlyphIsProvided32([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] uint ch)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(ch);
@@ -427,9 +427,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="maxy">The maxy</param>
         /// <param name="advance">The advance</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GlyphMetrics([NotNull] IntPtr font, [NotNull, NotZero] ushort ch, [NotNull, NotZero] out int minx, [NotNull, NotZero] out int max, [NotNull, NotZero] out int miny, [NotNull, NotZero] out int maxy, [NotNull, NotZero] out int advance)
+        public static int GlyphMetrics([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] ushort ch, [IsNotNull, IsNotZero] out int minx, [IsNotNull, IsNotZero] out int max, [IsNotNull, IsNotZero] out int miny, [IsNotNull, IsNotZero] out int maxy, [IsNotNull, IsNotZero] out int advance)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(ch);
@@ -449,9 +449,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="maxy">The maxy</param>
         /// <param name="advance">The advance</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GlyphMetrics32([NotNull] IntPtr font, [NotNull, NotZero] uint ch, [NotNull, NotZero] out int minx, [NotNull, NotZero] out int max, [NotNull, NotZero] out int miny, [NotNull, NotZero] out int maxy, [NotNull, NotZero] out int advance)
+        public static int GlyphMetrics32([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] uint ch, [IsNotNull, IsNotZero] out int minx, [IsNotNull, IsNotZero] out int max, [IsNotNull, IsNotZero] out int miny, [IsNotNull, IsNotZero] out int maxy, [IsNotNull, IsNotZero] out int advance)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(ch);
@@ -468,9 +468,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SizeText([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] out int w, [NotNull, NotZero] out int h)
+        public static int SizeText([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull, IsNotZero] out int w, [IsNotNull, IsNotZero] out int h)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -487,9 +487,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SizeUtf8([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] out int w, [NotNull, NotZero] out int h)
+        public static int SizeUtf8([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull, IsNotZero] out int w, [IsNotNull, IsNotZero] out int h)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -506,9 +506,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SizeUnicode([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] out int w, [NotNull, NotZero] out int h)
+        public static int SizeUnicode([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull, IsNotZero] out int w, [IsNotNull, IsNotZero] out int h)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -526,9 +526,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="extent">The extent</param>
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int MeasureText([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] int measureWidth, [NotNull, NotZero] out int extent, [NotNull, NotZero] out int count)
+        public static int MeasureText([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull, IsNotZero] int measureWidth, [IsNotNull, IsNotZero] out int extent, [IsNotNull, IsNotZero] out int count)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -547,9 +547,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="extent">The extent</param>
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int MeasureUtf8([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] int measureWidth, [NotNull, NotZero] out int extent, [NotNull, NotZero] out int count)
+        public static int MeasureUtf8([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull, IsNotZero] int measureWidth, [IsNotNull, IsNotZero] out int extent, [IsNotNull, IsNotZero] out int count)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -568,9 +568,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="extent">The extent</param>
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int MeasureUnicode([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] int measureWidth, [NotNull, NotZero] out int extent, [NotNull, NotZero] out int count)
+        public static int MeasureUnicode([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull, IsNotZero] int measureWidth, [IsNotNull, IsNotZero] out int extent, [IsNotNull, IsNotZero] out int count)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -587,9 +587,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderTextSolid([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg)
+        public static IntPtr RenderTextSolid([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor fg)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -606,9 +606,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderUtf8Solid([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg)
+        public static IntPtr RenderUtf8Solid([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor fg)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -625,9 +625,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderUnicodeSolid([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg)
+        public static IntPtr RenderUnicodeSolid([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor fg)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -645,9 +645,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderTextSolidWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapLength)
+        public static IntPtr RenderTextSolidWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor fg, [IsNotNull, IsNotZero] uint wrapLength)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -666,9 +666,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderUnicodeSolidWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapLength)
+        public static IntPtr RenderUnicodeSolidWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor fg, [IsNotNull, IsNotZero] uint wrapLength)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -686,9 +686,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="ch">The ch</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderGlyphSolid([NotNull] IntPtr font, [NotNull, NotZero] ushort ch, [NotNull] SdlColor fg)
+        public static IntPtr RenderGlyphSolid([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] ushort ch, [IsNotNull] SdlColor fg)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(ch);
@@ -705,9 +705,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="ch">The ch</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderGlyph32Solid([NotNull] IntPtr font, [NotNull, NotZero] uint ch, [NotNull] SdlColor fg)
+        public static IntPtr RenderGlyph32Solid([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] uint ch, [IsNotNull] SdlColor fg)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(ch);
@@ -725,9 +725,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="bg">The bg</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderTextShaded([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg)
+        public static IntPtr RenderTextShaded([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor fg, [IsNotNull] SdlColor bg)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -746,9 +746,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="bg">The bg</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderUtf8Shaded([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg)
+        public static IntPtr RenderUtf8Shaded([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor fg, [IsNotNull] SdlColor bg)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -767,9 +767,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="bg">The bg</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderUnicodeShaded([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg)
+        public static IntPtr RenderUnicodeShaded([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor fg, [IsNotNull] SdlColor bg)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -789,9 +789,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="bg">The bg</param>
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderTextShadedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg, [NotNull, NotZero] uint wrapLength)
+        public static IntPtr RenderTextShadedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor fg, [IsNotNull] SdlColor bg, [IsNotNull, IsNotZero] uint wrapLength)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -812,9 +812,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="bg">The bg</param>
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderUtf8ShadedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg, [NotNull, NotZero] uint wrapLength)
+        public static IntPtr RenderUtf8ShadedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor fg, [IsNotNull] SdlColor bg, [IsNotNull, IsNotZero] uint wrapLength)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -835,9 +835,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="bg">The bg</param>
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderUnicodeShadedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg, [NotNull, NotZero] uint wrapLength)
+        public static IntPtr RenderUnicodeShadedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor fg, [IsNotNull] SdlColor bg, [IsNotNull, IsNotZero] uint wrapLength)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -857,9 +857,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="bg">The bg</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderGlyphShaded([NotNull] IntPtr font, [NotNull, NotZero] ushort ch, [NotNull] SdlColor fg, [NotNull] SdlColor bg)
+        public static IntPtr RenderGlyphShaded([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] ushort ch, [IsNotNull] SdlColor fg, [IsNotNull] SdlColor bg)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(ch);
@@ -878,9 +878,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="bg">The bg</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderGlyph32Shaded([NotNull] IntPtr font, [NotNull, NotZero] uint ch, [NotNull] SdlColor fg, [NotNull] SdlColor bg)
+        public static IntPtr RenderGlyph32Shaded([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] uint ch, [IsNotNull] SdlColor fg, [IsNotNull] SdlColor bg)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(ch);
@@ -898,9 +898,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderTextBlended([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg)
+        public static IntPtr RenderTextBlended([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor fg)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -917,9 +917,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderUnicodeBlended([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg)
+        public static IntPtr RenderUnicodeBlended([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor fg)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -937,9 +937,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="wrapped">The wrapped</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderTextBlendedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapped)
+        public static IntPtr RenderTextBlendedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor fg, [IsNotNull, IsNotZero] uint wrapped)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -958,9 +958,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="sdlColor">The fg</param>
         /// <param name="wrapped">The wrapped</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderUtf8BlendedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor sdlColor, [NotNull, NotZero] uint wrapped)
+        public static IntPtr RenderUtf8BlendedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor sdlColor, [IsNotNull, IsNotZero] uint wrapped)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -979,9 +979,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="wrapped">The wrapped</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderUnicodeBlendedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapped)
+        public static IntPtr RenderUnicodeBlendedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor fg, [IsNotNull, IsNotZero] uint wrapped)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -999,9 +999,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="ch">The ch</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderGlyphBlended([NotNull] IntPtr font, [NotNull, NotZero] ushort ch, [NotNull] SdlColor fg)
+        public static IntPtr RenderGlyphBlended([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] ushort ch, [IsNotNull] SdlColor fg)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(ch);
@@ -1018,9 +1018,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="ch">The ch</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderGlyph32Blended([NotNull] IntPtr font, [NotNull] uint ch, [NotNull] SdlColor fg)
+        public static IntPtr RenderGlyph32Blended([IsNotNull] IntPtr font, [IsNotNull] uint ch, [IsNotNull] SdlColor fg)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(ch);
@@ -1035,9 +1035,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         /// <param name="direction">The direction</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetDirection([NotNull, NotZero] int direction)
+        public static int SetDirection([IsNotNull, IsNotZero] int direction)
         {
             Validator.ValidateInput(direction);
             int result = NativeSdlTtf.InternalSetDirection(direction);
@@ -1050,7 +1050,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void CloseFont([NotNull] IntPtr font)
+        public static void CloseFont([IsNotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             NativeSdlTtf.InternalCloseFont(font);
@@ -1059,7 +1059,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <summary>
         ///     Ttf the quit
         /// </summary>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Quit()
         {
@@ -1070,7 +1070,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         ///     Ttf the was init
         /// </summary>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int WasInit()
         {
@@ -1086,9 +1086,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="prevIndex">The prev index</param>
         /// <param name="index">The index</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetFontKerningSize([NotNull] IntPtr font, [NotNull, NotZero] int prevIndex, [NotNull, NotZero] int index)
+        public static int GetFontKerningSize([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] int prevIndex, [IsNotNull, IsNotZero] int index)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(prevIndex);
@@ -1105,9 +1105,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="previousCh">The previous ch</param>
         /// <param name="ch">The ch</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetFontKerningSizeGlyphs([NotNull] IntPtr font, [NotNull, NotZero] ushort previousCh, [NotNull, NotZero] ushort ch)
+        public static int GetFontKerningSizeGlyphs([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] ushort previousCh, [IsNotNull, IsNotZero] ushort ch)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(previousCh);
@@ -1124,9 +1124,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="previousCh">The previous ch</param>
         /// <param name="ch">The ch</param>
         /// <returns>The int</returns>
-        [return: NotNull, NotZero]
+        [return: IsNotNull, IsNotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetFontKerningSizeGlyphs32([NotNull] IntPtr font, [NotNull, NotZero] ushort previousCh, [NotNull, NotZero] ushort ch)
+        public static int GetFontKerningSizeGlyphs32([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] ushort previousCh, [IsNotNull, IsNotZero] ushort ch)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(previousCh);
@@ -1142,9 +1142,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="file">The file</param>
         /// <param name="ptSize">The pt size</param>
         /// <returns>The handle</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr OpenFont([NotNull, NotEmpty] string file, [NotNull, NotZero] int ptSize)
+        public static IntPtr OpenFont([IsNotNull, IsNotEmpty] string file, [IsNotNull, IsNotZero] int ptSize)
         {
             Validator.ValidateInput(file);
             Validator.ValidateInput(ptSize);
@@ -1161,9 +1161,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The result</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderUtf8SolidWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapLength)
+        public static IntPtr RenderUtf8SolidWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor fg, [IsNotNull, IsNotZero] uint wrapLength)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
@@ -1178,7 +1178,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         ///     Ttf the get error
         /// </summary>
         /// <returns>The string</returns>
-        [return: NotNull, NotEmpty]
+        [return: IsNotNull, IsNotEmpty]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GetError()
         {
@@ -1191,9 +1191,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         ///     Ttf the set error using the specified fmt and arg
         /// </summary>
         /// <param name="fmtAndArgList">The fmt and arg</param>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SetError([NotNull, NotEmpty] string fmtAndArgList)
+        public static void SetError([IsNotNull, IsNotEmpty] string fmtAndArgList)
         {
             Validator.ValidateInput(fmtAndArgList);
             Sdl.SetError(fmtAndArgList);
@@ -1202,7 +1202,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <summary>
         ///     Sdl the ttf version using the specified x
         /// </summary>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SdlVersion GetVersion()
         {
@@ -1218,9 +1218,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [return: NotNull]
+        [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderUtf8Blended([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg)
+        public static IntPtr RenderUtf8Blended([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] SdlColor fg)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
