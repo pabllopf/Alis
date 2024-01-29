@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ValidationAttribute.cs
+//  File:NotZeroAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using Alis.Core.Aspect.Memory.Exceptions;
 
 namespace Alis.Core.Aspect.Memory.Attributes
 {
     /// <summary>
-    ///     The validation attribute class
+    ///     The not null attribute class
     /// </summary>
-    /// <seealso cref="Attribute" />
-    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
-    public abstract class ValidationAttribute : Attribute
+    /// <seealso cref="IsValidationAttribute" />
+    public class IsNotZeroAttribute : IsValidationAttribute
     {
         /// <summary>
         ///     Validates the value
         /// </summary>
         /// <param name="value">The value</param>
-        /// <param name="name"></param>
-        public abstract void Validate(object value, string name);
+        /// <param name="name">The name</param>
+        public override void Validate(object value, string name) => _ = value ?? throw new NotZeroException($"{name} can't be zero");
     }
 }

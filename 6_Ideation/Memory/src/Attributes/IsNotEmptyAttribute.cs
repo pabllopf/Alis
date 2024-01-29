@@ -34,8 +34,8 @@ namespace Alis.Core.Aspect.Memory.Attributes
     /// <summary>
     ///     The not empty attribute class
     /// </summary>
-    /// <seealso cref="ValidationAttribute" />
-    public class NotEmptyAttribute : ValidationAttribute
+    /// <seealso cref="IsValidationAttribute" />
+    public class IsNotEmptyAttribute : IsValidationAttribute
     {
         /// <summary>
         ///     Validates the value

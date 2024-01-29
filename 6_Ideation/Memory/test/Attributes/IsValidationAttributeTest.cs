@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NotNullAttribute.cs
+//  File:ValidationAttributeTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,21 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Memory.Exceptions;
-
-namespace Alis.Core.Aspect.Memory.Attributes
+namespace Alis.Core.Aspect.Memory.Test.Attributes
 {
     /// <summary>
-    ///     The not null attribute class
+    ///     The validation attribute test class
     /// </summary>
-    /// <seealso cref="ValidationAttribute" />
-    public class NotNullAttribute : ValidationAttribute
+    public class IsValidationAttributeTest
     {
-        /// <summary>
-        ///     Validates the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <param name="name">The name</param>
-        public override void Validate(object value, string name) => _ = value ?? throw new NotNullException($"{name} can't be null");
     }
 }

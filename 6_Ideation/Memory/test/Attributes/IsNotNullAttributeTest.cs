@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ValidationAttributeTest.cs
+//  File:NotNullAttributeTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,9 +30,9 @@
 namespace Alis.Core.Aspect.Memory.Test.Attributes
 {
     /// <summary>
-    ///     The validation attribute test class
+    ///     The not null attribute test class
     /// </summary>
-    public class ValidationAttributeTest
+    public class IsNotNullAttributeTest
     {
     }
 }
