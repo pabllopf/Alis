@@ -31,7 +31,6 @@ using System;
 
 namespace Alis.Core.Aspect.Memory.Attributes
 {
-    
     /// <summary>
     ///     The validation attribute class
     /// </summary>
