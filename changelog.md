@@ -5,6 +5,53 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.2.6] - 2024-01-29
+### :sparkles: New Features
+- [`1890dcb`](https://github.com/pabllopf/Alis/commit/1890dcb1af9aa63958d6de1c36530e3cf4ba2adc) - add net5.0 compatibility *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2a0db83`](https://github.com/pabllopf/Alis/commit/2a0db83391cad564a62d29a2ffebdf7b15d810a9) - include a new enum to select type init of sdl2 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d8626ca`](https://github.com/pabllopf/Alis/commit/d8626ca9f0a6c91aa1b7ceb52ce17a4429dd67e4) - add new /p:Analyze=true *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`f76d56b`](https://github.com/pabllopf/Alis/commit/f76d56b299ae8f7e6155fc0bac1e59a7548bfc8c) - delete default value on contructor of sdlcolor *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`099ce30`](https://github.com/pabllopf/Alis/commit/099ce30f7d639e4d5ff175f0204625cb4355d14c) - test of sdl2 methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5a7a6df`](https://github.com/pabllopf/Alis/commit/5a7a6df26d3d556bd852eeb7102a9c432b317583) - the intptr strings on p-invoke code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bbf8a22`](https://github.com/pabllopf/Alis/commit/bbf8a2228ab5eeec62d053c15f46ed4c613cc8f3) - load icon the sdlcontroller *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`568ee1b`](https://github.com/pabllopf/Alis/commit/568ee1bb4ef9ba99e920a50e4b1fe591554f4633) - delete the sw save bmp *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4e234aa`](https://github.com/pabllopf/Alis/commit/4e234aa2049ba585b0f4faf4902975d9fb4b5183) - test of sdl2 test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a70b2b3`](https://github.com/pabllopf/Alis/commit/a70b2b373e3f32afe0dbd472e82a517ea06ed991) - some methods of mouse of sdl2 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2915e45`](https://github.com/pabllopf/Alis/commit/2915e450c6b6822f9717b49c22f2b54b7bc42704) - sdl2 test with rgb colors *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c9664c2`](https://github.com/pabllopf/Alis/commit/c9664c273c7af5a4c5e6f6e225151dcd3d278ffe) - the main test of sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6174008`](https://github.com/pabllopf/Alis/commit/61740081c70dc0d01414c5259abac6afd67c0c02) - spaces and tabs of tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b0d8078`](https://github.com/pabllopf/Alis/commit/b0d8078b492dbfd599e12e64a1da21da562219c8) - name of atributtes *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`ef541f9`](https://github.com/pabllopf/Alis/commit/ef541f98083f41ff5edb621c17f4799d9c869977) - add new test for SdlVertex *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a314bb6`](https://github.com/pabllopf/Alis/commit/a314bb645859ed33eab22fc675f9bb204f475a39) - delete default test of graphic module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9345995`](https://github.com/pabllopf/Alis/commit/9345995a64cffb944fc5dbbec86e3dda857ada75) - add 20 test to sdl2 module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`20b81d8`](https://github.com/pabllopf/Alis/commit/20b81d85678db194bac71e6029d56914ab909d20) - add new 7 test to sdl2 main class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`757d686`](https://github.com/pabllopf/Alis/commit/757d686b5e52a1879caf65166e7e88444190caba) - add new test of TestNumHaptics and fix 5 tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5972083`](https://github.com/pabllopf/Alis/commit/59720831767818f95a9678eb3ecaf0d33e2e32e9) - add new 7 test to sdl2 class and delete rw methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7651529`](https://github.com/pabllopf/Alis/commit/7651529a8cd5e6e7267513c938a19684da7c8560) - add new 20 test to class sdl2 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ff02387`](https://github.com/pabllopf/Alis/commit/ff02387c9e0feb8b3f559dfe6169aeaa11b4b5bc) - 400 test of sln! *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7eb5af4`](https://github.com/pabllopf/Alis/commit/7eb5af4fee967a8e8242efe3f093f6016a08e329) - 445 test! *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2be3945`](https://github.com/pabllopf/Alis/commit/2be3945956b4f81c6877d6e0512eac3c01b376c3) - add 15 more test to sdl2 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`886dd1c`](https://github.com/pabllopf/Alis/commit/886dd1ce1e12141c4e685b1164d20b19f218355b) - 600 test added to sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f73fb41`](https://github.com/pabllopf/Alis/commit/f73fb41af29841e16978566f08e01ca128bb08d9) - 728 test on sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`adf57c9`](https://github.com/pabllopf/Alis/commit/adf57c9c6764f79bbde32f5cd0e5171930f78f6e) - add the sdl2 test on 4 parts *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`733e884`](https://github.com/pabllopf/Alis/commit/733e88461828ca9ad62f9bf30f7f247f4a5b85d4) - add new test wexclude to pollevent *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`3925375`](https://github.com/pabllopf/Alis/commit/3925375da236e6c1a9985fffed03f9106c5d4d46) - reduce size of api sdl2 deleting some useless methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9d66584`](https://github.com/pabllopf/Alis/commit/9d665847dc33aff04411f237ce5de6afc4b1131d) - reduce size api sdl2, delete 7 methods useless *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b46fe16`](https://github.com/pabllopf/Alis/commit/b46fe16620351812903ee2e44bfc8283592cbea3) - delete get GetPlatform of sdl2 because alis have the same method *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4dd6a7a`](https://github.com/pabllopf/Alis/commit/4dd6a7a8d4f04708ac4cd3158c0f5d3982cda03d) - delete some methods of sdl2 api and include .net5.0 on pack nuget *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e7e4a67`](https://github.com/pabllopf/Alis/commit/e7e4a673a8b6fb1210a952841fd483cf04a08ee0) - delete ticks methods and delay methods of sdl2 because exits this method on c# *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8c963b5`](https://github.com/pabllopf/Alis/commit/8c963b5a1acc0190f824d3602a450839c7a877f9) - remove android methos useless *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a9463b2`](https://github.com/pabllopf/Alis/commit/a9463b2359be3ca25183244a51f4f8fb2273ea30) - refactor name of TypePixel *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ccf7b01`](https://github.com/pabllopf/Alis/commit/ccf7b01134e294fc31f87b68049d1906d8f45eac) - refactor to clean sln tans and spaces *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0ad64d6`](https://github.com/pabllopf/Alis/commit/0ad64d6b3ae95cd50f5c64d189d7ba34b218b41d) - refactor sln to adjust spaces and tans. *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.2.5] - 2024-01-21
 
 ### :sparkles: New Features
@@ -2088,3 +2135,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.2.4]: https://github.com/pabllopf/Alis/compare/v0.2.3...v0.2.4
 
 [v0.2.5]: https://github.com/pabllopf/Alis/compare/v0.2.4...v0.2.5
+[v0.2.6]: https://github.com/pabllopf/Alis/compare/v0.2.5...v0.2.6
