@@ -60,11 +60,13 @@ namespace Alis.Core.Aspect.Thread.Test
             //wait 1s
             System.Threading.Thread.Sleep(100);
             
+            Assert.Equal(1, threadManager.GetThreadCount());
+            
             // stop the thread
             threadManager.StopAllThreads();
 
             // Assert
-            Assert.Equal(1, threadManager.GetThreadCount());
+            Assert.Equal(0, threadManager.GetThreadCount());
         }
 
         /// <summary>
@@ -80,7 +82,7 @@ namespace Alis.Core.Aspect.Thread.Test
             {
                 while (!token.IsCancellationRequested)
                 {
-                    System.Threading.Thread.Sleep(1000); // Task that sleeps for 1 second
+                    System.Threading.Thread.Sleep(15); // Task that sleeps for 1 second
                 }
             }, cts1.Token);
 
@@ -89,7 +91,7 @@ namespace Alis.Core.Aspect.Thread.Test
             {
                 while (!token.IsCancellationRequested)
                 {
-                    System.Threading.Thread.Sleep(1000); // Task that sleeps for 1 second
+                    System.Threading.Thread.Sleep(120); // Task that sleeps for 1 second
                 }
             }, cts2.Token);
 
@@ -97,7 +99,7 @@ namespace Alis.Core.Aspect.Thread.Test
             threadManager.StartThread(threadTask1);
             threadManager.StartThread(threadTask2);
 
-            System.Threading.Thread.Sleep(100); // Wait for threads to start
+            System.Threading.Thread.Sleep(10); // Wait for threads to start
 
             threadManager.StopAllThreads();
 
@@ -119,7 +121,7 @@ namespace Alis.Core.Aspect.Thread.Test
             {
                 while (!token.IsCancellationRequested)
                 {
-                    System.Threading.Thread.Sleep(1000); // Task that sleeps for 1 second
+                    System.Threading.Thread.Sleep(12); // Task that sleeps for 1 second
                 }
             }, cts1.Token);
 
@@ -128,7 +130,7 @@ namespace Alis.Core.Aspect.Thread.Test
             {
                 while (!token.IsCancellationRequested)
                 {
-                    System.Threading.Thread.Sleep(1000); // Task that sleeps for 1 second
+                    System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
                 }
             }, cts2.Token);
 
@@ -137,7 +139,7 @@ namespace Alis.Core.Aspect.Thread.Test
             threadManager.StartThread(threadTask2);
             
             // wait the threads to end
-            System.Threading.Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(19);
             
             Assert.Equal(2, threadManager.GetThreadCount());
             
