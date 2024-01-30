@@ -56,6 +56,12 @@ namespace Alis.Core.Aspect.Thread.Test
 
             // Act
             threadManager.StartThread(threadTask);
+            
+            //wait 1s
+            System.Threading.Thread.Sleep(1000);
+            
+            // stop the thread
+            threadManager.StopAllThreads();
 
             // Assert
             Assert.Equal(1, threadManager.GetThreadCount());
