@@ -52,7 +52,7 @@ namespace Alis.Core.Aspect.Thread.Test
             }, cts.Token);
 
             // Act
-            threadTask.Execute();
+            threadTask.Execute(cts.Token);
             
             //wait 1s
             System.Threading.Thread.Sleep(1000);

@@ -4,13 +4,17 @@ The `ThreadManager` class is part of the `Alis.Core.Aspect.Thread` namespace. It
 
 ## Properties
 
-- `List<System.Threading.Thread> threads`: This private property holds a list of threads that are managed by the `ThreadManager`.
+- `Dictionary<ThreadTask, CancellationTokenSource> threadTokens`: This private property holds a dictionary of threads and their cancellation tokens that are managed by the `ThreadManager`.
 
 ## Methods
 
-- `void StartThread(ThreadTask task)`: This method starts a new thread with the given task. It creates a new `System.Threading.Thread` instance, adds it to the `threads` list, and starts the thread.
+- `void StartThread(ThreadTask threadTask)`: This method starts a new thread with the given task. It creates a new `CancellationTokenSource`, adds it to the `threadTokens` dictionary, and starts the task in a new thread.
 
-- `void StopAllThreads()`: This method stops all threads that are currently alive and clears the `threads` list.
+- `void StopThread(ThreadTask threadTask)`: This method stops a specific thread. It retrieves the `CancellationTokenSource` for the given task from the `threadTokens` dictionary, cancels the token, and removes the task from the dictionary.
+
+- `void StopAllThreads()`: This method stops all threads that are currently alive and clears the `threadTokens` dictionary.
+
+- `int GetThreadCount()`: This method returns the current number of active threads managed by the `ThreadManager`.
 
 ## Usage
 
@@ -19,7 +23,7 @@ Here is an example of how to use the `ThreadManager` class:
 ```csharp
 ThreadManager manager = new ThreadManager();
 
-ThreadTask task = new ThreadTask(() =>
+ThreadTask task = new ThreadTask(token =>
 {
     // Your code here
 });
@@ -28,7 +32,8 @@ manager.StartThread(task);
 
 // ...
 
-manager.StopAllThreads();
-```
+manager.StopThread(task);
 
-In this example, a new `ThreadManager` is created. A `ThreadTask` is then created and started in a new thread by the `ThreadManager`. Later, all threads are stopped by calling the `StopAllThreads` method.
+// ...
+
+manager.StopAllThreads();

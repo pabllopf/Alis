@@ -61,7 +61,7 @@ namespace Alis.Core.Aspect.Thread
         /// <summary>
         /// Executes this instance
         /// </summary>
-        public void Execute()
+        public void Execute(CancellationToken token)
         {
             Action(Token);
         }

@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Alis.Core.Aspect.Thread
 {
@@ -40,18 +41,30 @@ namespace Alis.Core.Aspect.Thread
         /// <summary>
         /// The cancellation token source
         /// </summary>
-        private List<(System.Threading.Thread, CancellationTokenSource)> threads = new List<(System.Threading.Thread, CancellationTokenSource)>();
-
+        private Dictionary<ThreadTask, CancellationTokenSource> threadTokens = new Dictionary<ThreadTask, CancellationTokenSource>();
+        
         /// <summary>
-        /// Starts the thread using the specified task
+        /// Starts the thread using the specified thread task
         /// </summary>
-        /// <param name="task">The task</param>
-        public void StartThread(ThreadTask task)
+        /// <param name="threadTask">The thread task</param>
+        public void StartThread(ThreadTask threadTask)
         {
             CancellationTokenSource cts = new CancellationTokenSource();
-            System.Threading.Thread thread = new System.Threading.Thread(() => task.Execute());
-            threads.Add((thread, cts));
-            thread.Start();
+            threadTokens.Add(threadTask, cts);
+            Task.Run(() => threadTask.Execute(cts.Token), cts.Token);
+        }
+
+        /// <summary>
+        /// Stops the thread using the specified thread task
+        /// </summary>
+        /// <param name="threadTask">The thread task</param>
+        public void StopThread(ThreadTask threadTask)
+        {
+            if (threadTokens.TryGetValue(threadTask, out var cts))
+            {
+                cts.Cancel();
+                threadTokens.Remove(threadTask);
+            }
         }
 
         /// <summary>
@@ -59,21 +72,20 @@ namespace Alis.Core.Aspect.Thread
         /// </summary>
         public void StopAllThreads()
         {
-            foreach ((System.Threading.Thread thread, CancellationTokenSource cts) in threads)
+            foreach (CancellationTokenSource cts in threadTokens.Values)
             {
                 cts.Cancel();
             }
-
-            threads.Clear();
+            threadTokens.Clear();
         }
-        
+
         /// <summary>
         /// Gets the thread count
         /// </summary>
         /// <returns>The int</returns>
         public int GetThreadCount()
         {
-            return threads.Count;
+            return threadTokens.Count;
         }
     }
 }
