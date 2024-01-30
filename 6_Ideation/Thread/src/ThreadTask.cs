@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:d.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,49 +29,33 @@
 
 using System;
 
-namespace Alis.Core.Aspect.Thread.Sample
+namespace Alis.Core.Aspect.Thread
 {
     /// <summary>
-    ///     The program class
+    /// The thread task class
     /// </summary>
-    public static class Program
+    public class ThreadTask
     {
         /// <summary>
-        ///     Main the args
+        /// Gets or sets the value of the action
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        public Action Action { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ThreadTask"/> class
+        /// </summary>
+        /// <param name="action">The action</param>
+        public ThreadTask(Action action)
         {
-            ThreadManager threadManager = new ThreadManager();
+            Action = action;
+        }
 
-            ThreadTask task1 = new ThreadTask(() =>
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    Console.WriteLine($"Task 1 - Count: {i}");
-                    System.Threading.Thread.Sleep(1000);
-                }
-            });
-
-            ThreadTask task2 = new ThreadTask(() =>
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    Console.WriteLine($"Task 2 - Count: {i}");
-                    System.Threading.Thread.Sleep(1000);
-                }
-            });
-
-            threadManager.StartThread(task1);
-            threadManager.StartThread(task2);
-
-            Console.WriteLine("Press any key to stop threads...");
-            Console.ReadKey();
-
-            threadManager.StopAllThreads();
-
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
+        /// <summary>
+        /// Executes this instance
+        /// </summary>
+        public void Execute()
+        {
+            Action.Invoke();
         }
     }
 }

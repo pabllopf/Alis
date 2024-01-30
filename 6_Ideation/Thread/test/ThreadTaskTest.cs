@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DefaultTest.cs
+//  File:ThreadTaskTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
-
 namespace Alis.Core.Aspect.Thread.Test
 {
-    /// <summary>
-    ///     The default test class
-    /// </summary>
-    public class DefaultTest
+    public class ThreadTaskTest
     {
-        /// <summary>
-        ///     Tests that test
-        /// </summary>
-        [Fact]
-        public void Test()
-        {
-            Assert.True(true);
-        }
+        
     }
 }
