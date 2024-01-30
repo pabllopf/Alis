@@ -39,9 +39,17 @@ namespace Alis.Core.Aspect.Data.Resource
     public static class AssetManager
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="AssetManager"/> class
+        /// </summary>
+        static AssetManager()
+        {
+            AssetPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty, "Assets");
+        }
+
+        /// <summary>
         ///     The application data
         /// </summary>
-        private static readonly string AssetPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty, "Assets");
+        public static string AssetPath { get; }
 
         /// <summary>
         ///     Finds the asset name in the "assets" folder and its subdirectories.
