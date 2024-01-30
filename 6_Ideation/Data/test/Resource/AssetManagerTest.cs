@@ -78,8 +78,8 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Act & Assert
             Assert.Throws<ArgumentNullException>(() => AssetManager.Find(null));
         }
-        
-        
+
+
         /// <summary>
         /// Tests that find should return correct path when asset exists
         /// </summary>
@@ -88,21 +88,21 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         {
             // Arrange
             const string assetName = "Find_ShouldReturnCorrectPath_WhenAssetExists.txt";
-            
+
             // Create file 1
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             string expectedPath1 = Path.Combine(directory, assetName);
-            
+
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }
-            
+
             if (!File.Exists(expectedPath1))
             {
                 File.Create(expectedPath1);
             }
-            
+
             // Act
             string actualAssetPath = AssetManager.Find(assetName);
 
@@ -118,7 +118,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         {
             // Arrange
             const string assetName = "Find_ShouldThrowInvalidOperationException_WhenMultipleAssetsExist.txt";
-            
+
             // Create file 1
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             string expectedPath1 = Path.Combine(directory, assetName);
@@ -126,12 +126,12 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             {
                 Directory.CreateDirectory(directory);
             }
-            
+
             if (!File.Exists(expectedPath1))
             {
                 File.Create(expectedPath1);
             }
-            
+
             // Create file 2
             directory = Path.Combine(directory, "Sample");
             string expectedPath2 = Path.Combine(directory, assetName);
@@ -139,7 +139,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             {
                 Directory.CreateDirectory(directory);
             }
-            
+
             if (!File.Exists(expectedPath2))
             {
                 File.Create(expectedPath2);
@@ -164,5 +164,61 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Assert
             Assert.Equal(string.Empty, actualAssetPath);
         }
+
+        /// <summary>
+        /// Tests that find empty asset name should return empty string
+        /// </summary>
+        [Fact]
+        public void Find_EmptyAssetName_ShouldReturnEmptyString()
+        {
+            // Arrange
+            string assetName = string.Empty;
+
+            // Act
+            Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName));
+        }
+
+        /// <summary>
+        /// Tests that find null asset name should throw argument null exception
+        /// </summary>
+        [Fact]
+        public void Find_NullAssetName_v2_ShouldThrowArgumentNullException()
+        {
+            // Arrange
+            string assetName = null;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() => AssetManager.Find(assetName));
+        }
+
+        /// <summary>
+        /// Tests that find invalid asset name should throw argument exception
+        /// </summary>
+        [Fact]
+        public void Find_InvalidAssetName_ShouldThrowArgumentException()
+        {
+            // Arrange
+            string assetName = "invalid:asset:name.txt";
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName));
+        }
+
+        /// <summary>
+        /// Tests that find assets directory does not exist should return empty string
+        /// </summary>
+        [Fact]
+        public void Find_AssetsDirectoryDoesNotExist_ShouldReturnEmptyString()
+        {
+            // Arrange
+            string assetName = "asset.txt";
+
+            // Act
+            string actualAssetPath = AssetManager.Find(assetName);
+
+            // Assert
+            Assert.Equal(string.Empty, actualAssetPath);
+        }
+
     }
 }
