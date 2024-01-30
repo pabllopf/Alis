@@ -50,7 +50,7 @@ namespace Alis.Core.Aspect.Thread.Test
             {
                 while (!token.IsCancellationRequested)
                 {
-                    System.Threading.Thread.Sleep(1000); // Task that sleeps for 1 second
+                    System.Threading.Thread.Sleep(10); // Task that sleeps for 1 second
                 }
             }, cts.Token);
 
@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Thread.Test
             threadManager.StartThread(threadTask);
             
             //wait 1s
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(100);
             
             // stop the thread
             threadManager.StopAllThreads();

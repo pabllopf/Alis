@@ -29,7 +29,6 @@
 
 using System;
 using System.IO;
-using System.Threading;
 using Alis.Core.Aspect.Data.Resource;
 using Xunit;
 
@@ -184,11 +183,8 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         [Fact]
         public void Find_NullAssetName_v2_ShouldThrowArgumentNullException()
         {
-            // Arrange
-            string assetName = null;
-
             // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => AssetManager.Find(assetName));
+            Assert.Throws<ArgumentNullException>(() => AssetManager.Find(null));
         }
 
         /// <summary>
@@ -220,5 +216,205 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             Assert.Equal(string.Empty, actualAssetPath);
         }
 
+        /// <summary>
+        /// Tests that find white space asset name should throw argument exception
+        /// </summary>
+        [Fact]
+        public void Find_WhiteSpaceAssetName_ShouldThrowArgumentException()
+        {
+            // Arrange
+            string assetName = "   ";
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName));
+        }
+
+        /// <summary>
+        /// Tests that find only invalid chars asset name should throw argument exception
+        /// </summary>
+        [Fact]
+        public void Find_OnlyInvalidCharsAssetName_ShouldThrowArgumentException()
+        {
+            // Arrange
+            string assetName = "invalid:asset:name.txt";
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName));
+        }
+
+        /// <summary>
+        /// Tests that find invalid and valid chars asset name should throw argument exception
+        /// </summary>
+        [Fact]
+        public void Find_InvalidAndValidCharsAssetName_ShouldThrowArgumentException()
+        {
+            // Arrange
+            string assetName = "invalid:asset.txt";
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName));
+        }
+
+        /// <summary>
+        /// Tests that find white space and valid chars asset name should return correct path
+        /// </summary>
+        [Fact]
+        public void Find_WhiteSpaceAndValidCharsAssetName_ShouldReturnCorrectPath()
+        {
+            // Arrange
+            string assetName = " valid asset.txt ";
+
+            // Act
+            string actualAssetPath = AssetManager.Find(assetName.Trim());
+
+            // Assert
+            Assert.Empty(actualAssetPath);
+        }
+
+        /// <summary>
+        /// Tests that find white space and invalid chars asset name should throw argument exception
+        /// </summary>
+        [Fact]
+        public void Find_WhiteSpaceAndInvalidCharsAssetName_ShouldThrowArgumentException()
+        {
+            // Arrange
+            string assetName = " invalid:asset.txt ";
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName.Trim()));
+        }
+
+        /// <summary>
+        /// Tests that find white space invalid and valid chars asset name should throw argument exception
+        /// </summary>
+        [Fact]
+        public void Find_WhiteSpaceInvalidAndValidCharsAssetName_ShouldThrowArgumentException()
+        {
+            // Arrange
+            string assetName = " invalid:asset.txt ";
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName.Trim()));
+        }
+
+        /// <summary>
+        /// Tests that find invalid chars around valid chars asset name should throw argument exception
+        /// </summary>
+        [Fact]
+        public void Find_InvalidCharsAroundValidCharsAssetName_ShouldThrowArgumentException()
+        {
+            // Arrange
+            string assetName = ":validasset:";
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName));
+        }
+
+        /// <summary>
+        /// Tests that find white space around valid chars asset name should return correct path
+        /// </summary>
+        [Fact]
+        public void Find_WhiteSpaceAroundValidCharsAssetName_ShouldReturnCorrectPath()
+        {
+            // Arrange
+            string assetName = " validasset ";
+
+            // Act
+            string actualAssetPath = AssetManager.Find(assetName.Trim());
+
+            // Assert
+            Assert.Empty(actualAssetPath);
+        }
+
+        /// <summary>
+        /// Tests that find white space around invalid chars asset name should throw argument exception
+        /// </summary>
+        [Fact]
+        public void Find_WhiteSpaceAroundInvalidCharsAssetName_ShouldThrowArgumentException()
+        {
+            // Arrange
+            string assetName = " :invalidasset: ";
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName.Trim()));
+        }
+
+        /// <summary>
+        /// Tests that find white space invalid chars around valid chars asset name should throw argument exception
+        /// </summary>
+        [Fact]
+        public void Find_WhiteSpaceInvalidCharsAroundValidCharsAssetName_ShouldThrowArgumentException()
+        {
+            // Arrange
+            string assetName = " :validasset: ";
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName.Trim()));
+        }
+
+        /// <summary>
+        /// Tests that find invalid chars white space around valid chars asset name should throw argument exception
+        /// </summary>
+        [Fact]
+        public void Find_InvalidCharsWhiteSpaceAroundValidCharsAssetName_ShouldThrowArgumentException()
+        {
+            // Arrange
+            string assetName = ": validasset :";
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName.Trim()));
+        }
+
+        /// <summary>
+        /// Tests that find valid chars white space around invalid chars asset name should throw argument exception
+        /// </summary>
+        [Fact]
+        public void Find_ValidCharsWhiteSpaceAroundInvalidCharsAssetName_ShouldThrowArgumentException()
+        {
+            // Arrange
+            string assetName = "validasset :invalidasset: validasset";
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName.Trim()));
+        }
+
+        /// <summary>
+        /// Tests that find valid chars invalid chars around white space asset name should throw argument exception
+        /// </summary>
+        [Fact]
+        public void Find_ValidCharsInvalidCharsAroundWhiteSpaceAssetName_ShouldThrowArgumentException()
+        {
+            // Arrange
+            string assetName = "validasset: :validasset";
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName.Trim()));
+        }
+
+        /// <summary>
+        /// Tests that find invalid chars valid chars around white space asset name should throw argument exception
+        /// </summary>
+        [Fact]
+        public void Find_InvalidCharsValidCharsAroundWhiteSpaceAssetName_ShouldThrowArgumentException()
+        {
+            // Arrange
+            string assetName = ":validasset :validasset:";
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName.Trim()));
+        }
+
+        /// <summary>
+        /// Tests that find white space valid chars around invalid chars asset name should throw argument exception
+        /// </summary>
+        [Fact]
+        public void Find_WhiteSpaceValidCharsAroundInvalidCharsAssetName_ShouldThrowArgumentException()
+        {
+            // Arrange
+            string assetName = " validasset:invalidasset:validasset ";
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName.Trim()));
+        }
     }
 }
