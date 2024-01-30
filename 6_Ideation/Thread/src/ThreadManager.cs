@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:ThreadManager.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,46 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using System.Collections.Generic;
+using System.Threading;
 
-namespace Alis.Core.Aspect.Thread.Sample
+namespace Alis.Core.Aspect.Thread
 {
     /// <summary>
-    ///     The program class
+    /// The thread manager class
     /// </summary>
-    public static class Program
+    public class ThreadManager
     {
         /// <summary>
-        ///     Main the args
+        /// The thread
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        private readonly List<System.Threading.Thread> threads = new List<System.Threading.Thread>();
+
+        /// <summary>
+        /// Starts the thread using the specified task
+        /// </summary>
+        /// <param name="task">The task</param>
+        public void StartThread(ThreadTask task)
         {
-            ThreadManager threadManager = new ThreadManager();
+            System.Threading.Thread thread = new System.Threading.Thread(new ThreadStart(task.Execute));
+            threads.Add(thread);
+            thread.Start();
+        }
 
-            ThreadTask task1 = new ThreadTask(() =>
+        /// <summary>
+        /// Stops the all threads
+        /// </summary>
+        public void StopAllThreads()
+        {
+            foreach (System.Threading.Thread thread in threads)
             {
-                for (int i = 0; i < 10; i++)
+                if (thread.IsAlive)
                 {
-                    Console.WriteLine($"Task 1 - Count: {i}");
-                    System.Threading.Thread.Sleep(1000);
+                    thread.Abort();
                 }
-            });
+            }
 
-            ThreadTask task2 = new ThreadTask(() =>
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    Console.WriteLine($"Task 2 - Count: {i}");
-                    System.Threading.Thread.Sleep(1000);
-                }
-            });
-
-            threadManager.StartThread(task1);
-            threadManager.StartThread(task2);
-
-            Console.WriteLine("Press any key to stop threads...");
-            Console.ReadKey();
-
-            threadManager.StopAllThreads();
-
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
+            threads.Clear();
         }
     }
 }

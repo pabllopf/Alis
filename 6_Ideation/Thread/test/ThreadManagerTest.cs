@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:ThreadManagerTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Aspect.Thread.Sample
+namespace Alis.Core.Aspect.Thread.Test
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public static class Program
+    public class ThreadManagerTest
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            ThreadManager threadManager = new ThreadManager();
-
-            ThreadTask task1 = new ThreadTask(() =>
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    Console.WriteLine($"Task 1 - Count: {i}");
-                    System.Threading.Thread.Sleep(1000);
-                }
-            });
-
-            ThreadTask task2 = new ThreadTask(() =>
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    Console.WriteLine($"Task 2 - Count: {i}");
-                    System.Threading.Thread.Sleep(1000);
-                }
-            });
-
-            threadManager.StartThread(task1);
-            threadManager.StartThread(task2);
-
-            Console.WriteLine("Press any key to stop threads...");
-            Console.ReadKey();
-
-            threadManager.StopAllThreads();
-
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
-        }
+        
     }
 }

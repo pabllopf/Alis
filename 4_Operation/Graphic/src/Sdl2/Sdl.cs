@@ -510,7 +510,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateInput(w);
             Validator.ValidateInput(h);
             Validator.ValidateInput(flags);
-            var result = NativeSdl.InternalCreateWindow(title, x, y, w, h, flags);
+            IntPtr result = NativeSdl.InternalCreateWindow(title, x, y, w, h, flags);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -3647,7 +3647,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SdlBool HasScreenKeyboardSupport()
         {
-            var result = NativeSdl.InternalHasScreenKeyboardSupport();
+            SdlBool result = NativeSdl.InternalHasScreenKeyboardSupport();
             Validator.ValidateOutput(result);
             return result;
         }
@@ -3662,7 +3662,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static SdlBool IsScreenKeyboardShown([IsNotNull] IntPtr window)
         {
             Validator.ValidateInput(window);
-            var result = NativeSdl.InternalIsScreenKeyboardShown(window);
+            SdlBool result = NativeSdl.InternalIsScreenKeyboardShown(window);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -5375,7 +5375,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static IntPtr LoadWav([IsNotNull] string file, out SdlAudioSpec spec, out IntPtr audioBuf, out uint audioLen)
         {
             Validator.ValidateInput(file);
-            var result = NativeSdl.InternalLoadWAV_RW(RwFromFile(file, "rb"), 0, out spec, out audioBuf, out audioLen);
+            IntPtr result = NativeSdl.InternalLoadWAV_RW(RwFromFile(file, "rb"), 0, out spec, out audioBuf, out audioLen);
             Validator.ValidateOutput(result);
             return result;
         }
