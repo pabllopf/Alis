@@ -66,6 +66,9 @@ namespace Alis.Core.Aspect.Data.Test.Resource
 
             // Assert
             Assert.Equal(expectedPath, result);
+            
+            //delete files
+            File.Delete(expectedPath);
         }
 
         /// <summary>
@@ -76,6 +79,99 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         {
             // Act & Assert
             Assert.Throws<ArgumentNullException>(() => AssetManager.Find(null));
+        }
+        
+        
+        /// <summary>
+        /// Tests that find should return correct path when asset exists
+        /// </summary>
+        [Fact]
+        public void Find_ShouldReturnCorrectPath_WhenAssetExists()
+        {
+            // Arrange
+            const string assetName = "duplicateAsset.txt";
+            
+            // Create file 1
+            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string expectedPath1 = Path.Combine(directory, assetName);
+            
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+            
+            if (!File.Exists(expectedPath1))
+            {
+                File.Create(expectedPath1);
+            }
+            
+            // Act
+            string actualAssetPath = AssetManager.Find(assetName);
+
+            // Assert
+            Assert.Equal(expectedPath1, actualAssetPath);
+            
+            //delete files
+            File.Delete(expectedPath1);
+        }
+
+        /// <summary>
+        /// Tests that find should throw invalid operation exception when multiple assets exist
+        /// </summary>
+        [Fact]
+        public void Find_ShouldThrowInvalidOperationException_WhenMultipleAssetsExist()
+        {
+            // Arrange
+            const string assetName = "duplicateAsset.txt";
+            
+            // Create file 1
+            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string expectedPath1 = Path.Combine(directory, assetName);
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+            
+            if (!File.Exists(expectedPath1))
+            {
+                File.Create(expectedPath1);
+            }
+            
+            // Create file 2
+            directory = Path.Combine(directory, "Sample");
+            string expectedPath2 = Path.Combine(directory, assetName);
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+            
+            if (!File.Exists(expectedPath2))
+            {
+                File.Create(expectedPath2);
+            }
+
+            // Act & Assert
+            Assert.Throws<InvalidOperationException>(() => AssetManager.Find(assetName));
+            
+            //delete files
+            File.Delete(expectedPath1);
+            File.Delete(expectedPath2);
+        }
+
+        /// <summary>
+        /// Tests that find should return empty string when asset does not exist
+        /// </summary>
+        [Fact]
+        public void Find_ShouldReturnEmptyString_WhenAssetDoesNotExist()
+        {
+            // Arrange
+            const string assetName = "nonExistingAsset.txt";
+
+            // Act
+            string actualAssetPath = AssetManager.Find(assetName);
+
+            // Assert
+            Assert.Equal(string.Empty, actualAssetPath);
         }
     }
 }
