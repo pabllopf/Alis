@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Threading;
 
 namespace Alis.Core.Aspect.Thread.Sample
 {
@@ -44,23 +45,25 @@ namespace Alis.Core.Aspect.Thread.Sample
         {
             ThreadManager threadManager = new ThreadManager();
 
-            ThreadTask task1 = new ThreadTask(() =>
+            CancellationTokenSource cts1 = new CancellationTokenSource();
+            ThreadTask task1 = new ThreadTask(token =>
             {
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 10 && !token.IsCancellationRequested; i++)
                 {
                     Console.WriteLine($"Task 1 - Count: {i}");
                     System.Threading.Thread.Sleep(1000);
                 }
-            });
+            }, cts1.Token);
 
-            ThreadTask task2 = new ThreadTask(() =>
+            CancellationTokenSource cts2 = new CancellationTokenSource();
+            ThreadTask task2 = new ThreadTask(token =>
             {
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 10 && !token.IsCancellationRequested; i++)
                 {
                     Console.WriteLine($"Task 2 - Count: {i}");
                     System.Threading.Thread.Sleep(1000);
                 }
-            });
+            }, cts2.Token);
 
             threadManager.StartThread(task1);
             threadManager.StartThread(task2);

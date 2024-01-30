@@ -27,10 +27,119 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Threading;
+using Xunit;
+
 namespace Alis.Core.Aspect.Thread.Test
 {
+    /// <summary>
+    /// The thread manager test class
+    /// </summary>
     public class ThreadManagerTest
     {
+        /// <summary>
+        /// Tests that start thread should start new thread
+        /// </summary>
+        [Fact]
+        public void StartThread_ShouldStartNewThread()
+        {
+            // Arrange
+            ThreadManager threadManager = new ThreadManager();
+            CancellationTokenSource cts = new CancellationTokenSource();
+            ThreadTask threadTask = new ThreadTask(token =>
+            {
+                while (!token.IsCancellationRequested)
+                {
+                    System.Threading.Thread.Sleep(1000); // Task that sleeps for 1 second
+                }
+            }, cts.Token);
+
+            // Act
+            threadManager.StartThread(threadTask);
+
+            // Assert
+            Assert.Equal(1, threadManager.GetThreadCount());
+        }
+
+        /// <summary>
+        /// Tests that stop all threads should stop all threads
+        /// </summary>
+        [Fact]
+        public void StopAllThreads_ShouldStopAllThreads()
+        {
+            // Arrange
+            ThreadManager threadManager = new ThreadManager();
+            CancellationTokenSource cts1 = new CancellationTokenSource();
+            ThreadTask threadTask1 = new ThreadTask(token =>
+            {
+                while (!token.IsCancellationRequested)
+                {
+                    System.Threading.Thread.Sleep(1000); // Task that sleeps for 1 second
+                }
+            }, cts1.Token);
+
+            CancellationTokenSource cts2 = new CancellationTokenSource();
+            ThreadTask threadTask2 = new ThreadTask(token =>
+            {
+                while (!token.IsCancellationRequested)
+                {
+                    System.Threading.Thread.Sleep(1000); // Task that sleeps for 1 second
+                }
+            }, cts2.Token);
+
+            // Act
+            threadManager.StartThread(threadTask1);
+            threadManager.StartThread(threadTask2);
+
+            System.Threading.Thread.Sleep(100); // Wait for threads to start
+
+            threadManager.StopAllThreads();
+
+            // Assert
+            Assert.Equal(0, threadManager.GetThreadCount());
+        }
         
+        
+        /// <summary>
+        /// Tests that get thread count should return correct count
+        /// </summary>
+        [Fact]
+        public void GetThreadCount_ShouldReturnCorrectCount()
+        {
+            // Arrange
+            ThreadManager threadManager = new ThreadManager();
+            CancellationTokenSource cts1 = new CancellationTokenSource();
+            ThreadTask threadTask1 = new ThreadTask(token =>
+            {
+                while (!token.IsCancellationRequested)
+                {
+                    System.Threading.Thread.Sleep(1000); // Task that sleeps for 1 second
+                }
+            }, cts1.Token);
+
+            CancellationTokenSource cts2 = new CancellationTokenSource();
+            ThreadTask threadTask2 = new ThreadTask(token =>
+            {
+                while (!token.IsCancellationRequested)
+                {
+                    System.Threading.Thread.Sleep(1000); // Task that sleeps for 1 second
+                }
+            }, cts2.Token);
+
+            // Act
+            threadManager.StartThread(threadTask1);
+            threadManager.StartThread(threadTask2);
+            
+            // wait the threads to end
+            System.Threading.Thread.Sleep(2000);
+            
+            Assert.Equal(2, threadManager.GetThreadCount());
+            
+            //end the threads
+            threadManager.StopAllThreads();
+
+            // Assert
+            Assert.Equal(0, threadManager.GetThreadCount());
+        }
     }
 }
