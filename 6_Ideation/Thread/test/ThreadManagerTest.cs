@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Threading;
 using Xunit;
 
@@ -56,12 +57,12 @@ namespace Alis.Core.Aspect.Thread.Test
 
             // Act
             threadManager.StartThread(threadTask);
-            
+
             //wait 1s
             System.Threading.Thread.Sleep(100);
-            
+
             Assert.Equal(1, threadManager.GetThreadCount());
-            
+
             // stop the thread
             threadManager.StopAllThreads();
 
@@ -106,8 +107,8 @@ namespace Alis.Core.Aspect.Thread.Test
             // Assert
             Assert.Equal(0, threadManager.GetThreadCount());
         }
-        
-        
+
+
         /// <summary>
         /// Tests that get thread count should return correct count
         /// </summary>
@@ -137,17 +138,97 @@ namespace Alis.Core.Aspect.Thread.Test
             // Act
             threadManager.StartThread(threadTask1);
             threadManager.StartThread(threadTask2);
-            
+
             // wait the threads to end
             System.Threading.Thread.Sleep(19);
-            
+
             Assert.Equal(2, threadManager.GetThreadCount());
-            
+
             //end the threads
             threadManager.StopAllThreads();
 
             // Assert
             Assert.Equal(0, threadManager.GetThreadCount());
+        }
+
+        [Fact]
+        public void StartThread_ShouldStartNewThread()
+        {
+            // Arrange
+            ThreadManager manager = new ThreadManager();
+            ThreadTask task = new ThreadTask(token =>
+            {
+                // Your code here
+            });
+
+            // Act
+            manager.StartThread(task);
+
+            // Assert
+            Assert.Equal(1, manager.GetThreadCount());
+        }
+
+        [Fact]
+        public void StopThread_ShouldStopSpecificThread()
+        {
+            // Arrange
+            ThreadManager manager = new ThreadManager();
+            ThreadTask task = new ThreadTask(token =>
+            {
+                // Your code here
+            });
+            manager.StartThread(task);
+
+            // Act
+            manager.StopThread(task);
+
+            // Assert
+            Assert.Equal(0, manager.GetThreadCount());
+        }
+
+        [Fact]
+        public void StopAllThreads_ShouldStopAllThreads()
+        {
+            // Arrange
+            ThreadManager manager = new ThreadManager();
+            ThreadTask task1 = new ThreadTask(token =>
+            {
+                // Your code here
+            });
+            ThreadTask task2 = new ThreadTask(token =>
+            {
+                // Your code here
+            });
+            manager.StartThread(task1);
+            manager.StartThread(task2);
+
+            // Act
+            manager.StopAllThreads();
+
+            // Assert
+            Assert.Equal(0, manager.GetThreadCount());
+        }
+
+        [Fact]
+        public void GetThreadCount_ShouldReturnCorrectThreadCount()
+        {
+            // Arrange
+            ThreadManager manager = new ThreadManager();
+            ThreadTask task1 = new ThreadTask(token =>
+            {
+                // Your code here
+            });
+            ThreadTask task2 = new ThreadTask(token =>
+            {
+                Console.WriteLine("Hello World!");
+            });
+
+            // Act
+            manager.StartThread(task1);
+            manager.StartThread(task2);
+
+            // Assert
+            Assert.Equal(2, manager.GetThreadCount());
         }
     }
 }
