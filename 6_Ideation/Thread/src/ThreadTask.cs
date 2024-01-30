@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Threading;
 
 namespace Alis.Core.Aspect.Thread
 {
@@ -39,15 +40,22 @@ namespace Alis.Core.Aspect.Thread
         /// <summary>
         /// Gets or sets the value of the action
         /// </summary>
-        public Action Action { get; set; }
+        private Action<CancellationToken> Action { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the token
+        /// </summary>
+        private CancellationToken Token { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ThreadTask"/> class
         /// </summary>
         /// <param name="action">The action</param>
-        public ThreadTask(Action action)
+        /// <param name="token"></param>
+        public ThreadTask(Action<CancellationToken> action, CancellationToken token)
         {
             Action = action;
+            Token = token;
         }
 
         /// <summary>
@@ -55,7 +63,7 @@ namespace Alis.Core.Aspect.Thread
         /// </summary>
         public void Execute()
         {
-            Action.Invoke();
+            Action(Token);
         }
     }
 }

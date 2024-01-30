@@ -38,9 +38,9 @@ namespace Alis.Core.Aspect.Thread
     public class ThreadManager
     {
         /// <summary>
-        /// The thread
+        /// The cancellation token source
         /// </summary>
-        private readonly List<System.Threading.Thread> threads = new List<System.Threading.Thread>();
+        private List<(System.Threading.Thread, CancellationTokenSource)> threads = new List<(System.Threading.Thread, CancellationTokenSource)>();
 
         /// <summary>
         /// Starts the thread using the specified task
@@ -48,8 +48,9 @@ namespace Alis.Core.Aspect.Thread
         /// <param name="task">The task</param>
         public void StartThread(ThreadTask task)
         {
-            System.Threading.Thread thread = new System.Threading.Thread(new ThreadStart(task.Execute));
-            threads.Add(thread);
+            CancellationTokenSource cts = new CancellationTokenSource();
+            System.Threading.Thread thread = new System.Threading.Thread(() => task.Execute());
+            threads.Add((thread, cts));
             thread.Start();
         }
 
@@ -58,15 +59,21 @@ namespace Alis.Core.Aspect.Thread
         /// </summary>
         public void StopAllThreads()
         {
-            foreach (System.Threading.Thread thread in threads)
+            foreach ((System.Threading.Thread thread, CancellationTokenSource cts) in threads)
             {
-                if (thread.IsAlive)
-                {
-                    thread.Abort();
-                }
+                cts.Cancel();
             }
 
             threads.Clear();
+        }
+        
+        /// <summary>
+        /// Gets the thread count
+        /// </summary>
+        /// <returns>The int</returns>
+        public int GetThreadCount()
+        {
+            return threads.Count;
         }
     }
 }
