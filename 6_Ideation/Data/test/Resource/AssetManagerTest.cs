@@ -29,6 +29,7 @@
 
 using System;
 using System.IO;
+using System.Threading;
 using Alis.Core.Aspect.Data.Resource;
 using Xunit;
 
@@ -47,7 +48,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         public void Find_ValidAssetName_ShouldReturnCorrectPath()
         {
             // Arrange
-            const string assetName = "example.txt";
+            const string assetName = "Find_ValidAssetName_ShouldReturnCorrectPath.txt";
             string directory = Path.Combine(Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) ?? throw new InvalidOperationException()), "Assets");
             string expectedPath = Path.Combine(directory, assetName);
 
@@ -66,9 +67,6 @@ namespace Alis.Core.Aspect.Data.Test.Resource
 
             // Assert
             Assert.Equal(expectedPath, result);
-            
-            //delete files
-            File.Delete(expectedPath);
         }
 
         /// <summary>
@@ -89,7 +87,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         public void Find_ShouldReturnCorrectPath_WhenAssetExists()
         {
             // Arrange
-            const string assetName = "duplicateAsset.txt";
+            const string assetName = "Find_ShouldReturnCorrectPath_WhenAssetExists.txt";
             
             // Create file 1
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
@@ -110,9 +108,6 @@ namespace Alis.Core.Aspect.Data.Test.Resource
 
             // Assert
             Assert.Equal(expectedPath1, actualAssetPath);
-            
-            //delete files
-            File.Delete(expectedPath1);
         }
 
         /// <summary>
@@ -122,7 +117,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         public void Find_ShouldThrowInvalidOperationException_WhenMultipleAssetsExist()
         {
             // Arrange
-            const string assetName = "duplicateAsset.txt";
+            const string assetName = "Find_ShouldThrowInvalidOperationException_WhenMultipleAssetsExist.txt";
             
             // Create file 1
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
@@ -152,10 +147,6 @@ namespace Alis.Core.Aspect.Data.Test.Resource
 
             // Act & Assert
             Assert.Throws<InvalidOperationException>(() => AssetManager.Find(assetName));
-            
-            //delete files
-            File.Delete(expectedPath1);
-            File.Delete(expectedPath2);
         }
 
         /// <summary>
@@ -165,7 +156,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         public void Find_ShouldReturnEmptyString_WhenAssetDoesNotExist()
         {
             // Arrange
-            const string assetName = "nonExistingAsset.txt";
+            const string assetName = "Find_ShouldReturnEmptyString_WhenAssetDoesNotExist.txt";
 
             // Act
             string actualAssetPath = AssetManager.Find(assetName);
