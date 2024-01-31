@@ -146,89 +146,156 @@ namespace Alis.Core.Aspect.Thread.Test
 
             //end the threads
             threadManager.StopAllThreads();
+            
+            System.Threading.Thread.Sleep(100);
 
             // Assert
             Assert.Equal(0, threadManager.GetThreadCount());
         }
 
+        /// <summary>
+        /// Tests that start thread v 2 should start new thread
+        /// </summary>
         [Fact]
-        public void StartThread_ShouldStartNewThread()
+        public void StartThread_v2_ShouldStartNewThread()
         {
             // Arrange
             ThreadManager manager = new ThreadManager();
-            ThreadTask task = new ThreadTask(token =>
+            CancellationTokenSource cts2 = new CancellationTokenSource();
+            ThreadTask threadTask2 = new ThreadTask(token =>
             {
-                // Your code here
-            });
+                while (!token.IsCancellationRequested)
+                {
+                    System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
+                }
+            }, cts2.Token);
 
             // Act
-            manager.StartThread(task);
-
+            manager.StartThread(threadTask2);
+            
+            //wait 1s
+            System.Threading.Thread.Sleep(100);
+            
             // Assert
             Assert.Equal(1, manager.GetThreadCount());
+            
+            // stop the thread
+            manager.StopAllThreads();
+
+            System.Threading.Thread.Sleep(100);
+            
+            // Assert
+            Assert.Equal(0, manager.GetThreadCount());
         }
 
+        /// <summary>
+        /// Tests that stop thread should stop specific thread
+        /// </summary>
         [Fact]
         public void StopThread_ShouldStopSpecificThread()
         {
             // Arrange
             ThreadManager manager = new ThreadManager();
-            ThreadTask task = new ThreadTask(token =>
+            CancellationTokenSource cts2 = new CancellationTokenSource();
+            ThreadTask threadTask2 = new ThreadTask(token =>
             {
-                // Your code here
-            });
-            manager.StartThread(task);
+                while (!token.IsCancellationRequested)
+                {
+                    System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
+                }
+            }, cts2.Token);
+            
+            // Act
+            manager.StartThread(threadTask2);
 
             // Act
-            manager.StopThread(task);
+            manager.StopThread(threadTask2);
+            
+            System.Threading.Thread.Sleep(100);
 
             // Assert
             Assert.Equal(0, manager.GetThreadCount());
         }
 
+        /// <summary>
+        /// Tests that stop all threads v 2 should stop all threads
+        /// </summary>
         [Fact]
-        public void StopAllThreads_ShouldStopAllThreads()
+        public void StopAllThreads_v2_ShouldStopAllThreads()
         {
             // Arrange
             ThreadManager manager = new ThreadManager();
-            ThreadTask task1 = new ThreadTask(token =>
+            
+            CancellationTokenSource cts1 = new CancellationTokenSource();
+            ThreadTask threadTask1 = new ThreadTask(token =>
             {
-                // Your code here
-            });
-            ThreadTask task2 = new ThreadTask(token =>
+                while (!token.IsCancellationRequested)
+                {
+                    System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
+                }
+            }, cts1.Token);
+            
+            CancellationTokenSource cts2 = new CancellationTokenSource();
+            ThreadTask threadTask2 = new ThreadTask(token =>
             {
-                // Your code here
-            });
-            manager.StartThread(task1);
-            manager.StartThread(task2);
+                while (!token.IsCancellationRequested)
+                {
+                    System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
+                }
+            }, cts2.Token);
+            
+            manager.StartThread(threadTask1);
+            manager.StartThread(threadTask2);
 
             // Act
             manager.StopAllThreads();
+            
+            System.Threading.Thread.Sleep(100);
 
             // Assert
             Assert.Equal(0, manager.GetThreadCount());
         }
 
+        /// <summary>
+        /// Tests that get thread count should return correct thread count
+        /// </summary>
         [Fact]
         public void GetThreadCount_ShouldReturnCorrectThreadCount()
         {
             // Arrange
             ThreadManager manager = new ThreadManager();
-            ThreadTask task1 = new ThreadTask(token =>
+            
+            CancellationTokenSource cts1 = new CancellationTokenSource();
+            ThreadTask threadTask1 = new ThreadTask(token =>
             {
-                // Your code here
-            });
-            ThreadTask task2 = new ThreadTask(token =>
+                while (!token.IsCancellationRequested)
+                {
+                    System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
+                }
+            }, cts1.Token);
+            
+            CancellationTokenSource cts2 = new CancellationTokenSource();
+            ThreadTask threadTask2 = new ThreadTask(token =>
             {
-                Console.WriteLine("Hello World!");
-            });
-
-            // Act
-            manager.StartThread(task1);
-            manager.StartThread(task2);
-
-            // Assert
+                while (!token.IsCancellationRequested)
+                {
+                    System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
+                }
+            }, cts2.Token);
+            
+            manager.StartThread(threadTask1);
+            manager.StartThread(threadTask2);
+            
             Assert.Equal(2, manager.GetThreadCount());
+            
+            // Act
+            manager.StopThread(threadTask1);
+            manager.StopThread(threadTask2);
+            
+            System.Threading.Thread.Sleep(100);
+            
+            // Assert
+            Assert.Equal(0, manager.GetThreadCount());
         }
     }
 }
