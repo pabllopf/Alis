@@ -222,7 +222,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         public void Find_InvalidAssetName_ShouldThrowArgumentException()
         {
             // Arrange
-            string assetName = "invali€?3*'¡1d:asset:name.txt";
+            string assetName = "invali€?3*'¡1d:asset:namestxt";
             
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             if (!Directory.Exists(directory))
