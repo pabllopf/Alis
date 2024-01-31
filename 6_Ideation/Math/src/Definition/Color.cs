@@ -61,7 +61,7 @@ namespace Alis.Core.Aspect.Math.Definition
         /// <param name="g">The </param>
         /// <param name="b">The </param>
         /// <param name="a">The </param>
-        private Color(byte r, byte g, byte b, byte a)
+        public Color(byte r, byte g, byte b, byte a)
         {
             R = r;
             G = g;
