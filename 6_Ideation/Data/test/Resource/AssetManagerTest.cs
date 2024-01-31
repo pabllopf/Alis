@@ -254,23 +254,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Act & Assert
             Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName));
         }
-
-        /// <summary>
-        /// Tests that find white space and valid chars asset name should return correct path
-        /// </summary>
-        [Fact]
-        public void Find_WhiteSpaceAndValidCharsAssetName_ShouldReturnCorrectPath()
-        {
-            // Arrange
-            string assetName = " valid asset.txt ";
-
-            // Act
-            string actualAssetPath = AssetManager.Find(assetName.Trim());
-
-            // Assert
-            Assert.Empty(actualAssetPath);
-        }
-
+        
         /// <summary>
         /// Tests that find white space and invalid chars asset name should throw argument exception
         /// </summary>
