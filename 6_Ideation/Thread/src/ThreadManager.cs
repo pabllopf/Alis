@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Thread
         /// <param name="threadTask">The thread task</param>
         public void StopThread(ThreadTask threadTask)
         {
-            if (threadTokens.TryGetValue(threadTask, out var cts))
+            if (threadTokens.TryGetValue(threadTask, out CancellationTokenSource cts))
             {
                 cts.Cancel();
                 threadTokens.Remove(threadTask);
