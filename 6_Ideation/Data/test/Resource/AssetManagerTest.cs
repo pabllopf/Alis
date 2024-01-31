@@ -233,6 +233,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Act & Assert
             Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName));
         }
+        
 
         /// <summary>
         /// Tests that find assets directory does not exist should return empty string
