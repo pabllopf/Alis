@@ -284,7 +284,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         public void Find_OnlyInvalidCharsAssetName_ShouldThrowArgumentException()
         {
             // Arrange
-            string assetName = "invali€?3*'¡1d:asset:name.txt";
+            string assetName = "invali€?3*'¡1d:asset:nametxt";
             
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             if (!Directory.Exists(directory))
@@ -304,7 +304,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         public void Find_InvalidAndValidCharsAssetName_ShouldThrowArgumentException()
         {
             // Arrange
-            string assetName = "invali€?3*'¡1d:asset:name.txt";
+            string assetName = "invali€?3*'¡1d:asset:nametxt";
             
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             if (!Directory.Exists(directory))
@@ -324,7 +324,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         public void Find_WhiteSpaceAndInvalidCharsAssetName_ShouldThrowArgumentException()
         {
             // Arrange
-            string assetName = " invalid:asset.txt ";
+            string assetName = " invalid:assettxt ";
             
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             if (!Directory.Exists(directory))
@@ -344,7 +344,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         public void Find_WhiteSpaceInvalidAndValidCharsAssetName_ShouldThrowArgumentException()
         {
             // Arrange
-            string assetName = " invalid:asset.txt ";
+            string assetName = " invalid:assettxt ";
             
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             
@@ -386,7 +386,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         public void Find_WhiteSpaceAroundValidCharsAssetName_ShouldReturnCorrectPath()
         {
             // Arrange
-            string assetName = " validasset ";
+            string assetName = " validasset .txt";
             
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             if (!Directory.Exists(directory))
