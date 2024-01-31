@@ -222,15 +222,14 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         public void Find_InvalidAssetName_ShouldThrowArgumentException()
         {
             // Arrange
-            string assetName = "invalid:asset:name.txt";
+            string assetName = "invali€?3*'¡1d:asset:name.txt";
             
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }
-
-
+            
             // Act & Assert
             Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName));
         }
@@ -285,7 +284,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         public void Find_OnlyInvalidCharsAssetName_ShouldThrowArgumentException()
         {
             // Arrange
-            string assetName = "invalid:asset:name.txt";
+            string assetName = "invali€?3*'¡1d:asset:name.txt";
             
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             if (!Directory.Exists(directory))
@@ -305,7 +304,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         public void Find_InvalidAndValidCharsAssetName_ShouldThrowArgumentException()
         {
             // Arrange
-            string assetName = "invalid:asset.txt";
+            string assetName = "invali€?3*'¡1d:asset:name.txt";
             
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             if (!Directory.Exists(directory))
