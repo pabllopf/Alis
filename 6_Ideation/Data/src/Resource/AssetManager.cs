@@ -79,6 +79,13 @@ namespace Alis.Core.Aspect.Data.Resource
                 throw new ArgumentException("The asset name contains invalid characters.", nameof(assetName));
             }
             
+            // check if file have extension:
+            if (!assetName.Contains("."))
+            {
+                // Throw an exception
+                throw new ArgumentException("The asset name must have extension.", nameof(assetName));
+            }
+            
             // Get the base directory of the project (where the executable is located)
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
