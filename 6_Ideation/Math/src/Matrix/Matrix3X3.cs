@@ -27,27 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math.Matrix
 {
     /// <summary>
-    ///     <see cref="Matrix3X3" /> is a struct representing a glsl mat3 value
+    /// The matrix
     /// </summary>
-    ////////////////////////////////////////////////////////////
-    [StructLayout(LayoutKind.Sequential)]
     public struct Matrix3X3
     {
         /// <summary>
-        ///     The ez
+        /// The ez
         /// </summary>
         public Vector3 Ex, Ey, Ez;
-
-        /// <summary>Construct this matrix using columns.</summary>
-        /// <param name="c1">The c1.</param>
-        /// <param name="c2">The c2.</param>
-        /// <param name="c3">The c3.</param>
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Matrix3X3"/> class
+        /// </summary>
+        /// <param name="c1">The </param>
+        /// <param name="c2">The </param>
+        /// <param name="c3">The </param>
         public Matrix3X3(Vector3 c1, Vector3 c2, Vector3 c3)
         {
             array = new float[9];
@@ -56,14 +55,19 @@ namespace Alis.Core.Aspect.Math.Matrix
             Ez = c3;
         }
 
-        ////////////////////////////////////////////////////////////
+
         /// <summary>
-        ///     Construct the <see cref="Matrix3X3" /> from its components
+        /// Initializes a new instance of the <see cref="Matrix3X3"/> class
         /// </summary>
-        /// <remarks>
-        ///     Arguments are in row-major order
-        /// </remarks>
-        ////////////////////////////////////////////////////////////
+        /// <param name="a00">The 00</param>
+        /// <param name="a01">The 01</param>
+        /// <param name="a02">The 02</param>
+        /// <param name="a10">The 10</param>
+        /// <param name="a11">The 11</param>
+        /// <param name="a12">The 12</param>
+        /// <param name="a20">The 20</param>
+        /// <param name="a21">The 21</param>
+        /// <param name="a22">The 22</param>
         public Matrix3X3(float a00, float a01, float a02,
             float a10, float a11, float a12,
             float a20, float a21, float a22)
@@ -85,18 +89,18 @@ namespace Alis.Core.Aspect.Math.Matrix
             Ez = new Vector3(a20, a21, a22);
         }
 
-        // column-major!
+
         /// <summary>
-        ///     The array
+        /// The array
         /// </summary>
         private readonly float[] array;
 
+
         /// <summary>
-        ///     Solve A * x = b, where b is a column vector. This is more efficient than computing the inverse in one-shot
-        ///     cases.
+        /// Solves the 33 using the specified b
         /// </summary>
-        /// <param name="b">The b.</param>
-        /// <returns></returns>
+        /// <param name="b">The </param>
+        /// <returns>The vector</returns>
         public Vector3 Solve33(Vector3 b)
         {
             float det = Vector3.Dot(Ex, Vector3.Cross(Ey, Ez));
@@ -109,12 +113,12 @@ namespace Alis.Core.Aspect.Math.Matrix
                 det * Vector3.Dot(Ex, Vector3.Cross(Ey, b)));
         }
 
+
         /// <summary>
-        ///     Solve A * x = b, where b is a column vector. This is more efficient than computing the inverse in one-shot
-        ///     cases. Solve only the upper 2-by-2 matrix equation.
+        /// Solves the 22 using the specified b
         /// </summary>
-        /// <param name="b">The b.</param>
-        /// <returns></returns>
+        /// <param name="b">The </param>
+        /// <returns>The vector</returns>
         public Vector2 Solve22(Vector2 b)
         {
             float a11 = Ex.X, a12 = Ey.X, a21 = Ex.Y, a22 = Ey.Y;
@@ -128,8 +132,11 @@ namespace Alis.Core.Aspect.Math.Matrix
             return new Vector2(det * (a22 * b.X - a12 * b.Y), det * (a11 * b.Y - a21 * b.X));
         }
 
-        /// Get the inverse of this matrix as a 2-by-2.
-        /// Returns the zero matrix if singular.
+
+        /// <summary>
+        /// Gets the inverse 22 using the specified m
+        /// </summary>
+        /// <param name="m">The </param>
         public void GetInverse22(ref Matrix3X3 m)
         {
             float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
@@ -158,8 +165,11 @@ namespace Alis.Core.Aspect.Math.Matrix
             );
         }
 
-        /// Get the symmetric inverse of this matrix as a 3-by-3.
-        /// Returns the zero matrix if singular.
+
+        /// <summary>
+        /// Gets the sym inverse 33 using the specified m
+        /// </summary>
+        /// <param name="m">The </param>
         public void GetSymInverse33(ref Matrix3X3 m)
         {
             float det = Dot(Ex, Cross(Ey, Ez));
@@ -191,16 +201,18 @@ namespace Alis.Core.Aspect.Math.Matrix
             );
         }
 
+  
         /// <summary>
-        ///     Dots the a
+        /// Dots the a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The float</returns>
         public static float Dot(Vector3 a, Vector3 b) => a.X * b.X + a.Y * b.Y + a.Z * b.Z;
 
+
         /// <summary>
-        ///     Crosses the a
+        /// Crosses the a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
