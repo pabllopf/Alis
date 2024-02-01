@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Memory.Attributes;
+using Alis.Core.Aspect.Memory.Exceptions;
 
 namespace Alis.Core.Aspect.Memory.Sample
 {
@@ -37,13 +39,73 @@ namespace Alis.Core.Aspect.Memory.Sample
     public static class Program
     {
         /// <summary>
+        /// Gets or sets the value of the non zero value
+        /// </summary>
+        [IsNotZero] private static int _nonZeroValue;
+        
+        /// <summary>
+        /// Gets or sets the value of the non zero value
+        /// </summary>
+        private static int _nonZeroValuev2;
+
+        [IsNotZero]
+        private static int Sample { get; set; }
+
+        public static void SampleMethod([IsNotZero, IsNotNull] int value)
+        {
+            Validator.ValidateInput(value, nameof(value));
+            Console.WriteLine("The value of value is " + value);
+        }
+        
+        /// <summary>
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
+            try
+            {
+                Sample = 0;
+                Validator.ValidateInput(Sample, nameof(Sample));
+            }
+            catch (NotZeroException e)
+            {
+                Console.WriteLine(e);
+            }
+            
+            try
+            {
+                SampleMethod(0);
+            }
+            catch (NotZeroException e)
+            {
+                Console.WriteLine(e);
+            }
+            
+            _nonZeroValuev2 = 0;
+            Validator.ValidateInput(_nonZeroValuev2, nameof(_nonZeroValuev2));
+
+            
+            try
+            {
+                _nonZeroValue = 0; 
+                Validator.ValidateInput(_nonZeroValue, nameof(_nonZeroValue));
+            }
+            catch (NotZeroException ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            try
+            {
+                _nonZeroValue = 5; 
+                Validator.ValidateInput(_nonZeroValue, nameof(_nonZeroValue));
+                Console.WriteLine("NonZeroValue has been successfully set to " + _nonZeroValue);
+            }
+            catch (NotZeroException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
