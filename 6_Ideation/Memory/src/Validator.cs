@@ -27,7 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Diagnostics;
+using System.Reflection;
+using Alis.Core.Aspect.Memory.Attributes;
 
 namespace Alis.Core.Aspect.Memory
 {
@@ -44,6 +47,21 @@ namespace Alis.Core.Aspect.Memory
         [Conditional("DEBUG")]
         public static void Validate<T>(T value)
         {
+            Type type = typeof(T);
+            PropertyInfo[] properties = type.GetProperties();
+
+            foreach (PropertyInfo property in properties)
+            {
+                object[] attributes = property.GetCustomAttributes(true);
+
+                foreach (object attribute in attributes)
+                {
+                    if (attribute is IsValidationAttribute validationAttribute)
+                    {
+                        validationAttribute.Validate(property.GetValue(value), property.Name);
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -51,10 +69,78 @@ namespace Alis.Core.Aspect.Memory
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
+        /// <param name="name"></param>
         [Conditional("DEBUG")]
-        public static void ValidateInput<T>(T value)
+        public static void ValidateInput<T>(T value, string name)
         {
+            StackTrace stackTrace = new StackTrace();
+            MethodBase methodBase = stackTrace.GetFrame(1).GetMethod();
+            Type callingType = methodBase.ReflectedType;
+
+            ParameterInfo[] parameters = methodBase.GetParameters();
+            if (parameters.Length > 0)
+            {
+                foreach (ParameterInfo parameter in parameters)
+                {
+                    if (parameter.Name != name) continue;
+
+                    Console.WriteLine("Parameter: " + parameter.Name);
+
+                    object[] attributes = parameter.GetCustomAttributes(true);
+
+                    foreach (object attribute in attributes)
+                    {
+                        if (attribute is IsValidationAttribute validationAttribute)
+                        {
+                            validationAttribute.Validate(value, $"type='{callingType}' method='{methodBase.Name}' param='{parameter.Name}'");
+                        }
+                    }
+                }
+            }
+            
+            if (callingType != null)
+            {
+                FieldInfo[] fields = callingType.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                foreach (FieldInfo field in fields)
+                {
+                    if (field.Name != name) continue;
+
+                    Console.WriteLine("Field: " + field.Name);
+
+                    object[] attributes = field.GetCustomAttributes(true);
+
+                    foreach (object attribute in attributes)
+                    {
+                        if (attribute is IsValidationAttribute validationAttribute)
+                        {
+                            validationAttribute.Validate(value, $"type='{callingType}' field='{field.Name}'");
+                        }
+                    }
+                }
+
+                // New section for properties
+                PropertyInfo[] properties = callingType.GetProperties(BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                foreach (PropertyInfo property in properties)
+                {
+                    if (property.Name != name) continue;
+
+                    Console.WriteLine("Property: " + property.Name);
+
+                    object[] attributes = property.GetCustomAttributes(true);
+
+                    foreach (object attribute in attributes)
+                    {
+                        if (attribute is IsValidationAttribute validationAttribute)
+                        {
+                            validationAttribute.Validate(value, $"type='{callingType}' property='{property.Name}'");
+                        }
+                    }
+                }
+            }
         }
+
 
         /// <summary>
         ///     Validates the output using the specified value
