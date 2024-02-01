@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.2.7] - 2024-02-01
+### :sparkles: New Features
+- [`09a11f3`](https://github.com/pabllopf/Alis/commit/09a11f333201357f1a34e37a35447fb3f61618d7) - create the sample to time module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f04eeef`](https://github.com/pabllopf/Alis/commit/f04eeef89c53e6a9fea66dcda001aa4e441374a9) - new version of thread an create test and docs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`36c409b`](https://github.com/pabllopf/Alis/commit/36c409bddbd33e4bc9da9f43af0963eac211358e) - add netcoreapp3.1 and netcoreapp3.0 *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`cd233de`](https://github.com/pabllopf/Alis/commit/cd233de52c69a837c75b16fc7cd7bc5db4518c1c) - json files parser *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`466bab5`](https://github.com/pabllopf/Alis/commit/466bab59b8905cf6e4c48fa811c90cf2dc947559) - change AssetPath definition *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cc277d6`](https://github.com/pabllopf/Alis/commit/cc277d6ca16dcc65dab725011e5795138456b3e7) - test execution with .netcoreapp *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`20bfab2`](https://github.com/pabllopf/Alis/commit/20bfab23e044452066dd0f00aa4098b4299bd54e) - the thread manager and add cancel token *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`72481b2`](https://github.com/pabllopf/Alis/commit/72481b225a55448d4a71b2c69b1d4e00a9a82c3f) - add 5 test to assetmanager *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1037f4c`](https://github.com/pabllopf/Alis/commit/1037f4c9b3c357f97063c43e1d61a6622b309bdb) - add 10 test to assetmanager test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ee142e7`](https://github.com/pabllopf/Alis/commit/ee142e7c8d23cf2be56caa320ab7d5c6156f3f4f) - covert 100% the Threading module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3d58d90`](https://github.com/pabllopf/Alis/commit/3d58d90f6953e066ccf558d95dd8296e657fd963) - add test to color and depth color *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`3ce17f8`](https://github.com/pabllopf/Alis/commit/3ce17f82ddd54b76c1bed008251b93a01849d0d3) - add documentation to class of time module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`869795f`](https://github.com/pabllopf/Alis/commit/869795f641700a4d34825c029c59231c202df12b) - update the changes of Alis.Core.Aspect.Thread  module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2a5040c`](https://github.com/pabllopf/Alis/commit/2a5040cfc44e465eddd1d29ec70df5247ddf1c99) - update the Matrix3X3 xmls *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a069dea`](https://github.com/pabllopf/Alis/commit/a069deae7ed27ff7d9ac749d51b458aa1d01d7f6) - add docs for atribbute class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`08e43b5`](https://github.com/pabllopf/Alis/commit/08e43b533b57206aa5ba285c33e91e81422dbbc6) - add documentation to Exceptions of Memory module *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.2.6] - 2024-01-29
 ### :sparkles: New Features
 - [`1890dcb`](https://github.com/pabllopf/Alis/commit/1890dcb1af9aa63958d6de1c36530e3cf4ba2adc) - add net5.0 compatibility *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -2136,3 +2162,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [v0.2.5]: https://github.com/pabllopf/Alis/compare/v0.2.4...v0.2.5
 [v0.2.6]: https://github.com/pabllopf/Alis/compare/v0.2.5...v0.2.6
+[v0.2.7]: https://github.com/pabllopf/Alis/compare/v0.2.6...v0.2.7
