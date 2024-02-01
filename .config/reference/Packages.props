@@ -22,7 +22,7 @@
 
         <PackageReference Include="OpenCover" Version="4.7.922"/>
 
-        <Content Include="$(SolutionDir).config/xunit.runner.json" LinkBase="." Pack="true" Visible="true" PackagePath=".">
+        <Content Condition="$(AssemblyName.Contains('Graphic'))" Include="$(SolutionDir).config/xunit.runner.json" LinkBase="." Pack="true" Visible="true" PackagePath=".">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
