@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Aspect.Sample
 {
     /// <summary>
@@ -40,6 +42,8 @@ namespace Alis.Core.Aspect.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            Console.WriteLine("Please press any key to continue...");
+            Console.ReadKey();
         }
     }
 }
