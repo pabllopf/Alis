@@ -272,6 +272,8 @@
         <Content Include="$(ProjectDir)bin/Release/lib/net6.0/*.md" Visible="true" PackagePath="lib/net6.0/"/>
         <Content Include="$(ProjectDir)bin/Release/lib/net7.0/*.md" Visible="true" PackagePath="lib/net7.0/"/>
         <Content Include="$(ProjectDir)bin/Release/lib/net8.0/*.md" Visible="true" PackagePath="lib/net8.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/lib/netcoreapp3.0/*.md" Visible="true" PackagePath="lib/netcoreapp3.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/lib/netcoreapp3.1/*.md" Visible="true" PackagePath="lib/netcoreapp3.1/"/>
         <Content Include="$(ProjectDir)bin/Release/lib/netstandard2.0/*.md" Visible="true" PackagePath="lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/lib/netstandard2.1/*.md" Visible="true" PackagePath="lib/netstandard2.1/"/>
 
@@ -280,6 +282,8 @@
         <Content Include="$(ProjectDir)bin/Release/linux-arm64/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm64/lib/net6.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-arm64/lib/net7.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm64/lib/net7.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-arm64/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm64/lib/net8.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/linux-arm64/lib/netcoreapp3.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm64/lib/netcoreapp3.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/linux-arm64/lib/netcoreapp3.1/*.dll" Visible="true" PackagePath="runtimes/linux-arm64/lib/netcoreapp3.1/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-arm64/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm64/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-arm64/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/linux-arm64/lib/netstandard2.1/"/>
 
@@ -288,6 +292,8 @@
         <Content Include="$(ProjectDir)bin/Release/linux-arm/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm/lib/net6.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-arm/lib/net7.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm/lib/net7.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-arm/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm/lib/net8.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/linux-arm/lib/netcoreapp3.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm/lib/netcoreapp3.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/linux-arm/lib/netcoreapp3.1/*.dll" Visible="true" PackagePath="runtimes/linux-arm/lib/netcoreapp3.1/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-arm/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/linux-arm/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-arm/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/linux-arm/lib/netstandard2.1/"/>
 
@@ -296,6 +302,8 @@
         <Content Include="$(ProjectDir)bin/Release/linux-x64/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/linux-x64/lib/net6.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-x64/lib/net7.0/*.dll" Visible="true" PackagePath="runtimes/linux-x64/lib/net7.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-x64/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/linux-x64/lib/net8.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/linux-x64/lib/netcoreapp3.0/*.dll" Visible="true" PackagePath="runtimes/linux-x64/lib/netcoreapp3.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/linux-x64/lib/netcoreapp3.1/*.dll" Visible="true" PackagePath="runtimes/linux-x64/lib/netcoreapp3.1/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-x64/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/linux-x64/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-x64/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/linux-x64/lib/netstandard2.1/"/>
 
@@ -304,6 +312,8 @@
         <Content Include="$(ProjectDir)bin/Release/linux-x86/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/linux-x86/lib/net6.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-x86/lib/net7.0/*.dll" Visible="true" PackagePath="runtimes/linux-x86/lib/net7.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-x86/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/linux-x86/lib/net8.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/linux-x86/lib/netcoreapp3.0/*.dll" Visible="true" PackagePath="runtimes/linux-x86/lib/netcoreapp3.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/linux-x86/lib/netcoreapp3.1/*.dll" Visible="true" PackagePath="runtimes/linux-x86/lib/netcoreapp3.1/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-x86/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/linux-x86/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-x86/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/linux-x86/lib/netstandard2.1/"/>
 
@@ -312,6 +322,8 @@
         <Content Include="$(ProjectDir)bin/Release/osx-arm64/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/osx-arm64/lib/net6.0/"/>
         <Content Include="$(ProjectDir)bin/Release/osx-arm64/lib/net7.0/*.dll" Visible="true" PackagePath="runtimes/osx-arm64/lib/net7.0/"/>
         <Content Include="$(ProjectDir)bin/Release/osx-arm64/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/osx-arm64/lib/net8.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/osx-arm64/lib/netcoreapp3.0/*.dll" Visible="true" PackagePath="runtimes/osx-arm64/lib/netcoreapp3.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/osx-arm64/lib/netcoreapp3.1/*.dll" Visible="true" PackagePath="runtimes/osx-arm64/lib/netcoreapp3.1/"/>
         <Content Include="$(ProjectDir)bin/Release/osx-arm64/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/osx-arm64/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/osx-arm64/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/osx-arm64/lib/netstandard2.1/"/>
 
@@ -320,6 +332,8 @@
         <Content Include="$(ProjectDir)bin/Release/osx-x64/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/osx-x64/lib/net6.0/"/>
         <Content Include="$(ProjectDir)bin/Release/osx-x64/lib/net7.0/*.dll" Visible="true" PackagePath="runtimes/osx-x64/lib/net7.0/"/>
         <Content Include="$(ProjectDir)bin/Release/osx-x64/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/osx-x64/lib/net8.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/osx-x64/lib/netcoreapp3.0/*.dll" Visible="true" PackagePath="runtimes/osx-x64/lib/netcoreapp3.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/osx-x64/lib/netcoreapp3.1/*.dll" Visible="true" PackagePath="runtimes/osx-x64/lib/netcoreapp3.1/"/>
         <Content Include="$(ProjectDir)bin/Release/osx-x64/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/osx-x64/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/osx-x64/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/osx-x64/lib/netstandard2.1/"/>
 
@@ -328,6 +342,8 @@
         <Content Include="$(ProjectDir)bin/Release/win-arm/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/win-arm/lib/net6.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-arm/lib/net7.0/*.dll" Visible="true" PackagePath="runtimes/win-arm/lib/net7.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-arm/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/win-arm/lib/net8.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/win-arm/lib/netcoreapp3.0/*.dll" Visible="true" PackagePath="runtimes/win-arm/lib/netcoreapp3.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/win-arm/lib/netcoreapp3.1/*.dll" Visible="true" PackagePath="runtimes/win-arm/lib/netcoreapp3.1/"/>
         <Content Include="$(ProjectDir)bin/Release/win-arm/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/win-arm/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-arm/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/win-arm/lib/netstandard2.1/"/>
 
@@ -336,6 +352,8 @@
         <Content Include="$(ProjectDir)bin/Release/win-arm64/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/win-arm64/lib/net6.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-arm64/lib/net7.0/*.dll" Visible="true" PackagePath="runtimes/win-arm64/lib/net7.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-arm64/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/win-arm64/lib/net8.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/win-arm64/lib/netcoreapp3.0/*.dll" Visible="true" PackagePath="runtimes/win-arm64/lib/netcoreapp3.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/win-arm64/lib/netcoreapp3.1/*.dll" Visible="true" PackagePath="runtimes/win-arm64/lib/netcoreapp3.1/"/>
         <Content Include="$(ProjectDir)bin/Release/win-arm64/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/win-arm64/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-arm64/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/win-arm64/lib/netstandard2.1/"/>
 
@@ -344,6 +362,8 @@
         <Content Include="$(ProjectDir)bin/Release/win-x64/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/win-x64/lib/net6.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-x64/lib/net7.0/*.dll" Visible="true" PackagePath="runtimes/win-x64/lib/net7.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-x64/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/win-x64/lib/net8.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/win-x64/lib/netcoreapp3.0/*.dll" Visible="true" PackagePath="runtimes/win-x64/lib/netcoreapp3.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/win-x64/lib/netcoreapp3.1/*.dll" Visible="true" PackagePath="runtimes/win-x64/lib/netcoreapp3.1/"/>
         <Content Include="$(ProjectDir)bin/Release/win-x64/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/win-x64/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-x64/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/win-x64/lib/netstandard2.1/"/>
 
@@ -352,6 +372,8 @@
         <Content Include="$(ProjectDir)bin/Release/win-x86/lib/net6.0/*.dll" Visible="true" PackagePath="runtimes/win-x86/lib/net6.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-x86/lib/net7.0/*.dll" Visible="true" PackagePath="runtimes/win-x86/lib/net7.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-x86/lib/net8.0/*.dll" Visible="true" PackagePath="runtimes/win-x86/lib/net8.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/win-x86/lib/netcoreapp3.0/*.dll" Visible="true" PackagePath="runtimes/win-x86/lib/netcoreapp3.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/win-x86/lib/netcoreapp3.1/*.dll" Visible="true" PackagePath="runtimes/win-x86/lib/netcoreapp3.1/"/>
         <Content Include="$(ProjectDir)bin/Release/win-x86/lib/netstandard2.0/*.dll" Visible="true" PackagePath="runtimes/win-x86/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-x86/lib/netstandard2.1/*.dll" Visible="true" PackagePath="runtimes/win-x86/lib/netstandard2.1/"/>
     </ItemGroup>
