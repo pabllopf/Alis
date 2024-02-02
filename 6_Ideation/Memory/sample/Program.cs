@@ -53,7 +53,7 @@ namespace Alis.Core.Aspect.Memory.Sample
 
         public static void SampleMethod([IsNotZero, IsNotNull] int value)
         {
-            Validator.ValidateInput(value, nameof(value));
+            Validator.Validate(value, nameof(value));
             Console.WriteLine("The value of value is " + value);
         }
         
@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Memory.Sample
             try
             {
                 Sample = 0;
-                Validator.ValidateInput(Sample, nameof(Sample));
+                Validator.Validate(Sample, nameof(Sample));
             }
             catch (NotZeroException e)
             {
@@ -83,13 +83,13 @@ namespace Alis.Core.Aspect.Memory.Sample
             }
             
             _nonZeroValuev2 = 0;
-            Validator.ValidateInput(_nonZeroValuev2, nameof(_nonZeroValuev2));
+            Validator.Validate(_nonZeroValuev2, nameof(_nonZeroValuev2));
 
             
             try
             {
                 _nonZeroValue = 0; 
-                Validator.ValidateInput(_nonZeroValue, nameof(_nonZeroValue));
+                Validator.Validate(_nonZeroValue, nameof(_nonZeroValue));
             }
             catch (NotZeroException ex)
             {
@@ -99,7 +99,7 @@ namespace Alis.Core.Aspect.Memory.Sample
             try
             {
                 _nonZeroValue = 5; 
-                Validator.ValidateInput(_nonZeroValue, nameof(_nonZeroValue));
+                Validator.Validate(_nonZeroValue, nameof(_nonZeroValue));
                 Console.WriteLine("NonZeroValue has been successfully set to " + _nonZeroValue);
             }
             catch (NotZeroException ex)

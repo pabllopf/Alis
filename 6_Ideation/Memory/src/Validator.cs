@@ -40,38 +40,13 @@ namespace Alis.Core.Aspect.Memory
     public static class Validator
     {
         /// <summary>
-        ///     Validates the value
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="value">The value</param>
-        [Conditional("DEBUG")]
-        public static void Validate<T>(T value)
-        {
-            Type type = typeof(T);
-            PropertyInfo[] properties = type.GetProperties();
-
-            foreach (PropertyInfo property in properties)
-            {
-                object[] attributes = property.GetCustomAttributes(true);
-
-                foreach (object attribute in attributes)
-                {
-                    if (attribute is IsValidationAttribute validationAttribute)
-                    {
-                        validationAttribute.Validate(property.GetValue(value), property.Name);
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         ///     Validates the input using the specified value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <param name="name"></param>
         [Conditional("DEBUG")]
-        public static void ValidateInput<T>(T value, string name)
+        public static void Validate<T>(T value, string name)
         {
             StackTrace stackTrace = new StackTrace();
             MethodBase methodBase = stackTrace.GetFrame(1).GetMethod();
@@ -83,9 +58,7 @@ namespace Alis.Core.Aspect.Memory
                 foreach (ParameterInfo parameter in parameters)
                 {
                     if (parameter.Name != name) continue;
-
-                    Console.WriteLine("Parameter: " + parameter.Name);
-
+                    
                     object[] attributes = parameter.GetCustomAttributes(true);
 
                     foreach (object attribute in attributes)
@@ -106,8 +79,6 @@ namespace Alis.Core.Aspect.Memory
                 {
                     if (field.Name != name) continue;
 
-                    Console.WriteLine("Field: " + field.Name);
-
                     object[] attributes = field.GetCustomAttributes(true);
 
                     foreach (object attribute in attributes)
@@ -125,9 +96,7 @@ namespace Alis.Core.Aspect.Memory
                 foreach (PropertyInfo property in properties)
                 {
                     if (property.Name != name) continue;
-
-                    Console.WriteLine("Property: " + property.Name);
-
+                    
                     object[] attributes = property.GetCustomAttributes(true);
 
                     foreach (object attribute in attributes)
@@ -139,17 +108,6 @@ namespace Alis.Core.Aspect.Memory
                     }
                 }
             }
-        }
-
-
-        /// <summary>
-        ///     Validates the output using the specified value
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="value">The value</param>
-        [Conditional("DEBUG")]
-        public static void ValidateOutput<T>(T value)
-        {
         }
     }
 }
