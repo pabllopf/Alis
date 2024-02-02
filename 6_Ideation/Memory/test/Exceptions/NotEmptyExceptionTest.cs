@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Memory.Exceptions;
+using Xunit;
+
 namespace Alis.Core.Aspect.Memory.Test.Exceptions
 {
     /// <summary>
@@ -34,5 +37,20 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
     /// </summary>
     public class NotEmptyExceptionTest
     {
+        /// <summary>
+        /// Tests that not empty exception with message should set message
+        /// </summary>
+        [Fact]
+        public void NotEmptyException_WithMessage_ShouldSetMessage()
+        {
+            // Arrange
+            string message = "Test message";
+
+            // Act
+            NotEmptyException exception = new NotEmptyException(message);
+
+            // Assert
+            Assert.Equal(message, exception.Message);
+        }
     }
 }

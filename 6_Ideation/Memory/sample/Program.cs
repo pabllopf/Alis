@@ -48,9 +48,16 @@ namespace Alis.Core.Aspect.Memory.Sample
         /// </summary>
         private static int _nonZeroValuev2;
 
+        /// <summary>
+        /// Gets or sets the value of the sample
+        /// </summary>
         [IsNotZero]
         private static int Sample { get; set; }
 
+        /// <summary>
+        /// Samples the method using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
         public static void SampleMethod([IsNotZero, IsNotNull] int value)
         {
             Validator.Validate(value, nameof(value));

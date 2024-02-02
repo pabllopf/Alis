@@ -27,6 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Memory.Attributes;
+using Alis.Core.Aspect.Memory.Exceptions;
+using Xunit;
+
 namespace Alis.Core.Aspect.Memory.Test.Attributes
 {
     /// <summary>
@@ -34,5 +38,19 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
     /// </summary>
     public class IsValidationAttributeTest
     {
+
+        /// <summary>
+        /// Tests that validate with empty string should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithEmptyString_ShouldThrowException()
+        {
+            // Arrange
+            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
+            string emptyString = string.Empty;
+
+            // Act and Assert
+            Assert.Throws<NotEmptyException>(() => attribute.Validate(emptyString, nameof(emptyString)));
+        }
     }
 }
