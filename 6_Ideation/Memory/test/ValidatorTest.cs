@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Memory.Attributes;
 using Alis.Core.Aspect.Memory.Exceptions;
@@ -707,6 +708,41 @@ namespace Alis.Core.Aspect.Memory.Test
 
             // Act
             Validator.Validate(notEmptyDictionary, nameof(notEmptyDictionary));
+
+            // Assert
+            Assert.True(true);
+        }
+        
+        /// <summary>
+        /// Tests that validate with empty concurrent dictionary should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithEmptyConcurrentDictionary_ShouldThrowException()
+        {
+            // Arrange
+            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
+            ConcurrentDictionary<int, int> emptyConcurrentDictionary = new ConcurrentDictionary<int, int>();
+
+            // Act and Assert
+            Validator.Validate(emptyConcurrentDictionary, nameof(emptyConcurrentDictionary));
+            
+            // Assert
+            Assert.True(true);
+        }
+
+        /// <summary>
+        /// Tests that validate with not empty concurrent dictionary should not throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithNotEmptyConcurrentDictionary_ShouldNotThrowException()
+        {
+            // Arrange
+            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
+            ConcurrentDictionary<int, int> notEmptyConcurrentDictionary = new ConcurrentDictionary<int, int>();
+            notEmptyConcurrentDictionary.TryAdd(1, 1);
+
+            // Act
+            Validator.Validate(notEmptyConcurrentDictionary, nameof(notEmptyConcurrentDictionary));
 
             // Assert
             Assert.True(true);
