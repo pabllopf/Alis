@@ -44,9 +44,30 @@ namespace Alis.Core.Aspect.Memory.Attributes
         /// <param name="name">The name</param>
         public override void Validate(object value, string name)
         {
-            if((int)value == 0)
+            switch (value)
             {
-                throw new NotZeroException($"The value of {name} can't be zero");
+                case int i when i == 0:
+                    throw new NotZeroException($"The value of {name} can't be zero");
+                case long l when l == 0:
+                    throw new NotZeroException($"The value of {name} can't be zero");
+                case decimal d when d == 0:
+                    throw new NotZeroException($"The value of {name} can't be zero");
+                case float f when f == 0:
+                    throw new NotZeroException($"The value of {name} can't be zero");
+                case double db when db == 0:
+                    throw new NotZeroException($"The value of {name} can't be zero");
+                case short s when s == 0:
+                    throw new NotZeroException($"The value of {name} can't be zero");
+                case byte b when b == 0:
+                    throw new NotZeroException($"The value of {name} can't be zero");
+                case sbyte sb when sb == 0:
+                    throw new NotZeroException($"The value of {name} can't be zero");
+                case ushort us when us == 0:
+                    throw new NotZeroException($"The value of {name} can't be zero");
+                case uint ui when ui == 0:
+                    throw new NotZeroException($"The value of {name} can't be zero");
+                case ulong ul when ul == 0:
+                    throw new NotZeroException($"The value of {name} can't be zero");
             }
         }
     }

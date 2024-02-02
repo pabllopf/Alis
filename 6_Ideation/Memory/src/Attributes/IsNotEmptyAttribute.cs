@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Linq;
 using Alis.Core.Aspect.Memory.Exceptions;
 
 namespace Alis.Core.Aspect.Memory.Attributes
@@ -44,9 +45,29 @@ namespace Alis.Core.Aspect.Memory.Attributes
         /// <param name="name">The name</param>
         public override void Validate(object value, string name)
         {
-            if (value is string str && string.IsNullOrEmpty(str))
+            switch (value)
             {
-                throw new NotEmptyException($"{name} can't be null or empty");
+                case string str when string.IsNullOrEmpty(str):
+                    throw new NotEmptyException($"{name} can't be null or empty");
+                case object[] {Length: 0}:
+                    throw new NotEmptyException($"{name} can't be null or empty");
+                case System.Collections.ICollection {Count: 0}:
+                    throw new NotEmptyException($"{name} can't be null or empty");
+            }
+
+            switch (value)
+            {
+                case System.Collections.IDictionary {Count: 0}:
+                    throw new NotEmptyException($"{name} can't be null or empty");
+                case System.Collections.IEnumerable enumerable:
+                {
+                    if (enumerable.Cast<object>().Any())
+                    {
+                        return;
+                    }
+
+                    throw new NotEmptyException($"{name} can't be null or empty");
+                }
             }
         }
     }

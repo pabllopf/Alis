@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Memory.Exceptions;
+using Xunit;
+
 namespace Alis.Core.Aspect.Memory.Test.Exceptions
 {
     /// <summary>
@@ -34,5 +37,20 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
     /// </summary>
     public class NotNullExceptionTest
     {
+        /// <summary>
+        /// Tests that not null exception with message should set message
+        /// </summary>
+        [Fact]
+        public void NotNullException_WithMessage_ShouldSetMessage()
+        {
+            // Arrange
+            const string message = "Test message";
+
+            // Act
+            NotNullException exception = new NotNullException(message);
+
+            // Assert
+            Assert.Equal(message, exception.Message);
+        }
     }
 }

@@ -27,6 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Memory.Attributes;
+using Alis.Core.Aspect.Memory.Exceptions;
+using Xunit;
+
 namespace Alis.Core.Aspect.Memory.Test.Attributes
 {
     /// <summary>
@@ -34,5 +38,18 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
     /// </summary>
     public class IsNotNullAttributeTest
     {
+        /// <summary>
+        /// Tests that validate with null value should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithNullValue_ShouldThrowException()
+        {
+            // Arrange
+            IsNotNullAttribute attribute = new IsNotNullAttribute();
+            object nullValue = null;
+
+            // Act and Assert
+            Assert.Throws<NotNullException>(() => attribute.Validate(null, nameof(nullValue)));
+        }
     }
 }

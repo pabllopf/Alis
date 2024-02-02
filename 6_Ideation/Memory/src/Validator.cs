@@ -89,8 +89,7 @@ namespace Alis.Core.Aspect.Memory
                         }
                     }
                 }
-
-                // New section for properties
+                
                 PropertyInfo[] properties = callingType.GetProperties(BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Instance);
 
                 foreach (PropertyInfo property in properties)
