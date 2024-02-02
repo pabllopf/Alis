@@ -49,10 +49,6 @@ namespace Alis.Core.Aspect.Memory.Attributes
             {
                 case string str when string.IsNullOrEmpty(str):
                     throw new NotEmptyException($"{name} can't be null or empty");
-                case object[] {Length: 0}:
-                    throw new NotEmptyException($"{name} can't be null or empty");
-                case System.Collections.ICollection {Count: 0}:
-                    throw new NotEmptyException($"{name} can't be null or empty");
             }
 
             switch (value)

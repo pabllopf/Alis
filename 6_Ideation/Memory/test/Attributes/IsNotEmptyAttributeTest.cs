@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Memory.Attributes;
 using Alis.Core.Aspect.Memory.Exceptions;
@@ -39,6 +40,8 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
     /// </summary>
     public class IsNotEmptyAttributeTest
     {
+       [IsNotEmpty] private ConcurrentBag<int> emptyConcurrentBag1;
+
         /// <summary>
         /// Tests that validate with empty string should throw exception
         /// </summary>
@@ -124,7 +127,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         {
             // Arrange
             IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
-            var emptyCollection = new System.Collections.Generic.List<int>();
+            List<int> emptyCollection = new System.Collections.Generic.List<int>();
 
             // Act and Assert
             Assert.Throws<NotEmptyException>(() => attribute.Validate(emptyCollection, nameof(emptyCollection)));
@@ -138,7 +141,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         {
             // Arrange
             IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
-            var notEmptyCollection = new System.Collections.Generic.List<int> {1};
+            List<int> notEmptyCollection = new System.Collections.Generic.List<int> {1};
 
             // Act
             attribute.Validate(notEmptyCollection, nameof(notEmptyCollection));
@@ -155,7 +158,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         {
             // Arrange
             IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
-            var emptyDictionary = new System.Collections.Generic.Dictionary<string, string>();
+            Dictionary<string, string> emptyDictionary = new System.Collections.Generic.Dictionary<string, string>();
 
             // Act and Assert
             Assert.Throws<NotEmptyException>(() => attribute.Validate(emptyDictionary, nameof(emptyDictionary)));
@@ -169,7 +172,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         {
             // Arrange
             IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
-            var notEmptyDictionary = new System.Collections.Generic.Dictionary<string, string> {{"key", "value"}};
+            Dictionary<string, string> notEmptyDictionary = new System.Collections.Generic.Dictionary<string, string> {{"key", "value"}};
 
             // Act
             attribute.Validate(notEmptyDictionary, nameof(notEmptyDictionary));
@@ -267,6 +270,133 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
 
             // Act
             attribute.Validate(notEmptyStack, nameof(notEmptyStack));
+
+            // Assert
+            Assert.True(true);
+        }
+        
+        /// <summary>
+        /// Tests that validate with empty linked list should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithEmptyLinkedList_ShouldThrowException()
+        {
+            // Arrange
+            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
+            LinkedList<int> emptyLinkedList = new LinkedList<int>();
+
+            // Act and Assert
+            Assert.Throws<NotEmptyException>(() => attribute.Validate(emptyLinkedList, nameof(emptyLinkedList)));
+        }
+
+        /// <summary>
+        /// Tests that validate with not empty linked list should not throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithNotEmptyLinkedList_ShouldNotThrowException()
+        {
+            // Arrange
+            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
+            LinkedList<int> notEmptyLinkedList = new LinkedList<int>();
+            notEmptyLinkedList.AddLast(1);
+
+            // Act
+            attribute.Validate(notEmptyLinkedList, nameof(notEmptyLinkedList));
+
+            // Assert
+            Assert.True(true);
+        }
+        
+        /// <summary>
+        /// Tests that validate with empty concurrent queue should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithEmptyConcurrentQueue_ShouldThrowException()
+        {
+            // Arrange
+            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
+            ConcurrentQueue<int> emptyConcurrentQueue = new ConcurrentQueue<int>();
+
+            // Act and Assert
+            Assert.Throws<NotEmptyException>(() => attribute.Validate(emptyConcurrentQueue, nameof(emptyConcurrentQueue)));
+        }
+
+        /// <summary>
+        /// Tests that validate with not empty concurrent queue should not throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithNotEmptyConcurrentQueue_ShouldNotThrowException()
+        {
+            // Arrange
+            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
+            ConcurrentQueue<int> notEmptyConcurrentQueue = new ConcurrentQueue<int>();
+            notEmptyConcurrentQueue.Enqueue(1);
+
+            // Act
+            attribute.Validate(notEmptyConcurrentQueue, nameof(notEmptyConcurrentQueue));
+
+            // Assert
+            Assert.True(true);
+        }
+        
+        /// <summary>
+        /// Tests that validate with empty concurrent stack should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithEmptyConcurrentStack_ShouldThrowException()
+        {
+            // Arrange
+            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
+            ConcurrentStack<int> emptyConcurrentStack = new ConcurrentStack<int>();
+
+            // Act and Assert
+            Assert.Throws<NotEmptyException>(() => attribute.Validate(emptyConcurrentStack, nameof(emptyConcurrentStack)));
+        }
+
+        /// <summary>
+        /// Tests that validate with not empty concurrent stack should not throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithNotEmptyConcurrentStack_ShouldNotThrowException()
+        {
+            // Arrange
+            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
+            ConcurrentStack<int> notEmptyConcurrentStack = new ConcurrentStack<int>();
+            notEmptyConcurrentStack.Push(1);
+
+            // Act
+            attribute.Validate(notEmptyConcurrentStack, nameof(notEmptyConcurrentStack));
+
+            // Assert
+            Assert.True(true);
+        }
+        /// <summary>
+        /// Tests that validate with empty concurrent bag should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithEmptyConcurrentBag_ShouldThrowException()
+        {
+            // Arrange
+            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
+            emptyConcurrentBag1 = new ConcurrentBag<int>();
+
+            // Act and Assert
+            Assert.Throws<NotEmptyException>(() => attribute.Validate(emptyConcurrentBag1, nameof(emptyConcurrentBag1)));
+        }
+
+        /// <summary>
+        /// Tests that validate with not empty concurrent bag should not throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithNotEmptyConcurrentBag_ShouldNotThrowException()
+        {
+            // Arrange
+            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
+            ConcurrentBag<int> notEmptyConcurrentBag = new ConcurrentBag<int>();
+            notEmptyConcurrentBag.Add(1);
+
+            // Act
+            attribute.Validate(notEmptyConcurrentBag, nameof(notEmptyConcurrentBag));
 
             // Assert
             Assert.True(true);
