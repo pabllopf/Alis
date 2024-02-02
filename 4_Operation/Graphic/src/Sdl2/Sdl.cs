@@ -289,10 +289,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static IntPtr RwFromFile([IsNotNull] string file, [IsNotNull] string mode)
         {
-            Validator.ValidateInput(file, nameof(file));
-            Validator.ValidateInput(mode, nameof(mode));
+            Validator.Validate(file, nameof(file));
+            Validator.Validate(mode, nameof(mode));
             IntPtr result = NativeSdl.InternalRWFromFile(file, mode);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -306,9 +306,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr LoadFile([IsNotNull] string file, out IntPtr dataSize)
         {
-            Validator.ValidateInput(file, nameof(file));
+            Validator.Validate(file, nameof(file));
             IntPtr result = NativeSdl.InternalLoadFile(file, out dataSize);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -321,7 +321,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static string GetError()
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetError());
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -333,7 +333,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetError([IsNotNull] string fmtAndArgList)
         {
-            Validator.ValidateInput(fmtAndArgList, nameof(fmtAndArgList));
+            Validator.Validate(fmtAndArgList, nameof(fmtAndArgList));
             NativeSdl.InternalSetError(fmtAndArgList);
         }
 
@@ -346,9 +346,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Init([IsNotNull] SdlInit flags)
         {
-            Validator.ValidateInput(flags, nameof(flags));
+            Validator.Validate(flags, nameof(flags));
             int result = NativeSdl.InternalInit(flags);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -371,9 +371,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint WasInit([IsNotNull] SdlInit flags)
         {
-            Validator.ValidateInput(flags, nameof(flags));
+            Validator.Validate(flags, nameof(flags));
             uint result = NativeSdl.InternalWasInit(flags);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -396,9 +396,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GetHint([IsNotNull] string name)
         {
-            Validator.ValidateInput(name, nameof(name));
+            Validator.Validate(name, nameof(name));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetHint(name));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -412,10 +412,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SdlBool SetHint([IsNotNull] string name, [IsNotNull] string value)
         {
-            Validator.ValidateInput(name, nameof(name));
-            Validator.ValidateInput(value, nameof(value));
+            Validator.Validate(name, nameof(name));
+            Validator.Validate(value, nameof(value));
             SdlBool result = NativeSdl.InternalSetHint(name, value);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -430,11 +430,11 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SdlBool SetHintWithPriority([IsNotNull] string name, [IsNotNull] string value, SdlHintPriority priority)
         {
-            Validator.ValidateInput(name, nameof(name));
-            Validator.ValidateInput(value, nameof(value));
-            Validator.ValidateInput(priority, nameof(priority));
+            Validator.Validate(name, nameof(name));
+            Validator.Validate(value, nameof(value));
+            Validator.Validate(priority, nameof(priority));
             SdlBool result = NativeSdl.InternalSetHintWithPriority(name, value, priority);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -448,10 +448,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SdlBool GetHintBoolean([IsNotNull] string name, SdlBool defaultValue)
         {
-            Validator.ValidateInput(name, nameof(name));
-            Validator.ValidateInput(defaultValue, nameof(defaultValue));
+            Validator.Validate(name, nameof(name));
+            Validator.Validate(defaultValue, nameof(defaultValue));
             SdlBool result = NativeSdl.InternalGetHintBoolean(name, defaultValue);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -504,14 +504,14 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr CreateWindow([IsNotNull] string title, [IsNotNull] int x, [IsNotNull] int y, [IsNotNull] int w, [IsNotNull] int h, [IsNotNull] SdlWindowFlags flags)
         {
-            Validator.ValidateInput(title, nameof(title));
-            Validator.ValidateInput(x, nameof(x));
-            Validator.ValidateInput(y, nameof(y));
-            Validator.ValidateInput(w, nameof(w));
-            Validator.ValidateInput(h, nameof(h));
-            Validator.ValidateInput(flags, nameof(flags));
+            Validator.Validate(title, nameof(title));
+            Validator.Validate(x, nameof(x));
+            Validator.Validate(y, nameof(y));
+            Validator.Validate(w, nameof(w));
+            Validator.Validate(h, nameof(h));
+            Validator.Validate(flags, nameof(flags));
             IntPtr result = NativeSdl.InternalCreateWindow(title, x, y, w, h, flags);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -526,8 +526,8 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         public static int CreateWindowAndRenderer([IsNotNull] int width, [IsNotNull] int height, [IsNotNull] SdlWindowFlags windowFlags, out IntPtr window, out IntPtr renderer)
         {
-            Validator.ValidateInput(width, nameof(width));
-            Validator.ValidateInput(height, nameof(height));
+            Validator.Validate(width, nameof(width));
+            Validator.Validate(height, nameof(height));
             return NativeSdl.InternalCreateWindowAndRenderer(width, height, windowFlags, out window, out renderer);
         }
 
@@ -539,7 +539,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void DestroyWindow([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             NativeSdl.InternalDestroyWindow(window);
         }
 
@@ -554,9 +554,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetClosestDisplayMode([IsNotNull] int displayIndex, ref SdlDisplayMode mode, out SdlDisplayMode closest)
         {
-            Validator.ValidateInput(displayIndex, nameof(displayIndex));
+            Validator.Validate(displayIndex, nameof(displayIndex));
             IntPtr result = NativeSdl.InternalGetClosestDisplayMode(displayIndex, ref mode, out closest);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -570,9 +570,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GetCurrentDisplayMode([IsNotNull] int displayIndex, out SdlDisplayMode mode)
         {
-            Validator.ValidateInput(displayIndex, nameof(displayIndex));
+            Validator.Validate(displayIndex, nameof(displayIndex));
             int result = NativeSdl.InternalGetCurrentDisplayMode(displayIndex, out mode);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -583,7 +583,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static string GetCurrentVideoDriver()
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetCurrentVideoDriver());
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -597,9 +597,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GetDesktopDisplayMode([IsNotNull] int displayIndex, out SdlDisplayMode mode)
         {
-            Validator.ValidateInput(displayIndex, nameof(displayIndex));
+            Validator.Validate(displayIndex, nameof(displayIndex));
             int result = NativeSdl.InternalGetDesktopDisplayMode(displayIndex, out mode);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -612,9 +612,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GetDisplayName([IsNotNull] int index)
         {
-            Validator.ValidateInput(index, nameof(index));
+            Validator.Validate(index, nameof(index));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetDisplayName(index));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -628,9 +628,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GetDisplayBounds([IsNotNull] int displayIndex, out RectangleI rect)
         {
-            Validator.ValidateInput(displayIndex, nameof(displayIndex));
+            Validator.Validate(displayIndex, nameof(displayIndex));
             int result = NativeSdl.InternalGetDisplayBounds(displayIndex, out rect);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -646,9 +646,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GetDisplayDpi([IsNotNull] int displayIndex, out float dDpi, out float hDpi, out float vDpi)
         {
-            Validator.ValidateInput(displayIndex, nameof(displayIndex));
+            Validator.Validate(displayIndex, nameof(displayIndex));
             int result = NativeSdl.InternalGetDisplayDPI(displayIndex, out dDpi, out hDpi, out vDpi);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -663,10 +663,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GetDisplayMode([IsNotNull] int displayIndex, [IsNotNull] int modeIndex, out SdlDisplayMode mode)
         {
-            Validator.ValidateInput(displayIndex, nameof(displayIndex));
-            Validator.ValidateInput(modeIndex, nameof(modeIndex));
+            Validator.Validate(displayIndex, nameof(displayIndex));
+            Validator.Validate(modeIndex, nameof(modeIndex));
             int result = NativeSdl.InternalGetDisplayMode(displayIndex, modeIndex, out mode);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -793,9 +793,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GetWindowDisplayMode([IsNotNull] IntPtr window, out SdlDisplayMode mode)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             int result = NativeSdl.InternalGetWindowDisplayMode(window, out mode);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -808,9 +808,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint GetWindowFlags([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             uint result = NativeSdl.InternalGetWindowFlags(window);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -823,9 +823,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetWindowFromId([IsNotNull] uint id)
         {
-            Validator.ValidateInput(id, nameof(id));
+            Validator.Validate(id, nameof(id));
             IntPtr result = NativeSdl.InternalGetWindowFromID(id);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -841,12 +841,12 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GetWindowGammaRamp([IsNotNull] IntPtr window, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] red, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] green, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] blue)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(red, nameof(red));
-            Validator.ValidateInput(green, nameof(green));
-            Validator.ValidateInput(blue, nameof(blue));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(red, nameof(red));
+            Validator.Validate(green, nameof(green));
+            Validator.Validate(blue, nameof(blue));
             int result = NativeSdl.InternalGetWindowGammaRamp(window, red, green, blue);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -859,9 +859,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SdlBool GetWindowGrab([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             SdlBool result = NativeSdl.InternalGetWindowGrab(window);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -874,9 +874,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SdlBool GetWindowKeyboardGrab([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             SdlBool result = NativeSdl.InternalGetWindowKeyboardGrab(window);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -889,9 +889,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SdlBool GetWindowMouseGrab([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             SdlBool result = NativeSdl.InternalGetWindowMouseGrab(window);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -904,9 +904,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint GetWindowId([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             uint result = NativeSdl.InternalGetWindowID(window);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -919,7 +919,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint GetWindowPixelFormat([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             return NativeSdl.InternalGetWindowPixelFormat(window);
         }
 
@@ -933,7 +933,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void GetWindowMaximumSize([IsNotNull] IntPtr window, out int maxW, out int maxH)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             NativeSdl.InternalGetWindowMaximumSize(window, out maxW, out maxH);
         }
 
@@ -947,7 +947,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void GetWindowMinimumSize([IsNotNull] IntPtr window, out int minW, out int minH)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             NativeSdl.InternalGetWindowMinimumSize(window, out minW, out minH);
         }
 
@@ -961,7 +961,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void GetWindowPosition([IsNotNull] IntPtr window, out int x, out int y)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             NativeSdl.InternalGetWindowPosition(window, out x, out y);
         }
 
@@ -976,7 +976,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void GetWindowSize([IsNotNull] IntPtr window, out int w, out int h)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             NativeSdl.InternalGetWindowSize(window, out w, out h);
         }
 
@@ -998,9 +998,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GetWindowTitle([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetWindowTitle(window));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1015,7 +1015,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int BindTexture([IsNotNull] IntPtr texture, out float texW, out float texH)
         {
-            Validator.ValidateInput(texture, nameof(texture));
+            Validator.Validate(texture, nameof(texture));
             return NativeSdl.InternalGlBindTexture(texture, out texW, out texH);
         }
 
@@ -1113,7 +1113,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static IntPtr GetCurrentContext()
         {
             IntPtr result = NativeSdl.InternalGlGetCurrentContext();
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1150,10 +1150,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int SetAttributeByProfile([IsNotNull] SdlGlAttr attr, [IsNotNull] SdlGlProfile profile)
         {
-            Validator.ValidateInput(attr, nameof(attr));
-            Validator.ValidateInput(profile, nameof(profile));
+            Validator.Validate(attr, nameof(attr));
+            Validator.Validate(profile, nameof(profile));
             int result = NativeSdl.InternalGlSetAttribute(attr, (int) profile);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1166,9 +1166,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int SetSwapInterval([IsNotNull] int interval)
         {
-            Validator.ValidateInput(interval, nameof(interval));
+            Validator.Validate(interval, nameof(interval));
             int result = NativeSdl.InternalGlSetSwapInterval(interval);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1180,7 +1180,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SwapWindow([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             NativeSdl.InternalGlSwapWindow(window);
         }
 
@@ -1193,9 +1193,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int UnbindTexture([IsNotNull] IntPtr texture)
         {
-            Validator.ValidateInput(texture, nameof(texture));
+            Validator.Validate(texture, nameof(texture));
             int result = NativeSdl.InternalGlUnbindTexture(texture);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1207,7 +1207,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void HideWindow([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             NativeSdl.InternalHideWindow(window);
         }
 
@@ -1219,7 +1219,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MaximizeWindow([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             NativeSdl.InternalMaximizeWindow(window);
         }
 
@@ -1231,7 +1231,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MinimizeWindow([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             NativeSdl.InternalMinimizeWindow(window);
         }
 
@@ -1243,7 +1243,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void RaiseWindow([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             NativeSdl.InternalRaiseWindow(window);
         }
 
@@ -1255,7 +1255,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void RestoreWindow([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             NativeSdl.InternalRestoreWindow(window);
         }
 
@@ -1269,10 +1269,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int SetWindowBrightness([IsNotNull] IntPtr window, float brightness)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(brightness, nameof(brightness));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(brightness, nameof(brightness));
             int result = NativeSdl.InternalSetWindowBrightness(window, brightness);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1287,11 +1287,11 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr SetWindowData([IsNotNull] IntPtr window, [IsNotNull] string name, [IsNotNull] IntPtr userdata)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(name, nameof(name));
-            Validator.ValidateInput(userdata, nameof(userdata));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(name, nameof(name));
+            Validator.Validate(userdata, nameof(userdata));
             IntPtr result = NativeSdl.InternalSetWindowData(window, name, userdata);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1305,10 +1305,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int SetWindowDisplayMode([IsNotNull] IntPtr window, ref SdlDisplayMode mode)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(mode, nameof(mode));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(mode, nameof(mode));
             int result = NativeSdl.InternalSetWindowDisplayMode(window, ref mode);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1322,10 +1322,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int SetWindowDisplayMode([IsNotNull] IntPtr window, [IsNotNull] IntPtr mode)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(mode, nameof(mode));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(mode, nameof(mode));
             int result = NativeSdl.InternalSetWindowDisplayMode(window, mode);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1339,10 +1339,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int SetWindowFullscreen([IsNotNull] IntPtr window, [IsNotNull] uint flags)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(flags, nameof(flags));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(flags, nameof(flags));
             int result = NativeSdl.InternalSetWindowFullscreen(window, flags);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1358,12 +1358,12 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int SetWindowGammaRamp([IsNotNull] IntPtr window, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] red, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] green, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] blue)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(red, nameof(red));
-            Validator.ValidateInput(green, nameof(green));
-            Validator.ValidateInput(blue, nameof(blue));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(red, nameof(red));
+            Validator.Validate(green, nameof(green));
+            Validator.Validate(blue, nameof(blue));
             int result = NativeSdl.InternalSetWindowGammaRamp(window, red, green, blue);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1376,8 +1376,8 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetWindowGrab([IsNotNull] IntPtr window, [IsNotNull] SdlBool grabbed)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(grabbed, nameof(grabbed));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(grabbed, nameof(grabbed));
             NativeSdl.InternalSetWindowGrab(window, grabbed);
         }
 
@@ -1390,8 +1390,8 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetWindowKeyboardGrab([IsNotNull] IntPtr window, [IsNotNull] SdlBool grabbed)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(grabbed, nameof(grabbed));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(grabbed, nameof(grabbed));
             NativeSdl.InternalSetWindowKeyboardGrab(window, grabbed);
         }
 
@@ -1404,8 +1404,8 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetWindowMouseGrab([IsNotNull] IntPtr window, SdlBool grabbed)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(grabbed, nameof(grabbed));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(grabbed, nameof(grabbed));
             NativeSdl.InternalSetWindowMouseGrab(window, grabbed);
         }
 
@@ -1418,8 +1418,8 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetWindowIcon([IsNotNull] IntPtr window, [IsNotNull] IntPtr icon)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(icon, nameof(icon));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(icon, nameof(icon));
             NativeSdl.InternalSetWindowIcon(window, icon);
         }
 
@@ -1433,9 +1433,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetWindowMaximumSize([IsNotNull] IntPtr window, [IsNotNull] int maxW, [IsNotNull] int maxH)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(maxW, nameof(maxW));
-            Validator.ValidateInput(maxH, nameof(maxH));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(maxW, nameof(maxW));
+            Validator.Validate(maxH, nameof(maxH));
             NativeSdl.InternalSetWindowMaximumSize(window, maxW, maxH);
         }
 
@@ -1449,9 +1449,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetWindowMinimumSize([IsNotNull] IntPtr window, [IsNotNull] int minW, [IsNotNull] int minH)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(minW, nameof(minW));
-            Validator.ValidateInput(minH, nameof(minH));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(minW, nameof(minW));
+            Validator.Validate(minH, nameof(minH));
             NativeSdl.InternalSetWindowMinimumSize(window, minW, minH);
         }
 
@@ -1465,9 +1465,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetWindowPosition([IsNotNull] IntPtr window, [IsNotNull] int x, [IsNotNull] int y)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(x, nameof(x));
-            Validator.ValidateInput(y, nameof(y));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(x, nameof(x));
+            Validator.Validate(y, nameof(y));
             NativeSdl.InternalSetWindowPosition(window, x, y);
         }
 
@@ -1481,9 +1481,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetWindowSize([IsNotNull] IntPtr window, [IsNotNull] int w, [IsNotNull] int h)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(w, nameof(w));
-            Validator.ValidateInput(h, nameof(h));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(w, nameof(w));
+            Validator.Validate(h, nameof(h));
             NativeSdl.InternalSetWindowSize(window, w, h);
         }
 
@@ -1496,8 +1496,8 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetWindowBordered([IsNotNull] IntPtr window, SdlBool bordered)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(bordered, nameof(bordered));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(bordered, nameof(bordered));
             NativeSdl.InternalSetWindowBordered(window, bordered);
         }
 
@@ -1514,9 +1514,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GetWindowBordersSize([IsNotNull] IntPtr window, out int top, out int left, out int bottom, out int right)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             int result = NativeSdl.InternalGetWindowBordersSize(window, out top, out left, out bottom, out right);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1529,8 +1529,8 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetWindowResizable([IsNotNull] IntPtr window, SdlBool resizable)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(resizable, nameof(resizable));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(resizable, nameof(resizable));
             NativeSdl.InternalSetWindowResizable(window, resizable);
         }
 
@@ -1543,8 +1543,8 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetWindowAlwaysOnTop([IsNotNull] IntPtr window, SdlBool onTop)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(onTop, nameof(onTop));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(onTop, nameof(onTop));
             NativeSdl.InternalSetWindowAlwaysOnTop(window, onTop);
         }
 
@@ -1557,8 +1557,8 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetWindowTitle([IsNotNull] IntPtr window, [IsNotNull] string title)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(title, nameof(title));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(title, nameof(title));
             NativeSdl.InternalSetWindowTitle(window, title);
         }
 
@@ -1570,7 +1570,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void ShowWindow([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             NativeSdl.InternalShowWindow(window);
         }
 
@@ -1583,9 +1583,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int UpdateWindowSurface([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             int result = NativeSdl.InternalUpdateWindowSurface(window);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1600,11 +1600,11 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int UpdateWindowSurfaceRects([IsNotNull] IntPtr window, [In] RectangleI[] rects, [IsNotNull] int numRects)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(rects, nameof(rects));
-            Validator.ValidateInput(numRects, nameof(numRects));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(rects, nameof(rects));
+            Validator.Validate(numRects, nameof(numRects));
             int result = NativeSdl.InternalUpdateWindowSurfaceRects(window, rects, numRects);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1619,11 +1619,11 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int SetWindowHitTest([IsNotNull] IntPtr window, SdlHitTest callback, [IsNotNull] IntPtr callbackData)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(callbackData, nameof(callbackData));
-            Validator.ValidateInput(callback, nameof(callback));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(callbackData, nameof(callbackData));
+            Validator.Validate(callback, nameof(callback));
             int result = NativeSdl.InternalSetWindowHitTest(window, callback, callbackData);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1636,7 +1636,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static IntPtr GetGrabbedWindow()
         {
             IntPtr result = NativeSdl.InternalGetGrabbedWindow();
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1650,10 +1650,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int SetWindowMouseRect([IsNotNull] IntPtr window, ref RectangleI rect)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(rect, nameof(rect));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(rect, nameof(rect));
             int result = NativeSdl.InternalSetWindowMouseRect(window, ref rect);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1667,10 +1667,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int SetWindowMouseRect([IsNotNull] IntPtr window, [IsNotNull] IntPtr rect)
         {
-            Validator.ValidateInput(window, nameof(window));
-            Validator.ValidateInput(rect, nameof(rect));
+            Validator.Validate(window, nameof(window));
+            Validator.Validate(rect, nameof(rect));
             int result = NativeSdl.InternalSetWindowMouseRect(window, rect);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1683,9 +1683,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetWindowMouseRect([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             IntPtr result = NativeSdl.InternalGetWindowMouseRect(window);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1699,9 +1699,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int FlashWindow([IsNotNull] IntPtr window, SdlFlashOperation operation)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             int result = NativeSdl.InternalFlashWindow(window, operation);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1719,14 +1719,14 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SdlBlendMode ComposeCustomBlendMode([IsNotNull] SdlBlendFactor srcColorFactor, [IsNotNull] SdlBlendFactor dstColorFactor, [IsNotNull] SdlBlendOperation colorOperation, [IsNotNull] SdlBlendFactor srcAlphaFactor, [IsNotNull] SdlBlendFactor dstAlphaFactor, [IsNotNull] SdlBlendOperation alphaOperation)
         {
-            Validator.ValidateInput(srcColorFactor, nameof(srcColorFactor));
-            Validator.ValidateInput(dstColorFactor, nameof(dstColorFactor));
-            Validator.ValidateInput(colorOperation, nameof(colorOperation));
-            Validator.ValidateInput(srcAlphaFactor, nameof(srcAlphaFactor));
-            Validator.ValidateInput(dstAlphaFactor, nameof(dstAlphaFactor));
-            Validator.ValidateInput(alphaOperation, nameof(alphaOperation));
+            Validator.Validate(srcColorFactor, nameof(srcColorFactor));
+            Validator.Validate(dstColorFactor, nameof(dstColorFactor));
+            Validator.Validate(colorOperation, nameof(colorOperation));
+            Validator.Validate(srcAlphaFactor, nameof(srcAlphaFactor));
+            Validator.Validate(dstAlphaFactor, nameof(dstAlphaFactor));
+            Validator.Validate(alphaOperation, nameof(alphaOperation));
             SdlBlendMode result = NativeSdl.InternalComposeCustomBlendMode(srcColorFactor, dstColorFactor, colorOperation, srcAlphaFactor, dstAlphaFactor, alphaOperation);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1750,9 +1750,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr CreateSoftwareRenderer([IsNotNull] IntPtr surface)
         {
-            Validator.ValidateInput(surface, nameof(surface));
+            Validator.Validate(surface, nameof(surface));
             IntPtr result = NativeSdl.InternalCreateSoftwareRenderer(surface);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1779,10 +1779,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr CreateTextureFromSurface([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr surface)
         {
-            Validator.ValidateInput(renderer, nameof(renderer));
-            Validator.ValidateInput(surface, nameof(surface));
+            Validator.Validate(renderer, nameof(renderer));
+            Validator.Validate(surface, nameof(surface));
             IntPtr result = NativeSdl.InternalCreateTextureFromSurface(renderer, surface);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -1984,10 +1984,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int LockTextureToSurface([IsNotNull] IntPtr texture, [IsNotNull] IntPtr rect, out IntPtr surface)
         {
-            Validator.ValidateInput(texture, nameof(texture));
-            Validator.ValidateInput(rect, nameof(rect));
+            Validator.Validate(texture, nameof(texture));
+            Validator.Validate(rect, nameof(rect));
             int result = NativeSdl.InternalLockTextureToSurface(texture, rect, out surface);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -2004,9 +2004,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int QueryTexture([IsNotNull] IntPtr texture, out uint format, out int access, out int w, out int h)
         {
-            Validator.ValidateInput(texture, nameof(texture));
+            Validator.Validate(texture, nameof(texture));
             int result = NativeSdl.InternalQueryTexture(texture, out format, out access, out w, out h);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -2019,9 +2019,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int RenderClear([IsNotNull] IntPtr renderer)
         {
-            Validator.ValidateInput(renderer, nameof(renderer));
+            Validator.Validate(renderer, nameof(renderer));
             int result = NativeSdl.InternalRenderClear(renderer);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -2037,12 +2037,12 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int RenderCopy([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect)
         {
-            Validator.ValidateInput(renderer, nameof(renderer));
-            Validator.ValidateInput(texture, nameof(texture));
-            Validator.ValidateInput(srcRect, nameof(srcRect));
-            Validator.ValidateInput(dstRect, nameof(dstRect));
+            Validator.Validate(renderer, nameof(renderer));
+            Validator.Validate(texture, nameof(texture));
+            Validator.Validate(srcRect, nameof(srcRect));
+            Validator.Validate(dstRect, nameof(dstRect));
             int result = NativeSdl.InternalRenderCopy(renderer, texture, ref srcRect, ref dstRect);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -2958,9 +2958,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GetPixelFormatName([IsNotNull] uint format)
         {
-            Validator.ValidateInput(format, nameof(format));
+            Validator.Validate(format, nameof(format));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetPixelFormatName(format));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -3012,12 +3012,12 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int BlitSurface([IsNotNull] IntPtr src, ref RectangleI srcRect, [IsNotNull] IntPtr dst, ref RectangleI dstRect)
         {
-            Validator.ValidateInput(src, nameof(src));
-            Validator.ValidateInput(srcRect, nameof(srcRect));
-            Validator.ValidateInput(dst, nameof(dst));
-            Validator.ValidateInput(dstRect, nameof(dstRect));
+            Validator.Validate(src, nameof(src));
+            Validator.Validate(srcRect, nameof(srcRect));
+            Validator.Validate(dst, nameof(dst));
+            Validator.Validate(dstRect, nameof(dstRect));
             int result = NativeSdl.InternalBlitSurface(src, ref srcRect, dst, ref dstRect);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -3034,12 +3034,12 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int BlitSurface([IsNotNull] IntPtr src, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dst, ref RectangleI dstRect)
         {
-            Validator.ValidateInput(src, nameof(src));
-            Validator.ValidateInput(srcRect, nameof(srcRect));
-            Validator.ValidateInput(dst, nameof(dst));
-            Validator.ValidateInput(dstRect, nameof(dstRect));
+            Validator.Validate(src, nameof(src));
+            Validator.Validate(srcRect, nameof(srcRect));
+            Validator.Validate(dst, nameof(dst));
+            Validator.Validate(dstRect, nameof(dstRect));
             int result = NativeSdl.InternalBlitSurface(src, srcRect, dst, ref dstRect);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -3055,12 +3055,12 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int BlitSurface([IsNotNull] IntPtr src, ref RectangleI srcRect, [IsNotNull] IntPtr dst, [IsNotNull] IntPtr dstRect)
         {
-            Validator.ValidateInput(src, nameof(src));
-            Validator.ValidateInput(srcRect, nameof(srcRect));
-            Validator.ValidateInput(dst, nameof(dst));
-            Validator.ValidateInput(dstRect, nameof(dstRect));
+            Validator.Validate(src, nameof(src));
+            Validator.Validate(srcRect, nameof(srcRect));
+            Validator.Validate(dst, nameof(dst));
+            Validator.Validate(dstRect, nameof(dstRect));
             int result = NativeSdl.InternalBlitSurface(src, ref srcRect, dst, dstRect);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -3076,12 +3076,12 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int BlitSurface([IsNotNull] IntPtr src, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dst, [IsNotNull] IntPtr dstRect)
         {
-            Validator.ValidateInput(src, nameof(src));
-            Validator.ValidateInput(srcRect, nameof(srcRect));
-            Validator.ValidateInput(dst, nameof(dst));
-            Validator.ValidateInput(dstRect, nameof(dstRect));
+            Validator.Validate(src, nameof(src));
+            Validator.Validate(srcRect, nameof(srcRect));
+            Validator.Validate(dst, nameof(dst));
+            Validator.Validate(dstRect, nameof(dstRect));
             int result = NativeSdl.InternalBlitSurface(src, srcRect, dst, dstRect);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -3096,11 +3096,11 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr ConvertSurface([IsNotNull] IntPtr src, [IsNotNull] IntPtr fmt, [IsNotNull] uint flags)
         {
-            Validator.ValidateInput(src, nameof(src));
-            Validator.ValidateInput(fmt, nameof(fmt));
-            Validator.ValidateInput(flags, nameof(flags));
+            Validator.Validate(src, nameof(src));
+            Validator.Validate(fmt, nameof(fmt));
+            Validator.Validate(flags, nameof(flags));
             IntPtr result = NativeSdl.InternalConvertSurface(src, fmt, flags);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -3151,12 +3151,12 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int FillRects([IsNotNull] IntPtr dst, [In] RectangleI[] rects, [IsNotNull] int count, [IsNotNull] uint color)
         {
-            Validator.ValidateInput(dst, nameof(dst));
-            Validator.ValidateInput(rects, nameof(rects));
-            Validator.ValidateInput(count, nameof(count));
-            Validator.ValidateInput(color, nameof(color));
+            Validator.Validate(dst, nameof(dst));
+            Validator.Validate(rects, nameof(rects));
+            Validator.Validate(count, nameof(count));
+            Validator.Validate(color, nameof(color));
             int result = NativeSdl.InternalFillRects(dst, rects, count, color);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -3169,9 +3169,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void GetClipRect([IsNotNull] IntPtr surface, out RectangleI rect)
         {
-            Validator.ValidateInput(surface, nameof(surface));
+            Validator.Validate(surface, nameof(surface));
             NativeSdl.InternalGetClipRect(surface, out rect);
-            Validator.ValidateOutput(rect);
+            Validator.Validate(rect, nameof(rect));
         }
 
         /// <summary>
@@ -3357,7 +3357,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static string GetClipboardText()
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetClipboardText());
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -3560,9 +3560,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GetScancodeName(SdlScancode scancode)
         {
-            Validator.ValidateInput(scancode, nameof(scancode));
+            Validator.Validate(scancode, nameof(scancode));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetScancodeName(scancode));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -3584,9 +3584,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string SGetKeyName(SdlKeycode key)
         {
-            Validator.ValidateInput(key, nameof(key));
+            Validator.Validate(key, nameof(key));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetKeyName(key));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -3635,7 +3635,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetTextInputRect(ref RectangleI rect)
         {
-            Validator.ValidateInput(rect, nameof(rect));
+            Validator.Validate(rect, nameof(rect));
             NativeSdl.InternalSetTextInputRect(ref rect);
         }
 
@@ -3648,7 +3648,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static SdlBool HasScreenKeyboardSupport()
         {
             SdlBool result = NativeSdl.InternalHasScreenKeyboardSupport();
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -3661,9 +3661,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SdlBool IsScreenKeyboardShown([IsNotNull] IntPtr window)
         {
-            Validator.ValidateInput(window, nameof(window));
+            Validator.Validate(window, nameof(window));
             SdlBool result = NativeSdl.InternalIsScreenKeyboardShown(window);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -4020,9 +4020,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string JoystickName([IsNotNull] IntPtr joystick)
         {
-            Validator.ValidateInput(joystick, nameof(joystick));
+            Validator.Validate(joystick, nameof(joystick));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalJoystickName(joystick));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -4035,9 +4035,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string JoystickNameForIndex([IsNotNull] int deviceIndex)
         {
-            Validator.ValidateInput(deviceIndex, nameof(deviceIndex));
+            Validator.Validate(deviceIndex, nameof(deviceIndex));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalJoystickNameForIndex(deviceIndex));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -4077,9 +4077,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int JoystickNumHats([IsNotNull] IntPtr joystick)
         {
-            Validator.ValidateInput(joystick, nameof(joystick));
+            Validator.Validate(joystick, nameof(joystick));
             int result = NativeSdl.InternalJoystickNumHats(joystick);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -4092,9 +4092,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr JoystickOpen([IsNotNull] int deviceIndex)
         {
-            Validator.ValidateInput(deviceIndex, nameof(deviceIndex));
+            Validator.Validate(deviceIndex, nameof(deviceIndex));
             IntPtr result = NativeSdl.InternalJoystickOpen(deviceIndex);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -4117,7 +4117,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static int NumJoysticks()
         {
             int result = NativeSdl.InternalNumJoysticks();
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -4242,9 +4242,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string JoystickGetSerial([IsNotNull] IntPtr joystick)
         {
-            Validator.ValidateInput(joystick, nameof(joystick));
+            Validator.Validate(joystick, nameof(joystick));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalJoystickGetSerial(joystick));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -4474,9 +4474,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GameControllerMappingForIndex([IsNotNull] int mappingIndex)
         {
-            Validator.ValidateInput(mappingIndex, nameof(mappingIndex));
+            Validator.Validate(mappingIndex, nameof(mappingIndex));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerMappingForIndex(mappingIndex));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -4498,9 +4498,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GameControllerMappingForGuid(Guid guid)
         {
-            Validator.ValidateInput(guid, nameof(guid));
+            Validator.Validate(guid, nameof(guid));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerMappingForGUID(guid));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -4513,9 +4513,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GameControllerMapping([IsNotNull] IntPtr gameController)
         {
-            Validator.ValidateInput(gameController, nameof(gameController));
+            Validator.Validate(gameController, nameof(gameController));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerMapping(gameController));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -4537,9 +4537,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GameControllerNameForIndex([IsNotNull] int joystickIndex)
         {
-            Validator.ValidateInput(joystickIndex, nameof(joystickIndex));
+            Validator.Validate(joystickIndex, nameof(joystickIndex));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerNameForIndex(joystickIndex));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -4552,9 +4552,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GameControllerMappingForDeviceIndex([IsNotNull] int joystickIndex)
         {
-            Validator.ValidateInput(joystickIndex, nameof(joystickIndex));
+            Validator.Validate(joystickIndex, nameof(joystickIndex));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerMappingForDeviceIndex(joystickIndex));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -4576,9 +4576,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GameControllerName([IsNotNull] IntPtr gameController)
         {
-            Validator.ValidateInput(gameController, nameof(gameController));
+            Validator.Validate(gameController, nameof(gameController));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerName(gameController));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -4619,9 +4619,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GameControllerGetSerial([IsNotNull] IntPtr gameController)
         {
-            Validator.ValidateInput(gameController, nameof(gameController));
+            Validator.Validate(gameController, nameof(gameController));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerGetSerial(gameController));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -4680,9 +4680,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GameControllerGetStringForAxis(SdlGameControllerAxis axis)
         {
-            Validator.ValidateInput(axis, nameof(axis));
+            Validator.Validate(axis, nameof(axis));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerGetStringForAxis(axis));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -4738,9 +4738,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GameControllerGetStringForButton(SdlGameControllerButton button)
         {
-            Validator.ValidateInput(button, nameof(button));
+            Validator.Validate(button, nameof(button));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerGetStringForButton(button));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5054,7 +5054,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static int NumHaptics()
         {
             int result = NativeSdl.InternalNumHaptics();
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5075,9 +5075,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string SensorGetDeviceName([IsNotNull] int deviceIndex)
         {
-            Validator.ValidateInput(deviceIndex, nameof(deviceIndex));
+            Validator.Validate(deviceIndex, nameof(deviceIndex));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalSensorGetDeviceName(deviceIndex));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5117,9 +5117,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr SensorOpen([IsNotNull] int deviceIndex)
         {
-            Validator.ValidateInput(deviceIndex, nameof(deviceIndex));
+            Validator.Validate(deviceIndex, nameof(deviceIndex));
             IntPtr result = NativeSdl.InternalSensorOpen(deviceIndex);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5141,9 +5141,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string SensorGetName([IsNotNull] IntPtr sensor)
         {
-            Validator.ValidateInput(sensor, nameof(sensor));
+            Validator.Validate(sensor, nameof(sensor));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalSensorGetName(sensor));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5294,10 +5294,10 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The string</returns>
         public static string GetAudioDeviceName([IsNotNull] int index, [IsNotNull] int isCapture)
         {
-            Validator.ValidateInput(index, nameof(index));
-            Validator.ValidateInput(isCapture, nameof(isCapture));
+            Validator.Validate(index, nameof(index));
+            Validator.Validate(isCapture, nameof(isCapture));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetAudioDeviceName(index, isCapture));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5317,9 +5317,9 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The string</returns>
         public static string GetAudioDriver([IsNotNull] int index)
         {
-            Validator.ValidateInput(index, nameof(index));
+            Validator.Validate(index, nameof(index));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetAudioDriver(index));
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5332,7 +5332,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static string GetCurrentAudioDriver()
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetCurrentAudioDriver());
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5345,9 +5345,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GetNumAudioDevices([IsNotNull] int isCapture)
         {
-            Validator.ValidateInput(isCapture, nameof(isCapture));
+            Validator.Validate(isCapture, nameof(isCapture));
             int result = NativeSdl.InternalGetNumAudioDevices(isCapture);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5360,7 +5360,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static int GetNumAudioDrivers()
         {
             int result = NativeSdl.InternalGetNumAudioDrivers();
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5374,9 +5374,9 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         public static IntPtr LoadWav([IsNotNull] string file, out SdlAudioSpec spec, out IntPtr audioBuf, out uint audioLen)
         {
-            Validator.ValidateInput(file, nameof(file));
+            Validator.Validate(file, nameof(file));
             IntPtr result = NativeSdl.InternalLoadWAV_RW(RwFromFile(file, "rb"), 0, out spec, out audioBuf, out audioLen);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5388,7 +5388,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void LockAudioDevice([IsNotNull] uint dev)
         {
-            Validator.ValidateInput(dev, nameof(dev));
+            Validator.Validate(dev, nameof(dev));
             NativeSdl.InternalLockAudioDevice(dev);
         }
 
@@ -5403,10 +5403,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MixAudio([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] [IsNotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] [IsNotNull] byte[] src, [IsNotNull] uint len, [IsNotNull] int volume)
         {
-            Validator.ValidateInput(dst, nameof(dst));
-            Validator.ValidateInput(src, nameof(src));
-            Validator.ValidateInput(len, nameof(len));
-            Validator.ValidateInput(volume, nameof(volume));
+            Validator.Validate(dst, nameof(dst));
+            Validator.Validate(src, nameof(src));
+            Validator.Validate(len, nameof(len));
+            Validator.Validate(volume, nameof(volume));
             NativeSdl.InternalMixAudio(dst, src, len, volume);
         }
 
@@ -5422,11 +5422,11 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MixAudioFormat([IsNotNull] IntPtr dst, [IsNotNull] IntPtr src, [IsNotNull] ushort format, [IsNotNull] uint len, [IsNotNull] int volume)
         {
-            Validator.ValidateInput(dst, nameof(dst));
-            Validator.ValidateInput(src, nameof(src));
-            Validator.ValidateInput(format, nameof(format));
-            Validator.ValidateInput(len, nameof(len));
-            Validator.ValidateInput(volume, nameof(volume));
+            Validator.Validate(dst, nameof(dst));
+            Validator.Validate(src, nameof(src));
+            Validator.Validate(format, nameof(format));
+            Validator.Validate(len, nameof(len));
+            Validator.Validate(volume, nameof(volume));
             NativeSdl.InternalMixAudioFormat(dst, src, format, len, volume);
         }
 
@@ -5442,11 +5442,11 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MixAudioFormat([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [IsNotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [IsNotNull] byte[] src, [IsNotNull] ushort format, [IsNotNull] uint len, [IsNotNull] int volume)
         {
-            Validator.ValidateInput(dst, nameof(dst));
-            Validator.ValidateInput(src, nameof(src));
-            Validator.ValidateInput(format, nameof(format));
-            Validator.ValidateInput(len, nameof(len));
-            Validator.ValidateInput(volume, nameof(volume));
+            Validator.Validate(dst, nameof(dst));
+            Validator.Validate(src, nameof(src));
+            Validator.Validate(format, nameof(format));
+            Validator.Validate(len, nameof(len));
+            Validator.Validate(volume, nameof(volume));
             NativeSdl.InternalMixAudioFormat(dst, src, format, len, volume);
         }
 
@@ -5463,12 +5463,12 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint OpenAudioDevice([IsNotNull] IntPtr device, [IsNotNull] int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, [IsNotNull] int allowedChanges)
         {
-            Validator.ValidateInput(device, nameof(device));
-            Validator.ValidateInput(isCapture, nameof(isCapture));
-            Validator.ValidateInput(desired, nameof(desired));
-            Validator.ValidateInput(allowedChanges, nameof(allowedChanges));
+            Validator.Validate(device, nameof(device));
+            Validator.Validate(isCapture, nameof(isCapture));
+            Validator.Validate(desired, nameof(desired));
+            Validator.Validate(allowedChanges, nameof(allowedChanges));
             uint result = NativeSdl.InternalOpenAudioDevice(device, isCapture, ref desired, out obtained, allowedChanges);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5485,12 +5485,12 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint SdlOpenAudioDevice(string device, int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, int allowedChanges)
         {
-            Validator.ValidateInput(device, nameof(device));
-            Validator.ValidateInput(isCapture, nameof(isCapture));
-            Validator.ValidateInput(desired, nameof(desired));
-            Validator.ValidateInput(allowedChanges, nameof(allowedChanges));
+            Validator.Validate(device, nameof(device));
+            Validator.Validate(isCapture, nameof(isCapture));
+            Validator.Validate(desired, nameof(desired));
+            Validator.Validate(allowedChanges, nameof(allowedChanges));
             uint result = NativeSdl.InternalOpenAudioDevice(device, isCapture, ref desired, out obtained, allowedChanges);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5502,7 +5502,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SdlPauseAudio([IsNotNull] int pauseOn)
         {
-            Validator.ValidateInput(pauseOn, nameof(pauseOn));
+            Validator.Validate(pauseOn, nameof(pauseOn));
             NativeSdl.InternalPauseAudio(pauseOn);
         }
 
@@ -5515,8 +5515,8 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SdlPauseAudioDevice([IsNotNull] uint dev, [IsNotNull] int pauseOn)
         {
-            Validator.ValidateInput(dev, nameof(dev));
-            Validator.ValidateInput(pauseOn, nameof(pauseOn));
+            Validator.Validate(dev, nameof(dev));
+            Validator.Validate(pauseOn, nameof(pauseOn));
             NativeSdl.InternalPauseAudioDevice(dev, pauseOn);
         }
 
@@ -5528,7 +5528,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SdlUnlockAudioDevice([IsNotNull] uint dev)
         {
-            Validator.ValidateInput(dev, nameof(dev));
+            Validator.Validate(dev, nameof(dev));
             NativeSdl.InternalUnlockAudioDevice(dev);
         }
 
@@ -5544,14 +5544,14 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         public static IntPtr SdlNewAudioStream([IsNotNull] ushort srcFormat, [IsNotNull] byte srcChannels, [IsNotNull] int srcRate, [IsNotNull] ushort dstFormat, [IsNotNull] byte dstChannels, [IsNotNull] int dstRate)
         {
-            Validator.ValidateInput(srcFormat, nameof(srcFormat));
-            Validator.ValidateInput(srcChannels, nameof(srcChannels));
-            Validator.ValidateInput(srcRate, nameof(srcRate));
-            Validator.ValidateInput(dstFormat, nameof(dstFormat));
-            Validator.ValidateInput(dstChannels, nameof(dstChannels));
-            Validator.ValidateInput(dstRate, nameof(dstRate));
+            Validator.Validate(srcFormat, nameof(srcFormat));
+            Validator.Validate(srcChannels, nameof(srcChannels));
+            Validator.Validate(srcRate, nameof(srcRate));
+            Validator.Validate(dstFormat, nameof(dstFormat));
+            Validator.Validate(dstChannels, nameof(dstChannels));
+            Validator.Validate(dstRate, nameof(dstRate));
             IntPtr result = NativeSdl.InternalNewAudioStream(srcFormat, srcChannels, srcRate, dstFormat, dstChannels, dstRate);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5566,11 +5566,11 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int SdlAudioStreamPut([IsNotNull] IntPtr stream, [IsNotNull] IntPtr buf, [IsNotNull] int len)
         {
-            Validator.ValidateInput(stream, nameof(stream));
-            Validator.ValidateInput(buf, nameof(buf));
-            Validator.ValidateInput(len, nameof(len));
+            Validator.Validate(stream, nameof(stream));
+            Validator.Validate(buf, nameof(buf));
+            Validator.Validate(len, nameof(len));
             int result = NativeSdl.InternalAudioStreamPut(stream, buf, len);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5585,11 +5585,11 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int SdlAudioStreamGet([IsNotNull] IntPtr stream, [IsNotNull] IntPtr buf, [IsNotNull] int len)
         {
-            Validator.ValidateInput(stream, nameof(stream));
-            Validator.ValidateInput(buf, nameof(buf));
-            Validator.ValidateInput(len, nameof(len));
+            Validator.Validate(stream, nameof(stream));
+            Validator.Validate(buf, nameof(buf));
+            Validator.Validate(len, nameof(len));
             int result = NativeSdl.InternalAudioStreamGet(stream, buf, len);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5602,9 +5602,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int SdlAudioStreamAvailable([IsNotNull] IntPtr stream)
         {
-            Validator.ValidateInput(stream, nameof(stream));
+            Validator.Validate(stream, nameof(stream));
             int result = NativeSdl.InternalAudioStreamAvailable(stream);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5616,7 +5616,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SdlAudioStreamClear([IsNotNull] IntPtr stream)
         {
-            Validator.ValidateInput(stream, nameof(stream));
+            Validator.Validate(stream, nameof(stream));
             NativeSdl.InternalAudioStreamClear(stream);
         }
 
@@ -5628,7 +5628,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SdlFreeAudioStream([IsNotEmpty] IntPtr stream)
         {
-            Validator.ValidateInput(stream, nameof(stream));
+            Validator.Validate(stream, nameof(stream));
             NativeSdl.InternalFreeAudioStream(stream);
         }
 
@@ -5643,10 +5643,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int SdlGetAudioDeviceSpec([IsNotNull] int index, [IsNotNull] int isCapture, out SdlAudioSpec spec)
         {
-            Validator.ValidateInput(index, nameof(index));
-            Validator.ValidateInput(isCapture, nameof(isCapture));
+            Validator.Validate(index, nameof(index));
+            Validator.Validate(isCapture, nameof(isCapture));
             int result = NativeSdl.InternalGetAudioDeviceSpec(index, isCapture, out spec);
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5659,7 +5659,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static ulong GetPerformanceFrequency()
         {
             ulong result = NativeSdl.InternalGetPerformanceFrequency();
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
 
@@ -5672,7 +5672,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static ulong GetPerformanceCounter()
         {
             ulong result = NativeSdl.InternalGetPerformanceCounter();
-            Validator.ValidateOutput(result);
+            Validator.Validate(result, nameof(result));
             return result;
         }
     }

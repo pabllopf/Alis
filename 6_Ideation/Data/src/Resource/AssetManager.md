@@ -35,3 +35,4 @@ The `AssetManager` class is typically used to find the path of an asset in the "
 ```csharp
 string assetName = "example.txt";
 string assetPath = AssetManager.Find(assetName);
+```
