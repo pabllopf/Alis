@@ -399,7 +399,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector3 vector = new Vector3(1.0f, 2.0f, 3.0f);
             string result = vector.ToString();
 
-            Assert.Equal("<1. 2. 3>", result);
+            Assert.Equal(result.Contains(',') ? "<1, 2, 3>" : "<1. 2. 3>", result);
         }
         
         /// <summary>
