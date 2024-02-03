@@ -81,26 +81,11 @@ namespace Alis.Core.Aspect.Data.Json
         private TypeDef(Type type, JsonOptions options)
         {
             _type = type;
-            IEnumerable<MemberDefinition> members;
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseReflection))
-            {
-                members = EnumerateDefinitionsUsingReflection(true, type, options);
-            }
-            else
-            {
-                members = EnumerateDefinitionsUsingTypeDescriptors(true, type, options);
-            }
+            IEnumerable<MemberDefinition> members = options.SerializationOptions.HasFlag(JsonSerializationOptions.UseReflection) ? EnumerateDefinitionsUsingReflection(true, type, options) : EnumerateDefinitionsUsingTypeDescriptors(true, type, options);
 
             _serializationMembers = new List<MemberDefinition>(options.FinalizeSerializationMembers(type, members));
 
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseReflection))
-            {
-                members = EnumerateDefinitionsUsingReflection(false, type, options);
-            }
-            else
-            {
-                members = EnumerateDefinitionsUsingTypeDescriptors(false, type, options);
-            }
+            members = options.SerializationOptions.HasFlag(JsonSerializationOptions.UseReflection) ? EnumerateDefinitionsUsingReflection(false, type, options) : EnumerateDefinitionsUsingTypeDescriptors(false, type, options);
 
             _deserializationMembers = new List<MemberDefinition>(options.FinalizeDeserializationMembers(type, members));
         }
@@ -115,13 +100,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (key == null)
                 return null;
 
-            foreach (MemberDefinition def in _deserializationMembers)
-            {
-                if (string.Compare(def.WireName, key, StringComparison.OrdinalIgnoreCase) == 0)
-                    return def;
-            }
-
-            return null;
+            return _deserializationMembers.FirstOrDefault(def => string.Compare(def.WireName, key, StringComparison.OrdinalIgnoreCase) == 0);
         }
 
         /// <summary>
@@ -245,7 +224,7 @@ namespace Alis.Core.Aspect.Data.Json
         private static string GetKey(Type type, JsonOptions options) => type.AssemblyQualifiedName + '\0' + options.GetCacheKey();
 
         /// <summary>
-        ///     Unlockeds the get using the specified type
+        ///     Unlock the get using the specified type
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="options">The options</param>

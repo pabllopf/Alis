@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Data.Json
     /// <summary>
     ///     Defines a type's member.
     /// </summary>
-    public class MemberDefinition
+    public sealed class MemberDefinition
     {
         /// <summary>
         ///     The accessor
@@ -69,7 +69,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <value>
         ///     The name.
         /// </value>
-        public virtual string Name
+        public string Name
         {
             get => _name;
             set
@@ -82,12 +82,12 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        ///     Gets or sets the name used for serialization and deserialiation.
+        ///     Gets or sets the name used for serialization and des-serialization.
         /// </summary>
         /// <value>
         ///     The name used during serialization and deserialization.
         /// </value>
-        public virtual string WireName
+        public string WireName
         {
             get => _wireName;
             set
@@ -100,12 +100,12 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        ///     Gets or sets the escaped name used during serialization and deserialiation.
+        ///     Gets or sets the escaped name used during serialization and des-serialization.
         /// </summary>
         /// <value>
-        ///     The escaped name used during serialization and deserialiation.
+        ///     The escaped name used during serialization and des-serialization.
         /// </value>
-        public virtual string EscapedWireName
+        public string EscapedWireName
         {
             get => _escapedWireName;
             set
@@ -123,7 +123,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <value>
         ///     <c>true</c> if this instance has default value; otherwise, <c>false</c>.
         /// </value>
-        public virtual bool HasDefaultValue { get; set; }
+        public bool HasDefaultValue { get; set; }
 
         /// <summary>
         ///     Gets or sets the default value.
@@ -131,7 +131,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <value>
         ///     The default value.
         /// </value>
-        public virtual object DefaultValue { get; set; }
+        public object DefaultValue { get; set; }
 
         /// <summary>
         ///     Gets or sets the accessor.
@@ -139,7 +139,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <value>
         ///     The accessor.
         /// </value>
-        public virtual IMemberAccessor Accessor
+        public IMemberAccessor Accessor
         {
             get => _accessor;
             set => _accessor = value ?? throw new ArgumentNullException(nameof(value));
@@ -151,7 +151,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <value>
         ///     The type.
         /// </value>
-        public virtual Type Type
+        public Type Type
         {
             get => _type;
             set => _type = value ?? throw new ArgumentNullException(nameof(value));
@@ -172,10 +172,10 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="elementsCount">The elements count.</param>
         /// <param name="options">The options.</param>
         /// <returns>A new or existing instance.</returns>
-        public virtual object GetOrCreateInstance(object target, int elementsCount, JsonOptions options = null)
+        private object GetOrCreateInstance(object target, int elementsCount, JsonOptions options = null)
         {
             object targetValue;
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.ContinueOnValueError))
+            if (options != null && options.SerializationOptions.HasFlag(JsonSerializationOptions.ContinueOnValueError))
             {
                 try
                 {
@@ -215,9 +215,9 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="key">The entry key.</param>
         /// <param name="value">The entry value.</param>
         /// <param name="options">The options.</param>
-        public virtual void ApplyEntry(IDictionary dictionary, object target, string key, object value, JsonOptions options = null)
+        public void ApplyEntry(IDictionary dictionary, object target, string key, object value, JsonOptions options = null)
         {
-            if (options.ApplyEntryCallback != null)
+            if (options is {ApplyEntryCallback: { }})
             {
                 Dictionary<object, object> og = new Dictionary<object, object>
                 {
@@ -255,8 +255,8 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
 
-            object cvalue = JsonSerializer.ChangeType(target, value, Type, options);
-            Accessor.Set(target, cvalue);
+            object changeValue = JsonSerializer.ChangeType(target, value, Type, options);
+            Accessor.Set(target, changeValue);
         }
 
         /// <summary>
@@ -264,14 +264,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>true if the specified value is equal to the zero value.</returns>
-        public virtual bool IsNullDateTimeValue(object value) => value == null || DateTime.MinValue.Equals(value);
+        public bool IsNullDateTimeValue(object value) => value == null || DateTime.MinValue.Equals(value);
 
         /// <summary>
         ///     Determines whether the specified value is equal to the zero value for its type.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>true if the specified value is equal to the zero value.</returns>
-        public virtual bool IsZeroValue(object value)
+        public bool IsZeroValue(object value)
         {
             if (value == null)
                 return false;
@@ -288,7 +288,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="value">The value to compare.</param>
         /// <returns>true if both values are equal; false otherwise.</returns>
-        public virtual bool EqualsDefaultValue(object value) => JsonSerializer.AreValuesEqual(DefaultValue, value);
+        public bool EqualsDefaultValue(object value) => JsonSerializer.AreValuesEqual(DefaultValue, value);
 
         /// <summary>
         ///     Removes a deserialization member.

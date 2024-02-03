@@ -46,11 +46,6 @@ namespace Alis.Core.Aspect.Data.Json
         private static readonly char[] EnumSeparators = {',', ';', '+', '|', ' '};
 
         /// <summary>
-        ///     The date formats utc
-        /// </summary>
-        private static readonly string[] DateFormatsUtc = {"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", "yyyy'-'MM'-'dd'T'HH':'mm'Z'", "yyyyMMdd'T'HH':'mm':'ss'Z'"};
-
-        /// <summary>
         ///     Describes whether is valid
         /// </summary>
         /// <param name="dt">The dt</param>
@@ -90,15 +85,15 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="provider">The provider</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        public static bool TryChangeType<T>(object input, IFormatProvider provider, out T value)
+        private static bool TryChangeType<T>(object input, IFormatProvider provider, out T value)
         {
-            if (!TryChangeType(input, typeof(T), provider, out object tvalue))
+            if (!TryChangeType(input, typeof(T), provider, out object tValue))
             {
                 value = default(T);
                 return false;
             }
 
-            value = (T) tvalue;
+            value = (T) tValue;
             return true;
         }
 
@@ -144,7 +139,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The bool</returns>
-        public static bool TryChangeType(object input, Type conversionType, IFormatProvider provider, out object value)
+        private static bool TryChangeType(object input, Type conversionType, IFormatProvider provider, out object value)
         {
             if (conversionType == null)
                 throw new ArgumentNullException(nameof(conversionType));
@@ -515,8 +510,8 @@ namespace Alis.Core.Aspect.Data.Json
 
             if (conversionType == typeof(Guid))
             {
-                string svalue = string.Format(provider, "{0}", input).Nullify();
-                if ((svalue != null) && Guid.TryParse(svalue, out Guid guid))
+                string sValue = string.Format(provider, "{0}", input).Nullify();
+                if ((sValue != null) && Guid.TryParse(sValue, out Guid guid))
                 {
                     value = guid;
                     return true;
@@ -527,8 +522,8 @@ namespace Alis.Core.Aspect.Data.Json
 
             if (conversionType == typeof(Uri))
             {
-                string svalue = string.Format(provider, "{0}", input).Nullify();
-                if ((svalue != null) && Uri.TryCreate(svalue, UriKind.RelativeOrAbsolute, out Uri uri))
+                string sValue = string.Format(provider, "{0}", input).Nullify();
+                if ((sValue != null) && Uri.TryCreate(sValue, UriKind.RelativeOrAbsolute, out Uri uri))
                 {
                     value = uri;
                     return true;
@@ -822,13 +817,21 @@ namespace Alis.Core.Aspect.Data.Json
 
                 if (inputType == typeof(DateTime))
                 {
-                    value = ((DateTime) value).TimeOfDay;
+                    if (value != null)
+                    {
+                        value = ((DateTime) value).TimeOfDay;
+                    }
+
                     return true;
                 }
 
                 if (inputType == typeof(DateTimeOffset))
                 {
-                    value = ((DateTimeOffset) value).TimeOfDay;
+                    if (value != null)
+                    {
+                        value = ((DateTimeOffset) value).TimeOfDay;
+                    }
+
                     return true;
                 }
 
@@ -863,14 +866,7 @@ namespace Alis.Core.Aspect.Data.Json
                     // at least one was converted
                     if ((count > 0) && (list.Count > 0))
                     {
-                        if (isGenericList)
-                        {
-                            value = list;
-                        }
-                        else
-                        {
-                            value = list.GetType().GetMethod(nameof(List<object>.ToArray)).Invoke(list, null);
-                        }
+                        value = isGenericList ? list : list.GetType().GetMethod(nameof(List<object>.ToArray))?.Invoke(list, null);
 
                         return true;
                     }
@@ -887,7 +883,7 @@ namespace Alis.Core.Aspect.Data.Json
                         return true;
                     }
 
-                    string si = input?.ToString();
+                    string si = input.ToString();
                     if (si != null)
                     {
                         if (int.TryParse(si, out lcid))
@@ -910,35 +906,33 @@ namespace Alis.Core.Aspect.Data.Json
 
             if (conversionType == typeof(bool))
             {
-                if (true.Equals(input))
+                switch (input)
                 {
-                    value = true;
-                    return true;
+                    case true:
+                        value = true;
+                        return true;
+                    case false:
+                        value = false;
+                        return true;
                 }
 
-                if (false.Equals(input))
-                {
-                    value = false;
-                    return true;
-                }
-
-                string svalue = string.Format(provider, "{0}", input).Nullify();
-                if (svalue == null)
+                string sValue = string.Format(provider, "{0}", input).Nullify();
+                if (sValue == null)
                     return false;
 
-                if (bool.TryParse(svalue, out bool b))
+                if (bool.TryParse(sValue, out bool b))
                 {
                     value = b;
                     return true;
                 }
 
-                if (svalue.EqualsIgnoreCase("y") || svalue.EqualsIgnoreCase("yes"))
+                if (sValue.EqualsIgnoreCase("y") || sValue.EqualsIgnoreCase("yes"))
                 {
                     value = true;
                     return true;
                 }
 
-                if (svalue.EqualsIgnoreCase("n") || svalue.EqualsIgnoreCase("no"))
+                if (sValue.EqualsIgnoreCase("n") || sValue.EqualsIgnoreCase("no"))
                 {
                     value = false;
                     return true;
@@ -981,25 +975,17 @@ namespace Alis.Core.Aspect.Data.Json
                 }
             }
 
-            if (input != null)
-            {
-                TypeConverter inputConverter = TypeDescriptor.GetConverter(input);
-                if (inputConverter != null)
+            TypeConverter inputConverter = TypeDescriptor.GetConverter(input);
+            if (inputConverter.CanConvertTo(conversionType))
+                try
                 {
-                    if (inputConverter.CanConvertTo(conversionType))
-                    {
-                        try
-                        {
-                            value = inputConverter.ConvertTo(null, provider as CultureInfo, input, conversionType);
-                            return true;
-                        }
-                        catch
-                        {
-                            // continue;
-                        }
-                    }
+                    value = inputConverter.ConvertTo(null, provider as CultureInfo, input, conversionType);
+                    return true;
                 }
-            }
+                catch
+                {
+                    // continue;
+                }
 
             TypeConverter converter = TypeDescriptor.GetConverter(conversionType);
             if (converter != null)
@@ -1046,17 +1032,13 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The ulong</returns>
-        public static ulong EnumToUInt64(object value)
+        private static ulong EnumToUInt64(object value)
         {
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
 
             TypeCode typeCode = Convert.GetTypeCode(value);
-#pragma warning disable IDE0010 // Add missing cases
-#pragma warning disable IDE0066 // Convert switch statement to expression
             switch (typeCode)
-#pragma warning restore IDE0066 // Convert switch statement to expression
-#pragma warning restore IDE0010 // Add missing cases
             {
                 case TypeCode.SByte:
                 case TypeCode.Int16:
@@ -1098,22 +1080,22 @@ namespace Alis.Core.Aspect.Data.Json
 
             for (int i = 0; i < values.GetLength(0); i++)
             {
-                object valuei = values.GetValue(i);
+                object valueI = values.GetValue(i);
                 if ((input.Length > 0) && (input[0] == '-'))
                 {
-                    long ul = (long) EnumToUInt64(valuei);
+                    long ul = (long) EnumToUInt64(valueI);
                     if (ul.ToString().EqualsIgnoreCase(input))
                     {
-                        value = valuei;
+                        value = valueI;
                         return true;
                     }
                 }
                 else
                 {
-                    ulong ul = EnumToUInt64(valuei);
+                    ulong ul = EnumToUInt64(valueI);
                     if (ul.ToString().EqualsIgnoreCase(input))
                     {
-                        value = valuei;
+                        value = valueI;
                         return true;
                     }
                 }
@@ -1146,7 +1128,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <exception cref="ArgumentException">null </exception>
         /// <exception cref="ArgumentException">null </exception>
         /// <returns>The object</returns>
-        public static object EnumToObject(Type enumType, object value)
+        private static object EnumToObject(Type enumType, object value)
         {
             if (enumType == null)
                 throw new ArgumentNullException(nameof(enumType));
@@ -1192,7 +1174,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="enumType">The enum type</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The value</returns>
-        public static object ToEnum(string text, Type enumType)
+        private static object ToEnum(string text, Type enumType)
         {
             if (enumType == null)
                 throw new ArgumentNullException(nameof(enumType));
@@ -1211,7 +1193,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException">null </exception>
         /// <returns>The bool</returns>
-        public static bool EnumTryParse(Type type, object input, out object value)
+        private static bool EnumTryParse(Type type, object input, out object value)
         {
             if (type == null)
                 throw new ArgumentNullException(nameof(type));
@@ -1308,7 +1290,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="elementType">The element type</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The bool</returns>
-        public static bool IsGenericList(Type type, out Type elementType)
+        private static bool IsGenericList(Type type, out Type elementType)
         {
             if (type == null)
                 throw new ArgumentNullException(nameof(type));
@@ -1343,7 +1325,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The bool</returns>
-        public static bool IsNullable(Type type)
+        private static bool IsNullable(Type type)
         {
             if (type == null)
                 throw new ArgumentNullException(nameof(type));
