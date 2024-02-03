@@ -51,10 +51,10 @@ namespace Alis.Core.Network.Sample
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             _webSocketServerFactory = new WebSocketServerFactory();
-            StartWebServer();
+            await StartWebServer();
 
             if (args.Length == 0)
             {
