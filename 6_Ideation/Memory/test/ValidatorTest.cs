@@ -62,7 +62,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// The test property
         /// </summary>
         [IsNotEmpty] private string testProperty4 = "Test";
-        
+
         /// <summary>
         /// The null array
         /// </summary>
@@ -77,13 +77,13 @@ namespace Alis.Core.Aspect.Memory.Test
         /// The null dictionary
         /// </summary>
         [IsNotNull] private Dictionary<string, string> nullDictionary1;
-        
+
 
         /// <summary>
         /// The empty dictionary
         /// </summary>
         [IsNotEmpty] private Dictionary<string, string> emptyDictionary2;
-        
+
         /// <summary>
         /// The null dictionary
         /// </summary>
@@ -171,7 +171,7 @@ namespace Alis.Core.Aspect.Memory.Test
             catch (NotEmptyException e)
             {
                 Assert.Throws<NotEmptyException>(() => Validator.Validate(testProperty4, nameof(testProperty4)));
-               Console.WriteLine(e.Message);
+                Console.WriteLine(e.Message);
             }
         }
 
@@ -452,7 +452,7 @@ namespace Alis.Core.Aspect.Memory.Test
             // Assert
             Assert.True(true);
         }
-        
+
         /// <summary>
         /// Tests that validate with not empty list should not throw exception
         /// </summary>
@@ -468,7 +468,7 @@ namespace Alis.Core.Aspect.Memory.Test
             // Assert
             Assert.True(true);
         }
-        
+
         /// <summary>
         /// Tests that validate with zero int should throw exception
         /// </summary>
@@ -501,7 +501,7 @@ namespace Alis.Core.Aspect.Memory.Test
                 Assert.Throws<NotNullException>(() => Validator.Validate(nullDictionary1, nameof(nullDictionary1)));
                 Console.WriteLine(e);
             }
-            
+
         }
 
         /// <summary>
@@ -527,7 +527,7 @@ namespace Alis.Core.Aspect.Memory.Test
         public void Validate_WithNotEmptyDictionary_ShouldNotThrowException()
         {
             // Arrange
-            Dictionary<string, string> notEmptyDictionary = new Dictionary<string, string> { { "key", "value" } };
+            Dictionary<string, string> notEmptyDictionary = new Dictionary<string, string> {{"key", "value"}};
 
             // Act
             Validator.Validate(notEmptyDictionary, nameof(notEmptyDictionary));
@@ -535,7 +535,7 @@ namespace Alis.Core.Aspect.Memory.Test
             // Assert
             Assert.True(true);
         }
-        
+
         /// <summary>
         /// Tests that validate with zero int v 2 should throw exception
         /// </summary>
@@ -563,7 +563,7 @@ namespace Alis.Core.Aspect.Memory.Test
 
             // Act and Assert
             Validator.Validate(nullDictionary, nameof(nullDictionary));
-            
+
             // Assert
             Assert.True(true);
         }
@@ -595,7 +595,7 @@ namespace Alis.Core.Aspect.Memory.Test
 
             // Act and Assert
             Validator.Validate(emptyDictionary, nameof(emptyDictionary));
-            
+
             // Assert
             Assert.True(true);
         }
@@ -607,7 +607,7 @@ namespace Alis.Core.Aspect.Memory.Test
         public void Validate_WithNotEmptyDictionary_V2_ShouldNotThrowException()
         {
             // Arrange
-            Dictionary<string, string> notEmptyDictionary = new Dictionary<string, string> { { "key", "value" } };
+            Dictionary<string, string> notEmptyDictionary = new Dictionary<string, string> {{"key", "value"}};
 
             // Act
             Validator.Validate(notEmptyDictionary, nameof(notEmptyDictionary));
@@ -615,7 +615,7 @@ namespace Alis.Core.Aspect.Memory.Test
             // Assert
             Assert.True(true);
         }
-        
+
         /// <summary>
         /// Tests that validate with zero int v 3 should throw exception
         /// </summary>
@@ -643,7 +643,7 @@ namespace Alis.Core.Aspect.Memory.Test
 
             // Act and Assert
             Validator.Validate(nullDictionary, nameof(nullDictionary));
-            
+
             // Assert
             Assert.True(true);
         }
@@ -675,7 +675,7 @@ namespace Alis.Core.Aspect.Memory.Test
 
             // Act and Assert
             Validator.Validate(emptyDictionary, nameof(emptyDictionary));
-            
+
             // Assert
             Assert.True(true);
         }
@@ -687,7 +687,7 @@ namespace Alis.Core.Aspect.Memory.Test
         public void Validate_WithNotEmptyDictionary_v3_ShouldNotThrowException()
         {
             // Arrange
-            Dictionary<string, string> notEmptyDictionary = new Dictionary<string, string> { { "key", "value" } };
+            Dictionary<string, string> notEmptyDictionary = new Dictionary<string, string> {{"key", "value"}};
 
             // Act
             Validator.Validate(notEmptyDictionary, nameof(notEmptyDictionary));
@@ -695,7 +695,7 @@ namespace Alis.Core.Aspect.Memory.Test
             // Assert
             Assert.True(true);
         }
-        
+
         /// <summary>
         /// Tests that validate with zero int v 4 should throw exception
         /// </summary>
@@ -782,7 +782,7 @@ namespace Alis.Core.Aspect.Memory.Test
         public void Validate_WithNotEmptyDictionary_v4_ShouldNotThrowException()
         {
             // Arrange
-            Dictionary<string, string> notEmptyDictionary = new Dictionary<string, string> { { "key", "value" } };
+            Dictionary<string, string> notEmptyDictionary = new Dictionary<string, string> {{"key", "value"}};
 
             // Act
             Validator.Validate(notEmptyDictionary, nameof(notEmptyDictionary));
@@ -790,7 +790,7 @@ namespace Alis.Core.Aspect.Memory.Test
             // Assert
             Assert.True(true);
         }
-        
+
         /// <summary>
         /// Tests that validate with empty concurrent dictionary should throw exception
         /// </summary>
@@ -803,7 +803,7 @@ namespace Alis.Core.Aspect.Memory.Test
 
             // Act and Assert
             Validator.Validate(emptyConcurrentDictionary, nameof(emptyConcurrentDictionary));
-            
+
             // Assert
             Assert.True(true);
         }
@@ -824,6 +824,253 @@ namespace Alis.Core.Aspect.Memory.Test
 
             // Assert
             Assert.True(true);
+        }
+
+        /// <summary>
+        /// Tests that validate with zero long should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithZeroLong_ShouldThrowException()
+        {
+            // Arrange
+            IsNotZeroAttribute attribute = new IsNotZeroAttribute();
+            long zeroValue = 0L;
+
+            // Act and Assert
+            Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
+        }
+
+        /// <summary>
+        /// Tests that validate with zero decimal should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithZeroDecimal_ShouldThrowException()
+        {
+            // Arrange
+            IsNotZeroAttribute attribute = new IsNotZeroAttribute();
+            decimal zeroValue = 0m;
+
+            // Act and Assert
+            Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
+        }
+
+        /// <summary>
+        /// Tests that validate with zero float should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithZeroFloat_ShouldThrowException()
+        {
+            // Arrange
+            IsNotZeroAttribute attribute = new IsNotZeroAttribute();
+            float zeroValue = 0f;
+
+            // Act and Assert
+            Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
+        }
+
+        /// <summary>
+        /// Tests that validate with zero double should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithZeroDouble_ShouldThrowException()
+        {
+            // Arrange
+            IsNotZeroAttribute attribute = new IsNotZeroAttribute();
+            double zeroValue = 0d;
+
+            // Act and Assert
+            Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
+        }
+
+        /// <summary>
+        /// Tests that validate with zero short should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithZeroShort_ShouldThrowException()
+        {
+            // Arrange
+            IsNotZeroAttribute attribute = new IsNotZeroAttribute();
+            short zeroValue = 0;
+
+            // Act and Assert
+            Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
+        }
+
+        /// <summary>
+        /// Tests that validate with zero byte should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithZeroByte_ShouldThrowException()
+        {
+            // Arrange
+            IsNotZeroAttribute attribute = new IsNotZeroAttribute();
+            byte zeroValue = 0;
+
+            // Act and Assert
+            Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
+        }
+
+        /// <summary>
+        /// Tests that validate with zero sbyte should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithZeroSbyte_ShouldThrowException()
+        {
+            // Arrange
+            IsNotZeroAttribute attribute = new IsNotZeroAttribute();
+            sbyte zeroValue = 0;
+
+            // Act and Assert
+            Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
+        }
+
+        /// <summary>
+        /// Tests that validate with zero ushort should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithZeroUshort_ShouldThrowException()
+        {
+            // Arrange
+            IsNotZeroAttribute attribute = new IsNotZeroAttribute();
+            ushort zeroValue = 0;
+
+            // Act and Assert
+            Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
+        }
+
+        /// <summary>
+        /// Tests that validate with zero uint should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithZeroUint_ShouldThrowException()
+        {
+            // Arrange
+            IsNotZeroAttribute attribute = new IsNotZeroAttribute();
+            uint zeroValue = 0;
+
+            // Act and Assert
+            Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
+        }
+
+        /// <summary>
+        /// Tests that validate with zero ulong should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithZeroUlong_ShouldThrowException()
+        {
+            // Arrange
+            IsNotZeroAttribute attribute = new IsNotZeroAttribute();
+            ulong zeroValue = 0;
+
+            // Act and Assert
+            Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
+        }
+
+        /// <summary>
+        /// Tests that validate with empty array should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithEmptyArray_ShouldThrowException()
+        {
+            // Arrange
+            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
+            int[] emptyArray = new int[0];
+
+            // Act and Assert
+            Assert.Throws<NotEmptyException>(() => attribute.Validate(emptyArray, nameof(emptyArray)));
+        }
+
+        /// <summary>
+        /// Tests that validate with empty list should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithEmptyList_ShouldThrowException()
+        {
+            // Arrange
+            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
+            List<int> emptyList = new List<int>();
+
+            // Act and Assert
+            Assert.Throws<NotEmptyException>(() => attribute.Validate(emptyList, nameof(emptyList)));
+        }
+
+        /// <summary>
+        /// Tests that validate with null concurrent dictionary should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithNullConcurrentDictionary_ShouldThrowException()
+        {
+            // Arrange
+            IsNotNullAttribute attribute = new IsNotNullAttribute();
+            ConcurrentDictionary<int, int> nullConcurrentDictionary = null;
+
+            // Act and Assert
+            Assert.Throws<NotNullException>(() => attribute.Validate(nullConcurrentDictionary, nameof(nullConcurrentDictionary)));
+        }
+
+        /// <summary>
+        /// Tests that validate with not null concurrent dictionary should not throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithNotNullConcurrentDictionary_ShouldNotThrowException()
+        {
+            // Arrange
+            IsNotNullAttribute attribute = new IsNotNullAttribute();
+            ConcurrentDictionary<int, int> notNullConcurrentDictionary = new ConcurrentDictionary<int, int>();
+
+            // Act
+            attribute.Validate(notNullConcurrentDictionary, nameof(notNullConcurrentDictionary));
+
+            // Assert
+            Assert.True(true);
+        }
+
+        /// <summary>
+        /// Tests that validate with non zero int should not throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithNonZeroInt_ShouldNotThrowException()
+        {
+            // Arrange
+            IsNotZeroAttribute attribute = new IsNotZeroAttribute();
+            int nonZeroValue = 1;
+
+            // Act
+            attribute.Validate(nonZeroValue, nameof(nonZeroValue));
+
+            // Assert
+            Assert.True(true);
+        }
+
+        /// <summary>
+        /// Tests that validate with not null array v 2 should not throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithNotNullArrayV2_ShouldNotThrowException()
+        {
+            // Arrange
+            IsNotNullAttribute attribute = new IsNotNullAttribute();
+            int[] notNullArray = new int[1];
+
+            // Act
+            attribute.Validate(notNullArray, nameof(notNullArray));
+
+            // Assert
+            Assert.True(true);
+        }
+
+        /// <summary>
+        /// Tests that validate with empty array v 2 should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithEmptyArrayV2_ShouldThrowException()
+        {
+            // Arrange
+            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
+            int[] emptyArray = new int[0];
+
+            // Act and Assert
+            Assert.Throws<NotEmptyException>(() => attribute.Validate(emptyArray, nameof(emptyArray)));
         }
     }
 }
