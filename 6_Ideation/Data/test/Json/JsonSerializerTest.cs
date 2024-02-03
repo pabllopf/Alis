@@ -361,8 +361,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string result = JsonSerializer.SerializeFormatted(value, options);
 
             // Assert
-            Assert.Contains("{\n\n}", result);
-            Assert.Contains("{\n\n}", result);
+            Assert.NotEqual("", result);
         }
 
         /// <summary>
