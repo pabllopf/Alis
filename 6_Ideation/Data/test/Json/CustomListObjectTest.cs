@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IsNotNullAttributeTest.cs
+//  File:IListObjectTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,29 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Memory.Attributes;
-using Alis.Core.Aspect.Memory.Exceptions;
+using System.Collections;
+using Alis.Core.Aspect.Data.Json;
 using Xunit;
 
-namespace Alis.Core.Aspect.Memory.Test.Attributes
+namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    ///     The not null attribute test class
+    /// The custom list object test class
     /// </summary>
-    public class IsNotNullAttributeTest
+    public class CustomListObjectTest
     {
-        /// <summary>
-        ///     Tests that validate with null value should throw exception
-        /// </summary>
-        [Fact]
-        public void Validate_WithNullValue_ShouldThrowException()
-        {
-            // Arrange
-            IsNotNullAttribute attribute = new IsNotNullAttribute();
-            object nullValue = null;
-
-            // Act and Assert
-            Assert.Throws<NotNullException>(() => attribute.Validate(null, nameof(nullValue)));
-        }
     }
 }

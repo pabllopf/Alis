@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Vector
 {
     /// <summary>
-    /// The vector test class
+    ///     The vector test class
     /// </summary>
     public class Vector4Test
     {
         /// <summary>
-        /// Tests that constructor should set values
+        ///     Tests that constructor should set values
         /// </summary>
         [Fact]
         public void Constructor_ShouldSetValues()
@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get should return correct value
+        ///     Tests that get should return correct value
         /// </summary>
         [Fact]
         public void Get_ShouldReturnCorrectValue()
@@ -76,7 +76,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with invalid index should return zero
+        ///     Tests that get with invalid index should return zero
         /// </summary>
         [Fact]
         public void Get_WithInvalidIndex_ShouldReturnZero()

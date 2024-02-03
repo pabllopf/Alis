@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:HashCode.cs
+//  File:HashCodeTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Util
 {
     /// <summary>
-    /// The hash code test class
+    ///     The hash code test class
     /// </summary>
     public class HashCodeTest
     {
         /// <summary>
-        /// Tests that combine should calculate correctly for different input
+        ///     Tests that combine should calculate correctly for different input
         /// </summary>
         [Fact]
         public void Combine_ShouldCalculateCorrectly_ForDifferentInput()
@@ -95,7 +95,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that add should calculate correctly for different input
+        ///     Tests that add should calculate correctly for different input
         /// </summary>
         [Fact]
         public void Add_ShouldCalculateCorrectly_ForDifferentInput()

@@ -33,41 +33,40 @@ using Alis.Core.Aspect.Memory.Attributes;
 namespace Alis.Core.Aspect.Memory.Test
 {
     /// <summary>
-    /// The validator test class
+    ///     The validator test class
     /// </summary>
     public class ValidatorTestClass
     {
         /// <summary>
-        /// The test field
+        ///     The test field
         /// </summary>
-        [IsNotEmpty]
-        public string TestField;
-        
+        [IsNotEmpty] public string TestField;
+
         /// <summary>
-        /// Gets or sets the value of the test property
+        ///     Gets or sets the value of the test property
         /// </summary>
         [IsNotEmpty]
         public string TestProperty { get; set; }
-        
+
         /// <summary>
-        /// Tests the method using the specified test param
+        ///     Tests the method using the specified test param
         /// </summary>
         /// <param name="testParam">The test param</param>
         public void TestMethod([IsNotEmpty] string testParam)
         {
             Console.WriteLine("Test method");
         }
-        
+
         /// <summary>
-        /// Tests the method 2
+        ///     Tests the method 2
         /// </summary>
         public void TestMethod2()
         {
             Console.WriteLine("Test method 2");
         }
-        
+
         /// <summary>
-        /// Tests the method 3 using the specified test param
+        ///     Tests the method 3 using the specified test param
         /// </summary>
         /// <param name="testParam">The test param</param>
         /// <param name="testParam2">The test param</param>

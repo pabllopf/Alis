@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     The hash code
         /// </summary>
         private readonly int hashCode;
-        
+
         /// <summary>The first element of the first row.</summary>
         public float M11;
 
@@ -230,10 +230,10 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     <see langword="false" />.
         /// </returns>
         /// <remarks>Two matrices are equal if all their corresponding elements are equal.</remarks>
-        public static bool operator ==(Matrix4X4 value1, Matrix4X4 value2) => (System.Math.Abs(value1.M11 - value2.M11) < 0.1F) && (System.Math.Abs(value1.M22 - value2.M22) < 0.1F) && (System.Math.Abs(value1.M33 - value2.M33) < 0.1F && (System.Math.Abs(value1.M44 - value2.M44) < 0.1F) && // Check diagonal element first for early out.
+        public static bool operator ==(Matrix4X4 value1, Matrix4X4 value2) => (System.Math.Abs(value1.M11 - value2.M11) < 0.1F) && (System.Math.Abs(value1.M22 - value2.M22) < 0.1F) && (System.Math.Abs(value1.M33 - value2.M33) < 0.1F) && (System.Math.Abs(value1.M44 - value2.M44) < 0.1F) && // Check diagonal element first for early out.
                                                                               (System.Math.Abs(value1.M12 - value2.M12) < 0.1F) && (System.Math.Abs(value1.M13 - value2.M13) < 0.1F) && (System.Math.Abs(value1.M14 - value2.M14) < 0.1F) && (System.Math.Abs(value1.M21 - value2.M21) < 0.1F) &&
-                                                                              System.Math.Abs(value1.M23 - value2.M23) < 0.1F && (System.Math.Abs(value1.M24 - value2.M24) < 0.1F) && (System.Math.Abs(value1.M31 - value2.M31) < 0.1F) && (System.Math.Abs(value1.M32 - value2.M32) < 0.1F) &&
-                                                                              (System.Math.Abs(value1.M34 - value2.M34) < 0.1F) && (System.Math.Abs(value1.M41 - value2.M41) < 0.1F) && (System.Math.Abs(value1.M42 - value2.M42) < 0.1F) && (System.Math.Abs(value1.M43 - value2.M43) < 0.1F));
+                                                                              (System.Math.Abs(value1.M23 - value2.M23) < 0.1F) && (System.Math.Abs(value1.M24 - value2.M24) < 0.1F) && (System.Math.Abs(value1.M31 - value2.M31) < 0.1F) && (System.Math.Abs(value1.M32 - value2.M32) < 0.1F) &&
+                                                                              (System.Math.Abs(value1.M34 - value2.M34) < 0.1F) && (System.Math.Abs(value1.M41 - value2.M41) < 0.1F) && (System.Math.Abs(value1.M42 - value2.M42) < 0.1F) && (System.Math.Abs(value1.M43 - value2.M43) < 0.1F);
 
         /// <summary>Returns a value that indicates whether the specified matrices are not equal.</summary>
         /// <param name="value1">The first matrix to compare.</param>
@@ -287,7 +287,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="other">The other matrix.</param>
         /// <returns><see langword="true" /> if the two matrices are equal; otherwise, <see langword="false" />.</returns>
         public bool Equals(Matrix4X4 other) => this == other;
-        
+
         /// <summary>Returns the hash code for this instance.</summary>
         /// <returns>The hash code.</returns>
         public override int GetHashCode() => hashCode;
@@ -306,6 +306,5 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </remarks>
         public override string ToString() =>
             $"{{ {{M11:{M11} M12:{M12} M13:{M13} M14:{M14}}} {{M21:{M21} M22:{M22} M23:{M23} M24:{M24}}} {{M31:{M31} M32:{M32} M33:{M33} M34:{M34}}} {{M41:{M41} M42:{M42} M43:{M43} M44:{M44}}} }}";
-        
     }
 }

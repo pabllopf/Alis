@@ -38,60 +38,59 @@ using Xunit;
 namespace Alis.Core.Aspect.Memory.Test
 {
     /// <summary>
-    /// The validator test class
+    ///     The validator test class
     /// </summary>
-    public partial class ValidatorTest
+    public class ValidatorTest
     {
         /// <summary>
-        /// Gets or sets the value of the test property
+        ///     The empty dictionary
         /// </summary>
-        [IsNotZero]
-        private int TestProperty { get; set; } = 0;
+        [IsNotEmpty] private Dictionary<string, string> emptyDictionary2;
 
         /// <summary>
-        /// Gets or sets the value of the test property 2
+        ///     The null array
+        /// </summary>
+        [IsNotNull] private int[] nullArray;
+
+        /// <summary>
+        ///     The null dictionary
+        /// </summary>
+        [IsNotNull] private Dictionary<string, string> nullDictionary1;
+
+        /// <summary>
+        ///     The null dictionary
+        /// </summary>
+        [IsNotNull] private Dictionary<string, string> nullDictionary2;
+
+        /// <summary>
+        ///     The null list
+        /// </summary>
+        [IsNotNull] private List<int> nullList1;
+
+        /// <summary>
+        ///     The test property
+        /// </summary>
+        [IsNotNull] private string testProperty3 = "Test";
+
+        /// <summary>
+        ///     The test property
+        /// </summary>
+        [IsNotEmpty] private string testProperty4 = "Test";
+
+        /// <summary>
+        ///     Gets or sets the value of the test property
+        /// </summary>
+        [IsNotZero]
+        private int TestProperty { get; } = 0;
+
+        /// <summary>
+        ///     Gets or sets the value of the test property 2
         /// </summary>
         [IsNotNull]
         private string TestProperty2 { get; set; } = "Test";
 
         /// <summary>
-        /// The test property
-        /// </summary>
-        [IsNotNull] private string testProperty3 = "Test";
-
-        /// <summary>
-        /// The test property
-        /// </summary>
-        [IsNotEmpty] private string testProperty4 = "Test";
-
-        /// <summary>
-        /// The null array
-        /// </summary>
-        [IsNotNull] private int[] nullArray = null;
-
-        /// <summary>
-        /// The null list
-        /// </summary>
-        [IsNotNull] private List<int> nullList1;
-
-        /// <summary>
-        /// The null dictionary
-        /// </summary>
-        [IsNotNull] private Dictionary<string, string> nullDictionary1;
-
-
-        /// <summary>
-        /// The empty dictionary
-        /// </summary>
-        [IsNotEmpty] private Dictionary<string, string> emptyDictionary2;
-
-        /// <summary>
-        /// The null dictionary
-        /// </summary>
-        [IsNotNull] private Dictionary<string, string> nullDictionary2;
-
-        /// <summary>
-        /// Tests the method using the specified test param
+        ///     Tests the method using the specified test param
         /// </summary>
         /// <param name="testParam">The test param</param>
         private void TestMethod([IsNotEmpty] string testParam)
@@ -100,7 +99,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with invalid input should throw exception
+        ///     Tests that validate with invalid input should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithInvalidInput_ShouldThrowException()
@@ -117,7 +116,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with null property should throw exception
+        ///     Tests that validate with null property should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNullProperty_ShouldThrowException()
@@ -137,7 +136,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with null field should throw exception
+        ///     Tests that validate with null field should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNullField_ShouldThrowException()
@@ -157,7 +156,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with empty field should throw exception
+        ///     Tests that validate with empty field should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyField_ShouldThrowException()
@@ -177,7 +176,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with empty method should throw exception
+        ///     Tests that validate with empty method should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyMethod_ShouldThrowException()
@@ -197,7 +196,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with non zero long should not throw exception
+        ///     Tests that validate with non zero long should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNonZeroLong_ShouldNotThrowException()
@@ -214,7 +213,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with non zero decimal should not throw exception
+        ///     Tests that validate with non zero decimal should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNonZeroDecimal_ShouldNotThrowException()
@@ -231,7 +230,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with non zero float should not throw exception
+        ///     Tests that validate with non zero float should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNonZeroFloat_ShouldNotThrowException()
@@ -248,7 +247,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with non zero double should not throw exception
+        ///     Tests that validate with non zero double should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNonZeroDouble_ShouldNotThrowException()
@@ -265,7 +264,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with non zero short should not throw exception
+        ///     Tests that validate with non zero short should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNonZeroShort_ShouldNotThrowException()
@@ -282,7 +281,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with non zero byte should not throw exception
+        ///     Tests that validate with non zero byte should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNonZeroByte_ShouldNotThrowException()
@@ -299,7 +298,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with non zero sbyte should not throw exception
+        ///     Tests that validate with non zero sbyte should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNonZeroSbyte_ShouldNotThrowException()
@@ -316,7 +315,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with non zero ushort should not throw exception
+        ///     Tests that validate with non zero ushort should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNonZeroUshort_ShouldNotThrowException()
@@ -333,7 +332,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with non zero uint should not throw exception
+        ///     Tests that validate with non zero uint should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNonZeroUint_ShouldNotThrowException()
@@ -350,7 +349,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with non zero ulong should not throw exception
+        ///     Tests that validate with non zero ulong should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNonZeroUlong_ShouldNotThrowException()
@@ -367,7 +366,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with null array should throw exception
+        ///     Tests that validate with null array should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNullArray_ShouldThrowException()
@@ -387,7 +386,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with not null array should not throw exception
+        ///     Tests that validate with not null array should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotNullArray_ShouldNotThrowException()
@@ -403,13 +402,13 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with not empty array should not throw exception
+        ///     Tests that validate with not empty array should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyArray_ShouldNotThrowException()
         {
             // Arrange
-            int[] notEmptyArray = new int[] {1};
+            int[] notEmptyArray = {1};
 
             // Act
             Validator.Validate(notEmptyArray, nameof(notEmptyArray));
@@ -419,7 +418,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with null list should throw exception
+        ///     Tests that validate with null list should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNullList_ShouldThrowException()
@@ -439,7 +438,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with not null list should not throw exception
+        ///     Tests that validate with not null list should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotNullList_ShouldNotThrowException()
@@ -455,7 +454,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with not empty list should not throw exception
+        ///     Tests that validate with not empty list should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyList_ShouldNotThrowException()
@@ -471,7 +470,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with zero int should throw exception
+        ///     Tests that validate with zero int should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroInt_ShouldThrowException()
@@ -485,7 +484,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with null dictionary should throw exception
+        ///     Tests that validate with null dictionary should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNullDictionary_ShouldThrowException()
@@ -502,11 +501,10 @@ namespace Alis.Core.Aspect.Memory.Test
                 Assert.Throws<NotNullException>(() => Validator.Validate(nullDictionary1, nameof(nullDictionary1)));
                 Console.WriteLine(e);
             }
-
         }
 
         /// <summary>
-        /// Tests that validate with not null dictionary should not throw exception
+        ///     Tests that validate with not null dictionary should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotNullDictionary_ShouldNotThrowException()
@@ -522,7 +520,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with not empty dictionary should not throw exception
+        ///     Tests that validate with not empty dictionary should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyDictionary_ShouldNotThrowException()
@@ -538,7 +536,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with zero int v 2 should throw exception
+        ///     Tests that validate with zero int v 2 should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroInt_V2_ShouldThrowException()
@@ -554,7 +552,7 @@ namespace Alis.Core.Aspect.Memory.Test
         // Repeat the above test for the remaining types: long, decimal, float, double, short, byte, sbyte, ushort, uint, and ulong
 
         /// <summary>
-        /// Tests that validate with null dictionary v 2 should throw exception
+        ///     Tests that validate with null dictionary v 2 should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNullDictionary_V2_ShouldThrowException()
@@ -570,7 +568,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with not null dictionary v 2 should not throw exception
+        ///     Tests that validate with not null dictionary v 2 should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotNullDictionary_V2_ShouldNotThrowException()
@@ -586,7 +584,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with empty dictionary v 2 should throw exception
+        ///     Tests that validate with empty dictionary v 2 should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyDictionary_V2_ShouldThrowException()
@@ -602,7 +600,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with not empty dictionary v 2 should not throw exception
+        ///     Tests that validate with not empty dictionary v 2 should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyDictionary_V2_ShouldNotThrowException()
@@ -618,7 +616,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with zero int v 3 should throw exception
+        ///     Tests that validate with zero int v 3 should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroInt_v3_ShouldThrowException()
@@ -634,7 +632,7 @@ namespace Alis.Core.Aspect.Memory.Test
         // Repeat the above test for the remaining types: long, decimal, float, double, short, byte, sbyte, ushort, uint, and ulong
 
         /// <summary>
-        /// Tests that validate with null dictionary v 3 should throw exception
+        ///     Tests that validate with null dictionary v 3 should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNullDictionary_v3_ShouldThrowException()
@@ -650,7 +648,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with not null dictionary v 3 should not throw exception
+        ///     Tests that validate with not null dictionary v 3 should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotNullDictionary_v3_ShouldNotThrowException()
@@ -666,7 +664,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with empty dictionary v 3 should throw exception
+        ///     Tests that validate with empty dictionary v 3 should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyDictionary_v3_ShouldThrowException()
@@ -682,7 +680,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with not empty dictionary v 3 should not throw exception
+        ///     Tests that validate with not empty dictionary v 3 should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyDictionary_v3_ShouldNotThrowException()
@@ -698,7 +696,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with zero int v 4 should throw exception
+        ///     Tests that validate with zero int v 4 should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroInt_v4_ShouldThrowException()
@@ -721,7 +719,7 @@ namespace Alis.Core.Aspect.Memory.Test
         // Repeat the above test for the remaining types: long, decimal, float, double, short, byte, sbyte, ushort, uint, and ulong
 
         /// <summary>
-        /// Tests that validate with null dictionary v 4 should throw exception
+        ///     Tests that validate with null dictionary v 4 should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNullDictionary_v4_ShouldThrowException()
@@ -741,7 +739,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with not null dictionary v 4 should not throw exception
+        ///     Tests that validate with not null dictionary v 4 should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotNullDictionary_v4_ShouldNotThrowException()
@@ -757,7 +755,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with empty dictionary v 4 should throw exception
+        ///     Tests that validate with empty dictionary v 4 should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyDictionary_v4_ShouldThrowException()
@@ -777,7 +775,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with not empty dictionary v 4 should not throw exception
+        ///     Tests that validate with not empty dictionary v 4 should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyDictionary_v4_ShouldNotThrowException()
@@ -793,7 +791,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with empty concurrent dictionary should throw exception
+        ///     Tests that validate with empty concurrent dictionary should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyConcurrentDictionary_ShouldThrowException()
@@ -810,7 +808,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with not empty concurrent dictionary should not throw exception
+        ///     Tests that validate with not empty concurrent dictionary should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyConcurrentDictionary_ShouldNotThrowException()
@@ -828,7 +826,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with zero long should throw exception
+        ///     Tests that validate with zero long should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroLong_ShouldThrowException()
@@ -842,7 +840,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with zero decimal should throw exception
+        ///     Tests that validate with zero decimal should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroDecimal_ShouldThrowException()
@@ -856,7 +854,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with zero float should throw exception
+        ///     Tests that validate with zero float should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroFloat_ShouldThrowException()
@@ -870,7 +868,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with zero double should throw exception
+        ///     Tests that validate with zero double should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroDouble_ShouldThrowException()
@@ -884,7 +882,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with zero short should throw exception
+        ///     Tests that validate with zero short should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroShort_ShouldThrowException()
@@ -898,7 +896,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with zero byte should throw exception
+        ///     Tests that validate with zero byte should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroByte_ShouldThrowException()
@@ -912,7 +910,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with zero sbyte should throw exception
+        ///     Tests that validate with zero sbyte should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroSbyte_ShouldThrowException()
@@ -926,7 +924,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with zero ushort should throw exception
+        ///     Tests that validate with zero ushort should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroUshort_ShouldThrowException()
@@ -940,7 +938,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with zero uint should throw exception
+        ///     Tests that validate with zero uint should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroUint_ShouldThrowException()
@@ -954,7 +952,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with zero ulong should throw exception
+        ///     Tests that validate with zero ulong should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroUlong_ShouldThrowException()
@@ -968,7 +966,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with empty array should throw exception
+        ///     Tests that validate with empty array should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyArray_ShouldThrowException()
@@ -982,7 +980,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with empty list should throw exception
+        ///     Tests that validate with empty list should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyList_ShouldThrowException()
@@ -996,7 +994,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with null concurrent dictionary should throw exception
+        ///     Tests that validate with null concurrent dictionary should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNullConcurrentDictionary_ShouldThrowException()
@@ -1010,7 +1008,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with not null concurrent dictionary should not throw exception
+        ///     Tests that validate with not null concurrent dictionary should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotNullConcurrentDictionary_ShouldNotThrowException()
@@ -1027,7 +1025,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with non zero int should not throw exception
+        ///     Tests that validate with non zero int should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNonZeroInt_ShouldNotThrowException()
@@ -1044,7 +1042,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with not null array v 2 should not throw exception
+        ///     Tests that validate with not null array v 2 should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotNullArrayV2_ShouldNotThrowException()
@@ -1061,7 +1059,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with empty array v 2 should throw exception
+        ///     Tests that validate with empty array v 2 should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyArrayV2_ShouldThrowException()
@@ -1075,7 +1073,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with empty list v 2 should throw exception
+        ///     Tests that validate with empty list v 2 should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyList_v2_ShouldThrowException()
@@ -1089,7 +1087,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with null concurrent dictionary v 2 should throw exception
+        ///     Tests that validate with null concurrent dictionary v 2 should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNullConcurrentDictionary_v2_ShouldThrowException()
@@ -1103,7 +1101,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with not null concurrent dictionary v 2 should not throw exception
+        ///     Tests that validate with not null concurrent dictionary v 2 should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotNullConcurrentDictionary_v2_ShouldNotThrowException()
@@ -1120,7 +1118,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with non zero int v 2 should not throw exception
+        ///     Tests that validate with non zero int v 2 should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNonZeroInt_v2_ShouldNotThrowException()
@@ -1137,7 +1135,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with not null array v 3 should not throw exception
+        ///     Tests that validate with not null array v 3 should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotNullArrayV3_ShouldNotThrowException()
@@ -1154,7 +1152,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate with empty array v 3 should throw exception
+        ///     Tests that validate with empty array v 3 should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyArrayV3_ShouldThrowException()
@@ -1168,7 +1166,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that validate property with not null type should not throw exception
+        ///     Tests that validate property with not null type should not throw exception
         /// </summary>
         [Fact]
         public void ValidateProperty_WithNotNullType_ShouldNotThrowException()
@@ -1182,11 +1180,11 @@ namespace Alis.Core.Aspect.Memory.Test
             Validator.ValidateProperty(testClass.TestProperty, name, callingType);
 
             // Assert
-            Assert.True(true); 
+            Assert.True(true);
         }
-        
+
         /// <summary>
-        /// Tests that validate field with not null type should not throw exception
+        ///     Tests that validate field with not null type should not throw exception
         /// </summary>
         [Fact]
         public void ValidateField_WithNotNullType_ShouldNotThrowException()
@@ -1200,11 +1198,11 @@ namespace Alis.Core.Aspect.Memory.Test
             Validator.ValidateField(testClass.TestField, name, callingType);
 
             // Assert
-            Assert.True(true); 
+            Assert.True(true);
         }
-        
+
         /// <summary>
-        /// Tests that validate parameter with not null type should not throw exception
+        ///     Tests that validate parameter with not null type should not throw exception
         /// </summary>
         [Fact]
         public void ValidateParameter_WithNotNullType_ShouldNotThrowException()
@@ -1220,12 +1218,12 @@ namespace Alis.Core.Aspect.Memory.Test
             Validator.ValidateParameter(value, name, callingType, methodBase);
 
             // Assert
-            Assert.True(true); 
+            Assert.True(true);
         }
 
-        
+
         /// <summary>
-        /// Tests that validate parameter with not null type v 2 should not throw exception
+        ///     Tests that validate parameter with not null type v 2 should not throw exception
         /// </summary>
         [Fact]
         public void ValidateParameter_WithNotNullType_V2_ShouldNotThrowException()
@@ -1241,11 +1239,11 @@ namespace Alis.Core.Aspect.Memory.Test
             Validator.ValidateParameter(value, name, callingType, methodBase);
 
             // Assert
-            Assert.True(true); 
+            Assert.True(true);
         }
-        
+
         /// <summary>
-        /// Tests that validate parameter with not null type v 3 should not throw exception
+        ///     Tests that validate parameter with not null type v 3 should not throw exception
         /// </summary>
         [Fact]
         public void ValidateParameter_WithNotNullType_V3_ShouldNotThrowException()
@@ -1261,11 +1259,11 @@ namespace Alis.Core.Aspect.Memory.Test
             Validator.ValidateParameter(value, name, callingType, methodBase);
 
             // Assert
-            Assert.True(true); 
+            Assert.True(true);
         }
-        
+
         /// <summary>
-        /// Tests that validate parameter with not null type v 4 should not throw exception
+        ///     Tests that validate parameter with not null type v 4 should not throw exception
         /// </summary>
         [Fact]
         public void ValidateParameter_WithNotNullType_V4_ShouldNotThrowException()
@@ -1281,7 +1279,7 @@ namespace Alis.Core.Aspect.Memory.Test
             Validator.ValidateParameter(value, name, callingType, methodBase);
 
             // Assert
-            Assert.True(true); 
+            Assert.True(true);
         }
     }
 }

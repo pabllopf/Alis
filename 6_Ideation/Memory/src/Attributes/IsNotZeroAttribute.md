@@ -1,13 +1,14 @@
-
 # IsNotZeroAttribute Class
 
 ## Description
 
-The `IsNotZeroAttribute` class is a validation attribute that checks if a given value is not zero. It is part of the `Alis.Core.Aspect.Memory.Attributes` namespace.
+The `IsNotZeroAttribute` class is a validation attribute that checks if a given value is not zero. It is part of
+the `Alis.Core.Aspect.Memory.Attributes` namespace.
 
 ## Usage
 
-This attribute can be used to decorate properties or fields that should not be zero. If the value is zero, a `NotZeroException` is thrown.
+This attribute can be used to decorate properties or fields that should not be zero. If the value is zero,
+a `NotZeroException` is thrown.
 
 ```csharp
 [IsNotZero]

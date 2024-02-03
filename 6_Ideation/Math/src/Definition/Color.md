@@ -2,7 +2,8 @@
 
 ## Description
 
-The `Color` struct represents a color in RGBA color space. Each color component is represented as a byte, with values ranging from 0 to 255.
+The `Color` struct represents a color in RGBA color space. Each color component is represented as a byte, with values
+ranging from 0 to 255.
 
 ## Properties
 
@@ -13,8 +14,10 @@ The `Color` struct represents a color in RGBA color space. Each color component 
 
 ## Constructors
 
-- `Color(byte r, byte g, byte b, byte a)`: Initializes a new instance of the `Color` struct with the specified red, green, blue, and alpha values.
-- `Color(int r, int g, int b, int a)`: Initializes a new instance of the `Color` struct with the specified red, green, blue, and alpha values. The integer values are cast to bytes.
+- `Color(byte r, byte g, byte b, byte a)`: Initializes a new instance of the `Color` struct with the specified red,
+  green, blue, and alpha values.
+- `Color(int r, int g, int b, int a)`: Initializes a new instance of the `Color` struct with the specified red, green,
+  blue, and alpha values. The integer values are cast to bytes.
 
 ## Static Properties
 

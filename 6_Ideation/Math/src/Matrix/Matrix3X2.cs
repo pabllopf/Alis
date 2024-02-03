@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -141,7 +140,7 @@ namespace Alis.Core.Aspect.Math.Matrix
                 return true;
             }
 
-            return obj.GetType() == GetType() && Equals((Matrix3X2) obj);
+            return (obj.GetType() == GetType()) && Equals((Matrix3X2) obj);
         }
 
         /// <summary>Adds each element in one matrix with its corresponding element in a second matrix.</summary>
@@ -176,15 +175,12 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     <see langword="false" />.
         /// </returns>
         /// <remarks>Two matrices are equal if all their corresponding elements are equal.</remarks>
-        public static bool operator ==(Matrix3X2 value1, Matrix3X2 value2)
-        {
-            return System.Math.Abs(value1.M11 - value2.M11) < 0.1f
-                   && System.Math.Abs(value1.M22 - value2.M22) < 0.1f
-                   && (System.Math.Abs(value1.M12 - value2.M12) < 0.1f)
-                   && (System.Math.Abs(value1.M21 - value2.M21) < 0.1f)
-                   && (System.Math.Abs(value1.M31 - value2.M31) < 0.1f)
-                   && (System.Math.Abs(value1.M32 - value2.M32) < 0.1f);
-        }
+        public static bool operator ==(Matrix3X2 value1, Matrix3X2 value2) => (System.Math.Abs(value1.M11 - value2.M11) < 0.1f)
+                                                                              && (System.Math.Abs(value1.M22 - value2.M22) < 0.1f)
+                                                                              && (System.Math.Abs(value1.M12 - value2.M12) < 0.1f)
+                                                                              && (System.Math.Abs(value1.M21 - value2.M21) < 0.1f)
+                                                                              && (System.Math.Abs(value1.M31 - value2.M31) < 0.1f)
+                                                                              && (System.Math.Abs(value1.M32 - value2.M32) < 0.1f);
 
         /// <summary>Returns a value that indicates whether the specified matrices are not equal.</summary>
         /// <param name="value1">The first matrix to compare.</param>
@@ -319,17 +315,17 @@ namespace Alis.Core.Aspect.Math.Matrix
             return result;
         }
 
-     
+
         /// <summary>
-        /// Gets the determinant
+        ///     Gets the determinant
         /// </summary>
         /// <returns>The float</returns>
         public float GetDeterminant() =>
             M11 * M22 - M21 * M12;
 
-        
+
         /// <summary>
-        /// Returns the string
+        ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString() =>

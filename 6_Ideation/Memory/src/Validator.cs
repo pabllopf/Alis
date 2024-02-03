@@ -51,14 +51,14 @@ namespace Alis.Core.Aspect.Memory
             StackTrace stackTrace = new StackTrace();
             MethodBase methodBase = stackTrace.GetFrame(1).GetMethod();
             Type callingType = methodBase.ReflectedType;
-            
+
             ValidateParameter(value, name, callingType, methodBase);
             ValidateField(value, name, callingType);
             ValidateProperty(value, name, callingType);
         }
 
         /// <summary>
-        /// Validates the property using the specified value
+        ///     Validates the property using the specified value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
@@ -88,7 +88,7 @@ namespace Alis.Core.Aspect.Memory
         }
 
         /// <summary>
-        /// Validates the field using the specified value
+        ///     Validates the field using the specified value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
@@ -118,7 +118,7 @@ namespace Alis.Core.Aspect.Memory
         }
 
         /// <summary>
-        /// Validates the parameter using the specified value
+        ///     Validates the parameter using the specified value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
@@ -133,7 +133,7 @@ namespace Alis.Core.Aspect.Memory
                 foreach (ParameterInfo parameter in parameters)
                 {
                     if (parameter.Name != name) continue;
-                    
+
                     object[] attributes = parameter.GetCustomAttributes(true);
 
                     foreach (object attribute in attributes)

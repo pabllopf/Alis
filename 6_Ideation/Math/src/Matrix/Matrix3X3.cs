@@ -33,17 +33,17 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Aspect.Math.Matrix
 {
     /// <summary>
-    /// The matrix
+    ///     The matrix
     /// </summary>
     public struct Matrix3X3
     {
         /// <summary>
-        /// The ez
+        ///     The ez
         /// </summary>
         public Vector3 Ex, Ey, Ez;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Matrix3X3"/> class
+        ///     Initializes a new instance of the <see cref="Matrix3X3" /> class
         /// </summary>
         /// <param name="c1">The </param>
         /// <param name="c2">The </param>
@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Math.Matrix
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Matrix3X3"/> class
+        ///     Initializes a new instance of the <see cref="Matrix3X3" /> class
         /// </summary>
         /// <param name="a00">The 00</param>
         /// <param name="a01">The 01</param>
@@ -88,9 +88,9 @@ namespace Alis.Core.Aspect.Math.Matrix
             Ey = new Vector3(a10, a11, a12);
             Ez = new Vector3(a20, a21, a22);
         }
-        
+
         /// <summary>
-        /// Solves the 33 using the specified b
+        ///     Solves the 33 using the specified b
         /// </summary>
         /// <param name="b">The </param>
         /// <returns>The vector</returns>
@@ -109,7 +109,7 @@ namespace Alis.Core.Aspect.Math.Matrix
 
 
         /// <summary>
-        /// Solves the 22 using the specified b
+        ///     Solves the 22 using the specified b
         /// </summary>
         /// <param name="b">The </param>
         /// <returns>The vector</returns>
@@ -128,7 +128,7 @@ namespace Alis.Core.Aspect.Math.Matrix
 
 
         /// <summary>
-        /// Gets the inverse 22 using the specified m
+        ///     Gets the inverse 22 using the specified m
         /// </summary>
         /// <param name="m">The </param>
         public void GetInverse22(ref Matrix3X3 m)
@@ -161,7 +161,7 @@ namespace Alis.Core.Aspect.Math.Matrix
 
 
         /// <summary>
-        /// Gets the sym inverse 33 using the specified m
+        ///     Gets the sym inverse 33 using the specified m
         /// </summary>
         /// <param name="m">The </param>
         [ExcludeFromCodeCoverage]
@@ -196,9 +196,9 @@ namespace Alis.Core.Aspect.Math.Matrix
             );
         }
 
-  
+
         /// <summary>
-        /// Dots the a
+        ///     Dots the a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -207,7 +207,7 @@ namespace Alis.Core.Aspect.Math.Matrix
 
 
         /// <summary>
-        /// Crosses the a
+        ///     Crosses the a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>

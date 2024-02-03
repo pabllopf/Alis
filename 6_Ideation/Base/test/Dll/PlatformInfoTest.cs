@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Base.Test.Dll
 {
     /// <summary>
-    /// The platform info test class
+    ///     The platform info test class
     /// </summary>
     public class PlatformInfoTest
     {
         /// <summary>
-        /// Tests that test platform info constructor
+        ///     Tests that test platform info constructor
         /// </summary>
         [Fact]
         public void TestPlatformInfo_Constructor()
@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Base.Test.Dll
         }
 
         /// <summary>
-        /// Tests that test platform info equals
+        ///     Tests that test platform info equals
         /// </summary>
         [Fact]
         public void TestPlatformInfo_Equals()
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Base.Test.Dll
         }
 
         /// <summary>
-        /// Tests that test platform info not equals
+        ///     Tests that test platform info not equals
         /// </summary>
         [Fact]
         public void TestPlatformInfo_NotEquals()
@@ -88,7 +88,7 @@ namespace Alis.Core.Aspect.Base.Test.Dll
         }
 
         /// <summary>
-        /// Tests that test platform info get hash code
+        ///     Tests that test platform info get hash code
         /// </summary>
         [Fact]
         public void TestPlatformInfo_GetHashCode()
@@ -101,9 +101,9 @@ namespace Alis.Core.Aspect.Base.Test.Dll
 
             Assert.Equal(expectedHashCode, platformInfo.GetHashCode());
         }
-        
+
         /// <summary>
-        /// Tests that test equals with equal platform info
+        ///     Tests that test equals with equal platform info
         /// </summary>
         [Fact]
         public void TestEquals_WithEqualPlatformInfo()
@@ -118,7 +118,7 @@ namespace Alis.Core.Aspect.Base.Test.Dll
         }
 
         /// <summary>
-        /// Tests that test equals with different platform info
+        ///     Tests that test equals with different platform info
         /// </summary>
         [Fact]
         public void TestEquals_WithDifferentPlatformInfo()
@@ -136,7 +136,7 @@ namespace Alis.Core.Aspect.Base.Test.Dll
         }
 
         /// <summary>
-        /// Tests that test equals with non platform info object
+        ///     Tests that test equals with non platform info object
         /// </summary>
         [Fact]
         public void TestEquals_WithNonPlatformInfoObject()

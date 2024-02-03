@@ -34,17 +34,17 @@ using System.Threading.Tasks;
 namespace Alis.Core.Aspect.Thread
 {
     /// <summary>
-    /// The thread manager class
+    ///     The thread manager class
     /// </summary>
     public class ThreadManager
     {
         /// <summary>
-        /// The cancellation token source
+        ///     The cancellation token source
         /// </summary>
-        private Dictionary<ThreadTask, CancellationTokenSource> threadTokens = new Dictionary<ThreadTask, CancellationTokenSource>();
-        
+        private readonly Dictionary<ThreadTask, CancellationTokenSource> threadTokens = new Dictionary<ThreadTask, CancellationTokenSource>();
+
         /// <summary>
-        /// Starts the thread using the specified thread task
+        ///     Starts the thread using the specified thread task
         /// </summary>
         /// <param name="threadTask">The thread task</param>
         public void StartThread(ThreadTask threadTask)
@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Thread
         }
 
         /// <summary>
-        /// Stops the thread using the specified thread task
+        ///     Stops the thread using the specified thread task
         /// </summary>
         /// <param name="threadTask">The thread task</param>
         public void StopThread(ThreadTask threadTask)
@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Thread
         }
 
         /// <summary>
-        /// Stops the all threads
+        ///     Stops the all threads
         /// </summary>
         public void StopAllThreads()
         {
@@ -76,16 +76,14 @@ namespace Alis.Core.Aspect.Thread
             {
                 cts.Cancel();
             }
+
             threadTokens.Clear();
         }
 
         /// <summary>
-        /// Gets the thread count
+        ///     Gets the thread count
         /// </summary>
         /// <returns>The int</returns>
-        public int GetThreadCount()
-        {
-            return threadTokens.Count;
-        }
+        public int GetThreadCount() => threadTokens.Count;
     }
 }

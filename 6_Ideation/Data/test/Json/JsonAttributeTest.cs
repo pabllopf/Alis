@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The json attribute test class
+    ///     The json attribute test class
     /// </summary>
     public class JsonAttributeTest
     {
         /// <summary>
-        /// Tests that test constructor
+        ///     Tests that test constructor
         /// </summary>
         [Fact]
         public void TestConstructor()
@@ -48,7 +48,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test constructor with name
+        ///     Tests that test constructor with name
         /// </summary>
         [Fact]
         public void TestConstructorWithName()
@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test name property
+        ///     Tests that test name property
         /// </summary>
         [Fact]
         public void TestNameProperty()
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test ignore when serializing property
+        ///     Tests that test ignore when serializing property
         /// </summary>
         [Fact]
         public void TestIgnoreWhenSerializingProperty()
@@ -80,7 +80,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test ignore when deserializing property
+        ///     Tests that test ignore when deserializing property
         /// </summary>
         [Fact]
         public void TestIgnoreWhenDeserializingProperty()
@@ -90,7 +90,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test default value property
+        ///     Tests that test default value property
         /// </summary>
         [Fact]
         public void TestDefaultValueProperty()
@@ -101,7 +101,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test has default value property
+        ///     Tests that test has default value property
         /// </summary>
         [Fact]
         public void TestHasDefaultValueProperty()

@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
     public class NotZeroExceptionTest
     {
         /// <summary>
-        /// Tests that not zero exception with message should set message
+        ///     Tests that not zero exception with message should set message
         /// </summary>
         [Fact]
         public void NotZeroException_WithMessage_ShouldSetMessage()
@@ -53,9 +53,9 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Assert
             Assert.Equal(message, exception.Message);
         }
-        
+
         /// <summary>
-        /// Tests that validate with zero double should throw exception
+        ///     Tests that validate with zero double should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroDouble_ShouldThrowException()
@@ -69,7 +69,7 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
         }
 
         /// <summary>
-        /// Tests that validate with zero decimal should throw exception
+        ///     Tests that validate with zero decimal should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroDecimal_ShouldThrowException()
@@ -82,9 +82,9 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
 
-        
+
         /// <summary>
-        /// Tests that validate with zero float should throw exception
+        ///     Tests that validate with zero float should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroFloat_ShouldThrowException()
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
         }
 
         /// <summary>
-        /// Tests that validate with zero long should throw exception
+        ///     Tests that validate with zero long should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroLong_ShouldThrowException()
@@ -110,9 +110,9 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-        
+
         /// <summary>
-        /// Tests that validate with zero int should throw exception
+        ///     Tests that validate with zero int should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroInt_ShouldThrowException()
@@ -124,10 +124,10 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-        
-        
+
+
         /// <summary>
-        /// Tests that validate with zero short should throw exception
+        ///     Tests that validate with zero short should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroShort_ShouldThrowException()
@@ -139,9 +139,9 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-        
+
         /// <summary>
-        /// Tests that validate with zero byte should throw exception
+        ///     Tests that validate with zero byte should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroByte_ShouldThrowException()
@@ -153,9 +153,9 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-        
+
         /// <summary>
-        /// Tests that validate with zero sbyte should throw exception
+        ///     Tests that validate with zero sbyte should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroSbyte_ShouldThrowException()
@@ -167,9 +167,9 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-        
+
         /// <summary>
-        /// Tests that validate with zero ushort should throw exception
+        ///     Tests that validate with zero ushort should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroUshort_ShouldThrowException()
@@ -181,9 +181,9 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-        
+
         /// <summary>
-        /// Tests that validate with zero uint should throw exception
+        ///     Tests that validate with zero uint should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroUint_ShouldThrowException()
@@ -195,9 +195,9 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-        
+
         /// <summary>
-        /// Tests that validate with zero ulong should throw exception
+        ///     Tests that validate with zero ulong should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithZeroUlong_ShouldThrowException()
@@ -209,9 +209,9 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-        
+
         /// <summary>
-        /// Tests that validate with non zero int should not throw exception
+        ///     Tests that validate with non zero int should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNonZeroInt_ShouldNotThrowException()

@@ -28,18 +28,19 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Globalization;
 using Alis.Core.Aspect.Data.Json;
 using Xunit;
 
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The json options test class
+    ///     The json options test class
     /// </summary>
     public class JsonOptionsTest
     {
         /// <summary>
-        /// Tests that test constructor
+        ///     Tests that test constructor
         /// </summary>
         [Fact]
         public void TestConstructor()
@@ -49,7 +50,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test throw exceptions property
+        ///     Tests that test throw exceptions property
         /// </summary>
         [Fact]
         public void TestThrowExceptionsProperty()
@@ -60,7 +61,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test maximum exceptions count property
+        ///     Tests that test maximum exceptions count property
         /// </summary>
         [Fact]
         public void TestMaximumExceptionsCountProperty()
@@ -71,7 +72,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json p callback property
+        ///     Tests that test json p callback property
         /// </summary>
         [Fact]
         public void TestJsonPCallbackProperty()
@@ -82,7 +83,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test guid format property
+        ///     Tests that test guid format property
         /// </summary>
         [Fact]
         public void TestGuidFormatProperty()
@@ -93,7 +94,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test date time format property
+        ///     Tests that test date time format property
         /// </summary>
         [Fact]
         public void TestDateTimeFormatProperty()
@@ -104,7 +105,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test date time offset format property
+        ///     Tests that test date time offset format property
         /// </summary>
         [Fact]
         public void TestDateTimeOffsetFormatProperty()
@@ -115,18 +116,18 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test date time styles property
+        ///     Tests that test date time styles property
         /// </summary>
         [Fact]
         public void TestDateTimeStylesProperty()
         {
             JsonOptions options = new JsonOptions();
-            options.DateTimeStyles = System.Globalization.DateTimeStyles.AssumeUniversal;
-            Assert.Equal(System.Globalization.DateTimeStyles.AssumeUniversal, options.DateTimeStyles);
+            options.DateTimeStyles = DateTimeStyles.AssumeUniversal;
+            Assert.Equal(DateTimeStyles.AssumeUniversal, options.DateTimeStyles);
         }
 
         /// <summary>
-        /// Tests that test streaming buffer chunk size property
+        ///     Tests that test streaming buffer chunk size property
         /// </summary>
         [Fact]
         public void TestStreamingBufferChunkSizeProperty()
@@ -137,7 +138,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test formatting tab property
+        ///     Tests that test formatting tab property
         /// </summary>
         [Fact]
         public void TestFormattingTabProperty()
@@ -148,7 +149,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test add exception method
+        ///     Tests that test add exception method
         /// </summary>
         [Fact]
         public void TestAddExceptionMethod()
@@ -160,7 +161,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test clone method
+        ///     Tests that test clone method
         /// </summary>
         [Fact]
         public void TestCloneMethod()
@@ -171,7 +172,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test get cache key method
+        ///     Tests that test get cache key method
         /// </summary>
         [Fact]
         public void TestGetCacheKeyMethod()
@@ -182,7 +183,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test max method
+        ///     Tests that test max method
         /// </summary>
         [Fact]
         public void TestMaxMethod()
@@ -200,7 +201,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test final streaming buffer chunk size property
+        ///     Tests that test final streaming buffer chunk size property
         /// </summary>
         [Fact]
         public void TestFinalStreamingBufferChunkSizeProperty()
@@ -218,7 +219,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
 
         /// <summary>
-        /// Tests that test add exception method with valid exception
+        ///     Tests that test add exception method with valid exception
         /// </summary>
         [Fact]
         public void TestAddExceptionMethodWithValidException()
@@ -235,7 +236,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test add exception method with null exception
+        ///     Tests that test add exception method with null exception
         /// </summary>
         [Fact]
         public void TestAddExceptionMethodWithNullException()
@@ -249,7 +250,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test add exception method with maximum exceptions count exceeded
+        ///     Tests that test add exception method with maximum exceptions count exceeded
         /// </summary>
         [Fact]
         public void TestAddExceptionMethodWithMaximumExceptionsCountExceeded()
@@ -266,6 +267,5 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Assert
             Assert.Throws<JsonException>(() => options.AddException(ex2));
         }
-
     }
 }

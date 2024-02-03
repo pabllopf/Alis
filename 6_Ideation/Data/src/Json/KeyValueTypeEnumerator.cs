@@ -33,73 +33,73 @@ using System.Reflection;
 namespace Alis.Core.Aspect.Data.Json
 {
     /// <summary>
-        ///     The key value type enumerator class
+    ///     The key value type enumerator class
+    /// </summary>
+    /// <seealso cref="IDictionaryEnumerator" />
+    internal sealed class KeyValueTypeEnumerator : IDictionaryEnumerator
+    {
+        /// <summary>
+        ///     The enumerator
         /// </summary>
-        /// <seealso cref="IDictionaryEnumerator" />
-        internal sealed class KeyValueTypeEnumerator : IDictionaryEnumerator
+        private readonly IEnumerator _enumerator;
+
+        /// <summary>
+        ///     The key prop
+        /// </summary>
+        private PropertyInfo _keyProp;
+
+        /// <summary>
+        ///     The value prop
+        /// </summary>
+        private PropertyInfo _valueProp;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="KeyValueTypeEnumerator" /> class
+        /// </summary>
+        /// <param name="value">The value</param>
+        public KeyValueTypeEnumerator(object value) => _enumerator = ((IEnumerable) value).GetEnumerator();
+
+        /// <summary>
+        ///     Gets the value of the entry
+        /// </summary>
+        public DictionaryEntry Entry
         {
-            /// <summary>
-            ///     The enumerator
-            /// </summary>
-            private readonly IEnumerator _enumerator;
-
-            /// <summary>
-            ///     The key prop
-            /// </summary>
-            private PropertyInfo _keyProp;
-
-            /// <summary>
-            ///     The value prop
-            /// </summary>
-            private PropertyInfo _valueProp;
-
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="KeyValueTypeEnumerator" /> class
-            /// </summary>
-            /// <param name="value">The value</param>
-            public KeyValueTypeEnumerator(object value) => _enumerator = ((IEnumerable) value).GetEnumerator();
-
-            /// <summary>
-            ///     Gets the value of the entry
-            /// </summary>
-            public DictionaryEntry Entry
+            get
             {
-                get
+                if (_keyProp == null)
                 {
-                    if (_keyProp == null)
-                    {
-                        _keyProp = _enumerator.Current.GetType().GetProperty("Key");
-                        _valueProp = _enumerator.Current.GetType().GetProperty("Value");
-                    }
-
-                    return new DictionaryEntry(_keyProp.GetValue(_enumerator.Current, null), _valueProp.GetValue(_enumerator.Current, null));
+                    _keyProp = _enumerator.Current.GetType().GetProperty("Key");
+                    _valueProp = _enumerator.Current.GetType().GetProperty("Value");
                 }
+
+                return new DictionaryEntry(_keyProp.GetValue(_enumerator.Current, null), _valueProp.GetValue(_enumerator.Current, null));
             }
-
-            /// <summary>
-            ///     Gets the value of the key
-            /// </summary>
-            public object Key => Entry.Key;
-
-            /// <summary>
-            ///     Gets the value of the value
-            /// </summary>
-            public object Value => Entry.Value;
-
-            /// <summary>
-            ///     Gets the value of the current
-            /// </summary>
-            public object Current => Entry;
-
-            /// <summary>
-            ///     Describes whether this instance move next
-            /// </summary>
-            /// <returns>The bool</returns>
-            public bool MoveNext() => _enumerator.MoveNext();
-
-            /// <summary>
-            ///     Resets this instance
-            /// </summary>
-            public void Reset() => _enumerator.Reset();
         }
+
+        /// <summary>
+        ///     Gets the value of the key
+        /// </summary>
+        public object Key => Entry.Key;
+
+        /// <summary>
+        ///     Gets the value of the value
+        /// </summary>
+        public object Value => Entry.Value;
+
+        /// <summary>
+        ///     Gets the value of the current
+        /// </summary>
+        public object Current => Entry;
+
+        /// <summary>
+        ///     Describes whether this instance move next
+        /// </summary>
+        /// <returns>The bool</returns>
+        public bool MoveNext() => _enumerator.MoveNext();
+
+        /// <summary>
+        ///     Resets this instance
+        /// </summary>
+        public void Reset() => _enumerator.Reset();
+    }
 }

@@ -38,7 +38,7 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
     public class NotNullExceptionTest
     {
         /// <summary>
-        /// Tests that not null exception with message should set message
+        ///     Tests that not null exception with message should set message
         /// </summary>
         [Fact]
         public void NotNullException_WithMessage_ShouldSetMessage()

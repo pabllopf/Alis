@@ -61,7 +61,7 @@ namespace Alis.Core.Aspect.Math.Vector
         private Vector3(float value) : this(value, value, value)
         {
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Vector3" /> class
         /// </summary>
@@ -297,7 +297,7 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     separate each element.
         /// </remarks>
         public readonly override string ToString() => ToString("G", CultureInfo.CurrentCulture);
-        
+
         /// <summary>
         ///     Returns the string representation of the current instance using the specified format string to format
         ///     individual elements and the specified format provider to define culture-specific formatting.

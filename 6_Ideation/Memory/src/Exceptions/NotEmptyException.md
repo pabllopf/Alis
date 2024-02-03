@@ -1,9 +1,9 @@
-
 # NotEmptyException Class
 
 ## Description
 
-The `NotEmptyException` class is an exception that is thrown when a value is null or empty. It is part of the `Alis.Core.Aspect.Memory.Exceptions` namespace.
+The `NotEmptyException` class is an exception that is thrown when a value is null or empty. It is part of
+the `Alis.Core.Aspect.Memory.Exceptions` namespace.
 
 ## Usage
 

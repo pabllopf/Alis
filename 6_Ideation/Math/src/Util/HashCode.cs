@@ -465,7 +465,7 @@ namespace Alis.Core.Aspect.Math.Util
         {
             Add(value?.GetHashCode() ?? 0);
         }
-        
+
         /// <summary>
         ///     Adds the value
         /// </summary>

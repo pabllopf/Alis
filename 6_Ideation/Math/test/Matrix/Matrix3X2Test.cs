@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Matrix
 {
     /// <summary>
-    /// The matrix test class
+    ///     The matrix test class
     /// </summary>
     public class Matrix3X2Test
     {
         /// <summary>
-        /// Tests that matrix 3 x 2 constructor should set values correctly
+        ///     Tests that matrix 3 x 2 constructor should set values correctly
         /// </summary>
         [Fact]
         public void Matrix3X2_Constructor_ShouldSetValuesCorrectly()
@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 2 operator add should return correct result
+        ///     Tests that matrix 3 x 2 operator add should return correct result
         /// </summary>
         [Fact]
         public void Matrix3X2_OperatorAdd_ShouldReturnCorrectResult()
@@ -73,7 +73,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 2 operator subtract should return correct result
+        ///     Tests that matrix 3 x 2 operator subtract should return correct result
         /// </summary>
         [Fact]
         public void Matrix3X2_OperatorSubtract_ShouldReturnCorrectResult()
@@ -91,7 +91,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 2 operator multiply should return correct result
+        ///     Tests that matrix 3 x 2 operator multiply should return correct result
         /// </summary>
         [Fact]
         public void Matrix3X2_OperatorMultiply_ShouldReturnCorrectResult()
@@ -109,7 +109,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 2 operator negate should return correct result
+        ///     Tests that matrix 3 x 2 operator negate should return correct result
         /// </summary>
         [Fact]
         public void Matrix3X2_OperatorNegate_ShouldReturnCorrectResult()
@@ -126,7 +126,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 2 get determinant should return correct result
+        ///     Tests that matrix 3 x 2 get determinant should return correct result
         /// </summary>
         [Fact]
         public void Matrix3X2_GetDeterminant_ShouldReturnCorrectResult()
@@ -138,7 +138,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 2 v 2 constructor should set values correctly
+        ///     Tests that matrix 3 x 2 v 2 constructor should set values correctly
         /// </summary>
         [Fact]
         public void Matrix3X2_v2_Constructor_ShouldSetValuesCorrectly()
@@ -154,7 +154,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 2 v 2 operator add should return correct result
+        ///     Tests that matrix 3 x 2 v 2 operator add should return correct result
         /// </summary>
         [Fact]
         public void Matrix3X2_v2_OperatorAdd_ShouldReturnCorrectResult()
@@ -172,7 +172,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 2 v 2 operator subtract should return correct result
+        ///     Tests that matrix 3 x 2 v 2 operator subtract should return correct result
         /// </summary>
         [Fact]
         public void Matrix3X2_v2_OperatorSubtract_ShouldReturnCorrectResult()
@@ -190,7 +190,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 2 v 2 operator multiply should return correct result
+        ///     Tests that matrix 3 x 2 v 2 operator multiply should return correct result
         /// </summary>
         [Fact]
         public void Matrix3X2_v2_OperatorMultiply_ShouldReturnCorrectResult()
@@ -208,7 +208,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 2 v 2 operator negate should return correct result
+        ///     Tests that matrix 3 x 2 v 2 operator negate should return correct result
         /// </summary>
         [Fact]
         public void Matrix3X2_v2_OperatorNegate_ShouldReturnCorrectResult()
@@ -225,7 +225,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 2 v 2 get determinant should return correct result
+        ///     Tests that matrix 3 x 2 v 2 get determinant should return correct result
         /// </summary>
         [Fact]
         public void Matrix3X2_v2_GetDeterminant_ShouldReturnCorrectResult()
@@ -238,7 +238,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
 
 
         /// <summary>
-        /// Tests that test matrix creation
+        ///     Tests that test matrix creation
         /// </summary>
         [Fact]
         public void TestMatrixCreation()
@@ -253,7 +253,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test matrix addition
+        ///     Tests that test matrix addition
         /// </summary>
         [Fact]
         public void TestMatrixAddition()
@@ -269,9 +269,9 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(7, result.M31);
             Assert.Equal(7, result.M32);
         }
-        
+
         /// <summary>
-        /// Tests that test matrix scale
+        ///     Tests that test matrix scale
         /// </summary>
         [Fact]
         public void TestMatrixScale()
@@ -288,7 +288,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test matrix subtraction
+        ///     Tests that test matrix subtraction
         /// </summary>
         [Fact]
         public void TestMatrixSubtraction()
@@ -306,7 +306,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test matrix negation
+        ///     Tests that test matrix negation
         /// </summary>
         [Fact]
         public void TestMatrixNegation()
@@ -323,7 +323,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test matrix translation
+        ///     Tests that test matrix translation
         /// </summary>
         [Fact]
         public void TestMatrixTranslation()
@@ -337,7 +337,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test matrix determinant
+        ///     Tests that test matrix determinant
         /// </summary>
         [Fact]
         public void TestMatrixDeterminant()
@@ -346,9 +346,9 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             float determinant = matrix.GetDeterminant();
             Assert.Equal(-2, determinant);
         }
-        
+
         /// <summary>
-        /// Tests that test create scale with vector
+        ///     Tests that test create scale with vector
         /// </summary>
         [Fact]
         public void TestCreateScaleWithVector()
@@ -361,7 +361,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test create scale with xy
+        ///     Tests that test create scale with xy
         /// </summary>
         [Fact]
         public void TestCreateScaleWithXY()
@@ -373,7 +373,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test get determinant
+        ///     Tests that test get determinant
         /// </summary>
         [Fact]
         public void TestGetDeterminant()
@@ -385,7 +385,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test to string
+        ///     Tests that test to string
         /// </summary>
         [Fact]
         public void TestToString()
@@ -395,9 +395,9 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
 
             Assert.Equal("{ {M11:1 M12:2} {M21:3 M22:4} {M31:5 M32:6} }", matrixString);
         }
-        
+
         /// <summary>
-        /// Tests that test matrix subtraction v 2
+        ///     Tests that test matrix subtraction v 2
         /// </summary>
         [Fact]
         public void TestMatrixSubtraction_v2()
@@ -415,7 +415,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test matrix negation v 2
+        ///     Tests that test matrix negation v 2
         /// </summary>
         [Fact]
         public void TestMatrixNegation_v2()
@@ -432,7 +432,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test matrix addition v 2
+        ///     Tests that test matrix addition v 2
         /// </summary>
         [Fact]
         public void TestMatrixAddition_v2()
@@ -448,9 +448,9 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(7, result.M31);
             Assert.Equal(7, result.M32);
         }
-        
+
         /// <summary>
-        /// Tests that test get hash code
+        ///     Tests that test get hash code
         /// </summary>
         [Fact]
         public void TestGetHashCode()
@@ -461,7 +461,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test equals
+        ///     Tests that test equals
         /// </summary>
         [Fact]
         public void TestEquals()
@@ -472,7 +472,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test not equals
+        ///     Tests that test not equals
         /// </summary>
         [Fact]
         public void TestNotEquals()
@@ -481,9 +481,9 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix3X2 matrix2 = new Matrix3X2(6, 5, 4, 3, 2, 1);
             Assert.False(matrix1.Equals(matrix2));
         }
-        
+
         /// <summary>
-        /// Tests that test matrix equality
+        ///     Tests that test matrix equality
         /// </summary>
         [Fact]
         public void TestMatrixEquality()
@@ -494,7 +494,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test matrix inequality
+        ///     Tests that test matrix inequality
         /// </summary>
         [Fact]
         public void TestMatrixInequality()
@@ -503,9 +503,9 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix3X2 matrix2 = new Matrix3X2(6, 5, 4, 3, 2, 1);
             Assert.True(matrix1 != matrix2);
         }
-        
+
         /// <summary>
-        /// Tests that test equals with null object
+        ///     Tests that test equals with null object
         /// </summary>
         [Fact]
         public void TestEqualsWithNullObject()
@@ -515,7 +515,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test equals with itself
+        ///     Tests that test equals with itself
         /// </summary>
         [Fact]
         public void TestEqualsWithItself()
@@ -525,7 +525,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test equals with same values
+        ///     Tests that test equals with same values
         /// </summary>
         [Fact]
         public void TestEqualsWithSameValues()
@@ -536,7 +536,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test equals with different values
+        ///     Tests that test equals with different values
         /// </summary>
         [Fact]
         public void TestEqualsWithDifferentValues()

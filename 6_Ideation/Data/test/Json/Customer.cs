@@ -36,7 +36,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// </summary>
     public class Customer
     {
-        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Customer" /> class
         /// </summary>

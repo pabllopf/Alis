@@ -40,5 +40,4 @@ namespace Alis.Core.Ecs.Entity
     public interface IEntity : IEnabled, IIdentifier, IRuntime
     {
     }
-    
 }

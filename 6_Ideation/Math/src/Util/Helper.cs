@@ -118,9 +118,9 @@ namespace Alis.Core.Aspect.Math.Util
             return (float) result;
         }
 
-        
+
         /// <summary>
-        /// Lerp the value 1
+        ///     Lerp the value 1
         /// </summary>
         /// <param name="value1">The value</param>
         /// <param name="value2">The value</param>

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IsNotNullAttributeTest.cs
+//  File:IListObject.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,29 +27,44 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Memory.Attributes;
-using Alis.Core.Aspect.Memory.Exceptions;
-using Xunit;
+using System.Collections;
 
-namespace Alis.Core.Aspect.Memory.Test.Attributes
+namespace Alis.Core.Aspect.Data.Json
 {
     /// <summary>
-    ///     The not null attribute test class
+    ///     The list object class
     /// </summary>
-    public class IsNotNullAttributeTest
+    /// <seealso cref="ListObject" />
+    internal sealed class CustomListObject : ListObject
     {
         /// <summary>
-        ///     Tests that validate with null value should throw exception
+        ///     The list
         /// </summary>
-        [Fact]
-        public void Validate_WithNullValue_ShouldThrowException()
-        {
-            // Arrange
-            IsNotNullAttribute attribute = new IsNotNullAttribute();
-            object nullValue = null;
+        private IList _list;
 
-            // Act and Assert
-            Assert.Throws<NotNullException>(() => attribute.Validate(null, nameof(nullValue)));
+        /// <summary>
+        ///     Gets or sets the value of the list
+        /// </summary>
+        public override object List
+        {
+            get => base.List;
+            set
+            {
+                base.List = value;
+                _list = (IList) value;
+            }
         }
+
+        /// <summary>
+        ///     Clears this instance
+        /// </summary>
+        public override void Clear() => _list.Clear();
+
+        /// <summary>
+        ///     Adds the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <param name="options">The options</param>
+        public override void Add(object value, JsonOptions options = null) => _list.Add(value);
     }
 }

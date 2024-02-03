@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NotZeroAttributeTest.cs
+//  File:IsNotZeroAttributeTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
     public class IsNotZeroAttributeTest
     {
         /// <summary>
-        /// Tests that validate with value is zero should throw exception
+        ///     Tests that validate with value is zero should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithValueIsZero_ShouldThrowException()

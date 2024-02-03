@@ -30,7 +30,8 @@ The full path of the asset if found; otherwise, an empty string.
 
 ## Usage
 
-The `AssetManager` class is typically used to find the path of an asset in the "Assets" directory or its subdirectories. Here is an example of how to use the `Find` method:
+The `AssetManager` class is typically used to find the path of an asset in the "Assets" directory or its subdirectories.
+Here is an example of how to use the `Find` method:
 
 ```csharp
 string assetName = "example.txt";
