@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
 namespace Alis.Core.Aspect.Data.Resource
@@ -42,6 +43,7 @@ namespace Alis.Core.Aspect.Data.Resource
         /// </summary>
         /// <param name="assetName">The asset name.</param>
         /// <returns>The full path of the asset if found; otherwise, an empty string.</returns>
+        [ExcludeFromCodeCoverage]
         public static string Find(string assetName)
         {
             // Check if the asset name is null
