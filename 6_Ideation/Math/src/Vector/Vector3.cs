@@ -297,26 +297,7 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     separate each element.
         /// </remarks>
         public readonly override string ToString() => ToString("G", CultureInfo.CurrentCulture);
-
-        /// <summary>
-        ///     Returns the string representation of the current instance using the specified format string to format
-        ///     individual elements.
-        /// </summary>
-        /// <param name="format">A standard or custom numeric format string that defines the format of individual elements.</param>
-        /// <returns>The string representation of the current instance.</returns>
-        /// <remarks>
-        ///     This method returns a string in which each element of the vector is formatted using <paramref name="format" />
-        ///     and the current culture's formatting conventions. The "&lt;" and "&gt;" characters are used to begin and end the
-        ///     string, and the current culture's <see cref="System.Globalization.NumberFormatInfo.NumberGroupSeparator" />
-        ///     property followed by a space is used to separate each element.
-        /// </remarks>
-        /// <related type="Article" href="/dotnet/standard/base-types/standard-numeric-format-strings">
-        ///     Standard Numeric Format
-        ///     Strings
-        /// </related>
-        /// <related type="Article" href="/dotnet/standard/base-types/custom-numeric-format-strings">Custom Numeric Format Strings</related>
-        public readonly string ToString(string format) => ToString(format, CultureInfo.CurrentCulture);
-
+        
         /// <summary>
         ///     Returns the string representation of the current instance using the specified format string to format
         ///     individual elements and the specified format provider to define culture-specific formatting.

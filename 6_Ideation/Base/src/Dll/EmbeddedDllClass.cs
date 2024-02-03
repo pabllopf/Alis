@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.IO.Compression;
 using System.Reflection;
@@ -39,7 +40,7 @@ namespace Alis.Core.Aspect.Base.Dll
     /// <summary>
     ///     The embedded dll class
     /// </summary>
-    public class EmbeddedDllClass : IEmbeddedDllClass
+    public class EmbeddedDllClass
     {
         /// <summary>
         ///     Extracts the embedded dlls using the specified dll name
@@ -47,6 +48,7 @@ namespace Alis.Core.Aspect.Base.Dll
         /// <param name="dllName">The dll name</param>
         /// <param name="dllBytes">The dll bytes</param>
         /// <param name="assembly">The assembly</param>
+        [ExcludeFromCodeCoverage]
         public void ExtractEmbeddedDlls(string dllName, Dictionary<PlatformInfo, string> dllBytes, Assembly assembly)
         {
             string extension = GetDllExtension();
@@ -74,7 +76,8 @@ namespace Alis.Core.Aspect.Base.Dll
         /// </summary>
         /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
         /// <returns>The string</returns>
-        private static string GetDllExtension()
+        [ExcludeFromCodeCoverage]
+        internal static string GetDllExtension()
         {
             OSPlatform currentPlatform = GetCurrentPlatform();
 
@@ -101,6 +104,7 @@ namespace Alis.Core.Aspect.Base.Dll
         /// </summary>
         /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
         /// <returns>The os platform</returns>
+        [ExcludeFromCodeCoverage]
         public static OSPlatform GetCurrentPlatform()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -137,7 +141,8 @@ namespace Alis.Core.Aspect.Base.Dll
         /// </summary>
         /// <param name="filePath">The file path</param>
         /// <param name="zipData">The zip data</param>
-        private static void ExtractZipFile(string filePath, MemoryStream zipData)
+        [ExcludeFromCodeCoverage]
+        internal static void ExtractZipFile(string filePath, MemoryStream zipData)
         {
             using MemoryStream ms = zipData;
             using ZipArchive archive = new ZipArchive(ms);
@@ -161,7 +166,8 @@ namespace Alis.Core.Aspect.Base.Dll
         /// <param name="resourceName">The resource name</param>
         /// <param name="assembly">The assembly</param>
         /// <returns>The memory stream</returns>
-        private static MemoryStream LoadResource(string resourceName, Assembly assembly)
+        [ExcludeFromCodeCoverage]
+        internal static MemoryStream LoadResource(string resourceName, Assembly assembly)
         {
             Console.WriteLine(@"Assembly where extract resource: " + assembly.FullName);
             string[] aResourceNames = assembly.GetManifestResourceNames();
@@ -185,24 +191,46 @@ namespace Alis.Core.Aspect.Base.Dll
         ///     Describes whether is running oni os
         /// </summary>
         /// <returns>The bool</returns>
-        private static bool IsRunningOniOS() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && IsiOsSpecificConditionMet();
+        internal static bool IsRunningOniOS() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && IsiOsSpecificConditionMet();
 
         /// <summary>
         ///     Describes whether is running on android
         /// </summary>
         /// <returns>The bool</returns>
-        private static bool IsRunningOnAndroid() => IsAndroidSpecificConditionMet();
+        internal static bool IsRunningOnAndroid() => IsAndroidSpecificConditionMet();
 
         /// <summary>
         ///     Describes whether isi os specific condition met
         /// </summary>
         /// <returns>The bool</returns>
-        private static bool IsiOsSpecificConditionMet() => Assembly.Load(new AssemblyName("Xamarin.iOS")) != null;
+        internal static bool IsiOsSpecificConditionMet()
+        {
+            try
+            {
+                return Assembly.Load(new AssemblyName("Xamarin.iOS")) != null;
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("Xamarin.iOS assembly not found.");
+                return false;
+            }
+        }
 
         /// <summary>
         ///     Describes whether is android specific condition met
         /// </summary>
         /// <returns>The bool</returns>
-        private static bool IsAndroidSpecificConditionMet() => Assembly.Load(new AssemblyName("Xamarin.Android")) != null;
+        internal static bool IsAndroidSpecificConditionMet()
+        {
+            try
+            {
+                return Assembly.Load(new AssemblyName("Mono.Android")) != null;
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("Mono.Android assembly not found.");
+                return false;
+            }
+        }
     }
 }

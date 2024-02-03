@@ -401,19 +401,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             Assert.Equal("<1. 2. 3>", result);
         }
-
-        /// <summary>
-        /// Tests that to string with format should format correctly
-        /// </summary>
-        [Fact]
-        public void ToString_WithFormat_ShouldFormatCorrectly()
-        {
-            Vector3 vector = new Vector3(1.123456f, 2.123456f, 3.123456f);
-            string result = vector.ToString("F2");
-
-            Assert.Equal("<1,12. 2,12. 3,12>", result);
-        }
-
+        
         /// <summary>
         /// Tests that to string with format and culture should format correctly
         /// </summary>
