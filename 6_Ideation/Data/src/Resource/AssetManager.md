@@ -1,10 +1,6 @@
 # AssetManager Class
 
-The `AssetManager` class is a static class that provides methods to manage and find assets in your application.
-
-## Properties
-
-- `AssetPath`: A string that represents the path to the "Assets" directory.
+The `AssetManager` class is a static class that provides a method to find assets in your application.
 
 ## Methods
 
@@ -16,7 +12,7 @@ The `Find` method takes a string parameter `assetName` and returns a string.
 
 #### Parameters
 
-- `assetName`: The name of the asset to find. This parameter cannot be null or contain invalid characters.
+- `assetName`: The name of the asset to find. This parameter cannot be null, empty, contain invalid characters, or lack an extension.
 
 #### Returns
 
@@ -25,7 +21,7 @@ The full path of the asset if found; otherwise, an empty string.
 #### Exceptions
 
 - `ArgumentNullException`: Thrown when the `assetName` is null.
-- `ArgumentException`: Thrown when the `assetName` is empty or contains invalid characters.
+- `ArgumentException`: Thrown when the `assetName` is empty, contains invalid characters, or lacks an extension.
 - `InvalidOperationException`: Thrown when multiple files with the same name are found.
 
 ## Usage
