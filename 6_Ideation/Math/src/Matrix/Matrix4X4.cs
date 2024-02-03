@@ -29,8 +29,6 @@
 
 using System;
 using System.Runtime.CompilerServices;
-using Alis.Core.Aspect.Math.Util;
-using Alis.Core.Aspect.Math.Vector;
 using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
 
 namespace Alis.Core.Aspect.Math.Matrix
@@ -41,31 +39,10 @@ namespace Alis.Core.Aspect.Math.Matrix
     public struct Matrix4X4 : IEquatable<Matrix4X4>
     {
         /// <summary>
-        ///     The hash
-        /// </summary>
-        private readonly HashCode hash;
-
-        /// <summary>
         ///     The hash code
         /// </summary>
         private readonly int hashCode;
-
-
-        /// <summary>
-        ///     The billboard epsilon
-        /// </summary>
-        private const float BillboardEpsilon = 1e-4f;
-
-        /// <summary>
-        ///     The pi
-        /// </summary>
-        private const float BillboardMinAngle = 1.0f - 0.1f * (MathF.Pi / 180.0f); // 0.1 degrees
-
-        /// <summary>
-        ///     The decompose epsilon
-        /// </summary>
-        private const float DecomposeEpsilon = 0.0001f;
-
+        
         /// <summary>The first element of the first row.</summary>
         public float M11;
 
@@ -156,59 +133,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             M43 = m43;
             M44 = m44;
 
-            hash = new HashCode();
-
-            hash.Add(M11);
-            hash.Add(M12);
-            hash.Add(M13);
-            hash.Add(M14);
-            hash.Add(M21);
-            hash.Add(M22);
-            hash.Add(M23);
-            hash.Add(M24);
-            hash.Add(M31);
-            hash.Add(M32);
-            hash.Add(M33);
-            hash.Add(M34);
-            hash.Add(M41);
-            hash.Add(M42);
-            hash.Add(M43);
-            hash.Add(M44);
-
-            hashCode = hash.ToHashCode();
-        }
-
-        /// <summary>Creates a <see cref="Matrix4X4" /> object from a specified <see cref="Matrix3X2" /> object.</summary>
-        /// <param name="value">A 3x2 matrix.</param>
-        /// <remarks>
-        ///     This constructor creates a 4x4 matrix whose <see cref="Matrix4X4.M13" />, <see cref="Matrix4X4.M14" />,
-        ///     <see cref="Matrix4X4.M23" />, <see cref="Matrix4X4.M24" />, <see cref="Matrix4X4.M31" />,
-        ///     <see cref="Matrix4X4.M32" />, <see cref="Matrix4X4.M34" />, and <see cref="Matrix4X4.M43" /> components are
-        ///     zero, and whose <see cref="Matrix4X4.M33" /> and <see cref="Matrix4X4.M44" /> components are one.
-        /// </remarks>
-        public Matrix4X4(Matrix3X2 value)
-        {
-            M11 = value.M11;
-            M12 = value.M12;
-            M13 = 0f;
-            M14 = 0f;
-
-            M21 = value.M21;
-            M22 = value.M22;
-            M23 = 0f;
-            M24 = 0f;
-
-            M31 = 0f;
-            M32 = 0f;
-            M33 = 1f;
-            M34 = 0f;
-
-            M41 = value.M31;
-            M42 = value.M32;
-            M43 = 0f;
-            M44 = 1f;
-
-            hash = new HashCode();
+            HashCode hash = new HashCode();
 
             hash.Add(M11);
             hash.Add(M12);
@@ -239,18 +164,6 @@ namespace Alis.Core.Aspect.Math.Matrix
             0f, 0f, 1f, 0f,
             0f, 0f, 0f, 1f
         );
-
-        /// <summary>Indicates whether the current matrix is the identity matrix.</summary>
-        /// <value><see langword="true" /> if the current matrix is the identity matrix; otherwise, <see langword="false" />.</value>
-        public bool IsIdentity => (M11 == 1f) && (M22 == 1f) && (M33 == 1f) && (M44 == 1f) && // Check diagonal element first for early out.
-                                  (M12 == 0f) && (M13 == 0f) && (M14 == 0f) &&
-                                  (M21 == 0f) && (M23 == 0f) && (M24 == 0f) &&
-                                  (M31 == 0f) && (M32 == 0f) && (M34 == 0f) &&
-                                  (M41 == 0f) && (M42 == 0f) && (M43 == 0f);
-
-        /// <summary>Gets or sets the translation component of this matrix.</summary>
-        /// <value>The translation component of the current instance.</value>
-        public Vector3 Translation => new Vector3(M41, M42, M43);
 
         /// <summary>Creates a customized orthographic projection matrix.</summary>
         /// <param name="left">The minimum X-value of the view volume.</param>
@@ -317,10 +230,10 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     <see langword="false" />.
         /// </returns>
         /// <remarks>Two matrices are equal if all their corresponding elements are equal.</remarks>
-        public static bool operator ==(Matrix4X4 value1, Matrix4X4 value2) => (value1.M11 == value2.M11) && (value1.M22 == value2.M22) && (value1.M33 == value2.M33) && (value1.M44 == value2.M44) && // Check diagonal element first for early out.
-                                                                              (value1.M12 == value2.M12) && (value1.M13 == value2.M13) && (value1.M14 == value2.M14) && (value1.M21 == value2.M21) &&
-                                                                              (value1.M23 == value2.M23) && (value1.M24 == value2.M24) && (value1.M31 == value2.M31) && (value1.M32 == value2.M32) &&
-                                                                              (value1.M34 == value2.M34) && (value1.M41 == value2.M41) && (value1.M42 == value2.M42) && (value1.M43 == value2.M43);
+        public static bool operator ==(Matrix4X4 value1, Matrix4X4 value2) => (System.Math.Abs(value1.M11 - value2.M11) < 0.1F) && (System.Math.Abs(value1.M22 - value2.M22) < 0.1F) && (System.Math.Abs(value1.M33 - value2.M33) < 0.1F && (System.Math.Abs(value1.M44 - value2.M44) < 0.1F) && // Check diagonal element first for early out.
+                                                                              (System.Math.Abs(value1.M12 - value2.M12) < 0.1F) && (System.Math.Abs(value1.M13 - value2.M13) < 0.1F) && (System.Math.Abs(value1.M14 - value2.M14) < 0.1F) && (System.Math.Abs(value1.M21 - value2.M21) < 0.1F) &&
+                                                                              System.Math.Abs(value1.M23 - value2.M23) < 0.1F && (System.Math.Abs(value1.M24 - value2.M24) < 0.1F) && (System.Math.Abs(value1.M31 - value2.M31) < 0.1F) && (System.Math.Abs(value1.M32 - value2.M32) < 0.1F) &&
+                                                                              (System.Math.Abs(value1.M34 - value2.M34) < 0.1F) && (System.Math.Abs(value1.M41 - value2.M41) < 0.1F) && (System.Math.Abs(value1.M42 - value2.M42) < 0.1F) && (System.Math.Abs(value1.M43 - value2.M43) < 0.1F));
 
         /// <summary>Returns a value that indicates whether the specified matrices are not equal.</summary>
         /// <param name="value1">The first matrix to compare.</param>
@@ -329,18 +242,10 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     <see langword="true" /> if <paramref name="value1" /> and <paramref name="value2" /> are not equal; otherwise,
         ///     <see langword="false" />.
         /// </returns>
-        public static bool operator !=(Matrix4X4 value1, Matrix4X4 value2) => value1.M11 != value2.M11 || value1.M12 != value2.M12 || value1.M13 != value2.M13 || value1.M14 != value2.M14 ||
-                                                                              value1.M21 != value2.M21 || value1.M22 != value2.M22 || value1.M23 != value2.M23 || value1.M24 != value2.M24 ||
-                                                                              value1.M31 != value2.M31 || value1.M32 != value2.M32 || value1.M33 != value2.M33 || value1.M34 != value2.M34 ||
-                                                                              value1.M41 != value2.M41 || value1.M42 != value2.M42 || value1.M43 != value2.M43 || value1.M44 != value2.M44;
-
-
-        /// <summary>Adds each element in one matrix with its corresponding element in a second matrix.</summary>
-        /// <param name="value1">The first matrix.</param>
-        /// <param name="value2">The second matrix.</param>
-        /// <returns>The matrix that contains the summed values of <paramref name="value1" /> and <paramref name="value2" />.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Matrix4X4 Add(Matrix4X4 value1, Matrix4X4 value2) => value1 + value2;
+        public static bool operator !=(Matrix4X4 value1, Matrix4X4 value2) => !(System.Math.Abs(value1.M11 - value2.M11) > 0.1F) && !(System.Math.Abs(value1.M12 - value2.M12) > 0.1F) && !(System.Math.Abs(value1.M13 - value2.M13) > 0.1F) && !(System.Math.Abs(value1.M14 - value2.M14) > 0.1F) &&
+                                                                              !(System.Math.Abs(value1.M21 - value2.M21) > 0.1F) && !(System.Math.Abs(value1.M22 - value2.M22) > 0.1F) && !(System.Math.Abs(value1.M23 - value2.M23) > 0.1F) && !(System.Math.Abs(value1.M24 - value2.M24) > 0.1F) &&
+                                                                              !(System.Math.Abs(value1.M31 - value2.M31) > 0.1F) && !(System.Math.Abs(value1.M32 - value2.M32) > 0.1F) && !(System.Math.Abs(value1.M33 - value2.M33) > 0.1F) && !(System.Math.Abs(value1.M34 - value2.M34) > 0.1F) &&
+                                                                              !(System.Math.Abs(value1.M41 - value2.M41) > 0.1F) && !(System.Math.Abs(value1.M42 - value2.M42) > 0.1F) && !(System.Math.Abs(value1.M43 - value2.M43) > 0.1F) && !(System.Math.Abs(value1.M44 - value2.M44) > 0.1F);
 
 
         /// <summary>Creates a matrix for rotating points around the Z axis.</summary>
@@ -348,8 +253,6 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <returns>The rotation matrix.</returns>
         public static Matrix4X4 CreateRotationZ(float radians)
         {
-            Matrix4X4 result = Identity;
-
             float c = MathF.Cos(radians);
             float s = MathF.Sin(radians);
 
@@ -357,67 +260,11 @@ namespace Alis.Core.Aspect.Math.Matrix
             // [ -s  c  0  0 ]
             // [  0  0  1  0 ]
             // [  0  0  0  1 ]
-
-            result = new Matrix4X4(
+            Matrix4X4 result = new Matrix4X4(
                 c, s, 0, 0,
                 -s, c, 0, 0,
                 0, 0, 1, 0,
                 0, 0, 0, 1);
-
-            return result;
-        }
-
-        /// <summary>Transforms the specified matrix by applying the specified Quaternion rotation.</summary>
-        /// <param name="value">The matrix to transform.</param>
-        /// <param name="rotation">The rotation t apply.</param>
-        /// <returns>The transformed matrix.</returns>
-        public static Matrix4X4 Transform(Matrix4X4 value, Quaternion rotation)
-        {
-            // Compute rotation matrix.
-            float x2 = rotation.X + rotation.X;
-            float y2 = rotation.Y + rotation.Y;
-            float z2 = rotation.Z + rotation.Z;
-
-            float wx2 = rotation.W * x2;
-            float wy2 = rotation.W * y2;
-            float wz2 = rotation.W * z2;
-            float xx2 = rotation.X * x2;
-            float xy2 = rotation.X * y2;
-            float xz2 = rotation.X * z2;
-            float yy2 = rotation.Y * y2;
-            float yz2 = rotation.Y * z2;
-            float zz2 = rotation.Z * z2;
-
-            float q11 = 1.0f - yy2 - zz2;
-            float q21 = xy2 - wz2;
-            float q31 = xz2 + wy2;
-
-            float q12 = xy2 + wz2;
-            float q22 = 1.0f - xx2 - zz2;
-            float q32 = yz2 - wx2;
-
-            float q13 = xz2 - wy2;
-            float q23 = yz2 + wx2;
-            float q33 = 1.0f - xx2 - yy2;
-
-            Matrix4X4 result = new Matrix4X4(
-                value.M11 * q11 + value.M12 * q21 + value.M13 * q31,
-                value.M11 * q12 + value.M12 * q22 + value.M13 * q32,
-                value.M11 * q13 + value.M12 * q23 + value.M13 * q33,
-                value.M14,
-                value.M21 * q11 + value.M22 * q21 + value.M23 * q31,
-                value.M21 * q12 + value.M22 * q22 + value.M23 * q32,
-                value.M21 * q13 + value.M22 * q23 + value.M23 * q33,
-                value.M24,
-                value.M31 * q11 + value.M32 * q21 + value.M33 * q31,
-                value.M31 * q12 + value.M32 * q22 + value.M33 * q32,
-                value.M31 * q13 + value.M32 * q23 + value.M33 * q33,
-                value.M34,
-                value.M41 * q11 + value.M42 * q21 + value.M43 * q31,
-                value.M41 * q12 + value.M42 * q22 + value.M43 * q32,
-                value.M41 * q13 + value.M42 * q23 + value.M43 * q33,
-                value.M44
-            );
 
             return result;
         }
@@ -440,57 +287,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="other">The other matrix.</param>
         /// <returns><see langword="true" /> if the two matrices are equal; otherwise, <see langword="false" />.</returns>
         public bool Equals(Matrix4X4 other) => this == other;
-
-        /// <summary>Calculates the determinant of the current 4x4 matrix.</summary>
-        /// <returns>The determinant.</returns>
-        public float GetDeterminant()
-        {
-            // | a b c d |     | f g h |     | e g h |     | e f h |     | e f g |
-            // | e f g h | = a | j k l | - b | i k l | + c | i j l | - d | i j k |
-            // | i j k l |     | n o p |     | m o p |     | m n p |     | m n o |
-            // | m n o p |
-            //
-            //   | f g h |
-            // a | j k l | = a ( f ( kp - lo ) - g ( jp - ln ) + h ( jo - kn ) )
-            //   | n o p |
-            //
-            //   | e g h |
-            // b | i k l | = b ( e ( kp - lo ) - g ( ip - lm ) + h ( io - km ) )
-            //   | m o p |
-            //
-            //   | e f h |
-            // c | i j l | = c ( e ( jp - ln ) - f ( ip - lm ) + h ( in - jm ) )
-            //   | m n p |
-            //
-            //   | e f g |
-            // d | i j k | = d ( e ( jo - kn ) - f ( io - km ) + g ( in - jm ) )
-            //   | m n o |
-            //
-            // Cost of operation
-            // 17 adds and 28 muls.
-            //
-            // add: 6 + 8 + 3 = 17
-            // mul: 12 + 16 = 28
-
-            float a = M11, b = M12, c = M13, d = M14;
-            float e = M21, f = M22, g = M23, h = M24;
-            float i = M31, j = M32, k = M33, l = M34;
-            float m = M41, n = M42, o = M43, p = M44;
-
-            float kpLo = k * p - l * o;
-            float jpLn = j * p - l * n;
-            float joKn = j * o - k * n;
-            float ipLm = i * p - l * m;
-            float ioKm = i * o - k * m;
-            float inJm = i * n - j * m;
-
-            return a * (f * kpLo - g * jpLn + h * joKn) -
-                   b * (e * kpLo - g * ipLm + h * ioKm) +
-                   c * (e * jpLn - f * ipLm + h * inJm) -
-                   d * (e * joKn - f * ioKm + g * inJm);
-        }
-
-
+        
         /// <summary>Returns the hash code for this instance.</summary>
         /// <returns>The hash code.</returns>
         public override int GetHashCode() => hashCode;
@@ -509,5 +306,6 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </remarks>
         public override string ToString() =>
             $"{{ {{M11:{M11} M12:{M12} M13:{M13} M14:{M14}}} {{M21:{M21} M22:{M22} M23:{M23} M24:{M24}}} {{M31:{M31} M32:{M32} M33:{M33} M34:{M34}}} {{M41:{M41} M42:{M42} M43:{M43} M44:{M44}}} }}";
+        
     }
 }

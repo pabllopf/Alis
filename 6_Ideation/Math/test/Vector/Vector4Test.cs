@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Transform.cs
+//  File:Vector4Test.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,57 +28,64 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
+using Xunit;
 
-namespace Alis.Core.Aspect.Math
+namespace Alis.Core.Aspect.Math.Test.Vector
 {
     /// <summary>
-    ///     A transform contains translation and rotation. It is used to represent the position and orientation of rigid
-    ///     frames.
+    /// The vector test class
     /// </summary>
-    public struct Transform
+    public class Vector4Test
     {
         /// <summary>
-        ///     The
+        /// Tests that constructor should set values
         /// </summary>
-        public Vector2 Position;
-
-        /// <summary>
-        ///     The scale
-        /// </summary>
-        public Vector2 Scale;
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public Rotation Rotation;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Transform" /> class
-        /// </summary>
-        /// <param name="position">The position</param>
-        /// <param name="rotation">The rotation</param>
-        /// <param name="scale">The scale</param>
-        public Transform(Vector2 position, Rotation rotation, Vector2 scale)
+        [Fact]
+        public void Constructor_ShouldSetValues()
         {
-            Position = position;
-            Rotation = rotation;
-            Scale = scale;
-        }
-        
-        /// <summary>Set this to the identity transform.</summary>
-        public void SetIdentity()
-        {
-            Position = Vector2.Zero;
-            Rotation.SetIdentity();
+            // Arrange
+            float x = 1;
+            float y = 2;
+            float z = 3;
+            float w = 4;
+
+            // Act
+            Vector4 vector = new Vector4(x, y, z, w);
+
+            // Assert
+            Assert.Equal(x, vector.X);
+            Assert.Equal(y, vector.Y);
+            Assert.Equal(z, vector.Z);
+            Assert.Equal(w, vector.W);
         }
 
-        /// <summary>Set this based on the position and angle.</summary>
-        /// <param name="position">The position.</param>
-        /// <param name="angle">The angle.</param>
-        public void Set(Vector2 position, float angle)
+        /// <summary>
+        /// Tests that get should return correct value
+        /// </summary>
+        [Fact]
+        public void Get_ShouldReturnCorrectValue()
         {
-            Position = position;
-            Rotation.Set(angle);
+            // Arrange
+            Vector4 vector = new Vector4(1, 2, 3, 4);
+
+            // Act & Assert
+            Assert.Equal(1, Vector4.Get(vector, 0));
+            Assert.Equal(2, Vector4.Get(vector, 1));
+            Assert.Equal(3, Vector4.Get(vector, 2));
+            Assert.Equal(4, Vector4.Get(vector, 3));
+        }
+
+        /// <summary>
+        /// Tests that get with invalid index should return zero
+        /// </summary>
+        [Fact]
+        public void Get_WithInvalidIndex_ShouldReturnZero()
+        {
+            // Arrange
+            Vector4 vector = new Vector4(1, 2, 3, 4);
+
+            // Act & Assert
+            Assert.Equal(0, Vector4.Get(vector, 4));
         }
     }
 }

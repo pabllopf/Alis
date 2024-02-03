@@ -43,13 +43,13 @@ namespace Alis.Core.Aspect.Math
         /// <summary>
         ///     The angle
         /// </summary>
-        public float angle;
+        public float Angle;
 
         /// <summary>Initialize from an angle in radians</summary>
         /// <param name="angle">Angle in radians</param>
         public Rotation(float angle)
         {
-            this.angle = angle;
+            Angle = angle;
             Sine = (float) System.Math.Sin(angle);
             Cosine = (float) System.Math.Cos(angle);
         }
@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="angle"></param>
         public void Set(float angle)
         {
-            this.angle = angle;
+            Angle = angle;
             //Velcro: Optimization
             if (angle == 0)
             {

@@ -1213,8 +1213,8 @@ namespace Alis.Core.Aspect.Memory.Test
             ValidatorTestClass testClass = new ValidatorTestClass();
             Type callingType = typeof(ValidatorTestClass);
             MethodBase methodBase = typeof(ValidatorTestClass).GetMethod("TestMethod");
-            string name = "testParam";
-            string value = "Test";
+            const string name = "testParam";
+            const string value = "Test";
 
             // Act
             Validator.ValidateParameter(value, name, callingType, methodBase);
