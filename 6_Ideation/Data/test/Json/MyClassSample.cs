@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:MyClassSample.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,39 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Data.Json;
+using System.Collections.Generic;
 
-namespace Alis.Core.Aspect.Data.Sample
+namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    ///     The program class
+    /// The my class sample class
     /// </summary>
-    public static class Program
+    public class MyClassSample
     {
         /// <summary>
-        ///     Main the args
+        /// The my field
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Music musicInfo2 = new Music
-            {
-                Name = "Prince Charming",
-                Artist = "Metallica",
-                Genre = "Rock and Metal",
-                Album = "Reload"
-            };
+        public readonly string MyField = "Sample";
 
-            // This will produce a JSON String
-            string serialized2 = JsonSerializer.Serialize(musicInfo2);
-
-            Console.WriteLine(serialized2);
-
-            // This will produce a copy of the instance you created earlier
-            JsonSerializer.Deserialize<Music>(serialized2);
-
-            Console.WriteLine("deserialized 2");
-        }
+        /// <summary>
+        /// Gets or sets the value of the my property
+        /// </summary>
+        public string MyProperty { get; set; } = "Sample";
     }
 }

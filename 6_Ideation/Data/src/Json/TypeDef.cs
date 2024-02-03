@@ -78,7 +78,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="options">The options</param>
-        private TypeDef(Type type, JsonOptions options)
+        internal TypeDef(Type type, JsonOptions options)
         {
             _type = type;
             IEnumerable<MemberDefinition> members = options.SerializationOptions.HasFlag(JsonSerializationOptions.UseReflection) ? EnumerateDefinitionsUsingReflection(true, type, options) : EnumerateDefinitionsUsingTypeDescriptors(true, type, options);
@@ -95,7 +95,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="key">The key</param>
         /// <returns>The member definition</returns>
-        private MemberDefinition GetDeserializationMember(string key)
+        internal MemberDefinition GetDeserializationMember(string key)
         {
             if (key == null)
                 return null;
@@ -221,7 +221,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type</param>
         /// <param name="options">The options</param>
         /// <returns>The string</returns>
-        private static string GetKey(Type type, JsonOptions options) => type.AssemblyQualifiedName + '\0' + options.GetCacheKey();
+        internal static string GetKey(Type type, JsonOptions options) => type.AssemblyQualifiedName + '\0' + options.GetCacheKey();
 
         /// <summary>
         ///     Unlock the get using the specified type
@@ -229,7 +229,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type</param>
         /// <param name="options">The options</param>
         /// <returns>The ta</returns>
-        private static TypeDef UnlockedGet(Type type, JsonOptions options)
+        internal static TypeDef UnlockedGet(Type type, JsonOptions options)
         {
             string key = GetKey(type, options);
             if (!Defs.TryGetValue(key, out TypeDef ta))
@@ -392,7 +392,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type</param>
         /// <param name="options">The options</param>
         /// <returns>An enumerable of member definition</returns>
-        private static IEnumerable<MemberDefinition> EnumerateDefinitionsUsingReflection(bool serialization, Type type, JsonOptions options)
+        internal static IEnumerable<MemberDefinition> EnumerateDefinitionsUsingReflection(bool serialization, Type type, JsonOptions options)
         {
             foreach (PropertyInfo info in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
@@ -401,11 +401,12 @@ namespace Alis.Core.Aspect.Data.Json
                     JsonAttribute ja = JsonSerializer.GetJsonAttribute(info);
                     if (ja != null)
                     {
-                        if (serialization && ja.IgnoreWhenSerializing)
-                            continue;
-
-                        if (!serialization && ja.IgnoreWhenDeserializing)
-                            continue;
+                        switch (serialization)
+                        {
+                            case true when ja.IgnoreWhenSerializing:
+                            case false when ja.IgnoreWhenDeserializing:
+                                continue;
+                        }
                     }
                 }
 
@@ -430,7 +431,6 @@ namespace Alis.Core.Aspect.Data.Json
                     if (getMethod == null || getMethod.GetParameters().Length > 0)
                         continue;
                 }
-                // else we don't test the set method, as some properties can still be deserialized (collections)
 
                 string name = JsonSerializer.GetObjectName(info, info.Name);
 
@@ -464,11 +464,12 @@ namespace Alis.Core.Aspect.Data.Json
                         JsonAttribute ja = JsonSerializer.GetJsonAttribute(info);
                         if (ja != null)
                         {
-                            if (serialization && ja.IgnoreWhenSerializing)
-                                continue;
-
-                            if (!serialization && ja.IgnoreWhenDeserializing)
-                                continue;
+                            switch (serialization)
+                            {
+                                case true when ja.IgnoreWhenSerializing:
+                                case false when ja.IgnoreWhenDeserializing:
+                                    continue;
+                            }
                         }
                     }
 

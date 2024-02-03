@@ -50,7 +50,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="dt">The dt</param>
         /// <returns>The bool</returns>
-        private static bool IsValid(DateTime dt) => (dt != DateTime.MinValue) && (dt != DateTime.MaxValue) && (dt.Kind != DateTimeKind.Unspecified);
+        internal static bool IsValid(DateTime dt) => (dt != DateTime.MinValue) && (dt != DateTime.MaxValue) && (dt.Kind != DateTimeKind.Unspecified);
 
         /// <summary>
         ///     Changes the type using the specified input
@@ -62,10 +62,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The value</returns>
         public static T ChangeType<T>(object input, T defaultValue = default(T), IFormatProvider provider = null)
         {
-            if (!TryChangeType(input, provider, out T value))
-                return defaultValue;
-
-            return value;
+            return !TryChangeType(input, provider, out T value) ? defaultValue : value;
         }
 
         /// <summary>
@@ -112,10 +109,7 @@ namespace Alis.Core.Aspect.Data.Json
                 if (TryChangeType(defaultValue, conversionType, provider, out object def))
                     return def;
 
-                if (IsReallyValueType(conversionType))
-                    return Activator.CreateInstance(conversionType);
-
-                return null;
+                return IsReallyValueType(conversionType) ? Activator.CreateInstance(conversionType) : null;
             }
 
             return value;
@@ -1032,7 +1026,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The ulong</returns>
-        private static ulong EnumToUInt64(object value)
+        internal static ulong EnumToUInt64(object value)
         {
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
@@ -1053,6 +1047,16 @@ namespace Alis.Core.Aspect.Data.Json
                     return Convert.ToUInt64(value, CultureInfo.InvariantCulture);
 
                 //case TypeCode.String:
+                case TypeCode.Boolean:
+                case TypeCode.Char:
+                case TypeCode.DateTime:
+                case TypeCode.DBNull:
+                case TypeCode.Decimal:
+                case TypeCode.Double:
+                case TypeCode.Empty:
+                case TypeCode.Object:
+                case TypeCode.Single:
+                case TypeCode.String:
                 default:
                     return ChangeType<ulong>(value, 0, CultureInfo.InvariantCulture);
             }
@@ -1067,7 +1071,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        private static bool StringToEnum(Type type, string[] names, Array values, string input, out object value)
+        internal static bool StringToEnum(Type type, string[] names, Array values, string input, out object value)
         {
             for (int i = 0; i < names.Length; i++)
             {
@@ -1128,7 +1132,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <exception cref="ArgumentException">null </exception>
         /// <exception cref="ArgumentException">null </exception>
         /// <returns>The object</returns>
-        private static object EnumToObject(Type enumType, object value)
+        internal static object EnumToObject(Type enumType, object value)
         {
             if (enumType == null)
                 throw new ArgumentNullException(nameof(enumType));
@@ -1174,7 +1178,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="enumType">The enum type</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The value</returns>
-        private static object ToEnum(string text, Type enumType)
+        internal static object ToEnum(string text, Type enumType)
         {
             if (enumType == null)
                 throw new ArgumentNullException(nameof(enumType));
@@ -1193,7 +1197,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException">null </exception>
         /// <returns>The bool</returns>
-        private static bool EnumTryParse(Type type, object input, out object value)
+        internal static bool EnumTryParse(Type type, object input, out object value)
         {
             if (type == null)
                 throw new ArgumentNullException(nameof(type));
@@ -1290,7 +1294,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="elementType">The element type</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The bool</returns>
-        private static bool IsGenericList(Type type, out Type elementType)
+        internal static bool IsGenericList(Type type, out Type elementType)
         {
             if (type == null)
                 throw new ArgumentNullException(nameof(type));
@@ -1311,7 +1315,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The bool</returns>
-        private static bool IsReallyValueType(Type type)
+        internal static bool IsReallyValueType(Type type)
         {
             if (type == null)
                 throw new ArgumentNullException(nameof(type));
@@ -1325,7 +1329,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The bool</returns>
-        private static bool IsNullable(Type type)
+        internal static bool IsNullable(Type type)
         {
             if (type == null)
                 throw new ArgumentNullException(nameof(type));

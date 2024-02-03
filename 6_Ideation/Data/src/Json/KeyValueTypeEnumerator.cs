@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         public KeyValueTypeEnumerator(object value)
         {
-            enumerator = (IEnumerator) ((IEnumerable) value);
+            enumerator =  ((IEnumerable) value).GetEnumerator();
         }
 
         /// <summary>

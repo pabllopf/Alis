@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:TestSerializable.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,39 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Data.Json;
+using System.Runtime.Serialization;
 
-namespace Alis.Core.Aspect.Data.Sample
+namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    ///     The program class
+    /// The test serializable class
     /// </summary>
-    public static class Program
+    /// <seealso cref="ISerializable"/>
+    public class TestSerializable : ISerializable
     {
+        
         /// <summary>
-        ///     Main the args
+        /// Gets the object data using the specified info
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            Music musicInfo2 = new Music
-            {
-                Name = "Prince Charming",
-                Artist = "Metallica",
-                Genre = "Rock and Metal",
-                Album = "Reload"
-            };
-
-            // This will produce a JSON String
-            string serialized2 = JsonSerializer.Serialize(musicInfo2);
-
-            Console.WriteLine(serialized2);
-
-            // This will produce a copy of the instance you created earlier
-            JsonSerializer.Deserialize<Music>(serialized2);
-
-            Console.WriteLine("deserialized 2");
+            
         }
     }
 }

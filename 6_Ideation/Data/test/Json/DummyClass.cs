@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:DummyClass.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,39 +27,24 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Data.Json;
+using System.ComponentModel;
 
-namespace Alis.Core.Aspect.Data.Sample
+namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    ///     The program class
+    /// The dummy class
     /// </summary>
-    public static class Program
+    public class DummyClass
     {
         /// <summary>
-        ///     Main the args
+        /// Gets or sets the value of the dummy property
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Music musicInfo2 = new Music
-            {
-                Name = "Prince Charming",
-                Artist = "Metallica",
-                Genre = "Rock and Metal",
-                Album = "Reload"
-            };
+        [DefaultValue("DefaultValue")]
+        public string DummyProperty { get; set; }
 
-            // This will produce a JSON String
-            string serialized2 = JsonSerializer.Serialize(musicInfo2);
-
-            Console.WriteLine(serialized2);
-
-            // This will produce a copy of the instance you created earlier
-            JsonSerializer.Deserialize<Music>(serialized2);
-
-            Console.WriteLine("deserialized 2");
-        }
+        /// <summary>
+        /// Gets or sets the value of the another dummy property
+        /// </summary>
+        public string AnotherDummyProperty { get; set; }
     }
 }
