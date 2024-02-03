@@ -364,7 +364,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         ///     Tests that test create scale with xy
         /// </summary>
         [Fact]
-        public void TestCreateScaleWithXY()
+        public void TestCreateScaleWithXy()
         {
             Matrix3X2 matrix = Matrix3X2.CreateScale(2, 3);
 

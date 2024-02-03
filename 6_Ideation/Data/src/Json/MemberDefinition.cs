@@ -407,7 +407,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
 
-            TypeDef.Lock(action, state);
+            TypeDef.LockMethod(action, state);
         }
     }
 }

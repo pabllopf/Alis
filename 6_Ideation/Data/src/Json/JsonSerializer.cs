@@ -51,102 +51,102 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     The null
         /// </summary>
-        internal const string _null = "null";
+        internal const string Null = "null";
 
         /// <summary>
         ///     The true
         /// </summary>
-        internal const string _true = "true";
+        internal const string True = "true";
 
         /// <summary>
         ///     The false
         /// </summary>
-        internal const string _false = "false";
+        internal const string False = "false";
 
         /// <summary>
         ///     The zero arg
         /// </summary>
-        internal const string _zeroArg = "{0}";
+        internal const string ZeroArg = "{0}";
 
         /// <summary>
         ///     The date start js
         /// </summary>
-        internal const string _dateStartJs = "new Date(";
+        internal const string DateStartJs = "new Date(";
 
         /// <summary>
         ///     The date end js
         /// </summary>
-        internal const string _dateEndJs = ")";
+        internal const string DateEndJs = ")";
 
         /// <summary>
         ///     The date start
         /// </summary>
-        internal const string _dateStart = @"""\/Date(";
+        internal const string DateStart = @"""\/Date(";
 
         /// <summary>
         ///     The date start
         /// </summary>
-        internal const string _dateStart2 = @"/Date(";
+        internal const string DateStart2 = @"/Date(";
 
         /// <summary>
         ///     The date end
         /// </summary>
-        internal const string _dateEnd = @")\/""";
+        internal const string DateEnd = @")\/""";
 
         /// <summary>
         ///     The date end
         /// </summary>
-        internal const string _dateEnd2 = @")/";
+        internal const string DateEnd2 = @")/";
 
         /// <summary>
         ///     The round trip format
         /// </summary>
-        internal const string _roundTripFormat = "R";
+        internal const string RoundTripFormat = "R";
 
         /// <summary>
         ///     The enum format
         /// </summary>
-        internal const string _enumFormat = "D";
+        internal const string EnumFormat = "D";
 
         /// <summary>
         ///     The format
         /// </summary>
-        internal const string _x4Format = "{0:X4}";
+        internal const string X4Format = "{0:X4}";
 
         /// <summary>
         ///     The format
         /// </summary>
-        internal const string _d2Format = "D2";
+        internal const string D2Format = "D2";
 
         /// <summary>
         ///     The script ignore
         /// </summary>
-        internal const string _scriptIgnore = "ScriptIgnore";
+        internal const string ScriptIgnore = "ScriptIgnore";
 
         /// <summary>
         ///     The serialization type token
         /// </summary>
-        internal const string _serializationTypeToken = "__type";
+        internal const string SerializationTypeToken = "__type";
 
         /// <summary>
         ///     The date formats utc
         /// </summary>
-        internal static readonly string[] _dateFormatsUtc = {"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'", "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", "yyyy'-'MM'-'dd'T'HH':'mm'Z'", "yyyyMMdd'T'HH':'mm':'ss'Z'"};
+        internal static readonly string[] DateFormatsUtc = {"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'", "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", "yyyy'-'MM'-'dd'T'HH':'mm'Z'", "yyyyMMdd'T'HH':'mm':'ss'Z'"};
 
         /// <summary>
         ///     The utc
         /// </summary>
-        internal static readonly DateTime _minDateTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        internal static readonly DateTime MinDateTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         /// <summary>
         ///     The ticks
         /// </summary>
-        internal static readonly long _minDateTimeTicks = _minDateTime.Ticks;
+        internal static readonly long MinDateTimeTicks = MinDateTime.Ticks;
 
         /// <summary>
         ///     The formatter converter
         /// </summary>
-        internal static readonly FormatterConverter _defaultFormatterConverter = new FormatterConverter();
+        internal static readonly FormatterConverter DefaultFormatterConverter = new FormatterConverter();
 
         /// <summary>
         ///     Serializes the specified object. Supports anonymous and dynamic types.
@@ -701,7 +701,7 @@ namespace Alis.Core.Aspect.Data.Json
                 if (att.GetType().Name == null)
                     continue;
 
-                if (att.GetType().Name.StartsWith(_scriptIgnore))
+                if (att.GetType().Name.StartsWith(ScriptIgnore))
                     return true;
             }
 
@@ -729,7 +729,7 @@ namespace Alis.Core.Aspect.Data.Json
                 if (att.GetType().Name == null)
                     continue;
 
-                if (att.GetType().Name.StartsWith(_scriptIgnore))
+                if (att.GetType().Name.StartsWith(ScriptIgnore))
                     return true;
             }
 
@@ -1271,7 +1271,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             ConstructorInfo ctor = type.GetConstructor(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance, null, new[] {typeof(SerializationInfo), typeof(StreamingContext)}, null);
-            SerializationInfo info = new SerializationInfo(type, _defaultFormatterConverter);
+            SerializationInfo info = new SerializationInfo(type, DefaultFormatterConverter);
 
             foreach (KeyValuePair<string, object> kvp in values)
             {
@@ -1344,12 +1344,12 @@ namespace Alis.Core.Aspect.Data.Json
                 Dictionary<string, object> dic = ReadDictionary(reader, options);
                 if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseISerializable))
                 {
-                    if (dic.TryGetValue(_serializationTypeToken, out object o))
+                    if (dic.TryGetValue(SerializationTypeToken, out object o))
                     {
                         string typeName = string.Format(CultureInfo.InvariantCulture, "{0}", o);
                         if (!string.IsNullOrEmpty(typeName))
                         {
-                            dic.Remove(_serializationTypeToken);
+                            dic.Remove(SerializationTypeToken);
                             return ReadSerializable(reader, options, typeName, dic);
                         }
                     }
@@ -1419,13 +1419,13 @@ namespace Alis.Core.Aspect.Data.Json
             } while (true);
 
             string text = sb.ToString();
-            if (string.Compare(_null, text.Trim(), StringComparison.OrdinalIgnoreCase) == 0)
+            if (string.Compare(Null, text.Trim(), StringComparison.OrdinalIgnoreCase) == 0)
                 return null;
 
-            if (text.StartsWith(_dateStartJs) && text.EndsWith(_dateEndJs))
+            if (text.StartsWith(DateStartJs) && text.EndsWith(DateEndJs))
             {
-                if (long.TryParse(text.Substring(_dateStartJs.Length, text.Length - _dateStartJs.Length - _dateEndJs.Length), out long l))
-                    return new DateTime(l * 10000 + _minDateTimeTicks, DateTimeKind.Utc);
+                if (long.TryParse(text.Substring(DateStartJs.Length, text.Length - DateStartJs.Length - DateEndJs.Length), out long l))
+                    return new DateTime(l * 10000 + MinDateTimeTicks, DateTimeKind.Utc);
             }
 
             HandleException(GetUnexpectedCharacterException(GetPosition(reader), text[0]), options);
@@ -1466,13 +1466,13 @@ namespace Alis.Core.Aspect.Data.Json
             } while (true);
 
             string text = sb.ToString();
-            if (string.Compare(_null, text, StringComparison.OrdinalIgnoreCase) == 0)
+            if (string.Compare(Null, text, StringComparison.OrdinalIgnoreCase) == 0)
                 return null;
 
-            if (string.Compare(_true, text, StringComparison.OrdinalIgnoreCase) == 0)
+            if (string.Compare(True, text, StringComparison.OrdinalIgnoreCase) == 0)
                 return true;
 
-            if (string.Compare(_false, text, StringComparison.OrdinalIgnoreCase) == 0)
+            if (string.Compare(False, text, StringComparison.OrdinalIgnoreCase) == 0)
                 return false;
 
             if (text.LastIndexOf("e", StringComparison.OrdinalIgnoreCase) >= 0)
@@ -1537,7 +1537,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="text">The input text.</param>
         /// <param name="dt">When this method returns, contains the DateTime equivalent.</param>
         /// <returns>true if the text was converted successfully; otherwise, false.</returns>
-        public static bool TryParseDateTime(string text, out DateTime dt) => TryParseDateTime(text, JsonOptions._defaultDateTimeStyles, out dt);
+        public static bool TryParseDateTime(string text, out DateTime dt) => TryParseDateTime(text, JsonOptions.DefaultDateTimeStyles, out dt);
 
         /// <summary>
         ///     Converts the JSON string representation of a date time to its DateTime equivalent.
@@ -1572,7 +1572,7 @@ namespace Alis.Core.Aspect.Data.Json
 
             if (text.EndsWith("Z", StringComparison.OrdinalIgnoreCase))
             {
-                if (DateTime.TryParseExact(text, _dateFormatsUtc, CultureInfo.InvariantCulture, DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out dt))
+                if (DateTime.TryParseExact(text, DateFormatsUtc, CultureInfo.InvariantCulture, DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out dt))
                     return true;
             }
 
@@ -1673,13 +1673,13 @@ namespace Alis.Core.Aspect.Data.Json
 
             // read this http://weblogs.asp.net/bleroy/archive/2008/01/18/dates-and-json.aspx
             string ticks = null;
-            if (text.StartsWith(_dateStartJs) && text.EndsWith(_dateEndJs))
+            if (text.StartsWith(DateStartJs) && text.EndsWith(DateEndJs))
             {
-                ticks = text.Substring(_dateStartJs.Length, text.Length - _dateStartJs.Length - _dateEndJs.Length).Trim();
+                ticks = text.Substring(DateStartJs.Length, text.Length - DateStartJs.Length - DateEndJs.Length).Trim();
             }
-            else if (text.StartsWith(_dateStart2, StringComparison.OrdinalIgnoreCase) && text.EndsWith(_dateEnd2, StringComparison.OrdinalIgnoreCase))
+            else if (text.StartsWith(DateStart2, StringComparison.OrdinalIgnoreCase) && text.EndsWith(DateEnd2, StringComparison.OrdinalIgnoreCase))
             {
-                ticks = text.Substring(_dateStart2.Length, text.Length - _dateEnd2.Length - _dateStart2.Length).Trim();
+                ticks = text.Substring(DateStart2.Length, text.Length - DateEnd2.Length - DateStart2.Length).Trim();
             }
 
             if (!string.IsNullOrEmpty(ticks))
@@ -1706,7 +1706,7 @@ namespace Alis.Core.Aspect.Data.Json
 
                 if (long.TryParse(ticks, NumberStyles.Number, CultureInfo.InvariantCulture, out long l))
                 {
-                    dt = new DateTime(l * 10000 + _minDateTimeTicks, kind);
+                    dt = new DateTime(l * 10000 + MinDateTimeTicks, kind);
                     if (offsetHours != 0)
                     {
                         dt = dt.AddHours(offsetHours);
@@ -1860,7 +1860,7 @@ namespace Alis.Core.Aspect.Data.Json
 
             if (value == null || Convert.IsDBNull(value))
             {
-                writer.Write(_null);
+                writer.Write(Null);
                 return;
             }
 
@@ -1872,7 +1872,7 @@ namespace Alis.Core.Aspect.Data.Json
 
             if (value is bool b)
             {
-                writer.Write(b ? _true : _false);
+                writer.Write(b ? True : False);
                 return;
             }
 
@@ -1880,11 +1880,11 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 if (float.IsInfinity(f) || float.IsNaN(f))
                 {
-                    writer.Write(_null);
+                    writer.Write(Null);
                     return;
                 }
 
-                writer.Write(f.ToString(_roundTripFormat, CultureInfo.InvariantCulture));
+                writer.Write(f.ToString(RoundTripFormat, CultureInfo.InvariantCulture));
                 return;
             }
 
@@ -1892,11 +1892,11 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 if (double.IsInfinity(d) || double.IsNaN(d))
                 {
-                    writer.Write(_null);
+                    writer.Write(Null);
                     return;
                 }
 
-                writer.Write(d.ToString(_roundTripFormat, CultureInfo.InvariantCulture));
+                writer.Write(d.ToString(RoundTripFormat, CultureInfo.InvariantCulture));
                 return;
             }
 
@@ -1904,7 +1904,7 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 if (c == '\0')
                 {
-                    writer.Write(_null);
+                    writer.Write(Null);
                     return;
                 }
 
@@ -1920,7 +1920,7 @@ namespace Alis.Core.Aspect.Data.Json
                 }
                 else
                 {
-                    writer.Write(@enum.ToString(_enumFormat));
+                    writer.Write(@enum.ToString(EnumFormat));
                 }
 
                 return;
@@ -1944,9 +1944,9 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 if (options.SerializationOptions.HasFlag(JsonSerializationOptions.DateFormatJs))
                 {
-                    writer.Write(_dateStartJs);
-                    writer.Write((dto.ToUniversalTime().Ticks - _minDateTimeTicks) / 10000);
-                    writer.Write(_dateEndJs);
+                    writer.Write(DateStartJs);
+                    writer.Write((dto.ToUniversalTime().Ticks - MinDateTimeTicks) / 10000);
+                    writer.Write(DateEndJs);
                 }
                 else if (options.SerializationOptions.HasFlag(JsonSerializationOptions.DateTimeOffsetFormatCustom) && !string.IsNullOrEmpty(options.DateTimeOffsetFormat))
                 {
@@ -1962,9 +1962,9 @@ namespace Alis.Core.Aspect.Data.Json
                 }
                 else
                 {
-                    writer.Write(_dateStart);
-                    writer.Write((dto.ToUniversalTime().Ticks - _minDateTimeTicks) / 10000);
-                    writer.Write(_dateEnd);
+                    writer.Write(DateStart);
+                    writer.Write((dto.ToUniversalTime().Ticks - MinDateTimeTicks) / 10000);
+                    writer.Write(DateEnd);
                 }
 
                 return;
@@ -1975,9 +1975,9 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 if (options.SerializationOptions.HasFlag(JsonSerializationOptions.DateFormatJs))
                 {
-                    writer.Write(_dateStartJs);
-                    writer.Write((dt.ToUniversalTime().Ticks - _minDateTimeTicks) / 10000);
-                    writer.Write(_dateEndJs);
+                    writer.Write(DateStartJs);
+                    writer.Write((dt.ToUniversalTime().Ticks - MinDateTimeTicks) / 10000);
+                    writer.Write(DateEndJs);
                 }
                 else if (options.SerializationOptions.HasFlag(JsonSerializationOptions.DateFormatCustom) && !string.IsNullOrEmpty(options.DateTimeFormat))
                 {
@@ -1996,10 +1996,10 @@ namespace Alis.Core.Aspect.Data.Json
                 }
                 else
                 {
-                    writer.Write(_dateStart);
-                    writer.Write((dt.ToUniversalTime().Ticks - _minDateTimeTicks) / 10000);
+                    writer.Write(DateStart);
+                    writer.Write((dt.ToUniversalTime().Ticks - MinDateTimeTicks) / 10000);
                     AppendTimeZoneUtcOffset(writer, dt);
-                    writer.Write(_dateEnd);
+                    writer.Write(DateEnd);
                 }
 
                 return;
@@ -2009,7 +2009,7 @@ namespace Alis.Core.Aspect.Data.Json
                 value is long || value is ulong || value is byte || value is sbyte ||
                 value is decimal)
             {
-                writer.Write(string.Format(CultureInfo.InvariantCulture, _zeroArg, value));
+                writer.Write(string.Format(CultureInfo.InvariantCulture, ZeroArg, value));
                 return;
             }
 
@@ -2044,7 +2044,7 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 if (options.SerializationOptions.HasFlag(JsonSerializationOptions.ContinueOnCycle))
                 {
-                    writer.Write(_null);
+                    writer.Write(Null);
                     return;
                 }
 
@@ -2237,8 +2237,8 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 TimeSpan offset = TimeZoneInfo.Local.GetUtcOffset(dt);
                 writer.Write(offset.Ticks >= 0 ? '+' : '-');
-                writer.Write(Abs(offset.Hours).ToString(_d2Format));
-                writer.Write(Abs(offset.Minutes).ToString(_d2Format));
+                writer.Write(Abs(offset.Hours).ToString(D2Format));
+                writer.Write(Abs(offset.Minutes).ToString(D2Format));
             }
         }
 
@@ -2425,10 +2425,10 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         internal static void WriteSerializable(TextWriter writer, ISerializable serializable, IDictionary<object, object> objectGraph, JsonOptions options)
         {
-            SerializationInfo info = new SerializationInfo(serializable.GetType(), _defaultFormatterConverter);
+            SerializationInfo info = new SerializationInfo(serializable.GetType(), DefaultFormatterConverter);
             StreamingContext ctx = new StreamingContext(StreamingContextStates.Remoting, null);
             serializable.GetObjectData(info, ctx);
-            info.AddValue(_serializationTypeToken, serializable.GetType().AssemblyQualifiedName);
+            info.AddValue(SerializationTypeToken, serializable.GetType().AssemblyQualifiedName);
 
             bool first = true;
             foreach (SerializationEntry entry in info)
@@ -2585,7 +2585,7 @@ namespace Alis.Core.Aspect.Data.Json
 
             if (text == null)
             {
-                writer.Write(_null);
+                writer.Write(Null);
                 return;
             }
 
@@ -2606,7 +2606,7 @@ namespace Alis.Core.Aspect.Data.Json
 
             if (text == null)
             {
-                writer.Write(_null);
+                writer.Write(Null);
                 return;
             }
 
@@ -2624,7 +2624,7 @@ namespace Alis.Core.Aspect.Data.Json
         {
             sb.Append('\\');
             sb.Append('u');
-            sb.AppendFormat(CultureInfo.InvariantCulture, _x4Format, (ushort) c);
+            sb.AppendFormat(CultureInfo.InvariantCulture, X4Format, (ushort) c);
         }
 
         /// <summary>

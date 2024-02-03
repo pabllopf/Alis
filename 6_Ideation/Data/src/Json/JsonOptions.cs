@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     The allow white spaces
         /// </summary>
-        internal static DateTimeStyles _defaultDateTimeStyles = DateTimeStyles.AssumeUniversal | DateTimeStyles.AllowInnerWhite | DateTimeStyles.AllowLeadingWhite | DateTimeStyles.AllowTrailingWhite | DateTimeStyles.AllowWhiteSpaces;
+        internal static DateTimeStyles DefaultDateTimeStyles = DateTimeStyles.AssumeUniversal | DateTimeStyles.AllowInnerWhite | DateTimeStyles.AllowLeadingWhite | DateTimeStyles.AllowTrailingWhite | DateTimeStyles.AllowWhiteSpaces;
 
         /// <summary>
         ///     The exception
@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Data.Json
         {
             SerializationOptions = JsonSerializationOptions.Default;
             ThrowExceptions = true;
-            DateTimeStyles = _defaultDateTimeStyles;
+            DateTimeStyles = DefaultDateTimeStyles;
             FormattingTab = " ";
             StreamingBufferChunkSize = ushort.MaxValue;
             MaximumExceptionsCount = 100;

@@ -45,22 +45,22 @@ namespace Alis.Sample.Flappy.Bird
         /// <summary>
         ///     The random height
         /// </summary>
-        private static int randomHeight;
+        private static int _randomHeight;
 
         /// <summary>
         ///     The random direction
         /// </summary>
-        private static int randomDirection;
+        private static int _randomDirection;
 
         /// <summary>
         ///     The generated
         /// </summary>
-        private static bool generated;
+        private static bool _generated;
 
         /// <summary>
         ///     The velocity
         /// </summary>
-        public static float velocity = 10;
+        public static float Velocity = 10;
 
         /// <summary>
         ///     The is stop
@@ -94,9 +94,9 @@ namespace Alis.Sample.Flappy.Bird
         {
             posOrigin = GameObject.Transform;
             boxCollider = GameObject.Get<BoxCollider>();
-            boxCollider.LinearVelocity = new Vector2(-velocity, 0);
+            boxCollider.LinearVelocity = new Vector2(-Velocity, 0);
 
-            velocity = 10;
+            Velocity = 10;
             factorVelocity = 1.1f;
 
             using (RandomNumberGenerator randomGenerator = RandomNumberGenerator.Create())
@@ -105,11 +105,11 @@ namespace Alis.Sample.Flappy.Bird
                 randomGenerator.GetBytes(data);
             }
 
-            randomHeight = Math.Abs(BitConverter.ToInt32(data, 0) % 100);
-            randomDirection = Math.Abs(BitConverter.ToInt32(data, 4) % 2);
-            Console.WriteLine($"{GameObject.Name} NUM={randomHeight} Direction={randomDirection}");
+            _randomHeight = Math.Abs(BitConverter.ToInt32(data, 0) % 100);
+            _randomDirection = Math.Abs(BitConverter.ToInt32(data, 4) % 2);
+            Console.WriteLine($"{GameObject.Name} NUM={_randomHeight} Direction={_randomDirection}");
 
-            generated = true;
+            _generated = true;
             IsStop = false;
         }
 
@@ -118,9 +118,9 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         public override void OnUpdate()
         {
-            if (IsStop && (velocity != 0))
+            if (IsStop && (Velocity != 0))
             {
-                velocity = 0;
+                Velocity = 0;
                 factorVelocity = 0;
                 boxCollider.LinearVelocity = new Vector2(0, 0);
                 return;
@@ -128,28 +128,28 @@ namespace Alis.Sample.Flappy.Bird
 
             if ((GameObject.Transform.Position.X <= -27) && !IsStop)
             {
-                if (!generated)
+                if (!_generated)
                 {
-                    generated = true;
-                    randomHeight = Math.Abs(BitConverter.ToInt32(data, 0) % 100);
-                    randomDirection = Math.Abs(BitConverter.ToInt32(data, 4) % 2);
-                    Console.WriteLine($"{GameObject.Name} NUM={randomHeight} Direction={randomDirection} velocity={velocity}");
+                    _generated = true;
+                    _randomHeight = Math.Abs(BitConverter.ToInt32(data, 0) % 100);
+                    _randomDirection = Math.Abs(BitConverter.ToInt32(data, 4) % 2);
+                    Console.WriteLine($"{GameObject.Name} NUM={_randomHeight} Direction={_randomDirection} velocity={Velocity}");
                 }
 
-                switch (randomDirection)
+                switch (_randomDirection)
                 {
                     case 0:
                     {
-                        Vector2 newPos = new Vector2(posOrigin.Position.X, posOrigin.Position.Y + randomHeight);
+                        Vector2 newPos = new Vector2(posOrigin.Position.X, posOrigin.Position.Y + _randomHeight);
                         boxCollider.Body.Position = newPos;
-                        boxCollider.LinearVelocity = new Vector2(-velocity, 0);
+                        boxCollider.LinearVelocity = new Vector2(-Velocity, 0);
                         break;
                     }
                     case 1:
                     {
-                        Vector2 newPos = new Vector2(posOrigin.Position.X, posOrigin.Position.Y - randomHeight);
+                        Vector2 newPos = new Vector2(posOrigin.Position.X, posOrigin.Position.Y - _randomHeight);
                         boxCollider.Body.Position = newPos;
-                        boxCollider.LinearVelocity = new Vector2(-velocity, 0);
+                        boxCollider.LinearVelocity = new Vector2(-Velocity, 0);
                         break;
                     }
                 }
@@ -161,10 +161,10 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         public override void OnAfterUpdate()
         {
-            if (generated && !IsStop)
+            if (_generated && !IsStop)
             {
-                velocity *= factorVelocity;
-                generated = false;
+                Velocity *= factorVelocity;
+                _generated = false;
             }
         }
     }

@@ -100,12 +100,12 @@ namespace Alis.Core.Graphic.Sample
         /// <summary>
         ///     The texture font
         /// </summary>
-        private static IntPtr textureFont1;
+        private static IntPtr _textureFont1;
 
         /// <summary>
         ///     The dst rect font
         /// </summary>
-        private static RectangleI dstRectFont1;
+        private static RectangleI _dstRectFont1;
 
         /// <summary>
         ///     Runs
@@ -199,7 +199,7 @@ namespace Alis.Core.Graphic.Sample
             IntPtr font = SdlTtf.OpenFont(AssetManager.Find("FontSample.otf"), 55);
 
             // Load the font
-            IntPtr font_outline = SdlTtf.OpenFont(AssetManager.Find("FontSample.otf"), 55);
+            IntPtr fontOutline = SdlTtf.OpenFont(AssetManager.Find("FontSample.otf"), 55);
 
             // define outline font
             SdlTtf.SetFontOutline(font, outlineSize);
@@ -208,37 +208,37 @@ namespace Alis.Core.Graphic.Sample
             SdlTtf.SetFontStyle(font, SdlTtf.TtfStyleNormal);
 
             // Pixels to render the text
-            IntPtr bg_surface = SdlTtf.RenderTextBlended(
-                font_outline,
+            IntPtr bgSurface = SdlTtf.RenderTextBlended(
+                fontOutline,
                 "0123456789",
                 new SdlColor(255, 255, 255, 255));
 
-            IntPtr fg_surface = SdlTtf.RenderTextBlended(
+            IntPtr fgSurface = SdlTtf.RenderTextBlended(
                 font,
                 "0123456789",
                 new SdlColor(84, 52, 68, 255));
 
             // get size fg_surface
             //SDL_QueryTexture(fg_surface, NULL, NULL, &w, &h); :
-            Sdl.QueryTexture(fg_surface, out _, out _, out int wOut, out int hOut);
+            Sdl.QueryTexture(fgSurface, out _, out _, out int wOut, out int hOut);
 
             //SDL_Rect rect = {OUTLINE_SIZE, OUTLINE_SIZE, fg_surface->w, fg_surface->h};
             RectangleI rect = new RectangleI(0, 0, wOut, hOut);
 
             //SDL_SetSurfaceBlendMode(fg_surface, SDL_BLENDMODE_BLEND); :
-            Sdl.SetSurfaceBlendMode(fg_surface, SdlBlendMode.SdlBlendModeBlend);
+            Sdl.SetSurfaceBlendMode(fgSurface, SdlBlendMode.SdlBlendModeBlend);
 
             //SDL_BlitSurface(fg_surface, NULL, bg_surface, &rect);
-            Sdl.BlitSurface(fg_surface, IntPtr.Zero, bg_surface, ref rect);
+            Sdl.BlitSurface(fgSurface, IntPtr.Zero, bgSurface, ref rect);
 
             // Create a texture from the surface
-            textureFont1 = Sdl.CreateTextureFromSurface(renderer, bg_surface);
+            _textureFont1 = Sdl.CreateTextureFromSurface(renderer, bgSurface);
 
             // Get the width and height of the texture
-            Sdl.QueryTexture(textureFont1, out _, out _, out int textureWidth, out int textureHeight);
+            Sdl.QueryTexture(_textureFont1, out _, out _, out int textureWidth, out int textureHeight);
 
             // Create a destination intPtr dstRect
-            dstRectFont1 = new RectangleI(0, 0, textureWidth, textureHeight);
+            _dstRectFont1 = new RectangleI(0, 0, textureWidth, textureHeight);
 
             IntPtr icon = Sdl.LoadBmp(AssetManager.Find("logo.bmp"));
             Sdl.SetWindowIcon(window, icon);
@@ -357,7 +357,7 @@ namespace Alis.Core.Graphic.Sample
                 // Draws a filled rectangle.
                 //Sdl.RenderFillRect(renderer, ref rectFilled);
 
-                Sdl.RenderCopy(renderer, textureFont1, IntPtr.Zero, ref dstRectFont1);
+                Sdl.RenderCopy(renderer, _textureFont1, IntPtr.Zero, ref _dstRectFont1);
 
                 Sdl.RenderCopy(renderer, textureTile, IntPtr.Zero, ref tileRectangleI);
 
