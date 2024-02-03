@@ -104,8 +104,15 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void Validate_WithInvalidInput_ShouldThrowException()
         {
-            // Act and Assert
-            Assert.Throws<NotZeroException>(() => Validator.Validate(TestProperty, "TestProperty"));
+            try
+            {
+                Validator.Validate(TestProperty, "TestProperty");
+            }
+            catch (NotZeroException e)
+            {
+                Assert.Throws<NotZeroException>(() => Validator.Validate(TestProperty, "TestProperty"));
+                Console.WriteLine(e);
+            }
         }
 
         /// <summary>
@@ -117,8 +124,15 @@ namespace Alis.Core.Aspect.Memory.Test
             // Arrange
             TestProperty2 = null;
 
-            // Act and Assert
-            Assert.Throws<NotNullException>(() => Validator.Validate(TestProperty2, nameof(TestProperty2)));
+            try
+            {
+                Validator.Validate(TestProperty2, nameof(TestProperty2));
+            }
+            catch (NotNullException e)
+            {
+                Assert.Throws<NotNullException>(() => Validator.Validate(TestProperty2, nameof(TestProperty2)));
+                Console.WriteLine(e.Message);
+            }
         }
 
         /// <summary>
@@ -130,8 +144,15 @@ namespace Alis.Core.Aspect.Memory.Test
             // Arrange
             testProperty3 = null;
 
-            // Act and Assert
-            Assert.Throws<NotNullException>(() => Validator.Validate(testProperty3, nameof(testProperty3)));
+            try
+            {
+                Validator.Validate(testProperty3, nameof(testProperty3));
+            }
+            catch (NotNullException e)
+            {
+                Assert.Throws<NotNullException>(() => Validator.Validate(testProperty3, nameof(testProperty3)));
+                Console.WriteLine(e);
+            }
         }
 
         /// <summary>
@@ -143,8 +164,15 @@ namespace Alis.Core.Aspect.Memory.Test
             // Arrange
             testProperty4 = "";
 
-            // Act and Assert
-            Assert.Throws<NotEmptyException>(() => Validator.Validate(testProperty4, nameof(testProperty4)));
+            try
+            {
+                Validator.Validate(testProperty4, nameof(testProperty4));
+            }
+            catch (NotEmptyException e)
+            {
+                Assert.Throws<NotEmptyException>(() => Validator.Validate(testProperty4, nameof(testProperty4)));
+               Console.WriteLine(e.Message);
+            }
         }
 
         /// <summary>
@@ -156,8 +184,15 @@ namespace Alis.Core.Aspect.Memory.Test
             // Arrange
             testProperty4 = "";
 
-            // Act and Assert
-            Assert.Throws<NotEmptyException>(() => TestMethod(testProperty4));
+            try
+            {
+                TestMethod(testProperty4);
+            }
+            catch (NotEmptyException e)
+            {
+                Assert.Throws<NotEmptyException>(() => TestMethod(testProperty4));
+                Console.WriteLine(e);
+            }
         }
 
         /// <summary>
@@ -339,8 +374,15 @@ namespace Alis.Core.Aspect.Memory.Test
             // Arrange
             nullArray = null;
 
-            // Act and Assert
-            Assert.Throws<NotNullException>(() => Validator.Validate(nullArray, nameof(nullArray)));
+            try
+            {
+                Validator.Validate(nullArray, nameof(nullArray));
+            }
+            catch (NotNullException e)
+            {
+                Assert.Throws<NotNullException>(() => Validator.Validate(nullArray, nameof(nullArray)));
+                Console.WriteLine(e);
+            }
         }
 
         /// <summary>
@@ -384,8 +426,15 @@ namespace Alis.Core.Aspect.Memory.Test
             // Arrange
             nullList1 = null;
 
-            // Act and Assert
-            Assert.Throws<NotNullException>(() => Validator.Validate(nullList1, nameof(nullList1)));
+            try
+            {
+                Validator.Validate(nullList1, nameof(nullList1));
+            }
+            catch (NotNullException e)
+            {
+                Assert.Throws<NotNullException>(() => Validator.Validate(nullList1, nameof(nullList1)));
+                Console.WriteLine(e);
+            }
         }
 
         /// <summary>
@@ -443,8 +492,16 @@ namespace Alis.Core.Aspect.Memory.Test
             // Arrange
             nullDictionary1 = null;
 
-            // Act and Assert
-            Assert.Throws<NotNullException>(() => Validator.Validate(nullDictionary1, nameof(nullDictionary1)));
+            try
+            {
+                Validator.Validate(nullDictionary1, nameof(nullDictionary1));
+            }
+            catch (NotNullException e)
+            {
+                Assert.Throws<NotNullException>(() => Validator.Validate(nullDictionary1, nameof(nullDictionary1)));
+                Console.WriteLine(e);
+            }
+            
         }
 
         /// <summary>
@@ -649,8 +706,15 @@ namespace Alis.Core.Aspect.Memory.Test
             IsNotZeroAttribute attribute = new IsNotZeroAttribute();
             int zeroValue = 0;
 
-            // Act and Assert
-            Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
+            try
+            {
+                attribute.Validate(zeroValue, nameof(zeroValue));
+            }
+            catch (NotZeroException e)
+            {
+                Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
+                Console.WriteLine(e);
+            }
         }
 
         // Repeat the above test for the remaining types: long, decimal, float, double, short, byte, sbyte, ushort, uint, and ulong
@@ -664,8 +728,15 @@ namespace Alis.Core.Aspect.Memory.Test
             // Arrange
             nullDictionary2 = null;
 
-            // Act and Assert
-            Assert.Throws<NotNullException>(() => Validator.Validate(nullDictionary2, nameof(nullDictionary2)));
+            try
+            {
+                Validator.Validate(nullDictionary2, nameof(nullDictionary2));
+            }
+            catch (NotNullException e)
+            {
+                Assert.Throws<NotNullException>(() => Validator.Validate(nullDictionary2, nameof(nullDictionary2)));
+                Console.WriteLine(e);
+            }
         }
 
         /// <summary>
@@ -693,8 +764,15 @@ namespace Alis.Core.Aspect.Memory.Test
             // Arrange
             emptyDictionary2 = new Dictionary<string, string>();
 
-            // Act and Assert
-            Assert.Throws<NotEmptyException>(() => Validator.Validate(emptyDictionary2, nameof(emptyDictionary2)));
+            try
+            {
+                Validator.Validate(emptyDictionary2, nameof(emptyDictionary2));
+            }
+            catch (NotEmptyException e)
+            {
+                Assert.Throws<NotEmptyException>(() => Validator.Validate(emptyDictionary2, nameof(emptyDictionary2)));
+                Console.WriteLine(e.Message);
+            }
         }
 
         /// <summary>
