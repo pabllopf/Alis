@@ -48,20 +48,20 @@ namespace Alis.Sample.Flappy.Bird
         /// <summary>
         ///     The is death
         /// </summary>
-        public static bool isDeath;
+        public static bool IsDeath;
 
         /// <summary>
         ///     The time delta
         /// </summary>
-        public static float timeDelta = 10.0f;
+        public static float TimeDelta = 10.0f;
 
         /// <summary>
         ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
-            isDeath = false;
-            timeDelta = 100f;
+            IsDeath = false;
+            TimeDelta = 100f;
         }
 
         /// <summary>
@@ -69,10 +69,10 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         public override void OnUpdate()
         {
-            if (isDeath)
+            if (IsDeath)
             {
-                timeDelta -= 0.01f;
-                if (timeDelta <= 0.0f)
+                TimeDelta -= 0.01f;
+                if (TimeDelta <= 0.0f)
                 {
                     VideoGame.Instance.SceneManager.LoadScene("Main Menu");
                     Console.WriteLine("RESET LEVEL");
@@ -108,7 +108,7 @@ namespace Alis.Sample.Flappy.Bird
                     PipelineController.IsStop = true;
 
 
-                    isDeath = true;
+                    IsDeath = true;
                 }
             }
         }

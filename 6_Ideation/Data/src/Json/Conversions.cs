@@ -43,12 +43,12 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     The enum separators
         /// </summary>
-        private static readonly char[] _enumSeparators = {',', ';', '+', '|', ' '};
+        private static readonly char[] EnumSeparators = {',', ';', '+', '|', ' '};
 
         /// <summary>
         ///     The date formats utc
         /// </summary>
-        private static readonly string[] _dateFormatsUtc = {"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", "yyyy'-'MM'-'dd'T'HH':'mm'Z'", "yyyyMMdd'T'HH':'mm':'ss'Z'"};
+        private static readonly string[] DateFormatsUtc = {"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", "yyyy'-'MM'-'dd'T'HH':'mm'Z'", "yyyyMMdd'T'HH':'mm':'ss'Z'"};
 
         /// <summary>
         ///     Describes whether is valid
@@ -954,7 +954,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             // in general, nothing is convertible to anything but one of these, IConvertible is 100% stupid thing
-            bool isWellKnownConvertible() => conversionType == typeof(short) || conversionType == typeof(int) ||
+            bool IsWellKnownConvertible() => conversionType == typeof(short) || conversionType == typeof(int) ||
                                              conversionType == typeof(string) || conversionType == typeof(byte) ||
                                              conversionType == typeof(char) || conversionType == typeof(DateTime) ||
                                              conversionType == typeof(DBNull) || conversionType == typeof(decimal) ||
@@ -965,7 +965,7 @@ namespace Alis.Core.Aspect.Data.Json
                                              conversionType == typeof(ushort) || conversionType == typeof(uint) ||
                                              conversionType == typeof(ulong);
 
-            if (isWellKnownConvertible() && input is IConvertible convertible)
+            if (IsWellKnownConvertible() && input is IConvertible convertible)
             {
                 try
                 {
@@ -1251,11 +1251,11 @@ namespace Alis.Core.Aspect.Data.Json
 
             Array values = Enum.GetValues(type);
             // some enums like System.CodeDom.MemberAttributes *are* flags but are not declared with Flags...
-            if (!type.IsDefined(typeof(FlagsAttribute), true) && (stringInput.IndexOfAny(_enumSeparators) < 0))
+            if (!type.IsDefined(typeof(FlagsAttribute), true) && (stringInput.IndexOfAny(EnumSeparators) < 0))
                 return StringToEnum(type, names, values, stringInput, out value);
 
             // multi value enum
-            string[] tokens = stringInput.Split(_enumSeparators, StringSplitOptions.RemoveEmptyEntries);
+            string[] tokens = stringInput.Split(EnumSeparators, StringSplitOptions.RemoveEmptyEntries);
             if (tokens.Length == 0)
             {
                 value = Activator.CreateInstance(type);

@@ -46,17 +46,17 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     The type def
         /// </summary>
-        private static readonly Dictionary<string, TypeDef> _defs = new Dictionary<string, TypeDef>();
+        private static readonly Dictionary<string, TypeDef> Defs = new Dictionary<string, TypeDef>();
 
         /// <summary>
         ///     The key value type
         /// </summary>
-        private static readonly Dictionary<Type, KeyValueType> _iskvpe = new Dictionary<Type, KeyValueType>();
+        private static readonly Dictionary<Type, KeyValueType> KeyType = new Dictionary<Type, KeyValueType>();
 
         /// <summary>
         ///     The lock
         /// </summary>
-        private static readonly object _lock = new object();
+        private static readonly object LockField = new object();
 
         /// <summary>
         ///     The member definition
@@ -253,10 +253,10 @@ namespace Alis.Core.Aspect.Data.Json
         private static TypeDef UnlockedGet(Type type, JsonOptions options)
         {
             string key = GetKey(type, options);
-            if (!_defs.TryGetValue(key, out TypeDef ta))
+            if (!Defs.TryGetValue(key, out TypeDef ta))
             {
                 ta = new TypeDef(type, options);
-                _defs.Add(key, ta);
+                Defs.Add(key, ta);
             }
 
             return ta;
@@ -268,9 +268,9 @@ namespace Alis.Core.Aspect.Data.Json
         /// <typeparam name="T">The </typeparam>
         /// <param name="action">The action</param>
         /// <param name="state">The state</param>
-        public static void Lock<T>(Action<T> action, T state)
+        public static void LockMethod<T>(Action<T> action, T state)
         {
-            lock (_lock)
+            lock (LockField)
             {
                 action(state);
             }
@@ -285,7 +285,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         public static bool RemoveDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
         {
-            lock (_lock)
+            lock (LockField)
             {
                 TypeDef ta = UnlockedGet(type, options);
                 return ta._deserializationMembers.Remove(member);
@@ -301,7 +301,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         public static bool RemoveSerializationMember(Type type, JsonOptions options, MemberDefinition member)
         {
-            lock (_lock)
+            lock (LockField)
             {
                 TypeDef ta = UnlockedGet(type, options);
                 return ta._serializationMembers.Remove(member);
@@ -316,7 +316,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="member">The member</param>
         public static void AddDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
         {
-            lock (_lock)
+            lock (LockField)
             {
                 TypeDef ta = UnlockedGet(type, options);
                 ta._deserializationMembers.Add(member);
@@ -331,7 +331,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="member">The member</param>
         public static void AddSerializationMember(Type type, JsonOptions options, MemberDefinition member)
         {
-            lock (_lock)
+            lock (LockField)
             {
                 TypeDef ta = UnlockedGet(type, options);
                 ta._serializationMembers.Add(member);
@@ -346,7 +346,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The member definition array</returns>
         public static MemberDefinition[] GetDeserializationMembers(Type type, JsonOptions options)
         {
-            lock (_lock)
+            lock (LockField)
             {
                 TypeDef ta = UnlockedGet(type, options);
                 return ta._deserializationMembers.ToArray();
@@ -361,7 +361,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The member definition array</returns>
         public static MemberDefinition[] GetSerializationMembers(Type type, JsonOptions options)
         {
-            lock (_lock)
+            lock (LockField)
             {
                 TypeDef ta = UnlockedGet(type, options);
                 return ta._serializationMembers.ToArray();
@@ -376,7 +376,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The type def</returns>
         public static TypeDef Get(Type type, JsonOptions options)
         {
-            lock (_lock)
+            lock (LockField)
             {
                 return UnlockedGet(type, options);
             }
@@ -391,13 +391,13 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         public static bool IsKeyValuePairEnumerable(Type type, out Type keyType, out Type valueType)
         {
-            lock (_lock)
+            lock (LockField)
             {
-                if (!_iskvpe.TryGetValue(type, out KeyValueType kv))
+                if (!KeyType.TryGetValue(type, out KeyValueType kv))
                 {
                     kv = new KeyValueType();
                     JsonSerializer.InternalIsKeyValuePairEnumerable(type, out kv.KeyType, out kv.ValueType);
-                    _iskvpe.Add(type, kv);
+                    KeyType.Add(type, kv);
                 }
 
                 keyType = kv.KeyType;
