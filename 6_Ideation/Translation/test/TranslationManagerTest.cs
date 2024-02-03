@@ -506,7 +506,7 @@ namespace Alis.Core.Aspect.Translation.Test
             TranslationManager translationManager = new TranslationManager();
 
             // Act & Assert
-            ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => translationManager.AddTranslation(localCode, key, value));
+            Assert.Throws<ArgumentNullException>(() => translationManager.AddTranslation(localCode, key, value));
         }
     }
 }

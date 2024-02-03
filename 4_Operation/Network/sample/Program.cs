@@ -54,7 +54,7 @@ namespace Alis.Core.Network.Sample
         public static void Main(string[] args)
         {
             _webSocketServerFactory = new WebSocketServerFactory();
-            Task task = StartWebServer();
+            StartWebServer();
 
             if (args.Length == 0)
             {

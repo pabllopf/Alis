@@ -797,7 +797,6 @@ namespace Alis.Core.Aspect.Memory.Test
         public void Validate_WithEmptyConcurrentDictionary_ShouldThrowException()
         {
             // Arrange
-            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
             ConcurrentDictionary<int, int> emptyConcurrentDictionary = new ConcurrentDictionary<int, int>();
 
             // Act and Assert
@@ -814,7 +813,6 @@ namespace Alis.Core.Aspect.Memory.Test
         public void Validate_WithNotEmptyConcurrentDictionary_ShouldNotThrowException()
         {
             // Arrange
-            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
             ConcurrentDictionary<int, int> notEmptyConcurrentDictionary = new ConcurrentDictionary<int, int>();
             notEmptyConcurrentDictionary.TryAdd(1, 1);
 
@@ -1208,7 +1206,6 @@ namespace Alis.Core.Aspect.Memory.Test
         public void ValidateParameter_WithNotNullType_ShouldNotThrowException()
         {
             // Arrange
-            ValidatorTestClass testClass = new ValidatorTestClass();
             Type callingType = typeof(ValidatorTestClass);
             MethodBase methodBase = typeof(ValidatorTestClass).GetMethod("TestMethod");
             const string name = "testParam";
@@ -1229,7 +1226,6 @@ namespace Alis.Core.Aspect.Memory.Test
         public void ValidateParameter_WithNotNullType_V2_ShouldNotThrowException()
         {
             // Arrange
-            ValidatorTestClass testClass = new ValidatorTestClass();
             Type callingType = typeof(ValidatorTestClass);
             MethodBase methodBase = typeof(ValidatorTestClass).GetMethod("TestMethod");
             const string name = "testParam";
@@ -1249,7 +1245,6 @@ namespace Alis.Core.Aspect.Memory.Test
         public void ValidateParameter_WithNotNullType_V3_ShouldNotThrowException()
         {
             // Arrange
-            ValidatorTestClass testClass = new ValidatorTestClass();
             Type callingType = typeof(ValidatorTestClass);
             MethodBase methodBase = typeof(ValidatorTestClass).GetMethod("TestMethod2");
             const string name = "testParam";
@@ -1269,7 +1264,6 @@ namespace Alis.Core.Aspect.Memory.Test
         public void ValidateParameter_WithNotNullType_V4_ShouldNotThrowException()
         {
             // Arrange
-            ValidatorTestClass testClass = new ValidatorTestClass();
             Type callingType = typeof(ValidatorTestClass);
             MethodBase methodBase = typeof(ValidatorTestClass).GetMethod("TestMethod3");
             const string name = "testParam";

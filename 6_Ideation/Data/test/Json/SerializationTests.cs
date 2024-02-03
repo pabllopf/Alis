@@ -143,7 +143,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Person[] persons = {person, person};
             try
             {
-                string json = JsonSerializer.Serialize(persons);
+                JsonSerializer.Serialize(persons);
                 Assert.Fail();
             }
             catch (JsonException ex)
