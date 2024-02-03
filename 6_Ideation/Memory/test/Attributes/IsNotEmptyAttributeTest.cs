@@ -40,6 +40,9 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
     /// </summary>
     public class IsNotEmptyAttributeTest
     {
+       /// <summary>
+       /// The empty concurrent bag
+       /// </summary>
        [IsNotEmpty] private ConcurrentBag<int> emptyConcurrentBag1;
 
         /// <summary>
