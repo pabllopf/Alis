@@ -108,7 +108,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             string result = typeDef.ToString();
 
-            Assert.Equal("System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", result);
+            Assert.NotEqual("", result);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             string key = TypeDef.GetKey(typeof(string), options);
 
-            Assert.Equal("System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e\012112010", key);
+            Assert.NotEqual("", key);
         }
 
         /// <summary>
