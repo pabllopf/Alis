@@ -32,5 +32,5 @@ namespace Alis.Core.Aspect.Data.Json
     /// <summary>
     ///     The func
     /// </summary>
-    internal delegate TResult JFunc<T, TResult>(T arg);
+    internal delegate TResult JFunc<in T, out TResult>(T arg);
 }

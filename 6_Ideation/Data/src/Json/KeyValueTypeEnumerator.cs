@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Reflection;
 
@@ -41,23 +42,26 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     The enumerator
         /// </summary>
-        private readonly IEnumerator _enumerator;
+        private readonly IEnumerator enumerator;
 
         /// <summary>
         ///     The key prop
         /// </summary>
-        private PropertyInfo _keyProp;
+        private PropertyInfo keyProp;
 
         /// <summary>
         ///     The value prop
         /// </summary>
-        private PropertyInfo _valueProp;
+        private PropertyInfo valueProp;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="KeyValueTypeEnumerator" /> class
         /// </summary>
         /// <param name="value">The value</param>
-        public KeyValueTypeEnumerator(object value) => _enumerator = ((IEnumerable) value).GetEnumerator();
+        public KeyValueTypeEnumerator(object value)
+        {
+            enumerator = (IEnumerator) ((IEnumerable) value);
+        }
 
         /// <summary>
         ///     Gets the value of the entry
@@ -66,13 +70,24 @@ namespace Alis.Core.Aspect.Data.Json
         {
             get
             {
-                if (_keyProp == null)
+                if (keyProp == null)
                 {
-                    _keyProp = _enumerator.Current.GetType().GetProperty("Key");
-                    _valueProp = _enumerator.Current.GetType().GetProperty("Value");
+                    if (enumerator.Current != null)
+                    {
+                        keyProp = enumerator.Current.GetType().GetProperty("Key");
+                        valueProp = enumerator.Current.GetType().GetProperty("Value");
+                    }
                 }
 
-                return new DictionaryEntry(_keyProp.GetValue(_enumerator.Current, null), _valueProp.GetValue(_enumerator.Current, null));
+                if (valueProp != null)
+                {
+                    if (keyProp != null)
+                    {
+                        return new DictionaryEntry(keyProp.GetValue(enumerator.Current, null), valueProp.GetValue(enumerator.Current, null));
+                    }
+                }
+
+                throw new InvalidOperationException();
             }
         }
 
@@ -95,11 +110,11 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Describes whether this instance move next
         /// </summary>
         /// <returns>The bool</returns>
-        public bool MoveNext() => _enumerator.MoveNext();
+        public bool MoveNext() => enumerator.MoveNext();
 
         /// <summary>
         ///     Resets this instance
         /// </summary>
-        public void Reset() => _enumerator.Reset();
+        public void Reset() => enumerator.Reset();
     }
 }

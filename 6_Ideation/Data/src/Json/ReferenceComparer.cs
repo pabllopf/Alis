@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     Initializes a new instance of the <see cref="ReferenceComparer" /> class
         /// </summary>
-        internal ReferenceComparer()
+        private ReferenceComparer()
         {
         }
 

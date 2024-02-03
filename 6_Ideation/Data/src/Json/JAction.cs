@@ -32,5 +32,5 @@ namespace Alis.Core.Aspect.Data.Json
     /// <summary>
     ///     The action
     /// </summary>
-    internal delegate void JAction<T1, T2>(T1 arg1, T2 arg2);
+    internal delegate void JAction<in T1, in T2>(T1 arg1, T2 arg2);
 }

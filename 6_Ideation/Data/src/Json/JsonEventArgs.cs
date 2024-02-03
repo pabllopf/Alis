@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Data.Json
     /// <summary>
     ///     Provides data for a JSON event.
     /// </summary>
-    public class JsonEventArgs : EventArgs
+    public sealed class JsonEventArgs : EventArgs
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonEventArgs" /> class.
@@ -91,7 +91,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Gets the component holding the value. May be null.
         /// </summary>
         /// <value>The component.</value>
-        public virtual object Component { get; }
+        public object Component { get; }
 
         /// <summary>
         ///     Gets or sets the type of the event.
@@ -99,7 +99,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <value>
         ///     The type of the event.
         /// </value>
-        public virtual JsonEventType EventType { get; set; }
+        public JsonEventType EventType { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether this <see cref="JsonEventArgs" /> is handled.
@@ -107,7 +107,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     otherwise it must not be changed.
         /// </summary>
         /// <value><c>true</c> if handled; otherwise, <c>false</c>.</value>
-        public virtual bool Handled { get; set; }
+        public bool Handled { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether the object being handled is first in the list.
@@ -115,18 +115,18 @@ namespace Alis.Core.Aspect.Data.Json
         ///     If the object is skipped, it must not be changed.
         /// </summary>
         /// <value><c>true</c> if this is the first object; otherwise, <c>false</c>.</value>
-        public virtual bool First { get; set; }
+        public bool First { get; set; }
 
         /// <summary>
         ///     Gets or sets the value on the stack.
         /// </summary>
         /// <value>The value.</value>
-        public virtual object Value { get; set; }
+        public object Value { get; set; }
 
         /// <summary>
         ///     Gets or sets the name on the stack. The Name can be a property or field name when serializing objects. May be null.
         /// </summary>
         /// <value>The value.</value>
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
     }
 }

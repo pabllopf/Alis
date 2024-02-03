@@ -47,9 +47,9 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The set
         /// </summary>
         private readonly JAction<TComponent, TMember> _set;
-
+        
         /// <summary>
-        ///     Initializes a new instance of the <see cref="PropertyInfoAccessor" /> class
+        /// Initializes a new instance 
         /// </summary>
         /// <param name="pi">The pi</param>
         public PropertyInfoAccessor(PropertyInfo pi)
