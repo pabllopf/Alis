@@ -50,8 +50,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         ///     The custom object graph class
         /// </summary>
         /// <seealso cref="IDictionary{TKey,TValue}" />
-        /// <seealso cref="JsonSerializer.IOptionsHolder" />
-        private class CustomObjectGraph : IDictionary<object, object>, JsonSerializer.IOptionsHolder
+        /// <seealso cref="IOptionsHolder" />
+        private class CustomObjectGraph : IDictionary<object, object>, IOptionsHolder
         {
             /// <summary>
             ///     The dictionary

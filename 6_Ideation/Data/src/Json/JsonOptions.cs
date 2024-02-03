@@ -226,7 +226,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     Gets the value of the final object graph
         /// </summary>
-        internal IDictionary<object, object> FinalObjectGraph => ObjectGraph ?? new Dictionary<object, object>(JsonSerializer.ReferenceComparer.Instance);
+        internal IDictionary<object, object> FinalObjectGraph => ObjectGraph ?? new Dictionary<object, object>(ReferenceComparer.Instance);
 
         /// <summary>
         ///     Maxes the val 1
@@ -242,7 +242,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The input type. May not be null.</param>
         /// <param name="members">The members. May not be null.</param>
         /// <returns>A non-null list of members.</returns>
-        public virtual IEnumerable<JsonSerializer.MemberDefinition> FinalizeSerializationMembers(Type type, IEnumerable<JsonSerializer.MemberDefinition> members) => members;
+        public virtual IEnumerable<MemberDefinition> FinalizeSerializationMembers(Type type, IEnumerable<MemberDefinition> members) => members;
 
         /// <summary>
         ///     Finalizes the deserialization members from an initial setup of members.
@@ -250,7 +250,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The input type. May not be null.</param>
         /// <param name="members">The members. May not be null.</param>
         /// <returns>A non-null list of members.</returns>
-        public virtual IEnumerable<JsonSerializer.MemberDefinition> FinalizeDeserializationMembers(Type type, IEnumerable<JsonSerializer.MemberDefinition> members) => members;
+        public virtual IEnumerable<MemberDefinition> FinalizeDeserializationMembers(Type type, IEnumerable<MemberDefinition> members) => members;
 
         /// <summary>
         ///     Adds an exception to the list of exceptions.

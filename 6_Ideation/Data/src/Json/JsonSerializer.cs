@@ -36,7 +36,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
@@ -47,108 +46,107 @@ namespace Alis.Core.Aspect.Data.Json
     /// <summary>
     ///     A utility class to serialize and deserialize JSON.
     /// </summary>
-    [Obsolete("Obsolete")]
     public static class JsonSerializer
     {
         /// <summary>
         ///     The null
         /// </summary>
-        private const string _null = "null";
+        internal const string _null = "null";
 
         /// <summary>
         ///     The true
         /// </summary>
-        private const string _true = "true";
+        internal const string _true = "true";
 
         /// <summary>
         ///     The false
         /// </summary>
-        private const string _false = "false";
+        internal const string _false = "false";
 
         /// <summary>
         ///     The zero arg
         /// </summary>
-        private const string _zeroArg = "{0}";
+        internal const string _zeroArg = "{0}";
 
         /// <summary>
         ///     The date start js
         /// </summary>
-        private const string _dateStartJs = "new Date(";
+        internal const string _dateStartJs = "new Date(";
 
         /// <summary>
         ///     The date end js
         /// </summary>
-        private const string _dateEndJs = ")";
+        internal const string _dateEndJs = ")";
 
         /// <summary>
         ///     The date start
         /// </summary>
-        private const string _dateStart = @"""\/Date(";
+        internal const string _dateStart = @"""\/Date(";
 
         /// <summary>
         ///     The date start
         /// </summary>
-        private const string _dateStart2 = @"/Date(";
+        internal const string _dateStart2 = @"/Date(";
 
         /// <summary>
         ///     The date end
         /// </summary>
-        private const string _dateEnd = @")\/""";
+        internal const string _dateEnd = @")\/""";
 
         /// <summary>
         ///     The date end
         /// </summary>
-        private const string _dateEnd2 = @")/";
+        internal const string _dateEnd2 = @")/";
 
         /// <summary>
         ///     The round trip format
         /// </summary>
-        private const string _roundTripFormat = "R";
+        internal const string _roundTripFormat = "R";
 
         /// <summary>
         ///     The enum format
         /// </summary>
-        private const string _enumFormat = "D";
+        internal const string _enumFormat = "D";
 
         /// <summary>
         ///     The format
         /// </summary>
-        private const string _x4Format = "{0:X4}";
+        internal const string _x4Format = "{0:X4}";
 
         /// <summary>
         ///     The format
         /// </summary>
-        private const string _d2Format = "D2";
+        internal const string _d2Format = "D2";
 
         /// <summary>
         ///     The script ignore
         /// </summary>
-        private const string _scriptIgnore = "ScriptIgnore";
+        internal const string _scriptIgnore = "ScriptIgnore";
 
         /// <summary>
         ///     The serialization type token
         /// </summary>
-        private const string _serializationTypeToken = "__type";
+        internal const string _serializationTypeToken = "__type";
 
         /// <summary>
         ///     The date formats utc
         /// </summary>
-        private static readonly string[] _dateFormatsUtc = {"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'", "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", "yyyy'-'MM'-'dd'T'HH':'mm'Z'", "yyyyMMdd'T'HH':'mm':'ss'Z'"};
+        internal static readonly string[] _dateFormatsUtc = {"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'", "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", "yyyy'-'MM'-'dd'T'HH':'mm'Z'", "yyyyMMdd'T'HH':'mm':'ss'Z'"};
 
         /// <summary>
         ///     The utc
         /// </summary>
-        private static readonly DateTime _minDateTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        internal static readonly DateTime _minDateTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         /// <summary>
         ///     The ticks
         /// </summary>
-        private static readonly long _minDateTimeTicks = _minDateTime.Ticks;
+        internal static readonly long _minDateTimeTicks = _minDateTime.Ticks;
 
         /// <summary>
         ///     The formatter converter
         /// </summary>
-        private static readonly FormatterConverter _defaultFormatterConverter = new FormatterConverter();
+        internal static readonly FormatterConverter _defaultFormatterConverter = new FormatterConverter();
 
         /// <summary>
         ///     Serializes the specified object. Supports anonymous and dynamic types.
@@ -353,7 +351,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         /// <param name="value">The value</param>
         /// <returns>The object</returns>
-        private static object CreateInstance(object target, Type type, int elementsCount, JsonOptions options, object value)
+        internal static object CreateInstance(object target, Type type, int elementsCount, JsonOptions options, object value)
         {
             try
             {
@@ -399,7 +397,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="dictionary">The dictionary</param>
         /// <param name="key">The key</param>
         /// <returns>The list object</returns>
-        private static ListObject GetListObject(Type type, JsonOptions options, object target, object value, IDictionary dictionary, string key)
+        internal static ListObject GetListObject(Type type, JsonOptions options, object target, object value, IDictionary dictionary, string key)
         {
             if (options.GetListObjectCallback != null)
             {
@@ -430,7 +428,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (type.IsGenericType)
             {
                 if (type.GetGenericTypeDefinition() == typeof(ICollection<>))
-                    return (ListObject) Activator.CreateInstance(typeof(ICollectionTObject<>).MakeGenericType(type.GetGenericArguments()[0]));
+                    return (ListObject) Activator.CreateInstance(typeof(CollectionTObject<>).MakeGenericType(type.GetGenericArguments()[0]));
             }
 
             foreach (Type iface in type.GetInterfaces())
@@ -439,7 +437,7 @@ namespace Alis.Core.Aspect.Data.Json
                     continue;
 
                 if (iface.GetGenericTypeDefinition() == typeof(ICollection<>))
-                    return (ListObject) Activator.CreateInstance(typeof(ICollectionTObject<>).MakeGenericType(iface.GetGenericArguments()[0]));
+                    return (ListObject) Activator.CreateInstance(typeof(CollectionTObject<>).MakeGenericType(iface.GetGenericArguments()[0]));
             }
 
             return null;
@@ -452,7 +450,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="list">The list</param>
         /// <param name="options">The options</param>
-        private static void ApplyToListTarget(object target, IEnumerable input, ListObject list, JsonOptions options)
+        internal static void ApplyToListTarget(object target, IEnumerable input, ListObject list, JsonOptions options)
         {
             if (list.List == null)
                 return;
@@ -528,7 +526,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="target">The target</param>
         /// <param name="options">The options</param>
-        private static void Apply(IEnumerable input, Array target, JsonOptions options)
+        internal static void Apply(IEnumerable input, Array target, JsonOptions options)
         {
             if (target == null || target.Rank != 1)
                 return;
@@ -554,7 +552,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="o1">The </param>
         /// <param name="o2">The </param>
         /// <returns>The bool</returns>
-        private static bool AreValuesEqual(object o1, object o2)
+        internal static bool AreValuesEqual(object o1, object o2)
         {
             if (ReferenceEquals(o1, o2))
                 return true;
@@ -571,7 +569,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="att">The att</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        private static bool TryGetObjectDefaultValue(Attribute att, out object value)
+        internal static bool TryGetObjectDefaultValue(Attribute att, out object value)
         {
             if (att is JsonAttribute jsa && jsa.HasDefaultValue)
             {
@@ -594,7 +592,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="att">The att</param>
         /// <returns>The string</returns>
-        private static string GetObjectName(Attribute att)
+        internal static string GetObjectName(Attribute att)
         {
             if (att is JsonAttribute jsa && !string.IsNullOrEmpty(jsa.Name))
                 return jsa.Name;
@@ -614,7 +612,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="mi">The mi</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        private static bool TryGetObjectDefaultValue(MemberInfo mi, out object value)
+        internal static bool TryGetObjectDefaultValue(MemberInfo mi, out object value)
         {
             object[] atts = mi.GetCustomAttributes(true);
             if (atts != null)
@@ -636,7 +634,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="mi">The mi</param>
         /// <param name="defaultName">The default name</param>
         /// <returns>The default name</returns>
-        private static string GetObjectName(MemberInfo mi, string defaultName)
+        internal static string GetObjectName(MemberInfo mi, string defaultName)
         {
             object[] atts = mi.GetCustomAttributes(true);
             if (atts != null)
@@ -658,7 +656,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="pd">The pd</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        private static bool TryGetObjectDefaultValue(PropertyDescriptor pd, out object value)
+        internal static bool TryGetObjectDefaultValue(PropertyDescriptor pd, out object value)
         {
             foreach (Attribute att in pd.Attributes.Cast<Attribute>())
             {
@@ -676,7 +674,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="pd">The pd</param>
         /// <param name="defaultName">The default name</param>
         /// <returns>The default name</returns>
-        private static string GetObjectName(PropertyDescriptor pd, string defaultName)
+        internal static string GetObjectName(PropertyDescriptor pd, string defaultName)
         {
             foreach (Attribute att in pd.Attributes.Cast<Attribute>())
             {
@@ -693,7 +691,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="pd">The pd</param>
         /// <returns>The bool</returns>
-        private static bool HasScriptIgnore(PropertyDescriptor pd)
+        internal static bool HasScriptIgnore(PropertyDescriptor pd)
         {
             if (pd.Attributes == null)
                 return false;
@@ -715,7 +713,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="mi">The mi</param>
         /// <returns>The bool</returns>
-        private static bool HasScriptIgnore(MemberInfo mi)
+        internal static bool HasScriptIgnore(MemberInfo mi)
         {
             object[] atts = mi.GetCustomAttributes(true);
             if (atts == null || atts.Length == 0)
@@ -744,7 +742,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="dictionary">The dictionary</param>
         /// <param name="target">The target</param>
         /// <param name="options">The options</param>
-        private static void Apply(IDictionary dictionary, object target, JsonOptions options)
+        internal static void Apply(IDictionary dictionary, object target, JsonOptions options)
         {
             if (dictionary == null || target == null)
                 return;
@@ -807,7 +805,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="pi">The pi</param>
         /// <returns>The json attribute</returns>
-        private static JsonAttribute GetJsonAttribute(MemberInfo pi)
+        internal static JsonAttribute GetJsonAttribute(MemberInfo pi)
         {
             object[] atts = pi.GetCustomAttributes(true);
             if (atts == null || atts.Length == 0)
@@ -984,7 +982,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <returns>The object array</returns>
-        private static object[] ReadArray(TextReader reader, JsonOptions options)
+        internal static object[] ReadArray(TextReader reader, JsonOptions options)
         {
             if (!ReadWhitespaces(reader))
                 return null;
@@ -1016,7 +1014,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="pos">The pos</param>
         /// <param name="c">The </param>
         /// <returns>The json exception</returns>
-        private static JsonException GetExpectedCharacterException(long pos, char c)
+        internal static JsonException GetExpectedCharacterException(long pos, char c)
         {
             if (pos < 0)
                 return new JsonException("JSO0002: JSON deserialization error detected. Expecting '" + c + "' character.");
@@ -1031,7 +1029,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="pos">The pos</param>
         /// <param name="c">The </param>
         /// <returns>The json exception</returns>
-        private static JsonException GetUnexpectedCharacterException(long pos, char c)
+        internal static JsonException GetUnexpectedCharacterException(long pos, char c)
         {
             if (pos < 0)
                 return new JsonException("JSO0004: JSON deserialization error detected. Unexpected '" + c + "' character.");
@@ -1045,7 +1043,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="pos">The pos</param>
         /// <returns>The json exception</returns>
-        private static JsonException GetExpectedHexaCharacterException(long pos)
+        internal static JsonException GetExpectedHexaCharacterException(long pos)
         {
             if (pos < 0)
                 return new JsonException("JSO0006: JSON deserialization error detected. Expecting hexadecimal character.");
@@ -1061,7 +1059,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="typeName">The type name</param>
         /// <param name="inner">The inner</param>
         /// <returns>The json exception</returns>
-        private static JsonException GetTypeException(long pos, string typeName, Exception inner)
+        internal static JsonException GetTypeException(long pos, string typeName, Exception inner)
         {
             if (pos < 0)
                 return new JsonException("JSO0010: JSON deserialization error detected for '" + typeName + "' type.", inner);
@@ -1074,14 +1072,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The json exception</returns>
-        private static JsonException GetEofException(char c) => new JsonException("JSO0012: JSON deserialization error detected at end of text. Expecting '" + c + "' character.");
+        internal static JsonException GetEofException(char c) => new JsonException("JSO0012: JSON deserialization error detected at end of text. Expecting '" + c + "' character.");
 
         /// <summary>
         ///     Gets the position using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <returns>The long</returns>
-        private static long GetPosition(TextReader reader)
+        internal static long GetPosition(TextReader reader)
         {
             if (reader == null)
                 return -1;
@@ -1114,7 +1112,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <returns>A dictionary of string and object</returns>
-        private static Dictionary<string, object> ReadDictionary(TextReader reader, JsonOptions options)
+        internal static Dictionary<string, object> ReadDictionary(TextReader reader, JsonOptions options)
         {
             if (!ReadWhitespaces(reader))
                 return null;
@@ -1177,7 +1175,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <returns>The string</returns>
-        private static string ReadString(TextReader reader, JsonOptions options)
+        internal static string ReadString(TextReader reader, JsonOptions options)
         {
             StringBuilder sb = new StringBuilder();
             do
@@ -1259,7 +1257,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="typeName">The type name</param>
         /// <param name="values">The values</param>
         /// <returns>The serializable</returns>
-        private static ISerializable ReadSerializable(TextReader reader, JsonOptions options, string typeName, Dictionary<string, object> values)
+        internal static ISerializable ReadSerializable(TextReader reader, JsonOptions options, string typeName, Dictionary<string, object> values)
         {
             Type type;
             try
@@ -1298,7 +1296,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <returns>The object</returns>
-        private static object ReadValue(TextReader reader, JsonOptions options) => ReadValue(reader, options, false, out bool _);
+        internal static object ReadValue(TextReader reader, JsonOptions options) => ReadValue(reader, options, false, out bool _);
 
         /// <summary>
         ///     Reads the value using the specified reader
@@ -1308,7 +1306,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="arrayMode">The array mode</param>
         /// <param name="arrayEnd">The array end</param>
         /// <returns>The object</returns>
-        private static object ReadValue(TextReader reader, JsonOptions options, bool arrayMode, out bool arrayEnd)
+        internal static object ReadValue(TextReader reader, JsonOptions options, bool arrayMode, out bool arrayEnd)
         {
             arrayEnd = false;
             // 1st chance type is determined by format
@@ -1394,7 +1392,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         /// <param name="arrayEnd">The array end</param>
         /// <returns>The object</returns>
-        private static object ReadNew(TextReader reader, JsonOptions options, out bool arrayEnd)
+        internal static object ReadNew(TextReader reader, JsonOptions options, out bool arrayEnd)
         {
             arrayEnd = false;
             StringBuilder sb = new StringBuilder();
@@ -1441,7 +1439,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         /// <param name="arrayEnd">The array end</param>
         /// <returns>The object</returns>
-        private static object ReadNumberOrLiteral(TextReader reader, JsonOptions options, out bool arrayEnd)
+        internal static object ReadNumberOrLiteral(TextReader reader, JsonOptions options, out bool arrayEnd)
         {
             arrayEnd = false;
             StringBuilder sb = new StringBuilder();
@@ -1738,7 +1736,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="ex">The ex</param>
         /// <param name="options">The options</param>
-        private static void HandleException(Exception ex, JsonOptions options)
+        internal static void HandleException(Exception ex, JsonOptions options)
         {
             if ((options != null) && !options.ThrowExceptions)
             {
@@ -1756,7 +1754,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="c">The </param>
         /// <param name="options">The options</param>
         /// <returns>The byte</returns>
-        private static byte GetHexValue(TextReader reader, char c, JsonOptions options)
+        internal static byte GetHexValue(TextReader reader, char c, JsonOptions options)
         {
             c = char.ToLower(c);
             if (c < '0')
@@ -1787,7 +1785,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <returns>The ushort</returns>
-        private static ushort ReadX4(TextReader reader, JsonOptions options)
+        internal static ushort ReadX4(TextReader reader, JsonOptions options)
         {
             int u = 0;
             for (int i = 0; i < 4; i++)
@@ -1810,7 +1808,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <returns>The bool</returns>
-        private static bool ReadWhitespaces(TextReader reader) => ReadWhile(reader, char.IsWhiteSpace);
+        internal static bool ReadWhitespaces(TextReader reader) => ReadWhile(reader, char.IsWhiteSpace);
 
         /// <summary>
         ///     Describes whether read while
@@ -1818,7 +1816,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="cont">The cont</param>
         /// <returns>The bool</returns>
-        private static bool ReadWhile(TextReader reader, Predicate<char> cont)
+        internal static bool ReadWhile(TextReader reader, Predicate<char> cont)
         {
             do
             {
@@ -2151,7 +2149,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <param name="options">The options</param>
-        private static void SetOptions(object obj, JsonOptions options)
+        internal static void SetOptions(object obj, JsonOptions options)
         {
             if (obj is IOptionsHolder holder)
             {
@@ -2166,7 +2164,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="outputStream">The output stream</param>
         /// <param name="options">The options</param>
         /// <returns>The total</returns>
-        private static long WriteBase64Stream(Stream inputStream, Stream outputStream, JsonOptions options)
+        internal static long WriteBase64Stream(Stream inputStream, Stream outputStream, JsonOptions options)
         {
             outputStream.WriteByte((byte) '"');
             // don't dispose this stream or it will dispose the outputStream as well
@@ -2196,7 +2194,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="keyType">The key type</param>
         /// <param name="valueType">The value type</param>
         /// <returns>The bool</returns>
-        private static bool InternalIsKeyValuePairEnumerable(Type type, out Type keyType, out Type valueType)
+        internal static bool InternalIsKeyValuePairEnumerable(Type type, out Type keyType, out Type valueType)
         {
             keyType = null;
             valueType = null;
@@ -2233,7 +2231,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="dt">The dt</param>
-        private static void AppendTimeZoneUtcOffset(TextWriter writer, DateTime dt)
+        internal static void AppendTimeZoneUtcOffset(TextWriter writer, DateTime dt)
         {
             if (dt.Kind != DateTimeKind.Utc)
             {
@@ -2297,7 +2295,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
         /// <param name="indices">The indices</param>
-        private static void WriteArray(TextWriter writer, Array array, IDictionary<object, object> objectGraph, JsonOptions options, int[] indices)
+        internal static void WriteArray(TextWriter writer, Array array, IDictionary<object, object> objectGraph, JsonOptions options, int[] indices)
         {
             int[] newIndices = new int[indices.Length + 1];
             for (int i = 0; i < indices.Length; i++)
@@ -2425,7 +2423,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="serializable">The serializable</param>
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
-        private static void WriteSerializable(TextWriter writer, ISerializable serializable, IDictionary<object, object> objectGraph, JsonOptions options)
+        internal static void WriteSerializable(TextWriter writer, ISerializable serializable, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             SerializationInfo info = new SerializationInfo(serializable.GetType(), _defaultFormatterConverter);
             StreamingContext ctx = new StreamingContext(StreamingContextStates.Remoting, null);
@@ -2463,7 +2461,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The bool</returns>
-        private static bool ForceSerializable(object obj) => obj is Exception;
+        internal static bool ForceSerializable(object obj) => obj is Exception;
 
         /// <summary>
         ///     Writes an object to the JSON writer.
@@ -2622,7 +2620,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="sb">The sb</param>
         /// <param name="c">The </param>
-        private static void AppendCharAsUnicode(StringBuilder sb, char c)
+        internal static void AppendCharAsUnicode(StringBuilder sb, char c)
         {
             sb.Append('\\');
             sb.Append('u');
@@ -2698,7 +2696,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="writer">The writer</param>
         /// <param name="jsonObject">The json object</param>
         /// <param name="options">The options</param>
-        private static void WriteFormatted(IndentedTextWriter writer, object jsonObject, JsonOptions options)
+        internal static void WriteFormatted(IndentedTextWriter writer, object jsonObject, JsonOptions options)
         {
             if (jsonObject is DictionaryEntry entry)
             {
@@ -2974,7 +2972,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <typeparam name="T">The </typeparam>
         /// <param name="descriptor">The descriptor</param>
         /// <returns>The</returns>
-        private static T GetAttribute<T>(this PropertyDescriptor descriptor) where T : Attribute => GetAttribute<T>(descriptor.Attributes);
+        internal static T GetAttribute<T>(this PropertyDescriptor descriptor) where T : Attribute => GetAttribute<T>(descriptor.Attributes);
 
         /// <summary>
         ///     Gets the attribute using the specified attributes
@@ -2982,7 +2980,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <typeparam name="T">The </typeparam>
         /// <param name="attributes">The attributes</param>
         /// <returns>The</returns>
-        private static T GetAttribute<T>(this AttributeCollection attributes) where T : Attribute
+        internal static T GetAttribute<T>(this AttributeCollection attributes) where T : Attribute
         {
             foreach (object att in attributes)
             {
@@ -3000,7 +2998,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="text">The text</param>
         /// <param name="trim">The trim</param>
         /// <returns>The bool</returns>
-        private static bool EqualsIgnoreCase(this string str, string text, bool trim = false)
+        internal static bool EqualsIgnoreCase(this string str, string text, bool trim = false)
         {
             if (trim)
             {
@@ -3025,7 +3023,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="str">The str</param>
         /// <returns>The string</returns>
-        private static string Nullify(this string str)
+        internal static string Nullify(this string str)
         {
             if (str == null)
                 return null;
@@ -3035,2774 +3033,6 @@ namespace Alis.Core.Aspect.Data.Json
 
             string t = str.Trim();
             return t.Length == 0 ? null : t;
-        }
-
-        /// <summary>
-        ///     Defines an object that handles list deserialization.
-        /// </summary>
-        public abstract class ListObject
-        {
-            /// <summary>
-            ///     Gets or sets the list object.
-            /// </summary>
-            /// <value>
-            ///     The list.
-            /// </value>
-            public virtual object List { get; set; }
-
-            /// <summary>
-            ///     Gets the current context.
-            /// </summary>
-            /// <value>
-            ///     The context. May be null.
-            /// </value>
-            public virtual IDictionary<string, object> Context => null;
-
-            /// <summary>
-            ///     Clears the list object.
-            /// </summary>
-            public abstract void Clear();
-
-            /// <summary>
-            ///     Adds a value to the list object.
-            /// </summary>
-            /// <param name="value">The value.</param>
-            /// <param name="options">The options.</param>
-            public abstract void Add(object value, JsonOptions options = null);
-        }
-
-        /// <summary>
-        ///     Defines an interface for setting or getting options.
-        /// </summary>
-        public interface IOptionsHolder
-        {
-            /// <summary>
-            ///     Gets or sets the options.
-            /// </summary>
-            /// <value>The options.</value>
-            JsonOptions Options { get; set; }
-        }
-
-        /// <summary>
-        ///     Defines an interface for quick access to a type member.
-        /// </summary>
-        public interface IMemberAccessor
-        {
-            /// <summary>
-            ///     Gets a component value.
-            /// </summary>
-            /// <param name="component">The component.</param>
-            /// <returns>The value.</returns>
-            object Get(object component);
-
-            /// <summary>
-            ///     Sets a component's value.
-            /// </summary>
-            /// <param name="component">The component.</param>
-            /// <param name="value">The value to set.</param>
-            void Set(object component, object value);
-        }
-
-        /// <summary>
-        ///     Defines a type's member.
-        /// </summary>
-        public class MemberDefinition
-        {
-            /// <summary>
-            ///     The accessor
-            /// </summary>
-            private IMemberAccessor _accessor;
-
-            /// <summary>
-            ///     The escaped wire name
-            /// </summary>
-            private string _escapedWireName;
-
-            /// <summary>
-            ///     The name
-            /// </summary>
-            private string _name;
-
-            /// <summary>
-            ///     The type
-            /// </summary>
-            private Type _type;
-
-            /// <summary>
-            ///     The wire name
-            /// </summary>
-            private string _wireName;
-
-            /// <summary>
-            ///     Gets or sets the member name.
-            /// </summary>
-            /// <value>
-            ///     The name.
-            /// </value>
-            public virtual string Name
-            {
-                get => _name;
-                set
-                {
-                    if (string.IsNullOrEmpty(value))
-                        throw new ArgumentException(null, nameof(value));
-
-                    _name = value;
-                }
-            }
-
-            /// <summary>
-            ///     Gets or sets the name used for serialization and deserialiation.
-            /// </summary>
-            /// <value>
-            ///     The name used during serialization and deserialization.
-            /// </value>
-            public virtual string WireName
-            {
-                get => _wireName;
-                set
-                {
-                    if (string.IsNullOrEmpty(value))
-                        throw new ArgumentException(null, nameof(value));
-
-                    _wireName = value;
-                }
-            }
-
-            /// <summary>
-            ///     Gets or sets the escaped name used during serialization and deserialiation.
-            /// </summary>
-            /// <value>
-            ///     The escaped name used during serialization and deserialiation.
-            /// </value>
-            public virtual string EscapedWireName
-            {
-                get => _escapedWireName;
-                set
-                {
-                    if (string.IsNullOrEmpty(value))
-                        throw new ArgumentException(null, nameof(value));
-
-                    _escapedWireName = value;
-                }
-            }
-
-            /// <summary>
-            ///     Gets or sets a value indicating whether this instance has default value.
-            /// </summary>
-            /// <value>
-            ///     <c>true</c> if this instance has default value; otherwise, <c>false</c>.
-            /// </value>
-            public virtual bool HasDefaultValue { get; set; }
-
-            /// <summary>
-            ///     Gets or sets the default value.
-            /// </summary>
-            /// <value>
-            ///     The default value.
-            /// </value>
-            public virtual object DefaultValue { get; set; }
-
-            /// <summary>
-            ///     Gets or sets the accessor.
-            /// </summary>
-            /// <value>
-            ///     The accessor.
-            /// </value>
-            public virtual IMemberAccessor Accessor
-            {
-                get => _accessor;
-                set => _accessor = value ?? throw new ArgumentNullException(nameof(value));
-            }
-
-            /// <summary>
-            ///     Gets or sets the member type.
-            /// </summary>
-            /// <value>
-            ///     The type.
-            /// </value>
-            public virtual Type Type
-            {
-                get => _type;
-                set => _type = value ?? throw new ArgumentNullException(nameof(value));
-            }
-
-            /// <summary>
-            ///     Returns a <see cref="string" /> that represents this instance.
-            /// </summary>
-            /// <returns>
-            ///     A <see cref="string" /> that represents this instance.
-            /// </returns>
-            public override string ToString() => Name;
-
-            /// <summary>
-            ///     Gets or creates a member instance.
-            /// </summary>
-            /// <param name="target">The target.</param>
-            /// <param name="elementsCount">The elements count.</param>
-            /// <param name="options">The options.</param>
-            /// <returns>A new or existing instance.</returns>
-            public virtual object GetOrCreateInstance(object target, int elementsCount, JsonOptions options = null)
-            {
-                object targetValue;
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.ContinueOnValueError))
-                {
-                    try
-                    {
-                        targetValue = Accessor.Get(target);
-                    }
-                    catch
-                    {
-                        return null;
-                    }
-                }
-                else
-                {
-                    targetValue = Accessor.Get(target);
-                }
-
-                // sufficient array?
-                if (targetValue == null || (targetValue is Array array && (array.GetLength(0) < elementsCount)))
-                {
-                    if (Type.IsInterface)
-                        return null;
-
-                    targetValue = CreateInstance(target, Type, elementsCount, options, targetValue);
-                    if (targetValue != null)
-                    {
-                        Accessor.Set(target, targetValue);
-                    }
-                }
-
-                return targetValue;
-            }
-
-            /// <summary>
-            ///     Applies the dictionary entry to this member.
-            /// </summary>
-            /// <param name="dictionary">The input dictionary.</param>
-            /// <param name="target">The target object.</param>
-            /// <param name="key">The entry key.</param>
-            /// <param name="value">The entry value.</param>
-            /// <param name="options">The options.</param>
-            public virtual void ApplyEntry(IDictionary dictionary, object target, string key, object value, JsonOptions options = null)
-            {
-                if (options.ApplyEntryCallback != null)
-                {
-                    Dictionary<object, object> og = new Dictionary<object, object>
-                    {
-                        ["dictionary"] = dictionary,
-                        ["member"] = this
-                    };
-
-                    JsonEventArgs e = new JsonEventArgs(null, value, og, options, key, target)
-                    {
-                        EventType = JsonEventType.ApplyEntry
-                    };
-                    options.ApplyEntryCallback(e);
-                    if (e.Handled)
-                        return;
-
-                    value = e.Value;
-                }
-
-                if (value is IDictionary dic)
-                {
-                    object targetValue = GetOrCreateInstance(target, dic.Count, options);
-                    Apply(dic, targetValue, options);
-                    return;
-                }
-
-                ListObject lo = GetListObject(Type, options, target, value, dictionary, key);
-                if (lo != null)
-                {
-                    if (value is IEnumerable enumerable)
-                    {
-                        lo.List = GetOrCreateInstance(target, enumerable is ICollection coll ? coll.Count : 0, options);
-                        ApplyToListTarget(target, enumerable, lo, options);
-                        return;
-                    }
-                }
-
-
-                object cvalue = ChangeType(target, value, Type, options);
-                Accessor.Set(target, cvalue);
-            }
-
-            /// <summary>
-            ///     Determines whether the specified value is equal to the zero value for its type.
-            /// </summary>
-            /// <param name="value">The value.</param>
-            /// <returns>true if the specified value is equal to the zero value.</returns>
-            public virtual bool IsNullDateTimeValue(object value) => value == null || DateTime.MinValue.Equals(value);
-
-            /// <summary>
-            ///     Determines whether the specified value is equal to the zero value for its type.
-            /// </summary>
-            /// <param name="value">The value.</param>
-            /// <returns>true if the specified value is equal to the zero value.</returns>
-            public virtual bool IsZeroValue(object value)
-            {
-                if (value == null)
-                    return false;
-
-                Type type = value.GetType();
-                if (type != Type)
-                    return false;
-
-                return IsZeroValueType(value);
-            }
-
-            /// <summary>
-            ///     Determines if a value equals the default value.
-            /// </summary>
-            /// <param name="value">The value to compare.</param>
-            /// <returns>true if both values are equal; false otherwise.</returns>
-            public virtual bool EqualsDefaultValue(object value) => AreValuesEqual(DefaultValue, value);
-
-            /// <summary>
-            ///     Removes a deserialization member.
-            /// </summary>
-            /// <param name="type">The type. May not be null.</param>
-            /// <param name="options">The options. May be null.</param>
-            /// <param name="member">The member. May not be null.</param>
-            /// <returns>true if item is successfully removed; otherwise, false.</returns>
-            public static bool RemoveDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
-            {
-                if (type == null)
-                    throw new ArgumentNullException(nameof(type));
-
-                if (member == null)
-                    throw new ArgumentNullException(nameof(member));
-
-                options = options ?? new JsonOptions();
-                return TypeDef.RemoveDeserializationMember(type, options, member);
-            }
-
-            /// <summary>
-            ///     Removes a serialization member.
-            /// </summary>
-            /// <param name="type">The type. May not be null.</param>
-            /// <param name="options">The options. May be null.</param>
-            /// <param name="member">The member. May not be null.</param>
-            /// <returns>true if item is successfully removed; otherwise, false.</returns>
-            public static bool RemoveSerializationMember(Type type, JsonOptions options, MemberDefinition member)
-            {
-                if (type == null)
-                    throw new ArgumentNullException(nameof(type));
-
-                if (member == null)
-                    throw new ArgumentNullException(nameof(member));
-
-                options = options ?? new JsonOptions();
-                return TypeDef.RemoveSerializationMember(type, options, member);
-            }
-
-            /// <summary>
-            ///     Adds a deserialization member.
-            /// </summary>
-            /// <param name="type">The type. May not be null.</param>
-            /// <param name="options">The options. May be null.</param>
-            /// <param name="member">The member. May not be null.</param>
-            /// <returns>true if item is successfully added; otherwise, false.</returns>
-            public static void AddDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
-            {
-                if (type == null)
-                    throw new ArgumentNullException(nameof(type));
-
-                if (member == null)
-                    throw new ArgumentNullException(nameof(member));
-
-                options = options ?? new JsonOptions();
-                TypeDef.AddDeserializationMember(type, options, member);
-            }
-
-            /// <summary>
-            ///     Adds a serialization member.
-            /// </summary>
-            /// <param name="type">The type. May not be null.</param>
-            /// <param name="options">The options. May be null.</param>
-            /// <param name="member">The member. May not be null.</param>
-            /// <returns>true if item is successfully added; otherwise, false.</returns>
-            public static void AddSerializationMember(Type type, JsonOptions options, MemberDefinition member)
-            {
-                if (type == null)
-                    throw new ArgumentNullException(nameof(type));
-
-                if (member == null)
-                    throw new ArgumentNullException(nameof(member));
-
-                options = options ?? new JsonOptions();
-                TypeDef.AddSerializationMember(type, options, member);
-            }
-
-            /// <summary>
-            ///     Gets the serialization members for a given type.
-            /// </summary>
-            /// <param name="type">The type. May not be null.</param>
-            /// <param name="options">The options. May be null.</param>
-            /// <returns>A list of serialization members.</returns>
-            public static MemberDefinition[] GetSerializationMembers(Type type, JsonOptions options = null)
-            {
-                if (type == null)
-                    throw new ArgumentNullException(nameof(type));
-
-                options = options ?? new JsonOptions();
-                return TypeDef.GetSerializationMembers(type, options);
-            }
-
-            /// <summary>
-            ///     Gets the deserialization members for a given type.
-            /// </summary>
-            /// <param name="type">The type. May not be null.</param>
-            /// <param name="options">The options. May be null.</param>
-            /// <returns>A list of deserialization members.</returns>
-            public static MemberDefinition[] GetDeserializationMembers(Type type, JsonOptions options = null)
-            {
-                if (type == null)
-                    throw new ArgumentNullException(nameof(type));
-
-                options = options ?? new JsonOptions();
-                return TypeDef.GetDeserializationMembers(type, options);
-            }
-
-            /// <summary>
-            ///     Run a specified action, using the member definition lock.
-            /// </summary>
-            /// <typeparam name="T">The action input type.</typeparam>
-            /// <param name="action">The action. May not be null.</param>
-            /// <param name="state">The state. May be null.</param>
-            public static void UsingLock<T>(Action<T> action, T state)
-            {
-                if (action == null)
-                    throw new ArgumentNullException(nameof(action));
-
-                TypeDef.Lock(action, state);
-            }
-        }
-
-        /// <summary>
-        ///     The key value type enumerator class
-        /// </summary>
-        /// <seealso cref="IDictionaryEnumerator" />
-        private sealed class KeyValueTypeEnumerator : IDictionaryEnumerator
-        {
-            /// <summary>
-            ///     The enumerator
-            /// </summary>
-            private readonly IEnumerator _enumerator;
-
-            /// <summary>
-            ///     The key prop
-            /// </summary>
-            private PropertyInfo _keyProp;
-
-            /// <summary>
-            ///     The value prop
-            /// </summary>
-            private PropertyInfo _valueProp;
-
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="KeyValueTypeEnumerator" /> class
-            /// </summary>
-            /// <param name="value">The value</param>
-            public KeyValueTypeEnumerator(object value) => _enumerator = ((IEnumerable) value).GetEnumerator();
-
-            /// <summary>
-            ///     Gets the value of the entry
-            /// </summary>
-            public DictionaryEntry Entry
-            {
-                get
-                {
-                    if (_keyProp == null)
-                    {
-                        _keyProp = _enumerator.Current.GetType().GetProperty("Key");
-                        _valueProp = _enumerator.Current.GetType().GetProperty("Value");
-                    }
-
-                    return new DictionaryEntry(_keyProp.GetValue(_enumerator.Current, null), _valueProp.GetValue(_enumerator.Current, null));
-                }
-            }
-
-            /// <summary>
-            ///     Gets the value of the key
-            /// </summary>
-            public object Key => Entry.Key;
-
-            /// <summary>
-            ///     Gets the value of the value
-            /// </summary>
-            public object Value => Entry.Value;
-
-            /// <summary>
-            ///     Gets the value of the current
-            /// </summary>
-            public object Current => Entry;
-
-            /// <summary>
-            ///     Describes whether this instance move next
-            /// </summary>
-            /// <returns>The bool</returns>
-            public bool MoveNext() => _enumerator.MoveNext();
-
-            /// <summary>
-            ///     Resets this instance
-            /// </summary>
-            public void Reset() => _enumerator.Reset();
-        }
-
-        /// <summary>
-        ///     The key value type dictionary class
-        /// </summary>
-        /// <seealso cref="IDictionary" />
-        private sealed class KeyValueTypeDictionary : IDictionary
-        {
-            /// <summary>
-            ///     The enumerator
-            /// </summary>
-            private readonly KeyValueTypeEnumerator _enumerator;
-
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="KeyValueTypeDictionary" /> class
-            /// </summary>
-            /// <param name="value">The value</param>
-            public KeyValueTypeDictionary(object value) => _enumerator = new KeyValueTypeEnumerator(value);
-
-            /// <summary>
-            ///     Gets the value of the count
-            /// </summary>
-            public int Count => throw new NotSupportedException();
-
-            /// <summary>
-            ///     Gets the value of the is synchronized
-            /// </summary>
-            public bool IsSynchronized => throw new NotSupportedException();
-
-            /// <summary>
-            ///     Gets the value of the sync root
-            /// </summary>
-            public object SyncRoot => throw new NotSupportedException();
-
-            /// <summary>
-            ///     Gets the value of the is fixed size
-            /// </summary>
-            public bool IsFixedSize => throw new NotSupportedException();
-
-            /// <summary>
-            ///     Gets the value of the is read only
-            /// </summary>
-            public bool IsReadOnly => throw new NotSupportedException();
-
-            /// <summary>
-            ///     Gets the value of the keys
-            /// </summary>
-            public ICollection Keys => throw new NotSupportedException();
-
-            /// <summary>
-            ///     Gets the value of the values
-            /// </summary>
-            public ICollection Values => throw new NotSupportedException();
-
-            /// <summary>
-            ///     The not supported exception
-            /// </summary>
-            public object this[object key]
-            {
-                get => throw new NotSupportedException();
-                set => throw new NotSupportedException();
-            }
-
-            /// <summary>
-            ///     Adds the key
-            /// </summary>
-            /// <param name="key">The key</param>
-            /// <param name="value">The value</param>
-            public void Add(object key, object value) => throw new NotSupportedException();
-
-            /// <summary>
-            ///     Clears this instance
-            /// </summary>
-            public void Clear() => throw new NotSupportedException();
-
-            /// <summary>
-            ///     Describes whether this instance contains
-            /// </summary>
-            /// <param name="key">The key</param>
-            /// <returns>The bool</returns>
-            public bool Contains(object key) => throw new NotSupportedException();
-
-            /// <summary>
-            ///     Gets the enumerator
-            /// </summary>
-            /// <returns>The dictionary enumerator</returns>
-            public IDictionaryEnumerator GetEnumerator() => _enumerator;
-
-            /// <summary>
-            ///     Removes the key
-            /// </summary>
-            /// <param name="key">The key</param>
-            public void Remove(object key) => throw new NotSupportedException();
-
-            /// <summary>
-            ///     Copies the to using the specified array
-            /// </summary>
-            /// <param name="array">The array</param>
-            /// <param name="index">The index</param>
-            public void CopyTo(Array array, int index) => throw new NotSupportedException();
-
-            /// <summary>
-            ///     Gets the enumerator
-            /// </summary>
-            /// <returns>The enumerator</returns>
-            IEnumerator IEnumerable.GetEnumerator() => throw new NotSupportedException();
-        }
-
-        /// <summary>
-        ///     The key value type class
-        /// </summary>
-        private sealed class KeyValueType
-        {
-            /// <summary>
-            ///     The key type
-            /// </summary>
-            public Type KeyType;
-
-            /// <summary>
-            ///     The value type
-            /// </summary>
-            public Type ValueType;
-        }
-
-        /// <summary>
-        ///     The type def class
-        /// </summary>
-        private sealed class TypeDef
-        {
-            /// <summary>
-            ///     The type def
-            /// </summary>
-            private static readonly Dictionary<string, TypeDef> _defs = new Dictionary<string, TypeDef>();
-
-            /// <summary>
-            ///     The key value type
-            /// </summary>
-            private static readonly Dictionary<Type, KeyValueType> _iskvpe = new Dictionary<Type, KeyValueType>();
-
-            /// <summary>
-            ///     The lock
-            /// </summary>
-            private static readonly object _lock = new object();
-
-            /// <summary>
-            ///     The member definition
-            /// </summary>
-            private readonly List<MemberDefinition> _deserializationMembers = new List<MemberDefinition>();
-
-            /// <summary>
-            ///     The member definition
-            /// </summary>
-            private readonly List<MemberDefinition> _serializationMembers = new List<MemberDefinition>();
-
-            /// <summary>
-            ///     The type
-            /// </summary>
-            private readonly Type _type;
-
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="TypeDef" /> class
-            /// </summary>
-            /// <param name="type">The type</param>
-            /// <param name="options">The options</param>
-            private TypeDef(Type type, JsonOptions options)
-            {
-                _type = type;
-                IEnumerable<MemberDefinition> members;
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseReflection))
-                {
-                    members = EnumerateDefinitionsUsingReflection(true, type, options);
-                }
-                else
-                {
-                    members = EnumerateDefinitionsUsingTypeDescriptors(true, type, options);
-                }
-
-                _serializationMembers = new List<MemberDefinition>(options.FinalizeSerializationMembers(type, members));
-
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseReflection))
-                {
-                    members = EnumerateDefinitionsUsingReflection(false, type, options);
-                }
-                else
-                {
-                    members = EnumerateDefinitionsUsingTypeDescriptors(false, type, options);
-                }
-
-                _deserializationMembers = new List<MemberDefinition>(options.FinalizeDeserializationMembers(type, members));
-            }
-
-            /// <summary>
-            ///     Gets the deserialization member using the specified key
-            /// </summary>
-            /// <param name="key">The key</param>
-            /// <returns>The member definition</returns>
-            private MemberDefinition GetDeserializationMember(string key)
-            {
-                if (key == null)
-                    return null;
-
-                foreach (MemberDefinition def in _deserializationMembers)
-                {
-                    if (string.Compare(def.WireName, key, StringComparison.OrdinalIgnoreCase) == 0)
-                        return def;
-                }
-
-                return null;
-            }
-
-            /// <summary>
-            ///     Applies the entry using the specified dictionary
-            /// </summary>
-            /// <param name="dictionary">The dictionary</param>
-            /// <param name="target">The target</param>
-            /// <param name="key">The key</param>
-            /// <param name="value">The value</param>
-            /// <param name="options">The options</param>
-            public void ApplyEntry(IDictionary dictionary, object target, string key, object value, JsonOptions options)
-            {
-                MemberDefinition member = GetDeserializationMember(key);
-                if (member == null)
-                    return;
-
-                member.ApplyEntry(dictionary, target, key, value, options);
-            }
-
-            /// <summary>
-            ///     Writes the values using the specified writer
-            /// </summary>
-            /// <param name="writer">The writer</param>
-            /// <param name="component">The component</param>
-            /// <param name="objectGraph">The object graph</param>
-            /// <param name="options">The options</param>
-            public void WriteValues(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options)
-            {
-                bool first = true;
-                foreach (MemberDefinition member in _serializationMembers)
-                {
-                    bool nameChanged = false;
-                    string name = member.WireName;
-                    object value = member.Accessor.Get(component);
-                    if (options.WriteNamedValueObjectCallback != null)
-                    {
-                        JsonEventArgs e = new JsonEventArgs(writer, value, objectGraph, options, name, component)
-                        {
-                            EventType = JsonEventType.WriteNamedValueObject,
-                            First = first
-                        };
-                        options.WriteNamedValueObjectCallback(e);
-                        first = e.First;
-                        if (e.Handled)
-                            continue;
-
-                        nameChanged = name != e.Name;
-                        name = e.Name;
-                        value = e.Value;
-                    }
-
-                    if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipNullPropertyValues))
-                    {
-                        if (value == null)
-                            continue;
-                    }
-
-                    if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipZeroValueTypes))
-                    {
-                        if (member.IsZeroValue(value))
-                            continue;
-                    }
-
-                    if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipNullDateTimeValues))
-                    {
-                        if (member.IsNullDateTimeValue(value))
-                            continue;
-                    }
-
-                    bool skipDefaultValues = options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipDefaultValues);
-                    if (skipDefaultValues && member.HasDefaultValue)
-                    {
-                        if (member.EqualsDefaultValue(value))
-                            continue;
-                    }
-
-                    if (!first)
-                    {
-                        writer.Write(',');
-                    }
-                    else
-                    {
-                        first = false;
-                    }
-
-                    if (nameChanged)
-                    {
-                        WriteNameValue(writer, name, value, objectGraph, options);
-                    }
-                    else
-                    {
-                        if (options.SerializationOptions.HasFlag(JsonSerializationOptions.WriteKeysWithoutQuotes))
-                        {
-                            writer.Write(member.EscapedWireName);
-                        }
-                        else
-                        {
-                            writer.Write('"');
-                            writer.Write(member.EscapedWireName);
-                            writer.Write('"');
-                        }
-
-                        writer.Write(':');
-                        WriteValue(writer, value, objectGraph, options);
-                    }
-                }
-            }
-
-            /// <summary>
-            ///     Returns the string
-            /// </summary>
-            /// <returns>The string</returns>
-            public override string ToString() => _type.AssemblyQualifiedName;
-
-            /// <summary>
-            ///     Gets the key using the specified type
-            /// </summary>
-            /// <param name="type">The type</param>
-            /// <param name="options">The options</param>
-            /// <returns>The string</returns>
-            private static string GetKey(Type type, JsonOptions options) => type.AssemblyQualifiedName + '\0' + options.GetCacheKey();
-
-            /// <summary>
-            ///     Unlockeds the get using the specified type
-            /// </summary>
-            /// <param name="type">The type</param>
-            /// <param name="options">The options</param>
-            /// <returns>The ta</returns>
-            private static TypeDef UnlockedGet(Type type, JsonOptions options)
-            {
-                string key = GetKey(type, options);
-                if (!_defs.TryGetValue(key, out TypeDef ta))
-                {
-                    ta = new TypeDef(type, options);
-                    _defs.Add(key, ta);
-                }
-
-                return ta;
-            }
-
-            /// <summary>
-            ///     Locks the action
-            /// </summary>
-            /// <typeparam name="T">The </typeparam>
-            /// <param name="action">The action</param>
-            /// <param name="state">The state</param>
-            public static void Lock<T>(Action<T> action, T state)
-            {
-                lock (_lock)
-                {
-                    action(state);
-                }
-            }
-
-            /// <summary>
-            ///     Describes whether remove deserialization member
-            /// </summary>
-            /// <param name="type">The type</param>
-            /// <param name="options">The options</param>
-            /// <param name="member">The member</param>
-            /// <returns>The bool</returns>
-            public static bool RemoveDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
-            {
-                lock (_lock)
-                {
-                    TypeDef ta = UnlockedGet(type, options);
-                    return ta._deserializationMembers.Remove(member);
-                }
-            }
-
-            /// <summary>
-            ///     Describes whether remove serialization member
-            /// </summary>
-            /// <param name="type">The type</param>
-            /// <param name="options">The options</param>
-            /// <param name="member">The member</param>
-            /// <returns>The bool</returns>
-            public static bool RemoveSerializationMember(Type type, JsonOptions options, MemberDefinition member)
-            {
-                lock (_lock)
-                {
-                    TypeDef ta = UnlockedGet(type, options);
-                    return ta._serializationMembers.Remove(member);
-                }
-            }
-
-            /// <summary>
-            ///     Adds the deserialization member using the specified type
-            /// </summary>
-            /// <param name="type">The type</param>
-            /// <param name="options">The options</param>
-            /// <param name="member">The member</param>
-            public static void AddDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
-            {
-                lock (_lock)
-                {
-                    TypeDef ta = UnlockedGet(type, options);
-                    ta._deserializationMembers.Add(member);
-                }
-            }
-
-            /// <summary>
-            ///     Adds the serialization member using the specified type
-            /// </summary>
-            /// <param name="type">The type</param>
-            /// <param name="options">The options</param>
-            /// <param name="member">The member</param>
-            public static void AddSerializationMember(Type type, JsonOptions options, MemberDefinition member)
-            {
-                lock (_lock)
-                {
-                    TypeDef ta = UnlockedGet(type, options);
-                    ta._serializationMembers.Add(member);
-                }
-            }
-
-            /// <summary>
-            ///     Gets the deserialization members using the specified type
-            /// </summary>
-            /// <param name="type">The type</param>
-            /// <param name="options">The options</param>
-            /// <returns>The member definition array</returns>
-            public static MemberDefinition[] GetDeserializationMembers(Type type, JsonOptions options)
-            {
-                lock (_lock)
-                {
-                    TypeDef ta = UnlockedGet(type, options);
-                    return ta._deserializationMembers.ToArray();
-                }
-            }
-
-            /// <summary>
-            ///     Gets the serialization members using the specified type
-            /// </summary>
-            /// <param name="type">The type</param>
-            /// <param name="options">The options</param>
-            /// <returns>The member definition array</returns>
-            public static MemberDefinition[] GetSerializationMembers(Type type, JsonOptions options)
-            {
-                lock (_lock)
-                {
-                    TypeDef ta = UnlockedGet(type, options);
-                    return ta._serializationMembers.ToArray();
-                }
-            }
-
-            /// <summary>
-            ///     Gets the type
-            /// </summary>
-            /// <param name="type">The type</param>
-            /// <param name="options">The options</param>
-            /// <returns>The type def</returns>
-            public static TypeDef Get(Type type, JsonOptions options)
-            {
-                lock (_lock)
-                {
-                    return UnlockedGet(type, options);
-                }
-            }
-
-            /// <summary>
-            ///     Describes whether is key value pair enumerable
-            /// </summary>
-            /// <param name="type">The type</param>
-            /// <param name="keyType">The key type</param>
-            /// <param name="valueType">The value type</param>
-            /// <returns>The bool</returns>
-            public static bool IsKeyValuePairEnumerable(Type type, out Type keyType, out Type valueType)
-            {
-                lock (_lock)
-                {
-                    if (!_iskvpe.TryGetValue(type, out KeyValueType kv))
-                    {
-                        kv = new KeyValueType();
-                        InternalIsKeyValuePairEnumerable(type, out kv.KeyType, out kv.ValueType);
-                        _iskvpe.Add(type, kv);
-                    }
-
-                    keyType = kv.KeyType;
-                    valueType = kv.ValueType;
-                    return kv.KeyType != null;
-                }
-            }
-
-            /// <summary>
-            ///     Enumerates the definitions using reflection using the specified serialization
-            /// </summary>
-            /// <param name="serialization">The serialization</param>
-            /// <param name="type">The type</param>
-            /// <param name="options">The options</param>
-            /// <returns>An enumerable of member definition</returns>
-            private static IEnumerable<MemberDefinition> EnumerateDefinitionsUsingReflection(bool serialization, Type type, JsonOptions options)
-            {
-                foreach (PropertyInfo info in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
-                {
-                    if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
-                    {
-                        JsonAttribute ja = GetJsonAttribute(info);
-                        if (ja != null)
-                        {
-                            if (serialization && ja.IgnoreWhenSerializing)
-                                continue;
-
-                            if (!serialization && ja.IgnoreWhenDeserializing)
-                                continue;
-                        }
-                    }
-
-                    if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
-                    {
-                        if (info.IsDefined(typeof(XmlIgnoreAttribute), true))
-                            continue;
-                    }
-
-                    if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
-                    {
-                        if (HasScriptIgnore(info))
-                            continue;
-                    }
-
-                    if (serialization)
-                    {
-                        if (!info.CanRead)
-                            continue;
-
-                        MethodInfo getMethod = info.GetGetMethod();
-                        if (getMethod == null || getMethod.GetParameters().Length > 0)
-                            continue;
-                    }
-                    // else we don't test the set method, as some properties can still be deserialized (collections)
-
-                    string name = GetObjectName(info, info.Name);
-
-                    MemberDefinition ma = new MemberDefinition
-                    {
-                        Type = info.PropertyType,
-                        Name = info.Name
-                    };
-                    if (serialization)
-                    {
-                        ma.WireName = name;
-                        ma.EscapedWireName = EscapeString(name);
-                    }
-                    else
-                    {
-                        ma.WireName = name;
-                    }
-
-                    ma.HasDefaultValue = TryGetObjectDefaultValue(info, out object defaultValue);
-                    ma.DefaultValue = defaultValue;
-                    ma.Accessor = (IMemberAccessor) Activator.CreateInstance(typeof(PropertyInfoAccessor<,>).MakeGenericType(info.DeclaringType, info.PropertyType), info);
-                    yield return ma;
-                }
-
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SerializeFields))
-                {
-                    foreach (FieldInfo info in type.GetFields(BindingFlags.Public | BindingFlags.Instance))
-                    {
-                        if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
-                        {
-                            JsonAttribute ja = GetJsonAttribute(info);
-                            if (ja != null)
-                            {
-                                if (serialization && ja.IgnoreWhenSerializing)
-                                    continue;
-
-                                if (!serialization && ja.IgnoreWhenDeserializing)
-                                    continue;
-                            }
-                        }
-
-                        if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
-                        {
-                            if (info.IsDefined(typeof(XmlIgnoreAttribute), true))
-                                continue;
-                        }
-
-                        if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
-                        {
-                            if (HasScriptIgnore(info))
-                                continue;
-                        }
-
-                        string name = GetObjectName(info, info.Name);
-
-                        MemberDefinition ma = new MemberDefinition
-                        {
-                            Type = info.FieldType,
-                            Name = info.Name
-                        };
-                        if (serialization)
-                        {
-                            ma.WireName = name;
-                            ma.EscapedWireName = EscapeString(name);
-                        }
-                        else
-                        {
-                            ma.WireName = name;
-                        }
-
-                        ma.HasDefaultValue = TryGetObjectDefaultValue(info, out object defaultValue);
-                        ma.DefaultValue = defaultValue;
-                        ma.Accessor = (IMemberAccessor) Activator.CreateInstance(typeof(FieldInfoAccessor), info);
-                        yield return ma;
-                    }
-                }
-            }
-
-            /// <summary>
-            ///     Enumerates the definitions using type descriptors using the specified serialization
-            /// </summary>
-            /// <param name="serialization">The serialization</param>
-            /// <param name="type">The type</param>
-            /// <param name="options">The options</param>
-            /// <returns>An enumerable of member definition</returns>
-            private static IEnumerable<MemberDefinition> EnumerateDefinitionsUsingTypeDescriptors(bool serialization, Type type, JsonOptions options)
-            {
-                foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(type).Cast<PropertyDescriptor>())
-                {
-                    if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
-                    {
-                        JsonAttribute ja = descriptor.GetAttribute<JsonAttribute>();
-                        if (ja != null)
-                        {
-                            if (serialization && ja.IgnoreWhenSerializing)
-                                continue;
-
-                            if (!serialization && ja.IgnoreWhenDeserializing)
-                                continue;
-                        }
-                    }
-
-                    if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
-                    {
-                        if (descriptor.GetAttribute<XmlIgnoreAttribute>() != null)
-                            continue;
-                    }
-
-                    if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
-                    {
-                        if (HasScriptIgnore(descriptor))
-                            continue;
-                    }
-
-                    if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipGetOnly) && descriptor.IsReadOnly)
-                        continue;
-
-                    string name = GetObjectName(descriptor, descriptor.Name);
-
-                    MemberDefinition ma = new MemberDefinition
-                    {
-                        Type = descriptor.PropertyType,
-                        Name = descriptor.Name
-                    };
-                    if (serialization)
-                    {
-                        ma.WireName = name;
-                        ma.EscapedWireName = EscapeString(name);
-                    }
-                    else
-                    {
-                        ma.WireName = name;
-                    }
-
-                    ma.HasDefaultValue = TryGetObjectDefaultValue(descriptor, out object defaultValue);
-                    ma.DefaultValue = defaultValue;
-                    ma.Accessor = (IMemberAccessor) Activator.CreateInstance(typeof(PropertyDescriptorAccessor), descriptor);
-                    yield return ma;
-                }
-            }
-        }
-
-        /// <summary>
-        ///     A utility class to compare object by their reference.
-        /// </summary>
-        public sealed class ReferenceComparer : IEqualityComparer<object>
-        {
-            /// <summary>
-            ///     Gets the instance of the ReferenceComparer class.
-            /// </summary>
-            public static readonly ReferenceComparer Instance = new ReferenceComparer();
-
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="ReferenceComparer" /> class
-            /// </summary>
-            private ReferenceComparer()
-            {
-            }
-
-            /// <summary>
-            ///     Describes whether this instance equals
-            /// </summary>
-            /// <param name="x">The </param>
-            /// <param name="y">The </param>
-            /// <returns>The bool</returns>
-            bool IEqualityComparer<object>.Equals(object x, object y) => ReferenceEquals(x, y);
-
-            /// <summary>
-            ///     Gets the hash code using the specified obj
-            /// </summary>
-            /// <param name="obj">The obj</param>
-            /// <returns>The int</returns>
-            int IEqualityComparer<object>.GetHashCode(object obj) => RuntimeHelpers.GetHashCode(obj);
-        }
-
-        /// <summary>
-        ///     The collection object class
-        /// </summary>
-        /// <seealso cref="ListObject" />
-        private sealed class ICollectionTObject<T> : ListObject
-        {
-            /// <summary>
-            ///     The coll
-            /// </summary>
-            private ICollection<T> _coll;
-
-            /// <summary>
-            ///     Gets or sets the value of the list
-            /// </summary>
-            public override object List
-            {
-                get => base.List;
-                set
-                {
-                    base.List = value;
-                    _coll = (ICollection<T>) value;
-                }
-            }
-
-            /// <summary>
-            ///     Clears this instance
-            /// </summary>
-            public override void Clear() => _coll.Clear();
-
-            /// <summary>
-            ///     Adds the value
-            /// </summary>
-            /// <param name="value">The value</param>
-            /// <param name="options">The options</param>
-            public override void Add(object value, JsonOptions options = null)
-            {
-                if ((value == null) && typeof(T).IsValueType)
-                {
-                    HandleException(new JsonException("JSO0014: JSON error detected. Cannot add null to a collection of '" + typeof(T) + "' elements."), options);
-                }
-
-                _coll.Add((T) value);
-            }
-        }
-
-        /// <summary>
-        ///     The list object class
-        /// </summary>
-        /// <seealso cref="ListObject" />
-        private sealed class IListObject : ListObject
-        {
-            /// <summary>
-            ///     The list
-            /// </summary>
-            private IList _list;
-
-            /// <summary>
-            ///     Gets or sets the value of the list
-            /// </summary>
-            public override object List
-            {
-                get => base.List;
-                set
-                {
-                    base.List = value;
-                    _list = (IList) value;
-                }
-            }
-
-            /// <summary>
-            ///     Clears this instance
-            /// </summary>
-            public override void Clear() => _list.Clear();
-
-            /// <summary>
-            ///     Adds the value
-            /// </summary>
-            /// <param name="value">The value</param>
-            /// <param name="options">The options</param>
-            public override void Add(object value, JsonOptions options = null) => _list.Add(value);
-        }
-
-        /// <summary>
-        ///     The field info accessor class
-        /// </summary>
-        /// <seealso cref="IMemberAccessor" />
-        private sealed class FieldInfoAccessor : IMemberAccessor
-        {
-            /// <summary>
-            ///     The fi
-            /// </summary>
-            private readonly FieldInfo _fi;
-
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="FieldInfoAccessor" /> class
-            /// </summary>
-            /// <param name="fi">The fi</param>
-            public FieldInfoAccessor(FieldInfo fi) => _fi = fi;
-
-            /// <summary>
-            ///     Gets the component
-            /// </summary>
-            /// <param name="component">The component</param>
-            /// <returns>The object</returns>
-            public object Get(object component) => _fi.GetValue(component);
-
-            /// <summary>
-            ///     Sets the component
-            /// </summary>
-            /// <param name="component">The component</param>
-            /// <param name="value">The value</param>
-            public void Set(object component, object value) => _fi.SetValue(component, value);
-        }
-
-        /// <summary>
-        ///     The property descriptor accessor class
-        /// </summary>
-        /// <seealso cref="IMemberAccessor" />
-        private sealed class PropertyDescriptorAccessor : IMemberAccessor
-        {
-            /// <summary>
-            ///     The pd
-            /// </summary>
-            private readonly PropertyDescriptor _pd;
-
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="PropertyDescriptorAccessor" /> class
-            /// </summary>
-            /// <param name="pd">The pd</param>
-            public PropertyDescriptorAccessor(PropertyDescriptor pd) => _pd = pd;
-
-            /// <summary>
-            ///     Gets the component
-            /// </summary>
-            /// <param name="component">The component</param>
-            /// <returns>The object</returns>
-            public object Get(object component) => _pd.GetValue(component);
-
-            /// <summary>
-            ///     Sets the component
-            /// </summary>
-            /// <param name="component">The component</param>
-            /// <param name="value">The value</param>
-            public void Set(object component, object value)
-            {
-                if (_pd.IsReadOnly)
-                    return;
-
-                _pd.SetValue(component, value);
-            }
-        }
-
-        // note: Funcs & Action<T> needs .NET 4+
-        /// <summary>
-        ///     The func
-        /// </summary>
-        private delegate TResult JFunc<T, TResult>(T arg);
-
-        /// <summary>
-        ///     The action
-        /// </summary>
-        private delegate void JAction<T1, T2>(T1 arg1, T2 arg2);
-
-        /// <summary>
-        ///     The property info accessor class
-        /// </summary>
-        /// <seealso cref="IMemberAccessor" />
-        private sealed class PropertyInfoAccessor<TComponent, TMember> : IMemberAccessor
-        {
-            /// <summary>
-            ///     The get
-            /// </summary>
-            private readonly JFunc<TComponent, TMember> _get;
-
-            /// <summary>
-            ///     The set
-            /// </summary>
-            private readonly JAction<TComponent, TMember> _set;
-
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="PropertyInfoAccessor" /> class
-            /// </summary>
-            /// <param name="pi">The pi</param>
-            public PropertyInfoAccessor(PropertyInfo pi)
-            {
-                MethodInfo get = pi.GetGetMethod();
-                if (get != null)
-                {
-                    _get = (JFunc<TComponent, TMember>) Delegate.CreateDelegate(typeof(JFunc<TComponent, TMember>), get);
-                }
-
-                MethodInfo set = pi.GetSetMethod();
-                if (set != null)
-                {
-                    _set = (JAction<TComponent, TMember>) Delegate.CreateDelegate(typeof(JAction<TComponent, TMember>), set);
-                }
-            }
-
-            /// <summary>
-            ///     Gets the component
-            /// </summary>
-            /// <param name="component">The component</param>
-            /// <returns>The object</returns>
-            public object Get(object component)
-            {
-                if (_get == null)
-                    return null;
-
-                return _get((TComponent) component);
-            }
-
-            /// <summary>
-            ///     Sets the component
-            /// </summary>
-            /// <param name="component">The component</param>
-            /// <param name="value">The value</param>
-            public void Set(object component, object value)
-            {
-                if (_set == null)
-                    return;
-
-                _set((TComponent) component, (TMember) value);
-            }
-        }
-
-        /// <summary>
-        ///     The conversions class
-        /// </summary>
-        private static class Conversions
-        {
-            /// <summary>
-            ///     The enum separators
-            /// </summary>
-            private static readonly char[] _enumSeparators = {',', ';', '+', '|', ' '};
-
-            /// <summary>
-            ///     The date formats utc
-            /// </summary>
-            private static readonly string[] _dateFormatsUtc = {"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", "yyyy'-'MM'-'dd'T'HH':'mm'Z'", "yyyyMMdd'T'HH':'mm':'ss'Z'"};
-
-            /// <summary>
-            ///     Describes whether is valid
-            /// </summary>
-            /// <param name="dt">The dt</param>
-            /// <returns>The bool</returns>
-            private static bool IsValid(DateTime dt) => (dt != DateTime.MinValue) && (dt != DateTime.MaxValue) && (dt.Kind != DateTimeKind.Unspecified);
-
-            /// <summary>
-            ///     Changes the type using the specified input
-            /// </summary>
-            /// <typeparam name="T">The </typeparam>
-            /// <param name="input">The input</param>
-            /// <param name="defaultValue">The default value</param>
-            /// <param name="provider">The provider</param>
-            /// <returns>The value</returns>
-            public static T ChangeType<T>(object input, T defaultValue = default(T), IFormatProvider provider = null)
-            {
-                if (!TryChangeType(input, provider, out T value))
-                    return defaultValue;
-
-                return value;
-            }
-
-            /// <summary>
-            ///     Describes whether try change type
-            /// </summary>
-            /// <typeparam name="T">The </typeparam>
-            /// <param name="input">The input</param>
-            /// <param name="value">The value</param>
-            /// <returns>The bool</returns>
-            public static bool TryChangeType<T>(object input, out T value) => TryChangeType(input, null, out value);
-
-            /// <summary>
-            ///     Describes whether try change type
-            /// </summary>
-            /// <typeparam name="T">The </typeparam>
-            /// <param name="input">The input</param>
-            /// <param name="provider">The provider</param>
-            /// <param name="value">The value</param>
-            /// <returns>The bool</returns>
-            public static bool TryChangeType<T>(object input, IFormatProvider provider, out T value)
-            {
-                if (!TryChangeType(input, typeof(T), provider, out object tvalue))
-                {
-                    value = default(T);
-                    return false;
-                }
-
-                value = (T) tvalue;
-                return true;
-            }
-
-            /// <summary>
-            ///     Changes the type using the specified input
-            /// </summary>
-            /// <param name="input">The input</param>
-            /// <param name="conversionType">The conversion type</param>
-            /// <param name="defaultValue">The default value</param>
-            /// <param name="provider">The provider</param>
-            /// <returns>The value</returns>
-            public static object ChangeType(object input, Type conversionType, object defaultValue = null, IFormatProvider provider = null)
-            {
-                if (!TryChangeType(input, conversionType, provider, out object value))
-                {
-                    if (TryChangeType(defaultValue, conversionType, provider, out object def))
-                        return def;
-
-                    if (IsReallyValueType(conversionType))
-                        return Activator.CreateInstance(conversionType);
-
-                    return null;
-                }
-
-                return value;
-            }
-
-            /// <summary>
-            ///     Describes whether try change type
-            /// </summary>
-            /// <param name="input">The input</param>
-            /// <param name="conversionType">The conversion type</param>
-            /// <param name="value">The value</param>
-            /// <returns>The bool</returns>
-            public static bool TryChangeType(object input, Type conversionType, out object value) => TryChangeType(input, conversionType, null, out value);
-
-            /// <summary>
-            ///     Describes whether try change type
-            /// </summary>
-            /// <param name="input">The input</param>
-            /// <param name="conversionType">The conversion type</param>
-            /// <param name="provider">The provider</param>
-            /// <param name="value">The value</param>
-            /// <exception cref="ArgumentNullException"></exception>
-            /// <returns>The bool</returns>
-            public static bool TryChangeType(object input, Type conversionType, IFormatProvider provider, out object value)
-            {
-                if (conversionType == null)
-                    throw new ArgumentNullException(nameof(conversionType));
-
-                if (conversionType == typeof(object))
-                {
-                    value = input;
-                    return true;
-                }
-
-                if (IsNullable(conversionType))
-                {
-                    if (input == null)
-                    {
-                        value = null;
-                        return true;
-                    }
-
-                    Type type = conversionType.GetGenericArguments()[0];
-                    if (TryChangeType(input, type, provider, out object vtValue))
-                    {
-                        Type nt = typeof(Nullable<>).MakeGenericType(type);
-                        value = Activator.CreateInstance(nt, vtValue);
-                        return true;
-                    }
-
-                    value = null;
-                    return false;
-                }
-
-                value = IsReallyValueType(conversionType) ? Activator.CreateInstance(conversionType) : null;
-                if (input == null)
-                    return !IsReallyValueType(conversionType);
-
-                Type inputType = input.GetType();
-                if (conversionType.IsAssignableFrom(inputType))
-                {
-                    value = input;
-                    return true;
-                }
-
-                if (conversionType.IsEnum)
-                    return EnumTryParse(conversionType, input, out value);
-
-                if (inputType.IsEnum)
-                {
-                    TypeCode tc = Type.GetTypeCode(inputType);
-                    if (conversionType == typeof(int))
-                    {
-                        switch (tc)
-                        {
-                            case TypeCode.Int32:
-                                value = (int) input;
-                                return true;
-
-                            case TypeCode.Int16:
-                                value = (int) (short) input;
-                                return true;
-
-                            case TypeCode.Int64:
-                                value = (int) (long) input;
-                                return true;
-
-                            case TypeCode.UInt32:
-                                value = (int) (uint) input;
-                                return true;
-
-                            case TypeCode.UInt16:
-                                value = (int) (ushort) input;
-                                return true;
-
-                            case TypeCode.UInt64:
-                                value = (int) (ulong) input;
-                                return true;
-
-                            case TypeCode.Byte:
-                                value = (int) (byte) input;
-                                return true;
-
-                            case TypeCode.SByte:
-                                value = (int) (sbyte) input;
-                                return true;
-                        }
-
-                        return false;
-                    }
-
-                    if (conversionType == typeof(short))
-                    {
-                        switch (tc)
-                        {
-                            case TypeCode.Int32:
-                                value = (short) (int) input;
-                                return true;
-
-                            case TypeCode.Int16:
-                                value = (short) input;
-                                return true;
-
-                            case TypeCode.Int64:
-                                value = (short) (long) input;
-                                return true;
-
-                            case TypeCode.UInt32:
-                                value = (short) (uint) input;
-                                return true;
-
-                            case TypeCode.UInt16:
-                                value = (short) (ushort) input;
-                                return true;
-
-                            case TypeCode.UInt64:
-                                value = (short) (ulong) input;
-                                return true;
-
-                            case TypeCode.Byte:
-                                value = (short) (byte) input;
-                                return true;
-
-                            case TypeCode.SByte:
-                                value = (short) (sbyte) input;
-                                return true;
-                        }
-
-                        return false;
-                    }
-
-                    if (conversionType == typeof(long))
-                    {
-                        switch (tc)
-                        {
-                            case TypeCode.Int32:
-                                value = (long) (int) input;
-                                return true;
-
-                            case TypeCode.Int16:
-                                value = (long) (short) input;
-                                return true;
-
-                            case TypeCode.Int64:
-                                value = (long) input;
-                                return true;
-
-                            case TypeCode.UInt32:
-                                value = (long) (uint) input;
-                                return true;
-
-                            case TypeCode.UInt16:
-                                value = (long) (ushort) input;
-                                return true;
-
-                            case TypeCode.UInt64:
-                                value = (long) (ulong) input;
-                                return true;
-
-                            case TypeCode.Byte:
-                                value = (long) (byte) input;
-                                return true;
-
-                            case TypeCode.SByte:
-                                value = (long) (sbyte) input;
-                                return true;
-                        }
-
-                        return false;
-                    }
-
-                    if (conversionType == typeof(uint))
-                    {
-                        switch (tc)
-                        {
-                            case TypeCode.Int32:
-                                value = (uint) (int) input;
-                                return true;
-
-                            case TypeCode.Int16:
-                                value = (uint) (short) input;
-                                return true;
-
-                            case TypeCode.Int64:
-                                value = (uint) (long) input;
-                                return true;
-
-                            case TypeCode.UInt32:
-                                value = (uint) input;
-                                return true;
-
-                            case TypeCode.UInt16:
-                                value = (uint) (ushort) input;
-                                return true;
-
-                            case TypeCode.UInt64:
-                                value = (uint) (ulong) input;
-                                return true;
-
-                            case TypeCode.Byte:
-                                value = (uint) (byte) input;
-                                return true;
-
-                            case TypeCode.SByte:
-                                value = (uint) (sbyte) input;
-                                return true;
-                        }
-
-                        return false;
-                    }
-
-                    if (conversionType == typeof(ushort))
-                    {
-                        switch (tc)
-                        {
-                            case TypeCode.Int32:
-                                value = (ushort) (int) input;
-                                return true;
-
-                            case TypeCode.Int16:
-                                value = (ushort) (short) input;
-                                return true;
-
-                            case TypeCode.Int64:
-                                value = (ushort) (long) input;
-                                return true;
-
-                            case TypeCode.UInt32:
-                                value = (ushort) (uint) input;
-                                return true;
-
-                            case TypeCode.UInt16:
-                                value = (ushort) input;
-                                return true;
-
-                            case TypeCode.UInt64:
-                                value = (ushort) (ulong) input;
-                                return true;
-
-                            case TypeCode.Byte:
-                                value = (ushort) (byte) input;
-                                return true;
-
-                            case TypeCode.SByte:
-                                value = (ushort) (sbyte) input;
-                                return true;
-                        }
-
-                        return false;
-                    }
-
-                    if (conversionType == typeof(ulong))
-                    {
-                        switch (tc)
-                        {
-                            case TypeCode.Int32:
-                                value = (ulong) (int) input;
-                                return true;
-
-                            case TypeCode.Int16:
-                                value = (ulong) (short) input;
-                                return true;
-
-                            case TypeCode.Int64:
-                                value = (ulong) (long) input;
-                                return true;
-
-                            case TypeCode.UInt32:
-                                value = (ulong) (uint) input;
-                                return true;
-
-                            case TypeCode.UInt16:
-                                value = (ulong) (ushort) input;
-                                return true;
-
-                            case TypeCode.UInt64:
-                                value = (ulong) input;
-                                return true;
-
-                            case TypeCode.Byte:
-                                value = (ulong) (byte) input;
-                                return true;
-
-                            case TypeCode.SByte:
-                                value = (ulong) (sbyte) input;
-                                return true;
-                        }
-
-                        return false;
-                    }
-
-                    if (conversionType == typeof(byte))
-                    {
-                        switch (tc)
-                        {
-                            case TypeCode.Int32:
-                                value = (byte) (int) input;
-                                return true;
-
-                            case TypeCode.Int16:
-                                value = (byte) (short) input;
-                                return true;
-
-                            case TypeCode.Int64:
-                                value = (byte) (long) input;
-                                return true;
-
-                            case TypeCode.UInt32:
-                                value = (byte) (uint) input;
-                                return true;
-
-                            case TypeCode.UInt16:
-                                value = (byte) (ushort) input;
-                                return true;
-
-                            case TypeCode.UInt64:
-                                value = (byte) (ulong) input;
-                                return true;
-
-                            case TypeCode.Byte:
-                                value = (byte) input;
-                                return true;
-
-                            case TypeCode.SByte:
-                                value = (byte) (sbyte) input;
-                                return true;
-                        }
-
-                        return false;
-                    }
-
-                    if (conversionType == typeof(sbyte))
-                    {
-                        switch (tc)
-                        {
-                            case TypeCode.Int32:
-                                value = (sbyte) (int) input;
-                                return true;
-
-                            case TypeCode.Int16:
-                                value = (sbyte) (short) input;
-                                return true;
-
-                            case TypeCode.Int64:
-                                value = (sbyte) (long) input;
-                                return true;
-
-                            case TypeCode.UInt32:
-                                value = (sbyte) (uint) input;
-                                return true;
-
-                            case TypeCode.UInt16:
-                                value = (sbyte) (ushort) input;
-                                return true;
-
-                            case TypeCode.UInt64:
-                                value = (sbyte) (ulong) input;
-                                return true;
-
-                            case TypeCode.Byte:
-                                value = (sbyte) (byte) input;
-                                return true;
-
-                            case TypeCode.SByte:
-                                value = (sbyte) input;
-                                return true;
-                        }
-
-                        return false;
-                    }
-                }
-
-                if (conversionType == typeof(Guid))
-                {
-                    string svalue = string.Format(provider, "{0}", input).Nullify();
-                    if ((svalue != null) && Guid.TryParse(svalue, out Guid guid))
-                    {
-                        value = guid;
-                        return true;
-                    }
-
-                    return false;
-                }
-
-                if (conversionType == typeof(Uri))
-                {
-                    string svalue = string.Format(provider, "{0}", input).Nullify();
-                    if ((svalue != null) && Uri.TryCreate(svalue, UriKind.RelativeOrAbsolute, out Uri uri))
-                    {
-                        value = uri;
-                        return true;
-                    }
-
-                    return false;
-                }
-
-                if (conversionType == typeof(IntPtr))
-                {
-                    if (IntPtr.Size == 8)
-                    {
-                        if (TryChangeType(input, provider, out long l))
-                        {
-                            value = new IntPtr(l);
-                            return true;
-                        }
-                    }
-                    else if (TryChangeType(input, provider, out int i))
-                    {
-                        value = new IntPtr(i);
-                        return true;
-                    }
-
-                    return false;
-                }
-
-                if (conversionType == typeof(int))
-                {
-                    if (inputType == typeof(uint))
-                    {
-                        value = unchecked((int) (uint) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(ulong))
-                    {
-                        value = unchecked((int) (ulong) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(ushort))
-                    {
-                        value = (int) (ushort) input;
-                        return true;
-                    }
-
-                    if (inputType == typeof(byte))
-                    {
-                        value = (int) (byte) input;
-                        return true;
-                    }
-                }
-
-                if (conversionType == typeof(long))
-                {
-                    if (inputType == typeof(uint))
-                    {
-                        value = (long) (uint) input;
-                        return true;
-                    }
-
-                    if (inputType == typeof(ulong))
-                    {
-                        value = unchecked((long) (ulong) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(ushort))
-                    {
-                        value = (long) (ushort) input;
-                        return true;
-                    }
-
-                    if (inputType == typeof(byte))
-                    {
-                        value = (long) (byte) input;
-                        return true;
-                    }
-
-                    if (inputType == typeof(TimeSpan))
-                    {
-                        value = ((TimeSpan) input).Ticks;
-                        return true;
-                    }
-                }
-
-                if (conversionType == typeof(short))
-                {
-                    if (inputType == typeof(uint))
-                    {
-                        value = unchecked((short) (uint) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(ulong))
-                    {
-                        value = unchecked((short) (ulong) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(ushort))
-                    {
-                        value = unchecked((short) (ushort) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(byte))
-                    {
-                        value = (short) (byte) input;
-                        return true;
-                    }
-                }
-
-                if (conversionType == typeof(sbyte))
-                {
-                    if (inputType == typeof(uint))
-                    {
-                        value = unchecked((sbyte) (uint) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(ulong))
-                    {
-                        value = unchecked((sbyte) (ulong) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(ushort))
-                    {
-                        value = unchecked((sbyte) (ushort) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(byte))
-                    {
-                        value = unchecked((sbyte) (byte) input);
-                        return true;
-                    }
-                }
-
-                if (conversionType == typeof(uint))
-                {
-                    if (inputType == typeof(int))
-                    {
-                        value = unchecked((uint) (int) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(long))
-                    {
-                        value = unchecked((uint) (long) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(short))
-                    {
-                        value = unchecked((uint) (short) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(sbyte))
-                    {
-                        value = unchecked((uint) (sbyte) input);
-                        return true;
-                    }
-                }
-
-                if (conversionType == typeof(ulong))
-                {
-                    if (inputType == typeof(int))
-                    {
-                        value = unchecked((ulong) (int) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(long))
-                    {
-                        value = unchecked((ulong) (long) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(short))
-                    {
-                        value = unchecked((ulong) (short) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(sbyte))
-                    {
-                        value = unchecked((ulong) (sbyte) input);
-                        return true;
-                    }
-                }
-
-                if (conversionType == typeof(ushort))
-                {
-                    if (inputType == typeof(int))
-                    {
-                        value = unchecked((ushort) (int) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(long))
-                    {
-                        value = unchecked((ushort) (long) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(short))
-                    {
-                        value = unchecked((ushort) (short) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(sbyte))
-                    {
-                        value = unchecked((ushort) (sbyte) input);
-                        return true;
-                    }
-                }
-
-                if (conversionType == typeof(byte))
-                {
-                    if (inputType == typeof(int))
-                    {
-                        value = unchecked((byte) (int) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(long))
-                    {
-                        value = unchecked((byte) (long) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(short))
-                    {
-                        value = unchecked((byte) (short) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(sbyte))
-                    {
-                        value = unchecked((byte) (sbyte) input);
-                        return true;
-                    }
-                }
-
-                if (conversionType == typeof(DateTime))
-                {
-                    if (inputType == typeof(long))
-                    {
-                        value = new DateTime((long) input, DateTimeKind.Utc);
-                        return true;
-                    }
-
-                    if (inputType == typeof(DateTimeOffset))
-                    {
-                        value = ((DateTimeOffset) input).DateTime;
-                        return true;
-                    }
-                }
-
-                if (conversionType == typeof(DateTimeOffset))
-                {
-                    if (inputType == typeof(long))
-                    {
-                        value = new DateTimeOffset(new DateTime((long) input, DateTimeKind.Utc));
-                        return true;
-                    }
-
-                    if (inputType == typeof(DateTime))
-                    {
-                        DateTime dt = (DateTime) input;
-                        if (IsValid(dt))
-                        {
-                            value = new DateTimeOffset((DateTime) input);
-                            return true;
-                        }
-                    }
-                }
-
-                if (conversionType == typeof(TimeSpan))
-                {
-                    if (inputType == typeof(long))
-                    {
-                        value = new TimeSpan((long) input);
-                        return true;
-                    }
-
-                    if (inputType == typeof(DateTime))
-                    {
-                        value = ((DateTime) value).TimeOfDay;
-                        return true;
-                    }
-
-                    if (inputType == typeof(DateTimeOffset))
-                    {
-                        value = ((DateTimeOffset) value).TimeOfDay;
-                        return true;
-                    }
-
-                    if (TryChangeType(input, provider, out string sv) && TimeSpan.TryParse(sv, provider, out TimeSpan ts))
-                    {
-                        value = ts;
-                        return true;
-                    }
-                }
-
-                bool isGenericList = IsGenericList(conversionType, out Type elementType);
-                if (conversionType.IsArray || isGenericList)
-                {
-                    if (input is IEnumerable enumerable)
-                    {
-                        if (!isGenericList)
-                        {
-                            elementType = conversionType.GetElementType();
-                        }
-
-                        IList list = (IList) Activator.CreateInstance(typeof(List<>).MakeGenericType(elementType));
-                        int count = 0;
-                        foreach (object obj in enumerable)
-                        {
-                            count++;
-                            if (TryChangeType(obj, elementType, provider, out object element))
-                            {
-                                list.Add(element);
-                            }
-                        }
-
-                        // at least one was converted
-                        if ((count > 0) && (list.Count > 0))
-                        {
-                            if (isGenericList)
-                            {
-                                value = list;
-                            }
-                            else
-                            {
-                                value = list.GetType().GetMethod(nameof(List<object>.ToArray)).Invoke(list, null);
-                            }
-
-                            return true;
-                        }
-                    }
-                }
-
-                if (conversionType == typeof(CultureInfo) || conversionType == typeof(IFormatProvider))
-                {
-                    try
-                    {
-                        if (input is int lcid)
-                        {
-                            value = CultureInfo.GetCultureInfo(lcid);
-                            return true;
-                        }
-
-                        string si = input?.ToString();
-                        if (si != null)
-                        {
-                            if (int.TryParse(si, out lcid))
-                            {
-                                value = CultureInfo.GetCultureInfo(lcid);
-                                return true;
-                            }
-
-                            value = CultureInfo.GetCultureInfo(si);
-                            return true;
-                        }
-                    }
-                    catch
-                    {
-                        // do nothing, wrong culture, etc.
-                    }
-
-                    return false;
-                }
-
-                if (conversionType == typeof(bool))
-                {
-                    if (true.Equals(input))
-                    {
-                        value = true;
-                        return true;
-                    }
-
-                    if (false.Equals(input))
-                    {
-                        value = false;
-                        return true;
-                    }
-
-                    string svalue = string.Format(provider, "{0}", input).Nullify();
-                    if (svalue == null)
-                        return false;
-
-                    if (bool.TryParse(svalue, out bool b))
-                    {
-                        value = b;
-                        return true;
-                    }
-
-                    if (svalue.EqualsIgnoreCase("y") || svalue.EqualsIgnoreCase("yes"))
-                    {
-                        value = true;
-                        return true;
-                    }
-
-                    if (svalue.EqualsIgnoreCase("n") || svalue.EqualsIgnoreCase("no"))
-                    {
-                        value = false;
-                        return true;
-                    }
-
-                    if (TryChangeType(input, out long bl))
-                    {
-                        value = bl != 0;
-                        return true;
-                    }
-
-                    return false;
-                }
-
-                // in general, nothing is convertible to anything but one of these, IConvertible is 100% stupid thing
-                bool isWellKnownConvertible() => conversionType == typeof(short) || conversionType == typeof(int) ||
-                                                 conversionType == typeof(string) || conversionType == typeof(byte) ||
-                                                 conversionType == typeof(char) || conversionType == typeof(DateTime) ||
-                                                 conversionType == typeof(DBNull) || conversionType == typeof(decimal) ||
-                                                 conversionType == typeof(double) || conversionType.IsEnum ||
-                                                 conversionType == typeof(short) || conversionType == typeof(int) ||
-                                                 conversionType == typeof(long) || conversionType == typeof(sbyte) ||
-                                                 conversionType == typeof(bool) || conversionType == typeof(float) ||
-                                                 conversionType == typeof(ushort) || conversionType == typeof(uint) ||
-                                                 conversionType == typeof(ulong);
-
-                if (isWellKnownConvertible() && input is IConvertible convertible)
-                {
-                    try
-                    {
-                        value = convertible.ToType(conversionType, provider);
-                        if (value is DateTime dt && !IsValid(dt))
-                            return false;
-
-                        return true;
-                    }
-                    catch
-                    {
-                        // continue;
-                    }
-                }
-
-                if (input != null)
-                {
-                    TypeConverter inputConverter = TypeDescriptor.GetConverter(input);
-                    if (inputConverter != null)
-                    {
-                        if (inputConverter.CanConvertTo(conversionType))
-                        {
-                            try
-                            {
-                                value = inputConverter.ConvertTo(null, provider as CultureInfo, input, conversionType);
-                                return true;
-                            }
-                            catch
-                            {
-                                // continue;
-                            }
-                        }
-                    }
-                }
-
-                TypeConverter converter = TypeDescriptor.GetConverter(conversionType);
-                if (converter != null)
-                {
-                    if (converter.CanConvertTo(conversionType))
-                    {
-                        try
-                        {
-                            value = converter.ConvertTo(null, provider as CultureInfo, input, conversionType);
-                            return true;
-                        }
-                        catch
-                        {
-                            // continue;
-                        }
-                    }
-
-                    if (converter.CanConvertFrom(inputType))
-                    {
-                        try
-                        {
-                            value = converter.ConvertFrom(null, provider as CultureInfo, input);
-                            return true;
-                        }
-                        catch
-                        {
-                            // continue;
-                        }
-                    }
-                }
-
-                if (conversionType == typeof(string))
-                {
-                    value = string.Format(provider, "{0}", input);
-                    return true;
-                }
-
-                return false;
-            }
-
-            /// <summary>
-            ///     Enums the to u int 64 using the specified value
-            /// </summary>
-            /// <param name="value">The value</param>
-            /// <exception cref="ArgumentNullException"></exception>
-            /// <returns>The ulong</returns>
-            public static ulong EnumToUInt64(object value)
-            {
-                if (value == null)
-                    throw new ArgumentNullException(nameof(value));
-
-                TypeCode typeCode = Convert.GetTypeCode(value);
-#pragma warning disable IDE0010 // Add missing cases
-#pragma warning disable IDE0066 // Convert switch statement to expression
-                switch (typeCode)
-#pragma warning restore IDE0066 // Convert switch statement to expression
-#pragma warning restore IDE0010 // Add missing cases
-                {
-                    case TypeCode.SByte:
-                    case TypeCode.Int16:
-                    case TypeCode.Int32:
-                    case TypeCode.Int64:
-                        return (ulong) Convert.ToInt64(value, CultureInfo.InvariantCulture);
-
-                    case TypeCode.Byte:
-                    case TypeCode.UInt16:
-                    case TypeCode.UInt32:
-                    case TypeCode.UInt64:
-                        return Convert.ToUInt64(value, CultureInfo.InvariantCulture);
-
-                    //case TypeCode.String:
-                    default:
-                        return ChangeType<ulong>(value, 0, CultureInfo.InvariantCulture);
-                }
-            }
-
-            /// <summary>
-            ///     Describes whether string to enum
-            /// </summary>
-            /// <param name="type">The type</param>
-            /// <param name="names">The names</param>
-            /// <param name="values">The values</param>
-            /// <param name="input">The input</param>
-            /// <param name="value">The value</param>
-            /// <returns>The bool</returns>
-            private static bool StringToEnum(Type type, string[] names, Array values, string input, out object value)
-            {
-                for (int i = 0; i < names.Length; i++)
-                {
-                    if (names[i].EqualsIgnoreCase(input))
-                    {
-                        value = values.GetValue(i);
-                        return true;
-                    }
-                }
-
-                for (int i = 0; i < values.GetLength(0); i++)
-                {
-                    object valuei = values.GetValue(i);
-                    if ((input.Length > 0) && (input[0] == '-'))
-                    {
-                        long ul = (long) EnumToUInt64(valuei);
-                        if (ul.ToString().EqualsIgnoreCase(input))
-                        {
-                            value = valuei;
-                            return true;
-                        }
-                    }
-                    else
-                    {
-                        ulong ul = EnumToUInt64(valuei);
-                        if (ul.ToString().EqualsIgnoreCase(input))
-                        {
-                            value = valuei;
-                            return true;
-                        }
-                    }
-                }
-
-                if (char.IsDigit(input[0]) || input[0] == '-' || input[0] == '+')
-                {
-                    object obj = EnumToObject(type, input);
-                    if (obj == null)
-                    {
-                        value = Activator.CreateInstance(type);
-                        return false;
-                    }
-
-                    value = obj;
-                    return true;
-                }
-
-                value = Activator.CreateInstance(type);
-                return false;
-            }
-
-            /// <summary>
-            ///     Enums the to object using the specified enum type
-            /// </summary>
-            /// <param name="enumType">The enum type</param>
-            /// <param name="value">The value</param>
-            /// <exception cref="ArgumentNullException"></exception>
-            /// <exception cref="ArgumentNullException"></exception>
-            /// <exception cref="ArgumentException">null </exception>
-            /// <exception cref="ArgumentException">null </exception>
-            /// <returns>The object</returns>
-            public static object EnumToObject(Type enumType, object value)
-            {
-                if (enumType == null)
-                    throw new ArgumentNullException(nameof(enumType));
-
-                if (!enumType.IsEnum)
-                    throw new ArgumentException(null, nameof(enumType));
-
-                if (value == null)
-                    throw new ArgumentNullException(nameof(value));
-
-                Type underlyingType = Enum.GetUnderlyingType(enumType);
-                if (underlyingType == typeof(long))
-                    return Enum.ToObject(enumType, ChangeType<long>(value));
-
-                if (underlyingType == typeof(ulong))
-                    return Enum.ToObject(enumType, ChangeType<ulong>(value));
-
-                if (underlyingType == typeof(int))
-                    return Enum.ToObject(enumType, ChangeType<int>(value));
-
-                if (underlyingType == typeof(uint))
-                    return Enum.ToObject(enumType, ChangeType<uint>(value));
-
-                if (underlyingType == typeof(short))
-                    return Enum.ToObject(enumType, ChangeType<short>(value));
-
-                if (underlyingType == typeof(ushort))
-                    return Enum.ToObject(enumType, ChangeType<ushort>(value));
-
-                if (underlyingType == typeof(byte))
-                    return Enum.ToObject(enumType, ChangeType<byte>(value));
-
-                if (underlyingType == typeof(sbyte))
-                    return Enum.ToObject(enumType, ChangeType<sbyte>(value));
-
-                throw new ArgumentException(null, nameof(enumType));
-            }
-
-            /// <summary>
-            ///     Returns the enum using the specified text
-            /// </summary>
-            /// <param name="text">The text</param>
-            /// <param name="enumType">The enum type</param>
-            /// <exception cref="ArgumentNullException"></exception>
-            /// <returns>The value</returns>
-            public static object ToEnum(string text, Type enumType)
-            {
-                if (enumType == null)
-                    throw new ArgumentNullException(nameof(enumType));
-
-                EnumTryParse(enumType, text, out object value);
-                return value;
-            }
-
-            // Enum.TryParse is not supported by all .NET versions the same way
-            /// <summary>
-            ///     Describes whether enum try parse
-            /// </summary>
-            /// <param name="type">The type</param>
-            /// <param name="input">The input</param>
-            /// <param name="value">The value</param>
-            /// <exception cref="ArgumentNullException"></exception>
-            /// <exception cref="ArgumentException">null </exception>
-            /// <returns>The bool</returns>
-            public static bool EnumTryParse(Type type, object input, out object value)
-            {
-                if (type == null)
-                    throw new ArgumentNullException(nameof(type));
-
-                if (!type.IsEnum)
-                    throw new ArgumentException(null, nameof(type));
-
-                if (input == null)
-                {
-                    value = Activator.CreateInstance(type);
-                    return false;
-                }
-
-                string stringInput = string.Format(CultureInfo.InvariantCulture, "{0}", input);
-                stringInput = stringInput.Nullify();
-                if (stringInput == null)
-                {
-                    value = Activator.CreateInstance(type);
-                    return false;
-                }
-
-                if (stringInput.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
-                {
-                    if (ulong.TryParse(stringInput.Substring(2), NumberStyles.HexNumber, null, out ulong ulx))
-                    {
-                        value = ToEnum(ulx.ToString(CultureInfo.InvariantCulture), type);
-                        return true;
-                    }
-                }
-
-                string[] names = Enum.GetNames(type);
-                if (names.Length == 0)
-                {
-                    value = Activator.CreateInstance(type);
-                    return false;
-                }
-
-                Array values = Enum.GetValues(type);
-                // some enums like System.CodeDom.MemberAttributes *are* flags but are not declared with Flags...
-                if (!type.IsDefined(typeof(FlagsAttribute), true) && (stringInput.IndexOfAny(_enumSeparators) < 0))
-                    return StringToEnum(type, names, values, stringInput, out value);
-
-                // multi value enum
-                string[] tokens = stringInput.Split(_enumSeparators, StringSplitOptions.RemoveEmptyEntries);
-                if (tokens.Length == 0)
-                {
-                    value = Activator.CreateInstance(type);
-                    return false;
-                }
-
-                ulong ul = 0;
-                foreach (string tok in tokens)
-                {
-                    string token = tok.Nullify(); // NOTE: we don't consider empty tokens as errors
-                    if (token == null)
-                        continue;
-
-                    if (!StringToEnum(type, names, values, token, out object tokenValue))
-                    {
-                        value = Activator.CreateInstance(type);
-                        return false;
-                    }
-
-                    ulong tokenUl;
-#pragma warning disable IDE0010 // Add missing cases
-#pragma warning disable IDE0066 // Convert switch statement to expression
-                    switch (Convert.GetTypeCode(tokenValue))
-#pragma warning restore IDE0066 // Convert switch statement to expression
-#pragma warning restore IDE0010 // Add missing cases
-                    {
-                        case TypeCode.Int16:
-                        case TypeCode.Int32:
-                        case TypeCode.Int64:
-                        case TypeCode.SByte:
-                            tokenUl = (ulong) Convert.ToInt64(tokenValue, CultureInfo.InvariantCulture);
-                            break;
-
-                        default:
-                            tokenUl = Convert.ToUInt64(tokenValue, CultureInfo.InvariantCulture);
-                            break;
-                    }
-
-                    ul |= tokenUl;
-                }
-
-                value = Enum.ToObject(type, ul);
-                return true;
-            }
-
-            /// <summary>
-            ///     Describes whether is generic list
-            /// </summary>
-            /// <param name="type">The type</param>
-            /// <param name="elementType">The element type</param>
-            /// <exception cref="ArgumentNullException"></exception>
-            /// <returns>The bool</returns>
-            public static bool IsGenericList(Type type, out Type elementType)
-            {
-                if (type == null)
-                    throw new ArgumentNullException(nameof(type));
-
-                if (type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(List<>)))
-                {
-                    elementType = type.GetGenericArguments()[0];
-                    return true;
-                }
-
-                elementType = null;
-                return false;
-            }
-
-            /// <summary>
-            ///     Describes whether is really value type
-            /// </summary>
-            /// <param name="type">The type</param>
-            /// <exception cref="ArgumentNullException"></exception>
-            /// <returns>The bool</returns>
-            private static bool IsReallyValueType(Type type)
-            {
-                if (type == null)
-                    throw new ArgumentNullException(nameof(type));
-
-                return type.IsValueType && !IsNullable(type);
-            }
-
-            /// <summary>
-            ///     Describes whether is nullable
-            /// </summary>
-            /// <param name="type">The type</param>
-            /// <exception cref="ArgumentNullException"></exception>
-            /// <returns>The bool</returns>
-            public static bool IsNullable(Type type)
-            {
-                if (type == null)
-                    throw new ArgumentNullException(nameof(type));
-
-                return type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(Nullable<>));
-            }
         }
     }
 }
