@@ -35,13 +35,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The json event args test class
+    ///     The json event args test class
     /// </summary>
     public class JsonEventArgsTest
     {
-
         /// <summary>
-        /// Tests that json event args constructor with four parameters sets properties correctly
+        ///     Tests that json event args constructor with four parameters sets properties correctly
         /// </summary>
         [Fact]
         public void JsonEventArgs_ConstructorWithFourParameters_SetsPropertiesCorrectly()
@@ -60,7 +59,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that json event args constructor with six parameters sets properties correctly
+        ///     Tests that json event args constructor with six parameters sets properties correctly
         /// </summary>
         [Fact]
         public void JsonEventArgs_ConstructorWithSixParameters_SetsPropertiesCorrectly()
@@ -83,7 +82,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that json event args properties can be set
+        ///     Tests that json event args properties can be set
         /// </summary>
         [Fact]
         public void JsonEventArgs_PropertiesCanBeSet()
@@ -103,5 +102,4 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal("TestName", eventArgs.Name);
         }
     }
-
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NotEmptyAttributeTest.cs
+//  File:IsNotEmptyAttributeTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -40,13 +40,13 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
     /// </summary>
     public class IsNotEmptyAttributeTest
     {
-       /// <summary>
-       /// The empty concurrent bag
-       /// </summary>
-       [IsNotEmpty] private ConcurrentBag<int> emptyConcurrentBag1;
+        /// <summary>
+        ///     The empty concurrent bag
+        /// </summary>
+        [IsNotEmpty] private ConcurrentBag<int> emptyConcurrentBag1;
 
         /// <summary>
-        /// Tests that validate with empty string should throw exception
+        ///     Tests that validate with empty string should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyString_ShouldThrowException()
@@ -61,7 +61,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
 
 
         /// <summary>
-        /// Tests that validate with empty string v 4 should throw exception
+        ///     Tests that validate with empty string v 4 should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyString_v4_ShouldThrowException()
@@ -75,7 +75,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         }
 
         /// <summary>
-        /// Tests that validate with not empty string should not throw exception
+        ///     Tests that validate with not empty string should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyString_ShouldNotThrowException()
@@ -92,7 +92,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         }
 
         /// <summary>
-        /// Tests that validate with empty array should throw exception
+        ///     Tests that validate with empty array should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyArray_ShouldThrowException()
@@ -106,14 +106,14 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         }
 
         /// <summary>
-        /// Tests that validate with not empty array should not throw exception
+        ///     Tests that validate with not empty array should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyArray_ShouldNotThrowException()
         {
             // Arrange
             IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
-            object[] notEmptyArray = new object[] {1};
+            object[] notEmptyArray = {1};
 
             // Act
             attribute.Validate(notEmptyArray, nameof(notEmptyArray));
@@ -123,28 +123,28 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         }
 
         /// <summary>
-        /// Tests that validate with empty collection should throw exception
+        ///     Tests that validate with empty collection should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyCollection_ShouldThrowException()
         {
             // Arrange
             IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
-            List<int> emptyCollection = new System.Collections.Generic.List<int>();
+            List<int> emptyCollection = new List<int>();
 
             // Act and Assert
             Assert.Throws<NotEmptyException>(() => attribute.Validate(emptyCollection, nameof(emptyCollection)));
         }
 
         /// <summary>
-        /// Tests that validate with not empty collection should not throw exception
+        ///     Tests that validate with not empty collection should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyCollection_ShouldNotThrowException()
         {
             // Arrange
             IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
-            List<int> notEmptyCollection = new System.Collections.Generic.List<int> {1};
+            List<int> notEmptyCollection = new List<int> {1};
 
             // Act
             attribute.Validate(notEmptyCollection, nameof(notEmptyCollection));
@@ -154,28 +154,28 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         }
 
         /// <summary>
-        /// Tests that validate with empty dictionary should throw exception
+        ///     Tests that validate with empty dictionary should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyDictionary_ShouldThrowException()
         {
             // Arrange
             IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
-            Dictionary<string, string> emptyDictionary = new System.Collections.Generic.Dictionary<string, string>();
+            Dictionary<string, string> emptyDictionary = new Dictionary<string, string>();
 
             // Act and Assert
             Assert.Throws<NotEmptyException>(() => attribute.Validate(emptyDictionary, nameof(emptyDictionary)));
         }
 
         /// <summary>
-        /// Tests that validate with not empty dictionary should not throw exception
+        ///     Tests that validate with not empty dictionary should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyDictionary_ShouldNotThrowException()
         {
             // Arrange
             IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
-            Dictionary<string, string> notEmptyDictionary = new System.Collections.Generic.Dictionary<string, string> {{"key", "value"}};
+            Dictionary<string, string> notEmptyDictionary = new Dictionary<string, string> {{"key", "value"}};
 
             // Act
             attribute.Validate(notEmptyDictionary, nameof(notEmptyDictionary));
@@ -183,9 +183,9 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
             // Assert
             Assert.True(true);
         }
-        
+
         /// <summary>
-        /// Tests that validate with empty hash set should throw exception
+        ///     Tests that validate with empty hash set should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyHashSet_ShouldThrowException()
@@ -199,14 +199,14 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         }
 
         /// <summary>
-        /// Tests that validate with not empty hash set should not throw exception
+        ///     Tests that validate with not empty hash set should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyHashSet_ShouldNotThrowException()
         {
             // Arrange
             IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
-            HashSet<int> notEmptyHashSet = new HashSet<int> { 1 };
+            HashSet<int> notEmptyHashSet = new HashSet<int> {1};
 
             // Act
             attribute.Validate(notEmptyHashSet, nameof(notEmptyHashSet));
@@ -214,9 +214,9 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
             // Assert
             Assert.True(true);
         }
-        
+
         /// <summary>
-        /// Tests that validate with empty hash set v 2 should throw exception
+        ///     Tests that validate with empty hash set v 2 should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyHashSet_v2_ShouldThrowException()
@@ -230,14 +230,14 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         }
 
         /// <summary>
-        /// Tests that validate with not empty hash set v 2 should not throw exception
+        ///     Tests that validate with not empty hash set v 2 should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyHashSet_v2_ShouldNotThrowException()
         {
             // Arrange
             IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
-            HashSet<int> notEmptyHashSet = new HashSet<int> { 1 };
+            HashSet<int> notEmptyHashSet = new HashSet<int> {1};
 
             // Act
             attribute.Validate(notEmptyHashSet, nameof(notEmptyHashSet));
@@ -245,9 +245,9 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
             // Assert
             Assert.True(true);
         }
-        
+
         /// <summary>
-        /// Tests that validate with empty stack should throw exception
+        ///     Tests that validate with empty stack should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyStack_ShouldThrowException()
@@ -261,7 +261,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         }
 
         /// <summary>
-        /// Tests that validate with not empty stack should not throw exception
+        ///     Tests that validate with not empty stack should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyStack_ShouldNotThrowException()
@@ -277,9 +277,9 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
             // Assert
             Assert.True(true);
         }
-        
+
         /// <summary>
-        /// Tests that validate with empty linked list should throw exception
+        ///     Tests that validate with empty linked list should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyLinkedList_ShouldThrowException()
@@ -293,7 +293,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         }
 
         /// <summary>
-        /// Tests that validate with not empty linked list should not throw exception
+        ///     Tests that validate with not empty linked list should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyLinkedList_ShouldNotThrowException()
@@ -309,9 +309,9 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
             // Assert
             Assert.True(true);
         }
-        
+
         /// <summary>
-        /// Tests that validate with empty concurrent queue should throw exception
+        ///     Tests that validate with empty concurrent queue should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyConcurrentQueue_ShouldThrowException()
@@ -325,7 +325,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         }
 
         /// <summary>
-        /// Tests that validate with not empty concurrent queue should not throw exception
+        ///     Tests that validate with not empty concurrent queue should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyConcurrentQueue_ShouldNotThrowException()
@@ -341,9 +341,9 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
             // Assert
             Assert.True(true);
         }
-        
+
         /// <summary>
-        /// Tests that validate with empty concurrent stack should throw exception
+        ///     Tests that validate with empty concurrent stack should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyConcurrentStack_ShouldThrowException()
@@ -357,7 +357,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         }
 
         /// <summary>
-        /// Tests that validate with not empty concurrent stack should not throw exception
+        ///     Tests that validate with not empty concurrent stack should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyConcurrentStack_ShouldNotThrowException()
@@ -373,8 +373,9 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
             // Assert
             Assert.True(true);
         }
+
         /// <summary>
-        /// Tests that validate with empty concurrent bag should throw exception
+        ///     Tests that validate with empty concurrent bag should throw exception
         /// </summary>
         [Fact]
         public void Validate_WithEmptyConcurrentBag_ShouldThrowException()
@@ -388,7 +389,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         }
 
         /// <summary>
-        /// Tests that validate with not empty concurrent bag should not throw exception
+        ///     Tests that validate with not empty concurrent bag should not throw exception
         /// </summary>
         [Fact]
         public void Validate_WithNotEmptyConcurrentBag_ShouldNotThrowException()

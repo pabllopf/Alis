@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RandomUtils.cs
+//  File:RandomUtilsTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Util
 {
     /// <summary>
-    /// The random utils test class
+    ///     The random utils test class
     /// </summary>
     public class RandomUtilsTest
     {
         /// <summary>
-        /// Tests that get int 32 with min and max values should return within range
+        ///     Tests that get int 32 with min and max values should return within range
         /// </summary>
         [Fact]
         public void GetInt32_WithMinAndMaxValues_ShouldReturnWithinRange()
@@ -52,7 +52,8 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that get int 32 with min and max values should throw argument exception when min value is greater than max value
+        ///     Tests that get int 32 with min and max values should throw argument exception when min value is greater than max
+        ///     value
         /// </summary>
         [Fact]
         public void GetInt32_WithMinAndMaxValues_ShouldThrowArgumentException_WhenMinValueIsGreaterThanMaxValue()
@@ -64,7 +65,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that get int 32 with value should return within range
+        ///     Tests that get int 32 with value should return within range
         /// </summary>
         [Fact]
         public void GetInt32_WithValue_ShouldReturnWithinRange()
@@ -76,7 +77,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that get int 32 with value should throw argument exception when value is negative
+        ///     Tests that get int 32 with value should throw argument exception when value is negative
         /// </summary>
         [Fact]
         public void GetInt32_WithValue_ShouldThrowArgumentException_WhenValueIsNegative()

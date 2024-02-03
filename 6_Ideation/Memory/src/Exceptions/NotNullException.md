@@ -1,9 +1,9 @@
-
 # NotNullException Class
 
 ## Description
 
-The `NotNullException` class is an exception that is thrown when a value is null. It is part of the `Alis.Core.Aspect.Memory.Exceptions` namespace.
+The `NotNullException` class is an exception that is thrown when a value is null. It is part of
+the `Alis.Core.Aspect.Memory.Exceptions` namespace.
 
 ## Usage
 

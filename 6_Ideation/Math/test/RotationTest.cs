@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test
 {
     /// <summary>
-    /// The rotation test class
+    ///     The rotation test class
     /// </summary>
     public class RotationTest
     {
         /// <summary>
-        /// Tests that constructor should set angle and calculate sine and cosine
+        ///     Tests that constructor should set angle and calculate sine and cosine
         /// </summary>
         [Fact]
         public void Constructor_ShouldSetAngleAndCalculateSineAndCosine()
@@ -56,7 +56,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that set should set angle and calculate sine and cosine
+        ///     Tests that set should set angle and calculate sine and cosine
         /// </summary>
         [Fact]
         public void Set_ShouldSetAngleAndCalculateSineAndCosine()
@@ -75,7 +75,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that set identity should set to identity
+        ///     Tests that set identity should set to identity
         /// </summary>
         [Fact]
         public void SetIdentity_ShouldSetToIdentity()
@@ -92,7 +92,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that get angle should return angle in radians
+        ///     Tests that get angle should return angle in radians
         /// </summary>
         [Fact]
         public void GetAngle_ShouldReturnAngleInRadians()
@@ -109,7 +109,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that get x axis should return x axis
+        ///     Tests that get x axis should return x axis
         /// </summary>
         [Fact]
         public void GetXAxis_ShouldReturnXAxis()
@@ -126,7 +126,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that get y axis should return y axis
+        ///     Tests that get y axis should return y axis
         /// </summary>
         [Fact]
         public void GetYAxis_ShouldReturnYAxis()
@@ -143,7 +143,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that set should calculate correctly when angle is zero
+        ///     Tests that set should calculate correctly when angle is zero
         /// </summary>
         [Fact]
         public void Set_ShouldCalculateCorrectly_WhenAngleIsZero()
@@ -161,7 +161,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that set should calculate correctly when angle is not zero
+        ///     Tests that set should calculate correctly when angle is not zero
         /// </summary>
         [Fact]
         public void Set_ShouldCalculateCorrectly_WhenAngleIsNotZero()
@@ -174,8 +174,8 @@ namespace Alis.Core.Aspect.Math.Test
             rotation.Set(angle);
 
             // Assert
-            Assert.Equal(1, rotation.Sine, 5); 
-            Assert.Equal(0, rotation.Cosine, 5); 
+            Assert.Equal(1, rotation.Sine, 5);
+            Assert.Equal(0, rotation.Cosine, 5);
         }
     }
 }

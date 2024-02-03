@@ -32,14 +32,13 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Math.Test.Definition
 {
-
     /// <summary>
-    /// The color tests class
+    ///     The color tests class
     /// </summary>
     public class ColorTests
     {
         /// <summary>
-        /// Tests that constructor sets properties correctly when given bytes
+        ///     Tests that constructor sets properties correctly when given bytes
         /// </summary>
         [Fact]
         public void Constructor_SetsPropertiesCorrectly_WhenGivenBytes()
@@ -61,7 +60,7 @@ namespace Alis.Core.Aspect.Math.Test.Definition
         }
 
         /// <summary>
-        /// Tests that constructor sets properties correctly when given ints
+        ///     Tests that constructor sets properties correctly when given ints
         /// </summary>
         [Fact]
         public void Constructor_SetsPropertiesCorrectly_WhenGivenInts()
@@ -83,7 +82,7 @@ namespace Alis.Core.Aspect.Math.Test.Definition
         }
 
         /// <summary>
-        /// Tests that black returns correct color
+        ///     Tests that black returns correct color
         /// </summary>
         [Fact]
         public void Black_ReturnsCorrectColor()
@@ -102,7 +101,7 @@ namespace Alis.Core.Aspect.Math.Test.Definition
         }
 
         /// <summary>
-        /// Tests that red returns correct color
+        ///     Tests that red returns correct color
         /// </summary>
         [Fact]
         public void Red_ReturnsCorrectColor()

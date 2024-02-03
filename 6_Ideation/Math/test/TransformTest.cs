@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test
 {
     /// <summary>
-    /// The transform test class
+    ///     The transform test class
     /// </summary>
     public class TransformTest
     {
         /// <summary>
-        /// Tests that set identity should set to identity
+        ///     Tests that set identity should set to identity
         /// </summary>
         [Fact]
         public void SetIdentity_ShouldSetToIdentity()
@@ -56,7 +56,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that set should set position and angle
+        ///     Tests that set should set position and angle
         /// </summary>
         [Fact]
         public void Set_ShouldSetPositionAndAngle()
@@ -75,7 +75,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that constructor should set position rotation and scale
+        ///     Tests that constructor should set position rotation and scale
         /// </summary>
         [Fact]
         public void Constructor_ShouldSetPositionRotationAndScale()

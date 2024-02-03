@@ -161,7 +161,7 @@ namespace Alis.Core.Aspect.Math.Util
         public static bool operator ==(Quaternion value1, Quaternion value2) => (System.Math.Abs(value1.X - value2.X) < 0.1f)
                                                                                 && (System.Math.Abs(value1.Y - value2.Y) < 0.1f)
                                                                                 && (System.Math.Abs(value1.Z - value2.Z) < 0.1f)
-                                                                                && System.Math.Abs(value1.W - value2.W) < 0.1f;
+                                                                                && (System.Math.Abs(value1.W - value2.W) < 0.1f);
 
         /// <summary>Returns a value that indicates whether two quaternions are not equal.</summary>
         /// <param name="value1">The first quaternion to compare.</param>

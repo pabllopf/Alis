@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:d.cs
+//  File:ThreadTask.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,22 +33,12 @@ using System.Threading;
 namespace Alis.Core.Aspect.Thread
 {
     /// <summary>
-    /// The thread task class
+    ///     The thread task class
     /// </summary>
     public class ThreadTask
     {
         /// <summary>
-        /// Gets or sets the value of the action
-        /// </summary>
-        private Action<CancellationToken> Action { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the token
-        /// </summary>
-        private CancellationToken Token { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ThreadTask"/> class
+        ///     Initializes a new instance of the <see cref="ThreadTask" /> class
         /// </summary>
         /// <param name="action">The action</param>
         /// <param name="token"></param>
@@ -59,7 +49,17 @@ namespace Alis.Core.Aspect.Thread
         }
 
         /// <summary>
-        /// Executes this instance
+        ///     Gets or sets the value of the action
+        /// </summary>
+        private Action<CancellationToken> Action { get; }
+
+        /// <summary>
+        ///     Gets or sets the value of the token
+        /// </summary>
+        private CancellationToken Token { get; }
+
+        /// <summary>
+        ///     Executes this instance
         /// </summary>
         public void Execute(CancellationToken token)
         {

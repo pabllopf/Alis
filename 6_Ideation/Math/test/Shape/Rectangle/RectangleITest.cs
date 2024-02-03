@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Shape.Rectangle
 {
     /// <summary>
-    /// The rectangle test class
+    ///     The rectangle test class
     /// </summary>
     public class RectangleITest
     {
         /// <summary>
-        /// Tests that test rectangle i constructor
+        ///     Tests that test rectangle i constructor
         /// </summary>
         [Fact]
         public void TestRectangleI_Constructor()

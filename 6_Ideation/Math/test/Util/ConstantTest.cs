@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Constant.cs
+//  File:ConstantTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Util
 {
     /// <summary>
-    /// The constant test class
+    ///     The constant test class
     /// </summary>
     public class ConstantTest
     {
         /// <summary>
-        /// Tests that constant epsilon should be correct
+        ///     Tests that constant epsilon should be correct
         /// </summary>
         [Fact]
         public void Constant_Epsilon_ShouldBeCorrect()
@@ -48,7 +48,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that constant euler should be correct
+        ///     Tests that constant euler should be correct
         /// </summary>
         [Fact]
         public void Constant_Euler_ShouldBeCorrect()
@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that constant e should be correct
+        ///     Tests that constant e should be correct
         /// </summary>
         [Fact]
         public void Constant_E_ShouldBeCorrect()
@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that constant log 10 e should be correct
+        ///     Tests that constant log 10 e should be correct
         /// </summary>
         [Fact]
         public void Constant_Log10E_ShouldBeCorrect()
@@ -78,7 +78,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that constant log 2 e should be correct
+        ///     Tests that constant log 2 e should be correct
         /// </summary>
         [Fact]
         public void Constant_Log2E_ShouldBeCorrect()
@@ -88,7 +88,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that constant pi should be correct
+        ///     Tests that constant pi should be correct
         /// </summary>
         [Fact]
         public void Constant_Pi_ShouldBeCorrect()
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that constant pi over 2 should be correct
+        ///     Tests that constant pi over 2 should be correct
         /// </summary>
         [Fact]
         public void Constant_PiOver2_ShouldBeCorrect()
@@ -108,7 +108,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that constant pi over 4 should be correct
+        ///     Tests that constant pi over 4 should be correct
         /// </summary>
         [Fact]
         public void Constant_PiOver4_ShouldBeCorrect()
@@ -118,7 +118,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that constant two pi should be correct
+        ///     Tests that constant two pi should be correct
         /// </summary>
         [Fact]
         public void Constant_TwoPi_ShouldBeCorrect()
@@ -128,7 +128,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that constant tau should be correct
+        ///     Tests that constant tau should be correct
         /// </summary>
         [Fact]
         public void Constant_Tau_ShouldBeCorrect()

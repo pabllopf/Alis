@@ -38,7 +38,7 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
     public class NotEmptyExceptionTest
     {
         /// <summary>
-        /// Tests that not empty exception with message should set message
+        ///     Tests that not empty exception with message should set message
         /// </summary>
         [Fact]
         public void NotEmptyException_WithMessage_ShouldSetMessage()

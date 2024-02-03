@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Util
 {
     /// <summary>
-    /// The quaternion test class
+    ///     The quaternion test class
     /// </summary>
     public class QuaternionTest
     {
         /// <summary>
-        /// Tests that quaternion operator addition should return correct result
+        ///     Tests that quaternion operator addition should return correct result
         /// </summary>
         [Fact]
         public void Quaternion_OperatorAddition_ShouldReturnCorrectResult()
@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that quaternion operator subtraction should return correct result
+        ///     Tests that quaternion operator subtraction should return correct result
         /// </summary>
         [Fact]
         public void Quaternion_OperatorSubtraction_ShouldReturnCorrectResult()
@@ -71,7 +71,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that quaternion operator multiplication should return correct result
+        ///     Tests that quaternion operator multiplication should return correct result
         /// </summary>
         [Fact]
         public void Quaternion_OperatorMultiplication_ShouldReturnCorrectResult()
@@ -87,7 +87,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that quaternion operator division should return correct result
+        ///     Tests that quaternion operator division should return correct result
         /// </summary>
         [Fact]
         public void Quaternion_OperatorDivision_ShouldReturnCorrectResult()
@@ -103,7 +103,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that quaternion operator unary negation should return correct result
+        ///     Tests that quaternion operator unary negation should return correct result
         /// </summary>
         [Fact]
         public void Quaternion_OperatorUnaryNegation_ShouldReturnCorrectResult()
@@ -118,7 +118,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that quaternion operator equality should return correct result
+        ///     Tests that quaternion operator equality should return correct result
         /// </summary>
         [Fact]
         public void Quaternion_OperatorEquality_ShouldReturnCorrectResult()
@@ -131,7 +131,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that quaternion operator inequality should return correct result
+        ///     Tests that quaternion operator inequality should return correct result
         /// </summary>
         [Fact]
         public void Quaternion_OperatorInequality_ShouldReturnCorrectResult()
@@ -144,7 +144,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that quaternion operator multiply should return correct result with two quaternions
+        ///     Tests that quaternion operator multiply should return correct result with two quaternions
         /// </summary>
         [Fact]
         public void Quaternion_OperatorMultiply_ShouldReturnCorrectResult_WithTwoQuaternions()
@@ -160,7 +160,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that quaternion operator multiply should return correct result with quaternion and scalar
+        ///     Tests that quaternion operator multiply should return correct result with quaternion and scalar
         /// </summary>
         [Fact]
         public void Quaternion_OperatorMultiply_ShouldReturnCorrectResult_WithQuaternionAndScalar()
@@ -176,7 +176,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that quaternion equals should return true when quaternions are equal
+        ///     Tests that quaternion equals should return true when quaternions are equal
         /// </summary>
         [Fact]
         public void Quaternion_Equals_ShouldReturnTrue_WhenQuaternionsAreEqual()
@@ -188,7 +188,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that quaternion equals should return false when quaternions are not equal
+        ///     Tests that quaternion equals should return false when quaternions are not equal
         /// </summary>
         [Fact]
         public void Quaternion_Equals_ShouldReturnFalse_WhenQuaternionsAreNotEqual()
@@ -200,7 +200,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that quaternion equals should return false when compared with null
+        ///     Tests that quaternion equals should return false when compared with null
         /// </summary>
         [Fact]
         public void Quaternion_Equals_ShouldReturnFalse_WhenComparedWithNull()
@@ -211,7 +211,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that quaternion equals should return false when compared with different type
+        ///     Tests that quaternion equals should return false when compared with different type
         /// </summary>
         [Fact]
         public void Quaternion_Equals_ShouldReturnFalse_WhenComparedWithDifferentType()
@@ -223,7 +223,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that quaternion get hash code should return same value for equal quaternions
+        ///     Tests that quaternion get hash code should return same value for equal quaternions
         /// </summary>
         [Fact]
         public void Quaternion_GetHashCode_ShouldReturnSameValueForEqualQuaternions()
@@ -235,7 +235,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that quaternion get hash code should return different values for different quaternions
+        ///     Tests that quaternion get hash code should return different values for different quaternions
         /// </summary>
         [Fact]
         public void Quaternion_GetHashCode_ShouldReturnDifferentValuesForDifferentQuaternions()
@@ -247,7 +247,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that quaternion to string should return correct format
+        ///     Tests that quaternion to string should return correct format
         /// </summary>
         [Fact]
         public void Quaternion_ToString_ShouldReturnCorrectFormat()

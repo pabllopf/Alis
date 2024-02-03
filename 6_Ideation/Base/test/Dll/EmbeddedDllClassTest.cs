@@ -29,10 +29,8 @@
 
 using System;
 using System.IO;
-using System.IO.Compression;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
 using Alis.Core.Aspect.Base.Dll;
 using Xunit;
 
@@ -44,7 +42,7 @@ namespace Alis.Core.Aspect.Base.Test.Dll
     public class EmbeddedDllClassTest
     {
         /// <summary>
-        /// Tests that test load resource
+        ///     Tests that test load resource
         /// </summary>
         [Fact]
         public void TestLoadResource()
@@ -61,7 +59,7 @@ namespace Alis.Core.Aspect.Base.Test.Dll
         }
 
         /// <summary>
-        /// Tests that test is running oni os
+        ///     Tests that test is running oni os
         /// </summary>
         [Fact]
         public void TestIsRunningOniOS()
@@ -75,7 +73,7 @@ namespace Alis.Core.Aspect.Base.Test.Dll
         }
 
         /// <summary>
-        /// Tests that test is running on android
+        ///     Tests that test is running on android
         /// </summary>
         [Fact]
         public void TestIsRunningOnAndroid()
@@ -89,7 +87,7 @@ namespace Alis.Core.Aspect.Base.Test.Dll
         }
 
         /// <summary>
-        /// Tests that test isi os specific condition met
+        ///     Tests that test isi os specific condition met
         /// </summary>
         [Fact]
         public void TestIsiOsSpecificConditionMet()
@@ -103,7 +101,7 @@ namespace Alis.Core.Aspect.Base.Test.Dll
         }
 
         /// <summary>
-        /// Tests that test is android specific condition met
+        ///     Tests that test is android specific condition met
         /// </summary>
         [Fact]
         public void TestIsAndroidSpecificConditionMet()
@@ -115,9 +113,9 @@ namespace Alis.Core.Aspect.Base.Test.Dll
 
             Assert.Equal(expectedResult, result);
         }
-        
+
         /// <summary>
-        /// Tests that test get dll extension
+        ///     Tests that test get dll extension
         /// </summary>
         /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
         [Fact]

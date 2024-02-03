@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Thread.Test
 {
     /// <summary>
-    /// The thread task test class
+    ///     The thread task test class
     /// </summary>
     public class ThreadTaskTest
     {
         /// <summary>
-        /// Tests that execute should execute action
+        ///     Tests that execute should execute action
         /// </summary>
         [Fact]
         public void Execute_ShouldExecuteAction()
@@ -46,20 +46,17 @@ namespace Alis.Core.Aspect.Thread.Test
             // Arrange
             bool actionExecuted = false;
             CancellationTokenSource cts = new CancellationTokenSource();
-            ThreadTask threadTask = new ThreadTask(token =>
-            {
-                actionExecuted = true;
-            }, cts.Token);
+            ThreadTask threadTask = new ThreadTask(token => { actionExecuted = true; }, cts.Token);
 
             // Act
             threadTask.Execute(cts.Token);
-            
+
             //wait 1s
             System.Threading.Thread.Sleep(1000);
-            
+
             // stop the thread
             cts.Cancel();
-            
+
             // Assert
             Assert.True(actionExecuted);
         }

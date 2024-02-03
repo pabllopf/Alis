@@ -64,7 +64,7 @@ namespace Alis.Core.Aspect.Math
             Rotation = rotation;
             Scale = scale;
         }
-        
+
         /// <summary>Set this to the identity transform.</summary>
         public void SetIdentity()
         {

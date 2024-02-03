@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Matrix
 {
     /// <summary>
-    /// The matrix test class
+    ///     The matrix test class
     /// </summary>
     public class Matrix3X3Test
     {
         /// <summary>
-        /// Tests that matrix 3 x 3 constructor should set values correctly
+        ///     Tests that matrix 3 x 3 constructor should set values correctly
         /// </summary>
         [Fact]
         public void Matrix3X3_Constructor_ShouldSetValuesCorrectly()
@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 3 solve 33 should return correct result
+        ///     Tests that matrix 3 x 3 solve 33 should return correct result
         /// </summary>
         [Fact]
         public void Matrix3X3_Solve33_ShouldReturnCorrectResult()
@@ -72,7 +72,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 3 solve 22 should return correct result
+        ///     Tests that matrix 3 x 3 solve 22 should return correct result
         /// </summary>
         [Fact]
         public void Matrix3X3_Solve22_ShouldReturnCorrectResult()
@@ -85,7 +85,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 3 get inverse 22 should return correct result
+        ///     Tests that matrix 3 x 3 get inverse 22 should return correct result
         /// </summary>
         [Fact]
         public void Matrix3X3_GetInverse22_ShouldReturnCorrectResult()
@@ -103,7 +103,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 3 get sym inverse 33 should return correct result
+        ///     Tests that matrix 3 x 3 get sym inverse 33 should return correct result
         /// </summary>
         [Fact]
         public void Matrix3X3_GetSymInverse33_ShouldReturnCorrectResult()
@@ -124,7 +124,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 3 v 2 constructor should set values correctly
+        ///     Tests that matrix 3 x 3 v 2 constructor should set values correctly
         /// </summary>
         [Fact]
         public void Matrix3X3_v2_Constructor_ShouldSetValuesCorrectly()
@@ -143,7 +143,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 3 v 2 get sym inverse 33 should return correct result
+        ///     Tests that matrix 3 x 3 v 2 get sym inverse 33 should return correct result
         /// </summary>
         [Fact]
         public void Matrix3X3_v2_GetSymInverse33_ShouldReturnCorrectResult()
@@ -164,11 +164,8 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-
-        /// Tests that matrix 3 x 3 get sym inverse 33 should handle zero determinant
-
+        ///     Tests that matrix 3 x 3 get sym inverse 33 should handle zero determinant
         /// </summary>
-
         [Fact]
         public void Matrix3X3_GetSymInverse33_ShouldHandleZeroDeterminant()
         {
@@ -191,7 +188,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 3 solve 33 should return correct result when determinant is not zero
+        ///     Tests that matrix 3 x 3 solve 33 should return correct result when determinant is not zero
         /// </summary>
         [Fact]
         public void Matrix3X3_Solve33_ShouldReturnCorrectResult_WhenDeterminantIsNotZero()
@@ -206,7 +203,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 3 solve 33 should return zero vector when determinant is zero
+        ///     Tests that matrix 3 x 3 solve 33 should return zero vector when determinant is zero
         /// </summary>
         [Fact]
         public void Matrix3X3_Solve33_ShouldReturnZeroVector_WhenDeterminantIsZero()
@@ -226,7 +223,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 3 solve 33 should return correct result with negative one
+        ///     Tests that matrix 3 x 3 solve 33 should return correct result with negative one
         /// </summary>
         [Fact]
         public void Matrix3X3_Solve33_ShouldReturnCorrectResult_WithNegativeOne()
@@ -237,11 +234,10 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Vector3 result = matrix.Solve33(b);
 
             Assert.Equal(0f, result.X);
-
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 3 solve 33 should return na n with infinity
+        ///     Tests that matrix 3 x 3 solve 33 should return na n with infinity
         /// </summary>
         [Fact]
         public void Matrix3X3_Solve33_ShouldReturnNaN_WithInfinity()
@@ -257,7 +253,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 3 solve 33 should return na n with na n
+        ///     Tests that matrix 3 x 3 solve 33 should return na n with na n
         /// </summary>
         [Fact]
         public void Matrix3X3_Solve33_ShouldReturnNaN_WithNaN()
@@ -273,7 +269,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 3 solve 33 should return correct result with max value
+        ///     Tests that matrix 3 x 3 solve 33 should return correct result with max value
         /// </summary>
         [Fact]
         public void Matrix3X3_Solve33_ShouldReturnCorrectResult_WithMaxValue()
@@ -288,7 +284,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 3 solve 33 should return correct result with negative max value
+        ///     Tests that matrix 3 x 3 solve 33 should return correct result with negative max value
         /// </summary>
         [Fact]
         public void Matrix3X3_Solve33_ShouldReturnCorrectResult_WithNegativeMaxValue()
@@ -303,7 +299,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 3 x 3 solve 33 should return correct result with min value
+        ///     Tests that matrix 3 x 3 solve 33 should return correct result with min value
         /// </summary>
         [Fact]
         public void Matrix3X3_Solve33_ShouldReturnCorrectResult_WithMinValue()
@@ -318,7 +314,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test solve 33
+        ///     Tests that test solve 33
         /// </summary>
         [Fact]
         public void TestSolve33()
@@ -338,7 +334,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test get sym inverse 33
+        ///     Tests that test get sym inverse 33
         /// </summary>
         [Fact]
         public void TestGetSymInverse33()
@@ -358,7 +354,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test get sym inverse 33 with zero determinant
+        ///     Tests that test get sym inverse 33 with zero determinant
         /// </summary>
         [Fact]
         public void TestGetSymInverse33_WithZeroDeterminant()
@@ -378,7 +374,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test get sym inverse 33 with non zero determinant
+        ///     Tests that test get sym inverse 33 with non zero determinant
         /// </summary>
         [Fact]
         public void TestGetSymInverse33_WithNonZeroDeterminant()
@@ -399,7 +395,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test get sym inverse 33 with negative values
+        ///     Tests that test get sym inverse 33 with negative values
         /// </summary>
         [Fact]
         public void TestGetSymInverse33_WithNegativeValues()
@@ -420,7 +416,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test solve 33 with zero determinant
+        ///     Tests that test solve 33 with zero determinant
         /// </summary>
         [Fact]
         public void TestSolve33_WithZeroDeterminant()
@@ -438,7 +434,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test solve 33 with negative values
+        ///     Tests that test solve 33 with negative values
         /// </summary>
         [Fact]
         public void TestSolve33_WithNegativeValues()
@@ -457,7 +453,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test solve 33 with non zero determinant
+        ///     Tests that test solve 33 with non zero determinant
         /// </summary>
         [Fact]
         public void TestSolve33_WithNonZeroDeterminant()
@@ -474,9 +470,9 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
 
             Assert.Equal(new Vector3(0, 0, 0), result);
         }
-        
+
         /// <summary>
-        /// Tests that test get sym inverse 33 v 3 with zero determinant
+        ///     Tests that test get sym inverse 33 v 3 with zero determinant
         /// </summary>
         [Fact]
         public void TestGetSymInverse33_V3_WithZeroDeterminant()
@@ -496,7 +492,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test get sym inverse 33 v 3 with non zero determinant
+        ///     Tests that test get sym inverse 33 v 3 with non zero determinant
         /// </summary>
         [Fact]
         public void TestGetSymInverse33_V3_WithNonZeroDeterminant()
@@ -517,7 +513,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test get sym inverse 33 v 3 with negative values
+        ///     Tests that test get sym inverse 33 v 3 with negative values
         /// </summary>
         [Fact]
         public void TestGetSymInverse33_V3_WithNegativeValues()

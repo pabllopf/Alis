@@ -31,15 +31,14 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Aspect.Math.Vector
 {
-
     /// <summary>
-    /// The vector
+    ///     The vector
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct Vector4
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector4"/> class
+        ///     Initializes a new instance of the <see cref="Vector4" /> class
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>

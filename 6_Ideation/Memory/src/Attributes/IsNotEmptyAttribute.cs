@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NotEmptyAttribute.cs
+//  File:IsNotEmptyAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections;
 using System.Linq;
 using Alis.Core.Aspect.Memory.Exceptions;
 
@@ -53,9 +54,9 @@ namespace Alis.Core.Aspect.Memory.Attributes
 
             switch (value)
             {
-                case System.Collections.IDictionary {Count: 0}:
+                case IDictionary {Count: 0}:
                     throw new NotEmptyException($"{name} can't be null or empty");
-                case System.Collections.IEnumerable enumerable:
+                case IEnumerable enumerable:
                 {
                     if (enumerable.Cast<object>().Any())
                     {

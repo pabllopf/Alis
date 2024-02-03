@@ -1,9 +1,9 @@
-
 # NotZeroException Class
 
 ## Description
 
-The `NotZeroException` class is an exception that is thrown when a value is zero. It is part of the `Alis.Core.Aspect.Memory.Exceptions` namespace.
+The `NotZeroException` class is an exception that is thrown when a value is zero. It is part of
+the `Alis.Core.Aspect.Memory.Exceptions` namespace.
 
 ## Usage
 

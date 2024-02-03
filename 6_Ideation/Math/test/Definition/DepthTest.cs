@@ -32,14 +32,13 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Math.Test.Definition
 {
-
     /// <summary>
-    /// The depth tests class
+    ///     The depth tests class
     /// </summary>
     public class DepthTests
     {
         /// <summary>
-        /// Tests that constructor sets value correctly
+        ///     Tests that constructor sets value correctly
         /// </summary>
         [Fact]
         public void Constructor_SetsValueCorrectly()

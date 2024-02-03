@@ -2,11 +2,13 @@
 
 ## Description
 
-The `IsNotEmptyAttribute` class is a validation attribute that checks if a given value is not null or empty. It is part of the `Alis.Core.Aspect.Memory.Attributes` namespace.
+The `IsNotEmptyAttribute` class is a validation attribute that checks if a given value is not null or empty. It is part
+of the `Alis.Core.Aspect.Memory.Attributes` namespace.
 
 ## Usage
 
-This attribute can be used to decorate properties or fields that should not be null or empty. If the value is a string and it is null or empty, a `NotEmptyException` is thrown.
+This attribute can be used to decorate properties or fields that should not be null or empty. If the value is a string
+and it is null or empty, a `NotEmptyException` is thrown.
 
 ```csharp
 [IsNotEmpty]

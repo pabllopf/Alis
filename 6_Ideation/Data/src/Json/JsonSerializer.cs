@@ -423,7 +423,7 @@ namespace Alis.Core.Aspect.Data.Json
                 return null;
 
             if (typeof(IList).IsAssignableFrom(type))
-                return new IListObject(); // also handles arrays
+                return new CustomListObject(); // also handles arrays
 
             if (type.IsGenericType)
             {

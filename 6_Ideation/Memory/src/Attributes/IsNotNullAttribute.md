@@ -2,11 +2,13 @@
 
 ## Description
 
-The `IsNotNullAttribute` class is a validation attribute that checks if a given value is not null. It is part of the `Alis.Core.Aspect.Memory.Attributes` namespace.
+The `IsNotNullAttribute` class is a validation attribute that checks if a given value is not null. It is part of
+the `Alis.Core.Aspect.Memory.Attributes` namespace.
 
 ## Usage
 
-This attribute can be used to decorate properties or fields that should not be null. If the value is null, a `NotNullException` is thrown.
+This attribute can be used to decorate properties or fields that should not be null. If the value is null,
+a `NotNullException` is thrown.
 
 ```csharp
 [IsNotNull]

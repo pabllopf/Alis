@@ -81,7 +81,7 @@ namespace Alis.Core.Aspect.Data.Json
             : base(null, innerException)
         {
         }
-        
+
         /// <summary>
         ///     Gets the error code.
         /// </summary>

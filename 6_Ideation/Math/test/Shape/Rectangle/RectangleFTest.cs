@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Shape.Rectangle
 {
     /// <summary>
-    /// The rectangle test class
+    ///     The rectangle test class
     /// </summary>
     public class RectangleFTest
     {
         /// <summary>
-        /// Tests the rectangle f constructor
+        ///     Tests the rectangle f constructor
         /// </summary>
         [Fact]
         public void TestRectangleF_Constructor()
@@ -55,9 +55,9 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Rectangle
             Assert.Equal(w, rectangle.w);
             Assert.Equal(h, rectangle.h);
         }
-        
+
         /// <summary>
-        /// Tests that test rectangle f constructor v 2
+        ///     Tests that test rectangle f constructor v 2
         /// </summary>
         [Fact]
         public void TestRectangleF_Constructor_V2()

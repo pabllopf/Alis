@@ -34,13 +34,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The json exception test class
+    ///     The json exception test class
     /// </summary>
     public class JsonExceptionTest
     {
-
         /// <summary>
-        /// Tests that test default constructor
+        ///     Tests that test default constructor
         /// </summary>
         [Fact]
         public void TestDefaultConstructor()
@@ -51,7 +50,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test constructor with message
+        ///     Tests that test constructor with message
         /// </summary>
         [Fact]
         public void TestConstructorWithMessage()
@@ -63,7 +62,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test constructor with message and inner exception
+        ///     Tests that test constructor with message and inner exception
         /// </summary>
         [Fact]
         public void TestConstructorWithMessageAndInnerException()
@@ -77,7 +76,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test constructor with inner exception
+        ///     Tests that test constructor with inner exception
         /// </summary>
         [Fact]
         public void TestConstructorWithInnerException()
@@ -89,7 +88,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test get code method
+        ///     Tests that test get code method
         /// </summary>
         [Fact]
         public void TestGetCodeMethod()
@@ -100,7 +99,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test get code method with invalid message
+        ///     Tests that test get code method with invalid message
         /// </summary>
         [Fact]
         public void TestGetCodeMethodWithInvalidMessage()
@@ -112,7 +111,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
 
         /// <summary>
-        /// Tests that get code null message returns minus one
+        ///     Tests that get code null message returns minus one
         /// </summary>
         [Fact]
         public void GetCode_NullMessage_ReturnsMinusOne()
@@ -122,7 +121,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get code message without prefix returns minus one
+        ///     Tests that get code message without prefix returns minus one
         /// </summary>
         [Fact]
         public void GetCode_MessageWithoutPrefix_ReturnsMinusOne()
@@ -132,7 +131,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get code message with prefix but without colon returns minus one
+        ///     Tests that get code message with prefix but without colon returns minus one
         /// </summary>
         [Fact]
         public void GetCode_MessageWithPrefixButWithoutColon_ReturnsMinusOne()
@@ -142,7 +141,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get code message with prefix and colon but invalid number returns minus one
+        ///     Tests that get code message with prefix and colon but invalid number returns minus one
         /// </summary>
         [Fact]
         public void GetCode_MessageWithPrefixAndColonButInvalidNumber_ReturnsMinusOne()
@@ -152,7 +151,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get code valid message returns correct number
+        ///     Tests that get code valid message returns correct number
         /// </summary>
         [Fact]
         public void GetCode_ValidMessage_ReturnsCorrectNumber()

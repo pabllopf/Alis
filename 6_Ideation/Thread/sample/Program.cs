@@ -48,7 +48,7 @@ namespace Alis.Core.Aspect.Thread.Sample
             CancellationTokenSource cts1 = new CancellationTokenSource();
             ThreadTask task1 = new ThreadTask(token =>
             {
-                for (int i = 0; i < 10 && !token.IsCancellationRequested; i++)
+                for (int i = 0; (i < 10) && !token.IsCancellationRequested; i++)
                 {
                     Console.WriteLine($"Task 1 - Count: {i}");
                     System.Threading.Thread.Sleep(1000);
@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Thread.Sample
             CancellationTokenSource cts2 = new CancellationTokenSource();
             ThreadTask task2 = new ThreadTask(token =>
             {
-                for (int i = 0; i < 10 && !token.IsCancellationRequested; i++)
+                for (int i = 0; (i < 10) && !token.IsCancellationRequested; i++)
                 {
                     Console.WriteLine($"Task 2 - Count: {i}");
                     System.Threading.Thread.Sleep(1000);

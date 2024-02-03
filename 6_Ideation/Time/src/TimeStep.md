@@ -1,6 +1,7 @@
 # TimeStep Class
 
-The `TimeStep` class is part of the `Alis.Core.Aspect.Time` namespace. It is used to manage and measure time steps in an application.
+The `TimeStep` class is part of the `Alis.Core.Aspect.Time` namespace. It is used to manage and measure time steps in an
+application.
 
 ## Properties
 
@@ -26,8 +27,11 @@ TimeStep timeStep = new TimeStep();
 timeStep.Reset();
 ```
 
-In this example, a new `TimeStep` object is created. After some work is done, the `Reset` method is called to reset the instance.
+In this example, a new `TimeStep` object is created. After some work is done, the `Reset` method is called to reset the
+instance.
 
 ## Notes
 
-The `TimeStep` class is useful for managing and measuring time steps in your application. It provides a set of properties to get and set time step information, and a method to reset the instance. The `TimeStep` class is designed to be easy to use and understand, making it a great choice for developers of all skill levels.
+The `TimeStep` class is useful for managing and measuring time steps in your application. It provides a set of
+properties to get and set time step information, and a method to reset the instance. The `TimeStep` class is designed to
+be easy to use and understand, making it a great choice for developers of all skill levels.

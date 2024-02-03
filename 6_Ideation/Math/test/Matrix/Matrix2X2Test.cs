@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Matrix
 {
     /// <summary>
-    /// The matrix test class
+    ///     The matrix test class
     /// </summary>
     public class Matrix2X2Test
     {
         /// <summary>
-        /// Tests that matrix 2 x 2 constructor should set values correctly
+        ///     Tests that matrix 2 x 2 constructor should set values correctly
         /// </summary>
         [Fact]
         public void Matrix2X2_Constructor_ShouldSetValuesCorrectly()
@@ -53,7 +53,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 2 x 2 set should set values correctly
+        ///     Tests that matrix 2 x 2 set should set values correctly
         /// </summary>
         [Fact]
         public void Matrix2X2_Set_ShouldSetValuesCorrectly()
@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 2 x 2 set identity should set identity matrix
+        ///     Tests that matrix 2 x 2 set identity should set identity matrix
         /// </summary>
         [Fact]
         public void Matrix2X2_SetIdentity_ShouldSetIdentityMatrix()
@@ -83,7 +83,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 2 x 2 set zero should set zero matrix
+        ///     Tests that matrix 2 x 2 set zero should set zero matrix
         /// </summary>
         [Fact]
         public void Matrix2X2_SetZero_ShouldSetZeroMatrix()
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 2 x 2 get angle should return correct angle
+        ///     Tests that matrix 2 x 2 get angle should return correct angle
         /// </summary>
         [Fact]
         public void Matrix2X2_GetAngle_ShouldReturnCorrectAngle()
@@ -109,7 +109,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 2 x 2 get inverse should return inverse matrix
+        ///     Tests that matrix 2 x 2 get inverse should return inverse matrix
         /// </summary>
         [Fact]
         public void Matrix2X2_GetInverse_ShouldReturnInverseMatrix()
@@ -124,7 +124,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 2 x 2 solve should return correct solution
+        ///     Tests that matrix 2 x 2 solve should return correct solution
         /// </summary>
         [Fact]
         public void Matrix2X2_Solve_ShouldReturnCorrectSolution()
@@ -137,7 +137,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 2 x 2 operator add should return correct result
+        ///     Tests that matrix 2 x 2 operator add should return correct result
         /// </summary>
         [Fact]
         public void Matrix2X2_OperatorAdd_ShouldReturnCorrectResult()
@@ -153,7 +153,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 2 x 2 inverse should return inverse matrix
+        ///     Tests that matrix 2 x 2 inverse should return inverse matrix
         /// </summary>
         [Fact]
         public void Matrix2X2_Inverse_ShouldReturnInverseMatrix()

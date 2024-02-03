@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Helper.cs
+//  File:HelperTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Util
 {
     /// <summary>
-    /// The helper test class
+    ///     The helper test class
     /// </summary>
     public class HelperTest
     {
         /// <summary>
-        /// Tests that barycentric should calculate correctly
+        ///     Tests that barycentric should calculate correctly
         /// </summary>
         [Fact]
         public void Barycentric_ShouldCalculateCorrectly()
@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that catmull rom should calculate correctly
+        ///     Tests that catmull rom should calculate correctly
         /// </summary>
         [Fact]
         public void CatmullRom_ShouldCalculateCorrectly()
@@ -78,7 +78,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that clamp should return correct value
+        ///     Tests that clamp should return correct value
         /// </summary>
         [Fact]
         public void Clamp_ShouldReturnCorrectValue()
@@ -96,7 +96,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that distance should calculate correctly
+        ///     Tests that distance should calculate correctly
         /// </summary>
         [Fact]
         public void Distance_ShouldCalculateCorrectly()
@@ -113,7 +113,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that hermite should calculate correctly
+        ///     Tests that hermite should calculate correctly
         /// </summary>
         [Fact]
         public void Hermite_ShouldCalculateCorrectly()
@@ -133,7 +133,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that lerp should calculate correctly
+        ///     Tests that lerp should calculate correctly
         /// </summary>
         [Fact]
         public void Lerp_ShouldCalculateCorrectly()
@@ -151,7 +151,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that max should return correct value
+        ///     Tests that max should return correct value
         /// </summary>
         [Fact]
         public void Max_ShouldReturnCorrectValue()
@@ -168,7 +168,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that min should return correct value
+        ///     Tests that min should return correct value
         /// </summary>
         [Fact]
         public void Min_ShouldReturnCorrectValue()
@@ -185,7 +185,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that smooth step should calculate correctly
+        ///     Tests that smooth step should calculate correctly
         /// </summary>
         [Fact]
         public void SmoothStep_ShouldCalculateCorrectly()
@@ -203,7 +203,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that to degrees should calculate correctly
+        ///     Tests that to degrees should calculate correctly
         /// </summary>
         [Fact]
         public void ToDegrees_ShouldCalculateCorrectly()
@@ -219,7 +219,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that to radians should calculate correctly
+        ///     Tests that to radians should calculate correctly
         /// </summary>
         [Fact]
         public void ToRadians_ShouldCalculateCorrectly()
@@ -235,7 +235,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that wrap angle should calculate correctly
+        ///     Tests that wrap angle should calculate correctly
         /// </summary>
         [Fact]
         public void WrapAngle_ShouldCalculateCorrectly()
@@ -251,7 +251,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that is power of two should return correct value
+        ///     Tests that is power of two should return correct value
         /// </summary>
         [Fact]
         public void IsPowerOfTwo_ShouldReturnCorrectValue()
@@ -267,7 +267,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that wrap angle should return same value when angle is between negative pi and pi
+        ///     Tests that wrap angle should return same value when angle is between negative pi and pi
         /// </summary>
         [Fact]
         public void WrapAngle_ShouldReturnSameValue_WhenAngleIsBetweenNegativePiAndPi()
@@ -279,7 +279,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that wrap angle should return positive value when angle is less than negative pi
+        ///     Tests that wrap angle should return positive value when angle is less than negative pi
         /// </summary>
         [Fact]
         public void WrapAngle_ShouldReturnPositiveValue_WhenAngleIsLessThanNegativePi()
@@ -292,7 +292,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that wrap angle should return negative value when angle is more than pi
+        ///     Tests that wrap angle should return negative value when angle is more than pi
         /// </summary>
         [Fact]
         public void WrapAngle_ShouldReturnNegativeValue_WhenAngleIsMoreThanPi()
@@ -305,7 +305,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that wrap angle should return zero when angle is zero
+        ///     Tests that wrap angle should return zero when angle is zero
         /// </summary>
         [Fact]
         public void WrapAngle_ShouldReturnZero_WhenAngleIsZero()
@@ -317,7 +317,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that wrap angle should return negative pi when angle is negative pi
+        ///     Tests that wrap angle should return negative pi when angle is negative pi
         /// </summary>
         [Fact]
         public void WrapAngle_ShouldReturnNegativePi_WhenAngleIsNegativePi()
@@ -329,7 +329,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that wrap angle should return negative pi when angle is pi
+        ///     Tests that wrap angle should return negative pi when angle is pi
         /// </summary>
         [Fact]
         public void WrapAngle_ShouldReturnNegativePi_WhenAngleIsPi()
@@ -342,7 +342,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that hermite should calculate correctly when amount is zero
+        ///     Tests that hermite should calculate correctly when amount is zero
         /// </summary>
         [Fact]
         public void Hermite_ShouldCalculateCorrectly_WhenAmountIsZero()
@@ -358,7 +358,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that hermite should calculate correctly when amount is one
+        ///     Tests that hermite should calculate correctly when amount is one
         /// </summary>
         [Fact]
         public void Hermite_ShouldCalculateCorrectly_WhenAmountIsOne()
@@ -374,7 +374,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that hermite should calculate correctly when amount is between zero and one
+        ///     Tests that hermite should calculate correctly when amount is between zero and one
         /// </summary>
         [Fact]
         public void Hermite_ShouldCalculateCorrectly_WhenAmountIsBetweenZeroAndOne()

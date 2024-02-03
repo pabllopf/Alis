@@ -80,14 +80,14 @@ namespace Alis.Core.Aspect.Data.Test.Resource
                 Directory.CreateDirectory(directory);
             }
 
-            
+
             // Act & Assert
             Assert.Throws<ArgumentNullException>(() => AssetManager.Find(null));
         }
 
 
         /// <summary>
-        /// Tests that find should return correct path when asset exists
+        ///     Tests that find should return correct path when asset exists
         /// </summary>
         [Fact]
         public void Find_ShouldReturnCorrectPath_WhenAssetExists()
@@ -117,7 +117,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        /// Tests that find should throw invalid operation exception when multiple assets exist
+        ///     Tests that find should throw invalid operation exception when multiple assets exist
         /// </summary>
         [Fact]
         public void Find_ShouldThrowInvalidOperationException_WhenMultipleAssetsExist()
@@ -156,7 +156,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        /// Tests that find should return empty string when asset does not exist
+        ///     Tests that find should return empty string when asset does not exist
         /// </summary>
         [Fact]
         public void Find_ShouldReturnEmptyString_WhenAssetDoesNotExist()
@@ -170,7 +170,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
                 Directory.CreateDirectory(directory);
             }
 
-            
+
             // Act
             string actualAssetPath = AssetManager.Find(assetName);
 
@@ -179,14 +179,14 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        /// Tests that find empty asset name should return empty string
+        ///     Tests that find empty asset name should return empty string
         /// </summary>
         [Fact]
         public void Find_EmptyAssetName_ShouldReturnEmptyString()
         {
             // Arrange
             string assetName = string.Empty;
-            
+
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
@@ -199,7 +199,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        /// Tests that find null asset name should throw argument null exception
+        ///     Tests that find null asset name should throw argument null exception
         /// </summary>
         [Fact]
         public void Find_NullAssetName_v2_ShouldThrowArgumentNullException()
@@ -210,40 +210,40 @@ namespace Alis.Core.Aspect.Data.Test.Resource
                 Directory.CreateDirectory(directory);
             }
 
-            
+
             // Act & Assert
             Assert.Throws<ArgumentNullException>(() => AssetManager.Find(null));
         }
 
         /// <summary>
-        /// Tests that find invalid asset name should throw argument exception
+        ///     Tests that find invalid asset name should throw argument exception
         /// </summary>
         [Fact]
         public void Find_InvalidAssetName_ShouldThrowArgumentException()
         {
             // Arrange
             string assetName = "invali€?3*'¡1d:asset:namestxt";
-            
+
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }
-            
+
             // Act & Assert
             Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName));
         }
-        
+
 
         /// <summary>
-        /// Tests that find assets directory does not exist should return empty string
+        ///     Tests that find assets directory does not exist should return empty string
         /// </summary>
         [Fact]
         public void Find_AssetsDirectoryDoesNotExist_ShouldReturnEmptyString()
         {
             // Arrange
             string assetName = "asset.txt";
-            
+
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
@@ -259,14 +259,14 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        /// Tests that find white space asset name should throw argument exception
+        ///     Tests that find white space asset name should throw argument exception
         /// </summary>
         [Fact]
         public void Find_WhiteSpaceAssetName_ShouldThrowArgumentException()
         {
             // Arrange
             string assetName = "   ";
-            
+
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
@@ -279,14 +279,14 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        /// Tests that find only invalid chars asset name should throw argument exception
+        ///     Tests that find only invalid chars asset name should throw argument exception
         /// </summary>
         [Fact]
         public void Find_OnlyInvalidCharsAssetName_ShouldThrowArgumentException()
         {
             // Arrange
             string assetName = "invali€?3*'¡1d:asset:nametxt";
-            
+
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
@@ -299,14 +299,14 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        /// Tests that find invalid and valid chars asset name should throw argument exception
+        ///     Tests that find invalid and valid chars asset name should throw argument exception
         /// </summary>
         [Fact]
         public void Find_InvalidAndValidCharsAssetName_ShouldThrowArgumentException()
         {
             // Arrange
             string assetName = "invali€?3*'¡1d:asset:nametxt";
-            
+
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
@@ -317,16 +317,16 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Act & Assert
             Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName));
         }
-        
+
         /// <summary>
-        /// Tests that find white space and invalid chars asset name should throw argument exception
+        ///     Tests that find white space and invalid chars asset name should throw argument exception
         /// </summary>
         [Fact]
         public void Find_WhiteSpaceAndInvalidCharsAssetName_ShouldThrowArgumentException()
         {
             // Arrange
             string assetName = " invalid:assettxt ";
-            
+
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
@@ -339,16 +339,16 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        /// Tests that find white space invalid and valid chars asset name should throw argument exception
+        ///     Tests that find white space invalid and valid chars asset name should throw argument exception
         /// </summary>
         [Fact]
         public void Find_WhiteSpaceInvalidAndValidCharsAssetName_ShouldThrowArgumentException()
         {
             // Arrange
             string assetName = " invalid:assettxt ";
-            
+
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
-            
+
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -360,14 +360,14 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        /// Tests that find invalid chars around valid chars asset name should throw argument exception
+        ///     Tests that find invalid chars around valid chars asset name should throw argument exception
         /// </summary>
         [Fact]
         public void Find_InvalidCharsAroundValidCharsAssetName_ShouldThrowArgumentException()
         {
             // Arrange
             string assetName = ":validasset:";
-            
+
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
 
             if (!Directory.Exists(directory))
@@ -381,14 +381,14 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        /// Tests that find white space around valid chars asset name should return correct path
+        ///     Tests that find white space around valid chars asset name should return correct path
         /// </summary>
         [Fact]
         public void Find_WhiteSpaceAroundValidCharsAssetName_ShouldReturnCorrectPath()
         {
             // Arrange
             string assetName = " validasset .txt";
-            
+
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
@@ -404,14 +404,14 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        /// Tests that find white space around invalid chars asset name should throw argument exception
+        ///     Tests that find white space around invalid chars asset name should throw argument exception
         /// </summary>
         [Fact]
         public void Find_WhiteSpaceAroundInvalidCharsAssetName_ShouldThrowArgumentException()
         {
             // Arrange
             string assetName = " :invalidasset: ";
-            
+
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
@@ -424,16 +424,16 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        /// Tests that find white space invalid chars around valid chars asset name should throw argument exception
+        ///     Tests that find white space invalid chars around valid chars asset name should throw argument exception
         /// </summary>
         [Fact]
         public void Find_WhiteSpaceInvalidCharsAroundValidCharsAssetName_ShouldThrowArgumentException()
         {
             // Arrange
             string assetName = " :validasset: ";
-            
+
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
-     
+
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -445,14 +445,14 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        /// Tests that find invalid chars white space around valid chars asset name should throw argument exception
+        ///     Tests that find invalid chars white space around valid chars asset name should throw argument exception
         /// </summary>
         [Fact]
         public void Find_InvalidCharsWhiteSpaceAroundValidCharsAssetName_ShouldThrowArgumentException()
         {
             // Arrange
             string assetName = ": validasset :";
-            
+
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
 
             if (!Directory.Exists(directory))
@@ -466,16 +466,16 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        /// Tests that find valid chars white space around invalid chars asset name should throw argument exception
+        ///     Tests that find valid chars white space around invalid chars asset name should throw argument exception
         /// </summary>
         [Fact]
         public void Find_ValidCharsWhiteSpaceAroundInvalidCharsAssetName_ShouldThrowArgumentException()
         {
             // Arrange
             string assetName = "validasset :invalidasset: validasset";
-            
+
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
-           
+
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -487,16 +487,16 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        /// Tests that find valid chars invalid chars around white space asset name should throw argument exception
+        ///     Tests that find valid chars invalid chars around white space asset name should throw argument exception
         /// </summary>
         [Fact]
         public void Find_ValidCharsInvalidCharsAroundWhiteSpaceAssetName_ShouldThrowArgumentException()
         {
             // Arrange
             string assetName = "validasset: :validasset";
-            
+
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
-     
+
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -508,16 +508,16 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        /// Tests that find invalid chars valid chars around white space asset name should throw argument exception
+        ///     Tests that find invalid chars valid chars around white space asset name should throw argument exception
         /// </summary>
         [Fact]
         public void Find_InvalidCharsValidCharsAroundWhiteSpaceAssetName_ShouldThrowArgumentException()
         {
             // Arrange
             string assetName = ":validasset :validasset:";
-            
+
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
-       
+
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -529,7 +529,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        /// Tests that find white space valid chars around invalid chars asset name should throw argument exception
+        ///     Tests that find white space valid chars around invalid chars asset name should throw argument exception
         /// </summary>
         [Fact]
         public void Find_WhiteSpaceValidCharsAroundInvalidCharsAssetName_ShouldThrowArgumentException()
@@ -538,14 +538,13 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             string assetName = " validasset:invalidasset:validasset ";
 
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
-         
+
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }
 
-            
-            
+
             // Act & Assert
             Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName.Trim()));
         }

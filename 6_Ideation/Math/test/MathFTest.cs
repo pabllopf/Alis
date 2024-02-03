@@ -32,13 +32,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test
 {
     /// <summary>
-    /// The math test class
+    ///     The math test class
     /// </summary>
     public class MathFTest
     {
-
         /// <summary>
-        /// Tests that sqrt should calculate correctly
+        ///     Tests that sqrt should calculate correctly
         /// </summary>
         [Fact]
         public void Sqrt_ShouldCalculateCorrectly()
@@ -54,7 +53,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that abs should return absolute value
+        ///     Tests that abs should return absolute value
         /// </summary>
         [Fact]
         public void Abs_ShouldReturnAbsoluteValue()
@@ -70,7 +69,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that cos should calculate correctly
+        ///     Tests that cos should calculate correctly
         /// </summary>
         [Fact]
         public void Cos_ShouldCalculateCorrectly()
@@ -86,7 +85,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sin should calculate correctly
+        ///     Tests that sin should calculate correctly
         /// </summary>
         [Fact]
         public void Sin_ShouldCalculateCorrectly()
@@ -102,7 +101,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that acos should calculate correctly
+        ///     Tests that acos should calculate correctly
         /// </summary>
         [Fact]
         public void Acos_ShouldCalculateCorrectly()
@@ -118,7 +117,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that max should return maximum value
+        ///     Tests that max should return maximum value
         /// </summary>
         [Fact]
         public void Max_ShouldReturnMaximumValue()
@@ -135,7 +134,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sin should calculate correctly
+        ///     Tests that sin should calculate correctly
         /// </summary>
         [Fact]
         public void Sin_v2_ShouldCalculateCorrectly()
@@ -151,7 +150,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sin should return na n for na n input
+        ///     Tests that sin should return na n for na n input
         /// </summary>
         [Fact]
         public void Sin_ShouldReturnNaNForNaNInput()
@@ -167,7 +166,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sin should return na n for infinity input
+        ///     Tests that sin should return na n for infinity input
         /// </summary>
         [Fact]
         public void Sin_ShouldReturnNaNForInfinityInput()
@@ -183,7 +182,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sqrt v 3 should calculate correctly
+        ///     Tests that sqrt v 3 should calculate correctly
         /// </summary>
         [Fact]
         public void Sqrt_v3_ShouldCalculateCorrectly()
@@ -199,7 +198,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sqrt should return na n for negative input
+        ///     Tests that sqrt should return na n for negative input
         /// </summary>
         [Fact]
         public void Sqrt_ShouldReturnNaNForNegativeInput()
@@ -215,7 +214,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sqrt should return zero for zero input
+        ///     Tests that sqrt should return zero for zero input
         /// </summary>
         [Fact]
         public void Sqrt_ShouldReturnZeroForZeroInput()
@@ -231,7 +230,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that cos v 2 should calculate correctly
+        ///     Tests that cos v 2 should calculate correctly
         /// </summary>
         [Fact]
         public void Cos_v2_ShouldCalculateCorrectly()
@@ -247,7 +246,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that cos should return na n for na n input
+        ///     Tests that cos should return na n for na n input
         /// </summary>
         [Fact]
         public void Cos_ShouldReturnNaNForNaNInput()
@@ -263,7 +262,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that cos should return na n for infinity input
+        ///     Tests that cos should return na n for infinity input
         /// </summary>
         [Fact]
         public void Cos_ShouldReturnNaNForInfinityInput()
@@ -279,7 +278,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that acos v 2 should calculate correctly
+        ///     Tests that acos v 2 should calculate correctly
         /// </summary>
         [Fact]
         public void Acos_v2_ShouldCalculateCorrectly()
@@ -295,7 +294,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that acos should return na n for input less than minus one
+        ///     Tests that acos should return na n for input less than minus one
         /// </summary>
         [Fact]
         public void Acos_ShouldReturnNaNForInputLessThanMinusOne()
@@ -311,7 +310,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that acos should return na n for input greater than one
+        ///     Tests that acos should return na n for input greater than one
         /// </summary>
         [Fact]
         public void Acos_ShouldReturnNaNForInputGreaterThanOne()
@@ -327,7 +326,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that acos should return na n for na n input
+        ///     Tests that acos should return na n for na n input
         /// </summary>
         [Fact]
         public void Acos_ShouldReturnNaNForNaNInput()
@@ -343,7 +342,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sin v 3 should calculate correctly
+        ///     Tests that sin v 3 should calculate correctly
         /// </summary>
         [Fact]
         public void Sin_v3_ShouldCalculateCorrectly()
@@ -359,7 +358,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sin v 3 should return na n for na n input
+        ///     Tests that sin v 3 should return na n for na n input
         /// </summary>
         [Fact]
         public void Sin_v3_ShouldReturnNaNForNaNInput()
@@ -375,7 +374,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sin v 3 should return na n for infinity input
+        ///     Tests that sin v 3 should return na n for infinity input
         /// </summary>
         [Fact]
         public void Sin_v3_ShouldReturnNaNForInfinityInput()
@@ -391,7 +390,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sin should calculate correctly for positive input
+        ///     Tests that sin should calculate correctly for positive input
         /// </summary>
         [Fact]
         public void Sin_ShouldCalculateCorrectly_ForPositiveInput()
@@ -407,7 +406,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sin should calculate correctly for negative input
+        ///     Tests that sin should calculate correctly for negative input
         /// </summary>
         [Fact]
         public void Sin_ShouldCalculateCorrectly_ForNegativeInput()
@@ -423,7 +422,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sin v 2 should return na n for na n input
+        ///     Tests that sin v 2 should return na n for na n input
         /// </summary>
         [Fact]
         public void Sin_v2_ShouldReturnNaNForNaNInput()
@@ -439,7 +438,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sin v 2 should return na n for infinity input
+        ///     Tests that sin v 2 should return na n for infinity input
         /// </summary>
         [Fact]
         public void Sin_v2_ShouldReturnNaNForInfinityInput()
@@ -455,7 +454,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sin should calculate correctly for zero input
+        ///     Tests that sin should calculate correctly for zero input
         /// </summary>
         [Fact]
         public void Sin_ShouldCalculateCorrectly_ForZeroInput()
@@ -471,7 +470,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return correct result when input is zero
+        ///     Tests that math f sin should return correct result when input is zero
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnCorrectResult_WhenInputIsZero()
@@ -482,7 +481,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return correct result when input is positive
+        ///     Tests that math f sin should return correct result when input is positive
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnCorrectResult_WhenInputIsPositive()
@@ -493,7 +492,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return correct result when input is negative
+        ///     Tests that math f sin should return correct result when input is negative
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnCorrectResult_WhenInputIsNegative()
@@ -504,7 +503,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return na n when input is na n
+        ///     Tests that math f sin should return na n when input is na n
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnNaN_WhenInputIsNaN()
@@ -515,7 +514,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return na n when input is positive infinity
+        ///     Tests that math f sin should return na n when input is positive infinity
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnNaN_WhenInputIsPositiveInfinity()
@@ -526,7 +525,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return na n when input is negative infinity
+        ///     Tests that math f sin should return na n when input is negative infinity
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnNaN_WhenInputIsNegativeInfinity()
@@ -537,7 +536,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return correct result with zero
+        ///     Tests that math f sin should return correct result with zero
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnCorrectResult_WithZero()
@@ -551,7 +550,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return correct result with positive value
+        ///     Tests that math f sin should return correct result with positive value
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnCorrectResult_WithPositiveValue()
@@ -565,7 +564,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return correct result with negative value
+        ///     Tests that math f sin should return correct result with negative value
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnCorrectResult_WithNegativeValue()
@@ -579,7 +578,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return na n with na n
+        ///     Tests that math f sin should return na n with na n
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnNaN_WithNaN()
@@ -592,7 +591,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return na n with infinity
+        ///     Tests that math f sin should return na n with infinity
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnNaN_WithInfinity()
@@ -605,7 +604,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return correct result with pi over two
+        ///     Tests that math f sin should return correct result with pi over two
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnCorrectResult_WithPiOverTwo()
@@ -619,7 +618,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return correct result with negative pi over two
+        ///     Tests that math f sin should return correct result with negative pi over two
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnCorrectResult_WithNegativePiOverTwo()
@@ -633,7 +632,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return correct result with pi
+        ///     Tests that math f sin should return correct result with pi
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnCorrectResult_WithPi()
@@ -647,7 +646,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return correct result with two pi
+        ///     Tests that math f sin should return correct result with two pi
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnCorrectResult_WithTwoPi()
@@ -661,7 +660,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return na n with positive infinity
+        ///     Tests that math f sin should return na n with positive infinity
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnNaN_WithPositiveInfinity()
@@ -674,7 +673,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return na n with negative infinity
+        ///     Tests that math f sin should return na n with negative infinity
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnNaN_WithNegativeInfinity()
@@ -687,7 +686,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return correct result with large positive value
+        ///     Tests that math f sin should return correct result with large positive value
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnCorrectResult_WithLargePositiveValue()
@@ -701,7 +700,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return correct result with large negative value
+        ///     Tests that math f sin should return correct result with large negative value
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnCorrectResult_WithLargeNegativeValue()
@@ -715,7 +714,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that math f sin should return na n with max value
+        ///     Tests that math f sin should return na n with max value
         /// </summary>
         [Fact]
         public void MathF_Sin_ShouldReturnNaN_WithMaxValue()

@@ -28,18 +28,17 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Matrix;
-using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
 namespace Alis.Core.Aspect.Math.Test.Matrix
 {
     /// <summary>
-    /// The matrix test class
+    ///     The matrix test class
     /// </summary>
     public class Matrix4X4Test
     {
         /// <summary>
-        /// Tests that test identity matrix
+        ///     Tests that test identity matrix
         /// </summary>
         [Fact]
         public void TestIdentityMatrix()
@@ -68,7 +67,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test matrix addition
+        ///     Tests that test matrix addition
         /// </summary>
         [Fact]
         public void TestMatrixAddition()
@@ -83,7 +82,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test get hash code
+        ///     Tests that test get hash code
         /// </summary>
         [Fact]
         public void TestGetHashCode()
@@ -95,7 +94,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test to string
+        ///     Tests that test to string
         /// </summary>
         [Fact]
         public void TestToString()
@@ -107,7 +106,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test equals
+        ///     Tests that test equals
         /// </summary>
         [Fact]
         public void TestEquals()
@@ -121,7 +120,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test get hash code v 2
+        ///     Tests that test get hash code v 2
         /// </summary>
         [Fact]
         public void TestGetHashCode_v2()
@@ -135,7 +134,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test create rotation z
+        ///     Tests that test create rotation z
         /// </summary>
         [Fact]
         public void TestCreateRotationZ()
@@ -164,7 +163,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test create orthographic off center
+        ///     Tests that test create orthographic off center
         /// </summary>
         [Fact]
         public void TestCreateOrthographicOffCenter()
@@ -187,7 +186,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test op inequality
+        ///     Tests that test op inequality
         /// </summary>
         [Fact]
         public void TestOpInequality()
@@ -201,7 +200,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test equals v 2
+        ///     Tests that test equals v 2
         /// </summary>
         [Fact]
         public void TestEquals_v2()
@@ -215,7 +214,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test equals v 4
+        ///     Tests that test equals v 4
         /// </summary>
         [Fact]
         public void TestEquals_v4()
@@ -229,7 +228,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that test equals v 5
+        ///     Tests that test equals v 5
         /// </summary>
         [Fact]
         public void TestEquals_v5()

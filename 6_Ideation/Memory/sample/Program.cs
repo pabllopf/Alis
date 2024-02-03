@@ -39,23 +39,23 @@ namespace Alis.Core.Aspect.Memory.Sample
     public static class Program
     {
         /// <summary>
-        /// Gets or sets the value of the non zero value
+        ///     Gets or sets the value of the non zero value
         /// </summary>
         [IsNotZero] private static int _nonZeroValue;
-        
+
         /// <summary>
-        /// Gets or sets the value of the non zero value
+        ///     Gets or sets the value of the non zero value
         /// </summary>
         private static int _nonZeroValuev2;
 
         /// <summary>
-        /// Gets or sets the value of the sample
+        ///     Gets or sets the value of the sample
         /// </summary>
         [IsNotZero]
         private static int Sample { get; set; }
 
         /// <summary>
-        /// Samples the method using the specified value
+        ///     Samples the method using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         public static void SampleMethod([IsNotZero, IsNotNull] int value)
@@ -63,7 +63,7 @@ namespace Alis.Core.Aspect.Memory.Sample
             Validator.Validate(value, nameof(value));
             Console.WriteLine("The value of value is " + value);
         }
-        
+
         /// <summary>
         ///     Main the args
         /// </summary>
@@ -79,7 +79,7 @@ namespace Alis.Core.Aspect.Memory.Sample
             {
                 Console.WriteLine(e);
             }
-            
+
             try
             {
                 SampleMethod(0);
@@ -88,14 +88,14 @@ namespace Alis.Core.Aspect.Memory.Sample
             {
                 Console.WriteLine(e);
             }
-            
+
             _nonZeroValuev2 = 0;
             Validator.Validate(_nonZeroValuev2, nameof(_nonZeroValuev2));
 
-            
+
             try
             {
-                _nonZeroValue = 0; 
+                _nonZeroValue = 0;
                 Validator.Validate(_nonZeroValue, nameof(_nonZeroValue));
             }
             catch (NotZeroException ex)
@@ -105,7 +105,7 @@ namespace Alis.Core.Aspect.Memory.Sample
 
             try
             {
-                _nonZeroValue = 5; 
+                _nonZeroValue = 5;
                 Validator.Validate(_nonZeroValue, nameof(_nonZeroValue));
                 Console.WriteLine("NonZeroValue has been successfully set to " + _nonZeroValue);
             }

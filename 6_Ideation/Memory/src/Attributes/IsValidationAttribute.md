@@ -2,11 +2,13 @@
 
 ## Description
 
-The `IsValidationAttribute` class is an abstract validation attribute that provides a method for validating a value. It is part of the `Alis.Core.Aspect.Memory.Attributes` namespace.
+The `IsValidationAttribute` class is an abstract validation attribute that provides a method for validating a value. It
+is part of the `Alis.Core.Aspect.Memory.Attributes` namespace.
 
 ## Usage
 
-This attribute can be used as a base class for other validation attributes. It provides an abstract `Validate` method that needs to be implemented in derived classes.
+This attribute can be used as a base class for other validation attributes. It provides an abstract `Validate` method
+that needs to be implemented in derived classes.
 
 ```csharp
 public abstract class IsValidationAttribute : Attribute

@@ -16,6 +16,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <EmbeddedResource Include="Assets\test.zip" />
+        <EmbeddedResource Include="Assets\test.zip"/>
     </ItemGroup>
 </Project>

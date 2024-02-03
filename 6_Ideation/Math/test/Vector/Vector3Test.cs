@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Vector
 {
     /// <summary>
-    /// The vector test class
+    ///     The vector test class
     /// </summary>
     public class Vector3Test
     {
         /// <summary>
-        /// Tests that constructor should set values
+        ///     Tests that constructor should set values
         /// </summary>
         [Fact]
         public void Constructor_ShouldSetValues()
@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that length should calculate correctly
+        ///     Tests that length should calculate correctly
         /// </summary>
         [Fact]
         public void Length_ShouldCalculateCorrectly()
@@ -75,7 +75,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that normalize should return unit vector
+        ///     Tests that normalize should return unit vector
         /// </summary>
         [Fact]
         public void Normalize_ShouldReturnUnitVector()
@@ -93,7 +93,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that dot product should calculate correctly
+        ///     Tests that dot product should calculate correctly
         /// </summary>
         [Fact]
         public void DotProduct_ShouldCalculateCorrectly()
@@ -110,7 +110,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that constructor v 2 should set values
+        ///     Tests that constructor v 2 should set values
         /// </summary>
         [Fact]
         public void Constructor_v2_ShouldSetValues()
@@ -127,7 +127,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that length v 2 should calculate correctly
+        ///     Tests that length v 2 should calculate correctly
         /// </summary>
         [Fact]
         public void Length_v2_ShouldCalculateCorrectly()
@@ -141,7 +141,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that normalize should calculate correctly
+        ///     Tests that normalize should calculate correctly
         /// </summary>
         [Fact]
         public void Normalize_ShouldCalculateCorrectly()
@@ -155,7 +155,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that dot product 3 should calculate correctly
+        ///     Tests that dot product 3 should calculate correctly
         /// </summary>
         [Fact]
         public void DotProduct_3_ShouldCalculateCorrectly()
@@ -170,7 +170,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that sqrt should calculate correctly
+        ///     Tests that sqrt should calculate correctly
         /// </summary>
         [Fact]
         public void Sqrt_ShouldCalculateCorrectly()
@@ -186,7 +186,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that abs should return absolute value
+        ///     Tests that abs should return absolute value
         /// </summary>
         [Fact]
         public void Abs_ShouldReturnAbsoluteValue()
@@ -202,7 +202,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that cos should calculate correctly
+        ///     Tests that cos should calculate correctly
         /// </summary>
         [Fact]
         public void Cos_ShouldCalculateCorrectly()
@@ -218,7 +218,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that sin should calculate correctly
+        ///     Tests that sin should calculate correctly
         /// </summary>
         [Fact]
         public void Sin_ShouldCalculateCorrectly()
@@ -234,7 +234,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that acos should calculate correctly
+        ///     Tests that acos should calculate correctly
         /// </summary>
         [Fact]
         public void Acos_ShouldCalculateCorrectly()
@@ -250,7 +250,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that max should return maximum value
+        ///     Tests that max should return maximum value
         /// </summary>
         [Fact]
         public void Max_ShouldReturnMaximumValue()
@@ -267,7 +267,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 addition operator should calculate correctly
+        ///     Tests that vector 3 addition operator should calculate correctly
         /// </summary>
         [Fact]
         public void Vector3_Addition_Operator_ShouldCalculateCorrectly()
@@ -282,7 +282,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 subtraction operator should calculate correctly
+        ///     Tests that vector 3 subtraction operator should calculate correctly
         /// </summary>
         [Fact]
         public void Vector3_Subtraction_Operator_ShouldCalculateCorrectly()
@@ -297,7 +297,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 multiplication operator should calculate correctly
+        ///     Tests that vector 3 multiplication operator should calculate correctly
         /// </summary>
         [Fact]
         public void Vector3_Multiplication_Operator_ShouldCalculateCorrectly()
@@ -311,7 +311,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 division operator should calculate correctly
+        ///     Tests that vector 3 division operator should calculate correctly
         /// </summary>
         [Fact]
         public void Vector3_Division_Operator_ShouldCalculateCorrectly()
@@ -325,7 +325,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 dot should calculate correctly
+        ///     Tests that vector 3 dot should calculate correctly
         /// </summary>
         [Fact]
         public void Vector3_Dot_ShouldCalculateCorrectly()
@@ -338,7 +338,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 cross should calculate correctly
+        ///     Tests that vector 3 cross should calculate correctly
         /// </summary>
         [Fact]
         public void Vector3_Cross_ShouldCalculateCorrectly()
@@ -353,7 +353,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 length should calculate correctly
+        ///     Tests that vector 3 length should calculate correctly
         /// </summary>
         [Fact]
         public void Vector3_Length_ShouldCalculateCorrectly()
@@ -365,7 +365,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 normalize should calculate correctly
+        ///     Tests that vector 3 normalize should calculate correctly
         /// </summary>
         [Fact]
         public void Vector3_Normalize_ShouldCalculateCorrectly()
@@ -379,7 +379,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that length squared should calculate correctly
+        ///     Tests that length squared should calculate correctly
         /// </summary>
         [Fact]
         public void LengthSquared_ShouldCalculateCorrectly()
@@ -391,7 +391,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that to string should format correctly
+        ///     Tests that to string should format correctly
         /// </summary>
         [Fact]
         public void ToString_ShouldFormatCorrectly()
@@ -401,9 +401,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             Assert.Equal(result.Contains(',') ? "<1, 2, 3>" : "<1. 2. 3>", result);
         }
-        
+
         /// <summary>
-        /// Tests that to string with format and culture should format correctly
+        ///     Tests that to string with format and culture should format correctly
         /// </summary>
         [Fact]
         public void ToString_WithFormatAndCulture_ShouldFormatCorrectly()
@@ -415,7 +415,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 zero should return zero vector
+        ///     Tests that vector 3 zero should return zero vector
         /// </summary>
         [Fact]
         public void Vector3_Zero_ShouldReturnZeroVector()
@@ -427,7 +427,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 one should return one vector
+        ///     Tests that vector 3 one should return one vector
         /// </summary>
         [Fact]
         public void Vector3_One_ShouldReturnOneVector()
@@ -439,7 +439,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 unit x should return unit x vector
+        ///     Tests that vector 3 unit x should return unit x vector
         /// </summary>
         [Fact]
         public void Vector3_UnitX_ShouldReturnUnitXVector()
@@ -451,7 +451,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 unit y should return unit y vector
+        ///     Tests that vector 3 unit y should return unit y vector
         /// </summary>
         [Fact]
         public void Vector3_UnitY_ShouldReturnUnitYVector()
@@ -463,7 +463,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 unit z should return unit z vector
+        ///     Tests that vector 3 unit z should return unit z vector
         /// </summary>
         [Fact]
         public void Vector3_UnitZ_ShouldReturnUnitZVector()
@@ -475,7 +475,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 addition operator should return correct result
+        ///     Tests that vector 3 addition operator should return correct result
         /// </summary>
         [Fact]
         public void Vector3_AdditionOperator_ShouldReturnCorrectResult()
@@ -490,7 +490,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 constructor with vector 2 and float should set values correctly
+        ///     Tests that vector 3 constructor with vector 2 and float should set values correctly
         /// </summary>
         [Fact]
         public void Vector3_ConstructorWithVector2AndFloat_ShouldSetValuesCorrectly()
@@ -505,7 +505,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 constructor with vector 2 and float should handle negative values
+        ///     Tests that vector 3 constructor with vector 2 and float should handle negative values
         /// </summary>
         [Fact]
         public void Vector3_ConstructorWithVector2AndFloat_ShouldHandleNegativeValues()
@@ -520,7 +520,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 constructor with vector 2 and float should handle zero values
+        ///     Tests that vector 3 constructor with vector 2 and float should handle zero values
         /// </summary>
         [Fact]
         public void Vector3_ConstructorWithVector2AndFloat_ShouldHandleZeroValues()
@@ -535,7 +535,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 equals should return true when vectors are equal
+        ///     Tests that vector 3 equals should return true when vectors are equal
         /// </summary>
         [Fact]
         public void Vector3_Equals_ShouldReturnTrue_WhenVectorsAreEqual()
@@ -547,7 +547,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 equals should return false when vectors are not equal
+        ///     Tests that vector 3 equals should return false when vectors are not equal
         /// </summary>
         [Fact]
         public void Vector3_Equals_ShouldReturnFalse_WhenVectorsAreNotEqual()
@@ -559,7 +559,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 equals should return false when compared with null
+        ///     Tests that vector 3 equals should return false when compared with null
         /// </summary>
         [Fact]
         public void Vector3_Equals_ShouldReturnFalse_WhenComparedWithNull()
@@ -570,7 +570,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 get hash code should return same hash code when vectors are equal
+        ///     Tests that vector 3 get hash code should return same hash code when vectors are equal
         /// </summary>
         [Fact]
         public void Vector3_GetHashCode_ShouldReturnSameHashCode_WhenVectorsAreEqual()
@@ -582,7 +582,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 get hash code should return different hash code when vectors are not equal
+        ///     Tests that vector 3 get hash code should return different hash code when vectors are not equal
         /// </summary>
         [Fact]
         public void Vector3_GetHashCode_ShouldReturnDifferentHashCode_WhenVectorsAreNotEqual()
@@ -594,7 +594,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 dot should return correct result
+        ///     Tests that vector 3 dot should return correct result
         /// </summary>
         [Fact]
         public void Vector3_Dot_ShouldReturnCorrectResult()
@@ -607,7 +607,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 cross should return correct result
+        ///     Tests that vector 3 cross should return correct result
         /// </summary>
         [Fact]
         public void Vector3_Cross_ShouldReturnCorrectResult()
@@ -622,7 +622,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 length should return correct result
+        ///     Tests that vector 3 length should return correct result
         /// </summary>
         [Fact]
         public void Vector3_Length_ShouldReturnCorrectResult()
@@ -634,7 +634,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 length squared should return correct result
+        ///     Tests that vector 3 length squared should return correct result
         /// </summary>
         [Fact]
         public void Vector3_LengthSquared_ShouldReturnCorrectResult()
@@ -646,7 +646,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 normalize should return correct result
+        ///     Tests that vector 3 normalize should return correct result
         /// </summary>
         [Fact]
         public void Vector3_Normalize_ShouldReturnCorrectResult()
@@ -660,7 +660,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 operator addition should return correct result
+        ///     Tests that vector 3 operator addition should return correct result
         /// </summary>
         [Fact]
         public void Vector3_OperatorAddition_ShouldReturnCorrectResult()
@@ -675,7 +675,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 operator subtraction should return correct result
+        ///     Tests that vector 3 operator subtraction should return correct result
         /// </summary>
         [Fact]
         public void Vector3_OperatorSubtraction_ShouldReturnCorrectResult()
@@ -690,7 +690,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 operator multiplication should return correct result
+        ///     Tests that vector 3 operator multiplication should return correct result
         /// </summary>
         [Fact]
         public void Vector3_OperatorMultiplication_ShouldReturnCorrectResult()
@@ -705,7 +705,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 operator division should return correct result
+        ///     Tests that vector 3 operator division should return correct result
         /// </summary>
         [Fact]
         public void Vector3_OperatorDivision_ShouldReturnCorrectResult()
@@ -720,7 +720,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 operator unary negation should return correct result
+        ///     Tests that vector 3 operator unary negation should return correct result
         /// </summary>
         [Fact]
         public void Vector3_OperatorUnaryNegation_ShouldReturnCorrectResult()
@@ -734,7 +734,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 operator equality should return correct result
+        ///     Tests that vector 3 operator equality should return correct result
         /// </summary>
         [Fact]
         public void Vector3_OperatorEquality_ShouldReturnCorrectResult()
@@ -747,7 +747,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 operator inequality should return correct result
+        ///     Tests that vector 3 operator inequality should return correct result
         /// </summary>
         [Fact]
         public void Vector3_OperatorInequality_ShouldReturnCorrectResult()
@@ -760,7 +760,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 operator multiply should return correct result with two vectors
+        ///     Tests that vector 3 operator multiply should return correct result with two vectors
         /// </summary>
         [Fact]
         public void Vector3_OperatorMultiply_ShouldReturnCorrectResult_WithTwoVectors()
@@ -775,7 +775,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 operator multiply should return correct result with vector and scalar
+        ///     Tests that vector 3 operator multiply should return correct result with vector and scalar
         /// </summary>
         [Fact]
         public void Vector3_OperatorMultiply_ShouldReturnCorrectResult_WithVectorAndScalar()
@@ -790,7 +790,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that vector 3 operator multiply should return correct result with scalar and vector
+        ///     Tests that vector 3 operator multiply should return correct result with scalar and vector
         /// </summary>
         [Fact]
         public void Vector3_OperatorMultiply_ShouldReturnCorrectResult_WithScalarAndVector()
