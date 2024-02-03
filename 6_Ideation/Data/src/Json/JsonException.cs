@@ -29,7 +29,6 @@
 
 using System;
 using System.Globalization;
-using System.Runtime.Serialization;
 
 namespace Alis.Core.Aspect.Data.Json
 {
@@ -40,7 +39,7 @@ namespace Alis.Core.Aspect.Data.Json
     public class JsonException : Exception
     {
         /// <summary>
-        ///     The commn error prefix.
+        ///     The error prefix.
         /// </summary>
         public const string Prefix = "JSO";
 
@@ -82,24 +81,7 @@ namespace Alis.Core.Aspect.Data.Json
             : base(null, innerException)
         {
         }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="JsonException" /> class.
-        /// </summary>
-        /// <param name="info">
-        ///     The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object
-        ///     data about the exception being thrown.
-        /// </param>
-        /// <param name="context">
-        ///     The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual
-        ///     information about the source or destination.
-        /// </param>
-        [Obsolete("Obsolete")]
-        protected JsonException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
-        }
-
+        
         /// <summary>
         ///     Gets the error code.
         /// </summary>
@@ -109,7 +91,7 @@ namespace Alis.Core.Aspect.Data.Json
         public int Code => GetCode(Message);
 
         /// <summary>
-        ///     Gets the errror code.
+        ///     Gets the error code.
         /// </summary>
         /// <param name="message">The message.</param>
         /// <returns>The error code.</returns>
