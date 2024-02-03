@@ -51,26 +51,51 @@ namespace Alis.Core.Aspect.Memory
             StackTrace stackTrace = new StackTrace();
             MethodBase methodBase = stackTrace.GetFrame(1).GetMethod();
             Type callingType = methodBase.ReflectedType;
+            
+            ValidateParameter(value, name, callingType, methodBase);
+            ValidateField(value, name, callingType);
+            ValidateProperty(value, name, callingType);
+        }
 
-            ParameterInfo[] parameters = methodBase.GetParameters();
-            if (parameters.Length > 0)
+        /// <summary>
+        /// Validates the property using the specified value
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <param name="name">The name</param>
+        /// <param name="callingType">The calling type</param>
+        internal static void ValidateProperty<T>(T value, string name, Type callingType)
+        {
+            if (callingType != null)
             {
-                foreach (ParameterInfo parameter in parameters)
+                PropertyInfo[] properties = callingType.GetProperties(BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                foreach (PropertyInfo property in properties)
                 {
-                    if (parameter.Name != name) continue;
-                    
-                    object[] attributes = parameter.GetCustomAttributes(true);
+                    if (property.Name != name) continue;
+
+                    object[] attributes = property.GetCustomAttributes(true);
 
                     foreach (object attribute in attributes)
                     {
                         if (attribute is IsValidationAttribute validationAttribute)
                         {
-                            validationAttribute.Validate(value, $"type='{callingType}' method='{methodBase.Name}' param='{parameter.Name}'");
+                            validationAttribute.Validate(value, $"type='{callingType}' property='{property.Name}'");
                         }
                     }
                 }
             }
-            
+        }
+
+        /// <summary>
+        /// Validates the field using the specified value
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <param name="name">The name</param>
+        /// <param name="callingType">The calling type</param>
+        internal static void ValidateField<T>(T value, string name, Type callingType)
+        {
             if (callingType != null)
             {
                 FieldInfo[] fields = callingType.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Instance);
@@ -89,20 +114,33 @@ namespace Alis.Core.Aspect.Memory
                         }
                     }
                 }
-                
-                PropertyInfo[] properties = callingType.GetProperties(BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Instance);
+            }
+        }
 
-                foreach (PropertyInfo property in properties)
+        /// <summary>
+        /// Validates the parameter using the specified value
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <param name="name">The name</param>
+        /// <param name="callingType">The calling type</param>
+        /// <param name="methodBase">The method base</param>
+        internal static void ValidateParameter<T>(T value, string name, Type callingType, MethodBase methodBase)
+        {
+            ParameterInfo[] parameters = methodBase.GetParameters();
+            if (parameters.Length > 0)
+            {
+                foreach (ParameterInfo parameter in parameters)
                 {
-                    if (property.Name != name) continue;
+                    if (parameter.Name != name) continue;
                     
-                    object[] attributes = property.GetCustomAttributes(true);
+                    object[] attributes = parameter.GetCustomAttributes(true);
 
                     foreach (object attribute in attributes)
                     {
                         if (attribute is IsValidationAttribute validationAttribute)
                         {
-                            validationAttribute.Validate(value, $"type='{callingType}' property='{property.Name}'");
+                            validationAttribute.Validate(value, $"type='{callingType}' method='{methodBase.Name}' param='{parameter.Name}'");
                         }
                     }
                 }
