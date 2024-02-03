@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Reflection;
 using Alis.Core.Aspect.Memory.Attributes;
 using Alis.Core.Aspect.Memory.Exceptions;
 using Xunit;
@@ -39,7 +40,7 @@ namespace Alis.Core.Aspect.Memory.Test
     /// <summary>
     /// The validator test class
     /// </summary>
-    public class ValidatorTest
+    public partial class ValidatorTest
     {
         /// <summary>
         /// Gets or sets the value of the test property
@@ -1071,6 +1072,216 @@ namespace Alis.Core.Aspect.Memory.Test
 
             // Act and Assert
             Assert.Throws<NotEmptyException>(() => attribute.Validate(emptyArray, nameof(emptyArray)));
+        }
+
+        /// <summary>
+        /// Tests that validate with empty list v 2 should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithEmptyList_v2_ShouldThrowException()
+        {
+            // Arrange
+            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
+            List<int> emptyList = new List<int>();
+
+            // Act and Assert
+            Assert.Throws<NotEmptyException>(() => attribute.Validate(emptyList, nameof(emptyList)));
+        }
+
+        /// <summary>
+        /// Tests that validate with null concurrent dictionary v 2 should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithNullConcurrentDictionary_v2_ShouldThrowException()
+        {
+            // Arrange
+            IsNotNullAttribute attribute = new IsNotNullAttribute();
+            ConcurrentDictionary<int, int> nullConcurrentDictionary = null;
+
+            // Act and Assert
+            Assert.Throws<NotNullException>(() => attribute.Validate(nullConcurrentDictionary, nameof(nullConcurrentDictionary)));
+        }
+
+        /// <summary>
+        /// Tests that validate with not null concurrent dictionary v 2 should not throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithNotNullConcurrentDictionary_v2_ShouldNotThrowException()
+        {
+            // Arrange
+            IsNotNullAttribute attribute = new IsNotNullAttribute();
+            ConcurrentDictionary<int, int> notNullConcurrentDictionary = new ConcurrentDictionary<int, int>();
+
+            // Act
+            attribute.Validate(notNullConcurrentDictionary, nameof(notNullConcurrentDictionary));
+
+            // Assert
+            Assert.True(true);
+        }
+
+        /// <summary>
+        /// Tests that validate with non zero int v 2 should not throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithNonZeroInt_v2_ShouldNotThrowException()
+        {
+            // Arrange
+            IsNotZeroAttribute attribute = new IsNotZeroAttribute();
+            int nonZeroValue = 1;
+
+            // Act
+            attribute.Validate(nonZeroValue, nameof(nonZeroValue));
+
+            // Assert
+            Assert.True(true);
+        }
+
+        /// <summary>
+        /// Tests that validate with not null array v 3 should not throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithNotNullArrayV3_ShouldNotThrowException()
+        {
+            // Arrange
+            IsNotNullAttribute attribute = new IsNotNullAttribute();
+            int[] notNullArray = new int[1];
+
+            // Act
+            attribute.Validate(notNullArray, nameof(notNullArray));
+
+            // Assert
+            Assert.True(true);
+        }
+
+        /// <summary>
+        /// Tests that validate with empty array v 3 should throw exception
+        /// </summary>
+        [Fact]
+        public void Validate_WithEmptyArrayV3_ShouldThrowException()
+        {
+            // Arrange
+            IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
+            int[] emptyArray = new int[0];
+
+            // Act and Assert
+            Assert.Throws<NotEmptyException>(() => attribute.Validate(emptyArray, nameof(emptyArray)));
+        }
+
+        /// <summary>
+        /// Tests that validate property with not null type should not throw exception
+        /// </summary>
+        [Fact]
+        public void ValidateProperty_WithNotNullType_ShouldNotThrowException()
+        {
+            // Arrange
+            ValidatorTestClass testClass = new ValidatorTestClass();
+            Type callingType = typeof(ValidatorTestClass);
+            string name = "TestProperty";
+
+            // Act
+            Validator.ValidateProperty(testClass.TestProperty, name, callingType);
+
+            // Assert
+            Assert.True(true); 
+        }
+        
+        /// <summary>
+        /// Tests that validate field with not null type should not throw exception
+        /// </summary>
+        [Fact]
+        public void ValidateField_WithNotNullType_ShouldNotThrowException()
+        {
+            // Arrange
+            ValidatorTestClass testClass = new ValidatorTestClass();
+            Type callingType = typeof(ValidatorTestClass);
+            string name = "TestField";
+
+            // Act
+            Validator.ValidateField(testClass.TestField, name, callingType);
+
+            // Assert
+            Assert.True(true); 
+        }
+        
+        /// <summary>
+        /// Tests that validate parameter with not null type should not throw exception
+        /// </summary>
+        [Fact]
+        public void ValidateParameter_WithNotNullType_ShouldNotThrowException()
+        {
+            // Arrange
+            ValidatorTestClass testClass = new ValidatorTestClass();
+            Type callingType = typeof(ValidatorTestClass);
+            MethodBase methodBase = typeof(ValidatorTestClass).GetMethod("TestMethod");
+            string name = "testParam";
+            string value = "Test";
+
+            // Act
+            Validator.ValidateParameter(value, name, callingType, methodBase);
+
+            // Assert
+            Assert.True(true); 
+        }
+
+        
+        /// <summary>
+        /// Tests that validate parameter with not null type v 2 should not throw exception
+        /// </summary>
+        [Fact]
+        public void ValidateParameter_WithNotNullType_V2_ShouldNotThrowException()
+        {
+            // Arrange
+            ValidatorTestClass testClass = new ValidatorTestClass();
+            Type callingType = typeof(ValidatorTestClass);
+            MethodBase methodBase = typeof(ValidatorTestClass).GetMethod("TestMethod");
+            const string name = "testParam";
+            const string value = "Test";
+
+            // Act
+            Validator.ValidateParameter(value, name, callingType, methodBase);
+
+            // Assert
+            Assert.True(true); 
+        }
+        
+        /// <summary>
+        /// Tests that validate parameter with not null type v 3 should not throw exception
+        /// </summary>
+        [Fact]
+        public void ValidateParameter_WithNotNullType_V3_ShouldNotThrowException()
+        {
+            // Arrange
+            ValidatorTestClass testClass = new ValidatorTestClass();
+            Type callingType = typeof(ValidatorTestClass);
+            MethodBase methodBase = typeof(ValidatorTestClass).GetMethod("TestMethod2");
+            const string name = "testParam";
+            const string value = "Test";
+
+            // Act
+            Validator.ValidateParameter(value, name, callingType, methodBase);
+
+            // Assert
+            Assert.True(true); 
+        }
+        
+        /// <summary>
+        /// Tests that validate parameter with not null type v 4 should not throw exception
+        /// </summary>
+        [Fact]
+        public void ValidateParameter_WithNotNullType_V4_ShouldNotThrowException()
+        {
+            // Arrange
+            ValidatorTestClass testClass = new ValidatorTestClass();
+            Type callingType = typeof(ValidatorTestClass);
+            MethodBase methodBase = typeof(ValidatorTestClass).GetMethod("TestMethod3");
+            const string name = "testParam";
+            const string value = "Test";
+
+            // Act
+            Validator.ValidateParameter(value, name, callingType, methodBase);
+
+            // Assert
+            Assert.True(true); 
         }
     }
 }
