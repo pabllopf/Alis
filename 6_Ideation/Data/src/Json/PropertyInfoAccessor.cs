@@ -74,9 +74,6 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The object</returns>
         public object Get(object component)
         {
-            if (_get == null)
-                return null;
-
             return _get((TComponent) component);
         }
 
@@ -87,9 +84,6 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         public void Set(object component, object value)
         {
-            if (_set == null)
-                return;
-
             _set((TComponent) component, (TMember) value);
         }
     }

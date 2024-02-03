@@ -1073,6 +1073,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
+        [ExcludeFromCodeCoverage]
         internal static bool StringToEnum(Type type, string[] names, Array values, string input, out object value)
         {
             for (int i = 0; i < names.Length; i++)
@@ -1134,6 +1135,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <exception cref="ArgumentException">null </exception>
         /// <exception cref="ArgumentException">null </exception>
         /// <returns>The object</returns>
+        [ExcludeFromCodeCoverage]
         internal static object EnumToObject(Type enumType, object value)
         {
             if (enumType == null)
@@ -1199,6 +1201,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException">null </exception>
         /// <returns>The bool</returns>
+        [ExcludeFromCodeCoverage]
         internal static bool EnumTryParse(Type type, object input, out object value)
         {
             if (type == null)

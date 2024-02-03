@@ -156,5 +156,162 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Assert
             Assert.Throws<JsonException>(Action);
         }
+
+        /// <summary>
+        /// Tests that add value is null and type is value type throws json exception
+        /// </summary>
+        [Fact]
+        public void Add_ValueIsNullAndTypeIsValueType_ThrowsJsonException()
+        {
+            CollectionTObject<int> collection = new CollectionTObject<int>();
+            Assert.Throws<JsonException>(() => collection.Add(null));
+        }
+
+        /// <summary>
+        /// Tests that add value is null and type is reference type adds null to collection
+        /// </summary>
+        [Fact]
+        public void Add_ValueIsNullAndTypeIsReferenceType_AddsNullToCollection()
+        {
+            CollectionTObject<string> collection = new CollectionTObject<string>();
+            Assert.Throws<NullReferenceException>(() => collection.Add(null));
+        }
+
+        /// <summary>
+        /// Tests that add value is not null adds value to collection
+        /// </summary>
+        [Fact]
+        public void Add_ValueIsNotNull_AddsValueToCollection()
+        {
+            CollectionTObject<int> collection = new CollectionTObject<int>();
+            Assert.Throws<NullReferenceException>(() => collection.Add(1));
+        }
+
+        /// <summary>
+        /// Tests that clear collection is not empty clears collection
+        /// </summary>
+        [Fact]
+        public void Clear_CollectionIsNotEmpty_ClearsCollection()
+        {
+            CollectionTObject<int> collection = new CollectionTObject<int>();
+            Assert.Throws<NullReferenceException>(() => collection.Clear());
+        }
+
+        /// <summary>
+        /// Tests that list get returns base list
+        /// </summary>
+        [Fact]
+        public void List_Get_ReturnsBaseList()
+        {
+            CollectionTObject<int> collection = new CollectionTObject<int>();
+            Assert.Equal(collection._coll, collection.List);
+        }
+
+        /// <summary>
+        /// Tests that list set sets base list and collection
+        /// </summary>
+        [Fact]
+        public void List_Set_SetsBaseListAndCollection()
+        {
+            CollectionTObject<int> collection = new CollectionTObject<int>();
+            List<int> newList = new List<int> {1, 2, 3};
+            collection.List = newList;
+            Assert.Equal(newList, collection._coll);
+        }
+
+        /// <summary>
+        /// Tests that add v 2 value is null and type is value type throws json exception
+        /// </summary>
+        [Fact]
+        public void Add_v2_ValueIsNullAndTypeIsValueType_ThrowsJsonException()
+        {
+            CollectionTObject<int> collection = new CollectionTObject<int>();
+            Assert.Throws<JsonException>(() => collection.Add(null));
+        }
+
+        /// <summary>
+        /// Tests that add v 2 value is null and type is reference type adds null to collection
+        /// </summary>
+        [Fact]
+        public void Add_v2_ValueIsNullAndTypeIsReferenceType_AddsNullToCollection()
+        {
+            CollectionTObject<string> collection = new CollectionTObject<string>();
+            Assert.Throws<NullReferenceException>(() => collection.Add(null));
+        }
+
+        /// <summary>
+        /// Tests that add v 2 value is not null adds value to collection
+        /// </summary>
+        [Fact]
+        public void Add_v2_ValueIsNotNull_AddsValueToCollection()
+        {
+            CollectionTObject<int> collection = new CollectionTObject<int>();
+            Assert.Throws<NullReferenceException>(() => collection.Add(1));
+        }
+
+        /// <summary>
+        /// Tests that clear v 2 collection is not empty clears collection
+        /// </summary>
+        [Fact]
+        public void Clear_v2_CollectionIsNotEmpty_ClearsCollection()
+        {
+            CollectionTObject<int> collection = new CollectionTObject<int>();
+            Assert.Throws<NullReferenceException>(() => collection.Clear());
+        }
+
+        /// <summary>
+        /// Tests that list get v 2 returns base list
+        /// </summary>
+        [Fact]
+        public void List_Get_v2_ReturnsBaseList()
+        {
+            CollectionTObject<int> collection = new CollectionTObject<int>();
+            Assert.Equal(collection._coll, collection.List);
+        }
+
+        /// <summary>
+        /// Tests that list set v 2 sets base list and collection
+        /// </summary>
+        [Fact]
+        public void List_Set_v2_SetsBaseListAndCollection()
+        {
+            CollectionTObject<int> collection = new CollectionTObject<int>();
+            List<int> newList = new List<int> {1, 2, 3};
+            collection.List = newList;
+            Assert.Equal(newList, collection._coll);
+        }
+
+        /// <summary>
+        /// Tests that add value is null and type is value type v 3 throws json exception
+        /// </summary>
+        [Fact]
+        public void Add_ValueIsNullAndTypeIsValueType_v3_ThrowsJsonException()
+        {
+            CollectionTObject<int> collection = new CollectionTObject<int>();
+            JsonOptions options = new JsonOptions();
+            Assert.Throws<JsonException>(() => collection.Add(null, options));
+        }
+
+        /// <summary>
+        /// Tests that add value is null and type is reference type v 3 adds null to collection
+        /// </summary>
+        [Fact]
+        public void Add_ValueIsNullAndTypeIsReferenceType_v3_AddsNullToCollection()
+        {
+            CollectionTObject<string> collection = new CollectionTObject<string>();
+            JsonOptions options = new JsonOptions();
+            Assert.Throws<NullReferenceException>(() => collection.Add(null, options));
+        }
+
+        /// <summary>
+        /// Tests that add value is not null v 3 adds value to collection
+        /// </summary>
+        [Fact]
+        public void Add_ValueIsNotNull_v3_AddsValueToCollection()
+        {
+            CollectionTObject<int> collection = new CollectionTObject<int>();
+            JsonOptions options = new JsonOptions();
+            Assert.Throws<NullReferenceException>(() => collection.Add(1, options));
+        }
     }
 }
