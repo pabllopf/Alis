@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Vector4.cs
+//  File:RectangleFTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,61 +27,52 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Shape.Rectangle;
+using Xunit;
 
-namespace Alis.Core.Aspect.Math.Vector
+namespace Alis.Core.Aspect.Math.Test.Shape.Rectangle
 {
-
     /// <summary>
-    /// The vector
+    /// The rectangle test class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct Vector4
+    public class RectangleFTest
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector4"/> class
+        /// Tests the rectangle f constructor
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="z">The </param>
-        /// <param name="w">The </param>
-        public Vector4(float x, float y, float z, float w)
+        [Fact]
+        public void TestRectangleF_Constructor()
         {
-            X = x;
-            Y = y;
-            Z = z;
-            W = w;
+            float x = 1.0f;
+            float y = 2.0f;
+            float w = 3.0f;
+            float h = 4.0f;
+
+            RectangleF rectangle = new RectangleF(x, y, w, h);
+
+            Assert.Equal(x, rectangle.x);
+            Assert.Equal(y, rectangle.y);
+            Assert.Equal(w, rectangle.w);
+            Assert.Equal(h, rectangle.h);
         }
-
-
+        
         /// <summary>
-        ///     Gets the v
+        /// Tests that test rectangle f constructor v 2
         /// </summary>
-        /// <param name="v">The </param>
-        /// <param name="index">The index</param>
-        /// <returns>The float</returns>
-        public static float Get(Vector4 v, int index)
+        [Fact]
+        public void TestRectangleF_Constructor_V2()
         {
-            switch (index)
-            {
-                case 0: return v.X;
-                case 1: return v.Y;
-                case 2: return v.Z;
-                case 3: return v.W;
-                default: return 0; // error case
-            }
+            float x = 1.0f;
+            float y = 2.0f;
+            float w = 3.0f;
+            float h = 4.0f;
+
+            RectangleF rectangle = new RectangleF(x, y, w, h);
+
+            Assert.Equal(x, rectangle.x);
+            Assert.Equal(y, rectangle.y);
+            Assert.Equal(w, rectangle.w);
+            Assert.Equal(h, rectangle.h);
         }
-
-        /// <summary>Horizontal component of the vector</summary>
-        public float X;
-
-        /// <summary>Vertical component of the vector</summary>
-        public float Y;
-
-        /// <summary>Depth component of the vector</summary>
-        public float Z;
-
-        /// <summary>Projective/Homogenous component of the vector</summary>
-        public float W;
     }
 }

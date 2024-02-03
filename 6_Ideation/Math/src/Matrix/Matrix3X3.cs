@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math.Matrix
@@ -49,7 +50,6 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="c3">The </param>
         public Matrix3X3(Vector3 c1, Vector3 c2, Vector3 c3)
         {
-            array = new float[9];
             Ex = c1;
             Ey = c2;
             Ez = c3;
@@ -72,7 +72,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             float a10, float a11, float a12,
             float a20, float a21, float a22)
         {
-            array = new float[9];
+            float[] array = new float[9];
 
             array[0] = a00;
             array[3] = a01;
@@ -88,19 +88,13 @@ namespace Alis.Core.Aspect.Math.Matrix
             Ey = new Vector3(a10, a11, a12);
             Ez = new Vector3(a20, a21, a22);
         }
-
-
-        /// <summary>
-        /// The array
-        /// </summary>
-        private readonly float[] array;
-
-
+        
         /// <summary>
         /// Solves the 33 using the specified b
         /// </summary>
         /// <param name="b">The </param>
         /// <returns>The vector</returns>
+        [ExcludeFromCodeCoverage]
         public Vector3 Solve33(Vector3 b)
         {
             float det = Vector3.Dot(Ex, Vector3.Cross(Ey, Ez));
@@ -170,6 +164,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// Gets the sym inverse 33 using the specified m
         /// </summary>
         /// <param name="m">The </param>
+        [ExcludeFromCodeCoverage]
         public void GetSymInverse33(ref Matrix3X3 m)
         {
             float det = Dot(Ex, Cross(Ey, Ez));
@@ -208,7 +203,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The float</returns>
-        public static float Dot(Vector3 a, Vector3 b) => a.X * b.X + a.Y * b.Y + a.Z * b.Z;
+        private static float Dot(Vector3 a, Vector3 b) => a.X * b.X + a.Y * b.Y + a.Z * b.Z;
 
 
         /// <summary>
@@ -217,7 +212,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The vector</returns>
-        public static Vector3 Cross(Vector3 a, Vector3 b) =>
+        private static Vector3 Cross(Vector3 a, Vector3 b) =>
             new Vector3(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
     }
 }

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 
@@ -466,18 +465,7 @@ namespace Alis.Core.Aspect.Math.Util
         {
             Add(value?.GetHashCode() ?? 0);
         }
-
-        /// <summary>
-        ///     Adds the value
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="value">The value</param>
-        /// <param name="comparer">The comparer</param>
-        public void Add<T>(T value, IEqualityComparer<T> comparer)
-        {
-            Add(value is null ? 0 : comparer?.GetHashCode(value) ?? value.GetHashCode());
-        }
-
+        
         /// <summary>
         ///     Adds the value
         /// </summary>

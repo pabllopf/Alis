@@ -49,7 +49,7 @@ namespace Alis.Core.Aspect.Math
         private const int MaxIterations = 10;
 
         /// <summary>
-        ///     Sqrts the x
+        ///     Sqrt the x
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The float</returns>
@@ -78,7 +78,7 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Abses the value
+        ///     Abs the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The float</returns>
@@ -149,7 +149,7 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Acoses the x
+        ///     Acos the x
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The angle</returns>
@@ -162,13 +162,11 @@ namespace Alis.Core.Aspect.Math
 
             float angle = Pi / 2; // Initial guess of pi/2
             float term = x;
-            float factor = x;
             float squared = x * x;
 
             for (int i = 1; i <= MaxIterations; i++)
             {
                 term *= squared * (2 * i - 1) / (2 * i * i * 4);
-                factor *= squared;
                 float currentTerm = term / (2 * i + 1);
                 angle -= currentTerm;
 

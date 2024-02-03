@@ -47,15 +47,6 @@ namespace Alis.Core.Aspect.Math.Matrix
         public Vector2 Ey;
 
         /// <summary>
-        ///     Construct this matrix using columns.
-        /// </summary>
-        public Matrix2X2(Vector2 c1, Vector2 c2)
-        {
-            Ex = c1;
-            Ey = c2;
-        }
-
-        /// <summary>
         ///     Construct this matrix using scalars.
         /// </summary>
         public Matrix2X2(float a11, float a12, float a21, float a22)
@@ -82,17 +73,6 @@ namespace Alis.Core.Aspect.Math.Matrix
         {
             Ex = c1;
             Ey = c2;
-        }
-
-        /// <summary>
-        ///     Initialize this matrix using an angle.
-        ///     This matrix becomes an orthonormal rotation matrix.
-        /// </summary>
-        public void Set(float angle)
-        {
-            float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
-            Ex = new Vector2(c, -s);
-            Ey = new Vector2(s, c);
         }
 
         /// <summary>
@@ -160,11 +140,6 @@ namespace Alis.Core.Aspect.Math.Matrix
             );
             return x;
         }
-
-        /// <summary>
-        ///     Gets the value of the identity
-        /// </summary>
-        public static Matrix2X2 Identity => new Matrix2X2(1, 0, 0, 1);
 
         /// <summary>
         /// </summary>
