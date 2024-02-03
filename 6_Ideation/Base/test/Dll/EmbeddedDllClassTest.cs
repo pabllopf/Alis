@@ -27,6 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.IO;
+using System.IO.Compression;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text;
+using Alis.Core.Aspect.Base.Dll;
+using Xunit;
+
 namespace Alis.Core.Aspect.Base.Test.Dll
 {
     /// <summary>
@@ -34,5 +43,112 @@ namespace Alis.Core.Aspect.Base.Test.Dll
     /// </summary>
     public class EmbeddedDllClassTest
     {
+        /// <summary>
+        /// Tests that test load resource
+        /// </summary>
+        [Fact]
+        public void TestLoadResource()
+        {
+            string resourceName = "TestResource";
+            Assembly assembly = Assembly.GetExecutingAssembly();
+
+            MemoryStream result = EmbeddedDllClass.LoadResource(resourceName, assembly);
+
+            // Replace with the correct expected result
+            MemoryStream expectedResult = new MemoryStream();
+
+            Assert.Equal(expectedResult.ToArray(), result.ToArray());
+        }
+
+        /// <summary>
+        /// Tests that test is running oni os
+        /// </summary>
+        [Fact]
+        public void TestIsRunningOniOS()
+        {
+            bool result = EmbeddedDllClass.IsRunningOniOS();
+
+            // Replace with the correct expected result
+            bool expectedResult = false;
+
+            Assert.Equal(expectedResult, result);
+        }
+
+        /// <summary>
+        /// Tests that test is running on android
+        /// </summary>
+        [Fact]
+        public void TestIsRunningOnAndroid()
+        {
+            bool result = EmbeddedDllClass.IsRunningOnAndroid();
+
+            // Replace with the correct expected result
+            bool expectedResult = false;
+
+            Assert.Equal(expectedResult, result);
+        }
+
+        /// <summary>
+        /// Tests that test isi os specific condition met
+        /// </summary>
+        [Fact]
+        public void TestIsiOsSpecificConditionMet()
+        {
+            bool result = EmbeddedDllClass.IsiOsSpecificConditionMet();
+
+            // Replace with the correct expected result
+            bool expectedResult = false;
+
+            Assert.Equal(expectedResult, result);
+        }
+
+        /// <summary>
+        /// Tests that test is android specific condition met
+        /// </summary>
+        [Fact]
+        public void TestIsAndroidSpecificConditionMet()
+        {
+            bool result = EmbeddedDllClass.IsAndroidSpecificConditionMet();
+
+            // Replace with the correct expected result
+            bool expectedResult = false;
+
+            Assert.Equal(expectedResult, result);
+        }
+        
+        /// <summary>
+        /// Tests that test get dll extension
+        /// </summary>
+        /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
+        [Fact]
+        public void TestGetDllExtension()
+        {
+            // Arrange
+            OSPlatform currentPlatform = EmbeddedDllClass.GetCurrentPlatform();
+            string expectedExtension;
+
+            if (currentPlatform == OSPlatform.Windows)
+            {
+                expectedExtension = "dll";
+            }
+            else if (currentPlatform == OSPlatform.OSX || currentPlatform == OSPlatform.Create("IOS"))
+            {
+                expectedExtension = "dylib";
+            }
+            else if (currentPlatform == OSPlatform.Linux || currentPlatform == OSPlatform.Create("Android"))
+            {
+                expectedExtension = "so";
+            }
+            else
+            {
+                throw new PlatformNotSupportedException("Unsupported platform.");
+            }
+
+            // Act
+            string resultExtension = EmbeddedDllClass.GetDllExtension();
+
+            // Assert
+            Assert.Equal(expectedExtension, resultExtension);
+        }
     }
 }
