@@ -47,7 +47,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestKeyValueTypeDictionary_Add_ThrowsException()
         {
             // Arrange
-            List<string> list = new List<string> { "value" };
+            List<string> list = new List<string> {"value"};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
             if (dictionary == null)
             {
@@ -65,7 +65,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestKeyValueTypeDictionary_Clear_ThrowsException()
         {
             // Arrange
-            List<string> list = new List<string> { "value" };
+            List<string> list = new List<string> {"value"};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
             if (dictionary == null)
             {
@@ -83,7 +83,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestKeyValueTypeDictionary_Contains_ThrowsException()
         {
             // Arrange
-            List<string> list = new List<string> { "value" };
+            List<string> list = new List<string> {"value"};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
             if (dictionary == null)
             {
@@ -101,7 +101,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestKeyValueTypeDictionary_Remove_ThrowsException()
         {
             // Arrange
-            List<string> list = new List<string> { "value" };
+            List<string> list = new List<string> {"value"};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
             if (dictionary == null)
             {
@@ -119,7 +119,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestKeyValueTypeDictionary_CopyTo_ThrowsException()
         {
             // Arrange
-            List<string> list = new List<string> { "value" };
+            List<string> list = new List<string> {"value"};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
             if (dictionary == null)
             {
@@ -139,7 +139,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestKeyValueTypeDictionary_GetEnumerator_ThrowsException()
         {
             // Arrange
-            List<string> list = new List<string> { "value" };
+            List<string> list = new List<string> {"value"};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
 
             // Act & Assert
@@ -153,7 +153,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestKeyValueTypeDictionary_Indexer_ThrowsException()
         {
             // Arrange
-            List<string> list = new List<string> { "value" };
+            List<string> list = new List<string> {"value"};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
             if (dictionary == null)
             {
@@ -162,6 +162,120 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             // Act & Assert
             Assert.Throws<NotSupportedException>(() => dictionary["key"] = "value");
+        }
+
+        /// <summary>
+        /// Tests that key value type dictionary constructor sets enumerator
+        /// </summary>
+        [Fact]
+        public void KeyValueTypeDictionary_Constructor_SetsEnumerator()
+        {
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary("sample");
+            Assert.NotNull(dictionary);
+            // You might need to add additional assertions to check the state of the _enumerator field
+        }
+
+        /// <summary>
+        /// Tests that count throws not supported exception
+        /// </summary>
+        [Fact]
+        public void Count_ThrowsNotSupportedException()
+        {
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary("sample");
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                int count = dictionary.Count;
+            });
+        }
+
+        /// <summary>
+        /// Tests that is synchronized throws not supported exception
+        /// </summary>
+        [Fact]
+        public void IsSynchronized_ThrowsNotSupportedException()
+        {
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary("sample");
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                bool isSynchronized = dictionary.IsSynchronized;
+            });
+        }
+
+        /// <summary>
+        /// Tests that sync root throws not supported exception
+        /// </summary>
+        [Fact]
+        public void SyncRoot_ThrowsNotSupportedException()
+        {
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary("sample");
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                object syncRoot = dictionary.SyncRoot;
+            });
+        }
+
+        /// <summary>
+        /// Tests that is fixed size throws not supported exception
+        /// </summary>
+        [Fact]
+        public void IsFixedSize_ThrowsNotSupportedException()
+        {
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary("sample");
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                bool isFixedSize = dictionary.IsFixedSize;
+            });
+        }
+
+        /// <summary>
+        /// Tests that is read only throws not supported exception
+        /// </summary>
+        [Fact]
+        public void IsReadOnly_ThrowsNotSupportedException()
+        {
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary("sample");
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                bool isReadOnly = dictionary.IsReadOnly;
+            });
+        }
+
+        /// <summary>
+        /// Tests that keys throws not supported exception
+        /// </summary>
+        [Fact]
+        public void Keys_ThrowsNotSupportedException()
+        {
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary("sample");
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                ICollection keys = dictionary.Keys;
+            });
+        }
+
+        /// <summary>
+        /// Tests that values throws not supported exception
+        /// </summary>
+        [Fact]
+        public void Values_ThrowsNotSupportedException()
+        {
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary("sample");
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                ICollection values = dictionary.Values;
+            });
+        }
+
+        /// <summary>
+        /// Tests that get enumerator returns enumerator
+        /// </summary>
+        [Fact]
+        public void GetEnumerator_ReturnsEnumerator()
+        {
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary("value");
+            IDictionaryEnumerator result = dictionary.GetEnumerator();
+            Assert.NotNull(result);
+            // You might need to add additional assertions to check the state of the result
         }
     }
 }

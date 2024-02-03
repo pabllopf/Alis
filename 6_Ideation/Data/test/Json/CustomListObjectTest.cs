@@ -27,6 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using Alis.Core.Aspect.Data.Json;
+using Xunit;
+
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
@@ -34,5 +39,29 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// </summary>
     public class CustomListObjectTest
     {
+        /// <summary>
+        /// Tests that clear list is empty does not throw exception
+        /// </summary>
+        [Fact]
+        public void Clear_ListIsEmpty_DoesNotThrowException()
+        {
+            CustomListObject customListObject = new CustomListObject();
+            customListObject.List = new ArrayList();
+            customListObject.Clear();
+            Assert.Empty(customListObject.List as IList ?? throw new InvalidOperationException());
+        }
+
+        /// <summary>
+        /// Tests that clear list is not empty clears list
+        /// </summary>
+        [Fact]
+        public void Clear_ListIsNotEmpty_ClearsList()
+        {
+            CustomListObject customListObject = new CustomListObject();
+            customListObject.Clear();
+            customListObject.List = new ArrayList {1, 2, 3};
+            customListObject.Clear();
+            Assert.Empty(customListObject.List as IList ?? throw new InvalidOperationException());
+        }
     }
 }

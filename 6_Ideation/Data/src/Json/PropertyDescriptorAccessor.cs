@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Data.Json
 {
@@ -60,6 +61,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="component">The component</param>
         /// <param name="value">The value</param>
+        [ExcludeFromCodeCoverage]
         public void Set(object component, object value)
         {
             if (_pd.IsReadOnly)

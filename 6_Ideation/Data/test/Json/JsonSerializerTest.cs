@@ -72,7 +72,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             string json = "\"Hello, World!\"";
             JsonOptions options = new JsonOptions();
-            using var reader = new StringReader(json);
+            using StringReader reader = new StringReader(json);
 
             // Act
             string result = JsonSerializer.Deserialize<string>(reader, options);
@@ -1368,8 +1368,85 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             // Act & Assert
             object result = JsonSerializer.ChangeType(input, targetType, options);
-            
+
             Assert.Equal(0, result);
         }
+
+        /// <summary>
+        /// Tests that get expected hex character exception positive position returns correct message
+        /// </summary>
+        [Fact]
+        public void GetExpectedHexCharacterException_PositivePosition_ReturnsCorrectMessage()
+        {
+            JsonException exception = JsonSerializer.GetExpectedHexCharacterException(5);
+            Assert.Equal("JSO0007: JSON deserialization error detected at position 5. Expecting hexadecimal character.", exception.Message);
+        }
+
+        /// <summary>
+        /// Tests that get expected hex character exception negative position returns correct message
+        /// </summary>
+        [Fact]
+        public void GetExpectedHexCharacterException_NegativePosition_ReturnsCorrectMessage()
+        {
+            JsonException exception = JsonSerializer.GetExpectedHexCharacterException(-1);
+            Assert.Equal("JSO0006: JSON deserialization error detected. Expecting hexadecimal character.", exception.Message);
+        }
+
+        /// <summary>
+        /// Tests that get type exception positive position returns correct message
+        /// </summary>
+        [Fact]
+        public void GetTypeException_PositivePosition_ReturnsCorrectMessage()
+        {
+            Exception innerException = new Exception("Inner exception message");
+            JsonException exception = JsonSerializer.GetTypeException(5, "TestType", innerException);
+            Assert.Equal("JSO0011: JSON deserialization error detected for 'TestType' type at position 5.", exception.Message);
+            Assert.Equal(innerException, exception.InnerException);
+        }
+
+        /// <summary>
+        /// Tests that get type exception negative position returns correct message
+        /// </summary>
+        [Fact]
+        public void GetTypeException_NegativePosition_ReturnsCorrectMessage()
+        {
+            Exception innerException = new Exception("Inner exception message");
+            JsonException exception = JsonSerializer.GetTypeException(-1, "TestType", innerException);
+            Assert.Equal("JSO0010: JSON deserialization error detected for 'TestType' type.", exception.Message);
+            Assert.Equal(innerException, exception.InnerException);
+        }
+
+        /// <summary>
+        /// Tests that get eof exception returns correct message
+        /// </summary>
+        [Fact]
+        public void GetEofException_ReturnsCorrectMessage()
+        {
+            JsonException exception = JsonSerializer.GetEofException('}');
+            Assert.Equal("JSO0012: JSON deserialization error detected at end of text. Expecting '}' character.", exception.Message);
+        }
+
+        /// <summary>
+        /// Tests that get position null reader returns negative one
+        /// </summary>
+        [Fact]
+        public void GetPosition_NullReader_ReturnsNegativeOne()
+        {
+            long position = JsonSerializer.GetPosition(null);
+            Assert.Equal(-1, position);
+        }
+
+        /// <summary>
+        /// Tests that get position string reader returns correct position
+        /// </summary>
+        [Fact]
+        public void GetPosition_StringReader_ReturnsCorrectPosition()
+        {
+            using StringReader reader = new StringReader("Test string");
+            long position = JsonSerializer.GetPosition(reader);
+            Assert.Equal(0, position); // Adjust this based on the expected position
+        }
+
+
     }
 }

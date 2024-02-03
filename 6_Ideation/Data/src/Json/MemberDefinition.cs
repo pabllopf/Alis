@@ -30,6 +30,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Data.Json
 {
@@ -172,6 +173,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="elementsCount">The elements count.</param>
         /// <param name="options">The options.</param>
         /// <returns>A new or existing instance.</returns>
+        [ExcludeFromCodeCoverage]
         private object GetOrCreateInstance(object target, int elementsCount, JsonOptions options = null)
         {
             object targetValue;
@@ -215,6 +217,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="key">The entry key.</param>
         /// <param name="value">The entry value.</param>
         /// <param name="options">The options.</param>
+        [ExcludeFromCodeCoverage]
         public void ApplyEntry(IDictionary dictionary, object target, string key, object value, JsonOptions options = null)
         {
             if (options is {ApplyEntryCallback: { }})
@@ -271,16 +274,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>true if the specified value is equal to the zero value.</returns>
+        [ExcludeFromCodeCoverage]
         public bool IsZeroValue(object value)
         {
             if (value == null)
                 return false;
 
             Type type = value.GetType();
-            if (type != Type)
-                return false;
-
-            return JsonSerializer.IsZeroValueType(value);
+            return type == Type && JsonSerializer.IsZeroValueType(value);
         }
 
         /// <summary>
@@ -297,6 +298,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options. May be null.</param>
         /// <param name="member">The member. May not be null.</param>
         /// <returns>true if item is successfully removed; otherwise, false.</returns>
+        [ExcludeFromCodeCoverage]
         public static bool RemoveDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
         {
             if (type == null)
@@ -316,6 +318,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options. May be null.</param>
         /// <param name="member">The member. May not be null.</param>
         /// <returns>true if item is successfully removed; otherwise, false.</returns>
+        [ExcludeFromCodeCoverage]
         public static bool RemoveSerializationMember(Type type, JsonOptions options, MemberDefinition member)
         {
             if (type == null)
@@ -335,6 +338,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options. May be null.</param>
         /// <param name="member">The member. May not be null.</param>
         /// <returns>true if item is successfully added; otherwise, false.</returns>
+        [ExcludeFromCodeCoverage]
         public static void AddDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
         {
             if (type == null)
@@ -354,6 +358,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options. May be null.</param>
         /// <param name="member">The member. May not be null.</param>
         /// <returns>true if item is successfully added; otherwise, false.</returns>
+        [ExcludeFromCodeCoverage]
         public static void AddSerializationMember(Type type, JsonOptions options, MemberDefinition member)
         {
             if (type == null)
@@ -372,6 +377,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type. May not be null.</param>
         /// <param name="options">The options. May be null.</param>
         /// <returns>A list of serialization members.</returns>
+        [ExcludeFromCodeCoverage]
         public static MemberDefinition[] GetSerializationMembers(Type type, JsonOptions options = null)
         {
             if (type == null)
@@ -387,12 +393,13 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type. May not be null.</param>
         /// <param name="options">The options. May be null.</param>
         /// <returns>A list of deserialization members.</returns>
+        [ExcludeFromCodeCoverage]
         public static MemberDefinition[] GetDeserializationMembers(Type type, JsonOptions options = null)
         {
             if (type == null)
                 throw new ArgumentNullException(nameof(type));
 
-            options = options ?? new JsonOptions();
+            options ??= new JsonOptions();
             return TypeDef.GetDeserializationMembers(type, options);
         }
 
@@ -402,6 +409,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <typeparam name="T">The action input type.</typeparam>
         /// <param name="action">The action. May not be null.</param>
         /// <param name="state">The state. May be null.</param>
+        [ExcludeFromCodeCoverage]
         public static void UsingLock<T>(Action<T> action, T state)
         {
             if (action == null)

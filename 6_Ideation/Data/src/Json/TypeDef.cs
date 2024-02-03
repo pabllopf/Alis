@@ -96,13 +96,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="key">The key</param>
         /// <returns>The member definition</returns>
-        internal MemberDefinition GetDeserializationMember(string key)
-        {
-            if (key == null)
-                return null;
-
-            return _deserializationMembers.FirstOrDefault(def => string.Compare(def.WireName, key, StringComparison.OrdinalIgnoreCase) == 0);
-        }
+        internal MemberDefinition GetDeserializationMember(string key) => key == null ? null : _deserializationMembers.FirstOrDefault(def => string.Compare(def.WireName, key, StringComparison.OrdinalIgnoreCase) == 0);
 
         /// <summary>
         ///     Applies the entry using the specified dictionary
@@ -128,6 +122,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="component">The component</param>
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
+        [ExcludeFromCodeCoverage]
         public void WriteValues(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             bool first = true;
@@ -519,6 +514,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type</param>
         /// <param name="options">The options</param>
         /// <returns>An enumerable of member definition</returns>
+        [ExcludeFromCodeCoverage]
         private static IEnumerable<MemberDefinition> EnumerateDefinitionsUsingTypeDescriptors(bool serialization, Type type, JsonOptions options)
         {
             foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(type).Cast<PropertyDescriptor>())

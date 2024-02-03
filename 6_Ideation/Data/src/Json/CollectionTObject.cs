@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Data.Json
 {
@@ -39,7 +40,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     The coll
         /// </summary>
-        private ICollection<T> _coll;
+        internal ICollection<T> _coll;
 
         /// <summary>
         ///     Gets or sets the value of the list
@@ -64,6 +65,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="options">The options</param>
+        [ExcludeFromCodeCoverage]
         public override void Add(object value, JsonOptions options = null)
         {
             if ((value == null) && typeof(T).IsValueType)

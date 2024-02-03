@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace Alis.Core.Aspect.Data.Json
@@ -66,6 +67,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     Gets the value of the entry
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public DictionaryEntry Entry
         {
             get

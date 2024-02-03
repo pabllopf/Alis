@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Data.Json;
@@ -149,6 +150,76 @@ namespace Alis.Core.Aspect.Data.Test.Json
                 // Assert
                 Assert.Equal(new DictionaryEntry("test", 1), result);
             }
+        }
+
+        /// <summary>
+        /// Tests that entry key prop is null and enumerator current is null throws invalid operation exception
+        /// </summary>
+        [Fact]
+        public void Entry_KeyPropIsNullAndEnumeratorCurrentIsNull_ThrowsInvalidOperationException()
+        {
+            KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(new Dictionary<string, int>());
+            Assert.Throws<InvalidOperationException>(() => enumerator.Entry);
+        }
+
+        /// <summary>
+        /// Tests that entry key prop is null and enumerator current is not null sets key prop and value prop
+        /// </summary>
+        [Fact]
+        public void Entry_KeyPropIsNullAndEnumeratorCurrentIsNotNull_SetsKeyPropAndValueProp()
+        {
+            Dictionary<string, int> dictionary = new Dictionary<string, int> {{"test", 1}};
+            KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
+            enumerator.MoveNext();
+            DictionaryEntry entry = enumerator.Entry;
+            Assert.Equal(new DictionaryEntry("test", 1), entry);
+        }
+
+        /// <summary>
+        /// Tests that entry value prop is null throws invalid operation exception
+        /// </summary>
+        [Fact]
+        public void Entry_ValuePropIsNull_ThrowsInvalidOperationException()
+        {
+            Dictionary<string, int> dictionary = new Dictionary<string, int> {{"test", 1}};
+            KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
+            Assert.Throws<InvalidOperationException>(() => enumerator.Entry);
+        }
+
+        /// <summary>
+        /// Tests that entry key prop is not null and value prop is not null returns dictionary entry
+        /// </summary>
+        [Fact]
+        public void Entry_KeyPropIsNotNullAndValuePropIsNotNull_ReturnsDictionaryEntry()
+        {
+            Dictionary<string, int> dictionary = new Dictionary<string, int> {{"test", 1}};
+            KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
+            enumerator.MoveNext();
+            DictionaryEntry entry = enumerator.Entry;
+            Assert.Equal(new DictionaryEntry("test", 1), entry);
+        }
+
+        /// <summary>
+        /// Tests that indexer get throws not supported exception
+        /// </summary>
+        [Fact]
+        public void Indexer_Get_ThrowsNotSupportedException()
+        {
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(new List<int>());
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                object value = dictionary["test"];
+            });
+        }
+
+        /// <summary>
+        /// Tests that indexer set throws not supported exception
+        /// </summary>
+        [Fact]
+        public void Indexer_Set_ThrowsNotSupportedException()
+        {
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(new List<int>());
+            Assert.Throws<NotSupportedException>(() => { dictionary["test"] = "value"; });
         }
     }
 }

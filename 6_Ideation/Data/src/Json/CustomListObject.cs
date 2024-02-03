@@ -40,7 +40,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     The list
         /// </summary>
-        private IList _list;
+        private IList _list = new ArrayList();
 
         /// <summary>
         ///     Gets or sets the value of the list
