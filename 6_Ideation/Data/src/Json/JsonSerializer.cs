@@ -32,6 +32,7 @@ using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -1483,6 +1484,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>
         ///     true if the text was converted successfully; otherwise, false.
         /// </returns>
+        [ExcludeFromCodeCoverage]
         internal static bool TryParseDateTime(string text, DateTimeStyles styles, out DateTime dt)
         {
             dt = DateTime.MinValue;
@@ -1771,6 +1773,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value to writer.</param>
         /// <param name="objectGraph">A graph of objects to track cyclic serialization.</param>
         /// <param name="options">The options to use.</param>
+        [ExcludeFromCodeCoverage]
         public static void WriteValue(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options = null)
         {
             if (writer == null)

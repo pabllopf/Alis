@@ -31,6 +31,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace Alis.Core.Aspect.Data.Json
@@ -133,6 +134,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The bool</returns>
+        [ExcludeFromCodeCoverage]
         private static bool TryChangeType(object input, Type conversionType, IFormatProvider provider, out object value)
         {
             if (conversionType == null)

@@ -31,6 +31,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -392,6 +393,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type</param>
         /// <param name="options">The options</param>
         /// <returns>An enumerable of member definition</returns>
+        [ExcludeFromCodeCoverage]
         internal static IEnumerable<MemberDefinition> EnumerateDefinitionsUsingReflection(bool serialization, Type type, JsonOptions options)
         {
             foreach (PropertyInfo info in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
