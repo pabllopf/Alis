@@ -46,7 +46,7 @@ namespace Alis.Core.Aspect.Time.Test
             const float expectedFixedTimeStep = 0.016f;
             const float expectedMaximumAllowedTimeStep = 0.10f;
             const float expectedTimeScale = 1.00f;
-
+            
             // Act
             TimeConfiguration timeConfig = new TimeConfiguration();
 
@@ -66,14 +66,17 @@ namespace Alis.Core.Aspect.Time.Test
             const float expectedFixedTimeStep = 0.02f;
             const float expectedMaximumAllowedTimeStep = 0.15f;
             const float expectedTimeScale = 0.5f;
+            
 
             // Act
             TimeConfiguration timeConfig = new TimeConfiguration(expectedFixedTimeStep, expectedMaximumAllowedTimeStep, expectedTimeScale);
-
+            timeConfig.LogOutput = false;
+            
             // Assert
             Assert.Equal(expectedFixedTimeStep, timeConfig.FixedTimeStep);
             Assert.Equal(expectedMaximumAllowedTimeStep, timeConfig.MaximumAllowedTimeStep);
             Assert.Equal(expectedTimeScale, timeConfig.TimeScale);
+            Assert.False(timeConfig.LogOutput);
         }
     }
 }

@@ -52,6 +52,8 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.Equal(0f, timeManager.DeltaTime);
             Assert.Equal(0f, timeManager.FixedDeltaTime);
             Assert.Equal(0f, timeManager.FixedTime);
+            Assert.Equal(0f, timeManager.AverageFrames);
+            Assert.Equal(0f, timeManager.TotalFrames);
             Assert.Equal(0d, timeManager.FixedTimeAsDouble);
             Assert.Equal(0f, timeManager.FixedUnscaledDeltaTime);
             Assert.Equal(0f, timeManager.FixedUnscaledTime);
@@ -271,6 +273,34 @@ namespace Alis.Core.Aspect.Time.Test
 
             // Assert
             Assert.Equal(2.0f, timeManager.TimeScale);
+        }
+        
+        [Fact]
+        public void AverageFrames_SetValue_ShouldUpdateAverageFrames()
+        {
+            // Arrange
+            TimeManager timeManager = new TimeManager
+            {
+                // Act
+                AverageFrames = 2
+            };
+
+            // Assert
+            Assert.Equal(2, timeManager.AverageFrames);
+        }
+        
+        [Fact]
+        public void TotalFrames_SetValue_ShouldUpdateTotalFrames()
+        {
+            // Arrange
+            TimeManager timeManager = new TimeManager
+            {
+                // Act
+                TotalFrames = 2
+            };
+
+            // Assert
+            Assert.Equal(2, timeManager.TotalFrames);
         }
 
         /// <summary>
