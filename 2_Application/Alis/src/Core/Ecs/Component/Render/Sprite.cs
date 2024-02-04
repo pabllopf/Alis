@@ -65,7 +65,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     The level
         /// </summary>
-        public int Depth { get; set; } = 0;
+        public int Depth { get; set; }
 
         /// <summary>
         ///     Builders this instance
@@ -83,12 +83,6 @@ namespace Alis.Core.Ecs.Component.Render
                 Image = new Image(TexturePath);
                 Console.WriteLine($"Load sprite od '{TexturePath}'");
             }
-
-
-            /*
-            SpriteSfml = new Graphic.SFML.Graphics.Sprite(new Texture(TexturePath));
-            size = new Vector2(SpriteSfml.TextureRect.Width, SpriteSfml.TextureRect.Height);
-            Logger.Log($"Load sprite od '{TexturePath}'");*/
         }
 
         /// <summary>
@@ -105,13 +99,6 @@ namespace Alis.Core.Ecs.Component.Render
         /// <exception cref="NotImplementedException"></exception>
         public override void OnStart()
         {
-            /*
-            SpriteSfml.Position = new Vector2(
-                GameObject.Transform.Position.X - size.X * GameObject.Transform.Scale.X / 2,
-                GameObject.Transform.Position.Y - size.Y * GameObject.Transform.Scale.Y / 2
-            );
-            SpriteSfml.Rotation = GameObject.Transform.Rotation;
-            SpriteSfml.Scale = new Vector2(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);*/
         }
 
         /// <summary>
@@ -120,13 +107,6 @@ namespace Alis.Core.Ecs.Component.Render
         /// <exception cref="NotImplementedException"></exception>
         public override void OnUpdate()
         {
-            /*
-            SpriteSfml.Position = new Vector2(
-                GameObject.Transform.Position.X - size.X * GameObject.Transform.Scale.X / 2,
-                GameObject.Transform.Position.Y - size.Y * GameObject.Transform.Scale.Y / 2
-            );
-            SpriteSfml.Rotation = GameObject.Transform.Rotation;
-            SpriteSfml.Scale = new Vector2(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);*/
         }
 
         /// <summary>
