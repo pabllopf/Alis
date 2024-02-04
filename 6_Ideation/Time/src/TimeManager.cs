@@ -97,6 +97,16 @@ namespace Alis.Core.Aspect.Time
         ///     The total number of frames since the start of the game (Read Only).
         /// </summary>
         public float FrameCount { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the total frames
+        /// </summary>
+        public int TotalFrames { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the average frames
+        /// </summary>
+        public double AverageFrames { get; set; }
 
         /// <summary>
         ///     Returns true if called inside a fixed time step callback (like Runtime FixedUpdate), otherwise returns false.
@@ -107,18 +117,18 @@ namespace Alis.Core.Aspect.Time
         ///     The maximum value of TimeManager.DeltaTime in any given frame.
         ///     This is a time in seconds that limits the increase of TimeManager.time between two frames.
         /// </summary>
-        public bool MaximumDeltaTime { get; set; }
+        public float MaximumDeltaTime { get; set; }
 
         /// <summary>
         ///     The real time in seconds since the game started (Read Only).
         /// </summary>
-        public float RealtimeSinceStartup { get; set; }
+        public float RealtimeSinceStartup => (float) Clock.Elapsed.TotalSeconds;
 
         /// <summary>
         ///     The real time in seconds since the game started (Read Only).
         ///     Double precision version of realtimeSinceStartup.
         /// </summary>
-        public double RealtimeSinceStartupAsDouble { get; set; }
+        public double RealtimeSinceStartupAsDouble => Clock.Elapsed.TotalSeconds;
 
         /// <summary>
         ///     A smoothed out TimeManager.DeltaTime (Read Only).

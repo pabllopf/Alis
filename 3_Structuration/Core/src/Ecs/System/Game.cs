@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Time;
@@ -53,7 +54,7 @@ namespace Alis.Core.Ecs.System
         ///     Gets or sets the value of the is running
         /// </summary>
         public bool IsRunning { get; set; } = true;
-
+        
         /// <summary>
         ///     Run program
         /// </summary>
@@ -67,12 +68,57 @@ namespace Alis.Core.Ecs.System
             double currentTime = TimeManager.Clock.Elapsed.TotalSeconds;
             double accumulator = 0;
 
+            // Variables for calculating FPS
+            double lastTime = TimeManager.Clock.Elapsed.TotalSeconds;
+            TimeManager.FrameCount = 0;
+            TimeManager.TotalFrames = 0;
+            TimeManager.AverageFrames = 0;
+
+            // Variables for calculating average FPS
+            double totalTime = 0;
+
+            // Variables for SmoothDeltaTime
+            float lastDeltaTime = 0f;
+            float smoothDeltaTimeSum = 0f;
+            int smoothDeltaTimeCount = 0;
+
+            // Variable for log output
+            double lastLogTime = TimeManager.Clock.Elapsed.TotalSeconds;
+
+
             while (IsRunning)
             {
                 double newTime = TimeManager.Clock.Elapsed.TotalSeconds;
                 TimeManager.DeltaTime = (float) (newTime - currentTime);
+                
+                // Update TimeManager properties
+                TimeManager.UnscaledDeltaTime = (float) (newTime - currentTime);
+                TimeManager.UnscaledTime += TimeManager.UnscaledDeltaTime;
+                TimeManager.UnscaledTimeAsDouble += TimeManager.UnscaledDeltaTime;
+                TimeManager.Time = TimeManager.UnscaledTime * TimeManager.TimeScale;
+                TimeManager.TimeAsDouble = TimeManager.UnscaledTimeAsDouble * TimeManager.TimeScale;
+                
+                // Update MaximumDeltaTime
+                TimeManager.MaximumDeltaTime = Math.Max(TimeManager.MaximumDeltaTime, TimeManager.DeltaTime);
+                
                 currentTime = newTime;
                 accumulator += TimeManager.DeltaTime;
+                
+                // Increment frame counter
+                TimeManager.FrameCount++;
+                TimeManager.TotalFrames++;
+
+                // If a second has passed since the last FPS calculation
+                if (newTime - lastTime >= 1.0)
+                {
+                    // Calculate average FPS
+                    totalTime += newTime - lastTime;
+                    TimeManager.AverageFrames = TimeManager.TotalFrames / totalTime;
+
+                    // Reset frame counter and update last time
+                    TimeManager.FrameCount = 0;
+                    lastTime = newTime;
+                }
 
                 // Dispatch Events
                 Managers.ForEach(i => i.OnDispatchEvents());
@@ -82,13 +128,26 @@ namespace Alis.Core.Ecs.System
                 Managers.ForEach(j => j.OnUpdate());
                 Managers.ForEach(j => j.OnAfterUpdate());
 
-                // Run methods fixed
-                if (accumulator >= TimeManager.Configuration.FixedTimeStep)
+                // Run fixed methods
+                while (accumulator >= TimeManager.Configuration.FixedTimeStep)
                 {
+                    TimeManager.InFixedTimeStep = true;
+                    
+                    TimeManager.FixedTime += TimeManager.Configuration.FixedTimeStep;
+                    TimeManager.FixedTimeAsDouble += TimeManager.Configuration.FixedTimeStep;
+                    TimeManager.FixedDeltaTime = TimeManager.Configuration.FixedTimeStep;
+                    TimeManager.FixedUnscaledDeltaTime = TimeManager.Configuration.FixedTimeStep / TimeManager.TimeScale;
+
+                    // Update FixedUnscaledTime and FixedUnscaledTimeAsDouble
+                    TimeManager.FixedUnscaledTime += TimeManager.FixedUnscaledDeltaTime;
+                    TimeManager.FixedUnscaledTimeAsDouble += TimeManager.FixedUnscaledDeltaTime;
+
                     Managers.ForEach(i => i.OnBeforeFixedUpdate());
                     Managers.ForEach(i => i.OnFixedUpdate());
                     Managers.ForEach(i => i.OnAfterFixedUpdate());
                     accumulator -= TimeManager.Configuration.FixedTimeStep;
+                    
+                    TimeManager.InFixedTimeStep = false;
                 }
 
                 // Calculate method to calculate math
@@ -99,6 +158,43 @@ namespace Alis.Core.Ecs.System
 
                 // Render the Ui
                 Managers.ForEach(j => j.OnGui());
+                
+                
+
+                // Update SmoothDeltaTime
+                smoothDeltaTimeSum += TimeManager.DeltaTime - lastDeltaTime;
+                smoothDeltaTimeCount++;
+                TimeManager.SmoothDeltaTime = smoothDeltaTimeSum / smoothDeltaTimeCount;
+                lastDeltaTime = TimeManager.DeltaTime;
+                
+                // Log output every 1 second
+                if (newTime - lastLogTime >= 0.5)
+                {
+                    Console.WriteLine(
+                        " FrameCount: " + TimeManager.FrameCount +
+                        " TotalFrames: " + TimeManager.TotalFrames +
+                        " AverageFps: " + TimeManager.AverageFrames +
+                        " Time: " + TimeManager.DeltaTime +
+                        " Accumulator: " + accumulator +
+                        " FixedTimeStep: " + TimeManager.Configuration.FixedTimeStep +
+                        " FixedTime: " + TimeManager.FixedTime +
+                        " FixedUnscaledDeltaTime: " + TimeManager.FixedUnscaledDeltaTime +
+                        " FixedDeltaTime: " + TimeManager.FixedDeltaTime +
+                        " FixedTimeAsDouble: " + TimeManager.FixedTimeAsDouble +
+                        " FixedUnscaledTime: " + TimeManager.FixedUnscaledTime +
+                        " FixedUnscaledTimeAsDouble: " + TimeManager.FixedUnscaledTimeAsDouble +
+                        " InFixedTimeStep: " + TimeManager.InFixedTimeStep +
+                        " MaximumDeltaTime: " + TimeManager.MaximumDeltaTime +
+                        " RealtimeSinceStartup: " + TimeManager.RealtimeSinceStartup +
+                        " RealtimeSinceStartupAsDouble: " + TimeManager.RealtimeSinceStartupAsDouble +
+                        " SmoothDeltaTime: " + TimeManager.SmoothDeltaTime +
+                        " TimeAsDouble: " + TimeManager.TimeAsDouble +
+                        " TimeScale: " + TimeManager.TimeScale +
+                        " UnscaledDeltaTime: " + TimeManager.UnscaledDeltaTime +
+                        " UnscaledTime: " + TimeManager.UnscaledTime +
+                        " UnscaledTimeAsDouble: " + TimeManager.UnscaledTimeAsDouble);
+                    lastLogTime = newTime;
+                }
             }
 
             Managers.ForEach(i => i.OnStop());
