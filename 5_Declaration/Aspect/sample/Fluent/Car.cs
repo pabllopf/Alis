@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:Car.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,49 +27,50 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Threading;
-
-namespace Alis.Core.Aspect.Time.Sample
+namespace Alis.Core.Aspect.Fluent.Sample
 {
     /// <summary>
-    ///     The program class
+    /// The car class
     /// </summary>
-    public static class Program
+    /// <seealso cref="IBuilder{CarBuilder}"/>
+    public class Car : IBuilder<CarBuilder>
     {
         /// <summary>
-        ///     Main the args
+        /// Gets or sets the value of the name
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the model
+        /// </summary>
+        public string Model { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the color
+        /// </summary>
+        public string Color { get; set; }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Car"/> class
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="model">The model</param>
+        /// <param name="color">The color</param>
+        public Car(string name, string model, string color)
         {
-            // Create a new Clock instance
-            Clock clock = new Clock();
-            clock.Start();
-
-            // Create a new TimeConfiguration instance
-            TimeConfiguration timeConfig = new TimeConfiguration();
-
-            // Create a new TimeManager instance
-            TimeManager timeManager = new TimeManager();
-
-            int i = 0;
-            while (i < 1000)
-            {
-                Thread.Sleep(1);
-                i++;
-            }
-
-            // Stop the clock and print the elapsed time
-            clock.Stop();
-            Console.WriteLine($"Elapsed time: {clock.ElapsedMilliseconds} ms");
-
-            // Print some TimeManager properties
-            Console.WriteLine($"DeltaTime: {timeManager.DeltaTime}");
-            Console.WriteLine($"TimeScale: {timeConfig.TimeScale}");
-
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
+            Name = name;
+            Model = model;
+            Color = color;
         }
+
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The car builder</returns>
+        public CarBuilder Builder() => new CarBuilder();
+        
+        /// <summary>
+        /// Creates
+        /// </summary>
+        /// <returns>The car builder</returns>
+        public static CarBuilder Create() => new CarBuilder();
     }
 }
