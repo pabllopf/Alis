@@ -71,10 +71,6 @@ namespace Alis.Core.Ecs.Component.Render
         public override void OnStart()
         {
             PointOfView = new Vector2(0.0f, 0.0f);
-            //Resolution = new Vector2(
-            //   (uint) VideoGame.GraphicManager.Setting.Window.X,
-            //   (uint) VideoGame.GraphicManager.Setting.Window.Y);
-            // view = new View(new Vector2(PointOfView.X, PointOfView.Y), new Vector2(Resolution.X, Resolution.Y));
         }
 
         /// <summary>
@@ -82,9 +78,6 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnUpdate()
         {
-            /*
-            view.Center = new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
-            GraphicManager.SetView(view);*/
         }
     }
 }
