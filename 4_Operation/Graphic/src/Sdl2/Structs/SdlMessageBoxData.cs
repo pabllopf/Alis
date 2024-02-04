@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The flags
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public MessageBoxFlags flags;
 
         /// <summary>
         ///     The window

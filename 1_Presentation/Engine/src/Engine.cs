@@ -219,7 +219,7 @@ namespace Alis.App.Engine
         public unsafe void Start()
         {
             // initialize SDL and set a few defaults for the OpenGL context
-            if (Sdl.Init(SdlInit.InitVideo) != 0)
+            if (Sdl.Init(Init.InitVideo) != 0)
             {
                 Console.WriteLine($@"Error of SDL2: {Sdl.GetError()}");
                 return;
@@ -230,30 +230,30 @@ namespace Alis.App.Engine
             Console.WriteLine(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
-            Sdl.SetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextMajorVersion, 3);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextMinorVersion, 2);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContext.SdlGlContextForwardCompatibleFlag);
+            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfile.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMajorVersion, 3);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMinorVersion, 2);
 
-            Sdl.SetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlDoubleBuffer, 1);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlDepthSize, 24);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlAlphaSize, 8);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlStencilSize, 8);
+            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfile.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlDoubleBuffer, 1);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlDepthSize, 24);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlAlphaSize, 8);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlStencilSize, 8);
 
             // Enable vsync
             Sdl.SetSwapInterval(1);
 
             // create the window which should be able to have a valid OpenGL context and is resizable
-            SdlWindowFlags flags = SdlWindowFlags.WindowOpengl | SdlWindowFlags.WindowResizable | SdlWindowFlags.WindowMaximized;
+            WindowFlags flags = WindowFlags.WindowOpengl | WindowFlags.WindowResizable | WindowFlags.WindowMaximized;
             if (fullscreen)
             {
-                flags |= SdlWindowFlags.WindowFullscreen;
+                flags |= WindowFlags.WindowFullscreen;
             }
 
             if (highDpi)
             {
-                flags |= SdlWindowFlags.WindowAllowHighDpi;
+                flags |= WindowFlags.WindowAllowHighDpi;
             }
 
             _window = Sdl.CreateWindow(NameEngine, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, widthWindow, heightWindow, flags);
@@ -368,12 +368,12 @@ namespace Alis.App.Engine
                     ProcessEvent(e);
                     switch (e.type)
                     {
-                        case SdlEventType.SdlQuit:
+                        case EventType.SdlQuit:
                         {
                             _quit = true;
                             break;
                         }
-                        case SdlEventType.SdlKeydown:
+                        case EventType.SdlKeydown:
                         {
                             switch (e.key.keySym.sym)
                             {
@@ -574,7 +574,7 @@ namespace Alis.App.Engine
             ImGuiIoPtr io = ImGui.GetIo();
             switch (evt.type)
             {
-                case SdlEventType.SdlMousewheel:
+                case EventType.SdlMousewheel:
                 {
                     if (evt.wheel.x > 0)
                     {
@@ -598,7 +598,7 @@ namespace Alis.App.Engine
 
                     return;
                 }
-                case SdlEventType.SdlMouseButtonDown:
+                case EventType.SdlMouseButtonDown:
                 {
                     if (evt.button.button == Sdl.ButtonLeft)
                     {
@@ -617,22 +617,22 @@ namespace Alis.App.Engine
 
                     return;
                 }
-                case SdlEventType.SdlTextInput:
+                case EventType.SdlTextInput:
                 {
                     string str = Encoding.UTF8.GetString(evt.text.Text);
                     io.AddInputCharactersUtf8(str);
                     return;
                 }
-                case SdlEventType.SdlKeydown:
-                case SdlEventType.SdlKeyup:
+                case EventType.SdlKeydown:
+                case EventType.SdlKeyup:
                 {
                     SdlScancode key = evt.key.keySym.scancode;
-                    io.KeysDown[(int) key] = evt.type == SdlEventType.SdlKeydown;
+                    io.KeysDown[(int) key] = evt.type == EventType.SdlKeydown;
                     Console.WriteLine("io.KeysDown[" + key + "] = " + evt.type + io.KeysDown[(int) key]);
-                    io.KeyShift = (Sdl.GetModState() & SdlKeyMod.KModShift) != 0;
-                    io.KeyCtrl = (Sdl.GetModState() & SdlKeyMod.KModCtrl) != 0;
-                    io.KeyAlt = (Sdl.GetModState() & SdlKeyMod.KModAlt) != 0;
-                    io.KeySuper = (Sdl.GetModState() & SdlKeyMod.KModGui) != 0;
+                    io.KeyShift = (Sdl.GetModState() & KeyMod.KModShift) != 0;
+                    io.KeyCtrl = (Sdl.GetModState() & KeyMod.KModCtrl) != 0;
+                    io.KeyAlt = (Sdl.GetModState() & KeyMod.KModAlt) != 0;
+                    io.KeySuper = (Sdl.GetModState() & KeyMod.KModGui) != 0;
                     break;
                 }
             }
@@ -678,7 +678,7 @@ namespace Alis.App.Engine
 
             // SDL_CaptureMouse() let the OS know e.g. that our imgui drag outside the SDL window boundaries shouldn't e.g. trigger the OS window resize cursor.
             bool anyMouseButtonDown = ImGui.IsAnyMouseDown();
-            Sdl.CaptureMouse(anyMouseButtonDown ? SdlBool.True : SdlBool.False);
+            Sdl.CaptureMouse(anyMouseButtonDown);
         }
 
         /// <summary>

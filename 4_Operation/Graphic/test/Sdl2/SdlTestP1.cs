@@ -50,7 +50,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestInit()
         {
             // Arrange
-            const SdlInit expected = SdlInit.InitEverything;
+            const Init expected = Init.InitEverything;
 
             // Act
             int result = Sdl.Init(expected);
@@ -67,7 +67,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGetGlCompiledVersion()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -88,7 +88,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGameControllerClose()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -110,7 +110,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGameControllerSetLed()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -135,7 +135,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGameControllerHasAxis()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -145,13 +145,13 @@ namespace Alis.Core.Graphic.Test.Sdl2
                 IntPtr gameController = Sdl.GameControllerOpen(0);
 
                 // Act
-                const SdlGameControllerAxis axis = new SdlGameControllerAxis();
+                const GameControllerAxis axis = new GameControllerAxis();
 
                 // Act
-                SdlBool result = Sdl.GameControllerHasAxis(gameController, axis);
+                bool result = Sdl.GameControllerHasAxis(gameController, axis);
 
                 // Assert
-                Assert.Equal(SdlBool.True, result);
+                Assert.True(result);
             }
 
             Sdl.Quit();
@@ -163,7 +163,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGameControllerHasButton()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -173,13 +173,13 @@ namespace Alis.Core.Graphic.Test.Sdl2
                 IntPtr gameController = Sdl.GameControllerOpen(0);
 
                 // Act
-                const SdlGameControllerButton button = new SdlGameControllerButton();
+                const GameControllerButton button = new GameControllerButton();
 
                 // Act
-                SdlBool result = Sdl.GameControllerHasButton(gameController, button);
+                bool result = Sdl.GameControllerHasButton(gameController, button);
 
                 // Assert
-                Assert.Equal(SdlBool.True, result);
+                Assert.True(result);
             }
 
             Sdl.Quit();
@@ -191,7 +191,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestCloseAudioDevice()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int audioDevices = Sdl.GetNumAudioDevices(0);
@@ -225,7 +225,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGetAudioDeviceName()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -248,18 +248,18 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGetAudioDeviceStatus()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
             uint dev = 0;
 
             // Act
-            SdlAudioStatus result = Sdl.GetAudioDeviceStatus(dev);
+            AudioStatus result = Sdl.GetAudioDeviceStatus(dev);
 
             // Assert
 
-            Assert.Equal(SdlAudioStatus.SdlAudioStopped, result);
+            Assert.Equal(AudioStatus.SdlAudioStopped, result);
 
             Sdl.Quit();
         }
@@ -270,7 +270,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGetAudioDriver()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -293,7 +293,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGetCurrentAudioDriver()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -313,7 +313,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGetNumAudioDevices()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int gNumAudioDevices = Sdl.GetNumAudioDevices(0);
@@ -338,7 +338,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGetNumAudioDrivers()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -357,7 +357,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestLoadWav()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -381,7 +381,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestLockAudioDevice()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -390,7 +390,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Act
             Sdl.LockAudioDevice(dev);
 
-            Assert.Equal(SdlAudioStatus.SdlAudioStopped, Sdl.GetAudioDeviceStatus(dev));
+            Assert.Equal(AudioStatus.SdlAudioStopped, Sdl.GetAudioDeviceStatus(dev));
 
             Sdl.Quit();
         }
@@ -401,7 +401,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestMixAudio()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -425,7 +425,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestMixAudioFormat()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -451,7 +451,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestOpenAudioDevice()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -476,7 +476,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestPauseAudio()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -486,7 +486,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Sdl.SdlPauseAudio(pauseOn);
 
             // Assert
-            Assert.Equal(SdlAudioStatus.SdlAudioStopped, Sdl.GetAudioDeviceStatus(0));
+            Assert.Equal(AudioStatus.SdlAudioStopped, Sdl.GetAudioDeviceStatus(0));
 
             Sdl.Quit();
         }
@@ -497,7 +497,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestPauseAudioDevice()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -508,7 +508,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Sdl.SdlPauseAudioDevice(dev, pauseOn);
 
             // Assert
-            Assert.Equal(SdlAudioStatus.SdlAudioStopped, Sdl.GetAudioDeviceStatus(dev));
+            Assert.Equal(AudioStatus.SdlAudioStopped, Sdl.GetAudioDeviceStatus(dev));
 
             Sdl.Quit();
         }
@@ -519,7 +519,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestUnlockAudioDevice()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -529,7 +529,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Sdl.SdlUnlockAudioDevice(dev);
 
             // Assert
-            Assert.Equal(SdlAudioStatus.SdlAudioStopped, Sdl.GetAudioDeviceStatus(dev));
+            Assert.Equal(AudioStatus.SdlAudioStopped, Sdl.GetAudioDeviceStatus(dev));
 
             Sdl.Quit();
         }
@@ -540,7 +540,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestFourcc()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -564,7 +564,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGetVersion()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -582,7 +582,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGetPerformanceFrequency()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -598,7 +598,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGetPerformanceCounter()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -614,7 +614,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestSensorOpen()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -636,7 +636,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestClearHints()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -653,7 +653,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestSetHint()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -661,10 +661,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
             const string value = "testValue";
 
             // Act
-            SdlBool result = Sdl.SetHint(name, value);
+            bool result = Sdl.SetHint(name, value);
 
             // Assert
-            Assert.Equal(SdlBool.True, result);
+            Assert.True(result);
         }
 
         /// <summary>
@@ -673,7 +673,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestGetHint()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Arrange
@@ -681,8 +681,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
             const string value = "testValue";
 
             // Act
-            SdlBool setResult = Sdl.SetHint(name, value);
-            Assert.Equal(SdlBool.True, setResult);
+            bool setResult = Sdl.SetHint(name, value);
+            Assert.True(setResult);
 
             // Act
             string result = Sdl.GetHint(name);
@@ -698,7 +698,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         [Fact]
         public void TestNumHaptics()
         {
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -716,17 +716,17 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSetHint_ShouldReturnTrue_WhenValidHintIsPassed()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             const string name = "testName";
             const string value = "testValue";
 
             // Act
-            SdlBool result = Sdl.SetHint(name, value);
+            bool result = Sdl.SetHint(name, value);
 
             // Assert
-            Assert.Equal(SdlBool.True, result);
+            Assert.True(result);
 
             Sdl.Quit();
         }
@@ -738,7 +738,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetHint_ShouldReturnCorrectValue_WhenValidHintIsPassed()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             const string name = "testName";
@@ -761,7 +761,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestNumHaptics_ShouldReturnNonNegativeValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -780,7 +780,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestClearHints_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -799,7 +799,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetPerformanceCounter_ShouldReturnNonZeroValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -818,7 +818,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetPerformanceFrequency_ShouldReturnNonZeroValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -837,7 +837,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestInternalSetWindowPosition_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = new IntPtr();
@@ -860,7 +860,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestInternalGlGetCurrentContext_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -879,7 +879,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestInternalGetPerformanceFrequency_ShouldReturnNonZeroValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -898,7 +898,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestInternalGetPerformanceCounter_ShouldReturnNonZeroValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -917,7 +917,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlInit_ShouldReturnZero_WhenInitEverythingIsPassed()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
 
             // Assert
             Assert.Equal(0, initResult);
@@ -932,7 +932,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlGetVersion_ShouldReturnExpectedVersion()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -953,7 +953,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlGetPerformanceCounter_ShouldReturnNonZeroValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -972,7 +972,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlGetPerformanceFrequency_ShouldReturnNonZeroValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -991,7 +991,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlNumHaptics_ShouldReturnNonNegativeValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -1010,7 +1010,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlClearHints_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -1029,17 +1029,17 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlSetHint_ShouldReturnTrue_WhenValidHintIsPassed()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             const string name = "testName";
             const string value = "testValue";
 
             // Act
-            SdlBool result = Sdl.SetHint(name, value);
+            bool result = Sdl.SetHint(name, value);
 
             // Assert
-            Assert.Equal(SdlBool.True, result);
+            Assert.True(result);
 
             Sdl.Quit();
         }
@@ -1051,7 +1051,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlGetHint_ShouldReturnCorrectValue_WhenValidHintIsPassed()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             const string name = "testName";
@@ -1074,7 +1074,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestLoadFile_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             string file = "testFile";
@@ -1096,7 +1096,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetError_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -1115,7 +1115,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSetError_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             const string errorMessage = "Test error message";
@@ -1136,10 +1136,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestWasInit_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
-            SdlInit flags = SdlInit.InitEverything;
+            Init flags = Init.InitEverything;
 
             // Act
             uint result = Sdl.WasInit(flags);
@@ -1157,7 +1157,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetHint_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             string name = "TestHint";
@@ -1178,17 +1178,17 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSetHint_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             string name = "TestHint";
             string value = "TestValue";
 
             // Act
-            SdlBool result = Sdl.SetHint(name, value);
+            bool result = Sdl.SetHint(name, value);
 
             // Assert
-            Assert.Equal(SdlBool.True, result);
+            Assert.True(result);
 
             Sdl.Quit();
         }
@@ -1200,18 +1200,18 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSetHintWithPriority_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             string name = "TestHint";
             string value = "TestValue";
-            SdlHintPriority priority = SdlHintPriority.SdlHintOverride;
+            HintPriority priority = HintPriority.SdlHintOverride;
 
             // Act
-            SdlBool result = Sdl.SetHintWithPriority(name, value, priority);
+            bool result = Sdl.SetHintWithPriority(name, value, priority);
 
             // Assert
-            Assert.Equal(SdlBool.True, result);
+            Assert.True(result);
 
             Sdl.Quit();
         }
@@ -1223,14 +1223,14 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetHintBoolean_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             string name = "TestHint";
-            SdlBool defaultValue = SdlBool.False;
+            bool defaultValue = false;
 
             // Act
-            SdlBool result = Sdl.GetHintBoolean(name, defaultValue);
+            bool result = Sdl.GetHintBoolean(name, defaultValue);
 
             // Assert
             Assert.Equal(defaultValue, result);
@@ -1245,7 +1245,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetVersion_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -1264,7 +1264,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestWindowPosUndefinedDisplay_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int x = 10;
@@ -1285,7 +1285,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestWindowPosIsUndefined_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int x = (int) WindowPos.WindowPosUndefinedMask;
@@ -1306,7 +1306,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestWindowPosCenteredDisplay_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int x = 10;
@@ -1327,7 +1327,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestWindowPosIsCentered_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int x = (int) WindowPos.WindowPosCenteredMask;
@@ -1348,7 +1348,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestCreateWindow_ShouldReturnNonNullPointer()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             string title = "Test Window";
@@ -1358,22 +1358,22 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int h = 600;
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
-            Sdl.SetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextMajorVersion, 3);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextMinorVersion, 2);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContext.SdlGlContextForwardCompatibleFlag);
+            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfile.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMajorVersion, 3);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMinorVersion, 2);
 
-            Sdl.SetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlDoubleBuffer, 1);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlDepthSize, 24);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlAlphaSize, 8);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlStencilSize, 8);
+            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfile.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlDoubleBuffer, 1);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlDepthSize, 24);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlAlphaSize, 8);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlStencilSize, 8);
 
             // Enable vsync
             Sdl.SetSwapInterval(1);
 
             // create the window which should be able to have a valid OpenGL context and is resizable
-            SdlWindowFlags flags = SdlWindowFlags.WindowOpengl | SdlWindowFlags.WindowResizable | SdlWindowFlags.WindowMaximized;
+            WindowFlags flags = WindowFlags.WindowOpengl | WindowFlags.WindowResizable | WindowFlags.WindowMaximized;
 
             // Act
             IntPtr result = Sdl.CreateWindow(title, x, y, w, h, flags);
@@ -1391,29 +1391,29 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestCreateWindowAndRenderer_ShouldReturnNonNullPointers()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int width = 800;
             int height = 600;
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
-            Sdl.SetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextMajorVersion, 3);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextMinorVersion, 2);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContext.SdlGlContextForwardCompatibleFlag);
+            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfile.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMajorVersion, 3);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMinorVersion, 2);
 
-            Sdl.SetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlDoubleBuffer, 1);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlDepthSize, 24);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlAlphaSize, 8);
-            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlStencilSize, 8);
+            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfile.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlDoubleBuffer, 1);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlDepthSize, 24);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlAlphaSize, 8);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlStencilSize, 8);
 
             // Enable vsync
             Sdl.SetSwapInterval(1);
 
             // create the window which should be able to have a valid OpenGL context and is resizable
-            const SdlWindowFlags flags = SdlWindowFlags.WindowOpengl | SdlWindowFlags.WindowResizable | SdlWindowFlags.WindowMaximized;
+            const WindowFlags flags = WindowFlags.WindowOpengl | WindowFlags.WindowResizable | WindowFlags.WindowMaximized;
 
             // Act
             int result = Sdl.CreateWindowAndRenderer(width, height, flags, out IntPtr _, out IntPtr _);
@@ -1431,7 +1431,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestDestroyWindow_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             string title = "Test Window";
@@ -1439,7 +1439,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int y = 10;
             int w = 800;
             int h = 600;
-            SdlWindowFlags flags = SdlWindowFlags.WindowShown;
+            WindowFlags flags = WindowFlags.WindowShown;
             IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
 
             // Act
@@ -1458,7 +1458,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetClosestDisplayMode_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int displayIndex = 0;
@@ -1480,7 +1480,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetCurrentDisplayMode_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int displayIndex = 0;
@@ -1501,7 +1501,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetCurrentVideoDriver_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -1520,7 +1520,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetDesktopDisplayMode_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int displayIndex = 0;
@@ -1541,7 +1541,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetDisplayName_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int index = 0;
@@ -1562,7 +1562,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetDisplayBounds_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int displayIndex = 0;
@@ -1583,7 +1583,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetDisplayDpi_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int displayIndex = 0;
@@ -1604,7 +1604,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetDisplayMode_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int displayIndex = 0;
@@ -1626,7 +1626,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetDisplayUsableBounds_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int displayIndex = 0;
@@ -1647,7 +1647,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetNumDisplayModes_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int displayIndex = 0;
@@ -1668,7 +1668,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetNumVideoDisplays_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -1687,7 +1687,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetNumVideoDrivers_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -1706,7 +1706,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetVideoDriver_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int index = 0;
@@ -1727,7 +1727,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetWindowBrightness_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             string title = "Test Window";
@@ -1735,7 +1735,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int y = 10;
             int w = 800;
             int h = 600;
-            SdlWindowFlags flags = SdlWindowFlags.WindowShown;
+            WindowFlags flags = WindowFlags.WindowShown;
             IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
 
             // Act
@@ -1754,7 +1754,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSetWindowOpacity_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             string title = "Test Window";
@@ -1762,7 +1762,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int y = 10;
             int w = 800;
             int h = 600;
-            SdlWindowFlags flags = SdlWindowFlags.WindowShown;
+            WindowFlags flags = WindowFlags.WindowShown;
             IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
             float opacity = 0.5f;
 
@@ -1782,7 +1782,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetWindowOpacity_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             string title = "Test Window";
@@ -1790,7 +1790,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int y = 10;
             int w = 800;
             int h = 600;
-            SdlWindowFlags flags = SdlWindowFlags.WindowShown;
+            WindowFlags flags = WindowFlags.WindowShown;
             IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
 
             // Act
@@ -1809,7 +1809,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSetWindowModalFor_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             const string title = "Test Window";
@@ -1817,7 +1817,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             const int y = 10;
             const int w = 800;
             const int h = 600;
-            const SdlWindowFlags flags = SdlWindowFlags.WindowShown;
+            const WindowFlags flags = WindowFlags.WindowShown;
             IntPtr modalWindow = Sdl.CreateWindow(title, x, y, w, h, flags);
             IntPtr parentWindow = Sdl.CreateWindow(title, x, y, w, h, flags);
 
@@ -1837,7 +1837,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSetWindowInputFocus_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             string title = "Test Window";
@@ -1845,7 +1845,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int y = 10;
             int w = 800;
             int h = 600;
-            SdlWindowFlags flags = SdlWindowFlags.WindowShown;
+            WindowFlags flags = WindowFlags.WindowShown;
             IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
 
             // Act
@@ -1864,7 +1864,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetWindowData_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             string title = "Test Window";
@@ -1872,7 +1872,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int y = 10;
             int w = 800;
             int h = 600;
-            SdlWindowFlags flags = SdlWindowFlags.WindowShown;
+            WindowFlags flags = WindowFlags.WindowShown;
             IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
             string name = "Test Data";
 
@@ -1892,7 +1892,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetWindowDisplayIndex_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             string title = "Test Window";
@@ -1900,7 +1900,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int y = 10;
             int w = 800;
             int h = 600;
-            SdlWindowFlags flags = SdlWindowFlags.WindowShown;
+            WindowFlags flags = WindowFlags.WindowShown;
             IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
 
             // Act
@@ -1919,7 +1919,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlAudioStreamClear_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr stream = IntPtr.Zero; // Initialize your stream here
@@ -1940,7 +1940,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlFreeAudioStream_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr stream = IntPtr.Zero; // Initialize your stream here
@@ -1961,7 +1961,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlGetAudioDeviceSpec_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int index = 0;
@@ -1983,7 +1983,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlOpenAudioDevice_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             string device = "Test Device";
@@ -2007,7 +2007,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlPauseAudio_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             int pauseOn = 1;
@@ -2028,7 +2028,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlPauseAudioDevice_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             uint dev = 1; // Initialize your device here
@@ -2050,7 +2050,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlUnlockAudioDevice_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             uint dev = 1; // Initialize your device here
@@ -2071,7 +2071,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlNewAudioStream_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             ushort srcFormat = 1;
@@ -2097,7 +2097,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlAudioStreamPut_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr stream = IntPtr.Zero; // Initialize your stream here
@@ -2120,7 +2120,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlAudioStreamGet_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr stream = IntPtr.Zero; // Initialize your stream here
@@ -2143,7 +2143,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlAudioStreamAvailable_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr stream = IntPtr.Zero; // Initialize your stream here
@@ -2164,7 +2164,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestMixAudioFormat_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             byte[] dst = new byte[10];
@@ -2189,7 +2189,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestLockSensors_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -2208,7 +2208,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestUnlockSensors_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -2227,7 +2227,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlAudioBitSize_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             ushort x = 1;
@@ -2248,7 +2248,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlAudioIsFloat_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             ushort x = 1;
@@ -2269,7 +2269,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlAudioIsBigEndian_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             ushort x = 1;
@@ -2290,7 +2290,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlAudioIsSigned_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             ushort x = 1;
@@ -2311,7 +2311,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlAudioIsInt_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             ushort x = 1;
@@ -2332,7 +2332,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlAudioIsLittleEndian_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             ushort x = 1;
@@ -2353,7 +2353,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlAudioIsUnsigned_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             ushort x = 1;
@@ -2374,7 +2374,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlMixAudioFormat_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             byte[] dst = new byte[10];
@@ -2399,7 +2399,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestOpenAudioDevice_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr device = IntPtr.Zero;
@@ -2423,7 +2423,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetWindowDisplayMode_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -2444,7 +2444,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetWindowFlags_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -2465,7 +2465,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetWindowFromId_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             uint id = 1;
@@ -2486,7 +2486,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetWindowGammaRamp_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -2510,16 +2510,16 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetWindowGrab_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
 
             // Act
-            SdlBool result = Sdl.GetWindowGrab(window);
+            bool result = Sdl.GetWindowGrab(window);
 
             // Assert
-            Assert.Equal(SdlBool.False, result);
+            Assert.False(result);
 
             Sdl.Quit();
         }
@@ -2531,16 +2531,16 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetWindowKeyboardGrab_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
 
             // Act
-            SdlBool result = Sdl.GetWindowKeyboardGrab(window);
+            bool result = Sdl.GetWindowKeyboardGrab(window);
 
             // Assert
-            Assert.Equal(SdlBool.False, result);
+            Assert.False(result);
 
             Sdl.Quit();
         }
@@ -2552,16 +2552,16 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetWindowMouseGrab_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
 
             // Act
-            SdlBool result = Sdl.GetWindowMouseGrab(window);
+            bool result = Sdl.GetWindowMouseGrab(window);
 
             // Assert
-            Assert.Equal(SdlBool.False, result);
+            Assert.False(result);
 
             Sdl.Quit();
         }
@@ -2573,7 +2573,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetWindowId_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -2594,7 +2594,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetWindowPixelFormat_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -2615,7 +2615,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestStartTextInput_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -2634,14 +2634,14 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestIsTextInputActive_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
-            SdlBool result = Sdl.IsTextInputActive();
+            bool result = Sdl.IsTextInputActive();
 
             // Assert
-            Assert.Equal(SdlBool.True, result);
+            Assert.True(result);
 
             Sdl.Quit();
         }
@@ -2653,7 +2653,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestStopTextInput_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -2672,7 +2672,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSetTextInputRect_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             RectangleI rect = new RectangleI();
@@ -2693,14 +2693,14 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestHasScreenKeyboardSupport_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
-            SdlBool result = Sdl.HasScreenKeyboardSupport();
+            bool result = Sdl.HasScreenKeyboardSupport();
 
             // Assert
-            Assert.Equal(SdlBool.False, result);
+            Assert.False(result);
 
             Sdl.Quit();
         }
@@ -2712,16 +2712,16 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestIsScreenKeyboardShown_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
 
             // Act
-            SdlBool result = Sdl.IsScreenKeyboardShown(window);
+            bool result = Sdl.IsScreenKeyboardShown(window);
 
             // Assert
-            Assert.Equal(SdlBool.False, result);
+            Assert.False(result);
 
             Sdl.Quit();
         }
@@ -2733,7 +2733,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetMouseFocus_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -2752,7 +2752,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetMouseStateOutXAndY_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -2771,7 +2771,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestGetGlobalMouseStateOutXAndOutY_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -2790,7 +2790,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void CalculateGammaRampTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             float gamma = 1.0f;
@@ -2808,7 +2808,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetPixelFormatNameTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             const uint format = 0;
@@ -2825,7 +2825,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderCopyExTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero;
@@ -2834,7 +2834,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             RectangleF dst = new RectangleF();
             double angle = 0;
             PointF center = new PointF();
-            SdlRendererFlip flip = SdlRendererFlip.SdlFlipHorizontal;
+            RendererFlip flip = RendererFlip.SdlFlipHorizontal;
 
             // Act
             int result = Sdl.RenderCopyEx(renderer, texture, ref srcRect, ref dst, angle, ref center, flip);
@@ -2850,7 +2850,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowMaximumSizeTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -2869,7 +2869,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowMinimumSizeTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -2888,7 +2888,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowOpacityTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -2910,7 +2910,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowOpacityTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -2929,7 +2929,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowModalForTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -2951,7 +2951,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowInputFocusTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -2972,7 +2972,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowDataTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -2994,7 +2994,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowDisplayIndexTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -3015,7 +3015,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowFlagsTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -3036,7 +3036,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowFromIdTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             uint id = 0;
@@ -3057,7 +3057,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowPixelFormatTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -3078,14 +3078,14 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void StartTextInputTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
             Sdl.StartTextInput();
 
             // Assert
-            Assert.Equal(SdlBool.True, Sdl.IsTextInputActive());
+            Assert.True(Sdl.IsTextInputActive());
 
             Sdl.Quit();
         }
@@ -3097,14 +3097,14 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void IsTextInputActiveTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
             Sdl.IsTextInputActive();
 
             // Assert
-            Assert.Equal(SdlBool.True, Sdl.IsTextInputActive());
+            Assert.True(Sdl.IsTextInputActive());
 
             Sdl.Quit();
         }
@@ -3116,14 +3116,14 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void StopTextInputTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
             Sdl.StopTextInput();
 
             // Assert
-            Assert.Equal(SdlBool.False, Sdl.IsTextInputActive());
+            Assert.False(Sdl.IsTextInputActive());
 
 
             Sdl.Quit();
@@ -3136,7 +3136,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetTextInputRectTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             RectangleI rect = new RectangleI();
@@ -3160,14 +3160,14 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void HasScreenKeyboardSupportTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
             Sdl.HasScreenKeyboardSupport();
 
             // Assert
-            Assert.Equal(SdlBool.False, Sdl.HasScreenKeyboardSupport());
+            Assert.False(Sdl.HasScreenKeyboardSupport());
 
             Sdl.Quit();
         }
@@ -3179,7 +3179,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void IsScreenKeyboardShownTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -3188,7 +3188,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Sdl.IsScreenKeyboardShown(window);
 
             // Assert
-            Assert.Equal(SdlBool.False, Sdl.IsScreenKeyboardShown(window));
+            Assert.False(Sdl.IsScreenKeyboardShown(window));
 
             Sdl.Quit();
         }
@@ -3200,7 +3200,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetMouseFocusTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -3219,7 +3219,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetMouseStateOutXAndYTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -3241,7 +3241,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetGlobalMouseStateOutXAndOutYTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -3260,7 +3260,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowPositionTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -3282,7 +3282,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowSizeTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -3304,7 +3304,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowTitleTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -3325,7 +3325,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowBrightnessTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -3346,7 +3346,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowDisplayModeTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -3367,7 +3367,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowSurfaceTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -3388,7 +3388,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowGrabTest()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -3397,7 +3397,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Sdl.GetWindowGrab(window);
 
             // Assert
-            Assert.Equal(SdlBool.False, Sdl.GetWindowGrab(window));
+            Assert.False(Sdl.GetWindowGrab(window));
 
             Sdl.Quit();
         }
@@ -3409,7 +3409,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void UpdateTexture_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr texture = IntPtr.Zero; // Replace with the desired texture
@@ -3433,7 +3433,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderDrawLine_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
@@ -3458,7 +3458,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderLogicalToWindow_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
@@ -3482,7 +3482,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderSetVSync_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
@@ -3504,7 +3504,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderCopyExF_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
@@ -3513,7 +3513,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             RectangleF dst = new RectangleF(); // Replace with the desired destination rectangle
             double angle = 0.0; // Replace with the desired angle
             IntPtr center = IntPtr.Zero; // Replace with the desired center
-            SdlRendererFlip flip = SdlRendererFlip.None; // Replace with the desired flip
+            RendererFlip flip = RendererFlip.None; // Replace with the desired flip
 
             // Act
             int result = Sdl.RenderCopyExF(renderer, texture, ref srcRect, ref dst, angle, center, flip);
@@ -3531,7 +3531,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderCopyExF_V2_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
@@ -3540,7 +3540,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr dstRect = IntPtr.Zero; // Replace with the desired destination rectangle
             double angle = 0.0; // Replace with the desired angle
             PointF center = new PointF(); // Replace with the desired center
-            SdlRendererFlip flip = SdlRendererFlip.None; // Replace with the desired flip
+            RendererFlip flip = RendererFlip.None; // Replace with the desired flip
 
             // Act
             int result = Sdl.RenderCopyExF(renderer, texture, srcRect, dstRect, angle, ref center, flip);
@@ -3558,7 +3558,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderCopyEx_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero; // Replace with the actual renderer
@@ -3567,7 +3567,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr dstRect = IntPtr.Zero; // Replace with the actual destination rectangle
             double angle = 0; // Replace with the actual angle
             IntPtr center = IntPtr.Zero; // Replace with the actual center
-            SdlRendererFlip flip = SdlRendererFlip.None; // Replace with the actual flip
+            RendererFlip flip = RendererFlip.None; // Replace with the actual flip
 
             // Act
             int result = Sdl.RenderCopyEx(renderer, texture, srcRect, dstRect, angle, center, flip);

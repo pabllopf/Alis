@@ -60,12 +60,12 @@ namespace Alis.Core.Graphic.Sample
         /// <summary>
         ///     The sdl game controller axis
         /// </summary>
-        private static readonly List<SdlGameControllerAxis> Axis = new List<SdlGameControllerAxis>((SdlGameControllerAxis[]) Enum.GetValues(typeof(SdlGameControllerAxis)));
+        private static readonly List<GameControllerAxis> Axis = new List<GameControllerAxis>((GameControllerAxis[]) Enum.GetValues(typeof(GameControllerAxis)));
 
         /// <summary>
         ///     The sdl game controller button
         /// </summary>
-        private static readonly List<SdlGameControllerButton> Buttons = new List<SdlGameControllerButton>((SdlGameControllerButton[]) Enum.GetValues(typeof(SdlGameControllerButton)));
+        private static readonly List<GameControllerButton> Buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
 
         /// <summary>
         ///     The blue
@@ -112,7 +112,7 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         public static void Run()
         {
-            if (Sdl.Init(SdlInit.InitEverything) < 0)
+            if (Sdl.Init(Init.InitEverything) < 0)
             {
                 Logger.Exception($@"There was an issue initializing SDL. {Sdl.GetError()}");
             }
@@ -157,7 +157,7 @@ namespace Alis.Core.Graphic.Sample
             }
 
             // create the window which should be able to have a valid OpenGL context and is resizable
-            SdlWindowFlags flags = SdlWindowFlags.WindowResizable | SdlWindowFlags.WindowShown;
+            WindowFlags flags = WindowFlags.WindowResizable | WindowFlags.WindowShown;
 
             // Creates a new SDL window at the center of the screen with the given width and height.
             IntPtr window = Sdl.CreateWindow("Sample", (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, Width, Height, flags);
@@ -176,7 +176,7 @@ namespace Alis.Core.Graphic.Sample
             IntPtr renderer = Sdl.CreateRenderer(
                 window,
                 -1,
-                SdlRendererFlags.SdlRendererAccelerated);
+                RendererFlags.SdlRendererAccelerated);
 
             if (renderer == IntPtr.Zero)
             {
@@ -286,10 +286,10 @@ namespace Alis.Core.Graphic.Sample
                 {
                     switch (_sdlEvent.type)
                     {
-                        case SdlEventType.SdlQuit:
+                        case EventType.SdlQuit:
                             _running = false;
                             break;
-                        case SdlEventType.SdlKeydown:
+                        case EventType.SdlKeydown:
                             if (_sdlEvent.key.keySym.sym == SdlKeycode.SdlkEscape)
                             {
                                 _running = false;
@@ -319,19 +319,19 @@ namespace Alis.Core.Graphic.Sample
                             break;
                     }
 
-                    foreach (SdlGameControllerButton button in Buttons)
+                    foreach (GameControllerButton button in Buttons)
                     {
-                        if ((_sdlEvent.type == SdlEventType.SdlJoyButtonDown)
-                            && (button == (SdlGameControllerButton) _sdlEvent.cButton.button))
+                        if ((_sdlEvent.type == EventType.SdlJoyButtonDown)
+                            && (button == (GameControllerButton) _sdlEvent.cButton.button))
                         {
                             Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed button={button}");
                         }
                     }
 
-                    foreach (SdlGameControllerAxis axi in Axis)
+                    foreach (GameControllerAxis axi in Axis)
                     {
-                        if ((_sdlEvent.type == SdlEventType.SdlJoyAxisMotion)
-                            && (axi == (SdlGameControllerAxis) _sdlEvent.cAxis.axis))
+                        if ((_sdlEvent.type == EventType.SdlJoyAxisMotion)
+                            && (axi == (GameControllerAxis) _sdlEvent.cAxis.axis))
                         {
                             Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed axi={axi}");
                         }

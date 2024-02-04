@@ -48,7 +48,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void ByteSwappedUnicodeTest()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -77,7 +77,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void OpenFontIndex_NoExceptionThrown()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -115,7 +115,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetFontSize_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -152,7 +152,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontStyle_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -189,7 +189,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetFontStyle_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -227,7 +227,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontOutline_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -264,7 +264,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetFontOutline_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -302,7 +302,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontHinting_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -339,7 +339,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetFontHinting_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -376,7 +376,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontHeight_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -414,7 +414,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontAscent_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -452,7 +452,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontLineSkip_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -490,7 +490,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontKerning_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -528,7 +528,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetFontKerning_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -567,7 +567,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontFaces_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -604,7 +604,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontDescent_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -642,7 +642,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontFaceIsFixedWidth_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -680,7 +680,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontFaceStyleName_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -718,7 +718,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GlyphIsProvided_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -757,7 +757,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GlyphIsProvided32_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -796,7 +796,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GlyphMetrics_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -840,7 +840,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GlyphMetrics32_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -884,7 +884,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SizeText_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -925,7 +925,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SizeUtf8_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -966,7 +966,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SizeUnicode_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1006,7 +1006,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void MeasureText_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1049,7 +1049,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void MeasureUtf8_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1092,7 +1092,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void MeasureUnicode_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1135,7 +1135,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderTextSolid_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1175,7 +1175,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUtf8Solid_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1215,7 +1215,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeSolid_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1255,7 +1255,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderTextSolidWrapped_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1295,7 +1295,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUtf8SolidWrapped_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1335,7 +1335,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeSolidWrapped_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1375,7 +1375,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyphSolid_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1414,7 +1414,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyph32Solid_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1454,7 +1454,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderTextShaded_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1493,7 +1493,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUtf8Shaded_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1532,7 +1532,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeShaded_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1571,7 +1571,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderTextShadedWrapped_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1611,7 +1611,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUtf8ShadedWrapped_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1651,7 +1651,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeShadedWrapped_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1691,7 +1691,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyphShaded_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1730,7 +1730,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyph32Shaded_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1769,7 +1769,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderTextBlended_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1807,7 +1807,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeBlended_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1846,7 +1846,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderTextBlendedWrapped_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1886,7 +1886,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUtf8BlendedWrapped_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1926,7 +1926,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeBlendedWrapped_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -1966,7 +1966,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyphBlended_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -2006,7 +2006,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyph32Blended_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -2045,7 +2045,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetDirection_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -2078,7 +2078,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUtf8Blended_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -2117,7 +2117,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetTtfVersion_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -2148,7 +2148,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void OpenFont_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -2183,7 +2183,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontKerningSizeGlyphs32_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -2222,7 +2222,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontKerningSizeGlyphs_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -2261,7 +2261,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontKerningSize_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -2300,7 +2300,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetError_Test()
         {
-            int resultSdl = Sdl.Init(SdlInit.InitEverything);
+            int resultSdl = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, resultSdl);
 
             // Act & Assert
@@ -2322,7 +2322,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetError_Test()
         {
-            int resultSdl = Sdl.Init(SdlInit.InitEverything);
+            int resultSdl = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, resultSdl);
 
             // Act & Assert
@@ -2344,7 +2344,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void WasInit_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -2373,7 +2373,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void Quit_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();
@@ -2402,7 +2402,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void CloseFont_Test()
         {
-            int sdlInit = Sdl.Init(SdlInit.InitEverything);
+            int sdlInit = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, sdlInit);
 
             int sdlTtf = SdlTtf.Init();

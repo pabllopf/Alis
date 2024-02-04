@@ -37,5 +37,5 @@ namespace Alis.Core.Graphic.Sdl2.Delegates
     ///     The sdl log output function
     /// </summary>
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void SdlLogOutputFunction(IntPtr userdata, int category, SdlLogPriority priority, IntPtr message);
+    public delegate void SdlLogOutputFunction(IntPtr userdata, int category, LogPriority priority, IntPtr message);
 }

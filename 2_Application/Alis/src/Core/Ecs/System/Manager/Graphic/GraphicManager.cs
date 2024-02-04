@@ -164,7 +164,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     (int) (h * sprite.GameObject.Transform.Scale.Y));
 
                 // render the texture to the screen
-                Sdl.RenderCopyEx(Renderer, sprite.Image.Texture, IntPtr.Zero, ref dstRect, sprite.GameObject.Transform.Rotation.Angle, IntPtr.Zero, SdlRendererFlip.None);
+                Sdl.RenderCopyEx(Renderer, sprite.Image.Texture, IntPtr.Zero, ref dstRect, sprite.GameObject.Transform.Rotation.Angle, IntPtr.Zero, RendererFlip.None);
             }
 
             if (VideoGame.Instance.Settings.Physic.DebugMode)
@@ -308,7 +308,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         private void InitRenderWindow()
         {
-            if (Sdl.Init(SdlInit.InitEverything) < 0)
+            if (Sdl.Init(Init.InitEverything) < 0)
             {
                 Console.WriteLine($@"There was an issue initializing SDL. {Sdl.GetError()}");
             }
@@ -351,11 +351,11 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             // Create the window
             // create the window which should be able to have a valid OpenGL context and is resizable
-            SdlWindowFlags flags = SdlWindowFlags.WindowShown;
+            WindowFlags flags = WindowFlags.WindowShown;
 
             if (VideoGame.Instance.Settings.Graphic.Window.IsWindowResizable)
             {
-                flags |= SdlWindowFlags.WindowResizable;
+                flags |= WindowFlags.WindowResizable;
             }
 
             // Creates a new SDL window at the center of the screen with the given width and height.
@@ -368,7 +368,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Renderer = Sdl.CreateRenderer(
                 _window,
                 -1,
-                SdlRendererFlags.SdlRendererAccelerated);
+                RendererFlags.SdlRendererAccelerated);
 
 
             // Check if the renderer was created successfully.
