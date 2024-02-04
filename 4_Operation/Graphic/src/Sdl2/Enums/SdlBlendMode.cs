@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
     ///     The sdl blend mode enum
     /// </summary>
     [Flags]
-    public enum SdlBlendMode
+    public enum BlendMode
     {
         /// <summary>
         ///     The sdl blend factor none sdl blend factor
@@ -45,26 +45,31 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         /// <summary>
         ///     The sdl blend factor blend sdl blend factor
         /// </summary>
-        SdlBlendModeBlend = 0x00000001,
+        BlendModeBlend = 0x00000001,
 
         /// <summary>
         ///     The sdl blend factor add sdl blend factor
         /// </summary>
-        SdlBlendModeAdd = 0x00000002,
+        BlendModeAdd = 0x00000002,
 
         /// <summary>
         ///     The sdl blend factor mod sdl blend factor
         /// </summary>
-        SdlBlendModeMod = 0x00000004,
+        BlendModeMod = 0x00000004,
 
         /// <summary>
         ///     The sdl blend factor mul sdl blend factor
         /// </summary>
-        SdlBlendModeMul = 0x00000008,
+        BlendModeMul = 0x00000008,
 
         /// <summary>
         ///     The sdl blend factor invalid sdl blend factor
         /// </summary>
-        SdlBlendModeInvalid = 0x7FFFFFFF
+        BlendModeInvalid = 0x7FFFFFFF,
+        
+        /// <summary>
+        /// The blend all blend mode
+        /// </summary>
+        BlendAll = BlendModeBlend | BlendModeAdd | BlendModeMod | BlendModeMul | BlendModeInvalid
     }
 }
