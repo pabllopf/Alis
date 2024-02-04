@@ -190,11 +190,5 @@ namespace Alis.Core.Ecs.Entity.Scene
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         public void Clear<T>() where T : IGameObject => GameObjects.Clear();
-
-        /// <summary>
-        ///     Clones this instance
-        /// </summary>
-        /// <returns>The object</returns>
-        public object Clone() => MemberwiseClone();
     }
 }

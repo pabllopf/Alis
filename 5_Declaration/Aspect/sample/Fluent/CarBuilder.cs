@@ -27,9 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 
-namespace Alis.Core.Aspect.Fluent.Sample
+namespace Alis.Core.Aspect.Sample.Fluent
 {
     /// <summary>
     /// The sample builder class

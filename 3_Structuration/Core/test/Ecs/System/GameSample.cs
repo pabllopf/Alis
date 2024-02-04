@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Car.cs
+//  File:GameTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,52 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
+using System.Collections.Generic;
+using Alis.Core.Ecs.System;
+using Alis.Core.Ecs.System.Manager;
 
-namespace Alis.Core.Aspect.Sample.Fluent
+namespace Alis.Core.Test.Ecs.System
 {
     /// <summary>
-    /// The car class
+    ///     The game test class
     /// </summary>
-    /// <seealso cref="IBuilder{CarBuilder}"/>
-    public class Car : IBuilder<CarBuilder>
+    /// <seealso cref="Game" />
+    internal class GameSample : Game
     {
         /// <summary>
-        /// Gets or sets the value of the name
+        ///     Initializes a new instance of the <see cref="GameSample" /> class
         /// </summary>
-        public string Name { get; set; }
-        /// <summary>
-        /// Gets or sets the value of the model
-        /// </summary>
-        public string Model { get; set; }
-        /// <summary>
-        /// Gets or sets the value of the color
-        /// </summary>
-        public string Color { get; set; }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Car"/> class
-        /// </summary>
-        /// <param name="name">The name</param>
-        /// <param name="model">The model</param>
-        /// <param name="color">The color</param>
-        public Car(string name, string model, string color)
+        public GameSample()
         {
-            Name = name;
-            Model = model;
-            Color = color;
+            Managers = new List<IManager>();
+            IsRunning = true;
         }
-
-        /// <summary>
-        /// Builders this instance
-        /// </summary>
-        /// <returns>The car builder</returns>
-        public CarBuilder Builder() => new CarBuilder();
-        
-        /// <summary>
-        /// Creates
-        /// </summary>
-        /// <returns>The car builder</returns>
-        public static CarBuilder Create() => new CarBuilder();
     }
 }

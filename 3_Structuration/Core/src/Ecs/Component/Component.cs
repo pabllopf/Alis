@@ -39,27 +39,27 @@ namespace Alis.Core.Ecs.Component
         /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
-        public bool IsEnable { get; set; }
+        public bool IsEnable { get; set; } = true;
 
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = "Component";
 
         /// <summary>
         ///     Gets or sets the value of the id
         /// </summary>
-        public string Id { get; set; }
+        public string Id { get; set; } = "0";
 
         /// <summary>
         ///     Gets or sets the value of the tag
         /// </summary>
-        public string Tag { get; set; }
+        public string Tag { get; set; } = "Untagged";
 
         /// <summary>
         ///     Gets or sets the value of the game object
         /// </summary>
-        public IGameObject GameObject { get; set; }
+        public IGameObject GameObject { get; set; } = new GameObject();
 
         /// <summary>
         ///     Ons the enable

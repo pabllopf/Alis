@@ -51,8 +51,8 @@ namespace Alis.Core.Ecs.Entity.GameObject
         /// <summary>
         ///     Gets or sets the value of the id
         /// </summary>
-        public string Id { get; set; }
-
+        public string Id { get; set; } = "0";
+ 
         /// <summary>
         ///     Gets or sets the value of the tag
         /// </summary>
