@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.System.Setting.General;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 
 namespace Alis.Core.Ecs.System.Setting.General
@@ -75,6 +76,6 @@ namespace Alis.Core.Ecs.System.Setting.General
         /// <summary>
         ///     Gets or sets the value of the icon
         /// </summary>
-        public string Icon { get; set; } = "";
+        public string Icon { get; set; } = AssetManager.Find("app.bmp");
     }
 }

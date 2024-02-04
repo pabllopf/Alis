@@ -58,7 +58,7 @@ namespace Alis.Sample.Pong
                         .Author("Pablo Perdomo Falcón")
                         .Description("Pong game")
                         .License("GNU General Public License v3.0")
-                        .Icon(AssetManager.Find("app.png"))
+                        .Icon(AssetManager.Find("app.bmp"))
                         .Build())
                     .Profile(profile => profile
                         .LogLevel(LogLevel.Critical)

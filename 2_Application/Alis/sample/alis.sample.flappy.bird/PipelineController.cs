@@ -33,6 +33,7 @@ using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Collider;
+using Alis.Core.Ecs.System;
 
 namespace Alis.Sample.Flappy.Bird
 {
@@ -60,7 +61,7 @@ namespace Alis.Sample.Flappy.Bird
         /// <summary>
         ///     The velocity
         /// </summary>
-        public static float Velocity = 10;
+        public static float Velocity = 3;
 
         /// <summary>
         ///     The is stop
@@ -96,7 +97,7 @@ namespace Alis.Sample.Flappy.Bird
             boxCollider = GameObject.Get<BoxCollider>();
             boxCollider.LinearVelocity = new Vector2(-Velocity, 0);
 
-            Velocity = 10;
+            Velocity = 3;
             factorVelocity = 1.1f;
 
             using (RandomNumberGenerator randomGenerator = RandomNumberGenerator.Create())
