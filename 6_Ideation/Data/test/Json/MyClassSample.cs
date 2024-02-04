@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>

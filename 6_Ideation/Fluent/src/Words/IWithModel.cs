@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:IWithModel.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,20 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Sample
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The program class
+    /// The with model interface
     /// </summary>
-    public static class Program
+    public interface IWithModel<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Main the args
+        /// Adds the model using the specified value
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            
-        }
+        /// <param name="value">The value</param>
+        /// <returns>The builder</returns>
+        TBuilder WithModel(TArgument value);
     }
 }

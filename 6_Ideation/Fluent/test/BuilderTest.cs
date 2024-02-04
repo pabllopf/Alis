@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:BuilderTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,20 +27,61 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Sample
+using Xunit;
+
+namespace Alis.Core.Aspect.Fluent.Test
 {
     /// <summary>
-    ///     The program class
+    /// The builder test class
     /// </summary>
-    public static class Program
+    public class BuilderTest
     {
         /// <summary>
-        ///     Main the args
+        /// Tests that builder returns expected value
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        [Fact]
+        public void Builder_ReturnsExpectedValue()
         {
-            
+            // Arrange
+            TestBuilder testBuilder = new TestBuilder();
+
+            // Act
+            string result = testBuilder.Builder();
+
+            // Assert
+            Assert.Equal("Test", result);
+        }
+
+        /// <summary>
+        /// Tests that builder does not return null
+        /// </summary>
+        [Fact]
+        public void Builder_DoesNotReturnNull()
+        {
+            // Arrange
+            TestBuilder testBuilder = new TestBuilder();
+
+            // Act
+            string result = testBuilder.Builder();
+
+            // Assert
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
+        /// Tests that builder returns correct type
+        /// </summary>
+        [Fact]
+        public void Builder_ReturnsCorrectType()
+        {
+            // Arrange
+            TestBuilder testBuilder = new TestBuilder();
+
+            // Act
+            string result = testBuilder.Builder();
+
+            // Assert
+            Assert.IsType<string>(result);
         }
     }
 }

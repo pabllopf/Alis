@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:IBuildTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,20 +27,61 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Sample
+using Xunit;
+
+namespace Alis.Core.Aspect.Fluent.Test
 {
     /// <summary>
-    ///     The program class
+    /// The build test class
     /// </summary>
-    public static class Program
+    public class BuildTest
     {
         /// <summary>
-        ///     Main the args
+        /// Tests that build returns expected value
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        [Fact]
+        public void Build_ReturnsExpectedValue()
         {
-            
+            // Arrange
+            TestBuild testBuild = new TestBuild();
+
+            // Act
+            string result = testBuild.Build();
+
+            // Assert
+            Assert.Equal("Test", result);
+        }
+
+        /// <summary>
+        /// Tests that build does not return null
+        /// </summary>
+        [Fact]
+        public void Build_DoesNotReturnNull()
+        {
+            // Arrange
+            TestBuild testBuild = new TestBuild();
+
+            // Act
+            string result = testBuild.Build();
+
+            // Assert
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
+        /// Tests that build returns correct type
+        /// </summary>
+        [Fact]
+        public void Build_ReturnsCorrectType()
+        {
+            // Arrange
+            TestBuild testBuild = new TestBuild();
+
+            // Act
+            string result = testBuild.Build();
+
+            // Assert
+            Assert.IsType<string>(result);
         }
     }
 }
