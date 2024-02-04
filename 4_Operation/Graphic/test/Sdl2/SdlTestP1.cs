@@ -35,6 +35,7 @@ using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
+using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.Core.Graphic.Test.Sdl2
 {
@@ -199,10 +200,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
             {
                 string nameAudioDevice = Sdl.GetAudioDeviceName(0, 0);
 
-                SdlAudioSpec spec = new SdlAudioSpec();
+                AudioSpec spec = new AudioSpec();
 
                 // Arrange
-                uint dev = Sdl.SdlOpenAudioDevice(nameAudioDevice, 0, ref spec, out SdlAudioSpec obtained, 0);
+                uint dev = Sdl.SdlOpenAudioDevice(nameAudioDevice, 0, ref spec, out AudioSpec obtained, 0);
 
                 //Assert 
                 Assert.NotEqual(0.0, dev);
@@ -364,7 +365,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             string file = AssetManager.Find("AudioSample.wav");
 
             // Act
-            IntPtr result = Sdl.LoadWav(file, out SdlAudioSpec _, out IntPtr audioBuf, out uint audioLen);
+            IntPtr result = Sdl.LoadWav(file, out AudioSpec _, out IntPtr audioBuf, out uint audioLen);
 
             // Assert
 
@@ -457,11 +458,11 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             string device = "dummy";
             int isCapture = 0;
-            SdlAudioSpec desired = new SdlAudioSpec();
+            AudioSpec desired = new AudioSpec();
             int allowedChanges = 0;
 
             // Act
-            uint result = Sdl.SdlOpenAudioDevice(device, isCapture, ref desired, out SdlAudioSpec _, allowedChanges);
+            uint result = Sdl.SdlOpenAudioDevice(device, isCapture, ref desired, out AudioSpec _, allowedChanges);
 
             // Assert
 
@@ -568,7 +569,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, initResult);
 
             // Act
-            SdlVersion result = Sdl.GetVersion();
+            Version result = Sdl.GetVersion();
 
             // Assert
             Assert.Equal(2, result.major);
@@ -936,7 +937,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, initResult);
 
             // Act
-            SdlVersion result = Sdl.GetVersion();
+            Version result = Sdl.GetVersion();
 
             // Assert
             Assert.Equal(2, result.major);
@@ -1249,10 +1250,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, initResult);
 
             // Act
-            SdlVersion result = Sdl.GetVersion();
+            Version result = Sdl.GetVersion();
 
             // Assert
-            Assert.Equal(new SdlVersion(2, 0, 18), result);
+            Assert.Equal(new Version(2, 0, 18), result);
 
             Sdl.Quit();
         }
@@ -1462,10 +1463,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, initResult);
 
             int displayIndex = 0;
-            SdlDisplayMode mode = new SdlDisplayMode();
+            DisplayMode mode = new DisplayMode();
 
             // Act
-            IntPtr result = Sdl.GetClosestDisplayMode(displayIndex, ref mode, out SdlDisplayMode _);
+            IntPtr result = Sdl.GetClosestDisplayMode(displayIndex, ref mode, out DisplayMode _);
 
             // Assert
             Assert.NotEqual(IntPtr.Zero, result);
@@ -1486,7 +1487,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int displayIndex = 0;
 
             // Act
-            int result = Sdl.GetCurrentDisplayMode(displayIndex, out SdlDisplayMode _);
+            int result = Sdl.GetCurrentDisplayMode(displayIndex, out DisplayMode _);
 
             // Assert
             Assert.True(result >= -1);
@@ -1526,7 +1527,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int displayIndex = 0;
 
             // Act
-            int result = Sdl.GetDesktopDisplayMode(displayIndex, out SdlDisplayMode _);
+            int result = Sdl.GetDesktopDisplayMode(displayIndex, out DisplayMode _);
 
             // Assert
             Assert.True(result >= -1);
@@ -1611,7 +1612,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int modeIndex = 0;
 
             // Act
-            int result = Sdl.GetDisplayMode(displayIndex, modeIndex, out SdlDisplayMode _);
+            int result = Sdl.GetDisplayMode(displayIndex, modeIndex, out DisplayMode _);
 
             // Assert
             Assert.True(result >= -1);
@@ -1968,7 +1969,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int isCapture = 0;
 
             // Act
-            int result = Sdl.SdlGetAudioDeviceSpec(index, isCapture, out SdlAudioSpec _);
+            int result = Sdl.SdlGetAudioDeviceSpec(index, isCapture, out AudioSpec _);
 
             // Assert
             Assert.True(result >= -1);
@@ -1988,11 +1989,11 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             string device = "Test Device";
             int isCapture = 0;
-            SdlAudioSpec desired = new SdlAudioSpec();
+            AudioSpec desired = new AudioSpec();
             int allowedChanges = 0;
 
             // Act
-            uint result = Sdl.SdlOpenAudioDevice(device, isCapture, ref desired, out SdlAudioSpec _, allowedChanges);
+            uint result = Sdl.SdlOpenAudioDevice(device, isCapture, ref desired, out AudioSpec _, allowedChanges);
 
             // Assert
             Assert.Equal(0.0, result);
@@ -2404,11 +2405,11 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             IntPtr device = IntPtr.Zero;
             int isCapture = 0;
-            SdlAudioSpec desired = new SdlAudioSpec();
+            AudioSpec desired = new AudioSpec();
             int allowedChanges = 0;
 
             // Act
-            uint result = Sdl.OpenAudioDevice(device, isCapture, ref desired, out SdlAudioSpec _, allowedChanges);
+            uint result = Sdl.OpenAudioDevice(device, isCapture, ref desired, out AudioSpec _, allowedChanges);
 
             // Assert
             Assert.True(result == 0 || result == 1 || result == 2);
@@ -2429,7 +2430,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr window = IntPtr.Zero;
 
             // Act
-            int result = Sdl.GetWindowDisplayMode(window, out SdlDisplayMode _);
+            int result = Sdl.GetWindowDisplayMode(window, out DisplayMode _);
 
             // Assert
             Assert.Equal(-1, result);
@@ -3352,7 +3353,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr window = IntPtr.Zero;
 
             // Act
-            int result = Sdl.GetWindowDisplayMode(window, out SdlDisplayMode _);
+            int result = Sdl.GetWindowDisplayMode(window, out DisplayMode _);
 
             // Assert
             Assert.True(result >= -1);

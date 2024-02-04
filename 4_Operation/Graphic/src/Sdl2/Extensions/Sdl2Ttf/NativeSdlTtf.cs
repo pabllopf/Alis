@@ -35,6 +35,7 @@ using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Memory.Attributes;
 using Alis.Core.Graphic.Properties;
 using Alis.Core.Graphic.Sdl2.Structs;
+using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
 {
@@ -175,7 +176,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Solid_Wrapped", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderUtf8SolidWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] SdlColor fg, [IsNotNull, IsNotZero] uint wrapLength);
+        internal static extern IntPtr InternalRenderUtf8SolidWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] Color fg, [IsNotNull, IsNotZero] uint wrapLength);
 
         /// <summary>
         ///     Internals the ttf render utf 8 shaded using the specified font
@@ -188,7 +189,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Shaded", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderUtf8Shaded([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] SdlColor fg, [IsNotNull] SdlColor bg);
+        internal static extern IntPtr InternalRenderUtf8Shaded([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] Color fg, [IsNotNull] Color bg);
 
         /// <summary>
         ///     Internals the ttf render utf 8 shaded wrapped using the specified font
@@ -202,7 +203,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Shaded_Wrapped", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderUtf8ShadedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] SdlColor fg, [IsNotNull] SdlColor bg, [IsNotNull, IsNotZero] uint wrapLength);
+        internal static extern IntPtr InternalRenderUtf8ShadedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] Color fg, [IsNotNull] Color bg, [IsNotNull, IsNotZero] uint wrapLength);
 
         /// <summary>
         ///     Internals the ttf render utf 8 blended wrapped using the specified font
@@ -215,7 +216,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Blended_Wrapped", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderUtf8BlendedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] SdlColor fg, [IsNotNull, IsNotZero] uint wrapped);
+        internal static extern IntPtr InternalRenderUtf8BlendedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] Color fg, [IsNotNull, IsNotZero] uint wrapped);
 
         /// <summary>
         ///     Ttf the measure unicode using the specified font
@@ -241,7 +242,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderText_Solid", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderTextSolid([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] SdlColor fg);
+        internal static extern IntPtr InternalRenderTextSolid([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] Color fg);
 
         /// <summary>
         ///     Internals the ttf render utf 8 solid using the specified font
@@ -253,7 +254,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Solid", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderUTF8Solid([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] SdlColor fg);
+        internal static extern IntPtr InternalRenderUTF8Solid([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] Color fg);
 
         /// <summary>
         ///     Ttf the render unicode solid using the specified font
@@ -265,7 +266,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUNICODE_Solid", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderUnicodeSolid([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] SdlColor fg);
+        internal static extern IntPtr InternalRenderUnicodeSolid([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] Color fg);
 
         /// <summary>
         ///     Ttf the glyph is provided using the specified font
@@ -329,7 +330,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderText_Solid_Wrapped", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderTextSolidWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, SdlColor fg, [IsNotNull, IsNotZero] uint wrapLength);
+        internal static extern IntPtr InternalRenderTextSolidWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, Color fg, [IsNotNull, IsNotZero] uint wrapLength);
 
         /// <summary>
         ///     Ttf the render unicode solid wrapped using the specified font
@@ -342,7 +343,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUNICODE_Solid_Wrapped", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderUnicodeSolidWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] SdlColor fg, [IsNotNull, IsNotZero] uint wrapLength);
+        internal static extern IntPtr InternalRenderUnicodeSolidWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] Color fg, [IsNotNull, IsNotZero] uint wrapLength);
 
         /// <summary>
         ///     Ttf the render glyph solid using the specified font
@@ -354,7 +355,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderGlyph_Solid", CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderGlyphSolid([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] ushort ch, [IsNotNull] SdlColor fg);
+        internal static extern IntPtr InternalRenderGlyphSolid([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] ushort ch, [IsNotNull] Color fg);
 
         /// <summary>
         ///     Ttf the render glyph 32 solid using the specified font
@@ -366,7 +367,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderGlyph32_Solid", CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderGlyph32Solid([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] uint ch, [IsNotNull] SdlColor fg);
+        internal static extern IntPtr InternalRenderGlyph32Solid([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] uint ch, [IsNotNull] Color fg);
 
         /// <summary>
         ///     Ttf the render text shaded using the specified font
@@ -379,7 +380,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderText_Shaded", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderTextShaded([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] SdlColor fg, [IsNotNull] SdlColor bg);
+        internal static extern IntPtr InternalRenderTextShaded([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] Color fg, [IsNotNull] Color bg);
 
         /// <summary>
         ///     Ttf the render unicode shaded using the specified font
@@ -392,7 +393,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUNICODE_Shaded", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderUnicodeShaded([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] SdlColor fg, [IsNotNull] SdlColor bg);
+        internal static extern IntPtr InternalRenderUnicodeShaded([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] Color fg, [IsNotNull] Color bg);
 
         /// <summary>
         ///     Ttf the render text shaded wrapped using the specified font
@@ -406,7 +407,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderText_Shaded_Wrapped", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderTextShadedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] SdlColor fg, SdlColor bg, [IsNotNull, IsNotZero] uint wrapLength);
+        internal static extern IntPtr InternalRenderTextShadedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] Color fg, Color bg, [IsNotNull, IsNotZero] uint wrapLength);
 
         /// <summary>
         ///     Ttf the render unicode shaded wrapped using the specified font
@@ -420,7 +421,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUNICODE_Shaded_Wrapped", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderUnicodeShadedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] SdlColor fg, [IsNotNull] SdlColor bg, [IsNotNull, IsNotZero] uint wrapLength);
+        internal static extern IntPtr InternalRenderUnicodeShadedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] Color fg, [IsNotNull] Color bg, [IsNotNull, IsNotZero] uint wrapLength);
 
         /// <summary>
         ///     Ttf the render glyph shaded using the specified font
@@ -433,7 +434,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderGlyph_Shaded", CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderGlyphShaded([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] ushort ch, [IsNotNull] SdlColor fg, [IsNotNull] SdlColor bg);
+        internal static extern IntPtr InternalRenderGlyphShaded([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] ushort ch, [IsNotNull] Color fg, [IsNotNull] Color bg);
 
         /// <summary>
         ///     Ttf the render glyph 32 shaded using the specified font
@@ -446,7 +447,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderGlyph32_Shaded", CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderGlyph32Shaded([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] uint ch, [IsNotNull] SdlColor fg, [IsNotNull] SdlColor bg);
+        internal static extern IntPtr InternalRenderGlyph32Shaded([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] uint ch, [IsNotNull] Color fg, [IsNotNull] Color bg);
 
         /// <summary>
         ///     Ttf the render text blended using the specified font
@@ -458,7 +459,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderText_Blended", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderTextBlended([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] SdlColor fg);
+        internal static extern IntPtr InternalRenderTextBlended([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] Color fg);
 
         /// <summary>
         ///     Internals the ttf render utf 8 blended using the specified font
@@ -470,7 +471,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Blended", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderUtf8Blended([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] SdlColor fg);
+        internal static extern IntPtr InternalRenderUtf8Blended([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] Color fg);
 
         /// <summary>
         ///     Ttf the render unicode blended using the specified font
@@ -482,7 +483,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUNICODE_Blended", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderUnicodeBlended([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] SdlColor fg);
+        internal static extern IntPtr InternalRenderUnicodeBlended([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] Color fg);
 
         /// <summary>
         ///     Ttf the render text blended wrapped using the specified font
@@ -495,7 +496,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderText_Blended_Wrapped", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderTextBlendedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] SdlColor fg, [IsNotNull, IsNotZero] uint wrapped);
+        internal static extern IntPtr InternalRenderTextBlendedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] Color fg, [IsNotNull, IsNotZero] uint wrapped);
 
         /// <summary>
         ///     Ttf the render unicode blended wrapped using the specified font
@@ -508,7 +509,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUNICODE_Blended_Wrapped", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderUnicodeBlendedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] SdlColor fg, [IsNotNull, IsNotZero] uint wrapped);
+        internal static extern IntPtr InternalRenderUnicodeBlendedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text, [IsNotNull] Color fg, [IsNotNull, IsNotZero] uint wrapped);
 
         /// <summary>
         ///     Ttf the render glyph blended using the specified font
@@ -520,7 +521,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderGlyph_Blended", CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderGlyphBlended([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] ushort ch, [IsNotNull] SdlColor fg);
+        internal static extern IntPtr InternalRenderGlyphBlended([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] ushort ch, [IsNotNull] Color fg);
 
         /// <summary>
         ///     Ttf the render glyph 32 blended using the specified font
@@ -532,7 +533,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderGlyph32_Blended", CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalRenderGlyph32Blended([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] uint ch, [IsNotNull] SdlColor fg);
+        internal static extern IntPtr InternalRenderGlyph32Blended([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] uint ch, [IsNotNull] Color fg);
 
         /// <summary>
         ///     Ttf the set direction using the specified direction
@@ -779,6 +780,6 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         ///     Internals the get ttf version
         /// </summary>
         /// <returns>The sdl version</returns>
-        public static SdlVersion InternalGetTtfVersion() => new SdlVersion(2, 0, 16);
+        public static Version InternalGetTtfVersion() => new Version(2, 0, 16);
     }
 }

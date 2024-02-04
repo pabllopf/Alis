@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlTextInputEvent.cs
+//  File:SdlJoyBallEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,60 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Graphic.Sdl2;
+using System.Runtime.InteropServices;
 using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Structs;
-using Xunit;
 
-namespace Alis.Core.Graphic.Test.Sdl2.Structs
+namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl text input event test class
+    ///     The sdl joy ball event
     /// </summary>
-    public class SdlTextInputEventTest
+    [StructLayout(LayoutKind.Sequential)]
+    public struct JoyBallEvent
     {
         /// <summary>
-        ///     Tests that text valid call returns expected byte array
+        ///     The type
         /// </summary>
-        [Fact]
-        public void Text_ValidCall_ReturnsExpectedByteArray()
-        {
-            // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
-            Assert.Equal(0, initResult);
+        public readonly EventType type;
 
-            TextInputEvent textInputEvent = new TextInputEvent();
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public readonly uint timestamp;
 
-            // Act
-            byte[] result = textInputEvent.Text;
+        /// <summary>
+        ///     The which
+        /// </summary>
+        public readonly int which;
 
-            // Assert
-            Assert.NotEqual(new byte[] {0}, result);
+        /// <summary>
+        ///     The ball
+        /// </summary>
+        public readonly byte ball;
 
-            Sdl.Quit();
-        }
+        /// <summary>
+        ///     The padding
+        /// </summary>
+        private readonly byte padding1;
+
+        /// <summary>
+        ///     The padding
+        /// </summary>
+        private readonly byte padding2;
+
+        /// <summary>
+        ///     The padding
+        /// </summary>
+        private readonly byte padding3;
+
+        /// <summary>
+        ///     The x rel
+        /// </summary>
+        public readonly short xRel;
+
+        /// <summary>
+        ///     The y rel
+        /// </summary>
+        public readonly short yRel;
     }
 }

@@ -320,7 +320,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_LoadWAV_RW", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalLoadWAV_RW([IsNotNull] IntPtr src, [IsNotNull] int freeSrc, out SdlAudioSpec spec, out IntPtr audioBuf, out uint audioLen);
+        internal static extern IntPtr InternalLoadWAV_RW([IsNotNull] IntPtr src, [IsNotNull] int freeSrc, out AudioSpec spec, out IntPtr audioBuf, out uint audioLen);
 
         /// <summary>
         ///     Sdl the lock audio device using the specified dev
@@ -381,7 +381,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_OpenAudioDevice", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern uint InternalOpenAudioDevice([IsNotNull] IntPtr device, [IsNotNull] int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, [IsNotNull] int allowedChanges);
+        internal static extern uint InternalOpenAudioDevice([IsNotNull] IntPtr device, [IsNotNull] int isCapture, ref AudioSpec desired, out AudioSpec obtained, [IsNotNull] int allowedChanges);
 
         /// <summary>
         ///     Internals the sdl open audio device using the specified device
@@ -395,7 +395,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_OpenAudioDevice", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern uint InternalOpenAudioDevice([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string device, [IsNotNull] int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, [IsNotNull] int allowedChanges);
+        internal static extern uint InternalOpenAudioDevice([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string device, [IsNotNull] int isCapture, ref AudioSpec desired, out AudioSpec obtained, [IsNotNull] int allowedChanges);
 
         /// <summary>
         ///     Sdl the pause audio using the specified pause on
@@ -502,7 +502,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetAudioDeviceSpec", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalGetAudioDeviceSpec([IsNotNull] int index, [IsNotNull] int isCapture, out SdlAudioSpec spec);
+        internal static extern int InternalGetAudioDeviceSpec([IsNotNull] int index, [IsNotNull] int isCapture, out AudioSpec spec);
 
         /// <summary>
         ///     Internals the sdl set clipboard text using the specified text
@@ -526,7 +526,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_PeepEvents", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalPeepEvents([Out] SdlEvent[] events, [IsNotNull] int numEvents, EventAction action, EventType minType, EventType maxType);
+        internal static extern int InternalPeepEvents([Out] Event[] events, [IsNotNull] int numEvents, EventAction action, EventType minType, EventType maxType);
 
         /// <summary>
         ///     Sdl the has event using the specified type
@@ -566,7 +566,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_PollEvent", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalPollEvent(out SdlEvent sdlEvent);
+        internal static extern int InternalPollEvent(out Event sdlEvent);
 
         /// <summary>
         ///     Sdl the push event using the specified  event
@@ -576,7 +576,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_PushEvent", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalPushEvent(ref SdlEvent sdlEvent);
+        internal static extern int InternalPushEvent(ref Event sdlEvent);
 
         /// <summary>
         ///     Sdl the set event filter using the specified filter
@@ -1674,7 +1674,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetClosestDisplayMode", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalGetClosestDisplayMode([IsNotNull] int displayIndex, ref SdlDisplayMode mode, out SdlDisplayMode closest);
+        internal static extern IntPtr InternalGetClosestDisplayMode([IsNotNull] int displayIndex, ref DisplayMode mode, out DisplayMode closest);
 
         /// <summary>
         ///     Sdl the get current display mode using the specified display index
@@ -1685,7 +1685,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetCurrentDisplayMode", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalGetCurrentDisplayMode([IsNotNull] int displayIndex, out SdlDisplayMode mode);
+        internal static extern int InternalGetCurrentDisplayMode([IsNotNull] int displayIndex, out DisplayMode mode);
 
         /// <summary>
         ///     Internals the sdl get current video driver
@@ -1705,7 +1705,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetDesktopDisplayMode", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalGetDesktopDisplayMode([IsNotNull] int displayIndex, out SdlDisplayMode mode);
+        internal static extern int InternalGetDesktopDisplayMode([IsNotNull] int displayIndex, out DisplayMode mode);
 
         /// <summary>
         ///     Internals the sdl get display name using the specified index
@@ -1751,7 +1751,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetDisplayMode", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalGetDisplayMode([IsNotNull] int displayIndex, [IsNotNull] int modeIndex, out SdlDisplayMode mode);
+        internal static extern int InternalGetDisplayMode([IsNotNull] int displayIndex, [IsNotNull] int modeIndex, out DisplayMode mode);
 
         /// <summary>
         ///     Sdl the get display usable bounds using the specified display index
@@ -1885,7 +1885,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowDisplayMode", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalGetWindowDisplayMode([IsNotNull] IntPtr window, out SdlDisplayMode mode);
+        internal static extern int InternalGetWindowDisplayMode([IsNotNull] IntPtr window, out DisplayMode mode);
 
         /// <summary>
         ///     Sdl the get window flags using the specified window
@@ -2212,7 +2212,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_SetPaletteColors", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalSetPaletteColors([IsNotNull] IntPtr palette, [In] SdlColor[] colors, [IsNotNull] int firstColor, [IsNotNull] int nColors);
+        internal static extern int InternalSetPaletteColors([IsNotNull] IntPtr palette, [In] Color[] colors, [IsNotNull] int firstColor, [IsNotNull] int nColors);
 
         /// <summary>
         ///     Sdl the set pixel format palette using the specified format
@@ -2943,7 +2943,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerTypeForIndex", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlGameControllerType InternalGameControllerTypeForIndex([IsNotNull] int joystickIndex);
+        internal static extern GameControllerType InternalGameControllerTypeForIndex([IsNotNull] int joystickIndex);
 
         /// <summary>
         ///     Sdl the game controller get type using the specified game controller
@@ -2953,7 +2953,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetType", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlGameControllerType InternalGameControllerGetType([IsNotNull] IntPtr gameController);
+        internal static extern GameControllerType InternalGameControllerGetType([IsNotNull] IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller from player index using the specified player index
@@ -3276,7 +3276,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowDisplayMode", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalSetWindowDisplayMode([IsNotNull] IntPtr window, ref SdlDisplayMode mode);
+        internal static extern int InternalSetWindowDisplayMode([IsNotNull] IntPtr window, ref DisplayMode mode);
 
         /// <summary>
         ///     Sdl the set window display mode using the specified window
@@ -3703,7 +3703,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetRenderDriverInfo", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalGetRenderDriverInfo([IsNotNull] int index, out SdlRendererInfo info);
+        internal static extern int InternalGetRenderDriverInfo([IsNotNull] int index, out RendererInfo info);
 
         /// <summary>
         ///     Sdl the get renderer using the specified window
@@ -3724,7 +3724,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetRendererInfo", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalGetRendererInfo([IsNotNull] IntPtr renderer, out SdlRendererInfo info);
+        internal static extern int InternalGetRendererInfo([IsNotNull] IntPtr renderer, out RendererInfo info);
 
         /// <summary>
         ///     Sdl the get renderer output size using the specified renderer
@@ -4326,7 +4326,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderGeometry", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderGeometry([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [In] SdlVertex[] vertices, [IsNotNull] int numVertices, [In] [IsNotNull] int[] indices, [IsNotNull] int numIndices);
+        internal static extern int InternalRenderGeometry([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [In] Vertex[] vertices, [IsNotNull] int numVertices, [In] [IsNotNull] int[] indices, [IsNotNull] int numIndices);
 
         /// <summary>
         ///     Sdl the render draw point f using the specified renderer

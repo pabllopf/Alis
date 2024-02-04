@@ -44,6 +44,8 @@ using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
 using Alis.Core.Graphic.Sdl2.Structs;
+using Color = Alis.Core.Aspect.Math.Definition.Color;
+using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.Core.Ecs.System.Manager.Graphic
 {
@@ -314,7 +316,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             }
 
             // GET VERSION SDL2
-            SdlVersion version = Sdl.GetVersion();
+            Version version = Sdl.GetVersion();
             Console.WriteLine(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
 
             /*
@@ -335,17 +337,17 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
             {
-                Sdl.SetHint(SdlHint.HintRenderDriver, "direct3d");
+                Sdl.SetHint(Hint.HintRenderDriver, "direct3d");
             }
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.OSX)
             {
-                Sdl.SetHint(SdlHint.HintRenderDriver, "opengl");
+                Sdl.SetHint(Hint.HintRenderDriver, "opengl");
             }
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Linux)
             {
-                Sdl.SetHint(SdlHint.HintRenderDriver, "opengl");
+                Sdl.SetHint(Hint.HintRenderDriver, "opengl");
             }
 
 
@@ -396,7 +398,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             }
 
             // GET RENDERER INFO
-            Sdl.GetRendererInfo(Renderer, out SdlRendererInfo rendererInfo);
+            Sdl.GetRendererInfo(Renderer, out RendererInfo rendererInfo);
             Console.WriteLine($"Renderer Name: {rendererInfo.GetName()} \n" +
                               $"Renderer Flags: {rendererInfo.flags} \n" +
                               $"Max Texture Width: {rendererInfo.maxTextureWidth} \n" +
@@ -431,12 +433,12 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             for (int i = 0; i < numOfTypeDisplaysModes; ++i)
             {
-                Sdl.GetDisplayMode(displayIndex, i, out SdlDisplayMode displayMode);
+                Sdl.GetDisplayMode(displayIndex, i, out DisplayMode displayMode);
                 Console.WriteLine($"Display {displayIndex} Mode [{i}]: {displayMode.format}, {displayMode.w}, {displayMode.h}, {displayMode.refresh_rate}");
             }
 
             // SET DISPLAY MODE
-            Sdl.GetDisplayMode(displayIndex, 0, out SdlDisplayMode displayMode2);
+            Sdl.GetDisplayMode(displayIndex, 0, out DisplayMode displayMode2);
             Console.WriteLine($"Display {displayIndex} SELECTED Mode: {displayMode2.format}, {displayMode2.w}, {displayMode2.h}, {displayMode2.refresh_rate}");
             Sdl.SetWindowDisplayMode(_window, ref displayMode2);
 

@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// <summary>
         ///     The sdl event
         /// </summary>
-        private static SdlEvent _sdlEvent;
+        private static Event _sdlEvent;
 
         /// <summary>
         ///     The sdl game controller axis

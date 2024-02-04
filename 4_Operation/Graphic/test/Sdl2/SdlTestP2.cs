@@ -969,7 +969,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
-            SdlEvent[] events = new SdlEvent[10];
+            Event[] events = new Event[10];
             int numEvents = 10;
             EventAction action = EventAction.SdlAddEvent;
             EventType minType = EventType.SdlFirstEvent;
@@ -1574,11 +1574,11 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int joystickIndex = 0;
 
             // Act
-            SdlGameControllerType result = Sdl.GameControllerTypeForIndex(joystickIndex);
+            GameControllerType result = Sdl.GameControllerTypeForIndex(joystickIndex);
 
             // Assert
 
-            Assert.Equal(SdlGameControllerType.SdlControllerTypeUnknown, result);
+            Assert.Equal(GameControllerType.SdlControllerTypeUnknown, result);
 
             // Cleanup
             Sdl.Quit();
@@ -1596,11 +1596,11 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr gameController = IntPtr.Zero;
 
             // Act
-            SdlGameControllerType result = Sdl.GameControllerGetType(gameController);
+            GameControllerType result = Sdl.GameControllerGetType(gameController);
 
             // Assert
 
-            Assert.Equal(SdlGameControllerType.SdlControllerTypeUnknown, result);
+            Assert.Equal(GameControllerType.SdlControllerTypeUnknown, result);
 
             // Cleanup
             Sdl.Quit();
@@ -2614,7 +2614,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
-            SdlEvent sdlEvent = new SdlEvent(); // Replace with the desired SdlEvent
+            Event sdlEvent = new Event(); // Replace with the desired SdlEvent
 
             // Act
             int result = Sdl.PushEvent(ref sdlEvent);
@@ -2835,7 +2835,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, initResult);
 
             IntPtr palette = IntPtr.Zero; // Replace with the desired palette
-            SdlColor[] colors = new SdlColor[256]; // Replace with the desired colors
+            Color[] colors = new Color[256]; // Replace with the desired colors
             int firstColor = 0, nColors = 256; // Replace with the desired first color and number of colors
 
             // Act

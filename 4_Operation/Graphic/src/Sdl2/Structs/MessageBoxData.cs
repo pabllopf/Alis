@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlTextInputEvent.cs
+//  File:SdlMessageBoxData.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Graphic.Sdl2;
+using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Structs;
-using Xunit;
 
-namespace Alis.Core.Graphic.Test.Sdl2.Structs
+namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl text input event test class
+    ///     The sdl message box data
     /// </summary>
-    public class SdlTextInputEventTest
+    [StructLayout(LayoutKind.Sequential)]
+    public struct MessageBoxData
     {
         /// <summary>
-        ///     Tests that text valid call returns expected byte array
+        ///     The flags
         /// </summary>
-        [Fact]
-        public void Text_ValidCall_ReturnsExpectedByteArray()
-        {
-            // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
-            Assert.Equal(0, initResult);
+        public MessageBoxFlags flags;
 
-            TextInputEvent textInputEvent = new TextInputEvent();
+        /// <summary>
+        ///     The window
+        /// </summary>
+        public IntPtr window;
 
-            // Act
-            byte[] result = textInputEvent.Text;
+        /// <summary>
+        ///     The title
+        /// </summary>
+        public string title;
 
-            // Assert
-            Assert.NotEqual(new byte[] {0}, result);
+        /// <summary>
+        ///     The message
+        /// </summary>
+        public string message;
 
-            Sdl.Quit();
-        }
+        /// <summary>
+        ///     The num buttons
+        /// </summary>
+        public int numButtons;
+
+        /// <summary>
+        ///     The buttons
+        /// </summary>
+        public MessageBoxButtonData[] buttons;
+
+        /// <summary>
+        ///     The color scheme
+        /// </summary>
+        public MessageBoxColorScheme colorScheme;
     }
 }

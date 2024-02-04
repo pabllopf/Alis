@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlTextInputEvent.cs
+//  File:SdlControllerTouchpadEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,54 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Structs;
-using Xunit;
+using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.Test.Sdl2.Structs
+namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl text input event test class
+    ///     The sdl controller touch pad event
     /// </summary>
-    public class SdlTextInputEventTest
+    [StructLayout(LayoutKind.Sequential)]
+    public struct ControllerTouchpadEvent
     {
         /// <summary>
-        ///     Tests that text valid call returns expected byte array
+        ///     The type
         /// </summary>
-        [Fact]
-        public void Text_ValidCall_ReturnsExpectedByteArray()
-        {
-            // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
-            Assert.Equal(0, initResult);
+        public readonly uint type;
 
-            TextInputEvent textInputEvent = new TextInputEvent();
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public readonly uint timestamp;
 
-            // Act
-            byte[] result = textInputEvent.Text;
+        /// <summary>
+        ///     The which SDL_JoystickID
+        /// </summary>
+        public readonly int which;
 
-            // Assert
-            Assert.NotEqual(new byte[] {0}, result);
+        /// <summary>
+        ///     The touchpad
+        /// </summary>
+        public readonly int touchpad;
 
-            Sdl.Quit();
-        }
+        /// <summary>
+        ///     The finger
+        /// </summary>
+        public readonly int finger;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public readonly float x;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public readonly float y;
+
+        /// <summary>
+        ///     The pressure
+        /// </summary>
+        public readonly float pressure;
     }
 }

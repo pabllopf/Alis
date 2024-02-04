@@ -231,11 +231,11 @@ namespace Alis.Core.Graphic.Test.Sdl2
             GameControllerAxis axis = GameControllerAxis.SdlControllerAxisInvalid;
 
             // Act
-            SdlGameControllerButtonBind result = Sdl.GameControllerGetBindForAxis(gameController, axis);
+            GameControllerButtonBind result = Sdl.GameControllerGetBindForAxis(gameController, axis);
 
             // Assert
 
-            Assert.Equal(default(SdlGameControllerButtonBind), result);
+            Assert.Equal(default(GameControllerButtonBind), result);
 
             // Cleanup
             Sdl.Quit();
@@ -320,10 +320,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
             GameControllerButton button = GameControllerButton.SdlControllerButtonInvalid;
 
             // Act
-            SdlGameControllerButtonBind result = Sdl.GameControllerGetBindForButton(gameController, button);
+            GameControllerButtonBind result = Sdl.GameControllerGetBindForButton(gameController, button);
 
             // Assert
-            Assert.Equal(default(SdlGameControllerButtonBind), result);
+            Assert.Equal(default(GameControllerButtonBind), result);
 
             // Cleanup
             Sdl.Quit();
@@ -2876,7 +2876,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
-            SdlEvent sdlEvent = new SdlEvent(); // Replace with the desired SdlEvent
+            Event sdlEvent = new Event(); // Replace with the desired SdlEvent
 
             // Act
             int result = Sdl.PushEvent(ref sdlEvent);

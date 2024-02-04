@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlTextInputEvent.cs
+//  File:SdlPalette.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,35 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Structs;
-using Xunit;
+using System;
+using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.Test.Sdl2.Structs
+namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl text input event test class
+    ///     The sdl palette
     /// </summary>
-    public class SdlTextInputEventTest
+    [StructLayout(LayoutKind.Sequential)]
+    public struct Palette
     {
         /// <summary>
-        ///     Tests that text valid call returns expected byte array
+        ///     The n colors
         /// </summary>
-        [Fact]
-        public void Text_ValidCall_ReturnsExpectedByteArray()
-        {
-            // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
-            Assert.Equal(0, initResult);
+        public readonly int nColors;
 
-            TextInputEvent textInputEvent = new TextInputEvent();
+        /// <summary>
+        ///     The colors
+        /// </summary>
+        public IntPtr colors;
 
-            // Act
-            byte[] result = textInputEvent.Text;
+        /// <summary>
+        ///     The version
+        /// </summary>
+        public readonly int version;
 
-            // Assert
-            Assert.NotEqual(new byte[] {0}, result);
-
-            Sdl.Quit();
-        }
+        /// <summary>
+        ///     The ref count
+        /// </summary>
+        public readonly int refCount;
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlTextInputEvent.cs
+//  File:SdlColor.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,49 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Structs;
-using Xunit;
+using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.Test.Sdl2.Structs
+namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl text input event test class
+    ///     The sdl color
     /// </summary>
-    public class SdlTextInputEventTest
+    [StructLayout(LayoutKind.Sequential)]
+    public struct Color
     {
         /// <summary>
-        ///     Tests that text valid call returns expected byte array
+        ///     The
         /// </summary>
-        [Fact]
-        public void Text_ValidCall_ReturnsExpectedByteArray()
+        public readonly byte r;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public readonly byte g;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public readonly byte b;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public readonly byte a;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Color" /> class
+        /// </summary>
+        /// <param name="r">The </param>
+        /// <param name="g">The </param>
+        /// <param name="b">The </param>
+        /// <param name="a">The </param>
+        public Color(byte r, byte g, byte b, byte a)
         {
-            // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
-            Assert.Equal(0, initResult);
-
-            TextInputEvent textInputEvent = new TextInputEvent();
-
-            // Act
-            byte[] result = textInputEvent.Text;
-
-            // Assert
-            Assert.NotEqual(new byte[] {0}, result);
-
-            Sdl.Quit();
+            this.r = r;
+            this.g = g;
+            this.b = b;
+            this.a = a;
         }
     }
 }
