@@ -42,6 +42,15 @@ namespace Alis.Core.Aspect.Fluent.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            Car sampleCar = Car
+                .Create()
+                    .WithName("Ferrari")
+                    .WithModel("F8")
+                    .WithColor("Red")
+                .Build();
+            
+            Console.WriteLine($" Car: Name={sampleCar.Name} Model={sampleCar.Model} Color={sampleCar.Color}");
+            
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:TestBuild.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,20 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Sample
+namespace Alis.Core.Aspect.Fluent.Test
 {
     /// <summary>
-    ///     The program class
+    /// The test build class
     /// </summary>
-    public static class Program
+    /// <seealso cref="IBuild{string}"/>
+    internal class TestBuild : IBuild<string>
     {
         /// <summary>
-        ///     Main the args
+        /// Builds this instance
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        /// <returns>The string</returns>
+        public string Build()
         {
-            
+            return "Test";
         }
     }
 }

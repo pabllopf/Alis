@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DefaultTest.cs
+//  File:TestBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
-
 namespace Alis.Core.Aspect.Fluent.Test
 {
     /// <summary>
-    ///     The default test class
+    /// The test builder class
     /// </summary>
-    public class DefaultTest
+    /// <seealso cref="IBuilder{string}"/>
+    internal class TestBuilder : IBuilder<string>
     {
         /// <summary>
-        ///     Tests that test
+        /// Builders this instance
         /// </summary>
-        [Fact]
-        public void Test()
+        /// <returns>The string</returns>
+        public string Builder()
         {
-            Assert.True(true);
+            return "Test";
         }
     }
 }
