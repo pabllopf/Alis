@@ -74,7 +74,7 @@ namespace Alis.Sample.Flappy.Bird
         {
             if (key == SdlKeycode.SdlkSpace)
             {
-                boxCollider.Body.LinearVelocity = new Vector2(0, -17f);
+                boxCollider.Body.LinearVelocity = new Vector2(0, -8f);
                 Console.WriteLine("Go up!");
             }
         }

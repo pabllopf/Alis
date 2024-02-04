@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math;
 using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.System;
 using Vector2 = Alis.Core.Aspect.Math.Vector.Vector2;
 
 namespace Alis.Sample.Flappy.Bird
@@ -42,7 +43,12 @@ namespace Alis.Sample.Flappy.Bird
         /// <summary>
         ///     The range movement
         /// </summary>
-        private const float RangeMovement = 8.0f;
+        private const float RangeMovement = 10.0f;
+        
+        /// <summary>
+        /// The velocity
+        /// </summary>
+        private const float Velocity = 55f;
 
         /// <summary>
         ///     The default position
@@ -87,7 +93,8 @@ namespace Alis.Sample.Flappy.Bird
 
             if (goUp && !goDown)
             {
-                newPosition = new Vector2(x, y - 0.05f);
+                float displace = Velocity * Game.TimeManager.DeltaTime;
+                newPosition = new Vector2(x, y - displace);
                 Transform transform = new Transform
                 {
                     Position = newPosition,
@@ -99,7 +106,8 @@ namespace Alis.Sample.Flappy.Bird
             }
             else if (goDown && !goUp)
             {
-                newPosition = new Vector2(x, y + 0.05f);
+                float displace = Velocity * Game.TimeManager.DeltaTime;
+                newPosition = new Vector2(x, y + displace);
                 Transform transform = new Transform
                 {
                     Position = newPosition,
