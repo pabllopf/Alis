@@ -45,6 +45,9 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         private float xOld;
         
+        /// <summary>
+        /// The velocity
+        /// </summary>
         private const float Velocity = 70.0f;
 
         /// <summary>
