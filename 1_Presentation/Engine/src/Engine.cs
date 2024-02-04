@@ -63,7 +63,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The vertex shader
         /// </summary>
-        public static readonly string VertexShader = @"
+        private static readonly string VertexShader = @"
 			#version 330
 			
 			precision mediump float;
@@ -84,7 +84,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The fragment shader
         /// </summary>
-        public static readonly string FragmentShader = @"
+        private static readonly string FragmentShader = @"
 			#version 330
 			
 			precision mediump float;
@@ -201,8 +201,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     Initializes a new instance of the <see cref="Engine" /> class
         /// </summary>
-        /// <param name="args">The args</param>
-        public Engine(string[] args) => windows = new List<IWindow>
+        public Engine() => windows = new List<IWindow>
         {
             new ConsoleWindow(),
             new GameWindow(),
@@ -445,8 +444,8 @@ namespace Alis.App.Engine
 
                 ImGui.PopStyleVar(3);
 
-                uint dockspaceId = ImGui.GetId("MyDockSpace");
-                ImGui.DockSpace(dockspaceId, sizeDock);
+                uint dockSpaceId = ImGui.GetId("MyDockSpace");
+                ImGui.DockSpace(dockSpaceId, sizeDock);
 
                 if (ImGui.BeginMenuBar())
                 {
@@ -535,7 +534,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     Shows the demos
         /// </summary>
-        public void ShowDemos()
+        private void ShowDemos()
         {
             ImGui.ShowDemoWindow();
 
@@ -569,31 +568,31 @@ namespace Alis.App.Engine
         ///     Processes the event using the specified evt
         /// </summary>
         /// <param name="evt">The evt</param>
-        public void ProcessEvent(SdlEvent evt)
+        private void ProcessEvent(SdlEvent evt)
         {
-            ImGuiIoPtr io = ImGui.GetIo();
+            ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
             switch (evt.type)
             {
                 case EventType.SdlMousewheel:
                 {
                     if (evt.wheel.x > 0)
                     {
-                        io.MouseWheelH += 1;
+                        imGuiIoPtr.MouseWheelH += 1;
                     }
 
                     if (evt.wheel.x < 0)
                     {
-                        io.MouseWheelH -= 1;
+                        imGuiIoPtr.MouseWheelH -= 1;
                     }
 
                     if (evt.wheel.y > 0)
                     {
-                        io.MouseWheel += 1;
+                        imGuiIoPtr.MouseWheel += 1;
                     }
 
                     if (evt.wheel.y < 0)
                     {
-                        io.MouseWheel -= 1;
+                        imGuiIoPtr.MouseWheel -= 1;
                     }
 
                     return;
@@ -620,19 +619,19 @@ namespace Alis.App.Engine
                 case EventType.SdlTextInput:
                 {
                     string str = Encoding.UTF8.GetString(evt.text.Text);
-                    io.AddInputCharactersUtf8(str);
+                    imGuiIoPtr.AddInputCharactersUtf8(str);
                     return;
                 }
                 case EventType.SdlKeydown:
                 case EventType.SdlKeyup:
                 {
                     SdlScancode key = evt.key.keySym.scancode;
-                    io.KeysDown[(int) key] = evt.type == EventType.SdlKeydown;
-                    Console.WriteLine("io.KeysDown[" + key + "] = " + evt.type + io.KeysDown[(int) key]);
-                    io.KeyShift = (Sdl.GetModState() & KeyMod.KModShift) != 0;
-                    io.KeyCtrl = (Sdl.GetModState() & KeyMod.KModCtrl) != 0;
-                    io.KeyAlt = (Sdl.GetModState() & KeyMod.KModAlt) != 0;
-                    io.KeySuper = (Sdl.GetModState() & KeyMod.KModGui) != 0;
+                    imGuiIoPtr.KeysDown[(int) key] = evt.type == EventType.SdlKeydown;
+                    Console.WriteLine("io.KeysDown[" + key + "] = " + evt.type + imGuiIoPtr.KeysDown[(int) key]);
+                    imGuiIoPtr.KeyShift = (Sdl.GetModState() & KeyMod.KModShift) != 0;
+                    imGuiIoPtr.KeyCtrl = (Sdl.GetModState() & KeyMod.KModCtrl) != 0;
+                    imGuiIoPtr.KeyAlt = (Sdl.GetModState() & KeyMod.KModAlt) != 0;
+                    imGuiIoPtr.KeySuper = (Sdl.GetModState() & KeyMod.KModGui) != 0;
                     break;
                 }
             }
@@ -643,25 +642,25 @@ namespace Alis.App.Engine
         /// </summary>
         private void UpdateMousePosAndButtons()
         {
-            ImGuiIoPtr io = ImGui.GetIo();
+            ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
 
             // Set OS mouse position if requested (rarely used, only when ImGuiConfigFlags_NavEnableSetMousePos is enabled by user)
-            if (io.WantSetMousePos)
+            if (imGuiIoPtr.WantSetMousePos)
             {
-                Sdl.WarpMouseInWindow(_window, (int) io.MousePos.X, (int) io.MousePos.Y);
+                Sdl.WarpMouseInWindow(_window, (int) imGuiIoPtr.MousePos.X, (int) imGuiIoPtr.MousePos.Y);
             }
             else
             {
-                io.MousePos = new Vector2(float.MinValue, float.MinValue);
+                imGuiIoPtr.MousePos = new Vector2(float.MinValue, float.MinValue);
             }
 
             uint mouseButtons = Sdl.GetMouseStateOutXAndY(out int mx, out int my);
-            io.MouseDown[0] =
+            imGuiIoPtr.MouseDown[0] =
                 _mousePressed[0] ||
                 (mouseButtons & Sdl.Button(Sdl.ButtonLeft)) !=
                 0; // If a mouse press event came, always pass it as "mouse held this frame", so we don't miss click-release events that are shorter than 1 frame.
-            io.MouseDown[1] = _mousePressed[1] || (mouseButtons & Sdl.Button(Sdl.ButtonRight)) != 0;
-            io.MouseDown[2] = _mousePressed[2] || (mouseButtons & Sdl.Button(Sdl.ButtonMiddle)) != 0;
+            imGuiIoPtr.MouseDown[1] = _mousePressed[1] || (mouseButtons & Sdl.Button(Sdl.ButtonRight)) != 0;
+            imGuiIoPtr.MouseDown[2] = _mousePressed[2] || (mouseButtons & Sdl.Button(Sdl.ButtonMiddle)) != 0;
             _mousePressed[0] = _mousePressed[1] = _mousePressed[2] = false;
 
             IntPtr focusedWindow = Sdl.GetKeyboardFocus();
@@ -673,7 +672,7 @@ namespace Alis.App.Engine
                 Sdl.GetGlobalMouseStateOutXAndOutY(out mx, out my);
                 mx -= wx;
                 my -= wy;
-                io.MousePos = new Vector2(mx, my);
+                imGuiIoPtr.MousePos = new Vector2(mx, my);
             }
 
             // SDL_CaptureMouse() let the OS know e.g. that our imgui drag outside the SDL window boundaries shouldn't e.g. trigger the OS window resize cursor.
@@ -685,9 +684,7 @@ namespace Alis.App.Engine
         ///     Setup the render state using the specified draw data
         /// </summary>
         /// <param name="drawData">The draw data</param>
-        /// <param name="fbWidth">The fb width</param>
-        /// <param name="fbHeight">The fb height</param>
-        private void SetupRenderState(ImDrawDataPtr drawData, int fbWidth, int fbHeight)
+        private void SetupRenderState(ImDrawDataPtr drawData)
         {
             Gl.GlEnable(EnableCap.Blend);
             Gl.GlBlendEquation(BlendEquationMode.FuncAdd);
@@ -760,7 +757,7 @@ namespace Alis.App.Engine
         /// <param name="format">The format</param>
         /// <param name="internalFormat">The internal format</param>
         /// <returns>The texture id</returns>
-        public static uint LoadTexture(IntPtr pixelData, int width, int height, Format format = Format.Rgba, InternalFormat internalFormat = InternalFormat.Rgba)
+        private static uint LoadTexture(IntPtr pixelData, int width, int height, Format format = Format.Rgba, InternalFormat internalFormat = InternalFormat.Rgba)
         {
             uint textureId = Gl.GenTexture();
             Gl.GlPixelStorei(StoreParameter.UnpackAlignment, 1);
@@ -787,7 +784,7 @@ namespace Alis.App.Engine
                 return;
             }
 
-            SetupRenderState(drawData, fbWidth, fbHeight);
+            SetupRenderState(drawData);
 
             Vector2 clipOffset = drawData.DisplayPos;
             Vector2 clipScale = drawData.FramebufferScale;
