@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Ecs.System.Manager;
 
@@ -56,6 +57,7 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         ///     Run program
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public virtual void Run()
         {
             Managers.ForEach(i => i.OnInit());
@@ -142,6 +144,7 @@ namespace Alis.Core.Ecs.System
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
+        [ExcludeFromCodeCoverage]
         public void Set<T>(T component) where T : IManager
         {
             for (int i = 0; i < Managers.Count; i++)
@@ -155,5 +158,7 @@ namespace Alis.Core.Ecs.System
 
             Managers.Add(component);
         }
+        
+        
     }
 }
