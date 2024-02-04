@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DefaultTest.cs
+//  File:PluginSample.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,56 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
-
 namespace Alis.Core.Plugin.Test
 {
     /// <summary>
-    ///     The default test class
+    /// The plugin sample class
     /// </summary>
-    public class DefaultTest
+    /// <seealso cref="IPlugin"/>
+    public class PluginSample : IPlugin
     {
         /// <summary>
-        ///     Tests that test
+        /// Disposes this instance
         /// </summary>
-        [Fact]
-        public void Test()
+        public void Dispose()
         {
-            Assert.True(true);
+            
+        }
+
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public void Initialize()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public void Update()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public void Render()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        /// <summary>
+        /// Shutdowns this instance
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public void Shutdown()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

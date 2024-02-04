@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -45,12 +46,12 @@ namespace Alis.Core.Plugin
         /// <summary>
         ///     The loaded assemblies
         /// </summary>
-        private readonly List<Assembly> loadedAssemblies;
+        internal readonly List<Assembly> loadedAssemblies;
 
         /// <summary>
         ///     The loaded plugins
         /// </summary>
-        private readonly List<IPlugin> loadedPlugins;
+        internal readonly List<IPlugin> loadedPlugins;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PluginManager" /> class
@@ -73,6 +74,7 @@ namespace Alis.Core.Plugin
         ///     Loads the plugins using the specified plugins directory
         /// </summary>
         /// <param name="pluginsDirectory">The plugins directory</param>
+        [ExcludeFromCodeCoverage]
         public void LoadPlugins(string pluginsDirectory)
         {
             string platformFolder = GetPlatformFolder();
@@ -96,7 +98,8 @@ namespace Alis.Core.Plugin
         /// </summary>
         /// <exception cref="NotSupportedException">Unsupported platform. Plugins will not be loaded.</exception>
         /// <returns>The string</returns>
-        private string GetPlatformFolder()
+        [ExcludeFromCodeCoverage]
+        internal string GetPlatformFolder()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
@@ -121,7 +124,8 @@ namespace Alis.Core.Plugin
         /// </summary>
         /// <param name="directory">The directory</param>
         /// <exception cref="DirectoryNotFoundException">Plugins directory '{directory}' does not exist.</exception>
-        private static void ValidatePluginsDirectory(string directory)
+        [ExcludeFromCodeCoverage]
+        internal static void ValidatePluginsDirectory(string directory)
         {
             if (!Directory.Exists(directory))
             {
@@ -134,7 +138,7 @@ namespace Alis.Core.Plugin
         /// </summary>
         /// <param name="directory">The directory</param>
         /// <returns>The string array</returns>
-        private IEnumerable<string> GetPluginFiles(string directory) => Directory.GetFiles(directory)
+        internal IEnumerable<string> GetPluginFiles(string directory) => Directory.GetFiles(directory)
             .Where(IsPluginFile)
             .ToArray();
 
@@ -142,7 +146,8 @@ namespace Alis.Core.Plugin
         ///     Loads the plugin from file using the specified plugin file
         /// </summary>
         /// <param name="pluginFile">The plugin file</param>
-        private void LoadPluginFromFile(string pluginFile)
+        [ExcludeFromCodeCoverage]
+        internal void LoadPluginFromFile(string pluginFile)
         {
             try
             {
@@ -172,7 +177,7 @@ namespace Alis.Core.Plugin
         /// </summary>
         /// <param name="filePath">The file path</param>
         /// <returns>The bool</returns>
-        private static bool IsPluginFile(string filePath)
+        internal static bool IsPluginFile(string filePath)
         {
             string extension = Path.GetExtension(filePath);
             return extension == ".dll" || extension == ".so" || extension == ".dylib";
@@ -181,7 +186,8 @@ namespace Alis.Core.Plugin
         /// <summary>
         ///     Unloads the plugins
         /// </summary>
-        private void UnloadPlugins()
+        [ExcludeFromCodeCoverage]
+        internal void UnloadPlugins()
         {
             foreach (IPlugin plugin in loadedPlugins)
             {
@@ -197,33 +203,37 @@ namespace Alis.Core.Plugin
         ///     Describes whether this instance is running oni os
         /// </summary>
         /// <returns>The bool</returns>
-        private static bool IsRunningOniOS() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && (RuntimeInformation.OSDescription.Contains("iPhone") || RuntimeInformation.OSDescription.Contains("iPad"));
+        internal static bool IsRunningOniOS() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && (RuntimeInformation.OSDescription.Contains("iPhone") || RuntimeInformation.OSDescription.Contains("iPad"));
 
 
         /// <summary>
         ///     Describes whether this instance is running on android
         /// </summary>
         /// <returns>The bool</returns>
-        private static bool IsRunningOnAndroid() => RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && RuntimeInformation.OSDescription.Contains("Android");
+        internal static bool IsRunningOnAndroid() => RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && RuntimeInformation.OSDescription.Contains("Android");
 
         /// <summary>
         ///     Initializes this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void Initialize() => loadedPlugins.ForEach(plugin => plugin.Initialize());
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void Update() => loadedPlugins.ForEach(plugin => plugin.Update());
 
         /// <summary>
         ///     Renders this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void Render() => loadedPlugins.ForEach(plugin => plugin.Render());
 
         /// <summary>
         ///     Shutdowns this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void Shutdown() => loadedPlugins.ForEach(plugin => plugin.Shutdown());
     }
 }
