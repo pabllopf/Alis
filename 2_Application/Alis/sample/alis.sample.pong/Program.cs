@@ -162,7 +162,7 @@ namespace Alis.Sample.Pong
                                 .Size(35, 35)
                                 .Rotation(0.0f)
                                 .RelativePosition(0, 0)
-                                .LinearVelocity(-10, -5)
+                                .LinearVelocity(-5.5f, -5)
                                 .Mass(10.0f)
                                 .Restitution(1.0f)
                                 .Friction(0f)

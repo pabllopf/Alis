@@ -113,7 +113,7 @@ namespace Alis.Core.Ecs.System
                 {
                     // Calculate average FPS
                     totalTime += newTime - lastTime;
-                    TimeManager.AverageFrames = TimeManager.TotalFrames / totalTime;
+                    TimeManager.AverageFrames = (int) (TimeManager.TotalFrames / totalTime);
 
                     // Reset frame counter and update last time
                     TimeManager.FrameCount = 0;

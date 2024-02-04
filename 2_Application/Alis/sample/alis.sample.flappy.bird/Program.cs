@@ -237,7 +237,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .SetTexture(AssetManager.Find("base.bmp"))
                                 .Depth(2)
                                 .Build())
-                            //.AddComponent(new FloorAnimation())
+                            .AddComponent(new FloorAnimation())
                             .Build())
 
                         ////////////////////////////////////////
@@ -266,7 +266,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
                                 .Build())
-                            //.AddComponent(new DeathZone())
+                            .AddComponent(new DeathZone())
                             .Build())
 
                         ////////////////////////////////////////
@@ -295,7 +295,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
                                 .Build())
-                            //.AddComponent(new DeathZone())
+                            .AddComponent(new DeathZone())
                             .Build())
 
                         ////////////////////////////////////////
@@ -341,7 +341,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .GravityScale(0f)
                                 .Build())
                             .AddComponent(new PipelineController())
-                            //.AddComponent(new DeathZone())
+                            .AddComponent(new DeathZone())
                             .Build())
 
                         ////////////////////////////////////////
@@ -412,7 +412,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .GravityScale(0f)
                                 .Build())
                             .AddComponent(new PipelineController())
-                            //.AddComponent(new DeathZone())
+                            .AddComponent(new DeathZone())
                             .Build())
 
                         ////////////////////////////////////////

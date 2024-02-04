@@ -62,7 +62,7 @@ namespace Alis.Sample.Flappy.Bird
         public override void OnInit()
         {
             IsDeath = false;
-            TimeDelta = 100f;
+            TimeDelta = 10.0f;
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Alis.Sample.Flappy.Bird
         {
             if (IsDeath)
             {
-                TimeDelta -= 0.01f * Game.TimeManager.DeltaTime;
+                TimeDelta -= 1f * Game.TimeManager.DeltaTime;
                 if (TimeDelta <= 0.0f)
                 {
                     VideoGame.Instance.SceneManager.LoadScene("Main Menu");
