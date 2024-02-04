@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlTextInputEvent.cs
+//  File:SdlAudioSpec.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,56 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Structs;
-using Xunit;
+using System;
+using System.Runtime.InteropServices;
+using Alis.Core.Graphic.Sdl2.Delegates;
 
-namespace Alis.Core.Graphic.Test.Sdl2.Structs
+namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl text input event test class
+    ///     The sdl audio spec
     /// </summary>
-    public class SdlTextInputEventTest
+    [StructLayout(LayoutKind.Sequential)]
+    public struct AudioSpec
     {
         /// <summary>
-        ///     Tests that text valid call returns expected byte array
+        ///     The freq
         /// </summary>
-        [Fact]
-        public void Text_ValidCall_ReturnsExpectedByteArray()
-        {
-            // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
-            Assert.Equal(0, initResult);
+        public readonly int freq;
 
-            TextInputEvent textInputEvent = new TextInputEvent();
+        /// <summary>
+        ///     The SDL_AudioFormat
+        /// </summary>
+        public readonly ushort format;
 
-            // Act
-            byte[] result = textInputEvent.Text;
+        /// <summary>
+        ///     The channels
+        /// </summary>
+        public readonly byte channels;
 
-            // Assert
-            Assert.NotEqual(new byte[] {0}, result);
+        /// <summary>
+        ///     The silence
+        /// </summary>
+        public readonly byte silence;
 
-            Sdl.Quit();
-        }
+        /// <summary>
+        ///     The samples
+        /// </summary>
+        public readonly ushort samples;
+
+        /// <summary>
+        ///     The size
+        /// </summary>
+        public readonly uint size;
+
+        /// <summary>
+        ///     The callback
+        /// </summary>
+        public SdlAudioCallback callback;
+
+        /// <summary>
+        ///     The userdata
+        /// </summary>
+        public IntPtr userdata;
     }
 }

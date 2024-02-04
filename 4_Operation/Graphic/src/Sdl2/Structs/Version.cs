@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlTextInputEvent.cs
+//  File:SdlVersion.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,42 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Structs;
-using Xunit;
+using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.Test.Sdl2.Structs
+namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl text input event test class
+    ///     The sdl version
     /// </summary>
-    public class SdlTextInputEventTest
+    [StructLayout(LayoutKind.Explicit)]
+    public struct Version
     {
         /// <summary>
-        ///     Tests that text valid call returns expected byte array
+        ///     The major
         /// </summary>
-        [Fact]
-        public void Text_ValidCall_ReturnsExpectedByteArray()
+        [FieldOffset(0)] public byte major;
+
+        /// <summary>
+        ///     The minor
+        /// </summary>
+        [FieldOffset(1)] public byte minor;
+
+        /// <summary>
+        ///     The patch
+        /// </summary>
+        [FieldOffset(2)] public byte patch;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Version" /> class
+        /// </summary>
+        /// <param name="sdlTtfMajorVersion">The sdl ttf major version</param>
+        /// <param name="sdlTtfMinorVersion">The sdl ttf minor version</param>
+        /// <param name="sdlTtfPatchLevel">The sdl ttf patch level</param>
+        public Version(int sdlTtfMajorVersion, int sdlTtfMinorVersion, int sdlTtfPatchLevel)
         {
-            // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
-            Assert.Equal(0, initResult);
-
-            TextInputEvent textInputEvent = new TextInputEvent();
-
-            // Act
-            byte[] result = textInputEvent.Text;
-
-            // Assert
-            Assert.NotEqual(new byte[] {0}, result);
-
-            Sdl.Quit();
+            major = (byte) sdlTtfMajorVersion;
+            minor = (byte) sdlTtfMinorVersion;
+            patch = (byte) sdlTtfPatchLevel;
         }
     }
 }

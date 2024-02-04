@@ -118,7 +118,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr window = IntPtr.Zero;
 
             // Act
-            int result = Sdl.GetWindowDisplayMode(window, out SdlDisplayMode _);
+            int result = Sdl.GetWindowDisplayMode(window, out DisplayMode _);
 
             // Assert
             Assert.True(result >= -1);
@@ -223,7 +223,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr window = IntPtr.Zero;
 
             // Act
-            int result = Sdl.GetWindowDisplayMode(window, out SdlDisplayMode _);
+            int result = Sdl.GetWindowDisplayMode(window, out DisplayMode _);
 
             // Assert
             Assert.True(result >= -1);
@@ -307,7 +307,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr window = IntPtr.Zero;
 
             // Act
-            int result = Sdl.GetWindowDisplayMode(window, out SdlDisplayMode _);
+            int result = Sdl.GetWindowDisplayMode(window, out DisplayMode _);
 
             // Assert
             Assert.True(result >= -1);
@@ -391,7 +391,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr window = IntPtr.Zero;
 
             // Act
-            int result = Sdl.GetWindowDisplayMode(window, out SdlDisplayMode _);
+            int result = Sdl.GetWindowDisplayMode(window, out DisplayMode _);
 
             // Assert
             Assert.True(result >= -1);
@@ -1420,7 +1420,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
-            SdlDisplayMode mode = new SdlDisplayMode();
+            DisplayMode mode = new DisplayMode();
 
             // Act
             int result = Sdl.SetWindowDisplayMode(window, ref mode);
@@ -2198,7 +2198,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int index = 0;
 
             // Act
-            int result = Sdl.GetRenderDriverInfo(index, out SdlRendererInfo _);
+            int result = Sdl.GetRenderDriverInfo(index, out RendererInfo _);
 
             // Assert
             Assert.True(result >= -1);
@@ -2240,7 +2240,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr renderer = IntPtr.Zero;
 
             // Act
-            int result = Sdl.GetRendererInfo(renderer, out SdlRendererInfo _);
+            int result = Sdl.GetRendererInfo(renderer, out RendererInfo _);
 
             // Assert
             Assert.True(result >= -1);
@@ -2602,7 +2602,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
             IntPtr texture = IntPtr.Zero;
-            SdlVertex[] vertices = Array.Empty<SdlVertex>();
+            Vertex[] vertices = Array.Empty<Vertex>();
             int numVertices = 0;
             int[] indices = Array.Empty<int>();
             int numIndices = 0;

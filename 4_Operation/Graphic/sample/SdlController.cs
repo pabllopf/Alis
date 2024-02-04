@@ -39,6 +39,7 @@ using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Sdl = Alis.Core.Graphic.Sdl2.Sdl;
+using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.Core.Graphic.Sample
 {
@@ -95,7 +96,7 @@ namespace Alis.Core.Graphic.Sample
         /// <summary>
         ///     The sdl event
         /// </summary>
-        private static SdlEvent _sdlEvent;
+        private static Event _sdlEvent;
 
         /// <summary>
         ///     The texture font
@@ -122,7 +123,7 @@ namespace Alis.Core.Graphic.Sample
             }
 
             // GET VERSION SDL2
-            SdlVersion versionSdl2 = Sdl.GetVersion();
+            Version versionSdl2 = Sdl.GetVersion();
             Console.WriteLine($"SDL2 VERSION {versionSdl2.major}.{versionSdl2.minor}.{versionSdl2.patch}");
 
             /*
@@ -143,17 +144,17 @@ namespace Alis.Core.Graphic.Sample
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
             {
-                Sdl.SetHint(SdlHint.HintRenderDriver, "direct3d");
+                Sdl.SetHint(Hint.HintRenderDriver, "direct3d");
             }
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.OSX)
             {
-                Sdl.SetHint(SdlHint.HintRenderDriver, "opengl");
+                Sdl.SetHint(Hint.HintRenderDriver, "opengl");
             }
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Linux)
             {
-                Sdl.SetHint(SdlHint.HintRenderDriver, "opengl");
+                Sdl.SetHint(Hint.HintRenderDriver, "opengl");
             }
 
             // create the window which should be able to have a valid OpenGL context and is resizable
@@ -211,12 +212,12 @@ namespace Alis.Core.Graphic.Sample
             IntPtr bgSurface = SdlTtf.RenderTextBlended(
                 fontOutline,
                 "0123456789",
-                new SdlColor(255, 255, 255, 255));
+                new Color(255, 255, 255, 255));
 
             IntPtr fgSurface = SdlTtf.RenderTextBlended(
                 font,
                 "0123456789",
-                new SdlColor(84, 52, 68, 255));
+                new Color(84, 52, 68, 255));
 
             // get size fg_surface
             //SDL_QueryTexture(fg_surface, NULL, NULL, &w, &h); :
@@ -410,8 +411,8 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         private static void Sdlinput()
         {
-            Sdl.SetHint(SdlHint.HintXInputEnabled, "0");
-            Sdl.SetHint(SdlHint.SdlHintJoystickThread, "1");
+            Sdl.SetHint(Hint.HintXInputEnabled, "0");
+            Sdl.SetHint(Hint.SdlHintJoystickThread, "1");
 
             for (int i = 0; i < Sdl.NumJoysticks(); i++)
             {

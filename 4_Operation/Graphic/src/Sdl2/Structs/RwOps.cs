@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlTextInputEvent.cs
+//  File:SdlRWops.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,45 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Structs;
-using Xunit;
+using System;
+using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.Test.Sdl2.Structs
+namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl text input event test class
+    ///     The sdl rw ops
     /// </summary>
-    public class SdlTextInputEventTest
+    [StructLayout(LayoutKind.Sequential)]
+    public struct RwOps
     {
         /// <summary>
-        ///     Tests that text valid call returns expected byte array
+        ///     The size
         /// </summary>
-        [Fact]
-        public void Text_ValidCall_ReturnsExpectedByteArray()
-        {
-            // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
-            Assert.Equal(0, initResult);
+        public IntPtr size;
 
-            TextInputEvent textInputEvent = new TextInputEvent();
+        /// <summary>
+        ///     The seek
+        /// </summary>
+        public IntPtr seek;
 
-            // Act
-            byte[] result = textInputEvent.Text;
+        /// <summary>
+        ///     The read
+        /// </summary>
+        public IntPtr read;
 
-            // Assert
-            Assert.NotEqual(new byte[] {0}, result);
+        /// <summary>
+        ///     The write
+        /// </summary>
+        public IntPtr write;
 
-            Sdl.Quit();
-        }
+        /// <summary>
+        ///     The close
+        /// </summary>
+        public IntPtr close;
+
+        /// <summary>
+        ///     The type
+        /// </summary>
+        public readonly uint type;
     }
 }

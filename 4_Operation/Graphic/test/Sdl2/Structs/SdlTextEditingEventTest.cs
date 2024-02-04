@@ -49,7 +49,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
-            SdlTextEditingEvent textEditingEvent = new SdlTextEditingEvent();
+            TextEditingEvent textEditingEvent = new TextEditingEvent();
 
             // Act
             string result = textEditingEvent.Text;

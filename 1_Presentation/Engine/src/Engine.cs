@@ -47,6 +47,7 @@ using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Type = Alis.App.Engine.OpenGL.Enums.Type;
+using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.App.Engine
 {
@@ -225,7 +226,7 @@ namespace Alis.App.Engine
             }
 
             // GET VERSION SDL2
-            SdlVersion version = Sdl.GetVersion();
+            Version version = Sdl.GetVersion();
             Console.WriteLine(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
@@ -362,7 +363,7 @@ namespace Alis.App.Engine
 
             while (!_quit)
             {
-                while (Sdl.PollEvent(out SdlEvent e) != 0)
+                while (Sdl.PollEvent(out Event e) != 0)
                 {
                     ProcessEvent(e);
                     switch (e.type)
@@ -568,7 +569,7 @@ namespace Alis.App.Engine
         ///     Processes the event using the specified evt
         /// </summary>
         /// <param name="evt">The evt</param>
-        private void ProcessEvent(SdlEvent evt)
+        private void ProcessEvent(Event evt)
         {
             ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
             switch (evt.type)

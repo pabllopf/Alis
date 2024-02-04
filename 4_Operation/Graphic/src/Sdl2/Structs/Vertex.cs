@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlTextInputEvent.cs
+//  File:SdlVertex.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,30 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Structs;
-using Xunit;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Shape.Point;
 
-namespace Alis.Core.Graphic.Test.Sdl2.Structs
+namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl text input event test class
+    ///     The sdl vertex
     /// </summary>
-    public class SdlTextInputEventTest
+    [StructLayout(LayoutKind.Sequential)]
+    public struct Vertex
     {
         /// <summary>
-        ///     Tests that text valid call returns expected byte array
+        ///     The position
         /// </summary>
-        [Fact]
-        public void Text_ValidCall_ReturnsExpectedByteArray()
-        {
-            // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
-            Assert.Equal(0, initResult);
+        public PointF position;
 
-            TextInputEvent textInputEvent = new TextInputEvent();
+        /// <summary>
+        ///     The color
+        /// </summary>
+        public Color color;
 
-            // Act
-            byte[] result = textInputEvent.Text;
-
-            // Assert
-            Assert.NotEqual(new byte[] {0}, result);
-
-            Sdl.Quit();
-        }
+        /// <summary>
+        ///     The text coordinate
+        /// </summary>
+        public PointF texCoordinate;
     }
 }

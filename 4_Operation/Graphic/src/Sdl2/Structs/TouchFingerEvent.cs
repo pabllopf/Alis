@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlTextInputEvent.cs
+//  File:SdlTouchFingerEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,64 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Structs;
-using Xunit;
+using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.Test.Sdl2.Structs
+namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl text input event test class
+    ///     The sdl touch finger event
     /// </summary>
-    public class SdlTextInputEventTest
+    [StructLayout(LayoutKind.Sequential)]
+    public struct TouchFingerEvent
     {
         /// <summary>
-        ///     Tests that text valid call returns expected byte array
+        ///     The type
         /// </summary>
-        [Fact]
-        public void Text_ValidCall_ReturnsExpectedByteArray()
-        {
-            // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
-            Assert.Equal(0, initResult);
+        public readonly uint type;
 
-            TextInputEvent textInputEvent = new TextInputEvent();
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public readonly uint timestamp;
 
-            // Act
-            byte[] result = textInputEvent.Text;
+        /// <summary>
+        ///     The touch id
+        /// </summary>
+        public readonly long touchId;
 
-            // Assert
-            Assert.NotEqual(new byte[] {0}, result);
+        /// <summary>
+        ///     The finger id
+        /// </summary>
+        public readonly long fingerId;
 
-            Sdl.Quit();
-        }
+        /// <summary>
+        ///     The
+        /// </summary>
+        public readonly float x;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public readonly float y;
+
+        /// <summary>
+        ///     The dx
+        /// </summary>
+        public readonly float dx;
+
+        /// <summary>
+        ///     The dy
+        /// </summary>
+        public readonly float dy;
+
+        /// <summary>
+        ///     The pressure
+        /// </summary>
+        public readonly float pressure;
+
+        /// <summary>
+        ///     The window id
+        /// </summary>
+        public readonly uint windowID;
     }
 }

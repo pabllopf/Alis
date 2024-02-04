@@ -49,7 +49,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
-            SdlRendererInfo rendererInfo = new SdlRendererInfo(); // Replace with the actual SdlRendererInfo
+            RendererInfo rendererInfo = new RendererInfo(); // Replace with the actual SdlRendererInfo
 
             // Act
             string result = rendererInfo.GetName();
