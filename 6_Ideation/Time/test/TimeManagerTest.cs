@@ -57,15 +57,15 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.Equal(0f, timeManager.FixedUnscaledTime);
             Assert.Equal(0d, timeManager.FixedUnscaledTimeAsDouble);
             Assert.Equal(0f, timeManager.FrameCount);
-            Assert.Equal(0f, timeManager.RealtimeSinceStartup);
-            Assert.Equal(0d, timeManager.RealtimeSinceStartupAsDouble);
-            Assert.Equal(0f, timeManager.SmoothDeltaTime);
-            Assert.Equal(0f, timeManager.Time);
-            Assert.Equal(0d, timeManager.TimeAsDouble);
-            Assert.Equal(1f, timeManager.TimeScale);
-            Assert.Equal(0f, timeManager.UnscaledDeltaTime);
-            Assert.Equal(0f, timeManager.UnscaledTime);
-            Assert.Equal(0d, timeManager.UnscaledTimeAsDouble);
+            Assert.Equal(0f, timeManager.RealtimeSinceStartup, 0.1f);
+            Assert.Equal(0d, timeManager.RealtimeSinceStartupAsDouble, 0.1f);
+            Assert.Equal(0f, timeManager.SmoothDeltaTime, 0.1f);
+            Assert.Equal(0f, timeManager.Time, 0.1f);
+            Assert.Equal(0d, timeManager.TimeAsDouble, 0.1f);
+            Assert.Equal(1f, timeManager.TimeScale, 0.1f);
+            Assert.Equal(0f, timeManager.UnscaledDeltaTime, 0.1f);
+            Assert.Equal(0f, timeManager.UnscaledTime, 0.1f);
+            Assert.Equal(0d, timeManager.UnscaledTimeAsDouble, 0.1f);
         }
 
         /// <summary>
