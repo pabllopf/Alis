@@ -31,8 +31,14 @@ using Xunit;
 
 namespace Alis.Core.Audio.Test.OS.Players
 {
+    /// <summary>
+    /// The unix player base test class
+    /// </summary>
     public class UnixPlayerBaseTest
     {
+        /// <summary>
+        /// Tests that test method
+        /// </summary>
         [Fact]
         public void TestMethod()
         {

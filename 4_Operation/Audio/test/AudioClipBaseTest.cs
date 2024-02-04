@@ -31,8 +31,14 @@ using Xunit;
 
 namespace Alis.Core.Audio.Test
 {
+    /// <summary>
+    /// The audio clip base test class
+    /// </summary>
     public class AudioClipBaseTest
     {
+        /// <summary>
+        /// Tests that test method
+        /// </summary>
         [Fact]
         public void TestMethod()
         {
