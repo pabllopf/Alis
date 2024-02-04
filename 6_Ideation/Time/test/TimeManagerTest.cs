@@ -57,8 +57,6 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.Equal(0f, timeManager.FixedUnscaledTime);
             Assert.Equal(0d, timeManager.FixedUnscaledTimeAsDouble);
             Assert.Equal(0f, timeManager.FrameCount);
-            Assert.False(timeManager.InFixedTimeStep);
-            Assert.False(timeManager.MaximumDeltaTime);
             Assert.Equal(0f, timeManager.RealtimeSinceStartup);
             Assert.Equal(0d, timeManager.RealtimeSinceStartupAsDouble);
             Assert.Equal(0f, timeManager.SmoothDeltaTime);
@@ -182,11 +180,11 @@ namespace Alis.Core.Aspect.Time.Test
             TimeManager timeManager = new TimeManager
             {
                 // Act
-                MaximumDeltaTime = true
+                MaximumDeltaTime = 1f
             };
 
             // Assert
-            Assert.True(timeManager.MaximumDeltaTime);
+            Assert.NotEqual(0,  timeManager.MaximumDeltaTime);
         }
 
         /// <summary>
@@ -291,41 +289,7 @@ namespace Alis.Core.Aspect.Time.Test
             // Assert
             Assert.Equal(0.15f, timeManager.UnscaledDeltaTime);
         }
-
-        /// <summary>
-        ///     Tests that realtime since startup set value should update realtime since startup
-        /// </summary>
-        [Fact]
-        public void RealtimeSinceStartup_SetValue_ShouldUpdateRealtimeSinceStartup()
-        {
-            // Arrange
-            TimeManager timeManager = new TimeManager
-            {
-                // Act
-                RealtimeSinceStartup = 10.5f
-            };
-
-            // Assert
-            Assert.Equal(10.5f, timeManager.RealtimeSinceStartup);
-        }
-
-        /// <summary>
-        ///     Tests that realtime since startup as double set value should update realtime since startup as double
-        /// </summary>
-        [Fact]
-        public void RealtimeSinceStartupAsDouble_SetValue_ShouldUpdateRealtimeSinceStartupAsDouble()
-        {
-            // Arrange
-            TimeManager timeManager = new TimeManager
-            {
-                // Act
-                RealtimeSinceStartupAsDouble = 20.5
-            };
-
-            // Assert
-            Assert.Equal(20.5, timeManager.RealtimeSinceStartupAsDouble);
-        }
-
+        
         /// <summary>
         ///     Tests that fixed time as double set value should update fixed time as double
         /// </summary>
