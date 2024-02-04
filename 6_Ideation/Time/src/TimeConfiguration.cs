@@ -65,6 +65,9 @@ namespace Alis.Core.Aspect.Time
         /// </summary>
         public float TimeScale { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the log output
+        /// </summary>
         public bool LogOutput { get; set; } = false;
     }
 }
