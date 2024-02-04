@@ -64,5 +64,7 @@ namespace Alis.Core.Aspect.Time
         ///     A value of 1 means real-time. A value of .5 means half speed; a value of 2 is double speed.
         /// </summary>
         public float TimeScale { get; set; }
+
+        public bool LogOutput { get; set; } = false;
     }
 }

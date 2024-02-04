@@ -159,8 +159,6 @@ namespace Alis.Core.Ecs.System
                 // Render the Ui
                 Managers.ForEach(j => j.OnGui());
                 
-                
-
                 // Update SmoothDeltaTime
                 smoothDeltaTimeSum += TimeManager.DeltaTime - lastDeltaTime;
                 smoothDeltaTimeCount++;
@@ -168,7 +166,7 @@ namespace Alis.Core.Ecs.System
                 lastDeltaTime = TimeManager.DeltaTime;
                 
                 // Log output every 1 second
-                if (newTime - lastLogTime >= 0.5)
+                if (newTime - lastLogTime >= 0.5 && TimeManager.Configuration.LogOutput)
                 {
                     Console.WriteLine(
                         " FrameCount: " + TimeManager.FrameCount +
