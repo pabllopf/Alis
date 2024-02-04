@@ -111,7 +111,7 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <summary>
         ///     Gets or sets the value of the fixed rotation
         /// </summary>
-        public bool FixedRotation { get; set; } = false;
+        public bool FixedRotation { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the mass
@@ -131,7 +131,7 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <summary>
         ///     Gets or sets the value of the angular velocity
         /// </summary>
-        public float AngularVelocity { get; set; } = 0.0f;
+        public float AngularVelocity { get; set; }
 
         /// <summary>
         ///     Builders this instance
@@ -242,14 +242,13 @@ namespace Alis.Core.Ecs.Component.Collider
         }
 
         /// <summary>
-        ///     Ons the collision using the specified fixturea
+        ///     Ons the collision using the specified fixture a
         /// </summary>
-        /// <param name="fixturea">The fixturea</param>
-        /// <param name="fixtureb">The fixtureb</param>
+        /// <param name="fixturea">The fixture a</param>
+        /// <param name="fixtureb">The fixture b</param>
         /// <param name="contact">The contact</param>
         private void OnCollision(Fixture fixturea, Fixture fixtureb, Contact contact)
         {
-            // Check if collision this gameobject with others gameobjects:
             GameObject fixtureAGameObject = (GameObject) fixturea.Body.GameObject;
             GameObject fixtureBGameObject = (GameObject) fixtureb.Body.GameObject;
 
