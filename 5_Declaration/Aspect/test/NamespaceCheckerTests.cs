@@ -27,22 +27,43 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Linq;
+using System.Reflection;
 using Xunit;
 
 namespace Alis.Core.Aspect.Test
 {
     /// <summary>
-    ///     The default test class
+    /// The namespace checker tests class
     /// </summary>
-    public class DefaultTest
+    public class NamespaceCheckerTests
     {
         /// <summary>
-        ///     Tests that test
+        /// Tests that check namespace no types in namespace returns true
         /// </summary>
         [Fact]
-        public void Test()
+        public void CheckNamespace_NoTypesInNamespace_ReturnsTrue()
         {
-            Assert.True(true);
+            // Arrange
+            const string namespaceToCheck = "Alis.Core.Aspect";
+
+            // Act
+            bool result = CheckNamespace(namespaceToCheck);
+
+            // Assert
+            Assert.True(result);
+        }
+
+        /// <summary>
+        /// Describes whether this instance check namespace
+        /// </summary>
+        /// <param name="namespaceToCheck">The namespace to check</param>
+        /// <returns>The bool</returns>
+        private static bool CheckNamespace(string namespaceToCheck)
+        {
+            Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            return assemblies.Select(assembly => assembly.GetTypes().Where(t => String.Equals(t.Namespace, namespaceToCheck, StringComparison.Ordinal))).All(types => !types.Any());
         }
     }
 }
