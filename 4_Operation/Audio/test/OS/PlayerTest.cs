@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DefaultTest.cs
+//  File:PlayerTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,18 +29,12 @@
 
 using Xunit;
 
-namespace Alis.Core.Audio.Test
+namespace Alis.Core.Audio.Test.OS
 {
-    /// <summary>
-    ///     The default test class
-    /// </summary>
-    public class DefaultTest
+    public class PlayerTest
     {
-        /// <summary>
-        ///     Tests that test
-        /// </summary>
         [Fact]
-        public void Test()
+        public void TestMethod()
         {
             Assert.True(true);
         }
