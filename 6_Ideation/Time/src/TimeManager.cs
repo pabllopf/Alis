@@ -106,7 +106,7 @@ namespace Alis.Core.Aspect.Time
         /// <summary>
         /// Gets or sets the value of the average frames
         /// </summary>
-        public double AverageFrames { get; set; }
+        public int AverageFrames { get; set; }
 
         /// <summary>
         ///     Returns true if called inside a fixed time step callback (like Runtime FixedUpdate), otherwise returns false.

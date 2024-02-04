@@ -150,11 +150,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
             if (VideoGame.Instance.Settings.Physic.DebugMode)
             {
-                // Calculate the average FPS
-                float fps = 1.0f / Game.TimeManager.DeltaTime;
-                
                 //Show fps on tittle window
-                Sdl.SetWindowTitle(_window, $"{VideoGame.Instance.Settings.General.Name} - FPS: {fps}");
+                Sdl.SetWindowTitle(_window, $"{VideoGame.Instance.Settings.General.Name} - FPS: {Game.TimeManager.AverageFrames}");
             }
             
             Sprites = Sprites.OrderBy(o => o.Depth).ToList();
