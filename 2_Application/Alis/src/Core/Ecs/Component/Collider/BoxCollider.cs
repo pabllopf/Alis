@@ -230,7 +230,6 @@ namespace Alis.Core.Ecs.Component.Collider
                 if (fixtureBGameObject.Contains<BoxCollider>())
                 {
                     fixtureBGameObject.Components.ForEach(i => i.OnCollisionExit(GameObject as GameObject));
-                    //Console.WriteLine($"Gameobject {fixtureAGameObject.Name} collision with " + fixtureBGameObject.Name);
                 }
             }
             else if (fixtureBGameObject.Equals(GameObject))
@@ -238,7 +237,6 @@ namespace Alis.Core.Ecs.Component.Collider
                 if (fixtureAGameObject.Contains<BoxCollider>())
                 {
                     fixtureAGameObject.Components.ForEach(i => i.OnCollisionExit(GameObject as GameObject));
-                    //Console.WriteLine($"Gameobject {fixtureBGameObject.Name} collision with " + fixtureAGameObject.Name);
                 }
             }
         }
@@ -260,7 +258,6 @@ namespace Alis.Core.Ecs.Component.Collider
                 if (fixtureBGameObject.Contains<BoxCollider>())
                 {
                     fixtureBGameObject.Components.ForEach(i => i.OnCollisionEnter(GameObject as GameObject));
-                    //Console.WriteLine($"Gameobject {fixtureAGameObject.Name} collision with " + fixtureBGameObject.Name);
                 }
             }
             else if (fixtureBGameObject.Equals(GameObject))
@@ -268,7 +265,6 @@ namespace Alis.Core.Ecs.Component.Collider
                 if (fixtureAGameObject.Contains<BoxCollider>())
                 {
                     fixtureAGameObject.Components.ForEach(i => i.OnCollisionEnter(GameObject as GameObject));
-                    //Console.WriteLine($"Gameobject {fixtureBGameObject.Name} collision with " + fixtureAGameObject.Name);
                 }
             }
         }
