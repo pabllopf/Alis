@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The bind type
         /// </summary>
-        public SdlGameControllerBindType bindType;
+        public GameControllerBindType bindType;
 
         /// <summary>
         ///     The value

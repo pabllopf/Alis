@@ -37,5 +37,5 @@ namespace Alis.Core.Graphic.Sdl2.Delegates
     ///     The sdl hit test
     /// </summary>
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate SdlHitTestResult SdlHitTest(IntPtr win, IntPtr area, IntPtr data);
+    public delegate HitTestResult SdlHitTest(IntPtr win, IntPtr area, IntPtr data);
 }

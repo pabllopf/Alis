@@ -46,7 +46,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         public void GetName_ValidCall_ReturnsExpectedString()
         {
             // Arrange
-            int initResult = Sdl.Init(SdlInit.InitEverything);
+            int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
 
             SdlRendererInfo rendererInfo = new SdlRendererInfo(); // Replace with the actual SdlRendererInfo

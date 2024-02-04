@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The type
         /// </summary>
-        public readonly SdlEventType type;
+        public readonly EventType type;
 
         /// <summary>
         ///     The timestamp

@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The flags
         /// </summary>
-        public readonly SdlMessageBoxButtonFlags flags;
+        public readonly MessageBoxButtonFlags flags;
 
         /// <summary>
         ///     The button id
