@@ -69,9 +69,11 @@ namespace Alis.Core.Aspect.Time.Test
             
 
             // Act
-            TimeConfiguration timeConfig = new TimeConfiguration(expectedFixedTimeStep, expectedMaximumAllowedTimeStep, expectedTimeScale);
-            timeConfig.LogOutput = false;
-            
+            TimeConfiguration timeConfig = new TimeConfiguration(expectedFixedTimeStep, expectedMaximumAllowedTimeStep, expectedTimeScale)
+            {
+                LogOutput = false
+            };
+
             // Assert
             Assert.Equal(expectedFixedTimeStep, timeConfig.FixedTimeStep);
             Assert.Equal(expectedMaximumAllowedTimeStep, timeConfig.MaximumAllowedTimeStep);
