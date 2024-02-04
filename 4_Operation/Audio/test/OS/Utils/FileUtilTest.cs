@@ -31,8 +31,14 @@ using Xunit;
 
 namespace Alis.Core.Audio.Test.OS.Utils
 {
+    /// <summary>
+    /// The file util test class
+    /// </summary>
     public class FileUtilTest
     {
+        /// <summary>
+        /// Tests that test method
+        /// </summary>
         [Fact]
         public void TestMethod()
         {
