@@ -172,7 +172,6 @@ namespace Alis.Core.Audio
                         }
 
                         break;
-                    case AudioBackendType.Sld:
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
