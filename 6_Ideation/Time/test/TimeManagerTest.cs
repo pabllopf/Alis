@@ -275,6 +275,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.Equal(2.0f, timeManager.TimeScale);
         }
         
+        /// <summary>
+        /// Tests that average frames set value should update average frames
+        /// </summary>
         [Fact]
         public void AverageFrames_SetValue_ShouldUpdateAverageFrames()
         {
@@ -289,6 +292,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.Equal(2, timeManager.AverageFrames);
         }
         
+        /// <summary>
+        /// Tests that total frames set value should update total frames
+        /// </summary>
         [Fact]
         public void TotalFrames_SetValue_ShouldUpdateTotalFrames()
         {

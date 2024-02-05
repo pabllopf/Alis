@@ -30,6 +30,10 @@
 using System;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Math.Shape.Rectangle;
+using Alis.Core.Graphic;
+using Alis.Core.Graphic.Sdl2;
+using Alis.Core.Graphic.Sdl2.Enums;
 
 namespace Alis.Core.Ecs.Component.Render
 {
@@ -68,6 +72,11 @@ namespace Alis.Core.Ecs.Component.Render
         public int Depth { get; set; }
 
         /// <summary>
+        /// Gets or sets the value of the flip
+        /// </summary>
+        public FlipTo Flip { get; set; }
+
+        /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The sprite builder</returns>
@@ -80,7 +89,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             if (!string.IsNullOrEmpty(TexturePath))
             {
-                Image = new Image(TexturePath);
+                Image = new Image(TexturePath, Flip);
                 Console.WriteLine($"Load sprite od '{TexturePath}'");
             }
         }
@@ -115,6 +124,33 @@ namespace Alis.Core.Ecs.Component.Render
         public override void OnExit()
         {
             VideoGame.Instance.GraphicManager.UnAttach(this);
+        }
+
+        /// <summary>
+        /// Renders the renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        public void Render(IntPtr renderer)
+        {
+            // get position of the sprite
+            int x = (int) GameObject.Transform.Position.X;
+            int y = (int) GameObject.Transform.Position.Y;
+
+            // get the size of sprite.Image.Texture
+            Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
+                
+            RectangleI dstRect = new RectangleI((int) (x - (w * GameObject.Transform.Scale.X/2)), (int) (y - (h * GameObject.Transform.Scale.Y/2)),
+                (int) (w * GameObject.Transform.Scale.X),
+                (int) (h * GameObject.Transform.Scale.Y));
+
+            if (Flip == FlipTo.Left)
+            {
+                Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, RendererFlip.SdlFlipHorizontal);
+            }
+            else
+            {
+                Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, RendererFlip.None);
+            }
         }
     }
 }

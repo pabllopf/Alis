@@ -105,6 +105,34 @@ namespace Alis.Sample.King.Platform
                                 .Depth(1)
                                 .SetTexture(AssetManager.Find("tile023.bmp"))
                                 .Build())
+                            .AddComponent<Animator>(animator => animator
+                                .Builder()
+                                .AddAnimation(animation => animation
+                                    .Name("Idle")
+                                    .Order(0)
+                                    .Speed(1f)
+                                    .AddFrame(frame1 => frame1
+                                        .FilePath(AssetManager.Find("tile023.bmp"))
+                                        .Build())
+                                    .AddFrame(frame2 => frame2
+                                        .FilePath(AssetManager.Find("tile025.bmp"))
+                                        .Build())
+                                    .Build())
+                                .AddAnimation(animation2 => animation2
+                                    .Name("Run")
+                                    .Order(1)
+                                    .Speed(0.25f)
+                                    .AddFrame(frame => frame
+                                        .FilePath(AssetManager.Find("tile036.bmp"))
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath(AssetManager.Find("tile038.bmp"))
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath(AssetManager.Find("tile039.bmp"))
+                                        .Build())
+                                    .Build())
+                                .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
