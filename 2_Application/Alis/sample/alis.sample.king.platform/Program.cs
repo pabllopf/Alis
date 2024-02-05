@@ -31,8 +31,11 @@ using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Component.Audio;
+using Alis.Core.Ecs.Component.Collider;
+using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity.GameObject;
 using Alis.Core.Ecs.Entity.Scene;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.King.Platform
 {
@@ -71,7 +74,7 @@ namespace Alis.Sample.King.Platform
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
                         .Debug(true)
-                        .DebugColor(Color.Red)
+                        .DebugColor(Color.Green)
                         .Build())
                     .Build())
                 .World(sceneManager => sceneManager
@@ -87,11 +90,63 @@ namespace Alis.Sample.King.Platform
                                     .Build())
                                 .Build())
                             .Build())
+                        
+                        // PLAYER
                         .Add<GameObject>(player => player
                             .Name("King")
                             .WithTag("player")
-                            
+                            .Transform(transform => transform
+                                .Position(50,0)
+                                .Scale(2,2 )
+                                .Rotation(0)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite
+                                .Builder()
+                                .Depth(1)
+                                .SetTexture(AssetManager.Find("tile023.bmp"))
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .BodyType(BodyType.Dynamic)
+                                .IsTrigger(false)
+                                .AutoTilling(true)
+                                .Rotation(0.0f)
+                                .Mass(5.0f)
+                                .Restitution(0f)
+                                .Friction(0f)
+                                .Density(0f)
+                                .FixedRotation(true)
+                                .GravityScale(0.05f)
+                                .Build())
                             .AddComponent(new PlayerMovement())
+                            .Build())
+                        
+                        // FLOOR
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Floor")
+                            .WithTag("Floor Down")
+                            .Transform(transform => transform
+                                .Position(512, 500)
+                                .Scale(1, 1)
+                                .Rotation(0)
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .BodyType(BodyType.Static)
+                                .IsTrigger(false)
+                                .AutoTilling(false)
+                                .Size(1024, 10)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(0.0f)
+                                .Friction(0.1f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0.0f)
+                                .Build())
                             .Build())
                         .Build())
                     .Build())

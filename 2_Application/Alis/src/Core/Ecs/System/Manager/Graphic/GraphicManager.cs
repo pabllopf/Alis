@@ -167,7 +167,11 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 Sdl.QueryTexture(sprite.Image.Texture, out _, out _, out int w, out int h);
 
                 // create a destination intPtr dstRect
-                RectangleI dstRect = new RectangleI(x - w / 2, y - h / 2,
+                //RectangleI dstRect = new RectangleI(x - w / 2, y - h / 2,
+                //    (int) (w * sprite.GameObject.Transform.Scale.X),
+                //    (int) (h * sprite.GameObject.Transform.Scale.Y));
+
+                RectangleI dstRect = new RectangleI((int) (x - (w * sprite.GameObject.Transform.Scale.X/2)), (int) (y - (h * sprite.GameObject.Transform.Scale.Y/2)),
                     (int) (w * sprite.GameObject.Transform.Scale.X),
                     (int) (h * sprite.GameObject.Transform.Scale.Y));
 
@@ -325,21 +329,21 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Version version = Sdl.GetVersion();
             Console.WriteLine(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
 
-            /*
+            
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
-            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
-            Sdl.GlSetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
-            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlContextMajorVersion, 3);
-            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlContextMinorVersion, 2);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContext.SdlGlContextForwardCompatibleFlag);
+            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfile.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMajorVersion, 3);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMinorVersion, 2);
 
-            Sdl.GlSetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
-            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlDoubleBuffer, 1);
-            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlDepthSize, 24);
-            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlAlphaSize, 8);
-            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlStencilSize, 8);
+            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfile.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlDoubleBuffer, 1);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlDepthSize, 24);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlAlphaSize, 8);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlStencilSize, 8);
 
             // Enable vsync
-            Sdl.GlSetSwapInterval(1);*/
+            Sdl.SetSwapInterval(1);
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
             {
@@ -459,126 +463,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             // GET VERSION SDL_TTF
             Console.WriteLine($"SDL_TTF Version: {SdlTtf.GetVersion().major}.{SdlTtf.GetVersion().minor}.{SdlTtf.GetVersion().patch}");
-
-            /*
-
-            int outlineSize = 1;
-
-            // Load the font
-            IntPtr font = SdlTtf.TtfOpenFont(AssetManager.Find("Crackman Front.otf"), 55);
-
-            // Load the font
-            IntPtr font_outline = SdlTtf.TtfOpenFont(AssetManager.Find("Crackman Front.otf"), 55);
-
-            // define outline font
-            SdlTtf.TtfSetFontOutline(font, outlineSize);
-
-            // define style font
-            SdlTtf.TtfSetFontStyle(font, SdlTtf.TtfStyleNormal);
-
-            // Pixels to render the text
-            IntPtr bg_surface = SdlTtf.TtfRenderTextBlended(
-                font_outline,
-                "0123456789",
-                new SdlColor(255, 255, 255, 255));
-
-            IntPtr fg_surface = SdlTtf.TtfRenderTextBlended(
-                font,
-                "0123456789",
-                new SdlColor(84, 52, 68, 255));
-
-            // get size fg_surface
-            //SDL_QueryTexture(fg_surface, NULL, NULL, &w, &h); :
-            Sdl.QueryTexture(fg_surface, out _, out _, out int wOut, out int hOut);
-
-            //SDL_Rect rect = {OUTLINE_SIZE, OUTLINE_SIZE, fg_surface->w, fg_surface->h};
-            RectangleI rect = new RectangleI(0, 0, wOut, hOut);
-
-            //SDL_SetSurfaceBlendMode(fg_surface, SDL_BLENDMODE_BLEND); :
-            Sdl.SetSurfaceBlendMode(fg_surface, SdlBlendMode.SdlBlendModeBlend);
-
-            //SDL_BlitSurface(fg_surface, NULL, bg_surface, &rect);
-            Sdl.BlitSurface(fg_surface, IntPtr.Zero, bg_surface, ref rect);
-
-            //SDL_FreeSurface(fg_surface);
-            Sdl.FreeSurface(fg_surface);
-
-
-            // surface without alpha
-            //Sdl.SetSurfaceBlendMode(surface, SdlBlendMode.SdlBlendModeBlend);
-
-            // Create a texture from the surface
-            textureFont1 = Sdl.CreateTextureFromSurface(Renderer, bg_surface);
-
-            // define alpha of the texture
-            //Sdl.SetTextureAlphaMod(textureFont1, 255);
-
-            // Get the width and height of the texture
-            Sdl.QueryTexture(textureFont1, out _, out _, out int textureWidth, out int textureHeight);
-
-            // Create a destination intPtr dstRect
-            dstRectFont1 = new RectangleI(0, 0, textureWidth, textureHeight);
-
-            */
-
-            /*
-            Console.WriteLine(Sdl.Init(Sdl.InitAudio) < 0 ? $@"There was an issue initializing SDL AUDIO. {Sdl.GetError()}" : "SDL2 AUDIO INIT OK");
-
-
-            SdlAudioSpec spec;
-            IntPtr audiobuf;
-            uint audioLen;
-
-            IntPtr audio_loaded = Sdl.LoadWav(
-                AssetManager.Find("main_theme.wav"),
-                out spec,
-                out audiobuf,
-                out audioLen);
-
-            // open audio device
-
-
-
-            string audioDevice = "";
-
-            int count = Sdl.GetNumAudioDevices(0);
-            for (int i = 0; i < count; i++)
-            {
-                audioDevice = Sdl.GetAudioDeviceName(0, 0);
-                Console.WriteLine($"Device id={i} name={audioDevice}");
-            }
-
-            uint device = Sdl.SdlOpenAudioDevice(audioDevice, 0, ref spec, out SdlAudioSpec specOut ,0);
-
-            int success = Sdl.SdlQueueAudio(device, audiobuf, audioLen);
-            Sdl.SdlPauseAudioDevice(device, 0);
-
-            Sdl.Delay(4000);
-
-            Sdl.CloseAudioDevice(device);
-            Sdl.FreeWav(audiobuf);*/
-
-            /*
-            Sdl.SetHint(Sdl.HintXInputEnabled, "0");
-            Sdl.SetHint(Sdl.SdlHintJoystickThread, "1");
-            Sdl.Init(Sdl.InitEverything);
-
-            for (int i = 0; i < Sdl.NumJoysticks(); i++)
-            {
-                IntPtr myJoystick = Sdl.JoystickOpen(i);
-                if (myJoystick == IntPtr.Zero)
-                {
-                    Console.WriteLine($" Error opening SDL_JoystickName_id = '{i}'");
-                }
-                else
-                {
-                    Console.WriteLine($"[SDL_JoystickName_id = '{i}'] \n" +
-                                      $"SDL_JoystickName={Sdl.JoystickName(myJoystick)} \n" +
-                                      $"SDL_JoystickNumAxes={Sdl.JoystickNumAxes(myJoystick)} \n" +
-                                      $"SDL_JoystickNumButtons={Sdl.JoystickNumButtons(myJoystick)}");
-                }
-            }*/
-
+            
             Console.WriteLine("End config SDL2");
         }
 

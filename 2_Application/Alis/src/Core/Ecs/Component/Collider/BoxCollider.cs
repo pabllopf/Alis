@@ -91,7 +91,7 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <summary>
         ///     Gets or sets the value of the auto tilling
         /// </summary>
-        public bool AutoTilling { get; set; } = false;
+        public bool AutoTilling { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the body type

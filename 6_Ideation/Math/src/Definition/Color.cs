@@ -93,5 +93,7 @@ namespace Alis.Core.Aspect.Math.Definition
         ///     Gets the value of the red
         /// </summary>
         public static Color Red => new Color(255, 0, 0, 255);
+
+        public static Color Green => new Color(0, 255, 0, 255);
     }
 }
