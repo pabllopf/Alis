@@ -31,13 +31,10 @@ using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Component.Audio;
-using Alis.Core.Ecs.Component.Collider;
-using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity.GameObject;
 using Alis.Core.Ecs.Entity.Scene;
-using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Sample.Pong
+namespace Alis.Sample.King.Platform
 {
     /// <summary>
     ///     The program class
@@ -85,10 +82,16 @@ namespace Alis.Sample.Pong
                                 .Builder()
                                 .PlayOnAwake(true)
                                 .SetAudioClip(audioClip => audioClip
-                                    .FilePath(AssetManager.Find("soundtrack.wav"))
+                                    .FilePath(AssetManager.Find("World_Theme.wav"))
                                     .Volume(100.0f)
                                     .Build())
                                 .Build())
+                            .Build())
+                        .Add<GameObject>(player => player
+                            .Name("King")
+                            .WithTag("player")
+                            
+                            .AddComponent(new PlayerMovement())
                             .Build())
                         .Build())
                     .Build())

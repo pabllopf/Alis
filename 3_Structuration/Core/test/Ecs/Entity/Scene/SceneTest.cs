@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using Alis.Core.Ecs.Entity.GameObject;
+using Alis.Core.Test.Ecs.Entity.GameObject;
 using Xunit;
 
 namespace Alis.Core.Test.Ecs.Entity.Scene
