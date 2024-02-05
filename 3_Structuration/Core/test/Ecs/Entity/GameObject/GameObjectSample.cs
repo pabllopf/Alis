@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Test.Ecs.Entity.Scene
+namespace Alis.Core.Test.Ecs.Entity.GameObject
 {
     /// <summary>
     /// The game object sample class
