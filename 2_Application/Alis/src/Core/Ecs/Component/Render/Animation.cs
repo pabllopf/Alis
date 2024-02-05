@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Graphic;
 
 namespace Alis.Core.Ecs.Component.Render
 {
@@ -78,7 +79,7 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Gets or sets the value of the textures
         /// </summary>
         private List<Frame> Frames { get; }
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>

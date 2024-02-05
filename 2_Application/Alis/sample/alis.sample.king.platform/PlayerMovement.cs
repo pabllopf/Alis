@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -27,12 +27,63 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Graphic;
+using Alis.Core.Graphic.Sdl2.Enums;
 
 namespace Alis.Sample.King.Platform
 {
+    /// <summary>
+    /// The player movement class
+    /// </summary>
+    /// <seealso cref="Component"/>
     public class PlayerMovement : Component
     {
+        /// <summary>
+        /// The animator
+        /// </summary>
+        private Animator animator;
         
+        /// <summary>
+        /// Ons the start
+        /// </summary>
+        public override void OnStart() => animator = GameObject.Get<Animator>();
+
+        /// <summary>
+        /// Ons the release key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        public override void OnReleaseKey(SdlKeycode key)
+        {
+            switch (key)
+            {
+                case SdlKeycode.SdlkD:
+                    animator.ChangeAnimationTo("Idle", FlipTo.Right);
+                    break;
+                case SdlKeycode.SdlkA:
+                    animator.ChangeAnimationTo("Idle", FlipTo.Left);
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Ons the press down key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        public override void OnPressDownKey(SdlKeycode key)
+        {
+            switch (key)
+            {
+                case SdlKeycode.SdlkD:
+                    animator.ChangeAnimationTo("Run", FlipTo.Right);
+                    break;
+                case SdlKeycode.SdlkA:
+                    animator.ChangeAnimationTo("Run" , FlipTo.Left);
+                    break;
+            }
+        }
     }
 }

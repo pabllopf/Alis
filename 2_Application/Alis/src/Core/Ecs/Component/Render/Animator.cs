@@ -32,6 +32,8 @@ using System.Diagnostics;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Graphic;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.Component.Render
 {
@@ -164,6 +166,26 @@ namespace Alis.Core.Ecs.Component.Render
             }
 
             Animation tempAnimation = Animations.Find(i => i.Name.Equals(nameAnimation));
+            if (tempAnimation != null)
+            {
+                currentAnimation = tempAnimation;
+            }
+        }
+
+        /// <summary>
+        /// Changes the animation to using the specified name animation
+        /// </summary>
+        /// <param name="nameAnimation">The name animation</param>
+        /// <param name="flipTo">The flip to</param>
+        public void ChangeAnimationTo(string nameAnimation, FlipTo flipTo)
+        {
+            if (currentAnimation.Name.Equals(nameAnimation))
+            {
+                return;
+            }
+
+            Animation tempAnimation = Animations.Find(i => i.Name.Equals(nameAnimation));
+            Sprite.Flip = flipTo;
             if (tempAnimation != null)
             {
                 currentAnimation = tempAnimation;

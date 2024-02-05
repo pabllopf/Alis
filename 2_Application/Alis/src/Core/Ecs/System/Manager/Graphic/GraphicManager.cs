@@ -159,24 +159,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // Draws sprites:
             foreach (Sprite sprite in Sprites.Where(sprite => sprite.Image != null))
             {
-                // get position of the sprite
-                int x = (int) sprite.GameObject.Transform.Position.X;
-                int y = (int) sprite.GameObject.Transform.Position.Y;
-
-                // get the size of sprite.Image.Texture
-                Sdl.QueryTexture(sprite.Image.Texture, out _, out _, out int w, out int h);
-
-                // create a destination intPtr dstRect
-                //RectangleI dstRect = new RectangleI(x - w / 2, y - h / 2,
-                //    (int) (w * sprite.GameObject.Transform.Scale.X),
-                //    (int) (h * sprite.GameObject.Transform.Scale.Y));
-
-                RectangleI dstRect = new RectangleI((int) (x - (w * sprite.GameObject.Transform.Scale.X/2)), (int) (y - (h * sprite.GameObject.Transform.Scale.Y/2)),
-                    (int) (w * sprite.GameObject.Transform.Scale.X),
-                    (int) (h * sprite.GameObject.Transform.Scale.Y));
-
-                // render the texture to the screen
-                Sdl.RenderCopyEx(Renderer, sprite.Image.Texture, IntPtr.Zero, ref dstRect, sprite.GameObject.Transform.Rotation.Angle, IntPtr.Zero, RendererFlip.None);
+                sprite.Render(Renderer);
             }
 
             if (VideoGame.Instance.Settings.Physic.DebugMode)
