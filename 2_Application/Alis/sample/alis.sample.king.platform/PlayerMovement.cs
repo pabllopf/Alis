@@ -29,7 +29,9 @@
 
 using System;
 using Alis.Core.Aspect.Base.Mapping;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Graphic;
 using Alis.Core.Graphic.Sdl2.Enums;
@@ -47,10 +49,19 @@ namespace Alis.Sample.King.Platform
         /// </summary>
         private Animator animator;
         
+        private BoxCollider boxCollider;
+        
+        private Sprite sprite;
+        
         /// <summary>
         /// Ons the start
         /// </summary>
-        public override void OnStart() => animator = GameObject.Get<Animator>();
+        public override void OnStart()
+        {
+            animator = GameObject.Get<Animator>();
+            boxCollider = GameObject.Get<BoxCollider>();
+            sprite = GameObject.Get<Sprite>();
+        }
 
         /// <summary>
         /// Ons the release key using the specified key
@@ -61,10 +72,39 @@ namespace Alis.Sample.King.Platform
             switch (key)
             {
                 case SdlKeycode.SdlkD:
-                    animator.ChangeAnimationTo("Idle", FlipTo.Right);
+                    switch (sprite.Flip)
+                    {
+                        case FlipTo.Right:
+                            animator.ChangeAnimationTo("Idle", FlipTo.Right);
+                            break;
+                        case FlipTo.Left:
+                            animator.ChangeAnimationTo("Idle", FlipTo.Left);
+                            break;
+                    }
+                    boxCollider.Body.LinearVelocity = new Vector2(0, 0);
                     break;
                 case SdlKeycode.SdlkA:
-                    animator.ChangeAnimationTo("Idle", FlipTo.Left);
+                    switch (sprite.Flip)
+                    {
+                        case FlipTo.Right:
+                            animator.ChangeAnimationTo("Idle", FlipTo.Right);
+                            break;
+                        case FlipTo.Left:
+                            animator.ChangeAnimationTo("Idle", FlipTo.Left);
+                            break;
+                    }
+                    boxCollider.Body.LinearVelocity = new Vector2(0, 0);
+                    break;
+                case SdlKeycode.SdlkSpace:
+                    switch (sprite.Flip)
+                    {
+                        case FlipTo.Right:
+                            animator.ChangeAnimationTo("Idle", FlipTo.Right);
+                            break;
+                        case FlipTo.Left:
+                            animator.ChangeAnimationTo("Idle", FlipTo.Left);
+                            break;
+                    }
                     break;
             }
         }
@@ -75,13 +115,38 @@ namespace Alis.Sample.King.Platform
         /// <param name="key">The key</param>
         public override void OnPressDownKey(SdlKeycode key)
         {
+            Vector2 velocity = boxCollider.Body.LinearVelocity;
             switch (key)
             {
                 case SdlKeycode.SdlkD:
                     animator.ChangeAnimationTo("Run", FlipTo.Right);
+                    boxCollider.Body.LinearVelocity = new Vector2(5, velocity.Y);
                     break;
                 case SdlKeycode.SdlkA:
                     animator.ChangeAnimationTo("Run" , FlipTo.Left);
+                    boxCollider.Body.LinearVelocity = new Vector2(-5, velocity.Y);
+                    break;
+            }
+        }
+
+        public override void OnPressKey(SdlKeycode key)
+        {
+            Vector2 velocity = boxCollider.Body.LinearVelocity;
+            switch (key)
+            {
+                case SdlKeycode.SdlkSpace:
+                    boxCollider.Body.LinearVelocity = new Vector2(velocity.X, -15f);
+                    
+                    switch (sprite.Flip)
+                    {
+                        case FlipTo.Right:
+                            animator.ChangeAnimationTo("Jump", FlipTo.Right);
+                            break;
+                        case FlipTo.Left:
+                            animator.ChangeAnimationTo("Jump", FlipTo.Left);
+                            break;
+                    }
+
                     break;
             }
         }
