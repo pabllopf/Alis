@@ -73,7 +73,7 @@ namespace Alis.Sample.King.Platform
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
-                        .Debug(true)
+                        .Debug(false)
                         .DebugColor(Color.Green)
                         .Build())
                     .Build())
@@ -132,6 +132,23 @@ namespace Alis.Sample.King.Platform
                                         .FilePath(AssetManager.Find("tile039.bmp"))
                                         .Build())
                                     .Build())
+                                .AddAnimation(animation2 => animation2
+                                    .Name("Jump")
+                                    .Order(2)
+                                    .Speed(0.25f)
+                                    .AddFrame(frame => frame
+                                        .FilePath(AssetManager.Find("tile027.bmp"))
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath(AssetManager.Find("tile028.bmp"))
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath(AssetManager.Find("tile029.bmp"))
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath(AssetManager.Find("tile030.bmp"))
+                                        .Build())
+                                    .Build())
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
@@ -145,7 +162,7 @@ namespace Alis.Sample.King.Platform
                                 .Friction(0f)
                                 .Density(0f)
                                 .FixedRotation(true)
-                                .GravityScale(0.05f)
+                                .GravityScale(0.1f)
                                 .Build())
                             .AddComponent(new PlayerMovement())
                             .Build())
