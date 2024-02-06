@@ -34,7 +34,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Collider;
@@ -148,7 +147,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         public override void OnUpdate()
         {
-            if (VideoGame.Instance.Settings.Physic.DebugMode)
+            if (VideoGame.Instance.Settings.General.Debug)
             {
                 //Show fps on tittle window
                 Sdl.SetWindowTitle(_window, $"{VideoGame.Instance.Settings.General.Name} - FPS: {Game.TimeManager.AverageFrames}");

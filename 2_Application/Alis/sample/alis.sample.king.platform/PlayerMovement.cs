@@ -33,8 +33,8 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.System;
 using Alis.Core.Graphic;
-using Alis.Core.Graphic.Sdl2.Enums;
 
 namespace Alis.Sample.King.Platform
 {
@@ -49,10 +49,46 @@ namespace Alis.Sample.King.Platform
         /// </summary>
         private Animator animator;
         
+        /// <summary>
+        /// The box collider
+        /// </summary>
         private BoxCollider boxCollider;
         
+        /// <summary>
+        /// The sprite
+        /// </summary>
         private Sprite sprite;
+
+        /// <summary>
+        /// The vector
+        /// </summary>
+        private Vector2 directionPlayer = new Vector2(0, 0);
         
+        /// <summary>
+        /// The is jumping
+        /// </summary>
+        private bool isJumping;
+
+        /// <summary>
+        /// The jump force
+        /// </summary>
+        private const float JumpForce = 15f;
+        
+        /// <summary>
+        /// The velocity player
+        /// </summary>
+        private const float VelocityPlayer = 5f;
+
+        /// <summary>
+        /// The cool down jump
+        /// </summary>
+        private float coolDownJump;
+
+        /// <summary>
+        /// The reset cool down jump
+        /// </summary>
+        private const float ResetCoolDownJump = 0.8f;
+
         /// <summary>
         /// Ons the start
         /// </summary>
@@ -64,48 +100,39 @@ namespace Alis.Sample.King.Platform
         }
 
         /// <summary>
+        /// Ons the update
+        /// </summary>
+        public override void OnUpdate()
+        {
+            coolDownJump -= 1 * Game.TimeManager.DeltaTime;
+            
+            if (isJumping)
+            {
+                if (coolDownJump <= 0)
+                {
+                    JumpPlayer();
+                }
+            }
+            
+            boxCollider.Body.LinearVelocity = new Vector2(directionPlayer.X * VelocityPlayer, boxCollider.Body.LinearVelocity.Y);
+        }
+        
+        /// <summary>
         /// Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnReleaseKey(SdlKeycode key)
         {
-            switch (key)
+            if (key == SdlKeycode.SdlkD)
             {
-                case SdlKeycode.SdlkD:
-                    switch (sprite.Flip)
-                    {
-                        case FlipTo.Right:
-                            animator.ChangeAnimationTo("Idle", FlipTo.Right);
-                            break;
-                        case FlipTo.Left:
-                            animator.ChangeAnimationTo("Idle", FlipTo.Left);
-                            break;
-                    }
-                    boxCollider.Body.LinearVelocity = new Vector2(0, 0);
-                    break;
-                case SdlKeycode.SdlkA:
-                    switch (sprite.Flip)
-                    {
-                        case FlipTo.Right:
-                            animator.ChangeAnimationTo("Idle", FlipTo.Right);
-                            break;
-                        case FlipTo.Left:
-                            animator.ChangeAnimationTo("Idle", FlipTo.Left);
-                            break;
-                    }
-                    boxCollider.Body.LinearVelocity = new Vector2(0, 0);
-                    break;
-                case SdlKeycode.SdlkSpace:
-                    switch (sprite.Flip)
-                    {
-                        case FlipTo.Right:
-                            animator.ChangeAnimationTo("Idle", FlipTo.Right);
-                            break;
-                        case FlipTo.Left:
-                            animator.ChangeAnimationTo("Idle", FlipTo.Left);
-                            break;
-                    }
-                    break;
+                directionPlayer = new Vector2(0, 0);
+                animator.ChangeAnimationTo("Idle", FlipTo.Right);
+            }
+            
+            if (key == SdlKeycode.SdlkA)
+            {
+                directionPlayer = new Vector2(0, 0);
+                animator.ChangeAnimationTo("Idle", FlipTo.Left);
             }
         }
 
@@ -115,40 +142,47 @@ namespace Alis.Sample.King.Platform
         /// <param name="key">The key</param>
         public override void OnPressDownKey(SdlKeycode key)
         {
-            Vector2 velocity = boxCollider.Body.LinearVelocity;
-            switch (key)
+            if (!isJumping && coolDownJump <= 0 && key == SdlKeycode.SdlkSpace)
             {
-                case SdlKeycode.SdlkD:
-                    animator.ChangeAnimationTo("Run", FlipTo.Right);
-                    boxCollider.Body.LinearVelocity = new Vector2(5, velocity.Y);
-                    break;
-                case SdlKeycode.SdlkA:
-                    animator.ChangeAnimationTo("Run" , FlipTo.Left);
-                    boxCollider.Body.LinearVelocity = new Vector2(-5, velocity.Y);
-                    break;
+                isJumping = true;
+                Console.WriteLine("Jump because space key is pressed");
+            }
+            
+            if (key == SdlKeycode.SdlkD && directionPlayer.X == 0)
+            {
+                directionPlayer = new Vector2(1, 0);
+                animator.ChangeAnimationTo("Run", FlipTo.Right);
+            }
+            if (key == SdlKeycode.SdlkA && directionPlayer.X == 0)
+            {
+                directionPlayer = new Vector2(directionPlayer.X - 1, 0);
+                animator.ChangeAnimationTo("Run", FlipTo.Left);
             }
         }
-
-        public override void OnPressKey(SdlKeycode key)
+        
+        /// <summary>
+        /// Jumps the player
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        private void JumpPlayer()
         {
-            Vector2 velocity = boxCollider.Body.LinearVelocity;
-            switch (key)
+            boxCollider.Body.LinearVelocity = new Vector2(boxCollider.Body.LinearVelocity.X, -JumpForce);
+            
+            isJumping = false;
+            
+            switch(sprite.Flip)
             {
-                case SdlKeycode.SdlkSpace:
-                    boxCollider.Body.LinearVelocity = new Vector2(velocity.X, -15f);
-                    
-                    switch (sprite.Flip)
-                    {
-                        case FlipTo.Right:
-                            animator.ChangeAnimationTo("Jump", FlipTo.Right);
-                            break;
-                        case FlipTo.Left:
-                            animator.ChangeAnimationTo("Jump", FlipTo.Left);
-                            break;
-                    }
-
+                case FlipTo.Left:
+                    animator.ChangeAnimationTo("Jump", FlipTo.Left);
                     break;
+                case FlipTo.Right:
+                    animator.ChangeAnimationTo("Jump", FlipTo.Right);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
+            
+            coolDownJump = ResetCoolDownJump;
         }
     }
 }

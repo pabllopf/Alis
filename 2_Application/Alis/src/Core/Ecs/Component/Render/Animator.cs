@@ -33,7 +33,6 @@ using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Graphic;
-using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.Component.Render
 {
@@ -191,5 +190,11 @@ namespace Alis.Core.Ecs.Component.Render
                 currentAnimation = tempAnimation;
             }
         }
+        
+        /// <summary>
+        /// Gets the current animation
+        /// </summary>
+        /// <returns>The animation</returns>
+        public Animation GetCurrentAnimation() => currentAnimation;
     }
 }
