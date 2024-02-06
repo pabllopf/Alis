@@ -77,5 +77,10 @@ namespace Alis.Core.Ecs.System.Setting.General
         ///     Gets or sets the value of the icon
         /// </summary>
         public string Icon { get; set; } = AssetManager.Find("app.bmp");
+
+        /// <summary>
+        /// Gets or sets the value of the debug
+        /// </summary>
+        public bool Debug { get; set; } = false;
     }
 }

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.System.Setting.General;
@@ -42,6 +41,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.General
         IBuild<GeneralSetting>,
         IName<GeneralSettingBuilder, string>,
         IVersion<GeneralSettingBuilder, string>,
+        IDebug<GeneralSettingBuilder, bool>,
         ILicense<GeneralSettingBuilder, string>,
         IAuthor<GeneralSettingBuilder, string>,
         IDescription<GeneralSettingBuilder, string>,
@@ -51,54 +51,91 @@ namespace Alis.Builder.Core.Ecs.System.Setting.General
         ///     The general setting
         /// </summary>
         private readonly GeneralSetting generalSetting = new GeneralSetting();
+        
+        /// <summary>
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The general setting</returns>
+        public GeneralSetting Build()
+        {
+            return generalSetting;
+        }
 
         /// <summary>
         ///     Authors the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The general setting builder</returns>
-        public GeneralSettingBuilder Author(string value) => (generalSetting.Author = value) != null ? this : throw new ArgumentNullException(nameof(value));
-
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The general setting</returns>
-        public GeneralSetting Build() => generalSetting;
-
+        public GeneralSettingBuilder Author(string value)
+        {
+            generalSetting.Author = value;
+            return this;
+        }
+        
         /// <summary>
         ///     Descriptions the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The general setting builder</returns>
-        public GeneralSettingBuilder Description(string value) => (generalSetting.Description = value) != null ? this : throw new ArgumentNullException(nameof(value));
+        public GeneralSettingBuilder Description(string value)
+        {
+            generalSetting.Description = value;
+            return this;
+        }
 
         /// <summary>
         ///     Icons the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The general setting builder</returns>
-        public GeneralSettingBuilder Icon(string value) => (generalSetting.Icon = value) != null ? this : throw new ArgumentNullException(nameof(value));
-
-
+        public GeneralSettingBuilder Icon(string value)
+        {
+            generalSetting.Icon = value;
+            return this;
+        }
+        
         /// <summary>
         ///     Licences the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The general setting builder</returns>
-        public GeneralSettingBuilder License(string value) => (generalSetting.License = value) != null ? this : throw new ArgumentNullException(nameof(value));
+        public GeneralSettingBuilder License(string value)
+        {
+            generalSetting.License = value;
+            return this;
+        }
 
         /// <summary>
         ///     Names the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The general setting builder</returns>
-        public GeneralSettingBuilder Name(string value) => (generalSetting.Name = value) != null ? this : throw new ArgumentNullException(nameof(value));
+        public GeneralSettingBuilder Name(string value)
+        {
+            generalSetting.Name = value;
+            return this;
+        }
 
         /// <summary>
         ///     Versions the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The general setting builder</returns>
-        public GeneralSettingBuilder Version(string value) => (generalSetting.Version = value) != null ? this : throw new ArgumentNullException(nameof(value));
+        public GeneralSettingBuilder Version(string value)
+        {
+            generalSetting.Version = value;
+            return this;
+        }
+        
+        /// <summary>
+        /// Debugs the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The general setting builder</returns>
+        public GeneralSettingBuilder Debug(bool value)
+        {
+            generalSetting.Debug = value;
+            return this;
+        }
     }
 }

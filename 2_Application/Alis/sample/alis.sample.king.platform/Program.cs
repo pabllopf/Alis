@@ -57,6 +57,7 @@ namespace Alis.Sample.King.Platform
                         .Name("Space Simulator")
                         .Author("Pablo Perdomo Falcón")
                         .Description("Space simulator")
+                        .Debug(true)
                         .License("GNU General Public License v3.0")
                         .Icon(AssetManager.Find("app.bmp"))
                         .Build())

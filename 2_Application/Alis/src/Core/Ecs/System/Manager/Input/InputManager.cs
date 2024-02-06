@@ -164,40 +164,33 @@ namespace Alis.Core.Ecs.System.Manager.Input
 
             while (Sdl.PollEvent(out _sdlEvent) != 0)
             {
-                switch (_sdlEvent.type)
+                if (_sdlEvent.type == EventType.SdlQuit)
                 {
-                    case EventType.SdlQuit:
-                        //Console.WriteLine(" Quit was pressed ");
-                        VideoGame.Instance.Exit();
-                        break;
+                    //Console.WriteLine(" Quit was pressed ");
+                    VideoGame.Instance.Exit();
+                }
+                
+                if (_sdlEvent.type == EventType.SdlKeyup)
+                {
+                    SdlKeycode indexUp = _sdlEvent.key.keySym.sym;
 
-                    case EventType.SdlKeyup:
-                        SdlKeycode indexUp = _sdlEvent.key.keySym.sym;
-
-                        if (tempListOfKeys.Contains(indexUp))
-                        {
-                            //Console.WriteLine(indexUp + " was released");
-                            tempListOfKeys.Remove(indexUp);
-                            NotifyKeyRelease(indexUp);
-                        }
-
-                        break;
-                    case EventType.SdlKeydown:
-                        SdlKeycode indexDown = _sdlEvent.key.keySym.sym;
-                        if (!tempListOfKeys.Contains(indexDown))
-                        {
-                            //Console.WriteLine(indexDown + " was pressed");
-                            tempListOfKeys.Add(indexDown);
-                            NotifyKeyPress(indexDown);
-                        }
-
-                        if (tempListOfKeys.Contains(indexDown))
-                        {
-                            //Console.WriteLine(indexDown + " holding");
-                            NotifyKeyHold(indexDown);
-                        }
-
-                        break;
+                    if (tempListOfKeys.Contains(indexUp))
+                    {
+                        //Console.WriteLine(indexUp + " was released");
+                        tempListOfKeys.Remove(indexUp);
+                        NotifyKeyRelease(indexUp);
+                    }
+                }
+                
+                if (_sdlEvent.type == EventType.SdlKeydown)
+                {
+                    SdlKeycode indexDown = _sdlEvent.key.keySym.sym;
+                    if (!tempListOfKeys.Contains(indexDown))
+                    {
+                        //Console.WriteLine(indexDown + " was pressed");
+                        tempListOfKeys.Add(indexDown);
+                        NotifyKeyPress(indexDown);
+                    }
                 }
 
                 foreach (GameControllerButton button in Buttons)
@@ -217,6 +210,11 @@ namespace Alis.Core.Ecs.System.Manager.Input
                         Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed axi={axi}");
                     }
                 }
+            }
+
+            foreach (SdlKeycode key in tempListOfKeys)
+            {
+                NotifyKeyHold(key);
             }
         }
 

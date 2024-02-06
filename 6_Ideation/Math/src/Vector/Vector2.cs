@@ -45,10 +45,10 @@ namespace Alis.Core.Aspect.Math.Vector
     public struct Vector2 : IEquatable<Vector2>, IFormattable
     {
         /// <summary>The X component of the vector.</summary>
-        public readonly float X;
+        public float X;
 
         /// <summary>The Y component of the vector.</summary>
-        public readonly float Y;
+        public float Y;
 
         /// <summary>Creates a new <see cref="Vector2" /> object whose two elements have the same value.</summary>
         /// <param name="value">The value to assign to both elements.</param>
