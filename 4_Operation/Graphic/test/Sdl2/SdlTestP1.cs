@@ -31,6 +31,7 @@ using System;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Shape.Point;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -3289,11 +3290,11 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr window = IntPtr.Zero;
 
             // Act
-            Sdl.GetWindowSize(window, out int w, out int h);
+            Vector2 windowSize = Sdl.GetWindowSize(window);
 
             // Assert
-            Assert.True(w >= 0);
-            Assert.True(h >= 0);
+            Assert.True(windowSize.X >= 0);
+            Assert.True(windowSize.Y >= 0);
 
             Sdl.Quit();
         }

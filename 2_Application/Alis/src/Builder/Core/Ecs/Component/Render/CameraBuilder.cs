@@ -28,7 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Render;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Builder.Core.Ecs.Component.Render
 {
@@ -36,7 +40,9 @@ namespace Alis.Builder.Core.Ecs.Component.Render
     ///     The camera builder class
     /// </summary>
     public class CameraBuilder :
-        IBuild<Camera>
+        IBuild<Camera>,
+        IResolution<CameraBuilder, int, int>,
+        IBackgroundColor<CameraBuilder, Color>
     {
         /// <summary>
         ///     The camera
@@ -48,5 +54,29 @@ namespace Alis.Builder.Core.Ecs.Component.Render
         /// </summary>
         /// <returns>The camera</returns>
         public Camera Build() => camera;
+
+
+        /// <summary>
+        /// Resolutions the x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The camera builder</returns>
+        public CameraBuilder Resolution(int x, int y)
+        {
+            camera.Resolution = new Vector2(x, y);
+            return this;
+        }
+        
+        /// <summary>
+        /// Backgrounds the color using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The camera builder</returns>
+        public CameraBuilder BackgroundColor(Color value)
+        {
+            camera.BackgroundColor = value;
+            return this;
+        }
     }
 }

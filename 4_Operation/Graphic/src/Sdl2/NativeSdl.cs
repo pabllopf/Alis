@@ -4604,8 +4604,8 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderSetViewport", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderSetViewport([IsNotNull] IntPtr renderer, ref RectangleI rect);
-
+        internal static extern int InternalRenderSetViewportWithRef([IsNotNull] IntPtr renderer, ref RectangleI rect);
+        
         /// <summary>
         ///     Sdl the set render draw blend mode using the specified renderer
         /// </summary>

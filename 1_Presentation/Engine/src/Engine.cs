@@ -394,12 +394,12 @@ namespace Alis.App.Engine
                 ImGui.NewFrame();
 
                 // Setup display size (every frame to accommodate for window resizing)
-                Sdl.GetWindowSize(_window, out int w, out int h);
+                Vector2 windowSize = Sdl.GetWindowSize(_window);
                 Sdl.GetDrawableSize(_window, out int displayW, out int displayH);
-                io.DisplaySize = new Vector2(w, h);
-                if ((w > 0) && (h > 0))
+                io.DisplaySize = new Vector2(windowSize.X, windowSize.Y);
+                if ((windowSize.X > 0) && (windowSize.Y > 0))
                 {
-                    io.DisplayFramebufferScale = new Vector2((float) displayW / w, (float) displayH / h);
+                    io.DisplayFramebufferScale = new Vector2((float) displayW / windowSize.X, (float) displayH / windowSize.Y);
                 }
 
                 // Setup time step (we don't use SDL_GetTicks() because it is using millisecond resolution)

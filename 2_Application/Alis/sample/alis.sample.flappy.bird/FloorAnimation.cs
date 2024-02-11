@@ -73,7 +73,7 @@ namespace Alis.Sample.Flappy.Bird
             float displace = Velocity * Game.TimeManager.DeltaTime;
             
             // if the x position is less than -50.0f, then reset the x position to 0.0f
-            Vector2 newPosition = x < -50.0f ? new Vector2(xOld, y) : new Vector2(x - displace, y);
+            Vector2 newPosition = x < -25.0f ? new Vector2(xOld, y) : new Vector2(x - displace, y);
 
             Transform transform = new Transform
             {

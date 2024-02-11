@@ -27,26 +27,29 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
     ///     The sdl texture access enum
     /// </summary>
+    [Flags]
     public enum TextureAccess
     {
         /// <summary>
         ///     The sdl texture access static sdl texture access
         /// </summary>
-        SdlTextureAccessStatic,
+        SdlTextureAccessStatic = 0,
 
         /// <summary>
         ///     The sdl texture access streaming sdl texture access
         /// </summary>
-        SdlTextureAccessStreaming,
+        SdlTextureAccessStreaming = 1,
 
         /// <summary>
         ///     The sdl texture access target sdl texture access
         /// </summary>
-        SdlTextureAccessTarget
+        SdlTextureAccessTarget = 2
     }
 }

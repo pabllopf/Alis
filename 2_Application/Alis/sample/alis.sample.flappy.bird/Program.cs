@@ -112,7 +112,7 @@ namespace Alis.Sample.Flappy.Bird
                             .Transform(transform => transform
                                 .Position(168, 456)
                                 .Rotation(0)
-                                .Scale(1.5f, 1.0f)
+                                .Scale(2f, 1.1f)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
@@ -230,7 +230,7 @@ namespace Alis.Sample.Flappy.Bird
                             .Transform(transform => transform
                                 .Position(168, 456)
                                 .Rotation(0)
-                                .Scale(1.5f, 1.0f)
+                                .Scale(2f, 1.1f)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()

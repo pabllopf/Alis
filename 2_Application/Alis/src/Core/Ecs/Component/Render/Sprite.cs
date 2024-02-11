@@ -31,6 +31,7 @@ using System;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
@@ -74,7 +75,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         /// Gets or sets the value of the flip
         /// </summary>
-        public FlipTo Flip { get; set; }
+        public RendererFlip Flip { get; set; }
 
         /// <summary>
         ///     Builders this instance
@@ -89,7 +90,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             if (!string.IsNullOrEmpty(TexturePath))
             {
-                Image = new Image(TexturePath, Flip);
+                Image = new Image(TexturePath);
                 Console.WriteLine($"Load sprite od '{TexturePath}'");
             }
         }
@@ -130,27 +131,35 @@ namespace Alis.Core.Ecs.Component.Render
         /// Renders the renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
+        /// <param name="camera"></param>
+        public void Render(IntPtr renderer, Camera camera)
+        {
+            Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
+
+            RectangleI dstRect = new RectangleI(
+                x: (int) ((GameObject.Transform.Position.X - (w * GameObject.Transform.Scale.X/2)) - (camera.viewport.x - camera.viewport.w / 2) + Camera.CameraBorder), 
+                y: (int) ((GameObject.Transform.Position.Y - (h * GameObject.Transform.Scale.Y/2)) - (camera.viewport.y - camera.viewport.h / 2) + Camera.CameraBorder), 
+                w: (int) (w * GameObject.Transform.Scale.X), 
+                h: (int) (h * GameObject.Transform.Scale.Y));
+            
+            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flip);
+        }
+        
+        /// <summary>
+        /// Renders the renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
         public void Render(IntPtr renderer)
         {
-            // get position of the sprite
-            int x = (int) GameObject.Transform.Position.X;
-            int y = (int) GameObject.Transform.Position.Y;
-
-            // get the size of sprite.Image.Texture
             Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
-                
-            RectangleI dstRect = new RectangleI((int) (x - (w * GameObject.Transform.Scale.X/2)), (int) (y - (h * GameObject.Transform.Scale.Y/2)),
+            
+            RectangleI dstRect = new RectangleI(
+                (int) (GameObject.Transform.Position.X - (w * GameObject.Transform.Scale.X/2)), 
+                (int) (GameObject.Transform.Position.Y - (h * GameObject.Transform.Scale.Y/2)),
                 (int) (w * GameObject.Transform.Scale.X),
                 (int) (h * GameObject.Transform.Scale.Y));
-
-            if (Flip == FlipTo.Left)
-            {
-                Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, RendererFlip.SdlFlipHorizontal);
-            }
-            else
-            {
-                Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, RendererFlip.None);
-            }
+            
+            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flip);
         }
     }
 }
