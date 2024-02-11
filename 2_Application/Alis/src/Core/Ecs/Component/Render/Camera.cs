@@ -27,10 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Builder.Core.Ecs.Component.Render;
+using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Graphic.Sdl2;
+using Alis.Core.Graphic.Sdl2.Enums;
+using Alis.Core.Graphic.Sdl2.Structs;
+using Color = Alis.Core.Aspect.Math.Definition.Color;
 
 namespace Alis.Core.Ecs.Component.Render
 {
@@ -42,42 +49,57 @@ namespace Alis.Core.Ecs.Component.Render
         IBuilder<CameraBuilder>
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Camera" /> class
+        /// The viewport
+        /// </summary>
+        public RectangleI viewport;
+        
+        /// <summary>
+        /// Gets or sets the value of the texture target
+        /// </summary>
+        public IntPtr TextureTarget { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the resolution
+        /// </summary>
+        public Vector2 Resolution { get; set; } = new Vector2(800, 600);
+
+        /// <summary>
+        /// Gets or sets the value of the background color
+        /// </summary>
+        public Color BackgroundColor { get; set; } = Color.Black;
+
+        /// <summary>
+        /// Gets or sets the value of the camera border
+        /// </summary>
+        public static float CameraBorder { get; set; } = 1f;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Camera"/> class
         /// </summary>
         public Camera()
         {
-            Logger.Trace();
         }
-
-        /// <summary>
-        ///     Gets or sets the value of the point of view
-        /// </summary>
-        private Vector2 PointOfView { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the resolution
-        /// </summary>
-        public Vector2 Resolution { get; set; }
-
-        /// <summary>
-        ///     Builders this instance
-        /// </summary>
-        /// <returns>The camera builder</returns>
-        public CameraBuilder Builder() => new CameraBuilder();
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public override void OnStart()
         {
-            PointOfView = new Vector2(0.0f, 0.0f);
+            viewport = new RectangleI((int) GameObject.Transform.Position.X , (int) GameObject.Transform.Position.Y , (int)Resolution.X, (int)Resolution.Y);
+            TextureTarget = Sdl.CreateTexture(VideoGame.Instance.GraphicManager.Renderer, Sdl.PixelFormatRgba8888, (int)TextureAccess.SdlTextureAccessTarget, viewport.w, viewport.h);
+            VideoGame.Instance.GraphicManager.Attach(this);
         }
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
+        
         public override void OnUpdate()
         {
+            viewport.x = (int)GameObject.Transform.Position.X;
+            viewport.y = (int)GameObject.Transform.Position.Y;
         }
+        
+        /// <summary>
+        ///     Builders this instance
+        /// </summary>
+        /// <returns>The camera builder</returns>
+        public CameraBuilder Builder() => new CameraBuilder();
     }
 }

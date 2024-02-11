@@ -65,31 +65,7 @@ namespace Alis.Core.Ecs.Component.Render
 
             Size = new Vector2(w, h);
         }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Image"/> class
-        /// </summary>
-        /// <param name="path">The path</param>
-        /// <param name="flip">The flip</param>
-        public Image(string path, FlipTo flip)
-        {
-            Logger.Trace();
-            Path = path;
-            Flip = flip;
-
-            Texture = Sdl.CreateTextureFromSurface(VideoGame.Instance.GraphicManager.Renderer, Sdl.LoadBmp(path));
-
-            // get the size of sprite.Image.Texture
-            Sdl.QueryTexture(Texture, out _, out _, out int w, out int h);
-
-            Size = new Vector2(w, h);
-        }
-
-        /// <summary>
-        /// Gets or sets the value of the flip
-        /// </summary>
-        public FlipTo Flip { get; set; } = FlipTo.Right;
-
+        
         /// <summary>
         ///     Gets or sets the value of the path
         /// </summary>

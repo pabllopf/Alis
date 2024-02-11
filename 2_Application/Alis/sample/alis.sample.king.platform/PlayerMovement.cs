@@ -35,6 +35,7 @@ using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.System;
 using Alis.Core.Graphic;
+using Alis.Core.Graphic.Sdl2.Enums;
 
 namespace Alis.Sample.King.Platform
 {
@@ -126,13 +127,13 @@ namespace Alis.Sample.King.Platform
             if (key == SdlKeycode.SdlkD)
             {
                 directionPlayer = new Vector2(0, 0);
-                animator.ChangeAnimationTo("Idle", FlipTo.Right);
+                animator.ChangeAnimationTo("Run", RendererFlip.None);
             }
             
             if (key == SdlKeycode.SdlkA)
             {
                 directionPlayer = new Vector2(0, 0);
-                animator.ChangeAnimationTo("Idle", FlipTo.Left);
+                animator.ChangeAnimationTo("Run", RendererFlip.SdlFlipHorizontal);
             }
         }
 
@@ -148,15 +149,17 @@ namespace Alis.Sample.King.Platform
                 Console.WriteLine("Jump because space key is pressed");
             }
             
-            if (key == SdlKeycode.SdlkD && directionPlayer.X == 0)
+            if (key == SdlKeycode.SdlkD )
             {
                 directionPlayer = new Vector2(1, 0);
-                animator.ChangeAnimationTo("Run", FlipTo.Right);
+                animator.ChangeAnimationTo("Run", RendererFlip.None);
+                Console.WriteLine($"Run to right because D key is pressed {directionPlayer}");
             }
-            if (key == SdlKeycode.SdlkA && directionPlayer.X == 0)
+            if (key == SdlKeycode.SdlkA)
             {
-                directionPlayer = new Vector2(directionPlayer.X - 1, 0);
-                animator.ChangeAnimationTo("Run", FlipTo.Left);
+                directionPlayer = new Vector2(-1, 0);
+                animator.ChangeAnimationTo("Run", RendererFlip.SdlFlipHorizontal);
+                Console.WriteLine($"Run to left because A key is pressed {directionPlayer}");
             }
         }
         
@@ -170,16 +173,13 @@ namespace Alis.Sample.King.Platform
             
             isJumping = false;
             
-            switch(sprite.Flip)
+            if (Math.Abs(directionPlayer.X - 1) < 0.1f)
             {
-                case FlipTo.Left:
-                    animator.ChangeAnimationTo("Jump", FlipTo.Left);
-                    break;
-                case FlipTo.Right:
-                    animator.ChangeAnimationTo("Jump", FlipTo.Right);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                animator.ChangeAnimationTo("Jump", RendererFlip.None);
+            }
+            else if (Math.Abs(directionPlayer.X - (-1)) < 0.1f)
+            {
+                animator.ChangeAnimationTo("Jump", RendererFlip.SdlFlipHorizontal);
             }
             
             coolDownJump = ResetCoolDownJump;

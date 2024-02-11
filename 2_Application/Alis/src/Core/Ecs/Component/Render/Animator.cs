@@ -33,6 +33,7 @@ using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Graphic;
+using Alis.Core.Graphic.Sdl2.Enums;
 
 namespace Alis.Core.Ecs.Component.Render
 {
@@ -176,9 +177,9 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         /// <param name="nameAnimation">The name animation</param>
         /// <param name="flipTo">The flip to</param>
-        public void ChangeAnimationTo(string nameAnimation, FlipTo flipTo)
+        public void ChangeAnimationTo(string nameAnimation, RendererFlip flipTo)
         {
-            if (currentAnimation.Name.Equals(nameAnimation))
+            if (currentAnimation.Name.Equals(nameAnimation) && Sprite.Flip == flipTo)
             {
                 return;
             }

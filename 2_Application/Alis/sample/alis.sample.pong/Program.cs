@@ -68,6 +68,7 @@ namespace Alis.Sample.Pong
                     .Graphic(graphic => graphic
                         .Window(window => window
                             .Resolution(1024, 640)
+                            .IsResizable(false)
                             .Background(Color.Black)
                             .Build())
                         .Build())
@@ -79,12 +80,6 @@ namespace Alis.Sample.Pong
                     .Build())
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
-                        .Add<GameObject>(cameraObj => cameraObj
-                            .Name("Camera")
-                            .AddComponent<Camera>(camera => camera
-                                .Builder()
-                                .Build())
-                            .Build())
                         .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
                             .AddComponent<AudioSource>(audioSource => audioSource

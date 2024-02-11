@@ -98,5 +98,15 @@ namespace Alis.Core.Aspect.Math.Definition
         /// Gets the value of the green
         /// </summary>
         public static Color Green => new Color(0, 255, 0, 255);
+
+        /// <summary>
+        /// Gets or sets the value of the brown
+        /// </summary>
+        public static Color Brown { get; set; } = new Color(165, 42, 42, 255);
+
+        /// <summary>
+        /// Gets or sets the value of the dark green
+        /// </summary>
+        public static Color DarkGreen { get; set; } = new Color(0, 100, 0, 255);
     }
 }

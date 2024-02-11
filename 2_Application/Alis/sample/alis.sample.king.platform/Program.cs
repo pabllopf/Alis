@@ -54,9 +54,9 @@ namespace Alis.Sample.King.Platform
                 .Builder()
                 .Settings(setting => setting
                     .General(general => general
-                        .Name("Space Simulator")
+                        .Name("King Game")
                         .Author("Pablo Perdomo Falcón")
-                        .Description("Space simulator")
+                        .Description("King platform 2d game.")
                         .Debug(true)
                         .License("GNU General Public License v3.0")
                         .Icon(AssetManager.Find("app.bmp"))
@@ -74,13 +74,13 @@ namespace Alis.Sample.King.Platform
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
-                        .Debug(false)
+                        .Debug(true)
                         .DebugColor(Color.Green)
                         .Build())
                     .Build())
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
-                        .Add<GameObject>(soundTrack => soundTrack
+                        /*.Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
                             .AddComponent<AudioSource>(audioSource => audioSource
                                 .Builder()
@@ -90,7 +90,7 @@ namespace Alis.Sample.King.Platform
                                     .Volume(100.0f)
                                     .Build())
                                 .Build())
-                            .Build())
+                            .Build())*/
                         
                         // PLAYER
                         .Add<GameObject>(player => player
@@ -166,6 +166,10 @@ namespace Alis.Sample.King.Platform
                                 .GravityScale(0.1f)
                                 .Build())
                             .AddComponent(new PlayerMovement())
+                            .AddComponent<Camera>(camera => camera.Builder()
+                                .BackgroundColor(Color.Brown)
+                                .Resolution(1024, 640)
+                                .Build())
                             .Build())
                         
                         // FLOOR

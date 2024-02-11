@@ -333,6 +333,9 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnDraw()
         {
+            //RectangleF.x = GameObject.Transform.Position.X + RelativePosition.X - Width / 2;
+            //RectangleF.y = GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2;
+            
             RectangleF.x = GameObject.Transform.Position.X + RelativePosition.X - Width / 2;
             RectangleF.y = GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2;
         }

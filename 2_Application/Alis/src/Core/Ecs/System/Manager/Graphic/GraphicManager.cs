@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         ///     The renderWindow
         /// </summary>
         public IntPtr Renderer;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
         /// </summary>
@@ -85,6 +85,11 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         ///     Gets or sets the value of the sprites
         /// </summary>
         private static List<Sprite> Sprites { get; set; } = new List<Sprite>();
+        
+        /// <summary>
+        /// Gets or sets the value of the cameras
+        /// </summary>
+        private static List<Camera> Cameras { get; set; } = new List<Camera>();
 
         /// <summary>
         ///     Gets or sets the value of the setting
@@ -134,12 +139,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         public override void OnBeforeUpdate()
         {
             Logger.Trace();
-
-            // Sets color to black (0, 0, 0, 255).
-            Sdl.SetRenderDrawColor(Renderer, 0, 0, 0, 255);
-
-            // Clears the current render surface.
-            Sdl.RenderClear(Renderer);
         }
 
         /// <summary>
@@ -147,6 +146,17 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         public override void OnUpdate()
         {
+            if (Cameras.Count > 0)
+            {
+                Sdl.SetRenderTarget(Renderer, Cameras[0].TextureTarget);
+                Sdl.SetRenderDrawColor(Renderer, Cameras[0].BackgroundColor.R, Cameras[0].BackgroundColor.G, Cameras[0].BackgroundColor.B, Cameras[0].BackgroundColor.A);
+                Sdl.RenderClear(Renderer);
+            }else
+            {
+                Sdl.SetRenderDrawColor(Renderer, VideoGame.Instance.Settings.Graphic.Window.Background.R, VideoGame.Instance.Settings.Graphic.Window.Background.G, VideoGame.Instance.Settings.Graphic.Window.Background.B, VideoGame.Instance.Settings.Graphic.Window.Background.A);
+                Sdl.RenderClear(Renderer);
+            }
+            
             if (VideoGame.Instance.Settings.General.Debug)
             {
                 //Show fps on tittle window
@@ -154,11 +164,18 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             }
             
             Sprites = Sprites.OrderBy(o => o.Depth).ToList();
-
+            
             // Draws sprites:
             foreach (Sprite sprite in Sprites.Where(sprite => sprite.Image != null))
             {
-                sprite.Render(Renderer);
+                if (Cameras.Count > 0)
+                {
+                    sprite.Render(Renderer, Cameras[0]);
+                }
+                else
+                {
+                    sprite.Render(Renderer);
+                }
             }
 
             if (VideoGame.Instance.Settings.Physic.DebugMode)
@@ -177,13 +194,49 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     if (ColliderBases[i] != null)
                     {
                         rectangles[i] = ColliderBases[i].RectangleF;
+
+                        if (Cameras.Count > 0)
+                        {
+                            rectangles[i] = new RectangleF(
+                                x: (int) (ColliderBases[i].GameObject.Transform.Position.X - rectangles[i].w * ColliderBases[i].GameObject.Transform.Scale.X/2 - (Cameras[0].viewport.x - Cameras[0].viewport.w / 2) + Camera.CameraBorder), 
+                                y: (int) (ColliderBases[i].GameObject.Transform.Position.Y - rectangles[i].h * ColliderBases[i].GameObject.Transform.Scale.Y/2 - (Cameras[0].viewport.y - Cameras[0].viewport.h / 2) + Camera.CameraBorder), 
+                                w: (int) rectangles[i].w, 
+                                h: (int) rectangles[i].h);
+                            if (ColliderBases[i].GameObject.Contains<Camera>())
+                            {
+                                rectangles[i].x += ((rectangles[i].w) / 2);
+                                rectangles[i].y += ((rectangles[i].h) / 2);
+                            }
+
+                            //Console.WriteLine($"Rec { ColliderBases[i].GameObject.Name} { ColliderBases[i].RectangleF.x} { ColliderBases[i].RectangleF.y} { ColliderBases[i].RectangleF.w} { ColliderBases[i].RectangleF.h}");
+                        }
                     }
                 }
-
-                // Render the font to the screen
-                //Sdl.RenderCopy(Renderer, textureFont1, IntPtr.Zero, ref dstRectFont1);
-
+                
                 Sdl.RenderDrawRectsF(Renderer, rectangles, rectangles.Length);
+            }
+            
+            
+            if (Cameras.Count > 0)
+            {
+                Sdl.SetRenderTarget(Renderer, IntPtr.Zero);
+                Sdl.SetRenderDrawColor(Renderer, 0, 0, 0, 255);
+                Sdl.RenderClear(Renderer);
+                
+                //
+                // Draw camera texture
+                //
+                float pixel_h = Sdl.GetWindowSize(_window).Y / Cameras[0].viewport.h;
+                float correction_x = Cameras[0].viewport.x - Cameras[0].viewport.x;
+                float correction_y = Cameras[0].viewport.y - Cameras[0].viewport.y;
+
+                RectangleI dstRect = new RectangleI(
+                    (int) (correction_x * pixel_h - pixel_h * Camera.CameraBorder),
+                    (int) (correction_y * pixel_h - pixel_h * Camera.CameraBorder),
+                    (int) (Cameras[0].viewport.w * pixel_h),
+                    (int) (Cameras[0].viewport.h * pixel_h));
+                
+                Sdl.RenderCopy(Renderer, Cameras[0].TextureTarget, IntPtr.Zero, ref dstRect);
             }
 
             Sdl.RenderPresent(Renderer);
@@ -363,8 +416,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 _window,
                 -1,
                 RendererFlags.SdlRendererAccelerated);
-
-
+            
             // Check if the renderer was created successfully.
             Console.WriteLine(Renderer == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : "Renderer created");
 
@@ -478,6 +530,16 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             ColliderBases.Add(collider);
         }
 
+
+        /// <summary>
+        /// Attaches the camera
+        /// </summary>
+        /// <param name="camera">The camera</param>
+        public void Attach(Camera camera)
+        {
+            Cameras.Add(camera);
+        }
+
         /// <summary>
         ///     Uns the attach using the specified collider
         /// </summary>
@@ -485,6 +547,15 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         public void UnAttach(BoxCollider collider)
         {
             ColliderBases.Remove(collider);
+        }
+        
+        /// <summary>
+        /// Uns the attach using the specified camera
+        /// </summary>
+        /// <param name="camera">The camera</param>
+        public void UnAttach(Camera camera)
+        {
+            Cameras.Remove(camera);
         }
     }
 }
