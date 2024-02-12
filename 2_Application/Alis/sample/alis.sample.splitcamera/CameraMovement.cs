@@ -31,9 +31,8 @@ using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.System;
 
-namespace Alis.Sample.Camera
+namespace Alis.Sample.SplitCamera
 {
     /// <summary>
     /// The camera movement class
