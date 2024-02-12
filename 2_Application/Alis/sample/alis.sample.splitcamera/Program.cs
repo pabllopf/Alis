@@ -34,7 +34,7 @@ using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity.GameObject;
 using Alis.Core.Ecs.Entity.Scene;
 
-namespace Alis.Sample.Camera
+namespace Alis.Sample.SplitCamera
 {
     /// <summary>
     ///     The program class
@@ -79,7 +79,7 @@ namespace Alis.Sample.Camera
                     .Add<Scene>(gameScene => gameScene
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Camera")
-                            .AddComponent<Core.Ecs.Component.Render.Camera>(camera => camera.Builder()
+                            .AddComponent<Camera>(camera => camera.Builder()
                                 .Resolution(1024, 640)
                                 .BackgroundColor(Color.DarkGreen)
                                 .Build())
