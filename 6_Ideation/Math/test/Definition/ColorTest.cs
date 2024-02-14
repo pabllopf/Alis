@@ -118,5 +118,60 @@ namespace Alis.Core.Aspect.Math.Test.Definition
             Assert.Equal(expected.B, actual.B);
             Assert.Equal(expected.A, actual.A);
         }
+
+        /// <summary>
+        ///     Tests that red returns correct color
+        /// </summary>
+        [Fact]
+        public void Green_ReturnsCorrectColor()
+        {
+            // Arrange
+            Color expected = new Color(0, 255, 0, 255);
+
+            // Act
+            Color actual = Color.Green;
+
+            // Assert
+            Assert.Equal(expected.R, actual.R);
+            Assert.Equal(expected.G, actual.G);
+            Assert.Equal(expected.B, actual.B);
+            Assert.Equal(expected.A, actual.A);
+        }
+
+        /// <summary>
+        ///     Tests that red returns correct color
+        /// </summary>
+        [Fact]
+        public void Brown_ReturnsCorrectColor()
+        {
+            // Arrange
+            Color expected = new Color(165, 42, 42, 255);
+
+            // Act
+            Color actual = Color.Brown;
+
+            // Assert
+            Assert.Equal(expected.R, actual.R);
+            Assert.Equal(expected.G, actual.G);
+            Assert.Equal(expected.B, actual.B);
+            Assert.Equal(expected.A, actual.A);
+        }
+
+        [Fact]
+        public void DarkGreen_ReturnsCorrectColor()
+        {
+            // Arrange
+            Color expected = new Color(0, 100, 0, 255);
+
+            // Act
+            Color actual = Color.DarkGreen;
+
+            // Assert
+            Assert.Equal(expected.R, actual.R);
+            Assert.Equal(expected.G, actual.G);
+            Assert.Equal(expected.B, actual.B);
+            Assert.Equal(expected.A, actual.A);
+        }
+
     }
 }

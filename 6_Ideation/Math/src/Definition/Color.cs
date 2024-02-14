@@ -102,11 +102,11 @@ namespace Alis.Core.Aspect.Math.Definition
         /// <summary>
         /// Gets or sets the value of the brown
         /// </summary>
-        public static Color Brown { get; set; } = new Color(165, 42, 42, 255);
+        public static Color Brown { get; } = new Color(165, 42, 42, 255);
 
         /// <summary>
         /// Gets or sets the value of the dark green
         /// </summary>
-        public static Color DarkGreen { get; set; } = new Color(0, 100, 0, 255);
+        public static Color DarkGreen { get; } = new Color(0, 100, 0, 255);
     }
 }
