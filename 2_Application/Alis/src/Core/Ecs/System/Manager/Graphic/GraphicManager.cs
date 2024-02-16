@@ -226,15 +226,13 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 //
                 // Draw camera texture
                 //
-                float pixel_h = Sdl.GetWindowSize(_window).Y / Cameras[0].viewport.h;
-                float correction_x = Cameras[0].viewport.x - Cameras[0].viewport.x;
-                float correction_y = Cameras[0].viewport.y - Cameras[0].viewport.y;
-
+                float pixelH = Sdl.GetWindowSize(_window).Y / Cameras[0].viewport.h;
+                
                 RectangleI dstRect = new RectangleI(
-                    (int) (correction_x * pixel_h - pixel_h * Camera.CameraBorder),
-                    (int) (correction_y * pixel_h - pixel_h * Camera.CameraBorder),
-                    (int) (Cameras[0].viewport.w * pixel_h),
-                    (int) (Cameras[0].viewport.h * pixel_h));
+                    (int) (pixelH - pixelH * Camera.CameraBorder),
+                    (int) (pixelH - pixelH * Camera.CameraBorder),
+                    (int) (Cameras[0].viewport.w * pixelH),
+                    (int) (Cameras[0].viewport.h * pixelH));
                 
                 Sdl.RenderCopy(Renderer, Cameras[0].TextureTarget, IntPtr.Zero, ref dstRect);
             }
