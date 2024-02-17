@@ -434,18 +434,43 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        ///     Applies the to list target using the specified target
+        /// Applies the to list target using the specified target
         /// </summary>
         /// <param name="target">The target</param>
         /// <param name="input">The input</param>
         /// <param name="list">The list</param>
         /// <param name="options">The options</param>
-        [ExcludeFromCodeCoverage]
         internal static void ApplyToListTarget(object target, IEnumerable input, ListObject list, JsonOptions options)
         {
             if (list.List == null)
                 return;
 
+            InitializeListContext(list, target, input, options);
+
+            if (input != null)
+            {
+                ProcessInput(target, input, list, options);
+            }
+            else
+            {
+                ClearList(list);
+            }
+
+            if (list.Context != null)
+            {
+                list.Context.Clear();
+            }
+        }
+
+        /// <summary>
+        /// Initializes the list context using the specified list
+        /// </summary>
+        /// <param name="list">The list</param>
+        /// <param name="target">The target</param>
+        /// <param name="input">The input</param>
+        /// <param name="options">The options</param>
+        private static void InitializeListContext(ListObject list, object target, IEnumerable input, JsonOptions options)
+        {
             if (list.Context != null)
             {
                 list.Context["action"] = "init";
@@ -453,62 +478,69 @@ namespace Alis.Core.Aspect.Data.Json
                 list.Context["input"] = input;
                 list.Context["options"] = options;
             }
+        }
 
-            if (input != null)
+        /// <summary>
+        /// Processes the input using the specified target
+        /// </summary>
+        /// <param name="target">The target</param>
+        /// <param name="input">The input</param>
+        /// <param name="list">The list</param>
+        /// <param name="options">The options</param>
+        private static void ProcessInput(object target, IEnumerable input, ListObject list, JsonOptions options)
+        {
+            Array array = list.List as Array;
+            int max = 0;
+            int i = 0;
+            if (array != null)
             {
-                Array array = list.List as Array;
-                int max = 0;
-                int i = 0;
+                i = array.GetLowerBound(0);
+                max = array.GetUpperBound(0);
+            }
+
+            Type itemType = GetItemType(list.List.GetType());
+            foreach (object value in input)
+            {
                 if (array != null)
                 {
-                    i = array.GetLowerBound(0);
-                    max = array.GetUpperBound(0);
+                    if (i - 1 == max)
+                        break;
+
+                    array.SetValue(ChangeType(target, value, itemType, options), i++);
                 }
-
-                Type itemType = GetItemType(list.List.GetType());
-                foreach (object value in input)
+                else
                 {
-                    if (array != null)
+                    object cValue = ChangeType(target, value, itemType, options);
+                    if (list.Context != null)
                     {
-                        if (i - 1 == max)
-                            break;
+                        list.Context["action"] = "add";
+                        list.Context["itemType"] = itemType;
+                        list.Context["value"] = value;
+                        list.Context["cvalue"] = cValue;
 
-                        array.SetValue(ChangeType(target, value, itemType, options), i++);
+                        if (!list.Context.TryGetValue("cvalue", out object newCValue))
+                            continue;
+
+                        cValue = newCValue;
                     }
-                    else
-                    {
-                        object cValue = ChangeType(target, value, itemType, options);
-                        if (list.Context != null)
-                        {
-                            list.Context["action"] = "add";
-                            list.Context["itemType"] = itemType;
-                            list.Context["value"] = value;
-                            list.Context["cvalue"] = cValue;
 
-                            if (!list.Context.TryGetValue("cvalue", out object newCValue))
-                                continue;
-
-                            cValue = newCValue;
-                        }
-
-                        list.Add(cValue, options);
-                    }
+                    list.Add(cValue, options);
                 }
             }
-            else
-            {
-                if (list.Context != null)
-                {
-                    list.Context["action"] = "clear";
-                }
+        }
 
-                list.Clear();
-            }
-
+        /// <summary>
+        /// Clears the list using the specified list
+        /// </summary>
+        /// <param name="list">The list</param>
+        private static void ClearList(ListObject list)
+        {
             if (list.Context != null)
             {
-                list.Context.Clear();
+                list.Context["action"] = "clear";
             }
+
+            list.Clear();
         }
 
         /// <summary>
