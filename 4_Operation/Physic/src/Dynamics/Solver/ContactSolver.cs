@@ -202,7 +202,10 @@ namespace Alis.Core.Physic.Dynamics.Solver
             }
         }
 
-        /// <summary>Initialize position dependent portions of the velocity constraints.</summary>
+
+        /// <summary>
+        /// Initializes the velocity constraints
+        /// </summary>
         public void InitializeVelocityConstraints()
         {
             for (int i = 0; i < count; ++i)
@@ -210,106 +213,143 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 ContactVelocityConstraint vc = VelocityConstraints[i];
                 ContactPositionConstraint pc = positionConstraints[i];
 
-                float radiusA = pc.RadiusA;
-                float radiusB = pc.RadiusB;
-                Manifold manifold = contacts[vc.ContactIndex].Manifold;
+                InitializeVelocityConstraintPoints(vc, pc);
+            }
+        }
 
-                int indexA = vc.IndexA;
-                int indexB = vc.IndexB;
+        /// <summary>
+        /// Initializes the velocity constraint points using the specified vc
+        /// </summary>
+        /// <param name="vc">The vc</param>
+        /// <param name="pc">The pc</param>
+        private void InitializeVelocityConstraintPoints(ContactVelocityConstraint vc, ContactPositionConstraint pc)
+        {
+            float radiusA = pc.RadiusA;
+            float radiusB = pc.RadiusB;
+            Manifold manifold = contacts[vc.ContactIndex].Manifold;
 
-                float mA = vc.InvMassA;
-                float mB = vc.InvMassB;
-                float iA = vc.InvIa;
-                float iB = vc.InvIb;
-                Vector2 localCenterA = pc.LocalCenterA;
-                Vector2 localCenterB = pc.LocalCenterB;
+            int indexA = vc.IndexA;
+            int indexB = vc.IndexB;
 
-                Vector2 cA = positions[indexA].C;
-                float aA = positions[indexA].A;
-                Vector2 vA = velocities[indexA].V;
-                float wA = velocities[indexA].W;
+            float mA = vc.InvMassA;
+            float mB = vc.InvMassB;
+            float iA = vc.InvIa;
+            float iB = vc.InvIb;
+            Vector2 localCenterA = pc.LocalCenterA;
+            Vector2 localCenterB = pc.LocalCenterB;
 
-                Vector2 cB = positions[indexB].C;
-                float aB = positions[indexB].A;
-                Vector2 vB = velocities[indexB].V;
-                float wB = velocities[indexB].W;
+            Vector2 cA = positions[indexA].C;
+            float aA = positions[indexA].A;
+            Vector2 vA = velocities[indexA].V;
+            float wA = velocities[indexA].W;
 
-                Debug.Assert(manifold.PointCount > 0);
+            Vector2 cB = positions[indexB].C;
+            float aB = positions[indexB].A;
+            Vector2 vB = velocities[indexB].V;
+            float wB = velocities[indexB].W;
 
-                Transform xfA = new Transform();
-                Transform xfB = new Transform();
-                xfA.Rotation.Set(aA);
-                xfB.Rotation.Set(aB);
-                xfA.Position = cA - MathUtils.Mul(xfA.Rotation, localCenterA);
-                xfB.Position = cB - MathUtils.Mul(xfB.Rotation, localCenterB);
+            Debug.Assert(manifold.PointCount > 0);
 
-                WorldManifold.Initialize(ref manifold, ref xfA, radiusA, ref xfB, radiusB, out Vector2 normal,
-                    out FixedArray2<Vector2> points, out _);
+            Transform xfA = new Transform();
+            Transform xfB = new Transform();
+            xfA.Rotation.Set(aA);
+            xfB.Rotation.Set(aB);
+            xfA.Position = cA - MathUtils.Mul(xfA.Rotation, localCenterA);
+            xfB.Position = cB - MathUtils.Mul(xfB.Rotation, localCenterB);
 
-                vc.Normal = normal;
+            WorldManifold.Initialize(ref manifold, ref xfA, radiusA, ref xfB, radiusB, out Vector2 normal,
+                out FixedArray2<Vector2> points, out _);
 
-                int pointCount = vc.PointCount;
-                for (int j = 0; j < pointCount; ++j)
+            vc.Normal = normal;
+
+            int pointCount = vc.PointCount;
+            for (int j = 0; j < pointCount; ++j)
+            {
+                VelocityConstraintPoint vcp = vc.Points[j];
+
+                vcp.Ra = points[j] - cA;
+                vcp.Rb = points[j] - cB;
+
+                float rnA = MathUtils.Cross(vcp.Ra, vc.Normal);
+                float rnB = MathUtils.Cross(vcp.Rb, vc.Normal);
+
+                float kNormal = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
+
+                vcp.NormalMass = kNormal > 0.0f ? 1.0f / kNormal : 0.0f;
+
+                Vector2 tangent = MathUtils.Cross(vc.Normal, 1.0f);
+
+                float rtA = MathUtils.Cross(vcp.Ra, tangent);
+                float rtB = MathUtils.Cross(vcp.Rb, tangent);
+
+                float kTangent = mA + mB + iA * rtA * rtA + iB * rtB * rtB;
+
+                vcp.TangentMass = kTangent > 0.0f ? 1.0f / kTangent : 0.0f;
+
+                SetupVelocityBias(vc, vcp, vA, wA, vB, wB);
+            }
+
+            PrepareBlockSolver(vc, mA, mB, iA, iB);
+        }
+
+        /// <summary>
+        /// Setup the velocity bias using the specified vc
+        /// </summary>
+        /// <param name="vc">The vc</param>
+        /// <param name="vcp">The vcp</param>
+        /// <param name="vA">The </param>
+        /// <param name="wA">The </param>
+        /// <param name="vB">The </param>
+        /// <param name="wB">The </param>
+        private void SetupVelocityBias(ContactVelocityConstraint vc, VelocityConstraintPoint vcp, Vector2 vA, float wA, Vector2 vB, float wB)
+        {
+            // Setup a velocity bias for restitution.
+            vcp.VelocityBias = 0.0f;
+            float vRel = MathUtils.Dot(vc.Normal,
+                vB + MathUtils.Cross(wB, vcp.Rb) - vA - MathUtils.Cross(wA, vcp.Ra));
+            if (vRel < -vc.Threshold)
+            {
+                vcp.VelocityBias = -vc.Restitution * vRel;
+            }
+        }
+
+        /// <summary>
+        /// Prepares the block solver using the specified vc
+        /// </summary>
+        /// <param name="vc">The vc</param>
+        /// <param name="mA">The </param>
+        /// <param name="mB">The </param>
+        /// <param name="iA">The </param>
+        /// <param name="iB">The </param>
+        private void PrepareBlockSolver(ContactVelocityConstraint vc, float mA, float mB, float iA, float iB)
+        {
+            // If we have two points, then prepare the block solver.
+            if ((vc.PointCount == 2) && Settings.BlockSolve)
+            {
+                VelocityConstraintPoint vcp1 = vc.Points[0];
+                VelocityConstraintPoint vcp2 = vc.Points[1];
+
+                float rn1A = MathUtils.Cross(vcp1.Ra, vc.Normal);
+                float rn1B = MathUtils.Cross(vcp1.Rb, vc.Normal);
+                float rn2A = MathUtils.Cross(vcp2.Ra, vc.Normal);
+                float rn2B = MathUtils.Cross(vcp2.Rb, vc.Normal);
+
+                float k11 = mA + mB + iA * rn1A * rn1A + iB * rn1B * rn1B;
+                float k22 = mA + mB + iA * rn2A * rn2A + iB * rn2B * rn2B;
+                float k12 = mA + mB + iA * rn1A * rn2A + iB * rn1B * rn2B;
+
+                // Ensure a reasonable condition number.
+                const float kMaxConditionNumber = 1000.0f;
+                if (k11 * k11 < kMaxConditionNumber * (k11 * k22 - k12 * k12))
                 {
-                    VelocityConstraintPoint vcp = vc.Points[j];
-
-                    vcp.Ra = points[j] - cA;
-                    vcp.Rb = points[j] - cB;
-
-                    float rnA = MathUtils.Cross(vcp.Ra, vc.Normal);
-                    float rnB = MathUtils.Cross(vcp.Rb, vc.Normal);
-
-                    float kNormal = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
-
-                    vcp.NormalMass = kNormal > 0.0f ? 1.0f / kNormal : 0.0f;
-
-                    Vector2 tangent = MathUtils.Cross(vc.Normal, 1.0f);
-
-                    float rtA = MathUtils.Cross(vcp.Ra, tangent);
-                    float rtB = MathUtils.Cross(vcp.Rb, tangent);
-
-                    float kTangent = mA + mB + iA * rtA * rtA + iB * rtB * rtB;
-
-                    vcp.TangentMass = kTangent > 0.0f ? 1.0f / kTangent : 0.0f;
-
-                    // Setup a velocity bias for restitution.
-                    vcp.VelocityBias = 0.0f;
-                    float vRel = MathUtils.Dot(vc.Normal,
-                        vB + MathUtils.Cross(wB, vcp.Rb) - vA - MathUtils.Cross(wA, vcp.Ra));
-                    if (vRel < -vc.Threshold)
-                    {
-                        vcp.VelocityBias = -vc.Restitution * vRel;
-                    }
+                    // K is safe to invert.
+                    vc.K.Ex = new Vector2(k11, k12);
+                    vc.K.Ey = new Vector2(k12, k22);
+                    vc.NormalMass = vc.K.Inverse;
                 }
-
-                // If we have two points, then prepare the block solver.
-                if ((vc.PointCount == 2) && Settings.BlockSolve)
+                else
                 {
-                    VelocityConstraintPoint vcp1 = vc.Points[0];
-                    VelocityConstraintPoint vcp2 = vc.Points[1];
-
-                    float rn1A = MathUtils.Cross(vcp1.Ra, vc.Normal);
-                    float rn1B = MathUtils.Cross(vcp1.Rb, vc.Normal);
-                    float rn2A = MathUtils.Cross(vcp2.Ra, vc.Normal);
-                    float rn2B = MathUtils.Cross(vcp2.Rb, vc.Normal);
-
-                    float k11 = mA + mB + iA * rn1A * rn1A + iB * rn1B * rn1B;
-                    float k22 = mA + mB + iA * rn2A * rn2A + iB * rn2B * rn2B;
-                    float k12 = mA + mB + iA * rn1A * rn2A + iB * rn1B * rn2B;
-
-                    // Ensure a reasonable condition number.
-                    const float kMaxConditionNumber = 1000.0f;
-                    if (k11 * k11 < kMaxConditionNumber * (k11 * k22 - k12 * k12))
-                    {
-                        // K is safe to invert.
-                        vc.K.Ex = new Vector2(k11, k12);
-                        vc.K.Ey = new Vector2(k12, k22);
-                        vc.NormalMass = vc.K.Inverse;
-                    }
-                    else
-                    {
-                        vc.PointCount = 1;
-                    }
+                    vc.PointCount = 1;
                 }
             }
         }
