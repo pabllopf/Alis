@@ -455,7 +455,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        ///     Handles the property serialization using the specified serialization
+        /// Handles the property serialization using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="type">The type</param>
@@ -465,64 +465,92 @@ namespace Alis.Core.Aspect.Data.Json
         {
             foreach (PropertyInfo info in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
+                if (ShouldSkipProperty(serialization, info, options))
+                    continue;
+
+                yield return CreateMemberDefinition(serialization, info, options);
+            }
+        }
+
+        /// <summary>
+        /// Describes whether should skip property
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="info">The info</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool ShouldSkipProperty(bool serialization, PropertyInfo info, JsonOptions options)
+        {
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
+            {
+                JsonAttribute ja = JsonSerializer.GetJsonAttribute(info);
+                if (ja != null)
                 {
-                    JsonAttribute ja = JsonSerializer.GetJsonAttribute(info);
-                    if (ja != null)
+                    switch (serialization)
                     {
-                        switch (serialization)
-                        {
-                            case true when ja.IgnoreWhenSerializing:
-                            case false when ja.IgnoreWhenDeserializing:
-                                continue;
-                        }
+                        case true when ja.IgnoreWhenSerializing:
+                        case false when ja.IgnoreWhenDeserializing:
+                            return true;
                     }
                 }
-
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
-                {
-                    if (info.IsDefined(typeof(XmlIgnoreAttribute), true))
-                        continue;
-                }
-
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
-                {
-                    if (JsonSerializer.HasScriptIgnore(info))
-                        continue;
-                }
-
-                if (serialization)
-                {
-                    if (!info.CanRead)
-                        continue;
-
-                    MethodInfo getMethod = info.GetGetMethod();
-                    if (getMethod == null || getMethod.GetParameters().Length > 0)
-                        continue;
-                }
-
-                string name = JsonSerializer.GetObjectName(info, info.Name);
-
-                MemberDefinition ma = new MemberDefinition
-                {
-                    Type = info.PropertyType,
-                    Name = info.Name
-                };
-                if (serialization)
-                {
-                    ma.WireName = name;
-                    ma.EscapedWireName = JsonSerializer.EscapeString(name);
-                }
-                else
-                {
-                    ma.WireName = name;
-                }
-
-                ma.HasDefaultValue = JsonSerializer.TryGetObjectDefaultValue(info, out object defaultValue);
-                ma.DefaultValue = defaultValue;
-                ma.Accessor = (IMemberAccessor) Activator.CreateInstance(typeof(PropertyInfoAccessor<,>).MakeGenericType(info.DeclaringType, info.PropertyType), info);
-                yield return ma;
             }
+
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
+            {
+                if (info.IsDefined(typeof(XmlIgnoreAttribute), true))
+                    return true;
+            }
+
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
+            {
+                if (JsonSerializer.HasScriptIgnore(info))
+                    return true;
+            }
+
+            if (serialization)
+            {
+                if (!info.CanRead)
+                    return true;
+
+                MethodInfo getMethod = info.GetGetMethod();
+                if (getMethod == null || getMethod.GetParameters().Length > 0)
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Creates the member definition using the specified serialization
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="info">The info</param>
+        /// <param name="options">The options</param>
+        /// <returns>The ma</returns>
+        private static MemberDefinition CreateMemberDefinition(bool serialization, PropertyInfo info, JsonOptions options)
+        {
+            string name = JsonSerializer.GetObjectName(info, info.Name);
+
+            MemberDefinition ma = new MemberDefinition
+            {
+                Type = info.PropertyType,
+                Name = info.Name
+            };
+            if (serialization)
+            {
+                ma.WireName = name;
+                ma.EscapedWireName = JsonSerializer.EscapeString(name);
+            }
+            else
+            {
+                ma.WireName = name;
+            }
+
+            ma.HasDefaultValue = JsonSerializer.TryGetObjectDefaultValue(info, out object defaultValue);
+            ma.DefaultValue = defaultValue;
+            ma.Accessor = (IMemberAccessor) Activator.CreateInstance(typeof(PropertyInfoAccessor<,>).MakeGenericType(info.DeclaringType, info.PropertyType), info);
+
+            return ma;
         }
 
         /// <summary>
