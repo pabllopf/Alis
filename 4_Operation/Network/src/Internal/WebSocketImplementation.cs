@@ -208,24 +208,18 @@ namespace Alis.Core.Network.Internal
         {
             try
             {
-                // we may receive control frames so reading needs to happen in an infinite loop
-                while (!cancellationToken.IsCancellationRequested)
-                {
-                    // allow this operation to be cancelled from inside OR outside this instance
-                    using CancellationTokenSource linkedCts =
-                        CancellationTokenSource.CreateLinkedTokenSource(_internalReadCts.Token, cancellationToken);
-                    WebSocketFrame frame = await ReadWebSocketFrame(buffer, linkedCts.Token);
+                // allow this operation to be cancelled from inside OR outside this instance
+                using CancellationTokenSource linkedCts =
+                    CancellationTokenSource.CreateLinkedTokenSource(_internalReadCts.Token, cancellationToken);
+                WebSocketFrame frame = await ReadWebSocketFrame(buffer, linkedCts.Token);
 
-                    bool endOfMessage = frame.IsFinBitSet && (_readCursor.NumBytesLeftToRead == 0);
-                    return await HandleWebSocketOpCodes(frame, buffer, linkedCts, endOfMessage);
-                }
+                bool endOfMessage = frame.IsFinBitSet && (_readCursor.NumBytesLeftToRead == 0);
+                return await HandleWebSocketOpCodes(frame, buffer, linkedCts, endOfMessage);
             }
             catch (Exception catchAll)
             {
                 return await HandleExceptions(catchAll);
             }
-
-            throw new InvalidOperationException();
         }
 
         /// <summary>
