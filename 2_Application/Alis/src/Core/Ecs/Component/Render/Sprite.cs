@@ -31,8 +31,6 @@ using System;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 
@@ -102,23 +100,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             VideoGame.Instance.GraphicManager.Attach(this);
         }
-
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void OnStart()
-        {
-        }
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void OnUpdate()
-        {
-        }
-
+        
         /// <summary>
         ///     Exits this instance
         /// </summary>
