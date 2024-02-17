@@ -591,12 +591,13 @@ namespace Alis.Core.Physic.Tools.TextureTools
         }
 
         /// <summary>
-        ///     Function to search for an entrance point of a hole in a polygon. It searches the polygon from top to bottom
-        ///     between the polygon edges.
+        /// Searches the hole entrance using the specified polygon
         /// </summary>
-        /// <param name="polygon">The polygon to search in.</param>
-        /// <param name="lastHoleEntrance">The last entrance point.</param>
-        /// <returns>The next holes entrance point. Null if there are no holes.</returns>
+        /// <param name="polygon">The polygon</param>
+        /// <param name="lastHoleEntrance">The last hole entrance</param>
+        /// <exception cref="ArgumentException">'polygon.MainPolygon.Count' can't be less then 3.</exception>
+        /// <exception cref="ArgumentNullException">polygon</exception>
+        /// <returns>The vector</returns>
         private Vector2? SearchHoleEntrance(Vertices polygon, Vector2? lastHoleEntrance)
         {
             if (polygon == null)
@@ -609,101 +610,106 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 throw new ArgumentException("'polygon.MainPolygon.Count' can't be less then 3.");
             }
 
-            int startY;
-
-            // Set start y coordinate.
-            if (lastHoleEntrance.HasValue)
-            {
-                // We need the y coordinate only.
-                startY = (int) lastHoleEntrance.Value.Y;
-            }
-            else
-            {
-                // Start from the top of the polygon if last entrance == null.
-                startY = (int) GetTopMostCoord(polygon);
-            }
-
-            // Set the end y coordinate.
-            int endY = (int) GetBottomMostCoord(polygon);
+            int startY, endY;
+            DetermineStartAndEndY(polygon, lastHoleEntrance, out startY, out endY);
 
             if ((startY > 0) && (startY < height) && (endY > 0) && (endY < height))
             {
-                // go from top to bottom of the polygon
                 for (int y = startY; y <= endY; y++)
                 {
-                    // get x-coord of every polygon edge which crosses y
                     List<float> xCoords = SearchCrossingEdges(polygon, y);
-
-                    // We need an even number of crossing edges. 
-                    // It's always a pair of start and end edge: nothing | polygon | hole | polygon | nothing ...
-                    // If it's not then don't bother, it's probably a peak ...
-                    // ...which should be filtered out by SearchCrossingEdges() anyway.
-                    if ((xCoords.Count > 1) && (xCoords.Count % 2 == 0))
-                    {
-                        // Ok, this is short, but probably a little bit confusing.
-                        // This part searches from left to right between the edges inside the polygon.
-                        // The problem: We are using the polygon data to search in the texture data.
-                        // That's simply not accurate, but necessary because of performance.
-                        for (int i = 0; i < xCoords.Count; i += 2)
-                        {
-                            bool foundSolid = false;
-                            bool foundTransparent = false;
-
-                            // We search between the edges inside the polygon.
-                            for (int x = (int) xCoords[i]; x <= (int) xCoords[i + 1]; x++)
-                            {
-                                // First pass: IsSolid might return false.
-                                // In that case the polygon edge doesn't lie on the texture's solid pixel, because of the hull tolerance.
-                                // If the edge lies before the first solid pixel then we need to skip our transparent pixel finds.
-
-                                // The algorithm starts to search for a relevant transparent pixel (which indicates a possible hole) 
-                                // after it has found a solid pixel.
-
-                                // After we've found a solid and a transparent pixel (a hole's left edge) 
-                                // we search for a solid pixel again (a hole's right edge).
-                                // When found the distance of that coordinate has to be greater then the hull tolerance.
-
-                                if (IsSolid(ref x, ref y))
-                                {
-                                    if (!foundTransparent)
-                                    {
-                                        foundSolid = true;
-                                    }
-
-                                    /*
-                                    if (foundTransparent)
-                                    {
-                                        Vector2F? entrance = new Vector2F(lastSolid, y);
-
-                                        if (DistanceToHullAcceptable(polygon, entrance.Value, true))
-                                        {
-                                            return entrance;
-                                        }
-
-                                        break;
-                                    }*/
-                                }
-                                else
-                                {
-                                    if (foundSolid)
-                                    {
-                                        foundTransparent = true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (xCoords.Count % 2 == 0)
-                        {
-                            Debug.WriteLine("SearchCrossingEdges() % 2 != 0");
-                        }
-                    }
+                    ProcessXCoordinates(xCoords, y);
                 }
             }
 
             return null;
+        }
+
+        /// <summary>
+
+        /// Determines the start and end y using the specified polygon
+
+        /// </summary>
+
+        /// <param name="polygon">The polygon</param>
+
+        /// <param name="lastHoleEntrance">The last hole entrance</param>
+
+        /// <param name="startY">The start</param>
+
+        /// <param name="endY">The end</param>
+
+        private void DetermineStartAndEndY(Vertices polygon, Vector2? lastHoleEntrance, out int startY, out int endY)
+        {
+            if (lastHoleEntrance.HasValue)
+            {
+                startY = (int) lastHoleEntrance.Value.Y;
+            }
+            else
+            {
+                startY = (int) GetTopMostCoord(polygon);
+            }
+
+            endY = (int) GetBottomMostCoord(polygon);
+        }
+
+        /// <summary>
+
+        /// Processes the x coordinates using the specified x coords
+
+        /// </summary>
+
+        /// <param name="xCoords">The coords</param>
+
+        /// <param name="y">The </param>
+
+        private void ProcessXCoordinates(List<float> xCoords, int y)
+        {
+            if ((xCoords.Count > 1) && (xCoords.Count % 2 == 0))
+            {
+                for (int i = 0; i < xCoords.Count; i += 2)
+                {
+                    for (int x = (int) xCoords[i]; x <= (int) xCoords[i + 1]; x++)
+                    {
+                        CheckPixelSolidity(ref x, ref y);
+                    }
+                }
+            }
+            else if (xCoords.Count % 2 == 0)
+            {
+                Debug.WriteLine("SearchCrossingEdges() % 2 != 0");
+            }
+        }
+
+        /// <summary>
+
+        /// Checks the pixel solidity using the specified x
+
+        /// </summary>
+
+        /// <param name="x">The </param>
+
+        /// <param name="y">The </param>
+
+        private void CheckPixelSolidity(ref int x, ref int y)
+        {
+            bool foundSolid = false;
+            bool foundTransparent = false;
+
+            if (IsSolid(ref x, ref y))
+            {
+                if (!foundTransparent)
+                {
+                    foundSolid = true;
+                }
+            }
+            else
+            {
+                if (foundSolid)
+                {
+                    foundTransparent = true;
+                }
+            }
         }
 
         /// <summary>
@@ -945,36 +951,30 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             if (polygon.Count > 2)
             {
-                // There is a gap between the last and the first vertex in the vertex list.
-                // We will bridge that by setting the last vertex (vertex2) to the last 
-                // vertex in the list.
-                Vector2 vertex2 = polygon[polygon.Count - 1]; // i - 1
+                Vector2 vertex2 = polygon[polygon.Count - 1];
 
-                // We are moving along the polygon edges.
+
                 for (int i = 0; i < polygon.Count; i++)
                 {
-                    Vector2 vertex1 = polygon[i]; // i
+                    Vector2 vertex1 = polygon[i];
 
-                    // Approx. check if the edge crosses our y coord.
+
                     if (((vertex1.Y >= y) && (vertex2.Y <= y)) ||
                         ((vertex1.Y <= y) && (vertex2.Y >= y)))
                     {
-                        // Ignore edges that are parallel to y.
+
                         if (Math.Abs(vertex1.Y - vertex2.Y) > 0.0001f)
                         {
                             bool addFind = true;
                             Vector2 slope = vertex2 - vertex1;
 
-                            // Special treatment for edges that end at the y coord.
+
                             if (Math.Abs(vertex1.Y - y) < 0.0001f)
                             {
-                                // Create preview of the next edge.
-                                Vector2 nextVertex = polygon[(i + 1) % polygon.Count]; // i + 1
+
+                                Vector2 nextVertex = polygon[(i + 1) % polygon.Count];
                                 Vector2 nextSlope = vertex1 - nextVertex;
 
-                                // Ignore peaks. 
-                                // If two edges are aligned like this: /\ and the y coordinate lies on the top,
-                                // then we get the same x coord twice and we don't need that.
                                 if (slope.Y > 0)
                                 {
                                     addFind = nextSlope.Y <= 0;
@@ -987,13 +987,11 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
                             if (addFind)
                             {
-                                edges.Add((y - vertex1.Y) / slope.Y * slope.X +
-                                          vertex1.X); // Calculate and add the x coord.
+                                edges.Add((y - vertex1.Y) / slope.Y * slope.X + vertex1.X);
                             }
                         }
                     }
 
-                    // vertex1 becomes vertex2 :).
                     vertex2 = vertex1;
                 }
             }
