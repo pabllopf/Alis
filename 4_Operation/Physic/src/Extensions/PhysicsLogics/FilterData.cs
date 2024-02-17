@@ -47,55 +47,66 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics
         /// <summary>Enable the logic on specific groups.</summary>
         public int EnabledOnGroup;
 
-        /// <summary></summary>
-        /// <param name="body"></param>
-        /// <returns></returns>
+        /// <summary>
+        /// Describes whether this instance is active on
+        /// </summary>
+        /// <param name="body">The body</param>
+        /// <returns>The bool</returns>
         public virtual bool IsActiveOn(Body body)
         {
-            if (body == null || !body.Enabled || body.IsStatic)
-            {
-                return false;
-            }
-
-            if (body.FixtureList == null)
+            if (!IsValidBody(body))
             {
                 return false;
             }
 
             foreach (Fixture fixture in body.FixtureList)
             {
-                //Disable
-                if ((fixture.CollisionGroup == DisabledOnGroup) && (fixture.CollisionGroup != 0) && (DisabledOnGroup != 0))
+                if (IsFixtureDisabled(fixture))
                 {
                     return false;
                 }
 
-                if ((fixture.CollisionCategories & DisabledOnCategories) != Category.None)
-                {
-                    return false;
-                }
-
-                if (EnabledOnGroup != 0 || EnabledOnCategories != Category.All)
-                {
-                    //Enable
-                    if ((fixture.CollisionGroup == EnabledOnGroup) && (fixture.CollisionGroup != 0) && (EnabledOnGroup != 0))
-                    {
-                        return true;
-                    }
-
-                    if (((fixture.CollisionCategories & EnabledOnCategories) != Category.None) &&
-                        (EnabledOnCategories != Category.All))
-                    {
-                        return true;
-                    }
-                }
-                else
+                if (IsFixtureEnabled(fixture))
                 {
                     return true;
                 }
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Describes whether this instance is valid body
+        /// </summary>
+        /// <param name="body">The body</param>
+        /// <returns>The bool</returns>
+        private bool IsValidBody(Body body)
+        {
+            return body != null && body.Enabled && !body.IsStatic && body.FixtureList != null;
+        }
+
+        /// <summary>
+        /// Describes whether this instance is fixture disabled
+        /// </summary>
+        /// <param name="fixture">The fixture</param>
+        /// <returns>The bool</returns>
+        private bool IsFixtureDisabled(Fixture fixture)
+        {
+            return (fixture.CollisionGroup == DisabledOnGroup && fixture.CollisionGroup != 0 && DisabledOnGroup != 0) ||
+                   (fixture.CollisionCategories & DisabledOnCategories) != Category.None;
+        }
+
+        /// <summary>
+        /// Describes whether this instance is fixture enabled
+        /// </summary>
+        /// <param name="fixture">The fixture</param>
+        /// <returns>The bool</returns>
+        private bool IsFixtureEnabled(Fixture fixture)
+        {
+            return (EnabledOnGroup != 0 || EnabledOnCategories != Category.All) &&
+                   ((fixture.CollisionGroup == EnabledOnGroup && fixture.CollisionGroup != 0 && EnabledOnGroup != 0) ||
+                    ((fixture.CollisionCategories & EnabledOnCategories) != Category.None &&
+                     EnabledOnCategories != Category.All));
         }
 
         /// <summary>Adds the category.</summary>
