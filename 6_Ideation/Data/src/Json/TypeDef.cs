@@ -431,7 +431,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        ///     Enumerates the definitions using reflection using the specified serialization
+        /// Enumerates the definitions using reflection using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="type">The type</param>
@@ -439,6 +439,29 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>An enumerable of member definition</returns>
         [ExcludeFromCodeCoverage]
         internal static IEnumerable<MemberDefinition> EnumerateDefinitionsUsingReflection(bool serialization, Type type, JsonOptions options)
+        {
+            foreach (var member in HandlePropertySerialization(serialization, type, options))
+            {
+                yield return member;
+            }
+
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SerializeFields))
+            {
+                foreach (var member in HandleFieldSerialization(serialization, type, options))
+                {
+                    yield return member;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Handles the property serialization using the specified serialization
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="type">The type</param>
+        /// <param name="options">The options</param>
+        /// <returns>An enumerable of member definition</returns>
+        private static IEnumerable<MemberDefinition> HandlePropertySerialization(bool serialization, Type type, JsonOptions options)
         {
             foreach (PropertyInfo info in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
@@ -500,59 +523,66 @@ namespace Alis.Core.Aspect.Data.Json
                 ma.Accessor = (IMemberAccessor) Activator.CreateInstance(typeof(PropertyInfoAccessor<,>).MakeGenericType(info.DeclaringType, info.PropertyType), info);
                 yield return ma;
             }
+        }
 
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SerializeFields))
+        /// <summary>
+        /// Handles the field serialization using the specified serialization
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="type">The type</param>
+        /// <param name="options">The options</param>
+        /// <returns>An enumerable of member definition</returns>
+        private static IEnumerable<MemberDefinition> HandleFieldSerialization(bool serialization, Type type, JsonOptions options)
+        {
+            foreach (FieldInfo info in type.GetFields(BindingFlags.Public | BindingFlags.Instance))
             {
-                foreach (FieldInfo info in type.GetFields(BindingFlags.Public | BindingFlags.Instance))
+                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
                 {
-                    if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
+                    JsonAttribute ja = JsonSerializer.GetJsonAttribute(info);
+                    if (ja != null)
                     {
-                        JsonAttribute ja = JsonSerializer.GetJsonAttribute(info);
-                        if (ja != null)
+                        switch (serialization)
                         {
-                            switch (serialization)
-                            {
-                                case true when ja.IgnoreWhenSerializing:
-                                case false when ja.IgnoreWhenDeserializing:
-                                    continue;
-                            }
+                            case true when ja.IgnoreWhenSerializing:
+                            case false when ja.IgnoreWhenDeserializing:
+                                continue;
                         }
                     }
-
-                    if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
-                    {
-                        if (info.IsDefined(typeof(XmlIgnoreAttribute), true))
-                            continue;
-                    }
-
-                    if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
-                    {
-                        if (JsonSerializer.HasScriptIgnore(info))
-                            continue;
-                    }
-
-                    string name = JsonSerializer.GetObjectName(info, info.Name);
-
-                    MemberDefinition ma = new MemberDefinition
-                    {
-                        Type = info.FieldType,
-                        Name = info.Name
-                    };
-                    if (serialization)
-                    {
-                        ma.WireName = name;
-                        ma.EscapedWireName = JsonSerializer.EscapeString(name);
-                    }
-                    else
-                    {
-                        ma.WireName = name;
-                    }
-
-                    ma.HasDefaultValue = JsonSerializer.TryGetObjectDefaultValue(info, out object defaultValue);
-                    ma.DefaultValue = defaultValue;
-                    ma.Accessor = (IMemberAccessor) Activator.CreateInstance(typeof(FieldInfoAccessor), info);
-                    yield return ma;
                 }
+
+                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
+                {
+                    if (info.IsDefined(typeof(XmlIgnoreAttribute), true))
+                        continue;
+                }
+
+                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
+                {
+                    if (JsonSerializer.HasScriptIgnore(info))
+                        continue;
+                }
+
+                string name = JsonSerializer.GetObjectName(info, info.Name);
+
+                MemberDefinition ma = new MemberDefinition
+                {
+                    Type = info.FieldType,
+                    Name = info.Name
+                };
+                if (serialization)
+                {
+                    ma.WireName = name;
+                    ma.EscapedWireName = JsonSerializer.EscapeString(name);
+                }
+                else
+                {
+                    ma.WireName = name;
+                }
+
+                ma.HasDefaultValue = JsonSerializer.TryGetObjectDefaultValue(info, out object defaultValue);
+                ma.DefaultValue = defaultValue;
+                ma.Accessor = (IMemberAccessor) Activator.CreateInstance(typeof(FieldInfoAccessor), info);
+                yield return ma;
             }
         }
 
