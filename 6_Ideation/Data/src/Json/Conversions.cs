@@ -160,6 +160,20 @@ namespace Alis.Core.Aspect.Data.Json
                 return true;
             }
 
+            return TryChangeTypeBasedOnInputType(input, conversionType, provider, inputType, out value);
+        }
+
+        /// <summary>
+        /// Describes whether try change type based on input type
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="conversionType">The conversion type</param>
+        /// <param name="provider">The provider</param>
+        /// <param name="inputType">The input type</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryChangeTypeBasedOnInputType(object input, Type conversionType, IFormatProvider provider, Type inputType, out object value)
+        {
             if (conversionType.IsEnum)
                 return TryChangeToEnum(conversionType, input, out value);
 
@@ -175,10 +189,10 @@ namespace Alis.Core.Aspect.Data.Json
             if (conversionType == typeof(IntPtr))
                 return TryChangeToIntPtr(input, provider, out value);
 
-            if (conversionType == typeof(int) || conversionType == typeof(long) || conversionType == typeof(short) || conversionType == typeof(sbyte) || conversionType == typeof(uint) || conversionType == typeof(ulong) || conversionType == typeof(ushort) || conversionType == typeof(byte))
+            if (IsNumericType(conversionType))
                 return TryChangeToNumeric(input, conversionType, inputType, out value);
 
-            if (conversionType == typeof(DateTime) || conversionType == typeof(DateTimeOffset))
+            if (IsDateTimeType(conversionType))
                 return TryChangeToDateTime(input, conversionType, inputType, out value);
 
             if (conversionType == typeof(TimeSpan))
@@ -198,6 +212,26 @@ namespace Alis.Core.Aspect.Data.Json
                 return TryChangeWithIConvertible(convertible, conversionType, provider, out value);
 
             return TryChangeWithConverter(input, conversionType, provider, inputType, out value);
+        }
+
+        /// <summary>
+        /// Describes whether is numeric type
+        /// </summary>
+        /// <param name="conversionType">The conversion type</param>
+        /// <returns>The bool</returns>
+        private static bool IsNumericType(Type conversionType)
+        {
+            return conversionType == typeof(int) || conversionType == typeof(long) || conversionType == typeof(short) || conversionType == typeof(sbyte) || conversionType == typeof(uint) || conversionType == typeof(ulong) || conversionType == typeof(ushort) || conversionType == typeof(byte);
+        }
+
+        /// <summary>
+        /// Describes whether is date time type
+        /// </summary>
+        /// <param name="conversionType">The conversion type</param>
+        /// <returns>The bool</returns>
+        private static bool IsDateTimeType(Type conversionType)
+        {
+            return conversionType == typeof(DateTime) || conversionType == typeof(DateTimeOffset);
         }
 
         /// <summary>
