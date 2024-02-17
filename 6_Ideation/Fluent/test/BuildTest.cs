@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IBuildTest.cs
+//  File:BuildTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Fluent.Test
 {
     /// <summary>
-    /// The build test class
+    ///     The build test class
     /// </summary>
     public class BuildTest
     {
         /// <summary>
-        /// Tests that build returns expected value
+        ///     Tests that build returns expected value
         /// </summary>
         [Fact]
         public void Build_ReturnsExpectedValue()
@@ -53,7 +53,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         }
 
         /// <summary>
-        /// Tests that build does not return null
+        ///     Tests that build does not return null
         /// </summary>
         [Fact]
         public void Build_DoesNotReturnNull()
@@ -69,7 +69,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         }
 
         /// <summary>
-        /// Tests that build returns correct type
+        ///     Tests that build returns correct type
         /// </summary>
         [Fact]
         public void Build_ReturnsCorrectType()

@@ -53,7 +53,7 @@ namespace Alis.Core.Aspect.Sample
         ///     Gets or sets the value of the non zero value
         /// </summary>
         [IsNotZero] private static int _nonZeroValue;
-        
+
         /// <summary>
         ///     Main the args
         /// </summary>
@@ -64,21 +64,21 @@ namespace Alis.Core.Aspect.Sample
             Console.WriteLine("--------------------------");
             Console.WriteLine("Fluent sample");
             Console.WriteLine("--------------------------\n");
-            
+
             Car sampleCar = Car
                 .Create()
                 .WithName("Ferrari")
                 .WithModel("F8")
                 .WithColor("Red")
                 .Build();
-            
+
             Console.WriteLine($"Car: Name={sampleCar.Name} Model={sampleCar.Model} Color={sampleCar.Color}");
-            
+
             // SAMPLE ASPECT DATA
             Console.WriteLine("--------------------------");
             Console.WriteLine("Data sample");
             Console.WriteLine("--------------------------\n");
-                
+
             Music musicInfo2 = new Music
             {
                 Name = "Prince Charming",
@@ -96,12 +96,12 @@ namespace Alis.Core.Aspect.Sample
             JsonSerializer.Deserialize<Music>(serialized2);
 
             Console.WriteLine("deserialized 2");
-            
+
             // SAMPLE ASPECT TRANSLATION
             Console.WriteLine("--------------------------");
             Console.WriteLine("Translation sample");
             Console.WriteLine("--------------------------\n");
-            
+
             TranslationManager manager = new TranslationManager();
 
             manager.AddLanguage(new Language {Name = "English", Code = "en"});
@@ -117,15 +117,15 @@ namespace Alis.Core.Aspect.Sample
 
             manager.SetLanguage("English", "en");
             Console.WriteLine($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
-            
+
             // SAMPLE ASPECT MATH
             Console.WriteLine("--------------------------");
             Console.WriteLine("Math sample");
             Console.WriteLine("--------------------------\n");
-            
+
             Console.WriteLine(new Vector2(3.0f, 2.0f).ToString());
             Console.WriteLine(new Vector2(3.0f, 2.0f).ToString("F2", CultureInfo.InvariantCulture));
-            
+
             // SAMPLE ASPECT TIME
             Console.WriteLine("--------------------------");
             Console.WriteLine("Time sample");
@@ -153,8 +153,8 @@ namespace Alis.Core.Aspect.Sample
             // Print some TimeManager properties
             Console.WriteLine($"DeltaTime: {timeManager.DeltaTime}");
             Console.WriteLine($"TimeScale: {timeConfig.TimeScale}");
-            
-            
+
+
             // SAMPLE ASPECT THREAD
             Console.WriteLine("--------------------------");
             Console.WriteLine("Thread sample");
@@ -188,12 +188,12 @@ namespace Alis.Core.Aspect.Sample
             Console.ReadKey();
 
             threadManager.StopAllThreads();
-            
+
             // SAMPLE ASPECT MEMORY
             Console.WriteLine("--------------------------");
             Console.WriteLine("Memory sample");
             Console.WriteLine("--------------------------\n");
-            
+
             try
             {
                 _nonZeroValue = 0;
@@ -203,8 +203,8 @@ namespace Alis.Core.Aspect.Sample
             {
                 Console.WriteLine(ex);
             }
-            
-            
+
+
             // SAMPLE ASPECT LOGGING
             Console.WriteLine("--------------------------");
             Console.WriteLine("Logging sample");

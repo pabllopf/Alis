@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Plugin.Test
 {
     /// <summary>
-    /// The plugin manager test class
+    ///     The plugin manager test class
     /// </summary>
     public class PluginManagerTest
     {
         /// <summary>
-        /// Tests that load plugins loads plugins from directory
+        ///     Tests that load plugins loads plugins from directory
         /// </summary>
         [Fact]
         public void LoadPlugins_LoadsPluginsFromDirectory()
@@ -52,11 +52,10 @@ namespace Alis.Core.Plugin.Test
             Assert.Throws<DirectoryNotFoundException>(() => pluginManager.LoadPlugins(pluginsDirectory));
 
             // Assert
-
         }
 
         /// <summary>
-        /// Tests that dispose unloads plugins
+        ///     Tests that dispose unloads plugins
         /// </summary>
         [Fact]
         public void Dispose_UnloadsPlugins()
@@ -68,7 +67,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that initialize calls initialize on each plugin
+        ///     Tests that initialize calls initialize on each plugin
         /// </summary>
         [Fact]
         public void Initialize_CallsInitializeOnEachPlugin()
@@ -86,7 +85,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that update calls update on each plugin
+        ///     Tests that update calls update on each plugin
         /// </summary>
         [Fact]
         public void Update_v2_CallsUpdateOnEachPlugin()
@@ -104,7 +103,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that render calls render on each plugin
+        ///     Tests that render calls render on each plugin
         /// </summary>
         [Fact]
         public void Render_v2_CallsRenderOnEachPlugin()
@@ -122,7 +121,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that shutdown calls shutdown on each plugin
+        ///     Tests that shutdown calls shutdown on each plugin
         /// </summary>
         [Fact]
         public void Shutdown_v3_CallsShutdownOnEachPlugin()
@@ -140,7 +139,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that unload plugins unloads plugins
+        ///     Tests that unload plugins unloads plugins
         /// </summary>
         [Fact]
         public void UnloadPlugins_UnloadsPlugins()
@@ -157,7 +156,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that initialize v 2 calls initialize on each plugin
+        ///     Tests that initialize v 2 calls initialize on each plugin
         /// </summary>
         [Fact]
         public void Initialize_v2CallsInitializeOnEachPlugin()
@@ -174,7 +173,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that update calls update on each plugin
+        ///     Tests that update calls update on each plugin
         /// </summary>
         [Fact]
         public void Update_CallsUpdateOnEachPlugin()
@@ -190,7 +189,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that render calls render on each plugin
+        ///     Tests that render calls render on each plugin
         /// </summary>
         [Fact]
         public void Render_CallsRenderOnEachPlugin()
@@ -206,7 +205,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that shutdown calls shutdown on each plugin
+        ///     Tests that shutdown calls shutdown on each plugin
         /// </summary>
         [Fact]
         public void Shutdown_CallsShutdownOnEachPlugin()
@@ -223,7 +222,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that load plugins v 3 loads plugins from directory
+        ///     Tests that load plugins v 3 loads plugins from directory
         /// </summary>
         [Fact]
         public void LoadPlugins_v3_LoadsPluginsFromDirectory()
@@ -241,7 +240,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that dispose v 3 unloads plugins
+        ///     Tests that dispose v 3 unloads plugins
         /// </summary>
         [Fact]
         public void Dispose_v3_UnloadsPlugins()
@@ -261,7 +260,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that initialize v 3 calls initialize on each plugin
+        ///     Tests that initialize v 3 calls initialize on each plugin
         /// </summary>
         [Fact]
         public void Initialize_v3_CallsInitializeOnEachPlugin()
@@ -281,7 +280,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that update v 3 calls update on each plugin
+        ///     Tests that update v 3 calls update on each plugin
         /// </summary>
         [Fact]
         public void Update_v3_CallsUpdateOnEachPlugin()
@@ -301,7 +300,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that render v 3 calls render on each plugin
+        ///     Tests that render v 3 calls render on each plugin
         /// </summary>
         [Fact]
         public void Render_v3_CallsRenderOnEachPlugin()
@@ -321,7 +320,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that shutdown v 2 calls shutdown on each plugin
+        ///     Tests that shutdown v 2 calls shutdown on each plugin
         /// </summary>
         [Fact]
         public void Shutdown_v2_CallsShutdownOnEachPlugin()
@@ -341,7 +340,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that load plugin from file loads plugin correctly
+        ///     Tests that load plugin from file loads plugin correctly
         /// </summary>
         [Fact]
         public void LoadPluginFromFile_LoadsPluginCorrectly()
@@ -358,7 +357,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that is running oni os returns correct value
+        ///     Tests that is running oni os returns correct value
         /// </summary>
         [Fact]
         public void IsRunningOniOS_ReturnsCorrectValue()
@@ -381,7 +380,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that is running on android returns correct value
+        ///     Tests that is running on android returns correct value
         /// </summary>
         [Fact]
         public void IsRunningOnAndroid_ReturnsCorrectValue()
@@ -404,7 +403,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that get plugin files returns correct files
+        ///     Tests that get plugin files returns correct files
         /// </summary>
         [Fact]
         public void GetPluginFiles_ReturnsCorrectFiles()
@@ -418,7 +417,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that is plugin file returns correct value
+        ///     Tests that is plugin file returns correct value
         /// </summary>
         /// <param name="filePath">The file path</param>
         /// <param name="expected">The expected</param>
@@ -438,7 +437,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that validate plugins directory throws exception for invalid directory
+        ///     Tests that validate plugins directory throws exception for invalid directory
         /// </summary>
         [Fact]
         public void ValidatePluginsDirectory_ThrowsExceptionForInvalidDirectory()
@@ -451,7 +450,7 @@ namespace Alis.Core.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that validate plugins directory does not throw exception for valid directory
+        ///     Tests that validate plugins directory does not throw exception for valid directory
         /// </summary>
         [Fact]
         public void ValidatePluginsDirectory_DoesNotThrowExceptionForValidDirectory()

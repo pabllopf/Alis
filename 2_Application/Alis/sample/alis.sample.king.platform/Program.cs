@@ -90,14 +90,14 @@ namespace Alis.Sample.King.Platform
                                     .Build())
                                 .Build())
                             .Build())*/
-                        
+
                         // PLAYER
                         .Add<GameObject>(player => player
                             .Name("King")
                             .WithTag("player")
                             .Transform(transform => transform
-                                .Position(50,0)
-                                .Scale(2,2 )
+                                .Position(50, 0)
+                                .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite
@@ -170,7 +170,7 @@ namespace Alis.Sample.King.Platform
                                 .Resolution(1024, 640)
                                 .Build())
                             .Build())
-                        
+
                         // FLOOR
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Floor")

@@ -46,11 +46,6 @@ namespace Alis.Core.Ecs.System.Manager.Input
     public class InputManager : Manager, IInputManager
     {
         /// <summary>
-        ///     The sdl event
-        /// </summary>
-        private Event sdlEvent;
-
-        /// <summary>
         ///     The sdl game controller axis
         /// </summary>
         private readonly List<GameControllerAxis> axis = new List<GameControllerAxis>((GameControllerAxis[]) Enum.GetValues(typeof(GameControllerAxis)));
@@ -59,6 +54,11 @@ namespace Alis.Core.Ecs.System.Manager.Input
         ///     The sdl game controller button
         /// </summary>
         private readonly List<GameControllerButton> buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
+
+        /// <summary>
+        ///     The sdl event
+        /// </summary>
+        private Event sdlEvent;
 
         /// <summary>
         ///     Temp list of keys
@@ -147,7 +147,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the dispatch events
+        ///     Ons the dispatch events
         /// </summary>
         public override void OnDispatchEvents()
         {
@@ -163,93 +163,6 @@ namespace Alis.Core.Ecs.System.Manager.Input
             }
 
             NotifyKeyHold();
-        }
-
-        /// <summary>
-        /// Handles the sdl quit event
-        /// </summary>
-        private void HandleSdlQuitEvent()
-        {
-            if (sdlEvent.type == EventType.SdlQuit)
-            {
-                VideoGame.Instance.Exit();
-            }
-        }
-
-        /// <summary>
-        /// Handles the sdl keyup event
-        /// </summary>
-        private void HandleSdlKeyupEvent()
-        {
-            if (sdlEvent.type == EventType.SdlKeyup)
-            {
-                SdlKeycode indexUp = sdlEvent.key.keySym.sym;
-
-                if (tempListOfKeys.Contains(indexUp))
-                {
-                    tempListOfKeys.Remove(indexUp);
-                    NotifyKeyRelease(indexUp);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Handles the sdl keydown event
-        /// </summary>
-        private void HandleSdlKeydownEvent()
-        {
-            if (sdlEvent.type == EventType.SdlKeydown)
-            {
-                SdlKeycode indexDown = sdlEvent.key.keySym.sym;
-                if (!tempListOfKeys.Contains(indexDown))
-                {
-                    tempListOfKeys.Add(indexDown);
-                    NotifyKeyPress(indexDown);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Handles the sdl joy button down event
-        /// </summary>
-        private void HandleSdlJoyButtonDownEvent()
-        {
-            for (int index = 0; index < buttons.Count; index++)
-            {
-                GameControllerButton button = buttons[index];
-                if ((sdlEvent.type == EventType.SdlJoyButtonDown)
-                    && (button == (GameControllerButton) sdlEvent.cButton.button))
-                {
-                    Console.WriteLine($"[SDL_JoystickName_id = '{sdlEvent.cDevice.which}'] Pressed button={button}");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Handles the sdl joy axis motion event
-        /// </summary>
-        private void HandleSdlJoyAxisMotionEvent()
-        {
-            for (int index = 0; index < axis.Count; index++)
-            {
-                GameControllerAxis axi = axis[index];
-                if ((sdlEvent.type == EventType.SdlJoyAxisMotion)
-                    && (axi == (GameControllerAxis) sdlEvent.cAxis.axis))
-                {
-                    Console.WriteLine($"[SDL_JoystickName_id = '{sdlEvent.cDevice.which}'] Pressed axi={axi}");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Notifies the key hold
-        /// </summary>
-        private void NotifyKeyHold()
-        {
-            foreach (SdlKeycode key in tempListOfKeys)
-            {
-                NotifyKeyHold(key);
-            }
         }
 
         /// <summary>
@@ -314,6 +227,93 @@ namespace Alis.Core.Ecs.System.Manager.Input
         public override void OnDestroy()
         {
             Logger.Trace();
+        }
+
+        /// <summary>
+        ///     Handles the sdl quit event
+        /// </summary>
+        private void HandleSdlQuitEvent()
+        {
+            if (sdlEvent.type == EventType.SdlQuit)
+            {
+                VideoGame.Instance.Exit();
+            }
+        }
+
+        /// <summary>
+        ///     Handles the sdl keyup event
+        /// </summary>
+        private void HandleSdlKeyupEvent()
+        {
+            if (sdlEvent.type == EventType.SdlKeyup)
+            {
+                SdlKeycode indexUp = sdlEvent.key.keySym.sym;
+
+                if (tempListOfKeys.Contains(indexUp))
+                {
+                    tempListOfKeys.Remove(indexUp);
+                    NotifyKeyRelease(indexUp);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Handles the sdl keydown event
+        /// </summary>
+        private void HandleSdlKeydownEvent()
+        {
+            if (sdlEvent.type == EventType.SdlKeydown)
+            {
+                SdlKeycode indexDown = sdlEvent.key.keySym.sym;
+                if (!tempListOfKeys.Contains(indexDown))
+                {
+                    tempListOfKeys.Add(indexDown);
+                    NotifyKeyPress(indexDown);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Handles the sdl joy button down event
+        /// </summary>
+        private void HandleSdlJoyButtonDownEvent()
+        {
+            for (int index = 0; index < buttons.Count; index++)
+            {
+                GameControllerButton button = buttons[index];
+                if ((sdlEvent.type == EventType.SdlJoyButtonDown)
+                    && (button == (GameControllerButton) sdlEvent.cButton.button))
+                {
+                    Console.WriteLine($"[SDL_JoystickName_id = '{sdlEvent.cDevice.which}'] Pressed button={button}");
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Handles the sdl joy axis motion event
+        /// </summary>
+        private void HandleSdlJoyAxisMotionEvent()
+        {
+            for (int index = 0; index < axis.Count; index++)
+            {
+                GameControllerAxis axi = axis[index];
+                if ((sdlEvent.type == EventType.SdlJoyAxisMotion)
+                    && (axi == (GameControllerAxis) sdlEvent.cAxis.axis))
+                {
+                    Console.WriteLine($"[SDL_JoystickName_id = '{sdlEvent.cDevice.which}'] Pressed axi={axi}");
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Notifies the key hold
+        /// </summary>
+        private void NotifyKeyHold()
+        {
+            foreach (SdlKeycode key in tempListOfKeys)
+            {
+                NotifyKeyHold(key);
+            }
         }
 
         /// <summary>

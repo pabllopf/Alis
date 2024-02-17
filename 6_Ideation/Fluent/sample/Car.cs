@@ -30,26 +30,13 @@
 namespace Alis.Core.Aspect.Fluent.Sample
 {
     /// <summary>
-    /// The car class
+    ///     The car class
     /// </summary>
-    /// <seealso cref="IBuilder{CarBuilder}"/>
+    /// <seealso cref="IBuilder{CarBuilder}" />
     public class Car : IBuilder<CarBuilder>
     {
         /// <summary>
-        /// Gets or sets the value of the name
-        /// </summary>
-        public string Name { get; set; }
-        /// <summary>
-        /// Gets or sets the value of the model
-        /// </summary>
-        public string Model { get; set; }
-        /// <summary>
-        /// Gets or sets the value of the color
-        /// </summary>
-        public string Color { get; set; }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Car"/> class
+        ///     Initializes a new instance of the <see cref="Car" /> class
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="model">The model</param>
@@ -62,13 +49,28 @@ namespace Alis.Core.Aspect.Fluent.Sample
         }
 
         /// <summary>
-        /// Builders this instance
+        ///     Gets or sets the value of the name
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the model
+        /// </summary>
+        public string Model { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the color
+        /// </summary>
+        public string Color { get; set; }
+
+        /// <summary>
+        ///     Builders this instance
         /// </summary>
         /// <returns>The car builder</returns>
         public CarBuilder Builder() => new CarBuilder();
-        
+
         /// <summary>
-        /// Creates
+        ///     Creates
         /// </summary>
         /// <returns>The car builder</returns>
         public static CarBuilder Create() => new CarBuilder();

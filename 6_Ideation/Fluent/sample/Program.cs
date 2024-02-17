@@ -44,13 +44,13 @@ namespace Alis.Core.Aspect.Fluent.Sample
         {
             Car sampleCar = Car
                 .Create()
-                    .WithName("Ferrari")
-                    .WithModel("F8")
-                    .WithColor("Red")
+                .WithName("Ferrari")
+                .WithModel("F8")
+                .WithColor("Red")
                 .Build();
-            
+
             Console.WriteLine($" Car: Name={sampleCar.Name} Model={sampleCar.Model} Color={sampleCar.Color}");
-            
+
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }

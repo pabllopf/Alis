@@ -47,9 +47,9 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The set
         /// </summary>
         private readonly JAction<TComponent, TMember> _set;
-        
+
         /// <summary>
-        /// Initializes a new instance 
+        ///     Initializes a new instance
         /// </summary>
         /// <param name="pi">The pi</param>
         public PropertyInfoAccessor(PropertyInfo pi)
@@ -72,10 +72,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="component">The component</param>
         /// <returns>The object</returns>
-        public object Get(object component)
-        {
-            return _get((TComponent) component);
-        }
+        public object Get(object component) => _get((TComponent) component);
 
         /// <summary>
         ///     Sets the component

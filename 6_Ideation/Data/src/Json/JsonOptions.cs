@@ -152,7 +152,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The list of des-relation exceptions.
         /// </value>
         public Exception[] Exceptions => _exceptions.ToArray();
-        
+
         /// <summary>
         ///     Gets or sets the serialization options.
         /// </summary>

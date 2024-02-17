@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The with model interface
+    ///     The with model interface
     /// </summary>
     public interface IWithModel<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Adds the model using the specified value
+        ///     Adds the model using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

@@ -54,14 +54,14 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
     public class GraphicManager : Manager, IGraphicManager
     {
         /// <summary>
-        ///     The window
-        /// </summary>
-        private IntPtr _window;
-
-        /// <summary>
         ///     The box collider
         /// </summary>
         private readonly List<BoxCollider> ColliderBases = new List<BoxCollider>();
+
+        /// <summary>
+        ///     The window
+        /// </summary>
+        private IntPtr _window;
 
         /// <summary>
         ///     The default size
@@ -79,9 +79,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         private static List<Sprite> Sprites { get; set; } = new List<Sprite>();
 
         /// <summary>
-        /// Gets or sets the value of the cameras
+        ///     Gets or sets the value of the cameras
         /// </summary>
-        private static List<Camera> Cameras { get; set; } = new List<Camera>();
+        private static List<Camera> Cameras { get; } = new List<Camera>();
 
         /// <summary>
         ///     Ons the enable
@@ -272,7 +272,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
@@ -280,134 +280,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             RenderSpritesAndDebugMode();
             DrawCameraTexture();
             Sdl.RenderPresent(Renderer);
-        }
-
-        /// <summary>
-        /// Sets the window title
-        /// </summary>
-        private void SetWindowTitle()
-        {
-            if (VideoGame.Instance.Settings.General.Debug)
-            {
-                Sdl.SetWindowTitle(_window, $"{VideoGame.Instance.Settings.General.Name} - FPS: {Game.TimeManager.AverageFrames}");
-            }
-        }
-
-        /// <summary>
-        /// Renders the sprites and debug mode
-        /// </summary>
-        private void RenderSpritesAndDebugMode()
-        {
-            foreach (Camera camera in Cameras)
-            {
-                Sdl.SetRenderTarget(Renderer, camera.TextureTarget);
-                Sdl.SetRenderDrawColor(Renderer, camera.BackgroundColor.R, camera.BackgroundColor.G, camera.BackgroundColor.B, camera.BackgroundColor.A);
-                Sdl.RenderClear(Renderer);
-
-                Sprites = Sprites.OrderBy(o => o.Depth).ToList();
-
-                // Draws sprites:
-                foreach (Sprite sprite in Sprites.Where(sprite => sprite.Image != null))
-                {
-                    sprite.Render(Renderer, camera);
-                }
-
-                if (VideoGame.Instance.Settings.Physic.DebugMode)
-                {
-                    DrawDebugRectangles(camera);
-                }
-
-                Sdl.SetRenderTarget(Renderer, IntPtr.Zero);
-                Sdl.SetRenderDrawColor(Renderer, 0, 0, 0, 255);
-                Sdl.RenderClear(Renderer);
-            }
-        }
-
-        /// <summary>
-        /// Draws the debug rectangles using the specified camera
-        /// </summary>
-        /// <param name="camera">The camera</param>
-        private void DrawDebugRectangles(Camera camera)
-        {
-            SetRenderColor();
-            RectangleF[] rectangles = CalculateRectangleDimensions(camera);
-            DrawRectangles(rectangles);
-        }
-
-        /// <summary>
-        /// Sets the render color
-        /// </summary>
-        private void SetRenderColor()
-        {
-            // Sets color
-            Color color = VideoGame.Instance.Settings.Physic.DebugColor;
-
-            // render color
-            Sdl.SetRenderDrawColor(Renderer, color.R, color.G, color.B, color.A);
-        }
-
-        /// <summary>
-        /// Calculates the rectangle dimensions using the specified camera
-        /// </summary>
-        /// <param name="camera">The camera</param>
-        /// <returns>The rectangles</returns>
-        private RectangleF[] CalculateRectangleDimensions(Camera camera)
-        {
-            RectangleF[] rectangles = new RectangleF[ColliderBases.Count];
-
-            // Calculates rectangle dimensions:
-            for (int i = 0; i < ColliderBases.Count; i++)
-            {
-                if (ColliderBases[i] != null)
-                {
-                    rectangles[i] = ColliderBases[i].RectangleF;
-
-                    // Check if the rectangle at the current index is already set
-                    if (!Equals(rectangles[i], default(RectangleF)))
-                    {
-                        rectangles[i] = new RectangleF(
-                            x: (int) (ColliderBases[i].GameObject.Transform.Position.X - rectangles[i].w * ColliderBases[i].GameObject.Transform.Scale.X / 2 - (camera.viewport.x - camera.viewport.w / 2) + Camera.CameraBorder),
-                            y: (int) (ColliderBases[i].GameObject.Transform.Position.Y - rectangles[i].h * ColliderBases[i].GameObject.Transform.Scale.Y / 2 - (camera.viewport.y - camera.viewport.h / 2) + Camera.CameraBorder),
-                            w: (int) rectangles[i].w,
-                            h: (int) rectangles[i].h);
-                        if (ColliderBases[i].GameObject.Contains<Camera>())
-                        {
-                            rectangles[i].x += ((rectangles[i].w) / 2);
-                            rectangles[i].y += ((rectangles[i].h) / 2);
-                        }
-                    }
-                }
-            }
-
-            return rectangles;
-        }
-
-        /// <summary>
-        /// Draws the rectangles using the specified rectangles
-        /// </summary>
-        /// <param name="rectangles">The rectangles</param>
-        private void DrawRectangles(RectangleF[] rectangles)
-        {
-            Sdl.RenderDrawRectsF(Renderer, rectangles, rectangles.Length);
-        }
-
-        /// <summary>
-        /// Draws the camera texture
-        /// </summary>
-        private void DrawCameraTexture()
-        {
-            foreach (Camera camera in Cameras)
-            {
-                float pixelH = Sdl.GetWindowSize(_window).Y / camera.viewport.h;
-
-                RectangleI dstRect = new RectangleI(
-                    (int) (pixelH - pixelH * Camera.CameraBorder),
-                    (int) (pixelH - pixelH * Camera.CameraBorder),
-                    (int) (camera.viewport.w * pixelH),
-                    (int) (camera.viewport.h * pixelH));
-
-                Sdl.RenderCopy(Renderer, camera.TextureTarget, IntPtr.Zero, ref dstRect);
-            }
         }
 
         /// <summary>
@@ -517,6 +389,134 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         }
 
         /// <summary>
+        ///     Sets the window title
+        /// </summary>
+        private void SetWindowTitle()
+        {
+            if (VideoGame.Instance.Settings.General.Debug)
+            {
+                Sdl.SetWindowTitle(_window, $"{VideoGame.Instance.Settings.General.Name} - FPS: {Game.TimeManager.AverageFrames}");
+            }
+        }
+
+        /// <summary>
+        ///     Renders the sprites and debug mode
+        /// </summary>
+        private void RenderSpritesAndDebugMode()
+        {
+            foreach (Camera camera in Cameras)
+            {
+                Sdl.SetRenderTarget(Renderer, camera.TextureTarget);
+                Sdl.SetRenderDrawColor(Renderer, camera.BackgroundColor.R, camera.BackgroundColor.G, camera.BackgroundColor.B, camera.BackgroundColor.A);
+                Sdl.RenderClear(Renderer);
+
+                Sprites = Sprites.OrderBy(o => o.Depth).ToList();
+
+                // Draws sprites:
+                foreach (Sprite sprite in Sprites.Where(sprite => sprite.Image != null))
+                {
+                    sprite.Render(Renderer, camera);
+                }
+
+                if (VideoGame.Instance.Settings.Physic.DebugMode)
+                {
+                    DrawDebugRectangles(camera);
+                }
+
+                Sdl.SetRenderTarget(Renderer, IntPtr.Zero);
+                Sdl.SetRenderDrawColor(Renderer, 0, 0, 0, 255);
+                Sdl.RenderClear(Renderer);
+            }
+        }
+
+        /// <summary>
+        ///     Draws the debug rectangles using the specified camera
+        /// </summary>
+        /// <param name="camera">The camera</param>
+        private void DrawDebugRectangles(Camera camera)
+        {
+            SetRenderColor();
+            RectangleF[] rectangles = CalculateRectangleDimensions(camera);
+            DrawRectangles(rectangles);
+        }
+
+        /// <summary>
+        ///     Sets the render color
+        /// </summary>
+        private void SetRenderColor()
+        {
+            // Sets color
+            Color color = VideoGame.Instance.Settings.Physic.DebugColor;
+
+            // render color
+            Sdl.SetRenderDrawColor(Renderer, color.R, color.G, color.B, color.A);
+        }
+
+        /// <summary>
+        ///     Calculates the rectangle dimensions using the specified camera
+        /// </summary>
+        /// <param name="camera">The camera</param>
+        /// <returns>The rectangles</returns>
+        private RectangleF[] CalculateRectangleDimensions(Camera camera)
+        {
+            RectangleF[] rectangles = new RectangleF[ColliderBases.Count];
+
+            // Calculates rectangle dimensions:
+            for (int i = 0; i < ColliderBases.Count; i++)
+            {
+                if (ColliderBases[i] != null)
+                {
+                    rectangles[i] = ColliderBases[i].RectangleF;
+
+                    // Check if the rectangle at the current index is already set
+                    if (!Equals(rectangles[i], default(RectangleF)))
+                    {
+                        rectangles[i] = new RectangleF(
+                            (int) (ColliderBases[i].GameObject.Transform.Position.X - rectangles[i].w * ColliderBases[i].GameObject.Transform.Scale.X / 2 - (camera.viewport.x - camera.viewport.w / 2) + Camera.CameraBorder),
+                            (int) (ColliderBases[i].GameObject.Transform.Position.Y - rectangles[i].h * ColliderBases[i].GameObject.Transform.Scale.Y / 2 - (camera.viewport.y - camera.viewport.h / 2) + Camera.CameraBorder),
+                            (int) rectangles[i].w,
+                            (int) rectangles[i].h);
+                        if (ColliderBases[i].GameObject.Contains<Camera>())
+                        {
+                            rectangles[i].x += rectangles[i].w / 2;
+                            rectangles[i].y += rectangles[i].h / 2;
+                        }
+                    }
+                }
+            }
+
+            return rectangles;
+        }
+
+        /// <summary>
+        ///     Draws the rectangles using the specified rectangles
+        /// </summary>
+        /// <param name="rectangles">The rectangles</param>
+        private void DrawRectangles(RectangleF[] rectangles)
+        {
+            Sdl.RenderDrawRectsF(Renderer, rectangles, rectangles.Length);
+        }
+
+        /// <summary>
+        ///     Draws the camera texture
+        /// </summary>
+        private void DrawCameraTexture()
+        {
+            foreach (Camera camera in Cameras)
+            {
+                float pixelH = Sdl.GetWindowSize(_window).Y / camera.viewport.h;
+
+                RectangleI dstRect = new RectangleI(
+                    (int) (pixelH - pixelH * Camera.CameraBorder),
+                    (int) (pixelH - pixelH * Camera.CameraBorder),
+                    (int) (camera.viewport.w * pixelH),
+                    (int) (camera.viewport.h * pixelH));
+
+                Sdl.RenderCopy(Renderer, camera.TextureTarget, IntPtr.Zero, ref dstRect);
+            }
+        }
+
+        /// <summary>
         ///     Attaches the sprite
         /// </summary>
         /// <param name="sprite">The sprite</param>
@@ -546,7 +546,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         }
 
         /// <summary>
-        /// Attaches the camera
+        ///     Attaches the camera
         /// </summary>
         /// <param name="camera">The camera</param>
         public void Attach(Camera camera)
@@ -564,7 +564,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         }
 
         /// <summary>
-        /// Uns the attach using the specified camera
+        ///     Uns the attach using the specified camera
         /// </summary>
         /// <param name="camera">The camera</param>
         public void UnAttach(Camera camera)

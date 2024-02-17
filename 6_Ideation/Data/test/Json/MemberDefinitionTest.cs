@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The member definition test class
+    ///     The member definition test class
     /// </summary>
     public class MemberDefinitionTest
     {
         /// <summary>
-        /// Tests that add deserialization member null type throws argument null exception
+        ///     Tests that add deserialization member null type throws argument null exception
         /// </summary>
         [Fact]
         public void AddDeserializationMember_NullType_ThrowsArgumentNullException()
@@ -48,7 +48,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that add deserialization member null member throws argument null exception
+        ///     Tests that add deserialization member null member throws argument null exception
         /// </summary>
         [Fact]
         public void AddDeserializationMember_NullMember_ThrowsArgumentNullException()
@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that add serialization member null type throws argument null exception
+        ///     Tests that add serialization member null type throws argument null exception
         /// </summary>
         [Fact]
         public void AddSerializationMember_NullType_ThrowsArgumentNullException()
@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that add serialization member null member throws argument null exception
+        ///     Tests that add serialization member null member throws argument null exception
         /// </summary>
         [Fact]
         public void AddSerializationMember_NullMember_ThrowsArgumentNullException()
@@ -75,7 +75,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get serialization members null type throws argument null exception
+        ///     Tests that get serialization members null type throws argument null exception
         /// </summary>
         [Fact]
         public void GetSerializationMembers_NullType_ThrowsArgumentNullException()
@@ -84,7 +84,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get deserialization members null type throws argument null exception
+        ///     Tests that get deserialization members null type throws argument null exception
         /// </summary>
         [Fact]
         public void GetDeserializationMembers_NullType_ThrowsArgumentNullException()
@@ -93,16 +93,16 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that using lock null action throws argument null exception
+        ///     Tests that using lock null action throws argument null exception
         /// </summary>
         [Fact]
         public void UsingLock_NullAction_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => MemberDefinition.UsingLock<int>(null, 0));
+            Assert.Throws<ArgumentNullException>(() => MemberDefinition.UsingLock(null, 0));
         }
 
         /// <summary>
-        /// Tests that name set null throws argument exception
+        ///     Tests that name set null throws argument exception
         /// </summary>
         [Fact]
         public void Name_SetNull_ThrowsArgumentException()
@@ -112,7 +112,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that wire name set null throws argument exception
+        ///     Tests that wire name set null throws argument exception
         /// </summary>
         [Fact]
         public void WireName_SetNull_ThrowsArgumentException()
@@ -122,7 +122,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that escaped wire name set null throws argument exception
+        ///     Tests that escaped wire name set null throws argument exception
         /// </summary>
         [Fact]
         public void EscapedWireName_SetNull_ThrowsArgumentException()
@@ -132,7 +132,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that accessor set null throws argument null exception
+        ///     Tests that accessor set null throws argument null exception
         /// </summary>
         [Fact]
         public void Accessor_SetNull_ThrowsArgumentNullException()
@@ -142,7 +142,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that type set null throws argument null exception
+        ///     Tests that type set null throws argument null exception
         /// </summary>
         [Fact]
         public void Type_SetNull_ThrowsArgumentNullException()
@@ -152,7 +152,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that add deserialization member v 2 null type throws argument null exception
+        ///     Tests that add deserialization member v 2 null type throws argument null exception
         /// </summary>
         [Fact]
         public void AddDeserializationMember_v2_NullType_ThrowsArgumentNullException()
@@ -161,7 +161,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that add deserialization member v 2 null member throws argument null exception
+        ///     Tests that add deserialization member v 2 null member throws argument null exception
         /// </summary>
         [Fact]
         public void AddDeserializationMember_v2_NullMember_ThrowsArgumentNullException()
@@ -170,7 +170,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that add serialization member v 2 null type throws argument null exception
+        ///     Tests that add serialization member v 2 null type throws argument null exception
         /// </summary>
         [Fact]
         public void AddSerializationMember_v2_NullType_ThrowsArgumentNullException()
@@ -179,7 +179,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that add serialization membe v 2r null member throws argument null exception
+        ///     Tests that add serialization membe v 2r null member throws argument null exception
         /// </summary>
         [Fact]
         public void AddSerializationMembe_v2r_NullMember_ThrowsArgumentNullException()
@@ -188,7 +188,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get serialization members v 2 null type throws argument null exception
+        ///     Tests that get serialization members v 2 null type throws argument null exception
         /// </summary>
         [Fact]
         public void GetSerializationMembers_v2_NullType_ThrowsArgumentNullException()
@@ -197,7 +197,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get deserialization members v 2 null type throws argument null exception
+        ///     Tests that get deserialization members v 2 null type throws argument null exception
         /// </summary>
         [Fact]
         public void GetDeserializationMembers_v2_NullType_ThrowsArgumentNullException()
@@ -206,16 +206,16 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that using lock null action v 2 throws argument null exception
+        ///     Tests that using lock null action v 2 throws argument null exception
         /// </summary>
         [Fact]
         public void UsingLock_NullAction_v2_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => MemberDefinition.UsingLock<int>(null, 0));
+            Assert.Throws<ArgumentNullException>(() => MemberDefinition.UsingLock(null, 0));
         }
 
         /// <summary>
-        /// Tests that equals default value null value returns false
+        ///     Tests that equals default value null value returns false
         /// </summary>
         [Fact]
         public void EqualsDefaultValue_NullValue_ReturnsFalse()
@@ -226,7 +226,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that equals default value default value returns true
+        ///     Tests that equals default value default value returns true
         /// </summary>
         [Fact]
         public void EqualsDefaultValue_DefaultValue_ReturnsTrue()
@@ -238,7 +238,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that remove deserialization member null type throws argument null exception
+        ///     Tests that remove deserialization member null type throws argument null exception
         /// </summary>
         [Fact]
         public void RemoveDeserializationMember_NullType_ThrowsArgumentNullException()
@@ -247,7 +247,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that remove deserialization member null member throws argument null exception
+        ///     Tests that remove deserialization member null member throws argument null exception
         /// </summary>
         [Fact]
         public void RemoveDeserializationMember_NullMember_ThrowsArgumentNullException()
@@ -256,7 +256,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that remove serialization member null type throws argument null exception
+        ///     Tests that remove serialization member null type throws argument null exception
         /// </summary>
         [Fact]
         public void RemoveSerializationMember_NullType_ThrowsArgumentNullException()
@@ -265,7 +265,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that remove serialization member null member throws argument null exception
+        ///     Tests that remove serialization member null member throws argument null exception
         /// </summary>
         [Fact]
         public void RemoveSerializationMember_NullMember_ThrowsArgumentNullException()
@@ -274,7 +274,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that to string returns name
+        ///     Tests that to string returns name
         /// </summary>
         [Fact]
         public void ToString_ReturnsName()
@@ -286,7 +286,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that add deserialization member v 3 null type throws argument null exception
+        ///     Tests that add deserialization member v 3 null type throws argument null exception
         /// </summary>
         [Fact]
         public void AddDeserializationMember_v3_NullType_ThrowsArgumentNullException()
@@ -295,7 +295,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that add deserialization member v 3 null member throws argument null exception
+        ///     Tests that add deserialization member v 3 null member throws argument null exception
         /// </summary>
         [Fact]
         public void AddDeserializationMember_v3_NullMember_ThrowsArgumentNullException()
@@ -304,7 +304,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that add serialization member v 3 null type throws argument null exception
+        ///     Tests that add serialization member v 3 null type throws argument null exception
         /// </summary>
         [Fact]
         public void AddSerializationMember_v3_NullType_ThrowsArgumentNullException()
@@ -313,7 +313,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that add serialization member v 3 null member throws argument null exception
+        ///     Tests that add serialization member v 3 null member throws argument null exception
         /// </summary>
         [Fact]
         public void AddSerializationMember_v3_NullMember_ThrowsArgumentNullException()
@@ -322,7 +322,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get serialization members v 3 null type throws argument null exception
+        ///     Tests that get serialization members v 3 null type throws argument null exception
         /// </summary>
         [Fact]
         public void GetSerializationMembers_v3_NullType_ThrowsArgumentNullException()
@@ -331,7 +331,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get deserialization members v 3 null type throws argument null exception
+        ///     Tests that get deserialization members v 3 null type throws argument null exception
         /// </summary>
         [Fact]
         public void GetDeserializationMembers_v3_NullType_ThrowsArgumentNullException()
@@ -340,12 +340,12 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that using lock v 2 null action throws argument null exception
+        ///     Tests that using lock v 2 null action throws argument null exception
         /// </summary>
         [Fact]
         public void UsingLock_v2_NullAction_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => MemberDefinition.UsingLock<int>(null, 0));
+            Assert.Throws<ArgumentNullException>(() => MemberDefinition.UsingLock(null, 0));
         }
     }
 }

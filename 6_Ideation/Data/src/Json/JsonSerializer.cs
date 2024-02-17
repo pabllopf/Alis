@@ -549,7 +549,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (ReferenceEquals(o1, o2))
                 return true;
 
-            return o1 != null && o1.Equals(o2);
+            return (o1 != null) && o1.Equals(o2);
         }
 
         /// <summary>
@@ -985,10 +985,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="pos">The pos</param>
         /// <param name="c">The </param>
         /// <returns>The json exception</returns>
-        internal static JsonException GetExpectedCharacterException(long pos, char c)
-        {
-            return pos < 0 ? new JsonException("JSO0002: JSON deserialization error detected. Expecting '" + c + "' character.") : new JsonException("JSO0003: JSON deserialization error detected at position " + pos + ". Expecting '" + c + "' character.");
-        }
+        internal static JsonException GetExpectedCharacterException(long pos, char c) => pos < 0 ? new JsonException("JSO0002: JSON deserialization error detected. Expecting '" + c + "' character.") : new JsonException("JSO0003: JSON deserialization error detected at position " + pos + ". Expecting '" + c + "' character.");
 
         /// <summary>
         ///     Gets the unexpected character exception using the specified pos
@@ -996,20 +993,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="pos">The pos</param>
         /// <param name="c">The </param>
         /// <returns>The json exception</returns>
-        internal static JsonException GetUnexpectedCharacterException(long pos, char c)
-        {
-            return pos < 0 ? new JsonException("JSO0004: JSON deserialization error detected. Unexpected '" + c + "' character.") : new JsonException("JSO0005: JSON deserialization error detected at position " + pos + ". Unexpected '" + c + "' character.");
-        }
+        internal static JsonException GetUnexpectedCharacterException(long pos, char c) => pos < 0 ? new JsonException("JSO0004: JSON deserialization error detected. Unexpected '" + c + "' character.") : new JsonException("JSO0005: JSON deserialization error detected at position " + pos + ". Unexpected '" + c + "' character.");
 
         /// <summary>
         ///     Gets the expected hex character exception using the specified pos
         /// </summary>
         /// <param name="pos">The pos</param>
         /// <returns>The json exception</returns>
-        internal static JsonException GetExpectedHexCharacterException(long pos)
-        {
-            return pos < 0 ? new JsonException("JSO0006: JSON deserialization error detected. Expecting hexadecimal character.") : new JsonException("JSO0007: JSON deserialization error detected at position " + pos + ". Expecting hexadecimal character.");
-        }
+        internal static JsonException GetExpectedHexCharacterException(long pos) => pos < 0 ? new JsonException("JSO0006: JSON deserialization error detected. Expecting hexadecimal character.") : new JsonException("JSO0007: JSON deserialization error detected at position " + pos + ". Expecting hexadecimal character.");
 
         /// <summary>
         ///     Gets the type exception using the specified pos
@@ -1018,10 +1009,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="typeName">The type name</param>
         /// <param name="inner">The inner</param>
         /// <returns>The json exception</returns>
-        internal static JsonException GetTypeException(long pos, string typeName, Exception inner)
-        {
-            return pos < 0 ? new JsonException("JSO0010: JSON deserialization error detected for '" + typeName + "' type.", inner) : new JsonException("JSO0011: JSON deserialization error detected for '" + typeName + "' type at position " + pos + ".", inner);
-        }
+        internal static JsonException GetTypeException(long pos, string typeName, Exception inner) => pos < 0 ? new JsonException("JSO0010: JSON deserialization error detected for '" + typeName + "' type.", inner) : new JsonException("JSO0011: JSON deserialization error detected for '" + typeName + "' type at position " + pos + ".", inner);
 
         /// <summary>
         ///     Gets the eof exception using the specified c
@@ -1604,7 +1592,7 @@ namespace Alis.Core.Aspect.Data.Json
 
             // 01234567890123456
             // 20150525T15:50:00
-            if ((text.Length == 17))
+            if (text.Length == 17)
             {
                 if ((text[8] == 'T' || text[8] == 't') && (text[11] == ':') && (text[14] == ':'))
                 {
@@ -2239,7 +2227,7 @@ namespace Alis.Core.Aspect.Data.Json
                     return;
                 }
             }
-            
+
             WriteArray(writer, array, objectGraph, options, Array.Empty<int>());
         }
 
@@ -2658,7 +2646,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="writer">The writer</param>
         /// <param name="jsonObject">The json object</param>
         /// <param name="options">The options</param>
-       [ExcludeFromCodeCoverage]
+        [ExcludeFromCodeCoverage]
         internal static void WriteFormatted(IndentedTextWriter writer, object jsonObject, JsonOptions options)
         {
             switch (jsonObject)

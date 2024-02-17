@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DefaultTest.cs
+//  File:NamespaceCheckerTests.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Test
 {
     /// <summary>
-    /// The namespace checker tests class
+    ///     The namespace checker tests class
     /// </summary>
     public class NamespaceCheckerTests
     {
         /// <summary>
-        /// Tests that check namespace no types in namespace returns true
+        ///     Tests that check namespace no types in namespace returns true
         /// </summary>
         [Fact]
         public void CheckNamespace_NoTypesInNamespace_ReturnsTrue()
@@ -56,14 +56,14 @@ namespace Alis.Core.Aspect.Test
         }
 
         /// <summary>
-        /// Describes whether this instance check namespace
+        ///     Describes whether this instance check namespace
         /// </summary>
         /// <param name="namespaceToCheck">The namespace to check</param>
         /// <returns>The bool</returns>
         private static bool CheckNamespace(string namespaceToCheck)
         {
             Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            return assemblies.Select(assembly => assembly.GetTypes().Where(t => String.Equals(t.Namespace, namespaceToCheck, StringComparison.Ordinal))).All(types => !types.Any());
+            return assemblies.Select(assembly => assembly.GetTypes().Where(t => string.Equals(t.Namespace, namespaceToCheck, StringComparison.Ordinal))).All(types => !types.Any());
         }
     }
 }

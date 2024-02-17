@@ -49,6 +49,17 @@ namespace Alis.Builder.Core.Ecs.Component.Render
         private readonly Camera camera = new Camera();
 
         /// <summary>
+        ///     Backgrounds the color using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The camera builder</returns>
+        public CameraBuilder BackgroundColor(Color value)
+        {
+            camera.BackgroundColor = value;
+            return this;
+        }
+
+        /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The camera</returns>
@@ -56,7 +67,7 @@ namespace Alis.Builder.Core.Ecs.Component.Render
 
 
         /// <summary>
-        /// Resolutions the x
+        ///     Resolutions the x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
@@ -64,17 +75,6 @@ namespace Alis.Builder.Core.Ecs.Component.Render
         public CameraBuilder Resolution(int x, int y)
         {
             camera.Resolution = new Vector2(x, y);
-            return this;
-        }
-        
-        /// <summary>
-        /// Backgrounds the color using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The camera builder</returns>
-        public CameraBuilder BackgroundColor(Color value)
-        {
-            camera.BackgroundColor = value;
             return this;
         }
     }

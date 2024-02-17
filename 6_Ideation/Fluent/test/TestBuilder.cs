@@ -30,18 +30,15 @@
 namespace Alis.Core.Aspect.Fluent.Test
 {
     /// <summary>
-    /// The test builder class
+    ///     The test builder class
     /// </summary>
-    /// <seealso cref="IBuilder{string}"/>
+    /// <seealso cref="IBuilder{string}" />
     internal class TestBuilder : IBuilder<string>
     {
         /// <summary>
-        /// Builders this instance
+        ///     Builders this instance
         /// </summary>
         /// <returns>The string</returns>
-        public string Builder()
-        {
-            return "Test";
-        }
+        public string Builder() => "Test";
     }
 }

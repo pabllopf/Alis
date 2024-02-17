@@ -218,7 +218,6 @@ namespace Alis.Sample.Flappy.Bird
                     ////////////////////////////////////////
                     .Add<Scene>(gameScene => gameScene
                         .Name("Game Scene")
-                        
                         .Add<GameObject>(mainCamera => mainCamera
                             .Name("Camera")
                             .WithTag("Camera")

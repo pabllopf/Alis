@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlBlendMode.cs
+//  File:BlendMode.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -66,9 +66,9 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         ///     The sdl blend factor invalid sdl blend factor
         /// </summary>
         BlendModeInvalid = 0x7FFFFFFF,
-        
+
         /// <summary>
-        /// The blend all blend mode
+        ///     The blend all blend mode
         /// </summary>
         BlendAll = BlendModeBlend | BlendModeAdd | BlendModeMod | BlendModeMul | BlendModeInvalid
     }

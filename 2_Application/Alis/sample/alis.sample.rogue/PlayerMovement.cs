@@ -36,27 +36,27 @@ using Alis.Core.Ecs.Component;
 namespace Alis.Sample.Rogue
 {
     /// <summary>
-    /// The player movement class
+    ///     The player movement class
     /// </summary>
-    /// <seealso cref="Component"/>
+    /// <seealso cref="Component" />
     public class PlayerMovement : Component
     {
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
         }
-        
+
         /// <summary>
-        /// Ons the release key using the specified key
+        ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnReleaseKey(SdlKeycode key)
@@ -64,14 +64,14 @@ namespace Alis.Sample.Rogue
             if (key == SdlKeycode.SdlkD)
             {
             }
-            
+
             if (key == SdlKeycode.SdlkA)
             {
             }
         }
 
         /// <summary>
-        /// Ons the press down key using the specified key
+        ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnPressDownKey(SdlKeycode key)
@@ -81,19 +81,19 @@ namespace Alis.Sample.Rogue
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X + 1, GameObject.Transform.Position.Y), GameObject.Transform.Rotation, GameObject.Transform.Scale);
                 Console.WriteLine(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation.Angle);
             }
-            
+
             if (key == SdlKeycode.SdlkA)
             {
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X - 1, GameObject.Transform.Position.Y), GameObject.Transform.Rotation, GameObject.Transform.Scale);
                 Console.WriteLine(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation.Angle);
             }
-            
+
             if (key == SdlKeycode.SdlkW)
             {
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y - 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);
                 Console.WriteLine(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation.Angle);
             }
-            
+
             if (key == SdlKeycode.SdlkS)
             {
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y + 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);

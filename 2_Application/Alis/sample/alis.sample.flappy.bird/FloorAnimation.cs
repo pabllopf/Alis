@@ -41,14 +41,14 @@ namespace Alis.Sample.Flappy.Bird
     public class FloorAnimation : Component
     {
         /// <summary>
+        ///     The velocity
+        /// </summary>
+        private const float Velocity = 70.0f;
+
+        /// <summary>
         ///     The old
         /// </summary>
         private float xOld;
-        
-        /// <summary>
-        /// The velocity
-        /// </summary>
-        private const float Velocity = 70.0f;
 
         /// <summary>
         ///     Ons the init
@@ -68,10 +68,10 @@ namespace Alis.Sample.Flappy.Bird
 
             // get the y position of game object:
             float y = GameObject.Transform.Position.Y;
-            
+
             // get the velocity of game object:
             float displace = Velocity * Game.TimeManager.DeltaTime;
-            
+
             // if the x position is less than -50.0f, then reset the x position to 0.0f
             Vector2 newPosition = x < -25.0f ? new Vector2(xOld, y) : new Vector2(x - displace, y);
 

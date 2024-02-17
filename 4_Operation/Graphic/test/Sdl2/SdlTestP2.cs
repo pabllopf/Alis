@@ -910,7 +910,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             bool result = Sdl.HasClipboardText();
 
             // Assert
-            Assert.Equal(result == true ? true :false, result);
+            Assert.Equal(result ? true : false, result);
 
             // Cleanup
             Sdl.Quit();
@@ -1024,7 +1024,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Assert
 
-            Assert.Equal(result == true ? true :false, result);
+            Assert.Equal(result ? true : false, result);
 
             // Cleanup
             Sdl.Quit();
@@ -1709,7 +1709,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             bool result = Sdl.GameControllerHasRumbleTriggers(gameController);
 
             // Assert
-            Assert.True(result ==false || result == true);
+            Assert.True(result == false || result);
 
             // Cleanup
             Sdl.Quit();
@@ -1904,7 +1904,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
-            bool enabled =false; // Replace with actual enabled value
+            bool enabled = false; // Replace with actual enabled value
 
             // Act
             int result = Sdl.SetRelativeMouseMode(enabled);
@@ -1926,7 +1926,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
-            bool enabled =false; // Replace with actual enabled value
+            bool enabled = false; // Replace with actual enabled value
 
             // Act
             int result = Sdl.CaptureMouse(enabled);
@@ -2819,7 +2819,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             bool result = Sdl.FormatEnumToMasks(format, out int _, out uint _, out uint _, out uint _, out uint _);
 
             // Assert
-            Assert.True(result ==false || result == true);
+            Assert.True(result == false || result);
 
             Sdl.Quit();
         }

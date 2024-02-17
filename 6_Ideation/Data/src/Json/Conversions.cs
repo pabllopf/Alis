@@ -61,10 +61,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="defaultValue">The default value</param>
         /// <param name="provider">The provider</param>
         /// <returns>The value</returns>
-        public static T ChangeType<T>(object input, T defaultValue = default(T), IFormatProvider provider = null)
-        {
-            return !TryChangeType(input, provider, out T value) ? defaultValue : value;
-        }
+        public static T ChangeType<T>(object input, T defaultValue = default(T), IFormatProvider provider = null) => !TryChangeType(input, provider, out T value) ? defaultValue : value;
 
         /// <summary>
         ///     Describes whether try change type

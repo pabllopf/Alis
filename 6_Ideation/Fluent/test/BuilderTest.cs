@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Fluent.Test
 {
     /// <summary>
-    /// The builder test class
+    ///     The builder test class
     /// </summary>
     public class BuilderTest
     {
         /// <summary>
-        /// Tests that builder returns expected value
+        ///     Tests that builder returns expected value
         /// </summary>
         [Fact]
         public void Builder_ReturnsExpectedValue()
@@ -53,7 +53,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         }
 
         /// <summary>
-        /// Tests that builder does not return null
+        ///     Tests that builder does not return null
         /// </summary>
         [Fact]
         public void Builder_DoesNotReturnNull()
@@ -69,7 +69,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         }
 
         /// <summary>
-        /// Tests that builder returns correct type
+        ///     Tests that builder returns correct type
         /// </summary>
         [Fact]
         public void Builder_ReturnsCorrectType()

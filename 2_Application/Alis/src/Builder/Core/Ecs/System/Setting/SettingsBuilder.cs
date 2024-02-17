@@ -119,7 +119,13 @@ namespace Alis.Builder.Core.Ecs.System.Setting
             settingBase.Audio = value.Invoke(new AudioSettingBuilder());
             return this;
         }
-        
+
+        /// <summary>
+        ///     Build setting
+        /// </summary>
+        /// <returns></returns>
+        public Settings Build() => settingBase;
+
         /// <summary>
         ///     Clouds the value
         /// </summary>
@@ -240,15 +246,6 @@ namespace Alis.Builder.Core.Ecs.System.Setting
         {
             settingBase.Store = value.Invoke(new StoreSettingBuilder());
             return this;
-        }
-
-        /// <summary>
-        ///     Build setting
-        /// </summary>
-        /// <returns></returns>
-        public Settings Build()
-        {
-            return settingBase;
         }
     }
 }

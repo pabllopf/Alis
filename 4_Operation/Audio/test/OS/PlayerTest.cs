@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Core.Audio.Test.OS
 {
     /// <summary>
-    /// The player test class
+    ///     The player test class
     /// </summary>
     public class PlayerTest
     {
         /// <summary>
-        /// Tests that test method
+        ///     Tests that test method
         /// </summary>
         [Fact]
         public void TestMethod()

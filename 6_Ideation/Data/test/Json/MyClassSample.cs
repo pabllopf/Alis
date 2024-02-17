@@ -30,17 +30,17 @@
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The my class sample class
+    ///     The my class sample class
     /// </summary>
     public class MyClassSample
     {
         /// <summary>
-        /// The my field
+        ///     The my field
         /// </summary>
         public readonly string MyField = "Sample";
 
         /// <summary>
-        /// Gets or sets the value of the my property
+        ///     Gets or sets the value of the my property
         /// </summary>
         public string MyProperty { get; set; } = "Sample";
     }

@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The type def test class
+    ///     The type def test class
     /// </summary>
     public class TypeDefTest
     {
         /// <summary>
-        /// Tests that test type def constructor
+        ///     Tests that test type def constructor
         /// </summary>
         [Fact]
         public void TestTypeDefConstructor()
@@ -53,7 +53,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test get deserialization member
+        ///     Tests that test get deserialization member
         /// </summary>
         [Fact]
         public void TestGetDeserializationMember()
@@ -67,7 +67,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test apply entry
+        ///     Tests that test apply entry
         /// </summary>
         [Fact]
         public void TestApplyEntry()
@@ -82,7 +82,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write values
+        ///     Tests that test write values
         /// </summary>
         [Fact]
         public void TestWriteValues()
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test to string
+        ///     Tests that test to string
         /// </summary>
         [Fact]
         public void TestToString()
@@ -112,7 +112,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test get key
+        ///     Tests that test get key
         /// </summary>
         [Fact]
         public void TestGetKey()
@@ -125,7 +125,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test unlocked get
+        ///     Tests that test unlocked get
         /// </summary>
         [Fact]
         public void TestUnlockedGet()
@@ -138,18 +138,18 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test lock method
+        ///     Tests that test lock method
         /// </summary>
         [Fact]
         public void TestLockMethod()
         {
-            TypeDef.LockMethod((x) => { }, "test");
+            TypeDef.LockMethod(x => { }, "test");
 
             Assert.True(true);
         }
 
         /// <summary>
-        /// Tests that test remove deserialization member
+        ///     Tests that test remove deserialization member
         /// </summary>
         [Fact]
         public void TestRemoveDeserializationMember()
@@ -162,7 +162,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test remove serialization member
+        ///     Tests that test remove serialization member
         /// </summary>
         [Fact]
         public void TestRemoveSerializationMember()
@@ -175,7 +175,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test add deserialization member
+        ///     Tests that test add deserialization member
         /// </summary>
         [Fact]
         public void TestAddDeserializationMember()
@@ -188,7 +188,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test add serialization member
+        ///     Tests that test add serialization member
         /// </summary>
         [Fact]
         public void TestAddSerializationMember()
@@ -201,7 +201,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test get deserialization members
+        ///     Tests that test get deserialization members
         /// </summary>
         [Fact]
         public void TestGetDeserializationMembers()
@@ -214,7 +214,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test get serialization members
+        ///     Tests that test get serialization members
         /// </summary>
         [Fact]
         public void TestGetSerializationMembers()
@@ -227,7 +227,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test get
+        ///     Tests that test get
         /// </summary>
         [Fact]
         public void TestGet()
@@ -240,7 +240,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test is key value pair enumerable
+        ///     Tests that test is key value pair enumerable
         /// </summary>
         [Fact]
         public void TestIsKeyValuePairEnumerable()
@@ -253,7 +253,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test enumerate definitions using reflection serialization
+        ///     Tests that test enumerate definitions using reflection serialization
         /// </summary>
         [Fact]
         public void TestEnumerateDefinitionsUsingReflection_Serialization()
@@ -271,7 +271,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test enumerate definitions using reflection deserialization
+        ///     Tests that test enumerate definitions using reflection deserialization
         /// </summary>
         [Fact]
         public void TestEnumerateDefinitionsUsingReflection_Deserialization()
@@ -289,7 +289,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test enumerate definitions using reflection v 2 serialization
+        ///     Tests that test enumerate definitions using reflection v 2 serialization
         /// </summary>
         [Fact]
         public void TestEnumerateDefinitionsUsingReflection_v2_Serialization()
@@ -307,7 +307,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test enumerate definitions using reflection v 2 deserialization
+        ///     Tests that test enumerate definitions using reflection v 2 deserialization
         /// </summary>
         [Fact]
         public void TestEnumerateDefinitionsUsingReflection_v2_Deserialization()
@@ -325,7 +325,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write values skip null property values
+        ///     Tests that test write values skip null property values
         /// </summary>
         [Fact]
         public void TestWriteValues_SkipNullPropertyValues()
@@ -346,7 +346,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write values skip zero value types
+        ///     Tests that test write values skip zero value types
         /// </summary>
         [Fact]
         public void TestWriteValues_SkipZeroValueTypes()
@@ -367,7 +367,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write values skip null date time values
+        ///     Tests that test write values skip null date time values
         /// </summary>
         [Fact]
         public void TestWriteValues_SkipNullDateTimeValues()
@@ -388,7 +388,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write values skip default values
+        ///     Tests that test write values skip default values
         /// </summary>
         [Fact]
         public void TestWriteValues_SkipDefaultValues()
@@ -405,13 +405,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
             typeDef.WriteValues(writer, component, objectGraph, options);
 
             string result = writer.ToString();
-            
+
             // Assert
             Assert.Equal("\"TestProperty\":0", result);
         }
 
         /// <summary>
-        /// Tests that test write values write keys without quotes
+        ///     Tests that test write values write keys without quotes
         /// </summary>
         [Fact]
         public void TestWriteValues_WriteKeysWithoutQuotes()
@@ -432,7 +432,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write values default
+        ///     Tests that test write values default
         /// </summary>
         [Fact]
         public void TestWriteValues_Default()
@@ -449,7 +449,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             typeDef.WriteValues(writer, component, objectGraph, options);
 
             string result = writer.ToString();
-            
+
             // Assert
             Assert.Equal("", result);
         }

@@ -32,18 +32,18 @@ using System.ComponentModel;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The dummy class
+    ///     The dummy class
     /// </summary>
     public class DummyClass
     {
         /// <summary>
-        /// Gets or sets the value of the dummy property
+        ///     Gets or sets the value of the dummy property
         /// </summary>
         [DefaultValue("DefaultValue")]
         public string DummyProperty { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the another dummy property
+        ///     Gets or sets the value of the another dummy property
         /// </summary>
         public string AnotherDummyProperty { get; set; }
     }
