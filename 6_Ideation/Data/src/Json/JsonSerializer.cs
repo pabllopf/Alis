@@ -2165,7 +2165,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        ///     Describes whether internal is key value pair enumerable
+        /// Describes whether internal is key value pair enumerable
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="keyType">The key type</param>
@@ -2183,19 +2183,11 @@ namespace Alis.Core.Aspect.Data.Json
                     if (typeof(IEnumerable<>).IsAssignableFrom(t.GetGenericTypeDefinition()))
                     {
                         Type[] args = t.GetGenericArguments();
-                        if (args.Length == 1)
+                        if (args.Length == 1 && args[0].IsGenericType && args[0].GetGenericTypeDefinition() == typeof(KeyValuePair<,>))
                         {
-                            Type kvp = args[0];
-                            if (kvp.IsGenericType && typeof(KeyValuePair<,>).IsAssignableFrom(kvp.GetGenericTypeDefinition()))
-                            {
-                                Type[] kvpArgs = kvp.GetGenericArguments();
-                                if (kvpArgs.Length == 2)
-                                {
-                                    keyType = kvpArgs[0];
-                                    valueType = kvpArgs[1];
-                                    return true;
-                                }
-                            }
+                            keyType = args[0].GetGenericArguments()[0];
+                            valueType = args[0].GetGenericArguments()[1];
+                            return true;
                         }
                     }
                 }
