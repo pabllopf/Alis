@@ -2673,7 +2673,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        ///     Writes the formatted using the specified writer
+        /// Writes the formatted using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="jsonObject">The json object</param>
@@ -2684,80 +2684,107 @@ namespace Alis.Core.Aspect.Data.Json
             switch (jsonObject)
             {
                 case DictionaryEntry entry:
-                {
-                    string entryKey = string.Format(CultureInfo.InvariantCulture, "{0}", entry.Key);
-                    if (options.SerializationOptions.HasFlag(JsonSerializationOptions.WriteKeysWithoutQuotes))
-                    {
-                        writer.Write(entryKey);
-                        writer.Write(": ");
-                    }
-                    else
-                    {
-                        writer.Write('"');
-                        writer.Write(entryKey);
-                        writer.Write("\": ");
-                    }
-
-                    writer.Indent++;
-                    WriteFormatted(writer, entry.Value, options);
-                    writer.Indent--;
+                    WriteDictionaryEntry(writer, entry, options);
                     return;
-                }
                 case IDictionary dictionary:
-                {
-                    writer.WriteLine('{');
-                    bool first = true;
-                    writer.Indent++;
-                    foreach (DictionaryEntry entry2 in dictionary)
-                    {
-                        if (!first)
-                        {
-                            writer.WriteLine(',');
-                        }
-                        else
-                        {
-                            first = false;
-                        }
-
-                        WriteFormatted(writer, entry2, options);
-                    }
-
-                    writer.Indent--;
-                    writer.WriteLine();
-                    writer.Write('}');
+                    WriteDictionary(writer, dictionary, options);
                     return;
-                }
                 case string s:
                     WriteString(writer, s);
                     return;
                 case IEnumerable enumerable:
-                {
-                    writer.WriteLine('[');
-                    bool first = true;
-                    writer.Indent++;
-                    foreach (object obj in enumerable)
-                    {
-                        if (!first)
-                        {
-                            writer.WriteLine(',');
-                        }
-                        else
-                        {
-                            first = false;
-                        }
-
-                        WriteFormatted(writer, obj, options);
-                    }
-
-                    writer.Indent--;
-                    writer.WriteLine();
-                    writer.Write(']');
+                    WriteEnumerable(writer, enumerable, options);
                     return;
-                }
                 default:
                     WriteValue(writer, jsonObject, null, options);
                     break;
             }
+        }
+
+        /// <summary>
+        /// Writes the dictionary entry using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="entry">The entry</param>
+        /// <param name="options">The options</param>
+        private static void WriteDictionaryEntry(IndentedTextWriter writer, DictionaryEntry entry, JsonOptions options)
+        {
+            string entryKey = string.Format(CultureInfo.InvariantCulture, "{0}", entry.Key);
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.WriteKeysWithoutQuotes))
+            {
+                writer.Write(entryKey);
+                writer.Write(": ");
+            }
+            else
+            {
+                writer.Write('"');
+                writer.Write(entryKey);
+                writer.Write("\": ");
+            }
+
+            writer.Indent++;
+            WriteFormatted(writer, entry.Value, options);
+            writer.Indent--;
+        }
+
+        /// <summary>
+        /// Writes the dictionary using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="dictionary">The dictionary</param>
+        /// <param name="options">The options</param>
+        private static void WriteDictionary(IndentedTextWriter writer, IDictionary dictionary, JsonOptions options)
+        {
+            writer.WriteLine('{');
+            bool first = true;
+            writer.Indent++;
+            foreach (DictionaryEntry entry2 in dictionary)
+            {
+                if (!first)
+                {
+                    writer.WriteLine(',');
+                }
+                else
+                {
+                    first = false;
+                }
+
+                WriteFormatted(writer, entry2, options);
+            }
+
+            writer.Indent--;
+            writer.WriteLine();
+            writer.Write('}');
+        }
+
+        /// <summary>
+        /// Writes the enumerable using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="enumerable">The enumerable</param>
+        /// <param name="options">The options</param>
+        private static void WriteEnumerable(IndentedTextWriter writer, IEnumerable enumerable, JsonOptions options)
+        {
+            writer.WriteLine('[');
+            bool first = true;
+            writer.Indent++;
+            foreach (object obj in enumerable)
+            {
+                if (!first)
+                {
+                    writer.WriteLine(',');
+                }
+                else
+                {
+                    first = false;
+                }
+
+                WriteFormatted(writer, obj, options);
+            }
+
+            writer.Indent--;
+            writer.WriteLine();
+            writer.Write(']');
         }
 
         /// <summary>
