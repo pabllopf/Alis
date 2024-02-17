@@ -33,6 +33,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Linq;
 
 namespace Alis.Core.Aspect.Data.Json
 {
@@ -122,8 +123,9 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         public static bool TryChangeType(object input, Type conversionType, out object value) => TryChangeType(input, conversionType, null, out value);
 
+
         /// <summary>
-        ///     Describes whether try change type
+        /// Describes whether try change type
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="conversionType">The conversion type</param>
@@ -131,7 +133,6 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
         private static bool TryChangeType(object input, Type conversionType, IFormatProvider provider, out object value)
         {
             if (conversionType == null)
@@ -145,22 +146,7 @@ namespace Alis.Core.Aspect.Data.Json
 
             if (IsNullable(conversionType))
             {
-                if (input == null)
-                {
-                    value = null;
-                    return true;
-                }
-
-                Type type = conversionType.GetGenericArguments()[0];
-                if (TryChangeType(input, type, provider, out object vtValue))
-                {
-                    Type nt = typeof(Nullable<>).MakeGenericType(type);
-                    value = Activator.CreateInstance(nt, vtValue);
-                    return true;
-                }
-
-                value = null;
-                return false;
+                return TryChangeToNullable(input, conversionType, provider, out value);
             }
 
             value = IsReallyValueType(conversionType) ? Activator.CreateInstance(conversionType) : null;
@@ -175,847 +161,332 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             if (conversionType.IsEnum)
-                return EnumTryParse(conversionType, input, out value);
+                return TryChangeToEnum(conversionType, input, out value);
 
             if (inputType.IsEnum)
-            {
-                TypeCode tc = Type.GetTypeCode(inputType);
-                if (conversionType == typeof(int))
-                {
-                    switch (tc)
-                    {
-                        case TypeCode.Int32:
-                            value = (int) input;
-                            return true;
-
-                        case TypeCode.Int16:
-                            value = (int) (short) input;
-                            return true;
-
-                        case TypeCode.Int64:
-                            value = (int) (long) input;
-                            return true;
-
-                        case TypeCode.UInt32:
-                            value = (int) (uint) input;
-                            return true;
-
-                        case TypeCode.UInt16:
-                            value = (int) (ushort) input;
-                            return true;
-
-                        case TypeCode.UInt64:
-                            value = (int) (ulong) input;
-                            return true;
-
-                        case TypeCode.Byte:
-                            value = (int) (byte) input;
-                            return true;
-
-                        case TypeCode.SByte:
-                            value = (int) (sbyte) input;
-                            return true;
-                    }
-
-                    return false;
-                }
-
-                if (conversionType == typeof(short))
-                {
-                    switch (tc)
-                    {
-                        case TypeCode.Int32:
-                            value = (short) (int) input;
-                            return true;
-
-                        case TypeCode.Int16:
-                            value = (short) input;
-                            return true;
-
-                        case TypeCode.Int64:
-                            value = (short) (long) input;
-                            return true;
-
-                        case TypeCode.UInt32:
-                            value = (short) (uint) input;
-                            return true;
-
-                        case TypeCode.UInt16:
-                            value = (short) (ushort) input;
-                            return true;
-
-                        case TypeCode.UInt64:
-                            value = (short) (ulong) input;
-                            return true;
-
-                        case TypeCode.Byte:
-                            value = (short) (byte) input;
-                            return true;
-
-                        case TypeCode.SByte:
-                            value = (short) (sbyte) input;
-                            return true;
-                    }
-
-                    return false;
-                }
-
-                if (conversionType == typeof(long))
-                {
-                    switch (tc)
-                    {
-                        case TypeCode.Int32:
-                            value = (long) (int) input;
-                            return true;
-
-                        case TypeCode.Int16:
-                            value = (long) (short) input;
-                            return true;
-
-                        case TypeCode.Int64:
-                            value = (long) input;
-                            return true;
-
-                        case TypeCode.UInt32:
-                            value = (long) (uint) input;
-                            return true;
-
-                        case TypeCode.UInt16:
-                            value = (long) (ushort) input;
-                            return true;
-
-                        case TypeCode.UInt64:
-                            value = (long) (ulong) input;
-                            return true;
-
-                        case TypeCode.Byte:
-                            value = (long) (byte) input;
-                            return true;
-
-                        case TypeCode.SByte:
-                            value = (long) (sbyte) input;
-                            return true;
-                    }
-
-                    return false;
-                }
-
-                if (conversionType == typeof(uint))
-                {
-                    switch (tc)
-                    {
-                        case TypeCode.Int32:
-                            value = (uint) (int) input;
-                            return true;
-
-                        case TypeCode.Int16:
-                            value = (uint) (short) input;
-                            return true;
-
-                        case TypeCode.Int64:
-                            value = (uint) (long) input;
-                            return true;
-
-                        case TypeCode.UInt32:
-                            value = (uint) input;
-                            return true;
-
-                        case TypeCode.UInt16:
-                            value = (uint) (ushort) input;
-                            return true;
-
-                        case TypeCode.UInt64:
-                            value = (uint) (ulong) input;
-                            return true;
-
-                        case TypeCode.Byte:
-                            value = (uint) (byte) input;
-                            return true;
-
-                        case TypeCode.SByte:
-                            value = (uint) (sbyte) input;
-                            return true;
-                    }
-
-                    return false;
-                }
-
-                if (conversionType == typeof(ushort))
-                {
-                    switch (tc)
-                    {
-                        case TypeCode.Int32:
-                            value = (ushort) (int) input;
-                            return true;
-
-                        case TypeCode.Int16:
-                            value = (ushort) (short) input;
-                            return true;
-
-                        case TypeCode.Int64:
-                            value = (ushort) (long) input;
-                            return true;
-
-                        case TypeCode.UInt32:
-                            value = (ushort) (uint) input;
-                            return true;
-
-                        case TypeCode.UInt16:
-                            value = (ushort) input;
-                            return true;
-
-                        case TypeCode.UInt64:
-                            value = (ushort) (ulong) input;
-                            return true;
-
-                        case TypeCode.Byte:
-                            value = (ushort) (byte) input;
-                            return true;
-
-                        case TypeCode.SByte:
-                            value = (ushort) (sbyte) input;
-                            return true;
-                    }
-
-                    return false;
-                }
-
-                if (conversionType == typeof(ulong))
-                {
-                    switch (tc)
-                    {
-                        case TypeCode.Int32:
-                            value = (ulong) (int) input;
-                            return true;
-
-                        case TypeCode.Int16:
-                            value = (ulong) (short) input;
-                            return true;
-
-                        case TypeCode.Int64:
-                            value = (ulong) (long) input;
-                            return true;
-
-                        case TypeCode.UInt32:
-                            value = (ulong) (uint) input;
-                            return true;
-
-                        case TypeCode.UInt16:
-                            value = (ulong) (ushort) input;
-                            return true;
-
-                        case TypeCode.UInt64:
-                            value = (ulong) input;
-                            return true;
-
-                        case TypeCode.Byte:
-                            value = (ulong) (byte) input;
-                            return true;
-
-                        case TypeCode.SByte:
-                            value = (ulong) (sbyte) input;
-                            return true;
-                    }
-
-                    return false;
-                }
-
-                if (conversionType == typeof(byte))
-                {
-                    switch (tc)
-                    {
-                        case TypeCode.Int32:
-                            value = (byte) (int) input;
-                            return true;
-
-                        case TypeCode.Int16:
-                            value = (byte) (short) input;
-                            return true;
-
-                        case TypeCode.Int64:
-                            value = (byte) (long) input;
-                            return true;
-
-                        case TypeCode.UInt32:
-                            value = (byte) (uint) input;
-                            return true;
-
-                        case TypeCode.UInt16:
-                            value = (byte) (ushort) input;
-                            return true;
-
-                        case TypeCode.UInt64:
-                            value = (byte) (ulong) input;
-                            return true;
-
-                        case TypeCode.Byte:
-                            value = (byte) input;
-                            return true;
-
-                        case TypeCode.SByte:
-                            value = (byte) (sbyte) input;
-                            return true;
-                    }
-
-                    return false;
-                }
-
-                if (conversionType == typeof(sbyte))
-                {
-                    switch (tc)
-                    {
-                        case TypeCode.Int32:
-                            value = (sbyte) (int) input;
-                            return true;
-
-                        case TypeCode.Int16:
-                            value = (sbyte) (short) input;
-                            return true;
-
-                        case TypeCode.Int64:
-                            value = (sbyte) (long) input;
-                            return true;
-
-                        case TypeCode.UInt32:
-                            value = (sbyte) (uint) input;
-                            return true;
-
-                        case TypeCode.UInt16:
-                            value = (sbyte) (ushort) input;
-                            return true;
-
-                        case TypeCode.UInt64:
-                            value = (sbyte) (ulong) input;
-                            return true;
-
-                        case TypeCode.Byte:
-                            value = (sbyte) (byte) input;
-                            return true;
-
-                        case TypeCode.SByte:
-                            value = (sbyte) input;
-                            return true;
-                    }
-
-                    return false;
-                }
-            }
+                return TryChangeFromEnum(conversionType, input, out value);
 
             if (conversionType == typeof(Guid))
-            {
-                string sValue = string.Format(provider, "{0}", input).Nullify();
-                if ((sValue != null) && Guid.TryParse(sValue, out Guid guid))
-                {
-                    value = guid;
-                    return true;
-                }
-
-                return false;
-            }
+                return TryChangeToGuid(input, provider, out value);
 
             if (conversionType == typeof(Uri))
-            {
-                string sValue = string.Format(provider, "{0}", input).Nullify();
-                if ((sValue != null) && Uri.TryCreate(sValue, UriKind.RelativeOrAbsolute, out Uri uri))
-                {
-                    value = uri;
-                    return true;
-                }
-
-                return false;
-            }
+                return TryChangeToUri(input, provider, out value);
 
             if (conversionType == typeof(IntPtr))
-            {
-                if (IntPtr.Size == 8)
-                {
-                    if (TryChangeType(input, provider, out long l))
-                    {
-                        value = new IntPtr(l);
-                        return true;
-                    }
-                }
-                else if (TryChangeType(input, provider, out int i))
-                {
-                    value = new IntPtr(i);
-                    return true;
-                }
+                return TryChangeToIntPtr(input, provider, out value);
 
-                return false;
-            }
+            if (conversionType == typeof(int) || conversionType == typeof(long) || conversionType == typeof(short) || conversionType == typeof(sbyte) || conversionType == typeof(uint) || conversionType == typeof(ulong) || conversionType == typeof(ushort) || conversionType == typeof(byte))
+                return TryChangeToNumeric(input, conversionType, inputType, out value);
 
-            if (conversionType == typeof(int))
-            {
-                if (inputType == typeof(uint))
-                {
-                    value = unchecked((int) (uint) input);
-                    return true;
-                }
-
-                if (inputType == typeof(ulong))
-                {
-                    value = unchecked((int) (ulong) input);
-                    return true;
-                }
-
-                if (inputType == typeof(ushort))
-                {
-                    value = (int) (ushort) input;
-                    return true;
-                }
-
-                if (inputType == typeof(byte))
-                {
-                    value = (int) (byte) input;
-                    return true;
-                }
-            }
-
-            if (conversionType == typeof(long))
-            {
-                if (inputType == typeof(uint))
-                {
-                    value = (long) (uint) input;
-                    return true;
-                }
-
-                if (inputType == typeof(ulong))
-                {
-                    value = unchecked((long) (ulong) input);
-                    return true;
-                }
-
-                if (inputType == typeof(ushort))
-                {
-                    value = (long) (ushort) input;
-                    return true;
-                }
-
-                if (inputType == typeof(byte))
-                {
-                    value = (long) (byte) input;
-                    return true;
-                }
-
-                if (inputType == typeof(TimeSpan))
-                {
-                    value = ((TimeSpan) input).Ticks;
-                    return true;
-                }
-            }
-
-            if (conversionType == typeof(short))
-            {
-                if (inputType == typeof(uint))
-                {
-                    value = unchecked((short) (uint) input);
-                    return true;
-                }
-
-                if (inputType == typeof(ulong))
-                {
-                    value = unchecked((short) (ulong) input);
-                    return true;
-                }
-
-                if (inputType == typeof(ushort))
-                {
-                    value = unchecked((short) (ushort) input);
-                    return true;
-                }
-
-                if (inputType == typeof(byte))
-                {
-                    value = (short) (byte) input;
-                    return true;
-                }
-            }
-
-            if (conversionType == typeof(sbyte))
-            {
-                if (inputType == typeof(uint))
-                {
-                    value = unchecked((sbyte) (uint) input);
-                    return true;
-                }
-
-                if (inputType == typeof(ulong))
-                {
-                    value = unchecked((sbyte) (ulong) input);
-                    return true;
-                }
-
-                if (inputType == typeof(ushort))
-                {
-                    value = unchecked((sbyte) (ushort) input);
-                    return true;
-                }
-
-                if (inputType == typeof(byte))
-                {
-                    value = unchecked((sbyte) (byte) input);
-                    return true;
-                }
-            }
-
-            if (conversionType == typeof(uint))
-            {
-                if (inputType == typeof(int))
-                {
-                    value = unchecked((uint) (int) input);
-                    return true;
-                }
-
-                if (inputType == typeof(long))
-                {
-                    value = unchecked((uint) (long) input);
-                    return true;
-                }
-
-                if (inputType == typeof(short))
-                {
-                    value = unchecked((uint) (short) input);
-                    return true;
-                }
-
-                if (inputType == typeof(sbyte))
-                {
-                    value = unchecked((uint) (sbyte) input);
-                    return true;
-                }
-            }
-
-            if (conversionType == typeof(ulong))
-            {
-                if (inputType == typeof(int))
-                {
-                    value = unchecked((ulong) (int) input);
-                    return true;
-                }
-
-                if (inputType == typeof(long))
-                {
-                    value = unchecked((ulong) (long) input);
-                    return true;
-                }
-
-                if (inputType == typeof(short))
-                {
-                    value = unchecked((ulong) (short) input);
-                    return true;
-                }
-
-                if (inputType == typeof(sbyte))
-                {
-                    value = unchecked((ulong) (sbyte) input);
-                    return true;
-                }
-            }
-
-            if (conversionType == typeof(ushort))
-            {
-                if (inputType == typeof(int))
-                {
-                    value = unchecked((ushort) (int) input);
-                    return true;
-                }
-
-                if (inputType == typeof(long))
-                {
-                    value = unchecked((ushort) (long) input);
-                    return true;
-                }
-
-                if (inputType == typeof(short))
-                {
-                    value = unchecked((ushort) (short) input);
-                    return true;
-                }
-
-                if (inputType == typeof(sbyte))
-                {
-                    value = unchecked((ushort) (sbyte) input);
-                    return true;
-                }
-            }
-
-            if (conversionType == typeof(byte))
-            {
-                if (inputType == typeof(int))
-                {
-                    value = unchecked((byte) (int) input);
-                    return true;
-                }
-
-                if (inputType == typeof(long))
-                {
-                    value = unchecked((byte) (long) input);
-                    return true;
-                }
-
-                if (inputType == typeof(short))
-                {
-                    value = unchecked((byte) (short) input);
-                    return true;
-                }
-
-                if (inputType == typeof(sbyte))
-                {
-                    value = unchecked((byte) (sbyte) input);
-                    return true;
-                }
-            }
-
-            if (conversionType == typeof(DateTime))
-            {
-                if (inputType == typeof(long))
-                {
-                    value = new DateTime((long) input, DateTimeKind.Utc);
-                    return true;
-                }
-
-                if (inputType == typeof(DateTimeOffset))
-                {
-                    value = ((DateTimeOffset) input).DateTime;
-                    return true;
-                }
-            }
-
-            if (conversionType == typeof(DateTimeOffset))
-            {
-                if (inputType == typeof(long))
-                {
-                    value = new DateTimeOffset(new DateTime((long) input, DateTimeKind.Utc));
-                    return true;
-                }
-
-                if (inputType == typeof(DateTime))
-                {
-                    DateTime dt = (DateTime) input;
-                    if (IsValid(dt))
-                    {
-                        value = new DateTimeOffset((DateTime) input);
-                        return true;
-                    }
-                }
-            }
+            if (conversionType == typeof(DateTime) || conversionType == typeof(DateTimeOffset))
+                return TryChangeToDateTime(input, conversionType, inputType, out value);
 
             if (conversionType == typeof(TimeSpan))
-            {
-                if (inputType == typeof(long))
-                {
-                    value = new TimeSpan((long) input);
-                    return true;
-                }
+                return TryChangeToTimeSpan(input, provider, out value);
 
-                if (inputType == typeof(DateTime))
-                {
-                    if (value != null)
-                    {
-                        value = ((DateTime) value).TimeOfDay;
-                    }
-
-                    return true;
-                }
-
-                if (inputType == typeof(DateTimeOffset))
-                {
-                    if (value != null)
-                    {
-                        value = ((DateTimeOffset) value).TimeOfDay;
-                    }
-
-                    return true;
-                }
-
-                if (TryChangeType(input, provider, out string sv) && TimeSpan.TryParse(sv, provider, out TimeSpan ts))
-                {
-                    value = ts;
-                    return true;
-                }
-            }
-
-            bool isGenericList = IsGenericList(conversionType, out Type elementType);
-            if (conversionType.IsArray || isGenericList)
-            {
-                if (input is IEnumerable enumerable)
-                {
-                    if (!isGenericList)
-                    {
-                        elementType = conversionType.GetElementType();
-                    }
-
-                    IList list = (IList) Activator.CreateInstance(typeof(List<>).MakeGenericType(elementType));
-                    int count = 0;
-                    foreach (object obj in enumerable)
-                    {
-                        count++;
-                        if (TryChangeType(obj, elementType, provider, out object element))
-                        {
-                            list.Add(element);
-                        }
-                    }
-
-                    // at least one was converted
-                    if ((count > 0) && (list.Count > 0))
-                    {
-                        value = isGenericList ? list : list.GetType().GetMethod(nameof(List<object>.ToArray))?.Invoke(list, null);
-
-                        return true;
-                    }
-                }
-            }
+            Type elementType = null;
+            if (conversionType.IsArray || IsGenericList(conversionType, out elementType))
+                return TryChangeToCollection(input, conversionType, elementType, out value);
 
             if (conversionType == typeof(CultureInfo) || conversionType == typeof(IFormatProvider))
-            {
-                try
-                {
-                    if (input is int lcid)
-                    {
-                        value = CultureInfo.GetCultureInfo(lcid);
-                        return true;
-                    }
-
-                    string si = input.ToString();
-                    if (si != null)
-                    {
-                        if (int.TryParse(si, out lcid))
-                        {
-                            value = CultureInfo.GetCultureInfo(lcid);
-                            return true;
-                        }
-
-                        value = CultureInfo.GetCultureInfo(si);
-                        return true;
-                    }
-                }
-                catch
-                {
-                    // do nothing, wrong culture, etc.
-                }
-
-                return false;
-            }
+                return TryChangeToCultureInfo(input, out value);
 
             if (conversionType == typeof(bool))
+                return TryChangeToBool(input, provider, out value);
+
+            if (input is IConvertible convertible)
+                return TryChangeWithIConvertible(convertible, conversionType, provider, out value);
+
+            return TryChangeWithConverter(input, conversionType, provider, inputType, out value);
+        }
+
+        /// <summary>
+        /// Describes whether try change to nullable
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="conversionType">The conversion type</param>
+        /// <param name="provider">The provider</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryChangeToNullable(object input, Type conversionType, IFormatProvider provider, out object value)
+        {
+            if (input == null)
             {
-                switch (input)
-                {
-                    case true:
-                        value = true;
-                        return true;
-                    case false:
-                        value = false;
-                        return true;
-                }
-
-                string sValue = string.Format(provider, "{0}", input).Nullify();
-                if (sValue == null)
-                    return false;
-
-                if (bool.TryParse(sValue, out bool b))
-                {
-                    value = b;
-                    return true;
-                }
-
-                if (sValue.EqualsIgnoreCase("y") || sValue.EqualsIgnoreCase("yes"))
-                {
-                    value = true;
-                    return true;
-                }
-
-                if (sValue.EqualsIgnoreCase("n") || sValue.EqualsIgnoreCase("no"))
-                {
-                    value = false;
-                    return true;
-                }
-
-                if (TryChangeType(input, out long bl))
-                {
-                    value = bl != 0;
-                    return true;
-                }
-
-                return false;
-            }
-
-            // in general, nothing is convertible to anything but one of these, IConvertible is 100% stupid thing
-            bool IsWellKnownConvertible() => conversionType == typeof(short) || conversionType == typeof(int) ||
-                                             conversionType == typeof(string) || conversionType == typeof(byte) ||
-                                             conversionType == typeof(char) || conversionType == typeof(DateTime) ||
-                                             conversionType == typeof(DBNull) || conversionType == typeof(decimal) ||
-                                             conversionType == typeof(double) || conversionType.IsEnum ||
-                                             conversionType == typeof(short) || conversionType == typeof(int) ||
-                                             conversionType == typeof(long) || conversionType == typeof(sbyte) ||
-                                             conversionType == typeof(bool) || conversionType == typeof(float) ||
-                                             conversionType == typeof(ushort) || conversionType == typeof(uint) ||
-                                             conversionType == typeof(ulong);
-
-            if (IsWellKnownConvertible() && input is IConvertible convertible)
-            {
-                try
-                {
-                    value = convertible.ToType(conversionType, provider);
-                    if (value is DateTime dt && !IsValid(dt))
-                        return false;
-
-                    return true;
-                }
-                catch
-                {
-                    // continue;
-                }
-            }
-
-            TypeConverter inputConverter = TypeDescriptor.GetConverter(input);
-            if (inputConverter.CanConvertTo(conversionType))
-                try
-                {
-                    value = inputConverter.ConvertTo(null, provider as CultureInfo, input, conversionType);
-                    return true;
-                }
-                catch
-                {
-                    // continue;
-                }
-
-            TypeConverter converter = TypeDescriptor.GetConverter(conversionType);
-            if (converter != null)
-            {
-                if (converter.CanConvertTo(conversionType))
-                {
-                    try
-                    {
-                        value = converter.ConvertTo(null, provider as CultureInfo, input, conversionType);
-                        return true;
-                    }
-                    catch
-                    {
-                        // continue;
-                    }
-                }
-
-                if (converter.CanConvertFrom(inputType))
-                {
-                    try
-                    {
-                        value = converter.ConvertFrom(null, provider as CultureInfo, input);
-                        return true;
-                    }
-                    catch
-                    {
-                        // continue;
-                    }
-                }
-            }
-
-            if (conversionType == typeof(string))
-            {
-                value = string.Format(provider, "{0}", input);
+                value = null;
                 return true;
             }
 
+            Type underlyingType = Nullable.GetUnderlyingType(conversionType);
+            if (underlyingType != null)
+            {
+                value = Convert.ChangeType(input, underlyingType, provider);
+                return true;
+            }
+
+            value = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether try change to enum
+        /// </summary>
+        /// <param name="conversionType">The conversion type</param>
+        /// <param name="input">The input</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryChangeToEnum(Type conversionType, object input, out object value)
+        {
+            if (Enum.IsDefined(conversionType, input))
+            {
+                value = Enum.Parse(conversionType, input.ToString());
+                return true;
+            }
+
+            value = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether try change from enum
+        /// </summary>
+        /// <param name="conversionType">The conversion type</param>
+        /// <param name="input">The input</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryChangeFromEnum(Type conversionType, object input, out object value)
+        {
+            if (input is Enum)
+            {
+                value = Convert.ChangeType(input, conversionType);
+                return true;
+            }
+
+            value = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether try change to guid
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="provider">The provider</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryChangeToGuid(object input, IFormatProvider provider, out object value)
+        {
+            if (Guid.TryParse(input.ToString(), out Guid guid))
+            {
+                value = guid;
+                return true;
+            }
+
+            value = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether try change to uri
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="provider">The provider</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryChangeToUri(object input, IFormatProvider provider, out object value)
+        {
+            if (Uri.TryCreate(input.ToString(), UriKind.RelativeOrAbsolute, out Uri uri))
+            {
+                value = uri;
+                return true;
+            }
+
+            value = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether try change to int ptr
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="provider">The provider</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryChangeToIntPtr(object input, IFormatProvider provider, out object value)
+        {
+            if (int.TryParse(input.ToString(), out int intResult))
+            {
+                value = new IntPtr(intResult);
+                return true;
+            }
+
+            value = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether try change to numeric
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="conversionType">The conversion type</param>
+        /// <param name="inputType">The input type</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryChangeToNumeric(object input, Type conversionType, Type inputType, out object value)
+        {
+            try
+            {
+                value = Convert.ChangeType(input, conversionType);
+            }
+            catch (Exception)
+            {
+                value = null;
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Describes whether try change to date time
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="conversionType">The conversion type</param>
+        /// <param name="inputType">The input type</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryChangeToDateTime(object input, Type conversionType, Type inputType, out object value)
+        {
+            if (DateTime.TryParse(input.ToString(), out DateTime dateTime))
+            {
+                value = dateTime;
+                return true;
+            }
+
+            value = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether try change to time span
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="provider">The provider</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryChangeToTimeSpan(object input, IFormatProvider provider, out object value)
+        {
+            if (TimeSpan.TryParse(input.ToString(), out TimeSpan timeSpan))
+            {
+                value = timeSpan;
+                return true;
+            }
+
+            value = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether try change to collection
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="conversionType">The conversion type</param>
+        /// <param name="elementType">The element type</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryChangeToCollection(object input, Type conversionType, Type elementType, out object value)
+        {
+            if (input is IList list)
+            {
+                IList result = (IList) Activator.CreateInstance(conversionType);
+                foreach (var item in list)
+                {
+                    result.Add(Convert.ChangeType(item, elementType));
+                }
+
+                value = result;
+                return true;
+            }
+
+            value = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether try change to culture info
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryChangeToCultureInfo(object input, out object value)
+        {
+            if (CultureInfo.GetCultures(CultureTypes.AllCultures).Any(c => c.Name == input.ToString()))
+            {
+                value = new CultureInfo(input.ToString());
+                return true;
+            }
+
+            value = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether try change to bool
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="provider">The provider</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryChangeToBool(object input, IFormatProvider provider, out object value)
+        {
+            if (bool.TryParse(input.ToString(), out bool boolValue))
+            {
+                value = boolValue;
+                return true;
+            }
+
+            value = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether try change with i convertible
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="conversionType">The conversion type</param>
+        /// <param name="provider">The provider</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryChangeWithIConvertible(IConvertible input, Type conversionType, IFormatProvider provider, out object value)
+        {
+            try
+            {
+                value = input.ToType(conversionType, provider);
+                return true;
+            }
+            catch
+            {
+                value = null;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Describes whether try change with converter
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="conversionType">The conversion type</param>
+        /// <param name="provider">The provider</param>
+        /// <param name="inputType">The input type</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryChangeWithConverter(object input, Type conversionType, IFormatProvider provider, Type inputType, out object value)
+        {
+            var converter = TypeDescriptor.GetConverter(conversionType);
+            if (converter != null && converter.CanConvertFrom(inputType))
+            {
+                value = converter.ConvertFrom(input);
+                return true;
+            }
+
+            value = null;
             return false;
         }
 
@@ -1122,27 +593,16 @@ namespace Alis.Core.Aspect.Data.Json
             return false;
         }
 
-        /// <summary>
-        ///     Enums the to object using the specified enum type
-        /// </summary>
-        /// <param name="enumType">The enum type</param>
-        /// <param name="value">The value</param>
-        /// <exception cref="ArgumentNullException"></exception>
-        /// <exception cref="ArgumentNullException"></exception>
-        /// <exception cref="ArgumentException">null </exception>
-        /// <exception cref="ArgumentException">null </exception>
-        /// <returns>The object</returns>
         [ExcludeFromCodeCoverage]
         internal static object EnumToObject(Type enumType, object value)
         {
-            if (enumType == null)
-                throw new ArgumentNullException(nameof(enumType));
+            if (enumType == null || value == null || !enumType.IsEnum)
+                return null;
 
-            if (!enumType.IsEnum)
-                throw new ArgumentException(null, nameof(enumType));
-
-            if (value == null)
-                throw new ArgumentNullException(nameof(value));
+            if (value is string stringValue)
+            {
+                return Enum.Parse(enumType, stringValue);
+            }
 
             Type underlyingType = Enum.GetUnderlyingType(enumType);
             if (underlyingType == typeof(long))
@@ -1166,10 +626,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (underlyingType == typeof(byte))
                 return Enum.ToObject(enumType, ChangeType<byte>(value));
 
-            if (underlyingType == typeof(sbyte))
-                return Enum.ToObject(enumType, ChangeType<sbyte>(value));
-
-            throw new ArgumentException(null, nameof(enumType));
+            return underlyingType == typeof(sbyte) ? Enum.ToObject(enumType, ChangeType<sbyte>(value)) : null;
         }
 
         /// <summary>
