@@ -526,7 +526,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        ///     Handles the field serialization using the specified serialization
+        /// Handles the field serialization using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="type">The type</param>
@@ -536,54 +536,82 @@ namespace Alis.Core.Aspect.Data.Json
         {
             foreach (FieldInfo info in type.GetFields(BindingFlags.Public | BindingFlags.Instance))
             {
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
+                if (ShouldSkipField(serialization, info, options))
+                    continue;
+
+                yield return CreateMemberDefinition(serialization, info, options);
+            }
+        }
+
+        /// <summary>
+        /// Describes whether should skip field
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="info">The info</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool ShouldSkipField(bool serialization, FieldInfo info, JsonOptions options)
+        {
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
+            {
+                JsonAttribute ja = JsonSerializer.GetJsonAttribute(info);
+                if (ja != null)
                 {
-                    JsonAttribute ja = JsonSerializer.GetJsonAttribute(info);
-                    if (ja != null)
+                    switch (serialization)
                     {
-                        switch (serialization)
-                        {
-                            case true when ja.IgnoreWhenSerializing:
-                            case false when ja.IgnoreWhenDeserializing:
-                                continue;
-                        }
+                        case true when ja.IgnoreWhenSerializing:
+                        case false when ja.IgnoreWhenDeserializing:
+                            return true;
                     }
                 }
-
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
-                {
-                    if (info.IsDefined(typeof(XmlIgnoreAttribute), true))
-                        continue;
-                }
-
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
-                {
-                    if (JsonSerializer.HasScriptIgnore(info))
-                        continue;
-                }
-
-                string name = JsonSerializer.GetObjectName(info, info.Name);
-
-                MemberDefinition ma = new MemberDefinition
-                {
-                    Type = info.FieldType,
-                    Name = info.Name
-                };
-                if (serialization)
-                {
-                    ma.WireName = name;
-                    ma.EscapedWireName = JsonSerializer.EscapeString(name);
-                }
-                else
-                {
-                    ma.WireName = name;
-                }
-
-                ma.HasDefaultValue = JsonSerializer.TryGetObjectDefaultValue(info, out object defaultValue);
-                ma.DefaultValue = defaultValue;
-                ma.Accessor = (IMemberAccessor) Activator.CreateInstance(typeof(FieldInfoAccessor), info);
-                yield return ma;
             }
+
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
+            {
+                if (info.IsDefined(typeof(XmlIgnoreAttribute), true))
+                    return true;
+            }
+
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
+            {
+                if (JsonSerializer.HasScriptIgnore(info))
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Creates the member definition using the specified serialization
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="info">The info</param>
+        /// <param name="options">The options</param>
+        /// <returns>The ma</returns>
+        private static MemberDefinition CreateMemberDefinition(bool serialization, FieldInfo info, JsonOptions options)
+        {
+            string name = JsonSerializer.GetObjectName(info, info.Name);
+
+            MemberDefinition ma = new MemberDefinition
+            {
+                Type = info.FieldType,
+                Name = info.Name
+            };
+            if (serialization)
+            {
+                ma.WireName = name;
+                ma.EscapedWireName = JsonSerializer.EscapeString(name);
+            }
+            else
+            {
+                ma.WireName = name;
+            }
+
+            ma.HasDefaultValue = JsonSerializer.TryGetObjectDefaultValue(info, out object defaultValue);
+            ma.DefaultValue = defaultValue;
+            ma.Accessor = (IMemberAccessor) Activator.CreateInstance(typeof(FieldInfoAccessor), info);
+
+            return ma;
         }
 
         /// <summary>
