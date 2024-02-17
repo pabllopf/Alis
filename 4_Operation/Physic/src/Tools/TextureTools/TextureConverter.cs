@@ -367,9 +367,10 @@ namespace Alis.Core.Physic.Tools.TextureTools
         }
 
         /// <summary>
-        ///     Detects the vertices of the texture.
+        /// Detects the vertices
         /// </summary>
-        /// <returns>The detected polygons.</returns>
+        /// <exception cref="Exception">Couldn't detect any vertices.</exception>
+        /// <returns>The detected polygons</returns>
         private List<Vertices> DetectVertices()
         {
             ValidateInput();
@@ -383,52 +384,14 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             do
             {
-                Vertices polygon;
-
-                if (detectedPolygons.Count == 0)
-                {
-                    // First pass / single polygon
-                    polygon = CreateInitialPolygon(ref polygonEntrance);
-                }
-                else if (polygonEntrance.HasValue)
-                {
-                    // Multi pass / multiple polygons
-                    polygon = CreateNextPolygon(polygonEntrance.Value);
-                }
-                else
-                {
-                    break;
-                }
+                Vertices polygon = CreatePolygon(detectedPolygons, ref polygonEntrance);
 
                 searchOn = false;
 
                 if (polygon.Count > 2)
                 {
-                    if (holeDetection)
-                    {
-                        do
-                        {
-                            holeEntrance = SearchHoleEntrance(polygon, holeEntrance);
-
-                            if (holeEntrance.HasValue && !blackList.Contains(holeEntrance.Value))
-                            {
-                                blackList.Add(holeEntrance.Value);
-                                Vertices holePolygon = CreateSimplePolygon(holeEntrance.Value,
-                                    new Vector2(holeEntrance.Value.X + 1, holeEntrance.Value.Y));
-
-                                if ((holePolygon != null) && (holePolygon.Count > 2))
-                                {
-                                    ProcessHolePolygon(polygon, holeEntrance.Value, holePolygon);
-                                }
-                            }
-                            else
-                            {
-                                break;
-                            }
-                        } while (true);
-                    }
-
-                    detectedPolygons.Add(polygon);
+                    ProcessHoleDetection(polygon, ref holeEntrance, blackList);
+                    AddPolygonToList(detectedPolygons, polygon);
                 }
 
                 if (multipartDetection || polygon.Count <= 2)
@@ -448,6 +411,73 @@ namespace Alis.Core.Physic.Tools.TextureTools
             PostProcessPolygons(ref detectedPolygons);
 
             return detectedPolygons;
+        }
+
+        /// <summary>
+        /// Creates the polygon using the specified detected polygons
+        /// </summary>
+        /// <param name="detectedPolygons">The detected polygons</param>
+        /// <param name="polygonEntrance">The polygon entrance</param>
+        /// <returns>The vertices</returns>
+        private Vertices CreatePolygon(List<Vertices> detectedPolygons, ref Vector2? polygonEntrance)
+        {
+            if (detectedPolygons.Count == 0)
+            {
+                // First pass / single polygon
+                return CreateInitialPolygon(ref polygonEntrance);
+            }
+            else if (polygonEntrance.HasValue)
+            {
+                // Multi pass / multiple polygons
+                return CreateNextPolygon(polygonEntrance.Value);
+            }
+            else
+            {
+                return new Vertices();
+            }
+        }
+
+        /// <summary>
+        /// Processes the hole detection using the specified polygon
+        /// </summary>
+        /// <param name="polygon">The polygon</param>
+        /// <param name="holeEntrance">The hole entrance</param>
+        /// <param name="blackList">The black list</param>
+        private void ProcessHoleDetection(Vertices polygon, ref Vector2? holeEntrance, List<Vector2> blackList)
+        {
+            if (holeDetection)
+            {
+                do
+                {
+                    holeEntrance = SearchHoleEntrance(polygon, holeEntrance);
+
+                    if (holeEntrance.HasValue && !blackList.Contains(holeEntrance.Value))
+                    {
+                        blackList.Add(holeEntrance.Value);
+                        Vertices holePolygon = CreateSimplePolygon(holeEntrance.Value,
+                            new Vector2(holeEntrance.Value.X + 1, holeEntrance.Value.Y));
+
+                        if ((holePolygon != null) && (holePolygon.Count > 2))
+                        {
+                            ProcessHolePolygon(polygon, holeEntrance.Value, holePolygon);
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
+                } while (true);
+            }
+        }
+
+        /// <summary>
+        /// Adds the polygon to list using the specified detected polygons
+        /// </summary>
+        /// <param name="detectedPolygons">The detected polygons</param>
+        /// <param name="polygon">The polygon</param>
+        private void AddPolygonToList(List<Vertices> detectedPolygons, Vertices polygon)
+        {
+            detectedPolygons.Add(polygon);
         }
 
         /// <summary>
@@ -1457,16 +1487,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <returns>The int</returns>
         private int GetIndexOfFirstPixelToCheck(ref Vector2 last, ref Vector2 current)
         {
-            // .: pixel
-            // l: last position
-            // c: current position
-            // f: first pixel for next search
-
-            // f . .
-            // l c .
-            // . . .
-
-            //Calculate in which direction the last move went and decide over the next pixel to check.
             switch ((int) (current.X - last.X))
             {
                 case 1:
@@ -1529,9 +1549,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
             {
                 return data[tempIsSolidX + tempIsSolidY * width] >= alphaTolerance;
             }
-
-            //return ((_data[_tempIsSolidX + _tempIsSolidY * _width] & 0xFF000000) >= _alphaTolerance);
-
+            
             return false;
         }
 
