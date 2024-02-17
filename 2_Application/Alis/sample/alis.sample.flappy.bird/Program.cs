@@ -82,6 +82,18 @@ namespace Alis.Sample.Flappy.Bird
                     ////////////////////////////////////////
                     .Add<Scene>(gameScene => gameScene
                         .Name("Main Menu")
+                        .Add<GameObject>(mainCamera => mainCamera
+                            .Name("Camera")
+                            .WithTag("Camera")
+                            .Transform(position => position
+                                .Position(144, 256)
+                                .Build())
+                            .AddComponent<Camera>(camera => camera
+                                .Builder()
+                                .Resolution(288, 512)
+                                .BackgroundColor(Color.Black)
+                                .Build())
+                            .Build())
 
                         ////////////////////////////////////////
                         // MAIN MENU SCENE: BACKGROUND
@@ -206,6 +218,19 @@ namespace Alis.Sample.Flappy.Bird
                     ////////////////////////////////////////
                     .Add<Scene>(gameScene => gameScene
                         .Name("Game Scene")
+                        
+                        .Add<GameObject>(mainCamera => mainCamera
+                            .Name("Camera")
+                            .WithTag("Camera")
+                            .Transform(position => position
+                                .Position(144, 256)
+                                .Build())
+                            .AddComponent<Camera>(camera => camera
+                                .Builder()
+                                .Resolution(288, 512)
+                                .BackgroundColor(Color.Black)
+                                .Build())
+                            .Build())
 
                         ////////////////////////////////////////
                         // GAME SCENE: BACKGROUND

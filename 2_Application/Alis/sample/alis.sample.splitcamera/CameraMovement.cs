@@ -45,6 +45,9 @@ namespace Alis.Sample.SplitCamera
         /// </summary>
         private Core.Ecs.Component.Render.Camera _camera;
 
+        /// <summary>
+        /// The speed
+        /// </summary>
         private const float Speed = 1.0f;
 
         /// <summary>
