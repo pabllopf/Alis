@@ -1592,29 +1592,57 @@ namespace Alis.Core.Aspect.Data.Json
         private static object ParseNumber(string text, JsonOptions options, TextReader reader)
         {
             if (text.LastIndexOf("e", StringComparison.OrdinalIgnoreCase) >= 0)
-            {
-                if (double.TryParse(text, NumberStyles.Float, CultureInfo.InvariantCulture, out double d))
-                    return d;
-            }
-            else
-            {
-                if (text.IndexOf(".", StringComparison.OrdinalIgnoreCase) >= 0)
-                {
-                    if (decimal.TryParse(text, NumberStyles.Float, CultureInfo.InvariantCulture, out decimal de))
-                        return de;
-                }
-                else
-                {
-                    if (int.TryParse(text, NumberStyles.Integer, CultureInfo.InvariantCulture, out int i))
-                        return i;
+                return HandleECase(text);
 
-                    if (long.TryParse(text, NumberStyles.Integer, CultureInfo.InvariantCulture, out long l))
-                        return l;
+            if (text.IndexOf(".", StringComparison.OrdinalIgnoreCase) >= 0)
+                return HandleDotCase(text);
 
-                    if (decimal.TryParse(text, NumberStyles.Number, CultureInfo.InvariantCulture, out decimal de))
-                        return de;
-                }
-            }
+            return HandleDefaultCase(text, reader, options);
+        }
+
+        /// <summary>
+        /// Handles the e case using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <returns>The object</returns>
+        private static object HandleECase(string text)
+        {
+            if (double.TryParse(text, NumberStyles.Float, CultureInfo.InvariantCulture, out double d))
+                return d;
+
+            return null;
+        }
+
+        /// <summary>
+        /// Handles the dot case using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <returns>The object</returns>
+        private static object HandleDotCase(string text)
+        {
+            if (decimal.TryParse(text, NumberStyles.Float, CultureInfo.InvariantCulture, out decimal de))
+                return de;
+
+            return null;
+        }
+
+        /// <summary>
+        /// Handles the default case using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="reader">The reader</param>
+        /// <param name="options">The options</param>
+        /// <returns>The object</returns>
+        private static object HandleDefaultCase(string text, TextReader reader, JsonOptions options)
+        {
+            if (int.TryParse(text, NumberStyles.Integer, CultureInfo.InvariantCulture, out int i))
+                return i;
+
+            if (long.TryParse(text, NumberStyles.Integer, CultureInfo.InvariantCulture, out long l))
+                return l;
+
+            if (decimal.TryParse(text, NumberStyles.Number, CultureInfo.InvariantCulture, out decimal de))
+                return de;
 
             HandleException(GetUnexpectedCharacterException(GetPosition(reader), text[0]), options);
             return null;
