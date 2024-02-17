@@ -1967,7 +1967,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The int</returns>
         private static int FindTimeZoneIndex(string text)
         {
-            return text.Substring(19).IndexOfAny(new[] {'+', '-'});
+            return text.IndexOfAny(new[] {'+', '-'}, 19);
         }
 
         /// <summary>
