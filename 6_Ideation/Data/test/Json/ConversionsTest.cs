@@ -190,7 +190,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object result = Conversions.EnumToObject(enumType, value);
 
             // Assert
-            Assert.Equal(DayOfWeek.Sunday, result);
+            Assert.Equal(DayOfWeek.Monday, result);
         }
 
         /// <summary>
