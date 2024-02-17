@@ -539,6 +539,14 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             return false;
         }
 
+        /// <summary>
+        /// Edges the event using the specified tcx
+        /// </summary>
+        /// <param name="tcx">The tcx</param>
+        /// <param name="ep">The ep</param>
+        /// <param name="eq">The eq</param>
+        /// <param name="triangle">The triangle</param>
+        /// <param name="point">The point</param>
         private static void EdgeEvent(DtSweepContext tcx, TriangulationPoint ep, TriangulationPoint eq, DelaunayTriangle triangle, TriangulationPoint point)
 {
     if (IsEdgeSideOfTriangle(triangle, ep, eq))
@@ -572,6 +580,26 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
     }
 }
 
+/// <summary>
+
+/// Handles the collinear orientation using the specified tcx
+
+/// </summary>
+
+/// <param name="tcx">The tcx</param>
+
+/// <param name="triangle">The triangle</param>
+
+/// <param name="ep">The ep</param>
+
+/// <param name="eq">The eq</param>
+
+/// <param name="p">The </param>
+
+/// <param name="point">The point</param>
+
+/// <exception cref="PointOnEdgeException">EdgeEvent - Point on constrained edge not supported yet</exception>
+
 private static void HandleCollinearOrientation(DtSweepContext tcx, DelaunayTriangle triangle, TriangulationPoint ep, TriangulationPoint eq, TriangulationPoint p, TriangulationPoint point)
 {
     if (triangle.Contains(eq, p))
@@ -591,6 +619,24 @@ private static void HandleCollinearOrientation(DtSweepContext tcx, DelaunayTrian
         Debug.WriteLine("EdgeEvent - Point on constrained edge");
     }
 }
+
+/// <summary>
+
+/// Handles the same orientation using the specified tcx
+
+/// </summary>
+
+/// <param name="tcx">The tcx</param>
+
+/// <param name="ep">The ep</param>
+
+/// <param name="eq">The eq</param>
+
+/// <param name="triangle">The triangle</param>
+
+/// <param name="point">The point</param>
+
+/// <param name="o">The </param>
 
 private static void HandleSameOrientation(DtSweepContext tcx, TriangulationPoint ep, TriangulationPoint eq, DelaunayTriangle triangle, TriangulationPoint point, Orientation o)
 {

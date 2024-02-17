@@ -27,20 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
-// Changes from the Java version
-//   Removed BST code, but not all artifacts of it
-// Future possibilities
-//   Eliminate Add/RemoveNode ?
-//   Comments comments and more comments!
-
 using System;
 using System.Text;
 
 namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 {
-    /**
-     * @author Thomas Åhlen (thahlen@gmail.com)
-     */
+    /// <summary>
+    /// The advancing front class
+    /// </summary>
     internal class AdvancingFront
     {
         /// <summary>
@@ -151,7 +145,11 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             return null;
         }
 
-        /// <summary>This implementation will use simple node traversal algorithm to find a point on the front</summary>
+        /// <summary>
+        /// Locates the point using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <returns>The node</returns>
         public AdvancingFrontNode LocatePoint(TriangulationPoint point)
         {
             double px = point.X;
@@ -160,47 +158,85 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 
             if (px == nx)
             {
-                if (point != node.Point)
-                {
-                    // We might have two nodes with same x value for a short time
-                    if (point == node.Prev.Point)
-                    {
-                        node = node.Prev;
-                    }
-                    else if (point == node.Next.Point)
-                    {
-                        node = node.Next;
-                    }
-                    else
-                    {
-                        throw new Exception("Failed to find Node for given afront point");
-
-                        //node = null;
-                    }
-                }
+                node = HandlePointEqualsNode(point, node);
             }
             else if (px < nx)
             {
-                while ((node = node.Prev) != null)
-                {
-                    if (point == node.Point)
-                    {
-                        break;
-                    }
-                }
+                node = SearchNodeInPreviousNodes(point, node);
             }
             else
             {
-                while ((node = node.Next) != null)
-                {
-                    if (point == node.Point)
-                    {
-                        break;
-                    }
-                }
+                node = SearchNodeInNextNodes(point, node);
             }
 
             Search = node;
+            return node;
+        }
+
+        /// <summary>
+        /// Handles the point equals node using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <param name="node">The node</param>
+        /// <exception cref="Exception">Failed to find Node for given afront point</exception>
+        /// <returns>The node</returns>
+        private AdvancingFrontNode HandlePointEqualsNode(TriangulationPoint point, AdvancingFrontNode node)
+        {
+            if (point != node.Point)
+            {
+                // We might have two nodes with same x value for a short time
+                if (point == node.Prev.Point)
+                {
+                    node = node.Prev;
+                }
+                else if (point == node.Next.Point)
+                {
+                    node = node.Next;
+                }
+                else
+                {
+                    throw new Exception("Failed to find Node for given afront point");
+                }
+            }
+
+            return node;
+        }
+
+        /// <summary>
+        /// Searches the node in previous nodes using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <param name="node">The node</param>
+        /// <returns>The node</returns>
+        private AdvancingFrontNode SearchNodeInPreviousNodes(TriangulationPoint point, AdvancingFrontNode node)
+        {
+            while ((node = node.Prev) != null)
+            {
+                if (point == node.Point)
+                {
+                    break;
+                }
+            }
+
+            return node;
+        }
+
+        /// <summary>
+        /// Searches the node in next nodes using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <param name="node">The node</param>
+        /// <returns>The node</returns>
+        private AdvancingFrontNode SearchNodeInNextNodes(TriangulationPoint point, AdvancingFrontNode node)
+        {
+            while ((node = node.Next) != null)
+            {
+                if (point == node.Point)
+                {
+                    break;
+                }
+            }
+
             return node;
         }
     }
