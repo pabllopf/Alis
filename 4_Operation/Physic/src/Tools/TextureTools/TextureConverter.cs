@@ -1002,6 +1002,13 @@ namespace Alis.Core.Physic.Tools.TextureTools
             return edges;
         }
 
+        /// <summary>
+        /// Describes whether this instance split polygon edge
+        /// </summary>
+        /// <param name="polygon">The polygon</param>
+        /// <param name="coordInsideThePolygon">The coord inside the polygon</param>
+        /// <param name="vertex2Index">The vertex index</param>
+        /// <returns>The bool</returns>
         private bool SplitPolygonEdge(Vertices polygon, Vector2 coordInsideThePolygon, out int vertex2Index)
         {
             List<float> xCoords = SearchCrossingEdges(polygon, (int) coordInsideThePolygon.Y);
@@ -1022,6 +1029,12 @@ namespace Alis.Core.Physic.Tools.TextureTools
             return false;
         }
 
+        /// <summary>
+        /// Finds the edge coord using the specified x coords
+        /// </summary>
+        /// <param name="xCoords">The coords</param>
+        /// <param name="coordInsideThePolygon">The coord inside the polygon</param>
+        /// <returns>The found edge coord</returns>
         private Vector2 FindEdgeCoord(List<float> xCoords, Vector2 coordInsideThePolygon)
         {
             float shortestDistance = float.MaxValue;
@@ -1047,6 +1060,12 @@ namespace Alis.Core.Physic.Tools.TextureTools
             return foundEdgeCoord;
         }
 
+        /// <summary>
+        /// Finds the nearest edge vertices using the specified polygon
+        /// </summary>
+        /// <param name="polygon">The polygon</param>
+        /// <param name="foundEdgeCoord">The found edge coord</param>
+        /// <returns>The int array</returns>
         private int[] FindNearestEdgeVertices(Vertices polygon, Vector2 foundEdgeCoord)
         {
             int nearestEdgeVertex1Index = -1;
@@ -1074,6 +1093,13 @@ namespace Alis.Core.Physic.Tools.TextureTools
             return new int[] {nearestEdgeVertex1Index, nearestEdgeVertex2Index};
         }
 
+        /// <summary>
+        /// Inserts the new vertices using the specified polygon
+        /// </summary>
+        /// <param name="polygon">The polygon</param>
+        /// <param name="nearestEdgeVertices">The nearest edge vertices</param>
+        /// <param name="foundEdgeCoord">The found edge coord</param>
+        /// <returns>The vertex index</returns>
         private int InsertNewVertices(Vertices polygon, int[] nearestEdgeVertices, Vector2 foundEdgeCoord)
         {
             Vector2 slope = polygon[nearestEdgeVertices[1]] - polygon[nearestEdgeVertices[0]];
