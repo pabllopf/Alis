@@ -2242,11 +2242,27 @@ namespace Alis.Core.Aspect.Data.Json
             if (writer == null)
                 throw new ArgumentNullException(nameof(writer));
 
-
             options ??= new JsonOptions();
             objectGraph ??= options.FinalObjectGraph;
             SetOptions(objectGraph, options);
 
+            HandleWriteValueCallback(options, writer, value, objectGraph);
+
+            // Add objectGraph as the fourth argument to the HandleSpecialCases method
+            if (HandleSpecialCases(writer, value, objectGraph, options)) return;
+
+            HandleObjectGraph(writer, value, objectGraph, options);
+        }
+
+        /// <summary>
+        /// Handles the write value callback using the specified options
+        /// </summary>
+        /// <param name="options">The options</param>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="objectGraph">The object graph</param>
+        private static void HandleWriteValueCallback(JsonOptions options, TextWriter writer, object value, IDictionary<object, object> objectGraph)
+        {
             if (options.WriteValueCallback != null)
             {
                 JsonEventArgs e = new JsonEventArgs(writer, value, objectGraph, options)
@@ -2257,21 +2273,44 @@ namespace Alis.Core.Aspect.Data.Json
                 if (e.Handled)
                     return;
             }
+        }
 
-            if (HandleNullValue(writer, value)) return;
-            if (HandleStringValue(writer, value)) return;
-            if (HandleBoolValue(writer, value)) return;
-            if (HandleFloatDoubleValue(writer, value)) return;
-            if (HandleCharValue(writer, value)) return;
-            if (HandleEnumValue(writer, value, options)) return;
-            if (HandleTimeSpanValue(writer, value, options)) return;
-            if (HandleDateTimeOffsetValue(writer, value, options)) return;
-            if (HandleDateTimeValue(writer, value, options)) return;
-            if (HandleNumericValue(writer, value)) return;
-            if (HandleGuidValue(writer, value, options)) return;
-            if (HandleUriValue(writer, value)) return;
-            if (HandleArrayValue(writer, value, objectGraph, options)) return;
+        /// <summary>
+        /// Describes whether handle special cases
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool HandleSpecialCases(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        {
+            if (HandleNullValue(writer, value)) return true;
+            if (HandleStringValue(writer, value)) return true;
+            if (HandleBoolValue(writer, value)) return true;
+            if (HandleFloatDoubleValue(writer, value)) return true;
+            if (HandleCharValue(writer, value)) return true;
+            if (HandleEnumValue(writer, value, options)) return true;
+            if (HandleTimeSpanValue(writer, value, options)) return true;
+            if (HandleDateTimeOffsetValue(writer, value, options)) return true;
+            if (HandleDateTimeValue(writer, value, options)) return true;
+            if (HandleNumericValue(writer, value)) return true;
+            if (HandleGuidValue(writer, value, options)) return true;
+            if (HandleUriValue(writer, value)) return true;
+            if (HandleArrayValue(writer, value, objectGraph, options)) return true;
 
+            return false;
+        }
+
+        /// <summary>
+        /// Handles the object graph using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        private static void HandleObjectGraph(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        {
             if (objectGraph.ContainsKey(value))
             {
                 if (options.SerializationOptions.HasFlag(JsonSerializationOptions.ContinueOnCycle))
