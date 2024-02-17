@@ -2444,14 +2444,38 @@ namespace Alis.Core.Aspect.Data.Json
         internal static bool ForceSerializable(object obj) => obj is Exception;
 
         /// <summary>
-        ///     Writes an object to the JSON writer.
+        /// Writes the object using the specified writer
         /// </summary>
-        /// <param name="writer">The writer. May not be null.</param>
-        /// <param name="value">The object to serialize. May not be null.</param>
-        /// <param name="objectGraph">The object graph.</param>
-        /// <param name="options">The options to use.</param>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
         [ExcludeFromCodeCoverage]
         internal static void WriteObject(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options = null)
+        {
+            CheckAndSetOptions(writer, value, ref objectGraph, ref options);
+
+            writer.Write('{');
+
+            HandleBeforeWriteObjectCallback(writer, value, objectGraph, options);
+
+            WriteSerializableOrValues(writer, value, objectGraph, options);
+
+            HandleAfterWriteObjectCallback(writer, value, objectGraph, options);
+
+            writer.Write('}');
+        }
+
+        /// <summary>
+        /// Checks the and set options using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        private static void CheckAndSetOptions(TextWriter writer, object value, ref IDictionary<object, object> objectGraph, ref JsonOptions options)
         {
             if (writer == null)
                 throw new ArgumentNullException(nameof(writer));
@@ -2462,16 +2486,17 @@ namespace Alis.Core.Aspect.Data.Json
             options = options ?? new JsonOptions();
             objectGraph = objectGraph ?? options.FinalObjectGraph;
             SetOptions(objectGraph, options);
+        }
 
-            ISerializable serializable = null;
-            bool useISerializable = options.SerializationOptions.HasFlag(JsonSerializationOptions.UseISerializable) || ForceSerializable(value);
-            if (useISerializable)
-            {
-                serializable = value as ISerializable;
-            }
-
-            writer.Write('{');
-
+        /// <summary>
+        /// Handles the before write object callback using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        private static void HandleBeforeWriteObjectCallback(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        {
             if (options.BeforeWriteObjectCallback != null)
             {
                 JsonEventArgs e = new JsonEventArgs(writer, value, objectGraph, options)
@@ -2481,6 +2506,23 @@ namespace Alis.Core.Aspect.Data.Json
                 options.BeforeWriteObjectCallback(e);
                 if (e.Handled)
                     return;
+            }
+        }
+
+        /// <summary>
+        /// Writes the serializable or values using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        private static void WriteSerializableOrValues(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        {
+            ISerializable serializable = null;
+            bool useISerializable = options.SerializationOptions.HasFlag(JsonSerializationOptions.UseISerializable) || ForceSerializable(value);
+            if (useISerializable)
+            {
+                serializable = value as ISerializable;
             }
 
             Type type = value.GetType();
@@ -2493,7 +2535,17 @@ namespace Alis.Core.Aspect.Data.Json
                 TypeDef def = TypeDef.Get(type, options);
                 def.WriteValues(writer, value, objectGraph, options);
             }
+        }
 
+        /// <summary>
+        /// Handles the after write object callback using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        private static void HandleAfterWriteObjectCallback(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        {
             if (options.AfterWriteObjectCallback != null)
             {
                 JsonEventArgs e = new JsonEventArgs(writer, value, objectGraph, options)
@@ -2502,8 +2554,6 @@ namespace Alis.Core.Aspect.Data.Json
                 };
                 options.AfterWriteObjectCallback(e);
             }
-
-            writer.Write('}');
         }
 
         /// <summary>
