@@ -1683,197 +1683,179 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>true if the text was converted successfully; otherwise, false.</returns>
         internal static bool TryParseDateTime(string text, out DateTime dt) => TryParseDateTime(text, JsonOptions.DefaultDateTimeStyles, out dt);
 
-        /// <summary>
-        ///     Converts the JSON string representation of a date time to its DateTime equivalent.
-        /// </summary>
-        /// <param name="text">The input text.</param>
-        /// <param name="styles">The styles to use.</param>
-        /// <param name="dt">When this method returns, contains the DateTime equivalent.</param>
-        /// <returns>
-        ///     true if the text was converted successfully; otherwise, false.
-        /// </returns>
         [ExcludeFromCodeCoverage]
-        internal static bool TryParseDateTime(string text, DateTimeStyles styles, out DateTime dt)
+internal static bool TryParseDateTime(string text, DateTimeStyles styles, out DateTime dt)
+{
+    dt = DateTime.MinValue;
+    if (text == null)
+        return false;
+
+    if (text.Length > 2)
+    {
+        text = RemoveQuotesFromText(text);
+    }
+
+    if (TryParseDateTimeWithEndZ(text, out dt))
+        return true;
+
+    if (TryParseDateTimeWithSpecificFormat(text, out dt))
+        return true;
+
+    if (TryParseDateTimeWithTicks(text, out dt))
+        return true;
+
+    // don't parse pure timespan style XX:YY:ZZ
+    if ((text.Length == 8) && (text[2] == ':') && (text[5] == ':'))
+    {
+        dt = DateTime.MinValue;
+        return false;
+    }
+
+    return DateTime.TryParse(text, null, styles, out dt);
+}
+
+private static string RemoveQuotesFromText(string text)
+{
+    if ((text[0] == '"') && (text[text.Length - 1] == '"'))
+    {
+        using StringReader reader = new StringReader(text);
+        reader.Read(); // skip "
+        JsonOptions options = new JsonOptions
         {
-            dt = DateTime.MinValue;
-            if (text == null)
-                return false;
+            ThrowExceptions = false
+        };
+        text = ReadString(reader, options);
+    }
 
-            if (text.Length > 2)
+    return text;
+}
+
+private static bool TryParseDateTimeWithEndZ(string text, out DateTime dt)
+{
+    if (text.EndsWith("Z", StringComparison.OrdinalIgnoreCase))
+    {
+        if (DateTime.TryParseExact(text, DateFormatsUtc, CultureInfo.InvariantCulture, DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out dt))
+            return true;
+    }
+
+    dt = DateTime.MinValue;
+    return false;
+}
+
+private static bool TryParseDateTimeWithSpecificFormat(string text, out DateTime dt)
+{
+    int offsetHours = 0;
+    int offsetMinutes = 0;
+
+    // s format length is 19, as in '2012-02-21T17:07:14'
+    // so we can do quick checks
+    // this portion of code is needed because we assume UTC and the default DateTime parse behavior is not that (even with AssumeUniversal)
+    if ((text.Length >= 19) &&
+        (text[4] == '-') &&
+        (text[7] == '-') &&
+        (text[10] == 'T' || text[10] == 't') &&
+        (text[13] == ':') &&
+        (text[16] == ':'))
+    {
+        if (DateTime.TryParseExact(text, "o", null, DateTimeStyles.AssumeUniversal, out dt))
+            return true;
+
+        int tz = text.Substring(19).IndexOfAny(new[] {'+', '-'});
+        string text2 = text;
+        if (tz >= 0)
+        {
+            tz += 19;
+            string offset = text.Substring(tz + 1).Trim();
+            if (int.TryParse(offset, out int i))
             {
-                if ((text[0] == '"') && (text[text.Length - 1] == '"'))
+                offsetHours = i / 100;
+                offsetMinutes = i % 100;
+                if (text[tz] == '-')
                 {
-                    using StringReader reader = new StringReader(text);
-                    reader.Read(); // skip "
-                    JsonOptions options = new JsonOptions
-                    {
-                        ThrowExceptions = false
-                    };
-                    text = ReadString(reader, options);
-                }
-            }
-
-            if (text.EndsWith("Z", StringComparison.OrdinalIgnoreCase))
-            {
-                if (DateTime.TryParseExact(text, DateFormatsUtc, CultureInfo.InvariantCulture, DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out dt))
-                    return true;
-            }
-
-            int offsetHours = 0;
-            int offsetMinutes = 0;
-            DateTimeKind kind = DateTimeKind.Utc;
-            const int len = 19;
-
-            // s format length is 19, as in '2012-02-21T17:07:14'
-            // so we can do quick checks
-            // this portion of code is needed because we assume UTC and the default DateTime parse behavior is not that (even with AssumeUniversal)
-            if ((text.Length >= len) &&
-                (text[4] == '-') &&
-                (text[7] == '-') &&
-                (text[10] == 'T' || text[10] == 't') &&
-                (text[13] == ':') &&
-                (text[16] == ':'))
-            {
-                if (DateTime.TryParseExact(text, "o", null, DateTimeStyles.AssumeUniversal, out dt))
-                    return true;
-
-                int tz = text.Substring(len).IndexOfAny(new[] {'+', '-'});
-                string text2 = text;
-                if (tz >= 0)
-                {
-                    tz += len;
-                    string offset = text.Substring(tz + 1).Trim();
-                    if (int.TryParse(offset, out int i))
-                    {
-                        kind = DateTimeKind.Local;
-                        offsetHours = i / 100;
-                        offsetMinutes = i % 100;
-                        if (text[tz] == '-')
-                        {
-                            offsetHours = -offsetHours;
-                            offsetMinutes = -offsetMinutes;
-                        }
-
-                        text2 = text.Substring(0, tz);
-                    }
+                    offsetHours = -offsetHours;
+                    offsetMinutes = -offsetMinutes;
                 }
 
-                if (tz >= 0)
-                {
-                    if (DateTime.TryParseExact(text2, "s", null, DateTimeStyles.AssumeLocal, out dt))
-                    {
-                        if (offsetHours != 0)
-                        {
-                            dt = dt.AddHours(offsetHours);
-                        }
-
-                        if (offsetMinutes != 0)
-                        {
-                            dt = dt.AddMinutes(offsetMinutes);
-                        }
-
-                        return true;
-                    }
-                }
-                else
-                {
-                    if (DateTime.TryParseExact(text, "s", null, DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out dt))
-                        return true;
-                }
+                text2 = text.Substring(0, tz);
             }
-
-            // 01234567890123456
-            // 20150525T15:50:00
-            if (text.Length == 17)
-            {
-                if ((text[8] == 'T' || text[8] == 't') && (text[11] == ':') && (text[14] == ':'))
-                {
-                    _ = int.TryParse(text.Substring(0, 4), out int year);
-                    _ = int.TryParse(text.Substring(4, 2), out int month);
-                    _ = int.TryParse(text.Substring(6, 2), out int day);
-                    _ = int.TryParse(text.Substring(9, 2), out int hour);
-                    _ = int.TryParse(text.Substring(12, 2), out int minute);
-                    _ = int.TryParse(text.Substring(15, 2), out int second);
-                    if ((month > 0) && (month < 13) &&
-                        (day > 0) && (day < 32) &&
-                        (year >= 0) &&
-                        (hour >= 0) && (hour < 24) &&
-                        (minute >= 0) && (minute < 60) &&
-                        (second >= 0) && (second < 60))
-                    {
-                        try
-                        {
-                            dt = new DateTime(year, month, day, hour, minute, second);
-                            return true;
-                        }
-                        catch
-                        {
-                            // do nothing
-                        }
-                    }
-                }
-            }
-
-            // read this http://weblogs.asp.net/bleroy/archive/2008/01/18/dates-and-json.aspx
-            string ticks = null;
-            if (text.StartsWith(DateStartJs) && text.EndsWith(DateEndJs))
-            {
-                ticks = text.Substring(DateStartJs.Length, text.Length - DateStartJs.Length - DateEndJs.Length).Trim();
-            }
-            else if (text.StartsWith(DateStart2, StringComparison.OrdinalIgnoreCase) && text.EndsWith(DateEnd2, StringComparison.OrdinalIgnoreCase))
-            {
-                ticks = text.Substring(DateStart2.Length, text.Length - DateEnd2.Length - DateStart2.Length).Trim();
-            }
-
-            if (!string.IsNullOrEmpty(ticks))
-            {
-                int startIndex = ticks[0] == '-' || ticks[0] == '+' ? 1 : 0;
-                int pos = ticks.IndexOfAny(new[] {'+', '-'}, startIndex);
-                if (pos >= 0)
-                {
-                    bool neg = ticks[pos] == '-';
-                    string offset = ticks.Substring(pos + 1).Trim();
-                    ticks = ticks.Substring(0, pos).Trim();
-                    if (int.TryParse(offset, out int i))
-                    {
-                        kind = DateTimeKind.Local;
-                        offsetHours = i / 100;
-                        offsetMinutes = i % 100;
-                        if (neg)
-                        {
-                            offsetHours = -offsetHours;
-                            offsetMinutes = -offsetMinutes;
-                        }
-                    }
-                }
-
-                if (long.TryParse(ticks, NumberStyles.Number, CultureInfo.InvariantCulture, out long l))
-                {
-                    dt = new DateTime(l * 10000 + MinDateTimeTicks, kind);
-                    if (offsetHours != 0)
-                    {
-                        dt = dt.AddHours(offsetHours);
-                    }
-
-                    if (offsetMinutes != 0)
-                    {
-                        dt = dt.AddMinutes(offsetMinutes);
-                    }
-
-                    return true;
-                }
-            }
-
-            // don't parse pure timespan style XX:YY:ZZ
-            if ((text.Length == 8) && (text[2] == ':') && (text[5] == ':'))
-            {
-                dt = DateTime.MinValue;
-                return false;
-            }
-
-            return DateTime.TryParse(text, null, styles, out dt);
         }
 
+        if (tz >= 0)
+        {
+            if (DateTime.TryParseExact(text2, "s", null, DateTimeStyles.AssumeLocal, out dt))
+            {
+                dt = dt.AddHours(offsetHours);
+                dt = dt.AddMinutes(offsetMinutes);
+                return true;
+            }
+        }
+        else
+        {
+            if (DateTime.TryParseExact(text, "s", null, DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out dt))
+                return true;
+        }
+    }
+
+    dt = DateTime.MinValue;
+    return false;
+}private static bool TryParseDateTimeWithTicks(string text, out DateTime dt)
+{
+    // read this http://weblogs.asp.net/bleroy/archive/2008/01/18/dates-and-json.aspx
+    string ticks = null;
+    int offsetHours = 0;
+    int offsetMinutes = 0;
+    DateTimeKind kind = DateTimeKind.Local;
+
+    if (text.StartsWith(DateStartJs) && text.EndsWith(DateEndJs))
+    {
+        ticks = text.Substring(DateStartJs.Length, text.Length - DateStartJs.Length - DateEndJs.Length).Trim();
+    }
+    else if (text.StartsWith(DateStart2, StringComparison.OrdinalIgnoreCase) && text.EndsWith(DateEnd2, StringComparison.OrdinalIgnoreCase))
+    {
+        ticks = text.Substring(DateStart2.Length, text.Length - DateEnd2.Length - DateStart2.Length).Trim();
+    }
+
+    if (!string.IsNullOrEmpty(ticks))
+    {
+        int startIndex = ticks[0] == '-' || ticks[0] == '+' ? 1 : 0;
+        int pos = ticks.IndexOfAny(new[] {'+', '-'}, startIndex);
+        if (pos >= 0)
+        {
+            bool neg = ticks[pos] == '-';
+            string offset = ticks.Substring(pos + 1).Trim();
+            ticks = ticks.Substring(0, pos).Trim();
+            if (int.TryParse(offset, out int i))
+            {
+                offsetHours = i / 100;
+                offsetMinutes = i % 100;
+                if (neg)
+                {
+                    offsetHours = -offsetHours;
+                    offsetMinutes = -offsetMinutes;
+                }
+            }
+        }
+
+        if (long.TryParse(ticks, NumberStyles.Number, CultureInfo.InvariantCulture, out long l))
+        {
+            dt = new DateTime(l * 10000 + MinDateTimeTicks, kind);
+            if (offsetHours != 0)
+            {
+                dt = dt.AddHours(offsetHours);
+            }
+
+            if (offsetMinutes != 0)
+            {
+                dt = dt.AddMinutes(offsetMinutes);
+            }
+
+            return true;
+        }
+    }
+
+    dt = DateTime.MinValue;
+    return false;
+}
         /// <summary>
         ///     Handles the exception using the specified ex
         /// </summary>
