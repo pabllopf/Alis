@@ -28,9 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Shared
@@ -188,96 +186,6 @@ namespace Alis.Core.Physic.Shared
             Vector2 d2 = a.LowerBound - b.UpperBound;
 
             return (d1.X <= 0) && (d1.Y <= 0) && (d2.X <= 0) && (d2.Y <= 0);
-        }
-
-        /// <summary>Raycast against this AABB using the specified points and maxfraction (found in input)</summary>
-        /// <param name="input">The parameters for the raycast.</param>
-        /// <param name="output">The results of the raycast.</param>
-        /// <param name="doInteriorCheck"></param>
-        /// <returns>True if the ray intersects the AABB</returns>
-        public bool RayCast(ref RayCastInput input, out RayCastOutput output, bool doInteriorCheck = true)
-        {
-            // From Real-time Collision Detection, p179.
-
-            output = new RayCastOutput();
-
-            float tmin = -float.MaxValue;
-            float tmax = float.MaxValue;
-
-            Vector2 p = input.Point1;
-            Vector2 d = input.Point2 - input.Point1;
-            Vector2 absD = MathUtils.Abs(d);
-
-            Vector2 normal = Vector2.Zero;
-
-            for (int i = 0; i < 2; ++i)
-            {
-                float absDi = i == 0 ? absD.X : absD.Y;
-                float lowerBoundI = i == 0 ? LowerBound.X : LowerBound.Y;
-                float upperBoundI = i == 0 ? UpperBound.X : UpperBound.Y;
-                float pI = i == 0 ? p.X : p.Y;
-
-                if (absDi < Constant.Epsilon)
-                {
-                    // Parallel.
-                    if (pI < lowerBoundI || upperBoundI < pI)
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    float dI = i == 0 ? d.X : d.Y;
-
-                    float invD = 1.0f / dI;
-                    float t1 = (lowerBoundI - pI) * invD;
-                    float t2 = (upperBoundI - pI) * invD;
-
-                    // Sign of the normal vector.
-                    float s = -1.0f;
-
-                    if (t1 > t2)
-                    {
-                        MathUtils.Swap(ref t1, ref t2);
-                        s = 1.0f;
-                    }
-
-                    // Push the min up
-                    if (t1 > tmin)
-                    {
-                        if (i == 0)
-                        {
-                            normal = new Vector2(s, normal.Y);
-                        }
-                        else
-                        {
-                            normal = new Vector2(normal.X, s);
-                        }
-
-                        tmin = t1;
-                    }
-
-                    // Pull the max down
-                    tmax = Math.Min(tmax, t2);
-
-                    if (tmin > tmax)
-                    {
-                        return false;
-                    }
-                }
-            }
-
-            // Does the ray start inside the box?
-            // Does the ray intersect beyond the max fraction?
-            if (doInteriorCheck && (tmin < 0.0f || input.Fraction < tmin))
-            {
-                return false;
-            }
-
-            // Intersection.
-            output.Fraction = tmin;
-            output.Normal = normal;
-            return true;
         }
     }
 }
