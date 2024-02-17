@@ -587,7 +587,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        ///     Enumerates the definitions using type descriptors using the specified serialization
+        /// Enumerates the definitions using type descriptors using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="type">The type</param>
@@ -598,56 +598,84 @@ namespace Alis.Core.Aspect.Data.Json
         {
             foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(type).Cast<PropertyDescriptor>())
             {
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
-                {
-                    JsonAttribute ja = descriptor.GetAttribute<JsonAttribute>();
-                    if (ja != null)
-                    {
-                        if (serialization && ja.IgnoreWhenSerializing)
-                            continue;
-
-                        if (!serialization && ja.IgnoreWhenDeserializing)
-                            continue;
-                    }
-                }
-
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
-                {
-                    if (descriptor.GetAttribute<XmlIgnoreAttribute>() != null)
-                        continue;
-                }
-
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
-                {
-                    if (JsonSerializer.HasScriptIgnore(descriptor))
-                        continue;
-                }
-
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipGetOnly) && descriptor.IsReadOnly)
+                if (ShouldSkipDescriptor(serialization, descriptor, options))
                     continue;
 
-                string name = JsonSerializer.GetObjectName(descriptor, descriptor.Name);
-
-                MemberDefinition ma = new MemberDefinition
-                {
-                    Type = descriptor.PropertyType,
-                    Name = descriptor.Name
-                };
-                if (serialization)
-                {
-                    ma.WireName = name;
-                    ma.EscapedWireName = JsonSerializer.EscapeString(name);
-                }
-                else
-                {
-                    ma.WireName = name;
-                }
-
-                ma.HasDefaultValue = JsonSerializer.TryGetObjectDefaultValue(descriptor, out object defaultValue);
-                ma.DefaultValue = defaultValue;
-                ma.Accessor = (IMemberAccessor) Activator.CreateInstance(typeof(PropertyDescriptorAccessor), descriptor);
-                yield return ma;
+                yield return CreateMemberDefinition(serialization, descriptor, options);
             }
+        }
+
+        /// <summary>
+        /// Describes whether should skip descriptor
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="descriptor">The descriptor</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool ShouldSkipDescriptor(bool serialization, PropertyDescriptor descriptor, JsonOptions options)
+        {
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
+            {
+                JsonAttribute ja = descriptor.GetAttribute<JsonAttribute>();
+                if (ja != null)
+                {
+                    if (serialization && ja.IgnoreWhenSerializing)
+                        return true;
+
+                    if (!serialization && ja.IgnoreWhenDeserializing)
+                        return true;
+                }
+            }
+
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
+            {
+                if (descriptor.GetAttribute<XmlIgnoreAttribute>() != null)
+                    return true;
+            }
+
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
+            {
+                if (JsonSerializer.HasScriptIgnore(descriptor))
+                    return true;
+            }
+
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipGetOnly) && descriptor.IsReadOnly)
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// Creates the member definition using the specified serialization
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="descriptor">The descriptor</param>
+        /// <param name="options">The options</param>
+        /// <returns>The ma</returns>
+        private static MemberDefinition CreateMemberDefinition(bool serialization, PropertyDescriptor descriptor, JsonOptions options)
+        {
+            string name = JsonSerializer.GetObjectName(descriptor, descriptor.Name);
+
+            MemberDefinition ma = new MemberDefinition
+            {
+                Type = descriptor.PropertyType,
+                Name = descriptor.Name
+            };
+            if (serialization)
+            {
+                ma.WireName = name;
+                ma.EscapedWireName = JsonSerializer.EscapeString(name);
+            }
+            else
+            {
+                ma.WireName = name;
+            }
+
+            ma.HasDefaultValue = JsonSerializer.TryGetObjectDefaultValue(descriptor, out object defaultValue);
+            ma.DefaultValue = defaultValue;
+            ma.Accessor = (IMemberAccessor) Activator.CreateInstance(typeof(PropertyDescriptorAccessor), descriptor);
+
+            return ma;
         }
     }
 }
