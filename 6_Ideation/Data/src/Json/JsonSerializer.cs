@@ -1904,6 +1904,12 @@ namespace Alis.Core.Aspect.Data.Json
             return false;
         }
 
+        /// <summary>
+        /// Describes whether try parse date time with specific format
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="dt">The dt</param>
+        /// <returns>The bool</returns>
         private static bool TryParseDateTimeWithSpecificFormat(string text, out DateTime dt)
         {
             int offsetHours = 0;
@@ -1930,6 +1936,11 @@ namespace Alis.Core.Aspect.Data.Json
             return false;
         }
 
+        /// <summary>
+        /// Describes whether is date time format valid
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <returns>The bool</returns>
         private static bool IsDateTimeFormatValid(string text)
         {
             return (text.Length >= 19) &&
@@ -1938,16 +1949,34 @@ namespace Alis.Core.Aspect.Data.Json
                    (text[10] == 'T' || text[10] == 't');
         }
 
+        /// <summary>
+        /// Describes whether try parse exact date time
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="dt">The dt</param>
+        /// <returns>The bool</returns>
         private static bool TryParseExactDateTime(string text, out DateTime dt)
         {
             return DateTime.TryParseExact(text, "o", null, DateTimeStyles.AssumeUniversal, out dt);
         }
 
+        /// <summary>
+        /// Finds the time zone index using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <returns>The int</returns>
         private static int FindTimeZoneIndex(string text)
         {
             return text.Substring(19).IndexOfAny(new[] {'+', '-'});
         }
 
+        /// <summary>
+        /// Calculates the offset using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="tz">The tz</param>
+        /// <param name="offsetHours">The offset hours</param>
+        /// <param name="offsetMinutes">The offset minutes</param>
         private static void CalculateOffset(string text, int tz, out int offsetHours, out int offsetMinutes)
         {
             string offset = text.Substring(tz + 1).Trim();
@@ -1968,6 +1997,15 @@ namespace Alis.Core.Aspect.Data.Json
             }
         }
 
+        /// <summary>
+        /// Describes whether try parse date time with offset
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="tz">The tz</param>
+        /// <param name="offsetHours">The offset hours</param>
+        /// <param name="offsetMinutes">The offset minutes</param>
+        /// <param name="dt">The dt</param>
+        /// <returns>The bool</returns>
         private static bool TryParseDateTimeWithOffset(string text, int tz, int offsetHours, int offsetMinutes, out DateTime dt)
         {
             if (tz >= 0)
@@ -1996,20 +2034,43 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         private static bool TryParseDateTimeWithTicks(string text, out DateTime dt)
         {
-            // read this http://weblogs.asp.net/bleroy/archive/2008/01/18/dates-and-json.aspx
-            string ticks = null;
-            int offsetHours = 0;
-            int offsetMinutes = 0;
-            DateTimeKind kind = DateTimeKind.Local;
+            string ticks = ExtractTicks(text);
+            int offsetHours, offsetMinutes;
+            ExtractOffset(ticks, out ticks, out offsetHours, out offsetMinutes);
+            return TryParseTicks(ticks, offsetHours, offsetMinutes, out dt);
+        }
 
+        /// <summary>
+        /// Extracts the ticks using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <returns>The string</returns>
+        private static string ExtractTicks(string text)
+        {
             if (text.StartsWith(DateStartJs) && text.EndsWith(DateEndJs))
             {
-                ticks = text.Substring(DateStartJs.Length, text.Length - DateStartJs.Length - DateEndJs.Length).Trim();
+                return text.Substring(DateStartJs.Length, text.Length - DateStartJs.Length - DateEndJs.Length).Trim();
             }
             else if (text.StartsWith(DateStart2, StringComparison.OrdinalIgnoreCase) && text.EndsWith(DateEnd2, StringComparison.OrdinalIgnoreCase))
             {
-                ticks = text.Substring(DateStart2.Length, text.Length - DateEnd2.Length - DateStart2.Length).Trim();
+                return text.Substring(DateStart2.Length, text.Length - DateEnd2.Length - DateStart2.Length).Trim();
             }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Extracts the offset using the specified ticks
+        /// </summary>
+        /// <param name="ticks">The ticks</param>
+        /// <param name="updatedTicks">The updated ticks</param>
+        /// <param name="offsetHours">The offset hours</param>
+        /// <param name="offsetMinutes">The offset minutes</param>
+        private static void ExtractOffset(string ticks, out string updatedTicks, out int offsetHours, out int offsetMinutes)
+        {
+            offsetHours = 0;
+            offsetMinutes = 0;
+            updatedTicks = ticks;
 
             if (!string.IsNullOrEmpty(ticks))
             {
@@ -2019,7 +2080,7 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     bool neg = ticks[pos] == '-';
                     string offset = ticks.Substring(pos + 1).Trim();
-                    ticks = ticks.Substring(0, pos).Trim();
+                    updatedTicks = ticks.Substring(0, pos).Trim();
                     if (int.TryParse(offset, out int i))
                     {
                         offsetHours = i / 100;
@@ -2031,22 +2092,33 @@ namespace Alis.Core.Aspect.Data.Json
                         }
                     }
                 }
+            }
+        }
 
-                if (long.TryParse(ticks, NumberStyles.Number, CultureInfo.InvariantCulture, out long l))
+        /// <summary>
+        /// Describes whether try parse ticks
+        /// </summary>
+        /// <param name="ticks">The ticks</param>
+        /// <param name="offsetHours">The offset hours</param>
+        /// <param name="offsetMinutes">The offset minutes</param>
+        /// <param name="dt">The dt</param>
+        /// <returns>The bool</returns>
+        private static bool TryParseTicks(string ticks, int offsetHours, int offsetMinutes, out DateTime dt)
+        {
+            if (!string.IsNullOrEmpty(ticks) && long.TryParse(ticks, NumberStyles.Number, CultureInfo.InvariantCulture, out long l))
+            {
+                dt = new DateTime(l * 10000 + MinDateTimeTicks, DateTimeKind.Local);
+                if (offsetHours != 0)
                 {
-                    dt = new DateTime(l * 10000 + MinDateTimeTicks, kind);
-                    if (offsetHours != 0)
-                    {
-                        dt = dt.AddHours(offsetHours);
-                    }
-
-                    if (offsetMinutes != 0)
-                    {
-                        dt = dt.AddMinutes(offsetMinutes);
-                    }
-
-                    return true;
+                    dt = dt.AddHours(offsetHours);
                 }
+
+                if (offsetMinutes != 0)
+                {
+                    dt = dt.AddMinutes(offsetMinutes);
+                }
+
+                return true;
             }
 
             dt = DateTime.MinValue;
