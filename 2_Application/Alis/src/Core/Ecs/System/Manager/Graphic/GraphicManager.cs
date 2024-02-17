@@ -72,7 +72,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         ///     The renderWindow
         /// </summary>
         public IntPtr Renderer;
-        
+
         /// <summary>
         ///     Gets or sets the value of the sprites
         /// </summary>
@@ -82,7 +82,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// Gets or sets the value of the cameras
         /// </summary>
         private static List<Camera> Cameras { get; set; } = new List<Camera>();
-        
+
         /// <summary>
         ///     Ons the enable
         /// </summary>
@@ -189,11 +189,11 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // GET RENDERER INFO
             Sdl.GetRendererInfo(Renderer, out RendererInfo rendererInfo);
             Logger.Info($"Renderer Name: {rendererInfo.GetName()} \n" +
-                              $"Renderer Flags: {rendererInfo.flags} \n" +
-                              $"Max Texture Width: {rendererInfo.maxTextureWidth} \n" +
-                              $"Max Texture Height: {rendererInfo.maxTextureHeight} + \n" +
-                              $"Max Texture Width: {rendererInfo.maxTextureWidth} \n" +
-                              $"Max Texture Height: {rendererInfo.maxTextureHeight}");
+                        $"Renderer Flags: {rendererInfo.flags} \n" +
+                        $"Max Texture Width: {rendererInfo.maxTextureWidth} \n" +
+                        $"Max Texture Height: {rendererInfo.maxTextureHeight} + \n" +
+                        $"Max Texture Width: {rendererInfo.maxTextureWidth} \n" +
+                        $"Max Texture Height: {rendererInfo.maxTextureHeight}");
 
             // GET RENDERER OUTPUT SIZE
             Sdl.GetRendererOutputSize(Renderer, out int w, out int h);
@@ -245,7 +245,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             Logger.Info("End config SDL2");
         }
-        
+
         /// <summary>
         ///     Ons the awake
         /// </summary>
@@ -346,11 +346,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Sdl.SetRenderDrawColor(Renderer, color.R, color.G, color.B, color.A);
         }
 
-        /// <summary>
-        /// Calculates the rectangle dimensions using the specified camera
-        /// </summary>
-        /// <param name="camera">The camera</param>
-        /// <returns>The rectangles</returns>
         private RectangleF[] CalculateRectangleDimensions(Camera camera)
         {
             RectangleF[] rectangles = new RectangleF[ColliderBases.Count];
@@ -362,15 +357,19 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 {
                     rectangles[i] = ColliderBases[i].RectangleF;
 
-                    rectangles[i] = new RectangleF(
-                        x: (int) (ColliderBases[i].GameObject.Transform.Position.X - rectangles[i].w * ColliderBases[i].GameObject.Transform.Scale.X / 2 - (camera.viewport.x - camera.viewport.w / 2) + Camera.CameraBorder),
-                        y: (int) (ColliderBases[i].GameObject.Transform.Position.Y - rectangles[i].h * ColliderBases[i].GameObject.Transform.Scale.Y / 2 - (camera.viewport.y - camera.viewport.h / 2) + Camera.CameraBorder),
-                        w: (int) rectangles[i].w,
-                        h: (int) rectangles[i].h);
-                    if (ColliderBases[i].GameObject.Contains<Camera>())
+                    // Check if the rectangle at the current index is already set
+                    if (!Equals(rectangles[i], default(RectangleF)))
                     {
-                        rectangles[i].x += ((rectangles[i].w) / 2);
-                        rectangles[i].y += ((rectangles[i].h) / 2);
+                        rectangles[i] = new RectangleF(
+                            x: (int) (ColliderBases[i].GameObject.Transform.Position.X - rectangles[i].w * ColliderBases[i].GameObject.Transform.Scale.X / 2 - (camera.viewport.x - camera.viewport.w / 2) + Camera.CameraBorder),
+                            y: (int) (ColliderBases[i].GameObject.Transform.Position.Y - rectangles[i].h * ColliderBases[i].GameObject.Transform.Scale.Y / 2 - (camera.viewport.y - camera.viewport.h / 2) + Camera.CameraBorder),
+                            w: (int) rectangles[i].w,
+                            h: (int) rectangles[i].h);
+                        if (ColliderBases[i].GameObject.Contains<Camera>())
+                        {
+                            rectangles[i].x += ((rectangles[i].w) / 2);
+                            rectangles[i].y += ((rectangles[i].h) / 2);
+                        }
                     }
                 }
             }
@@ -511,7 +510,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
             Logger.Trace();
         }
-        
+
         /// <summary>
         ///     Attaches the sprite
         /// </summary>
