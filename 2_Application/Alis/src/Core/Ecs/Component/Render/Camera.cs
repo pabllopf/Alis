@@ -29,14 +29,11 @@
 
 using System;
 using Alis.Builder.Core.Ecs.Component.Render;
-using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Structs;
 using Color = Alis.Core.Aspect.Math.Definition.Color;
 
 namespace Alis.Core.Ecs.Component.Render

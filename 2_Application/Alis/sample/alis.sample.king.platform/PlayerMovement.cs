@@ -34,7 +34,6 @@ using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.System;
-using Alis.Core.Graphic;
 using Alis.Core.Graphic.Sdl2.Enums;
 
 namespace Alis.Sample.King.Platform

@@ -32,7 +32,6 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Collider;
-using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity.GameObject;
 using Alis.Core.Ecs.Entity.Scene;
 using Alis.Core.Physic.Dynamics;

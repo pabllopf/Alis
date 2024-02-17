@@ -30,7 +30,6 @@
 using System;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic;
 using Alis.Core.Graphic.Sdl2;
 
 namespace Alis.Core.Ecs.Component.Render

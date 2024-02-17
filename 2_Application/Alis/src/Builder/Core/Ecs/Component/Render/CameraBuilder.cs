@@ -32,7 +32,6 @@ using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Render;
-using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Builder.Core.Ecs.Component.Render
 {
