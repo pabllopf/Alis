@@ -481,6 +481,26 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         private static bool ShouldSkipProperty(bool serialization, PropertyInfo info, JsonOptions options)
         {
+            if (CheckJsonAttribute(serialization, info, options) ||
+                CheckXmlIgnoreAttribute(info, options) ||
+                CheckScriptIgnore(info, options) ||
+                CheckSerialization(serialization, info))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether check json attribute
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="info">The info</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool CheckJsonAttribute(bool serialization, PropertyInfo info, JsonOptions options)
+        {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
             {
                 JsonAttribute ja = JsonSerializer.GetJsonAttribute(info);
@@ -495,18 +515,51 @@ namespace Alis.Core.Aspect.Data.Json
                 }
             }
 
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether check xml ignore attribute
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool CheckXmlIgnoreAttribute(PropertyInfo info, JsonOptions options)
+        {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
             {
                 if (info.IsDefined(typeof(XmlIgnoreAttribute), true))
                     return true;
             }
 
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether check script ignore
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool CheckScriptIgnore(PropertyInfo info, JsonOptions options)
+        {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
             {
                 if (JsonSerializer.HasScriptIgnore(info))
                     return true;
             }
 
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether check serialization
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="info">The info</param>
+        /// <returns>The bool</returns>
+        private static bool CheckSerialization(bool serialization, PropertyInfo info)
+        {
             if (serialization)
             {
                 if (!info.CanRead)
