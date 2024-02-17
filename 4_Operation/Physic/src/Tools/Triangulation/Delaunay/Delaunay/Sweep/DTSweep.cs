@@ -539,93 +539,64 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             return false;
         }
 
-        /// <summary>
-        ///     Edges the event using the specified tcx
-        /// </summary>
-        /// <param name="tcx">The tcx</param>
-        /// <param name="ep">The ep</param>
-        /// <param name="eq">The eq</param>
-        /// <param name="triangle">The triangle</param>
-        /// <param name="point">The point</param>
-        /// <exception cref="PointOnEdgeException">EdgeEvent - Point on constrained edge not supported yet</exception>
-        /// <exception cref="PointOnEdgeException">EdgeEvent - Point on constrained edge not supported yet</exception>
-        private static void EdgeEvent(DtSweepContext tcx, TriangulationPoint ep, TriangulationPoint eq,
-            DelaunayTriangle triangle, TriangulationPoint point)
-        {
-            if (IsEdgeSideOfTriangle(triangle, ep, eq))
-            {
-                return;
-            }
+        private static void EdgeEvent(DtSweepContext tcx, TriangulationPoint ep, TriangulationPoint eq, DelaunayTriangle triangle, TriangulationPoint point)
+{
+    if (IsEdgeSideOfTriangle(triangle, ep, eq))
+    {
+        return;
+    }
 
-            TriangulationPoint p1 = triangle.PointCcw(point);
-            Orientation o1 = TriangulationUtil.Orient2d(eq, p1, ep);
-            if (o1 == Orientation.Collinear)
-            {
-                if (triangle.Contains(eq, p1))
-                {
-                    triangle.MarkConstrainedEdge(eq, p1);
+    TriangulationPoint p1 = triangle.PointCcw(point);
+    Orientation o1 = TriangulationUtil.Orient2d(eq, p1, ep);
+    if (o1 == Orientation.Collinear)
+    {
+        HandleCollinearOrientation(tcx, triangle, ep, eq, p1, point);
+        return;
+    }
 
-                    // We are modifying the constraint maybe it would be better to 
-                    // not change the given constraint and just keep a variable for the new constraint
-                    tcx.EdgeEvent.ConstrainedEdge.Q = p1;
-                    triangle = triangle.NeighborAcross(point);
-                    EdgeEvent(tcx, ep, p1, triangle, p1);
-                }
-                else
-                {
-                    throw new PointOnEdgeException("EdgeEvent - Point on constrained edge not supported yet");
-                }
+    TriangulationPoint p2 = triangle.PointCw(point);
+    Orientation o2 = TriangulationUtil.Orient2d(eq, p2, ep);
+    if (o2 == Orientation.Collinear)
+    {
+        HandleCollinearOrientation(tcx, triangle, ep, eq, p2, point);
+        return;
+    }
 
-                if (tcx.IsDebugEnabled)
-                {
-                    Debug.WriteLine("EdgeEvent - Point on constrained edge");
-                }
+    if (o1 == o2)
+    {
+        HandleSameOrientation(tcx, ep, eq, triangle, point, o1);
+    }
+    else
+    {
+        FlipEdgeEvent(tcx, ep, eq, triangle, point);
+    }
+}
 
-                return;
-            }
+private static void HandleCollinearOrientation(DtSweepContext tcx, DelaunayTriangle triangle, TriangulationPoint ep, TriangulationPoint eq, TriangulationPoint p, TriangulationPoint point)
+{
+    if (triangle.Contains(eq, p))
+    {
+        triangle.MarkConstrainedEdge(eq, p);
+        tcx.EdgeEvent.ConstrainedEdge.Q = p;
+        triangle = triangle.NeighborAcross(point);
+        EdgeEvent(tcx, ep, p, triangle, p);
+    }
+    else
+    {
+        throw new PointOnEdgeException("EdgeEvent - Point on constrained edge not supported yet");
+    }
 
-            TriangulationPoint p2 = triangle.PointCw(point);
-            Orientation o2 = TriangulationUtil.Orient2d(eq, p2, ep);
-            if (o2 == Orientation.Collinear)
-            {
-                if (triangle.Contains(eq, p2))
-                {
-                    triangle.MarkConstrainedEdge(eq, p2);
+    if (tcx.IsDebugEnabled)
+    {
+        Debug.WriteLine("EdgeEvent - Point on constrained edge");
+    }
+}
 
-                    // We are modifying the constraint maybe it would be better to 
-                    // not change the given constraint and just keep a variable for the new constraint
-                    tcx.EdgeEvent.ConstrainedEdge.Q = p2;
-                    triangle = triangle.NeighborAcross(point);
-                    EdgeEvent(tcx, ep, p2, triangle, p2);
-                }
-                else
-                {
-                    throw new PointOnEdgeException("EdgeEvent - Point on constrained edge not supported yet");
-                }
-
-                if (tcx.IsDebugEnabled)
-                {
-                    Debug.WriteLine("EdgeEvent - Point on constrained edge");
-                }
-
-                return;
-            }
-
-            if (o1 == o2)
-            {
-                // Need to decide if we are rotating CW or CCW to get to a triangle
-                // that will cross edge
-                triangle = o1 == Orientation.Cw ? triangle.NeighborCcw(point) : triangle.NeighborCw(point);
-
-                EdgeEvent(tcx, ep, eq, triangle, point);
-            }
-            else
-            {
-                // This triangle crosses constraint so lets flip start!
-                FlipEdgeEvent(tcx, ep, eq, triangle, point);
-            }
-        }
-
+private static void HandleSameOrientation(DtSweepContext tcx, TriangulationPoint ep, TriangulationPoint eq, DelaunayTriangle triangle, TriangulationPoint point, Orientation o)
+{
+    triangle = o == Orientation.Cw ? triangle.NeighborCcw(point) : triangle.NeighborCw(point);
+    EdgeEvent(tcx, ep, eq, triangle, point);
+}
         /// <summary>
         ///     Flips the edge event using the specified tcx
         /// </summary>
