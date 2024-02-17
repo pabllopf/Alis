@@ -358,214 +358,279 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        ///     Solves the velocity constraints
+        /// Solves the velocity constraints
         /// </summary>
         public void SolveVelocityConstraints()
         {
             for (int i = 0; i < count; ++i)
             {
                 ContactVelocityConstraint vc = VelocityConstraints[i];
+                InitializeVelocityConstraint(vc);
 
-                int indexA = vc.IndexA;
-                int indexB = vc.IndexB;
-                float mA = vc.InvMassA;
-                float iA = vc.InvIa;
-                float mB = vc.InvMassB;
-                float iB = vc.InvIb;
-                int pointCount = vc.PointCount;
-
-                Vector2 vA = velocities[indexA].V;
-                float wA = velocities[indexA].W;
-                Vector2 vB = velocities[indexB].V;
-                float wB = velocities[indexB].W;
-
-                Vector2 normal = vc.Normal;
-                Vector2 tangent = MathUtils.Cross(normal, 1.0f);
-                float friction = vc.Friction;
-
-                Debug.Assert(pointCount == 1 || pointCount == 2);
-
-                // Solve tangent constraints first because non-penetration is more important
-                // than friction.
-                for (int j = 0; j < pointCount; ++j)
+                if (vc.PointCount == 1 || !Settings.BlockSolve)
                 {
-                    VelocityConstraintPoint vcp = vc.Points[j];
-
-                    // Relative velocity at contact
-                    Vector2 dv = vB + MathUtils.Cross(wB, vcp.Rb) - vA - MathUtils.Cross(wA, vcp.Ra);
-
-                    // Compute tangent force
-                    float vt = Vector2.Dot(dv, tangent) - vc.TangentSpeed;
-                    float lambda = vcp.TangentMass * -vt;
-
-                    // b2Clamp the accumulated force
-                    float maxFriction = friction * vcp.NormalImpulse;
-                    float newImpulse = MathUtils.Clamp(vcp.TangentImpulse + lambda, -maxFriction, maxFriction);
-                    lambda = newImpulse - vcp.TangentImpulse;
-                    vcp.TangentImpulse = newImpulse;
-
-                    // Apply contact impulse
-                    Vector2 p = lambda * tangent;
-
-                    vA -= mA * p;
-                    wA -= iA * MathUtils.Cross(vcp.Ra, p);
-
-                    vB += mB * p;
-                    wB += iB * MathUtils.Cross(vcp.Rb, p);
-                }
-
-                // Solve normal constraints
-                if (pointCount == 1 || !Settings.BlockSolve)
-                {
-                    for (int j = 0; j < pointCount; ++j)
-                    {
-                        VelocityConstraintPoint vcp = vc.Points[j];
-
-                        // Relative velocity at contact
-                        Vector2 dv = vB + MathUtils.Cross(wB, vcp.Rb) - vA - MathUtils.Cross(wA, vcp.Ra);
-
-                        // Compute normal impulse
-                        float vn = Vector2.Dot(dv, normal);
-                        float lambda = -vcp.NormalMass * (vn - vcp.VelocityBias);
-
-                        // b2Clamp the accumulated impulse
-                        float newImpulse = Math.Max(vcp.NormalImpulse + lambda, 0.0f);
-                        lambda = newImpulse - vcp.NormalImpulse;
-                        vcp.NormalImpulse = newImpulse;
-
-                        // Apply contact impulse
-                        Vector2 p = lambda * normal;
-                        vA -= mA * p;
-                        wA -= iA * MathUtils.Cross(vcp.Ra, p);
-
-                        vB += mB * p;
-                        wB += iB * MathUtils.Cross(vcp.Rb, p);
-                    }
+                    SolveNormalConstraints(vc);
                 }
                 else
                 {
-                    // Block solver developed in collaboration with Dirk Gregoris (back in 01/07 on Box2D_Lite).
-                    // Build the mini LCP for this contact patch
-                    //
-                    // vn = A * x + b, vn >= 0, x >= 0 and vn_i * x_i = 0 with i = 1..2
-                    //
-                    // A = J * W * JT and J = ( -n, -r1 x n, n, r2 x n )
-                    // b = vn0 - velocityBias
-                    //
-                    // The system is solved using the "Total enumeration method" (s. Murty). The complementary constraint vn_i * x_i
-                    // implies that we must have in any solution either vn_i = 0 or x_i = 0. So for the 2D contact problem the cases
-                    // vn1 = 0 and vn2 = 0, x1 = 0 and x2 = 0, x1 = 0 and vn2 = 0, x2 = 0 and vn1 = 0 need to be tested. The first valid
-                    // solution that satisfies the problem is chosen.
-                    // 
-                    // In order to account of the accumulated impulse 'a' (because of the iterative nature of the solver which only requires
-                    // that the accumulated impulse is clamped and not the incremental impulse) we change the impulse variable (x_i).
-                    //
-                    // Substitute:
-                    // 
-                    // x = a + d
-                    // 
-                    // a := old total impulse
-                    // x := new total impulse
-                    // d := incremental impulse 
-                    //
-                    // For the current iteration we extend the formula for the incremental impulse
-                    // to compute the new total impulse:
-                    //
-                    // vn = A * d + b
-                    //    = A * (x - a) + b
-                    //    = A * x + b - A * a
-                    //    = A * x + b'
-                    // b' = b - A * a;
-
-                    VelocityConstraintPoint cp1 = vc.Points[0];
-                    VelocityConstraintPoint cp2 = vc.Points[1];
-
-                    Vector2 a = new Vector2(cp1.NormalImpulse, cp2.NormalImpulse);
-                    Debug.Assert((a.X >= 0.0f) && (a.Y >= 0.0f));
-
-                    // Relative velocity at contact
-                    Vector2 dv1 = vB + MathUtils.Cross(wB, cp1.Rb) - vA - MathUtils.Cross(wA, cp1.Ra);
-                    Vector2 dv2 = vB + MathUtils.Cross(wB, cp2.Rb) - vA - MathUtils.Cross(wA, cp2.Ra);
-
-                    // Compute normal velocity
-                    float vn1 = Vector2.Dot(dv1, normal);
-                    float vn2 = Vector2.Dot(dv2, normal);
-
-                    Vector2 b = new Vector2(
-                        vn1 - cp1.VelocityBias,
-                        vn2 - cp2.VelocityBias
-                    );
-
-                    // Compute b'
-                    b -= MathUtils.Mul(ref vc.K, a);
-
-                    //
-                    // Case 1: vn = 0
-                    //
-                    // 0 = A * x + b'
-                    //
-                    // Solve for x:
-                    //
-                    // x = - inv(A) * b'
-                    //
-                    Vector2 x = -MathUtils.Mul(ref vc.NormalMass, b);
-
-                    if ((x.X >= 0.0f) && (x.Y >= 0.0f))
-                    {
-                        cp1.NormalImpulse = x.X;
-                        cp2.NormalImpulse = x.Y;
-
-                        break;
-                    }
-
-                    x = new Vector2(-cp1.NormalMass * b.X, 0.0f);
-                    vn2 = vc.K.Ex.Y * x.X + b.Y;
-
-                    if ((x.X >= 0.0f) && (vn2 >= 0.0f))
-                    {
-                        cp1.NormalImpulse = x.X;
-                        cp2.NormalImpulse = x.Y;
-
-                        break;
-                    }
-
-                    x = new Vector2(0.0f, -cp2.NormalMass * b.Y);
-                    vn1 = vc.K.Ey.X * x.Y + b.X;
-
-                    if ((x.Y >= 0.0f) && (vn1 >= 0.0f))
-                    {
-                        cp1.NormalImpulse = x.X;
-                        cp2.NormalImpulse = x.Y;
-
-                        break;
-                    }
-
-                    x = Vector2.Zero;
-                    vn1 = b.X;
-                    vn2 = b.Y;
-
-                    if ((vn1 >= 0.0f) && (vn2 >= 0.0f))
-                    {
-                        Vector2 d = x - a;
-
-                        Vector2 p1 = d.X * normal;
-                        Vector2 p2 = d.Y * normal;
-                        vA -= mA * (p1 + p2);
-                        wA -= iA * (MathUtils.Cross(cp1.Ra, p1) + MathUtils.Cross(cp2.Ra, p2));
-
-                        vB += mB * (p1 + p2);
-                        wB += iB * (MathUtils.Cross(cp1.Rb, p1) + MathUtils.Cross(cp2.Rb, p2));
-
-                        cp1.NormalImpulse = x.X;
-                        cp2.NormalImpulse = x.Y;
-                    }
+                    SolveBlockConstraints(vc);
                 }
 
-                velocities[indexA].V = vA;
-                velocities[indexA].W = wA;
-                velocities[indexB].V = vB;
-                velocities[indexB].W = wB;
+                UpdateVelocities(vc);
             }
+        }
+
+        /// <summary>
+        /// Initializes the velocity constraint using the specified vc
+        /// </summary>
+        /// <param name="vc">The vc</param>
+        private void InitializeVelocityConstraint(ContactVelocityConstraint vc)
+        {
+            int indexA = vc.IndexA;
+            int indexB = vc.IndexB;
+            float mA = vc.InvMassA;
+            float iA = vc.InvIa;
+            float mB = vc.InvMassB;
+            float iB = vc.InvIb;
+            int pointCount = vc.PointCount;
+
+            Vector2 vA = velocities[indexA].V;
+            float wA = velocities[indexA].W;
+            Vector2 vB = velocities[indexB].V;
+            float wB = velocities[indexB].W;
+
+            Vector2 normal = vc.Normal;
+            Vector2 tangent = MathUtils.Cross(normal, 1.0f);
+            float friction = vc.Friction;
+
+            Debug.Assert(pointCount == 1 || pointCount == 2);
+
+            // Solve tangent constraints first because non-penetration is more important
+            // than friction.
+            for (int j = 0; j < pointCount; ++j)
+            {
+                SolveTangentConstraints(vc, j, mA, iA, mB, iB, vA, wA, vB, wB, normal, tangent, friction);
+            }
+        }
+
+        /// <summary>
+        /// Solves the tangent constraints using the specified vc
+        /// </summary>
+        /// <param name="vc">The vc</param>
+        /// <param name="j">The </param>
+        /// <param name="mA">The </param>
+        /// <param name="iA">The </param>
+        /// <param name="mB">The </param>
+        /// <param name="iB">The </param>
+        /// <param name="vA">The </param>
+        /// <param name="wA">The </param>
+        /// <param name="vB">The </param>
+        /// <param name="wB">The </param>
+        /// <param name="normal">The normal</param>
+        /// <param name="tangent">The tangent</param>
+        /// <param name="friction">The friction</param>
+        private void SolveTangentConstraints(ContactVelocityConstraint vc, int j, float mA, float iA, float mB, float iB, Vector2 vA, float wA, Vector2 vB, float wB, Vector2 normal, Vector2 tangent, float friction)
+        {
+            VelocityConstraintPoint vcp = vc.Points[j];
+
+            // Relative velocity at contact
+            Vector2 dv = vB + MathUtils.Cross(wB, vcp.Rb) - vA - MathUtils.Cross(wA, vcp.Ra);
+
+            // Compute tangent force
+            float vt = Vector2.Dot(dv, tangent) - vc.TangentSpeed;
+            float lambda = vcp.TangentMass * -vt;
+
+            // b2Clamp the accumulated force
+            float maxFriction = friction * vcp.NormalImpulse;
+            float newImpulse = MathUtils.Clamp(vcp.TangentImpulse + lambda, -maxFriction, maxFriction);
+            lambda = newImpulse - vcp.TangentImpulse;
+            vcp.TangentImpulse = newImpulse;
+
+            // Apply contact impulse
+            Vector2 p = lambda * tangent;
+
+            vA -= mA * p;
+            wA -= iA * MathUtils.Cross(vcp.Ra, p);
+
+            vB += mB * p;
+            wB += iB * MathUtils.Cross(vcp.Rb, p);
+        }
+
+        /// <summary>
+        /// Solves the normal constraints using the specified vc
+        /// </summary>
+        /// <param name="vc">The vc</param>
+        private void SolveNormalConstraints(ContactVelocityConstraint vc)
+        {
+            for (int j = 0; j < vc.PointCount; ++j)
+            {
+                SolveNormalConstraint(vc, j);
+            }
+        }
+
+        /// <summary>
+        /// Solves the normal constraint using the specified vc
+        /// </summary>
+        /// <param name="vc">The vc</param>
+        /// <param name="j">The </param>
+        private void SolveNormalConstraint(ContactVelocityConstraint vc, int j)
+        {
+            VelocityConstraintPoint vcp = vc.Points[j];
+
+            // Relative velocity at contact
+            Vector2 dv = velocities[vc.IndexB].V + MathUtils.Cross(velocities[vc.IndexB].W, vcp.Rb) - velocities[vc.IndexA].V - MathUtils.Cross(velocities[vc.IndexA].W, vcp.Ra);
+
+            // Compute normal impulse
+            float vn = Vector2.Dot(dv, vc.Normal);
+            float lambda = -vcp.NormalMass * (vn - vcp.VelocityBias);
+
+            // b2Clamp the accumulated impulse
+            float newImpulse = Math.Max(vcp.NormalImpulse + lambda, 0.0f);
+            lambda = newImpulse - vcp.NormalImpulse;
+            vcp.NormalImpulse = newImpulse;
+
+            // Apply contact impulse
+            Vector2 p = lambda * vc.Normal;
+            velocities[vc.IndexA].V -= vc.InvMassA * p;
+            velocities[vc.IndexA].W -= vc.InvIa * MathUtils.Cross(vcp.Ra, p);
+
+            velocities[vc.IndexB].V += vc.InvMassB * p;
+            velocities[vc.IndexB].W += vc.InvIb * MathUtils.Cross(vcp.Rb, p);
+        }
+
+        /// <summary>
+        /// Solves the block constraints using the specified vc
+        /// </summary>
+        /// <param name="vc">The vc</param>
+        private void SolveBlockConstraints(ContactVelocityConstraint vc)
+        {
+            // Block solver developed in collaboration with Dirk Gregoris (back in 01/07 on Box2D_Lite).
+            // Build the mini LCP for this contact patch
+            //
+            // vn = A * x + b, vn >= 0, x >= 0 and vn_i * x_i = 0 with i = 1..2
+            //
+            // A = J * W * JT and J = ( -n, -r1 x n, n, r2 x n )
+            // b = vn0 - velocityBias
+            //
+            // The system is solved using the "Total enumeration method" (s. Murty). The complementary constraint vn_i * x_i
+            // implies that we must have in any solution either vn_i = 0 or x_i = 0. So for the 2D contact problem the cases
+            // vn1 = 0 and vn2 = 0, x1 = 0 and x2 = 0, x1 = 0 and vn2 = 0, x2 = 0 and vn1 = 0 need to be tested. The first valid
+            // solution that satisfies the problem is chosen.
+            //
+            // In order to account of the accumulated impulse 'a' (because of the iterative nature of the solver which only requires
+            // that the accumulated impulse is clamped and not the incremental impulse) we change the impulse variable (x_i).
+            //
+            // Substitute:
+            //
+            // x = a + d
+            //
+            // a := old total impulse
+            // x := new total impulse
+            // d := incremental impulse
+            //
+            // For the current iteration we extend the formula for the incremental impulse
+            // to compute the new total impulse:
+            //
+            // vn = A * d + b
+            //    = A * (x - a) + b
+            //    = A * x + b - A * a
+            //    = A * x + b'
+            // b' = b - A * a;
+
+            VelocityConstraintPoint cp1 = vc.Points[0];
+            VelocityConstraintPoint cp2 = vc.Points[1];
+
+            Vector2 a = new Vector2(cp1.NormalImpulse, cp2.NormalImpulse);
+            Debug.Assert((a.X >= 0.0f) && (a.Y >= 0.0f));
+
+            // Relative velocity at contact
+            Vector2 dv1 = velocities[vc.IndexB].V + MathUtils.Cross(velocities[vc.IndexB].W, cp1.Rb) - velocities[vc.IndexA].V - MathUtils.Cross(velocities[vc.IndexA].W, cp1.Ra);
+            Vector2 dv2 = velocities[vc.IndexB].V + MathUtils.Cross(velocities[vc.IndexB].W, cp2.Rb) - velocities[vc.IndexA].V - MathUtils.Cross(velocities[vc.IndexA].W, cp2.Ra);
+
+            // Compute normal velocity
+            float vn1 = Vector2.Dot(dv1, vc.Normal);
+            float vn2 = Vector2.Dot(dv2, vc.Normal);
+
+            Vector2 b = new Vector2(
+                vn1 - cp1.VelocityBias,
+                vn2 - cp2.VelocityBias
+            );
+
+            // Compute b'
+            b -= MathUtils.Mul(ref vc.K, a);
+
+            //
+            // Case 1: vn = 0
+            //
+            // 0 = A * x + b'
+            //
+            // Solve for x:
+            //
+            // x = - inv(A) * b'
+            //
+            Vector2 x = -MathUtils.Mul(ref vc.NormalMass, b);
+
+            if ((x.X >= 0.0f) && (x.Y >= 0.0f))
+            {
+                cp1.NormalImpulse = x.X;
+                cp2.NormalImpulse = x.Y;
+
+                return;
+            }
+
+            x = new Vector2(-cp1.NormalMass * b.X, 0.0f);
+            vn2 = vc.K.Ex.Y * x.X + b.Y;
+
+            if ((x.X >= 0.0f) && (vn2 >= 0.0f))
+            {
+                cp1.NormalImpulse = x.X;
+                cp2.NormalImpulse = x.Y;
+
+                return;
+            }
+
+            x = new Vector2(0.0f, -cp2.NormalMass * b.Y);
+            vn1 = vc.K.Ey.X * x.Y + b.X;
+
+            if ((x.Y >= 0.0f) && (vn1 >= 0.0f))
+            {
+                cp1.NormalImpulse = x.X;
+                cp2.NormalImpulse = x.Y;
+
+                return;
+            }
+
+            x = Vector2.Zero;
+            vn1 = b.X;
+            vn2 = b.Y;
+
+            if ((vn1 >= 0.0f) && (vn2 >= 0.0f))
+            {
+                Vector2 d = x - a;
+
+                Vector2 p1 = d.X * vc.Normal;
+                Vector2 p2 = d.Y * vc.Normal;
+                velocities[vc.IndexA].V -= vc.InvMassA * (p1 + p2);
+                velocities[vc.IndexA].W -= vc.InvIa * (MathUtils.Cross(cp1.Ra, p1) + MathUtils.Cross(cp2.Ra, p2));
+
+                velocities[vc.IndexB].V += vc.InvMassB * (p1 + p2);
+                velocities[vc.IndexB].W += vc.InvIb * (MathUtils.Cross(cp1.Rb, p1) + MathUtils.Cross(cp2.Rb, p2));
+
+                cp1.NormalImpulse = x.X;
+                cp2.NormalImpulse = x.Y;
+            }
+        }
+
+        /// <summary>
+        /// Updates the velocities using the specified vc
+        /// </summary>
+        /// <param name="vc">The vc</param>
+        private void UpdateVelocities(ContactVelocityConstraint vc)
+        {
+            velocities[vc.IndexA].V = velocities[vc.IndexA].V;
+            velocities[vc.IndexA].W = velocities[vc.IndexA].W;
+            velocities[vc.IndexB].V = velocities[vc.IndexB].V;
+            velocities[vc.IndexB].W = velocities[vc.IndexB].W;
         }
 
         /// <summary>
