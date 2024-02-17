@@ -144,8 +144,7 @@ namespace Alis.Core.Ecs.System.Manager
         ///     Ons the exit
         /// </summary>
         public abstract void OnExit();
-
-
+        
         /// <summary>
         ///     Ons the destroy
         /// </summary>

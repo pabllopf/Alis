@@ -48,22 +48,17 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// <summary>
         ///     The sdl event
         /// </summary>
-        private static Event _sdlEvent;
+        private Event sdlEvent;
 
         /// <summary>
         ///     The sdl game controller axis
         /// </summary>
-        private static readonly List<GameControllerAxis> Axis = new List<GameControllerAxis>((GameControllerAxis[]) Enum.GetValues(typeof(GameControllerAxis)));
+        private readonly List<GameControllerAxis> axis = new List<GameControllerAxis>((GameControllerAxis[]) Enum.GetValues(typeof(GameControllerAxis)));
 
         /// <summary>
         ///     The sdl game controller button
         /// </summary>
-        private static readonly List<GameControllerButton> Buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
-
-        /// <summary>
-        ///     Array of key of keyboard
-        /// </summary>
-        private List<SdlKeycode> keys;
+        private readonly List<GameControllerButton> buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
 
         /// <summary>
         ///     Temp list of keys
@@ -84,8 +79,6 @@ namespace Alis.Core.Ecs.System.Manager.Input
         public override void OnInit()
         {
             Logger.Trace();
-
-            keys = new List<SdlKeycode>((SdlKeycode[]) Enum.GetValues(typeof(SdlKeycode)));
             tempListOfKeys = new List<SdlKeycode>();
         }
 
@@ -154,64 +147,105 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        ///     Ons the dispatch events
+        /// Ons the dispatch events
         /// </summary>
         public override void OnDispatchEvents()
         {
-            Logger.Trace();
-
             Sdl.JoystickUpdate();
 
-            while (Sdl.PollEvent(out _sdlEvent) != 0)
+            while (Sdl.PollEvent(out sdlEvent) != 0)
             {
-                if (_sdlEvent.type == EventType.SdlQuit)
-                {
-                    //Console.WriteLine(" Quit was pressed ");
-                    VideoGame.Instance.Exit();
-                }
-                
-                if (_sdlEvent.type == EventType.SdlKeyup)
-                {
-                    SdlKeycode indexUp = _sdlEvent.key.keySym.sym;
-
-                    if (tempListOfKeys.Contains(indexUp))
-                    {
-                        //Console.WriteLine(indexUp + " was released");
-                        tempListOfKeys.Remove(indexUp);
-                        NotifyKeyRelease(indexUp);
-                    }
-                }
-                
-                if (_sdlEvent.type == EventType.SdlKeydown)
-                {
-                    SdlKeycode indexDown = _sdlEvent.key.keySym.sym;
-                    if (!tempListOfKeys.Contains(indexDown))
-                    {
-                        //Console.WriteLine(indexDown + " was pressed");
-                        tempListOfKeys.Add(indexDown);
-                        NotifyKeyPress(indexDown);
-                    }
-                }
-
-                foreach (GameControllerButton button in Buttons)
-                {
-                    if ((_sdlEvent.type == EventType.SdlJoyButtonDown)
-                        && (button == (GameControllerButton) _sdlEvent.cButton.button))
-                    {
-                        Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed button={button}");
-                    }
-                }
-
-                foreach (GameControllerAxis axi in Axis)
-                {
-                    if ((_sdlEvent.type == EventType.SdlJoyAxisMotion)
-                        && (axi == (GameControllerAxis) _sdlEvent.cAxis.axis))
-                    {
-                        Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed axi={axi}");
-                    }
-                }
+                HandleSdlQuitEvent();
+                HandleSdlKeyupEvent();
+                HandleSdlKeydownEvent();
+                HandleSdlJoyButtonDownEvent();
+                HandleSdlJoyAxisMotionEvent();
             }
 
+            NotifyKeyHold();
+        }
+
+        /// <summary>
+        /// Handles the sdl quit event
+        /// </summary>
+        private void HandleSdlQuitEvent()
+        {
+            if (sdlEvent.type == EventType.SdlQuit)
+            {
+                VideoGame.Instance.Exit();
+            }
+        }
+
+        /// <summary>
+        /// Handles the sdl keyup event
+        /// </summary>
+        private void HandleSdlKeyupEvent()
+        {
+            if (sdlEvent.type == EventType.SdlKeyup)
+            {
+                SdlKeycode indexUp = sdlEvent.key.keySym.sym;
+
+                if (tempListOfKeys.Contains(indexUp))
+                {
+                    tempListOfKeys.Remove(indexUp);
+                    NotifyKeyRelease(indexUp);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Handles the sdl keydown event
+        /// </summary>
+        private void HandleSdlKeydownEvent()
+        {
+            if (sdlEvent.type == EventType.SdlKeydown)
+            {
+                SdlKeycode indexDown = sdlEvent.key.keySym.sym;
+                if (!tempListOfKeys.Contains(indexDown))
+                {
+                    tempListOfKeys.Add(indexDown);
+                    NotifyKeyPress(indexDown);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Handles the sdl joy button down event
+        /// </summary>
+        private void HandleSdlJoyButtonDownEvent()
+        {
+            for (int index = 0; index < buttons.Count; index++)
+            {
+                GameControllerButton button = buttons[index];
+                if ((sdlEvent.type == EventType.SdlJoyButtonDown)
+                    && (button == (GameControllerButton) sdlEvent.cButton.button))
+                {
+                    Console.WriteLine($"[SDL_JoystickName_id = '{sdlEvent.cDevice.which}'] Pressed button={button}");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Handles the sdl joy axis motion event
+        /// </summary>
+        private void HandleSdlJoyAxisMotionEvent()
+        {
+            for (int index = 0; index < axis.Count; index++)
+            {
+                GameControllerAxis axi = axis[index];
+                if ((sdlEvent.type == EventType.SdlJoyAxisMotion)
+                    && (axi == (GameControllerAxis) sdlEvent.cAxis.axis))
+                {
+                    Console.WriteLine($"[SDL_JoystickName_id = '{sdlEvent.cDevice.which}'] Pressed axi={axi}");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Notifies the key hold
+        /// </summary>
+        private void NotifyKeyHold()
+        {
             foreach (SdlKeycode key in tempListOfKeys)
             {
                 NotifyKeyHold(key);
