@@ -1116,6 +1116,12 @@ namespace Alis.Core.Physic.Tools.TextureTools
             return vertex2Index;
         }
 
+       /// <summary>
+       /// Creates the simple polygon using the specified entrance
+       /// </summary>
+       /// <param name="entrance">The entrance</param>
+       /// <param name="last">The last</param>
+       /// <returns>The polygon</returns>
        private Vertices CreateSimplePolygon(Vector2 entrance, Vector2 last)
 {
     bool entranceFound = false;
@@ -1164,6 +1170,20 @@ namespace Alis.Core.Physic.Tools.TextureTools
     return polygon;
 }
 
+/// <summary>
+
+/// Describes whether this instance get entrance point
+
+/// </summary>
+
+/// <param name="entrance">The entrance</param>
+
+/// <param name="last">The last</param>
+
+/// <param name="current">The current</param>
+
+/// <returns>The entrance found</returns>
+
 private bool GetEntrancePoint(ref Vector2 entrance, ref Vector2 last, ref Vector2 current)
 {
     bool entranceFound = false;
@@ -1198,6 +1218,20 @@ private bool GetEntrancePoint(ref Vector2 entrance, ref Vector2 last, ref Vector
 
     return entranceFound;
 }
+
+/// <summary>
+
+/// Processes the outstanding vertex using the specified end of hull
+
+/// </summary>
+
+/// <param name="endOfHull">The end of hull</param>
+
+/// <param name="hullArea">The hull area</param>
+
+/// <param name="endOfHullArea">The end of hull area</param>
+
+/// <param name="polygon">The polygon</param>
 
 private void ProcessOutstandingVertex(ref bool endOfHull, Vertices hullArea, Vertices endOfHullArea, Vertices polygon)
 {
