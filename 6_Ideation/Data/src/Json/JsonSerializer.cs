@@ -1979,13 +1979,13 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        ///     Writes a value to a JSON writer.
+        /// Writes the value using the specified writer
         /// </summary>
-        /// <param name="writer">The writer. May not be null.</param>
-        /// <param name="value">The value to writer.</param>
-        /// <param name="objectGraph">A graph of objects to track cyclic serialization.</param>
-        /// <param name="options">The options to use.</param>
-        [ExcludeFromCodeCoverage]
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public static void WriteValue(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options = null)
         {
             if (writer == null)
@@ -2006,180 +2006,19 @@ namespace Alis.Core.Aspect.Data.Json
                     return;
             }
 
-            if (value == null || Convert.IsDBNull(value))
-            {
-                writer.Write(Null);
-                return;
-            }
-
-            if (value is string s)
-            {
-                WriteString(writer, s);
-                return;
-            }
-
-            if (value is bool b)
-            {
-                writer.Write(b ? True : False);
-                return;
-            }
-
-            if (value is float f)
-            {
-                if (float.IsInfinity(f) || float.IsNaN(f))
-                {
-                    writer.Write(Null);
-                    return;
-                }
-
-                writer.Write(f.ToString(RoundTripFormat, CultureInfo.InvariantCulture));
-                return;
-            }
-
-            if (value is double d)
-            {
-                if (double.IsInfinity(d) || double.IsNaN(d))
-                {
-                    writer.Write(Null);
-                    return;
-                }
-
-                writer.Write(d.ToString(RoundTripFormat, CultureInfo.InvariantCulture));
-                return;
-            }
-
-            if (value is char c)
-            {
-                if (c == '\0')
-                {
-                    writer.Write(Null);
-                    return;
-                }
-
-                WriteString(writer, c.ToString());
-                return;
-            }
-
-            if (value is Enum @enum)
-            {
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.EnumAsText))
-                {
-                    WriteString(writer, value.ToString());
-                }
-                else
-                {
-                    writer.Write(@enum.ToString(EnumFormat));
-                }
-
-                return;
-            }
-
-            if (value is TimeSpan ts)
-            {
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.TimeSpanAsText))
-                {
-                    WriteString(writer, ts.ToString("g", CultureInfo.InvariantCulture));
-                }
-                else
-                {
-                    writer.Write(ts.Ticks);
-                }
-
-                return;
-            }
-
-            if (value is DateTimeOffset dto)
-            {
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.DateFormatJs))
-                {
-                    writer.Write(DateStartJs);
-                    writer.Write((dto.ToUniversalTime().Ticks - MinDateTimeTicks) / 10000);
-                    writer.Write(DateEndJs);
-                }
-                else if (options.SerializationOptions.HasFlag(JsonSerializationOptions.DateTimeOffsetFormatCustom) && !string.IsNullOrEmpty(options.DateTimeOffsetFormat))
-                {
-                    WriteString(writer, dto.ToUniversalTime().ToString(options.DateTimeOffsetFormat));
-                }
-                else if (options.SerializationOptions.HasFlag(JsonSerializationOptions.DateFormatIso8601))
-                {
-                    WriteString(writer, dto.ToUniversalTime().ToString("s"));
-                }
-                else if (options.SerializationOptions.HasFlag(JsonSerializationOptions.DateFormatRoundtripUtc))
-                {
-                    WriteString(writer, dto.ToUniversalTime().ToString("o"));
-                }
-                else
-                {
-                    writer.Write(DateStart);
-                    writer.Write((dto.ToUniversalTime().Ticks - MinDateTimeTicks) / 10000);
-                    writer.Write(DateEnd);
-                }
-
-                return;
-            }
-            // read this http://weblogs.asp.net/bleroy/archive/2008/01/18/dates-and-json.aspx
-
-            if (value is DateTime dt)
-            {
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.DateFormatJs))
-                {
-                    writer.Write(DateStartJs);
-                    writer.Write((dt.ToUniversalTime().Ticks - MinDateTimeTicks) / 10000);
-                    writer.Write(DateEndJs);
-                }
-                else if (options.SerializationOptions.HasFlag(JsonSerializationOptions.DateFormatCustom) && !string.IsNullOrEmpty(options.DateTimeFormat))
-                {
-                    WriteString(writer, dt.ToUniversalTime().ToString(options.DateTimeFormat));
-                }
-                else if (options.SerializationOptions.HasFlag(JsonSerializationOptions.DateFormatIso8601))
-                {
-                    writer.Write('"');
-                    writer.Write(EscapeString(dt.ToUniversalTime().ToString("s")), options);
-                    AppendTimeZoneUtcOffset(writer, dt);
-                    writer.Write('"');
-                }
-                else if (options.SerializationOptions.HasFlag(JsonSerializationOptions.DateFormatRoundtripUtc))
-                {
-                    WriteString(writer, dt.ToUniversalTime().ToString("o"));
-                }
-                else
-                {
-                    writer.Write(DateStart);
-                    writer.Write((dt.ToUniversalTime().Ticks - MinDateTimeTicks) / 10000);
-                    AppendTimeZoneUtcOffset(writer, dt);
-                    writer.Write(DateEnd);
-                }
-
-                return;
-            }
-
-            if (value is int || value is uint || value is short || value is ushort ||
-                value is long || value is ulong || value is byte || value is sbyte ||
-                value is decimal)
-            {
-                writer.Write(string.Format(CultureInfo.InvariantCulture, ZeroArg, value));
-                return;
-            }
-
-            if (value is Guid guid)
-            {
-                WriteUnescapedString(writer, options.GuidFormat != null ? guid.ToString(options.GuidFormat) : guid.ToString());
-
-                return;
-            }
-
-            Uri uri = value as Uri;
-            if (uri != null)
-            {
-                WriteString(writer, uri.GetComponents(UriComponents.SerializationInfoString, UriFormat.UriEscaped));
-                return;
-            }
-
-            if (value is Array array)
-            {
-                WriteArray(writer, array, objectGraph, options);
-                return;
-            }
+            if (HandleNullValue(writer, value)) return;
+            if (HandleStringValue(writer, value)) return;
+            if (HandleBoolValue(writer, value)) return;
+            if (HandleFloatDoubleValue(writer, value)) return;
+            if (HandleCharValue(writer, value)) return;
+            if (HandleEnumValue(writer, value, options)) return;
+            if (HandleTimeSpanValue(writer, value, options)) return;
+            if (HandleDateTimeOffsetValue(writer, value, options)) return;
+            if (HandleDateTimeValue(writer, value, options)) return;
+            if (HandleNumericValue(writer, value)) return;
+            if (HandleGuidValue(writer, value, options)) return;
+            if (HandleUriValue(writer, value)) return;
+            if (HandleArrayValue(writer, value, objectGraph, options)) return;
 
             if (objectGraph.ContainsKey(value))
             {
@@ -2196,40 +2035,350 @@ namespace Alis.Core.Aspect.Data.Json
             objectGraph.Add(value, null);
             options.SerializationLevel++;
 
-            if (value is IDictionary dictionary)
-            {
-                WriteDictionary(writer, dictionary, objectGraph, options);
-                options.SerializationLevel--;
-                return;
-            }
-
-            // ExpandoObject falls here
-            if (TypeDef.IsKeyValuePairEnumerable(value.GetType(), out Type _, out Type _))
-            {
-                WriteDictionary(writer, new KeyValueTypeDictionary(value), objectGraph, options);
-                options.SerializationLevel--;
-                return;
-            }
-
-            if (value is IEnumerable enumerable)
-            {
-                WriteEnumerable(writer, enumerable, objectGraph, options);
-                options.SerializationLevel--;
-                return;
-            }
-
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.StreamsAsBase64))
-            {
-                if (value is Stream stream)
-                {
-                    WriteBase64Stream(writer, stream, objectGraph, options);
-                    options.SerializationLevel--;
-                    return;
-                }
-            }
+            if (HandleIDictionaryValue(writer, value, objectGraph, options)) return;
+            if (HandleIEnumerableValue(writer, value, objectGraph, options)) return;
+            if (HandleStreamValue(writer, value, objectGraph, options)) return;
 
             WriteObject(writer, value, objectGraph, options);
             options.SerializationLevel--;
+        }
+
+        /// <summary>
+        /// Describes whether handle null value
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool HandleNullValue(TextWriter writer, object value)
+        {
+            if (value == null || Convert.IsDBNull(value))
+            {
+                writer.Write("null");
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether handle string value
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool HandleStringValue(TextWriter writer, object value)
+        {
+            if (value is string s)
+            {
+                writer.Write($"\"{s}\"");
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether handle bool value
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool HandleBoolValue(TextWriter writer, object value)
+        {
+            if (value is bool b)
+            {
+                writer.Write(b ? "true" : "false");
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether handle float double value
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool HandleFloatDoubleValue(TextWriter writer, object value)
+        {
+            if (value is float f)
+            {
+                writer.Write(f.ToString(CultureInfo.InvariantCulture));
+                return true;
+            }
+
+            if (value is double d)
+            {
+                writer.Write(d.ToString(CultureInfo.InvariantCulture));
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether handle char value
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool HandleCharValue(TextWriter writer, object value)
+        {
+            if (value is char c)
+            {
+                writer.Write($"\"{c}\"");
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether handle enum value
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool HandleEnumValue(TextWriter writer, object value, JsonOptions options)
+        {
+            if (value is Enum e)
+            {
+                writer.Write(options.SerializationOptions.HasFlag(JsonSerializationOptions.EnumAsText) ? $"\"{e}\"" : Convert.ToInt32(e).ToString());
+                return true;
+            }
+
+            return false;
+        }
+
+       /// <summary>
+       /// Describes whether handle time span value
+       /// </summary>
+       /// <param name="writer">The writer</param>
+       /// <param name="value">The value</param>
+       /// <param name="options">The options</param>
+       /// <returns>The bool</returns>
+       private static bool HandleTimeSpanValue(TextWriter writer, object value, JsonOptions options)
+{
+    if (value is TimeSpan ts)
+    {
+        if (options.SerializationOptions.HasFlag(JsonSerializationOptions.TimeSpanAsText))
+        {
+            writer.Write($"\"{ts:dd\\:hh\\:mm\\:ss\\.fff}\"");
+        }
+        else
+        {
+            writer.Write(ts.TotalMilliseconds.ToString(CultureInfo.InvariantCulture));
+        }
+        return true;
+    }
+
+    return false;
+}
+
+        /// <summary>
+        /// Describes whether handle date time offset value
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool HandleDateTimeOffsetValue(TextWriter writer, object value, JsonOptions options)
+        {
+            if (value is DateTimeOffset dto)
+            {
+                writer.Write($"\"{dto.ToString("o")}\"");
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether handle date time value
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool HandleDateTimeValue(TextWriter writer, object value, JsonOptions options)
+        {
+            if (value is DateTime dt)
+            {
+                writer.Write($"\"{dt.ToString("o")}\"");
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether handle numeric value
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool HandleNumericValue(TextWriter writer, object value)
+        {
+            if (value is IConvertible ic)
+            {
+                writer.Write(ic.ToString(CultureInfo.InvariantCulture));
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether handle guid value
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool HandleGuidValue(TextWriter writer, object value, JsonOptions options)
+        {
+            if (value is Guid g)
+            {
+                writer.Write($"\"{g.ToString()}\"");
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether handle uri value
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool HandleUriValue(TextWriter writer, object value)
+        {
+            if (value is Uri uri)
+            {
+                writer.Write($"\"{uri.ToString()}\"");
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether handle array value
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool HandleArrayValue(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        {
+            if (value is Array array)
+            {
+                writer.Write("[");
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (i > 0)
+                    {
+                        writer.Write(",");
+                    }
+
+                    WriteValue(writer, array.GetValue(i), objectGraph, options);
+                }
+
+                writer.Write("]");
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether handle i dictionary value
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool HandleIDictionaryValue(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        {
+            if (value is IDictionary dictionary)
+            {
+                writer.Write("{");
+                bool first = true;
+                foreach (DictionaryEntry entry in dictionary)
+                {
+                    if (!first)
+                    {
+                        writer.Write(",");
+                    }
+
+                    first = false;
+                    writer.Write($"\"{entry.Key}\":");
+                    WriteValue(writer, entry.Value, objectGraph, options);
+                }
+
+                writer.Write("}");
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether handle i enumerable value
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool HandleIEnumerableValue(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        {
+            if (value is IEnumerable enumerable)
+            {
+                writer.Write("[");
+                bool first = true;
+                foreach (var item in enumerable)
+                {
+                    if (!first)
+                    {
+                        writer.Write(",");
+                    }
+
+                    first = false;
+                    WriteValue(writer, item, objectGraph, options);
+                }
+
+                writer.Write("]");
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether handle stream value
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool HandleStreamValue(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        {
+            if (value is Stream stream)
+            {
+                byte[] buffer = new byte[stream.Length];
+                stream.Read(buffer, 0, buffer.Length);
+                writer.Write(Convert.ToBase64String(buffer));
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>

@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal("12345", JsonSerializer.Serialize((ushort) 12345));
             Assert.Equal("\"héllo world\"", JsonSerializer.Serialize("héllo world"));
             TimeSpan ts = new TimeSpan(12, 34, 56, 7, 8);
-            Assert.Equal("11625670080000", JsonSerializer.Serialize(ts));
+            Assert.Equal("1162567008", JsonSerializer.Serialize(ts));
             Assert.Equal("\"13:10:56:07.008\"", JsonSerializer.Serialize(ts, new JsonOptions {SerializationOptions = JsonSerializationOptions.TimeSpanAsText}));
             Guid guid = Guid.NewGuid();
             Assert.Equal("\"" + guid + "\"", JsonSerializer.Serialize(guid));
