@@ -1277,35 +1277,26 @@ namespace Alis.Core.Physic.Tools.TextureTools
             return false;
         }
 
-        /// <summary>Searches for the next shape.</summary>
-        /// <param name="detectedPolygons">Already detected polygons.</param>
-        /// <param name="start">Search start coordinate.</param>
-        /// <param name="entrance">Returns the found entrance coordinate. Null if no other shapes found.</param>
-        /// <returns>True if a new shape was found.</returns>
+        /// <summary>
+        /// Describes whether this instance search next hull entrance
+        /// </summary>
+        /// <param name="detectedPolygons">The detected polygons</param>
+        /// <param name="start">The start</param>
+        /// <param name="entrance">The entrance</param>
+        /// <returns>The bool</returns>
         private bool SearchNextHullEntrance(List<Vertices> detectedPolygons, Vector2 start, out Vector2? entrance)
         {
             bool foundTransparent = false;
 
-            for (int i = (int) start.X + (int) start.Y * width; i <= dataLength; i++)
+            for (int i = CalculateStartIndex(start); i <= dataLength; i++)
             {
                 if (IsSolid(ref i))
                 {
                     if (foundTransparent)
                     {
-                        int x = i % width;
-                        entrance = new Vector2(x, (i - x) / (float) width);
+                        entrance = CalculateEntrance(i);
 
-                        bool inPolygon = false;
-                        for (int polygonIdx = 0; polygonIdx < detectedPolygons.Count; polygonIdx++)
-                        {
-                            if (InPolygon(detectedPolygons[polygonIdx], entrance.Value))
-                            {
-                                inPolygon = true;
-                                break;
-                            }
-                        }
-
-                        if (inPolygon)
+                        if (IsInPolygon(detectedPolygons, entrance.Value))
                         {
                             foundTransparent = false;
                         }
@@ -1322,6 +1313,46 @@ namespace Alis.Core.Physic.Tools.TextureTools
             }
 
             entrance = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Calculates the start index using the specified start
+        /// </summary>
+        /// <param name="start">The start</param>
+        /// <returns>The int</returns>
+        private int CalculateStartIndex(Vector2 start)
+        {
+            return (int) start.X + (int) start.Y * width;
+        }
+
+        /// <summary>
+        /// Calculates the entrance using the specified i
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <returns>The vector</returns>
+        private Vector2 CalculateEntrance(int i)
+        {
+            int x = i % width;
+            return new Vector2(x, (i - x) / (float) width);
+        }
+
+        /// <summary>
+        /// Describes whether this instance is in polygon
+        /// </summary>
+        /// <param name="detectedPolygons">The detected polygons</param>
+        /// <param name="entrance">The entrance</param>
+        /// <returns>The bool</returns>
+        private bool IsInPolygon(List<Vertices> detectedPolygons, Vector2 entrance)
+        {
+            for (int polygonIdx = 0; polygonIdx < detectedPolygons.Count; polygonIdx++)
+            {
+                if (InPolygon(detectedPolygons[polygonIdx], entrance))
+                {
+                    return true;
+                }
+            }
+
             return false;
         }
 
