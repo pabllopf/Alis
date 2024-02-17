@@ -1325,12 +1325,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestChangeType_NullInput_ReturnsDefaultForValueType()
         {
             // Arrange
-            object input = null;
             Type targetType = typeof(int);
             JsonOptions options = new JsonOptions();
 
             // Act
-            object result = JsonSerializer.ChangeType(input, targetType, options);
+            object result = JsonSerializer.ChangeType(null, targetType, options);
 
             // Assert
             Assert.IsType<int>(result);
