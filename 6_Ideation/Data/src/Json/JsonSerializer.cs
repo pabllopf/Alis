@@ -1904,73 +1904,87 @@ namespace Alis.Core.Aspect.Data.Json
             return false;
         }
 
-        /// <summary>
-
-        /// Describes whether try parse date time with specific format
-
-        /// </summary>
-
-        /// <param name="text">The text</param>
-
-        /// <param name="dt">The dt</param>
-
-        /// <returns>The bool</returns>
-
         private static bool TryParseDateTimeWithSpecificFormat(string text, out DateTime dt)
         {
             int offsetHours = 0;
             int offsetMinutes = 0;
 
-            // s format length is 19, as in '2012-02-21T17:07:14'
-            // so we can do quick checks
-            // this portion of code is needed because we assume UTC and the default DateTime parse behavior is not that (even with AssumeUniversal)
-            if ((text.Length >= 19) &&
-                (text[4] == '-') &&
-                (text[7] == '-') &&
-                (text[10] == 'T' || text[10] == 't') &&
-                (text[13] == ':') &&
-                (text[16] == ':'))
+            if (IsDateTimeFormatValid(text))
             {
-                if (DateTime.TryParseExact(text, "o", null, DateTimeStyles.AssumeUniversal, out dt))
+                if (TryParseExactDateTime(text, out dt))
                     return true;
 
-                int tz = text.Substring(19).IndexOfAny(new[] {'+', '-'});
+                int tz = FindTimeZoneIndex(text);
                 string text2 = text;
-                if (tz >= 0)
-                {
-                    tz += 19;
-                    string offset = text.Substring(tz + 1).Trim();
-                    if (int.TryParse(offset, out int i))
-                    {
-                        offsetHours = i / 100;
-                        offsetMinutes = i % 100;
-                        if (text[tz] == '-')
-                        {
-                            offsetHours = -offsetHours;
-                            offsetMinutes = -offsetMinutes;
-                        }
-
-                        text2 = text.Substring(0, tz);
-                    }
-                }
 
                 if (tz >= 0)
                 {
-                    if (DateTime.TryParseExact(text2, "s", null, DateTimeStyles.AssumeLocal, out dt))
-                    {
-                        dt = dt.AddHours(offsetHours);
-                        dt = dt.AddMinutes(offsetMinutes);
-                        return true;
-                    }
+                    CalculateOffset(text, tz, out offsetHours, out offsetMinutes);
+                    text2 = text.Substring(0, tz);
                 }
-                else
-                {
-                    if (DateTime.TryParseExact(text, "s", null, DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out dt))
-                        return true;
-                }
+
+                return TryParseDateTimeWithOffset(text2, tz, offsetHours, offsetMinutes, out dt);
             }
 
             dt = DateTime.MinValue;
+            return false;
+        }
+
+        private static bool IsDateTimeFormatValid(string text)
+        {
+            return (text.Length >= 19) &&
+                   (text[4] == '-') &&
+                   (text[7] == '-') &&
+                   (text[10] == 'T' || text[10] == 't');
+        }
+
+        private static bool TryParseExactDateTime(string text, out DateTime dt)
+        {
+            return DateTime.TryParseExact(text, "o", null, DateTimeStyles.AssumeUniversal, out dt);
+        }
+
+        private static int FindTimeZoneIndex(string text)
+        {
+            return text.Substring(19).IndexOfAny(new[] {'+', '-'});
+        }
+
+        private static void CalculateOffset(string text, int tz, out int offsetHours, out int offsetMinutes)
+        {
+            string offset = text.Substring(tz + 1).Trim();
+            if (int.TryParse(offset, out int i))
+            {
+                offsetHours = i / 100;
+                offsetMinutes = i % 100;
+                if (text[tz] == '-')
+                {
+                    offsetHours = -offsetHours;
+                    offsetMinutes = -offsetMinutes;
+                }
+            }
+            else
+            {
+                offsetHours = 0;
+                offsetMinutes = 0;
+            }
+        }
+
+        private static bool TryParseDateTimeWithOffset(string text, int tz, int offsetHours, int offsetMinutes, out DateTime dt)
+        {
+            if (tz >= 0)
+            {
+                if (DateTime.TryParseExact(text, "s", null, DateTimeStyles.AssumeLocal, out dt))
+                {
+                    dt = dt.AddHours(offsetHours);
+                    dt = dt.AddMinutes(offsetMinutes);
+                    return true;
+                }
+            }
+            else
+            {
+                if (DateTime.TryParseExact(text, "s", null, DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out dt))
+                    return true;
+            }
+
             return false;
         }
 
