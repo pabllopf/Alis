@@ -736,13 +736,13 @@ namespace Alis.Core.Aspect.Data.Json
             return false;
         }
 
+        //[ExcludeFromCodeCoverage]
         /// <summary>
-        ///     Applies the dictionary
+        /// Applies the dictionary
         /// </summary>
         /// <param name="dictionary">The dictionary</param>
         /// <param name="target">The target</param>
         /// <param name="options">The options</param>
-        [ExcludeFromCodeCoverage]
         internal static void Apply(IDictionary dictionary, object target, JsonOptions options)
         {
             if (dictionary == null || target == null)
@@ -750,25 +750,47 @@ namespace Alis.Core.Aspect.Data.Json
 
             if (target is IDictionary dicTarget)
             {
-                Type itemType = GetItemType(dicTarget.GetType());
-                foreach (DictionaryEntry entry in dictionary)
-                {
-                    if (entry.Key == null)
-                        continue;
-
-                    if (itemType == typeof(object))
-                    {
-                        dicTarget[entry.Key] = entry.Value;
-                    }
-                    else
-                    {
-                        dicTarget[entry.Key] = ChangeType(target, entry.Value, itemType, options);
-                    }
-                }
-
-                return;
+                ApplyToDictionaryTarget(dicTarget, dictionary, options);
             }
+            else
+            {
+                ApplyToNonDictionaryTarget(target, dictionary, options);
+            }
+        }
 
+        /// <summary>
+        /// Applies the to dictionary target using the specified dic target
+        /// </summary>
+        /// <param name="dicTarget">The dic target</param>
+        /// <param name="dictionary">The dictionary</param>
+        /// <param name="options">The options</param>
+        private static void ApplyToDictionaryTarget(IDictionary dicTarget, IDictionary dictionary, JsonOptions options)
+        {
+            Type itemType = GetItemType(dicTarget.GetType());
+            foreach (DictionaryEntry entry in dictionary)
+            {
+                if (entry.Key == null)
+                    continue;
+
+                if (itemType == typeof(object))
+                {
+                    dicTarget[entry.Key] = entry.Value;
+                }
+                else
+                {
+                    dicTarget[entry.Key] = ChangeType(dicTarget, entry.Value, itemType, options);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Applies the to non dictionary target using the specified target
+        /// </summary>
+        /// <param name="target">The target</param>
+        /// <param name="dictionary">The dictionary</param>
+        /// <param name="options">The options</param>
+        private static void ApplyToNonDictionaryTarget(object target, IDictionary dictionary, JsonOptions options)
+        {
             TypeDef def = TypeDef.Get(target.GetType(), options);
 
             foreach (DictionaryEntry entry in dictionary)
