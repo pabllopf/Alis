@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Tools.Cutting.Simple;
@@ -248,15 +249,34 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        ///     Calculates the characteristics function for all edges of the given simplical chains and builds the result
-        ///     chain.
+        /// Calculates the result chain using the specified poly 1 coeff
         /// </summary>
-        /// <remarks>Used by method <c>Execute()</c>.</remarks>
+        /// <param name="poly1Coeff">The poly coeff</param>
+        /// <param name="poly1Simplicies">The poly simplicies</param>
+        /// <param name="poly2Coeff">The poly coeff</param>
+        /// <param name="poly2Simplicies">The poly simplicies</param>
+        /// <param name="clipType">The clip type</param>
+        /// <param name="resultSimplices">The result simplices</param>
         private static void CalculateResultChain(List<float> poly1Coeff, List<Edge> poly1Simplicies,
             List<float> poly2Coeff, List<Edge> poly2Simplicies, PolyClipType clipType, out List<Edge> resultSimplices)
         {
             resultSimplices = new List<Edge>();
 
+            CalculateEdgeCharacterForPoly1(poly1Coeff, poly1Simplicies, poly2Simplicies, clipType, resultSimplices);
+            CalculateEdgeCharacterForPoly2(poly1Simplicies, poly2Coeff, poly2Simplicies, clipType, resultSimplices);
+        }
+
+        /// <summary>
+        /// Calculates the edge character for poly 1 using the specified poly 1 coeff
+        /// </summary>
+        /// <param name="poly1Coeff">The poly coeff</param>
+        /// <param name="poly1Simplicies">The poly simplicies</param>
+        /// <param name="poly2Simplicies">The poly simplicies</param>
+        /// <param name="clipType">The clip type</param>
+        /// <param name="resultSimplices">The result simplices</param>
+        private static void CalculateEdgeCharacterForPoly1(List<float> poly1Coeff, List<Edge> poly1Simplicies,
+            List<Edge> poly2Simplicies, PolyClipType clipType, List<Edge> resultSimplices)
+        {
             for (int i = 0; i < poly1Simplicies.Count; ++i)
             {
                 float edgeCharacter = 0;
@@ -275,7 +295,7 @@ namespace Alis.Core.Physic.Tools.Cutting
                         if (!poly2Simplicies.Contains(-poly1Simplicies[i]))
                         {
                             edgeCharacter += CalculateBeta(poly1Simplicies[i].GetCenter(),
-                                poly2Simplicies[j], poly2Coeff[j]);
+                                poly2Simplicies[j], poly1Coeff[j]);
                         }
                     }
                 }
@@ -295,7 +315,19 @@ namespace Alis.Core.Physic.Tools.Cutting
                     }
                 }
             }
+        }
 
+        /// <summary>
+        /// Calculates the edge character for poly 2 using the specified poly 1 simplicies
+        /// </summary>
+        /// <param name="poly1Simplicies">The poly simplicies</param>
+        /// <param name="poly2Coeff">The poly coeff</param>
+        /// <param name="poly2Simplicies">The poly simplicies</param>
+        /// <param name="clipType">The clip type</param>
+        /// <param name="resultSimplices">The result simplices</param>
+        private static void CalculateEdgeCharacterForPoly2(List<Edge> poly1Simplicies, List<float> poly2Coeff,
+            List<Edge> poly2Simplicies, PolyClipType clipType, List<Edge> resultSimplices)
+        {
             for (int i = 0; i < poly2Simplicies.Count; ++i)
             {
                 float edgeCharacter = 0f;
@@ -315,7 +347,7 @@ namespace Alis.Core.Physic.Tools.Cutting
                                 !poly1Simplicies.Contains(-poly2Simplicies[i]))
                             {
                                 edgeCharacter += CalculateBeta(poly2Simplicies[i].GetCenter(),
-                                    poly1Simplicies[j], poly1Coeff[j]);
+                                    poly1Simplicies[j], poly2Coeff[j]);
                             }
                         }
 
@@ -338,8 +370,12 @@ namespace Alis.Core.Physic.Tools.Cutting
             }
         }
 
-        /// <summary>Calculates the polygon(s) from the result simplical chain.</summary>
-        /// <remarks>Used by method <c>Execute()</c>.</remarks>
+        /// <summary>
+        /// Builds the polygons from chain using the specified simplicies
+        /// </summary>
+        /// <param name="simplicies">The simplicies</param>
+        /// <param name="result">The result</param>
+        /// <returns>The err val</returns>
         private static PolyClipError BuildPolygonsFromChain(List<Edge> simplicies, out List<Vertices> result)
         {
             result = new List<Vertices>();
@@ -347,71 +383,109 @@ namespace Alis.Core.Physic.Tools.Cutting
 
             while (simplicies.Count > 0)
             {
-                Vertices output = new Vertices
-                {
-                    simplicies[0].EdgeStart,
-                    simplicies[0].EdgeEnd
-                };
-                simplicies.RemoveAt(0);
+                Vertices output = CreateOutputVertices(simplicies);
                 bool closed = false;
                 int index = 0;
                 int count = simplicies.Count; // Needed to catch infinite loops
-                while (!closed && (simplicies.Count > 0))
-                {
-                    if (VectorEqual(output[output.Count - 1], simplicies[index].EdgeStart))
-                    {
-                        if (VectorEqual(simplicies[index].EdgeEnd, output[0]))
-                        {
-                            closed = true;
-                        }
-                        else
-                        {
-                            output.Add(simplicies[index].EdgeEnd);
-                        }
 
-                        simplicies.RemoveAt(index);
-                        --index;
-                    }
-                    else if (VectorEqual(output[output.Count - 1], simplicies[index].EdgeEnd))
-                    {
-                        if (VectorEqual(simplicies[index].EdgeStart, output[0]))
-                        {
-                            closed = true;
-                        }
-                        else
-                        {
-                            output.Add(simplicies[index].EdgeStart);
-                        }
+                closed = ProcessSimplicies(simplicies, output, closed, ref index, count);
 
-                        simplicies.RemoveAt(index);
-                        --index;
-                    }
-
-                    if (!closed)
-                    {
-                        if (++index == simplicies.Count)
-                        {
-                            if (count == simplicies.Count)
-                            {
-                                result = new List<Vertices>();
-                                Debug.WriteLine("Undefined error while building result polygon(s).");
-                                return PolyClipError.BrokenResult;
-                            }
-
-                            index = 0;
-                            count = simplicies.Count;
-                        }
-                    }
-                }
-
-                if (output.Count < 3)
-                {
-                    errVal = PolyClipError.DegeneratedOutput;
-                    Debug.WriteLine("Degenerated output polygon produced (vertices < 3).");
-                }
-
-                result.Add(output);
+                errVal = AddOutputToResult(output, result, errVal);
             }
+
+            return errVal;
+        }
+
+        /// <summary>
+        /// Creates the output vertices using the specified simplicies
+        /// </summary>
+        /// <param name="simplicies">The simplicies</param>
+        /// <returns>The vertices</returns>
+        private static Vertices CreateOutputVertices(List<Edge> simplicies)
+        {
+            return new Vertices
+            {
+                simplicies[0].EdgeStart,
+                simplicies[0].EdgeEnd
+            };
+        }
+
+        /// <summary>
+        /// Describes whether process simplicies
+        /// </summary>
+        /// <param name="simplicies">The simplicies</param>
+        /// <param name="output">The output</param>
+        /// <param name="closed">The closed</param>
+        /// <param name="index">The index</param>
+        /// <param name="count">The count</param>
+        /// <returns>The closed</returns>
+        private static bool ProcessSimplicies(List<Edge> simplicies, Vertices output, bool closed, ref int index, int count)
+        {
+            while (!closed && (simplicies.Count > 0))
+            {
+                if (VectorEqual(output[output.Count - 1], simplicies[index].EdgeStart))
+                {
+                    if (VectorEqual(simplicies[index].EdgeEnd, output[0]))
+                    {
+                        closed = true;
+                    }
+                    else
+                    {
+                        output.Add(simplicies[index].EdgeEnd);
+                    }
+
+                    simplicies.RemoveAt(index);
+                    --index;
+                }
+                else if (VectorEqual(output[output.Count - 1], simplicies[index].EdgeEnd))
+                {
+                    if (VectorEqual(simplicies[index].EdgeStart, output[0]))
+                    {
+                        closed = true;
+                    }
+                    else
+                    {
+                        output.Add(simplicies[index].EdgeStart);
+                    }
+
+                    simplicies.RemoveAt(index);
+                    --index;
+                }
+
+                if (!closed)
+                {
+                    if (++index == simplicies.Count)
+                    {
+                        if (count == simplicies.Count)
+                        {
+                            return true;
+                        }
+
+                        index = 0;
+                        count = simplicies.Count;
+                    }
+                }
+            }
+
+            return closed;
+        }
+
+        /// <summary>
+        /// Adds the output to result using the specified output
+        /// </summary>
+        /// <param name="output">The output</param>
+        /// <param name="result">The result</param>
+        /// <param name="errVal">The err val</param>
+        /// <returns>The err val</returns>
+        private static PolyClipError AddOutputToResult(Vertices output, List<Vertices> result, PolyClipError errVal)
+        {
+            if (output.Count < 3)
+            {
+                errVal = PolyClipError.DegeneratedOutput;
+                Logger.Log("Degenerated output polygon produced (vertices < 3).");
+            }
+
+            result.Add(output);
 
             return errVal;
         }
