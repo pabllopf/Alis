@@ -707,74 +707,147 @@ namespace Alis.Core.Aspect.Data.Json
             return value;
         }
 
-        // Enum.TryParse is not supported by all .NET versions the same way
+
         /// <summary>
-        ///     Describes whether enum try parse
+        /// Describes whether enum try parse
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="input">The input</param>
         /// <param name="value">The value</param>
-        /// <exception cref="ArgumentNullException"></exception>
-        /// <exception cref="ArgumentException">null </exception>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
         internal static bool EnumTryParse(Type type, object input, out object value)
         {
-            if (type == null)
-                throw new ArgumentNullException(nameof(type));
-
-            if (!type.IsEnum)
-                throw new ArgumentException(null, nameof(type));
-
-            if (input == null)
+            if (!ValidateInput(type, input, out value))
             {
-                value = Activator.CreateInstance(type);
                 return false;
             }
 
-            string stringInput = string.Format(CultureInfo.InvariantCulture, "{0}", input);
-            stringInput = stringInput.Nullify();
-            if (stringInput == null)
+            string stringInput = FormatInput(input);
+
+            if (TryParseHexadecimal(stringInput, type, out value))
             {
-                value = Activator.CreateInstance(type);
+                return true;
+            }
+
+            if (!TryGetEnumNamesAndValues(type, out string[] names, out Array values))
+            {
                 return false;
             }
 
-            if (stringInput.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
+            return TryParseTokens(stringInput, type, names, values, out value);
+        }
+
+        /// <summary>
+        /// Describes whether validate input
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="input">The input</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool ValidateInput(Type type, object input, out object value)
+        {
+            if (type == null || !type.IsEnum || input == null)
             {
-                if (ulong.TryParse(stringInput.Substring(2), NumberStyles.HexNumber, null, out ulong ulx))
+                value = type is {IsEnum: true} ? Activator.CreateInstance(type) : null;
+                return false;
+            }
+
+            value = null;
+            return true;
+        }
+
+        /// <summary>
+        /// Formats the input using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <returns>The string</returns>
+        private static string FormatInput(object input)
+        {
+            return string.Format(CultureInfo.InvariantCulture, "{0}", input).Nullify();
+        }
+
+        /// <summary>
+        /// Describes whether try parse hexadecimal
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="type">The type</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryParseHexadecimal(string input, Type type, out object value)
+        {
+            if (input.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
+            {
+                if (ulong.TryParse(input.Substring(2), NumberStyles.HexNumber, null, out ulong ulx))
                 {
                     value = ToEnum(ulx.ToString(CultureInfo.InvariantCulture), type);
                     return true;
                 }
             }
 
-            string[] names = Enum.GetNames(type);
-            if (names.Length == 0)
+            value = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether try get enum names and values
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="names">The names</param>
+        /// <param name="values">The values</param>
+        /// <returns>The bool</returns>
+        private static bool TryGetEnumNamesAndValues(Type type, out string[] names, out Array values)
+        {
+            names = Enum.GetNames(type);
+            values = Enum.GetValues(type);
+
+            return names.Length != 0;
+        }
+
+        /// <summary>
+        /// Describes whether try parse tokens
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="type">The type</param>
+        /// <param name="names">The names</param>
+        /// <param name="values">The values</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryParseTokens(string input, Type type, string[] names, Array values, out object value)
+        {
+            if (!type.IsDefined(typeof(FlagsAttribute), true) && (input.IndexOfAny(EnumSeparators) < 0))
             {
-                value = Activator.CreateInstance(type);
-                return false;
+                return StringToEnum(type, names, values, input, out value);
             }
 
-            Array values = Enum.GetValues(type);
-            // some enums like System.CodeDom.MemberAttributes *are* flags but are not declared with Flags...
-            if (!type.IsDefined(typeof(FlagsAttribute), true) && (stringInput.IndexOfAny(EnumSeparators) < 0))
-                return StringToEnum(type, names, values, stringInput, out value);
-
-            // multi value enum
-            string[] tokens = stringInput.Split(EnumSeparators, StringSplitOptions.RemoveEmptyEntries);
+            string[] tokens = input.Split(EnumSeparators, StringSplitOptions.RemoveEmptyEntries);
             if (tokens.Length == 0)
             {
                 value = Activator.CreateInstance(type);
                 return false;
             }
 
+            return TryParseTokenValues(tokens, type, names, values, out value);
+        }
+
+        /// <summary>
+        /// Describes whether try parse token values
+        /// </summary>
+        /// <param name="tokens">The tokens</param>
+        /// <param name="type">The type</param>
+        /// <param name="names">The names</param>
+        /// <param name="values">The values</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryParseTokenValues(string[] tokens, Type type, string[] names, Array values, out object value)
+        {
             ulong ul = 0;
             foreach (string tok in tokens)
             {
-                string token = tok.Nullify(); // NOTE: we don't consider empty tokens as errors
+                string token = tok.Nullify();
                 if (token == null)
+                {
                     continue;
+                }
 
                 if (!StringToEnum(type, names, values, token, out object tokenValue))
                 {
@@ -782,30 +855,31 @@ namespace Alis.Core.Aspect.Data.Json
                     return false;
                 }
 
-                ulong tokenUl;
-#pragma warning disable IDE0010 // Add missing cases
-#pragma warning disable IDE0066 // Convert switch statement to expression
-                switch (Convert.GetTypeCode(tokenValue))
-#pragma warning restore IDE0066 // Convert switch statement to expression
-#pragma warning restore IDE0010 // Add missing cases
-                {
-                    case TypeCode.Int16:
-                    case TypeCode.Int32:
-                    case TypeCode.Int64:
-                    case TypeCode.SByte:
-                        tokenUl = (ulong) Convert.ToInt64(tokenValue, CultureInfo.InvariantCulture);
-                        break;
-
-                    default:
-                        tokenUl = Convert.ToUInt64(tokenValue, CultureInfo.InvariantCulture);
-                        break;
-                }
-
-                ul |= tokenUl;
+                ul |= ConvertTokenValueToUlong(tokenValue);
             }
 
             value = Enum.ToObject(type, ul);
             return true;
+        }
+
+        /// <summary>
+        /// Converts the token value to ulong using the specified token value
+        /// </summary>
+        /// <param name="tokenValue">The token value</param>
+        /// <returns>The ulong</returns>
+        private static ulong ConvertTokenValueToUlong(object tokenValue)
+        {
+            switch (Convert.GetTypeCode(tokenValue))
+            {
+                case TypeCode.Int16:
+                case TypeCode.Int32:
+                case TypeCode.Int64:
+                case TypeCode.SByte:
+                    return (ulong) Convert.ToInt64(tokenValue, CultureInfo.InvariantCulture);
+
+                default:
+                    return Convert.ToUInt64(tokenValue, CultureInfo.InvariantCulture);
+            }
         }
 
         /// <summary>
