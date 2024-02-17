@@ -87,12 +87,23 @@ namespace Alis.Core.Ecs.Component.Render
             VideoGame.Instance.GraphicManager.Attach(this);
         }
         
+        /// <summary>
+        /// Ons the update
+        /// </summary>
         public override void OnUpdate()
         {
             viewport.x = (int)GameObject.Transform.Position.X;
             viewport.y = (int)GameObject.Transform.Position.Y;
         }
-        
+
+        /// <summary>
+        /// Ons the exit
+        /// </summary>
+        public override void OnExit()
+        {
+            VideoGame.Instance.GraphicManager.UnAttach(this);
+        }
+
         /// <summary>
         ///     Builders this instance
         /// </summary>

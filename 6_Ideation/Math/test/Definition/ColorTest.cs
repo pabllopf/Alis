@@ -157,6 +157,9 @@ namespace Alis.Core.Aspect.Math.Test.Definition
             Assert.Equal(expected.A, actual.A);
         }
 
+        /// <summary>
+        /// Tests that dark green returns correct color
+        /// </summary>
         [Fact]
         public void DarkGreen_ReturnsCorrectColor()
         {
