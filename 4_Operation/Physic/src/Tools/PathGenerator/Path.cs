@@ -178,130 +178,87 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         }
 
         /// <summary>
-        ///     Gets the position using the specified time
+        /// Gets the position using the specified time
         /// </summary>
         /// <param name="time">The time</param>
         /// <exception cref="Exception">You need at least 2 control points to calculate a position.</exception>
-        /// <returns>The temp</returns>
+        /// <returns>The vector</returns>
         public Vector2 GetPosition(float time)
         {
-            Vector2 temp;
-
             if (controlPoints.Count < 2)
             {
                 throw new Exception("You need at least 2 control points to calculate a position.");
             }
 
-            if (Closed)
-            {
-                Add(controlPoints[0]);
+            deltaT = 1f / (controlPoints.Count - 1);
+            int p = (int) (time / deltaT);
 
-                deltaT = 1f / (controlPoints.Count - 1);
+            return Closed ? CalculatePositionWhenClosed(p, time) : CalculatePositionWhenNotClosed(p, time);
+        }
 
-                int p = (int) (time / deltaT);
+        /// <summary>
+        /// Calculates the position when closed using the specified p
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <param name="time">The time</param>
+        /// <returns>The temp</returns>
+        private Vector2 CalculatePositionWhenClosed(int p, float time)
+        {
+            Add(controlPoints[0]);
 
-                // use a circular indexing system
-                int p0 = p - 1;
-                if (p0 < 0)
-                {
-                    p0 += controlPoints.Count - 1;
-                }
-                else if (p0 >= controlPoints.Count - 1)
-                {
-                    p0 -= controlPoints.Count - 1;
-                }
+            Vector2 temp = CalculatePosition(p, time);
 
-                int p1 = p;
-                if (p1 < 0)
-                {
-                    p1 += controlPoints.Count - 1;
-                }
-                else if (p1 >= controlPoints.Count - 1)
-                {
-                    p1 -= controlPoints.Count - 1;
-                }
-
-                int p2 = p + 1;
-                if (p2 < 0)
-                {
-                    p2 += controlPoints.Count - 1;
-                }
-                else if (p2 >= controlPoints.Count - 1)
-                {
-                    p2 -= controlPoints.Count - 1;
-                }
-
-                int p3 = p + 2;
-                if (p3 < 0)
-                {
-                    p3 += controlPoints.Count - 1;
-                }
-                else if (p3 >= controlPoints.Count - 1)
-                {
-                    p3 -= controlPoints.Count - 1;
-                }
-
-                // relative time
-                float lt = (time - deltaT * p) / deltaT;
-
-                temp = CatmullRom(controlPoints[p0], controlPoints[p1], controlPoints[p2], controlPoints[p3],
-                    lt);
-
-                RemoveAt(controlPoints.Count - 1);
-            }
-            else
-            {
-                int p = (int) (time / deltaT);
-
-                // 
-                int p0 = p - 1;
-                if (p0 < 0)
-                {
-                    p0 = 0;
-                }
-                else if (p0 >= controlPoints.Count - 1)
-                {
-                    p0 = controlPoints.Count - 1;
-                }
-
-                int p1 = p;
-                if (p1 < 0)
-                {
-                    p1 = 0;
-                }
-                else if (p1 >= controlPoints.Count - 1)
-                {
-                    p1 = controlPoints.Count - 1;
-                }
-
-                int p2 = p + 1;
-                if (p2 < 0)
-                {
-                    p2 = 0;
-                }
-                else if (p2 >= controlPoints.Count - 1)
-                {
-                    p2 = controlPoints.Count - 1;
-                }
-
-                int p3 = p + 2;
-                if (p3 < 0)
-                {
-                    p3 = 0;
-                }
-                else if (p3 >= controlPoints.Count - 1)
-                {
-                    p3 = controlPoints.Count - 1;
-                }
-
-                // relative time
-                float lt = (time - deltaT * p) / deltaT;
-
-                temp = CatmullRom(controlPoints[p0], controlPoints[p1], controlPoints[p2], controlPoints[p3],
-                    lt);
-            }
+            RemoveAt(controlPoints.Count - 1);
 
             return temp;
+        }
+
+        /// <summary>
+        /// Calculates the position when not closed using the specified p
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <param name="time">The time</param>
+        /// <returns>The vector</returns>
+        private Vector2 CalculatePositionWhenNotClosed(int p, float time)
+        {
+            return CalculatePosition(p, time);
+        }
+
+        /// <summary>
+        /// Calculates the position using the specified p
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <param name="time">The time</param>
+        /// <returns>The vector</returns>
+        private Vector2 CalculatePosition(int p, float time)
+        {
+            int p0 = AdjustIndex(p - 1);
+            int p1 = AdjustIndex(p);
+            int p2 = AdjustIndex(p + 1);
+            int p3 = AdjustIndex(p + 2);
+
+            float lt = (time - deltaT * p) / deltaT;
+
+            return CatmullRom(controlPoints[p0], controlPoints[p1], controlPoints[p2], controlPoints[p3], lt);
+        }
+
+        /// <summary>
+        /// Adjusts the index using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The index</returns>
+        private int AdjustIndex(int index)
+        {
+            if (index < 0)
+            {
+                return Closed ? index + controlPoints.Count - 1 : 0;
+            }
+            else if (index >= controlPoints.Count - 1)
+            {
+                return Closed ? index - controlPoints.Count - 1 : controlPoints.Count - 1;
+            }
+
+            return index;
         }
 
         /// <summary>
