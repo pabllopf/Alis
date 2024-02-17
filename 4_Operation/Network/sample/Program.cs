@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Network.Sample.Client.Complex;
@@ -51,26 +52,43 @@ namespace Alis.Core.Network.Sample
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        public static async Task Main(string[] args)
+        public static Task Main(string[] args)
         {
+            Logger.LogLevel = LogLevel.Trace;
+            Logger.SetDetailLevel(DetailLevel.Minimal);
+            
+            CancellationTokenSource cts = new CancellationTokenSource();
             _webSocketServerFactory = new WebSocketServerFactory();
-            await StartWebServer();
+            StartWebServer(cts.Token);
+            
+            Logger.Info("Server is running");
 
             if (args.Length == 0)
             {
-                RunSimpleTest().Wait();
+                Logger.Log("Running test 'RunLoadTest'");
+                RunLoadTest().Wait(cts.Token);
+                
+                Logger.Log("Running test 'RunSimpleTest'");
+                RunSimpleTest().Wait(cts.Token);
+                
+                Logger.Log("Running test 'RunComplexTest'");
                 RunComplexTest(args);
             }
             else
             {
-                Console.WriteLine("Wrong number of arguments. 0 for simple test. 5 for complex test.");
-                Console.WriteLine(
+                Logger.Log("Wrong number of arguments. 0 for simple test. 5 for complex test.");
+                Logger.Log(
                     "Complex Test: uri numThreads numItemsPerThread minNumBytesPerMessage maxNumBytesPerMessage");
-                Console.WriteLine("e.g: ws://localhost:27416/chat/echo 5 100 4 4");
+                Logger.Log("e.g: ws://localhost:27416/chat/echo 5 100 4 4");
             }
 
-            Console.WriteLine("Press any key to quit");
+            Logger.Warning("Press any key to quit...");
             Console.ReadKey();
+            
+            // Stop the server
+            cts.Cancel();
+            
+            return Task.CompletedTask;
         }
 
         /// <summary>
@@ -94,7 +112,7 @@ namespace Alis.Core.Network.Sample
             int.TryParse("256", out int minNumBytesPerMessage);
             int.TryParse("1024", out int maxNumBytesPerMessage);
 
-            Console.WriteLine(
+            Logger.Log(
                 $"Started DemoClient with Uri '{uri}' numThreads '{numThreads}' numItemsPerThread '{numItemsPerThread}' minNumBytesPerMessage '{minNumBytesPerMessage}' maxNumBytesPerMessage '{maxNumBytesPerMessage}'");
 
             TestRunner runner = new TestRunner(uri, numThreads, numItemsPerThread, minNumBytesPerMessage,
@@ -115,21 +133,21 @@ namespace Alis.Core.Network.Sample
         /// <summary>
         ///     Starts the web server
         /// </summary>
-        private static async Task StartWebServer()
+        /// <param name="ctsToken"></param>
+        private static async void StartWebServer(CancellationToken ctsToken)
         {
             try
             {
                 int port = 27416;
                 IList<string> supportedSubProtocols = new[] {"chatV1", "chatV2", "chatV3"};
                 using WebServer server = new WebServer(_webSocketServerFactory, supportedSubProtocols);
-                Console.WriteLine($"Listening on port {port}");
-                Console.WriteLine("Press any key to quit");
-                await server.Listen(port);
+                Logger.Log($"Listening on port {port}");
+                Logger.Log("Press any key to quit");
+                await server.Listen(port, ctsToken);
             }
             catch (Exception ex)
             {
                 Logger.Exception(ex.ToString());
-                Console.ReadKey();
             }
         }
     }
