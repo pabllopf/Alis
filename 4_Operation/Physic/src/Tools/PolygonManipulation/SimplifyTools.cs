@@ -43,11 +43,11 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
         /// <param name="vertices">The polygon that needs simplification.</param>
         /// <param name="tolerance">The tolerance.</param>
         /// <returns>A simplified polygon.</returns>
-        public static Vertices CollinearSimplify(Vertices vertices, float tolerance = 0)
+        public static void CollinearSimplify(Vertices vertices, float tolerance = 0)
         {
             if (vertices.Count <= 3)
             {
-                return vertices;
+                return;
             }
 
             Vertices simplified = new Vertices(vertices.Count);
@@ -66,8 +66,6 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
 
                 simplified.Add(current);
             }
-
-            return simplified;
         }
 
         /// <summary>
