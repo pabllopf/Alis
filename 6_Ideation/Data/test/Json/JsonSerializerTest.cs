@@ -42,12 +42,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The json serializer test class
+    ///     The json serializer test class
     /// </summary>
     public class JsonSerializerTest
     {
         /// <summary>
-        /// Tests that test json serializer deserialize string success
+        ///     Tests that test json serializer deserialize string success
         /// </summary>
         [Fact]
         public void TestJsonSerializer_Deserialize_String_Success()
@@ -64,7 +64,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer deserialize text reader success
+        ///     Tests that test json serializer deserialize text reader success
         /// </summary>
         [Fact]
         public void TestJsonSerializer_Deserialize_TextReader_Success()
@@ -82,7 +82,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer deserialize to target success
+        ///     Tests that test json serializer deserialize to target success
         /// </summary>
         [Fact]
         public void TestJsonSerializer_v2_DeserializeToTarget_Success()
@@ -100,7 +100,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer deserialize null input returns null
+        ///     Tests that test json serializer deserialize null input returns null
         /// </summary>
         [Fact]
         public void TestJsonSerializer_Deserialize_NullInput_ReturnsNull()
@@ -117,7 +117,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer deserialize to target null input no changes
+        ///     Tests that test json serializer deserialize to target null input no changes
         /// </summary>
         [Fact]
         public void TestJsonSerializer_DeserializeToTarget_NullInput_NoChanges()
@@ -135,7 +135,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer serialize success
+        ///     Tests that test json serializer serialize success
         /// </summary>
         [Fact]
         public void TestJsonSerializer_Serialize_Success()
@@ -152,7 +152,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer deserialize success
+        ///     Tests that test json serializer deserialize success
         /// </summary>
         [Fact]
         public void TestJsonSerializer_Deserialize_Success()
@@ -170,7 +170,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer deserialize to target success
+        ///     Tests that test json serializer deserialize to target success
         /// </summary>
         [Fact]
         public void TestJsonSerializer_DeserializeToTarget_Success()
@@ -188,7 +188,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer v 2 deserialize null input returns null
+        ///     Tests that test json serializer v 2 deserialize null input returns null
         /// </summary>
         [Fact]
         public void TestJsonSerializer_v2_Deserialize_NullInput_ReturnsNull()
@@ -205,7 +205,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer v 2 deserialize to target null input no changes
+        ///     Tests that test json serializer v 2 deserialize to target null input no changes
         /// </summary>
         [Fact]
         public void TestJsonSerializer_v2_DeserializeToTarget_NullInput_NoChanges()
@@ -223,7 +223,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer write formatted success
+        ///     Tests that test json serializer write formatted success
         /// </summary>
         [Fact]
         public void TestJsonSerializer_WriteFormatted_Success()
@@ -241,7 +241,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer escape string success
+        ///     Tests that test json serializer escape string success
         /// </summary>
         [Fact]
         public void TestJsonSerializer_EscapeString_Success()
@@ -257,7 +257,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer get nullified string value by path success
+        ///     Tests that test json serializer get nullified string value by path success
         /// </summary>
         [Fact]
         public void TestJsonSerializer_GetNullifiedStringValueByPath_Success()
@@ -277,7 +277,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer try get value by path success
+        ///     Tests that test json serializer try get value by path success
         /// </summary>
         [Fact]
         public void TestJsonSerializer_TryGetValueByPath_Success()
@@ -290,7 +290,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string path = "Path.To.Value";
 
             // Act
-            bool success = dictionary.TryGetValueByPath<int>(path, out int value);
+            bool success = dictionary.TryGetValueByPath(path, out int value);
 
             // Assert
             Assert.False(success);
@@ -298,7 +298,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer equals ignore case success
+        ///     Tests that test json serializer equals ignore case success
         /// </summary>
         [Fact]
         public void TestJsonSerializer_EqualsIgnoreCase_Success()
@@ -315,7 +315,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer nullify success
+        ///     Tests that test json serializer nullify success
         /// </summary>
         [Fact]
         public void TestJsonSerializer_Nullify_Success()
@@ -331,7 +331,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer append char as unicode success
+        ///     Tests that test json serializer append char as unicode success
         /// </summary>
         [Fact]
         public void TestJsonSerializer_AppendCharAsUnicode_Success()
@@ -348,7 +348,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer serialize formatted success
+        ///     Tests that test json serializer serialize formatted success
         /// </summary>
         [Fact]
         public void TestJsonSerializer_SerializeFormatted_Success()
@@ -365,7 +365,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer serialize formatted with text writer success
+        ///     Tests that test json serializer serialize formatted with text writer success
         /// </summary>
         [Fact]
         public void TestJsonSerializer_SerializeFormatted_WithTextWriter_Success()
@@ -386,7 +386,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer write name value null writer throws argument null exception
+        ///     Tests that test json serializer write name value null writer throws argument null exception
         /// </summary>
         [Fact]
         public void TestJsonSerializer_WriteNameValue_NullWriter_ThrowsArgumentNullException()
@@ -403,7 +403,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer write name value null name writes empty name
+        ///     Tests that test json serializer write name value null name writes empty name
         /// </summary>
         [Fact]
         public void TestJsonSerializer_WriteNameValue_NullName_WritesEmptyName()
@@ -424,7 +424,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer write name value null options uses default options
+        ///     Tests that test json serializer write name value null options uses default options
         /// </summary>
         [Fact]
         public void TestJsonSerializer_WriteNameValue_NullOptions_UsesDefaultOptions()
@@ -445,7 +445,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer write name value with write keys without quotes option writes name without quotes
+        ///     Tests that test json serializer write name value with write keys without quotes option writes name without quotes
         /// </summary>
         [Fact]
         public void TestJsonSerializer_WriteNameValue_WithWriteKeysWithoutQuotesOption_WritesNameWithoutQuotes()
@@ -466,7 +466,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer apply success
+        ///     Tests that test json serializer apply success
         /// </summary>
         [Fact]
         public void TestJsonSerializer_Apply_Success()
@@ -481,11 +481,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonSerializer.Apply(inputDictionary, target, options);
 
             // Assert
-            Assert.Equal(new int[] {0, 0, 0, 0, 0}, target);
+            Assert.Equal(new[] {0, 0, 0, 0, 0}, target);
         }
 
         /// <summary>
-        /// Tests that test json serializer apply null input clears array
+        ///     Tests that test json serializer apply null input clears array
         /// </summary>
         [Fact]
         public void TestJsonSerializer_Apply_NullInput_ClearsArray()
@@ -499,11 +499,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonSerializer.Apply(input, target, options);
 
             // Assert
-            Assert.Equal(new int[] {1, 2, 3, 4, 5}, target);
+            Assert.Equal(new[] {1, 2, 3, 4, 5}, target);
         }
 
         /// <summary>
-        /// Tests that test json serializer are values equal equal values returns true
+        ///     Tests that test json serializer are values equal equal values returns true
         /// </summary>
         [Fact]
         public void TestJsonSerializer_AreValuesEqual_EqualValues_ReturnsTrue()
@@ -520,7 +520,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer are values equal different values returns false
+        ///     Tests that test json serializer are values equal different values returns false
         /// </summary>
         [Fact]
         public void TestJsonSerializer_AreValuesEqual_DifferentValues_ReturnsFalse()
@@ -537,7 +537,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test json serializer are values equal null values returns true
+        ///     Tests that test json serializer are values equal null values returns true
         /// </summary>
         [Fact]
         public void TestJsonSerializer_AreValuesEqual_NullValues_ReturnsTrue()
@@ -554,7 +554,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test get object name member info success
+        ///     Tests that test get object name member info success
         /// </summary>
         [Fact]
         public void TestGetObjectName_MemberInfo_Success()
@@ -571,7 +571,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test try get object default value property descriptor success
+        ///     Tests that test try get object default value property descriptor success
         /// </summary>
         [Fact]
         public void TestTryGetObjectDefaultValue_PropertyDescriptor_Success()
@@ -584,7 +584,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test get object name property descriptor success
+        ///     Tests that test get object name property descriptor success
         /// </summary>
         [Fact]
         public void TestGetObjectName_PropertyDescriptor_Success()
@@ -598,7 +598,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test has script ignore property descriptor success
+        ///     Tests that test has script ignore property descriptor success
         /// </summary>
         [Fact]
         public void TestHasScriptIgnore_PropertyDescriptor_Success()
@@ -611,7 +611,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test has script ignore member info success
+        ///     Tests that test has script ignore member info success
         /// </summary>
         [Fact]
         public void TestHasScriptIgnore_MemberInfo_Success()
@@ -627,7 +627,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test try parse date time valid date time string returns date time
+        ///     Tests that test try parse date time valid date time string returns date time
         /// </summary>
         [Fact]
         public void TestTryParseDateTime_ValidDateTimeString_ReturnsDateTime()
@@ -641,7 +641,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test try parse date time invalid date time string returns null
+        ///     Tests that test try parse date time invalid date time string returns null
         /// </summary>
         [Fact]
         public void TestTryParseDateTime_InvalidDateTimeString_ReturnsNull()
@@ -654,7 +654,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test try parse date time null date time string returns null
+        ///     Tests that test try parse date time null date time string returns null
         /// </summary>
         [Fact]
         public void TestTryParseDateTime_NullDateTimeString_ReturnsNull()
@@ -667,7 +667,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test try parse date time valid date time string with styles returns date time
+        ///     Tests that test try parse date time valid date time string with styles returns date time
         /// </summary>
         [Fact]
         public void TestTryParseDateTime_ValidDateTimeStringWithStyles_ReturnsDateTime()
@@ -681,7 +681,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test try parse date time invalid date time string with styles returns null
+        ///     Tests that test try parse date time invalid date time string with styles returns null
         /// </summary>
         [Fact]
         public void TestTryParseDateTime_InvalidDateTimeStringWithStyles_ReturnsNull()
@@ -694,7 +694,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test append time zone utc offset with utc date time no offset appended
+        ///     Tests that test append time zone utc offset with utc date time no offset appended
         /// </summary>
         [Fact]
         public void TestAppendTimeZoneUtcOffset_WithUtcDateTime_NoOffsetAppended()
@@ -712,7 +712,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test append time zone utc offset with non utc date time offset appended
+        ///     Tests that test append time zone utc offset with non utc date time offset appended
         /// </summary>
         [Fact]
         public void TestAppendTimeZoneUtcOffset_WithNonUtcDateTime_OffsetAppended()
@@ -727,7 +727,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test abs with positive value returns same value
+        ///     Tests that test abs with positive value returns same value
         /// </summary>
         [Fact]
         public void TestAbs_WithPositiveValue_ReturnsSameValue()
@@ -743,7 +743,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test abs with negative value returns positive value
+        ///     Tests that test abs with negative value returns positive value
         /// </summary>
         [Fact]
         public void TestAbs_WithNegativeValue_ReturnsPositiveValue()
@@ -760,7 +760,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
 
         /// <summary>
-        /// Tests that test get json attribute without json attribute returns null
+        ///     Tests that test get json attribute without json attribute returns null
         /// </summary>
         [Fact]
         public void TestGetJsonAttribute_WithoutJsonAttribute_ReturnsNull()
@@ -776,7 +776,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test read serializable valid serializable returns serializable
+        ///     Tests that test read serializable valid serializable returns serializable
         /// </summary>
         [Fact]
         public void TestReadSerializable_ValidSerializable_ReturnsSerializable()
@@ -795,7 +795,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test read serializable invalid serializable returns null
+        ///     Tests that test read serializable invalid serializable returns null
         /// </summary>
         [Fact]
         public void TestReadSerializable_InvalidSerializable_ReturnsNull()
@@ -811,7 +811,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test read serializable null serializable returns null
+        ///     Tests that test read serializable null serializable returns null
         /// </summary>
         [Fact]
         public void TestReadSerializable_NullSerializable_ReturnsNull()
@@ -827,7 +827,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test try parse date time v 2 valid date time string returns date time
+        ///     Tests that test try parse date time v 2 valid date time string returns date time
         /// </summary>
         [Fact]
         public void TestTryParseDateTime_V2_ValidDateTimeString_ReturnsDateTime()
@@ -840,7 +840,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test try parse date time v 2 invalid date time string returns null
+        ///     Tests that test try parse date time v 2 invalid date time string returns null
         /// </summary>
         [Fact]
         public void TestTryParseDateTime_V2_InvalidDateTimeString_ReturnsNull()
@@ -852,7 +852,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test try parse date time v 2 null date time string returns null
+        ///     Tests that test try parse date time v 2 null date time string returns null
         /// </summary>
         [Fact]
         public void TestTryParseDateTime_V2_NullDateTimeString_ReturnsNull()
@@ -864,7 +864,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write serializable valid serializable writes serializable
+        ///     Tests that test write serializable valid serializable writes serializable
         /// </summary>
         [Fact]
         public void TestWriteSerializable_ValidSerializable_WritesSerializable()
@@ -883,7 +883,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write serializable null serializable writes nothing
+        ///     Tests that test write serializable null serializable writes nothing
         /// </summary>
         [Fact]
         public void TestWriteSerializable_NullSerializable_WritesNothing()
@@ -899,7 +899,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write serializable empty object graph writes serializable
+        ///     Tests that test write serializable empty object graph writes serializable
         /// </summary>
         [Fact]
         public void TestWriteSerializable_EmptyObjectGraph_WritesSerializable()
@@ -918,7 +918,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write serializable null options throws exception
+        ///     Tests that test write serializable null options throws exception
         /// </summary>
         [Fact]
         public void TestWriteSerializable_NullOptions_ThrowsException()
@@ -934,7 +934,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write base 64 stream valid streams returns total
+        ///     Tests that test write base 64 stream valid streams returns total
         /// </summary>
         [Fact]
         public void TestWriteBase64Stream_ValidStreams_ReturnsTotal()
@@ -953,7 +953,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write base 64 stream empty input stream returns zero
+        ///     Tests that test write base 64 stream empty input stream returns zero
         /// </summary>
         [Fact]
         public void TestWriteBase64Stream_EmptyInputStream_ReturnsZero()
@@ -972,7 +972,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write base 64 stream null input stream throws exception
+        ///     Tests that test write base 64 stream null input stream throws exception
         /// </summary>
         [Fact]
         public void TestWriteBase64Stream_NullInputStream_ThrowsException()
@@ -986,7 +986,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write base 64 stream null output stream throws exception
+        ///     Tests that test write base 64 stream null output stream throws exception
         /// </summary>
         [Fact]
         public void TestWriteBase64Stream_NullOutputStream_ThrowsException()
@@ -1000,7 +1000,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write base 64 stream v 2 valid streams returns total
+        ///     Tests that test write base 64 stream v 2 valid streams returns total
         /// </summary>
         [Fact]
         public void TestWriteBase64Stream_V2_ValidStreams_ReturnsTotal()
@@ -1020,7 +1020,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write base 64 stream v 2 empty input stream returns zero
+        ///     Tests that test write base 64 stream v 2 empty input stream returns zero
         /// </summary>
         [Fact]
         public void TestWriteBase64Stream_V2_EmptyInputStream_ReturnsZero()
@@ -1040,7 +1040,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write base 64 stream v 2 null input stream throws exception
+        ///     Tests that test write base 64 stream v 2 null input stream throws exception
         /// </summary>
         [Fact]
         public void TestWriteBase64Stream_V2_NullInputStream_ThrowsException()
@@ -1055,7 +1055,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test write base 64 stream null writer throws exception
+        ///     Tests that test write base 64 stream null writer throws exception
         /// </summary>
         [Fact]
         public void TestWriteBase64Stream_NullWriter_ThrowsException()
@@ -1070,7 +1070,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test read x 4 valid hexadecimal string returns correct ushort
+        ///     Tests that test read x 4 valid hexadecimal string returns correct ushort
         /// </summary>
         [Fact]
         public void TestReadX4_ValidHexadecimalString_ReturnsCorrectUshort()
@@ -1087,7 +1087,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test read x 4 invalid hexadecimal string throws exception
+        ///     Tests that test read x 4 invalid hexadecimal string throws exception
         /// </summary>
         [Fact]
         public void TestReadX4_InvalidHexadecimalString_ThrowsException()
@@ -1101,7 +1101,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test read x 4 empty string throws exception
+        ///     Tests that test read x 4 empty string throws exception
         /// </summary>
         [Fact]
         public void TestReadX4_EmptyString_ThrowsException()
@@ -1115,7 +1115,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test read new valid json returns correct object
+        ///     Tests that test read new valid json returns correct object
         /// </summary>
         [Fact]
         public void TestReadNew_ValidJson_ReturnsCorrectObject()
@@ -1131,7 +1131,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test read new null json returns null
+        ///     Tests that test read new null json returns null
         /// </summary>
         [Fact]
         public void TestReadNew_NullJson_ReturnsNull()
@@ -1147,7 +1147,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test read new invalid json throws exception
+        ///     Tests that test read new invalid json throws exception
         /// </summary>
         [Fact]
         public void TestReadNew_InvalidJson_ThrowsException()
@@ -1163,7 +1163,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test read new end of array returns array end true
+        ///     Tests that test read new end of array returns array end true
         /// </summary>
         [Fact]
         public void TestReadNew_EndOfArray_ReturnsArrayEndTrue()
@@ -1178,7 +1178,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test get eof exception valid char returns correct exception message
+        ///     Tests that test get eof exception valid char returns correct exception message
         /// </summary>
         [Fact]
         public void TestGetEofException_ValidChar_ReturnsCorrectExceptionMessage()
@@ -1195,7 +1195,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test get eof exception different char returns correct exception message
+        ///     Tests that test get eof exception different char returns correct exception message
         /// </summary>
         [Fact]
         public void TestGetEofException_DifferentChar_ReturnsCorrectExceptionMessage()
@@ -1212,7 +1212,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test read array valid json array returns correct array
+        ///     Tests that test read array valid json array returns correct array
         /// </summary>
         [Fact]
         public void TestReadArray_ValidJsonArray_ReturnsCorrectArray()
@@ -1233,7 +1233,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test read array empty json array returns empty array
+        ///     Tests that test read array empty json array returns empty array
         /// </summary>
         [Fact]
         public void TestReadArray_EmptyJsonArray_ReturnsEmptyArray()
@@ -1251,7 +1251,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test read array invalid json array throws exception
+        ///     Tests that test read array invalid json array throws exception
         /// </summary>
         [Fact]
         public void TestReadArray_InvalidJsonArray_ThrowsException()
@@ -1266,7 +1266,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test try get object default value valid member info returns true
+        ///     Tests that test try get object default value valid member info returns true
         /// </summary>
         [Fact]
         public void TestTryGetObjectDefaultValue_ValidMemberInfo_ReturnsTrue()
@@ -1283,7 +1283,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test try get object default value no default value returns false
+        ///     Tests that test try get object default value no default value returns false
         /// </summary>
         [Fact]
         public void TestTryGetObjectDefaultValue_NoDefaultValue_ReturnsFalse()
@@ -1300,7 +1300,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test change type valid input returns correct object
+        ///     Tests that test change type valid input returns correct object
         /// </summary>
         [Fact]
         public void TestChangeType_ValidInput_ReturnsCorrectObject()
@@ -1319,7 +1319,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test change type null input returns default for value type
+        ///     Tests that test change type null input returns default for value type
         /// </summary>
         [Fact]
         public void TestChangeType_NullInput_ReturnsDefaultForValueType()
@@ -1338,7 +1338,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test change type null input returns null for reference type
+        ///     Tests that test change type null input returns null for reference type
         /// </summary>
         [Fact]
         public void TestChangeType_NullInput_ReturnsNullForReferenceType()
@@ -1356,7 +1356,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test change type invalid conversion throws exception
+        ///     Tests that test change type invalid conversion throws exception
         /// </summary>
         [Fact]
         public void TestChangeType_InvalidConversion_ThrowsException()
@@ -1373,7 +1373,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get expected hex character exception positive position returns correct message
+        ///     Tests that get expected hex character exception positive position returns correct message
         /// </summary>
         [Fact]
         public void GetExpectedHexCharacterException_PositivePosition_ReturnsCorrectMessage()
@@ -1383,7 +1383,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get expected hex character exception negative position returns correct message
+        ///     Tests that get expected hex character exception negative position returns correct message
         /// </summary>
         [Fact]
         public void GetExpectedHexCharacterException_NegativePosition_ReturnsCorrectMessage()
@@ -1393,7 +1393,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get type exception positive position returns correct message
+        ///     Tests that get type exception positive position returns correct message
         /// </summary>
         [Fact]
         public void GetTypeException_PositivePosition_ReturnsCorrectMessage()
@@ -1405,7 +1405,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get type exception negative position returns correct message
+        ///     Tests that get type exception negative position returns correct message
         /// </summary>
         [Fact]
         public void GetTypeException_NegativePosition_ReturnsCorrectMessage()
@@ -1417,7 +1417,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get eof exception returns correct message
+        ///     Tests that get eof exception returns correct message
         /// </summary>
         [Fact]
         public void GetEofException_ReturnsCorrectMessage()
@@ -1427,7 +1427,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get position null reader returns negative one
+        ///     Tests that get position null reader returns negative one
         /// </summary>
         [Fact]
         public void GetPosition_NullReader_ReturnsNegativeOne()
@@ -1437,7 +1437,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get position string reader returns correct position
+        ///     Tests that get position string reader returns correct position
         /// </summary>
         [Fact]
         public void GetPosition_StringReader_ReturnsCorrectPosition()
@@ -1446,7 +1446,5 @@ namespace Alis.Core.Aspect.Data.Test.Json
             long position = JsonSerializer.GetPosition(reader);
             Assert.Equal(0, position); // Adjust this based on the expected position
         }
-
-
     }
 }

@@ -43,6 +43,11 @@ namespace Alis.Core.Ecs.System.Setting.General
         IBuilder<GeneralSettingBuilder>
     {
         /// <summary>
+        ///     Gets or sets the value of the debug
+        /// </summary>
+        public bool Debug { get; set; } = false;
+
+        /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The graphic setting builder</returns>
@@ -77,10 +82,5 @@ namespace Alis.Core.Ecs.System.Setting.General
         ///     Gets or sets the value of the icon
         /// </summary>
         public string Icon { get; set; } = AssetManager.Find("app.bmp");
-
-        /// <summary>
-        /// Gets or sets the value of the debug
-        /// </summary>
-        public bool Debug { get; set; } = false;
     }
 }

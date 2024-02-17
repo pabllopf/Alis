@@ -71,7 +71,7 @@ namespace Alis.Core.Ecs.Component.Render
         public int Depth { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the flip
+        ///     Gets or sets the value of the flip
         /// </summary>
         public RendererFlip Flip { get; set; }
 
@@ -100,7 +100,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             VideoGame.Instance.GraphicManager.Attach(this);
         }
-        
+
         /// <summary>
         ///     Exits this instance
         /// </summary>
@@ -110,7 +110,7 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Renders the renderer
+        ///     Renders the renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <param name="camera"></param>
@@ -119,28 +119,28 @@ namespace Alis.Core.Ecs.Component.Render
             Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
 
             RectangleI dstRect = new RectangleI(
-                x: (int) ((GameObject.Transform.Position.X - (w * GameObject.Transform.Scale.X/2)) - (camera.viewport.x - camera.viewport.w / 2) + Camera.CameraBorder), 
-                y: (int) ((GameObject.Transform.Position.Y - (h * GameObject.Transform.Scale.Y/2)) - (camera.viewport.y - camera.viewport.h / 2) + Camera.CameraBorder), 
-                w: (int) (w * GameObject.Transform.Scale.X), 
-                h: (int) (h * GameObject.Transform.Scale.Y));
-            
+                (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2 - (camera.viewport.x - camera.viewport.w / 2) + Camera.CameraBorder),
+                (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2 - (camera.viewport.y - camera.viewport.h / 2) + Camera.CameraBorder),
+                (int) (w * GameObject.Transform.Scale.X),
+                (int) (h * GameObject.Transform.Scale.Y));
+
             Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flip);
         }
-        
+
         /// <summary>
-        /// Renders the renderer
+        ///     Renders the renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         public void Render(IntPtr renderer)
         {
             Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
-            
+
             RectangleI dstRect = new RectangleI(
-                (int) (GameObject.Transform.Position.X - (w * GameObject.Transform.Scale.X/2)), 
-                (int) (GameObject.Transform.Position.Y - (h * GameObject.Transform.Scale.Y/2)),
+                (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2),
+                (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2),
                 (int) (w * GameObject.Transform.Scale.X),
                 (int) (h * GameObject.Transform.Scale.Y));
-            
+
             Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flip);
         }
     }

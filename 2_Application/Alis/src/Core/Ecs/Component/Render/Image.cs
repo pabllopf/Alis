@@ -64,7 +64,7 @@ namespace Alis.Core.Ecs.Component.Render
 
             Size = new Vector2(w, h);
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the path
         /// </summary>
@@ -79,7 +79,5 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Gets or sets the value of the size
         /// </summary>
         public Vector2 Size { get; set; }
-        
-        
     }
 }

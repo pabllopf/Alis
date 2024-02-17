@@ -54,7 +54,7 @@ namespace Alis.Core.Ecs.System
         ///     Gets or sets the value of the is running
         /// </summary>
         public bool IsRunning { get; set; } = true;
-        
+
         /// <summary>
         ///     Run program
         /// </summary>
@@ -90,20 +90,20 @@ namespace Alis.Core.Ecs.System
             {
                 double newTime = TimeManager.Clock.Elapsed.TotalSeconds;
                 TimeManager.DeltaTime = (float) (newTime - currentTime);
-                
+
                 // Update TimeManager properties
                 TimeManager.UnscaledDeltaTime = (float) (newTime - currentTime);
                 TimeManager.UnscaledTime += TimeManager.UnscaledDeltaTime;
                 TimeManager.UnscaledTimeAsDouble += TimeManager.UnscaledDeltaTime;
                 TimeManager.Time = TimeManager.UnscaledTime * TimeManager.TimeScale;
                 TimeManager.TimeAsDouble = TimeManager.UnscaledTimeAsDouble * TimeManager.TimeScale;
-                
+
                 // Update MaximumDeltaTime
                 TimeManager.MaximumDeltaTime = Math.Max(TimeManager.MaximumDeltaTime, TimeManager.DeltaTime);
-                
+
                 currentTime = newTime;
                 accumulator += TimeManager.DeltaTime;
-                
+
                 // Increment frame counter
                 TimeManager.FrameCount++;
                 TimeManager.TotalFrames++;
@@ -132,7 +132,7 @@ namespace Alis.Core.Ecs.System
                 while (accumulator >= TimeManager.Configuration.FixedTimeStep)
                 {
                     TimeManager.InFixedTimeStep = true;
-                    
+
                     TimeManager.FixedTime += TimeManager.Configuration.FixedTimeStep;
                     TimeManager.FixedTimeAsDouble += TimeManager.Configuration.FixedTimeStep;
                     TimeManager.FixedDeltaTime = TimeManager.Configuration.FixedTimeStep;
@@ -146,7 +146,7 @@ namespace Alis.Core.Ecs.System
                     Managers.ForEach(i => i.OnFixedUpdate());
                     Managers.ForEach(i => i.OnAfterFixedUpdate());
                     accumulator -= TimeManager.Configuration.FixedTimeStep;
-                    
+
                     TimeManager.InFixedTimeStep = false;
                 }
 
@@ -158,15 +158,15 @@ namespace Alis.Core.Ecs.System
 
                 // Render the Ui
                 Managers.ForEach(j => j.OnGui());
-                
+
                 // Update SmoothDeltaTime
                 smoothDeltaTimeSum += TimeManager.DeltaTime - lastDeltaTime;
                 smoothDeltaTimeCount++;
                 TimeManager.SmoothDeltaTime = smoothDeltaTimeSum / smoothDeltaTimeCount;
                 lastDeltaTime = TimeManager.DeltaTime;
-                
+
                 // Log output every 1 second
-                if (newTime - lastLogTime >= 0.5 && TimeManager.Configuration.LogOutput)
+                if ((newTime - lastLogTime >= 0.5) && TimeManager.Configuration.LogOutput)
                 {
                     Console.WriteLine(
                         " FrameCount: " + TimeManager.FrameCount +
@@ -252,7 +252,5 @@ namespace Alis.Core.Ecs.System
 
             Managers.Add(component);
         }
-        
-        
     }
 }

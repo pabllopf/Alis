@@ -30,9 +30,9 @@
 namespace Alis.Core.Test.Ecs.Component
 {
     /// <summary>
-    /// The component sample class
+    ///     The component sample class
     /// </summary>
-    /// <seealso cref="Core.Ecs.Component.Component"/>
+    /// <seealso cref="Core.Ecs.Component.Component" />
     public class ComponentSample : Core.Ecs.Component.Component
     {
     }

@@ -16,7 +16,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Assets\sprite\player\" />
-      <Folder Include="Assets\sprite\tilemap\" />
+        <Folder Include="Assets\sprite\player\"/>
+        <Folder Include="Assets\sprite\tilemap\"/>
     </ItemGroup>
 </Project>

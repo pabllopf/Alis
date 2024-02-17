@@ -97,14 +97,14 @@ namespace Alis.Core.Aspect.Time
         ///     The total number of frames since the start of the game (Read Only).
         /// </summary>
         public float FrameCount { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the total frames
+        ///     Gets or sets the value of the total frames
         /// </summary>
         public int TotalFrames { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the average frames
+        ///     Gets or sets the value of the average frames
         /// </summary>
         public int AverageFrames { get; set; }
 

@@ -32,20 +32,18 @@ using System.Runtime.Serialization;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The test serializable class
+    ///     The test serializable class
     /// </summary>
-    /// <seealso cref="ISerializable"/>
+    /// <seealso cref="ISerializable" />
     public class TestSerializable : ISerializable
     {
-        
         /// <summary>
-        /// Gets the object data using the specified info
+        ///     Gets the object data using the specified info
         /// </summary>
         /// <param name="info">The info</param>
         /// <param name="context">The context</param>
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            
         }
     }
 }

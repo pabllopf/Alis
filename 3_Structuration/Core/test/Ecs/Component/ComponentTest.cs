@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Test.Ecs.Component
 {
     /// <summary>
-    /// The component test class
+    ///     The component test class
     /// </summary>
     public class ComponentTest
     {
         /// <summary>
-        /// Tests that is enable default value is false
+        ///     Tests that is enable default value is false
         /// </summary>
         [Fact]
         public void IsEnable_DefaultValue_IsFalse()
@@ -56,7 +56,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that name default value is null
+        ///     Tests that name default value is null
         /// </summary>
         [Fact]
         public void Name_DefaultValue_IsNull()
@@ -72,7 +72,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that id default value is null
+        ///     Tests that id default value is null
         /// </summary>
         [Fact]
         public void Id_DefaultValue_IsNull()
@@ -88,7 +88,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that tag default value is null
+        ///     Tests that tag default value is null
         /// </summary>
         [Fact]
         public void Tag_DefaultValue_IsNull()
@@ -104,7 +104,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that game object default value is null
+        ///     Tests that game object default value is null
         /// </summary>
         [Fact]
         public void GameObject_DefaultValue_IsNull()
@@ -120,7 +120,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that attach sets game object
+        ///     Tests that attach sets game object
         /// </summary>
         [Fact]
         public void Attach_SetsGameObject()
@@ -137,7 +137,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that is enable v 2 default value is false
+        ///     Tests that is enable v 2 default value is false
         /// </summary>
         [Fact]
         public void IsEnable_v2_DefaultValue_IsFalse()
@@ -153,7 +153,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that name v 2 default value is null
+        ///     Tests that name v 2 default value is null
         /// </summary>
         [Fact]
         public void Name_v2_DefaultValue_IsNull()
@@ -169,7 +169,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that id v 2 default value is null
+        ///     Tests that id v 2 default value is null
         /// </summary>
         [Fact]
         public void Id_v2_DefaultValue_IsNull()
@@ -185,7 +185,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that tag v 2 default value is null
+        ///     Tests that tag v 2 default value is null
         /// </summary>
         [Fact]
         public void Tag_v2_DefaultValue_IsNull()
@@ -201,7 +201,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that game object v 2 default value is null
+        ///     Tests that game object v 2 default value is null
         /// </summary>
         [Fact]
         public void GameObject_v2_DefaultValue_IsNull()
@@ -217,7 +217,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that attach v 2 sets game object
+        ///     Tests that attach v 2 sets game object
         /// </summary>
         [Fact]
         public void Attach_v2_SetsGameObject()
@@ -234,7 +234,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on enable invoked logger trace called
+        ///     Tests that on enable invoked logger trace called
         /// </summary>
         [Fact]
         public void OnEnable_Invoked_LoggerTraceCalled()
@@ -251,7 +251,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on init invoked logger trace called
+        ///     Tests that on init invoked logger trace called
         /// </summary>
         [Fact]
         public void OnInit_Invoked_LoggerTraceCalled()
@@ -268,7 +268,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on awake invoked logger trace called
+        ///     Tests that on awake invoked logger trace called
         /// </summary>
         [Fact]
         public void OnAwake_Invoked_LoggerTraceCalled()
@@ -285,7 +285,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on start invoked logger trace called
+        ///     Tests that on start invoked logger trace called
         /// </summary>
         [Fact]
         public void OnStart_Invoked_LoggerTraceCalled()
@@ -302,7 +302,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on before update invoked logger trace called
+        ///     Tests that on before update invoked logger trace called
         /// </summary>
         [Fact]
         public void OnBeforeUpdate_V2_Invoked_LoggerTraceCalled()
@@ -319,7 +319,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on update invoked logger trace called
+        ///     Tests that on update invoked logger trace called
         /// </summary>
         [Fact]
         public void OnUpdate_v2_Invoked_LoggerTraceCalled()
@@ -336,7 +336,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on after update invoked logger trace called
+        ///     Tests that on after update invoked logger trace called
         /// </summary>
         [Fact]
         public void OnAfterUpdate_Invoked_LoggerTraceCalled()
@@ -353,7 +353,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on before fixed update invoked logger trace called
+        ///     Tests that on before fixed update invoked logger trace called
         /// </summary>
         [Fact]
         public void OnBeforeFixedUpdate_Invoked_LoggerTraceCalled()
@@ -370,7 +370,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on fixed update invoked logger trace called
+        ///     Tests that on fixed update invoked logger trace called
         /// </summary>
         [Fact]
         public void OnFixedUpdate_Invoked_LoggerTraceCalled()
@@ -387,7 +387,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on after fixed update invoked logger trace called
+        ///     Tests that on after fixed update invoked logger trace called
         /// </summary>
         [Fact]
         public void OnAfterFixedUpdate_Invoked_LoggerTraceCalled()
@@ -404,7 +404,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on dispatch events invoked logger trace called
+        ///     Tests that on dispatch events invoked logger trace called
         /// </summary>
         [Fact]
         public void OnDispatchEvents_Invoked_LoggerTraceCalled()
@@ -421,7 +421,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on calculate invoked logger trace called
+        ///     Tests that on calculate invoked logger trace called
         /// </summary>
         [Fact]
         public void OnCalculate_Invoked_LoggerTraceCalled()
@@ -438,7 +438,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on draw invoked logger trace called
+        ///     Tests that on draw invoked logger trace called
         /// </summary>
         [Fact]
         public void OnDraw_Invoked_LoggerTraceCalled()
@@ -455,7 +455,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on gui invoked logger trace called
+        ///     Tests that on gui invoked logger trace called
         /// </summary>
         [Fact]
         public void OnGui_Invoked_LoggerTraceCalled()
@@ -472,7 +472,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on disable invoked logger trace called
+        ///     Tests that on disable invoked logger trace called
         /// </summary>
         [Fact]
         public void OnDisable_Invoked_LoggerTraceCalled()
@@ -489,7 +489,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on reset invoked logger trace called
+        ///     Tests that on reset invoked logger trace called
         /// </summary>
         [Fact]
         public void OnReset_Invoked_LoggerTraceCalled()
@@ -506,7 +506,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on stop invoked logger trace called
+        ///     Tests that on stop invoked logger trace called
         /// </summary>
         [Fact]
         public void OnStop_Invoked_LoggerTraceCalled()
@@ -523,7 +523,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on exit invoked logger trace called
+        ///     Tests that on exit invoked logger trace called
         /// </summary>
         [Fact]
         public void OnExit_Invoked_LoggerTraceCalled()
@@ -540,7 +540,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on destroy invoked logger trace called
+        ///     Tests that on destroy invoked logger trace called
         /// </summary>
         [Fact]
         public void OnDestroy_Invoked_LoggerTraceCalled()
@@ -557,7 +557,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that attach invoked sets game object
+        ///     Tests that attach invoked sets game object
         /// </summary>
         [Fact]
         public void Attach_Invoked_SetsGameObject()
@@ -574,7 +574,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on enable v 2 invoked logger trace called
+        ///     Tests that on enable v 2 invoked logger trace called
         /// </summary>
         [Fact]
         public void OnEnable_v2_Invoked_LoggerTraceCalled()
@@ -591,7 +591,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on init v 2 invoked logger trace called
+        ///     Tests that on init v 2 invoked logger trace called
         /// </summary>
         [Fact]
         public void OnInit_v2_Invoked_LoggerTraceCalled()
@@ -608,7 +608,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on awake v 2 invoked logger trace called
+        ///     Tests that on awake v 2 invoked logger trace called
         /// </summary>
         [Fact]
         public void OnAwake_v2_Invoked_LoggerTraceCalled()
@@ -625,7 +625,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on start v 2 invoked logger trace called
+        ///     Tests that on start v 2 invoked logger trace called
         /// </summary>
         [Fact]
         public void OnStart_v3_Invoked_LoggerTraceCalled()
@@ -642,7 +642,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on before update invoked logger trace called
+        ///     Tests that on before update invoked logger trace called
         /// </summary>
         [Fact]
         public void OnBeforeUpdate_v2_Invoked_LoggerTraceCalled()
@@ -659,7 +659,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on update invoked v 2 logger trace called
+        ///     Tests that on update invoked v 2 logger trace called
         /// </summary>
         [Fact]
         public void OnUpdate_Invoked_v2_LoggerTraceCalled()
@@ -676,7 +676,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on release button invoked logger trace called
+        ///     Tests that on release button invoked logger trace called
         /// </summary>
         [Fact]
         public void OnReleaseButton_v2_Invoked_LoggerTraceCalled()
@@ -695,7 +695,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on collision stay invoked logger trace called
+        ///     Tests that on collision stay invoked logger trace called
         /// </summary>
         [Fact]
         public void OnCollisionStay_Invoked_LoggerTraceCalled()
@@ -713,7 +713,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on trigger enter invoked logger trace called
+        ///     Tests that on trigger enter invoked logger trace called
         /// </summary>
         [Fact]
         public void OnTriggerEnter_Invoked_LoggerTraceCalled()
@@ -731,7 +731,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on trigger exit invoked logger trace called
+        ///     Tests that on trigger exit invoked logger trace called
         /// </summary>
         [Fact]
         public void OnTriggerExit_Invoked_LoggerTraceCalled()
@@ -749,7 +749,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on trigger stay invoked logger trace called
+        ///     Tests that on trigger stay invoked logger trace called
         /// </summary>
         [Fact]
         public void OnTriggerStay_Invoked_LoggerTraceCalled()
@@ -767,7 +767,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on press button invoked logger trace called
+        ///     Tests that on press button invoked logger trace called
         /// </summary>
         [Fact]
         public void OnPressButton_Invoked_LoggerTraceCalled()
@@ -785,7 +785,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on press down button invoked logger trace called
+        ///     Tests that on press down button invoked logger trace called
         /// </summary>
         [Fact]
         public void OnPressDownButton_Invoked_LoggerTraceCalled()
@@ -803,7 +803,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on release button invoked logger trace called
+        ///     Tests that on release button invoked logger trace called
         /// </summary>
         [Fact]
         public void OnReleaseButton_Invoked_LoggerTraceCalled()
@@ -821,7 +821,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on press button with device invoked logger trace called
+        ///     Tests that on press button with device invoked logger trace called
         /// </summary>
         [Fact]
         public void OnPressButtonWithDevice_Invoked_LoggerTraceCalled()
@@ -840,7 +840,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on press down button with device invoked logger trace called
+        ///     Tests that on press down button with device invoked logger trace called
         /// </summary>
         [Fact]
         public void OnPressDownButtonWithDevice_Invoked_LoggerTraceCalled()
@@ -859,7 +859,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on press down key invoked logger trace called
+        ///     Tests that on press down key invoked logger trace called
         /// </summary>
         [Fact]
         public void OnPressDownKey_Invoked_LoggerTraceCalled()
@@ -877,7 +877,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on release key invoked logger trace called
+        ///     Tests that on release key invoked logger trace called
         /// </summary>
         [Fact]
         public void OnReleaseKey_Invoked_LoggerTraceCalled()
@@ -895,7 +895,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on press key invoked logger trace called
+        ///     Tests that on press key invoked logger trace called
         /// </summary>
         [Fact]
         public void OnPressKey_Invoked_LoggerTraceCalled()
@@ -913,7 +913,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on collision enter invoked logger trace called
+        ///     Tests that on collision enter invoked logger trace called
         /// </summary>
         [Fact]
         public void OnCollisionEnter_Invoked_LoggerTraceCalled()
@@ -931,7 +931,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on collision exit invoked logger trace called
+        ///     Tests that on collision exit invoked logger trace called
         /// </summary>
         [Fact]
         public void OnCollisionExit_Invoked_LoggerTraceCalled()
@@ -949,7 +949,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on enable invoked v 2 logger trace called
+        ///     Tests that on enable invoked v 2 logger trace called
         /// </summary>
         [Fact]
         public void OnEnable_Invoked_v2_LoggerTraceCalled()
@@ -966,7 +966,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on init invoked v 2 logger trace called
+        ///     Tests that on init invoked v 2 logger trace called
         /// </summary>
         [Fact]
         public void OnInit_Invoked_v2_LoggerTraceCalled()
@@ -983,7 +983,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on awake invoked v 2 logger trace called
+        ///     Tests that on awake invoked v 2 logger trace called
         /// </summary>
         [Fact]
         public void OnAwake_Invoked_v2_LoggerTraceCalled()
@@ -1000,7 +1000,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on start v 2 invoked logger trace called
+        ///     Tests that on start v 2 invoked logger trace called
         /// </summary>
         [Fact]
         public void OnStart_v2_Invoked_LoggerTraceCalled()
@@ -1017,7 +1017,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on before update invoked logger trace called
+        ///     Tests that on before update invoked logger trace called
         /// </summary>
         [Fact]
         public void OnBeforeUpdate_Invoked_LoggerTraceCalled()
@@ -1034,7 +1034,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that on update invoked logger trace called
+        ///     Tests that on update invoked logger trace called
         /// </summary>
         [Fact]
         public void OnUpdate_Invoked_LoggerTraceCalled()
@@ -1051,7 +1051,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that set is enable changes value
+        ///     Tests that set is enable changes value
         /// </summary>
         [Fact]
         public void SetIsEnable_ChangesValue()
@@ -1068,7 +1068,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that set name changes value
+        ///     Tests that set name changes value
         /// </summary>
         [Fact]
         public void SetName_ChangesValue()
@@ -1085,7 +1085,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that set id changes value
+        ///     Tests that set id changes value
         /// </summary>
         [Fact]
         public void SetId_ChangesValue()
@@ -1102,7 +1102,7 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        /// Tests that set tag changes value
+        ///     Tests that set tag changes value
         /// </summary>
         [Fact]
         public void SetTag_ChangesValue()

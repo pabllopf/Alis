@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The key value type enumerator test class
+    ///     The key value type enumerator test class
     /// </summary>
     public class KeyValueTypeEnumeratorTest
     {
         /// <summary>
-        /// Tests that test key value type enumerator move next
+        ///     Tests that test key value type enumerator move next
         /// </summary>
         [Fact]
         public void TestKeyValueTypeEnumerator_MoveNext()
@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test key value type enumerator reset
+        ///     Tests that test key value type enumerator reset
         /// </summary>
         [Fact]
         public void TestKeyValueTypeEnumerator_Reset()
@@ -77,7 +77,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test key value type enumerator entry
+        ///     Tests that test key value type enumerator entry
         /// </summary>
         [Fact]
         public void TestKeyValueTypeEnumerator_Entry()
@@ -95,7 +95,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test key value type enumerator key
+        ///     Tests that test key value type enumerator key
         /// </summary>
         [Fact]
         public void TestKeyValueTypeEnumerator_Key()
@@ -113,7 +113,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test key value type enumerator value
+        ///     Tests that test key value type enumerator value
         /// </summary>
         [Fact]
         public void TestKeyValueTypeEnumerator_Value()
@@ -132,7 +132,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test key value type enumerator current
+        ///     Tests that test key value type enumerator current
         /// </summary>
         [Fact]
         public void TestKeyValueTypeEnumerator_Current()
@@ -153,7 +153,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that entry key prop is null and enumerator current is null throws invalid operation exception
+        ///     Tests that entry key prop is null and enumerator current is null throws invalid operation exception
         /// </summary>
         [Fact]
         public void Entry_KeyPropIsNullAndEnumeratorCurrentIsNull_ThrowsInvalidOperationException()
@@ -163,7 +163,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that entry key prop is null and enumerator current is not null sets key prop and value prop
+        ///     Tests that entry key prop is null and enumerator current is not null sets key prop and value prop
         /// </summary>
         [Fact]
         public void Entry_KeyPropIsNullAndEnumeratorCurrentIsNotNull_SetsKeyPropAndValueProp()
@@ -176,7 +176,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that entry value prop is null throws invalid operation exception
+        ///     Tests that entry value prop is null throws invalid operation exception
         /// </summary>
         [Fact]
         public void Entry_ValuePropIsNull_ThrowsInvalidOperationException()
@@ -187,7 +187,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that entry key prop is not null and value prop is not null returns dictionary entry
+        ///     Tests that entry key prop is not null and value prop is not null returns dictionary entry
         /// </summary>
         [Fact]
         public void Entry_KeyPropIsNotNullAndValuePropIsNotNull_ReturnsDictionaryEntry()
@@ -200,7 +200,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that indexer get throws not supported exception
+        ///     Tests that indexer get throws not supported exception
         /// </summary>
         [Fact]
         public void Indexer_Get_ThrowsNotSupportedException()
@@ -213,7 +213,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that indexer set throws not supported exception
+        ///     Tests that indexer set throws not supported exception
         /// </summary>
         [Fact]
         public void Indexer_Set_ThrowsNotSupportedException()

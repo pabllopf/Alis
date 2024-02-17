@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The conversions test class
+    ///     The conversions test class
     /// </summary>
     public class ConversionsTest
     {
         /// <summary>
-        /// Tests that test conversions change type
+        ///     Tests that test conversions change type
         /// </summary>
         [Fact]
         public void TestConversions_ChangeType()
@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions try change type success
+        ///     Tests that test conversions try change type success
         /// </summary>
         [Fact]
         public void TestConversions_TryChangeType_Success()
@@ -76,7 +76,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions try change type failure
+        ///     Tests that test conversions try change type failure
         /// </summary>
         [Fact]
         public void TestConversions_TryChangeType_Failure()
@@ -92,7 +92,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions is nullable
+        ///     Tests that test conversions is nullable
         /// </summary>
         [Fact]
         public void TestConversions_IsNullable()
@@ -108,7 +108,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions is really value type
+        ///     Tests that test conversions is really value type
         /// </summary>
         [Fact]
         public void TestConversions_IsReallyValueType()
@@ -124,7 +124,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions is generic list
+        ///     Tests that test conversions is generic list
         /// </summary>
         [Fact]
         public void TestConversions_IsGenericList()
@@ -141,7 +141,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions enum to u int 64
+        ///     Tests that test conversions enum to u int 64
         /// </summary>
         [Fact]
         public void TestConversions_EnumToUInt64()
@@ -157,7 +157,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions string to enum
+        ///     Tests that test conversions string to enum
         /// </summary>
         [Fact]
         public void TestConversions_StringToEnum()
@@ -177,7 +177,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions enum to object
+        ///     Tests that test conversions enum to object
         /// </summary>
         [Fact]
         public void TestConversions_EnumToObject()
@@ -194,7 +194,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions to enum
+        ///     Tests that test conversions to enum
         /// </summary>
         [Fact]
         public void TestConversions_ToEnum()
@@ -211,7 +211,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions enum try parse success
+        ///     Tests that test conversions enum try parse success
         /// </summary>
         [Fact]
         public void TestConversions_EnumTryParse_Success()
@@ -229,7 +229,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions enum try parse failure
+        ///     Tests that test conversions enum try parse failure
         /// </summary>
         [Fact]
         public void TestConversions_EnumTryParse_Failure()
@@ -246,7 +246,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions is valid
+        ///     Tests that test conversions is valid
         /// </summary>
         [Fact]
         public void TestConversions_IsValid()
@@ -262,7 +262,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions change type int
+        ///     Tests that test conversions change type int
         /// </summary>
         [Fact]
         public void TestConversions_ChangeType_Int()
@@ -273,14 +273,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             CultureInfo provider = CultureInfo.InvariantCulture;
 
             // Act
-            int result = Conversions.ChangeType<int>(input, defaultValue, provider);
+            int result = Conversions.ChangeType(input, defaultValue, provider);
 
             // Assert
             Assert.Equal(123, result);
         }
 
         /// <summary>
-        /// Tests that test conversions change type string
+        ///     Tests that test conversions change type string
         /// </summary>
         [Fact]
         public void TestConversions_ChangeType_String()
@@ -291,14 +291,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             CultureInfo provider = CultureInfo.InvariantCulture;
 
             // Act
-            string result = Conversions.ChangeType<string>(input, defaultValue, provider);
+            string result = Conversions.ChangeType(input, defaultValue, provider);
 
             // Assert
             Assert.Equal("123", result);
         }
 
         /// <summary>
-        /// Tests that test conversions try change type int success
+        ///     Tests that test conversions try change type int success
         /// </summary>
         [Fact]
         public void TestConversions_TryChangeType_Int_Success()
@@ -316,7 +316,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions try change type string success
+        ///     Tests that test conversions try change type string success
         /// </summary>
         [Fact]
         public void TestConversions_TryChangeType_String_Success()
@@ -334,7 +334,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions v 2 try change type failure
+        ///     Tests that test conversions v 2 try change type failure
         /// </summary>
         [Fact]
         public void TestConversions_v2_TryChangeType_Failure()
@@ -351,7 +351,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions enum try parse success
+        ///     Tests that test conversions enum try parse success
         /// </summary>
         [Fact]
         public void TestConversions_v2_EnumTryParse_Success()
@@ -369,7 +369,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions v 2 enum try parse failure
+        ///     Tests that test conversions v 2 enum try parse failure
         /// </summary>
         [Fact]
         public void TestConversions_v2_EnumTryParse_Failure()
@@ -386,7 +386,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions is generic list true
+        ///     Tests that test conversions is generic list true
         /// </summary>
         [Fact]
         public void TestConversions_IsGenericList_True()
@@ -403,7 +403,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions is generic list false
+        ///     Tests that test conversions is generic list false
         /// </summary>
         [Fact]
         public void TestConversions_IsGenericList_False()
@@ -419,7 +419,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions is really value type true
+        ///     Tests that test conversions is really value type true
         /// </summary>
         [Fact]
         public void TestConversions_IsReallyValueType_True()
@@ -435,7 +435,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions is really value type false
+        ///     Tests that test conversions is really value type false
         /// </summary>
         [Fact]
         public void TestConversions_IsReallyValueType_False()
@@ -451,7 +451,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions v 2 is generic list true
+        ///     Tests that test conversions v 2 is generic list true
         /// </summary>
         [Fact]
         public void TestConversions_v2_IsGenericList_True()
@@ -468,7 +468,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions v 2 is generic list false
+        ///     Tests that test conversions v 2 is generic list false
         /// </summary>
         [Fact]
         public void TestConversions_v2_IsGenericList_False()
@@ -485,7 +485,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions is generic list null type
+        ///     Tests that test conversions is generic list null type
         /// </summary>
         [Fact]
         public void TestConversions_IsGenericList_NullType()
@@ -501,7 +501,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions to enum success
+        ///     Tests that test conversions to enum success
         /// </summary>
         [Fact]
         public void TestConversions_ToEnum_Success()
@@ -518,7 +518,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions to enum failure
+        ///     Tests that test conversions to enum failure
         /// </summary>
         [Fact]
         public void TestConversions_ToEnum_Failure()
@@ -535,7 +535,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions to enum null type
+        ///     Tests that test conversions to enum null type
         /// </summary>
         [Fact]
         public void TestConversions_ToEnum_NullType()
@@ -552,7 +552,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions v 2 is really value type true
+        ///     Tests that test conversions v 2 is really value type true
         /// </summary>
         [Fact]
         public void TestConversions_v2_IsReallyValueType_True()
@@ -568,7 +568,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions v 2 is really value type false
+        ///     Tests that test conversions v 2 is really value type false
         /// </summary>
         [Fact]
         public void TestConversions_v2_IsReallyValueType_False()
@@ -584,7 +584,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions is really value type null type
+        ///     Tests that test conversions is really value type null type
         /// </summary>
         [Fact]
         public void TestConversions_IsReallyValueType_NullType()
@@ -600,7 +600,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions is nullable true
+        ///     Tests that test conversions is nullable true
         /// </summary>
         [Fact]
         public void TestConversions_IsNullable_True()
@@ -616,7 +616,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions is nullable false
+        ///     Tests that test conversions is nullable false
         /// </summary>
         [Fact]
         public void TestConversions_IsNullable_False()
@@ -632,7 +632,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions is nullable null type
+        ///     Tests that test conversions is nullable null type
         /// </summary>
         [Fact]
         public void TestConversions_IsNullable_NullType()
@@ -648,7 +648,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions enum to u int 64 null value
+        ///     Tests that test conversions enum to u int 64 null value
         /// </summary>
         [Fact]
         public void TestConversions_EnumToUInt64_NullValue()
@@ -664,7 +664,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions enum to u int 64 s byte
+        ///     Tests that test conversions enum to u int 64 s byte
         /// </summary>
         [Fact]
         public void TestConversions_EnumToUInt64_SByte()
@@ -680,7 +680,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions enum to u int 64 int 16
+        ///     Tests that test conversions enum to u int 64 int 16
         /// </summary>
         [Fact]
         public void TestConversions_EnumToUInt64_Int16()
@@ -696,7 +696,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions enum to u int 64 int 32
+        ///     Tests that test conversions enum to u int 64 int 32
         /// </summary>
         [Fact]
         public void TestConversions_EnumToUInt64_Int32()
@@ -712,7 +712,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions enum to u int 64 int 64
+        ///     Tests that test conversions enum to u int 64 int 64
         /// </summary>
         [Fact]
         public void TestConversions_EnumToUInt64_Int64()
@@ -728,7 +728,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions enum to u int 64 byte
+        ///     Tests that test conversions enum to u int 64 byte
         /// </summary>
         [Fact]
         public void TestConversions_EnumToUInt64_Byte()
@@ -744,7 +744,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions enum to u int 64 u int 16
+        ///     Tests that test conversions enum to u int 64 u int 16
         /// </summary>
         [Fact]
         public void TestConversions_EnumToUInt64_UInt16()
@@ -760,7 +760,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions enum to u int 64 u int 32
+        ///     Tests that test conversions enum to u int 64 u int 32
         /// </summary>
         [Fact]
         public void TestConversions_EnumToUInt64_UInt32()
@@ -776,7 +776,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions enum to u int 64 u int 64
+        ///     Tests that test conversions enum to u int 64 u int 64
         /// </summary>
         [Fact]
         public void TestConversions_EnumToUInt64_UInt64()
@@ -792,7 +792,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions enum to u int 64 string
+        ///     Tests that test conversions enum to u int 64 string
         /// </summary>
         [Fact]
         public void TestConversions_EnumToUInt64_String()
@@ -808,7 +808,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions change type int to double success
+        ///     Tests that test conversions change type int to double success
         /// </summary>
         [Fact]
         public void TestConversions_ChangeType_IntToDouble_Success()
@@ -826,7 +826,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions change type string to int success
+        ///     Tests that test conversions change type string to int success
         /// </summary>
         [Fact]
         public void TestConversions_ChangeType_StringToInt_Success()
@@ -844,7 +844,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions change type string to int failure
+        ///     Tests that test conversions change type string to int failure
         /// </summary>
         [Fact]
         public void TestConversions_ChangeType_StringToInt_Failure()
@@ -862,7 +862,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions change type null to nullable int success
+        ///     Tests that test conversions change type null to nullable int success
         /// </summary>
         [Fact]
         public void TestConversions_ChangeType_NullToNullableInt_Success()
@@ -879,7 +879,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions change type null to non nullable int failure
+        ///     Tests that test conversions change type null to non nullable int failure
         /// </summary>
         [Fact]
         public void TestConversions_ChangeType_NullToNonNullableInt_Failure()
@@ -897,7 +897,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions change type v 2 int to double success
+        ///     Tests that test conversions change type v 2 int to double success
         /// </summary>
         [Fact]
         public void TestConversions_ChangeType_v2_IntToDouble_Success()
@@ -917,7 +917,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions change type v 2 string to int success
+        ///     Tests that test conversions change type v 2 string to int success
         /// </summary>
         [Fact]
         public void TestConversions_ChangeType_v2_StringToInt_Success()
@@ -937,7 +937,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions change type v 2 string to int failure
+        ///     Tests that test conversions change type v 2 string to int failure
         /// </summary>
         [Fact]
         public void TestConversions_ChangeType_v2_StringToInt_Failure()
@@ -957,7 +957,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions change type v 2 null to nullable int success
+        ///     Tests that test conversions change type v 2 null to nullable int success
         /// </summary>
         [Fact]
         public void TestConversions_ChangeType_v2_NullToNullableInt_Success()
@@ -976,7 +976,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test conversions change type v 2 null to non nullable int failure
+        ///     Tests that test conversions change type v 2 null to non nullable int failure
         /// </summary>
         [Fact]
         public void TestConversions_ChangeType_v2_NullToNonNullableInt_Failure()

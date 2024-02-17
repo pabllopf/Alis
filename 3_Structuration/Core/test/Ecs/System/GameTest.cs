@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GameTests.cs
+//  File:GameTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -128,7 +128,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that set is running changes value
+        ///     Tests that set is running changes value
         /// </summary>
         [Fact]
         public void SetIsRunning_ChangesValue()
@@ -145,7 +145,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that add manager adds manager to list
+        ///     Tests that add manager adds manager to list
         /// </summary>
         [Fact]
         public void AddManager_AddsManagerToList()
@@ -162,7 +162,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that remove manager removes manager from list
+        ///     Tests that remove manager removes manager from list
         /// </summary>
         [Fact]
         public void RemoveManager_RemovesManagerFromList()
@@ -180,7 +180,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that get manager returns manager from list
+        ///     Tests that get manager returns manager from list
         /// </summary>
         [Fact]
         public void GetManager_ReturnsManagerFromList()
@@ -198,7 +198,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that contains manager returns true if manager in list
+        ///     Tests that contains manager returns true if manager in list
         /// </summary>
         [Fact]
         public void ContainsManager_ReturnsTrueIfManagerInList()
@@ -216,7 +216,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that clear manager removes all instances of manager from list
+        ///     Tests that clear manager removes all instances of manager from list
         /// </summary>
         [Fact]
         public void ClearManager_RemovesAllInstancesOfManagerFromList()
@@ -234,7 +234,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that set adds component to managers
+        ///     Tests that set adds component to managers
         /// </summary>
         [Fact]
         public void Set_AddsComponentToManagers()
@@ -251,7 +251,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that set replaces existing component
+        ///     Tests that set replaces existing component
         /// </summary>
         [Fact]
         public void Set_ReplacesExistingComponent()
@@ -271,7 +271,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that set adds new manager when no existing manager of same type
+        ///     Tests that set adds new manager when no existing manager of same type
         /// </summary>
         [Fact]
         public void Set_AddsNewManager_WhenNoExistingManagerOfSameType()
@@ -288,7 +288,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that set replaces existing manager when manager of same type exists
+        ///     Tests that set replaces existing manager when manager of same type exists
         /// </summary>
         [Fact]
         public void Set_ReplacesExistingManager_WhenManagerOfSameTypeExists()
@@ -308,7 +308,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that set keeps other managers unchanged
+        ///     Tests that set keeps other managers unchanged
         /// </summary>
         [Fact]
         public void Set_KeepsOtherManagersUnchanged()
@@ -330,7 +330,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that get is running returns correct value
+        ///     Tests that get is running returns correct value
         /// </summary>
         [Fact]
         public void GetIsRunning_ReturnsCorrectValue()
@@ -348,7 +348,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that get managers returns correct value
+        ///     Tests that get managers returns correct value
         /// </summary>
         [Fact]
         public void GetManagers_ReturnsCorrectValue()
@@ -366,7 +366,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that get manager returns correct manager
+        ///     Tests that get manager returns correct manager
         /// </summary>
         [Fact]
         public void GetManager_ReturnsCorrectManager()
@@ -384,7 +384,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that contains manager returns correct value
+        ///     Tests that contains manager returns correct value
         /// </summary>
         [Fact]
         public void ContainsManager_ReturnsCorrectValue()
@@ -402,7 +402,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that on init calls on init on each component
+        ///     Tests that on init calls on init on each component
         /// </summary>
         [Fact]
         public void OnInit_CallsOnInitOnEachComponent()
@@ -423,7 +423,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that on awake calls on awake on each component
+        ///     Tests that on awake calls on awake on each component
         /// </summary>
         [Fact]
         public void OnAwake_CallsOnAwakeOnEachComponent()
@@ -444,7 +444,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that on start calls on start on each component
+        ///     Tests that on start calls on start on each component
         /// </summary>
         [Fact]
         public void OnStart_CallsOnStartOnEachComponent()
@@ -465,7 +465,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that on before update calls on before update on each component
+        ///     Tests that on before update calls on before update on each component
         /// </summary>
         [Fact]
         public void OnBeforeUpdate_CallsOnBeforeUpdateOnEachComponent()
@@ -486,7 +486,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that is running get set property works
+        ///     Tests that is running get set property works
         /// </summary>
         [Fact]
         public void IsRunning_GetSetPropertyWorks()
@@ -502,7 +502,7 @@ namespace Alis.Core.Test.Ecs.System
         }
 
         /// <summary>
-        /// Tests that time manager get property works
+        ///     Tests that time manager get property works
         /// </summary>
         [Fact]
         public void TimeManager_GetPropertyWorks()

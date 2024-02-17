@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Test.Ecs.Entity.Scene
 {
     /// <summary>
-    /// The scene test class
+    ///     The scene test class
     /// </summary>
     public class SceneTest
     {
         /// <summary>
-        /// Tests that on fixed update calls on fixed update on each component
+        ///     Tests that on fixed update calls on fixed update on each component
         /// </summary>
         [Fact]
         public void OnFixedUpdate_CallsOnFixedUpdateOnEachComponent()
@@ -66,7 +66,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on dispatch events calls on dispatch events on each component
+        ///     Tests that on dispatch events calls on dispatch events on each component
         /// </summary>
         [Fact]
         public void OnDispatchEvents_CallsOnDispatchEventsOnEachComponent()
@@ -92,7 +92,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on calculate calls on calculate on each component
+        ///     Tests that on calculate calls on calculate on each component
         /// </summary>
         [Fact]
         public void OnCalculate_CallsOnCalculateOnEachComponent()
@@ -118,7 +118,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on draw calls on draw on each component
+        ///     Tests that on draw calls on draw on each component
         /// </summary>
         [Fact]
         public void OnDraw_CallsOnDrawOnEachComponent()
@@ -144,7 +144,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on gui calls on gui on each component
+        ///     Tests that on gui calls on gui on each component
         /// </summary>
         [Fact]
         public void OnGui_CallsOnGuiOnEachComponent()
@@ -170,7 +170,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on reset calls on reset on each component
+        ///     Tests that on reset calls on reset on each component
         /// </summary>
         [Fact]
         public void OnReset_CallsOnResetOnEachComponent()
@@ -196,7 +196,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on stop calls on stop on each component
+        ///     Tests that on stop calls on stop on each component
         /// </summary>
         [Fact]
         public void OnStop_CallsOnStopOnEachComponent()
@@ -222,7 +222,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on exit calls on exit on each component
+        ///     Tests that on exit calls on exit on each component
         /// </summary>
         [Fact]
         public void OnExit_CallsOnExitOnEachComponent()
@@ -248,7 +248,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on destroy calls on destroy on each component
+        ///     Tests that on destroy calls on destroy on each component
         /// </summary>
         [Fact]
         public void OnDestroy_CallsOnDestroyOnEachComponent()
@@ -274,7 +274,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on enable calls on enable on each component
+        ///     Tests that on enable calls on enable on each component
         /// </summary>
         [Fact]
         public void OnEnable_CallsOnEnableOnEachComponent()
@@ -300,7 +300,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on init calls on init on each component
+        ///     Tests that on init calls on init on each component
         /// </summary>
         [Fact]
         public void OnInit_CallsOnInitOnEachComponent()
@@ -326,7 +326,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on awake calls on awake on each component
+        ///     Tests that on awake calls on awake on each component
         /// </summary>
         [Fact]
         public void OnAwake_CallsOnAwakeOnEachComponent()
@@ -352,7 +352,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on start calls on start on each component
+        ///     Tests that on start calls on start on each component
         /// </summary>
         [Fact]
         public void OnStart_CallsOnStartOnEachComponent()
@@ -378,7 +378,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on before update calls on before update on each component
+        ///     Tests that on before update calls on before update on each component
         /// </summary>
         [Fact]
         public void OnBeforeUpdate_CallsOnBeforeUpdateOnEachComponent()
@@ -404,7 +404,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on update calls on update on each component
+        ///     Tests that on update calls on update on each component
         /// </summary>
         [Fact]
         public void OnUpdate_CallsOnUpdateOnEachComponent()
@@ -430,7 +430,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on after update calls on after update on each component
+        ///     Tests that on after update calls on after update on each component
         /// </summary>
         [Fact]
         public void OnAfterUpdate_CallsOnAfterUpdateOnEachComponent()
@@ -456,7 +456,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on before fixed update calls on before fixed update on each component
+        ///     Tests that on before fixed update calls on before fixed update on each component
         /// </summary>
         [Fact]
         public void OnBeforeFixedUpdate_CallsOnBeforeFixedUpdateOnEachComponent()
@@ -482,7 +482,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on after fixed update calls on after fixed update on each component
+        ///     Tests that on after fixed update calls on after fixed update on each component
         /// </summary>
         [Fact]
         public void OnAfterFixedUpdate_CallsOnAfterFixedUpdateOnEachComponent()
@@ -508,7 +508,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on dispatch events v 2 calls on dispatch events on each component
+        ///     Tests that on dispatch events v 2 calls on dispatch events on each component
         /// </summary>
         [Fact]
         public void OnDispatchEvents_v2_CallsOnDispatchEventsOnEachComponent()
@@ -534,7 +534,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on calculate v 2 calls on calculate on each component
+        ///     Tests that on calculate v 2 calls on calculate on each component
         /// </summary>
         [Fact]
         public void OnCalculate_v2_CallsOnCalculateOnEachComponent()
@@ -560,7 +560,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that remove removes game object from scene
+        ///     Tests that remove removes game object from scene
         /// </summary>
         [Fact]
         public void Remove_RemovesGameObjectFromScene()
@@ -579,7 +579,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that get returns game object from scene
+        ///     Tests that get returns game object from scene
         /// </summary>
         [Fact]
         public void Get_ReturnsGameObjectFromScene()
@@ -598,7 +598,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that contains returns true when game object is in scene
+        ///     Tests that contains returns true when game object is in scene
         /// </summary>
         [Fact]
         public void Contains_ReturnsTrueWhenGameObjectIsInScene()
@@ -617,7 +617,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that clear removes all game objects from scene
+        ///     Tests that clear removes all game objects from scene
         /// </summary>
         [Fact]
         public void Clear_RemovesAllGameObjectsFromScene()
@@ -638,7 +638,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that is enable get set property works
+        ///     Tests that is enable get set property works
         /// </summary>
         [Fact]
         public void IsEnable_GetSetPropertyWorks()
@@ -654,7 +654,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that name get set property works
+        ///     Tests that name get set property works
         /// </summary>
         [Fact]
         public void Name_GetSetPropertyWorks()
@@ -670,7 +670,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that id get set property works
+        ///     Tests that id get set property works
         /// </summary>
         [Fact]
         public void Id_GetSetPropertyWorks()
@@ -686,7 +686,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that tag get set property works
+        ///     Tests that tag get set property works
         /// </summary>
         [Fact]
         public void Tag_GetSetPropertyWorks()
@@ -702,7 +702,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that on disable calls on disable on each component
+        ///     Tests that on disable calls on disable on each component
         /// </summary>
         [Fact]
         public void OnDisable_CallsOnDisableOnEachComponent()
@@ -728,7 +728,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that game objects get set property works
+        ///     Tests that game objects get set property works
         /// </summary>
         [Fact]
         public void GameObjects_GetSetPropertyWorks()
@@ -749,7 +749,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that game objects add game object to list
+        ///     Tests that game objects add game object to list
         /// </summary>
         [Fact]
         public void GameObjects_AddGameObjectToList()
@@ -766,7 +766,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that game objects remove game object from list
+        ///     Tests that game objects remove game object from list
         /// </summary>
         [Fact]
         public void GameObjects_RemoveGameObjectFromList()
@@ -784,7 +784,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         }
 
         /// <summary>
-        /// Tests that game objects clear list
+        ///     Tests that game objects clear list
         /// </summary>
         [Fact]
         public void GameObjects_ClearList()

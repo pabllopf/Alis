@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The with color interface
+    ///     The with color interface
     /// </summary>
     public interface IWithColor<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Adds the color using the specified value
+        ///     Adds the color using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

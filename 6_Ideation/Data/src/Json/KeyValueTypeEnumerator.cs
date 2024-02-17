@@ -59,10 +59,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Initializes a new instance of the <see cref="KeyValueTypeEnumerator" /> class
         /// </summary>
         /// <param name="value">The value</param>
-        public KeyValueTypeEnumerator(object value)
-        {
-            enumerator =  ((IEnumerable) value).GetEnumerator();
-        }
+        public KeyValueTypeEnumerator(object value) => enumerator = ((IEnumerable) value).GetEnumerator();
 
         /// <summary>
         ///     Gets the value of the entry

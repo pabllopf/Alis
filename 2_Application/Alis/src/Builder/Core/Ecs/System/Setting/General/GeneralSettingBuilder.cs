@@ -51,15 +51,6 @@ namespace Alis.Builder.Core.Ecs.System.Setting.General
         ///     The general setting
         /// </summary>
         private readonly GeneralSetting generalSetting = new GeneralSetting();
-        
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The general setting</returns>
-        public GeneralSetting Build()
-        {
-            return generalSetting;
-        }
 
         /// <summary>
         ///     Authors the value
@@ -71,7 +62,24 @@ namespace Alis.Builder.Core.Ecs.System.Setting.General
             generalSetting.Author = value;
             return this;
         }
-        
+
+        /// <summary>
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The general setting</returns>
+        public GeneralSetting Build() => generalSetting;
+
+        /// <summary>
+        ///     Debugs the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The general setting builder</returns>
+        public GeneralSettingBuilder Debug(bool value)
+        {
+            generalSetting.Debug = value;
+            return this;
+        }
+
         /// <summary>
         ///     Descriptions the value
         /// </summary>
@@ -93,7 +101,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.General
             generalSetting.Icon = value;
             return this;
         }
-        
+
         /// <summary>
         ///     Licences the value
         /// </summary>
@@ -124,17 +132,6 @@ namespace Alis.Builder.Core.Ecs.System.Setting.General
         public GeneralSettingBuilder Version(string value)
         {
             generalSetting.Version = value;
-            return this;
-        }
-        
-        /// <summary>
-        /// Debugs the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The general setting builder</returns>
-        public GeneralSettingBuilder Debug(bool value)
-        {
-            generalSetting.Debug = value;
             return this;
         }
     }

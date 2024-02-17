@@ -198,7 +198,7 @@ namespace Alis.Core.Network.Internal
         public event EventHandler<PongEventArgs> Pong;
 
         /// <summary>
-        /// Receives the buffer
+        ///     Receives the buffer
         /// </summary>
         /// <param name="buffer">The buffer</param>
         /// <param name="cancellationToken">The cancellation token</param>
@@ -223,17 +223,11 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-
-        /// Reads the web socket frame using the specified buffer
-
+        ///     Reads the web socket frame using the specified buffer
         /// </summary>
-
         /// <param name="buffer">The buffer</param>
-
         /// <param name="cancellationToken">The cancellation token</param>
-
         /// <returns>A task containing the web socket frame</returns>
-
         private async Task<WebSocketFrame> ReadWebSocketFrame(ArraySegment<byte> buffer, CancellationToken cancellationToken)
         {
             try
@@ -243,13 +237,11 @@ namespace Alis.Core.Network.Internal
                     _readCursor = await WebSocketFrameReader.ReadFromCursorAsync(_stream, buffer, _readCursor, cancellationToken);
                     return _readCursor.WebSocketFrame;
                 }
-                else
-                {
-                    _readCursor = await WebSocketFrameReader.ReadAsync(_stream, buffer, cancellationToken);
-                    WebSocketFrame frame = _readCursor.WebSocketFrame;
-                    Events.Log.ReceivedFrame(_guid, frame.OpCode, frame.IsFinBitSet, frame.Count);
-                    return frame;
-                }
+
+                _readCursor = await WebSocketFrameReader.ReadAsync(_stream, buffer, cancellationToken);
+                WebSocketFrame frame = _readCursor.WebSocketFrame;
+                Events.Log.ReceivedFrame(_guid, frame.OpCode, frame.IsFinBitSet, frame.Count);
+                return frame;
             }
             catch (Exception ex)
             {
@@ -259,23 +251,14 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-
-        /// Handles the web socket op codes using the specified frame
-
+        ///     Handles the web socket op codes using the specified frame
         /// </summary>
-
         /// <param name="frame">The frame</param>
-
         /// <param name="buffer">The buffer</param>
-
         /// <param name="linkedCts">The linked cts</param>
-
         /// <param name="endOfMessage">The end of message</param>
-
         /// <exception cref="InvalidOperationException"></exception>
-
         /// <returns>A task containing the web socket receive result</returns>
-
         private async Task<WebSocketReceiveResult> HandleWebSocketOpCodes(WebSocketFrame frame, ArraySegment<byte> buffer, CancellationTokenSource linkedCts, bool endOfMessage)
         {
             switch (frame.OpCode)
@@ -324,15 +307,10 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-
-        /// Handles the exceptions using the specified catch all
-
+        ///     Handles the exceptions using the specified catch all
         /// </summary>
-
         /// <param name="catchAll">The catch all</param>
-
         /// <returns>A task containing the web socket receive result</returns>
-
         private async Task<WebSocketReceiveResult> HandleExceptions(Exception catchAll)
         {
             if (_state == WebSocketState.Open)

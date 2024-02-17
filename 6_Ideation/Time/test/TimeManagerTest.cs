@@ -186,7 +186,7 @@ namespace Alis.Core.Aspect.Time.Test
             };
 
             // Assert
-            Assert.NotEqual(0,  timeManager.MaximumDeltaTime);
+            Assert.NotEqual(0, timeManager.MaximumDeltaTime);
         }
 
         /// <summary>
@@ -274,9 +274,9 @@ namespace Alis.Core.Aspect.Time.Test
             // Assert
             Assert.Equal(2.0f, timeManager.TimeScale);
         }
-        
+
         /// <summary>
-        /// Tests that average frames set value should update average frames
+        ///     Tests that average frames set value should update average frames
         /// </summary>
         [Fact]
         public void AverageFrames_SetValue_ShouldUpdateAverageFrames()
@@ -291,9 +291,9 @@ namespace Alis.Core.Aspect.Time.Test
             // Assert
             Assert.Equal(2, timeManager.AverageFrames);
         }
-        
+
         /// <summary>
-        /// Tests that total frames set value should update total frames
+        ///     Tests that total frames set value should update total frames
         /// </summary>
         [Fact]
         public void TotalFrames_SetValue_ShouldUpdateTotalFrames()
@@ -325,7 +325,7 @@ namespace Alis.Core.Aspect.Time.Test
             // Assert
             Assert.Equal(0.15f, timeManager.UnscaledDeltaTime);
         }
-        
+
         /// <summary>
         ///     Tests that fixed time as double set value should update fixed time as double
         /// </summary>

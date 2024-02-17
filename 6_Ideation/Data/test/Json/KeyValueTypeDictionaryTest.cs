@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The key value type dictionary test class
+    ///     The key value type dictionary test class
     /// </summary>
     public class KeyValueTypeDictionaryTest
     {
         /// <summary>
-        /// Tests that test key value type dictionary add throws exception
+        ///     Tests that test key value type dictionary add throws exception
         /// </summary>
         [Fact]
         public void TestKeyValueTypeDictionary_Add_ThrowsException()
@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test key value type dictionary clear throws exception
+        ///     Tests that test key value type dictionary clear throws exception
         /// </summary>
         [Fact]
         public void TestKeyValueTypeDictionary_Clear_ThrowsException()
@@ -77,7 +77,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test key value type dictionary contains throws exception
+        ///     Tests that test key value type dictionary contains throws exception
         /// </summary>
         [Fact]
         public void TestKeyValueTypeDictionary_Contains_ThrowsException()
@@ -95,7 +95,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test key value type dictionary remove throws exception
+        ///     Tests that test key value type dictionary remove throws exception
         /// </summary>
         [Fact]
         public void TestKeyValueTypeDictionary_Remove_ThrowsException()
@@ -113,7 +113,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test key value type dictionary copy to throws exception
+        ///     Tests that test key value type dictionary copy to throws exception
         /// </summary>
         [Fact]
         public void TestKeyValueTypeDictionary_CopyTo_ThrowsException()
@@ -133,7 +133,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test key value type dictionary get enumerator throws exception
+        ///     Tests that test key value type dictionary get enumerator throws exception
         /// </summary>
         [Fact]
         public void TestKeyValueTypeDictionary_GetEnumerator_ThrowsException()
@@ -147,7 +147,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test key value type dictionary indexer throws exception
+        ///     Tests that test key value type dictionary indexer throws exception
         /// </summary>
         [Fact]
         public void TestKeyValueTypeDictionary_Indexer_ThrowsException()
@@ -165,7 +165,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that key value type dictionary constructor sets enumerator
+        ///     Tests that key value type dictionary constructor sets enumerator
         /// </summary>
         [Fact]
         public void KeyValueTypeDictionary_Constructor_SetsEnumerator()
@@ -176,7 +176,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that count throws not supported exception
+        ///     Tests that count throws not supported exception
         /// </summary>
         [Fact]
         public void Count_ThrowsNotSupportedException()
@@ -189,7 +189,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that is synchronized throws not supported exception
+        ///     Tests that is synchronized throws not supported exception
         /// </summary>
         [Fact]
         public void IsSynchronized_ThrowsNotSupportedException()
@@ -202,7 +202,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that sync root throws not supported exception
+        ///     Tests that sync root throws not supported exception
         /// </summary>
         [Fact]
         public void SyncRoot_ThrowsNotSupportedException()
@@ -215,7 +215,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that is fixed size throws not supported exception
+        ///     Tests that is fixed size throws not supported exception
         /// </summary>
         [Fact]
         public void IsFixedSize_ThrowsNotSupportedException()
@@ -228,7 +228,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that is read only throws not supported exception
+        ///     Tests that is read only throws not supported exception
         /// </summary>
         [Fact]
         public void IsReadOnly_ThrowsNotSupportedException()
@@ -241,7 +241,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that keys throws not supported exception
+        ///     Tests that keys throws not supported exception
         /// </summary>
         [Fact]
         public void Keys_ThrowsNotSupportedException()
@@ -254,7 +254,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that values throws not supported exception
+        ///     Tests that values throws not supported exception
         /// </summary>
         [Fact]
         public void Values_ThrowsNotSupportedException()
@@ -267,7 +267,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that get enumerator returns enumerator
+        ///     Tests that get enumerator returns enumerator
         /// </summary>
         [Fact]
         public void GetEnumerator_ReturnsEnumerator()

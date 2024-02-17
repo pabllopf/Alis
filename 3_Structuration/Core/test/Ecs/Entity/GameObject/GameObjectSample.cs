@@ -30,9 +30,9 @@
 namespace Alis.Core.Test.Ecs.Entity.GameObject
 {
     /// <summary>
-    /// The game object sample class
+    ///     The game object sample class
     /// </summary>
-    /// <seealso cref="Core.Ecs.Entity.GameObject.GameObject"/>
+    /// <seealso cref="Core.Ecs.Entity.GameObject.GameObject" />
     public class GameObjectSample : Core.Ecs.Entity.GameObject.GameObject
     {
     }

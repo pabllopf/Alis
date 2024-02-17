@@ -177,7 +177,7 @@ namespace Alis.Core.Aspect.Data.Json
         private object GetOrCreateInstance(object target, int elementsCount, JsonOptions options = null)
         {
             object targetValue;
-            if (options != null && options.SerializationOptions.HasFlag(JsonSerializationOptions.ContinueOnValueError))
+            if ((options != null) && options.SerializationOptions.HasFlag(JsonSerializationOptions.ContinueOnValueError))
             {
                 try
                 {
@@ -281,7 +281,7 @@ namespace Alis.Core.Aspect.Data.Json
                 return false;
 
             Type type = value.GetType();
-            return type == Type && JsonSerializer.IsZeroValueType(value);
+            return (type == Type) && JsonSerializer.IsZeroValueType(value);
         }
 
         /// <summary>

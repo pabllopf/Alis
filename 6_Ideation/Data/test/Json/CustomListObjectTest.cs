@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IListObjectTest.cs
+//  File:CustomListObjectTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The custom list object test class
+    ///     The custom list object test class
     /// </summary>
     public class CustomListObjectTest
     {
         /// <summary>
-        /// Tests that clear list is empty does not throw exception
+        ///     Tests that clear list is empty does not throw exception
         /// </summary>
         [Fact]
         public void Clear_ListIsEmpty_DoesNotThrowException()
@@ -52,7 +52,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that clear list is not empty clears list
+        ///     Tests that clear list is not empty clears list
         /// </summary>
         [Fact]
         public void Clear_ListIsNotEmpty_ClearsList()

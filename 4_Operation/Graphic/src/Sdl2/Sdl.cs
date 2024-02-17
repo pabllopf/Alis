@@ -214,7 +214,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// </summary>
         public const int AndroidExternalStorageWrite = 0x02;
 
-         /// <summary>
+        /// <summary>
         ///     The sdl pixel format unknown
         /// </summary>
         public static readonly uint PixelFormatUnknown = 0;
@@ -2979,7 +2979,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int RenderSetViewport([IsNotNull] IntPtr renderer, ref RectangleI rect) => NativeSdl.InternalRenderSetViewportWithRef(renderer, ref rect);
-        
+
         /// <summary>
         ///     Sets the render draw blend mode using the specified renderer
         /// </summary>
@@ -5873,7 +5873,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.Validate(result, nameof(result));
             return result;
         }
-        
+
         /// <summary>
         ///     Sdl the define pixel format using the specified type
         /// </summary>
@@ -5886,7 +5886,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static uint SdlDefinePixelFormat(TypePixel type, [IsNotNull] uint order, PackedLayout layout, [IsNotNull] byte bits, [IsNotNull] byte bytes) => (uint) ((1 << 28) | ((byte) type << 24) | ((byte) order << 20) | ((byte) layout << 16) | (bits << 8) | bytes);
-        
+
         /// <summary>
         ///     Sdl the define pixel fourcc using the specified a
         /// </summary>

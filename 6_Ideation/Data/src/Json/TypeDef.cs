@@ -116,7 +116,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Writes the values using the specified writer
+        ///     Writes the values using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="component">The component</param>
@@ -149,7 +149,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Handles the write named value object callback using the specified writer
+        ///     Handles the write named value object callback using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="component">The component</param>
@@ -184,7 +184,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether this instance should skip value
+        ///     Describes whether this instance should skip value
         /// </summary>
         /// <param name="options">The options</param>
         /// <param name="member">The member</param>
@@ -221,7 +221,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Writes the member value using the specified writer
+        ///     Writes the member value using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="options">The options</param>
@@ -431,7 +431,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Enumerates the definitions using reflection using the specified serialization
+        ///     Enumerates the definitions using reflection using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="type">The type</param>
@@ -455,7 +455,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Handles the property serialization using the specified serialization
+        ///     Handles the property serialization using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="type">The type</param>
@@ -526,7 +526,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Handles the field serialization using the specified serialization
+        ///     Handles the field serialization using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="type">The type</param>

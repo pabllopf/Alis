@@ -56,21 +56,21 @@ namespace Alis.Core.Network.Sample
         {
             Logger.LogLevel = LogLevel.Trace;
             Logger.SetDetailLevel(DetailLevel.Minimal);
-            
+
             CancellationTokenSource cts = new CancellationTokenSource();
             _webSocketServerFactory = new WebSocketServerFactory();
             StartWebServer(cts.Token);
-            
+
             Logger.Info("Server is running");
 
             if (args.Length == 0)
             {
                 Logger.Log("Running test 'RunLoadTest'");
                 RunLoadTest().Wait(cts.Token);
-                
+
                 Logger.Log("Running test 'RunSimpleTest'");
                 RunSimpleTest().Wait(cts.Token);
-                
+
                 Logger.Log("Running test 'RunComplexTest'");
                 RunComplexTest(args);
             }
@@ -84,10 +84,10 @@ namespace Alis.Core.Network.Sample
 
             Logger.Warning("Press any key to quit...");
             Console.ReadKey();
-            
+
             // Stop the server
             cts.Cancel();
-            
+
             return Task.CompletedTask;
         }
 

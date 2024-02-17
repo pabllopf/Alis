@@ -399,7 +399,7 @@ namespace Alis.App.Engine
                 io.DisplaySize = new Vector2(windowSize.X, windowSize.Y);
                 if ((windowSize.X > 0) && (windowSize.Y > 0))
                 {
-                    io.DisplayFramebufferScale = new Vector2((float) displayW / windowSize.X, (float) displayH / windowSize.Y);
+                    io.DisplayFramebufferScale = new Vector2(displayW / windowSize.X, displayH / windowSize.Y);
                 }
 
                 // Setup time step (we don't use SDL_GetTicks() because it is using millisecond resolution)

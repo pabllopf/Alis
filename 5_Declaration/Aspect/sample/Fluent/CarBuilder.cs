@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SampleBuilder.cs
+//  File:CarBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,32 +33,27 @@ using Alis.Core.Aspect.Fluent.Words;
 namespace Alis.Core.Aspect.Sample.Fluent
 {
     /// <summary>
-    /// The sample builder class
+    ///     The sample builder class
     /// </summary>
-    public class CarBuilder : 
+    public class CarBuilder :
         IBuild<Car>,
         IWithName<CarBuilder, string>,
         IWithModel<CarBuilder, string>,
         IWithColor<CarBuilder, string>
     {
         /// <summary>
-        /// The car
+        ///     The car
         /// </summary>
         private readonly Car _car = new Car("default", "default", "default");
-        
-        /// <summary>
-        /// Adds the name using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The car builder</returns>
-        public CarBuilder WithName(string value)
-        {
-            _car.Name = value;
-            return this;
-        }
 
         /// <summary>
-        /// Adds the color using the specified value
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The car</returns>
+        public Car Build() => _car;
+
+        /// <summary>
+        ///     Adds the color using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The car builder</returns>
@@ -69,7 +64,7 @@ namespace Alis.Core.Aspect.Sample.Fluent
         }
 
         /// <summary>
-        /// Adds the model using the specified value
+        ///     Adds the model using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The car builder</returns>
@@ -78,12 +73,16 @@ namespace Alis.Core.Aspect.Sample.Fluent
             _car.Color = value;
             return this;
         }
-        
+
         /// <summary>
-        /// Builds this instance
+        ///     Adds the name using the specified value
         /// </summary>
-        /// <returns>The car</returns>
-        public Car Build() => _car;
-        
+        /// <param name="value">The value</param>
+        /// <returns>The car builder</returns>
+        public CarBuilder WithName(string value)
+        {
+            _car.Name = value;
+            return this;
+        }
     }
 }

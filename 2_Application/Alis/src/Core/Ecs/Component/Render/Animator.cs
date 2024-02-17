@@ -172,13 +172,13 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Changes the animation to using the specified name animation
+        ///     Changes the animation to using the specified name animation
         /// </summary>
         /// <param name="nameAnimation">The name animation</param>
         /// <param name="flipTo">The flip to</param>
         public void ChangeAnimationTo(string nameAnimation, RendererFlip flipTo)
         {
-            if (currentAnimation.Name.Equals(nameAnimation) && Sprite.Flip == flipTo)
+            if (currentAnimation.Name.Equals(nameAnimation) && (Sprite.Flip == flipTo))
             {
                 return;
             }
@@ -190,9 +190,9 @@ namespace Alis.Core.Ecs.Component.Render
                 currentAnimation = tempAnimation;
             }
         }
-        
+
         /// <summary>
-        /// Gets the current animation
+        ///     Gets the current animation
         /// </summary>
         /// <returns>The animation</returns>
         public Animation GetCurrentAnimation() => currentAnimation;

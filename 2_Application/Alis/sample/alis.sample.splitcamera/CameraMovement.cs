@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PlayerMovement.cs
+//  File:CameraMovement.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -31,35 +31,36 @@ using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.Component.Render;
 
 namespace Alis.Sample.SplitCamera
 {
     /// <summary>
-    /// The camera movement class
+    ///     The camera movement class
     /// </summary>
-    /// <seealso cref="Component"/>
+    /// <seealso cref="Component" />
     public class CameraMovement : Component
     {
         /// <summary>
-        /// The camera
-        /// </summary>
-        private Core.Ecs.Component.Render.Camera _camera;
-
-        /// <summary>
-        /// The speed
+        ///     The speed
         /// </summary>
         private const float Speed = 1.0f;
 
         /// <summary>
-        /// Ons the start
+        ///     The camera
+        /// </summary>
+        private Camera _camera;
+
+        /// <summary>
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
-            _camera = GameObject.Get<Core.Ecs.Component.Render.Camera>();
+            _camera = GameObject.Get<Camera>();
         }
-        
+
         /// <summary>
-        /// Ons the press down key using the specified key
+        ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnPressDownKey(SdlKeycode key)
@@ -73,7 +74,7 @@ namespace Alis.Sample.SplitCamera
                     Rotation = GameObject.Transform.Rotation
                 };
             }
-            
+
             if (key == SdlKeycode.SdlkS)
             {
                 GameObject.Transform = new Transform
@@ -83,16 +84,17 @@ namespace Alis.Sample.SplitCamera
                     Rotation = GameObject.Transform.Rotation
                 };
             }
-            
+
             if (key == SdlKeycode.SdlkA)
             {
                 GameObject.Transform = new Transform
                 {
-                    Position = new Vector2(GameObject.Transform.Position.X - Speed , GameObject.Transform.Position.Y),
+                    Position = new Vector2(GameObject.Transform.Position.X - Speed, GameObject.Transform.Position.Y),
                     Scale = new Vector2(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y),
                     Rotation = GameObject.Transform.Rotation
                 };
             }
+
             if (key == SdlKeycode.SdlkD)
             {
                 GameObject.Transform = new Transform

@@ -39,58 +39,58 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Sample.King.Platform
 {
     /// <summary>
-    /// The player movement class
+    ///     The player movement class
     /// </summary>
-    /// <seealso cref="Component"/>
+    /// <seealso cref="Component" />
     public class PlayerMovement : Component
     {
         /// <summary>
-        /// The animator
-        /// </summary>
-        private Animator animator;
-        
-        /// <summary>
-        /// The box collider
-        /// </summary>
-        private BoxCollider boxCollider;
-        
-        /// <summary>
-        /// The sprite
-        /// </summary>
-        private Sprite sprite;
-
-        /// <summary>
-        /// The vector
-        /// </summary>
-        private Vector2 directionPlayer = new Vector2(0, 0);
-        
-        /// <summary>
-        /// The is jumping
-        /// </summary>
-        private bool isJumping;
-
-        /// <summary>
-        /// The jump force
+        ///     The jump force
         /// </summary>
         private const float JumpForce = 15f;
-        
+
         /// <summary>
-        /// The velocity player
+        ///     The velocity player
         /// </summary>
         private const float VelocityPlayer = 5f;
 
         /// <summary>
-        /// The cool down jump
-        /// </summary>
-        private float coolDownJump;
-
-        /// <summary>
-        /// The reset cool down jump
+        ///     The reset cool down jump
         /// </summary>
         private const float ResetCoolDownJump = 0.8f;
 
         /// <summary>
-        /// Ons the start
+        ///     The animator
+        /// </summary>
+        private Animator animator;
+
+        /// <summary>
+        ///     The box collider
+        /// </summary>
+        private BoxCollider boxCollider;
+
+        /// <summary>
+        ///     The cool down jump
+        /// </summary>
+        private float coolDownJump;
+
+        /// <summary>
+        ///     The vector
+        /// </summary>
+        private Vector2 directionPlayer = new Vector2(0, 0);
+
+        /// <summary>
+        ///     The is jumping
+        /// </summary>
+        private bool isJumping;
+
+        /// <summary>
+        ///     The sprite
+        /// </summary>
+        private Sprite sprite;
+
+        /// <summary>
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
@@ -100,12 +100,12 @@ namespace Alis.Sample.King.Platform
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
             coolDownJump -= 1 * Game.TimeManager.DeltaTime;
-            
+
             if (isJumping)
             {
                 if (coolDownJump <= 0)
@@ -113,12 +113,12 @@ namespace Alis.Sample.King.Platform
                     JumpPlayer();
                 }
             }
-            
+
             boxCollider.Body.LinearVelocity = new Vector2(directionPlayer.X * VelocityPlayer, boxCollider.Body.LinearVelocity.Y);
         }
-        
+
         /// <summary>
-        /// Ons the release key using the specified key
+        ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnReleaseKey(SdlKeycode key)
@@ -128,7 +128,7 @@ namespace Alis.Sample.King.Platform
                 directionPlayer = new Vector2(0, 0);
                 animator.ChangeAnimationTo("Run", RendererFlip.None);
             }
-            
+
             if (key == SdlKeycode.SdlkA)
             {
                 directionPlayer = new Vector2(0, 0);
@@ -137,23 +137,24 @@ namespace Alis.Sample.King.Platform
         }
 
         /// <summary>
-        /// Ons the press down key using the specified key
+        ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnPressDownKey(SdlKeycode key)
         {
-            if (!isJumping && coolDownJump <= 0 && key == SdlKeycode.SdlkSpace)
+            if (!isJumping && (coolDownJump <= 0) && (key == SdlKeycode.SdlkSpace))
             {
                 isJumping = true;
                 Console.WriteLine("Jump because space key is pressed");
             }
-            
-            if (key == SdlKeycode.SdlkD )
+
+            if (key == SdlKeycode.SdlkD)
             {
                 directionPlayer = new Vector2(1, 0);
                 animator.ChangeAnimationTo("Run", RendererFlip.None);
                 Console.WriteLine($"Run to right because D key is pressed {directionPlayer}");
             }
+
             if (key == SdlKeycode.SdlkA)
             {
                 directionPlayer = new Vector2(-1, 0);
@@ -161,26 +162,26 @@ namespace Alis.Sample.King.Platform
                 Console.WriteLine($"Run to left because A key is pressed {directionPlayer}");
             }
         }
-        
+
         /// <summary>
-        /// Jumps the player
+        ///     Jumps the player
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         private void JumpPlayer()
         {
             boxCollider.Body.LinearVelocity = new Vector2(boxCollider.Body.LinearVelocity.X, -JumpForce);
-            
+
             isJumping = false;
-            
+
             if (Math.Abs(directionPlayer.X - 1) < 0.1f)
             {
                 animator.ChangeAnimationTo("Jump", RendererFlip.None);
             }
-            else if (Math.Abs(directionPlayer.X - (-1)) < 0.1f)
+            else if (Math.Abs(directionPlayer.X - -1) < 0.1f)
             {
                 animator.ChangeAnimationTo("Jump", RendererFlip.SdlFlipHorizontal);
             }
-            
+
             coolDownJump = ResetCoolDownJump;
         }
     }

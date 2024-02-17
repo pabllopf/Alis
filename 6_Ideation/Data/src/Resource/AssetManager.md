@@ -12,7 +12,8 @@ The `Find` method takes a string parameter `assetName` and returns a string.
 
 #### Parameters
 
-- `assetName`: The name of the asset to find. This parameter cannot be null, empty, contain invalid characters, or lack an extension.
+- `assetName`: The name of the asset to find. This parameter cannot be null, empty, contain invalid characters, or lack
+  an extension.
 
 #### Returns
 

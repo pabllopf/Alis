@@ -27,56 +27,57 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Plugin.Test
 {
     /// <summary>
-    /// The plugin sample class
+    ///     The plugin sample class
     /// </summary>
-    /// <seealso cref="IPlugin"/>
+    /// <seealso cref="IPlugin" />
     public class PluginSample : IPlugin
     {
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {
-            
         }
 
         /// <summary>
-        /// Initializes this instance
+        ///     Initializes this instance
         /// </summary>
         /// <exception cref="System.NotImplementedException"></exception>
         public void Initialize()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         /// <exception cref="System.NotImplementedException"></exception>
         public void Update()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         /// <exception cref="System.NotImplementedException"></exception>
         public void Render()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         /// <summary>
-        /// Shutdowns this instance
+        ///     Shutdowns this instance
         /// </summary>
         /// <exception cref="System.NotImplementedException"></exception>
         public void Shutdown()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The field info accessor test class
+    ///     The field info accessor test class
     /// </summary>
     public class FieldInfoAccessorTest
     {
         /// <summary>
-        /// Tests that test field info accessor get
+        ///     Tests that test field info accessor get
         /// </summary>
         [Fact]
         public void TestFieldInfoAccessor_Get()
@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test field info accessor set
+        ///     Tests that test field info accessor set
         /// </summary>
         [Fact]
         public void TestFieldInfoAccessor_Set()

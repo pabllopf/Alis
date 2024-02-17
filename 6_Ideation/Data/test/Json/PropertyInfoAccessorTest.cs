@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The property info accessor test class
+    ///     The property info accessor test class
     /// </summary>
     public class PropertyInfoAccessorTest
     {
         /// <summary>
-        /// Tests that test property info accessor get
+        ///     Tests that test property info accessor get
         /// </summary>
         [Fact]
         public void TestPropertyInfoAccessor_Get()
@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that test property info accessor set
+        ///     Tests that test property info accessor set
         /// </summary>
         [Fact]
         public void TestPropertyInfoAccessor_Set()
