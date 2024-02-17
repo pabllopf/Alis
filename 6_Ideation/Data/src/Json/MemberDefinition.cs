@@ -307,7 +307,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (member == null)
                 throw new ArgumentNullException(nameof(member));
 
-            options = options ?? new JsonOptions();
+            options ??= new JsonOptions();
             return TypeDef.RemoveDeserializationMember(type, options, member);
         }
 
@@ -327,7 +327,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (member == null)
                 throw new ArgumentNullException(nameof(member));
 
-            options = options ?? new JsonOptions();
+            options ??= new JsonOptions();
             return TypeDef.RemoveSerializationMember(type, options, member);
         }
 
@@ -347,7 +347,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (member == null)
                 throw new ArgumentNullException(nameof(member));
 
-            options = options ?? new JsonOptions();
+            options ??= new JsonOptions();
             TypeDef.AddDeserializationMember(type, options, member);
         }
 
@@ -367,7 +367,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (member == null)
                 throw new ArgumentNullException(nameof(member));
 
-            options = options ?? new JsonOptions();
+            options ??= new JsonOptions();
             TypeDef.AddSerializationMember(type, options, member);
         }
 
@@ -383,7 +383,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (type == null)
                 throw new ArgumentNullException(nameof(type));
 
-            options = options ?? new JsonOptions();
+            options ??= new JsonOptions();
             return TypeDef.GetSerializationMembers(type, options);
         }
 

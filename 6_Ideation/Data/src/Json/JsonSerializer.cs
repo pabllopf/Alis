@@ -176,7 +176,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (writer == null)
                 throw new ArgumentNullException(nameof(writer));
 
-            options = options ?? new JsonOptions();
+            options ??= new JsonOptions();
             IDictionary<object, object> objectGraph = options.FinalObjectGraph;
             SetOptions(objectGraph, options);
 
@@ -256,7 +256,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (reader == null)
                 throw new ArgumentNullException(nameof(reader));
 
-            options = options ?? new JsonOptions();
+            options ??= new JsonOptions();
             if (targetType == null || targetType == typeof(object))
                 return ReadValue(reader, options);
 
@@ -892,17 +892,14 @@ namespace Alis.Core.Aspect.Data.Json
         public static object ChangeType(object value, Type conversionType, JsonOptions options) => ChangeType(null, value, conversionType, options);
 
         /// <summary>
-        ///     Returns a System.Object with a specified type and whose value is equivalent to a specified input object.
-        ///     If an error occurs, a computed default value of the target type will be returned.
+        /// Changes the type using the specified target
         /// </summary>
-        /// <param name="target">The target. May be null.</param>
-        /// <param name="value">The input object. May be null.</param>
-        /// <param name="conversionType">The target type. May not be null.</param>
-        /// <param name="options">The options to use.</param>
-        /// <returns>
-        ///     An object of the target type whose value is equivalent to input value.
-        /// </returns>
-        [ExcludeFromCodeCoverage]
+        /// <param name="target">The target</param>
+        /// <param name="value">The value</param>
+        /// <param name="conversionType">The conversion type</param>
+        /// <param name="options">The options</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <returns>The object</returns>
         public static object ChangeType(object target, object value, Type conversionType, JsonOptions options = null)
         {
             if (conversionType == null)
@@ -911,7 +908,19 @@ namespace Alis.Core.Aspect.Data.Json
             if (conversionType == typeof(object))
                 return value;
 
-            options = options ?? new JsonOptions();
+            options ??= new JsonOptions();
+
+            if (value is IDictionary dic)
+            {
+                object instance = CreateInstance(target, conversionType, 0, options, value);
+                if (instance != null)
+                {
+                    Apply(dic, instance, options);
+                }
+
+                return instance;
+            }
+
             if (!(value is string))
             {
                 if (conversionType.IsArray)
@@ -945,17 +954,6 @@ namespace Alis.Core.Aspect.Data.Json
                         return lo.List;
                     }
                 }
-            }
-
-            if (value is IDictionary dic)
-            {
-                object instance = CreateInstance(target, conversionType, 0, options, value);
-                if (instance != null)
-                {
-                    Apply(dic, instance, options);
-                }
-
-                return instance;
             }
 
             if ((conversionType == typeof(byte[])) && value is string str)
@@ -1965,8 +1963,8 @@ namespace Alis.Core.Aspect.Data.Json
             if (writer == null)
                 throw new ArgumentNullException(nameof(writer));
 
-            options = options ?? new JsonOptions();
-            objectGraph = objectGraph ?? options.FinalObjectGraph;
+            options ??= new JsonOptions();
+            objectGraph ??= options.FinalObjectGraph;
             SetOptions(objectGraph, options);
 
             if (options.WriteValueCallback != null)
@@ -2223,8 +2221,8 @@ namespace Alis.Core.Aspect.Data.Json
             if (stream == null)
                 throw new ArgumentNullException(nameof(stream));
 
-            options = options ?? new JsonOptions();
-            objectGraph = objectGraph ?? options.FinalObjectGraph;
+            options ??= new JsonOptions();
+            objectGraph ??= options.FinalObjectGraph;
             SetOptions(objectGraph, options);
 
             long total = 0L;
@@ -2370,8 +2368,8 @@ namespace Alis.Core.Aspect.Data.Json
             if (array == null)
                 throw new ArgumentNullException(nameof(array));
 
-            options = options ?? new JsonOptions();
-            objectGraph = objectGraph ?? options.FinalObjectGraph;
+            options ??= new JsonOptions();
+            objectGraph ??= options.FinalObjectGraph;
             SetOptions(objectGraph, options);
 
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.ByteArrayAsBase64))
@@ -2445,8 +2443,8 @@ namespace Alis.Core.Aspect.Data.Json
             if (enumerable == null)
                 throw new ArgumentNullException(nameof(enumerable));
 
-            options = options ?? new JsonOptions();
-            objectGraph = objectGraph ?? options.FinalObjectGraph;
+            options ??= new JsonOptions();
+            objectGraph ??= options.FinalObjectGraph;
             SetOptions(objectGraph, options);
 
             writer.Write('[');
@@ -2484,8 +2482,8 @@ namespace Alis.Core.Aspect.Data.Json
             if (dictionary == null)
                 throw new ArgumentNullException(nameof(dictionary));
 
-            options = options ?? new JsonOptions();
-            objectGraph = objectGraph ?? options.FinalObjectGraph;
+            options ??= new JsonOptions();
+            objectGraph ??= options.FinalObjectGraph;
             SetOptions(objectGraph, options);
 
             writer.Write('{');
@@ -2609,8 +2607,8 @@ namespace Alis.Core.Aspect.Data.Json
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
 
-            options = options ?? new JsonOptions();
-            objectGraph = objectGraph ?? options.FinalObjectGraph;
+            options ??= new JsonOptions();
+            objectGraph ??= options.FinalObjectGraph;
             SetOptions(objectGraph, options);
         }
 
@@ -2713,9 +2711,9 @@ namespace Alis.Core.Aspect.Data.Json
             if (writer == null)
                 throw new ArgumentNullException(nameof(writer));
 
-            name = name ?? string.Empty;
-            options = options ?? new JsonOptions();
-            objectGraph = objectGraph ?? options.FinalObjectGraph;
+            name ??= string.Empty;
+            options ??= new JsonOptions();
+            objectGraph ??= options.FinalObjectGraph;
             SetOptions(objectGraph, options);
 
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.WriteKeysWithoutQuotes))
@@ -2812,7 +2810,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (writer == null)
                 throw new ArgumentNullException(nameof(writer));
 
-            options = options ?? new JsonOptions();
+            options ??= new JsonOptions();
             string serialized = Serialize(value, options);
             object deserialized = Deserialize(serialized, typeof(object), options);
             WriteFormatted(writer, deserialized, options);
@@ -2843,7 +2841,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (writer == null)
                 throw new ArgumentNullException(nameof(writer));
 
-            options = options ?? new JsonOptions();
+            options ??= new JsonOptions();
             IndentedTextWriter itw = new IndentedTextWriter(writer, options.FormattingTab);
             WriteFormatted(itw, jsonObject, options);
         }
