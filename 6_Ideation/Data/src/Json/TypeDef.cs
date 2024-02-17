@@ -670,6 +670,26 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         private static bool ShouldSkipDescriptor(bool serialization, PropertyDescriptor descriptor, JsonOptions options)
         {
+            if (CheckJsonAttribute(serialization, descriptor, options) ||
+                CheckXmlIgnoreAttribute(descriptor, options) ||
+                CheckScriptIgnore(descriptor, options) ||
+                CheckSkipGetOnly(descriptor, options))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether check json attribute
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="descriptor">The descriptor</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool CheckJsonAttribute(bool serialization, PropertyDescriptor descriptor, JsonOptions options)
+        {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
             {
                 JsonAttribute ja = descriptor.GetAttribute<JsonAttribute>();
@@ -683,18 +703,51 @@ namespace Alis.Core.Aspect.Data.Json
                 }
             }
 
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether check xml ignore attribute
+        /// </summary>
+        /// <param name="descriptor">The descriptor</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool CheckXmlIgnoreAttribute(PropertyDescriptor descriptor, JsonOptions options)
+        {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
             {
                 if (descriptor.GetAttribute<XmlIgnoreAttribute>() != null)
                     return true;
             }
 
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether check script ignore
+        /// </summary>
+        /// <param name="descriptor">The descriptor</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool CheckScriptIgnore(PropertyDescriptor descriptor, JsonOptions options)
+        {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
             {
                 if (JsonSerializer.HasScriptIgnore(descriptor))
                     return true;
             }
 
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether check skip get only
+        /// </summary>
+        /// <param name="descriptor">The descriptor</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool CheckSkipGetOnly(PropertyDescriptor descriptor, JsonOptions options)
+        {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipGetOnly) && descriptor.IsReadOnly)
                 return true;
 
