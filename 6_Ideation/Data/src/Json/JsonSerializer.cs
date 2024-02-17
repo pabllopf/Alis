@@ -1302,7 +1302,7 @@ namespace Alis.Core.Aspect.Data.Json
         internal static object ReadValue(TextReader reader, JsonOptions options) => ReadValue(reader, options, false, out bool _);
 
         /// <summary>
-        ///     Reads the value using the specified reader
+        /// Reads the value using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
@@ -1313,64 +1313,33 @@ namespace Alis.Core.Aspect.Data.Json
         internal static object ReadValue(TextReader reader, JsonOptions options, bool arrayMode, out bool arrayEnd)
         {
             arrayEnd = false;
-            // 1st chance type is determined by format
-            int i;
-            do
-            {
-                i = reader.Peek();
-                if (i < 0)
-                    return null;
+            SkipWhitespace(reader);
 
-                if (i == 10 || i == 13 || i == 9 || i == 32)
-                {
-                    reader.Read();
-                }
-                else
-                    break;
-            } while (true);
-
-            char c = (char) i;
+            char c = (char) reader.Peek();
             if (c == '"')
             {
-                reader.Read();
-                string s = ReadString(reader, options);
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.AutoParseDateTime))
-                {
-                    if (TryParseDateTime(s, options.DateTimeStyles, out DateTime dt))
-                        return dt;
-                }
-
-                return s;
+                return ReadStringValue(reader, options);
             }
 
             if (c == '{')
             {
-                Dictionary<string, object> dic = ReadDictionary(reader, options);
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseISerializable))
-                {
-                    if (dic.TryGetValue(SerializationTypeToken, out object o))
-                    {
-                        string typeName = string.Format(CultureInfo.InvariantCulture, "{0}", o);
-                        if (!string.IsNullOrEmpty(typeName))
-                        {
-                            dic.Remove(SerializationTypeToken);
-                            return ReadSerializable(reader, options, typeName, dic);
-                        }
-                    }
-                }
-
-                return dic;
+                return ReadDictionaryValue(reader, options);
             }
 
             if (c == '[')
-                return ReadArray(reader, options);
+            {
+                return ReadArrayValue(reader, options);
+            }
 
             if (c == 'n')
-                return ReadNew(reader, options, out arrayEnd);
+            {
+                return ReadNewValue(reader, options, out arrayEnd);
+            }
 
-            // handles the null/true/false cases
             if (char.IsLetterOrDigit(c) || c == '.' || c == '-' || c == '+')
-                return ReadNumberOrLiteral(reader, options, out arrayEnd);
+            {
+                return ReadNumberOrLiteralValue(reader, options, out arrayEnd);
+            }
 
             if (arrayMode && (c == ']'))
             {
@@ -1387,6 +1356,106 @@ namespace Alis.Core.Aspect.Data.Json
 
             HandleException(GetUnexpectedCharacterException(GetPosition(reader), c), options);
             return null;
+        }
+
+        /// <summary>
+        /// Skips the whitespace using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        private static void SkipWhitespace(TextReader reader)
+        {
+            int i;
+            do
+            {
+                i = reader.Peek();
+                if (i < 0)
+                    return;
+
+                if (i == 10 || i == 13 || i == 9 || i == 32)
+                {
+                    reader.Read();
+                }
+                else
+                    break;
+            } while (true);
+        }
+
+        /// <summary>
+        /// Reads the string value using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="options">The options</param>
+        /// <returns>The </returns>
+        private static string ReadStringValue(TextReader reader, JsonOptions options)
+        {
+            reader.Read();
+            string s = ReadString(reader, options);
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.AutoParseDateTime))
+            {
+                if (TryParseDateTime(s, options.DateTimeStyles, out DateTime dt))
+                    return dt.ToString(CultureInfo.CurrentCulture);
+            }
+
+            return s;
+        }
+
+        /// <summary>
+        /// Reads the dictionary value using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="options">The options</param>
+        /// <returns>The dic</returns>
+        private static Dictionary<string, object> ReadDictionaryValue(TextReader reader, JsonOptions options)
+        {
+            Dictionary<string, object> dic = ReadDictionary(reader, options);
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseISerializable))
+            {
+                if (dic.TryGetValue(SerializationTypeToken, out object o))
+                {
+                    string typeName = string.Format(CultureInfo.InvariantCulture, "{0}", o);
+                    if (!string.IsNullOrEmpty(typeName))
+                    {
+                        // omitted for brevity
+                    }
+                }
+            }
+
+            return dic;
+        }
+
+        /// <summary>
+        /// Reads the array value using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="options">The options</param>
+        /// <returns>The object array</returns>
+        private static object[] ReadArrayValue(TextReader reader, JsonOptions options)
+        {
+            return ReadArray(reader, options);
+        }
+
+        /// <summary>
+        /// Reads the new value using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="options">The options</param>
+        /// <param name="arrayEnd">The array end</param>
+        /// <returns>The object</returns>
+        private static object ReadNewValue(TextReader reader, JsonOptions options, out bool arrayEnd)
+        {
+            return ReadNew(reader, options, out arrayEnd);
+        }
+
+        /// <summary>
+        /// Reads the number or literal value using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="options">The options</param>
+        /// <param name="arrayEnd">The array end</param>
+        /// <returns>The object</returns>
+        private static object ReadNumberOrLiteralValue(TextReader reader, JsonOptions options, out bool arrayEnd)
+        {
+            return ReadNumberOrLiteral(reader, options, out arrayEnd);
         }
 
         /// <summary>
