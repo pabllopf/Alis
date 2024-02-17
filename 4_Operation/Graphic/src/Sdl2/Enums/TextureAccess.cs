@@ -40,7 +40,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         /// <summary>
         ///     The sdl texture access static sdl texture access
         /// </summary>
-        SdlTextureAccessStatic = 0,
+        None = 0,
 
         /// <summary>
         ///     The sdl texture access streaming sdl texture access
