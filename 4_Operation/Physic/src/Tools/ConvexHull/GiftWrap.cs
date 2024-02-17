@@ -34,15 +34,15 @@ using Alis.Core.Physic.Utilities;
 namespace Alis.Core.Physic.Tools.ConvexHull
 {
     /// <summary>
-    ///     Giftwrap convex hull algorithm. O(n * h) time complexity, where n is the number of points and h is the number
-    ///     of points on the convex hull. See http://en.wikipedia.org/wiki/Gift_wrapping_algorithm for more details.
+    /// The gift wrap class
     /// </summary>
     public static class GiftWrap
     {
-        //Extracted from Box2D
-
-        /// <summary>Returns the convex hull from the given vertices.</summary>
-        /// <param name="vertices">The vertices.</param>
+        /// <summary>
+        /// Gets the convex hull using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The vertices</returns>
         public static Vertices GetConvexHull(Vertices vertices)
         {
             if (vertices.Count <= 3)
@@ -50,7 +50,20 @@ namespace Alis.Core.Physic.Tools.ConvexHull
                 return vertices;
             }
 
-            // Find the right most point on the hull
+            int i0 = FindRightmostPoint(vertices);
+            int[] hull = new int[vertices.Count];
+            int m = CalculateConvexHull(vertices, i0, hull);
+
+            return CreateResultVertices(vertices, hull, m);
+        }
+
+        /// <summary>
+        /// Finds the rightmost point using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The </returns>
+        private static int FindRightmostPoint(Vertices vertices)
+        {
             int i0 = 0;
             float x0 = vertices[0].X;
             for (int i = 1; i < vertices.Count; ++i)
@@ -63,7 +76,18 @@ namespace Alis.Core.Physic.Tools.ConvexHull
                 }
             }
 
-            int[] hull = new int[vertices.Count];
+            return i0;
+        }
+
+        /// <summary>
+        /// Calculates the convex hull using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="i0">The </param>
+        /// <param name="hull">The hull</param>
+        /// <returns>The </returns>
+        private static int CalculateConvexHull(Vertices vertices, int i0, int[] hull)
+        {
             int m = 0;
             int ih = i0;
 
@@ -88,7 +112,6 @@ namespace Alis.Core.Physic.Tools.ConvexHull
                         ie = j;
                     }
 
-                    // Collinearity check
                     if ((c == 0.0f) && (v.LengthSquared() > r.LengthSquared()))
                     {
                         ie = j;
@@ -104,9 +127,20 @@ namespace Alis.Core.Physic.Tools.ConvexHull
                 }
             }
 
+            return m;
+        }
+
+        /// <summary>
+        /// Creates the result vertices using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="hull">The hull</param>
+        /// <param name="m">The </param>
+        /// <returns>The result</returns>
+        private static Vertices CreateResultVertices(Vertices vertices, int[] hull, int m)
+        {
             Vertices result = new Vertices(m);
 
-            // Copy vertices.
             for (int i = 0; i < m; ++i)
             {
                 result.Add(vertices[hull[i]]);
