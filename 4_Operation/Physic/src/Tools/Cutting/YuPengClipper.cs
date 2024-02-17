@@ -442,51 +442,121 @@ namespace Alis.Core.Physic.Tools.Cutting
         {
             while (!closed && (simplicies.Count > 0))
             {
-                if (VectorEqual(output[output.Count - 1], simplicies[index].EdgeStart))
+                closed = ProcessEdgeStart(simplicies, output, closed, ref index);
+                if (!closed)
                 {
-                    if (VectorEqual(simplicies[index].EdgeEnd, output[0]))
-                    {
-                        closed = true;
-                    }
-                    else
-                    {
-                        output.Add(simplicies[index].EdgeEnd);
-                    }
-
-                    simplicies.RemoveAt(index);
-                    --index;
-                }
-                else if (VectorEqual(output[output.Count - 1], simplicies[index].EdgeEnd))
-                {
-                    if (VectorEqual(simplicies[index].EdgeStart, output[0]))
-                    {
-                        closed = true;
-                    }
-                    else
-                    {
-                        output.Add(simplicies[index].EdgeStart);
-                    }
-
-                    simplicies.RemoveAt(index);
-                    --index;
+                    closed = ProcessEdgeEnd(simplicies, output, closed, ref index);
                 }
 
                 if (!closed)
                 {
-                    if (++index == simplicies.Count)
-                    {
-                        if (count == simplicies.Count)
-                        {
-                            return true;
-                        }
-
-                        index = 0;
-                        count = simplicies.Count;
-                    }
+                    index = UpdateIndex(simplicies, index, count);
                 }
             }
 
             return closed;
+        }
+
+        /// <summary>
+        /// Describes whether process edge start
+        /// </summary>
+        /// <param name="simplicies">The simplicies</param>
+        /// <param name="output">The output</param>
+        /// <param name="closed">The closed</param>
+        /// <param name="index">The index</param>
+        /// <returns>The closed</returns>
+        private static bool ProcessEdgeStart(List<Edge> simplicies, Vertices output, bool closed, ref int index)
+        {
+            if (VectorEqual(output[output.Count - 1], simplicies[index].EdgeStart))
+            {
+                closed = CheckAndAddEdgeEnd(simplicies, output, index);
+                simplicies.RemoveAt(index);
+                --index;
+            }
+
+            return closed;
+        }
+
+        /// <summary>
+        /// Describes whether process edge end
+        /// </summary>
+        /// <param name="simplicies">The simplicies</param>
+        /// <param name="output">The output</param>
+        /// <param name="closed">The closed</param>
+        /// <param name="index">The index</param>
+        /// <returns>The closed</returns>
+        private static bool ProcessEdgeEnd(List<Edge> simplicies, Vertices output, bool closed, ref int index)
+        {
+            if (VectorEqual(output[output.Count - 1], simplicies[index].EdgeEnd))
+            {
+                closed = CheckAndAddEdgeStart(simplicies, output, index);
+                simplicies.RemoveAt(index);
+                --index;
+            }
+
+            return closed;
+        }
+
+        /// <summary>
+        /// Describes whether check and add edge end
+        /// </summary>
+        /// <param name="simplicies">The simplicies</param>
+        /// <param name="output">The output</param>
+        /// <param name="index">The index</param>
+        /// <returns>The bool</returns>
+        private static bool CheckAndAddEdgeEnd(List<Edge> simplicies, Vertices output, int index)
+        {
+            if (VectorEqual(simplicies[index].EdgeEnd, output[0]))
+            {
+                return true;
+            }
+            else
+            {
+                output.Add(simplicies[index].EdgeEnd);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Describes whether check and add edge start
+        /// </summary>
+        /// <param name="simplicies">The simplicies</param>
+        /// <param name="output">The output</param>
+        /// <param name="index">The index</param>
+        /// <returns>The bool</returns>
+        private static bool CheckAndAddEdgeStart(List<Edge> simplicies, Vertices output, int index)
+        {
+            if (VectorEqual(simplicies[index].EdgeStart, output[0]))
+            {
+                return true;
+            }
+            else
+            {
+                output.Add(simplicies[index].EdgeStart);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Updates the index using the specified simplicies
+        /// </summary>
+        /// <param name="simplicies">The simplicies</param>
+        /// <param name="index">The index</param>
+        /// <param name="count">The count</param>
+        /// <returns>The index</returns>
+        private static int UpdateIndex(List<Edge> simplicies, int index, int count)
+        {
+            if (++index == simplicies.Count)
+            {
+                if (count == simplicies.Count)
+                {
+                    return 0;
+                }
+
+                index = 0;
+            }
+
+            return index;
         }
 
         /// <summary>
