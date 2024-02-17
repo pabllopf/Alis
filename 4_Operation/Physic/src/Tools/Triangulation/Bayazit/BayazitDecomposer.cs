@@ -36,16 +36,9 @@ using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
 {
-    //From phed rev 36: http://code.google.com/p/phed/source/browse/trunk/Polygon.cpp
 
     /// <summary>
-    ///     Convex decomposition algorithm created by Mark Bayazit (http://mnbayazit.com/)
-    ///     Properties:
-    ///     - Tries to decompose using polygons instead of triangles.
-    ///     - Tends to produce optimal results with low processing time.
-    ///     - Running time is O(nr), n = number of vertices, r = reflex vertices.
-    ///     - Does not support holes.
-    ///     For more information about this algorithm, see http://mnbayazit.com/406/bayazit
+    /// The bayazit decomposer class
     /// </summary>
     internal static class BayazitDecomposer
     {
@@ -236,7 +229,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         }
 
         /// <summary>
-        ///     Describes whether can see
+        /// Describes whether can see
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="j">The </param>
@@ -244,40 +237,36 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         /// <returns>The bool</returns>
         private static bool CanSee(int i, int j, Vertices vertices)
         {
-            if (Reflex(i, vertices))
+            if (!IsValidVisibility(i, vertices) || !IsValidVisibility(j, vertices))
             {
-                if (LeftOn(At(i, vertices), At(i - 1, vertices), At(j, vertices)) &&
-                    RightOn(At(i, vertices), At(i + 1, vertices), At(j, vertices)))
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                if (RightOn(At(i, vertices), At(i + 1, vertices), At(j, vertices)) ||
-                    LeftOn(At(i, vertices), At(i - 1, vertices), At(j, vertices)))
-                {
-                    return false;
-                }
+                return false;
             }
 
-            if (Reflex(j, vertices))
-            {
-                if (LeftOn(At(j, vertices), At(j - 1, vertices), At(i, vertices)) &&
-                    RightOn(At(j, vertices), At(j + 1, vertices), At(i, vertices)))
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                if (RightOn(At(j, vertices), At(j + 1, vertices), At(i, vertices)) ||
-                    LeftOn(At(j, vertices), At(j - 1, vertices), At(i, vertices)))
-                {
-                    return false;
-                }
-            }
+            return !HasIntersectingLines(i, j, vertices);
+        }
 
+        /// <summary>
+        /// Describes whether is valid visibility
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The bool</returns>
+        private static bool IsValidVisibility(int index, Vertices vertices)
+        {
+            return !(Reflex(index, vertices)
+                ? LeftOn(At(index, vertices), At(index - 1, vertices), At(index + 1, vertices)) && RightOn(At(index, vertices), At(index + 1, vertices), At(index - 1, vertices))
+                : RightOn(At(index, vertices), At(index + 1, vertices), At(index - 1, vertices)) || LeftOn(At(index, vertices), At(index - 1, vertices), At(index + 1, vertices)));
+        }
+
+        /// <summary>
+        /// Describes whether has intersecting lines
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <param name="j">The </param>
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The bool</returns>
+        private static bool HasIntersectingLines(int i, int j, Vertices vertices)
+        {
             for (int k = 0; k < vertices.Count; ++k)
             {
                 if ((k + 1) % vertices.Count == i || k == i || (k + 1) % vertices.Count == j || k == j)
@@ -287,11 +276,11 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
 
                 if (Line.LineIntersect(At(i, vertices), At(j, vertices), At(k, vertices), At(k + 1, vertices), true, true, out _))
                 {
-                    return false;
+                    return true;
                 }
             }
 
-            return true;
+            return false;
         }
 
         /// <summary>
