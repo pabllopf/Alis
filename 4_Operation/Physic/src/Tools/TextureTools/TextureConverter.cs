@@ -1144,115 +1144,110 @@ namespace Alis.Core.Physic.Tools.TextureTools
             return vertex2Index;
         }
 
-        /// <summary></summary>
-        /// <param name="entrance"></param>
-        /// <param name="last"></param>
-        /// <returns></returns>
-        private Vertices CreateSimplePolygon(Vector2 entrance, Vector2 last)
+       private Vertices CreateSimplePolygon(Vector2 entrance, Vector2 last)
+{
+    bool entranceFound = false;
+    bool endOfHull = false;
+
+    Vertices polygon = new Vertices(32);
+    Vertices hullArea = new Vertices(32);
+    Vertices endOfHullArea = new Vertices(32);
+
+    Vector2 current = Vector2.Zero;
+
+    entranceFound = GetEntrancePoint(ref entrance, ref last, ref current);
+
+    if (entranceFound)
+    {
+        polygon.Add(entrance);
+        hullArea.Add(entrance);
+
+        Vector2 next = entrance;
+
+        do
         {
-            bool entranceFound = false;
-            bool endOfHull = false;
+            ProcessOutstandingVertex(ref endOfHull, hullArea, endOfHullArea, polygon);
 
-            Vertices polygon = new Vertices(32);
-            Vertices hullArea = new Vertices(32);
-            Vertices endOfHullArea = new Vertices(32);
+            last = current;
+            current = next;
 
-            Vector2 current = Vector2.Zero;
-
-            // Get the entrance point.
-            if (entrance == Vector2.Zero || !InBounds(ref entrance))
+            if (!GetNextHullPoint(ref last, ref current, out next, hullArea))
             {
-                entranceFound = SearchHullEntrance(out entrance);
+                break;
+            }
 
-                if (entranceFound)
+            if ((next == entrance) && !endOfHull)
+            {
+                endOfHull = true;
+                endOfHullArea.AddRange(hullArea);
+
+                if (endOfHullArea.Contains(entrance))
                 {
-                    current = new Vector2(entrance.X - 1f, entrance.Y);
+                    endOfHullArea.Remove(entrance);
                 }
+            }
+        } while (true);
+    }
+
+    return polygon;
+}
+
+private bool GetEntrancePoint(ref Vector2 entrance, ref Vector2 last, ref Vector2 current)
+{
+    bool entranceFound = false;
+    if (entrance == Vector2.Zero || !InBounds(ref entrance))
+    {
+        entranceFound = SearchHullEntrance(out entrance);
+
+        if (entranceFound)
+        {
+            current = new Vector2(entrance.X - 1f, entrance.Y);
+        }
+    }
+    else
+    {
+        if (IsSolid(ref entrance))
+        {
+            if (IsNearPixel(ref entrance, ref last))
+            {
+                current = last;
+                entranceFound = true;
             }
             else
             {
-                if (IsSolid(ref entrance))
+                if (SearchNearPixels(false, ref entrance, out Vector2 temp))
                 {
-                    if (IsNearPixel(ref entrance, ref last))
-                    {
-                        current = last;
-                        entranceFound = true;
-                    }
-                    else
-                    {
-                        if (SearchNearPixels(false, ref entrance, out Vector2 temp))
-                        {
-                            current = temp;
-                            entranceFound = true;
-                        }
-                    }
+                    current = temp;
+                    entranceFound = true;
                 }
             }
+        }
+    }
 
-            if (entranceFound)
+    return entranceFound;
+}
+
+private void ProcessOutstandingVertex(ref bool endOfHull, Vertices hullArea, Vertices endOfHullArea, Vertices polygon)
+{
+    if (SearchForOutstandingVertex(hullArea, out Vector2 outstanding))
+    {
+        if (endOfHull)
+        {
+            if (endOfHullArea.Contains(outstanding))
             {
-                polygon.Add(entrance);
-                hullArea.Add(entrance);
-
-                Vector2 next = entrance;
-
-                do
-                {
-                    // Search in the pre vision list for an outstanding point.
-                    if (SearchForOutstandingVertex(hullArea, out Vector2 outstanding))
-                    {
-                        if (endOfHull)
-                        {
-                            // We have found the next pixel, but is it on the last bit of the hull?
-                            if (endOfHullArea.Contains(outstanding))
-                            {
-                                // Indeed.
-                                polygon.Add(outstanding);
-                            }
-
-                            // That's enough, quit.
-                            break;
-                        }
-
-                        // Add it and remove all vertices that don't matter anymore
-                        // (all the vertices before the outstanding).
-                        polygon.Add(outstanding);
-                        hullArea.RemoveRange(0, hullArea.IndexOf(outstanding));
-                    }
-
-                    // Last point gets current and current gets next. Our little spider is moving forward on the hull ;).
-                    last = current;
-                    current = next;
-
-                    // Get the next point on hull.
-                    if (GetNextHullPoint(ref last, ref current, out next))
-                    {
-                        // Add the vertex to a hull pre-vision list.
-                        hullArea.Add(next);
-                    }
-                    else
-                    {
-                        // Quit
-                        break;
-                    }
-
-                    if ((next == entrance) && !endOfHull)
-                    {
-                        // It's the last bit of the hull, search on and exit at next found vertex.
-                        endOfHull = true;
-                        endOfHullArea.AddRange(hullArea);
-
-                        // We don't want the last vertex to be the same as the first one, because it causes the triangulation code to crash.
-                        if (endOfHullArea.Contains(entrance))
-                        {
-                            endOfHullArea.Remove(entrance);
-                        }
-                    }
-                } while (true);
+                endOfHull = false;
             }
 
-            return polygon;
+            if (endOfHull)
+            {
+                return;
+            }
         }
+
+        polygon.Add(outstanding);
+        hullArea.RemoveRange(0, hullArea.IndexOf(outstanding));
+    }
+}
 
         /// <summary>
         ///     Describes whether this instance search near pixels
@@ -1415,8 +1410,9 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="last">The last</param>
         /// <param name="current">The current</param>
         /// <param name="next">The next</param>
+        /// <param name="hullArea"></param>
         /// <returns>The bool</returns>
-        private bool GetNextHullPoint(ref Vector2 last, ref Vector2 current, out Vector2 next)
+        private bool GetNextHullPoint(ref Vector2 last, ref Vector2 current, out Vector2 next, Vertices hullArea)
         {
             int indexOfFirstPixelToCheck = GetIndexOfFirstPixelToCheck(ref last, ref current);
 
