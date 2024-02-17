@@ -701,7 +701,10 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 {
                     for (int x = (int) xCoords[i]; x <= (int) xCoords[i + 1]; x++)
                     {
-                        CheckPixelSolidity(ref x, ref y);
+                        if (IsSolid(ref x, ref y))
+                        {
+                            return;
+                        }
                     }
                 }
             }
@@ -710,38 +713,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 Debug.WriteLine("SearchCrossingEdges() % 2 != 0");
             }
         }
-
-        /// <summary>
-
-        /// Checks the pixel solidity using the specified x
-
-        /// </summary>
-
-        /// <param name="x">The </param>
-
-        /// <param name="y">The </param>
-
-        private void CheckPixelSolidity(ref int x, ref int y)
-        {
-            bool foundSolid = false;
-            bool foundTransparent = false;
-
-            if (IsSolid(ref x, ref y))
-            {
-                if (!foundTransparent)
-                {
-                    foundSolid = true;
-                }
-            }
-            else
-            {
-                if (foundSolid)
-                {
-                    foundTransparent = true;
-                }
-            }
-        }
-
+        
         /// <summary>
         ///     Describes whether this instance distance to hull acceptable holes
         /// </summary>
