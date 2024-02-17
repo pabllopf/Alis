@@ -32,6 +32,7 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Collider;
+using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity.GameObject;
 using Alis.Core.Ecs.Entity.Scene;
 using Alis.Core.Physic.Dynamics;
@@ -79,6 +80,19 @@ namespace Alis.Sample.Pong
                     .Build())
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
+                        .Add<GameObject>(mainCamera => mainCamera
+                            .Name("Camera")
+                            .WithTag("Camera")
+                            .Transform(position => position
+                                .Position(512, 320)
+                                .Build())
+                            .AddComponent<Camera>(camera => camera
+                                .Builder()
+                                .Resolution(1024, 640)
+                                .BackgroundColor(Color.Black)
+                                .Build())
+                            .Build())
+                        
                         .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
                             .AddComponent<AudioSource>(audioSource => audioSource
