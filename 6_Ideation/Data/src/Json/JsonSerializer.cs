@@ -1507,24 +1507,34 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        ///     Reads the number or literal using the specified reader
+        /// Reads the number or literal using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <param name="arrayEnd">The array end</param>
         /// <returns>The object</returns>
-        [ExcludeFromCodeCoverage]
-        internal static object ReadNumberOrLiteral(TextReader reader, JsonOptions options, out bool arrayEnd)
+        private static object ReadNumberOrLiteral(TextReader reader, JsonOptions options, out bool arrayEnd)
+        {
+            arrayEnd = false;
+            string text = ReadCharacters(reader, out arrayEnd);
+
+            return IsLiteral(text) ? HandleLiteral(text) : ParseNumber(text, options, reader);
+        }
+
+        /// <summary>
+        /// Reads the characters using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="arrayEnd">The array end</param>
+        /// <returns>The string</returns>
+        private static string ReadCharacters(TextReader reader, out bool arrayEnd)
         {
             arrayEnd = false;
             StringBuilder sb = new StringBuilder();
             do
             {
                 int i = reader.Peek();
-                if (i < 0)
-                    break;
-
-                if ((char) i == '}')
+                if (i < 0 || (char) i == '}')
                     break;
 
                 char c = (char) reader.Read();
@@ -1540,7 +1550,28 @@ namespace Alis.Core.Aspect.Data.Json
                 sb.Append(c);
             } while (true);
 
-            string text = sb.ToString();
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Describes whether is literal
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <returns>The bool</returns>
+        private static bool IsLiteral(string text)
+        {
+            return string.Compare(Null, text, StringComparison.OrdinalIgnoreCase) == 0 ||
+                   string.Compare(True, text, StringComparison.OrdinalIgnoreCase) == 0 ||
+                   string.Compare(False, text, StringComparison.OrdinalIgnoreCase) == 0;
+        }
+
+        /// <summary>
+        /// Handles the literal using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <returns>The object</returns>
+        private static object HandleLiteral(string text)
+        {
             if (string.Compare(Null, text, StringComparison.OrdinalIgnoreCase) == 0)
                 return null;
 
@@ -1550,6 +1581,18 @@ namespace Alis.Core.Aspect.Data.Json
             if (string.Compare(False, text, StringComparison.OrdinalIgnoreCase) == 0)
                 return false;
 
+            return null;
+        }
+
+        /// <summary>
+        /// Parses the number using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="options">The options</param>
+        /// <param name="reader">The reader</param>
+        /// <returns>The object</returns>
+        private static object ParseNumber(string text, JsonOptions options, TextReader reader)
+        {
             if (text.LastIndexOf("e", StringComparison.OrdinalIgnoreCase) >= 0)
             {
                 if (double.TryParse(text, NumberStyles.Float, CultureInfo.InvariantCulture, out double d))
