@@ -116,62 +116,24 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        ///     Writes the values using the specified writer
+        /// Writes the values using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="component">The component</param>
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
-        [ExcludeFromCodeCoverage]
         public void WriteValues(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             bool first = true;
             foreach (MemberDefinition member in _serializationMembers)
             {
-                bool nameChanged = false;
-                string name = member.WireName;
-                object value = member.Accessor.Get(component);
-                if (options.WriteNamedValueObjectCallback != null)
-                {
-                    JsonEventArgs e = new JsonEventArgs(writer, value, objectGraph, options, name, component)
-                    {
-                        EventType = JsonEventType.WriteNamedValueObject,
-                        First = first
-                    };
-                    options.WriteNamedValueObjectCallback(e);
-                    first = e.First;
-                    if (e.Handled)
-                        continue;
+                bool nameChanged;
+                string name;
+                object value;
+                (first, nameChanged, name, value) = HandleWriteNamedValueObjectCallback(writer, component, objectGraph, options, member, first);
 
-                    nameChanged = name != e.Name;
-                    name = e.Name;
-                    value = e.Value;
-                }
-
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipNullPropertyValues))
-                {
-                    if (value == null)
-                        continue;
-                }
-
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipZeroValueTypes))
-                {
-                    if (member.IsZeroValue(value))
-                        continue;
-                }
-
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipNullDateTimeValues))
-                {
-                    if (member.IsNullDateTimeValue(value))
-                        continue;
-                }
-
-                bool skipDefaultValues = options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipDefaultValues);
-                if (skipDefaultValues && member.HasDefaultValue)
-                {
-                    if (member.EqualsDefaultValue(value))
-                        continue;
-                }
+                if (ShouldSkipValue(options, member, value))
+                    continue;
 
                 if (!first)
                 {
@@ -182,26 +144,113 @@ namespace Alis.Core.Aspect.Data.Json
                     first = false;
                 }
 
-                if (nameChanged)
+                WriteMemberValue(writer, options, member, nameChanged, name, value, objectGraph);
+            }
+        }
+
+        /// <summary>
+        /// Handles the write named value object callback using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="component">The component</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <param name="member">The member</param>
+        /// <param name="first">The first</param>
+        /// <returns>The bool bool string object</returns>
+        private (bool, bool, string, object) HandleWriteNamedValueObjectCallback(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options, MemberDefinition member, bool first)
+        {
+            bool nameChanged = false;
+            string name = member.WireName;
+            object value = member.Accessor.Get(component);
+            if (options.WriteNamedValueObjectCallback != null)
+            {
+                JsonEventArgs e = new JsonEventArgs(writer, value, objectGraph, options, name, component)
                 {
-                    JsonSerializer.WriteNameValue(writer, name, value, objectGraph, options);
+                    EventType = JsonEventType.WriteNamedValueObject,
+                    First = first
+                };
+                options.WriteNamedValueObjectCallback(e);
+                first = e.First;
+                if (e.Handled)
+                    return (first, false, name, value);
+
+                nameChanged = name != e.Name;
+                name = e.Name;
+                value = e.Value;
+            }
+
+            return (first, nameChanged, name, value);
+        }
+
+        /// <summary>
+        /// Describes whether this instance should skip value
+        /// </summary>
+        /// <param name="options">The options</param>
+        /// <param name="member">The member</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private bool ShouldSkipValue(JsonOptions options, MemberDefinition member, object value)
+        {
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipNullPropertyValues))
+            {
+                if (value == null)
+                    return true;
+            }
+
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipZeroValueTypes))
+            {
+                if (member.IsZeroValue(value))
+                    return true;
+            }
+
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipNullDateTimeValues))
+            {
+                if (member.IsNullDateTimeValue(value))
+                    return true;
+            }
+
+            bool skipDefaultValues = options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipDefaultValues);
+            if (skipDefaultValues && member.HasDefaultValue)
+            {
+                if (member.EqualsDefaultValue(value))
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Writes the member value using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="options">The options</param>
+        /// <param name="member">The member</param>
+        /// <param name="nameChanged">The name changed</param>
+        /// <param name="name">The name</param>
+        /// <param name="value">The value</param>
+        /// <param name="objectGraph">The object graph</param>
+        private void WriteMemberValue(TextWriter writer, JsonOptions options, MemberDefinition member, bool nameChanged, string name, object value, IDictionary<object, object> objectGraph)
+        {
+            if (nameChanged)
+            {
+                JsonSerializer.WriteNameValue(writer, name, value, objectGraph, options);
+            }
+            else
+            {
+                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.WriteKeysWithoutQuotes))
+                {
+                    writer.Write(member.EscapedWireName);
                 }
                 else
                 {
-                    if (options.SerializationOptions.HasFlag(JsonSerializationOptions.WriteKeysWithoutQuotes))
-                    {
-                        writer.Write(member.EscapedWireName);
-                    }
-                    else
-                    {
-                        writer.Write('"');
-                        writer.Write(member.EscapedWireName);
-                        writer.Write('"');
-                    }
-
-                    writer.Write(':');
-                    JsonSerializer.WriteValue(writer, value, objectGraph, options);
+                    writer.Write('"');
+                    writer.Write(member.EscapedWireName);
+                    writer.Write('"');
                 }
+
+                writer.Write(':');
+                JsonSerializer.WriteValue(writer, value, objectGraph, options);
             }
         }
 
