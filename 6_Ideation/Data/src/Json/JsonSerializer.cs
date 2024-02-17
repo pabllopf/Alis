@@ -908,94 +908,227 @@ namespace Alis.Core.Aspect.Data.Json
             if (conversionType == typeof(object))
                 return value;
 
+            // If the input is null and the target type is a value type, return the default value for the target type
+            if (value == null && conversionType.IsValueType)
+            {
+                return Activator.CreateInstance(conversionType);
+            }
+
             options ??= new JsonOptions();
 
             if (value is IDictionary dic)
-            {
-                object instance = CreateInstance(target, conversionType, 0, options, value);
-                if (instance != null)
-                {
-                    Apply(dic, instance, options);
-                }
-
-                return instance;
-            }
+                return HandleDictionary(target, conversionType, dic, options);
 
             if (!(value is string))
-            {
-                if (conversionType.IsArray)
-                {
-                    if (value is IEnumerable en)
-                    {
-                        Type elementType = conversionType.GetElementType();
-                        List<object> list = new List<object>();
-                        foreach (object obj in en)
-                        {
-                            list.Add(ChangeType(target, obj, elementType, options));
-                        }
+                return HandleNonString(target, value, conversionType, options);
 
-                        if (elementType != null)
-                        {
-                            Array array = Array.CreateInstance(elementType, list.Count);
-                            Array.Copy(list.ToArray(), array, list.Count);
-
-                            return array;
-                        }
-                    }
-                }
-
-                ListObject lo = GetListObject(conversionType, options, target, value, null, null);
-                if (lo != null)
-                {
-                    if (value is IEnumerable en)
-                    {
-                        lo.List = CreateInstance(target, conversionType, en is ICollection coll ? coll.Count : 0, options, value);
-                        ApplyToListTarget(target, en, lo, options);
-                        return lo.List;
-                    }
-                }
-            }
-
-            if ((conversionType == typeof(byte[])) && value is string str)
-            {
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.ByteArrayAsBase64))
-                {
-                    try
-                    {
-                        return Convert.FromBase64String(str);
-                    }
-                    catch (Exception e)
-                    {
-                        HandleException(new JsonException("JSO0013: JSON deserialization error with a base64 array as string.", e), options);
-                        return null;
-                    }
-                }
-            }
+            if (conversionType == typeof(byte[]))
+                return HandleByteArray(value as string, options);
 
             if (conversionType == typeof(DateTime))
-            {
-                if (value is DateTime)
-                    return value;
-
-                string sValue = string.Format(CultureInfo.InvariantCulture, "{0}", value);
-                if (!string.IsNullOrEmpty(sValue))
-                {
-                    if (TryParseDateTime(sValue, options.DateTimeStyles, out DateTime dt))
-                        return dt;
-                }
-            }
+                return HandleDateTime(value, options);
 
             if (conversionType == typeof(TimeSpan))
+                return HandleTimeSpan(value);
+
+            return Conversions.ChangeType(value, conversionType, null, null);
+        }
+
+        /// <summary>
+
+        /// Handles the dictionary using the specified target
+
+        /// </summary>
+
+        /// <param name="target">The target</param>
+
+        /// <param name="conversionType">The conversion type</param>
+
+        /// <param name="dic">The dic</param>
+
+        /// <param name="options">The options</param>
+
+        /// <returns>The instance</returns>
+
+        private static object HandleDictionary(object target, Type conversionType, IDictionary dic, JsonOptions options)
+        {
+            object instance = CreateInstance(target, conversionType, 0, options, dic);
+            if (instance != null)
             {
-                string sValue = string.Format(CultureInfo.InvariantCulture, "{0}", value);
-                if (!string.IsNullOrEmpty(sValue))
+                Apply(dic, instance, options);
+            }
+
+            return instance;
+        }
+
+        /// <summary>
+
+        /// Handles the non string using the specified target
+
+        /// </summary>
+
+        /// <param name="target">The target</param>
+
+        /// <param name="value">The value</param>
+
+        /// <param name="conversionType">The conversion type</param>
+
+        /// <param name="options">The options</param>
+
+        /// <returns>The value</returns>
+
+        private static object HandleNonString(object target, object value, Type conversionType, JsonOptions options)
+        {
+            if (conversionType.IsArray && value is IEnumerable en)
+                return HandleArray(target, en, conversionType, options);
+
+            ListObject lo = GetListObject(conversionType, options, target, value, null, null);
+            if (lo != null && value is IEnumerable en2)
+                return HandleListObject(target, en2, lo, conversionType, value, options);
+
+            return value;
+        }
+
+        /// <summary>
+
+        /// Handles the array using the specified target
+
+        /// </summary>
+
+        /// <param name="target">The target</param>
+
+        /// <param name="en">The en</param>
+
+        /// <param name="conversionType">The conversion type</param>
+
+        /// <param name="options">The options</param>
+
+        /// <returns>The object</returns>
+
+        private static object HandleArray(object target, IEnumerable en, Type conversionType, JsonOptions options)
+        {
+            Type elementType = conversionType.GetElementType();
+            List<object> list = new List<object>();
+            foreach (object obj in en)
+            {
+                list.Add(ChangeType(target, obj, elementType, options));
+            }
+
+            if (elementType != null)
+            {
+                Array array = Array.CreateInstance(elementType, list.Count);
+                Array.Copy(list.ToArray(), array, list.Count);
+
+                return array;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+
+        /// Handles the list object using the specified target
+
+        /// </summary>
+
+        /// <param name="target">The target</param>
+
+        /// <param name="en">The en</param>
+
+        /// <param name="lo">The lo</param>
+
+        /// <param name="conversionType">The conversion type</param>
+
+        /// <param name="value">The value</param>
+
+        /// <param name="options">The options</param>
+
+        /// <returns>The object</returns>
+
+        private static object HandleListObject(object target, IEnumerable en, ListObject lo, Type conversionType, object value, JsonOptions options)
+        {
+            lo.List = CreateInstance(target, conversionType, en is ICollection coll ? coll.Count : 0, options, value);
+            ApplyToListTarget(target, en, lo, options);
+            return lo.List;
+        }
+
+        /// <summary>
+
+        /// Handles the byte array using the specified str
+
+        /// </summary>
+
+        /// <param name="str">The str</param>
+
+        /// <param name="options">The options</param>
+
+        /// <returns>The str</returns>
+
+        private static object HandleByteArray(string str, JsonOptions options)
+        {
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.ByteArrayAsBase64))
+            {
+                try
                 {
-                    if (long.TryParse(sValue, out long ticks))
-                        return new TimeSpan(ticks);
+                    return Convert.FromBase64String(str);
+                }
+                catch (Exception e)
+                {
+                    HandleException(new JsonException("JSO0013: JSON deserialization error with a base64 array as string.", e), options);
+                    return null;
                 }
             }
 
-            return Conversions.ChangeType(value, conversionType, null, null);
+            return str;
+        }
+
+        /// <summary>
+
+        /// Handles the date time using the specified value
+
+        /// </summary>
+
+        /// <param name="value">The value</param>
+
+        /// <param name="options">The options</param>
+
+        /// <returns>The value</returns>
+
+        private static object HandleDateTime(object value, JsonOptions options)
+        {
+            if (value is DateTime)
+                return value;
+
+            string sValue = string.Format(CultureInfo.InvariantCulture, "{0}", value);
+            if (!string.IsNullOrEmpty(sValue))
+            {
+                if (TryParseDateTime(sValue, options.DateTimeStyles, out DateTime dt))
+                    return dt;
+            }
+
+            return value;
+        }
+
+        /// <summary>
+
+        /// Handles the time span using the specified value
+
+        /// </summary>
+
+        /// <param name="value">The value</param>
+
+        /// <returns>The value</returns>
+
+        private static object HandleTimeSpan(object value)
+        {
+            string sValue = string.Format(CultureInfo.InvariantCulture, "{0}", value);
+            if (!string.IsNullOrEmpty(sValue))
+            {
+                if (long.TryParse(sValue, out long ticks))
+                    return new TimeSpan(ticks);
+            }
+
+            return value;
         }
 
         /// <summary>
@@ -1683,179 +1816,229 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>true if the text was converted successfully; otherwise, false.</returns>
         internal static bool TryParseDateTime(string text, out DateTime dt) => TryParseDateTime(text, JsonOptions.DefaultDateTimeStyles, out dt);
 
+        /// <summary>
+        /// Describes whether try parse date time
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="styles">The styles</param>
+        /// <param name="dt">The dt</param>
+        /// <returns>The bool</returns>
         [ExcludeFromCodeCoverage]
-internal static bool TryParseDateTime(string text, DateTimeStyles styles, out DateTime dt)
-{
-    dt = DateTime.MinValue;
-    if (text == null)
-        return false;
-
-    if (text.Length > 2)
-    {
-        text = RemoveQuotesFromText(text);
-    }
-
-    if (TryParseDateTimeWithEndZ(text, out dt))
-        return true;
-
-    if (TryParseDateTimeWithSpecificFormat(text, out dt))
-        return true;
-
-    if (TryParseDateTimeWithTicks(text, out dt))
-        return true;
-
-    // don't parse pure timespan style XX:YY:ZZ
-    if ((text.Length == 8) && (text[2] == ':') && (text[5] == ':'))
-    {
-        dt = DateTime.MinValue;
-        return false;
-    }
-
-    return DateTime.TryParse(text, null, styles, out dt);
-}
-
-private static string RemoveQuotesFromText(string text)
-{
-    if ((text[0] == '"') && (text[text.Length - 1] == '"'))
-    {
-        using StringReader reader = new StringReader(text);
-        reader.Read(); // skip "
-        JsonOptions options = new JsonOptions
+        internal static bool TryParseDateTime(string text, DateTimeStyles styles, out DateTime dt)
         {
-            ThrowExceptions = false
-        };
-        text = ReadString(reader, options);
-    }
+            dt = DateTime.MinValue;
+            if (text == null)
+                return false;
 
-    return text;
-}
-
-private static bool TryParseDateTimeWithEndZ(string text, out DateTime dt)
-{
-    if (text.EndsWith("Z", StringComparison.OrdinalIgnoreCase))
-    {
-        if (DateTime.TryParseExact(text, DateFormatsUtc, CultureInfo.InvariantCulture, DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out dt))
-            return true;
-    }
-
-    dt = DateTime.MinValue;
-    return false;
-}
-
-private static bool TryParseDateTimeWithSpecificFormat(string text, out DateTime dt)
-{
-    int offsetHours = 0;
-    int offsetMinutes = 0;
-
-    // s format length is 19, as in '2012-02-21T17:07:14'
-    // so we can do quick checks
-    // this portion of code is needed because we assume UTC and the default DateTime parse behavior is not that (even with AssumeUniversal)
-    if ((text.Length >= 19) &&
-        (text[4] == '-') &&
-        (text[7] == '-') &&
-        (text[10] == 'T' || text[10] == 't') &&
-        (text[13] == ':') &&
-        (text[16] == ':'))
-    {
-        if (DateTime.TryParseExact(text, "o", null, DateTimeStyles.AssumeUniversal, out dt))
-            return true;
-
-        int tz = text.Substring(19).IndexOfAny(new[] {'+', '-'});
-        string text2 = text;
-        if (tz >= 0)
-        {
-            tz += 19;
-            string offset = text.Substring(tz + 1).Trim();
-            if (int.TryParse(offset, out int i))
+            if (text.Length > 2)
             {
-                offsetHours = i / 100;
-                offsetMinutes = i % 100;
-                if (text[tz] == '-')
+                text = RemoveQuotesFromText(text);
+            }
+
+            if (TryParseDateTimeWithEndZ(text, out dt))
+                return true;
+
+            if (TryParseDateTimeWithSpecificFormat(text, out dt))
+                return true;
+
+            if (TryParseDateTimeWithTicks(text, out dt))
+                return true;
+
+            // don't parse pure timespan style XX:YY:ZZ
+            if ((text.Length == 8) && (text[2] == ':') && (text[5] == ':'))
+            {
+                dt = DateTime.MinValue;
+                return false;
+            }
+
+            return DateTime.TryParse(text, null, styles, out dt);
+        }
+
+        /// <summary>
+
+        /// Removes the quotes from text using the specified text
+
+        /// </summary>
+
+        /// <param name="text">The text</param>
+
+        /// <returns>The text</returns>
+
+        private static string RemoveQuotesFromText(string text)
+        {
+            if ((text[0] == '"') && (text[text.Length - 1] == '"'))
+            {
+                using StringReader reader = new StringReader(text);
+                reader.Read(); // skip "
+                JsonOptions options = new JsonOptions
                 {
-                    offsetHours = -offsetHours;
-                    offsetMinutes = -offsetMinutes;
+                    ThrowExceptions = false
+                };
+                text = ReadString(reader, options);
+            }
+
+            return text;
+        }
+
+        /// <summary>
+
+        /// Describes whether try parse date time with end z
+
+        /// </summary>
+
+        /// <param name="text">The text</param>
+
+        /// <param name="dt">The dt</param>
+
+        /// <returns>The bool</returns>
+
+        private static bool TryParseDateTimeWithEndZ(string text, out DateTime dt)
+        {
+            if (text.EndsWith("Z", StringComparison.OrdinalIgnoreCase))
+            {
+                if (DateTime.TryParseExact(text, DateFormatsUtc, CultureInfo.InvariantCulture, DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out dt))
+                    return true;
+            }
+
+            dt = DateTime.MinValue;
+            return false;
+        }
+
+        /// <summary>
+
+        /// Describes whether try parse date time with specific format
+
+        /// </summary>
+
+        /// <param name="text">The text</param>
+
+        /// <param name="dt">The dt</param>
+
+        /// <returns>The bool</returns>
+
+        private static bool TryParseDateTimeWithSpecificFormat(string text, out DateTime dt)
+        {
+            int offsetHours = 0;
+            int offsetMinutes = 0;
+
+            // s format length is 19, as in '2012-02-21T17:07:14'
+            // so we can do quick checks
+            // this portion of code is needed because we assume UTC and the default DateTime parse behavior is not that (even with AssumeUniversal)
+            if ((text.Length >= 19) &&
+                (text[4] == '-') &&
+                (text[7] == '-') &&
+                (text[10] == 'T' || text[10] == 't') &&
+                (text[13] == ':') &&
+                (text[16] == ':'))
+            {
+                if (DateTime.TryParseExact(text, "o", null, DateTimeStyles.AssumeUniversal, out dt))
+                    return true;
+
+                int tz = text.Substring(19).IndexOfAny(new[] {'+', '-'});
+                string text2 = text;
+                if (tz >= 0)
+                {
+                    tz += 19;
+                    string offset = text.Substring(tz + 1).Trim();
+                    if (int.TryParse(offset, out int i))
+                    {
+                        offsetHours = i / 100;
+                        offsetMinutes = i % 100;
+                        if (text[tz] == '-')
+                        {
+                            offsetHours = -offsetHours;
+                            offsetMinutes = -offsetMinutes;
+                        }
+
+                        text2 = text.Substring(0, tz);
+                    }
                 }
 
-                text2 = text.Substring(0, tz);
-            }
-        }
-
-        if (tz >= 0)
-        {
-            if (DateTime.TryParseExact(text2, "s", null, DateTimeStyles.AssumeLocal, out dt))
-            {
-                dt = dt.AddHours(offsetHours);
-                dt = dt.AddMinutes(offsetMinutes);
-                return true;
-            }
-        }
-        else
-        {
-            if (DateTime.TryParseExact(text, "s", null, DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out dt))
-                return true;
-        }
-    }
-
-    dt = DateTime.MinValue;
-    return false;
-}private static bool TryParseDateTimeWithTicks(string text, out DateTime dt)
-{
-    // read this http://weblogs.asp.net/bleroy/archive/2008/01/18/dates-and-json.aspx
-    string ticks = null;
-    int offsetHours = 0;
-    int offsetMinutes = 0;
-    DateTimeKind kind = DateTimeKind.Local;
-
-    if (text.StartsWith(DateStartJs) && text.EndsWith(DateEndJs))
-    {
-        ticks = text.Substring(DateStartJs.Length, text.Length - DateStartJs.Length - DateEndJs.Length).Trim();
-    }
-    else if (text.StartsWith(DateStart2, StringComparison.OrdinalIgnoreCase) && text.EndsWith(DateEnd2, StringComparison.OrdinalIgnoreCase))
-    {
-        ticks = text.Substring(DateStart2.Length, text.Length - DateEnd2.Length - DateStart2.Length).Trim();
-    }
-
-    if (!string.IsNullOrEmpty(ticks))
-    {
-        int startIndex = ticks[0] == '-' || ticks[0] == '+' ? 1 : 0;
-        int pos = ticks.IndexOfAny(new[] {'+', '-'}, startIndex);
-        if (pos >= 0)
-        {
-            bool neg = ticks[pos] == '-';
-            string offset = ticks.Substring(pos + 1).Trim();
-            ticks = ticks.Substring(0, pos).Trim();
-            if (int.TryParse(offset, out int i))
-            {
-                offsetHours = i / 100;
-                offsetMinutes = i % 100;
-                if (neg)
+                if (tz >= 0)
                 {
-                    offsetHours = -offsetHours;
-                    offsetMinutes = -offsetMinutes;
+                    if (DateTime.TryParseExact(text2, "s", null, DateTimeStyles.AssumeLocal, out dt))
+                    {
+                        dt = dt.AddHours(offsetHours);
+                        dt = dt.AddMinutes(offsetMinutes);
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (DateTime.TryParseExact(text, "s", null, DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out dt))
+                        return true;
                 }
             }
+
+            dt = DateTime.MinValue;
+            return false;
         }
 
-        if (long.TryParse(ticks, NumberStyles.Number, CultureInfo.InvariantCulture, out long l))
+        /// <summary>
+        /// Describes whether try parse date time with ticks
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="dt">The dt</param>
+        /// <returns>The bool</returns>
+        private static bool TryParseDateTimeWithTicks(string text, out DateTime dt)
         {
-            dt = new DateTime(l * 10000 + MinDateTimeTicks, kind);
-            if (offsetHours != 0)
+            // read this http://weblogs.asp.net/bleroy/archive/2008/01/18/dates-and-json.aspx
+            string ticks = null;
+            int offsetHours = 0;
+            int offsetMinutes = 0;
+            DateTimeKind kind = DateTimeKind.Local;
+
+            if (text.StartsWith(DateStartJs) && text.EndsWith(DateEndJs))
             {
-                dt = dt.AddHours(offsetHours);
+                ticks = text.Substring(DateStartJs.Length, text.Length - DateStartJs.Length - DateEndJs.Length).Trim();
+            }
+            else if (text.StartsWith(DateStart2, StringComparison.OrdinalIgnoreCase) && text.EndsWith(DateEnd2, StringComparison.OrdinalIgnoreCase))
+            {
+                ticks = text.Substring(DateStart2.Length, text.Length - DateEnd2.Length - DateStart2.Length).Trim();
             }
 
-            if (offsetMinutes != 0)
+            if (!string.IsNullOrEmpty(ticks))
             {
-                dt = dt.AddMinutes(offsetMinutes);
+                int startIndex = ticks[0] == '-' || ticks[0] == '+' ? 1 : 0;
+                int pos = ticks.IndexOfAny(new[] {'+', '-'}, startIndex);
+                if (pos >= 0)
+                {
+                    bool neg = ticks[pos] == '-';
+                    string offset = ticks.Substring(pos + 1).Trim();
+                    ticks = ticks.Substring(0, pos).Trim();
+                    if (int.TryParse(offset, out int i))
+                    {
+                        offsetHours = i / 100;
+                        offsetMinutes = i % 100;
+                        if (neg)
+                        {
+                            offsetHours = -offsetHours;
+                            offsetMinutes = -offsetMinutes;
+                        }
+                    }
+                }
+
+                if (long.TryParse(ticks, NumberStyles.Number, CultureInfo.InvariantCulture, out long l))
+                {
+                    dt = new DateTime(l * 10000 + MinDateTimeTicks, kind);
+                    if (offsetHours != 0)
+                    {
+                        dt = dt.AddHours(offsetHours);
+                    }
+
+                    if (offsetMinutes != 0)
+                    {
+                        dt = dt.AddMinutes(offsetMinutes);
+                    }
+
+                    return true;
+                }
             }
 
-            return true;
+            dt = DateTime.MinValue;
+            return false;
         }
-    }
 
-    dt = DateTime.MinValue;
-    return false;
-}
         /// <summary>
         ///     Handles the exception using the specified ex
         /// </summary>
@@ -1972,6 +2155,7 @@ private static bool TryParseDateTimeWithSpecificFormat(string text, out DateTime
         {
             if (writer == null)
                 throw new ArgumentNullException(nameof(writer));
+
 
             options ??= new JsonOptions();
             objectGraph ??= options.FinalObjectGraph;
@@ -2134,30 +2318,31 @@ private static bool TryParseDateTimeWithSpecificFormat(string text, out DateTime
             return false;
         }
 
-       /// <summary>
-       /// Describes whether handle time span value
-       /// </summary>
-       /// <param name="writer">The writer</param>
-       /// <param name="value">The value</param>
-       /// <param name="options">The options</param>
-       /// <returns>The bool</returns>
-       private static bool HandleTimeSpanValue(TextWriter writer, object value, JsonOptions options)
-{
-    if (value is TimeSpan ts)
-    {
-        if (options.SerializationOptions.HasFlag(JsonSerializationOptions.TimeSpanAsText))
+        /// <summary>
+        /// Describes whether handle time span value
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool HandleTimeSpanValue(TextWriter writer, object value, JsonOptions options)
         {
-            writer.Write($"\"{ts:dd\\:hh\\:mm\\:ss\\.fff}\"");
-        }
-        else
-        {
-            writer.Write(ts.TotalMilliseconds.ToString(CultureInfo.InvariantCulture));
-        }
-        return true;
-    }
+            if (value is TimeSpan ts)
+            {
+                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.TimeSpanAsText))
+                {
+                    writer.Write($"\"{ts:dd\\:hh\\:mm\\:ss\\.fff}\"");
+                }
+                else
+                {
+                    writer.Write(ts.TotalMilliseconds.ToString(CultureInfo.InvariantCulture));
+                }
 
-    return false;
-}
+                return true;
+            }
+
+            return false;
+        }
 
         /// <summary>
         /// Describes whether handle date time offset value
