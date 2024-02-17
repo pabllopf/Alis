@@ -38,7 +38,6 @@ using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Ecs.System.Setting.Graphic;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
@@ -57,12 +56,12 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <summary>
         ///     The window
         /// </summary>
-        private static IntPtr _window;
+        private IntPtr _window;
 
         /// <summary>
         ///     The box collider
         /// </summary>
-        private static readonly List<BoxCollider> ColliderBases = new List<BoxCollider>();
+        private readonly List<BoxCollider> ColliderBases = new List<BoxCollider>();
 
         /// <summary>
         ///     The default size
@@ -73,14 +72,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         ///     The renderWindow
         /// </summary>
         public IntPtr Renderer;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="GraphicManager" /> class
-        /// </summary>
-        public GraphicManager()
-        {
-        }
-
+        
         /// <summary>
         ///     Gets or sets the value of the sprites
         /// </summary>
@@ -90,12 +82,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// Gets or sets the value of the cameras
         /// </summary>
         private static List<Camera> Cameras { get; set; } = new List<Camera>();
-
-        /// <summary>
-        ///     Gets or sets the value of the setting
-        /// </summary>
-        public IGraphicSetting Setting { get; set; }
-
+        
         /// <summary>
         ///     Ons the enable
         /// </summary>
