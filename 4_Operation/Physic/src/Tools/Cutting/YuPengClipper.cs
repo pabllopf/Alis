@@ -149,11 +149,13 @@ namespace Alis.Core.Physic.Tools.Cutting
             return result;
         }
 
-        /// <summary>Calculates all intersections between two polygons.</summary>
-        /// <param name="polygon1">The first polygon.</param>
-        /// <param name="polygon2">The second polygon.</param>
-        /// <param name="slicedPoly1">Returns the first polygon with added intersection points.</param>
-        /// <param name="slicedPoly2">Returns the second polygon with added intersection points.</param>
+        /// <summary>
+        /// Calculates the intersections using the specified polygon 1
+        /// </summary>
+        /// <param name="polygon1">The polygon</param>
+        /// <param name="polygon2">The polygon</param>
+        /// <param name="slicedPoly1">The sliced poly</param>
+        /// <param name="slicedPoly2">The sliced poly</param>
         private static void CalculateIntersections(Vertices polygon1, Vertices polygon2, out Vertices slicedPoly1,
             out Vertices slicedPoly2)
         {
@@ -173,63 +175,80 @@ namespace Alis.Core.Physic.Tools.Cutting
                     Vector2 c = polygon2[j];
                     Vector2 d = polygon2[polygon2.NextIndex(j)];
 
-                    // Check if the edges intersect
-                    if (Line.LineIntersect(a, b, c, d, true, true, out Vector2 intersectionPoint))
-                    {
-                        // calculate alpha values for sorting multiple intersections points on a edge
-                        float alpha = GetAlpha(a, b, intersectionPoint);
-
-                        // Insert intersection point into first polygon
-                        if ((alpha > 0f) && (alpha < 1f))
-                        {
-                            int index = slicedPoly1.IndexOf(a) + 1;
-                            while ((index < slicedPoly1.Count) &&
-                                   (GetAlpha(a, b, slicedPoly1[index]) <= alpha))
-                            {
-                                ++index;
-                            }
-
-                            slicedPoly1.Insert(index, intersectionPoint);
-                        }
-
-                        // Insert intersection point into second polygon
-                        alpha = GetAlpha(c, d, intersectionPoint);
-                        if ((alpha > 0f) && (alpha < 1f))
-                        {
-                            int index = slicedPoly2.IndexOf(c) + 1;
-                            while ((index < slicedPoly2.Count) &&
-                                   (GetAlpha(c, d, slicedPoly2[index]) <= alpha))
-                            {
-                                ++index;
-                            }
-
-                            slicedPoly2.Insert(index, intersectionPoint);
-                        }
-                    }
+                    CalculateIntersectionsBetweenEdges(a, b, c, d, ref slicedPoly1, ref slicedPoly2);
                 }
             }
 
+            RemoveSmallEdges(ref slicedPoly1);
+            RemoveSmallEdges(ref slicedPoly2);
+        }
+
+        /// <summary>
+        /// Calculates the intersections between edges using the specified a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <param name="c">The </param>
+        /// <param name="d">The </param>
+        /// <param name="slicedPoly1">The sliced poly</param>
+        /// <param name="slicedPoly2">The sliced poly</param>
+        private static void CalculateIntersectionsBetweenEdges(Vector2 a, Vector2 b, Vector2 c, Vector2 d, ref Vertices slicedPoly1, ref Vertices slicedPoly2)
+        {
+            // Check if the edges intersect
+            if (Line.LineIntersect(a, b, c, d, true, true, out Vector2 intersectionPoint))
+            {
+                // calculate alpha values for sorting multiple intersections points on a edge
+                float alpha = GetAlpha(a, b, intersectionPoint);
+
+                // Insert intersection point into first polygon
+                if ((alpha > 0f) && (alpha < 1f))
+                {
+                    InsertIntersectionPointIntoPolygon(a, b, intersectionPoint, ref slicedPoly1);
+                }
+
+                // Insert intersection point into second polygon
+                alpha = GetAlpha(c, d, intersectionPoint);
+                if ((alpha > 0f) && (alpha < 1f))
+                {
+                    InsertIntersectionPointIntoPolygon(c, d, intersectionPoint, ref slicedPoly2);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Inserts the intersection point into polygon using the specified a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <param name="intersectionPoint">The intersection point</param>
+        /// <param name="slicedPoly">The sliced poly</param>
+        private static void InsertIntersectionPointIntoPolygon(Vector2 a, Vector2 b, Vector2 intersectionPoint, ref Vertices slicedPoly)
+        {
+            int index = slicedPoly.IndexOf(a) + 1;
+            while ((index < slicedPoly.Count) &&
+                   (GetAlpha(a, b, slicedPoly[index]) <= GetAlpha(a, b, intersectionPoint)))
+            {
+                ++index;
+            }
+
+            slicedPoly.Insert(index, intersectionPoint);
+        }
+
+        /// <summary>
+        /// Removes the small edges using the specified sliced poly
+        /// </summary>
+        /// <param name="slicedPoly">The sliced poly</param>
+        private static void RemoveSmallEdges(ref Vertices slicedPoly)
+        {
             // Check for very small edges
-            for (int i = 0; i < slicedPoly1.Count; ++i)
+            for (int i = 0; i < slicedPoly.Count; ++i)
             {
-                int iNext = slicedPoly1.NextIndex(i);
+                int iNext = slicedPoly.NextIndex(i);
 
                 //If they are closer than the distance remove vertex
-                if ((slicedPoly1[iNext] - slicedPoly1[i]).LengthSquared() <= ClipperEpsilonSquared)
+                if ((slicedPoly[iNext] - slicedPoly[i]).LengthSquared() <= ClipperEpsilonSquared)
                 {
-                    slicedPoly1.RemoveAt(i);
-                    --i;
-                }
-            }
-
-            for (int i = 0; i < slicedPoly2.Count; ++i)
-            {
-                int iNext = slicedPoly2.NextIndex(i);
-
-                //If they are closer than the distance remove vertex
-                if ((slicedPoly2[iNext] - slicedPoly2[i]).LengthSquared() <= ClipperEpsilonSquared)
-                {
-                    slicedPoly2.RemoveAt(i);
+                    slicedPoly.RemoveAt(i);
                     --i;
                 }
             }
