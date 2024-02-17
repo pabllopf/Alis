@@ -346,6 +346,11 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Sdl.SetRenderDrawColor(Renderer, color.R, color.G, color.B, color.A);
         }
 
+        /// <summary>
+        /// Calculates the rectangle dimensions using the specified camera
+        /// </summary>
+        /// <param name="camera">The camera</param>
+        /// <returns>The rectangles</returns>
         private RectangleF[] CalculateRectangleDimensions(Camera camera)
         {
             RectangleF[] rectangles = new RectangleF[ColliderBases.Count];
