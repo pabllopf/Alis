@@ -1002,93 +1002,92 @@ namespace Alis.Core.Physic.Tools.TextureTools
             return edges;
         }
 
-        /// <summary>
-        ///     Describes whether this instance split polygon edge
-        /// </summary>
-        /// <param name="polygon">The polygon</param>
-        /// <param name="coordInsideThePolygon">The coord inside the polygon</param>
-        /// <param name="vertex2Index">The vertex index</param>
-        /// <returns>The bool</returns>
         private bool SplitPolygonEdge(Vertices polygon, Vector2 coordInsideThePolygon, out int vertex2Index)
         {
-            int nearestEdgeVertex1Index = 0;
-            int nearestEdgeVertex2Index = 0;
-            bool edgeFound = false;
-
-            float shortestDistance = float.MaxValue;
-
-            bool edgeCoordFound = false;
-            Vector2 foundEdgeCoord = Vector2.Zero;
-
             List<float> xCoords = SearchCrossingEdges(polygon, (int) coordInsideThePolygon.Y);
+            Vector2 foundEdgeCoord = FindEdgeCoord(xCoords, coordInsideThePolygon);
+
+            if (foundEdgeCoord != Vector2.Zero)
+            {
+                int[] nearestEdgeVertices = FindNearestEdgeVertices(polygon, foundEdgeCoord);
+
+                if (nearestEdgeVertices[0] != -1 && nearestEdgeVertices[1] != -1)
+                {
+                    vertex2Index = InsertNewVertices(polygon, nearestEdgeVertices, foundEdgeCoord);
+                    return true;
+                }
+            }
 
             vertex2Index = 0;
+            return false;
+        }
 
-            foundEdgeCoord = new Vector2(foundEdgeCoord.X, coordInsideThePolygon.Y);
+        private Vector2 FindEdgeCoord(List<float> xCoords, Vector2 coordInsideThePolygon)
+        {
+            float shortestDistance = float.MaxValue;
+            Vector2 foundEdgeCoord = Vector2.Zero;
 
             if ((xCoords != null) && (xCoords.Count > 1) && (xCoords.Count % 2 == 0))
             {
-                float distance;
                 for (int i = 0; i < xCoords.Count; i++)
                 {
                     if (xCoords[i] < coordInsideThePolygon.X)
                     {
-                        distance = coordInsideThePolygon.X - xCoords[i];
+                        float distance = coordInsideThePolygon.X - xCoords[i];
 
                         if (distance < shortestDistance)
                         {
                             shortestDistance = distance;
-                            foundEdgeCoord = new Vector2(xCoords[i], foundEdgeCoord.Y);
-                            edgeCoordFound = true;
+                            foundEdgeCoord = new Vector2(xCoords[i], coordInsideThePolygon.Y);
                         }
-                    }
-                }
-
-                if (edgeCoordFound)
-                {
-                    shortestDistance = float.MaxValue;
-
-                    int edgeVertex2Index = polygon.Count - 1;
-
-                    int edgeVertex1Index;
-                    for (edgeVertex1Index = 0; edgeVertex1Index < polygon.Count; edgeVertex1Index++)
-                    {
-                        Vector2 tempVector1 = polygon[edgeVertex1Index];
-                        Vector2 tempVector2 = polygon[edgeVertex2Index];
-                        distance = Line.DistanceBetweenPointAndLineSegment(foundEdgeCoord,
-                            tempVector1, tempVector2);
-                        if (distance < shortestDistance)
-                        {
-                            shortestDistance = distance;
-
-                            nearestEdgeVertex1Index = edgeVertex1Index;
-                            nearestEdgeVertex2Index = edgeVertex2Index;
-
-                            edgeFound = true;
-                        }
-
-                        edgeVertex2Index = edgeVertex1Index;
-                    }
-
-                    if (edgeFound)
-                    {
-                        Vector2 slope = polygon[nearestEdgeVertex2Index] - polygon[nearestEdgeVertex1Index];
-                        slope = Vector2.Normalize(slope);
-
-                        Vector2 tempVector = polygon[nearestEdgeVertex1Index];
-                        distance = Vector2.Distance(tempVector, foundEdgeCoord);
-
-                        vertex2Index = nearestEdgeVertex1Index + 1;
-
-                        polygon.Insert(nearestEdgeVertex1Index, distance * slope + polygon[nearestEdgeVertex1Index]);
-                        polygon.Insert(nearestEdgeVertex1Index, distance * slope + polygon[vertex2Index]);
-
-                        return true;
                     }
                 }
             }
 
-            return false;
+            return foundEdgeCoord;
+        }
+
+        private int[] FindNearestEdgeVertices(Vertices polygon, Vector2 foundEdgeCoord)
+        {
+            int nearestEdgeVertex1Index = -1;
+            int nearestEdgeVertex2Index = -1;
+            float shortestDistance = float.MaxValue;
+
+            int edgeVertex2Index = polygon.Count - 1;
+
+            for (int edgeVertex1Index = 0; edgeVertex1Index < polygon.Count; edgeVertex1Index++)
+            {
+                Vector2 tempVector1 = polygon[edgeVertex1Index];
+                Vector2 tempVector2 = polygon[edgeVertex2Index];
+                float distance = Line.DistanceBetweenPointAndLineSegment(foundEdgeCoord, tempVector1, tempVector2);
+
+                if (distance < shortestDistance)
+                {
+                    shortestDistance = distance;
+                    nearestEdgeVertex1Index = edgeVertex1Index;
+                    nearestEdgeVertex2Index = edgeVertex2Index;
+                }
+
+                edgeVertex2Index = edgeVertex1Index;
+            }
+
+            return new int[] {nearestEdgeVertex1Index, nearestEdgeVertex2Index};
+        }
+
+        private int InsertNewVertices(Vertices polygon, int[] nearestEdgeVertices, Vector2 foundEdgeCoord)
+        {
+            Vector2 slope = polygon[nearestEdgeVertices[1]] - polygon[nearestEdgeVertices[0]];
+            slope = Vector2.Normalize(slope);
+
+            Vector2 tempVector = polygon[nearestEdgeVertices[0]];
+            float distance = Vector2.Distance(tempVector, foundEdgeCoord);
+
+            int vertex2Index = nearestEdgeVertices[0] + 1;
+
+            polygon.Insert(nearestEdgeVertices[0], distance * slope + polygon[nearestEdgeVertices[0]]);
+            polygon.Insert(nearestEdgeVertices[0], distance * slope + polygon[vertex2Index]);
+
+            return vertex2Index;
         }
 
         /// <summary></summary>
