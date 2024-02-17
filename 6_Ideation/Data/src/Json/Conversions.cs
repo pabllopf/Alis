@@ -341,6 +341,7 @@ namespace Alis.Core.Aspect.Data.Json
                 value = null;
                 return false;
             }
+
             return true;
         }
 
@@ -533,7 +534,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        ///     Describes whether string to enum
+        /// Describes whether string to enum
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="names">The names</param>
@@ -544,6 +545,35 @@ namespace Alis.Core.Aspect.Data.Json
         [ExcludeFromCodeCoverage]
         internal static bool StringToEnum(Type type, string[] names, Array values, string input, out object value)
         {
+            if (TryMatchNames(names, values, input, out value))
+            {
+                return true;
+            }
+
+            if (TryMatchValues(values, input, out value))
+            {
+                return true;
+            }
+
+            if (TryHandleDigitOrSignStart(type, input, out value))
+            {
+                return true;
+            }
+
+            value = Activator.CreateInstance(type);
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether try match names
+        /// </summary>
+        /// <param name="names">The names</param>
+        /// <param name="values">The values</param>
+        /// <param name="input">The input</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryMatchNames(string[] names, Array values, string input, out object value)
+        {
             for (int i = 0; i < names.Length; i++)
             {
                 if (names[i].EqualsIgnoreCase(input))
@@ -553,6 +583,19 @@ namespace Alis.Core.Aspect.Data.Json
                 }
             }
 
+            value = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether try match values
+        /// </summary>
+        /// <param name="values">The values</param>
+        /// <param name="input">The input</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryMatchValues(Array values, string input, out object value)
+        {
             for (int i = 0; i < values.GetLength(0); i++)
             {
                 object valueI = values.GetValue(i);
@@ -576,6 +619,19 @@ namespace Alis.Core.Aspect.Data.Json
                 }
             }
 
+            value = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Describes whether try handle digit or sign start
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="input">The input</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryHandleDigitOrSignStart(Type type, string input, out object value)
+        {
             if (char.IsDigit(input[0]) || input[0] == '-' || input[0] == '+')
             {
                 object obj = EnumToObject(type, input);
@@ -589,10 +645,16 @@ namespace Alis.Core.Aspect.Data.Json
                 return true;
             }
 
-            value = Activator.CreateInstance(type);
+            value = null;
             return false;
         }
 
+        /// <summary>
+        /// Enums the to object using the specified enum type
+        /// </summary>
+        /// <param name="enumType">The enum type</param>
+        /// <param name="value">The value</param>
+        /// <returns>The object</returns>
         [ExcludeFromCodeCoverage]
         internal static object EnumToObject(Type enumType, object value)
         {
