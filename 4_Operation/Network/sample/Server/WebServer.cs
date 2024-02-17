@@ -253,8 +253,9 @@ namespace Alis.Core.Network.Sample.Server
         ///     Listens the port
         /// </summary>
         /// <param name="port">The port</param>
+        /// <param name="ctsToken"></param>
         /// <exception cref="Exception"></exception>
-        public async Task Listen(int port)
+        public async Task Listen(int port, CancellationToken ctsToken)
         {
             try
             {
@@ -262,7 +263,7 @@ namespace Alis.Core.Network.Sample.Server
                 _listener = new TcpListener(localAddress, port);
                 _listener.Start();
                 Debug.Print($"Server started listening on port {port}");
-                while (true)
+                while (!ctsToken.IsCancellationRequested)
                 {
                     TcpClient tcpClient = await _listener.AcceptTcpClientAsync();
                     ProcessTcpClient(tcpClient);

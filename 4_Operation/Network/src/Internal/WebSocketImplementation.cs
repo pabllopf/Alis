@@ -197,131 +197,146 @@ namespace Alis.Core.Network.Internal
 
         public event EventHandler<PongEventArgs> Pong;
 
-        /// <summary>
-        ///     Receive web socket result
-        /// </summary>
-        /// <param name="buffer">The buffer to copy data into</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns>The web socket result details</returns>
-        public override async Task<WebSocketReceiveResult> ReceiveAsync(ArraySegment<byte> buffer,
-            CancellationToken cancellationToken)
+       /// <summary>
+       /// Receives the buffer
+       /// </summary>
+       /// <param name="buffer">The buffer</param>
+       /// <param name="cancellationToken">The cancellation token</param>
+       /// <returns>A task containing the web socket receive result</returns>
+       public override async Task<WebSocketReceiveResult> ReceiveAsync(ArraySegment<byte> buffer,
+    CancellationToken cancellationToken)
+{
+    try
+    {
+        // we may receive control frames so reading needs to happen in an infinite loop
+        while (true)
         {
-            try
-            {
-                // we may receive control frames so reading needs to happen in an infinite loop
-                while (true)
-                {
-                    // allow this operation to be cancelled from iniside OR outside this instance
-                    using CancellationTokenSource linkedCts =
-                        CancellationTokenSource.CreateLinkedTokenSource(_internalReadCts.Token, cancellationToken);
-                    WebSocketFrame frame;
+            // allow this operation to be cancelled from inside OR outside this instance
+            using CancellationTokenSource linkedCts =
+                CancellationTokenSource.CreateLinkedTokenSource(_internalReadCts.Token, cancellationToken);
+            WebSocketFrame frame = await ReadWebSocketFrame(buffer, linkedCts.Token);
 
-                    try
-                    {
-                        if (_readCursor.NumBytesLeftToRead > 0)
-                        {
-                            // If the buffer used to read the frame was too small to fit the whole frame then we need to "remember" this frame
-                            // and return what we have. Subsequent calls to the read function will simply continue reading off the stream without 
-                            // decoding the first few bytes as a websocket header.
-                            _readCursor =
-                                await WebSocketFrameReader.ReadFromCursorAsync(_stream, buffer, _readCursor,
-                                    linkedCts.Token);
-                            frame = _readCursor.WebSocketFrame;
-                        }
-                        else
-                        {
-                            _readCursor = await WebSocketFrameReader.ReadAsync(_stream, buffer, linkedCts.Token);
-                            frame = _readCursor.WebSocketFrame;
-                            Events.Log.ReceivedFrame(_guid, frame.OpCode, frame.IsFinBitSet, frame.Count);
-                        }
-                    }
-                    catch (InternalBufferOverflowException ex)
-                    {
-                        await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.MessageTooBig,
-                            "Frame too large to fit in buffer. Use message fragmentation", ex);
-                        throw;
-                    }
-                    catch (ArgumentOutOfRangeException ex)
-                    {
-                        await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.ProtocolError,
-                            "Payload length out of range", ex);
-                        throw;
-                    }
-                    catch (EndOfStreamException ex)
-                    {
-                        await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.InvalidPayloadData,
-                            "Unexpected end of stream encountered", ex);
-                        throw;
-                    }
-                    catch (OperationCanceledException ex)
-                    {
-                        await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.EndpointUnavailable,
-                            "Operation cancelled", ex);
-                        throw;
-                    }
-                    catch (Exception ex)
-                    {
-                        await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.InternalServerError,
-                            "Error reading WebSocket frame", ex);
-                        throw;
-                    }
-
-                    bool endOfMessage = frame.IsFinBitSet && (_readCursor.NumBytesLeftToRead == 0);
-                    switch (frame.OpCode)
-                    {
-                        case WebSocketOpCode.ConnectionClose:
-                            return await RespondToCloseFrame(frame, buffer, linkedCts.Token);
-                        case WebSocketOpCode.Ping:
-                            ArraySegment<byte> pingPayload = new ArraySegment<byte>(buffer.Array, buffer.Offset,
-                                _readCursor.NumBytesRead);
-                            await SendPongAsync(pingPayload, linkedCts.Token);
-                            break;
-                        case WebSocketOpCode.Pong:
-                            ArraySegment<byte> pongBuffer = new ArraySegment<byte>(buffer.Array,
-                                _readCursor.NumBytesRead, buffer.Offset);
-                            Pong?.Invoke(this, new PongEventArgs(pongBuffer));
-                            break;
-                        case WebSocketOpCode.TextFrame:
-                            if (!frame.IsFinBitSet)
-                            {
-                                // continuation frames will follow, record the message type Text
-                                _continuationFrameMessageType = WebSocketMessageType.Text;
-                            }
-
-                            return new WebSocketReceiveResult(_readCursor.NumBytesRead, WebSocketMessageType.Text,
-                                endOfMessage);
-                        case WebSocketOpCode.BinaryFrame:
-                            if (!frame.IsFinBitSet)
-                            {
-                                // continuation frames will follow, record the message type Binary
-                                _continuationFrameMessageType = WebSocketMessageType.Binary;
-                            }
-
-                            return new WebSocketReceiveResult(_readCursor.NumBytesRead, WebSocketMessageType.Binary,
-                                endOfMessage);
-                        case WebSocketOpCode.ContinuationFrame:
-                            return new WebSocketReceiveResult(_readCursor.NumBytesRead,
-                                _continuationFrameMessageType, endOfMessage);
-                        default:
-                            Exception ex = new NotSupportedException($"Unknown WebSocket opcode {frame.OpCode}");
-                            await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.ProtocolError, ex.Message, ex);
-                            throw ex;
-                    }
-                }
-            }
-            catch (Exception catchAll)
-            {
-                // Most exceptions will be caught closer to their source to send an appropriate close message (and set the WebSocketState)
-                // However, if an unhandled exception is encountered and a close message not sent then send one here
-                if (_state == WebSocketState.Open)
-                {
-                    await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.InternalServerError,
-                        "Unexpected error reading from WebSocket", catchAll);
-                }
-
-                throw;
-            }
+            bool endOfMessage = frame.IsFinBitSet && (_readCursor.NumBytesLeftToRead == 0);
+            return await HandleWebSocketOpCodes(frame, buffer, linkedCts, endOfMessage);
         }
+    }
+    catch (Exception catchAll)
+    {
+        return await HandleExceptions(catchAll);
+    }
+}
+
+/// <summary>
+
+/// Reads the web socket frame using the specified buffer
+
+/// </summary>
+
+/// <param name="buffer">The buffer</param>
+
+/// <param name="cancellationToken">The cancellation token</param>
+
+/// <returns>A task containing the web socket frame</returns>
+
+private async Task<WebSocketFrame> ReadWebSocketFrame(ArraySegment<byte> buffer, CancellationToken cancellationToken)
+{
+    try
+    {
+        if (_readCursor.NumBytesLeftToRead > 0)
+        {
+            _readCursor = await WebSocketFrameReader.ReadFromCursorAsync(_stream, buffer, _readCursor, cancellationToken);
+            return _readCursor.WebSocketFrame;
+        }
+        else
+        {
+            _readCursor = await WebSocketFrameReader.ReadAsync(_stream, buffer, cancellationToken);
+            WebSocketFrame frame = _readCursor.WebSocketFrame;
+            Events.Log.ReceivedFrame(_guid, frame.OpCode, frame.IsFinBitSet, frame.Count);
+            return frame;
+        }
+    }
+    catch (Exception ex)
+    {
+        await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.InternalServerError, "Error reading WebSocket frame", ex);
+        throw;
+    }
+}
+
+/// <summary>
+
+/// Handles the web socket op codes using the specified frame
+
+/// </summary>
+
+/// <param name="frame">The frame</param>
+
+/// <param name="buffer">The buffer</param>
+
+/// <param name="linkedCts">The linked cts</param>
+
+/// <param name="endOfMessage">The end of message</param>
+
+/// <exception cref="InvalidOperationException"></exception>
+
+/// <returns>A task containing the web socket receive result</returns>
+
+private async Task<WebSocketReceiveResult> HandleWebSocketOpCodes(WebSocketFrame frame, ArraySegment<byte> buffer, CancellationTokenSource linkedCts, bool endOfMessage)
+{
+    switch (frame.OpCode)
+    {
+        case WebSocketOpCode.ConnectionClose:
+            return await RespondToCloseFrame(frame, buffer, linkedCts.Token);
+        case WebSocketOpCode.Ping:
+            ArraySegment<byte> pingPayload = new ArraySegment<byte>(buffer.Array, buffer.Offset, _readCursor.NumBytesRead);
+            await SendPongAsync(pingPayload, linkedCts.Token);
+            break;
+        case WebSocketOpCode.Pong:
+            ArraySegment<byte> pongBuffer = new ArraySegment<byte>(buffer.Array, _readCursor.NumBytesRead, buffer.Offset);
+            Pong?.Invoke(this, new PongEventArgs(pongBuffer));
+            break;
+        case WebSocketOpCode.TextFrame:
+            if (!frame.IsFinBitSet)
+            {
+                _continuationFrameMessageType = WebSocketMessageType.Text;
+            }
+
+            return new WebSocketReceiveResult(_readCursor.NumBytesRead, WebSocketMessageType.Text, endOfMessage);
+        case WebSocketOpCode.BinaryFrame:
+            if (!frame.IsFinBitSet)
+            {
+                _continuationFrameMessageType = WebSocketMessageType.Binary;
+            }
+
+            return new WebSocketReceiveResult(_readCursor.NumBytesRead, WebSocketMessageType.Binary, endOfMessage);
+        case WebSocketOpCode.ContinuationFrame:
+            return new WebSocketReceiveResult(_readCursor.NumBytesRead, _continuationFrameMessageType, endOfMessage);
+        default:
+            Exception ex = new NotSupportedException($"Unknown WebSocket opcode {frame.OpCode}");
+            await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.ProtocolError, ex.Message, ex);
+            throw ex;
+    }
+
+    throw new InvalidOperationException();
+}
+
+/// <summary>
+
+/// Handles the exceptions using the specified catch all
+
+/// </summary>
+
+/// <param name="catchAll">The catch all</param>
+
+/// <returns>A task containing the web socket receive result</returns>
+
+private async Task<WebSocketReceiveResult> HandleExceptions(Exception catchAll)
+{
+    if (_state == WebSocketState.Open)
+    {
+        await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.InternalServerError, "Unexpected error reading from WebSocket", catchAll);
+    }
+    throw catchAll;
+}
 
         /// <summary>
         ///     Send data to the web socket
