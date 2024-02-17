@@ -55,7 +55,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         }
 
         /// <summary>
-        ///     Triangulates the polygon using the specified vertices
+        /// Triangulates the polygon using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <returns>The list</returns>
@@ -65,7 +65,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
             Vector2 lowerInt = new Vector2();
             Vector2 upperInt = new Vector2(); // intersection points
             int lowerIndex = 0, upperIndex = 0;
-            Vertices lowerPoly, upperPoly;
 
             for (int i = 0; i < vertices.Count; ++i)
             {
@@ -75,112 +74,179 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
                     float lowerDist = upperDist = float.MaxValue;
                     for (int j = 0; j < vertices.Count; ++j)
                     {
-                        // if line intersects with an edge
-                        float d;
-                        Vector2 p;
-                        if (Left(At(i - 1, vertices), At(i, vertices), At(j, vertices)) &&
-                            RightOn(At(i - 1, vertices), At(i, vertices), At(j - 1, vertices)))
-                        {
-                            // find the point of intersection
-                            p = Line.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices),
-                                At(j - 1, vertices));
-
-                            if (Right(At(i + 1, vertices), At(i, vertices), p))
-                            {
-                                // make sure it's inside the poly
-                                d = SquareDist(At(i, vertices), p);
-                                if (d < lowerDist)
-                                {
-                                    // keep only the closest intersection
-                                    lowerDist = d;
-                                    lowerInt = p;
-                                    lowerIndex = j;
-                                }
-                            }
-                        }
-
-                        if (Left(At(i + 1, vertices), At(i, vertices), At(j + 1, vertices)) &&
-                            RightOn(At(i + 1, vertices), At(i, vertices), At(j, vertices)))
-                        {
-                            p = Line.LineIntersect(At(i + 1, vertices), At(i, vertices), At(j, vertices),
-                                At(j + 1, vertices));
-
-                            if (Left(At(i - 1, vertices), At(i, vertices), p))
-                            {
-                                d = SquareDist(At(i, vertices), p);
-                                if (d < upperDist)
-                                {
-                                    upperDist = d;
-                                    upperIndex = j;
-                                    upperInt = p;
-                                }
-                            }
-                        }
+                        ProcessEdgeIntersection(i, j, vertices, ref lowerDist, ref lowerInt, ref lowerIndex);
+                        ProcessEdgeIntersection(i, j, vertices, ref upperDist, ref upperInt, ref upperIndex);
                     }
 
-                    // if there are no vertices to connect to, choose a point in the middle
                     if (lowerIndex == (upperIndex + 1) % vertices.Count)
                     {
-                        Vector2 p = (lowerInt + upperInt) / 2;
-
-                        lowerPoly = Copy(i, upperIndex, vertices);
-                        lowerPoly.Add(p);
-                        upperPoly = Copy(lowerIndex, i, vertices);
-                        upperPoly.Add(p);
+                        HandleNoVerticesToConnect(i, lowerIndex, upperIndex, lowerInt, upperInt, vertices, list);
                     }
                     else
                     {
-                        double highestScore = 0, bestIndex = lowerIndex;
-                        while (upperIndex < lowerIndex)
-                        {
-                            upperIndex += vertices.Count;
-                        }
-
-                        for (int j = lowerIndex; j <= upperIndex; ++j)
-                        {
-                            if (CanSee(i, j, vertices))
-                            {
-                                double score = 1 / (SquareDist(At(i, vertices), At(j, vertices)) + 1);
-                                if (Reflex(j, vertices))
-                                {
-                                    if (RightOn(At(j - 1, vertices), At(j, vertices), At(i, vertices)) &&
-                                        LeftOn(At(j + 1, vertices), At(j, vertices), At(i, vertices)))
-                                    {
-                                        score += 3;
-                                    }
-                                    else
-                                    {
-                                        score += 2;
-                                    }
-                                }
-                                else
-                                {
-                                    score += 1;
-                                }
-
-                                if (score > highestScore)
-                                {
-                                    bestIndex = j;
-                                    highestScore = score;
-                                }
-                            }
-                        }
-
-                        lowerPoly = Copy(i, (int) bestIndex, vertices);
-                        upperPoly = Copy((int) bestIndex, i, vertices);
+                        HandleVerticesToConnect(i, lowerIndex, upperIndex, vertices, list);
                     }
 
-                    list.AddRange(TriangulatePolygon(lowerPoly));
-                    list.AddRange(TriangulatePolygon(upperPoly));
                     return list;
                 }
             }
 
-            // polygon is already convex
+            HandleConvexPolygon(vertices, list);
+
+            return list;
+        }
+
+        /// <summary>
+
+        /// Processes the edge intersection using the specified i
+
+        /// </summary>
+
+        /// <param name="i">The </param>
+
+        /// <param name="j">The </param>
+
+        /// <param name="vertices">The vertices</param>
+
+        /// <param name="dist">The dist</param>
+
+        /// <param name="intersection">The intersection</param>
+
+        /// <param name="index">The index</param>
+
+        private static void ProcessEdgeIntersection(int i, int j, Vertices vertices, ref float dist, ref Vector2 intersection, ref int index)
+        {
+            float d;
+            Vector2 p;
+            if (Left(At(i - 1, vertices), At(i, vertices), At(j, vertices)) &&
+                RightOn(At(i - 1, vertices), At(i, vertices), At(j - 1, vertices)))
+            {
+                p = Line.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices),
+                    At(j - 1, vertices));
+
+                if (Right(At(i + 1, vertices), At(i, vertices), p))
+                {
+                    d = SquareDist(At(i, vertices), p);
+                    if (d < dist)
+                    {
+                        dist = d;
+                        intersection = p;
+                        index = j;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+
+        /// Handles the no vertices to connect using the specified i
+
+        /// </summary>
+
+        /// <param name="i">The </param>
+
+        /// <param name="lowerIndex">The lower index</param>
+
+        /// <param name="upperIndex">The upper index</param>
+
+        /// <param name="lowerInt">The lower int</param>
+
+        /// <param name="upperInt">The upper int</param>
+
+        /// <param name="vertices">The vertices</param>
+
+        /// <param name="list">The list</param>
+
+        private static void HandleNoVerticesToConnect(int i, int lowerIndex, int upperIndex, Vector2 lowerInt, Vector2 upperInt, Vertices vertices, List<Vertices> list)
+        {
+            Vector2 p = (lowerInt + upperInt) / 2;
+
+            Vertices lowerPoly = Copy(i, upperIndex, vertices);
+            lowerPoly.Add(p);
+            Vertices upperPoly = Copy(lowerIndex, i, vertices);
+            upperPoly.Add(p);
+
+            list.AddRange(TriangulatePolygon(lowerPoly));
+            list.AddRange(TriangulatePolygon(upperPoly));
+        }
+
+        /// <summary>
+
+        /// Handles the vertices to connect using the specified i
+
+        /// </summary>
+
+        /// <param name="i">The </param>
+
+        /// <param name="lowerIndex">The lower index</param>
+
+        /// <param name="upperIndex">The upper index</param>
+
+        /// <param name="vertices">The vertices</param>
+
+        /// <param name="list">The list</param>
+
+        private static void HandleVerticesToConnect(int i, int lowerIndex, int upperIndex, Vertices vertices, List<Vertices> list)
+        {
+            double highestScore = 0, bestIndex = lowerIndex;
+            while (upperIndex < lowerIndex)
+            {
+                upperIndex += vertices.Count;
+            }
+
+            for (int j = lowerIndex; j <= upperIndex; ++j)
+            {
+                if (CanSee(i, j, vertices))
+                {
+                    double score = 1 / (SquareDist(At(i, vertices), At(j, vertices)) + 1);
+                    if (Reflex(j, vertices))
+                    {
+                        if (RightOn(At(j - 1, vertices), At(j, vertices), At(i, vertices)) &&
+                            LeftOn(At(j + 1, vertices), At(j, vertices), At(i, vertices)))
+                        {
+                            score += 3;
+                        }
+                        else
+                        {
+                            score += 2;
+                        }
+                    }
+                    else
+                    {
+                        score += 1;
+                    }
+
+                    if (score > highestScore)
+                    {
+                        bestIndex = j;
+                        highestScore = score;
+                    }
+                }
+            }
+
+            Vertices lowerPoly = Copy(i, (int) bestIndex, vertices);
+            Vertices upperPoly = Copy((int) bestIndex, i, vertices);
+
+            list.AddRange(TriangulatePolygon(lowerPoly));
+            list.AddRange(TriangulatePolygon(upperPoly));
+        }
+
+        /// <summary>
+
+        /// Handles the convex polygon using the specified vertices
+
+        /// </summary>
+
+        /// <param name="vertices">The vertices</param>
+
+        /// <param name="list">The list</param>
+
+        private static void HandleConvexPolygon(Vertices vertices, List<Vertices> list)
+        {
             if (vertices.Count > Settings.PolygonVertices)
             {
-                lowerPoly = Copy(0, vertices.Count / 2, vertices);
-                upperPoly = Copy(vertices.Count / 2, 0, vertices);
+                Vertices lowerPoly = Copy(0, vertices.Count / 2, vertices);
+                Vertices upperPoly = Copy(vertices.Count / 2, 0, vertices);
                 list.AddRange(TriangulatePolygon(lowerPoly));
                 list.AddRange(TriangulatePolygon(upperPoly));
             }
@@ -188,8 +254,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
             {
                 list.Add(vertices);
             }
-
-            return list;
         }
 
         /// <summary>
