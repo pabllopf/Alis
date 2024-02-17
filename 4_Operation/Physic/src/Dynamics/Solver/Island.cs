@@ -448,7 +448,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
 
         /// <summary>
-        ///     Solves the toi using the specified min alpha
+        /// Solves the toi using the specified min alpha
         /// </summary>
         /// <param name="minAlpha">The min alpha</param>
         /// <param name="subStep">The sub step</param>
@@ -457,18 +457,40 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="contactManager">The contact manager</param>
         internal void SolveToi(float minAlpha, TimeStep subStep, int toiIndexA, int toiIndexB, ContactManager contactManager)
         {
+            InitializeTimeStep(minAlpha, subStep);
+            InitializeBodyState();
+            contactSolver.Reset(subStep, contacts.Count, contacts, positions, velocities);
+            SolvePositionConstraints(subStep, toiIndexA, toiIndexB);
+            LeapToNewState(toiIndexA, toiIndexB);
+            contactSolver.InitializeVelocityConstraints();
+            SolveVelocityConstraints(subStep);
+            IntegratePositions(subStep);
+            Report(contactSolver.VelocityConstraints, contactManager);
+        }
+
+        /// <summary>
+        /// Initializes the time step using the specified min alpha
+        /// </summary>
+        /// <param name="minAlpha">The min alpha</param>
+        /// <param name="subStep">The sub step</param>
+        private void InitializeTimeStep(float minAlpha, TimeStep subStep)
+        {
             TimeStepSolveToi.DeltaTime = (1.0f - minAlpha) * subStep.DeltaTime;
             TimeStepSolveToi.InvertedDeltaTime = 1.0f / ((1.0f - minAlpha) * subStep.DeltaTime);
             TimeStepSolveToi.DeltaTimeRatio = 1.0f;
             TimeStepSolveToi.PositionIterations = 20;
             TimeStepSolveToi.VelocityIterations = subStep.VelocityIterations;
             TimeStepSolveToi.WarmStarting = false;
+        }
 
-            // Initialize the body state.
+        /// <summary>
+        /// Initializes the body state
+        /// </summary>
+        private void InitializeBodyState()
+        {
             for (int i = 0; i < bodies.Count; ++i)
             {
                 Body b = bodies[i];
-
                 if (positions.Count <= bodies.IndexOf(b))
                 {
                     positions.Add(new Position(b.Sweep.C, b.Sweep.A));
@@ -489,11 +511,16 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     velocities[bodies.IndexOf(b)].W = b.AngularVelocity;
                 }
             }
+        }
 
-            //Velcro: We reset the contact solver instead of create a new one to reduce garbage
-            contactSolver.Reset(subStep, contacts.Count, contacts, positions, velocities);
-
-            // Solve position constraints.
+        /// <summary>
+        /// Solves the position constraints using the specified sub step
+        /// </summary>
+        /// <param name="subStep">The sub step</param>
+        /// <param name="toiIndexA">The toi index</param>
+        /// <param name="toiIndexB">The toi index</param>
+        private void SolvePositionConstraints(TimeStep subStep, int toiIndexA, int toiIndexB)
+        {
             for (int i = 0; i < subStep.PositionIterations; ++i)
             {
                 bool contactsOkay = contactSolver.SolveToiPositionConstraints(toiIndexA, toiIndexB);
@@ -502,29 +529,40 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     break;
                 }
             }
+        }
 
-            // Leap of faith to new safe state.
+        /// <summary>
+        /// Leaps the to new state using the specified toi index a
+        /// </summary>
+        /// <param name="toiIndexA">The toi index</param>
+        /// <param name="toiIndexB">The toi index</param>
+        private void LeapToNewState(int toiIndexA, int toiIndexB)
+        {
             bodies[toiIndexA].Sweep.C0 = positions[toiIndexA].C;
             bodies[toiIndexA].Sweep.A0 = positions[toiIndexA].A;
             bodies[toiIndexB].Sweep.C0 = positions[toiIndexB].C;
             bodies[toiIndexB].Sweep.A0 = positions[toiIndexB].A;
+        }
 
-            // No warm starting is needed for TOI events because warm
-            // starting impulses were applied in the discrete solver.
-            contactSolver.InitializeVelocityConstraints();
-
-            // Solve velocity constraints.
+        /// <summary>
+        /// Solves the velocity constraints using the specified sub step
+        /// </summary>
+        /// <param name="subStep">The sub step</param>
+        private void SolveVelocityConstraints(TimeStep subStep)
+        {
             for (int i = 0; i < subStep.VelocityIterations; ++i)
             {
                 contactSolver.SolveVelocityConstraints();
             }
+        }
 
-            // Don't store the TOI contact forces for warm starting
-            // because they can be quite large.
-
+        /// <summary>
+        /// Integrates the positions using the specified sub step
+        /// </summary>
+        /// <param name="subStep">The sub step</param>
+        private void IntegratePositions(TimeStep subStep)
+        {
             float h = subStep.DeltaTime;
-
-            // Integrate positions.
             for (int i = 0; i < bodies.Count; ++i)
             {
                 Vector2 c = positions[i].C;
@@ -532,7 +570,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 Vector2 v = velocities[i].V;
                 float w = velocities[i].W;
 
-                // Check for large velocities
                 Vector2 translation = h * v;
                 if (Vector2.Dot(translation, translation) > Settings.Translation * Settings.Translation)
                 {
@@ -547,7 +584,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     w *= ratio;
                 }
 
-                // Integrate
                 c += h * v;
                 a += h * w;
 
@@ -556,7 +592,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 velocities[i].V = v;
                 velocities[i].W = w;
 
-                // Sync bodies
                 Body body = bodies[i];
                 body.Sweep.C = c;
                 body.Sweep.A = a;
@@ -564,8 +599,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 body.AngularVelocity = w;
                 body.SynchronizeTransform();
             }
-
-            Report(contactSolver.VelocityConstraints, contactManager);
         }
 
         /// <summary>
