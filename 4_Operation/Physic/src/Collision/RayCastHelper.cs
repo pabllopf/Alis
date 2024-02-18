@@ -179,7 +179,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Describes whether ray cast polygon
+        ///     Describes whether ray cast polygon
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <param name="normals">The normals</param>
@@ -192,19 +192,55 @@ namespace Alis.Core.Physic.Collision
         {
             output = new RayCastOutput();
 
-            Vector2 p1 = TransformPoint(input.Point1, transform);
-            Vector2 p2 = TransformPoint(input.Point2, transform);
+            // Put the ray into the polygon's frame of reference.
+            Vector2 p1 = MathUtils.MulT(transform.Rotation, input.Point1 - transform.Position);
+            Vector2 p2 = MathUtils.MulT(transform.Rotation, input.Point2 - transform.Position);
             Vector2 d = p2 - p1;
 
             float lower = 0.0f, upper = input.Fraction;
+
             int index = -1;
 
             for (int i = 0; i < vertices.Count; ++i)
             {
-                float numerator = CalculateNumerator(i, vertices, normals, p1);
-                float denominator = CalculateDenominator(i, normals, d);
+                // p = p1 + a * d
+                // dot(normal, p - v) = 0
+                // dot(normal, p1 - v) + a * dot(normal, d) = 0
+                float numerator = Vector2.Dot(normals[i], vertices[i] - p1);
+                float denominator = Vector2.Dot(normals[i], d);
 
-                if (!ProcessDenominator(ref lower, ref upper, ref index, i, numerator, denominator))
+                if (denominator == 0.0f)
+                {
+                    if (numerator < 0.0f)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    // Note: we want this predicate without division:
+                    // lower < numerator / denominator, where denominator < 0
+                    // Since denominator < 0, we have to flip the inequality:
+                    // lower < numerator / denominator <==> denominator * lower > numerator.
+                    if ((denominator < 0.0f) && (numerator < lower * denominator))
+                    {
+                        // Increase lower.
+                        // The segment enters this half-space.
+                        lower = numerator / denominator;
+                        index = i;
+                    }
+                    else if ((denominator > 0.0f) && (numerator < upper * denominator))
+                    {
+                        // Decrease upper.
+                        // The segment exits this half-space.
+                        upper = numerator / denominator;
+                    }
+                }
+
+                // The use of epsilon here causes the assert on lower to trip
+                // in some cases. Apparently the use of epsilon was to make edge
+                // shapes work, but now those are handled separately.
+                if (upper < lower)
                 {
                     return false;
                 }
@@ -220,77 +256,6 @@ namespace Alis.Core.Physic.Collision
             }
 
             return false;
-        }
-
-        /// <summary>
-        /// Transforms the point using the specified point
-        /// </summary>
-        /// <param name="point">The point</param>
-        /// <param name="transform">The transform</param>
-        /// <returns>The vector</returns>
-        private static Vector2 TransformPoint(Vector2 point, Transform transform)
-        {
-            return MathUtils.MulT(transform.Rotation, point - transform.Position);
-        }
-
-        /// <summary>
-        /// Calculates the numerator using the specified i
-        /// </summary>
-        /// <param name="i">The </param>
-        /// <param name="vertices">The vertices</param>
-        /// <param name="normals">The normals</param>
-        /// <param name="p1">The </param>
-        /// <returns>The float</returns>
-        private static float CalculateNumerator(int i, Vertices vertices, Vertices normals, Vector2 p1)
-        {
-            return Vector2.Dot(normals[i], vertices[i] - p1);
-        }
-
-        /// <summary>
-        /// Calculates the denominator using the specified i
-        /// </summary>
-        /// <param name="i">The </param>
-        /// <param name="normals">The normals</param>
-        /// <param name="d">The </param>
-        /// <returns>The float</returns>
-        private static float CalculateDenominator(int i, Vertices normals, Vector2 d)
-        {
-            return Vector2.Dot(normals[i], d);
-        }
-
-        /// <summary>
-        /// Describes whether process denominator
-        /// </summary>
-        /// <param name="lower">The lower</param>
-        /// <param name="upper">The upper</param>
-        /// <param name="index">The index</param>
-        /// <param name="i">The </param>
-        /// <param name="numerator">The numerator</param>
-        /// <param name="denominator">The denominator</param>
-        /// <returns>The bool</returns>
-        private static bool ProcessDenominator(ref float lower, ref float upper, ref int index, int i, float numerator, float denominator)
-        {
-            if (denominator == 0.0f)
-            {
-                if (numerator < 0.0f)
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                if ((denominator < 0.0f) && (numerator < lower * denominator))
-                {
-                    lower = numerator / denominator;
-                    index = i;
-                }
-                else if ((denominator > 0.0f) && (numerator < upper * denominator))
-                {
-                    upper = numerator / denominator;
-                }
-            }
-
-            return upper >= lower;
         }
     }
 }
