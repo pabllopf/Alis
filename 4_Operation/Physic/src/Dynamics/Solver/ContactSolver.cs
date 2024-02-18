@@ -375,6 +375,8 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 {
                     SolveBlockConstraints(vc);
                 }
+
+                UpdateVelocities(vc);
             }
         }
 
@@ -618,7 +620,19 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 cp2.NormalImpulse = x.Y;
             }
         }
-        
+
+        /// <summary>
+        /// Updates the velocities using the specified vc
+        /// </summary>
+        /// <param name="vc">The vc</param>
+        private void UpdateVelocities(ContactVelocityConstraint vc)
+        {
+            velocities[vc.IndexA].V = velocities[vc.IndexA].V;
+            velocities[vc.IndexA].W = velocities[vc.IndexA].W;
+            velocities[vc.IndexB].V = velocities[vc.IndexB].V;
+            velocities[vc.IndexB].W = velocities[vc.IndexB].W;
+        }
+
         /// <summary>
         ///     Stores the impulses
         /// </summary>
