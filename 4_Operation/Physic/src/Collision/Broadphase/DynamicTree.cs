@@ -746,9 +746,11 @@ namespace Alis.Core.Physic.Collision.Broadphase
             }
         }
 
-        /// <summary>Perform a left or right rotation if node A is imbalanced.</summary>
-        /// <param name="iA"></param>
-        /// <returns>the new root index.</returns>
+        /// <summary>
+        /// Balances the to using the specified i a
+        /// </summary>
+        /// <param name="iA">The </param>
+        /// <returns>The </returns>
         private int BalanceTo(int iA)
         {
             TreeNode<T> a = nodes[iA];
@@ -767,117 +769,205 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
             if (balance > 1)
             {
-                int iF = c.Child1;
-                int iG = c.Child2;
-                TreeNode<T> f = nodes[iF];
-                TreeNode<T> g = nodes[iG];
-
-                c.Child1 = iA;
-                c.ParentOrNext = a.ParentOrNext;
-                a.ParentOrNext = iC;
-
-
-                if (c.ParentOrNext != NullNode)
-                {
-                    if (nodes[c.ParentOrNext].Child1 == iA)
-                    {
-                        nodes[c.ParentOrNext].Child1 = iC;
-                    }
-                    else
-                    {
-                        nodes[c.ParentOrNext].Child2 = iC;
-                    }
-                }
-                else
-                {
-                    root = iC;
-                }
-
-
-                if (f.Height > g.Height)
-                {
-                    c.Child2 = iF;
-                    a.Child2 = iG;
-                    g.ParentOrNext = iA;
-                    a.Aabb.Combine(ref b.Aabb, ref g.Aabb);
-                    c.Aabb.Combine(ref a.Aabb, ref f.Aabb);
-
-                    a.Height = 1 + Math.Max(b.Height, g.Height);
-                    c.Height = 1 + Math.Max(a.Height, f.Height);
-                }
-                else
-                {
-                    c.Child2 = iG;
-                    a.Child2 = iF;
-                    f.ParentOrNext = iA;
-                    a.Aabb.Combine(ref b.Aabb, ref f.Aabb);
-                    c.Aabb.Combine(ref a.Aabb, ref g.Aabb);
-
-                    a.Height = 1 + Math.Max(b.Height, f.Height);
-                    c.Height = 1 + Math.Max(a.Height, g.Height);
-                }
-
-                return iC;
+                return BalanceRight(iA, a, iC, c);
             }
-
-
-            if (balance < -1)
+            else if (balance < -1)
             {
-                int iD = b.Child1;
-                int iE = b.Child2;
-                TreeNode<T> d = nodes[iD];
-                TreeNode<T> e = nodes[iE];
-
-
-                b.Child1 = iA;
-                b.ParentOrNext = a.ParentOrNext;
-                a.ParentOrNext = iB;
-
-
-                if (b.ParentOrNext != NullNode)
-                {
-                    if (nodes[b.ParentOrNext].Child1 == iA)
-                    {
-                        nodes[b.ParentOrNext].Child1 = iB;
-                    }
-                    else
-                    {
-                        nodes[b.ParentOrNext].Child2 = iB;
-                    }
-                }
-                else
-                {
-                    root = iB;
-                }
-
-
-                if (d.Height > e.Height)
-                {
-                    b.Child2 = iD;
-                    a.Child1 = iE;
-                    e.ParentOrNext = iA;
-                    a.Aabb.Combine(ref c.Aabb, ref e.Aabb);
-                    b.Aabb.Combine(ref a.Aabb, ref d.Aabb);
-
-                    a.Height = 1 + Math.Max(c.Height, e.Height);
-                    b.Height = 1 + Math.Max(a.Height, d.Height);
-                }
-                else
-                {
-                    b.Child2 = iE;
-                    a.Child1 = iD;
-                    d.ParentOrNext = iA;
-                    a.Aabb.Combine(ref c.Aabb, ref d.Aabb);
-                    b.Aabb.Combine(ref a.Aabb, ref e.Aabb);
-
-                    a.Height = 1 + Math.Max(c.Height, d.Height);
-                    b.Height = 1 + Math.Max(a.Height, e.Height);
-                }
-
-                return iB;
+                return BalanceLeft(iA, a, iB, b);
             }
 
             return iA;
+        }
+
+        /// <summary>
+        /// Balances the right using the specified i a
+        /// </summary>
+        /// <param name="iA">The </param>
+        /// <param name="a">The </param>
+        /// <param name="iC">The </param>
+        /// <param name="c">The </param>
+        /// <returns>The int</returns>
+        private int BalanceRight(int iA, TreeNode<T> a, int iC, TreeNode<T> c)
+        {
+            int iF = c.Child1;
+            int iG = c.Child2;
+            TreeNode<T> f = nodes[iF];
+            TreeNode<T> g = nodes[iG];
+
+            c.Child1 = iA;
+            c.ParentOrNext = a.ParentOrNext;
+            a.ParentOrNext = iC;
+
+            UpdateParent(iA, iC, c.ParentOrNext);
+
+            if (f.Height > g.Height)
+            {
+                return BalanceRightCase1(iA, a, iC, c, iF, f, iG, g);
+            }
+            else
+            {
+                return BalanceRightCase2(iA, a, iC, c, iF, f, iG, g);
+            }
+        }
+
+        /// <summary>
+        /// Balances the left using the specified i a
+        /// </summary>
+        /// <param name="iA">The </param>
+        /// <param name="a">The </param>
+        /// <param name="iB">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The int</returns>
+        private int BalanceLeft(int iA, TreeNode<T> a, int iB, TreeNode<T> b)
+        {
+            int iD = b.Child1;
+            int iE = b.Child2;
+            TreeNode<T> d = nodes[iD];
+            TreeNode<T> e = nodes[iE];
+
+            b.Child1 = iA;
+            b.ParentOrNext = a.ParentOrNext;
+            a.ParentOrNext = iB;
+
+            UpdateParent(iA, iB, b.ParentOrNext);
+
+            if (d.Height > e.Height)
+            {
+                return BalanceLeftCase1(iA, a, iB, b, iD, d, iE, e);
+            }
+            else
+            {
+                return BalanceLeftCase2(iA, a, iB, b, iD, d, iE, e);
+            }
+        }
+
+        /// <summary>
+        /// Updates the parent using the specified old child
+        /// </summary>
+        /// <param name="oldChild">The old child</param>
+        /// <param name="newChild">The new child</param>
+        /// <param name="parent">The parent</param>
+        private void UpdateParent(int oldChild, int newChild, int parent)
+        {
+            if (parent != NullNode)
+            {
+                if (nodes[parent].Child1 == oldChild)
+                {
+                    nodes[parent].Child1 = newChild;
+                }
+                else
+                {
+                    nodes[parent].Child2 = newChild;
+                }
+            }
+            else
+            {
+                root = newChild;
+            }
+        }
+
+        /// <summary>
+        /// Balances the right case 1 using the specified i a
+        /// </summary>
+        /// <param name="iA">The </param>
+        /// <param name="a">The </param>
+        /// <param name="iC">The </param>
+        /// <param name="c">The </param>
+        /// <param name="iF">The </param>
+        /// <param name="f">The </param>
+        /// <param name="iG">The </param>
+        /// <param name="g">The </param>
+        /// <returns>The </returns>
+        private int BalanceRightCase1(int iA, TreeNode<T> a, int iC, TreeNode<T> c, int iF, TreeNode<T> f, int iG, TreeNode<T> g)
+        {
+            c.Child2 = iF;
+            a.Child2 = iG;
+            g.ParentOrNext = iA;
+            a.Aabb.Combine(ref nodes[a.Child1].Aabb, ref g.Aabb);
+            c.Aabb.Combine(ref a.Aabb, ref f.Aabb);
+
+            a.Height = 1 + Math.Max(nodes[a.Child1].Height, g.Height);
+            c.Height = 1 + Math.Max(a.Height, f.Height);
+
+            return iC;
+        }
+
+        /// <summary>
+        /// Balances the right case 2 using the specified i a
+        /// </summary>
+        /// <param name="iA">The </param>
+        /// <param name="a">The </param>
+        /// <param name="iC">The </param>
+        /// <param name="c">The </param>
+        /// <param name="iF">The </param>
+        /// <param name="f">The </param>
+        /// <param name="iG">The </param>
+        /// <param name="g">The </param>
+        /// <returns>The </returns>
+        private int BalanceRightCase2(int iA, TreeNode<T> a, int iC, TreeNode<T> c, int iF, TreeNode<T> f, int iG, TreeNode<T> g)
+        {
+            c.Child2 = iG;
+            a.Child2 = iF;
+            f.ParentOrNext = iA;
+            a.Aabb.Combine(ref nodes[a.Child1].Aabb, ref f.Aabb);
+            c.Aabb.Combine(ref a.Aabb, ref g.Aabb);
+
+            a.Height = 1 + Math.Max(nodes[a.Child1].Height, f.Height);
+            c.Height = 1 + Math.Max(a.Height, g.Height);
+
+            return iC;
+        }
+
+        /// <summary>
+        /// Balances the left case 1 using the specified i a
+        /// </summary>
+        /// <param name="iA">The </param>
+        /// <param name="a">The </param>
+        /// <param name="iB">The </param>
+        /// <param name="b">The </param>
+        /// <param name="iD">The </param>
+        /// <param name="d">The </param>
+        /// <param name="iE">The </param>
+        /// <param name="e">The </param>
+        /// <returns>The </returns>
+        private int BalanceLeftCase1(int iA, TreeNode<T> a, int iB, TreeNode<T> b, int iD, TreeNode<T> d, int iE, TreeNode<T> e)
+        {
+            b.Child2 = iD;
+            a.Child1 = iE;
+            e.ParentOrNext = iA;
+            a.Aabb.Combine(ref nodes[a.Child2].Aabb, ref e.Aabb);
+            b.Aabb.Combine(ref a.Aabb, ref d.Aabb);
+
+            a.Height = 1 + Math.Max(nodes[a.Child2].Height, e.Height);
+            b.Height = 1 + Math.Max(a.Height, d.Height);
+
+            return iB;
+        }
+
+        /// <summary>
+        /// Balances the left case 2 using the specified i a
+        /// </summary>
+        /// <param name="iA">The </param>
+        /// <param name="a">The </param>
+        /// <param name="iB">The </param>
+        /// <param name="b">The </param>
+        /// <param name="iD">The </param>
+        /// <param name="d">The </param>
+        /// <param name="iE">The </param>
+        /// <param name="e">The </param>
+        /// <returns>The </returns>
+        private int BalanceLeftCase2(int iA, TreeNode<T> a, int iB, TreeNode<T> b, int iD, TreeNode<T> d, int iE, TreeNode<T> e)
+        {
+            b.Child2 = iE;
+            a.Child1 = iD;
+            d.ParentOrNext = iA;
+            a.Aabb.Combine(ref nodes[a.Child2].Aabb, ref d.Aabb);
+            b.Aabb.Combine(ref a.Aabb, ref e.Aabb);
+
+            a.Height = 1 + Math.Max(nodes[a.Child2].Height, d.Height);
+            b.Height = 1 + Math.Max(a.Height, e.Height);
+
+            return iB;
         }
 
         /// <summary>Compute the height of a sub-tree.</summary>
