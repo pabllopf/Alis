@@ -635,4 +635,4 @@ namespace Alis.Core.Physic.Dynamics.Joints
             return linearError < Settings.LinearSlop;
         }
     }
-}s
+}
