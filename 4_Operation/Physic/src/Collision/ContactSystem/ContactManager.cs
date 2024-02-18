@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
         /// <summary>Fires before the solver runs</summary>
         public PreSolveHandler PreSolve;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="ContactManager" /> class
         /// </summary>
@@ -404,7 +404,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        ///     Gets the the min contact using the specified min alpha
+        /// Gets the the min contact using the specified min alpha
         /// </summary>
         /// <param name="minAlpha">The min alpha</param>
         /// <returns>The contact</returns>
@@ -412,91 +412,137 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         {
             foreach (Contact c in contactList.Where(c => c.Enabled).Where(c => c.ToiCount <= Settings.SubSteps))
             {
-                if (c.ToiFlag)
-                {
-                    // This contact has a valid cached TOI.
-                    continue;
-                }
-
-                Fixture fA = c.FixtureA;
-                Fixture fB = c.FixtureB;
-
-                // Is there a sensor?
-                if (fA.IsSensorPrivate || fB.IsSensorPrivate)
+                if (IsValidCachedToi(c) || IsSensorContact(c) || !IsActiveContact(c) || !IsCollidableContact(c))
                 {
                     continue;
                 }
 
-                Body bA = fA.Body;
-                Body bB = fB.Body;
+                AdjustSweeps(c);
 
-                BodyType typeA = bA.BodyType;
-                BodyType typeB = bB.BodyType;
+                ToiOutput output = ComputeTimeOfImpact(c);
 
-                bool activeA = bA.Awake && (typeA != BodyType.Static);
-                bool activeB = bB.Awake && (typeB != BodyType.Static);
+                UpdateContactToi(c, output);
 
-                // Is at least one body active (awake and dynamic or kinematic)?
-                if (!activeA && !activeB)
+                if (c.Toi < minAlpha)
                 {
-                    continue;
-                }
-
-                bool collideA = (bA.IsBullet || typeA != BodyType.Dynamic) &&
-                                ((fA.IgnoreCcdWith & fB.CollisionCategories) == 0) && !bA.IgnoreCcd;
-                bool collideB = (bB.IsBullet || typeB != BodyType.Dynamic) &&
-                                ((fB.IgnoreCcdWith & fA.CollisionCategories) == 0) && !bB.IgnoreCcd;
-
-                // Are these two non-bullet dynamic bodies?
-                if (!collideA && !collideB)
-                {
-                    continue;
-                }
-
-                // Compute the TOI for this contact.
-                // Put the sweeps onto the same time interval.
-                float alpha0 = bA.Sweep.Alpha0;
-
-                if (bA.Sweep.Alpha0 < bB.Sweep.Alpha0)
-                {
-                    alpha0 = bB.Sweep.Alpha0;
-                    bA.Sweep.Advance(alpha0);
-                }
-                else if (bB.Sweep.Alpha0 < bA.Sweep.Alpha0)
-                {
-                    alpha0 = bA.Sweep.Alpha0;
-                    bB.Sweep.Advance(alpha0);
-                }
-
-                // Compute the time of impact in interval [0, minTOI]
-                ToiInput input = new ToiInput
-                {
-                    ProxyA = new DistanceProxy(fA.Shape, c.ChildIndexA),
-                    ProxyB = new DistanceProxy(fB.Shape, c.ChildIndexB),
-                    SweepA = bA.Sweep,
-                    SweepB = bB.Sweep,
-                    Max = 1.0f
-                };
-
-                TimeOfImpact.CalculateTimeOfImpact(ref input, out ToiOutput output);
-
-                // Beta is the fraction of the remaining portion of the .
-                float beta = output.T;
-                float alpha = output.State == ToiOutputState.Touching ? Math.Min(alpha0 + (1.0f - alpha0) * beta, 1.0f) : 1.0f;
-
-                c.Toi = alpha;
-                c.Flags &= ~ContactFlags.ToiFlag;
-
-
-                if (alpha < minAlpha)
-                {
-                    // This is the minimum TOI found so far.
-                    lastMinAlpha = alpha;
+                    lastMinAlpha = c.Toi;
                     return c;
                 }
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Describes whether this instance is valid cached toi
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <returns>The bool</returns>
+        private bool IsValidCachedToi(Contact c)
+        {
+            return c.ToiFlag;
+        }
+
+        /// <summary>
+        /// Describes whether this instance is sensor contact
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <returns>The bool</returns>
+        private bool IsSensorContact(Contact c)
+        {
+            return c.FixtureA.IsSensorPrivate || c.FixtureB.IsSensorPrivate;
+        }
+
+        /// <summary>
+        /// Describes whether this instance is active contact
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <returns>The bool</returns>
+        private bool IsActiveContact(Contact c)
+        {
+            Body bodyA = c.FixtureA.Body;
+            Body bodyB = c.FixtureB.Body;
+
+            bool activeA = bodyA.Awake && (bodyA.BodyType != BodyType.Static);
+            bool activeB = bodyB.Awake && (bodyB.BodyType != BodyType.Static);
+
+            return activeA || activeB;
+        }
+
+        /// <summary>
+        /// Describes whether this instance is collidable contact
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <returns>The bool</returns>
+        private bool IsCollidableContact(Contact c)
+        {
+            Body bodyA = c.FixtureA.Body;
+            Body bodyB = c.FixtureB.Body;
+
+            bool collideA = (bodyA.IsBullet || bodyA.BodyType != BodyType.Dynamic) &&
+                            ((c.FixtureA.IgnoreCcdWith & c.FixtureB.CollisionCategories) == 0) && !bodyA.IgnoreCcd;
+            bool collideB = (bodyB.IsBullet || bodyB.BodyType != BodyType.Dynamic) &&
+                            ((c.FixtureB.IgnoreCcdWith & c.FixtureA.CollisionCategories) == 0) && !bodyB.IgnoreCcd;
+
+            return collideA || collideB;
+        }
+
+        /// <summary>
+        /// Adjusts the sweeps using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
+        private void AdjustSweeps(Contact c)
+        {
+            Body bodyA = c.FixtureA.Body;
+            Body bodyB = c.FixtureB.Body;
+
+            float alpha0 = bodyA.Sweep.Alpha0;
+
+            if (bodyA.Sweep.Alpha0 < bodyB.Sweep.Alpha0)
+            {
+                alpha0 = bodyB.Sweep.Alpha0;
+                bodyA.Sweep.Advance(alpha0);
+            }
+            else if (bodyB.Sweep.Alpha0 < bodyA.Sweep.Alpha0)
+            {
+                alpha0 = bodyA.Sweep.Alpha0;
+                bodyB.Sweep.Advance(alpha0);
+            }
+        }
+
+        /// <summary>
+        /// Computes the time of impact using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <returns>The output</returns>
+        private ToiOutput ComputeTimeOfImpact(Contact c)
+        {
+            ToiInput input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(c.FixtureA.Shape, c.ChildIndexA),
+                ProxyB = new DistanceProxy(c.FixtureB.Shape, c.ChildIndexB),
+                SweepA = c.FixtureA.Body.Sweep,
+                SweepB = c.FixtureB.Body.Sweep,
+                Max = 1.0f
+            };
+
+            TimeOfImpact.CalculateTimeOfImpact(ref input, out ToiOutput output);
+
+            return output;
+        }
+
+        /// <summary>
+        /// Updates the contact toi using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <param name="output">The output</param>
+        private void UpdateContactToi(Contact c, ToiOutput output)
+        {
+            float beta = output.T;
+            float alpha = output.State == ToiOutputState.Touching ? Math.Min(c.FixtureA.Body.Sweep.Alpha0 + (1.0f - c.FixtureA.Body.Sweep.Alpha0) * beta, 1.0f) : 1.0f;
+
+            c.Toi = alpha;
+            c.Flags &= ~ContactFlags.ToiFlag;
         }
 
         /// <summary>
