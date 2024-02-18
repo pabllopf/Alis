@@ -367,7 +367,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         }
 
         /// <summary>
-        /// Detects the vertices
+        ///     Detects the vertices
         /// </summary>
         /// <exception cref="Exception">Couldn't detect any vertices.</exception>
         /// <returns>The detected polygons</returns>
@@ -414,7 +414,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         }
 
         /// <summary>
-        /// Creates the polygon using the specified detected polygons
+        ///     Creates the polygon using the specified detected polygons
         /// </summary>
         /// <param name="detectedPolygons">The detected polygons</param>
         /// <param name="polygonEntrance">The polygon entrance</param>
@@ -426,19 +426,18 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 // First pass / single polygon
                 return CreateInitialPolygon(ref polygonEntrance);
             }
-            else if (polygonEntrance.HasValue)
+
+            if (polygonEntrance.HasValue)
             {
                 // Multi pass / multiple polygons
                 return CreateNextPolygon(polygonEntrance.Value);
             }
-            else
-            {
-                return new Vertices();
-            }
+
+            return new Vertices();
         }
 
         /// <summary>
-        /// Processes the hole detection using the specified polygon
+        ///     Processes the hole detection using the specified polygon
         /// </summary>
         /// <param name="polygon">The polygon</param>
         /// <param name="holeEntrance">The hole entrance</param>
@@ -471,7 +470,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         }
 
         /// <summary>
-        /// Adds the polygon to list using the specified detected polygons
+        ///     Adds the polygon to list using the specified detected polygons
         /// </summary>
         /// <param name="detectedPolygons">The detected polygons</param>
         /// <param name="polygon">The polygon</param>
@@ -621,7 +620,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         }
 
         /// <summary>
-        /// Searches the hole entrance using the specified polygon
+        ///     Searches the hole entrance using the specified polygon
         /// </summary>
         /// <param name="polygon">The polygon</param>
         /// <param name="lastHoleEntrance">The last hole entrance</param>
@@ -647,7 +646,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
             {
                 for (int y = startY; y <= endY; y++)
                 {
-                    List<float> xCoords = SearchCrossingEdges(polygon, y);
+                    List<float> xCoords = SearchEdges(polygon, y);
                     ProcessXCoordinates(xCoords, y);
                 }
             }
@@ -656,19 +655,12 @@ namespace Alis.Core.Physic.Tools.TextureTools
         }
 
         /// <summary>
-
-        /// Determines the start and end y using the specified polygon
-
+        ///     Determines the start and end y using the specified polygon
         /// </summary>
-
         /// <param name="polygon">The polygon</param>
-
         /// <param name="lastHoleEntrance">The last hole entrance</param>
-
         /// <param name="startY">The start</param>
-
         /// <param name="endY">The end</param>
-
         private void DetermineStartAndEndY(Vertices polygon, Vector2? lastHoleEntrance, out int startY, out int endY)
         {
             if (lastHoleEntrance.HasValue)
@@ -684,15 +676,10 @@ namespace Alis.Core.Physic.Tools.TextureTools
         }
 
         /// <summary>
-
-        /// Processes the x coordinates using the specified x coords
-
+        ///     Processes the x coordinates using the specified x coords
         /// </summary>
-
         /// <param name="xCoords">The coords</param>
-
         /// <param name="y">The </param>
-
         private void ProcessXCoordinates(List<float> xCoords, int y)
         {
             if ((xCoords.Count > 1) && (xCoords.Count % 2 == 0))
@@ -713,7 +700,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 Debug.WriteLine("SearchCrossingEdges() % 2 != 0");
             }
         }
-        
+
         /// <summary>
         ///     Describes whether this instance distance to hull acceptable holes
         /// </summary>
@@ -929,13 +916,13 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 throw new ArgumentException("'polygon.MainPolygon.Count' can't be less then 3.");
             }
 
-            List<float> result = SearchCrossingEdges(polygon, y);
+            List<float> result = SearchEdges(polygon, y);
 
             if (polygon.Holes != null)
             {
                 for (int i = 0; i < polygon.Holes.Count; i++)
                 {
-                    result.AddRange(SearchCrossingEdges(polygon.Holes[i], y));
+                    result.AddRange(SearchEdges(polygon.Holes[i], y));
                 }
             }
 
@@ -943,11 +930,14 @@ namespace Alis.Core.Physic.Tools.TextureTools
             return result;
         }
 
-        /// <summary>Searches the polygon for the x coordinates of the edges that cross the specified y coordinate.</summary>
-        /// <param name="polygon">Polygon to search in.</param>
-        /// <param name="y">Y coordinate to check for edges.</param>
-        /// <returns>Descending sorted list of x coordinates of edges that cross the specified y coordinate.</returns>
-        private List<float> SearchCrossingEdges(Vertices polygon, int y)
+
+        /// <summary>
+        /// Searches the edges using the specified polygon
+        /// </summary>
+        /// <param name="polygon">The polygon</param>
+        /// <param name="y">The </param>
+        /// <returns>The edges</returns>
+        private List<float> SearchEdges(Vertices polygon, int y)
         {
             List<float> edges = new List<float>();
 
@@ -964,7 +954,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     if (((vertex1.Y >= y) && (vertex2.Y <= y)) ||
                         ((vertex1.Y <= y) && (vertex2.Y >= y)))
                     {
-
                         if (Math.Abs(vertex1.Y - vertex2.Y) > 0.0001f)
                         {
                             bool addFind = true;
@@ -973,7 +962,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
                             if (Math.Abs(vertex1.Y - y) < 0.0001f)
                             {
-
                                 Vector2 nextVertex = polygon[(i + 1) % polygon.Count];
                                 Vector2 nextSlope = vertex1 - nextVertex;
 
@@ -1003,7 +991,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         }
 
         /// <summary>
-        /// Describes whether this instance split polygon edge
+        ///     Describes whether this instance split polygon edge
         /// </summary>
         /// <param name="polygon">The polygon</param>
         /// <param name="coordInsideThePolygon">The coord inside the polygon</param>
@@ -1011,14 +999,14 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <returns>The bool</returns>
         private bool SplitPolygonEdge(Vertices polygon, Vector2 coordInsideThePolygon, out int vertex2Index)
         {
-            List<float> xCoords = SearchCrossingEdges(polygon, (int) coordInsideThePolygon.Y);
+            List<float> xCoords = SearchEdges(polygon, (int) coordInsideThePolygon.Y);
             Vector2 foundEdgeCoord = FindEdgeCoord(xCoords, coordInsideThePolygon);
 
             if (foundEdgeCoord != Vector2.Zero)
             {
                 int[] nearestEdgeVertices = FindNearestEdgeVertices(polygon, foundEdgeCoord);
 
-                if (nearestEdgeVertices[0] != -1 && nearestEdgeVertices[1] != -1)
+                if ((nearestEdgeVertices[0] != -1) && (nearestEdgeVertices[1] != -1))
                 {
                     vertex2Index = InsertNewVertices(polygon, nearestEdgeVertices, foundEdgeCoord);
                     return true;
@@ -1030,7 +1018,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         }
 
         /// <summary>
-        /// Finds the edge coord using the specified x coords
+        ///     Finds the edge coord using the specified x coords
         /// </summary>
         /// <param name="xCoords">The coords</param>
         /// <param name="coordInsideThePolygon">The coord inside the polygon</param>
@@ -1061,7 +1049,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         }
 
         /// <summary>
-        /// Finds the nearest edge vertices using the specified polygon
+        ///     Finds the nearest edge vertices using the specified polygon
         /// </summary>
         /// <param name="polygon">The polygon</param>
         /// <param name="foundEdgeCoord">The found edge coord</param>
@@ -1090,11 +1078,11 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 edgeVertex2Index = edgeVertex1Index;
             }
 
-            return new int[] {nearestEdgeVertex1Index, nearestEdgeVertex2Index};
+            return new[] {nearestEdgeVertex1Index, nearestEdgeVertex2Index};
         }
 
         /// <summary>
-        /// Inserts the new vertices using the specified polygon
+        ///     Inserts the new vertices using the specified polygon
         /// </summary>
         /// <param name="polygon">The polygon</param>
         /// <param name="nearestEdgeVertices">The nearest edge vertices</param>
@@ -1116,144 +1104,130 @@ namespace Alis.Core.Physic.Tools.TextureTools
             return vertex2Index;
         }
 
-       /// <summary>
-       /// Creates the simple polygon using the specified entrance
-       /// </summary>
-       /// <param name="entrance">The entrance</param>
-       /// <param name="last">The last</param>
-       /// <returns>The polygon</returns>
-       private Vertices CreateSimplePolygon(Vector2 entrance, Vector2 last)
-{
-    bool entranceFound = false;
-    bool endOfHull = false;
-
-    Vertices polygon = new Vertices(32);
-    Vertices hullArea = new Vertices(32);
-    Vertices endOfHullArea = new Vertices(32);
-
-    Vector2 current = Vector2.Zero;
-
-    entranceFound = GetEntrancePoint(ref entrance, ref last, ref current);
-
-    if (entranceFound)
-    {
-        polygon.Add(entrance);
-        hullArea.Add(entrance);
-
-        Vector2 next = entrance;
-
-        do
+        /// <summary>
+        ///     Creates the simple polygon using the specified entrance
+        /// </summary>
+        /// <param name="entrance">The entrance</param>
+        /// <param name="last">The last</param>
+        /// <returns>The polygon</returns>
+        private Vertices CreateSimplePolygon(Vector2 entrance, Vector2 last)
         {
-            ProcessOutstandingVertex(ref endOfHull, hullArea, endOfHullArea, polygon);
+            bool entranceFound = false;
+            bool endOfHull = false;
 
-            last = current;
-            current = next;
+            Vertices polygon = new Vertices(32);
+            Vertices hullArea = new Vertices(32);
+            Vertices endOfHullArea = new Vertices(32);
 
-            if (!GetNextHullPoint(ref last, ref current, out next, hullArea))
+            Vector2 current = Vector2.Zero;
+
+            entranceFound = GetEntrancePoint(ref entrance, ref last, ref current);
+
+            if (entranceFound)
             {
-                break;
-            }
+                polygon.Add(entrance);
+                hullArea.Add(entrance);
 
-            if ((next == entrance) && !endOfHull)
-            {
-                endOfHull = true;
-                endOfHullArea.AddRange(hullArea);
+                Vector2 next = entrance;
 
-                if (endOfHullArea.Contains(entrance))
+                do
                 {
-                    endOfHullArea.Remove(entrance);
-                }
+                    ProcessOutstandingVertex(ref endOfHull, hullArea, endOfHullArea, polygon);
+
+                    last = current;
+                    current = next;
+
+                    if (!GetNextHullPoint(ref last, ref current, out next, hullArea))
+                    {
+                        break;
+                    }
+
+                    if ((next == entrance) && !endOfHull)
+                    {
+                        endOfHull = true;
+                        endOfHullArea.AddRange(hullArea);
+
+                        if (endOfHullArea.Contains(entrance))
+                        {
+                            endOfHullArea.Remove(entrance);
+                        }
+                    }
+                } while (true);
             }
-        } while (true);
-    }
 
-    return polygon;
-}
-
-/// <summary>
-
-/// Describes whether this instance get entrance point
-
-/// </summary>
-
-/// <param name="entrance">The entrance</param>
-
-/// <param name="last">The last</param>
-
-/// <param name="current">The current</param>
-
-/// <returns>The entrance found</returns>
-
-private bool GetEntrancePoint(ref Vector2 entrance, ref Vector2 last, ref Vector2 current)
-{
-    bool entranceFound = false;
-    if (entrance == Vector2.Zero || !InBounds(ref entrance))
-    {
-        entranceFound = SearchHullEntrance(out entrance);
-
-        if (entranceFound)
-        {
-            current = new Vector2(entrance.X - 1f, entrance.Y);
+            return polygon;
         }
-    }
-    else
-    {
-        if (IsSolid(ref entrance))
+
+        /// <summary>
+        ///     Describes whether this instance get entrance point
+        /// </summary>
+        /// <param name="entrance">The entrance</param>
+        /// <param name="last">The last</param>
+        /// <param name="current">The current</param>
+        /// <returns>The entrance found</returns>
+        private bool GetEntrancePoint(ref Vector2 entrance, ref Vector2 last, ref Vector2 current)
         {
-            if (IsNearPixel(ref entrance, ref last))
+            bool entranceFound = false;
+            if (entrance == Vector2.Zero || !InBounds(ref entrance))
             {
-                current = last;
-                entranceFound = true;
+                entranceFound = SearchHullEntrance(out entrance);
+
+                if (entranceFound)
+                {
+                    current = new Vector2(entrance.X - 1f, entrance.Y);
+                }
             }
             else
             {
-                if (SearchNearPixels(false, ref entrance, out Vector2 temp))
+                if (IsSolid(ref entrance))
                 {
-                    current = temp;
-                    entranceFound = true;
+                    if (IsNearPixel(ref entrance, ref last))
+                    {
+                        current = last;
+                        entranceFound = true;
+                    }
+                    else
+                    {
+                        if (SearchNearPixels(false, ref entrance, out Vector2 temp))
+                        {
+                            current = temp;
+                            entranceFound = true;
+                        }
+                    }
                 }
             }
+
+            return entranceFound;
         }
-    }
 
-    return entranceFound;
-}
-
-/// <summary>
-
-/// Processes the outstanding vertex using the specified end of hull
-
-/// </summary>
-
-/// <param name="endOfHull">The end of hull</param>
-
-/// <param name="hullArea">The hull area</param>
-
-/// <param name="endOfHullArea">The end of hull area</param>
-
-/// <param name="polygon">The polygon</param>
-
-private void ProcessOutstandingVertex(ref bool endOfHull, Vertices hullArea, Vertices endOfHullArea, Vertices polygon)
-{
-    if (SearchForOutstandingVertex(hullArea, out Vector2 outstanding))
-    {
-        if (endOfHull)
+        /// <summary>
+        ///     Processes the outstanding vertex using the specified end of hull
+        /// </summary>
+        /// <param name="endOfHull">The end of hull</param>
+        /// <param name="hullArea">The hull area</param>
+        /// <param name="endOfHullArea">The end of hull area</param>
+        /// <param name="polygon">The polygon</param>
+        private void ProcessOutstandingVertex(ref bool endOfHull, Vertices hullArea, Vertices endOfHullArea, Vertices polygon)
         {
-            if (endOfHullArea.Contains(outstanding))
+            if (SearchForOutstandingVertex(hullArea, out Vector2 outstanding))
             {
-                endOfHull = false;
-            }
+                if (endOfHull)
+                {
+                    if (endOfHullArea.Contains(outstanding))
+                    {
+                        endOfHull = false;
+                    }
 
-            if (endOfHull)
-            {
-                return;
+                    if (endOfHull)
+                    {
+                        return;
+                    }
+                }
+
+                polygon.Add(outstanding);
+                hullArea.RemoveRange(0, hullArea.IndexOf(outstanding));
             }
         }
-
-        polygon.Add(outstanding);
-        hullArea.RemoveRange(0, hullArea.IndexOf(outstanding));
-    }
-}
 
         /// <summary>
         ///     Describes whether this instance search near pixels
@@ -1332,7 +1306,7 @@ private void ProcessOutstandingVertex(ref bool endOfHull, Vertices hullArea, Ver
         }
 
         /// <summary>
-        /// Describes whether this instance search next hull entrance
+        ///     Describes whether this instance search next hull entrance
         /// </summary>
         /// <param name="detectedPolygons">The detected polygons</param>
         /// <param name="start">The start</param>
@@ -1371,17 +1345,14 @@ private void ProcessOutstandingVertex(ref bool endOfHull, Vertices hullArea, Ver
         }
 
         /// <summary>
-        /// Calculates the start index using the specified start
+        ///     Calculates the start index using the specified start
         /// </summary>
         /// <param name="start">The start</param>
         /// <returns>The int</returns>
-        private int CalculateStartIndex(Vector2 start)
-        {
-            return (int) start.X + (int) start.Y * width;
-        }
+        private int CalculateStartIndex(Vector2 start) => (int) start.X + (int) start.Y * width;
 
         /// <summary>
-        /// Calculates the entrance using the specified i
+        ///     Calculates the entrance using the specified i
         /// </summary>
         /// <param name="i">The </param>
         /// <returns>The vector</returns>
@@ -1392,7 +1363,7 @@ private void ProcessOutstandingVertex(ref bool endOfHull, Vertices hullArea, Ver
         }
 
         /// <summary>
-        /// Describes whether this instance is in polygon
+        ///     Describes whether this instance is in polygon
         /// </summary>
         /// <param name="detectedPolygons">The detected polygons</param>
         /// <param name="entrance">The entrance</param>
@@ -1551,7 +1522,7 @@ private void ProcessOutstandingVertex(ref bool endOfHull, Vertices hullArea, Ver
             {
                 return data[tempIsSolidX + tempIsSolidY * width] >= alphaTolerance;
             }
-            
+
             return false;
         }
 

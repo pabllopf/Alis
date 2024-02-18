@@ -249,9 +249,8 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             manifold.Points.Value0.LocalPoint = circlePosition;
         }
 
-
         /// <summary>
-        ///     Collides the edge and polygon using the specified manifold
+        /// Collides the edge and polygon using the specified manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="edgeA">The edge</param>
@@ -283,13 +282,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 return;
             }
 
-            // Get polygonB in frameA
-            TempPolygon tempPolygonB = new TempPolygon(polygonB.VerticesPrivate.Count);
-            for (int i = 0; i < polygonB.VerticesPrivate.Count; ++i)
-            {
-                tempPolygonB.Vertices[i] = MathUtils.Mul(ref xf, polygonB.VerticesPrivate[i]);
-                tempPolygonB.Normals[i] = MathUtils.Mul(xf.Rotation, polygonB.NormalsPrivate[i]);
-            }
+            TempPolygon tempPolygonB = GetPolygonInFrameA(polygonB, xf);
 
             float radius = polygonB.RadiusPrivate + edgeA.RadiusPrivate;
 
@@ -305,6 +298,76 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 return;
             }
 
+            EpAxis primaryAxis = GetPrimaryAxis(polygonAxis, edgeAxis, radius);
+
+            if (oneSided)
+            {
+                primaryAxis = HandleOneSidedEdge(primaryAxis, edgeAxis, v1, v2, edge1, edgeA);
+            }
+
+            if (primaryAxis.Type == EpAxisType.Unknown)
+            {
+                return;
+            }
+
+            ReferenceFace ref1 = GetReferenceFace(primaryAxis, tempPolygonB, v1, v2, edge1, polygonB, edgeA, ref manifold);
+
+            // Clip incident edge against reference face side planes
+            FixedArray2<ClipVertex> clipPoints1;
+            FixedArray2<ClipVertex> clipPoints2;
+            int np;
+
+            // Define clipPoints before using it
+            FixedArray2<ClipVertex> clipPoints = new FixedArray2<ClipVertex>();
+
+            // Clip to side 1
+            np = Collision.ClipSegmentToLine(out clipPoints1, ref clipPoints, ref1.SideNormal1, ref1.SideOffset1,
+                ref1.I1);
+
+            if (np < Settings.ManifoldPoints)
+            {
+                return;
+            }
+
+            // Clip to side 2
+            np = Collision.ClipSegmentToLine(out clipPoints2, ref clipPoints1, ref1.SideNormal2, ref1.SideOffset2,
+                ref1.I2);
+
+            if (np < Settings.ManifoldPoints)
+            {
+                return;
+            }
+
+            SetManifoldPoints(ref manifold, primaryAxis, ref1, clipPoints2, radius, xf, polygonB);
+        }
+
+        /// <summary>
+        /// Gets the polygon in frame a using the specified polygon b
+        /// </summary>
+        /// <param name="polygonB">The polygon</param>
+        /// <param name="xf">The xf</param>
+        /// <returns>The temp polygon</returns>
+        private static TempPolygon GetPolygonInFrameA(PolygonShape polygonB, Transform xf)
+        {
+            TempPolygon tempPolygonB = new TempPolygon(polygonB.VerticesPrivate.Count);
+            for (int i = 0; i < polygonB.VerticesPrivate.Count; ++i)
+            {
+                tempPolygonB.Vertices[i] = MathUtils.Mul(ref xf, polygonB.VerticesPrivate[i]);
+                tempPolygonB.Normals[i] = MathUtils.Mul(xf.Rotation, polygonB.NormalsPrivate[i]);
+            }
+
+            return tempPolygonB;
+        }
+
+        /// <summary>
+        /// Gets the primary axis using the specified polygon axis
+        /// </summary>
+        /// <param name="polygonAxis">The polygon axis</param>
+        /// <param name="edgeAxis">The edge axis</param>
+        /// <param name="radius">The radius</param>
+        /// <returns>The primary axis</returns>
+        private static EpAxis GetPrimaryAxis(EpAxis polygonAxis, EpAxis edgeAxis, float radius)
+        {
             // Use hysteresis for jitter reduction.
             const float kRelativeTol = 0.98f;
             const float kAbsoluteTol = 0.001f;
@@ -319,63 +382,91 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 primaryAxis = edgeAxis;
             }
 
-            if (oneSided)
+            return primaryAxis;
+        }
+
+        /// <summary>
+        /// Handles the one sided edge using the specified primary axis
+        /// </summary>
+        /// <param name="primaryAxis">The primary axis</param>
+        /// <param name="edgeAxis">The edge axis</param>
+        /// <param name="v1">The </param>
+        /// <param name="v2">The </param>
+        /// <param name="edge1">The edge</param>
+        /// <param name="edgeA">The edge</param>
+        /// <returns>The primary axis</returns>
+        private static EpAxis HandleOneSidedEdge(EpAxis primaryAxis, EpAxis edgeAxis, Vector2 v1, Vector2 v2, Vector2 edge1, EdgeShape edgeA)
+        {
+            Vector2 edge0 = v1 - edgeA.Vertex0;
+            edge0 = Vector2.Normalize(edge0);
+            Vector2 normal0 = new Vector2(edge0.Y, -edge0.X);
+            bool convex1 = MathUtils.Cross(edge0, edge1) >= 0.0f;
+
+            Vector2 edge2 = edgeA.Vertex3 - v2;
+            edge2 = Vector2.Normalize(edge2);
+            Vector2 normal2 = new Vector2(edge2.Y, -edge2.X);
+            bool convex2 = MathUtils.Cross(edge1, edge2) >= 0.0f;
+
+            const float sinTol = 0.1f;
+            bool side1 = MathUtils.Dot(primaryAxis.Normal, edge1) <= 0.0f;
+
+            // Check Gauss Map
+            if (side1)
             {
-                // Smooth collision
-                // See https://box2d.org/posts/2020/06/ghost-collisions/
-
-                Vector2 edge0 = v1 - edgeA.Vertex0;
-                edge0 = Vector2.Normalize(edge0);
-                Vector2 normal0 = new Vector2(edge0.Y, -edge0.X);
-                bool convex1 = MathUtils.Cross(edge0, edge1) >= 0.0f;
-
-                Vector2 edge2 = edgeA.Vertex3 - v2;
-                edge2 = Vector2.Normalize(edge2);
-                Vector2 normal2 = new Vector2(edge2.Y, -edge2.X);
-                bool convex2 = MathUtils.Cross(edge1, edge2) >= 0.0f;
-
-                const float sinTol = 0.1f;
-                bool side1 = MathUtils.Dot(primaryAxis.Normal, edge1) <= 0.0f;
-
-                // Check Gauss Map
-                if (side1)
+                if (convex1)
                 {
-                    if (convex1)
+                    if (MathUtils.Cross(primaryAxis.Normal, normal0) > sinTol)
                     {
-                        if (MathUtils.Cross(primaryAxis.Normal, normal0) > sinTol)
-                        {
-                            // Skip region
-                            return;
-                        }
+                        // Skip region
+                        primaryAxis.Type = EpAxisType.Unknown;
+                        return primaryAxis;
+                    }
 
-                        // Admit region
-                    }
-                    else
-                    {
-                        // Snap region
-                        primaryAxis = edgeAxis;
-                    }
+                    // Admit region
                 }
                 else
                 {
-                    if (convex2)
+                    // Snap region
+                    primaryAxis = edgeAxis;
+                }
+            }
+            else
+            {
+                if (convex2)
+                {
+                    if (MathUtils.Cross(normal2, primaryAxis.Normal) > sinTol)
                     {
-                        if (MathUtils.Cross(normal2, primaryAxis.Normal) > sinTol)
-                        {
-                            // Skip region
-                            return;
-                        }
+                        // Skip region
+                        primaryAxis.Type = EpAxisType.Unknown;
+                        return primaryAxis;
+                    }
 
-                        // Admit region
-                    }
-                    else
-                    {
-                        // Snap region
-                        primaryAxis = edgeAxis;
-                    }
+                    // Admit region
+                }
+                else
+                {
+                    // Snap region
+                    primaryAxis = edgeAxis;
                 }
             }
 
+            return primaryAxis;
+        }
+
+        /// <summary>
+        /// Gets the reference face using the specified primary axis
+        /// </summary>
+        /// <param name="primaryAxis">The primary axis</param>
+        /// <param name="tempPolygonB">The temp polygon</param>
+        /// <param name="v1">The </param>
+        /// <param name="v2">The </param>
+        /// <param name="edge1">The edge</param>
+        /// <param name="polygonB">The polygon</param>
+        /// <param name="edgeA">The edge</param>
+        /// <param name="manifold">The manifold</param>
+        /// <returns>The ref</returns>
+        private static ReferenceFace GetReferenceFace(EpAxis primaryAxis, TempPolygon tempPolygonB, Vector2 v1, Vector2 v2, Vector2 edge1, PolygonShape polygonB, EdgeShape edgeA, ref Manifold manifold)
+        {
             FixedArray2<ClipVertex> clipPoints = new FixedArray2<ClipVertex>();
             ReferenceFace ref1;
             if (primaryAxis.Type == EpAxisType.EdgeA)
@@ -448,29 +539,21 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             ref1.SideOffset1 = MathUtils.Dot(ref1.SideNormal1, ref1.V1);
             ref1.SideOffset2 = MathUtils.Dot(ref1.SideNormal2, ref1.V2);
 
-            // Clip incident edge against reference face side planes
-            FixedArray2<ClipVertex> clipPoints1;
-            FixedArray2<ClipVertex> clipPoints2;
-            int np;
+            return ref1;
+        }
 
-            // Clip to side 1
-            np = Collision.ClipSegmentToLine(out clipPoints1, ref clipPoints, ref1.SideNormal1, ref1.SideOffset1,
-                ref1.I1);
-
-            if (np < Settings.ManifoldPoints)
-            {
-                return;
-            }
-
-            // Clip to side 2
-            np = Collision.ClipSegmentToLine(out clipPoints2, ref clipPoints1, ref1.SideNormal2, ref1.SideOffset2,
-                ref1.I2);
-
-            if (np < Settings.ManifoldPoints)
-            {
-                return;
-            }
-
+        /// <summary>
+        /// Sets the manifold points using the specified manifold
+        /// </summary>
+        /// <param name="manifold">The manifold</param>
+        /// <param name="primaryAxis">The primary axis</param>
+        /// <param name="ref1">The ref</param>
+        /// <param name="clipPoints2">The clip points</param>
+        /// <param name="radius">The radius</param>
+        /// <param name="xf">The xf</param>
+        /// <param name="polygonB">The polygon</param>
+        private static void SetManifoldPoints(ref Manifold manifold, EpAxis primaryAxis, ReferenceFace ref1, FixedArray2<ClipVertex> clipPoints2, float radius, Transform xf, PolygonShape polygonB)
+        {
             // Now clipPoints2 contains the clipped points.
             if (primaryAxis.Type == EpAxisType.EdgeA)
             {

@@ -150,7 +150,7 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Calculates the intersections using the specified polygon 1
+        ///     Calculates the intersections using the specified polygon 1
         /// </summary>
         /// <param name="polygon1">The polygon</param>
         /// <param name="polygon2">The polygon</param>
@@ -184,7 +184,7 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Calculates the intersections between edges using the specified a
+        ///     Calculates the intersections between edges using the specified a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -216,7 +216,7 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Inserts the intersection point into polygon using the specified a
+        ///     Inserts the intersection point into polygon using the specified a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -235,7 +235,7 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Removes the small edges using the specified sliced poly
+        ///     Removes the small edges using the specified sliced poly
         /// </summary>
         /// <param name="slicedPoly">The sliced poly</param>
         private static void RemoveSmallEdges(ref Vertices slicedPoly)
@@ -268,7 +268,7 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Calculates the result chain using the specified poly 1 coeff
+        ///     Calculates the result chain using the specified poly 1 coeff
         /// </summary>
         /// <param name="poly1Coeff">The poly coeff</param>
         /// <param name="poly1Simplicies">The poly simplicies</param>
@@ -286,7 +286,7 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Calculates the edge character for poly 1 using the specified poly 1 coeff
+        ///     Calculates the edge character for poly 1 using the specified poly 1 coeff
         /// </summary>
         /// <param name="poly1Coeff">The poly coeff</param>
         /// <param name="poly1Simplicies">The poly simplicies</param>
@@ -304,7 +304,7 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Calculates the edge character using the specified i
+        ///     Calculates the edge character using the specified i
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="poly1Simplicies">The poly simplicies</param>
@@ -332,7 +332,7 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Calculates the edge character for non contained edges using the specified i
+        ///     Calculates the edge character for non contained edges using the specified i
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="poly1Simplicies">The poly simplicies</param>
@@ -355,7 +355,7 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Adds the edge to result using the specified edge character
+        ///     Adds the edge to result using the specified edge character
         /// </summary>
         /// <param name="edgeCharacter">The edge character</param>
         /// <param name="clipType">The clip type</param>
@@ -380,7 +380,7 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Calculates the edge character for poly 2 using the specified poly 1 simplicies
+        ///     Calculates the edge character for poly 2 using the specified poly 1 simplicies
         /// </summary>
         /// <param name="poly1Simplicies">The poly simplicies</param>
         /// <param name="poly2Coeff">The poly coeff</param>
@@ -402,30 +402,24 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Describes whether is contained in result simplices
+        ///     Describes whether is contained in result simplices
         /// </summary>
         /// <param name="resultSimplices">The result simplices</param>
         /// <param name="edge">The edge</param>
         /// <returns>The bool</returns>
-        private static bool IsContainedInResultSimplices(List<Edge> resultSimplices, Edge edge)
-        {
-            return resultSimplices.Contains(edge) || resultSimplices.Contains(-edge);
-        }
+        private static bool IsContainedInResultSimplices(List<Edge> resultSimplices, Edge edge) => resultSimplices.Contains(edge) || resultSimplices.Contains(-edge);
 
         /// <summary>
-        /// Calculates the edge character using the specified poly 1 simplicies
+        ///     Calculates the edge character using the specified poly 1 simplicies
         /// </summary>
         /// <param name="poly1Simplicies">The poly simplicies</param>
         /// <param name="edge">The edge</param>
         /// <param name="clipType">The clip type</param>
         /// <returns>The float</returns>
-        private static float CalculateEdgeCharacter(List<Edge> poly1Simplicies, Edge edge, PolyClipType clipType)
-        {
-            return poly1Simplicies.Contains(-edge) && (clipType == PolyClipType.Union) ? 1f : 0f;
-        }
+        private static float CalculateEdgeCharacter(List<Edge> poly1Simplicies, Edge edge, PolyClipType clipType) => poly1Simplicies.Contains(-edge) && (clipType == PolyClipType.Union) ? 1f : 0f;
 
         /// <summary>
-        /// Calculates the edge character for non contained edges using the specified poly 1 simplicies
+        ///     Calculates the edge character for non contained edges using the specified poly 1 simplicies
         /// </summary>
         /// <param name="poly1Simplicies">The poly simplicies</param>
         /// <param name="edge">The edge</param>
@@ -446,7 +440,7 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Adds the edge to result simplices using the specified edge character
+        ///     Adds the edge to result simplices using the specified edge character
         /// </summary>
         /// <param name="edgeCharacter">The edge character</param>
         /// <param name="clipType">The clip type</param>
@@ -471,7 +465,7 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Builds the polygons from chain using the specified simplicies
+        ///     Builds the polygons from chain using the specified simplicies
         /// </summary>
         /// <param name="simplicies">The simplicies</param>
         /// <param name="result">The result</param>
@@ -497,21 +491,18 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Creates the output vertices using the specified simplicies
+        ///     Creates the output vertices using the specified simplicies
         /// </summary>
         /// <param name="simplicies">The simplicies</param>
         /// <returns>The vertices</returns>
-        private static Vertices CreateOutputVertices(List<Edge> simplicies)
+        private static Vertices CreateOutputVertices(List<Edge> simplicies) => new Vertices
         {
-            return new Vertices
-            {
-                simplicies[0].EdgeStart,
-                simplicies[0].EdgeEnd
-            };
-        }
+            simplicies[0].EdgeStart,
+            simplicies[0].EdgeEnd
+        };
 
         /// <summary>
-        /// Describes whether process simplicies
+        ///     Describes whether process simplicies
         /// </summary>
         /// <param name="simplicies">The simplicies</param>
         /// <param name="output">The output</param>
@@ -539,7 +530,7 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Describes whether process edge start
+        ///     Describes whether process edge start
         /// </summary>
         /// <param name="simplicies">The simplicies</param>
         /// <param name="output">The output</param>
@@ -559,7 +550,7 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Describes whether process edge end
+        ///     Describes whether process edge end
         /// </summary>
         /// <param name="simplicies">The simplicies</param>
         /// <param name="output">The output</param>
@@ -579,7 +570,7 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Describes whether check and add edge end
+        ///     Describes whether check and add edge end
         /// </summary>
         /// <param name="simplicies">The simplicies</param>
         /// <param name="output">The output</param>
@@ -591,15 +582,13 @@ namespace Alis.Core.Physic.Tools.Cutting
             {
                 return true;
             }
-            else
-            {
-                output.Add(simplicies[index].EdgeEnd);
-                return false;
-            }
+
+            output.Add(simplicies[index].EdgeEnd);
+            return false;
         }
 
         /// <summary>
-        /// Describes whether check and add edge start
+        ///     Describes whether check and add edge start
         /// </summary>
         /// <param name="simplicies">The simplicies</param>
         /// <param name="output">The output</param>
@@ -611,15 +600,13 @@ namespace Alis.Core.Physic.Tools.Cutting
             {
                 return true;
             }
-            else
-            {
-                output.Add(simplicies[index].EdgeStart);
-                return false;
-            }
+
+            output.Add(simplicies[index].EdgeStart);
+            return false;
         }
 
         /// <summary>
-        /// Updates the index using the specified simplicies
+        ///     Updates the index using the specified simplicies
         /// </summary>
         /// <param name="simplicies">The simplicies</param>
         /// <param name="index">The index</param>
@@ -641,7 +628,7 @@ namespace Alis.Core.Physic.Tools.Cutting
         }
 
         /// <summary>
-        /// Adds the output to result using the specified output
+        ///     Adds the output to result using the specified output
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="result">The result</param>

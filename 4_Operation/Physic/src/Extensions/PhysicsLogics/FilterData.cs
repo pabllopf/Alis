@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics
         public int EnabledOnGroup;
 
         /// <summary>
-        /// Describes whether this instance is active on
+        ///     Describes whether this instance is active on
         /// </summary>
         /// <param name="body">The body</param>
         /// <returns>The bool</returns>
@@ -76,38 +76,29 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics
         }
 
         /// <summary>
-        /// Describes whether this instance is valid body
+        ///     Describes whether this instance is valid body
         /// </summary>
         /// <param name="body">The body</param>
         /// <returns>The bool</returns>
-        private bool IsValidBody(Body body)
-        {
-            return body != null && body.Enabled && !body.IsStatic && body.FixtureList != null;
-        }
+        private bool IsValidBody(Body body) => (body != null) && body.Enabled && !body.IsStatic && (body.FixtureList != null);
 
         /// <summary>
-        /// Describes whether this instance is fixture disabled
+        ///     Describes whether this instance is fixture disabled
         /// </summary>
         /// <param name="fixture">The fixture</param>
         /// <returns>The bool</returns>
-        private bool IsFixtureDisabled(Fixture fixture)
-        {
-            return (fixture.CollisionGroup == DisabledOnGroup && fixture.CollisionGroup != 0 && DisabledOnGroup != 0) ||
-                   (fixture.CollisionCategories & DisabledOnCategories) != Category.None;
-        }
+        private bool IsFixtureDisabled(Fixture fixture) => ((fixture.CollisionGroup == DisabledOnGroup) && (fixture.CollisionGroup != 0) && (DisabledOnGroup != 0)) ||
+                                                           (fixture.CollisionCategories & DisabledOnCategories) != Category.None;
 
         /// <summary>
-        /// Describes whether this instance is fixture enabled
+        ///     Describes whether this instance is fixture enabled
         /// </summary>
         /// <param name="fixture">The fixture</param>
         /// <returns>The bool</returns>
-        private bool IsFixtureEnabled(Fixture fixture)
-        {
-            return (EnabledOnGroup != 0 || EnabledOnCategories != Category.All) &&
-                   ((fixture.CollisionGroup == EnabledOnGroup && fixture.CollisionGroup != 0 && EnabledOnGroup != 0) ||
-                    ((fixture.CollisionCategories & EnabledOnCategories) != Category.None &&
-                     EnabledOnCategories != Category.All));
-        }
+        private bool IsFixtureEnabled(Fixture fixture) => (EnabledOnGroup != 0 || EnabledOnCategories != Category.All) &&
+                                                          (((fixture.CollisionGroup == EnabledOnGroup) && (fixture.CollisionGroup != 0) && (EnabledOnGroup != 0)) ||
+                                                           (((fixture.CollisionCategories & EnabledOnCategories) != Category.None) &&
+                                                            (EnabledOnCategories != Category.All)));
 
         /// <summary>Adds the category.</summary>
         /// <param name="category">The category.</param>

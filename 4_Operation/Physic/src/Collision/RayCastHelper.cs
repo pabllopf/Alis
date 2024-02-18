@@ -179,7 +179,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Describes whether ray cast polygon
+        ///     Describes whether ray cast polygon
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <param name="normals">The normals</param>
@@ -223,43 +223,34 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Transforms the point using the specified point
+        ///     Transforms the point using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <param name="transform">The transform</param>
         /// <returns>The vector</returns>
-        private static Vector2 TransformPoint(Vector2 point, Transform transform)
-        {
-            return MathUtils.MulT(transform.Rotation, point - transform.Position);
-        }
+        private static Vector2 TransformPoint(Vector2 point, Transform transform) => MathUtils.MulT(transform.Rotation, point - transform.Position);
 
         /// <summary>
-        /// Calculates the numerator using the specified i
+        ///     Calculates the numerator using the specified i
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="vertices">The vertices</param>
         /// <param name="normals">The normals</param>
         /// <param name="p1">The </param>
         /// <returns>The float</returns>
-        private static float CalculateNumerator(int i, Vertices vertices, Vertices normals, Vector2 p1)
-        {
-            return Vector2.Dot(normals[i], vertices[i] - p1);
-        }
+        private static float CalculateNumerator(int i, Vertices vertices, Vertices normals, Vector2 p1) => Vector2.Dot(normals[i], vertices[i] - p1);
 
         /// <summary>
-        /// Calculates the denominator using the specified i
+        ///     Calculates the denominator using the specified i
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="normals">The normals</param>
         /// <param name="d">The </param>
         /// <returns>The float</returns>
-        private static float CalculateDenominator(int i, Vertices normals, Vector2 d)
-        {
-            return Vector2.Dot(normals[i], d);
-        }
+        private static float CalculateDenominator(int i, Vertices normals, Vector2 d) => Vector2.Dot(normals[i], d);
 
         /// <summary>
-        /// Describes whether process denominator
+        ///     Describes whether process denominator
         /// </summary>
         /// <param name="lower">The lower</param>
         /// <param name="upper">The upper</param>

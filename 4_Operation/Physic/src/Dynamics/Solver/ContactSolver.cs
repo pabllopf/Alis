@@ -35,7 +35,6 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.NarrowPhase;
-using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared.Optimization;
 using Alis.Core.Physic.Utilities;
@@ -83,7 +82,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         public List<ContactVelocityConstraint> VelocityConstraints = new List<ContactVelocityConstraint>();
 
         /// <summary>
-        /// Resets the step param
+        ///     Resets the step param
         /// </summary>
         /// <param name="stepParam">The step param</param>
         /// <param name="countParam">The count param</param>
@@ -98,7 +97,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Initializes the parameters using the specified step param
+        ///     Initializes the parameters using the specified step param
         /// </summary>
         /// <param name="stepParam">The step param</param>
         /// <param name="countParam">The count param</param>
@@ -115,7 +114,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Grows the array if needed using the specified count param
+        ///     Grows the array if needed using the specified count param
         /// </summary>
         /// <param name="countParam">The count param</param>
         private void GrowArrayIfNeeded(int countParam)
@@ -138,7 +137,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Initializes the constraints using the specified count param
+        ///     Initializes the constraints using the specified count param
         /// </summary>
         /// <param name="countParam">The count param</param>
         private void InitializeConstraints(int countParam)
@@ -152,7 +151,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Initializes the velocity constraint using the specified i
+        ///     Initializes the velocity constraint using the specified i
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="contact">The contact</param>
@@ -181,7 +180,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Initializes the position constraint using the specified i
+        ///     Initializes the position constraint using the specified i
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="contact">The contact</param>
@@ -390,7 +389,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Solves the velocity constraints
+        ///     Solves the velocity constraints
         /// </summary>
         public void SolveVelocityConstraints()
         {
@@ -411,7 +410,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Initializes the velocity constraint using the specified vc
+        ///     Initializes the velocity constraint using the specified vc
         /// </summary>
         /// <param name="vc">The vc</param>
         private void InitializeVelocityConstraint(ContactVelocityConstraint vc)
@@ -444,7 +443,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Solves the tangent constraints using the specified vc
+        ///     Solves the tangent constraints using the specified vc
         /// </summary>
         /// <param name="vc">The vc</param>
         /// <param name="j">The </param>
@@ -487,7 +486,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Solves the normal constraints using the specified vc
+        ///     Solves the normal constraints using the specified vc
         /// </summary>
         /// <param name="vc">The vc</param>
         private void SolveNormalConstraints(ContactVelocityConstraint vc)
@@ -499,7 +498,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Solves the normal constraint using the specified vc
+        ///     Solves the normal constraint using the specified vc
         /// </summary>
         /// <param name="vc">The vc</param>
         /// <param name="j">The </param>
@@ -529,7 +528,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Solves the block constraints using the specified vc
+        ///     Solves the block constraints using the specified vc
         /// </summary>
         /// <param name="vc">The vc</param>
         private void SolveBlockConstraints(ContactVelocityConstraint vc)

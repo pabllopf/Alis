@@ -36,9 +36,8 @@ using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
 {
-
     /// <summary>
-    /// The bayazit decomposer class
+    ///     The bayazit decomposer class
     /// </summary>
     internal static class BayazitDecomposer
     {
@@ -55,7 +54,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         }
 
         /// <summary>
-        /// Triangulates the polygon using the specified vertices
+        ///     Triangulates the polygon using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <returns>The list</returns>
@@ -97,23 +96,14 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         }
 
         /// <summary>
-
-        /// Processes the edge intersection using the specified i
-
+        ///     Processes the edge intersection using the specified i
         /// </summary>
-
         /// <param name="i">The </param>
-
         /// <param name="j">The </param>
-
         /// <param name="vertices">The vertices</param>
-
         /// <param name="dist">The dist</param>
-
         /// <param name="intersection">The intersection</param>
-
         /// <param name="index">The index</param>
-
         private static void ProcessEdgeIntersection(int i, int j, Vertices vertices, ref float dist, ref Vector2 intersection, ref int index)
         {
             float d;
@@ -138,25 +128,15 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         }
 
         /// <summary>
-
-        /// Handles the no vertices to connect using the specified i
-
+        ///     Handles the no vertices to connect using the specified i
         /// </summary>
-
         /// <param name="i">The </param>
-
         /// <param name="lowerIndex">The lower index</param>
-
         /// <param name="upperIndex">The upper index</param>
-
         /// <param name="lowerInt">The lower int</param>
-
         /// <param name="upperInt">The upper int</param>
-
         /// <param name="vertices">The vertices</param>
-
         /// <param name="list">The list</param>
-
         private static void HandleNoVerticesToConnect(int i, int lowerIndex, int upperIndex, Vector2 lowerInt, Vector2 upperInt, Vertices vertices, List<Vertices> list)
         {
             Vector2 p = (lowerInt + upperInt) / 2;
@@ -171,7 +151,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         }
 
         /// <summary>
-        /// Handles the vertices to connect using the specified i
+        ///     Handles the vertices to connect using the specified i
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="lowerIndex">The lower index</param>
@@ -186,7 +166,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         }
 
         /// <summary>
-        /// Adjusts the upper index using the specified upper index
+        ///     Adjusts the upper index using the specified upper index
         /// </summary>
         /// <param name="upperIndex">The upper index</param>
         /// <param name="lowerIndex">The lower index</param>
@@ -200,7 +180,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         }
 
         /// <summary>
-        /// Finds the best index using the specified i
+        ///     Finds the best index using the specified i
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="lowerIndex">The lower index</param>
@@ -229,7 +209,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         }
 
         /// <summary>
-        /// Computes the score using the specified i
+        ///     Computes the score using the specified i
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="j">The </param>
@@ -259,7 +239,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         }
 
         /// <summary>
-        /// Decomposes the into polygons using the specified i
+        ///     Decomposes the into polygons using the specified i
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="bestIndex">The best index</param>
@@ -275,15 +255,10 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         }
 
         /// <summary>
-
-        /// Handles the convex polygon using the specified vertices
-
+        ///     Handles the convex polygon using the specified vertices
         /// </summary>
-
         /// <param name="vertices">The vertices</param>
-
         /// <param name="list">The list</param>
-
         private static void HandleConvexPolygon(Vertices vertices, List<Vertices> list)
         {
             if (vertices.Count > Settings.PolygonVertices)
@@ -336,7 +311,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         }
 
         /// <summary>
-        /// Describes whether can see
+        ///     Describes whether can see
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="j">The </param>
@@ -353,20 +328,17 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         }
 
         /// <summary>
-        /// Describes whether is valid visibility
+        ///     Describes whether is valid visibility
         /// </summary>
         /// <param name="index">The index</param>
         /// <param name="vertices">The vertices</param>
         /// <returns>The bool</returns>
-        private static bool IsValidVisibility(int index, Vertices vertices)
-        {
-            return !(Reflex(index, vertices)
-                ? LeftOn(At(index, vertices), At(index - 1, vertices), At(index + 1, vertices)) && RightOn(At(index, vertices), At(index + 1, vertices), At(index - 1, vertices))
-                : RightOn(At(index, vertices), At(index + 1, vertices), At(index - 1, vertices)) || LeftOn(At(index, vertices), At(index - 1, vertices), At(index + 1, vertices)));
-        }
+        private static bool IsValidVisibility(int index, Vertices vertices) => !(Reflex(index, vertices)
+            ? LeftOn(At(index, vertices), At(index - 1, vertices), At(index + 1, vertices)) && RightOn(At(index, vertices), At(index + 1, vertices), At(index - 1, vertices))
+            : RightOn(At(index, vertices), At(index + 1, vertices), At(index - 1, vertices)) || LeftOn(At(index, vertices), At(index - 1, vertices), At(index + 1, vertices)));
 
         /// <summary>
-        /// Describes whether has intersecting lines
+        ///     Describes whether has intersecting lines
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="j">The </param>

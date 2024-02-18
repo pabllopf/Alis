@@ -34,12 +34,12 @@ using Alis.Core.Physic.Utilities;
 namespace Alis.Core.Physic.Tools.ConvexHull
 {
     /// <summary>
-    /// The gift wrap class
+    ///     The gift wrap class
     /// </summary>
     public static class GiftWrap
     {
         /// <summary>
-        /// Gets the convex hull using the specified vertices
+        ///     Gets the convex hull using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <returns>The vertices</returns>
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Tools.ConvexHull
         }
 
         /// <summary>
-        /// Finds the rightmost point using the specified vertices
+        ///     Finds the rightmost point using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <returns>The </returns>
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Tools.ConvexHull
         }
 
         /// <summary>
-        /// Calculates the convex hull using the specified vertices
+        ///     Calculates the convex hull using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <param name="i0">The </param>
@@ -131,7 +131,7 @@ namespace Alis.Core.Physic.Tools.ConvexHull
         }
 
         /// <summary>
-        /// Creates the result vertices using the specified vertices
+        ///     Creates the result vertices using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <param name="hull">The hull</param>
