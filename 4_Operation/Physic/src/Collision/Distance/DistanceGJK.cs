@@ -76,10 +76,8 @@ namespace Alis.Core.Physic.Collision.Distance
             ++GjkCalls;
 
             // Initialize the simplex.
-            Simplex simplex = new Simplex();
-            simplex.ReadCache(ref cache, ref input.ProxyA, ref input.TransformA, ref input.ProxyB,
-                ref input.TransformB);
-
+            Simplex simplex = InitializeSimplex(ref cache, ref input);
+            
             // These store the vertices of the last simplex so that we
             // can check for duplicates and prevent cycling.
             FixedArray3<int> saveA = new FixedArray3<int>();
@@ -93,26 +91,9 @@ namespace Alis.Core.Physic.Collision.Distance
             {
                 // Copy simplex so we can identify duplicates.
                 int saveCount = simplex.Count;
-                for (int i = 0; i < saveCount; ++i)
-                {
-                    saveA[i] = simplex.V[i].IndexA;
-                    saveB[i] = simplex.V[i].IndexB;
-                }
-
-                switch (simplex.Count)
-                {
-                    case 1:
-                        break;
-                    case 2:
-                        simplex.Solve2();
-                        break;
-                    case 3:
-                        simplex.Solve3();
-                        break;
-                    default:
-                        Debug.Assert(false);
-                        break;
-                }
+                
+                SaveSimplexVertices(simplex, ref saveA, ref saveB);
+                SolveSimplex(ref simplex);
 
                 // If we have 3 points, then the origin is in the corresponding triangle.
                 if (simplex.Count == 3)
@@ -136,76 +117,127 @@ namespace Alis.Core.Physic.Collision.Distance
                 }
 
                 // Compute a tentative new simplex vertex using support points.
-                SimplexVertex vertex = simplex.V[simplex.Count];
-                vertex.IndexA = input.ProxyA.GetSupport(MathUtils.MulT(input.TransformA.Rotation, -d));
-                vertex.Wa = MathUtils.Mul(ref input.TransformA, input.ProxyA.Vertices[vertex.IndexA]);
-
-                vertex.IndexB = input.ProxyB.GetSupport(MathUtils.MulT(input.TransformB.Rotation, d));
-                vertex.Wb = MathUtils.Mul(ref input.TransformB, input.ProxyB.Vertices[vertex.IndexB]);
-                vertex.W = vertex.Wb - vertex.Wa;
-                simplex.V[simplex.Count] = vertex;
+                SimplexVertex vertex = AddNewVertexToSimplex(ref simplex, ref input);
 
                 // Iteration count is equated to the number of support point calls.
                 ++iter;
-
                 ++GjkIter;
 
                 // Check for duplicate support points. This is the main termination criteria.
-                bool duplicate = false;
-                for (int i = 0; i < saveCount; ++i)
-                {
-                    if ((vertex.IndexA == saveA[i]) && (vertex.IndexB == saveB[i]))
-                    {
-                        duplicate = true;
-                        break;
-                    }
-                }
-
-                // If we found a duplicate support point we must exit to avoid cycling.
-                if (duplicate)
+                if (IsDuplicateSupportPoint(saveA, saveB, vertex, saveCount))
                 {
                     break;
                 }
-
+                
                 // New vertex is OK and needed.
                 ++simplex.Count;
             }
 
             _gjkMaxIter = Math.Max(_gjkMaxIter, iter);
-
+            
             // Prepare output.
+            PrepareOutput(out output, ref simplex, ref cache, ref input);
+        }
+        
+        private static void SaveSimplexVertices(Simplex simplex, ref FixedArray3<int> saveA, ref FixedArray3<int> saveB)
+        {
+            int saveCount = simplex.Count;
+            for (int i = 0; i < saveCount; ++i)
+            {
+                saveA[i] = simplex.V[i].IndexA;
+                saveB[i] = simplex.V[i].IndexB;
+            }
+        }
+        
+        private static Simplex InitializeSimplex(ref SimplexCache cache, ref DistanceInput input)
+        {
+            Simplex simplex = new Simplex();
+            simplex.ReadCache(ref cache, ref input.ProxyA, ref input.TransformA, ref input.ProxyB, ref input.TransformB);
+            return simplex;
+        }
+        
+        
+        private static SimplexVertex AddNewVertexToSimplex(ref Simplex simplex, ref DistanceInput input)
+        {
+            Vector2 d = simplex.GetSearchDirection();
+            SimplexVertex vertex = simplex.V[simplex.Count];
+            vertex.IndexA = input.ProxyA.GetSupport(MathUtils.MulT(input.TransformA.Rotation, -d));
+            vertex.Wa = MathUtils.Mul(ref input.TransformA, input.ProxyA.Vertices[vertex.IndexA]);
+            vertex.IndexB = input.ProxyB.GetSupport(MathUtils.MulT(input.TransformB.Rotation, d));
+            vertex.Wb = MathUtils.Mul(ref input.TransformB, input.ProxyB.Vertices[vertex.IndexB]);
+            vertex.W = vertex.Wb - vertex.Wa;
+            simplex.V[simplex.Count] = vertex;
+            return vertex;
+        }
+        
+        private static void SolveSimplex(ref Simplex simplex)
+        {
+            switch (simplex.Count)
+            {
+                case 1:
+                    break;
+                case 2:
+                    simplex.Solve2();
+                    break;
+                case 3:
+                    simplex.Solve3();
+                    break;
+                default:
+                    Debug.Assert(false);
+                    break;
+            }
+        }
+        
+        private static bool IsDuplicateSupportPoint(FixedArray3<int> saveA, FixedArray3<int> saveB, SimplexVertex vertex, int saveCount)
+        {
+            for (int i = 0; i < saveCount; ++i)
+            {
+                if ((vertex.IndexA == saveA[i]) && (vertex.IndexB == saveB[i]))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static void PrepareOutput(out DistanceOutput output, ref Simplex simplex, ref SimplexCache cache, ref DistanceInput input)
+        {
             simplex.GetWitnessPoints(out output.PointA, out output.PointB);
             output.Distance = (output.PointA - output.PointB).Length();
-            output.Iterations = iter;
+            output.Iterations = simplex.Count;
 
-            // Cache the simplex.
             simplex.WriteCache(ref cache);
 
-            // Apply radii if requested.
             if (input.UseRadii)
             {
-                float rA = input.ProxyA.Radius;
-                float rB = input.ProxyB.Radius;
+                ApplyRadii(ref output, ref input);
+            }
+        }
 
-                if ((output.Distance > rA + rB) && (output.Distance > Constant.Epsilon))
-                {
-                    // Shapes are still no overlapped.
-                    // Move the witness points to the outer surface.
-                    output.Distance -= rA + rB;
-                    Vector2 normal = output.PointB - output.PointA;
-                    normal = Vector2.Normalize(normal);
-                    output.PointA += rA * normal;
-                    output.PointB -= rB * normal;
-                }
-                else
-                {
-                    // Shapes are overlapped when radii are considered.
-                    // Move the witness points to the middle.
-                    Vector2 p = 0.5f * (output.PointA + output.PointB);
-                    output.PointA = p;
-                    output.PointB = p;
-                    output.Distance = 0.0f;
-                }
+        private static void ApplyRadii(ref DistanceOutput output, ref DistanceInput input)
+        {
+            float rA = input.ProxyA.Radius;
+            float rB = input.ProxyB.Radius;
+
+            if ((output.Distance > rA + rB) && (output.Distance > Constant.Epsilon))
+            {
+                // Shapes are still no overlapped.
+                // Move the witness points to the outer surface.
+                output.Distance -= rA + rB;
+                Vector2 normal = output.PointB - output.PointA;
+                normal = Vector2.Normalize(normal);
+                output.PointA += rA * normal;
+                output.PointB -= rB * normal;
+            }
+            else
+            {
+                // Shapes are overlapped when radii are considered.
+                // Move the witness points to the middle.
+                Vector2 p = 0.5f * (output.PointA + output.PointB);
+                output.PointA = p;
+                output.PointB = p;
+                output.Distance = 0.0f;
             }
         }
 
