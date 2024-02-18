@@ -400,10 +400,9 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        ///     Update the contact manifold and touching status. Note: do not assume the fixture AABBs are overlapping or are
-        ///     valid.
+        /// Updates the contact manager
         /// </summary>
-        /// <param name="contactManager">The contact manager.</param>
+        /// <param name="contactManager">The contact manager</param>
         internal void Update(ContactManager contactManager)
         {
             if (FixtureA == null || FixtureB == null)
@@ -415,10 +414,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
             Flags |= ContactFlags.EnabledFlag;
 
-            bool touching;
             bool wasTouching = IsTouching;
-
-            bool sensor = FixtureA.IsSensor || FixtureB.IsSensor;
 
             Body bodyA = FixtureA.Body;
             Body bodyB = FixtureB.Body;
@@ -426,49 +422,97 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             Transform xfA = bodyA.Xf;
             Transform xfB = bodyB.Xf;
 
-            if (sensor)
-            {
-                Shape shapeA = FixtureA.Shape;
-                Shape shapeB = FixtureB.Shape;
-                touching = NarrowPhase.Collision.TestOverlap(shapeA, ChildIndexA, shapeB, ChildIndexB, ref xfA,
-                    ref xfB);
+            bool sensor = IsSensorContact();
 
-                manifold.PointCount = 0;
+            bool touching = sensor ? CheckSensorOverlap(ref xfA, ref xfB) : EvaluateAndCheckManifold(ref xfA, ref xfB, oldManifold);
+
+            UpdateTouchingFlag(touching);
+
+            if (touching)
+            {
+                InvokeCollisionEvents(contactManager, wasTouching);
             }
-            else
+
+            if (wasTouching && !touching)
             {
-                Evaluate(ref manifold, ref xfA, ref xfB);
-                touching = Manifold.PointCount > 0;
+                InvokeSeparationEvents(contactManager);
+            }
 
-                for (int i = 0; i < Manifold.PointCount; ++i)
+            if (!sensor && touching)
+            {
+                contactManager.PreSolve?.Invoke(this, ref oldManifold);
+            }
+        }
+
+        /// <summary>
+        /// Describes whether this instance is sensor contact
+        /// </summary>
+        /// <returns>The bool</returns>
+        private bool IsSensorContact()
+        {
+            return FixtureA.IsSensor || FixtureB.IsSensor;
+        }
+
+        /// <summary>
+        /// Describes whether this instance check sensor overlap
+        /// </summary>
+        /// <param name="xfA">The xf</param>
+        /// <param name="xfB">The xf</param>
+        /// <returns>The touching</returns>
+        private bool CheckSensorOverlap(ref Transform xfA, ref Transform xfB)
+        {
+            Shape shapeA = FixtureA.Shape;
+            Shape shapeB = FixtureB.Shape;
+            bool touching = NarrowPhase.Collision.TestOverlap(shapeA, ChildIndexA, shapeB, ChildIndexB, ref xfA, ref xfB);
+
+            manifold.PointCount = 0;
+
+            return touching;
+        }
+
+        /// <summary>
+        /// Describes whether this instance evaluate and check manifold
+        /// </summary>
+        /// <param name="xfA">The xf</param>
+        /// <param name="xfB">The xf</param>
+        /// <param name="oldManifold">The old manifold</param>
+        /// <returns>The touching</returns>
+        private bool EvaluateAndCheckManifold(ref Transform xfA, ref Transform xfB, Manifold oldManifold)
+        {
+            Evaluate(ref manifold, ref xfA, ref xfB);
+            bool touching = Manifold.PointCount > 0;
+
+            for (int i = 0; i < Manifold.PointCount; ++i)
+            {
+                ManifoldPoint mp2 = Manifold.Points[i];
+                mp2.NormalImpulse = 0.0f;
+                mp2.TangentImpulse = 0.0f;
+                ContactId id2 = mp2.Id;
+
+                for (int j = 0; j < oldManifold.PointCount; ++j)
                 {
-                    ManifoldPoint mp2 = Manifold.Points[i];
-                    mp2.NormalImpulse = 0.0f;
-                    mp2.TangentImpulse = 0.0f;
-                    ContactId id2 = mp2.Id;
+                    ManifoldPoint mp1 = oldManifold.Points[j];
 
-                    for (int j = 0; j < oldManifold.PointCount; ++j)
+                    if (mp1.Id.Key == id2.Key)
                     {
-                        ManifoldPoint mp1 = oldManifold.Points[j];
-
-                        if (mp1.Id.Key == id2.Key)
-                        {
-                            mp2.NormalImpulse = mp1.NormalImpulse;
-                            mp2.TangentImpulse = mp1.TangentImpulse;
-                            break;
-                        }
+                        mp2.NormalImpulse = mp1.NormalImpulse;
+                        mp2.TangentImpulse = mp1.TangentImpulse;
+                        break;
                     }
-
-                    manifold.Points[i] = mp2;
                 }
 
-                if (touching != wasTouching)
-                {
-                    bodyA.Awake = true;
-                    bodyB.Awake = true;
-                }
+                manifold.Points[i] = mp2;
             }
 
+            return touching;
+        }
+
+        /// <summary>
+        /// Updates the touching flag using the specified touching
+        /// </summary>
+        /// <param name="touching">The touching</param>
+        private void UpdateTouchingFlag(bool touching)
+        {
             if (touching)
             {
                 Flags |= ContactFlags.TouchingFlag;
@@ -477,39 +521,40 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             {
                 Flags &= ~ContactFlags.TouchingFlag;
             }
+        }
 
-            if ((wasTouching == false) && touching)
+        /// <summary>
+        /// Invokes the collision events using the specified contact manager
+        /// </summary>
+        /// <param name="contactManager">The contact manager</param>
+        /// <param name="wasTouching">The was touching</param>
+        private void InvokeCollisionEvents(ContactManager contactManager, bool wasTouching)
+        {
+            if (!wasTouching)
             {
                 FixtureA.OnCollision?.Invoke(FixtureA, FixtureB, this);
                 FixtureB.OnCollision?.Invoke(FixtureB, FixtureA, this);
 
-
-                bodyA.OnCollision?.Invoke(FixtureA, FixtureB, this);
-                bodyB.OnCollision?.Invoke(FixtureB, FixtureA, this);
+                FixtureA.Body.OnCollision?.Invoke(FixtureA, FixtureB, this);
+                FixtureB.Body.OnCollision?.Invoke(FixtureB, FixtureA, this);
 
                 contactManager.BeginContact?.Invoke(this);
-
-                if (!Enabled)
-                {
-                    touching = false;
-                }
             }
+        }
 
-            if (wasTouching && !touching)
-            {
-                FixtureA.OnSeparation?.Invoke(FixtureA, FixtureB, this);
-                FixtureB.OnSeparation?.Invoke(FixtureB, FixtureA, this);
+        /// <summary>
+        /// Invokes the separation events using the specified contact manager
+        /// </summary>
+        /// <param name="contactManager">The contact manager</param>
+        private void InvokeSeparationEvents(ContactManager contactManager)
+        {
+            FixtureA.OnSeparation?.Invoke(FixtureA, FixtureB, this);
+            FixtureB.OnSeparation?.Invoke(FixtureB, FixtureA, this);
 
-                bodyA.OnSeparation?.Invoke(FixtureA, FixtureB, this);
-                bodyB.OnSeparation?.Invoke(FixtureB, FixtureA, this);
+            FixtureA.Body.OnSeparation?.Invoke(FixtureA, FixtureB, this);
+            FixtureB.Body.OnSeparation?.Invoke(FixtureB, FixtureA, this);
 
-                contactManager.EndContact?.Invoke(this);
-            }
-
-            if (!sensor && touching)
-            {
-                contactManager.PreSolve?.Invoke(this, ref oldManifold);
-            }
+            contactManager.EndContact?.Invoke(this);
         }
 
         /// <summary>Evaluate this contact with your own manifold and transforms.</summary>
