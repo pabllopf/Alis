@@ -534,124 +534,123 @@ namespace Alis.Core.Physic.Collision.Broadphase
             --nodeCount;
         }
 
-        /// <summary>
-        ///     Inserts the leaf using the specified leaf
-        /// </summary>
-        /// <param name="leaf">The leaf</param>
         private void InsertLeaf(int leaf)
-        {
-            if (root == NullNode)
-            {
-                root = leaf;
-                nodes[root].ParentOrNext = NullNode;
-                return;
-            }
+{
+    if (root == NullNode)
+    {
+        SetRootLeaf(leaf);
+        return;
+    }
 
-            Aabb leafAabb = nodes[leaf].Aabb;
-            int index = root;
-            while (!nodes[index].IsLeaf())
-            {
-                int child1 = nodes[index].Child1;
-                int child2 = nodes[index].Child2;
+    Aabb leafAabb = nodes[leaf].Aabb;
+    int index = FindInsertionIndex(leafAabb);
 
-                float area = nodes[index].Aabb.Perimeter;
+    CreateNewParentForLeaf(leaf, index, leafAabb);
 
-                Aabb combinedAabb = new Aabb();
-                combinedAabb.Combine(ref nodes[index].Aabb, ref leafAabb);
-                float combinedArea = combinedAabb.Perimeter;
+    BalanceTreeFromLeafToRoot(leaf);
+}
 
-                float cost = 2.0f * combinedArea;
+private void SetRootLeaf(int leaf)
+{
+    root = leaf;
+    nodes[root].ParentOrNext = NullNode;
+}
 
-                float inheritanceCost = 2.0f * (combinedArea - area);
+private int FindInsertionIndex(Aabb leafAabb)
+{
+    int index = root;
+    while (!nodes[index].IsLeaf())
+    {
+        index = FindBestFitChild(index, leafAabb);
+    }
+    return index;
+}
 
-                float cost1;
-                if (nodes[child1].IsLeaf())
-                {
-                    Aabb aabb = new Aabb();
-                    aabb.Combine(ref leafAabb, ref nodes[child1].Aabb);
-                    cost1 = aabb.Perimeter + inheritanceCost;
-                }
-                else
-                {
-                    Aabb aabb = new Aabb();
-                    aabb.Combine(ref leafAabb, ref nodes[child1].Aabb);
-                    float oldArea = nodes[child1].Aabb.Perimeter;
-                    float newArea = aabb.Perimeter;
-                    cost1 = newArea - oldArea + inheritanceCost;
-                }
+private int FindBestFitChild(int index, Aabb leafAabb)
+{
+    int child1 = nodes[index].Child1;
+    int child2 = nodes[index].Child2;
 
-                float cost2;
-                if (nodes[child2].IsLeaf())
-                {
-                    Aabb aabb = new Aabb();
-                    aabb.Combine(ref leafAabb, ref nodes[child2].Aabb);
-                    cost2 = aabb.Perimeter + inheritanceCost;
-                }
-                else
-                {
-                    Aabb aabb = new Aabb();
-                    aabb.Combine(ref leafAabb, ref nodes[child2].Aabb);
-                    float oldArea = nodes[child2].Aabb.Perimeter;
-                    float newArea = aabb.Perimeter;
-                    cost2 = newArea - oldArea + inheritanceCost;
-                }
+    float cost1 = CalculateCost(leafAabb, child1);
+    float cost2 = CalculateCost(leafAabb, child2);
 
-                if ((cost < cost1) && (cost1 < cost2))
-                {
-                    break;
-                }
+    return cost1 < cost2 ? child1 : child2;
+}
 
-                index = cost1 < cost2 ? child1 : child2;
-            }
+private float CalculateCost(Aabb leafAabb, int childIndex)
+{
+    if (nodes[childIndex].IsLeaf())
+    {
+        Aabb aabb = new Aabb();
+        aabb.Combine(ref leafAabb, ref nodes[childIndex].Aabb);
+        return aabb.Perimeter;
+    }
+    else
+    {
+        Aabb aabb = new Aabb();
+        aabb.Combine(ref leafAabb, ref nodes[childIndex].Aabb);
+        float oldArea = nodes[childIndex].Aabb.Perimeter;
+        float newArea = aabb.Perimeter;
+        return newArea - oldArea;
+    }
+}
 
-            int sibling = index;
+private void CreateNewParentForLeaf(int leaf, int index, Aabb leafAabb)
+{
+    int sibling = index;
+    int oldParent = nodes[sibling].ParentOrNext;
+    int newParent = AllocateNode();
+    nodes[newParent].ParentOrNext = oldParent;
+    nodes[newParent].UserData = default(T);
+    nodes[newParent].Aabb.Combine(ref leafAabb, ref nodes[sibling].Aabb);
+    nodes[newParent].Height = nodes[sibling].Height + 1;
 
-            int oldParent = nodes[sibling].ParentOrNext;
-            int newParent = AllocateNode();
-            nodes[newParent].ParentOrNext = oldParent;
-            nodes[newParent].UserData = default(T);
-            nodes[newParent].Aabb.Combine(ref leafAabb, ref nodes[sibling].Aabb);
-            nodes[newParent].Height = nodes[sibling].Height + 1;
+    if (oldParent != NullNode)
+    {
+        ReplaceChild(oldParent, sibling, newParent);
+        nodes[newParent].Child1 = sibling;
+        nodes[newParent].Child2 = leaf;
+        nodes[sibling].ParentOrNext = newParent;
+        nodes[leaf].ParentOrNext = newParent;
+    }
+    else
+    {
+        nodes[newParent].Child1 = sibling;
+        nodes[newParent].Child2 = leaf;
+        nodes[sibling].ParentOrNext = newParent;
+        nodes[leaf].ParentOrNext = newParent;
+        root = newParent;
+    }
+}
 
-            if (oldParent != NullNode)
-            {
-                if (nodes[oldParent].Child1 == sibling)
-                {
-                    nodes[oldParent].Child1 = newParent;
-                }
-                else
-                {
-                    nodes[oldParent].Child2 = newParent;
-                }
+private void ReplaceChild(int parentIndex, int oldChild, int newChild)
+{
+    if (nodes[parentIndex].Child1 == oldChild)
+    {
+        nodes[parentIndex].Child1 = newChild;
+    }
+    else
+    {
+        nodes[parentIndex].Child2 = newChild;
+    }
+}
 
-                nodes[newParent].Child1 = sibling;
-                nodes[newParent].Child2 = leaf;
-                nodes[sibling].ParentOrNext = newParent;
-                nodes[leaf].ParentOrNext = newParent;
-            }
-            else
-            {
-                nodes[newParent].Child1 = sibling;
-                nodes[newParent].Child2 = leaf;
-                nodes[sibling].ParentOrNext = newParent;
-                nodes[leaf].ParentOrNext = newParent;
-                root = newParent;
-            }
+private void BalanceTreeFromLeafToRoot(int leaf)
+{
+    int index = nodes[leaf].ParentOrNext;
+    while (index != NullNode)
+    {
+        index = BalanceTo(index);
 
-            index = nodes[leaf].ParentOrNext;
-            while (index != NullNode)
-            {
-                index = BalanceTo(index);
+        int child1 = nodes[index].Child1;
+        int child2 = nodes[index].Child2;
 
-                int child1 = nodes[index].Child1;
-                int child2 = nodes[index].Child2;
+        nodes[index].Height = 1 + Math.Max(nodes[child1].Height, nodes[child2].Height);
+        nodes[index].Aabb.Combine(ref nodes[child1].Aabb, ref nodes[child2].Aabb);
 
-                nodes[index].Height = 1 + Math.Max(nodes[child1].Height, nodes[child2].Height);
-                nodes[index].Aabb.Combine(ref nodes[child1].Aabb, ref nodes[child2].Aabb);
-
-                index = nodes[index].ParentOrNext;
-            }
-        }
+        index = nodes[index].ParentOrNext;
+    }
+}
 
         /// <summary>
         ///     Removes the leaf using the specified leaf
