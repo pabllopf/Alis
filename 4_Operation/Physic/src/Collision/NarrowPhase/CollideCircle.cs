@@ -70,14 +70,6 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             manifold.Points[0] = p0;
         }
 
-        /// <summary>
-        /// Collides the polygon and circle using the specified manifold
-        /// </summary>
-        /// <param name="manifold">The manifold</param>
-        /// <param name="polygonA">The polygon</param>
-        /// <param name="xfA">The xf</param>
-        /// <param name="circleB">The circle</param>
-        /// <param name="xfB">The xf</param>
         public static void CollidePolygonAndCircle(ref Manifold manifold, PolygonShape polygonA, ref Transform xfA,
             CircleShape circleB, ref Transform xfB)
         {
@@ -106,27 +98,11 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             ComputeBarycentricCoordinates(cLocal, v1, v2, radius, circleB.Position, ref manifold, normals, vertIndex1);
         }
 
-        /// <summary>
-        /// Computes the circle position in polygon frame using the specified xf b
-        /// </summary>
-        /// <param name="xfB">The xf</param>
-        /// <param name="circleBPosition">The circle position</param>
-        /// <param name="xfA">The xf</param>
-        /// <returns>The vector</returns>
         private static Vector2 ComputeCirclePositionInPolygonFrame(ref Transform xfB, Vector2 circleBPosition, ref Transform xfA)
         {
             return MathUtils.Mul(ref xfB, circleBPosition);
         }
 
-        /// <summary>
-        /// Finds the min separating edge using the specified c local
-        /// </summary>
-        /// <param name="cLocal">The local</param>
-        /// <param name="radius">The radius</param>
-        /// <param name="vertexCount">The vertex count</param>
-        /// <param name="vertices">The vertices</param>
-        /// <param name="normals">The normals</param>
-        /// <returns>The normal index</returns>
         private static int FindMinSeparatingEdge(Vector2 cLocal, float radius, int vertexCount, Vertices vertices, Vertices normals)
         {
             int normalIndex = 0;
@@ -152,17 +128,6 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             return normalIndex;
         }
 
-        /// <summary>
-        /// Describes whether is center inside polygon
-        /// </summary>
-        /// <param name="separation">The separation</param>
-        /// <param name="v1">The </param>
-        /// <param name="v2">The </param>
-        /// <param name="normals">The normals</param>
-        /// <param name="normalIndex">The normal index</param>
-        /// <param name="circleBPosition">The circle position</param>
-        /// <param name="manifold">The manifold</param>
-        /// <returns>The bool</returns>
         private static bool IsCenterInsidePolygon(float separation, Vector2 v1, Vector2 v2, Vertices normals, int normalIndex, Vector2 circleBPosition, ref Manifold manifold)
         {
             if (separation < Constant.Epsilon)
@@ -179,17 +144,6 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             return false;
         }
 
-        /// <summary>
-        /// Computes the barycentric coordinates using the specified c local
-        /// </summary>
-        /// <param name="cLocal">The local</param>
-        /// <param name="v1">The </param>
-        /// <param name="v2">The </param>
-        /// <param name="radius">The radius</param>
-        /// <param name="circleBPosition">The circle position</param>
-        /// <param name="manifold">The manifold</param>
-        /// <param name="normals">The normals</param>
-        /// <param name="vertIndex1">The vert index</param>
         private static void ComputeBarycentricCoordinates(Vector2 cLocal, Vector2 v1, Vector2 v2, float radius, Vector2 circleBPosition, ref Manifold manifold, Vertices normals, int vertIndex1)
         {
             float u1 = Vector2.Dot(cLocal - v1, v2 - v1);
@@ -231,13 +185,6 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             }
         }
 
-        /// <summary>
-        /// Sets the manifold for vertex using the specified manifold
-        /// </summary>
-        /// <param name="manifold">The manifold</param>
-        /// <param name="cLocal">The local</param>
-        /// <param name="vertex">The vertex</param>
-        /// <param name="circleBPosition">The circle position</param>
         private static void SetManifoldForVertex(ref Manifold manifold, Vector2 cLocal, Vector2 vertex, Vector2 circleBPosition)
         {
             manifold.PointCount = 1;
