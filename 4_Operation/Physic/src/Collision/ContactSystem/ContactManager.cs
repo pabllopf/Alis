@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
         /// <summary>Fires before the solver runs</summary>
         public PreSolveHandler PreSolve;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="ContactManager" /> class
         /// </summary>
@@ -355,8 +355,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        ///     This is the top level collision call for the time step. Here all the narrow phase collision is processed for the
-        ///     world contact list.
+        /// Collides this instance
         /// </summary>
         internal void Collide()
         {
@@ -364,62 +363,12 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             {
                 Contact c = contactList[i];
 
-                Fixture fixtureA = c.FixtureA;
-                Fixture fixtureB = c.FixtureB;
-                int indexA = c.ChildIndexA;
-                int indexB = c.ChildIndexB;
-                Body bodyA = fixtureA.Body;
-                Body bodyB = fixtureB.Body;
-
-                //Velcro: Do no try to collide disabled bodies
-                if (!bodyA.Enabled || !bodyB.Enabled)
+                if (!ShouldProcessContact(c))
                 {
                     continue;
                 }
 
-                // Is this contact flagged for filtering?
-                if (c.FilterFlag)
-                {
-                    // Should these bodies collide?
-                    if (!bodyB.ShouldCollide(bodyA))
-                    {
-                        Remove(c);
-                        continue;
-                    }
-
-                    // Check default filtering
-                    if (!ShouldCollide(fixtureA, fixtureB))
-                    {
-                        Remove(c);
-                        continue;
-                    }
-
-                    // Check user filtering.
-                    if ((ContactFilter != null) && !ContactFilter(fixtureA, fixtureB))
-                    {
-                        Remove(c);
-                        continue;
-                    }
-
-                    // Clear the filtering flag.
-                    c.Flags &= ~ContactFlags.FilterFlag;
-                }
-
-                bool activeA = bodyA.Awake && (bodyA.BodyType != BodyType.Static);
-                bool activeB = bodyB.Awake && (bodyB.BodyType != BodyType.Static);
-
-                // At least one body must be awake and it must be dynamic or kinematic.
-                if (!activeA && !activeB)
-                {
-                    continue;
-                }
-
-                int proxyIdA = fixtureA.Proxies[indexA].ProxyId;
-                int proxyIdB = fixtureB.Proxies[indexB].ProxyId;
-                bool overlap = BroadPhase.TestOverlap(proxyIdA, proxyIdB);
-
-                // Here we destroy contacts that cease to overlap in the broad-phase.
-                if (!overlap)
+                if (!ShouldPersistContact(c))
                 {
                     Remove(c);
                     continue;
@@ -428,6 +377,91 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 // The contact persists.
                 c.Update(this);
             }
+        }
+
+        /// <summary>
+        /// Describes whether this instance should process contact
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <returns>The bool</returns>
+        private bool ShouldProcessContact(Contact c)
+        {
+            Fixture fixtureA = c.FixtureA;
+            Fixture fixtureB = c.FixtureB;
+            Body bodyA = fixtureA.Body;
+            Body bodyB = fixtureB.Body;
+
+            // Do not try to collide disabled bodies
+            if (!bodyA.Enabled || !bodyB.Enabled)
+            {
+                return false;
+            }
+
+            bool activeA = bodyA.Awake && (bodyA.BodyType != BodyType.Static);
+            bool activeB = bodyB.Awake && (bodyB.BodyType != BodyType.Static);
+
+            // At least one body must be awake and it must be dynamic or kinematic.
+            return activeA || activeB;
+        }
+
+        /// <summary>
+        /// Describes whether this instance should persist contact
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <returns>The overlap</returns>
+        private bool ShouldPersistContact(Contact c)
+        {
+            // Is this contact flagged for filtering?
+            if (c.FilterFlag)
+            {
+                // Should these bodies collide?
+                if (!ShouldBodiesCollide(c))
+                {
+                    return false;
+                }
+
+                // Clear the filtering flag.
+                c.Flags &= ~ContactFlags.FilterFlag;
+            }
+
+            int proxyIdA = c.FixtureA.Proxies[c.ChildIndexA].ProxyId;
+            int proxyIdB = c.FixtureB.Proxies[c.ChildIndexB].ProxyId;
+            bool overlap = BroadPhase.TestOverlap(proxyIdA, proxyIdB);
+
+            // Here we destroy contacts that cease to overlap in the broad-phase.
+            return overlap;
+        }
+
+        /// <summary>
+        /// Describes whether this instance should bodies collide
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <returns>The bool</returns>
+        private bool ShouldBodiesCollide(Contact c)
+        {
+            Fixture fixtureA = c.FixtureA;
+            Fixture fixtureB = c.FixtureB;
+            Body bodyA = fixtureA.Body;
+            Body bodyB = fixtureB.Body;
+
+            if (!bodyB.ShouldCollide(bodyA))
+            {
+                return false;
+            }
+
+            // Check default filtering
+            if (!ShouldCollide(fixtureA, fixtureB))
+            {
+                return false;
+            }
+
+            // Check user filtering.
+            if ((ContactFilter != null) && !ContactFilter(fixtureA, fixtureB))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>
