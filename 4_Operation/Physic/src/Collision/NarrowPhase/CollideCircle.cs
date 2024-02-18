@@ -71,7 +71,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         }
 
         /// <summary>
-        /// Collides the polygon and circle using the specified manifold
+        ///     Collides the polygon and circle using the specified manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="polygonA">The polygon</param>
@@ -107,19 +107,16 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         }
 
         /// <summary>
-        /// Computes the circle position in polygon frame using the specified xf b
+        ///     Computes the circle position in polygon frame using the specified xf b
         /// </summary>
         /// <param name="xfB">The xf</param>
         /// <param name="circleBPosition">The circle position</param>
         /// <param name="xfA">The xf</param>
         /// <returns>The vector</returns>
-        private static Vector2 ComputeCirclePositionInPolygonFrame(ref Transform xfB, Vector2 circleBPosition, ref Transform xfA)
-        {
-            return MathUtils.Mul(ref xfB, circleBPosition);
-        }
+        private static Vector2 ComputeCirclePositionInPolygonFrame(ref Transform xfB, Vector2 circleBPosition, ref Transform xfA) => MathUtils.Mul(ref xfB, circleBPosition);
 
         /// <summary>
-        /// Finds the min separating edge using the specified c local
+        ///     Finds the min separating edge using the specified c local
         /// </summary>
         /// <param name="cLocal">The local</param>
         /// <param name="radius">The radius</param>
@@ -153,7 +150,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         }
 
         /// <summary>
-        /// Describes whether is center inside polygon
+        ///     Describes whether is center inside polygon
         /// </summary>
         /// <param name="separation">The separation</param>
         /// <param name="v1">The </param>
@@ -180,7 +177,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         }
 
         /// <summary>
-        /// Computes the barycentric coordinates using the specified c local
+        ///     Computes the barycentric coordinates using the specified c local
         /// </summary>
         /// <param name="cLocal">The local</param>
         /// <param name="v1">The </param>
@@ -232,7 +229,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         }
 
         /// <summary>
-        /// Sets the manifold for vertex using the specified manifold
+        ///     Sets the manifold for vertex using the specified manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="cLocal">The local</param>

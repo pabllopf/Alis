@@ -455,7 +455,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Handles the property serialization using the specified serialization
+        ///     Handles the property serialization using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="type">The type</param>
@@ -473,7 +473,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether should skip property
+        ///     Describes whether should skip property
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="info">The info</param>
@@ -493,7 +493,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether check json attribute
+        ///     Describes whether check json attribute
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="info">The info</param>
@@ -519,7 +519,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether check xml ignore attribute
+        ///     Describes whether check xml ignore attribute
         /// </summary>
         /// <param name="info">The info</param>
         /// <param name="options">The options</param>
@@ -536,7 +536,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether check script ignore
+        ///     Describes whether check script ignore
         /// </summary>
         /// <param name="info">The info</param>
         /// <param name="options">The options</param>
@@ -553,7 +553,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether check serialization
+        ///     Describes whether check serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="info">The info</param>
@@ -574,7 +574,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Creates the member definition using the specified serialization
+        ///     Creates the member definition using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="info">The info</param>
@@ -607,7 +607,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Handles the field serialization using the specified serialization
+        ///     Handles the field serialization using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="type">The type</param>
@@ -625,7 +625,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether should skip field
+        ///     Describes whether should skip field
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="info">The info</param>
@@ -663,7 +663,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Creates the member definition using the specified serialization
+        ///     Creates the member definition using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="info">The info</param>
@@ -696,7 +696,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Enumerates the definitions using type descriptors using the specified serialization
+        ///     Enumerates the definitions using type descriptors using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="type">The type</param>
@@ -715,7 +715,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether should skip descriptor
+        ///     Describes whether should skip descriptor
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="descriptor">The descriptor</param>
@@ -735,7 +735,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether check json attribute
+        ///     Describes whether check json attribute
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="descriptor">The descriptor</param>
@@ -760,7 +760,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether check xml ignore attribute
+        ///     Describes whether check xml ignore attribute
         /// </summary>
         /// <param name="descriptor">The descriptor</param>
         /// <param name="options">The options</param>
@@ -777,7 +777,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether check script ignore
+        ///     Describes whether check script ignore
         /// </summary>
         /// <param name="descriptor">The descriptor</param>
         /// <param name="options">The options</param>
@@ -794,7 +794,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether check skip get only
+        ///     Describes whether check skip get only
         /// </summary>
         /// <param name="descriptor">The descriptor</param>
         /// <param name="options">The options</param>
@@ -808,7 +808,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Creates the member definition using the specified serialization
+        ///     Creates the member definition using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="descriptor">The descriptor</param>

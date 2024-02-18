@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Solves the step
+        ///     Solves the step
         /// </summary>
         /// <param name="step">The step</param>
         /// <param name="gravity">The gravity</param>
@@ -155,7 +155,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Describes whether this instance handle bodies
+        ///     Describes whether this instance handle bodies
         /// </summary>
         /// <param name="body">The body</param>
         /// <returns>The bool</returns>
@@ -191,7 +191,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Handles the contacts using the specified body
+        ///     Handles the contacts using the specified body
         /// </summary>
         /// <param name="body">The body</param>
         private void HandleContacts(Body body)
@@ -232,7 +232,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Handles the joints using the specified body
+        ///     Handles the joints using the specified body
         /// </summary>
         /// <param name="body">The body</param>
         private void HandleJoints(Body body)
@@ -272,7 +272,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Integrates the velocities and apply damping using the specified h
+        ///     Integrates the velocities and apply damping using the specified h
         /// </summary>
         /// <param name="h">The </param>
         /// <param name="body">The body</param>
@@ -322,7 +322,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
 
         /// <summary>
-        /// Integrates the positions using the specified h
+        ///     Integrates the positions using the specified h
         /// </summary>
         /// <param name="h">The </param>
         private void IntegratePositions(float h)
@@ -359,7 +359,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="step">The step</param>
         /// <returns>The position solved</returns>
@@ -402,7 +402,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Copies the state buffers back to bodies
+        ///     Copies the state buffers back to bodies
         /// </summary>
         private void CopyStateBuffersBackToBodies()
         {
@@ -417,7 +417,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Handles the sleep using the specified position solved
+        ///     Handles the sleep using the specified position solved
         /// </summary>
         /// <param name="positionSolved">The position solved</param>
         /// <param name="h">The </param>
@@ -457,7 +457,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Posts the solve cleanup
+        ///     Posts the solve cleanup
         /// </summary>
         private void PostSolveCleanup()
         {
@@ -472,7 +472,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
 
         /// <summary>
-        /// Solves the toi using the specified min alpha
+        ///     Solves the toi using the specified min alpha
         /// </summary>
         /// <param name="minAlpha">The min alpha</param>
         /// <param name="subStep">The sub step</param>
@@ -493,7 +493,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Initializes the time step using the specified min alpha
+        ///     Initializes the time step using the specified min alpha
         /// </summary>
         /// <param name="minAlpha">The min alpha</param>
         /// <param name="subStep">The sub step</param>
@@ -508,7 +508,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Initializes the body state
+        ///     Initializes the body state
         /// </summary>
         private void InitializeBodyState()
         {
@@ -538,7 +538,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Solves the position constraints using the specified sub step
+        ///     Solves the position constraints using the specified sub step
         /// </summary>
         /// <param name="subStep">The sub step</param>
         /// <param name="toiIndexA">The toi index</param>
@@ -556,7 +556,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Leaps the to new state using the specified toi index a
+        ///     Leaps the to new state using the specified toi index a
         /// </summary>
         /// <param name="toiIndexA">The toi index</param>
         /// <param name="toiIndexB">The toi index</param>
@@ -569,7 +569,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified sub step
+        ///     Solves the velocity constraints using the specified sub step
         /// </summary>
         /// <param name="subStep">The sub step</param>
         private void SolveVelocityConstraints(TimeStep subStep)
@@ -581,7 +581,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Integrates the positions using the specified sub step
+        ///     Integrates the positions using the specified sub step
         /// </summary>
         /// <param name="subStep">The sub step</param>
         private void IntegratePositions(TimeStep subStep)

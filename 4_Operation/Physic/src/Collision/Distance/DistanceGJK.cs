@@ -77,7 +77,7 @@ namespace Alis.Core.Physic.Collision.Distance
 
             // Initialize the simplex.
             Simplex simplex = InitializeSimplex(ref cache, ref input);
-            
+
             // These store the vertices of the last simplex so that we
             // can check for duplicates and prevent cycling.
             FixedArray3<int> saveA = new FixedArray3<int>();
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Collision.Distance
             {
                 // Copy simplex so we can identify duplicates.
                 int saveCount = simplex.Count;
-                
+
                 SaveSimplexVertices(simplex, ref saveA, ref saveB);
                 SolveSimplex(ref simplex);
 
@@ -128,17 +128,23 @@ namespace Alis.Core.Physic.Collision.Distance
                 {
                     break;
                 }
-                
+
                 // New vertex is OK and needed.
                 ++simplex.Count;
             }
 
             _gjkMaxIter = Math.Max(_gjkMaxIter, iter);
-            
+
             // Prepare output.
             PrepareOutput(out output, ref simplex, ref cache, ref input);
         }
-        
+
+        /// <summary>
+        /// Saves the simplex vertices using the specified simplex
+        /// </summary>
+        /// <param name="simplex">The simplex</param>
+        /// <param name="saveA">The save</param>
+        /// <param name="saveB">The save</param>
         private static void SaveSimplexVertices(Simplex simplex, ref FixedArray3<int> saveA, ref FixedArray3<int> saveB)
         {
             int saveCount = simplex.Count;
@@ -148,15 +154,27 @@ namespace Alis.Core.Physic.Collision.Distance
                 saveB[i] = simplex.V[i].IndexB;
             }
         }
-        
+
+        /// <summary>
+        /// Initializes the simplex using the specified cache
+        /// </summary>
+        /// <param name="cache">The cache</param>
+        /// <param name="input">The input</param>
+        /// <returns>The simplex</returns>
         private static Simplex InitializeSimplex(ref SimplexCache cache, ref DistanceInput input)
         {
             Simplex simplex = new Simplex();
             simplex.ReadCache(ref cache, ref input.ProxyA, ref input.TransformA, ref input.ProxyB, ref input.TransformB);
             return simplex;
         }
-        
-        
+
+
+        /// <summary>
+        /// Adds the new vertex to simplex using the specified simplex
+        /// </summary>
+        /// <param name="simplex">The simplex</param>
+        /// <param name="input">The input</param>
+        /// <returns>The vertex</returns>
         private static SimplexVertex AddNewVertexToSimplex(ref Simplex simplex, ref DistanceInput input)
         {
             Vector2 d = simplex.GetSearchDirection();
@@ -169,7 +187,12 @@ namespace Alis.Core.Physic.Collision.Distance
             simplex.V[simplex.Count] = vertex;
             return vertex;
         }
-        
+
+
+        /// <summary>
+        /// Solves the simplex using the specified simplex
+        /// </summary>
+        /// <param name="simplex">The simplex</param>
         private static void SolveSimplex(ref Simplex simplex)
         {
             switch (simplex.Count)
@@ -187,7 +210,15 @@ namespace Alis.Core.Physic.Collision.Distance
                     break;
             }
         }
-        
+
+        /// <summary>
+        /// Describes whether is duplicate support point
+        /// </summary>
+        /// <param name="saveA">The save</param>
+        /// <param name="saveB">The save</param>
+        /// <param name="vertex">The vertex</param>
+        /// <param name="saveCount">The save count</param>
+        /// <returns>The bool</returns>
         private static bool IsDuplicateSupportPoint(FixedArray3<int> saveA, FixedArray3<int> saveB, SimplexVertex vertex, int saveCount)
         {
             for (int i = 0; i < saveCount; ++i)
@@ -201,6 +232,13 @@ namespace Alis.Core.Physic.Collision.Distance
             return false;
         }
 
+        /// <summary>
+        /// Prepares the output using the specified output
+        /// </summary>
+        /// <param name="output">The output</param>
+        /// <param name="simplex">The simplex</param>
+        /// <param name="cache">The cache</param>
+        /// <param name="input">The input</param>
         private static void PrepareOutput(out DistanceOutput output, ref Simplex simplex, ref SimplexCache cache, ref DistanceInput input)
         {
             simplex.GetWitnessPoints(out output.PointA, out output.PointB);
@@ -215,6 +253,11 @@ namespace Alis.Core.Physic.Collision.Distance
             }
         }
 
+        /// <summary>
+        /// Applies the radii using the specified output
+        /// </summary>
+        /// <param name="output">The output</param>
+        /// <param name="input">The input</param>
         private static void ApplyRadii(ref DistanceOutput output, ref DistanceInput input)
         {
             float rA = input.ProxyA.Radius;

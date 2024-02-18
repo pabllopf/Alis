@@ -46,11 +46,6 @@ namespace Alis.Core.Physic.Collision.ContactSystem
     public class ContactManager
     {
         /// <summary>
-        /// The dynamic tree broad phase
-        /// </summary>
-        public static ContactManager Current { get; private set; }
-
-        /// <summary>
         ///     The contact list
         /// </summary>
         private readonly List<Contact> contactList = new List<Contact>();
@@ -100,6 +95,11 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
+        ///     The dynamic tree broad phase
+        /// </summary>
+        public static ContactManager Current { get; private set; }
+
+        /// <summary>
         ///     Gets the value of the broad phase
         /// </summary>
         public IBroadPhase BroadPhase { get; }
@@ -110,7 +110,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         public int ContactCount => contactCounter;
 
         /// <summary>
-        /// Adds the pair using the specified proxy a
+        ///     Adds the pair using the specified proxy a
         /// </summary>
         /// <param name="proxyA">The proxy</param>
         /// <param name="proxyB">The proxy</param>
@@ -171,7 +171,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Describes whether this instance check existing contact
+        ///     Describes whether this instance check existing contact
         /// </summary>
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
@@ -212,7 +212,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Creates the contact using the specified fixture a
+        ///     Creates the contact using the specified fixture a
         /// </summary>
         /// <param name="fixtureA">The fixture</param>
         /// <param name="indexA">The index</param>
@@ -355,7 +355,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Collides this instance
+        ///     Collides this instance
         /// </summary>
         internal void Collide()
         {
@@ -380,7 +380,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Describes whether this instance should process contact
+        ///     Describes whether this instance should process contact
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
@@ -405,7 +405,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Describes whether this instance should persist contact
+        ///     Describes whether this instance should persist contact
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The overlap</returns>
@@ -433,7 +433,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Describes whether this instance should bodies collide
+        ///     Describes whether this instance should bodies collide
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
@@ -465,7 +465,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Gets the the min contact using the specified min alpha
+        ///     Gets the the min contact using the specified min alpha
         /// </summary>
         /// <param name="minAlpha">The min alpha</param>
         /// <returns>The contact</returns>
@@ -495,27 +495,21 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Describes whether this instance is valid cached toi
+        ///     Describes whether this instance is valid cached toi
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private bool IsValidCachedToi(Contact c)
-        {
-            return c.ToiFlag;
-        }
+        private bool IsValidCachedToi(Contact c) => c.ToiFlag;
 
         /// <summary>
-        /// Describes whether this instance is sensor contact
+        ///     Describes whether this instance is sensor contact
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private bool IsSensorContact(Contact c)
-        {
-            return c.FixtureA.IsSensorPrivate || c.FixtureB.IsSensorPrivate;
-        }
+        private bool IsSensorContact(Contact c) => c.FixtureA.IsSensorPrivate || c.FixtureB.IsSensorPrivate;
 
         /// <summary>
-        /// Describes whether this instance is active contact
+        ///     Describes whether this instance is active contact
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
@@ -531,7 +525,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Describes whether this instance is collidable contact
+        ///     Describes whether this instance is collidable contact
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
@@ -549,7 +543,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Adjusts the sweeps using the specified c
+        ///     Adjusts the sweeps using the specified c
         /// </summary>
         /// <param name="c">The </param>
         private void AdjustSweeps(Contact c)
@@ -572,7 +566,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Computes the time of impact using the specified c
+        ///     Computes the time of impact using the specified c
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The output</returns>
@@ -593,7 +587,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Updates the contact toi using the specified c
+        ///     Updates the contact toi using the specified c
         /// </summary>
         /// <param name="c">The </param>
         /// <param name="output">The output</param>

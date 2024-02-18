@@ -92,7 +92,6 @@ namespace Alis.Sample.Pong
                                 .BackgroundColor(Color.Black)
                                 .Build())
                             .Build())
-                        
                         .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
                             .AddComponent<AudioSource>(audioSource => audioSource

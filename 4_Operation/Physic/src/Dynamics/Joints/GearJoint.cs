@@ -90,46 +90,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private readonly Joint jointB;
 
         /// <summary>
-        ///     The local anchor
-        /// </summary>
-        private Vector2 localAnchorA;
-
-        /// <summary>
-        ///     The local anchor
-        /// </summary>
-        private Vector2 localAnchorB;
-
-        /// <summary>
-        ///     The local anchor
-        /// </summary>
-        private Vector2 localAnchorC;
-
-        /// <summary>
-        ///     The local anchor
-        /// </summary>
-        private Vector2 localAnchorD;
-
-        /// <summary>
-        ///     The local axis
-        /// </summary>
-        private Vector2 localAxisC;
-
-        /// <summary>
-        ///     The local axis
-        /// </summary>
-        private Vector2 localAxisD;
-
-        /// <summary>
-        ///     The reference angle
-        /// </summary>
-        private float referenceAngleA;
-
-        /// <summary>
-        ///     The reference angle
-        /// </summary>
-        private float referenceAngleB;
-
-        /// <summary>
         ///     The type
         /// </summary>
         private readonly JointType typeA;
@@ -170,6 +130,36 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private Vector2 lcA, lcB, lcC, lcD;
 
         /// <summary>
+        ///     The local anchor
+        /// </summary>
+        private Vector2 localAnchorA;
+
+        /// <summary>
+        ///     The local anchor
+        /// </summary>
+        private Vector2 localAnchorB;
+
+        /// <summary>
+        ///     The local anchor
+        /// </summary>
+        private Vector2 localAnchorC;
+
+        /// <summary>
+        ///     The local anchor
+        /// </summary>
+        private Vector2 localAnchorD;
+
+        /// <summary>
+        ///     The local axis
+        /// </summary>
+        private Vector2 localAxisC;
+
+        /// <summary>
+        ///     The local axis
+        /// </summary>
+        private Vector2 localAxisD;
+
+        /// <summary>
         ///     The
         /// </summary>
         private float mA, mB, mC, mD;
@@ -185,7 +175,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private float ratio;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GearJoint"/> class
+        ///     The reference angle
+        /// </summary>
+        private float referenceAngleA;
+
+        /// <summary>
+        ///     The reference angle
+        /// </summary>
+        private float referenceAngleB;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="GearJoint" /> class
         /// </summary>
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
@@ -218,120 +218,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Gets the coordinate a
-        /// </summary>
-        /// <returns>The float</returns>
-        private float GetCoordinateA()
-        {
-            Transform xfA = BodyA.Xf;
-            float aA = BodyA.Sweep.A;
-            Transform xfC = bodyC.Xf;
-            float aC = bodyC.Sweep.A;
-
-            if (typeA == JointType.Revolute)
-            {
-                return GetCoordinateAForRevoluteJoint(aA, aC);
-            }
-            else
-            {
-                return GetCoordinateAForPrismaticJoint(xfA, xfC);
-            }
-        }
-
-        /// <summary>
-        /// Gets the coordinate a for revolute joint using the specified a a
-        /// </summary>
-        /// <param name="aA">The </param>
-        /// <param name="aC">The </param>
-        /// <returns>The float</returns>
-        private float GetCoordinateAForRevoluteJoint(float aA, float aC)
-        {
-            RevoluteJoint revolute = (RevoluteJoint) jointA;
-            localAnchorC = revolute.LocalAnchorA;
-            localAnchorA = revolute.LocalAnchorB;
-            referenceAngleA = revolute.ReferenceAngle;
-            localAxisC = Vector2.Zero;
-
-            return aA - aC - referenceAngleA;
-        }
-
-        /// <summary>
-        /// Gets the coordinate a for prismatic joint using the specified xf a
-        /// </summary>
-        /// <param name="xfA">The xf</param>
-        /// <param name="xfC">The xf</param>
-        /// <returns>The float</returns>
-        private float GetCoordinateAForPrismaticJoint(Transform xfA, Transform xfC)
-        {
-            PrismaticJoint prismatic = (PrismaticJoint) jointA;
-            localAnchorC = prismatic.LocalAnchorA;
-            localAnchorA = prismatic.LocalAnchorB;
-            referenceAngleA = prismatic.ReferenceAngle;
-            localAxisC = prismatic.LocalXAxisA;
-
-            Vector2 pC = localAnchorC;
-            Vector2 pA = MathUtils.MulT(xfC.Rotation, MathUtils.Mul(xfA.Rotation, localAnchorA) + (xfA.Position - xfC.Position));
-            return Vector2.Dot(pA - pC, localAxisC);
-        }
-
-        /// <summary>
-        /// Gets the coordinate b
-        /// </summary>
-        /// <returns>The float</returns>
-        private float GetCoordinateB()
-        {
-            Transform xfB = BodyB.Xf;
-            float aB = BodyB.Sweep.A;
-            Transform xfD = bodyD.Xf;
-            float aD = bodyD.Sweep.A;
-
-            if (typeB == JointType.Revolute)
-            {
-                return GetCoordinateBForRevoluteJoint(aB, aD);
-            }
-            else
-            {
-                return GetCoordinateBForPrismaticJoint(xfB, xfD);
-            }
-        }
-
-        /// <summary>
-        /// Gets the coordinate b for revolute joint using the specified a b
-        /// </summary>
-        /// <param name="aB">The </param>
-        /// <param name="aD">The </param>
-        /// <returns>The float</returns>
-        private float GetCoordinateBForRevoluteJoint(float aB, float aD)
-        {
-            RevoluteJoint revolute = (RevoluteJoint) jointB;
-            localAnchorD = revolute.LocalAnchorA;
-            localAnchorB = revolute.LocalAnchorB;
-            referenceAngleB = revolute.ReferenceAngle;
-            localAxisD = Vector2.Zero;
-
-            return aB - aD - referenceAngleB;
-        }
-
-        /// <summary>
-        /// Gets the coordinate b for prismatic joint using the specified xf b
-        /// </summary>
-        /// <param name="xfB">The xf</param>
-        /// <param name="xfD">The xf</param>
-        /// <returns>The float</returns>
-        private float GetCoordinateBForPrismaticJoint(Transform xfB, Transform xfD)
-        {
-            PrismaticJoint prismatic = (PrismaticJoint) jointB;
-            localAnchorD = prismatic.LocalAnchorA;
-            localAnchorB = prismatic.LocalAnchorB;
-            referenceAngleB = prismatic.ReferenceAngle;
-            localAxisD = prismatic.LocalXAxisA;
-
-            Vector2 pD = localAnchorD;
-            Vector2 pB = MathUtils.MulT(xfD.Rotation, MathUtils.Mul(xfB.Rotation, localAnchorB) + (xfB.Position - xfD.Position));
-            return Vector2.Dot(pB - pD, localAxisD);
-        }
-
-        /// <summary>
         ///     Gets or sets the value of the world anchor a
         /// </summary>
         public override Vector2 WorldAnchorA
@@ -361,6 +247,116 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
         /// <summary>The second revolute/prismatic joint attached to the gear joint.</summary>
         private Joint JointB => jointB;
+
+        /// <summary>
+        ///     Gets the coordinate a
+        /// </summary>
+        /// <returns>The float</returns>
+        private float GetCoordinateA()
+        {
+            Transform xfA = BodyA.Xf;
+            float aA = BodyA.Sweep.A;
+            Transform xfC = bodyC.Xf;
+            float aC = bodyC.Sweep.A;
+
+            if (typeA == JointType.Revolute)
+            {
+                return GetCoordinateAForRevoluteJoint(aA, aC);
+            }
+
+            return GetCoordinateAForPrismaticJoint(xfA, xfC);
+        }
+
+        /// <summary>
+        ///     Gets the coordinate a for revolute joint using the specified a a
+        /// </summary>
+        /// <param name="aA">The </param>
+        /// <param name="aC">The </param>
+        /// <returns>The float</returns>
+        private float GetCoordinateAForRevoluteJoint(float aA, float aC)
+        {
+            RevoluteJoint revolute = (RevoluteJoint) jointA;
+            localAnchorC = revolute.LocalAnchorA;
+            localAnchorA = revolute.LocalAnchorB;
+            referenceAngleA = revolute.ReferenceAngle;
+            localAxisC = Vector2.Zero;
+
+            return aA - aC - referenceAngleA;
+        }
+
+        /// <summary>
+        ///     Gets the coordinate a for prismatic joint using the specified xf a
+        /// </summary>
+        /// <param name="xfA">The xf</param>
+        /// <param name="xfC">The xf</param>
+        /// <returns>The float</returns>
+        private float GetCoordinateAForPrismaticJoint(Transform xfA, Transform xfC)
+        {
+            PrismaticJoint prismatic = (PrismaticJoint) jointA;
+            localAnchorC = prismatic.LocalAnchorA;
+            localAnchorA = prismatic.LocalAnchorB;
+            referenceAngleA = prismatic.ReferenceAngle;
+            localAxisC = prismatic.LocalXAxisA;
+
+            Vector2 pC = localAnchorC;
+            Vector2 pA = MathUtils.MulT(xfC.Rotation, MathUtils.Mul(xfA.Rotation, localAnchorA) + (xfA.Position - xfC.Position));
+            return Vector2.Dot(pA - pC, localAxisC);
+        }
+
+        /// <summary>
+        ///     Gets the coordinate b
+        /// </summary>
+        /// <returns>The float</returns>
+        private float GetCoordinateB()
+        {
+            Transform xfB = BodyB.Xf;
+            float aB = BodyB.Sweep.A;
+            Transform xfD = bodyD.Xf;
+            float aD = bodyD.Sweep.A;
+
+            if (typeB == JointType.Revolute)
+            {
+                return GetCoordinateBForRevoluteJoint(aB, aD);
+            }
+
+            return GetCoordinateBForPrismaticJoint(xfB, xfD);
+        }
+
+        /// <summary>
+        ///     Gets the coordinate b for revolute joint using the specified a b
+        /// </summary>
+        /// <param name="aB">The </param>
+        /// <param name="aD">The </param>
+        /// <returns>The float</returns>
+        private float GetCoordinateBForRevoluteJoint(float aB, float aD)
+        {
+            RevoluteJoint revolute = (RevoluteJoint) jointB;
+            localAnchorD = revolute.LocalAnchorA;
+            localAnchorB = revolute.LocalAnchorB;
+            referenceAngleB = revolute.ReferenceAngle;
+            localAxisD = Vector2.Zero;
+
+            return aB - aD - referenceAngleB;
+        }
+
+        /// <summary>
+        ///     Gets the coordinate b for prismatic joint using the specified xf b
+        /// </summary>
+        /// <param name="xfB">The xf</param>
+        /// <param name="xfD">The xf</param>
+        /// <returns>The float</returns>
+        private float GetCoordinateBForPrismaticJoint(Transform xfB, Transform xfD)
+        {
+            PrismaticJoint prismatic = (PrismaticJoint) jointB;
+            localAnchorD = prismatic.LocalAnchorA;
+            localAnchorB = prismatic.LocalAnchorB;
+            referenceAngleB = prismatic.ReferenceAngle;
+            localAxisD = prismatic.LocalXAxisA;
+
+            Vector2 pD = localAnchorD;
+            Vector2 pB = MathUtils.MulT(xfD.Rotation, MathUtils.Mul(xfB.Rotation, localAnchorB) + (xfB.Position - xfD.Position));
+            return Vector2.Dot(pB - pD, localAxisD);
+        }
 
         /// <summary>
         ///     Gets the reaction force using the specified inv dt

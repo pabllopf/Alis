@@ -178,7 +178,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         }
 
         /// <summary>
-        /// Gets the position using the specified time
+        ///     Gets the position using the specified time
         /// </summary>
         /// <param name="time">The time</param>
         /// <exception cref="Exception">You need at least 2 control points to calculate a position.</exception>
@@ -197,7 +197,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         }
 
         /// <summary>
-        /// Calculates the position when closed using the specified p
+        ///     Calculates the position when closed using the specified p
         /// </summary>
         /// <param name="p">The </param>
         /// <param name="time">The time</param>
@@ -214,18 +214,15 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         }
 
         /// <summary>
-        /// Calculates the position when not closed using the specified p
+        ///     Calculates the position when not closed using the specified p
         /// </summary>
         /// <param name="p">The </param>
         /// <param name="time">The time</param>
         /// <returns>The vector</returns>
-        private Vector2 CalculatePositionWhenNotClosed(int p, float time)
-        {
-            return CalculatePosition(p, time);
-        }
+        private Vector2 CalculatePositionWhenNotClosed(int p, float time) => CalculatePosition(p, time);
 
         /// <summary>
-        /// Calculates the position using the specified p
+        ///     Calculates the position using the specified p
         /// </summary>
         /// <param name="p">The </param>
         /// <param name="time">The time</param>
@@ -243,7 +240,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         }
 
         /// <summary>
-        /// Adjusts the index using the specified index
+        ///     Adjusts the index using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The index</returns>
@@ -253,7 +250,8 @@ namespace Alis.Core.Physic.Tools.PathGenerator
             {
                 return Closed ? index + controlPoints.Count - 1 : 0;
             }
-            else if (index >= controlPoints.Count - 1)
+
+            if (index >= controlPoints.Count - 1)
             {
                 return Closed ? index - controlPoints.Count - 1 : controlPoints.Count - 1;
             }

@@ -400,7 +400,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Updates the contact manager
+        ///     Updates the contact manager
         /// </summary>
         /// <param name="contactManager">The contact manager</param>
         internal void Update(ContactManager contactManager)
@@ -445,16 +445,13 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Describes whether this instance is sensor contact
+        ///     Describes whether this instance is sensor contact
         /// </summary>
         /// <returns>The bool</returns>
-        private bool IsSensorContact()
-        {
-            return FixtureA.IsSensor || FixtureB.IsSensor;
-        }
+        private bool IsSensorContact() => FixtureA.IsSensor || FixtureB.IsSensor;
 
         /// <summary>
-        /// Describes whether this instance check sensor overlap
+        ///     Describes whether this instance check sensor overlap
         /// </summary>
         /// <param name="xfA">The xf</param>
         /// <param name="xfB">The xf</param>
@@ -471,7 +468,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Describes whether this instance evaluate and check manifold
+        ///     Describes whether this instance evaluate and check manifold
         /// </summary>
         /// <param name="xfA">The xf</param>
         /// <param name="xfB">The xf</param>
@@ -508,7 +505,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Updates the touching flag using the specified touching
+        ///     Updates the touching flag using the specified touching
         /// </summary>
         /// <param name="touching">The touching</param>
         private void UpdateTouchingFlag(bool touching)
@@ -524,7 +521,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Invokes the collision events using the specified contact manager
+        ///     Invokes the collision events using the specified contact manager
         /// </summary>
         /// <param name="contactManager">The contact manager</param>
         /// <param name="wasTouching">The was touching</param>
@@ -543,7 +540,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Invokes the separation events using the specified contact manager
+        ///     Invokes the separation events using the specified contact manager
         /// </summary>
         /// <param name="contactManager">The contact manager</param>
         private void InvokeSeparationEvents(ContactManager contactManager)
@@ -603,7 +600,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Creates the fixture a
+        ///     Creates the fixture a
         /// </summary>
         /// <param name="fixtureA">The fixture</param>
         /// <param name="indexA">The index</param>
@@ -622,7 +619,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Gets the contact from pool or new using the specified type 1
+        ///     Gets the contact from pool or new using the specified type 1
         /// </summary>
         /// <param name="type1">The type</param>
         /// <param name="type2">The type</param>
@@ -638,14 +635,12 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             {
                 return GetContactFromPool(type1, type2, fixtureA, indexA, fixtureB, indexB, pool);
             }
-            else
-            {
-                return GetNewContact(type1, type2, fixtureA, indexA, fixtureB, indexB);
-            }
+
+            return GetNewContact(type1, type2, fixtureA, indexA, fixtureB, indexB);
         }
 
         /// <summary>
-        /// Gets the contact from pool using the specified type 1
+        ///     Gets the contact from pool using the specified type 1
         /// </summary>
         /// <param name="type1">The type</param>
         /// <param name="type2">The type</param>
@@ -671,7 +666,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Gets the new contact using the specified type 1
+        ///     Gets the new contact using the specified type 1
         /// </summary>
         /// <param name="type1">The type</param>
         /// <param name="type2">The type</param>
@@ -696,16 +691,13 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Describes whether should reset with original order
+        ///     Describes whether should reset with original order
         /// </summary>
         /// <param name="type1">The type</param>
         /// <param name="type2">The type</param>
         /// <returns>The bool</returns>
-        private static bool ShouldResetWithOriginalOrder(ShapeType type1, ShapeType type2)
-        {
-            return (type1 >= type2 || ((type1 == ShapeType.Edge) && (type2 == ShapeType.Polygon))) &&
-                   !((type2 == ShapeType.Edge) && (type1 == ShapeType.Polygon));
-        }
+        private static bool ShouldResetWithOriginalOrder(ShapeType type1, ShapeType type2) => (type1 >= type2 || ((type1 == ShapeType.Edge) && (type2 == ShapeType.Polygon))) &&
+                                                                                              !((type2 == ShapeType.Edge) && (type1 == ShapeType.Polygon));
 
         /// <summary>
         ///     Destroys this instance

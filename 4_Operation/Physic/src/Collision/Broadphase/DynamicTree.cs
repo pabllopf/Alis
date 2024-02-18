@@ -535,7 +535,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         }
 
         /// <summary>
-        /// Inserts the leaf using the specified leaf
+        ///     Inserts the leaf using the specified leaf
         /// </summary>
         /// <param name="leaf">The leaf</param>
         private void InsertLeaf(int leaf)
@@ -555,7 +555,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         }
 
         /// <summary>
-        /// Sets the root leaf using the specified leaf
+        ///     Sets the root leaf using the specified leaf
         /// </summary>
         /// <param name="leaf">The leaf</param>
         private void SetRootLeaf(int leaf)
@@ -565,7 +565,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         }
 
         /// <summary>
-        /// Finds the insertion index using the specified leaf aabb
+        ///     Finds the insertion index using the specified leaf aabb
         /// </summary>
         /// <param name="leafAabb">The leaf aabb</param>
         /// <returns>The index</returns>
@@ -581,7 +581,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         }
 
         /// <summary>
-        /// Finds the best fit child using the specified index
+        ///     Finds the best fit child using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <param name="leafAabb">The leaf aabb</param>
@@ -598,7 +598,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         }
 
         /// <summary>
-        /// Calculates the cost using the specified leaf aabb
+        ///     Calculates the cost using the specified leaf aabb
         /// </summary>
         /// <param name="leafAabb">The leaf aabb</param>
         /// <param name="childIndex">The child index</param>
@@ -622,7 +622,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         }
 
         /// <summary>
-        /// Creates the new parent for leaf using the specified leaf
+        ///     Creates the new parent for leaf using the specified leaf
         /// </summary>
         /// <param name="leaf">The leaf</param>
         /// <param name="index">The index</param>
@@ -656,7 +656,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         }
 
         /// <summary>
-        /// Replaces the child using the specified parent index
+        ///     Replaces the child using the specified parent index
         /// </summary>
         /// <param name="parentIndex">The parent index</param>
         /// <param name="oldChild">The old child</param>
@@ -674,7 +674,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         }
 
         /// <summary>
-        /// Balances the tree from leaf to root using the specified leaf
+        ///     Balances the tree from leaf to root using the specified leaf
         /// </summary>
         /// <param name="leaf">The leaf</param>
         private void BalanceTreeFromLeafToRoot(int leaf)

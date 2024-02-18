@@ -125,7 +125,7 @@ namespace Alis.Core.Aspect.Data.Json
 
 
         /// <summary>
-        /// Describes whether try change type
+        ///     Describes whether try change type
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="conversionType">The conversion type</param>
@@ -164,7 +164,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try change type based on input type
+        ///     Describes whether try change type based on input type
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="conversionType">The conversion type</param>
@@ -215,27 +215,21 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether is numeric type
+        ///     Describes whether is numeric type
         /// </summary>
         /// <param name="conversionType">The conversion type</param>
         /// <returns>The bool</returns>
-        private static bool IsNumericType(Type conversionType)
-        {
-            return conversionType == typeof(int) || conversionType == typeof(long) || conversionType == typeof(short) || conversionType == typeof(sbyte) || conversionType == typeof(uint) || conversionType == typeof(ulong) || conversionType == typeof(ushort) || conversionType == typeof(byte);
-        }
+        private static bool IsNumericType(Type conversionType) => conversionType == typeof(int) || conversionType == typeof(long) || conversionType == typeof(short) || conversionType == typeof(sbyte) || conversionType == typeof(uint) || conversionType == typeof(ulong) || conversionType == typeof(ushort) || conversionType == typeof(byte);
 
         /// <summary>
-        /// Describes whether is date time type
+        ///     Describes whether is date time type
         /// </summary>
         /// <param name="conversionType">The conversion type</param>
         /// <returns>The bool</returns>
-        private static bool IsDateTimeType(Type conversionType)
-        {
-            return conversionType == typeof(DateTime) || conversionType == typeof(DateTimeOffset);
-        }
+        private static bool IsDateTimeType(Type conversionType) => conversionType == typeof(DateTime) || conversionType == typeof(DateTimeOffset);
 
         /// <summary>
-        /// Describes whether try change to nullable
+        ///     Describes whether try change to nullable
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="conversionType">The conversion type</param>
@@ -262,7 +256,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try change to enum
+        ///     Describes whether try change to enum
         /// </summary>
         /// <param name="conversionType">The conversion type</param>
         /// <param name="input">The input</param>
@@ -281,7 +275,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try change from enum
+        ///     Describes whether try change from enum
         /// </summary>
         /// <param name="conversionType">The conversion type</param>
         /// <param name="input">The input</param>
@@ -300,7 +294,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try change to guid
+        ///     Describes whether try change to guid
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="provider">The provider</param>
@@ -319,7 +313,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try change to uri
+        ///     Describes whether try change to uri
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="provider">The provider</param>
@@ -338,7 +332,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try change to int ptr
+        ///     Describes whether try change to int ptr
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="provider">The provider</param>
@@ -357,7 +351,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try change to numeric
+        ///     Describes whether try change to numeric
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="conversionType">The conversion type</param>
@@ -380,7 +374,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try change to date time
+        ///     Describes whether try change to date time
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="conversionType">The conversion type</param>
@@ -400,7 +394,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try change to time span
+        ///     Describes whether try change to time span
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="provider">The provider</param>
@@ -419,7 +413,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try change to collection
+        ///     Describes whether try change to collection
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="conversionType">The conversion type</param>
@@ -445,7 +439,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try change to culture info
+        ///     Describes whether try change to culture info
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="value">The value</param>
@@ -463,7 +457,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try change to bool
+        ///     Describes whether try change to bool
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="provider">The provider</param>
@@ -482,7 +476,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try change with i convertible
+        ///     Describes whether try change with i convertible
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="conversionType">The conversion type</param>
@@ -504,7 +498,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try change with converter
+        ///     Describes whether try change with converter
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="conversionType">The conversion type</param>
@@ -515,7 +509,7 @@ namespace Alis.Core.Aspect.Data.Json
         private static bool TryChangeWithConverter(object input, Type conversionType, IFormatProvider provider, Type inputType, out object value)
         {
             var converter = TypeDescriptor.GetConverter(conversionType);
-            if (converter != null && converter.CanConvertFrom(inputType))
+            if ((converter != null) && converter.CanConvertFrom(inputType))
             {
                 value = converter.ConvertFrom(input);
                 return true;
@@ -568,7 +562,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether string to enum
+        ///     Describes whether string to enum
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="names">The names</param>
@@ -599,7 +593,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try match names
+        ///     Describes whether try match names
         /// </summary>
         /// <param name="names">The names</param>
         /// <param name="values">The values</param>
@@ -622,7 +616,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try match values
+        ///     Describes whether try match values
         /// </summary>
         /// <param name="values">The values</param>
         /// <param name="input">The input</param>
@@ -658,7 +652,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try handle digit or sign start
+        ///     Describes whether try handle digit or sign start
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="input">The input</param>
@@ -684,7 +678,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Enums the to object using the specified enum type
+        ///     Enums the to object using the specified enum type
         /// </summary>
         /// <param name="enumType">The enum type</param>
         /// <param name="value">The value</param>
@@ -743,7 +737,7 @@ namespace Alis.Core.Aspect.Data.Json
 
 
         /// <summary>
-        /// Describes whether enum try parse
+        ///     Describes whether enum try parse
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="input">The input</param>
@@ -772,7 +766,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether validate input
+        ///     Describes whether validate input
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="input">The input</param>
@@ -791,17 +785,14 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Formats the input using the specified input
+        ///     Formats the input using the specified input
         /// </summary>
         /// <param name="input">The input</param>
         /// <returns>The string</returns>
-        private static string FormatInput(object input)
-        {
-            return string.Format(CultureInfo.InvariantCulture, "{0}", input).Nullify();
-        }
+        private static string FormatInput(object input) => string.Format(CultureInfo.InvariantCulture, "{0}", input).Nullify();
 
         /// <summary>
-        /// Describes whether try parse hexadecimal
+        ///     Describes whether try parse hexadecimal
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="type">The type</param>
@@ -823,7 +814,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try get enum names and values
+        ///     Describes whether try get enum names and values
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="names">The names</param>
@@ -838,7 +829,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try parse tokens
+        ///     Describes whether try parse tokens
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="type">The type</param>
@@ -864,7 +855,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try parse token values
+        ///     Describes whether try parse token values
         /// </summary>
         /// <param name="tokens">The tokens</param>
         /// <param name="type">The type</param>
@@ -897,7 +888,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Converts the token value to ulong using the specified token value
+        ///     Converts the token value to ulong using the specified token value
         /// </summary>
         /// <param name="tokenValue">The token value</param>
         /// <returns>The ulong</returns>

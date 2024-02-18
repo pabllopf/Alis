@@ -33,7 +33,7 @@ using System.Text;
 namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 {
     /// <summary>
-    /// The advancing front class
+    ///     The advancing front class
     /// </summary>
     internal class AdvancingFront
     {
@@ -146,7 +146,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Locates the point using the specified point
+        ///     Locates the point using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The node</returns>
@@ -174,7 +174,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Handles the point equals node using the specified point
+        ///     Handles the point equals node using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <param name="node">The node</param>
@@ -203,7 +203,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Searches the node in previous nodes using the specified point
+        ///     Searches the node in previous nodes using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <param name="node">The node</param>
@@ -222,7 +222,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Searches the node in next nodes using the specified point
+        ///     Searches the node in next nodes using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <param name="node">The node</param>
