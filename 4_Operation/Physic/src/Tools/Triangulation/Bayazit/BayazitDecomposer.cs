@@ -171,52 +171,51 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         }
 
         /// <summary>
+
         /// Handles the vertices to connect using the specified i
+
         /// </summary>
+
         /// <param name="i">The </param>
+
         /// <param name="lowerIndex">The lower index</param>
+
         /// <param name="upperIndex">The upper index</param>
+
         /// <param name="vertices">The vertices</param>
+
         /// <param name="list">The list</param>
+
         private static void HandleVerticesToConnect(int i, int lowerIndex, int upperIndex, Vertices vertices, List<Vertices> list)
         {
-            AdjustUpperIndex(ref upperIndex, lowerIndex, vertices.Count);
-            int bestIndex = FindBestIndex(i, lowerIndex, upperIndex, vertices);
-            DecomposeIntoPolygons(i, bestIndex, vertices, list);
-        }
-
-        /// <summary>
-        /// Adjusts the upper index using the specified upper index
-        /// </summary>
-        /// <param name="upperIndex">The upper index</param>
-        /// <param name="lowerIndex">The lower index</param>
-        /// <param name="verticesCount">The vertices count</param>
-        private static void AdjustUpperIndex(ref int upperIndex, int lowerIndex, int verticesCount)
-        {
+            double highestScore = 0, bestIndex = lowerIndex;
             while (upperIndex < lowerIndex)
             {
-                upperIndex += verticesCount;
+                upperIndex += vertices.Count;
             }
-        }
-
-        /// <summary>
-        /// Finds the best index using the specified i
-        /// </summary>
-        /// <param name="i">The </param>
-        /// <param name="lowerIndex">The lower index</param>
-        /// <param name="upperIndex">The upper index</param>
-        /// <param name="vertices">The vertices</param>
-        /// <returns>The best index</returns>
-        private static int FindBestIndex(int i, int lowerIndex, int upperIndex, Vertices vertices)
-        {
-            double highestScore = 0;
-            int bestIndex = lowerIndex;
 
             for (int j = lowerIndex; j <= upperIndex; ++j)
             {
                 if (CanSee(i, j, vertices))
                 {
-                    double score = ComputeScore(i, j, vertices);
+                    double score = 1 / (SquareDist(At(i, vertices), At(j, vertices)) + 1);
+                    if (Reflex(j, vertices))
+                    {
+                        if (RightOn(At(j - 1, vertices), At(j, vertices), At(i, vertices)) &&
+                            LeftOn(At(j + 1, vertices), At(j, vertices), At(i, vertices)))
+                        {
+                            score += 3;
+                        }
+                        else
+                        {
+                            score += 2;
+                        }
+                    }
+                    else
+                    {
+                        score += 1;
+                    }
+
                     if (score > highestScore)
                     {
                         bestIndex = j;
@@ -225,50 +224,8 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
                 }
             }
 
-            return bestIndex;
-        }
-
-        /// <summary>
-        /// Computes the score using the specified i
-        /// </summary>
-        /// <param name="i">The </param>
-        /// <param name="j">The </param>
-        /// <param name="vertices">The vertices</param>
-        /// <returns>The score</returns>
-        private static double ComputeScore(int i, int j, Vertices vertices)
-        {
-            double score = 1 / (SquareDist(At(i, vertices), At(j, vertices)) + 1);
-            if (Reflex(j, vertices))
-            {
-                if (RightOn(At(j - 1, vertices), At(j, vertices), At(i, vertices)) &&
-                    LeftOn(At(j + 1, vertices), At(j, vertices), At(i, vertices)))
-                {
-                    score += 3;
-                }
-                else
-                {
-                    score += 2;
-                }
-            }
-            else
-            {
-                score += 1;
-            }
-
-            return score;
-        }
-
-        /// <summary>
-        /// Decomposes the into polygons using the specified i
-        /// </summary>
-        /// <param name="i">The </param>
-        /// <param name="bestIndex">The best index</param>
-        /// <param name="vertices">The vertices</param>
-        /// <param name="list">The list</param>
-        private static void DecomposeIntoPolygons(int i, int bestIndex, Vertices vertices, List<Vertices> list)
-        {
-            Vertices lowerPoly = Copy(i, bestIndex, vertices);
-            Vertices upperPoly = Copy(bestIndex, i, vertices);
+            Vertices lowerPoly = Copy(i, (int) bestIndex, vertices);
+            Vertices upperPoly = Copy((int) bestIndex, i, vertices);
 
             list.AddRange(TriangulatePolygon(lowerPoly));
             list.AddRange(TriangulatePolygon(upperPoly));
