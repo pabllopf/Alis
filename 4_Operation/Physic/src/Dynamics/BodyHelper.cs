@@ -167,70 +167,97 @@ namespace Alis.Core.Physic.Dynamics
                 Body body = bodies[i];
                 if (body.BodyType == BodyType.Dynamic)
                 {
-                    for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
-                    {
-                        Contact contact = ce.Contact;
-
-                        if (contact.IslandFlag)
-                        {
-                            continue;
-                        }
-
-                        Body other = ce.Other;
-                        if ((other.BodyType == BodyType.Dynamic) &&
-                            !body.IsBullet && !other.IsBullet)
-                        {
-                            continue;
-                        }
-
-                        bool sensorA = contact.FixtureA.IsSensorPrivate;
-                        bool sensorB = contact.FixtureB.IsSensorPrivate;
-                        if (sensorA || sensorB)
-                        {
-                            continue;
-                        }
-
-                        Sweep backup = other.Sweep;
-                        if (!other.IsIsland)
-                        {
-                            other.Advance(minAlpha);
-                        }
-
-                        contact.Update(contactManager);
-
-                        if (!contact.Enabled)
-                        {
-                            other.Sweep = backup;
-                            other.SynchronizeTransform();
-                            continue;
-                        }
-
-                        if (!contact.IsTouching)
-                        {
-                            other.Sweep = backup;
-                            other.SynchronizeTransform();
-                            continue;
-                        }
-
-                        minContact.Flags |= ContactFlags.IslandFlag;
-                        island.Add(contact);
-
-                        if (other.IsIsland)
-                        {
-                            continue;
-                        }
-
-                        other.Flags |= BodyFlags.IslandFlag;
-
-                        if (other.BodyType != BodyType.Static)
-                        {
-                            other.Awake = true;
-                        }
-
-                        island.Add(other);
-                    }
+                    ProcessBodyContacts(body, contactManager, minAlpha, island, minContact);
                 }
             }
+        }
+
+        /// <summary>
+        /// Processes the body contacts using the specified body
+        /// </summary>
+        /// <param name="body">The body</param>
+        /// <param name="contactManager">The contact manager</param>
+        /// <param name="minAlpha">The min alpha</param>
+        /// <param name="island">The island</param>
+        /// <param name="minContact">The min contact</param>
+        private static void ProcessBodyContacts(Body body, ContactManager contactManager, float minAlpha, Island island, Contact minContact)
+        {
+            for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
+            {
+                ProcessContact(body, ce, contactManager, minAlpha, island, minContact);
+            }
+        }
+
+        /// <summary>
+        /// Processes the contact using the specified body
+        /// </summary>
+        /// <param name="body">The body</param>
+        /// <param name="ce">The ce</param>
+        /// <param name="contactManager">The contact manager</param>
+        /// <param name="minAlpha">The min alpha</param>
+        /// <param name="island">The island</param>
+        /// <param name="minContact">The min contact</param>
+        private static void ProcessContact(Body body, ContactEdge ce, ContactManager contactManager, float minAlpha, Island island, Contact minContact)
+        {
+            Contact contact = ce.Contact;
+
+            if (contact.IslandFlag)
+            {
+                return;
+            }
+
+            Body other = ce.Other;
+            if ((other.BodyType == BodyType.Dynamic) &&
+                !body.IsBullet && !other.IsBullet)
+            {
+                return;
+            }
+
+            bool sensorA = contact.FixtureA.IsSensorPrivate;
+            bool sensorB = contact.FixtureB.IsSensorPrivate;
+            if (sensorA || sensorB)
+            {
+                return;
+            }
+
+            Sweep backup = other.Sweep;
+            if (!other.IsIsland)
+            {
+                other.Advance(minAlpha);
+            }
+
+            contact.Update(contactManager);
+
+            if (!contact.Enabled)
+            {
+                other.Sweep = backup;
+                other.SynchronizeTransform();
+                return;
+            }
+
+            if (!contact.IsTouching)
+            {
+                other.Sweep = backup;
+                other.SynchronizeTransform();
+                return;
+            }
+
+            minContact.Flags |= ContactFlags.IslandFlag;
+            island.Add(contact);
+
+            if (other.IsIsland)
+            {
+                return;
+            }
+
+            other.Flags |= BodyFlags.IslandFlag;
+
+            if (other.BodyType != BodyType.Static)
+            {
+                other.Awake = true;
+            }
+
+            island.Add(other);
         }
     }
 }
