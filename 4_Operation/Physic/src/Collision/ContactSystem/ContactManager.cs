@@ -109,8 +109,9 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         public int ContactCount => contactCounter;
 
+        // Broad-phase callback.
         /// <summary>
-        /// Adds the pair using the specified proxy a
+        ///     Adds the pair using the specified proxy a
         /// </summary>
         /// <param name="proxyA">The proxy</param>
         /// <param name="proxyB">The proxy</param>
@@ -118,6 +119,9 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         {
             Fixture fixtureA = proxyA.Fixture;
             Fixture fixtureB = proxyB.Fixture;
+
+            int indexA = proxyA.ChildIndex;
+            int indexB = proxyB.ChildIndex;
 
             if (fixtureA == null || fixtureB == null)
             {
@@ -133,9 +137,30 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 return;
             }
 
-            if (CheckExistingContact(bodyA, bodyB, fixtureA, fixtureB, proxyA.ChildIndex, proxyB.ChildIndex))
+            ContactEdge edge = bodyB.ContactList;
+            while (edge != null)
             {
-                return;
+                if (edge.Other == bodyA)
+                {
+                    Fixture fA = edge.Contact.FixtureA;
+                    Fixture fB = edge.Contact.FixtureB;
+                    int iA = edge.Contact.ChildIndexA;
+                    int iB = edge.Contact.ChildIndexB;
+
+                    if ((fA == fixtureA) && (fB == fixtureB) && (iA == indexA) && (iB == indexB))
+                    {
+                        // A contact already exists.
+                        return;
+                    }
+
+                    if ((fA == fixtureB) && (fB == fixtureA) && (iA == indexB) && (iB == indexA))
+                    {
+                        // A contact already exists.
+                        return;
+                    }
+                }
+
+                edge = edge.Next;
             }
 
             // Does a joint override collision? Is at least one body dynamic?
@@ -167,59 +192,6 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 return;
             }
 
-            CreateContact(fixtureA, proxyA.ChildIndex, fixtureB, proxyB.ChildIndex);
-        }
-
-        /// <summary>
-        /// Describes whether this instance check existing contact
-        /// </summary>
-        /// <param name="bodyA">The body</param>
-        /// <param name="bodyB">The body</param>
-        /// <param name="fixtureA">The fixture</param>
-        /// <param name="fixtureB">The fixture</param>
-        /// <param name="indexA">The index</param>
-        /// <param name="indexB">The index</param>
-        /// <returns>The bool</returns>
-        private bool CheckExistingContact(Body bodyA, Body bodyB, Fixture fixtureA, Fixture fixtureB, int indexA, int indexB)
-        {
-            ContactEdge edge = bodyB.ContactList;
-            while (edge != null)
-            {
-                if (edge.Other == bodyA)
-                {
-                    Fixture fA = edge.Contact.FixtureA;
-                    Fixture fB = edge.Contact.FixtureB;
-                    int iA = edge.Contact.ChildIndexA;
-                    int iB = edge.Contact.ChildIndexB;
-
-                    if ((fA == fixtureA) && (fB == fixtureB) && (iA == indexA) && (iB == indexB))
-                    {
-                        // A contact already exists.
-                        return true;
-                    }
-
-                    if ((fA == fixtureB) && (fB == fixtureA) && (iA == indexB) && (iB == indexA))
-                    {
-                        // A contact already exists.
-                        return true;
-                    }
-                }
-
-                edge = edge.Next;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        /// Creates the contact using the specified fixture a
-        /// </summary>
-        /// <param name="fixtureA">The fixture</param>
-        /// <param name="indexA">The index</param>
-        /// <param name="fixtureB">The fixture</param>
-        /// <param name="indexB">The index</param>
-        private void CreateContact(Fixture fixtureA, int indexA, Fixture fixtureB, int indexB)
-        {
             // Call the factory.
             Contact c = Contact.Create(fixtureA, indexA, fixtureB, indexB);
             if (c == null)
@@ -229,8 +201,9 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
             fixtureA = c.FixtureA;
             fixtureB = c.FixtureB;
-            Body bodyA = fixtureA.Body;
-            Body bodyB = fixtureB.Body;
+            bodyA = fixtureA.Body;
+            bodyB = fixtureB.Body;
+
 
             contactList.Add(c);
 
