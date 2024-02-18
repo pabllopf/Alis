@@ -70,28 +70,43 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             manifold.Points[0] = p0;
         }
 
-        /// <summary>Compute the collision manifold between a polygon and a circle.</summary>
-        /// <param name="manifold">The manifold.</param>
-        /// <param name="polygonA">The polygon A.</param>
-        /// <param name="xfA">The transform of A.</param>
-        /// <param name="circleB">The circle B.</param>
-        /// <param name="xfB">The transform of B.</param>
         public static void CollidePolygonAndCircle(ref Manifold manifold, PolygonShape polygonA, ref Transform xfA,
             CircleShape circleB, ref Transform xfB)
         {
             manifold.PointCount = 0;
 
-            // Compute circle position in the frame of the polygon.
-            Vector2 c = MathUtils.Mul(ref xfB, circleB.Position);
-            Vector2 cLocal = MathUtils.MulT(ref xfA, c);
+            Vector2 c = ComputeCirclePositionInPolygonFrame(ref xfB, circleB.Position, ref xfA);
+            Vector2 cLocal = c;
 
-            // Find the min separating edge.
-            int normalIndex = 0;
-            float separation = -float.MaxValue;
             float radius = polygonA.RadiusPrivate + circleB.RadiusPrivate;
             int vertexCount = polygonA.VerticesPrivate.Count;
             Vertices vertices = polygonA.VerticesPrivate;
             Vertices normals = polygonA.NormalsPrivate;
+
+            int normalIndex = FindMinSeparatingEdge(cLocal, radius, vertexCount, vertices, normals);
+            if (normalIndex == -1) return;
+
+            int vertIndex1 = normalIndex;
+            int vertIndex2 = vertIndex1 + 1 < vertexCount ? vertIndex1 + 1 : 0;
+            Vector2 v1 = vertices[vertIndex1];
+            Vector2 v2 = vertices[vertIndex2];
+
+            float separation = Vector2.Distance(c, v1);
+
+            if (IsCenterInsidePolygon(separation, v1, v2, normals, normalIndex, circleB.Position, ref manifold)) return;
+
+            ComputeBarycentricCoordinates(cLocal, v1, v2, radius, circleB.Position, ref manifold, normals, vertIndex1);
+        }
+
+        private static Vector2 ComputeCirclePositionInPolygonFrame(ref Transform xfB, Vector2 circleBPosition, ref Transform xfA)
+        {
+            return MathUtils.Mul(ref xfB, circleBPosition);
+        }
+
+        private static int FindMinSeparatingEdge(Vector2 cLocal, float radius, int vertexCount, Vertices vertices, Vertices normals)
+        {
+            int normalIndex = 0;
+            float separation = -float.MaxValue;
 
             for (int i = 0; i < vertexCount; ++i)
             {
@@ -100,7 +115,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 if (s > radius)
                 {
                     // Early out.
-                    return;
+                    return -1;
                 }
 
                 if (s > separation)
@@ -110,25 +125,27 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 }
             }
 
-            // Vertices that subtend the incident face.
-            int vertIndex1 = normalIndex;
-            int vertIndex2 = vertIndex1 + 1 < vertexCount ? vertIndex1 + 1 : 0;
-            Vector2 v1 = vertices[vertIndex1];
-            Vector2 v2 = vertices[vertIndex2];
+            return normalIndex;
+        }
 
-            // If the center is inside the polygon ...
+        private static bool IsCenterInsidePolygon(float separation, Vector2 v1, Vector2 v2, Vertices normals, int normalIndex, Vector2 circleBPosition, ref Manifold manifold)
+        {
             if (separation < Constant.Epsilon)
             {
                 manifold.PointCount = 1;
                 manifold.Type = ManifoldType.FaceA;
                 manifold.LocalNormal = normals[normalIndex];
                 manifold.LocalPoint = 0.5f * (v1 + v2);
-                manifold.Points.Value0.LocalPoint = circleB.Position;
+                manifold.Points.Value0.LocalPoint = circleBPosition;
                 manifold.Points.Value0.Id.Key = 0;
-                return;
+                return true;
             }
 
-            // Compute barycentric coordinates
+            return false;
+        }
+
+        private static void ComputeBarycentricCoordinates(Vector2 cLocal, Vector2 v1, Vector2 v2, float radius, Vector2 circleBPosition, ref Manifold manifold, Vertices normals, int vertIndex1)
+        {
             float u1 = Vector2.Dot(cLocal - v1, v2 - v1);
             float u2 = Vector2.Dot(cLocal - v2, v1 - v2);
 
@@ -139,13 +156,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                     return;
                 }
 
-                manifold.PointCount = 1;
-                manifold.Type = ManifoldType.FaceA;
-                manifold.LocalNormal = cLocal - v1;
-                manifold.LocalNormal = Vector2.Normalize(manifold.LocalNormal);
-                manifold.LocalPoint = v1;
-                manifold.Points.Value0.LocalPoint = circleB.Position;
-                manifold.Points.Value0.Id.Key = 0;
+                SetManifoldForVertex(ref manifold, cLocal, v1, circleBPosition);
             }
             else if (u2 <= 0.0f)
             {
@@ -154,13 +165,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                     return;
                 }
 
-                manifold.PointCount = 1;
-                manifold.Type = ManifoldType.FaceA;
-                manifold.LocalNormal = cLocal - v2;
-                manifold.LocalNormal = Vector2.Normalize(manifold.LocalNormal);
-                manifold.LocalPoint = v2;
-                manifold.Points.Value0.LocalPoint = circleB.Position;
-                manifold.Points.Value0.Id.Key = 0;
+                SetManifoldForVertex(ref manifold, cLocal, v2, circleBPosition);
             }
             else
             {
@@ -175,9 +180,20 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 manifold.Type = ManifoldType.FaceA;
                 manifold.LocalNormal = normals[vertIndex1];
                 manifold.LocalPoint = faceCenter;
-                manifold.Points.Value0.LocalPoint = circleB.Position;
+                manifold.Points.Value0.LocalPoint = circleBPosition;
                 manifold.Points.Value0.Id.Key = 0;
             }
+        }
+
+        private static void SetManifoldForVertex(ref Manifold manifold, Vector2 cLocal, Vector2 vertex, Vector2 circleBPosition)
+        {
+            manifold.PointCount = 1;
+            manifold.Type = ManifoldType.FaceA;
+            manifold.LocalNormal = cLocal - vertex;
+            manifold.LocalNormal = Vector2.Normalize(manifold.LocalNormal);
+            manifold.LocalPoint = vertex;
+            manifold.Points.Value0.LocalPoint = circleBPosition;
+            manifold.Points.Value0.Id.Key = 0;
         }
     }
 }
