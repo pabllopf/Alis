@@ -392,42 +392,80 @@ namespace Alis.Core.Physic.Tools.Cutting
         {
             for (int i = 0; i < poly2Simplicies.Count; ++i)
             {
-                float edgeCharacter = 0f;
-                if (!resultSimplices.Contains(poly2Simplicies[i]) &&
-                    !resultSimplices.Contains(-poly2Simplicies[i]))
+                if (!IsContainedInResultSimplices(resultSimplices, poly2Simplicies[i]))
                 {
-                    if (poly1Simplicies.Contains(-poly2Simplicies[i]) && (clipType == PolyClipType.Union))
-                    {
-                        edgeCharacter = 1f;
-                    }
-                    else
-                    {
-                        edgeCharacter = 0f;
-                        for (int j = 0; j < poly1Simplicies.Count; ++j)
-                        {
-                            if (!poly1Simplicies.Contains(poly2Simplicies[i]) &&
-                                !poly1Simplicies.Contains(-poly2Simplicies[i]))
-                            {
-                                edgeCharacter += CalculateBeta(poly2Simplicies[i].GetCenter(),
-                                    poly1Simplicies[j], poly2Coeff[j]);
-                            }
-                        }
+                    float edgeCharacter = CalculateEdgeCharacter(poly1Simplicies, poly2Simplicies[i], clipType);
+                    edgeCharacter += CalculateEdgeCharacterForNonContainedEdges(poly1Simplicies, poly2Simplicies[i], poly2Coeff);
+                    AddEdgeToResultSimplices(edgeCharacter, clipType, poly2Simplicies[i], resultSimplices);
+                }
+            }
+        }
 
-                        if (clipType == PolyClipType.Intersect || clipType == PolyClipType.Difference)
-                        {
-                            if (edgeCharacter == 1f)
-                            {
-                                resultSimplices.Add(-poly2Simplicies[i]);
-                            }
-                        }
-                        else
-                        {
-                            if (edgeCharacter == 0f)
-                            {
-                                resultSimplices.Add(poly2Simplicies[i]);
-                            }
-                        }
-                    }
+        /// <summary>
+        /// Describes whether is contained in result simplices
+        /// </summary>
+        /// <param name="resultSimplices">The result simplices</param>
+        /// <param name="edge">The edge</param>
+        /// <returns>The bool</returns>
+        private static bool IsContainedInResultSimplices(List<Edge> resultSimplices, Edge edge)
+        {
+            return resultSimplices.Contains(edge) || resultSimplices.Contains(-edge);
+        }
+
+        /// <summary>
+        /// Calculates the edge character using the specified poly 1 simplicies
+        /// </summary>
+        /// <param name="poly1Simplicies">The poly simplicies</param>
+        /// <param name="edge">The edge</param>
+        /// <param name="clipType">The clip type</param>
+        /// <returns>The float</returns>
+        private static float CalculateEdgeCharacter(List<Edge> poly1Simplicies, Edge edge, PolyClipType clipType)
+        {
+            return poly1Simplicies.Contains(-edge) && (clipType == PolyClipType.Union) ? 1f : 0f;
+        }
+
+        /// <summary>
+        /// Calculates the edge character for non contained edges using the specified poly 1 simplicies
+        /// </summary>
+        /// <param name="poly1Simplicies">The poly simplicies</param>
+        /// <param name="edge">The edge</param>
+        /// <param name="poly2Coeff">The poly coeff</param>
+        /// <returns>The edge character</returns>
+        private static float CalculateEdgeCharacterForNonContainedEdges(List<Edge> poly1Simplicies, Edge edge, List<float> poly2Coeff)
+        {
+            float edgeCharacter = 0f;
+            for (int j = 0; j < poly1Simplicies.Count; ++j)
+            {
+                if (!poly1Simplicies.Contains(edge) && !poly1Simplicies.Contains(-edge))
+                {
+                    edgeCharacter += CalculateBeta(edge.GetCenter(), poly1Simplicies[j], poly2Coeff[j]);
+                }
+            }
+
+            return edgeCharacter;
+        }
+
+        /// <summary>
+        /// Adds the edge to result simplices using the specified edge character
+        /// </summary>
+        /// <param name="edgeCharacter">The edge character</param>
+        /// <param name="clipType">The clip type</param>
+        /// <param name="edge">The edge</param>
+        /// <param name="resultSimplices">The result simplices</param>
+        private static void AddEdgeToResultSimplices(float edgeCharacter, PolyClipType clipType, Edge edge, List<Edge> resultSimplices)
+        {
+            if (clipType == PolyClipType.Intersect || clipType == PolyClipType.Difference)
+            {
+                if (edgeCharacter == 1f)
+                {
+                    resultSimplices.Add(-edge);
+                }
+            }
+            else
+            {
+                if (edgeCharacter == 0f)
+                {
+                    resultSimplices.Add(edge);
                 }
             }
         }
