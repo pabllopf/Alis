@@ -45,9 +45,6 @@ namespace Alis.Core.Physic.Collision.ContactSystem
     /// </summary>
     public class ContactManager
     {
-        /// <summary>
-        /// The dynamic tree broad phase
-        /// </summary>
         public static ContactManager Current = new ContactManager(new DynamicTreeBroadPhase());
 
         /// <summary>
