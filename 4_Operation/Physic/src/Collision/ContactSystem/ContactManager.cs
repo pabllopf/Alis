@@ -45,7 +45,10 @@ namespace Alis.Core.Physic.Collision.ContactSystem
     /// </summary>
     public class ContactManager
     {
-        public static ContactManager Current = new ContactManager(new DynamicTreeBroadPhase());
+        /// <summary>
+        ///     The current instance
+        /// </summary>
+        public static ContactManager Current;
 
         /// <summary>
         ///     The contact list
@@ -84,7 +87,12 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
         /// <summary>Fires before the solver runs</summary>
         public PreSolveHandler PreSolve;
-        
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ContactManager" /> class
+        /// </summary>
+        static ContactManager() => Current = new ContactManager(new DynamicTreeBroadPhase());
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="ContactManager" /> class
         /// </summary>
