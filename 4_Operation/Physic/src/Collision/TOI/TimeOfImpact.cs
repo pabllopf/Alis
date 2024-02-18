@@ -48,43 +48,43 @@ namespace Alis.Core.Physic.Collision.TOI
         /// <summary>
         ///     The toi max iters
         /// </summary>
-        [ThreadStatic] public static int ToiCalls,
-            ToiIters,
-            ToiMaxIters;
+        [ThreadStatic] public static int ToiCalls;
+
+        /// <summary>
+        ///     The toi max iters
+        /// </summary>
+        [ThreadStatic] public static int ToiIters;
+
+        /// <summary>
+        ///     The toi max iters
+        /// </summary>
+        [ThreadStatic] public static int ToiMaxIters;
 
         /// <summary>
         ///     The toi max root iters
         /// </summary>
-        [ThreadStatic] public static int ToiRootIters,
-            ToiMaxRootIters;
+        [ThreadStatic] public static int ToiRootIters;
 
         /// <summary>
-        ///     Compute the upper bound on time before two shapes penetrate. Time is represented as a fraction between
-        ///     [0,tMax]. This uses a swept separating axis and may miss some intermediate, non-tunneling collision. If you change
-        ///     the
-        ///     time interval, you should call this function again. Note: use Distance() to compute the contact point and normal at
-        ///     the
-        ///     time of impact.
+        ///     The toi max root iters
         /// </summary>
-        /// <param name="input">The input.</param>
-        /// <param name="output">The output.</param>
+        [ThreadStatic] public static int ToiMaxRootIters;
+
+        /// <summary>
+        /// Calculates the time of impact using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="output">The output</param>
         public static void CalculateTimeOfImpact(ref ToiInput input, out ToiOutput output)
         {
             ++ToiCalls;
 
-            output = new ToiOutput
-            {
-                State = ToiOutputState.Unknown,
-                T = input.Max
-            };
+            output = InitializeOutput(input);
 
             Sweep sweepA = input.SweepA;
             Sweep sweepB = input.SweepB;
 
-            // Large rotations can make the root finder fail, so we normalize the
-            // sweep angles.
-            sweepA.Normalize();
-            sweepB.Normalize();
+            NormalizeSweeps(ref sweepA, ref sweepB);
 
             float tMax = input.Max;
 
@@ -96,32 +96,79 @@ namespace Alis.Core.Physic.Collision.TOI
             float t1 = 0.0f;
             int iter = 0;
 
-            // Prepare input for distance query.
-            DistanceInput distanceInput = new DistanceInput
+            DistanceInput distanceInput = PrepareDistanceInput(input);
+
+            ComputeSeparatingAxes(ref input, ref output, ref distanceInput, ref sweepA, ref sweepB, target, tolerance, ref t1, ref iter, tMax);
+
+            ToiMaxIters = Math.Max(ToiMaxIters, iter);
+        }
+
+        /// <summary>
+        /// Initializes the output using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <returns>The toi output</returns>
+        private static ToiOutput InitializeOutput(ToiInput input)
+        {
+            return new ToiOutput
+            {
+                State = ToiOutputState.Unknown,
+                T = input.Max
+            };
+        }
+
+        /// <summary>
+        /// Normalizes the sweeps using the specified sweep a
+        /// </summary>
+        /// <param name="sweepA">The sweep</param>
+        /// <param name="sweepB">The sweep</param>
+        private static void NormalizeSweeps(ref Sweep sweepA, ref Sweep sweepB)
+        {
+            sweepA.Normalize();
+            sweepB.Normalize();
+        }
+
+        /// <summary>
+        /// Prepares the distance input using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <returns>The distance input</returns>
+        private static DistanceInput PrepareDistanceInput(ToiInput input)
+        {
+            return new DistanceInput
             {
                 ProxyA = input.ProxyA,
                 ProxyB = input.ProxyB,
                 UseRadii = false
             };
+        }
 
-            // The outer loop progressively attempts to compute new separating axes.
-            // This loop terminates when an axis is repeated (no progress is made).
+        /// <summary>
+        /// Computes the separating axes using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="output">The output</param>
+        /// <param name="distanceInput">The distance input</param>
+        /// <param name="sweepA">The sweep</param>
+        /// <param name="sweepB">The sweep</param>
+        /// <param name="target">The target</param>
+        /// <param name="tolerance">The tolerance</param>
+        /// <param name="t1">The </param>
+        /// <param name="iter">The iter</param>
+        /// <param name="tMax">The max</param>
+        private static void ComputeSeparatingAxes(ref ToiInput input, ref ToiOutput output, ref DistanceInput distanceInput, ref Sweep sweepA, ref Sweep sweepB, float target, float tolerance, ref float t1, ref int iter, float tMax)
+        {
             for (;;)
             {
                 sweepA.GetTransform(out Transform xfA, t1);
                 sweepB.GetTransform(out Transform xfB, t1);
 
-                // Get the distance between shapes. We can also use the results
-                // to get a separating axis.
                 distanceInput.TransformA = xfA;
                 distanceInput.TransformB = xfB;
-                DistanceGjk.ComputeDistance(ref distanceInput, out DistanceOutput distanceOutput,
-                    out SimplexCache cache);
+                DistanceGjk.ComputeDistance(ref distanceInput, out DistanceOutput distanceOutput, out SimplexCache cache);
 
-                // If the shapes are overlapped, we give up on continuous collision.
                 if (distanceOutput.Distance <= 0.0f)
                 {
-                    // Failure!
                     output.State = ToiOutputState.Overlapped;
                     output.T = 0.0f;
                     break;
@@ -129,146 +176,149 @@ namespace Alis.Core.Physic.Collision.TOI
 
                 if (distanceOutput.Distance < target + tolerance)
                 {
-                    // Victory!
                     output.State = ToiOutputState.Touching;
                     output.T = t1;
                     break;
                 }
 
-                SeparationFunction.Initialize(ref cache, input.ProxyA, ref sweepA, input.ProxyB, ref sweepB, t1,
-                    out Vector2 axis, out Vector2 localPoint, out SeparationFunctionType type);
+                SeparationFunction.Initialize(ref cache, input.ProxyA, ref sweepA, input.ProxyB, ref sweepB, t1, out Vector2 axis, out Vector2 localPoint, out SeparationFunctionType type);
 
-                // Compute the TOI on the separating axis. We do this by successively
-                // resolving the deepest point. This loop is bounded by the number of vertices.
-                bool done = false;
-                float t2 = tMax;
-                int pushBackIter = 0;
-                for (;;)
-                {
-                    // Find the deepest point at t2. Store the witness point indices.
-                    float s2 = SeparationFunction.FindMinSeparation(out int indexA, out int indexB, t2, input.ProxyA,
-                        ref sweepA, input.ProxyB, ref sweepB, ref axis, ref localPoint, type);
-
-                    // Is the final configuration separated?
-                    if (s2 > target + tolerance)
-                    {
-                        // Victory!
-                        output.State = ToiOutputState.Seperated;
-                        output.T = tMax;
-                        done = true;
-                        break;
-                    }
-
-                    // Has the separation reached tolerance?
-                    if (s2 > target - tolerance)
-                    {
-                        // Advance the sweeps
-                        t1 = t2;
-                        break;
-                    }
-
-                    // Compute the initial separation of the witness points.
-                    float s1 = SeparationFunction.Evaluate(indexA, indexB, t1, input.ProxyA, ref sweepA, input.ProxyB,
-                        ref sweepB, ref axis, ref localPoint, type);
-
-                    // Check for initial overlap. This might happen if the root finder
-                    // runs out of iterations.
-                    if (s1 < target - tolerance)
-                    {
-                        output.State = ToiOutputState.Failed;
-                        output.T = t1;
-                        done = true;
-                        break;
-                    }
-
-                    // Check for touching
-                    if (s1 <= target + tolerance)
-                    {
-                        // Victory! t1 should hold the TOI (could be 0.0).
-                        output.State = ToiOutputState.Touching;
-                        output.T = t1;
-                        done = true;
-                        break;
-                    }
-
-                    // Compute 1D root of: f(x) - target = 0
-                    int rootIterCount = 0;
-                    float a1 = t1, a2 = t2;
-                    for (;;)
-                    {
-                        // Use a mix of the secant rule and bisection.
-                        float t;
-                        if ((rootIterCount & 1) != 0)
-                        {
-                            // Secant rule to improve convergence.
-                            t = a1 + (target - s1) * (a2 - a1) / (s2 - s1);
-                        }
-                        else
-                        {
-                            // Bisection to guarantee progress.
-                            t = 0.5f * (a1 + a2);
-                        }
-
-                        ++rootIterCount;
-                        ++ToiRootIters;
-
-                        float s = SeparationFunction.Evaluate(indexA, indexB, t, input.ProxyA, ref sweepA, input.ProxyB,
-                            ref sweepB, ref axis, ref localPoint, type);
-
-                        if (Math.Abs(s - target) < tolerance)
-                        {
-                            // t2 holds a tentative value for t1
-                            t2 = t;
-                            break;
-                        }
-
-                        // Ensure we continue to bracket the root.
-                        if (s > target)
-                        {
-                            a1 = t;
-                            s1 = s;
-                        }
-                        else
-                        {
-                            a2 = t;
-                            s2 = s;
-                        }
-
-                        if (rootIterCount == 50)
-                        {
-                            break;
-                        }
-                    }
-
-                    ToiMaxRootIters = Math.Max(ToiMaxRootIters, rootIterCount);
-
-                    ++pushBackIter;
-
-                    if (pushBackIter == Settings.PolygonVertices)
-                    {
-                        break;
-                    }
-                }
+                ResolveDeepestPoint(ref input, ref output, ref sweepA, ref sweepB, ref axis, ref localPoint, type, target, tolerance, ref t1, tMax);
 
                 ++iter;
                 ++ToiIters;
 
-                if (done)
+                if (output.State != ToiOutputState.Unknown)
                 {
                     break;
                 }
+            }
+        }
 
-                /*
-                if (iter == kMaxIterations)
+        /// <summary>
+        /// Resolves the deepest point using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="output">The output</param>
+        /// <param name="sweepA">The sweep</param>
+        /// <param name="sweepB">The sweep</param>
+        /// <param name="axis">The axis</param>
+        /// <param name="localPoint">The local point</param>
+        /// <param name="type">The type</param>
+        /// <param name="target">The target</param>
+        /// <param name="tolerance">The tolerance</param>
+        /// <param name="t1">The </param>
+        /// <param name="tMax">The max</param>
+        private static void ResolveDeepestPoint(ref ToiInput input, ref ToiOutput output, ref Sweep sweepA, ref Sweep sweepB, ref Vector2 axis, ref Vector2 localPoint, SeparationFunctionType type, float target, float tolerance, ref float t1, float tMax)
+        {
+            float t2 = tMax;
+            int pushBackIter = 0;
+            for (;;)
+            {
+                float s2 = SeparationFunction.FindMinSeparation(out int indexA, out int indexB, t2, input.ProxyA, ref sweepA, input.ProxyB, ref sweepB, ref axis, ref localPoint, type);
+
+                if (s2 > target + tolerance)
                 {
-                    // Root finder got stuck. Semi-victory.
+                    output.State = ToiOutputState.Seperated;
+                    output.T = tMax;
+                    break;
+                }
+
+                if (s2 > target - tolerance)
+                {
+                    t1 = t2;
+                    break;
+                }
+
+                float s1 = SeparationFunction.Evaluate(indexA, indexB, t1, input.ProxyA, ref sweepA, input.ProxyB, ref sweepB, ref axis, ref localPoint, type);
+
+                if (s1 < target - tolerance)
+                {
                     output.State = ToiOutputState.Failed;
                     output.T = t1;
                     break;
-                }*/
+                }
+
+                if (s1 <= target + tolerance)
+                {
+                    output.State = ToiOutputState.Touching;
+                    output.T = t1;
+                    break;
+                }
+
+                ComputeRoot(ref input, ref sweepA, ref sweepB, ref axis, ref localPoint, type, target, tolerance, ref t1, ref t2, s1, s2);
+
+                ++pushBackIter;
+
+                if (pushBackIter == Settings.PolygonVertices)
+                {
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Computes the root using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="sweepA">The sweep</param>
+        /// <param name="sweepB">The sweep</param>
+        /// <param name="axis">The axis</param>
+        /// <param name="localPoint">The local point</param>
+        /// <param name="type">The type</param>
+        /// <param name="target">The target</param>
+        /// <param name="tolerance">The tolerance</param>
+        /// <param name="t1">The </param>
+        /// <param name="t2">The </param>
+        /// <param name="s1">The </param>
+        /// <param name="s2">The </param>
+        private static void ComputeRoot(ref ToiInput input, ref Sweep sweepA, ref Sweep sweepB, ref Vector2 axis, ref Vector2 localPoint, SeparationFunctionType type, float target, float tolerance, ref float t1, ref float t2, float s1, float s2)
+        {
+            int rootIterCount = 0;
+            float a1 = t1, a2 = t2;
+            int indexA, indexB;
+            SeparationFunction.FindMinSeparation(out indexA, out indexB, t1, input.ProxyA, ref sweepA, input.ProxyB, ref sweepB, ref axis, ref localPoint, type);
+            for (;;)
+            {
+                float t;
+                if ((rootIterCount & 1) != 0)
+                {
+                    t = a1 + (target - s1) * (a2 - a1) / (s2 - s1);
+                }
+                else
+                {
+                    t = 0.5f * (a1 + a2);
+                }
+
+                ++rootIterCount;
+                ++ToiRootIters;
+
+                float s = SeparationFunction.Evaluate(indexA, indexB, t, input.ProxyA, ref sweepA, input.ProxyB, ref sweepB, ref axis, ref localPoint, type);
+
+                if (Math.Abs(s - target) < tolerance)
+                {
+                    t2 = t;
+                    break;
+                }
+
+                if (s > target)
+                {
+                    a1 = t;
+                    s1 = s;
+                }
+                else
+                {
+                    a2 = t;
+                    s2 = s;
+                }
+
+                if (rootIterCount == 50)
+                {
+                    break;
+                }
             }
 
-            ToiMaxIters = Math.Max(ToiMaxIters, iter);
+            ToiMaxRootIters = Math.Max(ToiMaxRootIters, rootIterCount);
         }
     }
 }
