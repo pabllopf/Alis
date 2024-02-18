@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         /// The dynamic tree broad phase
         /// </summary>
-        public static readonly ContactManager Current = new ContactManager(new DynamicTreeBroadPhase());
+        public static ContactManager Current { get; private set; }
 
         /// <summary>
         ///     The contact list
@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
         /// <summary>Fires before the solver runs</summary>
         public PreSolveHandler PreSolve;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="ContactManager" /> class
         /// </summary>
@@ -96,6 +96,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         {
             BroadPhase = broadPhase;
             onBroadphaseCollision = AddPair;
+            Current = this;
         }
 
         /// <summary>
