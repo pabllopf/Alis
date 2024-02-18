@@ -83,22 +83,43 @@ namespace Alis.Core.Physic.Dynamics.Solver
         public List<ContactVelocityConstraint> VelocityConstraints = new List<ContactVelocityConstraint>();
 
         /// <summary>
-        ///     Resets the step
+        /// Resets the step param
         /// </summary>
-        /// <param name="stepParam">The step</param>
-        /// <param name="countParam">The count</param>
-        /// <param name="contactList">The contacts</param>
-        /// <param name="positionList">The positions</param>
-        /// <param name="velocitiesList">The velocities</param>
+        /// <param name="stepParam">The step param</param>
+        /// <param name="countParam">The count param</param>
+        /// <param name="contactList">The contact list</param>
+        /// <param name="positionList">The position list</param>
+        /// <param name="velocitiesList">The velocities list</param>
         public void Reset(TimeStep stepParam, int countParam, List<Contact> contactList, List<Position> positionList, List<Velocity> velocitiesList)
+        {
+            InitializeParameters(stepParam, countParam, contactList, positionList, velocitiesList);
+            GrowArrayIfNeeded(countParam);
+            InitializeConstraints(countParam);
+        }
+
+        /// <summary>
+        /// Initializes the parameters using the specified step param
+        /// </summary>
+        /// <param name="stepParam">The step param</param>
+        /// <param name="countParam">The count param</param>
+        /// <param name="contactList">The contact list</param>
+        /// <param name="positionList">The position list</param>
+        /// <param name="velocitiesList">The velocities list</param>
+        private void InitializeParameters(TimeStep stepParam, int countParam, List<Contact> contactList, List<Position> positionList, List<Velocity> velocitiesList)
         {
             step = stepParam;
             count = countParam;
             positions = positionList;
             velocities = velocitiesList;
             contacts = contactList;
+        }
 
-            // grow the array
+        /// <summary>
+        /// Grows the array if needed using the specified count param
+        /// </summary>
+        /// <param name="countParam">The count param</param>
+        private void GrowArrayIfNeeded(int countParam)
+        {
             if (VelocityConstraints == null || VelocityConstraints.Count < countParam)
             {
                 VelocityConstraints = new List<ContactVelocityConstraint>(countParam * 2);
@@ -114,91 +135,102 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     positionConstraints[i] = new ContactPositionConstraint();
                 }
             }
+        }
 
-            // Initialize position independent portions of the constraints.
-            for (int i = 0; i < count; ++i)
+        /// <summary>
+        /// Initializes the constraints using the specified count param
+        /// </summary>
+        /// <param name="countParam">The count param</param>
+        private void InitializeConstraints(int countParam)
+        {
+            for (int i = 0; i < countParam; ++i)
             {
-                Contact contact = contactList[i];
+                Contact contact = contacts[i];
+                InitializeVelocityConstraint(i, contact);
+                InitializePositionConstraint(i, contact);
+            }
+        }
 
-                Fixture fixtureA = contact.FixtureA;
-                Fixture fixtureB = contact.FixtureB;
-                Shape shapeA = fixtureA.Shape;
-                Shape shapeB = fixtureB.Shape;
-                float radiusA = shapeA.RadiusPrivate;
-                float radiusB = shapeB.RadiusPrivate;
-                Body bodyA = fixtureA.Body;
-                Body bodyB = fixtureB.Body;
-                Manifold manifold = contact.Manifold;
+        /// <summary>
+        /// Initializes the velocity constraint using the specified i
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <param name="contact">The contact</param>
+        private void InitializeVelocityConstraint(int i, Contact contact)
+        {
+            if (VelocityConstraints.Count <= i)
+            {
+                VelocityConstraints.Add(new ContactVelocityConstraint());
+            }
 
-                int pointCount = manifold.PointCount;
-                Debug.Assert(pointCount > 0);
+            ContactVelocityConstraint vc = VelocityConstraints[i];
+            vc.Friction = contact.Friction;
+            vc.Restitution = contact.Restitution;
+            vc.Threshold = contact.RestitutionThreshold;
+            vc.TangentSpeed = contact.TangentSpeed;
+            vc.IndexA = contact.FixtureA.Body.IslandIndex;
+            vc.IndexB = contact.FixtureB.Body.IslandIndex;
+            vc.InvMassA = contact.FixtureA.Body.InvMass;
+            vc.InvMassB = contact.FixtureB.Body.InvMass;
+            vc.InvIa = contact.FixtureA.Body.InvI;
+            vc.InvIb = contact.FixtureB.Body.InvI;
+            vc.ContactIndex = i;
+            vc.PointCount = contact.Manifold.PointCount;
+            vc.K.SetZero();
+            vc.NormalMass.SetZero();
+        }
 
-                if (VelocityConstraints.Count <= i)
+        /// <summary>
+        /// Initializes the position constraint using the specified i
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <param name="contact">The contact</param>
+        private void InitializePositionConstraint(int i, Contact contact)
+        {
+            if (positionConstraints.Count <= i)
+            {
+                positionConstraints.Add(new ContactPositionConstraint());
+            }
+
+            ContactPositionConstraint pc = positionConstraints[i];
+            pc.IndexA = contact.FixtureA.Body.IslandIndex;
+            pc.IndexB = contact.FixtureB.Body.IslandIndex;
+            pc.InvMassA = contact.FixtureA.Body.InvMass;
+            pc.InvMassB = contact.FixtureB.Body.InvMass;
+            pc.LocalCenterA = contact.FixtureA.Body.Sweep.LocalCenter;
+            pc.LocalCenterB = contact.FixtureB.Body.Sweep.LocalCenter;
+            pc.InvIa = contact.FixtureA.Body.InvI;
+            pc.InvIb = contact.FixtureB.Body.InvI;
+            pc.LocalNormal = contact.Manifold.LocalNormal;
+            pc.LocalPoint = contact.Manifold.LocalPoint;
+            pc.PointCount = contact.Manifold.PointCount;
+            pc.RadiusA = contact.FixtureA.Shape.RadiusPrivate;
+            pc.RadiusB = contact.FixtureB.Shape.RadiusPrivate;
+            pc.Type = contact.Manifold.Type;
+
+            for (int j = 0; j < pc.PointCount; ++j)
+            {
+                ManifoldPoint cp = contact.Manifold.Points[j];
+                VelocityConstraintPoint vcp = VelocityConstraints[i].Points[j];
+
+                if (step.WarmStarting)
                 {
-                    VelocityConstraints.Add(new ContactVelocityConstraint());
+                    vcp.NormalImpulse = step.DeltaTimeRatio * cp.NormalImpulse;
+                    vcp.TangentImpulse = step.DeltaTimeRatio * cp.TangentImpulse;
+                }
+                else
+                {
+                    vcp.NormalImpulse = 0.0f;
+                    vcp.TangentImpulse = 0.0f;
                 }
 
-                ContactVelocityConstraint vc = VelocityConstraints[i];
-                vc.Friction = contact.Friction;
-                vc.Restitution = contact.Restitution;
-                vc.Threshold = contact.RestitutionThreshold;
-                vc.TangentSpeed = contact.TangentSpeed;
-                vc.IndexA = bodyA.IslandIndex;
-                vc.IndexB = bodyB.IslandIndex;
-                vc.InvMassA = bodyA.InvMass;
-                vc.InvMassB = bodyB.InvMass;
-                vc.InvIa = bodyA.InvI;
-                vc.InvIb = bodyB.InvI;
-                vc.ContactIndex = i;
-                vc.PointCount = pointCount;
-                vc.K.SetZero();
-                vc.NormalMass.SetZero();
+                vcp.Ra = Vector2.Zero;
+                vcp.Rb = Vector2.Zero;
+                vcp.NormalMass = 0.0f;
+                vcp.TangentMass = 0.0f;
+                vcp.VelocityBias = 0.0f;
 
-                if (positionConstraints.Count <= i)
-                {
-                    positionConstraints.Add(new ContactPositionConstraint());
-                }
-
-                ContactPositionConstraint pc = positionConstraints[i];
-                pc.IndexA = bodyA.IslandIndex;
-                pc.IndexB = bodyB.IslandIndex;
-                pc.InvMassA = bodyA.InvMass;
-                pc.InvMassB = bodyB.InvMass;
-                pc.LocalCenterA = bodyA.Sweep.LocalCenter;
-                pc.LocalCenterB = bodyB.Sweep.LocalCenter;
-                pc.InvIa = bodyA.InvI;
-                pc.InvIb = bodyB.InvI;
-                pc.LocalNormal = manifold.LocalNormal;
-                pc.LocalPoint = manifold.LocalPoint;
-                pc.PointCount = pointCount;
-                pc.RadiusA = radiusA;
-                pc.RadiusB = radiusB;
-                pc.Type = manifold.Type;
-
-                for (int j = 0; j < pointCount; ++j)
-                {
-                    ManifoldPoint cp = manifold.Points[j];
-                    VelocityConstraintPoint vcp = vc.Points[j];
-
-                    if (stepParam.WarmStarting)
-                    {
-                        vcp.NormalImpulse = step.DeltaTimeRatio * cp.NormalImpulse;
-                        vcp.TangentImpulse = step.DeltaTimeRatio * cp.TangentImpulse;
-                    }
-                    else
-                    {
-                        vcp.NormalImpulse = 0.0f;
-                        vcp.TangentImpulse = 0.0f;
-                    }
-
-                    vcp.Ra = Vector2.Zero;
-                    vcp.Rb = Vector2.Zero;
-                    vcp.NormalMass = 0.0f;
-                    vcp.TangentMass = 0.0f;
-                    vcp.VelocityBias = 0.0f;
-
-                    pc.LocalPoints[j] = cp.LocalPoint;
-                }
+                pc.LocalPoints[j] = cp.LocalPoint;
             }
         }
 
@@ -618,7 +650,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 cp2.NormalImpulse = x.Y;
             }
         }
-        
+
         /// <summary>
         ///     Stores the impulses
         /// </summary>
