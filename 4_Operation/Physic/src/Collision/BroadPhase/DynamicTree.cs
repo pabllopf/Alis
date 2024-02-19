@@ -35,7 +35,7 @@ using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Physic.Collision.Broadphase
+namespace Alis.Core.Physic.Collision.BroadPhase
 {
     /// <summary>
     ///     A dynamic tree arranges data in a binary tree to accelerate queries such as volume queries and ray casts.

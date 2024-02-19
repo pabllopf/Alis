@@ -30,7 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Alis.Core.Physic.Collision.Broadphase;
+using Alis.Core.Physic.Collision.BroadPhase;
 using Alis.Core.Physic.Collision.Distance;
 using Alis.Core.Physic.Collision.Handlers;
 using Alis.Core.Physic.Collision.TOI;

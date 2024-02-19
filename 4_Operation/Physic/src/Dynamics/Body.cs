@@ -31,7 +31,7 @@ using System.Collections.Generic;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision.Broadphase;
+using Alis.Core.Physic.Collision.BroadPhase;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Filtering;
 using Alis.Core.Physic.Collision.Handlers;
