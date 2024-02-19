@@ -37,11 +37,11 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <summary>
         ///     The proxy id
         /// </summary>
-        public int ProxyIdA;
+        public int ProxyIdA { get; set; }
 
         /// <summary>
         ///     The proxy id
         /// </summary>
-        public int ProxyIdB;
+        public int ProxyIdB { get; set; }
     }
 }
