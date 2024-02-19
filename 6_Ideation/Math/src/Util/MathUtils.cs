@@ -27,13 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
-using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Physic.Utilities
+namespace Alis.Core.Aspect.Math.Util
 {
     /// <summary>
     ///     The math utils class
@@ -61,14 +58,14 @@ namespace Alis.Core.Physic.Utilities
         /// </summary>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2 Abs(Vector2 v) => new Vector2(Math.Abs(v.X), Math.Abs(v.Y));
+        public static Vector2 Abs(Vector2 v) => new Vector2(System.Math.Abs(v.X), System.Math.Abs(v.Y));
 
         /// <summary>
         ///     Abses the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The float</returns>
-        public static float Abs(float value) => Math.Abs(value);
+        public static float Abs(float value) => System.Math.Abs(value);
 
         /// <summary>
         ///     Muls the a
@@ -325,7 +322,7 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="low">The low</param>
         /// <param name="high">The high</param>
         /// <returns>The int</returns>
-        public static int Clamp(int a, int low, int high) => Math.Max(low, Math.Min(a, high));
+        public static int Clamp(int a, int low, int high) => System.Math.Max(low, System.Math.Min(a, high));
 
         /// <summary>
         ///     Clamps the a
@@ -362,8 +359,8 @@ namespace Alis.Core.Physic.Utilities
         /// </summary>
         public static double VectorAngle(ref Vector2 p1, ref Vector2 p2)
         {
-            double theta1 = Math.Atan2(p1.Y, p1.X);
-            double theta2 = Math.Atan2(p2.Y, p2.X);
+            double theta1 = System.Math.Atan2(p1.Y, p1.X);
+            double theta2 = System.Math.Atan2(p2.Y, p2.X);
             double dtheta = theta2 - theta1;
 
             while (dtheta > Constant.Pi)
@@ -427,7 +424,7 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="value2">The value</param>
         /// <returns>The bool</returns>
         public static bool FloatEquals(float value1, float value2) =>
-            Math.Abs(value1 - value2) <= Constant.Epsilon;
+            System.Math.Abs(value1 - value2) <= Constant.Epsilon;
 
         /// <summary>Checks if a floating point Value is equal to another, within a certain tolerance.</summary>
         /// <returns>True if the values are "equal", false otherwise.</returns>
@@ -499,7 +496,7 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="valueA">The value</param>
         /// <param name="valueB">The value</param>
         /// <returns>The float</returns>
-        public static float Max(float valueA, float valueB) => Math.Max(valueA, valueB);
+        public static float Max(float valueA, float valueB) => System.Math.Max(valueA, valueB);
 
         /// <summary>
         ///     Maxes the value a
@@ -507,7 +504,7 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="valueA">The value</param>
         /// <param name="valueB">The value</param>
         /// <returns>The int</returns>
-        public static int Max(int valueA, int valueB) => Math.Max(valueA, valueB);
+        public static int Max(int valueA, int valueB) => System.Math.Max(valueA, valueB);
 
         /// <summary>
         ///     Mins the value a
@@ -515,7 +512,7 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="valueA">The value</param>
         /// <param name="valueB">The value</param>
         /// <returns>The float</returns>
-        public static float Min(float valueA, float valueB) => Math.Min(valueA, valueB);
+        public static float Min(float valueA, float valueB) => System.Math.Min(valueA, valueB);
 
         /// <summary>
         ///     Mins the value a
@@ -523,14 +520,14 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="valueA">The value</param>
         /// <param name="valueB">The value</param>
         /// <returns>The int</returns>
-        public static int Min(int valueA, int valueB) => Math.Min(valueA, valueB);
+        public static int Min(int valueA, int valueB) => System.Math.Min(valueA, valueB);
 
         /// <summary>
         ///     Signs the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
-        public static int Sign(float value) => Math.Sign(value);
+        public static int Sign(float value) => System.Math.Sign(value);
 
         /// <summary>
         ///     Convert this vector into a unit vector. Returns the length.
@@ -555,34 +552,34 @@ namespace Alis.Core.Physic.Utilities
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The float</returns>
-        public static float Sqrt(float value) => (float) Math.Sqrt(value);
+        public static float Sqrt(float value) => (float) System.Math.Sqrt(value);
 
         /// <summary>
         ///     Cosfs the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The float</returns>
-        public static float Cosf(float value) => (float) Math.Cos(value);
+        public static float Cosf(float value) => (float) System.Math.Cos(value);
 
         /// <summary>
         ///     Sinfs the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The float</returns>
-        public static float Sinf(float value) => (float) Math.Sin(value);
+        public static float Sinf(float value) => (float) System.Math.Sin(value);
 
         /// <summary>
         ///     Ceils the log
         /// </summary>
         /// <param name="log">The log</param>
         /// <returns>The float</returns>
-        public static float Ceil(float log) => (float) Math.Ceiling(log);
+        public static float Ceil(float log) => (float) System.Math.Ceiling(log);
 
         /// <summary>
         ///     Logs the log
         /// </summary>
         /// <param name="log">The log</param>
         /// <returns>The float</returns>
-        public static float Log(float log) => (float) Math.Log(log);
+        public static float Log(float log) => (float) System.Math.Log(log);
     }
 }
