@@ -575,6 +575,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => invDt * motorImpulse;
 
+        /// <summary>
+        /// Inits the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
             SetInitialValues(ref data);
@@ -631,6 +635,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
         }
 
+        /// <summary>
+        /// Sets the initial values using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         private void SetInitialValues(ref SolverData data)
         {
             indexA = BodyA.IslandIndex;
@@ -643,6 +651,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             invIb = BodyB.InvI;
         }
 
+        /// <summary>
+        /// Calculates the d vector using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <returns>The vector</returns>
         private Vector2 CalculateDVector(SolverData data)
         {
             Vector2 cA = data.Positions[indexA].C;
@@ -653,6 +666,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             return cB + rB - cA - rA;
         }
 
+        /// <summary>
+        /// Calculates the ay and mass using the specified d
+        /// </summary>
+        /// <param name="d">The </param>
+        /// <param name="data">The data</param>
         private void CalculateAYAndMass(Vector2 d, SolverData data)
         {
             ay = MathUtils.Mul(new Rotation(data.Positions[indexA].A), localYAxisA);
@@ -665,6 +683,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
         }
 
+        /// <summary>
+        /// Calculates the ax and axial mass using the specified d
+        /// </summary>
+        /// <param name="d">The </param>
+        /// <param name="data">The data</param>
         private void CalculateAXAndAxialMass(Vector2 d, SolverData data)
         {
             ax = MathUtils.Mul(new Rotation(data.Positions[indexA].A), localXAxisA);
@@ -681,6 +704,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
         }
 
+        /// <summary>
+        /// Calculates the spring mass and related values using the specified d
+        /// </summary>
+        /// <param name="d">The </param>
+        /// <param name="data">The data</param>
         private void CalculateSpringMassAndRelatedValues(Vector2 d, SolverData data)
         {
             springMass = 1.0f / axialMass;
@@ -700,6 +728,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
         }
 
+        /// <summary>
+        /// Applies the warm starting using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         private void ApplyWarmStarting(ref SolverData data)
         {
             impulse *= data.Step.DeltaTimeRatio;
