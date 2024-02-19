@@ -38,8 +38,6 @@ using Alis.Core.Physic.Collision.Handlers;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Collision.TOI;
 using Alis.Core.Physic.Dynamics.Joints;
-using Alis.Core.Physic.Extensions.Controllers;
-using Alis.Core.Physic.Extensions.PhysicsLogics;
 using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Dynamics
@@ -207,17 +205,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     The torque
         /// </summary>
         public float Torque { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the controller filter
-        /// </summary>
-        public ControllerFilter ControllerFilter { get; }
-
-        /// <summary>
-        ///     Gets or sets the value of the physics logic filter
-        /// </summary>
-        public PhysicsLogicFilter PhysicsLogicFilter { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the sleep time
         /// </summary>
