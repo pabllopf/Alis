@@ -38,9 +38,9 @@ namespace Alis.Core.Physic.Collision.RayCast
         ///     The ray hits at p1 + fraction * (p2 - p1), where p1 and p2 come from RayCastInput. Contains the actual
         ///     fraction of the ray where it has the intersection point.
         /// </summary>
-        public float Fraction;
+        public float Fraction { get; set; }
 
         /// <summary>The normal of the face of the shape the ray has hit.</summary>
-        public Vector2 Normal;
+        public Vector2 Normal { get; set; }
     }
 }
