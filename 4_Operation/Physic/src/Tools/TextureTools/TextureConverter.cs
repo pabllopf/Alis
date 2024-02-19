@@ -1188,24 +1188,8 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 {
                     continue;
                 }
-
-                bool addFind = true;
                 Vector2 slope = vertex2 - vertex1;
-
-                if (Math.Abs(vertex1.Y - y) < 0.0001f)
-                {
-                    Vector2 nextVertex = polygon[(i + 1) % polygon.Count];
-                    Vector2 nextSlope = vertex1 - nextVertex;
-
-                    if (slope.Y > 0)
-                    {
-                        addFind = nextSlope.Y <= 0;
-                    }
-                    else
-                    {
-                        addFind = nextSlope.Y >= 0;
-                    }
-                }
+                bool addFind = Find(vertex1, vertex2, polygon, i, y);
 
                 if (addFind)
                 {
@@ -1217,7 +1201,37 @@ namespace Alis.Core.Physic.Tools.TextureTools
             }
         }
 
-        
+        /// <summary>
+        /// Describes whether this instance find
+        /// </summary>
+        /// <param name="vertex1">The vertex</param>
+        /// <param name="vertex2">The vertex</param>
+        /// <param name="polygon">The polygon</param>
+        /// <param name="index">The index</param>
+        /// <param name="y">The </param>
+        /// <returns>The add find</returns>
+        public bool Find(Vector2 vertex1, Vector2 vertex2, Vertices polygon, int index, int y)
+        {
+            bool addFind = true;
+            Vector2 slope = vertex2 - vertex1;
+
+            if (Math.Abs(vertex1.Y - y) < 0.0001f)
+            {
+                Vector2 nextVertex = polygon[(index + 1) % polygon.Count];
+                Vector2 nextSlope = vertex1 - nextVertex;
+
+                if (slope.Y > 0)
+                {
+                    addFind = nextSlope.Y <= 0;
+                }
+                else
+                {
+                    addFind = nextSlope.Y >= 0;
+                }
+            }
+
+            return addFind;
+        }
         
         
         
