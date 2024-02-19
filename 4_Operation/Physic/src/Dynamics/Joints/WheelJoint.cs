@@ -575,91 +575,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => invDt * motorImpulse;
 
-        /// <summary>
-        ///     Inits the velocity constraints using the specified data
-        /// </summary>
-        /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
-            indexA = BodyA.IslandIndex;
-            indexB = BodyB.IslandIndex;
-            localCenterA = BodyA.Sweep.LocalCenter;
-            localCenterB = BodyB.Sweep.LocalCenter;
-            invMassA = BodyA.InvMass;
-            invMassB = BodyB.InvMass;
-            invIa = BodyA.InvI;
-            invIb = BodyB.InvI;
+            SetInitialValues(ref data);
 
-            float mA = invMassA, mB = invMassB;
-            float iA = invIa, iB = invIb;
+            Vector2 d = CalculateDVector(data);
 
-            Vector2 cA = data.Positions[indexA].C;
-            float aA = data.Positions[indexA].A;
-            Vector2 vA = data.Velocities[indexA].V;
-            float wA = data.Velocities[indexA].W;
+            CalculateAYAndMass(d, data);
+            CalculateAXAndAxialMass(d, data);
 
-            Vector2 cB = data.Positions[indexB].C;
-            float aB = data.Positions[indexB].A;
-            Vector2 vB = data.Velocities[indexB].V;
-            float wB = data.Velocities[indexB].W;
-
-            Rotation qA = new Rotation(aA), qB = new Rotation(aB);
-
-            Vector2 rA = MathUtils.Mul(qA, localAnchorA - localCenterA);
-            Vector2 rB = MathUtils.Mul(qB, localAnchorB - localCenterB);
-            Vector2 d = cB + rB - cA - rA;
-
+            if ((stiffness > 0.0f) && (axialMass > 0.0f))
             {
-                ay = MathUtils.Mul(qA, localYAxisA);
-                sAy = MathUtils.Cross(d + rA, ay);
-                sBy = MathUtils.Cross(rB, ay);
-
-                mass = mA + mB + iA * sAy * sAy + iB * sBy * sBy;
-
-                if (mass > 0.0f)
-                {
-                    mass = 1.0f / mass;
-                }
-            }
-
-            ax = MathUtils.Mul(qA, localXAxisA);
-            sAx = MathUtils.Cross(d + rA, ax);
-            sBx = MathUtils.Cross(rB, ax);
-
-            float invMass = mA + mB + iA * sAx * sAx + iB * sBx * sBx;
-            if (invMass > 0.0f)
-            {
-                axialMass = 1.0f / invMass;
-            }
-            else
-            {
-                axialMass = 0.0f;
-            }
-
-            springMass = 0.0f;
-            bias = 0.0f;
-            gamma = 0.0f;
-
-            if ((stiffness > 0.0f) && (invMass > 0.0f))
-            {
-                springMass = 1.0f / invMass;
-
-                float c = MathUtils.Dot(d, ax);
-
-                float h = data.Step.DeltaTime;
-                gamma = h * (damping + h * stiffness);
-                if (gamma > 0.0f)
-                {
-                    gamma = 1.0f / gamma;
-                }
-
-                bias = c * h * stiffness * gamma;
-
-                springMass = invMass + gamma;
-                if (springMass > 0.0f)
-                {
-                    springMass = 1.0f / springMass;
-                }
+                CalculateSpringMassAndRelatedValues(d, data);
             }
             else
             {
@@ -678,7 +605,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (enableMotor)
             {
-                motorMass = iA + iB;
+                motorMass = invIa + invIb;
                 if (motorMass > 0.0f)
                 {
                     motorMass = 1.0f / motorMass;
@@ -692,20 +619,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (data.Step.WarmStarting)
             {
-                impulse *= data.Step.DeltaTimeRatio;
-                springImpulse *= data.Step.DeltaTimeRatio;
-                motorImpulse *= data.Step.DeltaTimeRatio;
-
-                float axialImpulse = springImpulse + lowerImpulse - upperImpulse;
-                Vector2 p = impulse * ay + axialImpulse * ax;
-                float la = impulse * sAy + axialImpulse * sAx + motorImpulse;
-                float lb = impulse * sBy + axialImpulse * sBx + motorImpulse;
-
-                vA -= invMassA * p;
-                wA -= invIa * la;
-
-                vB += invMassB * p;
-                wB += invIb * lb;
+                ApplyWarmStarting(ref data);
             }
             else
             {
@@ -715,11 +629,90 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 lowerImpulse = 0.0f;
                 upperImpulse = 0.0f;
             }
+        }
 
-            data.Velocities[indexA].V = vA;
-            data.Velocities[indexA].W = wA;
-            data.Velocities[indexB].V = vB;
-            data.Velocities[indexB].W = wB;
+        private void SetInitialValues(ref SolverData data)
+        {
+            indexA = BodyA.IslandIndex;
+            indexB = BodyB.IslandIndex;
+            localCenterA = BodyA.Sweep.LocalCenter;
+            localCenterB = BodyB.Sweep.LocalCenter;
+            invMassA = BodyA.InvMass;
+            invMassB = BodyB.InvMass;
+            invIa = BodyA.InvI;
+            invIb = BodyB.InvI;
+        }
+
+        private Vector2 CalculateDVector(SolverData data)
+        {
+            Vector2 cA = data.Positions[indexA].C;
+            Vector2 cB = data.Positions[indexB].C;
+            Rotation qA = new Rotation(data.Positions[indexA].A), qB = new Rotation(data.Positions[indexB].A);
+            Vector2 rA = MathUtils.Mul(qA, localAnchorA - localCenterA);
+            Vector2 rB = MathUtils.Mul(qB, localAnchorB - localCenterB);
+            return cB + rB - cA - rA;
+        }
+
+        private void CalculateAYAndMass(Vector2 d, SolverData data)
+        {
+            ay = MathUtils.Mul(new Rotation(data.Positions[indexA].A), localYAxisA);
+            sAy = MathUtils.Cross(d + MathUtils.Mul(new Rotation(data.Positions[indexA].A), localAnchorA - localCenterA), ay);
+            sBy = MathUtils.Cross(MathUtils.Mul(new Rotation(data.Positions[indexB].A), localAnchorB - localCenterB), ay);
+            mass = invMassA + invMassB + invIa * sAy * sAy + invIb * sBy * sBy;
+            if (mass > 0.0f)
+            {
+                mass = 1.0f / mass;
+            }
+        }
+
+        private void CalculateAXAndAxialMass(Vector2 d, SolverData data)
+        {
+            ax = MathUtils.Mul(new Rotation(data.Positions[indexA].A), localXAxisA);
+            sAx = MathUtils.Cross(d + MathUtils.Mul(new Rotation(data.Positions[indexA].A), localAnchorA - localCenterA), ax);
+            sBx = MathUtils.Cross(MathUtils.Mul(new Rotation(data.Positions[indexB].A), localAnchorB - localCenterB), ax);
+            float invMass = invMassA + invMassB + invIa * sAx * sAx + invIb * sBx * sBx;
+            if (invMass > 0.0f)
+            {
+                axialMass = 1.0f / invMass;
+            }
+            else
+            {
+                axialMass = 0.0f;
+            }
+        }
+
+        private void CalculateSpringMassAndRelatedValues(Vector2 d, SolverData data)
+        {
+            springMass = 1.0f / axialMass;
+            float c = MathUtils.Dot(d, ax);
+            float h = data.Step.DeltaTime;
+            gamma = h * (damping + h * stiffness);
+            if (gamma > 0.0f)
+            {
+                gamma = 1.0f / gamma;
+            }
+
+            bias = c * h * stiffness * gamma;
+            springMass = axialMass + gamma;
+            if (springMass > 0.0f)
+            {
+                springMass = 1.0f / springMass;
+            }
+        }
+
+        private void ApplyWarmStarting(ref SolverData data)
+        {
+            impulse *= data.Step.DeltaTimeRatio;
+            springImpulse *= data.Step.DeltaTimeRatio;
+            motorImpulse *= data.Step.DeltaTimeRatio;
+            float axialImpulse = springImpulse + lowerImpulse - upperImpulse;
+            Vector2 p = impulse * ay + axialImpulse * ax;
+            float la = impulse * sAy + axialImpulse * sAx + motorImpulse;
+            float lb = impulse * sBy + axialImpulse * sBx + motorImpulse;
+            data.Velocities[indexA].V -= invMassA * p;
+            data.Velocities[indexA].W -= invIa * la;
+            data.Velocities[indexB].V += invMassB * p;
+            data.Velocities[indexB].W += invIb * lb;
         }
 
         /// <summary>
