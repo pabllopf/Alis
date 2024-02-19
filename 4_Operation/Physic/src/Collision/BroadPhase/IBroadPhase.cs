@@ -34,7 +34,7 @@ using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Physic.Collision.Broadphase
+namespace Alis.Core.Physic.Collision.BroadPhase
 {
     /// <summary>
     ///     The broad phase interface

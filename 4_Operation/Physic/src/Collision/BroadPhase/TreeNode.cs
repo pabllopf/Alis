@@ -29,7 +29,7 @@
 
 using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Physic.Collision.Broadphase
+namespace Alis.Core.Physic.Collision.BroadPhase
 {
     /// <summary>A node in the dynamic tree. The client does not interact with this directly.</summary>
     internal class TreeNode<T>
