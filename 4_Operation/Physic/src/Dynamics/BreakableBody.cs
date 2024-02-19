@@ -33,7 +33,6 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics.Solver;
-using Alis.Core.Physic.Factories;
 using Alis.Core.Physic.Shared;
 
 namespace Alis.Core.Physic.Dynamics
