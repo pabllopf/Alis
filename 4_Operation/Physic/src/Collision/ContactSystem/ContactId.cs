@@ -36,9 +36,11 @@ namespace Alis.Core.Physic.Collision.ContactSystem
     public struct ContactId
     {
         /// <summary>The features that intersect to form the contact point</summary>
-        [FieldOffset(0)] public ContactFeature ContactFeature;
+        [FieldOffset(0)] 
+        public ContactFeature ContactFeature;
 
         /// <summary>Used to quickly compare contact ids.</summary>
-        [FieldOffset(0)] public uint Key;
+        [FieldOffset(0)] 
+        public uint Key;
     }
 }

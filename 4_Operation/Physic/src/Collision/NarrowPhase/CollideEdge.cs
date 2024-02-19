@@ -235,9 +235,11 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="circlePosition">The circle position</param>
         private static void SetManifoldForEdge(ref Manifold manifold, EdgeShape edgeA, Vector2 edgeStart, Vector2 edgeNormal, Vector2 circlePosition)
         {
-            ContactFeature cf;
-            cf.IndexA = 0;
-            cf.TypeA = ContactFeatureType.Face;
+            ContactFeature cf = new ContactFeature
+            {
+                IndexA = 0,
+                TypeA = ContactFeatureType.Face
+            };
             manifold.PointCount = 1;
             manifold.Type = ManifoldType.FaceA;
             manifold.LocalNormal = edgeNormal;
