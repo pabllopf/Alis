@@ -799,7 +799,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         {
             if (polygon == null)
             {
-                throw new ArgumentNullException("polygon");
+                throw new ArgumentNullException(nameof(polygon));
             }
 
             if (polygon.Count < 3)
@@ -807,8 +807,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 throw new ArgumentException("'polygon.MainPolygon.Count' can't be less then 3.");
             }
 
-            int startY, endY;
-            DetermineStartAndEndY(polygon, lastHoleEntrance, out startY, out endY);
+            DetermineStartAndEndY(polygon, lastHoleEntrance, out int startY, out int endY);
 
             if ((startY > 0) && (startY < height) && (endY > 0) && (endY < height))
             {
@@ -844,10 +843,10 @@ namespace Alis.Core.Physic.Tools.TextureTools
             }
             else
             {
-                startY = (int) GetTopMostCoord(polygon);
+                startY = (int) GetTopMostCoordinate(polygon);
             }
 
-            endY = (int) GetBottomMostCoord(polygon);
+            endY = (int) GetBottomMostCoordinate(polygon);
         }
 
         
@@ -1071,11 +1070,11 @@ namespace Alis.Core.Physic.Tools.TextureTools
         
         
         /// <summary>
-        /// Gets the top most coord using the specified vertices
+        /// Gets the top most coordinate using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <returns>The return value</returns>
-        private float GetTopMostCoord(Vertices vertices)
+        private float GetTopMostCoordinate(Vertices vertices)
         {
             float returnValue = float.MaxValue;
 
@@ -1089,18 +1088,13 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             return returnValue;
         }
-
-        
-        
-        
-        
         
         /// <summary>
-        /// Gets the bottom most coord using the specified vertices
+        /// Gets the bottom most coordinate using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <returns>The return value</returns>
-        private float GetBottomMostCoord(Vertices vertices)
+        private float GetBottomMostCoordinate(Vertices vertices)
         {
             float returnValue = float.MinValue;
 
@@ -1114,14 +1108,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             return returnValue;
         }
-
-        
-        
-        
-        
-        
-        
-        
         
         /// <summary>
         /// Searches the crossing edges holes using the specified polygon
@@ -1242,21 +1228,21 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// Describes whether this instance split polygon edge
         /// </summary>
         /// <param name="polygon">The polygon</param>
-        /// <param name="coordInsideThePolygon">The coord inside the polygon</param>
+        /// <param name="coordinateInsideThePolygon">The coordinate inside the polygon</param>
         /// <param name="vertex2Index">The vertex index</param>
         /// <returns>The bool</returns>
-        private bool SplitPolygonEdge(Vertices polygon, Vector2 coordInsideThePolygon, out int vertex2Index)
+        private bool SplitPolygonEdge(Vertices polygon, Vector2 coordinateInsideThePolygon, out int vertex2Index)
         {
-            List<float> xCoords = SearchEdges(polygon, (int) coordInsideThePolygon.Y);
-            Vector2 foundEdgeCoord = FindEdgeCoord(xCoords, coordInsideThePolygon);
+            List<float> xCoords = SearchEdges(polygon, (int) coordinateInsideThePolygon.Y);
+            Vector2 foundEdgeCoordinate = FindEdgeCoordinate(xCoords, coordinateInsideThePolygon);
 
-            if (foundEdgeCoord != Vector2.Zero)
+            if (foundEdgeCoordinate != Vector2.Zero)
             {
-                int[] nearestEdgeVertices = FindNearestEdgeVertices(polygon, foundEdgeCoord);
+                int[] nearestEdgeVertices = FindNearestEdgeVertices(polygon, foundEdgeCoordinate);
 
                 if ((nearestEdgeVertices[0] != -1) && (nearestEdgeVertices[1] != -1))
                 {
-                    vertex2Index = InsertNewVertices(polygon, nearestEdgeVertices, foundEdgeCoord);
+                    vertex2Index = InsertNewVertices(polygon, nearestEdgeVertices, foundEdgeCoordinate);
                     return true;
                 }
             }
@@ -1272,49 +1258,43 @@ namespace Alis.Core.Physic.Tools.TextureTools
         
         
         /// <summary>
-        /// Finds the edge coord using the specified x coords
+        /// Finds the edge coordinate using the specified x coords
         /// </summary>
         /// <param name="xCoords">The coords</param>
-        /// <param name="coordInsideThePolygon">The coord inside the polygon</param>
-        /// <returns>The found edge coord</returns>
-        private Vector2 FindEdgeCoord(List<float> xCoords, Vector2 coordInsideThePolygon)
+        /// <param name="coordinateInsideThePolygon">The coordinate inside the polygon</param>
+        /// <returns>The found edge coordinate</returns>
+        private Vector2 FindEdgeCoordinate(List<float> xCoords, Vector2 coordinateInsideThePolygon)
         {
             float shortestDistance = float.MaxValue;
-            Vector2 foundEdgeCoord = Vector2.Zero;
+            Vector2 foundEdgeCoordinate = Vector2.Zero;
 
             if ((xCoords != null) && (xCoords.Count > 1) && (xCoords.Count % 2 == 0))
             {
                 for (int i = 0; i < xCoords.Count; i++)
                 {
-                    if (xCoords[i] < coordInsideThePolygon.X)
+                    if (xCoords[i] < coordinateInsideThePolygon.X)
                     {
-                        float distance = coordInsideThePolygon.X - xCoords[i];
+                        float distance = coordinateInsideThePolygon.X - xCoords[i];
 
                         if (distance < shortestDistance)
                         {
                             shortestDistance = distance;
-                            foundEdgeCoord = new Vector2(xCoords[i], coordInsideThePolygon.Y);
+                            foundEdgeCoordinate = new Vector2(xCoords[i], coordinateInsideThePolygon.Y);
                         }
                     }
                 }
             }
 
-            return foundEdgeCoord;
+            return foundEdgeCoordinate;
         }
-
-        
-        
-        
-        
-        
         
         /// <summary>
         /// Finds the nearest edge vertices using the specified polygon
         /// </summary>
         /// <param name="polygon">The polygon</param>
-        /// <param name="foundEdgeCoord">The found edge coord</param>
+        /// <param name="foundEdgeCoordinate">The found edge coordinate</param>
         /// <returns>The int array</returns>
-        private int[] FindNearestEdgeVertices(Vertices polygon, Vector2 foundEdgeCoord)
+        private int[] FindNearestEdgeVertices(Vertices polygon, Vector2 foundEdgeCoordinate)
         {
             int nearestEdgeVertex1Index = -1;
             int nearestEdgeVertex2Index = -1;
@@ -1326,7 +1306,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
             {
                 Vector2 tempVector1 = polygon[edgeVertex1Index];
                 Vector2 tempVector2 = polygon[edgeVertex2Index];
-                float distance = Line.DistanceBetweenPointAndLineSegment(foundEdgeCoord, tempVector1, tempVector2);
+                float distance = Line.DistanceBetweenPointAndLineSegment(foundEdgeCoordinate, tempVector1, tempVector2);
 
                 if (distance < shortestDistance)
                 {
@@ -1340,28 +1320,21 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             return new[] {nearestEdgeVertex1Index, nearestEdgeVertex2Index};
         }
-
-        
-        
-        
-        
-        
-        
         
         /// <summary>
         /// Inserts the new vertices using the specified polygon
         /// </summary>
         /// <param name="polygon">The polygon</param>
         /// <param name="nearestEdgeVertices">The nearest edge vertices</param>
-        /// <param name="foundEdgeCoord">The found edge coord</param>
+        /// <param name="foundEdgeCoordinate">The found edge coordinate</param>
         /// <returns>The vertex index</returns>
-        private int InsertNewVertices(Vertices polygon, int[] nearestEdgeVertices, Vector2 foundEdgeCoord)
+        private int InsertNewVertices(Vertices polygon, int[] nearestEdgeVertices, Vector2 foundEdgeCoordinate)
         {
             Vector2 slope = polygon[nearestEdgeVertices[1]] - polygon[nearestEdgeVertices[0]];
             slope = Vector2.Normalize(slope);
 
             Vector2 tempVector = polygon[nearestEdgeVertices[0]];
-            float distance = Vector2.Distance(tempVector, foundEdgeCoord);
+            float distance = Vector2.Distance(tempVector, foundEdgeCoordinate);
 
             int vertex2Index = nearestEdgeVertices[0] + 1;
 
@@ -1370,12 +1343,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             return vertex2Index;
         }
-
-        
-        
-        
-        
-        
         
         /// <summary>
         /// Creates the simple polygon using the specified entrance
@@ -1385,7 +1352,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <returns>The polygon</returns>
         private Vertices CreateSimplePolygon(Vector2 entrance, Vector2 last)
         {
-            bool entranceFound = false;
             bool endOfHull = false;
 
             Vertices polygon = new Vertices(32);
@@ -1394,7 +1360,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             Vector2 current = Vector2.Zero;
 
-            entranceFound = GetEntrancePoint(ref entrance, ref last, ref current);
+            bool entranceFound = GetEntrancePoint(ref entrance, ref last, ref current);
 
             if (entranceFound)
             {
@@ -1410,7 +1376,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     last = current;
                     current = next;
 
-                    if (!GetNextHullPoint(ref last, ref current, out next, hullArea))
+                    if (!GetNextHullPoint(ref last, ref current, out next))
                     {
                         break;
                     }
@@ -1430,13 +1396,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             return polygon;
         }
-
-        
-        
-        
-        
-        
-        
         
         /// <summary>
         /// Describes whether this instance get entrance point
@@ -1479,13 +1438,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             return entranceFound;
         }
-
-        
-        
-        
-        
-        
-        
         
         /// <summary>
         /// Processes the outstanding vertex using the specified end of hull
@@ -1515,13 +1467,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 hullArea.RemoveRange(0, hullArea.IndexOf(outstanding));
             }
         }
-
-        
-        
-        
-        
-        
-        
         
         /// <summary>
         /// Describes whether this instance search near pixels
@@ -1548,12 +1493,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
             foundPixel = Vector2.Zero;
             return false;
         }
-
-        
-        
-        
-        
-        
         
         /// <summary>
         /// Describes whether this instance is near pixel
@@ -1579,11 +1518,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             return false;
         }
-
-        
-        
-        
-        
         
         /// <summary>
         /// Describes whether this instance search hull entrance
@@ -1609,13 +1543,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
             entrance = Vector2.Zero;
             return false;
         }
-
-        
-        
-        
-        
-        
-        
         
         /// <summary>
         /// Describes whether this instance search next hull entrance
@@ -1655,11 +1582,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
             entrance = null;
             return false;
         }
-
-        
-        
-        
-        
         
         /// <summary>
         /// Calculates the start index using the specified start
@@ -1667,11 +1589,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="start">The start</param>
         /// <returns>The int</returns>
         private int CalculateStartIndex(Vector2 start) => (int) start.X + (int) start.Y * width;
-
-        
-        
-        
-        
         
         /// <summary>
         /// Calculates the entrance using the specified i
@@ -1683,12 +1600,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
             int x = i % width;
             return new Vector2(x, (i - x) / (float) width);
         }
-
-        
-        
-        
-        
-        
         
         /// <summary>
         /// Describes whether this instance is in polygon
@@ -1708,14 +1619,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             return false;
         }
-
-        
-        
-        
-        
-        
-        
-        
         
         /// <summary>
         /// Describes whether this instance get next hull point
@@ -1723,9 +1626,8 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="last">The last</param>
         /// <param name="current">The current</param>
         /// <param name="next">The next</param>
-        /// <param name="hullArea">The hull area</param>
         /// <returns>The bool</returns>
-        private bool GetNextHullPoint(ref Vector2 last, ref Vector2 current, out Vector2 next, Vertices hullArea)
+        private bool GetNextHullPoint(ref Vector2 last, ref Vector2 current, out Vector2 next)
         {
             int indexOfFirstPixelToCheck = GetIndexOfFirstPixelToCheck(ref last, ref current);
 
@@ -1749,12 +1651,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
             next = Vector2.Zero;
             return false;
         }
-
-        
-        
-        
-        
-        
         
         /// <summary>
         /// Describes whether this instance search for outstanding vertex
@@ -1793,12 +1689,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
             outstanding = outstandingResult;
             return found;
         }
-
-        
-        
-        
-        
-        
         
         /// <summary>
         /// Gets the index of first pixel to check using the specified last
@@ -1855,11 +1745,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             return 0;
         }
-
-        
-        
-        
-        
         
         /// <summary>
         /// Describes whether this instance is solid
@@ -1878,12 +1763,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             return false;
         }
-
-        
-        
-        
-        
-        
         
         /// <summary>
         /// Describes whether this instance is solid
@@ -1897,16 +1776,8 @@ namespace Alis.Core.Physic.Tools.TextureTools
             {
                 return data[x + y * width] >= alphaTolerance;
             }
-
-            //return ((_data[x + y * _width] & 0xFF000000) >= _alphaTolerance);
-
             return false;
         }
-
-        
-        
-        
-        
         
         /// <summary>
         /// Describes whether this instance is solid
@@ -1922,17 +1793,12 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             return false;
         }
-
-        
-        
-        
-        
         
         /// <summary>
         /// Describes whether this instance in bounds
         /// </summary>
-        /// <param name="coord">The coord</param>
+        /// <param name="coordinate">The coordinate</param>
         /// <returns>The bool</returns>
-        private bool InBounds(ref Vector2 coord) => (coord.X >= 0f) && (coord.X < width) && (coord.Y >= 0f) && (coord.Y < height);
+        private bool InBounds(ref Vector2 coordinate) => (coordinate.X >= 0f) && (coordinate.X < width) && (coordinate.Y >= 0f) && (coordinate.Y < height);
     }
 }
