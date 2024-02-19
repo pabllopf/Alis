@@ -36,18 +36,18 @@ namespace Alis.Core.Physic.Collision.ContactSystem
     ///     and each contact is an edge. A contact edge belongs to a doubly linked list maintained in each attached body. Each
     ///     contact has two contact nodes, one for each attached body.
     /// </summary>
-    public sealed class ContactEdge
+    public class ContactEdge
     {
         /// <summary>The contact</summary>
-        public Contact Contact;
+        public Contact Contact { get; set; }
 
         /// <summary>The next contact edge in the body's contact list</summary>
-        public ContactEdge Next;
+        public ContactEdge Next { get; set; }
 
         /// <summary>Provides quick access to the other body attached.</summary>
-        public Body Other;
+        public Body Other { get; set; }
 
         /// <summary>The previous contact edge in the body's contact list</summary>
-        public ContactEdge Prev;
+        public ContactEdge Prev { get; set; }
     }
 }
