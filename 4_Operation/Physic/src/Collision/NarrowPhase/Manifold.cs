@@ -34,7 +34,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
 {
     /// <summary>
     ///     A manifold for two touching convex Shapes.
-    ///     Box2D supports multiple types of contact:
+    ///     Supports multiple types of contact:
     ///     - Clip point versus plane with radius
     ///     - Point versus point with radius (circles)
     ///     The local point usage depends on the manifold type:
@@ -53,13 +53,13 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
     public struct Manifold
     {
         /// <summary>Not use for Type.SeparationFunction.Points</summary>
-        public Vector2 LocalNormal;
+        public Vector2 LocalNormal { get; set; }
 
         /// <summary>Usage depends on manifold type</summary>
-        public Vector2 LocalPoint;
+        public Vector2 LocalPoint { get; set; }
 
         /// <summary>The number of manifold points</summary>
-        public int PointCount;
+        public int PointCount { get; set; }
 
         /// <summary>The points of contact</summary>
         public FixedArray2<ManifoldPoint> Points;
@@ -67,6 +67,6 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <summary>
         ///     The type
         /// </summary>
-        public ManifoldType Type;
+        public ManifoldType Type { get; set; }
     }
 }
