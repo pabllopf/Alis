@@ -931,63 +931,65 @@ namespace Alis.Core.Physic.Tools.TextureTools
         }
 
 
-        /// <summary>
-        /// Searches the edges using the specified polygon
-        /// </summary>
-        /// <param name="polygon">The polygon</param>
-        /// <param name="y">The </param>
-        /// <returns>The edges</returns>
         private List<float> SearchEdges(Vertices polygon, int y)
         {
             List<float> edges = new List<float>();
 
-            if (polygon.Count > 2)
+            if (polygon.Count <= 2)
             {
-                Vector2 vertex2 = polygon[polygon.Count - 1];
-
-
-                for (int i = 0; i < polygon.Count; i++)
-                {
-                    Vector2 vertex1 = polygon[i];
-
-
-                    if (((vertex1.Y >= y) && (vertex2.Y <= y)) ||
-                        ((vertex1.Y <= y) && (vertex2.Y >= y)))
-                    {
-                        if (Math.Abs(vertex1.Y - vertex2.Y) > 0.0001f)
-                        {
-                            bool addFind = true;
-                            Vector2 slope = vertex2 - vertex1;
-
-
-                            if (Math.Abs(vertex1.Y - y) < 0.0001f)
-                            {
-                                Vector2 nextVertex = polygon[(i + 1) % polygon.Count];
-                                Vector2 nextSlope = vertex1 - nextVertex;
-
-                                if (slope.Y > 0)
-                                {
-                                    addFind = nextSlope.Y <= 0;
-                                }
-                                else
-                                {
-                                    addFind = nextSlope.Y >= 0;
-                                }
-                            }
-
-                            if (addFind)
-                            {
-                                edges.Add((y - vertex1.Y) / slope.Y * slope.X + vertex1.X);
-                            }
-                        }
-                    }
-
-                    vertex2 = vertex1;
-                }
+                return edges;
             }
-
+            
+            IterateSearchEdges(polygon, y, edges);
+            
             edges.Sort();
             return edges;
+        }
+
+        private void IterateSearchEdges(Vertices polygon, int y, List<float> edges)
+        {
+            Vector2 vertex2 = polygon[polygon.Count - 1];
+
+            for (int i = 0; i < polygon.Count; i++)
+            {
+                Vector2 vertex1 = polygon[i];
+
+                if (!((vertex1.Y >= y && vertex2.Y <= y) || (vertex1.Y <= y && vertex2.Y >= y)))
+                {
+                    continue;
+                }
+
+                if (!(Math.Abs(vertex1.Y - vertex2.Y) > 0.0001f))
+                {
+                    continue;
+                }
+
+                bool addFind = true;
+                Vector2 slope = vertex2 - vertex1;
+
+                if (Math.Abs(vertex1.Y - y) < 0.0001f)
+                {
+                    Vector2 nextVertex = polygon[(i + 1) % polygon.Count];
+                    Vector2 nextSlope = vertex1 - nextVertex;
+
+                    if (slope.Y > 0)
+                    {
+                        addFind = nextSlope.Y <= 0;
+                    }
+                    else
+                    {
+                        addFind = nextSlope.Y >= 0;
+                    }
+                }
+
+                if (addFind)
+                {
+                    edges.Add((y - vertex1.Y) / slope.Y * slope.X + vertex1.X);
+                }
+
+
+                vertex2 = vertex1;
+            }
         }
 
         /// <summary>
