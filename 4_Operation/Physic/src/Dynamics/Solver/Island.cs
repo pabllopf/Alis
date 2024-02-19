@@ -35,7 +35,6 @@ using Alis.Core.Aspect.Time;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Dynamics.Joints;
-using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Dynamics.Solver
 {

@@ -33,7 +33,6 @@ using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Distance;
 using Alis.Core.Physic.Collision.NarrowPhase;
-using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Collision.TOI
 {
