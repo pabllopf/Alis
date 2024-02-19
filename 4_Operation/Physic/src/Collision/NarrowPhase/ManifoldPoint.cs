@@ -50,12 +50,12 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         public ContactId Id;
 
         /// <summary>Usage depends on manifold type</summary>
-        public Vector2 LocalPoint;
+        public Vector2 LocalPoint { get; set; }
 
         /// <summary>The non-penetration impulse</summary>
-        public float NormalImpulse;
+        public float NormalImpulse { get; set; }
 
         /// <summary>The friction impulse</summary>
-        public float TangentImpulse;
+        public float TangentImpulse { get; set; }
     }
 }
