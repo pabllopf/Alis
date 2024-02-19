@@ -37,21 +37,21 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
     internal struct SimplexVertex
     {
         /// <summary>Barycentric coordinate for closest point</summary>
-        public float A;
+        public float A { get; set; }
 
         /// <summary>wA index</summary>
-        public int IndexA;
+        public int IndexA { get; set; }
 
         /// <summary>wB index</summary>
-        public int IndexB;
+        public int IndexB { get; set; }
 
         /// <summary>wB - wA</summary>
-        public Vector2 W;
+        public Vector2 W { get; set; }
 
         /// <summary>Support point in proxyA</summary>
-        public Vector2 Wa;
+        public Vector2 Wa { get; set; }
 
         /// <summary>Support point in proxyB</summary>
-        public Vector2 Wb;
+        public Vector2 Wb { get; set; }
     }
 }
