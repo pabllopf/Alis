@@ -35,7 +35,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
     public struct SimplexCache
     {
         /// <summary>Length or area</summary>
-        public ushort Count;
+        public ushort Count { get; set; }
 
         /// <summary>Vertices on shape A</summary>
         public FixedArray3<byte> IndexA;
@@ -46,6 +46,6 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <summary>
         ///     The metric
         /// </summary>
-        public float Metric;
+        public float Metric { get; set; }
     }
 }
