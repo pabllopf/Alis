@@ -37,17 +37,22 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <summary>
         ///     The
         /// </summary>
-        public int I1;
+        public int I1 { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public int I2;
+        public int I2 { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 V1, V2;
+        public Vector2 V1 { get; set; }
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public Vector2 V2 { get; set; }
 
         /// <summary>
         ///     The normal
@@ -57,21 +62,21 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <summary>
         ///     The side normal
         /// </summary>
-        public Vector2 SideNormal1;
+        public Vector2 SideNormal1 { get; set; }
 
         /// <summary>
         ///     The side offset
         /// </summary>
-        public float SideOffset1;
+        public float SideOffset1 { get; set; }
 
         /// <summary>
         ///     The side normal
         /// </summary>
-        public Vector2 SideNormal2;
+        public Vector2 SideNormal2 { get; set; }
 
         /// <summary>
         ///     The side offset
         /// </summary>
-        public float SideOffset2;
+        public float SideOffset2 { get; set; }
     }
 }

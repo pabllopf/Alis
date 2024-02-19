@@ -468,7 +468,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         private static ReferenceFace GetReferenceFace(EpAxis primaryAxis, TempPolygon tempPolygonB, Vector2 v1, Vector2 v2, Vector2 edge1, PolygonShape polygonB, EdgeShape edgeA, ref Manifold manifold)
         {
             FixedArray2<ClipVertex> clipPoints = new FixedArray2<ClipVertex>();
-            ReferenceFace ref1;
+            ReferenceFace ref1 = new ReferenceFace();
             if (primaryAxis.Type == EpAxisType.EdgeA)
             {
                 manifold.Type = ManifoldType.FaceA;
