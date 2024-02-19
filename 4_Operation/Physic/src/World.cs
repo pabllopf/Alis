@@ -36,7 +36,6 @@ using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Alis.Core.Physic.Dynamics.Solver;
-using Alis.Core.Physic.Extensions.Controllers;
 
 namespace Alis.Core.Physic
 {
@@ -78,12 +77,7 @@ namespace Alis.Core.Physic
         ///     Gets or sets the value of the joints
         /// </summary>
         internal List<Joint> Joints { get; } = new List<Joint>();
-
-        /// <summary>
-        ///     Gets the value of the controllers
-        /// </summary>
-        internal List<Controller> Controllers { get; } = new List<Controller>();
-
+        
         /// <summary>
         ///     Gets or sets the value of the contact manager
         /// </summary>
@@ -129,19 +123,7 @@ namespace Alis.Core.Physic
         /// </summary>
         /// <param name="joint">The joint</param>
         public void RemoveJoint(Joint joint) => Joints.Remove(joint);
-
-        /// <summary>
-        ///     Adds the controller using the specified controller
-        /// </summary>
-        /// <param name="controller">The controller</param>
-        public void AddController(Controller controller) => Controllers.Add(controller);
-
-        /// <summary>
-        ///     Removes the controller using the specified controller
-        /// </summary>
-        /// <param name="controller">The controller</param>
-        public void RemoveController(Controller controller) => Controllers.Remove(controller);
-
+        
         /// <summary>
         ///     Steps the dt
         /// </summary>
@@ -152,7 +134,6 @@ namespace Alis.Core.Physic
         {
             FindNewContacts();
             UpdateTimeStep(dt, velocityIterations, positionIterations);
-            UpdateControllers(dt);
             CollideContacts();
             Solve();
             SolveToi();
@@ -180,13 +161,7 @@ namespace Alis.Core.Physic
             TimeStepGlobal.InvertedDeltaTime = dt > 0.0f ? 1.0f / dt : 0.0f;
             TimeStepGlobal.DeltaTimeRatio = TimeStepGlobal.InvertedDeltaTimeZero * dt;
         }
-
-        /// <summary>
-        ///     Updates the controllers using the specified dt
-        /// </summary>
-        /// <param name="dt">The dt</param>
-        private void UpdateControllers(float dt) => Controllers.ForEach(controller => controller.Update(dt));
-
+        
         /// <summary>
         ///     Collides the contacts
         /// </summary>
