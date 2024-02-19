@@ -1,31 +1,31 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Polygon.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 using System;
 using System.Collections.Generic;
@@ -38,14 +38,23 @@ using Alis.Core.Physic.Tools.TextureTools;
 
 namespace Alis.Core.Physic.Utilities
 {
+    
+    
+    
     /// <summary>
-    ///     The polygon utils class
+    /// The polygon class
     /// </summary>
     public static class Polygon
     {
-        /// <summary>Build vertices to represent an axis-aligned box.</summary>
-        /// <param name="hx">the half-width.</param>
-        /// <param name="hy">the half-height.</param>
+        
+        
+        
+        /// <summary>
+        /// Creates the rectangle using the specified hx
+        /// </summary>
+        /// <param name="hx">The hx</param>
+        /// <param name="hy">The hy</param>
+        /// <returns>The vertices</returns>
         public static Vertices CreateRectangle(float hx, float hy) =>
             new Vertices(4)
             {
@@ -55,11 +64,19 @@ namespace Alis.Core.Physic.Utilities
                 new Vector2(-hx, hy)
             };
 
-        /// <summary>Build vertices to represent an oriented box.</summary>
-        /// <param name="hx">the half-width.</param>
-        /// <param name="hy">the half-height.</param>
-        /// <param name="center">the center of the box in local coordinates.</param>
-        /// <param name="angle">the rotation of the box in local coordinates.</param>
+        
+        
+        
+        
+        
+        /// <summary>
+        /// Creates the rectangle using the specified hx
+        /// </summary>
+        /// <param name="hx">The hx</param>
+        /// <param name="hy">The hy</param>
+        /// <param name="center">The center</param>
+        /// <param name="angle">The angle</param>
+        /// <returns>The vertices</returns>
         public static Vertices CreateRectangle(float hx, float hy, Vector2 center, float angle)
         {
             Vertices vertices = CreateRectangle(hx, hy);
@@ -70,7 +87,7 @@ namespace Alis.Core.Physic.Utilities
             };
             xf.Rotation.Set(angle);
 
-            // Transform vertices
+            
             for (int i = 0; i < 4; ++i)
             {
                 vertices[i] = MathUtils.Mul(ref xf, vertices[i]);
@@ -79,15 +96,26 @@ namespace Alis.Core.Physic.Utilities
             return vertices;
         }
 
-        //Rounded rectangle contributed by Jonathan Smars - jsmars@gmail.com
+        
 
-        /// <summary>Creates a rounded rectangle with the specified width and height.</summary>
-        /// <param name="width">The width.</param>
-        /// <param name="height">The height.</param>
-        /// <param name="xRadius">The rounding X radius.</param>
-        /// <param name="yRadius">The rounding Y radius.</param>
-        /// <param name="segments">The number of segments to subdivide the edges.</param>
-        /// <returns></returns>
+        
+        
+        
+        
+        
+        
+        
+        /// <summary>
+        /// Creates the rounded rectangle using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="xRadius">The radius</param>
+        /// <param name="yRadius">The radius</param>
+        /// <param name="segments">The segments</param>
+        /// <exception cref="Exception">Rounding amount can't be more than half the height and width respectively.</exception>
+        /// <exception cref="Exception">Segments must be zero or more.</exception>
+        /// <returns>The vertices</returns>
         public static Vertices CreateRoundedRectangle(float width, float height, float xRadius, float yRadius,
             int segments)
         {
@@ -147,9 +175,15 @@ namespace Alis.Core.Physic.Utilities
             return vertices;
         }
 
-        /// <summary>Set this as a single edge.</summary>
-        /// <param name="start">The first point.</param>
-        /// <param name="end">The second point.</param>
+        
+        
+        
+        /// <summary>
+        /// Creates the line using the specified start
+        /// </summary>
+        /// <param name="start">The start</param>
+        /// <param name="end">The end</param>
+        /// <returns>The vertices</returns>
         public static Vertices CreateLine(Vector2 start, Vector2 end)
         {
             Vertices vertices = new Vertices(2)
@@ -161,18 +195,31 @@ namespace Alis.Core.Physic.Utilities
             return vertices;
         }
 
-        /// <summary>Creates a circle with the specified radius and number of edges.</summary>
-        /// <param name="radius">The radius.</param>
-        /// <param name="numberOfEdges">The number of edges. The more edges, the more it resembles a circle</param>
-        /// <returns></returns>
+        
+        
+        
+        
+        /// <summary>
+        /// Creates the circle using the specified radius
+        /// </summary>
+        /// <param name="radius">The radius</param>
+        /// <param name="numberOfEdges">The number of edges</param>
+        /// <returns>The vertices</returns>
         public static Vertices CreateCircle(float radius, int numberOfEdges) =>
             CreateEllipse(radius, radius, numberOfEdges);
 
-        /// <summary>Creates a ellipse with the specified width, height and number of edges.</summary>
-        /// <param name="xRadius">Width of the ellipse.</param>
-        /// <param name="yRadius">Height of the ellipse.</param>
-        /// <param name="numberOfEdges">The number of edges. The more edges, the more it resembles an ellipse</param>
-        /// <returns></returns>
+        
+        
+        
+        
+        
+        /// <summary>
+        /// Creates the ellipse using the specified x radius
+        /// </summary>
+        /// <param name="xRadius">The radius</param>
+        /// <param name="yRadius">The radius</param>
+        /// <param name="numberOfEdges">The number of edges</param>
+        /// <returns>The vertices</returns>
         public static Vertices CreateEllipse(float xRadius, float yRadius, int numberOfEdges)
         {
             Vertices vertices = new Vertices();
@@ -189,8 +236,15 @@ namespace Alis.Core.Physic.Utilities
             return vertices;
         }
 
+        
+        
+        
+        
+        
+        
+        
         /// <summary>
-        ///     Creates the arc using the specified radians
+        /// Creates the arc using the specified radians
         /// </summary>
         /// <param name="radians">The radians</param>
         /// <param name="sides">The sides</param>
@@ -214,16 +268,24 @@ namespace Alis.Core.Physic.Utilities
             return vertices;
         }
 
-        //Capsule contributed by Yobiv
+        
 
+        
+        
+        
+        
+        
+        
+        
+        
         /// <summary>
-        ///     Creates an capsule with the specified height, radius and number of edges. A capsule has the same form as a
-        ///     pill capsule.
+        /// Creates the capsule using the specified height
         /// </summary>
-        /// <param name="height">Height (inner height + 2 * radius) of the capsule.</param>
-        /// <param name="endRadius">Radius of the capsule ends.</param>
-        /// <param name="edges">The number of edges of the capsule ends. The more edges, the more it resembles an capsule</param>
-        /// <returns></returns>
+        /// <param name="height">The height</param>
+        /// <param name="endRadius">The end radius</param>
+        /// <param name="edges">The edges</param>
+        /// <exception cref="ArgumentException">The radius must be lower than height / 2. Higher values of radius would create a circle, and not a half circle. </exception>
+        /// <returns>The vertices</returns>
         public static Vertices CreateCapsule(float height, float endRadius, int edges)
         {
             if (endRadius >= height / 2)
@@ -236,16 +298,32 @@ namespace Alis.Core.Physic.Utilities
             return CreateCapsule(height, endRadius, edges, endRadius, edges);
         }
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         /// <summary>
-        ///     Creates an capsule with the specified  height, radius and number of edges. A capsule has the same form as a
-        ///     pill capsule.
+        /// Creates the capsule using the specified height
         /// </summary>
-        /// <param name="height">Height (inner height + radii) of the capsule.</param>
-        /// <param name="topRadius">Radius of the top.</param>
-        /// <param name="topEdges">The number of edges of the top. The more edges, the more it resembles an capsule</param>
-        /// <param name="bottomRadius">Radius of bottom.</param>
-        /// <param name="bottomEdges">The number of edges of the bottom. The more edges, the more it resembles an capsule</param>
-        /// <returns></returns>
+        /// <param name="height">The height</param>
+        /// <param name="topRadius">The top radius</param>
+        /// <param name="topEdges">The top edges</param>
+        /// <param name="bottomRadius">The bottom radius</param>
+        /// <param name="bottomEdges">The bottom edges</param>
+        /// <exception cref="ArgumentException">Bottom edges must be more than 0 </exception>
+        /// <exception cref="ArgumentException">Height must be longer than 0 </exception>
+        /// <exception cref="ArgumentException">The bottom radius must be lower than height / 2. Higher values of bottom radius would create a circle, and not a half circle. </exception>
+        /// <exception cref="ArgumentException">The bottom radius must be more than 0 </exception>
+        /// <exception cref="ArgumentException">The top radius must be lower than height / 2. Higher values of top radius would create a circle, and not a half circle. </exception>
+        /// <exception cref="ArgumentException">The top radius must be more than 0 </exception>
+        /// <exception cref="ArgumentException">Top edges must be more than 0 </exception>
+        /// <returns>The vertices</returns>
         public static Vertices CreateCapsule(float height, float topRadius, int topEdges, float bottomRadius,
             int bottomEdges)
         {
@@ -292,7 +370,7 @@ namespace Alis.Core.Physic.Utilities
 
             float newHeight = (height - topRadius - bottomRadius) * 0.5f;
 
-            // top
+            
             vertices.Add(new Vector2(topRadius, newHeight));
 
             float stepSize = Constant.Pi / topEdges;
@@ -304,7 +382,7 @@ namespace Alis.Core.Physic.Utilities
 
             vertices.Add(new Vector2(-topRadius, newHeight));
 
-            // bottom
+            
             vertices.Add(new Vector2(-bottomRadius, -newHeight));
 
             stepSize = Constant.Pi / bottomEdges;
@@ -319,11 +397,19 @@ namespace Alis.Core.Physic.Utilities
             return vertices;
         }
 
-        /// <summary>Creates a gear shape with the specified radius and number of teeth.</summary>
-        /// <param name="radius">The radius.</param>
-        /// <param name="numberOfTeeth">The number of teeth.</param>
-        /// <param name="tipPercentage">The tip percentage.</param>
-        /// <param name="toothHeight">Height of the tooth.</param>
+        
+        
+        
+        
+        
+        /// <summary>
+        /// Creates the gear using the specified radius
+        /// </summary>
+        /// <param name="radius">The radius</param>
+        /// <param name="numberOfTeeth">The number of teeth</param>
+        /// <param name="tipPercentage">The tip percentage</param>
+        /// <param name="toothHeight">The tooth height</param>
+        /// <returns>The vertices</returns>
         public static Vertices CreateGear(float radius, int numberOfTeeth, float tipPercentage, float toothHeight)
         {
             Vertices vertices = new Vertices();
@@ -364,28 +450,51 @@ namespace Alis.Core.Physic.Utilities
             return vertices;
         }
 
-        /// <summary>Detects the vertices by analyzing the texture data.</summary>
-        /// <param name="data">The texture data.</param>
-        /// <param name="width">The texture width.</param>
-        /// <returns></returns>
+        
+        
+        
+        
+        /// <summary>
+        /// Creates the polygon using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <param name="width">The width</param>
+        /// <returns>The vertices</returns>
         public static Vertices CreatePolygon(uint[] data, int width) => TextureConverter.DetectVertices(data, width);
 
-        /// <summary>Detects the vertices by analyzing the texture data.</summary>
-        /// <param name="data">The texture data.</param>
-        /// <param name="width">The texture width.</param>
-        /// <param name="holeDetection">if set to <c>true</c> it will perform hole detection.</param>
-        /// <returns></returns>
+        
+        
+        
+        
+        
+        /// <summary>
+        /// Creates the polygon using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <param name="width">The width</param>
+        /// <param name="holeDetection">The hole detection</param>
+        /// <returns>The vertices</returns>
         public static Vertices CreatePolygon(uint[] data, int width, bool holeDetection) =>
             TextureConverter.DetectVertices(data, width, holeDetection);
 
-        /// <summary>Detects the vertices by analyzing the texture data.</summary>
-        /// <param name="data">The texture data.</param>
-        /// <param name="width">The texture width.</param>
-        /// <param name="hullTolerance">The hull tolerance.</param>
-        /// <param name="alphaTolerance">The alpha tolerance.</param>
-        /// <param name="multiPartDetection">if set to <c>true</c> it will perform multi part detection.</param>
-        /// <param name="holeDetection">if set to <c>true</c> it will perform hole detection.</param>
-        /// <returns></returns>
+        
+        
+        
+        
+        
+        
+        
+        
+        /// <summary>
+        /// Creates the polygon using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <param name="width">The width</param>
+        /// <param name="hullTolerance">The hull tolerance</param>
+        /// <param name="alphaTolerance">The alpha tolerance</param>
+        /// <param name="multiPartDetection">The multi part detection</param>
+        /// <param name="holeDetection">The hole detection</param>
+        /// <returns>A list of vertices</returns>
         public static List<Vertices> CreatePolygon(uint[] data, int width, float hullTolerance, byte alphaTolerance,
             bool multiPartDetection, bool holeDetection) =>
             TextureConverter.DetectVertices(data, width, hullTolerance,
