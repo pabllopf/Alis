@@ -40,32 +40,32 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <summary>
         ///     The child
         /// </summary>
-        internal int Child1;
+        internal int Child1 { get; set; }
 
         /// <summary>
         ///     The child
         /// </summary>
-        internal int Child2;
+        internal int Child2 { get; set; }
 
         /// <summary>
         ///     The height
         /// </summary>
-        internal int Height;
+        internal int Height { get; set; }
 
         /// <summary>
         ///     The moved
         /// </summary>
-        internal bool Moved;
+        internal bool Moved { get; set; }
 
         /// <summary>
         ///     The parent or next
         /// </summary>
-        internal int ParentOrNext;
+        internal int ParentOrNext { get; set; }
 
         /// <summary>
         ///     The user data
         /// </summary>
-        internal T UserData;
+        internal T UserData { get; set; }
 
         /// <summary>
         ///     Describes whether this instance is leaf
