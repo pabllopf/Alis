@@ -606,11 +606,13 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <returns>The axis</returns>
         private static EpAxis ComputeEdgeSeparation(ref TempPolygon polygonB, Vector2 v1, Vector2 normal1)
         {
-            EpAxis axis;
-            axis.Type = EpAxisType.EdgeA;
-            axis.Index = -1;
-            axis.Separation = -float.MaxValue;
-            axis.Normal = Vector2.Zero;
+            EpAxis axis = new EpAxis
+            {
+                Type = EpAxisType.EdgeA,
+                Index = -1,
+                Separation = -float.MaxValue,
+                Normal = Vector2.Zero
+            };
 
             Vector2[] axes = {normal1, -normal1};
 
@@ -649,11 +651,13 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <returns>The axis</returns>
         private static EpAxis ComputePolygonSeparation(ref TempPolygon polygonB, Vector2 v1, Vector2 v2)
         {
-            EpAxis axis;
-            axis.Type = EpAxisType.Unknown;
-            axis.Index = -1;
-            axis.Separation = -float.MaxValue;
-            axis.Normal = Vector2.Zero;
+            EpAxis axis = new EpAxis
+            {
+                Type = EpAxisType.Unknown,
+                Index = -1,
+                Separation = -float.MaxValue,
+                Normal = Vector2.Zero
+            };
 
             for (int i = 0; i < polygonB.Count; ++i)
             {

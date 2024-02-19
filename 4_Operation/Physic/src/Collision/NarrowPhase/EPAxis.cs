@@ -52,6 +52,6 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <summary>
         ///     The type
         /// </summary>
-        public EpAxisType Type { get; set; }
+        public EpAxisType Type { get; set; } 
     }
 }
