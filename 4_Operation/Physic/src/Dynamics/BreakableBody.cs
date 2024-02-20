@@ -33,7 +33,6 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics.Solver;
-using Alis.Core.Physic.Factories;
 using Alis.Core.Physic.Shared;
 
 namespace Alis.Core.Physic.Dynamics
@@ -75,7 +74,11 @@ namespace Alis.Core.Physic.Dynamics
             this.world = world;
             this.world.ContactManager.PostSolve += PostSolve;
             Parts = new List<Fixture>(parts.Count);
-            MainBody = BodyFactory.CreateBody(this.world, position, rotation, BodyType.Dynamic);
+            //MainBody = BodyFactory.CreateBody(this.world, position, rotation, BodyType.Dynamic);
+            
+            MainBody = new Body(position, Vector2.Zero, BodyType.Dynamic, rotation);
+            world.AddBody(MainBody);
+            
             Strength = 500.0f;
 
             foreach (Vertices part in parts)
@@ -98,7 +101,11 @@ namespace Alis.Core.Physic.Dynamics
         {
             this.world = world;
             this.world.ContactManager.PostSolve += PostSolve;
-            MainBody = BodyFactory.CreateBody(this.world, position, rotation, BodyType.Dynamic);
+            //MainBody = BodyFactory.CreateBody(this.world, position, rotation, BodyType.Dynamic);
+            
+            MainBody = new Body(position, Vector2.Zero, BodyType.Dynamic, rotation);
+            world.AddBody(MainBody);
+            
             Parts = new List<Fixture>(8);
 
             foreach (Shape part in shapes)
@@ -200,7 +207,8 @@ namespace Alis.Core.Physic.Dynamics
 
                 MainBody.RemoveFixture(oldFixture);
 
-                Body body = BodyFactory.CreateBody(world, MainBody.Position, MainBody.Rotation, BodyType.Dynamic);
+                //Body body = BodyFactory.CreateBody(world, MainBody.Position, MainBody.Rotation, BodyType.Dynamic);
+                Body body = new Body(MainBody.Position, MainBody.LinearVelocity, BodyType.Dynamic, MainBody.Rotation);
 
                 Fixture newFixture = body.AddFixture(shape);
                 Parts[i] = newFixture;

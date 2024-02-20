@@ -35,7 +35,6 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.NarrowPhase;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared.Optimization;
-using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Collision.Distance
 {
