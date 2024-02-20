@@ -468,7 +468,7 @@ namespace Alis.Core.Aspect.Data.Json
                 if (ShouldSkipProperty(serialization, info, options))
                     continue;
 
-                yield return CreateMemberDefinition(serialization, info, options);
+                yield return CreateMemberDefinition(serialization, info);
             }
         }
 
@@ -578,9 +578,8 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="info">The info</param>
-        /// <param name="options">The options</param>
         /// <returns>The ma</returns>
-        private static MemberDefinition CreateMemberDefinition(bool serialization, PropertyInfo info, JsonOptions options)
+        private static MemberDefinition CreateMemberDefinition(bool serialization, PropertyInfo info)
         {
             string name = JsonSerializer.GetObjectName(info, info.Name);
 
@@ -620,7 +619,7 @@ namespace Alis.Core.Aspect.Data.Json
                 if (ShouldSkipField(serialization, info, options))
                     continue;
 
-                yield return CreateMemberDefinition(serialization, info, options);
+                yield return CreateMemberDefinition(serialization, info);
             }
         }
 
@@ -667,9 +666,8 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="info">The info</param>
-        /// <param name="options">The options</param>
         /// <returns>The ma</returns>
-        private static MemberDefinition CreateMemberDefinition(bool serialization, FieldInfo info, JsonOptions options)
+        private static MemberDefinition CreateMemberDefinition(bool serialization, FieldInfo info)
         {
             string name = JsonSerializer.GetObjectName(info, info.Name);
 
@@ -710,7 +708,7 @@ namespace Alis.Core.Aspect.Data.Json
                 if (ShouldSkipDescriptor(serialization, descriptor, options))
                     continue;
 
-                yield return CreateMemberDefinition(serialization, descriptor, options);
+                yield return CreateMemberDefinition(serialization, descriptor);
             }
         }
 
@@ -812,9 +810,8 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="descriptor">The descriptor</param>
-        /// <param name="options">The options</param>
         /// <returns>The ma</returns>
-        private static MemberDefinition CreateMemberDefinition(bool serialization, PropertyDescriptor descriptor, JsonOptions options)
+        private static MemberDefinition CreateMemberDefinition(bool serialization, PropertyDescriptor descriptor)
         {
             string name = JsonSerializer.GetObjectName(descriptor, descriptor.Name);
 
