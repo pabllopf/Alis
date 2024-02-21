@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Figure
     /// <summary>
     ///     The rectangle class
     /// </summary>
-    /// <seealso cref="FigureBase" />
+    /// <seealso />
     public class Rectangle : Body
     {
         /// <summary>
