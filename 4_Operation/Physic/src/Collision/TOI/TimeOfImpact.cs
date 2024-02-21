@@ -42,33 +42,35 @@ namespace Alis.Core.Physic.Collision.TOI
     /// </summary>
     public static class TimeOfImpact
     {
-        // CCD via the local separating axis method. This seeks progression
-        // by computing the largest time at which separation is maintained.
+        /// <summary>
+        ///     The toi max iter
+        /// </summary>
+        [field: ThreadStatic]
+        private static int ToiCalls { get; set; }
 
         /// <summary>
-        ///     The toi max iters
+        ///     The toi max iter
         /// </summary>
-        [ThreadStatic] public static int ToiCalls;
+        [field: ThreadStatic]
+        private static int ToiIter { get; set; }
 
         /// <summary>
-        ///     The toi max iters
+        ///     The toi max iter
         /// </summary>
-        [ThreadStatic] public static int ToiIters;
+        [field: ThreadStatic]
+        private static int ToiMaxIter { get; set; }
 
         /// <summary>
-        ///     The toi max iters
+        ///     The toi max root iter
         /// </summary>
-        [ThreadStatic] public static int ToiMaxIters;
+        [field: ThreadStatic]
+        private static int ToiRootIter { get; set; }
 
         /// <summary>
-        ///     The toi max root iters
+        ///     The toi max root iter
         /// </summary>
-        [ThreadStatic] public static int ToiRootIters;
-
-        /// <summary>
-        ///     The toi max root iters
-        /// </summary>
-        [ThreadStatic] public static int ToiMaxRootIters;
+        [ThreadStatic] 
+        private static int _toiMaxRootIter;
 
         /// <summary>
         /// Calculates the time of impact using the specified input
@@ -100,7 +102,7 @@ namespace Alis.Core.Physic.Collision.TOI
 
             ComputeSeparatingAxes(ref input, ref output, ref distanceInput, ref sweepA, ref sweepB, target, tolerance, ref t1, ref iter, tMax);
 
-            ToiMaxIters = Math.Max(ToiMaxIters, iter);
+            ToiMaxIter = Math.Max(ToiMaxIter, iter);
         }
 
         /// <summary>
@@ -186,7 +188,7 @@ namespace Alis.Core.Physic.Collision.TOI
                 ResolveDeepestPoint(ref input, ref output, ref sweepA, ref sweepB, ref axis, ref localPoint, type, target, tolerance, ref t1, tMax);
 
                 ++iter;
-                ++ToiIters;
+                ++ToiIter;
 
                 if (output.State != ToiOutputState.Unknown)
                 {
@@ -276,8 +278,7 @@ namespace Alis.Core.Physic.Collision.TOI
         {
             int rootIterCount = 0;
             float a1 = t1, a2 = t2;
-            int indexA, indexB;
-            SeparationFunction.FindMinSeparation(out indexA, out indexB, t1, input.ProxyA, ref sweepA, input.ProxyB, ref sweepB, ref axis, ref localPoint, type);
+            SeparationFunction.FindMinSeparation(out int indexA, out int indexB, t1, input.ProxyA, ref sweepA, input.ProxyB, ref sweepB, ref axis, ref localPoint, type);
             for (;;)
             {
                 float t;
@@ -291,7 +292,7 @@ namespace Alis.Core.Physic.Collision.TOI
                 }
 
                 ++rootIterCount;
-                ++ToiRootIters;
+                ++ToiRootIter;
 
                 float s = SeparationFunction.Evaluate(indexA, indexB, t, input.ProxyA, ref sweepA, input.ProxyB, ref sweepB, ref axis, ref localPoint, type);
 
@@ -318,7 +319,7 @@ namespace Alis.Core.Physic.Collision.TOI
                 }
             }
 
-            ToiMaxRootIters = Math.Max(ToiMaxRootIters, rootIterCount);
+            _toiMaxRootIter = Math.Max(_toiMaxRootIter, rootIterCount);
         }
     }
 }

@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <summary>
         ///     The box collider
         /// </summary>
-        private readonly List<BoxCollider> ColliderBases = new List<BoxCollider>();
+        private readonly List<BoxCollider> colliderBases = new List<BoxCollider>();
 
         /// <summary>
         ///     The window
@@ -459,24 +459,24 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <returns>The rectangles</returns>
         private RectangleF[] CalculateRectangleDimensions(Camera camera)
         {
-            RectangleF[] rectangles = new RectangleF[ColliderBases.Count];
+            RectangleF[] rectangles = new RectangleF[colliderBases.Count];
 
             // Calculates rectangle dimensions:
-            for (int i = 0; i < ColliderBases.Count; i++)
+            for (int i = 0; i < colliderBases.Count; i++)
             {
-                if (ColliderBases[i] != null)
+                if (colliderBases[i] != null)
                 {
-                    rectangles[i] = ColliderBases[i].RectangleF;
+                    rectangles[i] = colliderBases[i].RectangleF;
 
                     // Check if the rectangle at the current index is already set
                     if (!Equals(rectangles[i], default(RectangleF)))
                     {
                         rectangles[i] = new RectangleF(
-                            (int) (ColliderBases[i].GameObject.Transform.Position.X - rectangles[i].w * ColliderBases[i].GameObject.Transform.Scale.X / 2 - (camera.Viewport.x - camera.Viewport.w / 2) + Camera.CameraBorder),
-                            (int) (ColliderBases[i].GameObject.Transform.Position.Y - rectangles[i].h * ColliderBases[i].GameObject.Transform.Scale.Y / 2 - (camera.Viewport.y - camera.Viewport.h / 2) + Camera.CameraBorder),
+                            (int) (colliderBases[i].GameObject.Transform.Position.X - rectangles[i].w * colliderBases[i].GameObject.Transform.Scale.X / 2 - (camera.Viewport.x - camera.Viewport.w / 2) + Camera.CameraBorder),
+                            (int) (colliderBases[i].GameObject.Transform.Position.Y - rectangles[i].h * colliderBases[i].GameObject.Transform.Scale.Y / 2 - (camera.Viewport.y - camera.Viewport.h / 2) + Camera.CameraBorder),
                             (int) rectangles[i].w,
                             (int) rectangles[i].h);
-                        if (ColliderBases[i].GameObject.Contains<Camera>())
+                        if (colliderBases[i].GameObject.Contains<Camera>())
                         {
                             rectangles[i].x += rectangles[i].w / 2;
                             rectangles[i].y += rectangles[i].h / 2;
@@ -542,7 +542,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <param name="collider">The collider</param>
         public void Attach(BoxCollider collider)
         {
-            ColliderBases.Add(collider);
+            colliderBases.Add(collider);
         }
 
         /// <summary>
@@ -560,7 +560,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <param name="collider">The collider</param>
         public void UnAttach(BoxCollider collider)
         {
-            ColliderBases.Remove(collider);
+            colliderBases.Remove(collider);
         }
 
         /// <summary>
