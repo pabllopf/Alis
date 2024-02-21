@@ -472,8 +472,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     if (!Equals(rectangles[i], default(RectangleF)))
                     {
                         rectangles[i] = new RectangleF(
-                            (int) (ColliderBases[i].GameObject.Transform.Position.X - rectangles[i].w * ColliderBases[i].GameObject.Transform.Scale.X / 2 - (camera.viewport.x - camera.viewport.w / 2) + Camera.CameraBorder),
-                            (int) (ColliderBases[i].GameObject.Transform.Position.Y - rectangles[i].h * ColliderBases[i].GameObject.Transform.Scale.Y / 2 - (camera.viewport.y - camera.viewport.h / 2) + Camera.CameraBorder),
+                            (int) (ColliderBases[i].GameObject.Transform.Position.X - rectangles[i].w * ColliderBases[i].GameObject.Transform.Scale.X / 2 - (camera.Viewport.x - camera.Viewport.w / 2) + Camera.CameraBorder),
+                            (int) (ColliderBases[i].GameObject.Transform.Position.Y - rectangles[i].h * ColliderBases[i].GameObject.Transform.Scale.Y / 2 - (camera.Viewport.y - camera.Viewport.h / 2) + Camera.CameraBorder),
                             (int) rectangles[i].w,
                             (int) rectangles[i].h);
                         if (ColliderBases[i].GameObject.Contains<Camera>())
@@ -504,13 +504,13 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
             foreach (Camera camera in Cameras)
             {
-                float pixelH = Sdl.GetWindowSize(_window).Y / camera.viewport.h;
+                float pixelH = Sdl.GetWindowSize(_window).Y / camera.Viewport.h;
 
                 RectangleI dstRect = new RectangleI(
                     (int) (pixelH - pixelH * Camera.CameraBorder),
                     (int) (pixelH - pixelH * Camera.CameraBorder),
-                    (int) (camera.viewport.w * pixelH),
-                    (int) (camera.viewport.h * pixelH));
+                    (int) (camera.Viewport.w * pixelH),
+                    (int) (camera.Viewport.h * pixelH));
 
                 Sdl.RenderCopy(Renderer, camera.TextureTarget, IntPtr.Zero, ref dstRect);
             }

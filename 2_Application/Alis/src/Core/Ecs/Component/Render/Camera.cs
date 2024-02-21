@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     The viewport
         /// </summary>
-        public RectangleI viewport;
+        public RectangleI Viewport;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Camera" /> class
@@ -88,8 +88,8 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnStart()
         {
-            viewport = new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, (int) Resolution.X, (int) Resolution.Y);
-            TextureTarget = Sdl.CreateTexture(VideoGame.Instance.GraphicManager.Renderer, Sdl.PixelFormatRgba8888, (int) TextureAccess.SdlTextureAccessTarget, viewport.w, viewport.h);
+            Viewport = new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, (int) Resolution.X, (int) Resolution.Y);
+            TextureTarget = Sdl.CreateTexture(VideoGame.Instance.GraphicManager.Renderer, Sdl.PixelFormatRgba8888, (int) TextureAccess.SdlTextureAccessTarget, Viewport.w, Viewport.h);
             VideoGame.Instance.GraphicManager.Attach(this);
         }
 
@@ -98,8 +98,8 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnUpdate()
         {
-            viewport.x = (int) GameObject.Transform.Position.X;
-            viewport.y = (int) GameObject.Transform.Position.Y;
+            Viewport.x = (int) GameObject.Transform.Position.X;
+            Viewport.y = (int) GameObject.Transform.Position.Y;
         }
 
         /// <summary>

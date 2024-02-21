@@ -48,7 +48,6 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
         IFixedRotation<BoxColliderBuilder, bool>,
         IGravityScale<BoxColliderBuilder, float>,
         IFriction<BoxColliderBuilder, float>,
-        IDensity<BoxColliderBuilder, float>,
         IRotation<BoxColliderBuilder, float>,
         IRelativePosition<BoxColliderBuilder, float, float>,
         IRestitution<BoxColliderBuilder, float>,
@@ -62,7 +61,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
         private readonly BoxCollider boxCollider = new BoxCollider();
 
         /// <summary>
-        ///     Angulars the velocity using the specified value
+        ///     Angular the velocity using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
@@ -73,7 +72,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
         }
 
         /// <summary>
-        ///     Autoes the tilling using the specified value
+        ///     Auto the tilling using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
@@ -99,20 +98,9 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
         /// </summary>
         /// <returns>The box collider</returns>
         public BoxCollider Build() => boxCollider;
-
+        
         /// <summary>
-        ///     Densities the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder Density(float value)
-        {
-            boxCollider.Density = value;
-            return this;
-        }
-
-        /// <summary>
-        ///     Fixeds the rotation using the specified value
+        ///     Fixed the rotation using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
@@ -145,7 +133,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
         }
 
         /// <summary>
-        ///     Ises the active using the specified value
+        ///     Is the active using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
@@ -156,7 +144,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
         }
 
         /// <summary>
-        ///     Ises the trigger
+        ///     Is the trigger
         /// </summary>
         /// <returns>The box collider builder</returns>
         public BoxColliderBuilder IsTrigger()
@@ -166,7 +154,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
         }
 
         /// <summary>
-        ///     Ises the trigger using the specified value
+        ///     Is the trigger using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
@@ -177,7 +165,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
         }
 
         /// <summary>
-        ///     Linears the velocity using the specified x
+        ///     Linear the velocity using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
