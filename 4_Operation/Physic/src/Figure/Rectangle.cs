@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Figure
     /// <summary>
     ///     The rectangle class
     /// </summary>
-    /// <seealso cref="FigureBase" />
+    /// <seealso />
     public class Rectangle : Body
     {
         /// <summary>
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Figure
             }
 
             Vertices rectangleVertices = Polygon.CreateRectangle(width / 2, height / 2);
-
+            
             if (rectangleVertices.Count <= 1)
             {
                 throw new ArgumentOutOfRangeException(nameof(rectangleVertices), "Too few points to be a polygon");

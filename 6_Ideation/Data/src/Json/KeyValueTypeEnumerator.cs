@@ -38,8 +38,9 @@ namespace Alis.Core.Aspect.Data.Json
     ///     The key value type enumerator class
     /// </summary>
     /// <seealso cref="IDictionaryEnumerator" />
-    internal sealed class KeyValueTypeEnumerator : IDictionaryEnumerator
+    internal sealed class KeyValueTypeEnumerator : IDictionaryEnumerator, IDisposable
     {
+        private readonly IEnumerable value;
         /// <summary>
         ///     The enumerator
         /// </summary>
@@ -59,8 +60,13 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Initializes a new instance of the <see cref="KeyValueTypeEnumerator" /> class
         /// </summary>
         /// <param name="value">The value</param>
-        public KeyValueTypeEnumerator(object value) => enumerator = ((IEnumerable) value).GetEnumerator();
-
+        public KeyValueTypeEnumerator(object value)
+        {
+            this.value = (IEnumerable) value;
+            
+            enumerator = this.value.GetEnumerator();
+        }
+        
         /// <summary>
         ///     Gets the value of the entry
         /// </summary>
@@ -115,5 +121,18 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Resets this instance
         /// </summary>
         public void Reset() => enumerator.Reset();
+        
+        public void Dispose()
+        {
+            if (enumerator is IDisposable disposable)
+            {
+                disposable.Dispose();
+            }
+            
+            if (value is IDisposable disposableValue)
+            {
+                disposableValue.Dispose();
+            }
+        }
     }
 }

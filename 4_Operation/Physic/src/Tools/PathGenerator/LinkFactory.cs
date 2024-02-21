@@ -32,6 +32,7 @@ using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Joints;
 using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Tools.PathGenerator
@@ -76,8 +77,10 @@ namespace Alis.Core.Physic.Tools.PathGenerator
 
             if (attachRopeJoint)
             {
-                JointFactory.CreateDistanceJoint(world, chainLinks[0], chainLinks[chainLinks.Count - 1], Vector2.Zero,
-                    Vector2.Zero);
+                //JointFactory.CreateDistanceJoint(world, chainLinks[0], chainLinks[chainLinks.Count - 1], Vector2.Zero, Vector2.Zero);
+                
+                DistanceJoint distanceJoint = new DistanceJoint(chainLinks[0], chainLinks[chainLinks.Count - 1], Vector2.Zero, Vector2.Zero);
+                world.AddJoint(distanceJoint);
             }
 
             return path;
