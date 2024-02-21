@@ -44,23 +44,23 @@ namespace Alis.Core.Physic.Collision.TOI
     public class Sweep
     {
         /// <summary>World angles</summary>
-        public float A;
+        public float A { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public float A0;
+        public float A0 { get; set; }
 
         /// <summary>Fraction of the current time step in the range [0,1] c0 and a0 are the positions at alpha0.</summary>
-        public float Alpha0;
+        public float Alpha0 { get; set; }
 
         /// <summary>Center world positions</summary>
-        public Vector2 C;
+        public Vector2 C { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 C0;
+        public Vector2 C0 { get; set; }
 
         /// <summary>Local center of mass position</summary>
         public Vector2 LocalCenter;
