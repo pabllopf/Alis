@@ -119,8 +119,8 @@ namespace Alis.Core.Ecs.Component.Render
             Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
 
             RectangleI dstRect = new RectangleI(
-                (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2 - (camera.viewport.x - camera.viewport.w / 2) + Camera.CameraBorder),
-                (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2 - (camera.viewport.y - camera.viewport.h / 2) + Camera.CameraBorder),
+                (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2 - (camera.Viewport.x - camera.Viewport.w / 2) + Camera.CameraBorder),
+                (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2 - (camera.Viewport.y - camera.Viewport.h / 2) + Camera.CameraBorder),
                 (int) (w * GameObject.Transform.Scale.X),
                 (int) (h * GameObject.Transform.Scale.Y));
 
