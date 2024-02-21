@@ -37,26 +37,26 @@ namespace Alis.Core.Physic.Collision.TOI
         /// <summary>
         ///     The proxy
         /// </summary>
-        public DistanceProxy ProxyA;
+        public DistanceProxy ProxyA { get; set; }
 
         /// <summary>
         ///     The proxy
         /// </summary>
-        public DistanceProxy ProxyB;
+        public DistanceProxy ProxyB { get; set; }
 
         /// <summary>
         ///     The sweep
         /// </summary>
-        public Sweep SweepA;
+        public Sweep SweepA { get; set; }
 
         /// <summary>
         ///     The sweep
         /// </summary>
-        public Sweep SweepB;
+        public Sweep SweepB { get; set; }
 
         /// <summary>
         ///     The max
         /// </summary>
-        public float Max; // defines sweep interval [0, tMax]
+        public float Max { get; set; }
     }
 }
