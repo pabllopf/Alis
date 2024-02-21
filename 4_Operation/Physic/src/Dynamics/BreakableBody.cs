@@ -74,8 +74,6 @@ namespace Alis.Core.Physic.Dynamics
             this.world = world;
             this.world.ContactManager.PostSolve += PostSolve;
             Parts = new List<Fixture>(parts.Count);
-            //MainBody = BodyFactory.CreateBody(this.world, position, rotation, BodyType.Dynamic);
-            
             MainBody = new Body(position, Vector2.Zero, BodyType.Dynamic, rotation);
             world.AddBody(MainBody);
             
@@ -101,7 +99,6 @@ namespace Alis.Core.Physic.Dynamics
         {
             this.world = world;
             this.world.ContactManager.PostSolve += PostSolve;
-            //MainBody = BodyFactory.CreateBody(this.world, position, rotation, BodyType.Dynamic);
             
             MainBody = new Body(position, Vector2.Zero, BodyType.Dynamic, rotation);
             world.AddBody(MainBody);
