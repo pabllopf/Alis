@@ -53,12 +53,10 @@ namespace Alis.Core.Physic.Dynamics
             Body bA0 = fA1.Body;
             Body bB0 = fB1.Body;
 
-            Body[] bodies = {bA0, bB0};
-
             Sweep backup1 = bA0.Sweep;
             Sweep backup2 = bB0.Sweep;
 
-            bodies = AdvanceBodies(minContact, minAlpha);
+            Body[] bodies = AdvanceBodies(minContact, minAlpha);
             UpdateContact(contactManager, minContact);
 
             if (!CheckContactSolid(minContact, bodies, backup1, backup2))

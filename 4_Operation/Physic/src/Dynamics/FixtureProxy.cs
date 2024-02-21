@@ -42,16 +42,16 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The child index
         /// </summary>
-        public int ChildIndex;
+        public int ChildIndex { get; set; }
 
         /// <summary>
         ///     The fixture
         /// </summary>
-        public Fixture Fixture;
+        public Fixture Fixture { get; set; }
 
         /// <summary>
         ///     The proxy id
         /// </summary>
-        public int ProxyId;
+        public int ProxyId { get; set; }
     }
 }
