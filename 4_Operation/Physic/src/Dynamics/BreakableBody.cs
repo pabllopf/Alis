@@ -38,7 +38,7 @@ using Alis.Core.Physic.Shared;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>A type of body that supports multiple fixtures that can break apart.</summary>
-    public class BreakableBody
+    public abstract class BreakableBody
     {
         /// <summary>
         ///     The world
@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="density">The density</param>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
-        public BreakableBody(World world, ICollection<Vertices> parts, float density, Vector2 position = new Vector2(),
+        protected BreakableBody(World world, ICollection<Vertices> parts, float density, Vector2 position = new Vector2(),
             float rotation = 0)
         {
             this.world = world;
@@ -96,7 +96,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="shapes">The shapes</param>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
-        public BreakableBody(World world, IEnumerable<Shape> shapes, Vector2 position = new Vector2(),
+        protected BreakableBody(World world, IEnumerable<Shape> shapes, Vector2 position = new Vector2(),
             float rotation = 0)
         {
             this.world = world;
@@ -126,7 +126,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Gets the value of the main body
         /// </summary>
-        public Body MainBody { get; }
+        private Body MainBody { get; }
 
         /// <summary>
         ///     Gets the value of the parts
@@ -206,8 +206,7 @@ namespace Alis.Core.Physic.Dynamics
                 Shape shape = oldFixture.Shape.Clone();
 
                 MainBody.RemoveFixture(oldFixture);
-
-                //Body body = BodyFactory.CreateBody(world, MainBody.Position, MainBody.Rotation, BodyType.Dynamic);
+                
                 Body body = new Body(MainBody.Position, MainBody.LinearVelocity, BodyType.Dynamic, MainBody.Rotation);
 
                 Fixture newFixture = body.AddFixture(shape);
