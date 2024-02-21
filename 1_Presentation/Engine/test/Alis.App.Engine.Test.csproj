@@ -14,4 +14,12 @@
         <PublishReadyToRunShowWarnings>false</PublishReadyToRunShowWarnings>
         <IsTrimmable>false</IsTrimmable>
     </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\4_Operation\Physic\src\Alis.Core.Physic.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
+    </ItemGroup>
 </Project>
