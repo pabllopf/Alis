@@ -69,11 +69,6 @@ namespace Alis.Core.Ecs.Component.Collider
         public float Height { get; set; } = 10.0f;
 
         /// <summary>
-        ///     Gets or sets the value of the density
-        /// </summary>
-        public float Density { get; set; } = 1.0f;
-
-        /// <summary>
         ///     Gets or sets the value of the rotation
         /// </summary>
         public float Rotation { get; set; } = 1.0f;
@@ -101,12 +96,12 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <summary>
         ///     Gets or sets the value of the restitution
         /// </summary>
-        public float Restitution { get; set; } = 0.0f;
+        public float Restitution { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the friction
         /// </summary>
-        public float Friction { get; set; } = 0.0f;
+        public float Friction { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the fixed rotation
@@ -214,16 +209,16 @@ namespace Alis.Core.Ecs.Component.Collider
         }
 
         /// <summary>
-        ///     Ons the separation using the specified fixturea
+        ///     Ons the separation using the specified fixture a
         /// </summary>
-        /// <param name="fixturea">The fixturea</param>
-        /// <param name="fixtureb">The fixtureb</param>
+        /// <param name="fixtureA">The fixture a</param>
+        /// <param name="fixtureB">The fixture b</param>
         /// <param name="contact">The contact</param>
-        private void OnSeparation(Fixture fixturea, Fixture fixtureb, Contact contact)
+        private void OnSeparation(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            // Check if collision this gameobject with others gameobjects:
-            GameObject fixtureAGameObject = (GameObject) fixturea.Body.GameObject;
-            GameObject fixtureBGameObject = (GameObject) fixtureb.Body.GameObject;
+            // Check if collision this fixture with another fixture
+            GameObject fixtureAGameObject = (GameObject) fixtureA.Body.GameObject;
+            GameObject fixtureBGameObject = (GameObject) fixtureB.Body.GameObject;
 
             if (fixtureAGameObject.Equals(GameObject))
             {
@@ -244,13 +239,13 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <summary>
         ///     Ons the collision using the specified fixture a
         /// </summary>
-        /// <param name="fixturea">The fixture a</param>
-        /// <param name="fixtureb">The fixture b</param>
+        /// <param name="fixtureA">The fixture a</param>
+        /// <param name="fixtureB">The fixture b</param>
         /// <param name="contact">The contact</param>
-        private void OnCollision(Fixture fixturea, Fixture fixtureb, Contact contact)
+        private void OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            GameObject fixtureAGameObject = (GameObject) fixturea.Body.GameObject;
-            GameObject fixtureBGameObject = (GameObject) fixtureb.Body.GameObject;
+            GameObject fixtureAGameObject = (GameObject) fixtureA.Body.GameObject;
+            GameObject fixtureBGameObject = (GameObject) fixtureB.Body.GameObject;
 
             if (fixtureAGameObject.Equals(GameObject))
             {
