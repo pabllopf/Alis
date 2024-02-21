@@ -200,13 +200,11 @@ namespace Alis.Core.Physic.Collision.TOI
                     float separation = Vector2.Dot(pointA - pointB, normal);
                     return separation;
                 }
-
-                default:
-                    Debug.Assert(false);
-                    indexA = -1;
-                    indexB = -1;
-                    return 0.0f;
             }
+
+            indexA = 0;
+            indexB = 0;
+            return 0.0f;
         }
 
         /// <summary>
