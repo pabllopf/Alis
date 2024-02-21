@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <summary>
         ///     The stack
         /// </summary>
-        private readonly Stack<int> raycastStack = new Stack<int>(256);
+        private readonly Stack<int> rayCastStack = new Stack<int>(256);
 
         /// <summary>
         ///     The free list
@@ -356,12 +356,12 @@ namespace Alis.Core.Physic.Collision.BroadPhase
             float maxFraction = input.Fraction;
             Aabb segmentAabb = CalculateSegmentAabb(p1, p2, maxFraction);
 
-            raycastStack.Clear();
-            raycastStack.Push(root);
+            rayCastStack.Clear();
+            rayCastStack.Push(root);
 
-            while (raycastStack.Count > 0)
+            while (rayCastStack.Count > 0)
             {
-                int nodeId = raycastStack.Pop();
+                int nodeId = rayCastStack.Pop();
                 if (nodeId == NullNode)
                 {
                     continue;
@@ -386,8 +386,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
                     }
                     else
                     {
-                        raycastStack.Push(node.Child1);
-                        raycastStack.Push(node.Child2);
+                        rayCastStack.Push(node.Child1);
+                        rayCastStack.Push(node.Child2);
                     }
                 }
             }
@@ -993,72 +993,6 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         {
             int height = ComputeHeight(root);
             return height;
-        }
-
-        /// <summary>
-        ///     Validates the structure using the specified index
-        /// </summary>
-        /// <param name="index">The index</param>
-        private void ValidateStructure(int index)
-        {
-            if (index == NullNode)
-            {
-                return;
-            }
-
-            TreeNode<T> node = nodes[index];
-
-            int child1 = node.Child1;
-            int child2 = node.Child2;
-
-            if (node.IsLeaf())
-            {
-                return;
-            }
-
-            ValidateStructure(child1);
-            ValidateStructure(child2);
-        }
-
-        /// <summary>
-        ///     Validates the metrics using the specified index
-        /// </summary>
-        /// <param name="index">The index</param>
-        private void ValidateMetrics(int index)
-        {
-            if (index == NullNode)
-            {
-                return;
-            }
-
-            TreeNode<T> node = nodes[index];
-
-            int child1 = node.Child1;
-            int child2 = node.Child2;
-
-            if (node.IsLeaf())
-            {
-                return;
-            }
-
-            Aabb aabb = new Aabb();
-            aabb.Combine(ref nodes[child1].Aabb, ref nodes[child2].Aabb);
-
-            ValidateMetrics(child1);
-            ValidateMetrics(child2);
-        }
-
-        /// <summary>Validate this tree. For testing.</summary>
-        private void Validate()
-        {
-            ValidateStructure(root);
-            ValidateMetrics(root);
-
-            int freeIndex = freeList;
-            while (freeIndex != NullNode)
-            {
-                freeIndex = nodes[freeIndex].ParentOrNext;
-            }
         }
 
         /// <summary>Shift the origin of the nodes</summary>
