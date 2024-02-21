@@ -40,16 +40,16 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The step
         /// </summary>
-        public TimeStep Step;
+        public TimeStep Step { get; set; }
 
         /// <summary>
         ///     The positions
         /// </summary>
-        public List<Position> Positions;
+        public List<Position> Positions { get; set; }
 
         /// <summary>
         ///     The velocities
         /// </summary>
-        public List<Velocity> Velocities;
+        public List<Velocity> Velocities { get; set; }
     }
 }
