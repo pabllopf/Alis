@@ -108,7 +108,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private float Impulse { get; }
 
         /// <summary>Gets or sets the softness of the joint. Defaults to 0</summary>
-        public float Softness { get; set; }
+        private float Softness { get; set; } = 0;
 
         /// <summary>
         ///     Gets the reaction force using the specified inv dt
