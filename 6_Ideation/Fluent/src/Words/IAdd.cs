@@ -32,7 +32,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     /// <summary>
     ///     The add interface
     /// </summary>
-    public interface IAdd<out TBuilder, in TType, in TArgument>
+    public interface IAdd<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Adds the value
@@ -40,6 +40,6 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        TBuilder Add<T>(TArgument value) where T : TType;
+        TBuilder Add<T>(TArgument value);
     }
 }
