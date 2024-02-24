@@ -3718,7 +3718,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl key mod</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static KeyMod GetModState() => NativeSdl.InternalGetModState();
+        public static KeyMods GetModState() => NativeSdl.InternalGetModState();
 
         /// <summary>
         ///     Sets the mod state using the specified mod state
@@ -3726,7 +3726,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="modState">The mod state</param>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SetModState(KeyMod modState)
+        public static void SetModState(KeyMods modState)
         {
             NativeSdl.InternalSetModState(modState);
         }

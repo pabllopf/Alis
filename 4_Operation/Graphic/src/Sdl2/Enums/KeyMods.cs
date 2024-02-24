@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
     ///     The sdl key mod enum
     /// </summary>
     [Flags]
-    public enum KeyMod : ushort
+    public enum KeyMods : ushort
     {
         /// <summary>
         ///     The k mod none sdl key mod

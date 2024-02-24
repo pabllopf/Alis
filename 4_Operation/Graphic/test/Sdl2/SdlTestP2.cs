@@ -2270,16 +2270,16 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, initResult);
 
             // Act
-            KeyMod result = Sdl.GetModState();
+            KeyMods result = Sdl.GetModState();
 
             // Assert
-            if (KeyMod.None == result)
+            if (KeyMods.None == result)
             {
-                Assert.Equal(KeyMod.None, result);
+                Assert.Equal(KeyMods.None, result);
             }
             else
             {
-                Assert.NotEqual(KeyMod.None, result);
+                Assert.NotEqual(KeyMods.None, result);
             }
 
             // Cleanup
@@ -2295,13 +2295,13 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
-            KeyMod modState = KeyMod.None; // Replace with actual modState
+            KeyMods modState = KeyMods.None; // Replace with actual modState
 
             // Act
             Sdl.SetModState(modState);
 
             // Assert
-            Assert.Equal(KeyMod.None, modState);
+            Assert.Equal(KeyMods.None, modState);
 
             // Cleanup
             Sdl.Quit();

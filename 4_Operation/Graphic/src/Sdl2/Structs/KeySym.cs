@@ -52,7 +52,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The mod
         /// </summary>
-        public readonly KeyMod mod;
+        public readonly KeyMods mod;
 
         /// <summary>
         ///     The unicode

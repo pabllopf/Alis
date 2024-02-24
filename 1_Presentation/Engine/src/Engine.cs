@@ -629,10 +629,10 @@ namespace Alis.App.Engine
                     SdlScancode key = evt.key.keySym.scancode;
                     imGuiIoPtr.KeysDown[(int) key] = evt.type == EventType.Keydown;
                     Console.WriteLine("io.KeysDown[" + key + "] = " + evt.type + imGuiIoPtr.KeysDown[(int) key]);
-                    imGuiIoPtr.KeyShift = (Sdl.GetModState() & KeyMod.KModShift) != 0;
-                    imGuiIoPtr.KeyCtrl = (Sdl.GetModState() & KeyMod.KModCtrl) != 0;
-                    imGuiIoPtr.KeyAlt = (Sdl.GetModState() & KeyMod.KModAlt) != 0;
-                    imGuiIoPtr.KeySuper = (Sdl.GetModState() & KeyMod.KModGui) != 0;
+                    imGuiIoPtr.KeyShift = (Sdl.GetModState() & KeyMods.KModShift) != 0;
+                    imGuiIoPtr.KeyCtrl = (Sdl.GetModState() & KeyMods.KModCtrl) != 0;
+                    imGuiIoPtr.KeyAlt = (Sdl.GetModState() & KeyMods.KModAlt) != 0;
+                    imGuiIoPtr.KeySuper = (Sdl.GetModState() & KeyMods.KModGui) != 0;
                     break;
                 }
             }
