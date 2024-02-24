@@ -57,25 +57,5 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The display event
         /// </summary>
         public readonly DisplayEventId displayEvent;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private readonly byte padding1;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private readonly byte padding2;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private readonly byte padding3;
-
-        /// <summary>
-        ///     The data
-        /// </summary>
-        public readonly int data1;
     }
 }
