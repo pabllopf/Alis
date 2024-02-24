@@ -35,7 +35,7 @@ namespace Alis.Core.Physic.Dynamics
     ///     The body flags enum
     /// </summary>
     [Flags]
-    public enum BodyFlags : byte
+    public enum BodySettings : byte
     {
         /// <summary>
         ///     The unknown body flags

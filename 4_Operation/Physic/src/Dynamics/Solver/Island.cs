@@ -161,7 +161,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <returns>The bool</returns>
         private bool HandleBodies(Body body)
         {
-            if ((body.Flags & BodyFlags.IslandFlag) == BodyFlags.IslandFlag)
+            if ((body.Flags & BodySettings.IslandFlag) == BodySettings.IslandFlag)
             {
                 return false;
             }
@@ -177,7 +177,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
             }
 
             Clear();
-            body.Flags |= BodyFlags.IslandFlag;
+            body.Flags |= BodySettings.IslandFlag;
             Add(body);
 
             if (body.BodyType == BodyType.Static)
@@ -185,7 +185,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 return false;
             }
 
-            body.Flags |= BodyFlags.AwakeFlag;
+            body.Flags |= BodySettings.AwakeFlag;
 
             return true;
         }
@@ -227,7 +227,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     continue;
                 }
 
-                other.Flags |= BodyFlags.IslandFlag;
+                other.Flags |= BodySettings.IslandFlag;
             }
         }
 
@@ -261,7 +261,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                         continue;
                     }
 
-                    other.Flags |= BodyFlags.IslandFlag;
+                    other.Flags |= BodySettings.IslandFlag;
                 }
                 else
                 {
@@ -465,7 +465,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
             {
                 if (bodies[i].BodyType == BodyType.Static)
                 {
-                    bodies[i].Flags &= ~BodyFlags.IslandFlag;
+                    bodies[i].Flags &= ~BodySettings.IslandFlag;
                 }
             }
         }
@@ -675,7 +675,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
             for (int i = 0; i < bodies.Count; ++i)
             {
                 Body body = bodies[i];
-                body.Flags &= ~BodyFlags.IslandFlag;
+                body.Flags &= ~BodySettings.IslandFlag;
 
                 if (body.BodyType != BodyType.Dynamic)
                 {
