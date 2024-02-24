@@ -232,7 +232,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="val1">The val</param>
         /// <param name="val2">The val</param>
         /// <returns>The int</returns>
-        public int Max(int val1, int val2) => val1 >= val2 ? val1 : val2;
+        public static int Max(int val1, int val2) => val1 >= val2 ? val1 : val2;
 
         /// <summary>
         ///     Finalizes the serialization members from an initial setup of members.

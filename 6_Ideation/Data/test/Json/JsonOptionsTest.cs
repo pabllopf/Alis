@@ -194,7 +194,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             int val2 = 10;
 
             // Act
-            int result = options.Max(val1, val2);
+            int result = JsonOptions.Max(val1, val2);
 
             // Assert
             Assert.Equal(val2, result);
