@@ -27,12 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-// Changes from the Java version
-//   Removed getters
-//   Has* turned into attributes
-// Future possibilities
-//   Comments!
-
 namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 {
     /// <summary>
