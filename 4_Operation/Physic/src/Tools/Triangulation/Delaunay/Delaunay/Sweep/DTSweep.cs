@@ -1219,7 +1219,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         /// <param name="b">The second triangle vertex.</param>
         /// <param name="c">The third triangle vertex.</param>
         /// <returns>True if the point is inside the cir circle, false otherwise.</returns>
-        private static bool IsInsideCirCircle(TriangulationPoint p, TriangulationPoint a, TriangulationPoint b, TriangulationPoint c) => TriangulationUtil.SmartIncircle(p, a, b, c);
+        private static bool IsInsideCirCircle(TriangulationPoint p, TriangulationPoint a, TriangulationPoint b, TriangulationPoint c) => TriangulationUtil.SmartInCircle(p, a, b, c);
 
 
         /// <summary>
