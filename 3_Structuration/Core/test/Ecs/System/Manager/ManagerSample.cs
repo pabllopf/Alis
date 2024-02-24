@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.System.Manager;
 
 namespace Alis.Core.Test.Ecs.System.Manager
@@ -61,172 +61,172 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the enable
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnEnable()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample enabled");
         }
 
         /// <summary>
         ///     Ons the init
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnInit()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample initialized");
         }
 
         /// <summary>
         ///     Ons the awake
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnAwake()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample awaked");
         }
 
         /// <summary>
         ///     Ons the start
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnStart()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample started");
         }
 
         /// <summary>
         ///     Ons the before update
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnBeforeUpdate()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample before update");
         }
 
         /// <summary>
         ///     Ons the update
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnUpdate()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample updated");
         }
 
         /// <summary>
         ///     Ons the after update
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnAfterUpdate()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample after update");
         }
 
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnBeforeFixedUpdate()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample before fixed update");
         }
 
         /// <summary>
         ///     Ons the fixed update
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnFixedUpdate()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample fixed update");
         }
 
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnAfterFixedUpdate()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample after fixed update");
         }
 
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnDispatchEvents()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample dispatch events");
         }
 
         /// <summary>
         ///     Ons the calculate
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnCalculate()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample calculated");
         }
 
         /// <summary>
         ///     Ons the draw
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnDraw()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample draw");
         }
 
         /// <summary>
         ///     Ons the gui
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnGui()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample gui");
         }
 
         /// <summary>
         ///     Ons the disable
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnDisable()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample disabled");
         }
 
         /// <summary>
         ///     Ons the reset
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnReset()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample reset");
         }
 
         /// <summary>
         ///     Ons the stop
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnStop()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample stopped");
         }
 
         /// <summary>
         ///     Ons the exit
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnExit()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample exited");
         }
 
         /// <summary>
         ///     Ons the destroy
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public void OnDestroy()
         {
-            throw new NotImplementedException();
+            Logger.Info("ManagerSample destroyed");
         }
     }
 }
