@@ -245,15 +245,15 @@ namespace Alis.App.Engine
             Sdl.SetSwapInterval(1);
 
             // create the window which should be able to have a valid OpenGL context and is resizable
-            Window flags = Window.WindowOpengl | Window.WindowResizable | Window.WindowMaximized;
+            WindowSettings flags = WindowSettings.WindowOpengl | WindowSettings.WindowResizable | WindowSettings.WindowMaximized;
             if (fullscreen)
             {
-                flags |= Window.WindowFullscreen;
+                flags |= WindowSettings.WindowFullscreen;
             }
 
             if (highDpi)
             {
-                flags |= Window.WindowAllowHighDpi;
+                flags |= WindowSettings.WindowAllowHighDpi;
             }
 
             _window = Sdl.CreateWindow(NameEngine, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, widthWindow, heightWindow, flags);

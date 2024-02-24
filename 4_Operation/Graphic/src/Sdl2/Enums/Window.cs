@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
     ///     The sdl window flags enum
     /// </summary>
     [Flags]
-    public enum Window : uint
+    public enum WindowSettings : uint
     {
         /// <summary>
         /// The none window
