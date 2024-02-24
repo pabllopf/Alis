@@ -56,20 +56,5 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The is capture
         /// </summary>
         public readonly byte isCapture;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private readonly byte padding1;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private readonly byte padding2;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private readonly byte padding3;
     }
 }
