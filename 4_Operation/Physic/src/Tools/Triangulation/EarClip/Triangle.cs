@@ -109,9 +109,9 @@ namespace Alis.Core.Physic.Tools.Triangulation.EarClip
             float dot02 = vx0 * vx2 + vy0 * vy2;
             float dot11 = vx1 * vx1 + vy1 * vy1;
             float dot12 = vx1 * vx2 + vy1 * vy2;
-            float invDenom = 1.0f / (dot00 * dot11 - dot01 * dot01);
-            float u = (dot11 * dot02 - dot01 * dot12) * invDenom;
-            float v = (dot00 * dot12 - dot01 * dot02) * invDenom;
+            float invDen = 1.0f / (dot00 * dot11 - dot01 * dot01);
+            float u = (dot11 * dot02 - dot01 * dot12) * invDen;
+            float v = (dot00 * dot12 - dot01 * dot02) * invDen;
 
             return (u > 0) && (v > 0) && (u + v < 1);
         }
