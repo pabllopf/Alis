@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Physic.Tools.Triangulation.Seidel
 {
     /// <summary>
@@ -44,7 +46,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// </summary>
         public readonly float Y;
 
-        // Pointers to next and previous points in Monontone Mountain
+        // Pointers to next and previous points in Monotone Mountain
         /// <summary>
         ///     The prev
         /// </summary>
@@ -63,12 +65,36 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
             Prev = null;
         }
 
+        /// <summary>
+        /// operator negation
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns></returns>
         public static Point operator -(Point p1, Point p2) => new Point(p1.X - p2.X, p1.Y - p2.Y);
 
+        /// <summary>
+        /// operator positive
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns></returns>
         public static Point operator +(Point p1, Point p2) => new Point(p1.X + p2.X, p1.Y + p2.Y);
 
+        /// <summary>
+        /// operator negation
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="f"></param>
+        /// <returns></returns>
         public static Point operator -(Point p1, float f) => new Point(p1.X - f, p1.Y - f);
 
+        /// <summary>
+        /// operator positive
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="f"></param>
+        /// <returns></returns>
         public static Point operator +(Point p1, float f) => new Point(p1.X + f, p1.Y + f);
 
         /// <summary>
@@ -90,7 +116,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
-        public bool Neq(Point p) => p.X != X || p.Y != Y;
+        public bool Neq(Point p) => Math.Abs(p.X - X) > 0.01f || Math.Abs(p.Y - Y) > 0.01f;
 
         /// <summary>
         ///     Orients the 2 d using the specified pb
