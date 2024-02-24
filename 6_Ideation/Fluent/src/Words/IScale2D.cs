@@ -32,7 +32,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     /// <summary>
     ///     The scale interface
     /// </summary>
-    public interface IScale2D<out TBuilder, in TArgument1, in TArgument2>
+    public interface IScale2D<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Scales the x
@@ -40,6 +40,6 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The builder</returns>
-        TBuilder Scale(TArgument1 x, TArgument2 y);
+        TBuilder Scale(TArgument x, TArgument y);
     }
 }
