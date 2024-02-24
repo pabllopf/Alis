@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Plugin.Test
 {
@@ -50,7 +50,7 @@ namespace Alis.Core.Plugin.Test
         /// <exception cref="System.NotImplementedException"></exception>
         public void Initialize()
         {
-            throw new NotImplementedException();
+            Logger.Info("PluginSample initialized");
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Alis.Core.Plugin.Test
         /// <exception cref="System.NotImplementedException"></exception>
         public void Update()
         {
-            throw new NotImplementedException();
+            Logger.Info("PluginSample updated");
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Alis.Core.Plugin.Test
         /// <exception cref="System.NotImplementedException"></exception>
         public void Render()
         {
-            throw new NotImplementedException();
+            Logger.Info("PluginSample rendered");
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Alis.Core.Plugin.Test
         /// <exception cref="System.NotImplementedException"></exception>
         public void Shutdown()
         {
-            throw new NotImplementedException();
+            Logger.Info("PluginSample shutdown");
         }
     }
 }
