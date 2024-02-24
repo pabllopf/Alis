@@ -35,7 +35,7 @@ using Alis.Core.Physic.Collision.Shapes;
 namespace Alis.Core.Physic.Collision.Distance
 {
     /// <summary>A distance proxy is used by the GJK algorithm. It encapsulates any shape.</summary>
-    public struct DistanceProxy
+    public readonly struct DistanceProxy
     {
         /// <summary>
         ///     The radius
