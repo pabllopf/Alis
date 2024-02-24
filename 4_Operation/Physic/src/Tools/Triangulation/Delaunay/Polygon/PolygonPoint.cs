@@ -27,11 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-// Changes from the Java version
-//   Replaced get/set GetNext/Previous with attributes
-// Future possibilities
-//   Documentation!
-
 namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Polygon
 {
     /// <summary>
