@@ -48,19 +48,22 @@ namespace Alis.Core.Physic.Collision.Distance
         ///     The number of calls made to the ComputeDistance() function. Note: This is only activated when
         ///     Settings.EnableDiagnostics = true
         /// </summary>
-        [ThreadStatic] public static int GjkCalls;
+        [field: ThreadStatic]
+        public static int GjkCalls { get; set; }
 
         /// <summary>
         ///     The number of iterations that was made on the last call to ComputeDistance(). Note: This is only activated
         ///     when Settings.EnableDiagnostics = true
         /// </summary>
-        [ThreadStatic] public static int GjkIter;
+        [field: ThreadStatic]
+        public static int GjkIter { get; set; }
 
         /// <summary>
         ///     The maximum number of iterations calls to the Distance() function. Note: This is only activated when
         ///     Settings.EnableDiagnostics = true
         /// </summary>
-        [ThreadStatic] private static int _gjkMaxIter;
+        [field: ThreadStatic]
+        public static int GjkMaxIter { get; private set; }
 
         /// <summary>
         ///     Computes the distance using the specified input
@@ -132,7 +135,7 @@ namespace Alis.Core.Physic.Collision.Distance
                 ++simplex.Count;
             }
 
-            _gjkMaxIter = Math.Max(_gjkMaxIter, iter);
+            GjkMaxIter = Math.Max(GjkMaxIter, iter);
 
             // Prepare output.
             PrepareOutput(out output, ref simplex, ref cache, ref input);
