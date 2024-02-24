@@ -143,11 +143,11 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             // Create the window
             // create the window which should be able to have a valid OpenGL context and is resizable
-            Window flags = Window.WindowShown;
+            WindowSettings flags = WindowSettings.WindowShown;
 
             if (VideoGame.Instance.Settings.Graphic.Window.IsWindowResizable)
             {
-                flags |= Window.WindowResizable;
+                flags |= WindowSettings.WindowResizable;
             }
 
             // Creates a new SDL window at the center of the screen with the given width and height.
