@@ -262,22 +262,22 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         {
             if (LeftPoint != Bottom.P)
             {
-                Bottom.AddMpoint(LeftPoint);
+                Bottom.AddMPoint(LeftPoint);
             }
 
             if (RightPoint != Bottom.Q)
             {
-                Bottom.AddMpoint(RightPoint);
+                Bottom.AddMPoint(RightPoint);
             }
 
             if (LeftPoint != Top.P)
             {
-                Top.AddMpoint(LeftPoint);
+                Top.AddMPoint(LeftPoint);
             }
 
             if (RightPoint != Top.Q)
             {
-                Top.AddMpoint(RightPoint);
+                Top.AddMPoint(RightPoint);
             }
         }
     }
