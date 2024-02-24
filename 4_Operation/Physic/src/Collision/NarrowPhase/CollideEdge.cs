@@ -85,7 +85,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             }
             else
             {
-                HandleRegionAb(ref manifold, edgeA, edgeStart, edgeEnd, q, radiusSum, offset, circleBPosition, edgeNormal);
+                HandleRegionAb(ref manifold, edgeStart, edgeEnd, q, radiusSum, offset, circleBPosition, edgeNormal);
             }
         }
 
@@ -93,7 +93,6 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         ///     Handles the region ab using the specified manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
-        /// <param name="edgeA">The edge</param>
         /// <param name="edgeStart">The edge start</param>
         /// <param name="edgeEnd">The edge end</param>
         /// <param name="q">The </param>
@@ -101,7 +100,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="offset">The offset</param>
         /// <param name="circlePosition">The circle position</param>
         /// <param name="edgeNormal">The edge normal</param>
-        private static void HandleRegionAb(ref Manifold manifold, EdgeShape edgeA, Vector2 edgeStart, Vector2 edgeEnd, Vector2 q, float radiusSum, float offset, Vector2 circlePosition, Vector2 edgeNormal)
+        private static void HandleRegionAb(ref Manifold manifold, Vector2 edgeStart, Vector2 edgeEnd, Vector2 q, float radiusSum, float offset, Vector2 circlePosition, Vector2 edgeNormal)
         {
             float den = Vector2.Dot(edgeEnd - edgeStart, edgeEnd - edgeStart);
             Debug.Assert(den > 0.0f);
@@ -121,7 +120,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             }
 
             edgeNormal = Vector2.Normalize(edgeNormal);
-            SetManifoldForEdge(ref manifold, edgeA, edgeStart, edgeNormal, circlePosition);
+            SetManifoldForEdge(ref manifold, edgeStart, edgeNormal, circlePosition);
         }
 
         /// <summary>
@@ -229,11 +228,10 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         ///     Sets the manifold for edge using the specified manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
-        /// <param name="edgeA">The edge</param>
         /// <param name="edgeStart">The edge start</param>
         /// <param name="edgeNormal">The edge normal</param>
         /// <param name="circlePosition">The circle position</param>
-        private static void SetManifoldForEdge(ref Manifold manifold, EdgeShape edgeA, Vector2 edgeStart, Vector2 edgeNormal, Vector2 circlePosition)
+        private static void SetManifoldForEdge(ref Manifold manifold, Vector2 edgeStart, Vector2 edgeNormal, Vector2 circlePosition)
         {
             ContactFeature cf = new ContactFeature
             {
@@ -312,18 +310,13 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 return;
             }
 
-            ReferenceFace ref1 = GetReferenceFace(primaryAxis, tempPolygonB, v1, v2, edge1, polygonB, edgeA, ref manifold);
-
-            // Clip incident edge against reference face side planes
-            FixedArray2<ClipVertex> clipPoints1;
-            FixedArray2<ClipVertex> clipPoints2;
-            int np;
-
+            ReferenceFace ref1 = GetReferenceFace(primaryAxis, tempPolygonB, v1, v2, edge1, ref manifold);
+            
             // Define clipPoints before using it
             FixedArray2<ClipVertex> clipPoints = new FixedArray2<ClipVertex>();
 
             // Clip to side 1
-            np = Collision.ClipSegmentToLine(out clipPoints1, ref clipPoints, ref1.SideNormal1, ref1.SideOffset1,
+            int np = Collision.ClipSegmentToLine(out FixedArray2<ClipVertex> clipPoints1, ref clipPoints, ref1.SideNormal1, ref1.SideOffset1,
                 ref1.I1);
 
             if (np < Settings.ManifoldPoints)
@@ -332,7 +325,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             }
 
             // Clip to side 2
-            np = Collision.ClipSegmentToLine(out clipPoints2, ref clipPoints1, ref1.SideNormal2, ref1.SideOffset2,
+            np = Collision.ClipSegmentToLine(out FixedArray2<ClipVertex> clipPoints2, ref clipPoints1, ref1.SideNormal2, ref1.SideOffset2,
                 ref1.I2);
 
             if (np < Settings.ManifoldPoints)
@@ -373,18 +366,8 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             // Use hysteresis for jitter reduction.
             const float kRelativeTol = 0.98f;
             const float kAbsoluteTol = 0.001f;
-
-            EpAxis primaryAxis;
-            if (polygonAxis.Separation - radius > kRelativeTol * (edgeAxis.Separation - radius) + kAbsoluteTol)
-            {
-                primaryAxis = polygonAxis;
-            }
-            else
-            {
-                primaryAxis = edgeAxis;
-            }
-
-            return primaryAxis;
+            
+            return polygonAxis.Separation - radius > kRelativeTol * (edgeAxis.Separation - radius) + kAbsoluteTol ? polygonAxis : edgeAxis;
         }
 
         /// <summary>
@@ -463,11 +446,9 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="v1">The </param>
         /// <param name="v2">The </param>
         /// <param name="edge1">The edge</param>
-        /// <param name="polygonB">The polygon</param>
-        /// <param name="edgeA">The edge</param>
         /// <param name="manifold">The manifold</param>
         /// <returns>The ref</returns>
-        private static ReferenceFace GetReferenceFace(EpAxis primaryAxis, TempPolygon tempPolygonB, Vector2 v1, Vector2 v2, Vector2 edge1, PolygonShape polygonB, EdgeShape edgeA, ref Manifold manifold)
+        private static ReferenceFace GetReferenceFace(EpAxis primaryAxis, TempPolygon tempPolygonB, Vector2 v1, Vector2 v2, Vector2 edge1, ref Manifold manifold)
         {
             FixedArray2<ClipVertex> clipPoints = new FixedArray2<ClipVertex>();
             ReferenceFace ref1 = new ReferenceFace();
