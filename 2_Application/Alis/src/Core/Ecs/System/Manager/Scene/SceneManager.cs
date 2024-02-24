@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Entity.Scene;
 
 namespace Alis.Core.Ecs.System.Manager.Scene
@@ -271,9 +271,9 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnStop();
             CurrentScene.OnExit();
-            Console.WriteLine($"ID={CurrentScene.GetHashCode()}");
+            Logger.Info($"ID={CurrentScene.GetHashCode()}");
             CurrentScene = Scenes.Find(i => i.Name == name);
-            Console.WriteLine($"ID={CurrentScene.GetHashCode()}");
+            Logger.Info($"ID={CurrentScene.GetHashCode()}");
             CurrentScene.OnInit();
             CurrentScene.OnAwake();
             CurrentScene.OnStart();

@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Logging;
+
 namespace Alis.Core.Ecs.System.Manager
 {
     /// <summary>
@@ -58,96 +60,96 @@ namespace Alis.Core.Ecs.System.Manager
         /// <summary>
         ///     Ons the enable
         /// </summary>
-        public abstract void OnEnable();
+        public virtual void OnEnable() => Logger.Trace();
 
         /// <summary>
         ///     Ons the init
         /// </summary>
-        public abstract void OnInit();
+        public virtual void OnInit() => Logger.Trace();
 
         /// <summary>
         ///     Ons the awake
         /// </summary>
-        public abstract void OnAwake();
+        public virtual void OnAwake() => Logger.Trace();
 
         /// <summary>
         ///     Ons the start
         /// </summary>
-        public abstract void OnStart();
+        public virtual void OnStart() => Logger.Trace();
 
         /// <summary>
         ///     Ons the before update
         /// </summary>
-        public abstract void OnBeforeUpdate();
+        public virtual void OnBeforeUpdate() => Logger.Trace();
 
         /// <summary>
         ///     Ons the update
         /// </summary>
-        public abstract void OnUpdate();
+        public virtual void OnUpdate() => Logger.Trace();
 
         /// <summary>
         ///     Ons the after update
         /// </summary>
-        public abstract void OnAfterUpdate();
+        public virtual void OnAfterUpdate() => Logger.Trace();
 
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
-        public abstract void OnBeforeFixedUpdate();
+        public virtual void OnBeforeFixedUpdate() => Logger.Trace();
 
         /// <summary>
         ///     Ons the fixed update
         /// </summary>
-        public abstract void OnFixedUpdate();
+        public virtual void OnFixedUpdate() => Logger.Trace();
 
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
-        public abstract void OnAfterFixedUpdate();
+        public virtual void OnAfterFixedUpdate() => Logger.Trace();
 
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
-        public abstract void OnDispatchEvents();
+        public virtual void OnDispatchEvents() => Logger.Trace();
 
         /// <summary>
         ///     Ons the calculate
         /// </summary>
-        public abstract void OnCalculate();
+        public virtual void OnCalculate() => Logger.Trace();
 
         /// <summary>
         ///     Ons the draw
         /// </summary>
-        public abstract void OnDraw();
+        public virtual void OnDraw() => Logger.Trace();
 
         /// <summary>
         ///     Ons the gui
         /// </summary>
-        public abstract void OnGui();
+        public virtual void OnGui() => Logger.Trace();
 
         /// <summary>
         ///     Ons the disable
         /// </summary>
-        public abstract void OnDisable();
+        public virtual void OnDisable() => Logger.Trace();
 
         /// <summary>
         ///     Ons the reset
         /// </summary>
-        public abstract void OnReset();
+        public virtual void OnReset() => Logger.Trace();
 
         /// <summary>
         ///     Ons the stop
         /// </summary>
-        public abstract void OnStop();
+        public virtual void OnStop() => Logger.Trace();
 
         /// <summary>
         ///     Ons the exit
         /// </summary>
-        public abstract void OnExit();
-
+        public virtual void OnExit() => Logger.Trace();
+        
         /// <summary>
         ///     Ons the destroy
         /// </summary>
-        public abstract void OnDestroy();
+        public virtual void OnDestroy() => Logger.Trace();
     }
 }
