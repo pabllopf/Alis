@@ -34,12 +34,11 @@ namespace Alis.Core.Aspect.Fluent.Words
     /// </summary>
     /// <typeparam name="TBuilder">the builder</typeparam>
     /// <typeparam name="TArgument">the argument</typeparam>
-    /// <typeparam name="TType"></typeparam>
-    public interface IWith<out TBuilder, in TType, in TArgument>
+    public interface IWith<out TBuilder, in TArgument>
     {
         /// <summary>Withes the specified value.</summary>
         /// <param name="value">The value.</param>
         /// <returns>Return that you want.</returns>
-        TBuilder With<T>(TArgument value) where T : TType;
+        TBuilder With(TArgument value);
     }
 }
