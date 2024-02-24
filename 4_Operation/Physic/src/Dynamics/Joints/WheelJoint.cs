@@ -585,8 +585,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             Vector2 d = CalculateDVector(data);
 
-            CalculateAYAndMass(d, data);
-            CalculateAXAndAxialMass(d, data);
+            CalculateAyAndMass(d, data);
+            CalculateAxAndAxialMass(d, data);
 
             if ((stiffness > 0.0f) && (axialMass > 0.0f))
             {
@@ -671,7 +671,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="d">The </param>
         /// <param name="data">The data</param>
-        private void CalculateAYAndMass(Vector2 d, SolverData data)
+        private void CalculateAyAndMass(Vector2 d, SolverData data)
         {
             ay = MathUtils.Mul(new Rotation(data.Positions[indexA].A), localYAxisA);
             sAy = MathUtils.Cross(d + MathUtils.Mul(new Rotation(data.Positions[indexA].A), localAnchorA - localCenterA), ay);
@@ -688,7 +688,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="d">The </param>
         /// <param name="data">The data</param>
-        private void CalculateAXAndAxialMass(Vector2 d, SolverData data)
+        private void CalculateAxAndAxialMass(Vector2 d, SolverData data)
         {
             ax = MathUtils.Mul(new Rotation(data.Positions[indexA].A), localXAxisA);
             sAx = MathUtils.Cross(d + MathUtils.Mul(new Rotation(data.Positions[indexA].A), localAnchorA - localCenterA), ax);
