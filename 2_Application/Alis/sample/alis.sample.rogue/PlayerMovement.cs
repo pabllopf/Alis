@@ -54,47 +54,32 @@ namespace Alis.Sample.Rogue
         public override void OnUpdate()
         {
         }
-
-        /// <summary>
-        ///     Ons the release key using the specified key
-        /// </summary>
-        /// <param name="key">The key</param>
-        public override void OnReleaseKey(SdlKeycode key)
-        {
-            if (key == SdlKeycode.SdlkD)
-            {
-            }
-
-            if (key == SdlKeycode.SdlkA)
-            {
-            }
-        }
-
+        
         /// <summary>
         ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnPressDownKey(SdlKeycode key)
+        public override void OnPressDownKey(KeyCode key)
         {
-            if (key == SdlKeycode.SdlkD)
+            if (key == KeyCode.D)
             {
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X + 1, GameObject.Transform.Position.Y), GameObject.Transform.Rotation, GameObject.Transform.Scale);
                 Console.WriteLine(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation.Angle);
             }
 
-            if (key == SdlKeycode.SdlkA)
+            if (key == KeyCode.A)
             {
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X - 1, GameObject.Transform.Position.Y), GameObject.Transform.Rotation, GameObject.Transform.Scale);
                 Console.WriteLine(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation.Angle);
             }
 
-            if (key == SdlKeycode.SdlkW)
+            if (key == KeyCode.W)
             {
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y - 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);
                 Console.WriteLine(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation.Angle);
             }
 
-            if (key == SdlKeycode.SdlkS)
+            if (key == KeyCode.S)
             {
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y + 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);
                 Console.WriteLine(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation.Angle);

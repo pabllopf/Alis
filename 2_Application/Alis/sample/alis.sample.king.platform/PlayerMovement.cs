@@ -121,15 +121,15 @@ namespace Alis.Sample.King.Platform
         ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnReleaseKey(SdlKeycode key)
+        public override void OnReleaseKey(KeyCode key)
         {
-            if (key == SdlKeycode.SdlkD)
+            if (key == KeyCode.D)
             {
                 directionPlayer = new Vector2(0, 0);
                 animator.ChangeAnimationTo("Run", RendererFlips.None);
             }
 
-            if (key == SdlKeycode.SdlkA)
+            if (key == KeyCode.A)
             {
                 directionPlayer = new Vector2(0, 0);
                 animator.ChangeAnimationTo("Run", RendererFlips.FlipHorizontal);
@@ -140,22 +140,22 @@ namespace Alis.Sample.King.Platform
         ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnPressDownKey(SdlKeycode key)
+        public override void OnPressDownKey(KeyCode key)
         {
-            if (!isJumping && (coolDownJump <= 0) && (key == SdlKeycode.SdlkSpace))
+            if (!isJumping && (coolDownJump <= 0) && (key == KeyCode.Space))
             {
                 isJumping = true;
                 Console.WriteLine("Jump because space key is pressed");
             }
 
-            if (key == SdlKeycode.SdlkD)
+            if (key == KeyCode.D)
             {
                 directionPlayer = new Vector2(1, 0);
                 animator.ChangeAnimationTo("Run", RendererFlips.None);
                 Console.WriteLine($"Run to right because D key is pressed {directionPlayer}");
             }
 
-            if (key == SdlKeycode.SdlkA)
+            if (key == KeyCode.A)
             {
                 directionPlayer = new Vector2(-1, 0);
                 animator.ChangeAnimationTo("Run", RendererFlips.FlipHorizontal);

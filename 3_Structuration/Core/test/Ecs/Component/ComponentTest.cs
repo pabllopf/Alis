@@ -866,7 +866,7 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-            SdlKeycode key = SdlKeycode.SdlkA;
+            KeyCode key = KeyCode.A;
 
             // Act
             component.OnPressDownKey(key);
@@ -884,7 +884,7 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-            SdlKeycode key = SdlKeycode.SdlkA;
+            KeyCode key = KeyCode.A;
 
             // Act
             component.OnReleaseKey(key);
@@ -902,7 +902,7 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-            SdlKeycode key = SdlKeycode.SdlkA;
+            KeyCode key = KeyCode.A;
 
             // Act
             component.OnPressKey(key);

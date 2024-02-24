@@ -2207,11 +2207,11 @@ namespace Alis.Core.Graphic.Test.Sdl2
             SdlScancode x = SdlScancode.SdlScancodeUnknown; // Replace with actual x
 
             // Act
-            SdlKeycode result = Sdl.ScanCodeToKeyCode(x);
+            KeyCode result = Sdl.ScanCodeToKeyCode(x);
 
             // Assert
             // Replace SdlKeycode.Unknown with the expected result
-            Assert.NotEqual(SdlKeycode.SdlkUnknown, result);
+            Assert.NotEqual(KeyCode.Unknown, result);
 
             // Cleanup
             Sdl.Quit();
@@ -2319,11 +2319,11 @@ namespace Alis.Core.Graphic.Test.Sdl2
             SdlScancode scancode = SdlScancode.SdlScancodeUnknown; // Replace with actual scancode
 
             // Act
-            SdlKeycode result = Sdl.GetKeyFromScancode(scancode);
+            KeyCode result = Sdl.GetKeyFromScancode(scancode);
 
             // Assert
             // Replace SdlKeycode.Unknown with the expected result
-            Assert.Equal(SdlKeycode.SdlkUnknown, result);
+            Assert.Equal(KeyCode.Unknown, result);
 
             // Cleanup
             Sdl.Quit();
@@ -2338,7 +2338,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
-            SdlKeycode key = SdlKeycode.SdlkUnknown; // Replace with actual key
+            KeyCode key = KeyCode.Unknown; // Replace with actual key
 
             // Act
             SdlScancode result = Sdl.GetScancodeFromKey(key);
@@ -2404,7 +2404,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
-            SdlKeycode key = SdlKeycode.SdlkUnknown; // Replace with actual key
+            KeyCode key = KeyCode.Unknown; // Replace with actual key
 
             // Act
             string result = Sdl.SGetKeyName(key);
@@ -2429,11 +2429,11 @@ namespace Alis.Core.Graphic.Test.Sdl2
             string name = ""; // Replace with actual name
 
             // Act
-            SdlKeycode result = Sdl.GetKeyFromName(name);
+            KeyCode result = Sdl.GetKeyFromName(name);
 
             // Assert
             // Replace SdlKeycode.Unknown with the expected result
-            Assert.Equal(SdlKeycode.SdlkUnknown, result);
+            Assert.Equal(KeyCode.Unknown, result);
 
             // Cleanup
             Sdl.Quit();
