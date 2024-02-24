@@ -1978,7 +1978,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             int index = -1;
-            RendererFlags flags = RendererFlags.SdlRendererSoftware;
+            Renderer flags = Renderer.SdlRendererSoftware;
 
             // Act
             IntPtr result = Sdl.CreateRenderer(window, index, flags);

@@ -35,8 +35,13 @@ namespace Alis.Core.Graphic.Sdl2.Enums
     ///     The sdl window flags enum
     /// </summary>
     [Flags]
-    public enum WindowFlags : uint
+    public enum Window : uint
     {
+        /// <summary>
+        /// The none window
+        /// </summary>
+        None = 0x00000000,
+        
         /// <summary>
         ///     The sdl window fullscreen sdl window flags
         /// </summary>

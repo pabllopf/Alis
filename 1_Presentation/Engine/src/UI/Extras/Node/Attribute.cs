@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ContactFlags.cs
+//  File:AttributeFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,35 +29,27 @@
 
 using System;
 
-namespace Alis.Core.Physic.Collision.ContactSystem
+namespace Alis.App.Engine.UI.Extras.Node
 {
     /// <summary>
-    ///     The contact flags enum
+    ///     The attribute flags enum
     /// </summary>
     [Flags]
-    internal enum ContactFlags : byte
+    public enum Attribute
     {
         /// <summary>
-        ///     The unknown contact flags
+        ///     The none attribute flags
         /// </summary>
         None = 0,
 
-        /// <summary>Used when crawling contact graph when forming islands.</summary>
-        IslandFlag = 1,
+        /// <summary>
+        ///     The enable link detach with drag click attribute flags
+        /// </summary>
+        EnableLinkDetachWithDragClick = 1,
 
-        /// <summary>Set when the shapes are touching.</summary>
-        TouchingFlag = 2,
-
-        /// <summary>This contact can be disabled (by user)</summary>
-        EnabledFlag = 4,
-
-        /// <summary>This contact needs filtering because a fixture filter was changed.</summary>
-        FilterFlag = 8,
-
-        /// <summary>This bullet contact had a TOI event</summary>
-        BulletHitFlag = 16,
-
-        /// <summary>This contact has a valid TOI in m_toi</summary>
-        ToiFlag = 32
+        /// <summary>
+        ///     The enable link creation on snap attribute flags
+        /// </summary>
+        EnableLinkCreationOnSnap = 2
     }
 }

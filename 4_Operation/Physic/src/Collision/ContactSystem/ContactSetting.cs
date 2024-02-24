@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImgInitFlags.cs
+//  File:ContactFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,32 +29,35 @@
 
 using System;
 
-namespace Alis.Core.Graphic.Sdl2.Enums
+namespace Alis.Core.Physic.Collision.ContactSystem
 {
     /// <summary>
-    ///     The img init flags enum
+    ///     The contact flags enum
     /// </summary>
     [Flags]
-    public enum ImgInitFlags
+    internal enum ContactSetting : byte
     {
         /// <summary>
-        ///     The img init jpg img init flags
+        ///     The unknown contact flags
         /// </summary>
-        ImgInitJpg = 0x00000001,
+        None = 0,
 
-        /// <summary>
-        ///     The img init png img init flags
-        /// </summary>
-        ImgInitPng = 0x00000002,
+        /// <summary>Used when crawling contact graph when forming islands.</summary>
+        IslandFlag = 1,
 
-        /// <summary>
-        ///     The img init tif img init flags
-        /// </summary>
-        ImgInitTif = 0x00000004,
+        /// <summary>Set when the shapes are touching.</summary>
+        TouchingFlag = 2,
 
-        /// <summary>
-        ///     The img init webp img init flags
-        /// </summary>
-        ImgInitWebp = 0x00000008
+        /// <summary>This contact can be disabled (by user)</summary>
+        EnabledFlag = 4,
+
+        /// <summary>This contact needs filtering because a fixture filter was changed.</summary>
+        FilterFlag = 8,
+
+        /// <summary>This bullet contact had a TOI event</summary>
+        BulletHitFlag = 16,
+
+        /// <summary>This contact has a valid TOI in m_toi</summary>
+        ToiFlag = 32
     }
 }

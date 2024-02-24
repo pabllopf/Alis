@@ -112,7 +112,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     The flags
         /// </summary>
-        internal ContactFlags Flags { get; set; }
+        internal ContactSetting Flags { get; set; }
 
         /// <summary>
         ///     The contact edge
@@ -183,16 +183,16 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         public bool Enabled
         {
-            get => (Flags & ContactFlags.EnabledFlag) == ContactFlags.EnabledFlag;
+            get => (Flags & ContactSetting.EnabledFlag) == ContactSetting.EnabledFlag;
             set
             {
                 if (value)
                 {
-                    Flags |= ContactFlags.EnabledFlag;
+                    Flags |= ContactSetting.EnabledFlag;
                 }
                 else
                 {
-                    Flags &= ~ContactFlags.EnabledFlag;
+                    Flags &= ~ContactSetting.EnabledFlag;
                 }
             }
         }
@@ -210,22 +210,22 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     Gets the value of the is touching
         /// </summary>
-        internal bool IsTouching => (Flags & ContactFlags.TouchingFlag) == ContactFlags.TouchingFlag;
+        internal bool IsTouching => (Flags & ContactSetting.TouchingFlag) == ContactSetting.TouchingFlag;
 
         /// <summary>
         ///     Gets the value of the island flag
         /// </summary>
-        internal bool IslandFlag => (Flags & ContactFlags.IslandFlag) == ContactFlags.IslandFlag;
+        internal bool IslandFlag => (Flags & ContactSetting.IslandFlag) == ContactSetting.IslandFlag;
 
         /// <summary>
         ///     Gets the value of the toi flag
         /// </summary>
-        internal bool ToiFlag => (Flags & ContactFlags.ToiFlag) == ContactFlags.ToiFlag;
+        internal bool ToiFlag => (Flags & ContactSetting.ToiFlag) == ContactSetting.ToiFlag;
 
         /// <summary>
         ///     Gets the value of the filter flag
         /// </summary>
-        internal bool FilterFlag => (Flags & ContactFlags.FilterFlag) == ContactFlags.FilterFlag;
+        internal bool FilterFlag => (Flags & ContactSetting.FilterFlag) == ContactSetting.FilterFlag;
 
         /// <summary>
         ///     Resets the restitution
@@ -273,7 +273,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="indexB">The index</param>
         private void Reset(Fixture fA, int indexA, Fixture fB, int indexB)
         {
-            Flags = ContactFlags.EnabledFlag;
+            Flags = ContactSetting.EnabledFlag;
 
             FixtureA = fA;
             FixtureB = fB;
@@ -323,7 +323,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
             Manifold oldManifold = Manifold;
 
-            Flags |= ContactFlags.EnabledFlag;
+            Flags |= ContactSetting.EnabledFlag;
 
             bool wasTouching = IsTouching;
 
@@ -423,11 +423,11 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         {
             if (touching)
             {
-                Flags |= ContactFlags.TouchingFlag;
+                Flags |= ContactSetting.TouchingFlag;
             }
             else
             {
-                Flags &= ~ContactFlags.TouchingFlag;
+                Flags &= ~ContactSetting.TouchingFlag;
             }
         }
 
@@ -631,14 +631,14 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     Clears the flags
         /// </summary>
-        public void ClearFlags() => Flags &= ~ContactFlags.FilterFlag;
+        public void ClearFlags() => Flags &= ~ContactSetting.FilterFlag;
 
         /// <summary>
         ///     Invalidates the toi
         /// </summary>
         public void InvalidateToi()
         {
-            Flags &= ~(ContactFlags.ToiFlag | ContactFlags.IslandFlag);
+            Flags &= ~(ContactSetting.ToiFlag | ContactSetting.IslandFlag);
             ToiCount = 0;
             Toi = 1.0f;
         }

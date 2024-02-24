@@ -477,7 +477,7 @@ namespace Alis.App.Engine.UI.Extras.Node
         /// </summary>
         /// <param name="flag">The flag</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_PushAttributeFlag(ImNodesAttributeFlags flag);
+        public static extern void ImNodes_PushAttributeFlag(ImNodesAttribute flag);
 
         /// <summary>
         ///     Ims the nodes push color style using the specified item

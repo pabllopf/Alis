@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RendererFlags.cs
+//  File:ImNodesAttributeFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,32 +29,27 @@
 
 using System;
 
-namespace Alis.Core.Graphic.Sdl2.Enums
+namespace Alis.App.Engine.UI.Extras.Node
 {
     /// <summary>
-    ///     The sdl renderer flags enum
+    ///     The im nodes attribute flags enum
     /// </summary>
     [Flags]
-    public enum RendererFlags : uint
+    public enum ImNodesAttribute
     {
         /// <summary>
-        ///     The sdl renderer software sdl renderer flags
+        ///     The none im nodes attribute flags
         /// </summary>
-        SdlRendererSoftware = 0x00000001,
+        None = 0,
 
         /// <summary>
-        ///     The sdl renderer accelerated sdl renderer flags
+        ///     The enable link detach with drag click im nodes attribute flags
         /// </summary>
-        SdlRendererAccelerated = 0x00000002,
+        EnableLinkDetachWithDragClick = 1,
 
         /// <summary>
-        ///     The sdl renderer present vsync sdl renderer flags
+        ///     The enable link creation on snap im nodes attribute flags
         /// </summary>
-        SdlRendererPresentVSync = 0x00000004,
-
-        /// <summary>
-        ///     The sdl renderer target texture sdl renderer flags
-        /// </summary>
-        SdlRendererTargetTexture = 0x00000008
+        EnableLinkCreationOnSnap = 2
     }
 }

@@ -699,7 +699,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr CreateWindow([IsNotNull] string title, [IsNotNull] int x, [IsNotNull] int y, [IsNotNull] int w, [IsNotNull] int h, [IsNotNull] WindowFlags flags)
+        public static IntPtr CreateWindow([IsNotNull] string title, [IsNotNull] int x, [IsNotNull] int y, [IsNotNull] int w, [IsNotNull] int h, [IsNotNull] Window flags)
         {
             Validator.Validate(title, nameof(title));
             Validator.Validate(x, nameof(x));
@@ -721,7 +721,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="renderer">The renderer</param>
         /// <returns>The int</returns>
-        public static int CreateWindowAndRenderer([IsNotNull] int width, [IsNotNull] int height, [IsNotNull] WindowFlags windowFlags, out IntPtr window, out IntPtr renderer)
+        public static int CreateWindowAndRenderer([IsNotNull] int width, [IsNotNull] int height, [IsNotNull] Window windowFlags, out IntPtr window, out IntPtr renderer)
         {
             Validator.Validate(width, nameof(width));
             Validator.Validate(height, nameof(height));
@@ -1937,7 +1937,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr CreateRenderer([IsNotNull] IntPtr window, [IsNotNull] int index, RendererFlags flags) => NativeSdl.InternalCreateRenderer(window, index, flags);
+        public static IntPtr CreateRenderer([IsNotNull] IntPtr window, [IsNotNull] int index, Renderer flags) => NativeSdl.InternalCreateRenderer(window, index, flags);
 
         /// <summary>
         ///     Creates the software renderer using the specified surface

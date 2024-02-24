@@ -143,11 +143,11 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             // Create the window
             // create the window which should be able to have a valid OpenGL context and is resizable
-            WindowFlags flags = WindowFlags.WindowShown;
+            Window flags = Window.WindowShown;
 
             if (VideoGame.Instance.Settings.Graphic.Window.IsWindowResizable)
             {
-                flags |= WindowFlags.WindowResizable;
+                flags |= Window.WindowResizable;
             }
 
             // Creates a new SDL window at the center of the screen with the given width and height.
@@ -160,7 +160,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Renderer = Sdl.CreateRenderer(
                 _window,
                 -1,
-                RendererFlags.SdlRendererAccelerated);
+                Core.Graphic.Sdl2.Enums.Renderer.SdlRendererAccelerated);
 
             // Check if the renderer was created successfully.
             Logger.Info(Renderer == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : "Renderer created");

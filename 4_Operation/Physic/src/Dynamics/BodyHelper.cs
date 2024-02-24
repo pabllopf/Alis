@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Dynamics
         private static void UpdateContact(ContactManager contactManager, Contact minContact)
         {
             minContact.Update(contactManager);
-            minContact.Flags &= ~ContactFlags.ToiFlag;
+            minContact.Flags &= ~ContactSetting.ToiFlag;
             ++minContact.ToiCount;
         }
 
@@ -115,7 +115,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (!minContact.Enabled || !minContact.IsTouching)
             {
-                minContact.Flags &= ~ContactFlags.EnabledFlag;
+                minContact.Flags &= ~ContactSetting.EnabledFlag;
                 bodies[0].Sweep = backup1;
                 bodies[1].Sweep = backup2;
                 bodies[0].SynchronizeTransform();
@@ -144,7 +144,7 @@ namespace Alis.Core.Physic.Dynamics
 
             bodies[0].Flags |= BodyFlags.IslandFlag;
             bodies[1].Flags |= BodyFlags.IslandFlag;
-            minContact.Flags &= ~ContactFlags.IslandFlag;
+            minContact.Flags &= ~ContactSetting.IslandFlag;
         }
 
         /// <summary>
@@ -237,7 +237,7 @@ namespace Alis.Core.Physic.Dynamics
                 return;
             }
 
-            minContact.Flags |= ContactFlags.IslandFlag;
+            minContact.Flags |= ContactSetting.IslandFlag;
             island.Add(contact);
 
             if (other.IsIsland)

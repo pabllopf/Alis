@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The flags
         /// </summary>
-        public MessageBoxButtonFlags flags;
+        public MessageBoxButton flags;
 
         /// <summary>
         ///     The button id
