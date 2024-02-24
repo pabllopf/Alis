@@ -27,11 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
 using Xunit;
-using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.Test.System
 {
@@ -157,7 +157,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnEnable()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -166,7 +166,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnInit()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -175,7 +175,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnAwake()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -184,7 +184,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnStart()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -193,7 +193,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnBeforeUpdate()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -202,7 +202,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnUpdate()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -211,7 +211,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnAfterUpdate()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -220,7 +220,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnBeforeFixedUpdate()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -229,7 +229,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnFixedUpdate()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -238,7 +238,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnAfterFixedUpdate()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -247,7 +247,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnDispatchEvents()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -256,7 +256,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnCalculate()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -265,7 +265,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnDraw()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -274,7 +274,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnGui()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -283,7 +283,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnDisable()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -292,7 +292,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnReset()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -301,7 +301,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnStop()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -310,7 +310,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnExit()
             {
-                throw new NotImplementedException();
+                Logger.Trace();
             }
 
             /// <summary>
@@ -319,74 +319,7 @@ namespace Alis.Core.Ecs.Test.System
             /// <exception cref="NotImplementedException"></exception>
             public void OnDestroy()
             {
-                throw new NotImplementedException();
-            }
-        }
-
-        /// <summary>
-        ///     The game test class
-        /// </summary>
-        /// <seealso cref="IGame" />
-        private class GameTest : IGame
-        {
-            /// <summary>
-            ///     Gets or sets the value of the managers
-            /// </summary>
-            public List<IManager> Managers { get; set; } = new List<IManager>();
-
-            /// <summary>
-            ///     Gets or sets the value of the is running
-            /// </summary>
-            public bool IsRunning { get; set; }
-
-            /// <summary>
-            ///     Runs this instance
-            /// </summary>
-            public void Run() => IsRunning = true;
-
-            /// <summary>
-            ///     Adds the component
-            /// </summary>
-            /// <typeparam name="T">The </typeparam>
-            /// <param name="component">The component</param>
-            /// <exception cref="NotImplementedException"></exception>
-            public void Add<T>(T component) where T : IManager
-            {
-                Managers.Add(component);
-            }
-
-            /// <summary>
-            ///     Removes the component
-            /// </summary>
-            /// <typeparam name="T">The </typeparam>
-            /// <param name="component">The component</param>
-            /// <exception cref="NotImplementedException"></exception>
-            public void Remove<T>(T component) where T : IManager
-            {
-                Managers.Remove(component);
-            }
-
-            /// <summary>
-            ///     Gets this instance
-            /// </summary>
-            /// <typeparam name="T">The </typeparam>
-            /// <returns>The</returns>
-            public T Get<T>() where T : IManager => Managers.Find(manager => manager is T) is T manager ? manager : default(T);
-
-            /// <summary>
-            ///     Describes whether this instance contains
-            /// </summary>
-            /// <typeparam name="T">The </typeparam>
-            /// <returns>The bool</returns>
-            public bool Contains<T>() where T : IManager => Managers.Find(manager => manager is T) is T;
-
-            /// <summary>
-            ///     Clears this instance
-            /// </summary>
-            /// <typeparam name="T">The </typeparam>
-            public void Clear<T>() where T : IManager
-            {
-                Managers.Clear();
+                Logger.Trace();
             }
         }
     }
