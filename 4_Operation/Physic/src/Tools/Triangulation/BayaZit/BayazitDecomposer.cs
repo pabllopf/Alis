@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:BayazitDecomposer.cs
+//  File:BayaZitDecomposer.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,12 +35,12 @@ using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
+namespace Alis.Core.Physic.Tools.Triangulation.BayaZit
 {
     /// <summary>
-    ///     The bayazit decomposer class
+    ///     The baya zit decomposer class
     /// </summary>
-    internal static class BayazitDecomposer
+    internal static class BayaZitDecomposer
     {
         /// <summary>
         ///     Decompose the polygon into several smaller non-concave polygon. If the polygon is already convex, it will
@@ -107,17 +107,15 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         /// <param name="index">The index</param>
         private static void ProcessEdgeIntersection(int i, int j, Vertices vertices, ref float dist, ref Vector2 intersection, ref int index)
         {
-            float d;
-            Vector2 p;
             if (Left(At(i - 1, vertices), At(i, vertices), At(j, vertices)) &&
                 RightOn(At(i - 1, vertices), At(i, vertices), At(j - 1, vertices)))
             {
-                p = Line.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices),
+                Vector2 p = Line.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices),
                     At(j - 1, vertices));
 
                 if (Right(At(i + 1, vertices), At(i, vertices), p))
                 {
-                    d = SquareDist(At(i, vertices), p);
+                    float d = SquareDist(At(i, vertices), p);
                     if (d < dist)
                     {
                         dist = d;
