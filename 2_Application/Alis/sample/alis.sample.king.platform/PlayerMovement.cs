@@ -126,13 +126,13 @@ namespace Alis.Sample.King.Platform
             if (key == SdlKeycode.SdlkD)
             {
                 directionPlayer = new Vector2(0, 0);
-                animator.ChangeAnimationTo("Run", RendererFlip.None);
+                animator.ChangeAnimationTo("Run", RendererFlips.None);
             }
 
             if (key == SdlKeycode.SdlkA)
             {
                 directionPlayer = new Vector2(0, 0);
-                animator.ChangeAnimationTo("Run", RendererFlip.SdlFlipHorizontal);
+                animator.ChangeAnimationTo("Run", RendererFlips.FlipHorizontal);
             }
         }
 
@@ -151,14 +151,14 @@ namespace Alis.Sample.King.Platform
             if (key == SdlKeycode.SdlkD)
             {
                 directionPlayer = new Vector2(1, 0);
-                animator.ChangeAnimationTo("Run", RendererFlip.None);
+                animator.ChangeAnimationTo("Run", RendererFlips.None);
                 Console.WriteLine($"Run to right because D key is pressed {directionPlayer}");
             }
 
             if (key == SdlKeycode.SdlkA)
             {
                 directionPlayer = new Vector2(-1, 0);
-                animator.ChangeAnimationTo("Run", RendererFlip.SdlFlipHorizontal);
+                animator.ChangeAnimationTo("Run", RendererFlips.FlipHorizontal);
                 Console.WriteLine($"Run to left because A key is pressed {directionPlayer}");
             }
         }
@@ -175,11 +175,11 @@ namespace Alis.Sample.King.Platform
 
             if (Math.Abs(directionPlayer.X - 1) < 0.1f)
             {
-                animator.ChangeAnimationTo("Jump", RendererFlip.None);
+                animator.ChangeAnimationTo("Jump", RendererFlips.None);
             }
             else if (Math.Abs(directionPlayer.X - -1) < 0.1f)
             {
-                animator.ChangeAnimationTo("Jump", RendererFlip.SdlFlipHorizontal);
+                animator.ChangeAnimationTo("Jump", RendererFlips.FlipHorizontal);
             }
 
             coolDownJump = ResetCoolDownJump;

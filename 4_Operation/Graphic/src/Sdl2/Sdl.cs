@@ -1937,7 +1937,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr CreateRenderer([IsNotNull] IntPtr window, [IsNotNull] int index, Renderer flags) => NativeSdl.InternalCreateRenderer(window, index, flags);
+        public static IntPtr CreateRenderer([IsNotNull] IntPtr window, [IsNotNull] int index, Renderers flags) => NativeSdl.InternalCreateRenderer(window, index, flags);
 
         /// <summary>
         ///     Creates the software renderer using the specified surface
@@ -2289,11 +2289,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle, ref PointI center, RendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, ref dstRect, angle, ref center, flip);
+        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle, ref PointI center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, ref dstRect, angle, ref center, flips);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -2304,11 +2304,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleI dstRect, double angle, ref PointI center, RendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, ref dstRect, angle, ref center, flip);
+        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleI dstRect, double angle, ref PointI center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, ref dstRect, angle, ref center, flips);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -2319,11 +2319,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointI center, RendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, dstRect, angle, ref center, flip);
+        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointI center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, dstRect, angle, ref center, flips);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -2334,11 +2334,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle, [IsNotNull] IntPtr center, RendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, ref dstRect, angle, center, flip);
+        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, ref dstRect, angle, center, flips);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -2349,11 +2349,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointI center, RendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, dstRect, angle, ref center, flip);
+        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointI center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, dstRect, angle, ref center, flips);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -2364,11 +2364,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleI dstRect, double angle, [IsNotNull] IntPtr center, RendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, ref dstRect, angle, center, flip);
+        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleI dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, ref dstRect, angle, center, flips);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -2379,11 +2379,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, dstRect, angle, center, flip);
+        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, dstRect, angle, center, flips);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -2394,11 +2394,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, dstRect, angle, center, flip);
+        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, dstRect, angle, center, flips);
 
         /// <summary>
         ///     Renders the draw line using the specified renderer
@@ -2565,11 +2565,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dst">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, ref PointF center, RendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, ref dst, angle, ref center, flip);
+        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, ref PointF center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, ref dst, angle, ref center, flips);
 
         /// <summary>
         ///     Renders the copy ex using the specified renderer
@@ -2580,11 +2580,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dst">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleF dst, double angle, ref PointF center, RendererFlip flip) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, ref dst, angle, ref center, flip);
+        public static int RenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleF dst, double angle, ref PointF center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, ref dst, angle, ref center, flips);
 
         /// <summary>
         ///     Renders the copy ex f using the specified renderer
@@ -2595,11 +2595,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointF center, RendererFlip flip) => NativeSdl.InternalRenderCopyExF(renderer, texture, ref srcRect, dstRect, angle, ref center, flip);
+        public static int RenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointF center, RendererFlips flips) => NativeSdl.InternalRenderCopyExF(renderer, texture, ref srcRect, dstRect, angle, ref center, flips);
 
         /// <summary>
         ///     Renders the copy ex f using the specified renderer
@@ -2610,11 +2610,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dst">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, [IsNotNull] IntPtr center, RendererFlip flip) => NativeSdl.InternalRenderCopyExF(renderer, texture, ref srcRect, ref dst, angle, center, flip);
+        public static int RenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, [IsNotNull] IntPtr center, RendererFlips flips) => NativeSdl.InternalRenderCopyExF(renderer, texture, ref srcRect, ref dst, angle, center, flips);
 
         /// <summary>
         ///     Renders the copy ex f using the specified renderer
@@ -2625,11 +2625,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointF center, RendererFlip flip) => NativeSdl.InternalRenderCopyExF(renderer, texture, srcRect, dstRect, angle, ref center, flip);
+        public static int RenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointF center, RendererFlips flips) => NativeSdl.InternalRenderCopyExF(renderer, texture, srcRect, dstRect, angle, ref center, flips);
 
 
         /// <summary>
@@ -2641,11 +2641,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dst">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleF dst, double angle, [IsNotNull] IntPtr center, RendererFlip flip) => NativeSdl.InternalRenderCopyExF(renderer, texture, srcRect, ref dst, angle, center, flip);
+        public static int RenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleF dst, double angle, [IsNotNull] IntPtr center, RendererFlips flips) => NativeSdl.InternalRenderCopyExF(renderer, texture, srcRect, ref dst, angle, center, flips);
 
 
         /// <summary>
@@ -2657,11 +2657,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlip flip) => NativeSdl.InternalRenderCopyExF(renderer, texture, ref srcRect, dstRect, angle, center, flip);
+        public static int RenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips) => NativeSdl.InternalRenderCopyExF(renderer, texture, ref srcRect, dstRect, angle, center, flips);
 
 
         /// <summary>
@@ -2673,11 +2673,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlip flip) => NativeSdl.InternalRenderCopyExF(renderer, texture, srcRect, dstRect, angle, center, flip);
+        public static int RenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips) => NativeSdl.InternalRenderCopyExF(renderer, texture, srcRect, dstRect, angle, center, flips);
 
 
         /// <summary>

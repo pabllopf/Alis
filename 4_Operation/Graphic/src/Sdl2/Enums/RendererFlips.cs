@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RendererFlags.cs
+//  File:RendererFlip.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,34 +32,24 @@ using System;
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl renderer flags enum
+    ///     The sdl renderer flip enum
     /// </summary>
     [Flags]
-    public enum Renderer : uint
+    public enum RendererFlips
     {
         /// <summary>
-        /// The none renderer
+        ///     The sdl flip none sdl renderer flip
         /// </summary>
         None = 0x00000000,
-        
-        /// <summary>
-        ///     The sdl renderer software sdl renderer flags
-        /// </summary>
-        SdlRendererSoftware = 0x00000001,
 
         /// <summary>
-        ///     The sdl renderer accelerated sdl renderer flags
+        ///     The sdl flip horizontal sdl renderer flip
         /// </summary>
-        SdlRendererAccelerated = 0x00000002,
+        FlipHorizontal = 0x00000001,
 
         /// <summary>
-        ///     The sdl renderer present vsync sdl renderer flags
+        ///     The sdl flip vertical sdl renderer flip
         /// </summary>
-        SdlRendererPresentVSync = 0x00000004,
-
-        /// <summary>
-        ///     The sdl renderer target texture sdl renderer flags
-        /// </summary>
-        SdlRendererTargetTexture = 0x00000008
+        FlipVertical = 0x00000002
     }
 }
