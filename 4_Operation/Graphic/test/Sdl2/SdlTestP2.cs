@@ -1578,7 +1578,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Assert
 
-            Assert.Equal(GameControllerType.SdlControllerTypeUnknown, result);
+            Assert.Equal(GameControllerType.ControllerTypeUnknown, result);
 
             // Cleanup
             Sdl.Quit();
@@ -1600,7 +1600,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Assert
 
-            Assert.Equal(GameControllerType.SdlControllerTypeUnknown, result);
+            Assert.Equal(GameControllerType.ControllerTypeUnknown, result);
 
             // Cleanup
             Sdl.Quit();
