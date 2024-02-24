@@ -36,21 +36,6 @@ using Alis.Core.Physic.Dynamics.Solver;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
-    // Point-to-point constraint
-    // Cdot = v2 - v1
-    //      = v2 + cross(w2, r2) - v1 - cross(w1, r1)
-    // J = [-I -r1_skew I r2_skew ]
-    // Identity used:
-    // w k % (rx i + ry j) = w * (-ry i + rx j)
-    //
-    // r1 = offset - c1
-    // r2 = -c2
-
-    // Angle constraint
-    // Cdot = w2 - w1
-    // J = [0 0 -1 0 0 1]
-    // K = invI1 + invI2
-
     /// <summary>
     ///     A motor joint is used to control the relative motion between two bodies. A typical usage is to control the
     ///     movement of a dynamic body with respect to the ground.
@@ -76,11 +61,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The angular offset
         /// </summary>
         private float angularOffset;
-
-        /// <summary>
-        ///     The correction factor
-        /// </summary>
-        private float correctionFactor;
 
         // Solver temp
         /// <summary>
@@ -150,11 +130,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private float maxForce;
 
         /// <summary>
-        ///     The max torque
-        /// </summary>
-        private float maxTorque;
-
-        /// <summary>
         ///     The
         /// </summary>
         private Vector2 rA;
@@ -192,8 +167,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             this.linearOffset = linearOffset;
             this.angularOffset = angularOffset;
             this.maxForce = maxForce;
-            this.maxTorque = maxTorque;
-            this.correctionFactor = correctionFactor;
+            this.Torque = maxTorque;
+            this.CorrectionFactor = correctionFactor;
         }
 
         /// <summary>Constructor for MotorJoint.</summary>
@@ -215,8 +190,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
 
             maxForce = 1.0f;
-            maxTorque = 1.0f;
-            correctionFactor = 0.3f;
+            Torque = 1.0f;
+            CorrectionFactor = 0.3f;
 
             angularOffset = bodyB.Rotation - bodyA.Rotation;
         }
@@ -247,20 +222,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>Get/set the maximum friction torque in N*m.</summary>
-        public float Torque
-        {
-            set => maxTorque = value;
-            get => maxTorque;
-        }
+        public float Torque { set; get; }
 
         /// <summary>
         ///     Get/set the position correction factor in the range [0,1].
         /// </summary>
-        public float CorrectionFactor
-        {
-            set => correctionFactor = value;
-            get => correctionFactor;
-        }
+        public float CorrectionFactor { set; get; }
 
         /// <summary>The linear (translation) offset.</summary>
         public Vector2 LinearOffset
@@ -410,11 +377,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             // Solve angular friction
             {
-                float cdot = wB - wA + invH * correctionFactor * angularError;
+                float cdot = wB - wA + invH * CorrectionFactor * angularError;
                 float impulse = -angularMass * cdot;
 
                 float oldImpulse = angularImpulse;
-                float maxImpulse = h * maxTorque;
+                float maxImpulse = h * Torque;
                 angularImpulse = MathUtils.Clamp(angularImpulse + impulse, -maxImpulse, maxImpulse);
                 impulse = angularImpulse - oldImpulse;
 
@@ -425,7 +392,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // Solve linear friction
             {
                 Vector2 cdot = vB + MathUtils.Cross(wB, rB) - vA - MathUtils.Cross(wA, rA) +
-                               invH * correctionFactor * linearError;
+                               invH * CorrectionFactor * linearError;
 
                 Vector2 impulse = -MathUtils.Mul(ref linearMass, ref cdot);
                 Vector2 oldImpulse = linearImpulse;
