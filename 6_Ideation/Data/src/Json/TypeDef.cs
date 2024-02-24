@@ -523,13 +523,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         private static bool CheckXmlIgnoreAttribute(PropertyInfo info, JsonOptions options)
         {
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
-            {
-                if (info.IsDefined(typeof(XmlIgnoreAttribute), true))
-                    return true;
-            }
-
-            return false;
+            return options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore) && info.IsDefined(typeof(XmlIgnoreAttribute), true);
         }
 
         /// <summary>
