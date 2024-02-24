@@ -40,7 +40,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay
     /// </summary>
     internal class DelaunayTriangle
     {
-        /// <summary>Neighbor pointers. Flags to determine if an edge is a Delauney edge</summary>
+        /// <summary>Neighbor pointers. Flags to determine if an edge is a edge</summary>
         public FixedArray3<bool> EdgeIsConstrained;
 
         /// <summary>Flags to determine if an edge is a Constrained edge</summary>
@@ -113,7 +113,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The int</returns>
-        public int IndexCcw(TriangulationPoint p)
+        private int IndexCcw(TriangulationPoint p)
         {
             int index = IndexOf(p);
             switch (index)
@@ -202,7 +202,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay
         /// <summary>
         ///     Clears the neighbors
         /// </summary>
-        public void ClearNeighbors()
+        private void ClearNeighbors()
         {
             Neighbors[0] = Neighbors[1] = Neighbors[2] = null;
         }
@@ -211,7 +211,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay
         ///     Clears the neighbor using the specified triangle
         /// </summary>
         /// <param name="triangle">The triangle</param>
-        public void ClearNeighbor(DelaunayTriangle triangle)
+        private void ClearNeighbor(DelaunayTriangle triangle)
         {
             if (Neighbors[0] == triangle)
             {
@@ -230,14 +230,10 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay
         /// <summary>Clears all references to all other triangles and points</summary>
         public void Clear()
         {
-            DelaunayTriangle t;
             for (int i = 0; i < 3; i++)
             {
-                t = Neighbors[i];
-                if (t != null)
-                {
-                    t.ClearNeighbor(this);
-                }
+                DelaunayTriangle t = Neighbors[i];
+                t?.ClearNeighbor(this);
             }
 
             ClearNeighbors();
