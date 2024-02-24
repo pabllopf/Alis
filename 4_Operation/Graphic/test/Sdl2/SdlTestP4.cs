@@ -1181,7 +1181,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
             GlAttr attr = GlAttr.SdlGlContextProfileMask;
-            GlProfile profile = GlProfile.SdlGlContextProfileCore;
+            GlProfiles profile = GlProfiles.SdlGlContextProfileCore;
 
             // Act
             int result = Sdl.SetAttributeByProfile(attr, profile);

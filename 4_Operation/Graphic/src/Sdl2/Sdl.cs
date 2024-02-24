@@ -1346,7 +1346,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetAttributeByProfile([IsNotNull] GlAttr attr, [IsNotNull] GlProfile profile)
+        public static int SetAttributeByProfile([IsNotNull] GlAttr attr, [IsNotNull] GlProfiles profile)
         {
             Validator.Validate(attr, nameof(attr));
             Validator.Validate(profile, nameof(profile));
