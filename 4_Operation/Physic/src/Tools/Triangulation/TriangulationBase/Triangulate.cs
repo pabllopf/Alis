@@ -80,9 +80,9 @@ namespace Alis.Core.Physic.Tools.Triangulation.TriangulationBase
         {
             return algorithm switch
             {
-                TriangulationAlgorithm.Earclip => !Settings.SkipSanityChecks && !vertices.IsCounterClockWise(),
-                TriangulationAlgorithm.Bayazit => !Settings.SkipSanityChecks && vertices.IsCounterClockWise(),
-                TriangulationAlgorithm.Flipcode => !Settings.SkipSanityChecks && vertices.IsCounterClockWise(),
+                TriangulationAlgorithm.EarClip => !Settings.SkipSanityChecks && !vertices.IsCounterClockWise(),
+                TriangulationAlgorithm.BayaZit => !Settings.SkipSanityChecks && vertices.IsCounterClockWise(),
+                TriangulationAlgorithm.FlipCode => !Settings.SkipSanityChecks && vertices.IsCounterClockWise(),
                 _ => true
             };
         }
@@ -99,12 +99,12 @@ namespace Alis.Core.Physic.Tools.Triangulation.TriangulationBase
         {
             return algorithm switch
             {
-                TriangulationAlgorithm.Earclip => EarClipDecomposer.ConvexPartition(vertices, tolerance),
-                TriangulationAlgorithm.Bayazit => BayaZitDecomposer.ConvexPartition(vertices),
-                TriangulationAlgorithm.Flipcode => FlipCodeDecomposer.ConvexPartition(vertices),
+                TriangulationAlgorithm.EarClip => EarClipDecomposer.ConvexPartition(vertices, tolerance),
+                TriangulationAlgorithm.BayaZit => BayaZitDecomposer.ConvexPartition(vertices),
+                TriangulationAlgorithm.FlipCode => FlipCodeDecomposer.ConvexPartition(vertices),
                 TriangulationAlgorithm.Seidel => SeidelDecomposer.ConvexPartition(vertices, tolerance),
                 TriangulationAlgorithm.SeidelTrapezoids => SeidelDecomposer.ConvexPartitionTrapezoid(vertices, tolerance),
-                TriangulationAlgorithm.Delauny => CdtDecomposer.ConvexPartition(vertices),
+                TriangulationAlgorithm.DelaUny => CdtDecomposer.ConvexPartition(vertices),
                 _ => throw new ArgumentOutOfRangeException(nameof(algorithm))
             };
         }
