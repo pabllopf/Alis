@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// </summary>
         public readonly float B;
 
-        // Montone mountain points
+        //  Mountain points
         /// <summary>
         ///     The points
         /// </summary>
@@ -118,10 +118,10 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         public bool IsBelow(Point point) => P.Orient2D(Q, point) > 0;
 
         /// <summary>
-        ///     Adds the mpoint using the specified point
+        ///     Adds the point using the specified point
         /// </summary>
         /// <param name="point">The point</param>
-        public void AddMpoint(Point point)
+        public void AddMPoint(Point point)
         {
             foreach (Point mp in MPoints)
             {
