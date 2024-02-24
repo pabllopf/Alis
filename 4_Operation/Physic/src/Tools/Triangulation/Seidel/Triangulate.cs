@@ -33,9 +33,9 @@ using Alis.Core.Aspect.Math.Util;
 namespace Alis.Core.Physic.Tools.Triangulation.Seidel
 {
     /// <summary>
-    ///     The triangulator class
+    ///     The triangulate class
     /// </summary>
-    internal class Triangulator
+    internal class Triangulate
     {
         // Initialize trapezoidal map and query structure
         /// <summary>
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// <summary>
         ///     The sheer
         /// </summary>
-        private readonly float sheer = 0.001f;
+        private readonly float sheer;
 
         /// <summary>
         ///     The trapezoidal map
@@ -77,19 +77,19 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// <summary>
         ///     The mono poly
         /// </summary>
-        private readonly List<MonotoneMountain> xMonoPoly;
+        private readonly List<MonotoneMountain> xPoly;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Triangulator" /> class
+        ///     Initializes a new instance of the <see cref="Triangulate" /> class
         /// </summary>
         /// <param name="polyLine">The poly line</param>
         /// <param name="sheer">The sheer</param>
-        public Triangulator(List<Point> polyLine, float sheer)
+        public Triangulate(List<Point> polyLine, float sheer)
         {
             this.sheer = sheer;
             Triangles = new List<List<Point>>();
             Trapezoids = new List<Trapezoid>();
-            xMonoPoly = new List<MonotoneMountain>();
+            xPoly = new List<MonotoneMountain>();
             edgeList = InitEdges(polyLine);
             trapezoidalMap = new TrapezoidalMap();
             boundingBox = trapezoidalMap.BoundingBox(edgeList);
@@ -131,12 +131,12 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
                         newTrapezoids = trapezoidalMap.Case1(trapezoid, edge);
                         queryGraph.Case1(trapezoid.Sink, edge, newTrapezoids);
                     }
-                    else if (containsP && !containsQ)
+                    else if (containsP)
                     {
                         newTrapezoids = trapezoidalMap.Case2(trapezoid, edge);
                         queryGraph.Case2(trapezoid.Sink, edge, newTrapezoids);
                     }
-                    else if (!containsP && !containsQ)
+                    else if (!containsQ)
                     {
                         newTrapezoids = trapezoidalMap.Case3(trapezoid, edge);
                         queryGraph.Case3(trapezoid.Sink, edge, newTrapezoids);
@@ -238,7 +238,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
                         Triangles.Add(t);
                     }
 
-                    xMonoPoly.Add(mountain);
+                    xPoly.Add(mountain);
                 }
             }
         }

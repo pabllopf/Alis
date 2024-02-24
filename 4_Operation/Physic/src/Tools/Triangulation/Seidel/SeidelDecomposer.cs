@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
                 compatList.Add(new Point(vertex.X, vertex.Y));
             }
 
-            Triangulator t = new Triangulator(compatList, sheer);
+            Triangulate t = new Triangulate(compatList, sheer);
 
             List<Vertices> list = new List<Vertices>();
 
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
                 compatList.Add(new Point(vertex.X, vertex.Y));
             }
 
-            Triangulator t = new Triangulator(compatList, sheer);
+            Triangulate t = new Triangulate(compatList, sheer);
 
             List<Vertices> list = new List<Vertices>();
 
