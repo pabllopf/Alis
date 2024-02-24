@@ -676,25 +676,6 @@ namespace Alis.Core.Test.Ecs.Component
         }
 
         /// <summary>
-        ///     Tests that on release button invoked logger trace called
-        /// </summary>
-        [Fact]
-        public void OnReleaseButton_v2_Invoked_LoggerTraceCalled()
-        {
-            // Arrange
-            ComponentSample component = new ComponentSample();
-            Button button = new Button();
-            int device = 1;
-
-            // Act
-            component.OnReleaseButton(button, device);
-
-            // Assert
-            Assert.NotNull(component);
-            Assert.True(component.IsEnable);
-        }
-
-        /// <summary>
         ///     Tests that on collision stay invoked logger trace called
         /// </summary>
         [Fact]
@@ -765,99 +746,7 @@ namespace Alis.Core.Test.Ecs.Component
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
-        /// <summary>
-        ///     Tests that on press button invoked logger trace called
-        /// </summary>
-        [Fact]
-        public void OnPressButton_Invoked_LoggerTraceCalled()
-        {
-            // Arrange
-            ComponentSample component = new ComponentSample();
-            Button button = new Button();
-
-            // Act
-            component.OnPressButton(button);
-
-            // Assert
-            Assert.NotNull(component);
-            Assert.True(component.IsEnable);
-        }
-
-        /// <summary>
-        ///     Tests that on press down button invoked logger trace called
-        /// </summary>
-        [Fact]
-        public void OnPressDownButton_Invoked_LoggerTraceCalled()
-        {
-            // Arrange
-            ComponentSample component = new ComponentSample();
-            Button button = new Button();
-
-            // Act
-            component.OnPressDownButton(button);
-
-            // Assert
-            Assert.NotNull(component);
-            Assert.True(component.IsEnable);
-        }
-
-        /// <summary>
-        ///     Tests that on release button invoked logger trace called
-        /// </summary>
-        [Fact]
-        public void OnReleaseButton_Invoked_LoggerTraceCalled()
-        {
-            // Arrange
-            ComponentSample component = new ComponentSample();
-            Button button = new Button();
-
-            // Act
-            component.OnReleaseButton(button);
-
-            // Assert
-            Assert.NotNull(component);
-            Assert.True(component.IsEnable);
-        }
-
-        /// <summary>
-        ///     Tests that on press button with device invoked logger trace called
-        /// </summary>
-        [Fact]
-        public void OnPressButtonWithDevice_Invoked_LoggerTraceCalled()
-        {
-            // Arrange
-            ComponentSample component = new ComponentSample();
-            Button button = new Button();
-            int device = 1;
-
-            // Act
-            component.OnPressButton(button, device);
-
-            // Assert
-            Assert.NotNull(component);
-            Assert.True(component.IsEnable);
-        }
-
-        /// <summary>
-        ///     Tests that on press down button with device invoked logger trace called
-        /// </summary>
-        [Fact]
-        public void OnPressDownButtonWithDevice_Invoked_LoggerTraceCalled()
-        {
-            // Arrange
-            ComponentSample component = new ComponentSample();
-            Button button = new Button();
-            int device = 1;
-
-            // Act
-            component.OnPressDownButton(button, device);
-
-            // Assert
-            Assert.NotNull(component);
-            Assert.True(component.IsEnable);
-        }
-
+        
         /// <summary>
         ///     Tests that on press down key invoked logger trace called
         /// </summary>
@@ -1058,10 +947,10 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-            bool newValue = false;
+            const bool newValue = false;
 
             // Act
-            component.IsEnable = newValue;
+            component.IsEnable = false;
 
             // Assert
             Assert.Equal(newValue, component.IsEnable);

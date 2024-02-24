@@ -191,46 +191,7 @@ namespace Alis.Core.Ecs.Component
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public virtual void OnCollisionExit(IGameObject gameObject) => Logger.Trace();
-
-        /// <summary>
-        ///     Ons the press button using the specified button
-        /// </summary>
-        /// <param name="button">The button</param>
-        public virtual void OnPressButton(Button button) => Logger.Trace();
-
-        /// <summary>
-        ///     Ons the press down button using the specified button
-        /// </summary>
-        /// <param name="button">The button</param>
-        public virtual void OnPressDownButton(Button button) => Logger.Trace();
-
-        /// <summary>
-        ///     Ons the release button using the specified button
-        /// </summary>
-        /// <param name="button">The button</param>
-        public virtual void OnReleaseButton(Button button) => Logger.Trace();
-
-        /// <summary>
-        ///     Ons the press button using the specified button
-        /// </summary>
-        /// <param name="button">The button</param>
-        /// <param name="device">The device</param>
-        public virtual void OnPressButton(Button button, int device) => Logger.Trace();
-
-        /// <summary>
-        ///     Ons the press down button using the specified button
-        /// </summary>
-        /// <param name="button">The button</param>
-        /// <param name="device">The device</param>
-        public virtual void OnPressDownButton(Button button, int device) => Logger.Trace();
-
-        /// <summary>
-        ///     Ons the release button using the specified button
-        /// </summary>
-        /// <param name="button">The button</param>
-        /// <param name="device">The device</param>
-        public virtual void OnReleaseButton(Button button, int device) => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the collision stay using the specified game object
         /// </summary>
