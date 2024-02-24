@@ -62,15 +62,6 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The hat value
         /// </summary>
         public readonly byte hatValue;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private readonly byte padding1;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private readonly byte padding2;
+        
     }
 }
