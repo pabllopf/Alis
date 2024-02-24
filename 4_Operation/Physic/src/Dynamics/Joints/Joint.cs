@@ -43,24 +43,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private static JointType _jointType;
 
-        /// <summary>Indicate if this join is enabled or not. Disabling a joint means it is still in the simulation, but inactive.</summary>
-        private Body bodyA;
-
-        /// <summary>
-        ///     The body
-        /// </summary>
-        private Body bodyB;
-
-        /// <summary>
-        ///     The enabled
-        /// </summary>
-        private bool enabled;
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="Joint" /> class
         /// </summary>
         /// <param name="jointType">The joint type</param>
-        protected Joint(JointType jointType)
+        private Joint(JointType jointType)
         {
             _jointType = jointType;
             Breakpoint = float.MaxValue;
@@ -128,25 +115,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets or sets the value of the enabled
         /// </summary>
-        public bool Enabled
-        {
-            get => enabled;
-            set => enabled = value;
-        }
+        public bool Enabled { get; private set; }
 
         /// <summary>Get the first body attached to this joint.</summary>
-        public Body BodyA
-        {
-            get => bodyA;
-            set => bodyA = value;
-        }
+        public Body BodyA { get; set; }
 
         /// <summary>Get the second body attached to this joint.</summary>
-        public Body BodyB
-        {
-            get => bodyB;
-            set => bodyB = value;
-        }
+        public Body BodyB { get; set; }
 
         /// <summary>
         ///     Get the anchor point on bodyA in world coordinates. On some joints, this value indicate the anchor point
@@ -171,7 +146,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The Breakpoint simply indicates the maximum Value the JointError can be before it breaks. The default value is
         ///     float.MaxValue, which means it never breaks.
         /// </summary>
-        public float Breakpoint { get; set; }
+        private float Breakpoint { get; set; }
 
         /// <summary>Fires when the joint is broken.</summary>
         public event Action<Joint, float> Broke;
