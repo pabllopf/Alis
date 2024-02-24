@@ -40,7 +40,7 @@ namespace Alis.Builder.Core.Ecs.Entity.Transform
     /// <seealso cref="IBuild{Transform}" />
     public class TransformBuilder :
         IBuild<Alis.Core.Aspect.Math.Transform>,
-        IPosition2D<TransformBuilder, float, float>,
+        IPosition2D<TransformBuilder, float>,
         IRotation<TransformBuilder, float>,
         IScale2D<TransformBuilder, float, float>
     {
