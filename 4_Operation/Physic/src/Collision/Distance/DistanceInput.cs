@@ -57,6 +57,6 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <summary>
         ///     The use radii
         /// </summary>
-        public bool UseRadii;
+        public bool UseRadii { get; set; }
     }
 }
