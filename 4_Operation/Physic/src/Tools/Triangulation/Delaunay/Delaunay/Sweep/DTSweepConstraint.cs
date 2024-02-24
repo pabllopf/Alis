@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Aspect.Logging;
+
 namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 {
     /// <summary>
@@ -45,18 +48,16 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                 Q = p1;
                 P = p2;
             }
-            else if (p1.Y == p2.Y)
+            else if (Math.Abs(p1.Y - p2.Y) < 0.01f)
             {
                 if (p1.X > p2.X)
                 {
                     Q = p1;
                     P = p2;
                 }
-                else if (p1.X == p2.X)
+                else if (Math.Abs(p1.X - p2.X) < 0.01f)
                 {
-                    //                logger.info( "Failed to create constraint {}={}", p1, p2 );
-                    //                throw new DuplicatePointException( p1 + "=" + p2 );
-                    //                return;
+                    Logger.Exception( $"Failed to create constraint {p1}={p2}");
                 }
             }
 
