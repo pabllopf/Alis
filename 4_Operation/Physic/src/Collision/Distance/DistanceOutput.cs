@@ -37,10 +37,10 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <summary>
         ///     The distance
         /// </summary>
-        public float Distance;
+        public float Distance { get; set; }
 
         /// <summary>Number of GJK iterations used</summary>
-        public int Iterations;
+        public int Iterations { get; set; }
 
         /// <summary>Closest point on shapeA</summary>
         public Vector2 PointA;
