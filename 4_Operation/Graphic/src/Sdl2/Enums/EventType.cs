@@ -37,286 +37,286 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         /// <summary>
         ///     The sdl first event sdl event type
         /// </summary>
-        SdlFirstEvent = 0,
+        FirstEvent = 0,
 
         /// <summary>
         ///     The sdl quit sdl event type
         /// </summary>
-        SdlQuit = 0x100,
+        Quit = 0x100,
 
         /// <summary>
         ///     The sdl app terminating sdl event type
         /// </summary>
-        SdlAppTerminating,
+        AppTerminating,
 
         /// <summary>
         ///     The sdl app low memory sdl event type
         /// </summary>
-        SdlAppLowMemory,
+        AppLowMemory,
 
         /// <summary>
         ///     The sdl app will enter background sdl event type
         /// </summary>
-        SdlAppWillEnterBackground,
+        AppWillEnterBackground,
 
         /// <summary>
         ///     The sdl app did enter background sdl event type
         /// </summary>
-        SdlAppDidEnterBackground,
+        AppDidEnterBackground,
 
         /// <summary>
         ///     The sdl app will enter foreground sdl event type
         /// </summary>
-        SdlAppWillEnterForeground,
+        AppWillEnterForeground,
 
         /// <summary>
         ///     The sdl app did enter foreground sdl event type
         /// </summary>
-        SdlAppDidEnterForeground,
+        AppDidEnterForeground,
 
         /// <summary>
         ///     The sdl locale changed sdl event type
         /// </summary>
-        SdlLocaleChanged,
+        LocaleChanged,
 
         /// <summary>
         ///     The sdl display event sdl event type
         /// </summary>
-        SdlDisplayEvent = 0x150,
+        DisplayEvent = 0x150,
 
         /// <summary>
         ///     The sdl window event sdl event type
         /// </summary>
-        SdlWindowEvent = 0x200,
+        WindowEvent = 0x200,
 
         /// <summary>
         ///     The sdl sys wm event sdl event type
         /// </summary>
-        SdlSysWmEvent,
+        SysWmEvent,
 
         /// <summary>
         ///     The sdl keydown sdl event type
         /// </summary>
-        SdlKeydown = 0x300,
+        Keydown = 0x300,
 
         /// <summary>
         ///     The sdl keyup sdl event type
         /// </summary>
-        SdlKeyup,
+        Keyup,
 
         /// <summary>
         ///     The sdl text editing sdl event type
         /// </summary>
-        SdlTextEditing,
+        TextEditing,
 
         /// <summary>
         ///     The sdl text input sdl event type
         /// </summary>
-        SdlTextInput,
+        TextInput,
 
         /// <summary>
         ///     The sdl keymap changed sdl event type
         /// </summary>
-        SdlKeymapChanged,
+        KeymapChanged,
 
         /// <summary>
         ///     The sdl mouse motion sdl event type
         /// </summary>
-        SdlMouseMotion = 0x400,
+        MouseMotion = 0x400,
 
         /// <summary>
         ///     The sdl mouse button down sdl event type
         /// </summary>
-        SdlMouseButtonDown,
+        MouseButtonDown,
 
         /// <summary>
         ///     The sdl mouse button up sdl event type
         /// </summary>
-        SdlMouseButtonUp,
+        MouseButtonUp,
 
         /// <summary>
         ///     The sdl mousewheel sdl event type
         /// </summary>
-        SdlMousewheel,
+        Mousewheel,
 
         /// <summary>
         ///     The sdl joy axis motion sdl event type
         /// </summary>
-        SdlJoyAxisMotion = 0x600,
+        JoyAxisMotion = 0x600,
 
         /// <summary>
         ///     The sdl joy ball motion sdl event type
         /// </summary>
-        SdlJoyBallMotion,
+        JoyBallMotion,
 
         /// <summary>
         ///     The sdl joy hat motion sdl event type
         /// </summary>
-        SdlJoyHatMotion,
+        JoyHatMotion,
 
         /// <summary>
         ///     The sdl joy button down sdl event type
         /// </summary>
-        SdlJoyButtonDown,
+        JoyButtonDown,
 
         /// <summary>
         ///     The sdl joy button up sdl event type
         /// </summary>
-        SdlJoyButtonUp,
+        JoyButtonUp,
 
         /// <summary>
         ///     The sdl joy device added sdl event type
         /// </summary>
-        SdlJoyDeviceAdded,
+        JoyDeviceAdded,
 
         /// <summary>
         ///     The sdl joy device removed sdl event type
         /// </summary>
-        SdlJoyDeviceRemoved,
+        JoyDeviceRemoved,
 
         /// <summary>
         ///     The sdl controller axis motion sdl event type
         /// </summary>
-        SdlControllerAxisMotion = 0x650,
+        ControllerAxisMotion = 0x650,
 
         /// <summary>
         ///     The sdl controller button down sdl event type
         /// </summary>
-        SdlControllerButtonDown,
+        ControllerButtonDown,
 
         /// <summary>
         ///     The sdl controller button up sdl event type
         /// </summary>
-        SdlControllerButtonUp,
+        ControllerButtonUp,
 
         /// <summary>
         ///     The sdl controller device added sdl event type
         /// </summary>
-        SdlControllerDeviceAdded,
+        ControllerDeviceAdded,
 
         /// <summary>
         ///     The sdl controller device removed sdl event type
         /// </summary>
-        SdlControllerDeviceRemoved,
+        ControllerDeviceRemoved,
 
         /// <summary>
         ///     The sdl controller device remapped sdl event type
         /// </summary>
-        SdlControllerDeviceRemapped,
+        ControllerDeviceRemapped,
 
         /// <summary>
         ///     The sdl controller touchpad down sdl event type
         /// </summary>
-        SdlControllerTouchpadDown,
+        ControllerTouchpadDown,
 
         /// <summary>
         ///     The sdl controller touchpad motion sdl event type
         /// </summary>
-        SdlControllerTouchpadMotion,
+        ControllerTouchpadMotion,
 
         /// <summary>
         ///     The sdl controller touchpad up sdl event type
         /// </summary>
-        SdlControllerTouchpadUp,
+        ControllerTouchpadUp,
 
         /// <summary>
         ///     The sdl controller sensor update sdl event type
         /// </summary>
-        SdlControllerSensorUpdate,
+        ControllerSensorUpdate,
 
         /// <summary>
         ///     The sdl finger down sdl event type
         /// </summary>
-        SdlFingerDown = 0x700,
+        FingerDown = 0x700,
 
         /// <summary>
         ///     The sdl finger up sdl event type
         /// </summary>
-        SdlFingerUp,
+        FingerUp,
 
         /// <summary>
         ///     The sdl finger motion sdl event type
         /// </summary>
-        SdlFingerMotion,
+        FingerMotion,
 
         /// <summary>
         ///     The sdl dollar gesture sdl event type
         /// </summary>
-        SdlDollarGesture = 0x800,
+        DollarGesture = 0x800,
 
         /// <summary>
         ///     The sdl dollar record sdl event type
         /// </summary>
-        SdlDollarRecord,
+        DollarRecord,
 
         /// <summary>
         ///     The sdl multi gesture sdl event type
         /// </summary>
-        SdlMultiGesture,
+        MultiGesture,
 
         /// <summary>
         ///     The sdl clip board update sdl event type
         /// </summary>
-        SdlClipBoardUpdate = 0x900,
+        ClipBoardUpdate = 0x900,
 
         /// <summary>
         ///     The sdl drop file sdl event type
         /// </summary>
-        SdlDropFile = 0x1000,
+        DropFile = 0x1000,
 
         /// <summary>
         ///     The sdl drop text sdl event type
         /// </summary>
-        SdlDropText,
+        DropText,
 
         /// <summary>
         ///     The sdl drop begin sdl event type
         /// </summary>
-        SdlDropBegin,
+        DropBegin,
 
         /// <summary>
         ///     The sdl drop complete sdl event type
         /// </summary>
-        SdlDropComplete,
+        DropComplete,
 
         /// <summary>
         ///     The sdl audio device added sdl event type
         /// </summary>
-        SdlAudioDeviceAdded = 0x1100,
+        AudioDeviceAdded = 0x1100,
 
         /// <summary>
         ///     The sdl audio device removed sdl event type
         /// </summary>
-        SdlAudioDeviceRemoved,
+        AudioDeviceRemoved,
 
         /// <summary>
         ///     The sdl sensor update sdl event type
         /// </summary>
-        SdlSensorUpdate = 0x1200,
+        SensorUpdate = 0x1200,
 
         /// <summary>
         ///     The sdl render targets reset sdl event type
         /// </summary>
-        SdlRenderTargetsReset = 0x2000,
+        RenderTargetsReset = 0x2000,
 
         /// <summary>
         ///     The sdl render device reset sdl event type
         /// </summary>
-        SdlRenderDeviceReset,
+        RenderDeviceReset,
 
         /// <summary>
         ///     The sdl poll sentinel sdl event type
         /// </summary>
-        SdlPollSentinel = 0x7F00,
+        PollSentinel = 0x7F00,
 
         /// <summary>
         ///     The sdl user event sdl event type
         /// </summary>
-        SdlUserEvent = 0x8000,
+        UserEvent = 0x8000,
 
         /// <summary>
         ///     The sdl last event sdl event type
         /// </summary>
-        SdlLastEvent = 0xFFFF
+        LastEvent = 0xFFFF
     }
 }

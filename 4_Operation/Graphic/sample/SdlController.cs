@@ -287,10 +287,10 @@ namespace Alis.Core.Graphic.Sample
                 {
                     switch (_sdlEvent.type)
                     {
-                        case EventType.SdlQuit:
+                        case EventType.Quit:
                             _running = false;
                             break;
-                        case EventType.SdlKeydown:
+                        case EventType.Keydown:
                             if (_sdlEvent.key.keySym.sym == KeyCode.Escape)
                             {
                                 _running = false;
@@ -322,7 +322,7 @@ namespace Alis.Core.Graphic.Sample
 
                     foreach (GameControllerButton button in Buttons)
                     {
-                        if ((_sdlEvent.type == EventType.SdlJoyButtonDown)
+                        if ((_sdlEvent.type == EventType.JoyButtonDown)
                             && (button == (GameControllerButton) _sdlEvent.cButton.button))
                         {
                             Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed button={button}");
@@ -331,7 +331,7 @@ namespace Alis.Core.Graphic.Sample
 
                     foreach (GameControllerAxis axi in Axis)
                     {
-                        if ((_sdlEvent.type == EventType.SdlJoyAxisMotion)
+                        if ((_sdlEvent.type == EventType.JoyAxisMotion)
                             && (axi == (GameControllerAxis) _sdlEvent.cAxis.axis))
                         {
                             Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed axi={axi}");

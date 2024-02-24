@@ -972,8 +972,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Event[] events = new Event[10];
             int numEvents = 10;
             EventAction action = EventAction.SdlAddEvent;
-            EventType minType = EventType.SdlFirstEvent;
-            EventType maxType = EventType.SdlLastEvent;
+            EventType minType = EventType.FirstEvent;
+            EventType maxType = EventType.LastEvent;
 
             // Act
             int result = Sdl.PeepEvents(events, numEvents, action, minType, maxType);
@@ -994,7 +994,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
-            EventType type = EventType.SdlFirstEvent;
+            EventType type = EventType.FirstEvent;
 
             // Act
             bool result = Sdl.HasEvent(type);
@@ -1016,8 +1016,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
-            EventType minType = EventType.SdlFirstEvent;
-            EventType maxType = EventType.SdlLastEvent;
+            EventType minType = EventType.FirstEvent;
+            EventType maxType = EventType.LastEvent;
 
             // Act
             bool result = Sdl.HasEvents(minType, maxType);
@@ -1039,7 +1039,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
-            EventType type = EventType.SdlFirstEvent;
+            EventType type = EventType.FirstEvent;
 
             // Act
             Sdl.FlushEvent(type);
@@ -2160,7 +2160,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
-            EventType type = EventType.SdlFirstEvent; // Replace with actual type
+            EventType type = EventType.FirstEvent; // Replace with actual type
 
             // Act
             byte result = Sdl.GetEventState(type);
