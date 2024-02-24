@@ -59,6 +59,10 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The graphic setting builder</returns>
-        public GraphicSettingBuilder Window(Func<WindowBuilder, Window> value) => (graphicSetting.Window = value(new WindowBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
+        public GraphicSettingBuilder Window(Func<WindowBuilder, Window> value)
+        {
+            graphicSetting.Window = value(new WindowBuilder());
+            return this;
+        }
     }
 }
