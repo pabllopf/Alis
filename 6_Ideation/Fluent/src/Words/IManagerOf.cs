@@ -32,7 +32,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     /// <summary>
     ///     The manager of interface
     /// </summary>
-    public interface IManagerOf<out TBuilder, in TType, in TArgument>
+    public interface IManagerOf<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Managers the of using the specified value
@@ -40,6 +40,6 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        TBuilder ManagerOf<T>(TArgument value) where T : TType;
+        TBuilder ManagerOf<T>(TArgument value);
     }
 }
