@@ -64,15 +64,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         ///     Temp list of keys
         /// </summary>
         private List<KeyCode> tempListOfKeys;
-
-        /// <summary>
-        ///     Ons the enable
-        /// </summary>
-        public override void OnEnable()
-        {
-            Logger.Trace();
-        }
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -81,71 +73,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
             Logger.Trace();
             tempListOfKeys = new List<KeyCode>();
         }
-
-        /// <summary>
-        ///     Ons the awake
-        /// </summary>
-        public override void OnAwake()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the start
-        /// </summary>
-        public override void OnStart()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the before update
-        /// </summary>
-        public override void OnBeforeUpdate()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the update
-        /// </summary>
-        public override void OnUpdate()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the after update
-        /// </summary>
-        public override void OnAfterUpdate()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the before fixed update
-        /// </summary>
-        public override void OnBeforeFixedUpdate()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the fixed update
-        /// </summary>
-        public override void OnFixedUpdate()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the after fixed update
-        /// </summary>
-        public override void OnAfterFixedUpdate()
-        {
-            Logger.Trace();
-        }
-
+        
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
@@ -164,71 +92,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
 
             NotifyKeyHold();
         }
-
-        /// <summary>
-        ///     Ons the calculate
-        /// </summary>
-        public override void OnCalculate()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the draw
-        /// </summary>
-        public override void OnDraw()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the gui
-        /// </summary>
-        public override void OnGui()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the disable
-        /// </summary>
-        public override void OnDisable()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the reset
-        /// </summary>
-        public override void OnReset()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the stop
-        /// </summary>
-        public override void OnStop()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the exit
-        /// </summary>
-        public override void OnExit()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the destroy
-        /// </summary>
-        public override void OnDestroy()
-        {
-            Logger.Trace();
-        }
-
+        
         /// <summary>
         ///     Handles the sdl quit event
         /// </summary>

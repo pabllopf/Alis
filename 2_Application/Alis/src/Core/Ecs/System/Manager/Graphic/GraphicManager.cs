@@ -247,28 +247,12 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         }
 
         /// <summary>
-        ///     Ons the awake
-        /// </summary>
-        public override void OnAwake()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
         ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
             Logger.Trace();
             Sprites = Sprites.OrderBy(o => o.Depth).ToList();
-        }
-
-        /// <summary>
-        ///     Ons the before update
-        /// </summary>
-        public override void OnBeforeUpdate()
-        {
-            Logger.Trace();
         }
 
         /// <summary>
@@ -281,95 +265,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             DrawCameraTexture();
             Sdl.RenderPresent(Renderer);
         }
-
-        /// <summary>
-        ///     Ons the after update
-        /// </summary>
-        public override void OnAfterUpdate()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the before fixed update
-        /// </summary>
-        public override void OnBeforeFixedUpdate()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the fixed update
-        /// </summary>
-        public override void OnFixedUpdate()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the after fixed update
-        /// </summary>
-        public override void OnAfterFixedUpdate()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the dispatch events
-        /// </summary>
-        public override void OnDispatchEvents()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the calculate
-        /// </summary>
-        public override void OnCalculate()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the draw
-        /// </summary>
-        public override void OnDraw()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the gui
-        /// </summary>
-        public override void OnGui()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the disable
-        /// </summary>
-        public override void OnDisable()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the reset
-        /// </summary>
-        public override void OnReset()
-        {
-            Logger.Trace();
-        }
-
-        /// <summary>
-        ///     Ons the stop
-        /// </summary>
-        public override void OnStop()
-        {
-            Logger.Trace();
-        }
-
+        
         /// <summary>
         ///     Ons the exit
         /// </summary>
@@ -378,14 +274,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Sdl.DestroyRenderer(Renderer);
             Sdl.DestroyWindow(_window);
             Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Ons the destroy
-        /// </summary>
-        public override void OnDestroy()
-        {
-            Logger.Trace();
         }
 
         /// <summary>
