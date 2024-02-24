@@ -37,8 +37,6 @@ using Alis.Core.Physic.Shared;
 
 namespace Alis.Core.Physic.Tools.PathGenerator
 {
-    //Contributed by Matthew Bettcher
-
     /// <summary>
     ///     Path: Very similar to Vertices, but this class contains vectors describing control points on a Catmull-Rom
     ///     curve.
