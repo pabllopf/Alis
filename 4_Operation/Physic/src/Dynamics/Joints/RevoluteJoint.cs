@@ -454,13 +454,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             rA = MathUtils.Mul(qA, LocalAnchorA - localCenterA);
             rB = MathUtils.Mul(qB, LocalAnchorB - localCenterB);
 
-            // J = [-I -r1_skew I r2_skew]
-            // r_skew = [-ry; rx]
-
-            // Matlab
-            // K = [ mA+r1y^2*iA+mB+r2y^2*iB,  -r1y*iA*r1x-r2y*iB*r2x]
-            //     [  -r1y*iA*r1x-r2y*iB*r2x, mA+r1x^2*iA+mB+r2x^2*iB]
-
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;
 
