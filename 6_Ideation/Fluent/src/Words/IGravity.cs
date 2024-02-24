@@ -32,7 +32,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     /// <summary>
     ///     The gravity interface
     /// </summary>
-    public interface IGravity<out TBuilder, in TArgument1, in TArgument2>
+    public interface IGravity<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Gravities the x
@@ -40,6 +40,6 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The builder</returns>
-        TBuilder Gravity(TArgument1 x, TArgument2 y);
+        TBuilder Gravity(TArgument x, TArgument y);
     }
 }
