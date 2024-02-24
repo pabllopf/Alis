@@ -32,11 +32,11 @@ namespace Alis.Core.Aspect.Fluent.Words
     /// <summary>
     ///     The manager interface
     /// </summary>
-    public interface IManager<out TBuilder, in TType, in TArgument>
+    public interface IManager<out TBuilder, in TArgument>
     {
         /// <summary>Withes the specified value.</summary>
         /// <param name="value">The value.</param>
         /// <returns>Return that you want.</returns>
-        TBuilder Manager<T>(TArgument value) where T : TType;
+        TBuilder Manager<T>(TArgument value);
     }
 }
