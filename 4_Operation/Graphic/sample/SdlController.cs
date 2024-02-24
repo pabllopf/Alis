@@ -227,7 +227,7 @@ namespace Alis.Core.Graphic.Sample
             RectangleI rect = new RectangleI(0, 0, wOut, hOut);
 
             //SDL_SetSurfaceBlendMode(fg_surface, SDL_BLENDMODE_BLEND); :
-            Sdl.SetSurfaceBlendMode(fgSurface, BlendMode.BlendModeBlend);
+            Sdl.SetSurfaceBlendMode(fgSurface, BlendModes.BlendModeBlend);
 
             //SDL_BlitSurface(fg_surface, NULL, bg_surface, &rect);
             Sdl.BlitSurface(fgSurface, IntPtr.Zero, bgSurface, ref rect);

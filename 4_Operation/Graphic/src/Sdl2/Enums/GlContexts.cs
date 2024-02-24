@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:BlendMode.cs
+//  File:GlContext.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,44 +32,29 @@ using System;
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl blend mode enum
+    ///     The sdl gl context enum
     /// </summary>
     [Flags]
-    public enum BlendMode
+    public enum GlContexts
     {
         /// <summary>
-        ///     The sdl blend factor none sdl blend factor
+        ///     The sdl gl context debug flag sdl gl context
         /// </summary>
-        None = 0x00000000,
+        SdlGlContextDebugFlag = 0x0001,
 
         /// <summary>
-        ///     The sdl blend factor blend sdl blend factor
+        ///     The sdl gl context forward compatible flag sdl gl context
         /// </summary>
-        BlendModeBlend = 0x00000001,
+        SdlGlContextForwardCompatibleFlag = 0x0002,
 
         /// <summary>
-        ///     The sdl blend factor add sdl blend factor
+        ///     The sdl gl context robust access flag sdl gl context
         /// </summary>
-        BlendModeAdd = 0x00000002,
+        SdlGlContextRobustAccessFlag = 0x0004,
 
         /// <summary>
-        ///     The sdl blend factor mod sdl blend factor
+        ///     The sdl gl context reset isolation flag sdl gl context
         /// </summary>
-        BlendModeMod = 0x00000004,
-
-        /// <summary>
-        ///     The sdl blend factor mul sdl blend factor
-        /// </summary>
-        BlendModeMul = 0x00000008,
-
-        /// <summary>
-        ///     The sdl blend factor invalid sdl blend factor
-        /// </summary>
-        BlendModeInvalid = 0x7FFFFFFF,
-
-        /// <summary>
-        ///     The blend all blend mode
-        /// </summary>
-        BlendAll = BlendModeBlend | BlendModeAdd | BlendModeMod | BlendModeMul | BlendModeInvalid
+        SdlGlContextResetIsolationFlag = 0x0008
     }
 }

@@ -230,7 +230,7 @@ namespace Alis.App.Engine
             Console.WriteLine(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
-            Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContext.SdlGlContextForwardCompatibleFlag);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContexts.SdlGlContextForwardCompatibleFlag);
             Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfile.SdlGlContextProfileCore);
             Sdl.SetAttributeByInt(GlAttr.SdlGlContextMajorVersion, 3);
             Sdl.SetAttributeByInt(GlAttr.SdlGlContextMinorVersion, 2);

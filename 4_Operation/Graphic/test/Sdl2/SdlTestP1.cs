@@ -1360,7 +1360,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int h = 600;
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
-            Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContext.SdlGlContextForwardCompatibleFlag);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContexts.SdlGlContextForwardCompatibleFlag);
             Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfile.SdlGlContextProfileCore);
             Sdl.SetAttributeByInt(GlAttr.SdlGlContextMajorVersion, 3);
             Sdl.SetAttributeByInt(GlAttr.SdlGlContextMinorVersion, 2);
@@ -1400,7 +1400,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int height = 600;
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
-            Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContext.SdlGlContextForwardCompatibleFlag);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContexts.SdlGlContextForwardCompatibleFlag);
             Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfile.SdlGlContextProfileCore);
             Sdl.SetAttributeByInt(GlAttr.SdlGlContextMajorVersion, 3);
             Sdl.SetAttributeByInt(GlAttr.SdlGlContextMinorVersion, 2);

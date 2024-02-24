@@ -1915,7 +1915,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl blend mode</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static BlendMode ComposeCustomBlendMode([IsNotNull] BlendFactor srcColorFactor, [IsNotNull] BlendFactor dstColorFactor, [IsNotNull] BlendOperation colorOperation, [IsNotNull] BlendFactor srcAlphaFactor, [IsNotNull] BlendFactor dstAlphaFactor, [IsNotNull] BlendOperation alphaOperation)
+        public static BlendModes ComposeCustomBlendMode([IsNotNull] BlendFactor srcColorFactor, [IsNotNull] BlendFactor dstColorFactor, [IsNotNull] BlendOperation colorOperation, [IsNotNull] BlendFactor srcAlphaFactor, [IsNotNull] BlendFactor dstAlphaFactor, [IsNotNull] BlendOperation alphaOperation)
         {
             Validator.Validate(srcColorFactor, nameof(srcColorFactor));
             Validator.Validate(dstColorFactor, nameof(dstColorFactor));
@@ -1923,7 +1923,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.Validate(srcAlphaFactor, nameof(srcAlphaFactor));
             Validator.Validate(dstAlphaFactor, nameof(dstAlphaFactor));
             Validator.Validate(alphaOperation, nameof(alphaOperation));
-            BlendMode result = NativeSdl.InternalComposeCustomBlendMode(srcColorFactor, dstColorFactor, colorOperation, srcAlphaFactor, dstAlphaFactor, alphaOperation);
+            BlendModes result = NativeSdl.InternalComposeCustomBlendMode(srcColorFactor, dstColorFactor, colorOperation, srcAlphaFactor, dstAlphaFactor, alphaOperation);
             Validator.Validate(result, nameof(result));
             return result;
         }
@@ -2022,7 +2022,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetRenderDrawBlendMode([IsNotNull] IntPtr renderer, out BlendMode blendMode) => NativeSdl.InternalGetRenderDrawBlendMode(renderer, out blendMode);
+        public static int GetRenderDrawBlendMode([IsNotNull] IntPtr renderer, out BlendModes blendMode) => NativeSdl.InternalGetRenderDrawBlendMode(renderer, out blendMode);
 
         /// <summary>
         ///     Sets the texture scale mode using the specified texture
@@ -2134,7 +2134,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetTextureBlendMode([IsNotNull] IntPtr texture, out BlendMode blendMode) => NativeSdl.InternalGetTextureBlendMode(texture, out blendMode);
+        public static int GetTextureBlendMode([IsNotNull] IntPtr texture, out BlendModes blendMode) => NativeSdl.InternalGetTextureBlendMode(texture, out blendMode);
 
         /// <summary>
         ///     Gets the texture color mod using the specified texture
@@ -2988,7 +2988,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetRenderDrawBlendMode([IsNotNull] IntPtr renderer, BlendMode blendMode) => NativeSdl.InternalSetRenderDrawBlendMode(renderer, blendMode);
+        public static int SetRenderDrawBlendMode([IsNotNull] IntPtr renderer, BlendModes blendMode) => NativeSdl.InternalSetRenderDrawBlendMode(renderer, blendMode);
 
         /// <summary>
         ///     Sets the render draw color using the specified renderer
@@ -3033,7 +3033,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetTextureBlendMode([IsNotNull] IntPtr texture, BlendMode blendMode) => NativeSdl.InternalSetTextureBlendMode(texture, blendMode);
+        public static int SetTextureBlendMode([IsNotNull] IntPtr texture, BlendModes blendMode) => NativeSdl.InternalSetTextureBlendMode(texture, blendMode);
 
 
         /// <summary>
@@ -3409,7 +3409,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetSurfaceBlendMode([IsNotNull] IntPtr surface, out BlendMode blendMode) => NativeSdl.InternalGetSurfaceBlendMode(surface, out blendMode);
+        public static int GetSurfaceBlendMode([IsNotNull] IntPtr surface, out BlendModes blendMode) => NativeSdl.InternalGetSurfaceBlendMode(surface, out blendMode);
 
         /// <summary>
         ///     Gets the surface color mod using the specified surface
@@ -3471,7 +3471,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetSurfaceBlendMode([IsNotNull] IntPtr surface, BlendMode blendMode) => NativeSdl.InternalSetSurfaceBlendMode(surface, blendMode);
+        public static int SetSurfaceBlendMode([IsNotNull] IntPtr surface, BlendModes blendMode) => NativeSdl.InternalSetSurfaceBlendMode(surface, blendMode);
 
         /// <summary>
         ///     Sets the surface color mod using the specified surface

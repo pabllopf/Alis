@@ -168,7 +168,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
-            BlendMode blendMode = BlendMode.None;
+            BlendModes blendMode = BlendModes.None;
 
             // Act
             int result = Sdl.SetRenderDrawBlendMode(renderer, blendMode);
@@ -618,7 +618,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr surface = IntPtr.Zero;
 
             // Act
-            int result = Sdl.GetSurfaceBlendMode(surface, out BlendMode _);
+            int result = Sdl.GetSurfaceBlendMode(surface, out BlendModes _);
 
             // Assert
             Assert.True(result >= -1);
@@ -748,7 +748,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int initResult = Sdl.Init(Init.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr surface = IntPtr.Zero;
-            BlendMode blendMode = BlendMode.None;
+            BlendModes blendMode = BlendModes.None;
 
             // Act
             int result = Sdl.SetSurfaceBlendMode(surface, blendMode);
