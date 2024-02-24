@@ -46,20 +46,20 @@ namespace Alis.Core.Plugin
         /// <summary>
         ///     The loaded assemblies
         /// </summary>
-        internal readonly List<Assembly> loadedAssemblies;
+        internal readonly List<Assembly> LoadedAssemblies;
 
         /// <summary>
         ///     The loaded plugins
         /// </summary>
-        internal readonly List<IPlugin> loadedPlugins;
+        internal readonly List<IPlugin> LoadedPlugins;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PluginManager" /> class
         /// </summary>
         public PluginManager()
         {
-            loadedPlugins = new List<IPlugin>();
-            loadedAssemblies = new List<Assembly>();
+            LoadedPlugins = new List<IPlugin>();
+            LoadedAssemblies = new List<Assembly>();
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Alis.Core.Plugin
             try
             {
                 Assembly assembly = Assembly.LoadFrom(pluginFile);
-                loadedAssemblies.Add(assembly);
+                LoadedAssemblies.Add(assembly);
 
                 Type[] types = assembly.GetTypes();
 
@@ -161,7 +161,7 @@ namespace Alis.Core.Plugin
                     if (typeof(IPlugin).IsAssignableFrom(type))
                     {
                         IPlugin plugin = (IPlugin) Activator.CreateInstance(type);
-                        loadedPlugins.Add(plugin);
+                        LoadedPlugins.Add(plugin);
                     }
                 }
             }
@@ -189,13 +189,13 @@ namespace Alis.Core.Plugin
         [ExcludeFromCodeCoverage]
         internal void UnloadPlugins()
         {
-            foreach (IPlugin plugin in loadedPlugins)
+            foreach (IPlugin plugin in LoadedPlugins)
             {
                 plugin.Dispose();
             }
 
-            loadedPlugins.Clear();
-            loadedAssemblies.Clear();
+            LoadedPlugins.Clear();
+            LoadedAssemblies.Clear();
         }
 
 
@@ -216,24 +216,24 @@ namespace Alis.Core.Plugin
         ///     Initializes this instance
         /// </summary>
         [ExcludeFromCodeCoverage]
-        public void Initialize() => loadedPlugins.ForEach(plugin => plugin.Initialize());
+        public void Initialize() => LoadedPlugins.ForEach(plugin => plugin.Initialize());
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
         [ExcludeFromCodeCoverage]
-        public void Update() => loadedPlugins.ForEach(plugin => plugin.Update());
+        public void Update() => LoadedPlugins.ForEach(plugin => plugin.Update());
 
         /// <summary>
         ///     Renders this instance
         /// </summary>
         [ExcludeFromCodeCoverage]
-        public void Render() => loadedPlugins.ForEach(plugin => plugin.Render());
+        public void Render() => LoadedPlugins.ForEach(plugin => plugin.Render());
 
         /// <summary>
         ///     Shutdowns this instance
         /// </summary>
         [ExcludeFromCodeCoverage]
-        public void Shutdown() => loadedPlugins.ForEach(plugin => plugin.Shutdown());
+        public void Shutdown() => LoadedPlugins.ForEach(plugin => plugin.Shutdown());
     }
 }

@@ -40,7 +40,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     The coll
         /// </summary>
-        internal ICollection<T> _coll;
+        internal ICollection<T> Coll;
 
         /// <summary>
         ///     Gets or sets the value of the list
@@ -51,14 +51,14 @@ namespace Alis.Core.Aspect.Data.Json
             set
             {
                 base.List = value;
-                _coll = (ICollection<T>) value;
+                Coll = (ICollection<T>) value;
             }
         }
 
         /// <summary>
         ///     Clears this instance
         /// </summary>
-        public override void Clear() => _coll.Clear();
+        public override void Clear() => Coll.Clear();
 
         /// <summary>
         ///     Adds the value
@@ -73,7 +73,7 @@ namespace Alis.Core.Aspect.Data.Json
                 JsonSerializer.HandleException(new JsonException("JSO0014: JSON error detected. Cannot add null to a collection of '" + typeof(T) + "' elements."), options);
             }
 
-            _coll.Add((T) value);
+            Coll.Add((T) value);
         }
     }
 }

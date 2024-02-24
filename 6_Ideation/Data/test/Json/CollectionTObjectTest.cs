@@ -204,7 +204,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void List_Get_ReturnsBaseList()
         {
             CollectionTObject<int> collection = new CollectionTObject<int>();
-            Assert.Equal(collection._coll, collection.List);
+            Assert.Equal(collection.Coll, collection.List);
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             CollectionTObject<int> collection = new CollectionTObject<int>();
             List<int> newList = new List<int> {1, 2, 3};
             collection.List = newList;
-            Assert.Equal(newList, collection._coll);
+            Assert.Equal(newList, collection.Coll);
         }
 
         /// <summary>
@@ -266,7 +266,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void List_Get_v2_ReturnsBaseList()
         {
             CollectionTObject<int> collection = new CollectionTObject<int>();
-            Assert.Equal(collection._coll, collection.List);
+            Assert.Equal(collection.Coll, collection.List);
         }
 
         /// <summary>
@@ -278,7 +278,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             CollectionTObject<int> collection = new CollectionTObject<int>();
             List<int> newList = new List<int> {1, 2, 3};
             collection.List = newList;
-            Assert.Equal(newList, collection._coll);
+            Assert.Equal(newList, collection.Coll);
         }
 
         /// <summary>
