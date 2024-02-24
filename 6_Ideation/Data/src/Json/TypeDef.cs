@@ -782,13 +782,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         private static bool CheckScriptIgnore(PropertyDescriptor descriptor, JsonOptions options)
         {
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
-            {
-                if (JsonSerializer.HasScriptIgnore(descriptor))
-                    return true;
-            }
-
-            return false;
+            return options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore) && JsonSerializer.HasScriptIgnore(descriptor);
         }
 
         /// <summary>
@@ -799,10 +793,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         private static bool CheckSkipGetOnly(PropertyDescriptor descriptor, JsonOptions options)
         {
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipGetOnly) && descriptor.IsReadOnly)
-                return true;
-
-            return false;
+            return options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipGetOnly) && descriptor.IsReadOnly;
         }
 
         /// <summary>
