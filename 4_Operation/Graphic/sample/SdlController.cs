@@ -177,7 +177,7 @@ namespace Alis.Core.Graphic.Sample
             IntPtr renderer = Sdl.CreateRenderer(
                 window,
                 -1,
-                Renderer.SdlRendererAccelerated);
+                Renderers.SdlRendererAccelerated);
 
             if (renderer == IntPtr.Zero)
             {

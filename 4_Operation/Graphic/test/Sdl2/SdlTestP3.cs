@@ -1810,10 +1810,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
             RectangleI dstRect = new RectangleI(); // Replace with actual dstRect
             double angle = 0.0; // Replace with actual angle
             PointI center = new PointI(); // Replace with actual center
-            RendererFlip flip = RendererFlip.None; // Replace with actual flip
+            RendererFlips flips = RendererFlips.None; // Replace with actual flip
 
             // Act
-            int result = Sdl.RenderCopyEx(renderer, texture, ref srcRect, ref dstRect, angle, ref center, flip);
+            int result = Sdl.RenderCopyEx(renderer, texture, ref srcRect, ref dstRect, angle, ref center, flips);
 
             // Assert
             // Replace 0 with the expected result
@@ -2757,10 +2757,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr dstRect = IntPtr.Zero; // Replace with the desired destination rectangle
             double angle = 0.0; // Replace with the desired angle
             PointI center = new PointI(); // Replace with the desired center point
-            RendererFlip flip = RendererFlip.None; // Replace with the desired flip
+            RendererFlips flips = RendererFlips.None; // Replace with the desired flip
 
             // Act
-            int result = Sdl.RenderCopyEx(renderer, texture, srcRect, dstRect, angle, ref center, flip);
+            int result = Sdl.RenderCopyEx(renderer, texture, srcRect, dstRect, angle, ref center, flips);
 
             // Assert
             Assert.True(result >= -1);
@@ -2784,10 +2784,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
             RectangleI dstRect = new RectangleI(0, 0, 0, 0); // Replace with the desired destination rectangle
             double angle = 0.0; // Replace with the desired angle
             IntPtr center = IntPtr.Zero; // Replace with the desired center point
-            RendererFlip flip = RendererFlip.None; // Replace with the desired flip
+            RendererFlips flips = RendererFlips.None; // Replace with the desired flip
 
             // Act
-            int result = Sdl.RenderCopyEx(renderer, texture, srcRect, ref dstRect, angle, center, flip);
+            int result = Sdl.RenderCopyEx(renderer, texture, srcRect, ref dstRect, angle, center, flips);
 
             // Assert
             Assert.True(result >= -1);
@@ -2855,10 +2855,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr dstRect = IntPtr.Zero; // Replace with the desired destination rectangle
             double angle = 0.0; // Replace with the desired angle
             IntPtr center = IntPtr.Zero; // Replace with the desired center
-            RendererFlip flip = RendererFlip.None; // Replace with the desired flip
+            RendererFlips flips = RendererFlips.None; // Replace with the desired flip
 
             // Act
-            int result = Sdl.RenderCopyEx(renderer, texture, ref srcRect, dstRect, angle, center, flip);
+            int result = Sdl.RenderCopyEx(renderer, texture, ref srcRect, dstRect, angle, center, flips);
 
             // Assert
             Assert.True(result >= -1);

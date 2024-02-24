@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Gets or sets the value of the flip
         /// </summary>
-        public RendererFlip Flip { get; set; }
+        public RendererFlips Flips { get; set; }
 
         /// <summary>
         ///     Builders this instance
@@ -124,7 +124,7 @@ namespace Alis.Core.Ecs.Component.Render
                 (int) (w * GameObject.Transform.Scale.X),
                 (int) (h * GameObject.Transform.Scale.Y));
 
-            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flip);
+            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Alis.Core.Ecs.Component.Render
                 (int) (w * GameObject.Transform.Scale.X),
                 (int) (h * GameObject.Transform.Scale.Y));
 
-            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flip);
+            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);
         }
     }
 }

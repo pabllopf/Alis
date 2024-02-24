@@ -3562,7 +3562,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateRenderer", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalCreateRenderer([IsNotNull] IntPtr window, [IsNotNull] int index, Renderer flags);
+        internal static extern IntPtr InternalCreateRenderer([IsNotNull] IntPtr window, [IsNotNull] int index, Renderers flags);
 
         /// <summary>
         ///     Sdl the create software renderer using the specified surface
@@ -3895,12 +3895,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle, ref PointI center, RendererFlip flip);
+        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle, ref PointI center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
@@ -3911,12 +3911,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dst">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, ref PointF center, RendererFlip flip);
+        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, ref PointF center, RendererFlips flips);
 
 
         /// <summary>
@@ -3928,12 +3928,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleI dstRect, double angle, ref PointI center, RendererFlip flip);
+        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleI dstRect, double angle, ref PointI center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
@@ -3944,12 +3944,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointI center, RendererFlip flip);
+        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointI center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
@@ -3960,12 +3960,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect"></param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle, [IsNotNull] IntPtr center, RendererFlip flip);
+        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
@@ -3976,12 +3976,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointI center, RendererFlip flip);
+        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointI center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
@@ -3992,12 +3992,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleI dstRect, double angle, [IsNotNull] IntPtr center, RendererFlip flip);
+        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleI dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
@@ -4008,12 +4008,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlip flip);
+        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
@@ -4024,12 +4024,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlip flip);
+        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render draw line using the specified renderer
@@ -4210,12 +4210,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dst">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleF dst, double angle, ref PointF center, RendererFlip flip);
+        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleF dst, double angle, ref PointF center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex f using the specified renderer
@@ -4226,12 +4226,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyExF", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointF center, RendererFlip flip);
+        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointF center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex f using the specified renderer
@@ -4242,12 +4242,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dst">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyExF", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, [IsNotNull] IntPtr center, RendererFlip flip);
+        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, [IsNotNull] IntPtr center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex f using the specified renderer
@@ -4258,12 +4258,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyExF", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointF center, RendererFlip flip);
+        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointF center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex f using the specified renderer
@@ -4274,12 +4274,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dst">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyExF", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleF dst, double angle, [IsNotNull] IntPtr center, RendererFlip flip);
+        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleF dst, double angle, [IsNotNull] IntPtr center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex f using the specified renderer
@@ -4290,12 +4290,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyExF", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlip flip);
+        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex f using the specified renderer
@@ -4306,12 +4306,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <param name="angle">The angle</param>
         /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
+        /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyExF", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlip flip);
+        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render geometry using the specified renderer
