@@ -48,12 +48,6 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         public static void CollidePolygons(ref Manifold manifold, PolygonShape polyA, ref Transform xfA,
             PolygonShape polyB, ref Transform xfB)
         {
-            // Find edge normal of max separation on A - return if separating axis is found
-            // Find edge normal of max separation on B - return if separation axis is found
-            // Choose reference edge as min(minA, minB)
-            // Find incident edge
-            // Clip
-
             manifold.PointCount = 0;
             float totalRadius = polyA.RadiusPrivate + polyB.RadiusPrivate;
 
