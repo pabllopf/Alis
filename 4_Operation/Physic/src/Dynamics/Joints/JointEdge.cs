@@ -37,15 +37,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
     public sealed class JointEdge
     {
         /// <summary>The joint.</summary>
-        public Joint Joint;
+        public Joint Joint1 { get; }
 
         /// <summary>The next joint edge in the body's joint list.</summary>
-        public JointEdge Next;
+        public JointEdge Next { get; }
 
         /// <summary>Provides quick access to the other body attached.</summary>
-        public Body Other;
+        public Body Other { get; }
 
         /// <summary>The previous joint edge in the body's joint list.</summary>
-        public JointEdge Prev;
+        public JointEdge Prev { get; }
     }
 }
