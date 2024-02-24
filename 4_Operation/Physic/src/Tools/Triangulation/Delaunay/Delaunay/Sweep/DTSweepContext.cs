@@ -29,13 +29,8 @@
 
 namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 {
-    /**
-     * @author Thomas Åhlén, thahlen@gmail.com
-     */
     internal class DtSweepContext : TriangulationContext
     {
-        // Inital triangle factor, seed triangle will extend 30% of 
-        // PointSet width to both left and right.
         /// <summary>
         ///     The alpha
         /// </summary>
@@ -72,12 +67,12 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         /// <summary>
         ///     Gets or sets the value of the head
         /// </summary>
-        public TriangulationPoint Head { get; set; }
+        private TriangulationPoint Head { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the tail
         /// </summary>
-        public TriangulationPoint Tail { get; set; }
+        private TriangulationPoint Tail { get; set; }
 
         /// <summary>
         ///     Removes the from list using the specified triangle
@@ -103,7 +98,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         /// <param name="triangle">The triangle</param>
         private void MeshCleanReq(DelaunayTriangle triangle)
         {
-            if ((triangle != null) && !triangle.IsInterior)
+            if (triangle is {IsInterior: false})
             {
                 triangle.IsInterior = true;
                 Triangulatable.AddTriangle(triangle);
@@ -120,7 +115,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         /// <summary>
         ///     Clears this instance
         /// </summary>
-        public override void Clear()
+        public sealed override void Clear()
         {
             base.Clear();
             Triangles.Clear();
@@ -184,12 +179,11 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         /// <summary>Try to map a node to all sides of this triangle that don't have a neighbor.</summary>
         public void MapTriangleToNodes(DelaunayTriangle t)
         {
-            AdvancingFrontNode n;
             for (int i = 0; i < 3; i++)
             {
                 if (t.Neighbors[i] == null)
                 {
-                    n = AFront.LocatePoint(t.PointCw(t.Points[i]));
+                    AdvancingFrontNode n = AFront.LocatePoint(t.PointCw(t.Points[i]));
                     if (n != null)
                     {
                         n.Triangle = t;
@@ -206,40 +200,40 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         {
             base.PrepareTriangulation(t);
 
-            double xmin;
-            double ymin;
+            double xMin;
+            double yMin;
 
-            double xmax = xmin = Points[0].X;
-            double ymax = ymin = Points[0].Y;
+            double xMax = xMin = Points[0].X;
+            double yMax = yMin = Points[0].Y;
 
             // Calculate bounds. Should be combined with the sorting
             foreach (TriangulationPoint p in Points)
             {
-                if (p.X > xmax)
+                if (p.X > xMax)
                 {
-                    xmax = p.X;
+                    xMax = p.X;
                 }
 
-                if (p.X < xmin)
+                if (p.X < xMin)
                 {
-                    xmin = p.X;
+                    xMin = p.X;
                 }
 
-                if (p.Y > ymax)
+                if (p.Y > yMax)
                 {
-                    ymax = p.Y;
+                    yMax = p.Y;
                 }
 
-                if (p.Y < ymin)
+                if (p.Y < yMin)
                 {
-                    ymin = p.Y;
+                    yMin = p.Y;
                 }
             }
 
-            double deltaX = Alpha * (xmax - xmin);
-            double deltaY = Alpha * (ymax - ymin);
-            TriangulationPoint p1 = new TriangulationPoint(xmax + deltaX, ymin - deltaY);
-            TriangulationPoint p2 = new TriangulationPoint(xmin - deltaX, ymin - deltaY);
+            double deltaX = Alpha * (xMax - xMin);
+            double deltaY = Alpha * (yMax - yMin);
+            TriangulationPoint p1 = new TriangulationPoint(xMax + deltaX, yMin - deltaY);
+            TriangulationPoint p2 = new TriangulationPoint(xMin - deltaX, yMin - deltaY);
 
             Head = p1;
             Tail = p2;
