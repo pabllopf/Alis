@@ -33,13 +33,13 @@ namespace Alis.Core.Audio.OS.Exceptions
     /// The no implementation for current os class
     /// </summary>
     /// <seealso cref="System.Exception"/>
-    public class NoImplementationForCurrentOs : System.Exception
+    public class NoImplementationForCurrentOsException : System.Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NoImplementationForCurrentOs"/> class
+        /// Initializes a new instance of the <see cref="NoImplementationForCurrentOsException"/> class
         /// </summary>
         /// <param name="message">The message</param>
-        public NoImplementationForCurrentOs(string message) : base(message)
+        public NoImplementationForCurrentOsException(string message) : base(message)
         {
         }
     }

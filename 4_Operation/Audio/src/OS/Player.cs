@@ -67,7 +67,7 @@ namespace Alis.Core.Audio.OS
             }
             else
             {
-                throw new NoImplementationForCurrentOs("No implementation exist for the current OS");
+                throw new NoImplementationForCurrentOsException("No implementation exist for the current OS");
             }
 
             _internalPlayer.PlaybackFinished += OnPlaybackFinished;
