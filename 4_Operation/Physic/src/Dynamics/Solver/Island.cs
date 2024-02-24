@@ -239,7 +239,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         {
             for (JointEdge je = body.JointList; je != null; je = je.Next)
             {
-                if (je.Joint.IslandFlag)
+                if (je.Joint1.IslandFlag)
                 {
                     continue;
                 }
@@ -253,8 +253,8 @@ namespace Alis.Core.Physic.Dynamics.Solver
                         continue;
                     }
 
-                    Add(je.Joint);
-                    je.Joint.IslandFlag = true;
+                    Add(je.Joint1);
+                    je.Joint1.IslandFlag = true;
 
                     if (other.IsIsland)
                     {
@@ -265,8 +265,8 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 }
                 else
                 {
-                    Add(je.Joint);
-                    je.Joint.IslandFlag = true;
+                    Add(je.Joint1);
+                    je.Joint1.IslandFlag = true;
                 }
             }
         }

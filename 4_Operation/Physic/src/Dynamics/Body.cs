@@ -1196,7 +1196,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if (jn.Other == other)
                 {
-                    if (!jn.Joint.CollideConnected)
+                    if (!jn.Joint1.CollideConnected)
                     {
                         return false;
                     }
