@@ -37,11 +37,11 @@ namespace Alis.Core.Physic.Collision.TOI
         /// <summary>
         ///     The state
         /// </summary>
-        public ToiOutputState State;
+        public ToiOutputState State { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public float T;
+        public float Property { get; set; }
     }
 }

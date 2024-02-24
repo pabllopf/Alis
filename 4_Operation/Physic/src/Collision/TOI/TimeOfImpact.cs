@@ -115,7 +115,7 @@ namespace Alis.Core.Physic.Collision.TOI
             return new ToiOutput
             {
                 State = ToiOutputState.Unknown,
-                T = input.Max
+                Property = input.Max
             };
         }
 
@@ -172,14 +172,14 @@ namespace Alis.Core.Physic.Collision.TOI
                 if (distanceOutput.Distance <= 0.0f)
                 {
                     output.State = ToiOutputState.Overlapped;
-                    output.T = 0.0f;
+                    output.Property = 0.0f;
                     break;
                 }
 
                 if (distanceOutput.Distance < target + tolerance)
                 {
                     output.State = ToiOutputState.Touching;
-                    output.T = t1;
+                    output.Property = t1;
                     break;
                 }
 
@@ -222,7 +222,7 @@ namespace Alis.Core.Physic.Collision.TOI
                 if (s2 > target + tolerance)
                 {
                     output.State = ToiOutputState.Seperated;
-                    output.T = tMax;
+                    output.Property = tMax;
                     break;
                 }
 
@@ -237,14 +237,14 @@ namespace Alis.Core.Physic.Collision.TOI
                 if (s1 < target - tolerance)
                 {
                     output.State = ToiOutputState.Failed;
-                    output.T = t1;
+                    output.Property = t1;
                     break;
                 }
 
                 if (s1 <= target + tolerance)
                 {
                     output.State = ToiOutputState.Touching;
-                    output.T = t1;
+                    output.Property = t1;
                     break;
                 }
 

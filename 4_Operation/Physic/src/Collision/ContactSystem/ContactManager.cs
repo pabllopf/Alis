@@ -593,7 +593,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="output">The output</param>
         private void UpdateContactToi(Contact c, ToiOutput output)
         {
-            float beta = output.T;
+            float beta = output.Property;
             float alpha = output.State == ToiOutputState.Touching ? Math.Min(c.FixtureA.Body.Sweep.Alpha0 + (1.0f - c.FixtureA.Body.Sweep.Alpha0) * beta, 1.0f) : 1.0f;
 
             c.Toi = alpha;
