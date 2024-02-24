@@ -57,30 +57,5 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The axis
         /// </summary>
         public readonly byte axis;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private readonly byte padding1;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private readonly byte padding2;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private readonly byte padding3;
-
-        /// <summary>
-        ///     The axis value
-        /// </summary>
-        public readonly short axisValue;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        public readonly ushort padding4;
     }
 }
