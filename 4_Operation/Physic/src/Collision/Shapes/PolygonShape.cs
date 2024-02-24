@@ -171,7 +171,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             for (int i = 1; i < numberOfVertices; ++i)
             {
                 float x = vertices[i].X;
-                if (x > maxX || ((x == maxX) && (vertices[i].Y < vertices[rightmostVertexIndex].Y)))
+                if (x > maxX || ((Math.Abs(x - maxX) < 0.01f) && (vertices[i].Y < vertices[rightmostVertexIndex].Y)))
                 {
                     rightmostVertexIndex = i;
                     maxX = x;
@@ -336,7 +336,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             // where 0 <= u && 0 <= v && u + v <= 1.
             //
             // We integrate u from [0,1-v] and then v from [0,1].
-            // We also need to use the Jacobian of the transformation:
+            // We also need to use the Jacobin of the transformation:
             // D = cross(e1, e2)
             //
             // Simplification: triangle centroid = (1/3) * (p1 + p2 + p3)
@@ -381,10 +381,10 @@ namespace Alis.Core.Physic.Collision.Shapes
                 float ex1 = e1.X, ey1 = e1.Y;
                 float ex2 = e2.X, ey2 = e2.Y;
 
-                float intx2 = ex1 * ex1 + ex2 * ex1 + ex2 * ex2;
-                float inty2 = ey1 * ey1 + ey2 * ey1 + ey2 * ey2;
+                float intX2 = ex1 * ex1 + ex2 * ex1 + ex2 * ex2;
+                float intY2 = ey1 * ey1 + ey2 * ey1 + ey2 * ey2;
 
-                I += 0.25f * inv3 * d * (intx2 + inty2);
+                I += 0.25f * inv3 * d * (intX2 + intY2);
             }
 
             //The area is too small for the engine to handle.
