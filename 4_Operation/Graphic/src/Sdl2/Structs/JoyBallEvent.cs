@@ -57,30 +57,5 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The ball
         /// </summary>
         public readonly byte ball;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private readonly byte padding1;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private readonly byte padding2;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private readonly byte padding3;
-
-        /// <summary>
-        ///     The x rel
-        /// </summary>
-        public readonly short xRel;
-
-        /// <summary>
-        ///     The y rel
-        /// </summary>
-        public readonly short yRel;
     }
 }
