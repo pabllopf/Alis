@@ -56,10 +56,10 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         public readonly Queue<Contact> ContactPool = new Queue<Contact>(256);
 
         /// <summary>Fires when the broadphase detects that two Fixtures are close to each other.</summary>
-        private readonly BroadPhaseHandler onBroadphaseCollision;
+        private readonly BroadPhaseHandler onBroadPhaseCollision;
 
         /// <summary>Fires when a contact is created</summary>
-        public BeginContactHandler BeginContact;
+        public BeginContactHandler BeginContact { get; }
 
         /// <summary>
         ///     The contact count
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         internal ContactManager(IBroadPhase broadPhase)
         {
             BroadPhase = broadPhase;
-            onBroadphaseCollision = AddPair;
+            onBroadPhaseCollision = AddPair;
             Current = this;
         }
 
@@ -266,7 +266,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         internal void FindNewContacts()
         {
-            BroadPhase.UpdatePairs(onBroadphaseCollision);
+            BroadPhase.UpdatePairs(onBroadPhaseCollision);
         }
 
         /// <summary>
