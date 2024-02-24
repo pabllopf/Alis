@@ -42,16 +42,6 @@ namespace Alis.Core.Physic.Collision.Shapes
     public class EdgeShape : Shape
     {
         /// <summary>
-        ///     The one sided
-        /// </summary>
-        private bool oneSided;
-
-        /// <summary>
-        ///     The vertex
-        /// </summary>
-        private Vector2 vertex0;
-
-        /// <summary>
         ///     The vertex
         /// </summary>
         private Vector2 vertex1;
@@ -60,11 +50,6 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     The vertex
         /// </summary>
         private Vector2 vertex2;
-
-        /// <summary>
-        ///     The vertex
-        /// </summary>
-        private Vector2 vertex3;
 
         /// <summary>Create a new EdgeShape with the specified start and end. This edge supports two-sided collision.</summary>
         /// <param name="start">The start of the edge.</param>
@@ -93,25 +78,13 @@ namespace Alis.Core.Physic.Collision.Shapes
         public override int ChildCount => 1;
 
         /// <summary>Is true if the edge is connected to an adjacent vertex before vertex 1.</summary>
-        public bool OneSided
-        {
-            get => oneSided;
-            set => oneSided = value;
-        }
+        public bool OneSided { get; set; }
 
         /// <summary>Optional adjacent vertices. These are used for smooth collision.</summary>
-        public Vector2 Vertex0
-        {
-            get => vertex0;
-            set => vertex0 = value;
-        }
+        public Vector2 Vertex0 { get; set; }
 
         /// <summary>Optional adjacent vertices. These are used for smooth collision.</summary>
-        public Vector2 Vertex3
-        {
-            get => vertex3;
-            set => vertex3 = value;
-        }
+        public Vector2 Vertex3 { get; set; }
 
         /// <summary>These are the edge vertices</summary>
         public Vector2 Vertex1
@@ -142,7 +115,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="v1">The </param>
         /// <param name="v2">The </param>
         /// <param name="v3">The </param>
-        public void SetOneSided(Vector2 v0, Vector2 v1, Vector2 v2, Vector2 v3)
+        private void SetOneSided(Vector2 v0, Vector2 v1, Vector2 v2, Vector2 v3)
         {
             Vertex0 = v0;
             Vertex1 = v1;
@@ -158,7 +131,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         /// <param name="start">The start</param>
         /// <param name="end">The end</param>
-        public void SetTwoSided(Vector2 start, Vector2 end)
+        private void SetTwoSided(Vector2 start, Vector2 end)
         {
             Vertex1 = start;
             Vertex2 = end;
