@@ -42,16 +42,16 @@ namespace Alis.Core.Aspect.Math.Util
         private readonly int hashCode;
 
         /// <summary>The X value of the vector component of the quaternion.</summary>
-        public float X;
+        public float X { get; private set; }
 
         /// <summary>The Y value of the vector component of the quaternion.</summary>
-        public float Y;
+        public float Y { get; private set; }
 
         /// <summary>The Z value of the vector component of the quaternion.</summary>
-        public float Z;
+        public float Z { get; private set; }
 
         /// <summary>The rotation component of the quaternion.</summary>
-        public float W;
+        public float W { get; private set; }
 
         /// <summary>
         ///     The count
