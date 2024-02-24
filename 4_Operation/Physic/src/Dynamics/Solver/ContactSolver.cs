@@ -320,7 +320,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="points">The points</param>
         private void InitializeWorldManifold(ref Manifold manifold, ref Transform xfA, float radiusA, ref Transform xfB, float radiusB, out Vector2 normal, out FixedArray2<Vector2> points)
         {
-            WorldManifold.Initialize(ref manifold, ref xfA, radiusA, ref xfB, radiusB, out normal, out points, out _);
+            WorldManifold.Initialize(ref manifold, ref xfA, radiusA, ref xfB, radiusB, out normal, out points);
         }
 
         /// <summary>
