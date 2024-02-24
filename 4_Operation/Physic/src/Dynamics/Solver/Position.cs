@@ -42,7 +42,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 C = Vector2.Zero;
+        public Vector2 C;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Position" /> class
