@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     The position
         /// </summary>
-        internal Vector2 Positionprivate;
+        internal Vector2 PositionCircle;
 
         /// <summary>Create a new circle with the desired radius and density.</summary>
         /// <param name="radius">The radius of the circle.</param>
@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         public CircleShape(float radius, float density, Vector2 position = default(Vector2)) : base(ShapeType.Circle,
             radius, density)
         {
-            Positionprivate = position;
+            PositionCircle = position;
             ComputeProperties();
         }
 
@@ -78,12 +78,12 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>Get or set the position of the circle</summary>
         public Vector2 Position
         {
-            get => Positionprivate;
+            get => PositionCircle;
             set
             {
-                if (Positionprivate != value)
+                if (PositionCircle != value)
                 {
-                    Positionprivate = value;
+                    PositionCircle = value;
                     ComputeInertia();
                 }
             }
@@ -96,7 +96,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
         public override bool TestPoint(ref Transform transform, ref Vector2 point) =>
-            TestPointHelper.TestPointCircle(ref Positionprivate, RadiusPrivate, ref point, ref transform);
+            TestPointHelper.TestPointCircle(ref PositionCircle, RadiusPrivate, ref point, ref transform);
 
         /// <summary>
         ///     Describes whether this instance ray cast
@@ -108,7 +108,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <returns>The bool</returns>
         public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
             out RayCastOutput output) =>
-            RayCastHelper.RayCastCircle(ref Positionprivate, RadiusPrivate, ref input, ref transform, out output);
+            RayCastHelper.RayCastCircle(ref PositionCircle, RadiusPrivate, ref input, ref transform, out output);
 
         /// <summary>
         ///     Computes the aabb using the specified transform
@@ -118,7 +118,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="aabb">The aabb</param>
         public override void ComputeAabb(ref Transform transform, int childIndex, out Aabb aabb)
         {
-            AabbHelper.ComputeCircleAabb(ref Positionprivate, RadiusPrivate, ref transform, out aabb);
+            AabbHelper.ComputeCircleAabb(ref PositionCircle, RadiusPrivate, ref transform, out aabb);
         }
 
         /// <summary>
@@ -146,12 +146,12 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         private void ComputeInertia()
         {
-            MassDataPrivate.Centroid = Positionprivate;
+            MassDataPrivate.Centroid = PositionCircle;
 
             // inertia about the local origin
             MassDataPrivate.Inertia = MassDataPrivate.Mass *
                                       (0.5f * RadiusPrivate * RadiusPrivate +
-                                       Vector2.Dot(Positionprivate, Positionprivate));
+                                       Vector2.Dot(PositionCircle, PositionCircle));
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 ShapeTypePrivate = ShapeTypePrivate,
                 RadiusPrivate = RadiusPrivate,
                 DensityPrivate = DensityPrivate,
-                Positionprivate = Positionprivate,
+                PositionCircle = PositionCircle,
                 MassDataPrivate = MassDataPrivate
             };
             return clone;

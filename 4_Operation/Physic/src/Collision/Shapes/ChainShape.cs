@@ -46,21 +46,6 @@ namespace Alis.Core.Physic.Collision.Shapes
     /// </summary>
     public class ChainShape : Shape
     {
-        /// <summary>
-        ///     The next vertex
-        /// </summary>
-        private Vector2 nextVertex;
-
-        /// <summary>
-        ///     The next vertex
-        /// </summary>
-        private Vector2 prevVertex;
-
-        /// <summary>
-        ///     The vertices
-        /// </summary>
-        private Vertices vertices;
-
         /// <summary>Create a new ChainShape from the vertices.</summary>
         /// <param name="vertices">The vertices to use. Must contain 2 or more vertices.</param>
         /// <param name="createLoop">
@@ -105,28 +90,16 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>The vertices. These are not owned/freed by the chain Shape.</summary>
-        public Vertices Vertices
-        {
-            get => vertices;
-            set => vertices = value;
-        }
+        public Vertices Vertices { get; private set; }
 
         /// <summary>Edge count = vertex count - 1</summary>
         public override int ChildCount => Vertices.Count - 1;
 
         /// <summary>Establish connectivity to a vertex that precedes the first vertex. Don't call this for loops.</summary>
-        public Vector2 PrevVertex
-        {
-            get => prevVertex;
-            set => prevVertex = value;
-        }
+        private Vector2 PrevVertex { get; set; }
 
         /// <summary>Establish connectivity to a vertex that follows the last vertex. Don't call this for loops.</summary>
-        public Vector2 NextVertex
-        {
-            get => nextVertex;
-            set => nextVertex = value;
-        }
+        private Vector2 NextVertex { get; set; }
 
         //Velcro: The original code returned an EdgeShape for each call. To reduce garbage we merge the properties onto an existing EdgeShape
         /// <summary>
@@ -147,23 +120,9 @@ namespace Alis.Core.Physic.Collision.Shapes
             edge.Vertex2 = Vertices[index + 1];
             edge.OneSided = true;
 
-            if (index > 0)
-            {
-                edge.Vertex0 = Vertices[index - 1];
-            }
-            else
-            {
-                edge.Vertex0 = PrevVertex;
-            }
+            edge.Vertex0 = index > 0 ? Vertices[index - 1] : PrevVertex;
 
-            if (index < Vertices.Count - 2)
-            {
-                edge.Vertex3 = Vertices[index + 2];
-            }
-            else
-            {
-                edge.Vertex3 = NextVertex;
-            }
+            edge.Vertex3 = index < Vertices.Count - 2 ? Vertices[index + 2] : NextVertex;
         }
 
         /// <summary>
