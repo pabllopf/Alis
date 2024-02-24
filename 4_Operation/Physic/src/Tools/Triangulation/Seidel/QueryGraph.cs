@@ -104,9 +104,9 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// <param name="tList">The list</param>
         public void Case1(Sink sink, Edge edge, Trapezoid[] tList)
         {
-            YNode yNode = new YNode(edge, Sink.Isink(tList[1]), Sink.Isink(tList[2]));
-            XNode qNode = new XNode(edge.Q, yNode, Sink.Isink(tList[3]));
-            XNode pNode = new XNode(edge.P, Sink.Isink(tList[0]), qNode);
+            YNode yNode = new YNode(edge, Sink.IsInk(tList[1]), Sink.IsInk(tList[2]));
+            XNode qNode = new XNode(edge.Q, yNode, Sink.IsInk(tList[3]));
+            XNode pNode = new XNode(edge.P, Sink.IsInk(tList[0]), qNode);
             Replace(sink, pNode);
         }
 
@@ -118,8 +118,8 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// <param name="tList">The list</param>
         public void Case2(Sink sink, Edge edge, Trapezoid[] tList)
         {
-            YNode yNode = new YNode(edge, Sink.Isink(tList[1]), Sink.Isink(tList[2]));
-            XNode pNode = new XNode(edge.P, Sink.Isink(tList[0]), yNode);
+            YNode yNode = new YNode(edge, Sink.IsInk(tList[1]), Sink.IsInk(tList[2]));
+            XNode pNode = new XNode(edge.P, Sink.IsInk(tList[0]), yNode);
             Replace(sink, pNode);
         }
 
@@ -131,7 +131,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// <param name="tList">The list</param>
         public void Case3(Sink sink, Edge edge, Trapezoid[] tList)
         {
-            YNode yNode = new YNode(edge, Sink.Isink(tList[0]), Sink.Isink(tList[1]));
+            YNode yNode = new YNode(edge, Sink.IsInk(tList[0]), Sink.IsInk(tList[1]));
             Replace(sink, yNode);
         }
 
@@ -143,8 +143,8 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// <param name="tList">The list</param>
         public void Case4(Sink sink, Edge edge, Trapezoid[] tList)
         {
-            YNode yNode = new YNode(edge, Sink.Isink(tList[0]), Sink.Isink(tList[1]));
-            XNode qNode = new XNode(edge.Q, yNode, Sink.Isink(tList[2]));
+            YNode yNode = new YNode(edge, Sink.IsInk(tList[0]), Sink.IsInk(tList[1]));
+            XNode qNode = new XNode(edge.Q, yNode, Sink.IsInk(tList[2]));
             Replace(sink, qNode);
         }
     }

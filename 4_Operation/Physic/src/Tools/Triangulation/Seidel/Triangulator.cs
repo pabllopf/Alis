@@ -93,7 +93,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
             edgeList = InitEdges(polyLine);
             trapezoidalMap = new TrapezoidalMap();
             boundingBox = trapezoidalMap.BoundingBox(edgeList);
-            queryGraph = new QueryGraph(Sink.Isink(boundingBox));
+            queryGraph = new QueryGraph(Sink.IsInk(boundingBox));
 
             Process();
         }
