@@ -277,7 +277,7 @@ namespace Alis.Core.Physic.Dynamics
                 Fixture fixtureB = contact.FixtureB;
                 if (fixtureA == this || fixtureB == this)
                 {
-                    contact.Flags |= ContactFlags.FilterFlag;
+                    contact.Flags |= ContactSetting.FilterFlag;
                 }
 
                 edge = edge.Next;

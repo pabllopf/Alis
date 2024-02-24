@@ -218,7 +218,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 }
 
                 Add(contact);
-                contact.Flags |= ContactFlags.IslandFlag;
+                contact.Flags |= ContactSetting.IslandFlag;
 
                 Body other = ce.Other;
 
@@ -687,7 +687,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 // Invalidate all contact TOIs on this displaced body.
                 for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
                 {
-                    ce.Contact.Flags &= ~(ContactFlags.ToiFlag | ContactFlags.IslandFlag);
+                    ce.Contact.Flags &= ~(ContactSetting.ToiFlag | ContactSetting.IslandFlag);
                 }
             }
         }

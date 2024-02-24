@@ -158,7 +158,7 @@ namespace Alis.Core.Graphic.Sample
             }
 
             // create the window which should be able to have a valid OpenGL context and is resizable
-            WindowFlags flags = WindowFlags.WindowResizable | WindowFlags.WindowShown;
+            Window flags = Window.WindowResizable | Window.WindowShown;
 
             // Creates a new SDL window at the center of the screen with the given width and height.
             IntPtr window = Sdl.CreateWindow("Sample", (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, Width, Height, flags);
@@ -177,7 +177,7 @@ namespace Alis.Core.Graphic.Sample
             IntPtr renderer = Sdl.CreateRenderer(
                 window,
                 -1,
-                RendererFlags.SdlRendererAccelerated);
+                Renderer.SdlRendererAccelerated);
 
             if (renderer == IntPtr.Zero)
             {

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImNodesAttributeFlags.cs
+//  File:MessageBoxButtonFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,27 +29,22 @@
 
 using System;
 
-namespace Alis.App.Engine.UI.Extras.Node
+namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The im nodes attribute flags enum
+    ///     The sdl message box button flags enum
     /// </summary>
     [Flags]
-    public enum ImNodesAttributeFlags
+    public enum MessageBoxButton : uint
     {
         /// <summary>
-        ///     The none im nodes attribute flags
+        ///     The sdl messagebox button return key default sdl message box button flags
         /// </summary>
-        None = 0,
+        SdlMessageboxButtonReturnKeyDefault = 0x00000001,
 
         /// <summary>
-        ///     The enable link detach with drag click im nodes attribute flags
+        ///     The sdl messagebox button escape key default sdl message box button flags
         /// </summary>
-        EnableLinkDetachWithDragClick = 1,
-
-        /// <summary>
-        ///     The enable link creation on snap im nodes attribute flags
-        /// </summary>
-        EnableLinkCreationOnSnap = 2
+        SdlMessageboxButtonEscapeKeyDefault = 0x00000002
     }
 }

@@ -941,7 +941,7 @@ namespace Alis.App.Engine.UI.Extras.Node
         ///     Pushes the attribute flag using the specified flag
         /// </summary>
         /// <param name="flag">The flag</param>
-        public static void PushAttributeFlag(ImNodesAttributeFlags flag)
+        public static void PushAttributeFlag(ImNodesAttribute flag)
         {
             ImNodesNative.ImNodes_PushAttributeFlag(flag);
         }

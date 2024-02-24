@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
     ///     The sdl message box flags enum
     /// </summary>
     [Flags]
-    public enum MessageBoxFlags : uint
+    public enum MessageBox : uint
     {
         /// <summary>
         ///     The sdl messagebox error sdl message box flags

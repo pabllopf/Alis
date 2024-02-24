@@ -1375,7 +1375,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Sdl.SetSwapInterval(1);
 
             // create the window which should be able to have a valid OpenGL context and is resizable
-            WindowFlags flags = WindowFlags.WindowOpengl | WindowFlags.WindowResizable | WindowFlags.WindowMaximized;
+            Window flags = Window.WindowOpengl | Window.WindowResizable | Window.WindowMaximized;
 
             // Act
             IntPtr result = Sdl.CreateWindow(title, x, y, w, h, flags);
@@ -1415,7 +1415,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Sdl.SetSwapInterval(1);
 
             // create the window which should be able to have a valid OpenGL context and is resizable
-            const WindowFlags flags = WindowFlags.WindowOpengl | WindowFlags.WindowResizable | WindowFlags.WindowMaximized;
+            const Window flags = Window.WindowOpengl | Window.WindowResizable | Window.WindowMaximized;
 
             // Act
             int result = Sdl.CreateWindowAndRenderer(width, height, flags, out IntPtr _, out IntPtr _);
@@ -1441,7 +1441,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int y = 10;
             int w = 800;
             int h = 600;
-            WindowFlags flags = WindowFlags.WindowShown;
+            Window flags = Window.WindowShown;
             IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
 
             // Act
@@ -1737,7 +1737,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int y = 10;
             int w = 800;
             int h = 600;
-            WindowFlags flags = WindowFlags.WindowShown;
+            Window flags = Window.WindowShown;
             IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
 
             // Act
@@ -1764,7 +1764,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int y = 10;
             int w = 800;
             int h = 600;
-            WindowFlags flags = WindowFlags.WindowShown;
+            Window flags = Window.WindowShown;
             IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
             float opacity = 0.5f;
 
@@ -1792,7 +1792,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int y = 10;
             int w = 800;
             int h = 600;
-            WindowFlags flags = WindowFlags.WindowShown;
+            Window flags = Window.WindowShown;
             IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
 
             // Act
@@ -1819,7 +1819,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             const int y = 10;
             const int w = 800;
             const int h = 600;
-            const WindowFlags flags = WindowFlags.WindowShown;
+            const Window flags = Window.WindowShown;
             IntPtr modalWindow = Sdl.CreateWindow(title, x, y, w, h, flags);
             IntPtr parentWindow = Sdl.CreateWindow(title, x, y, w, h, flags);
 
@@ -1847,7 +1847,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int y = 10;
             int w = 800;
             int h = 600;
-            WindowFlags flags = WindowFlags.WindowShown;
+            Window flags = Window.WindowShown;
             IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
 
             // Act
@@ -1874,7 +1874,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int y = 10;
             int w = 800;
             int h = 600;
-            WindowFlags flags = WindowFlags.WindowShown;
+            Window flags = Window.WindowShown;
             IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
             string name = "Test Data";
 
@@ -1902,7 +1902,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int y = 10;
             int w = 800;
             int h = 600;
-            WindowFlags flags = WindowFlags.WindowShown;
+            Window flags = Window.WindowShown;
             IntPtr window = Sdl.CreateWindow(title, x, y, w, h, flags);
 
             // Act

@@ -1639,7 +1639,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindow", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalCreateWindow([IsNotNull] [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string title, [IsNotNull] int x, [IsNotNull] int y, [IsNotNull] int w, [IsNotNull] int h, [IsNotNull] WindowFlags flags);
+        internal static extern IntPtr InternalCreateWindow([IsNotNull] [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string title, [IsNotNull] int x, [IsNotNull] int y, [IsNotNull] int w, [IsNotNull] int h, [IsNotNull] Window flags);
 
         /// <summary>
         ///     Sdl the create window and renderer using the specified width
@@ -1653,7 +1653,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindowAndRenderer", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalCreateWindowAndRenderer([IsNotNull] int width, [IsNotNull] int height, [IsNotNull] WindowFlags windowFlags, out IntPtr window, out IntPtr renderer);
+        internal static extern int InternalCreateWindowAndRenderer([IsNotNull] int width, [IsNotNull] int height, [IsNotNull] Window windowFlags, out IntPtr window, out IntPtr renderer);
 
         /// <summary>
         ///     Sdl the destroy window using the specified window
@@ -3562,7 +3562,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateRenderer", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalCreateRenderer([IsNotNull] IntPtr window, [IsNotNull] int index, RendererFlags flags);
+        internal static extern IntPtr InternalCreateRenderer([IsNotNull] IntPtr window, [IsNotNull] int index, Renderer flags);
 
         /// <summary>
         ///     Sdl the create software renderer using the specified surface

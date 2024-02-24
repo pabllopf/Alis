@@ -421,7 +421,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 }
 
                 // Clear the filtering flag.
-                c.Flags &= ~ContactFlags.FilterFlag;
+                c.Flags &= ~ContactSetting.FilterFlag;
             }
 
             int proxyIdA = c.FixtureA.Proxies[c.ChildIndexA].ProxyId;
@@ -597,7 +597,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             float alpha = output.State == ToiOutputState.Touching ? Math.Min(c.FixtureA.Body.Sweep.Alpha0 + (1.0f - c.FixtureA.Body.Sweep.Alpha0) * beta, 1.0f) : 1.0f;
 
             c.Toi = alpha;
-            c.Flags &= ~ContactFlags.ToiFlag;
+            c.Flags &= ~ContactSetting.ToiFlag;
         }
 
         /// <summary>
