@@ -115,15 +115,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// <returns>The trapezoids</returns>
         public Trapezoid[] Case2(Trapezoid t, Edge e)
         {
-            Point rp;
-            if (Math.Abs(e.Q.X - t.RightPoint.X) < 0.01f)
-            {
-                rp = e.Q;
-            }
-            else
-            {
-                rp = t.RightPoint;
-            }
+            Point rp = Math.Abs(e.Q.X - t.RightPoint.X) < 0.01f ? e.Q : t.RightPoint;
 
             Trapezoid[] trapezoids = new Trapezoid[3];
             trapezoids[0] = new Trapezoid(t.LeftPoint, e.P, t.Top, t.Bottom);
@@ -152,25 +144,9 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// <returns>The trapezoids</returns>
         public Trapezoid[] Case3(Trapezoid t, Edge e)
         {
-            Point lp;
-            if (Math.Abs(e.P.X - t.LeftPoint.X) < 0.01f)
-            {
-                lp = e.P;
-            }
-            else
-            {
-                lp = t.LeftPoint;
-            }
+            Point lp = Math.Abs(e.P.X - t.LeftPoint.X) < 0.01f ? e.P : t.LeftPoint;
 
-            Point rp;
-            if (Math.Abs(e.Q.X - t.RightPoint.X) < 0.01f)
-            {
-                rp = e.Q;
-            }
-            else
-            {
-                rp = t.RightPoint;
-            }
+            Point rp = Math.Abs(e.Q.X - t.RightPoint.X) < 0.01f ? e.Q : t.RightPoint;
 
             Trapezoid[] trapezoids = new Trapezoid[2];
 
@@ -217,15 +193,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// <returns>The trapezoids</returns>
         public Trapezoid[] Case4(Trapezoid t, Edge e)
         {
-            Point lp;
-            if (Math.Abs(e.P.X - t.LeftPoint.X) < 0.01f)
-            {
-                lp = e.P;
-            }
-            else
-            {
-                lp = t.LeftPoint;
-            }
+            Point lp = Math.Abs(e.P.X - t.LeftPoint.X) < 0.01f ? e.P : t.LeftPoint;
 
             Trapezoid[] trapezoids = new Trapezoid[3];
 
@@ -258,7 +226,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         }
 
         /// <summary>
-        ///     Boundings the box using the specified edges
+        ///     Bound the box using the specified edges
         /// </summary>
         /// <param name="edges">The edges</param>
         /// <returns>The trapezoid</returns>
