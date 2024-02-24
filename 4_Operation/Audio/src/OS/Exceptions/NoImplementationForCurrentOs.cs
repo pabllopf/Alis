@@ -29,8 +29,16 @@
 
 namespace Alis.Core.Audio.OS.Exceptions
 {
+    /// <summary>
+    /// The no implementation for current os class
+    /// </summary>
+    /// <seealso cref="System.Exception"/>
     public class NoImplementationForCurrentOs : System.Exception
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NoImplementationForCurrentOs"/> class
+        /// </summary>
+        /// <param name="message">The message</param>
         public NoImplementationForCurrentOs(string message) : base(message)
         {
         }
