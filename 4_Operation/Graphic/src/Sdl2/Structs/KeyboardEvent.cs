@@ -62,17 +62,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The repeat
         /// </summary>
         public readonly byte repeat;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private readonly byte padding2;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private readonly byte padding3;
-
+        
         /// <summary>
         ///     The key sym
         /// </summary>
