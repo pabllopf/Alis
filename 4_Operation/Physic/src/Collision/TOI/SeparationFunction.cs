@@ -122,8 +122,6 @@ namespace Alis.Core.Physic.Collision.TOI
                     axis = -axis;
                 }
             }
-
-            //Velcro note: the returned value that used to be here has been removed, as it was not used.
         }
 
         /// <summary>
