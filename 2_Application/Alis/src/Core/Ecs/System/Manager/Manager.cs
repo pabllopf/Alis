@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Ecs.System.Manager
@@ -60,96 +61,96 @@ namespace Alis.Core.Ecs.System.Manager
         /// <summary>
         ///     Ons the enable
         /// </summary>
-        public virtual void OnEnable() => Logger.Trace();
+        public virtual void OnEnable() => Logger.Trace("Manager enabled.");
 
         /// <summary>
         ///     Ons the init
         /// </summary>
-        public virtual void OnInit() => Logger.Trace();
+        public virtual void OnInit() => Logger.Trace("Manager initialized.");
 
         /// <summary>
         ///     Ons the awake
         /// </summary>
-        public virtual void OnAwake() => Logger.Trace();
+        public virtual void OnAwake() => Logger.Trace("Manager awake.");
 
         /// <summary>
         ///     Ons the start
         /// </summary>
-        public virtual void OnStart() => Logger.Trace();
+        public virtual void OnStart() => Logger.Trace("Manager started.");
 
         /// <summary>
         ///     Ons the before update
         /// </summary>
-        public virtual void OnBeforeUpdate() => Logger.Trace();
+        public virtual void OnBeforeUpdate() => Logger.Trace("Manager before update.");
 
         /// <summary>
         ///     Ons the update
         /// </summary>
-        public virtual void OnUpdate() => Logger.Trace();
+        public virtual void OnUpdate() => Logger.Trace("Manager update.");
 
         /// <summary>
         ///     Ons the after update
         /// </summary>
-        public virtual void OnAfterUpdate() => Logger.Trace();
+        public virtual void OnAfterUpdate() => Logger.Trace("Manager after update.");
 
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
-        public virtual void OnBeforeFixedUpdate() => Logger.Trace();
+        public virtual void OnBeforeFixedUpdate() => Logger.Trace("Manager before fixed update.");
 
         /// <summary>
         ///     Ons the fixed update
         /// </summary>
-        public virtual void OnFixedUpdate() => Logger.Trace();
+        public virtual void OnFixedUpdate() => Logger.Trace("Manager fixed update.");
 
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
-        public virtual void OnAfterFixedUpdate() => Logger.Trace();
+        public virtual void OnAfterFixedUpdate() => Logger.Trace("Manager after fixed update.");
 
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
-        public virtual void OnDispatchEvents() => Logger.Trace();
+        public virtual void OnDispatchEvents() => Logger.Trace("Manager dispatch events.");
 
         /// <summary>
         ///     Ons the calculate
         /// </summary>
-        public virtual void OnCalculate() => Logger.Trace();
+        public virtual void OnCalculate() => Logger.Trace("Manager calculate.");
 
         /// <summary>
         ///     Ons the draw
         /// </summary>
-        public virtual void OnDraw() => Logger.Trace();
+        public virtual void OnDraw() => Logger.Trace("Manager draw.");
 
         /// <summary>
         ///     Ons the gui
         /// </summary>
-        public virtual void OnGui() => Logger.Trace();
+        public virtual void OnGui() => Logger.Trace("Manager GUI.");
 
         /// <summary>
         ///     Ons the disable
         /// </summary>
-        public virtual void OnDisable() => Logger.Trace();
+        public virtual void OnDisable() => Logger.Trace("Manager disabled.");
 
         /// <summary>
         ///     Ons the reset
         /// </summary>
-        public virtual void OnReset() => Logger.Trace();
+        public virtual void OnReset() => Logger.Trace("Manager reset.");
 
         /// <summary>
         ///     Ons the stop
         /// </summary>
-        public virtual void OnStop() => Logger.Trace();
+        public virtual void OnStop() => Logger.Trace("Manager stopped.");
 
         /// <summary>
         ///     Ons the exit
         /// </summary>
-        public virtual void OnExit() => Logger.Trace();
+        public virtual void OnExit() => Logger.Trace("Manager exited.");
         
         /// <summary>
         ///     Ons the destroy
         /// </summary>
-        public virtual void OnDestroy() => Logger.Trace();
+        public virtual void OnDestroy() => Logger.Trace("Manager destroyed.");
     }
 }
