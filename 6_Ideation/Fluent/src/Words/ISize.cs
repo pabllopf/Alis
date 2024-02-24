@@ -32,7 +32,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     /// <summary>
     ///     The size interface
     /// </summary>
-    public interface ISize<out TBuilder, in TArgument1, in TArgument2>
+    public interface ISize<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Sizes the x
@@ -40,6 +40,6 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The builder</returns>
-        TBuilder Size(TArgument1 x, TArgument2 y);
+        TBuilder Size(TArgument x, TArgument y);
     }
 }

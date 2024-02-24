@@ -42,7 +42,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
         IBuild<BoxCollider>,
         IIsActive<BoxColliderBuilder, bool>,
         IBodyType<BoxColliderBuilder, BodyType>,
-        ISize<BoxColliderBuilder, float, float>,
+        ISize<BoxColliderBuilder, float>,
         IMass<BoxColliderBuilder, float>,
         IAutoTilling<BoxColliderBuilder, bool>,
         IFixedRotation<BoxColliderBuilder, bool>,
