@@ -32,7 +32,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     /// <summary>
     ///     The position interface
     /// </summary>
-    public interface IPosition2D<out TBuilder, in TArgument1, in TArgument2>
+    public interface IPosition2D<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Positions the x
@@ -40,6 +40,6 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The builder</returns>
-        TBuilder Position(TArgument1 x, TArgument2 y);
+        TBuilder Position(TArgument x, TArgument y);
     }
 }
