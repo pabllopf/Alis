@@ -32,7 +32,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     /// <summary>
     ///     The set max interface
     /// </summary>
-    public interface ISetMax<out TBuilder, in TType, in TArgument>
+    public interface ISetMax<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Sets the max using the specified value
@@ -40,6 +40,6 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        TBuilder SetMax<T>(TArgument value) where T : TType;
+        TBuilder SetMax<T>(TArgument value);
     }
 }
