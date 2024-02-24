@@ -41,7 +41,17 @@ namespace Alis.Core.Physic.Shared.Optimization
         /// <summary>
         ///     The value
         /// </summary>
-        public T Value0, Value1, Value2;
+        public T Value0;
+
+        /// <summary>
+        ///     The value
+        /// </summary>
+        public T Value1;
+
+        /// <summary>
+        ///     The value
+        /// </summary>
+        public T Value2;
 
         /// <summary>
         ///     The index
