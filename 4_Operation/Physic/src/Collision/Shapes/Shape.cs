@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
@@ -94,7 +95,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             {
                 Debug.Assert(value >= 0);
 
-                if (RadiusPrivate != value)
+                if (Math.Abs(RadiusPrivate - value) > 0.01F)
                 {
                     RadiusPrivate = value;
                     ComputeProperties();
@@ -112,7 +113,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             {
                 Debug.Assert(value >= 0);
 
-                if (DensityPrivate != value)
+                if (Math.Abs(DensityPrivate - value) > 0.01F)
                 {
                     DensityPrivate = value;
                     ComputeProperties();
