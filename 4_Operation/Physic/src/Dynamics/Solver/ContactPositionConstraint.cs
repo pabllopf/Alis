@@ -46,51 +46,71 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The index
         /// </summary>
-        public int IndexA;
+        public int IndexA { get; set; }
 
         /// <summary>
         ///     The index
         /// </summary>
-        public int IndexB;
+        public int IndexB { get; set; }
 
         /// <summary>
         ///     The inv ib
         /// </summary>
-        public float InvIa, InvIb;
+        public float InvIa { get; set; }
+
+        /// <summary>
+        ///     The inv ib
+        /// </summary>
+        public float InvIb { get; set; }
 
         /// <summary>
         ///     The inv mass
         /// </summary>
-        public float InvMassA, InvMassB;
+        public float InvMassA { get; set; }
+
+        /// <summary>
+        ///     The inv mass
+        /// </summary>
+        public float InvMassB { get; set; }
 
         /// <summary>
         ///     The local center
         /// </summary>
-        public Vector2 LocalCenterA, LocalCenterB;
+        public Vector2 LocalCenterA { get; set; }
+
+        /// <summary>
+        ///     The local center
+        /// </summary>
+        public Vector2 LocalCenterB { get; set; }
 
         /// <summary>
         ///     The local normal
         /// </summary>
-        public Vector2 LocalNormal;
+        public Vector2 LocalNormal { get; set; }
 
         /// <summary>
         ///     The local point
         /// </summary>
-        public Vector2 LocalPoint;
+        public Vector2 LocalPoint { get; set; }
 
         /// <summary>
         ///     The point count
         /// </summary>
-        public int PointCount;
+        public int PointCount { get; set; }
 
         /// <summary>
         ///     The radius
         /// </summary>
-        public float RadiusA, RadiusB;
+        public float RadiusA { get; set; }
+
+        /// <summary>
+        ///     The radius
+        /// </summary>
+        public float RadiusB { get; set; }
 
         /// <summary>
         ///     The type
         /// </summary>
-        public ManifoldType Type;
+        public ManifoldType Type { get; set; }
     }
 }
