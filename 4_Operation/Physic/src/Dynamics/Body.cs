@@ -131,27 +131,27 @@ namespace Alis.Core.Physic.Dynamics
 
             if (isBullet)
             {
-                Flags |= BodyFlags.BulletFlag;
+                Flags |= BodySettings.BulletFlag;
             }
 
             if (fixedRotation)
             {
-                Flags |= BodyFlags.FixedRotationFlag;
+                Flags |= BodySettings.FixedRotationFlag;
             }
 
             if (allowSleep)
             {
-                Flags |= BodyFlags.AutoSleepFlag;
+                Flags |= BodySettings.AutoSleepFlag;
             }
 
             if (awake)
             {
-                Flags |= BodyFlags.AwakeFlag;
+                Flags |= BodySettings.AwakeFlag;
             }
 
             if (enabled)
             {
-                Flags |= BodyFlags.Enabled;
+                Flags |= BodySettings.Enabled;
             }
 
             Xf.Position = position;
@@ -178,7 +178,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The flags
         /// </summary>
-        internal BodyFlags Flags { get; set; }
+        internal BodySettings Flags { get; set; }
 
         /// <summary>
         ///     The force
@@ -247,7 +247,7 @@ namespace Alis.Core.Physic.Dynamics
                     AngularVelocity = 0.0f;
                     Sweep.A0 = Sweep.A;
                     Sweep.C0 = Sweep.C;
-                    Flags &= ~BodyFlags.AwakeFlag;
+                    Flags &= ~BodySettings.AwakeFlag;
                     SynchronizeFixtures();
                 }
 
@@ -332,16 +332,16 @@ namespace Alis.Core.Physic.Dynamics
         /// <value><c>true</c> if this instance is included in CCD; otherwise, <c>false</c>.</value>
         public bool IsBullet
         {
-            get => (Flags & BodyFlags.BulletFlag) == BodyFlags.BulletFlag;
+            get => (Flags & BodySettings.BulletFlag) == BodySettings.BulletFlag;
             set
             {
                 if (value)
                 {
-                    Flags |= BodyFlags.BulletFlag;
+                    Flags |= BodySettings.BulletFlag;
                 }
                 else
                 {
-                    Flags &= ~BodyFlags.BulletFlag;
+                    Flags &= ~BodySettings.BulletFlag;
                 }
             }
         }
@@ -350,16 +350,16 @@ namespace Alis.Core.Physic.Dynamics
         /// <value><c>true</c> if sleeping is allowed; otherwise, <c>false</c>.</value>
         public bool SleepingAllowed
         {
-            get => (Flags & BodyFlags.AutoSleepFlag) == BodyFlags.AutoSleepFlag;
+            get => (Flags & BodySettings.AutoSleepFlag) == BodySettings.AutoSleepFlag;
             set
             {
                 if (value)
                 {
-                    Flags |= BodyFlags.AutoSleepFlag;
+                    Flags |= BodySettings.AutoSleepFlag;
                 }
                 else
                 {
-                    Flags &= ~BodyFlags.AutoSleepFlag;
+                    Flags &= ~BodySettings.AutoSleepFlag;
                     Awake = true;
                 }
             }
@@ -369,7 +369,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <value><c>true</c> if awake; otherwise, <c>false</c>.</value>
         public bool Awake
         {
-            get => (Flags & BodyFlags.AwakeFlag) == BodyFlags.AwakeFlag;
+            get => (Flags & BodySettings.AwakeFlag) == BodySettings.AwakeFlag;
             set
             {
                 if (Type == BodyType.Static)
@@ -379,12 +379,12 @@ namespace Alis.Core.Physic.Dynamics
 
                 if (value)
                 {
-                    Flags |= BodyFlags.AwakeFlag;
+                    Flags |= BodySettings.AwakeFlag;
                     SleepTime = 0.0f;
                 }
                 else
                 {
-                    Flags &= ~BodyFlags.AwakeFlag;
+                    Flags &= ~BodySettings.AwakeFlag;
                     ResetDynamics();
                     SleepTime = 0.0f;
                 }
@@ -405,7 +405,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
         public bool Enabled
         {
-            get => (Flags & BodyFlags.Enabled) == BodyFlags.Enabled;
+            get => (Flags & BodySettings.Enabled) == BodySettings.Enabled;
 
             set
             {
@@ -416,7 +416,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 if (value)
                 {
-                    Flags |= BodyFlags.Enabled;
+                    Flags |= BodySettings.Enabled;
 
                     IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
                     for (int i = 0; i < FixtureList.Count; i++)
@@ -426,7 +426,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
                 else
                 {
-                    Flags &= ~BodyFlags.Enabled;
+                    Flags &= ~BodySettings.Enabled;
 
                     IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
 
@@ -452,7 +452,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <value><c>true</c> if it has fixed rotation; otherwise, <c>false</c>.</value>
         public bool FixedRotation
         {
-            get => (Flags & BodyFlags.FixedRotationFlag) == BodyFlags.FixedRotationFlag;
+            get => (Flags & BodySettings.FixedRotationFlag) == BodySettings.FixedRotationFlag;
             set
             {
                 if (value == FixedRotation)
@@ -462,11 +462,11 @@ namespace Alis.Core.Physic.Dynamics
 
                 if (value)
                 {
-                    Flags |= BodyFlags.FixedRotationFlag;
+                    Flags |= BodySettings.FixedRotationFlag;
                 }
                 else
                 {
-                    Flags &= ~BodyFlags.FixedRotationFlag;
+                    Flags &= ~BodySettings.FixedRotationFlag;
                 }
 
                 AngularVelocity = 0f;
@@ -511,7 +511,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Gets the value of the is island
         /// </summary>
-        internal bool IsIsland => (Flags & BodyFlags.IslandFlag) == BodyFlags.IslandFlag;
+        internal bool IsIsland => (Flags & BodySettings.IslandFlag) == BodySettings.IslandFlag;
 
         /// <summary>
         ///     Gets the value of the is static
@@ -704,16 +704,16 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public bool IgnoreCcd
         {
-            get => (Flags & BodyFlags.IgnoreCcd) == BodyFlags.IgnoreCcd;
+            get => (Flags & BodySettings.IgnoreCcd) == BodySettings.IgnoreCcd;
             set
             {
                 if (value)
                 {
-                    Flags |= BodyFlags.IgnoreCcd;
+                    Flags |= BodySettings.IgnoreCcd;
                 }
                 else
                 {
-                    Flags &= ~BodyFlags.IgnoreCcd;
+                    Flags &= ~BodySettings.IgnoreCcd;
                 }
             }
         }
@@ -748,7 +748,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public Fixture AddFixture(Fixture fixture)
         {
-            if ((Flags & BodyFlags.Enabled) == BodyFlags.Enabled)
+            if ((Flags & BodySettings.Enabled) == BodySettings.Enabled)
             {
                 if (ContactManager.Current != null)
                 {
@@ -808,7 +808,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            if ((Flags & BodyFlags.Enabled) == BodyFlags.Enabled)
+            if ((Flags & BodySettings.Enabled) == BodySettings.Enabled)
             {
                 IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
                 fixture.DestroyProxies(broadPhase);
@@ -1050,7 +1050,7 @@ namespace Alis.Core.Physic.Dynamics
                 localCenter *= InvMass;
             }
 
-            if ((inertia > 0.0f) && ((Flags & BodyFlags.FixedRotationFlag) == 0))
+            if ((inertia > 0.0f) && ((Flags & BodySettings.FixedRotationFlag) == 0))
             {
                 inertia -= mass * Vector2.Dot(localCenter, localCenter);
 
@@ -1154,7 +1154,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
 
-            if ((Flags & BodyFlags.AwakeFlag) == BodyFlags.AwakeFlag)
+            if ((Flags & BodySettings.AwakeFlag) == BodySettings.AwakeFlag)
             {
                 Transform xf1 = new Transform();
                 xf1.Rotation.Set(Sweep.A0);
@@ -1209,7 +1209,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Initializes a new instance of the <see cref="ClearFlags" /> class
         /// </summary>
-        internal void ClearFlags() => Flags &= ~BodyFlags.IslandFlag;
+        internal void ClearFlags() => Flags &= ~BodySettings.IslandFlag;
 
         /// <summary>
         ///     Advances the alpha
@@ -1239,7 +1239,7 @@ namespace Alis.Core.Physic.Dynamics
         public void CheckOutRange()
         {
             // If a body was not in an island then it did not move.
-            if ((Flags & BodyFlags.IslandFlag) == 0)
+            if ((Flags & BodySettings.IslandFlag) == 0)
             {
                 return;
             }
@@ -1257,7 +1257,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void SetAlphaToZero()
         {
-            Flags &= ~BodyFlags.IslandFlag;
+            Flags &= ~BodySettings.IslandFlag;
             Sweep.Alpha0 = 0.0f;
         }
     }

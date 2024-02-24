@@ -142,8 +142,8 @@ namespace Alis.Core.Physic.Dynamics
             island.Add(bodies[1]);
             island.Add(minContact);
 
-            bodies[0].Flags |= BodyFlags.IslandFlag;
-            bodies[1].Flags |= BodyFlags.IslandFlag;
+            bodies[0].Flags |= BodySettings.IslandFlag;
+            bodies[1].Flags |= BodySettings.IslandFlag;
             minContact.Flags &= ~ContactSetting.IslandFlag;
         }
 
@@ -245,7 +245,7 @@ namespace Alis.Core.Physic.Dynamics
                 return;
             }
 
-            other.Flags |= BodyFlags.IslandFlag;
+            other.Flags |= BodySettings.IslandFlag;
 
             if (other.BodyType != BodyType.Static)
             {
