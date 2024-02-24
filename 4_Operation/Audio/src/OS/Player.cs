@@ -30,6 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Alis.Core.Audio.OS.Exceptions;
 using Alis.Core.Audio.OS.Interfaces;
 using Alis.Core.Audio.OS.Players;
 
@@ -56,17 +57,17 @@ namespace Alis.Core.Audio.OS
             {
                 _internalPlayer = new WindowsPlayer();
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 _internalPlayer = new LinuxPlayer();
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 _internalPlayer = new MacPlayer();
             }
             else
             {
-                throw new Exception("No implementation exist for the current OS");
+                throw new NoImplementationForCurrentOs("No implementation exist for the current OS");
             }
 
             _internalPlayer.PlaybackFinished += OnPlaybackFinished;
@@ -100,7 +101,7 @@ namespace Alis.Core.Audio.OS
         }
 
         /// <summary>
-        ///     Pauses any ongong playback. Sets Paused flag to true. Doesn't modify Playing flag.
+        ///     Pauses any playback. Sets Paused flag to true. Doesn't modify Playing flag.
         /// </summary>
         /// <returns></returns>
         public async Task Pause()
