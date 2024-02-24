@@ -58,7 +58,7 @@ namespace Alis.Core.Audio
                     player = new Player();
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(fullPathAudio));
             }
 
             Logger.Log($"Init music: '{fullPathAudio}'");
@@ -76,7 +76,7 @@ namespace Alis.Core.Audio
                     player = new Player();
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(AudioBackendType));
             }
 
             Logger.Log("Init music: 'null file'");
@@ -98,7 +98,7 @@ namespace Alis.Core.Audio
                     player = new Player();
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(audioBackendType));
             }
         }
 
