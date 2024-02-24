@@ -37,8 +37,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay
     /// </summary>
     internal class TriangulationPoint
     {
-        // List of edges this point constitutes an upper ending point (CDT)
-
         /// <summary>
         ///     The
         /// </summary>
@@ -95,10 +93,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay
         /// <param name="e">The </param>
         public void AddEdge(DtSweepConstraint e)
         {
-            if (Edges == null)
-            {
-                Edges = new List<DtSweepConstraint>();
-            }
+            Edges ??= new List<DtSweepConstraint>();
 
             Edges.Add(e);
         }
