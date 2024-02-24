@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
             List<Vector2> verts = path.GetVertices(subdivisions);
 
             List<Vertices> decomposedVerts =
-                Triangulate.ConvexPartition(new Vertices(verts), TriangulationAlgorithm.Bayazit);
+                Triangulate.ConvexPartition(new Vertices(verts), TriangulationAlgorithm.BayaZit);
 
             foreach (Vertices item in decomposedVerts)
             {
