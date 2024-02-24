@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GlContext.cs
+//  File:BlendMode.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,29 +32,44 @@ using System;
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl gl context enum
+    ///     The sdl blend mode enum
     /// </summary>
     [Flags]
-    public enum GlContext
+    public enum BlendModes
     {
         /// <summary>
-        ///     The sdl gl context debug flag sdl gl context
+        ///     The sdl blend factor none sdl blend factor
         /// </summary>
-        SdlGlContextDebugFlag = 0x0001,
+        None = 0x00000000,
 
         /// <summary>
-        ///     The sdl gl context forward compatible flag sdl gl context
+        ///     The sdl blend factor blend sdl blend factor
         /// </summary>
-        SdlGlContextForwardCompatibleFlag = 0x0002,
+        BlendModeBlend = 0x00000001,
 
         /// <summary>
-        ///     The sdl gl context robust access flag sdl gl context
+        ///     The sdl blend factor add sdl blend factor
         /// </summary>
-        SdlGlContextRobustAccessFlag = 0x0004,
+        BlendModeAdd = 0x00000002,
 
         /// <summary>
-        ///     The sdl gl context reset isolation flag sdl gl context
+        ///     The sdl blend factor mod sdl blend factor
         /// </summary>
-        SdlGlContextResetIsolationFlag = 0x0008
+        BlendModeMod = 0x00000004,
+
+        /// <summary>
+        ///     The sdl blend factor mul sdl blend factor
+        /// </summary>
+        BlendModeMul = 0x00000008,
+
+        /// <summary>
+        ///     The sdl blend factor invalid sdl blend factor
+        /// </summary>
+        BlendModeInvalid = 0x7FFFFFFF,
+
+        /// <summary>
+        ///     The blend all blend mode
+        /// </summary>
+        BlendAll = BlendModeBlend | BlendModeAdd | BlendModeMod | BlendModeMul | BlendModeInvalid
     }
 }

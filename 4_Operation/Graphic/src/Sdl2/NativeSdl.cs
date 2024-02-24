@@ -2391,7 +2391,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetSurfaceBlendMode", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalGetSurfaceBlendMode([IsNotNull] IntPtr surface, out BlendMode blendMode);
+        internal static extern int InternalGetSurfaceBlendMode([IsNotNull] IntPtr surface, out BlendModes blendMode);
 
         /// <summary>
         ///     Sdl the get surface color mod using the specified surface
@@ -2460,7 +2460,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_SetSurfaceBlendMode", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalSetSurfaceBlendMode([IsNotNull] IntPtr surface, BlendMode blendMode);
+        internal static extern int InternalSetSurfaceBlendMode([IsNotNull] IntPtr surface, BlendModes blendMode);
 
         /// <summary>
         ///     Sdl the set surface color mod using the specified surface
@@ -3550,7 +3550,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_ComposeCustomBlendMode", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern BlendMode InternalComposeCustomBlendMode([IsNotNull] BlendFactor srcColorFactor, [IsNotNull] BlendFactor dstColorFactor, [IsNotNull] BlendOperation colorOperation, [IsNotNull] BlendFactor srcAlphaFactor, [IsNotNull] BlendFactor dstAlphaFactor, [IsNotNull] BlendOperation alphaOperation);
+        internal static extern BlendModes InternalComposeCustomBlendMode([IsNotNull] BlendFactor srcColorFactor, [IsNotNull] BlendFactor dstColorFactor, [IsNotNull] BlendOperation colorOperation, [IsNotNull] BlendFactor srcAlphaFactor, [IsNotNull] BlendFactor dstAlphaFactor, [IsNotNull] BlendOperation alphaOperation);
 
         /// <summary>
         ///     Sdl the create renderer using the specified window
@@ -3635,7 +3635,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetRenderDrawBlendMode", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalGetRenderDrawBlendMode([IsNotNull] IntPtr renderer, out BlendMode blendMode);
+        internal static extern int InternalGetRenderDrawBlendMode([IsNotNull] IntPtr renderer, out BlendModes blendMode);
 
         /// <summary>
         ///     Sdl the set texture scale mode using the specified texture
@@ -3758,7 +3758,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetTextureBlendMode", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalGetTextureBlendMode([IsNotNull] IntPtr texture, out BlendMode blendMode);
+        internal static extern int InternalGetTextureBlendMode([IsNotNull] IntPtr texture, out BlendModes blendMode);
 
         /// <summary>
         ///     Sdl the get texture color mod using the specified texture
@@ -4615,7 +4615,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_SetRenderDrawBlendMode", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalSetRenderDrawBlendMode([IsNotNull] IntPtr renderer, BlendMode blendMode);
+        internal static extern int InternalSetRenderDrawBlendMode([IsNotNull] IntPtr renderer, BlendModes blendMode);
 
         /// <summary>
         ///     Sdl the set render draw color using the specified renderer
@@ -4662,7 +4662,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_SetTextureBlendMode", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalSetTextureBlendMode([IsNotNull] IntPtr texture, BlendMode blendMode);
+        internal static extern int InternalSetTextureBlendMode([IsNotNull] IntPtr texture, BlendModes blendMode);
 
         /// <summary>
         ///     Sdl the set texture color mod using the specified texture

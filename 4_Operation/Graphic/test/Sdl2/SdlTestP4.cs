@@ -1958,10 +1958,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
             BlendOperation alphaOperation = BlendOperation.SdlBlendOperationAdd;
 
             // Act
-            BlendMode result = Sdl.ComposeCustomBlendMode(srcColorFactor, dstColorFactor, colorOperation, srcAlphaFactor, dstAlphaFactor, alphaOperation);
+            BlendModes result = Sdl.ComposeCustomBlendMode(srcColorFactor, dstColorFactor, colorOperation, srcAlphaFactor, dstAlphaFactor, alphaOperation);
 
             // Assert
-            Assert.NotEqual(BlendMode.None, result);
+            Assert.NotEqual(BlendModes.None, result);
 
             // Cleanup
             Sdl.Quit();
@@ -2070,7 +2070,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr renderer = IntPtr.Zero;
 
             // Act
-            int result = Sdl.GetRenderDrawBlendMode(renderer, out BlendMode _);
+            int result = Sdl.GetRenderDrawBlendMode(renderer, out BlendModes _);
 
             // Assert
             Assert.True(result >= -1);
@@ -2304,7 +2304,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr texture = IntPtr.Zero;
 
             // Act
-            int result = Sdl.GetTextureBlendMode(texture, out BlendMode _);
+            int result = Sdl.GetTextureBlendMode(texture, out BlendModes _);
 
             // Assert
             Assert.True(result >= -1);
@@ -2855,7 +2855,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.Equal(0, initResult);
 
             IntPtr texture = IntPtr.Zero; // Replace with the desired texture
-            BlendMode blendMode = BlendMode.None; // Replace with the desired blend mode
+            BlendModes blendMode = BlendModes.None; // Replace with the desired blend mode
 
             // Act
             int result = Sdl.SetTextureBlendMode(texture, blendMode);
