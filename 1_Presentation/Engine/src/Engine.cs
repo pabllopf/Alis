@@ -377,8 +377,8 @@ namespace Alis.App.Engine
                         {
                             switch (e.key.keySym.sym)
                             {
-                                case SdlKeycode.SdlkEscape:
-                                case SdlKeycode.SdlkQ:
+                                case KeyCode.Escape:
+                                case KeyCode.Q:
                                     _quit = true;
                                     break;
                             }

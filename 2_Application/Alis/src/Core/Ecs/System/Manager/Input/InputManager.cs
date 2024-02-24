@@ -63,7 +63,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// <summary>
         ///     Temp list of keys
         /// </summary>
-        private List<SdlKeycode> tempListOfKeys;
+        private List<KeyCode> tempListOfKeys;
 
         /// <summary>
         ///     Ons the enable
@@ -79,7 +79,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         public override void OnInit()
         {
             Logger.Trace();
-            tempListOfKeys = new List<SdlKeycode>();
+            tempListOfKeys = new List<KeyCode>();
         }
 
         /// <summary>
@@ -247,7 +247,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         {
             if (sdlEvent.type == EventType.SdlKeyup)
             {
-                SdlKeycode indexUp = sdlEvent.key.keySym.sym;
+                KeyCode indexUp = sdlEvent.key.keySym.sym;
 
                 if (tempListOfKeys.Contains(indexUp))
                 {
@@ -264,7 +264,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         {
             if (sdlEvent.type == EventType.SdlKeydown)
             {
-                SdlKeycode indexDown = sdlEvent.key.keySym.sym;
+                KeyCode indexDown = sdlEvent.key.keySym.sym;
                 if (!tempListOfKeys.Contains(indexDown))
                 {
                     tempListOfKeys.Add(indexDown);
@@ -310,7 +310,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// </summary>
         private void NotifyKeyHold()
         {
-            foreach (SdlKeycode key in tempListOfKeys)
+            foreach (KeyCode key in tempListOfKeys)
             {
                 NotifyKeyHold(key);
             }
@@ -320,7 +320,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         ///     Notifies the key press using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        private void NotifyKeyPress(SdlKeycode key)
+        private void NotifyKeyPress(KeyCode key)
         {
             foreach (GameObject currentSceneGameObject in VideoGame.Instance.SceneManager.CurrentScene.GameObjects.Cast<GameObject>())
             {
@@ -332,7 +332,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         ///     Notifies the key release using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        private void NotifyKeyRelease(SdlKeycode key)
+        private void NotifyKeyRelease(KeyCode key)
         {
             foreach (GameObject currentSceneGameObject in VideoGame.Instance.SceneManager.CurrentScene.GameObjects.Cast<GameObject>())
             {
@@ -344,7 +344,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         ///     Notifies the key hold using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        private void NotifyKeyHold(SdlKeycode key)
+        private void NotifyKeyHold(KeyCode key)
         {
             foreach (GameObject currentSceneGameObject in VideoGame.Instance.SceneManager.CurrentScene.GameObjects.Cast<GameObject>())
             {
