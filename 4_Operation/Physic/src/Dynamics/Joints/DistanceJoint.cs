@@ -323,7 +323,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>Get the reaction force given the inverse time step. Unit is N.</summary>
-        public override Vector2 GetReactionForce(float invDt)
+        protected override Vector2 GetReactionForce(float invDt)
         {
             Vector2 f = invDt * (impulse + lowerImpulse - upperImpulse) * u;
             return f;

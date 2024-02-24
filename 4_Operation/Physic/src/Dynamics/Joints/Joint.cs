@@ -52,24 +52,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private Body bodyB;
 
         /// <summary>
-        ///     The breakpoint
-        /// </summary>
-        private float breakpoint;
-
-        /// <summary>
-        ///     The collide connected
-        /// </summary>
-        private bool collideConnected;
-
-        /// <summary>
         ///     The enabled
         /// </summary>
         private bool enabled;
-
-        /// <summary>
-        ///     The user data
-        /// </summary>
-        private object userData;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Joint" /> class
@@ -78,10 +63,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
         protected Joint(JointType jointType)
         {
             _jointType = jointType;
-            breakpoint = float.MaxValue;
+            Breakpoint = float.MaxValue;
 
             //Connected bodies should not collide by default
-            collideConnected = false;
+            CollideConnected = false;
             Enabled = true;
         }
 
@@ -117,7 +102,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _jointType = jointType;
             BodyA = bodyA;
             BodyB = bodyB;
-            this.collideConnected = collideConnected;
+            this.CollideConnected = collideConnected;
             IslandFlag = false;
         }
 
@@ -177,35 +162,23 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
         /// <summary>Set the user data pointer.</summary>
         /// <value>The data.</value>
-        public object UserData
-        {
-            get => userData;
-            set => userData = value;
-        }
+        public object UserData { get; set; }
 
         /// <summary>Set this flag to true if the attached bodies should collide.</summary>
-        public bool CollideConnected
-        {
-            get => collideConnected;
-            set => collideConnected = value;
-        }
+        public bool CollideConnected { get; set; }
 
         /// <summary>
         ///     The Breakpoint simply indicates the maximum Value the JointError can be before it breaks. The default value is
         ///     float.MaxValue, which means it never breaks.
         /// </summary>
-        public float Breakpoint
-        {
-            get => breakpoint;
-            set => breakpoint = value;
-        }
+        public float Breakpoint { get; set; }
 
         /// <summary>Fires when the joint is broken.</summary>
         public event Action<Joint, float> Broke;
 
         /// <summary>Get the reaction force on body at the joint anchor in Newtons.</summary>
         /// <param name="invDt">The inverse delta time.</param>
-        public abstract Vector2 GetReactionForce(float invDt);
+        protected abstract Vector2 GetReactionForce(float invDt);
 
         /// <summary>Get the reaction torque on the body at the joint anchor in N*m.</summary>
         /// <param name="invDt">The inverse delta time.</param>
@@ -263,7 +236,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float jointErrorSquared = GetReactionForce(invDt).LengthSquared();
 
-            if (Math.Abs(jointErrorSquared) <= breakpoint * breakpoint)
+            if (Math.Abs(jointErrorSquared) <= Breakpoint * Breakpoint)
             {
                 return;
             }
