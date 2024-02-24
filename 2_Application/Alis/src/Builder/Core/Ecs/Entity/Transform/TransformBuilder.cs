@@ -42,7 +42,7 @@ namespace Alis.Builder.Core.Ecs.Entity.Transform
         IBuild<Alis.Core.Aspect.Math.Transform>,
         IPosition2D<TransformBuilder, float>,
         IRotation<TransformBuilder, float>,
-        IScale2D<TransformBuilder, float, float>
+        IScale2D<TransformBuilder, float>
     {
         /// <summary>
         ///     The transform

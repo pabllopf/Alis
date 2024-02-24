@@ -41,7 +41,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
     /// <seealso cref="IBuild{PhysicSetting}" />
     public class PhysicSettingBuilder :
         IBuild<PhysicSetting>,
-        IGravity<PhysicSettingBuilder, float, float>,
+        IGravity<PhysicSettingBuilder, float>,
         IDebug<PhysicSettingBuilder, bool>,
         IDebugColor<PhysicSettingBuilder, Color>
     {

@@ -52,7 +52,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
         IRelativePosition<BoxColliderBuilder, float>,
         IRestitution<BoxColliderBuilder, float>,
         IIsTrigger<BoxColliderBuilder, bool>,
-        ILinearVelocity<BoxColliderBuilder, float, float>,
+        ILinearVelocity<BoxColliderBuilder, float>,
         IAngularVelocity<BoxColliderBuilder, float>
     {
         /// <summary>

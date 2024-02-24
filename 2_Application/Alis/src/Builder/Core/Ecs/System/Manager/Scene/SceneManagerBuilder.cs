@@ -40,7 +40,7 @@ namespace Alis.Builder.Core.Ecs.System.Manager.Scene
     /// </summary>
     public class SceneManagerBuilder :
         IBuild<SceneManager>,
-        IAdd<SceneManagerBuilder, Alis.Core.Ecs.Entity.Scene.Scene, Func<SceneBuilder, Alis.Core.Ecs.Entity.Scene.Scene>>
+        IAdd<SceneManagerBuilder, Func<SceneBuilder, Alis.Core.Ecs.Entity.Scene.Scene>>
     {
         /// <summary>
         ///     Gets the value of the scene manager
@@ -53,7 +53,7 @@ namespace Alis.Builder.Core.Ecs.System.Manager.Scene
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The scene builder</returns>
-        public SceneManagerBuilder Add<T>(Func<SceneBuilder, Alis.Core.Ecs.Entity.Scene.Scene> value) where T : Alis.Core.Ecs.Entity.Scene.Scene
+        public SceneManagerBuilder Add<T>(Func<SceneBuilder, Alis.Core.Ecs.Entity.Scene.Scene> value)
         {
             sceneManager.Add(value.Invoke(new SceneBuilder()));
             sceneManager.CurrentScene = sceneManager.Scenes[0];
