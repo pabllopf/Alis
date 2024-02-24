@@ -112,11 +112,11 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
             Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContexts.SdlGlContextForwardCompatibleFlag);
-            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfile.SdlGlContextProfileCore);
+            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfiles.SdlGlContextProfileCore);
             Sdl.SetAttributeByInt(GlAttr.SdlGlContextMajorVersion, 3);
             Sdl.SetAttributeByInt(GlAttr.SdlGlContextMinorVersion, 2);
 
-            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfile.SdlGlContextProfileCore);
+            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfiles.SdlGlContextProfileCore);
             Sdl.SetAttributeByInt(GlAttr.SdlGlDoubleBuffer, 1);
             Sdl.SetAttributeByInt(GlAttr.SdlGlDepthSize, 24);
             Sdl.SetAttributeByInt(GlAttr.SdlGlAlphaSize, 8);
