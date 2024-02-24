@@ -101,7 +101,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.TriangulationBase
             {
                 TriangulationAlgorithm.Earclip => EarClipDecomposer.ConvexPartition(vertices, tolerance),
                 TriangulationAlgorithm.Bayazit => BayaZitDecomposer.ConvexPartition(vertices),
-                TriangulationAlgorithm.Flipcode => FlipcodeDecomposer.ConvexPartition(vertices),
+                TriangulationAlgorithm.Flipcode => FlipCodeDecomposer.ConvexPartition(vertices),
                 TriangulationAlgorithm.Seidel => SeidelDecomposer.ConvexPartition(vertices, tolerance),
                 TriangulationAlgorithm.SeidelTrapezoids => SeidelDecomposer.ConvexPartitionTrapezoid(vertices, tolerance),
                 TriangulationAlgorithm.Delauny => CdtDecomposer.ConvexPartition(vertices),
