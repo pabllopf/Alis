@@ -86,60 +86,11 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         };
 
         /// <summary>
-        ///     The fixture
-        /// </summary>
-        private Fixture fixtureA;
-
-        /// <summary>
-        ///     The fixture
-        /// </summary>
-        private Fixture fixtureB;
-
-        /// <summary>
-        ///     The friction
-        /// </summary>
-        private float friction;
-
-        /// <summary>
-        ///     The index
-        /// </summary>
-        private int indexA;
-
-        /// <summary>
-        ///     The index
-        /// </summary>
-        private int indexB;
-
-        /// <summary>
         ///     The manifold
         /// </summary>
         private Manifold manifold;
 
-        /// <summary>
-        ///     The next
-        /// </summary>
-        private Contact next;
-
         // World pool and list pointers.
-        /// <summary>
-        ///     The prev
-        /// </summary>
-        private Contact prev;
-
-        /// <summary>
-        ///     The restitution
-        /// </summary>
-        private float restitution;
-
-        /// <summary>
-        ///     The restitution threshold
-        /// </summary>
-        private float restitutionThreshold;
-
-        /// <summary>
-        ///     The tangent speed
-        /// </summary>
-        private float tangentSpeed;
 
         /// <summary>
         ///     The type
@@ -193,70 +144,38 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     Gets or sets the value of the friction
         /// </summary>
-        public float Friction
-        {
-            get => friction;
-            set => friction = value;
-        }
+        public float Friction { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the restitution
         /// </summary>
-        public float Restitution
-        {
-            get => restitution;
-            set => restitution = value;
-        }
+        public float Restitution { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the restitution threshold
         /// </summary>
-        public float RestitutionThreshold
-        {
-            get => restitutionThreshold;
-            set => restitutionThreshold = value;
-        }
+        public float RestitutionThreshold { get; set; }
 
         /// <summary>Get or set the desired tangent speed for a conveyor belt behavior. In meters per second.</summary>
-        public float TangentSpeed
-        {
-            get => tangentSpeed;
-            set => tangentSpeed = value;
-        }
+        public float TangentSpeed { get; set; }
 
         /// <summary>
         ///     Gets the value of the fixture a
         /// </summary>
-        public Fixture FixtureA
-        {
-            get => fixtureA;
-            set => fixtureA = value;
-        }
+        public Fixture FixtureA { get; set; }
 
         /// <summary>
         ///     Gets the value of the fixture b
         /// </summary>
-        public Fixture FixtureB
-        {
-            get => fixtureB;
-            set => fixtureB = value;
-        }
+        public Fixture FixtureB { get; set; }
 
         /// <summary>Get the child primitive index for fixture A.</summary>
         /// <value>The child index A.</value>
-        public int ChildIndexA
-        {
-            get => indexA;
-            set => indexA = value;
-        }
+        public int ChildIndexA { get; set; }
 
         /// <summary>Get the child primitive index for fixture B.</summary>
         /// <value>The child index B.</value>
-        public int ChildIndexB
-        {
-            get => indexB;
-            set => indexB = value;
-        }
+        public int ChildIndexB { get; set; }
 
         /// <summary>
         ///     Enable/disable this contact.The contact is only disabled for the current time step (or sub-step in continuous
@@ -281,20 +200,12 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     Gets the value of the next
         /// </summary>
-        public Contact Next
-        {
-            get => next;
-            set => next = value;
-        }
+        public Contact Next { get; set; }
 
         /// <summary>
         ///     Gets the value of the previous
         /// </summary>
-        public Contact Previous
-        {
-            get => prev;
-            set => prev = value;
-        }
+        public Contact Previous { get; set; }
 
         /// <summary>
         ///     Gets the value of the is touching
@@ -555,44 +466,46 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>Evaluate this contact with your own manifold and transforms.</summary>
-        /// <param name="manifold">The manifold.</param>
+        /// <param name="maniFold">The manifold.</param>
         /// <param name="transformA">The first transform.</param>
         /// <param name="transformB">The second transform.</param>
-        private void Evaluate(ref Manifold manifold, ref Transform transformA, ref Transform transformB)
+        private void Evaluate(ref Manifold maniFold, ref Transform transformA, ref Transform transformB)
         {
             switch (type)
             {
                 case ContactType.Polygon:
-                    CollidePolygon.CollidePolygons(ref manifold, (PolygonShape) FixtureA.Shape, ref transformA,
+                    CollidePolygon.CollidePolygons(ref maniFold, (PolygonShape) FixtureA.Shape, ref transformA,
                         (PolygonShape) FixtureB.Shape, ref transformB);
                     break;
                 case ContactType.PolygonAndCircle:
-                    CollideCircle.CollidePolygonAndCircle(ref manifold, (PolygonShape) FixtureA.Shape, ref transformA,
+                    CollideCircle.CollidePolygonAndCircle(ref maniFold, (PolygonShape) FixtureA.Shape, ref transformA,
                         (CircleShape) FixtureB.Shape, ref transformB);
                     break;
                 case ContactType.EdgeAndCircle:
-                    CollideEdge.CollideEdgeAndCircle(ref manifold, (EdgeShape) FixtureA.Shape, ref transformA,
+                    CollideEdge.CollideEdgeAndCircle(ref maniFold, (EdgeShape) FixtureA.Shape, ref transformA,
                         (CircleShape) FixtureB.Shape, ref transformB);
                     break;
                 case ContactType.EdgeAndPolygon:
-                    CollideEdge.CollideEdgeAndPolygon(ref manifold, (EdgeShape) FixtureA.Shape, ref transformA,
+                    CollideEdge.CollideEdgeAndPolygon(ref maniFold, (EdgeShape) FixtureA.Shape, ref transformA,
                         (PolygonShape) FixtureB.Shape, ref transformB);
                     break;
                 case ContactType.ChainAndCircle:
                     ChainShape chain = (ChainShape) FixtureA.Shape;
                     chain.GetChildEdge(Edge, ChildIndexA);
-                    CollideEdge.CollideEdgeAndCircle(ref manifold, Edge, ref transformA, (CircleShape) FixtureB.Shape,
+                    CollideEdge.CollideEdgeAndCircle(ref maniFold, Edge, ref transformA, (CircleShape) FixtureB.Shape,
                         ref transformB);
                     break;
                 case ContactType.ChainAndPolygon:
                     ChainShape loop2 = (ChainShape) FixtureA.Shape;
                     loop2.GetChildEdge(Edge, ChildIndexA);
-                    CollideEdge.CollideEdgeAndPolygon(ref manifold, Edge, ref transformA,
+                    CollideEdge.CollideEdgeAndPolygon(ref maniFold, Edge, ref transformA,
                         (PolygonShape) FixtureB.Shape, ref transformB);
                     break;
                 case ContactType.Circle:
-                    CollideCircle.CollideCircles(ref manifold, (CircleShape) FixtureA.Shape, ref transformA,
+                    CollideCircle.CollideCircles(ref maniFold, (CircleShape) FixtureA.Shape, ref transformA,
                         (CircleShape) FixtureB.Shape, ref transformB);
+                    break;
+                case ContactType.NotSupported:
                     break;
                 default:
                     throw new ArgumentException("You are using an unsupported contact type.");
