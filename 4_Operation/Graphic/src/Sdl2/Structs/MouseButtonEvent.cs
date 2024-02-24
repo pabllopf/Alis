@@ -72,12 +72,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The clicks
         /// </summary>
         public readonly byte clicks;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private readonly byte padding1;
-
+        
         /// <summary>
         ///     The
         /// </summary>
