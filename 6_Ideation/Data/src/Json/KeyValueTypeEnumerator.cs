@@ -40,6 +40,9 @@ namespace Alis.Core.Aspect.Data.Json
     /// <seealso cref="IDictionaryEnumerator" />
     internal sealed class KeyValueTypeEnumerator : IDictionaryEnumerator, IDisposable
     {
+        /// <summary>
+        /// The value
+        /// </summary>
         private readonly IEnumerable value;
         /// <summary>
         ///     The enumerator
@@ -122,6 +125,9 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         public void Reset() => enumerator.Reset();
         
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (enumerator is IDisposable disposable)
