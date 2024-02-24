@@ -49,7 +49,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
         IGravityScale<BoxColliderBuilder, float>,
         IFriction<BoxColliderBuilder, float>,
         IRotation<BoxColliderBuilder, float>,
-        IRelativePosition<BoxColliderBuilder, float, float>,
+        IRelativePosition<BoxColliderBuilder, float>,
         IRestitution<BoxColliderBuilder, float>,
         IIsTrigger<BoxColliderBuilder, bool>,
         ILinearVelocity<BoxColliderBuilder, float, float>,
