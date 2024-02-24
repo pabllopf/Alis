@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         public readonly Queue<Contact> ContactPool = new Queue<Contact>(256);
 
         /// <summary>Fires when the broadphase detects that two Fixtures are close to each other.</summary>
-        private readonly BroadPhaseHandler onBroadPhaseCollision;
+        public BroadPhaseHandler OnBroadPhaseCollision { get; }
 
         /// <summary>Fires when a contact is created</summary>
         public BeginContactHandler BeginContact { get; }
@@ -67,21 +67,21 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         private int contactCounter;
 
         /// <summary>The filter used by the contact manager.</summary>
-        public CollisionFilterHandler ContactFilter;
+        public CollisionFilterHandler ContactFilter { get; }
 
         /// <summary>Fires when a contact is deleted</summary>
-        public EndContactHandler EndContact;
+        public EndContactHandler EndContact { get; }
 
         /// <summary>
         ///     The last min alpha
         /// </summary>
-        private float lastMinAlpha;
+        public float LastMinAlpha { get; private set; }
 
         /// <summary>Fires after the solver has run</summary>
-        public PostSolveHandler PostSolve;
+        public PostSolveHandler PostSolve { get; set; }
 
         /// <summary>Fires before the solver runs</summary>
-        public PreSolveHandler PreSolve;
+        public PreSolveHandler PreSolve { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ContactManager" /> class
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         internal ContactManager(IBroadPhase broadPhase)
         {
             BroadPhase = broadPhase;
-            onBroadPhaseCollision = AddPair;
+            OnBroadPhaseCollision = AddPair;
             Current = this;
         }
 
@@ -266,7 +266,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         internal void FindNewContacts()
         {
-            BroadPhase.UpdatePairs(onBroadPhaseCollision);
+            BroadPhase.UpdatePairs(OnBroadPhaseCollision);
         }
 
         /// <summary>
@@ -486,7 +486,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
                 if (c.Toi < minAlpha)
                 {
-                    lastMinAlpha = c.Toi;
+                    LastMinAlpha = c.Toi;
                     return c;
                 }
             }
@@ -634,6 +634,6 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     Calculates the min alpha
         /// </summary>
         /// <returns>The float</returns>
-        public float CalculateMinAlpha() => lastMinAlpha;
+        public float CalculateMinAlpha() => LastMinAlpha;
     }
 }
