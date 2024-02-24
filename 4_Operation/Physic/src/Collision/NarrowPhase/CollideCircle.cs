@@ -82,7 +82,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         {
             manifold.PointCount = 0;
 
-            Vector2 c = ComputeCirclePositionInPolygonFrame(ref xfB, circleB.Position, ref xfA);
+            Vector2 c = ComputeCirclePositionInPolygonFrame(ref xfB, circleB.Position);
             Vector2 cLocal = c;
 
             float radius = polygonA.RadiusPrivate + circleB.RadiusPrivate;
@@ -110,9 +110,8 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// </summary>
         /// <param name="xfB">The xf</param>
         /// <param name="circleBPosition">The circle position</param>
-        /// <param name="xfA">The xf</param>
         /// <returns>The vector</returns>
-        private static Vector2 ComputeCirclePositionInPolygonFrame(ref Transform xfB, Vector2 circleBPosition, ref Transform xfA) => MathUtils.Mul(ref xfB, circleBPosition);
+        private static Vector2 ComputeCirclePositionInPolygonFrame(ref Transform xfB, Vector2 circleBPosition) => MathUtils.Mul(ref xfB, circleBPosition);
 
         /// <summary>
         ///     Finds the min separating edge using the specified c local
