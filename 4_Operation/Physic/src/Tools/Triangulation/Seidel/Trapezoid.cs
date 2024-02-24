@@ -229,17 +229,16 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// <summary>
         ///     Gets the vertices
         /// </summary>
-        /// <returns>The verts</returns>
+        /// <returns>The vert</returns>
         public List<Point> GetVertices()
         {
-            List<Point> verts = new List<Point>(4)
+            return new List<Point>(4)
             {
                 LineIntersect(Top, LeftPoint.X),
                 LineIntersect(Bottom, LeftPoint.X),
                 LineIntersect(Bottom, RightPoint.X),
                 LineIntersect(Top, RightPoint.X)
             };
-            return verts;
         }
 
         /// <summary>
