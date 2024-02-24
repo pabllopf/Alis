@@ -231,7 +231,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Logger.Info($"Display {displayIndex} SELECTED Mode: {displayMode2.format}, {displayMode2.w}, {displayMode2.h}, {displayMode2.refresh_rate}");
             Sdl.SetWindowDisplayMode(_window, ref displayMode2);
 
-            if ((string.IsNullOrEmpty(VideoGame.Instance.Settings.General.Icon) == false) && File.Exists(VideoGame.Instance.Settings.General.Icon))
+            if (string.IsNullOrEmpty(VideoGame.Instance.Settings.General.Icon) && File.Exists(VideoGame.Instance.Settings.General.Icon))
             {
                 IntPtr icon = Sdl.LoadBmp(VideoGame.Instance.Settings.General.Icon);
                 Sdl.SetWindowIcon(_window, icon);
