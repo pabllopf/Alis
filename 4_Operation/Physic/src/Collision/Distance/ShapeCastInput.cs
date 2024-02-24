@@ -38,26 +38,26 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <summary>
         ///     The proxy
         /// </summary>
-        public DistanceProxy ProxyA;
+        public DistanceProxy ProxyA { get; }
 
         /// <summary>
         ///     The proxy
         /// </summary>
-        public DistanceProxy ProxyB;
+        public DistanceProxy ProxyB { get; }
 
         /// <summary>
         ///     The transform
         /// </summary>
-        public Transform TransformA;
+        public Transform TransformA { get; }
 
         /// <summary>
         ///     The transform
         /// </summary>
-        public Transform TransformB;
+        public Transform TransformB { get; }
 
         /// <summary>
         ///     The translation
         /// </summary>
-        public Vector2 TranslationB;
+        public Vector2 TranslationB { get; }
     }
 }
