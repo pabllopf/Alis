@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
     ///     Properties:
     ///     - Decompose the polygon into trapezoids, then triangulate.
     ///     - To use the trapezoid data, use ConvexPartitionTrapezoid()
-    ///     - Generate a lot of garbage due to incapsulation of the Poly2Tri library.
+    ///     - Generate a lot of garbage due of the Poly2Tri library.
     ///     - Running time is O(n log n), n = number of vertices.
     ///     - Running time is almost linear for most simple polygons.
     ///     - Does not care about winding order.
@@ -48,7 +48,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
     ///     See also: "Computational Geometry", 3rd edition, by Mark de Berg et al, Chapter 6.2
     ///     "Computational Geometry in C", 2nd edition, by Joseph O'Rourke
     ///     Original code from the Poly2Tri project by Mason Green.
-    ///     http://code.google.com/p/poly2tri/source/browse?repo=archive#hg/scala/src/org/poly2tri/seidel
     ///     This implementation is from Dec 14, 2010
     /// </summary>
     internal static class SeidelDecomposer
@@ -106,15 +105,15 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
 
             foreach (Trapezoid trapezoid in t.Trapezoids)
             {
-                Vertices verts = new Vertices();
+                Vertices vert = new Vertices();
 
                 List<Point> points = trapezoid.GetVertices();
                 foreach (Point point in points)
                 {
-                    verts.Add(new Vector2(point.X, point.Y));
+                    vert.Add(new Vector2(point.X, point.Y));
                 }
 
-                list.Add(verts);
+                list.Add(vert);
             }
 
             return list;
