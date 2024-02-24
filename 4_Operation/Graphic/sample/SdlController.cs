@@ -113,7 +113,7 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         public static void Run()
         {
-            if (Sdl.Init(Init.InitEverything) < 0)
+            if (Sdl.Init(InitSettings.InitEverything) < 0)
             {
                 Logger.Exception($@"There was an issue initializing SDL. {Sdl.GetError()}");
             }

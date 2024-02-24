@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
     ///     The sdl init enum
     /// </summary>
     [Flags]
-    public enum Init : uint
+    public enum InitSettings : uint
     {
         /// <summary>
         ///     The sdl init timer
