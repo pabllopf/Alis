@@ -368,12 +368,12 @@ namespace Alis.App.Engine
                     ProcessEvent(e);
                     switch (e.type)
                     {
-                        case EventType.SdlQuit:
+                        case EventType.Quit:
                         {
                             _quit = true;
                             break;
                         }
-                        case EventType.SdlKeydown:
+                        case EventType.Keydown:
                         {
                             switch (e.key.keySym.sym)
                             {
@@ -574,7 +574,7 @@ namespace Alis.App.Engine
             ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
             switch (evt.type)
             {
-                case EventType.SdlMousewheel:
+                case EventType.Mousewheel:
                 {
                     if (evt.wheel.x > 0)
                     {
@@ -598,7 +598,7 @@ namespace Alis.App.Engine
 
                     return;
                 }
-                case EventType.SdlMouseButtonDown:
+                case EventType.MouseButtonDown:
                 {
                     if (evt.button.button == Sdl.ButtonLeft)
                     {
@@ -617,17 +617,17 @@ namespace Alis.App.Engine
 
                     return;
                 }
-                case EventType.SdlTextInput:
+                case EventType.TextInput:
                 {
                     string str = Encoding.UTF8.GetString(evt.text.Text);
                     imGuiIoPtr.AddInputCharactersUtf8(str);
                     return;
                 }
-                case EventType.SdlKeydown:
-                case EventType.SdlKeyup:
+                case EventType.Keydown:
+                case EventType.Keyup:
                 {
                     SdlScancode key = evt.key.keySym.scancode;
-                    imGuiIoPtr.KeysDown[(int) key] = evt.type == EventType.SdlKeydown;
+                    imGuiIoPtr.KeysDown[(int) key] = evt.type == EventType.Keydown;
                     Console.WriteLine("io.KeysDown[" + key + "] = " + evt.type + imGuiIoPtr.KeysDown[(int) key]);
                     imGuiIoPtr.KeyShift = (Sdl.GetModState() & KeyMod.KModShift) != 0;
                     imGuiIoPtr.KeyCtrl = (Sdl.GetModState() & KeyMod.KModCtrl) != 0;
