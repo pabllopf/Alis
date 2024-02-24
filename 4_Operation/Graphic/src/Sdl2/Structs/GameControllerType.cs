@@ -37,51 +37,51 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The sdl controller type unknown sdl game controller type
         /// </summary>
-        SdlControllerTypeUnknown = 0,
+        ControllerTypeUnknown = 0,
 
         /// <summary>
         ///     The sdl controller type xbox360 sdl game controller type
         /// </summary>
-        SdlControllerTypeXbox360,
+        ControllerTypeXbox360,
 
         /// <summary>
         ///     The sdl controller type xbox one sdl game controller type
         /// </summary>
-        SdlControllerTypeXboxOne,
+        ControllerTypeXboxOne,
 
         /// <summary>
         ///     The sdl controller type ps3 sdl game controller type
         /// </summary>
-        SdlControllerTypePs3,
+        ControllerTypePs3,
 
         /// <summary>
         ///     The sdl controller type ps4 sdl game controller type
         /// </summary>
-        SdlControllerTypePs4,
+        ControllerTypePs4,
 
         /// <summary>
         ///     The sdl controller type nintendo switch pro sdl game controller type
         /// </summary>
-        SdlControllerTypeNintendoSwitchPro,
+        ControllerTypeNintendoSwitchPro,
 
         /// <summary>
         ///     The sdl controller type virtual sdl game controller type
         /// </summary>
-        SdlControllerTypeVirtual,
+        ControllerTypeVirtual,
 
         /// <summary>
         ///     The sdl controller type ps5 sdl game controller type
         /// </summary>
-        SdlControllerTypePs5,
+        ControllerTypePs5,
 
         /// <summary>
         ///     The sdl controller type amazon luna sdl game controller type
         /// </summary>
-        SdlControllerTypeAmazonLuna,
+        ControllerTypeAmazonLuna,
 
         /// <summary>
         ///     The sdl controller type google stadia sdl game controller type
         /// </summary>
-        SdlControllerTypeGoogleStadia
+        ControllerTypeGoogleStadia
     }
 }
