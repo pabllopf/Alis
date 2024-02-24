@@ -261,7 +261,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
             WorldManifold.Initialize(ref manifold, ref bodyA.Xf, shapeA.RadiusPrivate, ref bodyB.Xf,
                 shapeB.RadiusPrivate,
-                out normal, out points, out _);
+                out normal, out points);
         }
 
         /// <summary>
