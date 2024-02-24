@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RendererFlags.cs
+//  File:Renderers.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -38,10 +38,10 @@ namespace Alis.Core.Graphic.Sdl2.Enums
     public enum Renderers : uint
     {
         /// <summary>
-        /// The none renderer
+        ///     The none renderer
         /// </summary>
         None = 0x00000000,
-        
+
         /// <summary>
         ///     The sdl renderer software sdl renderer flags
         /// </summary>

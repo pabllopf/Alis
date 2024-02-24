@@ -142,7 +142,7 @@ namespace Alis.Core.Physic.Collision.Distance
         }
 
         /// <summary>
-        /// Saves the simplex vertices using the specified simplex
+        ///     Saves the simplex vertices using the specified simplex
         /// </summary>
         /// <param name="simplex">The simplex</param>
         /// <param name="saveA">The save</param>
@@ -158,7 +158,7 @@ namespace Alis.Core.Physic.Collision.Distance
         }
 
         /// <summary>
-        /// Initializes the simplex using the specified cache
+        ///     Initializes the simplex using the specified cache
         /// </summary>
         /// <param name="cache">The cache</param>
         /// <param name="input">The input</param>
@@ -172,7 +172,7 @@ namespace Alis.Core.Physic.Collision.Distance
 
 
         /// <summary>
-        /// Adds the new vertex to simplex using the specified simplex
+        ///     Adds the new vertex to simplex using the specified simplex
         /// </summary>
         /// <param name="simplex">The simplex</param>
         /// <param name="input">The input</param>
@@ -192,7 +192,7 @@ namespace Alis.Core.Physic.Collision.Distance
 
 
         /// <summary>
-        /// Solves the simplex using the specified simplex
+        ///     Solves the simplex using the specified simplex
         /// </summary>
         /// <param name="simplex">The simplex</param>
         private static void SolveSimplex(ref Simplex simplex)
@@ -214,7 +214,7 @@ namespace Alis.Core.Physic.Collision.Distance
         }
 
         /// <summary>
-        /// Describes whether is duplicate support point
+        ///     Describes whether is duplicate support point
         /// </summary>
         /// <param name="saveA">The save</param>
         /// <param name="saveB">The save</param>
@@ -235,7 +235,7 @@ namespace Alis.Core.Physic.Collision.Distance
         }
 
         /// <summary>
-        /// Prepares the output using the specified output
+        ///     Prepares the output using the specified output
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="simplex">The simplex</param>
@@ -257,7 +257,7 @@ namespace Alis.Core.Physic.Collision.Distance
         }
 
         /// <summary>
-        /// Applies the radii using the specified output
+        ///     Applies the radii using the specified output
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="input">The input</param>

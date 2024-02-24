@@ -72,7 +72,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The clicks
         /// </summary>
         public readonly byte clicks;
-        
+
         /// <summary>
         ///     The
         /// </summary>

@@ -160,7 +160,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Renderer = Sdl.CreateRenderer(
                 _window,
                 -1,
-                Core.Graphic.Sdl2.Enums.Renderers.SdlRendererAccelerated);
+                Renderers.SdlRendererAccelerated);
 
             // Check if the renderer was created successfully.
             Logger.Info(Renderer == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : "Renderer created");

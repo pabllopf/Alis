@@ -43,6 +43,9 @@ namespace Alis.Core.Physic.Collision.TOI
     /// </summary>
     public class Sweep
     {
+        /// <summary>Local center of mass position</summary>
+        public Vector2 LocalCenter;
+
         /// <summary>World angles</summary>
         public float A { get; set; }
 
@@ -61,9 +64,6 @@ namespace Alis.Core.Physic.Collision.TOI
         ///     The
         /// </summary>
         public Vector2 C0 { get; set; }
-
-        /// <summary>Local center of mass position</summary>
-        public Vector2 LocalCenter;
 
         /// <summary>Get the interpolated transform at a specific time.</summary>
         /// <param name="xfb">The transform.</param>

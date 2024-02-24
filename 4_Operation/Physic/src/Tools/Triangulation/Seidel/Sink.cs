@@ -56,10 +56,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// </summary>
         /// <param name="trapezoid">The trapezoid</param>
         /// <returns>The sink</returns>
-        public static Sink IsInk(Trapezoid trapezoid)
-        {
-            return trapezoid.Sink ?? new Sink(trapezoid);
-        }
+        public static Sink IsInk(Trapezoid trapezoid) => trapezoid.Sink ?? new Sink(trapezoid);
 
         /// <summary>
         ///     Locates the edge

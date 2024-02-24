@@ -55,16 +55,27 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         public readonly Queue<Contact> ContactPool = new Queue<Contact>(256);
 
+        /// <summary>
+        ///     The contact count
+        /// </summary>
+        private int contactCounter;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ContactManager" /> class
+        /// </summary>
+        /// <param name="broadPhase">The broad phase</param>
+        internal ContactManager(IBroadPhase broadPhase)
+        {
+            BroadPhase = broadPhase;
+            OnBroadPhaseCollision = AddPair;
+            Current = this;
+        }
+
         /// <summary>Fires when the broadphase detects that two Fixtures are close to each other.</summary>
         public BroadPhaseHandler OnBroadPhaseCollision { get; }
 
         /// <summary>Fires when a contact is created</summary>
         public BeginContactHandler BeginContact { get; }
-
-        /// <summary>
-        ///     The contact count
-        /// </summary>
-        private int contactCounter;
 
         /// <summary>The filter used by the contact manager.</summary>
         public CollisionFilterHandler ContactFilter { get; }
@@ -82,17 +93,6 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
         /// <summary>Fires before the solver runs</summary>
         public PreSolveHandler PreSolve { get; }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ContactManager" /> class
-        /// </summary>
-        /// <param name="broadPhase">The broad phase</param>
-        internal ContactManager(IBroadPhase broadPhase)
-        {
-            BroadPhase = broadPhase;
-            OnBroadPhaseCollision = AddPair;
-            Current = this;
-        }
 
         /// <summary>
         ///     The dynamic tree broad phase

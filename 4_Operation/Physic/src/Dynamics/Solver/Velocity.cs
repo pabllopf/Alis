@@ -35,16 +35,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
     public class Velocity
     {
         /// <summary>
-        ///     The
-        /// </summary>
-        public Vector2 V { get; set; }
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public float W { get; set; }
-
-        /// <summary>
         ///     Initializes a new instance of the <see cref="Velocity" /> class
         /// </summary>
         /// <param name="v">The </param>
@@ -54,5 +44,15 @@ namespace Alis.Core.Physic.Dynamics.Solver
             V = v;
             W = w;
         }
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public Vector2 V { get; set; }
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float W { get; set; }
     }
 }

@@ -1,73 +1,48 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:TriangulationUtil.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 
 namespace Alis.Core.Physic.Tools.Triangulation.Delaunay
 {
     /// <summary>
-    /// The triangulation util class
+    ///     The triangulation util class
     /// </summary>
     internal static class TriangulationUtil
     {
-        
-        
-        
         /// <summary>
-        /// The epsilon
+        ///     The epsilon
         /// </summary>
         public static readonly double Epsilon = 1e-12;
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         /// <summary>
-        /// Describes whether smart in circle
+        ///     Describes whether smart in circle
         /// </summary>
         /// <param name="pa">The pa</param>
         /// <param name="pb">The pb</param>
@@ -87,7 +62,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay
             double aBdy = adx * bdy;
             double bAdy = bdx * ady;
             double oAbd = aBdy - bAdy;
-            
+
             if (oAbd <= 0)
             {
                 return false;
@@ -99,7 +74,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay
             double cAdy = cdx * ady;
             double aCdy = adx * cdy;
             double oCad = cAdy - aCdy;
-            
+
             if (oCad <= 0)
             {
                 return false;
@@ -116,17 +91,10 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay
 
             return det > 0;
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
         /// <summary>
-        /// Describes whether in scan area
+        ///     Describes whether in scan area
         /// </summary>
         /// <param name="pa">The pa</param>
         /// <param name="pb">The pb</param>
@@ -141,18 +109,14 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay
             {
                 return false;
             }
+
             double adc = (pa.X - pc.X) * (pd.Y - pc.Y) - (pd.X - pc.X) * (pa.Y - pc.Y);
             return !(adc <= Epsilon);
         }
 
-        
-        
-        
-        
-        
-        
+
         /// <summary>
-        /// Orients the 2d using the specified pa
+        ///     Orients the 2d using the specified pa
         /// </summary>
         /// <param name="pa">The pa</param>
         /// <param name="pb">The pb</param>

@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _jointType = jointType;
             BodyA = bodyA;
             BodyB = bodyB;
-            this.CollideConnected = collideConnected;
+            CollideConnected = collideConnected;
             IslandFlag = false;
         }
 
@@ -146,7 +146,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The Breakpoint simply indicates the maximum Value the JointError can be before it breaks. The default value is
         ///     float.MaxValue, which means it never breaks.
         /// </summary>
-        private float Breakpoint { get; set; }
+        private float Breakpoint { get; }
 
         /// <summary>Fires when the joint is broken.</summary>
         public event Action<Joint, float> Broke;

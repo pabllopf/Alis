@@ -45,22 +45,22 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         /// <returns>The int</returns>
         public int Compare(TriangulationPoint p1, TriangulationPoint p2)
         {
-            if (p2 != null && p1 != null && p1.Y < p2.Y)
+            if ((p2 != null) && (p1 != null) && (p1.Y < p2.Y))
             {
                 return -1;
             }
 
-            if (p2 != null && p1 != null && p1.Y > p2.Y)
+            if ((p2 != null) && (p1 != null) && (p1.Y > p2.Y))
             {
                 return 1;
             }
 
-            if (p2 != null && p1 != null && p1.X < p2.X)
+            if ((p2 != null) && (p1 != null) && (p1.X < p2.X))
             {
                 return -1;
             }
 
-            if (p2 != null && p1 != null && p1.X > p2.X)
+            if ((p2 != null) && (p1 != null) && (p1.X > p2.X))
             {
                 return 1;
             }

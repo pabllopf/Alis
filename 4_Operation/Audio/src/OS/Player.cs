@@ -57,10 +57,12 @@ namespace Alis.Core.Audio.OS
             {
                 _internalPlayer = new WindowsPlayer();
             }
+
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 _internalPlayer = new LinuxPlayer();
             }
+
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 _internalPlayer = new MacPlayer();

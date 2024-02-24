@@ -746,7 +746,7 @@ namespace Alis.Core.Test.Ecs.Component
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-        
+
         /// <summary>
         ///     Tests that on press down key invoked logger trace called
         /// </summary>

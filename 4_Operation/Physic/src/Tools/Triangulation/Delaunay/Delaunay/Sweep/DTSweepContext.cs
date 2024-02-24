@@ -30,9 +30,9 @@
 namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 {
     /// <summary>
-    /// The dt sweep context class
+    ///     The dt sweep context class
     /// </summary>
-    /// <seealso cref="TriangulationContext"/>
+    /// <seealso cref="TriangulationContext" />
     internal class DtSweepContext : TriangulationContext
     {
         /// <summary>

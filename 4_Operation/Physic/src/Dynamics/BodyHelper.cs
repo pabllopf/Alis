@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Dynamics
     internal static class BodyHelper
     {
         /// <summary>
-        /// Advances the body using the specified contact manager
+        ///     Advances the body using the specified contact manager
         /// </summary>
         /// <param name="contactManager">The contact manager</param>
         /// <param name="island">The island</param>
@@ -71,7 +71,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Advances the bodies using the specified min contact
+        ///     Advances the bodies using the specified min contact
         /// </summary>
         /// <param name="minContact">The min contact</param>
         /// <param name="minAlpha">The min alpha</param>
@@ -92,7 +92,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Updates the contact using the specified contact manager
+        ///     Updates the contact using the specified contact manager
         /// </summary>
         /// <param name="contactManager">The contact manager</param>
         /// <param name="minContact">The min contact</param>
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Describes whether check contact solid
+        ///     Describes whether check contact solid
         /// </summary>
         /// <param name="minContact">The min contact</param>
         /// <param name="bodies">The bodies</param>
@@ -130,7 +130,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Builds the island using the specified island
+        ///     Builds the island using the specified island
         /// </summary>
         /// <param name="island">The island</param>
         /// <param name="minContact">The min contact</param>
@@ -148,7 +148,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Gets the contacts using the specified contact manager
+        ///     Gets the contacts using the specified contact manager
         /// </summary>
         /// <param name="contactManager">The contact manager</param>
         /// <param name="minAlpha">The min alpha</param>
@@ -168,7 +168,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Processes the body contacts using the specified body
+        ///     Processes the body contacts using the specified body
         /// </summary>
         /// <param name="body">The body</param>
         /// <param name="contactManager">The contact manager</param>
@@ -184,7 +184,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Processes the contact using the specified body
+        ///     Processes the contact using the specified body
         /// </summary>
         /// <param name="body">The body</param>
         /// <param name="ce">The ce</param>

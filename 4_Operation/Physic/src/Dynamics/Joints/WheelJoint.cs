@@ -576,7 +576,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override float GetReactionTorque(float invDt) => invDt * motorImpulse;
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
@@ -636,7 +636,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Sets the initial values using the specified data
+        ///     Sets the initial values using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         private void SetInitialValues(ref SolverData data)
@@ -652,7 +652,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Calculates the d vector using the specified data
+        ///     Calculates the d vector using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The vector</returns>
@@ -667,7 +667,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Calculates the ay and mass using the specified d
+        ///     Calculates the ay and mass using the specified d
         /// </summary>
         /// <param name="d">The </param>
         /// <param name="data">The data</param>
@@ -684,7 +684,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Calculates the ax and axial mass using the specified d
+        ///     Calculates the ax and axial mass using the specified d
         /// </summary>
         /// <param name="d">The </param>
         /// <param name="data">The data</param>
@@ -705,7 +705,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Calculates the spring mass and related values using the specified d
+        ///     Calculates the spring mass and related values using the specified d
         /// </summary>
         /// <param name="d">The </param>
         /// <param name="data">The data</param>
@@ -729,7 +729,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Applies the warm starting using the specified data
+        ///     Applies the warm starting using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         private void ApplyWarmStarting(ref SolverData data)

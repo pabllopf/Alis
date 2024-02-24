@@ -43,6 +43,11 @@ namespace Alis.Core.Physic.Collision.TOI
     public static class TimeOfImpact
     {
         /// <summary>
+        ///     The toi max root iter
+        /// </summary>
+        [ThreadStatic] private static int _toiMaxRootIter;
+
+        /// <summary>
         ///     The toi max iter
         /// </summary>
         [field: ThreadStatic]
@@ -67,13 +72,7 @@ namespace Alis.Core.Physic.Collision.TOI
         private static int ToiRootIter { get; set; }
 
         /// <summary>
-        ///     The toi max root iter
-        /// </summary>
-        [ThreadStatic] 
-        private static int _toiMaxRootIter;
-
-        /// <summary>
-        /// Calculates the time of impact using the specified input
+        ///     Calculates the time of impact using the specified input
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="output">The output</param>
@@ -106,21 +105,18 @@ namespace Alis.Core.Physic.Collision.TOI
         }
 
         /// <summary>
-        /// Initializes the output using the specified input
+        ///     Initializes the output using the specified input
         /// </summary>
         /// <param name="input">The input</param>
         /// <returns>The toi output</returns>
-        private static ToiOutput InitializeOutput(ToiInput input)
+        private static ToiOutput InitializeOutput(ToiInput input) => new ToiOutput
         {
-            return new ToiOutput
-            {
-                State = ToiOutputState.Unknown,
-                Property = input.Max
-            };
-        }
+            State = ToiOutputState.Unknown,
+            Property = input.Max
+        };
 
         /// <summary>
-        /// Normalizes the sweeps using the specified sweep a
+        ///     Normalizes the sweeps using the specified sweep a
         /// </summary>
         /// <param name="sweepA">The sweep</param>
         /// <param name="sweepB">The sweep</param>
@@ -131,22 +127,19 @@ namespace Alis.Core.Physic.Collision.TOI
         }
 
         /// <summary>
-        /// Prepares the distance input using the specified input
+        ///     Prepares the distance input using the specified input
         /// </summary>
         /// <param name="input">The input</param>
         /// <returns>The distance input</returns>
-        private static DistanceInput PrepareDistanceInput(ToiInput input)
+        private static DistanceInput PrepareDistanceInput(ToiInput input) => new DistanceInput
         {
-            return new DistanceInput
-            {
-                ProxyA = input.ProxyA,
-                ProxyB = input.ProxyB,
-                UseRadii = false
-            };
-        }
+            ProxyA = input.ProxyA,
+            ProxyB = input.ProxyB,
+            UseRadii = false
+        };
 
         /// <summary>
-        /// Computes the separating axes using the specified input
+        ///     Computes the separating axes using the specified input
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="output">The output</param>
@@ -198,7 +191,7 @@ namespace Alis.Core.Physic.Collision.TOI
         }
 
         /// <summary>
-        /// Resolves the deepest point using the specified input
+        ///     Resolves the deepest point using the specified input
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="output">The output</param>
@@ -260,7 +253,7 @@ namespace Alis.Core.Physic.Collision.TOI
         }
 
         /// <summary>
-        /// Computes the root using the specified input
+        ///     Computes the root using the specified input
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="sweepA">The sweep</param>

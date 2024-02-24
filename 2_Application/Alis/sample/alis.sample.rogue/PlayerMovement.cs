@@ -54,7 +54,7 @@ namespace Alis.Sample.Rogue
         public override void OnUpdate()
         {
         }
-        
+
         /// <summary>
         ///     Ons the press down key using the specified key
         /// </summary>

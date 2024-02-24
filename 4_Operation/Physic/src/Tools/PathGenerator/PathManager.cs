@@ -105,14 +105,14 @@ namespace Alis.Core.Physic.Tools.PathGenerator
             for (int i = 0; i < centers.Count; i++)
             {
                 Body b = new Body(
-                    new Vector2(centers[i].X, centers[i].Y), 
                     new Vector2(centers[i].X, centers[i].Y),
-                    BodyType.Static, 
+                    new Vector2(centers[i].X, centers[i].Y),
+                    BodyType.Static,
                     centers[i].Z
-                    );
-                
+                );
+
                 world.AddBody(b);
-                
+
                 foreach (Shape shape in shapes)
                 {
                     b.AddFixture(shape);
