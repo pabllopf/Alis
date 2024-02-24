@@ -32,7 +32,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     /// <summary>
     ///     The is interface
     /// </summary>
-    public interface IIs<out TBuilder, in TType, in TArgument>
+    public interface IIs<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Ises the value
@@ -40,6 +40,6 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        TBuilder Is<T>(TArgument value) where T : TType;
+        TBuilder Is<T>(TArgument value);
     }
 }
