@@ -35,10 +35,10 @@ namespace Alis.Core.Aspect.Math
     public struct Rotation
     {
         /// Sine and cosine
-        public float Sine;
+        public float Sine { get; set; }
 
         /// Sine and cosine
-        public float Cosine;
+        public float Cosine { get; set; }
 
         /// <summary>
         ///     The angle
