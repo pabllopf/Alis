@@ -53,7 +53,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The break
         /// </summary>
-        private bool @break;
+        private bool breakable;
 
         /// <summary>
         ///     The vector
@@ -152,7 +152,7 @@ namespace Alis.Core.Physic.Dynamics
                     if (maxImpulse > Strength)
                     {
                         // Flag the body for breaking.
-                        @break = true;
+                        breakable = true;
                     }
                 }
             }
@@ -163,11 +163,11 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void Update()
         {
-            if (@break)
+            if (breakable)
             {
                 Decompose();
                 Broken = true;
-                @break = false;
+                breakable = false;
             }
 
             // Cache velocities to improve movement on breakage.
@@ -222,7 +222,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void Break()
         {
-            @break = true;
+            breakable = true;
         }
     }
 }
