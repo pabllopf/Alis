@@ -32,7 +32,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     /// <summary>
     ///     The relative position interface
     /// </summary>
-    public interface IRelativePosition<out TBuilder, in TArgument1, in TArgument2>
+    public interface IRelativePosition<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Relatives the position using the specified x
@@ -40,6 +40,6 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The builder</returns>
-        TBuilder RelativePosition(TArgument1 x, TArgument2 y);
+        TBuilder RelativePosition(TArgument x, TArgument y);
     }
 }
