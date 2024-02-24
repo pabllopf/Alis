@@ -189,7 +189,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
 
         /// <summary>Update the pairs. This results in pair callbacks. This can only add pairs.</summary>
         /// <param name="callback">The callback.</param>
-        public void UpdatePairs(BroadphaseHandler callback)
+        public void UpdatePairs(BroadPhaseHandler callback)
         {
             // Reset pair buffer
             pairCount = 0;

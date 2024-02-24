@@ -32,7 +32,7 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Collision.Handlers
 {
     /// <summary>
-    ///     The broadphase handler
+    ///     The broad phase handler
     /// </summary>
-    public delegate void BroadphaseHandler(ref FixtureProxy proxyA, ref FixtureProxy proxyB);
+    public delegate void BroadPhaseHandler(ref FixtureProxy proxyA, ref FixtureProxy proxyB);
 }

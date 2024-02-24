@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         public readonly Queue<Contact> ContactPool = new Queue<Contact>(256);
 
         /// <summary>Fires when the broadphase detects that two Fixtures are close to each other.</summary>
-        private readonly BroadphaseHandler onBroadphaseCollision;
+        private readonly BroadPhaseHandler onBroadphaseCollision;
 
         /// <summary>Fires when a contact is created</summary>
         public BeginContactHandler BeginContact;

@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         ///     Updates the pairs using the specified callback
         /// </summary>
         /// <param name="callback">The callback</param>
-        void UpdatePairs(BroadphaseHandler callback);
+        void UpdatePairs(BroadPhaseHandler callback);
 
         /// <summary>
         ///     Describes whether this instance test overlap
