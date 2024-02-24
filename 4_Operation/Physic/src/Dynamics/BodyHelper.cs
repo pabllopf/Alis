@@ -85,9 +85,6 @@ namespace Alis.Core.Physic.Dynamics
 
             Body[] bodies = {bA0, bB0};
 
-            Sweep backup1 = bA0.Sweep;
-            Sweep backup2 = bB0.Sweep;
-
             bA0.Advance(minAlpha);
             bB0.Advance(minAlpha);
 
