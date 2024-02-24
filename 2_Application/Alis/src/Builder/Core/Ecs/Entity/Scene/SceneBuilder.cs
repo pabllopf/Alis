@@ -41,7 +41,7 @@ namespace Alis.Builder.Core.Ecs.Entity.Scene
     public class SceneBuilder :
         IBuild<Alis.Core.Ecs.Entity.Scene.Scene>,
         IName<SceneBuilder, string>,
-        IAdd<SceneBuilder, Alis.Core.Ecs.Entity.GameObject.GameObject, Func<GameObjectBuilder, Alis.Core.Ecs.Entity.GameObject.GameObject>>
+        IAdd<SceneBuilder, Func<GameObjectBuilder, Alis.Core.Ecs.Entity.GameObject.GameObject>>
     {
         /// <summary>
         ///     Gets the value of the scene
@@ -54,7 +54,7 @@ namespace Alis.Builder.Core.Ecs.Entity.Scene
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The scene builder</returns>
-        public SceneBuilder Add<T>(Func<GameObjectBuilder, Alis.Core.Ecs.Entity.GameObject.GameObject> value) where T : Alis.Core.Ecs.Entity.GameObject.GameObject
+        public SceneBuilder Add<T>(Func<GameObjectBuilder, Alis.Core.Ecs.Entity.GameObject.GameObject> value)
         {
             Scene.Add(value.Invoke(new GameObjectBuilder()));
             return this;
