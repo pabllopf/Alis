@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Triangulator.cs
+//  File:Triangulate.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -73,12 +73,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         ///     The triangles
         /// </summary>
         public readonly List<List<Point>> Triangles;
-
-        /// <summary>
-        ///     The mono poly
-        /// </summary>
-        private readonly List<MonotoneMountain> xPoly;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Triangulate" /> class
         /// </summary>
@@ -89,7 +84,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
             this.sheer = sheer;
             Triangles = new List<List<Point>>();
             Trapezoids = new List<Trapezoid>();
-            xPoly = new List<MonotoneMountain>();
             edgeList = InitEdges(polyLine);
             trapezoidalMap = new TrapezoidalMap();
             boundingBox = trapezoidalMap.BoundingBox(edgeList);
@@ -213,14 +207,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
                 if (edge.MPoints.Count > 2)
                 {
                     MonotoneMountain mountain = new MonotoneMountain();
-
-                    // Sorting is a perfromance hit. Literature says this can be accomplised in
-                    // linear time, although I don't see a way around using traditional methods
-                    // when using a randomized incremental algorithm
-
-                    // Insertion sort is one of the fastest algorithms for sorting arrays containing 
-                    // fewer than ten elements, or for lists that are already mostly sorted.
-
                     List<Point> points = new List<Point>(edge.MPoints);
                     points.Sort((p1, p2) => p1.X.CompareTo(p2.X));
 
@@ -237,8 +223,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
                     {
                         Triangles.Add(t);
                     }
-
-                    xPoly.Add(mountain);
                 }
             }
         }
@@ -319,9 +303,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
             {
                 n--;
                 int k = RandomUtils.GetInt32(n + 1);
-                T value = list[k];
-                list[k] = list[n];
-                list[n] = value;
+                (list[k], list[n]) = (list[n], list[k]);
             }
         }
 
