@@ -30,8 +30,8 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>Define the word "Name" </summary>
-    /// <typeparam name="TBuilder">The type of the uilder.</typeparam>
-    /// <typeparam name="TArgument">The type of the rgument.</typeparam>
+    /// <typeparam name="TBuilder">The type of the builder.</typeparam>
+    /// <typeparam name="TArgument">The type of the argument.</typeparam>
     public interface IWithName<out TBuilder, in TArgument>
     {
         /// <summary>Withes the name.</summary>
