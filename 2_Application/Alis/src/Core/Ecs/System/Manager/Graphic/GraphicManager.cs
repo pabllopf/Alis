@@ -100,7 +100,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             defaultSize = new Vector2(VideoGame.Instance.Settings.Graphic.Window.Resolution.X, VideoGame.Instance.Settings.Graphic.Window.Resolution.Y);
 
-            if (Sdl.Init(Init.InitEverything) < 0)
+            if (Sdl.Init(InitSettings.InitEverything) < 0)
             {
                 Logger.Info($@"There was an issue initializing SDL. {Sdl.GetError()}");
             }

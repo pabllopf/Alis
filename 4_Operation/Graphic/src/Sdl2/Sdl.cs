@@ -541,7 +541,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Init([IsNotNull] Init flags)
+        public static int Init([IsNotNull] InitSettings flags)
         {
             Validator.Validate(flags, nameof(flags));
             int result = NativeSdl.InternalInit(flags);
@@ -566,7 +566,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint WasInit([IsNotNull] Init flags)
+        public static uint WasInit([IsNotNull] InitSettings flags)
         {
             Validator.Validate(flags, nameof(flags));
             uint result = NativeSdl.InternalWasInit(flags);

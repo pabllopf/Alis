@@ -219,7 +219,7 @@ namespace Alis.App.Engine
         public unsafe void Start()
         {
             // initialize SDL and set a few defaults for the OpenGL context
-            if (Sdl.Init(Init.InitVideo) != 0)
+            if (Sdl.Init(InitSettings.InitVideo) != 0)
             {
                 Console.WriteLine($@"Error of SDL2: {Sdl.GetError()}");
                 return;

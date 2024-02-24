@@ -49,7 +49,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowSurfaceTest_NotInSdlTest()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -70,7 +70,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowGrabTest_NotInSdlTest()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -91,7 +91,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowBrightnessTest_NotInSdlTest()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -112,7 +112,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowDisplayModeTest_NotInSdlTest()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -133,7 +133,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowFlagsTest_NotInSdlTest()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -154,7 +154,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowSurfaceTest_NotInSdlTest2()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -175,7 +175,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowGrabTest_NotInSdlTest2()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -196,7 +196,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowBrightnessTest_NotInSdlTest2()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -217,7 +217,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowDisplayModeTest_NotInSdlTest2()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -238,7 +238,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowFlagsTest_NotInSdlTest2()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -259,7 +259,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowGrabTest_NotInSdlTest3()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -280,7 +280,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowBrightnessTest_NotInSdlTest3()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -301,7 +301,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowDisplayModeTest_NotInSdlTest3()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -322,7 +322,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowFlagsTest_NotInSdlTest3()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -343,7 +343,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowGrabTest_NotInSdlTest4()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -364,7 +364,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowBrightnessTest_NotInSdlTest4()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -385,7 +385,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowDisplayModeTest_NotInSdlTest4()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -406,7 +406,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowFlagsTest_NotInSdlTest4()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr window = IntPtr.Zero;
@@ -428,7 +428,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlGetError_ShouldReturnEmpty_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -447,11 +447,11 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlWasInit_ShouldReturnNonZero_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
-            uint wasInit = Sdl.WasInit(Init.InitEverything);
+            uint wasInit = Sdl.WasInit(InitSettings.InitEverything);
 
             // Assert
             Assert.NotEqual(0.0, wasInit);
@@ -466,7 +466,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickNameForIndex_ShouldReturnValidName_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             int deviceIndex = 0; // Assuming a device is connected at index 0
 
@@ -486,7 +486,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickNumAxes_ShouldReturnNonNegative_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
 
@@ -506,7 +506,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickNumBalls_ShouldReturnNonNegative_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
 
@@ -526,7 +526,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickNumButtons_ShouldReturnNonNegative_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
 
@@ -546,7 +546,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickNumHats_ShouldReturnNonNegative_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
 
@@ -566,7 +566,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickOpen_ShouldReturnValidPointer_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             int deviceIndex = 0; // Assuming a device is connected at index 0
 
@@ -586,7 +586,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestNumJoysticks_ShouldReturnNonNegative_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -605,7 +605,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickGetDeviceGuid_ShouldReturnValidGuid_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             int deviceIndex = 0; // Assuming a device is connected at index 0
 
@@ -625,7 +625,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickGetGuid_ShouldReturnValidGuid_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
 
@@ -645,7 +645,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickGetDeviceVendor_ShouldReturnValidVendor_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             int deviceIndex = 0; // Assuming a device is connected at index 0
 
@@ -665,7 +665,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickGetDeviceProduct_ShouldReturnValidProduct_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             int deviceIndex = 0; // Assuming a device is connected at index 0
 
@@ -685,7 +685,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickGetDeviceProductVersion_ShouldReturnValidProductVersion_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             int deviceIndex = 0; // Assuming a device is connected at index 0
 
@@ -705,7 +705,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickGetDeviceType_ShouldReturnValidType_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             int deviceIndex = 0; // Assuming a device is connected at index 0
 
@@ -725,7 +725,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickGetDeviceInstanceId_ShouldReturnValidInstanceId_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             int deviceIndex = 0; // Assuming a device is connected at index 0
 
@@ -746,7 +746,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickGetVendor_ShouldReturnValidVendor_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
 
@@ -766,7 +766,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickGetProduct_ShouldReturnValidProduct_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
 
@@ -786,7 +786,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickGetProductVersion_ShouldReturnValidProductVersion_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
 
@@ -806,7 +806,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickGetSerial_ShouldReturnValidSerial_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
 
@@ -826,7 +826,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickGetType_ShouldReturnValidType_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
 
@@ -846,7 +846,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickGetAttached_ShouldReturnTrue_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
 
@@ -866,7 +866,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickInstanceId_ShouldReturnValidInstanceId_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
 
@@ -886,7 +886,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestJoystickCurrentPowerLevel_ShouldReturnValidPowerLevel_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
 
@@ -906,7 +906,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void BindTexture_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr texture = IntPtr.Zero;
 
@@ -927,7 +927,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void CreateContext_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
 
@@ -948,7 +948,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void DeleteContext_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr context = IntPtr.Zero;
 
@@ -969,7 +969,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetProcAddress_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             string proc = "glBindTexture";
 
@@ -990,7 +990,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void ExtensionSupported_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             string extension = "GL_ARB_texture_non_power_of_two";
 
@@ -1011,7 +1011,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void ResetAttributes_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -1031,7 +1031,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetAttribute_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             GlAttr attr = GlAttr.SdlGlContextMajorVersion;
 
@@ -1052,7 +1052,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetSwapInterval_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -1072,7 +1072,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void MakeCurrent_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             IntPtr context = IntPtr.Zero;
@@ -1094,7 +1094,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetCurrentWindow_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -1114,7 +1114,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetCurrentContext_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -1134,7 +1134,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetDrawableSize_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
 
@@ -1156,7 +1156,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetAttributeByInt_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             GlAttr attr = GlAttr.SdlGlContextMajorVersion;
             int value = 3;
@@ -1178,7 +1178,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetAttributeByProfile_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             GlAttr attr = GlAttr.SdlGlContextProfileMask;
             GlProfiles profile = GlProfiles.SdlGlContextProfileCore;
@@ -1200,7 +1200,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetSwapInterval_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             int interval = 1;
 
@@ -1221,7 +1221,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SwapWindow_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
 
@@ -1242,7 +1242,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void UnbindTexture_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr texture = IntPtr.Zero;
 
@@ -1263,7 +1263,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void HideWindow_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
 
@@ -1284,7 +1284,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void MaximizeWindow_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
 
@@ -1305,7 +1305,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void MinimizeWindow_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
 
@@ -1326,7 +1326,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RaiseWindow_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
 
@@ -1347,7 +1347,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RestoreWindow_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
 
@@ -1372,7 +1372,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowBrightness_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             float brightness = 1.0f;
@@ -1394,7 +1394,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowData_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             string name = "test";
@@ -1417,7 +1417,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowDisplayMode_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             DisplayMode mode = new DisplayMode();
@@ -1439,7 +1439,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowFullscreen_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             uint flags = 0;
@@ -1461,7 +1461,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowGammaRamp_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             ushort[] red = new ushort[256];
@@ -1485,7 +1485,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowGrab_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             bool grabbed = true;
@@ -1507,7 +1507,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowKeyboardGrab_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             bool grabbed = true;
@@ -1529,7 +1529,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowMouseGrab_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             bool grabbed = true;
@@ -1551,7 +1551,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowIcon_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             IntPtr icon = IntPtr.Zero;
@@ -1573,7 +1573,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowMaximumSize_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             int maxW = 800;
@@ -1596,7 +1596,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowMinimumSize_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             int minW = 800;
@@ -1619,7 +1619,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowPosition_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             int x = 100;
@@ -1642,7 +1642,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowSize_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             int w = 800;
@@ -1665,7 +1665,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowBordered_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             bool bordered = true;
@@ -1687,7 +1687,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowBordersSize_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
 
@@ -1708,7 +1708,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowResizable_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             bool resizable = true;
@@ -1730,7 +1730,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowAlwaysOnTop_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             bool onTop = true;
@@ -1752,7 +1752,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowTitle_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             string title = "Test Title";
@@ -1774,7 +1774,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void ShowWindow_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
 
@@ -1795,7 +1795,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void UpdateWindowSurface_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
 
@@ -1816,7 +1816,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void UpdateWindowSurfaceRects_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             RectangleI[] rects = new RectangleI[1];
@@ -1839,7 +1839,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowHitTest_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             IntPtr callbackData = IntPtr.Zero;
@@ -1861,7 +1861,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetGrabbedWindow_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -1882,7 +1882,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetWindowMouseRect_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             RectangleI rect = new RectangleI();
@@ -1904,7 +1904,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetWindowMouseRect_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
 
@@ -1926,7 +1926,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void FlashWindow_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             FlashOperation operation = FlashOperation.SdlFlashUntilFocused;
@@ -1948,7 +1948,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void ComposeCustomBlendMode_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             BlendFactor srcColorFactor = BlendFactor.SdlBlendFactorZero;
             BlendFactor dstColorFactor = BlendFactor.SdlBlendFactorZero;
@@ -1974,7 +1974,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void CreateRenderer_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
             int index = -1;
@@ -1998,7 +1998,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void CreateTexture_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
             uint format = 0;
@@ -2024,7 +2024,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void DestroyTexture_ShouldNotThrowException()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr texture = IntPtr.Zero;
 
@@ -2045,7 +2045,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetNumRenderDrivers_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             // Act
@@ -2065,7 +2065,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetRenderDrawBlendMode_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
 
@@ -2086,7 +2086,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetTextureScaleMode_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr texture = IntPtr.Zero;
             ScaleMode scaleMode = ScaleMode.SdlScaleModeNearest;
@@ -2108,7 +2108,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetTextureScaleMode_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr texture = IntPtr.Zero;
 
@@ -2129,7 +2129,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetTextureUserData_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr texture = IntPtr.Zero;
             IntPtr userdata = IntPtr.Zero;
@@ -2151,7 +2151,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetTextureUserData_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr texture = IntPtr.Zero;
 
@@ -2172,7 +2172,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetRenderDrawColor_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
 
@@ -2193,7 +2193,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetRenderDriverInfo_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             int index = 0;
 
@@ -2214,7 +2214,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetRenderer_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr window = IntPtr.Zero;
 
@@ -2235,7 +2235,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetRendererInfo_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
 
@@ -2256,7 +2256,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetRendererOutputSize_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
 
@@ -2277,7 +2277,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetTextureAlphaMod_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr texture = IntPtr.Zero;
 
@@ -2299,7 +2299,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetTextureBlendMode_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr texture = IntPtr.Zero;
 
@@ -2320,7 +2320,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void GetTextureColorMod_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr texture = IntPtr.Zero;
 
@@ -2341,7 +2341,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void LockTexture_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr texture = IntPtr.Zero;
             RectangleI rect = new RectangleI();
@@ -2363,7 +2363,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void LockTextureToSurface_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr texture = IntPtr.Zero;
             RectangleI rect = new RectangleI();
@@ -2385,7 +2385,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void QueryTexture_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr texture = IntPtr.Zero;
 
@@ -2406,7 +2406,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderClear_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
 
@@ -2427,7 +2427,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderCopy_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
             IntPtr texture = IntPtr.Zero;
@@ -2451,7 +2451,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderCopyEx_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
             IntPtr texture = IntPtr.Zero;
@@ -2479,7 +2479,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderDrawLine_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
             int x1 = 0;
@@ -2504,7 +2504,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderDrawPoints_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
             PointI[] points = Array.Empty<PointI>();
@@ -2527,7 +2527,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderDrawRect_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
             RectangleI rect = new RectangleI();
@@ -2549,7 +2549,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderFillRect_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
             RectangleI rect = new RectangleI();
@@ -2571,7 +2571,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderCopyExF_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
             IntPtr texture = IntPtr.Zero;
@@ -2598,7 +2598,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderGeometry_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
             IntPtr texture = IntPtr.Zero;
@@ -2624,7 +2624,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderDrawPointF_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
             float x = 0.0f;
@@ -2647,7 +2647,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderDrawPointsF_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
             PointF[] points = Array.Empty<PointF>();
@@ -2670,7 +2670,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderDrawLineF_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
             float x1 = 0.0f;
@@ -2695,7 +2695,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderDrawLinesF_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
             PointF[] points = Array.Empty<PointF>();
@@ -2718,7 +2718,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderDrawRectF_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
             RectangleF rect = new RectangleF();
@@ -2740,7 +2740,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderFillRectF_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
             RectangleF rect = new RectangleF();
@@ -2762,7 +2762,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderGetClipRect_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
 
@@ -2786,7 +2786,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderGetLogicalSize_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
 
@@ -2808,7 +2808,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderGetViewport_ShouldReturnExpectedValue()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
             IntPtr renderer = IntPtr.Zero;
 
@@ -2829,7 +2829,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetTextureAlphaMod_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr texture = IntPtr.Zero; // Replace with the desired texture
@@ -2851,7 +2851,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetTextureBlendMode_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr texture = IntPtr.Zero; // Replace with the desired texture
@@ -2873,7 +2873,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void SetTextureColorMod_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr texture = IntPtr.Zero; // Replace with the desired texture
@@ -2897,7 +2897,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderDrawLines_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
@@ -2920,7 +2920,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderDrawPoint_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
@@ -2943,7 +2943,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderDrawRectF_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
@@ -2965,7 +2965,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderDrawRectsF_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
@@ -2988,7 +2988,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void UpdateTexture_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr texture = IntPtr.Zero; // Replace with the desired texture
@@ -3012,7 +3012,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderFillRectF_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
@@ -3034,7 +3034,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderFillRectF_V2_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
@@ -3056,7 +3056,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderCopyF_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero; // Replace with the actual renderer
@@ -3080,7 +3080,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderCopyEx_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero; // Replace with the actual renderer
@@ -3107,7 +3107,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderCopyExF_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero; // Replace with the actual renderer
@@ -3134,7 +3134,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderCopyExF_v3_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero; // Replace with the actual renderer
@@ -3161,7 +3161,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void RenderCopyF_v3_ValidParams_ReturnsExpectedInt()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             IntPtr renderer = IntPtr.Zero; // Replace with the actual renderer

@@ -46,7 +46,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         public void Text_ValidCall_ReturnsExpectedByteArray()
         {
             // Arrange
-            int initResult = Sdl.Init(Init.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
 
             TextInputEvent textInputEvent = new TextInputEvent();

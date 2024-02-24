@@ -1536,7 +1536,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_Init", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalInit([IsNotNull] Init flags);
+        internal static extern int InternalInit([IsNotNull] InitSettings flags);
 
         /// <summary>
         ///     Sdl the quit
@@ -1554,7 +1554,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_WasInit", CallingConvention = CallingConvention.Cdecl)]
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern uint InternalWasInit([IsNotNull] Init flags);
+        internal static extern uint InternalWasInit([IsNotNull] InitSettings flags);
 
         /// <summary>
         ///     Sdl the clear hints
