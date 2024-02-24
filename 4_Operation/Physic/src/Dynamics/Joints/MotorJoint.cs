@@ -167,8 +167,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             this.linearOffset = linearOffset;
             this.angularOffset = angularOffset;
             this.maxForce = maxForce;
-            this.Torque = maxTorque;
-            this.CorrectionFactor = correctionFactor;
+            Torque = maxTorque;
+            CorrectionFactor = correctionFactor;
         }
 
         /// <summary>Constructor for MotorJoint.</summary>

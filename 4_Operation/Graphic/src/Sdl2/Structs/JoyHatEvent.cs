@@ -62,6 +62,5 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The hat value
         /// </summary>
         public readonly byte hatValue;
-        
     }
 }

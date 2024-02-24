@@ -98,7 +98,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
         /// </summary>
         /// <returns>The box collider</returns>
         public BoxCollider Build() => boxCollider;
-        
+
         /// <summary>
         ///     Fixed the rotation using the specified value
         /// </summary>

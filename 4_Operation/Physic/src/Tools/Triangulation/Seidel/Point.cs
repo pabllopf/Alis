@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         }
 
         /// <summary>
-        /// operator negation
+        ///     operator negation
         /// </summary>
         /// <param name="p1"></param>
         /// <param name="p2"></param>
@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         public static Point operator -(Point p1, Point p2) => new Point(p1.X - p2.X, p1.Y - p2.Y);
 
         /// <summary>
-        /// operator positive
+        ///     operator positive
         /// </summary>
         /// <param name="p1"></param>
         /// <param name="p2"></param>
@@ -82,7 +82,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         public static Point operator +(Point p1, Point p2) => new Point(p1.X + p2.X, p1.Y + p2.Y);
 
         /// <summary>
-        /// operator negation
+        ///     operator negation
         /// </summary>
         /// <param name="p1"></param>
         /// <param name="f"></param>
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         public static Point operator -(Point p1, float f) => new Point(p1.X - f, p1.Y - f);
 
         /// <summary>
-        /// operator positive
+        ///     operator positive
         /// </summary>
         /// <param name="p1"></param>
         /// <param name="f"></param>

@@ -77,7 +77,7 @@ namespace Alis.Core.Physic
         ///     Gets or sets the value of the joints
         /// </summary>
         internal List<Joint> Joints { get; } = new List<Joint>();
-        
+
         /// <summary>
         ///     Gets or sets the value of the contact manager
         /// </summary>
@@ -123,7 +123,7 @@ namespace Alis.Core.Physic
         /// </summary>
         /// <param name="joint">The joint</param>
         public void RemoveJoint(Joint joint) => Joints.Remove(joint);
-        
+
         /// <summary>
         ///     Steps the dt
         /// </summary>
@@ -161,7 +161,7 @@ namespace Alis.Core.Physic
             TimeStepGlobal.InvertedDeltaTime = dt > 0.0f ? 1.0f / dt : 0.0f;
             TimeStepGlobal.DeltaTimeRatio = TimeStepGlobal.InvertedDeltaTimeZero * dt;
         }
-        
+
         /// <summary>
         ///     Collides the contacts
         /// </summary>

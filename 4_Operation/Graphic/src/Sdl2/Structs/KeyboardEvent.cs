@@ -62,7 +62,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The repeat
         /// </summary>
         public readonly byte repeat;
-        
+
         /// <summary>
         ///     The key sym
         /// </summary>

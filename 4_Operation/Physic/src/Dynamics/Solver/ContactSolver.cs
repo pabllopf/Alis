@@ -234,7 +234,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Initializes the velocity constraints
+        ///     Initializes the velocity constraints
         /// </summary>
         public void InitializeVelocityConstraints()
         {
@@ -288,7 +288,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Initializes the transforms using the specified a a
+        ///     Initializes the transforms using the specified a a
         /// </summary>
         /// <param name="aA">The </param>
         /// <param name="cA">The </param>
@@ -309,7 +309,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Initializes the world manifold using the specified manifold
+        ///     Initializes the world manifold using the specified manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="xfA">The xf</param>
@@ -324,7 +324,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Initializes the velocity constraint points using the specified vc
+        ///     Initializes the velocity constraint points using the specified vc
         /// </summary>
         /// <param name="vc">The vc</param>
         /// <param name="cA">The </param>
@@ -376,7 +376,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Prepares the block solver using the specified vc
+        ///     Prepares the block solver using the specified vc
         /// </summary>
         /// <param name="vc">The vc</param>
         /// <param name="mA">The </param>

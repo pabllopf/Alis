@@ -204,7 +204,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     The torque
         /// </summary>
         public float Torque { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the sleep time
         /// </summary>

@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                 }
                 else if (Math.Abs(p1.X - p2.X) < 0.01f)
                 {
-                    Logger.Exception( $"Failed to create constraint {p1}={p2}");
+                    Logger.Exception($"Failed to create constraint {p1}={p2}");
                 }
             }
 

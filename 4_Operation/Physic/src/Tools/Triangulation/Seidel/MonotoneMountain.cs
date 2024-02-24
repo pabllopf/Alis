@@ -49,11 +49,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// </summary>
         private readonly HashSet<Point> convexPoints;
 
-        /// <summary>
-        ///     The mono poly
-        /// </summary>
-        public List<Point> MonoPoly { get; }
-
         // Triangles that constitute the mountain
         /// <summary>
         ///     The triangles
@@ -94,6 +89,11 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
             MonoPoly = new List<Point>();
             Triangles = new List<List<Point>>();
         }
+
+        /// <summary>
+        ///     The mono poly
+        /// </summary>
+        public List<Point> MonoPoly { get; }
 
         // Append a point to the list
         /// <summary>

@@ -747,7 +747,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         }
 
         /// <summary>
-        /// Balances the to using the specified i a
+        ///     Balances the to using the specified i a
         /// </summary>
         /// <param name="iA">The </param>
         /// <returns>The </returns>
@@ -771,7 +771,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
             {
                 return BalanceRight(iA, a, iC, c);
             }
-            else if (balance < -1)
+
+            if (balance < -1)
             {
                 return BalanceLeft(iA, a, iB, b);
             }
@@ -780,7 +781,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         }
 
         /// <summary>
-        /// Balances the right using the specified i a
+        ///     Balances the right using the specified i a
         /// </summary>
         /// <param name="iA">The </param>
         /// <param name="a">The </param>
@@ -804,14 +805,12 @@ namespace Alis.Core.Physic.Collision.BroadPhase
             {
                 return BalanceRightCase1(iA, a, iC, c, iF, f, iG, g);
             }
-            else
-            {
-                return BalanceRightCase2(iA, a, iC, c, iF, f, iG, g);
-            }
+
+            return BalanceRightCase2(iA, a, iC, c, iF, f, iG, g);
         }
 
         /// <summary>
-        /// Balances the left using the specified i a
+        ///     Balances the left using the specified i a
         /// </summary>
         /// <param name="iA">The </param>
         /// <param name="a">The </param>
@@ -835,14 +834,12 @@ namespace Alis.Core.Physic.Collision.BroadPhase
             {
                 return BalanceLeftCase1(iA, a, iB, b, iD, d, iE, e);
             }
-            else
-            {
-                return BalanceLeftCase2(iA, a, iB, b, iD, d, iE, e);
-            }
+
+            return BalanceLeftCase2(iA, a, iB, b, iD, d, iE, e);
         }
 
         /// <summary>
-        /// Updates the parent using the specified old child
+        ///     Updates the parent using the specified old child
         /// </summary>
         /// <param name="oldChild">The old child</param>
         /// <param name="newChild">The new child</param>
@@ -867,7 +864,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         }
 
         /// <summary>
-        /// Balances the right case 1 using the specified i a
+        ///     Balances the right case 1 using the specified i a
         /// </summary>
         /// <param name="iA">The </param>
         /// <param name="a">The </param>
@@ -893,7 +890,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         }
 
         /// <summary>
-        /// Balances the right case 2 using the specified i a
+        ///     Balances the right case 2 using the specified i a
         /// </summary>
         /// <param name="iA">The </param>
         /// <param name="a">The </param>
@@ -919,7 +916,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         }
 
         /// <summary>
-        /// Balances the left case 1 using the specified i a
+        ///     Balances the left case 1 using the specified i a
         /// </summary>
         /// <param name="iA">The </param>
         /// <param name="a">The </param>
@@ -945,7 +942,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         }
 
         /// <summary>
-        /// Balances the left case 2 using the specified i a
+        ///     Balances the left case 2 using the specified i a
         /// </summary>
         /// <param name="iA">The </param>
         /// <param name="a">The </param>

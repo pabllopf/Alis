@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NoImplementationForCurrentOs.cs
+//  File:NoImplementationForCurrentOsException.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,16 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Audio.OS.Exceptions
 {
     /// <summary>
-    /// The no implementation for current os class
+    ///     The no implementation for current os class
     /// </summary>
-    /// <seealso cref="System.Exception"/>
-    public class NoImplementationForCurrentOsException : System.Exception
+    /// <seealso cref="System.Exception" />
+    public class NoImplementationForCurrentOsException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NoImplementationForCurrentOsException"/> class
+        ///     Initializes a new instance of the <see cref="NoImplementationForCurrentOsException" /> class
         /// </summary>
         /// <param name="message">The message</param>
         public NoImplementationForCurrentOsException(string message) : base(message)

@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Dynamics
             Parts = new List<Fixture>(parts.Count);
             MainBody = new Body(position, Vector2.Zero, BodyType.Dynamic, rotation);
             world.AddBody(MainBody);
-            
+
             Strength = 500.0f;
 
             foreach (Vertices part in parts)
@@ -99,10 +99,10 @@ namespace Alis.Core.Physic.Dynamics
         {
             this.world = world;
             this.world.ContactManager.PostSolve += PostSolve;
-            
+
             MainBody = new Body(position, Vector2.Zero, BodyType.Dynamic, rotation);
             world.AddBody(MainBody);
-            
+
             Parts = new List<Fixture>(8);
 
             foreach (Shape part in shapes)
@@ -203,7 +203,7 @@ namespace Alis.Core.Physic.Dynamics
                 Shape shape = oldFixture.Shape.Clone();
 
                 MainBody.RemoveFixture(oldFixture);
-                
+
                 Body body = new Body(MainBody.Position, MainBody.LinearVelocity, BodyType.Dynamic, MainBody.Rotation);
 
                 Fixture newFixture = body.AddFixture(shape);

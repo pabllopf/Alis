@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         ///     The triangles
         /// </summary>
         public readonly List<List<Point>> Triangles;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Triangulate" /> class
         /// </summary>

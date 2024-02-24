@@ -116,7 +116,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
 
             // Face offset.
             float frontOffset = Vector2.Dot(normal, v11);
-            
+
             float sideOffset1 = -Vector2.Dot(tangent, v11) + totalRadius;
             float sideOffset2 = Vector2.Dot(tangent, v12) + totalRadius;
 

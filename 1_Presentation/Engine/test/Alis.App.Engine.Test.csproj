@@ -16,6 +16,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\4_Operation\Physic\src\Alis.Core.Physic.csproj" />
+        <ProjectReference Include="..\..\..\4_Operation\Physic\src\Alis.Core.Physic.csproj"/>
     </ItemGroup>
 </Project>

@@ -61,7 +61,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the enable
         /// </summary>
-        
         public void OnEnable()
         {
             Logger.Info("ManagerSample enabled");
@@ -70,7 +69,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the init
         /// </summary>
-        
         public void OnInit()
         {
             Logger.Info("ManagerSample initialized");
@@ -79,7 +77,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the awake
         /// </summary>
-        
         public void OnAwake()
         {
             Logger.Info("ManagerSample awaked");
@@ -88,7 +85,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the start
         /// </summary>
-        
         public void OnStart()
         {
             Logger.Info("ManagerSample started");
@@ -97,7 +93,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the before update
         /// </summary>
-        
         public void OnBeforeUpdate()
         {
             Logger.Info("ManagerSample before update");
@@ -106,7 +101,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the update
         /// </summary>
-        
         public void OnUpdate()
         {
             Logger.Info("ManagerSample updated");
@@ -115,7 +109,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the after update
         /// </summary>
-        
         public void OnAfterUpdate()
         {
             Logger.Info("ManagerSample after update");
@@ -124,7 +117,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
-        
         public void OnBeforeFixedUpdate()
         {
             Logger.Info("ManagerSample before fixed update");
@@ -133,7 +125,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the fixed update
         /// </summary>
-        
         public void OnFixedUpdate()
         {
             Logger.Info("ManagerSample fixed update");
@@ -142,7 +133,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
-        
         public void OnAfterFixedUpdate()
         {
             Logger.Info("ManagerSample after fixed update");
@@ -151,7 +141,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
-        
         public void OnDispatchEvents()
         {
             Logger.Info("ManagerSample dispatch events");
@@ -160,7 +149,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the calculate
         /// </summary>
-        
         public void OnCalculate()
         {
             Logger.Info("ManagerSample calculated");
@@ -169,7 +157,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the draw
         /// </summary>
-        
         public void OnDraw()
         {
             Logger.Info("ManagerSample draw");
@@ -178,7 +165,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the gui
         /// </summary>
-        
         public void OnGui()
         {
             Logger.Info("ManagerSample gui");
@@ -187,7 +173,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the disable
         /// </summary>
-        
         public void OnDisable()
         {
             Logger.Info("ManagerSample disabled");
@@ -196,7 +181,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the reset
         /// </summary>
-        
         public void OnReset()
         {
             Logger.Info("ManagerSample reset");
@@ -205,7 +189,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the stop
         /// </summary>
-        
         public void OnStop()
         {
             Logger.Info("ManagerSample stopped");
@@ -214,7 +197,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the exit
         /// </summary>
-        
         public void OnExit()
         {
             Logger.Info("ManagerSample exited");
@@ -223,7 +205,6 @@ namespace Alis.Core.Test.Ecs.System.Manager
         /// <summary>
         ///     Ons the destroy
         /// </summary>
-        
         public void OnDestroy()
         {
             Logger.Info("ManagerSample destroyed");

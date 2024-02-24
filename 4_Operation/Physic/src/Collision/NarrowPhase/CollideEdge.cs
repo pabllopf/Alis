@@ -250,7 +250,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         }
 
         /// <summary>
-        /// Collides the edge and polygon using the specified manifold
+        ///     Collides the edge and polygon using the specified manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="edgeA">The edge</param>
@@ -311,7 +311,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             }
 
             ReferenceFace ref1 = GetReferenceFace(primaryAxis, tempPolygonB, v1, v2, edge1, ref manifold);
-            
+
             // Define clipPoints before using it
             FixedArray2<ClipVertex> clipPoints = new FixedArray2<ClipVertex>();
 
@@ -337,7 +337,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         }
 
         /// <summary>
-        /// Gets the polygon in frame a using the specified polygon b
+        ///     Gets the polygon in frame a using the specified polygon b
         /// </summary>
         /// <param name="polygonB">The polygon</param>
         /// <param name="xf">The xf</param>
@@ -355,7 +355,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         }
 
         /// <summary>
-        /// Gets the primary axis using the specified polygon axis
+        ///     Gets the primary axis using the specified polygon axis
         /// </summary>
         /// <param name="polygonAxis">The polygon axis</param>
         /// <param name="edgeAxis">The edge axis</param>
@@ -366,12 +366,12 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             // Use hysteresis for jitter reduction.
             const float kRelativeTol = 0.98f;
             const float kAbsoluteTol = 0.001f;
-            
+
             return polygonAxis.Separation - radius > kRelativeTol * (edgeAxis.Separation - radius) + kAbsoluteTol ? polygonAxis : edgeAxis;
         }
 
         /// <summary>
-        /// Handles the one sided edge using the specified primary axis
+        ///     Handles the one sided edge using the specified primary axis
         /// </summary>
         /// <param name="primaryAxis">The primary axis</param>
         /// <param name="edgeAxis">The edge axis</param>
@@ -439,7 +439,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         }
 
         /// <summary>
-        /// Gets the reference face using the specified primary axis
+        ///     Gets the reference face using the specified primary axis
         /// </summary>
         /// <param name="primaryAxis">The primary axis</param>
         /// <param name="tempPolygonB">The temp polygon</param>
@@ -526,7 +526,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         }
 
         /// <summary>
-        /// Sets the manifold points using the specified manifold
+        ///     Sets the manifold points using the specified manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="primaryAxis">The primary axis</param>

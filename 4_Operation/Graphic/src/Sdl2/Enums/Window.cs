@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:WindowFlags.cs
+//  File:Window.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -38,10 +38,10 @@ namespace Alis.Core.Graphic.Sdl2.Enums
     public enum WindowSettings : uint
     {
         /// <summary>
-        /// The none window
+        ///     The none window
         /// </summary>
         None = 0x00000000,
-        
+
         /// <summary>
         ///     The sdl window fullscreen sdl window flags
         /// </summary>

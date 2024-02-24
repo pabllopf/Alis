@@ -191,7 +191,7 @@ namespace Alis.Core.Ecs.Component
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public virtual void OnCollisionExit(IGameObject gameObject) => Logger.Trace();
-        
+
         /// <summary>
         ///     Ons the collision stay using the specified game object
         /// </summary>
