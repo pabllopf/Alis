@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FlipcodeDecomposer.cs
+//  File:FlipCodeDecomposer.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -42,9 +42,8 @@ namespace Alis.Core.Physic.Tools.Triangulation.FlipCode
     ///     - Very fast
     ///     - Only works on simple polygons
     ///     - Only works on counter clockwise polygons
-    ///     More information: http://www.flipcode.com/archives/Efficient_Polygon_Triangulation.shtml
     /// </summary>
-    internal static class FlipcodeDecomposer
+    internal static class FlipCodeDecomposer
     {
         /// <summary>
         ///     The tmp
@@ -173,7 +172,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.FlipCode
         /// <param name="v">The index of the second point</param>
         /// <param name="w">The index of the third point</param>
         /// <param name="n">The number of elements in the array.</param>
-        /// <param name="vv">The array to populate with indicies of triangles.</param>
+        /// <param name="vv">The array to populate with indices of triangles.</param>
         /// <returns>True if a triangle was found</returns>
         private static bool Snip(Vertices contour, int u, int v, int w, int n, int[] vv)
         {
