@@ -244,7 +244,6 @@ namespace Alis.Core.Physic.Collision.Distance
         private static void PrepareOutput(out DistanceOutput output, ref Simplex simplex, ref SimplexCache cache, ref DistanceInput input)
         {
             simplex.GetWitnessPoints(out output.PointA, out output.PointB);
-            output = default(DistanceOutput);
             output.Distance = (output.PointA - output.PointB).Length();
             output.Iterations = simplex.Count;
 
