@@ -29,7 +29,6 @@
 
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
-using Alis.Core.Aspect.Math.Util;
 using Xunit;
 
 namespace Alis.Core.Aspect.Base.Test.Dll
@@ -97,7 +96,7 @@ namespace Alis.Core.Aspect.Base.Test.Dll
             Architecture arch = Architecture.X64;
 
             PlatformInfo platformInfo = new PlatformInfo(platform, arch);
-            int expectedHashCode = HashCode.Combine(platform, arch);
+            int expectedHashCode = platform.GetHashCode() ^ arch.GetHashCode();
 
             Assert.Equal(expectedHashCode, platformInfo.GetHashCode());
         }

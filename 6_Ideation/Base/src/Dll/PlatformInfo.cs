@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Math.Util;
 
 namespace Alis.Core.Aspect.Base.Dll
 {
@@ -77,6 +76,6 @@ namespace Alis.Core.Aspect.Base.Dll
         ///     Gets the hash code
         /// </summary>
         /// <returns>The int</returns>
-        public override int GetHashCode() => HashCode.Combine(Platform, Arch);
+        public override int GetHashCode() => Platform.GetHashCode() ^ Arch.GetHashCode();
     }
 }

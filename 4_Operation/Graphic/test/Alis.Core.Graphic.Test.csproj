@@ -14,17 +14,4 @@
         <PublishReadyToRunShowWarnings>false</PublishReadyToRunShowWarnings>
         <IsTrimmable>false</IsTrimmable>
     </PropertyGroup>
-
-    <ItemGroup>
-        <None Update="Assets\AudioSample.wav">
-            <LinkBase>Assets/</LinkBase>
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-        </None>
-        <None Update="Assets\tile000.bmp">
-            <LinkBase>Assets/</LinkBase>
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-        </None>
-    </ItemGroup>
 </Project>
