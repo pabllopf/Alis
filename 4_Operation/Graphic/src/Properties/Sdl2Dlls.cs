@@ -53,10 +53,10 @@ namespace Alis.Core.Graphic.Properties
             {new PlatformInfo(OSPlatform.Linux, Architecture.Arm), "Alis.Core.Graphic.resources.linux_arm.linux-arm_sdl2.zip"},
             {new PlatformInfo(OSPlatform.Linux, Architecture.Arm64), "Alis.Core.Graphic.resources.linux_arm64.linux-arm64_sdl2.zip"},
 
-            {new PlatformInfo(OSPlatform.OSX, Architecture.X86), "Alis.Core.Graphic.resources.osx_x64.osx-x64_sdl2.zip"},
+            {new PlatformInfo(OSPlatform.OSX, Architecture.X86), "Alis.Core.Graphic.resources.osx_x86.osx-x86_sdl2.zip"},
             {new PlatformInfo(OSPlatform.OSX, Architecture.X64), "Alis.Core.Graphic.resources.osx_x64.osx-x64_sdl2.zip"},
             {new PlatformInfo(OSPlatform.OSX, Architecture.Arm64), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2.zip"},
-            {new PlatformInfo(OSPlatform.OSX, Architecture.Arm), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2.zip"}
+            {new PlatformInfo(OSPlatform.OSX, Architecture.Arm), "Alis.Core.Graphic.resources.osx_arm.osx-arm_sdl2.zip"}
         };
 
         /// <summary>
@@ -74,10 +74,10 @@ namespace Alis.Core.Graphic.Properties
             {new PlatformInfo(OSPlatform.Linux, Architecture.Arm), "Alis.Core.Graphic.resources.linux_arm.linux-arm_sdl2_ttf.zip"},
             {new PlatformInfo(OSPlatform.Linux, Architecture.Arm64), "Alis.Core.Graphic.resources.linux_arm64.linux-arm64_sdl2_ttf.zip"},
 
-            {new PlatformInfo(OSPlatform.OSX, Architecture.X86), "Alis.Core.Graphic.resources.osx_x64.osx-x64_sdl2_ttf.zip"},
+            {new PlatformInfo(OSPlatform.OSX, Architecture.X86), "Alis.Core.Graphic.resources.osx_x86.osx-x86_sdl2_ttf.zip"},
             {new PlatformInfo(OSPlatform.OSX, Architecture.X64), "Alis.Core.Graphic.resources.osx_x64.osx-x64_sdl2_ttf.zip"},
             {new PlatformInfo(OSPlatform.OSX, Architecture.Arm64), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_ttf.zip"},
-            {new PlatformInfo(OSPlatform.OSX, Architecture.Arm), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_ttf.zip"}
+            {new PlatformInfo(OSPlatform.OSX, Architecture.Arm), "Alis.Core.Graphic.resources.osx_arm.osx-arm_sdl2_ttf.zip"}
         };
     }
 }
