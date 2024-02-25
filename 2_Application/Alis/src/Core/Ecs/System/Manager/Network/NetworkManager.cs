@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
-
 namespace Alis.Core.Ecs.System.Manager.Network
 {
     /// <summary>

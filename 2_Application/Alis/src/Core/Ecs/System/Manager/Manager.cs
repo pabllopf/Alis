@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Ecs.System.Manager

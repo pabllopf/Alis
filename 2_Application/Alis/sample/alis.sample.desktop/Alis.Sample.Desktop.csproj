@@ -14,8 +14,4 @@
         <PublishReadyToRunShowWarnings>false</PublishReadyToRunShowWarnings>
         <IsTrimmable>false</IsTrimmable>
     </PropertyGroup>
-
-    <ItemGroup>
-        <Folder Include="Assets\"/>
-    </ItemGroup>
 </Project>
