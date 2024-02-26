@@ -53,26 +53,33 @@ namespace Alis.Core.Audio.OS
         /// <exception cref="Exception">No implementation exist for the current OS</exception>
         public Player()
         {
+            _internalPlayer = CheckOs();
+            _internalPlayer.PlaybackFinished += OnPlaybackFinished;
+        }
+
+        /// <summary>
+        /// Checks the os
+        /// </summary>
+        /// <exception cref="NoImplementationForCurrentOsException">No implementation exist for the current OS</exception>
+        /// <returns>The player</returns>
+        private static IPlayer CheckOs()
+        {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                _internalPlayer = new WindowsPlayer();
+                return new WindowsPlayer();
             }
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                _internalPlayer = new LinuxPlayer();
+                return new LinuxPlayer();
             }
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                _internalPlayer = new MacPlayer();
+                return new MacPlayer();
             }
-            else
-            {
-                throw new NoImplementationForCurrentOsException("No implementation exist for the current OS");
-            }
-
-            _internalPlayer.PlaybackFinished += OnPlaybackFinished;
+            
+            throw new NoImplementationForCurrentOsException("No implementation exist for the current OS");
         }
 
         /// <summary>
