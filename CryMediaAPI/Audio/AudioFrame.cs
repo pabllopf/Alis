@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using CryMediaAPI.BaseClasses;
 
@@ -9,6 +9,9 @@ namespace CryMediaAPI.Audio;
 /// </summary>
 public class AudioFrame : IDisposable, IMediaFrame
 {     
+    /// <summary>
+    /// The offset
+    /// </summary>
     int size, offset = 0;
 
     /// <summary>
@@ -29,6 +32,9 @@ public class AudioFrame : IDisposable, IMediaFrame
     public int LoadedSamples { get; private set; }
 
 
+    /// <summary>
+    /// The frame buffer
+    /// </summary>
     byte[] frameBuffer;
     /// <summary>
     /// Raw audio data in signed PCM format

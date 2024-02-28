@@ -281,17 +281,48 @@ namespace Alis.Core.Graphic.Sample
             IntPtr textureTile = Sdl.CreateTextureFromSurface(renderer, imageTilePtr);
 
             string input = AssetManager.Find("sample.mp4");
+            string audio = AssetManager.Find("sample.wav");
+            
             
             VideoReader video = new VideoReader(input);
             video.LoadMetadataAsync().Wait();
             video.Load();
-
-
+            
             VideoPlayer player = new VideoPlayer();
             player.OpenWrite(video.Metadata.Width, video.Metadata.Height, video.Metadata.AvgFramerateText);
             
             // Crear la textura
             IntPtr textureVideo = Sdl.CreateTexture(renderer, Sdl.PixelFormatRgb24, (int) TextureAccess.SdlTextureAccessStreaming, video.Metadata.Width, video.Metadata.Height);
+            
+            // Especificar el formato de audio
+            AudioSpec wavSpec;
+            uint wavLength;
+            
+            
+            // Cargar el archivo de audio
+            if (Sdl.LoadWav(audio, out wavSpec, out IntPtr bbuffer, out wavLength) == IntPtr.Zero)
+            {
+                Logger.Exception($"Failed to load wave file. {Sdl.GetError()}");
+                return;
+            }
+            
+            byte[] audioData = new byte[wavLength];
+            Marshal.Copy(bbuffer, audioData, 0, (int)wavLength);
+            
+            // Abrir el dispositivo de audio
+            int deviceId = (int) Sdl.OpenAudioDevice(IntPtr.Zero, 0, ref wavSpec, out wavSpec, 0);
+            if (deviceId == 0)
+            {
+                Logger.Exception($"Failed to open audio device. {Sdl.GetError()}");
+                return;
+            }
+            
+            // Enviar el buffer de audio al dispositivo de audio
+            Sdl.QueueAudio(deviceId, audioData, wavLength);
+
+            // Reproducir el audio
+            Sdl.SdlPauseAudioDevice((uint) deviceId, 0);
+
             
             while (_running)
             {

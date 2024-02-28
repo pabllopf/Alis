@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -9,8 +9,15 @@ using CryMediaAPI.Video;
 
 namespace TestingConsole
 {
+    /// <summary>
+    /// The program class
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
         static void Main(string[] args)
         {
             string input = Path.Combine(Directory.GetCurrentDirectory(), "sample.mp4");
@@ -33,6 +40,11 @@ namespace TestingConsole
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Reads the write audio using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="output">The output</param>
         static void ReadWriteAudio(string input, string output)
         {
             AudioReader audio = new AudioReader(input);
@@ -55,6 +67,11 @@ namespace TestingConsole
             }
         }
 
+        /// <summary>
+        /// Reads the write video using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="output">The output</param>
         static void ReadWriteVideo(string input, string output)
         {
             VideoReader video = new VideoReader(input);
@@ -90,6 +107,11 @@ namespace TestingConsole
             }
         }
 
+        /// <summary>
+        /// Reads the play video using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="output">The output</param>
         static void ReadPlayVideo(string input, string output)
         {
             VideoReader video = new VideoReader(input);
@@ -133,6 +155,11 @@ namespace TestingConsole
             }
         }
 
+        /// <summary>
+        /// Reads the play audio using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="output">The output</param>
         static void ReadPlayAudio(string input, string output)
         {
             AudioReader audio = new AudioReader(input);
@@ -166,6 +193,10 @@ namespace TestingConsole
             }
         }
 
+        /// <summary>
+        /// Saves the video frame using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
         static void SaveVideoFrame(string input)
         {
             VideoReader video = new VideoReader(input);
@@ -177,6 +208,11 @@ namespace TestingConsole
             Console.WriteLine("Frame saved");
         }
 
+        /// <summary>
+        /// Converts the video using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="output">The output</param>
         static void ConvertVideo(string input, string output)
         {
             VP9Encoder encoder = new VP9Encoder();

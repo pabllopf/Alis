@@ -1,8 +1,14 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 
 namespace CryMediaAPI.BaseClasses;
+
+/// <summary>
+
+/// The media reader class
+
+/// </summary>
 
 public abstract class MediaReader<Frame, Writer> where Frame : IMediaFrame where Writer : MediaWriter<Frame>
 {        
@@ -21,7 +27,16 @@ public abstract class MediaReader<Frame, Writer> where Frame : IMediaFrame where
     /// </summary>
     public virtual bool OpenedForReading { get; protected set; }
 
+    /// <summary>
+    /// Nexts the frame
+    /// </summary>
+    /// <returns>The frame</returns>
     public abstract Frame NextFrame();
+    /// <summary>
+    /// Nexts the frame using the specified frame
+    /// </summary>
+    /// <param name="frame">The frame</param>
+    /// <returns>The frame</returns>
     public abstract Frame NextFrame(Frame frame);
 
     /// <summary>

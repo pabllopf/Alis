@@ -1,4 +1,4 @@
-﻿namespace CryMediaAPI.Encoding;
+namespace CryMediaAPI.Encoding;
 
 /// <summary>
 /// Base class for EncoderOptions builders. Implement this for separate encoders.

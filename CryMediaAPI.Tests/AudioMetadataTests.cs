@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace CryMediaAPI.Tests
 {
+    /// <summary>
+    /// The audio metadata tests class
+    /// </summary>
     public class AudioMetadataTests
     {
+        /// <summary>
+        /// Tests that load metadata mp 3
+        /// </summary>
         [Fact]
         public async Task LoadMetadataMp3()  
         {
@@ -24,6 +30,9 @@ namespace CryMediaAPI.Tests
             Assert.True(Math.Abs(audio.Metadata.Duration - 1.549187) < 0.01);
         }
 
+        /// <summary>
+        /// Tests that load metadata ogg
+        /// </summary>
         [Fact]
         public async Task LoadMetadataOgg()
         {

@@ -5911,5 +5911,16 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint SdlDefinePixelFourcc([IsNotNull] byte a, [IsNotNull] byte b, [IsNotNull] byte c, [IsNotNull] byte d) => Fourcc(a, b, c, d);
+
+        /// <summary>
+        /// Queues the audio using the specified device id
+        /// </summary>
+        /// <param name="deviceId">The device id</param>
+        /// <param name="audioData">The audio data</param>
+        /// <param name="wavLength">The wav length</param>
+        public static void QueueAudio(int deviceId, byte[] audioData, uint wavLength)
+        {
+            NativeSdl.InternalQueueAudio(deviceId, audioData, wavLength);
+        }
     }
 }

@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace CryMediaAPI.Tests
 {
+    /// <summary>
+    /// The video reader tests class
+    /// </summary>
     public class VideoReaderTests
     {
+        /// <summary>
+        /// Tests that load metadata mp 4
+        /// </summary>
         [Fact]
         public async Task LoadMetadataMp4()  
         {
@@ -27,6 +33,9 @@ namespace CryMediaAPI.Tests
             Assert.True(video.Metadata.Streams.Length == 2);
         }
 
+        /// <summary>
+        /// Tests that load metadata webm
+        /// </summary>
         [Fact]
         public async Task LoadMetadataWebm()
         {
@@ -44,6 +53,9 @@ namespace CryMediaAPI.Tests
             Assert.True(video.Metadata.Streams.Length == 2);  
         }
 
+        /// <summary>
+        /// Tests that load metadata flv
+        /// </summary>
         [Fact]
         public async Task LoadMetadataFlv()
         {
@@ -62,6 +74,9 @@ namespace CryMediaAPI.Tests
             Assert.True(video.Metadata.Streams.Length == 2); 
         }
 
+        /// <summary>
+        /// Tests that load at offset 1
+        /// </summary>
         [Fact]
         public async Task LoadAtOffset1()
         {
@@ -87,6 +102,9 @@ namespace CryMediaAPI.Tests
             Assert.True(frames_left == count);
         }
 
+        /// <summary>
+        /// Tests that load at offset 2
+        /// </summary>
         [Fact]
         public async Task LoadAtOffset2()
         {

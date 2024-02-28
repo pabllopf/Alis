@@ -1,7 +1,13 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace CryMediaAPI.BaseClasses;
+
+/// <summary>
+
+/// The media frame interface
+
+/// </summary>
 
 public interface IMediaFrame
 {

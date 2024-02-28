@@ -1,13 +1,29 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Diagnostics;
 using CryMediaAPI.BaseClasses;
 
 namespace CryMediaAPI.Audio;
 
+/// <summary>
+
+/// The audio player class
+
+/// </summary>
+
+/// <seealso cref="MediaWriter{AudioFrame}"/>
+
+/// <seealso cref="IDisposable"/>
+
 public class AudioPlayer : MediaWriter<AudioFrame>, IDisposable
 {
+    /// <summary>
+    /// The ffplay
+    /// </summary>
     string ffplay;
+    /// <summary>
+    /// The ffplayp
+    /// </summary>
     Process ffplayp;
 
     /// <summary>
@@ -115,6 +131,9 @@ public class AudioPlayer : MediaWriter<AudioFrame>, IDisposable
         return str;
     }
 
+    /// <summary>
+    /// Disposes this instance
+    /// </summary>
     public void Dispose()
     {
         if (OpenedForWriting) CloseWrite();

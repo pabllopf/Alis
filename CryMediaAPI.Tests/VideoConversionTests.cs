@@ -1,4 +1,4 @@
-﻿using CryMediaAPI.Encoding.Builders;
+using CryMediaAPI.Encoding.Builders;
 using CryMediaAPI.Resources;
 using CryMediaAPI.Video;
 
@@ -11,8 +11,14 @@ using Xunit;
 
 namespace CryMediaAPI.Tests
 {
+    /// <summary>
+    /// The video conversion tests class
+    /// </summary>
     public class VideoConversionTests
     {
+        /// <summary>
+        /// Tests that f fmpeg wrapper progress test
+        /// </summary>
         [Fact]
         public async Task FFmpegWrapperProgressTest()
         {
@@ -53,6 +59,9 @@ namespace CryMediaAPI.Tests
             }
         }
 
+        /// <summary>
+        /// Tests that conversion test 1
+        /// </summary>
         [Fact]
         public async Task ConversionTest1()
         {
@@ -94,6 +103,9 @@ namespace CryMediaAPI.Tests
             }
         }
 
+        /// <summary>
+        /// Tests that conversion stream test
+        /// </summary>
         [Fact]
         public async Task ConversionStreamTest()
         {
@@ -143,6 +155,9 @@ namespace CryMediaAPI.Tests
             }
         }
 
+        /// <summary>
+        /// Tests that conversion test 2
+        /// </summary>
         [Fact]
         public async Task ConversionTest2()
         {

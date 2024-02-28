@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -10,9 +10,25 @@ using CryMediaAPI.Video.Models;
 
 namespace CryMediaAPI.Audio;
 
+/// <summary>
+
+/// The audio reader class
+
+/// </summary>
+
+/// <seealso cref="MediaReader{AudioFrame, AudioWriter}"/>
+
+/// <seealso cref="IDisposable"/>
+
 public class AudioReader : MediaReader<AudioFrame, AudioWriter>, IDisposable
 {
+    /// <summary>
+    /// The ffprobe
+    /// </summary>
     string ffmpeg, ffprobe;
+    /// <summary>
+    /// The loaded bit depth
+    /// </summary>
     int loadedBitDepth = 16;
 
     /// <summary>

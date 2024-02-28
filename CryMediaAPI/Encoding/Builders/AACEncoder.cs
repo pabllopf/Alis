@@ -1,8 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CryMediaAPI.Encoding.Builders;
+
+/// <summary>
+
+/// The aac encoder class
+
+/// </summary>
+
+/// <seealso cref="EncoderOptionsBuilder"/>
 
 public class AACEncoder : EncoderOptionsBuilder
 {
@@ -15,10 +23,22 @@ public class AACEncoder : EncoderOptionsBuilder
     /// </summary>
     public int? SampleRate { get; set; } = null;
 
+    /// <summary>
+    /// Gets or sets the value of the format
+    /// </summary>
     public override string Format { get; set; } = "m4a";
+    /// <summary>
+    /// Gets the value of the name
+    /// </summary>
     public override string Name => "aac";
+    /// <summary>
+    /// Gets or sets the value of the current quality settings
+    /// </summary>
     public string CurrentQualitySettings { get; private set; }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AACEncoder"/> class
+    /// </summary>
     public AACEncoder()
     {
         SetCBR();
@@ -33,6 +53,10 @@ public class AACEncoder : EncoderOptionsBuilder
         CurrentQualitySettings = $"-b:a {bitrate}";
     }
 
+    /// <summary>
+    /// Creates this instance
+    /// </summary>
+    /// <returns>The encoder options</returns>
     public override EncoderOptions Create()
     {
         return new EncoderOptions

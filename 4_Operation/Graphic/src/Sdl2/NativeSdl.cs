@@ -4798,5 +4798,16 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern ulong InternalGetPerformanceCounter();
+
+        /// <summary>
+        /// Internals the queue audio using the specified device id
+        /// </summary>
+        /// <param name="deviceId">The device id</param>
+        /// <param name="audioData">The audio data</param>
+        /// <param name="wavLength">The wav length</param>
+        [DllImport(NativeLibName, EntryPoint = "SDL_QueueAudio", CallingConvention = CallingConvention.Cdecl)]
+        [return: IsNotNull]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static extern void InternalQueueAudio(int deviceId, byte[] audioData, uint wavLength);
     }
 }
