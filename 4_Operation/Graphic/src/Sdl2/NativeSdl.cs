@@ -4713,6 +4713,20 @@ namespace Alis.Core.Graphic.Sdl2
         internal static extern int InternalUpdateTexture([IsNotNull] IntPtr texture, [IsNotNull] IntPtr rect, [IsNotNull] IntPtr pixels, [IsNotNull] int pitch);
 
         /// <summary>
+        ///     Sdl the update texture using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="rect">The rect</param>
+        /// <param name="pixels">The pixels</param>
+        /// <param name="pitch">The pitch</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_UpdateTexture", CallingConvention = CallingConvention.Cdecl)]
+        [return: IsNotNull]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static extern int InternalUpdateTexturev2([IsNotNull] IntPtr texture, [IsNotNull] IntPtr rect, [IsNotNull] byte[] pixels, [IsNotNull] int pitch);
+
+        
+        /// <summary>
         ///     Sdl the update nv texture using the specified texture
         /// </summary>
         /// <param name="texture">The texture</param>
