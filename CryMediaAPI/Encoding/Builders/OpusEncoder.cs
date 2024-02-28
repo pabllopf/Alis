@@ -1,4 +1,12 @@
-﻿namespace CryMediaAPI.Encoding.Builders;
+namespace CryMediaAPI.Encoding.Builders;
+
+/// <summary>
+
+/// The opus encoder class
+
+/// </summary>
+
+/// <seealso cref="EncoderOptionsBuilder"/>
 
 public class OpusEncoder : EncoderOptionsBuilder
 {
@@ -20,10 +28,22 @@ public class OpusEncoder : EncoderOptionsBuilder
     /// </summary>
     public int CompressionLevel { get; set; } = 10;
 
+    /// <summary>
+    /// Gets or sets the value of the format
+    /// </summary>
     public override string Format { get; set; } = "ogg";
+    /// <summary>
+    /// Gets the value of the name
+    /// </summary>
     public override string Name => "libopus";
+    /// <summary>
+    /// Gets or sets the value of the current quality settings
+    /// </summary>
     public string CurrentQualitySettings { get; private set; }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="OpusEncoder"/> class
+    /// </summary>
     public OpusEncoder()
     {
         SetVBR();
@@ -56,6 +76,10 @@ public class OpusEncoder : EncoderOptionsBuilder
         CurrentQualitySettings = $"-b:a {bitrate} -vbr constrained";
     }
 
+    /// <summary>
+    /// Creates this instance
+    /// </summary>
+    /// <returns>The encoder options</returns>
     public override EncoderOptions Create()
     {
         return new EncoderOptions
@@ -70,6 +94,9 @@ public class OpusEncoder : EncoderOptionsBuilder
         };
     }
 
+    /// <summary>
+    /// The application enum
+    /// </summary>
     public enum Application
     {
         /// <summary>

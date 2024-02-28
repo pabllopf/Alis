@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using CryMediaAPI.BaseClasses;
 
@@ -9,8 +9,14 @@ namespace CryMediaAPI.Video;
 /// </summary>
 public class VideoFrame : IDisposable, IMediaFrame
 {
+    /// <summary>
+    /// The offset
+    /// </summary>
     int size, offset = 0;
 
+    /// <summary>
+    /// The frame buffer
+    /// </summary>
     byte[] frameBuffer;
     /// <summary>
     /// Raw video data in RGB24 pixel format
@@ -72,6 +78,13 @@ public class VideoFrame : IDisposable, IMediaFrame
         return true;
     }
 
+    /// <summary>
+    /// Saves the output
+    /// </summary>
+    /// <param name="output">The output</param>
+    /// <param name="encoder">The encoder</param>
+    /// <param name="extraParameters">The extra parameters</param>
+    /// <param name="ffmpegExecutable">The ffmpeg executable</param>
     public void Save(string output, string encoder = "png", string extraParameters = "",
         string ffmpegExecutable = "ffmpeg")
     {

@@ -1,4 +1,12 @@
-﻿namespace CryMediaAPI.Encoding.Builders;
+namespace CryMediaAPI.Encoding.Builders;
+
+/// <summary>
+
+/// The mp encoder class
+
+/// </summary>
+
+/// <seealso cref="EncoderOptionsBuilder"/>
 
 public class MP3Encoder : EncoderOptionsBuilder
 {
@@ -11,10 +19,22 @@ public class MP3Encoder : EncoderOptionsBuilder
     /// </summary>
     public int? SampleRate { get; set; } = null;
 
+    /// <summary>
+    /// Gets or sets the value of the format
+    /// </summary>
     public override string Format { get; set; } = "mp3";
+    /// <summary>
+    /// Gets the value of the name
+    /// </summary>
     public override string Name => "libmp3lame";
+    /// <summary>
+    /// Gets or sets the value of the current quality settings
+    /// </summary>
     public string CurrentQualitySettings { get; private set; }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MP3Encoder"/> class
+    /// </summary>
     public MP3Encoder()
     {
         SetCQP();
@@ -47,6 +67,10 @@ public class MP3Encoder : EncoderOptionsBuilder
         CurrentQualitySettings = $"-q:a {qscale}";
     }
 
+    /// <summary>
+    /// Creates this instance
+    /// </summary>
+    /// <returns>The encoder options</returns>
     public override EncoderOptions Create()
     {
         return new EncoderOptions

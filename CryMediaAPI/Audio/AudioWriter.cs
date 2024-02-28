@@ -8,21 +8,64 @@ using CryMediaAPI.Encoding.Builders;
 
 namespace CryMediaAPI.Audio;
 
+/// <summary>
+
+/// The audio writer class
+
+/// </summary>
+
+/// <seealso cref="MediaWriter{AudioFrame}"/>
+
+/// <seealso cref="IDisposable"/>
+
 public class AudioWriter : MediaWriter<AudioFrame>, IDisposable
 {
+    /// <summary>
+    /// The ffmpeg
+    /// </summary>
     string ffmpeg;
+    /// <summary>
+    /// The csc
+    /// </summary>
     CancellationTokenSource csc;
+    /// <summary>
+    /// The ffmpegp
+    /// </summary>
     internal Process ffmpegp;
 
+    /// <summary>
+    /// Gets the value of the current f fmpeg process
+    /// </summary>
     public Process CurrentFFmpegProcess => ffmpegp;
 
+    /// <summary>
+    /// Gets the value of the channels
+    /// </summary>
     public int Channels { get; }
+    /// <summary>
+    /// Gets the value of the sample rate
+    /// </summary>
     public int SampleRate { get; }
+    /// <summary>
+    /// Gets the value of the bit depth
+    /// </summary>
     public int BitDepth { get; }
+    /// <summary>
+    /// Gets the value of the use filename
+    /// </summary>
     public bool UseFilename { get; }
+    /// <summary>
+    /// Gets the value of the encoder options
+    /// </summary>
     public EncoderOptions EncoderOptions { get; }
 
+    /// <summary>
+    /// Gets or sets the value of the destination stream
+    /// </summary>
     public Stream DestinationStream { get; private set; }
+    /// <summary>
+    /// Gets or sets the value of the output data stream
+    /// </summary>
     public Stream OutputDataStream { get; private set; }
 
 
@@ -78,6 +121,11 @@ public class AudioWriter : MediaWriter<AudioFrame>, IDisposable
         EncoderOptions = encoderOptions ?? new MP3Encoder().Create();
     }
 
+    /// <summary>
+    /// Opens the write using the specified show f fmpeg output
+    /// </summary>
+    /// <param name="showFFmpegOutput">The show fmpeg output</param>
+    /// <exception cref="InvalidOperationException">File was already opened for writing!</exception>
     public void OpenWrite(bool showFFmpegOutput = false)
     {
         if (OpenedForWriting) throw new InvalidOperationException("File was already opened for writing!");
@@ -130,6 +178,9 @@ public class AudioWriter : MediaWriter<AudioFrame>, IDisposable
         }
     }
 
+    /// <summary>
+    /// Disposes this instance
+    /// </summary>
     public void Dispose()
     {
         if (OpenedForWriting) CloseWrite();

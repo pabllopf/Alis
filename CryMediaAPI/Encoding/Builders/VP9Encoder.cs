@@ -1,4 +1,12 @@
-﻿namespace CryMediaAPI.Encoding.Builders;
+namespace CryMediaAPI.Encoding.Builders;
+
+/// <summary>
+
+/// The vp encoder class
+
+/// </summary>
+
+/// <seealso cref="EncoderOptionsBuilder"/>
 
 public class VP9Encoder : EncoderOptionsBuilder
 {
@@ -20,12 +28,24 @@ public class VP9Encoder : EncoderOptionsBuilder
     public bool RowBasedMultithreading { get; set; } = false;
 
 
+    /// <summary>
+    /// Gets or sets the value of the format
+    /// </summary>
     public override string Format { get; set; } = "webm";
 
+    /// <summary>
+    /// Gets the value of the name
+    /// </summary>
     public override string Name => "libvpx-vp9";
 
+    /// <summary>
+    /// Gets or sets the value of the current quality settings
+    /// </summary>
     public string CurrentQualitySettings { get; private set; }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="VP9Encoder"/> class
+    /// </summary>
     public VP9Encoder()
     {
         SetCQP();
@@ -79,12 +99,19 @@ public class VP9Encoder : EncoderOptionsBuilder
         CurrentQualitySettings = $"-minrate {bitrate} -maxrate {bitrate} -b:v {bitrate}";
     }
 
+    /// <summary>
+    /// Sets the lossless
+    /// </summary>
     public void SetLossless()
     {
         CurrentQualitySettings = $"-lossless 1";
     }
 
 
+    /// <summary>
+    /// Creates this instance
+    /// </summary>
+    /// <returns>The encoder options</returns>
     public override EncoderOptions Create()
     {
         return new EncoderOptions
@@ -99,8 +126,14 @@ public class VP9Encoder : EncoderOptionsBuilder
         };
     }     
 
+    /// <summary>
+    /// The tune enum
+    /// </summary>
     public enum Tune
     {
+        /// <summary>
+        /// The default tune
+        /// </summary>
         Default,
         /// <summary>
         /// Screen capture content 
@@ -112,6 +145,9 @@ public class VP9Encoder : EncoderOptionsBuilder
         Film
     }
 
+    /// <summary>
+    /// The quality enum
+    /// </summary>
     public enum Quality
     {
         /// <summary>

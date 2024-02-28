@@ -1,13 +1,29 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Diagnostics;
 using CryMediaAPI.BaseClasses;
 
 namespace CryMediaAPI.Video;
 
+/// <summary>
+
+/// The video player class
+
+/// </summary>
+
+/// <seealso cref="MediaWriter{VideoFrame}"/>
+
+/// <seealso cref="IDisposable"/>
+
 public class VideoPlayer : MediaWriter<VideoFrame>, IDisposable
 {
+    /// <summary>
+    /// The ffplay
+    /// </summary>
     string ffplay;
+    /// <summary>
+    /// The ffplayp
+    /// </summary>
     Process ffplayp;
 
     /// <summary>
@@ -111,6 +127,9 @@ public class VideoPlayer : MediaWriter<VideoFrame>, IDisposable
         return str;
     }
 
+    /// <summary>
+    /// Disposes this instance
+    /// </summary>
     public void Dispose()
     {
         if (OpenedForWriting) CloseWrite();

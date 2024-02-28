@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Diagnostics;
 using System.Collections.Generic;
@@ -21,7 +21,13 @@ namespace CryMediaAPI
         /// </summary>
         public static bool HideFFmpegBanner { get; set; } = true;
 
+        /// <summary>
+        /// The regex
+        /// </summary>
         static readonly Regex CodecRegex = new Regex(@"(?<type>[VAS\.])[F\.][S\.][X\.][B\.][D\.] (?<codec>[a-zA-Z0-9_-]+)\W+(?<description>.*)\n?");
+        /// <summary>
+        /// The regex
+        /// </summary>
         static readonly Regex FormatRegex = new Regex(@"(?<type>[DE]{1,2})\s+?(?<format>[a-zA-Z0-9_\-,]+)\W+(?<description>.*)\n?");
 
         /// <summary>
@@ -196,6 +202,11 @@ namespace CryMediaAPI
         public static (Stream input, Stream output) Open(string executable, string command, bool showOutput = false)
             => Open(executable, command, out _, showOutput);
 
+        /// <summary>
+        /// Gets the encoders using the specified ffmpeg executable
+        /// </summary>
+        /// <param name="ffmpegExecutable">The ffmpeg executable</param>
+        /// <returns>The data</returns>
         public static Dictionary<string, (string Description, MediaType Type)> GetEncoders(string ffmpegExecutable = "ffmpeg")
         {
             Dictionary<string, (string Description, MediaType Type)> data = new Dictionary<string, (string Description, MediaType Type)>();
@@ -208,6 +219,11 @@ namespace CryMediaAPI
             }
             return data;
         }
+        /// <summary>
+        /// Gets the decoders using the specified ffmpeg executable
+        /// </summary>
+        /// <param name="ffmpegExecutable">The ffmpeg executable</param>
+        /// <returns>The data</returns>
         public static Dictionary<string, (string Description, MediaType Type)> GetDecoders(string ffmpegExecutable = "ffmpeg")
         {
             Dictionary<string, (string Description, MediaType Type)> data = new Dictionary<string, (string Description, MediaType Type)>();
@@ -220,6 +236,11 @@ namespace CryMediaAPI
             }
             return data;
         }
+        /// <summary>
+        /// Gets the formats using the specified ffmpeg executable
+        /// </summary>
+        /// <param name="ffmpegExecutable">The ffmpeg executable</param>
+        /// <returns>The data</returns>
         public static Dictionary<string, (string Description, MuxingSupport Support)> GetFormats(string ffmpegExecutable = "ffmpeg")
         {
             Dictionary<string, (string Description, MuxingSupport Support)> data = new Dictionary<string, (string Description, MuxingSupport Support)>();
@@ -269,20 +290,47 @@ namespace CryMediaAPI
             return prg;
         }
 
+        /// <summary>
+        /// The media type enum
+        /// </summary>
         public enum MediaType
         {
+            /// <summary>
+            /// The video media type
+            /// </summary>
             Video,
+            /// <summary>
+            /// The audio media type
+            /// </summary>
             Audio,
+            /// <summary>
+            /// The subtitle media type
+            /// </summary>
             Subtitle
         }
 
+        /// <summary>
+        /// The muxing support enum
+        /// </summary>
         public enum MuxingSupport
         {
+            /// <summary>
+            /// The mux demux muxing support
+            /// </summary>
             MuxDemux,
+            /// <summary>
+            /// The mux muxing support
+            /// </summary>
             Mux,
+            /// <summary>
+            /// The demux muxing support
+            /// </summary>
             Demux
         }
 
+        /// <summary>
+        /// The verbosity enum
+        /// </summary>
         public enum Verbosity
         {
             /// <summary>

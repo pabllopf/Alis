@@ -1,10 +1,16 @@
-﻿using CryMediaAPI.Encoding;
+using CryMediaAPI.Encoding;
 
 using System;
 using System.Diagnostics;
 using System.IO;
 
 namespace CryMediaAPI.BaseClasses;
+
+/// <summary>
+
+/// The media writer class
+
+/// </summary>
 
 public abstract class MediaWriter<Frame> where Frame : IMediaFrame
 {

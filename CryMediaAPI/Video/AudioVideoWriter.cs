@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Net;
 using System.Threading;
@@ -11,14 +11,40 @@ using CryMediaAPI.Encoding;
 
 namespace CryMediaAPI.Video;
 
+/// <summary>
+
+/// The audio video writer class
+
+/// </summary>
+
+/// <seealso cref="IDisposable"/>
+
 public class AudioVideoWriter : IDisposable
 {
+    /// <summary>
+    /// The ffmpeg
+    /// </summary>
     string ffmpeg;
+    /// <summary>
+    /// The socket
+    /// </summary>
     Socket socket;
+    /// <summary>
+    /// The connected socket
+    /// </summary>
     Socket connected_socket;
+    /// <summary>
+    /// The csc
+    /// </summary>
     CancellationTokenSource csc;
+    /// <summary>
+    /// The ffmpegp
+    /// </summary>
     internal Process ffmpegp;
 
+    /// <summary>
+    /// Gets the value of the current f fmpeg process
+    /// </summary>
     public Process CurrentFFmpegProcess => ffmpegp;
 
     /// <summary>
@@ -43,14 +69,35 @@ public class AudioVideoWriter : IDisposable
     /// Output filename
     /// </summary>
     public string Filename { get; }
+    /// <summary>
+    /// Gets the value of the use filename
+    /// </summary>
     public bool UseFilename { get; }
 
+    /// <summary>
+    /// Gets the value of the video width
+    /// </summary>
     public int VideoWidth { get; }
+    /// <summary>
+    /// Gets the value of the video height
+    /// </summary>
     public int VideoHeight { get; }
+    /// <summary>
+    /// Gets the value of the video framerate
+    /// </summary>
     public double VideoFramerate { get; }
 
+    /// <summary>
+    /// Gets the value of the audio channels
+    /// </summary>
     public int AudioChannels { get; }
+    /// <summary>
+    /// Gets the value of the audio sample rate
+    /// </summary>
     public int AudioSampleRate { get; }
+    /// <summary>
+    /// Gets the value of the audio bit depth
+    /// </summary>
     public int AudioBitDepth { get; }
 
     /// <summary>
@@ -58,7 +105,13 @@ public class AudioVideoWriter : IDisposable
     /// </summary>
     public virtual bool OpenedForWriting { get; protected set; }
 
+    /// <summary>
+    /// Gets the value of the audio encoder options
+    /// </summary>
     public EncoderOptions AudioEncoderOptions { get; }
+    /// <summary>
+    /// Gets the value of the video encoder options
+    /// </summary>
     public EncoderOptions VideoEncoderOptions { get; }
 
     /// <summary>
@@ -249,6 +302,9 @@ public class AudioVideoWriter : IDisposable
         InputDataStreamVideo.Write(data, 0, data.Length);
     }
 
+    /// <summary>
+    /// Disposes this instance
+    /// </summary>
     public void Dispose()
     {
         if (OpenedForWriting) CloseWrite();

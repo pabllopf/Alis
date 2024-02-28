@@ -1,6 +1,14 @@
-﻿using System.Globalization;
+using System.Globalization;
 
 namespace CryMediaAPI.Encoding.Builders;
+
+/// <summary>
+
+/// The 264 encoder class
+
+/// </summary>
+
+/// <seealso cref="EncoderOptionsBuilder"/>
 
 public class H264Encoder : EncoderOptionsBuilder
 {
@@ -17,12 +25,24 @@ public class H264Encoder : EncoderOptionsBuilder
     /// </summary>
     public Profile EncoderProfile { get; set; } = Profile.Auto;
 
+    /// <summary>
+    /// Gets or sets the value of the format
+    /// </summary>
     public override string Format { get; set; } = "mp4";
 
+    /// <summary>
+    /// Gets the value of the name
+    /// </summary>
     public override string Name => "libx264";
 
+    /// <summary>
+    /// Gets or sets the value of the current quality settings
+    /// </summary>
     public string CurrentQualitySettings { get; private set; }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="H264Encoder"/> class
+    /// </summary>
     public H264Encoder()
     {
         SetCQP();
@@ -69,6 +89,10 @@ public class H264Encoder : EncoderOptionsBuilder
         CurrentQualitySettings = $"-b:v {avg_bitrate}";
     }
 
+    /// <summary>
+    /// Creates this instance
+    /// </summary>
+    /// <returns>The encoder options</returns>
     public override EncoderOptions Create()
     {
         return new EncoderOptions
@@ -82,21 +106,57 @@ public class H264Encoder : EncoderOptionsBuilder
         };
     }     
 
+    /// <summary>
+    /// The preset enum
+    /// </summary>
     public enum Preset
     {
+        /// <summary>
+        /// The ultra fast preset
+        /// </summary>
         UltraFast,
+        /// <summary>
+        /// The super fast preset
+        /// </summary>
         SuperFast,
+        /// <summary>
+        /// The very fast preset
+        /// </summary>
         VeryFast,
+        /// <summary>
+        /// The faster preset
+        /// </summary>
         Faster,
+        /// <summary>
+        /// The fast preset
+        /// </summary>
         Fast,
+        /// <summary>
+        /// The medium preset
+        /// </summary>
         Medium,
+        /// <summary>
+        /// The slow preset
+        /// </summary>
         Slow,
+        /// <summary>
+        /// The slower preset
+        /// </summary>
         Slower,
+        /// <summary>
+        /// The very slow preset
+        /// </summary>
         VerySlow
     }
 
+    /// <summary>
+    /// The tune enum
+    /// </summary>
     public enum Tune
     {
+        /// <summary>
+        /// The auto tune
+        /// </summary>
         Auto,
         /// <summary>
         ///  Use for high quality movie content; lowers deblocking 
@@ -124,6 +184,9 @@ public class H264Encoder : EncoderOptionsBuilder
         ZeroLatency
     }
 
+    /// <summary>
+    /// The profile enum
+    /// </summary>
     public enum Profile
     {
         /// <summary>

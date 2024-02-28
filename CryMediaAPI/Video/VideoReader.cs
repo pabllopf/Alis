@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -10,8 +10,21 @@ using System.Text.RegularExpressions;
 
 namespace CryMediaAPI.Video;
 
+/// <summary>
+
+/// The video reader class
+
+/// </summary>
+
+/// <seealso cref="MediaReader{VideoFrame, MediaWriter{VideoFrame}}"/>
+
+/// <seealso cref="IDisposable"/>
+
 public class VideoReader : MediaReader<VideoFrame, MediaWriter<VideoFrame>>, IDisposable
 {
+    /// <summary>
+    /// The ffprobe
+    /// </summary>
     string ffmpeg, ffprobe;
 
     /// <summary>
@@ -151,7 +164,15 @@ public class VideoReader : MediaReader<VideoFrame, MediaWriter<VideoFrame>>, IDi
         return success ? frame : null;
     }
 
+    /// <summary>
+    /// The compiled
+    /// </summary>
     static Regex bitRateSimpleRgx = new Regex(@"\D(\d+?)[bl]e", RegexOptions.Compiled);
+    /// <summary>
+    /// Tries the parse bit depth using the specified pix fmt
+    /// </summary>
+    /// <param name="pix_fmt">The pix fmt</param>
+    /// <returns>The int</returns>
     int TryParseBitDepth(string pix_fmt)
     {
         Match match = bitRateSimpleRgx.Match(pix_fmt);

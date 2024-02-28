@@ -1,4 +1,4 @@
-﻿namespace CryMediaAPI.Encoding;
+namespace CryMediaAPI.Encoding;
 
 /// <summary>
 /// FFmpeg video encoding options to pass to FFmpeg when encoding. Check the online FFmpeg documentation for more info.
