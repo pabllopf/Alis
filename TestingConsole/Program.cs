@@ -16,8 +16,8 @@ namespace TestingConsole
             string input = Path.Combine(Directory.GetCurrentDirectory(), "sample.mp4");
             string output = Path.Combine(Directory.GetCurrentDirectory(), "sample_out.mp4");
 
-            var player = new VideoPlayer(input);
-            player.Play();
+            //var player = new VideoPlayer(input);
+            //player.Play();
             
             ConvertVideo(input, output);
 
