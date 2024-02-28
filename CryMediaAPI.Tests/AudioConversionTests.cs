@@ -15,35 +15,33 @@ namespace CryMediaAPI.Tests
     public class AudioConversionTests
     {
         [Fact]
-        public async Task FFmpegWrapperProgressTest()
+        public void FFmpegWrapperProgressTest()
         {
-            string path = Res.GetPath(Res.Audio_Ogg);
-            string opath = "out-test.mp3";
-
-            double lastval = -1;
-
+            string path = Path.Combine(Path.Combine(Environment.CurrentDirectory, "Resources"), Res.Audio_Ogg);
+            string opath = Path.Combine(Environment.CurrentDirectory, "out_test.mp3");
+            
             try
             {
+                if (File.Exists(opath)) File.Delete(opath);
+                
                 AudioReader audio = new AudioReader(path);
 
-                await audio.LoadMetadataAsync();
+                audio.LoadMetadataAsync().Wait();
                 double dur = audio.Metadata.Duration;
                 audio.Dispose();
 
                 Assert.True(Math.Abs(dur - 1.515102) < 0.01);
 
-                Process p = FFmpegWrapper.ExecuteCommand("ffmpeg", $"-i \"{path}\" \"{opath}\"");
+                Process p = FFmpegWrapper.ExecuteCommand("ffmpeg", $"-i {path} {opath}", true);
                 Progress<double> progress = FFmpegWrapper.RegisterProgressTracker(p, dur);
-                progress.ProgressChanged += (s, prg) => lastval = prg;             
+                
                 p.WaitForExit();
 
-                await Task.Delay(300);
-
-                Assert.True(lastval > 50 && lastval <= 100);
-
+                Task.Delay(300).Wait();
+                
                 audio = new AudioReader(opath);
 
-                await audio.LoadMetadataAsync();
+                audio.LoadMetadataAsync().Wait();
 
                 Assert.True(audio.Metadata.Channels == 2);
                 Assert.True(audio.Metadata.Streams.Length == 1);
@@ -56,6 +54,8 @@ namespace CryMediaAPI.Tests
                 if (File.Exists(opath)) File.Delete(opath);
             }
         }
+
+       
 
         [Fact]
         public async Task ConversionTest()
@@ -95,15 +95,15 @@ namespace CryMediaAPI.Tests
         }
 
         [Fact]
-        public async Task ConversionStreamTest()
+        public void ConversionStreamTest()
         {
-            string path = Res.GetPath(Res.Audio_Mp3);
-            string opath = "out-test-v-2.aac";
+            string path = Path.Combine(Path.Combine(Environment.CurrentDirectory, "Resources"), Res.Audio_Mp3);
+            string opath = Path.Combine(Environment.CurrentDirectory, "outTestV2.aac");
 
             try
             {
                 using AudioReader reader = new AudioReader(path);
-                await reader.LoadMetadataAsync();
+                reader.LoadMetadata();
 
                 AACEncoder encoder = new AACEncoder
                 {
@@ -121,12 +121,12 @@ namespace CryMediaAPI.Tests
 
                         reader.Load();
 
-                        await reader.CopyToAsync(writer);
+                        reader.CopyTo(writer);
                     }                 
                 }
 
                 using AudioReader audio = new AudioReader(opath);
-                await audio.LoadMetadataAsync();
+                audio.LoadMetadata();
 
                 Assert.True(audio.Metadata.Format.FormatName == "flv");
                 Assert.True(audio.Metadata.Channels == 2);

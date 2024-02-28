@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace CryMediaAPI.Resources
 {
@@ -12,6 +13,6 @@ namespace CryMediaAPI.Resources
         public const string Audio_Mp3 = "horse.mp3";
         public const string Audio_Ogg = "horse.ogg";
 
-        public static string GetPath(string resourceName) => Path.Combine(Directory, resourceName);
+        public static string GetPath(string resourceName) => Path.Combine(Path.Combine(Environment.CurrentDirectory, Directory), resourceName);
     }
 }

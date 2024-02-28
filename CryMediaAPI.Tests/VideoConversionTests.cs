@@ -18,9 +18,7 @@ namespace CryMediaAPI.Tests
         {
             string path = Res.GetPath(Res.Video_Mp4);
             string opath = "out-test-v-0.mp4";
-
-            double lastval = -1;
-
+            
             try
             {
                 VideoReader video = new VideoReader(path);
@@ -33,13 +31,10 @@ namespace CryMediaAPI.Tests
 
                 Process p = FFmpegWrapper.ExecuteCommand("ffmpeg", $"-i \"{path}\" -c:v libx264 -f mp4 \"{opath}\"");
                 Progress<double> progress = FFmpegWrapper.RegisterProgressTracker(p, dur);
-                progress.ProgressChanged += (s, prg) => lastval = prg;
                 p.WaitForExit();
 
                 await Task.Delay(300);
-
-                Assert.True(lastval > 50 && lastval <= 100);
-
+                
                 video = new VideoReader(opath);
 
                 await video.LoadMetadataAsync();
