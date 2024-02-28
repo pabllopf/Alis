@@ -3085,6 +3085,19 @@ namespace Alis.Core.Graphic.Sdl2
         public static int UpdateTexture([IsNotNull] IntPtr texture, [IsNotNull] IntPtr rect, [IsNotNull] IntPtr pixels, [IsNotNull] int pitch) => NativeSdl.InternalUpdateTexture(texture, rect, pixels, pitch);
 
         /// <summary>
+        ///     Updates the texture using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="rect">The rect</param>
+        /// <param name="pixels">The pixels</param>
+        /// <param name="pitch">The pitch</param>
+        /// <returns>The int</returns>
+        [return: IsNotNull]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int UpdateTextureV2([IsNotNull] IntPtr texture, [IsNotNull] IntPtr rect, [IsNotNull] byte[] pixels, [IsNotNull] int pitch) => NativeSdl.InternalUpdateTexturev2(texture, rect, pixels, pitch);
+
+        
+        /// <summary>
         ///     Updates the nv texture using the specified texture
         /// </summary>
         /// <param name="texture">The texture</param>

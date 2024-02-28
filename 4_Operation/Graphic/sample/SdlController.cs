@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Base.Mapping;
@@ -38,6 +39,7 @@ using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
 using Alis.Core.Graphic.Sdl2.Structs;
+using CryMediaAPI.Video;
 using Sdl = Alis.Core.Graphic.Sdl2.Sdl;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
@@ -278,7 +280,19 @@ namespace Alis.Core.Graphic.Sample
             // Create a new texture from the image.
             IntPtr textureTile = Sdl.CreateTextureFromSurface(renderer, imageTilePtr);
 
+            string input = AssetManager.Find("sample.mp4");
+            
+            VideoReader video = new VideoReader(input);
+            video.LoadMetadataAsync().Wait();
+            video.Load();
 
+
+            VideoPlayer player = new VideoPlayer();
+            player.OpenWrite(video.Metadata.Width, video.Metadata.Height, video.Metadata.AvgFramerateText);
+            
+            // Crear la textura
+            IntPtr textureVideo = Sdl.CreateTexture(renderer, Sdl.PixelFormatRgb24, (int) TextureAccess.SdlTextureAccessStreaming, video.Metadata.Width, video.Metadata.Height);
+            
             while (_running)
             {
                 Sdl.JoystickUpdate();
@@ -339,6 +353,7 @@ namespace Alis.Core.Graphic.Sample
                     }
                 }
 
+                /*
                 RenderColors();
 
                 // Sets the color that the screen will be cleared with.
@@ -368,15 +383,37 @@ namespace Alis.Core.Graphic.Sample
                 // draw a line
                 Sdl.SetRenderDrawColor(renderer, 255, 0, 0, 255);
                 Sdl.RenderDrawLine(renderer, 0, 0, 100, 100);
+                */
+                
+                
 
-                // Switches out the currently presented render surface with the one we just did work on.
+                // For simple playing, can just use "CopyTo"
+                // video.CopyTo(player);
+
+                VideoFrame frame = new VideoFrame(video.Metadata.Width, video.Metadata.Height);
+                
+                if ( video.Metadata.AvgFramerate / 1000 > 0)
+                {
+                    // read next frame
+                    VideoFrame f = video.NextFrame(frame);
+                    if (f == null) break;
+                
+                    // Actualizar la textura con los datos del frame
+                    byte[] pixels = f.RawData.ToArray();
+                    Sdl.UpdateTextureV2(textureVideo, IntPtr.Zero, pixels, f.Width * 3);
+
+                    // Renderizar la textura
+                    Sdl.RenderCopy(renderer, textureVideo, IntPtr.Zero, IntPtr.Zero);
+                    
+                    System.Threading.Thread.Sleep((int) (1000 / video.Metadata.AvgFramerate));
+                }
+                
+                
                 Sdl.RenderPresent(renderer);
             }
 
             Sdl.DestroyRenderer(renderer);
             Sdl.DestroyWindow(window);
-            //Sdl.FreeSurface(imageTile);
-            //Sdl.DestroyTexture(textureTile);
             Sdl.Quit();
         }
 
