@@ -42,17 +42,17 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The freq
         /// </summary>
-        public readonly int freq;
+        public int freq;
 
         /// <summary>
         ///     The SDL_AudioFormat
         /// </summary>
-        public readonly ushort format;
+        public ushort format;
 
         /// <summary>
         ///     The channels
         /// </summary>
-        public readonly byte channels;
+        public byte channels;
 
         /// <summary>
         ///     The silence
@@ -62,7 +62,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The samples
         /// </summary>
-        public readonly ushort samples;
+        public ushort samples;
 
         /// <summary>
         ///     The size

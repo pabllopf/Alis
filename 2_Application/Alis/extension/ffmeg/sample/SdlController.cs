@@ -34,14 +34,15 @@ using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
 using Alis.Core.Graphic.Sdl2.Structs;
+using Alis.Extension.FFMeg.Audio;
+using Alis.Extension.FFMeg.BaseClasses;
+using Alis.Extension.FFMeg.Video;
 using Sdl = Alis.Core.Graphic.Sdl2.Sdl;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
-namespace Alis.Core.Graphic.Sample
+namespace Alis.Extension.FFMeg.Sample
 {
     /// <summary>
     ///     The sdl controller class
@@ -67,26 +68,11 @@ namespace Alis.Core.Graphic.Sample
         ///     The sdl game controller button
         /// </summary>
         private static readonly List<GameControllerButton> Buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
-
-        /// <summary>
-        ///     The blue
-        /// </summary>
-        private static byte _blue;
-
-        /// <summary>
-        ///     The blue
-        /// </summary>
-        private static byte _green;
-
+        
         /// <summary>
         ///     The sdl keycode
         /// </summary>
         private static List<KeyCode> _keys = new List<KeyCode>((KeyCode[]) Enum.GetValues(typeof(KeyCode)));
-
-        /// <summary>
-        ///     The blue
-        /// </summary>
-        private static byte _red;
 
         /// <summary>
         ///     The running
@@ -97,17 +83,7 @@ namespace Alis.Core.Graphic.Sample
         ///     The sdl event
         /// </summary>
         private static Event _sdlEvent;
-
-        /// <summary>
-        ///     The texture font
-        /// </summary>
-        private static IntPtr _textureFont1;
-
-        /// <summary>
-        ///     The dst rect font
-        /// </summary>
-        private static RectangleI _dstRectFont1;
-
+        
         /// <summary>
         ///     Runs
         /// </summary>
@@ -171,96 +147,53 @@ namespace Alis.Core.Graphic.Sample
             {
                 Logger.Info("Renderer created");
             }
-
-            SdlTtf.Init();
-            Console.WriteLine($"SDL_TTF Version: {SdlTtf.GetVersion().major}.{SdlTtf.GetVersion().minor}.{SdlTtf.GetVersion().patch}");
-
+            
             Console.WriteLine("Platform: " + EmbeddedDllClass.GetCurrentPlatform());
             Console.WriteLine("Processor: " + RuntimeInformation.ProcessArchitecture);
-
-            int outlineSize = 1;
-
-            // Load the font
-            IntPtr font = SdlTtf.OpenFont(AssetManager.Find("FontSample.otf"), 55);
-
-            // Load the font
-            IntPtr fontOutline = SdlTtf.OpenFont(AssetManager.Find("FontSample.otf"), 55);
-
-            // define outline font
-            SdlTtf.SetFontOutline(font, outlineSize);
-
-            // define style font
-            SdlTtf.SetFontStyle(font, SdlTtf.TtfStyleNormal);
-
-            // Pixels to render the text
-            IntPtr bgSurface = SdlTtf.RenderTextBlended(
-                fontOutline,
-                "0123456789",
-                new Color(255, 255, 255, 255));
-
-            IntPtr fgSurface = SdlTtf.RenderTextBlended(
-                font,
-                "0123456789",
-                new Color(84, 52, 68, 255));
-
-            // get size fg_surface
-            //SDL_QueryTexture(fg_surface, NULL, NULL, &w, &h); :
-            Sdl.QueryTexture(fgSurface, out _, out _, out int wOut, out int hOut);
-
-            //SDL_Rect rect = {OUTLINE_SIZE, OUTLINE_SIZE, fg_surface->w, fg_surface->h};
-            RectangleI rect = new RectangleI(0, 0, wOut, hOut);
-
-            //SDL_SetSurfaceBlendMode(fg_surface, SDL_BLENDMODE_BLEND); :
-            Sdl.SetSurfaceBlendMode(fgSurface, BlendModes.BlendModeBlend);
-
-            //SDL_BlitSurface(fg_surface, NULL, bg_surface, &rect);
-            Sdl.BlitSurface(fgSurface, IntPtr.Zero, bgSurface, ref rect);
-
-            // Create a texture from the surface
-            _textureFont1 = Sdl.CreateTextureFromSurface(renderer, bgSurface);
-
-            // Get the width and height of the texture
-            Sdl.QueryTexture(_textureFont1, out _, out _, out int textureWidth, out int textureHeight);
-
-            // Create a destination intPtr dstRect
-            _dstRectFont1 = new RectangleI(0, 0, textureWidth, textureHeight);
-
+            
             IntPtr icon = Sdl.LoadBmp(AssetManager.Find("logo.bmp"));
             Sdl.SetWindowIcon(window, icon);
 
             Sdlinput();
+            
+            string input = AssetManager.Find("sample.mp4");
 
-            // Rectangle to be drawn outline.
-            RectangleI rectBorder = new RectangleI
+            VideoReader video = new VideoReader(input);
+            video.LoadMetadataAsync().Wait();
+            video.Load();
+            
+            AudioReader audioReader = new AudioReader(input);
+            audioReader.LoadMetadataAsync().Wait();
+            audioReader.Load();
+            
+            // Get video and audio stream metadata (or just access metadata properties directly instead)
+            MediaStream vstream = video.Metadata.GetFirstVideoStream();
+            MediaStream astream = audioReader.Metadata.GetFirstAudioStream();
+            
+            // Crear la textura
+            IntPtr textureVideo = Sdl.CreateTexture(
+                renderer, 
+                Sdl.PixelFormatRgb24, 
+                (int) TextureAccess.SdlTextureAccessStreaming, 
+                (int) vstream.Width,
+                (int) vstream.Height);
+            
+            AudioSpec wavSpec = new AudioSpec();
+            wavSpec.freq = astream.SampleRateNumber; // Usar la tasa de muestreo del audio
+            wavSpec.format = Sdl.GlAudioS16Sys; // Formato de audio estándar
+            wavSpec.channels = (byte)astream.Channels; // Usar el número de canales del audio
+            wavSpec.samples = 2048; // Tamaño del buffer de audio (puede necesitar ajustes)
+            wavSpec.callback = null; // No estamos usando una función de callback
+            
+            int deviceId = (int) Sdl.OpenAudioDevice(IntPtr.Zero, 0, ref wavSpec, out wavSpec, 0);
+            if (deviceId == 0)
             {
-                x = 0,
-                y = 0,
-                w = 50,
-                h = 50
-            };
-
-            // Rectangle to be drawn filled.
-            RectangleI rectFilled = new RectangleI
-            {
-                x = 200,
-                y = 200,
-                w = 100,
-                h = 100
-            };
-
-            RectangleI tileRectangleI = new RectangleI
-            {
-                x = 0,
-                y = 0,
-                w = 32,
-                h = 64
-            };
-
-            // Load the image from the specified path.
-            IntPtr imageTilePtr = Sdl.LoadBmp("Assets/tile000.bmp");
-
-            // Create a new texture from the image.
-            IntPtr textureTile = Sdl.CreateTextureFromSurface(renderer, imageTilePtr);
+                Console.WriteLine("No se pudo abrir el dispositivo de audio: {0}", Sdl.GetError());
+                return;
+            }
+            
+            VideoFrame videoFrame = new VideoFrame((int) vstream.Width, (int) vstream.Height);
+            AudioFrame audioFrame = new AudioFrame((int) astream.Channels, 2048);
             
             while (_running)
             {
@@ -278,27 +211,6 @@ namespace Alis.Core.Graphic.Sample
                             {
                                 _running = false;
                             }
-
-                            if (_sdlEvent.key.keySym.sym == KeyCode.Up)
-                            {
-                                rectBorder.y -= 10;
-                            }
-
-                            if (_sdlEvent.key.keySym.sym == KeyCode.Down)
-                            {
-                                rectBorder.y += 10;
-                            }
-
-                            if (_sdlEvent.key.keySym.sym == KeyCode.Left)
-                            {
-                                rectBorder.x -= 10;
-                            }
-
-                            if (_sdlEvent.key.keySym.sym == KeyCode.Right)
-                            {
-                                rectBorder.x += 10;
-                            }
-
                             Console.WriteLine(_sdlEvent.key.keySym.sym + " was pressed");
                             break;
                     }
@@ -321,74 +233,39 @@ namespace Alis.Core.Graphic.Sample
                         }
                     }
                 }
-
                 
-                RenderColors();
+                // read next frame
+                VideoFrame videoFrameTemp = video.NextFrame(videoFrame);
+                if (videoFrameTemp == null) break;
 
-                // Sets the color that the screen will be cleared with.
-                Sdl.SetRenderDrawColor(renderer, _red, _green, _blue, 255);
+                // Actualizar la textura con los datos del frame
+                byte[] pixels = videoFrame.RawData.ToArray();
+                Sdl.UpdateTextureV2(textureVideo, IntPtr.Zero, pixels, videoFrameTemp.Width * 3);
 
-                // Clears the current render surface.
-                Sdl.RenderClear(renderer);
-
-                // Sets the color that the rectangle will be drawn with.
-                Sdl.SetRenderDrawColor(renderer, 255, 255, 255, 255);
-                // Draws a rectangle outline.
-                //Sdl.RenderDrawRect(renderer, ref rectBorder);
-
-                // Sets the color that the rectangle will be drawn with.
-                Sdl.SetRenderDrawColor(renderer, 0, 0, 0, 255);
-
-                // Draws a filled rectangle.
-                //Sdl.RenderFillRect(renderer, ref rectFilled);
-
-                Sdl.RenderCopy(renderer, _textureFont1, IntPtr.Zero, ref _dstRectFont1);
-
-                Sdl.RenderCopy(renderer, textureTile, IntPtr.Zero, ref tileRectangleI);
-
-                Sdl.RenderDrawRects(renderer, new[] {rectBorder, rectFilled}, 2);
-
-
-                // draw a line
-                Sdl.SetRenderDrawColor(renderer, 255, 0, 0, 255);
-                Sdl.RenderDrawLine(renderer, 0, 0, 100, 100);
-                
+                // Renderizar la textura
+                Sdl.RenderCopy(renderer, textureVideo, IntPtr.Zero, IntPtr.Zero);
                 Sdl.RenderPresent(renderer);
+
+                // audio
+                AudioFrame audioFrameTemp = audioReader.NextFrame(audioFrame);
+                if (audioFrameTemp == null) break;
+                //player.WriteFrame(audioFrame);
+                Sdl.QueueAudio(deviceId, audioFrame.RawData.ToArray(), (uint) audioFrame.RawData.Length);
+                
+                // if not playing, start
+                if (Sdl.GetAudioDeviceStatus((uint) deviceId) != AudioStatus.SdlAudioPlaying)
+                {
+                    Sdl.SdlPauseAudioDevice((uint) deviceId, 0);
+                }
                 
                 
-                System.Threading.Thread.Sleep((int) (1000 / 60));
+                System.Threading.Thread.Sleep((int) (1000 / vstream.AvgFrameRateNumber));
             }
 
             Sdl.DestroyRenderer(renderer);
             Sdl.DestroyWindow(window);
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Renders the colors
-        /// </summary>
-        private static void RenderColors()
-        {
-            if (_red < 255)
-            {
-                _red++;
-            }
-            else if (_green < 255)
-            {
-                _green++;
-            }
-            else if (_blue < 255)
-            {
-                _blue++;
-            }
-            else
-            {
-                _red = 0;
-                _green = 0;
-                _blue = 0;
-            }
-        }
-
 
         /// <summary>
         ///     Sdlinputs
