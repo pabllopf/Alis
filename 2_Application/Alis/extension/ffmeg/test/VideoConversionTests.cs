@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using Alis.Extension.FFMeg.Encoding.Builders;
-using Alis.Extension.FFMeg.Test.Resources;
+using Alis.Extension.FFMeg.Test.Assets;
 using Alis.Extension.FFMeg.Video;
 using Xunit;
 

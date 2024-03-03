@@ -2,7 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Text.RegularExpressions;
+using Alis.Core.Aspect.Base.Dll;
+using Alis.Extension.FFMeg.Properties;
 
 namespace Alis.Extension.FFMeg
 {
@@ -12,10 +15,20 @@ namespace Alis.Extension.FFMeg
     public static class FfMpegWrapper
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="FfMpegWrapper"/> class
+        /// </summary>
+        static FfMpegWrapper()
+        {
+            new EmbeddedDllClass().ExtractEmbeddedDlls("ffmpeg",DllType.Exe, FfMegDlls.FfMegDllBytes, Assembly.GetAssembly(typeof(FfMegDlls)));
+            new EmbeddedDllClass().ExtractEmbeddedDlls("ffplay", DllType.Exe, FfMegDlls.FfplayDllBytes, Assembly.GetAssembly(typeof(FfMegDlls)));
+            new EmbeddedDllClass().ExtractEmbeddedDlls("ffprobe", DllType.Exe, FfMegDlls.FfprobeDllBytes, Assembly.GetAssembly(typeof(FfMegDlls)));
+        }
+        /// <summary>
         /// FFmpeg verbosity. This sets the 'loglevel' parameter on FFmpeg. Useful when showing output and debugging issues.
         /// This may affect the progress tracker that depends on displayed stats. Default is 'info'.
         /// </summary>
         public static Verbosity LogLevel { get; set; } = Verbosity.Info;
+        
         /// <summary>
         /// FFmpeg banner setting. This sets the 'hide_banner' parameter on FFmpeg. Default is 'true' to hide the banner.
         /// </summary>

@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Alis.Extension.FFMeg.Audio;
-using Alis.Extension.FFMeg.Test.Resources;
+using Alis.Extension.FFMeg.Test.Assets;
 using Xunit;
 
 namespace Alis.Extension.FFMeg.Test

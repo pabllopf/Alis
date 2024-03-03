@@ -143,7 +143,7 @@ namespace Alis.Core.Aspect.Base.Test.Dll
             }
 
             // Act
-            string resultExtension = EmbeddedDllClass.GetDllExtension();
+            string resultExtension = EmbeddedDllClass.GetDllExtension(DllType.Lib);
 
             // Assert
             Assert.Equal(expectedExtension, resultExtension);

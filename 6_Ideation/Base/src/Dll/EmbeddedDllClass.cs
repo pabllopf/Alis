@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.IO.Compression;
@@ -46,14 +47,15 @@ namespace Alis.Core.Aspect.Base.Dll
         ///     Extracts the embedded dlls using the specified dll name
         /// </summary>
         /// <param name="dllName">The dll name</param>
+        /// <param name="exe"></param>
         /// <param name="dllBytes">The dll bytes</param>
         /// <param name="assembly">The assembly</param>
         [ExcludeFromCodeCoverage]
-        public void ExtractEmbeddedDlls(string dllName, Dictionary<PlatformInfo, string> dllBytes, Assembly assembly)
+        public void ExtractEmbeddedDlls(string dllName, DllType dllType, Dictionary<PlatformInfo, string> dllBytes, Assembly assembly)
         {
-            string extension = GetDllExtension();
+            string extension = GetDllExtension(dllType);
             string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string dllPath = Path.Combine(currentDirectory, $"{dllName}.{extension}");
+            string dllPath = Path.Combine(currentDirectory, $"{dllName}{extension}");
 
             if (!File.Exists(dllPath))
             {
@@ -74,26 +76,48 @@ namespace Alis.Core.Aspect.Base.Dll
         /// <summary>
         ///     Gets the dll extension
         /// </summary>
+        /// <param name="dllType"></param>
         /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
         /// <returns>The string</returns>
         [ExcludeFromCodeCoverage]
-        internal static string GetDllExtension()
+        internal static string GetDllExtension(DllType dllType)
         {
             OSPlatform currentPlatform = GetCurrentPlatform();
-
-            if (currentPlatform == OSPlatform.Windows)
+            
+            if (dllType == DllType.Exe)
             {
-                return "dll";
+                if (currentPlatform == OSPlatform.Windows)
+                {
+                    return ".exe";
+                }
+
+                if (currentPlatform == OSPlatform.OSX || currentPlatform == OSPlatform.Create("IOS"))
+                {
+                    return "";
+                }
+
+                if (currentPlatform == OSPlatform.Linux || currentPlatform == OSPlatform.Create("Android"))
+                {
+                    return "";
+                }
             }
 
-            if (currentPlatform == OSPlatform.OSX || currentPlatform == OSPlatform.Create("IOS"))
+            if (dllType == DllType.Lib)
             {
-                return "dylib";
-            }
+                if (currentPlatform == OSPlatform.Windows)
+                {
+                    return ".dll";
+                }
 
-            if (currentPlatform == OSPlatform.Linux || currentPlatform == OSPlatform.Create("Android"))
-            {
-                return "so";
+                if (currentPlatform == OSPlatform.OSX || currentPlatform == OSPlatform.Create("IOS"))
+                {
+                    return ".dylib";
+                }
+
+                if (currentPlatform == OSPlatform.Linux || currentPlatform == OSPlatform.Create("Android"))
+                {
+                    return ".so";
+                }
             }
 
             throw new PlatformNotSupportedException("Unsupported platform.");
@@ -157,6 +181,26 @@ namespace Alis.Core.Aspect.Base.Dll
                 using Stream entryStream = entry.Open();
                 using FileStream fs = File.Create(filePath);
                 entryStream.CopyTo(fs);
+            }
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                SetFileReadPermission(filePath);
+            }
+            
+        }
+        
+        public static void SetFileReadPermission(string filePath)
+        {
+            using (Process process = new Process())
+            {
+                process.StartInfo.FileName = "/bin/chmod";
+                process.StartInfo.Arguments = $"+x {filePath}";
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.CreateNoWindow = true;
+                process.Start();
+
+                process.WaitForExit();
             }
         }
 
