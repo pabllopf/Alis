@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Alis.Extension.FFMeg.Test.Resources
+namespace Alis.Extension.FFMeg.Test.Assets
 {
     /// <summary>
     /// The res class

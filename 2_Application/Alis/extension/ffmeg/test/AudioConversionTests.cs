@@ -4,7 +4,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Alis.Extension.FFMeg.Audio;
 using Alis.Extension.FFMeg.Encoding.Builders;
-using Alis.Extension.FFMeg.Test.Resources;
+using Alis.Extension.FFMeg.Test.Assets;
 using Xunit;
 
 namespace Alis.Extension.FFMeg.Test
@@ -14,6 +14,9 @@ namespace Alis.Extension.FFMeg.Test
     /// </summary>
     public class AudioConversionTests
     {
+        /// <summary>
+        /// Tests that f fmpeg wrapper progress test
+        /// </summary>
         [Fact]
         public async Task FFmpegWrapperProgressTest()
         {

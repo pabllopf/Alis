@@ -14,8 +14,4 @@
         <PublishReadyToRunShowWarnings>false</PublishReadyToRunShowWarnings>
         <IsTrimmable>false</IsTrimmable>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\..\CryMediaAPI\CryMediaAPI.csproj" />
-    </ItemGroup>
 </Project>

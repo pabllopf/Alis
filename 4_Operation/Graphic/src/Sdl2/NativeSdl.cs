@@ -56,7 +56,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sdl" /> class
         /// </summary>
-        static NativeSdl() => new EmbeddedDllClass().ExtractEmbeddedDlls("sdl2", Sdl2Dlls.GlSdlDllBytes, Assembly.GetAssembly(typeof(Sdl2Dlls)));
+        static NativeSdl() => new EmbeddedDllClass().ExtractEmbeddedDlls("sdl2", DllType.Lib, Sdl2Dlls.GlSdlDllBytes, Assembly.GetAssembly(typeof(Sdl2Dlls)));
 
         /// <summary>
         ///     Sdl the joystick is haptic using the specified joystick
