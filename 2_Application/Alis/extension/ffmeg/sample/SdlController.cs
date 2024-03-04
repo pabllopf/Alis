@@ -236,10 +236,13 @@ namespace Alis.Extension.FFMeg.Sample
                 
                 // read next frame
                 VideoFrame videoFrameTemp = video.NextFrame(videoFrame);
-                if (videoFrameTemp == null) break;
+                if (videoFrameTemp == null)
+                {
+                    _running = false;
+                }
 
                 // Actualizar la textura con los datos del frame
-                byte[] pixels = videoFrame.RawData.ToArray();
+                byte[] pixels = videoFrame.RawData;
                 Sdl.UpdateTextureV2(textureVideo, IntPtr.Zero, pixels, videoFrameTemp.Width * 3);
 
                 // Renderizar la textura
@@ -249,8 +252,9 @@ namespace Alis.Extension.FFMeg.Sample
                 // audio
                 AudioFrame audioFrameTemp = audioReader.NextFrame(audioFrame);
                 if (audioFrameTemp == null) break;
+                
                 //player.WriteFrame(audioFrame);
-                Sdl.QueueAudio(deviceId, audioFrame.RawData.ToArray(), (uint) audioFrame.RawData.Length);
+                Sdl.QueueAudio(deviceId, audioFrame.RawData, (uint) audioFrame.RawData.Length);
                 
                 // if not playing, start
                 if (Sdl.GetAudioDeviceStatus((uint) deviceId) != AudioStatus.SdlAudioPlaying)

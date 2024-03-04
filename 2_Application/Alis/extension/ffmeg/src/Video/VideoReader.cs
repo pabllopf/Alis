@@ -61,11 +61,12 @@ namespace Alis.Extension.FFMeg.Video
         public async Task LoadMetadataAsync(bool ignoreStreamErrors = false)
     {
         if (LoadedMetadata) throw new InvalidOperationException("Video metadata is already loaded!");
-        Stream r = FfMpegWrapper.OpenOutput(ffprobe, $"-i \"{Filename}\" -v quiet -print_format json=c=1 -show_format -show_streams");
+        StreamReader r = new StreamReader(FfMpegWrapper.OpenOutput(ffprobe, $"-i \"{Filename}\" -v quiet -print_format json=c=1 -show_format -show_streams"));
 
         try
         {
-            VideoMetadata metadata = await JsonSerializer.DeserializeAsync(r, SourceGenerationContext.Default.VideoMetadata);
+            string metadataJson = await r.ReadToEndAsync();
+            VideoMetadata metadata = JsonSerializer.Deserialize<VideoMetadata>(metadataJson);
 
             try
             {

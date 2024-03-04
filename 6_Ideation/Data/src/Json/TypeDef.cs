@@ -109,6 +109,7 @@ namespace Alis.Core.Aspect.Data.Json
         public void ApplyEntry(IDictionary dictionary, object target, string key, object value, JsonOptions options)
         {
             MemberDefinition member = GetDeserializationMember(key);
+            Console.WriteLine("Member: " + member + " Key: '" + key + "' Value: '" + value + "' Options: " + options);
             member?.ApplyEntry(dictionary, target, key, value, options);
         }
 
@@ -500,7 +501,7 @@ namespace Alis.Core.Aspect.Data.Json
         {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
             {
-                JsonAttribute ja = JsonSerializer.GetJsonAttribute(info);
+                JsonPropertyNameAttribute ja = JsonSerializer.GetJsonAttribute(info);
                 if (ja != null)
                 {
                     switch (serialization)
@@ -625,7 +626,7 @@ namespace Alis.Core.Aspect.Data.Json
         {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
             {
-                JsonAttribute ja = JsonSerializer.GetJsonAttribute(info);
+                JsonPropertyNameAttribute ja = JsonSerializer.GetJsonAttribute(info);
                 if (ja != null)
                 {
                     switch (serialization)
@@ -734,7 +735,7 @@ namespace Alis.Core.Aspect.Data.Json
         {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
             {
-                JsonAttribute ja = descriptor.GetAttribute<JsonAttribute>();
+                JsonPropertyNameAttribute ja = descriptor.GetAttribute<JsonPropertyNameAttribute>();
                 if (ja != null)
                 {
                     if (serialization && ja.IgnoreWhenSerializing)

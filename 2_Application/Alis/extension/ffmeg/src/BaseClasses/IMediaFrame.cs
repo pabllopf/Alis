@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 
 namespace Alis.Extension.FFMeg.BaseClasses
@@ -11,7 +10,7 @@ namespace Alis.Extension.FFMeg.BaseClasses
         /// <summary>
         /// Contains raw frame data
         /// </summary>
-        public Memory<byte> RawData { get; }
+        public byte[] RawData { get; }
 
         /// <summary>
         /// Loads raw data into memory

@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void TestConstructor()
         {
-            JsonAttribute attribute = new JsonAttribute();
+            JsonPropertyNameAttribute attribute = new JsonPropertyNameAttribute();
             Assert.NotNull(attribute);
         }
 
@@ -54,7 +54,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestConstructorWithName()
         {
             string name = "TestName";
-            JsonAttribute attribute = new JsonAttribute(name);
+            JsonPropertyNameAttribute attribute = new JsonPropertyNameAttribute(name);
             Assert.Equal(name, attribute.Name);
         }
 
@@ -65,7 +65,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestNameProperty()
         {
             string name = "TestName";
-            JsonAttribute attribute = new JsonAttribute {Name = name};
+            JsonPropertyNameAttribute attribute = new JsonPropertyNameAttribute {Name = name};
             Assert.Equal(name, attribute.Name);
         }
 
@@ -75,7 +75,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void TestIgnoreWhenSerializingProperty()
         {
-            JsonAttribute attribute = new JsonAttribute {IgnoreWhenSerializing = true};
+            JsonPropertyNameAttribute attribute = new JsonPropertyNameAttribute {IgnoreWhenSerializing = true};
             Assert.True(attribute.IgnoreWhenSerializing);
         }
 
@@ -85,7 +85,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void TestIgnoreWhenDeserializingProperty()
         {
-            JsonAttribute attribute = new JsonAttribute {IgnoreWhenDeserializing = true};
+            JsonPropertyNameAttribute attribute = new JsonPropertyNameAttribute {IgnoreWhenDeserializing = true};
             Assert.True(attribute.IgnoreWhenDeserializing);
         }
 
@@ -96,7 +96,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestDefaultValueProperty()
         {
             object defaultValue = new object();
-            JsonAttribute attribute = new JsonAttribute {DefaultValue = defaultValue};
+            JsonPropertyNameAttribute attribute = new JsonPropertyNameAttribute {DefaultValue = defaultValue};
             Assert.Equal(defaultValue, attribute.DefaultValue);
         }
 
@@ -106,7 +106,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void TestHasDefaultValueProperty()
         {
-            JsonAttribute attribute = new JsonAttribute {HasDefaultValue = true};
+            JsonPropertyNameAttribute attribute = new JsonPropertyNameAttribute {HasDefaultValue = true};
             Assert.True(attribute.HasDefaultValue);
         }
     }

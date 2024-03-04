@@ -216,6 +216,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             using StringReader reader = new StringReader(text);
+            
             return Deserialize(reader, targetType, options);
         }
 
@@ -595,7 +596,7 @@ namespace Alis.Core.Aspect.Data.Json
         {
             switch (att)
             {
-                case JsonAttribute {HasDefaultValue: true} jsa:
+                case JsonPropertyNameAttribute {HasDefaultValue: true} jsa:
                     value = jsa.DefaultValue;
                     return true;
                 case DefaultValueAttribute dva:
@@ -617,7 +618,7 @@ namespace Alis.Core.Aspect.Data.Json
         {
             return att switch
             {
-                JsonAttribute jsa when !string.IsNullOrEmpty(jsa.Name) => jsa.Name,
+                JsonPropertyNameAttribute jsa when !string.IsNullOrEmpty(jsa.Name) => jsa.Name,
                 XmlAttributeAttribute xaa when !string.IsNullOrEmpty(xaa.AttributeName) => xaa.AttributeName,
                 XmlElementAttribute xea when !string.IsNullOrEmpty(xea.ElementName) => xea.ElementName,
                 _ => null
@@ -829,7 +830,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="pi">The pi</param>
         /// <returns>The json attribute</returns>
         [ExcludeFromCodeCoverage]
-        internal static JsonAttribute GetJsonAttribute(MemberInfo pi)
+        internal static JsonPropertyNameAttribute GetJsonAttribute(MemberInfo pi)
         {
             object[] objs = pi.GetCustomAttributes(true);
             if (objs.Length == 0)
@@ -840,7 +841,7 @@ namespace Alis.Core.Aspect.Data.Json
                 if (!(obj is Attribute att))
                     continue;
 
-                if (att is JsonAttribute xAtt)
+                if (att is JsonPropertyNameAttribute xAtt)
                     return xAtt;
             }
 

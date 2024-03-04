@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text.Json.Serialization;
+using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Extension.FFMeg.BaseClasses
 {
@@ -81,19 +81,19 @@ namespace Alis.Extension.FFMeg.BaseClasses
         /// Gets or sets the value of the coded width
         /// </summary>
         [JsonPropertyName("coded_width")]
-        public long? CodedWidth { get; set; }
+        public int? CodedWidth { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the coded height
         /// </summary>
         [JsonPropertyName("coded_height")]
-        public long? CodedHeight { get; set; }
+        public int? CodedHeight { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the has b frames
         /// </summary>
         [JsonPropertyName("has_b_frames")]
-        public long? HasBFrames { get; set; }
+        public int? HasBFrames { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the sample aspect ratio
@@ -117,7 +117,7 @@ namespace Alis.Extension.FFMeg.BaseClasses
         /// Gets or sets the value of the level
         /// </summary>
         [JsonPropertyName("level")]
-        public long? Level { get; set; }
+        public int? Level { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the color range
@@ -153,7 +153,7 @@ namespace Alis.Extension.FFMeg.BaseClasses
         /// Gets or sets the value of the refs
         /// </summary>
         [JsonPropertyName("refs")]
-        public long? Refs { get; set; }
+        public int? Refs { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the is avc
@@ -215,7 +215,7 @@ namespace Alis.Extension.FFMeg.BaseClasses
         /// Gets or sets the value of the start pts
         /// </summary>
         [JsonPropertyName("start_pts")]
-        public long StartPts { get; set; }
+        public int StartPts { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the start time
@@ -227,7 +227,7 @@ namespace Alis.Extension.FFMeg.BaseClasses
         /// Gets or sets the value of the duration ts
         /// </summary>
         [JsonPropertyName("duration_ts")]
-        public long DurationTs { get; set; }
+        public int DurationTs { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the duration
@@ -257,7 +257,7 @@ namespace Alis.Extension.FFMeg.BaseClasses
         /// Gets or sets the value of the disposition
         /// </summary>
         [JsonPropertyName("disposition")]
-        public Dictionary<string, long> Disposition { get; set; }
+        public Dictionary<string, int> Disposition { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the tags

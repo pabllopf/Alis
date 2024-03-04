@@ -1,5 +1,5 @@
 using System.Linq;
-using System.Text.Json.Serialization;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Extension.FFMeg.BaseClasses;
 
 namespace Alis.Extension.FFMeg.Video.Models

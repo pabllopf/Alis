@@ -39,7 +39,7 @@ namespace Alis.Extension.FFMeg.Audio
         /// <summary>
         /// Raw audio data in signed PCM format
         /// </summary>
-        public Memory<byte> RawData { get; private set; }
+        public byte[] RawData { get; private set; }
 
         /// <summary>
         /// Creates an empty audio frame with fixed sample count and given bit depth using signed PCM format.
@@ -59,7 +59,7 @@ namespace Alis.Extension.FFMeg.Audio
         size = sampleCount * channels * BytesPerSample;
 
         frameBuffer = new byte[size];
-        RawData = frameBuffer.AsMemory();
+        RawData = frameBuffer;
     }
 
         /// <summary>
@@ -87,22 +87,26 @@ namespace Alis.Extension.FFMeg.Audio
         // Adjust RawData length when changed
         if (RawData.Length != offset)
         {
-            RawData = frameBuffer.AsMemory().Slice(0, offset);
+            byte[] newRawData = new byte[offset];
+            Array.Copy(frameBuffer, 0, newRawData, 0, offset);
+            RawData = newRawData;
         }
 
         return true;
     }
 
         /// <summary>
-        /// Returns part of memory that contains the sample value
+        /// Returns part of array that contains the sample value
         /// </summary>
         /// <param name="index">Sample index</param>
         /// <param name="channel">Channel index</param>
-        public Memory<byte> GetSample(int index, int channel) 
-    {
-        int i = (index * Channels  + channel) * BytesPerSample;
-        return RawData.Slice(i, BytesPerSample);
-    }
+        public byte[] GetSample(int index, int channel)
+        {
+            int i = (index * Channels + channel) * BytesPerSample;
+            byte[] sample = new byte[BytesPerSample];
+            Array.Copy(RawData, i, sample, 0, BytesPerSample);
+            return sample;
+        }
 
         /// <summary>
         /// Clears the frame buffer
