@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Extension.FFMeg.Audio.Models
 {

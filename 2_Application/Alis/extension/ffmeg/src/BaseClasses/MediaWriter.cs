@@ -33,7 +33,7 @@ namespace Alis.Extension.FFMeg.BaseClasses
     {
         if (!OpenedForWriting) throw new InvalidOperationException("Media needs to be prepared for writing first!");
 
-        byte[] data = frame.RawData.ToArray();
+        byte[] data = frame.RawData;
         InputDataStream.Write(data, 0, data.Length);
     }
 

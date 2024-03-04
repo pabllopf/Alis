@@ -769,7 +769,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             MemberInfo memberInfo = typeof(JsonSerializer).GetMember("Serialize")[0]; // Assuming this method doesn't have a JsonAttribute
 
             // Act
-            JsonAttribute result = JsonSerializer.GetJsonAttribute(memberInfo);
+            JsonPropertyNameAttribute result = JsonSerializer.GetJsonAttribute(memberInfo);
 
             // Assert
             Assert.Null(result);

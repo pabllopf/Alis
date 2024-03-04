@@ -35,20 +35,20 @@ namespace Alis.Core.Aspect.Data.Json
     ///     Provides options for JSON.
     /// </summary>
     [AttributeUsage(AttributeTargets.All)]
-    public sealed class JsonAttribute : Attribute
+    public sealed class JsonPropertyNameAttribute : Attribute
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="JsonAttribute" /> class.
+        ///     Initializes a new instance of the <see cref="JsonPropertyNameAttribute" /> class.
         /// </summary>
-        public JsonAttribute()
+        public JsonPropertyNameAttribute()
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="JsonAttribute" /> class.
+        ///     Initializes a new instance of the <see cref="JsonPropertyNameAttribute" /> class.
         /// </summary>
         /// <param name="name">The name to use for JSON serialization and deserialization.</param>
-        public JsonAttribute(string name) => Name = name;
+        public JsonPropertyNameAttribute(string name) => Name = name;
 
         /// <summary>
         ///     Gets or sets the name to use for JSON serialization and deserialization.

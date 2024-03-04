@@ -259,6 +259,7 @@ namespace Alis.Core.Aspect.Data.Json
 
 
             object changeValue = JsonSerializer.ChangeType(target, value, Type, options);
+            Console.WriteLine($" target: {target} value: {value} Type: {Type} options: {options} changeValue: {changeValue}");
             Accessor.Set(target, changeValue);
         }
 

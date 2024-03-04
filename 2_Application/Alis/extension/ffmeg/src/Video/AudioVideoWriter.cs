@@ -280,7 +280,7 @@ namespace Alis.Extension.FFMeg.Video
     {
         if (!OpenedForWriting) throw new InvalidOperationException("Media needs to be prepared for writing first!");
 
-        byte[] data = frame.RawData.ToArray();
+        byte[] data = frame.RawData;
         InputDataStreamAudio.Write(data, 0, data.Length);
     }
 
@@ -292,7 +292,7 @@ namespace Alis.Extension.FFMeg.Video
     {
         if (!OpenedForWriting) throw new InvalidOperationException("Media needs to be prepared for writing first!");
 
-        byte[] data = frame.RawData.ToArray();
+        byte[] data = frame.RawData;
         InputDataStreamVideo.Write(data, 0, data.Length);
     }
 

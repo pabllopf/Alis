@@ -22,7 +22,7 @@ namespace Alis.Extension.FFMeg.Video
         /// <summary>
         /// Raw video data in RGB24 pixel format
         /// </summary>
-        public Memory<byte> RawData { get; private set; }
+        public byte[] RawData { get; private set; }
 
         /// <summary>
         /// Video width in pixels
@@ -48,7 +48,7 @@ namespace Alis.Extension.FFMeg.Video
 
             size = Width * Height * 3;
             frameBuffer = new byte[size];
-            RawData = frameBuffer.AsMemory();
+            RawData = frameBuffer;
         }
 
         /// <summary>
@@ -74,7 +74,9 @@ namespace Alis.Extension.FFMeg.Video
             // Adjust RawData length when changed
             if (RawData.Length != offset)
             {
-                RawData = frameBuffer.AsMemory().Slice(0, offset);
+                byte[] newRawData = new byte[offset];
+                Array.Copy(frameBuffer, 0, newRawData, 0, offset);
+                RawData = newRawData;
             }
 
             return true;
@@ -99,22 +101,18 @@ namespace Alis.Extension.FFMeg.Video
             {
                 // save it
                 Console.WriteLine("Saving frame...");
-                byte[] data = RawData.ToArray();
+                byte[] data = RawData;
                 Console.WriteLine($"Writing Length {data.Length} bytes to ffmpeg...");
                 inp.Write(data, 0, data.Length);
             }
         }
 
-        /// <summary>
-        /// Returns part of memory that contains the pixel data.
-        /// </summary>
-        /// <param name="x">Starting X coordinate of wanted pixel/s</param>
-        /// <param name="y">Starting Y coordinate of wanted pixel/s</param>
-        /// <param name="length">Number of pixels to return from the starting pixel</param>
-        public Memory<byte> GetPixels(int x, int y, int length = 1)
+        public byte[] GetPixels(int x, int y, int length = 1)
         {
             int index = (x + y * Width) * 3;
-            return RawData.Slice(index, length * 3);
+            byte[] pixels = new byte[length * 3];
+            Array.Copy(RawData, index, pixels, 0, length * 3);
+            return pixels;
         }
 
         /// <summary>

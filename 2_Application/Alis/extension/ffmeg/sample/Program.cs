@@ -68,94 +68,6 @@ namespace Alis.Extension.FFMeg.Sample
         }
 
         /// <summary>
-        /// Reads the write video using the specified input
-        /// </summary>
-        /// <param name="input">The input</param>
-        /// <param name="output">The output</param>
-        static void ReadWriteVideo(string input, string output)
-        {
-            VideoReader video = new VideoReader(input);
-            video.LoadMetadataAsync().Wait();
-            video.Load();
-
-            using (VideoWriter writer = new VideoWriter(File.Create(output),
-                video.Metadata.Width, video.Metadata.Height, video.Metadata.AvgFramerate,
-                new H264Encoder() { Format = "flv" }.Create()))
-            {
-                writer.OpenWrite(true);
-                //video.CopyTo(writer);
-
-                VideoFrame frame = new VideoFrame(video.Metadata.Width, video.Metadata.Height);
-                while (true)
-                {
-                    // read next frame
-                    VideoFrame f = video.NextFrame(frame);
-                    if (f == null) break;
-
-
-                    for (int i = 0; i < 100; i++)
-                        for (int j = 0; j < 100; j++)
-                        {
-                            Span<byte> px = frame.GetPixels(i, j).Span;
-                            px[0] = 255;
-                            px[1] = 0;
-                            px[2] = 0;
-                        }
-
-                    writer.WriteFrame(frame);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Reads the play video using the specified input
-        /// </summary>
-        /// <param name="input">The input</param>
-        /// <param name="output">The output</param>
-        static void ReadPlayVideo(string input, string output)
-        {
-            VideoReader video = new VideoReader(input);
-            video.LoadMetadataAsync().Wait();
-            video.Load();
-
-            using (VideoPlayer player = new VideoPlayer())
-            {
-                player.OpenWrite(video.Metadata.Width, video.Metadata.Height, video.Metadata.AvgFramerateText);
-
-                // For simple playing, can just use "CopyTo"
-                // video.CopyTo(player);
-
-                VideoFrame frame = new VideoFrame(video.Metadata.Width, video.Metadata.Height);
-                while (true)
-                {
-                    // read next frame
-                    VideoFrame f = video.NextFrame(frame);
-                    if (f == null) break;
-
-
-                    for (int i = 0; i < 100; i++)
-                        for (int j = 0; j < 100; j++)
-                        {
-                            Span<byte> px = frame.GetPixels(i, j).Span;
-                            px[0] = 255;
-                            px[1] = 0;
-                            px[2] = 0;
-                        }
-
-                    try
-                    {
-                        player.WriteFrame(frame);
-                    }
-                    catch (IOException) { break; }
-                    catch
-                    {
-                        throw;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// Reads the play audio using the specified input
         /// </summary>
         /// <param name="input">The input</param>
@@ -201,7 +113,7 @@ namespace Alis.Extension.FFMeg.Sample
         {
             VideoReader video = new VideoReader(input);
             video.LoadMetadataAsync().Wait();
-            video.Load(30);
+            video.Load(3);
 
             VideoFrame fr = video.NextFrame();
             fr.Save("test.png");

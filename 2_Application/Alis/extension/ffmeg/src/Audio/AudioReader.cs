@@ -2,8 +2,8 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Extension.FFMeg.Audio.Models;
 using Alis.Extension.FFMeg.BaseClasses;
 using Alis.Extension.FFMeg.Video.Models;
@@ -65,11 +65,12 @@ namespace Alis.Extension.FFMeg.Audio
         public async Task LoadMetadataAsync(bool ignoreStreamErrors = false)
     {
         if (MetadataLoaded) throw new InvalidOperationException("Video metadata is already loaded!");
-        Stream r = FfMpegWrapper.OpenOutput(ffprobe, $"-i \"{Filename}\" -v quiet -print_format json=c=1 -show_format -show_streams");
+        StreamReader r = new StreamReader(FfMpegWrapper.OpenOutput(ffprobe, $"-i \"{Filename}\" -v quiet -print_format json=c=1 -show_format -show_streams"));
 
         try
         {
-            AudioMetadata metadata = await JsonSerializer.DeserializeAsync(r, SourceGenerationContext.Default.AudioMetadata);
+            string json = await r.ReadToEndAsync();
+            AudioMetadata metadata = JsonSerializer.Deserialize<AudioMetadata>(json);
 
             try
             {
