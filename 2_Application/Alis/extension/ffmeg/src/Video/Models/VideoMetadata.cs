@@ -48,12 +48,7 @@ namespace Alis.Extension.FFMeg.Video.Models
         /// Average video framerate
         /// </summary>
         public double AvgFramerate { get; set; }
-
-        /// <summary>
-        /// Average video framerate in frequency format
-        /// </summary>
-        public string AvgFramerateText { get; set; }
-
+        
         /// <summary>
         /// Average video bitrate
         /// </summary>
