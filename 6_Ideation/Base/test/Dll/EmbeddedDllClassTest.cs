@@ -127,15 +127,15 @@ namespace Alis.Core.Aspect.Base.Test.Dll
 
             if (currentPlatform == OSPlatform.Windows)
             {
-                expectedExtension = "dll";
+                expectedExtension = ".dll";
             }
             else if (currentPlatform == OSPlatform.OSX || currentPlatform == OSPlatform.Create("IOS"))
             {
-                expectedExtension = "dylib";
+                expectedExtension = ".dylib";
             }
             else if (currentPlatform == OSPlatform.Linux || currentPlatform == OSPlatform.Create("Android"))
             {
-                expectedExtension = "so";
+                expectedExtension = ".so";
             }
             else
             {

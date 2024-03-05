@@ -91,7 +91,6 @@ namespace Alis.Extension.FFMeg.Video
                         double.Parse(videoStream.Duration, CultureInfo.InvariantCulture);
 
                     metadata.SampleAspectRatio = videoStream.SampleAspectRatio;
-                    metadata.AvgFramerateText = videoStream.AvgFrameRate;
                     metadata.AvgFramerate = videoStream.AvgFrameRateNumber;
 
                     metadata.PredictedFrameCount = (int)(metadata.AvgFramerate * metadata.Duration);

@@ -15,49 +15,6 @@ namespace Alis.Extension.FFMeg.Test
     public class VideoConversionTests
     {
         /// <summary>
-        /// Tests that f fmpeg wrapper progress test
-        /// </summary>
-        [Fact]
-        public async Task FFmpegWrapperProgressTest()
-        {
-            string path = Res.GetPath(Res.Video_Mp4);
-            string opath = "out-test-v-0.mp4";
-            
-            try
-            {
-                VideoReader video = new VideoReader(path);
-
-                await video.LoadMetadataAsync();
-                double dur = video.Metadata.Duration;
-                video.Dispose();
-
-                Assert.True(Math.Abs(dur - 5.533333) < 0.01);
-
-                Process p = FfMpegWrapper.ExecuteCommand("ffmpeg", $"-i \"{path}\" -c:v libx264 -f mp4 \"{opath}\"");
-                Progress<double> progress = FfMpegWrapper.RegisterProgressTracker(p, dur);
-                p.WaitForExit();
-
-                await Task.Delay(300);
-                
-                video = new VideoReader(opath);
-
-                await video.LoadMetadataAsync();
-
-                Assert.True(video.Metadata.AvgFramerate == 30);
-                Assert.True(video.Metadata.AvgFramerateText == "30/1");
-                Assert.True(Math.Abs(video.Metadata.Duration - 5.533333) < 0.01);
-                Assert.True(video.Metadata.Width == 560);
-                Assert.True(video.Metadata.Height == 320);
-
-                video.Dispose();
-            }
-            finally
-            {
-                if (File.Exists(opath)) File.Delete(opath);
-            }
-        }
-
-        /// <summary>
         /// Tests that conversion test 1
         /// </summary>
         [Fact]

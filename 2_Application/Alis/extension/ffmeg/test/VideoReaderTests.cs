@@ -23,7 +23,6 @@ namespace Alis.Extension.FFMeg.Test
 
             Assert.True(video.Metadata.Codec == "h264");
             Assert.True(video.Metadata.AvgFramerate == 30);
-            Assert.True(video.Metadata.AvgFramerateText == "30/1");
             Assert.True(Math.Abs(video.Metadata.Duration - 5.533333) < 0.01);
             Assert.True(video.Metadata.Width == 560);
             Assert.True(video.Metadata.Height == 320);
@@ -45,7 +44,6 @@ namespace Alis.Extension.FFMeg.Test
 
             Assert.True(video.Metadata.Codec == "vp8");
             Assert.True(video.Metadata.AvgFramerate == 30);
-            Assert.True(video.Metadata.AvgFramerateText == "30/1");
             Assert.True(Math.Abs(video.Metadata.Duration - 5.568) < 0.01); 
             Assert.True(video.Metadata.Width == 560);
             Assert.True(video.Metadata.Height == 320);
@@ -65,7 +63,6 @@ namespace Alis.Extension.FFMeg.Test
 
             Assert.True(video.Metadata.Codec == "flv1");
             Assert.True(video.Metadata.AvgFramerate == 25);
-            Assert.True(video.Metadata.AvgFramerateText == "25/1");
             Assert.True(Math.Abs(video.Metadata.Duration - 5.56) < 0.01);
             Assert.True(video.Metadata.Width == 320); 
             Assert.True(video.Metadata.Height == 240); 
