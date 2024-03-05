@@ -28,12 +28,10 @@ namespace Alis.Extension.FFMeg.Sample
             
             //ConvertVideo(input, output);
 
-            // ReadWriteAudio(input, output);
-            // ReadWriteVideo(input, output);
-
-            // ReadPlayAudio(input, output);
-            // ReadPlayVideo(input, output);
-
+            //ReadWriteAudio(input, output);
+            
+            //ReadPlayAudio(input, output);
+            
             SaveVideoFrame(input);
             
             Console.WriteLine($"Press any key to exit");
