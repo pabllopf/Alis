@@ -108,20 +108,20 @@ namespace Alis.Core.Extension.FFMeg.Properties
         /// </summary>
         internal static readonly Dictionary<PlatformInfo, string> FfMegDllBytes = new Dictionary<PlatformInfo, string>
         {
-            {WinX86, $"{ResourcePath}.win_x86.win-x86_ffmpeg.zip"},
+            {WinX86, $"{ResourcePath}.win_x64.win-x64_ffmpeg.zip"},
             {WinX64, $"{ResourcePath}.win_x64.win-x64_ffmpeg.zip"},
-            {WinArm, $"{ResourcePath}.win_arm.win-arm_ffmpeg.zip"},
-            {WinArm64, $"{ResourcePath}.win_arm64.win-arm64_ffmpeg.zip"},
+            {WinArm, $"{ResourcePath}.win_x64.win-x64_ffmpeg.zip"},
+            {WinArm64, $"{ResourcePath}.win_x64.win-x64_ffmpeg.zip"},
 
-            {LinuxX86, $"{ResourcePath}.linux_x86.linux-x86_ffmpeg.zip"},
+            {LinuxX86, $"{ResourcePath}.linux_x64.linux-x64_ffmpeg.zip"},
             {LinuxX64, $"{ResourcePath}.linux_x64.linux-x64_ffmpeg.zip"},
-            {LinuxArm, $"{ResourcePath}.linux_arm.linux-arm_ffmpeg.zip"},
-            {LinuxArm64, $"{ResourcePath}.linux_arm64.linux-arm64_ffmpeg.zip"},
+            {LinuxArm, $"{ResourcePath}.linux_x64.linux-x64_ffmpeg.zip"},
+            {LinuxArm64, $"{ResourcePath}.linux_x64.linux-x64_ffmpeg.zip"},
 
-            {OsxX86, $"{ResourcePath}.osx_x86.osx-x86_ffmpeg.zip"},
+            {OsxX86, $"{ResourcePath}.osx_x64.osx-x64_ffmpeg.zip"},
             {OsxX64, $"{ResourcePath}.osx_x64.osx-x64_ffmpeg.zip"},
-            {OsxArm64, $"{ResourcePath}.osx_arm64.osx-arm64_ffmpeg.zip"},
-            {OsxArm, $"{ResourcePath}.osx_arm.osx-arm_ffmpeg.zip"}
+            {OsxArm64, $"{ResourcePath}.osx_x64.osx-x64_ffmpeg.zip"},
+            {OsxArm, $"{ResourcePath}.osx_x64.osx-x64_ffmpeg.zip"}
         };
         
         /// <summary>
@@ -129,20 +129,20 @@ namespace Alis.Core.Extension.FFMeg.Properties
         /// </summary>
         internal static readonly Dictionary<PlatformInfo, string> FfplayDllBytes = new Dictionary<PlatformInfo, string>
         {
-            {WinX86, $"{ResourcePath}.win_x86.win-x86_ffplay.zip"},
+            {WinX86, $"{ResourcePath}.win_x64.win-x64_ffplay.zip"},
             {WinX64, $"{ResourcePath}.win_x64.win-x64_ffplay.zip"},
-            {WinArm, $"{ResourcePath}.win_arm.win-arm_ffplay.zip"},
-            {WinArm64, $"{ResourcePath}.win_arm64.win-arm64_ffplay.zip"},
+            {WinArm, $"{ResourcePath}.win_x64.win-x64_ffplay.zip"},
+            {WinArm64, $"{ResourcePath}.win_x64.win-x64_ffplay.zip"},
 
-            {LinuxX86, $"{ResourcePath}.linux_x86.linux-x86_ffplay.zip"},
+            {LinuxX86, $"{ResourcePath}.linux_x64.linux-x64_ffplay.zip"},
             {LinuxX64, $"{ResourcePath}.linux_x64.linux-x64_ffplay.zip"},
-            {LinuxArm, $"{ResourcePath}.linux_arm.linux-arm_ffplay.zip"},
-            {LinuxArm64, $"{ResourcePath}.linux_arm64.linux-arm64_ffplay.zip"},
+            {LinuxArm, $"{ResourcePath}.linux_x64.linux-x64_ffplay.zip"},
+            {LinuxArm64, $"{ResourcePath}.linux_x64.linux-x64_ffplay.zip"},
 
-            {OsxX86, $"{ResourcePath}.osx_x86.osx-x86_ffplay.zip"},
+            {OsxX86, $"{ResourcePath}.osx_x64.osx-x64_ffplay.zip"},
             {OsxX64, $"{ResourcePath}.osx_x64.osx-x64_ffplay.zip"},
-            {OsxArm64, $"{ResourcePath}.osx_arm64.osx-arm64_ffplay.zip"},
-            {OsxArm, $"{ResourcePath}.osx_arm.osx-arm_ffplay.zip"}
+            {OsxArm64, $"{ResourcePath}.osx_x64.osx-x64_ffplay.zip"},
+            {OsxArm, $"{ResourcePath}.osx_x64.osx-x64_ffplay.zip"}
         };
         
         /// <summary>
@@ -150,20 +150,20 @@ namespace Alis.Core.Extension.FFMeg.Properties
         /// </summary>
         internal static readonly Dictionary<PlatformInfo, string> FfprobeDllBytes = new Dictionary<PlatformInfo, string>
         {
-            {WinX86, $"{ResourcePath}.win_x86.win-x86_ffprobe.zip"},
+            {WinX86, $"{ResourcePath}.win_x64.win-x64_ffprobe.zip"},
             {WinX64, $"{ResourcePath}.win_x64.win-x64_ffprobe.zip"},
-            {WinArm, $"{ResourcePath}.win_arm.win-arm_ffprobe.zip"},
-            {WinArm64, $"{ResourcePath}.win_arm64.win-arm64_ffprobe.zip"},
+            {WinArm, $"{ResourcePath}.win_x64.win-x64_ffprobe.zip"},
+            {WinArm64, $"{ResourcePath}.win_x64.win-x64_ffprobe.zip"},
 
-            {LinuxX86, $"{ResourcePath}.linux_x86.linux-x86_ffprobe.zip"},
+            {LinuxX86, $"{ResourcePath}.linux_x64.linux-x64_ffprobe.zip"},
             {LinuxX64, $"{ResourcePath}.linux_x64.linux-x64_ffprobe.zip"},
-            {LinuxArm, $"{ResourcePath}.linux_arm.linux-arm_ffprobe.zip"},
-            {LinuxArm64, $"{ResourcePath}.linux_arm64.linux-arm64_ffprobe.zip"},
+            {LinuxArm, $"{ResourcePath}.linux_x64.linux-x64_ffprobe.zip"},
+            {LinuxArm64, $"{ResourcePath}.linux_x64.linux-x64_ffprobe.zip"},
 
-            {OsxX86, $"{ResourcePath}.osx_x86.osx-x86_ffprobe.zip"},
+            {OsxX86, $"{ResourcePath}.osx_x64.osx-x64_ffprobe.zip"},
             {OsxX64, $"{ResourcePath}.osx_x64.osx-x64_ffprobe.zip"},
-            {OsxArm64, $"{ResourcePath}.osx_arm64.osx-arm64_ffprobe.zip"},
-            {OsxArm, $"{ResourcePath}.osx_arm.osx-arm_ffprobe.zip"}
+            {OsxArm64, $"{ResourcePath}.osx_x64.osx-x64_ffprobe.zip"},
+            {OsxArm, $"{ResourcePath}.osx_x64.osx-x64_ffprobe.zip"}
         };
     }
 }
