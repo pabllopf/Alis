@@ -181,6 +181,8 @@ namespace Alis.Core.Extension.FFMeg.Video
         public void Dispose()
     {
         if (OpenedForWriting) CloseWrite();
+        DestinationStream?.Dispose();
+        csc?.Dispose();
     }
     }
 }
