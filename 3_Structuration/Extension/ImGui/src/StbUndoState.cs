@@ -27,12 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Alis.Core.Extension.ImGui
 {
     /// <summary>
     ///     The stb undo state
     /// </summary>
-    public unsafe struct StbUndoState
+    public struct StbUndoState
     {
         /// <summary>
         ///     The undo rec
@@ -532,7 +534,7 @@ namespace Alis.Core.Extension.ImGui
         /// <summary>
         ///     The undo char
         /// </summary>
-        public fixed ushort UndoChar[999];
+        public List<ushort> UndoChar;
 
         /// <summary>
         ///     The undo point
