@@ -85,7 +85,7 @@ namespace Alis.Core.Extension.ImGui
         /// <summary>
         ///     Gets the value of the  channels
         /// </summary>
-        public ImPtrVector<ImDrawChannelPtr> Channels => new ImPtrVector<ImDrawChannelPtr>(NativePtr->Channels, Unsafe.SizeOf<ImDrawChannel>());
+        public ImPtrVector<ImDrawChannel> Channels => new ImPtrVector<ImDrawChannel>(NativePtr->Channels, Unsafe.SizeOf<ImDrawChannel>());
 
         /// <summary>
         ///     Clears this instance
