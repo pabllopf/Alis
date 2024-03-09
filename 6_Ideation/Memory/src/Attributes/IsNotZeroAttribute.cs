@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Memory.Exceptions;
 
 namespace Alis.Core.Aspect.Memory.Attributes
@@ -52,9 +53,9 @@ namespace Alis.Core.Aspect.Memory.Attributes
                     throw new NotZeroException($"The value of {name} can't be zero");
                 case decimal d when d == 0:
                     throw new NotZeroException($"The value of {name} can't be zero");
-                case float f when f == 0:
+                case float f when Math.Abs(f) < float.Epsilon:
                     throw new NotZeroException($"The value of {name} can't be zero");
-                case double db when db == 0:
+                case double db when Math.Abs(db) < double.Epsilon:
                     throw new NotZeroException($"The value of {name} can't be zero");
                 case short s when s == 0:
                     throw new NotZeroException($"The value of {name} can't be zero");
