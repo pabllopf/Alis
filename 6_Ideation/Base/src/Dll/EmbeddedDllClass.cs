@@ -47,7 +47,7 @@ namespace Alis.Core.Aspect.Base.Dll
         ///     Extracts the embedded dlls using the specified dll name
         /// </summary>
         /// <param name="dllName">The dll name</param>
-        /// <param name="exe"></param>
+        /// <param name="dllType"></param>
         /// <param name="dllBytes">The dll bytes</param>
         /// <param name="assembly">The assembly</param>
         [ExcludeFromCodeCoverage]
@@ -83,41 +83,67 @@ namespace Alis.Core.Aspect.Base.Dll
         internal static string GetDllExtension(DllType dllType)
         {
             OSPlatform currentPlatform = GetCurrentPlatform();
-            
+
             if (dllType == DllType.Exe)
             {
-                if (currentPlatform == OSPlatform.Windows)
-                {
-                    return ".exe";
-                }
-
-                if (currentPlatform == OSPlatform.OSX || currentPlatform == OSPlatform.Create("IOS"))
-                {
-                    return "";
-                }
-
-                if (currentPlatform == OSPlatform.Linux || currentPlatform == OSPlatform.Create("Android"))
-                {
-                    return "";
-                }
+                return GetExeExtension(currentPlatform);
             }
 
             if (dllType == DllType.Lib)
             {
-                if (currentPlatform == OSPlatform.Windows)
-                {
-                    return ".dll";
-                }
+                return GetLibExtension(currentPlatform);
+            }
 
-                if (currentPlatform == OSPlatform.OSX || currentPlatform == OSPlatform.Create("IOS"))
-                {
-                    return ".dylib";
-                }
+            throw new PlatformNotSupportedException("Unsupported platform.");
+        }
 
-                if (currentPlatform == OSPlatform.Linux || currentPlatform == OSPlatform.Create("Android"))
-                {
-                    return ".so";
-                }
+        /// <summary>
+        /// Gets the exe extension using the specified current platform
+        /// </summary>
+        /// <param name="currentPlatform">The current platform</param>
+        /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
+        /// <returns>The string</returns>
+        private static string GetExeExtension(OSPlatform currentPlatform)
+        {
+            if (currentPlatform == OSPlatform.Windows)
+            {
+                return ".exe";
+            }
+
+            if (currentPlatform == OSPlatform.OSX || currentPlatform == OSPlatform.Create("IOS"))
+            {
+                return "";
+            }
+
+            if (currentPlatform == OSPlatform.Linux || currentPlatform == OSPlatform.Create("Android"))
+            {
+                return "";
+            }
+
+            throw new PlatformNotSupportedException("Unsupported platform.");
+        }
+
+        /// <summary>
+        /// Gets the lib extension using the specified current platform
+        /// </summary>
+        /// <param name="currentPlatform">The current platform</param>
+        /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
+        /// <returns>The string</returns>
+        private static string GetLibExtension(OSPlatform currentPlatform)
+        {
+            if (currentPlatform == OSPlatform.Windows)
+            {
+                return ".dll";
+            }
+
+            if (currentPlatform == OSPlatform.OSX || currentPlatform == OSPlatform.Create("IOS"))
+            {
+                return ".dylib";
+            }
+
+            if (currentPlatform == OSPlatform.Linux || currentPlatform == OSPlatform.Create("Android"))
+            {
+                return ".so";
             }
 
             throw new PlatformNotSupportedException("Unsupported platform.");
@@ -166,7 +192,7 @@ namespace Alis.Core.Aspect.Base.Dll
         /// <param name="filePath">The file path</param>
         /// <param name="zipData">The zip data</param>
         [ExcludeFromCodeCoverage]
-        internal static void ExtractZipFile(string filePath, MemoryStream zipData)
+        private static void ExtractZipFile(string filePath, MemoryStream zipData)
         {
             using MemoryStream ms = zipData;
             using ZipArchive archive = new ZipArchive(ms);
@@ -177,31 +203,33 @@ namespace Alis.Core.Aspect.Base.Dll
                     continue; // Skip if the file already exists
                 }
 
-                Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+                Directory.CreateDirectory(Path.GetDirectoryName(filePath) ?? throw new InvalidOperationException());
                 using Stream entryStream = entry.Open();
                 using FileStream fs = File.Create(filePath);
                 entryStream.CopyTo(fs);
             }
-            
+
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 SetFileReadPermission(filePath);
             }
-            
-        }
-        
-        public static void SetFileReadPermission(string filePath)
-        {
-            using (Process process = new Process())
-            {
-                process.StartInfo.FileName = "/bin/chmod";
-                process.StartInfo.Arguments = $"+x {filePath}";
-                process.StartInfo.UseShellExecute = false;
-                process.StartInfo.CreateNoWindow = true;
-                process.Start();
 
-                process.WaitForExit();
-            }
+        }
+
+        /// <summary>
+        /// Sets the file read permission using the specified file path
+        /// </summary>
+        /// <param name="filePath">The file path</param>
+        private static void SetFileReadPermission(string filePath)
+        {
+            using Process process = new Process();
+            process.StartInfo.FileName = "/bin/chmod";
+            process.StartInfo.Arguments = $"+x {filePath}";
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.CreateNoWindow = true;
+            process.Start();
+
+            process.WaitForExit();
         }
 
         /// <summary>

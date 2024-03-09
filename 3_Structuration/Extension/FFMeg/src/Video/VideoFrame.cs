@@ -107,6 +107,13 @@ namespace Alis.Core.Extension.FFMeg.Video
             }
         }
 
+        /// <summary>
+        /// Gets the pixels using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="length">The length</param>
+        /// <returns>The pixels</returns>
         public byte[] GetPixels(int x, int y, int length = 1)
         {
             int index = (x + y * Width) * 3;
