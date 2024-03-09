@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Collision
     public static class RayCastHelper
     {
         public static readonly float Epsilon = 0.00001f;
-        
+
         /// <summary>
         ///     Describes whether ray cast edge
         ///     p = p1 + t * d
@@ -110,7 +110,7 @@ namespace Alis.Core.Physic.Collision
             }
 
             float s = Vector2.Dot(q - v1, r) / rr;
-            if (s is < 0.0f or > 1.0f)
+            if (s < 0.0f || s > 1.0f)
             {
                 return false;
             }
@@ -262,17 +262,20 @@ namespace Alis.Core.Physic.Collision
         /// <returns>The bool</returns>
         private static bool ProcessDenominator(ref float lower, ref float upper, ref int index, int i, float numerator, float denominator)
         {
-            switch (denominator)
+            if (denominator == 0.0f && numerator < 0.0f)
             {
-                case 0.0f when numerator < 0.0f:
-                    return false;
-                case < 0.0f when (numerator < lower * denominator):
-                    lower = numerator / denominator;
-                    index = i;
-                    break;
-                case > 0.0f when (numerator < upper * denominator):
-                    upper = numerator / denominator;
-                    break;
+                return false;
+            }
+
+            if (denominator < 0.0f && numerator < lower * denominator)
+            {
+                lower = numerator / denominator;
+                index = i;
+            }
+            
+            if (denominator > 0.0f && numerator < upper * denominator)
+            {
+                upper = numerator / denominator;
             }
 
             return upper >= lower;

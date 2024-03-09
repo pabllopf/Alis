@@ -65,7 +65,7 @@ namespace Alis.Core.Extension.FFMeg.Video
                 if (r <= 0)
                 {
                     if (offset == 0) return false;
-                    else break;
+                    break;
                 }
 
                 offset += r;

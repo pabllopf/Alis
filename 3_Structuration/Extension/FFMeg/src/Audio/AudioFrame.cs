@@ -76,7 +76,7 @@ namespace Alis.Core.Extension.FFMeg.Audio
             if (r <= 0)
             {
                 if (offset == 0) return false;
-                else break;
+                break;
             }
 
             offset += r;
