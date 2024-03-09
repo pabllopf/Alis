@@ -35,7 +35,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The im draw list ptr
     /// </summary>
-    public unsafe partial struct ImDrawListPtr
+    public readonly unsafe partial struct ImDrawListPtr
     {
         /// <summary>
         ///     Adds the text using the specified pos

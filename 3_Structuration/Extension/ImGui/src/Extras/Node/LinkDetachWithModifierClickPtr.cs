@@ -34,7 +34,7 @@ namespace Alis.Core.Extension.ImGui.Extras.Node
     /// <summary>
     ///     The link detach with modifier click ptr
     /// </summary>
-    public unsafe struct LinkDetachWithModifierClickPtr
+    public readonly unsafe struct LinkDetachWithModifierClickPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

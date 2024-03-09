@@ -35,7 +35,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The im gui key data ptr
     /// </summary>
-    public unsafe struct ImGuiKeyDataPtr
+    public readonly unsafe struct ImGuiKeyDataPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

@@ -35,7 +35,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The stb texteditstateptr
     /// </summary>
-    public unsafe struct StbTexteditStatePtr
+    public readonly unsafe struct StbTexteditStatePtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

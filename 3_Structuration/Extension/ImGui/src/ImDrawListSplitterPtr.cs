@@ -35,7 +35,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The im draw list splitter ptr
     /// </summary>
-    public unsafe struct ImDrawListSplitterPtr
+    public readonly unsafe struct ImDrawListSplitterPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

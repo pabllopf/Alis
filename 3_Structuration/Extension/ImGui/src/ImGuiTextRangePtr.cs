@@ -34,7 +34,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The im gui text range ptr
     /// </summary>
-    public unsafe struct ImGuiTextRangePtr
+    public readonly unsafe struct ImGuiTextRangePtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

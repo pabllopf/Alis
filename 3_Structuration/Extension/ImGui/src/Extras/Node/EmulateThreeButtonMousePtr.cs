@@ -34,7 +34,7 @@ namespace Alis.Core.Extension.ImGui.Extras.Node
     /// <summary>
     ///     The emulate three button mouse ptr
     /// </summary>
-    public unsafe struct EmulateThreeButtonMousePtr
+    public readonly unsafe struct EmulateThreeButtonMousePtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

@@ -35,7 +35,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The im gui list clipper ptr
     /// </summary>
-    public unsafe struct ImGuiListClipperPtr
+    public readonly unsafe struct ImGuiListClipperPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

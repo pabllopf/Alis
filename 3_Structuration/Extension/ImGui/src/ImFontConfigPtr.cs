@@ -36,7 +36,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The im font config ptr
     /// </summary>
-    public unsafe struct ImFontConfigPtr
+    public readonly unsafe struct ImFontConfigPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
