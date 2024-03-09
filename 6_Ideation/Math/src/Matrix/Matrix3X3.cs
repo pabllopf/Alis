@@ -37,6 +37,8 @@ namespace Alis.Core.Aspect.Math.Matrix
     /// </summary>
     public struct Matrix3X3
     {
+        private const float Epsilon = 0.00001f;
+
         /// <summary>
         ///     The ez
         /// </summary>
@@ -98,7 +100,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         public Vector3 Solve33(Vector3 b)
         {
             float det = Vector3.Dot(Ex, Vector3.Cross(Ey, Ez));
-            if (det != 0.0f)
+            if (MathF.Abs(det) > Epsilon) // Use epsilon check instead of exact comparison
             {
                 det = 1.0f / det;
             }
@@ -108,17 +110,12 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
 
-        /// <summary>
-        ///     Solves the 22 using the specified b
-        /// </summary>
-        /// <param name="b">The </param>
-        /// <returns>The vector</returns>
         public Vector2 Solve22(Vector2 b)
         {
             float a11 = Ex.X, a12 = Ey.X, a21 = Ex.Y, a22 = Ey.Y;
             float det = a11 * a22 - a12 * a21;
 
-            if (det != 0.0f)
+            if (MathF.Abs(det) > Epsilon) // Use epsilon check instead of exact comparison
             {
                 det = 1.0f / det;
             }
@@ -127,15 +124,12 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
 
-        /// <summary>
-        ///     Gets the inverse 22 using the specified m
-        /// </summary>
-        /// <param name="m">The </param>
         public void GetInverse22(ref Matrix3X3 m)
         {
             float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
             float det = a * d - b * c;
-            if (det != 0.0f)
+            
+            if (MathF.Abs(det) > Epsilon) // Use epsilon check instead of exact comparison
             {
                 det = 1.0f / det;
             }
@@ -159,7 +153,6 @@ namespace Alis.Core.Aspect.Math.Matrix
             );
         }
 
-
         /// <summary>
         ///     Gets the sym inverse 33 using the specified m
         /// </summary>
@@ -168,7 +161,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         public void GetSymInverse33(ref Matrix3X3 m)
         {
             float det = Dot(Ex, Cross(Ey, Ez));
-            if (det != 0.0f)
+            if (MathF.Abs(det) > Epsilon)
             {
                 det = 1.0f / det;
             }
