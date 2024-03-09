@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Collision
 
             float denominator = Vector2.Dot(normal, d);
 
-            if (denominator == 0.0f)
+            if (MathF.Abs(denominator) < Epsilon)
             {
                 return false;
             }
