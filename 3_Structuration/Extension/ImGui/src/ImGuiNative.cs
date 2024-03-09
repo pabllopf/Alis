@@ -3221,7 +3221,7 @@ namespace Alis.Core.Extension.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImColor_destroy(ImColor* self);
+        public static extern void ImColor_destroy(ref ImColor self);
 
         /// <summary>
         ///     Ims the color hsv using the specified p out
@@ -3232,14 +3232,14 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="v">The </param>
         /// <param name="a">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImColor_HSV(ImColor* pOut, float h, float s, float v, float a);
+        public static extern void ImColor_HSV(out ImColor pOut, float h, float s, float v, float a);
 
         /// <summary>
         ///     Ims the color im color nil
         /// </summary>
         /// <returns>The im color</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImColor* ImColor_ImColor_Nil();
+        public static extern ImColor ImColor_ImColor_Nil();
 
         /// <summary>
         ///     Ims the color im color float using the specified r
@@ -3250,7 +3250,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="a">The </param>
         /// <returns>The im color</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImColor* ImColor_ImColor_Float(float r, float g, float b, float a);
+        public static extern ImColor ImColor_ImColor_Float(float r, float g, float b, float a);
 
         /// <summary>
         ///     Ims the color im color vec 4 using the specified col
@@ -3258,7 +3258,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="col">The col</param>
         /// <returns>The im color</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImColor* ImColor_ImColor_Vec4(Vector4 col);
+        public static extern ImColor ImColor_ImColor_Vec4(Vector4 col);
 
         /// <summary>
         ///     Ims the color im color int using the specified r
@@ -3269,7 +3269,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="a">The </param>
         /// <returns>The im color</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImColor* ImColor_ImColor_Int(int r, int g, int b, int a);
+        public static extern ImColor ImColor_ImColor_Int(int r, int g, int b, int a);
 
         /// <summary>
         ///     Ims the color im color u 32 using the specified rgba
@@ -3277,7 +3277,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="rgba">The rgba</param>
         /// <returns>The im color</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImColor* ImColor_ImColor_U32(uint rgba);
+        public static extern ImColor ImColor_ImColor_U32(uint rgba);
 
         /// <summary>
         ///     Ims the color set hsv using the specified self
@@ -3288,7 +3288,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="v">The </param>
         /// <param name="a">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImColor_SetHSV(ImColor* self, float h, float s, float v, float a);
+        public static extern void ImColor_SetHSV(ref ImColor self, float h, float s, float v, float a);
 
         /// <summary>
         ///     Ims the draw cmd destroy using the specified self
