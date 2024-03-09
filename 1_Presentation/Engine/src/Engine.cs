@@ -808,7 +808,7 @@ namespace Alis.App.Engine
 
                 for (int cmdI = 0; cmdI < cmdList.CmdBuffer.Size; cmdI++)
                 {
-                    ImDrawCmdPtr pcmd = cmdList.CmdBuffer[cmdI];
+                    ImDrawCmd pcmd = cmdList.CmdBuffer[cmdI];
                     if (pcmd.UserCallback != IntPtr.Zero)
                     {
                         Console.WriteLine("UserCallback not implemented");

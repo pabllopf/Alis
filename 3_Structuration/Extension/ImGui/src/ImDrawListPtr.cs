@@ -74,10 +74,10 @@ namespace Alis.Core.Extension.ImGui
         public static implicit operator ImDrawListPtr(IntPtr nativePtr) => new ImDrawListPtr(nativePtr);
 
         /// <summary>
-        ///     Gets the value of the cmd buffer
+        /// Gets the value of the cmd buffer
         /// </summary>
-        public ImPtrVector<ImDrawCmdPtr> CmdBuffer => new ImPtrVector<ImDrawCmdPtr>(NativePtr->CmdBuffer, Unsafe.SizeOf<ImDrawCmd>());
-
+        public ImVector<ImDrawCmd> CmdBuffer => new ImVector<ImDrawCmd>(NativePtr->CmdBuffer);
+        
         /// <summary>
         ///     Gets the value of the idx buffer
         /// </summary>

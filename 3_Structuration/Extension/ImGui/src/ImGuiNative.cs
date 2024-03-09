@@ -3295,7 +3295,7 @@ namespace Alis.Core.Extension.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawCmd_destroy(ImDrawCmd* self);
+        public static extern void ImDrawCmd_destroy(ref ImDrawCmd self);
 
         /// <summary>
         ///     Ims the draw cmd get tex id using the specified self
@@ -3303,7 +3303,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="self">The self</param>
         /// <returns>The int ptr</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr ImDrawCmd_GetTexID(ImDrawCmd* self);
+        public static extern IntPtr ImDrawCmd_GetTexID(ref ImDrawCmd self);
 
         /// <summary>
         ///     Ims the draw cmd im draw cmd
