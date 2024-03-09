@@ -49,7 +49,7 @@ namespace Alis.Core.Extension.ImGui
         /// <summary>
         /// Gets the value of the cmd buffer ptr
         /// </summary>
-        public ImPtrVector<ImDrawCmdPtr> CmdBufferPtr => new ImPtrVector<ImDrawCmdPtr>(CmdBuffer, Unsafe.SizeOf<ImDrawCmd>());
+        public ImVector<ImDrawCmd> CmdBufferPtr => new ImVector<ImDrawCmd>(CmdBuffer);
         
         /// <summary>
         /// Gets the value of the idx buffer ptr
