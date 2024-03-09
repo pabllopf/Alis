@@ -179,6 +179,9 @@ namespace Alis.Core.Extension.FFMeg.Audio
         public void Dispose()
     {
         if (OpenedForWriting) CloseWrite();
+        DestinationStream?.Dispose();
+        csc?.Dispose();
+
     }
     }
 }
