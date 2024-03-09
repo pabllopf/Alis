@@ -31,7 +31,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
 
-namespace Alis.App.Engine.UI
+namespace Alis.Core.Extension.ImGui.Properties
 {
     /// <summary>
     ///     The im gui dlls class

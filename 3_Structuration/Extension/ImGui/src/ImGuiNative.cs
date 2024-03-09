@@ -31,7 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.App.Engine.UI
+namespace Alis.Core.Extension.ImGui
 {
     /// <summary>
     ///     The im gui native class

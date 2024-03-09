@@ -31,7 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Alis.App.Engine.UI.Utils
+namespace Alis.Core.Extension.ImGui.Utils
 {
     /// <summary>
     ///     The util class

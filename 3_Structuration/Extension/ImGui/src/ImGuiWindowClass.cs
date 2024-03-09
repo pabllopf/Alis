@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine.UI
+namespace Alis.Core.Extension.ImGui
 {
     /// <summary>
     ///     The im gui window

@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.App.Engine.UI.Utils;
+using Alis.Core.Extension.ImGui.Utils;
 
-namespace Alis.App.Engine.UI
+namespace Alis.Core.Extension.ImGui
 {
     /// <summary>
     ///     The im draw list splitter ptr

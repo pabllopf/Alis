@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.App.Engine.UI.Extras.Plot
+namespace Alis.Core.Extension.ImGui.Extras.Plot
 {
     /// <summary>
     ///     The im plot bars flags enum
