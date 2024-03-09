@@ -42,6 +42,9 @@ namespace Alis.Core.Physic.Collision
     /// </summary>
     public static class RayCastHelper
     {
+        /// <summary>
+        /// The epsilon
+        /// </summary>
         public static readonly float Epsilon = 0.00001f;
 
         /// <summary>
