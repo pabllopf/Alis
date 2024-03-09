@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Math.Vector
     ///     The vector
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct Vector2 : IEquatable<Vector2>, IFormattable
+    public readonly struct Vector2 : IEquatable<Vector2>, IFormattable
     {
         /// <summary>The X component of the vector.</summary>
         public readonly float X;
@@ -52,7 +52,7 @@ namespace Alis.Core.Aspect.Math.Vector
 
         /// <summary>Creates a new <see cref="Vector2" /> object whose two elements have the same value.</summary>
         /// <param name="value">The value to assign to both elements.</param>
-        public Vector2(float value) : this(value, value)
+        private Vector2(float value) : this(value, value)
         {
         }
 
@@ -121,8 +121,8 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     corresponding value in <paramref name="right" />.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool operator ==(Vector2 left, Vector2 right) => (left.X == right.X)
-                                                                       && (left.Y == right.Y);
+        public static bool operator ==(Vector2 left, Vector2 right) => (System.Math.Abs(left.X - right.X) < 0.01f)
+                                                                       && (System.Math.Abs(left.Y - right.Y) < 0.01f);
 
         /// <summary>Returns a value that indicates whether two specified vectors are not equal.</summary>
         /// <param name="left">The first vector to compare.</param>
@@ -263,7 +263,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// ]]></format>
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2 Lerp(Vector2 value1, Vector2 value2, float amount) => value1 * (1.0f - amount) + value2 * amount;
+        public static Vector2 LerP(Vector2 value1, Vector2 value2, float amount) => value1 * (1.0f - amount) + value2 * amount;
 
         /// <summary>Returns a vector whose elements are the maximum of each of the pairs of elements in two specified vectors.</summary>
         /// <param name="value1">The first vector.</param>
@@ -408,21 +408,6 @@ namespace Alis.Core.Aspect.Math.Vector
             normal.X * matrix.M12 + normal.Y * matrix.M22
         );
 
-        /// <summary>Copies the elements of the vector to a specified array.</summary>
-        /// <param name="array">The destination array.</param>
-        /// <remarks>
-        ///     <paramref name="array" /> must have at least two elements. The method copies the vector's elements starting at
-        ///     index 0.
-        /// </remarks>
-        /// <exception cref="System.ArgumentNullException"><paramref name="array" /> is <see langword="null" />.</exception>
-        /// <exception cref="System.ArgumentException">The number of elements in the current instance is greater than in the array.</exception>
-        /// <exception cref="System.RankException"><paramref name="array" /> is multidimensional.</exception>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public readonly void CopyTo(float[] array)
-        {
-            CopyTo(array, 0);
-        }
-
         /// <summary>Copies the elements of the vector to a specified array starting at a specified index position.</summary>
         /// <param name="array">The destination array.</param>
         /// <param name="index">The index at which to copy the first element of the vector.</param>
@@ -439,7 +424,7 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     <paramref name="index" /> is greater than or equal to the array length.
         /// </exception>
         /// <exception cref="System.RankException"><paramref name="array" /> is multidimensional.</exception>
-        public readonly void CopyTo(float[] array, int index)
+        public readonly void CopyTo(float[] array, int index = 0)
         {
             if (array is null)
             {
