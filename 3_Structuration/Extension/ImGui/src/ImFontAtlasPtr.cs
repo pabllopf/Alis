@@ -155,7 +155,7 @@ namespace Alis.Core.Extension.ImGui
         /// <summary>
         ///     Gets the value of the custom rects
         /// </summary>
-        public ImPtrVector<ImFontAtlasCustomRectPtr> CustomRects => new ImPtrVector<ImFontAtlasCustomRectPtr>(NativePtr->CustomRects, Unsafe.SizeOf<ImFontAtlasCustomRect>());
+        public ImPtrVector<ImFontAtlasCustomRect> CustomRects => new ImPtrVector<ImFontAtlasCustomRect>(NativePtr->CustomRects, Unsafe.SizeOf<ImFontAtlasCustomRect>());
 
         /// <summary>
         ///     Gets the value of the config data
@@ -648,14 +648,13 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="rect">The rect</param>
         /// <param name="outUvMin">The out uv min</param>
         /// <param name="outUvMax">The out uv max</param>
-        public void CalcCustomRectUv(ImFontAtlasCustomRectPtr rect, out Vector2 outUvMin, out Vector2 outUvMax)
+        public void CalcCustomRectUv(ImFontAtlasCustomRect rect, out Vector2 outUvMin, out Vector2 outUvMax)
         {
-            ImFontAtlasCustomRect* nativeRect = rect.NativePtr;
             fixed (Vector2* nativeOutUvMin = &outUvMin)
             {
                 fixed (Vector2* nativeOutUvMax = &outUvMax)
                 {
-                    ImGuiNative.ImFontAtlas_CalcCustomRectUV(NativePtr, nativeRect, nativeOutUvMin, nativeOutUvMax);
+                    ImGuiNative.ImFontAtlas_CalcCustomRectUV(NativePtr, rect, nativeOutUvMin, nativeOutUvMax);
                 }
             }
         }
@@ -705,10 +704,9 @@ namespace Alis.Core.Extension.ImGui
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The im font atlas custom rect ptr</returns>
-        public ImFontAtlasCustomRectPtr GetCustomRectByIndex(int index)
+        public ImFontAtlasCustomRect GetCustomRectByIndex(int index)
         {
-            ImFontAtlasCustomRect* ret = ImGuiNative.ImFontAtlas_GetCustomRectByIndex(NativePtr, index);
-            return new ImFontAtlasCustomRectPtr(ret);
+            return ImGuiNative.ImFontAtlas_GetCustomRectByIndex(NativePtr, index);
         }
 
         /// <summary>
