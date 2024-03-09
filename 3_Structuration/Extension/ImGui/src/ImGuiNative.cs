@@ -547,7 +547,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="windowClass">The window class</param>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockSpace")]
-        public static extern uint igDockSpace(uint id, Vector2 size, ImGuiDockNodeFlags flags, ImGuiWindowClass* windowClass);
+        public static extern uint igDockSpace(uint id, Vector2 size, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass);
 
         /// <summary>
         ///     Igs the dock space over viewport using the specified viewport
@@ -557,7 +557,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="windowClass">The window class</param>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockSpaceOverViewport")]
-        public static extern uint igDockSpaceOverViewport(ImGuiViewport* viewport, ImGuiDockNodeFlags flags, ImGuiWindowClass* windowClass);
+        public static extern uint igDockSpaceOverViewport(ImGuiViewport* viewport, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass);
 
         /// <summary>
         ///     Igs the drag float using the specified label
@@ -2439,7 +2439,7 @@ namespace Alis.Core.Extension.ImGui
         /// </summary>
         /// <param name="windowClass">The window class</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetNextWindowClass(ImGuiWindowClass* windowClass);
+        public static extern void igSetNextWindowClass(ImGuiWindowClass windowClass);
 
         /// <summary>
         ///     Igs the set next window collapsed using the specified collapsed
@@ -5413,14 +5413,14 @@ namespace Alis.Core.Extension.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiWindowClass_destroy(ImGuiWindowClass* self);
+        public static extern void ImGuiWindowClass_destroy(ImGuiWindowClass self);
 
         /// <summary>
         ///     Ims the gui window class im gui window
         /// </summary>
         /// <returns>The im gui window class</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiWindowClass* ImGuiWindowClass_ImGuiWindowClass();
+        public static extern ImGuiWindowClass ImGuiWindowClass_ImGuiWindowClass();
 
         /// <summary>
         ///     Ims the vec 2 destroy using the specified self

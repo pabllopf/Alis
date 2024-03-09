@@ -3386,7 +3386,7 @@ namespace Alis.Core.Extension.ImGui
         {
             Vector2 size = new Vector2();
             ImGuiDockNodeFlags flags = 0;
-            ImGuiWindowClass* windowClass = null;
+            ImGuiWindowClass windowClass = new ImGuiWindowClass();
             uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
             return ret;
         }
@@ -3400,7 +3400,7 @@ namespace Alis.Core.Extension.ImGui
         public static uint DockSpace(uint id, Vector2 size)
         {
             ImGuiDockNodeFlags flags = 0;
-            ImGuiWindowClass* windowClass = null;
+            ImGuiWindowClass windowClass = new ImGuiWindowClass();
             uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
             return ret;
         }
@@ -3414,7 +3414,7 @@ namespace Alis.Core.Extension.ImGui
         /// <returns>The ret</returns>
         public static uint DockSpace(uint id, Vector2 size, ImGuiDockNodeFlags flags)
         {
-            ImGuiWindowClass* windowClass = null;
+            ImGuiWindowClass windowClass = new ImGuiWindowClass();
             uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
             return ret;
         }
@@ -3427,10 +3427,9 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="flags">The flags</param>
         /// <param name="windowClass">The window class</param>
         /// <returns>The ret</returns>
-        public static uint DockSpace(uint id, Vector2 size, ImGuiDockNodeFlags flags, ImGuiWindowClassPtr windowClass)
+        public static uint DockSpace(uint id, Vector2 size, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass)
         {
-            ImGuiWindowClass* nativeWindowClass = windowClass.NativePtr;
-            uint ret = ImGuiNative.igDockSpace(id, size, flags, nativeWindowClass);
+            uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
             return ret;
         }
 
@@ -3442,7 +3441,7 @@ namespace Alis.Core.Extension.ImGui
         {
             ImGuiViewport* viewport = null;
             ImGuiDockNodeFlags flags = 0;
-            ImGuiWindowClass* windowClass = null;
+            ImGuiWindowClass windowClass = new ImGuiWindowClass();
             uint ret = ImGuiNative.igDockSpaceOverViewport(viewport, flags, windowClass);
             return ret;
         }
@@ -3456,7 +3455,7 @@ namespace Alis.Core.Extension.ImGui
         {
             ImGuiViewport* nativeViewport = viewport.NativePtr;
             ImGuiDockNodeFlags flags = 0;
-            ImGuiWindowClass* windowClass = null;
+            ImGuiWindowClass windowClass = new ImGuiWindowClass();
             uint ret = ImGuiNative.igDockSpaceOverViewport(nativeViewport, flags, windowClass);
             return ret;
         }
@@ -3470,7 +3469,7 @@ namespace Alis.Core.Extension.ImGui
         public static uint DockSpaceOverViewport(ImGuiViewportPtr viewport, ImGuiDockNodeFlags flags)
         {
             ImGuiViewport* nativeViewport = viewport.NativePtr;
-            ImGuiWindowClass* windowClass = null;
+            ImGuiWindowClass windowClass = new ImGuiWindowClass();
             uint ret = ImGuiNative.igDockSpaceOverViewport(nativeViewport, flags, windowClass);
             return ret;
         }
@@ -3482,11 +3481,10 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="flags">The flags</param>
         /// <param name="windowClass">The window class</param>
         /// <returns>The ret</returns>
-        public static uint DockSpaceOverViewport(ImGuiViewportPtr viewport, ImGuiDockNodeFlags flags, ImGuiWindowClassPtr windowClass)
+        public static uint DockSpaceOverViewport(ImGuiViewportPtr viewport, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass)
         {
             ImGuiViewport* nativeViewport = viewport.NativePtr;
-            ImGuiWindowClass* nativeWindowClass = windowClass.NativePtr;
-            uint ret = ImGuiNative.igDockSpaceOverViewport(nativeViewport, flags, nativeWindowClass);
+            uint ret = ImGuiNative.igDockSpaceOverViewport(nativeViewport, flags, windowClass);
             return ret;
         }
 
@@ -16231,10 +16229,9 @@ namespace Alis.Core.Extension.ImGui
         ///     Sets the next window using the specified window class
         /// </summary>
         /// <param name="windowClass">The window class</param>
-        public static void SetNextWindowClass(ImGuiWindowClassPtr windowClass)
+        public static void SetNextWindowClass(ImGuiWindowClass windowClass)
         {
-            ImGuiWindowClass* nativeWindowClass = windowClass.NativePtr;
-            ImGuiNative.igSetNextWindowClass(nativeWindowClass);
+            ImGuiNative.igSetNextWindowClass(windowClass);
         }
 
         /// <summary>
