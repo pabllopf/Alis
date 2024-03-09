@@ -37,11 +37,11 @@ namespace Alis.Core.Extension.FFMeg
         /// <summary>
         /// The regex
         /// </summary>
-        static readonly Regex CodecRegex = new Regex(@"(?<type>[VAS\.])[F\.][S\.][X\.][B\.][D\.] (?<codec>[a-zA-Z0-9_-]+)\W+(?<description>.*)\n?");
+        static readonly Regex CodecRegex = new Regex(@"(?<type>[VAS\.])[F\.][S\.][X\.][B\.][D\.] (?<codec>[a-zA-Z0-9_-]+)\W+(?<description>.*)\n?", RegexOptions.Compiled, TimeSpan.FromSeconds(10));
         /// <summary>
         /// The regex
         /// </summary>
-        static readonly Regex FormatRegex = new Regex(@"(?<type>[DE]{1,2})\s+?(?<format>[a-zA-Z0-9_\-,]+)\W+(?<description>.*)\n?");
+        static readonly Regex FormatRegex = new Regex(@"(?<type>[DE]{1,2})\s+?(?<format>[a-zA-Z0-9_\-,]+)\W+(?<description>.*)\n?", RegexOptions.Compiled, TimeSpan.FromSeconds(10));
 
         /// <summary>
         /// Run given command (arguments) using the given executable name or path
@@ -279,7 +279,9 @@ namespace Alis.Core.Extension.FFMeg
             Progress<double> prg = new Progress<double>();
             IProgress<double> iprg = (IProgress<double>)prg;
 
-            Regex rgx = new Regex(@"^(frame=\s*?(?<frame>\d+)\s*?)?(fps=\s*?\d+\.?\d*?\s+?)?(q=\s*?[\-0-9\.]+\s*?)?\w+?=\s*?\d+[kMBGTb]+\s*?time=(?<h>\d+):(?<m>\d+):(?<s>[0-9\.]+?)\s", RegexOptions.Compiled);
+            Regex rgx = new Regex(@"^(frame=\s*?(?<frame>\d+)\s*?)?(fps=\s*?\d+\.?\d*?\s+?)?(q=\s*?[\-0-9\.]+\s*?)?\w+?=\s*?\d+[kMBGTb]+\s*?time=(?<h>\d+):(?<m>\d+):(?<s>[0-9\.]+?)\s", 
+                RegexOptions.Compiled,
+                TimeSpan.FromSeconds(10));
 
             ffmpegProcess.ErrorDataReceived += (sender, d) =>
             {
