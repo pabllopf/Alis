@@ -36,7 +36,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The im draw data ptr
     /// </summary>
-    public readonly unsafe partial struct ImDrawDataPtr
+    public readonly unsafe struct ImDrawDataPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
@@ -154,5 +154,10 @@ namespace Alis.Core.Extension.ImGui
         {
             ImGuiNative.ImDrawData_ScaleClipRects(NativePtr, fbScale);
         }
+        
+        /// <summary>
+        ///     Gets the value of the cmd lists range
+        /// </summary>
+        public RangePtrAccessor<ImDrawListPtr> CmdListsRange => new RangePtrAccessor<ImDrawListPtr>(CmdLists.ToPointer(), CmdListsCount);
     }
 }
