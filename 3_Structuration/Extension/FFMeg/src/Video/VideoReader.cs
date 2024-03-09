@@ -20,7 +20,12 @@ namespace Alis.Core.Extension.FFMeg.Video
         /// <summary>
         /// The ffprobe
         /// </summary>
-        string ffmpeg, ffprobe;
+        string ffmpeg;
+
+        /// <summary>
+        /// The ffprobe
+        /// </summary>
+        string ffprobe;
 
         /// <summary>
         /// Current frame position within the loaded video file
@@ -161,7 +166,8 @@ namespace Alis.Core.Extension.FFMeg.Video
         /// <summary>
         /// The compiled
         /// </summary>
-        static Regex bitRateSimpleRgx = new Regex(@"\D(\d+?)[bl]e", RegexOptions.Compiled);
+        static Regex bitRateSimpleRgx = new Regex(@"\D(\d+?)[bl]e", RegexOptions.Compiled, TimeSpan.FromSeconds(10));
+        
         /// <summary>
         /// Tries the parse bit depth using the specified pix fmt
         /// </summary>
