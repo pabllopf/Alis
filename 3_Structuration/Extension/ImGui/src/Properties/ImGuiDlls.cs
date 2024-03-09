@@ -39,24 +39,89 @@ namespace Alis.Core.Extension.ImGui.Properties
     public static class ImGuiDlls
     {
         /// <summary>
+        /// The resource path
+        /// </summary>
+        private static readonly string ResourcePath = "Alis.Core.Extension.ImGui.resources"; 
+        
+        /// <summary>
+        /// The 86
+        /// </summary>
+        private static readonly PlatformInfo WinX86 = new PlatformInfo(OSPlatform.Windows, Architecture.X86);
+        
+        /// <summary>
+        /// The 64
+        /// </summary>
+        private static readonly PlatformInfo WinX64 = new PlatformInfo(OSPlatform.Windows, Architecture.X64);
+        
+        /// <summary>
+        /// The arm
+        /// </summary>
+        private static readonly PlatformInfo WinArm = new PlatformInfo(OSPlatform.Windows, Architecture.Arm);
+        
+        /// <summary>
+        /// The arm 64
+        /// </summary>
+        private static readonly PlatformInfo WinArm64 = new PlatformInfo(OSPlatform.Windows, Architecture.Arm64);
+        
+        /// <summary>
+        /// The 86
+        /// </summary>
+        private static readonly PlatformInfo LinuxX86 = new PlatformInfo(OSPlatform.Linux, Architecture.X86);
+        
+        /// <summary>
+        /// The 64
+        /// </summary>
+        private static readonly PlatformInfo LinuxX64 = new PlatformInfo(OSPlatform.Linux, Architecture.X64);
+        
+        /// <summary>
+        /// The arm
+        /// </summary>
+        private static readonly PlatformInfo LinuxArm = new PlatformInfo(OSPlatform.Linux, Architecture.Arm);
+        
+        /// <summary>
+        /// The arm 64
+        /// </summary>
+        private static readonly PlatformInfo LinuxArm64 = new PlatformInfo(OSPlatform.Linux, Architecture.Arm64);
+        
+        /// <summary>
+        /// The 86
+        /// </summary>
+        private static readonly PlatformInfo OsxX86 = new PlatformInfo(OSPlatform.OSX, Architecture.X86);
+        
+        /// <summary>
+        /// The 64
+        /// </summary>
+        private static readonly PlatformInfo OsxX64 = new PlatformInfo(OSPlatform.OSX, Architecture.X64);
+        
+        /// <summary>
+        /// The arm
+        /// </summary>
+        private static readonly PlatformInfo OsxArm = new PlatformInfo(OSPlatform.OSX, Architecture.Arm);
+        
+        /// <summary>
+        /// The arm 64
+        /// </summary>
+        private static readonly PlatformInfo OsxArm64 = new PlatformInfo(OSPlatform.OSX, Architecture.Arm64);
+        
+        /// <summary>
         ///     The arm
         /// </summary>
-        internal static readonly Dictionary<PlatformInfo, string> PixelCImGuiDllBytes = new Dictionary<PlatformInfo, string>
+        internal static readonly Dictionary<PlatformInfo, string> ImGuiDllBytes = new Dictionary<PlatformInfo, string>
         {
-            {new PlatformInfo(OSPlatform.Windows, Architecture.X86), "Alis.App.Engine.resources.win_x86.win-x86_cimgui.zip"},
-            {new PlatformInfo(OSPlatform.Windows, Architecture.X64), "Alis.App.Engine.resources.win_x64.win-x64_cimgui.zip"},
-            {new PlatformInfo(OSPlatform.Windows, Architecture.Arm), "Alis.App.Engine.resources.win_arm.win-arm_cimgui.zip"},
-            {new PlatformInfo(OSPlatform.Windows, Architecture.Arm64), "Alis.App.Engine.resources.win_arm64.win-arm64_cimgui.zip"},
+            {WinX86, $"{ResourcePath}.win_x86.win-x86_cimgui.zip"},
+            {WinX64, $"{ResourcePath}.win_x64.win-x64_cimgui.zip"},
+            {WinArm, $"{ResourcePath}.win_arm.win-arm_cimgui.zip"},
+            {WinArm64, $"{ResourcePath}.win_arm64.win-arm64_cimgui.zip"},
 
-            {new PlatformInfo(OSPlatform.Linux, Architecture.X86), "Alis.App.Engine.resources.linux_x86.linux-x86_cimgui.zip"},
-            {new PlatformInfo(OSPlatform.Linux, Architecture.X64), "Alis.App.Engine.resources.linux_x64.linux-x64_cimgui.zip"},
-            {new PlatformInfo(OSPlatform.Linux, Architecture.Arm), "Alis.App.Engine.resources.linux_arm.linux-arm_cimgui.zip"},
-            {new PlatformInfo(OSPlatform.Linux, Architecture.Arm64), "Alis.App.Engine.resources.linux_arm64.linux-arm64_cimgui.zip"},
+            {LinuxX86, $"{ResourcePath}.linux_x86.linux-x86_cimgui.zip"},
+            {LinuxX64, $"{ResourcePath}.linux_x64.linux-x64_cimgui.zip"},
+            {LinuxArm, $"{ResourcePath}.linux_arm.linux-arm_cimgui.zip"},
+            {LinuxArm64, $"{ResourcePath}.linux_arm64.linux-arm64_cimgui.zip"},
 
-            {new PlatformInfo(OSPlatform.OSX, Architecture.X86), "Alis.App.Engine.resources.osx_arm64.osx-arm64_cimgui.zip"},
-            {new PlatformInfo(OSPlatform.OSX, Architecture.X64), "Alis.App.Engine.resources.osx_arm64.osx-arm64_cimgui.zip"},
-            {new PlatformInfo(OSPlatform.OSX, Architecture.Arm64), "Alis.App.Engine.resources.osx_arm64.osx-arm64_cimgui.zip"},
-            {new PlatformInfo(OSPlatform.OSX, Architecture.Arm), "Alis.App.Engine.resources.osx_arm64.osx-arm64_cimgui.zip"}
+            {OsxX86, $"{ResourcePath}.osx_x86.osx-x86_cimgui.zip"},
+            {OsxX64, $"{ResourcePath}.osx_x64.osx-x64_cimgui.zip"},
+            {OsxArm64, $"{ResourcePath}.osx_arm64.osx-arm64_cimgui.zip"},
+            {OsxArm, $"{ResourcePath}.osx_arm.osx-arm_cimgui.zip"}
         };
     }
 }

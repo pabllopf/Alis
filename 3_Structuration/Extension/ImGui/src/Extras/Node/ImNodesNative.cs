@@ -124,7 +124,7 @@ namespace Alis.Core.Extension.ImGui.Extras.Node
         ///     Ims the nodes create context
         /// </summary>
         /// <returns>The im nodes context</returns>
-        [DllImport("cimgui", EntryPoint = "imNodes_CreateContext", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern ImNodesContext* ImNodes_CreateContext();
 
         /// <summary>
