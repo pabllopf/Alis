@@ -33,22 +33,22 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Extension.ImGui
 {
     /// <summary>
-    ///     The im draw cmd header
+    /// The im draw cmd header
     /// </summary>
     public struct ImDrawCmdHeader
     {
         /// <summary>
-        ///     The clip rect
+        /// The clip rect
         /// </summary>
         public Vector4 ClipRect;
-
+        
         /// <summary>
-        ///     The texture id
+        /// The texture id
         /// </summary>
         public IntPtr TextureId;
-
+        
         /// <summary>
-        ///     The vtx offset
+        /// The vtx offset
         /// </summary>
         public uint VtxOffset;
     }
