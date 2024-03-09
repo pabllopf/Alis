@@ -294,7 +294,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             float t = 0.75f;
 
             // Act
-            Vector2 result = Vector2.Lerp(start, end, t);
+            Vector2 result = Vector2.LerP(start, end, t);
 
             // Assert
             Assert.Equal(new Vector2(4.0f, 5.0f), result); // Lerp(1, 5, 0.75) = 4, Lerp(2, 6, 0.75) = 5
