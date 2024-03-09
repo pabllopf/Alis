@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Extension.ImGui.Utils;
-
 namespace Alis.Core.Extension.ImGui
 {
     /// <summary>
