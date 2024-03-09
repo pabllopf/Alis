@@ -34,7 +34,7 @@ namespace Alis.Core.Extension.ImGui.Extras.Node
     /// <summary>
     ///     The multiple select modifier ptr
     /// </summary>
-    public unsafe struct MultipleSelectModifierPtr
+    public readonly unsafe struct MultipleSelectModifierPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

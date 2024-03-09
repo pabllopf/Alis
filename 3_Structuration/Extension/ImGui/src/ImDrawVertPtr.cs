@@ -36,7 +36,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The im draw vert ptr
     /// </summary>
-    public unsafe struct ImDrawVertPtr
+    public readonly unsafe struct ImDrawVertPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

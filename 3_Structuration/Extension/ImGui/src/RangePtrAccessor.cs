@@ -35,7 +35,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The range ptr accessor
     /// </summary>
-    public unsafe struct RangePtrAccessor<T> where T : unmanaged
+    public readonly unsafe struct RangePtrAccessor<T> where T : unmanaged
     {
         /// <summary>
         ///     The data

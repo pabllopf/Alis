@@ -35,7 +35,7 @@ namespace Alis.Core.Extension.ImGui.Extras.Plot
     /// <summary>
     ///     The im plot input map ptr
     /// </summary>
-    public unsafe struct ImPlotInputMapPtr
+    public readonly unsafe struct ImPlotInputMapPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

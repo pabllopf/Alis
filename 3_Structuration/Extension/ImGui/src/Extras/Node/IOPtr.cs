@@ -35,7 +35,7 @@ namespace Alis.Core.Extension.ImGui.Extras.Node
     /// <summary>
     ///     The io ptr
     /// </summary>
-    public unsafe struct IoPtr
+    public readonly unsafe struct IoPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

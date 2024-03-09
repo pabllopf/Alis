@@ -35,7 +35,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The im vector
     /// </summary>
-    public unsafe struct ImVector
+    public readonly unsafe struct ImVector
     {
         /// <summary>
         ///     The size
@@ -85,7 +85,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The im vector
     /// </summary>
-    public unsafe struct ImVector<T> where T : unmanaged
+    public readonly unsafe struct ImVector<T> where T : unmanaged
     {
         /// <summary>
         ///     The size

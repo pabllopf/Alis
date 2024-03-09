@@ -36,7 +36,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The im gui size callback data ptr
     /// </summary>
-    public unsafe struct ImGuiSizeCallbackDataPtr
+    public readonly unsafe struct ImGuiSizeCallbackDataPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

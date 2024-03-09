@@ -36,7 +36,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The im font atlas custom rect ptr
     /// </summary>
-    public unsafe struct ImFontAtlasCustomRectPtr
+    public readonly unsafe struct ImFontAtlasCustomRectPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

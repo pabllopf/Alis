@@ -34,7 +34,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The null terminated string
     /// </summary>
-    public unsafe struct NullTerminatedString
+    public readonly unsafe struct NullTerminatedString
     {
         /// <summary>
         ///     The data

@@ -36,7 +36,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The im gui input text callback data ptr
     /// </summary>
-    public unsafe struct ImGuiInputTextCallbackDataPtr
+    public readonly unsafe struct ImGuiInputTextCallbackDataPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

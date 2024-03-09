@@ -35,7 +35,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The im gui once upon frame ptr
     /// </summary>
-    public unsafe struct ImGuiOnceUponAFramePtr
+    public readonly unsafe struct ImGuiOnceUponAFramePtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
