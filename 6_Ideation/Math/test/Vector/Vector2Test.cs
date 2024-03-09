@@ -879,7 +879,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             // Arrange
             Vector2 vector1 = new Vector2(2.0f, 3.0f);
-            Vector2 vector2 = new Vector2(2.000001f, 3.000001f);
+            Vector2 vector2 = new Vector2(2.1f + float.Epsilon, 3.1f + float.Epsilon);
 
             // Act
             bool result = vector1 != vector2;
