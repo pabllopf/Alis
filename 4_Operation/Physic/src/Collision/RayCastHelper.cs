@@ -42,6 +42,8 @@ namespace Alis.Core.Physic.Collision
     /// </summary>
     public static class RayCastHelper
     {
+        public static readonly float Epsilon = 0.00001f;
+        
         /// <summary>
         ///     Describes whether ray cast edge
         ///     p = p1 + t * d
@@ -102,13 +104,13 @@ namespace Alis.Core.Physic.Collision
             // s = dot(q - v1, r) / dot(r, r)
             Vector2 r = v2 - v1;
             float rr = Vector2.Dot(r, r);
-            if (rr == 0.0f)
+            if (MathF.Abs(rr) < Epsilon)
             {
                 return false;
             }
 
             float s = Vector2.Dot(q - v1, r) / rr;
-            if (s < 0.0f || 1.0f < s)
+            if (s is < 0.0f or > 1.0f)
             {
                 return false;
             }
