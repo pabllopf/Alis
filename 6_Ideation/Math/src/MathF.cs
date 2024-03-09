@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Math
                 return float.NaN;
             }
 
-            if (x == 0f)
+            if (Abs(x) < float.Epsilon && Abs(x) > -float.Epsilon)
             {
                 return 0f;
             }
