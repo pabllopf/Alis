@@ -37,9 +37,12 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Extension.FFMeg.Audio;
 using Alis.Core.Extension.FFMeg.BaseClasses;
 using Alis.Core.Extension.FFMeg.Video;
+using Alis.Core.Graphic.Sdl2;
+using Alis.Core.Graphic.Sdl2.Enums;
+using Alis.Core.Graphic.Sdl2.Structs;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
-namespace Alis.Core.Extension.FFMeg.Sample
+namespace Alis.Core.Sample
 {
     /// <summary>
     ///     The sdl controller class
