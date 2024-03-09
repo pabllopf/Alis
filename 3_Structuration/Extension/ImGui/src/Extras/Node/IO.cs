@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine.UI.Extras.Node
+namespace Alis.Core.Extension.ImGui.Extras.Node
 {
     /// <summary>
     ///     The io

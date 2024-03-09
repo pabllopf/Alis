@@ -32,8 +32,9 @@ using System.Reflection;
 using System.Text;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Extension.ImGui.Properties;
 
-namespace Alis.App.Engine.UI
+namespace Alis.Core.Extension.ImGui
 {
     /// <summary>
     ///     The im gui class

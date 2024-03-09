@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine.UI.Extras.Guizmo
+namespace Alis.Core.Extension.ImGui.Extras.Guizmo
 {
     /// <summary>
     ///     The operation enum

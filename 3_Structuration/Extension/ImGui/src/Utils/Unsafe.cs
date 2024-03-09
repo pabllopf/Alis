@@ -30,9 +30,9 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.App.Engine.UI.Attributes;
+using Alis.Core.Extension.ImGui.Attributes;
 
-namespace Alis.App.Engine.UI.Utils
+namespace Alis.Core.Extension.ImGui.Utils
 {
     /// <summary>Contains generic, low-level functionality for manipulating pointers.</summary>
     public class Unsafe

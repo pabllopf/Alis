@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.App.Engine.UI.Extras.Node
+namespace Alis.Core.Extension.ImGui.Extras.Node
 {
     /// <summary>
     ///     The emulate three button mouse ptr
