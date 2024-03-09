@@ -30,7 +30,7 @@
 namespace Alis.Core.Extension.ImGui
 {
     /// <summary>
-    ///     The stb texteditstate
+    ///     The stb text
     /// </summary>
     public struct StbTexteditState
     {
@@ -100,8 +100,8 @@ namespace Alis.Core.Extension.ImGui
         public float PreferredX;
 
         /// <summary>
-        ///     The undostate
+        ///     The undo
         /// </summary>
-        public StbUndoState Undostate;
+        public StbUndoState UndoState;
     }
 }
