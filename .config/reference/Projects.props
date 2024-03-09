@@ -396,10 +396,15 @@
         <ProjectReference
             Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == True"
             Include="$(ProjectDir)/../src/$(NameTest).csproj"/>
+
         <ProjectReference
             Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
 
+        <ProjectReference 
+            Condition="$(AssemblyName.Equals('Alis.Core.Sample')) OR $(AssemblyName.Contains('Alis.Sample'))"
+            Include="$(SolutionDir)**/src/**/*Extension*.csproj"/>
+        
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
 
