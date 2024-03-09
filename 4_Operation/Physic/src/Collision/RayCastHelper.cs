@@ -34,6 +34,7 @@ using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Shared;
+using MathF = Alis.Core.Aspect.Math.MathF;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -42,11 +43,6 @@ namespace Alis.Core.Physic.Collision
     /// </summary>
     public static class RayCastHelper
     {
-        /// <summary>
-        /// The epsilon
-        /// </summary>
-        public static readonly float Epsilon = 0.00001f;
-
         /// <summary>
         ///     Describes whether ray cast edge
         ///     p = p1 + t * d
@@ -90,7 +86,7 @@ namespace Alis.Core.Physic.Collision
 
             float denominator = Vector2.Dot(normal, d);
 
-            if (MathF.Abs(denominator) < Epsilon)
+            if (MathF.Abs(denominator) < float.Epsilon)
             {
                 return false;
             }
@@ -107,7 +103,7 @@ namespace Alis.Core.Physic.Collision
             // s = dot(q - v1, r) / dot(r, r)
             Vector2 r = v2 - v1;
             float rr = Vector2.Dot(r, r);
-            if (MathF.Abs(rr) < Epsilon)
+            if (MathF.Abs(rr) < float.Epsilon)
             {
                 return false;
             }
