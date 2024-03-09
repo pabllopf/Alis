@@ -4332,7 +4332,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="outUvMin">The out uv min</param>
         /// <param name="outUvMax">The out uv max</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFontAtlas_CalcCustomRectUV(ImFontAtlas* self, ImFontAtlasCustomRect* rect, Vector2* outUvMin, Vector2* outUvMax);
+        public static extern void ImFontAtlas_CalcCustomRectUV(ImFontAtlas* self, ImFontAtlasCustomRect rect, Vector2* outUvMin, Vector2* outUvMax);
 
         /// <summary>
         ///     Ims the font atlas clear using the specified self
@@ -4376,7 +4376,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="index">The index</param>
         /// <returns>The im font atlas custom rect</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImFontAtlasCustomRect* ImFontAtlas_GetCustomRectByIndex(ImFontAtlas* self, int index);
+        public static extern ImFontAtlasCustomRect ImFontAtlas_GetCustomRectByIndex(ImFontAtlas* self, int index);
 
         /// <summary>
         ///     Ims the font atlas get glyph ranges chinese full using the specified self
@@ -4535,14 +4535,14 @@ namespace Alis.Core.Extension.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFontAtlasCustomRect_destroy(ImFontAtlasCustomRect* self);
+        public static extern void ImFontAtlasCustomRect_destroy(ref ImFontAtlasCustomRect self);
 
         /// <summary>
         ///     Ims the font atlas custom rect im font atlas custom rect
         /// </summary>
         /// <returns>The im font atlas custom rect</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImFontAtlasCustomRect* ImFontAtlasCustomRect_ImFontAtlasCustomRect();
+        public static extern ImFontAtlasCustomRect ImFontAtlasCustomRect_ImFontAtlasCustomRect();
 
         /// <summary>
         ///     Ims the font atlas custom rect is packed using the specified self
@@ -4550,7 +4550,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImFontAtlasCustomRect_IsPacked(ImFontAtlasCustomRect* self);
+        public static extern byte ImFontAtlasCustomRect_IsPacked(ref ImFontAtlasCustomRect self);
 
         /// <summary>
         ///     Ims the font config destroy using the specified self
