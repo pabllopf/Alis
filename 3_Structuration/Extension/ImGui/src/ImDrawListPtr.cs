@@ -38,7 +38,7 @@ namespace Alis.Core.Extension.ImGui
     /// <summary>
     ///     The im draw list ptr
     /// </summary>
-    public readonly unsafe partial struct ImDrawListPtr
+    public readonly unsafe struct ImDrawListPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
@@ -76,10 +76,10 @@ namespace Alis.Core.Extension.ImGui
         public static implicit operator ImDrawListPtr(IntPtr nativePtr) => new ImDrawListPtr(nativePtr);
 
         /// <summary>
-        /// Gets the value of the cmd buffer
+        ///     Gets the value of the cmd buffer
         /// </summary>
         public ImVector<ImDrawCmd> CmdBuffer => new ImVector<ImDrawCmd>(NativePtr->CmdBuffer);
-        
+
         /// <summary>
         ///     Gets the value of the idx buffer
         /// </summary>
@@ -89,7 +89,7 @@ namespace Alis.Core.Extension.ImGui
         ///     Gets the value of the vtx buffer
         /// </summary>
         public ImVector<ImDrawVert> VtxBuffer => new ImVector<ImDrawVert>(NativePtr->VtxBuffer);
-        
+
         /// <summary>
         ///     Gets the value of the flags
         /// </summary>
@@ -110,7 +110,7 @@ namespace Alis.Core.Extension.ImGui
         /// </summary>
         public NullTerminatedString OwnerName => new NullTerminatedString(NativePtr->OwnerName);
 
-        public ImDrawVert VtxWritePtr => Marshal.PtrToStructure<ImDrawVert>((IntPtr)NativePtr->VtxWritePtr);
+        public ImDrawVert VtxWritePtr => Marshal.PtrToStructure<ImDrawVert>((IntPtr) NativePtr->VtxWritePtr);
 
         /// <summary>
         ///     Gets or sets the value of the  idxwriteptr
@@ -1261,8 +1261,8 @@ namespace Alis.Core.Extension.ImGui
         {
             ImGuiNative.ImDrawList_PushTextureID(NativePtr, textureId);
         }
-        
-         /// <summary>
+
+        /// <summary>
         ///     Adds the text using the specified pos
         /// </summary>
         /// <param name="pos">The pos</param>

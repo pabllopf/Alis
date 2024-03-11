@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:VideoFrame.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.IO;
 using Alis.Core.Extension.FFMeg.BaseClasses;
@@ -5,37 +34,27 @@ using Alis.Core.Extension.FFMeg.BaseClasses;
 namespace Alis.Core.Extension.FFMeg.Video
 {
     /// <summary>
-    /// Video frame containing pixel data in RGB24 format.
+    ///     Video frame containing pixel data in RGB24 format.
     /// </summary>
     public class VideoFrame : IDisposable, IMediaFrame
     {
         /// <summary>
-        /// The offset
+        ///     The frame buffer
         /// </summary>
-        int size, offset = 0;
+        private byte[] frameBuffer;
 
         /// <summary>
-        /// The frame buffer
+        ///     The offset
         /// </summary>
-        byte[] frameBuffer;
+        private readonly int size;
 
         /// <summary>
-        /// Raw video data in RGB24 pixel format
+        ///     The offset
         /// </summary>
-        public byte[] RawData { get; private set; }
+        private int offset;
 
         /// <summary>
-        /// Video width in pixels
-        /// </summary>
-        public int Width { get; }
-
-        /// <summary>
-        /// Video height in pixels
-        /// </summary>
-        public int Height { get; }
-
-        /// <summary>
-        /// Creates an empty video frame with given dimensions using the RGB24 pixel format.
+        ///     Creates an empty video frame with given dimensions using the RGB24 pixel format.
         /// </summary>
         /// <param name="w">Width in pixels</param>
         /// <param name="h">Height in pixels</param>
@@ -52,7 +71,30 @@ namespace Alis.Core.Extension.FFMeg.Video
         }
 
         /// <summary>
-        /// Loads frame data from stream.
+        ///     Video width in pixels
+        /// </summary>
+        public int Width { get; }
+
+        /// <summary>
+        ///     Video height in pixels
+        /// </summary>
+        public int Height { get; }
+
+        /// <summary>
+        ///     Clears the frame buffer
+        /// </summary>
+        public void Dispose()
+        {
+            frameBuffer = null;
+        }
+
+        /// <summary>
+        ///     Raw video data in RGB24 pixel format
+        /// </summary>
+        public byte[] RawData { get; private set; }
+
+        /// <summary>
+        ///     Loads frame data from stream.
         /// </summary>
         /// <param name="str">Stream containing raw frame data in RGB24 format</param>
         public bool Load(Stream str)
@@ -83,7 +125,7 @@ namespace Alis.Core.Extension.FFMeg.Video
         }
 
         /// <summary>
-        /// Saves the output
+        ///     Saves the output
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="encoder">The encoder</param>
@@ -97,7 +139,7 @@ namespace Alis.Core.Extension.FFMeg.Video
             using (Stream inp = FfMpegWrapper.OpenInput(ffmpegExecutable,
                        $"-f rawvideo -video_size {Width}:{Height} -pixel_format rgb24 -i - " +
                        $"-c:v {encoder} {extraParameters} -f image2pipe \"{output}\"",
-                       out _, false))
+                       out _))
             {
                 // save it
                 Console.WriteLine("Saving frame...");
@@ -108,7 +150,7 @@ namespace Alis.Core.Extension.FFMeg.Video
         }
 
         /// <summary>
-        /// Gets the pixels using the specified x
+        ///     Gets the pixels using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
@@ -120,14 +162,6 @@ namespace Alis.Core.Extension.FFMeg.Video
             byte[] pixels = new byte[length * 3];
             Array.Copy(RawData, index, pixels, 0, length * 3);
             return pixels;
-        }
-
-        /// <summary>
-        /// Clears the frame buffer
-        /// </summary>
-        public void Dispose()
-        {
-            frameBuffer = null;
         }
     }
 }

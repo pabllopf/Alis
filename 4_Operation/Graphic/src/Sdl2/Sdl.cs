@@ -3096,7 +3096,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int UpdateTextureV2([IsNotNull] IntPtr texture, [IsNotNull] IntPtr rect, [IsNotNull] byte[] pixels, [IsNotNull] int pitch) => NativeSdl.InternalUpdateTexturev2(texture, rect, pixels, pitch);
 
-        
+
         /// <summary>
         ///     Updates the nv texture using the specified texture
         /// </summary>
@@ -5913,7 +5913,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static uint SdlDefinePixelFourcc([IsNotNull] byte a, [IsNotNull] byte b, [IsNotNull] byte c, [IsNotNull] byte d) => Fourcc(a, b, c, d);
 
         /// <summary>
-        /// Queues the audio using the specified device id
+        ///     Queues the audio using the specified device id
         /// </summary>
         /// <param name="deviceId">The device id</param>
         /// <param name="audioData">The audio data</param>

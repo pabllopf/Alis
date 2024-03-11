@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Base.Dll
         }
 
         /// <summary>
-        /// Gets the exe extension using the specified current platform
+        ///     Gets the exe extension using the specified current platform
         /// </summary>
         /// <param name="currentPlatform">The current platform</param>
         /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
@@ -124,7 +124,7 @@ namespace Alis.Core.Aspect.Base.Dll
         }
 
         /// <summary>
-        /// Gets the lib extension using the specified current platform
+        ///     Gets the lib extension using the specified current platform
         /// </summary>
         /// <param name="currentPlatform">The current platform</param>
         /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
@@ -213,11 +213,10 @@ namespace Alis.Core.Aspect.Base.Dll
             {
                 SetFileReadPermission(filePath);
             }
-
         }
 
         /// <summary>
-        /// Sets the file read permission using the specified file path
+        ///     Sets the file read permission using the specified file path
         /// </summary>
         /// <param name="filePath">The file path</param>
         private static void SetFileReadPermission(string filePath)

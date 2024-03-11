@@ -192,7 +192,7 @@
                           $(SolutionDir)4_Operation/**/*test/**/*.cs; 
                           $(SolutionDir)4_Operation/**/*.Designer.cs"
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
-        
+
         <EmbeddedResource Condition="$(ProjectDir.Contains('3_Structuration')) AND $(ProjectDir.Contains('Core')) AND '$(RuntimeIdentifier)' == ''"
                           Include="$(SolutionDir)4_Operation/**/resources/**/*.zip;"
                           Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
@@ -417,11 +417,11 @@
         <ProjectReference
             Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
-        
+
         <ProjectReference
             Condition="$(AssemblyName.Equals('Alis.Core.Sample')) OR $(AssemblyName.Contains('Alis.Sample'))"
             Include="$(SolutionDir)**/src/**/*Extension*.csproj"/>
-        
+
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
 

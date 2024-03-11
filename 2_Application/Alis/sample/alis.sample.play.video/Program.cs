@@ -76,15 +76,14 @@ namespace Alis.Sample.Play.Video
                     .Build())
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
-                        
+
                         // Play video
                         .Add<GameObject>(gameObject => gameObject
                             .Name("video")
-                        .Build()) // End game object
-                        
-                    .Build()) // End scene
-                .Build()) // End world
-            .Run();
+                            .Build()) // End game object
+                        .Build()) // End scene
+                    .Build()) // End world
+                .Run();
         }
     }
 }

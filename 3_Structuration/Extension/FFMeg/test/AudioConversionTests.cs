@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:AudioConversionTests.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -10,12 +39,12 @@ using Xunit;
 namespace Alis.Core.Extension.FFMeg.Test
 {
     /// <summary>
-    /// The audio conversion tests class
+    ///     The audio conversion tests class
     /// </summary>
     public class AudioConversionTests
     {
         /// <summary>
-        /// Tests that f fmpeg wrapper progress test
+        ///     Tests that f fmpeg wrapper progress test
         /// </summary>
         [Fact]
         public async Task FFmpegWrapperProgressTest()
@@ -57,9 +86,9 @@ namespace Alis.Core.Extension.FFMeg.Test
                 if (File.Exists(opath)) File.Delete(opath);
             }
         }
-        
+
         /// <summary>
-        /// Tests that conversion test
+        ///     Tests that conversion test
         /// </summary>
         [Fact]
         public async Task ConversionTest()
@@ -72,10 +101,10 @@ namespace Alis.Core.Extension.FFMeg.Test
                 using AudioReader reader = new AudioReader(path);
                 await reader.LoadMetadataAsync();
 
-                using (AudioWriter writer = new AudioWriter(opath, 
-                    reader.Metadata.Channels, 
-                    reader.Metadata.SampleRate, 16,
-                    new MP3Encoder().Create()))
+                using (AudioWriter writer = new AudioWriter(opath,
+                           reader.Metadata.Channels,
+                           reader.Metadata.SampleRate, 16,
+                           new MP3Encoder().Create()))
                 {
                     writer.OpenWrite();
 
@@ -90,7 +119,7 @@ namespace Alis.Core.Extension.FFMeg.Test
                 Assert.True(audio.Metadata.Format.FormatName == "mp3");
                 Assert.True(audio.Metadata.Channels == 2);
                 Assert.True(audio.Metadata.Streams.Length == 1);
-                Assert.True(Math.Abs(audio.Metadata.Duration - 1.515102) < 0.2);              
+                Assert.True(Math.Abs(audio.Metadata.Duration - 1.515102) < 0.2);
             }
             finally
             {
@@ -99,7 +128,7 @@ namespace Alis.Core.Extension.FFMeg.Test
         }
 
         /// <summary>
-        /// Tests that conversion stream test
+        ///     Tests that conversion stream test
         /// </summary>
         [Fact]
         public void ConversionStreamTest()
@@ -120,16 +149,16 @@ namespace Alis.Core.Extension.FFMeg.Test
                 using (FileStream filestream = File.Create(opath))
                 {
                     using (AudioWriter writer = new AudioWriter(filestream,
-                       reader.Metadata.Channels,
-                       reader.Metadata.SampleRate, 16,
-                       encoder.Create()))
+                               reader.Metadata.Channels,
+                               reader.Metadata.SampleRate, 16,
+                               encoder.Create()))
                     {
                         writer.OpenWrite();
 
                         reader.Load();
 
                         reader.CopyTo(writer);
-                    }                 
+                    }
                 }
 
                 using AudioReader audio = new AudioReader(opath);

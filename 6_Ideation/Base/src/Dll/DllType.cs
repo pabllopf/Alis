@@ -30,20 +30,22 @@
 namespace Alis.Core.Aspect.Base.Dll
 {
     /// <summary>
-    /// The dll type enum
+    ///     The dll type enum
     /// </summary>
     public enum DllType
     {
         /// <summary>
-        /// The exe dll type
+        ///     The exe dll type
         /// </summary>
-        Exe, 
+        Exe,
+
         /// <summary>
-        /// The lib dll type
+        ///     The lib dll type
         /// </summary>
         Lib,
+
         /// <summary>
-        /// The file dll type
+        ///     The file dll type
         /// </summary>
         File
     }

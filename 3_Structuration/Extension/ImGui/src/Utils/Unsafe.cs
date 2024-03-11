@@ -40,7 +40,7 @@ namespace Alis.Core.Extension.ImGui.Utils
         /// <param name="source">The location to read from.</param>
         /// <typeparam name="T">The type to read.</typeparam>
         /// <returns>An object of type <typeparamref name="T" /> read from the given location.</returns>
-        [ MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static unsafe T Read<T>(void* source) where T : unmanaged => *(T*) source;
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Alis.Core.Extension.ImGui.Utils
         /// <param name="destination">The destination address to copy to.</param>
         /// <param name="source">The source address to copy from.</param>
         /// <param name="byteCount">The number of bytes to copy.</param>
-        [ MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static unsafe void CopyBlock(void* destination, void* source, uint byteCount)
         {
             Buffer.MemoryCopy(source, destination, byteCount, byteCount);
@@ -80,7 +80,7 @@ namespace Alis.Core.Extension.ImGui.Utils
         /// <param name="startAddress">The address of the start of the memory block to initialize.</param>
         /// <param name="value">The value to initialize the block to.</param>
         /// <param name="byteCount">The number of bytes to initialize.</param>
-        [ MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static unsafe void InitBlockUnaligned(void* startAddress, byte value, uint byteCount)
         {
             byte[] block = new byte[byteCount];

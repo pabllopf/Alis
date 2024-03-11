@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:VideoConversionTests.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -9,12 +38,12 @@ using Xunit;
 namespace Alis.Core.Extension.FFMeg.Test
 {
     /// <summary>
-    /// The video conversion tests class
+    ///     The video conversion tests class
     /// </summary>
     public class VideoConversionTests
     {
         /// <summary>
-        /// Tests that conversion test 1
+        ///     Tests that conversion test 1
         /// </summary>
         [Fact]
         public async Task ConversionTest1()
@@ -28,10 +57,10 @@ namespace Alis.Core.Extension.FFMeg.Test
                 await reader.LoadMetadataAsync();
 
                 using (VideoWriter writer = new VideoWriter(opath,
-                    reader.Metadata.Width,
-                    reader.Metadata.Height,
-                    reader.Metadata.AvgFramerate,
-                    new H264Encoder().Create()))
+                           reader.Metadata.Width,
+                           reader.Metadata.Height,
+                           reader.Metadata.AvgFramerate,
+                           new H264Encoder().Create()))
                 {
                     writer.OpenWrite();
 
@@ -49,7 +78,7 @@ namespace Alis.Core.Extension.FFMeg.Test
                 Assert.True(video.Metadata.Width == reader.Metadata.Width);
                 Assert.True(video.Metadata.Height == reader.Metadata.Height);
                 Assert.True(video.Metadata.BitDepth == reader.Metadata.BitDepth);
-                Assert.True(video.Metadata.Streams.Length == 1);  // only video
+                Assert.True(video.Metadata.Streams.Length == 1); // only video
             }
             finally
             {
@@ -58,7 +87,7 @@ namespace Alis.Core.Extension.FFMeg.Test
         }
 
         /// <summary>
-        /// Tests that conversion stream test
+        ///     Tests that conversion stream test
         /// </summary>
         [Fact]
         public async Task ConversionStreamTest()
@@ -79,10 +108,10 @@ namespace Alis.Core.Extension.FFMeg.Test
                 using (FileStream filestream = File.Create(opath))
                 {
                     using (VideoWriter writer = new VideoWriter(filestream,
-                        reader.Metadata.Width,
-                        reader.Metadata.Height,
-                        reader.Metadata.AvgFramerate,
-                        encoder.Create()))
+                               reader.Metadata.Width,
+                               reader.Metadata.Height,
+                               reader.Metadata.AvgFramerate,
+                               encoder.Create()))
                     {
                         writer.OpenWrite();
 
@@ -101,7 +130,7 @@ namespace Alis.Core.Extension.FFMeg.Test
                 Assert.True(video.Metadata.Width == reader.Metadata.Width);
                 Assert.True(video.Metadata.Height == reader.Metadata.Height);
                 Assert.True(video.Metadata.BitDepth == reader.Metadata.BitDepth);
-                Assert.True(video.Metadata.Streams.Length == 1);  // only video
+                Assert.True(video.Metadata.Streams.Length == 1); // only video
             }
             finally
             {
@@ -110,7 +139,7 @@ namespace Alis.Core.Extension.FFMeg.Test
         }
 
         /// <summary>
-        /// Tests that conversion test 2
+        ///     Tests that conversion test 2
         /// </summary>
         [Fact]
         public async Task ConversionTest2()
@@ -122,7 +151,7 @@ namespace Alis.Core.Extension.FFMeg.Test
             {
                 VP9Encoder encoder = new VP9Encoder();
                 encoder.RowBasedMultithreading = true;
-                encoder.SetCQP(31);
+                encoder.SetCQP();
 
                 using VideoReader reader = new VideoReader(path);
 
@@ -130,10 +159,10 @@ namespace Alis.Core.Extension.FFMeg.Test
                 reader.Load();
 
                 using (VideoWriter writer = new VideoWriter(opath,
-                    reader.Metadata.Width,
-                    reader.Metadata.Height,
-                    reader.Metadata.AvgFramerate,
-                    encoder.Create()))
+                           reader.Metadata.Width,
+                           reader.Metadata.Height,
+                           reader.Metadata.AvgFramerate,
+                           encoder.Create()))
                 {
                     writer.OpenWrite(true);
                     reader.CopyTo(writer);
@@ -148,7 +177,7 @@ namespace Alis.Core.Extension.FFMeg.Test
                 Assert.True(Math.Abs(video.Metadata.Duration - reader.Metadata.Duration) < 0.01);
                 Assert.True(video.Metadata.Width == reader.Metadata.Width);
                 Assert.True(video.Metadata.Height == reader.Metadata.Height);
-                Assert.True(video.Metadata.Streams.Length == 1);  // only video
+                Assert.True(video.Metadata.Streams.Length == 1); // only video
             }
             finally
             {

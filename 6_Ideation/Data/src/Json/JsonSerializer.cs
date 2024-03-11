@@ -216,7 +216,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             using StringReader reader = new StringReader(text);
-            
+
             return Deserialize(reader, targetType, options);
         }
 

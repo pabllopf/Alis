@@ -58,31 +58,6 @@ namespace Alis.Core.Audio.OS
         }
 
         /// <summary>
-        /// Checks the os
-        /// </summary>
-        /// <exception cref="NoImplementationForCurrentOsException">No implementation exist for the current OS</exception>
-        /// <returns>The player</returns>
-        private static IPlayer CheckOs()
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return new WindowsPlayer();
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                return new LinuxPlayer();
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                return new MacPlayer();
-            }
-            
-            throw new NoImplementationForCurrentOsException("No implementation exist for the current OS");
-        }
-
-        /// <summary>
         ///     Internally, sets Playing flag to false. Additional handlers can be attached to it to handle any custom logic.
         /// </summary>
         public event EventHandler PlaybackFinished;
@@ -143,6 +118,31 @@ namespace Alis.Core.Audio.OS
         public async Task SetVolume(byte percent)
         {
             await _internalPlayer.SetVolume(percent);
+        }
+
+        /// <summary>
+        ///     Checks the os
+        /// </summary>
+        /// <exception cref="NoImplementationForCurrentOsException">No implementation exist for the current OS</exception>
+        /// <returns>The player</returns>
+        private static IPlayer CheckOs()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return new WindowsPlayer();
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return new LinuxPlayer();
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                return new MacPlayer();
+            }
+
+            throw new NoImplementationForCurrentOsException("No implementation exist for the current OS");
         }
 
         /// <summary>

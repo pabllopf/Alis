@@ -4725,7 +4725,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalUpdateTexturev2([IsNotNull] IntPtr texture, [IsNotNull] IntPtr rect, [IsNotNull] byte[] pixels, [IsNotNull] int pitch);
 
-        
+
         /// <summary>
         ///     Sdl the update nv texture using the specified texture
         /// </summary>
@@ -4800,7 +4800,7 @@ namespace Alis.Core.Graphic.Sdl2
         internal static extern ulong InternalGetPerformanceCounter();
 
         /// <summary>
-        /// Internals the queue audio using the specified device id
+        ///     Internals the queue audio using the specified device id
         /// </summary>
         /// <param name="deviceId">The device id</param>
         /// <param name="audioData">The audio data</param>

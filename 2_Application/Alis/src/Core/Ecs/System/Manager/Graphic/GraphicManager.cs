@@ -265,7 +265,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             DrawCameraTexture();
             Sdl.RenderPresent(Renderer);
         }
-        
+
         /// <summary>
         ///     Ons the exit
         /// </summary>

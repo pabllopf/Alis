@@ -64,7 +64,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         ///     Temp list of keys
         /// </summary>
         private List<KeyCode> tempListOfKeys;
-        
+
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
             Logger.Trace();
             tempListOfKeys = new List<KeyCode>();
         }
-        
+
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
 
             NotifyKeyHold();
         }
-        
+
         /// <summary>
         ///     Handles the sdl quit event
         /// </summary>
