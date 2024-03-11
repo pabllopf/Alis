@@ -146,7 +146,7 @@ namespace Alis.Core.Ecs.System.Manager
         ///     Ons the exit
         /// </summary>
         public virtual void OnExit() => Logger.Trace("Manager exited.");
-        
+
         /// <summary>
         ///     Ons the destroy
         /// </summary>

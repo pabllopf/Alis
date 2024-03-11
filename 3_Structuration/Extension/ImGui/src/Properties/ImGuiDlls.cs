@@ -39,70 +39,70 @@ namespace Alis.Core.Extension.ImGui.Properties
     public static class ImGuiDlls
     {
         /// <summary>
-        /// The resource path
+        ///     The resource path
         /// </summary>
-        private static readonly string ResourcePath = "Alis.Core.Extension.ImGui.resources"; 
-        
+        private static readonly string ResourcePath = "Alis.Core.Extension.ImGui.resources";
+
         /// <summary>
-        /// The 86
+        ///     The 86
         /// </summary>
         private static readonly PlatformInfo WinX86 = new PlatformInfo(OSPlatform.Windows, Architecture.X86);
-        
+
         /// <summary>
-        /// The 64
+        ///     The 64
         /// </summary>
         private static readonly PlatformInfo WinX64 = new PlatformInfo(OSPlatform.Windows, Architecture.X64);
-        
+
         /// <summary>
-        /// The arm
+        ///     The arm
         /// </summary>
         private static readonly PlatformInfo WinArm = new PlatformInfo(OSPlatform.Windows, Architecture.Arm);
-        
+
         /// <summary>
-        /// The arm 64
+        ///     The arm 64
         /// </summary>
         private static readonly PlatformInfo WinArm64 = new PlatformInfo(OSPlatform.Windows, Architecture.Arm64);
-        
+
         /// <summary>
-        /// The 86
+        ///     The 86
         /// </summary>
         private static readonly PlatformInfo LinuxX86 = new PlatformInfo(OSPlatform.Linux, Architecture.X86);
-        
+
         /// <summary>
-        /// The 64
+        ///     The 64
         /// </summary>
         private static readonly PlatformInfo LinuxX64 = new PlatformInfo(OSPlatform.Linux, Architecture.X64);
-        
+
         /// <summary>
-        /// The arm
+        ///     The arm
         /// </summary>
         private static readonly PlatformInfo LinuxArm = new PlatformInfo(OSPlatform.Linux, Architecture.Arm);
-        
+
         /// <summary>
-        /// The arm 64
+        ///     The arm 64
         /// </summary>
         private static readonly PlatformInfo LinuxArm64 = new PlatformInfo(OSPlatform.Linux, Architecture.Arm64);
-        
+
         /// <summary>
-        /// The 86
+        ///     The 86
         /// </summary>
         private static readonly PlatformInfo OsxX86 = new PlatformInfo(OSPlatform.OSX, Architecture.X86);
-        
+
         /// <summary>
-        /// The 64
+        ///     The 64
         /// </summary>
         private static readonly PlatformInfo OsxX64 = new PlatformInfo(OSPlatform.OSX, Architecture.X64);
-        
+
         /// <summary>
-        /// The arm
+        ///     The arm
         /// </summary>
         private static readonly PlatformInfo OsxArm = new PlatformInfo(OSPlatform.OSX, Architecture.Arm);
-        
+
         /// <summary>
-        /// The arm 64
+        ///     The arm 64
         /// </summary>
         private static readonly PlatformInfo OsxArm64 = new PlatformInfo(OSPlatform.OSX, Architecture.Arm64);
-        
+
         /// <summary>
         ///     The arm
         /// </summary>

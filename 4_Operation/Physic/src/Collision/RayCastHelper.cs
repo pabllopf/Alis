@@ -261,18 +261,18 @@ namespace Alis.Core.Physic.Collision
         /// <returns>The bool</returns>
         private static bool ProcessDenominator(ref float lower, ref float upper, ref int index, int i, float numerator, float denominator)
         {
-            if (denominator == 0.0f && numerator < 0.0f)
+            if ((denominator == 0.0f) && (numerator < 0.0f))
             {
                 return false;
             }
 
-            if (denominator < 0.0f && numerator < lower * denominator)
+            if ((denominator < 0.0f) && (numerator < lower * denominator))
             {
                 lower = numerator / denominator;
                 index = i;
             }
-            
-            if (denominator > 0.0f && numerator < upper * denominator)
+
+            if ((denominator > 0.0f) && (numerator < upper * denominator))
             {
                 upper = numerator / denominator;
             }

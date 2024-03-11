@@ -9529,10 +9529,7 @@ namespace Alis.Core.Extension.ImGui
         ///     Gets the state storage
         /// </summary>
         /// <returns>The im gui storage ptr</returns>
-        public static ImGuiStorage GetStateStorage()
-        {
-            return ImGuiNative.igGetStateStorage();
-        }
+        public static ImGuiStorage GetStateStorage() => ImGuiNative.igGetStateStorage();
 
         /// <summary>
         ///     Gets the style
@@ -19868,10 +19865,7 @@ namespace Alis.Core.Extension.ImGui
         ///     Tables the get sort specs
         /// </summary>
         /// <returns>The im gui table sort specs ptr</returns>
-        public static ImGuiTableSortSpecs TableGetSortSpecs()
-        {
-            return ImGuiNative.igTableGetSortSpecs();
-        }
+        public static ImGuiTableSortSpecs TableGetSortSpecs() => ImGuiNative.igTableGetSortSpecs();
 
         /// <summary>
         ///     Tables the header using the specified label

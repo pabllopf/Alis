@@ -38,7 +38,7 @@ namespace Alis.Core.Aspect.Math.Matrix
     public struct Matrix3X3
     {
         /// <summary>
-        /// The epsilon
+        ///     The epsilon
         /// </summary>
         private const float Epsilon = 0.00001f;
 
@@ -114,7 +114,7 @@ namespace Alis.Core.Aspect.Math.Matrix
 
 
         /// <summary>
-        /// Solves the 22 using the specified b
+        ///     Solves the 22 using the specified b
         /// </summary>
         /// <param name="b">The </param>
         /// <returns>The vector</returns>
@@ -133,14 +133,14 @@ namespace Alis.Core.Aspect.Math.Matrix
 
 
         /// <summary>
-        /// Gets the inverse 22 using the specified m
+        ///     Gets the inverse 22 using the specified m
         /// </summary>
         /// <param name="m">The </param>
         public void GetInverse22(ref Matrix3X3 m)
         {
             float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
             float det = a * d - b * c;
-            
+
             if (MathF.Abs(det) > Epsilon) // Use epsilon check instead of exact comparison
             {
                 det = 1.0f / det;

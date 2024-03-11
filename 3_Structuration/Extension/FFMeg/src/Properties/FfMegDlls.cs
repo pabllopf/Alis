@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl2Dlls.cs
+//  File:FfMegDlls.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -39,70 +39,70 @@ namespace Alis.Core.Extension.FFMeg.Properties
     public static class FfMegDlls
     {
         /// <summary>
-        /// The resource path
+        ///     The resource path
         /// </summary>
         private const string ResourcePath = "Alis.Core.Extension.FFMeg.resources";
 
         /// <summary>
-        /// The 86
+        ///     The 86
         /// </summary>
         private static readonly PlatformInfo WinX86 = new PlatformInfo(OSPlatform.Windows, Architecture.X86);
-        
+
         /// <summary>
-        /// The 64
+        ///     The 64
         /// </summary>
         private static readonly PlatformInfo WinX64 = new PlatformInfo(OSPlatform.Windows, Architecture.X64);
-        
+
         /// <summary>
-        /// The arm
+        ///     The arm
         /// </summary>
         private static readonly PlatformInfo WinArm = new PlatformInfo(OSPlatform.Windows, Architecture.Arm);
-        
+
         /// <summary>
-        /// The arm 64
+        ///     The arm 64
         /// </summary>
         private static readonly PlatformInfo WinArm64 = new PlatformInfo(OSPlatform.Windows, Architecture.Arm64);
-        
+
         /// <summary>
-        /// The 86
+        ///     The 86
         /// </summary>
         private static readonly PlatformInfo LinuxX86 = new PlatformInfo(OSPlatform.Linux, Architecture.X86);
-        
+
         /// <summary>
-        /// The 64
+        ///     The 64
         /// </summary>
         private static readonly PlatformInfo LinuxX64 = new PlatformInfo(OSPlatform.Linux, Architecture.X64);
-        
+
         /// <summary>
-        /// The arm
+        ///     The arm
         /// </summary>
         private static readonly PlatformInfo LinuxArm = new PlatformInfo(OSPlatform.Linux, Architecture.Arm);
-        
+
         /// <summary>
-        /// The arm 64
+        ///     The arm 64
         /// </summary>
         private static readonly PlatformInfo LinuxArm64 = new PlatformInfo(OSPlatform.Linux, Architecture.Arm64);
-        
+
         /// <summary>
-        /// The 86
+        ///     The 86
         /// </summary>
         private static readonly PlatformInfo OsxX86 = new PlatformInfo(OSPlatform.OSX, Architecture.X86);
-        
+
         /// <summary>
-        /// The 64
+        ///     The 64
         /// </summary>
         private static readonly PlatformInfo OsxX64 = new PlatformInfo(OSPlatform.OSX, Architecture.X64);
-        
+
         /// <summary>
-        /// The arm
+        ///     The arm
         /// </summary>
         private static readonly PlatformInfo OsxArm = new PlatformInfo(OSPlatform.OSX, Architecture.Arm);
-        
+
         /// <summary>
-        /// The arm 64
+        ///     The arm 64
         /// </summary>
         private static readonly PlatformInfo OsxArm64 = new PlatformInfo(OSPlatform.OSX, Architecture.Arm64);
-        
+
         /// <summary>
         ///     The osx arm64 sdl2
         /// </summary>
@@ -123,7 +123,7 @@ namespace Alis.Core.Extension.FFMeg.Properties
             {OsxArm64, $"{ResourcePath}.osx_x64.osx-x64_ffmpeg.zip"},
             {OsxArm, $"{ResourcePath}.osx_x64.osx-x64_ffmpeg.zip"}
         };
-        
+
         /// <summary>
         ///     The osx arm64 sdl2
         /// </summary>
@@ -144,9 +144,9 @@ namespace Alis.Core.Extension.FFMeg.Properties
             {OsxArm64, $"{ResourcePath}.osx_x64.osx-x64_ffplay.zip"},
             {OsxArm, $"{ResourcePath}.osx_x64.osx-x64_ffplay.zip"}
         };
-        
+
         /// <summary>
-        /// The resource path
+        ///     The resource path
         /// </summary>
         internal static readonly Dictionary<PlatformInfo, string> FfprobeDllBytes = new Dictionary<PlatformInfo, string>
         {

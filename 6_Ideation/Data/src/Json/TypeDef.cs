@@ -522,10 +522,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="info">The info</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool CheckXmlIgnoreAttribute(PropertyInfo info, JsonOptions options)
-        {
-            return options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore) && info.IsDefined(typeof(XmlIgnoreAttribute), true);
-        }
+        private static bool CheckXmlIgnoreAttribute(PropertyInfo info, JsonOptions options) => options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore) && info.IsDefined(typeof(XmlIgnoreAttribute), true);
 
         /// <summary>
         ///     Describes whether check script ignore
@@ -772,10 +769,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="descriptor">The descriptor</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool CheckScriptIgnore(PropertyDescriptor descriptor, JsonOptions options)
-        {
-            return options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore) && JsonSerializer.HasScriptIgnore(descriptor);
-        }
+        private static bool CheckScriptIgnore(PropertyDescriptor descriptor, JsonOptions options) => options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore) && JsonSerializer.HasScriptIgnore(descriptor);
 
         /// <summary>
         ///     Describes whether check skip get only
@@ -783,10 +777,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="descriptor">The descriptor</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool CheckSkipGetOnly(PropertyDescriptor descriptor, JsonOptions options)
-        {
-            return options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipGetOnly) && descriptor.IsReadOnly;
-        }
+        private static bool CheckSkipGetOnly(PropertyDescriptor descriptor, JsonOptions options) => options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipGetOnly) && descriptor.IsReadOnly;
 
         /// <summary>
         ///     Creates the member definition using the specified serialization

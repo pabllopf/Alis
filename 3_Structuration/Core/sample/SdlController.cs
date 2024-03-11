@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Threading;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Data.Resource;
@@ -68,7 +69,7 @@ namespace Alis.Core.Sample
         ///     The sdl game controller button
         /// </summary>
         private static readonly List<GameControllerButton> Buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
-        
+
         /// <summary>
         ///     The sdl keycode
         /// </summary>
@@ -83,7 +84,7 @@ namespace Alis.Core.Sample
         ///     The sdl event
         /// </summary>
         private static Event _sdlEvent;
-        
+
         /// <summary>
         ///     Runs
         /// </summary>
@@ -101,7 +102,7 @@ namespace Alis.Core.Sample
             // GET VERSION SDL2
             Version versionSdl2 = Sdl.GetVersion();
             Console.WriteLine($"SDL2 VERSION {versionSdl2.major}.{versionSdl2.minor}.{versionSdl2.patch}");
-            
+
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
             {
                 Sdl.SetHint(Hint.HintRenderDriver, "direct3d");
@@ -147,54 +148,54 @@ namespace Alis.Core.Sample
             {
                 Logger.Info("Renderer created");
             }
-            
+
             Console.WriteLine("Platform: " + EmbeddedDllClass.GetCurrentPlatform());
             Console.WriteLine("Processor: " + RuntimeInformation.ProcessArchitecture);
-            
+
             IntPtr icon = Sdl.LoadBmp(AssetManager.Find("logo.bmp"));
             Sdl.SetWindowIcon(window, icon);
 
             Sdlinput();
-            
+
             string input = AssetManager.Find("sample.mp4");
 
             VideoReader video = new VideoReader(input);
             video.LoadMetadataAsync().Wait();
             video.Load();
-            
+
             AudioReader audioReader = new AudioReader(input);
             audioReader.LoadMetadataAsync().Wait();
             audioReader.Load();
-            
+
             // Get video and audio stream metadata (or just access metadata properties directly instead)
             MediaStream vstream = video.Metadata.GetFirstVideoStream();
             MediaStream astream = audioReader.Metadata.GetFirstAudioStream();
-            
+
             // Crear la textura
             IntPtr textureVideo = Sdl.CreateTexture(
-                renderer, 
-                Sdl.PixelFormatRgb24, 
-                (int) TextureAccess.SdlTextureAccessStreaming, 
+                renderer,
+                Sdl.PixelFormatRgb24,
+                (int) TextureAccess.SdlTextureAccessStreaming,
                 (int) vstream.Width,
                 (int) vstream.Height);
-            
+
             AudioSpec wavSpec = new AudioSpec();
             wavSpec.freq = astream.SampleRateNumber; // Usar la tasa de muestreo del audio
             wavSpec.format = Sdl.GlAudioS16Sys; // Formato de audio estándar
-            wavSpec.channels = (byte)astream.Channels; // Usar el número de canales del audio
+            wavSpec.channels = (byte) astream.Channels; // Usar el número de canales del audio
             wavSpec.samples = 2048; // Tamaño del buffer de audio (puede necesitar ajustes)
             wavSpec.callback = null; // No estamos usando una función de callback
-            
+
             int deviceId = (int) Sdl.OpenAudioDevice(IntPtr.Zero, 0, ref wavSpec, out wavSpec, 0);
             if (deviceId == 0)
             {
                 Console.WriteLine("No se pudo abrir el dispositivo de audio: {0}", Sdl.GetError());
                 return;
             }
-            
+
             VideoFrame videoFrame = new VideoFrame((int) vstream.Width, (int) vstream.Height);
             AudioFrame audioFrame = new AudioFrame((int) astream.Channels, 2048);
-            
+
             while (_running)
             {
                 Sdl.JoystickUpdate();
@@ -211,6 +212,7 @@ namespace Alis.Core.Sample
                             {
                                 _running = false;
                             }
+
                             Console.WriteLine(_sdlEvent.key.keySym.sym + " was pressed");
                             break;
                     }
@@ -233,7 +235,7 @@ namespace Alis.Core.Sample
                         }
                     }
                 }
-                
+
                 // read next frame
                 VideoFrame videoFrameTemp = video.NextFrame(videoFrame);
                 if (videoFrameTemp == null)
@@ -252,18 +254,18 @@ namespace Alis.Core.Sample
                 // audio
                 AudioFrame audioFrameTemp = audioReader.NextFrame(audioFrame);
                 if (audioFrameTemp == null) break;
-                
+
                 //player.WriteFrame(audioFrame);
                 Sdl.QueueAudio(deviceId, audioFrame.RawData, (uint) audioFrame.RawData.Length);
-                
+
                 // if not playing, start
                 if (Sdl.GetAudioDeviceStatus((uint) deviceId) != AudioStatus.SdlAudioPlaying)
                 {
                     Sdl.SdlPauseAudioDevice((uint) deviceId, 0);
                 }
-                
-                
-                System.Threading.Thread.Sleep((int) (1000 / vstream.AvgFrameRateNumber));
+
+
+                Thread.Sleep((int) (1000 / vstream.AvgFrameRateNumber));
             }
 
             Sdl.DestroyRenderer(renderer);

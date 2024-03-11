@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Threading;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Data.Resource;
@@ -125,7 +126,7 @@ namespace Alis.Core.Graphic.Sample
             // GET VERSION SDL2
             Version versionSdl2 = Sdl.GetVersion();
             Console.WriteLine($"SDL2 VERSION {versionSdl2.major}.{versionSdl2.minor}.{versionSdl2.patch}");
-            
+
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
             {
                 Sdl.SetHint(Hint.HintRenderDriver, "direct3d");
@@ -261,7 +262,7 @@ namespace Alis.Core.Graphic.Sample
 
             // Create a new texture from the image.
             IntPtr textureTile = Sdl.CreateTextureFromSurface(renderer, imageTilePtr);
-            
+
             while (_running)
             {
                 Sdl.JoystickUpdate();
@@ -322,7 +323,7 @@ namespace Alis.Core.Graphic.Sample
                     }
                 }
 
-                
+
                 RenderColors();
 
                 // Sets the color that the screen will be cleared with.
@@ -352,11 +353,11 @@ namespace Alis.Core.Graphic.Sample
                 // draw a line
                 Sdl.SetRenderDrawColor(renderer, 255, 0, 0, 255);
                 Sdl.RenderDrawLine(renderer, 0, 0, 100, 100);
-                
+
                 Sdl.RenderPresent(renderer);
-                
-                
-                System.Threading.Thread.Sleep((int) (1000 / 60));
+
+
+                Thread.Sleep(1000 / 60);
             }
 
             Sdl.DestroyRenderer(renderer);

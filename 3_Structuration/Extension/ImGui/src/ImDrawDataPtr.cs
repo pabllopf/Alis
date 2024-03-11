@@ -154,7 +154,7 @@ namespace Alis.Core.Extension.ImGui
         {
             ImGuiNative.ImDrawData_ScaleClipRects(NativePtr, fbScale);
         }
-        
+
         /// <summary>
         ///     Gets the value of the cmd lists range
         /// </summary>

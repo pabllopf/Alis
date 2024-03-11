@@ -30,27 +30,27 @@
 namespace Alis.Core.Extension.ImGui
 {
     /// <summary>
-    /// The im draw channel
+    ///     The im draw channel
     /// </summary>
     public struct ImDrawChannel
     {
         /// <summary>
-        /// The cmd buffer
+        ///     The cmd buffer
         /// </summary>
         public ImVector CmdBuffer;
-        
+
         /// <summary>
-        /// The idx buffer
+        ///     The idx buffer
         /// </summary>
         public ImVector IdxBuffer;
 
         /// <summary>
-        /// Gets the value of the cmd buffer ptr
+        ///     Gets the value of the cmd buffer ptr
         /// </summary>
         public ImVector<ImDrawCmd> CmdBufferPtr => new ImVector<ImDrawCmd>(CmdBuffer);
-        
+
         /// <summary>
-        /// Gets the value of the idx buffer ptr
+        ///     Gets the value of the idx buffer ptr
         /// </summary>
         public ImVector<ushort> IdxBufferPtr => new ImVector<ushort>(IdxBuffer);
     }

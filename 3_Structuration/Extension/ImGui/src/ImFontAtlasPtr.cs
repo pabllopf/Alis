@@ -704,10 +704,7 @@ namespace Alis.Core.Extension.ImGui
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The im font atlas custom rect ptr</returns>
-        public ImFontAtlasCustomRect GetCustomRectByIndex(int index)
-        {
-            return ImGuiNative.ImFontAtlas_GetCustomRectByIndex(NativePtr, index);
-        }
+        public ImFontAtlasCustomRect GetCustomRectByIndex(int index) => ImGuiNative.ImFontAtlas_GetCustomRectByIndex(NativePtr, index);
 
         /// <summary>
         ///     Gets the glyph ranges chinese full
