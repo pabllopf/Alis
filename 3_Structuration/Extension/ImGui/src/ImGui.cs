@@ -9529,10 +9529,9 @@ namespace Alis.Core.Extension.ImGui
         ///     Gets the state storage
         /// </summary>
         /// <returns>The im gui storage ptr</returns>
-        public static ImGuiStoragePtr GetStateStorage()
+        public static ImGuiStorage GetStateStorage()
         {
-            ImGuiStorage* ret = ImGuiNative.igGetStateStorage();
-            return new ImGuiStoragePtr(ret);
+            return ImGuiNative.igGetStateStorage();
         }
 
         /// <summary>
@@ -16499,10 +16498,9 @@ namespace Alis.Core.Extension.ImGui
         ///     Sets the state storage using the specified storage
         /// </summary>
         /// <param name="storage">The storage</param>
-        public static void SetStateStorage(ImGuiStoragePtr storage)
+        public static void SetStateStorage(ImGuiStorage storage)
         {
-            ImGuiStorage* nativeStorage = storage.NativePtr;
-            ImGuiNative.igSetStateStorage(nativeStorage);
+            ImGuiNative.igSetStateStorage(storage);
         }
 
         /// <summary>

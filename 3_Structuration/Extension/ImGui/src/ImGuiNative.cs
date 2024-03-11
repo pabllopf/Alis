@@ -1249,7 +1249,7 @@ namespace Alis.Core.Extension.ImGui
         /// </summary>
         /// <returns>The im gui storage</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiStorage* igGetStateStorage();
+        public static extern ImGuiStorage igGetStateStorage();
 
         /// <summary>
         ///     Igs the get style
@@ -2560,7 +2560,7 @@ namespace Alis.Core.Extension.ImGui
         /// </summary>
         /// <param name="storage">The storage</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetStateStorage(ImGuiStorage* storage);
+        public static extern void igSetStateStorage(ImGuiStorage storage);
 
         /// <summary>
         ///     Igs the set tab item closed using the specified tab or docked window label
@@ -4979,14 +4979,14 @@ namespace Alis.Core.Extension.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiStorage_BuildSortByKey(ImGuiStorage* self);
+        public static extern void ImGuiStorage_BuildSortByKey(ImGuiStorage self);
 
         /// <summary>
         ///     Ims the gui storage clear using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiStorage_Clear(ImGuiStorage* self);
+        public static extern void ImGuiStorage_Clear(ImGuiStorage self);
 
         /// <summary>
         ///     Ims the gui storage get bool using the specified self
@@ -4996,7 +4996,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="defaultVal">The default val</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImGuiStorage_GetBool(ImGuiStorage* self, uint key, byte defaultVal);
+        public static extern byte ImGuiStorage_GetBool(ImGuiStorage self, uint key, byte defaultVal);
 
         /// <summary>
         ///     Ims the gui storage get bool ref using the specified self
@@ -5006,7 +5006,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="defaultVal">The default val</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte* ImGuiStorage_GetBoolRef(ImGuiStorage* self, uint key, byte defaultVal);
+        public static extern byte* ImGuiStorage_GetBoolRef(ImGuiStorage self, uint key, byte defaultVal);
 
         /// <summary>
         ///     Ims the gui storage get float using the specified self
@@ -5016,7 +5016,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="defaultVal">The default val</param>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern float ImGuiStorage_GetFloat(ImGuiStorage* self, uint key, float defaultVal);
+        public static extern float ImGuiStorage_GetFloat(ImGuiStorage self, uint key, float defaultVal);
 
         /// <summary>
         ///     Ims the gui storage get float ref using the specified self
@@ -5026,7 +5026,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="defaultVal">The default val</param>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern float* ImGuiStorage_GetFloatRef(ImGuiStorage* self, uint key, float defaultVal);
+        public static extern float* ImGuiStorage_GetFloatRef(ImGuiStorage self, uint key, float defaultVal);
 
         /// <summary>
         ///     Ims the gui storage get int using the specified self
@@ -5036,7 +5036,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="defaultVal">The default val</param>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int ImGuiStorage_GetInt(ImGuiStorage* self, uint key, int defaultVal);
+        public static extern int ImGuiStorage_GetInt(ImGuiStorage self, uint key, int defaultVal);
 
         /// <summary>
         ///     Ims the gui storage get int ref using the specified self
@@ -5046,7 +5046,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="defaultVal">The default val</param>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int* ImGuiStorage_GetIntRef(ImGuiStorage* self, uint key, int defaultVal);
+        public static extern int* ImGuiStorage_GetIntRef(ImGuiStorage self, uint key, int defaultVal);
 
         /// <summary>
         ///     Ims the gui storage get void ptr using the specified self
@@ -5055,7 +5055,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="key">The key</param>
         /// <returns>The void</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void* ImGuiStorage_GetVoidPtr(ImGuiStorage* self, uint key);
+        public static extern void* ImGuiStorage_GetVoidPtr(ImGuiStorage self, uint key);
 
         /// <summary>
         ///     Ims the gui storage get void ptr ref using the specified self
@@ -5065,7 +5065,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="defaultVal">The default val</param>
         /// <returns>The void</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void** ImGuiStorage_GetVoidPtrRef(ImGuiStorage* self, uint key, void* defaultVal);
+        public static extern void** ImGuiStorage_GetVoidPtrRef(ImGuiStorage self, uint key, void* defaultVal);
 
         /// <summary>
         ///     Ims the gui storage set all int using the specified self
@@ -5073,7 +5073,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="self">The self</param>
         /// <param name="val">The val</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiStorage_SetAllInt(ImGuiStorage* self, int val);
+        public static extern void ImGuiStorage_SetAllInt(ImGuiStorage self, int val);
 
         /// <summary>
         ///     Ims the gui storage set bool using the specified self
@@ -5082,7 +5082,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="key">The key</param>
         /// <param name="val">The val</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiStorage_SetBool(ImGuiStorage* self, uint key, byte val);
+        public static extern void ImGuiStorage_SetBool(ImGuiStorage self, uint key, byte val);
 
         /// <summary>
         ///     Ims the gui storage set float using the specified self
@@ -5091,7 +5091,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="key">The key</param>
         /// <param name="val">The val</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiStorage_SetFloat(ImGuiStorage* self, uint key, float val);
+        public static extern void ImGuiStorage_SetFloat(ImGuiStorage self, uint key, float val);
 
         /// <summary>
         ///     Ims the gui storage set int using the specified self
@@ -5100,7 +5100,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="key">The key</param>
         /// <param name="val">The val</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiStorage_SetInt(ImGuiStorage* self, uint key, int val);
+        public static extern void ImGuiStorage_SetInt(ImGuiStorage self, uint key, int val);
 
         /// <summary>
         ///     Ims the gui storage set void ptr using the specified self
@@ -5109,7 +5109,7 @@ namespace Alis.Core.Extension.ImGui
         /// <param name="key">The key</param>
         /// <param name="val">The val</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiStorage_SetVoidPtr(ImGuiStorage* self, uint key, void* val);
+        public static extern void ImGuiStorage_SetVoidPtr(ImGuiStorage self, uint key, void* val);
 
         /// <summary>
         ///     Ims the gui storage pair destroy using the specified self
