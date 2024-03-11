@@ -2942,7 +2942,7 @@ namespace Alis.Core.Extension.ImGui
         /// </summary>
         /// <returns>The im gui table sort specs</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiTableSortSpecs* igTableGetSortSpecs();
+        public static extern ImGuiTableSortSpecs igTableGetSortSpecs();
 
         /// <summary>
         ///     Igs the table header using the specified label
@@ -5186,14 +5186,14 @@ namespace Alis.Core.Extension.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiTableSortSpecs_destroy(ImGuiTableSortSpecs* self);
+        public static extern void ImGuiTableSortSpecs_destroy(ref ImGuiTableSortSpecs self);
 
         /// <summary>
         ///     Ims the gui table sort specs im gui table sort specs
         /// </summary>
         /// <returns>The im gui table sort specs</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiTableSortSpecs* ImGuiTableSortSpecs_ImGuiTableSortSpecs();
+        public static extern ImGuiTableSortSpecs ImGuiTableSortSpecs_ImGuiTableSortSpecs();
 
         /// <summary>
         ///     Ims the gui text buffer append using the specified self

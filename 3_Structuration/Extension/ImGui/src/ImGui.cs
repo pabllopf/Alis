@@ -19870,10 +19870,9 @@ namespace Alis.Core.Extension.ImGui
         ///     Tables the get sort specs
         /// </summary>
         /// <returns>The im gui table sort specs ptr</returns>
-        public static ImGuiTableSortSpecsPtr TableGetSortSpecs()
+        public static ImGuiTableSortSpecs TableGetSortSpecs()
         {
-            ImGuiTableSortSpecs* ret = ImGuiNative.igTableGetSortSpecs();
-            return new ImGuiTableSortSpecsPtr(ret);
+            return ImGuiNative.igTableGetSortSpecs();
         }
 
         /// <summary>
