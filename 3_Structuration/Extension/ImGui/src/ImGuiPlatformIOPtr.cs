@@ -191,7 +191,7 @@ namespace Alis.Core.Extension.ImGui
         /// <summary>
         ///     Gets the value of the monitors
         /// </summary>
-        public ImPtrVector<ImGuiPlatformMonitorPtr> Monitors => new ImPtrVector<ImGuiPlatformMonitorPtr>(NativePtr->Monitors, Unsafe.SizeOf<ImGuiPlatformMonitor>());
+        public ImPtrVector<ImGuiPlatformMonitor> Monitors => new ImPtrVector<ImGuiPlatformMonitor>(NativePtr->Monitors, Unsafe.SizeOf<ImGuiPlatformMonitor>());
 
         /// <summary>
         ///     Gets the value of the viewports
