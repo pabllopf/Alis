@@ -158,7 +158,7 @@ jobs:
           writeToFile: true
           excludeTypes: chore, perf
 
-      - uses: softprops/action-gh-release@v1
+      - uses: softprops/action-gh-release@v2
         with:
           body: ${{ steps.changelog.outputs.changes }}
           token: "${{ secrets.GITHUB_TOKEN }}"
