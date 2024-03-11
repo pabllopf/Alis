@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Extension.ImGui.Utils;
@@ -87,8 +88,8 @@ namespace Alis.Core.Extension.ImGui
         /// <summary>
         ///     Gets the value of the vtx buffer
         /// </summary>
-        public ImPtrVector<ImDrawVertPtr> VtxBuffer => new ImPtrVector<ImDrawVertPtr>(NativePtr->VtxBuffer, Unsafe.SizeOf<ImDrawVert>());
-
+        public ImVector<ImDrawVert> VtxBuffer => new ImVector<ImDrawVert>(NativePtr->VtxBuffer);
+        
         /// <summary>
         ///     Gets the value of the flags
         /// </summary>
@@ -109,10 +110,7 @@ namespace Alis.Core.Extension.ImGui
         /// </summary>
         public NullTerminatedString OwnerName => new NullTerminatedString(NativePtr->OwnerName);
 
-        /// <summary>
-        ///     Gets the value of the  vtxwriteptr
-        /// </summary>
-        public ImDrawVertPtr VtxWritePtr => new ImDrawVertPtr(NativePtr->VtxWritePtr);
+        public ImDrawVert VtxWritePtr => Marshal.PtrToStructure<ImDrawVert>((IntPtr)NativePtr->VtxWritePtr);
 
         /// <summary>
         ///     Gets or sets the value of the  idxwriteptr
