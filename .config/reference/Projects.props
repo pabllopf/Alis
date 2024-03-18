@@ -79,45 +79,15 @@
         <EmbeddedResource Condition="$(IsX64) == true AND $(IsLinux) == true" Include="$(ProjectDir)/resources/**/linux-x64/*linux-x64*.zip"/>
         <EmbeddedResource Condition="$(IsX86) == true AND $(IsLinux) == true" Include="$(ProjectDir)/resources/**/linux-x86/*linux-x86*.zip"/>
     </ItemGroup>
-
+    
     <ItemGroup Condition="
         $(AssemblyName.Contains('Test')) == False AND
         $(AssemblyName.Contains('App.Installer')) == False AND 
         $(AssemblyName.Contains('Sample')) == False AND
         $(AssemblyName.Contains('Template')) == False AND 
         $(AssemblyName.Contains('Benchmark')) == False AND 
+        $(AssemblyName.Contains('Extension')) == False AND 
         $(Configuration) == 'Release'">
-
-        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
-                          Include="$(SolutionDir)2_Application/**/Alis.csproj"/>
-
-        <Compile Condition="$(ProjectDir.Contains('2_Application'))"
-                 Include="
-                        
-                        $(SolutionDir)3_Structuration/Core/**/*.cs;
-                        "
-                 Exclude="
-                          $(SolutionDir)3_Structuration/Extension/**/*;
-                          $(SolutionDir)3_Structuration/**/obj/**/**;
-                          $(SolutionDir)3_Structuration/**/bin/**/**;
-                          $(SolutionDir)3_Structuration/**/*sample/**/**;
-                          $(SolutionDir)3_Structuration/**/*test/**/*.cs;  
-                          $(SolutionDir)3_Structuration/**/*.Designer.cs"
-                 Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
-
-        <Compile Condition="$(ProjectDir.Contains('2_Application'))"
-                 Include="
-                        
-                        $(SolutionDir)4_Operation/**/*.cs;
-                        "
-                 Exclude="
-                          $(SolutionDir)4_Operation/**/obj/**/**;
-                          $(SolutionDir)4_Operation/**/bin/**/**;
-                          $(SolutionDir)4_Operation/**/*sample/**/**;
-                          $(SolutionDir)4_Operation/**/*test/**/*.cs; 
-                          $(SolutionDir)4_Operation/**/*.Designer.cs "
-                 Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
-
         <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND '$(RuntimeIdentifier)' == ''"
                           Include="$(SolutionDir)4_Operation/**/resources/**/*.zip;"
                           Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
@@ -154,8 +124,63 @@
         <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND $(IsX86) == true AND $(IsLinux) == true AND '$(RuntimeIdentifier)' != ''"
                           Include="$(SolutionDir)4_Operation/**/resources/**/linux-x86/*linux-x86*.zip"
                           Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        
+    </ItemGroup>
 
-        <Compile Condition="$(ProjectDir.Contains('2_Application'))"
+    <ItemGroup Condition="
+        $(AssemblyName.Contains('Test')) == False AND
+        $(AssemblyName.Contains('App.Installer')) == False AND 
+        $(AssemblyName.Contains('Sample')) == False AND
+        $(AssemblyName.Contains('Template')) == False AND 
+        $(AssemblyName.Contains('Benchmark')) == False AND 
+        $(Configuration) == 'Release'">
+
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
+                          Include="
+                          $(SolutionDir)2_Application/**/Alis.csproj;
+                          $(SolutionDir)2_Application/**/Extension/**/**/*.csproj;"
+                          Exclude="
+                          $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
+                          $(SolutionDir)**/Extension/**/**/*.Test.csproj;"/>
+
+        <ProjectReference Condition="$(ProjectDir.Contains('2_Application')) AND 
+                        $(ProjectDir.Contains('Extension'))"
+                          Include="
+                          $(SolutionDir)2_Application/**/Alis.csproj;"
+                          Exclude="
+                          $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
+                          $(SolutionDir)**/Extension/**/**/*.Test.csproj;"/>
+
+        <Compile Condition="$(ProjectDir.Contains('2_Application')) AND $(ProjectDir.Contains('Extension')) == False"
+                 Include="
+                        
+                        $(SolutionDir)3_Structuration/Core/**/*.cs;
+                        "
+                 Exclude="
+                          $(SolutionDir)3_Structuration/Extension/**/*;
+                          $(SolutionDir)3_Structuration/**/obj/**/**;
+                          $(SolutionDir)3_Structuration/**/bin/**/**;
+                          $(SolutionDir)3_Structuration/**/*sample/**/**;
+                          $(SolutionDir)3_Structuration/**/*test/**/*.cs;  
+                          $(SolutionDir)3_Structuration/**/*.Designer.cs"
+                 Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+
+        <Compile Condition="$(ProjectDir.Contains('2_Application')) AND $(ProjectDir.Contains('Extension')) == False"
+                 Include="
+                        
+                        $(SolutionDir)4_Operation/**/*.cs;
+                        "
+                 Exclude="
+                          $(SolutionDir)4_Operation/**/obj/**/**;
+                          $(SolutionDir)4_Operation/**/bin/**/**;
+                          $(SolutionDir)4_Operation/**/*sample/**/**;
+                          $(SolutionDir)4_Operation/**/*test/**/*.cs; 
+                          $(SolutionDir)4_Operation/**/*.Designer.cs "
+                 Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+
+      
+
+        <Compile Condition="$(ProjectDir.Contains('2_Application')) AND $(ProjectDir.Contains('Extension')) == False"
                  Include="
                         
                         $(SolutionDir)5_Declaration/**/*.cs;
@@ -168,7 +193,7 @@
                           $(SolutionDir)5_Declaration/**/*.Designer.cs"
                  Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
 
-        <Compile Condition="$(ProjectDir.Contains('2_Application'))"
+        <Compile Condition="$(ProjectDir.Contains('2_Application')) AND $(ProjectDir.Contains('Extension')) == False"
                  Include="
                             
                             $(SolutionDir)6_Ideation/**/*.cs;
@@ -181,7 +206,7 @@
                           $(SolutionDir)6_Ideation/**/*.Designer.cs"
                  Link="Core/Aspect/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
 
-        <Compile Condition="$(ProjectDir.Contains('3_Structuration')) AND $(ProjectDir.Contains('Core'))"
+        <Compile Condition="($(ProjectDir.Contains('3_Structuration')) AND $(ProjectDir.Contains('Core'))) AND $(ProjectDir.Contains('Extension')) == False"
                  Include="
                         $(SolutionDir)4_Operation/**/*.cs;
                         "
@@ -230,7 +255,7 @@
                           Include="$(SolutionDir)4_Operation/**/resources/**/linux-x86/*linux-x86*.zip"
                           Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
 
-        <Compile Condition="$(ProjectDir.Contains('3_Structuration')) OR $(ProjectDir.Contains('4_Operation'))"
+        <Compile Condition="($(ProjectDir.Contains('3_Structuration')) OR $(ProjectDir.Contains('4_Operation'))) AND $(ProjectDir.Contains('Extension')) == False"
                  Include="
                         
                         $(SolutionDir)5_Declaration/**/*.resx"
@@ -241,7 +266,7 @@
                           $(SolutionDir)5_Declaration/**/*test/**/*.cs; $(SolutionDir)5_Declaration/**/Resources.Designer.cs"
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
 
-        <Compile Condition="$(ProjectDir.Contains('3_Structuration')) OR $(ProjectDir.Contains('4_Operation'))"
+        <Compile Condition="($(ProjectDir.Contains('3_Structuration')) OR $(ProjectDir.Contains('4_Operation')))  AND $(ProjectDir.Contains('Extension')) == False"
                  Include="
                         $(SolutionDir)6_Ideation/**/*.cs;"
                  Exclude="
@@ -250,8 +275,7 @@
                           $(SolutionDir)6_Ideation/**/*sample/**/**;
                           $(SolutionDir)6_Ideation/**/*test/**/*.cs; $(SolutionDir)6_Ideation/**/Resources.Designer.cs"
                  Link="Aspect/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
-
-
+        
         <Compile Condition="
         $(ProjectDir.Contains('5_Declaration'))"
                  Include="
@@ -405,6 +429,7 @@
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
 
+
     <PropertyGroup Condition="$(AssemblyName.Contains('Sample'))">
         <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Sample[^*]*', ''))</NameTest>
     </PropertyGroup>
@@ -419,12 +444,12 @@
             Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
 
         <ProjectReference
-            Condition="$(AssemblyName.Equals('Alis.Core.Sample')) OR $(AssemblyName.Contains('Alis.Sample'))"
+            Condition="$(AssemblyName.Contains('Alis.Sample'))"
             Include="$(SolutionDir)**/src/**/*Extension*.csproj"/>
 
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
-
+    
     <ItemGroup>
         <None Condition="Exists('$(ProjectDir)/Assets/') == True"
               Update="$(ProjectDir)/Assets/**"
