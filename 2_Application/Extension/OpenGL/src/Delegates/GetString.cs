@@ -37,5 +37,5 @@ namespace Alis.Extension.OpenGL.Delegates
     ///     The get string
     /// </summary>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    internal delegate IntPtr GetString(StringName pname);
+    public delegate IntPtr GetString(StringName pname);
 }

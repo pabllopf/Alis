@@ -45,7 +45,7 @@ namespace Alis.Extension.OpenGL
         /// <summary>
         ///     The get string
         /// </summary>
-        private static readonly GetString GetString = _<GetString>("glGetString");
+        public static readonly GetString GetString = _<GetString>("glGetString");
 
         /// <summary>
         ///     The gen buffers
@@ -569,8 +569,14 @@ namespace Alis.Extension.OpenGL
         ///     The draw arrays
         /// </summary>
         public static readonly DrawArrays GlDrawArrays = _<DrawArrays>("glDrawArrays");
+
+        public static readonly DrawElements GlDrawElements = _<DrawElements>("glDrawElements");
+        
     }
 
+    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    public delegate void DrawElements(PrimitiveType mode, int count, DrawElementsType type, IntPtr indices);
+        
     public delegate void DrawArrays(PrimitiveType mode, int first, int count);
 
     public enum PrimitiveType
