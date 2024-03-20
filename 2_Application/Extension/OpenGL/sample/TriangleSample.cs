@@ -32,6 +32,7 @@ using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
+using Alis.Core.Graphic.Sdl2.Structs;
 using Alis.Extension.OpenGL.Enums;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
@@ -39,13 +40,32 @@ namespace Alis.Extension.OpenGL.Sample
 {
     public class TriangleSample
     {
+        private IntPtr window;
+        private IntPtr context;
+       private bool running = true;
+        
         private uint vbo;
         private uint vao;
         private uint shaderProgram;
-
-        public IntPtr Initialize(out IntPtr context)
+        
+        public void Draw()
         {
-            // Initialize SDL and create a window
+            // Create a rotation matrix
+            Matrix4X4 transform = Matrix4X4.CreateRotationZ((float) DateTime.Now.TimeOfDay.TotalSeconds); // Rotate around Z-axis
+
+            // Get the location of the "transform" uniform variable
+            int transformLocation = Gl.GlGetUniformLocation(shaderProgram, "transform");
+
+            // Set the value of the "transform" uniform variable
+            Gl.UniformMatrix4Fv(transformLocation, transform);
+
+            // Draw the triangle
+            Gl.GlDrawArrays(PrimitiveType.Triangles, 0, 3);
+        }
+        
+        public void Run()
+        {
+             // Initialize SDL and create a window
             Sdl.Init(InitSettings.InitVideo);
 
             // GET VERSION SDL2
@@ -63,8 +83,8 @@ namespace Alis.Extension.OpenGL.Sample
             Sdl.SetAttributeByInt(GlAttr.SdlGlDepthSize, 24);
             Sdl.SetAttributeByInt(GlAttr.SdlGlAlphaSize, 8);
             Sdl.SetAttributeByInt(GlAttr.SdlGlStencilSize, 8);
-
-            IntPtr window = Sdl.CreateWindow("OpenGL Window", 100, 100, 800, 600, WindowSettings.WindowOpengl | WindowSettings.WindowResizable);
+            
+            window = Sdl.CreateWindow("OpenGL Window", 100, 100, 800, 600, WindowSettings.WindowOpengl | WindowSettings.WindowResizable);
 
             // Initialize OpenGL context
             context = Sdl.CreateContext(window);
@@ -101,23 +121,23 @@ namespace Alis.Extension.OpenGL.Sample
 
             // Update vertex shader source code
             string vertexShaderSource = @"
-        #version 330 core
-        layout (location = 0) in vec3 aPos;
-        uniform mat4 transform;
-        void main()
-        {
-            gl_Position = transform * vec4(aPos.x, aPos.y, aPos.z, 1.0);
-        }
-        ";
+                #version 330 core
+                layout (location = 0) in vec3 aPos;
+                uniform mat4 transform;
+                void main()
+                {
+                    gl_Position = transform * vec4(aPos.x, aPos.y, aPos.z, 1.0);
+                }
+                ";
 
-            string fragmentShaderSource = @"
-        #version 330 core
-        out vec4 FragColor;
-        void main()
-        {
-            FragColor = vec4(1.0f, 1.0f, 1.0f, 1.0f); // white color
-        }
-    ";
+                    string fragmentShaderSource = @"
+                #version 330 core
+                out vec4 FragColor;
+                void main()
+                {
+                    FragColor = vec4(1.0f, 1.0f, 1.0f, 1.0f); // white color
+                }
+            ";
 
             uint vertexShader = Gl.GlCreateShader(ShaderType.VertexShader);
             Gl.ShaderSource(vertexShader, vertexShaderSource);
@@ -131,10 +151,6 @@ namespace Alis.Extension.OpenGL.Sample
             Gl.GlAttachShader(shaderProgram, vertexShader);
             Gl.GlAttachShader(shaderProgram, fragmentShader);
             Gl.GlLinkProgram(shaderProgram);
-
-            // Delete the shaders as they're linked into our program now and no longer necessary
-            Gl.GlDeleteShader(vertexShader);
-            Gl.GlDeleteShader(fragmentShader);
 
             // Bind the VAO and shader program
             Gl.GlBindVertexArray(vao);
@@ -156,30 +172,35 @@ namespace Alis.Extension.OpenGL.Sample
             // Print the OpenGL shading language version
             Console.WriteLine(@$"OpenGL SHADING LANGUAGE VERSION {Gl.GlGetString(StringName.ShadingLanguageVersion)}");
             
-            return window;
-        }
+            while (running)
+            {
+                // Event handling
+                while (Sdl.PollEvent(out Event evt) != 0)
+                {
+                    if (evt.type == EventType.Quit)
+                    {
+                        running = false;
+                    }
+                }
 
-        public void Draw()
-        {
-            // Create a rotation matrix
-            Matrix4X4 transform = Matrix4X4.CreateRotationZ((float) DateTime.Now.TimeOfDay.TotalSeconds); // Rotate around Z-axis
-
-            // Get the location of the "transform" uniform variable
-            int transformLocation = Gl.GlGetUniformLocation(shaderProgram, "transform");
-
-            // Set the value of the "transform" uniform variable
-            Gl.UniformMatrix4Fv(transformLocation, transform);
-
-            // Draw the triangle
-            Gl.GlDrawArrays(PrimitiveType.Triangles, 0, 3);
-        }
-
-        public void Cleanup()
-        {
+                // Clear the screen
+                Gl.GlClear(ClearBufferMask.ColorBufferBit);
+                
+                Draw();
+                
+                // Swap the buffers to display the triangle
+                Sdl.SwapWindow(window);
+            }
+            
             // Cleanup
             Gl.DeleteVertexArray(vao);
             Gl.DeleteBuffer(vbo);
             Gl.GlDeleteProgram(shaderProgram);
+
+            // Cleanup SDL
+            Sdl.DeleteContext(context);
+            Sdl.DestroyWindow(window);
+            Sdl.Quit();
         }
     }
 }
