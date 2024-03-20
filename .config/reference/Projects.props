@@ -17,12 +17,18 @@
                           $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
                           $(SolutionDir)**/Extension/**/**/*.Test.csproj;"/>
 
-        <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"
+        <ProjectReference Condition="$(ProjectDir.Contains('2_Application')) AND $(ProjectDir.Contains('Extension')) == False"
                           Include="$(SolutionDir)3_Structuration/**/*.csproj"
                           Exclude="
                           $(SolutionDir)3_Structuration/**/*.Sample.csproj; 
                           $(SolutionDir)3_Structuration/**/*.Test.csproj;
                           $(SolutionDir)**/Extension/**/**/*.csproj;"/>
+
+        <ProjectReference Condition="$(ProjectDir.Contains('2_Application')) AND $(ProjectDir.Contains('Extension')) == True"
+                          Include="$(SolutionDir)2_Application/**/Alis.csproj;"
+                          Exclude="
+                          $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
+                          $(SolutionDir)**/Extension/**/**/*.Test.csproj;"/>
 
         <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
                           Include="$(SolutionDir)4_Operation/**/*.csproj"

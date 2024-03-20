@@ -32,9 +32,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
-using Alis.App.Engine.OpenGL;
-using Alis.App.Engine.OpenGL.Constructs;
-using Alis.App.Engine.OpenGL.Enums;
 using Alis.App.Engine.Windows;
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Math.Matrix;
@@ -46,7 +43,10 @@ using Alis.Extension.ImGui;
 using Alis.Extension.ImGui.Extras.Guizmo;
 using Alis.Extension.ImGui.Extras.Node;
 using Alis.Extension.ImGui.Extras.Plot;
-using Type = Alis.App.Engine.OpenGL.Enums.Type;
+using Alis.Extension.OpenGL;
+using Alis.Extension.OpenGL.Constructs;
+using Alis.Extension.OpenGL.Enums;
+using Type = Alis.Extension.OpenGL.Enums.Type;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.App.Engine
