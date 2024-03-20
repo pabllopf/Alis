@@ -47,37 +47,37 @@ namespace Alis.Core.Aspect.Math.Matrix
         public float M11;
 
         /// <summary>The second element of the first row.</summary>
-        public readonly float M12;
+        public float M12;
 
         /// <summary>The third element of the first row.</summary>
-        public readonly float M13;
+        public float M13;
 
         /// <summary>The fourth element of the first row.</summary>
-        public readonly float M14;
+        public float M14;
 
         /// <summary>The first element of the second row.</summary>
-        public readonly float M21;
+        public float M21;
 
         /// <summary>The second element of the second row.</summary>
         public float M22;
 
         /// <summary>The third element of the second row.</summary>
-        public readonly float M23;
+        public float M23;
 
         /// <summary>The fourth element of the second row.</summary>
-        public readonly float M24;
+        public float M24;
 
         /// <summary>The first element of the third row.</summary>
-        public readonly float M31;
+        public float M31;
 
         /// <summary>The second element of the third row.</summary>
-        public readonly float M32;
+        public float M32;
 
         /// <summary>The third element of the third row.</summary>
         public float M33;
 
         /// <summary>The fourth element of the third row.</summary>
-        public readonly float M34;
+        public float M34;
 
         /// <summary>The first element of the fourth row.</summary>
         public float M41;
@@ -89,7 +89,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         public float M43;
 
         /// <summary>The fourth element of the fourth row.</summary>
-        public readonly float M44;
+        public float M44;
 
         /// <summary>Creates a 4x4 matrix from the specified components.</summary>
         /// <param name="m11">The value to assign to the first element in the first row.</param>
@@ -306,5 +306,50 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </remarks>
         public override string ToString() =>
             $"{{ {{M11:{M11} M12:{M12} M13:{M13} M14:{M14}}} {{M21:{M21} M22:{M22} M23:{M23} M24:{M24}}} {{M31:{M31} M32:{M32} M33:{M33} M34:{M34}}} {{M41:{M41} M42:{M42} M43:{M43} M44:{M44}}} }}";
+
+        public static Matrix4X4 CreateRotationX(float radians)
+        {
+            float c = MathF.Cos(radians);
+            float s = MathF.Sin(radians);
+
+            // [  1  0  0  0 ]
+            // [  0  c  s  0 ]
+            // [  0 -s  c  0 ]
+            // [  0  0  0  1 ]
+            Matrix4X4 result = new Matrix4X4(
+                1f, 0f, 0f, 0f,
+                0f, c, s, 0f,
+                0f, -s, c, 0f,
+                0f, 0f, 0f, 1f);
+
+            return result;
+        }
+
+        public static Matrix4X4 Multiply(Matrix4X4 matrix1, Matrix4X4 matrix2)
+        {
+            Matrix4X4 result = new Matrix4X4();
+
+            result.M11 = matrix1.M11 * matrix2.M11 + matrix1.M12 * matrix2.M21 + matrix1.M13 * matrix2.M31 + matrix1.M14 * matrix2.M41;
+            result.M12 = matrix1.M11 * matrix2.M12 + matrix1.M12 * matrix2.M22 + matrix1.M13 * matrix2.M32 + matrix1.M14 * matrix2.M42;
+            result.M13 = matrix1.M11 * matrix2.M13 + matrix1.M12 * matrix2.M23 + matrix1.M13 * matrix2.M33 + matrix1.M14 * matrix2.M43;
+            result.M14 = matrix1.M11 * matrix2.M14 + matrix1.M12 * matrix2.M24 + matrix1.M13 * matrix2.M34 + matrix1.M14 * matrix2.M44;
+
+            result.M21 = matrix1.M21 * matrix2.M11 + matrix1.M22 * matrix2.M21 + matrix1.M23 * matrix2.M31 + matrix1.M24 * matrix2.M41;
+            result.M22 = matrix1.M21 * matrix2.M12 + matrix1.M22 * matrix2.M22 + matrix1.M23 * matrix2.M32 + matrix1.M24 * matrix2.M42;
+            result.M23 = matrix1.M21 * matrix2.M13 + matrix1.M22 * matrix2.M23 + matrix1.M23 * matrix2.M33 + matrix1.M24 * matrix2.M43;
+            result.M24 = matrix1.M21 * matrix2.M14 + matrix1.M22 * matrix2.M24 + matrix1.M23 * matrix2.M34 + matrix1.M24 * matrix2.M44;
+
+            result.M31 = matrix1.M31 * matrix2.M11 + matrix1.M32 * matrix2.M21 + matrix1.M33 * matrix2.M31 + matrix1.M34 * matrix2.M41;
+            result.M32 = matrix1.M31 * matrix2.M12 + matrix1.M32 * matrix2.M22 + matrix1.M33 * matrix2.M32 + matrix1.M34 * matrix2.M42;
+            result.M33 = matrix1.M31 * matrix2.M13 + matrix1.M32 * matrix2.M23 + matrix1.M33 * matrix2.M33 + matrix1.M34 * matrix2.M43;
+            result.M34 = matrix1.M31 * matrix2.M14 + matrix1.M32 * matrix2.M24 + matrix1.M33 * matrix2.M34 + matrix1.M34 * matrix2.M44;
+
+            result.M41 = matrix1.M41 * matrix2.M11 + matrix1.M42 * matrix2.M21 + matrix1.M43 * matrix2.M31 + matrix1.M44 * matrix2.M41;
+            result.M42 = matrix1.M41 * matrix2.M12 + matrix1.M42 * matrix2.M22 + matrix1.M43 * matrix2.M32 + matrix1.M44 * matrix2.M42;
+            result.M43 = matrix1.M41 * matrix2.M13 + matrix1.M42 * matrix2.M23 + matrix1.M43 * matrix2.M33 + matrix1.M44 * matrix2.M43;
+            result.M44 = matrix1.M41 * matrix2.M14 + matrix1.M42 * matrix2.M24 + matrix1.M43 * matrix2.M34 + matrix1.M44 * matrix2.M44;
+
+            return result;
+        }
     }
 }

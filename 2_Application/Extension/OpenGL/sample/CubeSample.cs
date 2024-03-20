@@ -28,54 +28,27 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Extension.OpenGL.Enums;
-using Vector3 = Alis.Core.Aspect.Math.Vector.Vector3;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.Extension.OpenGL.Sample
 {
     public class CubeSample
     {
-        // Define the vertices and indices for a cube
-        private static readonly float[] CubeVertices = new float[]
-        {
-            -1.0f, -1.0f, -1.0f,
-            1.0f, -1.0f, -1.0f,
-            1.0f, 1.0f, -1.0f,
-            -1.0f, 1.0f, -1.0f,
-            -1.0f, -1.0f, 1.0f,
-            1.0f, -1.0f, 1.0f,
-            1.0f, 1.0f, 1.0f,
-            -1.0f, 1.0f, 1.0f
-        };
-
-        private static readonly uint[] CubeIndices = new uint[]
-        {
-            0, 1, 2, 2, 3, 0,
-            4, 5, 6, 6, 7, 4,
-            0, 1, 5, 5, 4, 0,
-            2, 3, 7, 7, 6, 2,
-            0, 3, 7, 7, 4, 0,
-            1, 2, 6, 6, 5, 1
-        };
-
-        // Define the vertex buffer and index buffer
-        private uint vertexBuffer;
-        private uint indexBuffer;
-
-        // Define the shader program
+        private uint vbo;
+        private uint vao;
+        private uint ebo;
         private uint shaderProgram;
 
         public IntPtr Initialize(out IntPtr context)
         {
-            // Initialize SDL and create a window and context
+            // Initialize SDL and create a window
             Sdl.Init(InitSettings.InitVideo);
-            
+
             // GET VERSION SDL2
             Version version = Sdl.GetVersion();
             Console.WriteLine(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
@@ -91,52 +64,101 @@ namespace Alis.Extension.OpenGL.Sample
             Sdl.SetAttributeByInt(GlAttr.SdlGlDepthSize, 24);
             Sdl.SetAttributeByInt(GlAttr.SdlGlAlphaSize, 8);
             Sdl.SetAttributeByInt(GlAttr.SdlGlStencilSize, 8);
-            
-            // Create the window
+
             IntPtr window = Sdl.CreateWindow("OpenGL Window", 100, 100, 800, 600, WindowSettings.WindowOpengl | WindowSettings.WindowResizable);
 
             // Initialize OpenGL context
             context = Sdl.CreateContext(window);
-            
-            // Initialize the vertex buffer and index buffer
-            vertexBuffer = Gl.GenBuffer();
-            GCHandle pinnedArray = GCHandle.Alloc(CubeVertices, GCHandleType.Pinned);
-            IntPtr pointer = pinnedArray.AddrOfPinnedObject();
 
-            Gl.GlBufferData(BufferTarget.ArrayBuffer, (IntPtr)(CubeVertices.Length * sizeof(float)), pointer, BufferUsageHint.StaticDraw);
+            // Define the vertices for the cube
+            float[] vertices =
+            {
+                -0.5f, -0.5f, -0.5f, // Front bottom-left
+                0.5f, -0.5f, -0.5f, // Front bottom-right
+                0.5f, 0.5f, -0.5f, // Front top-right
+                -0.5f, 0.5f, -0.5f, // Front top-left
+                -0.5f, -0.5f, 0.5f, // Back bottom-left
+                0.5f, -0.5f, 0.5f, // Back bottom-right
+                0.5f, 0.5f, 0.5f, // Back top-right
+                -0.5f, 0.5f, 0.5f // Back top-left
+            };
 
-            pinnedArray.Free(); // Don't forget to free the pinned memory
+            uint[] indices =
+            {
+                0, 1, 3, // Front
+                1, 2, 3,
+                1, 5, 2, // Right
+                5, 6, 2,
+                5, 4, 6, // Back
+                4, 7, 6,
+                4, 0, 7, // Left
+                0, 3, 7,
+                3, 2, 7, // Top
+                2, 6, 7,
+                4, 5, 0, // Bottom
+                5, 1, 0
+            };
 
-            indexBuffer = Gl.GenBuffer();
-            GCHandle pinnedArray2 = GCHandle.Alloc(CubeIndices, GCHandleType.Pinned);
-            IntPtr pointer2 = pinnedArray2.AddrOfPinnedObject();
-            Gl.GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(CubeIndices.Length * sizeof(uint)), pointer2, BufferUsageHint.StaticDraw);
-            pinnedArray2.Free(); // Don't forget to free the pinned memory
-            
-            // Initialize the shader program
-            // Note: You need to replace these with your actual shader source code
+            // Create a vertex buffer object (VBO), a vertex array object (VAO), and an element buffer object (EBO)
+            vbo = Gl.GenBuffer();
+            vao = Gl.GenVertexArray();
+            ebo = Gl.GenBuffer();
+
+            // Bind the VAO, VBO, and EBO
+            Gl.GlBindVertexArray(vao);
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, vbo);
+            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, ebo);
+
+            // Buffer the vertex data
+            GCHandle vHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
+            try
+            {
+                IntPtr vPointer = vHandle.AddrOfPinnedObject();
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, (IntPtr) (vertices.Length * sizeof(float)), vPointer, BufferUsageHint.StaticDraw);
+            }
+            finally
+            {
+                if (vHandle.IsAllocated)
+                {
+                    vHandle.Free();
+                }
+            }
+
+            // Buffer the index data
+            GCHandle iHandle = GCHandle.Alloc(indices, GCHandleType.Pinned);
+            try
+            {
+                IntPtr iPointer = iHandle.AddrOfPinnedObject();
+                Gl.GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr) (indices.Length * sizeof(uint)), iPointer, BufferUsageHint.StaticDraw);
+            }
+            finally
+            {
+                if (iHandle.IsAllocated)
+                {
+                    iHandle.Free();
+                }
+            }
+
+            // Set up the shader program
             string vertexShaderSource = @"
-            #version 330 core
-            layout (location = 0) in vec3 aPos;
+    #version 330 core
+    layout (location = 0) in vec3 aPos;
+    uniform mat4 transform;
+    void main()
+    {
+        gl_Position = transform * vec4(aPos.x, aPos.y, aPos.z, 1.0);
+    }
+    ";
 
-            uniform mat4 model;
-            uniform mat4 view;
-            uniform mat4 projection;
-
-            void main()
-            {
-                gl_Position = projection * view * model * vec4(aPos, 1.0);
-            }";
-            
             string fragmentShaderSource = @"
-            #version 330 core
-            out vec4 FragColor;
+    #version 330 core
+    out vec4 FragColor;
+    void main()
+    {
+        FragColor = vec4(1.0f, 1.0f, 1.0f, 1.0f); // white color
+    }
+    ";
 
-            void main()
-            {
-                FragColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
-            }";
-                        
             uint vertexShader = Gl.GlCreateShader(ShaderType.VertexShader);
             Gl.ShaderSource(vertexShader, vertexShaderSource);
             Gl.GlCompileShader(vertexShader);
@@ -150,69 +172,47 @@ namespace Alis.Extension.OpenGL.Sample
             Gl.GlAttachShader(shaderProgram, fragmentShader);
             Gl.GlLinkProgram(shaderProgram);
 
+            // Delete the shaders as they're linked into our program now and no longer necessary
             Gl.GlDeleteShader(vertexShader);
             Gl.GlDeleteShader(fragmentShader);
-            
-             
-            // Print the OpenGL version
-            Console.WriteLine(@$"OpenGL VERSION {Gl.GlGetString(StringName.Version)}");
-            
-            // Print the OpenGL vendor
-            Console.WriteLine(@$"OpenGL VENDOR {Gl.GlGetString(StringName.Vendor)}");
-            
-            // Print the OpenGL renderer
-            Console.WriteLine(@$"OpenGL RENDERER {Gl.GlGetString(StringName.Renderer)}");
-            
-            // Print the OpenGL shading language version
-            Console.WriteLine(@$"OpenGL SHADING LANGUAGE VERSION {Gl.GlGetString(StringName.ShadingLanguageVersion)}");
-            
+
+            // Bind the VAO and shader program
+            Gl.GlBindVertexArray(vao);
+            Gl.GlUseProgram(shaderProgram);
+
+            // Enable the vertex attribute array
+            Gl.EnableVertexAttribArray(0);
+            Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), IntPtr.Zero);
+
+
             return window;
         }
 
         public void Draw()
         {
-            Gl.GlClear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            // Create a rotation matrix
+            Matrix4X4 transform = Matrix4X4.CreateRotationZ((float) DateTime.Now.TimeOfDay.TotalSeconds); // Rotate around Z-axis
+            
+            // rotate around X-axis
+            transform = Matrix4X4.Multiply(transform, Matrix4X4.CreateRotationX((float) DateTime.Now.TimeOfDay.TotalSeconds));
 
-            Gl.GlUseProgram(shaderProgram);
-            
-            Matrix4x4 temp = Matrix4x4.CreateLookAt(new System.Numerics.Vector3(4.0f, 3.0f, 3.0f), System.Numerics.Vector3.Zero, System.Numerics.Vector3.UnitY);
-            
-            Matrix4X4 view = new Matrix4X4(
-                temp.M11, temp.M12, temp.M13, temp.M14,
-                temp.M21, temp.M22, temp.M23, temp.M24,
-                temp.M31, temp.M32, temp.M33, temp.M34,
-                temp.M41, temp.M42, temp.M43, temp.M44
-            );
-                
-            Matrix4x4 temp2 = Matrix4x4.CreatePerspectiveFieldOfView((float)Math.PI / 4, 800.0f / 600.0f, 0.1f, 100.0f);
-            
-            Matrix4X4 projection = new Matrix4X4(
-                temp2.M11, temp2.M12, temp2.M13, temp2.M14,
-                temp2.M21, temp2.M22, temp2.M23, temp2.M24,
-                temp2.M31, temp2.M32, temp2.M33, temp2.M34,
-                temp2.M41, temp2.M42, temp2.M43, temp2.M44
-            );
-            
-            Matrix4x4 temp3 = Matrix4x4.CreateRotationY((float)DateTime.Now.TimeOfDay.TotalSeconds);
-            
-            Matrix4X4 model = new Matrix4X4(
-                temp3.M11, temp3.M12, temp3.M13, temp3.M14,
-                temp3.M21, temp3.M22, temp3.M23, temp3.M24,
-                temp3.M31, temp3.M32, temp3.M33, temp3.M34,
-                temp3.M41, temp3.M42, temp3.M43, temp3.M44
-            );
-            
-            int modelMatrixLocation = Gl.GlGetUniformLocation(shaderProgram, "model");
-            Gl.UniformMatrix4Fv(modelMatrixLocation, model);
-            
-            int viewMatrixLocation = Gl.GlGetUniformLocation(shaderProgram, "view");
-            Gl.UniformMatrix4Fv(viewMatrixLocation, view);
+            // Get the location of the "transform" uniform variable
+            int transformLocation = Gl.GlGetUniformLocation(shaderProgram, "transform");
 
-            int projectionMatrixLocation = Gl.GlGetUniformLocation(shaderProgram, "projection");
-            Gl.UniformMatrix4Fv(projectionMatrixLocation, projection);
+            // Set the value of the "transform" uniform variable
+            Gl.UniformMatrix4Fv(transformLocation, transform);
 
             // Draw the cube
-            Gl.GlDrawElements(PrimitiveType.Triangles, CubeIndices.Length, DrawElementsType.UnsignedInt, IntPtr.Zero);
+            Gl.GlDrawElements(PrimitiveType.Triangles, 36, DrawElementsType.UnsignedInt, IntPtr.Zero);
+        }
+
+        public void Cleanup()
+        {
+            // Cleanup
+            Gl.DeleteVertexArray(vao);
+            Gl.DeleteBuffer(vbo);
+            Gl.DeleteBuffer(ebo);
+            Gl.GlDeleteProgram(shaderProgram);
         }
     }
 }
