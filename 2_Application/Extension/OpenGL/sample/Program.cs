@@ -1,6 +1,6 @@
 using System;
-using System.Numerics;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -66,16 +66,17 @@ namespace Alis.Extension.OpenGL.Sample
                     handle.Free();
                 }
             }
-
-            // Create a shader program
+            
+            // Update vertex shader source code
             string vertexShaderSource = @"
             #version 330 core
             layout (location = 0) in vec3 aPos;
+            uniform mat4 transform;
             void main()
             {
-                gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+                gl_Position = transform * vec4(aPos.x, aPos.y, aPos.z, 1.0);
             }
-        ";
+            ";
 
             string fragmentShaderSource = @"
             #version 330 core
@@ -126,10 +127,19 @@ namespace Alis.Extension.OpenGL.Sample
 
                 // Clear the screen
                 Gl.GlClear(ClearBufferMask.ColorBufferBit);
+                
+                // Create a rotation matrix
+                Matrix4X4 transform = Matrix4X4.CreateRotationZ((float)DateTime.Now.TimeOfDay.TotalSeconds); // Rotate around Z-axis
+
+                // Get the location of the "transform" uniform variable
+                int transformLocation = Gl.GlGetUniformLocation(shaderProgram, "transform");
+
+                // Set the value of the "transform" uniform variable
+                Gl.UniformMatrix4Fv(transformLocation, transform);
 
                 // Draw the triangle
                 Gl.GlDrawArrays(PrimitiveType.Triangles, 0, 3);
-
+                
                 // Swap the buffers to display the triangle
                 Sdl.SwapWindow(window);
             }
