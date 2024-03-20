@@ -28,11 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Numerics;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Extension.OpenGL.Enums;
+using Vector3 = Alis.Core.Aspect.Math.Vector.Vector3;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.Extension.OpenGL.Sample
@@ -110,11 +112,31 @@ namespace Alis.Extension.OpenGL.Sample
             IntPtr pointer2 = pinnedArray2.AddrOfPinnedObject();
             Gl.GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(CubeIndices.Length * sizeof(uint)), pointer2, BufferUsageHint.StaticDraw);
             pinnedArray2.Free(); // Don't forget to free the pinned memory
-
+            
             // Initialize the shader program
             // Note: You need to replace these with your actual shader source code
-            string vertexShaderSource = "...";
-            string fragmentShaderSource = "...";
+            string vertexShaderSource = @"
+            #version 330 core
+            layout (location = 0) in vec3 aPos;
+
+            uniform mat4 model;
+            uniform mat4 view;
+            uniform mat4 projection;
+
+            void main()
+            {
+                gl_Position = projection * view * model * vec4(aPos, 1.0);
+            }";
+            
+            string fragmentShaderSource = @"
+            #version 330 core
+            out vec4 FragColor;
+
+            void main()
+            {
+                FragColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
+            }";
+                        
             uint vertexShader = Gl.GlCreateShader(ShaderType.VertexShader);
             Gl.ShaderSource(vertexShader, vertexShaderSource);
             Gl.GlCompileShader(vertexShader);
@@ -149,21 +171,45 @@ namespace Alis.Extension.OpenGL.Sample
 
         public void Draw()
         {
-            // Bind the buffers and shader program
-            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
-            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, indexBuffer);
+            Gl.GlClear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+
             Gl.GlUseProgram(shaderProgram);
+            
+            Matrix4x4 temp = Matrix4x4.CreateLookAt(new System.Numerics.Vector3(4.0f, 3.0f, 3.0f), System.Numerics.Vector3.Zero, System.Numerics.Vector3.UnitY);
+            
+            Matrix4X4 view = new Matrix4X4(
+                temp.M11, temp.M12, temp.M13, temp.M14,
+                temp.M21, temp.M22, temp.M23, temp.M24,
+                temp.M31, temp.M32, temp.M33, temp.M34,
+                temp.M41, temp.M42, temp.M43, temp.M44
+            );
+                
+            Matrix4x4 temp2 = Matrix4x4.CreatePerspectiveFieldOfView((float)Math.PI / 4, 800.0f / 600.0f, 0.1f, 100.0f);
+            
+            Matrix4X4 projection = new Matrix4X4(
+                temp2.M11, temp2.M12, temp2.M13, temp2.M14,
+                temp2.M21, temp2.M22, temp2.M23, temp2.M24,
+                temp2.M31, temp2.M32, temp2.M33, temp2.M34,
+                temp2.M41, temp2.M42, temp2.M43, temp2.M44
+            );
+            
+            Matrix4x4 temp3 = Matrix4x4.CreateRotationY((float)DateTime.Now.TimeOfDay.TotalSeconds);
+            
+            Matrix4X4 model = new Matrix4X4(
+                temp3.M11, temp3.M12, temp3.M13, temp3.M14,
+                temp3.M21, temp3.M22, temp3.M23, temp3.M24,
+                temp3.M31, temp3.M32, temp3.M33, temp3.M34,
+                temp3.M41, temp3.M42, temp3.M43, temp3.M44
+            );
+            
+            int modelMatrixLocation = Gl.GlGetUniformLocation(shaderProgram, "model");
+            Gl.UniformMatrix4Fv(modelMatrixLocation, model);
+            
+            int viewMatrixLocation = Gl.GlGetUniformLocation(shaderProgram, "view");
+            Gl.UniformMatrix4Fv(viewMatrixLocation, view);
 
-            // Set the uniforms
-            // Note: You need to replace these with your actual uniform names and values
-            int modelMatrixLocation = Gl.GlGetUniformLocation(shaderProgram, "modelMatrix");
-            Gl.UniformMatrix4Fv(modelMatrixLocation, Matrix4X4.Identity);
-
-            int viewMatrixLocation = Gl.GlGetUniformLocation(shaderProgram, "viewMatrix");
-            Gl.UniformMatrix4Fv(viewMatrixLocation, Matrix4X4.Identity);
-
-            int projectionMatrixLocation = Gl.GlGetUniformLocation(shaderProgram, "projectionMatrix");
-            Gl.UniformMatrix4Fv(projectionMatrixLocation, Matrix4X4.Identity);
+            int projectionMatrixLocation = Gl.GlGetUniformLocation(shaderProgram, "projection");
+            Gl.UniformMatrix4Fv(projectionMatrixLocation, projection);
 
             // Draw the cube
             Gl.GlDrawElements(PrimitiveType.Triangles, CubeIndices.Length, DrawElementsType.UnsignedInt, IntPtr.Zero);
