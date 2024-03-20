@@ -2,8 +2,14 @@ using System;
 
 namespace Alis.Extension.OpenGL.Sample
 {
+    /// <summary>
+    /// The program class
+    /// </summary>
     public static class Program
     {
+        /// <summary>
+        /// Main
+        /// </summary>
         public static void Main()
         {
             Console.WriteLine("Enter the number of the sample you want to run:");

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DefaultTest.cs
+//  File:Profiler.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,47 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
+using System;
 
-namespace Alis.Core.Script.Test
+namespace Alis.Core.Profile
 {
     /// <summary>
-    ///     The default test class
+    /// The profiler class
     /// </summary>
-    public class DefaultTest
+    public class Profiler
     {
         /// <summary>
-        ///     Tests that test
+        /// The start time
         /// </summary>
-        [Fact]
-        public void Test()
+        private DateTime startTime;
+        /// <summary>
+        /// The elapsed time
+        /// </summary>
+        private TimeSpan elapsedTime;
+
+        /// <summary>
+        /// Starts the profiling
+        /// </summary>
+        public void StartProfiling()
         {
-            Assert.True(true);
+            startTime = DateTime.Now;
+        }
+
+        /// <summary>
+        /// Stops the profiling
+        /// </summary>
+        public void StopProfiling()
+        {
+            elapsedTime = DateTime.Now - startTime;
+        }
+
+        /// <summary>
+        /// Gets the elapsed time
+        /// </summary>
+        /// <returns>The elapsed time</returns>
+        public TimeSpan GetElapsedTime()
+        {
+            return elapsedTime;
         }
     }
 }
