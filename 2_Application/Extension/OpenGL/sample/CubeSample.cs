@@ -69,18 +69,19 @@ namespace Alis.Extension.OpenGL.Sample
 
             // Initialize OpenGL context
             context = Sdl.CreateContext(window);
-
-            // Define the vertices for the cube
+            
+            // Define the vertices for the cube with color information
             float[] vertices =
             {
-                -0.5f, -0.5f, -0.5f, // Front bottom-left
-                0.5f, -0.5f, -0.5f, // Front bottom-right
-                0.5f, 0.5f, -0.5f, // Front top-right
-                -0.5f, 0.5f, -0.5f, // Front top-left
-                -0.5f, -0.5f, 0.5f, // Back bottom-left
-                0.5f, -0.5f, 0.5f, // Back bottom-right
-                0.5f, 0.5f, 0.5f, // Back top-right
-                -0.5f, 0.5f, 0.5f // Back top-left
+                // positions          // colors
+                -0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f, // Front bottom-left
+                0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f, // Front bottom-right
+                0.5f, 0.5f, -0.5f, 0.0f, 0.0f, 1.0f, // Front top-right
+                -0.5f, 0.5f, -0.5f, 1.0f, 1.0f, 0.0f, // Front top-left
+                -0.5f, -0.5f, 0.5f, 0.0f, 1.0f, 1.0f, // Back bottom-left
+                0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 1.0f, // Back bottom-right
+                0.5f, 0.5f, 0.5f, 1.0f, 1.0f, 1.0f, // Back top-right
+                -0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 0.0f // Back top-left
             };
 
             uint[] indices =
@@ -139,25 +140,28 @@ namespace Alis.Extension.OpenGL.Sample
                 }
             }
 
-            // Set up the shader program
             string vertexShaderSource = @"
-    #version 330 core
-    layout (location = 0) in vec3 aPos;
-    uniform mat4 transform;
-    void main()
-    {
-        gl_Position = transform * vec4(aPos.x, aPos.y, aPos.z, 1.0);
-    }
-    ";
+            #version 330 core
+            layout (location = 0) in vec3 aPos;
+            layout (location = 1) in vec3 aColor;
+            out vec3 ourColor;
+            uniform mat4 transform;
+            void main()
+            {
+                gl_Position = transform * vec4(aPos.x, aPos.y, aPos.z, 1.0);
+                ourColor = aColor;
+            }
+            ";
 
-            string fragmentShaderSource = @"
-    #version 330 core
-    out vec4 FragColor;
-    void main()
-    {
-        FragColor = vec4(1.0f, 1.0f, 1.0f, 1.0f); // white color
-    }
-    ";
+                        string fragmentShaderSource = @"
+            #version 330 core
+            in vec3 ourColor;
+            out vec4 FragColor;
+            void main()
+            {
+                FragColor = vec4(ourColor, 1.0f);
+            }
+            ";
 
             uint vertexShader = Gl.GlCreateShader(ShaderType.VertexShader);
             Gl.ShaderSource(vertexShader, vertexShaderSource);
@@ -180,10 +184,11 @@ namespace Alis.Extension.OpenGL.Sample
             Gl.GlBindVertexArray(vao);
             Gl.GlUseProgram(shaderProgram);
 
-            // Enable the vertex attribute array
+            // Enable the vertex attribute array for position and color
             Gl.EnableVertexAttribArray(0);
-            Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), IntPtr.Zero);
-
+            Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), IntPtr.Zero);
+            Gl.EnableVertexAttribArray(1);
+            Gl.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), (IntPtr)(3 * sizeof(float)));
 
             return window;
         }
@@ -202,7 +207,7 @@ namespace Alis.Extension.OpenGL.Sample
             // Set the value of the "transform" uniform variable
             Gl.UniformMatrix4Fv(transformLocation, transform);
 
-            // Draw the cube
+            // Draw the cube in wireframe mode
             Gl.GlDrawElements(PrimitiveType.Triangles, 36, DrawElementsType.UnsignedInt, IntPtr.Zero);
         }
 
