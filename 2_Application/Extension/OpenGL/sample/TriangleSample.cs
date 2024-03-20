@@ -38,16 +38,40 @@ using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.Extension.OpenGL.Sample
 {
+    /// <summary>
+    /// The triangle sample class
+    /// </summary>
     public class TriangleSample
     {
+        /// <summary>
+        /// The window
+        /// </summary>
         private IntPtr window;
+        /// <summary>
+        /// The context
+        /// </summary>
         private IntPtr context;
+       /// <summary>
+       /// The running
+       /// </summary>
        private bool running = true;
         
+        /// <summary>
+        /// The vbo
+        /// </summary>
         private uint vbo;
+        /// <summary>
+        /// The vao
+        /// </summary>
         private uint vao;
+        /// <summary>
+        /// The shader program
+        /// </summary>
         private uint shaderProgram;
         
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
         public void Draw()
         {
             // Create a rotation matrix
@@ -63,6 +87,9 @@ namespace Alis.Extension.OpenGL.Sample
             Gl.GlDrawArrays(PrimitiveType.Triangles, 0, 3);
         }
         
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public void Run()
         {
              // Initialize SDL and create a window

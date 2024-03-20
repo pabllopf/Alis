@@ -307,6 +307,11 @@ namespace Alis.Core.Aspect.Math.Matrix
         public override string ToString() =>
             $"{{ {{M11:{M11} M12:{M12} M13:{M13} M14:{M14}}} {{M21:{M21} M22:{M22} M23:{M23} M24:{M24}}} {{M31:{M31} M32:{M32} M33:{M33} M34:{M34}}} {{M41:{M41} M42:{M42} M43:{M43} M44:{M44}}} }}";
 
+        /// <summary>
+        /// Creates the rotation x using the specified radians
+        /// </summary>
+        /// <param name="radians">The radians</param>
+        /// <returns>The result</returns>
         public static Matrix4X4 CreateRotationX(float radians)
         {
             float c = MathF.Cos(radians);
@@ -325,6 +330,12 @@ namespace Alis.Core.Aspect.Math.Matrix
             return result;
         }
 
+        /// <summary>
+        /// Multiplies the matrix 1
+        /// </summary>
+        /// <param name="matrix1">The matrix</param>
+        /// <param name="matrix2">The matrix</param>
+        /// <returns>The result</returns>
         public static Matrix4X4 Multiply(Matrix4X4 matrix1, Matrix4X4 matrix2)
         {
             Matrix4X4 result = new Matrix4X4();

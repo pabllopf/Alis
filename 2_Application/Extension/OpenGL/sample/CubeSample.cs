@@ -38,17 +38,44 @@ using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.Extension.OpenGL.Sample
 {
+    /// <summary>
+    /// The cube sample class
+    /// </summary>
     public class CubeSample
     {
+        /// <summary>
+        /// The window
+        /// </summary>
         private IntPtr window;
+        /// <summary>
+        /// The context
+        /// </summary>
         private IntPtr context;
+        /// <summary>
+        /// The running
+        /// </summary>
         private bool running = true;
         
+        /// <summary>
+        /// The vbo
+        /// </summary>
         private uint vbo;
+        /// <summary>
+        /// The vao
+        /// </summary>
         private uint vao;
+        /// <summary>
+        /// The ebo
+        /// </summary>
         private uint ebo;
+        /// <summary>
+        /// The shader program
+        /// </summary>
         private uint shaderProgram;
         
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
         public void Draw()
         {
             // Create a rotation matrix
@@ -67,6 +94,9 @@ namespace Alis.Extension.OpenGL.Sample
             Gl.GlDrawElements(PrimitiveType.Triangles, 36, DrawElementsType.UnsignedInt, IntPtr.Zero);
         }
         
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public void Run()
         {
             // Initialize SDL and create a window
@@ -232,7 +262,6 @@ namespace Alis.Extension.OpenGL.Sample
                 // Swap the buffers to display the triangle
                 Sdl.SwapWindow(window);
             }
-            
             
             // Cleanup
             Gl.DeleteVertexArray(vao);

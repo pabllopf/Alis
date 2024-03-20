@@ -31,19 +31,31 @@ using System;
 
 namespace Alis.Core.Profile.Sample
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
     public static class Program
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
+            ProfilerService profilerService = new ProfilerService();
+
+            profilerService.StartProfiling();
+
+            // Call the method you want to profile here
+            SampleMethod();
+
+            ProfileData profileData = profilerService.StopProfiling();
+
+            Console.WriteLine($"CPU Usage: {profileData.CpuUsage}");
+            Console.WriteLine($"Memory Usage: {profileData.MemoryUsage}");
+        }
+
+        private static void SampleMethod()
+        {
+            // This is a placeholder for the method you want to profile
+            // Replace this with the actual code
+            for (int i = 0; i < 1000000; i++)
+            {
+                int j = i;
+            }
         }
     }
 }

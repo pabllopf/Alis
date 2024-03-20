@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:ProfileData.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,23 +27,20 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Script.Sample
+namespace Alis.Core.Profile
 {
     /// <summary>
-    ///     The program class
+    /// The profile data class
     /// </summary>
-    public static class Program
+    public class ProfileData
     {
         /// <summary>
-        ///     Main the args
+        /// Gets or sets the value of the memory usage
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
-        }
+        public long MemoryUsage { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the cpu usage
+        /// </summary>
+        public double CpuUsage { get; set; }
     }
 }
