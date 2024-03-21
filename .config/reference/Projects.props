@@ -53,7 +53,7 @@
 
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
 
-        <Content Include="$(ProjectDir)**/bin/**/**/*.dll" Visible="false" PackagePath="runtimes/"/>
+        <Content Include="$(ProjectDir)**.dll" Visible="false" PackagePath="runtimes/"/>
 
         <EmbeddedResource Condition="Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' == ''"
                           Include="$(ProjectDir)/resources/**/*.zip"/>

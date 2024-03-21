@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.ImGui.Properties
         /// <summary>
         ///     The resource path
         /// </summary>
-        private static readonly string ResourcePath = "Alis.Extension.ImGui.resources";
+        private static readonly string ResourcePath = "Alis.Extension.Graphic.ImGui.resources";
 
         /// <summary>
         ///     The 86
