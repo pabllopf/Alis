@@ -36,7 +36,7 @@ using System.IO.Compression;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Base.Dll
+namespace Alis.Core.Aspect.Data.Dll
 {
     /// <summary>
     ///     The embedded dll class

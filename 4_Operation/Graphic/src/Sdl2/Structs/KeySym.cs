@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Base.Mapping;
+using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Graphic.Sdl2.Enums;
 
 namespace Alis.Core.Graphic.Sdl2.Structs

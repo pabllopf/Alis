@@ -29,7 +29,7 @@
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Base.Dll;
+using Alis.Core.Aspect.Data.Dll;
 
 namespace Alis.Extension.Encode.FFMeg.Properties
 {
@@ -41,7 +41,7 @@ namespace Alis.Extension.Encode.FFMeg.Properties
         /// <summary>
         ///     The resource path
         /// </summary>
-        private const string ResourcePath = "Alis.Extension.FFMeg.resources";
+        private const string ResourcePath = "Alis.Extension.Encode.FFMeg.resources";
 
         /// <summary>
         ///     The 86

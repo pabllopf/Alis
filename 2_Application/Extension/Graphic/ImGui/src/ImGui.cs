@@ -30,7 +30,7 @@
 using System;
 using System.Reflection;
 using System.Text;
-using Alis.Core.Aspect.Base.Dll;
+using Alis.Core.Aspect.Data.Dll;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui.Properties;
 

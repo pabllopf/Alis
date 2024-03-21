@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Base.Mapping
+namespace Alis.Core.Aspect.Data.Mapping
 {
     /// <summary>
     ///     The sdl input const class

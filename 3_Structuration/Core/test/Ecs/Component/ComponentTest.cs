@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Base.Mapping;
+using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Entity.GameObject;
 using Xunit;

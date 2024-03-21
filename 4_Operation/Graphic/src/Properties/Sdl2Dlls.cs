@@ -29,7 +29,7 @@
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Base.Dll;
+using Alis.Core.Aspect.Data.Dll;
 
 namespace Alis.Core.Graphic.Properties
 {

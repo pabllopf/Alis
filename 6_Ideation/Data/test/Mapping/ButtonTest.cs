@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Base.Test.Mapping
+namespace Alis.Core.Aspect.Data.Test.Mapping
 {
     /// <summary>
     ///     The button test class

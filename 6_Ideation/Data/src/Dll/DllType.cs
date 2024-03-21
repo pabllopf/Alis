@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:DllType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,23 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Aspect.Base.Sample
+namespace Alis.Core.Aspect.Data.Dll
 {
     /// <summary>
-    ///     The program class
+    ///     The dll type enum
     /// </summary>
-    public static class Program
+    public enum DllType
     {
         /// <summary>
-        ///     Main the args
+        ///     The exe dll type
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
-        }
+        Exe,
+
+        /// <summary>
+        ///     The lib dll type
+        /// </summary>
+        Lib,
+
+        /// <summary>
+        ///     The file dll type
+        /// </summary>
+        File
     }
 }
