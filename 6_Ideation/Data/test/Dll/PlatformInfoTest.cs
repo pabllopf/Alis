@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Base.Dll;
+using Alis.Core.Aspect.Data.Dll;
 using Xunit;
 
-namespace Alis.Core.Aspect.Base.Test.Dll
+namespace Alis.Core.Aspect.Data.Test.Dll
 {
     /// <summary>
     ///     The platform info test class

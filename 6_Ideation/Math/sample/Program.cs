@@ -46,6 +46,12 @@ namespace Alis.Core.Aspect.Math.Sample
         {
             Console.WriteLine(new Vector2(3.0f, 2.0f).ToString());
             Console.WriteLine(new Vector2(3.0f, 2.0f).ToString("F2", CultureInfo.InvariantCulture));
+            
+            FastPriorityQueueExample.RunExample();
+
+            Console.WriteLine("------------------------------");
+
+            SimplePriorityQueueExample.RunExample();
 
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();

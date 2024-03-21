@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DllType.cs
+//  File:PlatformInfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,26 +27,55 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Base.Dll
+using System.Runtime.InteropServices;
+
+namespace Alis.Core.Aspect.Data.Dll
 {
     /// <summary>
-    ///     The dll type enum
+    ///     The platform info class
     /// </summary>
-    public enum DllType
+    public class PlatformInfo
     {
         /// <summary>
-        ///     The exe dll type
+        ///     Initializes a new instance of the <see cref="PlatformInfo" /> class
         /// </summary>
-        Exe,
+        /// <param name="platform">The platform</param>
+        /// <param name="arch">The arch</param>
+        public PlatformInfo(OSPlatform platform, Architecture arch)
+        {
+            Platform = platform;
+            Arch = arch;
+        }
 
         /// <summary>
-        ///     The lib dll type
+        ///     Gets the value of the platform
         /// </summary>
-        Lib,
+        public OSPlatform Platform { get; }
 
         /// <summary>
-        ///     The file dll type
+        ///     Gets the value of the arch
         /// </summary>
-        File
+        public Architecture Arch { get; }
+
+        /// <summary>
+        ///     Describes whether this instance equals
+        /// </summary>
+        /// <param name="obj">The obj</param>
+        /// <returns>The bool</returns>
+        public override bool Equals(object obj)
+        {
+            if (obj is PlatformInfo other)
+            {
+                return (Platform == other.Platform) && (Arch == other.Arch);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        ///     Gets the hash code
+        /// </summary>
+        /// <returns>The int</returns>
+        public override int GetHashCode() => Platform.GetHashCode() ^ Arch.GetHashCode();
     }
 }
