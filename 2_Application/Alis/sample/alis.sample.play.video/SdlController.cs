@@ -38,9 +38,9 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
-using Alis.Extension.FFMeg.Audio;
-using Alis.Extension.FFMeg.BaseClasses;
-using Alis.Extension.FFMeg.Video;
+using Alis.Extension.Encode.FFMeg.Audio;
+using Alis.Extension.Encode.FFMeg.BaseClasses;
+using Alis.Extension.Encode.FFMeg.Video;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.Sample.Play.Video
