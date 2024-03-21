@@ -9,15 +9,15 @@ goto :choice
 
 echo "Start"
 
-cd ..\..\..\\
+cd ..\\..\\..\\
 
-dotnet new sln -o . -n Alis --force
+dotnet new sln -o . -n alis --force
 
-@type .\.config\default_sln > Alis.sln
+@type .\.config\default.sln > alis.sln
 
 for /r %%i in (*.csproj) do @type .\.config\default_csproj.props > %%i
 
-for /r %%i in (*.csproj) do dotnet sln Alis.sln add %%i
+for /r %%i in (*.csproj) do dotnet sln alis.sln add %%i
 
 rd /s /q .nuget
 rd /s /q .build
