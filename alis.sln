@@ -33,6 +33,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{0B0C39B0-D
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "builds", "builds", "{7211F41D-27C7-461A-954A-7010BAD3DE1F}"
+	ProjectSection(SolutionItems) = preProject
+		.config\builds\NoWarn.props = .config\builds\NoWarn.props
+		.config\builds\TreatWarningsAsErrors.props = .config\builds\TreatWarningsAsErrors.props
+		.config\builds\WarningLevel.props = .config\builds\WarningLevel.props
+		.config\builds\WarningsAsErrors.props = .config\builds\WarningsAsErrors.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{F90708CD-3588-499D-93D9-78DF2AA56C86}"
 	ProjectSection(SolutionItems) = preProject
@@ -61,20 +67,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "reference", "reference", "{
 	ProjectSection(SolutionItems) = preProject
 		.config\reference\Packages.props = .config\reference\Packages.props
 		.config\reference\Projects.props = .config\reference\Projects.props
+		.config\reference\AssetFolder.props = .config\reference\AssetFolder.props
+		.config\reference\ContentFiles.props = .config\reference\ContentFiles.props
+		.config\reference\EmbeddedResources.props = .config\reference\EmbeddedResources.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "target", "target", "{F025DB85-A618-4B9B-BE22-ACF53063C9FA}"
 	ProjectSection(SolutionItems) = preProject
 		.config\target\AfterBuild.props = .config\target\AfterBuild.props
 		.config\target\BeforeBuild.props = .config\target\BeforeBuild.props
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "general", "general", "{74539232-F133-45A6-9D2A-6EAB3203E7E7}"
-	ProjectSection(SolutionItems) = preProject
-		.config\builds\general\NoWarn.props = .config\builds\general\NoWarn.props
-		.config\builds\general\TreatWarningsAsErrors.props = .config\builds\general\TreatWarningsAsErrors.props
-		.config\builds\general\WarningLevel.props = .config\builds\general\WarningLevel.props
-		.config\builds\general\WarningsAsErrors.props = .config\builds\general\WarningsAsErrors.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{18D887C5-16C4-4B00-95FC-DC5B630309A0}"
@@ -413,6 +414,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Aspect.Translation", "6_Ideation\Translation\src\Alis.Core.Aspect.Translation.csproj", "{80FC7212-E37D-46C5-8BC9-7DC61724CE63}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Aspect.Translation.Test", "6_Ideation\Translation\test\Alis.Core.Aspect.Translation.Test.csproj", "{7DF911AA-140F-4249-B8F4-D3221ADB52A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7D733040-0257-4FA9-885A-58637AFE5652}"
+	ProjectSection(SolutionItems) = preProject
+		.config\test\ExcludeFromCodeCoverage.props = .config\test\ExcludeFromCodeCoverage.props
+		.config\test\InternalsVisibleTo.props = .config\test\InternalsVisibleTo.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1528,7 +1535,6 @@ Global
 		{F90708CD-3588-499D-93D9-78DF2AA56C86} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
 		{8285E72E-D64B-400F-B220-257546B7F22B} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
 		{F025DB85-A618-4B9B-BE22-ACF53063C9FA} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
-		{74539232-F133-45A6-9D2A-6EAB3203E7E7} = {7211F41D-27C7-461A-954A-7010BAD3DE1F}
 		{CDB74D6E-4B2E-4FDA-8239-B8C6C1C47059} = {6E102FFE-9727-458C-9361-4588C4157572}
 		{063D29E8-51CF-4155-B23F-8510CA62512A} = {6E102FFE-9727-458C-9361-4588C4157572}
 		{CF7DBB5E-6C12-4E8D-AA2D-F862A024CDFB} = {53D32C25-ACBA-467E-AE9F-7BE917C584CE}
@@ -1660,6 +1666,7 @@ Global
 		{BCCCFC48-5CD6-4587-B7E4-5F9EA9F7210C} = {D95C13E6-10C5-464C-B874-DE02511EE92F}
 		{80FC7212-E37D-46C5-8BC9-7DC61724CE63} = {D95C13E6-10C5-464C-B874-DE02511EE92F}
 		{7DF911AA-140F-4249-B8F4-D3221ADB52A3} = {D95C13E6-10C5-464C-B874-DE02511EE92F}
+		{7D733040-0257-4FA9-885A-58637AFE5652} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}

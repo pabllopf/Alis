@@ -28,23 +28,23 @@
         </Content>
     </ItemGroup>
 
-    <ItemGroup Condition="$(AssemblyName.Contains('Benchmark')) == true">
+    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Benchmark'))">
         <PackageReference Include="BenchmarkDotNet" Version="0.13.2"/>
     </ItemGroup>
 
-    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Payment.Stripe')) == true">
+    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Payment.Stripe'))">
         <PackageReference Include="Stripe.net" Version="43.20.0" />
     </ItemGroup>
 
-    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Ads.GoogleAds')) == true">
+    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Ads.GoogleAds'))">
         <PackageReference Include="Google.Ads.Common" Version="9.5.3" />
     </ItemGroup>
 
-    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Cloud.GoogleDrive')) == true">
+    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Cloud.GoogleDrive'))">
         <PackageReference Include="Google.Apis.Drive.v3" Version="1.67.0.3309" />
     </ItemGroup>
 
-    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Cloud.DropBox')) == true">
+    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Cloud.DropBox'))">
         <PackageReference Include="Dropbox.Api" Version="6.37.0" />
     </ItemGroup>
 </Project>
