@@ -31,4 +31,20 @@
     <ItemGroup Condition="$(AssemblyName.Contains('Benchmark')) == true">
         <PackageReference Include="BenchmarkDotNet" Version="0.13.2"/>
     </ItemGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Payment.Stripe')) == true">
+        <PackageReference Include="Stripe.net" Version="43.20.0" />
+    </ItemGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Ads.GoogleAds')) == true">
+        <PackageReference Include="Google.Ads.Common" Version="9.5.3" />
+    </ItemGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Cloud.GoogleDrive')) == true">
+        <PackageReference Include="Google.Apis.Drive.v3" Version="1.67.0.3309" />
+    </ItemGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Cloud.DropBox')) == true">
+        <PackageReference Include="Dropbox.Api" Version="6.37.0" />
+    </ItemGroup>
 </Project>

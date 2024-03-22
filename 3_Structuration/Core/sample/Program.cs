@@ -43,6 +43,7 @@ namespace Alis.Core.Sample
         public static void Main(string[] args)
         {
             Console.WriteLine("Alis.Core.Sample with " + args.Length + " args");
+            SdlController.Run();
             Console.WriteLine("End of program. Press any key to exit.");
             Console.ReadKey();
         }
