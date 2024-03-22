@@ -428,7 +428,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlGetError_ShouldReturnEmpty_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
+            int initResult = Sdl.Init(InitSettings.InitVideo);
             Assert.Equal(0, initResult);
 
             // Act
