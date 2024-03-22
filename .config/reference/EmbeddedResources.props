@@ -1,10 +1,32 @@
 <Project>
+    <!-- Resources when runtime identifier is not selected -->
+    <ItemGroup Condition="'$(RuntimeIdentifier)' == '' AND Exists('$(ProjectDir)/resources/')">
+        <None Remove="$(ProjectDir)/**/resources/**/*.zip;"/>
+        <EmbeddedResource Include="$(ProjectDir)/**/resources/**/*.zip;"/>
+    </ItemGroup>
+
+    <!-- Resources when runtime identifier is selected -->
+    <ItemGroup Condition="'$(RuntimeIdentifier)' != '' AND Exists('$(ProjectDir)/resources/')">
+        <None Remove="$(ProjectDir)/**/resources/**/*.zip;"/>
+        
+        <!-- Windows -->
+        <EmbeddedResource Condition="$(IsARM) AND $(IsWindows)" Include="$(ProjectDir)/**/resources/**/win-arm/**/*win-arm*.zip"/>
+        <EmbeddedResource Condition="$(IsARM64) AND $(IsWindows) " Include="$(ProjectDir)/**/resources/**/win-arm64/**/*win-arm64*.zip"/>
+        <EmbeddedResource Condition="$(IsX64) AND $(IsWindows) " Include="$(ProjectDir)/**/resources/**/win-x64/**/*win-x64*.zip"/>
+        <EmbeddedResource Condition="$(IsX86) AND $(IsWindows) " Include="$(ProjectDir)/**/resources/**/win-x86/**/*win-x86*.zip"/>
+
+        <!-- OSX -->
+        <EmbeddedResource Condition="$(IsARM64) AND $(IsOSX)" Include="$(ProjectDir)/**/resources/**/osx-arm64/**/*osx-arm64*.zip"/>
+        <EmbeddedResource Condition="$(IsX64) AND $(IsOSX)" Include="$(ProjectDir)/**/resources/**/osx-x64/**/*osx-x64*.zip"/>
+
+        <!-- Linux -->
+        <EmbeddedResource Condition="$(IsARM) AND $(IsLinux)" Include="$(ProjectDir)/**/resources/**/linux-arm/**/*linux-arm*.zip"/>
+        <EmbeddedResource Condition="$(IsARM64) AND $(IsLinux)" Include="$(ProjectDir)/**/resources/**/linux-arm64/**/*linux-arm64*.zip"/>
+        <EmbeddedResource Condition="$(IsX64) AND $(IsLinux)" Include="$(ProjectDir)/**/resources/**/linux-x64/**/*linux-x64*.zip"/>
+        <EmbeddedResource Condition="$(IsX86) AND $(IsLinux)" Include="$(ProjectDir)/**/resources/**/linux-x86/**/*linux-x86*.zip"/>
+    </ItemGroup>
+
     <ItemGroup>
-
-        <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND '$(RuntimeIdentifier)' == ''"
-                          Include="$(SolutionDir)4_Operation/**/resources/**/*.zip;"
-                          Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
-
         <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND $(ProjectDir.Contains('2_Application')) AND $(IsARM) == true AND $(IsWindows) == true AND '$(RuntimeIdentifier)' != ''"
                           Include="$(SolutionDir)4_Operation/**/resources/**/win-arm/*win-arm*.zip"
                           Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
@@ -75,24 +97,6 @@
                           Include="$(SolutionDir)4_Operation/**/resources/**/linux-x86/*linux-x86*.zip"
                           Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
         
-        
-        <EmbeddedResource Condition="Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' == ''"
-                          Include="$(ProjectDir)/resources/**/*.zip;"/>
-
-        <None Condition="Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''"
-              Remove="$(ProjectDir)/resources/**/*.zip;"/>
-
-        <EmbeddedResource Condition="$(IsARM) == true AND $(IsWindows) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/win-arm/*win-arm*.zip"/>
-        <EmbeddedResource Condition="$(IsARM64) == true AND $(IsWindows) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/win-arm64/*win-arm64*.zip"/>
-        <EmbeddedResource Condition="$(IsX64) == true AND $(IsWindows) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/win-x64/*win-x64*.zip"/>
-        <EmbeddedResource Condition="$(IsX86) == true AND $(IsWindows) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/win-x86/*win-x86*.zip"/>
-
-        <EmbeddedResource Condition="$(IsARM64) == true AND $(IsOSX) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/osx-arm64/*osx-arm64*.zip"/>
-        <EmbeddedResource Condition="$(IsX64) == true AND $(IsOSX) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/osx-x64/*osx-x64*.zip"/>
-
-        <EmbeddedResource Condition="$(IsARM) == true AND $(IsLinux) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/linux-arm/*linux-arm*.zip"/>
-        <EmbeddedResource Condition="$(IsARM64) == true AND $(IsLinux) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/linux-arm64/*linux-arm64*.zip"/>
-        <EmbeddedResource Condition="$(IsX64) == true AND $(IsLinux) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/linux-x64/*linux-x64*.zip"/>
-        <EmbeddedResource Condition="$(IsX86) == true AND $(IsLinux) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/linux-x86/*linux-x86*.zip"/>
     </ItemGroup>
+    
 </Project>
