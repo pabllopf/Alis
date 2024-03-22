@@ -2,37 +2,34 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Alis.Core.Aspect.Math.PathFinding
+namespace Alis.Extension.Math.HighSpeedPriorityQueue
 {
     /// <summary>
-    /// A copy of FastPriorityQueue which is also stable - that is, when two nodes are enqueued with the same priority, they
-    /// are always dequeued in the same order.
+    /// An implementation of a min-Priority Queue using a heap.  Has O(1) .Contains()!
     /// See https://github.com/BlueRaja/High-Speed-Priority-Queue-for-C-Sharp/wiki/Getting-Started for more information
     /// </summary>
-    /// <typeparam name="T">The values in the queue.  Must extend the StablePriorityQueueNode class</typeparam>
-    public sealed class StablePriorityQueue<T> : IFixedSizePriorityQueue<T, float>
-        where T : StablePriorityQueueNode
+    /// <typeparam name="T">The values in the queue.  Must extend the FastPriorityQueueNode class</typeparam>
+    public sealed class FastPriorityQueue<T> : IFixedSizePriorityQueue<T, float>
+        where T : FastPriorityQueueNode
     {
         private int _numNodes;
         private T[] _nodes;
-        private long _numNodesEverEnqueued;
 
         /// <summary>
         /// Instantiate a new Priority Queue
         /// </summary>
         /// <param name="maxNodes">The max nodes ever allowed to be enqueued (going over this will cause undefined behavior)</param>
-        public StablePriorityQueue(int maxNodes)
+        public FastPriorityQueue(int maxNodes)
         {
-            #if DEBUG
+#if DEBUG
             if (maxNodes <= 0)
             {
                 throw new InvalidOperationException("New queue size cannot be smaller than 1");
             }
-            #endif
+#endif
 
             _numNodes = 0;
             _nodes = new T[maxNodes + 1];
-            _numNodesEverEnqueued = 0;
         }
 
         /// <summary>
@@ -63,9 +60,9 @@ namespace Alis.Core.Aspect.Math.PathFinding
         /// Removes every node from the queue.
         /// O(n) (So, don't do this often!)
         /// </summary>
-        #if NET_VERSION_4_5
+#if NET_VERSION_4_5
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        #endif
+#endif
         public void Clear()
         {
             Array.Clear(_nodes, 1, _numNodes);
@@ -77,12 +74,12 @@ namespace Alis.Core.Aspect.Math.PathFinding
         /// If node is or has been previously added to another queue, the result is undefined unless oldQueue.ResetNode(node) has been called
         /// O(1)
         /// </summary>
-        #if NET_VERSION_4_5
+#if NET_VERSION_4_5
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        #endif
+#endif
         public bool Contains(T node)
         {
-            #if DEBUG
+#if DEBUG
             if(node == null)
             {
                 throw new ArgumentNullException("node");
@@ -91,28 +88,28 @@ namespace Alis.Core.Aspect.Math.PathFinding
             {
                 throw new InvalidOperationException("node.Contains was called on a node from another queue.  Please call originalQueue.ResetNode() first");
             }
-            if (node.QueueIndex < 0 || node.QueueIndex >= _nodes.Length)
+            if(node.QueueIndex < 0 || node.QueueIndex >= _nodes.Length)
             {
-                throw new InvalidOperationException("node.QueueIndex has been corrupted. Did you change it manually?");
+                throw new InvalidOperationException("node.QueueIndex has been corrupted. Did you change it manually? Or add this node to another queue?");
             }
-            #endif
+#endif
 
             return (_nodes[node.QueueIndex] == node);
         }
 
         /// <summary>
-        /// Enqueue a node to the priority queue.  Lower values are placed in front. Ties are broken by first-in-first-out.
+        /// Enqueue a node to the priority queue.  Lower values are placed in front. Ties are broken arbitrarily.
         /// If the queue is full, the result is undefined.
         /// If the node is already enqueued, the result is undefined.
         /// If node is or has been previously added to another queue, the result is undefined unless oldQueue.ResetNode(node) has been called
         /// O(log n)
         /// </summary>
-        #if NET_VERSION_4_5
+#if NET_VERSION_4_5
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        #endif
+#endif
         public void Enqueue(T node, float priority)
         {
-            #if DEBUG
+#if DEBUG
             if(node == null)
             {
                 throw new ArgumentNullException("node");
@@ -130,20 +127,18 @@ namespace Alis.Core.Aspect.Math.PathFinding
                 throw new InvalidOperationException("Node is already enqueued: " + node);
             }
             node.Queue = this;
-            #endif
+#endif
 
             node.Priority = priority;
             _numNodes++;
             _nodes[_numNodes] = node;
             node.QueueIndex = _numNodes;
-            node.InsertionIndex = _numNodesEverEnqueued++;
             CascadeUp(node);
         }
 
-        //Performance appears to be slightly better when this is NOT inlined o_O
-        #if NET_VERSION_4_5
+#if NET_VERSION_4_5
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        #endif
+#endif
         private void CascadeUp(T node)
         {
             //aka Heapify-up
@@ -152,7 +147,7 @@ namespace Alis.Core.Aspect.Math.PathFinding
             {
                 parent = node.QueueIndex >> 1;
                 T parentNode = _nodes[parent];
-                if(HasHigherPriority(parentNode, node))
+                if(HasHigherOrEqualPriority(parentNode, node))
                     return;
 
                 //Node has lower priority value, so move parent down the heap to make room
@@ -169,7 +164,7 @@ namespace Alis.Core.Aspect.Math.PathFinding
             {
                 parent >>= 1;
                 T parentNode = _nodes[parent];
-                if(HasHigherPriority(parentNode, node))
+                if(HasHigherOrEqualPriority(parentNode, node))
                     break;
 
                 //Node has lower priority value, so move parent down the heap to make room
@@ -326,15 +321,26 @@ namespace Alis.Core.Aspect.Math.PathFinding
         /// </summary>
 #if NET_VERSION_4_5
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        #endif
+#endif
         private bool HasHigherPriority(T higher, T lower)
         {
-            return (higher.Priority < lower.Priority ||
-                (higher.Priority == lower.Priority && higher.InsertionIndex < lower.InsertionIndex));
+            return (higher.Priority < lower.Priority);
         }
 
         /// <summary>
-        /// Removes the head of the queue (node with minimum priority; ties are broken by order of insertion), and returns it.
+        /// Returns true if 'higher' has higher priority than 'lower', false otherwise.
+        /// Note that calling HasHigherOrEqualPriority(node, node) (ie. both arguments the same node) will return true
+        /// </summary>
+#if NET_VERSION_4_5
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
+        private bool HasHigherOrEqualPriority(T higher, T lower)
+        {
+            return (higher.Priority <= lower.Priority);
+        }
+
+        /// <summary>
+        /// Removes the head of the queue and returns it.
         /// If queue is empty, result is undefined
         /// O(log n)
         /// </summary>
@@ -343,7 +349,7 @@ namespace Alis.Core.Aspect.Math.PathFinding
 #endif
         public T Dequeue()
         {
-            #if DEBUG
+#if DEBUG
             if(_numNodes <= 0)
             {
                 throw new InvalidOperationException("Cannot call Dequeue() on an empty queue");
@@ -354,7 +360,7 @@ namespace Alis.Core.Aspect.Math.PathFinding
                 throw new InvalidOperationException("Queue has been corrupted (Did you update a node priority manually instead of calling UpdatePriority()?" +
                                                     "Or add the same node to two different queues?)");
             }
-            #endif
+#endif
 
             T returnMe = _nodes[1];
             //If the node is already the last node, we can remove it immediately
@@ -384,7 +390,7 @@ namespace Alis.Core.Aspect.Math.PathFinding
         /// </summary>
         public void Resize(int maxNodes)
         {
-            #if DEBUG
+#if DEBUG
             if (maxNodes <= 0)
             {
                 throw new InvalidOperationException("Queue size cannot be smaller than 1");
@@ -394,7 +400,7 @@ namespace Alis.Core.Aspect.Math.PathFinding
             {
                 throw new InvalidOperationException("Called Resize(" + maxNodes + "), but current queue contains " + _numNodes + " nodes");
             }
-            #endif
+#endif
 
             T[] newArray = new T[maxNodes + 1];
             int highestIndexToCopy = System.Math.Min(maxNodes, _numNodes);
@@ -411,12 +417,12 @@ namespace Alis.Core.Aspect.Math.PathFinding
         {
             get
             {
-                #if DEBUG
+#if DEBUG
                 if(_numNodes <= 0)
                 {
                     throw new InvalidOperationException("Cannot call .First on an empty queue");
                 }
-                #endif
+#endif
 
                 return _nodes[1];
             }
@@ -428,12 +434,12 @@ namespace Alis.Core.Aspect.Math.PathFinding
         /// Calling this method on a node not in the queue results in undefined behavior
         /// O(log n)
         /// </summary>
-        #if NET_VERSION_4_5
+#if NET_VERSION_4_5
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        #endif
+#endif
         public void UpdatePriority(T node, float priority)
         {
-            #if DEBUG
+#if DEBUG
             if(node == null)
             {
                 throw new ArgumentNullException("node");
@@ -446,7 +452,7 @@ namespace Alis.Core.Aspect.Math.PathFinding
             {
                 throw new InvalidOperationException("Cannot call UpdatePriority() on a node which is not enqueued: " + node);
             }
-            #endif
+#endif
 
             node.Priority = priority;
             OnNodeUpdated(node);
@@ -518,6 +524,7 @@ namespace Alis.Core.Aspect.Math.PathFinding
         /// <summary>
         /// By default, nodes that have been previously added to one queue cannot be added to another queue.
         /// If you need to do this, please call originalQueue.ResetNode(node) before attempting to add it in the new queue
+        /// If the node is currently in the queue or belongs to another queue, the result is undefined
         /// </summary>
 #if NET_VERSION_4_5
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -543,7 +550,6 @@ namespace Alis.Core.Aspect.Math.PathFinding
 
             node.QueueIndex = 0;
         }
-
 
         public IEnumerator<T> GetEnumerator()
         {

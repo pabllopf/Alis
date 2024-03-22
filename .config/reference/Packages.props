@@ -28,7 +28,7 @@
         </Content>
     </ItemGroup>
 
-    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Benchmark'))">
+    <ItemGroup Condition="$(AssemblyName.Contains('Benchmark'))">
         <PackageReference Include="BenchmarkDotNet" Version="0.13.2"/>
     </ItemGroup>
 

@@ -1,7 +1,6 @@
 ﻿using System;
-using Alis.Core.Aspect.Math.PathFinding;
 
-namespace Alis.Core.Aspect.Math.Sample
+namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
 {
     public static class SimplePriorityQueueExample
     {
