@@ -14,7 +14,8 @@
     $(AssemblyName.Contains('App')) == false AND
     $(AssemblyName.Contains('Template')) == false AND
     $(AssemblyName.Contains('Sample')) == false AND
-    $(AssemblyName.Contains('Benchmark')) == false
+    $(AssemblyName.Contains('Benchmark')) == false AND
+    $(AssemblyName.Contains('Extension')) == false
     ">
         <OutputType>Library</OutputType>
     </PropertyGroup>

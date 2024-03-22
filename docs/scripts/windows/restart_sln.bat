@@ -28,8 +28,6 @@ FOR /d /r . %%d IN (obj) DO @IF EXIST "%%d" rd /s /q "%%d"
 
 for /r %%i in (*.csproj) do dotnet restore %%i
 
-cd .\.scripts\windows\
-
 pause
 exit
 
