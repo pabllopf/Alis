@@ -1,4 +1,16 @@
 <Project>
+    
+    <PropertyGroup>
+        <IsARM64>false</IsARM64>
+        <IsARM>false</IsARM>
+        <IsX64>false</IsX64>
+        <IsX86>false</IsX86>
+        
+        <IsLinux>false</IsLinux>
+        <IsOSX>false</IsOSX>
+        <IsWindows>false</IsWindows>
+    </PropertyGroup>
+    
     <PropertyGroup Condition="('$(RuntimeIdentifier)' == '' AND $(NETCoreSdkRuntimeIdentifier.Contains('arm64'))) OR $(RuntimeIdentifier.Contains('arm64'))">
         <DefineConstants>$(DefineConstants);ARM64</DefineConstants>
         <IsARM64>true</IsARM64>

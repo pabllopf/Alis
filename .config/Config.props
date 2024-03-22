@@ -9,6 +9,7 @@
     <Import Project="$(SolutionDir).config/application/Runtimes.props"/>
     <Import Project="$(SolutionDir).config/application/LangVersion.props"/>
     <Import Project="$(SolutionDir).config/application/AllowUnsafeBlocks.props"/>
+    <Import Project="$(SolutionDir).config/application/SelfContained.props"/>
     <Import Project="$(SolutionDir).config/application/OutputType.props"/>
 
     <Import Project="$(SolutionDir).config/assembly/Company.props"/>
@@ -18,6 +19,7 @@
     <Import Project="$(SolutionDir).config/assembly/Product.props"/>
 
     <Import Project="$(SolutionDir).config/builds/NoWarn.props"/>
+    <Import Project="$(SolutionDir).config/builds/SuppressTfmSupportBuildWarnings.props"/>
     <Import Project="$(SolutionDir).config/builds/TreatWarningsAsErrors.props"/>
     <Import Project="$(SolutionDir).config/builds/WarningLevel.props"/>
     <Import Project="$(SolutionDir).config/builds/WarningsAsErrors.props"/>
