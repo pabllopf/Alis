@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Alis.Core.Aspect.Math.PathFinding
+namespace Alis.Extension.Math.HighSpeedPriorityQueue
 {
     /// <summary>
     /// A simplified priority queue implementation.  Is stable, auto-resizes, and thread-safe, at the cost of being slightly slower than

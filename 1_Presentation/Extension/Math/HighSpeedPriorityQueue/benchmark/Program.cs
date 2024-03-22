@@ -27,27 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
-using Alis.Core.Aspect.Math.Vector;
+using BenchmarkDotNet.Running;
 
-namespace Alis.Core.Aspect.Math.Sample
+namespace Alis.Extension.Math.HighSpeedPriorityQueue.Benchmark
 {
     /// <summary>
     ///     The program class
     /// </summary>
-    public static class Program
+    internal static class Program
     {
         /// <summary>
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.WriteLine(new Vector2(3.0f, 2.0f).ToString());
-            Console.WriteLine(new Vector2(3.0f, 2.0f).ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
-        }
+        public static void Main(string[] args) => BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
     }
 }

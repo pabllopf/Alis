@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:DummyTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,27 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
-using Alis.Core.Aspect.Math.Vector;
+using Xunit;
 
-namespace Alis.Core.Aspect.Math.Sample
+namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 {
     /// <summary>
-    ///     The program class
+    ///     The dummy test class
     /// </summary>
-    public static class Program
+    public class DummyTest
     {
         /// <summary>
-        ///     Main the args
+        ///     Tests that default test
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        [Fact]
+        public void DefaultTest()
         {
-            Console.WriteLine(new Vector2(3.0f, 2.0f).ToString());
-            Console.WriteLine(new Vector2(3.0f, 2.0f).ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
+            Assert.True(true);
         }
     }
 }

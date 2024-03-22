@@ -3,13 +3,12 @@
         ($(AssemblyName.Contains('App')) == true OR
         $(AssemblyName.Contains('Template')) == true OR
         $(AssemblyName.Contains('Sample')) == true OR
-        $(AssemblyName.Contains('Test')) == true OR
-        $(AssemblyName.Contains('Benchmark')) == true)">
+        $(AssemblyName.Contains('Test')) == true)">
         <TargetFramework1>net5.0;net6.0</TargetFramework1>
         <TargetFramework2>net7.0;net8.0</TargetFramework2>
         <SonarQubeExclude>true</SonarQubeExclude>
     </PropertyGroup>
-
+    
     <PropertyGroup Condition="
         $(AssemblyName.Contains('Test')) == false AND 
         $(AssemblyName.Contains('App')) == false AND
@@ -24,8 +23,7 @@
         ($(AssemblyName.Contains('App')) == true OR
         $(AssemblyName.Contains('Template')) == true OR
         $(AssemblyName.Contains('Sample')) == true OR
-        $(AssemblyName.Contains('Test')) == true OR
-        $(AssemblyName.Contains('Benchmark')) == true) AND
+        $(AssemblyName.Contains('Test')) == true) AND
         $(Configuration) == 'Debug'">
         <TargetFramework1>net6.0</TargetFramework1>
         <TargetFramework2></TargetFramework2>
@@ -37,9 +35,13 @@
         $(AssemblyName.Contains('App')) == false AND
         $(AssemblyName.Contains('Template')) == false AND
         $(AssemblyName.Contains('Sample')) == false AND
-        $(AssemblyName.Contains('Benchmark')) == false AND
         '$(Configuration)' == 'Debug'">
         <TargetFramework1>netstandard2.0</TargetFramework1>
+        <TargetFramework2></TargetFramework2>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(AssemblyName.Contains('Benchmark')) == true">
+        <TargetFramework1>net6.0</TargetFramework1>
         <TargetFramework2></TargetFramework2>
     </PropertyGroup>
 </Project>

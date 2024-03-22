@@ -1,8 +1,7 @@
 ﻿using System;
-using Alis.Core.Aspect.Math.PathFinding;
 using BenchmarkDotNet.Attributes;
 
-namespace Alis.Benchmark.PathFinding
+namespace Alis.Extension.Math.HighSpeedPriorityQueue.Benchmark
 {
     public class Benchmarks
     {

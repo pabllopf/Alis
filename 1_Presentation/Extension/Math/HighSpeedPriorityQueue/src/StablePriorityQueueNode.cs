@@ -1,4 +1,4 @@
-﻿namespace Alis.Core.Aspect.Math.PathFinding
+﻿namespace Alis.Extension.Math.HighSpeedPriorityQueue
 {
     public class StablePriorityQueueNode : FastPriorityQueueNode
     {

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Alis.Core.Aspect.Math.PathFinding
+namespace Alis.Extension.Math.HighSpeedPriorityQueue
 {
     /// <summary>
     /// A copy of StablePriorityQueue which also has generic priority-type

@@ -9,27 +9,29 @@
         $(AssemblyName.Contains('Benchmark')) == False AND
         $(Configuration) == 'Debug'">
 
-        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) AND $(ProjectDir.Contains('Extension')) == False"
                           Include="
                           $(SolutionDir)2_Application/**/Alis.csproj;
                           $(SolutionDir)**/Extension/**/**/*.csproj;"
                           Exclude="
                           $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
+                          $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
                           $(SolutionDir)**/Extension/**/**/*.Test.csproj;"/>
 
-        <ProjectReference Condition="$(ProjectDir.Contains('2_Application')) AND $(ProjectDir.Contains('Extension')) == False"
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) AND $(ProjectDir.Contains('Extension')) == True"
+                          Include="$(SolutionDir)2_Application/**/Alis.csproj;"
+                          Exclude="
+                          $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
+                          $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
+                          $(SolutionDir)**/Extension/**/**/*.Test.csproj;"/>
+
+        <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"
                           Include="$(SolutionDir)3_Structuration/**/*.csproj"
                           Exclude="
                           $(SolutionDir)3_Structuration/**/*.Sample.csproj; 
                           $(SolutionDir)3_Structuration/**/*.Test.csproj;
                           $(SolutionDir)**/Extension/**/**/*.csproj;"/>
-
-        <ProjectReference Condition="$(ProjectDir.Contains('2_Application')) AND $(ProjectDir.Contains('Extension')) == True"
-                          Include="$(SolutionDir)2_Application/**/Alis.csproj;"
-                          Exclude="
-                          $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
-                          $(SolutionDir)**/Extension/**/**/*.Test.csproj;"/>
-
+        
         <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
                           Include="$(SolutionDir)4_Operation/**/*.csproj"
                           Exclude="
@@ -62,22 +64,23 @@
         $(AssemblyName.Contains('Benchmark')) == False AND 
         $(Configuration) == 'Release'">
 
-        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) AND $(ProjectDir.Contains('Extension')) == False"
                           Include="
                           $(SolutionDir)2_Application/**/Alis.csproj;
-                          $(SolutionDir)2_Application/**/Extension/**/**/*.csproj;"
+                          $(SolutionDir)1_Presentation/**/Extension/**/**/*.csproj;"
                           Exclude="
                           $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
+                          $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
                           $(SolutionDir)**/Extension/**/**/*.Test.csproj;"/>
 
-        <ProjectReference Condition="$(ProjectDir.Contains('2_Application')) AND 
-                        $(ProjectDir.Contains('Extension'))"
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) AND $(ProjectDir.Contains('Extension')) == True"
                           Include="
                           $(SolutionDir)2_Application/**/Alis.csproj;"
                           Exclude="
                           $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
+                          $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
                           $(SolutionDir)**/Extension/**/**/*.Test.csproj;"/>
-
+        
         <Compile Condition="$(ProjectDir.Contains('2_Application')) AND $(ProjectDir.Contains('Extension')) == False"
                  Include="
                         
@@ -104,7 +107,7 @@
                           $(SolutionDir)4_Operation/**/*test/**/*.cs; 
                           $(SolutionDir)4_Operation/**/*.Designer.cs "
                  Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
-
+        
       
 
         <Compile Condition="$(ProjectDir.Contains('2_Application')) AND $(ProjectDir.Contains('Extension')) == False"
