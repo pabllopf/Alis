@@ -17,10 +17,10 @@
     <Import Project="$(SolutionDir).config/assembly/NeutralLanguage.props"/>
     <Import Project="$(SolutionDir).config/assembly/Product.props"/>
 
-    <Import Project="$(SolutionDir).config/builds/general/NoWarn.props"/>
-    <Import Project="$(SolutionDir).config/builds/general/TreatWarningsAsErrors.props"/>
-    <Import Project="$(SolutionDir).config/builds/general/WarningLevel.props"/>
-    <Import Project="$(SolutionDir).config/builds/general/WarningsAsErrors.props"/>
+    <Import Project="$(SolutionDir).config/builds/NoWarn.props"/>
+    <Import Project="$(SolutionDir).config/builds/TreatWarningsAsErrors.props"/>
+    <Import Project="$(SolutionDir).config/builds/WarningLevel.props"/>
+    <Import Project="$(SolutionDir).config/builds/WarningsAsErrors.props"/>
 
     <Import Project="$(SolutionDir).config/docs/Docs.props"/>
 
@@ -43,10 +43,17 @@
     <Import Project="$(SolutionDir).config/nuget/Title.props"/>
     <Import Project="$(SolutionDir).config/nuget/Version.props"/>
 
+    <Import Project="$(SolutionDir).config/reference/AssetFolder.props"/>
+    <Import Project="$(SolutionDir).config/reference/ContentFiles.props"/>
+    <Import Project="$(SolutionDir).config/reference/EmbeddedResources.props"/>
     <Import Project="$(SolutionDir).config/reference/Projects.props"/>
     <Import Project="$(SolutionDir).config/reference/Packages.props"/>
+    
+    
 
-
+    <Import Project="$(SolutionDir).config/test/ExcludeFromCodeCoverage.props"/>
+    <Import Project="$(SolutionDir).config/test/InternalsVisibleTo.props"/>
+    
     <Import Project="$(SolutionDir).config/target/BeforeBuild.props"/>
     <Import Project="$(SolutionDir).config/target/AfterBuild.props"/>
 
