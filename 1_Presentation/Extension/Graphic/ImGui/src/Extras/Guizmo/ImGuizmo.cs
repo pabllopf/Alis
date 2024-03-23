@@ -30,7 +30,7 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
+namespace Alis.Extension.Graphic.ImGui.Extras.GuiZmo
 {
     /// <summary>
     ///     The im guizmo class
@@ -44,7 +44,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         public static void AllowAxisFlip(bool value)
         {
             byte nativeValue = value ? (byte) 1 : (byte) 0;
-            ImGuizmoNative.ImGuizmo_AllowAxisFlip(nativeValue);
+            ImGuiZmoNative.InternalAllowAxisFlip(nativeValue);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         /// </summary>
         public static void BeginFrame()
         {
-            ImGuizmoNative.ImGuizmo_BeginFrame();
+            ImGuiZmoNative.InternalBeginFrame();
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         /// <param name="scale">The scale</param>
         public static void DecomposeMatrixToComponents(ref float matrix, ref float translation, ref float rotation, ref float scale)
         {
-            ImGuizmoNative.ImGuizmo_DecomposeMatrixToComponents(matrix, translation, rotation, scale);
+            ImGuiZmoNative.InternalDecomposeMatrixToComponents(matrix, translation, rotation, scale);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         /// <param name="matrixCount">The matrix count</param>
         public static void DrawCubes(ref float view, ref float projection, ref float matrices, int matrixCount)
         {
-            ImGuizmoNative.ImGuizmo_DrawCubes(view, projection, matrices, matrixCount);
+            ImGuiZmoNative.InternalDrawCubes(view, projection, matrices, matrixCount);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         /// <param name="gridSize">The grid size</param>
         public static void DrawGrid(ref float view, ref float projection, ref float matrix, float gridSize)
         {
-            ImGuizmoNative.ImGuizmo_DrawGrid(view, projection, matrix, gridSize);
+            ImGuiZmoNative.InternalDrawGrid(view, projection, matrix, gridSize);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         public static void Enable(bool enable)
         {
             byte nativeEnable = enable ? (byte) 1 : (byte) 0;
-            ImGuizmoNative.ImGuizmo_Enable(nativeEnable);
+            ImGuiZmoNative.InternalEnable(nativeEnable);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         /// <returns>The bool</returns>
         public static bool IsOver()
         {
-            byte ret = ImGuizmoNative.ImGuizmo_IsOverNil();
+            byte ret = ImGuiZmoNative.InternalIsOverNil();
             return ret != 0;
         }
 
@@ -118,7 +118,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         /// <returns>The bool</returns>
         public static bool IsOver(Operation op)
         {
-            byte ret = ImGuizmoNative.ImGuizmo_IsOverOPERATION(op);
+            byte ret = ImGuiZmoNative.InternalIsOverOPERATION(op);
             return ret != 0;
         }
 
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         /// <returns>The bool</returns>
         public static bool IsUsing()
         {
-            byte ret = ImGuizmoNative.ImGuizmo_IsUsing();
+            byte ret = ImGuiZmoNative.InternalIsUsing();
             return ret != 0;
         }
 
@@ -148,7 +148,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
             float localBounds = 0;
             float boundsSnap = 0;
             
-            byte ret = ImGuizmoNative.ImGuizmo_Manipulate(view, projection, operation, mode, matrix, deltaMatrix, snap, localBounds, boundsSnap);
+            byte ret = ImGuiZmoNative.InternalManipulate(view, projection, operation, mode, matrix, deltaMatrix, snap, localBounds, boundsSnap);
             return ret != 0;
         }
 
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
             float localBounds = 0;
             float boundsSnap = 0;
             
-            byte ret = ImGuizmoNative.ImGuizmo_Manipulate(view, projection, operation, mode, matrix, deltaMatrix, snap, localBounds, boundsSnap);
+            byte ret = ImGuiZmoNative.InternalManipulate(view, projection, operation, mode, matrix, deltaMatrix, snap, localBounds, boundsSnap);
             return ret != 0;
         }
 
@@ -187,7 +187,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         {
             float localBounds = 0;
             float boundsSnap = 0;
-            byte ret = ImGuizmoNative.ImGuizmo_Manipulate(view, projection, operation, mode, matrix, deltaMatrix, snap, localBounds, boundsSnap);
+            byte ret = ImGuiZmoNative.InternalManipulate(view, projection, operation, mode, matrix, deltaMatrix, snap, localBounds, boundsSnap);
             return ret != 0;
         }
 
@@ -206,7 +206,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         public static bool Manipulate(ref float view, ref float projection, Operation operation, Mode mode, ref float matrix, ref float deltaMatrix, ref float snap, ref float localBounds)
         {
             float boundsSnap = 0;
-            byte ret = ImGuizmoNative.ImGuizmo_Manipulate(view, projection, operation, mode, matrix, deltaMatrix, snap, localBounds, boundsSnap);
+            byte ret = ImGuiZmoNative.InternalManipulate(view, projection, operation, mode, matrix, deltaMatrix, snap, localBounds, boundsSnap);
             return ret != 0;
         }
 
@@ -225,7 +225,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         /// <returns>The bool</returns>
         public static bool Manipulate(ref float view, ref float projection, Operation operation, Mode mode, ref float matrix, ref float deltaMatrix, ref float snap, ref float localBounds, ref float boundsSnap)
         {
-            byte ret = ImGuizmoNative.ImGuizmo_Manipulate(view, projection, operation, mode, matrix, deltaMatrix, snap, localBounds, boundsSnap);
+            byte ret = ImGuiZmoNative.InternalManipulate(view, projection, operation, mode, matrix, deltaMatrix, snap, localBounds, boundsSnap);
             return ret != 0;
         }
 
@@ -238,7 +238,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         /// <param name="matrix">The matrix</param>
         public static void RecomposeMatrixFromComponents(ref float translation, ref float rotation, ref float scale, ref float matrix)
         {
-            ImGuizmoNative.ImGuizmo_RecomposeMatrixFromComponents(translation, rotation, scale, matrix);
+            ImGuiZmoNative.InternalRecomposeMatrixFromComponents(translation, rotation, scale, matrix);
         }
 
         /// <summary>
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         public static void SetDrawlist()
         {
             ImDrawList* drawlist = null;
-            ImGuizmoNative.ImGuizmo_SetDrawlist(drawlist);
+            ImGuiZmoNative.InternalSetDrawlist(drawlist);
         }
 
         /// <summary>
@@ -257,7 +257,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         public static void SetDrawlist(ImDrawListPtr drawlist)
         {
             ImDrawList* nativeDrawlist = drawlist.NativePtr;
-            ImGuizmoNative.ImGuizmo_SetDrawlist(nativeDrawlist);
+            ImGuiZmoNative.InternalSetDrawlist(nativeDrawlist);
         }
 
         /// <summary>
@@ -266,7 +266,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         /// <param name="value">The value</param>
         public static void SetGizmoSizeClipSpace(float value)
         {
-            ImGuizmoNative.ImGuizmo_SetGizmoSizeClipSpace(value);
+            ImGuiZmoNative.InternalSetGizmoSizeClipSpace(value);
         }
 
         /// <summary>
@@ -275,7 +275,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         /// <param name="id">The id</param>
         public static void SetId(int id)
         {
-            ImGuizmoNative.ImGuizmo_SetID(id);
+            ImGuiZmoNative.InternalSetID(id);
         }
 
         /// <summary>
@@ -284,7 +284,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         /// <param name="ctx">The ctx</param>
         public static void SetImGuiContext(IntPtr ctx)
         {
-            ImGuizmoNative.ImGuizmo_SetImGuiContext(ctx);
+            ImGuiZmoNative.InternalSetImGuiContext(ctx);
         }
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         public static void SetOrthographic(bool isOrthographic)
         {
             byte nativeIsOrthographic = isOrthographic ? (byte) 1 : (byte) 0;
-            ImGuizmoNative.ImGuizmo_SetOrthographic(nativeIsOrthographic);
+            ImGuiZmoNative.InternalSetOrthographic(nativeIsOrthographic);
         }
 
         /// <summary>
@@ -306,7 +306,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         /// <param name="height">The height</param>
         public static void SetRect(float x, float y, float width, float height)
         {
-            ImGuizmoNative.ImGuizmo_SetRect(x, y, width, height);
+            ImGuiZmoNative.InternalSetRect(x, y, width, height);
         }
 
         /// <summary>
@@ -319,7 +319,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         /// <param name="backgroundColor">The background color</param>
         public static void ViewManipulate(ref float view, float length, Vector2 position, Vector2 size, uint backgroundColor)
         {
-            ImGuizmoNative.ImGuizmo_ViewManipulate(view, length, position, size, backgroundColor);
+            ImGuiZmoNative.InternalViewManipulate(view, length, position, size, backgroundColor);
         }
     }
 }
