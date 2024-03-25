@@ -197,7 +197,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The style
         /// </summary>
-        private ImGuiStylePtr style;
+        private ImGuiStyle style;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Engine" /> class
@@ -330,7 +330,7 @@ namespace Alis.App.Engine
             style = ImGui.GetStyle();
             ImGui.StyleColorsDark();
             style.WindowRounding = 0.0f;
-            style.Colors[(int) ImGuiCol.WindowBg].W = 1.0f;
+            style.Colors2.W = 1.0f;
 
             // config input manager 
 

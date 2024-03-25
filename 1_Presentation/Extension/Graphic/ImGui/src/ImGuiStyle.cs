@@ -510,5 +510,22 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The colors 54
         /// </summary>
         public Vector4 Colors54;
+        
+        /// <summary>
+        ///     Destroys this instance
+        /// </summary>
+        public void Destroy()
+        {
+            ImGuiNative.ImGuiStyle_destroy(this);
+        }
+
+        /// <summary>
+        ///     Scales the all sizes using the specified scale factor
+        /// </summary>
+        /// <param name="scaleFactor">The scale factor</param>
+        public void ScaleAllSizes(float scaleFactor)
+        {
+            ImGuiNative.ImGuiStyle_ScaleAllSizes(this, scaleFactor);
+        }
     }
 }

@@ -1256,7 +1256,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <returns>The im gui style</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiStyle* igGetStyle();
+        public static extern ImGuiStyle igGetStyle();
 
         /// <summary>
         ///     Igs the get style color name using the specified idx
@@ -2692,9 +2692,9 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Igs the show style editor using the specified ref
         /// </summary>
-        /// <param name="ref">The ref</param>
+        /// <param name="imGuiStyle"></param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igShowStyleEditor(ImGuiStyle* @ref);
+        public static extern void igShowStyleEditor(ImGuiStyle imGuiStyle);
 
         /// <summary>
         ///     Igs the show style selector using the specified label
@@ -2875,21 +2875,21 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="dst">The dst</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igStyleColorsClassic(ImGuiStyle* dst);
+        public static extern void igStyleColorsClassic(ImGuiStyle dst);
 
         /// <summary>
         ///     Igs the style colors dark using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igStyleColorsDark(ImGuiStyle* dst);
+        public static extern void igStyleColorsDark(ImGuiStyle dst);
 
         /// <summary>
         ///     Igs the style colors light using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igStyleColorsLight(ImGuiStyle* dst);
+        public static extern void igStyleColorsLight(ImGuiStyle dst);
 
         /// <summary>
         ///     Igs the tab item button using the specified label
@@ -5150,7 +5150,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiStyle_destroy(ImGuiStyle* self);
+        public static extern void ImGuiStyle_destroy(ImGuiStyle self);
 
         /// <summary>
         ///     Ims the gui style im gui style
@@ -5165,7 +5165,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="scaleFactor">The scale factor</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiStyle_ScaleAllSizes(ImGuiStyle* self, float scaleFactor);
+        public static extern void ImGuiStyle_ScaleAllSizes(ImGuiStyle self, float scaleFactor);
 
         /// <summary>
         ///     Ims the gui table column sort specs destroy using the specified self

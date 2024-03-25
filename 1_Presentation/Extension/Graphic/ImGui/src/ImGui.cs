@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im gui class
     /// </summary>
-    public static unsafe partial class ImGui
+    public static unsafe class ImGui
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGui" /> class
@@ -9537,10 +9537,9 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the style
         /// </summary>
         /// <returns>The im gui style ptr</returns>
-        public static ImGuiStylePtr GetStyle()
+        public static ImGuiStyle GetStyle()
         {
-            ImGuiStyle* ret = ImGuiNative.igGetStyle();
-            return new ImGuiStylePtr(ret);
+            return ImGuiNative.igGetStyle();
         }
 
         /// <summary>
@@ -17065,18 +17064,16 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public static void ShowStyleEditor()
         {
-            ImGuiStyle* @ref = null;
-            ImGuiNative.igShowStyleEditor(@ref);
+            ImGuiNative.igShowStyleEditor(new ImGuiStyle());
         }
 
         /// <summary>
         ///     Shows the style editor using the specified ref
         /// </summary>
         /// <param name="ref">The ref</param>
-        public static void ShowStyleEditor(ImGuiStylePtr @ref)
+        public static void ShowStyleEditor(ImGuiStyle imGuiStyle)
         {
-            ImGuiStyle* nativeRef = @ref.NativePtr;
-            ImGuiNative.igShowStyleEditor(nativeRef);
+            ImGuiNative.igShowStyleEditor(imGuiStyle);
         }
 
         /// <summary>
@@ -19657,18 +19654,16 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public static void StyleColorsClassic()
         {
-            ImGuiStyle* dst = null;
-            ImGuiNative.igStyleColorsClassic(dst);
+            ImGuiNative.igStyleColorsClassic(new ImGuiStyle());
         }
 
         /// <summary>
         ///     Styles the colors classic using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        public static void StyleColorsClassic(ImGuiStylePtr dst)
+        public static void StyleColorsClassic(ImGuiStyle dst)
         {
-            ImGuiStyle* nativeDst = dst.NativePtr;
-            ImGuiNative.igStyleColorsClassic(nativeDst);
+            ImGuiNative.igStyleColorsClassic(dst);
         }
 
         /// <summary>
@@ -19676,18 +19671,16 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public static void StyleColorsDark()
         {
-            ImGuiStyle* dst = null;
-            ImGuiNative.igStyleColorsDark(dst);
+            ImGuiNative.igStyleColorsDark(new ImGuiStyle());
         }
 
         /// <summary>
         ///     Styles the colors dark using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        public static void StyleColorsDark(ImGuiStylePtr dst)
+        public static void StyleColorsDark(ImGuiStyle dst)
         {
-            ImGuiStyle* nativeDst = dst.NativePtr;
-            ImGuiNative.igStyleColorsDark(nativeDst);
+            ImGuiNative.igStyleColorsDark(dst);
         }
 
         /// <summary>
@@ -19695,18 +19688,16 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public static void StyleColorsLight()
         {
-            ImGuiStyle* dst = null;
-            ImGuiNative.igStyleColorsLight(dst);
+            ImGuiNative.igStyleColorsLight(new ImGuiStyle());
         }
 
         /// <summary>
         ///     Styles the colors light using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        public static void StyleColorsLight(ImGuiStylePtr dst)
+        public static void StyleColorsLight(ImGuiStyle dst)
         {
-            ImGuiStyle* nativeDst = dst.NativePtr;
-            ImGuiNative.igStyleColorsLight(nativeDst);
+            ImGuiNative.igStyleColorsLight(dst);
         }
 
         /// <summary>
