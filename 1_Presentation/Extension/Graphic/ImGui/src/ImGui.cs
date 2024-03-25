@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="type">The type</param>
         /// <returns>The im gui payload ptr</returns>
-        public static ImGuiPayloadPtr AcceptDragDropPayload(string type)
+        public static ImGuiPayload AcceptDragDropPayload(string type)
         {
             byte* nativeType;
             int typeByteCount = 0;
@@ -82,13 +82,13 @@ namespace Alis.Extension.Graphic.ImGui
             }
 
             ImGuiDragDropFlags flags = 0;
-            ImGuiPayload* ret = ImGuiNative.igAcceptDragDropPayload(nativeType, flags);
+            ImGuiPayload ret = ImGuiNative.igAcceptDragDropPayload(nativeType, flags);
             if (typeByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeType);
             }
 
-            return new ImGuiPayloadPtr(ret);
+            return ret;
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="type">The type</param>
         /// <param name="flags">The flags</param>
         /// <returns>The im gui payload ptr</returns>
-        public static ImGuiPayloadPtr AcceptDragDropPayload(string type, ImGuiDragDropFlags flags)
+        public static ImGuiPayload AcceptDragDropPayload(string type, ImGuiDragDropFlags flags)
         {
             byte* nativeType;
             int typeByteCount = 0;
@@ -122,13 +122,13 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeType = null;
             }
 
-            ImGuiPayload* ret = ImGuiNative.igAcceptDragDropPayload(nativeType, flags);
+            ImGuiPayload ret = ImGuiNative.igAcceptDragDropPayload(nativeType, flags);
             if (typeByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeType);
             }
 
-            return new ImGuiPayloadPtr(ret);
+            return ret;
         }
 
         /// <summary>
@@ -9147,10 +9147,9 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the drag drop payload
         /// </summary>
         /// <returns>The im gui payload ptr</returns>
-        public static ImGuiPayloadPtr GetDragDropPayload()
+        public static ImGuiPayload GetDragDropPayload()
         {
-            ImGuiPayload* ret = ImGuiNative.igGetDragDropPayload();
-            return new ImGuiPayloadPtr(ret);
+            return ImGuiNative.igGetDragDropPayload();
         }
 
         /// <summary>

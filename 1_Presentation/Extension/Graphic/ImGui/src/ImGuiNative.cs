@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The im gui payload</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igAcceptDragDropPayload")]
-        public static extern ImGuiPayload* igAcceptDragDropPayload(byte* type, ImGuiDragDropFlags flags);
+        public static extern ImGuiPayload igAcceptDragDropPayload(byte* type, ImGuiDragDropFlags flags);
 
         /// <summary>
         ///     Igs the align text to frame padding
@@ -1012,7 +1012,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <returns>The im gui payload</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetDragDropPayload")]
-        public static extern ImGuiPayload* igGetDragDropPayload();
+        public static extern ImGuiPayload igGetDragDropPayload();
 
         /// <summary>
         ///     Igs the get draw data
@@ -4891,21 +4891,21 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiPayload_Clear(ImGuiPayload* self);
+        public static extern void ImGuiPayload_Clear(ref ImGuiPayload self);
 
         /// <summary>
         ///     Ims the gui payload destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiPayload_destroy(ImGuiPayload* self);
+        public static extern void ImGuiPayload_destroy(ref ImGuiPayload self);
 
         /// <summary>
         ///     Ims the gui payload im gui payload
         /// </summary>
         /// <returns>The im gui payload</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiPayload* ImGuiPayload_ImGuiPayload();
+        public static extern ImGuiPayload ImGuiPayload_ImGuiPayload();
 
         /// <summary>
         ///     Ims the gui payload is data type using the specified self
@@ -4914,7 +4914,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="type">The type</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImGuiPayload_IsDataType(ImGuiPayload* self, byte* type);
+        public static extern byte ImGuiPayload_IsDataType(ref ImGuiPayload self, byte* type);
 
         /// <summary>
         ///     Ims the gui payload is delivery using the specified self
@@ -4922,7 +4922,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImGuiPayload_IsDelivery(ImGuiPayload* self);
+        public static extern byte ImGuiPayload_IsDelivery(ref ImGuiPayload self);
 
         /// <summary>
         ///     Ims the gui payload is preview using the specified self
@@ -4930,7 +4930,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImGuiPayload_IsPreview(ImGuiPayload* self);
+        public static extern byte ImGuiPayload_IsPreview(ref ImGuiPayload self);
 
         /// <summary>
         ///     Ims the gui platform ime data destroy using the specified self

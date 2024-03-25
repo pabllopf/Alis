@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Text;
+
 namespace Alis.Extension.Graphic.ImGui
 {
     /// <summary>
@@ -73,5 +75,80 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The delivery
         /// </summary>
         public byte Delivery;
+        
+        /// <summary>
+        ///     Clears this instance
+        /// </summary>
+        public void Clear()
+        {
+            ImGuiNative.ImGuiPayload_Clear(ref this);
+        }
+
+        /// <summary>
+        ///     Destroys this instance
+        /// </summary>
+        public void Destroy()
+        {
+            ImGuiNative.ImGuiPayload_destroy(ref this);
+        }
+
+        /// <summary>
+        ///     Describes whether this instance is data type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <returns>The bool</returns>
+        public bool IsDataType(string type)
+        {
+            byte* nativeType;
+            int typeByteCount = 0;
+            if (type != null)
+            {
+                typeByteCount = Encoding.UTF8.GetByteCount(type);
+                if (typeByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeType = Util.Allocate(typeByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeTypeStackBytes = stackalloc byte[typeByteCount + 1];
+                    nativeType = nativeTypeStackBytes;
+                }
+
+                int nativeTypeOffset = Util.GetUtf8(type, nativeType, typeByteCount);
+                nativeType[nativeTypeOffset] = 0;
+            }
+            else
+            {
+                nativeType = null;
+            }
+
+            byte ret = ImGuiNative.ImGuiPayload_IsDataType(ref this, nativeType);
+            if (typeByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeType);
+            }
+
+            return ret != 0;
+        }
+
+        /// <summary>
+        ///     Describes whether this instance is delivery
+        /// </summary>
+        /// <returns>The bool</returns>
+        public bool IsDelivery()
+        {
+            byte ret = ImGuiNative.ImGuiPayload_IsDelivery(ref this);
+            return ret != 0;
+        }
+
+        /// <summary>
+        ///     Describes whether this instance is preview
+        /// </summary>
+        /// <returns>The bool</returns>
+        public bool IsPreview()
+        {
+            byte ret = ImGuiNative.ImGuiPayload_IsPreview(ref this);
+            return ret != 0;
+        }
     }
 }
