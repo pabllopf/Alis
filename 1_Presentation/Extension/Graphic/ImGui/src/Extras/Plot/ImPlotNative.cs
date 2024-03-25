@@ -452,7 +452,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <returns>The im plot style</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImPlotStyle* ImPlot_GetStyle();
+        public static extern ImPlotStyle ImPlot_GetStyle();
 
         /// <summary>
         ///     Ims the plot get style color name using the specified idx
@@ -4151,9 +4151,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <summary>
         ///     Ims the plot show style editor using the specified ref
         /// </summary>
-        /// <param name="ref">The ref</param>
+        /// <param name="imPlotStyle"></param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_ShowStyleEditor(ImPlotStyle* @ref);
+        public static extern void ImPlot_ShowStyleEditor(ImPlotStyle imPlotStyle);
 
         /// <summary>
         ///     Ims the plot show style selector using the specified label
@@ -4174,28 +4174,28 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="dst">The dst</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_StyleColorsAuto(ImPlotStyle* dst);
+        public static extern void ImPlot_StyleColorsAuto(ImPlotStyle dst);
 
         /// <summary>
         ///     Ims the plot style colors classic using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_StyleColorsClassic(ImPlotStyle* dst);
+        public static extern void ImPlot_StyleColorsClassic(ImPlotStyle dst);
 
         /// <summary>
         ///     Ims the plot style colors dark using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_StyleColorsDark(ImPlotStyle* dst);
+        public static extern void ImPlot_StyleColorsDark(ImPlotStyle dst);
 
         /// <summary>
         ///     Ims the plot style colors light using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_StyleColorsLight(ImPlotStyle* dst);
+        public static extern void ImPlot_StyleColorsLight(ImPlotStyle dst);
 
         /// <summary>
         ///     Ims the plot tag x bool using the specified x
@@ -4419,13 +4419,13 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlotStyle_destroy(ImPlotStyle* self);
+        public static extern void ImPlotStyle_destroy(ImPlotStyle self);
 
         /// <summary>
         ///     Ims the plot style im plot style
         /// </summary>
         /// <returns>The im plot style</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImPlotStyle* ImPlotStyle_ImPlotStyle();
+        public static extern ImPlotStyle ImPlotStyle_ImPlotStyle();
     }
 }
