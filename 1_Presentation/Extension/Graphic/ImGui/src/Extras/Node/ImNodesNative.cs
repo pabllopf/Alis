@@ -125,14 +125,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <returns>The im nodes context</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImNodesContext* ImNodes_CreateContext();
+        public static extern ImNodesContext ImNodes_CreateContext();
 
         /// <summary>
         ///     Ims the nodes destroy context using the specified ctx
         /// </summary>
         /// <param name="ctx">The ctx</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_DestroyContext(ImNodesContext* ctx);
+        public static extern void ImNodes_DestroyContext(ImNodesContext ctx);
 
         /// <summary>
         ///     Ims the nodes editor context create
@@ -217,14 +217,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <returns>The im nodes context</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImNodesContext* ImNodes_GetCurrentContext();
+        public static extern ImNodesContext ImNodes_GetCurrentContext();
 
         /// <summary>
         ///     Ims the nodes get io
         /// </summary>
         /// <returns>The im nodes io</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImNodesIo* ImNodes_GetIO();
+        public static extern ImNodesIo ImNodes_GetIO();
 
         /// <summary>
         ///     Ims the nodes get node dimensions using the specified p out
@@ -277,7 +277,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <returns>The im nodes style</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImNodesStyle* ImNodes_GetStyle();
+        public static extern ImNodesStyle ImNodes_GetStyle();
 
         /// <summary>
         ///     Ims the nodes is any attribute active using the specified attribute id
@@ -554,7 +554,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="ctx">The ctx</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_SetCurrentContext(ImNodesContext* ctx);
+        public static extern void ImNodes_SetCurrentContext(ImNodesContext ctx);
 
         /// <summary>
         ///     Ims the nodes set im gui context using the specified ctx
@@ -607,49 +607,49 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="dest">The dest</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_StyleColorsClassic(ImNodesStyle* dest);
+        public static extern void ImNodes_StyleColorsClassic(ImNodesStyle dest);
 
         /// <summary>
         ///     Ims the nodes style colors dark using the specified dest
         /// </summary>
         /// <param name="dest">The dest</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_StyleColorsDark(ImNodesStyle* dest);
+        public static extern void ImNodes_StyleColorsDark(ImNodesStyle dest);
 
         /// <summary>
         ///     Ims the nodes style colors light using the specified dest
         /// </summary>
         /// <param name="dest">The dest</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_StyleColorsLight(ImNodesStyle* dest);
+        public static extern void ImNodes_StyleColorsLight(ImNodesStyle dest);
 
         /// <summary>
         ///     Ims the nodes io destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodesIO_destroy(ImNodesIo* self);
+        public static extern void ImNodesIO_destroy(ImNodesIo self);
 
         /// <summary>
         ///     Ims the nodes io im nodes io
         /// </summary>
         /// <returns>The im nodes io</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImNodesIo* ImNodesIO_ImNodesIO();
+        public static extern ImNodesIo ImNodesIO_ImNodesIO();
 
         /// <summary>
         ///     Ims the nodes style destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodesStyle_destroy(ImNodesStyle* self);
+        public static extern void ImNodesStyle_destroy(ImNodesStyle self);
 
         /// <summary>
         ///     Ims the nodes style im nodes style
         /// </summary>
         /// <returns>The im nodes style</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImNodesStyle* ImNodesStyle_ImNodesStyle();
+        public static extern ImNodesStyle ImNodesStyle_ImNodesStyle();
 
         /// <summary>
         ///     Links the detach with modifier click destroy using the specified self

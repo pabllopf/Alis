@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The im gui payload</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igAcceptDragDropPayload")]
-        public static extern ImGuiPayload* igAcceptDragDropPayload(byte* type, ImGuiDragDropFlags flags);
+        public static extern ImGuiPayload igAcceptDragDropPayload(byte* type, ImGuiDragDropFlags flags);
 
         /// <summary>
         ///     Igs the align text to frame padding
@@ -716,7 +716,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragScalar")]
-        public static extern byte igDragScalar(byte* label, ImGuiDataType dataType, void* pData, float vSpeed, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igDragScalar(byte* label, ImGuiDataType dataType, IntPtr pData, float vSpeed, IntPtr pMin, IntPtr pMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the drag scalar n using the specified label
@@ -732,7 +732,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragScalarN")]
-        public static extern byte igDragScalarN(byte* label, ImGuiDataType dataType, void* pData, int components, float vSpeed, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igDragScalarN(byte* label, ImGuiDataType dataType, IntPtr pData, int components, float vSpeed, IntPtr pMin, IntPtr pMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the dummy using the specified size
@@ -863,7 +863,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="platformHandle">The platform handle</param>
         /// <returns>The im gui viewport</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igFindViewportByPlatformHandle")]
-        public static extern ImGuiViewport* igFindViewportByPlatformHandle(void* platformHandle);
+        public static extern ImGuiViewport* igFindViewportByPlatformHandle(IntPtr platformHandle);
 
         /// <summary>
         ///     Igs the get allocator functions using the specified p alloc func
@@ -872,7 +872,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="pFreeFunc">The free func</param>
         /// <param name="pUserData">The user data</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetAllocatorFunctions")]
-        public static extern void igGetAllocatorFunctions(IntPtr* pAllocFunc, IntPtr* pFreeFunc, void** pUserData);
+        public static extern void igGetAllocatorFunctions(IntPtr* pAllocFunc, IntPtr* pFreeFunc, void* pUserData);
 
         /// <summary>
         ///     Igs the get background draw list nil
@@ -1012,14 +1012,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <returns>The im gui payload</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetDragDropPayload")]
-        public static extern ImGuiPayload* igGetDragDropPayload();
+        public static extern ImGuiPayload igGetDragDropPayload();
 
         /// <summary>
         ///     Igs the get draw data
         /// </summary>
         /// <returns>The im draw data</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetDrawData")]
-        public static extern ImDrawData* igGetDrawData();
+        public static extern ref ImDrawData igGetDrawData();
 
         /// <summary>
         ///     Igs the get draw list shared data
@@ -1108,7 +1108,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="ptrId">The ptr id</param>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetID_Ptr")]
-        public static extern uint igGetID_Ptr(void* ptrId);
+        public static extern uint igGetID_Ptr(IntPtr ptrId);
 
         /// <summary>
         ///     Igs the get io
@@ -1256,7 +1256,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <returns>The im gui style</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiStyle* igGetStyle();
+        public static extern ImGuiStyle igGetStyle();
 
         /// <summary>
         ///     Igs the get style color name using the specified idx
@@ -1525,7 +1525,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igInputScalar(byte* label, ImGuiDataType dataType, void* pData, void* pStep, void* pStepFast, byte* format, ImGuiInputTextFlags flags);
+        public static extern byte igInputScalar(byte* label, ImGuiDataType dataType, IntPtr pData, IntPtr pStep, IntPtr pStepFast, byte* format, ImGuiInputTextFlags flags);
 
         /// <summary>
         ///     Igs the input scalar n using the specified label
@@ -1540,7 +1540,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igInputScalarN(byte* label, ImGuiDataType dataType, void* pData, int components, void* pStep, void* pStepFast, byte* format, ImGuiInputTextFlags flags);
+        public static extern byte igInputScalarN(byte* label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pStep, IntPtr pStepFast, byte* format, ImGuiInputTextFlags flags);
 
         /// <summary>
         ///     Igs the input text using the specified label
@@ -1553,7 +1553,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="userData">The user data</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igInputText(byte* label, byte* buf, uint bufSize, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* userData);
+        public static extern byte igInputText(byte* label, byte* buf, uint bufSize, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr userData);
 
         /// <summary>
         ///     Igs the input text multiline using the specified label
@@ -1567,7 +1567,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="userData">The user data</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igInputTextMultiline(byte* label, byte* buf, uint bufSize, Vector2 size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* userData);
+        public static extern byte igInputTextMultiline(byte* label, byte* buf, uint bufSize, Vector2 size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr userData);
 
         /// <summary>
         ///     Igs the input text with hint using the specified label
@@ -1581,7 +1581,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="userData">The user data</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igInputTextWithHint(byte* label, byte* hint, byte* buf, uint bufSize, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* userData);
+        public static extern byte igInputTextWithHint(byte* label, byte* hint, byte* buf, uint bufSize, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr userData);
 
         /// <summary>
         ///     Igs the invisible button using the specified str id
@@ -1923,14 +1923,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="size">The size</param>
         /// <returns>The void</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void* igMemAlloc(uint size);
+        public static extern IntPtr igMemAlloc(uint size);
 
         /// <summary>
         ///     Igs the mem free using the specified ptr
         /// </summary>
         /// <param name="ptr">The ptr</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igMemFree(void* ptr);
+        public static extern void igMemFree(IntPtr ptr);
 
         /// <summary>
         ///     Igs the menu item bool using the specified label
@@ -2141,7 +2141,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="ptrId">The ptr id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igPushID_Ptr(void* ptrId);
+        public static extern void igPushID_Ptr(IntPtr ptrId);
 
         /// <summary>
         ///     Igs the push id int using the specified int id
@@ -2227,7 +2227,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="platformRenderArg">The platform render arg</param>
         /// <param name="rendererRenderArg">The renderer render arg</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igRenderPlatformWindowsDefault(void* platformRenderArg, void* rendererRenderArg);
+        public static extern void igRenderPlatformWindowsDefault(IntPtr platformRenderArg, IntPtr rendererRenderArg);
 
         /// <summary>
         ///     Igs the reset mouse drag delta using the specified button
@@ -2294,7 +2294,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="freeFunc">The free func</param>
         /// <param name="userData">The user data</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetAllocatorFunctions(IntPtr allocFunc, IntPtr freeFunc, void* userData);
+        public static extern void igSetAllocatorFunctions(IntPtr allocFunc, IntPtr freeFunc, IntPtr userData);
 
         /// <summary>
         ///     Igs the set clipboard text using the specified text
@@ -2370,7 +2370,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="cond">The cond</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igSetDragDropPayload(byte* type, void* data, uint sz, ImGuiCond cond);
+        public static extern byte igSetDragDropPayload(byte* type, IntPtr data, uint sz, ImGuiCond cond);
 
         /// <summary>
         ///     Igs the set item allow overlap
@@ -2502,7 +2502,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="customCallback">The custom callback</param>
         /// <param name="customCallbackData">The custom callback data</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetNextWindowSizeConstraints(Vector2 sizeMin, Vector2 sizeMax, ImGuiSizeCallback customCallback, void* customCallbackData);
+        public static extern void igSetNextWindowSizeConstraints(Vector2 sizeMin, Vector2 sizeMax, ImGuiSizeCallback customCallback, IntPtr customCallbackData);
 
         /// <summary>
         ///     Igs the set next window viewport using the specified viewport id
@@ -2692,9 +2692,9 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Igs the show style editor using the specified ref
         /// </summary>
-        /// <param name="ref">The ref</param>
+        /// <param name="imGuiStyle"></param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igShowStyleEditor(ImGuiStyle* @ref);
+        public static extern void igShowStyleEditor(ImGuiStyle imGuiStyle);
 
         /// <summary>
         ///     Igs the show style selector using the specified label
@@ -2839,7 +2839,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igSliderScalar(byte* label, ImGuiDataType dataType, void* pData, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igSliderScalar(byte* label, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the slider scalar n using the specified label
@@ -2854,7 +2854,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igSliderScalarN(byte* label, ImGuiDataType dataType, void* pData, int components, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igSliderScalarN(byte* label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pMin, IntPtr pMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the small button using the specified label
@@ -2875,21 +2875,21 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="dst">The dst</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igStyleColorsClassic(ImGuiStyle* dst);
+        public static extern void igStyleColorsClassic(ImGuiStyle dst);
 
         /// <summary>
         ///     Igs the style colors dark using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igStyleColorsDark(ImGuiStyle* dst);
+        public static extern void igStyleColorsDark(ImGuiStyle dst);
 
         /// <summary>
         ///     Igs the style colors light using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igStyleColorsLight(ImGuiStyle* dst);
+        public static extern void igStyleColorsLight(ImGuiStyle dst);
 
         /// <summary>
         ///     Igs the tab item button using the specified label
@@ -3076,7 +3076,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="fmt">The fmt</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igTreeNode_Ptr(void* ptrId, byte* fmt);
+        public static extern byte igTreeNode_Ptr(IntPtr ptrId, byte* fmt);
 
         /// <summary>
         ///     Igs the tree node ex str using the specified label
@@ -3105,7 +3105,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="fmt">The fmt</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igTreeNodeEx_Ptr(void* ptrId, ImGuiTreeNodeFlags flags, byte* fmt);
+        public static extern byte igTreeNodeEx_Ptr(IntPtr ptrId, ImGuiTreeNodeFlags flags, byte* fmt);
 
         /// <summary>
         ///     Igs the tree pop
@@ -3125,7 +3125,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="ptrId">The ptr id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igTreePush_Ptr(void* ptrId);
+        public static extern void igTreePush_Ptr(IntPtr ptrId);
 
         /// <summary>
         ///     Igs the unindent using the specified indent w
@@ -3214,7 +3214,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igVSliderScalar(byte* label, Vector2 size, ImGuiDataType dataType, void* pData, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igVSliderScalar(byte* label, Vector2 size, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Ims the color destroy using the specified self
@@ -3317,28 +3317,28 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawData_Clear(ImDrawData* self);
+        public static extern void ImDrawData_Clear(ref ImDrawData self);
 
         /// <summary>
         ///     Ims the draw data de index all buffers using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawData_DeIndexAllBuffers(ImDrawData* self);
+        public static extern void ImDrawData_DeIndexAllBuffers(ref ImDrawData self);
 
         /// <summary>
         ///     Ims the draw data destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawData_destroy(ImDrawData* self);
+        public static extern void ImDrawData_destroy(ref ImDrawData self);
 
         /// <summary>
         ///     Ims the draw data im draw data
         /// </summary>
         /// <returns>The im draw data</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImDrawData* ImDrawData_ImDrawData();
+        public static extern ref ImDrawData ImDrawData_ImDrawData();
 
         /// <summary>
         ///     Ims the draw data scale clip rects using the specified self
@@ -3346,7 +3346,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="fbScale">The fb scale</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawData_ScaleClipRects(ImDrawData* self, Vector2 fbScale);
+        public static extern void ImDrawData_ScaleClipRects(ref ImDrawData self, Vector2 fbScale);
 
         /// <summary>
         ///     Ims the draw list calc circle auto segment count using the specified self
@@ -3464,7 +3464,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="callback">The callback</param>
         /// <param name="callbackData">The callback data</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddCallback(ImDrawList* self, IntPtr callback, void* callbackData);
+        public static extern void ImDrawList_AddCallback(ImDrawList* self, IntPtr callback, IntPtr callbackData);
 
         /// <summary>
         ///     Ims the draw list add circle using the specified self
@@ -4126,7 +4126,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="c">The </param>
         /// <returns>The im font glyph</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImFontGlyph* ImFont_FindGlyph(ImFont* self, ushort c);
+        public static extern ImFontGlyph ImFont_FindGlyph(ImFont* self, ushort c);
 
         /// <summary>
         ///     Ims the font find glyph no fallback using the specified self
@@ -4135,7 +4135,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="c">The </param>
         /// <returns>The im font glyph</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImFontGlyph* ImFont_FindGlyphNoFallback(ImFont* self, ushort c);
+        public static extern ImFontGlyph ImFont_FindGlyphNoFallback(ImFont* self, ushort c);
 
         /// <summary>
         ///     Ims the font get char advance using the specified self
@@ -4301,7 +4301,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImFont* ImFontAtlas_AddFontFromMemoryCompressedTTF(ImFontAtlas* self, void* compressedFontData, int compressedFontSize, float sizePixels, ImFontConfig* fontCfg, ushort* glyphRanges);
+        public static extern ImFont* ImFontAtlas_AddFontFromMemoryCompressedTTF(ImFontAtlas* self, IntPtr compressedFontData, int compressedFontSize, float sizePixels, ImFontConfig* fontCfg, ushort* glyphRanges);
 
         /// <summary>
         ///     Ims the font atlas add font from memory ttf using the specified self
@@ -4314,7 +4314,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImFont* ImFontAtlas_AddFontFromMemoryTTF(ImFontAtlas* self, void* fontData, int fontSize, float sizePixels, ImFontConfig* fontCfg, ushort* glyphRanges);
+        public static extern ImFont* ImFontAtlas_AddFontFromMemoryTTF(ImFontAtlas* self, IntPtr fontData, int fontSize, float sizePixels, ImFontConfig* fontCfg, ushort* glyphRanges);
 
         /// <summary>
         ///     Ims the font atlas build using the specified self
@@ -4572,7 +4572,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="c">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFontGlyphRangesBuilder_AddChar(ImFontGlyphRangesBuilder* self, ushort c);
+        public static extern void ImFontGlyphRangesBuilder_AddChar(ref ImFontGlyphRangesBuilder self, ushort c);
 
         /// <summary>
         ///     Ims the font glyph ranges builder add ranges using the specified self
@@ -4580,7 +4580,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="ranges">The ranges</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFontGlyphRangesBuilder_AddRanges(ImFontGlyphRangesBuilder* self, ushort* ranges);
+        public static extern void ImFontGlyphRangesBuilder_AddRanges(ref ImFontGlyphRangesBuilder self, ushort* ranges);
 
         /// <summary>
         ///     Ims the font glyph ranges builder add text using the specified self
@@ -4589,7 +4589,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="text">The text</param>
         /// <param name="textEnd">The text end</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFontGlyphRangesBuilder_AddText(ImFontGlyphRangesBuilder* self, byte* text, byte* textEnd);
+        public static extern void ImFontGlyphRangesBuilder_AddText(ref ImFontGlyphRangesBuilder self, byte* text, byte* textEnd);
 
         /// <summary>
         ///     Ims the font glyph ranges builder build ranges using the specified self
@@ -4597,21 +4597,21 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="outRanges">The out ranges</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFontGlyphRangesBuilder_BuildRanges(ImFontGlyphRangesBuilder* self, ImVector* outRanges);
+        public static extern void ImFontGlyphRangesBuilder_BuildRanges(ref ImFontGlyphRangesBuilder self, ImVector* outRanges);
 
         /// <summary>
         ///     Ims the font glyph ranges builder clear using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFontGlyphRangesBuilder_Clear(ImFontGlyphRangesBuilder* self);
+        public static extern void ImFontGlyphRangesBuilder_Clear(ref ImFontGlyphRangesBuilder self);
 
         /// <summary>
         ///     Ims the font glyph ranges builder destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFontGlyphRangesBuilder_destroy(ImFontGlyphRangesBuilder* self);
+        public static extern void ImFontGlyphRangesBuilder_destroy(ref ImFontGlyphRangesBuilder self);
 
         /// <summary>
         ///     Ims the font glyph ranges builder get bit using the specified self
@@ -4620,7 +4620,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="n">The </param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImFontGlyphRangesBuilder_GetBit(ImFontGlyphRangesBuilder* self, uint n);
+        public static extern byte ImFontGlyphRangesBuilder_GetBit(ref ImFontGlyphRangesBuilder self, uint n);
 
         /// <summary>
         ///     Ims the font glyph ranges builder im font glyph ranges builder
@@ -4635,7 +4635,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="n">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFontGlyphRangesBuilder_SetBit(ImFontGlyphRangesBuilder* self, uint n);
+        public static extern void ImFontGlyphRangesBuilder_SetBit(ref ImFontGlyphRangesBuilder self, uint n);
 
         /// <summary>
         ///     Ims the gui input text callback data clear selection using the specified self
@@ -4891,21 +4891,21 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiPayload_Clear(ImGuiPayload* self);
+        public static extern void ImGuiPayload_Clear(ref ImGuiPayload self);
 
         /// <summary>
         ///     Ims the gui payload destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiPayload_destroy(ImGuiPayload* self);
+        public static extern void ImGuiPayload_destroy(ref ImGuiPayload self);
 
         /// <summary>
         ///     Ims the gui payload im gui payload
         /// </summary>
         /// <returns>The im gui payload</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiPayload* ImGuiPayload_ImGuiPayload();
+        public static extern ImGuiPayload ImGuiPayload_ImGuiPayload();
 
         /// <summary>
         ///     Ims the gui payload is data type using the specified self
@@ -4914,7 +4914,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="type">The type</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImGuiPayload_IsDataType(ImGuiPayload* self, byte* type);
+        public static extern byte ImGuiPayload_IsDataType(ref ImGuiPayload self, byte* type);
 
         /// <summary>
         ///     Ims the gui payload is delivery using the specified self
@@ -4922,7 +4922,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImGuiPayload_IsDelivery(ImGuiPayload* self);
+        public static extern byte ImGuiPayload_IsDelivery(ref ImGuiPayload self);
 
         /// <summary>
         ///     Ims the gui payload is preview using the specified self
@@ -4930,7 +4930,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImGuiPayload_IsPreview(ImGuiPayload* self);
+        public static extern byte ImGuiPayload_IsPreview(ref ImGuiPayload self);
 
         /// <summary>
         ///     Ims the gui platform ime data destroy using the specified self
@@ -5055,7 +5055,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="key">The key</param>
         /// <returns>The void</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void* ImGuiStorage_GetVoidPtr(ImGuiStorage self, uint key);
+        public static extern IntPtr ImGuiStorage_GetVoidPtr(ImGuiStorage self, uint key);
 
         /// <summary>
         ///     Ims the gui storage get void ptr ref using the specified self
@@ -5065,7 +5065,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="defaultVal">The default val</param>
         /// <returns>The void</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void** ImGuiStorage_GetVoidPtrRef(ImGuiStorage self, uint key, void* defaultVal);
+        public static extern void** ImGuiStorage_GetVoidPtrRef(ImGuiStorage self, uint key, IntPtr defaultVal);
 
         /// <summary>
         ///     Ims the gui storage set all int using the specified self
@@ -5109,7 +5109,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="key">The key</param>
         /// <param name="val">The val</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiStorage_SetVoidPtr(ImGuiStorage self, uint key, void* val);
+        public static extern void ImGuiStorage_SetVoidPtr(ImGuiStorage self, uint key, IntPtr val);
 
         /// <summary>
         ///     Ims the gui storage pair destroy using the specified self
@@ -5143,14 +5143,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="valP">The val</param>
         /// <returns>The im gui storage pair</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiStoragePair* ImGuiStoragePair_ImGuiStoragePair_Ptr(uint key, void* valP);
+        public static extern ImGuiStoragePair* ImGuiStoragePair_ImGuiStoragePair_Ptr(uint key, IntPtr valP);
 
         /// <summary>
         ///     Ims the gui style destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiStyle_destroy(ImGuiStyle* self);
+        public static extern void ImGuiStyle_destroy(ImGuiStyle self);
 
         /// <summary>
         ///     Ims the gui style im gui style
@@ -5165,7 +5165,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="scaleFactor">The scale factor</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiStyle_ScaleAllSizes(ImGuiStyle* self, float scaleFactor);
+        public static extern void ImGuiStyle_ScaleAllSizes(ImGuiStyle self, float scaleFactor);
 
         /// <summary>
         ///     Ims the gui table column sort specs destroy using the specified self

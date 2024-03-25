@@ -150,10 +150,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     Creates the context
         /// </summary>
         /// <returns>The im nodes context ptr</returns>
-        public static ImNodesContextPtr CreateContext()
+        public static ImNodesContext CreateContext()
         {
-            ImNodesContext* ret = ImNodesNative.ImNodes_CreateContext();
-            return new ImNodesContextPtr(ret);
+            return ImNodesNative.ImNodes_CreateContext();
         }
 
         /// <summary>
@@ -161,18 +160,16 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         public static void DestroyContext()
         {
-            ImNodesContext* ctx = null;
-            ImNodesNative.ImNodes_DestroyContext(ctx);
+            ImNodesNative.ImNodes_DestroyContext(new ImNodesContext());
         }
 
         /// <summary>
         ///     Destroys the context using the specified ctx
         /// </summary>
         /// <param name="ctx">The ctx</param>
-        public static void DestroyContext(ImNodesContextPtr ctx)
+        public static void DestroyContext(ImNodesContext ctx)
         {
-            ImNodesContext* nativeCtx = ctx.NativePtr;
-            ImNodesNative.ImNodes_DestroyContext(nativeCtx);
+            ImNodesNative.ImNodes_DestroyContext(new ImNodesContext());
         }
 
         /// <summary>
@@ -286,20 +283,18 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     Gets the current context
         /// </summary>
         /// <returns>The im nodes context ptr</returns>
-        public static ImNodesContextPtr GetCurrentContext()
+        public static ImNodesContext GetCurrentContext()
         {
-            ImNodesContext* ret = ImNodesNative.ImNodes_GetCurrentContext();
-            return new ImNodesContextPtr(ret);
+            return ImNodesNative.ImNodes_GetCurrentContext();
         }
 
         /// <summary>
         ///     Gets the io
         /// </summary>
         /// <returns>The im nodes io ptr</returns>
-        public static ImNodesIoPtr GetIo()
+        public static ImNodesIo GetIo()
         {
-            ImNodesIo* ret = ImNodesNative.ImNodes_GetIO();
-            return new ImNodesIoPtr(ret);
+            return ImNodesNative.ImNodes_GetIO();
         }
 
         /// <summary>
@@ -378,10 +373,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     Gets the style
         /// </summary>
         /// <returns>The im nodes style ptr</returns>
-        public static ImNodesStylePtr GetStyle()
+        public static ImNodesStyle GetStyle()
         {
-            ImNodesStyle* ret = ImNodesNative.ImNodes_GetStyle();
-            return new ImNodesStylePtr(ret);
+            return ImNodesNative.ImNodes_GetStyle();
         }
 
         /// <summary>
@@ -1126,10 +1120,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     Sets the current context using the specified ctx
         /// </summary>
         /// <param name="ctx">The ctx</param>
-        public static void SetCurrentContext(ImNodesContextPtr ctx)
+        public static void SetCurrentContext(ImNodesContext ctx)
         {
-            ImNodesContext* nativeCtx = ctx.NativePtr;
-            ImNodesNative.ImNodes_SetCurrentContext(nativeCtx);
+            ImNodesNative.ImNodes_SetCurrentContext(ctx);
         }
 
         /// <summary>
@@ -1196,18 +1189,16 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         public static void StyleColorsClassic()
         {
-            ImNodesStyle* dest = null;
-            ImNodesNative.ImNodes_StyleColorsClassic(dest);
+            ImNodesNative.ImNodes_StyleColorsClassic(new ImNodesStyle());
         }
 
         /// <summary>
         ///     Styles the colors classic using the specified dest
         /// </summary>
         /// <param name="dest">The dest</param>
-        public static void StyleColorsClassic(ImNodesStylePtr dest)
+        public static void StyleColorsClassic(ImNodesStyle dest)
         {
-            ImNodesStyle* nativeDest = dest.NativePtr;
-            ImNodesNative.ImNodes_StyleColorsClassic(nativeDest);
+            ImNodesNative.ImNodes_StyleColorsClassic(dest);
         }
 
         /// <summary>
@@ -1215,18 +1206,17 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         public static void StyleColorsDark()
         {
-            ImNodesStyle* dest = null;
-            ImNodesNative.ImNodes_StyleColorsDark(dest);
+            ImNodesNative.ImNodes_StyleColorsDark(new ImNodesStyle());
         }
 
         /// <summary>
         ///     Styles the colors dark using the specified dest
         /// </summary>
         /// <param name="dest">The dest</param>
-        public static void StyleColorsDark(ImNodesStylePtr dest)
+        public static void StyleColorsDark(ImNodesStyle dest)
         {
-            ImNodesStyle* nativeDest = dest.NativePtr;
-            ImNodesNative.ImNodes_StyleColorsDark(nativeDest);
+            
+            ImNodesNative.ImNodes_StyleColorsDark(dest);
         }
 
         /// <summary>
@@ -1234,18 +1224,16 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         public static void StyleColorsLight()
         {
-            ImNodesStyle* dest = null;
-            ImNodesNative.ImNodes_StyleColorsLight(dest);
+            ImNodesNative.ImNodes_StyleColorsLight(new ImNodesStyle());
         }
 
         /// <summary>
         ///     Styles the colors light using the specified dest
         /// </summary>
         /// <param name="dest">The dest</param>
-        public static void StyleColorsLight(ImNodesStylePtr dest)
+        public static void StyleColorsLight(ImNodesStyle dest)
         {
-            ImNodesStyle* nativeDest = dest.NativePtr;
-            ImNodesNative.ImNodes_StyleColorsLight(nativeDest);
+            ImNodesNative.ImNodes_StyleColorsLight(dest);
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im gui class
     /// </summary>
-    public static unsafe partial class ImGui
+    public static unsafe class ImGui
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGui" /> class
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="type">The type</param>
         /// <returns>The im gui payload ptr</returns>
-        public static ImGuiPayloadPtr AcceptDragDropPayload(string type)
+        public static ImGuiPayload AcceptDragDropPayload(string type)
         {
             byte* nativeType;
             int typeByteCount = 0;
@@ -82,13 +82,13 @@ namespace Alis.Extension.Graphic.ImGui
             }
 
             ImGuiDragDropFlags flags = 0;
-            ImGuiPayload* ret = ImGuiNative.igAcceptDragDropPayload(nativeType, flags);
+            ImGuiPayload ret = ImGuiNative.igAcceptDragDropPayload(nativeType, flags);
             if (typeByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeType);
             }
 
-            return new ImGuiPayloadPtr(ret);
+            return ret;
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="type">The type</param>
         /// <param name="flags">The flags</param>
         /// <returns>The im gui payload ptr</returns>
-        public static ImGuiPayloadPtr AcceptDragDropPayload(string type, ImGuiDragDropFlags flags)
+        public static ImGuiPayload AcceptDragDropPayload(string type, ImGuiDragDropFlags flags)
         {
             byte* nativeType;
             int typeByteCount = 0;
@@ -122,13 +122,13 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeType = null;
             }
 
-            ImGuiPayload* ret = ImGuiNative.igAcceptDragDropPayload(nativeType, flags);
+            ImGuiPayload ret = ImGuiNative.igAcceptDragDropPayload(nativeType, flags);
             if (typeByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeType);
             }
 
-            return new ImGuiPayloadPtr(ret);
+            return ret;
         }
 
         /// <summary>
@@ -8056,10 +8056,10 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
+            IntPtr nativePData = pData;
             float vSpeed = 1.0f;
-            void* pMin = null;
-            void* pMax = null;
+            IntPtr pMin = IntPtr.Zero;
+            IntPtr pMax = IntPtr.Zero;
             byte* nativeFormat = null;
             ImGuiSliderFlags flags = 0;
             byte ret = ImGuiNative.igDragScalar(nativeLabel, dataType, nativePData, vSpeed, pMin, pMax, nativeFormat, flags);
@@ -8104,9 +8104,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* pMin = null;
-            void* pMax = null;
+            IntPtr nativePData = pData;
+            IntPtr pMin = IntPtr.Zero;
+            IntPtr pMax = IntPtr.Zero;
             byte* nativeFormat = null;
             ImGuiSliderFlags flags = 0;
             byte ret = ImGuiNative.igDragScalar(nativeLabel, dataType, nativePData, vSpeed, pMin, pMax, nativeFormat, flags);
@@ -8152,9 +8152,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePMin = pMin.ToPointer();
-            void* pMax = null;
+            IntPtr nativePData = pData;
+            IntPtr nativePMin = pMin;
+            IntPtr pMax = IntPtr.Zero;
             byte* nativeFormat = null;
             ImGuiSliderFlags flags = 0;
             byte ret = ImGuiNative.igDragScalar(nativeLabel, dataType, nativePData, vSpeed, nativePMin, pMax, nativeFormat, flags);
@@ -8201,9 +8201,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePMin = pMin.ToPointer();
-            void* nativePMax = pMax.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePMin = pMin;
+            IntPtr nativePMax = pMax;
             byte* nativeFormat = null;
             ImGuiSliderFlags flags = 0;
             byte ret = ImGuiNative.igDragScalar(nativeLabel, dataType, nativePData, vSpeed, nativePMin, nativePMax, nativeFormat, flags);
@@ -8251,9 +8251,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePMin = pMin.ToPointer();
-            void* nativePMax = pMax.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePMin = pMin;
+            IntPtr nativePMax = pMax;
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -8329,9 +8329,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePMin = pMin.ToPointer();
-            void* nativePMax = pMax.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePMin = pMin;
+            IntPtr nativePMax = pMax;
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -8402,10 +8402,10 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
+            IntPtr nativePData = pData;
             float vSpeed = 1.0f;
-            void* pMin = null;
-            void* pMax = null;
+            IntPtr pMin = IntPtr.Zero;
+            IntPtr pMax = IntPtr.Zero;
             byte* nativeFormat = null;
             ImGuiSliderFlags flags = 0;
             byte ret = ImGuiNative.igDragScalarN(nativeLabel, dataType, nativePData, components, vSpeed, pMin, pMax, nativeFormat, flags);
@@ -8451,9 +8451,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* pMin = null;
-            void* pMax = null;
+            IntPtr nativePData = pData;
+            IntPtr pMin = IntPtr.Zero;
+            IntPtr pMax = IntPtr.Zero;
             byte* nativeFormat = null;
             ImGuiSliderFlags flags = 0;
             byte ret = ImGuiNative.igDragScalarN(nativeLabel, dataType, nativePData, components, vSpeed, pMin, pMax, nativeFormat, flags);
@@ -8500,9 +8500,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePMin = pMin.ToPointer();
-            void* pMax = null;
+            IntPtr nativePData = pData;
+            IntPtr nativePMin = pMin;
+            IntPtr pMax = IntPtr.Zero;
             byte* nativeFormat = null;
             ImGuiSliderFlags flags = 0;
             byte ret = ImGuiNative.igDragScalarN(nativeLabel, dataType, nativePData, components, vSpeed, nativePMin, pMax, nativeFormat, flags);
@@ -8550,9 +8550,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePMin = pMin.ToPointer();
-            void* nativePMax = pMax.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePMin = pMin;
+            IntPtr nativePMax = pMax;
             byte* nativeFormat = null;
             ImGuiSliderFlags flags = 0;
             byte ret = ImGuiNative.igDragScalarN(nativeLabel, dataType, nativePData, components, vSpeed, nativePMin, nativePMax, nativeFormat, flags);
@@ -8601,9 +8601,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePMin = pMin.ToPointer();
-            void* nativePMax = pMax.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePMin = pMin;
+            IntPtr nativePMax = pMax;
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -8680,9 +8680,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePMin = pMin.ToPointer();
-            void* nativePMax = pMax.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePMin = pMin;
+            IntPtr nativePMax = pMax;
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -8891,7 +8891,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The im gui viewport ptr</returns>
         public static ImGuiViewportPtr FindViewportByPlatformHandle(IntPtr platformHandle)
         {
-            void* nativePlatformHandle = platformHandle.ToPointer();
+            IntPtr nativePlatformHandle = platformHandle;
             ImGuiViewport* ret = ImGuiNative.igFindViewportByPlatformHandle(nativePlatformHandle);
             return new ImGuiViewportPtr(ret);
         }
@@ -8902,13 +8902,13 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="pAllocFunc">The alloc func</param>
         /// <param name="pFreeFunc">The free func</param>
         /// <param name="pUserData">The user data</param>
-        public static void GetAllocatorFunctions(ref IntPtr pAllocFunc, ref IntPtr pFreeFunc, ref void* pUserData)
+        public static void GetAllocatorFunctions(ref IntPtr pAllocFunc, ref IntPtr pFreeFunc, ref IntPtr pUserData)
         {
             fixed (IntPtr* nativePAllocFunc = &pAllocFunc)
             {
                 fixed (IntPtr* nativePFreeFunc = &pFreeFunc)
                 {
-                    fixed (void** nativePUserData = &pUserData)
+                    fixed (void* nativePUserData = &pUserData)
                     {
                         ImGuiNative.igGetAllocatorFunctions(nativePAllocFunc, nativePFreeFunc, nativePUserData);
                     }
@@ -9147,20 +9147,18 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the drag drop payload
         /// </summary>
         /// <returns>The im gui payload ptr</returns>
-        public static ImGuiPayloadPtr GetDragDropPayload()
+        public static ImGuiPayload GetDragDropPayload()
         {
-            ImGuiPayload* ret = ImGuiNative.igGetDragDropPayload();
-            return new ImGuiPayloadPtr(ret);
+            return ImGuiNative.igGetDragDropPayload();
         }
 
         /// <summary>
         ///     Gets the draw data
         /// </summary>
         /// <returns>The im draw data ptr</returns>
-        public static ImDrawDataPtr GetDrawData()
+        public static ImDrawData GetDrawData()
         {
-            ImDrawData* ret = ImGuiNative.igGetDrawData();
-            return new ImDrawDataPtr(ret);
+            return ImGuiNative.igGetDrawData();
         }
 
         /// <summary>
@@ -9302,7 +9300,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The ret</returns>
         public static uint GetId(IntPtr ptrId)
         {
-            void* nativePtrId = ptrId.ToPointer();
+            IntPtr nativePtrId = ptrId;
             uint ret = ImGuiNative.igGetID_Ptr(nativePtrId);
             return ret;
         }
@@ -9537,10 +9535,9 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the style
         /// </summary>
         /// <returns>The im gui style ptr</returns>
-        public static ImGuiStylePtr GetStyle()
+        public static ImGuiStyle GetStyle()
         {
-            ImGuiStyle* ret = ImGuiNative.igGetStyle();
-            return new ImGuiStylePtr(ret);
+            return ImGuiNative.igGetStyle();
         }
 
         /// <summary>
@@ -11838,9 +11835,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* pStep = null;
-            void* pStepFast = null;
+            IntPtr nativePData = pData;
+            IntPtr pStep = IntPtr.Zero;
+            IntPtr pStepFast = IntPtr.Zero;
             byte* nativeFormat = null;
             ImGuiInputTextFlags flags = 0;
             byte ret = ImGuiNative.igInputScalar(nativeLabel, dataType, nativePData, pStep, pStepFast, nativeFormat, flags);
@@ -11885,9 +11882,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePStep = pStep.ToPointer();
-            void* pStepFast = null;
+            IntPtr nativePData = pData;
+            IntPtr nativePStep = pStep;
+            IntPtr pStepFast = IntPtr.Zero;
             byte* nativeFormat = null;
             ImGuiInputTextFlags flags = 0;
             byte ret = ImGuiNative.igInputScalar(nativeLabel, dataType, nativePData, nativePStep, pStepFast, nativeFormat, flags);
@@ -11933,9 +11930,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePStep = pStep.ToPointer();
-            void* nativePStepFast = pStepFast.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePStep = pStep;
+            IntPtr nativePStepFast = pStepFast;
             byte* nativeFormat = null;
             ImGuiInputTextFlags flags = 0;
             byte ret = ImGuiNative.igInputScalar(nativeLabel, dataType, nativePData, nativePStep, nativePStepFast, nativeFormat, flags);
@@ -11982,9 +11979,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePStep = pStep.ToPointer();
-            void* nativePStepFast = pStepFast.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePStep = pStep;
+            IntPtr nativePStepFast = pStepFast;
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -12059,9 +12056,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePStep = pStep.ToPointer();
-            void* nativePStepFast = pStepFast.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePStep = pStep;
+            IntPtr nativePStepFast = pStepFast;
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -12132,9 +12129,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* pStep = null;
-            void* pStepFast = null;
+            IntPtr nativePData = pData;
+            IntPtr pStep = IntPtr.Zero;
+            IntPtr pStepFast = IntPtr.Zero;
             byte* nativeFormat = null;
             ImGuiInputTextFlags flags = 0;
             byte ret = ImGuiNative.igInputScalarN(nativeLabel, dataType, nativePData, components, pStep, pStepFast, nativeFormat, flags);
@@ -12180,9 +12177,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePStep = pStep.ToPointer();
-            void* pStepFast = null;
+            IntPtr nativePData = pData;
+            IntPtr nativePStep = pStep;
+            IntPtr pStepFast = IntPtr.Zero;
             byte* nativeFormat = null;
             ImGuiInputTextFlags flags = 0;
             byte ret = ImGuiNative.igInputScalarN(nativeLabel, dataType, nativePData, components, nativePStep, pStepFast, nativeFormat, flags);
@@ -12229,9 +12226,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePStep = pStep.ToPointer();
-            void* nativePStepFast = pStepFast.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePStep = pStep;
+            IntPtr nativePStepFast = pStepFast;
             byte* nativeFormat = null;
             ImGuiInputTextFlags flags = 0;
             byte ret = ImGuiNative.igInputScalarN(nativeLabel, dataType, nativePData, components, nativePStep, nativePStepFast, nativeFormat, flags);
@@ -12279,9 +12276,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePStep = pStep.ToPointer();
-            void* nativePStepFast = pStepFast.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePStep = pStep;
+            IntPtr nativePStepFast = pStepFast;
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -12357,9 +12354,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePStep = pStep.ToPointer();
-            void* nativePStepFast = pStepFast.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePStep = pStep;
+            IntPtr nativePStepFast = pStepFast;
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -13480,7 +13477,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The int ptr</returns>
         public static IntPtr MemAlloc(uint size)
         {
-            void* ret = ImGuiNative.igMemAlloc(size);
+            IntPtr ret = ImGuiNative.igMemAlloc(size);
             return (IntPtr) ret;
         }
 
@@ -13490,7 +13487,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="ptr">The ptr</param>
         public static void MemFree(IntPtr ptr)
         {
-            void* nativePtr = ptr.ToPointer();
+            IntPtr nativePtr = ptr;
             ImGuiNative.igMemFree(nativePtr);
         }
 
@@ -15272,7 +15269,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="ptrId">The ptr id</param>
         public static void PushId(IntPtr ptrId)
         {
-            void* nativePtrId = ptrId.ToPointer();
+            IntPtr nativePtrId = ptrId;
             ImGuiNative.igPushID_Ptr(nativePtrId);
         }
 
@@ -15450,8 +15447,8 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public static void RenderPlatformWindowsDefault()
         {
-            void* platformRenderArg = null;
-            void* rendererRenderArg = null;
+            IntPtr platformRenderArg = IntPtr.Zero;
+            IntPtr rendererRenderArg = IntPtr.Zero;
             ImGuiNative.igRenderPlatformWindowsDefault(platformRenderArg, rendererRenderArg);
         }
 
@@ -15461,8 +15458,8 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="platformRenderArg">The platform render arg</param>
         public static void RenderPlatformWindowsDefault(IntPtr platformRenderArg)
         {
-            void* nativePlatformRenderArg = platformRenderArg.ToPointer();
-            void* rendererRenderArg = null;
+            IntPtr nativePlatformRenderArg = platformRenderArg;
+            IntPtr rendererRenderArg = IntPtr.Zero;
             ImGuiNative.igRenderPlatformWindowsDefault(nativePlatformRenderArg, rendererRenderArg);
         }
 
@@ -15473,8 +15470,8 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="rendererRenderArg">The renderer render arg</param>
         public static void RenderPlatformWindowsDefault(IntPtr platformRenderArg, IntPtr rendererRenderArg)
         {
-            void* nativePlatformRenderArg = platformRenderArg.ToPointer();
-            void* nativeRendererRenderArg = rendererRenderArg.ToPointer();
+            IntPtr nativePlatformRenderArg = platformRenderArg;
+            IntPtr nativeRendererRenderArg = rendererRenderArg;
             ImGuiNative.igRenderPlatformWindowsDefault(nativePlatformRenderArg, nativeRendererRenderArg);
         }
 
@@ -15908,7 +15905,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="freeFunc">The free func</param>
         public static void SetAllocatorFunctions(IntPtr allocFunc, IntPtr freeFunc)
         {
-            void* userData = null;
+            IntPtr userData = IntPtr.Zero;
             ImGuiNative.igSetAllocatorFunctions(allocFunc, freeFunc, userData);
         }
 
@@ -15920,7 +15917,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="userData">The user data</param>
         public static void SetAllocatorFunctions(IntPtr allocFunc, IntPtr freeFunc, IntPtr userData)
         {
-            void* nativeUserData = userData.ToPointer();
+            IntPtr nativeUserData = userData;
             ImGuiNative.igSetAllocatorFunctions(allocFunc, freeFunc, nativeUserData);
         }
 
@@ -16066,7 +16063,7 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeType = null;
             }
 
-            void* nativeData = data.ToPointer();
+            IntPtr nativeData = data;
             ImGuiCond cond = 0;
             byte ret = ImGuiNative.igSetDragDropPayload(nativeType, nativeData, sz, cond);
             if (typeByteCount > Util.StackAllocationSizeLimit)
@@ -16110,7 +16107,7 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeType = null;
             }
 
-            void* nativeData = data.ToPointer();
+            IntPtr nativeData = data;
             byte ret = ImGuiNative.igSetDragDropPayload(nativeType, nativeData, sz, cond);
             if (typeByteCount > Util.StackAllocationSizeLimit)
             {
@@ -16361,7 +16358,7 @@ namespace Alis.Extension.Graphic.ImGui
         public static void SetNextWindowSizeConstraints(Vector2 sizeMin, Vector2 sizeMax)
         {
             ImGuiSizeCallback customCallback = null;
-            void* customCallbackData = null;
+            IntPtr customCallbackData = IntPtr.Zero;
             ImGuiNative.igSetNextWindowSizeConstraints(sizeMin, sizeMax, customCallback, customCallbackData);
         }
 
@@ -16373,7 +16370,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="customCallback">The custom callback</param>
         public static void SetNextWindowSizeConstraints(Vector2 sizeMin, Vector2 sizeMax, ImGuiSizeCallback customCallback)
         {
-            void* customCallbackData = null;
+            IntPtr customCallbackData = IntPtr.Zero;
             ImGuiNative.igSetNextWindowSizeConstraints(sizeMin, sizeMax, customCallback, customCallbackData);
         }
 
@@ -16386,7 +16383,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="customCallbackData">The custom callback data</param>
         public static void SetNextWindowSizeConstraints(Vector2 sizeMin, Vector2 sizeMax, ImGuiSizeCallback customCallback, IntPtr customCallbackData)
         {
-            void* nativeCustomCallbackData = customCallbackData.ToPointer();
+            IntPtr nativeCustomCallbackData = customCallbackData;
             ImGuiNative.igSetNextWindowSizeConstraints(sizeMin, sizeMax, customCallback, nativeCustomCallbackData);
         }
 
@@ -17065,18 +17062,16 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public static void ShowStyleEditor()
         {
-            ImGuiStyle* @ref = null;
-            ImGuiNative.igShowStyleEditor(@ref);
+            ImGuiNative.igShowStyleEditor(new ImGuiStyle());
         }
 
         /// <summary>
         ///     Shows the style editor using the specified ref
         /// </summary>
         /// <param name="ref">The ref</param>
-        public static void ShowStyleEditor(ImGuiStylePtr @ref)
+        public static void ShowStyleEditor(ImGuiStyle imGuiStyle)
         {
-            ImGuiStyle* nativeRef = @ref.NativePtr;
-            ImGuiNative.igShowStyleEditor(nativeRef);
+            ImGuiNative.igShowStyleEditor(imGuiStyle);
         }
 
         /// <summary>
@@ -19236,9 +19231,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePMin = pMin.ToPointer();
-            void* nativePMax = pMax.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePMin = pMin;
+            IntPtr nativePMax = pMax;
             byte* nativeFormat = null;
             ImGuiSliderFlags flags = 0;
             byte ret = ImGuiNative.igSliderScalar(nativeLabel, dataType, nativePData, nativePMin, nativePMax, nativeFormat, flags);
@@ -19285,9 +19280,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePMin = pMin.ToPointer();
-            void* nativePMax = pMax.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePMin = pMin;
+            IntPtr nativePMax = pMax;
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -19362,9 +19357,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePMin = pMin.ToPointer();
-            void* nativePMax = pMax.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePMin = pMin;
+            IntPtr nativePMax = pMax;
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -19437,9 +19432,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePMin = pMin.ToPointer();
-            void* nativePMax = pMax.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePMin = pMin;
+            IntPtr nativePMax = pMax;
             byte* nativeFormat = null;
             ImGuiSliderFlags flags = 0;
             byte ret = ImGuiNative.igSliderScalarN(nativeLabel, dataType, nativePData, components, nativePMin, nativePMax, nativeFormat, flags);
@@ -19487,9 +19482,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePMin = pMin.ToPointer();
-            void* nativePMax = pMax.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePMin = pMin;
+            IntPtr nativePMax = pMax;
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -19565,9 +19560,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePMin = pMin.ToPointer();
-            void* nativePMax = pMax.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePMin = pMin;
+            IntPtr nativePMax = pMax;
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -19657,18 +19652,16 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public static void StyleColorsClassic()
         {
-            ImGuiStyle* dst = null;
-            ImGuiNative.igStyleColorsClassic(dst);
+            ImGuiNative.igStyleColorsClassic(new ImGuiStyle());
         }
 
         /// <summary>
         ///     Styles the colors classic using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        public static void StyleColorsClassic(ImGuiStylePtr dst)
+        public static void StyleColorsClassic(ImGuiStyle dst)
         {
-            ImGuiStyle* nativeDst = dst.NativePtr;
-            ImGuiNative.igStyleColorsClassic(nativeDst);
+            ImGuiNative.igStyleColorsClassic(dst);
         }
 
         /// <summary>
@@ -19676,18 +19669,16 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public static void StyleColorsDark()
         {
-            ImGuiStyle* dst = null;
-            ImGuiNative.igStyleColorsDark(dst);
+            ImGuiNative.igStyleColorsDark(new ImGuiStyle());
         }
 
         /// <summary>
         ///     Styles the colors dark using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        public static void StyleColorsDark(ImGuiStylePtr dst)
+        public static void StyleColorsDark(ImGuiStyle dst)
         {
-            ImGuiStyle* nativeDst = dst.NativePtr;
-            ImGuiNative.igStyleColorsDark(nativeDst);
+            ImGuiNative.igStyleColorsDark(dst);
         }
 
         /// <summary>
@@ -19695,18 +19686,16 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public static void StyleColorsLight()
         {
-            ImGuiStyle* dst = null;
-            ImGuiNative.igStyleColorsLight(dst);
+            ImGuiNative.igStyleColorsLight(new ImGuiStyle());
         }
 
         /// <summary>
         ///     Styles the colors light using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        public static void StyleColorsLight(ImGuiStylePtr dst)
+        public static void StyleColorsLight(ImGuiStyle dst)
         {
-            ImGuiStyle* nativeDst = dst.NativePtr;
-            ImGuiNative.igStyleColorsLight(nativeDst);
+            ImGuiNative.igStyleColorsLight(dst);
         }
 
         /// <summary>
@@ -20460,7 +20449,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The bool</returns>
         public static bool TreeNode(IntPtr ptrId, string fmt)
         {
-            void* nativePtrId = ptrId.ToPointer();
+            IntPtr nativePtrId = ptrId;
             byte* nativeFmt;
             int fmtByteCount = 0;
             if (fmt != null)
@@ -20651,7 +20640,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The bool</returns>
         public static bool TreeNodeEx(IntPtr ptrId, ImGuiTreeNodeFlags flags, string fmt)
         {
-            void* nativePtrId = ptrId.ToPointer();
+            IntPtr nativePtrId = ptrId;
             byte* nativeFmt;
             int fmtByteCount = 0;
             if (fmt != null)
@@ -20734,7 +20723,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="ptrId">The ptr id</param>
         public static void TreePush(IntPtr ptrId)
         {
-            void* nativePtrId = ptrId.ToPointer();
+            IntPtr nativePtrId = ptrId;
             ImGuiNative.igTreePush_Ptr(nativePtrId);
         }
 
@@ -21453,9 +21442,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePMin = pMin.ToPointer();
-            void* nativePMax = pMax.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePMin = pMin;
+            IntPtr nativePMax = pMax;
             byte* nativeFormat = null;
             ImGuiSliderFlags flags = 0;
             byte ret = ImGuiNative.igVSliderScalar(nativeLabel, size, dataType, nativePData, nativePMin, nativePMax, nativeFormat, flags);
@@ -21503,9 +21492,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePMin = pMin.ToPointer();
-            void* nativePMax = pMax.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePMin = pMin;
+            IntPtr nativePMax = pMax;
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -21581,9 +21570,9 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            void* nativePData = pData.ToPointer();
-            void* nativePMin = pMin.ToPointer();
-            void* nativePMax = pMax.ToPointer();
+            IntPtr nativePData = pData;
+            IntPtr nativePMin = pMin;
+            IntPtr nativePMax = pMax;
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -21701,7 +21690,7 @@ namespace Alis.Extension.Graphic.ImGui
             bool ret;
             fixed (byte* bufPtr = buf)
             {
-                ret = ImGuiNative.igInputText(utf8LabelBytes, bufPtr, bufSize, flags, callback, userData.ToPointer()) != 0;
+                ret = ImGuiNative.igInputText(utf8LabelBytes, bufPtr, bufSize, flags, callback, userData) != 0;
             }
 
             if (utf8LabelByteCount > Util.StackAllocationSizeLimit)
@@ -21777,8 +21766,8 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr inputPtr = Marshal.StringToHGlobalAnsi(input);
 
             // Convert ANSI strings to UTF-8 bytes
-            byte* utf8LabelBytes = (byte*) labelPtr.ToPointer();
-            byte* utf8InputBytes = (byte*) inputPtr.ToPointer();
+            byte* utf8LabelBytes = (byte*) labelPtr;
+            byte* utf8InputBytes = (byte*) inputPtr;
 
             // Create buffers for modified input
             int inputBufSize = Math.Max((int) maxLength + 1, Encoding.UTF8.GetByteCount(input) + 1);
@@ -21795,7 +21784,7 @@ namespace Alis.Extension.Graphic.ImGui
                 (uint) inputBufSize,
                 flag,
                 callback,
-                userData.ToPointer());
+                userData);
 
             // Check if the input was modified and update the input variable accordingly
             if (!Util.AreStringsEqual(originalUtf8InputBytes, inputBufSize, modifiedUtf8InputBytes))
@@ -21884,8 +21873,8 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr inputPtr = Marshal.StringToHGlobalAnsi(input);
 
             // Convert ANSI strings to UTF-8 bytes
-            byte* utf8LabelBytes = (byte*) labelPtr.ToPointer();
-            byte* utf8InputBytes = (byte*) inputPtr.ToPointer();
+            byte* utf8LabelBytes = (byte*) labelPtr;
+            byte* utf8InputBytes = (byte*) inputPtr;
 
             // Create buffers for modified input
             int inputBufSize = Math.Max((int) maxLength + 1, Encoding.UTF8.GetByteCount(input) + 1);
@@ -21903,7 +21892,7 @@ namespace Alis.Extension.Graphic.ImGui
                 size,
                 flag,
                 callback,
-                userData.ToPointer());
+                userData);
 
             // Check if the input was modified and update the input variable accordingly
             if (!Util.AreStringsEqual(originalUtf8InputBytes, inputBufSize, modifiedUtf8InputBytes))
@@ -21998,7 +21987,7 @@ namespace Alis.Extension.Graphic.ImGui
                 maxLength + 1,
                 flag,
                 callback,
-                userData.ToPointer());
+                userData);
 
             bool hasInputChanged = !AreUtf8StringsEqual(utf8InputBytes, input);
             if (hasInputChanged)
@@ -22340,7 +22329,7 @@ namespace Alis.Extension.Graphic.ImGui
 
             Util.GetUtf8(label, utf8LabelBytes, utf8LabelByteCount);
 
-            bool ret = ImGuiNative.igInputText(utf8LabelBytes, (byte*) buf.ToPointer(), bufSize, flags, callback, userData.ToPointer()) != 0;
+            bool ret = ImGuiNative.igInputText(utf8LabelBytes, (byte*) buf, bufSize, flags, callback, userData) != 0;
 
             if (utf8LabelByteCount > Util.StackAllocationSizeLimit)
             {
