@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Text;
+
 namespace Alis.Extension.Graphic.ImGui
 {
     /// <summary>
@@ -38,5 +41,51 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The used chars
         /// </summary>
         public ImVector UsedChars;
+        
+        
+        /// <summary>
+        ///     Adds the char using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
+        public void AddChar(ushort c)
+        {
+            ImGuiNative.ImFontGlyphRangesBuilder_AddChar(ref this, c);
+        }
+        
+        /// <summary>
+        ///     Clears this instance
+        /// </summary>
+        public void Clear()
+        {
+            ImGuiNative.ImFontGlyphRangesBuilder_Clear(ref this);
+        }
+
+        /// <summary>
+        ///     Destroys this instance
+        /// </summary>
+        public void Destroy()
+        {
+            ImGuiNative.ImFontGlyphRangesBuilder_destroy(ref this);
+        }
+
+        /// <summary>
+        ///     Describes whether this instance get bit
+        /// </summary>
+        /// <param name="n">The </param>
+        /// <returns>The bool</returns>
+        public bool GetBit(uint n)
+        {
+            byte ret = ImGuiNative.ImFontGlyphRangesBuilder_GetBit(ref this, n);
+            return ret != 0;
+        }
+
+        /// <summary>
+        ///     Sets the bit using the specified n
+        /// </summary>
+        /// <param name="n">The </param>
+        public void SetBit(uint n)
+        {
+            ImGuiNative.ImFontGlyphRangesBuilder_SetBit(ref this, n);
+        }
     }
 }
