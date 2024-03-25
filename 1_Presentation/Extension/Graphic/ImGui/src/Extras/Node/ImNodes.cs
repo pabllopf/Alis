@@ -378,10 +378,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     Gets the style
         /// </summary>
         /// <returns>The im nodes style ptr</returns>
-        public static ImNodesStylePtr GetStyle()
+        public static ImNodesStyle GetStyle()
         {
-            ImNodesStyle* ret = ImNodesNative.ImNodes_GetStyle();
-            return new ImNodesStylePtr(ret);
+            return ImNodesNative.ImNodes_GetStyle();
         }
 
         /// <summary>
@@ -1196,18 +1195,16 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         public static void StyleColorsClassic()
         {
-            ImNodesStyle* dest = null;
-            ImNodesNative.ImNodes_StyleColorsClassic(dest);
+            ImNodesNative.ImNodes_StyleColorsClassic(new ImNodesStyle());
         }
 
         /// <summary>
         ///     Styles the colors classic using the specified dest
         /// </summary>
         /// <param name="dest">The dest</param>
-        public static void StyleColorsClassic(ImNodesStylePtr dest)
+        public static void StyleColorsClassic(ImNodesStyle dest)
         {
-            ImNodesStyle* nativeDest = dest.NativePtr;
-            ImNodesNative.ImNodes_StyleColorsClassic(nativeDest);
+            ImNodesNative.ImNodes_StyleColorsClassic(dest);
         }
 
         /// <summary>
@@ -1215,18 +1212,17 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         public static void StyleColorsDark()
         {
-            ImNodesStyle* dest = null;
-            ImNodesNative.ImNodes_StyleColorsDark(dest);
+            ImNodesNative.ImNodes_StyleColorsDark(new ImNodesStyle());
         }
 
         /// <summary>
         ///     Styles the colors dark using the specified dest
         /// </summary>
         /// <param name="dest">The dest</param>
-        public static void StyleColorsDark(ImNodesStylePtr dest)
+        public static void StyleColorsDark(ImNodesStyle dest)
         {
-            ImNodesStyle* nativeDest = dest.NativePtr;
-            ImNodesNative.ImNodes_StyleColorsDark(nativeDest);
+            
+            ImNodesNative.ImNodes_StyleColorsDark(dest);
         }
 
         /// <summary>
@@ -1234,18 +1230,16 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         public static void StyleColorsLight()
         {
-            ImNodesStyle* dest = null;
-            ImNodesNative.ImNodes_StyleColorsLight(dest);
+            ImNodesNative.ImNodes_StyleColorsLight(new ImNodesStyle());
         }
 
         /// <summary>
         ///     Styles the colors light using the specified dest
         /// </summary>
         /// <param name="dest">The dest</param>
-        public static void StyleColorsLight(ImNodesStylePtr dest)
+        public static void StyleColorsLight(ImNodesStyle dest)
         {
-            ImNodesStyle* nativeDest = dest.NativePtr;
-            ImNodesNative.ImNodes_StyleColorsLight(nativeDest);
+            ImNodesNative.ImNodes_StyleColorsLight(dest);
         }
     }
 }
