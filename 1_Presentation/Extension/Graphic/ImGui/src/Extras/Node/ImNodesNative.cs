@@ -277,7 +277,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <returns>The im nodes style</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImNodesStyle* ImNodes_GetStyle();
+        public static extern ImNodesStyle ImNodes_GetStyle();
 
         /// <summary>
         ///     Ims the nodes is any attribute active using the specified attribute id
@@ -607,21 +607,21 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="dest">The dest</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_StyleColorsClassic(ImNodesStyle* dest);
+        public static extern void ImNodes_StyleColorsClassic(ImNodesStyle dest);
 
         /// <summary>
         ///     Ims the nodes style colors dark using the specified dest
         /// </summary>
         /// <param name="dest">The dest</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_StyleColorsDark(ImNodesStyle* dest);
+        public static extern void ImNodes_StyleColorsDark(ImNodesStyle dest);
 
         /// <summary>
         ///     Ims the nodes style colors light using the specified dest
         /// </summary>
         /// <param name="dest">The dest</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_StyleColorsLight(ImNodesStyle* dest);
+        public static extern void ImNodes_StyleColorsLight(ImNodesStyle dest);
 
         /// <summary>
         ///     Ims the nodes io destroy using the specified self
@@ -642,14 +642,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodesStyle_destroy(ImNodesStyle* self);
+        public static extern void ImNodesStyle_destroy(ImNodesStyle self);
 
         /// <summary>
         ///     Ims the nodes style im nodes style
         /// </summary>
         /// <returns>The im nodes style</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImNodesStyle* ImNodesStyle_ImNodesStyle();
+        public static extern ImNodesStyle ImNodesStyle_ImNodesStyle();
 
         /// <summary>
         ///     Links the detach with modifier click destroy using the specified self
