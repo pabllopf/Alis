@@ -3,9 +3,7 @@
     $(AssemblyName.Contains('Test')) == true OR
     $(AssemblyName.Contains('Sample')) == true OR
     $(AssemblyName.Contains('App')) == true OR
-    $(AssemblyName.Contains('Template')) == true or
-    $(AssemblyName.Contains('Benchmark')) == true 
-    ">
+    $(AssemblyName.Contains('Template')) == true">
         <OutputType>Exe</OutputType>
     </PropertyGroup>
     
@@ -14,10 +12,7 @@
     $(AssemblyName.Contains('Test')) == false AND 
     $(AssemblyName.Contains('App')) == false AND
     $(AssemblyName.Contains('Template')) == false AND
-    $(AssemblyName.Contains('Sample')) == false AND
-    $(AssemblyName.Contains('Benchmark')) == false AND
-    $(AssemblyName.Contains('Extension')) == false
-    ">
+    $(AssemblyName.Contains('Sample')) == false">
         <OutputType>Library</OutputType>
     </PropertyGroup>
 </Project>

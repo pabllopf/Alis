@@ -158,6 +158,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7D733040-0
 		.config\test\ExcludeFromCodeCoverage.props = .config\test\ExcludeFromCodeCoverage.props
 		.config\test\InternalsVisibleTo.props = .config\test\InternalsVisibleTo.props
 		.config\test\SonarQubeExclude.props = .config\test\SonarQubeExclude.props
+		.config\test\ParallelExe.props = .config\test\ParallelExe.props
 	EndProjectSection
 EndProject
 Global
