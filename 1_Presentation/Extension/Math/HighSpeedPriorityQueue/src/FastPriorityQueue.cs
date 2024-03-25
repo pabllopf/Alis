@@ -398,7 +398,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
 
         public void ResetNode(T node)
         {
-            node.Queue = null;
             node.QueueIndex = 0;
         }
 
