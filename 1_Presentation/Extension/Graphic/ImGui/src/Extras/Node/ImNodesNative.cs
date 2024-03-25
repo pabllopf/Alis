@@ -224,7 +224,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <returns>The im nodes io</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImNodesIo* ImNodes_GetIO();
+        public static extern ImNodesIo ImNodes_GetIO();
 
         /// <summary>
         ///     Ims the nodes get node dimensions using the specified p out
@@ -628,14 +628,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodesIO_destroy(ImNodesIo* self);
+        public static extern void ImNodesIO_destroy(ImNodesIo self);
 
         /// <summary>
         ///     Ims the nodes io im nodes io
         /// </summary>
         /// <returns>The im nodes io</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImNodesIo* ImNodesIO_ImNodesIO();
+        public static extern ImNodesIo ImNodesIO_ImNodesIO();
 
         /// <summary>
         ///     Ims the nodes style destroy using the specified self

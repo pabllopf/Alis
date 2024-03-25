@@ -292,10 +292,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     Gets the io
         /// </summary>
         /// <returns>The im nodes io ptr</returns>
-        public static ImNodesIoPtr GetIo()
+        public static ImNodesIo GetIo()
         {
-            ImNodesIo* ret = ImNodesNative.ImNodes_GetIO();
-            return new ImNodesIoPtr(ret);
+            return ImNodesNative.ImNodes_GetIO();
         }
 
         /// <summary>
