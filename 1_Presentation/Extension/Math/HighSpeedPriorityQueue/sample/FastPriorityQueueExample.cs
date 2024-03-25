@@ -1,21 +1,41 @@
-﻿using System;
+using System;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
 {
+    /// <summary>
+    /// The fast priority queue example class
+    /// </summary>
     public static class FastPriorityQueueExample
     {
         //The class to be enqueued.
+        /// <summary>
+        /// The user class
+        /// </summary>
+        /// <seealso cref="FastPriorityQueueNode"/>
         public class User : FastPriorityQueueNode
         {
+            /// <summary>
+            /// Gets or sets the value of the name
+            /// </summary>
             public string Name { get; private set; }
+            /// <summary>
+            /// Initializes a new instance of the <see cref="User"/> class
+            /// </summary>
+            /// <param name="name">The name</param>
             public User(string name)
             {
                 Name = name;
             }
         }
 
+        /// <summary>
+        /// The max users in queue
+        /// </summary>
         private const int MAX_USERS_IN_QUEUE = 10;
 
+        /// <summary>
+        /// Runs the example
+        /// </summary>
         public static void RunExample()
         {
             //First, we create the priority queue.  We'll specify a max of 10 users in the queue

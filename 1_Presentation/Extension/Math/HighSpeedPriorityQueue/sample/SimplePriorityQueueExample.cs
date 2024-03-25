@@ -1,9 +1,15 @@
-﻿using System;
+using System;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
 {
+    /// <summary>
+    /// The simple priority queue example class
+    /// </summary>
     public static class SimplePriorityQueueExample
     {
+        /// <summary>
+        /// Runs the example
+        /// </summary>
         public static void RunExample()
         {
             //First, we create the priority queue.

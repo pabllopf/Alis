@@ -1,14 +1,24 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue
 {
+    /// <summary>
+    /// The fast priority queue class
+    /// </summary>
+    /// <seealso cref="IFixedSizePriorityQueue{T, float}"/>
     public sealed class FastPriorityQueue<T> : IFixedSizePriorityQueue<T, float>
         where T : FastPriorityQueueNode
     {
+        /// <summary>
+        /// The num nodes
+        /// </summary>
         private int _numNodes;
+        /// <summary>
+        /// The nodes
+        /// </summary>
         private T[] _nodes;
 
         /// <summary>
@@ -71,6 +81,10 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         }
 
 
+        /// <summary>
+        /// Cascades the up using the specified node
+        /// </summary>
+        /// <param name="node">The node</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
 
         private void CascadeUp(T node)
@@ -113,6 +127,10 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         }
 
 
+        /// <summary>
+        /// Cascades the down using the specified node
+        /// </summary>
+        /// <param name="node">The node</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
 
         private void CascadeDown(T node)
@@ -341,6 +359,10 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         }
 
 
+        /// <summary>
+        /// Ons the node updated using the specified node
+        /// </summary>
+        /// <param name="node">The node</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
 
         private void OnNodeUpdated(T node)
@@ -401,12 +423,20 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             node.QueueIndex = 0;
         }
 
+        /// <summary>
+        /// Gets the enumerator
+        /// </summary>
+        /// <returns>An enumerator of t</returns>
         public IEnumerator<T> GetEnumerator()
         {
             for (int i = 1; i <= _numNodes; i++)
                 yield return _nodes[i];
         }
 
+        /// <summary>
+        /// Gets the enumerator
+        /// </summary>
+        /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();

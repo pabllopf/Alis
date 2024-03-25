@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,9 +12,21 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
     public sealed class GenericPriorityQueue<TItem, TPriority> : IFixedSizePriorityQueue<TItem, TPriority>
         where TItem : GenericPriorityQueueNode<TPriority>
     {
+        /// <summary>
+        /// The num nodes
+        /// </summary>
         private int _numNodes;
+        /// <summary>
+        /// The nodes
+        /// </summary>
         private TItem[] _nodes;
+        /// <summary>
+        /// The num nodes ever enqueued
+        /// </summary>
         private long _numNodesEverEnqueued;
+        /// <summary>
+        /// The comparer
+        /// </summary>
         private readonly Comparison<TPriority> _comparer;
 
         /// <summary>
@@ -92,6 +104,10 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             CascadeUp(node);
         }
         
+        /// <summary>
+        /// Cascades the up using the specified node
+        /// </summary>
+        /// <param name="node">The node</param>
         private void CascadeUp(TItem node)
         {
             //aka Heapify-up
@@ -129,6 +145,10 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             _nodes[node.QueueIndex] = node;
         }
         
+        /// <summary>
+        /// Cascades the down using the specified node
+        /// </summary>
+        /// <param name="node">The node</param>
         private void CascadeDown(TItem node)
         {
             //aka Heapify-down
@@ -341,6 +361,10 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             OnNodeUpdated(node);
         }
         
+        /// <summary>
+        /// Ons the node updated using the specified node
+        /// </summary>
+        /// <param name="node">The node</param>
         private void OnNodeUpdated(TItem node)
         {
             //Bubble the updated node up or down as appropriate
@@ -393,12 +417,20 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         }
 
 
+        /// <summary>
+        /// Gets the enumerator
+        /// </summary>
+        /// <returns>An enumerator of t item</returns>
         public IEnumerator<TItem> GetEnumerator()
         {
             for(int i = 1; i <= _numNodes; i++)
                 yield return _nodes[i];
         }
 
+        /// <summary>
+        /// Gets the enumerator
+        /// </summary>
+        /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
