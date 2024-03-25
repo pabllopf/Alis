@@ -54,7 +54,10 @@ namespace Alis.Extension.Encode.FFMeg.Test
 
             try
             {
-                if (File.Exists(opath)) File.Delete(opath);
+                if (File.Exists(opath))
+                {
+                    File.Delete(opath);
+                }
 
                 AudioReader audio = new AudioReader(path);
 
@@ -83,7 +86,10 @@ namespace Alis.Extension.Encode.FFMeg.Test
             }
             finally
             {
-                if (File.Exists(opath)) File.Delete(opath);
+                if (File.Exists(opath))
+                {
+                    File.Delete(opath);
+                }
             }
         }
 
@@ -123,7 +129,10 @@ namespace Alis.Extension.Encode.FFMeg.Test
             }
             finally
             {
-                if (File.Exists(opath)) File.Delete(opath);
+                if (File.Exists(opath))
+                {
+                    File.Delete(opath);
+                }
             }
         }
 
@@ -171,7 +180,10 @@ namespace Alis.Extension.Encode.FFMeg.Test
             }
             finally
             {
-                if (File.Exists(opath)) File.Delete(opath);
+                if (File.Exists(opath))
+                {
+                    File.Delete(opath);
+                }
             }
         }
     }

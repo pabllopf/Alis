@@ -76,10 +76,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             public bool ContainsKey(object key)
             {
                 if (!_hash.TryGetValue(key, out int level))
+                {
                     return false;
+                }
 
                 if (Options.SerializationLevel == level)
+                {
                     return false;
+                }
 
                 return true;
             }

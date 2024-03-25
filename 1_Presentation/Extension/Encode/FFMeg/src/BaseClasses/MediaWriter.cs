@@ -60,7 +60,10 @@ namespace Alis.Extension.Encode.FFMeg.BaseClasses
         /// <param name="frame">Frame containing media data</param>
         public virtual void WriteFrame(Frame frame)
         {
-            if (!OpenedForWriting) throw new InvalidOperationException("Media needs to be prepared for writing first!");
+            if (!OpenedForWriting)
+            {
+                throw new InvalidOperationException("Media needs to be prepared for writing first!");
+            }
 
             byte[] data = frame.RawData;
             InputDataStream.Write(data, 0, data.Length);

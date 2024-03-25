@@ -8,7 +8,7 @@
     <!-- Resources when runtime identifier is selected -->
     <ItemGroup Condition="'$(RuntimeIdentifier)' != '' AND Exists('$(ProjectDir)/resources/')">
         <None Remove="$(ProjectDir)/**/resources/**/*.zip;"/>
-        
+
         <!-- Windows -->
         <EmbeddedResource Condition="$(IsARM) AND $(IsWindows)" Include="$(ProjectDir)/**/resources/**/win-arm/**/*win-arm*.zip"/>
         <EmbeddedResource Condition="$(IsARM64) AND $(IsWindows) " Include="$(ProjectDir)/**/resources/**/win-arm64/**/*win-arm64*.zip"/>
@@ -27,11 +27,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        
+
         <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND '$(RuntimeIdentifier)' == ''"
                           Include="$(SolutionDir)4_Operation/**/resources/**/*.zip;"
                           Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
-        
+
         <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND $(IsARM)  AND $(IsWindows)  AND '$(RuntimeIdentifier)' != ''"
                           Include="$(SolutionDir)4_Operation/**/resources/**/win-arm/*win-arm*.zip"
                           Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
@@ -101,7 +101,7 @@
         <EmbeddedResource Condition="$(ProjectDir.Contains('3_Structuration')) AND $(ProjectDir.Contains('Core')) AND $(IsX86)  AND $(IsLinux)  AND '$(RuntimeIdentifier)' != ''"
                           Include="$(SolutionDir)4_Operation/**/resources/**/linux-x86/*linux-x86*.zip"
                           Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
-        
+
     </ItemGroup>
-    
+
 </Project>

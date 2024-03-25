@@ -510,7 +510,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The colors 54
         /// </summary>
         public Vector4 Colors54;
-        
+
         /// <summary>
         ///     Destroys this instance
         /// </summary>

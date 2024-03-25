@@ -229,7 +229,10 @@ namespace Alis.Extension.Encode.FFMeg.BaseClasses
                         string[] parsed = AvgFrameRate.Split('/');
                         avgfpsnum = double.Parse(parsed[0], CultureInfo.InvariantCulture) / double.Parse(parsed[1], CultureInfo.InvariantCulture);
                     }
-                    else avgfpsnum = double.Parse(AvgFrameRate, CultureInfo.InvariantCulture);
+                    else
+                    {
+                        avgfpsnum = double.Parse(AvgFrameRate, CultureInfo.InvariantCulture);
+                    }
                 }
 
                 return avgfpsnum.Value;

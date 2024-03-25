@@ -6,7 +6,7 @@
     $(AssemblyName.Contains('Template')) == true">
         <OutputType>Exe</OutputType>
     </PropertyGroup>
-    
+
 
     <PropertyGroup Condition="
     $(AssemblyName.Contains('Test')) == false AND 

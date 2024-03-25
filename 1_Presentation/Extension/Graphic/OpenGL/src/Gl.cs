@@ -328,6 +328,16 @@ namespace Alis.Extension.Graphic.OpenGL
         private static readonly float[] Matrix4Float = new float[16];
 
         /// <summary>
+        ///     The draw arrays
+        /// </summary>
+        public static readonly DrawArrays GlDrawArrays = _<DrawArrays>("glDrawArrays");
+
+        /// <summary>
+        ///     The draw elements
+        /// </summary>
+        public static readonly DrawElements GlDrawElements = _<DrawElements>("glDrawElements");
+
+        /// <summary>
         ///     S
         /// </summary>
         /// <param name="command"></param>
@@ -564,62 +574,57 @@ namespace Alis.Extension.Graphic.OpenGL
             Uint1[0] = texture;
             GlDeleteTextures(1, Uint1);
         }
-
-        /// <summary>
-        ///     The draw arrays
-        /// </summary>
-        public static readonly DrawArrays GlDrawArrays = _<DrawArrays>("glDrawArrays");
-
-        /// <summary>
-        /// The draw elements
-        /// </summary>
-        public static readonly DrawElements GlDrawElements = _<DrawElements>("glDrawElements");
-        
     }
 
     /// <summary>
-    /// The draw elements
+    ///     The draw elements
     /// </summary>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void DrawElements(PrimitiveType mode, int count, DrawElementsType type, IntPtr indices);
-        
+
     /// <summary>
-    /// The draw arrays
+    ///     The draw arrays
     /// </summary>
     public delegate void DrawArrays(PrimitiveType mode, int first, int count);
 
     /// <summary>
-    /// The primitive type enum
+    ///     The primitive type enum
     /// </summary>
     public enum PrimitiveType
     {
         /// <summary>
-        /// The points primitive type
+        ///     The points primitive type
         /// </summary>
-        Points = 0x0000,       // GL_POINTS
+        Points = 0x0000, // GL_POINTS
+
         /// <summary>
-        /// The lines primitive type
+        ///     The lines primitive type
         /// </summary>
-        Lines = 0x0001,        // GL_LINES
+        Lines = 0x0001, // GL_LINES
+
         /// <summary>
-        /// The line loop primitive type
+        ///     The line loop primitive type
         /// </summary>
-        LineLoop = 0x0002,     // GL_LINE_LOOP
+        LineLoop = 0x0002, // GL_LINE_LOOP
+
         /// <summary>
-        /// The line strip primitive type
+        ///     The line strip primitive type
         /// </summary>
-        LineStrip = 0x0003,    // GL_LINE_STRIP
+        LineStrip = 0x0003, // GL_LINE_STRIP
+
         /// <summary>
-        /// The triangles primitive type
+        ///     The triangles primitive type
         /// </summary>
-        Triangles = 0x0004,    // GL_TRIANGLES
+        Triangles = 0x0004, // GL_TRIANGLES
+
         /// <summary>
-        /// The triangle strip primitive type
+        ///     The triangle strip primitive type
         /// </summary>
-        TriangleStrip = 0x0005,// GL_TRIANGLE_STRIP
+        TriangleStrip = 0x0005, // GL_TRIANGLE_STRIP
+
         /// <summary>
-        /// The triangle fan primitive type
+        ///     The triangle fan primitive type
         /// </summary>
-        TriangleFan = 0x0006   // GL_TRIANGLE_FAN
+        TriangleFan = 0x0006 // GL_TRIANGLE_FAN
     }
 }

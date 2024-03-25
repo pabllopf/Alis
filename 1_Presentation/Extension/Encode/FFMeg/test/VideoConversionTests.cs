@@ -82,7 +82,10 @@ namespace Alis.Extension.Encode.FFMeg.Test
             }
             finally
             {
-                if (File.Exists(opath)) File.Delete(opath);
+                if (File.Exists(opath))
+                {
+                    File.Delete(opath);
+                }
             }
         }
 
@@ -134,7 +137,10 @@ namespace Alis.Extension.Encode.FFMeg.Test
             }
             finally
             {
-                if (File.Exists(opath)) File.Delete(opath);
+                if (File.Exists(opath))
+                {
+                    File.Delete(opath);
+                }
             }
         }
 
@@ -181,7 +187,10 @@ namespace Alis.Extension.Encode.FFMeg.Test
             }
             finally
             {
-                if (File.Exists(opath)) File.Delete(opath);
+                if (File.Exists(opath))
+                {
+                    File.Delete(opath);
+                }
             }
         }
     }

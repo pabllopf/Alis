@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the value of the index lookup
         /// </summary>
         public ImVector<ushort> IndexLookup => new ImVector<ushort>(NativePtr->IndexLookup);
-        
+
         /// <summary>
         ///     Gets the value of the container atlas
         /// </summary>
@@ -225,20 +225,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The im font glyph ptr</returns>
-        public ImFontGlyph FindGlyph(ushort c)
-        {
-            return ImGuiNative.ImFont_FindGlyph(NativePtr, c);
-        }
+        public ImFontGlyph FindGlyph(ushort c) => ImGuiNative.ImFont_FindGlyph(NativePtr, c);
 
         /// <summary>
         ///     Finds the glyph no fallback using the specified c
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The im font glyph ptr</returns>
-        public ImFontGlyph FindGlyphNoFallback(ushort c)
-        {
-            return ImGuiNative.ImFont_FindGlyphNoFallback(NativePtr, c);
-        }
+        public ImFontGlyph FindGlyphNoFallback(ushort c) => ImGuiNative.ImFont_FindGlyphNoFallback(NativePtr, c);
 
         /// <summary>
         ///     Gets the char advance using the specified c

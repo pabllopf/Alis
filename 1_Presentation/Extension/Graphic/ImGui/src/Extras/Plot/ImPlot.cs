@@ -2332,10 +2332,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         ///     Gets the style
         /// </summary>
         /// <returns>The im plot style ptr</returns>
-        public static ImPlotStyle GetStyle()
-        {
-            return ImPlotNative.ImPlot_GetStyle();
-        }
+        public static ImPlotStyle GetStyle() => ImPlotNative.ImPlot_GetStyle();
 
         /// <summary>
         ///     Gets the style color name using the specified idx

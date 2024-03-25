@@ -32,22 +32,22 @@ using System.Diagnostics;
 namespace Alis.Core.Profile
 {
     /// <summary>
-    /// The profiler service class
+    ///     The profiler service class
     /// </summary>
     public class ProfilerService
     {
         /// <summary>
-        /// The profiler
-        /// </summary>
-        private readonly Profiler profiler;
-        
-        /// <summary>
-        /// The profile data
+        ///     The profile data
         /// </summary>
         private readonly ProfileData profileData;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProfilerService"/> class
+        ///     The profiler
+        /// </summary>
+        private readonly Profiler profiler;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ProfilerService" /> class
         /// </summary>
         public ProfilerService()
         {
@@ -56,7 +56,7 @@ namespace Alis.Core.Profile
         }
 
         /// <summary>
-        /// Starts the profiling
+        ///     Starts the profiling
         /// </summary>
         public void StartProfiling()
         {
@@ -67,7 +67,7 @@ namespace Alis.Core.Profile
         }
 
         /// <summary>
-        /// Stops the profiling
+        ///     Stops the profiling
         /// </summary>
         /// <returns>The profile data</returns>
         public ProfileData StopProfiling()
@@ -80,7 +80,7 @@ namespace Alis.Core.Profile
         }
 
         /// <summary>
-        /// Gets the cpu usage
+        ///     Gets the cpu usage
         /// </summary>
         /// <returns>The cpu usage</returns>
         private double GetCpuUsage()
@@ -91,7 +91,7 @@ namespace Alis.Core.Profile
         }
 
         /// <summary>
-        /// Gets the memory usage
+        ///     Gets the memory usage
         /// </summary>
         /// <returns>The memory usage</returns>
         private long GetMemoryUsage()

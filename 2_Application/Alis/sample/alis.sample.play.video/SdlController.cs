@@ -253,7 +253,10 @@ namespace Alis.Sample.Play.Video
 
                 // audio
                 AudioFrame audioFrameTemp = audioReader.NextFrame(audioFrame);
-                if (audioFrameTemp == null) break;
+                if (audioFrameTemp == null)
+                {
+                    break;
+                }
 
                 //player.WriteFrame(audioFrame);
                 Sdl.QueueAudio(deviceId, audioFrame.RawData, (uint) audioFrame.RawData.Length);

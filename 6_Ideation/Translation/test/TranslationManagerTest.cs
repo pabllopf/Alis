@@ -496,10 +496,7 @@ namespace Alis.Core.Aspect.Translation.Test
         /// <param name="localCode">The local code</param>
         /// <param name="key">The key</param>
         /// <param name="value">The value</param>
-        [Theory]
-        [InlineData("", "greeting", "Hello")]
-        [InlineData("fr", "", "Bonjour")]
-        [InlineData("fr", "greeting", "")]
+        [Theory, InlineData("", "greeting", "Hello"), InlineData("fr", "", "Bonjour"), InlineData("fr", "greeting", "")]
         public void AddTranslation_WithNullOrEmptyParameter_ShouldThrowException(string localCode, string key, string value)
         {
             // Arrange

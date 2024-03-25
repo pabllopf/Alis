@@ -68,12 +68,18 @@ namespace Alis.Extension.Encode.FFMeg.Video
         /// </summary>
         public void Dispose()
         {
-            if (OpenedForWriting) CloseWrite();
+            if (OpenedForWriting)
+            {
+                CloseWrite();
+            }
             else
             {
                 try
                 {
-                    if ((ffplayp != null) && !ffplayp.HasExited) ffplayp.Kill();
+                    if ((ffplayp != null) && !ffplayp.HasExited)
+                    {
+                        ffplayp.Kill();
+                    }
                 }
                 catch
                 {
@@ -87,8 +93,15 @@ namespace Alis.Extension.Encode.FFMeg.Video
         /// <param name="extraInputParameters">Extra FFmpeg input parameters to be passed</param>
         public void Play(string extraInputParameters = "")
         {
-            if (OpenedForWriting) throw new InvalidOperationException("Player is already opened for writing frames!");
-            if (string.IsNullOrEmpty(Filename)) throw new InvalidOperationException("No filename was specified!");
+            if (OpenedForWriting)
+            {
+                throw new InvalidOperationException("Player is already opened for writing frames!");
+            }
+
+            if (string.IsNullOrEmpty(Filename))
+            {
+                throw new InvalidOperationException("No filename was specified!");
+            }
 
             FfMpegWrapper.RunCommand(ffplay, $"{extraInputParameters} -i \"{Filename}\"");
         }
@@ -100,11 +113,22 @@ namespace Alis.Extension.Encode.FFMeg.Video
         /// <param name="extraInputParameters">Extra FFmpeg input parameters to be passed</param>
         public Process PlayInBackground(bool runPureBackground = false, string extraInputParameters = "")
         {
-            if (!runPureBackground && OpenedForWriting) throw new InvalidOperationException("Player is already opened for writing frames!");
-            if (string.IsNullOrEmpty(Filename)) throw new InvalidOperationException("No filename was specified!");
+            if (!runPureBackground && OpenedForWriting)
+            {
+                throw new InvalidOperationException("Player is already opened for writing frames!");
+            }
+
+            if (string.IsNullOrEmpty(Filename))
+            {
+                throw new InvalidOperationException("No filename was specified!");
+            }
 
             FfMpegWrapper.OpenOutput(ffplay, $"{extraInputParameters} -i \"{Filename}\"", out Process p);
-            if (!runPureBackground) ffplayp = p;
+            if (!runPureBackground)
+            {
+                ffplayp = p;
+            }
+
             return ffplayp;
         }
 
@@ -119,10 +143,17 @@ namespace Alis.Extension.Encode.FFMeg.Video
         public void OpenWrite(int width, int height, string framerateFrequency,
             string extraInputParameters = "", bool showFFplayOutput = false)
         {
-            if (OpenedForWriting) throw new InvalidOperationException("Player is already opened for writing frames!");
+            if (OpenedForWriting)
+            {
+                throw new InvalidOperationException("Player is already opened for writing frames!");
+            }
+
             try
             {
-                if ((ffplayp != null) && !ffplayp.HasExited) ffplayp.Kill();
+                if ((ffplayp != null) && !ffplayp.HasExited)
+                {
+                    ffplayp.Kill();
+                }
             }
             catch
             {
@@ -139,13 +170,19 @@ namespace Alis.Extension.Encode.FFMeg.Video
         /// </summary>
         public void CloseWrite()
         {
-            if (!OpenedForWriting) throw new InvalidOperationException("Player is not opened for writing frames!");
+            if (!OpenedForWriting)
+            {
+                throw new InvalidOperationException("Player is not opened for writing frames!");
+            }
 
             try
             {
                 try
                 {
-                    if (!ffplayp.HasExited) ffplayp.Kill();
+                    if (!ffplayp.HasExited)
+                    {
+                        ffplayp.Kill();
+                    }
                 }
                 catch
                 {

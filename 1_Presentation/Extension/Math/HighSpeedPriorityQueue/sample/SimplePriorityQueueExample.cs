@@ -3,12 +3,12 @@ using System;
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
 {
     /// <summary>
-    /// The simple priority queue example class
+    ///     The simple priority queue example class
     /// </summary>
     public static class SimplePriorityQueueExample
     {
         /// <summary>
-        /// Runs the example
+        ///     Runs the example
         /// </summary>
         public static void RunExample()
         {
@@ -26,7 +26,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
             priorityQueue.UpdatePriority("2 - Tyler", 2);
 
             //Finally, we'll dequeue all the strings and print them out
-            while(priorityQueue.Count != 0)
+            while (priorityQueue.Count != 0)
             {
                 string nextUser = priorityQueue.Dequeue();
                 Console.WriteLine(nextUser);

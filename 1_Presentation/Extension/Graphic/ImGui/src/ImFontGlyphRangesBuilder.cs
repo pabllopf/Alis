@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Text;
-
 namespace Alis.Extension.Graphic.ImGui
 {
     /// <summary>
@@ -41,8 +38,8 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The used chars
         /// </summary>
         public ImVector UsedChars;
-        
-        
+
+
         /// <summary>
         ///     Adds the char using the specified c
         /// </summary>
@@ -51,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImFontGlyphRangesBuilder_AddChar(ref this, c);
         }
-        
+
         /// <summary>
         ///     Clears this instance
         /// </summary>

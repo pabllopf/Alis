@@ -57,15 +57,21 @@ namespace Alis.Core.Physic.Tools.Triangulation.TriangulationBase
             bool discardAndFixInvalid = true, float tolerance = 0.001f)
         {
             if (vertices.Count <= 3)
+            {
                 return new List<Vertices> {vertices};
+            }
 
             if (!ValidateCounterClockwise(vertices, algorithm))
+            {
                 vertices.Reverse();
+            }
 
             List<Vertices> results = GetConvexPartition(vertices, algorithm, tolerance);
 
             if (discardAndFixInvalid)
+            {
                 results.RemoveAll(polygon => !ValidatePolygon(polygon));
+            }
 
             return results;
         }

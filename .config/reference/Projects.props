@@ -30,7 +30,7 @@
                           $(SolutionDir)3_Structuration/**/*.Sample.csproj; 
                           $(SolutionDir)3_Structuration/**/*.Test.csproj;
                           $(SolutionDir)**/Extension/**/**/*.csproj;"/>
-        
+
         <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
                           Include="$(SolutionDir)4_Operation/**/*.csproj"
                           Exclude="
@@ -52,9 +52,8 @@
                           $(SolutionDir)6_Ideation/**/*.Test.csproj;
                           $(SolutionDir)**/Extension/**/**/*.csproj;"/>
     </ItemGroup>
-    
-    
-    
+
+
     <ItemGroup Condition="
         $(AssemblyName.Contains('Test')) == False AND
         $(AssemblyName.Contains('Sample')) == False AND
@@ -83,7 +82,7 @@
         <ProjectReference Condition="
         $(ProjectDir.Contains('1_Presentation')) AND 
         $(ProjectDir.Contains('Extension')) == True AND
-        $(ProjectDir.Contains('Benchmark')) == False"   
+        $(ProjectDir.Contains('Benchmark')) == False"
                           Include="
                           $(SolutionDir)2_Application/**/Alis.csproj;"
                           Exclude="
@@ -93,7 +92,7 @@
                           $(SolutionDir)1_Presentation/**/Extension/**/**/*Benchmark.csproj;
                           $(SolutionDir)1_Presentation/**/Extension/**/**/*Test.csproj;
                           $(SolutionDir)**/Extension/**/**/*.Test.csproj;"/>
-        
+
         <Compile Condition="$(ProjectDir.Contains('2_Application'))"
                  Include="
                         
@@ -123,8 +122,7 @@
                           $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
                           $(SolutionDir)4_Operation/**/*.Designer.cs "
                  Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
-        
-      
+
 
         <Compile Condition="$(ProjectDir.Contains('2_Application'))"
                  Include="
@@ -166,7 +164,7 @@
                           $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
                           $(SolutionDir)4_Operation/**/*.Designer.cs"
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
-        
+
         <Compile Condition="($(ProjectDir.Contains('3_Structuration')) OR $(ProjectDir.Contains('4_Operation')))"
                  Include="
                         
@@ -188,7 +186,7 @@
                           $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
                           $(SolutionDir)6_Ideation/**/*test/**/*.cs; $(SolutionDir)6_Ideation/**/Resources.Designer.cs"
                  Link="Aspect/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
-        
+
         <Compile Condition="
         $(ProjectDir.Contains('5_Declaration'))"
                  Include="
@@ -208,13 +206,13 @@
 
     <ItemGroup Condition="$(AssemblyName.Contains('Benchmark'))">
         <ProjectReference Include="$(ProjectDir)/../src/$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.Benchmark', '')).csproj"
-        Exclude="
+                          Exclude="
         $(SolutionDir)1_Presentation/**/Extension/**/**/*Sample.csproj;
         $(SolutionDir)1_Presentation/**/Extension/**/**/*Benchmark.csproj;
         $(SolutionDir)1_Presentation/**/Extension/**/**/*Test.csproj;"
         />
     </ItemGroup>
-    
+
     <PropertyGroup Condition="$(AssemblyName.Contains('Sample'))">
         <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Sample[^*]*', ''))</NameTest>
     </PropertyGroup>
@@ -232,6 +230,6 @@
             Condition="$(AssemblyName.Contains('Alis.Sample'))"
             Include="$(SolutionDir)**/src/**/*Extension*.csproj"/>
     </ItemGroup>
-    
-    
+
+
 </Project>

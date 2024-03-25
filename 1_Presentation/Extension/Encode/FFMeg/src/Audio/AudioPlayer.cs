@@ -68,12 +68,18 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         /// </summary>
         public void Dispose()
         {
-            if (OpenedForWriting) CloseWrite();
+            if (OpenedForWriting)
+            {
+                CloseWrite();
+            }
             else
             {
                 try
                 {
-                    if ((ffplayp != null) && !ffplayp.HasExited) ffplayp.Kill();
+                    if ((ffplayp != null) && !ffplayp.HasExited)
+                    {
+                        ffplayp.Kill();
+                    }
                 }
                 catch
                 {
@@ -87,8 +93,15 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         /// <param name="extraInputParameters">Extra FFmpeg input parameters to be passed (example: -probesize 32)</param>
         public void Play(string extraInputParameters = "", bool showWindow = false)
         {
-            if (OpenedForWriting) throw new InvalidOperationException("Player is already opened for writing samples!");
-            if (string.IsNullOrEmpty(Filename)) throw new InvalidOperationException("No filename was specified!");
+            if (OpenedForWriting)
+            {
+                throw new InvalidOperationException("Player is already opened for writing samples!");
+            }
+
+            if (string.IsNullOrEmpty(Filename))
+            {
+                throw new InvalidOperationException("No filename was specified!");
+            }
 
             FfMpegWrapper.RunCommand(ffplay, $"{extraInputParameters} -i \"{Filename}\"" + (showWindow ? "" : " -nodisp"));
         }
@@ -101,11 +114,22 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         /// <param name="runPureBackground">Detach the player from this AudioPlayer control. Player won't be killed on disposing.</param>
         public Process PlayInBackground(string extraInputParameters = "", bool showWindow = false, bool runPureBackground = false)
         {
-            if (!runPureBackground && OpenedForWriting) throw new InvalidOperationException("Player is already opened for writing samples!");
-            if (string.IsNullOrEmpty(Filename)) throw new InvalidOperationException("No filename was specified!");
+            if (!runPureBackground && OpenedForWriting)
+            {
+                throw new InvalidOperationException("Player is already opened for writing samples!");
+            }
+
+            if (string.IsNullOrEmpty(Filename))
+            {
+                throw new InvalidOperationException("No filename was specified!");
+            }
 
             FfMpegWrapper.OpenOutput(ffplay, $"{extraInputParameters} -i \"{Filename}\"" + (showWindow ? "" : " -nodisp"), out Process p);
-            if (!runPureBackground) ffplayp = p;
+            if (!runPureBackground)
+            {
+                ffplayp = p;
+            }
+
             return ffplayp;
         }
 
@@ -121,11 +145,22 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         public void OpenWrite(int sampleRate, int channels, int bitDepth = 16, string extraInputParameters = "",
             bool showWindow = false, bool showFFplayOutput = false)
         {
-            if ((bitDepth != 16) && (bitDepth != 24) && (bitDepth != 32)) throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
-            if (OpenedForWriting) throw new InvalidOperationException("Player is already opened for writing samples!");
+            if ((bitDepth != 16) && (bitDepth != 24) && (bitDepth != 32))
+            {
+                throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
+            }
+
+            if (OpenedForWriting)
+            {
+                throw new InvalidOperationException("Player is already opened for writing samples!");
+            }
+
             try
             {
-                if ((ffplayp != null) && !ffplayp.HasExited) ffplayp.Kill();
+                if ((ffplayp != null) && !ffplayp.HasExited)
+                {
+                    ffplayp.Kill();
+                }
             }
             catch
             {
@@ -143,13 +178,19 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         /// </summary>
         public void CloseWrite()
         {
-            if (!OpenedForWriting) throw new InvalidOperationException("Player is not opened for writing samples!");
+            if (!OpenedForWriting)
+            {
+                throw new InvalidOperationException("Player is not opened for writing samples!");
+            }
 
             try
             {
                 try
                 {
-                    if (!ffplayp.HasExited) ffplayp.Kill();
+                    if (!ffplayp.HasExited)
+                    {
+                        ffplayp.Kill();
+                    }
                 }
                 catch
                 {

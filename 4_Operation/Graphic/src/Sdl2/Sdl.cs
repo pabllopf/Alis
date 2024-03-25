@@ -2692,7 +2692,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderGeometry([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [In] Vertex[] vertices, [IsNotNull] int numVertices, [In] [IsNotNull] int[] indices, [IsNotNull] int numIndices) => NativeSdl.InternalRenderGeometry(renderer, texture, vertices, numVertices, indices, numIndices);
+        public static int RenderGeometry([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [In] Vertex[] vertices, [IsNotNull] int numVertices, [In, IsNotNull]  int[] indices, [IsNotNull] int numIndices) => NativeSdl.InternalRenderGeometry(renderer, texture, vertices, numVertices, indices, numIndices);
 
         /// <summary>
         ///     Renders the draw point f using the specified renderer
@@ -3632,8 +3632,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="sdlEvent">The sdl event</param>
         /// <returns>The int</returns>
         [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [ExcludeFromCodeCoverage]
+        [MethodImpl(MethodImplOptions.AggressiveInlining), ExcludeFromCodeCoverage]
         public static int PollEvent(out Event sdlEvent) => NativeSdl.InternalPollEvent(out sdlEvent);
 
         /// <summary>
@@ -5612,7 +5611,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="volume">The volume</param>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void MixAudio([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] [IsNotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] [IsNotNull] byte[] src, [IsNotNull] uint len, [IsNotNull] int volume)
+        public static void MixAudio([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2), IsNotNull]  byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2), IsNotNull]  byte[] src, [IsNotNull] uint len, [IsNotNull] int volume)
         {
             Validator.Validate(dst, nameof(dst));
             Validator.Validate(src, nameof(src));
@@ -5651,7 +5650,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="volume">The volume</param>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void MixAudioFormat([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [IsNotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [IsNotNull] byte[] src, [IsNotNull] ushort format, [IsNotNull] uint len, [IsNotNull] int volume)
+        public static void MixAudioFormat([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3), IsNotNull]  byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3), IsNotNull]  byte[] src, [IsNotNull] ushort format, [IsNotNull] uint len, [IsNotNull] int volume)
         {
             Validator.Validate(dst, nameof(dst));
             Validator.Validate(src, nameof(src));

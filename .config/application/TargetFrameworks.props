@@ -8,7 +8,7 @@
         <TargetFramework1>net8.0</TargetFramework1>
         <TargetFramework2></TargetFramework2>
     </PropertyGroup>
-    
+
     <PropertyGroup Condition="
         $(AssemblyName.Contains('Test')) == false AND 
         $(AssemblyName.Contains('App')) == false AND

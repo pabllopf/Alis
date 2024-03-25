@@ -76,7 +76,9 @@ namespace Alis.Core.Aspect.Data.Json
             set
             {
                 if (string.IsNullOrEmpty(value))
+                {
                     throw new ArgumentException(null, nameof(value));
+                }
 
                 _name = value;
             }
@@ -94,7 +96,9 @@ namespace Alis.Core.Aspect.Data.Json
             set
             {
                 if (string.IsNullOrEmpty(value))
+                {
                     throw new ArgumentException(null, nameof(value));
+                }
 
                 _wireName = value;
             }
@@ -112,7 +116,9 @@ namespace Alis.Core.Aspect.Data.Json
             set
             {
                 if (string.IsNullOrEmpty(value))
+                {
                     throw new ArgumentException(null, nameof(value));
+                }
 
                 _escapedWireName = value;
             }
@@ -197,7 +203,9 @@ namespace Alis.Core.Aspect.Data.Json
             if (targetValue == null || (targetValue is Array array && (array.GetLength(0) < elementsCount)))
             {
                 if (Type.IsInterface)
+                {
                     return null;
+                }
 
                 targetValue = JsonSerializer.CreateInstance(target, Type, elementsCount, options, targetValue);
                 if (targetValue != null)
@@ -234,7 +242,9 @@ namespace Alis.Core.Aspect.Data.Json
                 };
                 options.ApplyEntryCallback(e);
                 if (e.Handled)
+                {
                     return;
+                }
 
                 value = e.Value;
             }
@@ -279,7 +289,9 @@ namespace Alis.Core.Aspect.Data.Json
         public bool IsZeroValue(object value)
         {
             if (value == null)
+            {
                 return false;
+            }
 
             Type type = value.GetType();
             return (type == Type) && JsonSerializer.IsZeroValueType(value);
@@ -303,10 +315,14 @@ namespace Alis.Core.Aspect.Data.Json
         public static bool RemoveDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
         {
             if (type == null)
+            {
                 throw new ArgumentNullException(nameof(type));
+            }
 
             if (member == null)
+            {
                 throw new ArgumentNullException(nameof(member));
+            }
 
             options ??= new JsonOptions();
             return TypeDef.RemoveDeserializationMember(type, options, member);
@@ -323,10 +339,14 @@ namespace Alis.Core.Aspect.Data.Json
         public static bool RemoveSerializationMember(Type type, JsonOptions options, MemberDefinition member)
         {
             if (type == null)
+            {
                 throw new ArgumentNullException(nameof(type));
+            }
 
             if (member == null)
+            {
                 throw new ArgumentNullException(nameof(member));
+            }
 
             options ??= new JsonOptions();
             return TypeDef.RemoveSerializationMember(type, options, member);
@@ -343,10 +363,14 @@ namespace Alis.Core.Aspect.Data.Json
         public static void AddDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
         {
             if (type == null)
+            {
                 throw new ArgumentNullException(nameof(type));
+            }
 
             if (member == null)
+            {
                 throw new ArgumentNullException(nameof(member));
+            }
 
             options ??= new JsonOptions();
             TypeDef.AddDeserializationMember(type, options, member);
@@ -363,10 +387,14 @@ namespace Alis.Core.Aspect.Data.Json
         public static void AddSerializationMember(Type type, JsonOptions options, MemberDefinition member)
         {
             if (type == null)
+            {
                 throw new ArgumentNullException(nameof(type));
+            }
 
             if (member == null)
+            {
                 throw new ArgumentNullException(nameof(member));
+            }
 
             options ??= new JsonOptions();
             TypeDef.AddSerializationMember(type, options, member);
@@ -382,7 +410,9 @@ namespace Alis.Core.Aspect.Data.Json
         public static MemberDefinition[] GetSerializationMembers(Type type, JsonOptions options = null)
         {
             if (type == null)
+            {
                 throw new ArgumentNullException(nameof(type));
+            }
 
             options ??= new JsonOptions();
             return TypeDef.GetSerializationMembers(type, options);
@@ -398,7 +428,9 @@ namespace Alis.Core.Aspect.Data.Json
         public static MemberDefinition[] GetDeserializationMembers(Type type, JsonOptions options = null)
         {
             if (type == null)
+            {
                 throw new ArgumentNullException(nameof(type));
+            }
 
             options ??= new JsonOptions();
             return TypeDef.GetDeserializationMembers(type, options);
@@ -414,7 +446,9 @@ namespace Alis.Core.Aspect.Data.Json
         public static void UsingLock<T>(Action<T> action, T state)
         {
             if (action == null)
+            {
                 throw new ArgumentNullException(nameof(action));
+            }
 
             TypeDef.LockMethod(action, state);
         }

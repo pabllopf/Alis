@@ -147,7 +147,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuiZmo
             float snap = 0;
             float localBounds = 0;
             float boundsSnap = 0;
-            
+
             byte ret = ImGuiZmoNative.InternalManipulate(view, projection, operation, mode, matrix, deltaMatrix, snap, localBounds, boundsSnap);
             return ret != 0;
         }
@@ -167,7 +167,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuiZmo
             float snap = 0;
             float localBounds = 0;
             float boundsSnap = 0;
-            
+
             byte ret = ImGuiZmoNative.InternalManipulate(view, projection, operation, mode, matrix, deltaMatrix, snap, localBounds, boundsSnap);
             return ret != 0;
         }

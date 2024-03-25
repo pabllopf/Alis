@@ -111,7 +111,7 @@ namespace Alis.Extension.Graphic.ImGui
         public NullTerminatedString OwnerName => new NullTerminatedString(NativePtr->OwnerName);
 
         /// <summary>
-        /// Gets the value of the vtx write ptr
+        ///     Gets the value of the vtx write ptr
         /// </summary>
         public ImDrawVert VtxWritePtr => Marshal.PtrToStructure<ImDrawVert>((IntPtr) NativePtr->VtxWritePtr);
 

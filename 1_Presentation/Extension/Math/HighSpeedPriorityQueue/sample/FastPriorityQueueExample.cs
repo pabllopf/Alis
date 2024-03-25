@@ -3,38 +3,17 @@ using System;
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
 {
     /// <summary>
-    /// The fast priority queue example class
+    ///     The fast priority queue example class
     /// </summary>
     public static class FastPriorityQueueExample
     {
-        //The class to be enqueued.
         /// <summary>
-        /// The user class
-        /// </summary>
-        /// <seealso cref="FastPriorityQueueNode"/>
-        public class User : FastPriorityQueueNode
-        {
-            /// <summary>
-            /// Gets or sets the value of the name
-            /// </summary>
-            public string Name { get; private set; }
-            /// <summary>
-            /// Initializes a new instance of the <see cref="User"/> class
-            /// </summary>
-            /// <param name="name">The name</param>
-            public User(string name)
-            {
-                Name = name;
-            }
-        }
-
-        /// <summary>
-        /// The max users in queue
+        ///     The max users in queue
         /// </summary>
         private const int MAX_USERS_IN_QUEUE = 10;
 
         /// <summary>
-        /// Runs the example
+        ///     Runs the example
         /// </summary>
         public static void RunExample()
         {
@@ -59,7 +38,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
             priorityQueue.UpdatePriority(user2, 2);
 
             //Finally, we'll dequeue all the users and print out their names
-            while(priorityQueue.Count != 0)
+            while (priorityQueue.Count != 0)
             {
                 User nextUser = priorityQueue.Dequeue();
                 Console.WriteLine(nextUser.Name);
@@ -73,6 +52,25 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
             //4 - Ryan
 
             //Notice that when two users with the same priority were enqueued, they were dequeued in the same order that they were enqueued.
+        }
+
+        //The class to be enqueued.
+        /// <summary>
+        ///     The user class
+        /// </summary>
+        /// <seealso cref="FastPriorityQueueNode" />
+        public class User : FastPriorityQueueNode
+        {
+            /// <summary>
+            ///     Initializes a new instance of the <see cref="User" /> class
+            /// </summary>
+            /// <param name="name">The name</param>
+            public User(string name) => Name = name;
+
+            /// <summary>
+            ///     Gets or sets the value of the name
+            /// </summary>
+            public string Name { get; }
         }
     }
 }

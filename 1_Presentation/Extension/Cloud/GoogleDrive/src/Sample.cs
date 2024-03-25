@@ -30,10 +30,9 @@
 namespace Alis.Extension.Cloud.GoogleDrive
 {
     /// <summary>
-    /// The sample class
+    ///     The sample class
     /// </summary>
     public class Sample
     {
-        
     }
 }

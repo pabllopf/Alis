@@ -72,8 +72,15 @@ namespace Alis.Extension.Encode.FFMeg.BaseClasses
         /// <param name="writer">Writer that is opened for writing</param>
         public virtual void CopyTo(MediaWriter<Frame> writer)
         {
-            if (DataStream == null) throw new InvalidOperationException("Reader is not opened for reading! Have you called Load()?");
-            if (!writer.OpenedForWriting) throw new InvalidOperationException("Writer is not opened for writing!");
+            if (DataStream == null)
+            {
+                throw new InvalidOperationException("Reader is not opened for reading! Have you called Load()?");
+            }
+
+            if (!writer.OpenedForWriting)
+            {
+                throw new InvalidOperationException("Writer is not opened for writing!");
+            }
 
             DataStream.CopyTo(writer.InputDataStream);
         }
@@ -84,8 +91,15 @@ namespace Alis.Extension.Encode.FFMeg.BaseClasses
         /// <param name="writer">Writer that is opened for writing</param>
         public virtual async Task CopyToAsync(MediaWriter<Frame> writer)
         {
-            if (DataStream == null) throw new InvalidOperationException("Reader is not opened for reading! Have you called Load()?");
-            if (!writer.OpenedForWriting) throw new InvalidOperationException("Writer is not opened for writing!");
+            if (DataStream == null)
+            {
+                throw new InvalidOperationException("Reader is not opened for reading! Have you called Load()?");
+            }
+
+            if (!writer.OpenedForWriting)
+            {
+                throw new InvalidOperationException("Writer is not opened for writing!");
+            }
 
             await DataStream.CopyToAsync(writer.InputDataStream);
         }

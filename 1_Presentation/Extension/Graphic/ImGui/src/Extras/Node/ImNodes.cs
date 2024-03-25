@@ -150,10 +150,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     Creates the context
         /// </summary>
         /// <returns>The im nodes context ptr</returns>
-        public static ImNodesContext CreateContext()
-        {
-            return ImNodesNative.ImNodes_CreateContext();
-        }
+        public static ImNodesContext CreateContext() => ImNodesNative.ImNodes_CreateContext();
 
         /// <summary>
         ///     Destroys the context
@@ -283,19 +280,13 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     Gets the current context
         /// </summary>
         /// <returns>The im nodes context ptr</returns>
-        public static ImNodesContext GetCurrentContext()
-        {
-            return ImNodesNative.ImNodes_GetCurrentContext();
-        }
+        public static ImNodesContext GetCurrentContext() => ImNodesNative.ImNodes_GetCurrentContext();
 
         /// <summary>
         ///     Gets the io
         /// </summary>
         /// <returns>The im nodes io ptr</returns>
-        public static ImNodesIo GetIo()
-        {
-            return ImNodesNative.ImNodes_GetIO();
-        }
+        public static ImNodesIo GetIo() => ImNodesNative.ImNodes_GetIO();
 
         /// <summary>
         ///     Gets the node dimensions using the specified id
@@ -373,10 +364,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     Gets the style
         /// </summary>
         /// <returns>The im nodes style ptr</returns>
-        public static ImNodesStyle GetStyle()
-        {
-            return ImNodesNative.ImNodes_GetStyle();
-        }
+        public static ImNodesStyle GetStyle() => ImNodesNative.ImNodes_GetStyle();
 
         /// <summary>
         ///     Describes whether is any attribute active
@@ -1215,7 +1203,6 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="dest">The dest</param>
         public static void StyleColorsDark(ImNodesStyle dest)
         {
-            
             ImNodesNative.ImNodes_StyleColorsDark(dest);
         }
 

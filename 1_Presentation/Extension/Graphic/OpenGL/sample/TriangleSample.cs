@@ -39,38 +39,42 @@ using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 namespace Alis.Extension.Graphic.OpenGL.Sample
 {
     /// <summary>
-    /// The triangle sample class
+    ///     The triangle sample class
     /// </summary>
     public class TriangleSample
     {
         /// <summary>
-        /// The window
-        /// </summary>
-        private IntPtr window;
-        /// <summary>
-        /// The context
+        ///     The context
         /// </summary>
         private IntPtr context;
-       /// <summary>
-       /// The running
-       /// </summary>
-       private bool running = true;
-        
+
         /// <summary>
-        /// The vbo
+        ///     The running
         /// </summary>
-        private uint vbo;
+        private bool running = true;
+
         /// <summary>
-        /// The vao
-        /// </summary>
-        private uint vao;
-        /// <summary>
-        /// The shader program
+        ///     The shader program
         /// </summary>
         private uint shaderProgram;
-        
+
         /// <summary>
-        /// Draws this instance
+        ///     The vao
+        /// </summary>
+        private uint vao;
+
+        /// <summary>
+        ///     The vbo
+        /// </summary>
+        private uint vbo;
+
+        /// <summary>
+        ///     The window
+        /// </summary>
+        private IntPtr window;
+
+        /// <summary>
+        ///     Draws this instance
         /// </summary>
         public void Draw()
         {
@@ -86,13 +90,13 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
             // Draw the triangle
             Gl.GlDrawArrays(PrimitiveType.Triangles, 0, 3);
         }
-        
+
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         public void Run()
         {
-             // Initialize SDL and create a window
+            // Initialize SDL and create a window
             Sdl.Init(InitSettings.InitVideo);
 
             // GET VERSION SDL2
@@ -110,7 +114,7 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
             Sdl.SetAttributeByInt(GlAttr.SdlGlDepthSize, 24);
             Sdl.SetAttributeByInt(GlAttr.SdlGlAlphaSize, 8);
             Sdl.SetAttributeByInt(GlAttr.SdlGlStencilSize, 8);
-            
+
             window = Sdl.CreateWindow("OpenGL Window", 100, 100, 800, 600, WindowSettings.WindowOpengl | WindowSettings.WindowResizable);
 
             // Initialize OpenGL context
@@ -157,7 +161,7 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
                 }
                 ";
 
-                    string fragmentShaderSource = @"
+            string fragmentShaderSource = @"
                 #version 330 core
                 out vec4 FragColor;
                 void main()
@@ -186,19 +190,19 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
             // Enable the vertex attribute array
             Gl.EnableVertexAttribArray(0);
             Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), IntPtr.Zero);
-            
+
             // Print the OpenGL version
             Console.WriteLine(@$"OpenGL VERSION {Gl.GlGetString(StringName.Version)}");
-            
+
             // Print the OpenGL vendor
             Console.WriteLine(@$"OpenGL VENDOR {Gl.GlGetString(StringName.Vendor)}");
-            
+
             // Print the OpenGL renderer
             Console.WriteLine(@$"OpenGL RENDERER {Gl.GlGetString(StringName.Renderer)}");
-            
+
             // Print the OpenGL shading language version
             Console.WriteLine(@$"OpenGL SHADING LANGUAGE VERSION {Gl.GlGetString(StringName.ShadingLanguageVersion)}");
-            
+
             while (running)
             {
                 // Event handling
@@ -212,13 +216,13 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
 
                 // Clear the screen
                 Gl.GlClear(ClearBufferMask.ColorBufferBit);
-                
+
                 Draw();
-                
+
                 // Swap the buffers to display the triangle
                 Sdl.SwapWindow(window);
             }
-            
+
             // Cleanup
             Gl.DeleteVertexArray(vao);
             Gl.DeleteBuffer(vbo);

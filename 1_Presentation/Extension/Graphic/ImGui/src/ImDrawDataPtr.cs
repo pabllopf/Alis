@@ -121,7 +121,5 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the value of the owner viewport
         /// </summary>
         public ImGuiViewportPtr OwnerViewport => new ImGuiViewportPtr(NativePtr->OwnerViewport);
-
-       
     }
 }

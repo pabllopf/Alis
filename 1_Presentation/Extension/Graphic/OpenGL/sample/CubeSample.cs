@@ -39,48 +39,53 @@ using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 namespace Alis.Extension.Graphic.OpenGL.Sample
 {
     /// <summary>
-    /// The cube sample class
+    ///     The cube sample class
     /// </summary>
     public class CubeSample
     {
         /// <summary>
-        /// The window
-        /// </summary>
-        private IntPtr window;
-        /// <summary>
-        /// The context
+        ///     The context
         /// </summary>
         private IntPtr context;
+
         /// <summary>
-        /// The running
-        /// </summary>
-        private bool running = true;
-        
-        /// <summary>
-        /// The vbo
-        /// </summary>
-        private uint vbo;
-        /// <summary>
-        /// The vao
-        /// </summary>
-        private uint vao;
-        /// <summary>
-        /// The ebo
+        ///     The ebo
         /// </summary>
         private uint ebo;
+
         /// <summary>
-        /// The shader program
+        ///     The running
+        /// </summary>
+        private bool running = true;
+
+        /// <summary>
+        ///     The shader program
         /// </summary>
         private uint shaderProgram;
-        
+
         /// <summary>
-        /// Draws this instance
+        ///     The vao
+        /// </summary>
+        private uint vao;
+
+        /// <summary>
+        ///     The vbo
+        /// </summary>
+        private uint vbo;
+
+        /// <summary>
+        ///     The window
+        /// </summary>
+        private IntPtr window;
+
+        /// <summary>
+        ///     Draws this instance
         /// </summary>
         public void Draw()
         {
             // Create a rotation matrix
             Matrix4X4 transform = Matrix4X4.CreateRotationZ((float) DateTime.Now.TimeOfDay.TotalSeconds); // Rotate around Z-axis
-            
+
             // rotate around X-axis
             transform = Matrix4X4.Multiply(transform, Matrix4X4.CreateRotationX((float) DateTime.Now.TimeOfDay.TotalSeconds));
 
@@ -93,9 +98,9 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
             // Draw the cube in wireframe mode
             Gl.GlDrawElements(PrimitiveType.Triangles, 36, DrawElementsType.UnsignedInt, IntPtr.Zero);
         }
-        
+
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         public void Run()
         {
@@ -122,7 +127,7 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
 
             // Initialize OpenGL context
             context = Sdl.CreateContext(window);
-            
+
             // Define the vertices for the cube with color information
             float[] vertices =
             {
@@ -206,7 +211,7 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
             }
             ";
 
-                        string fragmentShaderSource = @"
+            string fragmentShaderSource = @"
             #version 330 core
             in vec3 ourColor;
             out vec4 FragColor;
@@ -241,7 +246,7 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
             Gl.EnableVertexAttribArray(0);
             Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), IntPtr.Zero);
             Gl.EnableVertexAttribArray(1);
-            Gl.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), (IntPtr)(3 * sizeof(float)));
+            Gl.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), (IntPtr) (3 * sizeof(float)));
 
             while (running)
             {
@@ -256,19 +261,19 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
 
                 // Clear the screen
                 Gl.GlClear(ClearBufferMask.ColorBufferBit);
-                
+
                 Draw();
-                
+
                 // Swap the buffers to display the triangle
                 Sdl.SwapWindow(window);
             }
-            
+
             // Cleanup
             Gl.DeleteVertexArray(vao);
             Gl.DeleteBuffer(vbo);
             Gl.DeleteBuffer(ebo);
             Gl.GlDeleteProgram(shaderProgram);
-            
+
             // Cleanup SDL
             Sdl.DeleteContext(context);
             Sdl.DestroyWindow(window);

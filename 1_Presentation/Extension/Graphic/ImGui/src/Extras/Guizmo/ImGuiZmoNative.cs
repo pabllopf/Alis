@@ -39,10 +39,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuiZmo
     public static class ImGuiZmoNative
     {
         /// <summary>
-        /// The native library
+        ///     The native library
         /// </summary>
         private const string NativeLibrary = "cimgui";
-        
+
         /// <summary>
         ///     Ims the guizmo allow axis flip using the specified value
         /// </summary>
@@ -73,7 +73,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuiZmo
         /// <param name="projection">The projection</param>
         /// <param name="matrices">The matrices</param>
         /// <param name="matrixCount">The matrix count</param>
-        [DllImport(NativeLibrary,EntryPoint = "ImGuizmo_DrawCubes", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_DrawCubes", CallingConvention = CallingConvention.Cdecl)]
         public static extern void InternalDrawCubes(float view, float projection, float matrices, int matrixCount);
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuiZmo
         ///     Ims the guizmo is over nil
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport(NativeLibrary,EntryPoint = "ImGuizmo_IsOverNil", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_IsOverNil", CallingConvention = CallingConvention.Cdecl)]
         public static extern byte InternalIsOverNil();
 
         /// <summary>

@@ -45,14 +45,14 @@ namespace Alis.Extension.Encode.FFMeg.Audio
     public class AudioWriter : MediaWriter<AudioFrame>, IDisposable
     {
         /// <summary>
-        ///     The csc
-        /// </summary>
-        private CancellationTokenSource csc;
-
-        /// <summary>
         ///     The ffmpeg
         /// </summary>
         private readonly string ffmpeg;
+
+        /// <summary>
+        ///     The csc
+        /// </summary>
+        private CancellationTokenSource csc;
 
         /// <summary>
         ///     The ffmpegp
@@ -72,9 +72,20 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         public AudioWriter(string filename, int channels, int sampleRate, int bitDepth = 16,
             EncoderOptions encoderOptions = null, string ffmpegExecutable = "ffmpeg")
         {
-            if (channels <= 0 || sampleRate <= 0) throw new InvalidDataException("Channels/Sample rate have to be bigger than 0!");
-            if ((bitDepth != 16) && (bitDepth != 24) && (bitDepth != 32)) throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
-            if (string.IsNullOrEmpty(filename)) throw new NullReferenceException("Filename can't be null or empty!");
+            if (channels <= 0 || sampleRate <= 0)
+            {
+                throw new InvalidDataException("Channels/Sample rate have to be bigger than 0!");
+            }
+
+            if ((bitDepth != 16) && (bitDepth != 24) && (bitDepth != 32))
+            {
+                throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
+            }
+
+            if (string.IsNullOrEmpty(filename))
+            {
+                throw new NullReferenceException("Filename can't be null or empty!");
+            }
 
             UseFilename = true;
             ffmpeg = ffmpegExecutable;
@@ -99,8 +110,16 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         public AudioWriter(Stream destinationStream, int channels, int sampleRate, int bitDepth = 16,
             EncoderOptions encoderOptions = null, string ffmpegExecutable = "ffmpeg")
         {
-            if (channels <= 0 || sampleRate <= 0) throw new InvalidDataException("Channels/Sample rate have to be bigger than 0!");
-            if ((bitDepth != 16) && (bitDepth != 24) && (bitDepth != 32)) throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
+            if (channels <= 0 || sampleRate <= 0)
+            {
+                throw new InvalidDataException("Channels/Sample rate have to be bigger than 0!");
+            }
+
+            if ((bitDepth != 16) && (bitDepth != 24) && (bitDepth != 32))
+            {
+                throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
+            }
+
             UseFilename = false;
             ffmpeg = ffmpegExecutable;
 
@@ -157,7 +176,11 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         /// </summary>
         public void Dispose()
         {
-            if (OpenedForWriting) CloseWrite();
+            if (OpenedForWriting)
+            {
+                CloseWrite();
+            }
+
             DestinationStream?.Dispose();
             csc?.Dispose();
         }
@@ -169,14 +192,20 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         /// <exception cref="InvalidOperationException">File was already opened for writing!</exception>
         public void OpenWrite(bool showFFmpegOutput = false)
         {
-            if (OpenedForWriting) throw new InvalidOperationException("File was already opened for writing!");
+            if (OpenedForWriting)
+            {
+                throw new InvalidOperationException("File was already opened for writing!");
+            }
 
             string cmd = $"-f s{BitDepth}le -channels {Channels} -sample_rate {SampleRate} -i - " +
                          $"-c:a {EncoderOptions.EncoderName} {EncoderOptions.EncoderArguments} -f {EncoderOptions.Format}";
 
             if (UseFilename)
             {
-                if (File.Exists(Filename)) File.Delete(Filename);
+                if (File.Exists(Filename))
+                {
+                    File.Delete(Filename);
+                }
 
                 InputDataStream = FfMpegWrapper.OpenInput(ffmpeg, $"{cmd} \"{Filename}\"", out ffmpegp, showFFmpegOutput);
             }
@@ -197,7 +226,10 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         /// </summary>
         public void CloseWrite()
         {
-            if (!OpenedForWriting) throw new InvalidOperationException("File is not opened for writing!");
+            if (!OpenedForWriting)
+            {
+                throw new InvalidOperationException("File is not opened for writing!");
+            }
 
             try
             {
@@ -205,11 +237,17 @@ namespace Alis.Extension.Encode.FFMeg.Audio
                 ffmpegp.WaitForExit();
                 csc?.Cancel();
 
-                if (!UseFilename) OutputDataStream?.Dispose();
+                if (!UseFilename)
+                {
+                    OutputDataStream?.Dispose();
+                }
 
                 try
                 {
-                    if (ffmpegp?.HasExited == false) ffmpegp.Kill();
+                    if (ffmpegp?.HasExited == false)
+                    {
+                        ffmpegp.Kill();
+                    }
                 }
                 catch
                 {
