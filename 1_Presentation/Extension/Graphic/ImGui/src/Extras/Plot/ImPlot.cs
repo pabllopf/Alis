@@ -2332,10 +2332,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         ///     Gets the style
         /// </summary>
         /// <returns>The im plot style ptr</returns>
-        public static ImPlotStylePtr GetStyle()
+        public static ImPlotStyle GetStyle()
         {
-            ImPlotStyle* ret = ImPlotNative.ImPlot_GetStyle();
-            return new ImPlotStylePtr(ret);
+            return ImPlotNative.ImPlot_GetStyle();
         }
 
         /// <summary>
@@ -60252,18 +60251,15 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         public static void ShowStyleEditor()
         {
-            ImPlotStyle* @ref = null;
-            ImPlotNative.ImPlot_ShowStyleEditor(@ref);
+            ImPlotNative.ImPlot_ShowStyleEditor(new ImPlotStyle());
         }
 
         /// <summary>
         ///     Shows the style editor using the specified ref
         /// </summary>
-        /// <param name="ref">The ref</param>
-        public static void ShowStyleEditor(ImPlotStylePtr @ref)
+        public static void ShowStyleEditor(ImPlotStyle imPlotStyle)
         {
-            ImPlotStyle* nativeRef = @ref.NativePtr;
-            ImPlotNative.ImPlot_ShowStyleEditor(nativeRef);
+            ImPlotNative.ImPlot_ShowStyleEditor(imPlotStyle);
         }
 
         /// <summary>
@@ -60318,18 +60314,16 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         public static void StyleColorsAuto()
         {
-            ImPlotStyle* dst = null;
-            ImPlotNative.ImPlot_StyleColorsAuto(dst);
+            ImPlotNative.ImPlot_StyleColorsAuto(new ImPlotStyle());
         }
 
         /// <summary>
         ///     Styles the colors auto using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        public static void StyleColorsAuto(ImPlotStylePtr dst)
+        public static void StyleColorsAuto(ImPlotStyle dst)
         {
-            ImPlotStyle* nativeDst = dst.NativePtr;
-            ImPlotNative.ImPlot_StyleColorsAuto(nativeDst);
+            ImPlotNative.ImPlot_StyleColorsAuto(dst);
         }
 
         /// <summary>
@@ -60337,18 +60331,16 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         public static void StyleColorsClassic()
         {
-            ImPlotStyle* dst = null;
-            ImPlotNative.ImPlot_StyleColorsClassic(dst);
+            ImPlotNative.ImPlot_StyleColorsClassic(new ImPlotStyle());
         }
 
         /// <summary>
         ///     Styles the colors classic using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        public static void StyleColorsClassic(ImPlotStylePtr dst)
+        public static void StyleColorsClassic(ImPlotStyle dst)
         {
-            ImPlotStyle* nativeDst = dst.NativePtr;
-            ImPlotNative.ImPlot_StyleColorsClassic(nativeDst);
+            ImPlotNative.ImPlot_StyleColorsClassic(dst);
         }
 
         /// <summary>
@@ -60356,18 +60348,16 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         public static void StyleColorsDark()
         {
-            ImPlotStyle* dst = null;
-            ImPlotNative.ImPlot_StyleColorsDark(dst);
+            ImPlotNative.ImPlot_StyleColorsDark(new ImPlotStyle());
         }
 
         /// <summary>
         ///     Styles the colors dark using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        public static void StyleColorsDark(ImPlotStylePtr dst)
+        public static void StyleColorsDark(ImPlotStyle dst)
         {
-            ImPlotStyle* nativeDst = dst.NativePtr;
-            ImPlotNative.ImPlot_StyleColorsDark(nativeDst);
+            ImPlotNative.ImPlot_StyleColorsDark(dst);
         }
 
         /// <summary>
@@ -60375,18 +60365,16 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         public static void StyleColorsLight()
         {
-            ImPlotStyle* dst = null;
-            ImPlotNative.ImPlot_StyleColorsLight(dst);
+            ImPlotNative.ImPlot_StyleColorsLight(new ImPlotStyle());
         }
 
         /// <summary>
         ///     Styles the colors light using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        public static void StyleColorsLight(ImPlotStylePtr dst)
+        public static void StyleColorsLight(ImPlotStyle dst)
         {
-            ImPlotStyle* nativeDst = dst.NativePtr;
-            ImPlotNative.ImPlot_StyleColorsLight(nativeDst);
+            ImPlotNative.ImPlot_StyleColorsLight(dst);
         }
 
         /// <summary>
