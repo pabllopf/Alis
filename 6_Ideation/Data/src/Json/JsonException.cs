@@ -98,14 +98,20 @@ namespace Alis.Core.Aspect.Data.Json
         public static int GetCode(string message)
         {
             if (message == null)
+            {
                 return -1;
+            }
 
             if (!message.StartsWith(Prefix, StringComparison.Ordinal))
+            {
                 return -1;
+            }
 
             int pos = message.IndexOf(':', Prefix.Length);
             if (pos < 0)
+            {
                 return -1;
+            }
 
             return int.TryParse(message.Substring(Prefix.Length, pos - Prefix.Length), NumberStyles.None, CultureInfo.InvariantCulture, out int i) ? i : -1;
         }

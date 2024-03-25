@@ -80,7 +80,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The owner viewport
         /// </summary>
         public ImGuiViewport* OwnerViewport;
-        
+
         /// <summary>
         ///     Clears this instance
         /// </summary>

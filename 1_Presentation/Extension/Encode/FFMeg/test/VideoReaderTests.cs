@@ -121,7 +121,11 @@ namespace Alis.Extension.Encode.FFMeg.Test
             while (true)
             {
                 frame = video.NextFrame(frame);
-                if (frame == null) break;
+                if (frame == null)
+                {
+                    break;
+                }
+
                 count++;
             }
 
@@ -149,7 +153,11 @@ namespace Alis.Extension.Encode.FFMeg.Test
             while (true)
             {
                 frame = video.NextFrame(frame);
-                if (frame == null) break;
+                if (frame == null)
+                {
+                    break;
+                }
+
                 count++;
             }
 

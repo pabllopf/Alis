@@ -52,7 +52,7 @@ namespace Alis.Extension.Encode.FFMeg.Sample
 
             //SdlController.Run();
 
-            var player = new VideoPlayer(input);
+            VideoPlayer player = new VideoPlayer(input);
             player.Play();
 
             //ConvertVideo(input, output);
@@ -87,7 +87,10 @@ namespace Alis.Extension.Encode.FFMeg.Sample
                 {
                     // read next sample
                     AudioFrame f = audio.NextFrame(frame);
-                    if (f == null) break;
+                    if (f == null)
+                    {
+                        break;
+                    }
 
                     writer.WriteFrame(frame);
                 }
@@ -117,7 +120,10 @@ namespace Alis.Extension.Encode.FFMeg.Sample
                 {
                     // read next frame
                     AudioFrame f = audio.NextFrame(frame);
-                    if (f == null) break;
+                    if (f == null)
+                    {
+                        break;
+                    }
 
                     try
                     {

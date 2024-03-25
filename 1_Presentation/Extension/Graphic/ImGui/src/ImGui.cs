@@ -9147,19 +9147,13 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the drag drop payload
         /// </summary>
         /// <returns>The im gui payload ptr</returns>
-        public static ImGuiPayload GetDragDropPayload()
-        {
-            return ImGuiNative.igGetDragDropPayload();
-        }
+        public static ImGuiPayload GetDragDropPayload() => ImGuiNative.igGetDragDropPayload();
 
         /// <summary>
         ///     Gets the draw data
         /// </summary>
         /// <returns>The im draw data ptr</returns>
-        public static ImDrawData GetDrawData()
-        {
-            return ImGuiNative.igGetDrawData();
-        }
+        public static ImDrawData GetDrawData() => ImGuiNative.igGetDrawData();
 
         /// <summary>
         ///     Gets the draw list shared data
@@ -9535,10 +9529,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the style
         /// </summary>
         /// <returns>The im gui style ptr</returns>
-        public static ImGuiStyle GetStyle()
-        {
-            return ImGuiNative.igGetStyle();
-        }
+        public static ImGuiStyle GetStyle() => ImGuiNative.igGetStyle();
 
         /// <summary>
         ///     Gets the style color name using the specified idx
@@ -13478,7 +13469,7 @@ namespace Alis.Extension.Graphic.ImGui
         public static IntPtr MemAlloc(uint size)
         {
             IntPtr ret = ImGuiNative.igMemAlloc(size);
-            return (IntPtr) ret;
+            return ret;
         }
 
         /// <summary>
@@ -21609,8 +21600,8 @@ namespace Alis.Extension.Graphic.ImGui
 
             return ret != 0;
         }
-        
-         /// <summary>
+
+        /// <summary>
         ///     Describes whether input text
         /// </summary>
         /// <param name="label">The label</param>

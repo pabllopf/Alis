@@ -257,10 +257,14 @@ namespace Alis.Core.Aspect.Data.Json
         public void AddException(Exception error)
         {
             if (error == null)
+            {
                 throw new ArgumentNullException(nameof(error));
+            }
 
             if (_exceptions.Count >= MaximumExceptionsCount)
+            {
                 throw new JsonException("JSO0015: Two many JSON errors detected (" + _exceptions.Count + ").", error);
+            }
 
             _exceptions.Add(error);
         }

@@ -72,7 +72,10 @@ namespace Alis.Core.Aspect.Memory
 
                 foreach (PropertyInfo property in properties)
                 {
-                    if (property.Name != name) continue;
+                    if (property.Name != name)
+                    {
+                        continue;
+                    }
 
                     object[] attributes = property.GetCustomAttributes(true);
 
@@ -102,7 +105,10 @@ namespace Alis.Core.Aspect.Memory
 
                 foreach (FieldInfo field in fields)
                 {
-                    if (field.Name != name) continue;
+                    if (field.Name != name)
+                    {
+                        continue;
+                    }
 
                     object[] attributes = field.GetCustomAttributes(true);
 
@@ -132,7 +138,10 @@ namespace Alis.Core.Aspect.Memory
             {
                 foreach (ParameterInfo parameter in parameters)
                 {
-                    if (parameter.Name != name) continue;
+                    if (parameter.Name != name)
+                    {
+                        continue;
+                    }
 
                     object[] attributes = parameter.GetCustomAttributes(true);
 

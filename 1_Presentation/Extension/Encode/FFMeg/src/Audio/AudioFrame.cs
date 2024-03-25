@@ -39,14 +39,14 @@ namespace Alis.Extension.Encode.FFMeg.Audio
     public class AudioFrame : IDisposable, IMediaFrame
     {
         /// <summary>
-        ///     The frame buffer
-        /// </summary>
-        private byte[] frameBuffer;
-
-        /// <summary>
         ///     The offset
         /// </summary>
         private readonly int size;
+
+        /// <summary>
+        ///     The frame buffer
+        /// </summary>
+        private byte[] frameBuffer;
 
         /// <summary>
         ///     The offset
@@ -61,9 +61,20 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         /// <param name="bitDepth">Bits per sample (16, 24 or 32)</param>
         public AudioFrame(int channels, int sampleCount = 1024, int bitDepth = 16)
         {
-            if ((bitDepth != 16) && (bitDepth != 24) && (bitDepth != 32)) throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
-            if (channels <= 0) throw new InvalidDataException("Channel count has to be bigger than 0!");
-            if (sampleCount <= 0) throw new InvalidDataException("Sample count has to be bigger than 0!");
+            if ((bitDepth != 16) && (bitDepth != 24) && (bitDepth != 32))
+            {
+                throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
+            }
+
+            if (channels <= 0)
+            {
+                throw new InvalidDataException("Channel count has to be bigger than 0!");
+            }
+
+            if (sampleCount <= 0)
+            {
+                throw new InvalidDataException("Sample count has to be bigger than 0!");
+            }
 
             Channels = channels;
             SampleCount = sampleCount;
@@ -120,7 +131,11 @@ namespace Alis.Extension.Encode.FFMeg.Audio
                 int r = str.Read(frameBuffer, offset, size - offset);
                 if (r <= 0)
                 {
-                    if (offset == 0) return false;
+                    if (offset == 0)
+                    {
+                        return false;
+                    }
+
                     break;
                 }
 

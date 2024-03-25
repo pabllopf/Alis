@@ -75,7 +75,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The delivery
         /// </summary>
         public byte Delivery;
-        
+
         /// <summary>
         ///     Clears this instance
         /// </summary>

@@ -65,7 +65,9 @@ namespace Alis.Core.Aspect.Data.Json
         public void Set(object component, object value)
         {
             if (_pd.IsReadOnly)
+            {
                 return;
+            }
 
             _pd.SetValue(component, value);
         }

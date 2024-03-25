@@ -69,7 +69,10 @@ namespace Alis.Extension.Encode.FFMeg.Video
         /// <param name="ffprobeExecutable">Name or path to the ffprobe executable</param>
         public VideoReader(string filename, string ffmpegExecutable = "ffmpeg", string ffprobeExecutable = "ffprobe")
         {
-            if (!File.Exists(filename)) throw new FileNotFoundException($"File '{filename}' not found!");
+            if (!File.Exists(filename))
+            {
+                throw new FileNotFoundException($"File '{filename}' not found!");
+            }
 
             Filename = filename;
             ffmpeg = ffmpegExecutable;
@@ -109,7 +112,11 @@ namespace Alis.Extension.Encode.FFMeg.Video
         /// </summary>
         public async Task LoadMetadataAsync(bool ignoreStreamErrors = false)
         {
-            if (LoadedMetadata) throw new InvalidOperationException("Video metadata is already loaded!");
+            if (LoadedMetadata)
+            {
+                throw new InvalidOperationException("Video metadata is already loaded!");
+            }
+
             StreamReader r = new StreamReader(FfMpegWrapper.OpenOutput(ffprobe, $"-i \"{Filename}\" -v quiet -print_format json=c=1 -show_format -show_streams"));
 
             try
@@ -143,7 +150,10 @@ namespace Alis.Extension.Encode.FFMeg.Video
                 catch (Exception ex)
                 {
                     // failed to interpret video stream settings
-                    if (!ignoreStreamErrors) throw new InvalidDataException("Failed to parse video stream data! " + ex.Message);
+                    if (!ignoreStreamErrors)
+                    {
+                        throw new InvalidDataException("Failed to parse video stream data! " + ex.Message);
+                    }
                 }
 
                 LoadedMetadata = true;
@@ -166,9 +176,20 @@ namespace Alis.Extension.Encode.FFMeg.Video
         /// <param name="offsetSeconds">Offset in seconds to which to seek to</param>
         public void Load(double offsetSeconds)
         {
-            if (OpenedForReading) throw new InvalidOperationException("Video is already loaded!");
-            if (!LoadedMetadata) throw new InvalidOperationException("Please load the video metadata first!");
-            if (Metadata.Width == 0 || Metadata.Height == 0) throw new InvalidDataException("Loaded metadata contains errors!");
+            if (OpenedForReading)
+            {
+                throw new InvalidOperationException("Video is already loaded!");
+            }
+
+            if (!LoadedMetadata)
+            {
+                throw new InvalidOperationException("Please load the video metadata first!");
+            }
+
+            if (Metadata.Width == 0 || Metadata.Height == 0)
+            {
+                throw new InvalidDataException("Loaded metadata contains errors!");
+            }
 
             // we will be reading video in RGB24 format
             DataStream = FfMpegWrapper.OpenOutput(ffmpeg,
@@ -196,10 +217,17 @@ namespace Alis.Extension.Encode.FFMeg.Video
         /// <param name="frame">Existing frame to be overwritten with new frame data.</param>
         public override VideoFrame NextFrame(VideoFrame frame)
         {
-            if (!OpenedForReading) throw new InvalidOperationException("Please load the video first!");
+            if (!OpenedForReading)
+            {
+                throw new InvalidOperationException("Please load the video first!");
+            }
 
             bool success = frame.Load(DataStream);
-            if (success) CurrentFrameOffset++;
+            if (success)
+            {
+                CurrentFrameOffset++;
+            }
+
             return success ? frame : null;
         }
 
@@ -211,7 +239,10 @@ namespace Alis.Extension.Encode.FFMeg.Video
         private int TryParseBitDepth(string pix_fmt)
         {
             Match match = bitRateSimpleRgx.Match(pix_fmt);
-            if (match.Success) return int.Parse(match.Groups[1].Value);
+            if (match.Success)
+            {
+                return int.Parse(match.Groups[1].Value);
+            }
 
             return -1;
         }

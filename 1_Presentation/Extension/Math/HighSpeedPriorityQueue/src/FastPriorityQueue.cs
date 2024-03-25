@@ -6,23 +6,24 @@ using System.Runtime.CompilerServices;
 namespace Alis.Extension.Math.HighSpeedPriorityQueue
 {
     /// <summary>
-    /// The fast priority queue class
+    ///     The fast priority queue class
     /// </summary>
-    /// <seealso cref="IFixedSizePriorityQueue{T, float}"/>
+    /// <seealso cref="IFixedSizePriorityQueue{T, float}" />
     public sealed class FastPriorityQueue<T> : IFixedSizePriorityQueue<T, float>
         where T : FastPriorityQueueNode
     {
         /// <summary>
-        /// The num nodes
-        /// </summary>
-        private int _numNodes;
-        /// <summary>
-        /// The nodes
+        ///     The nodes
         /// </summary>
         private T[] _nodes;
 
         /// <summary>
-        /// Instantiate a new Priority Queue
+        ///     The num nodes
+        /// </summary>
+        private int _numNodes;
+
+        /// <summary>
+        ///     Instantiate a new Priority Queue
         /// </summary>
         /// <param name="maxNodes">The max nodes ever allowed to be enqueued (going over this will cause undefined behavior)</param>
         public FastPriorityQueue(int maxNodes)
@@ -32,20 +33,21 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         }
 
         /// <summary>
-        /// Returns the number of nodes in the queue.
-        /// O(1)
+        ///     Returns the number of nodes in the queue.
+        ///     O(1)
         /// </summary>
         public int Count => _numNodes;
 
         /// <summary>
-        /// Returns the maximum number of items that can be enqueued at once in this queue.  Once you hit this number (ie. once Count == MaxSize),
-        /// attempting to enqueue another item will cause undefined behavior.  O(1)
+        ///     Returns the maximum number of items that can be enqueued at once in this queue.  Once you hit this number (ie. once
+        ///     Count == MaxSize),
+        ///     attempting to enqueue another item will cause undefined behavior.  O(1)
         /// </summary>
         public int MaxSize => _nodes.Length - 1;
 
         /// <summary>
-        /// Removes every node from the queue.
-        /// O(n) (So, don't do this often!)
+        ///     Removes every node from the queue.
+        ///     O(n) (So, don't do this often!)
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Clear()
@@ -55,21 +57,20 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         }
 
         /// <summary>
-        /// Returns (in O(1)!) whether the given node is in the queue.
-        /// If node is or has been previously added to another queue, the result is undefined unless oldQueue.ResetNode(node) has been called
-        /// O(1)
+        ///     Returns (in O(1)!) whether the given node is in the queue.
+        ///     If node is or has been previously added to another queue, the result is undefined unless oldQueue.ResetNode(node)
+        ///     has been called
+        ///     O(1)
         /// </summary>
-        public bool Contains(T node)
-        {
-            return (_nodes[node.QueueIndex] == node);
-        }
+        public bool Contains(T node) => _nodes[node.QueueIndex] == node;
 
         /// <summary>
-        /// Enqueue a node to the priority queue.  Lower values are placed in front. Ties are broken arbitrarily.
-        /// If the queue is full, the result is undefined.
-        /// If the node is already enqueued, the result is undefined.
-        /// If node is or has been previously added to another queue, the result is undefined unless oldQueue.ResetNode(node) has been called
-        /// O(log n)
+        ///     Enqueue a node to the priority queue.  Lower values are placed in front. Ties are broken arbitrarily.
+        ///     If the queue is full, the result is undefined.
+        ///     If the node is already enqueued, the result is undefined.
+        ///     If node is or has been previously added to another queue, the result is undefined unless oldQueue.ResetNode(node)
+        ///     has been called
+        ///     O(log n)
         /// </summary>
         public void Enqueue(T node, float priority)
         {
@@ -80,13 +81,130 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             CascadeUp(node);
         }
 
+        /// <summary>
+        ///     Removes the head of the queue and returns it.
+        ///     If queue is empty, result is undefined
+        ///     O(log n)
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public T Dequeue()
+        {
+            T returnMe = _nodes[1];
+            //If the node is already the last node, we can remove it immediately
+            if (_numNodes == 1)
+            {
+                _nodes[1] = null;
+                _numNodes = 0;
+                return returnMe;
+            }
+
+            //Swap the node with the last node
+            T formerLastNode = _nodes[_numNodes];
+            _nodes[1] = formerLastNode;
+            formerLastNode.QueueIndex = 1;
+            _nodes[_numNodes] = null;
+            _numNodes--;
+
+            //Now bubble formerLastNode (which is no longer the last node) down
+            CascadeDown(formerLastNode);
+            return returnMe;
+        }
 
         /// <summary>
-        /// Cascades the up using the specified node
+        ///     Resize the queue so it can accept more nodes.  All currently enqueued nodes are remain.
+        ///     Attempting to decrease the queue size to a size too small to hold the existing nodes results in undefined behavior
+        ///     O(n)
+        /// </summary>
+        public void Resize(int maxNodes)
+        {
+            T[] newArray = new T[maxNodes + 1];
+            int highestIndexToCopy = System.Math.Min(maxNodes, _numNodes);
+            Array.Copy(_nodes, newArray, highestIndexToCopy + 1);
+            _nodes = newArray;
+        }
+
+        /// <summary>
+        ///     Returns the head of the queue, without removing it (use Dequeue() for that).
+        ///     If the queue is empty, behavior is undefined.
+        ///     O(1)
+        /// </summary>
+        public T First => _nodes[1];
+
+        /// <summary>
+        ///     This method must be called on a node every time its priority changes while it is in the queue.
+        ///     <b>Forgetting to call this method will result in a corrupted queue!</b>
+        ///     Calling this method on a node not in the queue results in undefined behavior
+        ///     O(log n)
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void UpdatePriority(T node, float priority)
+        {
+            node.Priority = priority;
+            OnNodeUpdated(node);
+        }
+
+        /// <summary>
+        ///     Removes a node from the queue.  The node does not need to be the head of the queue.
+        ///     If the node is not in the queue, the result is undefined.  If unsure, check Contains() first
+        ///     O(log n)
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Remove(T node)
+        {
+            //If the node is already the last node, we can remove it immediately
+            if (node.QueueIndex == _numNodes)
+            {
+                _nodes[_numNodes] = null;
+                _numNodes--;
+                return;
+            }
+
+            //Swap the node with the last node
+            T formerLastNode = _nodes[_numNodes];
+            _nodes[node.QueueIndex] = formerLastNode;
+            formerLastNode.QueueIndex = node.QueueIndex;
+            _nodes[_numNodes] = null;
+            _numNodes--;
+
+            //Now bubble formerLastNode (which is no longer the last node) up or down as appropriate
+            OnNodeUpdated(formerLastNode);
+        }
+
+        /// <summary>
+        ///     By default, nodes that have been previously added to one queue cannot be added to another queue.
+        ///     If you need to do this, please call originalQueue.ResetNode(node) before attempting to add it in the new queue
+        ///     If the node is currently in the queue or belongs to another queue, the result is undefined
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void ResetNode(T node)
+        {
+            node.QueueIndex = 0;
+        }
+
+        /// <summary>
+        ///     Gets the enumerator
+        /// </summary>
+        /// <returns>An enumerator of t</returns>
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 1; i <= _numNodes; i++)
+            {
+                yield return _nodes[i];
+            }
+        }
+
+        /// <summary>
+        ///     Gets the enumerator
+        /// </summary>
+        /// <returns>The enumerator</returns>
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+
+        /// <summary>
+        ///     Cascades the up using the specified node
         /// </summary>
         /// <param name="node">The node</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-
         private void CascadeUp(T node)
         {
             //aka Heapify-up
@@ -96,7 +214,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 parent = node.QueueIndex >> 1;
                 T parentNode = _nodes[parent];
                 if (HasHigherOrEqualPriority(parentNode, node))
+                {
                     return;
+                }
 
                 //Node has lower priority value, so move parent down the heap to make room
                 _nodes[node.QueueIndex] = parentNode;
@@ -114,7 +234,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 parent >>= 1;
                 T parentNode = _nodes[parent];
                 if (HasHigherOrEqualPriority(parentNode, node))
+                {
                     break;
+                }
 
                 //Node has lower priority value, so move parent down the heap to make room
                 _nodes[node.QueueIndex] = parentNode;
@@ -128,11 +250,10 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
 
 
         /// <summary>
-        /// Cascades the down using the specified node
+        ///     Cascades the down using the specified node
         /// </summary>
         /// <param name="node">The node</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-
         private void CascadeDown(T node)
         {
             //aka Heapify-down
@@ -272,105 +393,30 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         }
 
         /// <summary>
-        /// Returns true if 'higher' has higher priority than 'lower', false otherwise.
-        /// Note that calling HasHigherPriority(node, node) (ie. both arguments the same node) will return false
+        ///     Returns true if 'higher' has higher priority than 'lower', false otherwise.
+        ///     Note that calling HasHigherPriority(node, node) (ie. both arguments the same node) will return false
         /// </summary>
-        private bool HasHigherPriority(T higher, T lower)
-        {
-            return (higher.Priority < lower.Priority);
-        }
+        private bool HasHigherPriority(T higher, T lower) => higher.Priority < lower.Priority;
 
         /// <summary>
-        /// Returns true if 'higher' has higher priority than 'lower', false otherwise.
-        /// Note that calling HasHigherOrEqualPriority(node, node) (ie. both arguments the same node) will return true
+        ///     Returns true if 'higher' has higher priority than 'lower', false otherwise.
+        ///     Note that calling HasHigherOrEqualPriority(node, node) (ie. both arguments the same node) will return true
         /// </summary>
-
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-
-        private bool HasHigherOrEqualPriority(T higher, T lower)
-        {
-            return (higher.Priority <= lower.Priority);
-        }
-
-        /// <summary>
-        /// Removes the head of the queue and returns it.
-        /// If queue is empty, result is undefined
-        /// O(log n)
-        /// </summary>
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-
-        public T Dequeue()
-        {
-            T returnMe = _nodes[1];
-            //If the node is already the last node, we can remove it immediately
-            if (_numNodes == 1)
-            {
-                _nodes[1] = null;
-                _numNodes = 0;
-                return returnMe;
-            }
-
-            //Swap the node with the last node
-            T formerLastNode = _nodes[_numNodes];
-            _nodes[1] = formerLastNode;
-            formerLastNode.QueueIndex = 1;
-            _nodes[_numNodes] = null;
-            _numNodes--;
-
-            //Now bubble formerLastNode (which is no longer the last node) down
-            CascadeDown(formerLastNode);
-            return returnMe;
-        }
-
-        /// <summary>
-        /// Resize the queue so it can accept more nodes.  All currently enqueued nodes are remain.
-        /// Attempting to decrease the queue size to a size too small to hold the existing nodes results in undefined behavior
-        /// O(n)
-        /// </summary>
-        public void Resize(int maxNodes)
-        {
-            T[] newArray = new T[maxNodes + 1];
-            int highestIndexToCopy = System.Math.Min(maxNodes, _numNodes);
-            Array.Copy(_nodes, newArray, highestIndexToCopy + 1);
-            _nodes = newArray;
-        }
-
-        /// <summary>
-        /// Returns the head of the queue, without removing it (use Dequeue() for that).
-        /// If the queue is empty, behavior is undefined.
-        /// O(1)
-        /// </summary>
-        public T First => _nodes[1];
-
-        /// <summary>
-        /// This method must be called on a node every time its priority changes while it is in the queue.  
-        /// <b>Forgetting to call this method will result in a corrupted queue!</b>
-        /// Calling this method on a node not in the queue results in undefined behavior
-        /// O(log n)
-        /// </summary>
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-
-        public void UpdatePriority(T node, float priority)
-        {
-            node.Priority = priority;
-            OnNodeUpdated(node);
-        }
+        private bool HasHigherOrEqualPriority(T higher, T lower) => higher.Priority <= lower.Priority;
 
 
         /// <summary>
-        /// Ons the node updated using the specified node
+        ///     Ons the node updated using the specified node
         /// </summary>
         /// <param name="node">The node</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-
         private void OnNodeUpdated(T node)
         {
             //Bubble the updated node up or down as appropriate
             int parentIndex = node.QueueIndex >> 1;
 
-            if (parentIndex > 0 && HasHigherPriority(node, _nodes[parentIndex]))
+            if ((parentIndex > 0) && HasHigherPriority(node, _nodes[parentIndex]))
             {
                 CascadeUp(node);
             }
@@ -382,69 +428,8 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         }
 
         /// <summary>
-        /// Removes a node from the queue.  The node does not need to be the head of the queue.  
-        /// If the node is not in the queue, the result is undefined.  If unsure, check Contains() first
-        /// O(log n)
-        /// </summary>
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-
-        public void Remove(T node)
-        {
-            //If the node is already the last node, we can remove it immediately
-            if (node.QueueIndex == _numNodes)
-            {
-                _nodes[_numNodes] = null;
-                _numNodes--;
-                return;
-            }
-
-            //Swap the node with the last node
-            T formerLastNode = _nodes[_numNodes];
-            _nodes[node.QueueIndex] = formerLastNode;
-            formerLastNode.QueueIndex = node.QueueIndex;
-            _nodes[_numNodes] = null;
-            _numNodes--;
-
-            //Now bubble formerLastNode (which is no longer the last node) up or down as appropriate
-            OnNodeUpdated(formerLastNode);
-        }
-
-        /// <summary>
-        /// By default, nodes that have been previously added to one queue cannot be added to another queue.
-        /// If you need to do this, please call originalQueue.ResetNode(node) before attempting to add it in the new queue
-        /// If the node is currently in the queue or belongs to another queue, the result is undefined
-        /// </summary>
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-
-        public void ResetNode(T node)
-        {
-            node.QueueIndex = 0;
-        }
-
-        /// <summary>
-        /// Gets the enumerator
-        /// </summary>
-        /// <returns>An enumerator of t</returns>
-        public IEnumerator<T> GetEnumerator()
-        {
-            for (int i = 1; i <= _numNodes; i++)
-                yield return _nodes[i];
-        }
-
-        /// <summary>
-        /// Gets the enumerator
-        /// </summary>
-        /// <returns>The enumerator</returns>
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
-        /// <summary>
-        /// <b>Should not be called in production code.</b>
-        /// Checks to make sure the queue is still in a valid state.  Used for testing/debugging the queue.
+        ///     <b>Should not be called in production code.</b>
+        ///     Checks to make sure the queue is still in a valid state.  Used for testing/debugging the queue.
         /// </summary>
         public bool IsValidQueue()
         {
@@ -453,12 +438,16 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 if (_nodes[i] != null)
                 {
                     int childLeftIndex = 2 * i;
-                    if (childLeftIndex < _nodes.Length && _nodes[childLeftIndex] != null && HasHigherPriority(_nodes[childLeftIndex], _nodes[i]))
+                    if ((childLeftIndex < _nodes.Length) && (_nodes[childLeftIndex] != null) && HasHigherPriority(_nodes[childLeftIndex], _nodes[i]))
+                    {
                         return false;
+                    }
 
                     int childRightIndex = childLeftIndex + 1;
-                    if (childRightIndex < _nodes.Length && _nodes[childRightIndex] != null && HasHigherPriority(_nodes[childRightIndex], _nodes[i]))
+                    if ((childRightIndex < _nodes.Length) && (_nodes[childRightIndex] != null) && HasHigherPriority(_nodes[childRightIndex], _nodes[i]))
+                    {
                         return false;
+                    }
                 }
             }
 

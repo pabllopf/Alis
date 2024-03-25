@@ -39,14 +39,14 @@ namespace Alis.Extension.Encode.FFMeg.Video
     public class VideoFrame : IDisposable, IMediaFrame
     {
         /// <summary>
-        ///     The frame buffer
-        /// </summary>
-        private byte[] frameBuffer;
-
-        /// <summary>
         ///     The offset
         /// </summary>
         private readonly int size;
+
+        /// <summary>
+        ///     The frame buffer
+        /// </summary>
+        private byte[] frameBuffer;
 
         /// <summary>
         ///     The offset
@@ -60,7 +60,10 @@ namespace Alis.Extension.Encode.FFMeg.Video
         /// <param name="h">Height in pixels</param>
         public VideoFrame(int w, int h)
         {
-            if (w <= 0 || h <= 0) throw new InvalidDataException("Video frame dimensions have to be bigger than 0 pixels!");
+            if (w <= 0 || h <= 0)
+            {
+                throw new InvalidDataException("Video frame dimensions have to be bigger than 0 pixels!");
+            }
 
             Width = w;
             Height = h;
@@ -106,7 +109,11 @@ namespace Alis.Extension.Encode.FFMeg.Video
                 int r = str.Read(frameBuffer, offset, size - offset);
                 if (r <= 0)
                 {
-                    if (offset == 0) return false;
+                    if (offset == 0)
+                    {
+                        return false;
+                    }
+
                     break;
                 }
 
@@ -134,7 +141,10 @@ namespace Alis.Extension.Encode.FFMeg.Video
         public void Save(string output, string encoder = "png", string extraParameters = "",
             string ffmpegExecutable = "ffmpeg")
         {
-            if (File.Exists(output)) File.Delete(output);
+            if (File.Exists(output))
+            {
+                File.Delete(output);
+            }
 
             using (Stream inp = FfMpegWrapper.OpenInput(ffmpegExecutable,
                        $"-f rawvideo -video_size {Width}:{Height} -pixel_format rgb24 -i - " +

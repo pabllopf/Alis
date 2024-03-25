@@ -91,7 +91,10 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             Vertices normals = polygonA.NormalsPrivate;
 
             int normalIndex = FindMinSeparatingEdge(cLocal, radius, vertexCount, vertices, normals);
-            if (normalIndex == -1) return;
+            if (normalIndex == -1)
+            {
+                return;
+            }
 
             int vertIndex1 = normalIndex;
             int vertIndex2 = vertIndex1 + 1 < vertexCount ? vertIndex1 + 1 : 0;
@@ -100,7 +103,10 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
 
             float separation = Vector2.Distance(c, v1);
 
-            if (IsCenterInsidePolygon(separation, v1, v2, normals, normalIndex, circleB.Position, ref manifold)) return;
+            if (IsCenterInsidePolygon(separation, v1, v2, normals, normalIndex, circleB.Position, ref manifold))
+            {
+                return;
+            }
 
             ComputeBarycentricCoordinates(cLocal, v1, v2, radius, circleB.Position, ref manifold, normals, vertIndex1);
         }

@@ -131,7 +131,9 @@ namespace Alis.Core.Aspect.Data.Json
                 (first, nameChanged, name, value) = HandleWriteNamedValueObjectCallback(writer, component, objectGraph, options, member, first);
 
                 if (ShouldSkipValue(options, member, value))
+                {
                     continue;
+                }
 
                 if (!first)
                 {
@@ -171,7 +173,9 @@ namespace Alis.Core.Aspect.Data.Json
                 options.WriteNamedValueObjectCallback(e);
                 first = e.First;
                 if (e.Handled)
+                {
                     return (first, false, name, value);
+                }
 
                 nameChanged = name != e.Name;
                 name = e.Name;
@@ -193,26 +197,34 @@ namespace Alis.Core.Aspect.Data.Json
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipNullPropertyValues))
             {
                 if (value == null)
+                {
                     return true;
+                }
             }
 
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipZeroValueTypes))
             {
                 if (member.IsZeroValue(value))
+                {
                     return true;
+                }
             }
 
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipNullDateTimeValues))
             {
                 if (member.IsNullDateTimeValue(value))
+                {
                     return true;
+                }
             }
 
             bool skipDefaultValues = options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipDefaultValues);
             if (skipDefaultValues && member.HasDefaultValue)
             {
                 if (member.EqualsDefaultValue(value))
+                {
                     return true;
+                }
             }
 
             return false;
@@ -438,14 +450,14 @@ namespace Alis.Core.Aspect.Data.Json
         [ExcludeFromCodeCoverage]
         internal static IEnumerable<MemberDefinition> EnumerateDefinitionsUsingReflection(bool serialization, Type type, JsonOptions options)
         {
-            foreach (var member in HandlePropertySerialization(serialization, type, options))
+            foreach (MemberDefinition member in HandlePropertySerialization(serialization, type, options))
             {
                 yield return member;
             }
 
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SerializeFields))
             {
-                foreach (var member in HandleFieldSerialization(serialization, type, options))
+                foreach (MemberDefinition member in HandleFieldSerialization(serialization, type, options))
                 {
                     yield return member;
                 }
@@ -464,7 +476,9 @@ namespace Alis.Core.Aspect.Data.Json
             foreach (PropertyInfo info in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
                 if (ShouldSkipProperty(serialization, info, options))
+                {
                     continue;
+                }
 
                 yield return CreateMemberDefinition(serialization, info);
             }
@@ -535,7 +549,9 @@ namespace Alis.Core.Aspect.Data.Json
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
             {
                 if (JsonSerializer.HasScriptIgnore(info))
+                {
                     return true;
+                }
             }
 
             return false;
@@ -552,11 +568,15 @@ namespace Alis.Core.Aspect.Data.Json
             if (serialization)
             {
                 if (!info.CanRead)
+                {
                     return true;
+                }
 
                 MethodInfo getMethod = info.GetGetMethod();
                 if (getMethod == null || getMethod.GetParameters().Length > 0)
+                {
                     return true;
+                }
             }
 
             return false;
@@ -606,7 +626,9 @@ namespace Alis.Core.Aspect.Data.Json
             foreach (FieldInfo info in type.GetFields(BindingFlags.Public | BindingFlags.Instance))
             {
                 if (ShouldSkipField(serialization, info, options))
+                {
                     continue;
+                }
 
                 yield return CreateMemberDefinition(serialization, info);
             }
@@ -638,13 +660,17 @@ namespace Alis.Core.Aspect.Data.Json
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
             {
                 if (info.IsDefined(typeof(XmlIgnoreAttribute), true))
+                {
                     return true;
+                }
             }
 
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
             {
                 if (JsonSerializer.HasScriptIgnore(info))
+                {
                     return true;
+                }
             }
 
             return false;
@@ -695,7 +721,9 @@ namespace Alis.Core.Aspect.Data.Json
             foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(type).Cast<PropertyDescriptor>())
             {
                 if (ShouldSkipDescriptor(serialization, descriptor, options))
+                {
                     continue;
+                }
 
                 yield return CreateMemberDefinition(serialization, descriptor);
             }
@@ -736,10 +764,14 @@ namespace Alis.Core.Aspect.Data.Json
                 if (ja != null)
                 {
                     if (serialization && ja.IgnoreWhenSerializing)
+                    {
                         return true;
+                    }
 
                     if (!serialization && ja.IgnoreWhenDeserializing)
+                    {
                         return true;
+                    }
                 }
             }
 
@@ -757,7 +789,9 @@ namespace Alis.Core.Aspect.Data.Json
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
             {
                 if (descriptor.GetAttribute<XmlIgnoreAttribute>() != null)
+                {
                     return true;
+                }
             }
 
             return false;

@@ -32,21 +32,22 @@ using System;
 namespace Alis.Core.Profile
 {
     /// <summary>
-    /// The profiler class
+    ///     The profiler class
     /// </summary>
     public class Profiler
     {
         /// <summary>
-        /// The start time
-        /// </summary>
-        private DateTime startTime;
-        /// <summary>
-        /// The elapsed time
+        ///     The elapsed time
         /// </summary>
         private TimeSpan elapsedTime;
 
         /// <summary>
-        /// Starts the profiling
+        ///     The start time
+        /// </summary>
+        private DateTime startTime;
+
+        /// <summary>
+        ///     Starts the profiling
         /// </summary>
         public void StartProfiling()
         {
@@ -54,7 +55,7 @@ namespace Alis.Core.Profile
         }
 
         /// <summary>
-        /// Stops the profiling
+        ///     Stops the profiling
         /// </summary>
         public void StopProfiling()
         {
@@ -62,12 +63,9 @@ namespace Alis.Core.Profile
         }
 
         /// <summary>
-        /// Gets the elapsed time
+        ///     Gets the elapsed time
         /// </summary>
         /// <returns>The elapsed time</returns>
-        public TimeSpan GetElapsedTime()
-        {
-            return elapsedTime;
-        }
+        public TimeSpan GetElapsedTime() => elapsedTime;
     }
 }

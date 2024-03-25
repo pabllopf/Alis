@@ -240,7 +240,10 @@ namespace Alis.Extension.Encode.FFMeg
                     $"{command}"
             });
 
-            if (!showOutput) process.BeginErrorReadLine();
+            if (!showOutput)
+            {
+                process.BeginErrorReadLine();
+            }
 
             return process.StandardOutput.BaseStream;
         }
@@ -415,7 +418,10 @@ namespace Alis.Extension.Encode.FFMeg
 
             ffmpegProcess.ErrorDataReceived += (sender, d) =>
             {
-                if (string.IsNullOrEmpty(d.Data)) return;
+                if (string.IsNullOrEmpty(d.Data))
+                {
+                    return;
+                }
 
                 Match match = rgx.Match(d.Data);
                 if (match.Success)
@@ -426,7 +432,10 @@ namespace Alis.Extension.Encode.FFMeg
                     seconds = seconds + 60 * minutes + 60 * 60 * hours;
 
                     double progress = seconds / duration * 100;
-                    if (progress > 100) progress = 100;
+                    if (progress > 100)
+                    {
+                        progress = 100;
+                    }
 
                     iprg.Report(progress);
                 }

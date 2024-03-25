@@ -30,10 +30,9 @@
 namespace Alis.Extension.Ads.GoogleAds
 {
     /// <summary>
-    /// The sample class
+    ///     The sample class
     /// </summary>
     public class Sample
     {
-        
     }
 }

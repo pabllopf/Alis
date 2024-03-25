@@ -68,7 +68,10 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         /// <param name="ffprobeExecutable">Name or path to the ffprobe executable</param>
         public AudioReader(string filename, string ffmpegExecutable = "ffmpeg", string ffprobeExecutable = "ffprobe")
         {
-            if (!File.Exists(filename)) throw new FileNotFoundException($"File '{filename}' not found!");
+            if (!File.Exists(filename))
+            {
+                throw new FileNotFoundException($"File '{filename}' not found!");
+            }
 
             Filename = filename;
             ffmpeg = ffmpegExecutable;
@@ -108,7 +111,11 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         /// </summary>
         public async Task LoadMetadataAsync(bool ignoreStreamErrors = false)
         {
-            if (MetadataLoaded) throw new InvalidOperationException("Video metadata is already loaded!");
+            if (MetadataLoaded)
+            {
+                throw new InvalidOperationException("Video metadata is already loaded!");
+            }
+
             StreamReader r = new StreamReader(FfMpegWrapper.OpenOutput(ffprobe, $"-i \"{Filename}\" -v quiet -print_format json=c=1 -show_format -show_streams"));
 
             try
@@ -138,18 +145,36 @@ namespace Alis.Extension.Encode.FFMeg.Audio
                         if (metadata.BitDepth == 0)
                         {
                             // try to parse it from format
-                            if (metadata.SampleFormat.Contains("64")) metadata.BitDepth = 64;
-                            else if (metadata.SampleFormat.Contains("32")) metadata.BitDepth = 32;
-                            else if (metadata.SampleFormat.Contains("24")) metadata.BitDepth = 24;
-                            else if (metadata.SampleFormat.Contains("16")) metadata.BitDepth = 16;
-                            else if (metadata.SampleFormat.Contains("8")) metadata.BitDepth = 8;
+                            if (metadata.SampleFormat.Contains("64"))
+                            {
+                                metadata.BitDepth = 64;
+                            }
+                            else if (metadata.SampleFormat.Contains("32"))
+                            {
+                                metadata.BitDepth = 32;
+                            }
+                            else if (metadata.SampleFormat.Contains("24"))
+                            {
+                                metadata.BitDepth = 24;
+                            }
+                            else if (metadata.SampleFormat.Contains("16"))
+                            {
+                                metadata.BitDepth = 16;
+                            }
+                            else if (metadata.SampleFormat.Contains("8"))
+                            {
+                                metadata.BitDepth = 8;
+                            }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
                     // failed to interpret video stream settings
-                    if (!ignoreStreamErrors) throw new InvalidDataException("Failed to parse audio stream data! " + ex.Message);
+                    if (!ignoreStreamErrors)
+                    {
+                        throw new InvalidDataException("Failed to parse audio stream data! " + ex.Message);
+                    }
                 }
 
                 MetadataLoaded = true;
@@ -167,9 +192,20 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         /// <param name="bitDepth">frame bit rate in which the audio will be processed (16, 24, 32)</param>
         public void Load(int bitDepth = 16)
         {
-            if ((bitDepth != 16) && (bitDepth != 24) && (bitDepth != 32)) throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
-            if (OpenedForReading) throw new InvalidOperationException("Audio is already loaded!");
-            if (!MetadataLoaded) throw new InvalidOperationException("Please load the audio metadata first!");
+            if ((bitDepth != 16) && (bitDepth != 24) && (bitDepth != 32))
+            {
+                throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
+            }
+
+            if (OpenedForReading)
+            {
+                throw new InvalidOperationException("Audio is already loaded!");
+            }
+
+            if (!MetadataLoaded)
+            {
+                throw new InvalidOperationException("Please load the audio metadata first!");
+            }
 
             // we will be reading audio in S16LE format (for best accuracy, could use S32LE)
             DataStream = FfMpegWrapper.OpenOutput(ffmpeg, $"-i \"{Filename}\" -f s{bitDepth}le -");
@@ -202,10 +238,17 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         /// <param name="frame">Existing frame to be overwritten with new frame data.</param>
         public override AudioFrame NextFrame(AudioFrame frame)
         {
-            if (!OpenedForReading) throw new InvalidOperationException("Please load the audio first!");
+            if (!OpenedForReading)
+            {
+                throw new InvalidOperationException("Please load the audio first!");
+            }
 
             bool success = frame.Load(DataStream);
-            if (success) CurrentSampleOffset += frame.LoadedSamples;
+            if (success)
+            {
+                CurrentSampleOffset += frame.LoadedSamples;
+            }
+
             return success ? frame : null;
         }
     }

@@ -33,82 +33,95 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.ImGui
 {
     /// <summary>
-    /// The im draw cmd
+    ///     The im draw cmd
     /// </summary>
     public struct ImDrawCmd
     {
         /// <summary>
-        /// The clip rect
+        ///     The clip rect
         /// </summary>
         public Vector4 ClipRect;
+
         /// <summary>
-        /// The texture id
+        ///     The texture id
         /// </summary>
         public IntPtr TextureId;
+
         /// <summary>
-        /// The vtx offset
+        ///     The vtx offset
         /// </summary>
         public uint VtxOffset;
+
         /// <summary>
-        /// The idx offset
+        ///     The idx offset
         /// </summary>
         public uint IdxOffset;
+
         /// <summary>
-        /// The elem count
+        ///     The elem count
         /// </summary>
         public uint ElemCount;
+
         /// <summary>
-        /// The user callback
+        ///     The user callback
         /// </summary>
         public IntPtr UserCallback;
+
         /// <summary>
-        /// The user callback data
+        ///     The user callback data
         /// </summary>
         public IntPtr UserCallbackData;
 
         /// <summary>
-        /// Gets the clip rect
+        ///     Gets the clip rect
         /// </summary>
         /// <returns>The vector</returns>
         public Vector4 GetClipRect() => ClipRect;
+
         /// <summary>
-        /// Gets the texture id
+        ///     Gets the texture id
         /// </summary>
         /// <returns>The int ptr</returns>
         public IntPtr GetTextureId() => TextureId;
+
         /// <summary>
-        /// Gets the vtx offset
+        ///     Gets the vtx offset
         /// </summary>
         /// <returns>The uint</returns>
         public uint GetVtxOffset() => VtxOffset;
+
         /// <summary>
-        /// Gets the idx offset
+        ///     Gets the idx offset
         /// </summary>
         /// <returns>The uint</returns>
         public uint GetIdxOffset() => IdxOffset;
+
         /// <summary>
-        /// Gets the elem count
+        ///     Gets the elem count
         /// </summary>
         /// <returns>The uint</returns>
         public uint GetElemCount() => ElemCount;
+
         /// <summary>
-        /// Gets the user callback
+        ///     Gets the user callback
         /// </summary>
         /// <returns>The int ptr</returns>
         public IntPtr GetUserCallback() => UserCallback;
+
         /// <summary>
-        /// Gets the user callback data
+        ///     Gets the user callback data
         /// </summary>
         /// <returns>The int ptr</returns>
         public IntPtr GetUserCallbackData() => UserCallbackData;
+
         /// <summary>
-        /// Sets the user callback data using the specified value
+        ///     Sets the user callback data using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         public void SetUserCallbackData(IntPtr value) => UserCallbackData = value;
 
         /// <summary>
-        /// Destroys this instance
+        ///     Destroys this instance
         /// </summary>
         public void Destroy()
         {
@@ -116,7 +129,7 @@ namespace Alis.Extension.Graphic.ImGui
         }
 
         /// <summary>
-        /// Gets the tex id
+        ///     Gets the tex id
         /// </summary>
         /// <returns>The ret</returns>
         public IntPtr GetTexId()

@@ -32,12 +32,12 @@ using System;
 namespace Alis.Core.Profile.Sample
 {
     /// <summary>
-    /// The program class
+    ///     The program class
     /// </summary>
     public static class Program
     {
         /// <summary>
-        /// Main the args
+        ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
         public static void Main(string[] args)
@@ -56,7 +56,7 @@ namespace Alis.Core.Profile.Sample
         }
 
         /// <summary>
-        /// Samples the method
+        ///     Samples the method
         /// </summary>
         private static void SampleMethod()
         {

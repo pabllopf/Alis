@@ -421,12 +421,7 @@ namespace Alis.Core.Plugin.Test
         /// </summary>
         /// <param name="filePath">The file path</param>
         /// <param name="expected">The expected</param>
-        [Theory]
-        [InlineData("plugin.dll", true)]
-        [InlineData("plugin.so", true)]
-        [InlineData("plugin.dylib", true)]
-        [InlineData("plugin.txt", false)]
-        [InlineData("plugin", false)]
+        [Theory, InlineData("plugin.dll", true), InlineData("plugin.so", true), InlineData("plugin.dylib", true), InlineData("plugin.txt", false), InlineData("plugin", false)]
         public void IsPluginFile_ReturnsCorrectValue(string filePath, bool expected)
         {
             // Act

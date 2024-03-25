@@ -30,16 +30,17 @@
 namespace Alis.Core.Profile
 {
     /// <summary>
-    /// The profile data class
+    ///     The profile data class
     /// </summary>
     public class ProfileData
     {
         /// <summary>
-        /// Gets or sets the value of the memory usage
+        ///     Gets or sets the value of the memory usage
         /// </summary>
         public long MemoryUsage { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the cpu usage
+        ///     Gets or sets the value of the cpu usage
         /// </summary>
         public double CpuUsage { get; set; }
     }

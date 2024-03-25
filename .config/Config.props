@@ -61,11 +61,11 @@
     <!-- Import all the props files in the target folder -->
     <Import Project="$(SolutionDir).config/target/BeforeBuild.props"/>
     <Import Project="$(SolutionDir).config/target/AfterBuild.props"/>
-    
+
     <!-- Import all the props files in the test folder -->
     <Import Project="$(SolutionDir).config/test/ExcludeFromCodeCoverage.props"/>
     <Import Project="$(SolutionDir).config/test/InternalsVisibleTo.props"/>
     <Import Project="$(SolutionDir).config/test/ParallelExe.props"/>
     <Import Project="$(SolutionDir).config/test/SonarQubeExclude.props"/>
-    
+
 </Project>
