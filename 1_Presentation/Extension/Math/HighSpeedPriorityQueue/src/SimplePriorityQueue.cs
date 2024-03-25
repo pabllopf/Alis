@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -13,22 +13,44 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
     /// <typeparam name="TPriority">The priority-type to use for nodes.  Must extend IComparable&lt;TPriority&gt;</typeparam>
     public class SimplePriorityQueue<TItem, TPriority> : IPriorityQueue<TItem, TPriority>
     {
+        /// <summary>
+        /// The simple node class
+        /// </summary>
+        /// <seealso cref="GenericPriorityQueueNode{TPriority}"/>
         private class SimpleNode : GenericPriorityQueueNode<TPriority>
         {
+            /// <summary>
+            /// Gets or sets the value of the data
+            /// </summary>
             public TItem Data { get; private set; }
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="SimpleNode"/> class
+            /// </summary>
+            /// <param name="data">The data</param>
             public SimpleNode(TItem data)
             {
                 Data = data;
             }
         }
 
+        /// <summary>
+        /// The initial queue size
+        /// </summary>
         private const int INITIAL_QUEUE_SIZE = 10;
+        /// <summary>
+        /// The queue
+        /// </summary>
         private readonly GenericPriorityQueue<SimpleNode, TPriority> _queue;
+        /// <summary>
+        /// The item to nodes cache
+        /// </summary>
         private readonly Dictionary<TItem, IList<SimpleNode>> _itemToNodesCache;
+        /// <summary>
+        /// The null nodes cache
+        /// </summary>
         private readonly IList<SimpleNode> _nullNodesCache;
-
-        #region Constructors
+        
         /// <summary>
         /// Instantiate a new Priority Queue
         /// </summary>
@@ -70,7 +92,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             _itemToNodesCache = new Dictionary<TItem, IList<SimpleNode>>(itemEquality);
             _nullNodesCache = new List<SimpleNode>();
         }
-        #endregion
 
         /// <summary>
         /// Given an item of type T, returns the existing SimpleNode in the queue
@@ -508,6 +529,10 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         }
         #endregion
 
+        /// <summary>
+        /// Gets the enumerator
+        /// </summary>
+        /// <returns>An enumerator of t item</returns>
         public IEnumerator<TItem> GetEnumerator()
         {
             List<TItem> queueData = new List<TItem>();
@@ -523,11 +548,19 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             return queueData.GetEnumerator();
         }
 
+        /// <summary>
+        /// Gets the enumerator
+        /// </summary>
+        /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }
 
+        /// <summary>
+        /// Describes whether this instance is valid queue
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool IsValidQueue()
         {
             lock(_queue)

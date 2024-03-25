@@ -1,5 +1,9 @@
-﻿namespace Alis.Extension.Math.HighSpeedPriorityQueue
+namespace Alis.Extension.Math.HighSpeedPriorityQueue
 {
+    /// <summary>
+    /// The stable priority queue node class
+    /// </summary>
+    /// <seealso cref="FastPriorityQueueNode"/>
     public class StablePriorityQueueNode : FastPriorityQueueNode
     {
         /// <summary>

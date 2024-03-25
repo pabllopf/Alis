@@ -31,8 +31,15 @@ using System;
 
 namespace Alis.Core.Profile.Sample
 {
+    /// <summary>
+    /// The program class
+    /// </summary>
     public static class Program
     {
+        /// <summary>
+        /// Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
             ProfilerService profilerService = new ProfilerService();
@@ -48,6 +55,9 @@ namespace Alis.Core.Profile.Sample
             Console.WriteLine($"Memory Usage: {profileData.MemoryUsage}");
         }
 
+        /// <summary>
+        /// Samples the method
+        /// </summary>
         private static void SampleMethod()
         {
             // This is a placeholder for the method you want to profile

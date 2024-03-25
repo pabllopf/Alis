@@ -38,6 +38,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuiZmo
     /// </summary>
     public static class ImGuiZmoNative
     {
+        /// <summary>
+        /// The native library
+        /// </summary>
         private const string NativeLibrary = "cimgui";
         
         /// <summary>

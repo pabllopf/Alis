@@ -1,5 +1,8 @@
-﻿namespace Alis.Extension.Math.HighSpeedPriorityQueue
+namespace Alis.Extension.Math.HighSpeedPriorityQueue
 {
+    /// <summary>
+    /// The fast priority queue node class
+    /// </summary>
     public class FastPriorityQueueNode
     {
         /// <summary>
