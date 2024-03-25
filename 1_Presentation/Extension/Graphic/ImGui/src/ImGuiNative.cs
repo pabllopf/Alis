@@ -4126,7 +4126,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="c">The </param>
         /// <returns>The im font glyph</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImFontGlyph* ImFont_FindGlyph(ImFont* self, ushort c);
+        public static extern ImFontGlyph ImFont_FindGlyph(ImFont* self, ushort c);
 
         /// <summary>
         ///     Ims the font find glyph no fallback using the specified self
@@ -4135,7 +4135,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="c">The </param>
         /// <returns>The im font glyph</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImFontGlyph* ImFont_FindGlyphNoFallback(ImFont* self, ushort c);
+        public static extern ImFontGlyph ImFont_FindGlyphNoFallback(ImFont* self, ushort c);
 
         /// <summary>
         ///     Ims the font get char advance using the specified self

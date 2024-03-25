@@ -92,17 +92,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the value of the index lookup
         /// </summary>
         public ImVector<ushort> IndexLookup => new ImVector<ushort>(NativePtr->IndexLookup);
-
-        /// <summary>
-        ///     Gets the value of the glyphs
-        /// </summary>
-        public ImPtrVector<ImFontGlyphPtr> Glyphs => new ImPtrVector<ImFontGlyphPtr>(NativePtr->Glyphs, Unsafe.SizeOf<ImFontGlyph>());
-
-        /// <summary>
-        ///     Gets the value of the fallback glyph
-        /// </summary>
-        public ImFontGlyphPtr FallbackGlyph => new ImFontGlyphPtr(NativePtr->FallbackGlyph);
-
+        
         /// <summary>
         ///     Gets the value of the container atlas
         /// </summary>
@@ -235,10 +225,9 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The im font glyph ptr</returns>
-        public ImFontGlyphPtr FindGlyph(ushort c)
+        public ImFontGlyph FindGlyph(ushort c)
         {
-            ImFontGlyph* ret = ImGuiNative.ImFont_FindGlyph(NativePtr, c);
-            return new ImFontGlyphPtr(ret);
+            return ImGuiNative.ImFont_FindGlyph(NativePtr, c);
         }
 
         /// <summary>
@@ -246,10 +235,9 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The im font glyph ptr</returns>
-        public ImFontGlyphPtr FindGlyphNoFallback(ushort c)
+        public ImFontGlyph FindGlyphNoFallback(ushort c)
         {
-            ImFontGlyph* ret = ImGuiNative.ImFont_FindGlyphNoFallback(NativePtr, c);
-            return new ImFontGlyphPtr(ret);
+            return ImGuiNative.ImFont_FindGlyphNoFallback(NativePtr, c);
         }
 
         /// <summary>
