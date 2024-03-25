@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
+    <!-- This file is used to import all the props files in the solution -->
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     </PropertyGroup>
 
+    <!-- Import all the props files in the application folder -->
     <Import Project="$(SolutionDir).config/application/TargetFrameworks.props"/>
     <Import Project="$(SolutionDir).config/application/Runtimes.props"/>
     <Import Project="$(SolutionDir).config/application/LangVersion.props"/>
@@ -12,20 +14,24 @@
     <Import Project="$(SolutionDir).config/application/SelfContained.props"/>
     <Import Project="$(SolutionDir).config/application/OutputType.props"/>
 
+    <!-- Import all the props files in the assembly folder -->
     <Import Project="$(SolutionDir).config/assembly/Company.props"/>
     <Import Project="$(SolutionDir).config/assembly/FileVersion.props"/>
     <Import Project="$(SolutionDir).config/assembly/InternalsVisibleTo.props"/>
     <Import Project="$(SolutionDir).config/assembly/NeutralLanguage.props"/>
     <Import Project="$(SolutionDir).config/assembly/Product.props"/>
 
+    <!-- Import all the props files in the build folder -->
     <Import Project="$(SolutionDir).config/builds/NoWarn.props"/>
     <Import Project="$(SolutionDir).config/builds/SuppressTfmSupportBuildWarnings.props"/>
     <Import Project="$(SolutionDir).config/builds/TreatWarningsAsErrors.props"/>
     <Import Project="$(SolutionDir).config/builds/WarningLevel.props"/>
     <Import Project="$(SolutionDir).config/builds/WarningsAsErrors.props"/>
 
+    <!-- Import all the props files in the code folder -->
     <Import Project="$(SolutionDir).config/docs/Docs.props"/>
 
+    <!-- Import all the props files in the nuget folder -->
     <Import Project="$(SolutionDir).config/nuget/Packable.props"/>
     <Import Project="$(SolutionDir).config/nuget/Authors.props"/>
     <Import Project="$(SolutionDir).config/nuget/Copyright.props"/>
@@ -45,19 +51,21 @@
     <Import Project="$(SolutionDir).config/nuget/Title.props"/>
     <Import Project="$(SolutionDir).config/nuget/Version.props"/>
 
+    <!-- Import all the props files in the reference folder -->
     <Import Project="$(SolutionDir).config/reference/AssetFolder.props"/>
     <Import Project="$(SolutionDir).config/reference/ContentFiles.props"/>
     <Import Project="$(SolutionDir).config/reference/EmbeddedResources.props"/>
     <Import Project="$(SolutionDir).config/reference/Projects.props"/>
     <Import Project="$(SolutionDir).config/reference/Packages.props"/>
-    
-    
 
-    <Import Project="$(SolutionDir).config/test/ExcludeFromCodeCoverage.props"/>
-    <Import Project="$(SolutionDir).config/test/InternalsVisibleTo.props"/>
-    
+    <!-- Import all the props files in the target folder -->
     <Import Project="$(SolutionDir).config/target/BeforeBuild.props"/>
     <Import Project="$(SolutionDir).config/target/AfterBuild.props"/>
-
-
+    
+    <!-- Import all the props files in the test folder -->
+    <Import Project="$(SolutionDir).config/test/ExcludeFromCodeCoverage.props"/>
+    <Import Project="$(SolutionDir).config/test/InternalsVisibleTo.props"/>
+    <Import Project="$(SolutionDir).config/test/ParallelExe.props"/>
+    <Import Project="$(SolutionDir).config/test/SonarQubeExclude.props"/>
+    
 </Project>
