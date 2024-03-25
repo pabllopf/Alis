@@ -150,10 +150,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     Creates the context
         /// </summary>
         /// <returns>The im nodes context ptr</returns>
-        public static ImNodesContextPtr CreateContext()
+        public static ImNodesContext CreateContext()
         {
-            ImNodesContext* ret = ImNodesNative.ImNodes_CreateContext();
-            return new ImNodesContextPtr(ret);
+            return ImNodesNative.ImNodes_CreateContext();
         }
 
         /// <summary>
@@ -161,18 +160,16 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         public static void DestroyContext()
         {
-            ImNodesContext* ctx = null;
-            ImNodesNative.ImNodes_DestroyContext(ctx);
+            ImNodesNative.ImNodes_DestroyContext(new ImNodesContext());
         }
 
         /// <summary>
         ///     Destroys the context using the specified ctx
         /// </summary>
         /// <param name="ctx">The ctx</param>
-        public static void DestroyContext(ImNodesContextPtr ctx)
+        public static void DestroyContext(ImNodesContext ctx)
         {
-            ImNodesContext* nativeCtx = ctx.NativePtr;
-            ImNodesNative.ImNodes_DestroyContext(nativeCtx);
+            ImNodesNative.ImNodes_DestroyContext(new ImNodesContext());
         }
 
         /// <summary>
@@ -286,10 +283,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     Gets the current context
         /// </summary>
         /// <returns>The im nodes context ptr</returns>
-        public static ImNodesContextPtr GetCurrentContext()
+        public static ImNodesContext GetCurrentContext()
         {
-            ImNodesContext* ret = ImNodesNative.ImNodes_GetCurrentContext();
-            return new ImNodesContextPtr(ret);
+            return ImNodesNative.ImNodes_GetCurrentContext();
         }
 
         /// <summary>
@@ -1125,10 +1121,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     Sets the current context using the specified ctx
         /// </summary>
         /// <param name="ctx">The ctx</param>
-        public static void SetCurrentContext(ImNodesContextPtr ctx)
+        public static void SetCurrentContext(ImNodesContext ctx)
         {
-            ImNodesContext* nativeCtx = ctx.NativePtr;
-            ImNodesNative.ImNodes_SetCurrentContext(nativeCtx);
+            ImNodesNative.ImNodes_SetCurrentContext(ctx);
         }
 
         /// <summary>
