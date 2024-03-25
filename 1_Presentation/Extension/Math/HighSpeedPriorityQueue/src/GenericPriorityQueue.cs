@@ -37,13 +37,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <param name="comparer">The comparison function to use to compare TPriority values</param>
         public GenericPriorityQueue(int maxNodes, Comparison<TPriority> comparer)
         {
-#if DEBUG
-            if (maxNodes <= 0)
-            {
-                throw new InvalidOperationException("New queue size cannot be smaller than 1");
-            }
-#endif
-
             _numNodes = 0;
             _nodes = new TItem[maxNodes + 1];
             _numNodesEverEnqueued = 0;
@@ -66,9 +59,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// Removes every node from the queue.
         /// O(n) (So, don't do this often!)
         /// </summary>
-#if NET_VERSION_4_5
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
         public void Clear()
         {
             Array.Clear(_nodes, 1, _numNodes);
@@ -80,26 +70,8 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// If node is or has been previously added to another queue, the result is undefined unless oldQueue.ResetNode(node) has been called
         /// O(1)
         /// </summary>
-#if NET_VERSION_4_5
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
         public bool Contains(TItem node)
         {
-#if DEBUG
-            if(node == null)
-            {
-                throw new ArgumentNullException("node");
-            }
-            if (node.Queue != null && !Equals(node.Queue))
-            {
-                throw new InvalidOperationException("node.Contains was called on a node from another queue.  Please call originalQueue.ResetNode() first");
-            }
-            if (node.QueueIndex < 0 || node.QueueIndex >= _nodes.Length)
-            {
-                throw new InvalidOperationException("node.QueueIndex has been corrupted. Did you change it manually?");
-            }
-#endif
-
             return (_nodes[node.QueueIndex] == node);
         }
 
@@ -110,31 +82,8 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// If node is or has been previously added to another queue, the result is undefined unless oldQueue.ResetNode(node) has been called
         /// O(log n)
         /// </summary>
-#if NET_VERSION_4_5
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
         public void Enqueue(TItem node, TPriority priority)
         {
-#if DEBUG
-            if(node == null)
-            {
-                throw new ArgumentNullException("node");
-            }
-            if(_numNodes >= _nodes.Length - 1)
-            {
-                throw new InvalidOperationException("Queue is full - node cannot be added: " + node);
-            }
-            if (node.Queue != null && !Equals(node.Queue))
-            {
-                throw new InvalidOperationException("node.Enqueue was called on a node from another queue.  Please call originalQueue.ResetNode() first");
-            }
-            if (Contains(node))
-            {
-                throw new InvalidOperationException("Node is already enqueued: " + node);
-            }
-            node.Queue = this;
-#endif
-
             node.Priority = priority;
             _numNodes++;
             _nodes[_numNodes] = node;
@@ -142,10 +91,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             node.InsertionIndex = _numNodesEverEnqueued++;
             CascadeUp(node);
         }
-
-#if NET_VERSION_4_5
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
+        
         private void CascadeUp(TItem node)
         {
             //aka Heapify-up
@@ -182,10 +128,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             }
             _nodes[node.QueueIndex] = node;
         }
-
-#if NET_VERSION_4_5
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
+        
         private void CascadeDown(TItem node)
         {
             //aka Heapify-down
@@ -326,9 +269,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// Returns true if 'higher' has higher priority than 'lower', false otherwise.
         /// Note that calling HasHigherPriority(node, node) (ie. both arguments the same node) will return false
         /// </summary>
-#if NET_VERSION_4_5
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
         private bool HasHigherPriority(TItem higher, TItem lower)
         {
             var cmp = _comparer(higher.Priority, lower.Priority);
@@ -340,24 +280,8 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// If queue is empty, result is undefined
         /// O(log n)
         /// </summary>
-#if NET_VERSION_4_5
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
         public TItem Dequeue()
         {
-#if DEBUG
-            if(_numNodes <= 0)
-            {
-                throw new InvalidOperationException("Cannot call Dequeue() on an empty queue");
-            }
-
-            if(!IsValidQueue())
-            {
-                throw new InvalidOperationException("Queue has been corrupted (Did you update a node priority manually instead of calling UpdatePriority()?" +
-                                                    "Or add the same node to two different queues?)");
-            }
-#endif
-
             TItem returnMe = _nodes[1];
             //If the node is already the last node, we can remove it immediately
             if(_numNodes == 1)
@@ -386,18 +310,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// </summary>
         public void Resize(int maxNodes)
         {
-#if DEBUG
-            if (maxNodes <= 0)
-            {
-                throw new InvalidOperationException("Queue size cannot be smaller than 1");
-            }
-
-            if (maxNodes < _numNodes)
-            {
-                throw new InvalidOperationException("Called Resize(" + maxNodes + "), but current queue contains " + _numNodes + " nodes");
-            }
-#endif
-
             TItem[] newArray = new TItem[maxNodes + 1];
             int highestIndexToCopy = System.Math.Min(maxNodes, _numNodes);
             Array.Copy(_nodes, newArray, highestIndexToCopy + 1);
@@ -413,13 +325,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         {
             get
             {
-#if DEBUG
-                if(_numNodes <= 0)
-                {
-                    throw new InvalidOperationException("Cannot call .First on an empty queue");
-                }
-#endif
-
                 return _nodes[1];
             }
         }
@@ -430,33 +335,12 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// Calling this method on a node not in the queue results in undefined behavior
         /// O(log n)
         /// </summary>
-#if NET_VERSION_4_5
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
         public void UpdatePriority(TItem node, TPriority priority)
         {
-#if DEBUG
-            if(node == null)
-            {
-                throw new ArgumentNullException("node");
-            }
-            if (node.Queue != null && !Equals(node.Queue))
-            {
-                throw new InvalidOperationException("node.UpdatePriority was called on a node from another queue");
-            }
-            if (!Contains(node))
-            {
-                throw new InvalidOperationException("Cannot call UpdatePriority() on a node which is not enqueued: " + node);
-            }
-#endif
-
             node.Priority = priority;
             OnNodeUpdated(node);
         }
-
-#if NET_VERSION_4_5
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
+        
         private void OnNodeUpdated(TItem node)
         {
             //Bubble the updated node up or down as appropriate
@@ -478,26 +362,8 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// If the node is not in the queue, the result is undefined.  If unsure, check Contains() first
         /// O(log n)
         /// </summary>
-#if NET_VERSION_4_5
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
         public void Remove(TItem node)
         {
-#if DEBUG
-            if(node == null)
-            {
-                throw new ArgumentNullException("node");
-            }
-            if (node.Queue != null && !Equals(node.Queue))
-            {
-                throw new InvalidOperationException("node.Remove was called on a node from another queue");
-            }
-            if (!Contains(node))
-            {
-                throw new InvalidOperationException("Cannot call Remove() on a node which is not enqueued: " + node);
-            }
-#endif
-
             //If the node is already the last node, we can remove it immediately
             if(node.QueueIndex == _numNodes)
             {
@@ -521,41 +387,16 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// By default, nodes that have been previously added to one queue cannot be added to another queue.
         /// If you need to do this, please call originalQueue.ResetNode(node) before attempting to add it in the new queue
         /// </summary>
-#if NET_VERSION_4_5
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
         public void ResetNode(TItem node)
         {
-#if DEBUG
-            if (node == null)
-            {
-                throw new ArgumentNullException("node");
-            }
-            if (node.Queue != null && !Equals(node.Queue))
-            {
-                throw new InvalidOperationException("node.ResetNode was called on a node from another queue");
-            }
-            if (Contains(node))
-            {
-                throw new InvalidOperationException("node.ResetNode was called on a node that is still in the queue");
-            }
-
-            node.Queue = null;
-#endif
-
             node.QueueIndex = 0;
         }
 
 
         public IEnumerator<TItem> GetEnumerator()
         {
-#if NET_VERSION_4_5 // ArraySegment does not implement IEnumerable before 4.5
-            IEnumerable<TItem> e = new ArraySegment<TItem>(_nodes, 1, _numNodes);
-            return e.GetEnumerator();
-#else
             for(int i = 1; i <= _numNodes; i++)
                 yield return _nodes[i];
-#endif
         }
 
         IEnumerator IEnumerable.GetEnumerator()
