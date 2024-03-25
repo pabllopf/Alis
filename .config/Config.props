@@ -51,10 +51,9 @@
     <Import Project="$(SolutionDir).config/reference/Projects.props"/>
     <Import Project="$(SolutionDir).config/reference/Packages.props"/>
     
-    
-
     <Import Project="$(SolutionDir).config/test/ExcludeFromCodeCoverage.props"/>
     <Import Project="$(SolutionDir).config/test/InternalsVisibleTo.props"/>
+    <Import Project="$(SolutionDir).config/test/SonarQubeExclude.props"/>
     
     <Import Project="$(SolutionDir).config/target/BeforeBuild.props"/>
     <Import Project="$(SolutionDir).config/target/AfterBuild.props"/>
