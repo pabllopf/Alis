@@ -312,7 +312,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="callbackData">The callback data</param>
         public void AddCallback(IntPtr callback, IntPtr callbackData)
         {
-            void* nativeCallbackData = callbackData.ToPointer();
+            IntPtr nativeCallbackData = callbackData;
             ImGuiNative.ImDrawList_AddCallback(NativePtr, callback, nativeCallbackData);
         }
 
