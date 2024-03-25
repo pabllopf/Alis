@@ -1019,7 +1019,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <returns>The im draw data</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetDrawData")]
-        public static extern ImDrawData* igGetDrawData();
+        public static extern ref ImDrawData igGetDrawData();
 
         /// <summary>
         ///     Igs the get draw list shared data
@@ -3317,28 +3317,28 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawData_Clear(ImDrawData* self);
+        public static extern void ImDrawData_Clear(ref ImDrawData self);
 
         /// <summary>
         ///     Ims the draw data de index all buffers using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawData_DeIndexAllBuffers(ImDrawData* self);
+        public static extern void ImDrawData_DeIndexAllBuffers(ref ImDrawData self);
 
         /// <summary>
         ///     Ims the draw data destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawData_destroy(ImDrawData* self);
+        public static extern void ImDrawData_destroy(ref ImDrawData self);
 
         /// <summary>
         ///     Ims the draw data im draw data
         /// </summary>
         /// <returns>The im draw data</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImDrawData* ImDrawData_ImDrawData();
+        public static extern ref ImDrawData ImDrawData_ImDrawData();
 
         /// <summary>
         ///     Ims the draw data scale clip rects using the specified self
@@ -3346,7 +3346,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="fbScale">The fb scale</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawData_ScaleClipRects(ImDrawData* self, Vector2 fbScale);
+        public static extern void ImDrawData_ScaleClipRects(ref ImDrawData self, Vector2 fbScale);
 
         /// <summary>
         ///     Ims the draw list calc circle auto segment count using the specified self

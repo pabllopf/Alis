@@ -685,7 +685,7 @@ namespace Alis.App.Engine
         ///     Setup the render state using the specified draw data
         /// </summary>
         /// <param name="drawData">The draw data</param>
-        private void SetupRenderState(ImDrawDataPtr drawData)
+        private void SetupRenderState(ImDrawData drawData)
         {
             Gl.GlEnable(EnableCap.Blend);
             Gl.GlBlendEquation(BlendEquationMode.FuncAdd);
@@ -775,7 +775,7 @@ namespace Alis.App.Engine
         /// </summary>
         private void RenderDrawData()
         {
-            ImDrawDataPtr drawData = ImGui.GetDrawData();
+            ImDrawData drawData = ImGui.GetDrawData();
 
             // Avoid rendering when minimized, scale coordinates for retina displays (screen coordinates != framebuffer coordinates)
             int fbWidth = (int) (drawData.DisplaySize.X * drawData.FramebufferScale.X);

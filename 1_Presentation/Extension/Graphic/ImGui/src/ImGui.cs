@@ -9156,10 +9156,9 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the draw data
         /// </summary>
         /// <returns>The im draw data ptr</returns>
-        public static ImDrawDataPtr GetDrawData()
+        public static ImDrawData GetDrawData()
         {
-            ImDrawData* ret = ImGuiNative.igGetDrawData();
-            return new ImDrawDataPtr(ret);
+            return ImGuiNative.igGetDrawData();
         }
 
         /// <summary>

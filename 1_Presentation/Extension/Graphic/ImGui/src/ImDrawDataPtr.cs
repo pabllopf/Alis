@@ -122,42 +122,6 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public ImGuiViewportPtr OwnerViewport => new ImGuiViewportPtr(NativePtr->OwnerViewport);
 
-        /// <summary>
-        ///     Clears this instance
-        /// </summary>
-        public void Clear()
-        {
-            ImGuiNative.ImDrawData_Clear(NativePtr);
-        }
-
-        /// <summary>
-        ///     Des the index all buffers
-        /// </summary>
-        public void DeIndexAllBuffers()
-        {
-            ImGuiNative.ImDrawData_DeIndexAllBuffers(NativePtr);
-        }
-
-        /// <summary>
-        ///     Destroys this instance
-        /// </summary>
-        public void Destroy()
-        {
-            ImGuiNative.ImDrawData_destroy(NativePtr);
-        }
-
-        /// <summary>
-        ///     Scales the clip rects using the specified fb scale
-        /// </summary>
-        /// <param name="fbScale">The fb scale</param>
-        public void ScaleClipRects(Vector2 fbScale)
-        {
-            ImGuiNative.ImDrawData_ScaleClipRects(NativePtr, fbScale);
-        }
-
-        /// <summary>
-        ///     Gets the value of the cmd lists range
-        /// </summary>
-        public RangePtrAccessor<ImDrawListPtr> CmdListsRange => new RangePtrAccessor<ImDrawListPtr>(CmdLists.ToPointer(), CmdListsCount);
+       
     }
 }
