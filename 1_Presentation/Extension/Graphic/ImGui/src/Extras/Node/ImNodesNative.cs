@@ -125,14 +125,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <returns>The im nodes context</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImNodesContext* ImNodes_CreateContext();
+        public static extern ImNodesContext ImNodes_CreateContext();
 
         /// <summary>
         ///     Ims the nodes destroy context using the specified ctx
         /// </summary>
         /// <param name="ctx">The ctx</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_DestroyContext(ImNodesContext* ctx);
+        public static extern void ImNodes_DestroyContext(ImNodesContext ctx);
 
         /// <summary>
         ///     Ims the nodes editor context create
@@ -217,7 +217,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <returns>The im nodes context</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImNodesContext* ImNodes_GetCurrentContext();
+        public static extern ImNodesContext ImNodes_GetCurrentContext();
 
         /// <summary>
         ///     Ims the nodes get io
@@ -554,7 +554,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="ctx">The ctx</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_SetCurrentContext(ImNodesContext* ctx);
+        public static extern void ImNodes_SetCurrentContext(ImNodesContext ctx);
 
         /// <summary>
         ///     Ims the nodes set im gui context using the specified ctx
