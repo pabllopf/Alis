@@ -1,12 +1,25 @@
 <Project>
     <!-- Resources when runtime identifier is not selected -->
-    <ItemGroup Condition="'$(RuntimeIdentifier)' == '' AND Exists('$(ProjectDir)/resources/')">
+    <ItemGroup Condition="
+        $(AssemblyName.Contains('Test')) == False AND
+        $(AssemblyName.Contains('Sample')) == False AND
+        $(AssemblyName.Contains('Template')) == False AND 
+        $(AssemblyName.Contains('Benchmark')) == False AND 
+        '$(RuntimeIdentifier)' == '' AND 
+        Exists('$(ProjectDir)/resources/')">
         <None Remove="$(ProjectDir)/**/resources/**/*.zip;"/>
         <EmbeddedResource Include="$(ProjectDir)/**/resources/**/*.zip;"/>
     </ItemGroup>
 
     <!-- Resources when runtime identifier is selected -->
-    <ItemGroup Condition="'$(RuntimeIdentifier)' != '' AND Exists('$(ProjectDir)/resources/')">
+    <ItemGroup Condition="
+        $(AssemblyName.Contains('Test')) == False AND
+        $(AssemblyName.Contains('Sample')) == False AND
+        $(AssemblyName.Contains('Template')) == False AND 
+        $(AssemblyName.Contains('Benchmark')) == False AND 
+        '$(RuntimeIdentifier)' != '' AND 
+        Exists('$(ProjectDir)/resources/')">
+        
         <None Remove="$(ProjectDir)/**/resources/**/*.zip;"/>
 
         <!-- Windows -->
@@ -26,7 +39,11 @@
         <EmbeddedResource Condition="$(IsX86) AND $(IsLinux)" Include="$(ProjectDir)/**/resources/**/linux-x86/**/*linux-x86*.zip"/>
     </ItemGroup>
 
-    <ItemGroup>
+    <ItemGroup Condition="
+        $(AssemblyName.Contains('Test')) == False AND
+        $(AssemblyName.Contains('Sample')) == False AND
+        $(AssemblyName.Contains('Template')) == False AND 
+        $(AssemblyName.Contains('Benchmark')) == False">
 
         <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND '$(RuntimeIdentifier)' == ''"
                           Include="$(SolutionDir)4_Operation/**/resources/**/*.zip;"
