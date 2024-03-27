@@ -55,9 +55,9 @@ namespace Alis.Core.Aspect.Data.Dll
         {
             string extension = GetDllExtension(dllType);
             string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string dllPath = Path.Combine(currentDirectory, $"{dllName}{extension}");
+            string dllPath = Path.Combine(currentDirectory);
 
-            if (!File.Exists(dllPath))
+            if (!File.Exists(dllPath + "/" + dllName + extension))
             {
                 OSPlatform currentPlatform = GetCurrentPlatform();
                 Architecture currentArchitecture = RuntimeInformation.ProcessArchitecture;
@@ -186,26 +186,24 @@ namespace Alis.Core.Aspect.Data.Dll
         }
 
 
-        /// <summary>
-        ///     Extracts the zip file using the specified file path
-        /// </summary>
-        /// <param name="filePath">The file path</param>
-        /// <param name="zipData">The zip data</param>
         [ExcludeFromCodeCoverage]
         private static void ExtractZipFile(string filePath, MemoryStream zipData)
         {
             using MemoryStream ms = zipData;
             using ZipArchive archive = new ZipArchive(ms);
+            Console.WriteLine($"Num files to unzip: '{archive.Entries.Count}'");
             foreach (ZipArchiveEntry entry in archive.Entries)
             {
-                if (File.Exists(filePath))
-                {
-                    continue; // Skip if the file already exists
-                }
+                string fullFilePath = Path.Combine(filePath, entry.FullName);
 
-                Directory.CreateDirectory(Path.GetDirectoryName(filePath) ?? throw new InvalidOperationException());
+                Console.WriteLine($"File to extract: '{fullFilePath}'");
+                
+                // Create the directory if it does not exist
+                Directory.CreateDirectory(Path.GetDirectoryName(fullFilePath) ?? throw new InvalidOperationException());
+
+                // Extract the entry to the file
                 using Stream entryStream = entry.Open();
-                using FileStream fs = File.Create(filePath);
+                using FileStream fs = File.Create(fullFilePath);
                 entryStream.CopyTo(fs);
             }
 
