@@ -1,4 +1,9 @@
 <Project>
+    
+    <ItemGroup>
+        <None Remove="$(ProjectDir)/**/resources/**/*.zip;"/>
+    </ItemGroup>
+    
     <!-- Resources when runtime identifier is not selected -->
     <ItemGroup Condition="
         $(AssemblyName.Contains('Test')) == False AND
