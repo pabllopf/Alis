@@ -40,7 +40,6 @@ using Alis.Core.Aspect.Sample.Data;
 using Alis.Core.Aspect.Sample.Fluent;
 using Alis.Core.Aspect.Thread;
 using Alis.Core.Aspect.Time;
-using Alis.Core.Aspect.Translation;
 
 namespace Alis.Core.Aspect.Sample
 {
@@ -96,28 +95,7 @@ namespace Alis.Core.Aspect.Sample
             JsonSerializer.Deserialize<Music>(serialized2);
 
             Console.WriteLine("deserialized 2");
-
-            // SAMPLE ASPECT TRANSLATION
-            Console.WriteLine("--------------------------");
-            Console.WriteLine("Translation sample");
-            Console.WriteLine("--------------------------\n");
-
-            TranslationManager manager = new TranslationManager();
-
-            manager.AddLanguage(new Language {Name = "English", Code = "en"});
-            manager.AddLanguage(new Language {Name = "Spanish", Code = "es"});
-
-            manager.AddTranslation("en", "hello", "Hello");
-            manager.AddTranslation("es", "hello", "Hola");
-            manager.AddTranslation("en", "world", "World");
-            manager.AddTranslation("es", "world", "Mundo");
-
-            manager.SetLanguage("Spanish", "es");
-            Console.WriteLine($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
-
-            manager.SetLanguage("English", "en");
-            Console.WriteLine($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
-
+            
             // SAMPLE ASPECT MATH
             Console.WriteLine("--------------------------");
             Console.WriteLine("Math sample");
