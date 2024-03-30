@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     <!-- Select projects to disable parallel execution -->
-    <ItemGroup Condition="$(AssemblyName.Contains('Graphic.Test'))">
+    <ItemGroup Condition="
+        $(AssemblyName.Contains('Graphic.Test')) OR
+        $(AssemblyName.Contains('ImGui.Test')) OR
+        $(AssemblyName.Contains('OpenGL.Test')) OR
+        $(AssemblyName.Contains('FFMeg.Test'))">
         <Content
             Include="$(SolutionDir).config/xunit.runner.json"
             LinkBase="."
