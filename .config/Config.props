@@ -10,6 +10,7 @@
     <Import Project="$(SolutionDir).config/application/TargetFrameworks.props"/>
     <Import Project="$(SolutionDir).config/application/Runtimes.props"/>
     <Import Project="$(SolutionDir).config/application/LangVersion.props"/>
+    <Import Project="$(SolutionDir).config/application/Optimize.props"/>
     <Import Project="$(SolutionDir).config/application/AllowUnsafeBlocks.props"/>
     <Import Project="$(SolutionDir).config/application/SelfContained.props"/>
     <Import Project="$(SolutionDir).config/application/OutputType.props"/>
@@ -23,6 +24,7 @@
 
     <!-- Import all the props files in the build folder -->
     <Import Project="$(SolutionDir).config/builds/NoWarn.props"/>
+    <Import Project="$(SolutionDir).config/builds/PublishTrimmed.props"/>
     <Import Project="$(SolutionDir).config/builds/SuppressTfmSupportBuildWarnings.props"/>
     <Import Project="$(SolutionDir).config/builds/TreatWarningsAsErrors.props"/>
     <Import Project="$(SolutionDir).config/builds/WarningLevel.props"/>

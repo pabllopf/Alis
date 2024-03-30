@@ -18,6 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "application", "application"
 		.config\application\Runtimes.props = .config\application\Runtimes.props
 		.config\application\TargetFrameworks.props = .config\application\TargetFrameworks.props
 		.config\application\SelfContained.props = .config\application\SelfContained.props
+		.config\application\Optimize.props = .config\application\Optimize.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assembly", "assembly", "{9444A5E5-647C-451D-97B2-0C480EA31258}"
@@ -40,6 +41,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "builds", "builds", "{7211F4
 		.config\builds\WarningLevel.props = .config\builds\WarningLevel.props
 		.config\builds\WarningsAsErrors.props = .config\builds\WarningsAsErrors.props
 		.config\builds\SuppressTfmSupportBuildWarnings.props = .config\builds\SuppressTfmSupportBuildWarnings.props
+		.config\builds\PublishTrimmed.props = .config\builds\PublishTrimmed.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{F90708CD-3588-499D-93D9-78DF2AA56C86}"
