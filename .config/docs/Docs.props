@@ -3,8 +3,16 @@
     <ItemGroup Condition="
         $(AssemblyName.Contains('Test')) == false AND 
         $(AssemblyName.Contains('Sample')) == false AND
+        $(AssemblyName.Contains('Template')) == false AND 
+        $(Configuration) == 'Release'">
+        <None Remove="$(ProjectDir)/**/*.md"/>
+    </ItemGroup>
+    
+    
+    <ItemGroup Condition="
+        $(AssemblyName.Contains('Test')) == false AND 
+        $(AssemblyName.Contains('Sample')) == false AND
         $(AssemblyName.Contains('Template')) == false">
-
         <None Include="$(SolutionDir)licence.md" LinkBase="." Pack="true" Visible="false" PackagePath="." CopyToOutputDirectory="Always"/>
         <None Include="$(SolutionDir)readme.md" LinkBase="." Pack="true" Visible="false" PackagePath="." CopyToOutputDirectory="Always"/>
         <None Include="$(SolutionDir)docs/logo/logo.png" LinkBase="." Pack="true" Visible="false" PackagePath="." CopyToOutputDirectory="Always"/>
