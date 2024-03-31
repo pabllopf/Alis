@@ -1,4 +1,8 @@
 <Project>
+    <PropertyGroup>
+        <DisableResources>true</DisableResources>
+    </PropertyGroup>
+    
     
     <ItemGroup>
         <None Remove="$(ProjectDir)/**/resources/**/*.zip;"/>
@@ -11,8 +15,8 @@
         $(AssemblyName.Contains('Template')) == False AND 
         $(AssemblyName.Contains('Benchmark')) == False AND 
         '$(RuntimeIdentifier)' == '' AND 
-        Exists('$(ProjectDir)/resources/')">
-        <None Remove="$(ProjectDir)/**/resources/**/*.zip;"/>
+        Exists('$(ProjectDir)/resources/') AND 
+        '$(DisableResources)' != 'true'">
         <EmbeddedResource Include="$(ProjectDir)/**/resources/**/*.zip;"/>
     </ItemGroup>
 
@@ -23,10 +27,9 @@
         $(AssemblyName.Contains('Template')) == False AND 
         $(AssemblyName.Contains('Benchmark')) == False AND 
         '$(RuntimeIdentifier)' != '' AND 
-        Exists('$(ProjectDir)/resources/')">
+        Exists('$(ProjectDir)/resources/') AND
+        '$(DisableResources)' != 'true'">
         
-        <None Remove="$(ProjectDir)/**/resources/**/*.zip;"/>
-
         <!-- Windows -->
         <EmbeddedResource Condition="$(IsARM) AND $(IsWindows)" Include="$(ProjectDir)/**/resources/**/win-arm/**/*win-arm*.zip"/>
         <EmbeddedResource Condition="$(IsARM64) AND $(IsWindows) " Include="$(ProjectDir)/**/resources/**/win-arm64/**/*win-arm64*.zip"/>
@@ -48,7 +51,9 @@
         $(AssemblyName.Contains('Test')) == False AND
         $(AssemblyName.Contains('Sample')) == False AND
         $(AssemblyName.Contains('Template')) == False AND 
-        $(AssemblyName.Contains('Benchmark')) == False">
+        $(AssemblyName.Contains('Benchmark')) == False AND 
+        '$(RuntimeIdentifier)' != '' AND 
+        '$(DisableResources)' != 'true'">
 
         <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND '$(RuntimeIdentifier)' == ''"
                           Include="$(SolutionDir)4_Operation/**/resources/**/*.zip;"
