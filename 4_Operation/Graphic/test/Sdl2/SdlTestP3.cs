@@ -352,30 +352,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Sdl.Quit();
         }
 
-        /// <summary>
-        ///     Tests that joystick set led should return expected value
-        /// </summary>
-        [Fact]
-        public void JoystickSetLed_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr joystick = IntPtr.Zero;
-            byte red = 0;
-            byte green = 0;
-            byte blue = 0;
-
-            // Act
-            int result = Sdl.JoystickSetLed(joystick, red, green, blue);
-
-            // Assert
-
-            Assert.True(result >= -1);
-
-            // Cleanup
-            Sdl.Quit();
-        }
 
         /// <summary>
         ///     Tests that joystick send effect should return expected value
@@ -707,28 +683,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that game controller get serial should return expected value
-        /// </summary>
-        [Fact]
-        public void GameControllerGetSerial_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr gameController = IntPtr.Zero;
-
-            // Act
-            string result = Sdl.GameControllerGetSerial(gameController);
-
-            // Assert
-
-            Assert.Null(result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
+        
 
         /// <summary>
         ///     Tests that game controller get attached should return expected value
@@ -967,51 +922,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that joystick from player index should return expected value
-        /// </summary>
-        [Fact]
-        public void JoystickFromPlayerIndex_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            int playerIndex = 0;
-
-            // Act
-            IntPtr result = Sdl.JoystickFromPlayerIndex(playerIndex);
-
-            // Assert
-
-            Assert.Equal(IntPtr.Zero, result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that joystick set player index should not throw exception
-        /// </summary>
-        [Fact]
-        public void JoystickSetPlayerIndex_ShouldNotThrowException()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr joystick = IntPtr.Zero;
-            int playerIndex = 0;
-
-            // Act
-            Sdl.JoystickSetPlayerIndex(joystick, playerIndex);
-
-            // Assert
-            // No exception should be thrown
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
+        
+        
         /// <summary>
         ///     Tests that sdl joystick attach virtual should return expected value
         /// </summary>
@@ -1058,29 +970,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that joystick is virtual should return expected value
-        /// </summary>
-        [Fact]
-        public void JoystickIsVirtual_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            int deviceIndex = 0;
-
-            // Act
-            bool result = Sdl.JoystickIsVirtual(deviceIndex);
-
-            // Assert
-
-            Assert.False(result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
+        
         /// <summary>
         ///     Tests that joystick set virtual axis should return expected value
         /// </summary>
@@ -1100,120 +990,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Assert
 
             Assert.True(result >= -1);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that joystick set virtual button should return expected value
-        /// </summary>
-        [Fact]
-        public void JoystickSetVirtualButton_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr joystick = IntPtr.Zero;
-            int button = 0;
-            byte value = 0;
-
-            // Act
-            int result = Sdl.JoystickSetVirtualButton(joystick, button, value);
-
-            // Assert
-
-            Assert.True(result >= -1);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that joystick set virtual hat should return expected value
-        /// </summary>
-        [Fact]
-        public void JoystickSetVirtualHat_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr joystick = IntPtr.Zero;
-            int hat = 0;
-            byte value = 0;
-
-            // Act
-            int result = Sdl.JoystickSetVirtualHat(joystick, hat, value);
-
-            // Assert
-
-            Assert.True(result >= -1);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that joystick has led should return expected value
-        /// </summary>
-        [Fact]
-        public void JoystickHasLed_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr joystick = IntPtr.Zero;
-
-            // Act
-            bool result = Sdl.JoystickHasLed(joystick);
-
-            // Assert
-
-            Assert.False(result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that joystick has rumble should return expected value
-        /// </summary>
-        [Fact]
-        public void JoystickHasRumble_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr joystick = IntPtr.Zero;
-
-            // Act
-            bool result = Sdl.JoystickHasRumble(joystick);
-
-            // Assert
-
-            Assert.False(result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that joystick has rumble triggers should return expected value
-        /// </summary>
-        [Fact]
-        public void JoystickHasRumbleTriggers_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr joystick = IntPtr.Zero;
-
-            // Act
-            bool result = Sdl.JoystickHasRumbleTriggers(joystick);
-
-            // Assert
-
-            Assert.False(result);
 
             // Cleanup
             Sdl.Quit();
@@ -1821,31 +1597,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that render window to logical should return expected value
-        /// </summary>
-        [Fact]
-        public void RenderWindowToLogical_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr renderer = IntPtr.Zero; // Replace with actual renderer pointer
-            int windowX = 0; // Replace with actual windowX
-            int windowY = 0; // Replace with actual windowY
-
-            // Act
-            Sdl.RenderWindowToLogical(renderer, windowX, windowY, out float logicalX, out float logicalY);
-
-            // Assert
-            // Replace 0.0f with the expected result
-            Assert.Equal(0.0f, logicalX);
-            Assert.Equal(0.0f, logicalY);
-
-            // Cleanup
-            Sdl.Quit();
-        }
         
         /// <summary>
         ///     Tests that joystick get hat should return expected value
@@ -2315,30 +2066,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Sdl.Quit();
         }
 
-        /// <summary>
-        ///     Tests that joystick rumble triggers should return expected value
-        /// </summary>
-        [Fact]
-        public void JoystickRumbleTriggers_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr joystick = IntPtr.Zero; // Replace with actual joystick pointer
-            ushort leftRumble = 0; // Replace with actual leftRumble value
-            ushort rightRumble = 0; // Replace with actual rightRumble value
-            uint durationMs = 0; // Replace with actual durationMs value
-
-            // Act
-            int result = Sdl.JoystickRumbleTriggers(joystick, leftRumble, rightRumble, durationMs);
-
-            // Assert
-            // Replace 0 with the expected result
-            Assert.True(result >= -1);
-
-            // Cleanup
-            Sdl.Quit();
-        }
 
         /// <summary>
         ///     Tests that joystick event state should return expected value

@@ -808,19 +808,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickRumble", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern int InternalJoystickRumble([IsNotNull] IntPtr joystick, [IsNotNull] ushort lowFrequencyRumble, [IsNotNull] ushort highFrequencyRumble, [IsNotNull] uint durationMs);
-
-        /// <summary>
-        ///     Sdl the joystick rumble triggers using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <param name="leftRumble">The left rumble</param>
-        /// <param name="rightRumble">The right rumble</param>
-        /// <param name="durationMs">The duration ms</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickRumbleTriggers", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickRumbleTriggers([IsNotNull] IntPtr joystick, [IsNotNull] ushort leftRumble, [IsNotNull] ushort rightRumble, [IsNotNull] uint durationMs);
-
+        
         /// <summary>
         ///     Sdl the joystick close using the specified joystick
         /// </summary>
@@ -1136,25 +1124,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_UnlockJoysticks", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern void InternalUnlockJoysticks();
-
-        /// <summary>
-        ///     Sdl the joystick from player index using the specified player index
-        /// </summary>
-        /// <param name="playerIndex">The player index</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickFromPlayerIndex", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalJoystickFromPlayerIndex([IsNotNull] int playerIndex);
-
-        /// <summary>
-        ///     Sdl the joystick set player index using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <param name="playerIndex">The player index</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickSetPlayerIndex", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalJoystickSetPlayerIndex([IsNotNull] IntPtr joystick, [IsNotNull] int playerIndex);
-
+        
         /// <summary>
         ///     Sdl the joystick attach virtual using the specified type
         /// </summary>
@@ -1175,16 +1145,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickDetachVirtual", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern int InternalJoystickDetachVirtual([IsNotNull] int deviceIndex);
-
-        /// <summary>
-        ///     Sdl the joystick is virtual using the specified device index
-        /// </summary>
-        /// <param name="deviceIndex">The device index</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickIsVirtual", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalJoystickIsVirtual([IsNotNull] int deviceIndex);
-
+        
         /// <summary>
         ///     Sdl the joystick set virtual axis using the specified joystick
         /// </summary>
@@ -1195,18 +1156,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickSetVirtualAxis", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern int InternalJoystickSetVirtualAxis([IsNotNull] IntPtr joystick, [IsNotNull] int axis, short value);
-
-        /// <summary>
-        ///     Sdl the joystick set virtual button using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <param name="button">The button</param>
-        /// <param name="value">The value</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickSetVirtualButton", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickSetVirtualButton([IsNotNull] IntPtr joystick, [IsNotNull] int button, [IsNotNull] byte value);
-
+        
         /// <summary>
         ///     Internals the sdl rw from file using the specified file
         /// </summary>
@@ -2110,56 +2060,6 @@ namespace Alis.Core.Graphic.Sdl2
         internal static extern IntPtr InternalGetClipboardText();
 
         /// <summary>
-        ///     Sdl the joystick set virtual hat using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <param name="hat">The hat</param>
-        /// <param name="value">The value</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickSetVirtualHat", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickSetVirtualHat([IsNotNull] IntPtr joystick, [IsNotNull] int hat, [IsNotNull] byte value);
-
-        /// <summary>
-        ///     Sdl the joystick has led using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickHasLED", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalJoystickHasLED([IsNotNull] IntPtr joystick);
-
-        /// <summary>
-        ///     Sdl the joystick has rumble using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickHasRumble", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalJoystickHasRumble([IsNotNull] IntPtr joystick);
-
-        /// <summary>
-        ///     Sdl the joystick has rumble triggers using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickHasRumbleTriggers", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalJoystickHasRumbleTriggers([IsNotNull] IntPtr joystick);
-
-        /// <summary>
-        ///     Sdl the joystick set led using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <param name="red">The red</param>
-        /// <param name="green">The green</param>
-        /// <param name="blue">The blue</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickSetLED", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickSetLED([IsNotNull] IntPtr joystick, [IsNotNull] byte red, [IsNotNull] byte green, [IsNotNull] byte blue);
-
-        /// <summary>
         ///     Sdl the joystick send effect using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
@@ -2295,16 +2195,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetProductVersion", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern ushort InternalGameControllerGetProductVersion([IsNotNull] IntPtr gameController);
-
-        /// <summary>
-        ///     Internals the sdl game controller get serial using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetSerial", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGameControllerGetSerial([IsNotNull] IntPtr gameController);
-
+        
         /// <summary>
         ///     Sdl the game controller get attached using the specified game controller
         /// </summary>
@@ -3572,18 +3463,6 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderGetScale", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern void InternalRenderGetScale([IsNotNull] IntPtr renderer, out float scaleX, out float scaleY);
-
-        /// <summary>
-        ///     Sdl the render window to logical using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="windowX">The window</param>
-        /// <param name="windowY">The window</param>
-        /// <param name="logicalX">The logical</param>
-        /// <param name="logicalY">The logical</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_RenderWindowToLogical", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalRenderWindowToLogical([IsNotNull] IntPtr renderer, [IsNotNull] int windowX, [IsNotNull] int windowY, out float logicalX, out float logicalY);
         
         /// <summary>
         ///     Sdl the render get viewport using the specified renderer
