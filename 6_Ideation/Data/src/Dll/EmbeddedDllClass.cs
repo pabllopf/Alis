@@ -198,9 +198,6 @@ namespace Alis.Core.Aspect.Data.Dll
 
                 Console.WriteLine($"File to extract: '{fullFilePath}'");
                 
-                // Create the directory if it does not exist
-                Directory.CreateDirectory(Path.GetDirectoryName(fullFilePath) ?? throw new InvalidOperationException());
-
                 // Extract the entry to the file
                 using Stream entryStream = entry.Open();
                 using FileStream fs = File.Create(fullFilePath);
