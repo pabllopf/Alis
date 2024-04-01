@@ -52,7 +52,6 @@
         $(AssemblyName.Contains('Sample')) == False AND
         $(AssemblyName.Contains('Template')) == False AND 
         $(AssemblyName.Contains('Benchmark')) == False AND 
-        '$(RuntimeIdentifier)' != '' AND 
         '$(DisableResources)' != 'true'">
 
         <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND '$(RuntimeIdentifier)' == ''"
