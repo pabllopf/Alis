@@ -1985,24 +1985,6 @@ namespace Alis.Core.Graphic.Sdl2
         public static int LockTexture([IsNotNull] IntPtr texture, ref RectangleI rect, out IntPtr pixels, out int pitch) => NativeSdl.InternalLockTexture(texture, ref rect, out pixels, out pitch);
         
         /// <summary>
-        ///     Locks the texture to surface using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="rect">The rect</param>
-        /// <param name="surface">The surface</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int LockTextureToSurface([IsNotNull] IntPtr texture, [IsNotNull] IntPtr rect, out IntPtr surface)
-        {
-            Validator.Validate(texture, nameof(texture));
-            Validator.Validate(rect, nameof(rect));
-            int result = NativeSdl.InternalLockTextureToSurface(texture, rect, out surface);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
-        /// <summary>
         ///     Queries the texture using the specified texture
         /// </summary>
         /// <param name="texture">The texture</param>
@@ -2860,22 +2842,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int UpdateTextureV2([IsNotNull] IntPtr texture, [IsNotNull] IntPtr rect, [IsNotNull] byte[] pixels, [IsNotNull] int pitch) => NativeSdl.InternalUpdateTexturev2(texture, rect, pixels, pitch);
-
-
-        /// <summary>
-        ///     Updates the nv texture using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="rect">The rect</param>
-        /// <param name="yPlane">The plane</param>
-        /// <param name="yPitch">The pitch</param>
-        /// <param name="uvPlane">The uv plane</param>
-        /// <param name="uvPitch">The uv pitch</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int UpdateNvTexture([IsNotNull] IntPtr texture, ref RectangleI rect, [IsNotNull] IntPtr yPlane, [IsNotNull] int yPitch, [IsNotNull] IntPtr uvPlane, [IsNotNull] int uvPitch) => NativeSdl.InternalUpdateNVTexture(texture, ref rect, yPlane, yPitch, uvPlane, uvPitch);
-
+        
         /// <summary>
         ///     Renders the target supported using the specified renderer
         /// </summary>
@@ -4222,50 +4189,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             NativeSdl.InternalUnlockJoysticks();
         }
-
-        /// <summary>
-        ///     Sdl the joystick attach virtual using the specified type
-        /// </summary>
-        /// <param name="type">The type</param>
-        /// <param name="nAxes">The axes</param>
-        /// <param name="nButtons">The buttons</param>
-        /// <param name="nHats">The hats</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SdlJoystickAttachVirtual([IsNotNull] int type, [IsNotNull] int nAxes, [IsNotNull] int nButtons, [IsNotNull] int nHats) => NativeSdl.InternalJoystickAttachVirtual(type, nAxes, nButtons, nHats);
-
-        /// <summary>
-        ///     Joysticks the detach virtual using the specified device index
-        /// </summary>
-        /// <param name="deviceIndex">The device index</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickDetachVirtual([IsNotNull] int deviceIndex) => NativeSdl.InternalJoystickDetachVirtual(deviceIndex);
         
-        /// <summary>
-        ///     Joysticks the set virtual axis using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <param name="axis">The axis</param>
-        /// <param name="value">The value</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickSetVirtualAxis([IsNotNull] IntPtr joystick, [IsNotNull] int axis, short value) => NativeSdl.InternalJoystickSetVirtualAxis(joystick, axis, value);
-        
-        /// <summary>
-        ///     Joysticks the send effect using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <param name="data">The data</param>
-        /// <param name="size">The size</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickSendEffect([IsNotNull] IntPtr joystick, [IsNotNull] IntPtr data, [IsNotNull] int size) => NativeSdl.InternalJoystickSendEffect(joystick, data, size);
-
         /// <summary>
         ///     Sdl the game controller add mapping using the specified mapping string
         /// </summary>
@@ -4595,19 +4519,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GameControllerRumble([IsNotNull] IntPtr gameController, [IsNotNull] ushort lowFrequencyRumble, [IsNotNull] ushort highFrequencyRumble, [IsNotNull] uint durationMs) => NativeSdl.InternalGameControllerRumble(gameController, lowFrequencyRumble, highFrequencyRumble, durationMs);
-
-        /// <summary>
-        ///     Games the controller rumble triggers using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="leftRumble">The left rumble</param>
-        /// <param name="rightRumble">The right rumble</param>
-        /// <param name="durationMs">The duration ms</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerRumbleTriggers([IsNotNull] IntPtr gameController, [IsNotNull] ushort leftRumble, [IsNotNull] ushort rightRumble, [IsNotNull] uint durationMs) => NativeSdl.InternalGameControllerRumbleTriggers(gameController, leftRumble, rightRumble, durationMs);
-
+        
         /// <summary>
         ///     Games the controller close using the specified game controller
         /// </summary>
@@ -4627,34 +4539,6 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr GameControllerFromInstanceId([IsNotNull] int joyId) => NativeSdl.InternalGameControllerFromInstanceID(joyId);
-        
-        /// <summary>
-        ///     Games the controller get type using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <returns>The sdl game controller type</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static GameControllerType GameControllerGetType([IsNotNull] IntPtr gameController) => NativeSdl.InternalGameControllerGetType(gameController);
-        
-        /// <summary>
-        ///     Games the controller has rumble using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <returns>The sdl bool</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool GameControllerHasRumble([IsNotNull] IntPtr gameController) => NativeSdl.InternalGameControllerHasRumble(gameController);
-        
-        /// <summary>
-        ///     Games the controller has button using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="button">The button</param>
-        /// <returns>The sdl bool</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool GameControllerHasButton([IsNotNull] IntPtr gameController, GameControllerButton button) => NativeSdl.InternalGameControllerHasButton(gameController, button);
         
         /// <summary>
         ///     Joysticks the is haptic using the specified joystick

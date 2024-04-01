@@ -274,32 +274,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        ///     Tests that update nv texture should return expected value
-        /// </summary>
-        [Fact]
-        public void UpdateNvTexture_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr texture = IntPtr.Zero;
-            RectangleI rect = new RectangleI();
-            IntPtr yPlane = IntPtr.Zero;
-            int yPitch = 0;
-            IntPtr uvPlane = IntPtr.Zero;
-            int uvPitch = 0;
-
-            // Act
-            int result = Sdl.UpdateNvTexture(texture, ref rect, yPlane, yPitch, uvPlane, uvPitch);
-
-            // Assert
-            Assert.True(result >= -1);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
-        /// <summary>
         ///     Tests that render target supported should return expected value
         /// </summary>
         [Fact]
@@ -1024,73 +998,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Assert
 
             Assert.Equal(IntPtr.Zero, result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-        
-        /// <summary>
-        ///     Tests that game controller get type should return expected value
-        /// </summary>
-        [Fact]
-        public void GameControllerGetType_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr gameController = IntPtr.Zero;
-
-            // Act
-            GameControllerType result = Sdl.GameControllerGetType(gameController);
-
-            // Assert
-
-            Assert.Equal(GameControllerType.ControllerTypeUnknown, result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-        
-        /// <summary>
-        ///     Tests that game controller has rumble should return expected value
-        /// </summary>
-        [Fact]
-        public void GameControllerHasRumble_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr gameController = IntPtr.Zero;
-
-            // Act
-            bool result = Sdl.GameControllerHasRumble(gameController);
-
-            // Assert
-
-            Assert.False(result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-        
-        /// <summary>
-        ///     Tests that game controller has button should return expected value
-        /// </summary>
-        [Fact]
-        public void GameControllerHasButton_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr gameController = IntPtr.Zero;
-            GameControllerButton button = GameControllerButton.SdlControllerButtonInvalid;
-
-            // Act
-            bool result = Sdl.GameControllerHasButton(gameController, button);
-
-            // Assert
-
-            Assert.False(result);
 
             // Cleanup
             Sdl.Quit();
