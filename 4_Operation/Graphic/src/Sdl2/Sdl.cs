@@ -2644,22 +2644,6 @@ namespace Alis.Core.Graphic.Sdl2
         {
             NativeSdl.InternalRenderGetScale(renderer, out scaleX, out scaleY);
         }
-
-
-        /// <summary>
-        ///     Renders the window to logical using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="windowX">The window</param>
-        /// <param name="windowY">The window</param>
-        /// <param name="logicalX">The logical</param>
-        /// <param name="logicalY">The logical</param>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void RenderWindowToLogical([IsNotNull] IntPtr renderer, [IsNotNull] int windowX, [IsNotNull] int windowY, out float logicalX, out float logicalY)
-        {
-            NativeSdl.InternalRenderWindowToLogical(renderer, windowX, windowY, out logicalX, out logicalY);
-        }
         
         /// <summary>
         ///     Renders the get viewport using the specified renderer
@@ -3887,19 +3871,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int JoystickRumble([IsNotNull] IntPtr joystick, [IsNotNull] ushort lowFrequencyRumble, [IsNotNull] ushort highFrequencyRumble, [IsNotNull] uint durationMs) => NativeSdl.InternalJoystickRumble(joystick, lowFrequencyRumble, highFrequencyRumble, durationMs);
-
-        /// <summary>
-        ///     Joysticks the rumble triggers using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <param name="leftRumble">The left rumble</param>
-        /// <param name="rightRumble">The right rumble</param>
-        /// <param name="durationMs">The duration ms</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickRumbleTriggers([IsNotNull] IntPtr joystick, [IsNotNull] ushort leftRumble, [IsNotNull] ushort rightRumble, [IsNotNull] uint durationMs) => NativeSdl.InternalJoystickRumbleTriggers(joystick, leftRumble, rightRumble, durationMs);
-
+        
         /// <summary>
         ///     Joysticks the close using the specified joystick
         /// </summary>
@@ -4261,27 +4233,6 @@ namespace Alis.Core.Graphic.Sdl2
         }
 
         /// <summary>
-        ///     Joysticks the from player index using the specified player index
-        /// </summary>
-        /// <param name="playerIndex">The player index</param>
-        /// <returns>The int ptr</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr JoystickFromPlayerIndex([IsNotNull] int playerIndex) => NativeSdl.InternalJoystickFromPlayerIndex(playerIndex);
-
-        /// <summary>
-        ///     Joysticks the set player index using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <param name="playerIndex">The player index</param>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void JoystickSetPlayerIndex([IsNotNull] IntPtr joystick, [IsNotNull] int playerIndex)
-        {
-            NativeSdl.InternalJoystickSetPlayerIndex(joystick, playerIndex);
-        }
-
-        /// <summary>
         ///     Sdl the joystick attach virtual using the specified type
         /// </summary>
         /// <param name="type">The type</param>
@@ -4301,16 +4252,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int JoystickDetachVirtual([IsNotNull] int deviceIndex) => NativeSdl.InternalJoystickDetachVirtual(deviceIndex);
-
-        /// <summary>
-        ///     Joysticks the is virtual using the specified device index
-        /// </summary>
-        /// <param name="deviceIndex">The device index</param>
-        /// <returns>The sdl bool</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool JoystickIsVirtual([IsNotNull] int deviceIndex) => NativeSdl.InternalJoystickIsVirtual(deviceIndex);
-
+        
         /// <summary>
         ///     Joysticks the set virtual axis using the specified joystick
         /// </summary>
@@ -4321,69 +4263,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int JoystickSetVirtualAxis([IsNotNull] IntPtr joystick, [IsNotNull] int axis, short value) => NativeSdl.InternalJoystickSetVirtualAxis(joystick, axis, value);
-
-        /// <summary>
-        ///     Joysticks the set virtual button using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <param name="button">The button</param>
-        /// <param name="value">The value</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickSetVirtualButton([IsNotNull] IntPtr joystick, [IsNotNull] int button, [IsNotNull] byte value) => NativeSdl.InternalJoystickSetVirtualButton(joystick, button, value);
-
-        /// <summary>
-        ///     Joysticks the set virtual hat using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <param name="hat">The hat</param>
-        /// <param name="value">The value</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickSetVirtualHat([IsNotNull] IntPtr joystick, [IsNotNull] int hat, [IsNotNull] byte value) => NativeSdl.InternalJoystickSetVirtualHat(joystick, hat, value);
-
-        /// <summary>
-        ///     Joysticks the has led using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <returns>The sdl bool</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool JoystickHasLed([IsNotNull] IntPtr joystick) => NativeSdl.InternalJoystickHasLED(joystick);
-
-        /// <summary>
-        ///     Joysticks the has rumble using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <returns>The sdl bool</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool JoystickHasRumble([IsNotNull] IntPtr joystick) => NativeSdl.InternalJoystickHasRumble(joystick);
-
-        /// <summary>
-        ///     Joysticks the has rumble triggers using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <returns>The sdl bool</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool JoystickHasRumbleTriggers([IsNotNull] IntPtr joystick) => NativeSdl.InternalJoystickHasRumbleTriggers(joystick);
-
-
-        /// <summary>
-        ///     Joysticks the set led using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <param name="red">The red</param>
-        /// <param name="green">The green</param>
-        /// <param name="blue">The blue</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int JoystickSetLed([IsNotNull] IntPtr joystick, [IsNotNull] byte red, [IsNotNull] byte green, [IsNotNull] byte blue) => NativeSdl.InternalJoystickSetLED(joystick, red, green, blue);
-
+        
         /// <summary>
         ///     Joysticks the send effect using the specified joystick
         /// </summary>
@@ -4555,22 +4435,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ushort GameControllerGetProductVersion([IsNotNull] IntPtr gameController) => NativeSdl.InternalGameControllerGetProductVersion(gameController);
-
-
-        /// <summary>
-        ///     Sdl the game controller get serial using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <returns>The string</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string GameControllerGetSerial([IsNotNull] IntPtr gameController)
-        {
-            Validator.Validate(gameController, nameof(gameController));
-            string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerGetSerial(gameController));
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
+        
 
         /// <summary>
         ///     Games the controller get attached using the specified game controller
