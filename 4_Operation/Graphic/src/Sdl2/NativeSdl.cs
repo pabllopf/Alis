@@ -1126,38 +1126,6 @@ namespace Alis.Core.Graphic.Sdl2
         internal static extern void InternalUnlockJoysticks();
         
         /// <summary>
-        ///     Sdl the joystick attach virtual using the specified type
-        /// </summary>
-        /// <param name="type">The type</param>
-        /// <param name="nAxes">The n axes</param>
-        /// <param name="nButtons">The n buttons</param>
-        /// <param name="nHats">The n hats</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickAttachVirtual", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickAttachVirtual([IsNotNull] int type, [IsNotNull] int nAxes, [IsNotNull] int nButtons, [IsNotNull] int nHats);
-
-        /// <summary>
-        ///     Sdl the joystick detach virtual using the specified device index
-        /// </summary>
-        /// <param name="deviceIndex">The device index</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickDetachVirtual", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickDetachVirtual([IsNotNull] int deviceIndex);
-        
-        /// <summary>
-        ///     Sdl the joystick set virtual axis using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <param name="axis">The axis</param>
-        /// <param name="value">The value</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickSetVirtualAxis", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickSetVirtualAxis([IsNotNull] IntPtr joystick, [IsNotNull] int axis, short value);
-        
-        /// <summary>
         ///     Internals the sdl rw from file using the specified file
         /// </summary>
         /// <param name="file">The file</param>
@@ -2058,18 +2026,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetClipboardText", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern IntPtr InternalGetClipboardText();
-
-        /// <summary>
-        ///     Sdl the joystick send effect using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <param name="data">The data</param>
-        /// <param name="size">The size</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_JoystickSendEffect", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickSendEffect([IsNotNull] IntPtr joystick, [IsNotNull] IntPtr data, [IsNotNull] int size);
-
+        
         /// <summary>
         ///     Internals the sdl game controller add mapping using the specified mapping string
         /// </summary>
@@ -2317,19 +2274,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerRumble", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern int InternalGameControllerRumble([IsNotNull] IntPtr gameController, [IsNotNull] ushort lowFrequencyRumble, [IsNotNull] ushort highFrequencyRumble, [IsNotNull] uint durationMs);
-
-        /// <summary>
-        ///     Sdl the game controller rumble triggers using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="leftRumble">The left rumble</param>
-        /// <param name="rightRumble">The right rumble</param>
-        /// <param name="durationMs">The duration ms</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerRumbleTriggers", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGameControllerRumbleTriggers([IsNotNull] IntPtr gameController, [IsNotNull] ushort leftRumble, [IsNotNull] ushort rightRumble, [IsNotNull] uint durationMs);
-
+        
         /// <summary>
         ///     Sdl the game controller close using the specified game controller
         /// </summary>
@@ -2346,34 +2291,6 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerFromInstanceID", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern IntPtr InternalGameControllerFromInstanceID([IsNotNull] int joyId);
-
-        /// <summary>
-        ///     Sdl the game controller get type using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <returns>The sdl game controller type</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetType", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern GameControllerType InternalGameControllerGetType([IsNotNull] IntPtr gameController);
-        
-        /// <summary>
-        ///     Sdl the game controller has rumble using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerHasRumble", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalGameControllerHasRumble([IsNotNull] IntPtr gameController);
-        
-        /// <summary>
-        ///     Sdl the game controller has button using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="button">The button</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerHasButton", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalGameControllerHasButton([IsNotNull] IntPtr gameController, GameControllerButton button);
         
         /// <summary>
         ///     Sdl the gl get drawable size using the specified window
@@ -2849,17 +2766,6 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         internal static extern int InternalLockTexture([IsNotNull] IntPtr texture, ref RectangleI rect, out IntPtr pixels, out int pitch);
         
-        /// <summary>
-        ///     Sdl the lock texture to surface using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="rect">The rect</param>
-        /// <param name="surface">The surface</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LockTextureToSurface", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalLockTextureToSurface([IsNotNull] IntPtr texture, [IsNotNull] IntPtr rect, out IntPtr surface);
-
         /// <summary>
         ///     Sdl the query texture using the specified texture
         /// </summary>
@@ -3665,22 +3571,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_UpdateTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern int InternalUpdateTexturev2([IsNotNull] IntPtr texture, [IsNotNull] IntPtr rect, [IsNotNull] byte[] pixels, [IsNotNull] int pitch);
-
-
-        /// <summary>
-        ///     Sdl the update nv texture using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="rect">The rect</param>
-        /// <param name="yPlane">The plane</param>
-        /// <param name="yPitch">The pitch</param>
-        /// <param name="uvPlane">The uv plane</param>
-        /// <param name="uvPitch">The uv pitch</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_UpdateNVTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalUpdateNVTexture([IsNotNull] IntPtr texture, ref RectangleI rect, [IsNotNull] IntPtr yPlane, [IsNotNull] int yPitch, [IsNotNull] IntPtr uvPlane, [IsNotNull] int uvPitch);
-
+        
         /// <summary>
         ///     Sdl the render target supported using the specified renderer
         /// </summary>

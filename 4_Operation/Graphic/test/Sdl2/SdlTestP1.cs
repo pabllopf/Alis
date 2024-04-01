@@ -107,34 +107,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        ///     Tests that test game controller has button
-        /// </summary>
-        [Fact]
-        public void TestGameControllerHasButton()
-        {
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-
-            // Arrange
-            int controllersAvailable = Sdl.NumJoysticks();
-            if (controllersAvailable >= 1)
-            {
-                IntPtr gameController = Sdl.GameControllerOpen(0);
-
-                // Act
-                const GameControllerButton button = new GameControllerButton();
-
-                // Act
-                bool result = Sdl.GameControllerHasButton(gameController, button);
-
-                // Assert
-                Assert.True(result);
-            }
-
-            Sdl.Quit();
-        }
-
-        /// <summary>
         ///     Tests that test close audio device
         /// </summary>
         [Fact]
