@@ -558,18 +558,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_GetFontKerningSizeGlyphs", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull, IsNotZero]
         internal static extern int InternalGetFontKerningSizeGlyphs([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] ushort previousCh, [IsNotNull, IsNotZero] ushort ch);
-
-        /// <summary>
-        ///     Ttf the get font kerning size glyphs 32 using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="previousCh">The previous ch</param>
-        /// <param name="ch">The ch</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_GetFontKerningSizeGlyphs32", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull, IsNotZero]
-        internal static extern int InternalGetFontKerningSizeGlyphs32([IsNotNull] IntPtr font, [IsNotNull, IsNotZero] ushort previousCh, [IsNotNull, IsNotZero] ushort ch);
-
+        
         /// <summary>
         ///     Ttf the byte swapped unicode using the specified swapped
         /// </summary>

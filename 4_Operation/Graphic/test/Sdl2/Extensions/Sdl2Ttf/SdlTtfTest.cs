@@ -2177,46 +2177,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 Sdl.Quit();
             }
         }
-
-        /// <summary>
-        ///     Tests that get font kerning size glyphs 32 test
-        /// </summary>
-        [Fact]
-        public void GetFontKerningSizeGlyphs32_Test()
-        {
-            int sdlInit = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, sdlInit);
-
-            int sdlTtf = SdlTtf.Init();
-            Assert.Equal(0, sdlTtf);
-
-            // Arrange
-            string file = AssetManager.Find("FontSample.otf");
-            const int ptSize = 12;
-            const int index = 0;
-            const int previousCh = 0x0041;
-            const int ch = 0x0042;
-
-            // Act & Assert
-            try
-            {
-                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
-                int result = SdlTtf.GetFontKerningSizeGlyphs32(font, previousCh, ch);
-                Assert.Equal(0, result);
-
-                SdlTtf.CloseFont(font);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }
-            finally
-            {
-                SdlTtf.Quit();
-                Sdl.Quit();
-            }
-        }
-
+        
         /// <summary>
         ///     Tests that get font kerning size glyphs test
         /// </summary>

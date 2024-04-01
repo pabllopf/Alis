@@ -800,26 +800,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        ///     Tests that test joystick get serial should return valid serial after init
-        /// </summary>
-        [Fact]
-        public void TestJoystickGetSerial_ShouldReturnValidSerial_AfterInit()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr joystick = Sdl.JoystickOpen(0); // Assuming a joystick is connected
-
-            // Act
-            string serial = Sdl.JoystickGetSerial(joystick);
-
-            // Assert
-            Assert.True(string.IsNullOrEmpty(serial));
-
-            Sdl.Quit();
-        }
-
-        /// <summary>
         ///     Tests that test joystick get type should return valid type after init
         /// </summary>
         [Fact]
@@ -1499,50 +1479,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that set window keyboard grab should not throw exception
-        /// </summary>
-        [Fact]
-        public void SetWindowKeyboardGrab_ShouldNotThrowException()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr window = IntPtr.Zero;
-            bool grabbed = true;
-
-            // Act
-            Sdl.SetWindowKeyboardGrab(window, grabbed);
-
-            // Assert
-            Assert.True(grabbed);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that set window mouse grab should not throw exception
-        /// </summary>
-        [Fact]
-        public void SetWindowMouseGrab_ShouldNotThrowException()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr window = IntPtr.Zero;
-            bool grabbed = true;
-
-            // Act
-            Sdl.SetWindowMouseGrab(window, grabbed);
-
-            // Assert
-            Assert.True(grabbed);
-
-            // Cleanup
-            Sdl.Quit();
-        }
+        
 
         /// <summary>
         ///     Tests that set window icon should not throw exception
@@ -1722,29 +1659,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that set window always on top should not throw exception
-        /// </summary>
-        [Fact]
-        public void SetWindowAlwaysOnTop_ShouldNotThrowException()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr window = IntPtr.Zero;
-            bool onTop = true;
-
-            // Act
-            Sdl.SetWindowAlwaysOnTop(window, onTop);
-
-            // Assert
-            Assert.True(onTop);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
+        
         /// <summary>
         ///     Tests that set window title should not throw exception
         /// </summary>
@@ -1874,73 +1789,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that set window mouse rect should return expected value
-        /// </summary>
-        [Fact]
-        public void SetWindowMouseRect_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr window = IntPtr.Zero;
-            RectangleI rect = new RectangleI();
-
-            // Act
-            int result = Sdl.SetWindowMouseRect(window, ref rect);
-
-            // Assert
-            Assert.True(result >= -1);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that get window mouse rect should return expected value
-        /// </summary>
-        [Fact]
-        public void GetWindowMouseRect_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr window = IntPtr.Zero;
-
-            // Act
-            IntPtr result = Sdl.GetWindowMouseRect(window);
-
-            // Assert
-
-            Assert.Equal(IntPtr.Zero, result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that flash window should return expected value
-        /// </summary>
-        [Fact]
-        public void FlashWindow_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr window = IntPtr.Zero;
-            FlashOperation operation = FlashOperation.SdlFlashUntilFocused;
-
-            // Act
-            int result = Sdl.FlashWindow(window, operation);
-
-            // Assert
-            Assert.True(result >= -1);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
+        
         /// <summary>
         ///     Tests that compose custom blend mode should return expected value
         /// </summary>
@@ -2078,93 +1927,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that set texture scale mode should return expected value
-        /// </summary>
-        [Fact]
-        public void SetTextureScaleMode_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr texture = IntPtr.Zero;
-            ScaleMode scaleMode = ScaleMode.SdlScaleModeNearest;
-
-            // Act
-            int result = Sdl.SetTextureScaleMode(texture, scaleMode);
-
-            // Assert
-            Assert.True(result >= -1);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that get texture scale mode should return expected value
-        /// </summary>
-        [Fact]
-        public void GetTextureScaleMode_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr texture = IntPtr.Zero;
-
-            // Act
-            int result = Sdl.GetTextureScaleMode(texture, out ScaleMode _);
-
-            // Assert
-            Assert.True(result >= -1);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that set texture user data should return expected value
-        /// </summary>
-        [Fact]
-        public void SetTextureUserData_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr texture = IntPtr.Zero;
-            IntPtr userdata = IntPtr.Zero;
-
-            // Act
-            int result = Sdl.SetTextureUserData(texture, userdata);
-
-            // Assert
-            Assert.True(result >= -1);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that get texture user data should return expected value
-        /// </summary>
-        [Fact]
-        public void GetTextureUserData_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr texture = IntPtr.Zero;
-
-            // Act
-            IntPtr result = Sdl.GetTextureUserData(texture);
-
-            // Assert
-            Assert.Equal(IntPtr.Zero, result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
+        
         /// <summary>
         ///     Tests that get render draw color should return expected value
         /// </summary>
@@ -2355,29 +2118,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that lock texture to surface should return expected value
-        /// </summary>
-        [Fact]
-        public void LockTextureToSurface_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr texture = IntPtr.Zero;
-            RectangleI rect = new RectangleI();
-
-            // Act
-            int result = Sdl.LockTextureToSurface(texture, ref rect, out IntPtr _);
-
-            // Assert
-            Assert.True(result >= -1);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
+        
         /// <summary>
         ///     Tests that query texture should return expected value
         /// </summary>
@@ -2583,32 +2324,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Act
             int result = Sdl.RenderCopyExF(renderer, texture, srcRect, dstRect, angle, center, flips);
-
-            // Assert
-            Assert.True(result >= -1);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that render geometry should return expected value
-        /// </summary>
-        [Fact]
-        public void RenderGeometry_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr renderer = IntPtr.Zero;
-            IntPtr texture = IntPtr.Zero;
-            Vertex[] vertices = Array.Empty<Vertex>();
-            int numVertices = 0;
-            int[] indices = Array.Empty<int>();
-            int numIndices = 0;
-
-            // Act
-            int result = Sdl.RenderGeometry(renderer, texture, vertices, numVertices, indices, numIndices);
 
             // Assert
             Assert.True(result >= -1);

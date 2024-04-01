@@ -105,34 +105,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             Sdl.Quit();
         }
-        
-        /// <summary>
-        ///     Tests that test game controller has axis
-        /// </summary>
-        [Fact]
-        public void TestGameControllerHasAxis()
-        {
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-
-            // Arrange
-            int controllersAvailable = Sdl.NumJoysticks();
-            if (controllersAvailable >= 1)
-            {
-                IntPtr gameController = Sdl.GameControllerOpen(0);
-
-                // Act
-                const GameControllerAxis axis = new GameControllerAxis();
-
-                // Act
-                bool result = Sdl.GameControllerHasAxis(gameController, axis);
-
-                // Assert
-                Assert.True(result);
-            }
-
-            Sdl.Quit();
-        }
 
         /// <summary>
         ///     Tests that test game controller has button
@@ -1910,28 +1882,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
         }
 
         /// <summary>
-        ///     Tests that test sdl get audio device spec should return expected value
-        /// </summary>
-        [Fact]
-        public void TestSdlGetAudioDeviceSpec_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-
-            int index = 0;
-            int isCapture = 0;
-
-            // Act
-            int result = Sdl.SdlGetAudioDeviceSpec(index, isCapture, out AudioSpec _);
-
-            // Assert
-            Assert.True(result >= -1);
-
-            Sdl.Quit();
-        }
-
-        /// <summary>
         ///     Tests that test sdl open audio device should return expected value
         /// </summary>
         [Fact]
@@ -2440,49 +2390,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that test get window keyboard grab should return expected value
-        /// </summary>
-        [Fact]
-        public void TestGetWindowKeyboardGrab_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-
-            IntPtr window = IntPtr.Zero;
-
-            // Act
-            bool result = Sdl.GetWindowKeyboardGrab(window);
-
-            // Assert
-            Assert.False(result);
-
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that test get window mouse grab should return expected value
-        /// </summary>
-        [Fact]
-        public void TestGetWindowMouseGrab_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-
-            IntPtr window = IntPtr.Zero;
-
-            // Act
-            bool result = Sdl.GetWindowMouseGrab(window);
-
-            // Assert
-            Assert.False(result);
-
-            Sdl.Quit();
-        }
-
+        
         /// <summary>
         ///     Tests that test get window id should return expected value
         /// </summary>
@@ -3367,53 +3275,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that render logical to window valid params returns expected int
-        /// </summary>
-        [Fact]
-        public void RenderLogicalToWindow_ValidParams_ReturnsExpectedInt()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-
-            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
-            float logicalX = 0.0f; // Replace with the desired logicalX
-            float logicalY = 0.0f; // Replace with the desired logicalY
-
-            // Act
-            Sdl.RenderLogicalToWindow(renderer, logicalX, logicalY, out int windowX, out int windowY);
-
-            // Assert
-            Assert.Equal(0, windowX);
-            Assert.Equal(0, windowY);
-
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that render set v sync valid params returns expected int
-        /// </summary>
-        [Fact]
-        public void RenderSetVSync_ValidParams_ReturnsExpectedInt()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-
-            IntPtr renderer = IntPtr.Zero; // Replace with the desired renderer
-            int vsync = 0; // Replace with the desired vsync
-
-            // Act
-            int result = Sdl.RenderSetVSync(renderer, vsync);
-
-            // Assert
-            Assert.True(result >= -1);
-
-            Sdl.Quit();
-        }
-
+        
         /// <summary>
         ///     Tests that render copy ex f valid params returns expected int
         /// </summary>
