@@ -109,7 +109,6 @@ namespace Alis.Core.Aspect.Data.Json
         public void ApplyEntry(IDictionary dictionary, object target, string key, object value, JsonOptions options)
         {
             MemberDefinition member = GetDeserializationMember(key);
-            Console.WriteLine("Member: " + member + " Key: '" + key + "' Value: '" + value + "' Options: " + options);
             member?.ApplyEntry(dictionary, target, key, value, options);
         }
 
