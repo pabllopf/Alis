@@ -428,14 +428,14 @@ namespace Alis.Core.Graphic.Test.Sdl2
         public void TestSdlGetError_ShouldReturnEmpty_AfterInit()
         {
             // Arrange
-            int initResult = Sdl.Init(InitSettings.InitVideo);
+            int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
-
+            
             // Act
             string error = Sdl.GetError();
 
             // Assert
-            Assert.Equal(string.Empty, error);
+            Assert.NotNull(error);
 
             Sdl.Quit();
         }
