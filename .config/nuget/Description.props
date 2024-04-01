@@ -1,5 +1,5 @@
 <Project>
     <PropertyGroup>
-        <Description>Videogame cross-platform framework for ios, android, mac, linux and windows.</Description>
+        <Description>Videogame cross-platform framework for ios(soon), android(soon), mac, linux and windows.</Description>
     </PropertyGroup>
 </Project>
