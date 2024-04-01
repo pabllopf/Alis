@@ -248,28 +248,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that unlock texture should not throw exception
-        /// </summary>
-        [Fact]
-        public void UnlockTexture_ShouldNotThrowException()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr texture = IntPtr.Zero;
-
-            // Act
-            Sdl.UnlockTexture(texture);
-
-            // Assert
-            Assert.Equal(IntPtr.Zero, Sdl.GetTextureUserData(texture));
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
+        
         /// <summary>
         ///     Tests that update texture should return expected value
         /// </summary>
@@ -357,28 +336,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Assert
             Assert.Equal(IntPtr.Zero, result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that render set v sync should return expected value
-        /// </summary>
-        [Fact]
-        public void RenderSetVSync_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr renderer = IntPtr.Zero;
-            int vsync = 1;
-
-            // Act
-            int result = Sdl.RenderSetVSync(renderer, vsync);
-
-            // Assert
-            Assert.True(result >= -1);
 
             // Cleanup
             Sdl.Quit();
@@ -1092,29 +1049,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that game controller type for index should return expected value
-        /// </summary>
-        [Fact]
-        public void GameControllerTypeForIndex_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            int joystickIndex = 0;
-
-            // Act
-            GameControllerType result = Sdl.GameControllerTypeForIndex(joystickIndex);
-
-            // Assert
-
-            Assert.Equal(GameControllerType.ControllerTypeUnknown, result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
+        
         /// <summary>
         ///     Tests that game controller get type should return expected value
         /// </summary>
@@ -1136,52 +1071,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that game controller from player index should return expected value
-        /// </summary>
-        [Fact]
-        public void GameControllerFromPlayerIndex_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            int playerIndex = 0;
-
-            // Act
-            IntPtr result = Sdl.GameControllerFromPlayerIndex(playerIndex);
-
-            // Assert
-
-            Assert.Equal(IntPtr.Zero, result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that game controller set player index should not throw exception
-        /// </summary>
-        [Fact]
-        public void GameControllerSetPlayerIndex_ShouldNotThrowException()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr gameController = IntPtr.Zero;
-            int playerIndex = 0;
-
-            // Act
-            Sdl.GameControllerSetPlayerIndex(gameController, playerIndex);
-
-            // Assert
-            Assert.Equal(IntPtr.Zero, gameController);
-
-            // Cleanup
-            Sdl.Quit();
-        }
         
-
         /// <summary>
         ///     Tests that game controller has rumble should return expected value
         /// </summary>
@@ -1203,52 +1093,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that game controller has rumble triggers should return expected value
-        /// </summary>
-        [Fact]
-        public void GameControllerHasRumbleTriggers_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr gameController = IntPtr.Zero;
-
-            // Act
-            bool result = Sdl.GameControllerHasRumbleTriggers(gameController);
-
-            // Assert
-            Assert.True(result == false || result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
         
-
-        /// <summary>
-        ///     Tests that game controller has axis should return expected value
-        /// </summary>
-        [Fact]
-        public void GameControllerHasAxis_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr gameController = IntPtr.Zero;
-            GameControllerAxis axis = GameControllerAxis.SdlControllerAxisInvalid;
-
-            // Act
-            bool result = Sdl.GameControllerHasAxis(gameController, axis);
-
-            // Assert
-
-            Assert.False(result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
         /// <summary>
         ///     Tests that game controller has button should return expected value
         /// </summary>

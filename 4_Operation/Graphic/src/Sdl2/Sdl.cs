@@ -1061,37 +1061,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.Validate(result, nameof(result));
             return result;
         }
-
-        /// <summary>
-        ///     Gets the window keyboard grab using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The sdl bool</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool GetWindowKeyboardGrab([IsNotNull] IntPtr window)
-        {
-            Validator.Validate(window, nameof(window));
-            bool result = NativeSdl.InternalGetWindowKeyboardGrab(window);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
-        /// <summary>
-        ///     Gets the window mouse grab using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The sdl bool</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool GetWindowMouseGrab([IsNotNull] IntPtr window)
-        {
-            Validator.Validate(window, nameof(window));
-            bool result = NativeSdl.InternalGetWindowMouseGrab(window);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
+        
         /// <summary>
         ///     Gets the window id using the specified window
         /// </summary>
@@ -1580,34 +1550,6 @@ namespace Alis.Core.Graphic.Sdl2
         }
 
         /// <summary>
-        ///     Sets the window keyboard grab using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="grabbed">The grabbed</param>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SetWindowKeyboardGrab([IsNotNull] IntPtr window, [IsNotNull] bool grabbed)
-        {
-            Validator.Validate(window, nameof(window));
-            Validator.Validate(grabbed, nameof(grabbed));
-            NativeSdl.InternalSetWindowKeyboardGrab(window, grabbed);
-        }
-
-        /// <summary>
-        ///     Sets the window mouse grab using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="grabbed">The grabbed</param>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SetWindowMouseGrab([IsNotNull] IntPtr window, bool grabbed)
-        {
-            Validator.Validate(window, nameof(window));
-            Validator.Validate(grabbed, nameof(grabbed));
-            NativeSdl.InternalSetWindowMouseGrab(window, grabbed);
-        }
-
-        /// <summary>
         ///     Sets the window icon using the specified window
         /// </summary>
         /// <param name="window">The window</param>
@@ -1733,20 +1675,6 @@ namespace Alis.Core.Graphic.Sdl2
         }
 
         /// <summary>
-        ///     Sets the window always on top using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="onTop">The on top</param>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SetWindowAlwaysOnTop([IsNotNull] IntPtr window, bool onTop)
-        {
-            Validator.Validate(window, nameof(window));
-            Validator.Validate(onTop, nameof(onTop));
-            NativeSdl.InternalSetWindowAlwaysOnTop(window, onTop);
-        }
-
-        /// <summary>
         ///     Sdl the set window title using the specified window
         /// </summary>
         /// <param name="window">The window</param>
@@ -1837,72 +1765,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.Validate(result, nameof(result));
             return result;
         }
-
-        /// <summary>
-        ///     Sets the window mouse rect using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetWindowMouseRect([IsNotNull] IntPtr window, ref RectangleI rect)
-        {
-            Validator.Validate(window, nameof(window));
-            Validator.Validate(rect, nameof(rect));
-            int result = NativeSdl.InternalSetWindowMouseRect(window, ref rect);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
-        /// <summary>
-        ///     Sets the window mouse rect using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetWindowMouseRect([IsNotNull] IntPtr window, [IsNotNull] IntPtr rect)
-        {
-            Validator.Validate(window, nameof(window));
-            Validator.Validate(rect, nameof(rect));
-            int result = NativeSdl.InternalSetWindowMouseRect(window, rect);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
-        /// <summary>
-        ///     Gets the window mouse rect using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The int ptr</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetWindowMouseRect([IsNotNull] IntPtr window)
-        {
-            Validator.Validate(window, nameof(window));
-            IntPtr result = NativeSdl.InternalGetWindowMouseRect(window);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
-        /// <summary>
-        ///     Flashes the window using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="operation">The operation</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int FlashWindow([IsNotNull] IntPtr window, FlashOperation operation)
-        {
-            Validator.Validate(window, nameof(window));
-            int result = NativeSdl.InternalFlashWindow(window, operation);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
+        
         /// <summary>
         ///     Composes the custom blend mode using the specified src color factor
         /// </summary>
@@ -2023,46 +1886,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GetRenderDrawBlendMode([IsNotNull] IntPtr renderer, out BlendModes blendMode) => NativeSdl.InternalGetRenderDrawBlendMode(renderer, out blendMode);
-
-        /// <summary>
-        ///     Sets the texture scale mode using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="scaleMode">The scale mode</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetTextureScaleMode([IsNotNull] IntPtr texture, ScaleMode scaleMode) => NativeSdl.InternalSetTextureScaleMode(texture, scaleMode);
-
-        /// <summary>
-        ///     Gets the texture scale mode using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="scaleMode">The scale mode</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetTextureScaleMode([IsNotNull] IntPtr texture, out ScaleMode scaleMode) => NativeSdl.InternalGetTextureScaleMode(texture, out scaleMode);
-
-        /// <summary>
-        ///     Sets the texture user data using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="userdata">The userdata</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetTextureUserData([IsNotNull] IntPtr texture, [IsNotNull] IntPtr userdata) => NativeSdl.InternalSetTextureUserData(texture, userdata);
-
-        /// <summary>
-        ///     Internals the sdl get texture user data using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <returns>The int ptr</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetTextureUserData([IsNotNull] IntPtr texture) => NativeSdl.InternalGetTextureUserData(texture);
-
+        
         /// <summary>
         ///     Gets the render draw color using the specified renderer
         /// </summary>
@@ -2159,18 +1983,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int LockTexture([IsNotNull] IntPtr texture, ref RectangleI rect, out IntPtr pixels, out int pitch) => NativeSdl.InternalLockTexture(texture, ref rect, out pixels, out pitch);
-
-        /// <summary>
-        ///     Locks the texture to surface using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="rect">The rect</param>
-        /// <param name="surface">The surface</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int LockTextureToSurface([IsNotNull] IntPtr texture, ref RectangleI rect, out IntPtr surface) => NativeSdl.InternalLockTextureToSurface(texture, ref rect, out surface);
-
+        
         /// <summary>
         ///     Locks the texture to surface using the specified texture
         /// </summary>
@@ -2678,22 +2491,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips) => NativeSdl.InternalRenderCopyExF(renderer, texture, srcRect, dstRect, angle, center, flips);
-
-
-        /// <summary>
-        ///     Renders the geometry using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="vertices">The vertices</param>
-        /// <param name="numVertices">The num vertices</param>
-        /// <param name="indices">The indices</param>
-        /// <param name="numIndices">The num indices</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderGeometry([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [In] Vertex[] vertices, [IsNotNull] int numVertices, [In, IsNotNull]  int[] indices, [IsNotNull] int numIndices) => NativeSdl.InternalRenderGeometry(renderer, texture, vertices, numVertices, indices, numIndices);
-
+        
         /// <summary>
         ///     Renders the draw point f using the specified renderer
         /// </summary>
@@ -2862,24 +2660,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             NativeSdl.InternalRenderWindowToLogical(renderer, windowX, windowY, out logicalX, out logicalY);
         }
-
-
-        /// <summary>
-        ///     Renders the logical to window using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="logicalX">The logical</param>
-        /// <param name="logicalY">The logical</param>
-        /// <param name="windowX">The window</param>
-        /// <param name="windowY">The window</param>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void RenderLogicalToWindow([IsNotNull] IntPtr renderer, float logicalX, float logicalY, out int windowX, out int windowY)
-        {
-            NativeSdl.InternalRenderLogicalToWindow(renderer, logicalX, logicalY, out windowX, out windowY);
-        }
-
-
+        
         /// <summary>
         ///     Renders the get viewport using the specified renderer
         /// </summary>
@@ -3128,17 +2909,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetRenderTarget([IsNotNull] IntPtr renderer) => NativeSdl.InternalGetRenderTarget(renderer);
-
-        /// <summary>
-        ///     Renders the set v sync using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="vsync">The vsync</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderSetVSync([IsNotNull] IntPtr renderer, [IsNotNull] int vsync) => NativeSdl.InternalRenderSetVSync(renderer, vsync);
-
+        
         /// <summary>
         ///     Renders the is clip enabled using the specified renderer
         /// </summary>
@@ -4425,21 +4196,6 @@ namespace Alis.Core.Graphic.Sdl2
         public static ushort JoystickGetProductVersion([IsNotNull] IntPtr joystick) => NativeSdl.InternalJoystickGetProductVersion(joystick);
 
         /// <summary>
-        ///     Sdl the joystick get serial using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <returns>The string</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string JoystickGetSerial([IsNotNull] IntPtr joystick)
-        {
-            Validator.Validate(joystick, nameof(joystick));
-            string result = Marshal.PtrToStringAnsi(NativeSdl.InternalJoystickGetSerial(joystick));
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
-        /// <summary>
         ///     Joysticks the get type using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
@@ -5015,16 +4771,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr GameControllerFromInstanceId([IsNotNull] int joyId) => NativeSdl.InternalGameControllerFromInstanceID(joyId);
-
-        /// <summary>
-        ///     Games the controller type for index using the specified joystick index
-        /// </summary>
-        /// <param name="joystickIndex">The joystick index</param>
-        /// <returns>The sdl game controller type</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static GameControllerType GameControllerTypeForIndex([IsNotNull] int joystickIndex) => NativeSdl.InternalGameControllerTypeForIndex(joystickIndex);
-
+        
         /// <summary>
         ///     Games the controller get type using the specified game controller
         /// </summary>
@@ -5033,28 +4780,6 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static GameControllerType GameControllerGetType([IsNotNull] IntPtr gameController) => NativeSdl.InternalGameControllerGetType(gameController);
-
-        /// <summary>
-        ///     Games the controller from player index using the specified player index
-        /// </summary>
-        /// <param name="playerIndex">The player index</param>
-        /// <returns>The int ptr</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GameControllerFromPlayerIndex([IsNotNull] int playerIndex) => NativeSdl.InternalGameControllerFromPlayerIndex(playerIndex);
-
-
-        /// <summary>
-        ///     Games the controller set player index using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="playerIndex">The player index</param>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void GameControllerSetPlayerIndex([IsNotNull] IntPtr gameController, [IsNotNull] int playerIndex)
-        {
-            NativeSdl.InternalGameControllerSetPlayerIndex(gameController, playerIndex);
-        }
         
         /// <summary>
         ///     Games the controller has rumble using the specified game controller
@@ -5064,26 +4789,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool GameControllerHasRumble([IsNotNull] IntPtr gameController) => NativeSdl.InternalGameControllerHasRumble(gameController);
-
-        /// <summary>
-        ///     Games the controller has rumble triggers using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <returns>The sdl bool</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool GameControllerHasRumbleTriggers([IsNotNull] IntPtr gameController) => NativeSdl.InternalGameControllerHasRumbleTriggers(gameController);
         
-        /// <summary>
-        ///     Games the controller has axis using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="axis">The axis</param>
-        /// <returns>The sdl bool</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool GameControllerHasAxis([IsNotNull] IntPtr gameController, GameControllerAxis axis) => NativeSdl.InternalGameControllerHasAxis(gameController, axis);
-
         /// <summary>
         ///     Games the controller has button using the specified game controller
         /// </summary>
@@ -5529,25 +5235,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.Validate(stream, nameof(stream));
             NativeSdl.InternalFreeAudioStream(stream);
         }
-
-        /// <summary>
-        ///     Sdl the get audio device spec using the specified index
-        /// </summary>
-        /// <param name="index">The index</param>
-        /// <param name="isCapture">The is capture</param>
-        /// <param name="spec">The spec</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SdlGetAudioDeviceSpec([IsNotNull] int index, [IsNotNull] int isCapture, out AudioSpec spec)
-        {
-            Validator.Validate(index, nameof(index));
-            Validator.Validate(isCapture, nameof(isCapture));
-            int result = NativeSdl.InternalGetAudioDeviceSpec(index, isCapture, out spec);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
+        
         /// <summary>
         ///     Internals the sdl get performance frequency
         /// </summary>

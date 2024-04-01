@@ -817,29 +817,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that joystick get serial should return expected value
-        /// </summary>
-        [Fact]
-        public void JoystickGetSerial_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr joystick = IntPtr.Zero;
-
-            // Act
-            string result = Sdl.JoystickGetSerial(joystick);
-
-            // Assert
-
-            Assert.Null(result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
+        
         /// <summary>
         ///     Tests that joystick get type should return expected value
         /// </summary>
@@ -1263,29 +1241,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that set window mouse rect v 2 should return expected value
-        /// </summary>
-        [Fact]
-        public void SetWindowMouseRect_v2_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr window = IntPtr.Zero; // Replace with actual window pointer
-            IntPtr rect = IntPtr.Zero; // Replace with actual rect pointer
-
-            // Act
-            int result = Sdl.SetWindowMouseRect(window, rect);
-
-            // Assert
-
-            Assert.True(result >= -1);
-
-            // Cleanup
-            Sdl.Quit();
-        }
+        
 
         /// <summary>
         ///     Tests that create software renderer should return expected value
@@ -1441,29 +1397,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that joystick get serial v 3 should return expected value
-        /// </summary>
-        [Fact]
-        public void JoystickGetSerial_V3_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr joystick = IntPtr.Zero; // Replace with actual joystick pointer
-
-            // Act
-            string result = Sdl.JoystickGetSerial(joystick);
-
-            // Assert
-            // Replace "expectedSerial" with the expected serial
-            Assert.Null(result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
+        
         /// <summary>
         ///     Tests that joystick get type v 3 should return expected value
         /// </summary>
@@ -1912,32 +1846,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that render logical to window should return expected value
-        /// </summary>
-        [Fact]
-        public void RenderLogicalToWindow_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr renderer = IntPtr.Zero; // Replace with actual renderer pointer
-            float logicalX = 0.0f; // Replace with actual logicalX
-            float logicalY = 0.0f; // Replace with actual logicalY
-
-            // Act
-            Sdl.RenderLogicalToWindow(renderer, logicalX, logicalY, out int windowX, out int windowY);
-
-            // Assert
-            // Replace 0 with the expected result
-            Assert.Equal(0, windowX);
-            Assert.Equal(0, windowY);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
+        
         /// <summary>
         ///     Tests that joystick get hat should return expected value
         /// </summary>

@@ -1117,26 +1117,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
-        /// <summary>
-        ///     Ttf the get font kerning size glyphs 32 using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="previousCh">The previous ch</param>
-        /// <param name="ch">The ch</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetFontKerningSizeGlyphs32([IsNotNull] IntPtr font, [IsNotNull] ushort previousCh, [IsNotNull] ushort ch)
-        {
-            Validator.Validate(font, nameof(font));
-            Validator.Validate(previousCh, nameof(previousCh));
-            Validator.Validate(ch, nameof(ch));
-            int result = NativeSdlTtf.InternalGetFontKerningSizeGlyphs32(font, previousCh, ch);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
+        
         /// <summary>
         ///     Ttf the open font using the specified file
         /// </summary>
