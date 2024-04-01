@@ -3,6 +3,7 @@
     <PropertyGroup Condition="
         ($(AssemblyName.Contains('App')) == true OR
         $(AssemblyName.Contains('Template')) == true OR
+        $(AssemblyName.Contains('Extension')) == true OR
         $(AssemblyName.Contains('Sample')) == true OR
         $(AssemblyName.Contains('Test')) == true OR 
         $(AssemblyName.Contains('Benchmark')) == true)">
