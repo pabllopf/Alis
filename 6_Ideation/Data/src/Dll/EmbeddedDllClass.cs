@@ -187,7 +187,7 @@ namespace Alis.Core.Aspect.Data.Dll
 
 
         [ExcludeFromCodeCoverage]
-        private static void ExtractZipFile(string filePath, MemoryStream zipData)
+        private static void ExtractZipFile(string fileDir, MemoryStream zipData)
         {
             using MemoryStream ms = zipData;
             using ZipArchive archive = new ZipArchive(ms);
@@ -204,22 +204,25 @@ namespace Alis.Core.Aspect.Data.Dll
                     continue;
                 }
                 
-                string fullFilePath = Path.Combine(filePath, entry.FullName);
+                string fullFilePath = Path.Combine(fileDir, entry.FullName);
 
                 Console.WriteLine($"File to extract: '{fullFilePath}'");
                 
-                // Extract the entry to the file
-                using Stream entryStream = entry.Open();
-                using FileStream fs = File.Create(fullFilePath);
-                entryStream.CopyTo(fs);
-                
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                string canonicalDestinationPath = Path.GetFullPath(fullFilePath);
+
+                if (canonicalDestinationPath.StartsWith(fileDir, StringComparison.Ordinal))
                 {
-                    SetFileReadPermission(fullFilePath);
+                    // Extract the entry to the file
+                    using Stream entryStream = entry.Open();
+                    using FileStream fs = File.Create(fullFilePath);
+                    entryStream.CopyTo(fs);
+                
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                    {
+                        SetFileReadPermission(fullFilePath);
+                    }
                 }
             }
-
-           
         }
 
         /// <summary>
