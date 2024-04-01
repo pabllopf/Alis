@@ -146,24 +146,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
-        /// <summary>
-        ///     Ttf the set font size using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="ptSize">The pt size</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetFontSize([IsNotNull] IntPtr font, [IsNotNull] int ptSize)
-        {
-            Validator.Validate(font, nameof(font));
-            Validator.Validate(ptSize, nameof(ptSize));
-            int result = NativeSdlTtf.InternalSetFontSize(font, ptSize);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
+        
         /// <summary>
         ///     Ttf the get font style using the specified font
         /// </summary>
@@ -401,23 +384,6 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        ///     Ttf the glyph is provided 32 using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="ch">The ch</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GlyphIsProvided32([IsNotNull] IntPtr font, [IsNotNull] uint ch)
-        {
-            Validator.Validate(font, nameof(font));
-            Validator.Validate(ch, nameof(ch));
-            int result = NativeSdlTtf.InternalGlyphIsProvided32(font, ch);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
-        /// <summary>
         ///     Ttf the glyph metrics using the specified font
         /// </summary>
         /// <param name="font">The font</param>
@@ -438,29 +404,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
-        /// <summary>
-        ///     Ttf the glyph metrics 32 using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="ch">The ch</param>
-        /// <param name="minx">The minx</param>
-        /// <param name="max">The max</param>
-        /// <param name="miny">The miny</param>
-        /// <param name="maxy">The maxy</param>
-        /// <param name="advance">The advance</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GlyphMetrics32([IsNotNull] IntPtr font, [IsNotNull] uint ch, [IsNotNull] out int minx, [IsNotNull] out int max, [IsNotNull] out int miny, [IsNotNull] out int maxy, [IsNotNull] out int advance)
-        {
-            Validator.Validate(font, nameof(font));
-            Validator.Validate(ch, nameof(ch));
-            int result = NativeSdlTtf.InternalGlyphMetrics32(font, ch, out minx, out max, out miny, out maxy, out advance);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
+        
         /// <summary>
         ///     Ttf the size text using the specified font
         /// </summary>
@@ -517,70 +461,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
-        /// <summary>
-        ///     Ttf the measure text using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="measureWidth">The measure width</param>
-        /// <param name="extent">The extent</param>
-        /// <param name="count">The count</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int MeasureText([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] int measureWidth, [IsNotNull] out int extent, [IsNotNull] out int count)
-        {
-            Validator.Validate(font, nameof(font));
-            Validator.Validate(text, nameof(text));
-            Validator.Validate(measureWidth, nameof(measureWidth));
-            int result = NativeSdlTtf.InternalMeasureText(font, text, measureWidth, out extent, out count);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
-        /// <summary>
-        ///     Internals the ttf measure utf 8 using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="measureWidth">The measure width</param>
-        /// <param name="extent">The extent</param>
-        /// <param name="count">The count</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int MeasureUtf8([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] int measureWidth, [IsNotNull] out int extent, [IsNotNull] out int count)
-        {
-            Validator.Validate(font, nameof(font));
-            Validator.Validate(text, nameof(text));
-            Validator.Validate(measureWidth, nameof(measureWidth));
-            int result = NativeSdlTtf.InternalMeasureUTF8(font, text, measureWidth, out extent, out count);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
-        /// <summary>
-        ///     Ttf the measure unicode using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="measureWidth">The measure width</param>
-        /// <param name="extent">The extent</param>
-        /// <param name="count">The count</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int MeasureUnicode([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] int measureWidth, [IsNotNull] out int extent, [IsNotNull] out int count)
-        {
-            Validator.Validate(font, nameof(font));
-            Validator.Validate(text, nameof(text));
-            Validator.Validate(measureWidth, nameof(measureWidth));
-            int result = NativeSdlTtf.InternalMeasureUnicode(font, text, measureWidth, out extent, out count);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
+        
         /// <summary>
         ///     Ttf the render text solid using the specified font
         /// </summary>
@@ -637,49 +518,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
-        /// <summary>
-        ///     Ttf the render text solid wrapped using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="wrapLength">The wrap length</param>
-        /// <returns>The int ptr</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderTextSolidWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] Color fg, [IsNotNull] uint wrapLength)
-        {
-            Validator.Validate(font, nameof(font));
-            Validator.Validate(text, nameof(text));
-            Validator.Validate(fg, nameof(fg));
-            Validator.Validate(wrapLength, nameof(wrapLength));
-            IntPtr result = NativeSdlTtf.InternalRenderTextSolidWrapped(font, text, fg, wrapLength);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
-        /// <summary>
-        ///     Ttf the render unicode solid wrapped using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="wrapLength">The wrap length</param>
-        /// <returns>The int ptr</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderUnicodeSolidWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] Color fg, [IsNotNull] uint wrapLength)
-        {
-            Validator.Validate(font, nameof(font));
-            Validator.Validate(text, nameof(text));
-            Validator.Validate(fg, nameof(fg));
-            Validator.Validate(wrapLength, nameof(wrapLength));
-            IntPtr result = NativeSdlTtf.InternalRenderUnicodeSolidWrapped(font, text, fg, wrapLength);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
+        
         /// <summary>
         ///     Ttf the render glyph solid using the specified font
         /// </summary>
@@ -698,26 +537,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
-        /// <summary>
-        ///     Ttf the render glyph 32 solid using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="ch">The ch</param>
-        /// <param name="fg">The fg</param>
-        /// <returns>The int ptr</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderGlyph32Solid([IsNotNull] IntPtr font, [IsNotNull] uint ch, [IsNotNull] Color fg)
-        {
-            Validator.Validate(font, nameof(font));
-            Validator.Validate(ch, nameof(ch));
-            Validator.Validate(fg, nameof(fg));
-            IntPtr result = NativeSdlTtf.InternalRenderGlyph32Solid(font, ch, fg);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
+        
         /// <summary>
         ///     Ttf the render text shaded using the specified font
         /// </summary>
@@ -782,75 +602,6 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        ///     Ttf the render text shaded wrapped using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="bg">The bg</param>
-        /// <param name="wrapLength">The wrap length</param>
-        /// <returns>The int ptr</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderTextShadedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] Color fg, [IsNotNull] Color bg, [IsNotNull] uint wrapLength)
-        {
-            Validator.Validate(font, nameof(font));
-            Validator.Validate(text, nameof(text));
-            Validator.Validate(fg, nameof(fg));
-            Validator.Validate(bg, nameof(bg));
-            Validator.Validate(wrapLength, nameof(wrapLength));
-            IntPtr result = NativeSdlTtf.InternalRenderTextShadedWrapped(font, text, fg, bg, wrapLength);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
-        /// <summary>
-        ///     Internals the ttf render utf 8 shaded wrapped using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="bg">The bg</param>
-        /// <param name="wrapLength">The wrap length</param>
-        /// <returns>The int ptr</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderUtf8ShadedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] Color fg, [IsNotNull] Color bg, [IsNotNull] uint wrapLength)
-        {
-            Validator.Validate(font, nameof(font));
-            Validator.Validate(text, nameof(text));
-            Validator.Validate(fg, nameof(fg));
-            Validator.Validate(bg, nameof(bg));
-            Validator.Validate(wrapLength, nameof(wrapLength));
-            IntPtr result = NativeSdlTtf.InternalRenderUtf8ShadedWrapped(font, text, fg, bg, wrapLength);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
-        /// <summary>
-        ///     Ttf the render unicode shaded wrapped using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="bg">The bg</param>
-        /// <param name="wrapLength">The wrap length</param>
-        /// <returns>The int ptr</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderUnicodeShadedWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] Color fg, [IsNotNull] Color bg, [IsNotNull] uint wrapLength)
-        {
-            Validator.Validate(font, nameof(font));
-            Validator.Validate(text, nameof(text));
-            Validator.Validate(fg, nameof(fg));
-            Validator.Validate(bg, nameof(bg));
-            Validator.Validate(wrapLength, nameof(wrapLength));
-            IntPtr result = NativeSdlTtf.InternalRenderUnicodeShadedWrapped(font, text, fg, bg, wrapLength);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
-        /// <summary>
         ///     Ttf the render glyph shaded using the specified font
         /// </summary>
         /// <param name="font">The font</param>
@@ -870,28 +621,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
-        /// <summary>
-        ///     Ttf the render glyph 32 shaded using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="ch">The ch</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="bg">The bg</param>
-        /// <returns>The int ptr</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderGlyph32Shaded([IsNotNull] IntPtr font, [IsNotNull] uint ch, [IsNotNull] Color fg, [IsNotNull] Color bg)
-        {
-            Validator.Validate(font, nameof(font));
-            Validator.Validate(ch, nameof(ch));
-            Validator.Validate(fg, nameof(fg));
-            Validator.Validate(bg, nameof(bg));
-            IntPtr result = NativeSdlTtf.InternalRenderGlyph32Shaded(font, ch, fg, bg);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
+        
         /// <summary>
         ///     Ttf the render text blended using the specified font
         /// </summary>
@@ -1011,41 +741,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
-        /// <summary>
-        ///     Ttf the render glyph 32 blended using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="ch">The ch</param>
-        /// <param name="fg">The fg</param>
-        /// <returns>The int ptr</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderGlyph32Blended([IsNotNull] IntPtr font, [IsNotNull] uint ch, [IsNotNull] Color fg)
-        {
-            Validator.Validate(font, nameof(font));
-            Validator.Validate(ch, nameof(ch));
-            Validator.Validate(fg, nameof(fg));
-            IntPtr result = NativeSdlTtf.InternalRenderGlyph32Blended(font, ch, fg);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
-        /// <summary>
-        ///     Ttf the set direction using the specified direction
-        /// </summary>
-        /// <param name="direction">The direction</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetDirection([IsNotNull] int direction)
-        {
-            Validator.Validate(direction, nameof(direction));
-            int result = NativeSdlTtf.InternalSetDirection(direction);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
+        
         /// <summary>
         ///     Ttf the close font using the specified font
         /// </summary>
@@ -1134,28 +830,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
-        /// <summary>
-        ///     Ttf the render utf 8 solid wrapped using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="wrapLength">The wrap length</param>
-        /// <returns>The result</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr RenderUtf8SolidWrapped([IsNotNull] IntPtr font, [IsNotNull, IsNotEmpty] string text, [IsNotNull] Color fg, [IsNotNull] uint wrapLength)
-        {
-            Validator.Validate(font, nameof(font));
-            Validator.Validate(text, nameof(text));
-            Validator.Validate(fg, nameof(fg));
-            Validator.Validate(wrapLength, nameof(wrapLength));
-            IntPtr result = NativeSdlTtf.InternalRenderUtf8SolidWrapped(font, text, fg, wrapLength);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
+        
         /// <summary>
         ///     Ttf the get error
         /// </summary>
