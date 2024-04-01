@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <DisableResources>true</DisableResources>
+        <DisableResources>false</DisableResources>
     </PropertyGroup>
     
     
