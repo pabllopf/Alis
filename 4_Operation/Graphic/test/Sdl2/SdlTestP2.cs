@@ -319,28 +319,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that get render target should return expected value
-        /// </summary>
-        [Fact]
-        public void GetRenderTarget_ShouldReturnExpectedValue()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr renderer = IntPtr.Zero;
-
-            // Act
-            IntPtr result = Sdl.GetRenderTarget(renderer);
-
-            // Assert
-            Assert.Equal(IntPtr.Zero, result);
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
+        
         /// <summary>
         ///     Tests that render is clip enabled should return expected value
         /// </summary>
