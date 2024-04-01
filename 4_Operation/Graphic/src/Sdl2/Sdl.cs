@@ -3507,26 +3507,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int SetSurfacePalette([IsNotNull] IntPtr surface, [IsNotNull] IntPtr palette) => NativeSdl.InternalSetSurfacePalette(surface, palette);
-
-        /// <summary>
-        ///     Sets the surface rle using the specified surface
-        /// </summary>
-        /// <param name="surface">The surface</param>
-        /// <param name="flag">The flag</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetSurfaceRle([IsNotNull] IntPtr surface, [IsNotNull] int flag) => NativeSdl.InternalSetSurfaceRLE(surface, flag);
-
-        /// <summary>
-        ///     Has the surface rle using the specified surface
-        /// </summary>
-        /// <param name="surface">The surface</param>
-        /// <returns>The sdl bool</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool HasSurfaceRle([IsNotNull] IntPtr surface) => NativeSdl.InternalHasSurfaceRLE(surface);
-
+        
         /// <summary>
         ///     Uppers the blit using the specified src
         /// </summary>
@@ -5074,18 +5055,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             NativeSdl.InternalGameControllerSetPlayerIndex(gameController, playerIndex);
         }
-
-
-        /// <summary>
-        ///     Games the controller has led using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <returns>The sdl bool</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool GameControllerHasLed([IsNotNull] IntPtr gameController) => NativeSdl.InternalGameControllerHasLED(gameController);
-
-
+        
         /// <summary>
         ///     Games the controller has rumble using the specified game controller
         /// </summary>
@@ -5103,20 +5073,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool GameControllerHasRumbleTriggers([IsNotNull] IntPtr gameController) => NativeSdl.InternalGameControllerHasRumbleTriggers(gameController);
-
-        /// <summary>
-        ///     Games the controller set led using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="red">The red</param>
-        /// <param name="green">The green</param>
-        /// <param name="blue">The blue</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerSetLed([IsNotNull] IntPtr gameController, [IsNotNull] byte red, [IsNotNull] byte green, [IsNotNull] byte blue) => NativeSdl.InternalGameControllerSetLED(gameController, red, green, blue);
-
-
+        
         /// <summary>
         ///     Games the controller has axis using the specified game controller
         /// </summary>
@@ -5136,108 +5093,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool GameControllerHasButton([IsNotNull] IntPtr gameController, GameControllerButton button) => NativeSdl.InternalGameControllerHasButton(gameController, button);
-
-        /// <summary>
-        ///     Games the controller get num touchpads using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerGetNumTouchpads([IsNotNull] IntPtr gameController) => NativeSdl.InternalGameControllerGetNumTouchpads(gameController);
-
-        /// <summary>
-        ///     Games the controller get num touchpad fingers using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="touchpad">The touchpad</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerGetNumTouchpadFingers([IsNotNull] IntPtr gameController, [IsNotNull] int touchpad) => NativeSdl.InternalGameControllerGetNumTouchpadFingers(gameController, touchpad);
-
-        /// <summary>
-        ///     Games the controller get touchpad finger using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="touchpad">The touchpad</param>
-        /// <param name="finger">The finger</param>
-        /// <param name="state">The state</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="pressure">The pressure</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerGetTouchpadFinger([IsNotNull] IntPtr gameController, [IsNotNull] int touchpad, [IsNotNull] int finger, out byte state, out float x, out float y, out float pressure) => NativeSdl.InternalGameControllerGetTouchpadFinger(gameController, touchpad, finger, out state, out x, out y, out pressure);
-
-        /// <summary>
-        ///     Games the controller has sensor using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="type">The type</param>
-        /// <returns>The sdl bool</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool GameControllerHasSensor([IsNotNull] IntPtr gameController, SensorType type) => NativeSdl.InternalGameControllerHasSensor(gameController, type);
-
-        /// <summary>
-        ///     Games the controller set sensor enabled using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="type">The type</param>
-        /// <param name="enabled">The enabled</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerSetSensorEnabled([IsNotNull] IntPtr gameController, SensorType type, bool enabled) => NativeSdl.InternalGameControllerSetSensorEnabled(gameController, type, enabled);
-
-        /// <summary>
-        ///     Games the controller is sensor enabled using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="type">The type</param>
-        /// <returns>The sdl bool</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool GameControllerIsSensorEnabled([IsNotNull] IntPtr gameController, SensorType type) => NativeSdl.InternalGameControllerIsSensorEnabled(gameController, type);
-
-
-        /// <summary>
-        ///     Games the controller get sensor data using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="type">The type</param>
-        /// <param name="data">The data</param>
-        /// <param name="numValues">The num values</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerGetSensorData([IsNotNull] IntPtr gameController, SensorType type, [IsNotNull] IntPtr data, [IsNotNull] int numValues) => NativeSdl.InternalGameControllerGetSensorData(gameController, type, data, numValues);
-
-        /// <summary>
-        ///     Games the controller get sensor data rate using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="type">The type</param>
-        /// <returns>The float</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float GameControllerGetSensorDataRate([IsNotNull] IntPtr gameController, SensorType type) => NativeSdl.InternalGameControllerGetSensorDataRate(gameController, type);
-
-
-        /// <summary>
-        ///     Games the controller send effect using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="data">The data</param>
-        /// <param name="size">The size</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GameControllerSendEffect([IsNotNull] IntPtr gameController, [IsNotNull] IntPtr data, [IsNotNull] int size) => NativeSdl.InternalGameControllerSendEffect(gameController, data, size);
-
-
+        
         /// <summary>
         ///     Joysticks the is haptic using the specified joystick
         /// </summary>
@@ -5267,175 +5123,7 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.Validate(result, nameof(result));
             return result;
         }
-
-        /// <summary>
-        ///     Nums the sensors
-        /// </summary>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int NumSensors() => NativeSdl.InternalNumSensors();
-
-        /// <summary>
-        ///     Sdl the sensor get device name using the specified device index
-        /// </summary>
-        /// <param name="deviceIndex">The device index</param>
-        /// <returns>The string</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string SensorGetDeviceName([IsNotNull] int deviceIndex)
-        {
-            Validator.Validate(deviceIndex, nameof(deviceIndex));
-            string result = Marshal.PtrToStringAnsi(NativeSdl.InternalSensorGetDeviceName(deviceIndex));
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
-        /// <summary>
-        ///     Sensors the get device type using the specified device index
-        /// </summary>
-        /// <param name="deviceIndex">The device index</param>
-        /// <returns>The sdl sensor type</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SensorType SensorGetDeviceType([IsNotNull] int deviceIndex) => NativeSdl.InternalSensorGetDeviceType(deviceIndex);
-
-        /// <summary>
-        ///     Sensors the get device non portable type using the specified device index
-        /// </summary>
-        /// <param name="deviceIndex">The device index</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SensorGetDeviceNonPortableType([IsNotNull] int deviceIndex) => NativeSdl.InternalSensorGetDeviceNonPortableType(deviceIndex);
-
-        /// <summary>
-        ///     Sensors the get device instance id using the specified device index
-        /// </summary>
-        /// <param name="deviceIndex">The device index</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SensorGetDeviceInstanceId([IsNotNull] int deviceIndex) => NativeSdl.InternalSensorGetDeviceInstanceID(deviceIndex);
-
-        /// <summary>
-        ///     Sensors the open using the specified device index
-        /// </summary>
-        /// <param name="deviceIndex">The device index</param>
-        /// <returns>The int ptr</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr SensorOpen([IsNotNull] int deviceIndex)
-        {
-            Validator.Validate(deviceIndex, nameof(deviceIndex));
-            IntPtr result = NativeSdl.InternalSensorOpen(deviceIndex);
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
-        /// <summary>
-        ///     Sensors the from instance id using the specified instance id
-        /// </summary>
-        /// <param name="instanceId">The instance id</param>
-        /// <returns>The int ptr</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr SensorFromInstanceId([IsNotNull] int instanceId) => NativeSdl.InternalSensorFromInstanceID(instanceId);
-
-        /// <summary>
-        ///     Sdl the sensor get name using the specified sensor
-        /// </summary>
-        /// <param name="sensor">The sensor</param>
-        /// <returns>The string</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string SensorGetName([IsNotNull] IntPtr sensor)
-        {
-            Validator.Validate(sensor, nameof(sensor));
-            string result = Marshal.PtrToStringAnsi(NativeSdl.InternalSensorGetName(sensor));
-            Validator.Validate(result, nameof(result));
-            return result;
-        }
-
-        /// <summary>
-        ///     Sensors the get type using the specified sensor
-        /// </summary>
-        /// <param name="sensor">The sensor</param>
-        /// <returns>The sdl sensor type</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SensorType SensorGetType([IsNotNull] IntPtr sensor) => NativeSdl.InternalSensorGetType(sensor);
-
-        /// <summary>
-        ///     Sensors the get non portable type using the specified sensor
-        /// </summary>
-        /// <param name="sensor">The sensor</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SensorGetNonPortableType([IsNotNull] IntPtr sensor) => NativeSdl.InternalSensorGetNonPortableType(sensor);
-
-        /// <summary>
-        ///     Sensors the get instance id using the specified sensor
-        /// </summary>
-        /// <param name="sensor">The sensor</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SensorGetInstanceId([IsNotNull] IntPtr sensor) => NativeSdl.InternalSensorGetInstanceID(sensor);
-
-        /// <summary>
-        ///     Sensors the get data using the specified sensor
-        /// </summary>
-        /// <param name="sensor">The sensor</param>
-        /// <param name="data">The data</param>
-        /// <param name="numValues">The num values</param>
-        /// <returns>The int</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SensorGetData([IsNotNull] IntPtr sensor, float[] data, [IsNotNull] int numValues) => NativeSdl.InternalSensorGetData(sensor, data, numValues);
-
-        /// <summary>
-        ///     Sensors the close using the specified sensor
-        /// </summary>
-        /// <param name="sensor">The sensor</param>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SensorClose([IsNotNull] IntPtr sensor)
-        {
-            NativeSdl.InternalSensorClose(sensor);
-        }
-
-        /// <summary>
-        ///     Sensors the update
-        /// </summary>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SensorUpdate()
-        {
-            NativeSdl.InternalSensorUpdate();
-        }
-
-        /// <summary>
-        ///     Locks the sensors
-        /// </summary>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void LockSensors()
-        {
-            NativeSdl.InternalLockSensors();
-        }
-
-        /// <summary>
-        ///     Unlocks the sensors
-        /// </summary>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void UnlockSensors()
-        {
-            NativeSdl.InternalUnlockSensors();
-        }
-
+        
         /// <summary>
         ///     Sdl the audio bit size using the specified x
         /// </summary>
