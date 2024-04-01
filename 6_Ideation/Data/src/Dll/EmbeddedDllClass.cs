@@ -205,12 +205,14 @@ namespace Alis.Core.Aspect.Data.Dll
                 using Stream entryStream = entry.Open();
                 using FileStream fs = File.Create(fullFilePath);
                 entryStream.CopyTo(fs);
+                
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    SetFileReadPermission(fullFilePath);
+                }
             }
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                SetFileReadPermission(filePath);
-            }
+           
         }
 
         /// <summary>
