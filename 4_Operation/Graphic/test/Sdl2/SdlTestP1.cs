@@ -105,32 +105,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that test game controller set led
-        /// </summary>
-        [Fact]
-        public void TestGameControllerSetLed()
-        {
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-
-            // Arrange
-            int controllersAvailable = Sdl.NumJoysticks();
-            if (controllersAvailable >= 1)
-            {
-                IntPtr controller = Sdl.GameControllerOpen(0);
-
-                // Act
-                int result = Sdl.GameControllerSetLed(controller, 255, 255, 255);
-
-                // Assert
-                Assert.True(result >= -1);
-            }
-
-            Sdl.Quit();
-        }
-
+        
         /// <summary>
         ///     Tests that test game controller has axis
         /// </summary>
@@ -609,29 +584,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Assert
             Assert.True(result > 0);
         }
-
-        /// <summary>
-        ///     Tests that test sensor open
-        /// </summary>
-        [Fact]
-        public void TestSensorOpen()
-        {
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-
-            // Arrange
-            const int deviceIndex = 0;
-            int numSensors = Sdl.NumSensors();
-            if (numSensors >= 1)
-            {
-                // Act
-                IntPtr result = Sdl.SensorOpen(deviceIndex);
-
-                // Assert
-                Assert.NotEqual(IntPtr.Zero, result);
-            }
-        }
-
+        
         /// <summary>
         ///     Tests that test clear hints
         /// </summary>
@@ -2177,44 +2130,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
             // Act
             Exception exception = Record.Exception(() => Sdl.MixAudioFormat(dst, src, format, len, volume));
-
-            // Assert
-            Assert.Null(exception);
-
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that test lock sensors should not throw exception
-        /// </summary>
-        [Fact]
-        public void TestLockSensors_ShouldNotThrowException()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-
-            // Act
-            Exception exception = Record.Exception(Sdl.LockSensors);
-
-            // Assert
-            Assert.Null(exception);
-
-            Sdl.Quit();
-        }
-
-        /// <summary>
-        ///     Tests that test unlock sensors should not throw exception
-        /// </summary>
-        [Fact]
-        public void TestUnlockSensors_ShouldNotThrowException()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-
-            // Act
-            Exception exception = Record.Exception(Sdl.UnlockSensors);
 
             // Assert
             Assert.Null(exception);

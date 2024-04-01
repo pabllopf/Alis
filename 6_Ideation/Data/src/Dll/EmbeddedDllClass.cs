@@ -194,6 +194,16 @@ namespace Alis.Core.Aspect.Data.Dll
             Console.WriteLine($"Num files to unzip: '{archive.Entries.Count}'");
             foreach (ZipArchiveEntry entry in archive.Entries)
             {
+                if (string.IsNullOrEmpty(entry.Name))
+                {
+                    continue;
+                }
+                
+                if (entry.FullName.Contains("__MACOSX"))
+                {
+                    continue;
+                }
+                
                 string fullFilePath = Path.Combine(filePath, entry.FullName);
 
                 Console.WriteLine($"File to extract: '{fullFilePath}'");

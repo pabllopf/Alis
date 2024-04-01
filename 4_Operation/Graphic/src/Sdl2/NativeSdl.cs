@@ -82,145 +82,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_NumHaptics", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern int InternalNumHaptics();
-
-        /// <summary>
-        ///     Sdl the num sensors
-        /// </summary>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_NumSensors", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalNumSensors();
-
-        /// <summary>
-        ///     Internals the sdl sensor get device name using the specified device index
-        /// </summary>
-        /// <param name="deviceIndex">The device index</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetDeviceName", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalSensorGetDeviceName([IsNotNull] int deviceIndex);
-
-        /// <summary>
-        ///     Sdl the sensor get device type using the specified device index
-        /// </summary>
-        /// <param name="deviceIndex">The device index</param>
-        /// <returns>The sdl sensor type</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetDeviceType", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern SensorType InternalSensorGetDeviceType([IsNotNull] int deviceIndex);
-
-        /// <summary>
-        ///     Sdl the sensor get device non portable type using the specified device index
-        /// </summary>
-        /// <param name="deviceIndex">The device index</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetDeviceNonPortableType", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSensorGetDeviceNonPortableType([IsNotNull] int deviceIndex);
-
-        /// <summary>
-        ///     Sdl the sensor get device instance id using the specified device index
-        /// </summary>
-        /// <param name="deviceIndex">The device index</param>
-        /// <returns>The int 32</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetDeviceInstanceID", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSensorGetDeviceInstanceID([IsNotNull] int deviceIndex);
-
-        /// <summary>
-        ///     Sdl the sensor open using the specified device index
-        /// </summary>
-        /// <param name="deviceIndex">The device index</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SensorOpen", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalSensorOpen([IsNotNull] int deviceIndex);
-
-        /// <summary>
-        ///     Sdl the sensor from instance id using the specified instance id
-        /// </summary>
-        /// <param name="instanceId">The instance id</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SensorFromInstanceID", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalSensorFromInstanceID([IsNotNull] int instanceId);
-
-        /// <summary>
-        ///     Internals the sdl sensor get name using the specified sensor
-        /// </summary>
-        /// <param name="sensor">The sensor</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetName", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalSensorGetName([IsNotNull] IntPtr sensor);
-
-        /// <summary>
-        ///     Sdl the sensor get type using the specified sensor
-        /// </summary>
-        /// <param name="sensor">The sensor</param>
-        /// <returns>The sdl sensor type</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetType", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern SensorType InternalSensorGetType([IsNotNull] IntPtr sensor);
-
-        /// <summary>
-        ///     Sdl the sensor get non portable type using the specified sensor
-        /// </summary>
-        /// <param name="sensor">The sensor</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetNonPortableType", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSensorGetNonPortableType([IsNotNull] IntPtr sensor);
-
-        /// <summary>
-        ///     Sdl the sensor get instance id using the specified sensor
-        /// </summary>
-        /// <param name="sensor">The sensor</param>
-        /// <returns>The int 32</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetInstanceID", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSensorGetInstanceID([IsNotNull] IntPtr sensor);
-
-        /// <summary>
-        ///     Sdl the sensor get data using the specified sensor
-        /// </summary>
-        /// <param name="sensor">The sensor</param>
-        /// <param name="data">The data</param>
-        /// <param name="numValues">The num values</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetData", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSensorGetData([IsNotNull] IntPtr sensor, float[] data, [IsNotNull] int numValues);
-
-        /// <summary>
-        ///     Sdl the sensor close using the specified sensor
-        /// </summary>
-        /// <param name="sensor">The sensor</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SensorClose", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalSensorClose([IsNotNull] IntPtr sensor);
-
-        /// <summary>
-        ///     Sdl the sensor update
-        /// </summary>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SensorUpdate", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalSensorUpdate();
-
-        /// <summary>
-        ///     Sdl the lock sensors
-        /// </summary>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LockSensors", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalLockSensors();
-
-        /// <summary>
-        ///     Sdl the unlock sensors
-        /// </summary>
-        [DllImport(NativeLibName, EntryPoint = "SDL_UnlockSensors", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalUnlockSensors();
-
+        
         /// <summary>
         ///     Sdl the close audio device using the specified dev
         /// </summary>
@@ -2254,26 +2116,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_SetSurfacePalette", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern int InternalSetSurfacePalette([IsNotNull] IntPtr surface, [IsNotNull] IntPtr palette);
-
-        /// <summary>
-        ///     Sdl the set surface rle using the specified surface
-        /// </summary>
-        /// <param name="surface">The surface</param>
-        /// <param name="flag">The flag</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SetSurfaceRLE", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetSurfaceRLE([IsNotNull] IntPtr surface, [IsNotNull] int flag);
-
-        /// <summary>
-        ///     Sdl the has surface rle using the specified surface
-        /// </summary>
-        /// <param name="surface">The surface</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_HasSurfaceRLE", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalHasSurfaceRLE([IsNotNull] IntPtr surface);
-
+        
         /// <summary>
         ///     Sdl the upper blit using the specified src
         /// </summary>
@@ -2696,16 +2539,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerSetPlayerIndex", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern void InternalGameControllerSetPlayerIndex([IsNotNull] IntPtr gameController, [IsNotNull] int playerIndex);
-
-        /// <summary>
-        ///     Sdl the game controller has led using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerHasLED", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalGameControllerHasLED([IsNotNull] IntPtr gameController);
-
+        
         /// <summary>
         ///     Sdl the game controller has rumble using the specified game controller
         /// </summary>
@@ -2723,19 +2557,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerHasRumbleTriggers", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern bool InternalGameControllerHasRumbleTriggers([IsNotNull] IntPtr gameController);
-
-        /// <summary>
-        ///     Sdl the game controller set led using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="red">The red</param>
-        /// <param name="green">The green</param>
-        /// <param name="blue">The blue</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerSetLED", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGameControllerSetLED([IsNotNull] IntPtr gameController, [IsNotNull] byte red, [IsNotNull] byte green, [IsNotNull] byte blue);
-
+        
         /// <summary>
         ///     Sdl the game controller has axis using the specified game controller
         /// </summary>
@@ -2755,106 +2577,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerHasButton", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern bool InternalGameControllerHasButton([IsNotNull] IntPtr gameController, GameControllerButton button);
-
-        /// <summary>
-        ///     Sdl the game controller get num touchpads using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetNumTouchpads", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGameControllerGetNumTouchpads([IsNotNull] IntPtr gameController);
-
-        /// <summary>
-        ///     Sdl the game controller get num touchpad fingers using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="touchpad">The touchpad</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetNumTouchpadFingers", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGameControllerGetNumTouchpadFingers([IsNotNull] IntPtr gameController, [IsNotNull] int touchpad);
-
-        /// <summary>
-        ///     Sdl the game controller get touchpad finger using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="touchpad">The touchpad</param>
-        /// <param name="finger">The finger</param>
-        /// <param name="state">The state</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="pressure">The pressure</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetTouchpadFinger", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGameControllerGetTouchpadFinger([IsNotNull] IntPtr gameController, [IsNotNull] int touchpad, [IsNotNull] int finger, out byte state, out float x, out float y, out float pressure);
-
-        /// <summary>
-        ///     Sdl the game controller has sensor using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="type">The type</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerHasSensor", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalGameControllerHasSensor([IsNotNull] IntPtr gameController, SensorType type);
-
-        /// <summary>
-        ///     Sdl the game controller set sensor enabled using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="type">The type</param>
-        /// <param name="enabled">The enabled</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerSetSensorEnabled", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGameControllerSetSensorEnabled([IsNotNull] IntPtr gameController, SensorType type, bool enabled);
-
-        /// <summary>
-        ///     Sdl the game controller is sensor enabled using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="type">The type</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerIsSensorEnabled", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalGameControllerIsSensorEnabled([IsNotNull] IntPtr gameController, SensorType type);
-
-        /// <summary>
-        ///     Sdl the game controller get sensor data using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="type">The type</param>
-        /// <param name="data">The data</param>
-        /// <param name="numValues">The num values</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetSensorData", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGameControllerGetSensorData([IsNotNull] IntPtr gameController, SensorType type, [IsNotNull] IntPtr data, [IsNotNull] int numValues);
-
-        /// <summary>
-        ///     Sdl the game controller get sensor data rate using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="type">The type</param>
-        /// <returns>The float</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetSensorDataRate", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern float InternalGameControllerGetSensorDataRate([IsNotNull] IntPtr gameController, SensorType type);
-
-        /// <summary>
-        ///     Sdl the game controller send effect using the specified game controller
-        /// </summary>
-        /// <param name="gameController">The game controller</param>
-        /// <param name="data">The data</param>
-        /// <param name="size">The size</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerSendEffect", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGameControllerSendEffect([IsNotNull] IntPtr gameController, [IsNotNull] IntPtr data, [IsNotNull] int size);
-
-
+        
         /// <summary>
         ///     Sdl the gl get drawable size using the specified window
         /// </summary>
