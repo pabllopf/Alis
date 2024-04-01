@@ -2884,15 +2884,6 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool RenderTargetSupported([IsNotNull] IntPtr renderer) => NativeSdl.InternalRenderTargetSupported(renderer);
-
-        /// <summary>
-        ///     Gets the render target using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The int ptr</returns>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr GetRenderTarget([IsNotNull] IntPtr renderer) => NativeSdl.InternalGetRenderTarget(renderer);
         
         /// <summary>
         ///     Renders the is clip enabled using the specified renderer

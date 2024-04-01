@@ -3689,16 +3689,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderTargetSupported", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern bool InternalRenderTargetSupported([IsNotNull] IntPtr renderer);
-
-        /// <summary>
-        ///     Sdl the get render target using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetRenderTarget", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGetRenderTarget([IsNotNull] IntPtr renderer);
-
+        
         /// <summary>
         ///     Sdl the set window position using the specified window
         /// </summary>
