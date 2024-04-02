@@ -73,32 +73,79 @@ namespace Alis.Core.Aspect.Security
             }
         }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator SecureByte(byte value) => new SecureByte(value);
 
+        /// <summary>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator byte(SecureByte value) => value.Value;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator ==(SecureByte a, SecureByte b) => a.Value == b.Value;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator !=(SecureByte a, SecureByte b) => a.Value != b.Value;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static SecureByte operator ++(SecureByte a)
         {
             a.Value++;
             return a;
         }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static SecureByte operator --(SecureByte a)
         {
-            a.Value++;
+            a.Value--;
             return a;
         }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureByte operator +(SecureByte a, SecureByte b) => new SecureByte((byte) (a.Value + b.Value));
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureByte operator -(SecureByte a, SecureByte b) => new SecureByte((byte) (a.Value - b.Value));
 
+
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureByte operator *(SecureByte a, SecureByte b) => new SecureByte((byte) (a.Value * b.Value));
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureByte operator /(SecureByte a, SecureByte b) => new SecureByte((byte) (a.Value / b.Value));
 
         /// <summary>
@@ -118,6 +165,6 @@ namespace Alis.Core.Aspect.Security
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The bool</returns>
-        public override bool Equals(object obj) => Value.Equals((obj as SecureByte).Value);
+        public override bool Equals(object obj) => Value.Equals(((SecureByte) obj)!.Value);
     }
 }

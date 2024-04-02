@@ -61,7 +61,7 @@ namespace Alis.Core.Aspect.Security.Sample
             // SecureDecimal usage
             SecureDecimal secureDecimal = 10.0m;
             Console.WriteLine($"SecureDecimal: {secureDecimal}");
-            
+
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }
