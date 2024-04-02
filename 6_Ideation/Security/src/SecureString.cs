@@ -77,7 +77,7 @@ namespace Alis.Core.Aspect.Security
         /// <param name="textToEncrypt">The text to encrypt</param>
         /// <param name="key">The key</param>
         /// <returns>The string</returns>
-        private string EncryptDecrypt(string textToEncrypt, char key)
+        private static string EncryptDecrypt(string textToEncrypt, char key)
         {
             char[] buffer = textToEncrypt.ToCharArray();
             for (int i = 0; i < buffer.Length; i++)
