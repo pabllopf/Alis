@@ -165,5 +165,149 @@ namespace Alis.Core.Aspect.Security.Test
             SecureByte secureByte = 10;
             Assert.Equal("10", secureByte.ToString());
         }
+
+        /// <summary>
+        ///     Tests that test value set get
+        /// </summary>
+        [Fact]
+        public void TestValueSetGet()
+        {
+            // Arrange
+            SecureByte secureByte = new SecureByte(10);
+
+            // Act
+            byte value = secureByte;
+
+            // Assert
+            Assert.Equal(10, value);
+        }
+
+        /// <summary>
+        ///     Tests that test equality
+        /// </summary>
+        [Fact]
+        public void TestEquality()
+        {
+            // Arrange
+            SecureByte secureByte1 = new SecureByte(10);
+            SecureByte secureByte2 = new SecureByte(10);
+
+            // Assert
+            Assert.True(secureByte1 == secureByte2);
+        }
+
+        /// <summary>
+        ///     Tests that test inequality
+        /// </summary>
+        [Fact]
+        public void TestInequality()
+        {
+            // Arrange
+            SecureByte secureByte1 = new SecureByte(10);
+            SecureByte secureByte2 = new SecureByte(20);
+
+            // Assert
+            Assert.True(secureByte1 != secureByte2);
+        }
+
+        /// <summary>
+        ///     Tests that test increment
+        /// </summary>
+        [Fact]
+        public void TestIncrement()
+        {
+            // Arrange
+            SecureByte secureByte = new SecureByte(10);
+
+            // Act
+            secureByte++;
+
+            // Assert
+            Assert.Equal(11, (byte) secureByte);
+        }
+
+        /// <summary>
+        ///     Tests that test decrement
+        /// </summary>
+        [Fact]
+        public void TestDecrement()
+        {
+            // Arrange
+            SecureByte secureByte = new SecureByte(10);
+
+            // Act
+            secureByte--;
+
+            // Assert
+            Assert.Equal(9, (byte) secureByte);
+        }
+
+        /// <summary>
+        ///     Tests that test addition
+        /// </summary>
+        [Fact]
+        public void TestAddition()
+        {
+            // Arrange
+            SecureByte secureByte1 = new SecureByte(10);
+            SecureByte secureByte2 = new SecureByte(20);
+
+            // Act
+            SecureByte result = secureByte1 + secureByte2;
+
+            // Assert
+            Assert.Equal(30, (byte) result);
+        }
+
+        /// <summary>
+        ///     Tests that test subtraction
+        /// </summary>
+        [Fact]
+        public void TestSubtraction()
+        {
+            // Arrange
+            SecureByte secureByte1 = new SecureByte(20);
+            SecureByte secureByte2 = new SecureByte(10);
+
+            // Act
+            SecureByte result = secureByte1 - secureByte2;
+
+            // Assert
+            Assert.Equal(10, (byte) result);
+        }
+
+        /// <summary>
+        ///     Tests that test multiplication
+        /// </summary>
+        [Fact]
+        public void TestMultiplication()
+        {
+            // Arrange
+            SecureByte secureByte1 = new SecureByte(10);
+            SecureByte secureByte2 = new SecureByte(20);
+
+            // Act
+            SecureByte result = secureByte1 * secureByte2;
+
+            // Assert
+            Assert.Equal(200, (byte) result);
+        }
+
+        /// <summary>
+        ///     Tests that test division
+        /// </summary>
+        [Fact]
+        public void TestDivision()
+        {
+            // Arrange
+            SecureByte secureByte1 = new SecureByte(20);
+            SecureByte secureByte2 = new SecureByte(10);
+
+            // Act
+            SecureByte result = secureByte1 / secureByte2;
+
+            // Assert
+            Assert.Equal(2, (byte) result);
+        }
     }
 }

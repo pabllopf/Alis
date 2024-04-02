@@ -73,20 +73,58 @@ namespace Alis.Core.Aspect.Security
             }
         }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator SecureChar(char value) => new SecureChar(value);
 
+        /// <summary>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator char(SecureChar value) => value.Value;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator ==(SecureChar a, SecureChar b) => a.Value == b.Value;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator !=(SecureChar a, SecureChar b) => a.Value != b.Value;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureChar operator +(SecureChar a, SecureChar b) => new SecureChar((char) (a.Value + b.Value));
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureChar operator -(SecureChar a, SecureChar b) => new SecureChar((char) (a.Value - b.Value));
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureChar operator *(SecureChar a, SecureChar b) => new SecureChar((char) (a.Value * b.Value));
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureChar operator /(SecureChar a, SecureChar b) => new SecureChar((char) (a.Value / b.Value));
 
         /// <summary>

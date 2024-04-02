@@ -143,5 +143,117 @@ namespace Alis.Core.Aspect.Security.Test
             SecureChar secureChar = 'a';
             Assert.Equal("a", secureChar.ToString());
         }
+
+        /// <summary>
+        ///     Tests that test value set get
+        /// </summary>
+        [Fact]
+        public void TestValueSetGet()
+        {
+            // Arrange
+            SecureChar secureChar = new SecureChar('a');
+
+            // Act
+            char value = secureChar;
+
+            // Assert
+            Assert.Equal('a', value);
+        }
+
+        /// <summary>
+        ///     Tests that test equality
+        /// </summary>
+        [Fact]
+        public void TestEquality()
+        {
+            // Arrange
+            SecureChar secureChar1 = new SecureChar('a');
+            SecureChar secureChar2 = new SecureChar('a');
+
+            // Assert
+            Assert.True(secureChar1 == secureChar2);
+        }
+
+        /// <summary>
+        ///     Tests that test inequality
+        /// </summary>
+        [Fact]
+        public void TestInequality()
+        {
+            // Arrange
+            SecureChar secureChar1 = new SecureChar('a');
+            SecureChar secureChar2 = new SecureChar('b');
+
+            // Assert
+            Assert.True(secureChar1 != secureChar2);
+        }
+
+        /// <summary>
+        ///     Tests that test addition
+        /// </summary>
+        [Fact]
+        public void TestAddition()
+        {
+            // Arrange
+            SecureChar secureChar1 = new SecureChar('a');
+            SecureChar secureChar2 = new SecureChar('b');
+
+            // Act
+            SecureChar result = secureChar1 + secureChar2;
+
+            // Assert
+            Assert.Equal('a' + 'b', (char) result);
+        }
+
+        /// <summary>
+        ///     Tests that test subtraction
+        /// </summary>
+        [Fact]
+        public void TestSubtraction()
+        {
+            // Arrange
+            SecureChar secureChar1 = new SecureChar('b');
+            SecureChar secureChar2 = new SecureChar('a');
+
+            // Act
+            SecureChar result = secureChar1 - secureChar2;
+
+            // Assert
+            Assert.Equal('b' - 'a', (char) result);
+        }
+
+        /// <summary>
+        ///     Tests that test multiplication
+        /// </summary>
+        [Fact]
+        public void TestMultiplication()
+        {
+            // Arrange
+            SecureChar secureChar1 = new SecureChar('a');
+            SecureChar secureChar2 = new SecureChar('b');
+
+            // Act
+            SecureChar result = secureChar1 * secureChar2;
+
+            // Assert
+            Assert.Equal('a' * 'b', (char) result);
+        }
+
+        /// <summary>
+        ///     Tests that test division
+        /// </summary>
+        [Fact]
+        public void TestDivision()
+        {
+            // Arrange
+            SecureChar secureChar1 = new SecureChar('b');
+            SecureChar secureChar2 = new SecureChar('a');
+
+            // Act
+            SecureChar result = secureChar1 / secureChar2;
+
+            // Assert
+            Assert.Equal('b' / 'a', (char) result);
+        }
     }
 }
