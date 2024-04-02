@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Extension.Graphic.ImGui.Extras.GuiZmo
+namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
 {
     /// <summary>
     ///     The mode enum

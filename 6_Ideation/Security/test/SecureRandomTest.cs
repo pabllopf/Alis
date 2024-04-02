@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:LanguageNotFound.cs
+//  File:SecureRandomTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,42 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using Xunit;
 
-namespace Alis.Extension.Language.Translator
+namespace Alis.Core.Aspect.Security.Test
 {
     /// <summary>
-    ///     The language not found class
+    ///     The secure random tests class
     /// </summary>
-    /// <seealso cref="Exception" />
-    public class LanguageNotFound : Exception
+    public class SecureRandomTests
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="LanguageNotFound" /> class
+        ///     Tests that test secure random instance
         /// </summary>
-        /// <param name="message">The message</param>
-        public LanguageNotFound(string message) : base(message)
+        [Fact]
+        public void Test_SecureRandom_Instance()
         {
+            Assert.NotNull(SecureRandom.Random);
+        }
+
+        /// <summary>
+        ///     Tests that test secure random generate random number
+        /// </summary>
+        [Fact]
+        public void Test_SecureRandom_GenerateRandomNumber()
+        {
+            int randomNumber = SecureRandom.Random.Next();
+            Assert.InRange(randomNumber, int.MinValue, int.MaxValue);
+        }
+
+        /// <summary>
+        ///     Tests that test secure random generate random number within range
+        /// </summary>
+        [Fact]
+        public void Test_SecureRandom_GenerateRandomNumberWithinRange()
+        {
+            int randomNumber = SecureRandom.Random.Next(1, 10);
+            Assert.InRange(randomNumber, 1, 10);
         }
     }
 }

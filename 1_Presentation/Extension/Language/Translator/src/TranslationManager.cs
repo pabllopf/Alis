@@ -30,7 +30,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Alis.Core.Aspect.Translation
+namespace Alis.Extension.Language.Translator
 {
     /// <summary>
     ///     The translation manager class

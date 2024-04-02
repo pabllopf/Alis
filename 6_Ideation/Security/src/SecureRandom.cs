@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DefaultTest.cs
+//  File:SecureRandom.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
+using System;
 
-namespace Alis.Core.Aspect.Security.Test
+namespace Alis.Core.Aspect.Security
 {
     /// <summary>
-    ///     The default test class
+    ///     The secure random class
     /// </summary>
-    public class DefaultTest
+    internal static class SecureRandom
     {
         /// <summary>
-        ///     Tests that test
+        ///     The random
         /// </summary>
-        [Fact]
-        public void Test()
-        {
-            Assert.True(true);
-        }
+        public static readonly Random Random = new Random();
     }
 }

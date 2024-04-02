@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Aspect.Translation
+namespace Alis.Extension.Language.Translator
 {
     /// <summary>
     ///     The translation not found class

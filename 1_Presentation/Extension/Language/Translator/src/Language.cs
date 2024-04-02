@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Translation
+namespace Alis.Extension.Language.Translator
 {
     /// <summary>
     ///     The language class
