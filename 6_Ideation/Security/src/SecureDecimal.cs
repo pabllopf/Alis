@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Globalization;
+
 namespace Alis.Core.Aspect.Security
 {
     /// <summary>
@@ -99,7 +101,7 @@ namespace Alis.Core.Aspect.Security
         ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(CultureInfo.InvariantCulture);
 
         /// <summary>
         ///     Gets the hash code
