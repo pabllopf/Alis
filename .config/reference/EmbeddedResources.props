@@ -2,12 +2,12 @@
     <PropertyGroup>
         <DisableResources>false</DisableResources>
     </PropertyGroup>
-    
-    
+
+
     <ItemGroup>
         <None Remove="$(ProjectDir)/**/resources/**/*.zip;"/>
     </ItemGroup>
-    
+
     <!-- Resources when runtime identifier is not selected -->
     <ItemGroup Condition="
         $(AssemblyName.Contains('Test')) == False AND
@@ -29,7 +29,7 @@
         '$(RuntimeIdentifier)' != '' AND 
         Exists('$(ProjectDir)/resources/') AND
         '$(DisableResources)' != 'true'">
-        
+
         <!-- Windows -->
         <EmbeddedResource Condition="$(IsARM) AND $(IsWindows)" Include="$(ProjectDir)/**/resources/**/win-arm/**/*win-arm*.zip"/>
         <EmbeddedResource Condition="$(IsARM64) AND $(IsWindows) " Include="$(ProjectDir)/**/resources/**/win-arm64/**/*win-arm64*.zip"/>

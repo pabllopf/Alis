@@ -30,7 +30,7 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Extension.Graphic.ImGui.Extras.GuiZmo
+namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
 {
     /// <summary>
     ///     The im guizmo class

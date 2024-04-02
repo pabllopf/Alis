@@ -32,7 +32,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace Alis.Core.Aspect.Translation.Test
+namespace Alis.Extension.Language.Translator.Test
 {
     /// <summary>
     ///     The translation manager test class

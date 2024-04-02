@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Aspect.Translation.Sample
+namespace Alis.Extension.Language.Translator.Sample
 {
     /// <summary>
     ///     The program class

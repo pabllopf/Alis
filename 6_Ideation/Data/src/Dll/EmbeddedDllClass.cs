@@ -186,6 +186,11 @@ namespace Alis.Core.Aspect.Data.Dll
         }
 
 
+        /// <summary>
+        /// Extracts the zip file using the specified file dir
+        /// </summary>
+        /// <param name="fileDir">The file dir</param>
+        /// <param name="zipData">The zip data</param>
         [ExcludeFromCodeCoverage]
         private static void ExtractZipFile(string fileDir, MemoryStream zipData)
         {
