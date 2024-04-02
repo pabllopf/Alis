@@ -165,5 +165,150 @@ namespace Alis.Core.Aspect.Security.Test
             SecureDouble secureDouble = 10.0;
             Assert.Equal("10", secureDouble.ToString());
         }
+
+
+        /// <summary>
+        ///     Tests that test value set get
+        /// </summary>
+        [Fact]
+        public void TestValueSetGet()
+        {
+            // Arrange
+            SecureDouble secureDouble = new SecureDouble(10.0);
+
+            // Act
+            double value = secureDouble;
+
+            // Assert
+            Assert.Equal(10.0, value);
+        }
+
+        /// <summary>
+        ///     Tests that test equality
+        /// </summary>
+        [Fact]
+        public void TestEquality()
+        {
+            // Arrange
+            SecureDouble secureDouble1 = new SecureDouble(10.0);
+            SecureDouble secureDouble2 = new SecureDouble(10.0);
+
+            // Assert
+            Assert.True(secureDouble1 == secureDouble2);
+        }
+
+        /// <summary>
+        ///     Tests that test inequality
+        /// </summary>
+        [Fact]
+        public void TestInequality()
+        {
+            // Arrange
+            SecureDouble secureDouble1 = new SecureDouble(10.0);
+            SecureDouble secureDouble2 = new SecureDouble(20.0);
+
+            // Assert
+            Assert.True(secureDouble1 != secureDouble2);
+        }
+
+        /// <summary>
+        ///     Tests that test increment
+        /// </summary>
+        [Fact]
+        public void TestIncrement()
+        {
+            // Arrange
+            SecureDouble secureDouble = new SecureDouble(10.0);
+
+            // Act
+            secureDouble++;
+
+            // Assert
+            Assert.Equal(11.0, (double) secureDouble);
+        }
+
+        /// <summary>
+        ///     Tests that test decrement
+        /// </summary>
+        [Fact]
+        public void TestDecrement()
+        {
+            // Arrange
+            SecureDouble secureDouble = new SecureDouble(10.0);
+
+            // Act
+            secureDouble--;
+
+            // Assert
+            Assert.Equal(9.0, (double) secureDouble);
+        }
+
+        /// <summary>
+        ///     Tests that test addition
+        /// </summary>
+        [Fact]
+        public void TestAddition()
+        {
+            // Arrange
+            SecureDouble secureDouble1 = new SecureDouble(10.0);
+            SecureDouble secureDouble2 = new SecureDouble(20.0);
+
+            // Act
+            SecureDouble result = secureDouble1 + secureDouble2;
+
+            // Assert
+            Assert.Equal(30.0, (double) result);
+        }
+
+        /// <summary>
+        ///     Tests that test subtraction
+        /// </summary>
+        [Fact]
+        public void TestSubtraction()
+        {
+            // Arrange
+            SecureDouble secureDouble1 = new SecureDouble(20.0);
+            SecureDouble secureDouble2 = new SecureDouble(10.0);
+
+            // Act
+            SecureDouble result = secureDouble1 - secureDouble2;
+
+            // Assert
+            Assert.Equal(10.0, (double) result);
+        }
+
+        /// <summary>
+        ///     Tests that test multiplication
+        /// </summary>
+        [Fact]
+        public void TestMultiplication()
+        {
+            // Arrange
+            SecureDouble secureDouble1 = new SecureDouble(10.0);
+            SecureDouble secureDouble2 = new SecureDouble(20.0);
+
+            // Act
+            SecureDouble result = secureDouble1 * secureDouble2;
+
+            // Assert
+            Assert.Equal(200.0, (double) result);
+        }
+
+        /// <summary>
+        ///     Tests that test division
+        /// </summary>
+        [Fact]
+        public void TestDivision()
+        {
+            // Arrange
+            SecureDouble secureDouble1 = new SecureDouble(20.0);
+            SecureDouble secureDouble2 = new SecureDouble(10.0);
+
+            // Act
+            SecureDouble result = secureDouble1 / secureDouble2;
+
+            // Assert
+            Assert.Equal(2.0, (double) result);
+        }
     }
 }

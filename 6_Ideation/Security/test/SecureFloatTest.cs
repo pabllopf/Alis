@@ -165,5 +165,150 @@ namespace Alis.Core.Aspect.Security.Test
             SecureFloat secureFloat = 10.0f;
             Assert.Equal("10", secureFloat.ToString());
         }
+
+
+        /// <summary>
+        ///     Tests that test value set get
+        /// </summary>
+        [Fact]
+        public void TestValueSetGet()
+        {
+            // Arrange
+            SecureFloat secureFloat = new SecureFloat(10f);
+
+            // Act
+            float value = secureFloat;
+
+            // Assert
+            Assert.Equal(10f, value);
+        }
+
+        /// <summary>
+        ///     Tests that test equality
+        /// </summary>
+        [Fact]
+        public void TestEquality()
+        {
+            // Arrange
+            SecureFloat secureFloat1 = new SecureFloat(10f);
+            SecureFloat secureFloat2 = new SecureFloat(10f);
+
+            // Assert
+            Assert.True(secureFloat1 == secureFloat2);
+        }
+
+        /// <summary>
+        ///     Tests that test inequality
+        /// </summary>
+        [Fact]
+        public void TestInequality()
+        {
+            // Arrange
+            SecureFloat secureFloat1 = new SecureFloat(10f);
+            SecureFloat secureFloat2 = new SecureFloat(20f);
+
+            // Assert
+            Assert.True(secureFloat1 != secureFloat2);
+        }
+
+        /// <summary>
+        ///     Tests that test increment
+        /// </summary>
+        [Fact]
+        public void TestIncrement()
+        {
+            // Arrange
+            SecureFloat secureFloat = new SecureFloat(10f);
+
+            // Act
+            secureFloat++;
+
+            // Assert
+            Assert.Equal(11f, (float) secureFloat);
+        }
+
+        /// <summary>
+        ///     Tests that test decrement
+        /// </summary>
+        [Fact]
+        public void TestDecrement()
+        {
+            // Arrange
+            SecureFloat secureFloat = new SecureFloat(10f);
+
+            // Act
+            secureFloat--;
+
+            // Assert
+            Assert.Equal(9f, (float) secureFloat);
+        }
+
+        /// <summary>
+        ///     Tests that test addition
+        /// </summary>
+        [Fact]
+        public void TestAddition()
+        {
+            // Arrange
+            SecureFloat secureFloat1 = new SecureFloat(10f);
+            SecureFloat secureFloat2 = new SecureFloat(20f);
+
+            // Act
+            SecureFloat result = secureFloat1 + secureFloat2;
+
+            // Assert
+            Assert.Equal(30f, (float) result);
+        }
+
+        /// <summary>
+        ///     Tests that test subtraction
+        /// </summary>
+        [Fact]
+        public void TestSubtraction()
+        {
+            // Arrange
+            SecureFloat secureFloat1 = new SecureFloat(20f);
+            SecureFloat secureFloat2 = new SecureFloat(10f);
+
+            // Act
+            SecureFloat result = secureFloat1 - secureFloat2;
+
+            // Assert
+            Assert.Equal(10f, (float) result);
+        }
+
+        /// <summary>
+        ///     Tests that test multiplication
+        /// </summary>
+        [Fact]
+        public void TestMultiplication()
+        {
+            // Arrange
+            SecureFloat secureFloat1 = new SecureFloat(10f);
+            SecureFloat secureFloat2 = new SecureFloat(20f);
+
+            // Act
+            SecureFloat result = secureFloat1 * secureFloat2;
+
+            // Assert
+            Assert.Equal(200f, (float) result);
+        }
+
+        /// <summary>
+        ///     Tests that test division
+        /// </summary>
+        [Fact]
+        public void TestDivision()
+        {
+            // Arrange
+            SecureFloat secureFloat1 = new SecureFloat(20f);
+            SecureFloat secureFloat2 = new SecureFloat(10f);
+
+            // Act
+            SecureFloat result = secureFloat1 / secureFloat2;
+
+            // Assert
+            Assert.Equal(2f, (float) result);
+        }
     }
 }

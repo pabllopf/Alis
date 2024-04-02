@@ -67,32 +67,78 @@ namespace Alis.Core.Aspect.Security
             }
         }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator SecureDouble(double value) => new SecureDouble(value);
 
+        /// <summary>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator double(SecureDouble value) => value.Value;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator ==(SecureDouble a, SecureDouble b) => a.Value == b.Value;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator !=(SecureDouble a, SecureDouble b) => a.Value != b.Value;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static SecureDouble operator ++(SecureDouble a)
         {
             a.Value++;
             return a;
         }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static SecureDouble operator --(SecureDouble a)
         {
             a.Value--;
             return a;
         }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureDouble operator +(SecureDouble a, SecureDouble b) => new SecureDouble(a.Value + b.Value);
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureDouble operator -(SecureDouble a, SecureDouble b) => new SecureDouble(a.Value - b.Value);
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureDouble operator *(SecureDouble a, SecureDouble b) => new SecureDouble(a.Value * b.Value);
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureDouble operator /(SecureDouble a, SecureDouble b) => new SecureDouble(a.Value / b.Value);
 
         /// <summary>

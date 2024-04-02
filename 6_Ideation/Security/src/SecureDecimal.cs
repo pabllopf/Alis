@@ -69,32 +69,79 @@ namespace Alis.Core.Aspect.Security
             }
         }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator SecureDecimal(decimal value) => new SecureDecimal(value);
 
+        /// <summary>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator decimal(SecureDecimal value) => value.Value;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator ==(SecureDecimal a, SecureDecimal b) => a.Value == b.Value;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator !=(SecureDecimal a, SecureDecimal b) => a.Value != b.Value;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static SecureDecimal operator ++(SecureDecimal a)
         {
             a.Value++;
             return a;
         }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static SecureDecimal operator --(SecureDecimal a)
         {
             a.Value--;
             return a;
         }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureDecimal operator +(SecureDecimal a, SecureDecimal b) => new SecureDecimal(a.Value + b.Value);
 
+
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureDecimal operator -(SecureDecimal a, SecureDecimal b) => new SecureDecimal(a.Value - b.Value);
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureDecimal operator *(SecureDecimal a, SecureDecimal b) => new SecureDecimal(a.Value * b.Value);
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureDecimal operator /(SecureDecimal a, SecureDecimal b) => new SecureDecimal(a.Value / b.Value);
 
         /// <summary>

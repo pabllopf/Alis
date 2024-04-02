@@ -67,32 +67,78 @@ namespace Alis.Core.Aspect.Security
             }
         }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator SecureFloat(float value) => new SecureFloat(value);
 
+        /// <summary>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator float(SecureFloat value) => value.Value;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator ==(SecureFloat a, SecureFloat b) => a.Value == b.Value;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator !=(SecureFloat a, SecureFloat b) => a.Value != b.Value;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static SecureFloat operator ++(SecureFloat a)
         {
             a.Value++;
             return a;
         }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static SecureFloat operator --(SecureFloat a)
         {
             a.Value--;
             return a;
         }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureFloat operator +(SecureFloat a, SecureFloat b) => new SecureFloat(a.Value + b.Value);
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureFloat operator -(SecureFloat a, SecureFloat b) => new SecureFloat(a.Value - b.Value);
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureFloat operator *(SecureFloat a, SecureFloat b) => new SecureFloat(a.Value * b.Value);
 
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureFloat operator /(SecureFloat a, SecureFloat b) => new SecureFloat(a.Value / b.Value);
 
         /// <summary>

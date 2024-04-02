@@ -165,5 +165,149 @@ namespace Alis.Core.Aspect.Security.Test
             SecureLong secureLong = 10L;
             Assert.Equal("10", secureLong.ToString());
         }
+
+        /// <summary>
+        ///     Tests that test value set get
+        /// </summary>
+        [Fact]
+        public void TestValueSetGet()
+        {
+            // Arrange
+            SecureLong secureLong = new SecureLong(10);
+
+            // Act
+            long value = secureLong;
+
+            // Assert
+            Assert.Equal(10, value);
+        }
+
+        /// <summary>
+        ///     Tests that test equality
+        /// </summary>
+        [Fact]
+        public void TestEquality()
+        {
+            // Arrange
+            SecureLong secureLong1 = new SecureLong(10);
+            SecureLong secureLong2 = new SecureLong(10);
+
+            // Assert
+            Assert.True(secureLong1 == secureLong2);
+        }
+
+        /// <summary>
+        ///     Tests that test inequality
+        /// </summary>
+        [Fact]
+        public void TestInequality()
+        {
+            // Arrange
+            SecureLong secureLong1 = new SecureLong(10);
+            SecureLong secureLong2 = new SecureLong(20);
+
+            // Assert
+            Assert.True(secureLong1 != secureLong2);
+        }
+
+        /// <summary>
+        ///     Tests that test increment
+        /// </summary>
+        [Fact]
+        public void TestIncrement()
+        {
+            // Arrange
+            SecureLong secureLong = new SecureLong(10);
+
+            // Act
+            secureLong++;
+
+            // Assert
+            Assert.Equal(11, (long) secureLong);
+        }
+
+        /// <summary>
+        ///     Tests that test decrement
+        /// </summary>
+        [Fact]
+        public void TestDecrement()
+        {
+            // Arrange
+            SecureLong secureLong = new SecureLong(10);
+
+            // Act
+            secureLong--;
+
+            // Assert
+            Assert.Equal(9, (long) secureLong);
+        }
+
+        /// <summary>
+        ///     Tests that test addition
+        /// </summary>
+        [Fact]
+        public void TestAddition()
+        {
+            // Arrange
+            SecureLong secureLong1 = new SecureLong(10);
+            SecureLong secureLong2 = new SecureLong(20);
+
+            // Act
+            SecureLong result = secureLong1 + secureLong2;
+
+            // Assert
+            Assert.Equal(30, (long) result);
+        }
+
+        /// <summary>
+        ///     Tests that test subtraction
+        /// </summary>
+        [Fact]
+        public void TestSubtraction()
+        {
+            // Arrange
+            SecureLong secureLong1 = new SecureLong(20);
+            SecureLong secureLong2 = new SecureLong(10);
+
+            // Act
+            SecureLong result = secureLong1 - secureLong2;
+
+            // Assert
+            Assert.Equal(10, (long) result);
+        }
+
+        /// <summary>
+        ///     Tests that test multiplication
+        /// </summary>
+        [Fact]
+        public void TestMultiplication()
+        {
+            // Arrange
+            SecureLong secureLong1 = new SecureLong(10);
+            SecureLong secureLong2 = new SecureLong(20);
+
+            // Act
+            SecureLong result = secureLong1 * secureLong2;
+
+            // Assert
+            Assert.Equal(200, (long) result);
+        }
+
+        /// <summary>
+        ///     Tests that test division
+        /// </summary>
+        [Fact]
+        public void TestDivision()
+        {
+            // Arrange
+            SecureLong secureLong1 = new SecureLong(20);
+            SecureLong secureLong2 = new SecureLong(10);
+
+            // Act
+            SecureLong result = secureLong1 / secureLong2;
+
+            // Assert
+            Assert.Equal(2, (long) result);
+        }
     }
 }
