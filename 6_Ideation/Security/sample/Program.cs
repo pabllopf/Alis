@@ -42,6 +42,26 @@ namespace Alis.Core.Aspect.Security.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            // SecureDouble usage
+            SecureDouble secureDouble = 10.0;
+            Console.WriteLine($"SecureDouble: {secureDouble}");
+
+            // SecureFloat usage
+            SecureFloat secureFloat = 10.0f;
+            Console.WriteLine($"SecureFloat: {secureFloat}");
+
+            // SecureInt usage
+            SecureInt secureInt = 10;
+            Console.WriteLine($"SecureInt: {secureInt}");
+
+            // SecureLong usage
+            SecureLong secureLong = 10L;
+            Console.WriteLine($"SecureLong: {secureLong}");
+
+            // SecureDecimal usage
+            SecureDecimal secureDecimal = 10.0m;
+            Console.WriteLine($"SecureDecimal: {secureDecimal}");
+            
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }
