@@ -72,33 +72,89 @@ namespace Alis.Core.Aspect.Security
                 }
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
 
         public static implicit operator SecureLong(long value) => new SecureLong(value);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator long(SecureLong value) => value.Value;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator ==(SecureLong a, SecureLong b) => a.Value == b.Value;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator !=(SecureLong a, SecureLong b) => a.Value != b.Value;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static SecureLong operator ++(SecureLong a)
         {
             a.Value++;
             return a;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static SecureLong operator --(SecureLong a)
         {
             a.Value--;
             return a;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureLong operator +(SecureLong a, SecureLong b) => new SecureLong(a.Value + b.Value);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureLong operator -(SecureLong a, SecureLong b) => new SecureLong(a.Value - b.Value);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureLong operator *(SecureLong a, SecureLong b) => new SecureLong(a.Value * b.Value);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureLong operator /(SecureLong a, SecureLong b) => new SecureLong(a.Value / b.Value);
 
         /// <summary>
