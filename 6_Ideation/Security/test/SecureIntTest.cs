@@ -165,5 +165,149 @@ namespace Alis.Core.Aspect.Security.Test
             SecureInt secureInt = 10;
             Assert.Equal("10", secureInt.ToString());
         }
+
+        /// <summary>
+        ///     Tests that test value set get
+        /// </summary>
+        [Fact]
+        public void TestValueSetGet()
+        {
+            // Arrange
+            SecureInt secureInt = new SecureInt(10);
+
+            // Act
+            int value = secureInt;
+
+            // Assert
+            Assert.Equal(10, value);
+        }
+
+        /// <summary>
+        ///     Tests that test equality
+        /// </summary>
+        [Fact]
+        public void TestEquality()
+        {
+            // Arrange
+            SecureInt secureInt1 = new SecureInt(10);
+            SecureInt secureInt2 = new SecureInt(10);
+
+            // Assert
+            Assert.True(secureInt1 == secureInt2);
+        }
+
+        /// <summary>
+        ///     Tests that test inequality
+        /// </summary>
+        [Fact]
+        public void TestInequality()
+        {
+            // Arrange
+            SecureInt secureInt1 = new SecureInt(10);
+            SecureInt secureInt2 = new SecureInt(20);
+
+            // Assert
+            Assert.True(secureInt1 != secureInt2);
+        }
+
+        /// <summary>
+        ///     Tests that test increment
+        /// </summary>
+        [Fact]
+        public void TestIncrement()
+        {
+            // Arrange
+            SecureInt secureInt = new SecureInt(10);
+
+            // Act
+            secureInt++;
+
+            // Assert
+            Assert.Equal(11, (int) secureInt);
+        }
+
+        /// <summary>
+        ///     Tests that test decrement
+        /// </summary>
+        [Fact]
+        public void TestDecrement()
+        {
+            // Arrange
+            SecureInt secureInt = new SecureInt(10);
+
+            // Act
+            secureInt--;
+
+            // Assert
+            Assert.Equal(9, (int) secureInt);
+        }
+
+        /// <summary>
+        ///     Tests that test addition
+        /// </summary>
+        [Fact]
+        public void TestAddition()
+        {
+            // Arrange
+            SecureInt secureInt1 = new SecureInt(10);
+            SecureInt secureInt2 = new SecureInt(20);
+
+            // Act
+            SecureInt result = secureInt1 + secureInt2;
+
+            // Assert
+            Assert.Equal(30, (int) result);
+        }
+
+        /// <summary>
+        ///     Tests that test subtraction
+        /// </summary>
+        [Fact]
+        public void TestSubtraction()
+        {
+            // Arrange
+            SecureInt secureInt1 = new SecureInt(20);
+            SecureInt secureInt2 = new SecureInt(10);
+
+            // Act
+            SecureInt result = secureInt1 - secureInt2;
+
+            // Assert
+            Assert.Equal(10, (int) result);
+        }
+
+        /// <summary>
+        ///     Tests that test multiplication
+        /// </summary>
+        [Fact]
+        public void TestMultiplication()
+        {
+            // Arrange
+            SecureInt secureInt1 = new SecureInt(10);
+            SecureInt secureInt2 = new SecureInt(20);
+
+            // Act
+            SecureInt result = secureInt1 * secureInt2;
+
+            // Assert
+            Assert.Equal(200, (int) result);
+        }
+
+        /// <summary>
+        ///     Tests that test division
+        /// </summary>
+        [Fact]
+        public void TestDivision()
+        {
+            // Arrange
+            SecureInt secureInt1 = new SecureInt(20);
+            SecureInt secureInt2 = new SecureInt(10);
+
+            // Act
+            SecureInt result = secureInt1 / secureInt2;
+
+            // Assert
+            Assert.Equal(2, (int) result);
+        }
     }
 }

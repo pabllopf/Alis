@@ -165,5 +165,149 @@ namespace Alis.Core.Aspect.Security.Test
             SecureDecimal secureDecimal = 10.0m;
             Assert.Equal("10.0", secureDecimal.ToString());
         }
+
+        /// <summary>
+        ///     Tests that test value set get
+        /// </summary>
+        [Fact]
+        public void TestValueSetGet()
+        {
+            // Arrange
+            SecureDecimal secureDecimal = new SecureDecimal(10m);
+
+            // Act
+            decimal value = secureDecimal;
+
+            // Assert
+            Assert.Equal(10m, value);
+        }
+
+        /// <summary>
+        ///     Tests that test equality
+        /// </summary>
+        [Fact]
+        public void TestEquality()
+        {
+            // Arrange
+            SecureDecimal secureDecimal1 = new SecureDecimal(10m);
+            SecureDecimal secureDecimal2 = new SecureDecimal(10m);
+
+            // Assert
+            Assert.True(secureDecimal1 == secureDecimal2);
+        }
+
+        /// <summary>
+        ///     Tests that test inequality
+        /// </summary>
+        [Fact]
+        public void TestInequality()
+        {
+            // Arrange
+            SecureDecimal secureDecimal1 = new SecureDecimal(10m);
+            SecureDecimal secureDecimal2 = new SecureDecimal(20m);
+
+            // Assert
+            Assert.True(secureDecimal1 != secureDecimal2);
+        }
+
+        /// <summary>
+        ///     Tests that test increment
+        /// </summary>
+        [Fact]
+        public void TestIncrement()
+        {
+            // Arrange
+            SecureDecimal secureDecimal = new SecureDecimal(10m);
+
+            // Act
+            secureDecimal++;
+
+            // Assert
+            Assert.Equal(11m, (decimal) secureDecimal);
+        }
+
+        /// <summary>
+        ///     Tests that test decrement
+        /// </summary>
+        [Fact]
+        public void TestDecrement()
+        {
+            // Arrange
+            SecureDecimal secureDecimal = new SecureDecimal(10m);
+
+            // Act
+            secureDecimal--;
+
+            // Assert
+            Assert.Equal(9m, (decimal) secureDecimal);
+        }
+
+        /// <summary>
+        ///     Tests that test addition
+        /// </summary>
+        [Fact]
+        public void TestAddition()
+        {
+            // Arrange
+            SecureDecimal secureDecimal1 = new SecureDecimal(10m);
+            SecureDecimal secureDecimal2 = new SecureDecimal(20m);
+
+            // Act
+            SecureDecimal result = secureDecimal1 + secureDecimal2;
+
+            // Assert
+            Assert.Equal(30m, (decimal) result);
+        }
+
+        /// <summary>
+        ///     Tests that test subtraction
+        /// </summary>
+        [Fact]
+        public void TestSubtraction()
+        {
+            // Arrange
+            SecureDecimal secureDecimal1 = new SecureDecimal(20m);
+            SecureDecimal secureDecimal2 = new SecureDecimal(10m);
+
+            // Act
+            SecureDecimal result = secureDecimal1 - secureDecimal2;
+
+            // Assert
+            Assert.Equal(10m, (decimal) result);
+        }
+
+        /// <summary>
+        ///     Tests that test multiplication
+        /// </summary>
+        [Fact]
+        public void TestMultiplication()
+        {
+            // Arrange
+            SecureDecimal secureDecimal1 = new SecureDecimal(10m);
+            SecureDecimal secureDecimal2 = new SecureDecimal(20m);
+
+            // Act
+            SecureDecimal result = secureDecimal1 * secureDecimal2;
+
+            // Assert
+            Assert.Equal(200m, (decimal) result);
+        }
+
+        /// <summary>
+        ///     Tests that test division
+        /// </summary>
+        [Fact]
+        public void TestDivision()
+        {
+            // Arrange
+            SecureDecimal secureDecimal1 = new SecureDecimal(20m);
+            SecureDecimal secureDecimal2 = new SecureDecimal(10m);
+
+            // Act
+            SecureDecimal result = secureDecimal1 / secureDecimal2;
+
+            // Assert
+            Assert.Equal(2m, (decimal) result);
+        }
     }
 }

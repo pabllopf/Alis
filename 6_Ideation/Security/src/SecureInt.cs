@@ -73,85 +73,79 @@ namespace Alis.Core.Aspect.Security
                 }
             }
         }
-        
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static implicit operator SecureInt(int value) => new SecureInt(value);
-/// <summary>
-/// 
-/// </summary>
-/// <param name="value"></param>
-/// <returns></returns>
+
+        /// <summary>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator int(SecureInt value) => value.Value;
-/// <summary>
-/// 
-/// </summary>
-/// <param name="a"></param>
-/// <param name="b"></param>
-/// <returns></returns>
+
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator ==(SecureInt a, SecureInt b) => a.Value == b.Value;
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="a"></param>
-/// <param name="b"></param>
-/// <returns></returns>
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator !=(SecureInt a, SecureInt b) => a.Value != b.Value;
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="a"></param>
-/// <returns></returns>
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static SecureInt operator ++(SecureInt a)
         {
             a.Value++;
             return a;
         }
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="a"></param>
-/// <returns></returns>
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static SecureInt operator --(SecureInt a)
         {
             a.Value--;
             return a;
         }
-/// <summary>
-/// 
-/// </summary>
-/// <param name="a"></param>
-/// <param name="b"></param>
-/// <returns></returns>
+
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureInt operator +(SecureInt a, SecureInt b) => new SecureInt(a.Value + b.Value);
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="a"></param>
-/// <param name="b"></param>
-/// <returns></returns>
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureInt operator -(SecureInt a, SecureInt b) => new SecureInt(a.Value - b.Value);
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="a"></param>
-/// <param name="b"></param>
-/// <returns></returns>
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureInt operator *(SecureInt a, SecureInt b) => new SecureInt(a.Value * b.Value);
-/// <summary>
-/// 
-/// </summary>
-/// <param name="a"></param>
-/// <param name="b"></param>
-/// <returns></returns>
+
+        /// <summary>
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureInt operator /(SecureInt a, SecureInt b) => new SecureInt(a.Value / b.Value);
 
         /// <summary>
