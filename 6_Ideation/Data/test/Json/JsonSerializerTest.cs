@@ -1446,14 +1446,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             long position = JsonSerializer.GetPosition(reader);
             Assert.Equal(0, position); // Adjust this based on the expected position
         }
-        
+
         /// <summary>
         /// Tests that write dictionary writes correct json
         /// </summary>
         [Fact]
         public void WriteDictionary_WritesCorrectJson()
         {
-            Dictionary<string, string> dictionary = new Dictionary<string, string> { { "key1", "value1" }, { "key2", "value2" } };
+            Dictionary<string, string> dictionary = new Dictionary<string, string> {{"key1", "value1"}, {"key2", "value2"}};
             StringWriter writer = new StringWriter();
             Dictionary<object, object> objectGraph = new Dictionary<object, object>();
             JsonOptions options = new JsonOptions();
@@ -1488,7 +1488,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void WriteObject_WritesCorrectJson()
         {
-            var obj = new { Property1 = "Value1", Property2 = "Value2" };
+            var obj = new {Property1 = "Value1", Property2 = "Value2"};
             StringWriter writer = new StringWriter();
             Dictionary<object, object> objectGraph = new Dictionary<object, object>();
             JsonOptions options = new JsonOptions();
@@ -1498,7 +1498,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string expected = "{}";
             Assert.Equal(expected, writer.ToString());
         }
-        
+
         /// <summary>
         /// Tests that write dictionary entry writes correct entry
         /// </summary>

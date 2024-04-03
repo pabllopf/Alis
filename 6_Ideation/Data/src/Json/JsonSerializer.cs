@@ -3610,7 +3610,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="writer">The writer</param>
         /// <param name="enumerable">The enumerable</param>
         /// <param name="options">The options</param>
-        private static void WriteEnumerable(IndentedTextWriter writer, IEnumerable enumerable, JsonOptions options)
+        internal static void WriteEnumerable(IndentedTextWriter writer, IEnumerable enumerable, JsonOptions options)
         {
             writer.WriteLine('[');
             bool first = true;
