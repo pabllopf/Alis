@@ -446,7 +446,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type</param>
         /// <param name="options">The options</param>
         /// <returns>An enumerable of member definition</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static IEnumerable<MemberDefinition> EnumerateDefinitionsUsingReflection(bool serialization, Type type, JsonOptions options)
         {
             foreach (MemberDefinition member in HandlePropertySerialization(serialization, type, options))
@@ -714,7 +714,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type</param>
         /// <param name="options">The options</param>
         /// <returns>An enumerable of member definition</returns>
-        [ExcludeFromCodeCoverage]
+        
         private static IEnumerable<MemberDefinition> EnumerateDefinitionsUsingTypeDescriptors(bool serialization, Type type, JsonOptions options)
         {
             foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(type).Cast<PropertyDescriptor>())

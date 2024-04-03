@@ -170,7 +170,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="writer">The output writer. May not be null.</param>
         /// <param name="value">The object to serialize.</param>
         /// <param name="options">Options to use for serialization.</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void Serialize(TextWriter writer, object value, JsonOptions options = null)
         {
             if (writer == null)
@@ -206,7 +206,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>
         ///     An instance of an object representing the input data.
         /// </returns>
-        [ExcludeFromCodeCoverage]
+        
         public static object Deserialize(string text, Type targetType = null, JsonOptions options = null)
         {
             if (text == null)
@@ -255,7 +255,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>
         ///     An instance of an object representing the input data.
         /// </returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static object Deserialize(TextReader reader, Type targetType = null, JsonOptions options = null)
         {
             if (reader == null)
@@ -301,7 +301,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The input reader. May not be null.</param>
         /// <param name="target">The object instance to populate.</param>
         /// <param name="options">Options to use for deserialization.</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void DeserializeToTarget(TextReader reader, object target, JsonOptions options = null)
         {
             if (reader == null)
@@ -324,7 +324,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input object.</param>
         /// <param name="target">The target object.</param>
         /// <param name="options">Options to use.</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void Apply(object input, object target, JsonOptions options = null)
         {
             options ??= new JsonOptions();
@@ -360,7 +360,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         /// <param name="value">The value</param>
         /// <returns>The object</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static object CreateInstance(object target, Type type, int elementsCount, JsonOptions options, object value)
         {
             try
@@ -412,7 +412,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="dictionary">The dictionary</param>
         /// <param name="key">The key</param>
         /// <returns>The list object</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static ListObject GetListObject(Type type, JsonOptions options, object target, object value, IDictionary dictionary, string key)
         {
             if (options.GetListObjectCallback != null)
@@ -578,7 +578,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="target">The target</param>
         /// <param name="options">The options</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void Apply(IEnumerable input, Array target, JsonOptions options)
         {
             if (!(target is {Rank: 1}))
@@ -623,7 +623,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="att">The att</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static bool TryGetObjectDefaultValue(Attribute att, out object value)
         {
             switch (att)
@@ -645,7 +645,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="att">The att</param>
         /// <returns>The string</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static string GetObjectName(Attribute att)
         {
             return att switch
@@ -663,7 +663,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="mi">The mi</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static bool TryGetObjectDefaultValue(MemberInfo mi, out object value)
         {
             object[] objects = mi.GetCustomAttributes(true);
@@ -685,7 +685,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="mi">The mi</param>
         /// <param name="defaultName">The default name</param>
         /// <returns>The default name</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static string GetObjectName(MemberInfo mi, string defaultName)
         {
             object[] objects = mi.GetCustomAttributes(true);
@@ -707,7 +707,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="pd">The pd</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static bool TryGetObjectDefaultValue(PropertyDescriptor pd, out object value)
         {
             foreach (Attribute att in pd.Attributes.Cast<Attribute>())
@@ -728,7 +728,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="pd">The pd</param>
         /// <param name="defaultName">The default name</param>
         /// <returns>The default name</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static string GetObjectName(PropertyDescriptor pd, string defaultName)
         {
             foreach (Attribute att in pd.Attributes.Cast<Attribute>())
@@ -758,7 +758,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="mi">The mi</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static bool HasScriptIgnore(MemberInfo mi)
         {
             object[] objs = mi.GetCustomAttributes(true);
@@ -783,7 +783,7 @@ namespace Alis.Core.Aspect.Data.Json
             return false;
         }
 
-        //[ExcludeFromCodeCoverage]
+        //
         /// <summary>
         ///     Applies the dictionary
         /// </summary>
@@ -883,7 +883,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="pi">The pi</param>
         /// <returns>The json attribute</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static JsonPropertyNameAttribute GetJsonAttribute(MemberInfo pi)
         {
             object[] objs = pi.GetCustomAttributes(true);
@@ -913,7 +913,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="collectionType">The collection type.</param>
         /// <returns>The element type or typeof(object) if it was not determined.</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static Type GetItemType(Type collectionType)
         {
             if (collectionType == null)
@@ -1183,7 +1183,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <returns>The object array</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static object[] ReadArray(TextReader reader, JsonOptions options)
         {
             if (!ReadWhitespaces(reader))
@@ -1258,7 +1258,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <returns>The long</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static long GetPosition(TextReader reader)
         {
             switch (reader)
@@ -1296,7 +1296,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <returns>A dictionary of string and object</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static Dictionary<string, object> ReadDictionary(TextReader reader, JsonOptions options)
         {
             if (!ReadWhitespaces(reader))
@@ -1362,7 +1362,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <returns>The string</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static string ReadString(TextReader reader, JsonOptions options)
         {
             StringBuilder sb = new StringBuilder();
@@ -1447,7 +1447,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="typeName">The type name</param>
         /// <param name="values">The values</param>
         /// <returns>The serializable</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static ISerializable ReadSerializable(TextReader reader, JsonOptions options, string typeName, Dictionary<string, object> values)
         {
             Type type;
@@ -1497,7 +1497,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="arrayMode">The array mode</param>
         /// <param name="arrayEnd">The array end</param>
         /// <returns>The object</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static object ReadValue(TextReader reader, JsonOptions options, bool arrayMode, out bool arrayEnd)
         {
             arrayEnd = false;
@@ -1650,7 +1650,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         /// <param name="arrayEnd">The array end</param>
         /// <returns>The object</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static object ReadNew(TextReader reader, JsonOptions options, out bool arrayEnd)
         {
             arrayEnd = false;
@@ -1912,7 +1912,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="styles">The styles</param>
         /// <param name="dt">The dt</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static bool TryParseDateTime(string text, DateTimeStyles styles, out DateTime dt)
         {
             dt = DateTime.MinValue;
@@ -2217,7 +2217,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="ex">The ex</param>
         /// <param name="options">The options</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void HandleException(Exception ex, JsonOptions options)
         {
             if (options is {ThrowExceptions: false})
@@ -2236,7 +2236,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="c">The </param>
         /// <param name="options">The options</param>
         /// <returns>The byte</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static byte GetHexValue(TextReader reader, char c, JsonOptions options)
         {
             c = char.ToLower(c);
@@ -2272,7 +2272,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <returns>The ushort</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static ushort ReadX4(TextReader reader, JsonOptions options)
         {
             int u = 0;
@@ -2304,7 +2304,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="cont">The cont</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static bool ReadWhile(TextReader reader, Predicate<char> cont)
         {
             do
@@ -2844,7 +2844,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="objectGraph">The object graph.</param>
         /// <param name="options">The options to use.</param>
         /// <returns>The number of written bytes.</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static long WriteBase64Stream(TextWriter writer, Stream stream, IDictionary<object, object> objectGraph, JsonOptions options = null)
         {
             if (writer == null)
@@ -2943,7 +2943,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="keyType">The key type</param>
         /// <param name="valueType">The value type</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static bool InternalIsKeyValuePairEnumerable(Type type, out Type keyType, out Type valueType)
         {
             keyType = null;
@@ -2973,7 +2973,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="dt">The dt</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void AppendTimeZoneUtcOffset(TextWriter writer, DateTime dt)
         {
             if (dt.Kind != DateTimeKind.Utc)
@@ -2999,7 +2999,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="array">The array. May not be null.</param>
         /// <param name="objectGraph">The object graph.</param>
         /// <param name="options">The options to use.</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void WriteArray(TextWriter writer, Array array, IDictionary<object, object> objectGraph, JsonOptions options = null)
         {
             if (writer == null)
@@ -3039,7 +3039,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
         /// <param name="indices">The indices</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void WriteArray(TextWriter writer, Array array, IDictionary<object, object> objectGraph, JsonOptions options, int[] indices)
         {
             int[] newIndices = new int[indices.Length + 1];
@@ -3078,7 +3078,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="enumerable">The enumerable. May not be null.</param>
         /// <param name="objectGraph">The object graph.</param>
         /// <param name="options">The options to use.</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void WriteEnumerable(TextWriter writer, IEnumerable enumerable, IDictionary<object, object> objectGraph, JsonOptions options = null)
         {
             if (writer == null)
@@ -3121,7 +3121,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="dictionary">The dictionary. May not be null.</param>
         /// <param name="objectGraph">The object graph.</param>
         /// <param name="options">The options to use.</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void WriteDictionary(TextWriter writer, IDictionary dictionary, IDictionary<object, object> objectGraph, JsonOptions options = null)
         {
             if (writer == null)
@@ -3180,7 +3180,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="serializable">The serializable</param>
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void WriteSerializable(TextWriter writer, ISerializable serializable, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             SerializationInfo info = new SerializationInfo(serializable.GetType(), DefaultFormatterConverter);
@@ -3228,7 +3228,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void WriteObject(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options = null)
         {
             CheckAndSetOptions(writer, value, ref objectGraph, ref options);
@@ -3344,7 +3344,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>true if the specified value is a value type and is equal to zero; false otherwise.</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static bool IsZeroValueType(object value)
         {
             if (value == null)
@@ -3399,7 +3399,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="writer">The input writer. May not be null.</param>
         /// <param name="text">The text.</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void WriteString(TextWriter writer, string text)
         {
             if (writer == null)
@@ -3423,7 +3423,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="writer">The input writer. May not be null.</param>
         /// <param name="text">The text.</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void WriteUnescapedString(TextWriter writer, string text)
         {
             if (writer == null)
@@ -3473,7 +3473,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="writer">The output writer. May not be null.</param>
         /// <param name="value">The JSON object. May be null.</param>
         /// <param name="options">The options to use. May be null.</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void SerializeFormatted(TextWriter writer, object value, JsonOptions options = null)
         {
             if (writer == null)
@@ -3506,7 +3506,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="writer">The output writer. May not be null.</param>
         /// <param name="jsonObject">The JSON object. May be null.</param>
         /// <param name="options">The options to use. May be null.</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void WriteFormatted(TextWriter writer, object jsonObject, JsonOptions options = null)
         {
             if (writer == null)
@@ -3525,7 +3525,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="writer">The writer</param>
         /// <param name="jsonObject">The json object</param>
         /// <param name="options">The options</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void WriteFormatted(IndentedTextWriter writer, object jsonObject, JsonOptions options)
         {
             switch (jsonObject)
@@ -3639,7 +3639,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="value">The string to escape.</param>
         /// <returns>A JSON-escaped string.</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static string EscapeString(string value)
         {
             if (string.IsNullOrEmpty(value))
@@ -3739,7 +3739,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>
         ///     The nullified string value or null if not found.
         /// </returns>
-        [ExcludeFromCodeCoverage]
+        
         public static string GetNullifiedStringValueByPath(this IDictionary<string, object> dictionary, string path)
         {
             if (dictionary == null)
@@ -3767,7 +3767,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>
         ///     true if the value parameter was retrieved successfully; otherwise, false.
         /// </returns>
-        [ExcludeFromCodeCoverage]
+        
         public static bool TryGetValueByPath<T>(this IDictionary<string, object> dictionary, string path, out T value)
         {
             if (dictionary == null)
@@ -3796,7 +3796,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>
         ///     true if the value parameter was retrieved successfully; otherwise, false.
         /// </returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static bool TryGetValueByPath(this IDictionary<string, object> dictionary, string path, out object value)
         {
             if (path == null)
@@ -3856,7 +3856,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <typeparam name="T">The </typeparam>
         /// <param name="attributes">The attributes</param>
         /// <returns>The</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static T GetAttribute<T>(this AttributeCollection attributes) where T : Attribute
         {
             foreach (object att in attributes)
@@ -3877,7 +3877,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="text">The text</param>
         /// <param name="trim">The trim</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static bool EqualsIgnoreCase(this string str, string text, bool trim = false)
         {
             if (trim)
