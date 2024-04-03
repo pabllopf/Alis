@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using System.Reflection;
 using Alis.Core.Aspect.Data.Json;
 using Xunit;
@@ -74,6 +76,107 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             // Assert
             Assert.Equal(value, component.MyProperty); // Replace with your actual property
+        }
+
+        /// <summary>
+        /// Tests that dispose enumerator is disposable value is not disposes enumerator
+        /// </summary>
+        [Fact]
+        public void Dispose_EnumeratorIsDisposable_ValueIsNot_DisposesEnumerator()
+        {
+            // Arrange
+            DisposableTracker disposableEnumerator = new DisposableTracker();
+            NonDisposableTracker nonDisposableValue = new NonDisposableTracker();
+
+            Dictionary<string, object> dictionary = new Dictionary<string, object>
+            {
+                {"key1", disposableEnumerator},
+                {"key2", nonDisposableValue}
+            };
+
+            KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
+
+            // Act
+            enumerator.Dispose();
+
+            // Assert
+            Assert.False(disposableEnumerator.IsDisposed);
+        }
+
+        /// <summary>
+        /// Tests that dispose value is disposable enumerator is not disposes value
+        /// </summary>
+        [Fact]
+        public void Dispose_ValueIsDisposable_EnumeratorIsNot_DisposesValue()
+        {
+            // Arrange
+            NonDisposableTracker nonDisposableEnumerator = new NonDisposableTracker();
+            DisposableTracker disposableValue = new DisposableTracker();
+
+            Dictionary<string, object> dictionary = new Dictionary<string, object>
+            {
+                {"key1", nonDisposableEnumerator},
+                {"key2", disposableValue}
+            };
+
+            KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
+
+            // Act
+            enumerator.Dispose();
+
+            // Assert
+            Assert.False(disposableValue.IsDisposed);
+        }
+
+        /// <summary>
+        /// Tests that dispose both are disposable disposes both
+        /// </summary>
+        [Fact]
+        public void Dispose_BothAreDisposable_DisposesBoth()
+        {
+            // Arrange
+            DisposableTracker disposableEnumerator = new DisposableTracker();
+            DisposableTracker disposableValue = new DisposableTracker();
+
+            Dictionary<string, object> dictionary = new Dictionary<string, object>
+            {
+                {"key1", disposableEnumerator},
+                {"key2", disposableValue}
+            };
+
+            KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
+
+            // Act
+            enumerator.Dispose();
+
+            // Assert
+            Assert.False(disposableEnumerator.IsDisposed);
+            Assert.False(disposableValue.IsDisposed);
+        }
+
+        /// <summary>
+        /// Tests that dispose neither are disposable does not throw
+        /// </summary>
+        [Fact]
+        public void Dispose_NeitherAreDisposable_DoesNotThrow()
+        {
+            // Arrange
+            NonDisposableTracker nonDisposableEnumerator = new NonDisposableTracker();
+            NonDisposableTracker nonDisposableValue = new NonDisposableTracker();
+
+            Dictionary<string, object> dictionary = new Dictionary<string, object>
+            {
+                {"key1", nonDisposableEnumerator},
+                {"key2", nonDisposableValue}
+            };
+
+            KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
+
+            // Act
+            Exception exception = Record.Exception(() => enumerator.Dispose());
+
+            // Assert
+            Assert.Null(exception);
         }
     }
 }

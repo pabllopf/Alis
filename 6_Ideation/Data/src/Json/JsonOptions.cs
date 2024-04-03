@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Data.Json
     /// <summary>
     ///     Define options for JSON.
     /// </summary>
-    public class JsonOptions
+    public class JsonOptions 
     {
         /// <summary>
         ///     The allow white spaces

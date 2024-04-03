@@ -266,20 +266,20 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Dispose_WhenCalled_DisposesEnumeratorAndValueIfDisposable()
         {
             // Arrange
-            var disposableTrackers = new List<DisposableTracker> { new DisposableTracker(), new DisposableTracker() };
-            var dictionary = new Dictionary<string, DisposableTracker>();
-            foreach (var tracker in disposableTrackers)
+            List<DisposableTracker> disposableTrackers = new List<DisposableTracker> { new DisposableTracker(), new DisposableTracker() };
+            Dictionary<string, DisposableTracker> dictionary = new Dictionary<string, DisposableTracker>();
+            foreach (DisposableTracker tracker in disposableTrackers)
             {
                 dictionary.Add(Guid.NewGuid().ToString(), tracker);
             }
 
-            var enumerator = new KeyValueTypeEnumerator(dictionary);
+            KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
 
             // Act
             enumerator.Dispose();
 
             // Assert
-            foreach (var tracker in disposableTrackers)
+            foreach (DisposableTracker tracker in disposableTrackers)
             {
                 Assert.False(tracker.IsDisposed);
             }
