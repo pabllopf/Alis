@@ -231,8 +231,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void EqualsDefaultValue_DefaultValue_ReturnsTrue()
         {
-            MemberDefinition memberDefinition = new MemberDefinition();
-            memberDefinition.DefaultValue = "default";
+            MemberDefinition memberDefinition = new MemberDefinition
+            {
+                DefaultValue = "default"
+            };
             bool result = memberDefinition.EqualsDefaultValue("default");
             Assert.True(result);
         }
@@ -279,8 +281,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void ToString_ReturnsName()
         {
-            MemberDefinition memberDefinition = new MemberDefinition();
-            memberDefinition.Name = "TestName";
+            MemberDefinition memberDefinition = new MemberDefinition
+            {
+                Name = "TestName"
+            };
             string result = memberDefinition.ToString();
             Assert.Equal("TestName", result);
         }

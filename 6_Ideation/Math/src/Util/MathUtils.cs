@@ -203,20 +203,7 @@ namespace Alis.Core.Aspect.Math.Util
                 Position = MulT(a.Rotation, b.Position - a.Position)
             };
         }
-
-        /// <summary>
-        ///     Swaps the a
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        public static void Swap<T>(ref T a, ref T b)
-        {
-            T tmp = a;
-            a = b;
-            b = tmp;
-        }
-
+        
         /// <summary>Multiply a matrix times a vector.</summary>
         public static Vector2 Mul22(Matrix3X3 a, Vector2 v) =>
             new Vector2(a.Ex.X * v.X + a.Ey.X * v.Y, a.Ex.Y * v.X + a.Ey.Y * v.Y);
@@ -228,9 +215,11 @@ namespace Alis.Core.Aspect.Math.Util
             // [qs  qc]   [rs  rc]   [qs*rc+qc*rs -qs*rs+qc*rc]
             // s = qs * rc + qc * rs
             // c = qc * rc - qs * rs
-            Rotation qr = new Rotation(0);
-            qr.Sine = q.Sine * r.Cosine + q.Cosine * r.Sine;
-            qr.Cosine = q.Cosine * r.Cosine - q.Sine * r.Sine;
+            Rotation qr = new Rotation(0)
+            {
+                Sine = q.Sine * r.Cosine + q.Cosine * r.Sine,
+                Cosine = q.Cosine * r.Cosine - q.Sine * r.Sine
+            };
             return qr;
         }
 
@@ -257,9 +246,11 @@ namespace Alis.Core.Aspect.Math.Util
             // [-qs qc]   [rs  rc]   [-qs*rc+qc*rs qs*rs+qc*rc]
             // s = qc * rs - qs * rc
             // c = qc * rc + qs * rs
-            Rotation qr = new Rotation(0);
-            qr.Sine = q.Cosine * r.Sine - q.Sine * r.Cosine;
-            qr.Cosine = q.Cosine * r.Cosine + q.Sine * r.Sine;
+            Rotation qr = new Rotation(0)
+            {
+                Sine = q.Cosine * r.Sine - q.Sine * r.Cosine,
+                Cosine = q.Cosine * r.Cosine + q.Sine * r.Sine
+            };
             return qr;
         }
 
@@ -353,27 +344,12 @@ namespace Alis.Core.Aspect.Math.Util
             c = a.X * b.Y - a.Y * b.X;
         }
 
-        /// <summary>
-        ///     Return the angle between two vectors on a plane The angle is from vector 1 to vector 2, positive anticlockwise
-        ///     The result is between -pi -> pi
-        /// </summary>
         public static double VectorAngle(ref Vector2 p1, ref Vector2 p2)
         {
             double theta1 = System.Math.Atan2(p1.Y, p1.X);
             double theta2 = System.Math.Atan2(p2.Y, p2.X);
-            double dtheta = theta2 - theta1;
-
-            while (dtheta > Constant.Pi)
-            {
-                dtheta -= Constant.TwoPi;
-            }
-
-            while (dtheta < -Constant.Pi)
-            {
-                dtheta += Constant.TwoPi;
-            }
-
-            return dtheta;
+            double vectorAngle = System.Math.IEEERemainder(theta2 - theta1, Constant.TwoPi);
+            return vectorAngle;
         }
 
         /// <summary>Perform the dot product on two vectors.</summary>

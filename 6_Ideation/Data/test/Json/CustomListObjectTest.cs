@@ -45,8 +45,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void Clear_ListIsEmpty_DoesNotThrowException()
         {
-            CustomListObject customListObject = new CustomListObject();
-            customListObject.List = new ArrayList();
+            CustomListObject customListObject = new CustomListObject
+            {
+                List = new ArrayList()
+            };
             customListObject.Clear();
             Assert.Empty(customListObject.List as IList ?? throw new InvalidOperationException());
         }

@@ -79,8 +79,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             List<Customer> list = new List<Customer>();
             for (int i = 0; i < 10; i++)
             {
-                Customer customer = new Customer();
-                customer.Index = i;
+                Customer customer = new Customer
+                {
+                    Index = i
+                };
                 list.Add(customer);
             }
 
@@ -99,22 +101,36 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Dictionary<Guid, Customer> dic = new Dictionary<Guid, Customer>();
             for (int i = 0; i < 10; i++)
             {
-                Customer customer = new Customer();
-                customer.Index = i;
-                customer.Name = "This is a name 这是一个名字" + Environment.TickCount;
-                Address address1 = new Address();
-                address1.ZipCode = 75000;
-                address1.City = new City();
-                address1.City.Name = "Paris";
-                address1.City.Country = new Country();
-                address1.City.Country.Name = "France";
+                Customer customer = new Customer
+                {
+                    Index = i,
+                    Name = "This is a name 这是一个名字" + Environment.TickCount
+                };
+                Address address1 = new Address
+                {
+                    ZipCode = 75000,
+                    City = new City
+                    {
+                        Name = "Paris",
+                        Country = new Country
+                        {
+                            Name = "France"
+                        }
+                    }
+                };
 
-                Address address2 = new Address();
-                address2.ZipCode = 10001;
-                address2.City = new City();
-                address2.City.Name = "New York";
-                address2.City.Country = new Country();
-                address2.City.Country.Name = "USA";
+                Address address2 = new Address
+                {
+                    ZipCode = 10001,
+                    City = new City
+                    {
+                        Name = "New York",
+                        Country = new Country
+                        {
+                            Name = "USA"
+                        }
+                    }
+                };
 
                 customer.Addresses = new[] {address1, address2};
 

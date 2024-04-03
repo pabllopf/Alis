@@ -179,12 +179,14 @@ namespace Alis.Sample.Play.Video
                 (int) vstream.Width,
                 (int) vstream.Height);
 
-            AudioSpec wavSpec = new AudioSpec();
-            wavSpec.freq = astream.SampleRateNumber; // Usar la tasa de muestreo del audio
-            wavSpec.format = Sdl.GlAudioS16Sys; // Formato de audio estándar
-            wavSpec.channels = (byte) astream.Channels; // Usar el número de canales del audio
-            wavSpec.samples = 2048; // Tamaño del buffer de audio (puede necesitar ajustes)
-            wavSpec.callback = null; // No estamos usando una función de callback
+            AudioSpec wavSpec = new AudioSpec
+            {
+                freq = astream.SampleRateNumber, // Usar la tasa de muestreo del audio
+                format = Sdl.GlAudioS16Sys, // Formato de audio estándar
+                channels = (byte) astream.Channels, // Usar el número de canales del audio
+                samples = 2048, // Tamaño del buffer de audio (puede necesitar ajustes)
+                callback = null // No estamos usando una función de callback
+            };
 
             int deviceId = (int) Sdl.OpenAudioDevice(IntPtr.Zero, 0, ref wavSpec, out wavSpec, 0);
             if (deviceId == 0)

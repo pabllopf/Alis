@@ -537,10 +537,11 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void IsEnable_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
-
-            // Act
-            gameObject.IsEnable = false;
+            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject
+            {
+                // Act
+                IsEnable = false
+            };
 
             // Assert
             Assert.False(gameObject.IsEnable);
@@ -553,10 +554,11 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void Name_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
-
-            // Act
-            gameObject.Name = "TestGameObject";
+            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject
+            {
+                // Act
+                Name = "TestGameObject"
+            };
 
             // Assert
             Assert.Equal("TestGameObject", gameObject.Name);
@@ -569,10 +571,11 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void Id_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
-
-            // Act
-            gameObject.Id = "123";
+            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject
+            {
+                // Act
+                Id = "123"
+            };
 
             // Assert
             Assert.Equal("123", gameObject.Id);
@@ -585,10 +588,11 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void Tag_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
-
-            // Act
-            gameObject.Tag = "TestTag";
+            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject
+            {
+                // Act
+                Tag = "TestTag"
+            };
 
             // Assert
             Assert.Equal("TestTag", gameObject.Tag);

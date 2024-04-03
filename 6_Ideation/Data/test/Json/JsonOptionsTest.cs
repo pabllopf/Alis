@@ -55,8 +55,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void TestThrowExceptionsProperty()
         {
-            JsonOptions options = new JsonOptions();
-            options.ThrowExceptions = true;
+            JsonOptions options = new JsonOptions
+            {
+                ThrowExceptions = true
+            };
             Assert.True(options.ThrowExceptions);
         }
 
@@ -66,8 +68,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void TestMaximumExceptionsCountProperty()
         {
-            JsonOptions options = new JsonOptions();
-            options.MaximumExceptionsCount = 100;
+            JsonOptions options = new JsonOptions
+            {
+                MaximumExceptionsCount = 100
+            };
             Assert.Equal(100, options.MaximumExceptionsCount);
         }
 
@@ -77,8 +81,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void TestJsonPCallbackProperty()
         {
-            JsonOptions options = new JsonOptions();
-            options.JsonPCallback = "callback";
+            JsonOptions options = new JsonOptions
+            {
+                JsonPCallback = "callback"
+            };
             Assert.Equal("callback", options.JsonPCallback);
         }
 
@@ -88,8 +94,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void TestGuidFormatProperty()
         {
-            JsonOptions options = new JsonOptions();
-            options.GuidFormat = "D";
+            JsonOptions options = new JsonOptions
+            {
+                GuidFormat = "D"
+            };
             Assert.Equal("D", options.GuidFormat);
         }
 
@@ -99,8 +107,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void TestDateTimeFormatProperty()
         {
-            JsonOptions options = new JsonOptions();
-            options.DateTimeFormat = "yyyy-MM-dd";
+            JsonOptions options = new JsonOptions
+            {
+                DateTimeFormat = "yyyy-MM-dd"
+            };
             Assert.Equal("yyyy-MM-dd", options.DateTimeFormat);
         }
 
@@ -110,8 +120,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void TestDateTimeOffsetFormatProperty()
         {
-            JsonOptions options = new JsonOptions();
-            options.DateTimeOffsetFormat = "yyyy-MM-dd";
+            JsonOptions options = new JsonOptions
+            {
+                DateTimeOffsetFormat = "yyyy-MM-dd"
+            };
             Assert.Equal("yyyy-MM-dd", options.DateTimeOffsetFormat);
         }
 
@@ -121,8 +133,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void TestDateTimeStylesProperty()
         {
-            JsonOptions options = new JsonOptions();
-            options.DateTimeStyles = DateTimeStyles.AssumeUniversal;
+            JsonOptions options = new JsonOptions
+            {
+                DateTimeStyles = DateTimeStyles.AssumeUniversal
+            };
             Assert.Equal(DateTimeStyles.AssumeUniversal, options.DateTimeStyles);
         }
 
@@ -132,8 +146,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void TestStreamingBufferChunkSizeProperty()
         {
-            JsonOptions options = new JsonOptions();
-            options.StreamingBufferChunkSize = 512;
+            JsonOptions options = new JsonOptions
+            {
+                StreamingBufferChunkSize = 512
+            };
             Assert.Equal(512, options.StreamingBufferChunkSize);
         }
 
@@ -143,8 +159,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void TestFormattingTabProperty()
         {
-            JsonOptions options = new JsonOptions();
-            options.FormattingTab = " ";
+            JsonOptions options = new JsonOptions
+            {
+                FormattingTab = " "
+            };
             Assert.Equal(" ", options.FormattingTab);
         }
 
@@ -207,8 +225,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestFinalStreamingBufferChunkSizeProperty()
         {
             // Arrange
-            JsonOptions options = new JsonOptions();
-            options.StreamingBufferChunkSize = 600;
+            JsonOptions options = new JsonOptions
+            {
+                StreamingBufferChunkSize = 600
+            };
 
             // Act
             int result = options.FinalStreamingBufferChunkSize;
@@ -256,8 +276,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestAddExceptionMethodWithMaximumExceptionsCountExceeded()
         {
             // Arrange
-            JsonOptions options = new JsonOptions();
-            options.MaximumExceptionsCount = 1;
+            JsonOptions options = new JsonOptions
+            {
+                MaximumExceptionsCount = 1
+            };
             Exception ex1 = new Exception("Test exception 1");
             Exception ex2 = new Exception("Test exception 2");
 

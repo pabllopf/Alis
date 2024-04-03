@@ -241,5 +241,96 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.False(matrix1.Equals(matrix3));
             Assert.False(matrix1.Equals("not a matrix"));
         }
+        
+        /// <summary>
+        /// Tests that create rotation x with zero radians returns identity matrix
+        /// </summary>
+        [Fact]
+        public void CreateRotationX_WithZeroRadians_ReturnsIdentityMatrix()
+        {
+            // Arrange
+            Matrix4X4 expected = Matrix4X4.Identity;
+
+            // Act
+            Matrix4X4 result = Matrix4X4.CreateRotationX(0);
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
+
+        /// <summary>
+        /// Tests that create rotation x with non zero radians returns correct matrix
+        /// </summary>
+        [Fact]
+        public void CreateRotationX_WithNonZeroRadians_ReturnsCorrectMatrix()
+        {
+            // Arrange
+            float radians = MathF.Pi / 4; // 45 degrees
+            Matrix4X4 expected = new Matrix4X4(
+                1f, 0f, 0f, 0f,
+                0f, MathF.Cos(radians), MathF.Sin(radians), 0f,
+                0f, -MathF.Sin(radians), MathF.Cos(radians), 0f,
+                0f, 0f, 0f, 1f);
+
+            // Act
+            Matrix4X4 result = Matrix4X4.CreateRotationX(radians);
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
+        
+        /// <summary>
+        /// Tests that multiply with identity matrix returns same matrix
+        /// </summary>
+        [Fact]
+        public void Multiply_WithIdentityMatrix_ReturnsSameMatrix()
+        {
+            // Arrange
+            Matrix4X4 matrix1 = new Matrix4X4(
+                1f, 2f, 3f, 4f,
+                5f, 6f, 7f, 8f,
+                9f, 10f, 11f, 12f,
+                13f, 14f, 15f, 16f);
+
+            Matrix4X4 identityMatrix = Matrix4X4.Identity;
+
+            // Act
+            Matrix4X4 result = Matrix4X4.Multiply(matrix1, identityMatrix);
+
+            // Assert
+            Assert.Equal(matrix1, result);
+        }
+
+        /// <summary>
+        /// Tests that multiply with non identity matrix returns correct matrix
+        /// </summary>
+        [Fact]
+        public void Multiply_WithNonIdentityMatrix_ReturnsCorrectMatrix()
+        {
+            // Arrange
+            Matrix4X4 matrix1 = new Matrix4X4(
+                1f, 2f, 3f, 4f,
+                5f, 6f, 7f, 8f,
+                9f, 10f, 11f, 12f,
+                13f, 14f, 15f, 16f);
+
+            Matrix4X4 matrix2 = new Matrix4X4(
+                17f, 18f, 19f, 20f,
+                21f, 22f, 23f, 24f,
+                25f, 26f, 27f, 28f,
+                29f, 30f, 31f, 32f);
+
+            Matrix4X4 expected = new Matrix4X4(
+                250f, 260f, 270f, 280f,
+                618f, 644f, 670f, 696f,
+                986f, 1028f, 1070f, 1112f,
+                1354f, 1412f, 1470f, 1528f);
+
+            // Act
+            Matrix4X4 result = Matrix4X4.Multiply(matrix1, matrix2);
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
     }
 }
