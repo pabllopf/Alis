@@ -87,13 +87,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void JsonEventArgs_PropertiesCanBeSet()
         {
-            JsonEventArgs eventArgs = new JsonEventArgs(null, null, null, null);
-
-            eventArgs.EventType = JsonEventType.Unspecified;
-            eventArgs.Handled = true;
-            eventArgs.First = true;
-            eventArgs.Value = new object();
-            eventArgs.Name = "TestName";
+            JsonEventArgs eventArgs = new JsonEventArgs(null, null, null, null)
+            {
+                EventType = JsonEventType.Unspecified,
+                Handled = true,
+                First = true,
+                Value = new object(),
+                Name = "TestName"
+            };
 
             Assert.Equal(JsonEventType.Unspecified, eventArgs.EventType);
             Assert.True(eventArgs.Handled);

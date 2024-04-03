@@ -644,10 +644,11 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void IsEnable_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
-
-            // Act
-            scene.IsEnable = false;
+            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene
+            {
+                // Act
+                IsEnable = false
+            };
 
             // Assert
             Assert.False(scene.IsEnable);
@@ -660,10 +661,11 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void Name_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
-
-            // Act
-            scene.Name = "TestScene";
+            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene
+            {
+                // Act
+                Name = "TestScene"
+            };
 
             // Assert
             Assert.Equal("TestScene", scene.Name);
@@ -676,10 +678,11 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void Id_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
-
-            // Act
-            scene.Id = "123";
+            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene
+            {
+                // Act
+                Id = "123"
+            };
 
             // Assert
             Assert.Equal("123", scene.Id);
@@ -692,10 +695,11 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void Tag_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
-
-            // Act
-            scene.Tag = "TestTag";
+            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene
+            {
+                // Act
+                Tag = "TestTag"
+            };
 
             // Assert
             Assert.Equal("TestTag", scene.Tag);

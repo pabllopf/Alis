@@ -492,10 +492,11 @@ namespace Alis.Core.Test.Ecs.System
         public void IsRunning_GetSetPropertyWorks()
         {
             // Arrange
-            GameSample game = new GameSample();
-
-            // Act
-            game.IsRunning = false;
+            GameSample game = new GameSample
+            {
+                // Act
+                IsRunning = false
+            };
 
             // Assert
             Assert.False(game.IsRunning);

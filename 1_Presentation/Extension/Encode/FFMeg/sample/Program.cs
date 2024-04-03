@@ -159,8 +159,10 @@ namespace Alis.Extension.Encode.FFMeg.Sample
         /// <param name="output">The output</param>
         private static void ConvertVideo(string input, string output)
         {
-            VP9Encoder encoder = new VP9Encoder();
-            encoder.RowBasedMultithreading = true;
+            VP9Encoder encoder = new VP9Encoder
+            {
+                RowBasedMultithreading = true
+            };
             encoder.SetCQP();
 
             using (VideoReader reader = new VideoReader(input))
