@@ -221,5 +221,68 @@ namespace Alis.Core.Aspect.Data.Test.Json
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(new List<int>());
             Assert.Throws<NotSupportedException>(() => { dictionary["test"] = "value"; });
         }
+        
+        
+        /// <summary>
+        /// Tests that test move next with empty collection returns false
+        /// </summary>
+        [Fact]
+        public void TestMoveNext_WithEmptyCollection_ReturnsFalse()
+        {
+            // Arrange
+            List<KeyValuePair<string, string>> emptyCollection = new List<KeyValuePair<string, string>>();
+            KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(emptyCollection);
+
+            // Act
+            bool result = enumerator.MoveNext();
+
+            // Assert
+            Assert.False(result);
+        }
+
+        /// <summary>
+        /// Tests that test move next with non empty collection returns true
+        /// </summary>
+        [Fact]
+        public void TestMoveNext_WithNonEmptyCollection_ReturnsTrue()
+        {
+            // Arrange
+            List<KeyValuePair<string, string>> collection = new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("key", "value") };
+            KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(collection);
+
+            // Act
+            bool result = enumerator.MoveNext();
+
+            // Assert
+            Assert.True(result);
+        }
+        
+        
+        
+       /// <summary>
+       /// Tests that dispose when called disposes enumerator and value if disposable
+       /// </summary>
+       [Fact]
+        public void Dispose_WhenCalled_DisposesEnumeratorAndValueIfDisposable()
+        {
+            // Arrange
+            var disposableTrackers = new List<DisposableTracker> { new DisposableTracker(), new DisposableTracker() };
+            var dictionary = new Dictionary<string, DisposableTracker>();
+            foreach (var tracker in disposableTrackers)
+            {
+                dictionary.Add(Guid.NewGuid().ToString(), tracker);
+            }
+
+            var enumerator = new KeyValueTypeEnumerator(dictionary);
+
+            // Act
+            enumerator.Dispose();
+
+            // Assert
+            foreach (var tracker in disposableTrackers)
+            {
+                Assert.False(tracker.IsDisposed);
+            }
+        }
     }
 }
