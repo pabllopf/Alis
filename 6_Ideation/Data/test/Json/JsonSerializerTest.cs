@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -1444,6 +1445,74 @@ namespace Alis.Core.Aspect.Data.Test.Json
             using StringReader reader = new StringReader("Test string");
             long position = JsonSerializer.GetPosition(reader);
             Assert.Equal(0, position); // Adjust this based on the expected position
+        }
+        
+        /// <summary>
+        /// Tests that write dictionary writes correct json
+        /// </summary>
+        [Fact]
+        public void WriteDictionary_WritesCorrectJson()
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string> { { "key1", "value1" }, { "key2", "value2" } };
+            StringWriter writer = new StringWriter();
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+
+            JsonSerializer.WriteDictionary(writer, dictionary, objectGraph, options);
+
+            string expected = "{\"key1\":\"value1\",\"key2\":\"value2\"}";
+            Assert.Equal(expected, writer.ToString());
+        }
+
+        /// <summary>
+        /// Tests that write serializable writes correct json
+        /// </summary>
+        [Fact]
+        public void WriteSerializable_WritesCorrectJson()
+        {
+            SerializableObject serializable = new SerializableObject();
+            StringWriter writer = new StringWriter();
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+
+            JsonSerializer.WriteSerializable(writer, serializable, objectGraph, options);
+
+            string expected = "\"Property\":\"Value\",\"__type\":\"Alis.Core.Aspect.Data.Test.Json.SerializableObject, Alis.Core.Aspect.Data.Test, Version=0.2.7.0, Culture=neutral, PublicKeyToken=null\"";
+            string result = writer.ToString();
+            Assert.Equal(expected, result);
+        }
+
+        /// <summary>
+        /// Tests that write object writes correct json
+        /// </summary>
+        [Fact]
+        public void WriteObject_WritesCorrectJson()
+        {
+            var obj = new { Property1 = "Value1", Property2 = "Value2" };
+            StringWriter writer = new StringWriter();
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+
+            JsonSerializer.WriteObject(writer, obj, objectGraph, options);
+
+            string expected = "{}";
+            Assert.Equal(expected, writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that write dictionary entry writes correct entry
+        /// </summary>
+        [Fact]
+        public void WriteDictionaryEntry_WritesCorrectEntry()
+        {
+            IndentedTextWriter writer = new IndentedTextWriter(new StringWriter());
+            DictionaryEntry entry = new DictionaryEntry("key", "value");
+            JsonOptions options = new JsonOptions();
+
+            JsonSerializer.WriteDictionaryEntry(writer, entry, options);
+
+            string expected = "\"key\": \"value\"";
+            Assert.Equal(expected, writer.InnerWriter.ToString());
         }
     }
 }

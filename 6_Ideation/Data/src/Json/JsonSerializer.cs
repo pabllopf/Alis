@@ -3554,7 +3554,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="writer">The writer</param>
         /// <param name="entry">The entry</param>
         /// <param name="options">The options</param>
-        private static void WriteDictionaryEntry(IndentedTextWriter writer, DictionaryEntry entry, JsonOptions options)
+        internal static void WriteDictionaryEntry(IndentedTextWriter writer, DictionaryEntry entry, JsonOptions options)
         {
             string entryKey = string.Format(CultureInfo.InvariantCulture, "{0}", entry.Key);
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.WriteKeysWithoutQuotes))
