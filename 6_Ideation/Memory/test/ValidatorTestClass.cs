@@ -54,7 +54,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <param name="testParam">The test param</param>
         public void TestMethod([IsNotEmpty] string testParam)
         {
-            Console.WriteLine("Test method");
+            Sum(1, 2);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// </summary>
         public void TestMethod2()
         {
-            Console.WriteLine("Test method 2");
+            Sum(1, 2);
         }
 
         /// <summary>
@@ -72,7 +72,12 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <param name="testParam2">The test param</param>
         public void TestMethod3([IsNotEmpty] string testParam, [IsNotNull] string testParam2)
         {
-            Console.WriteLine("Test method 3");
+            Sum(1, 2);
+        }
+
+        public int Sum(int a, int b)
+        {
+            return a + b;
         }
     }
 }

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 
 namespace Alis.Core.Aspect.Logging
 {
@@ -49,6 +50,7 @@ namespace Alis.Core.Aspect.Logging
         /// <summary>
         ///     Traces the message
         /// </summary>
+        [Conditional("DEBUG")]
         public static void Trace()
         {
             if (LogLevel.Trace >= LogLevel)
@@ -61,6 +63,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Traces the message
         /// </summary>
         /// <param name="message">The message</param>
+        [Conditional("DEBUG")]
         public static void Trace(string message)
         {
             if (LogLevel.Trace >= LogLevel)
@@ -72,6 +75,7 @@ namespace Alis.Core.Aspect.Logging
         /// <summary>
         ///     Info
         /// </summary>
+        [Conditional("DEBUG")]
         public static void Info()
         {
             if (LogLevel.Info >= LogLevel)
@@ -84,6 +88,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Info the message
         /// </summary>
         /// <param name="message">The message</param>
+        [Conditional("DEBUG")]
         public static void Info(string message)
         {
             if (LogLevel.Info >= LogLevel)
@@ -96,6 +101,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Logs the message
         /// </summary>
         /// <param name="message">The message</param>
+        [Conditional("DEBUG")]
         public static void Log(string message)
         {
             if (LogLevel.Log >= LogLevel)
@@ -108,6 +114,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Events the message
         /// </summary>
         /// <param name="message">The message</param>
+        [Conditional("DEBUG")]
         public static void Event(string message)
         {
             if (LogLevel.Event >= LogLevel)
@@ -119,6 +126,7 @@ namespace Alis.Core.Aspect.Logging
         /// <summary>
         ///     Events
         /// </summary>
+        [Conditional("DEBUG")]
         public static void Event()
         {
             if (LogLevel.Event >= LogLevel)
@@ -131,6 +139,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Warnings the message
         /// </summary>
         /// <param name="message">The message</param>
+        [Conditional("DEBUG")]
         public static void Warning(string message)
         {
             if (LogLevel.Warning >= LogLevel)
@@ -143,6 +152,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Errors the message
         /// </summary>
         /// <param name="message">The message</param>
+        [Conditional("DEBUG")]
         public static void Error(string message)
         {
             if (LogLevel.Critical >= LogLevel)
@@ -155,6 +165,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Exceptions the message
         /// </summary>
         /// <param name="message">The message</param>
+        [Conditional("DEBUG")]
         public static void Exception(string message)
         {
             if (LogLevel.Critical >= LogLevel)
@@ -167,6 +178,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Exceptions the exception
         /// </summary>
         /// <param name="exception">The exception</param>
+        [Conditional("DEBUG")]
         public static void Exception(Exception exception)
         {
             if (LogLevel.Critical >= LogLevel)
@@ -179,6 +191,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Sets the detail level using the specified detail level
         /// </summary>
         /// <param name="detailLevel">The detail level</param>
+        [Conditional("DEBUG")]
         public static void SetDetailLevel(DetailLevel detailLevel) => DetailLevel = detailLevel;
     }
 }
