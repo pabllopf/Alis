@@ -1,4 +1,5 @@
 using System;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
 {
@@ -14,11 +15,11 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
         {
             FastPriorityQueueExample.RunExample();
 
-            Console.WriteLine("------------------------------");
+            Logger.Info("------------------------------");
 
             SimplePriorityQueueExample.RunExample();
 
-            Console.WriteLine("End Program...");
+            Logger.Info("End Program...");
         }
     }
 }

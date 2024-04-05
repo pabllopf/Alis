@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Data.Mapping;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Audio;
@@ -75,7 +76,7 @@ namespace Alis.Sample.Flappy.Bird
             if (key == KeyCode.Space)
             {
                 boxCollider.Body.LinearVelocity = new Vector2(0, -8f);
-                Console.WriteLine("Go up!");
+                Logger.Info("Go up!");
             }
         }
     }

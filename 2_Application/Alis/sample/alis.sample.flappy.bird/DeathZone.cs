@@ -76,7 +76,7 @@ namespace Alis.Sample.Flappy.Bird
                 if (TimeDelta <= 0.0f)
                 {
                     VideoGame.Instance.SceneManager.LoadScene("Main Menu");
-                    Console.WriteLine("RESET LEVEL");
+                    Logger.Info("RESET LEVEL");
                 }
             }
         }
@@ -89,7 +89,7 @@ namespace Alis.Sample.Flappy.Bird
         {
             if (gameObject.Tag == "Player")
             {
-                Console.WriteLine($"Player dead by '{GameObject.Name}'");
+                Logger.Info($"Player dead by '{GameObject.Name}'");
 
                 if (gameObject.Contains<BirdController>() && !gameObject.Get<BirdController>().IsDead)
                 {
@@ -97,7 +97,7 @@ namespace Alis.Sample.Flappy.Bird
                     gameObject.Get<AudioSource>().Play();
 
                     gameObject.Remove(gameObject.Get<BirdController>());
-                    Console.WriteLine("Player remove bird controller");
+                    Logger.Info("Player remove bird controller");
 
                     gameObject.Get<BoxCollider>().Body.Rotation = 45f;
                     gameObject.Get<BoxCollider>().Body.LinearVelocity = new Vector2(0, 7);

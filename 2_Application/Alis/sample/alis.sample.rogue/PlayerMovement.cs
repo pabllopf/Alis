@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Data.Mapping;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
@@ -64,25 +65,25 @@ namespace Alis.Sample.Rogue
             if (key == KeyCode.D)
             {
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X + 1, GameObject.Transform.Position.Y), GameObject.Transform.Rotation, GameObject.Transform.Scale);
-                Console.WriteLine(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation.Angle);
+               Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation.Angle);
             }
 
             if (key == KeyCode.A)
             {
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X - 1, GameObject.Transform.Position.Y), GameObject.Transform.Rotation, GameObject.Transform.Scale);
-                Console.WriteLine(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation.Angle);
+               Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation.Angle);
             }
 
             if (key == KeyCode.W)
             {
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y - 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);
-                Console.WriteLine(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation.Angle);
+               Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation.Angle);
             }
 
             if (key == KeyCode.S)
             {
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y + 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);
-                Console.WriteLine(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation.Angle);
+               Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation.Angle);
             }
         }
     }
