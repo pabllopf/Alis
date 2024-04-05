@@ -30,6 +30,7 @@
 using System;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
@@ -89,7 +90,7 @@ namespace Alis.Core.Ecs.Component.Render
             if (!string.IsNullOrEmpty(TexturePath))
             {
                 Image = new Image(TexturePath);
-                Console.WriteLine($"Load sprite od '{TexturePath}'");
+                Logger.Info($"Load sprite od '{TexturePath}'");
             }
         }
 

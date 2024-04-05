@@ -46,44 +46,7 @@ namespace Alis.Sample.Play.Video
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            VideoGame
-                .Builder()
-                .Settings(setting => setting
-                    .General(general => general
-                        .Name("Video sample")
-                        .Author("Pablo Perdomo Falcón")
-                        .Description("Video camera game.")
-                        .Debug(true)
-                        .License("GNU General Public License v3.0")
-                        .Icon(AssetManager.Find("app.bmp"))
-                        .Build())
-                    .Profile(profile => profile
-                        .LogLevel(LogLevel.Critical)
-                        .Build())
-                    .Audio(audio => audio
-                        .Build())
-                    .Graphic(graphic => graphic
-                        .Window(window => window
-                            .Resolution(1024, 640)
-                            .Background(Color.Black)
-                            .Build())
-                        .Build())
-                    .Physic(physic => physic
-                        .Gravity(0.0f, -9.8f)
-                        .Debug(true)
-                        .DebugColor(Color.Green)
-                        .Build())
-                    .Build())
-                .World(sceneManager => sceneManager
-                    .Add<Scene>(gameScene => gameScene
-
-                        // Play video
-                        .Add<GameObject>(gameObject => gameObject
-                            .Name("video")
-                            .Build()) // End game object
-                        .Build()) // End scene
-                    .Build()) // End world
-                .Run();
+            SdlController.Run();
         }
     }
 }
