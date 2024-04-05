@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:StoreSettingBuilder.cs
+//  File:CloudManager.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,26 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.System.Setting.Store;
+using Alis.Core.Ecs.System.Manager;
+using Alis.Core.Ecs.System.Manager.Cloud;
 
-namespace Alis.Builder.Core.Ecs.System.Setting.Store
+namespace Alis.Extension.Cloud.GoogleDrive
 {
     /// <summary>
-    ///     The audio setting builder class
+    ///     The cloud manager class
     /// </summary>
-    public class StoreSettingBuilder :
-        IBuild<StoreSetting>
+    /// <seealso cref="Manager" />
+    /// <seealso cref="ICloudManager" />
+    public class GoogleDriveCloudManager : Manager, ICloudManager
     {
-        /// <summary>
-        ///     The audio setting
-        /// </summary>
-        private readonly StoreSetting storeSetting = new StoreSetting();
-
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The audio setting</returns>
-        public StoreSetting Build() => storeSetting;
     }
 }

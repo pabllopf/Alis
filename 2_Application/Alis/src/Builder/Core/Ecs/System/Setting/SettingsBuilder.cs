@@ -28,10 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Builder.Core.Ecs.System.Setting.Ads;
-using Alis.Builder.Core.Ecs.System.Setting.Ai;
 using Alis.Builder.Core.Ecs.System.Setting.Audio;
-using Alis.Builder.Core.Ecs.System.Setting.Cloud;
 using Alis.Builder.Core.Ecs.System.Setting.General;
 using Alis.Builder.Core.Ecs.System.Setting.Graphic;
 using Alis.Builder.Core.Ecs.System.Setting.Input;
@@ -40,15 +37,10 @@ using Alis.Builder.Core.Ecs.System.Setting.Physic;
 using Alis.Builder.Core.Ecs.System.Setting.Plugin;
 using Alis.Builder.Core.Ecs.System.Setting.Profile;
 using Alis.Builder.Core.Ecs.System.Setting.Scene;
-using Alis.Builder.Core.Ecs.System.Setting.Script;
-using Alis.Builder.Core.Ecs.System.Setting.Store;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.System.Setting;
-using Alis.Core.Ecs.System.Setting.Ads;
-using Alis.Core.Ecs.System.Setting.Ai;
 using Alis.Core.Ecs.System.Setting.Audio;
-using Alis.Core.Ecs.System.Setting.Cloud;
 using Alis.Core.Ecs.System.Setting.General;
 using Alis.Core.Ecs.System.Setting.Graphic;
 using Alis.Core.Ecs.System.Setting.Input;
@@ -57,8 +49,6 @@ using Alis.Core.Ecs.System.Setting.Physic;
 using Alis.Core.Ecs.System.Setting.Plugin;
 using Alis.Core.Ecs.System.Setting.Profile;
 using Alis.Core.Ecs.System.Setting.Scene;
-using Alis.Core.Ecs.System.Setting.Script;
-using Alis.Core.Ecs.System.Setting.Store;
 
 namespace Alis.Builder.Core.Ecs.System.Setting
 {
@@ -67,10 +57,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
     /// </summary>
     public class SettingsBuilder :
         IBuild<Settings>,
-        IAds<SettingsBuilder, Func<AdsSettingBuilder, AdsSetting>>,
-        IAi<SettingsBuilder, Func<AiSettingBuilder, AiSetting>>,
         IAudio<SettingsBuilder, Func<AudioSettingBuilder, AudioSetting>>,
-        ICloud<SettingsBuilder, Func<CloudSettingBuilder, CloudSetting>>,
         IGeneral<SettingsBuilder, Func<GeneralSettingBuilder, GeneralSetting>>,
         IGraphic<SettingsBuilder, Func<GraphicSettingBuilder, GraphicSetting>>,
         IInput<SettingsBuilder, Func<InputSettingBuilder, InputSetting>>,
@@ -78,37 +65,13 @@ namespace Alis.Builder.Core.Ecs.System.Setting
         IPhysic<SettingsBuilder, Func<PhysicSettingBuilder, PhysicSetting>>,
         IPlugin<SettingsBuilder, Func<PluginSettingBuilder, PluginSetting>>,
         IProfile<SettingsBuilder, Func<ProfileSettingBuilder, ProfileSetting>>,
-        IScene<SettingsBuilder, Func<SceneSettingBuilder, SceneSetting>>,
-        IScript<SettingsBuilder, Func<ScriptSettingBuilder, ScriptSetting>>,
-        IStore<SettingsBuilder, Func<StoreSettingBuilder, StoreSetting>>
+        IScene<SettingsBuilder, Func<SceneSettingBuilder, SceneSetting>>
     {
         /// <summary>
         ///     The setting base
         /// </summary>
         private readonly Settings settingBase = new Settings();
-
-        /// <summary>
-        ///     Ads the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The settings builder</returns>
-        public SettingsBuilder Ads(Func<AdsSettingBuilder, AdsSetting> value)
-        {
-            settingBase.Ads = value.Invoke(new AdsSettingBuilder());
-            return this;
-        }
-
-        /// <summary>
-        ///     Ais the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The settings builder</returns>
-        public SettingsBuilder Ai(Func<AiSettingBuilder, AiSetting> value)
-        {
-            settingBase.Ai = value.Invoke(new AiSettingBuilder());
-            return this;
-        }
-
+        
         /// <summary>
         ///     Audio the value
         /// </summary>
@@ -125,18 +88,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
         /// </summary>
         /// <returns></returns>
         public Settings Build() => settingBase;
-
-        /// <summary>
-        ///     Clouds the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The settings builder</returns>
-        public SettingsBuilder Cloud(Func<CloudSettingBuilder, CloudSetting> value)
-        {
-            settingBase.Cloud = value.Invoke(new CloudSettingBuilder());
-            return this;
-        }
-
+        
         /// <summary>
         ///     Generals the value
         /// </summary>
@@ -223,28 +175,6 @@ namespace Alis.Builder.Core.Ecs.System.Setting
         public SettingsBuilder Scene(Func<SceneSettingBuilder, SceneSetting> value)
         {
             settingBase.Scene = value.Invoke(new SceneSettingBuilder());
-            return this;
-        }
-
-        /// <summary>
-        ///     Scripts the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The settings builder</returns>
-        public SettingsBuilder Script(Func<ScriptSettingBuilder, ScriptSetting> value)
-        {
-            settingBase.Script = value.Invoke(new ScriptSettingBuilder());
-            return this;
-        }
-
-        /// <summary>
-        ///     Stores the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The settings builder</returns>
-        public SettingsBuilder Store(Func<StoreSettingBuilder, StoreSetting> value)
-        {
-            settingBase.Store = value.Invoke(new StoreSettingBuilder());
             return this;
         }
     }

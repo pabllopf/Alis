@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sample.cs
+//  File:StoreManager.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,12 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Extension.Ads.GoogleAds
+using Alis.Core.Ecs.System.Manager;
+using Alis.Core.Ecs.System.Manager.Store;
+
+namespace Alis.Extension.Payment.Stripe
 {
     /// <summary>
-    ///     The sample class
+    ///     The store manager class
     /// </summary>
-    public class Sample
+    /// <seealso cref="IStoreManager" />
+    public class StoreManager : Manager, IStoreManager
     {
     }
 }

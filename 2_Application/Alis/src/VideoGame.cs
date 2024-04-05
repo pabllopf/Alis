@@ -32,7 +32,6 @@ using Alis.Builder.Core.Ecs.System;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
-using Alis.Core.Ecs.System.Manager.Ads;
 using Alis.Core.Ecs.System.Manager.Audio;
 using Alis.Core.Ecs.System.Manager.Graphic;
 using Alis.Core.Ecs.System.Manager.Input;
@@ -41,8 +40,6 @@ using Alis.Core.Ecs.System.Manager.Physic;
 using Alis.Core.Ecs.System.Manager.Plugin;
 using Alis.Core.Ecs.System.Manager.Profile;
 using Alis.Core.Ecs.System.Manager.Scene;
-using Alis.Core.Ecs.System.Manager.Script;
-using Alis.Core.Ecs.System.Manager.Store;
 using Alis.Core.Ecs.System.Setting;
 
 namespace Alis
@@ -60,7 +57,6 @@ namespace Alis
         {
             Managers = new List<IManager>(new List<Manager>
             {
-                new AdsManager(),
                 new AudioManager(),
                 new PhysicManager(),
                 new GraphicManager(),
@@ -68,8 +64,6 @@ namespace Alis
                 new InputManager(),
                 new NetworkManager(),
                 new PluginManager(),
-                new ScriptManager(),
-                new StoreManager(),
                 new ProfileManager()
             });
 
@@ -83,12 +77,7 @@ namespace Alis
         ///     Gets or sets the value of the instance
         /// </summary>
         public static VideoGame Instance { get; private set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the ads setting
-        /// </summary>
-        public AdsManager AdsManager => Get<AdsManager>();
-
+        
         /// <summary>
         ///     Gets or sets the value of the audio manager
         /// </summary>
@@ -128,17 +117,7 @@ namespace Alis
         ///     Gets or sets the value of the scene manager
         /// </summary>
         public SceneManager SceneManager => Get<SceneManager>();
-
-        /// <summary>
-        ///     Gets or sets the value of the script manager
-        /// </summary>
-        public ScriptManager ScriptManager => Get<ScriptManager>();
-
-        /// <summary>
-        ///     Gets or sets the value of the store manager
-        /// </summary>
-        public StoreManager StoreManager => Get<StoreManager>();
-
+        
         /// <summary>
         ///     Gets or sets the value of the setting
         /// </summary>
