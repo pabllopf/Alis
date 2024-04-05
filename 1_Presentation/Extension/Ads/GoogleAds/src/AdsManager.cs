@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sample.cs
+//  File:AdsManager.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,12 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Extension.Cloud.GoogleDrive
+using Alis.Core.Ecs.System.Manager;
+using Alis.Core.Ecs.System.Manager.Ads;
+
+namespace Alis.Extension.Ads.GoogleAds
 {
     /// <summary>
-    ///     The sample class
+    ///     The ads manager class
     /// </summary>
-    public class Sample
+    /// <seealso cref="Manager" />
+    /// <seealso cref="IAdsManager" />
+    public class AdsManager : Manager, IAdsManager
     {
     }
 }

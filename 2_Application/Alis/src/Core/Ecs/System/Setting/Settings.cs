@@ -27,10 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Setting.Ads;
-using Alis.Core.Ecs.System.Setting.Ai;
 using Alis.Core.Ecs.System.Setting.Audio;
-using Alis.Core.Ecs.System.Setting.Cloud;
 using Alis.Core.Ecs.System.Setting.General;
 using Alis.Core.Ecs.System.Setting.Graphic;
 using Alis.Core.Ecs.System.Setting.Input;
@@ -39,8 +36,6 @@ using Alis.Core.Ecs.System.Setting.Physic;
 using Alis.Core.Ecs.System.Setting.Plugin;
 using Alis.Core.Ecs.System.Setting.Profile;
 using Alis.Core.Ecs.System.Setting.Scene;
-using Alis.Core.Ecs.System.Setting.Script;
-using Alis.Core.Ecs.System.Setting.Store;
 
 namespace Alis.Core.Ecs.System.Setting
 {
@@ -54,27 +49,12 @@ namespace Alis.Core.Ecs.System.Setting
         ///     Gets or sets the value of the general
         /// </summary>
         public GeneralSetting General { get; set; } = new GeneralSetting();
-
-        /// <summary>
-        ///     Gets or sets the value of the ads
-        /// </summary>
-        public AdsSetting Ads { get; set; } = new AdsSetting();
-
-        /// <summary>
-        ///     Gets or sets the value of the ai
-        /// </summary>
-        public AiSetting Ai { get; set; } = new AiSetting();
-
+        
         /// <summary>
         ///     Gets or sets the value of the audio
         /// </summary>
         public AudioSetting Audio { get; set; } = new AudioSetting();
-
-        /// <summary>
-        ///     Gets or sets the value of the cloud
-        /// </summary>
-        public CloudSetting Cloud { get; set; } = new CloudSetting();
-
+        
         /// <summary>
         ///     Gets or sets the value of the graphic
         /// </summary>
@@ -109,15 +89,5 @@ namespace Alis.Core.Ecs.System.Setting
         ///     Gets or sets the value of the scene
         /// </summary>
         public SceneSetting Scene { get; set; } = new SceneSetting();
-
-        /// <summary>
-        ///     Gets or sets the value of the script
-        /// </summary>
-        public ScriptSetting Script { get; set; } = new ScriptSetting();
-
-        /// <summary>
-        ///     Gets or sets the value of the store
-        /// </summary>
-        public StoreSetting Store { get; set; } = new StoreSetting();
     }
 }

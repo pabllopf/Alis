@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AiManagerBuilder.cs
+//  File:CloudManager.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,21 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.System.Manager.Ai;
+using Alis.Core.Ecs.System.Manager;
+using Alis.Core.Ecs.System.Manager.Cloud;
 
-namespace Alis.Builder.Core.Ecs.System.Manager.Ai
+namespace Alis.Extension.Cloud.DropBox
 {
     /// <summary>
-    ///     The scene manager builder class
+    ///     The cloud manager class
     /// </summary>
-    public class AiManagerBuilder :
-        IBuild<AiManager>
+    /// <seealso cref="Manager" />
+    /// <seealso cref="ICloudManager" />
+    public class DropBoxCloudManager : Manager, ICloudManager
     {
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The ai manager</returns>
-        public AiManager Build() => new AiManager();
     }
 }
