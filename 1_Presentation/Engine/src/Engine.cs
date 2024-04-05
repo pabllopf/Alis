@@ -34,6 +34,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Alis.App.Engine.Windows;
 using Alis.Core.Aspect.Data.Mapping;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.Sdl2;
@@ -221,13 +222,13 @@ namespace Alis.App.Engine
             // initialize SDL and set a few defaults for the OpenGL context
             if (Sdl.Init(InitSettings.InitVideo) != 0)
             {
-                Console.WriteLine($@"Error of SDL2: {Sdl.GetError()}");
+                Logger.Info($@"Error of SDL2: {Sdl.GetError()}");
                 return;
             }
 
             // GET VERSION SDL2
             Version version = Sdl.GetVersion();
-            Console.WriteLine(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
+            Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
             Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContexts.SdlGlContextForwardCompatibleFlag);
@@ -268,7 +269,7 @@ namespace Alis.App.Engine
 
             io.DisplaySize = new Vector2(800, 600);
 
-            Console.WriteLine($@"IMGUI VERSION {ImGui.GetVersion()}");
+            Logger.Info($@"IMGUI VERSION {ImGui.GetVersion()}");
 
             // active plot renders
             io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset | ImGuiBackendFlags.PlatformHasViewports | ImGuiBackendFlags.HasGamepad | ImGuiBackendFlags.HasMouseHoveredViewport | ImGuiBackendFlags.HasMouseCursors;
@@ -296,13 +297,13 @@ namespace Alis.App.Engine
 
             if (!Directory.Exists(dirFonts))
             {
-                Console.WriteLine(@$"ERROR, DIR NOT FOUND: {dirFonts}");
+                Logger.Info(@$"ERROR, DIR NOT FOUND: {dirFonts}");
                 return;
             }
 
             if (!File.Exists(dirFonts + fontToLoad))
             {
-                Console.WriteLine(@$"ERROR, FONT NOT FOUND: {dirFonts + fontToLoad}");
+                Logger.Info(@$"ERROR, FONT NOT FOUND: {dirFonts + fontToLoad}");
                 return;
             }
 
@@ -628,7 +629,7 @@ namespace Alis.App.Engine
                 {
                     SdlScancode key = evt.key.keySym.scancode;
                     imGuiIoPtr.KeysDown[(int) key] = evt.type == EventType.Keydown;
-                    Console.WriteLine("io.KeysDown[" + key + "] = " + evt.type + imGuiIoPtr.KeysDown[(int) key]);
+                    Logger.Info("io.KeysDown[" + key + "] = " + evt.type + imGuiIoPtr.KeysDown[(int) key]);
                     imGuiIoPtr.KeyShift = (Sdl.GetModState() & KeyMods.KModShift) != 0;
                     imGuiIoPtr.KeyCtrl = (Sdl.GetModState() & KeyMods.KModCtrl) != 0;
                     imGuiIoPtr.KeyAlt = (Sdl.GetModState() & KeyMods.KModAlt) != 0;
@@ -745,7 +746,7 @@ namespace Alis.App.Engine
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
             Sdl.SwapWindow(window);
 
-            Console.WriteLine($"GL Version: {Gl.GlGetString(StringName.Version)}");
+            Logger.Info($"GL Version: {Gl.GlGetString(StringName.Version)}");
             return glContext;
         }
 
@@ -811,7 +812,7 @@ namespace Alis.App.Engine
                     ImDrawCmd pcmd = cmdList.CmdBuffer[cmdI];
                     if (pcmd.UserCallback != IntPtr.Zero)
                     {
-                        Console.WriteLine("UserCallback not implemented");
+                        Logger.Info("UserCallback not implemented");
                     }
                     else
                     {

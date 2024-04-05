@@ -53,13 +53,9 @@ namespace Alis.Core.Aspect.Data.Sample
 
             // This will produce a JSON String
             string serialized2 = JsonSerializer.Serialize(musicInfo2);
-
-            Console.WriteLine(serialized2);
-
+            
             // This will produce a copy of the instance you created earlier
             JsonSerializer.Deserialize<Music>(serialized2);
-
-            Console.WriteLine("deserialized 2");
         }
     }
 }
