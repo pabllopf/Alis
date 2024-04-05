@@ -42,7 +42,7 @@ namespace Alis.Core.Plugin.Sample
         /// </summary>
         public void Initialize()
         {
-            Logger.Trace();
+            Logger.Info($"result={Sum(1, 2)}");
         }
 
         /// <summary>

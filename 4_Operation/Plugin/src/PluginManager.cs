@@ -34,6 +34,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Plugin
 {
@@ -74,19 +75,42 @@ namespace Alis.Core.Plugin
         ///     Loads the plugins using the specified plugins directory
         /// </summary>
         /// <param name="pluginsDirectory">The plugins directory</param>
-        [ExcludeFromCodeCoverage]
         public void LoadPlugins(string pluginsDirectory)
         {
             string platformFolder = GetPlatformFolder();
-            Console.WriteLine("os: " + platformFolder);
+            string platformPluginsDirectory = GetPlatformPluginsDirectory(pluginsDirectory, platformFolder);
 
+            if (ValidatePluginsDirectory(platformPluginsDirectory))
+            {
+                IEnumerable<string> pluginFiles = GetPluginFiles(platformPluginsDirectory);
+                LoadPluginsFromFiles(pluginFiles);
+            }
+            else
+            {
+                throw new DirectoryNotFoundException("Plugins directory not found.");
+            }
+        }
+
+        /// <summary>
+        ///     Gets the platform plugins directory
+        /// </summary>
+        /// <param name="pluginsDirectory">The plugins directory</param>
+        /// <param name="platformFolder">The platform folder</param>
+        /// <returns>The platform plugins directory</returns>
+        internal string GetPlatformPluginsDirectory(string pluginsDirectory, string platformFolder)
+        {
+            Logger.Info("os: " + platformFolder);
             string platformPluginsDirectory = Path.Combine(pluginsDirectory, platformFolder);
-            Console.WriteLine("directory: " + platformPluginsDirectory);
+            Logger.Info("directory: " + platformPluginsDirectory);
+            return platformPluginsDirectory;
+        }
 
-            ValidatePluginsDirectory(platformPluginsDirectory);
-
-            IEnumerable<string> pluginFiles = GetPluginFiles(platformPluginsDirectory);
-
+        /// <summary>
+        ///     Loads the plugins from the specified files
+        /// </summary>
+        /// <param name="pluginFiles">The plugin files</param>
+        internal void LoadPluginsFromFiles(IEnumerable<string> pluginFiles)
+        {
             foreach (string pluginFile in pluginFiles)
             {
                 LoadPluginFromFile(pluginFile);
@@ -123,14 +147,10 @@ namespace Alis.Core.Plugin
         ///     Validates the plugins directory using the specified directory
         /// </summary>
         /// <param name="directory">The directory</param>
-        /// <exception cref="DirectoryNotFoundException">Plugins directory '{directory}' does not exist.</exception>
-        [ExcludeFromCodeCoverage]
-        internal static void ValidatePluginsDirectory(string directory)
+        /// <returns>True if the directory exists, false otherwise</returns>
+        internal static bool ValidatePluginsDirectory(string directory)
         {
-            if (!Directory.Exists(directory))
-            {
-                throw new DirectoryNotFoundException($"Plugins directory '{directory}' does not exist.");
-            }
+            return Directory.Exists(directory);
         }
 
         /// <summary>
@@ -146,29 +166,60 @@ namespace Alis.Core.Plugin
         ///     Loads the plugin from file using the specified plugin file
         /// </summary>
         /// <param name="pluginFile">The plugin file</param>
-        [ExcludeFromCodeCoverage]
         internal void LoadPluginFromFile(string pluginFile)
         {
-            try
-            {
-                Assembly assembly = Assembly.LoadFrom(pluginFile);
-                LoadedAssemblies.Add(assembly);
+            Assembly assembly = LoadAssembly(pluginFile);
+            InstantiatePlugins(assembly);
+        }
 
-                Type[] types = assembly.GetTypes();
+        /// <summary>
+        ///     Loads the assembly from the specified file
+        /// </summary>
+        /// <param name="pluginFile">The plugin file</param>
+        /// <returns>The loaded assembly</returns>
+        internal Assembly LoadAssembly(string pluginFile)
+        {
+            Assembly assembly = Assembly.LoadFrom(pluginFile);
+            Logger.Info($"Loaded assembly: {assembly.FullName}");
+            LoadedAssemblies.Add(assembly);
+            return assembly;
+        }
 
-                foreach (Type type in types)
-                {
-                    if (typeof(IPlugin).IsAssignableFrom(type))
-                    {
-                        IPlugin plugin = (IPlugin) Activator.CreateInstance(type);
-                        LoadedPlugins.Add(plugin);
-                    }
-                }
-            }
-            catch (Exception ex)
+        /// <summary>
+        ///     Instantiates the plugins from the specified assembly
+        /// </summary>
+        /// <param name="assembly">The assembly</param>
+        internal void InstantiatePlugins(Assembly assembly)
+        {
+            Type[] pluginTypes = GetPluginTypes(assembly);
+
+            foreach (Type type in pluginTypes)
             {
-                Console.WriteLine($"Error loading plugin from file '{pluginFile}': {ex.Message}");
+                IPlugin plugin = CreatePluginInstance(type);
+                LoadedPlugins.Add(plugin);
             }
+        }
+
+        /// <summary>
+        ///     Gets the plugin types from the specified assembly
+        /// </summary>
+        /// <param name="assembly">The assembly</param>
+        /// <returns>An array of plugin types</returns>
+        internal Type[] GetPluginTypes(Assembly assembly)
+        {
+            return assembly.GetTypes()
+                .Where(type => typeof(IPlugin).IsAssignableFrom(type))
+                .ToArray();
+        }
+
+        /// <summary>
+        ///     Creates a plugin instance from the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <returns>A plugin instance</returns>
+        internal IPlugin CreatePluginInstance(Type type)
+        {
+            return (IPlugin) Activator.CreateInstance(type);
         }
 
 
