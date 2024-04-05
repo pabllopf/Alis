@@ -75,6 +75,12 @@ namespace Alis.Core.Aspect.Memory.Test
             Sum(1, 2);
         }
 
+        /// <summary>
+        /// Sums the a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The int</returns>
         public int Sum(int a, int b)
         {
             return a + b;

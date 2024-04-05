@@ -125,7 +125,7 @@ namespace Alis.Core.Sample
 
             // GET VERSION SDL2
             Version versionSdl2 = Sdl.GetVersion();
-            Console.WriteLine($"SDL2 VERSION {versionSdl2.major}.{versionSdl2.minor}.{versionSdl2.patch}");
+            Logger.Info($"SDL2 VERSION {versionSdl2.major}.{versionSdl2.minor}.{versionSdl2.patch}");
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
             {
@@ -174,10 +174,10 @@ namespace Alis.Core.Sample
             }
 
             SdlTtf.Init();
-            Console.WriteLine($"SDL_TTF Version: {SdlTtf.GetVersion().major}.{SdlTtf.GetVersion().minor}.{SdlTtf.GetVersion().patch}");
+            Logger.Info($"SDL_TTF Version: {SdlTtf.GetVersion().major}.{SdlTtf.GetVersion().minor}.{SdlTtf.GetVersion().patch}");
 
-            Console.WriteLine("Platform: " + EmbeddedDllClass.GetCurrentPlatform());
-            Console.WriteLine("Processor: " + RuntimeInformation.ProcessArchitecture);
+            Logger.Info("Platform: " + EmbeddedDllClass.GetCurrentPlatform());
+            Logger.Info("Processor: " + RuntimeInformation.ProcessArchitecture);
 
             int outlineSize = 1;
 
@@ -300,7 +300,7 @@ namespace Alis.Core.Sample
                                 rectBorder.x += 10;
                             }
 
-                            Console.WriteLine(_sdlEvent.key.keySym.sym + " was pressed");
+                            Logger.Info(_sdlEvent.key.keySym.sym + " was pressed");
                             break;
                     }
 
@@ -309,7 +309,7 @@ namespace Alis.Core.Sample
                         if ((_sdlEvent.type == EventType.JoyButtonDown)
                             && (button == (GameControllerButton) _sdlEvent.cButton.button))
                         {
-                            Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed button={button}");
+                            Logger.Info($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed button={button}");
                         }
                     }
 
@@ -318,7 +318,7 @@ namespace Alis.Core.Sample
                         if ((_sdlEvent.type == EventType.JoyAxisMotion)
                             && (axi == (GameControllerAxis) _sdlEvent.cAxis.axis))
                         {
-                            Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed axi={axi}");
+                            Logger.Info($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed axi={axi}");
                         }
                     }
                 }
@@ -404,11 +404,11 @@ namespace Alis.Core.Sample
                 IntPtr myJoystick = Sdl.JoystickOpen(i);
                 if (myJoystick == IntPtr.Zero)
                 {
-                    Console.WriteLine(@"Ooops, something fishy's goin' on here!" + Sdl.GetError());
+                    Logger.Info(@"Ooops, something fishy's goin' on here!" + Sdl.GetError());
                 }
                 else
                 {
-                    Console.WriteLine($"[SDL_JoystickName_id = '{i}'] \n" +
+                    Logger.Info($"[SDL_JoystickName_id = '{i}'] \n" +
                                       $"SDL_JoystickName={Sdl.JoystickName(myJoystick)} \n" +
                                       $"SDL_JoystickNumAxes={Sdl.JoystickNumAxes(myJoystick)} \n" +
                                       $"SDL_JoystickNumButtons={Sdl.JoystickNumButtons(myJoystick)}");

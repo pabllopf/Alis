@@ -42,7 +42,6 @@ namespace Alis.App.Installer
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Console.WriteLine("Please, press any key to continue...");
             Console.ReadKey();
         }
     }

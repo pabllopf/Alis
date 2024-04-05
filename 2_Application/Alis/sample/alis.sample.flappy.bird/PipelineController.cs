@@ -29,6 +29,7 @@
 
 using System;
 using System.Security.Cryptography;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
@@ -107,7 +108,7 @@ namespace Alis.Sample.Flappy.Bird
 
             _randomHeight = Math.Abs(BitConverter.ToInt32(data, 0) % 100);
             _randomDirection = Math.Abs(BitConverter.ToInt32(data, 4) % 2);
-            Console.WriteLine($"{GameObject.Name} NUM={_randomHeight} Direction={_randomDirection}");
+            Logger.Info($"{GameObject.Name} NUM={_randomHeight} Direction={_randomDirection}");
 
             _generated = true;
             IsStop = false;
@@ -133,7 +134,7 @@ namespace Alis.Sample.Flappy.Bird
                     _generated = true;
                     _randomHeight = Math.Abs(BitConverter.ToInt32(data, 0) % 100);
                     _randomDirection = Math.Abs(BitConverter.ToInt32(data, 4) % 2);
-                    Console.WriteLine($"{GameObject.Name} NUM={_randomHeight} Direction={_randomDirection} velocity={Velocity}");
+                    Logger.Info($"{GameObject.Name} NUM={_randomHeight} Direction={_randomDirection} velocity={Velocity}");
                 }
 
                 switch (_randomDirection)

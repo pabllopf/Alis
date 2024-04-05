@@ -60,9 +60,9 @@ namespace Alis.Core.Aspect.Sample
         public static void Main(string[] args)
         {
             // SAMPLE ASPECT FLUENT 
-            Console.WriteLine("--------------------------");
-            Console.WriteLine("Fluent sample");
-            Console.WriteLine("--------------------------\n");
+           Logger.Info("--------------------------");
+           Logger.Info("Fluent sample");
+           Logger.Info("--------------------------\n");
 
             Car sampleCar = Car
                 .Create()
@@ -71,12 +71,12 @@ namespace Alis.Core.Aspect.Sample
                 .WithColor("Red")
                 .Build();
 
-            Console.WriteLine($"Car: Name={sampleCar.Name} Model={sampleCar.Model} Color={sampleCar.Color}");
+           Logger.Info($"Car: Name={sampleCar.Name} Model={sampleCar.Model} Color={sampleCar.Color}");
 
             // SAMPLE ASPECT DATA
-            Console.WriteLine("--------------------------");
-            Console.WriteLine("Data sample");
-            Console.WriteLine("--------------------------\n");
+           Logger.Info("--------------------------");
+           Logger.Info("Data sample");
+           Logger.Info("--------------------------\n");
 
             Music musicInfo2 = new Music
             {
@@ -89,25 +89,25 @@ namespace Alis.Core.Aspect.Sample
             // This will produce a JSON String
             string serialized2 = JsonSerializer.Serialize(musicInfo2);
 
-            Console.WriteLine(serialized2);
+           Logger.Info(serialized2);
 
             // This will produce a copy of the instance you created earlier
             JsonSerializer.Deserialize<Music>(serialized2);
 
-            Console.WriteLine("deserialized 2");
+           Logger.Info("deserialized 2");
             
             // SAMPLE ASPECT MATH
-            Console.WriteLine("--------------------------");
-            Console.WriteLine("Math sample");
-            Console.WriteLine("--------------------------\n");
+           Logger.Info("--------------------------");
+           Logger.Info("Math sample");
+           Logger.Info("--------------------------\n");
 
-            Console.WriteLine(new Vector2(3.0f, 2.0f).ToString());
-            Console.WriteLine(new Vector2(3.0f, 2.0f).ToString("F2", CultureInfo.InvariantCulture));
+           Logger.Info(new Vector2(3.0f, 2.0f).ToString());
+           Logger.Info(new Vector2(3.0f, 2.0f).ToString("F2", CultureInfo.InvariantCulture));
 
             // SAMPLE ASPECT TIME
-            Console.WriteLine("--------------------------");
-            Console.WriteLine("Time sample");
-            Console.WriteLine("--------------------------\n");
+           Logger.Info("--------------------------");
+           Logger.Info("Time sample");
+           Logger.Info("--------------------------\n");
             Clock clock = new Clock();
             clock.Start();
 
@@ -126,17 +126,17 @@ namespace Alis.Core.Aspect.Sample
 
             // Stop the clock and print the elapsed time
             clock.Stop();
-            Console.WriteLine($"Elapsed time: {clock.ElapsedMilliseconds} ms");
+           Logger.Info($"Elapsed time: {clock.ElapsedMilliseconds} ms");
 
             // Print some TimeManager properties
-            Console.WriteLine($"DeltaTime: {timeManager.DeltaTime}");
-            Console.WriteLine($"TimeScale: {timeConfig.TimeScale}");
+           Logger.Info($"DeltaTime: {timeManager.DeltaTime}");
+           Logger.Info($"TimeScale: {timeConfig.TimeScale}");
 
 
             // SAMPLE ASPECT THREAD
-            Console.WriteLine("--------------------------");
-            Console.WriteLine("Thread sample");
-            Console.WriteLine("--------------------------\n");
+           Logger.Info("--------------------------");
+           Logger.Info("Thread sample");
+           Logger.Info("--------------------------\n");
             ThreadManager threadManager = new ThreadManager();
 
             CancellationTokenSource cts1 = new CancellationTokenSource();
@@ -144,7 +144,7 @@ namespace Alis.Core.Aspect.Sample
             {
                 for (int i = 0; (i < 3) && !token.IsCancellationRequested; i++)
                 {
-                    Console.WriteLine($"Task 1 - Count: {i}");
+                   Logger.Info($"Task 1 - Count: {i}");
                     System.Threading.Thread.Sleep(1000);
                 }
             }, cts1.Token);
@@ -154,7 +154,7 @@ namespace Alis.Core.Aspect.Sample
             {
                 for (int i = 0; (i < 3) && !token.IsCancellationRequested; i++)
                 {
-                    Console.WriteLine($"Task 2 - Count: {i}");
+                   Logger.Info($"Task 2 - Count: {i}");
                     System.Threading.Thread.Sleep(1000);
                 }
             }, cts2.Token);
@@ -162,15 +162,15 @@ namespace Alis.Core.Aspect.Sample
             threadManager.StartThread(task1);
             threadManager.StartThread(task2);
 
-            Console.WriteLine("Press any key to stop threads...");
+           Logger.Info("Press any key to stop threads...");
             Console.ReadKey();
 
             threadManager.StopAllThreads();
 
             // SAMPLE ASPECT MEMORY
-            Console.WriteLine("--------------------------");
-            Console.WriteLine("Memory sample");
-            Console.WriteLine("--------------------------\n");
+           Logger.Info("--------------------------");
+           Logger.Info("Memory sample");
+           Logger.Info("--------------------------\n");
 
             try
             {
@@ -179,14 +179,14 @@ namespace Alis.Core.Aspect.Sample
             }
             catch (NotZeroException ex)
             {
-                Console.WriteLine(ex);
+               Logger.Exception(ex);
             }
 
 
             // SAMPLE ASPECT LOGGING
-            Console.WriteLine("--------------------------");
-            Console.WriteLine("Logging sample");
-            Console.WriteLine("--------------------------\n");
+           Logger.Info("--------------------------");
+           Logger.Info("Logging sample");
+           Logger.Info("--------------------------\n");
             Logger.LogLevel = LogLevel.Trace;
             Logger.Trace();
             Logger.Info();

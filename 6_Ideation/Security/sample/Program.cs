@@ -44,26 +44,32 @@ namespace Alis.Core.Aspect.Security.Sample
         {
             // SecureDouble usage
             SecureDouble secureDouble = 10.0;
-            Console.WriteLine($"SecureDouble: {secureDouble}");
-
+            secureDouble += 20.0;
+            
             // SecureFloat usage
             SecureFloat secureFloat = 10.0f;
-            Console.WriteLine($"SecureFloat: {secureFloat}");
+            secureFloat += 20.0f;
 
             // SecureInt usage
             SecureInt secureInt = 10;
-            Console.WriteLine($"SecureInt: {secureInt}");
+            secureInt += 20;
 
             // SecureLong usage
             SecureLong secureLong = 10L;
-            Console.WriteLine($"SecureLong: {secureLong}");
-
+            secureLong += 20L;
+            
             // SecureDecimal usage
             SecureDecimal secureDecimal = 10.0m;
-            Console.WriteLine($"SecureDecimal: {secureDecimal}");
-
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
+            secureDecimal += 20.0m;
+            
+            // SecureString usage
+            SecureString secureString = new SecureString("Hello");
+            
+            // SecureChar usage
+            SecureChar secureChar = 'H';
+            secureChar = 'W';
+            
+            string sample = secureString + secureChar.ToString();
         }
     }
 }
