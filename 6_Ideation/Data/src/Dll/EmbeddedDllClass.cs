@@ -67,7 +67,6 @@ namespace Alis.Core.Aspect.Data.Dll
                 if (dllBytes.TryGetValue(platformInfo, out string resourceName))
                 {
                     ExtractZipFile(dllPath, LoadResource(resourceName, assembly));
-                    Console.WriteLine($"OSPlatform={currentPlatform} | Architecture={currentArchitecture} -> lib: {dllName} dir={dllPath}");
                 }
             }
         }
@@ -196,7 +195,6 @@ namespace Alis.Core.Aspect.Data.Dll
         {
             using MemoryStream ms = zipData;
             using ZipArchive archive = new ZipArchive(ms);
-            Console.WriteLine($"Num files to unzip: '{archive.Entries.Count}'");
             foreach (ZipArchiveEntry entry in archive.Entries)
             {
                 if (string.IsNullOrEmpty(entry.Name))
@@ -210,8 +208,6 @@ namespace Alis.Core.Aspect.Data.Dll
                 }
                 
                 string fullFilePath = Path.Combine(fileDir, entry.FullName);
-
-                Console.WriteLine($"File to extract: '{fullFilePath}'");
                 
                 string canonicalDestinationPath = Path.GetFullPath(fullFilePath);
 
@@ -255,13 +251,12 @@ namespace Alis.Core.Aspect.Data.Dll
         [ExcludeFromCodeCoverage]
         internal static MemoryStream LoadResource(string resourceName, Assembly assembly)
         {
-            Console.WriteLine(@"Assembly where extract resource: " + assembly.FullName);
             string[] aResourceNames = assembly.GetManifestResourceNames();
             foreach (string aResourceName in aResourceNames)
             {
                 if (aResourceName.Contains(resourceName))
                 {
-                    Console.WriteLine(@"Exits resource: " + aResourceName);
+                   throw new Exception($"Resource {resourceName} already loaded");
                 }
             }
 
@@ -269,7 +264,6 @@ namespace Alis.Core.Aspect.Data.Dll
             MemoryStream memoryStream = new MemoryStream();
             stream?.CopyTo(memoryStream);
             memoryStream.Position = 0;
-            Console.WriteLine(@"Extract: " + resourceName);
             return memoryStream;
         }
 
@@ -291,15 +285,7 @@ namespace Alis.Core.Aspect.Data.Dll
         /// <returns>The bool</returns>
         internal static bool IsiOsSpecificConditionMet()
         {
-            try
-            {
-                return Assembly.Load(new AssemblyName("Xamarin.iOS")) != null;
-            }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine("Xamarin.iOS assembly not found.");
-                return false;
-            }
+            return Assembly.Load(new AssemblyName("Xamarin.iOS")) != null;
         }
 
         /// <summary>
@@ -308,15 +294,7 @@ namespace Alis.Core.Aspect.Data.Dll
         /// <returns>The bool</returns>
         internal static bool IsAndroidSpecificConditionMet()
         {
-            try
-            {
-                return Assembly.Load(new AssemblyName("Mono.Android")) != null;
-            }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine("Mono.Android assembly not found.");
-                return false;
-            }
+            return Assembly.Load(new AssemblyName("Mono.Android")) != null;
         }
     }
 }
