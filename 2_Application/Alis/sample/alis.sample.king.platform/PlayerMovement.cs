@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Data.Mapping;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Collider;
@@ -145,21 +146,21 @@ namespace Alis.Sample.King.Platform
             if (!isJumping && (coolDownJump <= 0) && (key == KeyCode.Space))
             {
                 isJumping = true;
-                Console.WriteLine("Jump because space key is pressed");
+                Logger.Info("Jump because space key is pressed");
             }
 
             if (key == KeyCode.D)
             {
                 directionPlayer = new Vector2(1, 0);
                 animator.ChangeAnimationTo("Run", RendererFlips.None);
-                Console.WriteLine($"Run to right because D key is pressed {directionPlayer}");
+                Logger.Info($"Run to right because D key is pressed {directionPlayer}");
             }
 
             if (key == KeyCode.A)
             {
                 directionPlayer = new Vector2(-1, 0);
                 animator.ChangeAnimationTo("Run", RendererFlips.FlipHorizontal);
-                Console.WriteLine($"Run to left because A key is pressed {directionPlayer}");
+                Logger.Info($"Run to left because A key is pressed {directionPlayer}");
             }
         }
 
