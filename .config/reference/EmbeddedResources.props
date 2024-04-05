@@ -16,11 +16,10 @@
         $(AssemblyName.Contains('Benchmark')) == False AND 
         '$(RuntimeIdentifier)' == '' AND 
         Exists('$(ProjectDir)/resources/') AND 
-        '$(DisableResources)' != 'true' AND
-        $(Configuration) == 'Debug'">
+        '$(DisableResources)' != 'true'">
         <EmbeddedResource Include="$(ProjectDir)/**/resources/**/*.zip;"/>
     </ItemGroup>
-
+    
     <!-- Resources when runtime identifier is selected -->
     <ItemGroup Condition="
         $(AssemblyName.Contains('Test')) == False AND

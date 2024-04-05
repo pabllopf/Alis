@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Entity.GameObject;
@@ -95,7 +96,7 @@ namespace Alis.Sample.Flappy.Bird
             {
                 Increment();
                 audioSource.Play();
-                Console.WriteLine("Value: " + Counter);
+                Logger.Info("Value: " + Counter);
                 isEnter = true;
             }
         }
