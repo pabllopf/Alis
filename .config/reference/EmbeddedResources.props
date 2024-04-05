@@ -16,7 +16,8 @@
         $(AssemblyName.Contains('Benchmark')) == False AND 
         '$(RuntimeIdentifier)' == '' AND 
         Exists('$(ProjectDir)/resources/') AND 
-        '$(DisableResources)' != 'true'">
+        '$(DisableResources)' != 'true' AND
+        $(Configuration) == 'Debug'">
         <EmbeddedResource Include="$(ProjectDir)/**/resources/**/*.zip;"/>
     </ItemGroup>
 
@@ -28,7 +29,8 @@
         $(AssemblyName.Contains('Benchmark')) == False AND 
         '$(RuntimeIdentifier)' != '' AND 
         Exists('$(ProjectDir)/resources/') AND
-        '$(DisableResources)' != 'true'">
+        '$(DisableResources)' != 'true' AND
+        $(Configuration) == 'Release'">
 
         <!-- Windows -->
         <EmbeddedResource Condition="$(IsARM) AND $(IsWindows)" Include="$(ProjectDir)/**/resources/**/win-arm/**/*win-arm*.zip"/>
@@ -52,7 +54,8 @@
         $(AssemblyName.Contains('Sample')) == False AND
         $(AssemblyName.Contains('Template')) == False AND 
         $(AssemblyName.Contains('Benchmark')) == False AND 
-        '$(DisableResources)' != 'true'">
+        '$(DisableResources)' != 'true' AND
+        $(Configuration) == 'Release'">
 
         <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND '$(RuntimeIdentifier)' == ''"
                           Include="$(SolutionDir)4_Operation/**/resources/**/*.zip;"

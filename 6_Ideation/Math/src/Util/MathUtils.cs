@@ -344,6 +344,12 @@ namespace Alis.Core.Aspect.Math.Util
             c = a.X * b.Y - a.Y * b.X;
         }
 
+        /// <summary>
+        /// Vectors the angle using the specified p 1
+        /// </summary>
+        /// <param name="p1">The </param>
+        /// <param name="p2">The </param>
+        /// <returns>The vector angle</returns>
         public static double VectorAngle(ref Vector2 p1, ref Vector2 p2)
         {
             double theta1 = System.Math.Atan2(p1.Y, p1.X);
