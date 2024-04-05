@@ -35,7 +35,6 @@ using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
-using System.Runtime.Serialization;
 using System.Text;
 using Alis.Core.Aspect.Data.Json;
 using Xunit;
@@ -107,11 +106,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestJsonSerializer_Deserialize_NullInput_ReturnsNull()
         {
             // Arrange
-            string json = null;
             JsonOptions options = new JsonOptions();
 
             // Act
-            string result = JsonSerializer.Deserialize<string>(json, options);
+            string result = JsonSerializer.Deserialize<string>((string) null, options);
 
             // Assert
             Assert.Null(result);
@@ -124,12 +122,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestJsonSerializer_DeserializeToTarget_NullInput_NoChanges()
         {
             // Arrange
-            string json = null;
             string target = "Initial Value";
             JsonOptions options = new JsonOptions();
 
             // Act
-            JsonSerializer.DeserializeToTarget(json, target, options);
+            JsonSerializer.DeserializeToTarget((string) null, target, options);
 
             // Assert
             Assert.Equal("Initial Value", target);
@@ -195,11 +192,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestJsonSerializer_v2_Deserialize_NullInput_ReturnsNull()
         {
             // Arrange
-            string json = null;
             JsonOptions options = new JsonOptions();
 
             // Act
-            object result = JsonSerializer.Deserialize(json, typeof(string), options);
+            object result = JsonSerializer.Deserialize((string) null, typeof(string), options);
 
             // Assert
             Assert.Null(result);
@@ -212,12 +208,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestJsonSerializer_v2_DeserializeToTarget_NullInput_NoChanges()
         {
             // Arrange
-            string json = null;
             string target = "Initial Value";
             JsonOptions options = new JsonOptions();
 
             // Act
-            JsonSerializer.DeserializeToTarget(json, target, options);
+            JsonSerializer.DeserializeToTarget((string) null, target, options);
 
             // Assert
             Assert.Equal("Initial Value", target);
@@ -393,14 +388,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestJsonSerializer_WriteNameValue_NullWriter_ThrowsArgumentNullException()
         {
             // Arrange
-            TextWriter writer = null;
             string name = "Test";
             object value = new object();
             IDictionary<object, object> objectGraph = new Dictionary<object, object>();
             JsonOptions options = new JsonOptions();
 
             // Act and Assert
-            Assert.Throws<ArgumentNullException>(() => JsonSerializer.WriteNameValue(writer, name, value, objectGraph, options));
+            Assert.Throws<ArgumentNullException>(() => JsonSerializer.WriteNameValue(null, name, value, objectGraph, options));
         }
 
         /// <summary>
@@ -411,13 +405,12 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             TextWriter writer = new StringWriter();
-            string name = null;
             object value = new object();
             IDictionary<object, object> objectGraph = new Dictionary<object, object>();
             JsonOptions options = new JsonOptions();
 
             // Act
-            JsonSerializer.WriteNameValue(writer, name, value, objectGraph, options);
+            JsonSerializer.WriteNameValue(writer, null, value, objectGraph, options);
             string result = writer.ToString();
 
             // Assert
@@ -435,10 +428,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string name = "Test";
             object value = new object();
             IDictionary<object, object> objectGraph = new Dictionary<object, object>();
-            JsonOptions options = null;
 
             // Act
-            JsonSerializer.WriteNameValue(writer, name, value, objectGraph, options);
+            JsonSerializer.WriteNameValue(writer, name, value, objectGraph);
             string result = writer.ToString();
 
             // Assert
@@ -474,11 +466,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             int[] target = new int[5];
-            IEnumerable input = new List<int> {1, 2, 3, 4, 5};
             JsonOptions options = new JsonOptions();
 
             // Act
             IDictionary<string, object> inputDictionary = new Dictionary<string, object>();
+            if (inputDictionary == null)
+            {
+                throw new ArgumentNullException(nameof(inputDictionary));
+            }
+
             JsonSerializer.Apply(inputDictionary, target, options);
 
             // Assert
@@ -497,6 +493,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             // Act
             IDictionary<string, object> input = new Dictionary<string, object>();
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
+
             JsonSerializer.Apply(input, target, options);
 
             // Assert
@@ -543,12 +544,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void TestJsonSerializer_AreValuesEqual_NullValues_ReturnsTrue()
         {
-            // Arrange
-            object o1 = null;
-            object o2 = null;
-
             // Act
-            bool result = JsonSerializer.AreValuesEqual(o1, o2);
+            bool result = JsonSerializer.AreValuesEqual(null, null);
 
             // Assert
             Assert.True(result);
@@ -581,7 +578,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             PropertyDescriptor propertyDescriptor = TypeDescriptor.GetProperties(typeof(JsonSerializer))["Serialize"];
 
             // Act
-            Assert.Throws<NullReferenceException>(() => JsonSerializer.TryGetObjectDefaultValue(propertyDescriptor, out object value));
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.TryGetObjectDefaultValue(propertyDescriptor, out object _));
         }
 
         /// <summary>
@@ -660,9 +657,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void TestTryParseDateTime_NullDateTimeString_ReturnsNull()
         {
-            string nullDateTimeString = null;
             DateTimeStyles styles = DateTimeStyles.AssumeUniversal;
-            DateTime? result = JsonSerializer.TryParseDateTime(nullDateTimeString, styles);
+            DateTime? result = JsonSerializer.TryParseDateTime(null, styles);
 
             Assert.Null(result);
         }
@@ -820,11 +816,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             TextReader reader = new StringReader("null serializable string");
             JsonOptions options = new JsonOptions();
-            string typeName = null;
             Dictionary<string, object> values = new Dictionary<string, object> {{"key", "value"}};
 
             // Act
-            Assert.Throws<JsonException>(() => JsonSerializer.ReadSerializable(reader, options, typeName, values));
+            Assert.Throws<JsonException>(() => JsonSerializer.ReadSerializable(reader, options, null, values));
         }
 
         /// <summary>
@@ -858,8 +853,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void TestTryParseDateTime_V2_NullDateTimeString_ReturnsNull()
         {
-            string nullDateTimeString = null;
-            DateTime? result = JsonSerializer.TryParseDateTime(nullDateTimeString);
+            DateTime? result = JsonSerializer.TryParseDateTime(null);
 
             Assert.Null(result);
         }
@@ -880,7 +874,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonSerializer.WriteSerializable(writer, serializable, objectGraph, options);
 
             // Assert
-            Assert.NotEmpty(writer.ToString());
+            Assert.NotEmpty(writer.ToString() ?? throw new InvalidOperationException());
         }
 
         /// <summary>
@@ -891,12 +885,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             TextWriter writer = new StringWriter();
-            ISerializable serializable = null;
             IDictionary<object, object> objectGraph = new Dictionary<object, object>();
             JsonOptions options = new JsonOptions();
 
             // Act
-            Assert.Throws<NullReferenceException>(() => JsonSerializer.WriteSerializable(writer, serializable, objectGraph, options));
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.WriteSerializable(writer, null, objectGraph, options));
         }
 
         /// <summary>
@@ -915,7 +908,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonSerializer.WriteSerializable(writer, serializable, objectGraph, options);
 
             // Assert
-            Assert.NotEmpty(writer.ToString());
+            Assert.NotEmpty(writer.ToString() ?? throw new InvalidOperationException());
         }
 
         /// <summary>
@@ -928,10 +921,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             TextWriter writer = new StringWriter();
             TestSerializable serializable = new TestSerializable();
             IDictionary<object, object> objectGraph = new Dictionary<object, object>();
-            JsonOptions options = null;
 
             // Act & Assert
-            Assert.Throws<NullReferenceException>(() => JsonSerializer.WriteSerializable(writer, serializable, objectGraph, options));
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.WriteSerializable(writer, serializable, objectGraph, null));
         }
 
         /// <summary>
@@ -1125,10 +1117,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "\"new Date(1633020442000)\"";
             TextReader reader = new StringReader(json);
             JsonOptions options = new JsonOptions();
-            bool arrayEnd;
 
             // Act
-            Assert.Throws<JsonException>(() => JsonSerializer.ReadNew(reader, options, out arrayEnd));
+            Assert.Throws<JsonException>(() => JsonSerializer.ReadNew(reader, options, out bool _));
         }
 
         /// <summary>
@@ -1141,10 +1132,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "\"null\"";
             TextReader reader = new StringReader(json);
             JsonOptions options = new JsonOptions();
-            bool arrayEnd;
 
             // Act
-            Assert.Throws<JsonException>(() => JsonSerializer.ReadNew(reader, options, out arrayEnd));
+            Assert.Throws<JsonException>(() => JsonSerializer.ReadNew(reader, options, out bool _));
         }
 
         /// <summary>
@@ -1157,10 +1147,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "\"invalid\"";
             TextReader reader = new StringReader(json);
             JsonOptions options = new JsonOptions();
-            bool arrayEnd;
 
             // Act & Assert
-            Assert.Throws<JsonException>(() => JsonSerializer.ReadNew(reader, options, out arrayEnd));
+            Assert.Throws<JsonException>(() => JsonSerializer.ReadNew(reader, options, out bool _));
         }
 
         /// <summary>
@@ -1344,12 +1333,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestChangeType_NullInput_ReturnsNullForReferenceType()
         {
             // Arrange
-            object input = null;
             Type targetType = typeof(string);
             JsonOptions options = new JsonOptions();
 
             // Act
-            object result = JsonSerializer.ChangeType(input, targetType, options);
+            object result = JsonSerializer.ChangeType(null, targetType, options);
 
             // Assert
             Assert.Null(result);
@@ -1460,7 +1448,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             JsonSerializer.WriteDictionary(writer, dictionary, objectGraph, options);
 
-            string expected = "{\"key1\":\"value1\",\"key2\":\"value2\"}";
+            const string expected = "{\"key1\":\"value1\",\"key2\":\"value2\"}";
             Assert.Equal(expected, writer.ToString());
         }
 
