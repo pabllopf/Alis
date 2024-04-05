@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Data.Resource;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Audio;
