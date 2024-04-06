@@ -36,10 +36,9 @@ namespace Alis.Core.Aspect.Logging.Test
     {
         public RunnableInDebugOnlyAttribute()
         {
-            if (!Debugger.IsAttached)
-            {
-                Skip = "Only running in interactive mode.";
-            }
+            #if RELEASE
+            Skip = "Only running in debug mode";
+            #endif
         }
     }
 }
