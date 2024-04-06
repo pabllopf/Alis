@@ -3,8 +3,4 @@
     <ItemGroup Condition="$(AssemblyName.Contains('Test')) == False">
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
     </ItemGroup>
-    
-    <PropertyGroup>
-        <Configuration Condition="$(AssemblyName.Equals('Alis.Core.Aspect.Logging.Test')) == True">Debug</Configuration>
-    </PropertyGroup>
 </Project>
