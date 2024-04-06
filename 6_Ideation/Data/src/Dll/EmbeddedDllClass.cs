@@ -285,7 +285,14 @@ namespace Alis.Core.Aspect.Data.Dll
         /// <returns>The bool</returns>
         internal static bool IsiOsSpecificConditionMet()
         {
-            return Assembly.Load(new AssemblyName("Xamarin.iOS")) != null;
+            try
+            {
+                return Assembly.Load(new AssemblyName("Xamarin.iOS")) != null;
+            }
+            catch (FileNotFoundException)
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -294,7 +301,14 @@ namespace Alis.Core.Aspect.Data.Dll
         /// <returns>The bool</returns>
         internal static bool IsAndroidSpecificConditionMet()
         {
-            return Assembly.Load(new AssemblyName("Mono.Android")) != null;
+            try
+            {
+                return Assembly.Load(new AssemblyName("Mono.Android")) != null;
+            }
+            catch (FileNotFoundException)
+            {
+                return false;
+            }
         }
     }
 }
