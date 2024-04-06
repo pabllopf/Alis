@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using Xunit;
 
@@ -41,7 +42,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that trace should print trace message
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Trace_ShouldPrintTraceMessage()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -57,7 +59,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that set log level should change log level
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void SetLogLevel_ShouldChangeLogLevel()
         {
             Logger.LogLevel = LogLevel.Info;
@@ -70,7 +73,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that set detail level should change detail level
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void SetDetailLevel_ShouldChangeDetailLevel()
         {
             Logger.DetailLevel = DetailLevel.Full;
@@ -83,7 +87,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that set log level should print log message when log level is set to log
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void SetLogLevel_ShouldPrintLogMessage_WhenLogLevelIsSetToLog()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -99,7 +104,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that exception should print exception message when log level is critical
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Exception_ShouldPrintExceptionMessage_WhenLogLevelIsCritical()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -117,7 +123,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that trace with log level trace should print trace message
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Trace_WithLogLevelTrace_ShouldPrintTraceMessage()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -133,7 +140,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that trace with log level info should not print trace message
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Trace_WithLogLevelInfo_ShouldNotPrintTraceMessage()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -149,7 +157,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that info with log level info should print info message
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Info_WithLogLevelInfo_ShouldPrintInfoMessage()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -165,7 +174,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that info with log level event should not print info message
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Info_WithLogLevelEvent_ShouldNotPrintInfoMessage()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -181,7 +191,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that warning should print warning message
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Warning_ShouldPrintWarningMessage()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -196,7 +207,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that error should print error message
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Error_ShouldPrintErrorMessage()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -211,7 +223,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that exception with exception should print exception message
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Exception_WithException_ShouldPrintExceptionMessage()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -226,7 +239,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that set detail level should change detail level when calling different methods
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void SetDetailLevel_ShouldChangeDetailLevel_WhenCallingDifferentMethods()
         {
             Logger.SetDetailLevel(DetailLevel.Minimal);
@@ -239,7 +253,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that exception should not print exception message when log level is info
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Exception_ShouldNotPrintExceptionMessage_WhenLogLevelIsInfo()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -255,7 +270,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that exception should not print exception message when log level is trace
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Exception_ShouldNotPrintExceptionMessage_WhenLogLevelIsTrace()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -271,7 +287,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that trace should print trace message when log level is trace
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Trace_ShouldPrintTraceMessage_WhenLogLevelIsTrace()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -287,7 +304,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that trace should not print trace message when log level is info
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Trace_ShouldNotPrintTraceMessage_WhenLogLevelIsInfo()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -303,7 +321,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that trace should not print trace message when log level is event
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Trace_ShouldNotPrintTraceMessage_WhenLogLevelIsEvent()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -319,7 +338,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that info should print info message when log level is info
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Info_ShouldPrintInfoMessage_WhenLogLevelIsInfo()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -335,7 +355,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that info should not print info message when log level is event
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Info_ShouldNotPrintInfoMessage_WhenLogLevelIsEvent()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -351,7 +372,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that info should not print info message when log level is trace
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Info_ShouldNotPrintInfoMessage_WhenLogLevelIsTrace()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -367,7 +389,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that event should print event message when log level is event
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Event_ShouldPrintEventMessage_WhenLogLevelIsEvent()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -383,7 +406,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that event should not print event message when log level is info
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Event_ShouldNotPrintEventMessage_WhenLogLevelIsInfo()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -399,7 +423,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that event should not print event message when log level is trace
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Event_ShouldNotPrintEventMessage_WhenLogLevelIsTrace()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -416,7 +441,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that event no message should print event message when log level is event
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Event_NoMessage_ShouldPrintEventMessage_WhenLogLevelIsEvent()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -432,7 +458,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that event no message should not print event message when log level is info
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Event_NoMessage_ShouldNotPrintEventMessage_WhenLogLevelIsInfo()
         {
             using StringWriter consoleOutput = new StringWriter();
@@ -448,7 +475,8 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that event no message should not print event message when log level is trace
         /// </summary>
-        [Fact]
+        
+        [RunnableInDebugOnly]
         public void Event_NoMessage_ShouldNotPrintEventMessage_WhenLogLevelIsTrace()
         {
             using StringWriter consoleOutput = new StringWriter();
