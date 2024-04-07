@@ -251,15 +251,6 @@ namespace Alis.Core.Aspect.Data.Dll
         [ExcludeFromCodeCoverage]
         internal static MemoryStream LoadResource(string resourceName, Assembly assembly)
         {
-            string[] aResourceNames = assembly.GetManifestResourceNames();
-            foreach (string aResourceName in aResourceNames)
-            {
-                if (aResourceName.Contains(resourceName))
-                {
-                   throw new Exception($"Resource {resourceName} already loaded");
-                }
-            }
-
             using Stream stream = assembly.GetManifestResourceStream(resourceName);
             MemoryStream memoryStream = new MemoryStream();
             stream?.CopyTo(memoryStream);
