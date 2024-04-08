@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-    <ItemGroup>
+    <ItemGroup Condition="$(Configuration) == 'Release'">
         <None Remove="$(ProjectDir)/**/*.md"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(Configuration) == 'Debug'">
+        <None Include="$(ProjectDir)/**/*.md"/>
     </ItemGroup>
 
 
