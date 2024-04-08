@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:PluginManagerBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,47 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Security.Sample
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Plugin;
+
+namespace Alis.Extension.Plugin
 {
     /// <summary>
-    ///     The program class
+    ///     The scene manager builder class
     /// </summary>
-    public static class Program
+    public class PluginManagerBuilder :
+        IBuild<PluginManager>
     {
         /// <summary>
-        ///     Main the args
+        ///     Builds this instance
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            // SecureDouble usage
-            SecureDouble secureDouble = 10.0;
-            secureDouble += 20.0;
-            
-            // SecureFloat usage
-            SecureFloat secureFloat = 10.0f;
-            secureFloat += 20.0f;
-
-            // SecureInt usage
-            SecureInt secureInt = 10;
-            secureInt += 20;
-
-            // SecureLong usage
-            SecureLong secureLong = 10L;
-            secureLong += 20L;
-            
-            // SecureDecimal usage
-            SecureDecimal secureDecimal = 10.0m;
-            secureDecimal += 20.0m;
-            
-            // SecureString usage
-            SecureString secureString = new SecureString("Hello");
-            
-            // SecureChar usage
-            SecureChar secureChar = 'H';
-            secureChar = 'W';
-            
-            string sample = secureString + secureChar.ToString();
-        }
+        /// <returns>The plugin manager</returns>
+        public PluginManager Build() => new PluginManager();
     }
 }

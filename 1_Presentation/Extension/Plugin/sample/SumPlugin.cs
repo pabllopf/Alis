@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:SumPlugin.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,47 +27,62 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Security.Sample
+using Alis.Core.Aspect.Logging;
+
+namespace Alis.Extension.Plugin.Sample
 {
     /// <summary>
-    ///     The program class
+    ///     The sum plugin class
     /// </summary>
-    public static class Program
+    /// <seealso cref="IPlugin" />
+    public class SumPlugin : IPlugin
     {
         /// <summary>
-        ///     Main the args
+        ///     Initializes this instance
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        public void Initialize()
         {
-            // SecureDouble usage
-            SecureDouble secureDouble = 10.0;
-            secureDouble += 20.0;
-            
-            // SecureFloat usage
-            SecureFloat secureFloat = 10.0f;
-            secureFloat += 20.0f;
-
-            // SecureInt usage
-            SecureInt secureInt = 10;
-            secureInt += 20;
-
-            // SecureLong usage
-            SecureLong secureLong = 10L;
-            secureLong += 20L;
-            
-            // SecureDecimal usage
-            SecureDecimal secureDecimal = 10.0m;
-            secureDecimal += 20.0m;
-            
-            // SecureString usage
-            SecureString secureString = new SecureString("Hello");
-            
-            // SecureChar usage
-            SecureChar secureChar = 'H';
-            secureChar = 'W';
-            
-            string sample = secureString + secureChar.ToString();
+            Logger.Info($"result={Sum(1, 2)}");
         }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        public void Update()
+        {
+            Logger.Trace();
+        }
+
+        /// <summary>
+        ///     Renders this instance
+        /// </summary>
+        public void Render()
+        {
+            Logger.Trace();
+        }
+
+        /// <summary>
+        ///     Shutdowns this instance
+        /// </summary>
+        public void Shutdown()
+        {
+            Logger.Trace();
+        }
+
+        /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            Logger.Trace();
+        }
+
+        /// <summary>
+        ///     Sums the a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The int</returns>
+        public int Sum(int a, int b) => a + b;
     }
 }

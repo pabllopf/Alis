@@ -34,7 +34,6 @@ using Alis.Builder.Core.Ecs.System.Setting.Graphic;
 using Alis.Builder.Core.Ecs.System.Setting.Input;
 using Alis.Builder.Core.Ecs.System.Setting.Network;
 using Alis.Builder.Core.Ecs.System.Setting.Physic;
-using Alis.Builder.Core.Ecs.System.Setting.Plugin;
 using Alis.Builder.Core.Ecs.System.Setting.Profile;
 using Alis.Builder.Core.Ecs.System.Setting.Scene;
 using Alis.Core.Aspect.Fluent;
@@ -46,7 +45,6 @@ using Alis.Core.Ecs.System.Setting.Graphic;
 using Alis.Core.Ecs.System.Setting.Input;
 using Alis.Core.Ecs.System.Setting.Network;
 using Alis.Core.Ecs.System.Setting.Physic;
-using Alis.Core.Ecs.System.Setting.Plugin;
 using Alis.Core.Ecs.System.Setting.Profile;
 using Alis.Core.Ecs.System.Setting.Scene;
 
@@ -63,7 +61,6 @@ namespace Alis.Builder.Core.Ecs.System.Setting
         IInput<SettingsBuilder, Func<InputSettingBuilder, InputSetting>>,
         INetwork<SettingsBuilder, Func<NetworkSettingBuilder, NetworkSetting>>,
         IPhysic<SettingsBuilder, Func<PhysicSettingBuilder, PhysicSetting>>,
-        IPlugin<SettingsBuilder, Func<PluginSettingBuilder, PluginSetting>>,
         IProfile<SettingsBuilder, Func<ProfileSettingBuilder, ProfileSetting>>,
         IScene<SettingsBuilder, Func<SceneSettingBuilder, SceneSetting>>
     {
@@ -144,18 +141,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
             settingBase.Physic = value.Invoke(new PhysicSettingBuilder());
             return this;
         }
-
-        /// <summary>
-        ///     Plugins the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The settings builder</returns>
-        public SettingsBuilder Plugin(Func<PluginSettingBuilder, PluginSetting> value)
-        {
-            settingBase.Plugin = value.Invoke(new PluginSettingBuilder());
-            return this;
-        }
-
+        
         /// <summary>
         ///     Profiles the value
         /// </summary>

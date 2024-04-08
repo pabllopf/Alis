@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Ecs.System.Manager;
-using Alis.Core.Ecs.System.Manager.Ads;
 
 namespace Alis.Extension.Ads.GoogleAds
 {
@@ -37,7 +36,7 @@ namespace Alis.Extension.Ads.GoogleAds
     /// </summary>
     /// <seealso cref="Manager" />
     /// <seealso cref="IAdsManager" />
-    public class AdsManager : Manager, IAdsManager
+    public class AdsManager : Manager
     {
     }
 }
