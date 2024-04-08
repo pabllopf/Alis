@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:PluginSample.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,47 +27,57 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Security.Sample
+using Alis.Core.Aspect.Logging;
+
+namespace Alis.Extension.Plugin.Test
 {
     /// <summary>
-    ///     The program class
+    ///     The plugin sample class
     /// </summary>
-    public static class Program
+    /// <seealso cref="IPlugin" />
+    public class PluginSample : IPlugin
     {
         /// <summary>
-        ///     Main the args
+        ///     Disposes this instance
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        public void Dispose()
         {
-            // SecureDouble usage
-            SecureDouble secureDouble = 10.0;
-            secureDouble += 20.0;
-            
-            // SecureFloat usage
-            SecureFloat secureFloat = 10.0f;
-            secureFloat += 20.0f;
+        }
 
-            // SecureInt usage
-            SecureInt secureInt = 10;
-            secureInt += 20;
+        /// <summary>
+        ///     Initializes this instance
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public void Initialize()
+        {
+            Logger.Info("PluginSample initialized");
+        }
 
-            // SecureLong usage
-            SecureLong secureLong = 10L;
-            secureLong += 20L;
-            
-            // SecureDecimal usage
-            SecureDecimal secureDecimal = 10.0m;
-            secureDecimal += 20.0m;
-            
-            // SecureString usage
-            SecureString secureString = new SecureString("Hello");
-            
-            // SecureChar usage
-            SecureChar secureChar = 'H';
-            secureChar = 'W';
-            
-            string sample = secureString + secureChar.ToString();
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public void Update()
+        {
+            Logger.Info("PluginSample updated");
+        }
+
+        /// <summary>
+        ///     Renders this instance
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public void Render()
+        {
+            Logger.Info("PluginSample rendered");
+        }
+
+        /// <summary>
+        ///     Shutdowns this instance
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public void Shutdown()
+        {
+            Logger.Info("PluginSample shutdown");
         }
     }
 }

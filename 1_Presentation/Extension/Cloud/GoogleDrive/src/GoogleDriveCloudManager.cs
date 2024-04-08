@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Ecs.System.Manager;
-using Alis.Core.Ecs.System.Manager.Cloud;
 
 namespace Alis.Extension.Cloud.GoogleDrive
 {

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Ecs.System.Manager;
-using Alis.Core.Ecs.System.Manager.Store;
 
 namespace Alis.Extension.Payment.Stripe
 {
@@ -36,7 +35,7 @@ namespace Alis.Extension.Payment.Stripe
     ///     The store manager class
     /// </summary>
     /// <seealso cref="IStoreManager" />
-    public class StoreManager : Manager, IStoreManager
+    public class StoreManager : Manager
     {
     }
 }

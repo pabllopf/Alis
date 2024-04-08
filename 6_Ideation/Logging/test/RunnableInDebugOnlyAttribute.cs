@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics;
 using Xunit;
 
 namespace Alis.Core.Aspect.Logging.Test

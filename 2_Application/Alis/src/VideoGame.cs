@@ -37,7 +37,6 @@ using Alis.Core.Ecs.System.Manager.Graphic;
 using Alis.Core.Ecs.System.Manager.Input;
 using Alis.Core.Ecs.System.Manager.Network;
 using Alis.Core.Ecs.System.Manager.Physic;
-using Alis.Core.Ecs.System.Manager.Plugin;
 using Alis.Core.Ecs.System.Manager.Profile;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
@@ -63,7 +62,6 @@ namespace Alis
                 new SceneManager(),
                 new InputManager(),
                 new NetworkManager(),
-                new PluginManager(),
                 new ProfileManager()
             });
 
@@ -102,12 +100,7 @@ namespace Alis
         ///     Gets or sets the value of the physic manager
         /// </summary>
         public PhysicManager PhysicManager => Get<PhysicManager>();
-
-        /// <summary>
-        ///     Gets or sets the value of the plugin manager
-        /// </summary>
-        public PluginManager PluginManager => Get<PluginManager>();
-
+        
         /// <summary>
         ///     Gets or sets the value of the profile manager
         /// </summary>

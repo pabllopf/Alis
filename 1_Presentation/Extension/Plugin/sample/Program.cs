@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Security.Sample
+using Alis.Core.Plugin;
+
+namespace Alis.Extension.Plugin.Sample
 {
     /// <summary>
     ///     The program class
@@ -40,34 +42,10 @@ namespace Alis.Core.Aspect.Security.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            // SecureDouble usage
-            SecureDouble secureDouble = 10.0;
-            secureDouble += 20.0;
-            
-            // SecureFloat usage
-            SecureFloat secureFloat = 10.0f;
-            secureFloat += 20.0f;
+            PluginManager pluginManager = new PluginManager();
+            pluginManager.LoadPlugins("Assets/Plugins");
 
-            // SecureInt usage
-            SecureInt secureInt = 10;
-            secureInt += 20;
-
-            // SecureLong usage
-            SecureLong secureLong = 10L;
-            secureLong += 20L;
-            
-            // SecureDecimal usage
-            SecureDecimal secureDecimal = 10.0m;
-            secureDecimal += 20.0m;
-            
-            // SecureString usage
-            SecureString secureString = new SecureString("Hello");
-            
-            // SecureChar usage
-            SecureChar secureChar = 'H';
-            secureChar = 'W';
-            
-            string sample = secureString + secureChar.ToString();
+            pluginManager.Initialize();
         }
     }
 }

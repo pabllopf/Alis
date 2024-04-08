@@ -27,12 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Data.Resource;
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Ecs.Entity.GameObject;
-using Alis.Core.Ecs.Entity.Scene;
-
 namespace Alis.Sample.Play.Video
 {
     /// <summary>
