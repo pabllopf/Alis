@@ -31,8 +31,15 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Logging.Test
 {
+    /// <summary>
+    /// The runnable in debug only attribute class
+    /// </summary>
+    /// <seealso cref="FactAttribute"/>
     public class RunnableInDebugOnlyAttribute : FactAttribute
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RunnableInDebugOnlyAttribute"/> class
+        /// </summary>
         public RunnableInDebugOnlyAttribute()
         {
             #if RELEASE
