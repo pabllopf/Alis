@@ -193,5 +193,12 @@ namespace Alis.Core.Aspect.Logging
         /// <param name="detailLevel">The detail level</param>
         [Conditional("DEBUG")]
         public static void SetDetailLevel(DetailLevel detailLevel) => DetailLevel = detailLevel;
+
+        /// <summary>
+        /// Sets the log level using the specified trace
+        /// </summary>
+        /// <param name="trace">The trace</param>
+        [Conditional("DEBUG")]
+        public static void SetLogLevel(LogLevel trace) => LogLevel = trace;
     }
 }

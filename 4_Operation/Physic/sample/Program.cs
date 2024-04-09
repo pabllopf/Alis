@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Sample
@@ -43,7 +44,9 @@ namespace Alis.Core.Physic.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Console.WriteLine($"Run {nameof(Alis)}.{nameof(Core)}.{nameof(Physic)}.{nameof(Sample)}");
+            Logger.SetDetailLevel(DetailLevel.Minimal);
+            Logger.SetLogLevel(LogLevel.Trace);
+            Logger.Info($"Run {nameof(Alis)}.{nameof(Core)}.{nameof(Physic)}.{nameof(Sample)}");
 
             Vector2 gravity = new Vector2(0.0f, -9.8f);
 
@@ -52,11 +55,10 @@ namespace Alis.Core.Physic.Sample
             for (int i = 0; i < 100; i++)
             {
                 world.Step(1.0f / 60.0f, 6, 2);
-                Console.WriteLine($"Step {i}");
+                Logger.Info($"Step {i}");
             }
 
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
+            Logger.Trace("Press any key to exit...");
         }
     }
 }

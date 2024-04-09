@@ -29,9 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Physic.Exceptions;
 
 namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 {
@@ -285,9 +283,9 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 
                 EdgeEvent(tcx, edge.P, edge.Q, node.Triangle, edge.Q);
             }
-            catch (PointOnEdgeException e)
+            catch (Exception e)
             {
-                Debug.WriteLine("Skipping Edge: {0}", e.Message);
+                Logger.Warning($"Skipping Edge: {e.Message}");
             }
         }
 
@@ -589,7 +587,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         /// <param name="eq">The eq</param>
         /// <param name="p">The </param>
         /// <param name="point">The point</param>
-        /// <exception cref="PointOnEdgeException">EdgeEvent - Point on constrained edge not supported yet</exception>
         private static void HandleCollinearOrientation(DtSweepContext tcx, DelaunayTriangle triangle, TriangulationPoint ep, TriangulationPoint eq, TriangulationPoint p, TriangulationPoint point)
         {
             if (triangle.Contains(eq, p))
@@ -601,12 +598,12 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             }
             else
             {
-                throw new PointOnEdgeException("EdgeEvent - Point on constrained edge not supported yet");
+                Logger.Exception("EdgeEvent - Point on constrained edge not supported yet");
             }
 
             if (tcx.IsDebugEnabled)
             {
-                Debug.WriteLine("EdgeEvent - Point on constrained edge");
+                Logger.Warning("EdgeEvent - Point on constrained edge");
             }
         }
 
@@ -732,7 +729,8 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                 return ot.PointCw(op);
             }
 
-            throw new PointOnEdgeException("Point on constrained edge not supported yet");
+            Logger.Exception("Point on constrained edge not supported yet");
+            return default(TriangulationPoint);
         }
 
         /// <summary>

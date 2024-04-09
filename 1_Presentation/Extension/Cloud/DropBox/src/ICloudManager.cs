@@ -29,6 +29,9 @@
 
 namespace Alis.Extension.Cloud.DropBox
 {
+    /// <summary>
+    /// The cloud manager interface
+    /// </summary>
     public interface ICloudManager 
     {
         
