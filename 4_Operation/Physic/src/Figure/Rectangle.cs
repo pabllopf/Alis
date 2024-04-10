@@ -32,7 +32,7 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Shared;
-using Alis.Core.Physic.Utilities;
+using Alis.Core.Physic.Tools;
 
 namespace Alis.Core.Physic.Figure
 {
