@@ -14,11 +14,11 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
         {
             FastPriorityQueueExample.RunExample();
 
-            Logger.Info("------------------------------");
+            Logger.Trace("------------------------------");
 
             SimplePriorityQueueExample.RunExample();
 
-            Logger.Info("End Program...");
+            Logger.Trace("End Program...");
         }
     }
 }

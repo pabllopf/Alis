@@ -1,4 +1,5 @@
 using System;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
 {
@@ -29,7 +30,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
             while (priorityQueue.Count != 0)
             {
                 string nextUser = priorityQueue.Dequeue();
-                Console.WriteLine(nextUser);
+                Logger.Info(nextUser);
             }
 
             //Output:
