@@ -33,7 +33,6 @@ using System.Diagnostics;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
-using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Tools.TextureTools
 {

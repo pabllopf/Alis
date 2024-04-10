@@ -35,7 +35,7 @@ using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Alis.Core.Physic.Shared;
-using Alis.Core.Physic.Tools.Triangulation.TriangulationBase;
+using Alis.Extension.Math.PathGenerator.Triangulation;
 
 namespace Alis.Extension.Math.PathGenerator
 {
