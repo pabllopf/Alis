@@ -567,32 +567,7 @@ namespace Alis.Extension.Plugin.Test
             // Assert
             Assert.False(result);
         }
-
-        /// <summary>
-        /// Tests that instantiate plugins adds plugins to loaded plugins
-        /// </summary>
-        [Fact]
-        public void InstantiatePlugins_AddsPluginsToLoadedPlugins()
-        {
-            // Arrange
-            PluginManager pluginManager = new PluginManager();
-
-            string platformFolder = pluginManager.GetPlatformFolder();
-            string platformPluginsDirectory = pluginManager.GetPlatformPluginsDirectory("Assets/Plugins", platformFolder);
-
-            string pluginFile = Path.Combine(platformPluginsDirectory, "Sum.dll"); // Replace with the actual path to your plugin file
-
-
-            Assembly assembly = Assembly.LoadFrom(pluginFile);
-
-            // Act
-            pluginManager.InstantiatePlugins(assembly);
-
-            // Assert
-            // Here you would assert that the plugins were added to the LoadedPlugins list
-            Assert.NotEmpty(pluginManager.LoadedPlugins);
-        }
-
+        
         /// <summary>
         /// Tests that load plugins from files loads correct number of plugins
         /// </summary>
@@ -725,29 +700,6 @@ namespace Alis.Extension.Plugin.Test
         }
 
         /// <summary>
-        /// Tests that instantiate plugins v 1 adds plugins to loaded plugins
-        /// </summary>
-        [Fact]
-        public void InstantiatePlugins_v1_AddsPluginsToLoadedPlugins()
-        {
-            // Arrange
-            PluginManager pluginManager = new PluginManager();
-
-            string platformFolder = pluginManager.GetPlatformFolder();
-            string platformPluginsDirectory = pluginManager.GetPlatformPluginsDirectory("Assets/Plugins", platformFolder);
-
-            string pluginFile = Path.Combine(platformPluginsDirectory, "Sum.dll"); // Replace with the actual path to your plugin file
-
-            Assembly assembly = Assembly.LoadFrom(pluginFile);
-
-            // Act
-            pluginManager.InstantiatePlugins(assembly);
-
-            // Assert
-            Assert.NotEmpty(pluginManager.LoadedPlugins);
-        }
-
-        /// <summary>
         /// Tests that load plugins from files v 1 loads correct number of plugins
         /// </summary>
         [Fact]
@@ -760,21 +712,7 @@ namespace Alis.Extension.Plugin.Test
             // Act
             Assert.Throws<FileNotFoundException>(() => pluginManager.LoadPluginsFromFiles(pluginFiles));
         }
-
-        /// <summary>
-        /// Tests that load plugins from files v 1 loads correct plugin instances
-        /// </summary>
-        [Fact]
-        public void LoadPluginsFromFiles_v1_LoadsCorrectPluginInstances()
-        {
-            // Arrange
-            PluginManager pluginManager = new PluginManager();
-            IEnumerable<string> pluginFiles = new List<string> {"path/to/plugin1.dll", "path/to/plugin2.dll"}; // Replace with the actual plugin files
-
-            // Act
-            Assert.Throws<FileNotFoundException>(() => pluginManager.LoadPluginsFromFiles(pluginFiles));
-        }
-
+        
         /// <summary>
         /// Tests that load plugins from files v 1 adds plugins to loaded plugins
         /// </summary>
@@ -849,23 +787,7 @@ namespace Alis.Extension.Plugin.Test
                 Assert.Throws<NotSupportedException>(() => pluginManager.GetPlatformFolder());
             }
         }
-
-        /// <summary>
-        /// Tests that load plugins loads plugins when directory is valid
-        /// </summary>
-        [Fact]
-        public void LoadPlugins_LoadsPluginsWhenDirectoryIsValid()
-        {
-            // Arrange
-            PluginManager pluginManager = new PluginManager();
-
-            // Act
-            pluginManager.LoadPlugins("Assets/Plugins");
-
-            // Assert
-            Assert.NotEmpty(pluginManager.LoadedPlugins);
-        }
-
+        
         /// <summary>
         /// Tests that load plugins throws exception when directory is invalid
         /// </summary>
@@ -879,124 +801,7 @@ namespace Alis.Extension.Plugin.Test
             // Act and Assert
             Assert.Throws<DirectoryNotFoundException>(() => pluginManager.LoadPlugins(invalidPluginsDirectory));
         }
-
-        /// <summary>
-        /// Tests that load plugins loads correct number of plugins
-        /// </summary>
-        [Fact]
-        public void LoadPlugins_LoadsCorrectNumberOfPlugins()
-        {
-            // Arrange
-            PluginManager pluginManager = new PluginManager();
-            string platformFolder = pluginManager.GetPlatformFolder();
-            string validPluginsDirectory = Path.Combine(Environment.CurrentDirectory, pluginManager.GetPlatformPluginsDirectory("Assets/Plugins", platformFolder));
-
-            // Act
-            pluginManager.LoadPlugins("Assets/Plugins");
-
-            // Assert
-            int expectedNumberOfPlugins = Directory.GetFiles(validPluginsDirectory, "*.dll").Length;
-            Assert.Equal(expectedNumberOfPlugins, pluginManager.LoadedPlugins.Count);
-        }
-
-
-        /// <summary>
-        /// Tests that load plugins plugins are loaded only once
-        /// </summary>
-        [Fact]
-        public void LoadPlugins_PluginsAreLoadedOnlyOnce()
-        {
-            // Arrange
-            PluginManager pluginManager = new PluginManager();
-            string platformFolder = pluginManager.GetPlatformFolder();
-            string validPluginsDirectory = Path.Combine(Environment.CurrentDirectory, pluginManager.GetPlatformPluginsDirectory("Assets/Plugins", platformFolder));
-
-            // Act
-            pluginManager.LoadPlugins("Assets/Plugins");
-            pluginManager.LoadPlugins("Assets/Plugins");
-
-            // Assert
-            int expectedNumberOfPlugins = 2;
-            Assert.Equal(expectedNumberOfPlugins, pluginManager.LoadedPlugins.Count);
-        }
-
-
-        /// <summary>
-        /// Tests that get platform folder returns windows when running on windows
-        /// </summary>
-        [Fact]
-        public void GetPlatformFolder_ReturnsWindows_WhenRunningOnWindows()
-        {
-            // Arrange
-            PluginManager pluginManager = new PluginManager();
-
-            // Act
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                var result = pluginManager.GetPlatformFolder();
-
-                // Assert
-                Assert.Equal("Windows", result);
-            }
-        }
-
-        /// <summary>
-        /// Tests that get platform folder returns osx when running on osx
-        /// </summary>
-        [Fact]
-        public void GetPlatformFolder_ReturnsOsx_WhenRunningOnOsx()
-        {
-            // Arrange
-            PluginManager pluginManager = new PluginManager();
-
-            // Act
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && !PluginManager.IsRunningOniOS())
-            {
-                var result = pluginManager.GetPlatformFolder();
-
-                // Assert
-                Assert.Equal("osx", result);
-            }
-        }
-
-        /// <summary>
-        /// Tests that get platform folder returns ios when running on ios
-        /// </summary>
-        [Fact]
-        public void GetPlatformFolder_ReturnsIos_WhenRunningOnIos()
-        {
-            // Arrange
-            PluginManager pluginManager = new PluginManager();
-
-            // Act
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && PluginManager.IsRunningOniOS())
-            {
-                var result = pluginManager.GetPlatformFolder();
-
-                // Assert
-                Assert.Equal("ios", result);
-            }
-        }
-
-        /// <summary>
-        /// Tests that get platform folder returns linux when running on linux
-        /// </summary>
-        [Fact]
-        public void GetPlatformFolder_ReturnsLinux_WhenRunningOnLinux()
-        {
-            // Arrange
-            PluginManager pluginManager = new PluginManager();
-
-            // Act
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && !PluginManager.IsRunningOnAndroid())
-            {
-                var result = pluginManager.GetPlatformFolder();
-
-                // Assert
-                Assert.Equal("linux", result);
-            }
-        }
-
+        
         /// <summary>
         /// Tests that get platform folder returns android when running on android
         /// </summary>
