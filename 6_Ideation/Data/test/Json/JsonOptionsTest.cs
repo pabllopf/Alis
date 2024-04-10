@@ -207,7 +207,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void TestMaxMethod()
         {
             // Arrange
-            JsonOptions options = new JsonOptions();
             int val1 = 5;
             int val2 = 10;
 

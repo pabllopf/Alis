@@ -120,13 +120,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 float h = step.DeltaTime;
                 IntegrateVelocitiesAndApplyDamping(h, body, gravity);
 
-                SolverData solverData = new SolverData
-                {
-                    Step = step,
-                    Positions = positions,
-                    Velocities = velocities
-                };
-
                 contactSolver.Reset(step, contacts.Count, contacts, positions, velocities);
                 contactSolver.InitializeVelocityConstraints();
 

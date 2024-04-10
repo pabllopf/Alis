@@ -45,7 +45,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The island
         /// </summary>
-        private readonly Island island;
+        internal readonly Island island;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="World" /> class
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Gets the value of the gravity
         /// </summary>
-        private Vector2 Gravity { get; }
+        internal Vector2 Gravity { get; }
 
         /// <summary>
         ///     Gets or sets the value of the bodies
@@ -86,7 +86,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Gets or sets the value of the step
         /// </summary>
-        private TimeStep TimeStepGlobal { get; } = new TimeStep();
+        internal TimeStep TimeStepGlobal { get; } = new TimeStep();
 
         /// <summary>
         ///     Adds the body using the specified body
@@ -145,7 +145,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Finds the new contacts
         /// </summary>
-        private void FindNewContacts() => ContactManager.FindNewContacts();
+        internal void FindNewContacts() => ContactManager.FindNewContacts();
 
         /// <summary>
         ///     Updates the time step using the specified dt
@@ -153,7 +153,7 @@ namespace Alis.Core.Physic
         /// <param name="dt">The dt</param>
         /// <param name="velocityIterations">The velocity iterations</param>
         /// <param name="positionIterations">The position iterations</param>
-        private void UpdateTimeStep(float dt, int velocityIterations, int positionIterations)
+        internal void UpdateTimeStep(float dt, int velocityIterations, int positionIterations)
         {
             TimeStepGlobal.DeltaTime = dt;
             TimeStepGlobal.VelocityIterations = velocityIterations;
@@ -165,22 +165,22 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Collides the contacts
         /// </summary>
-        private void CollideContacts() => ContactManager.Collide();
+        internal void CollideContacts() => ContactManager.Collide();
 
         /// <summary>
         ///     Updates the inverted delta time using the specified dt
         /// </summary>
-        private void UpdateInvertedDeltaTime() => TimeStepGlobal.InvertedDeltaTimeZero = TimeStepGlobal.DeltaTime > 0.0f ? TimeStepGlobal.InvertedDeltaTime : TimeStepGlobal.InvertedDeltaTimeZero;
+        internal void UpdateInvertedDeltaTime() => TimeStepGlobal.InvertedDeltaTimeZero = TimeStepGlobal.DeltaTime > 0.0f ? TimeStepGlobal.InvertedDeltaTime : TimeStepGlobal.InvertedDeltaTimeZero;
 
         /// <summary>
         ///     Updates the breakable bodies
         /// </summary>
-        private void UpdateBreakableBodies() => BreakableBodies.ForEach(body => body.Update());
+        internal void UpdateBreakableBodies() => BreakableBodies.ForEach(body => body.Update());
 
         /// <summary>
         ///     Solves the step
         /// </summary>
-        private void Solve()
+        internal void Solve()
         {
             // Clear all the island flags.
             Bodies.ForEach(i => i.ClearFlags());
@@ -204,7 +204,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Solves the toi
         /// </summary>
-        private void SolveToi()
+        internal void SolveToi()
         {
             SetAlphaToZeroForFastMovingBodies();
             InvalidateContactToi();
@@ -214,17 +214,17 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Sets the alpha to zero for fast moving bodies
         /// </summary>
-        private void SetAlphaToZeroForFastMovingBodies() => Bodies.ForEach(i => i.SetAlphaToZero());
+        internal void SetAlphaToZeroForFastMovingBodies() => Bodies.ForEach(i => i.SetAlphaToZero());
 
         /// <summary>
         ///     Invalidates the contact to is
         /// </summary>
-        private void InvalidateContactToi() => ContactManager.InvalidateToi();
+        internal void InvalidateContactToi() => ContactManager.InvalidateToi();
 
         /// <summary>
         ///     Solves the TOI (Time of Impact) events.
         /// </summary>
-        private void SolveToiEvents()
+        internal void SolveToiEvents()
         {
             while (true)
             {
@@ -262,7 +262,7 @@ namespace Alis.Core.Physic
         /// </summary>
         /// <param name="minAlpha">The min alpha</param>
         /// <returns>The bool</returns>
-        private static bool IsMinAlphaGreaterThanEpsilon(float minAlpha) => minAlpha >= 1.0f - Constant.Epsilon * 10.0f;
+        internal static bool IsMinAlphaGreaterThanEpsilon(float minAlpha) => minAlpha >= 1.0f - Constant.Epsilon * 10.0f;
 
         /// <summary>
         ///     Solves the toi island using the specified min alpha
@@ -270,12 +270,12 @@ namespace Alis.Core.Physic
         /// <param name="minAlpha">The min alpha</param>
         /// <param name="islandIndexA">The island index</param>
         /// <param name="islandIndexB">The island index</param>
-        private void SolveToiIsland(float minAlpha, int islandIndexA, int islandIndexB) => island.SolveToi(minAlpha, TimeStepGlobal, islandIndexA, islandIndexB, ContactManager);
+        internal void SolveToiIsland(float minAlpha, int islandIndexA, int islandIndexB) => island.SolveToi(minAlpha, TimeStepGlobal, islandIndexA, islandIndexB, ContactManager);
 
         /// <summary>
         ///     Synchronizes the island bodies
         /// </summary>
-        private void SynchronizeIslandBodies() => island.SynchronizeBodies();
+        internal void SynchronizeIslandBodies() => island.SynchronizeBodies();
 
         /// <summary>
         ///     Clear all forces

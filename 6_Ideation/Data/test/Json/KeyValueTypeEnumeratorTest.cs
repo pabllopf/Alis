@@ -208,7 +208,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(new List<int>());
             Assert.Throws<NotSupportedException>(() =>
             {
-                object value = dictionary["test"];
             });
         }
 

@@ -509,7 +509,6 @@ namespace Alis.Core.Test.Ecs.System
         public void TimeManager_GetPropertyWorks()
         {
             // Arrange
-            GameSample game = new GameSample();
 
             // Act
             TimeManager timeManager = Game.TimeManager;

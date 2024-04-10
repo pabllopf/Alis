@@ -48,7 +48,7 @@ namespace Alis.Extension.Encode.FFMeg.Sample
         private static void Main(string[] args)
         {
             string input = AssetManager.Find("sample.mp4");
-            string output = Path.Combine(Directory.GetCurrentDirectory(), "sample_out.mp4");
+            Path.Combine(Directory.GetCurrentDirectory(), "sample_out.mp4");
 
             //SdlController.Run();
 

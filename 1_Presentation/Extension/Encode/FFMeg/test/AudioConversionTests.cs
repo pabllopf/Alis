@@ -68,7 +68,7 @@ namespace Alis.Extension.Encode.FFMeg.Test
                 Assert.True(Math.Abs(dur - 1.515102) < 0.01);
 
                 Process p = FfMpegWrapper.ExecuteCommand("ffmpeg", $"-i {path} {opath}", true);
-                Progress<double> progress = FfMpegWrapper.RegisterProgressTracker(p, dur);
+                FfMpegWrapper.RegisterProgressTracker(p, dur);
 
                 p.WaitForExit();
 
