@@ -430,7 +430,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
-            
+
             // Act
             string error = Sdl.GetError();
 
@@ -1479,7 +1479,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-        
+
 
         /// <summary>
         ///     Tests that set window icon should not throw exception
@@ -1659,7 +1659,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-        
+
         /// <summary>
         ///     Tests that set window title should not throw exception
         /// </summary>
@@ -1789,7 +1789,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-        
+
         /// <summary>
         ///     Tests that compose custom blend mode should return expected value
         /// </summary>
@@ -1927,7 +1927,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-        
+
         /// <summary>
         ///     Tests that get render draw color should return expected value
         /// </summary>
@@ -2118,7 +2118,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-        
+
         /// <summary>
         ///     Tests that query texture should return expected value
         /// </summary>
@@ -2891,6 +2891,48 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Assert.True(result >= -1);
 
             Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Tests that queue audio valid input calls internal queue audio
+        /// </summary>
+        [Fact]
+        public void QueueAudio_ValidInput_CallsInternalQueueAudio()
+        {
+            // Arrange
+            int initResult = Sdl.Init(InitSettings.InitEverything);
+            Assert.Equal(0, initResult);
+
+            // Arrange
+            int deviceId = 1;
+            byte[] audioData = new byte[] {1, 2, 3, 4, 5};
+            uint wavLength = 5;
+
+            // Act
+            Exception exception = Record.Exception(() => Sdl.QueueAudio(deviceId, audioData, wavLength));
+
+            // Assert
+            Assert.Null(exception);
+
+            // Assert
+            Sdl.Quit();
+        }
+
+        [Fact]
+        public void UpdateTexture_ShouldReturnExpectedValue_WhenCalledWithValidParameters()
+        {
+            // Arrange
+            IntPtr texture =  IntPtr.Zero;
+            IntPtr rect =  IntPtr.Zero;
+            byte[] pixels =  new byte[1];
+            int pitch = 0;
+            int expected =  -1;
+
+            // Act
+            int result = Sdl.UpdateTexture(texture, rect, pixels, pitch);
+
+            // Assert
+            Assert.Equal(expected, result);
         }
     }
 }

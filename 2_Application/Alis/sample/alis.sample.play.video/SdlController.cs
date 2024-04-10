@@ -247,7 +247,7 @@ namespace Alis.Sample.Play.Video
 
                 // Actualizar la textura con los datos del frame
                 byte[] pixels = videoFrame.RawData;
-                Sdl.UpdateTextureV2(textureVideo, IntPtr.Zero, pixels, videoFrameTemp.Width * 3);
+                Sdl.UpdateTexture(textureVideo, IntPtr.Zero, pixels, videoFrameTemp.Width * 3);
 
                 // Renderizar la textura
                 Sdl.RenderCopy(renderer, textureVideo, IntPtr.Zero, IntPtr.Zero);
