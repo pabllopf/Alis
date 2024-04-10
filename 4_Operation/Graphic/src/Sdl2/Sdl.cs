@@ -2794,19 +2794,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int SetTextureColorMod([IsNotNull] IntPtr texture, [IsNotNull] byte r, [IsNotNull] byte g, [IsNotNull] byte b) => NativeSdl.InternalSetTextureColorMod(texture, r, g, b);
-
-
-        /// <summary>
-        ///     Unlocks the texture using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        [return: IsNotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void UnlockTexture([IsNotNull] IntPtr texture)
-        {
-            NativeSdl.InternalUnlockTexture(texture);
-        }
-
+        
         /// <summary>
         ///     Updates the texture using the specified texture
         /// </summary>
@@ -2841,7 +2829,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int UpdateTextureV2([IsNotNull] IntPtr texture, [IsNotNull] IntPtr rect, [IsNotNull] byte[] pixels, [IsNotNull] int pitch) => NativeSdl.InternalUpdateTexturev2(texture, rect, pixels, pitch);
+        public static int UpdateTexture([IsNotNull] IntPtr texture, [IsNotNull] IntPtr rect, [IsNotNull] byte[] pixels, [IsNotNull] int pitch) => NativeSdl.InternalUpdateTexturev2(texture, rect, pixels, pitch);
         
         /// <summary>
         ///     Renders the target supported using the specified renderer
@@ -5033,9 +5021,6 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="deviceId">The device id</param>
         /// <param name="audioData">The audio data</param>
         /// <param name="wavLength">The wav length</param>
-        public static void QueueAudio(int deviceId, byte[] audioData, uint wavLength)
-        {
-            NativeSdl.InternalQueueAudio(deviceId, audioData, wavLength);
-        }
+        public static void QueueAudio(int deviceId, byte[] audioData, uint wavLength) => NativeSdl.InternalQueueAudio(deviceId, audioData, wavLength);
     }
 }

@@ -3527,15 +3527,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_SetTextureColorMod", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern int InternalSetTextureColorMod([IsNotNull] IntPtr texture, [IsNotNull] byte r, [IsNotNull] byte g, [IsNotNull] byte b);
-
-        /// <summary>
-        ///     Sdl the unlock texture using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_UnlockTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalUnlockTexture([IsNotNull] IntPtr texture);
-
+        
         /// <summary>
         ///     Sdl the update texture using the specified texture
         /// </summary>
