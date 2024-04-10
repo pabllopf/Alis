@@ -64,7 +64,7 @@ namespace Alis.Core.Aspect.Security.Sample
             SecureString secureString = new SecureString("Hello");
             
             // SecureChar usage
-            SecureChar secureChar = 'H';
+            SecureChar secureChar = new SecureChar('W');
             secureChar = 'W';
         }
     }
