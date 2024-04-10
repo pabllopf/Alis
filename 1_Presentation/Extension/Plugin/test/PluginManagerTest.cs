@@ -64,7 +64,6 @@ namespace Alis.Extension.Plugin.Test
         public void Dispose_UnloadsPlugins()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
             string pluginsDirectory = "path/to/plugins";
             Assert.False(PluginManager.ValidatePluginsDirectory(pluginsDirectory));
         }
@@ -149,7 +148,6 @@ namespace Alis.Extension.Plugin.Test
         {
             // Arrange
             PluginManager pluginManager = new PluginManager();
-            PluginSample plugin = new PluginSample();
 
             // Act
             pluginManager.UnloadPlugins();
@@ -166,7 +164,6 @@ namespace Alis.Extension.Plugin.Test
         {
             // Arrange
             PluginManager pluginManager = new PluginManager();
-            PluginSample plugin = new PluginSample();
 
             // Act
             pluginManager.Initialize();
@@ -183,7 +180,6 @@ namespace Alis.Extension.Plugin.Test
         {
             // Arrange
             PluginManager pluginManager = new PluginManager();
-            PluginSample plugin = new PluginSample();
             // Act
             pluginManager.Update();
 
@@ -199,7 +195,6 @@ namespace Alis.Extension.Plugin.Test
         {
             // Arrange
             PluginManager pluginManager = new PluginManager();
-            PluginSample plugin = new PluginSample();
             // Act
             pluginManager.Render();
 
@@ -215,7 +210,6 @@ namespace Alis.Extension.Plugin.Test
         {
             // Arrange
             PluginManager pluginManager = new PluginManager();
-            PluginSample plugin = new PluginSample();
 
             // Act
             pluginManager.Shutdown();
@@ -814,7 +808,7 @@ namespace Alis.Extension.Plugin.Test
             // Act
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && PluginManager.IsRunningOnAndroid())
             {
-                var result = pluginManager.GetPlatformFolder();
+                string result = pluginManager.GetPlatformFolder();
 
                 // Assert
                 Assert.Equal("android", result);

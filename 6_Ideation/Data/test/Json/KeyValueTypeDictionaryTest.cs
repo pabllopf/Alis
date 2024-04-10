@@ -184,7 +184,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary("sample");
             Assert.Throws<NotSupportedException>(() =>
             {
-                int count = dictionary.Count;
             });
         }
 
@@ -197,7 +196,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary("sample");
             Assert.Throws<NotSupportedException>(() =>
             {
-                bool isSynchronized = dictionary.IsSynchronized;
             });
         }
 
@@ -210,7 +208,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary("sample");
             Assert.Throws<NotSupportedException>(() =>
             {
-                object syncRoot = dictionary.SyncRoot;
             });
         }
 
@@ -223,7 +220,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary("sample");
             Assert.Throws<NotSupportedException>(() =>
             {
-                bool isFixedSize = dictionary.IsFixedSize;
             });
         }
 
@@ -236,7 +232,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary("sample");
             Assert.Throws<NotSupportedException>(() =>
             {
-                bool isReadOnly = dictionary.IsReadOnly;
             });
         }
 
@@ -249,7 +244,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary("sample");
             Assert.Throws<NotSupportedException>(() =>
             {
-                ICollection keys = dictionary.Keys;
             });
         }
 
@@ -262,7 +256,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary("sample");
             Assert.Throws<NotSupportedException>(() =>
             {
-                ICollection values = dictionary.Values;
             });
         }
 

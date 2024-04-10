@@ -344,7 +344,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(int);
 
             // Act
-            bool result = Conversions.TryChangeType(input, conversionType, out object value);
+            bool result = Conversions.TryChangeType(input, conversionType, out object _);
 
             // Assert
             Assert.False(result);
@@ -379,7 +379,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object input = "InvalidDay";
 
             // Act
-            bool result = Conversions.EnumTryParse(type, input, out object value);
+            bool result = Conversions.EnumTryParse(type, input, out object _);
 
             // Assert
             Assert.False(result);
@@ -412,7 +412,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type type = typeof(int);
 
             // Act
-            bool result = Conversions.IsGenericList(type, out Type elementType);
+            bool result = Conversions.IsGenericList(type, out Type _);
 
             // Assert
             Assert.False(result);
@@ -494,7 +494,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type type = null;
 
             // Act
-            void Action() => Conversions.IsGenericList(type, out Type elementType);
+            void Action() => Conversions.IsGenericList(type, out Type _);
 
             // Assert
             Assert.Throws<ArgumentNullException>(Action);

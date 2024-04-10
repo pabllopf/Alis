@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     Initializes a new instance of the <see cref="Joint" /> class
         /// </summary>
         /// <param name="jointType">The joint type</param>
-        private Joint(JointType jointType)
+        internal Joint(JointType jointType)
         {
             _jointType = jointType;
             Breakpoint = float.MaxValue;
@@ -63,14 +63,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
         /// <param name="jointType">The joint type</param>
-        protected Joint(Body bodyA, Body bodyB, JointType jointType) : this(jointType)
+        internal Joint(Body bodyA, Body bodyB, JointType jointType) : this(jointType)
         {
             BodyA = bodyA;
             BodyB = bodyB;
         }
 
         /// <summary>Constructor for fixed joint</summary>
-        protected Joint(Body body, JointType jointType) : this(jointType) => BodyA = body;
+        internal Joint(Body body, JointType jointType) : this(jointType) => BodyA = body;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Joint" /> class
@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="bodyB">The body</param>
         /// <param name="jointType">The type</param>
         /// <param name="collideConnected">The collide connected</param>
-        protected Joint(
+        internal Joint(
             Body bodyA = null,
             Body bodyB = null,
             JointType jointType = default(JointType),

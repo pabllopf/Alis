@@ -64,7 +64,6 @@ namespace Alis.Core.Profile.Sample
             // Replace this with the actual code
             for (int i = 0; i < 1000000; i++)
             {
-                int j = i;
             }
         }
     }
