@@ -35,7 +35,7 @@ using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Physic.Tools.PathGenerator
+namespace Alis.Extension.Math.PathGenerator
 {
     /// <summary>
     ///     Path: Very similar to Vertices, but this class contains vectors describing control points on a Catmull-Rom
@@ -384,7 +384,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
             for (int i = 1; i < divisions; i++)
             {
                 Vector2 normal = GetPositionNormal(t);
-                float angle = (float) Math.Atan2(normal.Y, normal.X);
+                float angle = (float) System.Math.Atan2(normal.Y, normal.X);
 
                 Vector3 addVector = new Vector3(new Vector2(end.X, end.Y), angle);
                 verts.Add(addVector);

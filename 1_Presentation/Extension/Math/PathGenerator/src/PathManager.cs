@@ -30,13 +30,14 @@
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Tools.Triangulation.TriangulationBase;
 
-namespace Alis.Core.Physic.Tools.PathGenerator
+namespace Alis.Extension.Math.PathGenerator
 {
     /// <summary>An easy to use manager for creating paths.</summary>
     public static class PathManager

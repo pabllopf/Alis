@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Plugin;
-
 namespace Alis.Extension.Plugin.Sample
 {
     /// <summary>

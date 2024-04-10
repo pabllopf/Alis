@@ -1,6 +1,6 @@
 using Alis.Core.Aspect.Logging;
 
-namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
+namespace Alis.Extension.Math.PathGenerator.Sample
 {
     /// <summary>
     ///     The program class
@@ -12,12 +12,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
         /// </summary>
         public static void Main()
         {
-            FastPriorityQueueExample.RunExample();
-
-            Logger.Info("------------------------------");
-
-            SimplePriorityQueueExample.RunExample();
-
             Logger.Info("End Program...");
         }
     }

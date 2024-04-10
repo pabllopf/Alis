@@ -36,10 +36,8 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.System.Manager;
-using Alis.Core.Ecs.System.Manager.Plugin;
-using Alis.Extension.Plugin;
 
-namespace Alis.Core.Plugin
+namespace Alis.Extension.Plugin
 {
     /// <summary>
     ///     The plugin manager class

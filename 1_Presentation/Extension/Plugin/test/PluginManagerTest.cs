@@ -32,7 +32,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Alis.Core.Plugin;
 using Xunit;
 
 namespace Alis.Extension.Plugin.Test

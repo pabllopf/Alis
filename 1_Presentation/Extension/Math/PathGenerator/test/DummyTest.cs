@@ -29,7 +29,7 @@
 
 using Xunit;
 
-namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
+namespace Alis.Extension.Math.PathGenerator.Test
 {
     /// <summary>
     ///     The dummy test class
