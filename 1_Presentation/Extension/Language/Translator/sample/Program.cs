@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Language.Translator.Sample
 {
@@ -53,10 +54,10 @@ namespace Alis.Extension.Language.Translator.Sample
             manager.AddTranslation("es", "world", "Mundo");
 
             manager.SetLanguage("Spanish", "es");
-            Console.WriteLine($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
+            Logger.Info($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
 
             manager.SetLanguage("English", "en");
-            Console.WriteLine($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
+            Logger.Info($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
         }
     }
 }
