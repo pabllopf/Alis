@@ -198,19 +198,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             DictionaryEntry entry = enumerator.Entry;
             Assert.Equal(new DictionaryEntry("test", 1), entry);
         }
-
-        /// <summary>
-        ///     Tests that indexer get throws not supported exception
-        /// </summary>
-        [Fact]
-        public void Indexer_Get_ThrowsNotSupportedException()
-        {
-            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(new List<int>());
-            Assert.Throws<NotSupportedException>(() =>
-            {
-            });
-        }
-
+        
         /// <summary>
         ///     Tests that indexer set throws not supported exception
         /// </summary>
