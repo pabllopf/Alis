@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ecs.System.Manager.Plugin
+using Alis.Core.Ecs.System.Manager;
+
+namespace Alis.Extension.Plugin
 {
     /// <summary>
     ///     The plugin manager interface
