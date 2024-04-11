@@ -27,13 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Physic.Tools
+namespace Alis.Core.Physic.Figure
 {
     /// <summary>
     ///     The line class
@@ -101,18 +100,18 @@ namespace Alis.Core.Physic.Tools
             float x4 = b1.X;
             float y4 = b1.Y;
 
-            if (Math.Max(x1, x2) < Math.Min(x3, x4) || Math.Max(x3, x4) < Math.Min(x1, x2))
+            if (System.Math.Max(x1, x2) < System.Math.Min(x3, x4) || System.Math.Max(x3, x4) < System.Math.Min(x1, x2))
             {
                 return false;
             }
 
-            if (Math.Max(y1, y2) < Math.Min(y3, y4) || Math.Max(y3, y4) < Math.Min(y1, y2))
+            if (System.Math.Max(y1, y2) < System.Math.Min(y3, y4) || System.Math.Max(y3, y4) < System.Math.Min(y1, y2))
             {
                 return false;
             }
 
             float denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);
-            if (Math.Abs(denom) < float.Epsilon)
+            if (System.Math.Abs(denom) < float.Epsilon)
             {
                 return false;
             }

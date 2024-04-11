@@ -28,15 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
-using Alis.Core.Physic.Tools.TextureTools;
 
-namespace Alis.Core.Physic.Tools
+namespace Alis.Core.Physic.Figure
 {
     /// <summary>
     ///     The polygon class
@@ -149,8 +147,8 @@ namespace Alis.Core.Physic.Tools
                         phase--;
                     }*/
 
-                    vertices.Add(posOffset + new Vector2(xRadius * (float) Math.Cos(stepSize * -(i + phase)),
-                        -yRadius * (float) Math.Sin(stepSize * -(i + phase))));
+                    vertices.Add(posOffset + new Vector2(xRadius * (float) System.Math.Cos(stepSize * -(i + phase)),
+                        -yRadius * (float) System.Math.Sin(stepSize * -(i + phase))));
                 }
             }
 
@@ -202,8 +200,8 @@ namespace Alis.Core.Physic.Tools
             vertices.Add(new Vector2(xRadius, 0));
             for (int i = numberOfEdges - 1; i > 0; --i)
             {
-                vertices.Add(new Vector2(xRadius * (float) Math.Cos(stepSize * i),
-                    -yRadius * (float) Math.Sin(stepSize * i)));
+                vertices.Add(new Vector2(xRadius * (float) System.Math.Cos(stepSize * i),
+                    -yRadius * (float) System.Math.Sin(stepSize * i)));
             }
 
             return vertices;
@@ -228,8 +226,8 @@ namespace Alis.Core.Physic.Tools
             float stepSize = radians / sides;
             for (int i = sides - 1; i > 0; i--)
             {
-                vertices.Add(new Vector2(radius * (float) Math.Cos(stepSize * i),
-                    radius * (float) Math.Sin(stepSize * i)));
+                vertices.Add(new Vector2(radius * (float) System.Math.Cos(stepSize * i),
+                    radius * (float) System.Math.Sin(stepSize * i)));
             }
 
             return vertices;
@@ -334,8 +332,8 @@ namespace Alis.Core.Physic.Tools
             float stepSize = Constant.Pi / topEdges;
             for (int i = 1; i < topEdges; i++)
             {
-                vertices.Add(new Vector2(topRadius * (float) Math.Cos(stepSize * i),
-                    topRadius * (float) Math.Sin(stepSize * i) + newHeight));
+                vertices.Add(new Vector2(topRadius * (float) System.Math.Cos(stepSize * i),
+                    topRadius * (float) System.Math.Sin(stepSize * i) + newHeight));
             }
 
             vertices.Add(new Vector2(-topRadius, newHeight));
@@ -346,8 +344,8 @@ namespace Alis.Core.Physic.Tools
             stepSize = Constant.Pi / bottomEdges;
             for (int i = 1; i < bottomEdges; i++)
             {
-                vertices.Add(new Vector2(-bottomRadius * (float) Math.Cos(stepSize * i),
-                    -bottomRadius * (float) Math.Sin(stepSize * i) - newHeight));
+                vertices.Add(new Vector2(-bottomRadius * (float) System.Math.Cos(stepSize * i),
+                    -bottomRadius * (float) System.Math.Sin(stepSize * i) - newHeight));
             }
 
             vertices.Add(new Vector2(bottomRadius, -newHeight));
@@ -381,63 +379,27 @@ namespace Alis.Core.Physic.Tools
                 {
                     vertices.Add(
                         new Vector2(radius *
-                                    (float) Math.Cos(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize),
+                                    (float) System.Math.Cos(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize),
                             -radius *
-                            (float) Math.Sin(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize)));
+                            (float) System.Math.Sin(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize)));
 
                     vertices.Add(
                         new Vector2((radius + toothHeight) *
-                                    (float) Math.Cos(stepSize * i + toothAngleStepSize + toothTipStepSize),
+                                    (float) System.Math.Cos(stepSize * i + toothAngleStepSize + toothTipStepSize),
                             -(radius + toothHeight) *
-                            (float) Math.Sin(stepSize * i + toothAngleStepSize + toothTipStepSize)));
+                            (float) System.Math.Sin(stepSize * i + toothAngleStepSize + toothTipStepSize)));
                 }
 
                 vertices.Add(new Vector2((radius + toothHeight) *
-                                         (float) Math.Cos(stepSize * i + toothAngleStepSize),
+                                         (float) System.Math.Cos(stepSize * i + toothAngleStepSize),
                     -(radius + toothHeight) *
-                    (float) Math.Sin(stepSize * i + toothAngleStepSize)));
+                    (float) System.Math.Sin(stepSize * i + toothAngleStepSize)));
 
-                vertices.Add(new Vector2(radius * (float) Math.Cos(stepSize * i),
-                    -radius * (float) Math.Sin(stepSize * i)));
+                vertices.Add(new Vector2(radius * (float) System.Math.Cos(stepSize * i),
+                    -radius * (float) System.Math.Sin(stepSize * i)));
             }
 
             return vertices;
         }
-
-
-        /// <summary>
-        ///     Creates the polygon using the specified data
-        /// </summary>
-        /// <param name="data">The data</param>
-        /// <param name="width">The width</param>
-        /// <returns>The vertices</returns>
-        public static Vertices CreatePolygon(uint[] data, int width) => TextureConverter.DetectVertices(data, width);
-
-
-        /// <summary>
-        ///     Creates the polygon using the specified data
-        /// </summary>
-        /// <param name="data">The data</param>
-        /// <param name="width">The width</param>
-        /// <param name="holeDetection">The hole detection</param>
-        /// <returns>The vertices</returns>
-        public static Vertices CreatePolygon(uint[] data, int width, bool holeDetection) =>
-            TextureConverter.DetectVertices(data, width, holeDetection);
-
-
-        /// <summary>
-        ///     Creates the polygon using the specified data
-        /// </summary>
-        /// <param name="data">The data</param>
-        /// <param name="width">The width</param>
-        /// <param name="hullTolerance">The hull tolerance</param>
-        /// <param name="alphaTolerance">The alpha tolerance</param>
-        /// <param name="multiPartDetection">The multi part detection</param>
-        /// <param name="holeDetection">The hole detection</param>
-        /// <returns>A list of vertices</returns>
-        public static List<Vertices> CreatePolygon(uint[] data, int width, float hullTolerance, byte alphaTolerance,
-            bool multiPartDetection, bool holeDetection) =>
-            TextureConverter.DetectVertices(data, width, hullTolerance,
-                alphaTolerance, multiPartDetection, holeDetection);
     }
 }

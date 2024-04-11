@@ -32,9 +32,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Figure;
 using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Physic.Tools.TextureTools
+namespace Alis.Extension.Math.PathGenerator.TextureTools
 {
     /// <summary>
     ///     The texture converter class
@@ -1031,7 +1032,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     continue;
                 }
 
-                if (!(Math.Abs(vertex1.Y - vertex2.Y) > 0.0001f))
+                if (!(System.Math.Abs(vertex1.Y - vertex2.Y) > 0.0001f))
                 {
                     continue;
                 }
@@ -1063,7 +1064,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
             bool addFind = true;
             Vector2 slope = vertex2 - vertex1;
 
-            if (Math.Abs(vertex1.Y - y) < 0.0001f)
+            if (System.Math.Abs(vertex1.Y - y) < 0.0001f)
             {
                 Vector2 nextVertex = polygon[(index + 1) % polygon.Count];
                 Vector2 nextSlope = vertex1 - nextVertex;

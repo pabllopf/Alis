@@ -29,13 +29,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision.BroadPhase;
-using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
-using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Test.Samples;
 using Xunit;

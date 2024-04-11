@@ -36,8 +36,8 @@ using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Config;
+using Alis.Core.Physic.Figure;
 using Alis.Core.Physic.Shared;
-using Alis.Core.Physic.Tools;
 
 namespace Alis.Core.Physic.Collision.Shapes
 {

@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared;
 using Alis.Extension.Math.PathGenerator.ConvexHull;
 using Alis.Extension.Math.PathGenerator.Triangulation.BayaZit;
