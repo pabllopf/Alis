@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Physic.Tools.TextureTools
+namespace Alis.Extension.Math.PathGenerator.TextureTools
 {
     /// <summary>
     ///     The data size exception class

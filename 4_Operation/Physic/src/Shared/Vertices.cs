@@ -34,7 +34,7 @@ using System.Text;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Tools;
+using Alis.Core.Physic.Figure;
 
 namespace Alis.Core.Physic.Shared
 {
