@@ -27,11 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Tools;
 
@@ -110,8 +110,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
             if (Left(At(i - 1, vertices), At(i, vertices), At(j, vertices)) &&
                 RightOn(At(i - 1, vertices), At(i, vertices), At(j - 1, vertices)))
             {
-                Vector2 p = Line.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices),
-                    At(j - 1, vertices));
+                Vector2 p = Line.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices), At(j - 1, vertices));
 
                 if (Right(At(i + 1, vertices), At(i, vertices), p))
                 {
