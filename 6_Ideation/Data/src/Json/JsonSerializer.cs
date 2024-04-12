@@ -493,7 +493,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="target">The target</param>
         /// <param name="input">The input</param>
         /// <param name="options">The options</param>
-        private static void InitializeListContext(ListObject list, object target, IEnumerable input, JsonOptions options)
+        internal static void InitializeListContext(ListObject list, object target, IEnumerable input, JsonOptions options)
         {
             if (list.Context != null)
             {
@@ -511,7 +511,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="list">The list</param>
         /// <param name="options">The options</param>
-        private static void ProcessInput(object target, IEnumerable input, ListObject list, JsonOptions options)
+        internal static void ProcessInput(object target, IEnumerable input, ListObject list, JsonOptions options)
         {
             Array array = list.List as Array;
             int max = 0;
@@ -561,7 +561,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Clears the list using the specified list
         /// </summary>
         /// <param name="list">The list</param>
-        private static void ClearList(ListObject list)
+        internal static void ClearList(ListObject list)
         {
             if (list.Context != null)
             {
@@ -812,7 +812,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="dicTarget">The dic target</param>
         /// <param name="dictionary">The dictionary</param>
         /// <param name="options">The options</param>
-        private static void ApplyToDictionaryTarget(IDictionary dicTarget, IDictionary dictionary, JsonOptions options)
+        internal static void ApplyToDictionaryTarget(IDictionary dicTarget, IDictionary dictionary, JsonOptions options)
         {
             Type itemType = GetItemType(dicTarget.GetType());
             foreach (DictionaryEntry entry in dictionary)
@@ -839,7 +839,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="target">The target</param>
         /// <param name="dictionary">The dictionary</param>
         /// <param name="options">The options</param>
-        private static void ApplyToNonDictionaryTarget(object target, IDictionary dictionary, JsonOptions options)
+        internal static void ApplyToNonDictionaryTarget(object target, IDictionary dictionary, JsonOptions options)
         {
             TypeDef def = TypeDef.Get(target.GetType(), options);
 
@@ -1028,7 +1028,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="dic">The dic</param>
         /// <param name="options">The options</param>
         /// <returns>The instance</returns>
-        private static object HandleDictionary(object target, Type conversionType, IDictionary dic, JsonOptions options)
+        internal static object HandleDictionary(object target, Type conversionType, IDictionary dic, JsonOptions options)
         {
             object instance = CreateInstance(target, conversionType, 0, options, dic);
             if (instance != null)
@@ -1047,7 +1047,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="conversionType">The conversion type</param>
         /// <param name="options">The options</param>
         /// <returns>The value</returns>
-        private static object HandleNonString(object target, object value, Type conversionType, JsonOptions options)
+        internal static object HandleNonString(object target, object value, Type conversionType, JsonOptions options)
         {
             if (conversionType.IsArray && value is IEnumerable en)
             {
@@ -1071,7 +1071,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="conversionType">The conversion type</param>
         /// <param name="options">The options</param>
         /// <returns>The object</returns>
-        private static object HandleArray(object target, IEnumerable en, Type conversionType, JsonOptions options)
+        internal static object HandleArray(object target, IEnumerable en, Type conversionType, JsonOptions options)
         {
             Type elementType = conversionType.GetElementType();
             List<object> list = new List<object>();
@@ -1101,7 +1101,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <param name="options">The options</param>
         /// <returns>The object</returns>
-        private static object HandleListObject(object target, IEnumerable en, ListObject lo, Type conversionType, object value, JsonOptions options)
+        internal static object HandleListObject(object target, IEnumerable en, ListObject lo, Type conversionType, object value, JsonOptions options)
         {
             lo.List = CreateInstance(target, conversionType, en is ICollection coll ? coll.Count : 0, options, value);
             ApplyToListTarget(target, en, lo, options);
@@ -1114,7 +1114,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="str">The str</param>
         /// <param name="options">The options</param>
         /// <returns>The str</returns>
-        private static object HandleByteArray(string str, JsonOptions options)
+        internal static object HandleByteArray(string str, JsonOptions options)
         {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.ByteArrayAsBase64))
             {
@@ -1138,7 +1138,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <param name="options">The options</param>
         /// <returns>The value</returns>
-        private static object HandleDateTime(object value, JsonOptions options)
+        internal static object HandleDateTime(object value, JsonOptions options)
         {
             if (value is DateTime)
             {
@@ -1162,7 +1162,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The value</returns>
-        private static object HandleTimeSpan(object value)
+        internal static object HandleTimeSpan(object value)
         {
             string sValue = string.Format(CultureInfo.InvariantCulture, "{0}", value);
             if (!string.IsNullOrEmpty(sValue))
@@ -1549,7 +1549,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Skips the whitespace using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
-        private static void SkipWhitespace(TextReader reader)
+        internal static void SkipWhitespace(TextReader reader)
         {
             int i;
             do
@@ -1577,7 +1577,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <returns>The </returns>
-        private static string ReadStringValue(TextReader reader, JsonOptions options)
+        internal static string ReadStringValue(TextReader reader, JsonOptions options)
         {
             reader.Read();
             string s = ReadString(reader, options);
@@ -1598,7 +1598,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <returns>The dic</returns>
-        private static Dictionary<string, object> ReadDictionaryValue(TextReader reader, JsonOptions options)
+        internal static Dictionary<string, object> ReadDictionaryValue(TextReader reader, JsonOptions options)
         {
             Dictionary<string, object> dic = ReadDictionary(reader, options);
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseISerializable))
@@ -1622,7 +1622,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <returns>The object array</returns>
-        private static object[] ReadArrayValue(TextReader reader, JsonOptions options) => ReadArray(reader, options);
+        internal static object[] ReadArrayValue(TextReader reader, JsonOptions options) => ReadArray(reader, options);
 
         /// <summary>
         ///     Reads the new value using the specified reader
@@ -1631,7 +1631,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         /// <param name="arrayEnd">The array end</param>
         /// <returns>The object</returns>
-        private static object ReadNewValue(TextReader reader, JsonOptions options, out bool arrayEnd) => ReadNew(reader, options, out arrayEnd);
+        internal static object ReadNewValue(TextReader reader, JsonOptions options, out bool arrayEnd) => ReadNew(reader, options, out arrayEnd);
 
         /// <summary>
         ///     Reads the number or literal value using the specified reader
@@ -1640,7 +1640,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         /// <param name="arrayEnd">The array end</param>
         /// <returns>The object</returns>
-        private static object ReadNumberOrLiteralValue(TextReader reader, JsonOptions options, out bool arrayEnd) => ReadNumberOrLiteral(reader, options, out arrayEnd);
+        internal static object ReadNumberOrLiteralValue(TextReader reader, JsonOptions options, out bool arrayEnd) => ReadNumberOrLiteral(reader, options, out arrayEnd);
 
         /// <summary>
         ///     Reads the new using the specified reader
@@ -1707,7 +1707,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         /// <param name="arrayEnd">The array end</param>
         /// <returns>The object</returns>
-        private static object ReadNumberOrLiteral(TextReader reader, JsonOptions options, out bool arrayEnd)
+        internal static object ReadNumberOrLiteral(TextReader reader, JsonOptions options, out bool arrayEnd)
         {
             arrayEnd = false;
             string text = ReadCharacters(reader, out arrayEnd);
@@ -1721,7 +1721,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="arrayEnd">The array end</param>
         /// <returns>The string</returns>
-        private static string ReadCharacters(TextReader reader, out bool arrayEnd)
+        internal static string ReadCharacters(TextReader reader, out bool arrayEnd)
         {
             arrayEnd = false;
             StringBuilder sb = new StringBuilder();
@@ -1756,7 +1756,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="text">The text</param>
         /// <returns>The bool</returns>
-        private static bool IsLiteral(string text) => string.Compare(Null, text, StringComparison.OrdinalIgnoreCase) == 0 ||
+        internal static bool IsLiteral(string text) => string.Compare(Null, text, StringComparison.OrdinalIgnoreCase) == 0 ||
                                                       string.Compare(True, text, StringComparison.OrdinalIgnoreCase) == 0 ||
                                                       string.Compare(False, text, StringComparison.OrdinalIgnoreCase) == 0;
 
@@ -1765,7 +1765,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="text">The text</param>
         /// <returns>The object</returns>
-        private static object HandleLiteral(string text)
+        internal static object HandleLiteral(string text)
         {
             if (string.Compare(Null, text, StringComparison.OrdinalIgnoreCase) == 0)
             {
@@ -1792,7 +1792,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         /// <param name="reader">The reader</param>
         /// <returns>The object</returns>
-        private static object ParseNumber(string text, JsonOptions options, TextReader reader)
+        internal static object ParseNumber(string text, JsonOptions options, TextReader reader)
         {
             if (text.LastIndexOf("e", StringComparison.OrdinalIgnoreCase) >= 0)
             {
@@ -1812,7 +1812,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="text">The text</param>
         /// <returns>The object</returns>
-        private static object HandleECase(string text)
+        internal static object HandleECase(string text)
         {
             if (double.TryParse(text, NumberStyles.Float, CultureInfo.InvariantCulture, out double d))
             {
@@ -1827,7 +1827,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="text">The text</param>
         /// <returns>The object</returns>
-        private static object HandleDotCase(string text)
+        internal static object HandleDotCase(string text)
         {
             if (decimal.TryParse(text, NumberStyles.Float, CultureInfo.InvariantCulture, out decimal de))
             {
@@ -1844,7 +1844,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <returns>The object</returns>
-        private static object HandleDefaultCase(string text, TextReader reader, JsonOptions options)
+        internal static object HandleDefaultCase(string text, TextReader reader, JsonOptions options)
         {
             if (int.TryParse(text, NumberStyles.Integer, CultureInfo.InvariantCulture, out int i))
             {
@@ -1955,7 +1955,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="text">The text</param>
         /// <returns>The text</returns>
-        private static string RemoveQuotesFromText(string text)
+        internal static string RemoveQuotesFromText(string text)
         {
             if ((text[0] == '"') && (text[text.Length - 1] == '"'))
             {
@@ -1977,7 +1977,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="text">The text</param>
         /// <param name="dt">The dt</param>
         /// <returns>The bool</returns>
-        private static bool TryParseDateTimeWithEndZ(string text, out DateTime dt)
+        internal static bool TryParseDateTimeWithEndZ(string text, out DateTime dt)
         {
             if (text.EndsWith("Z", StringComparison.OrdinalIgnoreCase))
             {
@@ -1997,7 +1997,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="text">The text</param>
         /// <param name="dt">The dt</param>
         /// <returns>The bool</returns>
-        private static bool TryParseDateTimeWithSpecificFormat(string text, out DateTime dt)
+        internal static bool TryParseDateTimeWithSpecificFormat(string text, out DateTime dt)
         {
             int offsetHours = 0;
             int offsetMinutes = 0;
@@ -2030,7 +2030,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="text">The text</param>
         /// <returns>The bool</returns>
-        private static bool IsDateTimeFormatValid(string text) => (text.Length >= 19) &&
+        internal static bool IsDateTimeFormatValid(string text) => (text.Length >= 19) &&
                                                                   (text[4] == '-') &&
                                                                   (text[7] == '-') &&
                                                                   (text[10] == 'T' || text[10] == 't');
@@ -2041,14 +2041,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="text">The text</param>
         /// <param name="dt">The dt</param>
         /// <returns>The bool</returns>
-        private static bool TryParseExactDateTime(string text, out DateTime dt) => DateTime.TryParseExact(text, "o", null, DateTimeStyles.AssumeUniversal, out dt);
+        internal static bool TryParseExactDateTime(string text, out DateTime dt) => DateTime.TryParseExact(text, "o", null, DateTimeStyles.AssumeUniversal, out dt);
 
         /// <summary>
         ///     Finds the time zone index using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         /// <returns>The int</returns>
-        private static int FindTimeZoneIndex(string text)
+        internal static int FindTimeZoneIndex(string text)
         {
             return text.IndexOfAny(new[] {'+', '-'}, 19);
         }
@@ -2060,7 +2060,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="tz">The tz</param>
         /// <param name="offsetHours">The offset hours</param>
         /// <param name="offsetMinutes">The offset minutes</param>
-        private static void CalculateOffset(string text, int tz, out int offsetHours, out int offsetMinutes)
+        internal static void CalculateOffset(string text, int tz, out int offsetHours, out int offsetMinutes)
         {
             string offset = text.Substring(tz + 1).Trim();
             if (int.TryParse(offset, out int i))
@@ -2089,7 +2089,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="offsetMinutes">The offset minutes</param>
         /// <param name="dt">The dt</param>
         /// <returns>The bool</returns>
-        private static bool TryParseDateTimeWithOffset(string text, int tz, int offsetHours, int offsetMinutes, out DateTime dt)
+        internal static bool TryParseDateTimeWithOffset(string text, int tz, int offsetHours, int offsetMinutes, out DateTime dt)
         {
             if (tz >= 0)
             {
@@ -2117,7 +2117,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="text">The text</param>
         /// <param name="dt">The dt</param>
         /// <returns>The bool</returns>
-        private static bool TryParseDateTimeWithTicks(string text, out DateTime dt)
+        internal static bool TryParseDateTimeWithTicks(string text, out DateTime dt)
         {
             string ticks = ExtractTicks(text);
             int offsetHours, offsetMinutes;
@@ -2130,7 +2130,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="text">The text</param>
         /// <returns>The string</returns>
-        private static string ExtractTicks(string text)
+        internal static string ExtractTicks(string text)
         {
             if (text.StartsWith(DateStartJs) && text.EndsWith(DateEndJs))
             {
@@ -2152,7 +2152,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="updatedTicks">The updated ticks</param>
         /// <param name="offsetHours">The offset hours</param>
         /// <param name="offsetMinutes">The offset minutes</param>
-        private static void ExtractOffset(string ticks, out string updatedTicks, out int offsetHours, out int offsetMinutes)
+        internal static void ExtractOffset(string ticks, out string updatedTicks, out int offsetHours, out int offsetMinutes)
         {
             offsetHours = 0;
             offsetMinutes = 0;
@@ -2189,7 +2189,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="offsetMinutes">The offset minutes</param>
         /// <param name="dt">The dt</param>
         /// <returns>The bool</returns>
-        private static bool TryParseTicks(string ticks, int offsetHours, int offsetMinutes, out DateTime dt)
+        internal static bool TryParseTicks(string ticks, int offsetHours, int offsetMinutes, out DateTime dt)
         {
             if (!string.IsNullOrEmpty(ticks) && long.TryParse(ticks, NumberStyles.Number, CultureInfo.InvariantCulture, out long l))
             {
@@ -2360,7 +2360,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="writer">The writer</param>
         /// <param name="value">The value</param>
         /// <param name="objectGraph">The object graph</param>
-        private static void HandleWriteValueCallback(JsonOptions options, TextWriter writer, object value, IDictionary<object, object> objectGraph)
+        internal static void HandleWriteValueCallback(JsonOptions options, TextWriter writer, object value, IDictionary<object, object> objectGraph)
         {
             if (options.WriteValueCallback != null)
             {
@@ -2383,7 +2383,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool HandleSpecialCases(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        internal static bool HandleSpecialCases(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             if (HandleNullValue(writer, value))
             {
@@ -2460,7 +2460,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
-        private static void HandleObjectGraph(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        internal static void HandleObjectGraph(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             if (objectGraph.ContainsKey(value))
             {
@@ -2502,7 +2502,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="writer">The writer</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        private static bool HandleNullValue(TextWriter writer, object value)
+        internal static bool HandleNullValue(TextWriter writer, object value)
         {
             if (value == null || Convert.IsDBNull(value))
             {
@@ -2519,7 +2519,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="writer">The writer</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        private static bool HandleStringValue(TextWriter writer, object value)
+        internal static bool HandleStringValue(TextWriter writer, object value)
         {
             if (value is string s)
             {
@@ -2536,7 +2536,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="writer">The writer</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        private static bool HandleBoolValue(TextWriter writer, object value)
+        internal static bool HandleBoolValue(TextWriter writer, object value)
         {
             if (value is bool b)
             {
@@ -2553,7 +2553,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="writer">The writer</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        private static bool HandleFloatDoubleValue(TextWriter writer, object value)
+        internal static bool HandleFloatDoubleValue(TextWriter writer, object value)
         {
             if (value is float f)
             {
@@ -2576,7 +2576,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="writer">The writer</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        private static bool HandleCharValue(TextWriter writer, object value)
+        internal static bool HandleCharValue(TextWriter writer, object value)
         {
             if (value is char c)
             {
@@ -2594,7 +2594,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool HandleEnumValue(TextWriter writer, object value, JsonOptions options)
+        internal static bool HandleEnumValue(TextWriter writer, object value, JsonOptions options)
         {
             if (value is Enum e)
             {
@@ -2612,7 +2612,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool HandleTimeSpanValue(TextWriter writer, object value, JsonOptions options)
+        internal static bool HandleTimeSpanValue(TextWriter writer, object value, JsonOptions options)
         {
             if (value is TimeSpan ts)
             {
@@ -2638,7 +2638,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool HandleDateTimeOffsetValue(TextWriter writer, object value, JsonOptions options)
+        internal static bool HandleDateTimeOffsetValue(TextWriter writer, object value, JsonOptions options)
         {
             if (value is DateTimeOffset dto)
             {
@@ -2656,7 +2656,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool HandleDateTimeValue(TextWriter writer, object value, JsonOptions options)
+        internal static bool HandleDateTimeValue(TextWriter writer, object value, JsonOptions options)
         {
             if (value is DateTime dt)
             {
@@ -2673,7 +2673,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="writer">The writer</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        private static bool HandleNumericValue(TextWriter writer, object value)
+        internal static bool HandleNumericValue(TextWriter writer, object value)
         {
             if (value is IConvertible ic)
             {
@@ -2691,7 +2691,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool HandleGuidValue(TextWriter writer, object value, JsonOptions options)
+        internal static bool HandleGuidValue(TextWriter writer, object value, JsonOptions options)
         {
             if (value is Guid g)
             {
@@ -2708,7 +2708,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="writer">The writer</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        private static bool HandleUriValue(TextWriter writer, object value)
+        internal static bool HandleUriValue(TextWriter writer, object value)
         {
             if (value is Uri uri)
             {
@@ -2727,7 +2727,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool HandleArrayValue(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        internal static bool HandleArrayValue(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             if (value is Array array)
             {
@@ -2757,7 +2757,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool HandleIDictionaryValue(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        internal static bool HandleIDictionaryValue(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             if (value is IDictionary dictionary)
             {
@@ -2790,7 +2790,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool HandleIEnumerableValue(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        internal static bool HandleIEnumerableValue(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             if (value is IEnumerable enumerable)
             {
@@ -2822,7 +2822,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool HandleStreamValue(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        internal static bool HandleStreamValue(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             if (value is Stream stream)
             {
@@ -3252,7 +3252,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
-        private static void CheckAndSetOptions(TextWriter writer, object value, ref IDictionary<object, object> objectGraph, ref JsonOptions options)
+        internal static void CheckAndSetOptions(TextWriter writer, object value, ref IDictionary<object, object> objectGraph, ref JsonOptions options)
         {
             if (writer == null)
             {
@@ -3276,7 +3276,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
-        private static void HandleBeforeWriteObjectCallback(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        internal static void HandleBeforeWriteObjectCallback(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             if (options.BeforeWriteObjectCallback != null)
             {
@@ -3298,7 +3298,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
-        private static void WriteSerializableOrValues(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        internal static void WriteSerializableOrValues(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             ISerializable serializable = null;
             bool useISerializable = options.SerializationOptions.HasFlag(JsonSerializationOptions.UseISerializable) || ForceSerializable(value);
@@ -3326,7 +3326,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
-        private static void HandleAfterWriteObjectCallback(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        internal static void HandleAfterWriteObjectCallback(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             if (options.AfterWriteObjectCallback != null)
             {
@@ -3579,7 +3579,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="writer">The writer</param>
         /// <param name="dictionary">The dictionary</param>
         /// <param name="options">The options</param>
-        private static void WriteDictionary(IndentedTextWriter writer, IDictionary dictionary, JsonOptions options)
+        internal static void WriteDictionary(IndentedTextWriter writer, IDictionary dictionary, JsonOptions options)
         {
             writer.WriteLine('{');
             bool first = true;
