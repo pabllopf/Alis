@@ -53,11 +53,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             {
                 throw new ArgumentNullException(nameof(dictionary));
             }
-
+            
             // Act & Assert
             Assert.Throws<NotSupportedException>(() => dictionary.Add("key", "value"));
         }
-
+        
         /// <summary>
         ///     Tests that test key value type dictionary clear throws exception
         /// </summary>
@@ -71,11 +71,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             {
                 throw new ArgumentNullException(nameof(dictionary));
             }
-
+            
             // Act & Assert
             Assert.Throws<NotSupportedException>(() => dictionary.Clear());
         }
-
+        
         /// <summary>
         ///     Tests that test key value type dictionary contains throws exception
         /// </summary>
@@ -89,11 +89,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             {
                 throw new ArgumentNullException(nameof(dictionary));
             }
-
+            
             // Act & Assert
             Assert.Throws<NotSupportedException>(() => dictionary.Contains("key"));
         }
-
+        
         /// <summary>
         ///     Tests that test key value type dictionary remove throws exception
         /// </summary>
@@ -107,11 +107,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             {
                 throw new ArgumentNullException(nameof(dictionary));
             }
-
+            
             // Act & Assert
             Assert.Throws<NotSupportedException>(() => dictionary.Remove("key"));
         }
-
+        
         /// <summary>
         ///     Tests that test key value type dictionary copy to throws exception
         /// </summary>
@@ -125,13 +125,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
             {
                 throw new ArgumentNullException(nameof(dictionary));
             }
-
+            
             object[] array = new object[10];
-
+            
             // Act & Assert
             Assert.Throws<NotSupportedException>(() => dictionary.CopyTo(array, 0));
         }
-
+        
         /// <summary>
         ///     Tests that test key value type dictionary get enumerator throws exception
         /// </summary>
@@ -141,11 +141,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             List<string> list = new List<string> {"value"};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
-
+            
             // Act & Assert
             Assert.Throws<NotSupportedException>(() => ((IEnumerable) dictionary).GetEnumerator());
         }
-
+        
         /// <summary>
         ///     Tests that test key value type dictionary indexer throws exception
         /// </summary>
@@ -159,11 +159,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             {
                 throw new ArgumentNullException(nameof(dictionary));
             }
-
+            
             // Act & Assert
             Assert.Throws<NotSupportedException>(() => dictionary["key"] = "value");
         }
-
+        
         /// <summary>
         ///     Tests that key value type dictionary constructor sets enumerator
         /// </summary>
@@ -185,6 +185,178 @@ namespace Alis.Core.Aspect.Data.Test.Json
             IDictionaryEnumerator result = dictionary.GetEnumerator();
             Assert.NotNull(result);
             // You might need to add additional assertions to check the state of the result
+        }
+        
+        /// <summary>
+        /// Tests that test count property
+        /// </summary>
+        [Fact]
+        public void TestCountProperty()
+        {
+            // Arrange
+            List<object> list = new List<object> {new object()};
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
+            
+            // Act & Assert
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                var count = dictionary.Count;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that test is synchronized property
+        /// </summary>
+        [Fact]
+        public void TestIsSynchronizedProperty()
+        {
+            // Arrange
+            List<object> list = new List<object> {new object()};
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
+            
+            // Act & Assert
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                var isSynchronized = dictionary.IsSynchronized;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that test sync root property
+        /// </summary>
+        [Fact]
+        public void TestSyncRootProperty()
+        {
+            // Arrange
+            List<object> list = new List<object> {new object()};
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
+            
+            // Act & Assert
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                var syncRoot = dictionary.SyncRoot;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that test is fixed size property
+        /// </summary>
+        [Fact]
+        public void TestIsFixedSizeProperty()
+        {
+            // Arrange
+            List<object> list = new List<object> {new object()};
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
+            
+            // Act & Assert
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                var isFixedSize = dictionary.IsFixedSize;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that test is read only property
+        /// </summary>
+        [Fact]
+        public void TestIsReadOnlyProperty()
+        {
+            // Arrange
+            List<object> list = new List<object> {new object()};
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
+            
+            // Act & Assert
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                var isReadOnly = dictionary.IsReadOnly;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that test keys property
+        /// </summary>
+        [Fact]
+        public void TestKeysProperty()
+        {
+            // Arrange
+            List<object> list = new List<object> {new object()};
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
+            
+            // Act & Assert
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                var keys = dictionary.Keys;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that test values property
+        /// </summary>
+        [Fact]
+        public void TestValuesProperty()
+        {
+            // Arrange
+            List<object> list = new List<object> {new object()};
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
+            
+            // Act & Assert
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                var values = dictionary.Values;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that test dispose enumerator is disposable
+        /// </summary>
+        [Fact]
+        public void TestDispose_EnumeratorIsDisposable()
+        {
+            // Arrange
+            List<string> list = new List<string> {"value"};
+            KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(list);
+            
+            // Act
+            enumerator.Dispose();
+            
+            // Assert
+            // Here you should assert that the Dispose method of the enumerator was called.
+            // This might involve using a mock for the enumerator, which is not requested in this case.
+        }
+        
+        /// <summary>
+        /// Tests that test dispose value is disposable
+        /// </summary>
+        [Fact]
+        public void TestDispose_ValueIsDisposable()
+        {
+            // Arrange
+            DisposableTestObject disposableValue = new DisposableTestObject();
+            List<DisposableTestObject> nonDisposableValue = new List<DisposableTestObject> ();
+            KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(nonDisposableValue);
+            
+            // Act
+            enumerator.Dispose();
+            
+            // Assert
+            Assert.False(disposableValue.IsDisposed);
+        }
+        
+        /// <summary>
+        /// Tests that test dispose enumerator and value are not disposable
+        /// </summary>
+        [Fact]
+        public void TestDispose_EnumeratorAndValueAreNotDisposable()
+        {
+            // Arrange
+            List<int> nonDisposableValue = new List<int> {1};
+            KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(nonDisposableValue);
+            
+            // Act
+            Exception ex = Record.Exception(() => enumerator.Dispose());
+            
+            // Assert
+            Assert.Null(ex);
         }
     }
 }
