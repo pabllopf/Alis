@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         static ImGui()
         {
-            new EmbeddedDllClass().ExtractEmbeddedDlls("cimgui", DllType.Lib, ImGuiDlls.ImGuiDllBytes, Assembly.GetExecutingAssembly());
+            EmbeddedDllClass.ExtractEmbeddedDlls("cimgui", DllType.Lib, ImGuiDlls.ImGuiDllBytes, Assembly.GetExecutingAssembly());
         }
 
         /// <summary>

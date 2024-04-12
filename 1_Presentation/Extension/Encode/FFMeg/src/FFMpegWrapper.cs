@@ -141,9 +141,9 @@ namespace Alis.Extension.Encode.FFMeg
         /// </summary>
         static FfMpegWrapper()
         {
-            new EmbeddedDllClass().ExtractEmbeddedDlls("ffmpeg", DllType.Exe, FfMegDlls.FfMegDllBytes, Assembly.GetAssembly(typeof(FfMegDlls)));
-            new EmbeddedDllClass().ExtractEmbeddedDlls("ffplay", DllType.Exe, FfMegDlls.FfplayDllBytes, Assembly.GetAssembly(typeof(FfMegDlls)));
-            new EmbeddedDllClass().ExtractEmbeddedDlls("ffprobe", DllType.Exe, FfMegDlls.FfprobeDllBytes, Assembly.GetAssembly(typeof(FfMegDlls)));
+            EmbeddedDllClass.ExtractEmbeddedDlls("ffmpeg", DllType.Exe, FfMegDlls.FfMegDllBytes, Assembly.GetAssembly(typeof(FfMegDlls)));
+            EmbeddedDllClass.ExtractEmbeddedDlls("ffplay", DllType.Exe, FfMegDlls.FfplayDllBytes, Assembly.GetAssembly(typeof(FfMegDlls)));
+            EmbeddedDllClass.ExtractEmbeddedDlls("ffprobe", DllType.Exe, FfMegDlls.FfprobeDllBytes, Assembly.GetAssembly(typeof(FfMegDlls)));
         }
 
         /// <summary>

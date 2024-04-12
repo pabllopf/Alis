@@ -52,7 +52,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <summary>
         ///     Initializes a new instance of the <see cref="SdlTtf" /> class
         /// </summary>
-        static NativeSdlTtf() => new EmbeddedDllClass().ExtractEmbeddedDlls("sdl2_ttf", DllType.Lib, Sdl2Dlls.GlSdlTtfDllBytes, Assembly.GetAssembly(typeof(Sdl2Dlls)));
+        static NativeSdlTtf() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf", DllType.Lib, Sdl2Dlls.GlSdlTtfDllBytes, Assembly.GetAssembly(typeof(Sdl2Dlls)));
 
         /// <summary>
         ///     Ttf the glyph metrics using the specified font
