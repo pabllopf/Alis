@@ -2918,6 +2918,9 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that update texture should return expected value when called with valid parameters
+        /// </summary>
         [Fact]
         public void UpdateTexture_ShouldReturnExpectedValue_WhenCalledWithValidParameters()
         {

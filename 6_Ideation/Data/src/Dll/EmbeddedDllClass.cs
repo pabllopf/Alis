@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Data.Dll
     /// <summary>
     ///     The embedded dll class
     /// </summary>
-    public class EmbeddedDllClass
+    public static class EmbeddedDllClass
     {
         /// <summary>
         ///     Extracts the embedded dlls using the specified dll name
@@ -51,7 +51,7 @@ namespace Alis.Core.Aspect.Data.Dll
         /// <param name="dllBytes">The dll bytes</param>
         /// <param name="assembly">The assembly</param>
         [ExcludeFromCodeCoverage]
-        public void ExtractEmbeddedDlls(string dllName, DllType dllType, Dictionary<PlatformInfo, string> dllBytes, Assembly assembly)
+        public static void ExtractEmbeddedDlls(string dllName, DllType dllType, Dictionary<PlatformInfo, string> dllBytes, Assembly assembly)
         {
             string extension = GetDllExtension(dllType);
             string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Data.Dll
         /// <param name="currentPlatform">The current platform</param>
         /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
         /// <returns>The string</returns>
-        private static string GetExeExtension(OSPlatform currentPlatform)
+        internal static string GetExeExtension(OSPlatform currentPlatform)
         {
             if (currentPlatform == OSPlatform.Windows)
             {
@@ -128,7 +128,7 @@ namespace Alis.Core.Aspect.Data.Dll
         /// <param name="currentPlatform">The current platform</param>
         /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
         /// <returns>The string</returns>
-        private static string GetLibExtension(OSPlatform currentPlatform)
+        internal static string GetLibExtension(OSPlatform currentPlatform)
         {
             if (currentPlatform == OSPlatform.Windows)
             {
@@ -191,7 +191,7 @@ namespace Alis.Core.Aspect.Data.Dll
         /// <param name="fileDir">The file dir</param>
         /// <param name="zipData">The zip data</param>
         [ExcludeFromCodeCoverage]
-        private static void ExtractZipFile(string fileDir, MemoryStream zipData)
+        internal static void ExtractZipFile(string fileDir, MemoryStream zipData)
         {
             using MemoryStream ms = zipData;
             using ZipArchive archive = new ZipArchive(ms);
@@ -230,15 +230,19 @@ namespace Alis.Core.Aspect.Data.Dll
         ///     Sets the file read permission using the specified file path
         /// </summary>
         /// <param name="filePath">The file path</param>
-        private static void SetFileReadPermission(string filePath)
+        internal static void SetFileReadPermission(string filePath)
         {
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException("File not found", filePath);
+            }
+            
             using Process process = new Process();
             process.StartInfo.FileName = "/bin/chmod";
             process.StartInfo.Arguments = $"+x {filePath}";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.CreateNoWindow = true;
             process.Start();
-
             process.WaitForExit();
         }
 
