@@ -2231,6 +2231,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Throws<InvalidCastException>(() => JsonSerializer.HandleArray(null, input, conversionType, options));
         }
         
+        /// <summary>
+        /// Tests that test clear list
+        /// </summary>
         [Fact]
         public void TestClearList()
         {
@@ -2244,14 +2247,26 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(listObject.GetHashCode() != 0);
         }
         
+        /// <summary>
+        /// The concrete list object class
+        /// </summary>
+        /// <seealso cref="ListObject"/>
         public class ConcreteListObject : ListObject
         {
             // Implement abstract methods from ListObject here
+            /// <summary>
+            /// Clears this instance
+            /// </summary>
             public override void Clear()
             {
                 
             }
             
+            /// <summary>
+            /// Adds the value
+            /// </summary>
+            /// <param name="value">The value</param>
+            /// <param name="options">The options</param>
             public override void Add(object value, JsonOptions options = null)
             {
                 
