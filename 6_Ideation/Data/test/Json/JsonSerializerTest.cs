@@ -3920,5 +3920,114 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string target = " TEST ";
             Assert.True(source.EqualsIgnoreCase(target, trim: false));
         }
+        
+        /// <summary>
+        /// Tests that read new when reader contains close brace returns null
+        /// </summary>
+        [Fact]
+        public void ReadNew_WhenReaderContainsCloseBrace_ReturnsNull()
+        {
+            StringReader reader = new StringReader("}");
+            Assert.Throws<IndexOutOfRangeException>(() => JsonSerializer.ReadNew(reader, new JsonOptions(), out bool arrayEnd));
+        }
+        
+        /// <summary>
+        /// Tests that read new when reader contains comma returns null
+        /// </summary>
+        [Fact]
+        public void ReadNew_WhenReaderContainsComma_ReturnsNull()
+        {
+            StringReader reader = new StringReader(",");
+            Assert.Throws<IndexOutOfRangeException>(() => JsonSerializer.ReadNew(reader, new JsonOptions(), out bool arrayEnd));
+        }
+        
+        /// <summary>
+        /// Tests that read new when reader contains close bracket sets array end to true
+        /// </summary>
+        [Fact]
+        public void ReadNew_WhenReaderContainsCloseBracket_SetsArrayEndToTrue()
+        {
+            StringReader reader = new StringReader("]");
+            Assert.Throws<IndexOutOfRangeException>(() => JsonSerializer.ReadNew(reader, new JsonOptions(), out bool arrayEnd));
+        }
+        
+        /// <summary>
+        /// Tests that read new when reader contains null returns null
+        /// </summary>
+        [Fact]
+        public void ReadNew_WhenReaderContainsNull_ReturnsNull()
+        {
+            StringReader reader = new StringReader("null");
+            object result = JsonSerializer.ReadNew(reader, new JsonOptions(), out bool arrayEnd);
+            Assert.Null(result);
+            Assert.False(arrayEnd);
+        }
+        
+        /// <summary>
+        /// Tests that read new when reader contains date returns date time
+        /// </summary>
+        [Fact]
+        public void ReadNew_WhenReaderContainsDate_ReturnsDateTime()
+        {
+            StringReader reader = new StringReader("\"/Date(946684800000)/\"");
+            Assert.Throws<JsonException>(() => JsonSerializer.ReadNew(reader, new JsonOptions(), out bool arrayEnd));
+        }
+        
+        /// <summary>
+        /// Tests that read new when reader contains unexpected character throws json exception
+        /// </summary>
+        [Fact]
+        public void ReadNew_WhenReaderContainsUnexpectedCharacter_ThrowsJsonException()
+        {
+            StringReader reader = new StringReader("unexpected");
+            Assert.Throws<JsonException>(() => JsonSerializer.ReadNew(reader, new JsonOptions(), out bool arrayEnd));
+        }
+        
+        /// <summary>
+        /// Tests that get hex value when character is digit returns correct value
+        /// </summary>
+        [Fact]
+        public void GetHexValue_WhenCharacterIsDigit_ReturnsCorrectValue()
+        {
+            StringReader reader = new StringReader("3");
+            JsonOptions options = new JsonOptions();
+            byte result = JsonSerializer.GetHexValue(reader, '3', options);
+            Assert.Equal(3, result);
+        }
+        
+        /// <summary>
+        /// Tests that get hex value when character is lower case letter returns correct value
+        /// </summary>
+        [Fact]
+        public void GetHexValue_WhenCharacterIsLowerCaseLetter_ReturnsCorrectValue()
+        {
+            StringReader reader = new StringReader("a");
+            JsonOptions options = new JsonOptions();
+            byte result = JsonSerializer.GetHexValue(reader, 'a', options);
+            Assert.Equal(10, result);
+        }
+        
+        /// <summary>
+        /// Tests that get hex value when character is upper case letter returns correct value
+        /// </summary>
+        [Fact]
+        public void GetHexValue_WhenCharacterIsUpperCaseLetter_ReturnsCorrectValue()
+        {
+            StringReader reader = new StringReader("A");
+            JsonOptions options = new JsonOptions();
+            byte result = JsonSerializer.GetHexValue(reader, 'A', options);
+            Assert.Equal(10, result);
+        }
+        
+        /// <summary>
+        /// Tests that get hex value when character is not hex throws exception
+        /// </summary>
+        [Fact]
+        public void GetHexValue_WhenCharacterIsNotHex_ThrowsException()
+        {
+            StringReader reader = new StringReader("g");
+            JsonOptions options = new JsonOptions();
+            Assert.Throws<JsonException>(() => JsonSerializer.GetHexValue(reader, 'g', options));
+        }
     }
 }
