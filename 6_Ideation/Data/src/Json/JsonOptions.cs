@@ -36,18 +36,18 @@ namespace Alis.Core.Aspect.Data.Json
     /// <summary>
     ///     Define options for JSON.
     /// </summary>
-    public class JsonOptions 
+    public class JsonOptions
     {
         /// <summary>
         ///     The allow white spaces
         /// </summary>
         internal const DateTimeStyles DefaultDateTimeStyles = DateTimeStyles.AssumeUniversal | DateTimeStyles.AllowInnerWhite | DateTimeStyles.AllowLeadingWhite | DateTimeStyles.AllowTrailingWhite | DateTimeStyles.AllowWhiteSpaces;
-
+        
         /// <summary>
         ///     The exception
         /// </summary>
         private readonly List<Exception> _exceptions = new List<Exception>();
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonOptions" /> class.
         /// </summary>
@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Data.Json
             StreamingBufferChunkSize = ushort.MaxValue;
             MaximumExceptionsCount = 100;
         }
-
+        
         /// <summary>
         ///     Gets a value indicating the current serialization level.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The current serialization level.
         /// </value>
         public int SerializationLevel { get; internal set; }
-
+        
         /// <summary>
         ///     Gets or sets a value indicating whether exceptions can be thrown during serialization or deserialization.
         ///     If this is set to false, exceptions will be stored in the Exceptions collection.
@@ -79,7 +79,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     <c>true</c> if exceptions can be thrown on serialization or deserialization; otherwise, <c>false</c>.
         /// </value>
         public bool ThrowExceptions { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the maximum exceptions count.
         /// </summary>
@@ -87,7 +87,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The maximum exceptions count.
         /// </value>
         public int MaximumExceptionsCount { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the JSONP callback. It will be added as wrapper around the result.
         ///     Check this article for more: http://en.wikipedia.org/wiki/JSONP
@@ -96,7 +96,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The JSONP callback name.
         /// </value>
         public string JsonPCallback { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the guid format.
         /// </summary>
@@ -104,7 +104,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The guid format.
         /// </value>
         public string GuidFormat { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the date time format.
         /// </summary>
@@ -112,7 +112,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The date time format.
         /// </value>
         public string DateTimeFormat { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the date time offset format.
         /// </summary>
@@ -120,7 +120,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The date time offset format.
         /// </value>
         public string DateTimeOffsetFormat { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the date time styles.
         /// </summary>
@@ -128,7 +128,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The date time styles.
         /// </value>
         public DateTimeStyles DateTimeStyles { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the size of the streaming buffer chunk. Minimum value is 512.
         /// </summary>
@@ -136,7 +136,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The size of the streaming buffer chunk.
         /// </value>
         public int StreamingBufferChunkSize { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the formatting tab string.
         /// </summary>
@@ -144,7 +144,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The formatting tab.
         /// </value>
         public string FormattingTab { get; set; }
-
+        
         /// <summary>
         ///     Gets the des-relation exceptions. Will be empty if ThrowExceptions is set to false.
         /// </summary>
@@ -152,80 +152,80 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The list of des-relation exceptions.
         /// </value>
         public Exception[] Exceptions => _exceptions.ToArray();
-
+        
         /// <summary>
         ///     Gets or sets the serialization options.
         /// </summary>
         /// <value>The serialization options.</value>
         public JsonSerializationOptions SerializationOptions { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets a write value callback.
         /// </summary>
         /// <value>The callback.</value>
         public JsonCallback WriteValueCallback { get; private set; }
-
+        
         /// <summary>
         ///     Gets or sets a callback that is called before an object (not a value) is serialized.
         /// </summary>
         /// <value>The callback.</value>
         public JsonCallback BeforeWriteObjectCallback { get; private set; }
-
+        
         /// <summary>
         ///     Gets or sets a callback that is called before an object (not a value) is serialized.
         /// </summary>
         /// <value>The callback.</value>
         public JsonCallback AfterWriteObjectCallback { get; private set; }
-
+        
         /// <summary>
         ///     Gets or sets a callback that is called before an object field or property is serialized.
         /// </summary>
         /// <value>The callback.</value>
         public JsonCallback WriteNamedValueObjectCallback { get; private set; }
-
+        
         /// <summary>
         ///     Gets or sets a callback that is called before an instance of an object is created.
         /// </summary>
         /// <value>The callback.</value>
         public JsonCallback CreateInstanceCallback { get; private set; }
-
+        
         /// <summary>
         ///     Gets or sets a callback that is called during deserialization, before a dictionary entry is mapped to a target
         ///     object.
         /// </summary>
         /// <value>The callback.</value>
         public JsonCallback MapEntryCallback { get; private set; }
-
+        
         /// <summary>
         ///     Gets or sets a callback that is called during deserialization, before a dictionary entry is applied to a target
         ///     object.
         /// </summary>
         /// <value>The callback.</value>
         public JsonCallback ApplyEntryCallback { get; private set; }
-
+        
         /// <summary>
         ///     Gets or sets a callback that is called during deserialization, to deserialize a list object.
         /// </summary>
         /// <value>The callback.</value>
         public JsonCallback GetListObjectCallback { get; private set; }
-
+        
         /// <summary>
         ///     Gets or sets a utility class that will store an object graph to avoid serialization cycles.
         ///     If null, a Dictionary&lt;object, object&gt; using an object reference comparer will be used.
         /// </summary>
         /// <value>The object graph instance.</value>
         internal IDictionary<object, object> ObjectGraph { get; set; }
-
+        
         /// <summary>
         ///     Gets the value of the final streaming buffer chunk size
         /// </summary>
         internal int FinalStreamingBufferChunkSize => Max(512, StreamingBufferChunkSize);
-
+        
         /// <summary>
         ///     Gets the value of the final object graph
         /// </summary>
         internal IDictionary<object, object> FinalObjectGraph => ObjectGraph ?? new Dictionary<object, object>(ReferenceComparer.Instance);
-
+        
         /// <summary>
         ///     Maxes the val 1
         /// </summary>
@@ -233,7 +233,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="val2">The val</param>
         /// <returns>The int</returns>
         public static int Max(int val1, int val2) => val1 >= val2 ? val1 : val2;
-
+        
         /// <summary>
         ///     Finalizes the serialization members from an initial setup of members.
         /// </summary>
@@ -241,7 +241,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="members">The members. May not be null.</param>
         /// <returns>A non-null list of members.</returns>
         public IEnumerable<MemberDefinition> FinalizeSerializationMembers(Type type, IEnumerable<MemberDefinition> members) => members;
-
+        
         /// <summary>
         ///     Finalizes the deserialization members from an initial setup of members.
         /// </summary>
@@ -249,7 +249,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="members">The members. May not be null.</param>
         /// <returns>A non-null list of members.</returns>
         public IEnumerable<MemberDefinition> FinalizeDeserializationMembers(Type type, IEnumerable<MemberDefinition> members) => members;
-
+        
         /// <summary>
         ///     Adds an exception to the list of exceptions.
         /// </summary>
@@ -260,15 +260,15 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 throw new ArgumentNullException(nameof(error));
             }
-
+            
             if (_exceptions.Count >= MaximumExceptionsCount)
             {
                 throw new JsonException("JSO0015: Two many JSON errors detected (" + _exceptions.Count + ").", error);
             }
-
+            
             _exceptions.Add(error);
         }
-
+        
         /// <summary>
         ///     Clones this instance.
         /// </summary>
@@ -298,7 +298,7 @@ namespace Alis.Core.Aspect.Data.Json
             clone.WriteValueCallback = WriteValueCallback;
             return clone;
         }
-
+        
         /// <summary>
         ///     Gets a key that can be used for type cache.
         /// </summary>

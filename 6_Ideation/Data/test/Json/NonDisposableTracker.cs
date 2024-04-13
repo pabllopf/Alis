@@ -30,7 +30,7 @@
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The non disposable tracker class
+    ///     The non disposable tracker class
     /// </summary>
     public class NonDisposableTracker
     {

@@ -40,27 +40,27 @@ namespace Alis.Core.Aspect.Data.Test.Json
         ///     Initializes a new instance of the <see cref="Customer" /> class
         /// </summary>
         public Customer() => Id = Guid.NewGuid();
-
+        
         /// <summary>
         ///     Gets the value of the id
         /// </summary>
         public Guid Id { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the index
         /// </summary>
         public int Index { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the addresses
         /// </summary>
         public Address[] Addresses { get; set; }
-
+        
         /// <summary>
         ///     Returns the string
         /// </summary>

@@ -40,7 +40,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="component">The component.</param>
         /// <returns>The value.</returns>
         object Get(object component);
-
+        
         /// <summary>
         ///     Sets a component's value.
         /// </summary>

@@ -69,7 +69,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal("1234.5677", JsonSerializer.Serialize(1234.5678f));
             Assert.Equal("1234.5678", JsonSerializer.Serialize(1234.5678d));
         }
-
+        
         /// <summary>
         ///     Tests that test list
         /// </summary>
@@ -85,13 +85,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
                 };
                 list.Add(customer);
             }
-
+            
             string json = JsonSerializer.Serialize(list);
             List<Customer> list2 = JsonSerializer.Deserialize<List<Customer>>(json);
             string json2 = JsonSerializer.Serialize(list2);
             Assert.Equal(json, json2);
         }
-
+        
         /// <summary>
         ///     Tests that test dictionary
         /// </summary>
@@ -118,7 +118,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
                         }
                     }
                 };
-
+                
                 Address address2 = new Address
                 {
                     ZipCode = 10001,
@@ -131,24 +131,24 @@ namespace Alis.Core.Aspect.Data.Test.Json
                         }
                     }
                 };
-
+                
                 customer.Addresses = new[] {address1, address2};
-
+                
                 dic[customer.Id] = customer;
             }
-
+            
             string json1 = JsonSerializer.Serialize(dic);
             Dictionary<string, object> list2 = (Dictionary<string, object>) JsonSerializer.Deserialize(json1);
             string json2 = JsonSerializer.Serialize(list2);
             Assert.Equal(json1, json2);
-
+            
             List<Dictionary<string, object>> customers = list2.Values.Cast<Dictionary<string, object>>().ToList();
             string json3 = JsonSerializer.Serialize(customers);
             List<Customer> list3 = JsonSerializer.Deserialize<List<Customer>>(json3);
             string json4 = JsonSerializer.Serialize(list3);
             Assert.Equal(json3, json4);
         }
-
+        
         /// <summary>
         ///     Tests that test cyclic
         /// </summary>
@@ -167,7 +167,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
                 Assert.True(ex.Code == 9);
             }
         }
-
+        
         /// <summary>
         ///     Tests that test cyclic custom
         /// </summary>

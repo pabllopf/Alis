@@ -48,7 +48,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonOptions options = new JsonOptions();
             Assert.NotNull(options);
         }
-
+        
         /// <summary>
         ///     Tests that test throw exceptions property
         /// </summary>
@@ -61,7 +61,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             };
             Assert.True(options.ThrowExceptions);
         }
-
+        
         /// <summary>
         ///     Tests that test maximum exceptions count property
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             };
             Assert.Equal(100, options.MaximumExceptionsCount);
         }
-
+        
         /// <summary>
         ///     Tests that test json p callback property
         /// </summary>
@@ -87,7 +87,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             };
             Assert.Equal("callback", options.JsonPCallback);
         }
-
+        
         /// <summary>
         ///     Tests that test guid format property
         /// </summary>
@@ -100,7 +100,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             };
             Assert.Equal("D", options.GuidFormat);
         }
-
+        
         /// <summary>
         ///     Tests that test date time format property
         /// </summary>
@@ -113,7 +113,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             };
             Assert.Equal("yyyy-MM-dd", options.DateTimeFormat);
         }
-
+        
         /// <summary>
         ///     Tests that test date time offset format property
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             };
             Assert.Equal("yyyy-MM-dd", options.DateTimeOffsetFormat);
         }
-
+        
         /// <summary>
         ///     Tests that test date time styles property
         /// </summary>
@@ -139,7 +139,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             };
             Assert.Equal(DateTimeStyles.AssumeUniversal, options.DateTimeStyles);
         }
-
+        
         /// <summary>
         ///     Tests that test streaming buffer chunk size property
         /// </summary>
@@ -152,7 +152,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             };
             Assert.Equal(512, options.StreamingBufferChunkSize);
         }
-
+        
         /// <summary>
         ///     Tests that test formatting tab property
         /// </summary>
@@ -165,7 +165,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             };
             Assert.Equal(" ", options.FormattingTab);
         }
-
+        
         /// <summary>
         ///     Tests that test add exception method
         /// </summary>
@@ -177,7 +177,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             options.AddException(ex);
             Assert.Contains(ex, options.Exceptions);
         }
-
+        
         /// <summary>
         ///     Tests that test clone method
         /// </summary>
@@ -188,7 +188,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonOptions clone = options.Clone();
             Assert.NotEqual(options, clone);
         }
-
+        
         /// <summary>
         ///     Tests that test get cache key method
         /// </summary>
@@ -199,7 +199,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string cacheKey = options.GetCacheKey();
             Assert.NotNull(cacheKey);
         }
-
+        
         /// <summary>
         ///     Tests that test max method
         /// </summary>
@@ -209,14 +209,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             int val1 = 5;
             int val2 = 10;
-
+            
             // Act
             int result = JsonOptions.Max(val1, val2);
-
+            
             // Assert
             Assert.Equal(val2, result);
         }
-
+        
         /// <summary>
         ///     Tests that test final streaming buffer chunk size property
         /// </summary>
@@ -228,15 +228,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             {
                 StreamingBufferChunkSize = 600
             };
-
+            
             // Act
             int result = options.FinalStreamingBufferChunkSize;
-
+            
             // Assert
             Assert.Equal(600, result);
         }
-
-
+        
+        
         /// <summary>
         ///     Tests that test add exception method with valid exception
         /// </summary>
@@ -246,14 +246,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             JsonOptions options = new JsonOptions();
             Exception ex = new Exception("Test exception");
-
+            
             // Act
             options.AddException(ex);
-
+            
             // Assert
             Assert.Contains(ex, options.Exceptions);
         }
-
+        
         /// <summary>
         ///     Tests that test add exception method with null exception
         /// </summary>
@@ -263,11 +263,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             JsonOptions options = new JsonOptions();
             Exception ex = null;
-
+            
             // Act & Assert
             Assert.Throws<ArgumentNullException>(() => options.AddException(ex));
         }
-
+        
         /// <summary>
         ///     Tests that test add exception method with maximum exceptions count exceeded
         /// </summary>
@@ -281,10 +281,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             };
             Exception ex1 = new Exception("Test exception 1");
             Exception ex2 = new Exception("Test exception 2");
-
+            
             // Act
             options.AddException(ex1);
-
+            
             // Assert
             Assert.Throws<JsonException>(() => options.AddException(ex2));
         }

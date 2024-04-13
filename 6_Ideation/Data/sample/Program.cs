@@ -49,7 +49,7 @@ namespace Alis.Core.Aspect.Data.Sample
                 Genre = "Rock and Metal",
                 Album = "Reload"
             };
-
+            
             // This will produce a JSON String
             string serialized2 = JsonSerializer.Serialize(musicInfo2);
             

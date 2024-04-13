@@ -32,18 +32,18 @@ using System;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The disposable tracker class
+    ///     The disposable tracker class
     /// </summary>
-    /// <seealso cref="IDisposable"/>
+    /// <seealso cref="IDisposable" />
     public class DisposableTracker : IDisposable
     {
         /// <summary>
-        /// Gets or sets the value of the is disposed
+        ///     Gets or sets the value of the is disposed
         /// </summary>
         public bool IsDisposed { get; private set; }
-
+        
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {

@@ -188,7 +188,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test count property
+        ///     Tests that test count property
         /// </summary>
         [Fact]
         public void TestCountProperty()
@@ -205,7 +205,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test is synchronized property
+        ///     Tests that test is synchronized property
         /// </summary>
         [Fact]
         public void TestIsSynchronizedProperty()
@@ -222,7 +222,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test sync root property
+        ///     Tests that test sync root property
         /// </summary>
         [Fact]
         public void TestSyncRootProperty()
@@ -239,7 +239,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test is fixed size property
+        ///     Tests that test is fixed size property
         /// </summary>
         [Fact]
         public void TestIsFixedSizeProperty()
@@ -256,7 +256,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test is read only property
+        ///     Tests that test is read only property
         /// </summary>
         [Fact]
         public void TestIsReadOnlyProperty()
@@ -273,7 +273,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test keys property
+        ///     Tests that test keys property
         /// </summary>
         [Fact]
         public void TestKeysProperty()
@@ -290,7 +290,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test values property
+        ///     Tests that test values property
         /// </summary>
         [Fact]
         public void TestValuesProperty()
@@ -307,7 +307,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test dispose enumerator is disposable
+        ///     Tests that test dispose enumerator is disposable
         /// </summary>
         [Fact]
         public void TestDispose_EnumeratorIsDisposable()
@@ -325,14 +325,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test dispose value is disposable
+        ///     Tests that test dispose value is disposable
         /// </summary>
         [Fact]
         public void TestDispose_ValueIsDisposable()
         {
             // Arrange
             DisposableTestObject disposableValue = new DisposableTestObject();
-            List<DisposableTestObject> nonDisposableValue = new List<DisposableTestObject> ();
+            List<DisposableTestObject> nonDisposableValue = new List<DisposableTestObject>();
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(nonDisposableValue);
             
             // Act
@@ -343,7 +343,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test dispose enumerator and value are not disposable
+        ///     Tests that test dispose enumerator and value are not disposable
         /// </summary>
         [Fact]
         public void TestDispose_EnumeratorAndValueAreNotDisposable()
