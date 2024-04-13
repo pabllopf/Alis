@@ -2174,7 +2174,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonOptions options = new JsonOptions();
             
             // Act
-            var result = JsonSerializer.HandleArray(null, input, conversionType, options);
+            object result = JsonSerializer.HandleArray(null, input, conversionType, options);
             
             // Assert
             Assert.NotNull(result);
@@ -2209,7 +2209,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonOptions options = new JsonOptions();
             
             // Act
-            var result = JsonSerializer.HandleArray(null, input, conversionType, options);
+            object result = JsonSerializer.HandleArray(null, input, conversionType, options);
             
             // Assert
             Assert.NotNull(result);

@@ -2319,6 +2319,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(input.ToString(), value.ToString());
         }
                 
+        /// <summary>
+        /// Tests that try change to uri invalid uri returns false
+        /// </summary>
         [Fact]
         public void TryChangeToUri_InvalidUri_ReturnsFalse()
         {

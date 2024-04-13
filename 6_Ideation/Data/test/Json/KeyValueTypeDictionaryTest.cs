@@ -200,7 +200,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Act & Assert
             Assert.Throws<NotSupportedException>(() =>
             {
-                var count = dictionary.Count;
+                int count = dictionary.Count;
             });
         }
         
@@ -217,7 +217,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Act & Assert
             Assert.Throws<NotSupportedException>(() =>
             {
-                var isSynchronized = dictionary.IsSynchronized;
+                bool isSynchronized = dictionary.IsSynchronized;
             });
         }
         
@@ -234,7 +234,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Act & Assert
             Assert.Throws<NotSupportedException>(() =>
             {
-                var syncRoot = dictionary.SyncRoot;
+                object syncRoot = dictionary.SyncRoot;
             });
         }
         
@@ -251,7 +251,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Act & Assert
             Assert.Throws<NotSupportedException>(() =>
             {
-                var isFixedSize = dictionary.IsFixedSize;
+                bool isFixedSize = dictionary.IsFixedSize;
             });
         }
         
@@ -268,7 +268,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Act & Assert
             Assert.Throws<NotSupportedException>(() =>
             {
-                var isReadOnly = dictionary.IsReadOnly;
+                bool isReadOnly = dictionary.IsReadOnly;
             });
         }
         
@@ -285,7 +285,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Act & Assert
             Assert.Throws<NotSupportedException>(() =>
             {
-                var keys = dictionary.Keys;
+                ICollection keys = dictionary.Keys;
             });
         }
         
@@ -302,7 +302,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Act & Assert
             Assert.Throws<NotSupportedException>(() =>
             {
-                var values = dictionary.Values;
+                ICollection values = dictionary.Values;
             });
         }
         
