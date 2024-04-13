@@ -1347,7 +1347,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Reads the dictionary using the specified reader
+        /// Reads the dictionary using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
@@ -1361,54 +1361,52 @@ namespace Alis.Core.Aspect.Data.Json
             
             reader.Read();
             Dictionary<string, object> dictionary = new Dictionary<string, object>();
-            do
+            
+            while (reader.Peek() >= 0)
             {
-                int i = reader.Peek();
-                if (i < 0)
+                char c = (char) reader.Read();
+                
+                if (c == '}')
                 {
-                    HandleException(GetEofException('}'), options);
                     return dictionary;
                 }
                 
-                char c = (char) reader.Read();
-                switch (c)
+                if (c == '"')
                 {
-                    case '}':
-                        return dictionary;
-                    
-                    case '"':
-                        string text = ReadString(reader, options);
-                        if (!ReadWhitespaces(reader))
-                        {
-                            HandleException(GetExpectedCharacterException(GetPosition(reader), ':'), options);
-                            return dictionary;
-                        }
-                        
-                        c = (char) reader.Peek();
-                        if (c != ':')
-                        {
-                            HandleException(GetExpectedCharacterException(GetPosition(reader), ':'), options);
-                            return dictionary;
-                        }
-                        
-                        reader.Read();
-                        dictionary[text] = ReadValue(reader, options);
-                        break;
-                    
-                    case ',':
-                        break;
-                    
-                    case '\r':
-                    case '\n':
-                    case '\t':
-                    case ' ':
-                        break;
-                    
-                    default:
-                        HandleException(GetUnexpectedCharacterException(GetPosition(reader), c), options);
-                        return dictionary;
+                    ProcessString(reader, options, dictionary);
+                    continue;
                 }
-            } while (true);
+                
+                if (c == ',' || char.IsWhiteSpace(c))
+                {
+                    continue;
+                }
+                
+                HandleException(GetUnexpectedCharacterException(GetPosition(reader), c), options);
+            }
+            
+            HandleException(GetEofException('}'), options);
+            return dictionary;
+        }
+        
+        /// <summary>
+        /// Processes the string using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="options">The options</param>
+        /// <param name="dictionary">The dictionary</param>
+        internal static void ProcessString(TextReader reader, JsonOptions options, Dictionary<string, object> dictionary)
+        {
+            string key = ReadString(reader, options);
+            
+            if (!ReadWhitespaces(reader) || reader.Peek() != ':')
+            {
+                HandleException(GetExpectedCharacterException(GetPosition(reader), ':'), options);
+                return;
+            }
+            
+            reader.Read();
+            dictionary[key] = ReadValue(reader, options);
         }
         
         /// <summary>
