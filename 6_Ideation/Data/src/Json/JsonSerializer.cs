@@ -602,7 +602,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Applies the to list target using the specified target
+        /// Applies the input to the list target using the specified target.
         /// </summary>
         /// <param name="target">The target</param>
         /// <param name="input">The input</param>
@@ -616,7 +616,19 @@ namespace Alis.Core.Aspect.Data.Json
             }
             
             InitializeListContext(list, target, input, options);
-            
+            ProcessInputBasedOnCondition(target, input, list, options);
+            ClearContextIfNotNull(list);
+        }
+        
+        /// <summary>
+        /// Processes the input based on condition using the specified target
+        /// </summary>
+        /// <param name="target">The target</param>
+        /// <param name="input">The input</param>
+        /// <param name="list">The list</param>
+        /// <param name="options">The options</param>
+        private static void ProcessInputBasedOnCondition(object target, IEnumerable input, ListObject list, JsonOptions options)
+        {
             if (input != null)
             {
                 ProcessInput(target, input, list, options);
@@ -625,7 +637,14 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 ClearList(list);
             }
-            
+        }
+        
+        /// <summary>
+        /// Clears the context if not null using the specified list
+        /// </summary>
+        /// <param name="list">The list</param>
+        private static void ClearContextIfNotNull(ListObject list)
+        {
             if (list.Context != null)
             {
                 list.Context.Clear();
@@ -4125,36 +4144,26 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Describes whether equals ignore case
+        /// Determines if two strings are equal, ignoring case.
         /// </summary>
-        /// <param name="str">The str</param>
-        /// <param name="text">The text</param>
-        /// <param name="trim">The trim</param>
-        /// <returns>The bool</returns>
-        internal static bool EqualsIgnoreCase(this string str, string text, bool trim = false)
+        /// <param name="source">The source string.</param>
+        /// <param name="target">The target string to compare with the source string.</param>
+        /// <param name="trim">Indicates whether to trim the strings before comparison.</param>
+        /// <returns>True if the strings are equal (ignoring case), false otherwise.</returns>
+        internal static bool EqualsIgnoreCase(this string source, string target, bool trim = false)
         {
             if (trim)
             {
-                str = str.Nullify();
-                text = text.Nullify();
+                source = source?.Trim();
+                target = target?.Trim();
             }
             
-            if (str == null)
+            if (source == null)
             {
-                return text == null;
+                return target == null;
             }
             
-            if (text == null)
-            {
-                return false;
-            }
-            
-            if (str.Length != text.Length)
-            {
-                return false;
-            }
-            
-            return string.Compare(str, text, StringComparison.OrdinalIgnoreCase) == 0;
+            return string.Equals(source, target, StringComparison.OrdinalIgnoreCase);
         }
         
         /// <summary>

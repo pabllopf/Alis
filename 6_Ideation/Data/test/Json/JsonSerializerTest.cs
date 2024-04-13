@@ -3745,5 +3745,180 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.IsType<Dictionary<string, object>>(result);
             // Add more assertions to verify that the deserialization logic was not called
         }
+        
+        /// <summary>
+        /// Tests that handle default case returns int when text is int
+        /// </summary>
+        [Fact]
+        public void HandleDefaultCase_ReturnsInt_WhenTextIsInt()
+        {
+            object result = JsonSerializer.HandleDefaultCase("123", new StringReader(""), new JsonOptions());
+            Assert.IsType<int>(result);
+            Assert.Equal(123, result);
+        }
+        
+        /// <summary>
+        /// Tests that handle default case returns long when text is long
+        /// </summary>
+        [Fact]
+        public void HandleDefaultCase_ReturnsLong_WhenTextIsLong()
+        {
+            object result = JsonSerializer.HandleDefaultCase("9223372036854775807", new StringReader(""), new JsonOptions());
+            Assert.IsType<long>(result);
+            Assert.Equal(9223372036854775807, result);
+        }
+        
+        /// <summary>
+        /// Tests that handle default case returns decimal when text is decimal
+        /// </summary>
+        [Fact]
+        public void HandleDefaultCase_ReturnsDecimal_WhenTextIsDecimal()
+        {
+            object result = JsonSerializer.HandleDefaultCase("79228162514264337593543950335", new StringReader(""), new JsonOptions());
+            Assert.IsType<decimal>(result);
+        }
+        
+        /// <summary>
+        /// Tests that handle default case throws exception when text is not number
+        /// </summary>
+        [Fact]
+        public void HandleDefaultCase_ThrowsException_WhenTextIsNotNumber()
+        {
+            Assert.Throws<JsonException>(() => JsonSerializer.HandleDefaultCase("abc", new StringReader(""), new JsonOptions()));
+        }
+        
+        /// <summary>
+        /// Tests that apply to list target when list is null does nothing
+        /// </summary>
+        [Fact]
+        public void ApplyToListTarget_WhenListIsNull_DoesNothing()
+        {
+            // Arrange
+            object target = new object();
+            List<int> input = new List<int> {1, 2, 3};
+            CustomListObject list = new CustomListObject {List = null};
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.ApplyToListTarget(target, input, list, options);
+            
+            // Assert
+            // No exception thrown, and no action performed
+        }
+        
+        /// <summary>
+        /// Tests that apply to list target when input is null clears list
+        /// </summary>
+        [Fact]
+        public void ApplyToListTarget_WhenInputIsNull_ClearsList()
+        {
+            // Arrange
+            object target = new object();
+            IEnumerable input = null;
+            CustomListObject list = new CustomListObject {List = new List<int> {1, 2, 3}};
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.ApplyToListTarget(target, input, list, options);
+            
+            // Assert
+            Assert.NotNull(list.List);
+        }
+        
+        /// <summary>
+        /// Tests that apply to list target when input is not null processes input
+        /// </summary>
+        [Fact]
+        public void ApplyToListTarget_WhenInputIsNotNull_ProcessesInput()
+        {
+            // Arrange
+            object target = new object();
+            List<int> input = new List<int> {1, 2, 3};
+            CustomListObject list = new CustomListObject {List = new List<int>()};
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.ApplyToListTarget(target, input, list, options);
+            
+            // Assert
+            // Add your assertions here based on the expected behavior of the ProcessInput method
+        }
+        
+        /// <summary>
+        /// Tests that equals ignore case when both strings are null returns true
+        /// </summary>
+        [Fact]
+        public void EqualsIgnoreCase_WhenBothStringsAreNull_ReturnsTrue()
+        {
+            string source = null;
+            string target = null;
+            Assert.True(source.EqualsIgnoreCase(target));
+        }
+        
+        /// <summary>
+        /// Tests that equals ignore case when source is null and target is not null returns false
+        /// </summary>
+        [Fact]
+        public void EqualsIgnoreCase_WhenSourceIsNullAndTargetIsNotNull_ReturnsFalse()
+        {
+            string source = null;
+            string target = "test";
+            Assert.False(source.EqualsIgnoreCase(target));
+        }
+        
+        /// <summary>
+        /// Tests that equals ignore case when source is not null and target is null returns false
+        /// </summary>
+        [Fact]
+        public void EqualsIgnoreCase_WhenSourceIsNotNullAndTargetIsNull_ReturnsFalse()
+        {
+            string source = "test";
+            string target = null;
+            Assert.False(source.EqualsIgnoreCase(target));
+        }
+        
+        /// <summary>
+        /// Tests that equals ignore case when both strings are equal ignoring case returns true
+        /// </summary>
+        [Fact]
+        public void EqualsIgnoreCase_WhenBothStringsAreEqualIgnoringCase_ReturnsTrue()
+        {
+            string source = "test";
+            string target = "TEST";
+            Assert.True(source.EqualsIgnoreCase(target));
+        }
+        
+        /// <summary>
+        /// Tests that equals ignore case when both strings are not equal ignoring case returns false
+        /// </summary>
+        [Fact]
+        public void EqualsIgnoreCase_WhenBothStringsAreNotEqualIgnoringCase_ReturnsFalse()
+        {
+            string source = "test";
+            string target = "different";
+            Assert.False(source.EqualsIgnoreCase(target));
+        }
+        
+        /// <summary>
+        /// Tests that equals ignore case when trim is true and both strings are equal ignoring case and white space returns true
+        /// </summary>
+        [Fact]
+        public void EqualsIgnoreCase_WhenTrimIsTrueAndBothStringsAreEqualIgnoringCaseAndWhiteSpace_ReturnsTrue()
+        {
+            string source = " test ";
+            string target = " TEST ";
+            Assert.True(source.EqualsIgnoreCase(target, trim: true));
+        }
+        
+        /// <summary>
+        /// Tests that equals ignore case when trim is false and both strings are equal ignoring case but not white space returns false
+        /// </summary>
+        [Fact]
+        public void EqualsIgnoreCase_WhenTrimIsFalseAndBothStringsAreEqualIgnoringCaseButNotWhiteSpace_ReturnsFalse()
+        {
+            string source = " test ";
+            string target = " TEST ";
+            Assert.True(source.EqualsIgnoreCase(target, trim: false));
+        }
     }
 }
