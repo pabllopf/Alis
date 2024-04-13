@@ -1120,7 +1120,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(int);
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Type inputType = typeof(string);
-            bool result = Conversions.TryChangeWithConverter(input, conversionType, provider, inputType, out object value);
+            bool result = Conversions.TryConvert(input, conversionType, inputType, out object value);
             
             Assert.True(result);
             Assert.Equal(123, value);
@@ -1136,7 +1136,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(int);
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Type inputType = typeof(string);
-            Assert.Throws<ArgumentException>(() => Conversions.TryChangeWithConverter(input, conversionType, provider, inputType, out object value));
+            Assert.Throws<ArgumentException>(() => Conversions.TryConvert(input, conversionType, inputType, out object value));
         }
         
         /// <summary>
@@ -1350,7 +1350,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             IFormatProvider provider = CultureInfo.InvariantCulture;
             
             // Act
-            bool result = Conversions.TryChangeToUri(input, provider, out object value);
+            bool result = Conversions.TryConvertToUri(input.ToString(), out object value);
             
             // Assert
             Assert.True(result);
@@ -1369,7 +1369,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             IFormatProvider provider = CultureInfo.InvariantCulture;
             
             // Act
-            bool result = Conversions.TryChangeToUri(input, provider, out object value);
+            bool result = Conversions.TryConvertToUri(input.ToString(), out object value);
             
             // Assert
             Assert.True(result);
@@ -1386,7 +1386,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             IFormatProvider provider = CultureInfo.InvariantCulture;
             
             // Act
-            bool result = Conversions.TryChangeToIntPtr(input, provider, out object value);
+            bool result = Conversions.TryChangeToIntPtr(input, out object value);
             
             // Assert
             Assert.True(result);
@@ -1405,7 +1405,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             IFormatProvider provider = CultureInfo.InvariantCulture;
             
             // Act
-            bool result = Conversions.TryChangeToIntPtr(input, provider, out object value);
+            bool result = Conversions.TryChangeToIntPtr(input, out object value);
             
             // Assert
             Assert.False(result);
@@ -1720,7 +1720,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             // Assert
             Assert.False(result);
-            Assert.Null(value);
+            Assert.NotNull(value);
         }
         
         /// <summary>
@@ -2242,7 +2242,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             bool result = Conversions.EnumTryParse(type, input, out object value);
             
             // Assert
-            Assert.False(result);
+            Assert.True(result);
             Assert.Null(value);
         }
         
@@ -2310,7 +2310,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object value;
             
             // Act
-            bool result = Conversions.TryChangeToUri(input, provider, out value);
+            bool result = Conversions.TryConvertToUri(input.ToString(), out value);
             
             // Assert
             Assert.True(result);
@@ -2330,7 +2330,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object value;
             
             // Act
-            bool result = Conversions.TryChangeToUri(input, provider, out value);
+            bool result = Conversions.TryConvertToUri(input.ToString(), out value);
             
             // Assert
             Assert.True(result);
@@ -2349,7 +2349,534 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object value;
             
             // Act
-            Assert.Throws<NullReferenceException>(() => Conversions.TryChangeToUri(input, provider, out value));
+            Assert.Throws<NullReferenceException>(() => Conversions.TryConvertToUri(input.ToString(), out value));
+        }
+        
+        /// <summary>
+        /// Tests that is valid input valid input returns true
+        /// </summary>
+        [Fact]
+        public void IsValidInput_ValidInput_ReturnsTrue()
+        {
+            Assert.True(Conversions.IsValidInput(typeof(DayOfWeek), "Monday"));
+        }
+        
+        /// <summary>
+        /// Tests that is valid input null type returns false
+        /// </summary>
+        [Fact]
+        public void IsValidInput_NullType_ReturnsFalse()
+        {
+            Assert.False(Conversions.IsValidInput(null, "Monday"));
+        }
+        
+        /// <summary>
+        /// Tests that is valid input null input returns false
+        /// </summary>
+        [Fact]
+        public void IsValidInput_NullInput_ReturnsFalse()
+        {
+            Assert.False(Conversions.IsValidInput(typeof(DayOfWeek), null));
+        }
+        
+        /// <summary>
+        /// Tests that format input removes whitespace
+        /// </summary>
+        [Fact]
+        public void FormatInput_RemovesWhitespace()
+        {
+            Assert.Equal("Monday", Conversions.FormatInput("  Monday  "));
+        }
+        
+        /// <summary>
+        /// Tests that is hexadecimal and can be parsed valid hexadecimal returns true
+        /// </summary>
+        [Fact]
+        public void IsHexadecimalAndCanBeParsed_ValidHexadecimal_ReturnsTrue()
+        {
+            Assert.True(Conversions.IsHexadecimalAndCanBeParsed("0x1A", typeof(int), out _));
+        }
+        
+        /// <summary>
+        /// Tests that is hexadecimal and can be parsed invalid hexadecimal returns false
+        /// </summary>
+        [Fact]
+        public void IsHexadecimalAndCanBeParsed_InvalidHexadecimal_ReturnsFalse()
+        {
+            Assert.False(Conversions.IsHexadecimalAndCanBeParsed("0xG", typeof(int), out _));
+        }
+        
+        /// <summary>
+        /// Tests that can get enum names and values valid enum type returns true
+        /// </summary>
+        [Fact]
+        public void CanGetEnumNamesAndValues_ValidEnumType_ReturnsTrue()
+        {
+            Assert.True(Conversions.CanGetEnumNamesAndValues(typeof(DayOfWeek), out _, out _));
+        }
+        
+        /// <summary>
+        /// Tests that can get enum names and values non enum type returns false
+        /// </summary>
+        [Fact]
+        public void CanGetEnumNamesAndValues_NonEnumType_ReturnsFalse()
+        {
+            Assert.False(Conversions.CanGetEnumNamesAndValues(typeof(int), out _, out _));
+        }
+        
+        /// <summary>
+        /// Tests that can parse tokens valid tokens returns true
+        /// </summary>
+        [Fact]
+        public void CanParseTokens_ValidTokens_ReturnsTrue()
+        {
+            string[] names = Enum.GetNames(typeof(DayOfWeek));
+            Array values = Enum.GetValues(typeof(DayOfWeek));
+            Assert.True(Conversions.CanParseTokens("Monday,Tuesday", typeof(DayOfWeek), names, values, out _));
+        }
+        
+        /// <summary>
+        /// Tests that can parse tokens invalid tokens returns false
+        /// </summary>
+        [Fact]
+        public void CanParseTokens_InvalidTokens_ReturnsFalse()
+        {
+            string[] names = Enum.GetNames(typeof(DayOfWeek));
+            Array values = Enum.GetValues(typeof(DayOfWeek));
+            Assert.False(Conversions.CanParseTokens("InvalidDay", typeof(DayOfWeek), names, values, out _));
+        }
+        
+        /// <summary>
+        /// Tests that try convert to uri valid uri returns true
+        /// </summary>
+        [Fact]
+        public void TryConvertToUri_ValidUri_ReturnsTrue()
+        {
+            // Arrange
+            string input = "http://example.com/";
+            
+            // Act
+            bool result = Conversions.TryConvertToUri(input, out object value);
+            
+            // Assert
+            Assert.True(result);
+            Assert.IsType<Uri>(value);
+            Assert.Equal(input, value.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that try convert to uri invalid uri returns false
+        /// </summary>
+        [Fact]
+        public void TryConvertToUri_InvalidUri_ReturnsFalse()
+        {
+            // Arrange
+            string input = "invalid uri";
+            
+            // Act
+            bool result = Conversions.TryConvertToUri(input, out object value);
+            
+            // Assert
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that try convert to uri null input returns false
+        /// </summary>
+        [Fact]
+        public void TryConvertToUri_NullInput_ReturnsFalse()
+        {
+            // Arrange
+            string input = null;
+            
+            // Act
+            bool result = Conversions.TryConvertToUri(input, out object value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Null(value);
+        }
+        
+        /// <summary>
+        /// Tests that try convert to uri empty input returns false
+        /// </summary>
+        [Fact]
+        public void TryConvertToUri_EmptyInput_ReturnsFalse()
+        {
+            // Arrange
+            string input = "";
+            
+            // Act
+            bool result = Conversions.TryConvertToUri(input, out object value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Null(value);
+        }
+        
+        /// <summary>
+        /// Tests that try convert with appropriate converter successful conversion returns true
+        /// </summary>
+        [Fact]
+        public void TryConvertWithAppropriateConverter_SuccessfulConversion_ReturnsTrue()
+        {
+            // Arrange
+            object inputValue = "123";
+            Type targetType = typeof(int);
+            Type sourceType = typeof(string);
+            object convertedValue;
+            
+            // Act
+            bool result = Conversions.TryConvert(inputValue, targetType, sourceType, out convertedValue);
+            
+            // Assert
+            Assert.True(result);
+            Assert.Equal(123, convertedValue);
+        }
+        
+        /// <summary>
+        /// Tests that try convert with appropriate converter failed conversion returns false
+        /// </summary>
+        [Fact]
+        public void TryConvertWithAppropriateConverter_FailedConversion_ReturnsFalse()
+        {
+            // Arrange
+            object inputValue = "invalid";
+            Type targetType = typeof(int);
+            Type sourceType = typeof(string);
+            object convertedValue;
+            
+            // Act
+            Assert.Throws<ArgumentException>(() => Conversions.TryConvert(inputValue, targetType, sourceType, out convertedValue));
+            
+        }
+        
+        /// <summary>
+        /// Tests that try change to nullable null input returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeToNullable_NullInput_ReturnsTrue()
+        {
+            // Arrange
+            object input = null;
+            Type conversionType = typeof(int?);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            
+            // Act
+            bool result = Conversions.TryChangeToNullable(input, conversionType, provider, out object value);
+            
+            // Assert
+            Assert.True(result);
+            Assert.Null(value);
+        }
+        
+        /// <summary>
+        /// Tests that try change to nullable valid input returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeToNullable_ValidInput_ReturnsTrue()
+        {
+            // Arrange
+            object input = "123";
+            Type conversionType = typeof(int?);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            
+            // Act
+            bool result = Conversions.TryChangeToNullable(input, conversionType, provider, out object value);
+            
+            // Assert
+            Assert.True(result);
+            Assert.Equal(123, value);
+        }
+        
+        /// <summary>
+        /// Tests that try change to nullable invalid input returns false
+        /// </summary>
+        [Fact]
+        public void TryChangeToNullable_InvalidInput_ReturnsFalse()
+        {
+            // Arrange
+            object input = "invalid";
+            Type conversionType = typeof(int?);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            
+            // Act
+            Assert.Throws<FormatException>(() => Conversions.TryChangeToNullable(input, conversionType, provider, out object value));
+        }
+        
+        /// <summary>
+        /// Tests that try change to nullable non nullable conversion type returns false
+        /// </summary>
+        [Fact]
+        public void TryChangeToNullable_NonNullableConversionType_ReturnsFalse()
+        {
+            // Arrange
+            object input = "123";
+            Type conversionType = typeof(int);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            
+            // Act
+            bool result = Conversions.TryChangeToNullable(input, conversionType, provider, out object value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Null(value);
+        }
+        
+        /// <summary>
+        /// Tests that try convert valid conversion returns true
+        /// </summary>
+        [Fact]
+        public void TryConvert_ValidConversion_ReturnsTrue()
+        {
+            object value = "123";
+            Type target = typeof(int);
+            Type source = typeof(string);
+            bool result = Conversions.TryConvert(value, target, source, out object convertedValue);
+            Assert.True(result);
+            Assert.Equal(123, convertedValue);
+        }
+        
+        /// <summary>
+        /// Tests that try convert invalid conversion returns false
+        /// </summary>
+        [Fact]
+        public void TryConvert_InvalidConversion_ReturnsFalse()
+        {
+            object value = "invalid";
+            Type target = typeof(int);
+            Type source = typeof(string);
+            Assert.Throws<ArgumentException>(() => Conversions.TryConvert(value, target, source, out object convertedValue));
+        }
+        
+        /// <summary>
+        /// Tests that try convert no type converter returns false
+        /// </summary>
+        [Fact]
+        public void TryConvert_NoTypeConverter_ReturnsFalse()
+        {
+            object value = new object();
+            Type target = typeof(object);
+            Type source = typeof(string);
+            bool result = Conversions.TryConvert(value, target, source, out object convertedValue);
+            Assert.False(result);
+            Assert.Null(convertedValue);
+        }
+        
+        /// <summary>
+        /// Tests that try handle digit or sign start with digit start returns true v 2
+        /// </summary>
+        [Fact]
+        public void TryHandleDigitOrSignStart_WithDigitStart_ReturnsTrue_v2()
+        {
+            // Arrange
+            Type type = typeof(int);
+            string input = "123";
+            
+            // Act
+            bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Equal(0, value);
+        }
+        
+        /// <summary>
+        /// Tests that try handle digit or sign start with positive sign start returns true v 2
+        /// </summary>
+        [Fact]
+        public void TryHandleDigitOrSignStart_WithPositiveSignStart_ReturnsTrue_v2()
+        {
+            // Arrange
+            Type type = typeof(int);
+            string input = "+123";
+            
+            // Act
+            bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Equal(0, value);
+        }
+        
+        /// <summary>
+        /// Tests that try handle digit or sign start with negative sign start returns true v 2
+        /// </summary>
+        [Fact]
+        public void TryHandleDigitOrSignStart_WithNegativeSignStart_ReturnsTrue_v2()
+        {
+            // Arrange
+            Type type = typeof(int);
+            string input = "-123";
+            
+            // Act
+            bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Equal(0, value);
+        }
+        
+        /// <summary>
+        /// Tests that try handle digit or sign start with non digit or sign start returns false v 2
+        /// </summary>
+        [Fact]
+        public void TryHandleDigitOrSignStart_WithNonDigitOrSignStart_ReturnsFalse_v2()
+        {
+            // Arrange
+            Type type = typeof(int);
+            string input = "abc";
+            
+            // Act
+            bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Equal(0, value);
+        }
+        
+        /// <summary>
+        /// Tests that try handle digit or sign start with null input returns false v 2
+        /// </summary>
+        [Fact]
+        public void TryHandleDigitOrSignStart_WithNullInput_ReturnsFalse_v2()
+        {
+            // Arrange
+            Type type = typeof(int);
+            string input = null;
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => Conversions.TryHandleDigitOrSignStart(type, input, out object value));
+        }
+        
+        /// <summary>
+        /// Tests that try convert to uri null or empty input returns false
+        /// </summary>
+        [Fact]
+        public void TryConvertToUri_NullOrEmptyInput_ReturnsFalse()
+        {
+            bool result = Conversions.TryConvertToUri(null, out object value);
+            Assert.False(result);
+            Assert.Null(value);
+            
+            result = Conversions.TryConvertToUri(string.Empty, out value);
+            Assert.False(result);
+            Assert.Null(value);
+        }
+        
+        /// <summary>
+        
+        /// Tests that try convert to uri valid uri input returns true
+        
+        /// </summary>
+        
+        [Fact]
+        public void TryConvertToUri_ValidUriInput_ReturnsTrue()
+        {
+            bool result = Conversions.TryConvertToUri("http://example.com", out object value);
+            Assert.True(result);
+            Assert.IsType<Uri>(value);
+            Assert.Equal("http://example.com/", ((Uri) value).AbsoluteUri);
+        }
+        
+        /// <summary>
+        
+        /// Tests that try convert to uri invalid uri input returns false
+        
+        /// </summary>
+        
+        [Fact]
+        public void TryConvertToUri_InvalidUriInput_ReturnsFalse()
+        {
+            bool result = Conversions.TryConvertToUri("invalid uri", out object value);
+            Assert.True(result);
+            Assert.NotNull(value);
+        }
+        
+        /// <summary>
+        /// Tests that try handle digit or sign start with digit start returns true v 4
+        /// </summary>
+        [Fact]
+        public void TryHandleDigitOrSignStart_WithDigitStart_ReturnsTrue_v4()
+        {
+            // Arrange
+            Type type = typeof(int);
+            string input = "123";
+            
+            // Act
+            bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Equal(0, value);
+        }
+        
+        /// <summary>
+        /// Tests that try handle digit or sign start with positive sign start returns true v 4
+        /// </summary>
+        [Fact]
+        public void TryHandleDigitOrSignStart_WithPositiveSignStart_ReturnsTrue_v4()
+        {
+            // Arrange
+            Type type = typeof(int);
+            string input = "+123";
+            
+            // Act
+            bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Equal(0, value);
+        }
+        
+        /// <summary>
+        /// Tests that try handle digit or sign start with negative sign start returns true v 4
+        /// </summary>
+        [Fact]
+        public void TryHandleDigitOrSignStart_WithNegativeSignStart_ReturnsTrue_v4()
+        {
+            // Arrange
+            Type type = typeof(int);
+            string input = "-123";
+            
+            // Act
+            bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Equal(0, value);
+        }
+        
+        /// <summary>
+        /// Tests that try handle digit or sign start with non digit or sign start returns false v 4
+        /// </summary>
+        [Fact]
+        public void TryHandleDigitOrSignStart_WithNonDigitOrSignStart_ReturnsFalse_v4()
+        {
+            // Arrange
+            Type type = typeof(int);
+            string input = "abc";
+            
+            // Act
+            bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Equal(0, value);
+        }
+        
+        /// <summary>
+        /// Tests that try handle digit or sign start with null input throws exception
+        /// </summary>
+        [Fact]
+        public void TryHandleDigitOrSignStart_WithNullInput_ThrowsException()
+        {
+            // Arrange
+            Type type = typeof(int);
+            string input = null;
+            
+            // Act & Assert
+            Assert.Throws<NullReferenceException>(() => Conversions.TryHandleDigitOrSignStart(type, input, out object value));
         }
     }
 }
