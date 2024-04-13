@@ -2798,5 +2798,59 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Act & Assert
             Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
         }
+        
+        /// <summary>
+        /// Tests that read dictionary when called with valid json returns correct dictionary
+        /// </summary>
+        [Fact]
+        public void ReadDictionary_WhenCalledWithValidJson_ReturnsCorrectDictionary()
+        {
+            StringReader reader = new StringReader("{\"key1\":\"value1\",\"key2\":\"value2\"}");
+            JsonOptions options = new JsonOptions();
+            
+            Dictionary<string, object> result = JsonSerializer.ReadDictionary(reader, options);
+            
+            Assert.Equal(2, result.Count);
+            Assert.Equal("value1", result["key1"]);
+            Assert.Equal("value2", result["key2"]);
+        }
+        
+        /// <summary>
+        /// Tests that read dictionary when called with empty json returns empty dictionary
+        /// </summary>
+        [Fact]
+        public void ReadDictionary_WhenCalledWithEmptyJson_ReturnsEmptyDictionary()
+        {
+            StringReader reader = new StringReader("{}");
+            JsonOptions options = new JsonOptions();
+            
+            Dictionary<string, object> result = JsonSerializer.ReadDictionary(reader, options);
+            
+            Assert.Empty(result);
+        }
+        
+        /// <summary>
+        /// Tests that read dictionary when called with invalid json throws exception
+        /// </summary>
+        [Fact]
+        public void ReadDictionary_WhenCalledWithInvalidJson_ThrowsException()
+        {
+            StringReader reader = new StringReader("{\"key1\":\"value1\",\"key2\":\"value2\"");
+            JsonOptions options = new JsonOptions();
+            
+            Assert.Throws<JsonException>(() => JsonSerializer.ReadDictionary(reader, options));
+        }
+        
+        /// <summary>
+        /// Tests that read dictionary when called with null throws exception
+        /// </summary>
+        [Fact]
+        public void ReadDictionary_WhenCalledWithNull_ThrowsException()
+        {
+            StringReader reader = new StringReader("");
+            JsonOptions options = new JsonOptions();
+            
+            JsonSerializer.ReadDictionary(reader, options);
+        }
     }
 }
