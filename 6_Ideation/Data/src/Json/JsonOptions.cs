@@ -207,7 +207,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Gets or sets a callback that is called during deserialization, to deserialize a list object.
         /// </summary>
         /// <value>The callback.</value>
-        public JsonCallback GetListObjectCallback { get; private set; }
+        public JsonCallback GetListObjectCallback { get; internal set; }
         
         /// <summary>
         ///     Gets or sets a utility class that will store an object graph to avoid serialization cycles.
