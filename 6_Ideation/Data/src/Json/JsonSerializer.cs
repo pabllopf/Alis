@@ -762,7 +762,7 @@ internal static object UpdateValueBasedOnContext(ListObject list, Type itemType,
 
 /// <param name="convertedValue">The converted value</param>
 
-private static void UpdateContextIfNeeded(ListObject list, Type itemType, object value, object convertedValue)
+internal static void UpdateContextIfNeeded(ListObject list, Type itemType, object value, object convertedValue)
 {
     if (list.Context != null)
     {
@@ -782,7 +782,7 @@ private static void UpdateContextIfNeeded(ListObject list, Type itemType, object
 
 /// <returns>The object</returns>
 
-private static object GetUpdatedValue(ListObject list, object defaultValue)
+internal static object GetUpdatedValue(ListObject list, object defaultValue)
 {
     return list.Context.TryGetValue("cvalue", out object updatedValue) ? updatedValue : defaultValue;
 }
