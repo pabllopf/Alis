@@ -38,12 +38,12 @@ namespace Alis.Core.Physic.Dynamics.Solver
         ///     The
         /// </summary>
         public float A;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public Vector2 C;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Position" /> class
         /// </summary>
@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
             C = c;
             A = a;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Position" /> class
         /// </summary>

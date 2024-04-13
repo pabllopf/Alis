@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             EmbeddedDllClass.ExtractEmbeddedDlls("cimgui", DllType.Lib, ImGuiDlls.ImGuiDllBytes, Assembly.GetExecutingAssembly());
         }
-
+        
         /// <summary>
         ///     Accepts the drag drop payload using the specified type
         /// </summary>
@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeTypeStackBytes = stackalloc byte[typeByteCount + 1];
                     nativeType = nativeTypeStackBytes;
                 }
-
+                
                 int nativeTypeOffset = Util.GetUtf8(type, nativeType, typeByteCount);
                 nativeType[nativeTypeOffset] = 0;
             }
@@ -80,17 +80,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeType = null;
             }
-
+            
             ImGuiDragDropFlags flags = 0;
             ImGuiPayload ret = ImGuiNative.igAcceptDragDropPayload(nativeType, flags);
             if (typeByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeType);
             }
-
+            
             return ret;
         }
-
+        
         /// <summary>
         ///     Accepts the drag drop payload using the specified type
         /// </summary>
@@ -113,7 +113,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeTypeStackBytes = stackalloc byte[typeByteCount + 1];
                     nativeType = nativeTypeStackBytes;
                 }
-
+                
                 int nativeTypeOffset = Util.GetUtf8(type, nativeType, typeByteCount);
                 nativeType[nativeTypeOffset] = 0;
             }
@@ -121,16 +121,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeType = null;
             }
-
+            
             ImGuiPayload ret = ImGuiNative.igAcceptDragDropPayload(nativeType, flags);
             if (typeByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeType);
             }
-
+            
             return ret;
         }
-
+        
         /// <summary>
         ///     Aligns the text to frame padding
         /// </summary>
@@ -138,7 +138,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igAlignTextToFramePadding();
         }
-
+        
         /// <summary>
         ///     Describes whether arrow button
         /// </summary>
@@ -161,7 +161,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -169,16 +169,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             byte ret = ImGuiNative.igArrowButton(nativeStrId, dir);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin
         /// </summary>
@@ -200,7 +200,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
                     nativeName = nativeNameStackBytes;
                 }
-
+                
                 int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
                 nativeName[nativeNameOffset] = 0;
             }
@@ -208,7 +208,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeName = null;
             }
-
+            
             byte* pOpen = null;
             ImGuiWindowFlags flags = 0;
             byte ret = ImGuiNative.igBegin(nativeName, pOpen, flags);
@@ -216,10 +216,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeName);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin
         /// </summary>
@@ -242,7 +242,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
                     nativeName = nativeNameStackBytes;
                 }
-
+                
                 int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
                 nativeName[nativeNameOffset] = 0;
             }
@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeName = null;
             }
-
+            
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
             byte* nativePOpen = &nativePOpenVal;
             ImGuiWindowFlags flags = 0;
@@ -259,11 +259,11 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeName);
             }
-
+            
             pOpen = nativePOpenVal != 0;
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin
         /// </summary>
@@ -287,7 +287,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
                     nativeName = nativeNameStackBytes;
                 }
-
+                
                 int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
                 nativeName[nativeNameOffset] = 0;
             }
@@ -295,7 +295,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeName = null;
             }
-
+            
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
             byte* nativePOpen = &nativePOpenVal;
             byte ret = ImGuiNative.igBegin(nativeName, nativePOpen, flags);
@@ -303,11 +303,11 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeName);
             }
-
+            
             pOpen = nativePOpenVal != 0;
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child
         /// </summary>
@@ -329,7 +329,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -337,7 +337,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             Vector2 size = new Vector2();
             byte border = 0;
             ImGuiWindowFlags flags = 0;
@@ -346,10 +346,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child
         /// </summary>
@@ -372,7 +372,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -380,7 +380,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             byte border = 0;
             ImGuiWindowFlags flags = 0;
             byte ret = ImGuiNative.igBeginChild_Str(nativeStrId, size, border, flags);
@@ -388,10 +388,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child
         /// </summary>
@@ -415,7 +415,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -423,7 +423,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             byte nativeBorder = border ? (byte) 1 : (byte) 0;
             ImGuiWindowFlags flags = 0;
             byte ret = ImGuiNative.igBeginChild_Str(nativeStrId, size, nativeBorder, flags);
@@ -431,10 +431,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child
         /// </summary>
@@ -459,7 +459,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -467,17 +467,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             byte nativeBorder = border ? (byte) 1 : (byte) 0;
             byte ret = ImGuiNative.igBeginChild_Str(nativeStrId, size, nativeBorder, flags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child
         /// </summary>
@@ -491,7 +491,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igBeginChild_ID(id, size, border, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child
         /// </summary>
@@ -505,7 +505,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igBeginChild_ID(id, size, border, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child
         /// </summary>
@@ -520,7 +520,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igBeginChild_ID(id, size, nativeBorder, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child
         /// </summary>
@@ -535,7 +535,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igBeginChild_ID(id, size, nativeBorder, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child frame
         /// </summary>
@@ -548,7 +548,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igBeginChildFrame(id, size, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child frame
         /// </summary>
@@ -561,7 +561,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igBeginChildFrame(id, size, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin combo
         /// </summary>
@@ -584,7 +584,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -592,7 +592,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativePreviewValue;
             int previewValueByteCount = 0;
             if (previewValue != null)
@@ -607,7 +607,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativePreviewValueStackBytes = stackalloc byte[previewValueByteCount + 1];
                     nativePreviewValue = nativePreviewValueStackBytes;
                 }
-
+                
                 int nativePreviewValueOffset = Util.GetUtf8(previewValue, nativePreviewValue, previewValueByteCount);
                 nativePreviewValue[nativePreviewValueOffset] = 0;
             }
@@ -615,22 +615,22 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativePreviewValue = null;
             }
-
+            
             ImGuiComboFlags flags = 0;
             byte ret = ImGuiNative.igBeginCombo(nativeLabel, nativePreviewValue, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (previewValueByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativePreviewValue);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin combo
         /// </summary>
@@ -654,7 +654,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -662,7 +662,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativePreviewValue;
             int previewValueByteCount = 0;
             if (previewValue != null)
@@ -677,7 +677,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativePreviewValueStackBytes = stackalloc byte[previewValueByteCount + 1];
                     nativePreviewValue = nativePreviewValueStackBytes;
                 }
-
+                
                 int nativePreviewValueOffset = Util.GetUtf8(previewValue, nativePreviewValue, previewValueByteCount);
                 nativePreviewValue[nativePreviewValueOffset] = 0;
             }
@@ -685,21 +685,21 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativePreviewValue = null;
             }
-
+            
             byte ret = ImGuiNative.igBeginCombo(nativeLabel, nativePreviewValue, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (previewValueByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativePreviewValue);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Begins the disabled
         /// </summary>
@@ -708,7 +708,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte disabled = 1;
             ImGuiNative.igBeginDisabled(disabled);
         }
-
+        
         /// <summary>
         ///     Begins the disabled using the specified disabled
         /// </summary>
@@ -718,7 +718,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte nativeDisabled = disabled ? (byte) 1 : (byte) 0;
             ImGuiNative.igBeginDisabled(nativeDisabled);
         }
-
+        
         /// <summary>
         ///     Describes whether begin drag drop source
         /// </summary>
@@ -729,7 +729,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igBeginDragDropSource(flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin drag drop source
         /// </summary>
@@ -740,7 +740,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igBeginDragDropSource(flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin drag drop target
         /// </summary>
@@ -750,7 +750,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igBeginDragDropTarget();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Begins the group
         /// </summary>
@@ -758,7 +758,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igBeginGroup();
         }
-
+        
         /// <summary>
         ///     Describes whether begin list box
         /// </summary>
@@ -780,7 +780,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -788,17 +788,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             Vector2 size = new Vector2();
             byte ret = ImGuiNative.igBeginListBox(nativeLabel, size);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin list box
         /// </summary>
@@ -821,7 +821,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -829,16 +829,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte ret = ImGuiNative.igBeginListBox(nativeLabel, size);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin main menu bar
         /// </summary>
@@ -848,7 +848,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igBeginMainMenuBar();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin menu
         /// </summary>
@@ -870,7 +870,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -878,17 +878,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte enabled = 1;
             byte ret = ImGuiNative.igBeginMenu(nativeLabel, enabled);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin menu
         /// </summary>
@@ -911,7 +911,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -919,17 +919,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte nativeEnabled = enabled ? (byte) 1 : (byte) 0;
             byte ret = ImGuiNative.igBeginMenu(nativeLabel, nativeEnabled);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin menu bar
         /// </summary>
@@ -939,7 +939,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igBeginMenuBar();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup
         /// </summary>
@@ -961,7 +961,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -969,17 +969,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             ImGuiWindowFlags flags = 0;
             byte ret = ImGuiNative.igBeginPopup(nativeStrId, flags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup
         /// </summary>
@@ -1002,7 +1002,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -1010,16 +1010,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             byte ret = ImGuiNative.igBeginPopup(nativeStrId, flags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context item
         /// </summary>
@@ -1031,7 +1031,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igBeginPopupContextItem(nativeStrId, popupFlags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context item
         /// </summary>
@@ -1053,7 +1053,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -1061,17 +1061,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             ImGuiPopupFlags popupFlags = (ImGuiPopupFlags) 1;
             byte ret = ImGuiNative.igBeginPopupContextItem(nativeStrId, popupFlags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context item
         /// </summary>
@@ -1094,7 +1094,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -1102,16 +1102,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             byte ret = ImGuiNative.igBeginPopupContextItem(nativeStrId, popupFlags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context void
         /// </summary>
@@ -1123,7 +1123,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igBeginPopupContextVoid(nativeStrId, popupFlags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context void
         /// </summary>
@@ -1145,7 +1145,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -1153,17 +1153,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             ImGuiPopupFlags popupFlags = (ImGuiPopupFlags) 1;
             byte ret = ImGuiNative.igBeginPopupContextVoid(nativeStrId, popupFlags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context void
         /// </summary>
@@ -1186,7 +1186,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -1194,16 +1194,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             byte ret = ImGuiNative.igBeginPopupContextVoid(nativeStrId, popupFlags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context window
         /// </summary>
@@ -1215,7 +1215,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igBeginPopupContextWindow(nativeStrId, popupFlags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context window
         /// </summary>
@@ -1237,7 +1237,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -1245,17 +1245,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             ImGuiPopupFlags popupFlags = (ImGuiPopupFlags) 1;
             byte ret = ImGuiNative.igBeginPopupContextWindow(nativeStrId, popupFlags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context window
         /// </summary>
@@ -1278,7 +1278,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -1286,16 +1286,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             byte ret = ImGuiNative.igBeginPopupContextWindow(nativeStrId, popupFlags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup modal
         /// </summary>
@@ -1317,7 +1317,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
                     nativeName = nativeNameStackBytes;
                 }
-
+                
                 int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
                 nativeName[nativeNameOffset] = 0;
             }
@@ -1325,7 +1325,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeName = null;
             }
-
+            
             byte* pOpen = null;
             ImGuiWindowFlags flags = 0;
             byte ret = ImGuiNative.igBeginPopupModal(nativeName, pOpen, flags);
@@ -1333,10 +1333,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeName);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup modal
         /// </summary>
@@ -1359,7 +1359,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
                     nativeName = nativeNameStackBytes;
                 }
-
+                
                 int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
                 nativeName[nativeNameOffset] = 0;
             }
@@ -1367,7 +1367,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeName = null;
             }
-
+            
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
             byte* nativePOpen = &nativePOpenVal;
             ImGuiWindowFlags flags = 0;
@@ -1376,11 +1376,11 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeName);
             }
-
+            
             pOpen = nativePOpenVal != 0;
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup modal
         /// </summary>
@@ -1404,7 +1404,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
                     nativeName = nativeNameStackBytes;
                 }
-
+                
                 int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
                 nativeName[nativeNameOffset] = 0;
             }
@@ -1412,7 +1412,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeName = null;
             }
-
+            
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
             byte* nativePOpen = &nativePOpenVal;
             byte ret = ImGuiNative.igBeginPopupModal(nativeName, nativePOpen, flags);
@@ -1420,11 +1420,11 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeName);
             }
-
+            
             pOpen = nativePOpenVal != 0;
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin tab bar
         /// </summary>
@@ -1446,7 +1446,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -1454,17 +1454,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             ImGuiTabBarFlags flags = 0;
             byte ret = ImGuiNative.igBeginTabBar(nativeStrId, flags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin tab bar
         /// </summary>
@@ -1487,7 +1487,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -1495,16 +1495,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             byte ret = ImGuiNative.igBeginTabBar(nativeStrId, flags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin tab item
         /// </summary>
@@ -1526,7 +1526,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -1534,7 +1534,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* pOpen = null;
             ImGuiTabItemFlags flags = 0;
             byte ret = ImGuiNative.igBeginTabItem(nativeLabel, pOpen, flags);
@@ -1542,10 +1542,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin tab item
         /// </summary>
@@ -1568,7 +1568,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -1576,7 +1576,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
             byte* nativePOpen = &nativePOpenVal;
             ImGuiTabItemFlags flags = 0;
@@ -1585,11 +1585,11 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             pOpen = nativePOpenVal != 0;
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin tab item
         /// </summary>
@@ -1613,7 +1613,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -1621,7 +1621,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
             byte* nativePOpen = &nativePOpenVal;
             byte ret = ImGuiNative.igBeginTabItem(nativeLabel, nativePOpen, flags);
@@ -1629,11 +1629,11 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             pOpen = nativePOpenVal != 0;
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin table
         /// </summary>
@@ -1656,7 +1656,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -1664,7 +1664,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             ImGuiTableFlags flags = 0;
             Vector2 outerSize = new Vector2();
             float innerWidth = 0.0f;
@@ -1673,10 +1673,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin table
         /// </summary>
@@ -1700,7 +1700,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -1708,7 +1708,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             Vector2 outerSize = new Vector2();
             float innerWidth = 0.0f;
             byte ret = ImGuiNative.igBeginTable(nativeStrId, column, flags, outerSize, innerWidth);
@@ -1716,10 +1716,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin table
         /// </summary>
@@ -1744,7 +1744,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -1752,17 +1752,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             float innerWidth = 0.0f;
             byte ret = ImGuiNative.igBeginTable(nativeStrId, column, flags, outerSize, innerWidth);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin table
         /// </summary>
@@ -1788,7 +1788,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -1796,16 +1796,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             byte ret = ImGuiNative.igBeginTable(nativeStrId, column, flags, outerSize, innerWidth);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Begins the tooltip
         /// </summary>
@@ -1813,7 +1813,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igBeginTooltip();
         }
-
+        
         /// <summary>
         ///     Bullets
         /// </summary>
@@ -1821,7 +1821,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igBullet();
         }
-
+        
         /// <summary>
         ///     Bullets the text using the specified fmt
         /// </summary>
@@ -1842,7 +1842,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFmtStackBytes = stackalloc byte[fmtByteCount + 1];
                     nativeFmt = nativeFmtStackBytes;
                 }
-
+                
                 int nativeFmtOffset = Util.GetUtf8(fmt, nativeFmt, fmtByteCount);
                 nativeFmt[nativeFmtOffset] = 0;
             }
@@ -1850,14 +1850,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFmt = null;
             }
-
+            
             ImGuiNative.igBulletText(nativeFmt);
             if (fmtByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFmt);
             }
         }
-
+        
         /// <summary>
         ///     Describes whether button
         /// </summary>
@@ -1879,7 +1879,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -1887,17 +1887,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             Vector2 size = new Vector2();
             byte ret = ImGuiNative.igButton(nativeLabel, size);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether button
         /// </summary>
@@ -1920,7 +1920,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -1928,16 +1928,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte ret = ImGuiNative.igButton(nativeLabel, size);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Calcs the item width
         /// </summary>
@@ -1947,7 +1947,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igCalcItemWidth();
             return ret;
         }
-
+        
         /// <summary>
         ///     Describes whether checkbox
         /// </summary>
@@ -1970,7 +1970,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -1978,7 +1978,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte nativeVVal = v ? (byte) 1 : (byte) 0;
             byte* nativeV = &nativeVVal;
             byte ret = ImGuiNative.igCheckbox(nativeLabel, nativeV);
@@ -1986,11 +1986,11 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             v = nativeVVal != 0;
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether checkbox flags
         /// </summary>
@@ -2014,7 +2014,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -2022,7 +2022,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             fixed (int* nativeFlags = &flags)
             {
                 byte ret = ImGuiNative.igCheckboxFlags_IntPtr(nativeLabel, nativeFlags, flagsValue);
@@ -2030,11 +2030,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether checkbox flags
         /// </summary>
@@ -2058,7 +2058,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -2066,7 +2066,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             fixed (uint* nativeFlags = &flags)
             {
                 byte ret = ImGuiNative.igCheckboxFlags_UintPtr(nativeLabel, nativeFlags, flagsValue);
@@ -2074,11 +2074,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Closes the current popup
         /// </summary>
@@ -2086,7 +2086,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igCloseCurrentPopup();
         }
-
+        
         /// <summary>
         ///     Describes whether collapsing header
         /// </summary>
@@ -2108,7 +2108,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -2116,17 +2116,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             ImGuiTreeNodeFlags flags = 0;
             byte ret = ImGuiNative.igCollapsingHeader_TreeNodeFlags(nativeLabel, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether collapsing header
         /// </summary>
@@ -2149,7 +2149,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -2157,16 +2157,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte ret = ImGuiNative.igCollapsingHeader_TreeNodeFlags(nativeLabel, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether collapsing header
         /// </summary>
@@ -2189,7 +2189,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -2197,7 +2197,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte nativePVisibleVal = pVisible ? (byte) 1 : (byte) 0;
             byte* nativePVisible = &nativePVisibleVal;
             ImGuiTreeNodeFlags flags = 0;
@@ -2206,11 +2206,11 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             pVisible = nativePVisibleVal != 0;
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether collapsing header
         /// </summary>
@@ -2234,7 +2234,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -2242,7 +2242,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte nativePVisibleVal = pVisible ? (byte) 1 : (byte) 0;
             byte* nativePVisible = &nativePVisibleVal;
             byte ret = ImGuiNative.igCollapsingHeader_BoolPtr(nativeLabel, nativePVisible, flags);
@@ -2250,11 +2250,11 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             pVisible = nativePVisibleVal != 0;
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether color button
         /// </summary>
@@ -2277,7 +2277,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeDescIdStackBytes = stackalloc byte[descIdByteCount + 1];
                     nativeDescId = nativeDescIdStackBytes;
                 }
-
+                
                 int nativeDescIdOffset = Util.GetUtf8(descId, nativeDescId, descIdByteCount);
                 nativeDescId[nativeDescIdOffset] = 0;
             }
@@ -2285,7 +2285,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeDescId = null;
             }
-
+            
             ImGuiColorEditFlags flags = 0;
             Vector2 size = new Vector2();
             byte ret = ImGuiNative.igColorButton(nativeDescId, col, flags, size);
@@ -2293,10 +2293,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeDescId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether color button
         /// </summary>
@@ -2320,7 +2320,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeDescIdStackBytes = stackalloc byte[descIdByteCount + 1];
                     nativeDescId = nativeDescIdStackBytes;
                 }
-
+                
                 int nativeDescIdOffset = Util.GetUtf8(descId, nativeDescId, descIdByteCount);
                 nativeDescId[nativeDescIdOffset] = 0;
             }
@@ -2328,17 +2328,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeDescId = null;
             }
-
+            
             Vector2 size = new Vector2();
             byte ret = ImGuiNative.igColorButton(nativeDescId, col, flags, size);
             if (descIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeDescId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether color button
         /// </summary>
@@ -2363,7 +2363,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeDescIdStackBytes = stackalloc byte[descIdByteCount + 1];
                     nativeDescId = nativeDescIdStackBytes;
                 }
-
+                
                 int nativeDescIdOffset = Util.GetUtf8(descId, nativeDescId, descIdByteCount);
                 nativeDescId[nativeDescIdOffset] = 0;
             }
@@ -2371,16 +2371,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeDescId = null;
             }
-
+            
             byte ret = ImGuiNative.igColorButton(nativeDescId, col, flags, size);
             if (descIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeDescId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Colors the convert float 4 to u 32 using the specified in
         /// </summary>
@@ -2391,7 +2391,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint ret = ImGuiNative.igColorConvertFloat4ToU32(@in);
             return ret;
         }
-
+        
         /// <summary>
         ///     Colors the convert hs vto rgb using the specified h
         /// </summary>
@@ -2414,7 +2414,7 @@ namespace Alis.Extension.Graphic.ImGui
                 }
             }
         }
-
+        
         /// <summary>
         ///     Colors the convert rg bto hsv using the specified r
         /// </summary>
@@ -2437,7 +2437,7 @@ namespace Alis.Extension.Graphic.ImGui
                 }
             }
         }
-
+        
         /// <summary>
         ///     Colors the convert u 32 to float 4 using the specified in
         /// </summary>
@@ -2449,7 +2449,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igColorConvertU32ToFloat4(&retval, @in);
             return retval;
         }
-
+        
         /// <summary>
         ///     Describes whether color edit 3
         /// </summary>
@@ -2472,7 +2472,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -2480,7 +2480,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             ImGuiColorEditFlags flags = 0;
             fixed (Vector3* nativeCol = &col)
             {
@@ -2489,11 +2489,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether color edit 3
         /// </summary>
@@ -2517,7 +2517,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -2525,7 +2525,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             fixed (Vector3* nativeCol = &col)
             {
                 byte ret = ImGuiNative.igColorEdit3(nativeLabel, nativeCol, flags);
@@ -2533,11 +2533,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether color edit 4
         /// </summary>
@@ -2560,7 +2560,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -2568,7 +2568,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             ImGuiColorEditFlags flags = 0;
             fixed (Vector4* nativeCol = &col)
             {
@@ -2577,11 +2577,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether color edit 4
         /// </summary>
@@ -2605,7 +2605,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -2613,7 +2613,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             fixed (Vector4* nativeCol = &col)
             {
                 byte ret = ImGuiNative.igColorEdit4(nativeLabel, nativeCol, flags);
@@ -2621,11 +2621,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether color picker 3
         /// </summary>
@@ -2648,7 +2648,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -2656,7 +2656,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             ImGuiColorEditFlags flags = 0;
             fixed (Vector3* nativeCol = &col)
             {
@@ -2665,11 +2665,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether color picker 3
         /// </summary>
@@ -2693,7 +2693,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -2701,7 +2701,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             fixed (Vector3* nativeCol = &col)
             {
                 byte ret = ImGuiNative.igColorPicker3(nativeLabel, nativeCol, flags);
@@ -2709,11 +2709,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether color picker 4
         /// </summary>
@@ -2736,7 +2736,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -2744,7 +2744,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             ImGuiColorEditFlags flags = 0;
             float* refCol = null;
             fixed (Vector4* nativeCol = &col)
@@ -2754,11 +2754,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether color picker 4
         /// </summary>
@@ -2782,7 +2782,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -2790,7 +2790,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float* refCol = null;
             fixed (Vector4* nativeCol = &col)
             {
@@ -2799,11 +2799,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether color picker 4
         /// </summary>
@@ -2828,7 +2828,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -2836,7 +2836,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             fixed (Vector4* nativeCol = &col)
             {
                 fixed (float* nativeRefCol = &refCol)
@@ -2846,12 +2846,12 @@ namespace Alis.Extension.Graphic.ImGui
                     {
                         Util.Free(nativeLabel);
                     }
-
+                    
                     return ret != 0;
                 }
             }
         }
-
+        
         /// <summary>
         ///     Columnses
         /// </summary>
@@ -2862,7 +2862,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte border = 1;
             ImGuiNative.igColumns(count, nativeId, border);
         }
-
+        
         /// <summary>
         ///     Columnses the count
         /// </summary>
@@ -2873,7 +2873,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte border = 1;
             ImGuiNative.igColumns(count, nativeId, border);
         }
-
+        
         /// <summary>
         ///     Columnses the count
         /// </summary>
@@ -2895,7 +2895,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeIdStackBytes = stackalloc byte[idByteCount + 1];
                     nativeId = nativeIdStackBytes;
                 }
-
+                
                 int nativeIdOffset = Util.GetUtf8(id, nativeId, idByteCount);
                 nativeId[nativeIdOffset] = 0;
             }
@@ -2903,7 +2903,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeId = null;
             }
-
+            
             byte border = 1;
             ImGuiNative.igColumns(count, nativeId, border);
             if (idByteCount > Util.StackAllocationSizeLimit)
@@ -2911,7 +2911,7 @@ namespace Alis.Extension.Graphic.ImGui
                 Util.Free(nativeId);
             }
         }
-
+        
         /// <summary>
         ///     Columnses the count
         /// </summary>
@@ -2934,7 +2934,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeIdStackBytes = stackalloc byte[idByteCount + 1];
                     nativeId = nativeIdStackBytes;
                 }
-
+                
                 int nativeIdOffset = Util.GetUtf8(id, nativeId, idByteCount);
                 nativeId[nativeIdOffset] = 0;
             }
@@ -2942,7 +2942,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeId = null;
             }
-
+            
             byte nativeBorder = border ? (byte) 1 : (byte) 0;
             ImGuiNative.igColumns(count, nativeId, nativeBorder);
             if (idByteCount > Util.StackAllocationSizeLimit)
@@ -2950,7 +2950,7 @@ namespace Alis.Extension.Graphic.ImGui
                 Util.Free(nativeId);
             }
         }
-
+        
         /// <summary>
         ///     Describes whether combo
         /// </summary>
@@ -2975,7 +2975,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -2983,7 +2983,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int* itemsByteCounts = stackalloc int[items.Length];
             int itemsByteCount = 0;
             for (int i = 0; i < items.Length; i++)
@@ -2992,7 +2992,7 @@ namespace Alis.Extension.Graphic.ImGui
                 itemsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
                 itemsByteCount += itemsByteCounts[i] + 1;
             }
-
+            
             byte* nativeItemsData = stackalloc byte[itemsByteCount];
             int offset = 0;
             for (int i = 0; i < items.Length; i++)
@@ -3005,7 +3005,7 @@ namespace Alis.Extension.Graphic.ImGui
                     offset += 1;
                 }
             }
-
+            
             byte** nativeItems = stackalloc byte*[items.Length];
             offset = 0;
             for (int i = 0; i < items.Length; i++)
@@ -3013,7 +3013,7 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeItems[i] = &nativeItemsData[offset];
                 offset += itemsByteCounts[i] + 1;
             }
-
+            
             int popupMaxHeightInItems = -1;
             fixed (int* nativeCurrentItem = &currentItem)
             {
@@ -3022,11 +3022,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether combo
         /// </summary>
@@ -3052,7 +3052,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -3060,7 +3060,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int* itemsByteCounts = stackalloc int[items.Length];
             int itemsByteCount = 0;
             for (int i = 0; i < items.Length; i++)
@@ -3069,7 +3069,7 @@ namespace Alis.Extension.Graphic.ImGui
                 itemsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
                 itemsByteCount += itemsByteCounts[i] + 1;
             }
-
+            
             byte* nativeItemsData = stackalloc byte[itemsByteCount];
             int offset = 0;
             for (int i = 0; i < items.Length; i++)
@@ -3082,7 +3082,7 @@ namespace Alis.Extension.Graphic.ImGui
                     offset += 1;
                 }
             }
-
+            
             byte** nativeItems = stackalloc byte*[items.Length];
             offset = 0;
             for (int i = 0; i < items.Length; i++)
@@ -3090,7 +3090,7 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeItems[i] = &nativeItemsData[offset];
                 offset += itemsByteCounts[i] + 1;
             }
-
+            
             fixed (int* nativeCurrentItem = &currentItem)
             {
                 byte ret = ImGuiNative.igCombo_Str_arr(nativeLabel, nativeCurrentItem, nativeItems, itemsCount, popupMaxHeightInItems);
@@ -3098,11 +3098,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether combo
         /// </summary>
@@ -3126,7 +3126,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -3134,7 +3134,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeItemsSeparatedByZeros;
             int itemsSeparatedByZerosByteCount = 0;
             if (itemsSeparatedByZeros != null)
@@ -3149,7 +3149,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeItemsSeparatedByZerosStackBytes = stackalloc byte[itemsSeparatedByZerosByteCount + 1];
                     nativeItemsSeparatedByZeros = nativeItemsSeparatedByZerosStackBytes;
                 }
-
+                
                 int nativeItemsSeparatedByZerosOffset = Util.GetUtf8(itemsSeparatedByZeros, nativeItemsSeparatedByZeros, itemsSeparatedByZerosByteCount);
                 nativeItemsSeparatedByZeros[nativeItemsSeparatedByZerosOffset] = 0;
             }
@@ -3157,7 +3157,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeItemsSeparatedByZeros = null;
             }
-
+            
             int popupMaxHeightInItems = -1;
             fixed (int* nativeCurrentItem = &currentItem)
             {
@@ -3166,16 +3166,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (itemsSeparatedByZerosByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeItemsSeparatedByZeros);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether combo
         /// </summary>
@@ -3200,7 +3200,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -3208,7 +3208,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeItemsSeparatedByZeros;
             int itemsSeparatedByZerosByteCount = 0;
             if (itemsSeparatedByZeros != null)
@@ -3223,7 +3223,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeItemsSeparatedByZerosStackBytes = stackalloc byte[itemsSeparatedByZerosByteCount + 1];
                     nativeItemsSeparatedByZeros = nativeItemsSeparatedByZerosStackBytes;
                 }
-
+                
                 int nativeItemsSeparatedByZerosOffset = Util.GetUtf8(itemsSeparatedByZeros, nativeItemsSeparatedByZeros, itemsSeparatedByZerosByteCount);
                 nativeItemsSeparatedByZeros[nativeItemsSeparatedByZerosOffset] = 0;
             }
@@ -3231,7 +3231,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeItemsSeparatedByZeros = null;
             }
-
+            
             fixed (int* nativeCurrentItem = &currentItem)
             {
                 byte ret = ImGuiNative.igCombo_Str(nativeLabel, nativeCurrentItem, nativeItemsSeparatedByZeros, popupMaxHeightInItems);
@@ -3239,16 +3239,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (itemsSeparatedByZerosByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeItemsSeparatedByZeros);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Creates the context
         /// </summary>
@@ -3259,7 +3259,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr ret = ImGuiNative.igCreateContext(sharedFontAtlas);
             return ret;
         }
-
+        
         /// <summary>
         ///     Creates the context using the specified shared font atlas
         /// </summary>
@@ -3271,7 +3271,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr ret = ImGuiNative.igCreateContext(nativeSharedFontAtlas);
             return ret;
         }
-
+        
         /// <summary>
         ///     Describes whether debug check version and data layout
         /// </summary>
@@ -3299,7 +3299,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeVersionStrStackBytes = stackalloc byte[versionStrByteCount + 1];
                     nativeVersionStr = nativeVersionStrStackBytes;
                 }
-
+                
                 int nativeVersionStrOffset = Util.GetUtf8(versionStr, nativeVersionStr, versionStrByteCount);
                 nativeVersionStr[nativeVersionStrOffset] = 0;
             }
@@ -3307,16 +3307,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeVersionStr = null;
             }
-
+            
             byte ret = ImGuiNative.igDebugCheckVersionAndDataLayout(nativeVersionStr, szIo, szStyle, szVec2, szVec4, szDrawvert, szDrawidx);
             if (versionStrByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeVersionStr);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Debugs the text encoding using the specified text
         /// </summary>
@@ -3337,7 +3337,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeTextStackBytes = stackalloc byte[textByteCount + 1];
                     nativeText = nativeTextStackBytes;
                 }
-
+                
                 int nativeTextOffset = Util.GetUtf8(text, nativeText, textByteCount);
                 nativeText[nativeTextOffset] = 0;
             }
@@ -3345,14 +3345,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeText = null;
             }
-
+            
             ImGuiNative.igDebugTextEncoding(nativeText);
             if (textByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeText);
             }
         }
-
+        
         /// <summary>
         ///     Destroys the context
         /// </summary>
@@ -3361,7 +3361,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr ctx = IntPtr.Zero;
             ImGuiNative.igDestroyContext(ctx);
         }
-
+        
         /// <summary>
         ///     Destroys the context using the specified ctx
         /// </summary>
@@ -3370,7 +3370,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igDestroyContext(ctx);
         }
-
+        
         /// <summary>
         ///     Destroys the platform windows
         /// </summary>
@@ -3378,7 +3378,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igDestroyPlatformWindows();
         }
-
+        
         /// <summary>
         ///     Docks the space using the specified id
         /// </summary>
@@ -3392,7 +3392,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
             return ret;
         }
-
+        
         /// <summary>
         ///     Docks the space using the specified id
         /// </summary>
@@ -3406,7 +3406,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
             return ret;
         }
-
+        
         /// <summary>
         ///     Docks the space using the specified id
         /// </summary>
@@ -3420,7 +3420,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
             return ret;
         }
-
+        
         /// <summary>
         ///     Docks the space using the specified id
         /// </summary>
@@ -3434,7 +3434,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
             return ret;
         }
-
+        
         /// <summary>
         ///     Docks the space over viewport
         /// </summary>
@@ -3447,7 +3447,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint ret = ImGuiNative.igDockSpaceOverViewport(viewport, flags, windowClass);
             return ret;
         }
-
+        
         /// <summary>
         ///     Docks the space over viewport using the specified viewport
         /// </summary>
@@ -3461,7 +3461,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint ret = ImGuiNative.igDockSpaceOverViewport(nativeViewport, flags, windowClass);
             return ret;
         }
-
+        
         /// <summary>
         ///     Docks the space over viewport using the specified viewport
         /// </summary>
@@ -3475,7 +3475,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint ret = ImGuiNative.igDockSpaceOverViewport(nativeViewport, flags, windowClass);
             return ret;
         }
-
+        
         /// <summary>
         ///     Docks the space over viewport using the specified viewport
         /// </summary>
@@ -3489,7 +3489,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint ret = ImGuiNative.igDockSpaceOverViewport(nativeViewport, flags, windowClass);
             return ret;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float
         /// </summary>
@@ -3512,7 +3512,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -3520,7 +3520,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vSpeed = 1.0f;
             float vMin = 0.0f;
             float vMax = 0.0f;
@@ -3536,7 +3536,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -3547,16 +3547,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float
         /// </summary>
@@ -3580,7 +3580,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -3588,7 +3588,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vMin = 0.0f;
             float vMax = 0.0f;
             byte* nativeFormat;
@@ -3603,7 +3603,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -3614,16 +3614,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float
         /// </summary>
@@ -3648,7 +3648,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -3656,7 +3656,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vMax = 0.0f;
             byte* nativeFormat;
             int formatByteCount = 0;
@@ -3670,7 +3670,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -3681,16 +3681,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float
         /// </summary>
@@ -3716,7 +3716,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -3724,7 +3724,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%.3f");
@@ -3737,7 +3737,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -3748,16 +3748,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float
         /// </summary>
@@ -3784,7 +3784,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -3792,7 +3792,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -3807,7 +3807,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -3815,7 +3815,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (float* nativeV = &v)
             {
@@ -3824,16 +3824,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float
         /// </summary>
@@ -3861,7 +3861,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -3869,7 +3869,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -3884,7 +3884,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -3892,7 +3892,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (float* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flags);
@@ -3900,16 +3900,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 2
         /// </summary>
@@ -3932,7 +3932,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -3940,7 +3940,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vSpeed = 1.0f;
             float vMin = 0.0f;
             float vMax = 0.0f;
@@ -3956,7 +3956,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -3967,16 +3967,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 2
         /// </summary>
@@ -4000,7 +4000,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -4008,7 +4008,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vMin = 0.0f;
             float vMax = 0.0f;
             byte* nativeFormat;
@@ -4023,7 +4023,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -4034,16 +4034,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 2
         /// </summary>
@@ -4068,7 +4068,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -4076,7 +4076,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vMax = 0.0f;
             byte* nativeFormat;
             int formatByteCount = 0;
@@ -4090,7 +4090,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -4101,16 +4101,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 2
         /// </summary>
@@ -4136,7 +4136,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -4144,7 +4144,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%.3f");
@@ -4157,7 +4157,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -4168,16 +4168,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 2
         /// </summary>
@@ -4204,7 +4204,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -4212,7 +4212,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -4227,7 +4227,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -4235,7 +4235,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (Vector2* nativeV = &v)
             {
@@ -4244,16 +4244,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 2
         /// </summary>
@@ -4281,7 +4281,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -4289,7 +4289,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -4304,7 +4304,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -4312,7 +4312,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (Vector2* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat2(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flags);
@@ -4320,16 +4320,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 3
         /// </summary>
@@ -4352,7 +4352,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -4360,7 +4360,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vSpeed = 1.0f;
             float vMin = 0.0f;
             float vMax = 0.0f;
@@ -4376,7 +4376,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -4387,16 +4387,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 3
         /// </summary>
@@ -4420,7 +4420,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -4428,7 +4428,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vMin = 0.0f;
             float vMax = 0.0f;
             byte* nativeFormat;
@@ -4443,7 +4443,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -4454,16 +4454,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 3
         /// </summary>
@@ -4488,7 +4488,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -4496,7 +4496,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vMax = 0.0f;
             byte* nativeFormat;
             int formatByteCount = 0;
@@ -4510,7 +4510,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -4521,16 +4521,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 3
         /// </summary>
@@ -4556,7 +4556,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -4564,7 +4564,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%.3f");
@@ -4577,7 +4577,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -4588,16 +4588,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 3
         /// </summary>
@@ -4624,7 +4624,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -4632,7 +4632,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -4647,7 +4647,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -4655,7 +4655,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (Vector3* nativeV = &v)
             {
@@ -4664,16 +4664,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 3
         /// </summary>
@@ -4701,7 +4701,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -4709,7 +4709,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -4724,7 +4724,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -4732,7 +4732,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (Vector3* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat3(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flags);
@@ -4740,16 +4740,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 4
         /// </summary>
@@ -4772,7 +4772,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -4780,7 +4780,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vSpeed = 1.0f;
             float vMin = 0.0f;
             float vMax = 0.0f;
@@ -4796,7 +4796,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -4807,16 +4807,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 4
         /// </summary>
@@ -4840,7 +4840,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -4848,7 +4848,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vMin = 0.0f;
             float vMax = 0.0f;
             byte* nativeFormat;
@@ -4863,7 +4863,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -4874,16 +4874,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 4
         /// </summary>
@@ -4908,7 +4908,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -4916,7 +4916,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vMax = 0.0f;
             byte* nativeFormat;
             int formatByteCount = 0;
@@ -4930,7 +4930,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -4941,16 +4941,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 4
         /// </summary>
@@ -4976,7 +4976,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -4984,7 +4984,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%.3f");
@@ -4997,7 +4997,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -5008,16 +5008,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 4
         /// </summary>
@@ -5044,7 +5044,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -5052,7 +5052,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -5067,7 +5067,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -5075,7 +5075,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (Vector4* nativeV = &v)
             {
@@ -5084,16 +5084,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 4
         /// </summary>
@@ -5121,7 +5121,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -5129,7 +5129,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -5144,7 +5144,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -5152,7 +5152,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (Vector4* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flags);
@@ -5160,16 +5160,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float range 2
         /// </summary>
@@ -5193,7 +5193,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -5201,7 +5201,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vSpeed = 1.0f;
             float vMin = 0.0f;
             float vMax = 0.0f;
@@ -5217,7 +5217,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             byte* nativeFormatMax = null;
@@ -5231,17 +5231,17 @@ namespace Alis.Extension.Graphic.ImGui
                     {
                         Util.Free(nativeLabel);
                     }
-
+                    
                     if (formatByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormat);
                     }
-
+                    
                     return ret != 0;
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float range 2
         /// </summary>
@@ -5266,7 +5266,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -5274,7 +5274,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vMin = 0.0f;
             float vMax = 0.0f;
             byte* nativeFormat;
@@ -5289,7 +5289,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             byte* nativeFormatMax = null;
@@ -5303,17 +5303,17 @@ namespace Alis.Extension.Graphic.ImGui
                     {
                         Util.Free(nativeLabel);
                     }
-
+                    
                     if (formatByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormat);
                     }
-
+                    
                     return ret != 0;
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float range 2
         /// </summary>
@@ -5339,7 +5339,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -5347,7 +5347,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vMax = 0.0f;
             byte* nativeFormat;
             int formatByteCount = 0;
@@ -5361,7 +5361,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             byte* nativeFormatMax = null;
@@ -5375,17 +5375,17 @@ namespace Alis.Extension.Graphic.ImGui
                     {
                         Util.Free(nativeLabel);
                     }
-
+                    
                     if (formatByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormat);
                     }
-
+                    
                     return ret != 0;
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float range 2
         /// </summary>
@@ -5412,7 +5412,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -5420,7 +5420,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%.3f");
@@ -5433,7 +5433,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             byte* nativeFormatMax = null;
@@ -5447,17 +5447,17 @@ namespace Alis.Extension.Graphic.ImGui
                     {
                         Util.Free(nativeLabel);
                     }
-
+                    
                     if (formatByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormat);
                     }
-
+                    
                     return ret != 0;
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float range 2
         /// </summary>
@@ -5485,7 +5485,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -5493,7 +5493,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -5508,7 +5508,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -5516,7 +5516,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             byte* nativeFormatMax = null;
             ImGuiSliderFlags flags = 0;
             fixed (float* nativeVCurrentMin = &vCurrentMin)
@@ -5528,17 +5528,17 @@ namespace Alis.Extension.Graphic.ImGui
                     {
                         Util.Free(nativeLabel);
                     }
-
+                    
                     if (formatByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormat);
                     }
-
+                    
                     return ret != 0;
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float range 2
         /// </summary>
@@ -5567,7 +5567,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -5575,7 +5575,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -5590,7 +5590,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -5598,7 +5598,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             byte* nativeFormatMax;
             int formatMaxByteCount = 0;
             if (formatMax != null)
@@ -5613,7 +5613,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatMaxStackBytes = stackalloc byte[formatMaxByteCount + 1];
                     nativeFormatMax = nativeFormatMaxStackBytes;
                 }
-
+                
                 int nativeFormatMaxOffset = Util.GetUtf8(formatMax, nativeFormatMax, formatMaxByteCount);
                 nativeFormatMax[nativeFormatMaxOffset] = 0;
             }
@@ -5621,7 +5621,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormatMax = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (float* nativeVCurrentMin = &vCurrentMin)
             {
@@ -5632,22 +5632,22 @@ namespace Alis.Extension.Graphic.ImGui
                     {
                         Util.Free(nativeLabel);
                     }
-
+                    
                     if (formatByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormat);
                     }
-
+                    
                     if (formatMaxByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormatMax);
                     }
-
+                    
                     return ret != 0;
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag float range 2
         /// </summary>
@@ -5677,7 +5677,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -5685,7 +5685,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -5700,7 +5700,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -5708,7 +5708,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             byte* nativeFormatMax;
             int formatMaxByteCount = 0;
             if (formatMax != null)
@@ -5723,7 +5723,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatMaxStackBytes = stackalloc byte[formatMaxByteCount + 1];
                     nativeFormatMax = nativeFormatMaxStackBytes;
                 }
-
+                
                 int nativeFormatMaxOffset = Util.GetUtf8(formatMax, nativeFormatMax, formatMaxByteCount);
                 nativeFormatMax[nativeFormatMaxOffset] = 0;
             }
@@ -5731,7 +5731,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormatMax = null;
             }
-
+            
             fixed (float* nativeVCurrentMin = &vCurrentMin)
             {
                 fixed (float* nativeVCurrentMax = &vCurrentMax)
@@ -5741,22 +5741,22 @@ namespace Alis.Extension.Graphic.ImGui
                     {
                         Util.Free(nativeLabel);
                     }
-
+                    
                     if (formatByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormat);
                     }
-
+                    
                     if (formatMaxByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormatMax);
                     }
-
+                    
                     return ret != 0;
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int
         /// </summary>
@@ -5779,7 +5779,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -5787,7 +5787,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vSpeed = 1.0f;
             int vMin = 0;
             int vMax = 0;
@@ -5803,7 +5803,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -5814,16 +5814,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int
         /// </summary>
@@ -5847,7 +5847,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -5855,7 +5855,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int vMin = 0;
             int vMax = 0;
             byte* nativeFormat;
@@ -5870,7 +5870,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -5881,16 +5881,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int
         /// </summary>
@@ -5915,7 +5915,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -5923,7 +5923,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int vMax = 0;
             byte* nativeFormat;
             int formatByteCount = 0;
@@ -5937,7 +5937,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -5948,16 +5948,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int
         /// </summary>
@@ -5983,7 +5983,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -5991,7 +5991,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%d");
@@ -6004,7 +6004,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -6015,16 +6015,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int
         /// </summary>
@@ -6051,7 +6051,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -6059,7 +6059,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -6074,7 +6074,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -6082,7 +6082,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (int* nativeV = &v)
             {
@@ -6091,16 +6091,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int
         /// </summary>
@@ -6128,7 +6128,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -6136,7 +6136,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -6151,7 +6151,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -6159,7 +6159,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flags);
@@ -6167,16 +6167,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 2
         /// </summary>
@@ -6199,7 +6199,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -6207,7 +6207,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vSpeed = 1.0f;
             int vMin = 0;
             int vMax = 0;
@@ -6223,7 +6223,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -6234,16 +6234,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 2
         /// </summary>
@@ -6267,7 +6267,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -6275,7 +6275,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int vMin = 0;
             int vMax = 0;
             byte* nativeFormat;
@@ -6290,7 +6290,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -6301,16 +6301,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 2
         /// </summary>
@@ -6335,7 +6335,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -6343,7 +6343,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int vMax = 0;
             byte* nativeFormat;
             int formatByteCount = 0;
@@ -6357,7 +6357,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -6368,16 +6368,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 2
         /// </summary>
@@ -6403,7 +6403,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -6411,7 +6411,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%d");
@@ -6424,7 +6424,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -6435,16 +6435,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 2
         /// </summary>
@@ -6471,7 +6471,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -6479,7 +6479,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -6494,7 +6494,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -6502,7 +6502,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (int* nativeV = &v)
             {
@@ -6511,16 +6511,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 2
         /// </summary>
@@ -6548,7 +6548,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -6556,7 +6556,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -6571,7 +6571,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -6579,7 +6579,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt2(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flags);
@@ -6587,16 +6587,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 3
         /// </summary>
@@ -6619,7 +6619,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -6627,7 +6627,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vSpeed = 1.0f;
             int vMin = 0;
             int vMax = 0;
@@ -6643,7 +6643,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -6654,16 +6654,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 3
         /// </summary>
@@ -6687,7 +6687,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -6695,7 +6695,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int vMin = 0;
             int vMax = 0;
             byte* nativeFormat;
@@ -6710,7 +6710,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -6721,16 +6721,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 3
         /// </summary>
@@ -6755,7 +6755,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -6763,7 +6763,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int vMax = 0;
             byte* nativeFormat;
             int formatByteCount = 0;
@@ -6777,7 +6777,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -6788,16 +6788,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 3
         /// </summary>
@@ -6823,7 +6823,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -6831,7 +6831,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%d");
@@ -6844,7 +6844,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -6855,16 +6855,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 3
         /// </summary>
@@ -6891,7 +6891,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -6899,7 +6899,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -6914,7 +6914,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -6922,7 +6922,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (int* nativeV = &v)
             {
@@ -6931,16 +6931,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 3
         /// </summary>
@@ -6968,7 +6968,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -6976,7 +6976,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -6991,7 +6991,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -6999,7 +6999,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt3(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flags);
@@ -7007,16 +7007,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 4
         /// </summary>
@@ -7039,7 +7039,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -7047,7 +7047,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vSpeed = 1.0f;
             int vMin = 0;
             int vMax = 0;
@@ -7063,7 +7063,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -7074,16 +7074,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 4
         /// </summary>
@@ -7107,7 +7107,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -7115,7 +7115,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int vMin = 0;
             int vMax = 0;
             byte* nativeFormat;
@@ -7130,7 +7130,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -7141,16 +7141,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 4
         /// </summary>
@@ -7175,7 +7175,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -7183,7 +7183,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int vMax = 0;
             byte* nativeFormat;
             int formatByteCount = 0;
@@ -7197,7 +7197,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -7208,16 +7208,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 4
         /// </summary>
@@ -7243,7 +7243,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -7251,7 +7251,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%d");
@@ -7264,7 +7264,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -7275,16 +7275,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 4
         /// </summary>
@@ -7311,7 +7311,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -7319,7 +7319,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -7334,7 +7334,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -7342,7 +7342,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (int* nativeV = &v)
             {
@@ -7351,16 +7351,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int 4
         /// </summary>
@@ -7388,7 +7388,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -7396,7 +7396,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -7411,7 +7411,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -7419,7 +7419,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flags);
@@ -7427,16 +7427,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int range 2
         /// </summary>
@@ -7460,7 +7460,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -7468,7 +7468,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vSpeed = 1.0f;
             int vMin = 0;
             int vMax = 0;
@@ -7484,7 +7484,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             byte* nativeFormatMax = null;
@@ -7498,17 +7498,17 @@ namespace Alis.Extension.Graphic.ImGui
                     {
                         Util.Free(nativeLabel);
                     }
-
+                    
                     if (formatByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormat);
                     }
-
+                    
                     return ret != 0;
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int range 2
         /// </summary>
@@ -7533,7 +7533,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -7541,7 +7541,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int vMin = 0;
             int vMax = 0;
             byte* nativeFormat;
@@ -7556,7 +7556,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             byte* nativeFormatMax = null;
@@ -7570,17 +7570,17 @@ namespace Alis.Extension.Graphic.ImGui
                     {
                         Util.Free(nativeLabel);
                     }
-
+                    
                     if (formatByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormat);
                     }
-
+                    
                     return ret != 0;
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int range 2
         /// </summary>
@@ -7606,7 +7606,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -7614,7 +7614,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int vMax = 0;
             byte* nativeFormat;
             int formatByteCount = 0;
@@ -7628,7 +7628,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             byte* nativeFormatMax = null;
@@ -7642,17 +7642,17 @@ namespace Alis.Extension.Graphic.ImGui
                     {
                         Util.Free(nativeLabel);
                     }
-
+                    
                     if (formatByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormat);
                     }
-
+                    
                     return ret != 0;
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int range 2
         /// </summary>
@@ -7679,7 +7679,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -7687,7 +7687,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%d");
@@ -7700,7 +7700,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             byte* nativeFormatMax = null;
@@ -7714,17 +7714,17 @@ namespace Alis.Extension.Graphic.ImGui
                     {
                         Util.Free(nativeLabel);
                     }
-
+                    
                     if (formatByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormat);
                     }
-
+                    
                     return ret != 0;
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int range 2
         /// </summary>
@@ -7752,7 +7752,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -7760,7 +7760,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -7775,7 +7775,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -7783,7 +7783,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             byte* nativeFormatMax = null;
             ImGuiSliderFlags flags = 0;
             fixed (int* nativeVCurrentMin = &vCurrentMin)
@@ -7795,17 +7795,17 @@ namespace Alis.Extension.Graphic.ImGui
                     {
                         Util.Free(nativeLabel);
                     }
-
+                    
                     if (formatByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormat);
                     }
-
+                    
                     return ret != 0;
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int range 2
         /// </summary>
@@ -7834,7 +7834,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -7842,7 +7842,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -7857,7 +7857,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -7865,7 +7865,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             byte* nativeFormatMax;
             int formatMaxByteCount = 0;
             if (formatMax != null)
@@ -7880,7 +7880,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatMaxStackBytes = stackalloc byte[formatMaxByteCount + 1];
                     nativeFormatMax = nativeFormatMaxStackBytes;
                 }
-
+                
                 int nativeFormatMaxOffset = Util.GetUtf8(formatMax, nativeFormatMax, formatMaxByteCount);
                 nativeFormatMax[nativeFormatMaxOffset] = 0;
             }
@@ -7888,7 +7888,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormatMax = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (int* nativeVCurrentMin = &vCurrentMin)
             {
@@ -7899,22 +7899,22 @@ namespace Alis.Extension.Graphic.ImGui
                     {
                         Util.Free(nativeLabel);
                     }
-
+                    
                     if (formatByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormat);
                     }
-
+                    
                     if (formatMaxByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormatMax);
                     }
-
+                    
                     return ret != 0;
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag int range 2
         /// </summary>
@@ -7944,7 +7944,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -7952,7 +7952,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -7967,7 +7967,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -7975,7 +7975,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             byte* nativeFormatMax;
             int formatMaxByteCount = 0;
             if (formatMax != null)
@@ -7990,7 +7990,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatMaxStackBytes = stackalloc byte[formatMaxByteCount + 1];
                     nativeFormatMax = nativeFormatMaxStackBytes;
                 }
-
+                
                 int nativeFormatMaxOffset = Util.GetUtf8(formatMax, nativeFormatMax, formatMaxByteCount);
                 nativeFormatMax[nativeFormatMaxOffset] = 0;
             }
@@ -7998,7 +7998,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormatMax = null;
             }
-
+            
             fixed (int* nativeVCurrentMin = &vCurrentMin)
             {
                 fixed (int* nativeVCurrentMax = &vCurrentMax)
@@ -8008,22 +8008,22 @@ namespace Alis.Extension.Graphic.ImGui
                     {
                         Util.Free(nativeLabel);
                     }
-
+                    
                     if (formatByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormat);
                     }
-
+                    
                     if (formatMaxByteCount > Util.StackAllocationSizeLimit)
                     {
                         Util.Free(nativeFormatMax);
                     }
-
+                    
                     return ret != 0;
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether drag scalar
         /// </summary>
@@ -8047,7 +8047,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -8055,7 +8055,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             float vSpeed = 1.0f;
             IntPtr pMin = IntPtr.Zero;
@@ -8067,10 +8067,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag scalar
         /// </summary>
@@ -8095,7 +8095,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -8103,7 +8103,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr pMin = IntPtr.Zero;
             IntPtr pMax = IntPtr.Zero;
@@ -8114,10 +8114,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag scalar
         /// </summary>
@@ -8143,7 +8143,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -8151,7 +8151,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePMin = pMin;
             IntPtr pMax = IntPtr.Zero;
@@ -8162,10 +8162,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag scalar
         /// </summary>
@@ -8192,7 +8192,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -8200,7 +8200,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePMin = pMin;
             IntPtr nativePMax = pMax;
@@ -8211,10 +8211,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag scalar
         /// </summary>
@@ -8242,7 +8242,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -8250,7 +8250,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePMin = pMin;
             IntPtr nativePMax = pMax;
@@ -8268,7 +8268,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -8276,22 +8276,22 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             byte ret = ImGuiNative.igDragScalar(nativeLabel, dataType, nativePData, vSpeed, nativePMin, nativePMax, nativeFormat, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (formatByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFormat);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag scalar
         /// </summary>
@@ -8320,7 +8320,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -8328,7 +8328,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePMin = pMin;
             IntPtr nativePMax = pMax;
@@ -8346,7 +8346,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -8354,21 +8354,21 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             byte ret = ImGuiNative.igDragScalar(nativeLabel, dataType, nativePData, vSpeed, nativePMin, nativePMax, nativeFormat, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (formatByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFormat);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag scalar n
         /// </summary>
@@ -8393,7 +8393,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -8401,7 +8401,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             float vSpeed = 1.0f;
             IntPtr pMin = IntPtr.Zero;
@@ -8413,10 +8413,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag scalar n
         /// </summary>
@@ -8442,7 +8442,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -8450,7 +8450,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr pMin = IntPtr.Zero;
             IntPtr pMax = IntPtr.Zero;
@@ -8461,10 +8461,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag scalar n
         /// </summary>
@@ -8491,7 +8491,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -8499,7 +8499,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePMin = pMin;
             IntPtr pMax = IntPtr.Zero;
@@ -8510,10 +8510,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag scalar n
         /// </summary>
@@ -8541,7 +8541,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -8549,7 +8549,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePMin = pMin;
             IntPtr nativePMax = pMax;
@@ -8560,10 +8560,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag scalar n
         /// </summary>
@@ -8592,7 +8592,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -8600,7 +8600,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePMin = pMin;
             IntPtr nativePMax = pMax;
@@ -8618,7 +8618,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -8626,22 +8626,22 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             byte ret = ImGuiNative.igDragScalarN(nativeLabel, dataType, nativePData, components, vSpeed, nativePMin, nativePMax, nativeFormat, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (formatByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFormat);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag scalar n
         /// </summary>
@@ -8671,7 +8671,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -8679,7 +8679,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePMin = pMin;
             IntPtr nativePMax = pMax;
@@ -8697,7 +8697,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -8705,21 +8705,21 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             byte ret = ImGuiNative.igDragScalarN(nativeLabel, dataType, nativePData, components, vSpeed, nativePMin, nativePMax, nativeFormat, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (formatByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFormat);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Dummies the size
         /// </summary>
@@ -8728,7 +8728,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igDummy(size);
         }
-
+        
         /// <summary>
         ///     Ends
         /// </summary>
@@ -8736,7 +8736,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEnd();
         }
-
+        
         /// <summary>
         ///     Ends the child
         /// </summary>
@@ -8744,7 +8744,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEndChild();
         }
-
+        
         /// <summary>
         ///     Ends the child frame
         /// </summary>
@@ -8752,7 +8752,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEndChildFrame();
         }
-
+        
         /// <summary>
         ///     Ends the combo
         /// </summary>
@@ -8760,7 +8760,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEndCombo();
         }
-
+        
         /// <summary>
         ///     Ends the disabled
         /// </summary>
@@ -8768,7 +8768,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEndDisabled();
         }
-
+        
         /// <summary>
         ///     Ends the drag drop source
         /// </summary>
@@ -8776,7 +8776,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEndDragDropSource();
         }
-
+        
         /// <summary>
         ///     Ends the drag drop target
         /// </summary>
@@ -8784,7 +8784,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEndDragDropTarget();
         }
-
+        
         /// <summary>
         ///     Ends the frame
         /// </summary>
@@ -8792,7 +8792,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEndFrame();
         }
-
+        
         /// <summary>
         ///     Ends the group
         /// </summary>
@@ -8800,7 +8800,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEndGroup();
         }
-
+        
         /// <summary>
         ///     Ends the list box
         /// </summary>
@@ -8808,7 +8808,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEndListBox();
         }
-
+        
         /// <summary>
         ///     Ends the main menu bar
         /// </summary>
@@ -8816,7 +8816,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEndMainMenuBar();
         }
-
+        
         /// <summary>
         ///     Ends the menu
         /// </summary>
@@ -8824,7 +8824,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEndMenu();
         }
-
+        
         /// <summary>
         ///     Ends the menu bar
         /// </summary>
@@ -8832,7 +8832,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEndMenuBar();
         }
-
+        
         /// <summary>
         ///     Ends the popup
         /// </summary>
@@ -8840,7 +8840,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEndPopup();
         }
-
+        
         /// <summary>
         ///     Ends the tab bar
         /// </summary>
@@ -8848,7 +8848,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEndTabBar();
         }
-
+        
         /// <summary>
         ///     Ends the tab item
         /// </summary>
@@ -8856,7 +8856,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEndTabItem();
         }
-
+        
         /// <summary>
         ///     Ends the table
         /// </summary>
@@ -8864,7 +8864,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEndTable();
         }
-
+        
         /// <summary>
         ///     Ends the tooltip
         /// </summary>
@@ -8872,7 +8872,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igEndTooltip();
         }
-
+        
         /// <summary>
         ///     Finds the viewport by id using the specified id
         /// </summary>
@@ -8883,7 +8883,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiViewport* ret = ImGuiNative.igFindViewportByID(id);
             return new ImGuiViewportPtr(ret);
         }
-
+        
         /// <summary>
         ///     Finds the viewport by platform handle using the specified platform handle
         /// </summary>
@@ -8895,7 +8895,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiViewport* ret = ImGuiNative.igFindViewportByPlatformHandle(nativePlatformHandle);
             return new ImGuiViewportPtr(ret);
         }
-
+        
         /// <summary>
         ///     Gets the allocator functions using the specified p alloc func
         /// </summary>
@@ -8915,7 +8915,7 @@ namespace Alis.Extension.Graphic.ImGui
                 }
             }
         }
-
+        
         /// <summary>
         ///     Gets the background draw list
         /// </summary>
@@ -8925,7 +8925,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImDrawList* ret = ImGuiNative.igGetBackgroundDrawList_Nil();
             return new ImDrawListPtr(ret);
         }
-
+        
         /// <summary>
         ///     Gets the background draw list using the specified viewport
         /// </summary>
@@ -8937,7 +8937,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImDrawList* ret = ImGuiNative.igGetBackgroundDrawList_ViewportPtr(nativeViewport);
             return new ImDrawListPtr(ret);
         }
-
+        
         /// <summary>
         ///     Gets the clipboard text
         /// </summary>
@@ -8947,7 +8947,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte* ret = ImGuiNative.igGetClipboardText();
             return Util.StringFromPtr(ret);
         }
-
+        
         /// <summary>
         ///     Gets the color u 32 using the specified idx
         /// </summary>
@@ -8959,7 +8959,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint ret = ImGuiNative.igGetColorU32_Col(idx, alphaMul);
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the color u 32 using the specified idx
         /// </summary>
@@ -8971,7 +8971,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint ret = ImGuiNative.igGetColorU32_Col(idx, alphaMul);
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the color u 32 using the specified col
         /// </summary>
@@ -8982,7 +8982,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint ret = ImGuiNative.igGetColorU32_Vec4(col);
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the color u 32 using the specified col
         /// </summary>
@@ -8993,7 +8993,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint ret = ImGuiNative.igGetColorU32_U32(col);
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the column index
         /// </summary>
@@ -9003,7 +9003,7 @@ namespace Alis.Extension.Graphic.ImGui
             int ret = ImGuiNative.igGetColumnIndex();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the column offset
         /// </summary>
@@ -9014,7 +9014,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetColumnOffset(columnIndex);
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the column offset using the specified column index
         /// </summary>
@@ -9025,7 +9025,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetColumnOffset(columnIndex);
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the columns count
         /// </summary>
@@ -9035,7 +9035,7 @@ namespace Alis.Extension.Graphic.ImGui
             int ret = ImGuiNative.igGetColumnsCount();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the column width
         /// </summary>
@@ -9046,7 +9046,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetColumnWidth(columnIndex);
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the column width using the specified column index
         /// </summary>
@@ -9057,7 +9057,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetColumnWidth(columnIndex);
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the content region avail
         /// </summary>
@@ -9068,7 +9068,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetContentRegionAvail(&retval);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the content region max
         /// </summary>
@@ -9079,7 +9079,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetContentRegionMax(&retval);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the current context
         /// </summary>
@@ -9089,7 +9089,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr ret = ImGuiNative.igGetCurrentContext();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the cursor pos
         /// </summary>
@@ -9100,7 +9100,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetCursorPos(&retval);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the cursor pos x
         /// </summary>
@@ -9110,7 +9110,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetCursorPosX();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the cursor pos y
         /// </summary>
@@ -9120,7 +9120,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetCursorPosY();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the cursor screen pos
         /// </summary>
@@ -9131,7 +9131,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetCursorScreenPos(&retval);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the cursor start pos
         /// </summary>
@@ -9142,19 +9142,19 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetCursorStartPos(&retval);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the drag drop payload
         /// </summary>
         /// <returns>The im gui payload ptr</returns>
         public static ImGuiPayload GetDragDropPayload() => ImGuiNative.igGetDragDropPayload();
-
+        
         /// <summary>
         ///     Gets the draw data
         /// </summary>
         /// <returns>The im draw data ptr</returns>
         public static ImDrawData GetDrawData() => ImGuiNative.igGetDrawData();
-
+        
         /// <summary>
         ///     Gets the draw list shared data
         /// </summary>
@@ -9164,7 +9164,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr ret = ImGuiNative.igGetDrawListSharedData();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the font
         /// </summary>
@@ -9174,7 +9174,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImFont* ret = ImGuiNative.igGetFont();
             return new ImFontPtr(ret);
         }
-
+        
         /// <summary>
         ///     Gets the font size
         /// </summary>
@@ -9184,7 +9184,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetFontSize();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the font tex uv white pixel
         /// </summary>
@@ -9195,7 +9195,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetFontTexUvWhitePixel(&retval);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the foreground draw list
         /// </summary>
@@ -9205,7 +9205,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImDrawList* ret = ImGuiNative.igGetForegroundDrawList_Nil();
             return new ImDrawListPtr(ret);
         }
-
+        
         /// <summary>
         ///     Gets the foreground draw list using the specified viewport
         /// </summary>
@@ -9217,7 +9217,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImDrawList* ret = ImGuiNative.igGetForegroundDrawList_ViewportPtr(nativeViewport);
             return new ImDrawListPtr(ret);
         }
-
+        
         /// <summary>
         ///     Gets the frame count
         /// </summary>
@@ -9227,7 +9227,7 @@ namespace Alis.Extension.Graphic.ImGui
             int ret = ImGuiNative.igGetFrameCount();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the frame height
         /// </summary>
@@ -9237,7 +9237,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetFrameHeight();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the frame height with spacing
         /// </summary>
@@ -9247,7 +9247,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetFrameHeightWithSpacing();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the id using the specified str id
         /// </summary>
@@ -9269,7 +9269,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -9277,16 +9277,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             uint ret = ImGuiNative.igGetID_Str(nativeStrId);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the id using the specified ptr id
         /// </summary>
@@ -9298,7 +9298,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint ret = ImGuiNative.igGetID_Ptr(nativePtrId);
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the io
         /// </summary>
@@ -9308,7 +9308,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiIo* ret = ImGuiNative.igGetIO();
             return new ImGuiIoPtr(ret);
         }
-
+        
         /// <summary>
         ///     Gets the item rect max
         /// </summary>
@@ -9319,7 +9319,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetItemRectMax(&retval);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the item rect min
         /// </summary>
@@ -9330,7 +9330,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetItemRectMin(&retval);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the item rect size
         /// </summary>
@@ -9341,7 +9341,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetItemRectSize(&retval);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the key index using the specified key
         /// </summary>
@@ -9352,7 +9352,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiKey ret = ImGuiNative.igGetKeyIndex(key);
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the key name using the specified key
         /// </summary>
@@ -9363,7 +9363,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte* ret = ImGuiNative.igGetKeyName(key);
             return Util.StringFromPtr(ret);
         }
-
+        
         /// <summary>
         ///     Gets the key pressed amount using the specified key
         /// </summary>
@@ -9376,7 +9376,7 @@ namespace Alis.Extension.Graphic.ImGui
             int ret = ImGuiNative.igGetKeyPressedAmount(key, repeatDelay, rate);
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the main viewport
         /// </summary>
@@ -9386,7 +9386,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiViewport* ret = ImGuiNative.igGetMainViewport();
             return new ImGuiViewportPtr(ret);
         }
-
+        
         /// <summary>
         ///     Gets the mouse clicked count using the specified button
         /// </summary>
@@ -9397,7 +9397,7 @@ namespace Alis.Extension.Graphic.ImGui
             int ret = ImGuiNative.igGetMouseClickedCount(button);
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the mouse cursor
         /// </summary>
@@ -9407,7 +9407,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiMouseCursor ret = ImGuiNative.igGetMouseCursor();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the mouse drag delta
         /// </summary>
@@ -9420,7 +9420,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetMouseDragDelta(&retval, button, lockThreshold);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the mouse drag delta using the specified button
         /// </summary>
@@ -9433,7 +9433,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetMouseDragDelta(&retval, button, lockThreshold);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the mouse drag delta using the specified button
         /// </summary>
@@ -9446,7 +9446,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetMouseDragDelta(&retval, button, lockThreshold);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the mouse pos
         /// </summary>
@@ -9457,7 +9457,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetMousePos(&retval);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the mouse pos on opening current popup
         /// </summary>
@@ -9468,7 +9468,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetMousePosOnOpeningCurrentPopup(&retval);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the platform io
         /// </summary>
@@ -9478,7 +9478,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiPlatformIo* ret = ImGuiNative.igGetPlatformIO();
             return new ImGuiPlatformIoPtr(ret);
         }
-
+        
         /// <summary>
         ///     Gets the scroll max x
         /// </summary>
@@ -9488,7 +9488,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetScrollMaxX();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the scroll max y
         /// </summary>
@@ -9498,7 +9498,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetScrollMaxY();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the scroll x
         /// </summary>
@@ -9508,7 +9508,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetScrollX();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the scroll y
         /// </summary>
@@ -9518,19 +9518,19 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetScrollY();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the state storage
         /// </summary>
         /// <returns>The im gui storage ptr</returns>
         public static ImGuiStorage GetStateStorage() => ImGuiNative.igGetStateStorage();
-
+        
         /// <summary>
         ///     Gets the style
         /// </summary>
         /// <returns>The im gui style ptr</returns>
         public static ImGuiStyle GetStyle() => ImGuiNative.igGetStyle();
-
+        
         /// <summary>
         ///     Gets the style color name using the specified idx
         /// </summary>
@@ -9541,7 +9541,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte* ret = ImGuiNative.igGetStyleColorName(idx);
             return Util.StringFromPtr(ret);
         }
-
+        
         /// <summary>
         ///     Gets the style color vec 4 using the specified idx
         /// </summary>
@@ -9552,7 +9552,7 @@ namespace Alis.Extension.Graphic.ImGui
             Vector4* ret = ImGuiNative.igGetStyleColorVec4(idx);
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the text line height
         /// </summary>
@@ -9562,7 +9562,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetTextLineHeight();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the text line height with spacing
         /// </summary>
@@ -9572,7 +9572,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetTextLineHeightWithSpacing();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the time
         /// </summary>
@@ -9582,7 +9582,7 @@ namespace Alis.Extension.Graphic.ImGui
             double ret = ImGuiNative.igGetTime();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the tree node to label spacing
         /// </summary>
@@ -9592,7 +9592,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetTreeNodeToLabelSpacing();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the version
         /// </summary>
@@ -9602,7 +9602,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte* ret = ImGuiNative.igGetVersion();
             return Util.StringFromPtr(ret);
         }
-
+        
         /// <summary>
         ///     Gets the window content region max
         /// </summary>
@@ -9613,7 +9613,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetWindowContentRegionMax(&retval);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the window content region min
         /// </summary>
@@ -9624,7 +9624,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetWindowContentRegionMin(&retval);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the window dock id
         /// </summary>
@@ -9634,7 +9634,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint ret = ImGuiNative.igGetWindowDockID();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the window dpi scale
         /// </summary>
@@ -9644,7 +9644,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetWindowDpiScale();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the window draw list
         /// </summary>
@@ -9654,7 +9654,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImDrawList* ret = ImGuiNative.igGetWindowDrawList();
             return new ImDrawListPtr(ret);
         }
-
+        
         /// <summary>
         ///     Gets the window height
         /// </summary>
@@ -9664,7 +9664,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetWindowHeight();
             return ret;
         }
-
+        
         /// <summary>
         ///     Gets the window pos
         /// </summary>
@@ -9675,7 +9675,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetWindowPos(&retval);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the window size
         /// </summary>
@@ -9686,7 +9686,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igGetWindowSize(&retval);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the window viewport
         /// </summary>
@@ -9696,7 +9696,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiViewport* ret = ImGuiNative.igGetWindowViewport();
             return new ImGuiViewportPtr(ret);
         }
-
+        
         /// <summary>
         ///     Gets the window width
         /// </summary>
@@ -9706,7 +9706,7 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.igGetWindowWidth();
             return ret;
         }
-
+        
         /// <summary>
         ///     Images the user texture id
         /// </summary>
@@ -9720,7 +9720,7 @@ namespace Alis.Extension.Graphic.ImGui
             Vector4 borderCol = new Vector4();
             ImGuiNative.igImage(userTextureId, size, uv0, uv1, tintCol, borderCol);
         }
-
+        
         /// <summary>
         ///     Images the user texture id
         /// </summary>
@@ -9734,7 +9734,7 @@ namespace Alis.Extension.Graphic.ImGui
             Vector4 borderCol = new Vector4();
             ImGuiNative.igImage(userTextureId, size, uv0, uv1, tintCol, borderCol);
         }
-
+        
         /// <summary>
         ///     Images the user texture id
         /// </summary>
@@ -9748,7 +9748,7 @@ namespace Alis.Extension.Graphic.ImGui
             Vector4 borderCol = new Vector4();
             ImGuiNative.igImage(userTextureId, size, uv0, uv1, tintCol, borderCol);
         }
-
+        
         /// <summary>
         ///     Images the user texture id
         /// </summary>
@@ -9762,7 +9762,7 @@ namespace Alis.Extension.Graphic.ImGui
             Vector4 borderCol = new Vector4();
             ImGuiNative.igImage(userTextureId, size, uv0, uv1, tintCol, borderCol);
         }
-
+        
         /// <summary>
         ///     Images the user texture id
         /// </summary>
@@ -9776,7 +9776,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igImage(userTextureId, size, uv0, uv1, tintCol, borderCol);
         }
-
+        
         /// <summary>
         ///     Describes whether image button
         /// </summary>
@@ -9800,7 +9800,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -9808,7 +9808,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             Vector2 uv0 = new Vector2();
             Vector2 uv1 = new Vector2(1, 1);
             Vector4 bgCol = new Vector4();
@@ -9818,10 +9818,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether image button
         /// </summary>
@@ -9846,7 +9846,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -9854,7 +9854,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             Vector2 uv1 = new Vector2(1, 1);
             Vector4 bgCol = new Vector4();
             Vector4 tintCol = new Vector4(1, 1, 1, 1);
@@ -9863,10 +9863,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether image button
         /// </summary>
@@ -9892,7 +9892,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -9900,7 +9900,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             Vector4 bgCol = new Vector4();
             Vector4 tintCol = new Vector4(1, 1, 1, 1);
             byte ret = ImGuiNative.igImageButton(nativeStrId, userTextureId, size, uv0, uv1, bgCol, tintCol);
@@ -9908,10 +9908,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether image button
         /// </summary>
@@ -9938,7 +9938,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -9946,17 +9946,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             Vector4 tintCol = new Vector4(1, 1, 1, 1);
             byte ret = ImGuiNative.igImageButton(nativeStrId, userTextureId, size, uv0, uv1, bgCol, tintCol);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether image button
         /// </summary>
@@ -9984,7 +9984,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -9992,16 +9992,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             byte ret = ImGuiNative.igImageButton(nativeStrId, userTextureId, size, uv0, uv1, bgCol, tintCol);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Indents
         /// </summary>
@@ -10010,7 +10010,7 @@ namespace Alis.Extension.Graphic.ImGui
             float indentW = 0.0f;
             ImGuiNative.igIndent(indentW);
         }
-
+        
         /// <summary>
         ///     Indents the indent w
         /// </summary>
@@ -10019,7 +10019,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igIndent(indentW);
         }
-
+        
         /// <summary>
         ///     Describes whether input double
         /// </summary>
@@ -10042,7 +10042,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -10050,7 +10050,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             double step = 0.0;
             double stepFast = 0.0;
             byte* nativeFormat;
@@ -10065,7 +10065,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.6f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiInputTextFlags flags = 0;
@@ -10076,16 +10076,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input double
         /// </summary>
@@ -10109,7 +10109,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -10117,7 +10117,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             double stepFast = 0.0;
             byte* nativeFormat;
             int formatByteCount = 0;
@@ -10131,7 +10131,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.6f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiInputTextFlags flags = 0;
@@ -10142,16 +10142,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input double
         /// </summary>
@@ -10176,7 +10176,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -10184,7 +10184,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%.6f");
@@ -10197,7 +10197,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.6f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiInputTextFlags flags = 0;
@@ -10208,16 +10208,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input double
         /// </summary>
@@ -10243,7 +10243,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -10251,7 +10251,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -10266,7 +10266,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -10274,7 +10274,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiInputTextFlags flags = 0;
             fixed (double* nativeV = &v)
             {
@@ -10283,16 +10283,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input double
         /// </summary>
@@ -10319,7 +10319,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -10327,7 +10327,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -10342,7 +10342,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -10350,7 +10350,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (double* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputDouble(nativeLabel, nativeV, step, stepFast, nativeFormat, flags);
@@ -10358,16 +10358,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input float
         /// </summary>
@@ -10390,7 +10390,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -10398,7 +10398,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float step = 0.0f;
             float stepFast = 0.0f;
             byte* nativeFormat;
@@ -10413,7 +10413,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiInputTextFlags flags = 0;
@@ -10424,16 +10424,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input float
         /// </summary>
@@ -10457,7 +10457,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -10465,7 +10465,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float stepFast = 0.0f;
             byte* nativeFormat;
             int formatByteCount = 0;
@@ -10479,7 +10479,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiInputTextFlags flags = 0;
@@ -10490,16 +10490,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input float
         /// </summary>
@@ -10524,7 +10524,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -10532,7 +10532,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%.3f");
@@ -10545,7 +10545,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiInputTextFlags flags = 0;
@@ -10556,16 +10556,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input float
         /// </summary>
@@ -10591,7 +10591,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -10599,7 +10599,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -10614,7 +10614,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -10622,7 +10622,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiInputTextFlags flags = 0;
             fixed (float* nativeV = &v)
             {
@@ -10631,16 +10631,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input float
         /// </summary>
@@ -10667,7 +10667,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -10675,7 +10675,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -10690,7 +10690,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -10698,7 +10698,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (float* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputFloat(nativeLabel, nativeV, step, stepFast, nativeFormat, flags);
@@ -10706,16 +10706,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input float 2
         /// </summary>
@@ -10738,7 +10738,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -10746,7 +10746,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%.3f");
@@ -10759,7 +10759,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiInputTextFlags flags = 0;
@@ -10770,16 +10770,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input float 2
         /// </summary>
@@ -10803,7 +10803,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -10811,7 +10811,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -10826,7 +10826,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -10834,7 +10834,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiInputTextFlags flags = 0;
             fixed (Vector2* nativeV = &v)
             {
@@ -10843,16 +10843,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input float 2
         /// </summary>
@@ -10877,7 +10877,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -10885,7 +10885,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -10900,7 +10900,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -10908,7 +10908,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (Vector2* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputFloat2(nativeLabel, nativeV, nativeFormat, flags);
@@ -10916,16 +10916,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input float 3
         /// </summary>
@@ -10948,7 +10948,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -10956,7 +10956,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%.3f");
@@ -10969,7 +10969,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiInputTextFlags flags = 0;
@@ -10980,16 +10980,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input float 3
         /// </summary>
@@ -11013,7 +11013,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11021,7 +11021,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -11036,7 +11036,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -11044,7 +11044,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiInputTextFlags flags = 0;
             fixed (Vector3* nativeV = &v)
             {
@@ -11053,16 +11053,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input float 3
         /// </summary>
@@ -11087,7 +11087,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11095,7 +11095,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -11110,7 +11110,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -11118,7 +11118,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (Vector3* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputFloat3(nativeLabel, nativeV, nativeFormat, flags);
@@ -11126,16 +11126,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input float 4
         /// </summary>
@@ -11158,7 +11158,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11166,7 +11166,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%.3f");
@@ -11179,7 +11179,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiInputTextFlags flags = 0;
@@ -11190,16 +11190,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input float 4
         /// </summary>
@@ -11223,7 +11223,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11231,7 +11231,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -11246,7 +11246,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -11254,7 +11254,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiInputTextFlags flags = 0;
             fixed (Vector4* nativeV = &v)
             {
@@ -11263,16 +11263,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input float 4
         /// </summary>
@@ -11297,7 +11297,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11305,7 +11305,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -11320,7 +11320,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -11328,7 +11328,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (Vector4* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputFloat4(nativeLabel, nativeV, nativeFormat, flags);
@@ -11336,16 +11336,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input int
         /// </summary>
@@ -11368,7 +11368,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11376,7 +11376,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int step = 1;
             int stepFast = 100;
             ImGuiInputTextFlags flags = 0;
@@ -11387,11 +11387,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input int
         /// </summary>
@@ -11415,7 +11415,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11423,7 +11423,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int stepFast = 100;
             ImGuiInputTextFlags flags = 0;
             fixed (int* nativeV = &v)
@@ -11433,11 +11433,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input int
         /// </summary>
@@ -11462,7 +11462,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11470,7 +11470,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             ImGuiInputTextFlags flags = 0;
             fixed (int* nativeV = &v)
             {
@@ -11479,11 +11479,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input int
         /// </summary>
@@ -11509,7 +11509,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11517,7 +11517,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputInt(nativeLabel, nativeV, step, stepFast, flags);
@@ -11525,11 +11525,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input int 2
         /// </summary>
@@ -11552,7 +11552,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11560,7 +11560,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             ImGuiInputTextFlags flags = 0;
             fixed (int* nativeV = &v)
             {
@@ -11569,11 +11569,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input int 2
         /// </summary>
@@ -11597,7 +11597,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11605,7 +11605,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputInt2(nativeLabel, nativeV, flags);
@@ -11613,11 +11613,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input int 3
         /// </summary>
@@ -11640,7 +11640,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11648,7 +11648,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             ImGuiInputTextFlags flags = 0;
             fixed (int* nativeV = &v)
             {
@@ -11657,11 +11657,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input int 3
         /// </summary>
@@ -11685,7 +11685,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11693,7 +11693,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputInt3(nativeLabel, nativeV, flags);
@@ -11701,11 +11701,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input int 4
         /// </summary>
@@ -11728,7 +11728,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11736,7 +11736,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             ImGuiInputTextFlags flags = 0;
             fixed (int* nativeV = &v)
             {
@@ -11745,11 +11745,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input int 4
         /// </summary>
@@ -11773,7 +11773,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11781,7 +11781,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputInt4(nativeLabel, nativeV, flags);
@@ -11789,11 +11789,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether input scalar
         /// </summary>
@@ -11817,7 +11817,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11825,7 +11825,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr pStep = IntPtr.Zero;
             IntPtr pStepFast = IntPtr.Zero;
@@ -11836,10 +11836,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether input scalar
         /// </summary>
@@ -11864,7 +11864,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11872,7 +11872,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePStep = pStep;
             IntPtr pStepFast = IntPtr.Zero;
@@ -11883,10 +11883,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether input scalar
         /// </summary>
@@ -11912,7 +11912,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11920,7 +11920,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePStep = pStep;
             IntPtr nativePStepFast = pStepFast;
@@ -11931,10 +11931,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether input scalar
         /// </summary>
@@ -11961,7 +11961,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -11969,7 +11969,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePStep = pStep;
             IntPtr nativePStepFast = pStepFast;
@@ -11987,7 +11987,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -11995,22 +11995,22 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiInputTextFlags flags = 0;
             byte ret = ImGuiNative.igInputScalar(nativeLabel, dataType, nativePData, nativePStep, nativePStepFast, nativeFormat, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (formatByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFormat);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether input scalar
         /// </summary>
@@ -12038,7 +12038,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -12046,7 +12046,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePStep = pStep;
             IntPtr nativePStepFast = pStepFast;
@@ -12064,7 +12064,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -12072,21 +12072,21 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             byte ret = ImGuiNative.igInputScalar(nativeLabel, dataType, nativePData, nativePStep, nativePStepFast, nativeFormat, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (formatByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFormat);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether input scalar n
         /// </summary>
@@ -12111,7 +12111,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -12119,7 +12119,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr pStep = IntPtr.Zero;
             IntPtr pStepFast = IntPtr.Zero;
@@ -12130,10 +12130,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether input scalar n
         /// </summary>
@@ -12159,7 +12159,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -12167,7 +12167,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePStep = pStep;
             IntPtr pStepFast = IntPtr.Zero;
@@ -12178,10 +12178,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether input scalar n
         /// </summary>
@@ -12208,7 +12208,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -12216,7 +12216,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePStep = pStep;
             IntPtr nativePStepFast = pStepFast;
@@ -12227,10 +12227,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether input scalar n
         /// </summary>
@@ -12258,7 +12258,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -12266,7 +12266,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePStep = pStep;
             IntPtr nativePStepFast = pStepFast;
@@ -12284,7 +12284,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -12292,22 +12292,22 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiInputTextFlags flags = 0;
             byte ret = ImGuiNative.igInputScalarN(nativeLabel, dataType, nativePData, components, nativePStep, nativePStepFast, nativeFormat, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (formatByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFormat);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether input scalar n
         /// </summary>
@@ -12336,7 +12336,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -12344,7 +12344,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePStep = pStep;
             IntPtr nativePStepFast = pStepFast;
@@ -12362,7 +12362,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -12370,21 +12370,21 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             byte ret = ImGuiNative.igInputScalarN(nativeLabel, dataType, nativePData, components, nativePStep, nativePStepFast, nativeFormat, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (formatByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFormat);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether invisible button
         /// </summary>
@@ -12407,7 +12407,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -12415,17 +12415,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             ImGuiButtonFlags flags = 0;
             byte ret = ImGuiNative.igInvisibleButton(nativeStrId, size, flags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether invisible button
         /// </summary>
@@ -12449,7 +12449,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -12457,16 +12457,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             byte ret = ImGuiNative.igInvisibleButton(nativeStrId, size, flags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is any item active
         /// </summary>
@@ -12476,7 +12476,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsAnyItemActive();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is any item focused
         /// </summary>
@@ -12486,7 +12486,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsAnyItemFocused();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is any item hovered
         /// </summary>
@@ -12496,7 +12496,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsAnyItemHovered();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is any mouse down
         /// </summary>
@@ -12506,7 +12506,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsAnyMouseDown();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is item activated
         /// </summary>
@@ -12516,7 +12516,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsItemActivated();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is item active
         /// </summary>
@@ -12526,7 +12526,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsItemActive();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is item clicked
         /// </summary>
@@ -12537,7 +12537,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsItemClicked(mouseButton);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is item clicked
         /// </summary>
@@ -12548,7 +12548,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsItemClicked(mouseButton);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is item deactivated
         /// </summary>
@@ -12558,7 +12558,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsItemDeactivated();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is item deactivated after edit
         /// </summary>
@@ -12568,7 +12568,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsItemDeactivatedAfterEdit();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is item edited
         /// </summary>
@@ -12578,7 +12578,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsItemEdited();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is item focused
         /// </summary>
@@ -12588,7 +12588,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsItemFocused();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is item hovered
         /// </summary>
@@ -12599,7 +12599,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsItemHovered(flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is item hovered
         /// </summary>
@@ -12610,7 +12610,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsItemHovered(flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is item toggled open
         /// </summary>
@@ -12620,7 +12620,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsItemToggledOpen();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is item visible
         /// </summary>
@@ -12630,7 +12630,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsItemVisible();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is key down
         /// </summary>
@@ -12641,7 +12641,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsKeyDown_Nil(key);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is key pressed
         /// </summary>
@@ -12653,7 +12653,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsKeyPressed_Bool(key, repeat);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is key pressed
         /// </summary>
@@ -12666,7 +12666,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsKeyPressed_Bool(key, nativeRepeat);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is key released
         /// </summary>
@@ -12677,7 +12677,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsKeyReleased_Nil(key);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is mouse clicked
         /// </summary>
@@ -12689,7 +12689,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsMouseClicked_Bool(button, repeat);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is mouse clicked
         /// </summary>
@@ -12702,7 +12702,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsMouseClicked_Bool(button, nativeRepeat);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is mouse double clicked
         /// </summary>
@@ -12713,7 +12713,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsMouseDoubleClicked(button);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is mouse down
         /// </summary>
@@ -12724,7 +12724,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsMouseDown_Nil(button);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is mouse dragging
         /// </summary>
@@ -12736,7 +12736,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsMouseDragging(button, lockThreshold);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is mouse dragging
         /// </summary>
@@ -12748,7 +12748,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsMouseDragging(button, lockThreshold);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is mouse hovering rect
         /// </summary>
@@ -12761,7 +12761,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsMouseHoveringRect(rMin, rMax, clip);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is mouse hovering rect
         /// </summary>
@@ -12775,7 +12775,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsMouseHoveringRect(rMin, rMax, nativeClip);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is mouse pos valid
         /// </summary>
@@ -12786,7 +12786,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsMousePosValid(mousePos);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is mouse pos valid
         /// </summary>
@@ -12800,7 +12800,7 @@ namespace Alis.Extension.Graphic.ImGui
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether is mouse released
         /// </summary>
@@ -12811,7 +12811,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsMouseReleased_Nil(button);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is popup open
         /// </summary>
@@ -12833,7 +12833,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -12841,17 +12841,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             ImGuiPopupFlags flags = 0;
             byte ret = ImGuiNative.igIsPopupOpen_Str(nativeStrId, flags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is popup open
         /// </summary>
@@ -12874,7 +12874,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -12882,16 +12882,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             byte ret = ImGuiNative.igIsPopupOpen_Str(nativeStrId, flags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is rect visible
         /// </summary>
@@ -12902,7 +12902,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsRectVisible_Nil(size);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is rect visible
         /// </summary>
@@ -12914,7 +12914,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsRectVisible_Vec2(rectMin, rectMax);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is window appearing
         /// </summary>
@@ -12924,7 +12924,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsWindowAppearing();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is window collapsed
         /// </summary>
@@ -12934,7 +12934,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsWindowCollapsed();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is window docked
         /// </summary>
@@ -12944,7 +12944,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsWindowDocked();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is window focused
         /// </summary>
@@ -12955,7 +12955,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsWindowFocused(flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is window focused
         /// </summary>
@@ -12966,7 +12966,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsWindowFocused(flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is window hovered
         /// </summary>
@@ -12977,7 +12977,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsWindowHovered(flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is window hovered
         /// </summary>
@@ -12988,7 +12988,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igIsWindowHovered(flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Labels the text using the specified label
         /// </summary>
@@ -13010,7 +13010,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -13018,7 +13018,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFmt;
             int fmtByteCount = 0;
             if (fmt != null)
@@ -13033,7 +13033,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFmtStackBytes = stackalloc byte[fmtByteCount + 1];
                     nativeFmt = nativeFmtStackBytes;
                 }
-
+                
                 int nativeFmtOffset = Util.GetUtf8(fmt, nativeFmt, fmtByteCount);
                 nativeFmt[nativeFmtOffset] = 0;
             }
@@ -13041,19 +13041,19 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFmt = null;
             }
-
+            
             ImGuiNative.igLabelText(nativeLabel, nativeFmt);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (fmtByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFmt);
             }
         }
-
+        
         /// <summary>
         ///     Describes whether list box
         /// </summary>
@@ -13078,7 +13078,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -13086,7 +13086,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int* itemsByteCounts = stackalloc int[items.Length];
             int itemsByteCount = 0;
             for (int i = 0; i < items.Length; i++)
@@ -13095,7 +13095,7 @@ namespace Alis.Extension.Graphic.ImGui
                 itemsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
                 itemsByteCount += itemsByteCounts[i] + 1;
             }
-
+            
             byte* nativeItemsData = stackalloc byte[itemsByteCount];
             int offset = 0;
             for (int i = 0; i < items.Length; i++)
@@ -13108,7 +13108,7 @@ namespace Alis.Extension.Graphic.ImGui
                     offset += 1;
                 }
             }
-
+            
             byte** nativeItems = stackalloc byte*[items.Length];
             offset = 0;
             for (int i = 0; i < items.Length; i++)
@@ -13116,7 +13116,7 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeItems[i] = &nativeItemsData[offset];
                 offset += itemsByteCounts[i] + 1;
             }
-
+            
             int heightInItems = -1;
             fixed (int* nativeCurrentItem = &currentItem)
             {
@@ -13125,11 +13125,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether list box
         /// </summary>
@@ -13155,7 +13155,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -13163,7 +13163,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int* itemsByteCounts = stackalloc int[items.Length];
             int itemsByteCount = 0;
             for (int i = 0; i < items.Length; i++)
@@ -13172,7 +13172,7 @@ namespace Alis.Extension.Graphic.ImGui
                 itemsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
                 itemsByteCount += itemsByteCounts[i] + 1;
             }
-
+            
             byte* nativeItemsData = stackalloc byte[itemsByteCount];
             int offset = 0;
             for (int i = 0; i < items.Length; i++)
@@ -13185,7 +13185,7 @@ namespace Alis.Extension.Graphic.ImGui
                     offset += 1;
                 }
             }
-
+            
             byte** nativeItems = stackalloc byte*[items.Length];
             offset = 0;
             for (int i = 0; i < items.Length; i++)
@@ -13193,7 +13193,7 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeItems[i] = &nativeItemsData[offset];
                 offset += itemsByteCounts[i] + 1;
             }
-
+            
             fixed (int* nativeCurrentItem = &currentItem)
             {
                 byte ret = ImGuiNative.igListBox_Str_arr(nativeLabel, nativeCurrentItem, nativeItems, itemsCount, heightInItems);
@@ -13201,11 +13201,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Loads the ini settings from disk using the specified ini filename
         /// </summary>
@@ -13226,7 +13226,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeIniFilenameStackBytes = stackalloc byte[iniFilenameByteCount + 1];
                     nativeIniFilename = nativeIniFilenameStackBytes;
                 }
-
+                
                 int nativeIniFilenameOffset = Util.GetUtf8(iniFilename, nativeIniFilename, iniFilenameByteCount);
                 nativeIniFilename[nativeIniFilenameOffset] = 0;
             }
@@ -13234,14 +13234,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeIniFilename = null;
             }
-
+            
             ImGuiNative.igLoadIniSettingsFromDisk(nativeIniFilename);
             if (iniFilenameByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeIniFilename);
             }
         }
-
+        
         /// <summary>
         ///     Loads the ini settings from memory using the specified ini data
         /// </summary>
@@ -13262,7 +13262,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeIniDataStackBytes = stackalloc byte[iniDataByteCount + 1];
                     nativeIniData = nativeIniDataStackBytes;
                 }
-
+                
                 int nativeIniDataOffset = Util.GetUtf8(iniData, nativeIniData, iniDataByteCount);
                 nativeIniData[nativeIniDataOffset] = 0;
             }
@@ -13270,7 +13270,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeIniData = null;
             }
-
+            
             uint iniSize = 0;
             ImGuiNative.igLoadIniSettingsFromMemory(nativeIniData, iniSize);
             if (iniDataByteCount > Util.StackAllocationSizeLimit)
@@ -13278,7 +13278,7 @@ namespace Alis.Extension.Graphic.ImGui
                 Util.Free(nativeIniData);
             }
         }
-
+        
         /// <summary>
         ///     Loads the ini settings from memory using the specified ini data
         /// </summary>
@@ -13300,7 +13300,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeIniDataStackBytes = stackalloc byte[iniDataByteCount + 1];
                     nativeIniData = nativeIniDataStackBytes;
                 }
-
+                
                 int nativeIniDataOffset = Util.GetUtf8(iniData, nativeIniData, iniDataByteCount);
                 nativeIniData[nativeIniDataOffset] = 0;
             }
@@ -13308,14 +13308,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeIniData = null;
             }
-
+            
             ImGuiNative.igLoadIniSettingsFromMemory(nativeIniData, iniSize);
             if (iniDataByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeIniData);
             }
         }
-
+        
         /// <summary>
         ///     Logs the buttons
         /// </summary>
@@ -13323,7 +13323,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igLogButtons();
         }
-
+        
         /// <summary>
         ///     Logs the finish
         /// </summary>
@@ -13331,7 +13331,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igLogFinish();
         }
-
+        
         /// <summary>
         ///     Logs the text using the specified fmt
         /// </summary>
@@ -13352,7 +13352,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFmtStackBytes = stackalloc byte[fmtByteCount + 1];
                     nativeFmt = nativeFmtStackBytes;
                 }
-
+                
                 int nativeFmtOffset = Util.GetUtf8(fmt, nativeFmt, fmtByteCount);
                 nativeFmt[nativeFmtOffset] = 0;
             }
@@ -13360,14 +13360,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFmt = null;
             }
-
+            
             ImGuiNative.igLogText(nativeFmt);
             if (fmtByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFmt);
             }
         }
-
+        
         /// <summary>
         ///     Logs the to clipboard
         /// </summary>
@@ -13376,7 +13376,7 @@ namespace Alis.Extension.Graphic.ImGui
             int autoOpenDepth = -1;
             ImGuiNative.igLogToClipboard(autoOpenDepth);
         }
-
+        
         /// <summary>
         ///     Logs the to clipboard using the specified auto open depth
         /// </summary>
@@ -13385,7 +13385,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igLogToClipboard(autoOpenDepth);
         }
-
+        
         /// <summary>
         ///     Logs the to file
         /// </summary>
@@ -13395,7 +13395,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte* nativeFilename = null;
             ImGuiNative.igLogToFile(autoOpenDepth, nativeFilename);
         }
-
+        
         /// <summary>
         ///     Logs the to file using the specified auto open depth
         /// </summary>
@@ -13405,7 +13405,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte* nativeFilename = null;
             ImGuiNative.igLogToFile(autoOpenDepth, nativeFilename);
         }
-
+        
         /// <summary>
         ///     Logs the to file using the specified auto open depth
         /// </summary>
@@ -13427,7 +13427,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFilenameStackBytes = stackalloc byte[filenameByteCount + 1];
                     nativeFilename = nativeFilenameStackBytes;
                 }
-
+                
                 int nativeFilenameOffset = Util.GetUtf8(filename, nativeFilename, filenameByteCount);
                 nativeFilename[nativeFilenameOffset] = 0;
             }
@@ -13435,14 +13435,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFilename = null;
             }
-
+            
             ImGuiNative.igLogToFile(autoOpenDepth, nativeFilename);
             if (filenameByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFilename);
             }
         }
-
+        
         /// <summary>
         ///     Logs the to tty
         /// </summary>
@@ -13451,7 +13451,7 @@ namespace Alis.Extension.Graphic.ImGui
             int autoOpenDepth = -1;
             ImGuiNative.igLogToTTY(autoOpenDepth);
         }
-
+        
         /// <summary>
         ///     Logs the to tty using the specified auto open depth
         /// </summary>
@@ -13460,7 +13460,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igLogToTTY(autoOpenDepth);
         }
-
+        
         /// <summary>
         ///     Mems the alloc using the specified size
         /// </summary>
@@ -13471,7 +13471,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr ret = ImGuiNative.igMemAlloc(size);
             return ret;
         }
-
+        
         /// <summary>
         ///     Mems the free using the specified ptr
         /// </summary>
@@ -13481,7 +13481,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr nativePtr = ptr;
             ImGuiNative.igMemFree(nativePtr);
         }
-
+        
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
@@ -13503,7 +13503,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -13511,7 +13511,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeShortcut = null;
             byte selected = 0;
             byte enabled = 1;
@@ -13520,10 +13520,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
@@ -13546,7 +13546,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -13554,7 +13554,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeShortcut;
             int shortcutByteCount = 0;
             if (shortcut != null)
@@ -13569,7 +13569,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeShortcutStackBytes = stackalloc byte[shortcutByteCount + 1];
                     nativeShortcut = nativeShortcutStackBytes;
                 }
-
+                
                 int nativeShortcutOffset = Util.GetUtf8(shortcut, nativeShortcut, shortcutByteCount);
                 nativeShortcut[nativeShortcutOffset] = 0;
             }
@@ -13577,7 +13577,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeShortcut = null;
             }
-
+            
             byte selected = 0;
             byte enabled = 1;
             byte ret = ImGuiNative.igMenuItem_Bool(nativeLabel, nativeShortcut, selected, enabled);
@@ -13585,15 +13585,15 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (shortcutByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeShortcut);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
@@ -13617,7 +13617,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -13625,7 +13625,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeShortcut;
             int shortcutByteCount = 0;
             if (shortcut != null)
@@ -13640,7 +13640,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeShortcutStackBytes = stackalloc byte[shortcutByteCount + 1];
                     nativeShortcut = nativeShortcutStackBytes;
                 }
-
+                
                 int nativeShortcutOffset = Util.GetUtf8(shortcut, nativeShortcut, shortcutByteCount);
                 nativeShortcut[nativeShortcutOffset] = 0;
             }
@@ -13648,7 +13648,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeShortcut = null;
             }
-
+            
             byte nativeSelected = selected ? (byte) 1 : (byte) 0;
             byte enabled = 1;
             byte ret = ImGuiNative.igMenuItem_Bool(nativeLabel, nativeShortcut, nativeSelected, enabled);
@@ -13656,15 +13656,15 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (shortcutByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeShortcut);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
@@ -13689,7 +13689,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -13697,7 +13697,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeShortcut;
             int shortcutByteCount = 0;
             if (shortcut != null)
@@ -13712,7 +13712,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeShortcutStackBytes = stackalloc byte[shortcutByteCount + 1];
                     nativeShortcut = nativeShortcutStackBytes;
                 }
-
+                
                 int nativeShortcutOffset = Util.GetUtf8(shortcut, nativeShortcut, shortcutByteCount);
                 nativeShortcut[nativeShortcutOffset] = 0;
             }
@@ -13720,7 +13720,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeShortcut = null;
             }
-
+            
             byte nativeSelected = selected ? (byte) 1 : (byte) 0;
             byte nativeEnabled = enabled ? (byte) 1 : (byte) 0;
             byte ret = ImGuiNative.igMenuItem_Bool(nativeLabel, nativeShortcut, nativeSelected, nativeEnabled);
@@ -13728,15 +13728,15 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (shortcutByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeShortcut);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
@@ -13760,7 +13760,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -13768,7 +13768,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeShortcut;
             int shortcutByteCount = 0;
             if (shortcut != null)
@@ -13783,7 +13783,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeShortcutStackBytes = stackalloc byte[shortcutByteCount + 1];
                     nativeShortcut = nativeShortcutStackBytes;
                 }
-
+                
                 int nativeShortcutOffset = Util.GetUtf8(shortcut, nativeShortcut, shortcutByteCount);
                 nativeShortcut[nativeShortcutOffset] = 0;
             }
@@ -13791,7 +13791,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeShortcut = null;
             }
-
+            
             byte nativePSelectedVal = pSelected ? (byte) 1 : (byte) 0;
             byte* nativePSelected = &nativePSelectedVal;
             byte enabled = 1;
@@ -13800,16 +13800,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (shortcutByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeShortcut);
             }
-
+            
             pSelected = nativePSelectedVal != 0;
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
@@ -13834,7 +13834,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -13842,7 +13842,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeShortcut;
             int shortcutByteCount = 0;
             if (shortcut != null)
@@ -13857,7 +13857,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeShortcutStackBytes = stackalloc byte[shortcutByteCount + 1];
                     nativeShortcut = nativeShortcutStackBytes;
                 }
-
+                
                 int nativeShortcutOffset = Util.GetUtf8(shortcut, nativeShortcut, shortcutByteCount);
                 nativeShortcut[nativeShortcutOffset] = 0;
             }
@@ -13865,7 +13865,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeShortcut = null;
             }
-
+            
             byte nativePSelectedVal = pSelected ? (byte) 1 : (byte) 0;
             byte* nativePSelected = &nativePSelectedVal;
             byte nativeEnabled = enabled ? (byte) 1 : (byte) 0;
@@ -13874,16 +13874,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (shortcutByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeShortcut);
             }
-
+            
             pSelected = nativePSelectedVal != 0;
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     News the frame
         /// </summary>
@@ -13891,7 +13891,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igNewFrame();
         }
-
+        
         /// <summary>
         ///     News the line
         /// </summary>
@@ -13899,7 +13899,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igNewLine();
         }
-
+        
         /// <summary>
         ///     Nexts the column
         /// </summary>
@@ -13907,7 +13907,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igNextColumn();
         }
-
+        
         /// <summary>
         ///     Opens the popup using the specified str id
         /// </summary>
@@ -13928,7 +13928,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -13936,7 +13936,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             ImGuiPopupFlags popupFlags = 0;
             ImGuiNative.igOpenPopup_Str(nativeStrId, popupFlags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
@@ -13944,7 +13944,7 @@ namespace Alis.Extension.Graphic.ImGui
                 Util.Free(nativeStrId);
             }
         }
-
+        
         /// <summary>
         ///     Opens the popup using the specified str id
         /// </summary>
@@ -13966,7 +13966,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -13974,14 +13974,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             ImGuiNative.igOpenPopup_Str(nativeStrId, popupFlags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
         }
-
+        
         /// <summary>
         ///     Opens the popup using the specified id
         /// </summary>
@@ -13991,7 +13991,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiPopupFlags popupFlags = 0;
             ImGuiNative.igOpenPopup_ID(id, popupFlags);
         }
-
+        
         /// <summary>
         ///     Opens the popup using the specified id
         /// </summary>
@@ -14001,7 +14001,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igOpenPopup_ID(id, popupFlags);
         }
-
+        
         /// <summary>
         ///     Opens the popup on item click
         /// </summary>
@@ -14011,7 +14011,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiPopupFlags popupFlags = (ImGuiPopupFlags) 1;
             ImGuiNative.igOpenPopupOnItemClick(nativeStrId, popupFlags);
         }
-
+        
         /// <summary>
         ///     Opens the popup on item click using the specified str id
         /// </summary>
@@ -14032,7 +14032,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -14040,7 +14040,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             ImGuiPopupFlags popupFlags = (ImGuiPopupFlags) 1;
             ImGuiNative.igOpenPopupOnItemClick(nativeStrId, popupFlags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
@@ -14048,7 +14048,7 @@ namespace Alis.Extension.Graphic.ImGui
                 Util.Free(nativeStrId);
             }
         }
-
+        
         /// <summary>
         ///     Opens the popup on item click using the specified str id
         /// </summary>
@@ -14070,7 +14070,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -14078,14 +14078,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             ImGuiNative.igOpenPopupOnItemClick(nativeStrId, popupFlags);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
         }
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
@@ -14108,7 +14108,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -14116,7 +14116,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int valuesOffset = 0;
             byte* nativeOverlayText = null;
             float scaleMin = float.MaxValue;
@@ -14132,7 +14132,7 @@ namespace Alis.Extension.Graphic.ImGui
                 }
             }
         }
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
@@ -14156,7 +14156,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -14164,7 +14164,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeOverlayText = null;
             float scaleMin = float.MaxValue;
             float scaleMax = float.MaxValue;
@@ -14179,7 +14179,7 @@ namespace Alis.Extension.Graphic.ImGui
                 }
             }
         }
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
@@ -14204,7 +14204,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -14212,7 +14212,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeOverlayText;
             int overlayTextByteCount = 0;
             if (overlayText != null)
@@ -14227,7 +14227,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeOverlayTextStackBytes = stackalloc byte[overlayTextByteCount + 1];
                     nativeOverlayText = nativeOverlayTextStackBytes;
                 }
-
+                
                 int nativeOverlayTextOffset = Util.GetUtf8(overlayText, nativeOverlayText, overlayTextByteCount);
                 nativeOverlayText[nativeOverlayTextOffset] = 0;
             }
@@ -14235,7 +14235,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeOverlayText = null;
             }
-
+            
             float scaleMin = float.MaxValue;
             float scaleMax = float.MaxValue;
             Vector2 graphSize = new Vector2();
@@ -14247,14 +14247,14 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (overlayTextByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeOverlayText);
                 }
             }
         }
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
@@ -14280,7 +14280,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -14288,7 +14288,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeOverlayText;
             int overlayTextByteCount = 0;
             if (overlayText != null)
@@ -14303,7 +14303,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeOverlayTextStackBytes = stackalloc byte[overlayTextByteCount + 1];
                     nativeOverlayText = nativeOverlayTextStackBytes;
                 }
-
+                
                 int nativeOverlayTextOffset = Util.GetUtf8(overlayText, nativeOverlayText, overlayTextByteCount);
                 nativeOverlayText[nativeOverlayTextOffset] = 0;
             }
@@ -14311,7 +14311,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeOverlayText = null;
             }
-
+            
             float scaleMax = float.MaxValue;
             Vector2 graphSize = new Vector2();
             int stride = sizeof(float);
@@ -14322,14 +14322,14 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (overlayTextByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeOverlayText);
                 }
             }
         }
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
@@ -14356,7 +14356,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -14364,7 +14364,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeOverlayText;
             int overlayTextByteCount = 0;
             if (overlayText != null)
@@ -14379,7 +14379,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeOverlayTextStackBytes = stackalloc byte[overlayTextByteCount + 1];
                     nativeOverlayText = nativeOverlayTextStackBytes;
                 }
-
+                
                 int nativeOverlayTextOffset = Util.GetUtf8(overlayText, nativeOverlayText, overlayTextByteCount);
                 nativeOverlayText[nativeOverlayTextOffset] = 0;
             }
@@ -14387,7 +14387,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeOverlayText = null;
             }
-
+            
             Vector2 graphSize = new Vector2();
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -14397,14 +14397,14 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (overlayTextByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeOverlayText);
                 }
             }
         }
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
@@ -14432,7 +14432,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -14440,7 +14440,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeOverlayText;
             int overlayTextByteCount = 0;
             if (overlayText != null)
@@ -14455,7 +14455,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeOverlayTextStackBytes = stackalloc byte[overlayTextByteCount + 1];
                     nativeOverlayText = nativeOverlayTextStackBytes;
                 }
-
+                
                 int nativeOverlayTextOffset = Util.GetUtf8(overlayText, nativeOverlayText, overlayTextByteCount);
                 nativeOverlayText[nativeOverlayTextOffset] = 0;
             }
@@ -14463,7 +14463,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeOverlayText = null;
             }
-
+            
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
             {
@@ -14472,14 +14472,14 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (overlayTextByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeOverlayText);
                 }
             }
         }
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
@@ -14508,7 +14508,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -14516,7 +14516,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeOverlayText;
             int overlayTextByteCount = 0;
             if (overlayText != null)
@@ -14531,7 +14531,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeOverlayTextStackBytes = stackalloc byte[overlayTextByteCount + 1];
                     nativeOverlayText = nativeOverlayTextStackBytes;
                 }
-
+                
                 int nativeOverlayTextOffset = Util.GetUtf8(overlayText, nativeOverlayText, overlayTextByteCount);
                 nativeOverlayText[nativeOverlayTextOffset] = 0;
             }
@@ -14539,7 +14539,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeOverlayText = null;
             }
-
+            
             fixed (float* nativeValues = &values)
             {
                 ImGuiNative.igPlotHistogram_FloatPtr(nativeLabel, nativeValues, valuesCount, valuesOffset, nativeOverlayText, scaleMin, scaleMax, graphSize, stride);
@@ -14547,14 +14547,14 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (overlayTextByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeOverlayText);
                 }
             }
         }
-
+        
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
@@ -14577,7 +14577,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -14585,7 +14585,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             int valuesOffset = 0;
             byte* nativeOverlayText = null;
             float scaleMin = float.MaxValue;
@@ -14601,7 +14601,7 @@ namespace Alis.Extension.Graphic.ImGui
                 }
             }
         }
-
+        
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
@@ -14625,7 +14625,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -14633,7 +14633,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeOverlayText = null;
             float scaleMin = float.MaxValue;
             float scaleMax = float.MaxValue;
@@ -14648,7 +14648,7 @@ namespace Alis.Extension.Graphic.ImGui
                 }
             }
         }
-
+        
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
@@ -14673,7 +14673,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -14681,7 +14681,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeOverlayText;
             int overlayTextByteCount = 0;
             if (overlayText != null)
@@ -14696,7 +14696,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeOverlayTextStackBytes = stackalloc byte[overlayTextByteCount + 1];
                     nativeOverlayText = nativeOverlayTextStackBytes;
                 }
-
+                
                 int nativeOverlayTextOffset = Util.GetUtf8(overlayText, nativeOverlayText, overlayTextByteCount);
                 nativeOverlayText[nativeOverlayTextOffset] = 0;
             }
@@ -14704,7 +14704,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeOverlayText = null;
             }
-
+            
             float scaleMin = float.MaxValue;
             float scaleMax = float.MaxValue;
             Vector2 graphSize = new Vector2();
@@ -14716,14 +14716,14 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (overlayTextByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeOverlayText);
                 }
             }
         }
-
+        
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
@@ -14749,7 +14749,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -14757,7 +14757,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeOverlayText;
             int overlayTextByteCount = 0;
             if (overlayText != null)
@@ -14772,7 +14772,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeOverlayTextStackBytes = stackalloc byte[overlayTextByteCount + 1];
                     nativeOverlayText = nativeOverlayTextStackBytes;
                 }
-
+                
                 int nativeOverlayTextOffset = Util.GetUtf8(overlayText, nativeOverlayText, overlayTextByteCount);
                 nativeOverlayText[nativeOverlayTextOffset] = 0;
             }
@@ -14780,7 +14780,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeOverlayText = null;
             }
-
+            
             float scaleMax = float.MaxValue;
             Vector2 graphSize = new Vector2();
             int stride = sizeof(float);
@@ -14791,14 +14791,14 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (overlayTextByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeOverlayText);
                 }
             }
         }
-
+        
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
@@ -14825,7 +14825,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -14833,7 +14833,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeOverlayText;
             int overlayTextByteCount = 0;
             if (overlayText != null)
@@ -14848,7 +14848,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeOverlayTextStackBytes = stackalloc byte[overlayTextByteCount + 1];
                     nativeOverlayText = nativeOverlayTextStackBytes;
                 }
-
+                
                 int nativeOverlayTextOffset = Util.GetUtf8(overlayText, nativeOverlayText, overlayTextByteCount);
                 nativeOverlayText[nativeOverlayTextOffset] = 0;
             }
@@ -14856,7 +14856,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeOverlayText = null;
             }
-
+            
             Vector2 graphSize = new Vector2();
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -14866,14 +14866,14 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (overlayTextByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeOverlayText);
                 }
             }
         }
-
+        
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
@@ -14901,7 +14901,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -14909,7 +14909,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeOverlayText;
             int overlayTextByteCount = 0;
             if (overlayText != null)
@@ -14924,7 +14924,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeOverlayTextStackBytes = stackalloc byte[overlayTextByteCount + 1];
                     nativeOverlayText = nativeOverlayTextStackBytes;
                 }
-
+                
                 int nativeOverlayTextOffset = Util.GetUtf8(overlayText, nativeOverlayText, overlayTextByteCount);
                 nativeOverlayText[nativeOverlayTextOffset] = 0;
             }
@@ -14932,7 +14932,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeOverlayText = null;
             }
-
+            
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
             {
@@ -14941,14 +14941,14 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (overlayTextByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeOverlayText);
                 }
             }
         }
-
+        
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
@@ -14977,7 +14977,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -14985,7 +14985,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeOverlayText;
             int overlayTextByteCount = 0;
             if (overlayText != null)
@@ -15000,7 +15000,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeOverlayTextStackBytes = stackalloc byte[overlayTextByteCount + 1];
                     nativeOverlayText = nativeOverlayTextStackBytes;
                 }
-
+                
                 int nativeOverlayTextOffset = Util.GetUtf8(overlayText, nativeOverlayText, overlayTextByteCount);
                 nativeOverlayText[nativeOverlayTextOffset] = 0;
             }
@@ -15008,7 +15008,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeOverlayText = null;
             }
-
+            
             fixed (float* nativeValues = &values)
             {
                 ImGuiNative.igPlotLines_FloatPtr(nativeLabel, nativeValues, valuesCount, valuesOffset, nativeOverlayText, scaleMin, scaleMax, graphSize, stride);
@@ -15016,14 +15016,14 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (overlayTextByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeOverlayText);
                 }
             }
         }
-
+        
         /// <summary>
         ///     Pops the allow keyboard focus
         /// </summary>
@@ -15031,7 +15031,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igPopAllowKeyboardFocus();
         }
-
+        
         /// <summary>
         ///     Pops the button repeat
         /// </summary>
@@ -15039,7 +15039,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igPopButtonRepeat();
         }
-
+        
         /// <summary>
         ///     Pops the clip rect
         /// </summary>
@@ -15047,7 +15047,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igPopClipRect();
         }
-
+        
         /// <summary>
         ///     Pops the font
         /// </summary>
@@ -15055,7 +15055,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igPopFont();
         }
-
+        
         /// <summary>
         ///     Pops the id
         /// </summary>
@@ -15063,7 +15063,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igPopID();
         }
-
+        
         /// <summary>
         ///     Pops the item width
         /// </summary>
@@ -15071,7 +15071,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igPopItemWidth();
         }
-
+        
         /// <summary>
         ///     Pops the style color
         /// </summary>
@@ -15080,7 +15080,7 @@ namespace Alis.Extension.Graphic.ImGui
             int count = 1;
             ImGuiNative.igPopStyleColor(count);
         }
-
+        
         /// <summary>
         ///     Pops the style color using the specified count
         /// </summary>
@@ -15089,7 +15089,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igPopStyleColor(count);
         }
-
+        
         /// <summary>
         ///     Pops the style var
         /// </summary>
@@ -15098,7 +15098,7 @@ namespace Alis.Extension.Graphic.ImGui
             int count = 1;
             ImGuiNative.igPopStyleVar(count);
         }
-
+        
         /// <summary>
         ///     Pops the style var using the specified count
         /// </summary>
@@ -15107,7 +15107,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igPopStyleVar(count);
         }
-
+        
         /// <summary>
         ///     Pops the text wrap pos
         /// </summary>
@@ -15115,7 +15115,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igPopTextWrapPos();
         }
-
+        
         /// <summary>
         ///     Progresses the bar using the specified fraction
         /// </summary>
@@ -15126,7 +15126,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte* nativeOverlay = null;
             ImGuiNative.igProgressBar(fraction, sizeArg, nativeOverlay);
         }
-
+        
         /// <summary>
         ///     Progresses the bar using the specified fraction
         /// </summary>
@@ -15137,7 +15137,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte* nativeOverlay = null;
             ImGuiNative.igProgressBar(fraction, sizeArg, nativeOverlay);
         }
-
+        
         /// <summary>
         ///     Progresses the bar using the specified fraction
         /// </summary>
@@ -15160,7 +15160,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeOverlayStackBytes = stackalloc byte[overlayByteCount + 1];
                     nativeOverlay = nativeOverlayStackBytes;
                 }
-
+                
                 int nativeOverlayOffset = Util.GetUtf8(overlay, nativeOverlay, overlayByteCount);
                 nativeOverlay[nativeOverlayOffset] = 0;
             }
@@ -15168,14 +15168,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeOverlay = null;
             }
-
+            
             ImGuiNative.igProgressBar(fraction, sizeArg, nativeOverlay);
             if (overlayByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeOverlay);
             }
         }
-
+        
         /// <summary>
         ///     Pushes the allow keyboard focus using the specified allow keyboard focus
         /// </summary>
@@ -15185,7 +15185,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte nativeAllowKeyboardFocus = allowKeyboardFocus ? (byte) 1 : (byte) 0;
             ImGuiNative.igPushAllowKeyboardFocus(nativeAllowKeyboardFocus);
         }
-
+        
         /// <summary>
         ///     Pushes the button repeat using the specified repeat
         /// </summary>
@@ -15195,7 +15195,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte nativeRepeat = repeat ? (byte) 1 : (byte) 0;
             ImGuiNative.igPushButtonRepeat(nativeRepeat);
         }
-
+        
         /// <summary>
         ///     Pushes the clip rect using the specified clip rect min
         /// </summary>
@@ -15207,7 +15207,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte nativeIntersectWithCurrentClipRect = intersectWithCurrentClipRect ? (byte) 1 : (byte) 0;
             ImGuiNative.igPushClipRect(clipRectMin, clipRectMax, nativeIntersectWithCurrentClipRect);
         }
-
+        
         /// <summary>
         ///     Pushes the font using the specified font
         /// </summary>
@@ -15217,7 +15217,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImFont* nativeFont = font.NativePtr;
             ImGuiNative.igPushFont(nativeFont);
         }
-
+        
         /// <summary>
         ///     Pushes the id using the specified str id
         /// </summary>
@@ -15238,7 +15238,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -15246,14 +15246,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             ImGuiNative.igPushID_Str(nativeStrId);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
         }
-
+        
         /// <summary>
         ///     Pushes the id using the specified ptr id
         /// </summary>
@@ -15263,7 +15263,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr nativePtrId = ptrId;
             ImGuiNative.igPushID_Ptr(nativePtrId);
         }
-
+        
         /// <summary>
         ///     Pushes the id using the specified int id
         /// </summary>
@@ -15272,7 +15272,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igPushID_Int(intId);
         }
-
+        
         /// <summary>
         ///     Pushes the item width using the specified item width
         /// </summary>
@@ -15281,7 +15281,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igPushItemWidth(itemWidth);
         }
-
+        
         /// <summary>
         ///     Pushes the style color using the specified idx
         /// </summary>
@@ -15291,7 +15291,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igPushStyleColor_U32(idx, col);
         }
-
+        
         /// <summary>
         ///     Pushes the style color using the specified idx
         /// </summary>
@@ -15301,7 +15301,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igPushStyleColor_Vec4(idx, col);
         }
-
+        
         /// <summary>
         ///     Pushes the style var using the specified idx
         /// </summary>
@@ -15311,7 +15311,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igPushStyleVar_Float(idx, val);
         }
-
+        
         /// <summary>
         ///     Pushes the style var using the specified idx
         /// </summary>
@@ -15321,7 +15321,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igPushStyleVar_Vec2(idx, val);
         }
-
+        
         /// <summary>
         ///     Pushes the text wrap pos
         /// </summary>
@@ -15330,7 +15330,7 @@ namespace Alis.Extension.Graphic.ImGui
             float wrapLocalPosX = 0.0f;
             ImGuiNative.igPushTextWrapPos(wrapLocalPosX);
         }
-
+        
         /// <summary>
         ///     Pushes the text wrap pos using the specified wrap local pos x
         /// </summary>
@@ -15339,7 +15339,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igPushTextWrapPos(wrapLocalPosX);
         }
-
+        
         /// <summary>
         ///     Describes whether radio button
         /// </summary>
@@ -15362,7 +15362,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -15370,17 +15370,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte nativeActive = active ? (byte) 1 : (byte) 0;
             byte ret = ImGuiNative.igRadioButton_Bool(nativeLabel, nativeActive);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether radio button
         /// </summary>
@@ -15404,7 +15404,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -15412,7 +15412,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igRadioButton_IntPtr(nativeLabel, nativeV, vButton);
@@ -15420,11 +15420,11 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Renders
         /// </summary>
@@ -15432,7 +15432,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igRender();
         }
-
+        
         /// <summary>
         ///     Renders the platform windows default
         /// </summary>
@@ -15442,7 +15442,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr rendererRenderArg = IntPtr.Zero;
             ImGuiNative.igRenderPlatformWindowsDefault(platformRenderArg, rendererRenderArg);
         }
-
+        
         /// <summary>
         ///     Renders the platform windows default using the specified platform render arg
         /// </summary>
@@ -15453,7 +15453,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr rendererRenderArg = IntPtr.Zero;
             ImGuiNative.igRenderPlatformWindowsDefault(nativePlatformRenderArg, rendererRenderArg);
         }
-
+        
         /// <summary>
         ///     Renders the platform windows default using the specified platform render arg
         /// </summary>
@@ -15465,7 +15465,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr nativeRendererRenderArg = rendererRenderArg;
             ImGuiNative.igRenderPlatformWindowsDefault(nativePlatformRenderArg, nativeRendererRenderArg);
         }
-
+        
         /// <summary>
         ///     Resets the mouse drag delta
         /// </summary>
@@ -15474,7 +15474,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiMouseButton button = 0;
             ImGuiNative.igResetMouseDragDelta(button);
         }
-
+        
         /// <summary>
         ///     Resets the mouse drag delta using the specified button
         /// </summary>
@@ -15483,7 +15483,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igResetMouseDragDelta(button);
         }
-
+        
         /// <summary>
         ///     Sames the line
         /// </summary>
@@ -15493,7 +15493,7 @@ namespace Alis.Extension.Graphic.ImGui
             float spacing = -1.0f;
             ImGuiNative.igSameLine(offsetFromStartX, spacing);
         }
-
+        
         /// <summary>
         ///     Sames the line using the specified offset from start x
         /// </summary>
@@ -15503,7 +15503,7 @@ namespace Alis.Extension.Graphic.ImGui
             float spacing = -1.0f;
             ImGuiNative.igSameLine(offsetFromStartX, spacing);
         }
-
+        
         /// <summary>
         ///     Sames the line using the specified offset from start x
         /// </summary>
@@ -15513,7 +15513,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSameLine(offsetFromStartX, spacing);
         }
-
+        
         /// <summary>
         ///     Saves the ini settings to disk using the specified ini filename
         /// </summary>
@@ -15534,7 +15534,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeIniFilenameStackBytes = stackalloc byte[iniFilenameByteCount + 1];
                     nativeIniFilename = nativeIniFilenameStackBytes;
                 }
-
+                
                 int nativeIniFilenameOffset = Util.GetUtf8(iniFilename, nativeIniFilename, iniFilenameByteCount);
                 nativeIniFilename[nativeIniFilenameOffset] = 0;
             }
@@ -15542,14 +15542,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeIniFilename = null;
             }
-
+            
             ImGuiNative.igSaveIniSettingsToDisk(nativeIniFilename);
             if (iniFilenameByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeIniFilename);
             }
         }
-
+        
         /// <summary>
         ///     Saves the ini settings to memory
         /// </summary>
@@ -15560,7 +15560,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte* ret = ImGuiNative.igSaveIniSettingsToMemory(outIniSize);
             return Util.StringFromPtr(ret);
         }
-
+        
         /// <summary>
         ///     Saves the ini settings to memory using the specified out ini size
         /// </summary>
@@ -15574,7 +15574,7 @@ namespace Alis.Extension.Graphic.ImGui
                 return Util.StringFromPtr(ret);
             }
         }
-
+        
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
@@ -15596,7 +15596,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -15604,7 +15604,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte selected = 0;
             ImGuiSelectableFlags flags = 0;
             Vector2 size = new Vector2();
@@ -15613,10 +15613,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
@@ -15639,7 +15639,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -15647,7 +15647,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte nativeSelected = selected ? (byte) 1 : (byte) 0;
             ImGuiSelectableFlags flags = 0;
             Vector2 size = new Vector2();
@@ -15656,10 +15656,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
@@ -15683,7 +15683,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -15691,7 +15691,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte nativeSelected = selected ? (byte) 1 : (byte) 0;
             Vector2 size = new Vector2();
             byte ret = ImGuiNative.igSelectable_Bool(nativeLabel, nativeSelected, flags, size);
@@ -15699,10 +15699,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
@@ -15727,7 +15727,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -15735,17 +15735,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte nativeSelected = selected ? (byte) 1 : (byte) 0;
             byte ret = ImGuiNative.igSelectable_Bool(nativeLabel, nativeSelected, flags, size);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
@@ -15768,7 +15768,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -15776,7 +15776,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte nativePSelectedVal = pSelected ? (byte) 1 : (byte) 0;
             byte* nativePSelected = &nativePSelectedVal;
             ImGuiSelectableFlags flags = 0;
@@ -15786,11 +15786,11 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             pSelected = nativePSelectedVal != 0;
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
@@ -15814,7 +15814,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -15822,7 +15822,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte nativePSelectedVal = pSelected ? (byte) 1 : (byte) 0;
             byte* nativePSelected = &nativePSelectedVal;
             Vector2 size = new Vector2();
@@ -15831,11 +15831,11 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             pSelected = nativePSelectedVal != 0;
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
@@ -15860,7 +15860,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -15868,7 +15868,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte nativePSelectedVal = pSelected ? (byte) 1 : (byte) 0;
             byte* nativePSelected = &nativePSelectedVal;
             byte ret = ImGuiNative.igSelectable_BoolPtr(nativeLabel, nativePSelected, flags, size);
@@ -15876,11 +15876,11 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             pSelected = nativePSelectedVal != 0;
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Separators
         /// </summary>
@@ -15888,7 +15888,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSeparator();
         }
-
+        
         /// <summary>
         ///     Sets the allocator functions using the specified alloc func
         /// </summary>
@@ -15899,7 +15899,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr userData = IntPtr.Zero;
             ImGuiNative.igSetAllocatorFunctions(allocFunc, freeFunc, userData);
         }
-
+        
         /// <summary>
         ///     Sets the allocator functions using the specified alloc func
         /// </summary>
@@ -15911,7 +15911,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr nativeUserData = userData;
             ImGuiNative.igSetAllocatorFunctions(allocFunc, freeFunc, nativeUserData);
         }
-
+        
         /// <summary>
         ///     Sets the clipboard text using the specified text
         /// </summary>
@@ -15932,7 +15932,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeTextStackBytes = stackalloc byte[textByteCount + 1];
                     nativeText = nativeTextStackBytes;
                 }
-
+                
                 int nativeTextOffset = Util.GetUtf8(text, nativeText, textByteCount);
                 nativeText[nativeTextOffset] = 0;
             }
@@ -15940,14 +15940,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeText = null;
             }
-
+            
             ImGuiNative.igSetClipboardText(nativeText);
             if (textByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeText);
             }
         }
-
+        
         /// <summary>
         ///     Sets the color edit options using the specified flags
         /// </summary>
@@ -15956,7 +15956,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetColorEditOptions(flags);
         }
-
+        
         /// <summary>
         ///     Sets the column offset using the specified column index
         /// </summary>
@@ -15966,7 +15966,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetColumnOffset(columnIndex, offsetX);
         }
-
+        
         /// <summary>
         ///     Sets the column width using the specified column index
         /// </summary>
@@ -15976,7 +15976,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetColumnWidth(columnIndex, width);
         }
-
+        
         /// <summary>
         ///     Sets the current context using the specified ctx
         /// </summary>
@@ -15985,7 +15985,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetCurrentContext(ctx);
         }
-
+        
         /// <summary>
         ///     Sets the cursor pos using the specified local pos
         /// </summary>
@@ -15994,7 +15994,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetCursorPos(localPos);
         }
-
+        
         /// <summary>
         ///     Sets the cursor pos x using the specified local x
         /// </summary>
@@ -16003,7 +16003,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetCursorPosX(localX);
         }
-
+        
         /// <summary>
         ///     Sets the cursor pos y using the specified local y
         /// </summary>
@@ -16012,7 +16012,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetCursorPosY(localY);
         }
-
+        
         /// <summary>
         ///     Sets the cursor screen pos using the specified pos
         /// </summary>
@@ -16021,7 +16021,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetCursorScreenPos(pos);
         }
-
+        
         /// <summary>
         ///     Describes whether set drag drop payload
         /// </summary>
@@ -16045,7 +16045,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeTypeStackBytes = stackalloc byte[typeByteCount + 1];
                     nativeType = nativeTypeStackBytes;
                 }
-
+                
                 int nativeTypeOffset = Util.GetUtf8(type, nativeType, typeByteCount);
                 nativeType[nativeTypeOffset] = 0;
             }
@@ -16053,7 +16053,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeType = null;
             }
-
+            
             IntPtr nativeData = data;
             ImGuiCond cond = 0;
             byte ret = ImGuiNative.igSetDragDropPayload(nativeType, nativeData, sz, cond);
@@ -16061,10 +16061,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeType);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether set drag drop payload
         /// </summary>
@@ -16089,7 +16089,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeTypeStackBytes = stackalloc byte[typeByteCount + 1];
                     nativeType = nativeTypeStackBytes;
                 }
-
+                
                 int nativeTypeOffset = Util.GetUtf8(type, nativeType, typeByteCount);
                 nativeType[nativeTypeOffset] = 0;
             }
@@ -16097,17 +16097,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeType = null;
             }
-
+            
             IntPtr nativeData = data;
             byte ret = ImGuiNative.igSetDragDropPayload(nativeType, nativeData, sz, cond);
             if (typeByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeType);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Sets the item allow overlap
         /// </summary>
@@ -16115,7 +16115,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetItemAllowOverlap();
         }
-
+        
         /// <summary>
         ///     Sets the item default focus
         /// </summary>
@@ -16123,7 +16123,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetItemDefaultFocus();
         }
-
+        
         /// <summary>
         ///     Sets the keyboard focus here
         /// </summary>
@@ -16132,7 +16132,7 @@ namespace Alis.Extension.Graphic.ImGui
             int offset = 0;
             ImGuiNative.igSetKeyboardFocusHere(offset);
         }
-
+        
         /// <summary>
         ///     Sets the keyboard focus here using the specified offset
         /// </summary>
@@ -16141,7 +16141,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetKeyboardFocusHere(offset);
         }
-
+        
         /// <summary>
         ///     Sets the mouse cursor using the specified cursor type
         /// </summary>
@@ -16150,7 +16150,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetMouseCursor(cursorType);
         }
-
+        
         /// <summary>
         ///     Sets the next frame want capture keyboard using the specified want capture keyboard
         /// </summary>
@@ -16160,7 +16160,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte nativeWantCaptureKeyboard = wantCaptureKeyboard ? (byte) 1 : (byte) 0;
             ImGuiNative.igSetNextFrameWantCaptureKeyboard(nativeWantCaptureKeyboard);
         }
-
+        
         /// <summary>
         ///     Sets the next frame want capture mouse using the specified want capture mouse
         /// </summary>
@@ -16170,7 +16170,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte nativeWantCaptureMouse = wantCaptureMouse ? (byte) 1 : (byte) 0;
             ImGuiNative.igSetNextFrameWantCaptureMouse(nativeWantCaptureMouse);
         }
-
+        
         /// <summary>
         ///     Sets the next item open using the specified is open
         /// </summary>
@@ -16181,7 +16181,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiCond cond = 0;
             ImGuiNative.igSetNextItemOpen(nativeIsOpen, cond);
         }
-
+        
         /// <summary>
         ///     Sets the next item open using the specified is open
         /// </summary>
@@ -16192,7 +16192,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte nativeIsOpen = isOpen ? (byte) 1 : (byte) 0;
             ImGuiNative.igSetNextItemOpen(nativeIsOpen, cond);
         }
-
+        
         /// <summary>
         ///     Sets the next item width using the specified item width
         /// </summary>
@@ -16201,7 +16201,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetNextItemWidth(itemWidth);
         }
-
+        
         /// <summary>
         ///     Sets the next window bg alpha using the specified alpha
         /// </summary>
@@ -16210,7 +16210,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetNextWindowBgAlpha(alpha);
         }
-
+        
         /// <summary>
         ///     Sets the next window using the specified window class
         /// </summary>
@@ -16219,7 +16219,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetNextWindowClass(windowClass);
         }
-
+        
         /// <summary>
         ///     Sets the next window collapsed using the specified collapsed
         /// </summary>
@@ -16230,7 +16230,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiCond cond = 0;
             ImGuiNative.igSetNextWindowCollapsed(nativeCollapsed, cond);
         }
-
+        
         /// <summary>
         ///     Sets the next window collapsed using the specified collapsed
         /// </summary>
@@ -16241,7 +16241,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte nativeCollapsed = collapsed ? (byte) 1 : (byte) 0;
             ImGuiNative.igSetNextWindowCollapsed(nativeCollapsed, cond);
         }
-
+        
         /// <summary>
         ///     Sets the next window content size using the specified size
         /// </summary>
@@ -16250,7 +16250,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetNextWindowContentSize(size);
         }
-
+        
         /// <summary>
         ///     Sets the next window dock id using the specified dock id
         /// </summary>
@@ -16260,7 +16260,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiCond cond = 0;
             ImGuiNative.igSetNextWindowDockID(dockId, cond);
         }
-
+        
         /// <summary>
         ///     Sets the next window dock id using the specified dock id
         /// </summary>
@@ -16270,7 +16270,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetNextWindowDockID(dockId, cond);
         }
-
+        
         /// <summary>
         ///     Sets the next window focus
         /// </summary>
@@ -16278,7 +16278,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetNextWindowFocus();
         }
-
+        
         /// <summary>
         ///     Sets the next window pos using the specified pos
         /// </summary>
@@ -16289,7 +16289,7 @@ namespace Alis.Extension.Graphic.ImGui
             Vector2 pivot = new Vector2();
             ImGuiNative.igSetNextWindowPos(pos, cond, pivot);
         }
-
+        
         /// <summary>
         ///     Sets the next window pos using the specified pos
         /// </summary>
@@ -16300,7 +16300,7 @@ namespace Alis.Extension.Graphic.ImGui
             Vector2 pivot = new Vector2();
             ImGuiNative.igSetNextWindowPos(pos, cond, pivot);
         }
-
+        
         /// <summary>
         ///     Sets the next window pos using the specified pos
         /// </summary>
@@ -16311,7 +16311,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetNextWindowPos(pos, cond, pivot);
         }
-
+        
         /// <summary>
         ///     Sets the next window scroll using the specified scroll
         /// </summary>
@@ -16320,7 +16320,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetNextWindowScroll(scroll);
         }
-
+        
         /// <summary>
         ///     Sets the next window size using the specified size
         /// </summary>
@@ -16330,7 +16330,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiCond cond = 0;
             ImGuiNative.igSetNextWindowSize(size, cond);
         }
-
+        
         /// <summary>
         ///     Sets the next window size using the specified size
         /// </summary>
@@ -16340,7 +16340,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetNextWindowSize(size, cond);
         }
-
+        
         /// <summary>
         ///     Sets the next window size constraints using the specified size min
         /// </summary>
@@ -16352,7 +16352,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr customCallbackData = IntPtr.Zero;
             ImGuiNative.igSetNextWindowSizeConstraints(sizeMin, sizeMax, customCallback, customCallbackData);
         }
-
+        
         /// <summary>
         ///     Sets the next window size constraints using the specified size min
         /// </summary>
@@ -16364,7 +16364,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr customCallbackData = IntPtr.Zero;
             ImGuiNative.igSetNextWindowSizeConstraints(sizeMin, sizeMax, customCallback, customCallbackData);
         }
-
+        
         /// <summary>
         ///     Sets the next window size constraints using the specified size min
         /// </summary>
@@ -16377,7 +16377,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr nativeCustomCallbackData = customCallbackData;
             ImGuiNative.igSetNextWindowSizeConstraints(sizeMin, sizeMax, customCallback, nativeCustomCallbackData);
         }
-
+        
         /// <summary>
         ///     Sets the next window viewport using the specified viewport id
         /// </summary>
@@ -16386,7 +16386,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetNextWindowViewport(viewportId);
         }
-
+        
         /// <summary>
         ///     Sets the scroll from pos x using the specified local x
         /// </summary>
@@ -16396,7 +16396,7 @@ namespace Alis.Extension.Graphic.ImGui
             float centerXRatio = 0.5f;
             ImGuiNative.igSetScrollFromPosX_Float(localX, centerXRatio);
         }
-
+        
         /// <summary>
         ///     Sets the scroll from pos x using the specified local x
         /// </summary>
@@ -16406,7 +16406,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetScrollFromPosX_Float(localX, centerXRatio);
         }
-
+        
         /// <summary>
         ///     Sets the scroll from pos y using the specified local y
         /// </summary>
@@ -16416,7 +16416,7 @@ namespace Alis.Extension.Graphic.ImGui
             float centerYRatio = 0.5f;
             ImGuiNative.igSetScrollFromPosY_Float(localY, centerYRatio);
         }
-
+        
         /// <summary>
         ///     Sets the scroll from pos y using the specified local y
         /// </summary>
@@ -16426,7 +16426,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetScrollFromPosY_Float(localY, centerYRatio);
         }
-
+        
         /// <summary>
         ///     Sets the scroll here x
         /// </summary>
@@ -16435,7 +16435,7 @@ namespace Alis.Extension.Graphic.ImGui
             float centerXRatio = 0.5f;
             ImGuiNative.igSetScrollHereX(centerXRatio);
         }
-
+        
         /// <summary>
         ///     Sets the scroll here x using the specified center x ratio
         /// </summary>
@@ -16444,7 +16444,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetScrollHereX(centerXRatio);
         }
-
+        
         /// <summary>
         ///     Sets the scroll here y
         /// </summary>
@@ -16453,7 +16453,7 @@ namespace Alis.Extension.Graphic.ImGui
             float centerYRatio = 0.5f;
             ImGuiNative.igSetScrollHereY(centerYRatio);
         }
-
+        
         /// <summary>
         ///     Sets the scroll here y using the specified center y ratio
         /// </summary>
@@ -16462,7 +16462,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetScrollHereY(centerYRatio);
         }
-
+        
         /// <summary>
         ///     Sets the scroll x using the specified scroll x
         /// </summary>
@@ -16471,7 +16471,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetScrollX_Float(scrollX);
         }
-
+        
         /// <summary>
         ///     Sets the scroll y using the specified scroll y
         /// </summary>
@@ -16480,7 +16480,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetScrollY_Float(scrollY);
         }
-
+        
         /// <summary>
         ///     Sets the state storage using the specified storage
         /// </summary>
@@ -16489,7 +16489,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetStateStorage(storage);
         }
-
+        
         /// <summary>
         ///     Sets the tab item closed using the specified tab or docked window label
         /// </summary>
@@ -16510,7 +16510,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeTabOrDockedWindowLabelStackBytes = stackalloc byte[tabOrDockedWindowLabelByteCount + 1];
                     nativeTabOrDockedWindowLabel = nativeTabOrDockedWindowLabelStackBytes;
                 }
-
+                
                 int nativeTabOrDockedWindowLabelOffset = Util.GetUtf8(tabOrDockedWindowLabel, nativeTabOrDockedWindowLabel, tabOrDockedWindowLabelByteCount);
                 nativeTabOrDockedWindowLabel[nativeTabOrDockedWindowLabelOffset] = 0;
             }
@@ -16518,14 +16518,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeTabOrDockedWindowLabel = null;
             }
-
+            
             ImGuiNative.igSetTabItemClosed(nativeTabOrDockedWindowLabel);
             if (tabOrDockedWindowLabelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeTabOrDockedWindowLabel);
             }
         }
-
+        
         /// <summary>
         ///     Sets the tooltip using the specified fmt
         /// </summary>
@@ -16546,7 +16546,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFmtStackBytes = stackalloc byte[fmtByteCount + 1];
                     nativeFmt = nativeFmtStackBytes;
                 }
-
+                
                 int nativeFmtOffset = Util.GetUtf8(fmt, nativeFmt, fmtByteCount);
                 nativeFmt[nativeFmtOffset] = 0;
             }
@@ -16554,14 +16554,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFmt = null;
             }
-
+            
             ImGuiNative.igSetTooltip(nativeFmt);
             if (fmtByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFmt);
             }
         }
-
+        
         /// <summary>
         ///     Sets the window collapsed using the specified collapsed
         /// </summary>
@@ -16572,7 +16572,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiCond cond = 0;
             ImGuiNative.igSetWindowCollapsed_Bool(nativeCollapsed, cond);
         }
-
+        
         /// <summary>
         ///     Sets the window collapsed using the specified collapsed
         /// </summary>
@@ -16583,7 +16583,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte nativeCollapsed = collapsed ? (byte) 1 : (byte) 0;
             ImGuiNative.igSetWindowCollapsed_Bool(nativeCollapsed, cond);
         }
-
+        
         /// <summary>
         ///     Sets the window collapsed using the specified name
         /// </summary>
@@ -16605,7 +16605,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
                     nativeName = nativeNameStackBytes;
                 }
-
+                
                 int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
                 nativeName[nativeNameOffset] = 0;
             }
@@ -16613,7 +16613,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeName = null;
             }
-
+            
             byte nativeCollapsed = collapsed ? (byte) 1 : (byte) 0;
             ImGuiCond cond = 0;
             ImGuiNative.igSetWindowCollapsed_Str(nativeName, nativeCollapsed, cond);
@@ -16622,7 +16622,7 @@ namespace Alis.Extension.Graphic.ImGui
                 Util.Free(nativeName);
             }
         }
-
+        
         /// <summary>
         ///     Sets the window collapsed using the specified name
         /// </summary>
@@ -16645,7 +16645,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
                     nativeName = nativeNameStackBytes;
                 }
-
+                
                 int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
                 nativeName[nativeNameOffset] = 0;
             }
@@ -16653,7 +16653,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeName = null;
             }
-
+            
             byte nativeCollapsed = collapsed ? (byte) 1 : (byte) 0;
             ImGuiNative.igSetWindowCollapsed_Str(nativeName, nativeCollapsed, cond);
             if (nameByteCount > Util.StackAllocationSizeLimit)
@@ -16661,7 +16661,7 @@ namespace Alis.Extension.Graphic.ImGui
                 Util.Free(nativeName);
             }
         }
-
+        
         /// <summary>
         ///     Sets the window focus
         /// </summary>
@@ -16669,7 +16669,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetWindowFocus_Nil();
         }
-
+        
         /// <summary>
         ///     Sets the window focus using the specified name
         /// </summary>
@@ -16690,7 +16690,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
                     nativeName = nativeNameStackBytes;
                 }
-
+                
                 int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
                 nativeName[nativeNameOffset] = 0;
             }
@@ -16698,14 +16698,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeName = null;
             }
-
+            
             ImGuiNative.igSetWindowFocus_Str(nativeName);
             if (nameByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeName);
             }
         }
-
+        
         /// <summary>
         ///     Sets the window font scale using the specified scale
         /// </summary>
@@ -16714,7 +16714,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetWindowFontScale(scale);
         }
-
+        
         /// <summary>
         ///     Sets the window pos using the specified pos
         /// </summary>
@@ -16724,7 +16724,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiCond cond = 0;
             ImGuiNative.igSetWindowPos_Vec2(pos, cond);
         }
-
+        
         /// <summary>
         ///     Sets the window pos using the specified pos
         /// </summary>
@@ -16734,7 +16734,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetWindowPos_Vec2(pos, cond);
         }
-
+        
         /// <summary>
         ///     Sets the window pos using the specified name
         /// </summary>
@@ -16756,7 +16756,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
                     nativeName = nativeNameStackBytes;
                 }
-
+                
                 int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
                 nativeName[nativeNameOffset] = 0;
             }
@@ -16764,7 +16764,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeName = null;
             }
-
+            
             ImGuiCond cond = 0;
             ImGuiNative.igSetWindowPos_Str(nativeName, pos, cond);
             if (nameByteCount > Util.StackAllocationSizeLimit)
@@ -16772,7 +16772,7 @@ namespace Alis.Extension.Graphic.ImGui
                 Util.Free(nativeName);
             }
         }
-
+        
         /// <summary>
         ///     Sets the window pos using the specified name
         /// </summary>
@@ -16795,7 +16795,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
                     nativeName = nativeNameStackBytes;
                 }
-
+                
                 int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
                 nativeName[nativeNameOffset] = 0;
             }
@@ -16803,14 +16803,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeName = null;
             }
-
+            
             ImGuiNative.igSetWindowPos_Str(nativeName, pos, cond);
             if (nameByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeName);
             }
         }
-
+        
         /// <summary>
         ///     Sets the window size using the specified size
         /// </summary>
@@ -16820,7 +16820,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiCond cond = 0;
             ImGuiNative.igSetWindowSize_Vec2(size, cond);
         }
-
+        
         /// <summary>
         ///     Sets the window size using the specified size
         /// </summary>
@@ -16830,7 +16830,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSetWindowSize_Vec2(size, cond);
         }
-
+        
         /// <summary>
         ///     Sets the window size using the specified name
         /// </summary>
@@ -16852,7 +16852,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
                     nativeName = nativeNameStackBytes;
                 }
-
+                
                 int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
                 nativeName[nativeNameOffset] = 0;
             }
@@ -16860,7 +16860,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeName = null;
             }
-
+            
             ImGuiCond cond = 0;
             ImGuiNative.igSetWindowSize_Str(nativeName, size, cond);
             if (nameByteCount > Util.StackAllocationSizeLimit)
@@ -16868,7 +16868,7 @@ namespace Alis.Extension.Graphic.ImGui
                 Util.Free(nativeName);
             }
         }
-
+        
         /// <summary>
         ///     Sets the window size using the specified name
         /// </summary>
@@ -16891,7 +16891,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
                     nativeName = nativeNameStackBytes;
                 }
-
+                
                 int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
                 nativeName[nativeNameOffset] = 0;
             }
@@ -16899,14 +16899,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeName = null;
             }
-
+            
             ImGuiNative.igSetWindowSize_Str(nativeName, size, cond);
             if (nameByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeName);
             }
         }
-
+        
         /// <summary>
         ///     Shows the about window
         /// </summary>
@@ -16915,7 +16915,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte* pOpen = null;
             ImGuiNative.igShowAboutWindow(pOpen);
         }
-
+        
         /// <summary>
         ///     Shows the about window using the specified p open
         /// </summary>
@@ -16927,7 +16927,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igShowAboutWindow(nativePOpen);
             pOpen = nativePOpenVal != 0;
         }
-
+        
         /// <summary>
         ///     Shows the debug log window
         /// </summary>
@@ -16936,7 +16936,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte* pOpen = null;
             ImGuiNative.igShowDebugLogWindow(pOpen);
         }
-
+        
         /// <summary>
         ///     Shows the debug log window using the specified p open
         /// </summary>
@@ -16948,7 +16948,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igShowDebugLogWindow(nativePOpen);
             pOpen = nativePOpenVal != 0;
         }
-
+        
         /// <summary>
         ///     Shows the demo window
         /// </summary>
@@ -16957,7 +16957,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte* pOpen = null;
             ImGuiNative.igShowDemoWindow(pOpen);
         }
-
+        
         /// <summary>
         ///     Shows the demo window using the specified p open
         /// </summary>
@@ -16969,7 +16969,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igShowDemoWindow(nativePOpen);
             pOpen = nativePOpenVal != 0;
         }
-
+        
         /// <summary>
         ///     Shows the font selector using the specified label
         /// </summary>
@@ -16990,7 +16990,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -16998,14 +16998,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             ImGuiNative.igShowFontSelector(nativeLabel);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
         }
-
+        
         /// <summary>
         ///     Shows the metrics window
         /// </summary>
@@ -17014,7 +17014,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte* pOpen = null;
             ImGuiNative.igShowMetricsWindow(pOpen);
         }
-
+        
         /// <summary>
         ///     Shows the metrics window using the specified p open
         /// </summary>
@@ -17026,7 +17026,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igShowMetricsWindow(nativePOpen);
             pOpen = nativePOpenVal != 0;
         }
-
+        
         /// <summary>
         ///     Shows the stack tool window
         /// </summary>
@@ -17035,7 +17035,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte* pOpen = null;
             ImGuiNative.igShowStackToolWindow(pOpen);
         }
-
+        
         /// <summary>
         ///     Shows the stack tool window using the specified p open
         /// </summary>
@@ -17047,7 +17047,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.igShowStackToolWindow(nativePOpen);
             pOpen = nativePOpenVal != 0;
         }
-
+        
         /// <summary>
         ///     Shows the style editor
         /// </summary>
@@ -17055,7 +17055,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igShowStyleEditor(new ImGuiStyle());
         }
-
+        
         /// <summary>
         ///     Shows the style editor using the specified ref
         /// </summary>
@@ -17064,7 +17064,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igShowStyleEditor(imGuiStyle);
         }
-
+        
         /// <summary>
         ///     Describes whether show style selector
         /// </summary>
@@ -17086,7 +17086,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -17094,16 +17094,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte ret = ImGuiNative.igShowStyleSelector(nativeLabel);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Shows the user guide
         /// </summary>
@@ -17111,7 +17111,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igShowUserGuide();
         }
-
+        
         /// <summary>
         ///     Describes whether slider angle
         /// </summary>
@@ -17134,7 +17134,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -17142,7 +17142,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vDegreesMin = -360.0f;
             float vDegreesMax = +360.0f;
             byte* nativeFormat;
@@ -17157,7 +17157,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.0f deg", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -17168,16 +17168,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider angle
         /// </summary>
@@ -17201,7 +17201,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -17209,7 +17209,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float vDegreesMax = +360.0f;
             byte* nativeFormat;
             int formatByteCount = 0;
@@ -17223,7 +17223,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.0f deg", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -17234,16 +17234,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider angle
         /// </summary>
@@ -17268,7 +17268,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -17276,7 +17276,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%.0f deg");
@@ -17289,7 +17289,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.0f deg", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -17300,16 +17300,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider angle
         /// </summary>
@@ -17335,7 +17335,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -17343,7 +17343,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -17358,7 +17358,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -17366,7 +17366,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (float* nativeVRad = &vRad)
             {
@@ -17375,16 +17375,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider angle
         /// </summary>
@@ -17411,7 +17411,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -17419,7 +17419,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -17434,7 +17434,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -17442,7 +17442,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (float* nativeVRad = &vRad)
             {
                 byte ret = ImGuiNative.igSliderAngle(nativeLabel, nativeVRad, vDegreesMin, vDegreesMax, nativeFormat, flags);
@@ -17450,16 +17450,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider float
         /// </summary>
@@ -17484,7 +17484,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -17492,7 +17492,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%.3f");
@@ -17505,7 +17505,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -17516,16 +17516,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider float
         /// </summary>
@@ -17551,7 +17551,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -17559,7 +17559,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -17574,7 +17574,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -17582,7 +17582,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (float* nativeV = &v)
             {
@@ -17591,16 +17591,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider float
         /// </summary>
@@ -17627,7 +17627,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -17635,7 +17635,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -17650,7 +17650,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -17658,7 +17658,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (float* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderFloat(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
@@ -17666,16 +17666,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider float 2
         /// </summary>
@@ -17700,7 +17700,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -17708,7 +17708,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%.3f");
@@ -17721,7 +17721,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -17732,16 +17732,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider float 2
         /// </summary>
@@ -17767,7 +17767,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -17775,7 +17775,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -17790,7 +17790,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -17798,7 +17798,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (Vector2* nativeV = &v)
             {
@@ -17807,16 +17807,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider float 2
         /// </summary>
@@ -17843,7 +17843,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -17851,7 +17851,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -17866,7 +17866,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -17874,7 +17874,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (Vector2* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderFloat2(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
@@ -17882,16 +17882,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider float 3
         /// </summary>
@@ -17916,7 +17916,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -17924,7 +17924,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%.3f");
@@ -17937,7 +17937,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -17948,16 +17948,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider float 3
         /// </summary>
@@ -17983,7 +17983,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -17991,7 +17991,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -18006,7 +18006,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -18014,7 +18014,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (Vector3* nativeV = &v)
             {
@@ -18023,16 +18023,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider float 3
         /// </summary>
@@ -18059,7 +18059,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -18067,7 +18067,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -18082,7 +18082,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -18090,7 +18090,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (Vector3* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderFloat3(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
@@ -18098,16 +18098,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider float 4
         /// </summary>
@@ -18132,7 +18132,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -18140,7 +18140,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%.3f");
@@ -18153,7 +18153,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -18164,16 +18164,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider float 4
         /// </summary>
@@ -18199,7 +18199,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -18207,7 +18207,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -18222,7 +18222,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -18230,7 +18230,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (Vector4* nativeV = &v)
             {
@@ -18239,16 +18239,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider float 4
         /// </summary>
@@ -18275,7 +18275,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -18283,7 +18283,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -18298,7 +18298,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -18306,7 +18306,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (Vector4* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderFloat4(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
@@ -18314,16 +18314,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider int
         /// </summary>
@@ -18348,7 +18348,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -18356,7 +18356,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%d");
@@ -18369,7 +18369,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -18380,16 +18380,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider int
         /// </summary>
@@ -18415,7 +18415,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -18423,7 +18423,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -18438,7 +18438,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -18446,7 +18446,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (int* nativeV = &v)
             {
@@ -18455,16 +18455,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider int
         /// </summary>
@@ -18491,7 +18491,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -18499,7 +18499,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -18514,7 +18514,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -18522,7 +18522,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderInt(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
@@ -18530,16 +18530,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider int 2
         /// </summary>
@@ -18564,7 +18564,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -18572,7 +18572,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%d");
@@ -18585,7 +18585,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -18596,16 +18596,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider int 2
         /// </summary>
@@ -18631,7 +18631,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -18639,7 +18639,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -18654,7 +18654,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -18662,7 +18662,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (int* nativeV = &v)
             {
@@ -18671,16 +18671,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider int 2
         /// </summary>
@@ -18707,7 +18707,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -18715,7 +18715,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -18730,7 +18730,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -18738,7 +18738,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderInt2(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
@@ -18746,16 +18746,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider int 3
         /// </summary>
@@ -18780,7 +18780,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -18788,7 +18788,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%d");
@@ -18801,7 +18801,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -18812,16 +18812,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider int 3
         /// </summary>
@@ -18847,7 +18847,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -18855,7 +18855,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -18870,7 +18870,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -18878,7 +18878,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (int* nativeV = &v)
             {
@@ -18887,16 +18887,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider int 3
         /// </summary>
@@ -18923,7 +18923,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -18931,7 +18931,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -18946,7 +18946,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -18954,7 +18954,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderInt3(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
@@ -18962,16 +18962,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider int 4
         /// </summary>
@@ -18996,7 +18996,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -19004,7 +19004,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%d");
@@ -19017,7 +19017,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -19028,16 +19028,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider int 4
         /// </summary>
@@ -19063,7 +19063,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -19071,7 +19071,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -19086,7 +19086,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -19094,7 +19094,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (int* nativeV = &v)
             {
@@ -19103,16 +19103,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider int 4
         /// </summary>
@@ -19139,7 +19139,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -19147,7 +19147,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -19162,7 +19162,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -19170,7 +19170,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderInt4(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
@@ -19178,16 +19178,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether slider scalar
         /// </summary>
@@ -19213,7 +19213,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -19221,7 +19221,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePMin = pMin;
             IntPtr nativePMax = pMax;
@@ -19232,10 +19232,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether slider scalar
         /// </summary>
@@ -19262,7 +19262,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -19270,7 +19270,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePMin = pMin;
             IntPtr nativePMax = pMax;
@@ -19288,7 +19288,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -19296,22 +19296,22 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             byte ret = ImGuiNative.igSliderScalar(nativeLabel, dataType, nativePData, nativePMin, nativePMax, nativeFormat, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (formatByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFormat);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether slider scalar
         /// </summary>
@@ -19339,7 +19339,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -19347,7 +19347,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePMin = pMin;
             IntPtr nativePMax = pMax;
@@ -19365,7 +19365,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -19373,21 +19373,21 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             byte ret = ImGuiNative.igSliderScalar(nativeLabel, dataType, nativePData, nativePMin, nativePMax, nativeFormat, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (formatByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFormat);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether slider scalar n
         /// </summary>
@@ -19414,7 +19414,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -19422,7 +19422,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePMin = pMin;
             IntPtr nativePMax = pMax;
@@ -19433,10 +19433,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether slider scalar n
         /// </summary>
@@ -19464,7 +19464,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -19472,7 +19472,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePMin = pMin;
             IntPtr nativePMax = pMax;
@@ -19490,7 +19490,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -19498,22 +19498,22 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             byte ret = ImGuiNative.igSliderScalarN(nativeLabel, dataType, nativePData, components, nativePMin, nativePMax, nativeFormat, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (formatByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFormat);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether slider scalar n
         /// </summary>
@@ -19542,7 +19542,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -19550,7 +19550,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePMin = pMin;
             IntPtr nativePMax = pMax;
@@ -19568,7 +19568,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -19576,21 +19576,21 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             byte ret = ImGuiNative.igSliderScalarN(nativeLabel, dataType, nativePData, components, nativePMin, nativePMax, nativeFormat, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (formatByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFormat);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether small button
         /// </summary>
@@ -19612,7 +19612,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -19620,16 +19620,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte ret = ImGuiNative.igSmallButton(nativeLabel);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Spacings
         /// </summary>
@@ -19637,7 +19637,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igSpacing();
         }
-
+        
         /// <summary>
         ///     Styles the colors classic
         /// </summary>
@@ -19645,7 +19645,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igStyleColorsClassic(new ImGuiStyle());
         }
-
+        
         /// <summary>
         ///     Styles the colors classic using the specified dst
         /// </summary>
@@ -19654,7 +19654,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igStyleColorsClassic(dst);
         }
-
+        
         /// <summary>
         ///     Styles the colors dark
         /// </summary>
@@ -19662,7 +19662,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igStyleColorsDark(new ImGuiStyle());
         }
-
+        
         /// <summary>
         ///     Styles the colors dark using the specified dst
         /// </summary>
@@ -19671,7 +19671,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igStyleColorsDark(dst);
         }
-
+        
         /// <summary>
         ///     Styles the colors light
         /// </summary>
@@ -19679,7 +19679,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igStyleColorsLight(new ImGuiStyle());
         }
-
+        
         /// <summary>
         ///     Styles the colors light using the specified dst
         /// </summary>
@@ -19688,7 +19688,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igStyleColorsLight(dst);
         }
-
+        
         /// <summary>
         ///     Describes whether tab item button
         /// </summary>
@@ -19710,7 +19710,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -19718,17 +19718,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             ImGuiTabItemFlags flags = 0;
             byte ret = ImGuiNative.igTabItemButton(nativeLabel, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether tab item button
         /// </summary>
@@ -19751,7 +19751,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -19759,16 +19759,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte ret = ImGuiNative.igTabItemButton(nativeLabel, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Tables the get column count
         /// </summary>
@@ -19778,7 +19778,7 @@ namespace Alis.Extension.Graphic.ImGui
             int ret = ImGuiNative.igTableGetColumnCount();
             return ret;
         }
-
+        
         /// <summary>
         ///     Tables the get column flags
         /// </summary>
@@ -19789,7 +19789,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiTableColumnFlags ret = ImGuiNative.igTableGetColumnFlags(columnN);
             return ret;
         }
-
+        
         /// <summary>
         ///     Tables the get column flags using the specified column n
         /// </summary>
@@ -19800,7 +19800,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiTableColumnFlags ret = ImGuiNative.igTableGetColumnFlags(columnN);
             return ret;
         }
-
+        
         /// <summary>
         ///     Tables the get column index
         /// </summary>
@@ -19810,7 +19810,7 @@ namespace Alis.Extension.Graphic.ImGui
             int ret = ImGuiNative.igTableGetColumnIndex();
             return ret;
         }
-
+        
         /// <summary>
         ///     Tables the get column name
         /// </summary>
@@ -19821,7 +19821,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte* ret = ImGuiNative.igTableGetColumnName_Int(columnN);
             return Util.StringFromPtr(ret);
         }
-
+        
         /// <summary>
         ///     Tables the get column name using the specified column n
         /// </summary>
@@ -19832,7 +19832,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte* ret = ImGuiNative.igTableGetColumnName_Int(columnN);
             return Util.StringFromPtr(ret);
         }
-
+        
         /// <summary>
         ///     Tables the get row index
         /// </summary>
@@ -19842,13 +19842,13 @@ namespace Alis.Extension.Graphic.ImGui
             int ret = ImGuiNative.igTableGetRowIndex();
             return ret;
         }
-
+        
         /// <summary>
         ///     Tables the get sort specs
         /// </summary>
         /// <returns>The im gui table sort specs ptr</returns>
         public static ImGuiTableSortSpecs TableGetSortSpecs() => ImGuiNative.igTableGetSortSpecs();
-
+        
         /// <summary>
         ///     Tables the header using the specified label
         /// </summary>
@@ -19869,7 +19869,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -19877,14 +19877,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             ImGuiNative.igTableHeader(nativeLabel);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
         }
-
+        
         /// <summary>
         ///     Tables the headers row
         /// </summary>
@@ -19892,7 +19892,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igTableHeadersRow();
         }
-
+        
         /// <summary>
         ///     Describes whether table next column
         /// </summary>
@@ -19902,7 +19902,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igTableNextColumn();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Tables the next row
         /// </summary>
@@ -19912,7 +19912,7 @@ namespace Alis.Extension.Graphic.ImGui
             float minRowHeight = 0.0f;
             ImGuiNative.igTableNextRow(rowFlags, minRowHeight);
         }
-
+        
         /// <summary>
         ///     Tables the next row using the specified row flags
         /// </summary>
@@ -19922,7 +19922,7 @@ namespace Alis.Extension.Graphic.ImGui
             float minRowHeight = 0.0f;
             ImGuiNative.igTableNextRow(rowFlags, minRowHeight);
         }
-
+        
         /// <summary>
         ///     Tables the next row using the specified row flags
         /// </summary>
@@ -19932,7 +19932,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igTableNextRow(rowFlags, minRowHeight);
         }
-
+        
         /// <summary>
         ///     Tables the set bg color using the specified target
         /// </summary>
@@ -19943,7 +19943,7 @@ namespace Alis.Extension.Graphic.ImGui
             int columnN = -1;
             ImGuiNative.igTableSetBgColor(target, color, columnN);
         }
-
+        
         /// <summary>
         ///     Tables the set bg color using the specified target
         /// </summary>
@@ -19954,7 +19954,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igTableSetBgColor(target, color, columnN);
         }
-
+        
         /// <summary>
         ///     Tables the set column enabled using the specified column n
         /// </summary>
@@ -19965,7 +19965,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte nativeV = v ? (byte) 1 : (byte) 0;
             ImGuiNative.igTableSetColumnEnabled(columnN, nativeV);
         }
-
+        
         /// <summary>
         ///     Describes whether table set column index
         /// </summary>
@@ -19976,7 +19976,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.igTableSetColumnIndex(columnN);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Tables the setup column using the specified label
         /// </summary>
@@ -19997,7 +19997,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -20005,7 +20005,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             ImGuiTableColumnFlags flags = 0;
             float initWidthOrWeight = 0.0f;
             uint userId = 0;
@@ -20015,7 +20015,7 @@ namespace Alis.Extension.Graphic.ImGui
                 Util.Free(nativeLabel);
             }
         }
-
+        
         /// <summary>
         ///     Tables the setup column using the specified label
         /// </summary>
@@ -20037,7 +20037,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -20045,7 +20045,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             float initWidthOrWeight = 0.0f;
             uint userId = 0;
             ImGuiNative.igTableSetupColumn(nativeLabel, flags, initWidthOrWeight, userId);
@@ -20054,7 +20054,7 @@ namespace Alis.Extension.Graphic.ImGui
                 Util.Free(nativeLabel);
             }
         }
-
+        
         /// <summary>
         ///     Tables the setup column using the specified label
         /// </summary>
@@ -20077,7 +20077,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -20085,7 +20085,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             uint userId = 0;
             ImGuiNative.igTableSetupColumn(nativeLabel, flags, initWidthOrWeight, userId);
             if (labelByteCount > Util.StackAllocationSizeLimit)
@@ -20093,7 +20093,7 @@ namespace Alis.Extension.Graphic.ImGui
                 Util.Free(nativeLabel);
             }
         }
-
+        
         /// <summary>
         ///     Tables the setup column using the specified label
         /// </summary>
@@ -20117,7 +20117,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -20125,14 +20125,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             ImGuiNative.igTableSetupColumn(nativeLabel, flags, initWidthOrWeight, userId);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
         }
-
+        
         /// <summary>
         ///     Tables the setup scroll freeze using the specified cols
         /// </summary>
@@ -20142,7 +20142,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igTableSetupScrollFreeze(cols, rows);
         }
-
+        
         /// <summary>
         ///     Texts the fmt
         /// </summary>
@@ -20163,7 +20163,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFmtStackBytes = stackalloc byte[fmtByteCount + 1];
                     nativeFmt = nativeFmtStackBytes;
                 }
-
+                
                 int nativeFmtOffset = Util.GetUtf8(fmt, nativeFmt, fmtByteCount);
                 nativeFmt[nativeFmtOffset] = 0;
             }
@@ -20171,14 +20171,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFmt = null;
             }
-
+            
             ImGuiNative.igText(nativeFmt);
             if (fmtByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFmt);
             }
         }
-
+        
         /// <summary>
         ///     Texts the colored using the specified col
         /// </summary>
@@ -20200,7 +20200,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFmtStackBytes = stackalloc byte[fmtByteCount + 1];
                     nativeFmt = nativeFmtStackBytes;
                 }
-
+                
                 int nativeFmtOffset = Util.GetUtf8(fmt, nativeFmt, fmtByteCount);
                 nativeFmt[nativeFmtOffset] = 0;
             }
@@ -20208,14 +20208,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFmt = null;
             }
-
+            
             ImGuiNative.igTextColored(col, nativeFmt);
             if (fmtByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFmt);
             }
         }
-
+        
         /// <summary>
         ///     Texts the disabled using the specified fmt
         /// </summary>
@@ -20236,7 +20236,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFmtStackBytes = stackalloc byte[fmtByteCount + 1];
                     nativeFmt = nativeFmtStackBytes;
                 }
-
+                
                 int nativeFmtOffset = Util.GetUtf8(fmt, nativeFmt, fmtByteCount);
                 nativeFmt[nativeFmtOffset] = 0;
             }
@@ -20244,14 +20244,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFmt = null;
             }
-
+            
             ImGuiNative.igTextDisabled(nativeFmt);
             if (fmtByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFmt);
             }
         }
-
+        
         /// <summary>
         ///     Texts the unformatted using the specified text
         /// </summary>
@@ -20272,7 +20272,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeTextStackBytes = stackalloc byte[textByteCount + 1];
                     nativeText = nativeTextStackBytes;
                 }
-
+                
                 int nativeTextOffset = Util.GetUtf8(text, nativeText, textByteCount);
                 nativeText[nativeTextOffset] = 0;
             }
@@ -20280,7 +20280,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeText = null;
             }
-
+            
             byte* nativeTextEnd = null;
             ImGuiNative.igTextUnformatted(nativeText, nativeTextEnd);
             if (textByteCount > Util.StackAllocationSizeLimit)
@@ -20288,7 +20288,7 @@ namespace Alis.Extension.Graphic.ImGui
                 Util.Free(nativeText);
             }
         }
-
+        
         /// <summary>
         ///     Texts the wrapped using the specified fmt
         /// </summary>
@@ -20309,7 +20309,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFmtStackBytes = stackalloc byte[fmtByteCount + 1];
                     nativeFmt = nativeFmtStackBytes;
                 }
-
+                
                 int nativeFmtOffset = Util.GetUtf8(fmt, nativeFmt, fmtByteCount);
                 nativeFmt[nativeFmtOffset] = 0;
             }
@@ -20317,14 +20317,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFmt = null;
             }
-
+            
             ImGuiNative.igTextWrapped(nativeFmt);
             if (fmtByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFmt);
             }
         }
-
+        
         /// <summary>
         ///     Describes whether tree node
         /// </summary>
@@ -20346,7 +20346,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -20354,16 +20354,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte ret = ImGuiNative.igTreeNode_Str(nativeLabel);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether tree node
         /// </summary>
@@ -20386,7 +20386,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -20394,7 +20394,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             byte* nativeFmt;
             int fmtByteCount = 0;
             if (fmt != null)
@@ -20409,7 +20409,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFmtStackBytes = stackalloc byte[fmtByteCount + 1];
                     nativeFmt = nativeFmtStackBytes;
                 }
-
+                
                 int nativeFmtOffset = Util.GetUtf8(fmt, nativeFmt, fmtByteCount);
                 nativeFmt[nativeFmtOffset] = 0;
             }
@@ -20417,21 +20417,21 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFmt = null;
             }
-
+            
             byte ret = ImGuiNative.igTreeNode_StrStr(nativeStrId, nativeFmt);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             if (fmtByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFmt);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether tree node
         /// </summary>
@@ -20455,7 +20455,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFmtStackBytes = stackalloc byte[fmtByteCount + 1];
                     nativeFmt = nativeFmtStackBytes;
                 }
-
+                
                 int nativeFmtOffset = Util.GetUtf8(fmt, nativeFmt, fmtByteCount);
                 nativeFmt[nativeFmtOffset] = 0;
             }
@@ -20463,16 +20463,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFmt = null;
             }
-
+            
             byte ret = ImGuiNative.igTreeNode_Ptr(nativePtrId, nativeFmt);
             if (fmtByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFmt);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether tree node ex
         /// </summary>
@@ -20494,7 +20494,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -20502,17 +20502,17 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             ImGuiTreeNodeFlags flags = 0;
             byte ret = ImGuiNative.igTreeNodeEx_Str(nativeLabel, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether tree node ex
         /// </summary>
@@ -20535,7 +20535,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -20543,16 +20543,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte ret = ImGuiNative.igTreeNodeEx_Str(nativeLabel, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether tree node ex
         /// </summary>
@@ -20576,7 +20576,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -20584,7 +20584,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             byte* nativeFmt;
             int fmtByteCount = 0;
             if (fmt != null)
@@ -20599,7 +20599,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFmtStackBytes = stackalloc byte[fmtByteCount + 1];
                     nativeFmt = nativeFmtStackBytes;
                 }
-
+                
                 int nativeFmtOffset = Util.GetUtf8(fmt, nativeFmt, fmtByteCount);
                 nativeFmt[nativeFmtOffset] = 0;
             }
@@ -20607,21 +20607,21 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFmt = null;
             }
-
+            
             byte ret = ImGuiNative.igTreeNodeEx_StrStr(nativeStrId, flags, nativeFmt);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
-
+            
             if (fmtByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFmt);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether tree node ex
         /// </summary>
@@ -20646,7 +20646,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFmtStackBytes = stackalloc byte[fmtByteCount + 1];
                     nativeFmt = nativeFmtStackBytes;
                 }
-
+                
                 int nativeFmtOffset = Util.GetUtf8(fmt, nativeFmt, fmtByteCount);
                 nativeFmt[nativeFmtOffset] = 0;
             }
@@ -20654,16 +20654,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFmt = null;
             }
-
+            
             byte ret = ImGuiNative.igTreeNodeEx_Ptr(nativePtrId, flags, nativeFmt);
             if (fmtByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFmt);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Trees the pop
         /// </summary>
@@ -20671,7 +20671,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igTreePop();
         }
-
+        
         /// <summary>
         ///     Trees the push using the specified str id
         /// </summary>
@@ -20692,7 +20692,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
                     nativeStrId = nativeStrIdStackBytes;
                 }
-
+                
                 int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
                 nativeStrId[nativeStrIdOffset] = 0;
             }
@@ -20700,14 +20700,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeStrId = null;
             }
-
+            
             ImGuiNative.igTreePush_Str(nativeStrId);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
             }
         }
-
+        
         /// <summary>
         ///     Trees the push using the specified ptr id
         /// </summary>
@@ -20717,7 +20717,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr nativePtrId = ptrId;
             ImGuiNative.igTreePush_Ptr(nativePtrId);
         }
-
+        
         /// <summary>
         ///     Unindents
         /// </summary>
@@ -20726,7 +20726,7 @@ namespace Alis.Extension.Graphic.ImGui
             float indentW = 0.0f;
             ImGuiNative.igUnindent(indentW);
         }
-
+        
         /// <summary>
         ///     Unindents the indent w
         /// </summary>
@@ -20735,7 +20735,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igUnindent(indentW);
         }
-
+        
         /// <summary>
         ///     Updates the platform windows
         /// </summary>
@@ -20743,7 +20743,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.igUpdatePlatformWindows();
         }
-
+        
         /// <summary>
         ///     Values the prefix
         /// </summary>
@@ -20765,7 +20765,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativePrefixStackBytes = stackalloc byte[prefixByteCount + 1];
                     nativePrefix = nativePrefixStackBytes;
                 }
-
+                
                 int nativePrefixOffset = Util.GetUtf8(prefix, nativePrefix, prefixByteCount);
                 nativePrefix[nativePrefixOffset] = 0;
             }
@@ -20773,7 +20773,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativePrefix = null;
             }
-
+            
             byte nativeB = b ? (byte) 1 : (byte) 0;
             ImGuiNative.igValue_Bool(nativePrefix, nativeB);
             if (prefixByteCount > Util.StackAllocationSizeLimit)
@@ -20781,7 +20781,7 @@ namespace Alis.Extension.Graphic.ImGui
                 Util.Free(nativePrefix);
             }
         }
-
+        
         /// <summary>
         ///     Values the prefix
         /// </summary>
@@ -20803,7 +20803,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativePrefixStackBytes = stackalloc byte[prefixByteCount + 1];
                     nativePrefix = nativePrefixStackBytes;
                 }
-
+                
                 int nativePrefixOffset = Util.GetUtf8(prefix, nativePrefix, prefixByteCount);
                 nativePrefix[nativePrefixOffset] = 0;
             }
@@ -20811,14 +20811,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativePrefix = null;
             }
-
+            
             ImGuiNative.igValue_Int(nativePrefix, v);
             if (prefixByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativePrefix);
             }
         }
-
+        
         /// <summary>
         ///     Values the prefix
         /// </summary>
@@ -20840,7 +20840,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativePrefixStackBytes = stackalloc byte[prefixByteCount + 1];
                     nativePrefix = nativePrefixStackBytes;
                 }
-
+                
                 int nativePrefixOffset = Util.GetUtf8(prefix, nativePrefix, prefixByteCount);
                 nativePrefix[nativePrefixOffset] = 0;
             }
@@ -20848,14 +20848,14 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativePrefix = null;
             }
-
+            
             ImGuiNative.igValue_Uint(nativePrefix, v);
             if (prefixByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativePrefix);
             }
         }
-
+        
         /// <summary>
         ///     Values the prefix
         /// </summary>
@@ -20877,7 +20877,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativePrefixStackBytes = stackalloc byte[prefixByteCount + 1];
                     nativePrefix = nativePrefixStackBytes;
                 }
-
+                
                 int nativePrefixOffset = Util.GetUtf8(prefix, nativePrefix, prefixByteCount);
                 nativePrefix[nativePrefixOffset] = 0;
             }
@@ -20885,7 +20885,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativePrefix = null;
             }
-
+            
             byte* nativeFloatFormat = null;
             ImGuiNative.igValue_Float(nativePrefix, v, nativeFloatFormat);
             if (prefixByteCount > Util.StackAllocationSizeLimit)
@@ -20893,7 +20893,7 @@ namespace Alis.Extension.Graphic.ImGui
                 Util.Free(nativePrefix);
             }
         }
-
+        
         /// <summary>
         ///     Values the prefix
         /// </summary>
@@ -20916,7 +20916,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativePrefixStackBytes = stackalloc byte[prefixByteCount + 1];
                     nativePrefix = nativePrefixStackBytes;
                 }
-
+                
                 int nativePrefixOffset = Util.GetUtf8(prefix, nativePrefix, prefixByteCount);
                 nativePrefix[nativePrefixOffset] = 0;
             }
@@ -20924,7 +20924,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativePrefix = null;
             }
-
+            
             byte* nativeFloatFormat;
             int floatFormatByteCount = 0;
             if (floatFormat != null)
@@ -20939,7 +20939,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFloatFormatStackBytes = stackalloc byte[floatFormatByteCount + 1];
                     nativeFloatFormat = nativeFloatFormatStackBytes;
                 }
-
+                
                 int nativeFloatFormatOffset = Util.GetUtf8(floatFormat, nativeFloatFormat, floatFormatByteCount);
                 nativeFloatFormat[nativeFloatFormatOffset] = 0;
             }
@@ -20947,19 +20947,19 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFloatFormat = null;
             }
-
+            
             ImGuiNative.igValue_Float(nativePrefix, v, nativeFloatFormat);
             if (prefixByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativePrefix);
             }
-
+            
             if (floatFormatByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFloatFormat);
             }
         }
-
+        
         /// <summary>
         ///     Describes whether v slider float
         /// </summary>
@@ -20985,7 +20985,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -20993,7 +20993,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%.3f");
@@ -21006,7 +21006,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -21017,16 +21017,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether v slider float
         /// </summary>
@@ -21053,7 +21053,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -21061,7 +21061,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -21076,7 +21076,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -21084,7 +21084,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (float* nativeV = &v)
             {
@@ -21093,16 +21093,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether v slider float
         /// </summary>
@@ -21130,7 +21130,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -21138,7 +21138,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -21153,7 +21153,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -21161,7 +21161,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (float* nativeV = &v)
             {
                 byte ret = ImGuiNative.igVSliderFloat(nativeLabel, size, nativeV, vMin, vMax, nativeFormat, flags);
@@ -21169,16 +21169,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether v slider int
         /// </summary>
@@ -21204,7 +21204,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -21212,7 +21212,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             formatByteCount = Encoding.UTF8.GetByteCount("%d");
@@ -21225,7 +21225,7 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                 nativeFormat = nativeFormatStackBytes;
             }
-
+            
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
@@ -21236,16 +21236,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether v slider int
         /// </summary>
@@ -21272,7 +21272,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -21280,7 +21280,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -21295,7 +21295,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -21303,7 +21303,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             fixed (int* nativeV = &v)
             {
@@ -21312,16 +21312,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether v slider int
         /// </summary>
@@ -21349,7 +21349,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -21357,7 +21357,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             byte* nativeFormat;
             int formatByteCount = 0;
             if (format != null)
@@ -21372,7 +21372,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -21380,7 +21380,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igVSliderInt(nativeLabel, size, nativeV, vMin, vMax, nativeFormat, flags);
@@ -21388,16 +21388,16 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     Util.Free(nativeLabel);
                 }
-
+                
                 if (formatByteCount > Util.StackAllocationSizeLimit)
                 {
                     Util.Free(nativeFormat);
                 }
-
+                
                 return ret != 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether v slider scalar
         /// </summary>
@@ -21424,7 +21424,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -21432,7 +21432,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePMin = pMin;
             IntPtr nativePMax = pMax;
@@ -21443,10 +21443,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 Util.Free(nativeLabel);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether v slider scalar
         /// </summary>
@@ -21474,7 +21474,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -21482,7 +21482,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePMin = pMin;
             IntPtr nativePMax = pMax;
@@ -21500,7 +21500,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -21508,22 +21508,22 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             ImGuiSliderFlags flags = 0;
             byte ret = ImGuiNative.igVSliderScalar(nativeLabel, size, dataType, nativePData, nativePMin, nativePMax, nativeFormat, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (formatByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFormat);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether v slider scalar
         /// </summary>
@@ -21552,7 +21552,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
                     nativeLabel = nativeLabelStackBytes;
                 }
-
+                
                 int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
                 nativeLabel[nativeLabelOffset] = 0;
             }
@@ -21560,7 +21560,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeLabel = null;
             }
-
+            
             IntPtr nativePData = pData;
             IntPtr nativePMin = pMin;
             IntPtr nativePMax = pMax;
@@ -21578,7 +21578,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
                     nativeFormat = nativeFormatStackBytes;
                 }
-
+                
                 int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
             }
@@ -21586,21 +21586,21 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeFormat = null;
             }
-
+            
             byte ret = ImGuiNative.igVSliderScalar(nativeLabel, size, dataType, nativePData, nativePMin, nativePMax, nativeFormat, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
             }
-
+            
             if (formatByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFormat);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -21613,7 +21613,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte[] buf,
             uint bufSize)
             => InputText(label, buf, bufSize, 0, null, IntPtr.Zero);
-
+        
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -21628,7 +21628,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint bufSize,
             ImGuiInputTextFlags flags)
             => InputText(label, buf, bufSize, flags, null, IntPtr.Zero);
-
+        
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -21645,7 +21645,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiInputTextFlags flags,
             ImGuiInputTextCallback callback)
             => InputText(label, buf, bufSize, flags, callback, IntPtr.Zero);
-
+        
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -21675,23 +21675,23 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* stackPtr = stackalloc byte[utf8LabelByteCount + 1];
                 utf8LabelBytes = stackPtr;
             }
-
+            
             Util.GetUtf8(label, utf8LabelBytes, utf8LabelByteCount);
-
+            
             bool ret;
             fixed (byte* bufPtr = buf)
             {
                 ret = ImGuiNative.igInputText(utf8LabelBytes, bufPtr, bufSize, flags, callback, userData) != 0;
             }
-
+            
             if (utf8LabelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(utf8LabelBytes);
             }
-
+            
             return ret;
         }
-
+        
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -21703,7 +21703,7 @@ namespace Alis.Extension.Graphic.ImGui
             string label,
             ref string input,
             uint maxLength) => InputText(label, ref input, maxLength, 0, null, IntPtr.Zero);
-
+        
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -21717,7 +21717,7 @@ namespace Alis.Extension.Graphic.ImGui
             ref string input,
             uint maxLength,
             ImGuiInputTextFlags flags) => InputText(label, ref input, maxLength, flags, null, IntPtr.Zero);
-
+        
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -21733,7 +21733,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint maxLength,
             ImGuiInputTextFlags flags,
             ImGuiInputTextCallback callback) => InputText(label, ref input, maxLength, flags, callback, IntPtr.Zero);
-
+        
         /// <summary>
         ///     Determines whether the input text.
         /// </summary>
@@ -21755,19 +21755,19 @@ namespace Alis.Extension.Graphic.ImGui
             // Convert label and input to ANSI strings
             IntPtr labelPtr = Marshal.StringToHGlobalAnsi(label);
             IntPtr inputPtr = Marshal.StringToHGlobalAnsi(input);
-
+            
             // Convert ANSI strings to UTF-8 bytes
             byte* utf8LabelBytes = (byte*) labelPtr;
             byte* utf8InputBytes = (byte*) inputPtr;
-
+            
             // Create buffers for modified input
             int inputBufSize = Math.Max((int) maxLength + 1, Encoding.UTF8.GetByteCount(input) + 1);
             byte* modifiedUtf8InputBytes = stackalloc byte[inputBufSize];
             byte* originalUtf8InputBytes = stackalloc byte[inputBufSize];
-
+            
             // Copy input bytes to the modified input buffer
             Unsafe.CopyBlock(modifiedUtf8InputBytes, utf8InputBytes, (uint) inputBufSize);
-
+            
             // Call the ImGuiNative method
             byte result = ImGuiNative.igInputText(
                 utf8LabelBytes,
@@ -21776,21 +21776,21 @@ namespace Alis.Extension.Graphic.ImGui
                 flag,
                 callback,
                 userData);
-
+            
             // Check if the input was modified and update the input variable accordingly
             if (!Util.AreStringsEqual(originalUtf8InputBytes, inputBufSize, modifiedUtf8InputBytes))
             {
                 input = Encoding.UTF8.GetString(modifiedUtf8InputBytes, inputBufSize);
             }
-
+            
             // Free the memory allocated by Marshal.StringToHGlobalAnsi
             Marshal.FreeHGlobal(labelPtr);
             Marshal.FreeHGlobal(inputPtr);
-
+            
             return result != 0;
         }
-
-
+        
+        
         /// <summary>
         ///     Describes whether input text multiline
         /// </summary>
@@ -21804,7 +21804,7 @@ namespace Alis.Extension.Graphic.ImGui
             ref string input,
             uint maxLength,
             Vector2 size) => InputTextMultiline(label, ref input, maxLength, size, 0, null, IntPtr.Zero);
-
+        
         /// <summary>
         ///     Describes whether input text multiline
         /// </summary>
@@ -21820,7 +21820,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint maxLength,
             Vector2 size,
             ImGuiInputTextFlags flags) => InputTextMultiline(label, ref input, maxLength, size, flags, null, IntPtr.Zero);
-
+        
         /// <summary>
         ///     Describes whether input text multiline
         /// </summary>
@@ -21838,7 +21838,7 @@ namespace Alis.Extension.Graphic.ImGui
             Vector2 size,
             ImGuiInputTextFlags flags,
             ImGuiInputTextCallback callback) => InputTextMultiline(label, ref input, maxLength, size, flags, callback, IntPtr.Zero);
-
+        
         /// <summary>
         ///     Determines whether the input text is multiline.
         /// </summary>
@@ -21862,19 +21862,19 @@ namespace Alis.Extension.Graphic.ImGui
             // Convert label and input to ANSI strings
             IntPtr labelPtr = Marshal.StringToHGlobalAnsi(label);
             IntPtr inputPtr = Marshal.StringToHGlobalAnsi(input);
-
+            
             // Convert ANSI strings to UTF-8 bytes
             byte* utf8LabelBytes = (byte*) labelPtr;
             byte* utf8InputBytes = (byte*) inputPtr;
-
+            
             // Create buffers for modified input
             int inputBufSize = Math.Max((int) maxLength + 1, Encoding.UTF8.GetByteCount(input) + 1);
             byte* modifiedUtf8InputBytes = stackalloc byte[inputBufSize];
             byte* originalUtf8InputBytes = stackalloc byte[inputBufSize];
-
+            
             // Copy input bytes to the modified input buffer
             Unsafe.CopyBlock(modifiedUtf8InputBytes, utf8InputBytes, (uint) inputBufSize);
-
+            
             // Call the ImGuiNative method
             byte result = ImGuiNative.igInputTextMultiline(
                 utf8LabelBytes,
@@ -21884,21 +21884,21 @@ namespace Alis.Extension.Graphic.ImGui
                 flag,
                 callback,
                 userData);
-
+            
             // Check if the input was modified and update the input variable accordingly
             if (!Util.AreStringsEqual(originalUtf8InputBytes, inputBufSize, modifiedUtf8InputBytes))
             {
                 input = Encoding.UTF8.GetString(modifiedUtf8InputBytes, inputBufSize);
             }
-
+            
             // Free the memory allocated by Marshal.StringToHGlobalAnsi
             Marshal.FreeHGlobal(labelPtr);
             Marshal.FreeHGlobal(inputPtr);
-
+            
             return result != 0;
         }
-
-
+        
+        
         /// <summary>
         ///     Describes whether input text with hint
         /// </summary>
@@ -21912,7 +21912,7 @@ namespace Alis.Extension.Graphic.ImGui
             string hint,
             ref string input,
             uint maxLength) => InputTextWithHint(label, hint, ref input, maxLength, 0, null, IntPtr.Zero);
-
+        
         /// <summary>
         ///     Describes whether input text with hint
         /// </summary>
@@ -21928,7 +21928,7 @@ namespace Alis.Extension.Graphic.ImGui
             ref string input,
             uint maxLength,
             ImGuiInputTextFlags flags) => InputTextWithHint(label, hint, ref input, maxLength, flags, null, IntPtr.Zero);
-
+        
         /// <summary>
         ///     Describes whether input text with hint
         /// </summary>
@@ -21946,7 +21946,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint maxLength,
             ImGuiInputTextFlags flags,
             ImGuiInputTextCallback callback) => InputTextWithHint(label, hint, ref input, maxLength, flags, callback, IntPtr.Zero);
-
+        
         /// <summary>
         ///     Describes whether input text with hint
         /// </summary>
@@ -21970,7 +21970,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte* utf8LabelBytes = GetUtf8Bytes(label);
             byte* utf8HintBytes = GetUtf8Bytes(hint);
             byte* utf8InputBytes = GetUtf8Bytes(input, maxLength);
-
+            
             byte result = ImGuiNative.igInputTextWithHint(
                 utf8LabelBytes,
                 utf8HintBytes,
@@ -21979,20 +21979,20 @@ namespace Alis.Extension.Graphic.ImGui
                 flag,
                 callback,
                 userData);
-
+            
             bool hasInputChanged = !AreUtf8StringsEqual(utf8InputBytes, input);
             if (hasInputChanged)
             {
                 input = GetStringFromUtf8(utf8InputBytes);
             }
-
+            
             FreeUtf8Bytes(utf8LabelBytes);
             FreeUtf8Bytes(utf8HintBytes);
             FreeUtf8Bytes(utf8InputBytes);
-
+            
             return result != 0;
         }
-
+        
         /// <summary>
         ///     Gets the utf 8 bytes using the specified text
         /// </summary>
@@ -22006,8 +22006,8 @@ namespace Alis.Extension.Graphic.ImGui
             utf8Bytes[byteCount] = 0; // Null-terminate the string
             return utf8Bytes;
         }
-
-
+        
+        
         /// <summary>
         ///     Gets the utf 8 bytes using the specified text
         /// </summary>
@@ -22019,20 +22019,20 @@ namespace Alis.Extension.Graphic.ImGui
             int byteCount = Encoding.UTF8.GetByteCount(text);
             int inputBufSize = Math.Max((int) maxLength + 1, byteCount + 1);
             byte[] utf8BytesArray = new byte[inputBufSize];
-
+            
             fixed (byte* utf8Bytes = utf8BytesArray)
             {
                 Util.GetUtf8(text, utf8Bytes, inputBufSize);
                 Unsafe.InitBlockUnaligned(utf8Bytes, 0, (uint) inputBufSize);
-
+                
                 byte* result = (byte*) Marshal.AllocHGlobal(inputBufSize);
                 Buffer.MemoryCopy(utf8Bytes, result, inputBufSize, inputBufSize);
-
+                
                 return result;
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Describes whether are utf 8 strings equal
         /// </summary>
@@ -22044,14 +22044,14 @@ namespace Alis.Extension.Graphic.ImGui
             int byteCount = Encoding.UTF8.GetByteCount(text);
             return Util.AreStringsEqual(utf8Bytes, byteCount, utf8Bytes);
         }
-
+        
         /// <summary>
         ///     Gets the string from utf 8 using the specified utf 8 bytes
         /// </summary>
         /// <param name="utf8Bytes">The utf bytes</param>
         /// <returns>The string</returns>
         private static string GetStringFromUtf8(byte* utf8Bytes) => Util.StringFromPtr(utf8Bytes);
-
+        
         /// <summary>
         ///     Frees the utf 8 bytes using the specified utf 8 bytes
         /// </summary>
@@ -22064,7 +22064,7 @@ namespace Alis.Extension.Graphic.ImGui
                 Util.Free(utf8Bytes);
             }
         }
-
+        
         /// <summary>
         ///     Gets the utf 8 bytes length using the specified utf 8 bytes
         /// </summary>
@@ -22076,16 +22076,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 return 0;
             }
-
+            
             int length = 0;
             while (*(utf8Bytes + length) != 0)
             {
                 length++;
             }
-
+            
             return length;
         }
-
+        
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -22093,7 +22093,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text)
             => CalcTextSizeImpl(text);
-
+        
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -22102,7 +22102,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, int start)
             => CalcTextSizeImpl(text, start);
-
+        
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -22111,7 +22111,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, float wrapWidth)
             => CalcTextSizeImpl(text, wrapWidth: wrapWidth);
-
+        
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -22120,7 +22120,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, bool hideTextAfterDoubleHash)
             => CalcTextSizeImpl(text, hideTextAfterDoubleHash: hideTextAfterDoubleHash);
-
+        
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -22130,7 +22130,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, int start, int length)
             => CalcTextSizeImpl(text, start, length);
-
+        
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -22140,7 +22140,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, int start, bool hideTextAfterDoubleHash)
             => CalcTextSizeImpl(text, start, hideTextAfterDoubleHash: hideTextAfterDoubleHash);
-
+        
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -22150,7 +22150,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, int start, float wrapWidth)
             => CalcTextSizeImpl(text, start, wrapWidth: wrapWidth);
-
+        
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -22160,7 +22160,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, bool hideTextAfterDoubleHash, float wrapWidth)
             => CalcTextSizeImpl(text, hideTextAfterDoubleHash: hideTextAfterDoubleHash, wrapWidth: wrapWidth);
-
+        
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -22171,7 +22171,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, int start, int length, bool hideTextAfterDoubleHash)
             => CalcTextSizeImpl(text, start, length, hideTextAfterDoubleHash);
-
+        
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -22182,7 +22182,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, int start, int length, float wrapWidth)
             => CalcTextSizeImpl(text, start, length, wrapWidth: wrapWidth);
-
+        
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -22194,7 +22194,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, int start, int length, bool hideTextAfterDoubleHash, float wrapWidth)
             => CalcTextSizeImpl(text, start, length, hideTextAfterDoubleHash, wrapWidth);
-
+        
         /// <summary>
         ///     Calcs the text size impl using the specified text
         /// </summary>
@@ -22228,21 +22228,21 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeTextStackBytes = stackalloc byte[textByteCount + 1];
                     nativeTextStart = nativeTextStackBytes;
                 }
-
+                
                 int nativeTextOffset = Util.GetUtf8(text, start, textToCopyLen, nativeTextStart, textByteCount);
                 nativeTextStart[nativeTextOffset] = 0;
                 nativeTextEnd = nativeTextStart + nativeTextOffset;
             }
-
+            
             ImGuiNative.igCalcTextSize(&ret, nativeTextStart, nativeTextEnd, *(byte*) &hideTextAfterDoubleHash, wrapWidth);
             if (textByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeTextStart);
             }
-
+            
             return ret;
         }
-
+        
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -22255,7 +22255,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr buf,
             uint bufSize)
             => InputText(label, buf, bufSize, 0, null, IntPtr.Zero);
-
+        
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -22270,7 +22270,7 @@ namespace Alis.Extension.Graphic.ImGui
             uint bufSize,
             ImGuiInputTextFlags flags)
             => InputText(label, buf, bufSize, flags, null, IntPtr.Zero);
-
+        
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -22287,7 +22287,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiInputTextFlags flags,
             ImGuiInputTextCallback callback)
             => InputText(label, buf, bufSize, flags, callback, IntPtr.Zero);
-
+        
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -22317,19 +22317,19 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* stackPtr = stackalloc byte[utf8LabelByteCount + 1];
                 utf8LabelBytes = stackPtr;
             }
-
+            
             Util.GetUtf8(label, utf8LabelBytes, utf8LabelByteCount);
-
+            
             bool ret = ImGuiNative.igInputText(utf8LabelBytes, (byte*) buf, bufSize, flags, callback, userData) != 0;
-
+            
             if (utf8LabelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(utf8LabelBytes);
             }
-
+            
             return ret;
         }
-
+        
         /// <summary>
         ///     Describes whether begin
         /// </summary>
@@ -22349,20 +22349,20 @@ namespace Alis.Extension.Graphic.ImGui
                 byte* stackPtr = stackalloc byte[utf8NameByteCount + 1];
                 utf8NameBytes = stackPtr;
             }
-
+            
             Util.GetUtf8(name, utf8NameBytes, utf8NameByteCount);
-
+            
             byte* pOpen = null;
             byte ret = ImGuiNative.igBegin(utf8NameBytes, pOpen, flags);
-
+            
             if (utf8NameByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(utf8NameBytes);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether menu item
         /// </summary>

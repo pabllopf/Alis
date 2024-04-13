@@ -44,28 +44,28 @@ namespace Alis.Sample.Pong
         ///     The player id
         /// </summary>
         private readonly int playerId;
-
+        
         /// <summary>
         ///     The box collider
         /// </summary>
         private BoxCollider boxCollider;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="PlayerController" /> class
         /// </summary>
         /// <param name="playerId">The player id</param>
         public PlayerController(int playerId) => this.playerId = playerId;
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public override void OnStart() => boxCollider = GameObject.Get<BoxCollider>();
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>
         public override void OnUpdate() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the release key using the specified key
         /// </summary>
@@ -87,7 +87,7 @@ namespace Alis.Sample.Pong
                             boxCollider.Body.LinearVelocity = velocity;
                             break;
                     }
-
+                    
                     break;
                 case 2:
                     switch (key)
@@ -101,12 +101,12 @@ namespace Alis.Sample.Pong
                             boxCollider.Body.LinearVelocity = velocity;
                             break;
                     }
-
+                    
                     break;
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Ons the press down key using the specified key
         /// </summary>
@@ -114,7 +114,7 @@ namespace Alis.Sample.Pong
         public override void OnPressDownKey(KeyCode key)
         {
             Vector2 velocity = boxCollider.Body.LinearVelocity;
-
+            
             switch (playerId)
             {
                 case 1:
@@ -129,7 +129,7 @@ namespace Alis.Sample.Pong
                             boxCollider.Body.LinearVelocity = velocity;
                             break;
                     }
-
+                    
                     break;
                 case 2:
                     switch (key)
@@ -143,7 +143,7 @@ namespace Alis.Sample.Pong
                             boxCollider.Body.LinearVelocity = velocity;
                             break;
                     }
-
+                    
                     break;
             }
         }

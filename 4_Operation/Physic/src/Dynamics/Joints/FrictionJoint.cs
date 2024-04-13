@@ -55,64 +55,64 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The angular impulse
         /// </summary>
         private float angularImpulse;
-
+        
         /// <summary>
         ///     The angular mass
         /// </summary>
         private float angularMass;
-
+        
         // Solver temp
         /// <summary>
         ///     The index
         /// </summary>
         private int indexA;
-
+        
         /// <summary>
         ///     The index
         /// </summary>
         private int indexB;
-
+        
         /// <summary>
         ///     The inv ia
         /// </summary>
         private float invIa;
-
+        
         /// <summary>
         ///     The inv ib
         /// </summary>
         private float invIb;
-
+        
         /// <summary>
         ///     The inv mass
         /// </summary>
         private float invMassA;
-
+        
         /// <summary>
         ///     The inv mass
         /// </summary>
         private float invMassB;
-
+        
         // Solver shared
         /// <summary>
         ///     The linear impulse
         /// </summary>
         private Vector2 linearImpulse;
-
+        
         /// <summary>
         ///     The linear mass
         /// </summary>
         private Matrix2X2 linearMass;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         private Vector2 rA;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         private Vector2 rB;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="FrictionJoint" /> class
         /// </summary>
@@ -141,7 +141,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Force = maxForce;
             Torque = maxTorque;
         }
-
+        
         /// <summary>Constructor for FrictionJoint.</summary>
         /// <param name="bodyA"></param>
         /// <param name="bodyB"></param>
@@ -161,13 +161,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 LocalAnchorB = anchor;
             }
         }
-
+        
         /// <summary>The local anchor point on BodyA</summary>
         private Vector2 LocalAnchorA { get; set; }
-
+        
         /// <summary>The local anchor point on BodyB</summary>
         private Vector2 LocalAnchorB { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the world anchor a
         /// </summary>
@@ -176,7 +176,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => BodyA.GetWorldPoint(LocalAnchorA);
             set => LocalAnchorA = BodyA.GetLocalPoint(value);
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the world anchor b
         /// </summary>
@@ -185,27 +185,27 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => BodyB.GetWorldPoint(LocalAnchorB);
             set => LocalAnchorB = BodyB.GetLocalPoint(value);
         }
-
+        
         /// <summary>The maximum friction force in N.</summary>
         private float Force { get; }
-
+        
         /// <summary>The maximum friction torque in N-m.</summary>
         private float Torque { get; }
-
+        
         /// <summary>
         ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
         protected override Vector2 GetReactionForce(float invDt) => invDt * linearImpulse;
-
+        
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => invDt * angularImpulse;
-
+        
         /// <summary>
         ///     Inits the velocity constraints using the specified data
         /// </summary>
@@ -220,54 +220,54 @@ namespace Alis.Core.Physic.Dynamics.Joints
             invMassB = BodyB.InvMass;
             invIa = BodyA.InvI;
             invIb = BodyB.InvI;
-
+            
             float aA = data.Positions[indexA].A;
             Vector2 vA = data.Velocities[indexA].V;
             float wA = data.Velocities[indexA].W;
-
+            
             float aB = data.Positions[indexB].A;
             Vector2 vB = data.Velocities[indexB].V;
             float wB = data.Velocities[indexB].W;
-
+            
             Rotation qA = new Rotation(aA), qB = new Rotation(aB);
-
+            
             // Compute the effective mass matrix.
             rA = MathUtils.Mul(qA, LocalAnchorA - localCenterA);
             rB = MathUtils.Mul(qB, LocalAnchorB - localCenterB);
-
+            
             // J = [-I -r1_skew I r2_skew]
             //     [ 0       -1 0       1]
             // r_skew = [-ry; rx]
-
+            
             // Matlab
             // K = [ mA+r1y^2*iA+mB+r2y^2*iB,  -r1y*iA*r1x-r2y*iB*r2x,          -r1y*iA-r2y*iB]
             //     [  -r1y*iA*r1x-r2y*iB*r2x, mA+r1x^2*iA+mB+r2x^2*iB,           r1x*iA+r2x*iB]
             //     [          -r1y*iA-r2y*iB,           r1x*iA+r2x*iB,                   iA+iB]
-
+            
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;
-
+            
             Matrix2X2 k = new Matrix2X2(
                 mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y,
                 -iA * rA.X * rA.Y - iB * rB.X * rB.Y,
                 -iA * rA.X * rA.Y - iB * rB.X * rB.Y,
                 mA + mB + iA * rA.X * rA.X + iB * rB.X * rB.X
             );
-
+            
             linearMass = k.Inverse;
-
+            
             angularMass = iA + iB;
             if (angularMass > 0.0f)
             {
                 angularMass = 1.0f / angularMass;
             }
-
+            
             if (data.Step.WarmStarting)
             {
                 // Scale impulses to support a variable time step.
                 linearImpulse *= data.Step.DeltaTimeRatio;
                 angularImpulse *= data.Step.DeltaTimeRatio;
-
+                
                 Vector2 p = new Vector2(linearImpulse.X, linearImpulse.Y);
                 vA -= mA * p;
                 wA -= iA * (MathUtils.Cross(rA, p) + angularImpulse);
@@ -279,13 +279,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 linearImpulse = Vector2.Zero;
                 angularImpulse = 0.0f;
             }
-
+            
             data.Velocities[indexA].V = vA;
             data.Velocities[indexA].W = wA;
             data.Velocities[indexB].V = vB;
             data.Velocities[indexB].W = wB;
         }
-
+        
         /// <summary>
         ///     Solves the velocity constraints using the specified data.
         /// </summary>
@@ -296,21 +296,21 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float wA = data.Velocities[indexA].W;
             Vector2 vB = data.Velocities[indexB].V;
             float wB = data.Velocities[indexB].W;
-
+            
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;
-
+            
             float h = data.Step.DeltaTime;
-
+            
             SolveAngularFriction(ref wA, ref wB, iA, iB, h);
             SolveLinearFriction(ref vA, ref wA, ref vB, ref wB, mA, mB, iA, iB, h);
-
+            
             data.Velocities[indexA].V = vA;
             data.Velocities[indexA].W = wA;
             data.Velocities[indexB].V = vB;
             data.Velocities[indexB].W = wB;
         }
-
+        
         /// <summary>
         ///     Solves the angular friction using the specified v a
         /// </summary>
@@ -323,16 +323,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             float cDot = wB - wA;
             float impulse = -angularMass * cDot;
-
+            
             float oldImpulse = angularImpulse;
             float maxImpulse = h * Torque;
             angularImpulse = MathUtils.Clamp(angularImpulse + impulse, -maxImpulse, maxImpulse);
             impulse = angularImpulse - oldImpulse;
-
+            
             wA -= iA * impulse;
             wB += iB * impulse;
         }
-
+        
         /// <summary>
         ///     Solves the linear friction using the specified v a
         /// </summary>
@@ -348,29 +348,29 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private void SolveLinearFriction(ref Vector2 vA, ref float wA, ref Vector2 vB, ref float wB, float mA, float mB, float iA, float iB, float h)
         {
             Vector2 cDot = vB + MathUtils.Cross(wB, rB) - vA - MathUtils.Cross(wA, rA);
-
+            
             Vector2 impulse = -MathUtils.Mul(ref linearMass, cDot);
             Vector2 oldImpulse = linearImpulse;
             linearImpulse += impulse;
-
+            
             float maxImpulse = h * Force;
-
+            
             if (linearImpulse.LengthSquared() > maxImpulse * maxImpulse)
             {
                 linearImpulse = Vector2.Normalize(linearImpulse);
                 linearImpulse *= maxImpulse;
             }
-
+            
             impulse = linearImpulse - oldImpulse;
-
+            
             vA -= mA * impulse;
             wA -= iA * MathUtils.Cross(rA, impulse);
-
+            
             vB += mB * impulse;
             wB += iB * MathUtils.Cross(rB, impulse);
         }
-
-
+        
+        
         /// <summary>
         ///     Describes whether this instance solve position constraints
         /// </summary>

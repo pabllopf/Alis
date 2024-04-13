@@ -42,12 +42,12 @@ namespace Alis.Core.Ecs.System
         ///     Gets or sets the value of the managers
         /// </summary>
         public List<IManager> Managers { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the is running
         /// </summary>
         public bool IsRunning { get; set; }
-
+        
         /// <summary>
         ///     Runs this instance
         /// </summary>

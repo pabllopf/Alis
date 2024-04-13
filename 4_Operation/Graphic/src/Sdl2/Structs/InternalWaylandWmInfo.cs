@@ -42,27 +42,27 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     Refers to a wl_display*
         /// </summary>
         public IntPtr display;
-
+        
         /// <summary>
         ///     Refers to a wl_surface*
         /// </summary>
         public IntPtr surface;
-
+        
         /// <summary>
         ///     Refers to a wl_shell_surface*
         /// </summary>
         public IntPtr shell_surface;
-
+        
         /// <summary>
         ///     Refers to an egl_window*, requires >= 2.0.16
         /// </summary>
         public IntPtr egl_window;
-
+        
         /// <summary>
         ///     Refers to an xdg_surface*, requires >= 2.0.16
         /// </summary>
         public IntPtr xdg_surface;
-
+        
         /// <summary>
         ///     Refers to an xdg_toplevel*, requires >= 2.0.18
         /// </summary>

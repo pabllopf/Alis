@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Util;
@@ -50,10 +49,10 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
         {
             Debug.Assert(vertices.Count > 3);
             Debug.Assert(vertices.IsCounterClockWise());
-
+            
             return TriangulatePolygon(vertices);
         }
-
+        
         /// <summary>
         ///     Triangulates the polygon using the specified vertices
         /// </summary>
@@ -65,7 +64,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
             Vector2 lowerInt = new Vector2();
             Vector2 upperInt = new Vector2(); // intersection points
             int lowerIndex = 0, upperIndex = 0;
-
+            
             for (int i = 0; i < vertices.Count; ++i)
             {
                 if (Reflex(i, vertices))
@@ -77,7 +76,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
                         ProcessEdgeIntersection(i, j, vertices, ref lowerDist, ref lowerInt, ref lowerIndex);
                         ProcessEdgeIntersection(i, j, vertices, ref upperDist, ref upperInt, ref upperIndex);
                     }
-
+                    
                     if (lowerIndex == (upperIndex + 1) % vertices.Count)
                     {
                         HandleNoVerticesToConnect(i, lowerIndex, upperIndex, lowerInt, upperInt, vertices, list);
@@ -86,16 +85,16 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
                     {
                         HandleVerticesToConnect(i, lowerIndex, upperIndex, vertices, list);
                     }
-
+                    
                     return list;
                 }
             }
-
+            
             HandleConvexPolygon(vertices, list);
-
+            
             return list;
         }
-
+        
         /// <summary>
         ///     Processes the edge intersection using the specified i
         /// </summary>
@@ -111,7 +110,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
                 RightOn(At(i - 1, vertices), At(i, vertices), At(j - 1, vertices)))
             {
                 Vector2 p = Line.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices), At(j - 1, vertices));
-
+                
                 if (Right(At(i + 1, vertices), At(i, vertices), p))
                 {
                     float d = SquareDist(At(i, vertices), p);
@@ -124,7 +123,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
                 }
             }
         }
-
+        
         /// <summary>
         ///     Handles the no vertices to connect using the specified i
         /// </summary>
@@ -138,16 +137,16 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
         private static void HandleNoVerticesToConnect(int i, int lowerIndex, int upperIndex, Vector2 lowerInt, Vector2 upperInt, Vertices vertices, List<Vertices> list)
         {
             Vector2 p = (lowerInt + upperInt) / 2;
-
+            
             Vertices lowerPoly = Copy(i, upperIndex, vertices);
             lowerPoly.Add(p);
             Vertices upperPoly = Copy(lowerIndex, i, vertices);
             upperPoly.Add(p);
-
+            
             list.AddRange(TriangulatePolygon(lowerPoly));
             list.AddRange(TriangulatePolygon(upperPoly));
         }
-
+        
         /// <summary>
         ///     Handles the vertices to connect using the specified i
         /// </summary>
@@ -162,7 +161,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
             int bestIndex = FindBestIndex(i, lowerIndex, upperIndex, vertices);
             DecomposeIntoPolygons(i, bestIndex, vertices, list);
         }
-
+        
         /// <summary>
         ///     Adjusts the upper index using the specified upper index
         /// </summary>
@@ -176,7 +175,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
                 upperIndex += verticesCount;
             }
         }
-
+        
         /// <summary>
         ///     Finds the best index using the specified i
         /// </summary>
@@ -189,7 +188,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
         {
             double highestScore = 0;
             int bestIndex = lowerIndex;
-
+            
             for (int j = lowerIndex; j <= upperIndex; ++j)
             {
                 if (CanSee(i, j, vertices))
@@ -202,10 +201,10 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
                     }
                 }
             }
-
+            
             return bestIndex;
         }
-
+        
         /// <summary>
         ///     Computes the score using the specified i
         /// </summary>
@@ -232,10 +231,10 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
             {
                 score += 1;
             }
-
+            
             return score;
         }
-
+        
         /// <summary>
         ///     Decomposes the into polygons using the specified i
         /// </summary>
@@ -247,11 +246,11 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
         {
             Vertices lowerPoly = Copy(i, bestIndex, vertices);
             Vertices upperPoly = Copy(bestIndex, i, vertices);
-
+            
             list.AddRange(TriangulatePolygon(lowerPoly));
             list.AddRange(TriangulatePolygon(upperPoly));
         }
-
+        
         /// <summary>
         ///     Handles the convex polygon using the specified vertices
         /// </summary>
@@ -271,7 +270,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
                 list.Add(vertices);
             }
         }
-
+        
         /// <summary>
         ///     Ats the i
         /// </summary>
@@ -283,7 +282,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
             int s = vertices.Count;
             return vertices[i < 0 ? s - 1 - (-i - 1) % s : i % s];
         }
-
+        
         /// <summary>
         ///     Copies the i
         /// </summary>
@@ -297,17 +296,17 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
             {
                 j += vertices.Count;
             }
-
+            
             Vertices p = new Vertices(j);
-
+            
             for (; i <= j; ++i)
             {
                 p.Add(At(i, vertices));
             }
-
+            
             return p;
         }
-
+        
         /// <summary>
         ///     Describes whether can see
         /// </summary>
@@ -321,10 +320,10 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
             {
                 return false;
             }
-
+            
             return !HasIntersectingLines(i, j, vertices);
         }
-
+        
         /// <summary>
         ///     Describes whether is valid visibility
         /// </summary>
@@ -334,7 +333,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
         private static bool IsValidVisibility(int index, Vertices vertices) => !(Reflex(index, vertices)
             ? LeftOn(At(index, vertices), At(index - 1, vertices), At(index + 1, vertices)) && RightOn(At(index, vertices), At(index + 1, vertices), At(index - 1, vertices))
             : RightOn(At(index, vertices), At(index + 1, vertices), At(index - 1, vertices)) || LeftOn(At(index, vertices), At(index - 1, vertices), At(index + 1, vertices)));
-
+        
         /// <summary>
         ///     Describes whether has intersecting lines
         /// </summary>
@@ -350,16 +349,16 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
                 {
                     continue; // ignore incident edges
                 }
-
+                
                 if (Line.LineIntersect(At(i, vertices), At(j, vertices), At(k, vertices), At(k + 1, vertices), true, true, out _))
                 {
                     return true;
                 }
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Describes whether reflex
         /// </summary>
@@ -367,7 +366,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
         /// <param name="vertices">The vertices</param>
         /// <returns>The bool</returns>
         private static bool Reflex(int i, Vertices vertices) => Right(i, vertices);
-
+        
         /// <summary>
         ///     Describes whether right
         /// </summary>
@@ -376,7 +375,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
         /// <returns>The bool</returns>
         private static bool Right(int i, Vertices vertices) =>
             Right(At(i - 1, vertices), At(i, vertices), At(i + 1, vertices));
-
+        
         /// <summary>
         ///     Describes whether left
         /// </summary>
@@ -385,7 +384,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
         private static bool Left(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) > 0;
-
+        
         /// <summary>
         ///     Describes whether left on
         /// </summary>
@@ -394,7 +393,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
         private static bool LeftOn(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) >= 0;
-
+        
         /// <summary>
         ///     Describes whether right
         /// </summary>
@@ -403,7 +402,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
         private static bool Right(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) < 0;
-
+        
         /// <summary>
         ///     Describes whether right on
         /// </summary>
@@ -412,7 +411,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.BayaZit
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
         private static bool RightOn(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) <= 0;
-
+        
         /// <summary>
         ///     Squares the dist using the specified a
         /// </summary>

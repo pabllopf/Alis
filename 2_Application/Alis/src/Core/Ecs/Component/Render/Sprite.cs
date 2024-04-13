@@ -47,41 +47,41 @@ namespace Alis.Core.Ecs.Component.Render
         ///     The image
         /// </summary>
         public Image Image;
-
+        
         /// <summary>
         ///     The texture path
         /// </summary>
         public string TexturePath;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         public Sprite()
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         /// <param name="texturePath">The texture path</param>
         public Sprite(string texturePath) => TexturePath = texturePath;
-
+        
         /// <summary>
         ///     The level
         /// </summary>
         public int Depth { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the flip
         /// </summary>
         public RendererFlips Flips { get; set; }
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The sprite builder</returns>
         public SpriteBuilder Builder() => new SpriteBuilder();
-
+        
         /// <summary>
         ///     Inits this instance
         /// </summary>
@@ -93,7 +93,7 @@ namespace Alis.Core.Ecs.Component.Render
                 Logger.Info($"Load sprite od '{TexturePath}'");
             }
         }
-
+        
         /// <summary>
         ///     Awakes this instance
         /// </summary>
@@ -101,7 +101,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             VideoGame.Instance.GraphicManager.Attach(this);
         }
-
+        
         /// <summary>
         ///     Exits this instance
         /// </summary>
@@ -109,7 +109,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             VideoGame.Instance.GraphicManager.UnAttach(this);
         }
-
+        
         /// <summary>
         ///     Renders the renderer
         /// </summary>
@@ -118,16 +118,16 @@ namespace Alis.Core.Ecs.Component.Render
         public void Render(IntPtr renderer, Camera camera)
         {
             Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
-
+            
             RectangleI dstRect = new RectangleI(
                 (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2 - (camera.Viewport.x - camera.Viewport.w / 2) + Camera.CameraBorder),
                 (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2 - (camera.Viewport.y - camera.Viewport.h / 2) + Camera.CameraBorder),
                 (int) (w * GameObject.Transform.Scale.X),
                 (int) (h * GameObject.Transform.Scale.Y));
-
+            
             Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);
         }
-
+        
         /// <summary>
         ///     Renders the renderer
         /// </summary>
@@ -135,13 +135,13 @@ namespace Alis.Core.Ecs.Component.Render
         public void Render(IntPtr renderer)
         {
             Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
-
+            
             RectangleI dstRect = new RectangleI(
                 (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2),
                 (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2),
                 (int) (w * GameObject.Transform.Scale.X),
                 (int) (h * GameObject.Transform.Scale.Y));
-
+            
             Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);
         }
     }

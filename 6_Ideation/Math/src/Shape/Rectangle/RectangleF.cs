@@ -41,22 +41,22 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
         ///     The
         /// </summary>
         public float x;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public float y;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public float w;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public float h;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="RectangleF" /> class
         /// </summary>

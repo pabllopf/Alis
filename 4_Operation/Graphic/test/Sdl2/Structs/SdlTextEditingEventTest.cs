@@ -48,15 +48,15 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             // Arrange
             int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
-
+            
             TextEditingEvent textEditingEvent = new TextEditingEvent();
-
+            
             // Act
             string result = textEditingEvent.Text;
-
+            
             // Assert
             Assert.NotEqual("", result);
-
+            
             Sdl.Quit();
         }
     }

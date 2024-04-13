@@ -46,14 +46,14 @@ namespace Alis.Core.Aspect.Time.Test
         {
             // Arrange
             Clock clock = new Clock();
-
+            
             // Act
             clock.Start();
-
+            
             // Assert
             Assert.True(clock.ElapsedMilliseconds >= 0);
         }
-
+        
         /// <summary>
         ///     Tests that stop should stop stopwatch
         /// </summary>
@@ -62,15 +62,15 @@ namespace Alis.Core.Aspect.Time.Test
         {
             // Arrange
             Clock clock = new Clock();
-
+            
             // Act
             clock.Start();
             clock.Stop();
-
+            
             // Assert
             Assert.True(clock.ElapsedMilliseconds >= 0);
         }
-
+        
         /// <summary>
         ///     Tests that reset should reset stopwatch
         /// </summary>
@@ -79,15 +79,15 @@ namespace Alis.Core.Aspect.Time.Test
         {
             // Arrange
             Clock clock = new Clock();
-
+            
             // Act
             clock.Start();
             clock.Reset();
-
+            
             // Assert
             Assert.True(clock.ElapsedMilliseconds == 0);
         }
-
+        
         /// <summary>
         ///     Tests that elapsed should return elapsed time
         /// </summary>
@@ -96,16 +96,16 @@ namespace Alis.Core.Aspect.Time.Test
         {
             // Arrange
             Clock clock = new Clock();
-
+            
             // Act
             clock.Start();
             Thread.Sleep(1000); // Sleep for 1 second
             clock.Stop();
-
+            
             // Assert
             Assert.True(clock.Elapsed.TotalSeconds >= 1);
         }
-
+        
         /// <summary>
         ///     Tests that elapsed milliseconds should return elapsed milliseconds
         /// </summary>
@@ -114,16 +114,16 @@ namespace Alis.Core.Aspect.Time.Test
         {
             // Arrange
             Clock clock = new Clock();
-
+            
             // Act
             clock.Start();
             Thread.Sleep(1000); // Sleep for 1 second
             clock.Stop();
-
+            
             // Assert
             Assert.True(clock.ElapsedMilliseconds >= 1000);
         }
-
+        
         /// <summary>
         ///     Tests that elapsed ticks should return elapsed ticks
         /// </summary>
@@ -132,16 +132,16 @@ namespace Alis.Core.Aspect.Time.Test
         {
             // Arrange
             Clock clock = new Clock();
-
+            
             // Act
             clock.Start();
             Thread.Sleep(1000); // Sleep for 1 second
             clock.Stop();
-
+            
             // Assert
             Assert.True(clock.ElapsedTicks >= TimeSpan.TicksPerSecond);
         }
-
+        
         /// <summary>
         ///     Tests that elapsed seconds should return elapsed seconds
         /// </summary>
@@ -150,12 +150,12 @@ namespace Alis.Core.Aspect.Time.Test
         {
             // Arrange
             Clock clock = new Clock();
-
+            
             // Act
             clock.Start();
             Thread.Sleep(1000); // Sleep for 1 second
             clock.Stop();
-
+            
             // Assert
             Assert.True(clock.ElapsedSeconds >= 1);
         }

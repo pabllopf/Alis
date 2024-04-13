@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SecureBoolTest.cs
+//  File:SecureBoolTests.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -44,11 +44,11 @@ namespace Alis.Core.Aspect.Security.Test
         {
             SecureBool secureBool = new SecureBool(true);
             Assert.True((bool) secureBool);
-
+            
             secureBool = new SecureBool();
             Assert.False((bool) secureBool);
         }
-
+        
         /// <summary>
         ///     Tests that test secure bool implicit conversion
         /// </summary>
@@ -57,11 +57,11 @@ namespace Alis.Core.Aspect.Security.Test
         {
             SecureBool secureBool = true;
             Assert.True((bool) secureBool);
-
+            
             secureBool = false;
             Assert.False((bool) secureBool);
         }
-
+        
         /// <summary>
         ///     Tests that test secure bool equality operator
         /// </summary>
@@ -71,11 +71,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureBool secureBool1 = true;
             SecureBool secureBool2 = true;
             Assert.True(secureBool1 == secureBool2);
-
+            
             secureBool2 = false;
             Assert.False(secureBool1 == secureBool2);
         }
-
+        
         /// <summary>
         ///     Tests that test secure bool inequality operator
         /// </summary>
@@ -85,11 +85,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureBool secureBool1 = true;
             SecureBool secureBool2 = false;
             Assert.True(secureBool1 != secureBool2);
-
+            
             secureBool2 = true;
             Assert.False(secureBool1 != secureBool2);
         }
-
+        
         /// <summary>
         ///     Tests that test secure bool not operator
         /// </summary>
@@ -98,11 +98,11 @@ namespace Alis.Core.Aspect.Security.Test
         {
             SecureBool secureBool = true;
             Assert.False(!secureBool);
-
+            
             secureBool = false;
             Assert.True(!secureBool);
         }
-
+        
         /// <summary>
         ///     Tests that test secure bool equals method
         /// </summary>
@@ -112,11 +112,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureBool secureBool1 = true;
             SecureBool secureBool2 = true;
             Assert.True(secureBool1.Equals(secureBool2));
-
+            
             secureBool2 = false;
             Assert.False(secureBool1.Equals(secureBool2));
         }
-
+        
         /// <summary>
         ///     Tests that test secure bool get hash code method
         /// </summary>
@@ -126,11 +126,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureBool secureBool1 = true;
             SecureBool secureBool2 = true;
             Assert.Equal(secureBool1.GetHashCode(), secureBool2.GetHashCode());
-
+            
             secureBool2 = false;
             Assert.NotEqual(secureBool1.GetHashCode(), secureBool2.GetHashCode());
         }
-
+        
         /// <summary>
         ///     Tests that test secure bool to string method
         /// </summary>
@@ -139,7 +139,7 @@ namespace Alis.Core.Aspect.Security.Test
         {
             SecureBool secureBool = true;
             Assert.Equal("True", secureBool.ToString());
-
+            
             secureBool = false;
             Assert.Equal("False", secureBool.ToString());
         }

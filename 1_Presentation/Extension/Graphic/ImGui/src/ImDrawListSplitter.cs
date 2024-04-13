@@ -38,12 +38,12 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The current
         /// </summary>
         public int Current;
-
+        
         /// <summary>
         ///     The count
         /// </summary>
         public int Count;
-
+        
         /// <summary>
         ///     The channels
         /// </summary>

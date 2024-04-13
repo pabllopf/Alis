@@ -80,19 +80,19 @@ namespace Alis.Core.Physic.Figure
             {
                 throw new ArgumentOutOfRangeException(nameof(width), @"Width must be more than 0");
             }
-
+            
             if (height <= 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(height), @"Height must be more than 0");
             }
-
+            
             Vertices rectangleVertices = Polygon.CreateRectangle(width / 2, height / 2);
-
+            
             if (rectangleVertices.Count <= 1)
             {
                 throw new ArgumentOutOfRangeException(nameof(rectangleVertices), "Too few points to be a polygon");
             }
-
+            
             AddFixture(new PolygonShape(rectangleVertices, 1));
         }
     }

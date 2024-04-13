@@ -53,22 +53,22 @@ namespace Alis.Core.Aspect.Thread.Test
                     System.Threading.Thread.Sleep(10); // Task that sleeps for 1 second
                 }
             }, cts.Token);
-
+            
             // Act
             threadManager.StartThread(threadTask);
-
+            
             //wait 1s
             System.Threading.Thread.Sleep(100);
-
+            
             Assert.Equal(1, threadManager.GetThreadCount());
-
+            
             // stop the thread
             threadManager.StopAllThreads();
-
+            
             // Assert
             Assert.Equal(0, threadManager.GetThreadCount());
         }
-
+        
         /// <summary>
         ///     Tests that stop all threads should stop all threads
         /// </summary>
@@ -85,7 +85,7 @@ namespace Alis.Core.Aspect.Thread.Test
                     System.Threading.Thread.Sleep(15); // Task that sleeps for 1 second
                 }
             }, cts1.Token);
-
+            
             CancellationTokenSource cts2 = new CancellationTokenSource();
             ThreadTask threadTask2 = new ThreadTask(token =>
             {
@@ -94,20 +94,20 @@ namespace Alis.Core.Aspect.Thread.Test
                     System.Threading.Thread.Sleep(120); // Task that sleeps for 1 second
                 }
             }, cts2.Token);
-
+            
             // Act
             threadManager.StartThread(threadTask1);
             threadManager.StartThread(threadTask2);
-
+            
             System.Threading.Thread.Sleep(10); // Wait for threads to start
-
+            
             threadManager.StopAllThreads();
-
+            
             // Assert
             Assert.Equal(0, threadManager.GetThreadCount());
         }
-
-
+        
+        
         /// <summary>
         ///     Tests that get thread count should return correct count
         /// </summary>
@@ -124,7 +124,7 @@ namespace Alis.Core.Aspect.Thread.Test
                     System.Threading.Thread.Sleep(12); // Task that sleeps for 1 second
                 }
             }, cts1.Token);
-
+            
             CancellationTokenSource cts2 = new CancellationTokenSource();
             ThreadTask threadTask2 = new ThreadTask(token =>
             {
@@ -133,25 +133,25 @@ namespace Alis.Core.Aspect.Thread.Test
                     System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
                 }
             }, cts2.Token);
-
+            
             // Act
             threadManager.StartThread(threadTask1);
             threadManager.StartThread(threadTask2);
-
+            
             // wait the threads to end
             System.Threading.Thread.Sleep(19);
-
+            
             Assert.Equal(2, threadManager.GetThreadCount());
-
+            
             //end the threads
             threadManager.StopAllThreads();
-
+            
             System.Threading.Thread.Sleep(100);
-
+            
             // Assert
             Assert.Equal(0, threadManager.GetThreadCount());
         }
-
+        
         /// <summary>
         ///     Tests that start thread v 2 should start new thread
         /// </summary>
@@ -168,25 +168,25 @@ namespace Alis.Core.Aspect.Thread.Test
                     System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
                 }
             }, cts2.Token);
-
+            
             // Act
             manager.StartThread(threadTask2);
-
+            
             //wait 1s
             System.Threading.Thread.Sleep(100);
-
+            
             // Assert
             Assert.Equal(1, manager.GetThreadCount());
-
+            
             // stop the thread
             manager.StopAllThreads();
-
+            
             System.Threading.Thread.Sleep(100);
-
+            
             // Assert
             Assert.Equal(0, manager.GetThreadCount());
         }
-
+        
         /// <summary>
         ///     Tests that stop thread should stop specific thread
         /// </summary>
@@ -203,19 +203,19 @@ namespace Alis.Core.Aspect.Thread.Test
                     System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
                 }
             }, cts2.Token);
-
+            
             // Act
             manager.StartThread(threadTask2);
-
+            
             // Act
             manager.StopThread(threadTask2);
-
+            
             System.Threading.Thread.Sleep(100);
-
+            
             // Assert
             Assert.Equal(0, manager.GetThreadCount());
         }
-
+        
         /// <summary>
         ///     Tests that stop all threads v 2 should stop all threads
         /// </summary>
@@ -224,7 +224,7 @@ namespace Alis.Core.Aspect.Thread.Test
         {
             // Arrange
             ThreadManager manager = new ThreadManager();
-
+            
             CancellationTokenSource cts1 = new CancellationTokenSource();
             ThreadTask threadTask1 = new ThreadTask(token =>
             {
@@ -233,7 +233,7 @@ namespace Alis.Core.Aspect.Thread.Test
                     System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
                 }
             }, cts1.Token);
-
+            
             CancellationTokenSource cts2 = new CancellationTokenSource();
             ThreadTask threadTask2 = new ThreadTask(token =>
             {
@@ -242,19 +242,19 @@ namespace Alis.Core.Aspect.Thread.Test
                     System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
                 }
             }, cts2.Token);
-
+            
             manager.StartThread(threadTask1);
             manager.StartThread(threadTask2);
-
+            
             // Act
             manager.StopAllThreads();
-
+            
             System.Threading.Thread.Sleep(100);
-
+            
             // Assert
             Assert.Equal(0, manager.GetThreadCount());
         }
-
+        
         /// <summary>
         ///     Tests that get thread count should return correct thread count
         /// </summary>
@@ -263,7 +263,7 @@ namespace Alis.Core.Aspect.Thread.Test
         {
             // Arrange
             ThreadManager manager = new ThreadManager();
-
+            
             CancellationTokenSource cts1 = new CancellationTokenSource();
             ThreadTask threadTask1 = new ThreadTask(token =>
             {
@@ -272,7 +272,7 @@ namespace Alis.Core.Aspect.Thread.Test
                     System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
                 }
             }, cts1.Token);
-
+            
             CancellationTokenSource cts2 = new CancellationTokenSource();
             ThreadTask threadTask2 = new ThreadTask(token =>
             {
@@ -281,18 +281,18 @@ namespace Alis.Core.Aspect.Thread.Test
                     System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
                 }
             }, cts2.Token);
-
+            
             manager.StartThread(threadTask1);
             manager.StartThread(threadTask2);
-
+            
             Assert.Equal(2, manager.GetThreadCount());
-
+            
             // Act
             manager.StopThread(threadTask1);
             manager.StopThread(threadTask2);
-
+            
             System.Threading.Thread.Sleep(100);
-
+            
             // Assert
             Assert.Equal(0, manager.GetThreadCount());
         }

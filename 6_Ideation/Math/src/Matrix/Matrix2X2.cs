@@ -40,12 +40,12 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     The col
         /// </summary>
         public Vector2 Ex;
-
+        
         /// <summary>
         ///     The col
         /// </summary>
         public Vector2 Ey;
-
+        
         /// <summary>
         ///     Construct this matrix using scalars.
         /// </summary>
@@ -54,7 +54,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             Ex = new Vector2(a11, a21);
             Ey = new Vector2(a12, a22);
         }
-
+        
         /// <summary>
         ///     Construct this matrix using an angle.
         ///     This matrix becomes an orthonormal rotation matrix.
@@ -65,7 +65,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             Ex = new Vector2(c, -s);
             Ey = new Vector2(s, c);
         }
-
+        
         /// <summary>
         ///     Initialize this matrix using columns.
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             Ex = c1;
             Ey = c2;
         }
-
+        
         /// <summary>
         ///     Set this to the identity matrix.
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             Ex = new Vector2(1.0f, 0.0f);
             Ey = new Vector2(0.0f, 1.0f);
         }
-
+        
         /// <summary>
         ///     Set this matrix to all zeros.
         /// </summary>
@@ -92,12 +92,12 @@ namespace Alis.Core.Aspect.Math.Matrix
             Ex = new Vector2(0.0f, 0.0f);
             Ey = new Vector2(0.0f, 0.0f);
         }
-
+        
         /// <summary>
         ///     Extract the angle from this matrix (assumed to be a rotation matrix).
         /// </summary>
         public float GetAngle() => (float) System.Math.Atan2(Ex.Y, Ex.X);
-
+        
         /// <summary>
         ///     Compute the inverse of this matrix, such that inv(A) * A = identity.
         /// </summary>
@@ -107,11 +107,11 @@ namespace Alis.Core.Aspect.Math.Matrix
             float col2X = Ey.X;
             float col1Y = Ex.Y;
             float col2Y = Ey.Y;
-
+            
             float det = col1X * col2Y - col2X * col1Y;
             //Box2DxDebug.Assert(det != 0.0f);
             det = 1.0f / det;
-
+            
             Matrix2X2 matrix2X2 = new Matrix2X2(
                 det * col2Y,
                 -det * col2X,
@@ -120,7 +120,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             );
             return matrix2X2;
         }
-
+        
         /// <summary>
         ///     Solve A * x = b, where b is a column vector. This is more efficient
         ///     than computing the inverse in one-shot cases.
@@ -140,7 +140,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             );
             return x;
         }
-
+        
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
@@ -152,7 +152,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             c.Set(a.Ex + b.Ex, a.Ey + b.Ey);
             return c;
         }
-
+        
         /// <summary>
         ///     Gets the value of the inverse
         /// </summary>
@@ -166,7 +166,7 @@ namespace Alis.Core.Aspect.Math.Matrix
                 {
                     det = 1.0f / det;
                 }
-
+                
                 Matrix2X2 result = new Matrix2X2(
                     det * d,
                     -det * c,

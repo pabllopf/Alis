@@ -59,10 +59,10 @@ namespace Alis.Core.Physic.Collision.TOI
         {
             int count = cache.Count;
             Debug.Assert((0 < count) && (count < 3));
-
+            
             sweepA.GetTransform(out Transform xfA, t1);
             sweepB.GetTransform(out Transform xfB, t1);
-
+            
             if (count == 1)
             {
                 localPoint = Vector2.Zero;
@@ -80,18 +80,18 @@ namespace Alis.Core.Physic.Collision.TOI
                 type = SeparationFunctionType.FaceB;
                 Vector2 localPointB1 = proxyB.Vertices[cache.IndexB[0]];
                 Vector2 localPointB2 = proxyB.Vertices[cache.IndexB[1]];
-
+                
                 Vector2 a = localPointB2 - localPointB1;
                 axis = new Vector2(a.Y, -a.X);
                 axis = Vector2.Normalize(axis);
                 Vector2 normal = MathUtils.Mul(ref xfB.Rotation, axis);
-
+                
                 localPoint = 0.5f * (localPointB1 + localPointB2);
                 Vector2 pointB = MathUtils.Mul(ref xfB, localPoint);
-
+                
                 Vector2 localPointA = proxyA.Vertices[cache.IndexA[0]];
                 Vector2 pointA = MathUtils.Mul(ref xfA, localPointA);
-
+                
                 float s = Vector2.Dot(pointA - pointB, normal);
                 if (s < 0.0f)
                 {
@@ -104,18 +104,18 @@ namespace Alis.Core.Physic.Collision.TOI
                 type = SeparationFunctionType.FaceA;
                 Vector2 localPointA1 = proxyA.Vertices[cache.IndexA[0]];
                 Vector2 localPointA2 = proxyA.Vertices[cache.IndexA[1]];
-
+                
                 Vector2 a = localPointA2 - localPointA1;
                 axis = new Vector2(a.Y, -a.X);
                 axis = Vector2.Normalize(axis);
                 Vector2 normal = MathUtils.Mul(ref xfA.Rotation, axis);
-
+                
                 localPoint = 0.5f * (localPointA1 + localPointA2);
                 Vector2 pointA = MathUtils.Mul(ref xfA, localPoint);
-
+                
                 Vector2 localPointB = proxyB.Vertices[cache.IndexB[0]];
                 Vector2 pointB = MathUtils.Mul(ref xfB, localPointB);
-
+                
                 float s = Vector2.Dot(pointB - pointA, normal);
                 if (s < 0.0f)
                 {
@@ -123,7 +123,7 @@ namespace Alis.Core.Physic.Collision.TOI
                 }
             }
         }
-
+        
         /// <summary>
         ///     Finds the min separation using the specified index a
         /// </summary>
@@ -144,67 +144,67 @@ namespace Alis.Core.Physic.Collision.TOI
         {
             sweepA.GetTransform(out Transform xfA, t);
             sweepB.GetTransform(out Transform xfB, t);
-
+            
             switch (type)
             {
                 case SeparationFunctionType.Points:
                 {
                     Vector2 axisA = MathUtils.MulT(ref xfA.Rotation, axis);
                     Vector2 axisB = MathUtils.MulT(ref xfB.Rotation, -axis);
-
+                    
                     indexA = proxyA.GetSupport(axisA);
                     indexB = proxyB.GetSupport(axisB);
-
+                    
                     Vector2 localPointA = proxyA.Vertices[indexA];
                     Vector2 localPointB = proxyB.Vertices[indexB];
-
+                    
                     Vector2 pointA = MathUtils.Mul(ref xfA, localPointA);
                     Vector2 pointB = MathUtils.Mul(ref xfB, localPointB);
-
+                    
                     float separation = Vector2.Dot(pointB - pointA, axis);
                     return separation;
                 }
-
+                
                 case SeparationFunctionType.FaceA:
                 {
                     Vector2 normal = MathUtils.Mul(ref xfA.Rotation, axis);
                     Vector2 pointA = MathUtils.Mul(ref xfA, localPoint);
-
+                    
                     Vector2 axisB = MathUtils.MulT(ref xfB.Rotation, -normal);
-
+                    
                     indexA = -1;
                     indexB = proxyB.GetSupport(axisB);
-
+                    
                     Vector2 localPointB = proxyB.Vertices[indexB];
                     Vector2 pointB = MathUtils.Mul(ref xfB, localPointB);
-
+                    
                     float separation = Vector2.Dot(pointB - pointA, normal);
                     return separation;
                 }
-
+                
                 case SeparationFunctionType.FaceB:
                 {
                     Vector2 normal = MathUtils.Mul(ref xfB.Rotation, axis);
                     Vector2 pointB = MathUtils.Mul(ref xfB, localPoint);
-
+                    
                     Vector2 axisA = MathUtils.MulT(ref xfA.Rotation, -normal);
-
+                    
                     indexB = -1;
                     indexA = proxyA.GetSupport(axisA);
-
+                    
                     Vector2 localPointA = proxyA.Vertices[indexA];
                     Vector2 pointA = MathUtils.Mul(ref xfA, localPointA);
-
+                    
                     float separation = Vector2.Dot(pointA - pointB, normal);
                     return separation;
                 }
             }
-
+            
             indexA = 0;
             indexB = 0;
             return 0.0f;
         }
-
+        
         /// <summary>
         ///     Evaluates the index a
         /// </summary>
@@ -225,28 +225,28 @@ namespace Alis.Core.Physic.Collision.TOI
         {
             sweepA.GetTransform(out Transform xfA, t);
             sweepB.GetTransform(out Transform xfB, t);
-
+            
             switch (type)
             {
                 case SeparationFunctionType.Points:
                 {
                     Vector2 localPointA = proxyA.Vertices[indexA];
                     Vector2 localPointB = proxyB.Vertices[indexB];
-
+                    
                     Vector2 pointA = MathUtils.Mul(ref xfA, localPointA);
                     Vector2 pointB = MathUtils.Mul(ref xfB, localPointB);
                     float separation = Vector2.Dot(pointB - pointA, axis);
-
+                    
                     return separation;
                 }
                 case SeparationFunctionType.FaceA:
                 {
                     Vector2 normal = MathUtils.Mul(ref xfA.Rotation, axis);
                     Vector2 pointA = MathUtils.Mul(ref xfA, localPoint);
-
+                    
                     Vector2 localPointB = proxyB.Vertices[indexB];
                     Vector2 pointB = MathUtils.Mul(ref xfB, localPointB);
-
+                    
                     float separation = Vector2.Dot(pointB - pointA, normal);
                     return separation;
                 }
@@ -254,10 +254,10 @@ namespace Alis.Core.Physic.Collision.TOI
                 {
                     Vector2 normal = MathUtils.Mul(ref xfB.Rotation, axis);
                     Vector2 pointB = MathUtils.Mul(ref xfB, localPoint);
-
+                    
                     Vector2 localPointA = proxyA.Vertices[indexA];
                     Vector2 pointA = MathUtils.Mul(ref xfA, localPointA);
-
+                    
                     float separation = Vector2.Dot(pointA - pointB, normal);
                     return separation;
                 }

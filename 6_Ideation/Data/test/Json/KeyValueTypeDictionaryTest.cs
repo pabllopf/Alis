@@ -360,7 +360,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that indexer getter throws not supported exception
+        ///     Tests that indexer getter throws not supported exception
         /// </summary>
         [Fact]
         public void IndexerGetter_ThrowsNotSupportedException()
@@ -378,7 +378,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that indexer setter throws not supported exception
+        ///     Tests that indexer setter throws not supported exception
         /// </summary>
         [Fact]
         public void IndexerSetter_ThrowsNotSupportedException()

@@ -38,12 +38,12 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The specs
         /// </summary>
         public ImGuiTableColumnSortSpecs* Specs;
-
+        
         /// <summary>
         ///     The specs count
         /// </summary>
         public int SpecsCount;
-
+        
         /// <summary>
         ///     The specs dirty
         /// </summary>

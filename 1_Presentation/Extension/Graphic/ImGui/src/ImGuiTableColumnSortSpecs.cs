@@ -38,17 +38,17 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The column user id
         /// </summary>
         public uint ColumnUserId;
-
+        
         /// <summary>
         ///     The column index
         /// </summary>
         public short ColumnIndex;
-
+        
         /// <summary>
         ///     The sort order
         /// </summary>
         public short SortOrder;
-
+        
         /// <summary>
         ///     The sort direction
         /// </summary>

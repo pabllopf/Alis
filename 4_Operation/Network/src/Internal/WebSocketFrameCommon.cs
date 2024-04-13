@@ -41,7 +41,7 @@ namespace Alis.Core.Network.Internal
         ///     The mask key length
         /// </summary>
         public const int MaskKeyLength = 4;
-
+        
         /// <summary>
         ///     Mutate payload with the mask key
         ///     This is a reversible process
@@ -55,13 +55,13 @@ namespace Alis.Core.Network.Internal
             {
                 throw new MaskKeyLengthException($"MaskKey key must be {MaskKeyLength} bytes");
             }
-
+            
             byte[] buffer = payload.Array;
             byte[] maskKeyArray = maskKey.Array;
             int payloadOffset = payload.Offset;
             int payloadCountPlusOffset = payload.Count + payloadOffset;
             int maskKeyOffset = maskKey.Offset;
-
+            
             // apply the mask key (this is a reversible process so no need to copy the payload)
             for (int i = payloadOffset; i < payloadCountPlusOffset; i++)
             {

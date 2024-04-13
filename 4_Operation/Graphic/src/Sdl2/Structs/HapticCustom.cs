@@ -43,71 +43,71 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The type
         /// </summary>
         public readonly ushort type;
-
+        
         /// <summary>
         ///     The direction
         /// </summary>
         public HapticDirection direction;
-
+        
         // Replay
         /// <summary>
         ///     The length
         /// </summary>
         public readonly uint length;
-
+        
         /// <summary>
         ///     The delay
         /// </summary>
         public readonly ushort delay;
-
+        
         // Trigger
         /// <summary>
         ///     The button
         /// </summary>
         public readonly ushort button;
-
+        
         /// <summary>
         ///     The interval
         /// </summary>
         public readonly ushort interval;
-
+        
         // Custom
         /// <summary>
         ///     The channels
         /// </summary>
         public readonly byte channels;
-
+        
         /// <summary>
         ///     The period
         /// </summary>
         public readonly ushort period;
-
+        
         /// <summary>
         ///     The samples
         /// </summary>
         public readonly ushort samples;
-
+        
         /// <summary>
         ///     The data
         /// </summary>
         public IntPtr data;
-
+        
         // Envelope
         /// <summary>
         ///     The attack length
         /// </summary>
         public readonly ushort attackLength;
-
+        
         /// <summary>
         ///     The attack level
         /// </summary>
         public readonly ushort attackLevel;
-
+        
         /// <summary>
         ///     The fade length
         /// </summary>
         public readonly ushort fadeLength;
-
+        
         /// <summary>
         ///     The fade level
         /// </summary>

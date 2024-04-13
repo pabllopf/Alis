@@ -42,7 +42,7 @@ namespace Alis.Core.Network
         ///     Raised when a Pong frame is received
         /// </summary>
         event EventHandler<PongEventArgs> Pong;
-
+        
         /// <summary>
         ///     Sends a ping frame
         /// </summary>

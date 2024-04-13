@@ -40,13 +40,13 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The data
         /// </summary>
         public readonly byte* Data;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="NullTerminatedString" /> class
         /// </summary>
         /// <param name="data">The data</param>
         public NullTerminatedString(byte* data) => Data = data;
-
+        
         /// <summary>
         ///     Returns the string
         /// </summary>
@@ -60,10 +60,10 @@ namespace Alis.Extension.Graphic.ImGui
                 length += 1;
                 ptr += 1;
             }
-
+            
             return Encoding.ASCII.GetString(Data, length);
         }
-
+        
         /// <summary>
         /// </summary>
         /// <param name="nts"></param>

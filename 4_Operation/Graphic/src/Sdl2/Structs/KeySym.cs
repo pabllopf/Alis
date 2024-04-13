@@ -43,17 +43,17 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The scancode
         /// </summary>
         public readonly SdlScancode scancode;
-
+        
         /// <summary>
         ///     The sym
         /// </summary>
         public readonly KeyCode sym;
-
+        
         /// <summary>
         ///     The mod
         /// </summary>
         public readonly KeyMods mod;
-
+        
         /// <summary>
         ///     The unicode
         /// </summary>

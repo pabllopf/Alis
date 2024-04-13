@@ -46,18 +46,18 @@ namespace Alis.Core.Network.Internal
             NumBytesRead = numBytesRead;
             NumBytesLeftToRead = numBytesLeftToRead;
         }
-
+        
         /// <summary>
         ///     Gets the value of the web socket frame
         /// </summary>
         public WebSocketFrame WebSocketFrame { get; }
-
+        
         // Number of bytes read in the last read operation
         /// <summary>
         ///     Gets the value of the num bytes read
         /// </summary>
         public int NumBytesRead { get; }
-
+        
         // Number of bytes remaining to read before we are done reading the entire frame
         /// <summary>
         ///     Gets the value of the num bytes left to read

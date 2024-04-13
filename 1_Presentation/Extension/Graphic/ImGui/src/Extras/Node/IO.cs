@@ -38,7 +38,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     The emulate three button mouse
         /// </summary>
         public EmulateThreeButtonMouse EmulateThreeButtonMouse;
-
+        
         /// <summary>
         ///     The link detach with modifier click
         /// </summary>

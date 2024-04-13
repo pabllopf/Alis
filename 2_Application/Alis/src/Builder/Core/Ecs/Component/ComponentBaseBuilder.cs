@@ -40,20 +40,20 @@ namespace Alis.Builder.Core.Ecs.Component
         ///     The component base
         /// </summary>
         private readonly Alis.Core.Ecs.Component.Component component;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="ComponentBaseBuilder" /> class
         /// </summary>
         /// <param name="component">The component base</param>
         public ComponentBaseBuilder(Alis.Core.Ecs.Component.Component component) => this.component = component;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="ComponentBaseBuilder" /> class
         /// </summary>
         public ComponentBaseBuilder()
         {
         }
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>

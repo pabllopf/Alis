@@ -59,10 +59,10 @@ namespace Alis.Core.Network.Internal
             byte finBitSetAsByte = isLastFrame ? (byte) 0x80 : (byte) 0x00;
             byte byte1 = (byte) (finBitSetAsByte | (byte) opCode);
             memoryStream.WriteByte(byte1);
-
+            
             // NB, set the mask flag if we are constructing a client frame
             byte maskBitSetAsByte = isClient ? (byte) 0x80 : (byte) 0x00;
-
+            
             // depending on the size of the length we want to write it as a byte, ushort or ulong
             if (fromPayload.Count < 126)
             {
@@ -81,7 +81,7 @@ namespace Alis.Core.Network.Internal
                 memoryStream.WriteByte(byte2);
                 BinaryReaderWriter.WriteULong((ulong) fromPayload.Count, memoryStream, false);
             }
-
+            
             // if we are creating a client frame then we MUST mack the payload as per the spec
             if (isClient)
             {
@@ -89,12 +89,12 @@ namespace Alis.Core.Network.Internal
                 RandomNumberGenerator rand = RandomNumberGenerator.Create();
                 rand.GetBytes(maskKey);
                 memoryStream.Write(maskKey, 0, maskKey.Length);
-
+                
                 // mask the payload
                 ArraySegment<byte> maskKeyArraySegment = new ArraySegment<byte>(maskKey, 0, maskKey.Length);
                 WebSocketFrameCommon.ToggleMask(maskKeyArraySegment, fromPayload);
             }
-
+            
             memoryStream.Write(fromPayload.Array, fromPayload.Offset, fromPayload.Count);
         }
     }

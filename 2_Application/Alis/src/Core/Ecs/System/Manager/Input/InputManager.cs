@@ -49,22 +49,22 @@ namespace Alis.Core.Ecs.System.Manager.Input
         ///     The sdl game controller axis
         /// </summary>
         private readonly List<GameControllerAxis> axis = new List<GameControllerAxis>((GameControllerAxis[]) Enum.GetValues(typeof(GameControllerAxis)));
-
+        
         /// <summary>
         ///     The sdl game controller button
         /// </summary>
         private readonly List<GameControllerButton> buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
-
+        
         /// <summary>
         ///     The sdl event
         /// </summary>
         private Event sdlEvent;
-
+        
         /// <summary>
         ///     Temp list of keys
         /// </summary>
         private List<KeyCode> tempListOfKeys;
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -73,14 +73,14 @@ namespace Alis.Core.Ecs.System.Manager.Input
             Logger.Trace();
             tempListOfKeys = new List<KeyCode>();
         }
-
+        
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
         public override void OnDispatchEvents()
         {
             Sdl.JoystickUpdate();
-
+            
             while (Sdl.PollEvent(out sdlEvent) != 0)
             {
                 HandleSdlQuitEvent();
@@ -89,10 +89,10 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 HandleSdlJoyButtonDownEvent();
                 HandleSdlJoyAxisMotionEvent();
             }
-
+            
             NotifyKeyHold();
         }
-
+        
         /// <summary>
         ///     Handles the sdl quit event
         /// </summary>
@@ -103,7 +103,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 VideoGame.Instance.Exit();
             }
         }
-
+        
         /// <summary>
         ///     Handles the sdl keyup event
         /// </summary>
@@ -112,7 +112,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
             if (sdlEvent.type == EventType.Keyup)
             {
                 KeyCode indexUp = sdlEvent.key.keySym.sym;
-
+                
                 if (tempListOfKeys.Contains(indexUp))
                 {
                     tempListOfKeys.Remove(indexUp);
@@ -120,7 +120,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 }
             }
         }
-
+        
         /// <summary>
         ///     Handles the sdl keydown event
         /// </summary>
@@ -136,7 +136,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 }
             }
         }
-
+        
         /// <summary>
         ///     Handles the sdl joy button down event
         /// </summary>
@@ -152,7 +152,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 }
             }
         }
-
+        
         /// <summary>
         ///     Handles the sdl joy axis motion event
         /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 }
             }
         }
-
+        
         /// <summary>
         ///     Notifies the key hold
         /// </summary>
@@ -179,7 +179,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 NotifyKeyHold(key);
             }
         }
-
+        
         /// <summary>
         ///     Notifies the key press using the specified key
         /// </summary>
@@ -191,7 +191,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 currentSceneGameObject.Components.ForEach(i => i.OnPressKey(key));
             }
         }
-
+        
         /// <summary>
         ///     Notifies the key release using the specified key
         /// </summary>
@@ -203,7 +203,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 currentSceneGameObject.Components.ForEach(i => i.OnReleaseKey(key));
             }
         }
-
+        
         /// <summary>
         ///     Notifies the key hold using the specified key
         /// </summary>

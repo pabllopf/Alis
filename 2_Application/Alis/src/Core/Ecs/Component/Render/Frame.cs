@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Logger.Trace();
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Frame" /> class
         /// </summary>
@@ -55,12 +55,12 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Logger.Trace();
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the file path
         /// </summary>
         public string FilePath { get; set; }
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>

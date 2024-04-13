@@ -44,32 +44,32 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
         ///     Specifies the case-sensitive name of the parameter.
         /// </summary>
         public readonly string Name;
-
+        
         /// <summary>
         ///     Specifies the parameter type (either attribute or uniform).
         /// </summary>
         public readonly ParamType ParamType;
-
+        
         /// <summary>
         ///     Specifies the C# equivalent of the GLSL data type.
         /// </summary>
         public readonly Type Type;
-
+        
         /// <summary>
         ///     Specifies the location of the parameter in the OpenGL program.
         /// </summary>
         public int Location;
-
+        
         /// <summary>
         ///     Specifies the OpenGL program ID.
         /// </summary>
         public uint Program;
-
+        
         /// <summary>
         ///     The program id
         /// </summary>
         public uint ProgramId;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GlShaderProgramParam" /> class
         /// </summary>
@@ -82,7 +82,7 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
             ParamType = paramType;
             Name = name;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GlShaderProgramParam" /> class
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
             ProgramId = Program;
             Location = location;
         }
-
+        
         /// <summary>
         ///     Gets the location of the parameter in a compiled OpenGL program.
         /// </summary>
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
                 Location = ParamType == ParamType.Uniform ? program.GetUniformLocation(Name) : program.GetAttributeLocation(Name);
             }
         }
-
+        
         /// <summary>
         ///     Sets the value using the specified param
         /// </summary>
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
             EnsureType<bool>();
             GlUniform1I(Location, param ? 1 : 0);
         }
-
+        
         /// <summary>
         ///     Sets the value using the specified param
         /// </summary>
@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
             EnsureType<int>();
             GlUniform1I(Location, param);
         }
-
+        
         /// <summary>
         ///     Sets the value using the specified param
         /// </summary>
@@ -140,7 +140,7 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
             EnsureType<float>();
             GlUniform1F(Location, param);
         }
-
+        
         /// <summary>
         ///     Sets the value using the specified param
         /// </summary>
@@ -150,7 +150,7 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
             EnsureType<Vector2>();
             GlUniform2F(Location, param.X, param.Y);
         }
-
+        
         /// <summary>
         ///     Sets the value using the specified param
         /// </summary>
@@ -160,7 +160,7 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
             EnsureType<Vector3>();
             GlUniform3F(Location, param.X, param.Y, param.Z);
         }
-
+        
         /// <summary>
         ///     Sets the value using the specified param
         /// </summary>
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
             EnsureType<Vector4>();
             GlUniform4F(Location, param.X, param.Y, param.Z, param.W);
         }
-
+        
         /// <summary>
         ///     Sets the value using the specified param
         /// </summary>
@@ -180,7 +180,7 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
             EnsureType<Matrix4X4>();
             UniformMatrix4Fv(Location, param);
         }
-
+        
         /// <summary>
         ///     Sets the value using the specified param
         /// </summary>
@@ -223,7 +223,7 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
                 throw new ArgumentException("param was an unexpected length.", nameof(param));
             }
         }
-
+        
         /// <summary>
         ///     Ensures the type
         /// </summary>

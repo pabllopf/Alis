@@ -42,17 +42,17 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         ///     The offset
         /// </summary>
         private readonly int size;
-
+        
         /// <summary>
         ///     The frame buffer
         /// </summary>
         private byte[] frameBuffer;
-
+        
         /// <summary>
         ///     The offset
         /// </summary>
         private int offset;
-
+        
         /// <summary>
         ///     Creates an empty audio frame with fixed sample count and given bit depth using signed PCM format.
         /// </summary>
@@ -65,46 +65,46 @@ namespace Alis.Extension.Encode.FFMeg.Audio
             {
                 throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
             }
-
+            
             if (channels <= 0)
             {
                 throw new InvalidDataException("Channel count has to be bigger than 0!");
             }
-
+            
             if (sampleCount <= 0)
             {
                 throw new InvalidDataException("Sample count has to be bigger than 0!");
             }
-
+            
             Channels = channels;
             SampleCount = sampleCount;
             BytesPerSample = bitDepth / 8;
             size = sampleCount * channels * BytesPerSample;
-
+            
             frameBuffer = new byte[size];
             RawData = frameBuffer;
         }
-
+        
         /// <summary>
         ///     Number of channels
         /// </summary>
         public int Channels { get; }
-
+        
         /// <summary>
         ///     Number of audio samples this frame can contain
         /// </summary>
         public int SampleCount { get; }
-
+        
         /// <summary>
         ///     Bit depth (Bytes per sample)
         /// </summary>
         public int BytesPerSample { get; }
-
+        
         /// <summary>
         ///     Number of loaded audio samples when calling Load()
         /// </summary>
         public int LoadedSamples { get; private set; }
-
+        
         /// <summary>
         ///     Clears the frame buffer
         /// </summary>
@@ -112,12 +112,12 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         {
             frameBuffer = null;
         }
-
+        
         /// <summary>
         ///     Raw audio data in signed PCM format
         /// </summary>
         public byte[] RawData { get; private set; }
-
+        
         /// <summary>
         ///     Loads audio samples from stream.
         /// </summary>
@@ -125,7 +125,7 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         public bool Load(Stream str)
         {
             offset = 0;
-
+            
             while (offset < size)
             {
                 int r = str.Read(frameBuffer, offset, size - offset);
@@ -135,15 +135,15 @@ namespace Alis.Extension.Encode.FFMeg.Audio
                     {
                         return false;
                     }
-
+                    
                     break;
                 }
-
+                
                 offset += r;
             }
-
+            
             LoadedSamples = offset / (BytesPerSample * Channels);
-
+            
             // Adjust RawData length when changed
             if (RawData.Length != offset)
             {
@@ -151,10 +151,10 @@ namespace Alis.Extension.Encode.FFMeg.Audio
                 Array.Copy(frameBuffer, 0, newRawData, 0, offset);
                 RawData = newRawData;
             }
-
+            
             return true;
         }
-
+        
         /// <summary>
         ///     Returns part of array that contains the sample value
         /// </summary>

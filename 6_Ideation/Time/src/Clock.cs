@@ -41,37 +41,37 @@ namespace Alis.Core.Aspect.Time
         ///     The stopwatch
         /// </summary>
         private readonly Stopwatch stopwatch = new Stopwatch();
-
+        
         /// <summary>
         ///     Gets the value of the elapsed
         /// </summary>
         public TimeSpan Elapsed => stopwatch.Elapsed;
-
+        
         /// <summary>
         ///     Gets the value of the elapsed milliseconds
         /// </summary>
         public long ElapsedMilliseconds => stopwatch.ElapsedMilliseconds;
-
+        
         /// <summary>
         ///     Gets the value of the elapsed ticks
         /// </summary>
         public long ElapsedTicks => stopwatch.ElapsedTicks;
-
+        
         /// <summary>
         ///     Gets the value of the elapsed seconds
         /// </summary>
         public double ElapsedSeconds => stopwatch.Elapsed.TotalSeconds;
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public void Start() => stopwatch.Start();
-
+        
         /// <summary>
         ///     Stops this instance
         /// </summary>
         public void Stop() => stopwatch.Stop();
-
+        
         /// <summary>
         ///     Resets this instance
         /// </summary>

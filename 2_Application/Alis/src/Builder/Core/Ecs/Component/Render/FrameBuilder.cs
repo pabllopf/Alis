@@ -44,13 +44,13 @@ namespace Alis.Builder.Core.Ecs.Component.Render
         ///     The frame
         /// </summary>
         private readonly Frame frame = new Frame();
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The frame</returns>
         public Frame Build() => frame;
-
+        
         /// <summary>
         ///     Files the path using the specified value
         /// </summary>

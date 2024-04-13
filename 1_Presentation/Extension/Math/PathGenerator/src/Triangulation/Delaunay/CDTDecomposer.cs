@@ -53,35 +53,35 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
         public static List<Vertices> ConvexPartition(Vertices vertices)
         {
             Debug.Assert(vertices.Count > 3);
-
+            
             Polygon.Polygon poly = new Polygon.Polygon();
-
+            
             foreach (Vector2 vertex in vertices)
             {
                 poly.Points.Add(new TriangulationPoint(vertex.X, vertex.Y));
             }
-
+            
             if (vertices.Holes != null)
             {
                 foreach (Vertices holeVertices in vertices.Holes)
                 {
                     Polygon.Polygon hole = new Polygon.Polygon();
-
+                    
                     foreach (Vector2 vertex in holeVertices)
                     {
                         hole.Points.Add(new TriangulationPoint(vertex.X, vertex.Y));
                     }
-
+                    
                     poly.AddHole(hole);
                 }
             }
-
+            
             DtSweepContext tcx = new DtSweepContext();
             tcx.PrepareTriangulation(poly);
             DtSweep.Triangulate(tcx);
-
+            
             List<Vertices> results = new List<Vertices>();
-
+            
             foreach (DelaunayTriangle triangle in poly.Triangles)
             {
                 Vertices v = new Vertices();
@@ -89,10 +89,10 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
                 {
                     v.Add(new Vector2((float) p.X, (float) p.Y));
                 }
-
+                
                 results.Add(v);
             }
-
+            
             return results;
         }
     }

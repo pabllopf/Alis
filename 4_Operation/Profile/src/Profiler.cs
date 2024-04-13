@@ -40,12 +40,12 @@ namespace Alis.Core.Profile
         ///     The elapsed time
         /// </summary>
         private TimeSpan elapsedTime;
-
+        
         /// <summary>
         ///     The start time
         /// </summary>
         private DateTime startTime;
-
+        
         /// <summary>
         ///     Starts the profiling
         /// </summary>
@@ -53,7 +53,7 @@ namespace Alis.Core.Profile
         {
             startTime = DateTime.Now;
         }
-
+        
         /// <summary>
         ///     Stops the profiling
         /// </summary>
@@ -61,7 +61,7 @@ namespace Alis.Core.Profile
         {
             elapsedTime = DateTime.Now - startTime;
         }
-
+        
         /// <summary>
         ///     Gets the elapsed time
         /// </summary>

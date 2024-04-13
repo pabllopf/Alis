@@ -43,7 +43,7 @@ namespace Alis.Extension.Plugin.Test
         public void Dispose()
         {
         }
-
+        
         /// <summary>
         ///     Initializes this instance
         /// </summary>
@@ -52,7 +52,7 @@ namespace Alis.Extension.Plugin.Test
         {
             Logger.Info("PluginSample initialized");
         }
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>
@@ -61,7 +61,7 @@ namespace Alis.Extension.Plugin.Test
         {
             Logger.Info("PluginSample updated");
         }
-
+        
         /// <summary>
         ///     Renders this instance
         /// </summary>
@@ -70,7 +70,7 @@ namespace Alis.Extension.Plugin.Test
         {
             Logger.Info("PluginSample rendered");
         }
-
+        
         /// <summary>
         ///     Shutdowns this instance
         /// </summary>

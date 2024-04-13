@@ -47,15 +47,15 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Rectangle
             float y = 2.0f;
             float w = 3.0f;
             float h = 4.0f;
-
+            
             RectangleF rectangle = new RectangleF(x, y, w, h);
-
+            
             Assert.Equal(x, rectangle.x);
             Assert.Equal(y, rectangle.y);
             Assert.Equal(w, rectangle.w);
             Assert.Equal(h, rectangle.h);
         }
-
+        
         /// <summary>
         ///     Tests that test rectangle f constructor v 2
         /// </summary>
@@ -66,9 +66,9 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Rectangle
             float y = 2.0f;
             float w = 3.0f;
             float h = 4.0f;
-
+            
             RectangleF rectangle = new RectangleF(x, y, w, h);
-
+            
             Assert.Equal(x, rectangle.x);
             Assert.Equal(y, rectangle.y);
             Assert.Equal(w, rectangle.w);

@@ -41,12 +41,12 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The
         /// </summary>
         public readonly byte r;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public readonly byte g;
-
+        
         /// <summary>
         ///     The
         /// </summary>

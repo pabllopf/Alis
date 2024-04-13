@@ -41,12 +41,12 @@ namespace Alis.Core.Physic.Collision.Distance
         ///     The radius
         /// </summary>
         internal readonly float Radius;
-
+        
         /// <summary>
         ///     The vertices
         /// </summary>
         internal readonly Vector2[] Vertices;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="DistanceProxy" /> class
         /// </summary>
@@ -65,34 +65,34 @@ namespace Alis.Core.Physic.Collision.Distance
                     Radius = circle.RadiusPrivate;
                 }
                     break;
-
+                
                 case ShapeType.Polygon:
                 {
                     PolygonShape polygon = (PolygonShape) shape;
                     Vertices = new Vector2[polygon.VerticesPrivate.Count];
-
+                    
                     for (int i = 0; i < polygon.VerticesPrivate.Count; i++)
                     {
                         Vertices[i] = polygon.VerticesPrivate[i];
                     }
-
+                    
                     Radius = polygon.RadiusPrivate;
                 }
                     break;
-
+                
                 case ShapeType.Chain:
                 {
                     ChainShape chain = (ChainShape) shape;
                     Debug.Assert((0 <= index) && (index < chain.Vertices.Count));
-
+                    
                     Vertices = new Vector2[2];
                     Vertices[0] = chain.Vertices[index];
                     Vertices[1] = index + 1 < chain.Vertices.Count ? chain.Vertices[index + 1] : chain.Vertices[0];
-
+                    
                     Radius = chain.RadiusPrivate;
                 }
                     break;
-
+                
                 case ShapeType.Edge:
                 {
                     EdgeShape edge = (EdgeShape) shape;
@@ -102,12 +102,12 @@ namespace Alis.Core.Physic.Collision.Distance
                     Radius = edge.RadiusPrivate;
                 }
                     break;
-
+                
                 default:
                     throw new NotSupportedException();
             }
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="DistanceProxy" /> class
         /// </summary>
@@ -118,7 +118,7 @@ namespace Alis.Core.Physic.Collision.Distance
             Vertices = vertices;
             Radius = radius;
         }
-
+        
         /// <summary>Get the supporting vertex index in the given direction.</summary>
         /// <param name="direction">The direction.</param>
         public int GetSupport(Vector2 direction)
@@ -134,10 +134,10 @@ namespace Alis.Core.Physic.Collision.Distance
                     bestValue = value;
                 }
             }
-
+            
             return bestIndex;
         }
-
+        
         /// <summary>
         ///     Gets the vertex using the specified index
         /// </summary>

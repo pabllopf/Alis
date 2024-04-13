@@ -46,18 +46,18 @@ namespace Alis.Core.Ecs.System.Setting.Physic
         ///     Gets or sets the value of the debug mode
         /// </summary>
         public bool DebugMode { get; set; } = false;
-
+        
         /// <summary>
         ///     Gets or sets the value of the debug color
         /// </summary>
         public Color DebugColor { get; set; }
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The physic setting builder</returns>
         public PhysicSettingBuilder Builder() => new PhysicSettingBuilder();
-
+        
         /// <summary>
         ///     Gets or sets the value of the gravity
         /// </summary>

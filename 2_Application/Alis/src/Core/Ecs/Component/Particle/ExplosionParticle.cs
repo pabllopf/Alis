@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Component.Particle
         /// </summary>
         /// <returns>The explosion particle builder</returns>
         public ExplosionParticleBuilder Builder() => new ExplosionParticleBuilder();
-
+        
         /// <summary>
         ///     Inits this instance
         /// </summary>

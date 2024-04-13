@@ -49,17 +49,17 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.FlipCode
         ///     The tmp
         /// </summary>
         private static Vector2 _tmpA;
-
+        
         /// <summary>
         ///     The tmp
         /// </summary>
         private static Vector2 _tmpB;
-
+        
         /// <summary>
         ///     The tmp
         /// </summary>
         private static Vector2 _tmpC;
-
+        
         /// <summary>
         ///     Decompose the polygon into triangles.
         ///     Properties:
@@ -70,21 +70,21 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.FlipCode
         {
             Debug.Assert(vertices.Count > 3);
             Debug.Assert(vertices.IsCounterClockWise());
-
+            
             int[] polygon = new int[vertices.Count];
-
+            
             for (int v = 0; v < vertices.Count; v++)
             {
                 polygon[v] = v;
             }
-
+            
             int nv = vertices.Count;
-
+            
             // Remove nv-2 Vertices, creating 1 triangle every time
             int count = 2 * nv; /* error detection */
-
+            
             List<Vertices> result = new List<Vertices>();
-
+            
             for (int v = nv - 1; nv > 2;)
             {
                 // If we loop, it is probably a non-simple polygon 
@@ -93,34 +93,34 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.FlipCode
                     // Triangulate: ERROR - probable bad polygon!
                     return new List<Vertices>();
                 }
-
+                
                 // Three consecutive vertices in current polygon, <u,v,w>
                 int u = v;
                 if (nv <= u)
                 {
                     u = 0; // Previous 
                 }
-
+                
                 v = u + 1;
                 if (nv <= v)
                 {
                     v = 0; // New v   
                 }
-
+                
                 int w = v + 1;
                 if (nv <= w)
                 {
                     w = 0; // GetNext 
                 }
-
+                
                 _tmpA = vertices[polygon[u]];
                 _tmpB = vertices[polygon[v]];
                 _tmpC = vertices[polygon[w]];
-
+                
                 if (Snip(vertices, u, v, w, nv, polygon))
                 {
                     int s, t;
-
+                    
                     // Output Triangle
                     Vertices triangle = new Vertices(3)
                     {
@@ -129,23 +129,23 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.FlipCode
                         _tmpC
                     };
                     result.Add(triangle);
-
+                    
                     // Remove v from remaining polygon 
                     for (s = v, t = v + 1; t < nv; s++, t++)
                     {
                         polygon[s] = polygon[t];
                     }
-
+                    
                     nv--;
-
+                    
                     // Reset error detection counter
                     count = 2 * nv;
                 }
             }
-
+            
             return result;
         }
-
+        
         /// <summary>Check if the point Position is inside the triangle defined by the points A, B, C</summary>
         /// <param name="a">The A point.</param>
         /// <param name="b">The B point.</param>
@@ -156,16 +156,16 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.FlipCode
         {
             //A cross bp
             float abp = (c.X - b.X) * (p.Y - b.Y) - (c.Y - b.Y) * (p.X - b.X);
-
+            
             //A cross ap
             float aap = (b.X - a.X) * (p.Y - a.Y) - (b.Y - a.Y) * (p.X - a.X);
-
+            
             //b cross cp
             float bcp = (a.X - c.X) * (p.Y - c.Y) - (a.Y - c.Y) * (p.X - c.X);
-
+            
             return (abp >= 0.0f) && (bcp >= 0.0f) && (aap >= 0.0f);
         }
-
+        
         /// <summary>Cut a the contour and add a triangle into V to describe the location of the cut</summary>
         /// <param name="contour">The list of points defining the polygon</param>
         /// <param name="u">The index of the first point</param>
@@ -180,22 +180,22 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.FlipCode
             {
                 return false;
             }
-
+            
             for (int p = 0; p < n; p++)
             {
                 if (p == u || p == v || p == w)
                 {
                     continue;
                 }
-
+                
                 Vector2 point = contour[vv[p]];
-
+                
                 if (InsideTriangle(ref _tmpA, ref _tmpB, ref _tmpC, ref point))
                 {
                     return false;
                 }
             }
-
+            
             return true;
         }
     }

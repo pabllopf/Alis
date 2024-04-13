@@ -59,22 +59,22 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation
             {
                 return new List<Vertices> {vertices};
             }
-
+            
             if (!ValidateCounterClockwise(vertices, algorithm))
             {
                 vertices.Reverse();
             }
-
+            
             List<Vertices> results = GetConvexPartition(vertices, algorithm, tolerance);
-
+            
             if (discardAndFixInvalid)
             {
                 results.RemoveAll(polygon => !ValidatePolygon(polygon));
             }
-
+            
             return results;
         }
-
+        
         /// <summary>
         ///     Describes whether validate counter clockwise
         /// </summary>
@@ -86,12 +86,12 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation
             return algorithm switch
             {
                 TriangulationAlgorithm.EarClip => !vertices.IsCounterClockWise(),
-                TriangulationAlgorithm.BayaZit =>  vertices.IsCounterClockWise(),
+                TriangulationAlgorithm.BayaZit => vertices.IsCounterClockWise(),
                 TriangulationAlgorithm.FlipCode => vertices.IsCounterClockWise(),
                 _ => true
             };
         }
-
+        
         /// <summary>
         ///     Gets the convex partition using the specified vertices
         /// </summary>
@@ -113,7 +113,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation
                 _ => throw new ArgumentOutOfRangeException(nameof(algorithm))
             };
         }
-
+        
         /// <summary>
         ///     Describes whether validate polygon
         /// </summary>
@@ -122,7 +122,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation
         private static bool ValidatePolygon(Vertices polygon)
         {
             PolygonError errorCode = polygon.CheckPolygon();
-
+            
             if (errorCode == PolygonError.InvalidAmountOfVertices ||
                 errorCode == PolygonError.AreaTooSmall ||
                 errorCode == PolygonError.SideTooSmall ||
@@ -130,18 +130,18 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation
             {
                 return false;
             }
-
+            
             if (errorCode == PolygonError.NotCounterClockWise)
             {
                 polygon.Reverse();
             }
-
+            
             if (errorCode == PolygonError.NotConvex)
             {
                 polygon = GiftWrap.GetConvexHull(polygon);
                 return ValidatePolygon(polygon);
             }
-
+            
             return true;
         }
     }

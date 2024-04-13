@@ -51,10 +51,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Core.Ecs.Entity.GameObject.GameObject gameObject2 = new Core.Ecs.Entity.GameObject.GameObject();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnFixedUpdate();
-
+            
             // Assert
             // Here you would assert that the OnFixedUpdate method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -64,7 +64,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on dispatch events calls on dispatch events on each component
         /// </summary>
@@ -77,10 +77,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnDispatchEvents();
-
+            
             // Assert
             // Here you would assert that the OnDispatchEvents method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -90,7 +90,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on calculate calls on calculate on each component
         /// </summary>
@@ -103,10 +103,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnCalculate();
-
+            
             // Assert
             // Here you would assert that the OnCalculate method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -116,7 +116,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on draw calls on draw on each component
         /// </summary>
@@ -129,10 +129,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnDraw();
-
+            
             // Assert
             // Here you would assert that the OnDraw method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -142,7 +142,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on gui calls on gui on each component
         /// </summary>
@@ -155,10 +155,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnGui();
-
+            
             // Assert
             // Here you would assert that the OnGui method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -168,7 +168,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on reset calls on reset on each component
         /// </summary>
@@ -181,10 +181,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnReset();
-
+            
             // Assert
             // Here you would assert that the OnReset method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -194,7 +194,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on stop calls on stop on each component
         /// </summary>
@@ -207,10 +207,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnStop();
-
+            
             // Assert
             // Here you would assert that the OnStop method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -220,7 +220,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on exit calls on exit on each component
         /// </summary>
@@ -233,10 +233,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnExit();
-
+            
             // Assert
             // Here you would assert that the OnExit method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -246,7 +246,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on destroy calls on destroy on each component
         /// </summary>
@@ -259,10 +259,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnDestroy();
-
+            
             // Assert
             // Here you would assert that the OnDestroy method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -272,7 +272,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on enable calls on enable on each component
         /// </summary>
@@ -285,10 +285,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnEnable();
-
+            
             // Assert
             // Here you would assert that the OnEnable method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -298,7 +298,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on init calls on init on each component
         /// </summary>
@@ -311,10 +311,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnInit();
-
+            
             // Assert
             // Here you would assert that the OnInit method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -324,7 +324,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on awake calls on awake on each component
         /// </summary>
@@ -337,10 +337,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnAwake();
-
+            
             // Assert
             // Here you would assert that the OnAwake method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -350,7 +350,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on start calls on start on each component
         /// </summary>
@@ -363,10 +363,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnStart();
-
+            
             // Assert
             // Here you would assert that the OnStart method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -376,7 +376,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on before update calls on before update on each component
         /// </summary>
@@ -389,10 +389,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnBeforeUpdate();
-
+            
             // Assert
             // Here you would assert that the OnBeforeUpdate method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -402,7 +402,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on update calls on update on each component
         /// </summary>
@@ -415,10 +415,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnUpdate();
-
+            
             // Assert
             // Here you would assert that the OnUpdate method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -428,7 +428,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on after update calls on after update on each component
         /// </summary>
@@ -441,10 +441,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnAfterUpdate();
-
+            
             // Assert
             // Here you would assert that the OnAfterUpdate method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -454,7 +454,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on before fixed update calls on before fixed update on each component
         /// </summary>
@@ -467,10 +467,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnBeforeFixedUpdate();
-
+            
             // Assert
             // Here you would assert that the OnBeforeFixedUpdate method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -480,7 +480,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on after fixed update calls on after fixed update on each component
         /// </summary>
@@ -493,10 +493,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnAfterFixedUpdate();
-
+            
             // Assert
             // Here you would assert that the OnAfterFixedUpdate method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -506,7 +506,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on dispatch events v 2 calls on dispatch events on each component
         /// </summary>
@@ -519,10 +519,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnDispatchEvents();
-
+            
             // Assert
             // Here you would assert that the OnDispatchEvents method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -532,7 +532,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that on calculate v 2 calls on calculate on each component
         /// </summary>
@@ -545,10 +545,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnCalculate();
-
+            
             // Assert
             // Here you would assert that the OnCalculate method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -558,7 +558,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that remove removes game object from scene
         /// </summary>
@@ -569,15 +569,15 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
             GameObjectSample gameObject = new GameObjectSample();
             scene.Add(gameObject);
-
+            
             // Act
             scene.Remove(gameObject);
-
+            
             // Assert
             // Here you would assert that the GameObject was removed from the Scene
             Assert.DoesNotContain(gameObject, scene.GameObjects);
         }
-
+        
         /// <summary>
         ///     Tests that get returns game object from scene
         /// </summary>
@@ -588,15 +588,15 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
             GameObjectSample gameObject = new GameObjectSample();
             scene.Add(gameObject);
-
+            
             // Act
             GameObjectSample result = scene.Get<GameObjectSample>();
-
+            
             // Assert
             // Here you would assert that the Get method returned the correct GameObject
             Assert.Equal(gameObject, result);
         }
-
+        
         /// <summary>
         ///     Tests that contains returns true when game object is in scene
         /// </summary>
@@ -607,15 +607,15 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
             GameObjectSample gameObject = new GameObjectSample();
             scene.Add(gameObject);
-
+            
             // Act
             bool result = scene.Contains<GameObjectSample>();
-
+            
             // Assert
             // Here you would assert that the Contains method returned true
             Assert.True(result);
         }
-
+        
         /// <summary>
         ///     Tests that clear removes all game objects from scene
         /// </summary>
@@ -628,15 +628,15 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.Clear<GameObjectSample>();
-
+            
             // Assert
             // Here you would assert that the Clear method removed all GameObjects from the Scene
             Assert.Empty(scene.GameObjects);
         }
-
+        
         /// <summary>
         ///     Tests that is enable get set property works
         /// </summary>
@@ -649,11 +649,11 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
                 // Act
                 IsEnable = false
             };
-
+            
             // Assert
             Assert.False(scene.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that name get set property works
         /// </summary>
@@ -666,11 +666,11 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
                 // Act
                 Name = "TestScene"
             };
-
+            
             // Assert
             Assert.Equal("TestScene", scene.Name);
         }
-
+        
         /// <summary>
         ///     Tests that id get set property works
         /// </summary>
@@ -683,11 +683,11 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
                 // Act
                 Id = "123"
             };
-
+            
             // Assert
             Assert.Equal("123", scene.Id);
         }
-
+        
         /// <summary>
         ///     Tests that tag get set property works
         /// </summary>
@@ -700,11 +700,11 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
                 // Act
                 Tag = "TestTag"
             };
-
+            
             // Assert
             Assert.Equal("TestTag", scene.Tag);
         }
-
+        
         /// <summary>
         ///     Tests that on disable calls on disable on each component
         /// </summary>
@@ -717,10 +717,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
-
+            
             // Act
             scene.OnDisable();
-
+            
             // Assert
             // Here you would assert that the OnDisable method was called on each GameObject
             Assert.True(gameObject1.IsEnable);
@@ -730,7 +730,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Assert.NotNull(gameObject1.Id);
             Assert.NotNull(gameObject2.Id);
         }
-
+        
         /// <summary>
         ///     Tests that game objects get set property works
         /// </summary>
@@ -744,14 +744,14 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
                 new GameObjectSample(),
                 new GameObjectSample()
             };
-
+            
             // Act
             scene.GameObjects = gameObjectList;
-
+            
             // Assert
             Assert.Equal(gameObjectList, scene.GameObjects);
         }
-
+        
         /// <summary>
         ///     Tests that game objects add game object to list
         /// </summary>
@@ -761,14 +761,14 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             // Arrange
             Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
             GameObjectSample gameObject = new GameObjectSample();
-
+            
             // Act
             scene.GameObjects.Add(gameObject);
-
+            
             // Assert
             Assert.Contains(gameObject, scene.GameObjects);
         }
-
+        
         /// <summary>
         ///     Tests that game objects remove game object from list
         /// </summary>
@@ -779,14 +779,14 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
             GameObjectSample gameObject = new GameObjectSample();
             scene.GameObjects.Add(gameObject);
-
+            
             // Act
             scene.GameObjects.Remove(gameObject);
-
+            
             // Assert
             Assert.DoesNotContain(gameObject, scene.GameObjects);
         }
-
+        
         /// <summary>
         ///     Tests that game objects clear list
         /// </summary>
@@ -797,10 +797,10 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
             Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
             scene.GameObjects.Add(new GameObjectSample());
             scene.GameObjects.Add(new GameObjectSample());
-
+            
             // Act
             scene.GameObjects.Clear();
-
+            
             // Assert
             Assert.Empty(scene.GameObjects);
         }

@@ -38,7 +38,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The key
         /// </summary>
         public uint Key;
-
+        
         /// <summary>
         ///     The value
         /// </summary>

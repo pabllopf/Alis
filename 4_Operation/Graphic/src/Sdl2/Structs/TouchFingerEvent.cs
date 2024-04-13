@@ -41,47 +41,47 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The type
         /// </summary>
         public readonly uint type;
-
+        
         /// <summary>
         ///     The timestamp
         /// </summary>
         public readonly uint timestamp;
-
+        
         /// <summary>
         ///     The touch id
         /// </summary>
         public readonly long touchId;
-
+        
         /// <summary>
         ///     The finger id
         /// </summary>
         public readonly long fingerId;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public readonly float x;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public readonly float y;
-
+        
         /// <summary>
         ///     The dx
         /// </summary>
         public readonly float dx;
-
+        
         /// <summary>
         ///     The dy
         /// </summary>
         public readonly float dy;
-
+        
         /// <summary>
         ///     The pressure
         /// </summary>
         public readonly float pressure;
-
+        
         /// <summary>
         ///     The window id
         /// </summary>

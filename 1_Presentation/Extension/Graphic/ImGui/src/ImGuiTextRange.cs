@@ -38,7 +38,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The
         /// </summary>
         public byte* B;
-
+        
         /// <summary>
         ///     The
         /// </summary>

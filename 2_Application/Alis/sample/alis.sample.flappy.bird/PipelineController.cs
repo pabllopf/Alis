@@ -47,47 +47,47 @@ namespace Alis.Sample.Flappy.Bird
         ///     The random height
         /// </summary>
         private static int _randomHeight;
-
+        
         /// <summary>
         ///     The random direction
         /// </summary>
         private static int _randomDirection;
-
+        
         /// <summary>
         ///     The generated
         /// </summary>
         private static bool _generated;
-
+        
         /// <summary>
         ///     The velocity
         /// </summary>
         public static float Velocity = 3;
-
+        
         /// <summary>
         ///     The is stop
         /// </summary>
         public static bool IsStop;
-
+        
         /// <summary>
         ///     The box collider
         /// </summary>
         private BoxCollider boxCollider;
-
+        
         /// <summary>
         ///     The data
         /// </summary>
         private byte[] data;
-
+        
         /// <summary>
         ///     The factor velocity
         /// </summary>
         private float factorVelocity = 1.1f;
-
+        
         /// <summary>
         ///     The pos origin
         /// </summary>
         private Transform posOrigin;
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -96,24 +96,24 @@ namespace Alis.Sample.Flappy.Bird
             posOrigin = GameObject.Transform;
             boxCollider = GameObject.Get<BoxCollider>();
             boxCollider.LinearVelocity = new Vector2(-Velocity, 0);
-
+            
             Velocity = 3;
             factorVelocity = 1.1f;
-
+            
             using (RandomNumberGenerator randomGenerator = RandomNumberGenerator.Create())
             {
                 data = new byte[16];
                 randomGenerator.GetBytes(data);
             }
-
+            
             _randomHeight = Math.Abs(BitConverter.ToInt32(data, 0) % 100);
             _randomDirection = Math.Abs(BitConverter.ToInt32(data, 4) % 2);
             Logger.Info($"{GameObject.Name} NUM={_randomHeight} Direction={_randomDirection}");
-
+            
             _generated = true;
             IsStop = false;
         }
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Sample.Flappy.Bird
                 boxCollider.LinearVelocity = new Vector2(0, 0);
                 return;
             }
-
+            
             if ((GameObject.Transform.Position.X <= -27) && !IsStop)
             {
                 if (!_generated)
@@ -136,7 +136,7 @@ namespace Alis.Sample.Flappy.Bird
                     _randomDirection = Math.Abs(BitConverter.ToInt32(data, 4) % 2);
                     Logger.Info($"{GameObject.Name} NUM={_randomHeight} Direction={_randomDirection} velocity={Velocity}");
                 }
-
+                
                 switch (_randomDirection)
                 {
                     case 0:
@@ -156,7 +156,7 @@ namespace Alis.Sample.Flappy.Bird
                 }
             }
         }
-
+        
         /// <summary>
         ///     Ons the after update
         /// </summary>

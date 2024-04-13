@@ -43,57 +43,57 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The flags
         /// </summary>
         public readonly uint flags;
-
+        
         /// <summary>
         ///     The format
         /// </summary>
         public IntPtr format;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public readonly int w;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public readonly int h;
-
+        
         /// <summary>
         ///     The pitch
         /// </summary>
         public readonly int pitch;
-
+        
         /// <summary>
         ///     The pixels
         /// </summary>
         public IntPtr pixels;
-
+        
         /// <summary>
         ///     The userdata
         /// </summary>
         public IntPtr userdata;
-
+        
         /// <summary>
         ///     The locked
         /// </summary>
         public readonly int locked;
-
+        
         /// <summary>
         ///     The list blit map
         /// </summary>
         public IntPtr listBlitMap;
-
+        
         /// <summary>
         ///     The clip rect
         /// </summary>
         public RectangleI clipRect;
-
+        
         /// <summary>
         ///     The map
         /// </summary>
         public IntPtr map;
-
+        
         /// <summary>
         ///     The ref count
         /// </summary>

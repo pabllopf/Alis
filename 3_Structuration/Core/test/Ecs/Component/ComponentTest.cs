@@ -47,14 +47,14 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             IComponent component = new ComponentSample();
-
+            
             // Act
             bool isEnable = component.IsEnable;
-
+            
             // Assert
             Assert.True(isEnable);
         }
-
+        
         /// <summary>
         ///     Tests that name default value is null
         /// </summary>
@@ -63,14 +63,14 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             IComponent component = new ComponentSample();
-
+            
             // Act
             string name = component.Name;
-
+            
             // Assert
             Assert.NotNull(name);
         }
-
+        
         /// <summary>
         ///     Tests that id default value is null
         /// </summary>
@@ -79,14 +79,14 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             IComponent component = new ComponentSample();
-
+            
             // Act
             string id = component.Id;
-
+            
             // Assert
             Assert.NotNull(id);
         }
-
+        
         /// <summary>
         ///     Tests that tag default value is null
         /// </summary>
@@ -95,14 +95,14 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             IComponent component = new ComponentSample();
-
+            
             // Act
             string tag = component.Tag;
-
+            
             // Assert
             Assert.NotNull(tag);
         }
-
+        
         /// <summary>
         ///     Tests that game object default value is null
         /// </summary>
@@ -111,14 +111,14 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             IComponent component = new ComponentSample();
-
+            
             // Act
             IGameObject gameObject = component.GameObject;
-
+            
             // Assert
             Assert.NotNull(gameObject);
         }
-
+        
         /// <summary>
         ///     Tests that attach sets game object
         /// </summary>
@@ -128,14 +128,14 @@ namespace Alis.Core.Test.Ecs.Component
             // Arrange
             IComponent component = new ComponentSample();
             IGameObject gameObject = new GameObject();
-
+            
             // Act
             component.Attach(gameObject);
-
+            
             // Assert
             Assert.Equal(gameObject, component.GameObject);
         }
-
+        
         /// <summary>
         ///     Tests that is enable v 2 default value is false
         /// </summary>
@@ -144,14 +144,14 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             Core.Ecs.Component.Component component = new ComponentSample();
-
+            
             // Act
             bool isEnable = component.IsEnable;
-
+            
             // Assert
             Assert.True(isEnable);
         }
-
+        
         /// <summary>
         ///     Tests that name v 2 default value is null
         /// </summary>
@@ -160,14 +160,14 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             Core.Ecs.Component.Component component = new ComponentSample();
-
+            
             // Act
             string name = component.Name;
-
+            
             // Assert
             Assert.NotNull(name);
         }
-
+        
         /// <summary>
         ///     Tests that id v 2 default value is null
         /// </summary>
@@ -176,14 +176,14 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             Core.Ecs.Component.Component component = new ComponentSample();
-
+            
             // Act
             string id = component.Id;
-
+            
             // Assert
             Assert.NotNull(id);
         }
-
+        
         /// <summary>
         ///     Tests that tag v 2 default value is null
         /// </summary>
@@ -192,14 +192,14 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             Core.Ecs.Component.Component component = new ComponentSample();
-
+            
             // Act
             string tag = component.Tag;
-
+            
             // Assert
             Assert.NotNull(tag);
         }
-
+        
         /// <summary>
         ///     Tests that game object v 2 default value is null
         /// </summary>
@@ -208,14 +208,14 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             Core.Ecs.Component.Component component = new ComponentSample();
-
+            
             // Act
             IGameObject gameObject = component.GameObject;
-
+            
             // Assert
             Assert.NotNull(gameObject);
         }
-
+        
         /// <summary>
         ///     Tests that attach v 2 sets game object
         /// </summary>
@@ -225,14 +225,14 @@ namespace Alis.Core.Test.Ecs.Component
             // Arrange
             Core.Ecs.Component.Component component = new ComponentSample();
             IGameObject gameObject = new GameObject();
-
+            
             // Act
             component.Attach(gameObject);
-
+            
             // Assert
             Assert.Equal(gameObject, component.GameObject);
         }
-
+        
         /// <summary>
         ///     Tests that on enable invoked logger trace called
         /// </summary>
@@ -241,15 +241,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnEnable();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on init invoked logger trace called
         /// </summary>
@@ -258,15 +258,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnInit();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on awake invoked logger trace called
         /// </summary>
@@ -275,15 +275,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnAwake();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on start invoked logger trace called
         /// </summary>
@@ -292,15 +292,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnStart();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on before update invoked logger trace called
         /// </summary>
@@ -309,15 +309,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnBeforeUpdate();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on update invoked logger trace called
         /// </summary>
@@ -326,15 +326,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnUpdate();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on after update invoked logger trace called
         /// </summary>
@@ -343,15 +343,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnAfterUpdate();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on before fixed update invoked logger trace called
         /// </summary>
@@ -360,15 +360,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnBeforeFixedUpdate();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on fixed update invoked logger trace called
         /// </summary>
@@ -377,15 +377,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnFixedUpdate();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on after fixed update invoked logger trace called
         /// </summary>
@@ -394,15 +394,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnAfterFixedUpdate();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on dispatch events invoked logger trace called
         /// </summary>
@@ -411,15 +411,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnDispatchEvents();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on calculate invoked logger trace called
         /// </summary>
@@ -428,15 +428,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnCalculate();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on draw invoked logger trace called
         /// </summary>
@@ -445,15 +445,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnDraw();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on gui invoked logger trace called
         /// </summary>
@@ -462,15 +462,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnGui();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on disable invoked logger trace called
         /// </summary>
@@ -479,15 +479,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnDisable();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on reset invoked logger trace called
         /// </summary>
@@ -496,15 +496,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnReset();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on stop invoked logger trace called
         /// </summary>
@@ -513,15 +513,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnStop();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on exit invoked logger trace called
         /// </summary>
@@ -530,15 +530,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnExit();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on destroy invoked logger trace called
         /// </summary>
@@ -547,15 +547,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnDestroy();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that attach invoked sets game object
         /// </summary>
@@ -565,14 +565,14 @@ namespace Alis.Core.Test.Ecs.Component
             // Arrange
             ComponentSample component = new ComponentSample();
             GameObject gameObject = new GameObject();
-
+            
             // Act
             component.Attach(gameObject);
-
+            
             // Assert
             Assert.Equal(gameObject, component.GameObject);
         }
-
+        
         /// <summary>
         ///     Tests that on enable v 2 invoked logger trace called
         /// </summary>
@@ -581,15 +581,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnEnable();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on init v 2 invoked logger trace called
         /// </summary>
@@ -598,15 +598,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnInit();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on awake v 2 invoked logger trace called
         /// </summary>
@@ -615,15 +615,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnAwake();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on start v 2 invoked logger trace called
         /// </summary>
@@ -632,15 +632,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnStart();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on before update invoked logger trace called
         /// </summary>
@@ -649,15 +649,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnBeforeUpdate();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on update invoked v 2 logger trace called
         /// </summary>
@@ -666,15 +666,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnUpdate();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on collision stay invoked logger trace called
         /// </summary>
@@ -684,15 +684,15 @@ namespace Alis.Core.Test.Ecs.Component
             // Arrange
             ComponentSample component = new ComponentSample();
             GameObject gameObject = new GameObject();
-
+            
             // Act
             component.OnCollisionStay(gameObject);
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on trigger enter invoked logger trace called
         /// </summary>
@@ -702,15 +702,15 @@ namespace Alis.Core.Test.Ecs.Component
             // Arrange
             ComponentSample component = new ComponentSample();
             GameObject gameObject = new GameObject();
-
+            
             // Act
             component.OnTriggerEnter(gameObject);
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on trigger exit invoked logger trace called
         /// </summary>
@@ -720,15 +720,15 @@ namespace Alis.Core.Test.Ecs.Component
             // Arrange
             ComponentSample component = new ComponentSample();
             GameObject gameObject = new GameObject();
-
+            
             // Act
             component.OnTriggerExit(gameObject);
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on trigger stay invoked logger trace called
         /// </summary>
@@ -738,15 +738,15 @@ namespace Alis.Core.Test.Ecs.Component
             // Arrange
             ComponentSample component = new ComponentSample();
             GameObject gameObject = new GameObject();
-
+            
             // Act
             component.OnTriggerStay(gameObject);
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on press down key invoked logger trace called
         /// </summary>
@@ -756,15 +756,15 @@ namespace Alis.Core.Test.Ecs.Component
             // Arrange
             ComponentSample component = new ComponentSample();
             KeyCode key = KeyCode.A;
-
+            
             // Act
             component.OnPressDownKey(key);
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on release key invoked logger trace called
         /// </summary>
@@ -774,15 +774,15 @@ namespace Alis.Core.Test.Ecs.Component
             // Arrange
             ComponentSample component = new ComponentSample();
             KeyCode key = KeyCode.A;
-
+            
             // Act
             component.OnReleaseKey(key);
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on press key invoked logger trace called
         /// </summary>
@@ -792,15 +792,15 @@ namespace Alis.Core.Test.Ecs.Component
             // Arrange
             ComponentSample component = new ComponentSample();
             KeyCode key = KeyCode.A;
-
+            
             // Act
             component.OnPressKey(key);
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on collision enter invoked logger trace called
         /// </summary>
@@ -810,15 +810,15 @@ namespace Alis.Core.Test.Ecs.Component
             // Arrange
             ComponentSample component = new ComponentSample();
             IGameObject gameObject = new GameObject();
-
+            
             // Act
             component.OnCollisionEnter(gameObject);
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on collision exit invoked logger trace called
         /// </summary>
@@ -828,15 +828,15 @@ namespace Alis.Core.Test.Ecs.Component
             // Arrange
             ComponentSample component = new ComponentSample();
             IGameObject gameObject = new GameObject();
-
+            
             // Act
             component.OnCollisionExit(gameObject);
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on enable invoked v 2 logger trace called
         /// </summary>
@@ -845,15 +845,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnEnable();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on init invoked v 2 logger trace called
         /// </summary>
@@ -862,15 +862,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnInit();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on awake invoked v 2 logger trace called
         /// </summary>
@@ -879,15 +879,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnAwake();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on start v 2 invoked logger trace called
         /// </summary>
@@ -896,15 +896,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnStart();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on before update invoked logger trace called
         /// </summary>
@@ -913,15 +913,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnBeforeUpdate();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that on update invoked logger trace called
         /// </summary>
@@ -930,15 +930,15 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-
+            
             // Act
             component.OnUpdate();
-
+            
             // Assert
             Assert.NotNull(component);
             Assert.True(component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that set is enable changes value
         /// </summary>
@@ -948,14 +948,14 @@ namespace Alis.Core.Test.Ecs.Component
             // Arrange
             ComponentSample component = new ComponentSample();
             const bool newValue = false;
-
+            
             // Act
             component.IsEnable = false;
-
+            
             // Assert
             Assert.Equal(newValue, component.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that set name changes value
         /// </summary>
@@ -965,14 +965,14 @@ namespace Alis.Core.Test.Ecs.Component
             // Arrange
             ComponentSample component = new ComponentSample();
             string newValue = "NewComponent";
-
+            
             // Act
             component.Name = newValue;
-
+            
             // Assert
             Assert.Equal(newValue, component.Name);
         }
-
+        
         /// <summary>
         ///     Tests that set id changes value
         /// </summary>
@@ -982,14 +982,14 @@ namespace Alis.Core.Test.Ecs.Component
             // Arrange
             ComponentSample component = new ComponentSample();
             string newValue = "1";
-
+            
             // Act
             component.Id = newValue;
-
+            
             // Assert
             Assert.Equal(newValue, component.Id);
         }
-
+        
         /// <summary>
         ///     Tests that set tag changes value
         /// </summary>
@@ -999,10 +999,10 @@ namespace Alis.Core.Test.Ecs.Component
             // Arrange
             ComponentSample component = new ComponentSample();
             string newValue = "NewTag";
-
+            
             // Act
             component.Tag = newValue;
-
+            
             // Assert
             Assert.Equal(newValue, component.Tag);
         }

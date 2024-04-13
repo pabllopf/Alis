@@ -41,22 +41,22 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The
         /// </summary>
         public readonly byte r;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public readonly byte g;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public readonly byte b;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public readonly byte a;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Color" /> class
         /// </summary>

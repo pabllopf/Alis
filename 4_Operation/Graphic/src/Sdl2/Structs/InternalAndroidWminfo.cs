@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     Refers to an ANativeWindow
         /// </summary>
         public IntPtr window;
-
+        
         /// <summary>
         ///     Refers to an EGLSurface
         /// </summary>

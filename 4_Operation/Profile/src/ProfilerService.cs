@@ -40,12 +40,12 @@ namespace Alis.Core.Profile
         ///     The profile data
         /// </summary>
         private readonly ProfileData profileData;
-
+        
         /// <summary>
         ///     The profiler
         /// </summary>
         private readonly Profiler profiler;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="ProfilerService" /> class
         /// </summary>
@@ -54,7 +54,7 @@ namespace Alis.Core.Profile
             profiler = new Profiler();
             profileData = new ProfileData();
         }
-
+        
         /// <summary>
         ///     Starts the profiling
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Core.Profile
             profileData.CpuUsage = GetCpuUsage();
             profileData.MemoryUsage = GetMemoryUsage();
         }
-
+        
         /// <summary>
         ///     Stops the profiling
         /// </summary>
@@ -78,7 +78,7 @@ namespace Alis.Core.Profile
             profileData.MemoryUsage = GetMemoryUsage();
             return profileData;
         }
-
+        
         /// <summary>
         ///     Gets the cpu usage
         /// </summary>
@@ -89,7 +89,7 @@ namespace Alis.Core.Profile
             // This is a placeholder, replace with actual code
             return cpuUsage;
         }
-
+        
         /// <summary>
         ///     Gets the memory usage
         /// </summary>

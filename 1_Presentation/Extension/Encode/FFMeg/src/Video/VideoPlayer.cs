@@ -45,12 +45,12 @@ namespace Alis.Extension.Encode.FFMeg.Video
         ///     The ffplay
         /// </summary>
         private readonly string ffplay;
-
+        
         /// <summary>
         ///     The ffplayp
         /// </summary>
         private Process ffplayp;
-
+        
         /// <summary>
         ///     Used for playing video data
         /// </summary>
@@ -59,10 +59,10 @@ namespace Alis.Extension.Encode.FFMeg.Video
         public VideoPlayer(string input = null, string ffplayExecutable = "ffplay")
         {
             ffplay = ffplayExecutable;
-
+            
             Filename = input;
         }
-
+        
         /// <summary>
         ///     Disposes this instance
         /// </summary>
@@ -86,7 +86,7 @@ namespace Alis.Extension.Encode.FFMeg.Video
                 }
             }
         }
-
+        
         /// <summary>
         ///     Play video
         /// </summary>
@@ -97,15 +97,15 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidOperationException("Player is already opened for writing frames!");
             }
-
+            
             if (string.IsNullOrEmpty(Filename))
             {
                 throw new InvalidOperationException("No filename was specified!");
             }
-
+            
             FfMpegWrapper.RunCommand(ffplay, $"{extraInputParameters} -i \"{Filename}\"");
         }
-
+        
         /// <summary>
         ///     Play video in background and return the process associated with it
         /// </summary>
@@ -117,21 +117,21 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidOperationException("Player is already opened for writing frames!");
             }
-
+            
             if (string.IsNullOrEmpty(Filename))
             {
                 throw new InvalidOperationException("No filename was specified!");
             }
-
+            
             FfMpegWrapper.OpenOutput(ffplay, $"{extraInputParameters} -i \"{Filename}\"", out Process p);
             if (!runPureBackground)
             {
                 ffplayp = p;
             }
-
+            
             return ffplayp;
         }
-
+        
         /// <summary>
         ///     Open player for writing frames for playing.
         /// </summary>
@@ -147,7 +147,7 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidOperationException("Player is already opened for writing frames!");
             }
-
+            
             try
             {
                 if ((ffplayp != null) && !ffplayp.HasExited)
@@ -158,13 +158,13 @@ namespace Alis.Extension.Encode.FFMeg.Video
             catch
             {
             }
-
+            
             InputDataStream = FfMpegWrapper.OpenInput(ffplay, $"-f rawvideo -video_size {width}:{height} -framerate {framerateFrequency} -pixel_format rgb24 -i -",
                 out ffplayp, showFFplayOutput);
-
+            
             OpenedForWriting = true;
         }
-
+        
         /// <summary>
         ///     Close player for writing frames.
         /// </summary>
@@ -174,7 +174,7 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidOperationException("Player is not opened for writing frames!");
             }
-
+            
             try
             {
                 try
@@ -187,7 +187,7 @@ namespace Alis.Extension.Encode.FFMeg.Video
                 catch
                 {
                 }
-
+                
                 InputDataStream.Dispose();
             }
             finally
@@ -195,7 +195,7 @@ namespace Alis.Extension.Encode.FFMeg.Video
                 OpenedForWriting = false;
             }
         }
-
+        
         /// <summary>
         ///     Get stream for writing and playing video in custom format.
         /// </summary>
@@ -207,7 +207,7 @@ namespace Alis.Extension.Encode.FFMeg.Video
         {
             Stream str = FfMpegWrapper.OpenInput(ffplayExecutable, $"-f {format} {arguments} -i -",
                 out ffplayProcess, showFFplayOutput);
-
+            
             return str;
         }
     }

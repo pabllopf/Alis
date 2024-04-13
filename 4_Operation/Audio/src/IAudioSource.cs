@@ -38,42 +38,42 @@ namespace Alis.Core.Audio
         ///     Gets or sets the value of the audio clip base
         /// </summary>
         public T AudioClip { get; set; }
-
+        
         /// <summary>
         ///     Gets the value of the is playing
         /// </summary>
         public bool IsPlaying { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the play on awake
         /// </summary>
         public bool PlayOnAwake { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the mute
         /// </summary>
         public bool Mute { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the loop
         /// </summary>
         public bool Loop { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the volume
         /// </summary>
         public float Volume { get; set; }
-
+        
         /// <summary>
         ///     Plays this instance
         /// </summary>
         public void Play();
-
+        
         /// <summary>
         ///     Stops this instance
         /// </summary>
         public void Stop();
-
+        
         /// <summary>
         ///     Resumes this instance
         /// </summary>

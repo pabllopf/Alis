@@ -43,12 +43,12 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         ///     Gets or sets the value of the current scene
         /// </summary>
         public IScene CurrentScene { get; set; } = new Entity.Scene.Scene();
-
+        
         /// <summary>
         ///     Gets or sets the value of the scenes
         /// </summary>
         public List<IScene> Scenes { get; set; } = new List<IScene>();
-
+        
         /// <summary>
         ///     Ons the enable
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnEnable();
         }
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -64,7 +64,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnInit();
         }
-
+        
         /// <summary>
         ///     Ons the awake
         /// </summary>
@@ -72,7 +72,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnAwake();
         }
-
+        
         /// <summary>
         ///     Ons the start
         /// </summary>
@@ -80,7 +80,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnStart();
         }
-
+        
         /// <summary>
         ///     Ons the before update
         /// </summary>
@@ -88,7 +88,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnBeforeUpdate();
         }
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnUpdate();
         }
-
+        
         /// <summary>
         ///     Ons the after update
         /// </summary>
@@ -104,7 +104,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnAfterUpdate();
         }
-
+        
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
@@ -112,7 +112,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnBeforeFixedUpdate();
         }
-
+        
         /// <summary>
         ///     Ons the fixed update
         /// </summary>
@@ -120,7 +120,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnFixedUpdate();
         }
-
+        
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
@@ -128,7 +128,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnAfterFixedUpdate();
         }
-
+        
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
@@ -136,7 +136,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnDispatchEvents();
         }
-
+        
         /// <summary>
         ///     Ons the calculate
         /// </summary>
@@ -144,7 +144,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnCalculate();
         }
-
+        
         /// <summary>
         ///     Ons the draw
         /// </summary>
@@ -152,7 +152,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnDraw();
         }
-
+        
         /// <summary>
         ///     Ons the gui
         /// </summary>
@@ -160,7 +160,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnGui();
         }
-
+        
         /// <summary>
         ///     Ons the disable
         /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnDisable();
         }
-
+        
         /// <summary>
         ///     Ons the reset
         /// </summary>
@@ -176,7 +176,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnReset();
         }
-
+        
         /// <summary>
         ///     Ons the stop
         /// </summary>
@@ -184,7 +184,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnStop();
         }
-
+        
         /// <summary>
         ///     Ons the exit
         /// </summary>
@@ -192,7 +192,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnExit();
         }
-
+        
         /// <summary>
         ///     Ons the destroy
         /// </summary>
@@ -200,7 +200,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnDestroy();
         }
-
+        
         /// <summary>
         ///     Adds the component
         /// </summary>
@@ -211,7 +211,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             Scenes ??= new List<IScene>();
             Scenes.Add(component);
         }
-
+        
         /// <summary>
         ///     Removes the component
         /// </summary>
@@ -221,21 +221,21 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             Scenes.Remove(component);
         }
-
+        
         /// <summary>
         ///     Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
         public T Get<T>() where T : IScene => (T) Scenes.Find(i => i.GetType() == typeof(T));
-
+        
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
         public bool Contains<T>() where T : IScene => Get<T>() != null;
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
@@ -244,7 +244,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             Scenes.Clear();
         }
-
+        
         /// <summary>
         ///     Loads the scene using the specified scene
         /// </summary>
@@ -253,7 +253,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene = scene;
         }
-
+        
         /// <summary>
         ///     Reloads the scene using the specified scene
         /// </summary>
@@ -262,7 +262,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene = scene;
         }
-
+        
         /// <summary>
         ///     Loads the scene using the specified name
         /// </summary>
@@ -278,8 +278,8 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             CurrentScene.OnAwake();
             CurrentScene.OnStart();
         }
-
-
+        
+        
         /// <summary>
         ///     Loads the scene using the specified index
         /// </summary>

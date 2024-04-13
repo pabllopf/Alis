@@ -42,12 +42,12 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The version
         /// </summary>
         public Version version;
-
+        
         /// <summary>
         ///     The subsystem
         /// </summary>
         public readonly SysWmType subSystem;
-
+        
         /// <summary>
         ///     The info
         /// </summary>

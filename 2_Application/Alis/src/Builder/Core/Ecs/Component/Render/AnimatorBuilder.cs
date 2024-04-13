@@ -45,7 +45,7 @@ namespace Alis.Builder.Core.Ecs.Component.Render
         ///     The animator
         /// </summary>
         private readonly Animator animator = new Animator();
-
+        
         /// <summary>
         ///     Adds the animation using the specified value
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Builder.Core.Ecs.Component.Render
             animator.AddAnimation(value.Invoke(new AnimationBuilder()));
             return this;
         }
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>

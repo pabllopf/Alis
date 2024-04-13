@@ -38,12 +38,12 @@ namespace Alis.Extension.Encode.FFMeg.Encoding
         ///     FFmpeg format name (container format)
         /// </summary>
         public abstract string Format { get; set; }
-
+        
         /// <summary>
         ///     FFmpeg encoder name
         /// </summary>
         public abstract string Name { get; }
-
+        
         /// <summary>
         ///     Create an EncoderOptions object from FFmpeg based on the configuration
         /// </summary>

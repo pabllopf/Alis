@@ -46,17 +46,17 @@ namespace Alis.Core.Physic.Sample
             Logger.SetDetailLevel(DetailLevel.Minimal);
             Logger.SetLogLevel(LogLevel.Trace);
             Logger.Info($"Run {nameof(Alis)}.{nameof(Core)}.{nameof(Physic)}.{nameof(Sample)}");
-
+            
             Vector2 gravity = new Vector2(0.0f, -9.8f);
-
+            
             World world = new World(gravity);
-
+            
             for (int i = 0; i < 100; i++)
             {
                 world.Step(1.0f / 60.0f, 6, 2);
                 Logger.Info($"Step {i}");
             }
-
+            
             Logger.Trace("Press any key to exit...");
         }
     }

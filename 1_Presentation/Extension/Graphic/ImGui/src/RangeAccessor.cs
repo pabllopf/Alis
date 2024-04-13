@@ -41,17 +41,17 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The
         /// </summary>
         private static readonly int SSizeOfT = Unsafe.SizeOf<T>();
-
+        
         /// <summary>
         ///     The data
         /// </summary>
         public readonly void* Data;
-
+        
         /// <summary>
         ///     The count
         /// </summary>
         public readonly int Count;
-
+        
         /// <summary>
         ///     Initializes a new instance of the  class
         /// </summary>
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.ImGui
         public RangeAccessor(IntPtr data, int count) : this(data.ToPointer(), count)
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the  class
         /// </summary>
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.ImGui
             Data = data;
             Count = count;
         }
-
+        
         /// <summary>
         ///     The index
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     throw new IndexOutOfRangeException();
                 }
-
+                
                 return ref Unsafe.AsRef<T>((byte*) Data + SSizeOfT * index);
             }
         }

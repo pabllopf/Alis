@@ -51,15 +51,15 @@ namespace Alis.Core.Physic.Collision
         {
             Vector2 v1 = MathUtils.Mul(ref transform, ref start);
             Vector2 v2 = MathUtils.Mul(ref transform, ref end);
-
+            
             aabb.LowerBound = Vector2.Min(v1, v2);
             aabb.UpperBound = Vector2.Max(v1, v2);
-
+            
             Vector2 r = new Vector2(Settings.PolygonRadius, Settings.PolygonRadius);
             aabb.LowerBound -= r;
             aabb.UpperBound += r;
         }
-
+        
         /// <summary>
         ///     Computes the circle aabb using the specified pos
         /// </summary>
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Collision
             aabb.LowerBound = new Vector2(p.X - radius, p.Y - radius);
             aabb.UpperBound = new Vector2(p.X + radius, p.Y + radius);
         }
-
+        
         /// <summary>
         ///     Computes the polygon aabb using the specified vertices
         /// </summary>
@@ -84,14 +84,14 @@ namespace Alis.Core.Physic.Collision
         {
             Vector2 lower = MathUtils.Mul(ref transform, vertices[0]);
             Vector2 upper = lower;
-
+            
             for (int i = 1; i < vertices.Count; ++i)
             {
                 Vector2 v = MathUtils.Mul(ref transform, vertices[i]);
                 lower = Vector2.Min(lower, v);
                 upper = Vector2.Max(upper, v);
             }
-
+            
             Vector2 r = new Vector2(Settings.PolygonRadius, Settings.PolygonRadius);
             aabb.LowerBound = lower - r;
             aabb.UpperBound = upper + r;

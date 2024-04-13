@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Math.Util
         ///     The create
         /// </summary>
         private static readonly RandomNumberGenerator Rng = RandomNumberGenerator.Create();
-
+        
         /// <summary>
         ///     Gets the int 32 using the specified min value
         /// </summary>
@@ -55,14 +55,14 @@ namespace Alis.Core.Aspect.Math.Util
             {
                 throw new ArgumentException("minValue must be less than or equal to maxValue.");
             }
-
+            
             byte[] buffer = new byte[4];
             Rng.GetBytes(buffer);
             int randomValue = BitConverter.ToInt32(buffer, 0);
-
+            
             return (int) (MathF.Abs(randomValue % (maxValue - minValue + 1)) + minValue);
         }
-
+        
         /// <summary>
         ///     Gets the int 32 using the specified value
         /// </summary>
@@ -75,11 +75,11 @@ namespace Alis.Core.Aspect.Math.Util
             {
                 throw new ArgumentException("value must be greater than or equal to 0.");
             }
-
+            
             byte[] buffer = new byte[4];
             Rng.GetBytes(buffer);
             int randomValue = BitConverter.ToInt32(buffer, 0);
-
+            
             return (int) MathF.Abs(randomValue % (value + 1));
         }
     }

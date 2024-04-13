@@ -39,7 +39,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         ///     The trapezoid
         /// </summary>
         public readonly Trapezoid Trapezoid;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sink" /> class
         /// </summary>
@@ -50,14 +50,14 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             Trapezoid = trapezoid;
             trapezoid.Sink = this;
         }
-
+        
         /// <summary>
         ///     Is inks the trapezoid
         /// </summary>
         /// <param name="trapezoid">The trapezoid</param>
         /// <returns>The sink</returns>
         public static Sink IsInk(Trapezoid trapezoid) => trapezoid.Sink ?? new Sink(trapezoid);
-
+        
         /// <summary>
         ///     Locates the edge
         /// </summary>

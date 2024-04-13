@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SimplePriorityQueue.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,29 +48,29 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     The initial queue size
         /// </summary>
         private const int INITIAL_QUEUE_SIZE = 10;
-
+        
         /// <summary>
         ///     The item to nodes cache
         /// </summary>
         private readonly Dictionary<TItem, IList<SimpleNode>> _itemToNodesCache;
-
+        
         /// <summary>
         ///     The null nodes cache
         /// </summary>
         private readonly IList<SimpleNode> _nullNodesCache;
-
+        
         /// <summary>
         ///     The queue
         /// </summary>
         private readonly GenericPriorityQueue<SimpleNode, TPriority> _queue;
-
+        
         /// <summary>
         ///     Instantiate a new Priority Queue
         /// </summary>
         public SimplePriorityQueue() : this(Comparer<TPriority>.Default, EqualityComparer<TItem>.Default)
         {
         }
-
+        
         /// <summary>
         ///     Instantiate a new Priority Queue
         /// </summary>
@@ -52,7 +81,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         public SimplePriorityQueue(IComparer<TPriority> priorityComparer) : this(priorityComparer.Compare, EqualityComparer<TItem>.Default)
         {
         }
-
+        
         /// <summary>
         ///     Instantiate a new Priority Queue
         /// </summary>
@@ -60,7 +89,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         public SimplePriorityQueue(Comparison<TPriority> priorityComparer) : this(priorityComparer, EqualityComparer<TItem>.Default)
         {
         }
-
+        
         /// <summary>
         ///     Instantiate a new Priority Queue
         /// </summary>
@@ -68,7 +97,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         public SimplePriorityQueue(IEqualityComparer<TItem> itemEquality) : this(Comparer<TPriority>.Default, itemEquality)
         {
         }
-
+        
         /// <summary>
         ///     Instantiate a new Priority Queue
         /// </summary>
@@ -80,7 +109,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         public SimplePriorityQueue(IComparer<TPriority> priorityComparer, IEqualityComparer<TItem> itemEquality) : this(priorityComparer.Compare, itemEquality)
         {
         }
-
+        
         /// <summary>
         ///     Instantiate a new Priority Queue
         /// </summary>
@@ -92,7 +121,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             _itemToNodesCache = new Dictionary<TItem, IList<SimpleNode>>(itemEquality);
             _nullNodesCache = new List<SimpleNode>();
         }
-
+        
         /// <summary>
         ///     Returns the number of nodes in the queue.
         ///     O(1)
@@ -107,7 +136,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 }
             }
         }
-
+        
         /// <summary>
         ///     Returns the head of the queue, without removing it (use Dequeue() for that).
         ///     Throws an exception when the queue is empty.
@@ -123,12 +152,12 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     {
                         throw new InvalidOperationException("Cannot call .First on an empty queue");
                     }
-
+                    
                     return _queue.First.Data;
                 }
             }
         }
-
+        
         /// <summary>
         ///     Removes every node from the queue.
         ///     O(n)
@@ -142,7 +171,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 _nullNodesCache.Clear();
             }
         }
-
+        
         /// <summary>
         ///     Returns whether the given item is in the queue.
         ///     O(1)
@@ -154,7 +183,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 return item == null ? _nullNodesCache.Count > 0 : _itemToNodesCache.ContainsKey(item);
             }
         }
-
+        
         /// <summary>
         ///     Removes the head of the queue (node with minimum priority; ties are broken by order of insertion), and returns it.
         ///     If queue is empty, throws an exception
@@ -168,13 +197,13 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 {
                     throw new InvalidOperationException("Cannot call Dequeue() on an empty queue");
                 }
-
+                
                 SimpleNode node = _queue.Dequeue();
                 RemoveFromNodeCache(node);
                 return node.Data;
             }
         }
-
+        
         /// <summary>
         ///     Enqueue a node to the priority queue.  Lower values are placed in front. Ties are broken by first-in-first-out.
         ///     This queue automatically resizes itself, so there's no concern of the queue becoming 'full'.
@@ -195,12 +224,12 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     nodes = new List<SimpleNode>();
                     _itemToNodesCache[item] = nodes;
                 }
-
+                
                 SimpleNode node = EnqueueNoLockOrCache(item, priority);
                 nodes.Add(node);
             }
         }
-
+        
         /// <summary>
         ///     Removes an item from the queue.  The item does not need to be the head of the queue.
         ///     If the item is not in the queue, an exception is thrown.  If unsure, check Contains() first.
@@ -219,7 +248,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     {
                         throw new InvalidOperationException("Cannot call Remove() on a node which is not enqueued: " + item);
                     }
-
+                    
                     removeMe = _nullNodesCache[0];
                     nodes = _nullNodesCache;
                 }
@@ -229,19 +258,19 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     {
                         throw new InvalidOperationException("Cannot call Remove() on a node which is not enqueued: " + item);
                     }
-
+                    
                     removeMe = nodes[0];
                     if (nodes.Count == 1)
                     {
                         _itemToNodesCache.Remove(item);
                     }
                 }
-
+                
                 _queue.Remove(removeMe);
                 nodes.Remove(removeMe);
             }
         }
-
+        
         /// <summary>
         ///     Call this method to change the priority of an item.
         ///     Calling this method on a item not in the queue will throw an exception.
@@ -259,11 +288,11 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 {
                     throw new InvalidOperationException("Cannot call UpdatePriority() on a node which is not enqueued: " + item);
                 }
-
+                
                 _queue.UpdatePriority(updateMe, priority);
             }
         }
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
@@ -279,16 +308,16 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     queueData.Add(node.Data);
                 }
             }
-
+            
             return queueData.GetEnumerator();
         }
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
+        
         /// <summary>
         ///     Given an item of type T, returns the existing SimpleNode in the queue
         /// </summary>
@@ -298,16 +327,16 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             {
                 return _nullNodesCache.Count > 0 ? _nullNodesCache[0] : null;
             }
-
+            
             IList<SimpleNode> nodes;
             if (!_itemToNodesCache.TryGetValue(item, out nodes))
             {
                 return null;
             }
-
+            
             return nodes[0];
         }
-
+        
         /// <summary>
         ///     Adds an item to the Node-cache to allow for many methods to be O(1) or O(log n)
         /// </summary>
@@ -318,17 +347,17 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 _nullNodesCache.Add(node);
                 return;
             }
-
+            
             IList<SimpleNode> nodes;
             if (!_itemToNodesCache.TryGetValue(node.Data, out nodes))
             {
                 nodes = new List<SimpleNode>();
                 _itemToNodesCache[node.Data] = nodes;
             }
-
+            
             nodes.Add(node);
         }
-
+        
         /// <summary>
         ///     Removes an item to the Node-cache to allow for many methods to be O(1) or O(log n) (assuming no duplicates)
         /// </summary>
@@ -339,20 +368,20 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 _nullNodesCache.Remove(node);
                 return;
             }
-
+            
             IList<SimpleNode> nodes;
             if (!_itemToNodesCache.TryGetValue(node.Data, out nodes))
             {
                 return;
             }
-
+            
             nodes.Remove(node);
             if (nodes.Count == 0)
             {
                 _itemToNodesCache.Remove(node.Data);
             }
         }
-
+        
         /// <summary>
         ///     Enqueue the item with the given priority, without calling lock(_queue) or AddToNodeCache(node)
         /// </summary>
@@ -366,11 +395,11 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             {
                 _queue.Resize(_queue.MaxSize * 2 + 1);
             }
-
+            
             _queue.Enqueue(node, priority);
             return node;
         }
-
+        
         /// <summary>
         ///     Enqueue a node to the priority queue if it doesn't already exist.  Lower values are placed in front. Ties are
         ///     broken by first-in-first-out.
@@ -390,7 +419,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     {
                         return false;
                     }
-
+                    
                     nodes = _nullNodesCache;
                 }
                 else if (_itemToNodesCache.ContainsKey(item))
@@ -402,13 +431,13 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     nodes = new List<SimpleNode>();
                     _itemToNodesCache[item] = nodes;
                 }
-
+                
                 SimpleNode node = EnqueueNoLockOrCache(item, priority);
                 nodes.Add(node);
                 return true;
             }
         }
-
+        
         /// <summary>
         ///     Returns the priority of the given item.
         ///     Calling this method on a item not in the queue will throw an exception.
@@ -426,11 +455,11 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 {
                     throw new InvalidOperationException("Cannot call GetPriority() on a node which is not enqueued: " + item);
                 }
-
+                
                 return findMe.Priority;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is valid queue
         /// </summary>
@@ -450,7 +479,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                         }
                     }
                 }
-
+                
                 // Check all items in queue are in cache
                 foreach (SimpleNode node in _queue)
                 {
@@ -459,12 +488,12 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                         return false;
                     }
                 }
-
+                
                 // Check queue structure itself
                 return _queue.IsValidQueue();
             }
         }
-
+        
         /// <summary>
         ///     The simple node class
         /// </summary>
@@ -476,15 +505,15 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             /// </summary>
             /// <param name="data">The data</param>
             public SimpleNode(TItem data) => Data = data;
-
+            
             /// <summary>
             ///     Gets or sets the value of the data
             /// </summary>
             public TItem Data { get; }
         }
-
+        
         #region Try* methods for multithreading
-
+        
         /// Get the head of the queue, without removing it (use TryDequeue() for that).
         /// Useful for multi-threading, where the queue may become empty between calls to Contains() and First
         /// Returns true if successful, false otherwise
@@ -502,11 +531,11 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     }
                 }
             }
-
+            
             first = default(TItem);
             return false;
         }
-
+        
         /// <summary>
         ///     Removes the head of the queue (node with minimum priority; ties are broken by order of insertion), and sets it to
         ///     first.
@@ -529,11 +558,11 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     }
                 }
             }
-
+            
             first = default(TItem);
             return false;
         }
-
+        
         /// <summary>
         ///     Attempts to remove an item from the queue.  The item does not need to be the head of the queue.
         ///     Useful for multi-threading, where the queue may become empty between calls to Contains() and Remove()
@@ -553,7 +582,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     {
                         return false;
                     }
-
+                    
                     removeMe = _nullNodesCache[0];
                     nodes = _nullNodesCache;
                 }
@@ -563,20 +592,20 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     {
                         return false;
                     }
-
+                    
                     removeMe = nodes[0];
                     if (nodes.Count == 1)
                     {
                         _itemToNodesCache.Remove(item);
                     }
                 }
-
+                
                 _queue.Remove(removeMe);
                 nodes.Remove(removeMe);
                 return true;
             }
         }
-
+        
         /// <summary>
         ///     Call this method to change the priority of an item.
         ///     Useful for multi-threading, where the queue may become empty between calls to Contains() and UpdatePriority()
@@ -595,12 +624,12 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 {
                     return false;
                 }
-
+                
                 _queue.UpdatePriority(updateMe, priority);
                 return true;
             }
         }
-
+        
         /// <summary>
         ///     Attempt to get the priority of the given item.
         ///     Useful for multi-threading, where the queue may become empty between calls to Contains() and GetPriority()
@@ -620,15 +649,15 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     priority = default(TPriority);
                     return false;
                 }
-
+                
                 priority = findMe.Priority;
                 return true;
             }
         }
-
+        
         #endregion
     }
-
+    
     /// <summary>
     ///     A simplified priority queue implementation.  Is stable, auto-resizes, and thread-safe, at the cost of being
     ///     slightly slower than
@@ -645,7 +674,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         public SimplePriorityQueue()
         {
         }
-
+        
         /// <summary>
         ///     Instantiate a new Priority Queue
         /// </summary>
@@ -653,7 +682,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         public SimplePriorityQueue(IComparer<float> comparer) : base(comparer)
         {
         }
-
+        
         /// <summary>
         ///     Instantiate a new Priority Queue
         /// </summary>

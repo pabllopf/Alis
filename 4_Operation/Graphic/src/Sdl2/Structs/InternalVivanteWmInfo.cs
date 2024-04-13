@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The display
         /// </summary>
         public IntPtr display;
-
+        
         /// <summary>
         ///     The window
         /// </summary>

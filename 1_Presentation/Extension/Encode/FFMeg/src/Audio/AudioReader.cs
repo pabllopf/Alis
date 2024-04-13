@@ -49,17 +49,17 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         ///     The ffprobe
         /// </summary>
         private readonly string ffmpeg;
-
+        
         /// <summary>
         ///     The ffprobe
         /// </summary>
         private readonly string ffprobe;
-
+        
         /// <summary>
         ///     The loaded bit depth
         /// </summary>
         private int loadedBitDepth = 16;
-
+        
         /// <summary>
         ///     Used for reading metadata and frames from audio files.
         /// </summary>
@@ -72,27 +72,27 @@ namespace Alis.Extension.Encode.FFMeg.Audio
             {
                 throw new FileNotFoundException($"File '{filename}' not found!");
             }
-
+            
             Filename = filename;
             ffmpeg = ffmpegExecutable;
             ffprobe = ffprobeExecutable;
         }
-
+        
         /// <summary>
         ///     Current sample position within the loaded audio file
         /// </summary>
         public long CurrentSampleOffset { get; private set; }
-
+        
         /// <summary>
         ///     True if metadata loaded successfully
         /// </summary>
         public bool MetadataLoaded { get; private set; }
-
+        
         /// <summary>
         ///     Audio metadata
         /// </summary>
         public AudioMetadata Metadata { get; private set; }
-
+        
         /// <summary>
         ///     Diposes the DataStream
         /// </summary>
@@ -100,12 +100,12 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         {
             DataStream?.Dispose();
         }
-
+        
         /// <summary>
         ///     Load audio metadata into memory.
         /// </summary>
         public void LoadMetadata(bool ignoreStreamErrors = false) => LoadMetadataAsync(ignoreStreamErrors).Wait();
-
+        
         /// <summary>
         ///     Load audio metadata into memory.
         /// </summary>
@@ -115,14 +115,14 @@ namespace Alis.Extension.Encode.FFMeg.Audio
             {
                 throw new InvalidOperationException("Video metadata is already loaded!");
             }
-
+            
             StreamReader r = new StreamReader(FfMpegWrapper.OpenOutput(ffprobe, $"-i \"{Filename}\" -v quiet -print_format json=c=1 -show_format -show_streams"));
-
+            
             try
             {
                 string json = await r.ReadToEndAsync();
                 AudioMetadata metadata = JsonSerializer.Deserialize<AudioMetadata>(json);
-
+                
                 try
                 {
                     MediaStream audioStream = metadata.Streams.Where(x => x.CodecType.ToLower().Trim() == "audio").FirstOrDefault();
@@ -132,16 +132,16 @@ namespace Alis.Extension.Encode.FFMeg.Audio
                         metadata.Codec = audioStream.CodecName;
                         metadata.CodecLongName = audioStream.CodecLongName;
                         metadata.SampleFormat = audioStream.SampleFmt;
-
+                        
                         metadata.SampleRate = audioStream.SampleRateNumber;
-
+                        
                         metadata.Duration = audioStream.Duration == null ? double.Parse(metadata.Format.Duration ?? "-1", CultureInfo.InvariantCulture) : double.Parse(audioStream.Duration, CultureInfo.InvariantCulture);
-
+                        
                         metadata.BitRate = audioStream.BitRate == null ? -1 : int.Parse(audioStream.BitRate);
-
+                        
                         metadata.BitDepth = audioStream.BitsPerSample.Value;
                         metadata.PredictedSampleCount = (int) Math.Round(metadata.Duration * metadata.SampleRate);
-
+                        
                         if (metadata.BitDepth == 0)
                         {
                             // try to parse it from format
@@ -176,7 +176,7 @@ namespace Alis.Extension.Encode.FFMeg.Audio
                         throw new InvalidDataException("Failed to parse audio stream data! " + ex.Message);
                     }
                 }
-
+                
                 MetadataLoaded = true;
                 Metadata = metadata;
             }
@@ -185,7 +185,7 @@ namespace Alis.Extension.Encode.FFMeg.Audio
                 throw new InvalidOperationException("Failed to interpret ffprobe audio metadata output! " + ex.Message);
             }
         }
-
+        
         /// <summary>
         ///     Load the audio and prepare it for reading frames.
         /// </summary>
@@ -196,30 +196,30 @@ namespace Alis.Extension.Encode.FFMeg.Audio
             {
                 throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
             }
-
+            
             if (OpenedForReading)
             {
                 throw new InvalidOperationException("Audio is already loaded!");
             }
-
+            
             if (!MetadataLoaded)
             {
                 throw new InvalidOperationException("Please load the audio metadata first!");
             }
-
+            
             // we will be reading audio in S16LE format (for best accuracy, could use S32LE)
             DataStream = FfMpegWrapper.OpenOutput(ffmpeg, $"-i \"{Filename}\" -f s{bitDepth}le -");
             loadedBitDepth = bitDepth;
             OpenedForReading = true;
         }
-
+        
         /// <summary>
         ///     Loads the next audio frame into memory and returns it. This allocates a new frame.
         ///     Returns 'null' when there is no next frame.
         /// </summary>
         /// <returns></returns>
         public override AudioFrame NextFrame() => NextFrame(1024);
-
+        
         /// <summary>
         ///     Loads the next audio frame into memory and returns it. This allocates a new frame.
         ///     Returns 'null' when there is no next frame.
@@ -230,7 +230,7 @@ namespace Alis.Extension.Encode.FFMeg.Audio
             AudioFrame frame = new AudioFrame(Metadata.Channels, samples, loadedBitDepth);
             return NextFrame(frame);
         }
-
+        
         /// <summary>
         ///     Loads the next audio frame into memory and returns it. This allocates a new frame.
         ///     Returns 'null' when there is no next frame.
@@ -242,13 +242,13 @@ namespace Alis.Extension.Encode.FFMeg.Audio
             {
                 throw new InvalidOperationException("Please load the audio first!");
             }
-
+            
             bool success = frame.Load(DataStream);
             if (success)
             {
                 CurrentSampleOffset += frame.LoadedSamples;
             }
-
+            
             return success ? frame : null;
         }
     }

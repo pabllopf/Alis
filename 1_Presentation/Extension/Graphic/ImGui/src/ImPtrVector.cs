@@ -41,22 +41,22 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The size
         /// </summary>
         public readonly int Size;
-
+        
         /// <summary>
         ///     The capacity
         /// </summary>
         public readonly int Capacity;
-
+        
         /// <summary>
         ///     The data
         /// </summary>
         public readonly IntPtr Data;
-
+        
         /// <summary>
         ///     The stride
         /// </summary>
         private readonly int _stride;
-
+        
         /// <summary>
         ///     Initializes a new instance of the  class
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.ImGui
             : this(vector.Size, vector.Capacity, vector.Data, stride)
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the  class
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.ImGui
             Data = data;
             _stride = stride;
         }
-
+        
         /// <summary>
         ///     The ret
         /// </summary>

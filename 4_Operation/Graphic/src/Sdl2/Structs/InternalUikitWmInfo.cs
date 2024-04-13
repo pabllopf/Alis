@@ -42,17 +42,17 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     Refers to a UIWindow*
         /// </summary>
         public IntPtr window;
-
+        
         /// <summary>
         ///     The frame buffer
         /// </summary>
         public readonly uint framebuffer;
-
+        
         /// <summary>
         ///     The color buffer
         /// </summary>
         public readonly uint colorBuffer;
-
+        
         /// <summary>
         ///     The resolve frame buffer
         /// </summary>

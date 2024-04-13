@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs.Component.Audio
         {
             Logger.Trace();
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioClip" /> class
         /// </summary>
@@ -55,7 +55,7 @@ namespace Alis.Core.Ecs.Component.Audio
         {
             Logger.Trace();
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioClip" /> class
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Core.Ecs.Component.Audio
         {
             Logger.Trace();
         }
-
+        
         /// <summary>
         ///     Plays this instance
         /// </summary>
@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs.Component.Audio
         {
             base.Play();
         }
-
+        
         /// <summary>
         ///     Stops this instance
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Core.Ecs.Component.Audio
         {
             base.Stop();
         }
-
+        
         /// <summary>
         ///     Resumes this instance
         /// </summary>
@@ -89,7 +89,7 @@ namespace Alis.Core.Ecs.Component.Audio
         {
             base.Resume();
         }
-
+        
         /// <summary>
         ///     Builders
         /// </summary>

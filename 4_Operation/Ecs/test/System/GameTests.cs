@@ -50,19 +50,19 @@ namespace Alis.Core.Ecs.Test.System
             game.Run();
             Assert.True(game.IsRunning);
         }
-
+        
         /// <summary>
         ///     Tests that managers should be initialized empty
         /// </summary>
         [Fact]
         public void Managers_ShouldBeInitialized_Empty() => Assert.Empty(new GameTest().Managers);
-
+        
         /// <summary>
         ///     Tests that managers should be initialized not null
         /// </summary>
         [Fact]
         public void Managers_ShouldBeInitialized_NotNull() => Assert.NotNull(new GameTest().Managers);
-
+        
         /// <summary>
         ///     Tests that add should add manager
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Core.Ecs.Test.System
             game.Add(manager);
             Assert.Contains(manager, game.Managers);
         }
-
+        
         /// <summary>
         ///     Tests that remove should remove manager
         /// </summary>
@@ -87,7 +87,7 @@ namespace Alis.Core.Ecs.Test.System
             game.Remove(manager);
             Assert.DoesNotContain(manager, game.Managers);
         }
-
+        
         /// <summary>
         ///     Tests that get should get manager
         /// </summary>
@@ -99,7 +99,7 @@ namespace Alis.Core.Ecs.Test.System
             game.Add(manager);
             Assert.Equal(manager, game.Get<ManagerTest>());
         }
-
+        
         /// <summary>
         ///     Tests that contains should contains manager
         /// </summary>
@@ -111,7 +111,7 @@ namespace Alis.Core.Ecs.Test.System
             game.Add(manager);
             Assert.True(game.Contains<ManagerTest>());
         }
-
+        
         /// <summary>
         ///     Tests that clear should clear manager
         /// </summary>
@@ -124,7 +124,7 @@ namespace Alis.Core.Ecs.Test.System
             game.Clear<ManagerTest>();
             Assert.DoesNotContain(manager, game.Managers);
         }
-
+        
         /// <summary>
         ///     The manager test class
         /// </summary>
@@ -135,22 +135,22 @@ namespace Alis.Core.Ecs.Test.System
             ///     Gets or sets the value of the is enable
             /// </summary>
             public bool IsEnable { get; set; }
-
+            
             /// <summary>
             ///     Gets or sets the value of the name
             /// </summary>
             public string Name { get; set; }
-
+            
             /// <summary>
             ///     Gets or sets the value of the id
             /// </summary>
             public string Id { get; set; }
-
+            
             /// <summary>
             ///     Gets or sets the value of the tag
             /// </summary>
             public string Tag { get; set; }
-
+            
             /// <summary>
             ///     Ons the enable
             /// </summary>
@@ -159,7 +159,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the init
             /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the awake
             /// </summary>
@@ -177,7 +177,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the start
             /// </summary>
@@ -186,7 +186,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the before update
             /// </summary>
@@ -195,7 +195,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the update
             /// </summary>
@@ -204,7 +204,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the after update
             /// </summary>
@@ -213,7 +213,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the before fixed update
             /// </summary>
@@ -222,7 +222,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the fixed update
             /// </summary>
@@ -231,7 +231,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the after fixed update
             /// </summary>
@@ -240,7 +240,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the dispatch events
             /// </summary>
@@ -249,7 +249,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the calculate
             /// </summary>
@@ -258,7 +258,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the draw
             /// </summary>
@@ -267,7 +267,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the gui
             /// </summary>
@@ -276,7 +276,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the disable
             /// </summary>
@@ -285,7 +285,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the reset
             /// </summary>
@@ -294,7 +294,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the stop
             /// </summary>
@@ -303,7 +303,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the exit
             /// </summary>
@@ -312,7 +312,7 @@ namespace Alis.Core.Ecs.Test.System
             {
                 Logger.Trace();
             }
-
+            
             /// <summary>
             ///     Ons the destroy
             /// </summary>

@@ -42,7 +42,7 @@ namespace Alis.Core.Audio.Sample
         public AudioClip(string fullPathAudio) : base(fullPathAudio)
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioClip" /> class
         /// </summary>
@@ -51,7 +51,7 @@ namespace Alis.Core.Audio.Sample
         public AudioClip(string fullPathAudio, AudioBackendType audioBackendType) : base(fullPathAudio, audioBackendType)
         {
         }
-
+        
         /// <summary>
         ///     Plays this instance
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Core.Audio.Sample
         {
             base.Play();
         }
-
+        
         /// <summary>
         ///     Stops this instance
         /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Core.Audio.Sample
         {
             base.Stop();
         }
-
+        
         /// <summary>
         ///     Resumes this instance
         /// </summary>

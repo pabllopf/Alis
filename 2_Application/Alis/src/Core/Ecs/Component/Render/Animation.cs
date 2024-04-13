@@ -44,53 +44,53 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
         public Animation() => Frames = new List<Frame>();
-
-
+        
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
         /// <param name="textures">The textures</param>
         public Animation(List<Frame> textures) => Frames = textures;
-
+        
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; } = "Default Animation";
-
-
+        
+        
         /// <summary>
         ///     Gets or sets the value of the index
         /// </summary>
         private int Index { get; set; }
-
-
+        
+        
         /// <summary>
         ///     Gets or sets the value of the order
         /// </summary>
         public int Order { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the speed
         /// </summary>
         public float Speed { get; set; } = 1.0f;
-
+        
         /// <summary>
         ///     Gets or sets the value of the textures
         /// </summary>
         private List<Frame> Frames { get; }
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The animator builder</returns>
         public AnimatorBuilder Builder() => new AnimatorBuilder();
-
+        
         /// <summary>
         ///     Describes whether this instance has next
         /// </summary>
         /// <returns>The bool</returns>
         public bool HasNext() => Frames.Count > 0;
-
+        
         /// <summary>
         ///     Nexts the texture
         /// </summary>
@@ -99,20 +99,20 @@ namespace Alis.Core.Ecs.Component.Render
         public Frame NextTexture()
         {
             Frame result = Frames[Index];
-
+            
             if (Index < Frames.Count)
             {
                 Index += 1;
             }
-
+            
             if (Index == Frames.Count)
             {
                 Index = 0;
             }
-
+            
             return result;
         }
-
+        
         /// <summary>
         ///     Adds the frame using the specified frame
         /// </summary>

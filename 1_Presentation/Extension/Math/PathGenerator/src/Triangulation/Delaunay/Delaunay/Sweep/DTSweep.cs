@@ -42,19 +42,19 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
         ///     The pi
         /// </summary>
         private const double PiDiv2 = System.Math.PI / 2;
-
+        
         /// <summary>
         ///     The pi
         /// </summary>
         private const double Pi3Div4 = 3 * System.Math.PI / 4;
-
+        
         /// <summary>Triangulate simple polygon with holes</summary>
         public static void Triangulate(DtSweepContext tcx)
         {
             tcx.CreateAdvancingFront();
-
+            
             Sweep(tcx);
-
+            
             // Finalize triangulation
             if (tcx.TriangulationMode == TriangulationMode.Polygon)
             {
@@ -64,21 +64,21 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             {
                 FinalizationConvexHull(tcx);
             }
-
+            
             tcx.Done();
         }
-
+        
         /// <summary>Start sweeping the Y-sorted point set from bottom to top</summary>
         private static void Sweep(DtSweepContext tcx)
         {
             List<TriangulationPoint> points = tcx.Points;
-
+            
             for (int i = 1; i < points.Count; i++)
             {
                 TriangulationPoint point = points[i];
-
+                
                 AdvancingFrontNode node = PointEvent(tcx, point);
-
+                
                 if (point.HasEdges)
                 {
                     foreach (DtSweepConstraint e in point.Edges)
@@ -86,21 +86,21 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                         EdgeEvent(tcx, e, node);
                     }
                 }
-
+                
                 tcx.Update(null);
             }
         }
-
+        
         /// <summary>If this is a Delaunay Triangulation of a point set we need to fill so the triangle mesh gets a ConvexHull</summary>
         private static void FinalizationConvexHull(DtSweepContext tcx)
         {
             DelaunayTriangle t1, t2;
-
+            
             AdvancingFrontNode n1 = tcx.AFront.Head.Next;
             AdvancingFrontNode n2 = n1.Next;
-
+            
             TurnAdvancingFrontConvex(tcx, n1, n2);
-
+            
             n1 = tcx.AFront.Tail.Prev;
             if (n1.Triangle.Contains(n1.Next.Point) && n1.Triangle.Contains(n1.Prev.Point))
             {
@@ -109,7 +109,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 tcx.MapTriangleToNodes(n1.Triangle);
                 tcx.MapTriangleToNodes(t1);
             }
-
+            
             n1 = tcx.AFront.Head.Next;
             if (n1.Triangle.Contains(n1.Prev.Point) && n1.Triangle.Contains(n1.Next.Point))
             {
@@ -118,7 +118,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 tcx.MapTriangleToNodes(n1.Triangle);
                 tcx.MapTriangleToNodes(t1);
             }
-
+            
             // Lower right boundary 
             TriangulationPoint first = tcx.AFront.Head.Point;
             n2 = tcx.AFront.Tail.Prev;
@@ -133,12 +133,12 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 {
                     break;
                 }
-
+                
                 t2 = t1.NeighborCcw(p1);
                 t1.Clear();
                 t1 = t2;
             } while (true);
-
+            
             // Lower left boundary
             first = tcx.AFront.Head.Next.Point;
             p1 = t1.PointCw(tcx.AFront.Head.Point);
@@ -153,17 +153,17 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 t1.Clear();
                 t1 = t2;
             }
-
+            
             // Remove current head and tail node now that we have removed all triangles attached
             // to them. Then set new head and tail node points
             tcx.AFront.Head = tcx.AFront.Head.Next;
             tcx.AFront.Head.Prev = null;
             tcx.AFront.Tail = tcx.AFront.Tail.Prev;
             tcx.AFront.Tail.Next = null;
-
+            
             tcx.FinalizeTriangulation();
         }
-
+        
         /// <summary>We will traverse the entire advancing front and fill it to form a convex hull.</summary>
         private static void TurnAdvancingFrontConvex(DtSweepContext tcx, AdvancingFrontNode b, AdvancingFrontNode c)
         {
@@ -194,7 +194,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 }
             }
         }
-
+        
         /// <summary>
         ///     Finalization the polygon using the specified tcx
         /// </summary>
@@ -208,11 +208,11 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             {
                 t = t.NeighborCcw(p);
             }
-
+            
             // Collect interior triangles constrained by edges
             tcx.MeshClean(t);
         }
-
+        
         /// <summary>
         ///     Find closes node to the left of the new point and create a new triangle. If needed new holes and basins will
         ///     be filled to.
@@ -221,20 +221,20 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
         {
             AdvancingFrontNode node = tcx.LocateNode(point);
             AdvancingFrontNode newNode = NewFrontTriangle(tcx, point, node);
-
+            
             // Only need to check +epsilon since point never have smaller 
             // x value than node due to how we fetch nodes from the front
             if (point.X <= node.Point.X + TriangulationUtil.Epsilon)
             {
                 Fill(tcx, node);
             }
-
+            
             tcx.AddNode(newNode);
-
+            
             FillAdvancingFront(tcx, newNode);
             return newNode;
         }
-
+        
         /// <summary>Creates a new front triangle and legalize it</summary>
         private static AdvancingFrontNode NewFrontTriangle(DtSweepContext tcx, TriangulationPoint point,
             AdvancingFrontNode node)
@@ -242,7 +242,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             DelaunayTriangle triangle = new DelaunayTriangle(point, node.Point, node.Next.Point);
             triangle.MarkNeighbor(node.Triangle);
             tcx.Triangles.Add(triangle);
-
+            
             AdvancingFrontNode newNode = new AdvancingFrontNode(point)
             {
                 Next = node.Next,
@@ -250,17 +250,17 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             };
             node.Next.Prev = newNode;
             node.Next = newNode;
-
+            
             tcx.AddNode(newNode); // XXX: BST
-
+            
             if (!Legalize(tcx, triangle))
             {
                 tcx.MapTriangleToNodes(triangle);
             }
-
+            
             return newNode;
         }
-
+        
         /// <summary>
         ///     Edges the event using the specified tcx
         /// </summary>
@@ -273,14 +273,14 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             {
                 tcx.EdgeEvent.ConstrainedEdge = edge;
                 tcx.EdgeEvent.Right = edge.P.X > edge.Q.X;
-
+                
                 if (IsEdgeSideOfTriangle(node.Triangle, edge.P, edge.Q))
                 {
                     return;
                 }
-
+                
                 FillEdgeEvent(tcx, edge, node);
-
+                
                 EdgeEvent(tcx, edge.P, edge.Q, node.Triangle, edge.Q);
             }
             catch (Exception e)
@@ -288,7 +288,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 Logger.Warning($"Skipping Edge: {e.Message}");
             }
         }
-
+        
         /// <summary>
         ///     Fills the edge event using the specified tcx
         /// </summary>
@@ -306,7 +306,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 FillLeftAboveEdgeEvent(tcx, edge, node);
             }
         }
-
+        
         /// <summary>
         ///     Fills the right concave edge event using the specified tcx
         /// </summary>
@@ -332,7 +332,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 }
             }
         }
-
+        
         /// <summary>
         ///     Fills the right convex edge event using the specified tcx
         /// </summary>
@@ -360,7 +360,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 }
             }
         }
-
+        
         /// <summary>
         ///     Fills the right below edge event using the specified tcx
         /// </summary>
@@ -380,13 +380,13 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 {
                     // Convex
                     FillRightConvexEdgeEvent(tcx, edge, node);
-
+                    
                     // Retry this one
                     FillRightBelowEdgeEvent(tcx, edge, node);
                 }
             }
         }
-
+        
         /// <summary>
         ///     Fills the right above edge event using the specified tcx
         /// </summary>
@@ -409,7 +409,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 }
             }
         }
-
+        
         /// <summary>
         ///     Fills the left convex edge event using the specified tcx
         /// </summary>
@@ -436,7 +436,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 }
             }
         }
-
+        
         /// <summary>
         ///     Fills the left concave edge event using the specified tcx
         /// </summary>
@@ -461,7 +461,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 }
             }
         }
-
+        
         /// <summary>
         ///     Fills the left below edge event using the specified tcx
         /// </summary>
@@ -481,13 +481,13 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 {
                     // Convex
                     FillLeftConvexEdgeEvent(tcx, edge, node);
-
+                    
                     // Retry this one
                     FillLeftBelowEdgeEvent(tcx, edge, node);
                 }
             }
         }
-
+        
         /// <summary>
         ///     Fills the left above edge event using the specified tcx
         /// </summary>
@@ -510,7 +510,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether is edge side of triangle
         /// </summary>
@@ -530,13 +530,13 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 {
                     triangle.MarkConstrainedEdge(ep, eq);
                 }
-
+                
                 return true;
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Edges the event using the specified tcx
         /// </summary>
@@ -551,7 +551,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             {
                 return;
             }
-
+            
             TriangulationPoint p1 = triangle.PointCcw(point);
             Orientation o1 = TriangulationUtil.Orient2d(eq, p1, ep);
             if (o1 == Orientation.Collinear)
@@ -559,7 +559,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 HandleCollinearOrientation(tcx, triangle, ep, eq, p1, point);
                 return;
             }
-
+            
             TriangulationPoint p2 = triangle.PointCw(point);
             Orientation o2 = TriangulationUtil.Orient2d(eq, p2, ep);
             if (o2 == Orientation.Collinear)
@@ -567,7 +567,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 HandleCollinearOrientation(tcx, triangle, ep, eq, p2, point);
                 return;
             }
-
+            
             if (o1 == o2)
             {
                 HandleSameOrientation(tcx, ep, eq, triangle, point, o1);
@@ -577,7 +577,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 FlipEdgeEvent(tcx, ep, eq, triangle, point);
             }
         }
-
+        
         /// <summary>
         ///     Handles the collinear orientation using the specified tcx
         /// </summary>
@@ -600,13 +600,13 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             {
                 Logger.Exception("EdgeEvent - Point on constrained edge not supported yet");
             }
-
+            
             if (tcx.IsDebugEnabled)
             {
                 Logger.Warning("EdgeEvent - Point on constrained edge");
             }
         }
-
+        
         /// <summary>
         ///     Handles the same orientation using the specified tcx
         /// </summary>
@@ -621,7 +621,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             triangle = o == Orientation.Cw ? triangle.NeighborCcw(point) : triangle.NeighborCw(point);
             EdgeEvent(tcx, ep, eq, triangle, point);
         }
-
+        
         /// <summary>
         ///     Flips the edge event using the specified tcx
         /// </summary>
@@ -635,15 +635,15 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             DelaunayTriangle t, TriangulationPoint p)
         {
             DelaunayTriangle ot = t.NeighborAcross(p);
-
+            
             if (t.GetConstrainedEdgeAcross(p))
             {
                 throw new Exception("Intersecting Constraints");
             }
-
+            
             TriangulationPoint op = ot.OppositePoint(t, p);
             bool inScanArea = TriangulationUtil.InScanArea(p, t.PointCcw(p), t.PointCw(p), op);
-
+            
             if (inScanArea)
             {
                 RotateSharedEdge(tcx, t, p, ot, op, ep, eq);
@@ -655,7 +655,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 EdgeEvent(tcx, ep, eq, t, p);
             }
         }
-
+        
         /// <summary>
         ///     Rotates the shared edge using the specified tcx
         /// </summary>
@@ -673,7 +673,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             RotateTrianglePair(t, p, ot, op);
             tcx.MapTriangleToNodes(t);
             tcx.MapTriangleToNodes(ot);
-
+            
             if ((p == eq) && (op == ep))
             {
                 if ((eq == tcx.EdgeEvent.ConstrainedEdge.Q) && (ep == tcx.EdgeEvent.ConstrainedEdge.P))
@@ -682,7 +682,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                     {
                         Logger.Log("[FLIP] - constrained edge done");
                     }
-
+                    
                     t.MarkConstrainedEdge(ep, eq);
                     ot.MarkConstrainedEdge(ep, eq);
                     Legalize(tcx, t);
@@ -702,13 +702,13 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 {
                     Logger.Log("[FLIP] - flipping and continuing with triangle still crossing edge");
                 }
-
+                
                 Orientation o = TriangulationUtil.Orient2d(eq, op, ep);
                 t = NextFlipTriangle(tcx, o, t, ot, p, op);
                 FlipEdgeEvent(tcx, ep, eq, t, p);
             }
         }
-
+        
         /// <summary>
         ///     When we need to traverse from one triangle to the next we need the point in current triangle that is the
         ///     opposite point to the next triangle.
@@ -722,17 +722,17 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 // Right
                 return ot.PointCcw(op);
             }
-
+            
             if (o2d == Orientation.Ccw)
             {
                 // Left
                 return ot.PointCw(op);
             }
-
+            
             Logger.Exception("Point on constrained edge not supported yet");
             return default(TriangulationPoint);
         }
-
+        
         /// <summary>
         ///     After a flip we have two triangles and know that only one will still be intersecting the edge. So decide which
         ///     to continue with and legalize the other
@@ -757,7 +757,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 ot.EdgeIsDelaunay.Clear();
                 return t;
             }
-
+            
             // t is not crossing edge after flip
             edgeIndex = t.EdgeIndex(p, op);
             t.EdgeIsDelaunay[edgeIndex] = true;
@@ -765,7 +765,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             t.EdgeIsDelaunay.Clear();
             return ot;
         }
-
+        
         /// <summary>
         ///     Scan part of the FlipScan algorithm When a triangle pair isn't flippable we will scan for the next point that
         ///     is inside the flip triangle scan area. When found we generate a new flipEdgeEvent
@@ -780,9 +780,9 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             DelaunayTriangle flipTriangle, DelaunayTriangle t, TriangulationPoint p)
         {
             DelaunayTriangle ot = t.NeighborAcross(p);
-
+            
             TriangulationPoint op = ot.OppositePoint(t, p);
-
+            
             bool inScanArea = TriangulationUtil.InScanArea(eq, flipTriangle.PointCcw(eq), flipTriangle.PointCw(eq), op);
             if (inScanArea)
             {
@@ -795,12 +795,12 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 FlipScanEdgeEvent(tcx, ep, eq, flipTriangle, ot, newP);
             }
         }
-
+        
         /// <summary>Fills holes in the Advancing Front</summary>
         private static void FillAdvancingFront(DtSweepContext tcx, AdvancingFrontNode n)
         {
             double angle;
-
+            
             // Fill right holes
             AdvancingFrontNode node = n.Next;
             while (node.HasNext)
@@ -810,11 +810,11 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 {
                     break;
                 }
-
+                
                 Fill(tcx, node);
                 node = node.Next;
             }
-
+            
             // Fill left holes
             node = n.Prev;
             while (node.HasPrev)
@@ -824,17 +824,17 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 {
                     break;
                 }
-
+                
                 angle = HoleAngle(node);
                 if (angle > PiDiv2 || angle < -PiDiv2)
                 {
                     break;
                 }
-
+                
                 Fill(tcx, node);
                 node = node.Prev;
             }
-
+            
             // Fill right basins
             if (n.HasNext && n.Next.HasNext)
             {
@@ -845,7 +845,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 }
             }
         }
-
+        
         // True if HoleAngle exceeds 90 degrees.
         /// <summary>
         ///     Describes whether large hole dont fill
@@ -860,29 +860,29 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             {
                 return false;
             }
-
+            
             // Check additional points on front.
             AdvancingFrontNode next2Node = nextNode.Next;
-
+            
             // "..Plus.." because only want angles on same side as point being added.
             if ((next2Node != null) &&
                 !AngleExceedsPlus90DegreesOrIsNegative(node.Point, next2Node.Point, prevNode.Point))
             {
                 return false;
             }
-
+            
             AdvancingFrontNode prev2Node = prevNode.Prev;
-
+            
             // "..Plus.." because only want angles on same side as point being added.
             if ((prev2Node != null) &&
                 !AngleExceedsPlus90DegreesOrIsNegative(node.Point, nextNode.Point, prev2Node.Point))
             {
                 return false;
             }
-
+            
             return true;
         }
-
+        
         /// <summary>
         ///     Describes whether angle exceeds 90 degrees
         /// </summary>
@@ -897,7 +897,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             bool exceeds90Degrees = angle > PiDiv2 || angle < -PiDiv2;
             return exceeds90Degrees;
         }
-
+        
         /// <summary>
         ///     Describes whether angle exceeds plus 90 degrees or is negative
         /// </summary>
@@ -912,7 +912,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             bool exceedsPlus90DegreesOrIsNegative = angle > PiDiv2 || angle < 0;
             return exceedsPlus90DegreesOrIsNegative;
         }
-
+        
         /// <summary>
         ///     Angles the origin
         /// </summary>
@@ -941,7 +941,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             double angle = System.Math.Atan2(x, y);
             return angle;
         }
-
+        
         /// <summary>
         ///     Fills a basin that has formed on the Advancing Front to the right of given node. First we decide a left,bottom
         ///     and right node that forms the boundaries of the basin. Then we do a fill.
@@ -952,38 +952,38 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
         {
             // tcx.basin.leftNode = node.next.next;
             tcx.Basin.LeftNode = TriangulationUtil.Orient2d(node.Point, node.Next.Point, node.Next.Next.Point) == Orientation.Ccw ? node : node.Next;
-
+            
             // Find the bottom and right node
             tcx.Basin.BottomNode = tcx.Basin.LeftNode;
             while (tcx.Basin.BottomNode.HasNext && (tcx.Basin.BottomNode.Point.Y >= tcx.Basin.BottomNode.Next.Point.Y))
             {
                 tcx.Basin.BottomNode = tcx.Basin.BottomNode.Next;
             }
-
+            
             if (tcx.Basin.BottomNode == tcx.Basin.LeftNode)
             {
                 // No valid basins
                 return;
             }
-
+            
             tcx.Basin.RightNode = tcx.Basin.BottomNode;
             while (tcx.Basin.RightNode.HasNext && (tcx.Basin.RightNode.Point.Y < tcx.Basin.RightNode.Next.Point.Y))
             {
                 tcx.Basin.RightNode = tcx.Basin.RightNode.Next;
             }
-
+            
             if (tcx.Basin.RightNode == tcx.Basin.BottomNode)
             {
                 // No valid basins
                 return;
             }
-
+            
             tcx.Basin.Width = tcx.Basin.RightNode.Point.X - tcx.Basin.LeftNode.Point.X;
             tcx.Basin.LeftHighest = tcx.Basin.LeftNode.Point.Y > tcx.Basin.RightNode.Point.Y;
-
+            
             FillBasinReq(tcx, tcx.Basin.BottomNode);
         }
-
+        
         /// <summary>Recursive algorithm to fill a Basin with triangles</summary>
         private static void FillBasinReq(DtSweepContext tcx, AdvancingFrontNode node)
         {
@@ -992,13 +992,13 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             {
                 return;
             }
-
+            
             Fill(tcx, node);
             if ((node.Prev == tcx.Basin.LeftNode) && (node.Next == tcx.Basin.RightNode))
             {
                 return;
             }
-
+            
             if (node.Prev == tcx.Basin.LeftNode)
             {
                 Orientation o = TriangulationUtil.Orient2d(node.Point, node.Next.Point, node.Next.Next.Point);
@@ -1006,7 +1006,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 {
                     return;
                 }
-
+                
                 node = node.Next;
             }
             else if (node.Next == tcx.Basin.RightNode)
@@ -1016,7 +1016,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 {
                     return;
                 }
-
+                
                 node = node.Prev;
             }
             else
@@ -1024,10 +1024,10 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 // Continue with the neighbor node with lowest Y value
                 node = node.Prev.Point.Y < node.Next.Point.Y ? node.Prev : node.Next;
             }
-
+            
             FillBasinReq(tcx, node);
         }
-
+        
         /// <summary>
         ///     Describes whether is shallow
         /// </summary>
@@ -1037,7 +1037,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
         private static bool IsShallow(DtSweepContext tcx, AdvancingFrontNode node)
         {
             double height;
-
+            
             if (tcx.Basin.LeftHighest)
             {
                 height = tcx.Basin.LeftNode.Point.Y - node.Point.Y;
@@ -1046,15 +1046,15 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             {
                 height = tcx.Basin.RightNode.Point.Y - node.Point.Y;
             }
-
+            
             if (tcx.Basin.Width > height)
             {
                 return true;
             }
-
+            
             return false;
         }
-
+        
         /// <summary>???</summary>
         /// <param name="node">middle node</param>
         /// <returns>the angle between 3 front nodes</returns>
@@ -1078,7 +1078,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             double by = node.Prev.Point.Y - py;
             return System.Math.Atan2(ax * by - ay * bx, ax * bx + ay * by);
         }
-
+        
         /// <summary>The basin angle is decided against the horizontal line [1,0]</summary>
         private static double BasinAngle(AdvancingFrontNode node)
         {
@@ -1086,30 +1086,30 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             double ay = node.Point.Y - node.Next.Next.Point.Y;
             return System.Math.Atan2(ay, ax);
         }
-
+        
         /// <summary>Adds a triangle to the advancing front to fill a hole.</summary>
         /// <param name="tcx"></param>
         /// <param name="node">middle node, that is the bottom of the hole</param>
         private static void Fill(DtSweepContext tcx, AdvancingFrontNode node)
         {
             DelaunayTriangle triangle = new DelaunayTriangle(node.Prev.Point, node.Point, node.Next.Point);
-
+            
             triangle.MarkNeighbor(node.Prev.Triangle);
             triangle.MarkNeighbor(node.Triangle);
             tcx.Triangles.Add(triangle);
-
+            
             // Update the advancing front
             node.Prev.Next = node.Next;
             node.Next.Prev = node.Prev;
             tcx.RemoveNode(node);
-
+            
             // If it was legalized the triangle has already been mapped
             if (!Legalize(tcx, triangle))
             {
                 tcx.MapTriangleToNodes(triangle);
             }
         }
-
+        
         /// <summary>
         ///     Determines if a triangle is legalized and legalizes it if needed.
         /// </summary>
@@ -1124,42 +1124,42 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 {
                     continue;
                 }
-
+                
                 DelaunayTriangle ot = t.Neighbors[i];
                 if (ot != null)
                 {
                     TriangulationPoint p = t.Points[i];
                     TriangulationPoint op = ot.OppositePoint(t, p);
                     int oi = ot.IndexOf(op);
-
+                    
                     if (ShouldNotLegalize(ot, oi))
                     {
                         HandleEdgeIsConstrained(t, i, ot, oi);
                         continue;
                     }
-
+                    
                     if (IsInsideCirCircle(p, t.PointCcw(p), t.PointCw(p), op))
                     {
                         t.EdgeIsDelaunay[i] = true;
                         ot.EdgeIsDelaunay[oi] = true;
-
+                        
                         if (!TryLegalizeTriangle(tcx, t, ot, p, op))
                         {
                             tcx.MapTriangleToNodes(t);
                             tcx.MapTriangleToNodes(ot);
                         }
-
+                        
                         t.EdgeIsDelaunay[i] = false;
                         ot.EdgeIsDelaunay[oi] = false;
-
+                        
                         return true;
                     }
                 }
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Handles the edge is constrained using the specified t
         /// </summary>
@@ -1171,7 +1171,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
         {
             t.EdgeIsConstrained[edgeIndex] = ot.EdgeIsConstrained[oppositeIndex];
         }
-
+        
         /// <summary>
         ///     Describes whether try legalize triangle
         /// </summary>
@@ -1184,23 +1184,23 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
         private static bool TryLegalizeTriangle(DtSweepContext tcx, DelaunayTriangle t, DelaunayTriangle ot, TriangulationPoint p, TriangulationPoint op)
         {
             RotateTrianglePair(t, p, ot, op);
-
+            
             bool notLegalized = !Legalize(tcx, t);
             if (notLegalized)
             {
                 tcx.MapTriangleToNodes(t);
             }
-
+            
             notLegalized = !Legalize(tcx, ot);
             if (notLegalized)
             {
                 tcx.MapTriangleToNodes(ot);
             }
-
+            
             return true;
         }
-
-
+        
+        
         /// <summary>
         ///     Checks if an edge should not be legalized.
         /// </summary>
@@ -1208,7 +1208,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
         /// <param name="oi">The index of the opposite point.</param>
         /// <returns>True if the edge should not be legalized, false otherwise.</returns>
         private static bool ShouldNotLegalize(DelaunayTriangle ot, int oi) => ot.EdgeIsConstrained[oi] || ot.EdgeIsDelaunay[oi];
-
+        
         /// <summary>
         ///     Checks if a point is inside the cir circle of a triangle.
         /// </summary>
@@ -1218,8 +1218,8 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
         /// <param name="c">The third triangle vertex.</param>
         /// <returns>True if the point is inside the cir circle, false otherwise.</returns>
         private static bool IsInsideCirCircle(TriangulationPoint p, TriangulationPoint a, TriangulationPoint b, TriangulationPoint c) => TriangulationUtil.SmartInCircle(p, a, b, c);
-
-
+        
+        
         /// <summary>
         ///     Rotates a triangle pair one vertex CW
         ///     n2                    n2
@@ -1239,32 +1239,32 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             DelaunayTriangle n2 = t.NeighborCw(p);
             DelaunayTriangle n3 = ot.NeighborCcw(op);
             DelaunayTriangle n4 = ot.NeighborCw(op);
-
+            
             bool ce1 = t.GetConstrainedEdgeCcw(p);
             bool ce2 = t.GetConstrainedEdgeCw(p);
             bool ce3 = ot.GetConstrainedEdgeCcw(op);
             bool ce4 = ot.GetConstrainedEdgeCw(op);
-
+            
             bool de1 = t.GetDelaunayEdgeCcw(p);
             bool de2 = t.GetDelaunayEdgeCw(p);
             bool de3 = ot.GetDelaunayEdgeCcw(op);
             bool de4 = ot.GetDelaunayEdgeCw(op);
-
+            
             t.Legalize(p, op);
             ot.Legalize(op, p);
-
+            
             // Remap dEdge
             ot.SetDelaunayEdgeCcw(p, de1);
             t.SetDelaunayEdgeCw(p, de2);
             t.SetDelaunayEdgeCcw(op, de3);
             ot.SetDelaunayEdgeCw(op, de4);
-
+            
             // Remap cEdge
             ot.SetConstrainedEdgeCcw(p, ce1);
             t.SetConstrainedEdgeCw(p, ce2);
             t.SetConstrainedEdgeCcw(op, ce3);
             ot.SetConstrainedEdgeCw(op, ce4);
-
+            
             // Remap neighbors
             // XXX: might optimize the markNeighbor by keeping track of
             //      what side should be assigned to what neighbor after the 
@@ -1276,22 +1276,22 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             {
                 ot.MarkNeighbor(n1);
             }
-
+            
             if (n2 != null)
             {
                 t.MarkNeighbor(n2);
             }
-
+            
             if (n3 != null)
             {
                 t.MarkNeighbor(n3);
             }
-
+            
             if (n4 != null)
             {
                 ot.MarkNeighbor(n4);
             }
-
+            
             t.MarkNeighbor(ot);
         }
     }

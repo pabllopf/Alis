@@ -44,32 +44,32 @@ namespace Alis.Extension.Encode.FFMeg.Encoding.Builders
         {
             SetCQP();
         }
-
+        
         /// <summary>
         ///     Set channel count, leave 'null' to match source
         /// </summary>
         public int? ChannelCount { get; set; } = null;
-
+        
         /// <summary>
         ///     Set sample rate, leave 'null' to match source
         /// </summary>
         public int? SampleRate { get; set; } = null;
-
+        
         /// <summary>
         ///     Gets or sets the value of the format
         /// </summary>
         public override string Format { get; set; } = "ogg";
-
+        
         /// <summary>
         ///     Gets the value of the name
         /// </summary>
         public override string Name => "libvorbis";
-
+        
         /// <summary>
         ///     Gets or sets the value of the current quality settings
         /// </summary>
         public string CurrentQualitySettings { get; private set; }
-
+        
         /// <summary>
         ///     Constant bitrate encoding.
         /// </summary>
@@ -78,7 +78,7 @@ namespace Alis.Extension.Encode.FFMeg.Encoding.Builders
         {
             CurrentQualitySettings = $"-b:a {bitrate}";
         }
-
+        
         /// <summary>
         ///     Constant quality encoding - VBR mode
         /// </summary>
@@ -87,7 +87,7 @@ namespace Alis.Extension.Encode.FFMeg.Encoding.Builders
         {
             CurrentQualitySettings = $"-q:a {q.ToString("0.00", CultureInfo.InvariantCulture)}";
         }
-
+        
         /// <summary>
         ///     Creates this instance
         /// </summary>

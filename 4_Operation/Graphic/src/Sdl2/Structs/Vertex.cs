@@ -42,12 +42,12 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The position
         /// </summary>
         public PointF position;
-
+        
         /// <summary>
         ///     The color
         /// </summary>
         public Color color;
-
+        
         /// <summary>
         ///     The text coordinate
         /// </summary>

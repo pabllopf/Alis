@@ -48,8 +48,8 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
         ///     Gets or sets the value of the game object
         /// </summary>
         private readonly Alis.Core.Ecs.Entity.GameObject.GameObject gameObject = new Alis.Core.Ecs.Entity.GameObject.GameObject();
-
-
+        
+        
         /// <summary>
         ///     Adds the component using the specified value
         /// </summary>
@@ -63,7 +63,7 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
             component.Attach(gameObject);
             return this;
         }
-
+        
         /// <summary>
         ///     Adds the component using the specified value
         /// </summary>
@@ -76,13 +76,13 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
             value.Attach(gameObject);
             return this;
         }
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The game object</returns>
         public Alis.Core.Ecs.Entity.GameObject.GameObject Build() => gameObject;
-
+        
         /// <summary>
         ///     Names the value
         /// </summary>
@@ -93,7 +93,7 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
             gameObject.Name = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Transforms the value
         /// </summary>
@@ -104,7 +104,7 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
             gameObject.Transform = value.Invoke(new TransformBuilder());
             return this;
         }
-
+        
         /// <summary>
         ///     Adds the tag using the specified value
         /// </summary>

@@ -45,12 +45,12 @@ namespace Alis.Sample.SplitCamera
         ///     The speed
         /// </summary>
         private const float Speed = 1.0f;
-
+        
         /// <summary>
         ///     The camera
         /// </summary>
         private Camera _camera;
-
+        
         /// <summary>
         ///     Ons the start
         /// </summary>
@@ -58,7 +58,7 @@ namespace Alis.Sample.SplitCamera
         {
             _camera = GameObject.Get<Camera>();
         }
-
+        
         /// <summary>
         ///     Ons the press down key using the specified key
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Sample.SplitCamera
                     Rotation = GameObject.Transform.Rotation
                 };
             }
-
+            
             if (key == KeyCode.S)
             {
                 GameObject.Transform = new Transform
@@ -84,7 +84,7 @@ namespace Alis.Sample.SplitCamera
                     Rotation = GameObject.Transform.Rotation
                 };
             }
-
+            
             if (key == KeyCode.A)
             {
                 GameObject.Transform = new Transform
@@ -94,7 +94,7 @@ namespace Alis.Sample.SplitCamera
                     Rotation = GameObject.Transform.Rotation
                 };
             }
-
+            
             if (key == KeyCode.D)
             {
                 GameObject.Transform = new Transform

@@ -34,13 +34,13 @@ namespace Alis.Core.Physic.Collision.ContactSystem
     {
         /// <summary>Feature index on ShapeA</summary>
         public byte IndexA { get; set; }
-
+        
         /// <summary>Feature index on ShapeB</summary>
         public byte IndexB { get; set; }
-
+        
         /// <summary>The feature type on ShapeA</summary>
         public ContactFeatureType TypeA { get; set; }
-
+        
         /// <summary>The feature type on ShapeB</summary>
         public ContactFeatureType TypeB { get; set; }
     }

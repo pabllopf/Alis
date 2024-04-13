@@ -47,7 +47,7 @@ namespace Alis.Core.Network
         /// <returns>Http data read from the stream</returns>
         Task<WebSocketHttpContext> ReadHttpHeaderFromStreamAsync(Stream stream,
             CancellationToken token = default(CancellationToken));
-
+        
         /// <summary>
         ///     Accept web socket with default options
         ///     Call ReadHttpHeaderFromStreamAsync first to get WebSocketHttpContext
@@ -57,7 +57,7 @@ namespace Alis.Core.Network
         /// <returns>A connected web socket</returns>
         Task<WebSocket> AcceptWebSocketAsync(WebSocketHttpContext context,
             CancellationToken token = default(CancellationToken));
-
+        
         /// <summary>
         ///     Accept web socket with options specified
         ///     Call ReadHttpHeaderFromStreamAsync first to get WebSocketHttpContext

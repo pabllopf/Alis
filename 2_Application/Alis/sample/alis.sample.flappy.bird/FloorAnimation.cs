@@ -44,12 +44,12 @@ namespace Alis.Sample.Flappy.Bird
         ///     The velocity
         /// </summary>
         private const float Velocity = 70.0f;
-
+        
         /// <summary>
         ///     The old
         /// </summary>
         private float xOld;
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -57,7 +57,7 @@ namespace Alis.Sample.Flappy.Bird
         {
             xOld = GameObject.Transform.Position.X;
         }
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
@@ -65,23 +65,23 @@ namespace Alis.Sample.Flappy.Bird
         {
             // get the x position of game object:
             float x = GameObject.Transform.Position.X;
-
+            
             // get the y position of game object:
             float y = GameObject.Transform.Position.Y;
-
+            
             // get the velocity of game object:
             float displace = Velocity * Game.TimeManager.DeltaTime;
-
+            
             // if the x position is less than -50.0f, then reset the x position to 0.0f
             Vector2 newPosition = x < -25.0f ? new Vector2(xOld, y) : new Vector2(x - displace, y);
-
+            
             Transform transform = new Transform
             {
                 Position = newPosition,
                 Rotation = GameObject.Transform.Rotation,
                 Scale = GameObject.Transform.Scale
             };
-
+            
             GameObject.Transform = transform;
         }
     }

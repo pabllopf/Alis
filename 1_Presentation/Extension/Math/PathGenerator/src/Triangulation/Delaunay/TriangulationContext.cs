@@ -42,42 +42,42 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
         ///     The triangulation point
         /// </summary>
         public readonly List<TriangulationPoint> Points = new List<TriangulationPoint>(200);
-
+        
         /// <summary>
         ///     The delaunay triangle
         /// </summary>
         public readonly List<DelaunayTriangle> Triangles = new List<DelaunayTriangle>();
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="TriangulationContext" /> class
         /// </summary>
         protected TriangulationContext() => Terminated = false;
-
+        
         /// <summary>
         ///     Gets or sets the value of the triangulation mode
         /// </summary>
         public TriangulationMode TriangulationMode { get; protected set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the triangulatable
         /// </summary>
         public ITriangulatable Triangulatable { get; private set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the terminated
         /// </summary>
         public bool Terminated { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the step count
         /// </summary>
         public int StepCount { get; private set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the is debug enabled
         /// </summary>
         public bool IsDebugEnabled { get; }
-
+        
         /// <summary>
         ///     Dones this instance
         /// </summary>
@@ -85,7 +85,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
         {
             StepCount++;
         }
-
+        
         /// <summary>
         ///     Prepares the triangulation using the specified t
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
             TriangulationMode = t.TriangulationMode;
             t.PrepareTriangulation(this);
         }
-
+        
         /// <summary>
         ///     News the constraint using the specified a
         /// </summary>
@@ -104,7 +104,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
         /// <param name="b">The </param>
         /// <returns>The triangulation constraint</returns>
         public abstract TriangulationConstraint NewConstraint(TriangulationPoint a, TriangulationPoint b);
-
+        
         /// <summary>
         ///     Updates the message
         /// </summary>
@@ -113,7 +113,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
         {
             Logger.Info($"TriangulationContext {message} ");
         }
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>

@@ -48,12 +48,12 @@ namespace Alis.Core.Network
         ///     The buffer factory
         /// </summary>
         private readonly Func<MemoryStream> _bufferFactory;
-
+        
         /// <summary>
         ///     The buffer pool
         /// </summary>
         private readonly IBufferPool _bufferPool;
-
+        
         /// <summary>
         ///     Initialises a new instance of the WebSocketServerFactory class without caring about internal buffers
         /// </summary>
@@ -62,13 +62,13 @@ namespace Alis.Core.Network
             _bufferPool = new BufferPool();
             _bufferFactory = _bufferPool.GetBuffer;
         }
-
+        
         /// <summary>
         ///     Initialises a new instance of the WebSocketClientFactory class with control over internal buffer creation
         /// </summary>
         /// <param name="bufferFactory"></param>
         public WebSocketServerFactory(Func<MemoryStream> bufferFactory) => _bufferFactory = bufferFactory;
-
+        
         /// <summary>
         ///     Reads a http header information from a stream and decodes the parts relating to the WebSocket protocot upgrade
         /// </summary>
@@ -84,7 +84,7 @@ namespace Alis.Core.Network
             IList<string> subProtocols = HttpHelper.GetSubProtocols(header);
             return new WebSocketHttpContext(isWebSocketRequest, subProtocols, header, path, stream);
         }
-
+        
         /// <summary>
         ///     Accept web socket with default options
         ///     Call ReadHttpHeaderFromStreamAsync first to get WebSocketHttpContext
@@ -95,7 +95,7 @@ namespace Alis.Core.Network
         public async Task<WebSocket> AcceptWebSocketAsync(WebSocketHttpContext context,
             CancellationToken token = default(CancellationToken))
             => await AcceptWebSocketAsync(context, new WebSocketServerOptions(), token);
-
+        
         /// <summary>
         ///     Accept web socket with options specified
         ///     Call ReadHttpHeaderFromStreamAsync first to get WebSocketHttpContext
@@ -115,7 +115,7 @@ namespace Alis.Core.Network
             return new WebSocketImplementation(guid, _bufferFactory, context.Stream, options.KeepAliveInterval,
                 secWebSocketExtensions, options.IncludeExceptionInCloseResponse, false, options.SubProtocol);
         }
-
+        
         /// <summary>
         ///     Checks the web socket version using the specified http header
         /// </summary>
@@ -125,7 +125,7 @@ namespace Alis.Core.Network
         private static void CheckWebSocketVersion(string httpHeader)
         {
             Regex webSocketVersionRegex = new Regex("Sec-WebSocket-Version: (.*)", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
-
+            
             // check the version. Support version 13 and above
             const int webSocketVersion = 13;
             Match match = webSocketVersionRegex.Match(httpHeader);
@@ -144,7 +144,7 @@ namespace Alis.Core.Network
                 throw new WebSocketVersionNotSupportedException("Cannot find \"Sec-WebSocket-Version\" in http header");
             }
         }
-
+        
         /// <summary>
         ///     Performs the handshake using the specified guid
         /// </summary>
@@ -161,7 +161,7 @@ namespace Alis.Core.Network
             {
                 Regex webSocketKeyRegex = new Regex("Sec-WebSocket-Key: (.*)", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
                 CheckWebSocketVersion(httpHeader);
-
+                
                 Match match = webSocketKeyRegex.Match(httpHeader);
                 if (match.Success)
                 {
@@ -172,7 +172,7 @@ namespace Alis.Core.Network
                                       + "Upgrade: websocket\r\n"
                                       + (subProtocol != null ? $"Sec-WebSocket-Protocol: {subProtocol}\r\n" : "")
                                       + $"Sec-WebSocket-Accept: {setWebSocketAccept}";
-
+                    
                     Events.Log.SendingHandshakeResponse(guid, response);
                     await HttpHelper.WriteHttpHeaderAsync(response, stream, token);
                 }

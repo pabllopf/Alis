@@ -38,12 +38,12 @@ namespace Alis.Core.Physic.Collision.TOI
         ///     The points separation function type
         /// </summary>
         Points,
-
+        
         /// <summary>
         ///     The face separation function type
         /// </summary>
         FaceA,
-
+        
         /// <summary>
         ///     The face separation function type
         /// </summary>

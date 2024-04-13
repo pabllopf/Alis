@@ -38,12 +38,12 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         ///     The circles manifold type
         /// </summary>
         Circles,
-
+        
         /// <summary>
         ///     The face manifold type
         /// </summary>
         FaceA,
-
+        
         /// <summary>
         ///     The face manifold type
         /// </summary>

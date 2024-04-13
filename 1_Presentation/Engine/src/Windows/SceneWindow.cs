@@ -40,14 +40,14 @@ namespace Alis.App.Engine.Windows
         ///     The name window
         /// </summary>
         private const string NameWindow = "Scene";
-
+        
         /// <summary>
         ///     Renders this instance
         /// </summary>
         public void Render()
         {
             ImGui.Begin(NameWindow);
-
+            
             ImGui.End();
         }
     }

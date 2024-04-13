@@ -41,12 +41,12 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         ///     The sdl flip none sdl renderer flip
         /// </summary>
         None = 0x00000000,
-
+        
         /// <summary>
         ///     The sdl flip horizontal sdl renderer flip
         /// </summary>
         FlipHorizontal = 0x00000001,
-
+        
         /// <summary>
         ///     The sdl flip vertical sdl renderer flip
         /// </summary>

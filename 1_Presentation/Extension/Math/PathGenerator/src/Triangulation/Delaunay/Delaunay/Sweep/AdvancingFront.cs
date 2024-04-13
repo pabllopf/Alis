@@ -41,17 +41,17 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
         ///     The head
         /// </summary>
         public AdvancingFrontNode Head;
-
+        
         /// <summary>
         ///     The search
         /// </summary>
         protected AdvancingFrontNode Search;
-
+        
         /// <summary>
         ///     The tail
         /// </summary>
         public AdvancingFrontNode Tail;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AdvancingFront" /> class
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             AddNode(head);
             AddNode(tail);
         }
-
+        
         /// <summary>
         ///     Adds the node using the specified node
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
         {
             //_searchTree.put(node.key, node);
         }
-
+        
         /// <summary>
         ///     Removes the node using the specified node
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
         {
             //_searchTree.delete( node.key );
         }
-
+        
         /// <summary>
         ///     Returns the string
         /// </summary>
@@ -97,20 +97,20 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 sb.Append(node.Point.X).Append("->");
                 node = node.Next;
             }
-
+            
             sb.Append(Tail.Point.X);
             return sb.ToString();
         }
-
+        
         /// <summary>
         ///     MM:  This seems to be used by LocateNode to guess a position in the implicit linked list of
         ///     AdvancingFrontNodes near x Removed an overload that depended on this being exact
         /// </summary>
         private AdvancingFrontNode FindSearchNode(double x) => Search;
-
+        
         /// <summary>We use a balancing tree to locate a node smaller or equal to given key value</summary>
         public AdvancingFrontNode LocateNode(TriangulationPoint point) => LocateNode(point.X);
-
+        
         /// <summary>
         ///     Locates the node using the specified x
         /// </summary>
@@ -141,10 +141,10 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                     }
                 }
             }
-
+            
             return null;
         }
-
+        
         /// <summary>
         ///     Locates the point using the specified point
         /// </summary>
@@ -155,7 +155,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             double px = point.X;
             AdvancingFrontNode node = FindSearchNode(px);
             double nx = node.Point.X;
-
+            
             if (px == nx)
             {
                 node = HandlePointEqualsNode(point, node);
@@ -168,11 +168,11 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             {
                 node = SearchNodeInNextNodes(point, node);
             }
-
+            
             Search = node;
             return node;
         }
-
+        
         /// <summary>
         ///     Handles the point equals node using the specified point
         /// </summary>
@@ -198,10 +198,10 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                     throw new Exception("Failed to find Node for given afront point");
                 }
             }
-
+            
             return node;
         }
-
+        
         /// <summary>
         ///     Searches the node in previous nodes using the specified point
         /// </summary>
@@ -217,10 +217,10 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                     break;
                 }
             }
-
+            
             return node;
         }
-
+        
         /// <summary>
         ///     Searches the node in next nodes using the specified point
         /// </summary>
@@ -236,7 +236,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                     break;
                 }
             }
-
+            
             return node;
         }
     }

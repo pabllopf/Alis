@@ -49,40 +49,40 @@ namespace Alis.Core.Ecs.Component.Render
         ///     The viewport
         /// </summary>
         public RectangleI Viewport;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Camera" /> class
         /// </summary>
         public Camera()
         {
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the texture target
         /// </summary>
         public IntPtr TextureTarget { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the resolution
         /// </summary>
         public Vector2 Resolution { get; set; } = new Vector2(800, 600);
-
+        
         /// <summary>
         ///     Gets or sets the value of the background color
         /// </summary>
         public Color BackgroundColor { get; set; } = Color.Black;
-
+        
         /// <summary>
         ///     Gets or sets the value of the camera border
         /// </summary>
         public static float CameraBorder { get; set; } = 1f;
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The camera builder</returns>
         public CameraBuilder Builder() => new CameraBuilder();
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Core.Ecs.Component.Render
             TextureTarget = Sdl.CreateTexture(VideoGame.Instance.GraphicManager.Renderer, Sdl.PixelFormatRgba8888, (int) TextureAccess.SdlTextureAccessTarget, Viewport.w, Viewport.h);
             VideoGame.Instance.GraphicManager.Attach(this);
         }
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
@@ -101,7 +101,7 @@ namespace Alis.Core.Ecs.Component.Render
             Viewport.x = (int) GameObject.Transform.Position.X;
             Viewport.y = (int) GameObject.Transform.Position.Y;
         }
-
+        
         /// <summary>
         ///     Ons the exit
         /// </summary>

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:MODE.cs
+//  File:Mode.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -38,7 +38,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         ///     The local mode
         /// </summary>
         Local = 0,
-
+        
         /// <summary>
         ///     The world mode
         /// </summary>

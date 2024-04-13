@@ -49,10 +49,10 @@ namespace Alis.Core.Aspect.Logging
             DateTime = DateTime.Now.ToUniversalTime();
             MessageType = messageType;
             Content = content;
-
+            
             StackTrace stackTrace1 = new StackTrace(2, false);
             StackTrace stackTrace2 = new StackTrace(2, true);
-
+            
             string methodName = stackTrace1.GetFrame(0).GetMethod().Name;
             Type reflectedType = stackTrace1.GetFrame(0).GetMethod().ReflectedType;
             if (reflectedType != null)
@@ -60,49 +60,49 @@ namespace Alis.Core.Aspect.Logging
                 string className = reflectedType.FullName;
                 Method = className + "." + methodName + "()";
             }
-
+            
             Level = MessageType.ToString();
-
+            
             StackTrace = stackTrace1.ToString().Trim();
             File = stackTrace2.GetFrame(0).GetFileName();
             Line = stackTrace2.GetFrame(0).GetFileLineNumber().ToString();
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the date time
         /// </summary>
         public DateTime DateTime { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the message type
         /// </summary>
         public MessageType MessageType { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the level
         /// </summary>
         public string Level { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the content
         /// </summary>
         public string Content { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the stack trace
         /// </summary>
         public string StackTrace { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the method
         /// </summary>
         public string Method { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the file
         /// </summary>
         public string File { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the line
         /// </summary>

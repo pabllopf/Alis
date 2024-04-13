@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SecureFloatTest.cs
+//  File:SecureFloatTests.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureFloat secureFloat = new SecureFloat(10.0f);
             Assert.Equal(10.0f, (float) secureFloat);
         }
-
+        
         /// <summary>
         ///     Tests that test secure float implicit conversion
         /// </summary>
@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureFloat secureFloat = 10.0f;
             Assert.Equal(10.0f, (float) secureFloat);
         }
-
+        
         /// <summary>
         ///     Tests that test secure float equality operator
         /// </summary>
@@ -65,11 +65,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureFloat secureFloat1 = 10.0f;
             SecureFloat secureFloat2 = 10.0f;
             Assert.True(secureFloat1 == secureFloat2);
-
+            
             secureFloat2 = 20.0f;
             Assert.False(secureFloat1 == secureFloat2);
         }
-
+        
         /// <summary>
         ///     Tests that test secure float inequality operator
         /// </summary>
@@ -79,11 +79,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureFloat secureFloat1 = 10.0f;
             SecureFloat secureFloat2 = 20.0f;
             Assert.True(secureFloat1 != secureFloat2);
-
+            
             secureFloat2 = 10.0f;
             Assert.False(secureFloat1 != secureFloat2);
         }
-
+        
         /// <summary>
         ///     Tests that test secure float addition operator
         /// </summary>
@@ -94,7 +94,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureFloat secureFloat2 = 20.0f;
             Assert.Equal(30.0f, (float) (secureFloat1 + secureFloat2));
         }
-
+        
         /// <summary>
         ///     Tests that test secure float subtraction operator
         /// </summary>
@@ -105,7 +105,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureFloat secureFloat2 = 10.0f;
             Assert.Equal(10.0f, (float) (secureFloat1 - secureFloat2));
         }
-
+        
         /// <summary>
         ///     Tests that test secure float multiplication operator
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureFloat secureFloat2 = 20.0f;
             Assert.Equal(200.0f, (float) (secureFloat1 * secureFloat2));
         }
-
+        
         /// <summary>
         ///     Tests that test secure float division operator
         /// </summary>
@@ -127,7 +127,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureFloat secureFloat2 = 10.0f;
             Assert.Equal(2.0f, (float) (secureFloat1 / secureFloat2));
         }
-
+        
         /// <summary>
         ///     Tests that test secure float equals method
         /// </summary>
@@ -137,11 +137,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureFloat secureFloat1 = 10.0f;
             SecureFloat secureFloat2 = 10.0f;
             Assert.True(secureFloat1.Equals(secureFloat2));
-
+            
             secureFloat2 = 20.0f;
             Assert.False(secureFloat1.Equals(secureFloat2));
         }
-
+        
         /// <summary>
         ///     Tests that test secure float get hash code method
         /// </summary>
@@ -151,11 +151,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureFloat secureFloat1 = 10.0f;
             SecureFloat secureFloat2 = 10.0f;
             Assert.Equal(secureFloat1.GetHashCode(), secureFloat2.GetHashCode());
-
+            
             secureFloat2 = 20.0f;
             Assert.NotEqual(secureFloat1.GetHashCode(), secureFloat2.GetHashCode());
         }
-
+        
         /// <summary>
         ///     Tests that test secure float to string method
         /// </summary>
@@ -165,8 +165,8 @@ namespace Alis.Core.Aspect.Security.Test
             SecureFloat secureFloat = 10.0f;
             Assert.Equal("10", secureFloat.ToString());
         }
-
-
+        
+        
         /// <summary>
         ///     Tests that test value set get
         /// </summary>
@@ -175,14 +175,14 @@ namespace Alis.Core.Aspect.Security.Test
         {
             // Arrange
             SecureFloat secureFloat = new SecureFloat(10f);
-
+            
             // Act
             float value = secureFloat;
-
+            
             // Assert
             Assert.Equal(10f, value);
         }
-
+        
         /// <summary>
         ///     Tests that test equality
         /// </summary>
@@ -192,11 +192,11 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureFloat secureFloat1 = new SecureFloat(10f);
             SecureFloat secureFloat2 = new SecureFloat(10f);
-
+            
             // Assert
             Assert.True(secureFloat1 == secureFloat2);
         }
-
+        
         /// <summary>
         ///     Tests that test inequality
         /// </summary>
@@ -206,11 +206,11 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureFloat secureFloat1 = new SecureFloat(10f);
             SecureFloat secureFloat2 = new SecureFloat(20f);
-
+            
             // Assert
             Assert.True(secureFloat1 != secureFloat2);
         }
-
+        
         /// <summary>
         ///     Tests that test increment
         /// </summary>
@@ -219,14 +219,14 @@ namespace Alis.Core.Aspect.Security.Test
         {
             // Arrange
             SecureFloat secureFloat = new SecureFloat(10f);
-
+            
             // Act
             secureFloat++;
-
+            
             // Assert
             Assert.Equal(11f, (float) secureFloat);
         }
-
+        
         /// <summary>
         ///     Tests that test decrement
         /// </summary>
@@ -235,14 +235,14 @@ namespace Alis.Core.Aspect.Security.Test
         {
             // Arrange
             SecureFloat secureFloat = new SecureFloat(10f);
-
+            
             // Act
             secureFloat--;
-
+            
             // Assert
             Assert.Equal(9f, (float) secureFloat);
         }
-
+        
         /// <summary>
         ///     Tests that test addition
         /// </summary>
@@ -252,14 +252,14 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureFloat secureFloat1 = new SecureFloat(10f);
             SecureFloat secureFloat2 = new SecureFloat(20f);
-
+            
             // Act
             SecureFloat result = secureFloat1 + secureFloat2;
-
+            
             // Assert
             Assert.Equal(30f, (float) result);
         }
-
+        
         /// <summary>
         ///     Tests that test subtraction
         /// </summary>
@@ -269,14 +269,14 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureFloat secureFloat1 = new SecureFloat(20f);
             SecureFloat secureFloat2 = new SecureFloat(10f);
-
+            
             // Act
             SecureFloat result = secureFloat1 - secureFloat2;
-
+            
             // Assert
             Assert.Equal(10f, (float) result);
         }
-
+        
         /// <summary>
         ///     Tests that test multiplication
         /// </summary>
@@ -286,14 +286,14 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureFloat secureFloat1 = new SecureFloat(10f);
             SecureFloat secureFloat2 = new SecureFloat(20f);
-
+            
             // Act
             SecureFloat result = secureFloat1 * secureFloat2;
-
+            
             // Assert
             Assert.Equal(200f, (float) result);
         }
-
+        
         /// <summary>
         ///     Tests that test division
         /// </summary>
@@ -303,10 +303,10 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureFloat secureFloat1 = new SecureFloat(20f);
             SecureFloat secureFloat2 = new SecureFloat(10f);
-
+            
             // Act
             SecureFloat result = secureFloat1 / secureFloat2;
-
+            
             // Assert
             Assert.Equal(2f, (float) result);
         }

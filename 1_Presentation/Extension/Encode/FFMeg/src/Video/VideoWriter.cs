@@ -48,18 +48,18 @@ namespace Alis.Extension.Encode.FFMeg.Video
         ///     The ffmpeg
         /// </summary>
         private readonly string ffmpeg;
-
+        
         /// <summary>
         ///     The csc
         /// </summary>
         private CancellationTokenSource csc;
-
+        
         /// <summary>
         ///     The ffmpegp
         /// </summary>
         internal Process ffmpegp;
-
-
+        
+        
         /// <summary>
         ///     Used for encoding frames into a new video file
         /// </summary>
@@ -76,29 +76,29 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidDataException("Video frame dimensions have to be bigger than 0 pixels!");
             }
-
+            
             if (framerate <= 0)
             {
                 throw new InvalidDataException("Video framerate has to be bigger than 0!");
             }
-
+            
             if (string.IsNullOrEmpty(filename))
             {
                 throw new NullReferenceException("Filename can't be null or empty!");
             }
-
+            
             UseFilename = true;
             Filename = filename;
-
+            
             ffmpeg = ffmpegExecutable;
-
+            
             Width = width;
             Height = height;
             Framerate = framerate;
             DestinationStream = null;
             EncoderOptions = encoderOptions ?? new H264Encoder().Create();
         }
-
+        
         /// <summary>
         ///     Used for encoding frames into a stream (Requires using a supported format like 'flv' for streaming)
         /// </summary>
@@ -115,63 +115,63 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidDataException("Video frame dimensions have to be bigger than 0 pixels!");
             }
-
+            
             if (framerate <= 0)
             {
                 throw new InvalidDataException("Video framerate has to be bigger than 0!");
             }
-
+            
             UseFilename = false;
-
+            
             ffmpeg = ffmpegExecutable;
-
+            
             Width = width;
             Height = height;
             Framerate = framerate;
             DestinationStream = destinationStream ?? throw new NullReferenceException("Stream can't be null!");
             EncoderOptions = encoderOptions ?? new H264Encoder().Create();
         }
-
+        
         /// <summary>
         ///     Gets the value of the current f fmpeg process
         /// </summary>
         public Process CurrentFFmpegProcess => ffmpegp;
-
+        
         /// <summary>
         ///     Gets the value of the width
         /// </summary>
         public int Width { get; }
-
+        
         /// <summary>
         ///     Gets the value of the height
         /// </summary>
         public int Height { get; }
-
+        
         /// <summary>
         ///     Gets the value of the framerate
         /// </summary>
         public double Framerate { get; }
-
+        
         /// <summary>
         ///     Gets the value of the use filename
         /// </summary>
         public bool UseFilename { get; }
-
+        
         /// <summary>
         ///     Gets the value of the encoder options
         /// </summary>
         public EncoderOptions EncoderOptions { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the destination stream
         /// </summary>
         public Stream DestinationStream { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the output data stream
         /// </summary>
         public Stream OutputDataStream { get; private set; }
-
+        
         /// <summary>
         ///     Disposes this instance
         /// </summary>
@@ -181,11 +181,11 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 CloseWrite();
             }
-
+            
             DestinationStream?.Dispose();
             csc?.Dispose();
         }
-
+        
         /// <summary>
         ///     Opens the write using the specified show f fmpeg output
         /// </summary>
@@ -197,31 +197,31 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidOperationException("File was already opened for writing!");
             }
-
+            
             string cmd = $"-f rawvideo -video_size {Width}:{Height} -r {Framerate} -pixel_format rgb24 -i - " +
                          $"-c:v {EncoderOptions.EncoderName} {EncoderOptions.EncoderArguments} -f {EncoderOptions.Format}";
-
+            
             if (UseFilename)
             {
                 if (File.Exists(Filename))
                 {
                     File.Delete(Filename);
                 }
-
+                
                 InputDataStream = FfMpegWrapper.OpenInput(ffmpeg, $"{cmd} \"{Filename}\"", out ffmpegp, showFFmpegOutput);
             }
             else
             {
                 csc = new CancellationTokenSource();
-
+                
                 // using stream
                 (InputDataStream, OutputDataStream) = FfMpegWrapper.Open(ffmpeg, $"{cmd} -", out ffmpegp, showFFmpegOutput);
                 _ = OutputDataStream.CopyToAsync(DestinationStream, 81920, csc.Token); // 81920 is the default buffer size
             }
-
+            
             OpenedForWriting = true;
         }
-
+        
         /// <summary>
         ///     Closes output video file.
         /// </summary>
@@ -231,18 +231,18 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidOperationException("File is not opened for writing!");
             }
-
+            
             try
             {
                 InputDataStream.Dispose();
                 ffmpegp.WaitForExit();
                 csc?.Cancel();
-
+                
                 if (!UseFilename)
                 {
                     OutputDataStream?.Dispose();
                 }
-
+                
                 try
                 {
                     if (ffmpegp?.HasExited == false)

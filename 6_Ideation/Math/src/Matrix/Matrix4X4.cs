@@ -42,55 +42,55 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     The hash code
         /// </summary>
         private readonly int hashCode;
-
+        
         /// <summary>The first element of the first row.</summary>
         public float M11;
-
+        
         /// <summary>The second element of the first row.</summary>
         public float M12;
-
+        
         /// <summary>The third element of the first row.</summary>
         public float M13;
-
+        
         /// <summary>The fourth element of the first row.</summary>
         public float M14;
-
+        
         /// <summary>The first element of the second row.</summary>
         public float M21;
-
+        
         /// <summary>The second element of the second row.</summary>
         public float M22;
-
+        
         /// <summary>The third element of the second row.</summary>
         public float M23;
-
+        
         /// <summary>The fourth element of the second row.</summary>
         public float M24;
-
+        
         /// <summary>The first element of the third row.</summary>
         public float M31;
-
+        
         /// <summary>The second element of the third row.</summary>
         public float M32;
-
+        
         /// <summary>The third element of the third row.</summary>
         public float M33;
-
+        
         /// <summary>The fourth element of the third row.</summary>
         public float M34;
-
+        
         /// <summary>The first element of the fourth row.</summary>
         public float M41;
-
+        
         /// <summary>The second element of the fourth row.</summary>
         public float M42;
-
+        
         /// <summary>The third element of the fourth row.</summary>
         public float M43;
-
+        
         /// <summary>The fourth element of the fourth row.</summary>
         public float M44;
-
+        
         /// <summary>Creates a 4x4 matrix from the specified components.</summary>
         /// <param name="m11">The value to assign to the first element in the first row.</param>
         /// <param name="m12">The value to assign to the second element in the first row.</param>
@@ -117,24 +117,24 @@ namespace Alis.Core.Aspect.Math.Matrix
             M12 = m12;
             M13 = m13;
             M14 = m14;
-
+            
             M21 = m21;
             M22 = m22;
             M23 = m23;
             M24 = m24;
-
+            
             M31 = m31;
             M32 = m32;
             M33 = m33;
             M34 = m34;
-
+            
             M41 = m41;
             M42 = m42;
             M43 = m43;
             M44 = m44;
-
+            
             HashCode hash = new HashCode();
-
+            
             hash.Add(M11);
             hash.Add(M12);
             hash.Add(M13);
@@ -151,10 +151,10 @@ namespace Alis.Core.Aspect.Math.Matrix
             hash.Add(M42);
             hash.Add(M43);
             hash.Add(M44);
-
+            
             hashCode = hash.ToHashCode();
         }
-
+        
         /// <summary>Gets the multiplicative identity matrix.</summary>
         /// <value>Gets the multiplicative identity matrix.</value>
         public static Matrix4X4 Identity => new Matrix4X4
@@ -164,7 +164,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             0f, 0f, 1f, 0f,
             0f, 0f, 0f, 1f
         );
-
+        
         /// <summary>Creates a customized orthographic projection matrix.</summary>
         /// <param name="left">The minimum X-value of the view volume.</param>
         /// <param name="right">The maximum X-value of the view volume.</param>
@@ -176,21 +176,21 @@ namespace Alis.Core.Aspect.Math.Matrix
         public static Matrix4X4 CreateOrthographicOffCenter(float left, float right, float bottom, float top, float zNearPlane, float zFarPlane)
         {
             Matrix4X4 result = Identity;
-
+            
             result.M11 = 2.0f / (right - left);
-
+            
             result.M22 = 2.0f / (top - bottom);
-
+            
             result.M33 = 1.0f / (zNearPlane - zFarPlane);
-
+            
             result.M41 = (left + right) / (left - right);
             result.M42 = (top + bottom) / (bottom - top);
             result.M43 = zNearPlane / (zNearPlane - zFarPlane);
-
+            
             return result;
         }
-
-
+        
+        
         /// <summary>Adds each element in one matrix with its corresponding element in a second matrix.</summary>
         /// <param name="value1">The first matrix.</param>
         /// <param name="value2">The second matrix.</param>
@@ -221,7 +221,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             );
             return m;
         }
-
+        
         /// <summary>Returns a value that indicates whether the specified matrices are equal.</summary>
         /// <param name="value1">The first matrix to compare.</param>
         /// <param name="value2">The second matrix to care</param>
@@ -234,7 +234,7 @@ namespace Alis.Core.Aspect.Math.Matrix
                                                                               (System.Math.Abs(value1.M12 - value2.M12) < 0.1F) && (System.Math.Abs(value1.M13 - value2.M13) < 0.1F) && (System.Math.Abs(value1.M14 - value2.M14) < 0.1F) && (System.Math.Abs(value1.M21 - value2.M21) < 0.1F) &&
                                                                               (System.Math.Abs(value1.M23 - value2.M23) < 0.1F) && (System.Math.Abs(value1.M24 - value2.M24) < 0.1F) && (System.Math.Abs(value1.M31 - value2.M31) < 0.1F) && (System.Math.Abs(value1.M32 - value2.M32) < 0.1F) &&
                                                                               (System.Math.Abs(value1.M34 - value2.M34) < 0.1F) && (System.Math.Abs(value1.M41 - value2.M41) < 0.1F) && (System.Math.Abs(value1.M42 - value2.M42) < 0.1F) && (System.Math.Abs(value1.M43 - value2.M43) < 0.1F);
-
+        
         /// <summary>Returns a value that indicates whether the specified matrices are not equal.</summary>
         /// <param name="value1">The first matrix to compare.</param>
         /// <param name="value2">The second matrix to compare.</param>
@@ -246,8 +246,8 @@ namespace Alis.Core.Aspect.Math.Matrix
                                                                               !(System.Math.Abs(value1.M21 - value2.M21) > 0.1F) && !(System.Math.Abs(value1.M22 - value2.M22) > 0.1F) && !(System.Math.Abs(value1.M23 - value2.M23) > 0.1F) && !(System.Math.Abs(value1.M24 - value2.M24) > 0.1F) &&
                                                                               !(System.Math.Abs(value1.M31 - value2.M31) > 0.1F) && !(System.Math.Abs(value1.M32 - value2.M32) > 0.1F) && !(System.Math.Abs(value1.M33 - value2.M33) > 0.1F) && !(System.Math.Abs(value1.M34 - value2.M34) > 0.1F) &&
                                                                               !(System.Math.Abs(value1.M41 - value2.M41) > 0.1F) && !(System.Math.Abs(value1.M42 - value2.M42) > 0.1F) && !(System.Math.Abs(value1.M43 - value2.M43) > 0.1F) && !(System.Math.Abs(value1.M44 - value2.M44) > 0.1F);
-
-
+        
+        
         /// <summary>Creates a matrix for rotating points around the Z axis.</summary>
         /// <param name="radians">The amount, in radians, by which to rotate around the Z-axis.</param>
         /// <returns>The rotation matrix.</returns>
@@ -255,7 +255,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         {
             float c = MathF.Cos(radians);
             float s = MathF.Sin(radians);
-
+            
             // [  c  s  0  0 ]
             // [ -s  c  0  0 ]
             // [  0  0  1  0 ]
@@ -265,10 +265,10 @@ namespace Alis.Core.Aspect.Math.Matrix
                 -s, c, 0, 0,
                 0, 0, 1, 0,
                 0, 0, 0, 1);
-
+            
             return result;
         }
-
+        
         /// <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
         /// <param name="obj">The object to compare with the current instance.</param>
         /// <returns>
@@ -282,16 +282,16 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override bool Equals(object obj) => obj is Matrix4X4 other && Equals(other);
-
+        
         /// <summary>Returns a value that indicates whether this instance and another 4x4 matrix are equal.</summary>
         /// <param name="other">The other matrix.</param>
         /// <returns><see langword="true" /> if the two matrices are equal; otherwise, <see langword="false" />.</returns>
         public bool Equals(Matrix4X4 other) => this == other;
-
+        
         /// <summary>Returns the hash code for this instance.</summary>
         /// <returns>The hash code.</returns>
         public override int GetHashCode() => hashCode;
-
+        
         /// <summary>Returns a string that represents this matrix.</summary>
         /// <returns>The string representation of this matrix.</returns>
         /// <remarks>
@@ -306,7 +306,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </remarks>
         public override string ToString() =>
             $"{{ {{M11:{M11} M12:{M12} M13:{M13} M14:{M14}}} {{M21:{M21} M22:{M22} M23:{M23} M24:{M24}}} {{M31:{M31} M32:{M32} M33:{M33} M34:{M34}}} {{M41:{M41} M42:{M42} M43:{M43} M44:{M44}}} }}";
-
+        
         /// <summary>
         ///     Creates the rotation x using the specified radians
         /// </summary>
@@ -316,7 +316,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         {
             float c = MathF.Cos(radians);
             float s = MathF.Sin(radians);
-
+            
             // [  1  0  0  0 ]
             // [  0  c  s  0 ]
             // [  0 -s  c  0 ]
@@ -326,37 +326,34 @@ namespace Alis.Core.Aspect.Math.Matrix
                 0f, c, s, 0f,
                 0f, -s, c, 0f,
                 0f, 0f, 0f, 1f);
-
+            
             return result;
         }
-
+        
         /// <summary>
         ///     Multiplies the matrix 1
         /// </summary>
         /// <param name="matrix1">The matrix</param>
         /// <param name="matrix2">The matrix</param>
         /// <returns>The result</returns>
-        public static Matrix4X4 Multiply(Matrix4X4 matrix1, Matrix4X4 matrix2)
+        public static Matrix4X4 Multiply(Matrix4X4 matrix1, Matrix4X4 matrix2) => new Matrix4X4
         {
-            return new Matrix4X4
-            {
-                M11 = matrix1.M11 * matrix2.M11 + matrix1.M12 * matrix2.M21 + matrix1.M13 * matrix2.M31 + matrix1.M14 * matrix2.M41,
-                M12 = matrix1.M11 * matrix2.M12 + matrix1.M12 * matrix2.M22 + matrix1.M13 * matrix2.M32 + matrix1.M14 * matrix2.M42,
-                M13 = matrix1.M11 * matrix2.M13 + matrix1.M12 * matrix2.M23 + matrix1.M13 * matrix2.M33 + matrix1.M14 * matrix2.M43,
-                M14 = matrix1.M11 * matrix2.M14 + matrix1.M12 * matrix2.M24 + matrix1.M13 * matrix2.M34 + matrix1.M14 * matrix2.M44,
-                M21 = matrix1.M21 * matrix2.M11 + matrix1.M22 * matrix2.M21 + matrix1.M23 * matrix2.M31 + matrix1.M24 * matrix2.M41,
-                M22 = matrix1.M21 * matrix2.M12 + matrix1.M22 * matrix2.M22 + matrix1.M23 * matrix2.M32 + matrix1.M24 * matrix2.M42,
-                M23 = matrix1.M21 * matrix2.M13 + matrix1.M22 * matrix2.M23 + matrix1.M23 * matrix2.M33 + matrix1.M24 * matrix2.M43,
-                M24 = matrix1.M21 * matrix2.M14 + matrix1.M22 * matrix2.M24 + matrix1.M23 * matrix2.M34 + matrix1.M24 * matrix2.M44,
-                M31 = matrix1.M31 * matrix2.M11 + matrix1.M32 * matrix2.M21 + matrix1.M33 * matrix2.M31 + matrix1.M34 * matrix2.M41,
-                M32 = matrix1.M31 * matrix2.M12 + matrix1.M32 * matrix2.M22 + matrix1.M33 * matrix2.M32 + matrix1.M34 * matrix2.M42,
-                M33 = matrix1.M31 * matrix2.M13 + matrix1.M32 * matrix2.M23 + matrix1.M33 * matrix2.M33 + matrix1.M34 * matrix2.M43,
-                M34 = matrix1.M31 * matrix2.M14 + matrix1.M32 * matrix2.M24 + matrix1.M33 * matrix2.M34 + matrix1.M34 * matrix2.M44,
-                M41 = matrix1.M41 * matrix2.M11 + matrix1.M42 * matrix2.M21 + matrix1.M43 * matrix2.M31 + matrix1.M44 * matrix2.M41,
-                M42 = matrix1.M41 * matrix2.M12 + matrix1.M42 * matrix2.M22 + matrix1.M43 * matrix2.M32 + matrix1.M44 * matrix2.M42,
-                M43 = matrix1.M41 * matrix2.M13 + matrix1.M42 * matrix2.M23 + matrix1.M43 * matrix2.M33 + matrix1.M44 * matrix2.M43,
-                M44 = matrix1.M41 * matrix2.M14 + matrix1.M42 * matrix2.M24 + matrix1.M43 * matrix2.M34 + matrix1.M44 * matrix2.M44
-            };
-        }
+            M11 = matrix1.M11 * matrix2.M11 + matrix1.M12 * matrix2.M21 + matrix1.M13 * matrix2.M31 + matrix1.M14 * matrix2.M41,
+            M12 = matrix1.M11 * matrix2.M12 + matrix1.M12 * matrix2.M22 + matrix1.M13 * matrix2.M32 + matrix1.M14 * matrix2.M42,
+            M13 = matrix1.M11 * matrix2.M13 + matrix1.M12 * matrix2.M23 + matrix1.M13 * matrix2.M33 + matrix1.M14 * matrix2.M43,
+            M14 = matrix1.M11 * matrix2.M14 + matrix1.M12 * matrix2.M24 + matrix1.M13 * matrix2.M34 + matrix1.M14 * matrix2.M44,
+            M21 = matrix1.M21 * matrix2.M11 + matrix1.M22 * matrix2.M21 + matrix1.M23 * matrix2.M31 + matrix1.M24 * matrix2.M41,
+            M22 = matrix1.M21 * matrix2.M12 + matrix1.M22 * matrix2.M22 + matrix1.M23 * matrix2.M32 + matrix1.M24 * matrix2.M42,
+            M23 = matrix1.M21 * matrix2.M13 + matrix1.M22 * matrix2.M23 + matrix1.M23 * matrix2.M33 + matrix1.M24 * matrix2.M43,
+            M24 = matrix1.M21 * matrix2.M14 + matrix1.M22 * matrix2.M24 + matrix1.M23 * matrix2.M34 + matrix1.M24 * matrix2.M44,
+            M31 = matrix1.M31 * matrix2.M11 + matrix1.M32 * matrix2.M21 + matrix1.M33 * matrix2.M31 + matrix1.M34 * matrix2.M41,
+            M32 = matrix1.M31 * matrix2.M12 + matrix1.M32 * matrix2.M22 + matrix1.M33 * matrix2.M32 + matrix1.M34 * matrix2.M42,
+            M33 = matrix1.M31 * matrix2.M13 + matrix1.M32 * matrix2.M23 + matrix1.M33 * matrix2.M33 + matrix1.M34 * matrix2.M43,
+            M34 = matrix1.M31 * matrix2.M14 + matrix1.M32 * matrix2.M24 + matrix1.M33 * matrix2.M34 + matrix1.M34 * matrix2.M44,
+            M41 = matrix1.M41 * matrix2.M11 + matrix1.M42 * matrix2.M21 + matrix1.M43 * matrix2.M31 + matrix1.M44 * matrix2.M41,
+            M42 = matrix1.M41 * matrix2.M12 + matrix1.M42 * matrix2.M22 + matrix1.M43 * matrix2.M32 + matrix1.M44 * matrix2.M42,
+            M43 = matrix1.M41 * matrix2.M13 + matrix1.M42 * matrix2.M23 + matrix1.M43 * matrix2.M33 + matrix1.M44 * matrix2.M43,
+            M44 = matrix1.M41 * matrix2.M14 + matrix1.M42 * matrix2.M24 + matrix1.M43 * matrix2.M34 + matrix1.M44 * matrix2.M44
+        };
     }
 }

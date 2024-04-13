@@ -38,7 +38,7 @@ namespace Alis.Core.Profile
         ///     Gets or sets the value of the memory usage
         /// </summary>
         public long MemoryUsage { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the cpu usage
         /// </summary>

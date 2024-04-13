@@ -38,7 +38,7 @@ namespace Alis.Core.Audio
         ///     The none audio backend type
         /// </summary>
         None = 0,
-
+        
         /// <summary>
         ///     The os audio type
         /// </summary>

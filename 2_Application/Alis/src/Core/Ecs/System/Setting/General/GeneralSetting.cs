@@ -46,38 +46,38 @@ namespace Alis.Core.Ecs.System.Setting.General
         ///     Gets or sets the value of the debug
         /// </summary>
         public bool Debug { get; set; } = false;
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The graphic setting builder</returns>
         public GeneralSettingBuilder Builder() => new GeneralSettingBuilder();
-
+        
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; } = "Default Name";
-
+        
         /// <summary>
         ///     Gets or sets the value of the description
         /// </summary>
         public string Description { get; set; } = "Default Description";
-
+        
         /// <summary>
         ///     Gets or sets the value of the version
         /// </summary>
         public string Version { get; set; } = "0.0.0";
-
+        
         /// <summary>
         ///     Gets or sets the value of the author
         /// </summary>
         public string Author { get; set; } = "Pablo Perdomo Falcón";
-
+        
         /// <summary>
         ///     Gets or sets the value of the license
         /// </summary>
         public string License { get; set; } = "GPL-3.0 license";
-
+        
         /// <summary>
         ///     Gets or sets the value of the icon
         /// </summary>

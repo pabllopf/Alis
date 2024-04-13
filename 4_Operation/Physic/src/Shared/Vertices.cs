@@ -51,7 +51,7 @@ namespace Alis.Core.Physic.Shared
         public Vertices()
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Vertices" /> class
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Shared
         public Vertices(int capacity) : base(capacity)
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Vertices" /> class
         /// </summary>
@@ -68,34 +68,34 @@ namespace Alis.Core.Physic.Shared
         {
             AddRange(vertices);
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the attached to body
         /// </summary>
         private bool AttachedToBody { get; } = true;
-
+        
         /// <summary>
         ///     You can add holes to this collection. It will get respected by some of the triangulation algorithm, but
         ///     otherwise not used.
         /// </summary>
         public List<Vertices> Holes { get; set; }
-
+        
         /// <summary>Gets the next index. Used for iterating all the edges with wrap-around.</summary>
         /// <param name="index">The current index</param>
         public int NextIndex(int index) => index + 1 > Count - 1 ? 0 : index + 1;
-
+        
         /// <summary>Gets the next vertex. Used for iterating all the edges with wrap-around.</summary>
         /// <param name="index">The current index</param>
         public Vector2 NextVertex(int index) => this[NextIndex(index)];
-
+        
         /// <summary>Gets the previous index. Used for iterating all the edges with wrap-around.</summary>
         /// <param name="index">The current index</param>
         private int PreviousIndex(int index) => index - 1 < 0 ? Count - 1 : index - 1;
-
+        
         /// <summary>Gets the previous vertex. Used for iterating all the edges with wrap-around.</summary>
         /// <param name="index">The current index</param>
         public Vector2 PreviousVertex(int index) => this[PreviousIndex(index)];
-
+        
         /// <summary>Gets the signed area. If the area is less than 0, it indicates that the polygon is clockwise winded.</summary>
         /// <returns>The signed area</returns>
         private float GetSignedArea()
@@ -105,25 +105,25 @@ namespace Alis.Core.Physic.Shared
             {
                 return 0;
             }
-
+            
             int i;
             float area = 0;
-
+            
             for (i = 0; i < Count; i++)
             {
                 int j = (i + 1) % Count;
-
+                
                 Vector2 vi = this[i];
                 Vector2 vj = this[j];
-
+                
                 area += vi.X * vj.Y;
                 area -= vi.Y * vj.X;
             }
-
+            
             area /= 2.0f;
             return area;
         }
-
+        
         /// <summary>Gets the area.</summary>
         /// <returns></returns>
         private float GetArea()
@@ -131,7 +131,7 @@ namespace Alis.Core.Physic.Shared
             float area = GetSignedArea();
             return area < 0 ? -area : area;
         }
-
+        
         /// <summary>Gets the centroid.</summary>
         /// <returns></returns>
         public Vector2 GetCentroid()
@@ -141,85 +141,85 @@ namespace Alis.Core.Physic.Shared
             {
                 return new Vector2(float.NaN, float.NaN);
             }
-
+            
             // Same algorithm is used by Box2D
             Vector2 c = Vector2.Zero;
             float area = 0.0f;
             const float inv3 = 1.0f / 3.0f;
-
+            
             for (int i = 0; i < Count; ++i)
             {
                 // Triangle vertices.
                 Vector2 current = this[i];
                 Vector2 next = i + 1 < Count ? this[i + 1] : this[0];
-
+                
                 float triangleArea = 0.5f * (current.X * next.Y - current.Y * next.X);
                 area += triangleArea;
-
+                
                 // Area weighted centroid
                 c += triangleArea * inv3 * (current + next);
             }
-
+            
             // Centroid
             c *= 1.0f / area;
             return c;
         }
-
+        
         /// <summary>Returns an AABB that fully contains this polygon.</summary>
         public Aabb GetAabb()
         {
             Aabb aabb;
             Vector2 lowerBound = new Vector2(float.MaxValue, float.MaxValue);
             Vector2 upperBound = new Vector2(float.MinValue, float.MinValue);
-
+            
             for (int i = 0; i < Count; ++i)
             {
                 if (this[i].X < lowerBound.X)
                 {
                     lowerBound = new Vector2(this[i].X, lowerBound.Y);
                 }
-
+                
                 if (this[i].X > upperBound.X)
                 {
                     upperBound = new Vector2(this[i].X, upperBound.Y);
                 }
-
+                
                 if (this[i].Y < lowerBound.Y)
                 {
                     lowerBound = new Vector2(lowerBound.X, this[i].Y);
                 }
-
+                
                 if (this[i].Y > upperBound.Y)
                 {
                     upperBound = new Vector2(upperBound.X, this[i].Y);
                 }
             }
-
+            
             aabb.LowerBound = lowerBound;
             aabb.UpperBound = upperBound;
-
+            
             return aabb;
         }
-
+        
         /// <summary>Translates the vertices with the specified vector.</summary>
         /// <param name="value">The value.</param>
         public void Translate(Vector2 value)
         {
             Translate(ref value);
         }
-
+        
         /// <summary>Translates the vertices with the specified vector.</summary>
         /// <param name="value">The vector.</param>
         public void Translate(ref Vector2 value)
         {
             Debug.Assert(!AttachedToBody,
                 "Translating vertices that are used by a Body can result in unstable behavior. Use Body.Position instead.");
-
+            
             for (int i = 0; i < Count; i++)
             {
                 this[i] = Vector2.Add(this[i], value);
             }
-
+            
             if ((Holes != null) && (Holes.Count > 0))
             {
                 foreach (Vertices hole in Holes)
@@ -228,25 +228,25 @@ namespace Alis.Core.Physic.Shared
                 }
             }
         }
-
+        
         /// <summary>Scales the vertices with the specified vector.</summary>
         /// <param name="value">The Value.</param>
         public void Scale(Vector2 value)
         {
             Scale(ref value);
         }
-
+        
         /// <summary>Scale the vertices with the specified vector.</summary>
         /// <param name="value">The Value.</param>
         private void Scale(ref Vector2 value)
         {
             Debug.Assert(!AttachedToBody, "Scaling vertices that are used by a Body can result in unstable behavior.");
-
+            
             for (int i = 0; i < Count; i++)
             {
                 this[i] = Vector2.Multiply(this[i], value);
             }
-
+            
             if ((Holes != null) && (Holes.Count > 0))
             {
                 foreach (Vertices hole in Holes)
@@ -255,7 +255,7 @@ namespace Alis.Core.Physic.Shared
                 }
             }
         }
-
+        
         /// <summary>
         ///     Rotate the vertices with the defined value in radians. Warning: Using this method on an active set of vertices
         ///     of a Body, will cause problems with collisions. Use Body.Rotation instead.
@@ -264,16 +264,16 @@ namespace Alis.Core.Physic.Shared
         public void Rotate(float value)
         {
             Debug.Assert(!AttachedToBody, "Rotating vertices that are used by a Body can result in unstable behavior.");
-
+            
             float num1 = (float) Math.Cos(value);
             float num2 = (float) Math.Sin(value);
-
+            
             for (int i = 0; i < Count; i++)
             {
                 Vector2 position = this[i];
                 this[i] = new Vector2(position.X * num1 + position.Y * -num2, position.X * num2 + position.Y * num1);
             }
-
+            
             if ((Holes != null) && (Holes.Count > 0))
             {
                 foreach (Vertices hole in Holes)
@@ -282,7 +282,7 @@ namespace Alis.Core.Physic.Shared
                 }
             }
         }
-
+        
         /// <summary>
         ///     Determines whether the polygon is convex. O(n^2) running time. Assumptions: - The polygon is in counter
         ///     clockwise order - The polygon has no overlapping edges
@@ -295,19 +295,19 @@ namespace Alis.Core.Physic.Shared
             {
                 return false;
             }
-
+            
             //Triangles are always convex
             if (Count == 3)
             {
                 return true;
             }
-
+            
             // Checks the polygon is convex and the interior is to the left of each edge.
             for (int i = 0; i < Count; ++i)
             {
                 int next = i + 1 < Count ? i + 1 : 0;
                 Vector2 edge = this[next] - this[i];
-
+                
                 for (int j = 0; j < Count; ++j)
                 {
                     // Don't check vertices on the current edge.
@@ -315,21 +315,21 @@ namespace Alis.Core.Physic.Shared
                     {
                         continue;
                     }
-
+                    
                     Vector2 r = this[j] - this[i];
-
+                    
                     float s = edge.X * r.Y - edge.Y * r.X;
-
+                    
                     if (s <= 0.0f)
                     {
                         return false;
                     }
                 }
             }
-
+            
             return true;
         }
-
+        
         /// <summary>
         ///     Indicates if the vertices are in counter clockwise order. Warning: If the area of the polygon is 0, it is
         ///     unable to determine the winding.
@@ -341,10 +341,10 @@ namespace Alis.Core.Physic.Shared
             {
                 return false;
             }
-
+            
             return GetSignedArea() > 0.0f;
         }
-
+        
         /// <summary>Forces the vertices to be counter clock wise order.</summary>
         public void ForceCounterClockWise()
         {
@@ -353,13 +353,13 @@ namespace Alis.Core.Physic.Shared
             {
                 return;
             }
-
+            
             if (!IsCounterClockWise())
             {
                 Reverse();
             }
         }
-
+        
         /// <summary>Checks if the vertices forms an simple polygon by checking for edge crossings.</summary>
         public bool IsSimple()
         {
@@ -368,7 +368,7 @@ namespace Alis.Core.Physic.Shared
             {
                 return false;
             }
-
+            
             for (int i = 0; i < Count; ++i)
             {
                 Vector2 a1 = this[i];
@@ -377,17 +377,17 @@ namespace Alis.Core.Physic.Shared
                 {
                     Vector2 b1 = this[j];
                     Vector2 b2 = NextVertex(j);
-
+                    
                     if (Line.LineIntersect2(a1, a2, b1, b2, out _))
                     {
                         return false;
                     }
                 }
             }
-
+            
             return true;
         }
-
+        
         /// <summary>
         ///     Checks if the polygon is valid for use in the engine. Performs a full check, for simplicity, convexity,
         ///     orientation, minimum angle, and volume. From Eric Jordan's convex decomposition library
@@ -399,17 +399,17 @@ namespace Alis.Core.Physic.Shared
             {
                 return PolygonError.NotSimple;
             }
-
+            
             if (GetArea() <= float.Epsilon)
             {
                 return PolygonError.AreaTooSmall;
             }
-
+            
             if (!IsConvex())
             {
                 return PolygonError.NotConvex;
             }
-
+            
             //Check if the sides are of adequate length.
             for (int i = 0; i < Count; ++i)
             {
@@ -420,15 +420,15 @@ namespace Alis.Core.Physic.Shared
                     return PolygonError.SideTooSmall;
                 }
             }
-
+            
             if (!IsCounterClockWise())
             {
                 return PolygonError.NotCounterClockWise;
             }
-
+            
             return PolygonError.NoError;
         }
-
+        
         /// <summary>Projects to axis.</summary>
         /// <param name="axis">The axis.</param>
         /// <param name="min">The min.</param>
@@ -439,7 +439,7 @@ namespace Alis.Core.Physic.Shared
             float dotProduct = Vector2.Dot(axis, this[0]);
             min = dotProduct;
             max = dotProduct;
-
+            
             for (int i = 0; i < Count; i++)
             {
                 dotProduct = Vector2.Dot(this[i], axis);
@@ -456,7 +456,7 @@ namespace Alis.Core.Physic.Shared
                 }
             }
         }
-
+        
         /// <summary>Winding number test for a point in a polygon.</summary>
         /// See more info about the algorithm here: http://softsurfer.com/Archive/algorithm_0103/algorithm_0103.htm
         /// <param name="point">The point to be tested.</param>
@@ -467,10 +467,10 @@ namespace Alis.Core.Physic.Shared
         public int PointInPolygon(ref Vector2 point)
         {
             int windingNumber = CalculateWindingNumber(point);
-
+            
             return windingNumber == 0 ? -1 : 1;
         }
-
+        
         /// <summary>
         ///     Calculates the winding number using the specified point
         /// </summary>
@@ -479,26 +479,26 @@ namespace Alis.Core.Physic.Shared
         private int CalculateWindingNumber(Vector2 point)
         {
             int windingNumber = 0;
-
+            
             for (int i = 0; i < Count; i++)
             {
                 Vector2 p1 = this[i];
                 Vector2 p2 = this[NextIndex(i)];
-
+                
                 if (IsPointOnEdge(point, p1, p2))
                 {
                     return 0;
                 }
-
+                
                 if (IsEdgeIntersectingRay(point, p1, p2))
                 {
                     windingNumber += DetermineWindingDirection(point, p1, p2);
                 }
             }
-
+            
             return windingNumber;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is point on edge
         /// </summary>
@@ -512,7 +512,7 @@ namespace Alis.Core.Physic.Shared
             float area = MathUtils.Area(ref p1, ref p2, ref point);
             return (area == 0f) && (Vector2.Dot(point - p1, edge) >= 0f) && (Vector2.Dot(point - p2, edge) <= 0f);
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is edge intersecting ray
         /// </summary>
@@ -526,10 +526,10 @@ namespace Alis.Core.Physic.Shared
             {
                 return (p2.Y > point.Y) && (MathUtils.Area(ref p1, ref p2, ref point) > 0f);
             }
-
+            
             return (p2.Y <= point.Y) && (MathUtils.Area(ref p1, ref p2, ref point) < 0f);
         }
-
+        
         /// <summary>
         ///     Determines the winding direction using the specified point
         /// </summary>
@@ -543,10 +543,10 @@ namespace Alis.Core.Physic.Shared
             {
                 return p2.Y > point.Y ? 1 : 0;
             }
-
+            
             return p2.Y <= point.Y ? -1 : 0;
         }
-
+        
         /// <summary>
         ///     Compute the sum of the angles made between the test point and each pair of points making up the polygon. If
         ///     this sum is 2pi then the point is an interior point, if 0 then the point is an exterior point. ref:
@@ -555,25 +555,25 @@ namespace Alis.Core.Physic.Shared
         public bool PointInPolygonAngle(ref Vector2 point)
         {
             double angle = 0;
-
+            
             // Iterate through polygon's edges
             for (int i = 0; i < Count; i++)
             {
                 // Get points
                 Vector2 p1 = this[i] - point;
                 Vector2 p2 = this[NextIndex(i)] - point;
-
+                
                 angle += MathUtils.VectorAngle(ref p1, ref p2);
             }
-
+            
             if (Math.Abs(angle) < Constant.Pi)
             {
                 return false;
             }
-
+            
             return true;
         }
-
+        
         /// <summary>Transforms the polygon using the defined matrix.</summary>
         /// <param name="transform">The matrix to use as transformation.</param>
         public void Transform(ref Matrix4X4 transform)
@@ -583,7 +583,7 @@ namespace Alis.Core.Physic.Shared
             {
                 this[i] = Vector2.Transform(this[i], transform);
             }
-
+            
             // Transform holes
             if ((Holes != null) && (Holes.Count > 0))
             {
@@ -591,14 +591,14 @@ namespace Alis.Core.Physic.Shared
                 {
                     Vector2[] temp = Holes[i].ToArray();
                     //temp = Vector2.Transform(, );
-
+                    
                     Transform(temp, ref transform, temp);
-
+                    
                     Holes[i] = new Vertices(temp);
                 }
             }
         }
-
+        
         /// <summary>
         ///     Transforms the source array
         /// </summary>
@@ -612,7 +612,7 @@ namespace Alis.Core.Physic.Shared
         {
             Transform(sourceArray, 0, ref matrix, destinationArray, 0, sourceArray.Length);
         }
-
+        
         /// <summary>
         ///     Transforms the source array
         /// </summary>
@@ -638,22 +638,22 @@ namespace Alis.Core.Physic.Shared
             {
                 throw new ArgumentNullException(nameof(sourceArray));
             }
-
+            
             if (destinationArray == null)
             {
                 throw new ArgumentNullException(nameof(destinationArray));
             }
-
+            
             if (sourceArray.Length < sourceIndex + length)
             {
                 throw new ArgumentException("Source array length is lesser than sourceIndex + length");
             }
-
+            
             if (destinationArray.Length < destinationIndex + length)
             {
                 throw new ArgumentException("Destination array length is lesser than destinationIndex + length");
             }
-
+            
             for (int x = 0; x < length; x++)
             {
                 Vector2 position = sourceArray[sourceIndex + x];
@@ -661,12 +661,12 @@ namespace Alis.Core.Physic.Shared
                     position.X * matrix.M11 + position.Y * matrix.M21 + matrix.M41,
                     position.X * matrix.M12 + position.Y * matrix.M22 + matrix.M42
                 );
-
+                
                 destinationArray[destinationIndex + x] = destination;
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Flips the horizontally
         /// </summary>
@@ -677,7 +677,7 @@ namespace Alis.Core.Physic.Shared
                 this[i] = new Vector2(-1 * this[i].X, this[i].Y);
             }
         }
-
+        
         /// <summary>
         ///     Flips the vertically
         /// </summary>
@@ -688,7 +688,7 @@ namespace Alis.Core.Physic.Shared
                 this[i] = new Vector2(this[i].X, -1 * this[i].Y);
             }
         }
-
+        
         /// <summary>
         ///     Returns the string
         /// </summary>
@@ -704,7 +704,7 @@ namespace Alis.Core.Physic.Shared
                     builder.Append(" ");
                 }
             }
-
+            
             return builder.ToString();
         }
     }

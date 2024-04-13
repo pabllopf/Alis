@@ -59,32 +59,32 @@ namespace Alis.Core.Ecs.System.Setting
         ///     Gets or sets the value of the graphic
         /// </summary>
         public GraphicSetting Graphic { get; set; } = new GraphicSetting();
-
+        
         /// <summary>
         ///     Gets or sets the value of the input
         /// </summary>
         public InputSetting Input { get; set; } = new InputSetting();
-
+        
         /// <summary>
         ///     Gets or sets the value of the network
         /// </summary>
         public NetworkSetting Network { get; set; } = new NetworkSetting();
-
+        
         /// <summary>
         ///     Gets or sets the value of the physic
         /// </summary>
         public PhysicSetting Physic { get; set; } = new PhysicSetting();
-
+        
         /// <summary>
         ///     Gets or sets the value of the plugin
         /// </summary>
         public PluginSetting Plugin { get; set; } = new PluginSetting();
-
+        
         /// <summary>
         ///     Gets or sets the value of the profile
         /// </summary>
         public ProfileSetting Profile { get; set; } = new ProfileSetting();
-
+        
         /// <summary>
         ///     Gets or sets the value of the scene
         /// </summary>

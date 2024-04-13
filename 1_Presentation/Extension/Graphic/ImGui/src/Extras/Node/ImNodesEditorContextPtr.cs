@@ -39,7 +39,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="ret">The ret</param>
         public unsafe ImNodesEditorContextPtr(ImNodesEditorContext* ret) => NativePtr = ret;
-
+        
         /// <summary>
         ///     Gets or sets the value of the native ptr
         /// </summary>

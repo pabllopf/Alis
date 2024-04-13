@@ -52,19 +52,19 @@ namespace Alis.Core.Test.Ecs.System
             IGame game = new GameSample();
             Assert.True(game.IsRunning);
         }
-
+        
         /// <summary>
         ///     Tests that managers should be initialized empty
         /// </summary>
         [Fact]
         public void Managers_ShouldBeInitialized_Empty() => Assert.Empty(new GameSample().Managers);
-
+        
         /// <summary>
         ///     Tests that managers should be initialized not null
         /// </summary>
         [Fact]
         public void Managers_ShouldBeInitialized_NotNull() => Assert.NotNull(new GameSample().Managers);
-
+        
         /// <summary>
         ///     Tests that add should add manager
         /// </summary>
@@ -76,7 +76,7 @@ namespace Alis.Core.Test.Ecs.System
             game.Add(manager);
             Assert.Contains(manager, game.Managers);
         }
-
+        
         /// <summary>
         ///     Tests that remove should remove manager
         /// </summary>
@@ -89,7 +89,7 @@ namespace Alis.Core.Test.Ecs.System
             game.Remove(manager);
             Assert.DoesNotContain(manager, game.Managers);
         }
-
+        
         /// <summary>
         ///     Tests that get should get manager
         /// </summary>
@@ -101,7 +101,7 @@ namespace Alis.Core.Test.Ecs.System
             game.Add(manager);
             Assert.Equal(manager, game.Get<ManagerSample>());
         }
-
+        
         /// <summary>
         ///     Tests that contains should contains manager
         /// </summary>
@@ -113,7 +113,7 @@ namespace Alis.Core.Test.Ecs.System
             game.Add(manager);
             Assert.True(game.Contains<ManagerSample>());
         }
-
+        
         /// <summary>
         ///     Tests that clear should clear manager
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Core.Test.Ecs.System
             game.Clear<ManagerSample>();
             Assert.DoesNotContain(manager, game.Managers);
         }
-
+        
         /// <summary>
         ///     Tests that set is running changes value
         /// </summary>
@@ -136,14 +136,14 @@ namespace Alis.Core.Test.Ecs.System
             // Arrange
             GameSample game = new GameSample();
             bool newValue = false;
-
+            
             // Act
             game.IsRunning = newValue;
-
+            
             // Assert
             Assert.Equal(newValue, game.IsRunning);
         }
-
+        
         /// <summary>
         ///     Tests that add manager adds manager to list
         /// </summary>
@@ -153,14 +153,14 @@ namespace Alis.Core.Test.Ecs.System
             // Arrange
             GameSample game = new GameSample();
             IManager manager = new ManagerSample();
-
+            
             // Act
             game.Add(manager);
-
+            
             // Assert
             Assert.Contains(manager, game.Managers);
         }
-
+        
         /// <summary>
         ///     Tests that remove manager removes manager from list
         /// </summary>
@@ -171,14 +171,14 @@ namespace Alis.Core.Test.Ecs.System
             GameSample game = new GameSample();
             IManager manager = new ManagerSample();
             game.Add(manager);
-
+            
             // Act
             game.Remove(manager);
-
+            
             // Assert
             Assert.DoesNotContain(manager, game.Managers);
         }
-
+        
         /// <summary>
         ///     Tests that get manager returns manager from list
         /// </summary>
@@ -189,14 +189,14 @@ namespace Alis.Core.Test.Ecs.System
             GameSample game = new GameSample();
             IManager manager = new ManagerSample();
             game.Add(manager);
-
+            
             // Act
             ManagerSample retrievedManager = game.Get<ManagerSample>();
-
+            
             // Assert
             Assert.Equal(manager, retrievedManager);
         }
-
+        
         /// <summary>
         ///     Tests that contains manager returns true if manager in list
         /// </summary>
@@ -207,14 +207,14 @@ namespace Alis.Core.Test.Ecs.System
             GameSample game = new GameSample();
             IManager manager = new ManagerSample();
             game.Add(manager);
-
+            
             // Act
             bool containsManager = game.Contains<ManagerSample>();
-
+            
             // Assert
             Assert.True(containsManager);
         }
-
+        
         /// <summary>
         ///     Tests that clear manager removes all instances of manager from list
         /// </summary>
@@ -225,14 +225,14 @@ namespace Alis.Core.Test.Ecs.System
             GameSample game = new GameSample();
             IManager manager = new ManagerSample();
             game.Add(manager);
-
+            
             // Act
             game.Clear<ManagerSample>();
-
+            
             // Assert
             Assert.DoesNotContain(manager, game.Managers);
         }
-
+        
         /// <summary>
         ///     Tests that set adds component to managers
         /// </summary>
@@ -242,14 +242,14 @@ namespace Alis.Core.Test.Ecs.System
             // Arrange
             GameSample game = new GameSample();
             IManager manager = new ManagerSample();
-
+            
             // Act
             game.Set(manager);
-
+            
             // Assert
             Assert.Contains(manager, game.Managers);
         }
-
+        
         /// <summary>
         ///     Tests that set replaces existing component
         /// </summary>
@@ -261,15 +261,15 @@ namespace Alis.Core.Test.Ecs.System
             IManager manager1 = new ManagerSample();
             IManager manager2 = new ManagerSample();
             game.Set(manager1);
-
+            
             // Act
             game.Set(manager2);
-
+            
             // Assert
             Assert.DoesNotContain(manager1, game.Managers);
             Assert.Contains(manager2, game.Managers);
         }
-
+        
         /// <summary>
         ///     Tests that set adds new manager when no existing manager of same type
         /// </summary>
@@ -279,14 +279,14 @@ namespace Alis.Core.Test.Ecs.System
             // Arrange
             GameSample game = new GameSample();
             IManager manager = new ManagerSample();
-
+            
             // Act
             game.Set(manager);
-
+            
             // Assert
             Assert.Contains(manager, game.Managers);
         }
-
+        
         /// <summary>
         ///     Tests that set replaces existing manager when manager of same type exists
         /// </summary>
@@ -298,15 +298,15 @@ namespace Alis.Core.Test.Ecs.System
             IManager manager1 = new ManagerSample();
             IManager manager2 = new ManagerSample();
             game.Add(manager1);
-
+            
             // Act
             game.Set(manager2);
-
+            
             // Assert
             Assert.DoesNotContain(manager1, game.Managers);
             Assert.Contains(manager2, game.Managers);
         }
-
+        
         /// <summary>
         ///     Tests that set keeps other managers unchanged
         /// </summary>
@@ -320,15 +320,15 @@ namespace Alis.Core.Test.Ecs.System
             IManager manager3 = new ManagerSample();
             game.Add(manager1);
             game.Add(manager2);
-
+            
             // Act
             game.Set(manager3);
-
+            
             // Assert
             Assert.DoesNotContain(manager1, game.Managers);
             Assert.Contains(manager2, game.Managers);
         }
-
+        
         /// <summary>
         ///     Tests that get is running returns correct value
         /// </summary>
@@ -339,14 +339,14 @@ namespace Alis.Core.Test.Ecs.System
             GameSample game = new GameSample();
             bool expectedValue = true;
             game.IsRunning = expectedValue;
-
+            
             // Act
             bool actualValue = game.IsRunning;
-
+            
             // Assert
             Assert.Equal(expectedValue, actualValue);
         }
-
+        
         /// <summary>
         ///     Tests that get managers returns correct value
         /// </summary>
@@ -357,14 +357,14 @@ namespace Alis.Core.Test.Ecs.System
             GameSample game = new GameSample();
             IManager manager = new ManagerSample();
             game.Add(manager);
-
+            
             // Act
             List<IManager> actualManagers = game.Managers;
-
+            
             // Assert
             Assert.Contains(manager, actualManagers);
         }
-
+        
         /// <summary>
         ///     Tests that get manager returns correct manager
         /// </summary>
@@ -375,14 +375,14 @@ namespace Alis.Core.Test.Ecs.System
             GameSample game = new GameSample();
             IManager manager = new ManagerSample();
             game.Add(manager);
-
+            
             // Act
             ManagerSample actualManager = game.Get<ManagerSample>();
-
+            
             // Assert
             Assert.Equal(manager, actualManager);
         }
-
+        
         /// <summary>
         ///     Tests that contains manager returns correct value
         /// </summary>
@@ -393,14 +393,14 @@ namespace Alis.Core.Test.Ecs.System
             GameSample game = new GameSample();
             IManager manager = new ManagerSample();
             game.Add(manager);
-
+            
             // Act
             bool containsManager = game.Contains<ManagerSample>();
-
+            
             // Assert
             Assert.True(containsManager);
         }
-
+        
         /// <summary>
         ///     Tests that on init calls on init on each component
         /// </summary>
@@ -413,15 +413,15 @@ namespace Alis.Core.Test.Ecs.System
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
             gameObject.Add(component2);
-
+            
             // Act
             gameObject.OnInit();
-
+            
             // Assert
             // Here you would assert that the OnInit method was called on each component
             // This will depend on the implementation of your ComponentSample class
         }
-
+        
         /// <summary>
         ///     Tests that on awake calls on awake on each component
         /// </summary>
@@ -434,15 +434,15 @@ namespace Alis.Core.Test.Ecs.System
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
             gameObject.Add(component2);
-
+            
             // Act
             gameObject.OnAwake();
-
+            
             // Assert
             // Here you would assert that the OnAwake method was called on each component
             // This will depend on the implementation of your ComponentSample class
         }
-
+        
         /// <summary>
         ///     Tests that on start calls on start on each component
         /// </summary>
@@ -455,15 +455,15 @@ namespace Alis.Core.Test.Ecs.System
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
             gameObject.Add(component2);
-
+            
             // Act
             gameObject.OnStart();
-
+            
             // Assert
             // Here you would assert that the OnStart method was called on each component
             // This will depend on the implementation of your ComponentSample class
         }
-
+        
         /// <summary>
         ///     Tests that on before update calls on before update on each component
         /// </summary>
@@ -476,15 +476,15 @@ namespace Alis.Core.Test.Ecs.System
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
             gameObject.Add(component2);
-
+            
             // Act
             gameObject.OnBeforeUpdate();
-
+            
             // Assert
             // Here you would assert that the OnBeforeUpdate method was called on each component
             // This will depend on the implementation of your ComponentSample class
         }
-
+        
         /// <summary>
         ///     Tests that is running get set property works
         /// </summary>
@@ -497,11 +497,11 @@ namespace Alis.Core.Test.Ecs.System
                 // Act
                 IsRunning = false
             };
-
+            
             // Assert
             Assert.False(game.IsRunning);
         }
-
+        
         /// <summary>
         ///     Tests that time manager get property works
         /// </summary>
@@ -509,10 +509,10 @@ namespace Alis.Core.Test.Ecs.System
         public void TimeManager_GetPropertyWorks()
         {
             // Arrange
-
+            
             // Act
             TimeManager timeManager = Game.TimeManager;
-
+            
             // Assert
             Assert.NotNull(timeManager);
         }

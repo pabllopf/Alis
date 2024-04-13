@@ -43,7 +43,7 @@ namespace Alis.Core.Ecs.Entity.GameObject
         ///     Gets or sets the value of the components
         /// </summary>
         public List<IComponent> Components { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the transform
         /// </summary>

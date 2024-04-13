@@ -38,12 +38,12 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         ///     The sdl flash cancel sdl flash operation
         /// </summary>
         SdlFlashCancel,
-
+        
         /// <summary>
         ///     The sdl flash briefly sdl flash operation
         /// </summary>
         SdlFlashBriefly,
-
+        
         /// <summary>
         ///     The sdl flash until focused sdl flash operation
         /// </summary>

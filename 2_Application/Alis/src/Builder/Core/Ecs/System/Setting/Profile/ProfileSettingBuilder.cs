@@ -45,13 +45,13 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Profile
         ///     The audio setting
         /// </summary>
         private readonly ProfileSetting profileSetting = new ProfileSetting();
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The audio setting</returns>
         public ProfileSetting Build() => profileSetting;
-
+        
         /// <summary>
         ///     Logs the level using the specified value
         /// </summary>
@@ -63,7 +63,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Profile
             Logger.LogLevel = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Logs the detail using the specified value
         /// </summary>

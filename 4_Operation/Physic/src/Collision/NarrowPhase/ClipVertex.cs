@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         ///     The id
         /// </summary>
         public ContactId Id;
-
+        
         /// <summary>
         ///     The
         /// </summary>

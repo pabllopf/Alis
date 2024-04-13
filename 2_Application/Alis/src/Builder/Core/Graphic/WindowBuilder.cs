@@ -49,7 +49,7 @@ namespace Alis.Builder.Core.Graphic
         ///     The window
         /// </summary>
         private readonly Window window = new Window();
-
+        
         /// <summary>
         ///     Backgrounds the value
         /// </summary>
@@ -60,13 +60,13 @@ namespace Alis.Builder.Core.Graphic
             window.Background = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The window</returns>
         public Window Build() => window;
-
+        
         /// <summary>
         ///     Ises the resizable
         /// </summary>
@@ -76,7 +76,7 @@ namespace Alis.Builder.Core.Graphic
             window.IsWindowResizable = true;
             return this;
         }
-
+        
         /// <summary>
         ///     Ises the resizable using the specified value
         /// </summary>
@@ -87,7 +87,7 @@ namespace Alis.Builder.Core.Graphic
             window.IsWindowResizable = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Resolutions the x
         /// </summary>

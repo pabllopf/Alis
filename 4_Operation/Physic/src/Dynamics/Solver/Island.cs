@@ -45,47 +45,47 @@ namespace Alis.Core.Physic.Dynamics.Solver
         ///     The angular sleep tolerance
         /// </summary>
         private const float AngTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance;
-
+        
         /// <summary>
         ///     The linear sleep tolerance
         /// </summary>
         private const float LinTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance;
-
+        
         /// <summary>
         ///     The bodies
         /// </summary>
         private readonly List<Body> bodies = new List<Body>(Settings.ToiContacts * 2);
-
+        
         /// <summary>
         ///     The contacts
         /// </summary>
         private readonly List<Contact> contacts = new List<Contact>(Settings.ToiContacts * 2);
-
+        
         /// <summary>
         ///     The contact solver
         /// </summary>
         private readonly ContactSolver contactSolver = new ContactSolver();
-
+        
         /// <summary>
         ///     The joints
         /// </summary>
         private readonly List<Joint> joints = new List<Joint>(Settings.ToiContacts);
-
+        
         /// <summary>
         ///     The positions
         /// </summary>
         private readonly List<Position> positions = new List<Position>(Settings.ToiContacts);
-
+        
         /// <summary>
         ///     The velocities
         /// </summary>
         private readonly List<Velocity> velocities = new List<Velocity>(Settings.ToiContacts);
-
+        
         /// <summary>
         ///     Gets or sets the value of the step
         /// </summary>
         private TimeStep TimeStepSolveToi { get; } = new TimeStep();
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
@@ -95,7 +95,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
             contacts.Clear();
             joints.Clear();
         }
-
+        
         /// <summary>
         ///     Solves the step
         /// </summary>
@@ -113,40 +113,40 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 {
                     continue;
                 }
-
+                
                 HandleContacts(body);
                 HandleJoints(body);
-
+                
                 float h = step.DeltaTime;
                 IntegrateVelocitiesAndApplyDamping(h, body, gravity);
-
+                
                 contactSolver.Reset(step, contacts.Count, contacts, positions, velocities);
                 contactSolver.InitializeVelocityConstraints();
-
+                
                 if (step.WarmStarting)
                 {
                     contactSolver.WarmStart();
                 }
-
+                
                 SolveVelocityConstraints(step);
                 contactSolver.StoreImpulses();
-
+                
                 IntegratePositions(h);
                 bool positionSolved = SolvePositionConstraints(step);
-
+                
                 CopyStateBuffersBackToBodies();
-
+                
                 Report(contactSolver.VelocityConstraints, contactManager);
-
+                
                 if (allowSleep)
                 {
                     HandleSleep(positionSolved, h);
                 }
             }
-
+            
             PostSolveCleanup();
         }
-
+        
         /// <summary>
         ///     Describes whether this instance handle bodies
         /// </summary>
@@ -158,31 +158,31 @@ namespace Alis.Core.Physic.Dynamics.Solver
             {
                 return false;
             }
-
+            
             if (!body.Awake || !body.Enabled)
             {
                 return false;
             }
-
+            
             if (body.BodyType == BodyType.Static)
             {
                 return false;
             }
-
+            
             Clear();
             body.Flags |= BodySettings.IslandFlag;
             Add(body);
-
+            
             if (body.BodyType == BodyType.Static)
             {
                 return false;
             }
-
+            
             body.Flags |= BodySettings.AwakeFlag;
-
+            
             return true;
         }
-
+        
         /// <summary>
         ///     Handles the contacts using the specified body
         /// </summary>
@@ -192,38 +192,38 @@ namespace Alis.Core.Physic.Dynamics.Solver
             for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
             {
                 Contact contact = ce.Contact;
-
+                
                 if (contact.IslandFlag)
                 {
                     continue;
                 }
-
+                
                 if (!contact.Enabled || !contact.IsTouching)
                 {
                     continue;
                 }
-
+                
                 bool sensorA = contact.FixtureA.IsSensor;
                 bool sensorB = contact.FixtureB.IsSensor;
                 if (sensorA || sensorB)
                 {
                     continue;
                 }
-
+                
                 Add(contact);
                 contact.Flags |= ContactSetting.IslandFlag;
-
+                
                 Body other = ce.Other;
-
+                
                 if (other.IsIsland)
                 {
                     continue;
                 }
-
+                
                 other.Flags |= BodySettings.IslandFlag;
             }
         }
-
+        
         /// <summary>
         ///     Handles the joints using the specified body
         /// </summary>
@@ -236,24 +236,24 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 {
                     continue;
                 }
-
+                
                 Body other = je.Other;
-
+                
                 if (other != null)
                 {
                     if (!other.Enabled)
                     {
                         continue;
                     }
-
+                    
                     Add(je.Joint1);
                     je.Joint1.IslandFlag = true;
-
+                    
                     if (other.IsIsland)
                     {
                         continue;
                     }
-
+                    
                     other.Flags |= BodySettings.IslandFlag;
                 }
                 else
@@ -263,7 +263,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 }
             }
         }
-
+        
         /// <summary>
         ///     Integrates the velocities and apply damping using the specified h
         /// </summary>
@@ -278,19 +278,19 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 float a = b.Sweep.A;
                 Vector2 v = b.LinearVelocity;
                 float w = b.AngularVelocity;
-
+                
                 b.Sweep.C0 = b.Sweep.C;
                 b.Sweep.A0 = b.Sweep.A;
-
+                
                 if (b.BodyType == BodyType.Dynamic)
                 {
                     v += h * b.InvMass * (b.GravityScale * b.Mass * gravity + b.Force);
                     w += h * b.InvI * b.Torque;
-
+                    
                     v *= MathUtils.Clamp(1.0f - h * b.LinearDamping, 0.0f, 1.0f);
                     w *= MathUtils.Clamp(1.0f - h * b.AngularDamping, 0.0f, 1.0f);
                 }
-
+                
                 if (positions.Count <= bodies.IndexOf(b))
                 {
                     positions.Add(new Position(c, a));
@@ -300,7 +300,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     positions[bodies.IndexOf(b)].C = c;
                     positions[bodies.IndexOf(b)].A = a;
                 }
-
+                
                 if (velocities.Count <= bodies.IndexOf(b))
                 {
                     velocities.Insert(bodies.IndexOf(b), new Velocity(v, w));
@@ -312,8 +312,8 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 }
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Integrates the positions using the specified h
         /// </summary>
@@ -326,31 +326,31 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 float a = positions[i].A;
                 Vector2 v = velocities[i].V;
                 float w = velocities[i].W;
-
+                
                 Vector2 translation = h * v;
                 if (Vector2.Dot(translation, translation) > Settings.Translation * Settings.Translation)
                 {
                     float ratio = Settings.Translation / translation.Length();
                     v *= ratio;
                 }
-
+                
                 float rotation = h * w;
                 if (rotation * rotation > Settings.Rotation * Settings.Rotation)
                 {
                     float ratio = Settings.Rotation / Math.Abs(rotation);
                     w *= ratio;
                 }
-
+                
                 c += h * v;
                 a += h * w;
-
+                
                 positions[i].C = c;
                 positions[i].A = a;
                 velocities[i].V = v;
                 velocities[i].W = w;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether this instance solve position constraints
         /// </summary>
@@ -364,36 +364,36 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 Positions = positions,
                 Velocities = velocities
             };
-
+            
             bool positionSolved = false;
             for (int i = 0; i < step.PositionIterations; ++i)
             {
                 bool contactsOkay = contactSolver.SolvePositionConstraints();
-
+                
                 bool jointsOkay = true;
                 for (int j = 0; j < joints.Count; ++j)
                 {
                     Joint joint = joints[j];
-
+                    
                     if (!joint.Enabled)
                     {
                         continue;
                     }
-
+                    
                     bool jointOkay = joint.SolvePositionConstraints(ref solverData);
                     jointsOkay = jointsOkay && jointOkay;
                 }
-
+                
                 if (contactsOkay && jointsOkay)
                 {
                     positionSolved = true;
                     break;
                 }
             }
-
+            
             return positionSolved;
         }
-
+        
         /// <summary>
         ///     Copies the state buffers back to bodies
         /// </summary>
@@ -408,7 +408,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 bodies[i].SynchronizeTransform();
             }
         }
-
+        
         /// <summary>
         ///     Handles the sleep using the specified position solved
         /// </summary>
@@ -417,16 +417,16 @@ namespace Alis.Core.Physic.Dynamics.Solver
         private void HandleSleep(bool positionSolved, float h)
         {
             float minSleepTime = float.MaxValue;
-
+            
             for (int i = 0; i < bodies.Count; ++i)
             {
                 Body b = bodies[i];
-
+                
                 if (b.BodyType == BodyType.Static)
                 {
                     continue;
                 }
-
+                
                 if (!b.SleepingAllowed || b.AngularVelocity * b.AngularVelocity > AngTolSqr ||
                     Vector2.Dot(b.LinearVelocity, b.LinearVelocity) > LinTolSqr)
                 {
@@ -439,7 +439,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     minSleepTime = Math.Min(minSleepTime, b.SleepTime);
                 }
             }
-
+            
             if ((minSleepTime >= Settings.TimeToSleep) && positionSolved)
             {
                 for (int i = 0; i < bodies.Count; ++i)
@@ -448,7 +448,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 }
             }
         }
-
+        
         /// <summary>
         ///     Posts the solve cleanup
         /// </summary>
@@ -462,8 +462,8 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 }
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Solves the toi using the specified min alpha
         /// </summary>
@@ -484,7 +484,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
             IntegratePositions(subStep);
             Report(contactSolver.VelocityConstraints, contactManager);
         }
-
+        
         /// <summary>
         ///     Initializes the time step using the specified min alpha
         /// </summary>
@@ -499,7 +499,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
             TimeStepSolveToi.VelocityIterations = subStep.VelocityIterations;
             TimeStepSolveToi.WarmStarting = false;
         }
-
+        
         /// <summary>
         ///     Initializes the body state
         /// </summary>
@@ -517,7 +517,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     positions[bodies.IndexOf(b)].C = b.Sweep.C;
                     positions[bodies.IndexOf(b)].A = b.Sweep.A;
                 }
-
+                
                 if (velocities.Count <= bodies.IndexOf(b))
                 {
                     velocities.Insert(bodies.IndexOf(b), new Velocity(b.LinearVelocity, b.AngularVelocity));
@@ -529,7 +529,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 }
             }
         }
-
+        
         /// <summary>
         ///     Solves the position constraints using the specified sub step
         /// </summary>
@@ -547,7 +547,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 }
             }
         }
-
+        
         /// <summary>
         ///     Leaps the to new state using the specified toi index a
         /// </summary>
@@ -560,7 +560,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
             bodies[toiIndexB].Sweep.C0 = positions[toiIndexB].C;
             bodies[toiIndexB].Sweep.A0 = positions[toiIndexB].A;
         }
-
+        
         /// <summary>
         ///     Solves the velocity constraints using the specified sub step
         /// </summary>
@@ -572,7 +572,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 contactSolver.SolveVelocityConstraints();
             }
         }
-
+        
         /// <summary>
         ///     Integrates the positions using the specified sub step
         /// </summary>
@@ -586,29 +586,29 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 float a = positions[i].A;
                 Vector2 v = velocities[i].V;
                 float w = velocities[i].W;
-
+                
                 Vector2 translation = h * v;
                 if (Vector2.Dot(translation, translation) > Settings.Translation * Settings.Translation)
                 {
                     float ratio = Settings.Translation / translation.Length();
                     v *= ratio;
                 }
-
+                
                 float rotation = h * w;
                 if (rotation * rotation > Settings.Rotation * Settings.Rotation)
                 {
                     float ratio = Settings.Rotation / Math.Abs(rotation);
                     w *= ratio;
                 }
-
+                
                 c += h * v;
                 a += h * w;
-
+                
                 positions[i].C = c;
                 positions[i].A = a;
                 velocities[i].V = v;
                 velocities[i].W = w;
-
+                
                 Body body = bodies[i];
                 body.Sweep.C = c;
                 body.Sweep.A = a;
@@ -617,7 +617,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 body.SynchronizeTransform();
             }
         }
-
+        
         /// <summary>
         ///     Adds the body
         /// </summary>
@@ -627,19 +627,19 @@ namespace Alis.Core.Physic.Dynamics.Solver
             body.IslandIndex = bodies.Count;
             bodies.Add(body);
         }
-
+        
         /// <summary>
         ///     Adds the contact
         /// </summary>
         /// <param name="contact">The contact</param>
         public void Add(Contact contact) => contacts.Add(contact);
-
+        
         /// <summary>
         ///     Adds the joint
         /// </summary>
         /// <param name="joint">The joint</param>
         private void Add(Joint joint) => joints.Add(joint);
-
+        
         /// <summary>
         ///     Reports the constraints
         /// </summary>
@@ -650,16 +650,16 @@ namespace Alis.Core.Physic.Dynamics.Solver
             for (int i = 0; i < contacts.Count; ++i)
             {
                 Contact c = contacts[i];
-
+                
                 //Velcro feature: added after collision
                 c.FixtureA.AfterCollision?.Invoke(c.FixtureA, c.FixtureB, c, constraints[i]);
                 c.FixtureB.AfterCollision?.Invoke(c.FixtureB, c.FixtureA, c, constraints[i]);
-
+                
                 //Velcro optimization: We don't store the impulses and send it to the delegate. We just send the whole contact.
                 contactManager.PostSolve?.Invoke(c, constraints[i]);
             }
         }
-
+        
         /// <summary>
         ///     Synchronizes the bodies
         /// </summary>
@@ -669,14 +669,14 @@ namespace Alis.Core.Physic.Dynamics.Solver
             {
                 Body body = bodies[i];
                 body.Flags &= ~BodySettings.IslandFlag;
-
+                
                 if (body.BodyType != BodyType.Dynamic)
                 {
                     continue;
                 }
-
+                
                 body.SynchronizeFixtures();
-
+                
                 // Invalidate all contact TOIs on this displaced body.
                 for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
                 {

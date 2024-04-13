@@ -47,7 +47,7 @@ namespace Alis.Core.Ecs.Component.Render
             Logger.Trace();
             Path = "";
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Image" /> class
         /// </summary>
@@ -56,25 +56,25 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Logger.Trace();
             Path = path;
-
+            
             Texture = Sdl.CreateTextureFromSurface(VideoGame.Instance.GraphicManager.Renderer, Sdl.LoadBmp(path));
-
+            
             // get the size of sprite.Image.Texture
             Sdl.QueryTexture(Texture, out _, out _, out int w, out int h);
-
+            
             Size = new Vector2(w, h);
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the path
         /// </summary>
         public string Path { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the texture
         /// </summary>
         public IntPtr Texture { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the size
         /// </summary>

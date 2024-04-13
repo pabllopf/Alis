@@ -38,12 +38,12 @@ namespace Alis.Extension.Graphic.OpenGL.Enums
         ///     The unsigned byte draw elements type
         /// </summary>
         UnsignedByte = 0x1401,
-
+        
         /// <summary>
         ///     The unsigned short draw elements type
         /// </summary>
         UnsignedShort = 0x1403,
-
+        
         /// <summary>
         ///     The unsigned int draw elements type
         /// </summary>

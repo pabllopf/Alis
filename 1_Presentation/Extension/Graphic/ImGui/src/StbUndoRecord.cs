@@ -38,17 +38,17 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The where
         /// </summary>
         public int Where;
-
+        
         /// <summary>
         ///     The insert length
         /// </summary>
         public int InsertLength;
-
+        
         /// <summary>
         ///     The delete length
         /// </summary>
         public int DeleteLength;
-
+        
         /// <summary>
         ///     The char storage
         /// </summary>

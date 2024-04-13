@@ -49,24 +49,24 @@ namespace Alis.Extension.Encode.FFMeg.Sample
         {
             string input = AssetManager.Find("sample.mp4");
             Path.Combine(Directory.GetCurrentDirectory(), "sample_out.mp4");
-
+            
             //SdlController.Run();
-
+            
             VideoPlayer player = new VideoPlayer(input);
             player.Play();
-
+            
             //ConvertVideo(input, output);
-
+            
             //ReadWriteAudio(input, output);
-
+            
             //ReadPlayAudio(input, output);
-
+            
             SaveVideoFrame(input);
-
+            
             Console.WriteLine("Press any key to exit");
             Console.ReadKey();
         }
-
+        
         /// <summary>
         ///     Reads the write audio using the specified input
         /// </summary>
@@ -77,11 +77,11 @@ namespace Alis.Extension.Encode.FFMeg.Sample
             AudioReader audio = new AudioReader(input);
             audio.LoadMetadataAsync().Wait();
             audio.Load();
-
+            
             using (AudioWriter writer = new AudioWriter(output, audio.Metadata.Channels, audio.Metadata.SampleRate))
             {
                 writer.OpenWrite(true);
-
+                
                 AudioFrame frame = new AudioFrame(1);
                 while (true)
                 {
@@ -91,12 +91,12 @@ namespace Alis.Extension.Encode.FFMeg.Sample
                     {
                         break;
                     }
-
+                    
                     writer.WriteFrame(frame);
                 }
             }
         }
-
+        
         /// <summary>
         ///     Reads the play audio using the specified input
         /// </summary>
@@ -107,14 +107,14 @@ namespace Alis.Extension.Encode.FFMeg.Sample
             AudioReader audio = new AudioReader(input);
             audio.LoadMetadataAsync().Wait();
             audio.Load();
-
+            
             using (AudioPlayer player = new AudioPlayer())
             {
                 player.OpenWrite(audio.Metadata.SampleRate, audio.Metadata.Channels, showWindow: false);
-
+                
                 // For simple playing, can just use "CopyTo"
                 // audio.CopyTo(player);
-
+                
                 AudioFrame frame = new AudioFrame(audio.Metadata.Channels);
                 while (true)
                 {
@@ -124,7 +124,7 @@ namespace Alis.Extension.Encode.FFMeg.Sample
                     {
                         break;
                     }
-
+                    
                     try
                     {
                         player.WriteFrame(frame);
@@ -136,7 +136,7 @@ namespace Alis.Extension.Encode.FFMeg.Sample
                 }
             }
         }
-
+        
         /// <summary>
         ///     Saves the video frame using the specified input
         /// </summary>
@@ -146,12 +146,12 @@ namespace Alis.Extension.Encode.FFMeg.Sample
             VideoReader video = new VideoReader(input);
             video.LoadMetadataAsync().Wait();
             video.Load(3);
-
+            
             VideoFrame fr = video.NextFrame();
             fr.Save("test.png");
             Console.WriteLine("Frame saved");
         }
-
+        
         /// <summary>
         ///     Converts the video using the specified input
         /// </summary>
@@ -164,12 +164,12 @@ namespace Alis.Extension.Encode.FFMeg.Sample
                 RowBasedMultithreading = true
             };
             encoder.SetCQP();
-
+            
             using (VideoReader reader = new VideoReader(input))
             {
                 reader.LoadMetadata();
                 reader.Load();
-
+                
                 using (VideoWriter writer = new VideoWriter(output,
                            reader.Metadata.Width,
                            reader.Metadata.Height,

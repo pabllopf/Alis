@@ -40,32 +40,32 @@ namespace Alis.Core.Physic.Dynamics.Solver
         ///     The normal impulse
         /// </summary>
         public float NormalImpulse;
-
+        
         /// <summary>
         ///     The normal mass
         /// </summary>
         public float NormalMass;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public Vector2 Ra;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public Vector2 Rb;
-
+        
         /// <summary>
         ///     The tangent impulse
         /// </summary>
         public float TangentImpulse;
-
+        
         /// <summary>
         ///     The tangent mass
         /// </summary>
         public float TangentMass;
-
+        
         /// <summary>
         ///     The velocity bias
         /// </summary>

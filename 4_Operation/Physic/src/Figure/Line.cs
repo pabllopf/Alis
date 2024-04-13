@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -52,27 +53,27 @@ namespace Alis.Core.Physic.Figure
             {
                 return Vector2.Distance(point, start);
             }
-
+            
             Vector2 v = end - start;
             Vector2 w = point - start;
-
+            
             float c1 = Vector2.Dot(w, v);
             if (c1 <= 0)
             {
                 return Vector2.Distance(point, start);
             }
-
+            
             float c2 = Vector2.Dot(v, v);
             if (c2 <= c1)
             {
                 return Vector2.Distance(point, end);
             }
-
+            
             float b = c1 / c2;
             Vector2 pointOnLine = start + v * b;
             return Vector2.Distance(point, pointOnLine);
         }
-
+        
         /// <summary>
         ///     Describes whether line intersect 2
         /// </summary>
@@ -85,12 +86,12 @@ namespace Alis.Core.Physic.Figure
         public static bool LineIntersect2(Vector2 a0, Vector2 a1, Vector2 b0, Vector2 b1, out Vector2 intersectionPoint)
         {
             intersectionPoint = Vector2.Zero;
-
+            
             if (a0 == b0 || a0 == b1 || a1 == b0 || a1 == b1)
             {
                 return false;
             }
-
+            
             float x1 = a0.X;
             float y1 = a0.Y;
             float x2 = a1.X;
@@ -99,38 +100,38 @@ namespace Alis.Core.Physic.Figure
             float y3 = b0.Y;
             float x4 = b1.X;
             float y4 = b1.Y;
-
-            if (System.Math.Max(x1, x2) < System.Math.Min(x3, x4) || System.Math.Max(x3, x4) < System.Math.Min(x1, x2))
+            
+            if (Math.Max(x1, x2) < Math.Min(x3, x4) || Math.Max(x3, x4) < Math.Min(x1, x2))
             {
                 return false;
             }
-
-            if (System.Math.Max(y1, y2) < System.Math.Min(y3, y4) || System.Math.Max(y3, y4) < System.Math.Min(y1, y2))
+            
+            if (Math.Max(y1, y2) < Math.Min(y3, y4) || Math.Max(y3, y4) < Math.Min(y1, y2))
             {
                 return false;
             }
-
+            
             float denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);
-            if (System.Math.Abs(denom) < float.Epsilon)
+            if (Math.Abs(denom) < float.Epsilon)
             {
                 return false;
             }
-
+            
             float ua = (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3);
             float ub = (x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3);
-
+            
             ua /= denom;
             ub /= denom;
-
+            
             if ((ua >= 0) && (ua <= 1) && (ub >= 0) && (ub <= 1))
             {
                 intersectionPoint = new Vector2(x1 + ua * (x2 - x1), y1 + ua * (y2 - y1));
                 return true;
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Lines the intersect using the specified p 1
         /// </summary>
@@ -149,7 +150,7 @@ namespace Alis.Core.Physic.Figure
             float b2 = q1.X - q2.X;
             float c2 = a2 * q1.X + b2 * q1.Y;
             float det = a1 * b2 - a2 * b1;
-
+            
             if (!MathUtils.FloatEquals(det, 0))
             {
                 i = new Vector2(
@@ -157,10 +158,10 @@ namespace Alis.Core.Physic.Figure
                     (a1 * c2 - a2 * c1) / det
                 );
             }
-
+            
             return i;
         }
-
+        
         /// <summary>
         ///     Describes whether line intersect
         /// </summary>
@@ -176,47 +177,47 @@ namespace Alis.Core.Physic.Figure
             bool firstIsSegment, bool secondIsSegment, out Vector2 intersectionPoint)
         {
             intersectionPoint = Vector2.Zero;
-
+            
             float a = point4.Y - point3.Y;
             float b = point2.X - point1.X;
             float c = point4.X - point3.X;
             float d = point2.Y - point1.Y;
-
+            
             float denom = a * b - c * d;
-
+            
             if (IsDenominatorZero(denom))
             {
                 return false;
             }
-
+            
             float ua = CalculateUa(a, c, d, point1, point3, denom);
             if (!IsInRange(ua, firstIsSegment))
             {
                 return false;
             }
-
+            
             float ub = CalculateUb(b, d, a, point1, point3, denom);
             if (!IsInRange(ub, secondIsSegment))
             {
                 return false;
             }
-
+            
             if (ua != 0f || ub != 0f)
             {
                 intersectionPoint = CalculateIntersectionPoint(point1, ua, b, d);
                 return true;
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Describes whether is denominator zero
         /// </summary>
         /// <param name="denom">The denom</param>
         /// <returns>The bool</returns>
         private static bool IsDenominatorZero(float denom) => (denom >= -float.Epsilon) && (denom <= float.Epsilon);
-
+        
         /// <summary>
         ///     Calculates the ua using the specified a
         /// </summary>
@@ -232,10 +233,10 @@ namespace Alis.Core.Physic.Figure
             float e = point1.Y - point3.Y;
             float f = point1.X - point3.X;
             float oneOverDenom = 1.0f / denom;
-
+            
             return c * e - a * f * oneOverDenom;
         }
-
+        
         /// <summary>
         ///     Calculates the ub using the specified b
         /// </summary>
@@ -251,10 +252,10 @@ namespace Alis.Core.Physic.Figure
             float e = point1.Y - point3.Y;
             float f = point1.X - point3.X;
             float oneOverDenom = 1.0f / denom;
-
+            
             return b * e - d * f * oneOverDenom;
         }
-
+        
         /// <summary>
         ///     Describes whether is in range
         /// </summary>
@@ -262,7 +263,7 @@ namespace Alis.Core.Physic.Figure
         /// <param name="isSegment">The is segment</param>
         /// <returns>The bool</returns>
         private static bool IsInRange(float value, bool isSegment) => !isSegment || ((value >= 0.0f) && (value <= 1.0f));
-
+        
         /// <summary>
         ///     Calculates the intersection point using the specified point 1
         /// </summary>
@@ -272,8 +273,8 @@ namespace Alis.Core.Physic.Figure
         /// <param name="d">The </param>
         /// <returns>The vector</returns>
         private static Vector2 CalculateIntersectionPoint(Vector2 point1, float ua, float b, float d) => new Vector2(point1.X + ua * b, point1.Y + ua * d);
-
-
+        
+        
         /// <summary>
         ///     Lines the segment vertices intersect using the specified point 1
         /// </summary>
@@ -284,7 +285,7 @@ namespace Alis.Core.Physic.Figure
         public static List<Vector2> LineSegmentVerticesIntersect(Vector2 point1, Vector2 point2, List<Vector2> vertices)
         {
             List<Vector2> intersectionPoints = new List<Vector2>();
-
+            
             for (int i = 0; i < vertices.Count; i++)
             {
                 if (LineIntersect(vertices[i], vertices[(i + 1) % vertices.Count], point1, point2, true, true, out Vector2 point))
@@ -292,10 +293,10 @@ namespace Alis.Core.Physic.Figure
                     intersectionPoints.Add(point);
                 }
             }
-
+            
             return intersectionPoints;
         }
-
+        
         /// <summary>
         ///     Lines the segment aabb intersect using the specified point 1
         /// </summary>

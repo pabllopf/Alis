@@ -49,14 +49,14 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float value3 = 3.0f;
             float amount1 = 0.5f;
             float amount2 = 0.5f;
-
+            
             // Act
             float result = Helper.Barycentric(value1, value2, value3, amount1, amount2);
-
+            
             // Assert
             Assert.Equal(2.5f, result);
         }
-
+        
         /// <summary>
         ///     Tests that catmull rom should calculate correctly
         /// </summary>
@@ -69,14 +69,14 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float value3 = 2.0f;
             float value4 = 3.0f;
             float amount = 0.5f;
-
+            
             // Act
             float result = Helper.CatmullRom(value1, value2, value3, value4, amount);
-
+            
             // Assert
             Assert.Equal(1.5f, result);
         }
-
+        
         /// <summary>
         ///     Tests that clamp should return correct value
         /// </summary>
@@ -87,14 +87,14 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float value = 0.5f;
             float min = 0.0f;
             float max = 1.0f;
-
+            
             // Act
             float result = Helper.Clamp(value, min, max);
-
+            
             // Assert
             Assert.Equal(0.5f, result);
         }
-
+        
         /// <summary>
         ///     Tests that distance should calculate correctly
         /// </summary>
@@ -104,14 +104,14 @@ namespace Alis.Core.Aspect.Math.Test.Util
             // Arrange
             float value1 = 1.0f;
             float value2 = 2.0f;
-
+            
             // Act
             float result = Helper.Distance(value1, value2);
-
+            
             // Assert
             Assert.Equal(1.0f, result);
         }
-
+        
         /// <summary>
         ///     Tests that hermite should calculate correctly
         /// </summary>
@@ -124,14 +124,14 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float value2 = 1.0f;
             float tangent2 = 0.0f;
             float amount = 0.5f;
-
+            
             // Act
             float result = Helper.Hermite(value1, tangent1, value2, tangent2, amount);
-
+            
             // Assert
             Assert.Equal(0.5f, result);
         }
-
+        
         /// <summary>
         ///     Tests that lerp should calculate correctly
         /// </summary>
@@ -142,14 +142,14 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float value1 = 0.0f;
             float value2 = 1.0f;
             float amount = 0.5f;
-
+            
             // Act
             float result = Helper.Lerp(value1, value2, amount);
-
+            
             // Assert
             Assert.Equal(0.5f, result);
         }
-
+        
         /// <summary>
         ///     Tests that max should return correct value
         /// </summary>
@@ -159,14 +159,14 @@ namespace Alis.Core.Aspect.Math.Test.Util
             // Arrange
             float value1 = 0.5f;
             float value2 = 1.0f;
-
+            
             // Act
             float result = Helper.Max(value1, value2);
-
+            
             // Assert
             Assert.Equal(1.0f, result);
         }
-
+        
         /// <summary>
         ///     Tests that min should return correct value
         /// </summary>
@@ -176,14 +176,14 @@ namespace Alis.Core.Aspect.Math.Test.Util
             // Arrange
             float value1 = 0.5f;
             float value2 = 1.0f;
-
+            
             // Act
             float result = Helper.Min(value1, value2);
-
+            
             // Assert
             Assert.Equal(0.5f, result);
         }
-
+        
         /// <summary>
         ///     Tests that smooth step should calculate correctly
         /// </summary>
@@ -194,14 +194,14 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float value1 = 0.0f;
             float value2 = 1.0f;
             float amount = 0.5f;
-
+            
             // Act
             float result = Helper.SmoothStep(value1, value2, amount);
-
+            
             // Assert
             Assert.Equal(0.5f, result);
         }
-
+        
         /// <summary>
         ///     Tests that to degrees should calculate correctly
         /// </summary>
@@ -210,14 +210,14 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             // Arrange
             float radians = MathF.Pi;
-
+            
             // Act
             float result = Helper.ToDegrees(radians);
-
+            
             // Assert
             Assert.Equal(180.0f, result);
         }
-
+        
         /// <summary>
         ///     Tests that to radians should calculate correctly
         /// </summary>
@@ -226,14 +226,14 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             // Arrange
             float degrees = 180.0f;
-
+            
             // Act
             float result = Helper.ToRadians(degrees);
-
+            
             // Assert
             Assert.Equal(MathF.Pi, result);
         }
-
+        
         /// <summary>
         ///     Tests that wrap angle should calculate correctly
         /// </summary>
@@ -242,14 +242,14 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             // Arrange
             float angle = 3 * MathF.Pi;
-
+            
             // Act
             float result = Helper.WrapAngle(angle);
-
+            
             // Assert
             Assert.Equal(MathF.Pi, result, 0.1);
         }
-
+        
         /// <summary>
         ///     Tests that is power of two should return correct value
         /// </summary>
@@ -258,14 +258,14 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             // Arrange
             int value = 4;
-
+            
             // Act
             bool result = Helper.IsPowerOfTwo(value);
-
+            
             // Assert
             Assert.True(result);
         }
-
+        
         /// <summary>
         ///     Tests that wrap angle should return same value when angle is between negative pi and pi
         /// </summary>
@@ -274,10 +274,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float angle = Constant.Pi / 2;
             float result = Helper.WrapAngle(angle);
-
+            
             Assert.Equal(angle, result);
         }
-
+        
         /// <summary>
         ///     Tests that wrap angle should return positive value when angle is less than negative pi
         /// </summary>
@@ -287,10 +287,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float angle = -Constant.Pi * 1.5f;
             float expected = Constant.Pi / 2;
             float result = Helper.WrapAngle(angle);
-
+            
             Assert.Equal(expected, result, 0.1f);
         }
-
+        
         /// <summary>
         ///     Tests that wrap angle should return negative value when angle is more than pi
         /// </summary>
@@ -300,10 +300,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float angle = Constant.Pi * 1.5f;
             float expected = -Constant.Pi / 2;
             float result = Helper.WrapAngle(angle);
-
+            
             Assert.Equal(expected, result, 0.1f);
         }
-
+        
         /// <summary>
         ///     Tests that wrap angle should return zero when angle is zero
         /// </summary>
@@ -312,10 +312,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float angle = 0.0f;
             float result = Helper.WrapAngle(angle);
-
+            
             Assert.Equal(angle, result);
         }
-
+        
         /// <summary>
         ///     Tests that wrap angle should return negative pi when angle is negative pi
         /// </summary>
@@ -324,10 +324,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float angle = Constant.Pi;
             float result = Helper.WrapAngle(angle);
-
+            
             Assert.Equal(angle, result);
         }
-
+        
         /// <summary>
         ///     Tests that wrap angle should return negative pi when angle is pi
         /// </summary>
@@ -337,10 +337,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float angle = Constant.Pi;
             float expected = Constant.Pi;
             float result = Helper.WrapAngle(angle);
-
+            
             Assert.Equal(expected, result, 0.1f);
         }
-
+        
         /// <summary>
         ///     Tests that hermite should calculate correctly when amount is zero
         /// </summary>
@@ -353,10 +353,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float tangent2 = 4.0f;
             float amount = 0.0f;
             float result = Helper.Hermite(value1, tangent1, value2, tangent2, amount);
-
+            
             Assert.Equal(value1, result);
         }
-
+        
         /// <summary>
         ///     Tests that hermite should calculate correctly when amount is one
         /// </summary>
@@ -369,10 +369,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float tangent2 = 4.0f;
             float amount = 1.0f;
             float result = Helper.Hermite(value1, tangent1, value2, tangent2, amount);
-
+            
             Assert.Equal(value2, result);
         }
-
+        
         /// <summary>
         ///     Tests that hermite should calculate correctly when amount is between zero and one
         /// </summary>
@@ -388,7 +388,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
                              (3 * value2 - 3 * value1 - 2 * tangent1 - tangent2) * amount * amount +
                              tangent1 * amount + value1;
             float result = Helper.Hermite(value1, tangent1, value2, tangent2, amount);
-
+            
             Assert.Equal(expected, result);
         }
     }

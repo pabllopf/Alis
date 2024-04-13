@@ -47,9 +47,9 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Rectangle
             int y = 2;
             int w = 3;
             int h = 4;
-
+            
             RectangleI rectangle = new RectangleI(x, y, w, h);
-
+            
             Assert.Equal(x, rectangle.x);
             Assert.Equal(y, rectangle.y);
             Assert.Equal(w, rectangle.w);

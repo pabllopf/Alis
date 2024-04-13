@@ -39,27 +39,27 @@ namespace Alis.Core.Ecs.System.Setting.General
         ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the version
         /// </summary>
         public string Version { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the description
         /// </summary>
         public string Description { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the author
         /// </summary>
         public string Author { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the license
         /// </summary>
         public string License { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the icon
         /// </summary>

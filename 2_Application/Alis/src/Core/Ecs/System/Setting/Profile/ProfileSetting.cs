@@ -41,7 +41,7 @@ namespace Alis.Core.Ecs.System.Setting.Profile
         ///     Gets or sets the value of the log level
         /// </summary>
         public LogLevel LogLevel { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the detail level
         /// </summary>

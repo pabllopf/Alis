@@ -49,11 +49,11 @@ namespace Alis.Builder.Core.Ecs.System
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
         private readonly VideoGame videoGame = new VideoGame();
-
+        
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>
         public VideoGame Build() => videoGame;
-
+        
         /// <summary>
         ///     Setting the value
         /// </summary>
@@ -64,7 +64,7 @@ namespace Alis.Builder.Core.Ecs.System
             videoGame.Settings = value.Invoke(new SettingsBuilder());
             return this;
         }
-
+        
         /// <summary>
         ///     Worlds the value
         /// </summary>
@@ -75,7 +75,7 @@ namespace Alis.Builder.Core.Ecs.System
             videoGame.Set(value.Invoke(new SceneManagerBuilder()));
             return this;
         }
-
+        
         /// <summary>Runs this instance.</summary>
         public void Run() => videoGame.Run();
     }

@@ -43,7 +43,7 @@ namespace Alis.Core.Audio
         ///     The player
         /// </summary>
         private readonly Player player;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioClipBase" /> class
         /// </summary>
@@ -60,10 +60,10 @@ namespace Alis.Core.Audio
                 default:
                     throw new ArgumentOutOfRangeException(nameof(fullPathAudio));
             }
-
+            
             Logger.Log($"Init music: '{fullPathAudio}'");
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioClipBase" /> class
         /// </summary>
@@ -78,10 +78,10 @@ namespace Alis.Core.Audio
                 default:
                     throw new ArgumentOutOfRangeException(nameof(AudioBackendType));
             }
-
+            
             Logger.Log("Init music: 'null file'");
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioClipBase" /> class
         /// </summary>
@@ -101,58 +101,58 @@ namespace Alis.Core.Audio
                     throw new ArgumentOutOfRangeException(nameof(audioBackendType));
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Gets or sets the value of the sample rate
         /// </summary>
         public int SampleRate { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the channel count
         /// </summary>
         public int ChannelCount { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the duration
         /// </summary>
         public float Duration { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the pitch
         /// </summary>
         public int Pitch { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the is mute
         /// </summary>
         public bool IsMute { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the is playing
         /// </summary>
         public bool IsPlaying => player.Playing;
-
+        
         /// <summary>
         ///     Gets or sets the value of the full path audio file
         /// </summary>
         public string FullPathAudioFile { get; set; }
-
+        
         /// <summary>
         ///     Gets the value of the audio backend type
         /// </summary>
         private AudioBackendType AudioBackendType { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the is looping
         /// </summary>
         public bool IsLooping { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the volume
         /// </summary>
         public float Volume { get; set; } = 100.0f;
-
+        
         /// <summary>
         ///     Plays this instance
         /// </summary>
@@ -160,7 +160,7 @@ namespace Alis.Core.Audio
         protected void Play()
         {
             Logger.Log($"Init Music::play pass here'{FullPathAudioFile}'");
-
+            
             if (!string.IsNullOrEmpty(FullPathAudioFile))
             {
                 switch (AudioBackendType)
@@ -170,14 +170,14 @@ namespace Alis.Core.Audio
                         {
                             Task.Run(() => player.Play(FullPathAudioFile).Wait());
                         }
-
+                        
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
             }
         }
-
+        
         /// <summary>
         ///     Stops this instance
         /// </summary>
@@ -193,14 +193,14 @@ namespace Alis.Core.Audio
                         {
                             Task.Run(() => player.Stop());
                         }
-
+                        
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
             }
         }
-
+        
         /// <summary>
         ///     Resumes this instance
         /// </summary>

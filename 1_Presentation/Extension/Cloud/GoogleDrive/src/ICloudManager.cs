@@ -30,10 +30,9 @@
 namespace Alis.Extension.Cloud.GoogleDrive
 {
     /// <summary>
-    /// The cloud manager interface
+    ///     The cloud manager interface
     /// </summary>
     public interface ICloudManager
     {
-        
     }
 }
