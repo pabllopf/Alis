@@ -460,5 +460,23 @@ namespace Alis.Core.Aspect.Logging.Test
             string output = consoleOutput.ToString();
             Assert.Contains("Event: Event method called with no message.", output);
         }
+        
+        /// <summary>
+        ///     Tests that event no message should not print event message when log level is trace
+        /// </summary>
+        [RunnableInDebugOnly]
+        public void Event_NoMessage_SetLogLevel_WhenLogLevelIsTrace()
+        {
+            using StringWriter consoleOutput = new StringWriter();
+            Console.SetOut(consoleOutput);
+            
+            LogLevel log = LogLevel.Trace;
+            
+            Logger.SetLogLevel(log);
+            
+            Assert.Equal(log, Logger.LogLevel);
+        }
+        
+        
     }
 }
