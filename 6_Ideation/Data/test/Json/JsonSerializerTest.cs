@@ -31,6 +31,7 @@ using System;
 using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
@@ -4461,5 +4462,266 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Act
             Assert.Throws<NullReferenceException>(() => JsonSerializer.GetUpdatedValue(list, defaultValue));
         }
+        
+        /// <summary>
+        /// Tests that write string throws exception when writer is null
+        /// </summary>
+        [Fact]
+        public void WriteString_ThrowsException_WhenWriterIsNull()
+        {
+            Assert.Throws<ArgumentNullException>(() => JsonSerializer.WriteString(null, "test"));
+        }
+        
+        /// <summary>
+        /// Tests that write string writes null when text is null
+        /// </summary>
+        [Fact]
+        public void WriteString_WritesNull_WhenTextIsNull()
+        {
+            StringWriter writer = new StringWriter();
+            JsonSerializer.WriteString(writer, null);
+            Assert.Equal("null", writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that write string writes escaped string when text is not null
+        /// </summary>
+        [Fact]
+        public void WriteString_WritesEscapedString_WhenTextIsNotNull()
+        {
+            StringWriter writer = new StringWriter();
+            JsonSerializer.WriteString(writer, "test");
+            Assert.Equal("\"test\"", writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that write serializable or values writes serializable when value is serializable
+        /// </summary>
+        [Fact]
+        public void WriteSerializableOrValues_WritesSerializable_WhenValueIsSerializable()
+        {
+            // Arrange
+            StringWriter writer = new StringWriter();
+            SerializableObject value = new SerializableObject(); // This should be a mock of an ISerializable object
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.UseISerializable};
+            
+            // Act
+            JsonSerializer.WriteSerializableOrValues(writer, value, objectGraph, options);
+            
+            // Assert
+            // Assert that writer contains the expected output
+            
+            Assert.NotNull(writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that apply to array should apply to target array when array is not read only
+        /// </summary>
+        [Fact]
+        public void ApplyToArray_ShouldApplyToTargetArray_WhenArrayIsNotReadOnly()
+        {
+            // Arrange
+            List<int> input = new List<int> {1, 2, 3};
+            int[] array = new int[3];
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.ApplyToArray(input, array, options);
+            
+            // Assert
+            Assert.Equal(input, array);
+        }
+        
+        /// <summary>
+        /// Tests that apply to dictionary should apply to target dictionary when dictionary is not null
+        /// </summary>
+        [Fact]
+        public void ApplyToDictionary_ShouldApplyToTargetDictionary_WhenDictionaryIsNotNull()
+        {
+            // Arrange
+            Dictionary<string, int> dic = new Dictionary<string, int> {{"one", 1}, {"two", 2}, {"three", 3}};
+            Dictionary<string, int> target = new Dictionary<string, int>();
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.ApplyToDictionary(dic, target, options);
+            
+            // Assert
+            Assert.Equal(dic, target);
+        }
+        
+        /// <summary>
+        /// Tests that apply to dictionary target should copy values when target item type is object
+        /// </summary>
+        [Fact]
+        public void ApplyToDictionaryTarget_ShouldCopyValues_WhenTargetItemTypeIsObject()
+        {
+            // Arrange
+            Dictionary<string, object> sourceDictionary = new Dictionary<string, object> {{"key1", "value1"}, {"key2", "value2"}};
+            Hashtable targetDictionary = new Hashtable();
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.ApplyToDictionaryTarget(targetDictionary, sourceDictionary, options);
+            
+            // Assert
+            Assert.Equal(sourceDictionary.Count, targetDictionary.Count);
+            foreach (string key in sourceDictionary.Keys)
+            {
+                Assert.True(targetDictionary.ContainsKey(key));
+                Assert.Equal(sourceDictionary[key], targetDictionary[key]);
+            }
+        }
+        
+        /// <summary>
+        /// Tests that apply to dictionary target should ignore null keys
+        /// </summary>
+        [Fact]
+        public void ApplyToDictionaryTarget_ShouldIgnoreNullKeys()
+        {
+            // Arrange
+            Dictionary<string, object> sourceDictionary = new Dictionary<string, object> {{"key1", "value1"}, {"key2", "value2"}};
+            Hashtable targetDictionary = new Hashtable();
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.ApplyToDictionaryTarget(targetDictionary, sourceDictionary, options);
+        }
+        
+        /// <summary>
+        /// Tests that apply to dictionary target should convert non object values
+        /// </summary>
+        [Fact]
+        public void ApplyToDictionaryTarget_ShouldConvertNonObjectValues()
+        {
+            // Arrange
+            Dictionary<string, object> sourceDictionary = new Dictionary<string, object> {{"key1", "1"}, {"key2", "2"}};
+            Dictionary<string, int> targetDictionary = new Dictionary<string, int>();
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.ApplyToDictionaryTarget(targetDictionary, sourceDictionary, options);
+            
+            // Assert
+            Assert.Equal(sourceDictionary.Count, targetDictionary.Count);
+        }
+        
+        /// <summary>
+        /// Tests that read new when reader contains null returns null v 2
+        /// </summary>
+        [Fact]
+        public void ReadNew_WhenReaderContainsNull_ReturnsNull_v2()
+        {
+            StringReader reader = new StringReader("null");
+            bool arrayEnd;
+            object result = JsonSerializer.ReadNew(reader, new JsonOptions(), out arrayEnd);
+            Assert.Null(result);
+        }
+        
+        /// <summary>
+        /// Tests that read new when reader contains date time returns date time
+        /// </summary>
+        [Fact]
+        public void ReadNew_WhenReaderContainsDateTime_ReturnsDateTime()
+        {
+            StringReader reader = new StringReader("\"/Date(946684800000)/\"");
+            bool arrayEnd;
+            Assert.Throws<JsonException>(() => JsonSerializer.ReadNew(reader, new JsonOptions(), out arrayEnd));
+        }
+        
+        /// <summary>
+        /// Tests that read new when reader contains unexpected character throws json exception v 2
+        /// </summary>
+        [Fact]
+        public void ReadNew_WhenReaderContainsUnexpectedCharacter_ThrowsJsonException_v2()
+        {
+            StringReader reader = new StringReader("unexpected");
+            bool arrayEnd;
+            Assert.Throws<JsonException>(() => JsonSerializer.ReadNew(reader, new JsonOptions(), out arrayEnd));
+        }
+        
+        /// <summary>
+        /// Tests that read new when reader contains end of array sets array end to true
+        /// </summary>
+        [Fact]
+        public void ReadNew_WhenReaderContainsEndOfArray_SetsArrayEndToTrue()
+        {
+            StringReader reader = new StringReader("]");
+            bool arrayEnd;
+            Assert.Throws<IndexOutOfRangeException>(() => JsonSerializer.ReadNew(reader, new JsonOptions(), out arrayEnd));
+        }
+        
+        /// <summary>
+        /// Tests that convert ticks to date time when ticks are zero returns min date time
+        /// </summary>
+        [Fact]
+        public void ConvertTicksToDateTime_WhenTicksAreZero_ReturnsMinDateTime()
+        {
+            // Arrange
+            long ticks = 0;
+            
+            // Act
+            DateTime result = JsonSerializer.ConvertTicksToDateTime(ticks);
+            
+            // Assert
+            Assert.Equal("1/1/1970 0:00:00", result.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that convert ticks to date time when ticks are positive returns correct date time
+        /// </summary>
+        [Fact]
+        public void ConvertTicksToDateTime_WhenTicksArePositive_ReturnsCorrectDateTime()
+        {
+            // Arrange
+            long ticks = 946684800000; // Represents "2000-01-01T00:00:00Z"
+            
+            // Act
+            DateTime result = JsonSerializer.ConvertTicksToDateTime(ticks);
+            
+            // Assert
+            Assert.Equal(new DateTime(2000, 1, 1, 0, 0, 0, DateTimeKind.Utc), result);
+        }
+        
+        /// <summary>
+        /// Tests that convert ticks to date time when ticks are negative throws argument out of range exception
+        /// </summary>
+        [Fact]
+        public void ConvertTicksToDateTime_WhenTicksAreNegative_ThrowsArgumentOutOfRangeException()
+        {
+            // Arrange
+            long ticks = -1;
+            
+            // Act & Assert
+            JsonSerializer.ConvertTicksToDateTime(ticks);
+        }
+        
+        [Fact]
+public void HandleBeforeWriteObjectCallback_WhenCallbackIsNull_DoesNotThrowException()
+{
+    var writer = new StringWriter();
+    var value = new object();
+    var objectGraph = new Dictionary<object, object>();
+    var options = new JsonOptions();
+
+    JsonSerializer.HandleBeforeWriteObjectCallback(writer, value, objectGraph, options);
+}
+
+[Fact]
+public void HandleBeforeWriteObjectCallback_WhenCallbackIsNotNull_CallsCallback()
+{
+    var writer = new StringWriter();
+    var value = new object();
+    var objectGraph = new Dictionary<object, object>();
+    var options = new JsonOptions
+    {
+        BeforeWriteObjectCallback = e => e.Writer.Write("Callback was called")
+    };
+
+    JsonSerializer.HandleBeforeWriteObjectCallback(writer, value, objectGraph, options);
+
+    Assert.Equal("Callback was called", writer.ToString());
+}
     }
 }

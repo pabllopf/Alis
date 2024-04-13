@@ -351,30 +351,86 @@ namespace Alis.Core.Aspect.Data.Json
             object value = ReadValue(reader, options);
             Apply(value, target, options);
         }
-        
-        /// <summary>
-        ///     Applies the content of an array or dictionary to a target object.
-        /// </summary>
-        /// <param name="input">The input object.</param>
-        /// <param name="target">The target object.</param>
-        /// <param name="options">Options to use.</param>
-        internal static void Apply(object input, object target, JsonOptions options = null)
-        {
-            options ??= new JsonOptions();
-            
-            if (target is Array array && !array.IsReadOnly)
-            {
-                ApplyToTargetArray(input as IEnumerable, array, options);
-            }
-            else if (input is IDictionary dic)
-            {
-                ApplyToTargetDictionary(dic, target, options);
-            }
-            else if (target != null)
-            {
-                ApplyToListTarget(input as IEnumerable, target, options);
-            }
-        }
+      /// <summary>
+      /// Applies the input
+      /// </summary>
+      /// <param name="input">The input</param>
+      /// <param name="target">The target</param>
+      /// <param name="options">The options</param>
+      internal static void Apply(object input, object target, JsonOptions options = null)
+{
+    options ??= new JsonOptions();
+
+    if (target is Array array)
+    {
+        ApplyToArray(input, array, options);
+    }
+    else if (input is IDictionary dic)
+    {
+        ApplyToDictionary(dic, target, options);
+    }
+    else
+    {
+        ApplyToList(input, target, options);
+    }
+}
+
+/// <summary>
+
+/// Applies the to array using the specified input
+
+/// </summary>
+
+/// <param name="input">The input</param>
+
+/// <param name="array">The array</param>
+
+/// <param name="options">The options</param>
+
+internal static void ApplyToArray(object input, Array array, JsonOptions options)
+{
+    if (!array.IsReadOnly)
+    {
+        ApplyToTargetArray(input as IEnumerable, array, options);
+    }
+}
+
+/// <summary>
+
+/// Applies the to dictionary using the specified dic
+
+/// </summary>
+
+/// <param name="dic">The dic</param>
+
+/// <param name="target">The target</param>
+
+/// <param name="options">The options</param>
+
+internal static void ApplyToDictionary(IDictionary dic, object target, JsonOptions options)
+{
+    ApplyToTargetDictionary(dic, target, options);
+}
+
+/// <summary>
+
+/// Applies the to list using the specified input
+
+/// </summary>
+
+/// <param name="input">The input</param>
+
+/// <param name="target">The target</param>
+
+/// <param name="options">The options</param>
+
+internal static void ApplyToList(object input, object target, JsonOptions options)
+{
+    if (target != null)
+    {
+        ApplyToListTarget(input as IEnumerable, target, options);
+    }
+}
         
         /// <summary>
         ///     Applies the to target array using the specified input
@@ -1011,30 +1067,25 @@ namespace Alis.Core.Aspect.Data.Json
             }
         }
         
-        /// <summary>
-        ///     Applies the to dictionary target using the specified dic target
+       /// <summary>
+        /// Applies the values from the source dictionary to the target dictionary.
         /// </summary>
-        /// <param name="dicTarget">The dic target</param>
-        /// <param name="dictionary">The dictionary</param>
-        /// <param name="options">The options</param>
-        internal static void ApplyToDictionaryTarget(IDictionary dicTarget, IDictionary dictionary, JsonOptions options)
+        /// <param name="targetDictionary">The target dictionary to which values are applied</param>
+        /// <param name="sourceDictionary">The source dictionary from which values are taken</param>
+        /// <param name="options">The JsonOptions used for type conversion</param>
+        internal static void ApplyToDictionaryTarget(IDictionary targetDictionary, IDictionary sourceDictionary, JsonOptions options)
         {
-            Type itemType = GetItemType(dicTarget.GetType());
-            foreach (DictionaryEntry entry in dictionary)
+            Type itemType = GetItemType(targetDictionary.GetType());
+
+            foreach (DictionaryEntry entry in sourceDictionary)
             {
                 if (entry.Key == null)
                 {
                     continue;
                 }
-                
-                if (itemType == typeof(object))
-                {
-                    dicTarget[entry.Key] = entry.Value;
-                }
-                else
-                {
-                    dicTarget[entry.Key] = ChangeType(dicTarget, entry.Value, itemType, options);
-                }
+
+                object value = itemType == typeof(object) ? entry.Value : ChangeType(targetDictionary, entry.Value, itemType, options);
+                targetDictionary[entry.Key] = value;
             }
         }
         
@@ -1054,49 +1105,72 @@ namespace Alis.Core.Aspect.Data.Json
             }
         }
         
-        /// <summary>
-        ///     Processes the dictionary entry using the specified target
-        /// </summary>
-        /// <param name="target">The target</param>
-        /// <param name="dictionary">The dictionary</param>
-        /// <param name="options">The options</param>
-        /// <param name="typeDefinition">The type definition</param>
-        /// <param name="entry">The entry</param>
-        internal static void ProcessDictionaryEntry(object target, IDictionary dictionary, JsonOptions options, TypeDef typeDefinition, DictionaryEntry entry)
-        {
-            if (entry.Key == null)
-            {
-                return;
-            }
-            
-            string entryKey = entry.Key.ToString();
-            object entryValue = entry.Value;
-            
-            if (options.MapEntryCallback != null)
-            {
-                Dictionary<object, object> originalValues = new Dictionary<object, object>
-                {
-                    ["dictionary"] = dictionary
-                };
-                
-                JsonEventArgs eventArgs = new JsonEventArgs(null, entryValue, originalValues, options, entryKey, target)
-                {
-                    EventType = JsonEventType.MapEntry
-                };
-                
-                options.MapEntryCallback(eventArgs);
-                
-                if (eventArgs.Handled)
-                {
-                    return;
-                }
-                
-                entryKey = eventArgs.Name;
-                entryValue = eventArgs.Value;
-            }
-            
-            typeDefinition.ApplyEntry(dictionary, target, entryKey, entryValue, options);
-        }
+       /// <summary>
+       /// Processes the dictionary entry using the specified target
+       /// </summary>
+       /// <param name="target">The target</param>
+       /// <param name="dictionary">The dictionary</param>
+       /// <param name="options">The options</param>
+       /// <param name="typeDefinition">The type definition</param>
+       /// <param name="entry">The entry</param>
+       internal static void ProcessDictionaryEntry(object target, IDictionary dictionary, JsonOptions options, TypeDef typeDefinition, DictionaryEntry entry)
+{
+    if (entry.Key == null)
+    {
+        return;
+    }
+
+    string entryKey = entry.Key.ToString();
+    object entryValue = entry.Value;
+
+    ProcessMapEntryCallback(options, dictionary, ref entryKey, ref entryValue, target);
+
+    typeDefinition.ApplyEntry(dictionary, target, entryKey, entryValue, options);
+}
+
+/// <summary>
+
+/// Processes the map entry callback using the specified options
+
+/// </summary>
+
+/// <param name="options">The options</param>
+
+/// <param name="dictionary">The dictionary</param>
+
+/// <param name="entryKey">The entry key</param>
+
+/// <param name="entryValue">The entry value</param>
+
+/// <param name="target">The target</param>
+
+internal static void ProcessMapEntryCallback(JsonOptions options, IDictionary dictionary, ref string entryKey, ref object entryValue, object target)
+{
+    if (options.MapEntryCallback == null)
+    {
+        return;
+    }
+
+    var originalValues = new Dictionary<object, object>
+    {
+        ["dictionary"] = dictionary
+    };
+
+    var eventArgs = new JsonEventArgs(null, entryValue, originalValues, options, entryKey, target)
+    {
+        EventType = JsonEventType.MapEntry
+    };
+
+    options.MapEntryCallback(eventArgs);
+
+    if (eventArgs.Handled)
+    {
+        return;
+    }
+
+    entryKey = eventArgs.Name;
+    entryValue = eventArgs.Value;
+}
         
         /// <summary>
         ///     Gets the json attribute using the specified pi
@@ -1954,61 +2028,122 @@ namespace Alis.Core.Aspect.Data.Json
         internal static object ReadNumberOrLiteralValue(TextReader reader, JsonOptions options, out bool arrayEnd) => ReadNumberOrLiteral(reader, options, out arrayEnd);
         
         /// <summary>
-        ///     Reads the new using the specified reader
+        /// Reads the new using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <param name="arrayEnd">The array end</param>
         /// <returns>The object</returns>
         internal static object ReadNew(TextReader reader, JsonOptions options, out bool arrayEnd)
+{
+    arrayEnd = false;
+    string text = ReadUntilEndCondition(reader, out arrayEnd);
+
+    if (IsTextNull(text))
+    {
+        return null;
+    }
+
+    if (IsTextDateTime(text, out long ticks))
+    {
+        return ConvertTicksToDateTime(ticks);
+    }
+
+    HandleException(GetUnexpectedCharacterException(GetPosition(reader), text[0]), options);
+    return null;
+}
+
+/// <summary>
+
+/// Reads the until end condition using the specified reader
+
+/// </summary>
+
+/// <param name="reader">The reader</param>
+
+/// <param name="arrayEnd">The array end</param>
+
+/// <returns>The string</returns>
+
+internal static string ReadUntilEndCondition(TextReader reader, out bool arrayEnd)
+{
+    arrayEnd = false;
+    StringBuilder sb = new StringBuilder();
+
+    while (true)
+    {
+        int peekedChar = reader.Peek();
+
+        if (peekedChar < 0 || (char)peekedChar == '}' || (char)peekedChar == ',')
         {
-            arrayEnd = false;
-            StringBuilder sb = new StringBuilder();
-            do
-            {
-                int i = reader.Peek();
-                if (i < 0)
-                {
-                    break;
-                }
-                
-                if ((char) i == '}')
-                {
-                    break;
-                }
-                
-                char c = (char) reader.Read();
-                if (c == ',')
-                {
-                    break;
-                }
-                
-                if (c == ']')
-                {
-                    arrayEnd = true;
-                    break;
-                }
-                
-                sb.Append(c);
-            } while (true);
-            
-            string text = sb.ToString();
-            if (string.Compare(Null, text.Trim(), StringComparison.OrdinalIgnoreCase) == 0)
-            {
-                return null;
-            }
-            
-            if (text.StartsWith(DateStartJs) && text.EndsWith(DateEndJs))
-            {
-                if (long.TryParse(text.Substring(DateStartJs.Length, text.Length - DateStartJs.Length - DateEndJs.Length), out long l))
-                {
-                    return new DateTime(l * 10000 + MinDateTimeTicks, DateTimeKind.Utc);
-                }
-            }
-            
-            HandleException(GetUnexpectedCharacterException(GetPosition(reader), text[0]), options);
-            return null;
+            break;
         }
+
+        char readChar = (char)reader.Read();
+        if (readChar == ']')
+        {
+            arrayEnd = true;
+            break;
+        }
+
+        sb.Append(readChar);
+    }
+
+    return sb.ToString();
+}
+
+/// <summary>
+
+/// Describes whether is text null
+
+/// </summary>
+
+/// <param name="text">The text</param>
+
+/// <returns>The bool</returns>
+
+internal static bool IsTextNull(string text)
+{
+    return string.Compare(Null, text.Trim(), StringComparison.OrdinalIgnoreCase) == 0;
+}
+
+/// <summary>
+
+/// Describes whether is text date time
+
+/// </summary>
+
+/// <param name="text">The text</param>
+
+/// <param name="ticks">The ticks</param>
+
+/// <returns>The bool</returns>
+
+internal static bool IsTextDateTime(string text, out long ticks)
+{
+    if (text.StartsWith(DateStartJs) && text.EndsWith(DateEndJs))
+    {
+        return long.TryParse(text.Substring(DateStartJs.Length, text.Length - DateStartJs.Length - DateEndJs.Length), out ticks);
+    }
+
+    ticks = 0;
+    return false;
+}
+
+/// <summary>
+
+/// Converts the ticks to date time using the specified ticks
+
+/// </summary>
+
+/// <param name="ticks">The ticks</param>
+
+/// <returns>The date time</returns>
+
+internal static DateTime ConvertTicksToDateTime(long ticks)
+{
+    return new DateTime(ticks * 10000 + MinDateTimeTicks, DateTimeKind.Utc);
+}
         
         /// <summary>
         ///     Reads the number or literal using the specified reader
@@ -3672,47 +3807,43 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         internal static void HandleBeforeWriteObjectCallback(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
         {
-            if (options.BeforeWriteObjectCallback != null)
+            if (options.BeforeWriteObjectCallback == null)
             {
-                JsonEventArgs e = new JsonEventArgs(writer, value, objectGraph, options)
-                {
-                    EventType = JsonEventType.BeforeWriteObject
-                };
-                options.BeforeWriteObjectCallback(e);
-                if (e.Handled)
-                {
-                }
+                return;
             }
+
+            var eventArgs = new JsonEventArgs(writer, value, objectGraph, options)
+            {
+                EventType = JsonEventType.BeforeWriteObject
+            };
+
+            options.BeforeWriteObjectCallback(eventArgs);
         }
         
         /// <summary>
-        ///     Writes the serializable or values using the specified writer
-        /// </summary>
-        /// <param name="writer">The writer</param>
-        /// <param name="value">The value</param>
-        /// <param name="objectGraph">The object graph</param>
-        /// <param name="options">The options</param>
-        internal static void WriteSerializableOrValues(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
-        {
-            ISerializable serializable = null;
-            bool useISerializable = options.SerializationOptions.HasFlag(JsonSerializationOptions.UseISerializable) || ForceSerializable(value);
-            if (useISerializable)
-            {
-                serializable = value as ISerializable;
-            }
-            
-            Type type = value.GetType();
-            if (serializable != null)
-            {
-                WriteSerializable(writer, serializable, objectGraph, options);
-            }
-            else
-            {
-                TypeDef def = TypeDef.Get(type, options);
-                def.WriteValues(writer, value, objectGraph, options);
-            }
-        }
-        
+/// Writes the serializable or values using the specified writer.
+/// </summary>
+/// <param name="writer">The writer.</param>
+/// <param name="value">The value.</param>
+/// <param name="objectGraph">The object graph.</param>
+/// <param name="options">The options.</param>
+internal static void WriteSerializableOrValues(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+{
+    // Determine if the value should be treated as ISerializable
+    bool useISerializable = options.SerializationOptions.HasFlag(JsonSerializationOptions.UseISerializable) || ForceSerializable(value);
+
+    // If the value is ISerializable, write it as such
+    if (useISerializable && value is ISerializable serializable)
+    {
+        WriteSerializable(writer, serializable, objectGraph, options);
+    }
+    else
+    {
+        // Otherwise, get the type definition and write the values
+        TypeDef typeDefinition = TypeDef.Get(value.GetType(), options);
+        typeDefinition.WriteValues(writer, value, objectGraph, options);
+    }
+}
         /// <summary>
         ///     Handles the after write object callback using the specified writer
         /// </summary>
@@ -3786,28 +3917,57 @@ namespace Alis.Core.Aspect.Data.Json
             WriteValue(writer, value, objectGraph, options);
         }
         
-        /// <summary>
-        ///     Writes a string to a JSON writer.
-        /// </summary>
-        /// <param name="writer">The input writer. May not be null.</param>
-        /// <param name="text">The text.</param>
-        internal static void WriteString(TextWriter writer, string text)
-        {
-            if (writer == null)
-            {
-                throw new ArgumentNullException(nameof(writer));
-            }
-            
-            if (text == null)
-            {
-                writer.Write(Null);
-                return;
-            }
-            
-            writer.Write('"');
-            writer.Write(EscapeString(text));
-            writer.Write('"');
-        }
+     /// <summary>
+/// Writes a string to a JSON writer.
+/// </summary>
+/// <param name="writer">The input writer. May not be null.</param>
+/// <param name="text">The text.</param>
+internal static void WriteString(TextWriter writer, string text)
+{
+    ValidateWriter(writer);
+    WriteText(writer, text);
+}
+
+
+
+/// <summary>
+
+/// Writes the text using the specified writer
+
+/// </summary>
+
+/// <param name="writer">The writer</param>
+
+/// <param name="text">The text</param>
+
+internal static void WriteText(TextWriter writer, string text)
+{
+    if (text == null)
+    {
+        writer.Write(Null);
+    }
+    else
+    {
+        WriteEscapedString(writer, text);
+    }
+}
+
+/// <summary>
+
+/// Writes the escaped string using the specified writer
+
+/// </summary>
+
+/// <param name="writer">The writer</param>
+
+/// <param name="text">The text</param>
+
+internal static void WriteEscapedString(TextWriter writer, string text)
+{
+    writer.Write('"');
+    writer.Write(EscapeString(text));
+    writer.Write('"');
+}
         
         /// <summary>
         ///     Writes a string to a JSON writer.
