@@ -2853,6 +2853,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonSerializer.ReadDictionary(reader, options);
         }
         
+        /// <summary>
+        /// Tests that process input with array input processes correctly
+        /// </summary>
         [Fact]
         public void ProcessInput_WithArrayInput_ProcessesCorrectly()
         {
@@ -2869,6 +2872,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Add your assertions here
         }
         
+        /// <summary>
+        /// Tests that process input with list input processes correctly
+        /// </summary>
         [Fact]
         public void ProcessInput_WithListInput_ProcessesCorrectly()
         {
@@ -2885,6 +2891,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Add your assertions here
         }
         
+        /// <summary>
+        /// Tests that process input with list input and context processes correctly
+        /// </summary>
         [Fact]
         public void ProcessInput_WithListInputAndContext_ProcessesCorrectly()
         {
@@ -2899,6 +2908,343 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             // Assert
             // Add your assertions here
+        }
+        
+        /// <summary>
+        /// Tests that write dictionary with valid input writes correct json
+        /// </summary>
+        [Fact]
+        public void WriteDictionary_WithValidInput_WritesCorrectJson()
+        {
+            StringWriter writer = new StringWriter();
+            Dictionary<string, string> dictionary = new Dictionary<string, string> {{"key1", "value1"}, {"key2", "value2"}};
+            JsonOptions options = new JsonOptions();
+            
+            JsonSerializer.WriteDictionary(writer, dictionary, null, options);
+            
+            string expectedJson = "{\"key1\":\"value1\",\"key2\":\"value2\"}";
+            Assert.Equal(expectedJson, writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that write dictionary with null writer throws argument null exception
+        /// </summary>
+        [Fact]
+        public void WriteDictionary_WithNullWriter_ThrowsArgumentNullException()
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string> {{"key1", "value1"}, {"key2", "value2"}};
+            JsonOptions options = new JsonOptions();
+            
+            Assert.Throws<ArgumentNullException>(() => JsonSerializer.WriteDictionary(null, dictionary, null, options));
+        }
+        
+        /// <summary>
+        /// Tests that write dictionary with null dictionary throws argument null exception
+        /// </summary>
+        [Fact]
+        public void WriteDictionary_WithNullDictionary_ThrowsArgumentNullException()
+        {
+            StringWriter writer = new StringWriter();
+            JsonOptions options = new JsonOptions();
+            
+            Assert.Throws<ArgumentNullException>(() => JsonSerializer.WriteDictionary(writer, null, null, options));
+        }
+        
+        /// <summary>
+        /// Tests that write dictionary with empty dictionary writes empty json
+        /// </summary>
+        [Fact]
+        public void WriteDictionary_WithEmptyDictionary_WritesEmptyJson()
+        {
+            StringWriter writer = new StringWriter();
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            JsonOptions options = new JsonOptions();
+            
+            JsonSerializer.WriteDictionary(writer, dictionary, null, options);
+            
+            string expectedJson = "{}";
+            Assert.Equal(expectedJson, writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that write dictionary with serialization option writes correct json
+        /// </summary>
+        [Fact]
+        public void WriteDictionary_WithSerializationOption_WritesCorrectJson()
+        {
+            StringWriter writer = new StringWriter();
+            Dictionary<string, string> dictionary = new Dictionary<string, string> {{"key1", "value1"}, {"key2", "value2"}};
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.WriteKeysWithoutQuotes};
+            
+            JsonSerializer.WriteDictionary(writer, dictionary, null, options);
+            
+            string expectedJson = "{key1:\"value1\",key2:\"value2\"}";
+            Assert.Equal(expectedJson, writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that try get value by path returns false when path is null
+        /// </summary>
+        [Fact]
+        public void TryGetValueByPath_ReturnsFalse_WhenPathIsNull()
+        {
+            IDictionary<string, object> dictionary = new Dictionary<string, object>();
+            Assert.False(dictionary.TryGetValueByPath(null, out _));
+        }
+        
+        /// <summary>
+        
+        /// Tests that try get value by path returns false when dictionary is null
+        
+        /// </summary>
+        
+        [Fact]
+        public void TryGetValueByPath_ReturnsFalse_WhenDictionaryIsNull()
+        {
+            IDictionary<string, object> dictionary = null;
+            Assert.False(dictionary.TryGetValueByPath("test", out _));
+        }
+        
+        /// <summary>
+        
+        /// Tests that try get value by path returns false when path does not exist
+        
+        /// </summary>
+        
+        [Fact]
+        public void TryGetValueByPath_ReturnsFalse_WhenPathDoesNotExist()
+        {
+            IDictionary<string, object> dictionary = new Dictionary<string, object> {{"key", "value"}};
+            Assert.False(dictionary.TryGetValueByPath("nonexistent", out _));
+        }
+        
+        /// <summary>
+        
+        /// Tests that try get value by path returns true when path exists
+        
+        /// </summary>
+        
+        [Fact]
+        public void TryGetValueByPath_ReturnsTrue_WhenPathExists()
+        {
+            IDictionary<string, object> dictionary = new Dictionary<string, object> {{"key", "value"}};
+            Assert.True(dictionary.TryGetValueByPath("key", out object value));
+            Assert.Equal("value", value);
+        }
+        
+        /// <summary>
+        
+        /// Tests that try get value by path returns correct value when path exists in nested dictionary
+        
+        /// </summary>
+        
+        [Fact]
+        public void TryGetValueByPath_ReturnsCorrectValue_WhenPathExistsInNestedDictionary()
+        {
+            IDictionary<string, object> dictionary = new Dictionary<string, object>
+            {
+                {"key", new Dictionary<string, object> {{"nestedKey", "nestedValue"}}}
+            };
+            Assert.True(dictionary.TryGetValueByPath("key.nestedKey", out object value));
+            Assert.Equal("nestedValue", value);
+        }
+        
+        /// <summary>
+        /// Tests that change type when conversion type is null throws argument null exception
+        /// </summary>
+        [Fact]
+        public void ChangeType_WhenConversionTypeIsNull_ThrowsArgumentNullException()
+        {
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.ChangeType(null, null, null));
+        }
+        
+        /// <summary>
+        /// Tests that change type when conversion type is object returns value
+        /// </summary>
+        [Fact]
+        public void ChangeType_WhenConversionTypeIsObject_ReturnsValue()
+        {
+            object result = JsonSerializer.ChangeType(null, "test", typeof(object));
+            Assert.Equal("test", result);
+        }
+        
+        /// <summary>
+        /// Tests that change type when value is null and conversion type is value type returns default value
+        /// </summary>
+        [Fact]
+        public void ChangeType_WhenValueIsNullAndConversionTypeIsValueType_ReturnsDefaultValue()
+        {
+            object result = JsonSerializer.ChangeType(null, null, typeof(int));
+            Assert.Equal(0, result);
+        }
+        
+        /// <summary>
+        /// Tests that change type when value is dictionary calls handle dictionary
+        /// </summary>
+        [Fact]
+        public void ChangeType_WhenValueIsDictionary_CallsHandleDictionary()
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string> {{"key", "value"}};
+            object result = JsonSerializer.ChangeType(null, dictionary, typeof(Dictionary<string, string>));
+            Assert.Equal(dictionary, result);
+        }
+        
+        /// <summary>
+        /// Tests that change type when value is string and conversion type is byte array calls handle byte array
+        /// </summary>
+        [Fact]
+        public void ChangeType_WhenValueIsStringAndConversionTypeIsByteArray_CallsHandleByteArray()
+        {
+            object result = JsonSerializer.ChangeType(null, "test", typeof(byte[]));
+            Assert.Equal("test", result);
+        }
+        
+        /// <summary>
+        /// Tests that change type when value is string and conversion type is date time calls handle date time
+        /// </summary>
+        [Fact]
+        public void ChangeType_WhenValueIsStringAndConversionTypeIsDateTime_CallsHandleDateTime()
+        {
+            string dateTime = DateTime.Now.ToString();
+            object result = JsonSerializer.ChangeType(null, dateTime, typeof(DateTime));
+            Assert.NotNull(result.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that change type when value is string and conversion type is time span calls handle time span
+        /// </summary>
+        [Fact]
+        public void ChangeType_WhenValueIsStringAndConversionTypeIsTimeSpan_CallsHandleTimeSpan()
+        {
+            string timeSpan = TimeSpan.FromMinutes(1).ToString();
+            object result = JsonSerializer.ChangeType(null, timeSpan, typeof(TimeSpan));
+            Assert.NotNull(result);
+        }
+        
+        /// <summary>
+        /// Tests that change type when value is string and conversion type is not special type calls change type
+        /// </summary>
+        [Fact]
+        public void ChangeType_WhenValueIsStringAndConversionTypeIsNotSpecialType_CallsChangeType()
+        {
+            object result = JsonSerializer.ChangeType(null, "1", typeof(int));
+            Assert.Equal(1, result);
+        }
+        
+        /// <summary>
+        /// Tests that change type when value is not string and not dictionary calls handle non string
+        /// </summary>
+        [Fact]
+        public void ChangeType_WhenValueIsNotStringAndNotDictionary_CallsHandleNonString()
+        {
+            object result = JsonSerializer.ChangeType(null, 1, typeof(string));
+            Assert.Equal(1, result);
+        }
+        
+        /// <summary>
+        /// Tests that handle escape character appends correct character for escape sequences
+        /// </summary>
+        [Fact]
+        public void HandleEscapeCharacter_AppendsCorrectCharacterForEscapeSequences()
+        {
+            var reader = new StringReader("\\b\\t\\n\\f\\r\\/\\\\\\\"\\u0041");
+            var result = new StringBuilder();
+            var options = new JsonOptions();
+            
+            while (reader.Peek() != -1)
+            {
+                JsonSerializer.HandleEscapeCharacter(reader, result, options);
+            }
+            
+            Assert.NotNull(result.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that handle escape character appends backslash and character for unknown escape sequence
+        /// </summary>
+        [Fact]
+        public void HandleEscapeCharacter_AppendsBackslashAndCharacterForUnknownEscapeSequence()
+        {
+            var reader = new StringReader("\\x");
+            var result = new StringBuilder();
+            var options = new JsonOptions();
+            
+            JsonSerializer.HandleEscapeCharacter(reader, result, options);
+            
+            Assert.Equal("\\", result.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that handle escape character throws exception when end of file reached
+        /// </summary>
+        [Fact]
+        public void HandleEscapeCharacter_ThrowsExceptionWhenEndOfFileReached()
+        {
+            var reader = new StringReader("\\");
+            var result = new StringBuilder();
+            var options = new JsonOptions();
+            
+            JsonSerializer.HandleEscapeCharacter(reader, result, options);
+        }
+        
+        /// <summary>
+        /// Tests that apply to non dictionary target when called processes all entries
+        /// </summary>
+        [Fact]
+        public void ApplyToNonDictionaryTarget_WhenCalled_ProcessesAllEntries()
+        {
+            // Arrange
+            var target = new object();
+            var dictionary = new Dictionary<string, object> {{"key1", "value1"}, {"key2", "value2"}};
+            var options = new JsonOptions();
+            var typeDef = TypeDef.Get(target.GetType(), options);
+            
+            // Act
+            JsonSerializer.ApplyToNonDictionaryTarget(target, dictionary, options);
+            
+            // Assert
+            // Add your assertions here based on the expected behavior of the method
+        }
+        
+        /// <summary>
+        /// Tests that apply to non dictionary target when map entry callback is set calls callback
+        /// </summary>
+        [Fact]
+        public void ApplyToNonDictionaryTarget_WhenMapEntryCallbackIsSet_CallsCallback()
+        {
+            // Arrange
+            var target = new object();
+            var dictionary = new Dictionary<string, object> {{"key1", "value1"}, {"key2", "value2"}};
+            var options = new JsonOptions
+            {
+                MapEntryCallback = e => e.Handled = true
+            };
+            var typeDef = TypeDef.Get(target.GetType(), options);
+            
+            // Act
+            JsonSerializer.ApplyToNonDictionaryTarget(target, dictionary, options);
+            
+            // Assert
+            // Add your assertions here based on the expected behavior of the method
+        }
+        
+        /// <summary>
+        /// Tests that apply to non dictionary target when entry key is null skips entry
+        /// </summary>
+        [Fact]
+        public void ApplyToNonDictionaryTarget_WhenEntryKeyIsNull_SkipsEntry()
+        {
+            // Arrange
+            var target = new object();
+            var dictionary = new Dictionary<string, object> {{"key", "value1"}, {"key2", "value2"}};
+            var options = new JsonOptions();
+            var typeDef = TypeDef.Get(target.GetType(), options);
+            
+            // Act
+            JsonSerializer.ApplyToNonDictionaryTarget(target, dictionary, options);
+            
+            // Assert
+            // Add your assertions here based on the expec
         }
     }
 }

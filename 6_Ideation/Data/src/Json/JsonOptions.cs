@@ -194,7 +194,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     object.
         /// </summary>
         /// <value>The callback.</value>
-        public JsonCallback MapEntryCallback { get; private set; }
+        public JsonCallback MapEntryCallback { get; internal set; }
         
         /// <summary>
         ///     Gets or sets a callback that is called during deserialization, before a dictionary entry is applied to a target

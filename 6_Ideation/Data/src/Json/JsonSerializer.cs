@@ -922,47 +922,63 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Applies the to non dictionary target using the specified target
+        /// Applies the to non dictionary target using the specified target
         /// </summary>
         /// <param name="target">The target</param>
         /// <param name="dictionary">The dictionary</param>
         /// <param name="options">The options</param>
         internal static void ApplyToNonDictionaryTarget(object target, IDictionary dictionary, JsonOptions options)
         {
-            TypeDef def = TypeDef.Get(target.GetType(), options);
+            TypeDef typeDefinition = TypeDef.Get(target.GetType(), options);
             
             foreach (DictionaryEntry entry in dictionary)
             {
-                if (entry.Key == null)
-                {
-                    continue;
-                }
-                
-                string entryKey = string.Format(CultureInfo.InvariantCulture, "{0}", entry.Key);
-                object entryValue = entry.Value;
-                if (options.MapEntryCallback != null)
-                {
-                    Dictionary<object, object> og = new Dictionary<object, object>
-                    {
-                        ["dictionary"] = dictionary
-                    };
-                    
-                    JsonEventArgs e = new JsonEventArgs(null, entryValue, og, options, entryKey, target)
-                    {
-                        EventType = JsonEventType.MapEntry
-                    };
-                    options.MapEntryCallback(e);
-                    if (e.Handled)
-                    {
-                        continue;
-                    }
-                    
-                    entryKey = e.Name;
-                    entryValue = e.Value;
-                }
-                
-                def.ApplyEntry(dictionary, target, entryKey, entryValue, options);
+                ProcessDictionaryEntry(target, dictionary, options, typeDefinition, entry);
             }
+        }
+        
+        /// <summary>
+        /// Processes the dictionary entry using the specified target
+        /// </summary>
+        /// <param name="target">The target</param>
+        /// <param name="dictionary">The dictionary</param>
+        /// <param name="options">The options</param>
+        /// <param name="typeDefinition">The type definition</param>
+        /// <param name="entry">The entry</param>
+        internal static void ProcessDictionaryEntry(object target, IDictionary dictionary, JsonOptions options, TypeDef typeDefinition, DictionaryEntry entry)
+        {
+            if (entry.Key == null)
+            {
+                return;
+            }
+            
+            string entryKey = entry.Key.ToString();
+            object entryValue = entry.Value;
+            
+            if (options.MapEntryCallback != null)
+            {
+                var originalValues = new Dictionary<object, object>
+                {
+                    ["dictionary"] = dictionary
+                };
+                
+                var eventArgs = new JsonEventArgs(null, entryValue, originalValues, options, entryKey, target)
+                {
+                    EventType = JsonEventType.MapEntry
+                };
+                
+                options.MapEntryCallback(eventArgs);
+                
+                if (eventArgs.Handled)
+                {
+                    return;
+                }
+                
+                entryKey = eventArgs.Name;
+                entryValue = eventArgs.Value;
+            }
+            
+            typeDefinition.ApplyEntry(dictionary, target, entryKey, entryValue, options);
         }
         
         /// <summary>
@@ -1047,10 +1063,21 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>
         ///     An object of the target type whose value is equivalent to input value.
         /// </returns>
-        public static object ChangeType(object value, Type conversionType, JsonOptions options) => ChangeType(null, value, conversionType, options);
+        public static object ChangeType(object value, Type conversionType, JsonOptions options)
+        {
+            if (value == null)
+            {
+                if (!conversionType.IsValueType || (conversionType.IsGenericType && conversionType.GetGenericTypeDefinition() == typeof(Nullable<>)))
+                {
+                    return null;
+                }
+            }
+            
+            return ChangeType(null, value, conversionType, options);
+        }
         
         /// <summary>
-        ///     Changes the type using the specified target
+        /// Changes the type using the specified target
         /// </summary>
         /// <param name="target">The target</param>
         /// <param name="value">The value</param>
@@ -1065,15 +1092,9 @@ namespace Alis.Core.Aspect.Data.Json
                 throw new ArgumentNullException(nameof(conversionType));
             }
             
-            if (conversionType == typeof(object))
+            if (conversionType == typeof(object) || value == null)
             {
-                return value;
-            }
-            
-            // If the input is null and the target type is a value type, return the default value for the target type
-            if ((value == null) && conversionType.IsValueType)
-            {
-                return Activator.CreateInstance(conversionType);
+                return HandleNullValue(conversionType, value);
             }
             
             options ??= new JsonOptions();
@@ -1083,14 +1104,37 @@ namespace Alis.Core.Aspect.Data.Json
                 return HandleDictionary(target, conversionType, dic, options);
             }
             
-            if (!(value is string))
+            if (value is string strValue)
             {
-                return HandleNonString(target, value, conversionType, options);
+                return HandleStringValue(conversionType, strValue, options);
             }
             
+            return HandleNonString(target, value, conversionType, options);
+        }
+        
+        /// <summary>
+        /// Handles the null value using the specified conversion type
+        /// </summary>
+        /// <param name="conversionType">The conversion type</param>
+        /// <param name="value">The value</param>
+        /// <returns>The object</returns>
+        internal static object HandleNullValue(Type conversionType, object value)
+        {
+            return conversionType == typeof(object) ? value : Activator.CreateInstance(conversionType);
+        }
+        
+        /// <summary>
+        /// Handles the string value using the specified conversion type
+        /// </summary>
+        /// <param name="conversionType">The conversion type</param>
+        /// <param name="value">The value</param>
+        /// <param name="options">The options</param>
+        /// <returns>The object</returns>
+        internal static object HandleStringValue(Type conversionType, string value, JsonOptions options)
+        {
             if (conversionType == typeof(byte[]))
             {
-                return HandleByteArray(value as string, options);
+                return HandleByteArray(value, options);
             }
             
             if (conversionType == typeof(DateTime))
@@ -1489,6 +1533,18 @@ namespace Alis.Core.Aspect.Data.Json
             }
             
             char nextChar = (char) reader.Read();
+            AppendEscapedCharacter(result, nextChar, reader, options);
+        }
+        
+        /// <summary>
+        /// Appends the escaped character using the specified result
+        /// </summary>
+        /// <param name="result">The result</param>
+        /// <param name="nextChar">The next char</param>
+        /// <param name="reader">The reader</param>
+        /// <param name="options">The options</param>
+        internal static void AppendEscapedCharacter(StringBuilder result, char nextChar, TextReader reader, JsonOptions options)
+        {
             switch (nextChar)
             {
                 case 'b':
@@ -1512,14 +1568,25 @@ namespace Alis.Core.Aspect.Data.Json
                     result.Append(nextChar);
                     break;
                 case 'u': // unicode
-                    ushort unicodeChar = ReadX4(reader, options);
-                    result.Append((char) unicodeChar);
+                    AppendUnicodeCharacter(result, reader, options);
                     break;
                 default:
                     result.Append('\\');
                     result.Append(nextChar);
                     break;
             }
+        }
+        
+        /// <summary>
+        /// Appends the unicode character using the specified result
+        /// </summary>
+        /// <param name="result">The result</param>
+        /// <param name="reader">The reader</param>
+        /// <param name="options">The options</param>
+        internal static void AppendUnicodeCharacter(StringBuilder result, TextReader reader, JsonOptions options)
+        {
+            ushort unicodeChar = ReadX4(reader, options);
+            result.Append((char) unicodeChar);
         }
         
         /// <summary>
@@ -3872,55 +3939,39 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Gets a value from a dictionary by its path.
-        ///     This is useful to get a value from the object that the untyped Deserialize method returns which is often of
-        ///     IDictionary&lt;string, object&gt; type.
+        /// Describes whether try get value by path
         /// </summary>
-        /// <param name="dictionary">The input dictionary.</param>
-        /// <param name="path">The path, composed of dictionary keys separated by a . character. May not be null.</param>
-        /// <param name="value">The value to retrieve.</param>
-        /// <returns>
-        ///     true if the value parameter was retrieved successfully; otherwise, false.
-        /// </returns>
+        /// <param name="dictionary">The dictionary</param>
+        /// <param name="path">The path</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
         internal static bool TryGetValueByPath(this IDictionary<string, object> dictionary, string path, out object value)
         {
-            if (path == null)
-            {
-                throw new ArgumentNullException(nameof(path));
-            }
-            
             value = null;
-            if (dictionary == null)
+            
+            if (string.IsNullOrEmpty(path) || dictionary == null)
             {
                 return false;
             }
             
-            string[] segments = path.Split('.');
-            IDictionary<string, object> current = dictionary;
-            for (int i = 0; i < segments.Length; i++)
+            var pathSegments = path.Split('.');
+            var currentDictionary = dictionary;
+            
+            foreach (var segment in pathSegments)
             {
-                string segment = segments[i].Nullify();
-                if (segment == null)
+                if (!currentDictionary.TryGetValue(segment, out var element))
                 {
                     return false;
                 }
                 
-                if (!current.TryGetValue(segment, out object newElement))
+                if (element is IDictionary<string, object> nextDictionary)
                 {
-                    return false;
+                    currentDictionary = nextDictionary;
                 }
-                
-                // last?
-                if (i == segments.Length - 1)
+                else
                 {
-                    value = newElement;
+                    value = element;
                     return true;
-                }
-                
-                current = newElement as IDictionary<string, object>;
-                if (current == null)
-                {
-                    break;
                 }
             }
             
@@ -4007,7 +4058,5 @@ namespace Alis.Core.Aspect.Data.Json
             string t = str.Trim();
             return t.Length == 0 ? null : t;
         }
-        
-        
     }
 }
