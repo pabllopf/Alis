@@ -314,7 +314,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Applies the content of an array or dictionary to a target object.
+        /// Applies the content of an array or dictionary to a target object.
         /// </summary>
         /// <param name="input">The input object.</param>
         /// <param name="target">The target object.</param>
@@ -322,26 +322,56 @@ namespace Alis.Core.Aspect.Data.Json
         internal static void Apply(object input, object target, JsonOptions options = null)
         {
             options ??= new JsonOptions();
-            if (target is Array {IsReadOnly: false} array)
-            {
-                Apply(input as IEnumerable, array, options);
-                return;
-            }
             
-            if (input is IDictionary dic)
+            if (target is Array array && !array.IsReadOnly)
             {
-                Apply(dic, target, options);
-                return;
+                ApplyToTargetArray(input as IEnumerable, array, options);
             }
-            
-            if (target != null)
+            else if (input is IDictionary dic)
             {
-                ListObject lo = GetListObject(target.GetType(), options, target, input, null, null);
-                if (lo != null)
-                {
-                    lo.List = target;
-                    ApplyToListTarget(target, input as IEnumerable, lo, options);
-                }
+                ApplyToTargetDictionary(dic, target, options);
+            }
+            else if (target != null)
+            {
+                ApplyToListTarget(input as IEnumerable, target, options);
+            }
+        }
+        
+        /// <summary>
+        /// Applies the to target array using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="target">The target</param>
+        /// <param name="options">The options</param>
+        internal static void ApplyToTargetArray(IEnumerable input, Array target, JsonOptions options)
+        {
+            Apply(input, target, options);
+        }
+        
+        /// <summary>
+        /// Applies the to target dictionary using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="target">The target</param>
+        /// <param name="options">The options</param>
+        internal static void ApplyToTargetDictionary(IDictionary input, object target, JsonOptions options)
+        {
+            Apply(input, target, options);
+        }
+        
+        /// <summary>
+        /// Applies the to list target using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="target">The target</param>
+        /// <param name="options">The options</param>
+        internal static void ApplyToListTarget(IEnumerable input, object target, JsonOptions options)
+        {
+            ListObject listObject = GetListObject(target.GetType(), options, target, input, null, null);
+            if (listObject != null)
+            {
+                listObject.List = target;
+                ApplyToListTarget(target, input, listObject, options);
             }
         }
         
