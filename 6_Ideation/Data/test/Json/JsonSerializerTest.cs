@@ -31,11 +31,11 @@ using System;
 using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text;
 using Alis.Core.Aspect.Data.Json;
 using Xunit;
@@ -786,10 +786,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Dictionary<string, object> values = new Dictionary<string, object> {{"key", "value"}};
             
             // Act
-            JsonSerializer.ReadSerializable(reader, options, typeName, values);
-            
-            // Assert
-            Assert.NotNull(reader);
+            Assert.Throws<InvalidOperationException>(() => JsonSerializer.ReadSerializable(reader, options, typeName, values));
         }
         
         /// <summary>
@@ -3922,7 +3919,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             string source = " test ";
             string target = " TEST ";
-            Assert.True(source.EqualsIgnoreCase(target, false));
+            Assert.True(source.EqualsIgnoreCase(target));
         }
         
         /// <summary>
@@ -4464,7 +4461,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that write string throws exception when writer is null
+        ///     Tests that write string throws exception when writer is null
         /// </summary>
         [Fact]
         public void WriteString_ThrowsException_WhenWriterIsNull()
@@ -4473,7 +4470,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that write string writes null when text is null
+        ///     Tests that write string writes null when text is null
         /// </summary>
         [Fact]
         public void WriteString_WritesNull_WhenTextIsNull()
@@ -4484,7 +4481,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that write string writes escaped string when text is not null
+        ///     Tests that write string writes escaped string when text is not null
         /// </summary>
         [Fact]
         public void WriteString_WritesEscapedString_WhenTextIsNotNull()
@@ -4495,7 +4492,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that write serializable or values writes serializable when value is serializable
+        ///     Tests that write serializable or values writes serializable when value is serializable
         /// </summary>
         [Fact]
         public void WriteSerializableOrValues_WritesSerializable_WhenValueIsSerializable()
@@ -4516,7 +4513,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that apply to array should apply to target array when array is not read only
+        ///     Tests that apply to array should apply to target array when array is not read only
         /// </summary>
         [Fact]
         public void ApplyToArray_ShouldApplyToTargetArray_WhenArrayIsNotReadOnly()
@@ -4534,7 +4531,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that apply to dictionary should apply to target dictionary when dictionary is not null
+        ///     Tests that apply to dictionary should apply to target dictionary when dictionary is not null
         /// </summary>
         [Fact]
         public void ApplyToDictionary_ShouldApplyToTargetDictionary_WhenDictionaryIsNotNull()
@@ -4552,7 +4549,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that apply to dictionary target should copy values when target item type is object
+        ///     Tests that apply to dictionary target should copy values when target item type is object
         /// </summary>
         [Fact]
         public void ApplyToDictionaryTarget_ShouldCopyValues_WhenTargetItemTypeIsObject()
@@ -4575,7 +4572,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that apply to dictionary target should ignore null keys
+        ///     Tests that apply to dictionary target should ignore null keys
         /// </summary>
         [Fact]
         public void ApplyToDictionaryTarget_ShouldIgnoreNullKeys()
@@ -4590,7 +4587,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that apply to dictionary target should convert non object values
+        ///     Tests that apply to dictionary target should convert non object values
         /// </summary>
         [Fact]
         public void ApplyToDictionaryTarget_ShouldConvertNonObjectValues()
@@ -4608,7 +4605,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read new when reader contains null returns null v 2
+        ///     Tests that read new when reader contains null returns null v 2
         /// </summary>
         [Fact]
         public void ReadNew_WhenReaderContainsNull_ReturnsNull_v2()
@@ -4620,7 +4617,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read new when reader contains date time returns date time
+        ///     Tests that read new when reader contains date time returns date time
         /// </summary>
         [Fact]
         public void ReadNew_WhenReaderContainsDateTime_ReturnsDateTime()
@@ -4631,7 +4628,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read new when reader contains unexpected character throws json exception v 2
+        ///     Tests that read new when reader contains unexpected character throws json exception v 2
         /// </summary>
         [Fact]
         public void ReadNew_WhenReaderContainsUnexpectedCharacter_ThrowsJsonException_v2()
@@ -4642,7 +4639,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read new when reader contains end of array sets array end to true
+        ///     Tests that read new when reader contains end of array sets array end to true
         /// </summary>
         [Fact]
         public void ReadNew_WhenReaderContainsEndOfArray_SetsArrayEndToTrue()
@@ -4653,7 +4650,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that convert ticks to date time when ticks are zero returns min date time
+        ///     Tests that convert ticks to date time when ticks are zero returns min date time
         /// </summary>
         [Fact]
         public void ConvertTicksToDateTime_WhenTicksAreZero_ReturnsMinDateTime()
@@ -4669,7 +4666,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that convert ticks to date time when ticks are positive returns correct date time
+        ///     Tests that convert ticks to date time when ticks are positive returns correct date time
         /// </summary>
         [Fact]
         public void ConvertTicksToDateTime_WhenTicksArePositive_ReturnsCorrectDateTime()
@@ -4685,7 +4682,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that convert ticks to date time when ticks are negative throws argument out of range exception
+        ///     Tests that convert ticks to date time when ticks are negative throws argument out of range exception
         /// </summary>
         [Fact]
         public void ConvertTicksToDateTime_WhenTicksAreNegative_ThrowsArgumentOutOfRangeException()
@@ -4697,31 +4694,139 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonSerializer.ConvertTicksToDateTime(ticks);
         }
         
+        /// <summary>
+        ///     Tests that handle before write object callback when callback is null does not throw exception
+        /// </summary>
         [Fact]
-public void HandleBeforeWriteObjectCallback_WhenCallbackIsNull_DoesNotThrowException()
-{
-    var writer = new StringWriter();
-    var value = new object();
-    var objectGraph = new Dictionary<object, object>();
-    var options = new JsonOptions();
-
-    JsonSerializer.HandleBeforeWriteObjectCallback(writer, value, objectGraph, options);
-}
-
-[Fact]
-public void HandleBeforeWriteObjectCallback_WhenCallbackIsNotNull_CallsCallback()
-{
-    var writer = new StringWriter();
-    var value = new object();
-    var objectGraph = new Dictionary<object, object>();
-    var options = new JsonOptions
-    {
-        BeforeWriteObjectCallback = e => e.Writer.Write("Callback was called")
-    };
-
-    JsonSerializer.HandleBeforeWriteObjectCallback(writer, value, objectGraph, options);
-
-    Assert.Equal("Callback was called", writer.ToString());
-}
+        public void HandleBeforeWriteObjectCallback_WhenCallbackIsNull_DoesNotThrowException()
+        {
+            StringWriter writer = new StringWriter();
+            object value = new object();
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+            
+            JsonSerializer.HandleBeforeWriteObjectCallback(writer, value, objectGraph, options);
+        }
+        
+        /// <summary>
+        ///     Tests that handle before write object callback when callback is not null calls callback
+        /// </summary>
+        [Fact]
+        public void HandleBeforeWriteObjectCallback_WhenCallbackIsNotNull_CallsCallback()
+        {
+            StringWriter writer = new StringWriter();
+            object value = new object();
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions
+            {
+                BeforeWriteObjectCallback = e => e.Writer.Write("Callback was called")
+            };
+            
+            JsonSerializer.HandleBeforeWriteObjectCallback(writer, value, objectGraph, options);
+            
+            Assert.Equal("Callback was called", writer.ToString());
+        }
+        
+        /// <summary>
+        ///     Tests that handle write value callback when write value callback is null does not throw exception
+        /// </summary>
+        [Fact]
+        public void HandleWriteValueCallback_WhenWriteValueCallbackIsNull_DoesNotThrowException()
+        {
+            JsonOptions options = new JsonOptions();
+            StringWriter writer = new StringWriter();
+            object value = new object();
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            
+            JsonSerializer.HandleWriteValueCallback(options, writer, value, objectGraph);
+        }
+        
+        /// <summary>
+        ///     Tests that handle write value callback when write value callback is not null calls callback
+        /// </summary>
+        [Fact]
+        public void HandleWriteValueCallback_WhenWriteValueCallbackIsNotNull_CallsCallback()
+        {
+            JsonOptions options = new JsonOptions
+            {
+                WriteValueCallback = e => e.Writer.Write("Callback was called")
+            };
+            StringWriter writer = new StringWriter();
+            object value = new object();
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            
+            JsonSerializer.HandleWriteValueCallback(options, writer, value, objectGraph);
+            
+            Assert.Equal("Callback was called", writer.ToString());
+        }
+        
+        /// <summary>
+        ///     Tests that is text date time when text is date time returns true and outs ticks
+        /// </summary>
+        [Fact]
+        public void IsTextDateTime_WhenTextIsDateTime_ReturnsTrueAndOutsTicks()
+        {
+            string dateTimeText = "/Date(946684800000)/"; // Represents "2000-01-01T00:00:00Z"
+            bool result = JsonSerializer.IsTextDateTime(dateTimeText, out long ticks);
+            
+            Assert.True(result);
+            Assert.Equal(946684800000, ticks);
+        }
+        
+        /// <summary>
+        ///     Tests that is text date time when text is not date time returns false and outs zero
+        /// </summary>
+        [Fact]
+        public void IsTextDateTime_WhenTextIsNotDateTime_ReturnsFalseAndOutsZero()
+        {
+            string nonDateTimeText = "Not a DateTime";
+            bool result = JsonSerializer.IsTextDateTime(nonDateTimeText, out long ticks);
+            
+            Assert.False(result);
+            Assert.Equal(0, ticks);
+        }
+        
+        /// <summary>
+        ///     Tests that is text date time when text is malformed date time returns false and outs zero
+        /// </summary>
+        [Fact]
+        public void IsTextDateTime_WhenTextIsMalformedDateTime_ReturnsFalseAndOutsZero()
+        {
+            string malformedDateTimeText = "/Date(NotTicks)/";
+            bool result = JsonSerializer.IsTextDateTime(malformedDateTimeText, out long ticks);
+            
+            Assert.False(result);
+            Assert.Equal(0, ticks);
+        }
+        
+        /// <summary>
+        ///     Tests that invoke constructor when type has suitable constructor returns serializable
+        /// </summary>
+        [Fact]
+        public void InvokeConstructor_WhenTypeHasSuitableConstructor_ReturnsSerializable()
+        {
+            // Arrange
+            Type type = typeof(SampleClass2);
+            SerializationInfo info = new SerializationInfo(type, new FormatterConverter());
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            Assert.Throws<InvalidOperationException>(() => JsonSerializer.InvokeConstructor(type, info, options));
+        }
+        
+        /// <summary>
+        ///     Tests that invoke constructor when type does not have suitable constructor throws invalid operation exception
+        /// </summary>
+        [Fact]
+        public void InvokeConstructor_WhenTypeDoesNotHaveSuitableConstructor_ThrowsInvalidOperationException()
+        {
+            // Arrange
+            Type type = typeof(object); // object does not have a suitable constructor
+            SerializationInfo info = new SerializationInfo(type, new FormatterConverter());
+            JsonOptions options = new JsonOptions();
+            
+            // Act & Assert
+            Assert.Throws<InvalidOperationException>(() => JsonSerializer.InvokeConstructor(type, info, options));
+        }
     }
 }

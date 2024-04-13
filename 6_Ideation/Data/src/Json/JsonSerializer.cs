@@ -351,86 +351,69 @@ namespace Alis.Core.Aspect.Data.Json
             object value = ReadValue(reader, options);
             Apply(value, target, options);
         }
-      /// <summary>
-      /// Applies the input
-      /// </summary>
-      /// <param name="input">The input</param>
-      /// <param name="target">The target</param>
-      /// <param name="options">The options</param>
-      internal static void Apply(object input, object target, JsonOptions options = null)
-{
-    options ??= new JsonOptions();
-
-    if (target is Array array)
-    {
-        ApplyToArray(input, array, options);
-    }
-    else if (input is IDictionary dic)
-    {
-        ApplyToDictionary(dic, target, options);
-    }
-    else
-    {
-        ApplyToList(input, target, options);
-    }
-}
-
-/// <summary>
-
-/// Applies the to array using the specified input
-
-/// </summary>
-
-/// <param name="input">The input</param>
-
-/// <param name="array">The array</param>
-
-/// <param name="options">The options</param>
-
-internal static void ApplyToArray(object input, Array array, JsonOptions options)
-{
-    if (!array.IsReadOnly)
-    {
-        ApplyToTargetArray(input as IEnumerable, array, options);
-    }
-}
-
-/// <summary>
-
-/// Applies the to dictionary using the specified dic
-
-/// </summary>
-
-/// <param name="dic">The dic</param>
-
-/// <param name="target">The target</param>
-
-/// <param name="options">The options</param>
-
-internal static void ApplyToDictionary(IDictionary dic, object target, JsonOptions options)
-{
-    ApplyToTargetDictionary(dic, target, options);
-}
-
-/// <summary>
-
-/// Applies the to list using the specified input
-
-/// </summary>
-
-/// <param name="input">The input</param>
-
-/// <param name="target">The target</param>
-
-/// <param name="options">The options</param>
-
-internal static void ApplyToList(object input, object target, JsonOptions options)
-{
-    if (target != null)
-    {
-        ApplyToListTarget(input as IEnumerable, target, options);
-    }
-}
+        
+        /// <summary>
+        ///     Applies the input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="target">The target</param>
+        /// <param name="options">The options</param>
+        internal static void Apply(object input, object target, JsonOptions options = null)
+        {
+            options ??= new JsonOptions();
+            
+            if (target is Array array)
+            {
+                ApplyToArray(input, array, options);
+            }
+            else if (input is IDictionary dic)
+            {
+                ApplyToDictionary(dic, target, options);
+            }
+            else
+            {
+                ApplyToList(input, target, options);
+            }
+        }
+        
+        /// <summary>
+        ///     Applies the to array using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="array">The array</param>
+        /// <param name="options">The options</param>
+        internal static void ApplyToArray(object input, Array array, JsonOptions options)
+        {
+            if (!array.IsReadOnly)
+            {
+                ApplyToTargetArray(input as IEnumerable, array, options);
+            }
+        }
+        
+        /// <summary>
+        ///     Applies the to dictionary using the specified dic
+        /// </summary>
+        /// <param name="dic">The dic</param>
+        /// <param name="target">The target</param>
+        /// <param name="options">The options</param>
+        internal static void ApplyToDictionary(IDictionary dic, object target, JsonOptions options)
+        {
+            ApplyToTargetDictionary(dic, target, options);
+        }
+        
+        /// <summary>
+        ///     Applies the to list using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="target">The target</param>
+        /// <param name="options">The options</param>
+        internal static void ApplyToList(object input, object target, JsonOptions options)
+        {
+            if (target != null)
+            {
+                ApplyToListTarget(input as IEnumerable, target, options);
+            }
+        }
         
         /// <summary>
         ///     Applies the to target array using the specified input
@@ -1067,8 +1050,8 @@ internal static void ApplyToList(object input, object target, JsonOptions option
             }
         }
         
-       /// <summary>
-        /// Applies the values from the source dictionary to the target dictionary.
+        /// <summary>
+        ///     Applies the values from the source dictionary to the target dictionary.
         /// </summary>
         /// <param name="targetDictionary">The target dictionary to which values are applied</param>
         /// <param name="sourceDictionary">The source dictionary from which values are taken</param>
@@ -1076,14 +1059,14 @@ internal static void ApplyToList(object input, object target, JsonOptions option
         internal static void ApplyToDictionaryTarget(IDictionary targetDictionary, IDictionary sourceDictionary, JsonOptions options)
         {
             Type itemType = GetItemType(targetDictionary.GetType());
-
+            
             foreach (DictionaryEntry entry in sourceDictionary)
             {
                 if (entry.Key == null)
                 {
                     continue;
                 }
-
+                
                 object value = itemType == typeof(object) ? entry.Value : ChangeType(targetDictionary, entry.Value, itemType, options);
                 targetDictionary[entry.Key] = value;
             }
@@ -1105,72 +1088,64 @@ internal static void ApplyToList(object input, object target, JsonOptions option
             }
         }
         
-       /// <summary>
-       /// Processes the dictionary entry using the specified target
-       /// </summary>
-       /// <param name="target">The target</param>
-       /// <param name="dictionary">The dictionary</param>
-       /// <param name="options">The options</param>
-       /// <param name="typeDefinition">The type definition</param>
-       /// <param name="entry">The entry</param>
-       internal static void ProcessDictionaryEntry(object target, IDictionary dictionary, JsonOptions options, TypeDef typeDefinition, DictionaryEntry entry)
-{
-    if (entry.Key == null)
-    {
-        return;
-    }
-
-    string entryKey = entry.Key.ToString();
-    object entryValue = entry.Value;
-
-    ProcessMapEntryCallback(options, dictionary, ref entryKey, ref entryValue, target);
-
-    typeDefinition.ApplyEntry(dictionary, target, entryKey, entryValue, options);
-}
-
-/// <summary>
-
-/// Processes the map entry callback using the specified options
-
-/// </summary>
-
-/// <param name="options">The options</param>
-
-/// <param name="dictionary">The dictionary</param>
-
-/// <param name="entryKey">The entry key</param>
-
-/// <param name="entryValue">The entry value</param>
-
-/// <param name="target">The target</param>
-
-internal static void ProcessMapEntryCallback(JsonOptions options, IDictionary dictionary, ref string entryKey, ref object entryValue, object target)
-{
-    if (options.MapEntryCallback == null)
-    {
-        return;
-    }
-
-    var originalValues = new Dictionary<object, object>
-    {
-        ["dictionary"] = dictionary
-    };
-
-    var eventArgs = new JsonEventArgs(null, entryValue, originalValues, options, entryKey, target)
-    {
-        EventType = JsonEventType.MapEntry
-    };
-
-    options.MapEntryCallback(eventArgs);
-
-    if (eventArgs.Handled)
-    {
-        return;
-    }
-
-    entryKey = eventArgs.Name;
-    entryValue = eventArgs.Value;
-}
+        /// <summary>
+        ///     Processes the dictionary entry using the specified target
+        /// </summary>
+        /// <param name="target">The target</param>
+        /// <param name="dictionary">The dictionary</param>
+        /// <param name="options">The options</param>
+        /// <param name="typeDefinition">The type definition</param>
+        /// <param name="entry">The entry</param>
+        internal static void ProcessDictionaryEntry(object target, IDictionary dictionary, JsonOptions options, TypeDef typeDefinition, DictionaryEntry entry)
+        {
+            if (entry.Key == null)
+            {
+                return;
+            }
+            
+            string entryKey = entry.Key.ToString();
+            object entryValue = entry.Value;
+            
+            ProcessMapEntryCallback(options, dictionary, ref entryKey, ref entryValue, target);
+            
+            typeDefinition.ApplyEntry(dictionary, target, entryKey, entryValue, options);
+        }
+        
+        /// <summary>
+        ///     Processes the map entry callback using the specified options
+        /// </summary>
+        /// <param name="options">The options</param>
+        /// <param name="dictionary">The dictionary</param>
+        /// <param name="entryKey">The entry key</param>
+        /// <param name="entryValue">The entry value</param>
+        /// <param name="target">The target</param>
+        internal static void ProcessMapEntryCallback(JsonOptions options, IDictionary dictionary, ref string entryKey, ref object entryValue, object target)
+        {
+            if (options.MapEntryCallback == null)
+            {
+                return;
+            }
+            
+            Dictionary<object, object> originalValues = new Dictionary<object, object>
+            {
+                ["dictionary"] = dictionary
+            };
+            
+            JsonEventArgs eventArgs = new JsonEventArgs(null, entryValue, originalValues, options, entryKey, target)
+            {
+                EventType = JsonEventType.MapEntry
+            };
+            
+            options.MapEntryCallback(eventArgs);
+            
+            if (eventArgs.Handled)
+            {
+                return;
+            }
+            
+            entryKey = eventArgs.Name;
+            entryValue = eventArgs.Value;
+        }
         
         /// <summary>
         ///     Gets the json attribute using the specified pi
@@ -1850,20 +1825,44 @@ internal static void ProcessMapEntryCallback(JsonOptions options, IDictionary di
         /// <param name="type">The type</param>
         /// <param name="info">The info</param>
         /// <param name="options">The options</param>
+        /// <exception cref="InvalidOperationException">No suitable constructor found for type {type.FullName}</exception>
         /// <returns>The serializable</returns>
         internal static ISerializable InvokeConstructor(Type type, SerializationInfo info, JsonOptions options)
         {
-            ConstructorInfo ctor = type.GetConstructor(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance, null, new[] {typeof(SerializationInfo), typeof(StreamingContext)}, null);
-            StreamingContext ctx = new StreamingContext(StreamingContextStates.Remoting, null);
-            try
+            ConstructorInfo constructor = GetDesiredConstructor(type);
+            if (constructor == null)
             {
-                return (ISerializable) ctor?.Invoke(new object[] {info, ctx});
+                throw new InvalidOperationException($"No suitable constructor found for type {type.FullName}");
             }
-            catch (Exception e)
-            {
-                HandleException(GetTypeException(GetPosition(null), type.Name, e), options);
-                return null;
-            }
+            
+            StreamingContext context = new StreamingContext(StreamingContextStates.Remoting);
+            return InvokeConstructor(constructor, info, context);
+        }
+        
+        /// <summary>
+        ///     Gets the desired constructor using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <returns>The constructor info</returns>
+        internal static ConstructorInfo GetDesiredConstructor(Type type)
+        {
+            return type.GetConstructor(
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance,
+                null,
+                new[] {typeof(SerializationInfo), typeof(StreamingContext)},
+                null);
+        }
+        
+        /// <summary>
+        ///     Invokes the constructor using the specified constructor
+        /// </summary>
+        /// <param name="constructor">The constructor</param>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        /// <returns>The serializable</returns>
+        internal static ISerializable InvokeConstructor(ConstructorInfo constructor, SerializationInfo info, StreamingContext context)
+        {
+            return (ISerializable) constructor.Invoke(new object[] {info, context});
         }
         
         /// <summary>
@@ -2028,122 +2027,107 @@ internal static void ProcessMapEntryCallback(JsonOptions options, IDictionary di
         internal static object ReadNumberOrLiteralValue(TextReader reader, JsonOptions options, out bool arrayEnd) => ReadNumberOrLiteral(reader, options, out arrayEnd);
         
         /// <summary>
-        /// Reads the new using the specified reader
+        ///     Reads the new using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <param name="arrayEnd">The array end</param>
         /// <returns>The object</returns>
         internal static object ReadNew(TextReader reader, JsonOptions options, out bool arrayEnd)
-{
-    arrayEnd = false;
-    string text = ReadUntilEndCondition(reader, out arrayEnd);
-
-    if (IsTextNull(text))
-    {
-        return null;
-    }
-
-    if (IsTextDateTime(text, out long ticks))
-    {
-        return ConvertTicksToDateTime(ticks);
-    }
-
-    HandleException(GetUnexpectedCharacterException(GetPosition(reader), text[0]), options);
-    return null;
-}
-
-/// <summary>
-
-/// Reads the until end condition using the specified reader
-
-/// </summary>
-
-/// <param name="reader">The reader</param>
-
-/// <param name="arrayEnd">The array end</param>
-
-/// <returns>The string</returns>
-
-internal static string ReadUntilEndCondition(TextReader reader, out bool arrayEnd)
-{
-    arrayEnd = false;
-    StringBuilder sb = new StringBuilder();
-
-    while (true)
-    {
-        int peekedChar = reader.Peek();
-
-        if (peekedChar < 0 || (char)peekedChar == '}' || (char)peekedChar == ',')
         {
-            break;
+            arrayEnd = false;
+            string text = ReadUntilEndCondition(reader, out arrayEnd);
+            
+            if (IsTextNull(text))
+            {
+                return null;
+            }
+            
+            if (IsTextDateTime(text, out long ticks))
+            {
+                return ConvertTicksToDateTime(ticks);
+            }
+            
+            HandleException(GetUnexpectedCharacterException(GetPosition(reader), text[0]), options);
+            return null;
         }
-
-        char readChar = (char)reader.Read();
-        if (readChar == ']')
+        
+        /// <summary>
+        ///     Reads the until end condition using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="arrayEnd">The array end</param>
+        /// <returns>The string</returns>
+        internal static string ReadUntilEndCondition(TextReader reader, out bool arrayEnd)
         {
-            arrayEnd = true;
-            break;
+            arrayEnd = false;
+            StringBuilder sb = new StringBuilder();
+            
+            while (true)
+            {
+                int peekedChar = reader.Peek();
+                
+                if (peekedChar < 0 || (char) peekedChar == '}' || (char) peekedChar == ',')
+                {
+                    break;
+                }
+                
+                char readChar = (char) reader.Read();
+                if (readChar == ']')
+                {
+                    arrayEnd = true;
+                    break;
+                }
+                
+                sb.Append(readChar);
+            }
+            
+            return sb.ToString();
         }
-
-        sb.Append(readChar);
-    }
-
-    return sb.ToString();
-}
-
-/// <summary>
-
-/// Describes whether is text null
-
-/// </summary>
-
-/// <param name="text">The text</param>
-
-/// <returns>The bool</returns>
-
-internal static bool IsTextNull(string text)
-{
-    return string.Compare(Null, text.Trim(), StringComparison.OrdinalIgnoreCase) == 0;
-}
-
-/// <summary>
-
-/// Describes whether is text date time
-
-/// </summary>
-
-/// <param name="text">The text</param>
-
-/// <param name="ticks">The ticks</param>
-
-/// <returns>The bool</returns>
-
-internal static bool IsTextDateTime(string text, out long ticks)
-{
-    if (text.StartsWith(DateStartJs) && text.EndsWith(DateEndJs))
-    {
-        return long.TryParse(text.Substring(DateStartJs.Length, text.Length - DateStartJs.Length - DateEndJs.Length), out ticks);
-    }
-
-    ticks = 0;
-    return false;
-}
-
-/// <summary>
-
-/// Converts the ticks to date time using the specified ticks
-
-/// </summary>
-
-/// <param name="ticks">The ticks</param>
-
-/// <returns>The date time</returns>
-
-internal static DateTime ConvertTicksToDateTime(long ticks)
-{
-    return new DateTime(ticks * 10000 + MinDateTimeTicks, DateTimeKind.Utc);
-}
+        
+        /// <summary>
+        ///     Describes whether is text null
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <returns>The bool</returns>
+        internal static bool IsTextNull(string text) => string.Compare(Null, text.Trim(), StringComparison.OrdinalIgnoreCase) == 0;
+        
+        /// <summary>
+        ///     Describes whether is text date time
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="ticks">The ticks</param>
+        /// <returns>The bool</returns>
+        /// <summary>
+        ///     Determines whether the provided text represents a DateTime.
+        /// </summary>
+        /// <param name="text">The text to check.</param>
+        /// <param name="ticks">The parsed ticks from the DateTime if it is valid.</param>
+        /// <returns>True if the text represents a DateTime, otherwise false.</returns>
+        internal static bool IsTextDateTime(string text, out long ticks)
+        {
+            const string dateStartJsLocal = "/Date(";
+            const string dateEndJsLocal = ")/";
+            
+            bool startsWithDateStart = text.StartsWith(dateStartJsLocal);
+            bool endsWithDateEnd = text.EndsWith(dateEndJsLocal);
+            
+            if (startsWithDateStart && endsWithDateEnd)
+            {
+                string ticksText = text.Substring(dateStartJsLocal.Length, text.Length - dateStartJsLocal.Length - dateEndJsLocal.Length);
+                return long.TryParse(ticksText, out ticks);
+            }
+            
+            ticks = 0;
+            return false;
+        }
+        
+        /// <summary>
+        ///     Converts the ticks to date time using the specified ticks
+        /// </summary>
+        /// <param name="ticks">The ticks</param>
+        /// <returns>The date time</returns>
+        internal static DateTime ConvertTicksToDateTime(long ticks) => new DateTime(ticks * 10000 + MinDateTimeTicks, DateTimeKind.Utc);
         
         /// <summary>
         ///     Reads the number or literal using the specified reader
@@ -2891,18 +2875,27 @@ internal static DateTime ConvertTicksToDateTime(long ticks)
         /// <param name="objectGraph">The object graph</param>
         internal static void HandleWriteValueCallback(JsonOptions options, TextWriter writer, object value, IDictionary<object, object> objectGraph)
         {
-            if (options.WriteValueCallback != null)
+            if (options.WriteValueCallback == null)
             {
-                JsonEventArgs e = new JsonEventArgs(writer, value, objectGraph, options)
-                {
-                    EventType = JsonEventType.WriteValue
-                };
-                options.WriteValueCallback(e);
-                if (e.Handled)
-                {
-                }
+                return;
             }
+            
+            JsonEventArgs eventArgs = CreateJsonEventArgs(writer, value, objectGraph, options);
+            options.WriteValueCallback(eventArgs);
         }
+        
+        /// <summary>
+        ///     Creates the json event args using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <returns>The json event args</returns>
+        internal static JsonEventArgs CreateJsonEventArgs(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options) => new JsonEventArgs(writer, value, objectGraph, options)
+        {
+            EventType = JsonEventType.WriteValue
+        };
         
         /// <summary>
         ///     Describes whether handle special cases
@@ -3811,39 +3804,40 @@ internal static DateTime ConvertTicksToDateTime(long ticks)
             {
                 return;
             }
-
-            var eventArgs = new JsonEventArgs(writer, value, objectGraph, options)
+            
+            JsonEventArgs eventArgs = new JsonEventArgs(writer, value, objectGraph, options)
             {
                 EventType = JsonEventType.BeforeWriteObject
             };
-
+            
             options.BeforeWriteObjectCallback(eventArgs);
         }
         
         /// <summary>
-/// Writes the serializable or values using the specified writer.
-/// </summary>
-/// <param name="writer">The writer.</param>
-/// <param name="value">The value.</param>
-/// <param name="objectGraph">The object graph.</param>
-/// <param name="options">The options.</param>
-internal static void WriteSerializableOrValues(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
-{
-    // Determine if the value should be treated as ISerializable
-    bool useISerializable = options.SerializationOptions.HasFlag(JsonSerializationOptions.UseISerializable) || ForceSerializable(value);
-
-    // If the value is ISerializable, write it as such
-    if (useISerializable && value is ISerializable serializable)
-    {
-        WriteSerializable(writer, serializable, objectGraph, options);
-    }
-    else
-    {
-        // Otherwise, get the type definition and write the values
-        TypeDef typeDefinition = TypeDef.Get(value.GetType(), options);
-        typeDefinition.WriteValues(writer, value, objectGraph, options);
-    }
-}
+        ///     Writes the serializable or values using the specified writer.
+        /// </summary>
+        /// <param name="writer">The writer.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="objectGraph">The object graph.</param>
+        /// <param name="options">The options.</param>
+        internal static void WriteSerializableOrValues(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        {
+            // Determine if the value should be treated as ISerializable
+            bool useISerializable = options.SerializationOptions.HasFlag(JsonSerializationOptions.UseISerializable) || ForceSerializable(value);
+            
+            // If the value is ISerializable, write it as such
+            if (useISerializable && value is ISerializable serializable)
+            {
+                WriteSerializable(writer, serializable, objectGraph, options);
+            }
+            else
+            {
+                // Otherwise, get the type definition and write the values
+                TypeDef typeDefinition = TypeDef.Get(value.GetType(), options);
+                typeDefinition.WriteValues(writer, value, objectGraph, options);
+            }
+        }
+        
         /// <summary>
         ///     Handles the after write object callback using the specified writer
         /// </summary>
@@ -3917,57 +3911,46 @@ internal static void WriteSerializableOrValues(TextWriter writer, object value, 
             WriteValue(writer, value, objectGraph, options);
         }
         
-     /// <summary>
-/// Writes a string to a JSON writer.
-/// </summary>
-/// <param name="writer">The input writer. May not be null.</param>
-/// <param name="text">The text.</param>
-internal static void WriteString(TextWriter writer, string text)
-{
-    ValidateWriter(writer);
-    WriteText(writer, text);
-}
-
-
-
-/// <summary>
-
-/// Writes the text using the specified writer
-
-/// </summary>
-
-/// <param name="writer">The writer</param>
-
-/// <param name="text">The text</param>
-
-internal static void WriteText(TextWriter writer, string text)
-{
-    if (text == null)
-    {
-        writer.Write(Null);
-    }
-    else
-    {
-        WriteEscapedString(writer, text);
-    }
-}
-
-/// <summary>
-
-/// Writes the escaped string using the specified writer
-
-/// </summary>
-
-/// <param name="writer">The writer</param>
-
-/// <param name="text">The text</param>
-
-internal static void WriteEscapedString(TextWriter writer, string text)
-{
-    writer.Write('"');
-    writer.Write(EscapeString(text));
-    writer.Write('"');
-}
+        /// <summary>
+        ///     Writes a string to a JSON writer.
+        /// </summary>
+        /// <param name="writer">The input writer. May not be null.</param>
+        /// <param name="text">The text.</param>
+        internal static void WriteString(TextWriter writer, string text)
+        {
+            ValidateWriter(writer);
+            WriteText(writer, text);
+        }
+        
+        
+        /// <summary>
+        ///     Writes the text using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="text">The text</param>
+        internal static void WriteText(TextWriter writer, string text)
+        {
+            if (text == null)
+            {
+                writer.Write(Null);
+            }
+            else
+            {
+                WriteEscapedString(writer, text);
+            }
+        }
+        
+        /// <summary>
+        ///     Writes the escaped string using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="text">The text</param>
+        internal static void WriteEscapedString(TextWriter writer, string text)
+        {
+            writer.Write('"');
+            writer.Write(EscapeString(text));
+            writer.Write('"');
+        }
         
         /// <summary>
         ///     Writes a string to a JSON writer.
