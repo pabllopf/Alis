@@ -632,45 +632,67 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Describes whether should skip field
+        ///     Determines whether to skip the field during serialization/deserialization.
+        /// </summary>
+        /// <param name="serialization">Indicates whether serialization is being performed.</param>
+        /// <param name="info">The field information.</param>
+        /// <param name="options">The JSON options.</param>
+        /// <returns>True if the field should be skipped, false otherwise.</returns>
+        internal static bool ShouldSkipField(bool serialization, FieldInfo info, JsonOptions options)
+        {
+            if (ShouldSkipDueToJsonAttribute(serialization, info, options) ||
+                ShouldSkipDueToXmlIgnoreAttribute(info, options) ||
+                ShouldSkipDueToScriptIgnoreAttribute(info, options))
+            {
+                return true;
+            }
+            
+            return false;
+        }
+        
+        /// <summary>
+        /// Describes whether should skip due to json attribute
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="info">The info</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        internal static bool ShouldSkipField(bool serialization, FieldInfo info, JsonOptions options)
+        private static bool ShouldSkipDueToJsonAttribute(bool serialization, FieldInfo info, JsonOptions options)
         {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
             {
                 JsonPropertyNameAttribute ja = JsonSerializer.GetJsonAttribute(info);
                 if (ja != null)
                 {
-                    switch (serialization)
-                    {
-                        case true when ja.IgnoreWhenSerializing:
-                        case false when ja.IgnoreWhenDeserializing:
-                            return true;
-                    }
-                }
-            }
-            
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
-            {
-                if (info.IsDefined(typeof(XmlIgnoreAttribute), true))
-                {
-                    return true;
-                }
-            }
-            
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
-            {
-                if (JsonSerializer.HasScriptIgnore(info))
-                {
-                    return true;
+                    return serialization ? ja.IgnoreWhenSerializing : ja.IgnoreWhenDeserializing;
                 }
             }
             
             return false;
+        }
+        
+        /// <summary>
+        /// Describes whether should skip due to xml ignore attribute
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool ShouldSkipDueToXmlIgnoreAttribute(FieldInfo info, JsonOptions options)
+        {
+            return options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore) &&
+                   info.IsDefined(typeof(XmlIgnoreAttribute), true);
+        }
+        
+        /// <summary>
+        /// Describes whether should skip due to script ignore attribute
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        private static bool ShouldSkipDueToScriptIgnoreAttribute(FieldInfo info, JsonOptions options)
+        {
+            return options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore) &&
+                   JsonSerializer.HasScriptIgnore(info);
         }
         
         /// <summary>

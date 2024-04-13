@@ -731,7 +731,7 @@ namespace Alis.Core.Aspect.Data.Json
         
         /// <returns>The converted value</returns>
         
-        private static object UpdateValueBasedOnContext(ListObject list, Type itemType, object value, object convertedValue)
+        internal static object UpdateValueBasedOnContext(ListObject list, Type itemType, object value, object convertedValue)
         {
             if (list.Context != null)
             {

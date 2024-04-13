@@ -3592,5 +3592,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Act & Assert
             Assert.Throws<NullReferenceException>(() => JsonSerializer.WriteDictionary(writer, null, options));
         }
+        
+        
     }
 }
