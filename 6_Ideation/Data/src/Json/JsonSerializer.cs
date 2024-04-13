@@ -472,7 +472,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Gets the list object using the specified type
+        /// Gets the list object using the specified type
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="options">The options</param>
@@ -485,21 +485,11 @@ namespace Alis.Core.Aspect.Data.Json
         {
             if (options.GetListObjectCallback != null)
             {
-                Dictionary<object, object> og = new Dictionary<object, object>
+                JsonEventArgs eventArgs = CreateJsonEventArgs(type, dictionary, value, options, key, target);
+                options.GetListObjectCallback(eventArgs);
+                if (eventArgs.Handled)
                 {
-                    ["dictionary"] = dictionary,
-                    ["type"] = type
-                };
-                
-                JsonEventArgs e = new JsonEventArgs(null, value, og, options, key, target)
-                {
-                    EventType = JsonEventType.GetListObject
-                };
-                options.GetListObjectCallback(e);
-                if (e.Handled)
-                {
-                    og.TryGetValue("type", out object outType);
-                    return outType as ListObject;
+                    return eventArgs.Value as ListObject;
                 }
             }
             
@@ -510,18 +500,66 @@ namespace Alis.Core.Aspect.Data.Json
             
             if (typeof(IList).IsAssignableFrom(type))
             {
-                return new CustomListObject(); // also handles arrays
+                return new CustomListObject();
             }
             
-            if (type.IsGenericType)
+            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(ICollection<>))
             {
-                if (type.GetGenericTypeDefinition() == typeof(ICollection<>))
+                return CreateGenericListObject(type);
+            }
+            
+            return CreateListObjectFromInterfaces(type);
+        }
+        
+        /// <summary>
+        /// Creates the json event args using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="dictionary">The dictionary</param>
+        /// <param name="value">The value</param>
+        /// <param name="options">The options</param>
+        /// <param name="key">The key</param>
+        /// <param name="target">The target</param>
+        /// <returns>The event args</returns>
+        internal static JsonEventArgs CreateJsonEventArgs(Type type, IDictionary dictionary, object value, JsonOptions options, string key, object target)
+        {
+            JsonEventArgs eventArgs = new JsonEventArgs(null, value, new Dictionary<object, object> {["dictionary"] = dictionary, ["type"] = type}, options, key, target)
+            {
+                EventType = JsonEventType.GetListObject
+            };
+            
+            return eventArgs;
+        }
+        
+        /// <summary>
+        /// Creates the generic list object using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <returns>The list object</returns>
+        internal static ListObject CreateGenericListObject(Type type)
+        {
+            Type genericType = type.GetGenericArguments()[0];
+            Type listObjectType = typeof(CollectionTObject<>).MakeGenericType(genericType);
+            
+            return (ListObject) Activator.CreateInstance(listObjectType);
+        }
+        
+        /// <summary>
+        /// Creates the list object from interfaces using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <returns>The list object</returns>
+        internal static ListObject CreateListObjectFromInterfaces(Type type)
+        {
+            foreach (Type iFace in type.GetInterfaces())
+            {
+                if (iFace.IsGenericType && iFace.GetGenericTypeDefinition() == typeof(ICollection<>))
                 {
-                    return (ListObject) Activator.CreateInstance(typeof(CollectionTObject<>).MakeGenericType(type.GetGenericArguments()[0]));
+                    return CreateGenericListObject(iFace);
                 }
             }
             
-            return (from iFace in type.GetInterfaces() where iFace.IsGenericType where iFace.GetGenericTypeDefinition() == typeof(ICollection<>) select (ListObject) Activator.CreateInstance(typeof(CollectionTObject<>).MakeGenericType(iFace.GetGenericArguments()[0]))).FirstOrDefault();
+            return null;
         }
         
         /// <summary>
@@ -957,12 +995,12 @@ namespace Alis.Core.Aspect.Data.Json
             
             if (options.MapEntryCallback != null)
             {
-                var originalValues = new Dictionary<object, object>
+                Dictionary<object, object> originalValues = new Dictionary<object, object>
                 {
                     ["dictionary"] = dictionary
                 };
                 
-                var eventArgs = new JsonEventArgs(null, entryValue, originalValues, options, entryKey, target)
+                JsonEventArgs eventArgs = new JsonEventArgs(null, entryValue, originalValues, options, entryKey, target)
                 {
                     EventType = JsonEventType.MapEntry
                 };
@@ -3867,7 +3905,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The string</returns>
         internal static string GetEscapedString(char c)
         {
-            var escapeMapping = new Dictionary<char, string>
+            Dictionary<char, string> escapeMapping = new Dictionary<char, string>
             {
                 {'<', @"\u003C"},
                 {'>', @"\u003E"},
@@ -3954,12 +3992,12 @@ namespace Alis.Core.Aspect.Data.Json
                 return false;
             }
             
-            var pathSegments = path.Split('.');
-            var currentDictionary = dictionary;
+            string[] pathSegments = path.Split('.');
+            IDictionary<string, object> currentDictionary = dictionary;
             
-            foreach (var segment in pathSegments)
+            foreach (string segment in pathSegments)
             {
-                if (!currentDictionary.TryGetValue(segment, out var element))
+                if (!currentDictionary.TryGetValue(segment, out object element))
                 {
                     return false;
                 }

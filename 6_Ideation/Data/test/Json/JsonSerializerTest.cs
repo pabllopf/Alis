@@ -3147,9 +3147,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void HandleEscapeCharacter_AppendsCorrectCharacterForEscapeSequences()
         {
-            var reader = new StringReader("\\b\\t\\n\\f\\r\\/\\\\\\\"\\u0041");
-            var result = new StringBuilder();
-            var options = new JsonOptions();
+            StringReader reader = new StringReader("\\b\\t\\n\\f\\r\\/\\\\\\\"\\u0041");
+            StringBuilder result = new StringBuilder();
+            JsonOptions options = new JsonOptions();
             
             while (reader.Peek() != -1)
             {
@@ -3165,9 +3165,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void HandleEscapeCharacter_AppendsBackslashAndCharacterForUnknownEscapeSequence()
         {
-            var reader = new StringReader("\\x");
-            var result = new StringBuilder();
-            var options = new JsonOptions();
+            StringReader reader = new StringReader("\\x");
+            StringBuilder result = new StringBuilder();
+            JsonOptions options = new JsonOptions();
             
             JsonSerializer.HandleEscapeCharacter(reader, result, options);
             
@@ -3180,9 +3180,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void HandleEscapeCharacter_ThrowsExceptionWhenEndOfFileReached()
         {
-            var reader = new StringReader("\\");
-            var result = new StringBuilder();
-            var options = new JsonOptions();
+            StringReader reader = new StringReader("\\");
+            StringBuilder result = new StringBuilder();
+            JsonOptions options = new JsonOptions();
             
             JsonSerializer.HandleEscapeCharacter(reader, result, options);
         }
@@ -3194,10 +3194,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void ApplyToNonDictionaryTarget_WhenCalled_ProcessesAllEntries()
         {
             // Arrange
-            var target = new object();
-            var dictionary = new Dictionary<string, object> {{"key1", "value1"}, {"key2", "value2"}};
-            var options = new JsonOptions();
-            var typeDef = TypeDef.Get(target.GetType(), options);
+            object target = new object();
+            Dictionary<string, object> dictionary = new Dictionary<string, object> {{"key1", "value1"}, {"key2", "value2"}};
+            JsonOptions options = new JsonOptions();
+            TypeDef typeDef = TypeDef.Get(target.GetType(), options);
             
             // Act
             JsonSerializer.ApplyToNonDictionaryTarget(target, dictionary, options);
@@ -3213,13 +3213,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void ApplyToNonDictionaryTarget_WhenMapEntryCallbackIsSet_CallsCallback()
         {
             // Arrange
-            var target = new object();
-            var dictionary = new Dictionary<string, object> {{"key1", "value1"}, {"key2", "value2"}};
-            var options = new JsonOptions
+            object target = new object();
+            Dictionary<string, object> dictionary = new Dictionary<string, object> {{"key1", "value1"}, {"key2", "value2"}};
+            JsonOptions options = new JsonOptions
             {
                 MapEntryCallback = e => e.Handled = true
             };
-            var typeDef = TypeDef.Get(target.GetType(), options);
+            TypeDef typeDef = TypeDef.Get(target.GetType(), options);
             
             // Act
             JsonSerializer.ApplyToNonDictionaryTarget(target, dictionary, options);
@@ -3235,16 +3235,85 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void ApplyToNonDictionaryTarget_WhenEntryKeyIsNull_SkipsEntry()
         {
             // Arrange
-            var target = new object();
-            var dictionary = new Dictionary<string, object> {{"key", "value1"}, {"key2", "value2"}};
-            var options = new JsonOptions();
-            var typeDef = TypeDef.Get(target.GetType(), options);
+            object target = new object();
+            Dictionary<string, object> dictionary = new Dictionary<string, object> {{"key", "value1"}, {"key2", "value2"}};
+            JsonOptions options = new JsonOptions();
+            TypeDef typeDef = TypeDef.Get(target.GetType(), options);
             
             // Act
             JsonSerializer.ApplyToNonDictionaryTarget(target, dictionary, options);
             
             // Assert
             // Add your assertions here based on the expec
+        }
+        
+        /// <summary>
+        /// Tests that get list object when callback handled returns callback value
+        /// </summary>
+        [Fact]
+        public void GetListObject_WhenCallbackHandled_ReturnsCallbackValue()
+        {
+            JsonOptions options = new JsonOptions
+            {
+                GetListObjectCallback = e =>
+                {
+                    e.Handled = true;
+                    e.Value = new CustomListObject();
+                }
+            };
+            
+            ListObject result = JsonSerializer.GetListObject(typeof(List<int>), options, null, null, null, null);
+            Assert.IsType<CustomListObject>(result);
+        }
+        
+        /// <summary>
+        /// Tests that get list object when type is byte array returns null
+        /// </summary>
+        [Fact]
+        public void GetListObject_WhenTypeIsByteArray_ReturnsNull()
+        {
+            ListObject result = JsonSerializer.GetListObject(typeof(byte[]), new JsonOptions(), null, null, null, null);
+            Assert.Null(result);
+        }
+        
+        /// <summary>
+        /// Tests that get list object when type is list returns custom list object
+        /// </summary>
+        [Fact]
+        public void GetListObject_WhenTypeIsList_ReturnsCustomListObject()
+        {
+            ListObject result = JsonSerializer.GetListObject(typeof(List<int>), new JsonOptions(), null, null, null, null);
+            Assert.IsType<CustomListObject>(result);
+        }
+        
+        /// <summary>
+        /// Tests that get list object when type is generic collection returns collection t object
+        /// </summary>
+        [Fact]
+        public void GetListObject_WhenTypeIsGenericCollection_ReturnsCollectionTObject()
+        {
+            ListObject result = JsonSerializer.GetListObject(typeof(ICollection<int>), new JsonOptions(), null, null, null, null);
+            Assert.IsType<CollectionTObject<int>>(result);
+        }
+        
+        /// <summary>
+        /// Tests that get list object when type implements generic collection returns collection t object
+        /// </summary>
+        [Fact]
+        public void GetListObject_WhenTypeImplementsGenericCollection_ReturnsCollectionTObject()
+        {
+            ListObject result = JsonSerializer.GetListObject(typeof(List<int>), new JsonOptions(), null, null, null, null);
+            Assert.IsType<CustomListObject>(result);
+        }
+        
+        /// <summary>
+        /// Tests that get list object when type does not match any condition returns null
+        /// </summary>
+        [Fact]
+        public void GetListObject_WhenTypeDoesNotMatchAnyCondition_ReturnsNull()
+        {
+            ListObject result = JsonSerializer.GetListObject(typeof(string), new JsonOptions(), null, null, null, null);
+            Assert.Null(result);
         }
     }
 }
