@@ -697,38 +697,57 @@ namespace Alis.Core.Aspect.Data.Json
             }
         }
         
-        /// <summary>
-        /// Processes the list input using the specified target
-        /// </summary>
-        /// <param name="target">The target</param>
-        /// <param name="input">The input</param>
-        /// <param name="list">The list</param>
-        /// <param name="itemType">The item type</param>
-        /// <param name="options">The options</param>
-        internal static void ProcessListInput(object target, IEnumerable input, ListObject list, Type itemType, JsonOptions options)
+       /// <summary>
+/// Processes the list input using the specified target
+/// </summary>
+/// <param name="target">The target</param>
+/// <param name="input">The input</param>
+/// <param name="list">The list</param>
+/// <param name="itemType">The item type</param>
+/// <param name="options">The options</param>
+internal static void ProcessListInput(object target, IEnumerable input, ListObject list, Type itemType, JsonOptions options)
+{
+    foreach (object value in input)
+    {
+        object convertedValue = ChangeType(target, value, itemType, options);
+        convertedValue = UpdateValueBasedOnContext(list, itemType, value, convertedValue);
+        list.Add(convertedValue, options);
+    }
+}
+
+/// <summary>
+
+/// Updates the value based on context using the specified list
+
+/// </summary>
+
+/// <param name="list">The list</param>
+
+/// <param name="itemType">The item type</param>
+
+/// <param name="value">The value</param>
+
+/// <param name="convertedValue">The converted value</param>
+
+/// <returns>The converted value</returns>
+
+private static object UpdateValueBasedOnContext(ListObject list, Type itemType, object value, object convertedValue)
+{
+    if (list.Context != null)
+    {
+        list.Context["action"] = "add";
+        list.Context["itemType"] = itemType;
+        list.Context["value"] = value;
+        list.Context["cvalue"] = convertedValue;
+
+        if (list.Context.TryGetValue("cvalue", out object newConvertedValue))
         {
-            foreach (object value in input)
-            {
-                object convertedValue = ChangeType(target, value, itemType, options);
-                
-                if (list.Context != null)
-                {
-                    list.Context["action"] = "add";
-                    list.Context["itemType"] = itemType;
-                    list.Context["value"] = value;
-                    list.Context["cvalue"] = convertedValue;
-                    
-                    if (!list.Context.TryGetValue("cvalue", out object newConvertedValue))
-                    {
-                        continue;
-                    }
-                    
-                    convertedValue = newConvertedValue;
-                }
-                
-                list.Add(convertedValue, options);
-            }
+            convertedValue = newConvertedValue;
         }
+    }
+
+    return convertedValue;
+}
         
         /// <summary>
         ///     Clears the list using the specified list
@@ -919,32 +938,15 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Describes whether has script ignore
+        ///     Checks if the member has a ScriptIgnore attribute
         /// </summary>
-        /// <param name="mi">The mi</param>
-        /// <returns>The bool</returns>
-        internal static bool HasScriptIgnore(MemberInfo mi)
+        /// <param name="member">The member to check</param>
+        /// <returns>True if the member has a ScriptIgnore attribute, false otherwise</returns>
+        internal static bool HasScriptIgnore(MemberInfo member)
         {
-            object[] objs = mi.GetCustomAttributes(true);
-            if (objs.Length == 0)
-            {
-                return false;
-            }
+            var attributes = member.GetCustomAttributes(true);
             
-            foreach (object obj in objs)
-            {
-                if (!(obj is Attribute att))
-                {
-                    continue;
-                }
-                
-                if (att.GetType().Name.StartsWith(ScriptIgnore))
-                {
-                    return true;
-                }
-            }
-            
-            return false;
+            return attributes.OfType<Attribute>().Any(attribute => attribute.GetType().Name.StartsWith(ScriptIgnore));
         }
         
         //
@@ -1065,22 +1067,13 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The json attribute</returns>
         internal static JsonPropertyNameAttribute GetJsonAttribute(MemberInfo pi)
         {
-            object[] objs = pi.GetCustomAttributes(true);
-            if (objs.Length == 0)
-            {
-                return null;
-            }
+            var attributes = pi.GetCustomAttributes(true);
             
-            foreach (object obj in objs)
+            foreach (var attribute in attributes)
             {
-                if (!(obj is Attribute att))
+                if (attribute is JsonPropertyNameAttribute jsonAttribute)
                 {
-                    continue;
-                }
-                
-                if (att is JsonPropertyNameAttribute xAtt)
-                {
-                    return xAtt;
+                    return jsonAttribute;
                 }
             }
             
