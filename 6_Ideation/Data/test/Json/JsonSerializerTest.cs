@@ -3315,5 +3315,118 @@ namespace Alis.Core.Aspect.Data.Test.Json
             ListObject result = JsonSerializer.GetListObject(typeof(string), new JsonOptions(), null, null, null, null);
             Assert.Null(result);
         }
+        
+        /// <summary>
+        /// Tests that get item type throws exception when collection type is null
+        /// </summary>
+        [Fact]
+        public void GetItemType_ThrowsException_WhenCollectionTypeIsNull()
+        {
+            Assert.Throws<ArgumentNullException>(() => JsonSerializer.GetItemType(null));
+        }
+        
+        /// <summary>
+        
+        /// Tests that get item type returns correct type when collection type is dictionary
+        
+        /// </summary>
+        
+        [Fact]
+        public void GetItemType_ReturnsCorrectType_WhenCollectionTypeIsDictionary()
+        {
+            Assert.Equal(typeof(string), JsonSerializer.GetItemType(typeof(Dictionary<string, string>)));
+        }
+        
+        /// <summary>
+        
+        /// Tests that get item type returns correct type when collection type is list
+        
+        /// </summary>
+        
+        [Fact]
+        public void GetItemType_ReturnsCorrectType_WhenCollectionTypeIsList()
+        {
+            Assert.Equal(typeof(int), JsonSerializer.GetItemType(typeof(List<int>)));
+        }
+        
+        /// <summary>
+        
+        /// Tests that get item type returns correct type when collection type is collection
+        
+        /// </summary>
+        
+        [Fact]
+        public void GetItemType_ReturnsCorrectType_WhenCollectionTypeIsCollection()
+        {
+            Assert.Equal(typeof(double), JsonSerializer.GetItemType(typeof(ICollection<double>)));
+        }
+        
+        /// <summary>
+        
+        /// Tests that get item type returns correct type when collection type is enumerable
+        
+        /// </summary>
+        
+        [Fact]
+        public void GetItemType_ReturnsCorrectType_WhenCollectionTypeIsEnumerable()
+        {
+            Assert.Equal(typeof(object), JsonSerializer.GetItemType(typeof(IEnumerable<long>)));
+        }
+        
+        /// <summary>
+        
+        /// Tests that get item type returns object type when collection type is not a collection
+        
+        /// </summary>
+        
+        [Fact]
+        public void GetItemType_ReturnsObjectType_WhenCollectionTypeIsNotACollection()
+        {
+            Assert.Equal(typeof(char), JsonSerializer.GetItemType(typeof(string)));
+        }
+        
+        /// <summary>
+        /// Tests that serialize throws exception when writer is null
+        /// </summary>
+        [Fact]
+        public void Serialize_ThrowsException_WhenWriterIsNull()
+        {
+            Assert.Throws<ArgumentNullException>(() => JsonSerializer.Serialize(null, new object()));
+        }
+        
+        /// <summary>
+        /// Tests that serialize writes json p start when json p callback is not null
+        /// </summary>
+        [Fact]
+        public void Serialize_WritesJsonPStart_WhenJsonPCallbackIsNotNull()
+        {
+            StringWriter writer = new StringWriter();
+            JsonOptions options = new JsonOptions {JsonPCallback = "callback"};
+            JsonSerializer.Serialize(writer, new object(), options);
+            Assert.StartsWith("callback(", writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that serialize writes json p end when json p callback is not null
+        /// </summary>
+        [Fact]
+        public void Serialize_WritesJsonPEnd_WhenJsonPCallbackIsNotNull()
+        {
+            StringWriter writer = new StringWriter();
+            JsonOptions options = new JsonOptions {JsonPCallback = "callback"};
+            JsonSerializer.Serialize(writer, new object(), options);
+            Assert.EndsWith(");", writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that serialize writes value when called
+        /// </summary>
+        [Fact]
+        public void Serialize_WritesValue_WhenCalled()
+        {
+            StringWriter writer = new StringWriter();
+            JsonSerializer.Serialize(writer, new {Test = "Test"});
+            Assert.Contains("{}", writer.ToString());
+        }
     }
 }

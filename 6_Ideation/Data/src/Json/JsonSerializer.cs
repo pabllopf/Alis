@@ -171,23 +171,62 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">Options to use for serialization.</param>
         internal static void Serialize(TextWriter writer, object value, JsonOptions options = null)
         {
+            ValidateWriter(writer);
+            
+            options = options ?? new JsonOptions();
+            PrepareOptions(options);
+            
+            WriteJsonPStart(writer, options);
+            WriteValue(writer, value, options.FinalObjectGraph, options);
+            WriteJsonPEnd(writer, options);
+        }
+        
+        /// <summary>
+        /// Validates the writer using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        internal static void ValidateWriter(TextWriter writer)
+        {
             if (writer == null)
             {
                 throw new ArgumentNullException(nameof(writer));
             }
-            
-            options ??= new JsonOptions();
+        }
+        
+        /// <summary>
+        /// Prepares the options using the specified options
+        /// </summary>
+        /// <param name="options">The options</param>
+        internal static void PrepareOptions(JsonOptions options)
+        {
             IDictionary<object, object> objectGraph = options.FinalObjectGraph;
             SetOptions(objectGraph, options);
-            
+        }
+        
+        /// <summary>
+        /// Writes the json p start using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="options">The options</param>
+        internal static void WriteJsonPStart(TextWriter writer, JsonOptions options)
+        {
             string jsonp = options.JsonPCallback.Nullify();
             if (jsonp != null)
             {
                 writer.Write(options.JsonPCallback);
                 writer.Write('(');
             }
-            
-            WriteValue(writer, value, objectGraph, options);
+        }
+        
+        /// <summary>
+        /// Writes the json p end using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="options">The options</param>
+        internal static void WriteJsonPEnd(TextWriter writer, JsonOptions options)
+        {
+            string jsonp = options.JsonPCallback.Nullify();
             if (jsonp != null)
             {
                 writer.Write(')');
@@ -1060,35 +1099,43 @@ namespace Alis.Core.Aspect.Data.Json
                 throw new ArgumentNullException(nameof(collectionType));
             }
             
-            foreach (Type iFace in collectionType.GetInterfaces())
+            Type[] genericInterfaces = collectionType.GetInterfaces()
+                .Where(i => i.IsGenericType)
+                .ToArray();
+            
+            Type[] genericDefinitions = new Type[]
             {
-                if (!iFace.IsGenericType)
-                {
-                    continue;
-                }
+                typeof(IDictionary<,>),
+                typeof(IList<>),
+                typeof(ICollection<>),
+                typeof(IEnumerable<>)
+            };
+            
+            foreach (Type definition in genericDefinitions)
+            {
+                Type foundInterface = genericInterfaces
+                    .FirstOrDefault(i => i.GetGenericTypeDefinition() == definition);
                 
-                if (iFace.GetGenericTypeDefinition() == typeof(IDictionary<,>))
+                if (foundInterface != null)
                 {
-                    return iFace.GetGenericArguments()[1];
-                }
-                
-                if (iFace.GetGenericTypeDefinition() == typeof(IList<>))
-                {
-                    return iFace.GetGenericArguments()[0];
-                }
-                
-                if (iFace.GetGenericTypeDefinition() == typeof(ICollection<>))
-                {
-                    return iFace.GetGenericArguments()[0];
-                }
-                
-                if (iFace.GetGenericTypeDefinition() == typeof(IEnumerable<>))
-                {
-                    return iFace.GetGenericArguments()[0];
+                    return GetGenericArgument(foundInterface, definition);
                 }
             }
             
             return typeof(object);
+        }
+        
+        /// <summary>
+        /// Gets the generic argument using the specified found interface
+        /// </summary>
+        /// <param name="foundInterface">The found interface</param>
+        /// <param name="definition">The definition</param>
+        /// <returns>The type</returns>
+        internal static Type GetGenericArgument(Type foundInterface, Type definition)
+        {
+            return definition == typeof(IDictionary<,>)
+                ? foundInterface.GetGenericArguments()[1]
+                : foundInterface.GetGenericArguments()[0];
         }
         
         /// <summary>
