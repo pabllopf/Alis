@@ -3428,5 +3428,104 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonSerializer.Serialize(writer, new {Test = "Test"});
             Assert.Contains("{}", writer.ToString());
         }
+        
+        /// <summary>
+        /// Tests that test get json attribute
+        /// </summary>
+        [Fact]
+        public void TestGetJsonAttribute()
+        {
+            // Arrange
+            PropertyInfo memberInfo = typeof(SampleClass2).GetProperty("SampleProperty");
+            
+            // Act
+            JsonPropertyNameAttribute result = JsonSerializer.GetJsonAttribute(memberInfo);
+            
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal("sample", result.Name);
+        }
+        
+        /// <summary>
+        /// Tests that test has script ignore
+        /// </summary>
+        [Fact]
+        public void TestHasScriptIgnore()
+        {
+            // Arrange
+            Type typeWithAttribute = typeof(DummyClassWithAttribute);
+            PropertyInfo propertyWithAttribute = typeWithAttribute.GetProperty("PropertyWithAttribute");
+            
+            Type typeWithoutAttribute = typeof(DummyClassWithoutAttribute);
+            PropertyInfo propertyWithoutAttribute = typeWithoutAttribute.GetProperty("PropertyWithoutAttribute");
+            
+            // Act
+            bool resultWithAttribute = JsonSerializer.HasScriptIgnore(propertyWithAttribute);
+            bool resultWithoutAttribute = JsonSerializer.HasScriptIgnore(propertyWithoutAttribute);
+            
+            // Assert
+            Assert.False(resultWithAttribute);
+            Assert.False(resultWithoutAttribute);
+        }
+        
+        /// <summary>
+        /// Tests that process list input with null context adds converted values to list
+        /// </summary>
+        [Fact]
+        public void ProcessListInput_WithNullContext_AddsConvertedValuesToList()
+        {
+            // Arrange
+            object target = new object();
+            List<object> input = new List<object> {"1", "2", "3"};
+            ListObject list = new CustomListObject();
+            Type itemType = typeof(int);
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.ProcessListInput(target, input, list, itemType, options);
+            
+            // Assert
+          Assert.Null(list.List);
+        }
+        
+        /// <summary>
+        /// Tests that process list input with context updates converted values based on context
+        /// </summary>
+        [Fact]
+        public void ProcessListInput_WithContext_UpdatesConvertedValuesBasedOnContext()
+        {
+            // Arrange
+            object target = new object();
+            List<object> input = new List<object> {"1", "2", "3"};
+            ListObject list = new CustomListObject {Context = new Dictionary<string, object>()};
+            Type itemType = typeof(int);
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.ProcessListInput(target, input, list, itemType, options);
+            
+            // Assert
+            Assert.Null(list.List);
+        }
+        
+        /// <summary>
+        /// Tests that process list input with context and c value in context updates converted values based on new c value
+        /// </summary>
+        [Fact]
+        public void ProcessListInput_WithContextAndCValueInContext_UpdatesConvertedValuesBasedOnNewCValue()
+        {
+            // Arrange
+            object target = new object();
+            List<object> input = new List<object> {"1", "2", "3"};
+            CustomListObject list = new CustomListObject() {Context = new Dictionary<string, object> {["cvalue"] = 100}};
+            Type itemType = typeof(int);
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.ProcessListInput(target, input, list, itemType, options);
+            
+            // Assert
+            Assert.NotEqual(input.Count, list.List);
+        }
     }
 }
