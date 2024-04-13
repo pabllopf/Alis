@@ -46,32 +46,32 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     The type def
         /// </summary>
-        private static readonly Dictionary<string, TypeDef> Defs = new Dictionary<string, TypeDef>();
+        internal static readonly Dictionary<string, TypeDef> Defs = new Dictionary<string, TypeDef>();
 
         /// <summary>
         ///     The key value type
         /// </summary>
-        private static readonly Dictionary<Type, KeyValueType> KeyType = new Dictionary<Type, KeyValueType>();
+        internal static readonly Dictionary<Type, KeyValueType> KeyType = new Dictionary<Type, KeyValueType>();
 
         /// <summary>
         ///     The lock
         /// </summary>
-        private static readonly object LockField = new object();
+        internal static readonly object LockField = new object();
 
         /// <summary>
         ///     The member definition
         /// </summary>
-        private readonly List<MemberDefinition> _deserializationMembers;
+        internal readonly List<MemberDefinition> _deserializationMembers;
 
         /// <summary>
         ///     The member definition
         /// </summary>
-        private readonly List<MemberDefinition> _serializationMembers;
+        internal readonly List<MemberDefinition> _serializationMembers;
 
         /// <summary>
         ///     The type
         /// </summary>
-        private readonly Type _type;
+        internal readonly Type _type;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="TypeDef" /> class
@@ -156,7 +156,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="member">The member</param>
         /// <param name="first">The first</param>
         /// <returns>The bool bool string object</returns>
-        private (bool, bool, string, object) HandleWriteNamedValueObjectCallback(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options, MemberDefinition member, bool first)
+        internal (bool, bool, string, object) HandleWriteNamedValueObjectCallback(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options, MemberDefinition member, bool first)
         {
             bool nameChanged = false;
             string name = member.WireName;
@@ -190,7 +190,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="member">The member</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        private bool ShouldSkipValue(JsonOptions options, MemberDefinition member, object value)
+        internal bool ShouldSkipValue(JsonOptions options, MemberDefinition member, object value)
         {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipNullPropertyValues))
             {
@@ -238,7 +238,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="name">The name</param>
         /// <param name="value">The value</param>
         /// <param name="objectGraph">The object graph</param>
-        private void WriteMemberValue(TextWriter writer, JsonOptions options, MemberDefinition member, bool nameChanged, string name, object value, IDictionary<object, object> objectGraph)
+        internal void WriteMemberValue(TextWriter writer, JsonOptions options, MemberDefinition member, bool nameChanged, string name, object value, IDictionary<object, object> objectGraph)
         {
             if (nameChanged)
             {
@@ -469,7 +469,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type</param>
         /// <param name="options">The options</param>
         /// <returns>An enumerable of member definition</returns>
-        private static IEnumerable<MemberDefinition> HandlePropertySerialization(bool serialization, Type type, JsonOptions options)
+        internal static IEnumerable<MemberDefinition> HandlePropertySerialization(bool serialization, Type type, JsonOptions options)
         {
             foreach (PropertyInfo info in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
@@ -489,7 +489,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="info">The info</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool ShouldSkipProperty(bool serialization, PropertyInfo info, JsonOptions options)
+        internal static bool ShouldSkipProperty(bool serialization, PropertyInfo info, JsonOptions options)
         {
             if (CheckJsonAttribute(serialization, info, options) ||
                 CheckXmlIgnoreAttribute(info, options) ||
@@ -509,7 +509,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="info">The info</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool CheckJsonAttribute(bool serialization, PropertyInfo info, JsonOptions options)
+        internal static bool CheckJsonAttribute(bool serialization, PropertyInfo info, JsonOptions options)
         {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
             {
@@ -534,7 +534,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="info">The info</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool CheckXmlIgnoreAttribute(PropertyInfo info, JsonOptions options) => options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore) && info.IsDefined(typeof(XmlIgnoreAttribute), true);
+        internal static bool CheckXmlIgnoreAttribute(PropertyInfo info, JsonOptions options) => options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore) && info.IsDefined(typeof(XmlIgnoreAttribute), true);
 
         /// <summary>
         ///     Describes whether check script ignore
@@ -542,7 +542,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="info">The info</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool CheckScriptIgnore(PropertyInfo info, JsonOptions options)
+        internal static bool CheckScriptIgnore(PropertyInfo info, JsonOptions options)
         {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore))
             {
@@ -561,7 +561,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="serialization">The serialization</param>
         /// <param name="info">The info</param>
         /// <returns>The bool</returns>
-        private static bool CheckSerialization(bool serialization, PropertyInfo info)
+        internal static bool CheckSerialization(bool serialization, PropertyInfo info)
         {
             if (serialization)
             {
@@ -586,7 +586,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="serialization">The serialization</param>
         /// <param name="info">The info</param>
         /// <returns>The ma</returns>
-        private static MemberDefinition CreateMemberDefinition(bool serialization, PropertyInfo info)
+        internal static MemberDefinition CreateMemberDefinition(bool serialization, PropertyInfo info)
         {
             string name = JsonSerializer.GetObjectName(info, info.Name);
 
@@ -619,7 +619,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type</param>
         /// <param name="options">The options</param>
         /// <returns>An enumerable of member definition</returns>
-        private static IEnumerable<MemberDefinition> HandleFieldSerialization(bool serialization, Type type, JsonOptions options)
+        internal static IEnumerable<MemberDefinition> HandleFieldSerialization(bool serialization, Type type, JsonOptions options)
         {
             foreach (FieldInfo info in type.GetFields(BindingFlags.Public | BindingFlags.Instance))
             {
@@ -639,7 +639,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="info">The info</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool ShouldSkipField(bool serialization, FieldInfo info, JsonOptions options)
+        internal static bool ShouldSkipField(bool serialization, FieldInfo info, JsonOptions options)
         {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
             {
@@ -680,7 +680,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="serialization">The serialization</param>
         /// <param name="info">The info</param>
         /// <returns>The ma</returns>
-        private static MemberDefinition CreateMemberDefinition(bool serialization, FieldInfo info)
+        internal static MemberDefinition CreateMemberDefinition(bool serialization, FieldInfo info)
         {
             string name = JsonSerializer.GetObjectName(info, info.Name);
 
@@ -714,7 +714,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         /// <returns>An enumerable of member definition</returns>
         
-        private static IEnumerable<MemberDefinition> EnumerateDefinitionsUsingTypeDescriptors(bool serialization, Type type, JsonOptions options)
+        internal static IEnumerable<MemberDefinition> EnumerateDefinitionsUsingTypeDescriptors(bool serialization, Type type, JsonOptions options)
         {
             foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(type).Cast<PropertyDescriptor>())
             {
@@ -734,7 +734,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="descriptor">The descriptor</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool ShouldSkipDescriptor(bool serialization, PropertyDescriptor descriptor, JsonOptions options)
+        internal static bool ShouldSkipDescriptor(bool serialization, PropertyDescriptor descriptor, JsonOptions options)
         {
             if (CheckJsonAttribute(serialization, descriptor, options) ||
                 CheckXmlIgnoreAttribute(descriptor, options) ||
@@ -754,7 +754,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="descriptor">The descriptor</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool CheckJsonAttribute(bool serialization, PropertyDescriptor descriptor, JsonOptions options)
+        internal static bool CheckJsonAttribute(bool serialization, PropertyDescriptor descriptor, JsonOptions options)
         {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
             {
@@ -782,7 +782,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="descriptor">The descriptor</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool CheckXmlIgnoreAttribute(PropertyDescriptor descriptor, JsonOptions options)
+        internal static bool CheckXmlIgnoreAttribute(PropertyDescriptor descriptor, JsonOptions options)
         {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
             {
@@ -801,7 +801,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="descriptor">The descriptor</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool CheckScriptIgnore(PropertyDescriptor descriptor, JsonOptions options) => options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore) && JsonSerializer.HasScriptIgnore(descriptor);
+        internal static bool CheckScriptIgnore(PropertyDescriptor descriptor, JsonOptions options) => options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore) && JsonSerializer.HasScriptIgnore(descriptor);
 
         /// <summary>
         ///     Describes whether check skip get only
@@ -809,7 +809,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="descriptor">The descriptor</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool CheckSkipGetOnly(PropertyDescriptor descriptor, JsonOptions options) => options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipGetOnly) && descriptor.IsReadOnly;
+        internal static bool CheckSkipGetOnly(PropertyDescriptor descriptor, JsonOptions options) => options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipGetOnly) && descriptor.IsReadOnly;
 
         /// <summary>
         ///     Creates the member definition using the specified serialization
@@ -817,7 +817,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="serialization">The serialization</param>
         /// <param name="descriptor">The descriptor</param>
         /// <returns>The ma</returns>
-        private static MemberDefinition CreateMemberDefinition(bool serialization, PropertyDescriptor descriptor)
+        internal static MemberDefinition CreateMemberDefinition(bool serialization, PropertyDescriptor descriptor)
         {
             string name = JsonSerializer.GetObjectName(descriptor, descriptor.Name);
 
