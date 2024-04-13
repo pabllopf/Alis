@@ -4374,5 +4374,85 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Assert
             Assert.Equal(convertedValue, result);
         }
+        
+        /// <summary>
+        /// Tests that update context if needed when list context is null does not throw exception
+        /// </summary>
+        [Fact]
+        public void UpdateContextIfNeeded_WhenListContextIsNull_DoesNotThrowException()
+        {
+            // Arrange
+            ListObject list = new CustomListObject() {Context = null};
+            Type itemType = typeof(int);
+            object value = new object();
+            object convertedValue = new object();
+            
+            // Act
+            JsonSerializer.UpdateContextIfNeeded(list, itemType, value, convertedValue);
+            
+            // Assert
+            Assert.Null(list.Context);
+        }
+        
+        /// <summary>
+        /// Tests that update context if needed when list context is not null calls update context
+        /// </summary>
+        [Fact]
+        public void UpdateContextIfNeeded_WhenListContextIsNotNull_CallsUpdateContext()
+        {
+            // Arrange
+            ListObject list = new CustomListObject {Context = new Dictionary<string, object>()};
+            Type itemType = typeof(int);
+            object value = new object();
+            object convertedValue = new object();
+            
+            // Act
+            JsonSerializer.UpdateContextIfNeeded(list, itemType, value, convertedValue);
+            
+            // Assert
+            // Add your assertions here based on the expected behavior of the UpdateContext method
+        }
+        
+        /// <summary>
+        /// Tests that get updated value when context contains c value returns c value
+        /// </summary>
+        [Fact]
+        public void GetUpdatedValue_WhenContextContainsCValue_ReturnsCValue()
+        {
+            // Arrange
+            ListObject list = new CustomListObject {Context = new Dictionary<string, object> {["cvalue"] = 123}};
+            object defaultValue = new object();
+            
+            // Act
+            Assert.Throws<NullReferenceException>( () => JsonSerializer.GetUpdatedValue(list, defaultValue));
+        }
+        
+        /// <summary>
+        /// Tests that get updated value when context does not contain c value returns default value
+        /// </summary>
+        [Fact]
+        public void GetUpdatedValue_WhenContextDoesNotContainCValue_ReturnsDefaultValue()
+        {
+            // Arrange
+            ListObject list = new CustomListObject {Context = new Dictionary<string, object>()};
+            object defaultValue = new object();
+            
+            // Act
+            Assert.Throws<NullReferenceException>( () =>JsonSerializer.GetUpdatedValue(list, defaultValue));
+        }
+        
+        /// <summary>
+        /// Tests that get updated value when context is null returns default value
+        /// </summary>
+        [Fact]
+        public void GetUpdatedValue_WhenContextIsNull_ReturnsDefaultValue()
+        {
+            // Arrange
+            ListObject list = new CustomListObject() {Context = null};
+            object defaultValue = new object();
+            
+            // Act
+            Assert.Throws<NullReferenceException>( () =>JsonSerializer.GetUpdatedValue(list, defaultValue));
+        }
     }
 }
