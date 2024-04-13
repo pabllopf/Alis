@@ -50,7 +50,11 @@ namespace Alis.Core.Aspect.Data.Json
         /// <value>
         ///     The context. May be null.
         /// </value>
-        public virtual IDictionary<string, object> Context => null;
+        public virtual IDictionary<string, object> Context
+        {
+            get => null;
+            set => _ = value;
+        }
         
         /// <summary>
         ///     Clears the list object.

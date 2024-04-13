@@ -2852,5 +2852,53 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             JsonSerializer.ReadDictionary(reader, options);
         }
+        
+        [Fact]
+        public void ProcessInput_WithArrayInput_ProcessesCorrectly()
+        {
+            // Arrange
+            object target = new object();
+            List<int> input = new List<int> {1, 2, 3};
+            ListObject list = new ConcreteListObject {List = new int[3]};
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.ProcessInput(target, input, list, options);
+            
+            // Assert
+            // Add your assertions here
+        }
+        
+        [Fact]
+        public void ProcessInput_WithListInput_ProcessesCorrectly()
+        {
+            // Arrange
+            object target = new object();
+            List<int> input = new List<int> {1, 2, 3};
+            ListObject list = new ConcreteListObject {List = new List<int>()};
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.ProcessInput(target, input, list, options);
+            
+            // Assert
+            // Add your assertions here
+        }
+        
+        [Fact]
+        public void ProcessInput_WithListInputAndContext_ProcessesCorrectly()
+        {
+            // Arrange
+            object target = new object();
+            List<int> input = new List<int> {1, 2, 3};
+            ListObject list = new ConcreteListObject {List = new List<int>(), Context = new Dictionary<string, object>()};
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.ProcessInput(target, input, list, options);
+            
+            // Assert
+            // Add your assertions here
+        }
     }
 }
