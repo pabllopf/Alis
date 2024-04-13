@@ -2561,5 +2561,158 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             Assert.Equal("\\", result.ToString());
         }
+        
+        /// <summary>
+        /// Tests that apply when target is array calls apply to target array
+        /// </summary>
+        [Fact]
+        public void Apply_WhenTargetIsArray_CallsApplyToTargetArray()
+        {
+            // Arrange
+            var input = new List<int> {1, 2, 3};
+            var target = new int[3];
+            var options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.Apply(input, target, options);
+            
+            // Assert
+            Assert.Equal(input, target);
+        }
+        
+        /// <summary>
+        /// Tests that apply when input is dictionary calls apply to target dictionary
+        /// </summary>
+        [Fact]
+        public void Apply_WhenInputIsDictionary_CallsApplyToTargetDictionary()
+        {
+            // Arrange
+            var input = new Dictionary<string, string> {{"key", "value"}};
+            var target = new Dictionary<string, string>();
+            var options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.Apply(input, target, options);
+            
+            // Assert
+            Assert.Equal(input, target);
+        }
+        
+        /// <summary>
+        /// Tests that apply when target is not null calls apply to list target
+        /// </summary>
+        [Fact]
+        public void Apply_WhenTargetIsNotNull_CallsApplyToListTarget()
+        {
+            // Arrange
+            var input = new List<int> {1, 2, 3};
+            var target = new List<int>();
+            var options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.Apply(input, target, options);
+            
+            // Assert
+            Assert.Equal(input, target);
+        }
+        
+        /// <summary>
+        /// Tests that apply when target is null does not throw exception
+        /// </summary>
+        [Fact]
+        public void Apply_WhenTargetIsNull_DoesNotThrowException()
+        {
+            // Arrange
+            var input = new List<int> {1, 2, 3};
+            object target = null;
+            var options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.Apply(input, target, options);
+            
+            // Assert
+            // No exception thrown
+        }
+        
+        /// <summary>
+        /// Tests that test apply to target array valid input
+        /// </summary>
+        [Fact]
+public void TestApplyToTargetArray_ValidInput()
+{
+    // Arrange
+    var input = new List<int> {1, 2, 3};
+    var target = new int[3];
+    var options = new JsonOptions();
+
+    // Act
+    JsonSerializer.ApplyToTargetArray(input, target, options);
+
+    // Assert
+    Assert.Equal(input, target);
+}
+
+/// <summary>
+
+/// Tests that test apply to target dictionary valid input
+
+/// </summary>
+
+[Fact]
+public void TestApplyToTargetDictionary_ValidInput()
+{
+    // Arrange
+    var input = new Dictionary<string, string> {{"key", "value"}};
+    var target = new Dictionary<string, string>();
+    var options = new JsonOptions();
+
+    // Act
+    JsonSerializer.ApplyToTargetDictionary(input, target, options);
+
+    // Assert
+    Assert.Equal(input, target);
+}
+
+/// <summary>
+
+/// Tests that test apply to target array null target
+
+/// </summary>
+
+[Fact]
+public void TestApplyToTargetArray_NullTarget()
+{
+    // Arrange
+    var input = new List<int> {1, 2, 3};
+    Array target = null;
+    var options = new JsonOptions();
+
+    // Act
+    JsonSerializer.ApplyToTargetArray(input, target, options);
+
+    // Assert
+    // No exception thrown
+}
+
+/// <summary>
+
+/// Tests that test apply to target dictionary null target
+
+/// </summary>
+
+[Fact]
+public void TestApplyToTargetDictionary_NullTarget()
+{
+    // Arrange
+    var input = new Dictionary<string, string> {{"key", "value"}};
+    object target = null;
+    var options = new JsonOptions();
+
+    // Act
+    JsonSerializer.ApplyToTargetDictionary(input, target, options);
+
+    // Assert
+    // No exception thrown
+}
     }
 }
