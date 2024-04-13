@@ -2878,5 +2878,95 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Act & Assert
             Assert.Throws<NullReferenceException>(() => Conversions.TryHandleDigitOrSignStart(type, input, out object value));
         }
+        
+        /// <summary>
+        /// Tests that try handle digit or sign start with digit start returns true and converted value
+        /// </summary>
+        [Fact]
+        public void TryHandleDigitOrSignStart_WithDigitStart_ReturnsTrueAndConvertedValue()
+        {
+            // Arrange
+            string input = "123";
+            object value;
+            
+            // Act
+            bool result = Conversions.TryHandleDigitOrSignStart(typeof(int), input, out value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Equal(0, value);
+        }
+        
+        /// <summary>
+        /// Tests that try handle digit or sign start with negative sign start returns true and converted value
+        /// </summary>
+        [Fact]
+        public void TryHandleDigitOrSignStart_WithNegativeSignStart_ReturnsTrueAndConvertedValue()
+        {
+            // Arrange
+            string input = "-123";
+            object value;
+            
+            // Act
+            bool result = Conversions.TryHandleDigitOrSignStart(typeof(int), input, out value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Equal(0, value);
+        }
+        
+        /// <summary>
+        /// Tests that try handle digit or sign start with positive sign start returns true and converted value
+        /// </summary>
+        [Fact]
+        public void TryHandleDigitOrSignStart_WithPositiveSignStart_ReturnsTrueAndConvertedValue()
+        {
+            // Arrange
+            string input = "+123";
+            object value;
+            
+            // Act
+            bool result = Conversions.TryHandleDigitOrSignStart(typeof(int), input, out value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Equal(0, value);
+        }
+        
+        /// <summary>
+        /// Tests that try handle digit or sign start with non digit or sign start returns false and default value
+        /// </summary>
+        [Fact]
+        public void TryHandleDigitOrSignStart_WithNonDigitOrSignStart_ReturnsFalseAndDefaultValue()
+        {
+            // Arrange
+            string input = "abc";
+            object value;
+            
+            // Act
+            bool result = Conversions.TryHandleDigitOrSignStart(typeof(int), input, out value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Equal(0, value);
+        }
+        
+        /// <summary>
+        /// Tests that try handle digit or sign start with empty string returns false and default value
+        /// </summary>
+        [Fact]
+        public void TryHandleDigitOrSignStart_WithEmptyString_ReturnsFalseAndDefaultValue()
+        {
+            // Arrange
+            string input = "0";
+            object value;
+            
+            // Act
+            bool result = Conversions.TryHandleDigitOrSignStart(typeof(int), input, out value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Equal(0, value);
+        }
     }
 }
