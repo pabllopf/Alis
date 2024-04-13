@@ -129,6 +129,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     Disposes this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void Dispose()
         {
             if (enumerator is IDisposable disposable)
