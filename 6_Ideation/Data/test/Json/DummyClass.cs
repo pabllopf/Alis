@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         /// </summary>
         [DefaultValue("DefaultValue")]
         public string DummyProperty { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the another dummy property
         /// </summary>

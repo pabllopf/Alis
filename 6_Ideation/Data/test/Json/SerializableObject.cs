@@ -33,19 +33,19 @@ using System.Runtime.Serialization;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The serializable object class
+    ///     The serializable object class
     /// </summary>
-    /// <seealso cref="ISerializable"/>
+    /// <seealso cref="ISerializable" />
     [Serializable]
     internal class SerializableObject : ISerializable
     {
         /// <summary>
-        /// Gets or sets the value of the property
+        ///     Gets or sets the value of the property
         /// </summary>
         public string Property { get; set; } = "Value";
-
+        
         /// <summary>
-        /// Gets the object data using the specified info
+        ///     Gets the object data using the specified info
         /// </summary>
         /// <param name="info">The info</param>
         /// <param name="context">The context</param>

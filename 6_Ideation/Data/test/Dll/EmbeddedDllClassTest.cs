@@ -32,7 +32,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Security.AccessControl;
 using Alis.Core.Aspect.Data.Dll;
 using Xunit;
 
@@ -152,7 +151,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test extract embedded dlls
+        ///     Tests that test extract embedded dlls
         /// </summary>
         [Fact]
         public void TestExtractEmbeddedDlls()
@@ -171,7 +170,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test get dll extensionv 2
+        ///     Tests that test get dll extensionv 2
         /// </summary>
         [Fact]
         public void TestGetDllExtensionv2()
@@ -202,7 +201,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test get current platform
+        ///     Tests that test get current platform
         /// </summary>
         [Fact]
         public void TestGetCurrentPlatform()
@@ -215,7 +214,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test load resourcev 2
+        ///     Tests that test load resourcev 2
         /// </summary>
         [Fact]
         public void TestLoadResourcev2()
@@ -232,7 +231,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test is running oni o sv 2
+        ///     Tests that test is running oni o sv 2
         /// </summary>
         [Fact]
         public void TestIsRunningOniOSv2()
@@ -245,7 +244,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test is running on androidv 2
+        ///     Tests that test is running on androidv 2
         /// </summary>
         [Fact]
         public void TestIsRunningOnAndroidv2()
@@ -258,7 +257,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test isi os specific condition metv 2
+        ///     Tests that test isi os specific condition metv 2
         /// </summary>
         [Fact]
         public void TestIsiOsSpecificConditionMetv2()
@@ -271,7 +270,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test is android specific condition metv 2
+        ///     Tests that test is android specific condition metv 2
         /// </summary>
         [Fact]
         public void TestIsAndroidSpecificConditionMetv2()
@@ -284,7 +283,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test set file read permission valid path
+        ///     Tests that test set file read permission valid path
         /// </summary>
         [Fact]
         public void TestSetFileReadPermission_ValidPath()
@@ -308,7 +307,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test set file read permission invalid path
+        ///     Tests that test set file read permission invalid path
         /// </summary>
         [Fact]
         public void TestSetFileReadPermission_InvalidPath()
@@ -326,7 +325,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test get lib extension windows
+        ///     Tests that test get lib extension windows
         /// </summary>
         [Fact]
         public void TestGetLibExtension_Windows()
@@ -342,7 +341,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test get lib extension osx
+        ///     Tests that test get lib extension osx
         /// </summary>
         [Fact]
         public void TestGetLibExtension_OSX()
@@ -358,7 +357,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test get lib extension ios
+        ///     Tests that test get lib extension ios
         /// </summary>
         [Fact]
         public void TestGetLibExtension_IOS()
@@ -374,7 +373,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test get lib extension linux
+        ///     Tests that test get lib extension linux
         /// </summary>
         [Fact]
         public void TestGetLibExtension_Linux()
@@ -390,7 +389,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test get lib extension android
+        ///     Tests that test get lib extension android
         /// </summary>
         [Fact]
         public void TestGetLibExtension_Android()
@@ -406,7 +405,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test get lib extension invalid platform
+        ///     Tests that test get lib extension invalid platform
         /// </summary>
         [Fact]
         public void TestGetLibExtension_InvalidPlatform()
@@ -419,7 +418,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test extract embedded dlls valid dll
+        ///     Tests that test extract embedded dlls valid dll
         /// </summary>
         [Fact]
         public void TestExtractEmbeddedDlls_ValidDll()
@@ -438,7 +437,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test get dll extension valid dll type
+        ///     Tests that test get dll extension valid dll type
         /// </summary>
         [Fact]
         public void TestGetDllExtension_ValidDllType()
@@ -454,7 +453,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test extract zip file valid file dir and zip data
+        ///     Tests that test extract zip file valid file dir and zip data
         /// </summary>
         [Fact]
         public void TestExtractZipFile_ValidFileDirAndZipData()
@@ -468,7 +467,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test load resource valid resource name and assembly
+        ///     Tests that test load resource valid resource name and assembly
         /// </summary>
         [Fact]
         public void TestLoadResource_ValidResourceNameAndAssembly()
@@ -485,7 +484,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test is running oni o sv 3
+        ///     Tests that test is running oni o sv 3
         /// </summary>
         [Fact]
         public void TestIsRunningOniOSv3()
@@ -498,7 +497,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test is running on androidv 3
+        ///     Tests that test is running on androidv 3
         /// </summary>
         [Fact]
         public void TestIsRunningOnAndroidv3()
@@ -511,7 +510,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test isi os specific condition metv 3
+        ///     Tests that test isi os specific condition metv 3
         /// </summary>
         [Fact]
         public void TestIsiOsSpecificConditionMetv3()
@@ -524,7 +523,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test is android specific condition metv 3
+        ///     Tests that test is android specific condition metv 3
         /// </summary>
         [Fact]
         public void TestIsAndroidSpecificConditionMetv3()
@@ -537,7 +536,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test get exe extension windows
+        ///     Tests that test get exe extension windows
         /// </summary>
         [Fact]
         public void TestGetExeExtension_Windows()
@@ -553,7 +552,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test get exe extension osx
+        ///     Tests that test get exe extension osx
         /// </summary>
         [Fact]
         public void TestGetExeExtension_OSX()
@@ -569,7 +568,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test get exe extension ios
+        ///     Tests that test get exe extension ios
         /// </summary>
         [Fact]
         public void TestGetExeExtension_IOS()
@@ -585,7 +584,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test get exe extension linux
+        ///     Tests that test get exe extension linux
         /// </summary>
         [Fact]
         public void TestGetExeExtension_Linux()
@@ -601,7 +600,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test get exe extension android
+        ///     Tests that test get exe extension android
         /// </summary>
         [Fact]
         public void TestGetExeExtension_Android()
@@ -617,7 +616,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         }
         
         /// <summary>
-        /// Tests that test get exe extension invalid platform
+        ///     Tests that test get exe extension invalid platform
         /// </summary>
         [Fact]
         public void TestGetExeExtension_InvalidPlatform()

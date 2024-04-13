@@ -443,7 +443,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test type def constructor v 2
+        ///     Tests that test type def constructor v 2
         /// </summary>
         [Fact]
         public void TestTypeDefConstructor_v2()
@@ -455,7 +455,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test get deserialization member v 2
+        ///     Tests that test get deserialization member v 2
         /// </summary>
         [Fact]
         public void TestGetDeserializationMember_v2()
@@ -469,7 +469,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test apply entry v 2
+        ///     Tests that test apply entry v 2
         /// </summary>
         [Fact]
         public void TestApplyEntry_v2()
@@ -484,7 +484,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test write values v 2
+        ///     Tests that test write values v 2
         /// </summary>
         [Fact]
         public void TestWriteValues_v2()
@@ -500,7 +500,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test to string v 2
+        ///     Tests that test to string v 2
         /// </summary>
         [Fact]
         public void TestToString_v2()
@@ -514,7 +514,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test get key v 2
+        ///     Tests that test get key v 2
         /// </summary>
         [Fact]
         public void TestGetKey_v2()
@@ -527,7 +527,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test unlocked get v 2
+        ///     Tests that test unlocked get v 2
         /// </summary>
         [Fact]
         public void TestUnlockedGet_v2()
@@ -540,7 +540,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test lock method v 2
+        ///     Tests that test lock method v 2
         /// </summary>
         [Fact]
         public void TestLockMethod_v2()
@@ -551,7 +551,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test remove deserialization member v 2
+        ///     Tests that test remove deserialization member v 2
         /// </summary>
         [Fact]
         public void TestRemoveDeserializationMember_v2()
@@ -564,7 +564,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test remove serialization member v 2
+        ///     Tests that test remove serialization member v 2
         /// </summary>
         [Fact]
         public void TestRemoveSerializationMember_v2()
@@ -577,7 +577,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test add deserialization member v 2
+        ///     Tests that test add deserialization member v 2
         /// </summary>
         [Fact]
         public void TestAddDeserializationMember_v2()
@@ -590,7 +590,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test add serialization member v 2
+        ///     Tests that test add serialization member v 2
         /// </summary>
         [Fact]
         public void TestAddSerializationMember_v2()
@@ -603,7 +603,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test get v 2
+        ///     Tests that test get v 2
         /// </summary>
         [Fact]
         public void TestGet_v2()
@@ -616,7 +616,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test is key value pair enumerable v 2
+        ///     Tests that test is key value pair enumerable v 2
         /// </summary>
         [Fact]
         public void TestIsKeyValuePairEnumerable_v2()
@@ -629,7 +629,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle field serialization valid input returns expected result
+        ///     Tests that handle field serialization valid input returns expected result
         /// </summary>
         [Fact]
         public void HandleFieldSerialization_ValidInput_ReturnsExpectedResult()
@@ -648,7 +648,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that should skip field valid input returns expected result
+        ///     Tests that should skip field valid input returns expected result
         /// </summary>
         [Fact]
         public void ShouldSkipField_ValidInput_ReturnsExpectedResult()
@@ -666,7 +666,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that create member definition valid input returns expected result
+        ///     Tests that create member definition valid input returns expected result
         /// </summary>
         [Fact]
         public void CreateMemberDefinition_ValidInput_ReturnsExpectedResult()
@@ -684,7 +684,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that check xml ignore attribute valid input returns expected result
+        ///     Tests that check xml ignore attribute valid input returns expected result
         /// </summary>
         [Fact]
         public void CheckXmlIgnoreAttribute_ValidInput_ReturnsExpectedResult()
@@ -701,7 +701,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that check script ignore valid input returns expected result
+        ///     Tests that check script ignore valid input returns expected result
         /// </summary>
         [Fact]
         public void CheckScriptIgnore_ValidInput_ReturnsExpectedResult()
@@ -718,7 +718,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that check serialization valid input returns expected result
+        ///     Tests that check serialization valid input returns expected result
         /// </summary>
         [Fact]
         public void CheckSerialization_ValidInput_ReturnsExpectedResult()
@@ -735,7 +735,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that create member definition valid input returns expected result v 3
+        ///     Tests that create member definition valid input returns expected result v 3
         /// </summary>
         [Fact]
         public void CreateMemberDefinition_ValidInput_ReturnsExpectedResult_v3()
@@ -753,7 +753,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle field serialization valid input returns expected result v 2
+        ///     Tests that handle field serialization valid input returns expected result v 2
         /// </summary>
         [Fact]
         public void HandleFieldSerialization_ValidInput_ReturnsExpectedResult_v2()
@@ -772,7 +772,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle field serialization valid input returns expected result v 4
+        ///     Tests that handle field serialization valid input returns expected result v 4
         /// </summary>
         [Fact]
         public void HandleFieldSerialization_ValidInput_ReturnsExpectedResult_v4()
@@ -791,7 +791,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle field serialization invalid input returns null
+        ///     Tests that handle field serialization invalid input returns null
         /// </summary>
         [Fact]
         public void HandleFieldSerialization_InvalidInput_ReturnsNull()
@@ -809,7 +809,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle field serialization serialization false returns expected result
+        ///     Tests that handle field serialization serialization false returns expected result
         /// </summary>
         [Fact]
         public void HandleFieldSerialization_SerializationFalse_ReturnsExpectedResult()
@@ -828,7 +828,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that enumerate definitions using reflection valid input returns expected result
+        ///     Tests that enumerate definitions using reflection valid input returns expected result
         /// </summary>
         [Fact]
         public void EnumerateDefinitionsUsingReflection_ValidInput_ReturnsExpectedResult()
@@ -847,7 +847,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle property serialization valid input returns expected result
+        ///     Tests that handle property serialization valid input returns expected result
         /// </summary>
         [Fact]
         public void HandlePropertySerialization_ValidInput_ReturnsExpectedResult()
@@ -866,7 +866,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that should skip property valid input returns expected result
+        ///     Tests that should skip property valid input returns expected result
         /// </summary>
         [Fact]
         public void ShouldSkipProperty_ValidInput_ReturnsExpectedResult()
@@ -884,7 +884,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that check json attribute valid input returns expected result
+        ///     Tests that check json attribute valid input returns expected result
         /// </summary>
         [Fact]
         public void CheckJsonAttribute_ValidInput_ReturnsExpectedResult()
@@ -902,7 +902,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that check xml ignore attribute valid input returns expected result v 5
+        ///     Tests that check xml ignore attribute valid input returns expected result v 5
         /// </summary>
         [Fact]
         public void CheckXmlIgnoreAttribute_ValidInput_ReturnsExpectedResult_v5()
@@ -919,7 +919,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that enumerate definitions using reflection valid input returns expected result v 7
+        ///     Tests that enumerate definitions using reflection valid input returns expected result v 7
         /// </summary>
         [Fact]
         public void EnumerateDefinitionsUsingReflection_ValidInput_ReturnsExpectedResult_v7()
@@ -938,7 +938,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that enumerate definitions using reflection serialization false returns expected result
+        ///     Tests that enumerate definitions using reflection serialization false returns expected result
         /// </summary>
         [Fact]
         public void EnumerateDefinitionsUsingReflection_SerializationFalse_ReturnsExpectedResult()
@@ -957,7 +957,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle property serialization valid input returns expected result v 6
+        ///     Tests that handle property serialization valid input returns expected result v 6
         /// </summary>
         [Fact]
         public void HandlePropertySerialization_ValidInput_ReturnsExpectedResult_v6()
@@ -976,7 +976,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle property serialization serialization false returns expected result
+        ///     Tests that handle property serialization serialization false returns expected result
         /// </summary>
         [Fact]
         public void HandlePropertySerialization_SerializationFalse_ReturnsExpectedResult()
@@ -995,7 +995,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that enumerate definitions using reflection serialization true returns expected result
+        ///     Tests that enumerate definitions using reflection serialization true returns expected result
         /// </summary>
         [Fact]
         public void EnumerateDefinitionsUsingReflection_SerializationTrue_ReturnsExpectedResult()
@@ -1014,7 +1014,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that enumerate definitions using reflection serialization false returns expected result v 8
+        ///     Tests that enumerate definitions using reflection serialization false returns expected result v 8
         /// </summary>
         [Fact]
         public void EnumerateDefinitionsUsingReflection_SerializationFalse_ReturnsExpectedResult_v8()
@@ -1033,7 +1033,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get serialization members valid input returns expected result
+        ///     Tests that get serialization members valid input returns expected result
         /// </summary>
         [Fact]
         public void GetSerializationMembers_ValidInput_ReturnsExpectedResult()
@@ -1051,7 +1051,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get serialization members null type returns null
+        ///     Tests that get serialization members null type returns null
         /// </summary>
         [Fact]
         public void GetSerializationMembers_NullType_ReturnsNull()
@@ -1065,7 +1065,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get serialization members null options throws argument null exception
+        ///     Tests that get serialization members null options throws argument null exception
         /// </summary>
         [Fact]
         public void GetSerializationMembers_NullOptions_ThrowsArgumentNullException()
@@ -1079,7 +1079,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle property serialization serialization true returns expected result
+        ///     Tests that handle property serialization serialization true returns expected result
         /// </summary>
         [Fact]
         public void HandlePropertySerialization_SerializationTrue_ReturnsExpectedResult()
@@ -1098,7 +1098,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle property serialization serialization false returns expected result v 9
+        ///     Tests that handle property serialization serialization false returns expected result v 9
         /// </summary>
         [Fact]
         public void HandlePropertySerialization_SerializationFalse_ReturnsExpectedResult_v9()
@@ -1117,7 +1117,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle property serialization null type returns null
+        ///     Tests that handle property serialization null type returns null
         /// </summary>
         [Fact]
         public void HandlePropertySerialization_NullType_ReturnsNull()
@@ -1134,7 +1134,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle property serialization null options throws argument null exception
+        ///     Tests that handle property serialization null options throws argument null exception
         /// </summary>
         [Fact]
         public void HandlePropertySerialization_NullOptions_ThrowsArgumentNullException()
@@ -1151,7 +1151,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle field serialization serialization true returns expected result
+        ///     Tests that handle field serialization serialization true returns expected result
         /// </summary>
         [Fact]
         public void HandleFieldSerialization_SerializationTrue_ReturnsExpectedResult()
@@ -1170,7 +1170,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle field serialization serialization false returns expected result
+        ///     Tests that handle field serialization serialization false returns expected result
         /// </summary>
         [Fact]
         public void HandleFieldSerialization_SerializationFalse_ReturnsExpectedResult_v10()
@@ -1189,7 +1189,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle field serialization null type returns null
+        ///     Tests that handle field serialization null type returns null
         /// </summary>
         [Fact]
         public void HandleFieldSerialization_NullType_ReturnsNull()
@@ -1206,7 +1206,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle field serialization null options throws argument null exception
+        ///     Tests that handle field serialization null options throws argument null exception
         /// </summary>
         [Fact]
         public void HandleFieldSerialization_NullOptions_ThrowsArgumentNullException()
@@ -1223,7 +1223,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that should skip field serialization true json attribute ignore when serializing returns true
+        ///     Tests that should skip field serialization true json attribute ignore when serializing returns true
         /// </summary>
         [Fact]
         public void ShouldSkipField_SerializationTrue_JsonAttributeIgnoreWhenSerializing_ReturnsTrue()
@@ -1241,7 +1241,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that should skip field serialization false json attribute ignore when deserializing returns true
+        ///     Tests that should skip field serialization false json attribute ignore when deserializing returns true
         /// </summary>
         [Fact]
         public void ShouldSkipField_SerializationFalse_JsonAttributeIgnoreWhenDeserializing_ReturnsTrue()
@@ -1259,7 +1259,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that should skip field serialization true xml ignore attribute returns true
+        ///     Tests that should skip field serialization true xml ignore attribute returns true
         /// </summary>
         [Fact]
         public void ShouldSkipField_SerializationTrue_XmlIgnoreAttribute_ReturnsTrue()
@@ -1277,7 +1277,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that should skip field serialization true script ignore returns true
+        ///     Tests that should skip field serialization true script ignore returns true
         /// </summary>
         [Fact]
         public void ShouldSkipField_SerializationTrue_ScriptIgnore_ReturnsTrue()
@@ -1295,7 +1295,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that should skip field serialization true no ignore attributes returns false
+        ///     Tests that should skip field serialization true no ignore attributes returns false
         /// </summary>
         [Fact]
         public void ShouldSkipField_SerializationTrue_NoIgnoreAttributes_ReturnsFalse()

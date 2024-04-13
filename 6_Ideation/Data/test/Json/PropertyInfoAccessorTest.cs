@@ -50,15 +50,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             PropertyInfo propertyInfo = typeof(MyClassSample).GetProperty("MyProperty"); // Replace with your actual property
             PropertyInfoAccessor<MyClassSample, string> propertyInfoAccessor = new PropertyInfoAccessor<MyClassSample, string>(propertyInfo);
             MyClassSample component = new MyClassSample(); // Replace with your actual class instance
-
+            
             // Act
             object result = propertyInfoAccessor.Get(component);
-
+            
             // Assert
             Assert.NotNull(result);
             // Add more assertions based on your expected result
         }
-
+        
         /// <summary>
         ///     Tests that test property info accessor set
         /// </summary>
@@ -70,16 +70,16 @@ namespace Alis.Core.Aspect.Data.Test.Json
             PropertyInfoAccessor<MyClassSample, string> propertyInfoAccessor = new PropertyInfoAccessor<MyClassSample, string>(propertyInfo);
             MyClassSample component = new MyClassSample(); // Replace with your actual class instance
             string value = "test"; // Replace with your actual value
-
+            
             // Act
             propertyInfoAccessor.Set(component, value);
-
+            
             // Assert
             Assert.Equal(value, component.MyProperty); // Replace with your actual property
         }
-
+        
         /// <summary>
-        /// Tests that dispose enumerator is disposable value is not disposes enumerator
+        ///     Tests that dispose enumerator is disposable value is not disposes enumerator
         /// </summary>
         [Fact]
         public void Dispose_EnumeratorIsDisposable_ValueIsNot_DisposesEnumerator()
@@ -87,24 +87,24 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             DisposableTracker disposableEnumerator = new DisposableTracker();
             NonDisposableTracker nonDisposableValue = new NonDisposableTracker();
-
+            
             Dictionary<string, object> dictionary = new Dictionary<string, object>
             {
                 {"key1", disposableEnumerator},
                 {"key2", nonDisposableValue}
             };
-
+            
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
-
+            
             // Act
             enumerator.Dispose();
-
+            
             // Assert
             Assert.False(disposableEnumerator.IsDisposed);
         }
-
+        
         /// <summary>
-        /// Tests that dispose value is disposable enumerator is not disposes value
+        ///     Tests that dispose value is disposable enumerator is not disposes value
         /// </summary>
         [Fact]
         public void Dispose_ValueIsDisposable_EnumeratorIsNot_DisposesValue()
@@ -112,24 +112,24 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             NonDisposableTracker nonDisposableEnumerator = new NonDisposableTracker();
             DisposableTracker disposableValue = new DisposableTracker();
-
+            
             Dictionary<string, object> dictionary = new Dictionary<string, object>
             {
                 {"key1", nonDisposableEnumerator},
                 {"key2", disposableValue}
             };
-
+            
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
-
+            
             // Act
             enumerator.Dispose();
-
+            
             // Assert
             Assert.False(disposableValue.IsDisposed);
         }
-
+        
         /// <summary>
-        /// Tests that dispose both are disposable disposes both
+        ///     Tests that dispose both are disposable disposes both
         /// </summary>
         [Fact]
         public void Dispose_BothAreDisposable_DisposesBoth()
@@ -137,25 +137,25 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             DisposableTracker disposableEnumerator = new DisposableTracker();
             DisposableTracker disposableValue = new DisposableTracker();
-
+            
             Dictionary<string, object> dictionary = new Dictionary<string, object>
             {
                 {"key1", disposableEnumerator},
                 {"key2", disposableValue}
             };
-
+            
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
-
+            
             // Act
             enumerator.Dispose();
-
+            
             // Assert
             Assert.False(disposableEnumerator.IsDisposed);
             Assert.False(disposableValue.IsDisposed);
         }
-
+        
         /// <summary>
-        /// Tests that dispose neither are disposable does not throw
+        ///     Tests that dispose neither are disposable does not throw
         /// </summary>
         [Fact]
         public void Dispose_NeitherAreDisposable_DoesNotThrow()
@@ -163,18 +163,18 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             NonDisposableTracker nonDisposableEnumerator = new NonDisposableTracker();
             NonDisposableTracker nonDisposableValue = new NonDisposableTracker();
-
+            
             Dictionary<string, object> dictionary = new Dictionary<string, object>
             {
                 {"key1", nonDisposableEnumerator},
                 {"key2", nonDisposableValue}
             };
-
+            
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
-
+            
             // Act
             Exception exception = Record.Exception(() => enumerator.Dispose());
-
+            
             // Assert
             Assert.Null(exception);
         }

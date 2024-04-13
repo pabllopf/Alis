@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The list
         /// </summary>
         private IList _list = new ArrayList();
-
+        
         /// <summary>
         ///     Gets or sets the value of the list
         /// </summary>
@@ -54,12 +54,12 @@ namespace Alis.Core.Aspect.Data.Json
                 _list = (IList) value;
             }
         }
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
         public override void Clear() => _list.Clear();
-
+        
         /// <summary>
         ///     Adds the value
         /// </summary>

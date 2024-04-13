@@ -48,15 +48,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             FieldInfo fieldInfo = typeof(MyClassSample).GetField("MyField"); // Replace with your actual field
             FieldInfoAccessor fieldInfoAccessor = new FieldInfoAccessor(fieldInfo);
             MyClassSample component = new MyClassSample(); // Replace with your actual class instance
-
+            
             // Act
             object result = fieldInfoAccessor.Get(component);
-
+            
             // Assert
             Assert.NotNull(result);
             // Add more assertions based on your expected result
         }
-
+        
         /// <summary>
         ///     Tests that test field info accessor set
         /// </summary>
@@ -68,10 +68,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             FieldInfoAccessor fieldInfoAccessor = new FieldInfoAccessor(fieldInfo);
             MyClassSample component = new MyClassSample(); // Replace with your actual class instance
             const string value = "test"; // Replace with your actual value
-
+            
             // Act
             fieldInfoAccessor.Set(component, value);
-
+            
             // Assert
             Assert.Equal(value, component.MyField); // Replace with your actual field
         }

@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         ///     Initializes a new instance of the <see cref="CustomOptions" /> class
         /// </summary>
         public CustomOptions() => ObjectGraph = new CustomObjectGraph();
-
+        
         /// <summary>
         ///     The custom object graph class
         /// </summary>
@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             ///     The dictionary
             /// </summary>
             private readonly Dictionary<object, int> _hash = new Dictionary<object, int>();
-
+            
             /// <summary>
             ///     Adds the key
             /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             {
                 _hash[key] = Options.SerializationLevel;
             }
-
+            
             /// <summary>
             ///     Describes whether this instance contains key
             /// </summary>
@@ -79,15 +79,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
                 {
                     return false;
                 }
-
+                
                 if (Options.SerializationLevel == level)
                 {
                     return false;
                 }
-
+                
                 return true;
             }
-
+            
             /// <summary>
             ///     The not implemented exception
             /// </summary>
@@ -96,72 +96,72 @@ namespace Alis.Core.Aspect.Data.Test.Json
                 get => throw new NotImplementedException();
                 set => throw new NotImplementedException();
             }
-
+            
             /// <summary>
             ///     Gets the value of the keys
             /// </summary>
             public ICollection<object> Keys => throw new NotImplementedException();
-
+            
             /// <summary>
             ///     Gets the value of the values
             /// </summary>
             public ICollection<object> Values => throw new NotImplementedException();
-
+            
             /// <summary>
             ///     Gets the value of the count
             /// </summary>
             public int Count => throw new NotImplementedException();
-
+            
             /// <summary>
             ///     Gets the value of the is read only
             /// </summary>
             public bool IsReadOnly => throw new NotImplementedException();
-
+            
             /// <summary>
             ///     Adds the item
             /// </summary>
             /// <param name="item">The item</param>
             public void Add(KeyValuePair<object, object> item) => throw new NotImplementedException();
-
+            
             /// <summary>
             ///     Clears this instance
             /// </summary>
             public void Clear() => throw new NotImplementedException();
-
+            
             /// <summary>
             ///     Describes whether this instance contains
             /// </summary>
             /// <param name="item">The item</param>
             /// <returns>The bool</returns>
             public bool Contains(KeyValuePair<object, object> item) => throw new NotImplementedException();
-
+            
             /// <summary>
             ///     Copies the to using the specified array
             /// </summary>
             /// <param name="array">The array</param>
             /// <param name="arrayIndex">The array index</param>
             public void CopyTo(KeyValuePair<object, object>[] array, int arrayIndex) => throw new NotImplementedException();
-
+            
             /// <summary>
             ///     Gets the enumerator
             /// </summary>
             /// <returns>An enumerator of key value pair object and object</returns>
             public IEnumerator<KeyValuePair<object, object>> GetEnumerator() => throw new NotImplementedException();
-
+            
             /// <summary>
             ///     Describes whether this instance remove
             /// </summary>
             /// <param name="key">The key</param>
             /// <returns>The bool</returns>
             public bool Remove(object key) => throw new NotImplementedException();
-
+            
             /// <summary>
             ///     Describes whether this instance remove
             /// </summary>
             /// <param name="item">The item</param>
             /// <returns>The bool</returns>
             public bool Remove(KeyValuePair<object, object> item) => throw new NotImplementedException();
-
+            
             /// <summary>
             ///     Describes whether this instance try get value
             /// </summary>
@@ -169,13 +169,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
             /// <param name="value">The value</param>
             /// <returns>The bool</returns>
             public bool TryGetValue(object key, [MaybeNullWhen(false)] out object value) => throw new NotImplementedException();
-
+            
             /// <summary>
             ///     Gets the enumerator
             /// </summary>
             /// <returns>The enumerator</returns>
             IEnumerator IEnumerable.GetEnumerator() => throw new NotImplementedException();
-
+            
             /// <summary>
             ///     Gets or sets the value of the options
             /// </summary>

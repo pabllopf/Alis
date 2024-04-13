@@ -41,14 +41,14 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Gets the instance of the ReferenceComparer class.
         /// </summary>
         public static readonly ReferenceComparer Instance = new ReferenceComparer();
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="ReferenceComparer" /> class
         /// </summary>
         private ReferenceComparer()
         {
         }
-
+        
         /// <summary>
         ///     Describes whether this instance equals
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="y">The </param>
         /// <returns>The bool</returns>
         bool IEqualityComparer<object>.Equals(object x, object y) => ReferenceEquals(x, y);
-
+        
         /// <summary>
         ///     Gets the hash code using the specified obj
         /// </summary>

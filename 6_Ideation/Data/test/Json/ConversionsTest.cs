@@ -996,28 +996,28 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse token values success
+        ///     Tests that try parse token values success
         /// </summary>
         [Fact]
         public void TryParseTokenValues_Success()
         {
-            string[] tokens = new string[] {"Monday", "Tuesday"};
+            string[] tokens = {"Monday", "Tuesday"};
             Type type = typeof(DayOfWeek);
             string[] names = Enum.GetNames(type);
             Array values = Enum.GetValues(type);
             bool result = Conversions.TryParseTokenValues(tokens, type, names, values, out object value);
             
             Assert.True(result);
-            Assert.Equal((DayOfWeek.Monday | DayOfWeek.Tuesday), value);
+            Assert.Equal(DayOfWeek.Monday | DayOfWeek.Tuesday, value);
         }
         
         /// <summary>
-        /// Tests that try parse token values failure
+        ///     Tests that try parse token values failure
         /// </summary>
         [Fact]
         public void TryParseTokenValues_Failure()
         {
-            string[] tokens = new string[] {"InvalidDay"};
+            string[] tokens = {"InvalidDay"};
             Type type = typeof(DayOfWeek);
             string[] names = Enum.GetNames(type);
             Array values = Enum.GetValues(type);
@@ -1027,7 +1027,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that convert token value to ulong int 16
+        ///     Tests that convert token value to ulong int 16
         /// </summary>
         [Fact]
         public void ConvertTokenValueToUlong_Int16()
@@ -1039,7 +1039,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that convert token value to ulong int 32
+        ///     Tests that convert token value to ulong int 32
         /// </summary>
         [Fact]
         public void ConvertTokenValueToUlong_Int32()
@@ -1051,7 +1051,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that convert token value to ulong int 64
+        ///     Tests that convert token value to ulong int 64
         /// </summary>
         [Fact]
         public void ConvertTokenValueToUlong_Int64()
@@ -1063,7 +1063,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that convert token value to ulong s byte
+        ///     Tests that convert token value to ulong s byte
         /// </summary>
         [Fact]
         public void ConvertTokenValueToUlong_SByte()
@@ -1075,7 +1075,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that convert token value to ulong u int 16
+        ///     Tests that convert token value to ulong u int 16
         /// </summary>
         [Fact]
         public void ConvertTokenValueToUlong_UInt16()
@@ -1087,7 +1087,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that convert token value to ulong u int 32
+        ///     Tests that convert token value to ulong u int 32
         /// </summary>
         [Fact]
         public void ConvertTokenValueToUlong_UInt32()
@@ -1099,7 +1099,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that convert token value to ulong u int 64
+        ///     Tests that convert token value to ulong u int 64
         /// </summary>
         [Fact]
         public void ConvertTokenValueToUlong_UInt64()
@@ -1111,7 +1111,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change with converter success
+        ///     Tests that try change with converter success
         /// </summary>
         [Fact]
         public void TryChangeWithConverter_Success()
@@ -1127,7 +1127,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change with converter failure
+        ///     Tests that try change with converter failure
         /// </summary>
         [Fact]
         public void TryChangeWithConverter_Failure()
@@ -1140,7 +1140,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to date time success
+        ///     Tests that try change to date time success
         /// </summary>
         [Fact]
         public void TryChangeToDateTime_Success()
@@ -1156,7 +1156,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to date time failure
+        ///     Tests that try change to date time failure
         /// </summary>
         [Fact]
         public void TryChangeToDateTime_Failure()
@@ -1171,7 +1171,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to time span success
+        ///     Tests that try change to time span success
         /// </summary>
         [Fact]
         public void TryChangeToTimeSpan_Success()
@@ -1186,7 +1186,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to time span failure
+        ///     Tests that try change to time span failure
         /// </summary>
         [Fact]
         public void TryChangeToTimeSpan_Failure()
@@ -1200,7 +1200,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to collection success
+        ///     Tests that try change to collection success
         /// </summary>
         [Fact]
         public void TryChangeToCollection_Success()
@@ -1216,7 +1216,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to collection failure
+        ///     Tests that try change to collection failure
         /// </summary>
         [Fact]
         public void TryChangeToCollection_Failure()
@@ -1231,7 +1231,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to enum success
+        ///     Tests that try change to enum success
         /// </summary>
         [Fact]
         public void TryChangeToEnum_Success()
@@ -1249,7 +1249,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to enum failure
+        ///     Tests that try change to enum failure
         /// </summary>
         [Fact]
         public void TryChangeToEnum_Failure()
@@ -1267,7 +1267,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change from enum success
+        ///     Tests that try change from enum success
         /// </summary>
         [Fact]
         public void TryChangeFromEnum_Success()
@@ -1285,7 +1285,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change from enum failure
+        ///     Tests that try change from enum failure
         /// </summary>
         [Fact]
         public void TryChangeFromEnum_Failure()
@@ -1303,7 +1303,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to guid success
+        ///     Tests that try change to guid success
         /// </summary>
         [Fact]
         public void TryChangeToGuid_Success()
@@ -1322,7 +1322,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to guid failure
+        ///     Tests that try change to guid failure
         /// </summary>
         [Fact]
         public void TryChangeToGuid_Failure()
@@ -1340,7 +1340,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to uri success
+        ///     Tests that try change to uri success
         /// </summary>
         [Fact]
         public void TryChangeToUri_Success()
@@ -1359,7 +1359,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to uri failure
+        ///     Tests that try change to uri failure
         /// </summary>
         [Fact]
         public void TryChangeToUri_Failure()
@@ -1376,7 +1376,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to int ptr success
+        ///     Tests that try change to int ptr success
         /// </summary>
         [Fact]
         public void TryChangeToIntPtr_Success()
@@ -1395,7 +1395,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to int ptr failure
+        ///     Tests that try change to int ptr failure
         /// </summary>
         [Fact]
         public void TryChangeToIntPtr_Failure()
@@ -1413,7 +1413,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to culture info valid culture info returns true
+        ///     Tests that try change to culture info valid culture info returns true
         /// </summary>
         [Fact]
         public void TryChangeToCultureInfo_ValidCultureInfo_ReturnsTrue()
@@ -1427,7 +1427,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to culture info invalid culture info returns false
+        ///     Tests that try change to culture info invalid culture info returns false
         /// </summary>
         [Fact]
         public void TryChangeToCultureInfo_InvalidCultureInfo_ReturnsFalse()
@@ -1440,7 +1440,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to bool valid bool returns true
+        ///     Tests that try change to bool valid bool returns true
         /// </summary>
         [Fact]
         public void TryChangeToBool_ValidBool_ReturnsTrue()
@@ -1455,7 +1455,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to bool invalid bool returns false
+        ///     Tests that try change to bool invalid bool returns false
         /// </summary>
         [Fact]
         public void TryChangeToBool_InvalidBool_ReturnsFalse()
@@ -1469,7 +1469,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try match values matching value returns true
+        ///     Tests that try match values matching value returns true
         /// </summary>
         [Fact]
         public void TryMatchValues_MatchingValue_ReturnsTrue()
@@ -1487,7 +1487,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try match values non matching value returns false
+        ///     Tests that try match values non matching value returns false
         /// </summary>
         [Fact]
         public void TryMatchValues_NonMatchingValue_ReturnsFalse()
@@ -1505,7 +1505,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try match values empty input returns false
+        ///     Tests that try match values empty input returns false
         /// </summary>
         [Fact]
         public void TryMatchValues_EmptyInput_ReturnsFalse()
@@ -1523,7 +1523,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try match values negative input returns true
+        ///     Tests that try match values negative input returns true
         /// </summary>
         [Fact]
         public void TryMatchValues_NegativeInput_ReturnsTrue()
@@ -1541,7 +1541,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try match values negative input with positive values returns false
+        ///     Tests that try match values negative input with positive values returns false
         /// </summary>
         [Fact]
         public void TryMatchValues_NegativeInputWithPositiveValues_ReturnsFalse()
@@ -1559,7 +1559,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type conversion type is null throws argument null exception
+        ///     Tests that try change type conversion type is null throws argument null exception
         /// </summary>
         [Fact]
         public void TryChangeType_ConversionTypeIsNull_ThrowsArgumentNullException()
@@ -1571,7 +1571,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type conversion type is object returns true
+        ///     Tests that try change type conversion type is object returns true
         /// </summary>
         [Fact]
         public void TryChangeType_ConversionTypeIsObject_ReturnsTrue()
@@ -1585,7 +1585,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type conversion type is nullable returns true
+        ///     Tests that try change type conversion type is nullable returns true
         /// </summary>
         [Fact]
         public void TryChangeType_ConversionTypeIsNullable_ReturnsTrue()
@@ -1599,7 +1599,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type input is null and conversion type is value type returns false
+        ///     Tests that try change type input is null and conversion type is value type returns false
         /// </summary>
         [Fact]
         public void TryChangeType_InputIsNullAndConversionTypeIsValueType_ReturnsFalse()
@@ -1612,7 +1612,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type input is null and conversion type is not value type returns true
+        ///     Tests that try change type input is null and conversion type is not value type returns true
         /// </summary>
         [Fact]
         public void TryChangeType_InputIsNullAndConversionTypeIsNotValueType_ReturnsTrue()
@@ -1625,7 +1625,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type conversion type is assignable from input type returns true
+        ///     Tests that try change type conversion type is assignable from input type returns true
         /// </summary>
         [Fact]
         public void TryChangeType_ConversionTypeIsAssignableFromInputType_ReturnsTrue()
@@ -1639,7 +1639,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type conversion type is not assignable from input type returns false
+        ///     Tests that try change type conversion type is not assignable from input type returns false
         /// </summary>
         [Fact]
         public void TryChangeType_ConversionTypeIsNotAssignableFromInputType_ReturnsFalse()
@@ -1652,7 +1652,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with digit start returns true
+        ///     Tests that try handle digit or sign start with digit start returns true
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithDigitStart_ReturnsTrue()
@@ -1670,7 +1670,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with negative sign start returns true
+        ///     Tests that try handle digit or sign start with negative sign start returns true
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithNegativeSignStart_ReturnsTrue()
@@ -1688,7 +1688,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with positive sign start returns true
+        ///     Tests that try handle digit or sign start with positive sign start returns true
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithPositiveSignStart_ReturnsTrue()
@@ -1706,7 +1706,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with non digit or sign start returns false
+        ///     Tests that try handle digit or sign start with non digit or sign start returns false
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithNonDigitOrSignStart_ReturnsFalse()
@@ -1724,7 +1724,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with null input returns false
+        ///     Tests that try handle digit or sign start with null input returns false
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithNullInput_ReturnsFalse()
@@ -1738,7 +1738,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type based on input type enum conversion returns true
+        ///     Tests that try change type based on input type enum conversion returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_EnumConversion_ReturnsTrue()
@@ -1753,7 +1753,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type based on input type from enum conversion returns true
+        ///     Tests that try change type based on input type from enum conversion returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_FromEnumConversion_ReturnsTrue()
@@ -1768,7 +1768,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type based on input type guid conversion returns true
+        ///     Tests that try change type based on input type guid conversion returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_GuidConversion_ReturnsTrue()
@@ -1784,7 +1784,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type based on input type uri conversion returns true
+        ///     Tests that try change type based on input type uri conversion returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_UriConversion_ReturnsTrue()
@@ -1799,7 +1799,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type based on input type int ptr conversion returns true
+        ///     Tests that try change type based on input type int ptr conversion returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_IntPtrConversion_ReturnsTrue()
@@ -1814,7 +1814,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type based on input type numeric conversion returns true
+        ///     Tests that try change type based on input type numeric conversion returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_NumericConversion_ReturnsTrue()
@@ -1829,7 +1829,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type based on input type date time conversion returns true
+        ///     Tests that try change type based on input type date time conversion returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_DateTimeConversion_ReturnsTrue()
@@ -1844,7 +1844,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type based on input type time span conversion returns true
+        ///     Tests that try change type based on input type time span conversion returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_TimeSpanConversion_ReturnsTrue()
@@ -1859,7 +1859,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type based on input type collection conversion returns true
+        ///     Tests that try change type based on input type collection conversion returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_CollectionConversion_ReturnsTrue()
@@ -1874,7 +1874,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type based on input type culture info conversion returns true
+        ///     Tests that try change type based on input type culture info conversion returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_CultureInfoConversion_ReturnsTrue()
@@ -1889,7 +1889,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type based on input type bool conversion returns true
+        ///     Tests that try change type based on input type bool conversion returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_BoolConversion_ReturnsTrue()
@@ -1904,7 +1904,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type based on input type i convertible conversion returns true
+        ///     Tests that try change type based on input type i convertible conversion returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_IConvertibleConversion_ReturnsTrue()
@@ -1919,7 +1919,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change type based on input type converter conversion returns true
+        ///     Tests that try change type based on input type converter conversion returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_ConverterConversion_ReturnsTrue()
@@ -1934,7 +1934,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse tokens with flags attribute and no enum separators returns true
+        ///     Tests that try parse tokens with flags attribute and no enum separators returns true
         /// </summary>
         [Fact]
         public void TryParseTokens_WithFlagsAttributeAndNoEnumSeparators_ReturnsTrue()
@@ -1954,7 +1954,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse tokens without flags attribute and enum separators returns false
+        ///     Tests that try parse tokens without flags attribute and enum separators returns false
         /// </summary>
         [Fact]
         public void TryParseTokens_WithoutFlagsAttributeAndEnumSeparators_ReturnsFalse()
@@ -1974,7 +1974,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse tokens with empty tokens returns false
+        ///     Tests that try parse tokens with empty tokens returns false
         /// </summary>
         [Fact]
         public void TryParseTokens_WithEmptyTokens_ReturnsFalse()
@@ -1994,7 +1994,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse tokens with valid tokens returns true
+        ///     Tests that try parse tokens with valid tokens returns true
         /// </summary>
         [Fact]
         public void TryParseTokens_WithValidTokens_ReturnsTrue()
@@ -2014,7 +2014,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse tokens with invalid tokens returns false
+        ///     Tests that try parse tokens with invalid tokens returns false
         /// </summary>
         [Fact]
         public void TryParseTokens_WithInvalidTokens_ReturnsFalse()
@@ -2033,7 +2033,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse hexadecimal valid hexadecimal returns true
+        ///     Tests that try parse hexadecimal valid hexadecimal returns true
         /// </summary>
         [Fact]
         public void TryParseHexadecimal_ValidHexadecimal_ReturnsTrue()
@@ -2051,7 +2051,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse hexadecimal invalid hexadecimal returns false
+        ///     Tests that try parse hexadecimal invalid hexadecimal returns false
         /// </summary>
         [Fact]
         public void TryParseHexadecimal_InvalidHexadecimal_ReturnsFalse()
@@ -2069,7 +2069,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse hexadecimal non hexadecimal returns false
+        ///     Tests that try parse hexadecimal non hexadecimal returns false
         /// </summary>
         [Fact]
         public void TryParseHexadecimal_NonHexadecimal_ReturnsFalse()
@@ -2087,7 +2087,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse hexadecimal empty string returns false
+        ///     Tests that try parse hexadecimal empty string returns false
         /// </summary>
         [Fact]
         public void TryParseHexadecimal_EmptyString_ReturnsFalse()
@@ -2105,7 +2105,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse hexadecimal null input returns false
+        ///     Tests that try parse hexadecimal null input returns false
         /// </summary>
         [Fact]
         public void TryParseHexadecimal_NullInput_ReturnsFalse()
@@ -2116,11 +2116,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             // Act
             Assert.Throws<NullReferenceException>(() => Conversions.TryParseHexadecimal(input, type, out object value));
-            
         }
         
         /// <summary>
-        /// Tests that try change with i convertible valid conversion returns true
+        ///     Tests that try change with i convertible valid conversion returns true
         /// </summary>
         [Fact]
         public void TryChangeWithIConvertible_ValidConversion_ReturnsTrue()
@@ -2139,7 +2138,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change with i convertible invalid conversion returns false
+        ///     Tests that try change with i convertible invalid conversion returns false
         /// </summary>
         [Fact]
         public void TryChangeWithIConvertible_InvalidConversion_ReturnsFalse()
@@ -2158,7 +2157,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change with i convertible null input returns false
+        ///     Tests that try change with i convertible null input returns false
         /// </summary>
         [Fact]
         public void TryChangeWithIConvertible_NullInput_ReturnsFalse()
@@ -2177,7 +2176,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change with i convertible null conversion type throws argument null exception
+        ///     Tests that try change with i convertible null conversion type throws argument null exception
         /// </summary>
         [Fact]
         public void TryChangeWithIConvertible_NullConversionType_ThrowsArgumentNullException()
@@ -2195,7 +2194,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that enum try parse valid enum string returns true
+        ///     Tests that enum try parse valid enum string returns true
         /// </summary>
         [Fact]
         public void EnumTryParse_ValidEnumString_ReturnsTrue()
@@ -2213,7 +2212,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that enum try parse invalid enum string returns false
+        ///     Tests that enum try parse invalid enum string returns false
         /// </summary>
         [Fact]
         public void EnumTryParse_InvalidEnumString_ReturnsFalse()
@@ -2230,7 +2229,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that enum try parse valid hexadecimal returns true
+        ///     Tests that enum try parse valid hexadecimal returns true
         /// </summary>
         [Fact]
         public void EnumTryParse_ValidHexadecimal_ReturnsTrue()
@@ -2248,7 +2247,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that enum try parse invalid hexadecimal returns false
+        ///     Tests that enum try parse invalid hexadecimal returns false
         /// </summary>
         [Fact]
         public void EnumTryParse_InvalidHexadecimal_ReturnsFalse()
@@ -2266,7 +2265,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that enum try parse null input returns false
+        ///     Tests that enum try parse null input returns false
         /// </summary>
         [Fact]
         public void EnumTryParse_NullInput_ReturnsFalse()
@@ -2284,7 +2283,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that enum try parse null type throws argument null exception
+        ///     Tests that enum try parse null type throws argument null exception
         /// </summary>
         [Fact]
         public void EnumTryParse_NullType_ThrowsArgumentNullException()
@@ -2300,7 +2299,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to uri valid uri returns true
+        ///     Tests that try change to uri valid uri returns true
         /// </summary>
         [Fact]
         public void TryChangeToUri_ValidUri_ReturnsTrue()
@@ -2318,9 +2317,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.IsType<Uri>(value);
             Assert.Equal(input.ToString(), value.ToString());
         }
-                
+        
         /// <summary>
-        /// Tests that try change to uri invalid uri returns false
+        ///     Tests that try change to uri invalid uri returns false
         /// </summary>
         [Fact]
         public void TryChangeToUri_InvalidUri_ReturnsFalse()
@@ -2339,7 +2338,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to uri null input returns false
+        ///     Tests that try change to uri null input returns false
         /// </summary>
         [Fact]
         public void TryChangeToUri_NullInput_ReturnsFalse()
@@ -2350,7 +2349,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object value;
             
             // Act
-            Assert.Throws<NullReferenceException>( () => Conversions.TryChangeToUri(input, provider, out value));
+            Assert.Throws<NullReferenceException>(() => Conversions.TryChangeToUri(input, provider, out value));
         }
     }
 }

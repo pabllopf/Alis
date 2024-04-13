@@ -44,22 +44,22 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The enumerator
         /// </summary>
         private readonly IEnumerator enumerator;
-
+        
         /// <summary>
         ///     The value
         /// </summary>
         private readonly IEnumerable value;
-
+        
         /// <summary>
         ///     The key prop
         /// </summary>
         private PropertyInfo keyProp;
-
+        
         /// <summary>
         ///     The value prop
         /// </summary>
         private PropertyInfo valueProp;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="KeyValueTypeEnumerator" /> class
         /// </summary>
@@ -67,10 +67,10 @@ namespace Alis.Core.Aspect.Data.Json
         public KeyValueTypeEnumerator(object value)
         {
             this.value = (IEnumerable) value;
-
+            
             enumerator = this.value.GetEnumerator();
         }
-
+        
         /// <summary>
         ///     Gets the value of the entry
         /// </summary>
@@ -87,7 +87,7 @@ namespace Alis.Core.Aspect.Data.Json
                         valueProp = enumerator.Current.GetType().GetProperty("Value");
                     }
                 }
-
+                
                 if (valueProp != null)
                 {
                     if (keyProp != null)
@@ -95,37 +95,37 @@ namespace Alis.Core.Aspect.Data.Json
                         return new DictionaryEntry(keyProp.GetValue(enumerator.Current, null), valueProp.GetValue(enumerator.Current, null));
                     }
                 }
-
+                
                 throw new InvalidOperationException();
             }
         }
-
+        
         /// <summary>
         ///     Gets the value of the key
         /// </summary>
         public object Key => Entry.Key;
-
+        
         /// <summary>
         ///     Gets the value of the value
         /// </summary>
         public object Value => Entry.Value;
-
+        
         /// <summary>
         ///     Gets the value of the current
         /// </summary>
         public object Current => Entry;
-
+        
         /// <summary>
         ///     Describes whether this instance move next
         /// </summary>
         /// <returns>The bool</returns>
         public bool MoveNext() => enumerator.MoveNext();
-
+        
         /// <summary>
         ///     Resets this instance
         /// </summary>
         public void Reset() => enumerator.Reset();
-
+        
         /// <summary>
         ///     Disposes this instance
         /// </summary>
@@ -135,7 +135,7 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 disposable.Dispose();
             }
-
+            
             if (value is IDisposable disposableValue)
             {
                 disposableValue.Dispose();

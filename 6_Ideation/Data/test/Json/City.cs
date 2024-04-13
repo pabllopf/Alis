@@ -38,12 +38,12 @@ namespace Alis.Core.Aspect.Data.Test.Json
         ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the country
         /// </summary>
         public Country Country { get; set; }
-
+        
         /// <summary>
         ///     Returns the string
         /// </summary>

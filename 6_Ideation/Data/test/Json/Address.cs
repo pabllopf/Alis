@@ -38,12 +38,12 @@ namespace Alis.Core.Aspect.Data.Test.Json
         ///     Gets or sets the value of the city
         /// </summary>
         public City City { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the zip code
         /// </summary>
         public int ZipCode { get; set; }
-
+        
         /// <summary>
         ///     Returns the string
         /// </summary>

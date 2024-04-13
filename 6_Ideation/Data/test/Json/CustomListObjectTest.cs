@@ -52,7 +52,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             customListObject.Clear();
             Assert.Empty(customListObject.List as IList ?? throw new InvalidOperationException());
         }
-
+        
         /// <summary>
         ///     Tests that clear list is not empty clears list
         /// </summary>

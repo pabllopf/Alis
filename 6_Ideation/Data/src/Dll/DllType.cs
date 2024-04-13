@@ -38,12 +38,12 @@ namespace Alis.Core.Aspect.Data.Dll
         ///     The exe dll type
         /// </summary>
         Exe,
-
+        
         /// <summary>
         ///     The lib dll type
         /// </summary>
         Lib,
-
+        
         /// <summary>
         ///     The file dll type
         /// </summary>

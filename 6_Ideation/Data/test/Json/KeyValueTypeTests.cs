@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:KeyValueTypeTest.cs
+//  File:KeyValueTypeTests.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,14 +33,13 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Data.Test.Json
 {
-
     /// <summary>
-    /// The key value type tests class
+    ///     The key value type tests class
     /// </summary>
     public class KeyValueTypeTests
     {
         /// <summary>
-        /// Tests that key type set get
+        ///     Tests that key type set get
         /// </summary>
         [Fact]
         public void KeyType_Set_Get()
@@ -48,16 +47,16 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             KeyValueType keyValueType = new KeyValueType();
             Type expectedType = typeof(int);
-
+            
             // Act
             keyValueType.KeyType = expectedType;
-
+            
             // Assert
             Assert.Equal(expectedType, keyValueType.KeyType);
         }
-
+        
         /// <summary>
-        /// Tests that value type set get
+        ///     Tests that value type set get
         /// </summary>
         [Fact]
         public void ValueType_Set_Get()
@@ -65,10 +64,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             KeyValueType keyValueType = new KeyValueType();
             Type expectedType = typeof(string);
-
+            
             // Act
             keyValueType.ValueType = expectedType;
-
+            
             // Assert
             Assert.Equal(expectedType, keyValueType.ValueType);
         }

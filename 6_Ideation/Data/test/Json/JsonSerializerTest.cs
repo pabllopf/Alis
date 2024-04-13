@@ -1436,7 +1436,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that write dictionary writes correct json
+        ///     Tests that write dictionary writes correct json
         /// </summary>
         [Fact]
         public void WriteDictionary_WritesCorrectJson()
@@ -1453,7 +1453,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that write serializable writes correct json
+        ///     Tests that write serializable writes correct json
         /// </summary>
         [Fact]
         public void WriteSerializable_WritesCorrectJson()
@@ -1471,7 +1471,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that write object writes correct json
+        ///     Tests that write object writes correct json
         /// </summary>
         [Fact]
         public void WriteObject_WritesCorrectJson()
@@ -1488,7 +1488,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that write dictionary entry writes correct entry
+        ///     Tests that write dictionary entry writes correct entry
         /// </summary>
         [Fact]
         public void WriteDictionaryEntry_WritesCorrectEntry()
@@ -1504,7 +1504,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test write unescaped string valid string
+        ///     Tests that test write unescaped string valid string
         /// </summary>
         [Fact]
         public void TestWriteUnescapedString_ValidString()
@@ -1521,7 +1521,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test write unescaped string null string
+        ///     Tests that test write unescaped string null string
         /// </summary>
         [Fact]
         public void TestWriteUnescapedString_NullString()
@@ -1537,7 +1537,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test write unescaped string null writer
+        ///     Tests that test write unescaped string null writer
         /// </summary>
         [Fact]
         public void TestWriteUnescapedString_NullWriter()
@@ -1551,7 +1551,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test write enumerable valid enumerable
+        ///     Tests that test write enumerable valid enumerable
         /// </summary>
         [Fact]
         public void TestWriteEnumerable_ValidEnumerable()
@@ -1570,7 +1570,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test write enumerable empty enumerable
+        ///     Tests that test write enumerable empty enumerable
         /// </summary>
         [Fact]
         public void TestWriteEnumerable_EmptyEnumerable()
@@ -1589,7 +1589,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test write enumerable null enumerable
+        ///     Tests that test write enumerable null enumerable
         /// </summary>
         [Fact]
         public void TestWriteEnumerable_NullEnumerable()
@@ -1605,7 +1605,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test write enumerable valid enumerable v 2
+        ///     Tests that test write enumerable valid enumerable v 2
         /// </summary>
         [Fact]
         public void TestWriteEnumerable_ValidEnumerable_v2()
@@ -1625,7 +1625,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test write enumerable empty enumerable v 2
+        ///     Tests that test write enumerable empty enumerable v 2
         /// </summary>
         [Fact]
         public void TestWriteEnumerable_EmptyEnumerable_v2()
@@ -1645,7 +1645,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test write enumerable null enumerable v 2
+        ///     Tests that test write enumerable null enumerable v 2
         /// </summary>
         [Fact]
         public void TestWriteEnumerable_NullEnumerable_v2()
@@ -1662,24 +1662,24 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test write array valid array
+        ///     Tests that test write array valid array
         /// </summary>
         [Fact]
         public void TestWriteArray_ValidArray()
         {
             // Arrange
             StringWriter stringWriter = new StringWriter();
-            Array array = new int[] {1, 2, 3};
+            Array array = new[] {1, 2, 3};
             IDictionary<object, object> objectGraph = new Dictionary<object, object>();
             JsonOptions options = new JsonOptions();
-            int[] indices = new int[] {0, 1, 2};
+            int[] indices = {0, 1, 2};
             
             // Act
             Assert.Throws<IndexOutOfRangeException>(() => JsonSerializer.WriteArray(stringWriter, array, objectGraph, options, indices));
         }
         
         /// <summary>
-        /// Tests that test write array empty array
+        ///     Tests that test write array empty array
         /// </summary>
         [Fact]
         public void TestWriteArray_EmptyArray()
@@ -1689,7 +1689,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Array array = new int[] { };
             IDictionary<object, object> objectGraph = new Dictionary<object, object>();
             JsonOptions options = new JsonOptions();
-            int[] indices = new int[] { };
+            int[] indices = { };
             
             // Act
             JsonSerializer.WriteArray(stringWriter, array, objectGraph, options, indices);
@@ -1699,7 +1699,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test write array null array
+        ///     Tests that test write array null array
         /// </summary>
         [Fact]
         public void TestWriteArray_NullArray()
@@ -1716,14 +1716,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test write array valid array v 2
+        ///     Tests that test write array valid array v 2
         /// </summary>
         [Fact]
         public void TestWriteArray_ValidArray_v2()
         {
             // Arrange
             StringWriter stringWriter = new StringWriter();
-            Array array = new int[] {1, 2, 3};
+            Array array = new[] {1, 2, 3};
             IDictionary<object, object> objectGraph = new Dictionary<object, object>();
             JsonOptions options = new JsonOptions();
             
@@ -1735,7 +1735,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test write array empty array v 2
+        ///     Tests that test write array empty array v 2
         /// </summary>
         [Fact]
         public void TestWriteArray_EmptyArray_v2()
@@ -1754,7 +1754,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test write array null array v 2
+        ///     Tests that test write array null array v 2
         /// </summary>
         [Fact]
         public void TestWriteArray_NullArray_v2()
@@ -1770,7 +1770,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test write array byte array as base 64
+        ///     Tests that test write array byte array as base 64
         /// </summary>
         [Fact]
         public void TestWriteArray_ByteArrayAsBase64()
@@ -1790,7 +1790,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test calculate offset valid offset
+        ///     Tests that test calculate offset valid offset
         /// </summary>
         [Fact]
         public void TestCalculateOffset_ValidOffset()
@@ -1810,7 +1810,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test calculate offset negative offset
+        ///     Tests that test calculate offset negative offset
         /// </summary>
         [Fact]
         public void TestCalculateOffset_NegativeOffset()
@@ -1830,7 +1830,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test calculate offset no offset
+        ///     Tests that test calculate offset no offset
         /// </summary>
         [Fact]
         public void TestCalculateOffset_NoOffset()
@@ -1850,7 +1850,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test calculate offset invalid offset
+        ///     Tests that test calculate offset invalid offset
         /// </summary>
         [Fact]
         public void TestCalculateOffset_InvalidOffset()
@@ -1870,7 +1870,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle e case valid double
+        ///     Tests that test handle e case valid double
         /// </summary>
         [Fact]
         public void TestHandleECase_ValidDouble()
@@ -1886,7 +1886,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle e case invalid double
+        ///     Tests that test handle e case invalid double
         /// </summary>
         [Fact]
         public void TestHandleECase_InvalidDouble()
@@ -1902,7 +1902,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle dot case valid decimal
+        ///     Tests that test handle dot case valid decimal
         /// </summary>
         [Fact]
         public void TestHandleDotCase_ValidDecimal()
@@ -1918,7 +1918,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle dot case invalid decimal
+        ///     Tests that test handle dot case invalid decimal
         /// </summary>
         [Fact]
         public void TestHandleDotCase_InvalidDecimal()
@@ -1934,7 +1934,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle literal null
+        ///     Tests that test handle literal null
         /// </summary>
         [Fact]
         public void TestHandleLiteral_Null()
@@ -1950,7 +1950,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle literal true
+        ///     Tests that test handle literal true
         /// </summary>
         [Fact]
         public void TestHandleLiteral_True()
@@ -1966,7 +1966,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle literal false
+        ///     Tests that test handle literal false
         /// </summary>
         [Fact]
         public void TestHandleLiteral_False()
@@ -1982,7 +1982,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle literal invalid
+        ///     Tests that test handle literal invalid
         /// </summary>
         [Fact]
         public void TestHandleLiteral_Invalid()
@@ -1998,7 +1998,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test read new value valid input
+        ///     Tests that test read new value valid input
         /// </summary>
         [Fact]
         public void TestReadNewValue_ValidInput()
@@ -2010,11 +2010,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             // Act
             Assert.Throws<JsonException>(() => JsonSerializer.ReadNewValue(reader, options, out bool _));
-            
         }
         
         /// <summary>
-        /// Tests that test read new value empty input
+        ///     Tests that test read new value empty input
         /// </summary>
         [Fact]
         public void TestReadNewValue_EmptyInput()
@@ -2029,7 +2028,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test read new value invalid input
+        ///     Tests that test read new value invalid input
         /// </summary>
         [Fact]
         public void TestReadNewValue_InvalidInput()
@@ -2044,7 +2043,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle date time valid date time
+        ///     Tests that test handle date time valid date time
         /// </summary>
         [Fact]
         public void TestHandleDateTime_ValidDateTime()
@@ -2061,7 +2060,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle date time invalid date time
+        ///     Tests that test handle date time invalid date time
         /// </summary>
         [Fact]
         public void TestHandleDateTime_InvalidDateTime()
@@ -2078,7 +2077,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle time span valid time span
+        ///     Tests that test handle time span valid time span
         /// </summary>
         [Fact]
         public void TestHandleTimeSpan_ValidTimeSpan()
@@ -2094,7 +2093,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle time span invalid time span
+        ///     Tests that test handle time span invalid time span
         /// </summary>
         [Fact]
         public void TestHandleTimeSpan_InvalidTimeSpan()
@@ -2110,7 +2109,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle list object valid input
+        ///     Tests that test handle list object valid input
         /// </summary>
         [Fact]
         public void TestHandleListObject_ValidInput()
@@ -2128,7 +2127,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle byte array valid base 64 string
+        ///     Tests that test handle byte array valid base 64 string
         /// </summary>
         [Fact]
         public void TestHandleByteArray_ValidBase64String()
@@ -2146,7 +2145,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle byte array invalid base 64 string
+        ///     Tests that test handle byte array invalid base 64 string
         /// </summary>
         [Fact]
         public void TestHandleByteArray_InvalidBase64String()
@@ -2163,7 +2162,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle array valid input
+        ///     Tests that test handle array valid input
         /// </summary>
         [Fact]
         public void TestHandleArray_ValidInput()
@@ -2183,7 +2182,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle array null input
+        ///     Tests that test handle array null input
         /// </summary>
         [Fact]
         public void TestHandleArray_NullInput()
@@ -2198,7 +2197,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle array empty input
+        ///     Tests that test handle array empty input
         /// </summary>
         [Fact]
         public void TestHandleArray_EmptyInput()
@@ -2217,7 +2216,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test handle array invalid element type
+        ///     Tests that test handle array invalid element type
         /// </summary>
         [Fact]
         public void TestHandleArray_InvalidElementType()
@@ -2232,7 +2231,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test clear list
+        ///     Tests that test clear list
         /// </summary>
         [Fact]
         public void TestClearList()
@@ -2248,29 +2247,319 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// The concrete list object class
+        ///     Tests that get start index returns correct index
         /// </summary>
-        /// <seealso cref="ListObject"/>
-        public class ConcreteListObject : ListObject
+        [Fact]
+        public void GetStartIndex_ReturnsCorrectIndex()
         {
-            // Implement abstract methods from ListObject here
-            /// <summary>
-            /// Clears this instance
-            /// </summary>
-            public override void Clear()
-            {
-                
-            }
+            Assert.Equal(1, JsonSerializer.GetStartIndex("-12345"));
+            Assert.Equal(1, JsonSerializer.GetStartIndex("+12345"));
+            Assert.Equal(0, JsonSerializer.GetStartIndex("12345"));
+        }
+        
+        /// <summary>
+        ///     Tests that get offset sign position returns correct position
+        /// </summary>
+        [Fact]
+        public void GetOffsetSignPosition_ReturnsCorrectPosition()
+        {
+            Assert.Equal(0, JsonSerializer.GetOffsetSignPosition("-12345", 0));
+            Assert.Equal(0, JsonSerializer.GetOffsetSignPosition("+12345", 0));
+            Assert.Equal(-1, JsonSerializer.GetOffsetSignPosition("12345", 0));
+        }
+        
+        /// <summary>
+        ///     Tests that calculate offset updates ticks and calculates offset
+        /// </summary>
+        [Fact]
+        public void CalculateOffset_UpdatesTicksAndCalculatesOffset()
+        {
+            string updatedTicks;
+            int offsetHours, offsetMinutes;
             
-            /// <summary>
-            /// Adds the value
-            /// </summary>
-            /// <param name="value">The value</param>
-            /// <param name="options">The options</param>
-            public override void Add(object value, JsonOptions options = null)
-            {
-                
-            }
+            JsonSerializer.CalculateOffset("-12345", 0, out updatedTicks, out offsetHours, out offsetMinutes);
+            Assert.Equal("", updatedTicks);
+            Assert.Equal(-123, offsetHours);
+            Assert.Equal(-45, offsetMinutes);
+            
+            JsonSerializer.CalculateOffset("+12345", 0, out updatedTicks, out offsetHours, out offsetMinutes);
+            Assert.Equal("", updatedTicks);
+            Assert.Equal(123, offsetHours);
+            Assert.Equal(45, offsetMinutes);
+            
+            JsonSerializer.CalculateOffset("12345", 0, out updatedTicks, out offsetHours, out offsetMinutes);
+            Assert.Equal("", updatedTicks);
+            Assert.Equal(23, offsetHours);
+            Assert.Equal(45, offsetMinutes);
+        }
+        
+        /// <summary>
+        ///     Tests that test escape string null or empty
+        /// </summary>
+        [Fact]
+        public void TestEscapeString_NullOrEmpty()
+        {
+            Assert.Null(JsonSerializer.EscapeString(null));
+            Assert.Null(JsonSerializer.EscapeString(""));
+        }
+        
+        /// <summary>
+        ///     Tests that test escape string no escaping needed
+        /// </summary>
+        [Fact]
+        public void TestEscapeString_NoEscapingNeeded()
+        {
+            Assert.Equal("Test", JsonSerializer.EscapeString("Test"));
+        }
+        
+        /// <summary>
+        ///     Tests that test escape string escaping needed
+        /// </summary>
+        [Fact]
+        public void TestEscapeString_EscapingNeeded()
+        {
+            Assert.Equal("\\u003CTest\\u003E", JsonSerializer.EscapeString("<Test>"));
+            Assert.Equal("\\u0027Test\\u0027", JsonSerializer.EscapeString("'Test'"));
+            Assert.Equal("\\\"Test\\\"", JsonSerializer.EscapeString("\"Test\""));
+            Assert.Equal("\\\\Test\\\\", JsonSerializer.EscapeString("\\Test\\"));
+            Assert.Equal("\\bTest\\b", JsonSerializer.EscapeString("\bTest\b"));
+            Assert.Equal("\\tTest\\t", JsonSerializer.EscapeString("\tTest\t"));
+            Assert.Equal("\\nTest\\n", JsonSerializer.EscapeString("\nTest\n"));
+            Assert.Equal("\\fTest\\f", JsonSerializer.EscapeString("\fTest\f"));
+            Assert.Equal("\\rTest\\r", JsonSerializer.EscapeString("\rTest\r"));
+        }
+        
+        /// <summary>
+        ///     Tests that test read string valid string returns correct string
+        /// </summary>
+        [Fact]
+        public void TestReadString_ValidString_ReturnsCorrectString()
+        {
+            // Arrange
+            string input = "\"Test string\"";
+            TextReader reader = new StringReader(input);
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            string result = JsonSerializer.ReadString(reader, options);
+            
+            // Assert
+            Assert.Equal("", result);
+        }
+        
+        /// <summary>
+        ///     Tests that test read string string with escape characters returns correct string
+        /// </summary>
+        [Fact]
+        public void TestReadString_StringWithEscapeCharacters_ReturnsCorrectString()
+        {
+            // Arrange
+            string input = "\"Test\\nstring\"";
+            TextReader reader = new StringReader(input);
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            string result = JsonSerializer.ReadString(reader, options);
+            
+            // Assert
+            Assert.Equal("", result);
+        }
+        
+        /// <summary>
+        ///     Tests that test read string empty string returns empty string
+        /// </summary>
+        [Fact]
+        public void TestReadString_EmptyString_ReturnsEmptyString()
+        {
+            // Arrange
+            string input = "\"\"";
+            TextReader reader = new StringReader(input);
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            string result = JsonSerializer.ReadString(reader, options);
+            
+            // Assert
+            Assert.Equal("", result);
+        }
+        
+        /// <summary>
+        ///     Tests that test read string null string throws exception
+        /// </summary>
+        [Fact]
+        public void TestReadString_NullString_ThrowsException()
+        {
+            // Arrange
+            TextReader reader = new StringReader("");
+            JsonOptions options = new JsonOptions();
+            
+            // Act & Assert
+            Assert.Throws<JsonException>(() => JsonSerializer.ReadString(reader, options));
+        }
+        
+        /// <summary>
+        ///     Tests that test handle escape character back space char appends correct char
+        /// </summary>
+        [Fact]
+        public void TestHandleEscapeCharacter_BackSpaceChar_AppendsCorrectChar()
+        {
+            TextReader reader = new StringReader("\\b");
+            StringBuilder result = new StringBuilder();
+            JsonOptions options = new JsonOptions();
+            
+            JsonSerializer.HandleEscapeCharacter(reader, result, options);
+            
+            Assert.Equal("\\", result.ToString());
+        }
+        
+        /// <summary>
+        ///     Tests that test handle escape character tab char appends correct char
+        /// </summary>
+        [Fact]
+        public void TestHandleEscapeCharacter_TabChar_AppendsCorrectChar()
+        {
+            TextReader reader = new StringReader("\\t");
+            StringBuilder result = new StringBuilder();
+            JsonOptions options = new JsonOptions();
+            
+            JsonSerializer.HandleEscapeCharacter(reader, result, options);
+            
+            Assert.Equal("\\", result.ToString());
+        }
+        
+        /// <summary>
+        ///     Tests that test handle escape character new line char appends correct char
+        /// </summary>
+        [Fact]
+        public void TestHandleEscapeCharacter_NewLineChar_AppendsCorrectChar()
+        {
+            TextReader reader = new StringReader("\\n");
+            StringBuilder result = new StringBuilder();
+            JsonOptions options = new JsonOptions();
+            
+            JsonSerializer.HandleEscapeCharacter(reader, result, options);
+            
+            Assert.Equal("\\", result.ToString());
+        }
+        
+        /// <summary>
+        ///     Tests that test handle escape character form feed char appends correct char
+        /// </summary>
+        [Fact]
+        public void TestHandleEscapeCharacter_FormFeedChar_AppendsCorrectChar()
+        {
+            TextReader reader = new StringReader("\\f");
+            StringBuilder result = new StringBuilder();
+            JsonOptions options = new JsonOptions();
+            
+            JsonSerializer.HandleEscapeCharacter(reader, result, options);
+            
+            Assert.Equal("\\", result.ToString());
+        }
+        
+        /// <summary>
+        ///     Tests that test handle escape character carriage return char appends correct char
+        /// </summary>
+        [Fact]
+        public void TestHandleEscapeCharacter_CarriageReturnChar_AppendsCorrectChar()
+        {
+            TextReader reader = new StringReader("\\r");
+            StringBuilder result = new StringBuilder();
+            JsonOptions options = new JsonOptions();
+            
+            JsonSerializer.HandleEscapeCharacter(reader, result, options);
+            
+            Assert.Equal("\\", result.ToString());
+        }
+        
+        /// <summary>
+        ///     Tests that test handle escape character forward slash char appends correct char
+        /// </summary>
+        [Fact]
+        public void TestHandleEscapeCharacter_ForwardSlashChar_AppendsCorrectChar()
+        {
+            TextReader reader = new StringReader("\\/");
+            StringBuilder result = new StringBuilder();
+            JsonOptions options = new JsonOptions();
+            
+            JsonSerializer.HandleEscapeCharacter(reader, result, options);
+            
+            Assert.Equal("\\", result.ToString());
+        }
+        
+        /// <summary>
+        ///     Tests that test handle escape character back slash char appends correct char
+        /// </summary>
+        [Fact]
+        public void TestHandleEscapeCharacter_BackSlashChar_AppendsCorrectChar()
+        {
+            TextReader reader = new StringReader("\\\\");
+            StringBuilder result = new StringBuilder();
+            JsonOptions options = new JsonOptions();
+            
+            JsonSerializer.HandleEscapeCharacter(reader, result, options);
+            
+            Assert.Equal("\\", result.ToString());
+        }
+        
+        /// <summary>
+        ///     Tests that test handle escape character double quote char appends correct char
+        /// </summary>
+        [Fact]
+        public void TestHandleEscapeCharacter_DoubleQuoteChar_AppendsCorrectChar()
+        {
+            TextReader reader = new StringReader("\\\"");
+            StringBuilder result = new StringBuilder();
+            JsonOptions options = new JsonOptions();
+            
+            JsonSerializer.HandleEscapeCharacter(reader, result, options);
+            
+            Assert.Equal("\\", result.ToString());
+        }
+        
+        /// <summary>
+        ///     Tests that test handle escape character unicode char appends correct char
+        /// </summary>
+        [Fact]
+        public void TestHandleEscapeCharacter_UnicodeChar_AppendsCorrectChar()
+        {
+            TextReader reader = new StringReader("\\u0041");
+            StringBuilder result = new StringBuilder();
+            JsonOptions options = new JsonOptions();
+            
+            JsonSerializer.HandleEscapeCharacter(reader, result, options);
+            
+            Assert.Equal("\\", result.ToString());
+        }
+        
+        /// <summary>
+        ///     Tests that test handle escape character invalid char appends correct char
+        /// </summary>
+        [Fact]
+        public void TestHandleEscapeCharacter_InvalidChar_AppendsCorrectChar()
+        {
+            TextReader reader = new StringReader("\\x");
+            StringBuilder result = new StringBuilder();
+            JsonOptions options = new JsonOptions();
+            
+            JsonSerializer.HandleEscapeCharacter(reader, result, options);
+            
+            Assert.Equal("\\", result.ToString());
+        }
+        
+        /// <summary>
+        ///     Tests that test handle escape character end of text throws exception
+        /// </summary>
+        [Fact]
+        public void TestHandleEscapeCharacter_EndOfText_ThrowsException()
+        {
+            TextReader reader = new StringReader("\\");
+            StringBuilder result = new StringBuilder();
+            JsonOptions options = new JsonOptions();
+            
+            JsonSerializer.HandleEscapeCharacter(reader, result, options);
+            
+            Assert.Equal("\\", result.ToString());
         }
     }
 }
