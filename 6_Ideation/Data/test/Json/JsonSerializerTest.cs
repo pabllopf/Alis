@@ -3485,7 +3485,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonSerializer.ProcessListInput(target, input, list, itemType, options);
             
             // Assert
-          Assert.Null(list.List);
+            Assert.Null(list.List);
         }
         
         /// <summary>
@@ -3526,6 +3526,71 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             // Assert
             Assert.NotEqual(input.Count, list.List);
+        }
+        
+        /// <summary>
+        /// Tests that write dictionary writes correct json when dictionary is not empty
+        /// </summary>
+        [Fact]
+        public void WriteDictionary_WritesCorrectJson_WhenDictionaryIsNotEmpty()
+        {
+            // Arrange
+            IndentedTextWriter writer = new IndentedTextWriter(new StringWriter());
+            Dictionary<string, string> dictionary = new Dictionary<string, string> {{"key1", "value1"}, {"key2", "value2"}};
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.WriteDictionary(writer, dictionary, options);
+            
+            // Assert
+            Assert.NotNull(writer.InnerWriter.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that write dictionary writes empty json when dictionary is empty
+        /// </summary>
+        [Fact]
+        public void WriteDictionary_WritesEmptyJson_WhenDictionaryIsEmpty()
+        {
+            // Arrange
+            IndentedTextWriter writer = new IndentedTextWriter(new StringWriter());
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.WriteDictionary(writer, dictionary, options);
+            
+            // Assert
+            string expectedJson =  "{\n}\n";
+            Assert.Equal(expectedJson, writer.InnerWriter.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that write dictionary throws exception when writer is null
+        /// </summary>
+        [Fact]
+        public void WriteDictionary_ThrowsException_WhenWriterIsNull()
+        {
+            // Arrange
+            Dictionary<string, string> dictionary = new Dictionary<string, string> {{"key", "value"}};
+            JsonOptions options = new JsonOptions();
+            
+            // Act & Assert
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.WriteDictionary(null, dictionary, options));
+        }
+        
+        /// <summary>
+        /// Tests that write dictionary throws exception when dictionary is null
+        /// </summary>
+        [Fact]
+        public void WriteDictionary_ThrowsException_WhenDictionaryIsNull()
+        {
+            // Arrange
+            IndentedTextWriter writer = new IndentedTextWriter(new StringWriter());
+            JsonOptions options = new JsonOptions();
+            
+            // Act & Assert
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.WriteDictionary(writer, null, options));
         }
     }
 }

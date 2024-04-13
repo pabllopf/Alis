@@ -351,7 +351,7 @@ namespace Alis.Core.Aspect.Data.Json
         internal static bool TryConvertToUri(string inputString, out object result)
         {
             result = null;
-
+            
             if (string.IsNullOrEmpty(inputString))
             {
                 return false;
@@ -558,7 +558,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="type">The type to get the converter for.</param>
         /// <returns>The type converter for the specified type.</returns>
-        private static TypeConverter GetConverter(Type type)
+        internal static TypeConverter GetConverter(Type type)
         {
             return TypeDescriptor.GetConverter(type);
         }
@@ -954,36 +954,52 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Describes whether try parse token values
+        ///     Attempts to parse token values.
         /// </summary>
         /// <param name="tokens">The tokens</param>
         /// <param name="type">The type</param>
         /// <param name="names">The names</param>
         /// <param name="values">The values</param>
         /// <param name="value">The value</param>
-        /// <returns>The bool</returns>
+        /// <returns>True if parsing was successful, false otherwise</returns>
         internal static bool TryParseTokenValues(string[] tokens, Type type, string[] names, Array values, out object value)
         {
-            ulong ul = 0;
-            foreach (string tok in tokens)
+            ulong parsedValue = 0;
+            
+            foreach (string token in tokens)
             {
-                string token = tok.Nullify();
-                if (token == null)
+                string sanitizedToken = token.Nullify();
+                
+                if (sanitizedToken == null)
                 {
                     continue;
                 }
                 
-                if (!StringToEnum(type, names, values, token, out object tokenValue))
+                if (!TryConvertTokenToEnumValue(type, names, values, sanitizedToken, out object tokenValue))
                 {
                     value = Activator.CreateInstance(type);
                     return false;
                 }
                 
-                ul |= ConvertTokenValueToUlong(tokenValue);
+                parsedValue |= ConvertTokenValueToUlong(tokenValue);
             }
             
-            value = Enum.ToObject(type, ul);
+            value = Enum.ToObject(type, parsedValue);
             return true;
+        }
+        
+        /// <summary>
+        /// Describes whether try convert token to enum value
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="names">The names</param>
+        /// <param name="values">The values</param>
+        /// <param name="token">The token</param>
+        /// <param name="tokenValue">The token value</param>
+        /// <returns>The bool</returns>
+        internal static bool TryConvertTokenToEnumValue(Type type, string[] names, Array values, string token, out object tokenValue)
+        {
+            return StringToEnum(type, names, values, token, out tokenValue);
         }
         
         /// <summary>
