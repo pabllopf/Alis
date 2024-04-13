@@ -697,57 +697,57 @@ namespace Alis.Core.Aspect.Data.Json
             }
         }
         
-       /// <summary>
-/// Processes the list input using the specified target
-/// </summary>
-/// <param name="target">The target</param>
-/// <param name="input">The input</param>
-/// <param name="list">The list</param>
-/// <param name="itemType">The item type</param>
-/// <param name="options">The options</param>
-internal static void ProcessListInput(object target, IEnumerable input, ListObject list, Type itemType, JsonOptions options)
-{
-    foreach (object value in input)
-    {
-        object convertedValue = ChangeType(target, value, itemType, options);
-        convertedValue = UpdateValueBasedOnContext(list, itemType, value, convertedValue);
-        list.Add(convertedValue, options);
-    }
-}
-
-/// <summary>
-
-/// Updates the value based on context using the specified list
-
-/// </summary>
-
-/// <param name="list">The list</param>
-
-/// <param name="itemType">The item type</param>
-
-/// <param name="value">The value</param>
-
-/// <param name="convertedValue">The converted value</param>
-
-/// <returns>The converted value</returns>
-
-private static object UpdateValueBasedOnContext(ListObject list, Type itemType, object value, object convertedValue)
-{
-    if (list.Context != null)
-    {
-        list.Context["action"] = "add";
-        list.Context["itemType"] = itemType;
-        list.Context["value"] = value;
-        list.Context["cvalue"] = convertedValue;
-
-        if (list.Context.TryGetValue("cvalue", out object newConvertedValue))
+        /// <summary>
+        /// Processes the list input using the specified target
+        /// </summary>
+        /// <param name="target">The target</param>
+        /// <param name="input">The input</param>
+        /// <param name="list">The list</param>
+        /// <param name="itemType">The item type</param>
+        /// <param name="options">The options</param>
+        internal static void ProcessListInput(object target, IEnumerable input, ListObject list, Type itemType, JsonOptions options)
         {
-            convertedValue = newConvertedValue;
+            foreach (object value in input)
+            {
+                object convertedValue = ChangeType(target, value, itemType, options);
+                convertedValue = UpdateValueBasedOnContext(list, itemType, value, convertedValue);
+                list.Add(convertedValue, options);
+            }
         }
-    }
-
-    return convertedValue;
-}
+        
+        /// <summary>
+        
+        /// Updates the value based on context using the specified list
+        
+        /// </summary>
+        
+        /// <param name="list">The list</param>
+        
+        /// <param name="itemType">The item type</param>
+        
+        /// <param name="value">The value</param>
+        
+        /// <param name="convertedValue">The converted value</param>
+        
+        /// <returns>The converted value</returns>
+        
+        private static object UpdateValueBasedOnContext(ListObject list, Type itemType, object value, object convertedValue)
+        {
+            if (list.Context != null)
+            {
+                list.Context["action"] = "add";
+                list.Context["itemType"] = itemType;
+                list.Context["value"] = value;
+                list.Context["cvalue"] = convertedValue;
+                
+                if (list.Context.TryGetValue("cvalue", out object newConvertedValue))
+                {
+                    convertedValue = newConvertedValue;
+                }
+            }
+            
+            return convertedValue;
+        }
         
         /// <summary>
         ///     Clears the list using the specified list
@@ -3827,8 +3827,8 @@ private static object UpdateValueBasedOnContext(ListObject list, Type itemType, 
             writer.Indent--;
         }
         
-        /// <summary>
-        ///     Writes the dictionary using the specified writer
+        //// <summary>
+        /// Writes the dictionary using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="dictionary">The dictionary</param>
@@ -3836,25 +3836,22 @@ private static object UpdateValueBasedOnContext(ListObject list, Type itemType, 
         internal static void WriteDictionary(IndentedTextWriter writer, IDictionary dictionary, JsonOptions options)
         {
             writer.WriteLine('{');
-            bool first = true;
             writer.Indent++;
-            foreach (DictionaryEntry entry2 in dictionary)
+            
+            bool isFirstEntry = true;
+            foreach (DictionaryEntry entry in dictionary)
             {
-                if (!first)
+                if (!isFirstEntry)
                 {
                     writer.WriteLine(',');
                 }
-                else
-                {
-                    first = false;
-                }
                 
-                WriteFormatted(writer, entry2, options);
+                WriteFormatted(writer, entry, options);
+                isFirstEntry = false;
             }
             
             writer.Indent--;
-            writer.WriteLine();
-            writer.Write('}');
+            writer.WriteLine('}');
         }
         
         /// <summary>
