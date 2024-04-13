@@ -187,7 +187,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Gets or sets a callback that is called before an instance of an object is created.
         /// </summary>
         /// <value>The callback.</value>
-        public JsonCallback CreateInstanceCallback { get; private set; }
+        public JsonCallback CreateInstanceCallback { get; internal set; }
         
         /// <summary>
         ///     Gets or sets a callback that is called during deserialization, before a dictionary entry is mapped to a target
