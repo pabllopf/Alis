@@ -627,7 +627,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="list">The list</param>
         /// <param name="options">The options</param>
-        private static void ProcessInputBasedOnCondition(object target, IEnumerable input, ListObject list, JsonOptions options)
+        internal static void ProcessInputBasedOnCondition(object target, IEnumerable input, ListObject list, JsonOptions options)
         {
             if (input != null)
             {
@@ -643,13 +643,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// Clears the context if not null using the specified list
         /// </summary>
         /// <param name="list">The list</param>
-        private static void ClearContextIfNotNull(ListObject list)
-        {
-            if (list.Context != null)
-            {
-                list.Context.Clear();
-            }
-        }
+        internal static void ClearContextIfNotNull(ListObject list) => list.Context?.Clear();
         
         /// <summary>
         ///     Initializes the list context using the specified list
@@ -892,18 +886,19 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Gets the object name using the specified mi
+        ///     Gets the object name using the specified member info
         /// </summary>
-        /// <param name="mi">The mi</param>
+        /// <param name="memberInfo">The member info</param>
         /// <param name="defaultName">The default name</param>
-        /// <returns>The default name</returns>
-        internal static string GetObjectName(MemberInfo mi, string defaultName)
+        /// <returns>The object name if found, otherwise the default name</returns>
+        internal static string GetObjectName(MemberInfo memberInfo, string defaultName)
         {
-            object[] objects = mi.GetCustomAttributes(true);
-            foreach (Attribute att in objects.Cast<Attribute>())
+            IEnumerable<Attribute> attributes = memberInfo.GetCustomAttributes(true).OfType<Attribute>();
+            
+            foreach (Attribute attribute in attributes)
             {
-                string name = GetObjectName(att);
-                if (name != null)
+                string name = GetObjectName(attribute);
+                if (!string.IsNullOrEmpty(name))
                 {
                     return name;
                 }
@@ -1336,27 +1331,27 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Handles the byte array using the specified str
+        /// Handles the byte array using the specified string.
         /// </summary>
-        /// <param name="str">The str</param>
-        /// <param name="options">The options</param>
-        /// <returns>The str</returns>
-        internal static object HandleByteArray(string str, JsonOptions options)
+        /// <param name="base64String">The base64 string.</param>
+        /// <param name="options">The JSON options.</param>
+        /// <returns>The byte array if the string can be converted, otherwise the original string.</returns>
+        internal static object HandleByteArray(string base64String, JsonOptions options)
         {
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.ByteArrayAsBase64))
+            if (!options.SerializationOptions.HasFlag(JsonSerializationOptions.ByteArrayAsBase64))
             {
-                try
-                {
-                    return Convert.FromBase64String(str);
-                }
-                catch (Exception e)
-                {
-                    HandleException(new JsonException("JSO0013: JSON deserialization error with a base64 array as string.", e), options);
-                    return null;
-                }
+                return base64String;
             }
             
-            return str;
+            try
+            {
+                return Convert.FromBase64String(base64String);
+            }
+            catch (Exception e)
+            {
+                HandleException(new JsonException("JSO0013: JSON deserialization error with a base64 array as string.", e), options);
+                return null;
+            }
         }
         
         /// <summary>
@@ -1485,33 +1480,60 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The long</returns>
         internal static long GetPosition(TextReader reader)
         {
-            switch (reader)
+            if (reader == null)
             {
-                case null:
-                    return -1;
-                case StreamReader sr:
-                    try
-                    {
-                        return sr.BaseStream.Position;
-                    }
-                    catch
-                    {
-                        return -1;
-                    }
-                
-                case StringReader str:
-                {
-                    FieldInfo fi = typeof(StringReader).GetField("_pos", BindingFlags.Instance | BindingFlags.NonPublic);
-                    if (fi != null)
-                    {
-                        return (int) fi.GetValue(str);
-                    }
-                    
-                    break;
-                }
+                return -1;
+            }
+            
+            if (reader is StreamReader sr)
+            {
+                return GetStreamReaderPosition(sr);
+            }
+            
+            if (reader is StringReader str)
+            {
+                return GetStringReaderPosition(str);
             }
             
             return -1;
+        }
+        
+        /// <summary>
+        
+        /// Gets the stream reader position using the specified sr
+        
+        /// </summary>
+        
+        /// <param name="sr">The sr</param>
+        
+        /// <returns>The long</returns>
+        
+        internal static long GetStreamReaderPosition(StreamReader sr)
+        {
+            try
+            {
+                return sr.BaseStream.Position;
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+        
+        /// <summary>
+        
+        /// Gets the string reader position using the specified str
+        
+        /// </summary>
+        
+        /// <param name="str">The str</param>
+        
+        /// <returns>The long</returns>
+        
+        internal static long GetStringReaderPosition(StringReader str)
+        {
+            FieldInfo fi = typeof(StringReader).GetField("_pos", BindingFlags.Instance | BindingFlags.NonPublic);
+            return fi != null ? (int) fi.GetValue(str) : -1;
         }
         
         /// <summary>
@@ -2280,37 +2302,33 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Describes whether try parse date time with specific format
+        ///     Tries to parse a date time with a specific format.
         /// </summary>
-        /// <param name="text">The text</param>
-        /// <param name="dt">The dt</param>
-        /// <returns>The bool</returns>
+        /// <param name="text">The text to parse.</param>
+        /// <param name="dt">The parsed DateTime if successful.</param>
+        /// <returns>True if parsing was successful, false otherwise.</returns>
         internal static bool TryParseDateTimeWithSpecificFormat(string text, out DateTime dt)
         {
-            int offsetHours = 0;
-            int offsetMinutes = 0;
-            
-            if (IsDateTimeFormatValid(text))
+            if (!IsDateTimeFormatValid(text))
             {
-                if (TryParseExactDateTime(text, out dt))
-                {
-                    return true;
-                }
-                
-                int tz = FindTimeZoneIndex(text);
-                string text2 = text;
-                
-                if (tz >= 0)
-                {
-                    CalculateOffset(text, tz, out offsetHours, out offsetMinutes);
-                    text2 = text.Substring(0, tz);
-                }
-                
-                return TryParseDateTimeWithOffset(text2, tz, offsetHours, offsetMinutes, out dt);
+                dt = DateTime.MinValue;
+                return false;
             }
             
-            dt = DateTime.MinValue;
-            return false;
+            if (TryParseExactDateTime(text, out dt))
+            {
+                return true;
+            }
+            
+            int timeZoneIndex = FindTimeZoneIndex(text);
+            if (timeZoneIndex < 0)
+            {
+                return TryParseDateTimeWithOffset(text, timeZoneIndex, 0, 0, out dt);
+            }
+            
+            CalculateOffset(text, timeZoneIndex, out int offsetHours, out int offsetMinutes);
+            string textWithoutTimeZone = text.Substring(0, timeZoneIndex);
+            return TryParseDateTimeWithOffset(textWithoutTimeZone, timeZoneIndex, offsetHours, offsetMinutes, out dt);
         }
         
         /// <summary>
@@ -2485,11 +2503,11 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="offsetMinutes">The offset minutes</param>
         internal static void CalculateOffset(string ticks, int pos, out string updatedTicks, out int offsetHours, out int offsetMinutes)
         {
-            bool isNegative = ticks[pos] == '-';
-            string offsetString = ticks.Substring(pos + 1).Trim();
-            updatedTicks = ticks.Substring(0, pos).Trim();
+            bool isNegative = IsNegative(ticks, pos);
+            updatedTicks = GetUpdatedTicks(ticks, pos);
+            string offsetString = GetOffsetString(ticks, pos);
             
-            if (!int.TryParse(offsetString, out int offsetValue))
+            if (!TryParseOffset(offsetString, out int offsetValue))
             {
                 offsetHours = 0;
                 offsetMinutes = 0;
@@ -2500,9 +2518,63 @@ namespace Alis.Core.Aspect.Data.Json
             
             if (isNegative)
             {
-                offsetHours = -offsetHours;
-                offsetMinutes = -offsetMinutes;
+                InvertOffset(ref offsetHours, ref offsetMinutes);
             }
+        }
+        
+        /// <summary>
+        /// Describes whether is negative
+        /// </summary>
+        /// <param name="ticks">The ticks</param>
+        /// <param name="pos">The pos</param>
+        /// <returns>The bool</returns>
+        internal static bool IsNegative(string ticks, int pos)
+        {
+            return ticks[pos] == '-';
+        }
+        
+        /// <summary>
+        /// Gets the updated ticks using the specified ticks
+        /// </summary>
+        /// <param name="ticks">The ticks</param>
+        /// <param name="pos">The pos</param>
+        /// <returns>The string</returns>
+        internal static string GetUpdatedTicks(string ticks, int pos)
+        {
+            return ticks.Substring(0, pos).Trim();
+        }
+        
+        /// <summary>
+        /// Gets the offset string using the specified ticks
+        /// </summary>
+        /// <param name="ticks">The ticks</param>
+        /// <param name="pos">The pos</param>
+        /// <returns>The string</returns>
+        internal static string GetOffsetString(string ticks, int pos)
+        {
+            return ticks.Substring(pos + 1).Trim();
+        }
+        
+        /// <summary>
+        /// Describes whether try parse offset
+        /// </summary>
+        /// <param name="offsetString">The offset string</param>
+        /// <param name="offsetValue">The offset value</param>
+        /// <returns>The bool</returns>
+        internal static bool TryParseOffset(string offsetString, out int offsetValue)
+        {
+            return int.TryParse(offsetString, out offsetValue);
+        }
+        
+        /// <summary>
+        /// Inverts the offset using the specified offset hours
+        /// </summary>
+        /// <param name="offsetHours">The offset hours</param>
+        /// <param name="offsetMinutes">The offset minutes</param>
+        internal static void InvertOffset(ref int offsetHours, ref int offsetMinutes)
+        {
+            offsetHours = -offsetHours;
+            offsetMinutes = -offsetMinutes;
         }
         
         /// <summary>
@@ -2588,7 +2660,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private static bool IsHexCharacter(char c)
+        internal static bool IsHexCharacter(char c)
         {
             return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f');
         }
@@ -2598,7 +2670,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The byte</returns>
-        private static byte ConvertHexCharacterToByte(char c)
+        internal static byte ConvertHexCharacterToByte(char c)
         {
             return c <= '9' ? (byte) (c - '0') : (byte) (c - 'a' + 10);
         }
@@ -2790,7 +2862,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Handles the object graph using the specified writer
+        /// Handles the object graph using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="value">The value</param>
@@ -2798,38 +2870,53 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         internal static void HandleObjectGraph(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
         {
-            if (objectGraph.ContainsKey(value))
+            try
             {
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.ContinueOnCycle))
+                if (objectGraph.ContainsKey(value))
                 {
-                    writer.Write(Null);
-                    return;
+                    HandleObjectGraphCycle(writer, value, options);
                 }
-                
+                else
+                {
+                    objectGraph.Add(value, null);
+                    options.SerializationLevel++;
+                    
+                    if (!HandleIDictionaryValue(writer, value, objectGraph, options) &&
+                        !HandleIEnumerableValue(writer, value, objectGraph, options) &&
+                        !HandleStreamValue(writer, value, objectGraph, options))
+                    {
+                        WriteObject(writer, value, objectGraph, options);
+                    }
+                }
+            }
+            finally
+            {
+                options.SerializationLevel--;
+            }
+        }
+        
+        /// <summary>
+        
+        /// Handles the object graph cycle using the specified writer
+        
+        /// </summary>
+        
+        /// <param name="writer">The writer</param>
+        
+        /// <param name="value">The value</param>
+        
+        /// <param name="options">The options</param>
+        
+        internal static void HandleObjectGraphCycle(TextWriter writer, object value, JsonOptions options)
+        {
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.ContinueOnCycle))
+            {
+                writer.Write(Null);
+            }
+            else
+            {
                 HandleException(new JsonException("JSO0009: Cyclic JSON serialization detected."), options);
-                return;
             }
-            
-            objectGraph.Add(value, null);
-            options.SerializationLevel++;
-            
-            if (HandleIDictionaryValue(writer, value, objectGraph, options))
-            {
-                return;
-            }
-            
-            if (HandleIEnumerableValue(writer, value, objectGraph, options))
-            {
-                return;
-            }
-            
-            if (HandleStreamValue(writer, value, objectGraph, options))
-            {
-                return;
-            }
-            
-            WriteObject(writer, value, objectGraph, options);
-            options.SerializationLevel--;
         }
         
         /// <summary>

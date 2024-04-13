@@ -4029,5 +4029,293 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonOptions options = new JsonOptions();
             Assert.Throws<JsonException>(() => JsonSerializer.GetHexValue(reader, 'g', options));
         }
+        
+        /// <summary>
+        /// Tests that try parse date time with specific format invalid format returns false
+        /// </summary>
+        [Fact]
+        public void TryParseDateTimeWithSpecificFormat_InvalidFormat_ReturnsFalse()
+        {
+            Assert.False(JsonSerializer.TryParseDateTimeWithSpecificFormat("invalid", out _));
+        }
+        
+        /// <summary>
+        /// Tests that try parse date time with specific format valid exact format returns true
+        /// </summary>
+        [Fact]
+        public void TryParseDateTimeWithSpecificFormat_ValidExactFormat_ReturnsTrue()
+        {
+            Assert.True(JsonSerializer.TryParseDateTimeWithSpecificFormat("2022-12-31T23:59:59", out _));
+        }
+        
+        /// <summary>
+        /// Tests that try parse date time with specific format valid format with time zone returns true
+        /// </summary>
+        [Fact]
+        public void TryParseDateTimeWithSpecificFormat_ValidFormatWithTimeZone_ReturnsTrue()
+        {
+            Assert.True(JsonSerializer.TryParseDateTimeWithSpecificFormat("2022-12-31T23:59:59+02:00", out _));
+        }
+        
+        /// <summary>
+        /// Tests that try parse date time with specific format valid format without time zone returns true
+        /// </summary>
+        [Fact]
+        public void TryParseDateTimeWithSpecificFormat_ValidFormatWithoutTimeZone_ReturnsTrue()
+        {
+            Assert.True(JsonSerializer.TryParseDateTimeWithSpecificFormat("2022-12-31T23:59:59", out _));
+        }
+        
+        /// <summary>
+        /// Tests that try parse date time with specific format invalid format with time zone returns false
+        /// </summary>
+        [Fact]
+        public void TryParseDateTimeWithSpecificFormat_InvalidFormatWithTimeZone_ReturnsFalse()
+        {
+            Assert.False(JsonSerializer.TryParseDateTimeWithSpecificFormat("invalid+02:00", out _));
+        }
+        
+        /// <summary>
+        /// Tests that get stream reader position when stream reader has position returns position
+        /// </summary>
+        [Fact]
+        public void GetStreamReaderPosition_WhenStreamReaderHasPosition_ReturnsPosition()
+        {
+            // Arrange
+            MemoryStream memoryStream = new MemoryStream(Encoding.UTF8.GetBytes("Test"));
+            StreamReader streamReader = new StreamReader(memoryStream);
+            
+            // Act
+            long position = JsonSerializer.GetStreamReaderPosition(streamReader);
+            
+            // Assert
+            Assert.Equal(0, position);
+        }
+        
+        /// <summary>
+        /// Tests that get stream reader position when stream reader position is updated returns updated position
+        /// </summary>
+        [Fact]
+        public void GetStreamReaderPosition_WhenStreamReaderPositionIsUpdated_ReturnsUpdatedPosition()
+        {
+            // Arrange
+            MemoryStream memoryStream = new MemoryStream(Encoding.UTF8.GetBytes("Test"));
+            StreamReader streamReader = new StreamReader(memoryStream);
+            streamReader.Read();
+            
+            // Act
+            long position = JsonSerializer.GetStreamReaderPosition(streamReader);
+            
+            // Assert
+            Assert.Equal(4, position);
+        }
+        
+        /// <summary>
+        /// Tests that get stream reader position when stream reader does not support seeking returns minus one
+        /// </summary>
+        [Fact]
+        public void GetStreamReaderPosition_WhenStreamReaderDoesNotSupportSeeking_ReturnsMinusOne()
+        {
+            // Arrange
+            StreamReader streamReader = new StreamReader(new NonSeekableStream());
+            
+            // Act
+            long position = JsonSerializer.GetStreamReaderPosition(streamReader);
+            
+            // Assert
+            Assert.Equal(0, position);
+        }
+        
+        /// <summary>
+        /// Tests that handle object graph when object graph contains value writes null
+        /// </summary>
+        [Fact]
+        public void HandleObjectGraph_WhenObjectGraphContainsValue_WritesNull()
+        {
+            // Arrange
+            StringWriter writer = new StringWriter();
+            object value = new object();
+            Dictionary<object, object> objectGraph = new Dictionary<object, object> {{value, null}};
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.ContinueOnCycle};
+            
+            // Act
+            JsonSerializer.HandleObjectGraph(writer, value, objectGraph, options);
+            
+            // Assert
+            Assert.Equal("null", writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that get object name returns object name when attribute has name
+        /// </summary>
+        [Fact]
+        public void GetObjectName_ReturnsObjectName_WhenAttributeHasName()
+        {
+            // Arrange
+            PropertyInfo memberInfo = typeof(SampleClass).GetProperty("SampleProperty");
+            string defaultName = "DefaultName";
+            
+            // Act
+            string result = JsonSerializer.GetObjectName(memberInfo, defaultName);
+            
+            // Assert
+            Assert.Equal("SamplePropertyName", result);
+        }
+        
+        /// <summary>
+        /// Tests that get object name returns default name when attribute has no name
+        /// </summary>
+        [Fact]
+        public void GetObjectName_ReturnsDefaultName_WhenAttributeHasNoName()
+        {
+            // Arrange
+            PropertyInfo memberInfo = typeof(SampleClass).GetProperty("PropertyWithoutName");
+            string defaultName = "DefaultName";
+            
+            // Act
+            string result = JsonSerializer.GetObjectName(memberInfo, defaultName);
+            
+            // Assert
+            Assert.Equal(defaultName, result);
+        }
+        
+        /// <summary>
+        /// Tests that get object name returns default name when no attributes
+        /// </summary>
+        [Fact]
+        public void GetObjectName_ReturnsDefaultName_WhenNoAttributes()
+        {
+            // Arrange
+            PropertyInfo memberInfo = typeof(SampleClass).GetProperty("PropertyWithoutAttributes");
+            string defaultName = "DefaultName";
+            
+            // Act
+            string result = JsonSerializer.GetObjectName(memberInfo, defaultName);
+            
+            // Assert
+            Assert.Equal(defaultName, result);
+        }
+        
+        /// <summary>
+        /// Tests that handle byte array returns byte array when string is base 64 and option is set
+        /// </summary>
+        [Fact]
+        public void HandleByteArray_ReturnsByteArray_WhenStringIsBase64AndOptionIsSet()
+        {
+            // Arrange
+            string base64String = Convert.ToBase64String(new byte[] {1, 2, 3});
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.ByteArrayAsBase64};
+            
+            // Act
+            object result = JsonSerializer.HandleByteArray(base64String, options);
+            
+            // Assert
+            Assert.IsType<byte[]>(result);
+            Assert.Equal(new byte[] {1, 2, 3}, (byte[]) result);
+        }
+        
+        /// <summary>
+        /// Tests that handle byte array returns original string when option is not set
+        /// </summary>
+        [Fact]
+        public void HandleByteArray_ReturnsOriginalString_WhenOptionIsNotSet()
+        {
+            // Arrange
+            string base64String = Convert.ToBase64String(new byte[] {1, 2, 3});
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.None};
+            
+            // Act
+            object result = JsonSerializer.HandleByteArray(base64String, options);
+            
+            // Assert
+            Assert.IsType<string>(result);
+            Assert.Equal(base64String, result);
+        }
+        
+        /// <summary>
+        /// Tests that handle byte array returns null when string is not base 64 and option is set
+        /// </summary>
+        [Fact]
+        public void HandleByteArray_ReturnsNull_WhenStringIsNotBase64AndOptionIsSet()
+        {
+            // Arrange
+            string nonBase64String = "not a base64";
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.ByteArrayAsBase64};
+            
+            // Act
+            Assert.Throws<JsonException>(() => JsonSerializer.HandleByteArray(nonBase64String, options));
+        }
+        
+        /// <summary>
+        /// Tests that calculate offset when ticks are negative should invert offset
+        /// </summary>
+        [Fact]
+        public void CalculateOffset_WhenTicksAreNegative_ShouldInvertOffset()
+        {
+            // Arrange
+            string ticks = "-123456789";
+            int pos = 1;
+            
+            // Act
+            JsonSerializer.CalculateOffset(ticks, pos, out string updatedTicks, out int offsetHours, out int offsetMinutes);
+            
+            // Assert
+            Assert.False(offsetHours < 0);
+            Assert.False(offsetMinutes < 0);
+        }
+        
+        /// <summary>
+        /// Tests that calculate offset when ticks are positive should not invert offset
+        /// </summary>
+        [Fact]
+        public void CalculateOffset_WhenTicksArePositive_ShouldNotInvertOffset()
+        {
+            // Arrange
+            string ticks = "123456789";
+            int pos = 1;
+            
+            // Act
+            JsonSerializer.CalculateOffset(ticks, pos, out string updatedTicks, out int offsetHours, out int offsetMinutes);
+            
+            // Assert
+            Assert.True(offsetHours >= 0);
+            Assert.True(offsetMinutes >= 0);
+        }
+        
+        /// <summary>
+        /// Tests that calculate offset when offset string is not parsable should set offset to zero
+        /// </summary>
+        [Fact]
+        public void CalculateOffset_WhenOffsetStringIsNotParsable_ShouldSetOffsetToZero()
+        {
+            // Arrange
+            string ticks = "abc";
+            int pos = 1;
+            
+            // Act
+            JsonSerializer.CalculateOffset(ticks, pos, out string updatedTicks, out int offsetHours, out int offsetMinutes);
+            
+            // Assert
+            Assert.Equal(0, offsetHours);
+            Assert.Equal(0, offsetMinutes);
+        }
+        
+        /// <summary>
+        /// Tests that calculate offset when offset string is parsable should set offset to parsed value
+        /// </summary>
+        [Fact]
+        public void CalculateOffset_WhenOffsetStringIsParsable_ShouldSetOffsetToParsedValue()
+        {
+            // Arrange
+            string ticks = "123456789";
+            int pos = 1;
+            
+            // Act
+            JsonSerializer.CalculateOffset(ticks, pos, out string updatedTicks, out int offsetHours, out int offsetMinutes);
+            
+            // Assert
+            Assert.NotEqual(0, offsetHours);
+            Assert.NotEqual(0, offsetMinutes);
+        }
     }
 }
