@@ -79,7 +79,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
             settingBase.Audio = value.Invoke(new AudioSettingBuilder());
             return this;
         }
-
+        
         /// <summary>
         ///     Build setting
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
             settingBase.General = value.Invoke(new GeneralSettingBuilder());
             return this;
         }
-
+        
         /// <summary>
         ///     Graphics the value
         /// </summary>
@@ -107,8 +107,8 @@ namespace Alis.Builder.Core.Ecs.System.Setting
             settingBase.Graphic = value.Invoke(new GraphicSettingBuilder());
             return this;
         }
-
-
+        
+        
         /// <summary>
         ///     Inputs the value
         /// </summary>
@@ -119,7 +119,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
             settingBase.Input = value.Invoke(new InputSettingBuilder());
             return this;
         }
-
+        
         /// <summary>
         ///     Networks the value
         /// </summary>
@@ -130,7 +130,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
             settingBase.Network = value.Invoke(new NetworkSettingBuilder());
             return this;
         }
-
+        
         /// <summary>
         ///     Physics the value
         /// </summary>
@@ -152,7 +152,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
             settingBase.Profile = value.Invoke(new ProfileSettingBuilder());
             return this;
         }
-
+        
         /// <summary>
         ///     Scenes the value
         /// </summary>

@@ -42,12 +42,12 @@ namespace Alis.Core.Physic.Shared.Optimization
         ///     The value
         /// </summary>
         public T Value0;
-
+        
         /// <summary>
         ///     The value
         /// </summary>
         public T Value1;
-
+        
         /// <summary>
         ///     The index
         /// </summary>
@@ -80,19 +80,19 @@ namespace Alis.Core.Physic.Shared.Optimization
                 }
             }
         }
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of t</returns>
         public IEnumerator<T> GetEnumerator() => Enumerate().GetEnumerator();
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
+        
         /// <summary>
         ///     Indexes the of using the specified value
         /// </summary>
@@ -107,10 +107,10 @@ namespace Alis.Core.Physic.Shared.Optimization
                     return i;
                 }
             }
-
+            
             return -1;
         }
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
@@ -118,7 +118,7 @@ namespace Alis.Core.Physic.Shared.Optimization
         {
             Value0 = Value1 = default(T);
         }
-
+        
         /// <summary>
         ///     Enumerates this instance
         /// </summary>

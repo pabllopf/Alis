@@ -47,7 +47,7 @@ namespace Alis.Builder.Core.Ecs.Entity.Scene
         ///     Gets the value of the scene
         /// </summary>
         private Alis.Core.Ecs.Entity.Scene.Scene Scene { get; } = new Alis.Core.Ecs.Entity.Scene.Scene();
-
+        
         /// <summary>
         ///     Adds the value
         /// </summary>
@@ -59,13 +59,13 @@ namespace Alis.Builder.Core.Ecs.Entity.Scene
             Scene.Add(value.Invoke(new GameObjectBuilder()));
             return this;
         }
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The scene</returns>
         public Alis.Core.Ecs.Entity.Scene.Scene Build() => Scene;
-
+        
         /// <summary>
         ///     Names the value
         /// </summary>

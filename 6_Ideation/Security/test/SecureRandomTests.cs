@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SecureRandomTest.cs
+//  File:SecureRandomTests.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -44,7 +44,7 @@ namespace Alis.Core.Aspect.Security.Test
         {
             Assert.NotNull(SecureRandom.Random);
         }
-
+        
         /// <summary>
         ///     Tests that test secure random generate random number
         /// </summary>
@@ -54,7 +54,7 @@ namespace Alis.Core.Aspect.Security.Test
             int randomNumber = SecureRandom.Random.Next();
             Assert.InRange(randomNumber, int.MinValue, int.MaxValue);
         }
-
+        
         /// <summary>
         ///     Tests that test secure random generate random number within range
         /// </summary>

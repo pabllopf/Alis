@@ -38,17 +38,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The inactive limit state
         /// </summary>
         Inactive,
-
+        
         /// <summary>
         ///     The at lower limit state
         /// </summary>
         AtLower,
-
+        
         /// <summary>
         ///     The at upper limit state
         /// </summary>
         AtUpper,
-
+        
         /// <summary>
         ///     The equal limit state
         /// </summary>

@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs.System.Setting.Graphic
         /// </summary>
         /// <returns>The graphic setting builder</returns>
         public GraphicSettingBuilder Builder() => new GraphicSettingBuilder();
-
+        
         /// <summary>
         ///     Gets or sets the value of the window
         /// </summary>

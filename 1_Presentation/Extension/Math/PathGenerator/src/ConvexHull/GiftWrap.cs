@@ -49,14 +49,14 @@ namespace Alis.Extension.Math.PathGenerator.ConvexHull
             {
                 return vertices;
             }
-
+            
             int i0 = FindRightmostPoint(vertices);
             int[] hull = new int[vertices.Count];
             int m = CalculateConvexHull(vertices, i0, hull);
-
+            
             return CreateResultVertices(vertices, hull, m);
         }
-
+        
         /// <summary>
         ///     Finds the rightmost point using the specified vertices
         /// </summary>
@@ -75,10 +75,10 @@ namespace Alis.Extension.Math.PathGenerator.ConvexHull
                     x0 = x;
                 }
             }
-
+            
             return i0;
         }
-
+        
         /// <summary>
         ///     Calculates the convex hull using the specified vertices
         /// </summary>
@@ -90,11 +90,11 @@ namespace Alis.Extension.Math.PathGenerator.ConvexHull
         {
             int m = 0;
             int ih = i0;
-
+            
             for (;;)
             {
                 hull[m] = ih;
-
+                
                 int ie = 0;
                 for (int j = 1; j < vertices.Count; ++j)
                 {
@@ -103,7 +103,7 @@ namespace Alis.Extension.Math.PathGenerator.ConvexHull
                         ie = j;
                         continue;
                     }
-
+                    
                     Vector2 r = vertices[ie] - vertices[hull[m]];
                     Vector2 v = vertices[j] - vertices[hull[m]];
                     float c = MathUtils.Cross(ref r, ref v);
@@ -111,25 +111,25 @@ namespace Alis.Extension.Math.PathGenerator.ConvexHull
                     {
                         ie = j;
                     }
-
+                    
                     if ((c == 0.0f) && (v.LengthSquared() > r.LengthSquared()))
                     {
                         ie = j;
                     }
                 }
-
+                
                 ++m;
                 ih = ie;
-
+                
                 if (ie == i0)
                 {
                     break;
                 }
             }
-
+            
             return m;
         }
-
+        
         /// <summary>
         ///     Creates the result vertices using the specified vertices
         /// </summary>
@@ -140,12 +140,12 @@ namespace Alis.Extension.Math.PathGenerator.ConvexHull
         private static Vertices CreateResultVertices(Vertices vertices, int[] hull, int m)
         {
             Vertices result = new Vertices(m);
-
+            
             for (int i = 0; i < m; ++i)
             {
                 result.Add(vertices[hull[i]]);
             }
-
+            
             return result;
         }
     }

@@ -44,38 +44,38 @@ namespace Alis.Extension.Encode.FFMeg.Encoding.Builders
         {
             SetCQP();
         }
-
+        
         /// <summary>
         ///     A slower preset will provide better compression (Default: medium)
         /// </summary>
         public Preset EncoderPreset { get; set; } = Preset.Medium;
-
+        
         /// <summary>
         ///     Tune encoder settings based on the content that is being encoded. (Default: Auto)
         /// </summary>
         public Tune EncoderTune { get; set; } = Tune.Auto;
-
+        
         /// <summary>
         ///     Limit encoder output to a specific profile. This affects compatibility with older players and compression
         ///     efficiency. (Default: Auto)
         /// </summary>
         public Profile EncoderProfile { get; set; } = Profile.Auto;
-
+        
         /// <summary>
         ///     Gets or sets the value of the format
         /// </summary>
         public override string Format { get; set; } = "mp4";
-
+        
         /// <summary>
         ///     Gets the value of the name
         /// </summary>
         public override string Name => "libx264";
-
+        
         /// <summary>
         ///     Gets or sets the value of the current quality settings
         /// </summary>
         public string CurrentQualitySettings { get; private set; }
-
+        
         /// <summary>
         ///     Constant quality (CQP/CRF) - Quality-based VBR encoding (Good of achieving best quality, bad for achieving certain
         ///     bitrate/size)
@@ -85,7 +85,7 @@ namespace Alis.Extension.Encode.FFMeg.Encoding.Builders
         {
             CurrentQualitySettings = "-crf " + crf.ToString("0.00", CultureInfo.InvariantCulture);
         }
-
+        
         /// <summary>
         ///     CBR encoding - Set constant bitrate (Good for streaming, inefficient use of bandwidth)
         /// </summary>
@@ -99,7 +99,7 @@ namespace Alis.Extension.Encode.FFMeg.Encoding.Builders
         {
             CurrentQualitySettings = $"-x264-params \"nal-hrd=cbr\" -b:v {bitrate} -minrate {bitrate} -maxrate {bitrate} -bufsize {bufsize}";
         }
-
+        
         /// <summary>
         ///     Constrained quality encoding with a verifier - Set maximum bitrate (Good for streaming where certain frames need
         ///     less bitrate)
@@ -116,7 +116,7 @@ namespace Alis.Extension.Encode.FFMeg.Encoding.Builders
         {
             CurrentQualitySettings = $"-crf {crf.ToString("0.00", CultureInfo.InvariantCulture)} -maxrate {max_bitrate} -bufsize {bufsize} -crf_max {crf_max}";
         }
-
+        
         /// <summary>
         ///     Average bitrate encoding (Not recommended as it includes a lot of guessing ahead in time)
         /// </summary>
@@ -125,7 +125,7 @@ namespace Alis.Extension.Encode.FFMeg.Encoding.Builders
         {
             CurrentQualitySettings = $"-b:v {avg_bitrate}";
         }
-
+        
         /// <summary>
         ///     Creates this instance
         /// </summary>

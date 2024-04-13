@@ -54,37 +54,37 @@ namespace Alis.Sample.Play.Video
         ///     The width
         /// </summary>
         private const int Width = 640;
-
+        
         /// <summary>
         ///     The height
         /// </summary>
         private const int Height = 480;
-
+        
         /// <summary>
         ///     The sdl game controller axis
         /// </summary>
         private static readonly List<GameControllerAxis> Axis = new List<GameControllerAxis>((GameControllerAxis[]) Enum.GetValues(typeof(GameControllerAxis)));
-
+        
         /// <summary>
         ///     The sdl game controller button
         /// </summary>
         private static readonly List<GameControllerButton> Buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
-
+        
         /// <summary>
         ///     The sdl keycode
         /// </summary>
         private static List<KeyCode> _keys = new List<KeyCode>((KeyCode[]) Enum.GetValues(typeof(KeyCode)));
-
+        
         /// <summary>
         ///     The running
         /// </summary>
         private static bool _running = true;
-
+        
         /// <summary>
         ///     The sdl event
         /// </summary>
         private static Event _sdlEvent;
-
+        
         /// <summary>
         ///     Runs
         /// </summary>
@@ -98,32 +98,32 @@ namespace Alis.Sample.Play.Video
             {
                 Logger.Info("Init all");
             }
-
+            
             // GET VERSION SDL2
             Version versionSdl2 = Sdl.GetVersion();
             Logger.Info($"SDL2 VERSION {versionSdl2.major}.{versionSdl2.minor}.{versionSdl2.patch}");
-
+            
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
             {
                 Sdl.SetHint(Hint.HintRenderDriver, "direct3d");
             }
-
+            
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.OSX)
             {
                 Sdl.SetHint(Hint.HintRenderDriver, "opengl");
             }
-
+            
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Linux)
             {
                 Sdl.SetHint(Hint.HintRenderDriver, "opengl");
             }
-
+            
             // create the window which should be able to have a valid OpenGL context and is resizable
             WindowSettings flags = WindowSettings.WindowResizable | WindowSettings.WindowShown;
-
+            
             // Creates a new SDL window at the center of the screen with the given width and height.
             IntPtr window = Sdl.CreateWindow("Sample", (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, Width, Height, flags);
-
+            
             // Check if the window was created successfully.
             if (window == IntPtr.Zero)
             {
@@ -133,13 +133,13 @@ namespace Alis.Sample.Play.Video
             {
                 Logger.Info("Window created");
             }
-
+            
             // Creates a new SDL hardware renderer using the default graphics device with VSYNC enabled.
             IntPtr renderer = Sdl.CreateRenderer(
                 window,
                 -1,
                 Renderers.SdlRendererAccelerated);
-
+            
             if (renderer == IntPtr.Zero)
             {
                 Logger.Exception($"There was an issue creating the renderer. {Sdl.GetError()}");
@@ -148,29 +148,29 @@ namespace Alis.Sample.Play.Video
             {
                 Logger.Info("Renderer created");
             }
-
+            
             Logger.Info("Platform: " + EmbeddedDllClass.GetCurrentPlatform());
             Logger.Info("Processor: " + RuntimeInformation.ProcessArchitecture);
-
+            
             IntPtr icon = Sdl.LoadBmp(AssetManager.Find("logo.bmp"));
             Sdl.SetWindowIcon(window, icon);
-
+            
             Sdlinput();
-
+            
             string input = AssetManager.Find("sample.mp4");
-
+            
             VideoReader video = new VideoReader(input);
             video.LoadMetadataAsync().Wait();
             video.Load();
-
+            
             AudioReader audioReader = new AudioReader(input);
             audioReader.LoadMetadataAsync().Wait();
             audioReader.Load();
-
+            
             // Get video and audio stream metadata (or just access metadata properties directly instead)
             MediaStream vstream = video.Metadata.GetFirstVideoStream();
             MediaStream astream = audioReader.Metadata.GetFirstAudioStream();
-
+            
             // Crear la textura
             IntPtr textureVideo = Sdl.CreateTexture(
                 renderer,
@@ -178,7 +178,7 @@ namespace Alis.Sample.Play.Video
                 (int) TextureAccess.SdlTextureAccessStreaming,
                 (int) vstream.Width,
                 (int) vstream.Height);
-
+            
             AudioSpec wavSpec = new AudioSpec
             {
                 freq = astream.SampleRateNumber, // Usar la tasa de muestreo del audio
@@ -187,21 +187,21 @@ namespace Alis.Sample.Play.Video
                 samples = 2048, // Tamaño del buffer de audio (puede necesitar ajustes)
                 callback = null // No estamos usando una función de callback
             };
-
+            
             int deviceId = (int) Sdl.OpenAudioDevice(IntPtr.Zero, 0, ref wavSpec, out wavSpec, 0);
             if (deviceId == 0)
             {
                 Logger.Info($"No se pudo abrir el dispositivo de audio: {Sdl.GetError()}");
                 return;
             }
-
+            
             VideoFrame videoFrame = new VideoFrame((int) vstream.Width, (int) vstream.Height);
             AudioFrame audioFrame = new AudioFrame((int) astream.Channels, 2048);
-
+            
             while (_running)
             {
                 Sdl.JoystickUpdate();
-
+                
                 while (Sdl.PollEvent(out _sdlEvent) != 0)
                 {
                     switch (_sdlEvent.type)
@@ -214,11 +214,11 @@ namespace Alis.Sample.Play.Video
                             {
                                 _running = false;
                             }
-
+                            
                             Logger.Info(_sdlEvent.key.keySym.sym + " was pressed");
                             break;
                     }
-
+                    
                     foreach (GameControllerButton button in Buttons)
                     {
                         if ((_sdlEvent.type == EventType.JoyButtonDown)
@@ -227,7 +227,7 @@ namespace Alis.Sample.Play.Video
                             Logger.Info($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed button={button}");
                         }
                     }
-
+                    
                     foreach (GameControllerAxis axi in Axis)
                     {
                         if ((_sdlEvent.type == EventType.JoyAxisMotion)
@@ -237,47 +237,47 @@ namespace Alis.Sample.Play.Video
                         }
                     }
                 }
-
+                
                 // read next frame
                 VideoFrame videoFrameTemp = video.NextFrame(videoFrame);
                 if (videoFrameTemp == null)
                 {
                     _running = false;
                 }
-
+                
                 // Actualizar la textura con los datos del frame
                 byte[] pixels = videoFrame.RawData;
                 Sdl.UpdateTexture(textureVideo, IntPtr.Zero, pixels, videoFrameTemp.Width * 3);
-
+                
                 // Renderizar la textura
                 Sdl.RenderCopy(renderer, textureVideo, IntPtr.Zero, IntPtr.Zero);
                 Sdl.RenderPresent(renderer);
-
+                
                 // audio
                 AudioFrame audioFrameTemp = audioReader.NextFrame(audioFrame);
                 if (audioFrameTemp == null)
                 {
                     break;
                 }
-
+                
                 //player.WriteFrame(audioFrame);
                 Sdl.QueueAudio(deviceId, audioFrame.RawData, (uint) audioFrame.RawData.Length);
-
+                
                 // if not playing, start
                 if (Sdl.GetAudioDeviceStatus((uint) deviceId) != AudioStatus.SdlAudioPlaying)
                 {
                     Sdl.SdlPauseAudioDevice((uint) deviceId, 0);
                 }
-
-
+                
+                
                 Thread.Sleep((int) (1000 / vstream.AvgFrameRateNumber));
             }
-
+            
             Sdl.DestroyRenderer(renderer);
             Sdl.DestroyWindow(window);
             Sdl.Quit();
         }
-
+        
         /// <summary>
         ///     Sdlinputs
         /// </summary>
@@ -285,7 +285,7 @@ namespace Alis.Sample.Play.Video
         {
             Sdl.SetHint(Hint.HintXInputEnabled, "0");
             Sdl.SetHint(Hint.SdlHintJoystickThread, "1");
-
+            
             for (int i = 0; i < Sdl.NumJoysticks(); i++)
             {
                 IntPtr myJoystick = Sdl.JoystickOpen(i);
@@ -296,9 +296,9 @@ namespace Alis.Sample.Play.Video
                 else
                 {
                     Logger.Info($"[SDL_JoystickName_id = '{i}'] \n" +
-                                      $"SDL_JoystickName={Sdl.JoystickName(myJoystick)} \n" +
-                                      $"SDL_JoystickNumAxes={Sdl.JoystickNumAxes(myJoystick)} \n" +
-                                      $"SDL_JoystickNumButtons={Sdl.JoystickNumButtons(myJoystick)}");
+                                $"SDL_JoystickName={Sdl.JoystickName(myJoystick)} \n" +
+                                $"SDL_JoystickNumAxes={Sdl.JoystickNumAxes(myJoystick)} \n" +
+                                $"SDL_JoystickNumButtons={Sdl.JoystickNumButtons(myJoystick)}");
                 }
             }
         }

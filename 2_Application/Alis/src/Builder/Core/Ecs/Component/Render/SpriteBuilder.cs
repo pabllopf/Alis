@@ -46,13 +46,13 @@ namespace Alis.Builder.Core.Ecs.Component.Render
         ///     The sprite
         /// </summary>
         private readonly Sprite sprite = new Sprite();
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The sprite</returns>
         public Sprite Build() => sprite;
-
+        
         /// <summary>
         ///     Depths the value
         /// </summary>
@@ -63,7 +63,7 @@ namespace Alis.Builder.Core.Ecs.Component.Render
             sprite.Depth = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Textures the value
         /// </summary>

@@ -61,20 +61,20 @@ namespace Alis.Core.Physic.Collision
             ref Transform transform, out RayCastOutput output)
         {
             output = new RayCastOutput();
-
+            
             // Put the ray into the edge's frame of reference.
             Vector2 p1 = MathUtils.MulT(transform.Rotation, input.Point1 - transform.Position);
             Vector2 p2 = MathUtils.MulT(transform.Rotation, input.Point2 - transform.Position);
             Vector2 d = p2 - p1;
-
+            
             Vector2 v1 = start;
             Vector2 v2 = end;
             Vector2 e = v2 - v1;
-
+            
             // Normal points to the right, looking from v1 at v2
             Vector2 normal = new Vector2(e.Y, -e.X);
             normal = Vector2.Normalize(normal);
-
+            
             // q = p1 + t * d
             // dot(normal, q - v1) = 0
             // dot(normal, p1 - v1) + t * dot(normal, d) = 0
@@ -83,22 +83,22 @@ namespace Alis.Core.Physic.Collision
             {
                 return false;
             }
-
+            
             float denominator = Vector2.Dot(normal, d);
-
+            
             if (MathF.Abs(denominator) < float.Epsilon)
             {
                 return false;
             }
-
+            
             float t = numerator / denominator;
             if (t < 0.0f || input.Fraction < t)
             {
                 return false;
             }
-
+            
             Vector2 q = p1 + t * d;
-
+            
             // q = v1 + s * r
             // s = dot(q - v1, r) / dot(r, r)
             Vector2 r = v2 - v1;
@@ -107,13 +107,13 @@ namespace Alis.Core.Physic.Collision
             {
                 return false;
             }
-
+            
             float s = Vector2.Dot(q - v1, r) / rr;
             if (s < 0.0f || s > 1.0f)
             {
                 return false;
             }
-
+            
             output.Fraction = t;
             if (numerator > 0.0f)
             {
@@ -123,10 +123,10 @@ namespace Alis.Core.Physic.Collision
             {
                 output.Normal = MathUtils.MulT(transform.Rotation, normal);
             }
-
+            
             return true;
         }
-
+        
         /// <summary>
         ///     Describes whether ray cast circle
         /// </summary>
@@ -143,28 +143,28 @@ namespace Alis.Core.Physic.Collision
             // From Section 3.1.2
             // x = s + a * r
             // norm(x) = radius
-
+            
             output = new RayCastOutput();
-
+            
             Vector2 position = transform.Position + MathUtils.Mul(transform.Rotation, pos);
             Vector2 s = input.Point1 - position;
             float b = Vector2.Dot(s, s) - radius * radius;
-
+            
             // Solve quadratic equation.
             Vector2 r = input.Point2 - input.Point1;
             float c = Vector2.Dot(s, r);
             float rr = Vector2.Dot(r, r);
             float sigma = c * c - rr * b;
-
+            
             // Check for negative discriminant and short segment.
             if (sigma < 0.0f || rr < Constant.Epsilon)
             {
                 return false;
             }
-
+            
             // Find the point of intersection of the line with the circle.
             float a = -(c + (float) Math.Sqrt(sigma));
-
+            
             // Is the intersection point on the segment?
             if ((0.0f <= a) && (a <= input.Fraction * rr))
             {
@@ -174,10 +174,10 @@ namespace Alis.Core.Physic.Collision
                 output.Normal = Vector2.Normalize(output.Normal);
                 return true;
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Describes whether ray cast polygon
         /// </summary>
@@ -191,37 +191,37 @@ namespace Alis.Core.Physic.Collision
             ref Transform transform, out RayCastOutput output)
         {
             output = new RayCastOutput();
-
+            
             Vector2 p1 = TransformPoint(input.Point1, transform);
             Vector2 p2 = TransformPoint(input.Point2, transform);
             Vector2 d = p2 - p1;
-
+            
             float lower = 0.0f, upper = input.Fraction;
             int index = -1;
-
+            
             for (int i = 0; i < vertices.Count; ++i)
             {
                 float numerator = CalculateNumerator(i, vertices, normals, p1);
                 float denominator = CalculateDenominator(i, normals, d);
-
+                
                 if (!ProcessDenominator(ref lower, ref upper, ref index, i, numerator, denominator))
                 {
                     return false;
                 }
             }
-
+            
             Debug.Assert((0.0f <= lower) && (lower <= input.Fraction));
-
+            
             if (index >= 0)
             {
                 output.Fraction = lower;
                 output.Normal = MathUtils.Mul(transform.Rotation, normals[index]);
                 return true;
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Transforms the point using the specified point
         /// </summary>
@@ -229,7 +229,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="transform">The transform</param>
         /// <returns>The vector</returns>
         private static Vector2 TransformPoint(Vector2 point, Transform transform) => MathUtils.MulT(transform.Rotation, point - transform.Position);
-
+        
         /// <summary>
         ///     Calculates the numerator using the specified i
         /// </summary>
@@ -239,7 +239,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="p1">The </param>
         /// <returns>The float</returns>
         private static float CalculateNumerator(int i, Vertices vertices, Vertices normals, Vector2 p1) => Vector2.Dot(normals[i], vertices[i] - p1);
-
+        
         /// <summary>
         ///     Calculates the denominator using the specified i
         /// </summary>
@@ -248,7 +248,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="d">The </param>
         /// <returns>The float</returns>
         private static float CalculateDenominator(int i, Vertices normals, Vector2 d) => Vector2.Dot(normals[i], d);
-
+        
         /// <summary>
         ///     Describes whether process denominator
         /// </summary>
@@ -265,18 +265,18 @@ namespace Alis.Core.Physic.Collision
             {
                 return false;
             }
-
+            
             if ((denominator < 0.0f) && (numerator < lower * denominator))
             {
                 lower = numerator / denominator;
                 index = i;
             }
-
+            
             if ((denominator > 0.0f) && (numerator < upper * denominator))
             {
                 upper = numerator / denominator;
             }
-
+            
             return upper >= lower;
         }
     }

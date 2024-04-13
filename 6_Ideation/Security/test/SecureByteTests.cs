@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SecureByteTest.cs
+//  File:SecureByteTests.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureByte secureByte = new SecureByte(10);
             Assert.Equal(10, (byte) secureByte);
         }
-
+        
         /// <summary>
         ///     Tests that test secure byte implicit conversion
         /// </summary>
@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureByte secureByte = 10;
             Assert.Equal(10, (byte) secureByte);
         }
-
+        
         /// <summary>
         ///     Tests that test secure byte equality operator
         /// </summary>
@@ -65,11 +65,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureByte secureByte1 = 10;
             SecureByte secureByte2 = 10;
             Assert.True(secureByte1 == secureByte2);
-
+            
             secureByte2 = 20;
             Assert.False(secureByte1 == secureByte2);
         }
-
+        
         /// <summary>
         ///     Tests that test secure byte inequality operator
         /// </summary>
@@ -79,11 +79,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureByte secureByte1 = 10;
             SecureByte secureByte2 = 20;
             Assert.True(secureByte1 != secureByte2);
-
+            
             secureByte2 = 10;
             Assert.False(secureByte1 != secureByte2);
         }
-
+        
         /// <summary>
         ///     Tests that test secure byte addition operator
         /// </summary>
@@ -94,7 +94,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureByte secureByte2 = 20;
             Assert.Equal(30, (byte) (secureByte1 + secureByte2));
         }
-
+        
         /// <summary>
         ///     Tests that test secure byte subtraction operator
         /// </summary>
@@ -105,7 +105,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureByte secureByte2 = 10;
             Assert.Equal(10, (byte) (secureByte1 - secureByte2));
         }
-
+        
         /// <summary>
         ///     Tests that test secure byte multiplication operator
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureByte secureByte2 = 20;
             Assert.Equal(200, (byte) (secureByte1 * secureByte2));
         }
-
+        
         /// <summary>
         ///     Tests that test secure byte division operator
         /// </summary>
@@ -127,7 +127,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureByte secureByte2 = 10;
             Assert.Equal(2, (byte) (secureByte1 / secureByte2));
         }
-
+        
         /// <summary>
         ///     Tests that test secure byte equals method
         /// </summary>
@@ -137,11 +137,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureByte secureByte1 = 10;
             SecureByte secureByte2 = 10;
             Assert.True(secureByte1.Equals(secureByte2));
-
+            
             secureByte2 = 20;
             Assert.False(secureByte1.Equals(secureByte2));
         }
-
+        
         /// <summary>
         ///     Tests that test secure byte get hash code method
         /// </summary>
@@ -151,11 +151,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureByte secureByte1 = 10;
             SecureByte secureByte2 = 10;
             Assert.Equal(secureByte1.GetHashCode(), secureByte2.GetHashCode());
-
+            
             secureByte2 = 20;
             Assert.NotEqual(secureByte1.GetHashCode(), secureByte2.GetHashCode());
         }
-
+        
         /// <summary>
         ///     Tests that test secure byte to string method
         /// </summary>
@@ -165,7 +165,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureByte secureByte = 10;
             Assert.Equal("10", secureByte.ToString());
         }
-
+        
         /// <summary>
         ///     Tests that test value set get
         /// </summary>
@@ -174,14 +174,14 @@ namespace Alis.Core.Aspect.Security.Test
         {
             // Arrange
             SecureByte secureByte = new SecureByte(10);
-
+            
             // Act
             byte value = secureByte;
-
+            
             // Assert
             Assert.Equal(10, value);
         }
-
+        
         /// <summary>
         ///     Tests that test equality
         /// </summary>
@@ -191,11 +191,11 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureByte secureByte1 = new SecureByte(10);
             SecureByte secureByte2 = new SecureByte(10);
-
+            
             // Assert
             Assert.True(secureByte1 == secureByte2);
         }
-
+        
         /// <summary>
         ///     Tests that test inequality
         /// </summary>
@@ -205,11 +205,11 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureByte secureByte1 = new SecureByte(10);
             SecureByte secureByte2 = new SecureByte(20);
-
+            
             // Assert
             Assert.True(secureByte1 != secureByte2);
         }
-
+        
         /// <summary>
         ///     Tests that test increment
         /// </summary>
@@ -218,14 +218,14 @@ namespace Alis.Core.Aspect.Security.Test
         {
             // Arrange
             SecureByte secureByte = new SecureByte(10);
-
+            
             // Act
             secureByte++;
-
+            
             // Assert
             Assert.Equal(11, (byte) secureByte);
         }
-
+        
         /// <summary>
         ///     Tests that test decrement
         /// </summary>
@@ -234,14 +234,14 @@ namespace Alis.Core.Aspect.Security.Test
         {
             // Arrange
             SecureByte secureByte = new SecureByte(10);
-
+            
             // Act
             secureByte--;
-
+            
             // Assert
             Assert.Equal(9, (byte) secureByte);
         }
-
+        
         /// <summary>
         ///     Tests that test addition
         /// </summary>
@@ -251,14 +251,14 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureByte secureByte1 = new SecureByte(10);
             SecureByte secureByte2 = new SecureByte(20);
-
+            
             // Act
             SecureByte result = secureByte1 + secureByte2;
-
+            
             // Assert
             Assert.Equal(30, (byte) result);
         }
-
+        
         /// <summary>
         ///     Tests that test subtraction
         /// </summary>
@@ -268,14 +268,14 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureByte secureByte1 = new SecureByte(20);
             SecureByte secureByte2 = new SecureByte(10);
-
+            
             // Act
             SecureByte result = secureByte1 - secureByte2;
-
+            
             // Assert
             Assert.Equal(10, (byte) result);
         }
-
+        
         /// <summary>
         ///     Tests that test multiplication
         /// </summary>
@@ -285,14 +285,14 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureByte secureByte1 = new SecureByte(10);
             SecureByte secureByte2 = new SecureByte(20);
-
+            
             // Act
             SecureByte result = secureByte1 * secureByte2;
-
+            
             // Assert
             Assert.Equal(200, (byte) result);
         }
-
+        
         /// <summary>
         ///     Tests that test division
         /// </summary>
@@ -302,10 +302,10 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureByte secureByte1 = new SecureByte(20);
             SecureByte secureByte2 = new SecureByte(10);
-
+            
             // Act
             SecureByte result = secureByte1 / secureByte2;
-
+            
             // Assert
             Assert.Equal(2, (byte) result);
         }

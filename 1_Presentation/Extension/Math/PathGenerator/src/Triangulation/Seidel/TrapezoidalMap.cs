@@ -41,25 +41,25 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         ///     The map
         /// </summary>
         public readonly HashSet<Trapezoid> Map;
-
+        
         // AABB margin
         /// <summary>
         ///     The margin
         /// </summary>
         private readonly float margin;
-
+        
         // Bottom segment that spans multiple trapezoids
         /// <summary>
         ///     The cross
         /// </summary>
         private Edge bCross;
-
+        
         // Top segment that spans multiple trapezoids
         /// <summary>
         ///     The cross
         /// </summary>
         private Edge cross;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="TrapezoidalMap" /> class
         /// </summary>
@@ -70,7 +70,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             bCross = null;
             cross = null;
         }
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
@@ -79,7 +79,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             bCross = null;
             cross = null;
         }
-
+        
         // Case 1: segment completely enclosed by trapezoid
         //         break trapezoid into 4 smaller trapezoids
         /// <summary>
@@ -95,15 +95,15 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             trapezoids[1] = new Trapezoid(e.P, e.Q, t.Top, e);
             trapezoids[2] = new Trapezoid(e.P, e.Q, e, t.Bottom);
             trapezoids[3] = new Trapezoid(e.Q, t.RightPoint, t.Top, t.Bottom);
-
+            
             trapezoids[0].UpdateLeft(t.UpperLeft, t.LowerLeft);
             trapezoids[1].UpdateLeftRight(trapezoids[0], null, trapezoids[3], null);
             trapezoids[2].UpdateLeftRight(null, trapezoids[0], null, trapezoids[3]);
             trapezoids[3].UpdateRight(t.UpperRight, t.LowerRight);
-
+            
             return trapezoids;
         }
-
+        
         // Case 2: Trapezoid contains point p, q lies outside
         //         break trapezoid into 3 smaller trapezoids
         /// <summary>
@@ -115,25 +115,25 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         public Trapezoid[] Case2(Trapezoid t, Edge e)
         {
             Point rp = System.Math.Abs(e.Q.X - t.RightPoint.X) < 0.01f ? e.Q : t.RightPoint;
-
+            
             Trapezoid[] trapezoids = new Trapezoid[3];
             trapezoids[0] = new Trapezoid(t.LeftPoint, e.P, t.Top, t.Bottom);
             trapezoids[1] = new Trapezoid(e.P, rp, t.Top, e);
             trapezoids[2] = new Trapezoid(e.P, rp, e, t.Bottom);
-
+            
             trapezoids[0].UpdateLeft(t.UpperLeft, t.LowerLeft);
             trapezoids[1].UpdateLeftRight(trapezoids[0], null, t.UpperRight, null);
             trapezoids[2].UpdateLeftRight(null, trapezoids[0], null, t.LowerRight);
-
+            
             bCross = t.Bottom;
             cross = t.Top;
-
+            
             e.Above = trapezoids[1];
             e.Below = trapezoids[2];
-
+            
             return trapezoids;
         }
-
+        
         // Case 3: Trapezoid is bisected
         /// <summary>
         ///     Cases the 3 using the specified t
@@ -144,11 +144,11 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         public Trapezoid[] Case3(Trapezoid t, Edge e)
         {
             Point lp = System.Math.Abs(e.P.X - t.LeftPoint.X) < 0.01f ? e.P : t.LeftPoint;
-
+            
             Point rp = System.Math.Abs(e.Q.X - t.RightPoint.X) < 0.01f ? e.Q : t.RightPoint;
-
+            
             Trapezoid[] trapezoids = new Trapezoid[2];
-
+            
             if (cross == t.Top)
             {
                 trapezoids[0] = t.UpperLeft;
@@ -160,7 +160,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 trapezoids[0] = new Trapezoid(lp, rp, t.Top, e);
                 trapezoids[0].UpdateLeftRight(t.UpperLeft, e.Above, t.UpperRight, null);
             }
-
+            
             if (bCross == t.Bottom)
             {
                 trapezoids[1] = t.LowerLeft;
@@ -172,16 +172,16 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 trapezoids[1] = new Trapezoid(lp, rp, e, t.Bottom);
                 trapezoids[1].UpdateLeftRight(e.Below, t.LowerLeft, null, t.LowerRight);
             }
-
+            
             bCross = t.Bottom;
             cross = t.Top;
-
+            
             e.Above = trapezoids[0];
             e.Below = trapezoids[1];
-
+            
             return trapezoids;
         }
-
+        
         // Case 4: Trapezoid contains point q, p lies outside
         //         break trapezoid into 3 smaller trapezoids
         /// <summary>
@@ -193,9 +193,9 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         public Trapezoid[] Case4(Trapezoid t, Edge e)
         {
             Point lp = System.Math.Abs(e.P.X - t.LeftPoint.X) < 0.01f ? e.P : t.LeftPoint;
-
+            
             Trapezoid[] trapezoids = new Trapezoid[3];
-
+            
             if (cross == t.Top)
             {
                 trapezoids[0] = t.UpperLeft;
@@ -206,7 +206,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 trapezoids[0] = new Trapezoid(lp, e.Q, t.Top, e);
                 trapezoids[0].UpdateLeft(t.UpperLeft, e.Above);
             }
-
+            
             if (bCross == t.Bottom)
             {
                 trapezoids[1] = t.LowerLeft;
@@ -217,13 +217,13 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 trapezoids[1] = new Trapezoid(lp, e.Q, e, t.Bottom);
                 trapezoids[1].UpdateLeft(e.Below, t.LowerLeft);
             }
-
+            
             trapezoids[2] = new Trapezoid(e.Q, t.RightPoint, t.Top, t.Bottom);
             trapezoids[2].UpdateLeftRight(trapezoids[0], trapezoids[1], t.UpperRight, t.LowerRight);
-
+            
             return trapezoids;
         }
-
+        
         /// <summary>
         ///     Bound the box using the specified edges
         /// </summary>
@@ -233,15 +233,15 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         {
             Point max = CalculateMaxPoint(edges);
             Point min = CalculateMinPoint(edges);
-
+            
             Edge top = new Edge(new Point(min.X, max.Y), new Point(max.X, max.Y));
             Edge bottom = new Edge(new Point(min.X, min.Y), new Point(max.X, min.Y));
             Point left = bottom.P;
             Point right = top.Q;
-
+            
             return new Trapezoid(left, right, top, bottom);
         }
-
+        
         /// <summary>
         ///     Calculates the max point using the specified edges
         /// </summary>
@@ -250,16 +250,16 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         private Point CalculateMaxPoint(List<Edge> edges)
         {
             Point max = edges[0].P + margin;
-
+            
             foreach (Edge e in edges)
             {
                 max = UpdateMaxPoint(max, e.P);
                 max = UpdateMaxPoint(max, e.Q);
             }
-
+            
             return max;
         }
-
+        
         /// <summary>
         ///     Calculates the min point using the specified edges
         /// </summary>
@@ -268,16 +268,16 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         private Point CalculateMinPoint(List<Edge> edges)
         {
             Point min = edges[0].Q - margin;
-
+            
             foreach (Edge e in edges)
             {
                 min = UpdateMinPoint(min, e.P);
                 min = UpdateMinPoint(min, e.Q);
             }
-
+            
             return min;
         }
-
+        
         /// <summary>
         ///     Updates the max point using the specified current max
         /// </summary>
@@ -290,7 +290,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             double newY = System.Math.Max(currentMax.Y, point.Y);
             return new Point((float) (newX + margin), (float) newY);
         }
-
+        
         /// <summary>
         ///     Updates the min point using the specified current min
         /// </summary>

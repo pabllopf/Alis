@@ -51,17 +51,17 @@ namespace Alis.Core.Network.Sample.Client.Simple
             using WebSocket webSocket = await factory.ConnectAsync(uri);
             // receive loop
             Task readTask = Receive(webSocket);
-
+            
             // send a message
             await Send(webSocket);
-
+            
             // initiate the close handshake
             await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, null, CancellationToken.None);
-
+            
             // wait for server to respond with a close frame
             await readTask;
         }
-
+        
         /// <summary>
         ///     Sends the web socket
         /// </summary>
@@ -72,7 +72,7 @@ namespace Alis.Core.Network.Sample.Client.Simple
             ArraySegment<byte> buffer = new ArraySegment<byte>(array);
             await webSocket.SendAsync(buffer, WebSocketMessageType.Text, true, CancellationToken.None);
         }
-
+        
         /// <summary>
         ///     Receives the web socket
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Core.Network.Sample.Client.Simple
             while (true)
             {
                 WebSocketReceiveResult result = await webSocket.ReceiveAsync(buffer, CancellationToken.None);
-
+                
                 switch (result.MessageType)
                 {
                     case WebSocketMessageType.Close:

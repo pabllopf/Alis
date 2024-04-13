@@ -48,82 +48,82 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         ///     The null proxy
         /// </summary>
         public const int NullProxy = -1;
-
+        
         /// <summary>
         ///     The query callback
         /// </summary>
         private readonly Func<int, bool> queryCallback;
-
+        
         /// <summary>
         ///     The fixture proxy
         /// </summary>
         private readonly DynamicTree<FixtureProxy> tree = new DynamicTree<FixtureProxy>();
-
+        
         /// <summary>
         ///     The move buffer
         /// </summary>
         private int[] moveBuffer;
-
+        
         /// <summary>
         ///     The move capacity
         /// </summary>
         private int moveCapacity;
-
+        
         /// <summary>
         ///     The move count
         /// </summary>
         private int moveCount;
-
+        
         /// <summary>
         ///     The pair buffer
         /// </summary>
         private Pair[] pairBuffer;
-
+        
         /// <summary>
         ///     The pair capacity
         /// </summary>
         private int pairCapacity;
-
+        
         /// <summary>
         ///     The pair count
         /// </summary>
         private int pairCount;
-
+        
         /// <summary>
         ///     The proxy count
         /// </summary>
         private int proxyCount;
-
+        
         /// <summary>
         ///     The query proxy id
         /// </summary>
         private int queryProxyId;
-
+        
         /// <summary>Constructs a new broad phase based on the dynamic tree implementation</summary>
         public DynamicTreeBroadPhase()
         {
             queryCallback = QueryCallback;
             proxyCount = 0;
-
+            
             pairCapacity = 16;
             pairCount = 0;
             pairBuffer = new Pair[pairCapacity];
-
+            
             moveCapacity = 16;
             moveCount = 0;
             moveBuffer = new int[moveCapacity];
         }
-
+        
         /// <summary>Get the tree quality based on the area of the tree.</summary>
         public float TreeQuality => tree.AreaRatio;
-
+        
         /// <summary>Gets the height of the tree.</summary>
         public int TreeHeight => tree.Height;
-
+        
         /// <summary>Get the number of proxies.</summary>
         /// <value>The proxy count.</value>
         public int ProxyCount => proxyCount;
-
+        
         /// <summary>Create a proxy with an initial AABB. Pairs are not reported until UpdatePairs is called.</summary>
         /// <param name="proxy">The user data.</param>
         /// <returns></returns>
@@ -134,7 +134,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
             BufferMove(proxyId);
             return proxyId;
         }
-
+        
         /// <summary>Destroy a proxy. It is up to the client to remove any pairs.</summary>
         /// <param name="proxyId">The proxy id.</param>
         public void RemoveProxy(int proxyId)
@@ -143,7 +143,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
             --proxyCount;
             tree.DestroyProxy(proxyId);
         }
-
+        
         /// <summary>
         ///     Call MoveProxy as many times as you like, then when you are done call UpdatePairs to finalized the proxy pairs
         ///     (for your time step).
@@ -156,13 +156,13 @@ namespace Alis.Core.Physic.Collision.BroadPhase
                 BufferMove(proxyId);
             }
         }
-
+        
         /// <summary>Call to trigger a re-processing of it's pairs on the next call to UpdatePairs.</summary>
         public void TouchProxy(int proxyId)
         {
             BufferMove(proxyId);
         }
-
+        
         /// <summary>Get the AABB for a proxy.</summary>
         /// <param name="proxyId">The proxy id.</param>
         /// <param name="aabb">The AABB.</param>
@@ -170,12 +170,12 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         {
             tree.GetFatAabb(proxyId, out aabb);
         }
-
+        
         /// <summary>Get user data from a proxy. Returns null if the id is invalid.</summary>
         /// <param name="proxyId">The proxy id.</param>
         /// <returns></returns>
         public FixtureProxy GetProxy(int proxyId) => tree.GetUserData(proxyId);
-
+        
         /// <summary>Test overlap of fat AABBs.</summary>
         /// <param name="proxyIdA">The proxy id A.</param>
         /// <param name="proxyIdB">The proxy id B.</param>
@@ -186,14 +186,14 @@ namespace Alis.Core.Physic.Collision.BroadPhase
             tree.GetFatAabb(proxyIdB, out Aabb aabbB);
             return Aabb.TestOverlap(ref aabbA, ref aabbB);
         }
-
+        
         /// <summary>Update the pairs. This results in pair callbacks. This can only add pairs.</summary>
         /// <param name="callback">The callback.</param>
         public void UpdatePairs(BroadPhaseHandler callback)
         {
             // Reset pair buffer
             pairCount = 0;
-
+            
             // Perform tree queries for all moving proxies.
             for (int i = 0; i < moveCount; ++i)
             {
@@ -202,25 +202,25 @@ namespace Alis.Core.Physic.Collision.BroadPhase
                 {
                     continue;
                 }
-
+                
                 // We have to query the tree with the fat AABB so that
                 // we don't fail to create a pair that may touch later.
                 tree.GetFatAabb(queryProxyId, out Aabb fatAabb);
-
+                
                 // Query tree, create pairs and add them pair buffer.
                 tree.Query(queryCallback, ref fatAabb);
             }
-
+            
             for (int i = 0; i < pairBuffer.Length; ++i)
             {
                 Pair primaryPair = pairBuffer[i];
                 pairCount++;
                 FixtureProxy userDataA = tree.GetUserData(primaryPair.ProxyIdA);
                 FixtureProxy userDataB = tree.GetUserData(primaryPair.ProxyIdB);
-
+                
                 callback(ref userDataA, ref userDataB);
             }
-
+            
             // Clear move flags
             for (int i = 0; i < moveCount; ++i)
             {
@@ -229,14 +229,14 @@ namespace Alis.Core.Physic.Collision.BroadPhase
                 {
                     continue;
                 }
-
+                
                 tree.ClearMoved(proxyId);
             }
-
+            
             // Reset move buffer
             moveCount = 0;
         }
-
+        
         /// <summary>
         ///     Query an AABB for overlapping proxies. The callback class is called for each proxy that overlaps the supplied
         ///     AABB.
@@ -247,7 +247,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         {
             tree.Query(callback, ref aabb);
         }
-
+        
         /// <summary>
         ///     Ray-cast against the proxies in the tree. This relies on the callback to perform a exact ray-cast in the case
         ///     were the proxy contains a shape. The callback also performs the any collision filtering. This has performance
@@ -260,13 +260,13 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         {
             tree.RayCast(callback, ref input);
         }
-
+        
         /// <summary>Shift the world origin. Useful for large worlds.</summary>
         public void ShiftOrigin(ref Vector2 newOrigin)
         {
             tree.ShiftOrigin(ref newOrigin);
         }
-
+        
         /// <summary>
         ///     Buffers the move using the specified proxy id
         /// </summary>
@@ -280,11 +280,11 @@ namespace Alis.Core.Physic.Collision.BroadPhase
                 moveBuffer = new int[moveCapacity];
                 Array.Copy(oldBuffer, moveBuffer, moveCount);
             }
-
+            
             moveBuffer[moveCount] = proxyId;
             ++moveCount;
         }
-
+        
         /// <summary>
         ///     Uns the buffer move using the specified proxy id
         /// </summary>
@@ -299,7 +299,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
                 }
             }
         }
-
+        
         /// <summary>This is called from DynamicTree.Query when we are gathering pairs.</summary>
         private bool QueryCallback(int proxyId)
         {
@@ -308,14 +308,14 @@ namespace Alis.Core.Physic.Collision.BroadPhase
             {
                 return true;
             }
-
+            
             bool moved = tree.WasMoved(proxyId);
             if (moved && (proxyId > queryProxyId))
             {
                 // Both proxies are moving. Avoid duplicate pairs.
                 return true;
             }
-
+            
             // Grow the pair buffer as needed.
             if (pairCount == pairCapacity)
             {
@@ -324,11 +324,11 @@ namespace Alis.Core.Physic.Collision.BroadPhase
                 pairBuffer = new Pair[pairCapacity];
                 Array.Copy(oldBuffer, pairBuffer, pairCount);
             }
-
+            
             pairBuffer[pairCount].ProxyIdA = Math.Min(proxyId, queryProxyId);
             pairBuffer[pairCount].ProxyIdB = Math.Max(proxyId, queryProxyId);
             ++pairCount;
-
+            
             return true;
         }
     }

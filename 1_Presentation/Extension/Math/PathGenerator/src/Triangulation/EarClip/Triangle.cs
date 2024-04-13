@@ -64,7 +64,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
                 Add(new Vector2(x2, y2));
             }
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is inside
         /// </summary>
@@ -76,34 +76,34 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
             Vector2 a = this[0];
             Vector2 b = this[1];
             Vector2 c = this[2];
-
+            
             if ((x < a.X) && (x < b.X) && (x < c.X))
             {
                 return false;
             }
-
+            
             if ((x > a.X) && (x > b.X) && (x > c.X))
             {
                 return false;
             }
-
+            
             if ((y < a.Y) && (y < b.Y) && (y < c.Y))
             {
                 return false;
             }
-
+            
             if ((y > a.Y) && (y > b.Y) && (y > c.Y))
             {
                 return false;
             }
-
+            
             float vx2 = x - a.X;
             float vy2 = y - a.Y;
             float vx1 = b.X - a.X;
             float vy1 = b.Y - a.Y;
             float vx0 = c.X - a.X;
             float vy0 = c.Y - a.Y;
-
+            
             float dot00 = vx0 * vx0 + vy0 * vy0;
             float dot01 = vx0 * vx1 + vy0 * vy1;
             float dot02 = vx0 * vx2 + vy0 * vy2;
@@ -112,7 +112,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
             float invDen = 1.0f / (dot00 * dot11 - dot01 * dot01);
             float u = (dot11 * dot02 - dot01 * dot12) * invDen;
             float v = (dot00 * dot12 - dot01 * dot02) * invDen;
-
+            
             return (u > 0) && (v > 0) && (u + v < 1);
         }
     }

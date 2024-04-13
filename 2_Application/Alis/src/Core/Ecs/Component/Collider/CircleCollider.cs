@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Component.Collider
         {
             Logger.Trace();
         }
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>

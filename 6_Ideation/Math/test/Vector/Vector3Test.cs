@@ -48,16 +48,16 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             float x = 1;
             float y = 2;
             float z = 3;
-
+            
             // Act
             Vector3 vector = new Vector3(x, y, z);
-
+            
             // Assert
             Assert.Equal(x, vector.X);
             Assert.Equal(y, vector.Y);
             Assert.Equal(z, vector.Z);
         }
-
+        
         /// <summary>
         ///     Tests that length should calculate correctly
         /// </summary>
@@ -66,14 +66,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             // Arrange
             Vector3 vector = new Vector3(1, 2, 2); // Length should be 3
-
+            
             // Act
             float length = vector.Length();
-
+            
             // Assert
             Assert.Equal(3, length);
         }
-
+        
         /// <summary>
         ///     Tests that normalize should return unit vector
         /// </summary>
@@ -82,16 +82,16 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             // Arrange
             Vector3 vector = new Vector3(1, 2, 2); // Length is 3
-
+            
             // Act
             Vector3 normalized = Vector3.Normalize(vector);
-
+            
             // Assert
             Assert.Equal(1 / 3f, normalized.X);
             Assert.Equal(2 / 3f, normalized.Y);
             Assert.Equal(2 / 3f, normalized.Z);
         }
-
+        
         /// <summary>
         ///     Tests that dot product should calculate correctly
         /// </summary>
@@ -101,14 +101,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             // Arrange
             Vector3 vector1 = new Vector3(1, 2, 3);
             Vector3 vector2 = new Vector3(4, 5, 6);
-
+            
             // Act
             float dotProduct = Vector3.Dot(vector1, vector2);
-
+            
             // Assert
             Assert.Equal(32, dotProduct); // 1*4 + 2*5 + 3*6 = 32
         }
-
+        
         /// <summary>
         ///     Tests that constructor v 2 should set values
         /// </summary>
@@ -118,14 +118,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             float x = 1.0f;
             float y = 2.0f;
             float z = 3.0f;
-
+            
             Vector3 vector = new Vector3(x, y, z);
-
+            
             Assert.Equal(x, vector.X);
             Assert.Equal(y, vector.Y);
             Assert.Equal(z, vector.Z);
         }
-
+        
         /// <summary>
         ///     Tests that length v 2 should calculate correctly
         /// </summary>
@@ -133,13 +133,13 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void Length_v2_ShouldCalculateCorrectly()
         {
             Vector3 vector = new Vector3(2, 2, 1);
-
+            
             float expectedLength = MathF.Sqrt(2 * 2 + 2 * 2 + 1 * 1);
             float actualLength = vector.Length();
-
+            
             Assert.Equal(expectedLength, actualLength);
         }
-
+        
         /// <summary>
         ///     Tests that normalize should calculate correctly
         /// </summary>
@@ -148,12 +148,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector = new Vector3(2, 2, 1);
             Vector3 normalized = Vector3.Normalize(vector);
-
+            
             float length = normalized.Length();
-
+            
             Assert.Equal(1, length, 5);
         }
-
+        
         /// <summary>
         ///     Tests that dot product 3 should calculate correctly
         /// </summary>
@@ -162,13 +162,13 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector1 = new Vector3(1, 2, 3);
             Vector3 vector2 = new Vector3(4, 5, 6);
-
+            
             float expectedDotProduct = 1 * 4 + 2 * 5 + 3 * 6;
             float actualDotProduct = Vector3.Dot(vector1, vector2);
-
+            
             Assert.Equal(expectedDotProduct, actualDotProduct);
         }
-
+        
         /// <summary>
         ///     Tests that sqrt should calculate correctly
         /// </summary>
@@ -177,14 +177,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             // Arrange
             float x = 4;
-
+            
             // Act
             float result = MathF.Sqrt(x);
-
+            
             // Assert
             Assert.Equal(2, result);
         }
-
+        
         /// <summary>
         ///     Tests that abs should return absolute value
         /// </summary>
@@ -193,14 +193,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             // Arrange
             float value = -5;
-
+            
             // Act
             float result = MathF.Abs(value);
-
+            
             // Assert
             Assert.Equal(5, result);
         }
-
+        
         /// <summary>
         ///     Tests that cos should calculate correctly
         /// </summary>
@@ -209,14 +209,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             // Arrange
             float x = MathF.Pi / 2;
-
+            
             // Act
             float result = MathF.Cos(x);
-
+            
             // Assert
             Assert.Equal(0, result, 5);
         }
-
+        
         /// <summary>
         ///     Tests that sin should calculate correctly
         /// </summary>
@@ -225,14 +225,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             // Arrange
             float x = MathF.Pi / 2;
-
+            
             // Act
             float result = MathF.Sin(x);
-
+            
             // Assert
             Assert.Equal(1, result, 5);
         }
-
+        
         /// <summary>
         ///     Tests that acos should calculate correctly
         /// </summary>
@@ -241,14 +241,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             // Arrange
             float x = 1;
-
+            
             // Act
             float result = MathF.Acos(x);
-
+            
             // Assert
             Assert.Equal(1.53, result, 2);
         }
-
+        
         /// <summary>
         ///     Tests that max should return maximum value
         /// </summary>
@@ -258,14 +258,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             // Arrange
             int val1 = 5;
             int val2 = 10;
-
+            
             // Act
             int result = MathF.Max(val1, val2);
-
+            
             // Assert
             Assert.Equal(val2, result);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 addition operator should calculate correctly
         /// </summary>
@@ -275,12 +275,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector3 vector1 = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 vector2 = new Vector3(4.0f, 5.0f, 6.0f);
             Vector3 result = vector1 + vector2;
-
+            
             Assert.Equal(5.0f, result.X);
             Assert.Equal(7.0f, result.Y);
             Assert.Equal(9.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 subtraction operator should calculate correctly
         /// </summary>
@@ -290,12 +290,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector3 vector1 = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 vector2 = new Vector3(4.0f, 5.0f, 6.0f);
             Vector3 result = vector1 - vector2;
-
+            
             Assert.Equal(-3.0f, result.X);
             Assert.Equal(-3.0f, result.Y);
             Assert.Equal(-3.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 multiplication operator should calculate correctly
         /// </summary>
@@ -304,12 +304,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector1 = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 result = vector1 * 2.0f;
-
+            
             Assert.Equal(2.0f, result.X);
             Assert.Equal(4.0f, result.Y);
             Assert.Equal(6.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 division operator should calculate correctly
         /// </summary>
@@ -318,12 +318,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector1 = new Vector3(2.0f, 4.0f, 6.0f);
             Vector3 result = vector1 / 2.0f;
-
+            
             Assert.Equal(1.0f, result.X);
             Assert.Equal(2.0f, result.Y);
             Assert.Equal(3.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 dot should calculate correctly
         /// </summary>
@@ -333,10 +333,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector3 vector1 = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 vector2 = new Vector3(4.0f, 5.0f, 6.0f);
             float result = Vector3.Dot(vector1, vector2);
-
+            
             Assert.Equal(32.0f, result);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 cross should calculate correctly
         /// </summary>
@@ -346,12 +346,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector3 vector1 = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 vector2 = new Vector3(4.0f, 5.0f, 6.0f);
             Vector3 result = Vector3.Cross(vector1, vector2);
-
+            
             Assert.Equal(-3.0f, result.X);
             Assert.Equal(6.0f, result.Y);
             Assert.Equal(-3.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 length should calculate correctly
         /// </summary>
@@ -360,10 +360,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector = new Vector3(1.0f, 2.0f, 2.0f);
             float result = vector.Length();
-
+            
             Assert.Equal(3.0f, result);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 normalize should calculate correctly
         /// </summary>
@@ -372,12 +372,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector = new Vector3(1.0f, 2.0f, 2.0f);
             Vector3 result = Vector3.Normalize(vector);
-
+            
             Assert.Equal(1.0f / 3.0f, result.X);
             Assert.Equal(2.0f / 3.0f, result.Y);
             Assert.Equal(2.0f / 3.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that length squared should calculate correctly
         /// </summary>
@@ -386,10 +386,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector = new Vector3(1.0f, 2.0f, 2.0f);
             float result = vector.LengthSquared();
-
+            
             Assert.Equal(9.0f, result);
         }
-
+        
         /// <summary>
         ///     Tests that to string should format correctly
         /// </summary>
@@ -398,10 +398,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector = new Vector3(1.0f, 2.0f, 3.0f);
             string result = vector.ToString();
-
+            
             Assert.Equal(result.Contains(',') ? "<1, 2, 3>" : "<1. 2. 3>", result);
         }
-
+        
         /// <summary>
         ///     Tests that to string with format and culture should format correctly
         /// </summary>
@@ -410,10 +410,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector = new Vector3(1.123456f, 2.123456f, 3.123456f);
             string result = vector.ToString("F2", CultureInfo.InvariantCulture);
-
+            
             Assert.Equal("<1.12, 2.12, 3.12>", result);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 zero should return zero vector
         /// </summary>
@@ -425,7 +425,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(0.0f, result.Y);
             Assert.Equal(0.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 one should return one vector
         /// </summary>
@@ -437,7 +437,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(1.0f, result.Y);
             Assert.Equal(1.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 unit x should return unit x vector
         /// </summary>
@@ -449,7 +449,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(0.0f, result.Y);
             Assert.Equal(0.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 unit y should return unit y vector
         /// </summary>
@@ -461,7 +461,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(1.0f, result.Y);
             Assert.Equal(0.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 unit z should return unit z vector
         /// </summary>
@@ -473,7 +473,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(0.0f, result.Y);
             Assert.Equal(1.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 addition operator should return correct result
         /// </summary>
@@ -483,12 +483,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector3 left = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 right = new Vector3(4.0f, 5.0f, 6.0f);
             Vector3 result = left + right;
-
+            
             Assert.Equal(5.0f, result.X);
             Assert.Equal(7.0f, result.Y);
             Assert.Equal(9.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 constructor with vector 2 and float should set values correctly
         /// </summary>
@@ -498,12 +498,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector2 value = new Vector2(1.0f, 2.0f);
             float z = 3.0f;
             Vector3 vector = new Vector3(value, z);
-
+            
             Assert.Equal(1.0f, vector.X);
             Assert.Equal(2.0f, vector.Y);
             Assert.Equal(3.0f, vector.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 constructor with vector 2 and float should handle negative values
         /// </summary>
@@ -513,12 +513,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector2 value = new Vector2(-1.0f, -2.0f);
             float z = -3.0f;
             Vector3 vector = new Vector3(value, z);
-
+            
             Assert.Equal(-1.0f, vector.X);
             Assert.Equal(-2.0f, vector.Y);
             Assert.Equal(-3.0f, vector.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 constructor with vector 2 and float should handle zero values
         /// </summary>
@@ -528,12 +528,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector2 value = new Vector2(0.0f, 0.0f);
             float z = 0.0f;
             Vector3 vector = new Vector3(value, z);
-
+            
             Assert.Equal(0.0f, vector.X);
             Assert.Equal(0.0f, vector.Y);
             Assert.Equal(0.0f, vector.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 equals should return true when vectors are equal
         /// </summary>
@@ -542,10 +542,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector1 = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 vector2 = new Vector3(1.0f, 2.0f, 3.0f);
-
+            
             Assert.True(vector1.Equals(vector2));
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 equals should return false when vectors are not equal
         /// </summary>
@@ -554,10 +554,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector1 = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 vector2 = new Vector3(4.0f, 5.0f, 6.0f);
-
+            
             Assert.False(vector1.Equals(vector2));
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 equals should return false when compared with null
         /// </summary>
@@ -565,10 +565,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void Vector3_Equals_ShouldReturnFalse_WhenComparedWithNull()
         {
             Vector3 vector1 = new Vector3(1.0f, 2.0f, 3.0f);
-
+            
             Assert.False(vector1.Equals(null));
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 get hash code should return same hash code when vectors are equal
         /// </summary>
@@ -577,10 +577,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector1 = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 vector2 = new Vector3(1.0f, 2.0f, 3.0f);
-
+            
             Assert.Equal(vector1.GetHashCode(), vector2.GetHashCode());
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 get hash code should return different hash code when vectors are not equal
         /// </summary>
@@ -589,10 +589,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector1 = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 vector2 = new Vector3(4.0f, 5.0f, 6.0f);
-
+            
             Assert.NotEqual(vector1.GetHashCode(), vector2.GetHashCode());
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 dot should return correct result
         /// </summary>
@@ -602,10 +602,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector3 vector1 = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 vector2 = new Vector3(4.0f, 5.0f, 6.0f);
             float result = Vector3.Dot(vector1, vector2);
-
+            
             Assert.Equal(32.0f, result);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 cross should return correct result
         /// </summary>
@@ -615,12 +615,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector3 vector1 = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 vector2 = new Vector3(4.0f, 5.0f, 6.0f);
             Vector3 result = Vector3.Cross(vector1, vector2);
-
+            
             Assert.Equal(-3.0f, result.X);
             Assert.Equal(6.0f, result.Y);
             Assert.Equal(-3.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 length should return correct result
         /// </summary>
@@ -629,10 +629,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector = new Vector3(1.0f, 2.0f, 2.0f);
             float result = vector.Length();
-
+            
             Assert.Equal(3.0f, result);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 length squared should return correct result
         /// </summary>
@@ -641,10 +641,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector = new Vector3(1.0f, 2.0f, 2.0f);
             float result = vector.LengthSquared();
-
+            
             Assert.Equal(9.0f, result);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 normalize should return correct result
         /// </summary>
@@ -653,12 +653,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector = new Vector3(1.0f, 2.0f, 2.0f);
             Vector3 result = Vector3.Normalize(vector);
-
+            
             Assert.Equal(1.0f / 3.0f, result.X);
             Assert.Equal(2.0f / 3.0f, result.Y);
             Assert.Equal(2.0f / 3.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 operator addition should return correct result
         /// </summary>
@@ -668,12 +668,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector3 vector1 = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 vector2 = new Vector3(4.0f, 5.0f, 6.0f);
             Vector3 result = vector1 + vector2;
-
+            
             Assert.Equal(5.0f, result.X);
             Assert.Equal(7.0f, result.Y);
             Assert.Equal(9.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 operator subtraction should return correct result
         /// </summary>
@@ -683,12 +683,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector3 vector1 = new Vector3(4.0f, 5.0f, 6.0f);
             Vector3 vector2 = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 result = vector1 - vector2;
-
+            
             Assert.Equal(3.0f, result.X);
             Assert.Equal(3.0f, result.Y);
             Assert.Equal(3.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 operator multiplication should return correct result
         /// </summary>
@@ -698,12 +698,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector3 vector = new Vector3(1.0f, 2.0f, 3.0f);
             float scalar = 2.0f;
             Vector3 result = vector * scalar;
-
+            
             Assert.Equal(2.0f, result.X);
             Assert.Equal(4.0f, result.Y);
             Assert.Equal(6.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 operator division should return correct result
         /// </summary>
@@ -713,12 +713,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector3 vector = new Vector3(2.0f, 4.0f, 6.0f);
             float scalar = 2.0f;
             Vector3 result = vector / scalar;
-
+            
             Assert.Equal(1.0f, result.X);
             Assert.Equal(2.0f, result.Y);
             Assert.Equal(3.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 operator unary negation should return correct result
         /// </summary>
@@ -727,12 +727,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 result = -vector;
-
+            
             Assert.Equal(-1.0f, result.X);
             Assert.Equal(-2.0f, result.Y);
             Assert.Equal(-3.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 operator equality should return correct result
         /// </summary>
@@ -742,10 +742,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector3 vector1 = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 vector2 = new Vector3(1.0f, 2.0f, 3.0f);
             bool areEqual = vector1 == vector2;
-
+            
             Assert.True(areEqual);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 operator inequality should return correct result
         /// </summary>
@@ -755,10 +755,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector3 vector1 = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 vector2 = new Vector3(4.0f, 5.0f, 6.0f);
             bool areNotEqual = vector1 != vector2;
-
+            
             Assert.True(areNotEqual);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 operator multiply should return correct result with two vectors
         /// </summary>
@@ -768,12 +768,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector3 vector1 = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 vector2 = new Vector3(4.0f, 5.0f, 6.0f);
             Vector3 result = vector1 * vector2;
-
+            
             Assert.Equal(4.0f, result.X);
             Assert.Equal(10.0f, result.Y);
             Assert.Equal(18.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 operator multiply should return correct result with vector and scalar
         /// </summary>
@@ -783,12 +783,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector3 vector = new Vector3(1.0f, 2.0f, 3.0f);
             float scalar = 2.0f;
             Vector3 result = vector * scalar;
-
+            
             Assert.Equal(2.0f, result.X);
             Assert.Equal(4.0f, result.Y);
             Assert.Equal(6.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that vector 3 operator multiply should return correct result with scalar and vector
         /// </summary>
@@ -798,7 +798,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             float scalar = 2.0f;
             Vector3 vector = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 result = scalar * vector;
-
+            
             Assert.Equal(2.0f, result.X);
             Assert.Equal(4.0f, result.Y);
             Assert.Equal(6.0f, result.Z);

@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:GenericPriorityQueue.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,22 +45,22 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     The comparer
         /// </summary>
         private readonly Comparison<TPriority> _comparer;
-
+        
         /// <summary>
         ///     The nodes
         /// </summary>
         private TItem[] _nodes;
-
+        
         /// <summary>
         ///     The num nodes
         /// </summary>
         private int _numNodes;
-
+        
         /// <summary>
         ///     The num nodes ever enqueued
         /// </summary>
         private long _numNodesEverEnqueued;
-
+        
         /// <summary>
         ///     Instantiate a new Priority Queue
         /// </summary>
@@ -39,7 +68,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         public GenericPriorityQueue(int maxNodes) : this(maxNodes, Comparer<TPriority>.Default)
         {
         }
-
+        
         /// <summary>
         ///     Instantiate a new Priority Queue
         /// </summary>
@@ -48,7 +77,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         public GenericPriorityQueue(int maxNodes, IComparer<TPriority> comparer) : this(maxNodes, comparer.Compare)
         {
         }
-
+        
         /// <summary>
         ///     Instantiate a new Priority Queue
         /// </summary>
@@ -61,20 +90,20 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             _numNodesEverEnqueued = 0;
             _comparer = comparer;
         }
-
+        
         /// <summary>
         ///     Returns the number of nodes in the queue.
         ///     O(1)
         /// </summary>
         public int Count => _numNodes;
-
+        
         /// <summary>
         ///     Returns the maximum number of items that can be enqueued at once in this queue.  Once you hit this number (ie. once
         ///     Count == MaxSize),
         ///     attempting to enqueue another item will cause undefined behavior.  O(1)
         /// </summary>
         public int MaxSize => _nodes.Length - 1;
-
+        
         /// <summary>
         ///     Removes every node from the queue.
         ///     O(n) (So, don't do this often!)
@@ -84,7 +113,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             Array.Clear(_nodes, 1, _numNodes);
             _numNodes = 0;
         }
-
+        
         /// <summary>
         ///     Returns (in O(1)!) whether the given node is in the queue.
         ///     If node is or has been previously added to another queue, the result is undefined unless oldQueue.ResetNode(node)
@@ -92,7 +121,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     O(1)
         /// </summary>
         public bool Contains(TItem node) => _nodes[node.QueueIndex] == node;
-
+        
         /// <summary>
         ///     Enqueue a node to the priority queue.  Lower values are placed in front. Ties are broken by first-in-first-out.
         ///     If the queue is full, the result is undefined.
@@ -110,7 +139,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             node.InsertionIndex = _numNodesEverEnqueued++;
             CascadeUp(node);
         }
-
+        
         /// <summary>
         ///     Removes the head of the queue (node with minimum priority; ties are broken by order of insertion), and returns it.
         ///     If queue is empty, result is undefined
@@ -126,19 +155,19 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 _numNodes = 0;
                 return returnMe;
             }
-
+            
             //Swap the node with the last node
             TItem formerLastNode = _nodes[_numNodes];
             _nodes[1] = formerLastNode;
             formerLastNode.QueueIndex = 1;
             _nodes[_numNodes] = null;
             _numNodes--;
-
+            
             //Now bubble formerLastNode (which is no longer the last node) down
             CascadeDown(formerLastNode);
             return returnMe;
         }
-
+        
         /// <summary>
         ///     Resize the queue so it can accept more nodes.  All currently enqueued nodes are remain.
         ///     Attempting to decrease the queue size to a size too small to hold the existing nodes results in undefined behavior
@@ -151,14 +180,14 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             Array.Copy(_nodes, newArray, highestIndexToCopy + 1);
             _nodes = newArray;
         }
-
+        
         /// <summary>
         ///     Returns the head of the queue, without removing it (use Dequeue() for that).
         ///     If the queue is empty, behavior is undefined.
         ///     O(1)
         /// </summary>
         public TItem First => _nodes[1];
-
+        
         /// <summary>
         ///     This method must be called on a node every time its priority changes while it is in the queue.
         ///     <b>Forgetting to call this method will result in a corrupted queue!</b>
@@ -170,7 +199,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             node.Priority = priority;
             OnNodeUpdated(node);
         }
-
+        
         /// <summary>
         ///     Removes a node from the queue.  The node does not need to be the head of the queue.
         ///     If the node is not in the queue, the result is undefined.  If unsure, check Contains() first
@@ -185,18 +214,18 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 _numNodes--;
                 return;
             }
-
+            
             //Swap the node with the last node
             TItem formerLastNode = _nodes[_numNodes];
             _nodes[node.QueueIndex] = formerLastNode;
             formerLastNode.QueueIndex = node.QueueIndex;
             _nodes[_numNodes] = null;
             _numNodes--;
-
+            
             //Now bubble formerLastNode (which is no longer the last node) up or down as appropriate
             OnNodeUpdated(formerLastNode);
         }
-
+        
         /// <summary>
         ///     By default, nodes that have been previously added to one queue cannot be added to another queue.
         ///     If you need to do this, please call originalQueue.ResetNode(node) before attempting to add it in the new queue
@@ -205,8 +234,8 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         {
             node.QueueIndex = 0;
         }
-
-
+        
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
@@ -218,13 +247,13 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 yield return _nodes[i];
             }
         }
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
+        
         /// <summary>
         ///     Cascades the up using the specified node
         /// </summary>
@@ -241,18 +270,18 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 {
                     return;
                 }
-
+                
                 //Node has lower priority value, so move parent down the heap to make room
                 _nodes[node.QueueIndex] = parentNode;
                 parentNode.QueueIndex = node.QueueIndex;
-
+                
                 node.QueueIndex = parent;
             }
             else
             {
                 return;
             }
-
+            
             while (parent > 1)
             {
                 parent >>= 1;
@@ -261,17 +290,17 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 {
                     break;
                 }
-
+                
                 //Node has lower priority value, so move parent down the heap to make room
                 _nodes[node.QueueIndex] = parentNode;
                 parentNode.QueueIndex = node.QueueIndex;
-
+                
                 node.QueueIndex = parent;
             }
-
+            
             _nodes[node.QueueIndex] = node;
         }
-
+        
         /// <summary>
         ///     Cascades the down using the specified node
         /// </summary>
@@ -281,13 +310,13 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             //aka Heapify-down
             int finalQueueIndex = node.QueueIndex;
             int childLeftIndex = 2 * finalQueueIndex;
-
+            
             // If leaf node, we're done
             if (childLeftIndex > _numNodes)
             {
                 return;
             }
-
+            
             // Check if the left-child is higher-priority than the current node
             int childRightIndex = childLeftIndex + 1;
             TItem childLeft = _nodes[childLeftIndex];
@@ -302,7 +331,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     _nodes[childLeftIndex] = node;
                     return;
                 }
-
+                
                 // Check if the left-child is higher-priority than the right-child
                 TItem childRight = _nodes[childRightIndex];
                 if (HasHigherPriority(childLeft, childRight))
@@ -341,11 +370,11 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     return;
                 }
             }
-
+            
             while (true)
             {
                 childLeftIndex = 2 * finalQueueIndex;
-
+                
                 // If leaf node, we're done
                 if (childLeftIndex > _numNodes)
                 {
@@ -353,7 +382,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     _nodes[finalQueueIndex] = node;
                     break;
                 }
-
+                
                 // Check if the left-child is higher-priority than the current node
                 childRightIndex = childLeftIndex + 1;
                 childLeft = _nodes[childLeftIndex];
@@ -368,7 +397,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                         _nodes[childLeftIndex] = node;
                         break;
                     }
-
+                    
                     // Check if the left-child is higher-priority than the right-child
                     TItem childRight = _nodes[childRightIndex];
                     if (HasHigherPriority(childLeft, childRight))
@@ -413,7 +442,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 }
             }
         }
-
+        
         /// <summary>
         ///     Returns true if 'higher' has higher priority than 'lower', false otherwise.
         ///     Note that calling HasHigherPriority(node, node) (ie. both arguments the same node) will return false
@@ -423,7 +452,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             int cmp = _comparer(higher.Priority, lower.Priority);
             return cmp < 0 || ((cmp == 0) && (higher.InsertionIndex < lower.InsertionIndex));
         }
-
+        
         /// <summary>
         ///     Ons the node updated using the specified node
         /// </summary>
@@ -432,7 +461,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         {
             //Bubble the updated node up or down as appropriate
             int parentIndex = node.QueueIndex >> 1;
-
+            
             if ((parentIndex > 0) && HasHigherPriority(node, _nodes[parentIndex]))
             {
                 CascadeUp(node);
@@ -443,7 +472,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 CascadeDown(node);
             }
         }
-
+        
         /// <summary>
         ///     <b>Should not be called in production code.</b>
         ///     Checks to make sure the queue is still in a valid state.  Used for testing/debugging the queue.
@@ -459,7 +488,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     {
                         return false;
                     }
-
+                    
                     int childRightIndex = childLeftIndex + 1;
                     if ((childRightIndex < _nodes.Length) && (_nodes[childRightIndex] != null) && HasHigherPriority(_nodes[childRightIndex], _nodes[i]))
                     {
@@ -467,7 +496,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     }
                 }
             }
-
+            
             return true;
         }
     }

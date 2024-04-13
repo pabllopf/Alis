@@ -38,27 +38,27 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The
         /// </summary>
         public float X0;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public float X1;
-
+        
         /// <summary>
         ///     The baseline delta
         /// </summary>
         public float BaselineYDelta;
-
+        
         /// <summary>
         ///     The ymin
         /// </summary>
         public float Ymin;
-
+        
         /// <summary>
         ///     The ymax
         /// </summary>
         public float Ymax;
-
+        
         /// <summary>
         ///     The num chars
         /// </summary>

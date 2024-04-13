@@ -38,19 +38,19 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
     {
         /// <summary>Barycentric coordinate for closest point</summary>
         public float A { get; set; }
-
+        
         /// <summary>wA index</summary>
         public int IndexA { get; set; }
-
+        
         /// <summary>wB index</summary>
         public int IndexB { get; set; }
-
+        
         /// <summary>wB - wA</summary>
         public Vector2 W { get; set; }
-
+        
         /// <summary>Support point in proxyA</summary>
         public Vector2 Wa { get; set; }
-
+        
         /// <summary>Support point in proxyB</summary>
         public Vector2 Wb { get; set; }
     }

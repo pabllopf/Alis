@@ -38,12 +38,12 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         ///     The unknown ep axis type
         /// </summary>
         Unknown,
-
+        
         /// <summary>
         ///     The edge ep axis type
         /// </summary>
         EdgeA,
-
+        
         /// <summary>
         ///     The edge ep axis type
         /// </summary>

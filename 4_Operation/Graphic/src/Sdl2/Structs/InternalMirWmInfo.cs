@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     Refers to a MirConnection*
         /// </summary>
         public IntPtr connection;
-
+        
         /// <summary>
         ///     Refers to a MirSurface*
         /// </summary>

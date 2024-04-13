@@ -46,62 +46,62 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         ///     The unicode bom native
         /// </summary>
         public const int UnicodeBomNative = 0xFEFF;
-
+        
         /// <summary>
         ///     The unicode bom swapped
         /// </summary>
         public const int UnicodeBomSwapped = 0xFFFE;
-
+        
         /// <summary>
         ///     The ttf style normal
         /// </summary>
         public const int TtfStyleNormal = 0x00;
-
+        
         /// <summary>
         ///     The ttf style bold
         /// </summary>
         public const int TtfStyleBold = 0x01;
-
+        
         /// <summary>
         ///     The ttf style italic
         /// </summary>
         public const int TtfStyleItalic = 0x02;
-
+        
         /// <summary>
         ///     The ttf style underline
         /// </summary>
         public const int TtfStyleUnderline = 0x04;
-
+        
         /// <summary>
         ///     The ttf style strikethrough
         /// </summary>
         public const int TtfStyleStrikethrough = 0x08;
-
+        
         /// <summary>
         ///     The ttf hinting normal
         /// </summary>
         public const int TtfHintingNormal = 0;
-
+        
         /// <summary>
         ///     The ttf hinting light
         /// </summary>
         public const int TtfHintingLight = 1;
-
+        
         /// <summary>
         ///     The ttf hinting mono
         /// </summary>
         public const int TtfHintingMono = 2;
-
+        
         /// <summary>
         ///     The ttf hinting none
         /// </summary>
         public const int TtfHintingNone = 3;
-
+        
         /// <summary>
         ///     The ttf hinting light subpixel
         /// </summary>
         public const int TtfHintingLightSubpixel = 4;
-
+        
         /// <summary>
         ///     Ttf the byte swapped unicode using the specified swapped
         /// </summary>
@@ -113,7 +113,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(swapped, nameof(swapped));
             NativeSdlTtf.InternalByteSwappedUnicode(swapped);
         }
-
+        
         /// <summary>
         ///     Ttf the init
         /// </summary>
@@ -127,7 +127,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Internals the ttf open font index using the specified file
         /// </summary>
@@ -161,7 +161,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the set font style using the specified font
         /// </summary>
@@ -174,7 +174,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(style, nameof(style));
             NativeSdlTtf.InternalSetFontStyle(font, style);
         }
-
+        
         /// <summary>
         ///     Ttf the get font outline using the specified font
         /// </summary>
@@ -189,7 +189,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the set font outline using the specified font
         /// </summary>
@@ -203,7 +203,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(outline, nameof(outline));
             NativeSdlTtf.InternalSetFontOutline(font, outline);
         }
-
+        
         /// <summary>
         ///     Ttf the get font hinting using the specified font
         /// </summary>
@@ -218,7 +218,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the set font hinting using the specified font
         /// </summary>
@@ -231,7 +231,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(hinting, nameof(hinting));
             NativeSdlTtf.InternalSetFontHinting(font, hinting);
         }
-
+        
         /// <summary>
         ///     Ttf the font height using the specified font
         /// </summary>
@@ -246,7 +246,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the font ascent using the specified font
         /// </summary>
@@ -261,7 +261,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the font descent using the specified font
         /// </summary>
@@ -276,7 +276,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the font line skip using the specified font
         /// </summary>
@@ -291,7 +291,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the get font kerning using the specified font
         /// </summary>
@@ -306,7 +306,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the set font kerning using the specified font
         /// </summary>
@@ -320,7 +320,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(allowed, nameof(allowed));
             NativeSdlTtf.InternalSetFontKerning(font, allowed);
         }
-
+        
         /// <summary>
         ///     Ttf the font faces using the specified font
         /// </summary>
@@ -335,7 +335,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the font face is fixed width using the specified font
         /// </summary>
@@ -350,7 +350,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Internals the ttf font face style name using the specified font
         /// </summary>
@@ -365,7 +365,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the glyph is provided using the specified font
         /// </summary>
@@ -382,7 +382,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the glyph metrics using the specified font
         /// </summary>
@@ -423,7 +423,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Internals the ttf size utf 8 using the specified font
         /// </summary>
@@ -442,7 +442,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the size unicode using the specified font
         /// </summary>
@@ -480,7 +480,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Internals the ttf render utf 8 solid using the specified font
         /// </summary>
@@ -499,7 +499,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the render unicode solid using the specified font
         /// </summary>
@@ -558,7 +558,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Internals the ttf render utf 8 shaded using the specified font
         /// </summary>
@@ -579,7 +579,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the render unicode shaded using the specified font
         /// </summary>
@@ -600,7 +600,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the render glyph shaded using the specified font
         /// </summary>
@@ -640,7 +640,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the render unicode blended using the specified font
         /// </summary>
@@ -659,7 +659,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the render text blended wrapped using the specified font
         /// </summary>
@@ -680,7 +680,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Internals the ttf render utf 8 blended wrapped using the specified font
         /// </summary>
@@ -701,7 +701,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the render unicode blended wrapped using the specified font
         /// </summary>
@@ -722,7 +722,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the render glyph blended using the specified font
         /// </summary>
@@ -752,7 +752,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(font, nameof(font));
             NativeSdlTtf.InternalCloseFont(font);
         }
-
+        
         /// <summary>
         ///     Ttf the quit
         /// </summary>
@@ -762,7 +762,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         {
             NativeSdlTtf.InternalQuit();
         }
-
+        
         /// <summary>
         ///     Ttf the was init
         /// </summary>
@@ -775,7 +775,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Sdl the get font kerning size using the specified font
         /// </summary>
@@ -794,7 +794,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the get font kerning size glyphs using the specified font
         /// </summary>
@@ -843,7 +843,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Ttf the set error using the specified fmt and arg
         /// </summary>
@@ -855,7 +855,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(fmtAndArgList, nameof(fmtAndArgList));
             Sdl.SetError(fmtAndArgList);
         }
-
+        
         /// <summary>
         ///     Sdl the ttf version using the specified x
         /// </summary>
@@ -867,7 +867,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.Validate(result, nameof(result));
             return result;
         }
-
+        
         /// <summary>
         ///     Internals the ttf render utf 8 blended using the specified font
         /// </summary>

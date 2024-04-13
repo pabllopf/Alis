@@ -42,37 +42,37 @@ namespace Alis.Core.Ecs.Component
         ///     Gets or sets the value of the game object
         /// </summary>
         public IGameObject GameObject { get; set; }
-
+        
         /// <summary>
         ///     Attaches the game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public void Attach(IGameObject gameObject);
-
+        
         /// <summary>
         ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public void OnPressDownKey(KeyCode key);
-
+        
         /// <summary>
         ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public void OnReleaseKey(KeyCode key);
-
+        
         /// <summary>
         ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public void OnPressKey(KeyCode key);
-
+        
         /// <summary>
         ///     Ons the collision enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public void OnCollisionEnter(IGameObject gameObject);
-
+        
         /// <summary>
         ///     Ons the collision exit using the specified game object
         /// </summary>

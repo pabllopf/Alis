@@ -46,25 +46,25 @@ namespace Alis.Core.Aspect.Time
             MaximumAllowedTimeStep = maximumAllowedTimeStep;
             TimeScale = timeScale;
         }
-
+        
         /// <summary>
         ///     A framerate-independent interval that dictates when physics calculations and FixedUpdate() events are performed.
         /// </summary>
         public float FixedTimeStep { get; set; }
-
+        
         /// <summary>
         ///     A framerate-independent interval that caps the worst case scenario when frame-rate is low.
         ///     Physics calculations and FixedUpdate() events will not be performed for longer time than specified.
         /// </summary>
         public float MaximumAllowedTimeStep { get; set; }
-
+        
         /// <summary>
         ///     The speed at which time progresses.
         ///     Change this value to simulate bullet-time effects.
         ///     A value of 1 means real-time. A value of .5 means half speed; a value of 2 is double speed.
         /// </summary>
         public float TimeScale { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the log output
         /// </summary>

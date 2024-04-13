@@ -44,14 +44,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = 4;
-
+            
             // Act
             float result = MathF.Sqrt(x);
-
+            
             // Assert
             Assert.Equal(2, result);
         }
-
+        
         /// <summary>
         ///     Tests that abs should return absolute value
         /// </summary>
@@ -60,14 +60,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float value = -5;
-
+            
             // Act
             float result = MathF.Abs(value);
-
+            
             // Assert
             Assert.Equal(5, result);
         }
-
+        
         /// <summary>
         ///     Tests that cos should calculate correctly
         /// </summary>
@@ -76,14 +76,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = MathF.Pi / 2;
-
+            
             // Act
             float result = MathF.Cos(x);
-
+            
             // Assert
             Assert.Equal(0, result, 5);
         }
-
+        
         /// <summary>
         ///     Tests that sin should calculate correctly
         /// </summary>
@@ -92,14 +92,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = MathF.Pi / 2;
-
+            
             // Act
             float result = MathF.Sin(x);
-
+            
             // Assert
             Assert.Equal(1, result, 5);
         }
-
+        
         /// <summary>
         ///     Tests that acos should calculate correctly
         /// </summary>
@@ -108,14 +108,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = 1;
-
+            
             // Act
             float result = MathF.Acos(x);
-
+            
             // Assert
             Assert.Equal(1.53, result, 2);
         }
-
+        
         /// <summary>
         ///     Tests that max should return maximum value
         /// </summary>
@@ -125,14 +125,14 @@ namespace Alis.Core.Aspect.Math.Test
             // Arrange
             int val1 = 5;
             int val2 = 10;
-
+            
             // Act
             int result = MathF.Max(val1, val2);
-
+            
             // Assert
             Assert.Equal(val2, result);
         }
-
+        
         /// <summary>
         ///     Tests that sin should calculate correctly
         /// </summary>
@@ -141,14 +141,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = MathF.Pi / 2; // Sin(Pi/2) should be 1
-
+            
             // Act
             float result = MathF.Sin(x);
-
+            
             // Assert
             Assert.Equal(1, result, 5);
         }
-
+        
         /// <summary>
         ///     Tests that sin should return na n for na n input
         /// </summary>
@@ -157,14 +157,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = float.NaN;
-
+            
             // Act
             float result = MathF.Sin(x);
-
+            
             // Assert
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that sin should return na n for infinity input
         /// </summary>
@@ -173,14 +173,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = float.PositiveInfinity;
-
+            
             // Act
             float result = MathF.Sin(x);
-
+            
             // Assert
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that sqrt v 3 should calculate correctly
         /// </summary>
@@ -189,14 +189,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = 4;
-
+            
             // Act
             float result = MathF.Sqrt(x);
-
+            
             // Assert
             Assert.Equal(2, result);
         }
-
+        
         /// <summary>
         ///     Tests that sqrt should return na n for negative input
         /// </summary>
@@ -205,14 +205,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = -1;
-
+            
             // Act
             float result = MathF.Sqrt(x);
-
+            
             // Assert
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that sqrt should return zero for zero input
         /// </summary>
@@ -221,14 +221,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = 0;
-
+            
             // Act
             float result = MathF.Sqrt(x);
-
+            
             // Assert
             Assert.Equal(0, result);
         }
-
+        
         /// <summary>
         ///     Tests that cos v 2 should calculate correctly
         /// </summary>
@@ -237,14 +237,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = MathF.Pi / 2; // Cos(Pi/2) should be 0
-
+            
             // Act
             float result = MathF.Cos(x);
-
+            
             // Assert
             Assert.Equal(0, result, 5);
         }
-
+        
         /// <summary>
         ///     Tests that cos should return na n for na n input
         /// </summary>
@@ -253,14 +253,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = float.NaN;
-
+            
             // Act
             float result = MathF.Cos(x);
-
+            
             // Assert
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that cos should return na n for infinity input
         /// </summary>
@@ -269,14 +269,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = float.PositiveInfinity;
-
+            
             // Act
             float result = MathF.Cos(x);
-
+            
             // Assert
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that acos v 2 should calculate correctly
         /// </summary>
@@ -285,14 +285,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = 0; // Acos(0) should be Pi/2
-
+            
             // Act
             float result = MathF.Acos(x);
-
+            
             // Assert
             Assert.Equal(MathF.Pi / 2, result, 5);
         }
-
+        
         /// <summary>
         ///     Tests that acos should return na n for input less than minus one
         /// </summary>
@@ -301,14 +301,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = -1.1f;
-
+            
             // Act
             float result = MathF.Acos(x);
-
+            
             // Assert
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that acos should return na n for input greater than one
         /// </summary>
@@ -317,14 +317,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = 1.1f;
-
+            
             // Act
             float result = MathF.Acos(x);
-
+            
             // Assert
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that acos should return na n for na n input
         /// </summary>
@@ -333,14 +333,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = float.NaN;
-
+            
             // Act
             float result = MathF.Acos(x);
-
+            
             // Assert
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that sin v 3 should calculate correctly
         /// </summary>
@@ -349,14 +349,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = MathF.Pi / 2; // Sin(Pi/2) should be 1
-
+            
             // Act
             float result = MathF.Sin(x);
-
+            
             // Assert
             Assert.Equal(1, result, 5);
         }
-
+        
         /// <summary>
         ///     Tests that sin v 3 should return na n for na n input
         /// </summary>
@@ -365,14 +365,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = float.NaN;
-
+            
             // Act
             float result = MathF.Sin(x);
-
+            
             // Assert
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that sin v 3 should return na n for infinity input
         /// </summary>
@@ -381,14 +381,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = float.PositiveInfinity;
-
+            
             // Act
             float result = MathF.Sin(x);
-
+            
             // Assert
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that sin should calculate correctly for positive input
         /// </summary>
@@ -397,14 +397,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = MathF.Pi / 2; // Sin(Pi/2) should be 1
-
+            
             // Act
             float result = MathF.Sin(x);
-
+            
             // Assert
             Assert.Equal(1, result, 5);
         }
-
+        
         /// <summary>
         ///     Tests that sin should calculate correctly for negative input
         /// </summary>
@@ -413,14 +413,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = -MathF.Pi / 2; // Sin(-Pi/2) should be -1
-
+            
             // Act
             float result = MathF.Sin(x);
-
+            
             // Assert
             Assert.Equal(-1, result, 5);
         }
-
+        
         /// <summary>
         ///     Tests that sin v 2 should return na n for na n input
         /// </summary>
@@ -429,14 +429,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = float.NaN;
-
+            
             // Act
             float result = MathF.Sin(x);
-
+            
             // Assert
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that sin v 2 should return na n for infinity input
         /// </summary>
@@ -445,14 +445,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = float.PositiveInfinity;
-
+            
             // Act
             float result = MathF.Sin(x);
-
+            
             // Assert
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that sin should calculate correctly for zero input
         /// </summary>
@@ -461,14 +461,14 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float x = 0; // Sin(0) should be 0
-
+            
             // Act
             float result = MathF.Sin(x);
-
+            
             // Assert
             Assert.Equal(0, result, 5);
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return correct result when input is zero
         /// </summary>
@@ -479,7 +479,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathF.Sin(x);
             Assert.Equal(0.0f, result);
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return correct result when input is positive
         /// </summary>
@@ -490,7 +490,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathF.Sin(x);
             Assert.Equal(1.0f, result, 5);
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return correct result when input is negative
         /// </summary>
@@ -501,7 +501,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathF.Sin(x);
             Assert.Equal(-1.0f, result, 5);
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return na n when input is na n
         /// </summary>
@@ -512,7 +512,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathF.Sin(x);
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return na n when input is positive infinity
         /// </summary>
@@ -523,7 +523,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathF.Sin(x);
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return na n when input is negative infinity
         /// </summary>
@@ -534,7 +534,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathF.Sin(x);
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return correct result with zero
         /// </summary>
@@ -543,12 +543,12 @@ namespace Alis.Core.Aspect.Math.Test
         {
             float x = 0.0f;
             float expected = 0.0f;
-
+            
             float result = MathF.Sin(x);
-
+            
             Assert.Equal(expected, result);
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return correct result with positive value
         /// </summary>
@@ -557,12 +557,12 @@ namespace Alis.Core.Aspect.Math.Test
         {
             float x = MathF.Pi / 2; // 90 degrees
             float expected = 1.0f;
-
+            
             float result = MathF.Sin(x);
-
+            
             Assert.Equal(expected, result, 5); // 5 decimal places of precision
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return correct result with negative value
         /// </summary>
@@ -571,12 +571,12 @@ namespace Alis.Core.Aspect.Math.Test
         {
             float x = -MathF.Pi / 2; // -90 degrees
             float expected = -1.0f;
-
+            
             float result = MathF.Sin(x);
-
+            
             Assert.Equal(expected, result, 5); // 5 decimal places of precision
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return na n with na n
         /// </summary>
@@ -584,12 +584,12 @@ namespace Alis.Core.Aspect.Math.Test
         public void MathF_Sin_ShouldReturnNaN_WithNaN()
         {
             float x = float.NaN;
-
+            
             float result = MathF.Sin(x);
-
+            
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return na n with infinity
         /// </summary>
@@ -597,12 +597,12 @@ namespace Alis.Core.Aspect.Math.Test
         public void MathF_Sin_ShouldReturnNaN_WithInfinity()
         {
             float x = float.PositiveInfinity;
-
+            
             float result = MathF.Sin(x);
-
+            
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return correct result with pi over two
         /// </summary>
@@ -611,12 +611,12 @@ namespace Alis.Core.Aspect.Math.Test
         {
             float x = MathF.Pi / 2; // 90 degrees
             float expected = 1.0f;
-
+            
             float result = MathF.Sin(x);
-
+            
             Assert.Equal(expected, result, 5); // 5 decimal places of precision
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return correct result with negative pi over two
         /// </summary>
@@ -625,12 +625,12 @@ namespace Alis.Core.Aspect.Math.Test
         {
             float x = -MathF.Pi / 2; // -90 degrees
             float expected = -1.0f;
-
+            
             float result = MathF.Sin(x);
-
+            
             Assert.Equal(expected, result, 5); // 5 decimal places of precision
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return correct result with pi
         /// </summary>
@@ -639,12 +639,12 @@ namespace Alis.Core.Aspect.Math.Test
         {
             float x = MathF.Pi; // 180 degrees
             float expected = 0.0f;
-
+            
             float result = MathF.Sin(x);
-
+            
             Assert.Equal(expected, result, 5); // 5 decimal places of precision
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return correct result with two pi
         /// </summary>
@@ -653,12 +653,12 @@ namespace Alis.Core.Aspect.Math.Test
         {
             float x = 2 * MathF.Pi; // 360 degrees
             float expected = 0.0f;
-
+            
             float result = MathF.Sin(x);
-
+            
             Assert.Equal(expected, result, 5); // 5 decimal places of precision
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return na n with positive infinity
         /// </summary>
@@ -666,12 +666,12 @@ namespace Alis.Core.Aspect.Math.Test
         public void MathF_Sin_ShouldReturnNaN_WithPositiveInfinity()
         {
             float x = float.PositiveInfinity;
-
+            
             float result = MathF.Sin(x);
-
+            
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return na n with negative infinity
         /// </summary>
@@ -679,12 +679,12 @@ namespace Alis.Core.Aspect.Math.Test
         public void MathF_Sin_ShouldReturnNaN_WithNegativeInfinity()
         {
             float x = float.NegativeInfinity;
-
+            
             float result = MathF.Sin(x);
-
+            
             Assert.True(float.IsNaN(result));
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return correct result with large positive value
         /// </summary>
@@ -693,12 +693,12 @@ namespace Alis.Core.Aspect.Math.Test
         {
             float x = 10000.0f; // A large positive value
             float expected = MathF.Sin(x % (2 * MathF.Pi)); // Expected result based on the periodicity of sin
-
+            
             float result = MathF.Sin(x);
-
+            
             Assert.Equal(expected, result, 5); // 5 decimal places of precision
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return correct result with large negative value
         /// </summary>
@@ -707,12 +707,12 @@ namespace Alis.Core.Aspect.Math.Test
         {
             float x = -10000.0f; // A large negative value
             float expected = MathF.Sin(x % (2 * MathF.Pi)); // Expected result based on the periodicity of sin
-
+            
             float result = MathF.Sin(x);
-
+            
             Assert.Equal(expected, result, 5); // 5 decimal places of precision
         }
-
+        
         /// <summary>
         ///     Tests that math f sin should return na n with max value
         /// </summary>
@@ -720,9 +720,9 @@ namespace Alis.Core.Aspect.Math.Test
         public void MathF_Sin_ShouldReturnNaN_WithMaxValue()
         {
             float x = float.MaxValue;
-
+            
             float result = MathF.Sin(x);
-
+            
             Assert.False(float.IsNaN(result));
         }
     }

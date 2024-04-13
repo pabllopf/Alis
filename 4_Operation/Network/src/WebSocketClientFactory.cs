@@ -55,17 +55,17 @@ namespace Alis.Core.Network
         ///     The buffer factory
         /// </summary>
         private readonly Func<MemoryStream> _bufferFactory;
-
+        
         /// <summary>
         ///     The buffer pool
         /// </summary>
         private readonly IBufferPool _bufferPool;
-
+        
         /// <summary>
         ///     The tcp client
         /// </summary>
         private TcpClient tcpClient;
-
+        
         /// <summary>
         ///     Initialises a new instance of the WebSocketClientFactory class without caring about internal buffers
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Core.Network
             _bufferPool = new BufferPool();
             _bufferFactory = _bufferPool.GetBuffer;
         }
-
+        
         /// <summary>
         ///     Initialises a new instance of the WebSocketClientFactory class with control over internal buffer creation
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Core.Network
         ///     will be disposed when no longer needed and can be returned to the pool.
         /// </param>
         public WebSocketClientFactory(Func<MemoryStream> bufferFactory) => _bufferFactory = bufferFactory;
-
+        
         /// <summary>
         ///     Disposes this instance
         /// </summary>
@@ -91,7 +91,7 @@ namespace Alis.Core.Network
         {
             tcpClient?.Dispose();
         }
-
+        
         /// <summary>
         ///     Connect with default options
         /// </summary>
@@ -99,7 +99,7 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket instance</returns>
         public async Task<WebSocket> ConnectAsync(Uri uri, CancellationToken token = default(CancellationToken)) => await ConnectAsync(uri, new WebSocketClientOptions(), token);
-
+        
         /// <summary>
         ///     Connect with options specified
         /// </summary>
@@ -118,7 +118,7 @@ namespace Alis.Core.Network
             Stream stream = await GetStream(guid, useSsl, options.NoDelay, host, port, token);
             return await PerformHandshake(guid, uri, stream, options, token);
         }
-
+        
         /// <summary>
         ///     Connect with a stream that has already been opened and HTTP websocket upgrade request sent
         ///     This function will check the handshake response from the server and proceed if successful
@@ -139,7 +139,7 @@ namespace Alis.Core.Network
             return await ConnectAsync(guid, responseStream, secWebSocketKey, options.KeepAliveInterval,
                 options.SecWebSocketExtensions, options.IncludeExceptionInCloseResponse, token);
         }
-
+        
         /// <summary>
         ///     Connects the guid
         /// </summary>
@@ -158,7 +158,7 @@ namespace Alis.Core.Network
         {
             Events.Log.ReadingHttpResponse(guid);
             string response = string.Empty;
-
+            
             try
             {
                 response = await HttpHelper.ReadHttpHeaderAsync(responseStream, token);
@@ -168,14 +168,14 @@ namespace Alis.Core.Network
                 Events.Log.ReadHttpResponseError(guid, ex.ToString());
                 throw new WebSocketHandshakeFailedException("Handshake unexpected failure", ex);
             }
-
+            
             ThrowIfInvalidResponseCode(response);
             ThrowIfInvalidAcceptString(guid, response, secWebSocketKey);
             string subProtocol = GetSubProtocolFromHeader(response);
             return new WebSocketImplementation(guid, _bufferFactory, responseStream, keepAliveInterval,
                 secWebSocketExtensions, includeExceptionInCloseResponse, true, subProtocol);
         }
-
+        
         /// <summary>
         ///     Gets the sub protocol from header using the specified response
         /// </summary>
@@ -191,10 +191,10 @@ namespace Alis.Core.Network
             {
                 return match.Groups[1].Value.Trim();
             }
-
+            
             return null;
         }
-
+        
         /// <summary>
         ///     Throws the if invalid accept string using the specified guid
         /// </summary>
@@ -208,7 +208,7 @@ namespace Alis.Core.Network
             string regexPattern = "Sec-WebSocket-Accept: (.*)";
             Regex regex = new Regex(regexPattern, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
             string actualAcceptString = regex.Match(response).Groups[1].Value.Trim();
-
+            
             // check the accept string
             string expectedAcceptString = HttpHelper.ComputeSocketAcceptString(secWebSocketKey);
             if (expectedAcceptString != actualAcceptString)
@@ -219,10 +219,10 @@ namespace Alis.Core.Network
                 Events.Log.HandshakeFailure(guid, warning);
                 throw new WebSocketHandshakeFailedException(warning);
             }
-
+            
             Events.Log.ClientHandshakeSuccess(guid);
         }
-
+        
         /// <summary>
         ///     Throws the if invalid response code using the specified response header
         /// </summary>
@@ -236,11 +236,11 @@ namespace Alis.Core.Network
             {
                 throw new InvalidHttpResponseCodeException(null, null, responseHeader);
             }
-
+            
             if (!responseCode.StartsWith("101 ", StringComparison.InvariantCultureIgnoreCase))
             {
                 string[] lines = responseHeader.Split(new[] {"\r\n"}, StringSplitOptions.None);
-
+                
                 for (int i = 0; i < lines.Length; i++)
                 {
                     // if there is more to the message than just the header
@@ -251,14 +251,14 @@ namespace Alis.Core.Network
                         {
                             builder.AppendLine(lines[j]);
                         }
-
+                        
                         string responseDetails = builder.ToString();
                         throw new InvalidHttpResponseCodeException(responseCode, responseDetails, responseHeader);
                     }
                 }
             }
         }
-
+        
         /// <summary>
         ///     Override this if you need more fine grained control over the TLS handshake like setting the SslProtocol or adding a
         ///     client certificate
@@ -267,7 +267,7 @@ namespace Alis.Core.Network
         {
             sslStream.AuthenticateAsClient(host, null, SslProtocols.Tls12, true);
         }
-
+        
         /// <summary>
         ///     Override this if you need more control over how the stream used for the websocket is created. It does not event
         ///     need to be a TCP stream
@@ -298,25 +298,25 @@ namespace Alis.Core.Network
                 Events.Log.ClientConnectingToHost(loggingGuid, host, port);
                 await tcpClient.ConnectAsync(host, port);
             }
-
+            
             cancellationToken.ThrowIfCancellationRequested();
             Stream stream = tcpClient.GetStream();
-
+            
             if (isSecure)
             {
                 SslStream sslStream = new SslStream(stream, false, ValidateServerCertificate, null);
                 Events.Log.AttemtingToSecureSslConnection(loggingGuid);
-
+                
                 // This will throw an AuthenticationException if the certificate is not valid
                 TlsAuthenticateAsClient(sslStream, host);
                 Events.Log.ConnectionSecured(loggingGuid);
                 return sslStream;
             }
-
+            
             Events.Log.ConnectionNotSecure(loggingGuid);
             return stream;
         }
-
+        
         /// <summary>
         ///     Invoked by the RemoteCertificateValidationDelegate
         ///     If you want to ignore certificate errors (for debugging) then return true
@@ -328,13 +328,13 @@ namespace Alis.Core.Network
             {
                 return true;
             }
-
+            
             Events.Log.SslCertificateError(sslPolicyErrors);
-
+            
             // Do not allow this client to communicate with unauthenticated servers.
             return false;
         }
-
+        
         /// <summary>
         ///     Gets the additional headers using the specified additional headers
         /// </summary>
@@ -346,16 +346,16 @@ namespace Alis.Core.Network
             {
                 return string.Empty;
             }
-
+            
             StringBuilder builder = new StringBuilder();
             foreach (KeyValuePair<string, string> pair in additionalHeaders)
             {
                 builder.Append($"{pair.Key}: {pair.Value}\r\n");
             }
-
+            
             return builder.ToString();
         }
-
+        
         /// <summary>
         ///     Performs the handshake using the specified guid
         /// </summary>
@@ -382,7 +382,7 @@ namespace Alis.Core.Network
                                           $"Sec-WebSocket-Protocol: {options.SecWebSocketProtocol}\r\n" +
                                           additionalHeaders +
                                           "Sec-WebSocket-Version: 13\r\n\r\n";
-
+            
             byte[] httpRequest = Encoding.UTF8.GetBytes(handshakeHttpRequest);
             stream.Write(httpRequest, 0, httpRequest.Length);
             Events.Log.HandshakeSent(guid, handshakeHttpRequest);

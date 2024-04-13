@@ -41,17 +41,17 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The major
         /// </summary>
         [FieldOffset(0)] public byte major;
-
+        
         /// <summary>
         ///     The minor
         /// </summary>
         [FieldOffset(1)] public byte minor;
-
+        
         /// <summary>
         ///     The patch
         /// </summary>
         [FieldOffset(2)] public byte patch;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Version" /> class
         /// </summary>

@@ -47,17 +47,17 @@ namespace Alis.Core.Aspect.Thread
             Action = action;
             Token = token;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the action
         /// </summary>
         private Action<CancellationToken> Action { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the token
         /// </summary>
         private CancellationToken Token { get; }
-
+        
         /// <summary>
         ///     Executes this instance
         /// </summary>

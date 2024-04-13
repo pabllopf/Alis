@@ -38,7 +38,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         ///     The sdl mousewheel normal sdl mouse wheel direction
         /// </summary>
         SdlMousewheelNormal,
-
+        
         /// <summary>
         ///     The sdl mousewheel flipped sdl mouse wheel direction
         /// </summary>

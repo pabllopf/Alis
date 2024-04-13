@@ -38,12 +38,12 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
         ///     The unconstrained triangulation mode
         /// </summary>
         Unconstrained,
-
+        
         /// <summary>
         ///     The constrained triangulation mode
         /// </summary>
         Constrained,
-
+        
         /// <summary>
         ///     The polygon triangulation mode
         /// </summary>

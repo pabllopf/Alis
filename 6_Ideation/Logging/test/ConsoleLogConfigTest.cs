@@ -46,7 +46,7 @@ namespace Alis.Core.Aspect.Logging.Test
             ConsoleColor color = ConsoleLogConfig.GetColorMessageByType(MessageType.Trace);
             Assert.Equal(ConsoleColor.White, color);
         }
-
+        
         /// <summary>
         ///     Tests that get color message by type should return info color
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Core.Aspect.Logging.Test
             ConsoleColor color = ConsoleLogConfig.GetColorMessageByType(MessageType.Info);
             Assert.Equal(ConsoleColor.DarkGreen, color);
         }
-
+        
         /// <summary>
         ///     Tests that get color message by type should return log color
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Logging.Test
             ConsoleColor color = ConsoleLogConfig.GetColorMessageByType(MessageType.Log);
             Assert.Equal(ConsoleColor.White, color);
         }
-
+        
         /// <summary>
         ///     Tests that get color message by type should return event color
         /// </summary>
@@ -76,7 +76,7 @@ namespace Alis.Core.Aspect.Logging.Test
             ConsoleColor color = ConsoleLogConfig.GetColorMessageByType(MessageType.Event);
             Assert.Equal(ConsoleColor.DarkMagenta, color);
         }
-
+        
         /// <summary>
         ///     Tests that get color message by type should return warning color
         /// </summary>
@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Logging.Test
             ConsoleColor color = ConsoleLogConfig.GetColorMessageByType(MessageType.Warning);
             Assert.Equal(ConsoleColor.DarkYellow, color);
         }
-
+        
         /// <summary>
         ///     Tests that get color message by type should return error color
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Core.Aspect.Logging.Test
             ConsoleColor color = ConsoleLogConfig.GetColorMessageByType(MessageType.Error);
             Assert.Equal(ConsoleColor.Red, color);
         }
-
+        
         /// <summary>
         ///     Tests that get color message by type should return exception color
         /// </summary>
@@ -106,7 +106,7 @@ namespace Alis.Core.Aspect.Logging.Test
             ConsoleColor color = ConsoleLogConfig.GetColorMessageByType(MessageType.Exception);
             Assert.Equal(ConsoleColor.DarkRed, color);
         }
-
+        
         /// <summary>
         ///     Tests that get color message by type should throw exception when invalid message type
         /// </summary>

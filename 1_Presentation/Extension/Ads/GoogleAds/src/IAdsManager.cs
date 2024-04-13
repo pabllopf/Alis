@@ -30,10 +30,9 @@
 namespace Alis.Extension.Ads.GoogleAds
 {
     /// <summary>
-    /// The ads manager interface
+    ///     The ads manager interface
     /// </summary>
-    public interface IAdsManager 
+    public interface IAdsManager
     {
-        
     }
 }

@@ -40,13 +40,13 @@ namespace Alis.Core.Physic.Collision.ContactSystem
     {
         /// <summary>The contact</summary>
         public Contact Contact { get; set; }
-
+        
         /// <summary>The next contact edge in the body's contact list</summary>
         public ContactEdge Next { get; set; }
-
+        
         /// <summary>Provides quick access to the other body attached.</summary>
         public Body Other { get; set; }
-
+        
         /// <summary>The previous contact edge in the body's contact list</summary>
         public ContactEdge Prev { get; set; }
     }

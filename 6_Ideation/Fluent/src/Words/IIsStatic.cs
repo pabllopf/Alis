@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// </summary>
         /// <returns>The builder</returns>
         TBuilder IsStatic();
-
+        
         /// <summary>
         ///     Ises the static using the specified value
         /// </summary>

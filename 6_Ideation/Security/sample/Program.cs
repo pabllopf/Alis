@@ -47,11 +47,11 @@ namespace Alis.Core.Aspect.Security.Sample
             // SecureFloat usage
             SecureFloat secureFloat = 10.0f;
             secureFloat += 20.0f;
-
+            
             // SecureInt usage
             SecureInt secureInt = 10;
             secureInt += 20;
-
+            
             // SecureLong usage
             SecureLong secureLong = 10L;
             secureLong += 20L;

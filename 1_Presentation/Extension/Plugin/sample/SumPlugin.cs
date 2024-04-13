@@ -44,7 +44,7 @@ namespace Alis.Extension.Plugin.Sample
         {
             Logger.Info($"result={Sum(1, 2)}");
         }
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>
@@ -52,7 +52,7 @@ namespace Alis.Extension.Plugin.Sample
         {
             Logger.Trace();
         }
-
+        
         /// <summary>
         ///     Renders this instance
         /// </summary>
@@ -60,7 +60,7 @@ namespace Alis.Extension.Plugin.Sample
         {
             Logger.Trace();
         }
-
+        
         /// <summary>
         ///     Shutdowns this instance
         /// </summary>
@@ -68,7 +68,7 @@ namespace Alis.Extension.Plugin.Sample
         {
             Logger.Trace();
         }
-
+        
         /// <summary>
         ///     Disposes this instance
         /// </summary>
@@ -76,7 +76,7 @@ namespace Alis.Extension.Plugin.Sample
         {
             Logger.Trace();
         }
-
+        
         /// <summary>
         ///     Sums the a
         /// </summary>

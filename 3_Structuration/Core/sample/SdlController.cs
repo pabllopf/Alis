@@ -53,62 +53,62 @@ namespace Alis.Core.Sample
         ///     The width
         /// </summary>
         private const int Width = 640;
-
+        
         /// <summary>
         ///     The height
         /// </summary>
         private const int Height = 480;
-
+        
         /// <summary>
         ///     The sdl game controller axis
         /// </summary>
         private static readonly List<GameControllerAxis> Axis = new List<GameControllerAxis>((GameControllerAxis[]) Enum.GetValues(typeof(GameControllerAxis)));
-
+        
         /// <summary>
         ///     The sdl game controller button
         /// </summary>
         private static readonly List<GameControllerButton> Buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
-
+        
         /// <summary>
         ///     The blue
         /// </summary>
         private static byte _blue;
-
+        
         /// <summary>
         ///     The blue
         /// </summary>
         private static byte _green;
-
+        
         /// <summary>
         ///     The sdl keycode
         /// </summary>
         private static List<KeyCode> _keys = new List<KeyCode>((KeyCode[]) Enum.GetValues(typeof(KeyCode)));
-
+        
         /// <summary>
         ///     The blue
         /// </summary>
         private static byte _red;
-
+        
         /// <summary>
         ///     The running
         /// </summary>
         private static bool _running = true;
-
+        
         /// <summary>
         ///     The sdl event
         /// </summary>
         private static Event _sdlEvent;
-
+        
         /// <summary>
         ///     The texture font
         /// </summary>
         private static IntPtr _textureFont1;
-
+        
         /// <summary>
         ///     The dst rect font
         /// </summary>
         private static RectangleI _dstRectFont1;
-
+        
         /// <summary>
         ///     Runs
         /// </summary>
@@ -122,32 +122,32 @@ namespace Alis.Core.Sample
             {
                 Logger.Info("Init all");
             }
-
+            
             // GET VERSION SDL2
             Version versionSdl2 = Sdl.GetVersion();
             Logger.Info($"SDL2 VERSION {versionSdl2.major}.{versionSdl2.minor}.{versionSdl2.patch}");
-
+            
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
             {
                 Sdl.SetHint(Hint.HintRenderDriver, "direct3d");
             }
-
+            
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.OSX)
             {
                 Sdl.SetHint(Hint.HintRenderDriver, "opengl");
             }
-
+            
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Linux)
             {
                 Sdl.SetHint(Hint.HintRenderDriver, "opengl");
             }
-
+            
             // create the window which should be able to have a valid OpenGL context and is resizable
             WindowSettings flags = WindowSettings.WindowResizable | WindowSettings.WindowShown;
-
+            
             // Creates a new SDL window at the center of the screen with the given width and height.
             IntPtr window = Sdl.CreateWindow("Sample", (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, Width, Height, flags);
-
+            
             // Check if the window was created successfully.
             if (window == IntPtr.Zero)
             {
@@ -157,13 +157,13 @@ namespace Alis.Core.Sample
             {
                 Logger.Info("Window created");
             }
-
+            
             // Creates a new SDL hardware renderer using the default graphics device with VSYNC enabled.
             IntPtr renderer = Sdl.CreateRenderer(
                 window,
                 -1,
                 Renderers.SdlRendererAccelerated);
-
+            
             if (renderer == IntPtr.Zero)
             {
                 Logger.Exception($"There was an issue creating the renderer. {Sdl.GetError()}");
@@ -172,65 +172,65 @@ namespace Alis.Core.Sample
             {
                 Logger.Info("Renderer created");
             }
-
+            
             SdlTtf.Init();
             Logger.Info($"SDL_TTF Version: {SdlTtf.GetVersion().major}.{SdlTtf.GetVersion().minor}.{SdlTtf.GetVersion().patch}");
-
+            
             Logger.Info("Platform: " + EmbeddedDllClass.GetCurrentPlatform());
             Logger.Info("Processor: " + RuntimeInformation.ProcessArchitecture);
-
+            
             int outlineSize = 1;
-
+            
             // Load the font
             IntPtr font = SdlTtf.OpenFont(AssetManager.Find("FontSample.otf"), 55);
-
+            
             // Load the font
             IntPtr fontOutline = SdlTtf.OpenFont(AssetManager.Find("FontSample.otf"), 55);
-
+            
             // define outline font
             SdlTtf.SetFontOutline(font, outlineSize);
-
+            
             // define style font
             SdlTtf.SetFontStyle(font, SdlTtf.TtfStyleNormal);
-
+            
             // Pixels to render the text
             IntPtr bgSurface = SdlTtf.RenderTextBlended(
                 fontOutline,
                 "0123456789",
                 new Color(255, 255, 255, 255));
-
+            
             IntPtr fgSurface = SdlTtf.RenderTextBlended(
                 font,
                 "0123456789",
                 new Color(84, 52, 68, 255));
-
+            
             // get size fg_surface
             //SDL_QueryTexture(fg_surface, NULL, NULL, &w, &h); :
             Sdl.QueryTexture(fgSurface, out _, out _, out int wOut, out int hOut);
-
+            
             //SDL_Rect rect = {OUTLINE_SIZE, OUTLINE_SIZE, fg_surface->w, fg_surface->h};
             RectangleI rect = new RectangleI(0, 0, wOut, hOut);
-
+            
             //SDL_SetSurfaceBlendMode(fg_surface, SDL_BLENDMODE_BLEND); :
             Sdl.SetSurfaceBlendMode(fgSurface, BlendModes.BlendModeBlend);
-
+            
             //SDL_BlitSurface(fg_surface, NULL, bg_surface, &rect);
             Sdl.BlitSurface(fgSurface, IntPtr.Zero, bgSurface, ref rect);
-
+            
             // Create a texture from the surface
             _textureFont1 = Sdl.CreateTextureFromSurface(renderer, bgSurface);
-
+            
             // Get the width and height of the texture
             Sdl.QueryTexture(_textureFont1, out _, out _, out int textureWidth, out int textureHeight);
-
+            
             // Create a destination intPtr dstRect
             _dstRectFont1 = new RectangleI(0, 0, textureWidth, textureHeight);
-
+            
             IntPtr icon = Sdl.LoadBmp(AssetManager.Find("logo.bmp"));
             Sdl.SetWindowIcon(window, icon);
-
+            
             Sdlinput();
-
+            
             // Rectangle to be drawn outline.
             RectangleI rectBorder = new RectangleI
             {
@@ -239,7 +239,7 @@ namespace Alis.Core.Sample
                 w = 50,
                 h = 50
             };
-
+            
             // Rectangle to be drawn filled.
             RectangleI rectFilled = new RectangleI
             {
@@ -248,7 +248,7 @@ namespace Alis.Core.Sample
                 w = 100,
                 h = 100
             };
-
+            
             RectangleI tileRectangleI = new RectangleI
             {
                 x = 0,
@@ -256,17 +256,17 @@ namespace Alis.Core.Sample
                 w = 32,
                 h = 64
             };
-
+            
             // Load the image from the specified path.
             IntPtr imageTilePtr = Sdl.LoadBmp("Assets/tile000.bmp");
-
+            
             // Create a new texture from the image.
             IntPtr textureTile = Sdl.CreateTextureFromSurface(renderer, imageTilePtr);
-
+            
             while (_running)
             {
                 Sdl.JoystickUpdate();
-
+                
                 while (Sdl.PollEvent(out _sdlEvent) != 0)
                 {
                     switch (_sdlEvent.type)
@@ -279,31 +279,31 @@ namespace Alis.Core.Sample
                             {
                                 _running = false;
                             }
-
+                            
                             if (_sdlEvent.key.keySym.sym == KeyCode.Up)
                             {
                                 rectBorder.y -= 10;
                             }
-
+                            
                             if (_sdlEvent.key.keySym.sym == KeyCode.Down)
                             {
                                 rectBorder.y += 10;
                             }
-
+                            
                             if (_sdlEvent.key.keySym.sym == KeyCode.Left)
                             {
                                 rectBorder.x -= 10;
                             }
-
+                            
                             if (_sdlEvent.key.keySym.sym == KeyCode.Right)
                             {
                                 rectBorder.x += 10;
                             }
-
+                            
                             Logger.Info(_sdlEvent.key.keySym.sym + " was pressed");
                             break;
                     }
-
+                    
                     foreach (GameControllerButton button in Buttons)
                     {
                         if ((_sdlEvent.type == EventType.JoyButtonDown)
@@ -312,7 +312,7 @@ namespace Alis.Core.Sample
                             Logger.Info($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed button={button}");
                         }
                     }
-
+                    
                     foreach (GameControllerAxis axi in Axis)
                     {
                         if ((_sdlEvent.type == EventType.JoyAxisMotion)
@@ -322,49 +322,49 @@ namespace Alis.Core.Sample
                         }
                     }
                 }
-
-
+                
+                
                 RenderColors();
-
+                
                 // Sets the color that the screen will be cleared with.
                 Sdl.SetRenderDrawColor(renderer, _red, _green, _blue, 255);
-
+                
                 // Clears the current render surface.
                 Sdl.RenderClear(renderer);
-
+                
                 // Sets the color that the rectangle will be drawn with.
                 Sdl.SetRenderDrawColor(renderer, 255, 255, 255, 255);
                 // Draws a rectangle outline.
                 //Sdl.RenderDrawRect(renderer, ref rectBorder);
-
+                
                 // Sets the color that the rectangle will be drawn with.
                 Sdl.SetRenderDrawColor(renderer, 0, 0, 0, 255);
-
+                
                 // Draws a filled rectangle.
                 //Sdl.RenderFillRect(renderer, ref rectFilled);
-
+                
                 Sdl.RenderCopy(renderer, _textureFont1, IntPtr.Zero, ref _dstRectFont1);
-
+                
                 Sdl.RenderCopy(renderer, textureTile, IntPtr.Zero, ref tileRectangleI);
-
+                
                 Sdl.RenderDrawRects(renderer, new[] {rectBorder, rectFilled}, 2);
-
-
+                
+                
                 // draw a line
                 Sdl.SetRenderDrawColor(renderer, 255, 0, 0, 255);
                 Sdl.RenderDrawLine(renderer, 0, 0, 100, 100);
-
+                
                 Sdl.RenderPresent(renderer);
-
-
+                
+                
                 Thread.Sleep(1000 / 60);
             }
-
+            
             Sdl.DestroyRenderer(renderer);
             Sdl.DestroyWindow(window);
             Sdl.Quit();
         }
-
+        
         /// <summary>
         ///     Renders the colors
         /// </summary>
@@ -389,8 +389,8 @@ namespace Alis.Core.Sample
                 _blue = 0;
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Sdlinputs
         /// </summary>
@@ -398,7 +398,7 @@ namespace Alis.Core.Sample
         {
             Sdl.SetHint(Hint.HintXInputEnabled, "0");
             Sdl.SetHint(Hint.SdlHintJoystickThread, "1");
-
+            
             for (int i = 0; i < Sdl.NumJoysticks(); i++)
             {
                 IntPtr myJoystick = Sdl.JoystickOpen(i);
@@ -409,9 +409,9 @@ namespace Alis.Core.Sample
                 else
                 {
                     Logger.Info($"[SDL_JoystickName_id = '{i}'] \n" +
-                                      $"SDL_JoystickName={Sdl.JoystickName(myJoystick)} \n" +
-                                      $"SDL_JoystickNumAxes={Sdl.JoystickNumAxes(myJoystick)} \n" +
-                                      $"SDL_JoystickNumButtons={Sdl.JoystickNumButtons(myJoystick)}");
+                                $"SDL_JoystickName={Sdl.JoystickName(myJoystick)} \n" +
+                                $"SDL_JoystickNumAxes={Sdl.JoystickNumAxes(myJoystick)} \n" +
+                                $"SDL_JoystickNumButtons={Sdl.JoystickNumButtons(myJoystick)}");
                 }
             }
         }

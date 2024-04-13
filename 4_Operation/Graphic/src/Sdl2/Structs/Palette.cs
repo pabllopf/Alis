@@ -42,17 +42,17 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The n colors
         /// </summary>
         public readonly int nColors;
-
+        
         /// <summary>
         ///     The colors
         /// </summary>
         public IntPtr colors;
-
+        
         /// <summary>
         ///     The version
         /// </summary>
         public readonly int version;
-
+        
         /// <summary>
         ///     The ref count
         /// </summary>

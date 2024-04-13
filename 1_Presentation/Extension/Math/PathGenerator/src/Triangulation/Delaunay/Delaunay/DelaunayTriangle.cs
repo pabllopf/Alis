@@ -42,18 +42,18 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
     {
         /// <summary>Neighbor pointers. Flags to determine if an edge is a edge</summary>
         public FixedArray3<bool> EdgeIsConstrained;
-
+        
         /// <summary>Flags to determine if an edge is a Constrained edge</summary>
         public FixedArray3<bool> EdgeIsDelaunay;
-
+        
         /// <summary>
         ///     The neighbors
         /// </summary>
         public FixedArray3<DelaunayTriangle> Neighbors;
-
+        
         /// <summary>Has this triangle been marked as an interior triangle?</summary>
         public FixedArray3<TriangulationPoint> Points;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="DelaunayTriangle" /> class
         /// </summary>
@@ -66,12 +66,12 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
             Points[1] = p2;
             Points[2] = p3;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the is interior
         /// </summary>
         public bool IsInterior { get; set; }
-
+        
         /// <summary>
         ///     Indexes the of using the specified p
         /// </summary>
@@ -85,10 +85,10 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
             {
                 throw new Exception("Calling index with a point that doesn't exist in triangle");
             }
-
+            
             return i;
         }
-
+        
         /// <summary>
         ///     Indexes the cw using the specified p
         /// </summary>
@@ -107,7 +107,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
                     return 1;
             }
         }
-
+        
         /// <summary>
         ///     Indexes the ccw using the specified p
         /// </summary>
@@ -126,21 +126,21 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
                     return 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         public bool Contains(TriangulationPoint p) => p == Points[0] || p == Points[1] || p == Points[2];
-
+        
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <param name="e">The </param>
         /// <returns>The bool</returns>
         public bool Contains(DtSweepConstraint e) => Contains(e.P) && Contains(e.Q);
-
+        
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
@@ -148,7 +148,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
         /// <param name="q">The </param>
         /// <returns>The bool</returns>
         public bool Contains(TriangulationPoint p, TriangulationPoint q) => Contains(p) && Contains(q);
-
+        
         /// <summary>Update neighbor pointers</summary>
         /// <param name="p1">Point 1 of the shared edge</param>
         /// <param name="p2">Point 2 of the shared edge</param>
@@ -170,11 +170,11 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
             else
             {
                 Debug.WriteLine("Neighbor error, please report!");
-
+                
                 // throw new Exception("Neighbor error, please report!");
             }
         }
-
+        
         /// <summary>Exhaustive search to update neighbor pointers</summary>
         public void MarkNeighbor(DelaunayTriangle t)
         {
@@ -198,7 +198,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
                 Debug.WriteLine("markNeighbor failed");
             }
         }
-
+        
         /// <summary>
         ///     Clears the neighbors
         /// </summary>
@@ -206,7 +206,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
         {
             Neighbors[0] = Neighbors[1] = Neighbors[2] = null;
         }
-
+        
         /// <summary>
         ///     Clears the neighbor using the specified triangle
         /// </summary>
@@ -226,7 +226,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
                 Neighbors[2] = null;
             }
         }
-
+        
         /// <summary>Clears all references to all other triangles and points</summary>
         public void Clear()
         {
@@ -235,11 +235,11 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
                 DelaunayTriangle t = Neighbors[i];
                 t?.ClearNeighbor(this);
             }
-
+            
             ClearNeighbors();
             Points[0] = Points[1] = Points[2] = null;
         }
-
+        
         /// <param name="t">Opposite triangle</param>
         /// <param name="p">The point in t that isn't shared between the triangles</param>
         public TriangulationPoint OppositePoint(DelaunayTriangle t, TriangulationPoint p)
@@ -247,42 +247,42 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
             Debug.Assert(t != this, "self-pointer error");
             return PointCw(t.PointCw(p));
         }
-
+        
         /// <summary>
         ///     Neighbors the cw using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The delaunay triangle</returns>
         public DelaunayTriangle NeighborCw(TriangulationPoint point) => Neighbors[(Points.IndexOf(point) + 1) % 3];
-
+        
         /// <summary>
         ///     Neighbors the ccw using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The delaunay triangle</returns>
         public DelaunayTriangle NeighborCcw(TriangulationPoint point) => Neighbors[(Points.IndexOf(point) + 2) % 3];
-
+        
         /// <summary>
         ///     Neighbors the across using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The delaunay triangle</returns>
         public DelaunayTriangle NeighborAcross(TriangulationPoint point) => Neighbors[Points.IndexOf(point)];
-
+        
         /// <summary>
         ///     Points the ccw using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The triangulation point</returns>
         public TriangulationPoint PointCcw(TriangulationPoint point) => Points[(IndexOf(point) + 1) % 3];
-
+        
         /// <summary>
         ///     Points the cw using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The triangulation point</returns>
         public TriangulationPoint PointCw(TriangulationPoint point) => Points[(IndexOf(point) + 2) % 3];
-
+        
         /// <summary>
         ///     Rotates the cw
         /// </summary>
@@ -293,7 +293,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
             Points[1] = Points[0];
             Points[0] = t;
         }
-
+        
         /// <summary>Legalize triangle by rotating clockwise around oPoint</summary>
         /// <param name="oPoint">The origin point to rotate around</param>
         /// <param name="nPoint">???</param>
@@ -302,13 +302,13 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
             RotateCw();
             Points[IndexCcw(oPoint)] = nPoint;
         }
-
+        
         /// <summary>
         ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString() => Points[0] + "," + Points[1] + "," + Points[2];
-
+        
         /// <summary>Finalize edge marking</summary>
         public void MarkNeighborEdges()
         {
@@ -320,7 +320,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
                 }
             }
         }
-
+        
         /// <summary>
         ///     Marks the edge using the specified triangle
         /// </summary>
@@ -335,7 +335,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
                 }
             }
         }
-
+        
         /// <summary>
         ///     Marks the edge using the specified t list
         /// </summary>
@@ -353,7 +353,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
                 }
             }
         }
-
+        
         /// <summary>
         ///     Marks the constrained edge using the specified index
         /// </summary>
@@ -362,7 +362,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
         {
             EdgeIsConstrained[index] = true;
         }
-
+        
         /// <summary>
         ///     Marks the constrained edge using the specified edge
         /// </summary>
@@ -371,7 +371,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
         {
             MarkConstrainedEdge(edge.P, edge.Q);
         }
-
+        
         /// <summary>Mark edge as constrained</summary>
         public void MarkConstrainedEdge(TriangulationPoint p, TriangulationPoint q)
         {
@@ -381,7 +381,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
                 EdgeIsConstrained[i] = true;
             }
         }
-
+        
         /// <summary>
         ///     Areas this instance
         /// </summary>
@@ -390,10 +390,10 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
         {
             double b = Points[0].X - Points[1].X;
             double h = Points[2].Y - Points[1].Y;
-
+            
             return System.Math.Abs(b * h * 0.5f);
         }
-
+        
         /// <summary>
         ///     Centroids this instance
         /// </summary>
@@ -404,58 +404,58 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
             double cy = (Points[0].Y + Points[1].Y + Points[2].Y) / 3f;
             return new TriangulationPoint(cx, cy);
         }
-
+        
         /// <summary>Get the index of the neighbor that shares this edge (or -1 if it isn't shared)</summary>
         /// <returns>index of the shared edge or -1 if edge isn't shared</returns>
         public int EdgeIndex(TriangulationPoint p1, TriangulationPoint p2)
         {
             int i1 = Points.IndexOf(p1);
             int i2 = Points.IndexOf(p2);
-
+            
             // Points of this triangle in the edge p1-p2
             bool a = i1 == 0 || i2 == 0;
             bool b = i1 == 1 || i2 == 1;
             bool c = i1 == 2 || i2 == 2;
-
+            
             if (b && c)
             {
                 return 0;
             }
-
+            
             if (a && c)
             {
                 return 1;
             }
-
+            
             if (a && b)
             {
                 return 2;
             }
-
+            
             return -1;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance get constrained edge ccw
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         public bool GetConstrainedEdgeCcw(TriangulationPoint p) => EdgeIsConstrained[(IndexOf(p) + 2) % 3];
-
+        
         /// <summary>
         ///     Describes whether this instance get constrained edge cw
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         public bool GetConstrainedEdgeCw(TriangulationPoint p) => EdgeIsConstrained[(IndexOf(p) + 1) % 3];
-
+        
         /// <summary>
         ///     Describes whether this instance get constrained edge across
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         public bool GetConstrainedEdgeAcross(TriangulationPoint p) => EdgeIsConstrained[IndexOf(p)];
-
+        
         /// <summary>
         ///     Sets the constrained edge ccw using the specified p
         /// </summary>
@@ -465,7 +465,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
         {
             EdgeIsConstrained[(IndexOf(p) + 2) % 3] = ce;
         }
-
+        
         /// <summary>
         ///     Sets the constrained edge cw using the specified p
         /// </summary>
@@ -475,7 +475,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
         {
             EdgeIsConstrained[(IndexOf(p) + 1) % 3] = ce;
         }
-
+        
         /// <summary>
         ///     Sets the constrained edge across using the specified p
         /// </summary>
@@ -485,28 +485,28 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
         {
             EdgeIsConstrained[IndexOf(p)] = ce;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance get delaunay edge ccw
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         public bool GetDelaunayEdgeCcw(TriangulationPoint p) => EdgeIsDelaunay[(IndexOf(p) + 2) % 3];
-
+        
         /// <summary>
         ///     Describes whether this instance get delaunay edge cw
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         public bool GetDelaunayEdgeCw(TriangulationPoint p) => EdgeIsDelaunay[(IndexOf(p) + 1) % 3];
-
+        
         /// <summary>
         ///     Describes whether this instance get delaunay edge across
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         public bool GetDelaunayEdgeAcross(TriangulationPoint p) => EdgeIsDelaunay[IndexOf(p)];
-
+        
         /// <summary>
         ///     Sets the delaunay edge ccw using the specified p
         /// </summary>
@@ -516,7 +516,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
         {
             EdgeIsDelaunay[(IndexOf(p) + 2) % 3] = ce;
         }
-
+        
         /// <summary>
         ///     Sets the delaunay edge cw using the specified p
         /// </summary>
@@ -526,7 +526,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
         {
             EdgeIsDelaunay[(IndexOf(p) + 1) % 3] = ce;
         }
-
+        
         /// <summary>
         ///     Sets the delaunay edge across using the specified p
         /// </summary>

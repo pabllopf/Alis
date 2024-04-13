@@ -40,7 +40,7 @@ namespace Alis.Extension.Encode.FFMeg.BaseClasses
         ///     Contains raw frame data
         /// </summary>
         public byte[] RawData { get; }
-
+        
         /// <summary>
         ///     Loads raw data into memory
         /// </summary>

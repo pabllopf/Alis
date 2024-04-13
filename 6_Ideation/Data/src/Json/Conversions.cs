@@ -343,7 +343,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        /// Describes whether try convert to uri
+        ///     Describes whether try convert to uri
         /// </summary>
         /// <param name="inputString">The input string</param>
         /// <param name="result">The result</param>
@@ -532,7 +532,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        /// Tries to convert the input value to the target type.
+        ///     Tries to convert the input value to the target type.
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <param name="target">The target type to convert to.</param>
@@ -554,14 +554,11 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        /// Gets the type converter for the specified type.
+        ///     Gets the type converter for the specified type.
         /// </summary>
         /// <param name="type">The type to get the converter for.</param>
         /// <returns>The type converter for the specified type.</returns>
-        internal static TypeConverter GetConverter(Type type)
-        {
-            return TypeDescriptor.GetConverter(type);
-        }
+        internal static TypeConverter GetConverter(Type type) => TypeDescriptor.GetConverter(type);
         
         /// <summary>
         ///     Enums the to u int 64 using the specified value
@@ -800,7 +797,7 @@ namespace Alis.Core.Aspect.Data.Json
         
         
         /// <summary>
-        /// Describes whether enum try parse
+        ///     Describes whether enum try parse
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="input">The input</param>
@@ -831,19 +828,16 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        /// Describes whether is valid input
+        ///     Describes whether is valid input
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="input">The input</param>
         /// <returns>The bool</returns>
-        internal static bool IsValidInput(Type type, object input)
-        {
-            return type != null && input != null;
-        }
+        internal static bool IsValidInput(Type type, object input) => (type != null) && (input != null);
         
         
         /// <summary>
-        /// Describes whether is hexadecimal and can be parsed
+        ///     Describes whether is hexadecimal and can be parsed
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="type">The type</param>
@@ -856,7 +850,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        /// Describes whether can get enum names and values
+        ///     Describes whether can get enum names and values
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="names">The names</param>
@@ -870,7 +864,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        /// Describes whether can parse tokens
+        ///     Describes whether can parse tokens
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="type">The type</param>
@@ -878,10 +872,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="values">The values</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool CanParseTokens(string input, Type type, string[] names, Array values, out object value)
-        {
-            return TryParseTokens(input, type, names, values, out value);
-        }
+        internal static bool CanParseTokens(string input, Type type, string[] names, Array values, out object value) => TryParseTokens(input, type, names, values, out value);
         
         /// <summary>
         ///     Formats the input using the specified input
@@ -989,7 +980,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        /// Describes whether try convert token to enum value
+        ///     Describes whether try convert token to enum value
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="names">The names</param>
@@ -997,10 +988,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="token">The token</param>
         /// <param name="tokenValue">The token value</param>
         /// <returns>The bool</returns>
-        internal static bool TryConvertTokenToEnumValue(Type type, string[] names, Array values, string token, out object tokenValue)
-        {
-            return StringToEnum(type, names, values, token, out tokenValue);
-        }
+        internal static bool TryConvertTokenToEnumValue(Type type, string[] names, Array values, string token, out object tokenValue) => StringToEnum(type, names, values, token, out tokenValue);
         
         /// <summary>
         ///     Converts the token value to ulong using the specified token value

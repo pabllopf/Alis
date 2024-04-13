@@ -42,39 +42,39 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         ///     The pi slop
         /// </summary>
         private const float PiSlop = 3.1f;
-
+        
         /// <summary>
         ///     The convex points
         /// </summary>
         private readonly HashSet<Point> convexPoints;
-
+        
         // Triangles that constitute the mountain
         /// <summary>
         ///     The triangles
         /// </summary>
         public readonly List<List<Point>> Triangles;
-
+        
         /// <summary>
         ///     The head
         /// </summary>
         private Point head;
-
+        
         // Used to track which side of the line we are on
         /// <summary>
         ///     The positive
         /// </summary>
         private bool positive;
-
+        
         /// <summary>
         ///     The size
         /// </summary>
         private int size;
-
+        
         /// <summary>
         ///     The tail
         /// </summary>
         private Point tail;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="MonotoneMountain" /> class
         /// </summary>
@@ -88,12 +88,12 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             MonoPoly = new List<Point>();
             Triangles = new List<List<Point>>();
         }
-
+        
         /// <summary>
         ///     The mono poly
         /// </summary>
         public List<Point> MonoPoly { get; }
-
+        
         // Append a point to the list
         /// <summary>
         ///     Adds the point
@@ -123,7 +123,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 size += 1;
             }
         }
-
+        
         // Remove a point from the list
         /// <summary>
         ///     Removes the point
@@ -137,7 +137,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             point.Next.Prev = prev;
             size -= 1;
         }
-
+        
         // Partition a x-monotone mountain into triangles O(n)
         // See "Computational Geometry in C", 2nd edition, by Joseph O'Rourke, page 52
         /// <summary>
@@ -147,17 +147,17 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         {
             // Establish the proper sign
             positive = AngleSign();
-
+            
             // create monotone polygon - for dubug purposes
             GenMonoPoly();
-
+            
             // Initialize internal angles at each nonbase vertex
             // Link strictly convex vertices into a list, ignore reflex vertices
             Point p = head.Next;
             while (p.Neq(tail))
             {
                 float a = Angle(p);
-
+                
                 // If the point is almost colinear with it's neighbor, remove it!
                 if (a >= PiSlop || a <= -PiSlop || a == 0.0f)
                 {
@@ -167,13 +167,13 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 {
                     convexPoints.Add(p);
                 }
-
+                
                 p = p.Next;
             }
-
+            
             Triangulate();
         }
-
+        
         /// <summary>
         ///     Triangulates this instance
         /// </summary>
@@ -184,7 +184,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 using IEnumerator<Point> e = convexPoints.GetEnumerator();
                 e.MoveNext();
                 Point ear = e.Current;
-
+                
                 convexPoints.Remove(ear);
                 Point a = ear.Prev;
                 Point b = ear;
@@ -195,32 +195,32 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                     b,
                     c
                 };
-
+                
                 Triangles.Add(triangle);
-
+                
                 // Remove ear, update angles and convex list
                 Remove(ear);
                 if (Valid(a))
                 {
                     convexPoints.Add(a);
                 }
-
+                
                 if (Valid(c))
                 {
                     convexPoints.Add(c);
                 }
             }
-
+            
             Debug.Assert(size <= 3, "Triangulation bug, please report");
         }
-
+        
         /// <summary>
         ///     Describes whether this instance valid
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         private bool Valid(Point p) => p.Neq(head) && p.Neq(tail) && IsConvex(p);
-
+        
         // Create the monotone polygon
         /// <summary>
         ///     Gens the mono poly
@@ -234,7 +234,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 p = p.Next;
             }
         }
-
+        
         /// <summary>
         ///     Angles the p
         /// </summary>
@@ -246,7 +246,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             Point b = p.Prev - p;
             return (float) System.Math.Atan2(a.Cross(b), a.Dot(b));
         }
-
+        
         /// <summary>
         ///     Describes whether this instance angle sign
         /// </summary>
@@ -257,7 +257,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             Point b = tail - head;
             return System.Math.Atan2(a.Cross(b), a.Dot(b)) >= 0;
         }
-
+        
         // Determines if the inslide angle is convex or reflex
         /// <summary>
         ///     Describes whether this instance is convex
@@ -270,7 +270,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             {
                 return false;
             }
-
+            
             return true;
         }
     }

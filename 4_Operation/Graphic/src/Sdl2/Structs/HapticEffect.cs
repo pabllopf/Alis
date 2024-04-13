@@ -41,32 +41,32 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The type
         /// </summary>
         [FieldOffset(0)] public readonly ushort type;
-
+        
         /// <summary>
         ///     The constant
         /// </summary>
         [FieldOffset(0)] public HapticConstant constant;
-
+        
         /// <summary>
         ///     The periodic
         /// </summary>
         [FieldOffset(0)] public HapticPeriodic periodic;
-
+        
         /// <summary>
         ///     The condition
         /// </summary>
         [FieldOffset(0)] public HapticCondition condition;
-
+        
         /// <summary>
         ///     The ramp
         /// </summary>
         [FieldOffset(0)] public HapticRamp ramp;
-
+        
         /// <summary>
         ///     The left right
         /// </summary>
         [FieldOffset(0)] public HapticLeftRight leftRight;
-
+        
         /// <summary>
         ///     The custom
         /// </summary>

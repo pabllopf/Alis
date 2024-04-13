@@ -42,71 +42,71 @@ namespace Alis.Core.Ecs.Entity.GameObject
         ///     Gets or sets the value of the is enable
         /// </summary>
         public bool IsEnable { get; set; } = true;
-
+        
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; } = "GameObject";
-
+        
         /// <summary>
         ///     Gets or sets the value of the id
         /// </summary>
         public string Id { get; set; } = "0";
-
+        
         /// <summary>
         ///     Gets or sets the value of the tag
         /// </summary>
         public string Tag { get; set; } = "Untagged";
-
+        
         /// <summary>
         ///     Gets or sets the value of the components
         /// </summary>
         public List<IComponent> Components { get; set; } = new List<IComponent>();
-
+        
         /// <summary>
         ///     Gets or sets the value of the transform
         /// </summary>
         public Transform Transform { get; set; } = new Transform(new Vector2(0, 0), new Rotation(0), new Vector2(1, 1));
-
+        
         /// <summary>
         ///     Adds the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
         public void Add<T>(T component) where T : IComponent => Components.Add(component);
-
+        
         /// <summary>
         ///     Removes the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
         public void Remove<T>(T component) where T : IComponent => Components.Remove(component);
-
+        
         /// <summary>
         ///     Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
         public T Get<T>() where T : IComponent => (T) Components.Find(i => i.GetType() == typeof(T));
-
+        
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
         public bool Contains<T>() where T : IComponent => Get<T>() != null;
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         public void Clear<T>() where T : IComponent => Components.Clear();
-
+        
         /// <summary>
         ///     Ons the enable
         /// </summary>
         public void OnEnable() => Components.ForEach(i => i.OnEnable());
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -115,82 +115,82 @@ namespace Alis.Core.Ecs.Entity.GameObject
             Logger.Info($" Init game object: '{Name}' with id: '{Id}' and tag: '{Tag}'");
             Components.ForEach(i => i.OnInit());
         }
-
+        
         /// <summary>
         ///     Ons the awake
         /// </summary>
         public void OnAwake() => Components.ForEach(i => i.OnAwake());
-
+        
         /// <summary>
         ///     Ons the start
         /// </summary>
         public void OnStart() => Components.ForEach(i => i.OnStart());
-
+        
         /// <summary>
         ///     Ons the before update
         /// </summary>
         public void OnBeforeUpdate() => Components.ForEach(i => i.OnBeforeUpdate());
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
         public void OnUpdate() => Components.ForEach(i => i.OnUpdate());
-
+        
         /// <summary>
         ///     Ons the after update
         /// </summary>
         public void OnAfterUpdate() => Components.ForEach(i => i.OnAfterUpdate());
-
+        
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
         public void OnBeforeFixedUpdate() => Components.ForEach(i => i.OnBeforeFixedUpdate());
-
+        
         /// <summary>
         ///     Ons the fixed update
         /// </summary>
         public void OnFixedUpdate() => Components.ForEach(i => i.OnFixedUpdate());
-
+        
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
         public void OnAfterFixedUpdate() => Components.ForEach(i => i.OnAfterFixedUpdate());
-
+        
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
         public void OnDispatchEvents() => Components.ForEach(i => i.OnDispatchEvents());
-
+        
         /// <summary>
         ///     Ons the calculate
         /// </summary>
         public void OnCalculate() => Components.ForEach(i => i.OnCalculate());
-
+        
         /// <summary>
         ///     Ons the draw
         /// </summary>
         public void OnDraw() => Components.ForEach(i => i.OnDraw());
-
+        
         /// <summary>
         ///     Ons the gui
         /// </summary>
         public void OnGui() => Components.ForEach(i => i.OnGui());
-
+        
         /// <summary>
         ///     Ons the disable
         /// </summary>
         public void OnDisable() => Components.ForEach(i => i.OnDisable());
-
+        
         /// <summary>
         ///     Ons the reset
         /// </summary>
         public void OnReset() => Components.ForEach(i => i.OnReset());
-
+        
         /// <summary>
         ///     Ons the stop
         /// </summary>
         public void OnStop() => Components.ForEach(i => i.OnStop());
-
+        
         /// <summary>
         ///     Ons the exit
         /// </summary>
@@ -198,7 +198,7 @@ namespace Alis.Core.Ecs.Entity.GameObject
         {
             Components.ForEach(i => i.OnExit());
         }
-
+        
         /// <summary>
         ///     Ons the destroy
         /// </summary>

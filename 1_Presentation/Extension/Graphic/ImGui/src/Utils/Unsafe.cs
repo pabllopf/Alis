@@ -42,14 +42,14 @@ namespace Alis.Extension.Graphic.ImGui.Utils
         /// <returns>An object of type <typeparamref name="T" /> read from the given location.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static unsafe T Read<T>(void* source) where T : unmanaged => *(T*) source;
-
+        
         /// <summary>
         ///     Sizes the of
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The int</returns>
         public static int SizeOf<T>() => Marshal.SizeOf<T>();
-
+        
         /// <summary>
         ///     Converts the ref using the specified source
         /// </summary>
@@ -59,10 +59,10 @@ namespace Alis.Extension.Graphic.ImGui.Utils
         public static unsafe ref T AsRef<T>(void* source) where T : unmanaged
         {
             T* typedPointer = (T*) source;
-
+            
             return ref *typedPointer;
         }
-
+        
         /// <summary>Copies bytes from the source address to the destination address.</summary>
         /// <param name="destination">The destination address to copy to.</param>
         /// <param name="source">The source address to copy from.</param>
@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.ImGui.Utils
         {
             Buffer.MemoryCopy(source, destination, byteCount, byteCount);
         }
-
+        
         /// <summary>
         ///     Initializes a block of memory at the given location with a given initial value without assuming architecture
         ///     dependent alignment of the address.
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.ImGui.Utils
             {
                 block[i] = value;
             }
-
+            
             IntPtr ptr = new IntPtr(startAddress);
             Marshal.Copy(block, 0, ptr, (int) byteCount);
         }

@@ -45,12 +45,12 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         ///     The ffplay
         /// </summary>
         private readonly string ffplay;
-
+        
         /// <summary>
         ///     The ffplayp
         /// </summary>
         private Process ffplayp;
-
+        
         /// <summary>
         ///     Used for playing audio data
         /// </summary>
@@ -59,10 +59,10 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         public AudioPlayer(string input = null, string ffplayExecutable = "ffplay")
         {
             ffplay = ffplayExecutable;
-
+            
             Filename = input;
         }
-
+        
         /// <summary>
         ///     Disposes this instance
         /// </summary>
@@ -86,7 +86,7 @@ namespace Alis.Extension.Encode.FFMeg.Audio
                 }
             }
         }
-
+        
         /// <summary>
         ///     Play audio
         /// </summary>
@@ -97,15 +97,15 @@ namespace Alis.Extension.Encode.FFMeg.Audio
             {
                 throw new InvalidOperationException("Player is already opened for writing samples!");
             }
-
+            
             if (string.IsNullOrEmpty(Filename))
             {
                 throw new InvalidOperationException("No filename was specified!");
             }
-
+            
             FfMpegWrapper.RunCommand(ffplay, $"{extraInputParameters} -i \"{Filename}\"" + (showWindow ? "" : " -nodisp"));
         }
-
+        
         /// <summary>
         ///     Play audio in background and return the process associated with it
         /// </summary>
@@ -118,21 +118,21 @@ namespace Alis.Extension.Encode.FFMeg.Audio
             {
                 throw new InvalidOperationException("Player is already opened for writing samples!");
             }
-
+            
             if (string.IsNullOrEmpty(Filename))
             {
                 throw new InvalidOperationException("No filename was specified!");
             }
-
+            
             FfMpegWrapper.OpenOutput(ffplay, $"{extraInputParameters} -i \"{Filename}\"" + (showWindow ? "" : " -nodisp"), out Process p);
             if (!runPureBackground)
             {
                 ffplayp = p;
             }
-
+            
             return ffplayp;
         }
-
+        
         /// <summary>
         ///     Open player for writing samples for playing.
         /// </summary>
@@ -149,12 +149,12 @@ namespace Alis.Extension.Encode.FFMeg.Audio
             {
                 throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
             }
-
+            
             if (OpenedForWriting)
             {
                 throw new InvalidOperationException("Player is already opened for writing samples!");
             }
-
+            
             try
             {
                 if ((ffplayp != null) && !ffplayp.HasExited)
@@ -165,14 +165,14 @@ namespace Alis.Extension.Encode.FFMeg.Audio
             catch
             {
             }
-
+            
             InputDataStream = FfMpegWrapper.OpenInput(ffplay, $"{extraInputParameters} -f s{bitDepth}le -channels {channels} -sample_rate {sampleRate} -i -"
                                                               + (showWindow ? "" : " -nodisp"),
                 out ffplayp, showFFplayOutput);
-
+            
             OpenedForWriting = true;
         }
-
+        
         /// <summary>
         ///     Close player for writing samples.
         /// </summary>
@@ -182,7 +182,7 @@ namespace Alis.Extension.Encode.FFMeg.Audio
             {
                 throw new InvalidOperationException("Player is not opened for writing samples!");
             }
-
+            
             try
             {
                 try
@@ -195,7 +195,7 @@ namespace Alis.Extension.Encode.FFMeg.Audio
                 catch
                 {
                 }
-
+                
                 InputDataStream.Dispose();
             }
             finally
@@ -203,7 +203,7 @@ namespace Alis.Extension.Encode.FFMeg.Audio
                 OpenedForWriting = false;
             }
         }
-
+        
         /// <summary>
         ///     Get stream for writing and playing audio in custom format.
         /// </summary>
@@ -215,7 +215,7 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         {
             Stream str = FfMpegWrapper.OpenInput(ffplayExecutable, $"-f {format} {arguments} -i -",
                 out ffplayProcess, showFFplayOutput);
-
+            
             return str;
         }
     }

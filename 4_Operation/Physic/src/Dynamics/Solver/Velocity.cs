@@ -44,12 +44,12 @@ namespace Alis.Core.Physic.Dynamics.Solver
             V = v;
             W = w;
         }
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public Vector2 V { get; set; }
-
+        
         /// <summary>
         ///     The
         /// </summary>

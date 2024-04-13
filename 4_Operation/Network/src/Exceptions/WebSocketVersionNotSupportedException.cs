@@ -44,7 +44,7 @@ namespace Alis.Core.Network.Exceptions
         public WebSocketVersionNotSupportedException()
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="WebSocketVersionNotSupportedException" /> class
         /// </summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Network.Exceptions
         public WebSocketVersionNotSupportedException(string message) : base(message)
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="WebSocketVersionNotSupportedException" /> class
         /// </summary>

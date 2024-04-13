@@ -38,17 +38,17 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The none im gui table bg target
         /// </summary>
         None = 0,
-
+        
         /// <summary>
         ///     The row bg im gui table bg target
         /// </summary>
         RowBg0 = 1,
-
+        
         /// <summary>
         ///     The row bg im gui table bg target
         /// </summary>
         RowBg1 = 2,
-
+        
         /// <summary>
         ///     The cell bg im gui table bg target
         /// </summary>

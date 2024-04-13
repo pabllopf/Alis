@@ -46,22 +46,22 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     The hash code
         /// </summary>
         private readonly int hashCode;
-
+        
         /// <summary>The X component of the vector.</summary>
         public float X;
-
+        
         /// <summary>The Y component of the vector.</summary>
         public float Y;
-
+        
         /// <summary>The Z component of the vector.</summary>
         public float Z;
-
+        
         /// <summary>Creates a new <see cref="Vector3" /> object whose three elements have the same value.</summary>
         /// <param name="value">The value to assign to all three elements.</param>
         private Vector3(float value) : this(value, value, value)
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Vector3" /> class
         /// </summary>
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Math.Vector
         public Vector3(Vector2 value, float z) : this(value.X, value.Y, z)
         {
         }
-
+        
         /// <summary>Creates a vector whose elements have the specified values.</summary>
         /// <param name="x">The value to assign to the <see cref="Vector3.X" /> field.</param>
         /// <param name="y">The value to assign to the <see cref="Vector3.Y" /> field.</param>
@@ -80,34 +80,34 @@ namespace Alis.Core.Aspect.Math.Vector
             X = x;
             Y = y;
             Z = z;
-
+            
             HashCode hash = new HashCode();
             hash.Add(x);
             hash.Add(y);
             hash.Add(z);
             hashCode = hash.ToHashCode();
         }
-
+        
         /// <summary>Gets a vector whose 3 elements are equal to zero.</summary>
         /// <value>A vector whose three elements are equal to zero (that is, it returns the vector <c>(0,0,0)</c>.</value>
         public static Vector3 Zero => default(Vector3);
-
+        
         /// <summary>Gets a vector whose 3 elements are equal to one.</summary>
         /// <value>A vector whose three elements are equal to one (that is, it returns the vector <c>(1,1,1)</c>.</value>
         public static Vector3 One => new Vector3(1.0f);
-
+        
         /// <summary>Gets the vector (1,0,0).</summary>
         /// <value>The vector <c>(1,0,0)</c>.</value>
         public static Vector3 UnitX => new Vector3(1.0f, 0.0f, 0.0f);
-
+        
         /// <summary>Gets the vector (0,1,0).</summary>
         /// <value>The vector <c>(0,1,0)</c>.</value>
         public static Vector3 UnitY => new Vector3(0.0f, 1.0f, 0.0f);
-
+        
         /// <summary>Gets the vector (0,0,1).</summary>
         /// <value>The vector <c>(0,0,1)</c>.</value>
         public static Vector3 UnitZ => new Vector3(0.0f, 0.0f, 1.0f);
-
+        
         /// <summary>Adds two vectors together.</summary>
         /// <param name="left">The first vector to add.</param>
         /// <param name="right">The second vector to add.</param>
@@ -122,7 +122,7 @@ namespace Alis.Core.Aspect.Math.Vector
             left.Y + right.Y,
             left.Z + right.Z
         );
-
+        
         /// <summary>Divides the first vector by the second.</summary>
         /// <param name="left">The first vector.</param>
         /// <param name="right">The second vector.</param>
@@ -133,14 +133,14 @@ namespace Alis.Core.Aspect.Math.Vector
             left.Y / right.Y,
             left.Z / right.Z
         );
-
+        
         /// <summary>Divides the specified vector by a specified scalar value.</summary>
         /// <param name="value1">The vector.</param>
         /// <param name="value2">The scalar value.</param>
         /// <returns>The result of the division.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3 operator /(Vector3 value1, float value2) => value1 / new Vector3(value2);
-
+        
         /// <summary>Returns a value that indicates whether each pair of elements in two specified vectors is equal.</summary>
         /// <param name="left">The first vector to compare.</param>
         /// <param name="right">The second vector to compare.</param>
@@ -156,7 +156,7 @@ namespace Alis.Core.Aspect.Math.Vector
         public static bool operator ==(Vector3 left, Vector3 right) => (System.Math.Abs(left.X - right.X) < 0.1f)
                                                                        && (System.Math.Abs(left.Y - right.Y) < 0.1f)
                                                                        && (System.Math.Abs(left.Z - right.Z) < 0.1f);
-
+        
         /// <summary>Returns a value that indicates whether two specified vectors are not equal.</summary>
         /// <param name="left">The first vector to compare.</param>
         /// <param name="right">The second vector to compare.</param>
@@ -166,7 +166,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool operator !=(Vector3 left, Vector3 right) => !(left == right);
-
+        
         /// <summary>Returns a new vector whose values are the product of each pair of elements in two specified vectors.</summary>
         /// <param name="left">The first vector.</param>
         /// <param name="right">The second vector.</param>
@@ -177,21 +177,21 @@ namespace Alis.Core.Aspect.Math.Vector
             left.Y * right.Y,
             left.Z * right.Z
         );
-
+        
         /// <summary>Multiplies the specified vector by the specified scalar value.</summary>
         /// <param name="left">The vector.</param>
         /// <param name="right">The scalar value.</param>
         /// <returns>The scaled vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3 operator *(Vector3 left, float right) => left * new Vector3(right);
-
+        
         /// <summary>Multiplies the scalar value by the specified vector.</summary>
         /// <param name="left">The vector.</param>
         /// <param name="right">The scalar value.</param>
         /// <returns>The scaled vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3 operator *(float left, Vector3 right) => right * left;
-
+        
         /// <summary>Subtracts the second vector from the first.</summary>
         /// <param name="left">The first vector.</param>
         /// <param name="right">The second vector.</param>
@@ -206,7 +206,7 @@ namespace Alis.Core.Aspect.Math.Vector
             left.Y - right.Y,
             left.Z - right.Z
         );
-
+        
         /// <summary>Negates the specified vector.</summary>
         /// <param name="value">The vector to negate.</param>
         /// <returns>The negated vector.</returns>
@@ -216,7 +216,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3 operator -(Vector3 value) => Zero - value;
-
+        
         /// <summary>Computes the cross product of two vectors.</summary>
         /// <param name="vector1">The first vector.</param>
         /// <param name="vector2">The second vector.</param>
@@ -227,7 +227,7 @@ namespace Alis.Core.Aspect.Math.Vector
             vector1.Z * vector2.X - vector1.X * vector2.Z,
             vector1.X * vector2.Y - vector1.Y * vector2.X
         );
-
+        
         /// <summary>Returns the dot product of two vectors.</summary>
         /// <param name="vector1">The first vector.</param>
         /// <param name="vector2">The second vector.</param>
@@ -236,13 +236,13 @@ namespace Alis.Core.Aspect.Math.Vector
         public static float Dot(Vector3 vector1, Vector3 vector2) => vector1.X * vector2.X
                                                                      + vector1.Y * vector2.Y
                                                                      + vector1.Z * vector2.Z;
-
+        
         /// <summary>Returns a vector with the same direction as the specified vector, but with a length of one.</summary>
         /// <param name="value">The vector to normalize.</param>
         /// <returns>The normalized vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3 Normalize(Vector3 value) => value / value.Length();
-
+        
         /// <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
         /// <param name="obj">The object to compare with the current instance.</param>
         /// <returns>
@@ -256,7 +256,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public readonly override bool Equals(object obj) => obj is Vector3 other && Equals(other);
-
+        
         /// <summary>Returns a value that indicates whether this instance and another vector are equal.</summary>
         /// <param name="other">The other vector.</param>
         /// <returns><see langword="true" /> if the two vectors are equal; otherwise, <see langword="false" />.</returns>
@@ -265,11 +265,11 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     <see cref="Vector3.Z" /> elements are equal.
         /// </remarks>
         public readonly bool Equals(Vector3 other) => this == other;
-
+        
         /// <summary>Returns the hash code for this instance.</summary>
         /// <returns>The hash code.</returns>
         public readonly override int GetHashCode() => hashCode;
-
+        
         /// <summary>Returns the length of this vector object.</summary>
         /// <returns>The vector's length.</returns>
         /// <altmember cref="Vector3.LengthSquared" />
@@ -279,14 +279,14 @@ namespace Alis.Core.Aspect.Math.Vector
             float lengthSquared = LengthSquared();
             return MathF.Sqrt(lengthSquared);
         }
-
+        
         /// <summary>Returns the length of the vector squared.</summary>
         /// <returns>The vector's length squared.</returns>
         /// <remarks>This operation offers better performance than a call to the <see cref="Vector3.Length" /> method.</remarks>
         /// <altmember cref="Vector3.Length" />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public readonly float LengthSquared() => Dot(this, this);
-
+        
         /// <summary>Returns the string representation of the current instance using default formatting.</summary>
         /// <returns>The string representation of the current instance.</returns>
         /// <remarks>
@@ -297,7 +297,7 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     separate each element.
         /// </remarks>
         public readonly override string ToString() => ToString("G", CultureInfo.CurrentCulture);
-
+        
         /// <summary>
         ///     Returns the string representation of the current instance using the specified format string to format
         ///     individual elements and the specified format provider to define culture-specific formatting.

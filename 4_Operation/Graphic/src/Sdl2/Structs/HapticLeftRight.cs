@@ -42,19 +42,19 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The type
         /// </summary>
         public readonly ushort type;
-
+        
         // Replay
         /// <summary>
         ///     The length
         /// </summary>
         public readonly uint length;
-
+        
         // Rumble
         /// <summary>
         ///     The large magnitude
         /// </summary>
         public readonly ushort largeMagnitude;
-
+        
         /// <summary>
         ///     The small magnitude
         /// </summary>

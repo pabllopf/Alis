@@ -43,7 +43,7 @@ namespace Alis.Extension.Math.PathGenerator
     public static class PathManager
     {
         //Contributed by Matthew Bettcher
-
+        
         /// <summary>Convert a path into a set of edges and attaches them to the specified body. Note: use only for static edges.</summary>
         /// <param name="path">The path.</param>
         /// <param name="body">The body.</param>
@@ -51,7 +51,7 @@ namespace Alis.Extension.Math.PathGenerator
         public static void ConvertPathToEdges(Path path, Body body, int subdivisions)
         {
             Vertices verts = path.GetVertices(subdivisions);
-
+            
             if (path.Closed)
             {
                 ChainShape chain = new ChainShape(verts, true);
@@ -65,7 +65,7 @@ namespace Alis.Extension.Math.PathGenerator
                 }
             }
         }
-
+        
         /// <summary>Convert a closed path into a polygon. Convex decomposition is automatically performed.</summary>
         /// <param name="path">The path.</param>
         /// <param name="body">The body.</param>
@@ -77,18 +77,18 @@ namespace Alis.Extension.Math.PathGenerator
             {
                 throw new Exception("The path must be closed to convert to a polygon.");
             }
-
+            
             List<Vector2> verts = path.GetVertices(subdivisions);
-
+            
             List<Vertices> decomposedVerts =
                 Triangulate.ConvexPartition(new Vertices(verts), TriangulationAlgorithm.BayaZit);
-
+            
             foreach (Vertices item in decomposedVerts)
             {
                 body.AddFixture(new PolygonShape(item, density));
             }
         }
-
+        
         /// <summary>Duplicates the given Body along the given path for approximately the given copies.</summary>
         /// <param name="world">The world.</param>
         /// <param name="path">The path.</param>
@@ -102,7 +102,7 @@ namespace Alis.Extension.Math.PathGenerator
         {
             List<Vector3> centers = path.SubdivideEvenly(copies);
             List<Body> bodyList = new List<Body>();
-
+            
             for (int i = 0; i < centers.Count; i++)
             {
                 Body b = new Body(
@@ -111,20 +111,20 @@ namespace Alis.Extension.Math.PathGenerator
                     BodyType.Static,
                     centers[i].Z
                 );
-
+                
                 world.AddBody(b);
-
+                
                 foreach (Shape shape in shapes)
                 {
                     b.AddFixture(shape);
                 }
-
+                
                 bodyList.Add(b);
             }
-
+            
             return bodyList;
         }
-
+        
         /// <summary>Duplicates the given Body along the given path for approximately the given copies.</summary>
         /// <param name="world">The world.</param>
         /// <param name="path">The path.</param>
@@ -139,10 +139,10 @@ namespace Alis.Extension.Math.PathGenerator
             {
                 shape
             };
-
+            
             return EvenlyDistributeShapesAlongPath(world, path, shapes, type, copies, userData);
         }
-
+        
         /// <summary>Moves the given body along the defined path.</summary>
         /// <param name="path">The path.</param>
         /// <param name="body">The body.</param>
@@ -154,10 +154,10 @@ namespace Alis.Extension.Math.PathGenerator
             Vector2 destination = path.GetPosition(time);
             Vector2 positionDelta = body.Position - destination;
             Vector2 velocity = positionDelta / timeStep * strength;
-
+            
             body.LinearVelocity = -velocity;
         }
-
+        
         /// <summary>Attaches the bodies with revolute joints.</summary>
         /// <param name="world">The world.</param>
         /// <param name="bodies">The bodies.</param>
@@ -169,7 +169,7 @@ namespace Alis.Extension.Math.PathGenerator
             Vector2 localAnchorA, Vector2 localAnchorB, bool connectFirstAndLast, bool collideConnected)
         {
             List<RevoluteJoint> joints = new List<RevoluteJoint>(bodies.Count + 1);
-
+            
             for (int i = 1; i < bodies.Count; i++)
             {
                 RevoluteJoint joint = new RevoluteJoint(bodies[i], bodies[i - 1], localAnchorA, localAnchorB)
@@ -179,7 +179,7 @@ namespace Alis.Extension.Math.PathGenerator
                 world.AddJoint(joint);
                 joints.Add(joint);
             }
-
+            
             if (connectFirstAndLast)
             {
                 RevoluteJoint lastjoint =
@@ -190,7 +190,7 @@ namespace Alis.Extension.Math.PathGenerator
                 world.AddJoint(lastjoint);
                 joints.Add(lastjoint);
             }
-
+            
             return joints;
         }
     }

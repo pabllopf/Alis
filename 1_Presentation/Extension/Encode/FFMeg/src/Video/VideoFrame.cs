@@ -42,17 +42,17 @@ namespace Alis.Extension.Encode.FFMeg.Video
         ///     The offset
         /// </summary>
         private readonly int size;
-
+        
         /// <summary>
         ///     The frame buffer
         /// </summary>
         private byte[] frameBuffer;
-
+        
         /// <summary>
         ///     The offset
         /// </summary>
         private int offset;
-
+        
         /// <summary>
         ///     Creates an empty video frame with given dimensions using the RGB24 pixel format.
         /// </summary>
@@ -64,25 +64,25 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidDataException("Video frame dimensions have to be bigger than 0 pixels!");
             }
-
+            
             Width = w;
             Height = h;
-
+            
             size = Width * Height * 3;
             frameBuffer = new byte[size];
             RawData = frameBuffer;
         }
-
+        
         /// <summary>
         ///     Video width in pixels
         /// </summary>
         public int Width { get; }
-
+        
         /// <summary>
         ///     Video height in pixels
         /// </summary>
         public int Height { get; }
-
+        
         /// <summary>
         ///     Clears the frame buffer
         /// </summary>
@@ -90,12 +90,12 @@ namespace Alis.Extension.Encode.FFMeg.Video
         {
             frameBuffer = null;
         }
-
+        
         /// <summary>
         ///     Raw video data in RGB24 pixel format
         /// </summary>
         public byte[] RawData { get; private set; }
-
+        
         /// <summary>
         ///     Loads frame data from stream.
         /// </summary>
@@ -103,7 +103,7 @@ namespace Alis.Extension.Encode.FFMeg.Video
         public bool Load(Stream str)
         {
             offset = 0;
-
+            
             while (offset < size)
             {
                 int r = str.Read(frameBuffer, offset, size - offset);
@@ -113,13 +113,13 @@ namespace Alis.Extension.Encode.FFMeg.Video
                     {
                         return false;
                     }
-
+                    
                     break;
                 }
-
+                
                 offset += r;
             }
-
+            
             // Adjust RawData length when changed
             if (RawData.Length != offset)
             {
@@ -127,10 +127,10 @@ namespace Alis.Extension.Encode.FFMeg.Video
                 Array.Copy(frameBuffer, 0, newRawData, 0, offset);
                 RawData = newRawData;
             }
-
+            
             return true;
         }
-
+        
         /// <summary>
         ///     Saves the output
         /// </summary>
@@ -145,7 +145,7 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 File.Delete(output);
             }
-
+            
             using (Stream inp = FfMpegWrapper.OpenInput(ffmpegExecutable,
                        $"-f rawvideo -video_size {Width}:{Height} -pixel_format rgb24 -i - " +
                        $"-c:v {encoder} {extraParameters} -f image2pipe \"{output}\"",
@@ -158,7 +158,7 @@ namespace Alis.Extension.Encode.FFMeg.Video
                 inp.Write(data, 0, data.Length);
             }
         }
-
+        
         /// <summary>
         ///     Gets the pixels using the specified x
         /// </summary>

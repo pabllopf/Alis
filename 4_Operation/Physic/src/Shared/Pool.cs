@@ -42,17 +42,17 @@ namespace Alis.Core.Physic.Shared
         ///     The object creator
         /// </summary>
         private readonly Func<T> objectCreator;
-
+        
         /// <summary>
         ///     The object reset
         /// </summary>
         private readonly Action<T> objectReset;
-
+        
         /// <summary>
         ///     The queue
         /// </summary>
         private readonly Queue<T> queue;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Pool{T}" /> class
         /// </summary>
@@ -66,24 +66,24 @@ namespace Alis.Core.Physic.Shared
             this.objectCreator = objectCreator;
             this.objectReset = objectReset;
             queue = new Queue<T>(capacity);
-
+            
             if (!preCreateInstances)
             {
                 return;
             }
-
+            
             for (int i = 0; i < capacity; i++)
             {
                 T obj = objectCreator();
                 queue.Enqueue(obj);
             }
         }
-
+        
         /// <summary>
         ///     Gets the value of the left in pool
         /// </summary>
         public int LeftInPool => queue.Count;
-
+        
         /// <summary>
         ///     Gets the from pool using the specified reset
         /// </summary>
@@ -95,17 +95,17 @@ namespace Alis.Core.Physic.Shared
             {
                 return objectCreator();
             }
-
+            
             T obj = queue.Dequeue();
-
+            
             if (reset)
             {
                 objectReset?.Invoke(obj);
             }
-
+            
             return obj;
         }
-
+        
         /// <summary>
         ///     Gets the many from pool using the specified count
         /// </summary>
@@ -114,13 +114,13 @@ namespace Alis.Core.Physic.Shared
         public IEnumerable<T> GetManyFromPool(int count)
         {
             Debug.Assert(count != 0);
-
+            
             for (int i = 0; i < count; i++)
             {
                 yield return GetFromPool();
             }
         }
-
+        
         /// <summary>
         ///     Returns the to pool using the specified obj
         /// </summary>
@@ -132,10 +132,10 @@ namespace Alis.Core.Physic.Shared
             {
                 objectReset?.Invoke(obj);
             }
-
+            
             queue.Enqueue(obj);
         }
-
+        
         /// <summary>
         ///     Returns the to pool using the specified objs
         /// </summary>

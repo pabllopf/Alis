@@ -49,7 +49,7 @@ namespace Alis.Core.Network
         ///     The http get header regex
         /// </summary>
         private const string HttpGetHeaderRegex = @"^GET(.*)HTTP\/1\.1";
-
+        
         /// <summary>
         ///     Calculates a random WebSocket key that can be used to initiate a WebSocket handshake
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Core.Network
             ran.GetBytes(keyAsBytes);
             return Convert.ToBase64String(keyAsBytes);
         }
-
+        
         /// <summary>
         ///     Computes a WebSocket accept string from a given key
         /// </summary>
@@ -75,14 +75,14 @@ namespace Alis.Core.Network
             const string webSocketGuid = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
             string concatenated = secWebSocketKey + webSocketGuid;
             byte[] concatenatedAsBytes = Encoding.UTF8.GetBytes(concatenated);
-
+            
             // note an instance of SHA1 is not threadsafe so we have to create a new one every time here
             HashAlgorithm hashProvider3 = new SHA512Managed();
             byte[] sha1Hash = hashProvider3.ComputeHash(concatenatedAsBytes);
             string secWebSocketAccept = Convert.ToBase64String(sha1Hash);
             return secWebSocketAccept;
         }
-
+        
         /// <summary>
         ///     Reads an http header as per the HTTP spec
         /// </summary>
@@ -95,28 +95,28 @@ namespace Alis.Core.Network
             byte[] buffer = new byte[length];
             int offset = 0;
             int bytesRead = 0;
-
+            
             do
             {
                 if (offset >= length)
                 {
                     throw new EntityTooLargeException("Http header message too large to fit in buffer (16KB)");
                 }
-
+                
                 bytesRead = await stream.ReadAsync(buffer, offset, length - offset, token);
                 offset += bytesRead;
                 string header = Encoding.UTF8.GetString(buffer, 0, offset);
-
+                
                 // as per http specification, all headers should end this this
                 if (header.Contains("\r\n\r\n"))
                 {
                     return header;
                 }
             } while (bytesRead > 0);
-
+            
             return string.Empty;
         }
-
+        
         /// <summary>
         ///     Decodes the header to detect is this is a web socket upgrade response
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Core.Network
         {
             Regex getRegex = new Regex(HttpGetHeaderRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
             Match getRegexMatch = getRegex.Match(header);
-
+            
             if (getRegexMatch.Success)
             {
                 // check if this is a web socket upgrade request
@@ -134,10 +134,10 @@ namespace Alis.Core.Network
                 Match webSocketUpgradeRegexMatch = webSocketUpgradeRegex.Match(header);
                 return webSocketUpgradeRegexMatch.Success;
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Gets the path from the HTTP header
         /// </summary>
@@ -147,16 +147,16 @@ namespace Alis.Core.Network
         {
             Regex getRegex = new Regex(HttpGetHeaderRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
             Match getRegexMatch = getRegex.Match(httpHeader);
-
+            
             if (getRegexMatch.Success)
             {
                 // extract the path attribute from the first line of the header
                 return getRegexMatch.Groups[1].Value.Trim();
             }
-
+            
             return null;
         }
-
+        
         /// <summary>
         ///     Gets the sub protocols using the specified http header
         /// </summary>
@@ -167,7 +167,7 @@ namespace Alis.Core.Network
         {
             Regex regex = new Regex(@"Sec-WebSocket-Protocol:(?<protocols>.+)", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
             Match match = regex.Match(httpHeader);
-
+            
             if (match.Success)
             {
                 const int maxLen = 2048;
@@ -176,17 +176,17 @@ namespace Alis.Core.Network
                     throw new EntityTooLargeException(
                         $"Sec-WebSocket-Protocol exceeded the maximum of length of {maxLen}");
                 }
-
+                
                 // extract a csv list of sub protocols (in order of highest preference first)
                 string csv = match.Groups["protocols"].Value.Trim();
                 return csv.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
                     .Select(x => x.Trim())
                     .ToList();
             }
-
+            
             return new List<string>();
         }
-
+        
         /// <summary>
         ///     Reads the HTTP response code from the http response string
         /// </summary>
@@ -196,16 +196,16 @@ namespace Alis.Core.Network
         {
             Regex getRegex = new Regex(@"HTTP\/1\.1 (.*)", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
             Match getRegexMatch = getRegex.Match(response);
-
+            
             if (getRegexMatch.Success)
             {
                 // extract the path attribute from the first line of the header
                 return getRegexMatch.Groups[1].Value.Trim();
             }
-
+            
             return null;
         }
-
+        
         /// <summary>
         ///     Writes an HTTP response string to the stream
         /// </summary>

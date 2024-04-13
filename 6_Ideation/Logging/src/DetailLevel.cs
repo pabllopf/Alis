@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 namespace Alis.Core.Aspect.Logging
 {
     /// <summary>
@@ -39,7 +38,7 @@ namespace Alis.Core.Aspect.Logging
         ///     The minimal detail level
         /// </summary>
         Minimal,
-
+        
         /// <summary>
         ///     The full detail level
         /// </summary>

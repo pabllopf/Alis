@@ -41,22 +41,22 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The none im draw list flags
         /// </summary>
         None = 0,
-
+        
         /// <summary>
         ///     The anti aliased lines im draw list flags
         /// </summary>
         AntiAliasedLines = 1,
-
+        
         /// <summary>
         ///     The anti aliased lines use tex im draw list flags
         /// </summary>
         AntiAliasedLinesUseTex = 2,
-
+        
         /// <summary>
         ///     The anti aliased fill im draw list flags
         /// </summary>
         AntiAliasedFill = 4,
-
+        
         /// <summary>
         ///     The allow vtx offset im draw list flags
         /// </summary>

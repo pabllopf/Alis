@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The stack allocation size limit
         /// </summary>
         public const int StackAllocationSizeLimit = 2048;
-
+        
         /// <summary>
         ///     Strings the from ptr using the specified ptr
         /// </summary>
@@ -55,10 +55,10 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 characters++;
             }
-
+            
             return Encoding.UTF8.GetString(ptr, characters);
         }
-
+        
         /// <summary>
         ///     Describes whether are strings equal
         /// </summary>
@@ -75,28 +75,28 @@ namespace Alis.Extension.Graphic.ImGui
                     return false;
                 }
             }
-
+            
             if (b[aLength] != 0)
             {
                 return false;
             }
-
+            
             return true;
         }
-
+        
         /// <summary>
         ///     Allocates the byte count
         /// </summary>
         /// <param name="byteCount">The byte count</param>
         /// <returns>The byte</returns>
         public static byte* Allocate(int byteCount) => (byte*) Marshal.AllocHGlobal(byteCount);
-
+        
         /// <summary>
         ///     Frees the ptr
         /// </summary>
         /// <param name="ptr">The ptr</param>
         public static void Free(byte* ptr) => Marshal.FreeHGlobal((IntPtr) ptr);
-
+        
         /// <summary>
         ///     Calcs the size in utf 8 using the specified s
         /// </summary>
@@ -111,13 +111,13 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 throw new ArgumentOutOfRangeException();
             }
-
+            
             fixed (char* utf16Ptr = s)
             {
                 return Encoding.UTF8.GetByteCount(utf16Ptr + start, length);
             }
         }
-
+        
         /// <summary>
         ///     Gets the utf 8 using the specified s
         /// </summary>
@@ -132,7 +132,7 @@ namespace Alis.Extension.Graphic.ImGui
                 return Encoding.UTF8.GetBytes(utf16Ptr, s.Length, utf8Bytes, utf8ByteCount);
             }
         }
-
+        
         /// <summary>
         ///     Gets the utf 8 using the specified s
         /// </summary>
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 throw new ArgumentOutOfRangeException();
             }
-
+            
             fixed (char* utf16Ptr = s)
             {
                 return Encoding.UTF8.GetBytes(utf16Ptr + start, length, utf8Bytes, utf8ByteCount);

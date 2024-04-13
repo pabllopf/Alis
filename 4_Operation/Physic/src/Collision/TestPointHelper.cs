@@ -53,7 +53,7 @@ namespace Alis.Core.Physic.Collision
             Vector2 d = point - center;
             return Vector2.Dot(d, d) <= radius * radius;
         }
-
+        
         /// <summary>
         ///     Describes whether test point polygon
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Collision
             ref Transform transform)
         {
             Vector2 pLocal = MathUtils.MulT(transform.Rotation, point - transform.Position);
-
+            
             for (int i = 0; i < vertices.Count; ++i)
             {
                 float dot = Vector2.Dot(normals[i], pLocal - vertices[i]);
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Collision
                     return false;
                 }
             }
-
+            
             return true;
         }
     }

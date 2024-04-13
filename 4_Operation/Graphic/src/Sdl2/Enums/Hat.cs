@@ -38,42 +38,42 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         ///     The sdl hat centered
         /// </summary>
         HatCentered = 0x00,
-
+        
         /// <summary>
         ///     The sdl hat up
         /// </summary>
         HatUp = 0x01,
-
+        
         /// <summary>
         ///     The sdl hat right
         /// </summary>
         HatRight = 0x02,
-
+        
         /// <summary>
         ///     The sdl hat down
         /// </summary>
         HatDown = 0x04,
-
+        
         /// <summary>
         ///     The sdl hat left
         /// </summary>
         HatLeft = 0x08,
-
+        
         /// <summary>
         ///     The sdl hat up
         /// </summary>
         HatRightUp = HatRight | HatUp,
-
+        
         /// <summary>
         ///     The sdl hat down
         /// </summary>
         HatRightDown = HatRight | HatDown,
-
+        
         /// <summary>
         ///     The sdl hat up
         /// </summary>
         HatLeftUp = HatLeft | HatUp,
-
+        
         /// <summary>
         ///     The sdl hat down
         /// </summary>

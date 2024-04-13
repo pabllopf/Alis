@@ -51,7 +51,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.General
         ///     The general setting
         /// </summary>
         private readonly GeneralSetting generalSetting = new GeneralSetting();
-
+        
         /// <summary>
         ///     Authors the value
         /// </summary>
@@ -62,13 +62,13 @@ namespace Alis.Builder.Core.Ecs.System.Setting.General
             generalSetting.Author = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The general setting</returns>
         public GeneralSetting Build() => generalSetting;
-
+        
         /// <summary>
         ///     Debugs the value
         /// </summary>
@@ -79,7 +79,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.General
             generalSetting.Debug = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Descriptions the value
         /// </summary>
@@ -90,7 +90,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.General
             generalSetting.Description = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Icons the value
         /// </summary>
@@ -101,7 +101,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.General
             generalSetting.Icon = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Licences the value
         /// </summary>
@@ -112,7 +112,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.General
             generalSetting.License = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Names the value
         /// </summary>
@@ -123,7 +123,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.General
             generalSetting.Name = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Versions the value
         /// </summary>

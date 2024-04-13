@@ -40,53 +40,53 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         ///     The bottom
         /// </summary>
         public readonly Edge Bottom;
-
+        
         /// <summary>
         ///     The left point
         /// </summary>
         public readonly Point LeftPoint;
-
+        
         /// <summary>
         ///     The top
         /// </summary>
         public readonly Edge Top;
-
+        
         /// <summary>
         ///     The inside
         /// </summary>
         public bool Inside;
-
+        
         // Neighbor pointers
         /// <summary>
         ///     The lower left
         /// </summary>
         public Trapezoid LowerLeft;
-
+        
         /// <summary>
         ///     The lower right
         /// </summary>
         public Trapezoid LowerRight;
-
+        
         /// <summary>
         ///     The right point
         /// </summary>
         public Point RightPoint;
-
+        
         /// <summary>
         ///     The sink
         /// </summary>
         public Sink Sink;
-
+        
         /// <summary>
         ///     The upper left
         /// </summary>
         public Trapezoid UpperLeft;
-
+        
         /// <summary>
         ///     The upper right
         /// </summary>
         public Trapezoid UpperRight;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Trapezoid" /> class
         /// </summary>
@@ -107,7 +107,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             Inside = true;
             Sink = null;
         }
-
+        
         // Update neighbors to the left
         /// <summary>
         ///     Updates the left using the specified ul
@@ -121,14 +121,14 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             {
                 ul.UpperRight = this;
             }
-
+            
             LowerLeft = ll;
             if (ll != null)
             {
                 ll.LowerRight = this;
             }
         }
-
+        
         // Update neighbors to the right
         /// <summary>
         ///     Updates the right using the specified ur
@@ -142,14 +142,14 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             {
                 ur.UpperLeft = this;
             }
-
+            
             LowerRight = lr;
             if (lr != null)
             {
                 lr.LowerLeft = this;
             }
         }
-
+        
         // Update neighbors on both sides
         /// <summary>
         ///     Updates the left right using the specified ul
@@ -165,26 +165,26 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             {
                 ul.UpperRight = this;
             }
-
+            
             LowerLeft = ll;
             if (ll != null)
             {
                 ll.LowerRight = this;
             }
-
+            
             UpperRight = ur;
             if (ur != null)
             {
                 ur.UpperLeft = this;
             }
-
+            
             LowerRight = lr;
             if (lr != null)
             {
                 lr.LowerLeft = this;
             }
         }
-
+        
         // Recursively trim outside neighbors
         /// <summary>
         ///     Trims the neighbors
@@ -198,24 +198,24 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 {
                     UpperLeft.TrimNeighbors();
                 }
-
+                
                 if (LowerLeft != null)
                 {
                     LowerLeft.TrimNeighbors();
                 }
-
+                
                 if (UpperRight != null)
                 {
                     UpperRight.TrimNeighbors();
                 }
-
+                
                 if (LowerRight != null)
                 {
                     LowerRight.TrimNeighbors();
                 }
             }
         }
-
+        
         // Determines if this point lies inside the trapezoid
         /// <summary>
         ///     Describes whether this instance contains
@@ -225,7 +225,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         public bool Contains(Point point) =>
             (point.X > LeftPoint.X) && (point.X < RightPoint.X) && Top.IsAbove(point) &&
             Bottom.IsBelow(point);
-
+        
         /// <summary>
         ///     Gets the vertices
         /// </summary>
@@ -237,7 +237,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             LineIntersect(Bottom, RightPoint.X),
             LineIntersect(Top, RightPoint.X)
         };
-
+        
         /// <summary>
         ///     Lines the intersect using the specified edge
         /// </summary>
@@ -249,7 +249,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             float y = edge.Slope * x + edge.B;
             return new Point(x, y);
         }
-
+        
         // Add points to monotone mountain
         /// <summary>
         ///     Adds the points
@@ -260,17 +260,17 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             {
                 Bottom.AddMPoint(LeftPoint);
             }
-
+            
             if (RightPoint != Bottom.Q)
             {
                 Bottom.AddMPoint(RightPoint);
             }
-
+            
             if (LeftPoint != Top.P)
             {
                 Top.AddMPoint(LeftPoint);
             }
-
+            
             if (RightPoint != Top.Q)
             {
                 Top.AddMPoint(RightPoint);

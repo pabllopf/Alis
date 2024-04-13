@@ -53,10 +53,10 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
         {
             Debug.Assert(vertices.Count > 3);
             Debug.Assert(!vertices.IsCounterClockWise());
-
+            
             return TriangulatePolygon(vertices, tolerance);
         }
-
+        
         /// <summary>
         ///     Triangulates a polygon using the ear-clipping algorithm.
         ///     Returns a list of triangles.
@@ -68,15 +68,15 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
             {
                 return new List<Vertices>();
             }
-
+            
             List<Vertices> results = new List<Vertices>();
-
+            
             List<Vertices> pinchedPolygon = TriangulatePinchedPolygon(vertices, tolerance);
             results.AddRange(pinchedPolygon ?? TriangulateRegularPolygon(vertices));
-
+            
             return results;
         }
-
+        
         // Helper method to triangulate a pinched polygon
         /// <summary>
         ///     Triangulates the pinched polygon using the specified vertices
@@ -92,21 +92,21 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
             {
                 List<Vertices> mergeA = TriangulatePolygon(pA, tolerance);
                 List<Vertices> mergeB = TriangulatePolygon(pB, tolerance);
-
+                
                 if (mergeA.Count == 0 || mergeB.Count == 0)
                 {
                     throw new TriangulateException("Can't triangulate your polygon.");
                 }
-
+                
                 List<Vertices> result = new List<Vertices>();
                 result.AddRange(mergeA);
                 result.AddRange(mergeB);
                 return result;
             }
-
+            
             return null;
         }
-
+        
         // Helper method to triangulate a regular polygon
         /// <summary>
         ///     Triangulates the regular polygon using the specified vertices
@@ -116,7 +116,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
         private static List<Vertices> TriangulateRegularPolygon(Vertices vertices)
         {
             List<Vertices> results = new List<Vertices>();
-
+            
             float[] xRem = new float[vertices.Count];
             float[] yRem = new float[vertices.Count];
             for (int i = 0; i < vertices.Count; ++i)
@@ -124,9 +124,9 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
                 xRem[i] = vertices[i].X;
                 yRem[i] = vertices[i].Y;
             }
-
+            
             int vNum = vertices.Count;
-
+            
             while (vNum > 3)
             {
                 int earIndex = FindEar(xRem, yRem, vNum);
@@ -135,14 +135,14 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
                     results.AddRange(GenerateTrianglesFromBuffer(xRem, yRem, vNum));
                     return results;
                 }
-
+                
                 vNum = ClipEar(earIndex, ref xRem, ref yRem, vNum, results);
             }
-
+            
             results.AddRange(GenerateTrianglesFromBuffer(xRem, yRem, vNum));
             return results;
         }
-
+        
         /// <summary>
         ///     Finds the ear using the specified x rem
         /// </summary>
@@ -159,10 +159,10 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
                     return i;
                 }
             }
-
+            
             return -1; // No ear found
         }
-
+        
         /// <summary>
         ///     Clips the ear using the specified ear index
         /// </summary>
@@ -176,10 +176,10 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
         {
             int under = earIndex == 0 ? vNum - 1 : earIndex - 1;
             int over = earIndex == vNum - 1 ? 0 : earIndex + 1;
-
+            
             // Add the clipped triangle to the results
             results.Add(new Vertices(new Triangle(xRem[earIndex], yRem[earIndex], xRem[over], yRem[over], xRem[under], yRem[under])));
-
+            
             // Remove the ear tip from the lists
             float[] newX = new float[vNum - 1];
             float[] newY = new float[vNum - 1];
@@ -190,19 +190,19 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
                 {
                     ++currDest;
                 }
-
+                
                 newX[i] = xRem[currDest];
                 newY[i] = yRem[currDest];
                 ++currDest;
             }
-
+            
             // Update arrays
             xRem = newX;
             yRem = newY;
-
+            
             return vNum - 1;
         }
-
+        
         /// <summary>
         ///     Generates the triangles from buffer using the specified x rem
         /// </summary>
@@ -213,15 +213,15 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
         private static List<Vertices> GenerateTrianglesFromBuffer(float[] xRem, float[] yRem, int vNum)
         {
             List<Vertices> triangles = new List<Vertices>();
-
+            
             for (int i = 1; i < vNum - 1; ++i)
             {
                 triangles.Add(new Vertices(new Triangle(xRem[0], yRem[0], xRem[i], yRem[i], xRem[i + 1], yRem[i + 1])));
             }
-
+            
             return triangles;
         }
-
+        
         /// <summary>
         ///     Finds and fixes "pinch points," points where two polygon vertices are at the same point.
         /// </summary>
@@ -234,12 +234,12 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
         {
             poutA = new Vertices();
             poutB = new Vertices();
-
+            
             if (pin.Count < 3)
             {
                 return false;
             }
-
+            
             if (FindPinchPoint(pin, tolerance, out int pinchIndexA, out int pinchIndexB))
             {
                 if (SplitVertices(pin, pinchIndexA, pinchIndexB, poutA, poutB))
@@ -247,10 +247,10 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
                     return true;
                 }
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Finds a pinch point in the vertices.
         /// </summary>
@@ -263,7 +263,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
         {
             pinchIndexA = -1;
             pinchIndexB = -1;
-
+            
             for (int i = 0; i < vertices.Count; ++i)
             {
                 for (int j = i + 1; j < vertices.Count; ++j)
@@ -276,10 +276,10 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
                     }
                 }
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Determines if two vertices form a pinch point within the given tolerance.
         /// </summary>
@@ -289,7 +289,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
         /// <returns>True if the vertices form a pinch point, false otherwise.</returns>
         private static bool IsPinchPoint(Vector2 vertexA, Vector2 vertexB, float tolerance) => (System.Math.Abs(vertexA.X - vertexB.X) < tolerance) &&
                                                                                                (System.Math.Abs(vertexA.Y - vertexB.Y) < tolerance);
-
+        
         /// <summary>
         ///     Splits the vertices at the pinch point.
         /// </summary>
@@ -302,28 +302,28 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
         private static bool SplitVertices(Vertices pin, int pinchIndexA, int pinchIndexB, Vertices poutA, Vertices poutB)
         {
             int sizeA = pinchIndexB - pinchIndexA;
-
+            
             if (sizeA == pin.Count)
             {
                 return false; // Duplicate points at wraparound, not a problem here
             }
-
+            
             for (int i = 0; i < sizeA; ++i)
             {
                 int ind = RemainderLocal(pinchIndexA + i, pin.Count);
                 poutA.Add(pin[ind]);
             }
-
+            
             int sizeB = pin.Count - sizeA;
             for (int i = 0; i < sizeB; ++i)
             {
                 int ind = RemainderLocal(pinchIndexB + i, pin.Count);
                 poutB.Add(pin[ind]);
             }
-
+            
             return true;
         }
-
+        
         /// <summary>
         ///     Calculates the remainder of division, handling negative values correctly.
         /// </summary>
@@ -331,7 +331,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
         /// <param name="divisor">The divisor.</param>
         /// <returns>The remainder of the division.</returns>
         private static int RemainderLocal(int dividend, int divisor) => (dividend % divisor + divisor) % divisor;
-
+        
         /// <summary>Checks if vertex i is the tip of an ear in polygon defined by xv[] and  yv[].</summary>
         /// <param name="i">The i.</param>
         /// <param name="xv">The xv.</param>
@@ -346,7 +346,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
             {
                 return false;
             }
-
+            
             int upper = i + 1;
             int lower = i - 1;
             if (i == 0)
@@ -372,29 +372,29 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.EarClip
                 dx1 = xv[i + 1] - xv[i];
                 dy1 = yv[i + 1] - yv[i];
             }
-
+            
             float cross = dx0 * dy1 - dx1 * dy0;
-
+            
             if (cross > 0)
             {
                 return false;
             }
-
+            
             Triangle myTri = new Triangle(xv[i], yv[i], xv[upper], yv[upper], xv[lower], yv[lower]);
-
+            
             for (int j = 0; j < xvLength; ++j)
             {
                 if (j == i || j == lower || j == upper)
                 {
                     continue;
                 }
-
+                
                 if (myTri.IsInside(xv[j], yv[j]))
                 {
                     return false;
                 }
             }
-
+            
             return true;
         }
     }

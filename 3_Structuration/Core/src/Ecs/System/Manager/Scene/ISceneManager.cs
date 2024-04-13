@@ -44,18 +44,18 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         ///     Gets or sets the value of the current scene
         /// </summary>
         public IScene CurrentScene { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the scenes
         /// </summary>
         public List<IScene> Scenes { get; set; }
-
+        
         /// <summary>
         ///     Loads the scene using the specified scene
         /// </summary>
         /// <param name="scene">The scene</param>
         public void LoadScene(IScene scene);
-
+        
         /// <summary>
         ///     Reloads the scene using the specified scene
         /// </summary>

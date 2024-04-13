@@ -66,5 +66,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <param name="options">The options</param>
         public override void Add(object value, JsonOptions options = null) => _list.Add(value);
+        
+        
     }
 }

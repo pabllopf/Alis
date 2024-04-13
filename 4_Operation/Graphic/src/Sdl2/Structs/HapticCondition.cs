@@ -42,65 +42,65 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The type
         /// </summary>
         public readonly ushort type;
-
+        
         /// <summary>
         ///     The direction
         /// </summary>
         public HapticDirection direction;
-
+        
         // Replay
         /// <summary>
         ///     The length
         /// </summary>
         public readonly uint length;
-
+        
         /// <summary>
         ///     The delay
         /// </summary>
         public readonly ushort delay;
-
+        
         // Trigger
         /// <summary>
         ///     The button
         /// </summary>
         public readonly ushort button;
-
+        
         /// <summary>
         ///     The interval
         /// </summary>
         public readonly ushort interval;
-
+        
         // Condition
         /// <summary>
         ///     The right sat
         /// </summary>
         [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
         public readonly ushort[] right_sat;
-
+        
         /// <summary>
         ///     The left sat
         /// </summary>
         [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
         public readonly ushort[] left_sat;
-
+        
         /// <summary>
         ///     The right Coefficient
         /// </summary>
         [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
         public readonly short[] rightCoefficient;
-
+        
         /// <summary>
         ///     The left Coefficient
         /// </summary>
         [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
         public readonly short[] leftCoefficient;
-
+        
         /// <summary>
         ///     The dead band
         /// </summary>
         [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
         public readonly ushort[] deadBand;
-
+        
         /// <summary>
         ///     The center
         /// </summary>

@@ -53,13 +53,13 @@ namespace Alis.Core.Audio.OS.Players
             {
                 throw new ArgumentOutOfRangeException(nameof(percent), "Percent can't exceed 100");
             }
-
+            
             Process tempProcess = StartBashProcess($"amixer -M set 'Master' {percent}%");
             tempProcess.WaitForExit();
-
+            
             return Task.CompletedTask;
         }
-
+        
         /// <summary>
         ///     Gets the bash command using the specified file name
         /// </summary>
@@ -71,7 +71,7 @@ namespace Alis.Core.Audio.OS.Players
             {
                 return "mpg123 -q";
             }
-
+            
             return "aplay -q";
         }
     }

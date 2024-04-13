@@ -38,8 +38,8 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
         ///     The epsilon
         /// </summary>
         public static readonly double Epsilon = 1e-12;
-
-
+        
+        
         /// <summary>
         ///     Describes whether smart in circle
         /// </summary>
@@ -57,41 +57,41 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
             double ady = pa.Y - pdy;
             double bdx = pb.X - pdx;
             double bdy = pb.Y - pdy;
-
+            
             double aBdy = adx * bdy;
             double bAdy = bdx * ady;
             double oAbd = aBdy - bAdy;
-
+            
             if (oAbd <= 0)
             {
                 return false;
             }
-
+            
             double cdx = pc.X - pdx;
             double cdy = pc.Y - pdy;
-
+            
             double cAdy = cdx * ady;
             double aCdy = adx * cdy;
             double oCad = cAdy - aCdy;
-
+            
             if (oCad <= 0)
             {
                 return false;
             }
-
+            
             double xCdy = bdx * cdy;
             double cCdy = cdx * bdy;
-
+            
             double aLift = adx * adx + ady * ady;
             double bLift = bdx * bdx + bdy * bdy;
             double cLift = cdx * cdx + cdy * cdy;
-
+            
             double det = aLift * (xCdy - cCdy) + bLift * oCad + cLift * oAbd;
-
+            
             return det > 0;
         }
-
-
+        
+        
         /// <summary>
         ///     Describes whether in scan area
         /// </summary>
@@ -108,12 +108,12 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
             {
                 return false;
             }
-
+            
             double adc = (pa.X - pc.X) * (pd.Y - pc.Y) - (pd.X - pc.X) * (pa.Y - pc.Y);
             return !(adc <= Epsilon);
         }
-
-
+        
+        
         /// <summary>
         ///     Orients the 2d using the specified pa
         /// </summary>
@@ -130,7 +130,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
             {
                 return Orientation.Collinear;
             }
-
+            
             return val > 0 ? Orientation.Ccw : Orientation.Cw;
         }
     }

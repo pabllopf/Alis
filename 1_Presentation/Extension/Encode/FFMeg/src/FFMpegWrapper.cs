@@ -52,18 +52,18 @@ namespace Alis.Extension.Encode.FFMeg
             ///     The video media type
             /// </summary>
             Video,
-
+            
             /// <summary>
             ///     The audio media type
             /// </summary>
             Audio,
-
+            
             /// <summary>
             ///     The subtitle media type
             /// </summary>
             Subtitle
         }
-
+        
         /// <summary>
         ///     The muxing support enum
         /// </summary>
@@ -73,18 +73,18 @@ namespace Alis.Extension.Encode.FFMeg
             ///     The mux demux muxing support
             /// </summary>
             MuxDemux,
-
+            
             /// <summary>
             ///     The mux muxing support
             /// </summary>
             Mux,
-
+            
             /// <summary>
             ///     The demux muxing support
             /// </summary>
             Demux
         }
-
+        
         /// <summary>
         ///     The verbosity enum
         /// </summary>
@@ -94,48 +94,48 @@ namespace Alis.Extension.Encode.FFMeg
             ///     Show nothing at all; be silent.
             /// </summary>
             Quiet,
-
+            
             /// <summary>
             ///     Show informative messages during processing. This is in addition to warnings and errors. This is the default value.
             /// </summary>
             Info,
-
+            
             /// <summary>
             ///     Same as info, except more verbose.
             /// </summary>
             Verbose,
-
+            
             /// <summary>
             ///     Show everything, including debugging information.
             /// </summary>
             Debug,
-
+            
             /// <summary>
             ///     Show all warnings and errors. Any message related to possibly incorrect or unexpected events will be shown.
             /// </summary>
             Warning,
-
+            
             /// <summary>
             ///     Show all errors, including ones which can be recovered from.
             /// </summary>
             Error,
-
+            
             /// <summary>
             ///     Only show fatal errors. These are errors after which the process absolutely cannot continue.
             /// </summary>
             Fatal
         }
-
+        
         /// <summary>
         ///     The regex
         /// </summary>
         private static readonly Regex CodecRegex = new Regex(@"(?<type>[VAS\.])[F\.][S\.][X\.][B\.][D\.] (?<codec>[a-zA-Z0-9_-]+)\W+(?<description>.*)\n?", RegexOptions.Compiled, TimeSpan.FromSeconds(10));
-
+        
         /// <summary>
         ///     The regex
         /// </summary>
         private static readonly Regex FormatRegex = new Regex(@"(?<type>[DE]{1,2})\s+?(?<format>[a-zA-Z0-9_\-,]+)\W+(?<description>.*)\n?", RegexOptions.Compiled, TimeSpan.FromSeconds(10));
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="FfMpegWrapper" /> class
         /// </summary>
@@ -145,18 +145,18 @@ namespace Alis.Extension.Encode.FFMeg
             EmbeddedDllClass.ExtractEmbeddedDlls("ffplay", DllType.Exe, FfMegDlls.FfplayDllBytes, Assembly.GetAssembly(typeof(FfMegDlls)));
             EmbeddedDllClass.ExtractEmbeddedDlls("ffprobe", DllType.Exe, FfMegDlls.FfprobeDllBytes, Assembly.GetAssembly(typeof(FfMegDlls)));
         }
-
+        
         /// <summary>
         ///     FFmpeg verbosity. This sets the 'loglevel' parameter on FFmpeg. Useful when showing output and debugging issues.
         ///     This may affect the progress tracker that depends on displayed stats. Default is 'info'.
         /// </summary>
         public static Verbosity LogLevel { get; set; } = Verbosity.Info;
-
+        
         /// <summary>
         ///     FFmpeg banner setting. This sets the 'hide_banner' parameter on FFmpeg. Default is 'true' to hide the banner.
         /// </summary>
         public static bool HideFFmpegBanner { get; set; } = true;
-
+        
         /// <summary>
         ///     Run given command (arguments) using the given executable name or path
         /// </summary>
@@ -177,17 +177,17 @@ namespace Alis.Extension.Encode.FFMeg
                     $"{(HideFFmpegBanner ? "-hide_banner" : "")} " +
                     $"{command}"
             });
-
+            
             string output = "", error = "";
             p.OutputDataReceived += (a, d) => output += d.Data + (prettify ? "\n" : "");
             p.ErrorDataReceived += (a, d) => output += d.Data + (prettify ? "\n" : "");
             p.BeginOutputReadLine();
             p.BeginErrorReadLine();
-
+            
             p.WaitForExit();
             return (output, error);
         }
-
+        
         /// <summary>
         ///     Run given command (arguments) using the given executable name or path. This does not wait for the process to exit
         ///     or return the output.
@@ -208,15 +208,15 @@ namespace Alis.Extension.Encode.FFMeg
                     $"{(HideFFmpegBanner ? "-hide_banner" : "")} " +
                     $"{command}"
             });
-
+            
             if (!showOutput)
             {
                 p.BeginErrorReadLine();
             }
-
+            
             return p;
         }
-
+        
         /// <summary>
         ///     Run given command (arguments) using the given executable name or path. This redirects the output and error streams
         ///     and returns the output stream.
@@ -239,15 +239,15 @@ namespace Alis.Extension.Encode.FFMeg
                     $"{(HideFFmpegBanner ? "-hide_banner" : "")} " +
                     $"{command}"
             });
-
+            
             if (!showOutput)
             {
                 process.BeginErrorReadLine();
             }
-
+            
             return process.StandardOutput.BaseStream;
         }
-
+        
         /// <summary>
         ///     Run given command (arguments) using the given executable name or path. This redirects the output and error streams
         ///     and returns the output stream.
@@ -257,7 +257,7 @@ namespace Alis.Extension.Encode.FFMeg
         /// <param name="command">Command to run. This string will be passed as an argument to the executable</param>
         /// <param name="showOutput">Show output to terminal. Error stream will not be redirected if this is set to true.</param>
         public static Stream OpenOutput(string executable, string command, bool showOutput = false) => OpenOutput(executable, command, out _, showOutput);
-
+        
         /// <summary>
         ///     Run given command (arguments) using the given executable name or path. This redirects the input stream and returns
         ///     it.
@@ -280,15 +280,15 @@ namespace Alis.Extension.Encode.FFMeg
                     $"{(HideFFmpegBanner ? "-hide_banner" : "")} " +
                     $"{command}"
             });
-
+            
             if (!showOutput)
             {
                 process.BeginErrorReadLine();
             }
-
+            
             return process.StandardInput.BaseStream;
         }
-
+        
         /// <summary>
         ///     Run given command (arguments) using the given executable name or path. This redirects the input stream and returns
         ///     it.
@@ -298,7 +298,7 @@ namespace Alis.Extension.Encode.FFMeg
         /// <param name="command">Command to run. This string will be passed as an argument to the executable</param>
         /// <param name="showOutput">Show output to terminal. Error stream will not be redirected if this is set to true.</param>
         public static Stream OpenInput(string executable, string command, bool showOutput = false) => OpenInput(executable, command, out _, showOutput);
-
+        
         /// <summary>
         ///     Run given command (arguments) using the given executable name or path. This redirects the input and output streams
         ///     and returns them.
@@ -322,15 +322,15 @@ namespace Alis.Extension.Encode.FFMeg
                     $"{(HideFFmpegBanner ? "-hide_banner" : "")} " +
                     $"{command}"
             });
-
+            
             if (!showOutput)
             {
                 process.BeginErrorReadLine();
             }
-
+            
             return (process.StandardInput.BaseStream, process.StandardOutput.BaseStream);
         }
-
+        
         /// <summary>
         ///     Run given command (arguments) using the given executable name or path. This redirects the input and output streams
         ///     and returns them.
@@ -341,7 +341,7 @@ namespace Alis.Extension.Encode.FFMeg
         /// <param name="showOutput">Show output to terminal. Error stream will not be redirected if this is set to true.</param>
         public static (Stream input, Stream output) Open(string executable, string command, bool showOutput = false)
             => Open(executable, command, out _, showOutput);
-
+        
         /// <summary>
         ///     Gets the encoders using the specified ffmpeg executable
         /// </summary>
@@ -357,10 +357,10 @@ namespace Alis.Extension.Encode.FFMeg
                 char t = m.Groups["type"].Value[0];
                 data.Add(m.Groups["codec"].Value, (m.Groups["description"].Value, t == 'A' ? MediaType.Audio : t == 'V' ? MediaType.Video : MediaType.Subtitle));
             }
-
+            
             return data;
         }
-
+        
         /// <summary>
         ///     Gets the decoders using the specified ffmpeg executable
         /// </summary>
@@ -376,10 +376,10 @@ namespace Alis.Extension.Encode.FFMeg
                 char t = m.Groups["type"].Value[0];
                 data.Add(m.Groups["codec"].Value, (m.Groups["description"].Value, t == 'A' ? MediaType.Audio : t == 'V' ? MediaType.Video : MediaType.Subtitle));
             }
-
+            
             return data;
         }
-
+        
         /// <summary>
         ///     Gets the formats using the specified ffmpeg executable
         /// </summary>
@@ -396,10 +396,10 @@ namespace Alis.Extension.Encode.FFMeg
                 data.Add(m.Groups["format"].Value, (m.Groups["description"].Value,
                     t == "DE" ? MuxingSupport.MuxDemux : t == "D" ? MuxingSupport.Demux : MuxingSupport.Mux));
             }
-
+            
             return data;
         }
-
+        
         /// <summary>
         ///     Take a running FFmpeg process with a redirected Error stream and try to parse progress. Requires the total media
         ///     duration in seconds.
@@ -411,18 +411,18 @@ namespace Alis.Extension.Encode.FFMeg
         {
             Progress<double> prg = new Progress<double>();
             IProgress<double> iprg = prg;
-
+            
             Regex rgx = new Regex(@"^(frame=\s*?(?<frame>\d+)\s*?)?(fps=\s*?\d+\.?\d*?\s+?)?(q=\s*?[\-0-9\.]+\s*?)?\w+?=\s*?\d+[kMBGTb]+\s*?time=(?<h>\d+):(?<m>\d+):(?<s>[0-9\.]+?)\s",
                 RegexOptions.Compiled,
                 TimeSpan.FromSeconds(10));
-
+            
             ffmpegProcess.ErrorDataReceived += (sender, d) =>
             {
                 if (string.IsNullOrEmpty(d.Data))
                 {
                     return;
                 }
-
+                
                 Match match = rgx.Match(d.Data);
                 if (match.Success)
                 {
@@ -430,17 +430,17 @@ namespace Alis.Extension.Encode.FFMeg
                     int minutes = int.Parse(match.Groups["m"].Value);
                     double seconds = double.Parse(match.Groups["s"].Value);
                     seconds = seconds + 60 * minutes + 60 * 60 * hours;
-
+                    
                     double progress = seconds / duration * 100;
                     if (progress > 100)
                     {
                         progress = 100;
                     }
-
+                    
                     iprg.Report(progress);
                 }
             };
-
+            
             return prg;
         }
     }

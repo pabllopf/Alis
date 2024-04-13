@@ -38,7 +38,7 @@ namespace Alis.Extension.Language.Translator
         ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the code
         /// </summary>

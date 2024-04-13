@@ -47,13 +47,13 @@ namespace Alis.Builder.Core.Ecs.Component.Audio
         ///     The audio clip
         /// </summary>
         private readonly AudioClip audioClip = new AudioClip();
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The audio clip</returns>
         public AudioClip Build() => audioClip;
-
+        
         /// <summary>
         ///     Files the path using the specified value
         /// </summary>
@@ -64,7 +64,7 @@ namespace Alis.Builder.Core.Ecs.Component.Audio
             audioClip.FullPathAudioFile = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Mutes the value
         /// </summary>
@@ -75,7 +75,7 @@ namespace Alis.Builder.Core.Ecs.Component.Audio
             audioClip.IsMute = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Volumes the value
         /// </summary>

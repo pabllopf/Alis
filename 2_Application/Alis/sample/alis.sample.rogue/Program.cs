@@ -113,7 +113,7 @@ namespace Alis.Sample.Rogue
                                 .Build())
                             .AddComponent(new PlayerMovement())
                             .Build())
-
+                        
                         // Decoration tree-001
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
@@ -126,7 +126,7 @@ namespace Alis.Sample.Rogue
                                 .SetTexture(AssetManager.Find("tree-001.bmp"))
                                 .Build())
                             .Build())
-
+                        
                         // Decoration tree-001
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-002")

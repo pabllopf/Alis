@@ -47,17 +47,17 @@ namespace Alis.Core.Graphic
         /// </summary>
         /// <returns>The window builder</returns>
         public WindowBuilder Builder() => new WindowBuilder();
-
+        
         /// <summary>
         ///     Gets or sets the value of the background
         /// </summary>
         public Color Background { get; set; } = Color.Black;
-
+        
         /// <summary>
         ///     Gets or sets the value of the resolution
         /// </summary>
         public Vector2 Resolution { get; set; } = new Vector2(640, 480);
-
+        
         /// <summary>
         ///     Gets or sets the value of the is window resizable
         /// </summary>

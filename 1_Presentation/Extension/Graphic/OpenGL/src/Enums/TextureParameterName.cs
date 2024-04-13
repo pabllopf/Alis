@@ -38,92 +38,92 @@ namespace Alis.Extension.Graphic.OpenGL.Enums
         ///     The texture base level texture parameter name
         /// </summary>
         TextureBaseLevel = 0x813C,
-
+        
         /// <summary>
         ///     The texture border color texture parameter name
         /// </summary>
         TextureBorderColor = 0x1004,
-
+        
         /// <summary>
         ///     The texture compare mode texture parameter name
         /// </summary>
         TextureCompareMode = 0x884C,
-
+        
         /// <summary>
         ///     The texture compare func texture parameter name
         /// </summary>
         TextureCompareFunc = 0x884D,
-
+        
         /// <summary>
         ///     The texture lod bias texture parameter name
         /// </summary>
         TextureLodBias = 0x8501,
-
+        
         /// <summary>
         ///     The texture mag filter texture parameter name
         /// </summary>
         TextureMagFilter = 0x2800,
-
+        
         /// <summary>
         ///     The texture max level texture parameter name
         /// </summary>
         TextureMaxLevel = 0x813D,
-
+        
         /// <summary>
         ///     The texture max lod texture parameter name
         /// </summary>
         TextureMaxLod = 0x813B,
-
+        
         /// <summary>
         ///     The texture min filter texture parameter name
         /// </summary>
         TextureMinFilter = 0x2801,
-
+        
         /// <summary>
         ///     The texture min lod texture parameter name
         /// </summary>
         TextureMinLod = 0x813A,
-
+        
         /// <summary>
         ///     The texture swizzle texture parameter name
         /// </summary>
         TextureSwizzleR = 0x8E42,
-
+        
         /// <summary>
         ///     The texture swizzle texture parameter name
         /// </summary>
         TextureSwizzleG = 0x8E43,
-
+        
         /// <summary>
         ///     The texture swizzle texture parameter name
         /// </summary>
         TextureSwizzleB = 0x8E44,
-
+        
         /// <summary>
         ///     The texture swizzle texture parameter name
         /// </summary>
         TextureSwizzleA = 0x8E45,
-
+        
         /// <summary>
         ///     The texture swizzle rgba texture parameter name
         /// </summary>
         TextureSwizzleRgba = 0x8E46,
-
+        
         /// <summary>
         ///     The texture wrap texture parameter name
         /// </summary>
         TextureWrapS = 0x2802,
-
+        
         /// <summary>
         ///     The texture wrap texture parameter name
         /// </summary>
         TextureWrapT = 0x2803,
-
+        
         /// <summary>
         ///     The texture wrap texture parameter name
         /// </summary>
         TextureWrapR = 0x8072,
-
+        
         /// <summary>
         ///     The max anisotropy ext texture parameter name
         /// </summary>

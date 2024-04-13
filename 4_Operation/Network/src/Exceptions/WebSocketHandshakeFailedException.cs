@@ -44,7 +44,7 @@ namespace Alis.Core.Network.Exceptions
         public WebSocketHandshakeFailedException()
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="WebSocketHandshakeFailedException" /> class
         /// </summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Network.Exceptions
         public WebSocketHandshakeFailedException(string message) : base(message)
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="WebSocketHandshakeFailedException" /> class
         /// </summary>

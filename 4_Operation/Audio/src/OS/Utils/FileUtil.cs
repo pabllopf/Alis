@@ -40,7 +40,7 @@ namespace Alis.Core.Audio.OS.Utils
         ///     The temp dir name
         /// </summary>
         private const string TempDirName = "temp";
-
+        
         /// <summary>
         ///     Checks the file to play using the specified original file name
         /// </summary>
@@ -56,10 +56,10 @@ namespace Alis.Core.Audio.OS.Utils
                                    Path.GetFileName(originalFileName).Replace(" ", "");
                 File.Copy(originalFileName, fileNameToReturn);
             }
-
+            
             return fileNameToReturn;
         }
-
+        
         /// <summary>
         ///     Clears the temp files
         /// </summary>

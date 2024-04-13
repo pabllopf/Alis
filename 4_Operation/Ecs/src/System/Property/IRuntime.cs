@@ -38,92 +38,92 @@ namespace Alis.Core.Ecs.System.Property
         ///     Ons the enable
         /// </summary>
         public void OnEnable();
-
+        
         /// <summary>
         ///     Inits this instance
         /// </summary>
         public void OnInit();
-
+        
         /// <summary>
         ///     Awakes this instance
         /// </summary>
         public void OnAwake();
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public void OnStart();
-
+        
         /// <summary>
         ///     Before run the update
         /// </summary>
         public void OnBeforeUpdate();
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>
         public void OnUpdate();
-
+        
         /// <summary>
         ///     Afters the update
         /// </summary>
         public void OnAfterUpdate();
-
+        
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
         public void OnBeforeFixedUpdate();
-
+        
         /// <summary>
         ///     Update every frame.
         /// </summary>
         public void OnFixedUpdate();
-
+        
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
         public void OnAfterFixedUpdate();
-
+        
         /// <summary>
         ///     Dispatches the events
         /// </summary>
         public void OnDispatchEvents();
-
+        
         /// <summary>
         ///     Ons the calculate
         /// </summary>
         public void OnCalculate();
-
+        
         /// <summary>
         ///     Draws this instance
         /// </summary>
         public void OnDraw();
-
+        
         /// <summary>
         ///     Ons the gui
         /// </summary>
         public void OnGui();
-
+        
         /// <summary>
         ///     Ons the disable
         /// </summary>
         public void OnDisable();
-
+        
         /// <summary>
         ///     Resets this instance
         /// </summary>
         public void OnReset();
-
+        
         /// <summary>
         ///     Stops this instance
         /// </summary>
         public void OnStop();
-
+        
         /// <summary>
         ///     Exits this instance
         /// </summary>
         public void OnExit();
-
+        
         /// <summary>
         ///     Ons the destroy
         /// </summary>

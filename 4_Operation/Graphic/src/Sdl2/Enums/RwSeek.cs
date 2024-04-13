@@ -38,12 +38,12 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         ///     The rw seek set
         /// </summary>
         RwSeekSet = 0,
-
+        
         /// <summary>
         ///     The rw seek cur
         /// </summary>
         RwSeekCur = 1,
-
+        
         /// <summary>
         ///     The rw seek end
         /// </summary>

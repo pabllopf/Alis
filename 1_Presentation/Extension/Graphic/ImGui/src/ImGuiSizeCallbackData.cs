@@ -40,17 +40,17 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The user data
         /// </summary>
         public void* UserData;
-
+        
         /// <summary>
         ///     The pos
         /// </summary>
         public Vector2 Pos;
-
+        
         /// <summary>
         ///     The current size
         /// </summary>
         public Vector2 CurrentSize;
-
+        
         /// <summary>
         ///     The desired size
         /// </summary>

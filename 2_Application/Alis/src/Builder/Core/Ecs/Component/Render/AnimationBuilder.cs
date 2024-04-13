@@ -49,8 +49,8 @@ namespace Alis.Builder.Core.Ecs.Component.Render
         ///     The animation
         /// </summary>
         private readonly Animation animation = new Animation();
-
-
+        
+        
         /// <summary>
         ///     Adds the frame using the specified value
         /// </summary>
@@ -61,13 +61,13 @@ namespace Alis.Builder.Core.Ecs.Component.Render
             animation.AddFrame(value.Invoke(new FrameBuilder()));
             return this;
         }
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The animation</returns>
         public Animation Build() => animation;
-
+        
         /// <summary>
         ///     Names the value
         /// </summary>
@@ -78,7 +78,7 @@ namespace Alis.Builder.Core.Ecs.Component.Render
             animation.Name = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Orders the value
         /// </summary>
@@ -89,7 +89,7 @@ namespace Alis.Builder.Core.Ecs.Component.Render
             animation.Order = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Speeds the value
         /// </summary>

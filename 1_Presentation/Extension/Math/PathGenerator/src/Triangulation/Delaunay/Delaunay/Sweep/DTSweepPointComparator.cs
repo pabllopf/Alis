@@ -49,22 +49,22 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             {
                 return -1;
             }
-
+            
             if ((p2 != null) && (p1 != null) && (p1.Y > p2.Y))
             {
                 return 1;
             }
-
+            
             if ((p2 != null) && (p1 != null) && (p1.X < p2.X))
             {
                 return -1;
             }
-
+            
             if ((p2 != null) && (p1 != null) && (p1.X > p2.X))
             {
                 return 1;
             }
-
+            
             return 0;
         }
     }

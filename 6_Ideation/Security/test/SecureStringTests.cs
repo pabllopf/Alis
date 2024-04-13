@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SecureStringTest.cs
+//  File:SecureStringTests.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -44,14 +44,14 @@ namespace Alis.Core.Aspect.Security.Test
         {
             // Arrange
             SecureString secureString = new SecureString("test");
-
+            
             // Act
             string value = secureString.GetValue();
-
+            
             // Assert
             Assert.Equal("test", value);
         }
-
+        
         /// <summary>
         ///     Tests that test encryption decryption
         /// </summary>
@@ -60,15 +60,15 @@ namespace Alis.Core.Aspect.Security.Test
         {
             // Arrange
             SecureString secureString = new SecureString("test");
-
+            
             // Act
             secureString.SetValue("newTest");
             string value = secureString.GetValue();
-
+            
             // Assert
             Assert.Equal("newTest", value);
         }
-
+        
         /// <summary>
         ///     Tests that test different instances
         /// </summary>
@@ -78,11 +78,11 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureString secureString1 = new SecureString("test");
             SecureString secureString2 = new SecureString("test");
-
+            
             // Act
             string value1 = secureString1.GetValue();
             string value2 = secureString2.GetValue();
-
+            
             // Assert
             Assert.Equal(value1, value2);
         }

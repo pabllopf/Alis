@@ -42,7 +42,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Network
         ///     The audio setting
         /// </summary>
         private readonly NetworkSetting networkSetting = new NetworkSetting();
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>

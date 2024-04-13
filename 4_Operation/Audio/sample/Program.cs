@@ -44,16 +44,16 @@ namespace Alis.Core.Audio.Sample
         private static void Main(string[] args)
         {
             Console.WriteLine($" Alis.Core.Audio.Sample {Assembly.GetExecutingAssembly()} with {args.Length} args");
-
+            
             string fileName = Environment.CurrentDirectory + "/Assets/menu.wav";
-
+            
             AudioSource audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Os));
-
+            
             while (true)
             {
                 Console.WriteLine("Select backend audio system ('os')");
                 string os = Console.ReadLine();
-
+                
                 try
                 {
                     switch (os)
@@ -67,8 +67,8 @@ namespace Alis.Core.Audio.Sample
                 {
                     throw new Exception("Error in backend audio system", ex);
                 }
-
-
+                
+                
                 Console.WriteLine("Write command 'play' | 'stop' | 'resume' | exit ");
                 string command = Console.ReadLine();
                 try
@@ -85,7 +85,7 @@ namespace Alis.Core.Audio.Sample
                             audioSource.Resume();
                             break;
                     }
-
+                    
                     if (command == "exit")
                     {
                         break;

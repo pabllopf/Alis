@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Math.Shape.Point
         ///     The X
         /// </summary>
         public float x;
-
+        
         /// <summary>
         ///     The Y
         /// </summary>

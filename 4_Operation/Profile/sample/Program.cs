@@ -43,18 +43,18 @@ namespace Alis.Core.Profile.Sample
         public static void Main(string[] args)
         {
             ProfilerService profilerService = new ProfilerService();
-
+            
             profilerService.StartProfiling();
-
+            
             // Call the method you want to profile here
             SampleMethod();
-
+            
             ProfileData profileData = profilerService.StopProfiling();
-
+            
             Console.WriteLine($"CPU Usage: {profileData.CpuUsage}");
             Console.WriteLine($"Memory Usage: {profileData.MemoryUsage}");
         }
-
+        
         /// <summary>
         ///     Samples the method
         /// </summary>

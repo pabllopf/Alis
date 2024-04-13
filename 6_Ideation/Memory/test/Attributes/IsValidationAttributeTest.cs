@@ -47,7 +47,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
             // Arrange
             IsNotEmptyAttribute attribute = new IsNotEmptyAttribute();
             string emptyString = string.Empty;
-
+            
             // Act and Assert
             Assert.Throws<NotEmptyException>(() => attribute.Validate(emptyString, nameof(emptyString)));
         }

@@ -45,10 +45,10 @@ namespace Alis.Core.Aspect.Math.Test.Definition
         {
             // Arrange
             const int expectedValue = 10;
-
+            
             // Act
             Depth depth = new Depth(expectedValue);
-
+            
             // Assert
             Assert.Equal(expectedValue, depth.Value);
         }

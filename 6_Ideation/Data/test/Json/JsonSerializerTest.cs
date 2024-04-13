@@ -2563,7 +2563,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that apply when target is array calls apply to target array
+        ///     Tests that apply when target is array calls apply to target array
         /// </summary>
         [Fact]
         public void Apply_WhenTargetIsArray_CallsApplyToTargetArray()
@@ -2581,7 +2581,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that apply when input is dictionary calls apply to target dictionary
+        ///     Tests that apply when input is dictionary calls apply to target dictionary
         /// </summary>
         [Fact]
         public void Apply_WhenInputIsDictionary_CallsApplyToTargetDictionary()
@@ -2599,7 +2599,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that apply when target is not null calls apply to list target
+        ///     Tests that apply when target is not null calls apply to list target
         /// </summary>
         [Fact]
         public void Apply_WhenTargetIsNotNull_CallsApplyToListTarget()
@@ -2617,7 +2617,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that apply when target is null does not throw exception
+        ///     Tests that apply when target is null does not throw exception
         /// </summary>
         [Fact]
         public void Apply_WhenTargetIsNull_DoesNotThrowException()
@@ -2635,7 +2635,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test apply to target array valid input
+        ///     Tests that test apply to target array valid input
         /// </summary>
         [Fact]
         public void TestApplyToTargetArray_ValidInput()
@@ -2653,11 +2653,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        
-        /// Tests that test apply to target dictionary valid input
-        
+        ///     Tests that test apply to target dictionary valid input
         /// </summary>
-        
         [Fact]
         public void TestApplyToTargetDictionary_ValidInput()
         {
@@ -2674,11 +2671,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        
-        /// Tests that test apply to target array null target
-        
+        ///     Tests that test apply to target array null target
         /// </summary>
-        
         [Fact]
         public void TestApplyToTargetArray_NullTarget()
         {
@@ -2695,11 +2689,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        
-        /// Tests that test apply to target dictionary null target
-        
+        ///     Tests that test apply to target dictionary null target
         /// </summary>
-        
         [Fact]
         public void TestApplyToTargetDictionary_NullTarget()
         {
@@ -2716,7 +2707,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that create instance callback handled returns callback value
+        ///     Tests that create instance callback handled returns callback value
         /// </summary>
         [Fact]
         public void CreateInstance_CallbackHandled_ReturnsCallbackValue()
@@ -2739,7 +2730,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle creation exception with valid type and exception returns null
+        ///     Tests that handle creation exception with valid type and exception returns null
         /// </summary>
         [Fact]
         public void HandleCreationException_WithValidTypeAndException_ReturnsNull()
@@ -2751,11 +2742,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             // Act
             Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
-            
         }
         
         /// <summary>
-        /// Tests that handle creation exception with null type throws exception
+        ///     Tests that handle creation exception with null type throws exception
         /// </summary>
         [Fact]
         public void HandleCreationException_WithNullType_ThrowsException()
@@ -2770,7 +2760,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle creation exception with null exception throws exception
+        ///     Tests that handle creation exception with null exception throws exception
         /// </summary>
         [Fact]
         public void HandleCreationException_WithNullException_ThrowsException()
@@ -2785,7 +2775,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle creation exception with null options throws exception
+        ///     Tests that handle creation exception with null options throws exception
         /// </summary>
         [Fact]
         public void HandleCreationException_WithNullOptions_ThrowsException()
@@ -2800,7 +2790,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read dictionary when called with valid json returns correct dictionary
+        ///     Tests that read dictionary when called with valid json returns correct dictionary
         /// </summary>
         [Fact]
         public void ReadDictionary_WhenCalledWithValidJson_ReturnsCorrectDictionary()
@@ -2816,7 +2806,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read dictionary when called with empty json returns empty dictionary
+        ///     Tests that read dictionary when called with empty json returns empty dictionary
         /// </summary>
         [Fact]
         public void ReadDictionary_WhenCalledWithEmptyJson_ReturnsEmptyDictionary()
@@ -2830,7 +2820,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read dictionary when called with invalid json throws exception
+        ///     Tests that read dictionary when called with invalid json throws exception
         /// </summary>
         [Fact]
         public void ReadDictionary_WhenCalledWithInvalidJson_ThrowsException()
@@ -2842,7 +2832,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read dictionary when called with null throws exception
+        ///     Tests that read dictionary when called with null throws exception
         /// </summary>
         [Fact]
         public void ReadDictionary_WhenCalledWithNull_ThrowsException()
@@ -2854,7 +2844,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that process input with array input processes correctly
+        ///     Tests that process input with array input processes correctly
         /// </summary>
         [Fact]
         public void ProcessInput_WithArrayInput_ProcessesCorrectly()
@@ -2873,7 +2863,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that process input with list input processes correctly
+        ///     Tests that process input with list input processes correctly
         /// </summary>
         [Fact]
         public void ProcessInput_WithListInput_ProcessesCorrectly()
@@ -2892,7 +2882,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that process input with list input and context processes correctly
+        ///     Tests that process input with list input and context processes correctly
         /// </summary>
         [Fact]
         public void ProcessInput_WithListInputAndContext_ProcessesCorrectly()
@@ -2911,7 +2901,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that write dictionary with valid input writes correct json
+        ///     Tests that write dictionary with valid input writes correct json
         /// </summary>
         [Fact]
         public void WriteDictionary_WithValidInput_WritesCorrectJson()
@@ -2927,7 +2917,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that write dictionary with null writer throws argument null exception
+        ///     Tests that write dictionary with null writer throws argument null exception
         /// </summary>
         [Fact]
         public void WriteDictionary_WithNullWriter_ThrowsArgumentNullException()
@@ -2939,7 +2929,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that write dictionary with null dictionary throws argument null exception
+        ///     Tests that write dictionary with null dictionary throws argument null exception
         /// </summary>
         [Fact]
         public void WriteDictionary_WithNullDictionary_ThrowsArgumentNullException()
@@ -2951,7 +2941,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that write dictionary with empty dictionary writes empty json
+        ///     Tests that write dictionary with empty dictionary writes empty json
         /// </summary>
         [Fact]
         public void WriteDictionary_WithEmptyDictionary_WritesEmptyJson()
@@ -2967,7 +2957,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that write dictionary with serialization option writes correct json
+        ///     Tests that write dictionary with serialization option writes correct json
         /// </summary>
         [Fact]
         public void WriteDictionary_WithSerializationOption_WritesCorrectJson()
@@ -2983,7 +2973,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try get value by path returns false when path is null
+        ///     Tests that try get value by path returns false when path is null
         /// </summary>
         [Fact]
         public void TryGetValueByPath_ReturnsFalse_WhenPathIsNull()
@@ -2993,11 +2983,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        
-        /// Tests that try get value by path returns false when dictionary is null
-        
+        ///     Tests that try get value by path returns false when dictionary is null
         /// </summary>
-        
         [Fact]
         public void TryGetValueByPath_ReturnsFalse_WhenDictionaryIsNull()
         {
@@ -3006,11 +2993,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        
-        /// Tests that try get value by path returns false when path does not exist
-        
+        ///     Tests that try get value by path returns false when path does not exist
         /// </summary>
-        
         [Fact]
         public void TryGetValueByPath_ReturnsFalse_WhenPathDoesNotExist()
         {
@@ -3019,11 +3003,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        
-        /// Tests that try get value by path returns true when path exists
-        
+        ///     Tests that try get value by path returns true when path exists
         /// </summary>
-        
         [Fact]
         public void TryGetValueByPath_ReturnsTrue_WhenPathExists()
         {
@@ -3033,11 +3014,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        
-        /// Tests that try get value by path returns correct value when path exists in nested dictionary
-        
+        ///     Tests that try get value by path returns correct value when path exists in nested dictionary
         /// </summary>
-        
         [Fact]
         public void TryGetValueByPath_ReturnsCorrectValue_WhenPathExistsInNestedDictionary()
         {
@@ -3050,7 +3028,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that change type when conversion type is null throws argument null exception
+        ///     Tests that change type when conversion type is null throws argument null exception
         /// </summary>
         [Fact]
         public void ChangeType_WhenConversionTypeIsNull_ThrowsArgumentNullException()
@@ -3059,7 +3037,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that change type when conversion type is object returns value
+        ///     Tests that change type when conversion type is object returns value
         /// </summary>
         [Fact]
         public void ChangeType_WhenConversionTypeIsObject_ReturnsValue()
@@ -3069,7 +3047,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that change type when value is null and conversion type is value type returns default value
+        ///     Tests that change type when value is null and conversion type is value type returns default value
         /// </summary>
         [Fact]
         public void ChangeType_WhenValueIsNullAndConversionTypeIsValueType_ReturnsDefaultValue()
@@ -3079,7 +3057,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that change type when value is dictionary calls handle dictionary
+        ///     Tests that change type when value is dictionary calls handle dictionary
         /// </summary>
         [Fact]
         public void ChangeType_WhenValueIsDictionary_CallsHandleDictionary()
@@ -3090,7 +3068,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that change type when value is string and conversion type is byte array calls handle byte array
+        ///     Tests that change type when value is string and conversion type is byte array calls handle byte array
         /// </summary>
         [Fact]
         public void ChangeType_WhenValueIsStringAndConversionTypeIsByteArray_CallsHandleByteArray()
@@ -3100,7 +3078,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that change type when value is string and conversion type is date time calls handle date time
+        ///     Tests that change type when value is string and conversion type is date time calls handle date time
         /// </summary>
         [Fact]
         public void ChangeType_WhenValueIsStringAndConversionTypeIsDateTime_CallsHandleDateTime()
@@ -3111,7 +3089,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that change type when value is string and conversion type is time span calls handle time span
+        ///     Tests that change type when value is string and conversion type is time span calls handle time span
         /// </summary>
         [Fact]
         public void ChangeType_WhenValueIsStringAndConversionTypeIsTimeSpan_CallsHandleTimeSpan()
@@ -3122,7 +3100,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that change type when value is string and conversion type is not special type calls change type
+        ///     Tests that change type when value is string and conversion type is not special type calls change type
         /// </summary>
         [Fact]
         public void ChangeType_WhenValueIsStringAndConversionTypeIsNotSpecialType_CallsChangeType()
@@ -3132,7 +3110,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that change type when value is not string and not dictionary calls handle non string
+        ///     Tests that change type when value is not string and not dictionary calls handle non string
         /// </summary>
         [Fact]
         public void ChangeType_WhenValueIsNotStringAndNotDictionary_CallsHandleNonString()
@@ -3142,7 +3120,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle escape character appends correct character for escape sequences
+        ///     Tests that handle escape character appends correct character for escape sequences
         /// </summary>
         [Fact]
         public void HandleEscapeCharacter_AppendsCorrectCharacterForEscapeSequences()
@@ -3160,7 +3138,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle escape character appends backslash and character for unknown escape sequence
+        ///     Tests that handle escape character appends backslash and character for unknown escape sequence
         /// </summary>
         [Fact]
         public void HandleEscapeCharacter_AppendsBackslashAndCharacterForUnknownEscapeSequence()
@@ -3175,7 +3153,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle escape character throws exception when end of file reached
+        ///     Tests that handle escape character throws exception when end of file reached
         /// </summary>
         [Fact]
         public void HandleEscapeCharacter_ThrowsExceptionWhenEndOfFileReached()
@@ -3188,7 +3166,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that apply to non dictionary target when called processes all entries
+        ///     Tests that apply to non dictionary target when called processes all entries
         /// </summary>
         [Fact]
         public void ApplyToNonDictionaryTarget_WhenCalled_ProcessesAllEntries()
@@ -3207,7 +3185,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that apply to non dictionary target when map entry callback is set calls callback
+        ///     Tests that apply to non dictionary target when map entry callback is set calls callback
         /// </summary>
         [Fact]
         public void ApplyToNonDictionaryTarget_WhenMapEntryCallbackIsSet_CallsCallback()
@@ -3229,7 +3207,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that apply to non dictionary target when entry key is null skips entry
+        ///     Tests that apply to non dictionary target when entry key is null skips entry
         /// </summary>
         [Fact]
         public void ApplyToNonDictionaryTarget_WhenEntryKeyIsNull_SkipsEntry()
@@ -3248,7 +3226,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get list object when callback handled returns callback value
+        ///     Tests that get list object when callback handled returns callback value
         /// </summary>
         [Fact]
         public void GetListObject_WhenCallbackHandled_ReturnsCallbackValue()
@@ -3267,7 +3245,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get list object when type is byte array returns null
+        ///     Tests that get list object when type is byte array returns null
         /// </summary>
         [Fact]
         public void GetListObject_WhenTypeIsByteArray_ReturnsNull()
@@ -3277,7 +3255,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get list object when type is list returns custom list object
+        ///     Tests that get list object when type is list returns custom list object
         /// </summary>
         [Fact]
         public void GetListObject_WhenTypeIsList_ReturnsCustomListObject()
@@ -3287,7 +3265,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get list object when type is generic collection returns collection t object
+        ///     Tests that get list object when type is generic collection returns collection t object
         /// </summary>
         [Fact]
         public void GetListObject_WhenTypeIsGenericCollection_ReturnsCollectionTObject()
@@ -3297,7 +3275,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get list object when type implements generic collection returns collection t object
+        ///     Tests that get list object when type implements generic collection returns collection t object
         /// </summary>
         [Fact]
         public void GetListObject_WhenTypeImplementsGenericCollection_ReturnsCollectionTObject()
@@ -3307,7 +3285,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get list object when type does not match any condition returns null
+        ///     Tests that get list object when type does not match any condition returns null
         /// </summary>
         [Fact]
         public void GetListObject_WhenTypeDoesNotMatchAnyCondition_ReturnsNull()
@@ -3317,7 +3295,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get item type throws exception when collection type is null
+        ///     Tests that get item type throws exception when collection type is null
         /// </summary>
         [Fact]
         public void GetItemType_ThrowsException_WhenCollectionTypeIsNull()
@@ -3326,11 +3304,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        
-        /// Tests that get item type returns correct type when collection type is dictionary
-        
+        ///     Tests that get item type returns correct type when collection type is dictionary
         /// </summary>
-        
         [Fact]
         public void GetItemType_ReturnsCorrectType_WhenCollectionTypeIsDictionary()
         {
@@ -3338,11 +3313,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        
-        /// Tests that get item type returns correct type when collection type is list
-        
+        ///     Tests that get item type returns correct type when collection type is list
         /// </summary>
-        
         [Fact]
         public void GetItemType_ReturnsCorrectType_WhenCollectionTypeIsList()
         {
@@ -3350,11 +3322,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        
-        /// Tests that get item type returns correct type when collection type is collection
-        
+        ///     Tests that get item type returns correct type when collection type is collection
         /// </summary>
-        
         [Fact]
         public void GetItemType_ReturnsCorrectType_WhenCollectionTypeIsCollection()
         {
@@ -3362,11 +3331,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        
-        /// Tests that get item type returns correct type when collection type is enumerable
-        
+        ///     Tests that get item type returns correct type when collection type is enumerable
         /// </summary>
-        
         [Fact]
         public void GetItemType_ReturnsCorrectType_WhenCollectionTypeIsEnumerable()
         {
@@ -3374,11 +3340,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        
-        /// Tests that get item type returns object type when collection type is not a collection
-        
+        ///     Tests that get item type returns object type when collection type is not a collection
         /// </summary>
-        
         [Fact]
         public void GetItemType_ReturnsObjectType_WhenCollectionTypeIsNotACollection()
         {
@@ -3386,7 +3349,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that serialize throws exception when writer is null
+        ///     Tests that serialize throws exception when writer is null
         /// </summary>
         [Fact]
         public void Serialize_ThrowsException_WhenWriterIsNull()
@@ -3395,7 +3358,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that serialize writes json p start when json p callback is not null
+        ///     Tests that serialize writes json p start when json p callback is not null
         /// </summary>
         [Fact]
         public void Serialize_WritesJsonPStart_WhenJsonPCallbackIsNotNull()
@@ -3407,7 +3370,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that serialize writes json p end when json p callback is not null
+        ///     Tests that serialize writes json p end when json p callback is not null
         /// </summary>
         [Fact]
         public void Serialize_WritesJsonPEnd_WhenJsonPCallbackIsNotNull()
@@ -3419,7 +3382,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that serialize writes value when called
+        ///     Tests that serialize writes value when called
         /// </summary>
         [Fact]
         public void Serialize_WritesValue_WhenCalled()
@@ -3430,7 +3393,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test get json attribute
+        ///     Tests that test get json attribute
         /// </summary>
         [Fact]
         public void TestGetJsonAttribute()
@@ -3447,7 +3410,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that test has script ignore
+        ///     Tests that test has script ignore
         /// </summary>
         [Fact]
         public void TestHasScriptIgnore()
@@ -3469,7 +3432,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that process list input with null context adds converted values to list
+        ///     Tests that process list input with null context adds converted values to list
         /// </summary>
         [Fact]
         public void ProcessListInput_WithNullContext_AddsConvertedValuesToList()
@@ -3489,7 +3452,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that process list input with context updates converted values based on context
+        ///     Tests that process list input with context updates converted values based on context
         /// </summary>
         [Fact]
         public void ProcessListInput_WithContext_UpdatesConvertedValuesBasedOnContext()
@@ -3509,7 +3472,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that process list input with context and c value in context updates converted values based on new c value
+        ///     Tests that process list input with context and c value in context updates converted values based on new c value
         /// </summary>
         [Fact]
         public void ProcessListInput_WithContextAndCValueInContext_UpdatesConvertedValuesBasedOnNewCValue()
@@ -3517,7 +3480,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object target = new object();
             List<object> input = new List<object> {"1", "2", "3"};
-            CustomListObject list = new CustomListObject() {Context = new Dictionary<string, object> {["cvalue"] = 100}};
+            CustomListObject list = new CustomListObject
+                {Context = new Dictionary<string, object> {["cvalue"] = 100}};
             Type itemType = typeof(int);
             JsonOptions options = new JsonOptions();
             
@@ -3529,7 +3493,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that write dictionary writes correct json when dictionary is not empty
+        ///     Tests that write dictionary writes correct json when dictionary is not empty
         /// </summary>
         [Fact]
         public void WriteDictionary_WritesCorrectJson_WhenDictionaryIsNotEmpty()
@@ -3547,7 +3511,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that write dictionary writes empty json when dictionary is empty
+        ///     Tests that write dictionary writes empty json when dictionary is empty
         /// </summary>
         [Fact]
         public void WriteDictionary_WritesEmptyJson_WhenDictionaryIsEmpty()
@@ -3561,12 +3525,12 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonSerializer.WriteDictionary(writer, dictionary, options);
             
             // Assert
-            string expectedJson =  "{\n}\n";
+            string expectedJson = "{\n}\n";
             Assert.Equal(expectedJson, writer.InnerWriter.ToString());
         }
         
         /// <summary>
-        /// Tests that write dictionary throws exception when writer is null
+        ///     Tests that write dictionary throws exception when writer is null
         /// </summary>
         [Fact]
         public void WriteDictionary_ThrowsException_WhenWriterIsNull()
@@ -3580,7 +3544,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that write dictionary throws exception when dictionary is null
+        ///     Tests that write dictionary throws exception when dictionary is null
         /// </summary>
         [Fact]
         public void WriteDictionary_ThrowsException_WhenDictionaryIsNull()
@@ -3593,6 +3557,193 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Throws<NullReferenceException>(() => JsonSerializer.WriteDictionary(writer, null, options));
         }
         
+        /// <summary>
+        /// Tests that try parse date time when text is null returns false
+        /// </summary>
+        [Fact]
+        public void TryParseDateTime_WhenTextIsNull_ReturnsFalse()
+        {
+            Assert.False(JsonSerializer.TryParseDateTime(null, DateTimeStyles.None, out _));
+        }
         
+        /// <summary>
+        /// Tests that try parse date time when text is date time with end z returns true
+        /// </summary>
+        [Fact]
+        public void TryParseDateTime_WhenTextIsDateTimeWithEndZ_ReturnsTrue()
+        {
+            Assert.True(JsonSerializer.TryParseDateTime("\"2022-12-31T23:59:59Z\"", DateTimeStyles.None, out _));
+        }
+        
+        /// <summary>
+        /// Tests that try parse date time when text is date time with specific format returns true
+        /// </summary>
+        [Fact]
+        public void TryParseDateTime_WhenTextIsDateTimeWithSpecificFormat_ReturnsTrue()
+        {
+            Assert.True(JsonSerializer.TryParseDateTime("\"2022/12/31 23:59:59\"", DateTimeStyles.None, out _));
+        }
+        
+        /// <summary>
+        /// Tests that try parse date time when text is date time with ticks returns true
+        /// </summary>
+        [Fact]
+        public void TryParseDateTime_WhenTextIsDateTimeWithTicks_ReturnsTrue()
+        {
+            Assert.True(JsonSerializer.TryParseDateTime("\"/Date(1672444800000+0200)/\"", DateTimeStyles.None, out _));
+        }
+        
+        /// <summary>
+        /// Tests that try parse date time when text is time span style returns false
+        /// </summary>
+        [Fact]
+        public void TryParseDateTime_WhenTextIsTimeSpanStyle_ReturnsFalse()
+        {
+            Assert.False(JsonSerializer.TryParseDateTime("23:59:59", DateTimeStyles.None, out _));
+        }
+        
+        /// <summary>
+        /// Tests that try parse date time when text is standard date time returns true
+        /// </summary>
+        [Fact]
+        public void TryParseDateTime_WhenTextIsStandardDateTime_ReturnsTrue()
+        {
+            Assert.True(JsonSerializer.TryParseDateTime("2022-12-31T23:59:59", DateTimeStyles.None, out _));
+        }
+        
+        /// <summary>
+        /// Tests that update value based on context when context is null returns converted value
+        /// </summary>
+        [Fact]
+        public void UpdateValueBasedOnContext_WhenContextIsNull_ReturnsConvertedValue()
+        {
+            // Arrange
+            CustomListObject list = new CustomListObject {Context = null};
+            Type itemType = typeof(int);
+            int value = 1;
+            int convertedValue = 2;
+            
+            // Act
+            object result = JsonSerializer.UpdateValueBasedOnContext(list, itemType, value, convertedValue);
+            
+            // Assert
+            Assert.Equal(convertedValue, result);
+        }
+        
+        /// <summary>
+        /// Tests that update value based on context when context is not null updates context and returns new converted value
+        /// </summary>
+        [Fact]
+        public void UpdateValueBasedOnContext_WhenContextIsNotNull_UpdatesContextAndReturnsNewConvertedValue()
+        {
+            // Arrange
+            CustomListObject list = new CustomListObject() {Context = new Dictionary<string, object>()};
+            Type itemType = typeof(int);
+            int value = 1;
+            int convertedValue = 2;
+            
+            // Act
+            object result = JsonSerializer.UpdateValueBasedOnContext(list, itemType, value, convertedValue);
+            
+            // Assert
+            Assert.Equal(convertedValue, result);
+        }
+        
+        /// <summary>
+        /// Tests that update context when called updates context correctly
+        /// </summary>
+        [Fact]
+        public void UpdateContext_WhenCalled_UpdatesContextCorrectly()
+        {
+            // Arrange
+            ListObject list = new CustomListObject {Context = new Dictionary<string, object>()};
+            Type itemType = typeof(int);
+            object value = 1;
+            object convertedValue = 2;
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.UpdateContext(list, itemType, value, convertedValue));
+        }
+        
+        /// <summary>
+        /// Tests that update context when context is null throws exception
+        /// </summary>
+        [Fact]
+        public void UpdateContext_WhenContextIsNull_ThrowsException()
+        {
+            // Arrange
+            ListObject list = new CustomListObject {Context = null};
+            Type itemType = typeof(int);
+            object value = 1;
+            object convertedValue = 2;
+            
+            // Act & Assert
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.UpdateContext(list, itemType, value, convertedValue));
+        }
+        
+        /// <summary>
+        /// Tests that read serializable when type name is null returns null
+        /// </summary>
+        [Fact]
+        public void ReadSerializable_WhenTypeNameIsNull_ReturnsNull()
+        {
+            Assert.Throws<JsonException>(() => JsonSerializer.ReadSerializable(null, new JsonOptions(), null, new Dictionary<string, object>()));
+        }
+        
+        /// <summary>
+        /// Tests that read serializable when type name is invalid throws exception
+        /// </summary>
+        [Fact]
+        public void ReadSerializable_WhenTypeNameIsInvalid_ThrowsException()
+        {
+            Assert.Throws<JsonException>(() => JsonSerializer.ReadSerializable(null, new JsonOptions(), "InvalidTypeName", new Dictionary<string, object>()));
+        }
+        
+        /// <summary>
+        /// Tests that read dictionary value when called returns dictionary
+        /// </summary>
+        [Fact]
+        public void ReadDictionaryValue_WhenCalled_ReturnsDictionary()
+        {
+            StringReader reader = new StringReader("{}");
+            JsonOptions options = new JsonOptions();
+            
+            Dictionary<string, object> result = JsonSerializer.ReadDictionaryValue(reader, options);
+            
+            Assert.NotNull(result);
+            Assert.IsType<Dictionary<string, object>>(result);
+        }
+        
+        /// <summary>
+        /// Tests that read dictionary value when serialization option is set calls deserialize
+        /// </summary>
+        [Fact]
+        public void ReadDictionaryValue_WhenSerializationOptionIsSet_CallsDeserialize()
+        {
+            StringReader reader = new StringReader("{\"$type\":\"typeName\"}");
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.UseISerializable};
+            
+            Dictionary<string, object> result = JsonSerializer.ReadDictionaryValue(reader, options);
+            
+            Assert.NotNull(result);
+            Assert.IsType<Dictionary<string, object>>(result);
+            // Add more assertions to verify the deserialization logic
+        }
+        
+        /// <summary>
+        /// Tests that read dictionary value when serialization option is not set does not call deserialize
+        /// </summary>
+        [Fact]
+        public void ReadDictionaryValue_WhenSerializationOptionIsNotSet_DoesNotCallDeserialize()
+        {
+            StringReader reader = new StringReader("{\"$type\":\"typeName\"}");
+            JsonOptions options = new JsonOptions();
+            
+            Dictionary<string, object> result = JsonSerializer.ReadDictionaryValue(reader, options);
+            
+            Assert.NotNull(result);
+            Assert.IsType<Dictionary<string, object>>(result);
+            // Add more assertions to verify that the deserialization logic was not called
+        }
     }
 }

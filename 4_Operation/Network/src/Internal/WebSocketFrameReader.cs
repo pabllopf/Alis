@@ -55,10 +55,10 @@ namespace Alis.Core.Network.Internal
                 // the count needs to be a multiple of the mask key
                 return bufferSize - bufferSize % 4;
             }
-
+            
             return numBytesLetfToRead;
         }
-
+        
         /// <summary>
         ///     The last read could not be completed because the read buffer was too small.
         ///     We need to continue reading bytes off the stream.
@@ -81,10 +81,10 @@ namespace Alis.Core.Network.Internal
                     new ArraySegment<byte>(intoBuffer.Array, intoBuffer.Offset, minCount);
                 WebSocketFrameCommon.ToggleMask(remainingFrame.MaskKey, payloadToMask);
             }
-
+            
             return new WebSocketReadCursor(remainingFrame, minCount, readCursor.NumBytesLeftToRead - minCount);
         }
-
+        
         /// <summary>
         ///     Read a WebSocket frame from the stream
         /// </summary>
@@ -97,17 +97,17 @@ namespace Alis.Core.Network.Internal
         {
             // allocate a small buffer to read small chunks of data from the stream
             ArraySegment<byte> smallBuffer = new ArraySegment<byte>(new byte[8]);
-
+            
             await BinaryReaderWriter.ReadExactly(2, fromStream, smallBuffer, cancellationToken);
             byte byte1 = smallBuffer.Array[0];
             byte byte2 = smallBuffer.Array[1];
-
+            
             // process first byte
             byte finBitFlag = 0x80;
             byte opCodeFlag = 0x0F;
             bool isFinBitSet = (byte1 & finBitFlag) == finBitFlag;
             WebSocketOpCode opCode = (WebSocketOpCode) (byte1 & opCodeFlag);
-
+            
             // read and process second byte
             byte maskFlag = 0x80;
             bool isMaskBitSet = (byte2 & maskFlag) == maskFlag;
@@ -115,7 +115,7 @@ namespace Alis.Core.Network.Internal
             int count = (int) len;
             int minCount = CalculateNumBytesToRead(count, intoBuffer.Count);
             ArraySegment<byte> maskKey = new ArraySegment<byte>();
-
+            
             try
             {
                 // use the masking key to decode the data if needed
@@ -139,7 +139,7 @@ namespace Alis.Core.Network.Internal
                     $"Supplied buffer too small to read {0} bytes from {Enum.GetName(typeof(WebSocketOpCode), opCode)} frame",
                     e);
             }
-
+            
             WebSocketFrame frame;
             if (opCode == WebSocketOpCode.ConnectionClose)
             {
@@ -150,10 +150,10 @@ namespace Alis.Core.Network.Internal
                 // note that by this point the payload will be populated
                 frame = new WebSocketFrame(isFinBitSet, opCode, count, maskKey);
             }
-
+            
             return new WebSocketReadCursor(frame, minCount, count - minCount);
         }
-
+        
         /// <summary>
         ///     Extracts close status and close description information from the web socket frame
         /// </summary>
@@ -162,7 +162,7 @@ namespace Alis.Core.Network.Internal
         {
             WebSocketCloseStatus closeStatus;
             string closeStatusDescription;
-
+            
             if (count >= 2)
             {
                 Array.Reverse(buffer.Array, buffer.Offset, 2); // network byte order
@@ -175,10 +175,10 @@ namespace Alis.Core.Network.Internal
                 {
                     closeStatus = WebSocketCloseStatus.Empty;
                 }
-
+                
                 int offset = buffer.Offset + 2;
                 int descCount = count - 2;
-
+                
                 if (descCount > 0)
                 {
                     closeStatusDescription = Encoding.UTF8.GetString(buffer.Array, offset, descCount);
@@ -193,10 +193,10 @@ namespace Alis.Core.Network.Internal
                 closeStatus = WebSocketCloseStatus.Empty;
                 closeStatusDescription = null;
             }
-
+            
             return new WebSocketFrame(isFinBitSet, opCode, count, closeStatus, closeStatusDescription, maskKey);
         }
-
+        
         /// <summary>
         ///     Reads the length of the payload according to the contents of byte2
         /// </summary>
@@ -205,7 +205,7 @@ namespace Alis.Core.Network.Internal
         {
             byte payloadLenFlag = 0x7F;
             uint len = (uint) (byte2 & payloadLenFlag);
-
+            
             // read a short length or a long length depending on the value of len
             if (len == 126)
             {
@@ -217,7 +217,7 @@ namespace Alis.Core.Network.Internal
                     cancellationToken);
                 const uint
                     maxLen = 2147483648; // 2GB - not part of the spec but just a precaution. Send large volumes of data in smaller frames.
-
+                
                 // protect ourselves against bad data
                 if (len > maxLen || len < 0)
                 {
@@ -225,7 +225,7 @@ namespace Alis.Core.Network.Internal
                         $"Payload length out of range. Min 0 max 2GB. Actual {len:#,##0} bytes.");
                 }
             }
-
+            
             return len;
         }
     }

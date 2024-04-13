@@ -40,42 +40,42 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The data
         /// </summary>
         public void* Data;
-
+        
         /// <summary>
         ///     The data size
         /// </summary>
         public int DataSize;
-
+        
         /// <summary>
         ///     The source id
         /// </summary>
         public uint SourceId;
-
+        
         /// <summary>
         ///     The source parent id
         /// </summary>
         public uint SourceParentId;
-
+        
         /// <summary>
         ///     The data frame count
         /// </summary>
         public int DataFrameCount;
-
+        
         /// <summary>
         ///     The data type
         /// </summary>
         public fixed byte DataType[33];
-
+        
         /// <summary>
         ///     The preview
         /// </summary>
         public byte Preview;
-
+        
         /// <summary>
         ///     The delivery
         /// </summary>
         public byte Delivery;
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImGuiPayload_Clear(ref this);
         }
-
+        
         /// <summary>
         ///     Destroys this instance
         /// </summary>
@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImGuiPayload_destroy(ref this);
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is data type
         /// </summary>
@@ -113,7 +113,7 @@ namespace Alis.Extension.Graphic.ImGui
                     byte* nativeTypeStackBytes = stackalloc byte[typeByteCount + 1];
                     nativeType = nativeTypeStackBytes;
                 }
-
+                
                 int nativeTypeOffset = Util.GetUtf8(type, nativeType, typeByteCount);
                 nativeType[nativeTypeOffset] = 0;
             }
@@ -121,16 +121,16 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 nativeType = null;
             }
-
+            
             byte ret = ImGuiNative.ImGuiPayload_IsDataType(ref this, nativeType);
             if (typeByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeType);
             }
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is delivery
         /// </summary>
@@ -140,7 +140,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.ImGuiPayload_IsDelivery(ref this);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is preview
         /// </summary>

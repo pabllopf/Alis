@@ -41,17 +41,17 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The size
         /// </summary>
         public readonly int Size;
-
+        
         /// <summary>
         ///     The capacity
         /// </summary>
         public readonly int Capacity;
-
+        
         /// <summary>
         ///     The data
         /// </summary>
         public readonly IntPtr Data;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImVector" /> class
         /// </summary>
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.ImGui
             Capacity = capacity;
             Data = data;
         }
-
+        
         /// <summary>
         ///     Refs the index
         /// </summary>
@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
         public ref T Ref<T>(int index) where T : unmanaged => ref Unsafe.AsRef<T>((byte*) Data + index * Unsafe.SizeOf<T>());
-
+        
         /// <summary>
         ///     Addresses the index
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The int ptr</returns>
         public IntPtr Address<T>(int index) => (IntPtr) ((byte*) Data + index * Unsafe.SizeOf<T>());
     }
-
+    
     /// <summary>
     ///     The im vector
     /// </summary>
@@ -91,17 +91,17 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The size
         /// </summary>
         public readonly int Size;
-
+        
         /// <summary>
         ///     The capacity
         /// </summary>
         public readonly int Capacity;
-
+        
         /// <summary>
         ///     The data
         /// </summary>
         public readonly IntPtr Data;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImVector" /> class
         /// </summary>
@@ -112,7 +112,7 @@ namespace Alis.Extension.Graphic.ImGui
             Capacity = vector.Capacity;
             Data = vector.Data;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImVector" /> class
         /// </summary>
@@ -125,7 +125,7 @@ namespace Alis.Extension.Graphic.ImGui
             Capacity = capacity;
             Data = data;
         }
-
+        
         /// <summary>
         ///     The
         /// </summary>

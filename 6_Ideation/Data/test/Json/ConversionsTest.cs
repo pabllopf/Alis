@@ -2353,7 +2353,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that is valid input valid input returns true
+        ///     Tests that is valid input valid input returns true
         /// </summary>
         [Fact]
         public void IsValidInput_ValidInput_ReturnsTrue()
@@ -2362,7 +2362,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that is valid input null type returns false
+        ///     Tests that is valid input null type returns false
         /// </summary>
         [Fact]
         public void IsValidInput_NullType_ReturnsFalse()
@@ -2371,7 +2371,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that is valid input null input returns false
+        ///     Tests that is valid input null input returns false
         /// </summary>
         [Fact]
         public void IsValidInput_NullInput_ReturnsFalse()
@@ -2380,7 +2380,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that format input removes whitespace
+        ///     Tests that format input removes whitespace
         /// </summary>
         [Fact]
         public void FormatInput_RemovesWhitespace()
@@ -2389,7 +2389,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that is hexadecimal and can be parsed valid hexadecimal returns true
+        ///     Tests that is hexadecimal and can be parsed valid hexadecimal returns true
         /// </summary>
         [Fact]
         public void IsHexadecimalAndCanBeParsed_ValidHexadecimal_ReturnsTrue()
@@ -2398,7 +2398,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that is hexadecimal and can be parsed invalid hexadecimal returns false
+        ///     Tests that is hexadecimal and can be parsed invalid hexadecimal returns false
         /// </summary>
         [Fact]
         public void IsHexadecimalAndCanBeParsed_InvalidHexadecimal_ReturnsFalse()
@@ -2407,7 +2407,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that can get enum names and values valid enum type returns true
+        ///     Tests that can get enum names and values valid enum type returns true
         /// </summary>
         [Fact]
         public void CanGetEnumNamesAndValues_ValidEnumType_ReturnsTrue()
@@ -2416,7 +2416,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that can get enum names and values non enum type returns false
+        ///     Tests that can get enum names and values non enum type returns false
         /// </summary>
         [Fact]
         public void CanGetEnumNamesAndValues_NonEnumType_ReturnsFalse()
@@ -2425,7 +2425,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that can parse tokens valid tokens returns true
+        ///     Tests that can parse tokens valid tokens returns true
         /// </summary>
         [Fact]
         public void CanParseTokens_ValidTokens_ReturnsTrue()
@@ -2436,7 +2436,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that can parse tokens invalid tokens returns false
+        ///     Tests that can parse tokens invalid tokens returns false
         /// </summary>
         [Fact]
         public void CanParseTokens_InvalidTokens_ReturnsFalse()
@@ -2447,7 +2447,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try convert to uri valid uri returns true
+        ///     Tests that try convert to uri valid uri returns true
         /// </summary>
         [Fact]
         public void TryConvertToUri_ValidUri_ReturnsTrue()
@@ -2465,7 +2465,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try convert to uri invalid uri returns false
+        ///     Tests that try convert to uri invalid uri returns false
         /// </summary>
         [Fact]
         public void TryConvertToUri_InvalidUri_ReturnsFalse()
@@ -2481,7 +2481,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try convert to uri null input returns false
+        ///     Tests that try convert to uri null input returns false
         /// </summary>
         [Fact]
         public void TryConvertToUri_NullInput_ReturnsFalse()
@@ -2498,7 +2498,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try convert to uri empty input returns false
+        ///     Tests that try convert to uri empty input returns false
         /// </summary>
         [Fact]
         public void TryConvertToUri_EmptyInput_ReturnsFalse()
@@ -2515,7 +2515,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try convert with appropriate converter successful conversion returns true
+        ///     Tests that try convert with appropriate converter successful conversion returns true
         /// </summary>
         [Fact]
         public void TryConvertWithAppropriateConverter_SuccessfulConversion_ReturnsTrue()
@@ -2535,7 +2535,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try convert with appropriate converter failed conversion returns false
+        ///     Tests that try convert with appropriate converter failed conversion returns false
         /// </summary>
         [Fact]
         public void TryConvertWithAppropriateConverter_FailedConversion_ReturnsFalse()
@@ -2548,11 +2548,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             // Act
             Assert.Throws<ArgumentException>(() => Conversions.TryConvert(inputValue, targetType, sourceType, out convertedValue));
-            
         }
         
         /// <summary>
-        /// Tests that try change to nullable null input returns true
+        ///     Tests that try change to nullable null input returns true
         /// </summary>
         [Fact]
         public void TryChangeToNullable_NullInput_ReturnsTrue()
@@ -2571,7 +2570,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to nullable valid input returns true
+        ///     Tests that try change to nullable valid input returns true
         /// </summary>
         [Fact]
         public void TryChangeToNullable_ValidInput_ReturnsTrue()
@@ -2590,7 +2589,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to nullable invalid input returns false
+        ///     Tests that try change to nullable invalid input returns false
         /// </summary>
         [Fact]
         public void TryChangeToNullable_InvalidInput_ReturnsFalse()
@@ -2605,7 +2604,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try change to nullable non nullable conversion type returns false
+        ///     Tests that try change to nullable non nullable conversion type returns false
         /// </summary>
         [Fact]
         public void TryChangeToNullable_NonNullableConversionType_ReturnsFalse()
@@ -2624,7 +2623,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try convert valid conversion returns true
+        ///     Tests that try convert valid conversion returns true
         /// </summary>
         [Fact]
         public void TryConvert_ValidConversion_ReturnsTrue()
@@ -2638,7 +2637,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try convert invalid conversion returns false
+        ///     Tests that try convert invalid conversion returns false
         /// </summary>
         [Fact]
         public void TryConvert_InvalidConversion_ReturnsFalse()
@@ -2650,7 +2649,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try convert no type converter returns false
+        ///     Tests that try convert no type converter returns false
         /// </summary>
         [Fact]
         public void TryConvert_NoTypeConverter_ReturnsFalse()
@@ -2664,7 +2663,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with digit start returns true v 2
+        ///     Tests that try handle digit or sign start with digit start returns true v 2
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithDigitStart_ReturnsTrue_v2()
@@ -2682,7 +2681,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with positive sign start returns true v 2
+        ///     Tests that try handle digit or sign start with positive sign start returns true v 2
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithPositiveSignStart_ReturnsTrue_v2()
@@ -2700,7 +2699,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with negative sign start returns true v 2
+        ///     Tests that try handle digit or sign start with negative sign start returns true v 2
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithNegativeSignStart_ReturnsTrue_v2()
@@ -2718,7 +2717,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with non digit or sign start returns false v 2
+        ///     Tests that try handle digit or sign start with non digit or sign start returns false v 2
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithNonDigitOrSignStart_ReturnsFalse_v2()
@@ -2736,7 +2735,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with null input returns false v 2
+        ///     Tests that try handle digit or sign start with null input returns false v 2
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithNullInput_ReturnsFalse_v2()
@@ -2750,7 +2749,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try convert to uri null or empty input returns false
+        ///     Tests that try convert to uri null or empty input returns false
         /// </summary>
         [Fact]
         public void TryConvertToUri_NullOrEmptyInput_ReturnsFalse()
@@ -2765,11 +2764,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        
-        /// Tests that try convert to uri valid uri input returns true
-        
+        ///     Tests that try convert to uri valid uri input returns true
         /// </summary>
-        
         [Fact]
         public void TryConvertToUri_ValidUriInput_ReturnsTrue()
         {
@@ -2780,11 +2776,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        
-        /// Tests that try convert to uri invalid uri input returns false
-        
+        ///     Tests that try convert to uri invalid uri input returns false
         /// </summary>
-        
         [Fact]
         public void TryConvertToUri_InvalidUriInput_ReturnsFalse()
         {
@@ -2794,7 +2787,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with digit start returns true v 4
+        ///     Tests that try handle digit or sign start with digit start returns true v 4
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithDigitStart_ReturnsTrue_v4()
@@ -2812,7 +2805,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with positive sign start returns true v 4
+        ///     Tests that try handle digit or sign start with positive sign start returns true v 4
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithPositiveSignStart_ReturnsTrue_v4()
@@ -2830,7 +2823,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with negative sign start returns true v 4
+        ///     Tests that try handle digit or sign start with negative sign start returns true v 4
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithNegativeSignStart_ReturnsTrue_v4()
@@ -2848,7 +2841,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with non digit or sign start returns false v 4
+        ///     Tests that try handle digit or sign start with non digit or sign start returns false v 4
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithNonDigitOrSignStart_ReturnsFalse_v4()
@@ -2866,7 +2859,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with null input throws exception
+        ///     Tests that try handle digit or sign start with null input throws exception
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithNullInput_ThrowsException()
@@ -2880,7 +2873,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with digit start returns true and converted value
+        ///     Tests that try handle digit or sign start with digit start returns true and converted value
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithDigitStart_ReturnsTrueAndConvertedValue()
@@ -2898,7 +2891,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with negative sign start returns true and converted value
+        ///     Tests that try handle digit or sign start with negative sign start returns true and converted value
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithNegativeSignStart_ReturnsTrueAndConvertedValue()
@@ -2916,7 +2909,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with positive sign start returns true and converted value
+        ///     Tests that try handle digit or sign start with positive sign start returns true and converted value
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithPositiveSignStart_ReturnsTrueAndConvertedValue()
@@ -2934,7 +2927,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with non digit or sign start returns false and default value
+        ///     Tests that try handle digit or sign start with non digit or sign start returns false and default value
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithNonDigitOrSignStart_ReturnsFalseAndDefaultValue()
@@ -2952,7 +2945,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try handle digit or sign start with empty string returns false and default value
+        ///     Tests that try handle digit or sign start with empty string returns false and default value
         /// </summary>
         [Fact]
         public void TryHandleDigitOrSignStart_WithEmptyString_ReturnsFalseAndDefaultValue()

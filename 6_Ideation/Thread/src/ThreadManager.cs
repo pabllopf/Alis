@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Thread
         ///     The cancellation token source
         /// </summary>
         private readonly Dictionary<ThreadTask, CancellationTokenSource> threadTokens = new Dictionary<ThreadTask, CancellationTokenSource>();
-
+        
         /// <summary>
         ///     Starts the thread using the specified thread task
         /// </summary>
@@ -53,7 +53,7 @@ namespace Alis.Core.Aspect.Thread
             threadTokens.Add(threadTask, cts);
             Task.Run(() => threadTask.Execute(cts.Token), cts.Token);
         }
-
+        
         /// <summary>
         ///     Stops the thread using the specified thread task
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Thread
                 threadTokens.Remove(threadTask);
             }
         }
-
+        
         /// <summary>
         ///     Stops the all threads
         /// </summary>
@@ -76,10 +76,10 @@ namespace Alis.Core.Aspect.Thread
             {
                 cts.Cancel();
             }
-
+            
             threadTokens.Clear();
         }
-
+        
         /// <summary>
         ///     Gets the thread count
         /// </summary>

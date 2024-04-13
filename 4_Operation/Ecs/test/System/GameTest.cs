@@ -44,17 +44,17 @@ namespace Alis.Core.Ecs.Test.System
         ///     Gets or sets the value of the managers
         /// </summary>
         public List<IManager> Managers { get; set; } = new List<IManager>();
-
+        
         /// <summary>
         ///     Gets or sets the value of the is running
         /// </summary>
         public bool IsRunning { get; set; }
-
+        
         /// <summary>
         ///     Runs this instance
         /// </summary>
         public void Run() => IsRunning = true;
-
+        
         /// <summary>
         ///     Adds the component
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Test.System
         /// <param name="component">The component</param>
         /// <exception cref="NotImplementedException"></exception>
         public void Add<T>(T component) where T : IManager => Managers.Add(component);
-
+        
         /// <summary>
         ///     Removes the component
         /// </summary>
@@ -70,21 +70,21 @@ namespace Alis.Core.Ecs.Test.System
         /// <param name="component">The component</param>
         /// <exception cref="NotImplementedException"></exception>
         public void Remove<T>(T component) where T : IManager => Managers.Remove(component);
-
+        
         /// <summary>
         ///     Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
         public T Get<T>() where T : IManager => Managers.Find(man => man is T) is T manager ? manager : default(T);
-
+        
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
         public bool Contains<T>() where T : IManager => Managers.Find(manager => manager is T) is T;
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>

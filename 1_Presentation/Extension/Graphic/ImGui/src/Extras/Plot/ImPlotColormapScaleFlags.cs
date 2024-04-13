@@ -41,17 +41,17 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         ///     The none im plot colormap scale flags
         /// </summary>
         None = 0,
-
+        
         /// <summary>
         ///     The no label im plot colormap scale flags
         /// </summary>
         NoLabel = 1,
-
+        
         /// <summary>
         ///     The opposite im plot colormap scale flags
         /// </summary>
         Opposite = 2,
-
+        
         /// <summary>
         ///     The invert im plot colormap scale flags
         /// </summary>

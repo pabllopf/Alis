@@ -48,13 +48,13 @@ namespace Alis.Builder.Core.Ecs.Component.Audio
         ///     Gets or sets the value of the audio source
         /// </summary>
         private readonly AudioSource audioSource = new AudioSource();
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The audio source</returns>
         public AudioSource Build() => audioSource;
-
+        
         /// <summary>
         ///     Ises the active using the specified value
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Builder.Core.Ecs.Component.Audio
             audioSource.IsEnable = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Plays the on awake using the specified value
         /// </summary>
@@ -76,7 +76,7 @@ namespace Alis.Builder.Core.Ecs.Component.Audio
             audioSource.PlayOnAwake = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Sets the audio clip using the specified value
         /// </summary>

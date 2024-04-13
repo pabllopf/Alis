@@ -38,10 +38,10 @@ namespace Alis.Core.Physic.Shared
     {
         /// <summary>The lower vertex</summary>
         public Vector2 LowerBound;
-
+        
         /// <summary>The upper vertex</summary>
         public Vector2 UpperBound;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Aabb" /> class
         /// </summary>
@@ -51,7 +51,7 @@ namespace Alis.Core.Physic.Shared
             : this(ref min, ref max)
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Aabb" /> class
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Shared
             : this(center - new Vector2(width / 2, height / 2), center + new Vector2(width / 2, height / 2))
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Aabb" /> class
         /// </summary>
@@ -73,23 +73,23 @@ namespace Alis.Core.Physic.Shared
             LowerBound = new Vector2(Math.Min(min.X, max.X), Math.Min(min.Y, max.Y));
             UpperBound = new Vector2(Math.Max(min.X, max.X), Math.Max(min.Y, max.Y));
         }
-
+        
         /// <summary>
         ///     Gets the value of the width
         /// </summary>
         public float Width => UpperBound.X - LowerBound.X;
-
+        
         /// <summary>
         ///     Gets the value of the height
         /// </summary>
         public float Height => UpperBound.Y - LowerBound.Y;
-
+        
         /// <summary>Get the center of the AABB.</summary>
         public Vector2 Center => 0.5f * (LowerBound + UpperBound);
-
+        
         /// <summary>Get the extents of the AABB (half-widths).</summary>
         public Vector2 Extents => 0.5f * (UpperBound - LowerBound);
-
+        
         /// <summary>Get the perimeter length</summary>
         public float Perimeter
         {
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Shared
                 return 2.0f * (wx + wy);
             }
         }
-
+        
         /// <summary>Gets the vertices of the AABB.</summary>
         /// <value>The corners of the AABB</value>
         public Vertices Vertices
@@ -117,19 +117,19 @@ namespace Alis.Core.Physic.Shared
                 return vertices;
             }
         }
-
+        
         /// <summary>First quadrant</summary>
         public Aabb Q1 => new Aabb(Center, UpperBound);
-
+        
         /// <summary>Second quadrant</summary>
         public Aabb Q2 => new Aabb(new Vector2(LowerBound.X, Center.Y), new Vector2(Center.X, UpperBound.Y));
-
+        
         /// <summary>Third quadrant</summary>
         public Aabb Q3 => new Aabb(LowerBound, Center);
-
+        
         /// <summary>Forth quadrant</summary>
         public Aabb Q4 => new Aabb(new Vector2(Center.X, LowerBound.Y), new Vector2(UpperBound.X, Center.Y));
-
+        
         /// <summary>Verify that the bounds are sorted. And the bounds are valid numbers (not NaN).</summary>
         /// <returns><c>true</c> if this instance is valid; otherwise, <c>false</c>.</returns>
         public bool IsValid()
@@ -138,7 +138,7 @@ namespace Alis.Core.Physic.Shared
             bool valid = (d.X >= 0.0f) && (d.Y >= 0.0f);
             return valid && LowerBound.IsValid() && UpperBound.IsValid();
         }
-
+        
         /// <summary>Combine an AABB into this one.</summary>
         /// <param name="aabb">The AABB.</param>
         public void Combine(ref Aabb aabb)
@@ -146,7 +146,7 @@ namespace Alis.Core.Physic.Shared
             LowerBound = Vector2.Min(LowerBound, aabb.LowerBound);
             UpperBound = Vector2.Max(UpperBound, aabb.UpperBound);
         }
-
+        
         /// <summary>Combine two AABBs into this one.</summary>
         /// <param name="aabb1">The aabb1.</param>
         /// <param name="aabb2">The aabb2.</param>
@@ -155,7 +155,7 @@ namespace Alis.Core.Physic.Shared
             LowerBound = Vector2.Min(aabb1.LowerBound, aabb2.LowerBound);
             UpperBound = Vector2.Max(aabb1.UpperBound, aabb2.UpperBound);
         }
-
+        
         /// <summary>Does this AABB contain the provided AABB.</summary>
         /// <param name="aabb">The AABB.</param>
         /// <returns><c>true</c> if it contains the specified AABB; otherwise, <c>false</c>.</returns>
@@ -167,7 +167,7 @@ namespace Alis.Core.Physic.Shared
             result = result && (aabb.UpperBound.Y <= UpperBound.Y);
             return result;
         }
-
+        
         /// <summary>Determines whether the AABB contains the specified point.</summary>
         /// <param name="point">The point.</param>
         /// <returns><c>true</c> if it contains the specified point; otherwise, <c>false</c>.</returns>
@@ -175,7 +175,7 @@ namespace Alis.Core.Physic.Shared
             //using epsilon to try and guard against float rounding errors.
             (point.X > LowerBound.X + float.Epsilon) && (point.X < UpperBound.X - float.Epsilon) &&
             (point.Y > LowerBound.Y + float.Epsilon) && (point.Y < UpperBound.Y - float.Epsilon);
-
+        
         /// <summary>Test if the two AABBs overlap.</summary>
         /// <param name="a">The first AABB.</param>
         /// <param name="b">The second AABB.</param>
@@ -184,7 +184,7 @@ namespace Alis.Core.Physic.Shared
         {
             Vector2 d1 = b.LowerBound - a.UpperBound;
             Vector2 d2 = a.LowerBound - b.UpperBound;
-
+            
             return (d1.X <= 0) && (d1.Y <= 0) && (d2.X <= 0) && (d2.Y <= 0);
         }
     }

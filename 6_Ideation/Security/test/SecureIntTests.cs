@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SecureIntTest.cs
+//  File:SecureIntTests.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureInt secureInt = new SecureInt(10);
             Assert.Equal(10, (int) secureInt);
         }
-
+        
         /// <summary>
         ///     Tests that test secure int implicit conversion
         /// </summary>
@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureInt secureInt = 10;
             Assert.Equal(10, (int) secureInt);
         }
-
+        
         /// <summary>
         ///     Tests that test secure int equality operator
         /// </summary>
@@ -65,11 +65,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureInt secureInt1 = 10;
             SecureInt secureInt2 = 10;
             Assert.True(secureInt1 == secureInt2);
-
+            
             secureInt2 = 20;
             Assert.False(secureInt1 == secureInt2);
         }
-
+        
         /// <summary>
         ///     Tests that test secure int inequality operator
         /// </summary>
@@ -79,11 +79,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureInt secureInt1 = 10;
             SecureInt secureInt2 = 20;
             Assert.True(secureInt1 != secureInt2);
-
+            
             secureInt2 = 10;
             Assert.False(secureInt1 != secureInt2);
         }
-
+        
         /// <summary>
         ///     Tests that test secure int addition operator
         /// </summary>
@@ -94,7 +94,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureInt secureInt2 = 20;
             Assert.Equal(30, (int) (secureInt1 + secureInt2));
         }
-
+        
         /// <summary>
         ///     Tests that test secure int subtraction operator
         /// </summary>
@@ -105,7 +105,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureInt secureInt2 = 10;
             Assert.Equal(10, (int) (secureInt1 - secureInt2));
         }
-
+        
         /// <summary>
         ///     Tests that test secure int multiplication operator
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureInt secureInt2 = 20;
             Assert.Equal(200, (int) (secureInt1 * secureInt2));
         }
-
+        
         /// <summary>
         ///     Tests that test secure int division operator
         /// </summary>
@@ -127,7 +127,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureInt secureInt2 = 10;
             Assert.Equal(2, (int) (secureInt1 / secureInt2));
         }
-
+        
         /// <summary>
         ///     Tests that test secure int equals method
         /// </summary>
@@ -137,11 +137,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureInt secureInt1 = 10;
             SecureInt secureInt2 = 10;
             Assert.True(secureInt1.Equals(secureInt2));
-
+            
             secureInt2 = 20;
             Assert.False(secureInt1.Equals(secureInt2));
         }
-
+        
         /// <summary>
         ///     Tests that test secure int get hash code method
         /// </summary>
@@ -151,11 +151,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureInt secureInt1 = 10;
             SecureInt secureInt2 = 10;
             Assert.Equal(secureInt1.GetHashCode(), secureInt2.GetHashCode());
-
+            
             secureInt2 = 20;
             Assert.NotEqual(secureInt1.GetHashCode(), secureInt2.GetHashCode());
         }
-
+        
         /// <summary>
         ///     Tests that test secure int to string method
         /// </summary>
@@ -165,7 +165,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureInt secureInt = 10;
             Assert.Equal("10", secureInt.ToString());
         }
-
+        
         /// <summary>
         ///     Tests that test value set get
         /// </summary>
@@ -174,14 +174,14 @@ namespace Alis.Core.Aspect.Security.Test
         {
             // Arrange
             SecureInt secureInt = new SecureInt(10);
-
+            
             // Act
             int value = secureInt;
-
+            
             // Assert
             Assert.Equal(10, value);
         }
-
+        
         /// <summary>
         ///     Tests that test equality
         /// </summary>
@@ -191,11 +191,11 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureInt secureInt1 = new SecureInt(10);
             SecureInt secureInt2 = new SecureInt(10);
-
+            
             // Assert
             Assert.True(secureInt1 == secureInt2);
         }
-
+        
         /// <summary>
         ///     Tests that test inequality
         /// </summary>
@@ -205,11 +205,11 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureInt secureInt1 = new SecureInt(10);
             SecureInt secureInt2 = new SecureInt(20);
-
+            
             // Assert
             Assert.True(secureInt1 != secureInt2);
         }
-
+        
         /// <summary>
         ///     Tests that test increment
         /// </summary>
@@ -218,14 +218,14 @@ namespace Alis.Core.Aspect.Security.Test
         {
             // Arrange
             SecureInt secureInt = new SecureInt(10);
-
+            
             // Act
             secureInt++;
-
+            
             // Assert
             Assert.Equal(11, (int) secureInt);
         }
-
+        
         /// <summary>
         ///     Tests that test decrement
         /// </summary>
@@ -234,14 +234,14 @@ namespace Alis.Core.Aspect.Security.Test
         {
             // Arrange
             SecureInt secureInt = new SecureInt(10);
-
+            
             // Act
             secureInt--;
-
+            
             // Assert
             Assert.Equal(9, (int) secureInt);
         }
-
+        
         /// <summary>
         ///     Tests that test addition
         /// </summary>
@@ -251,14 +251,14 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureInt secureInt1 = new SecureInt(10);
             SecureInt secureInt2 = new SecureInt(20);
-
+            
             // Act
             SecureInt result = secureInt1 + secureInt2;
-
+            
             // Assert
             Assert.Equal(30, (int) result);
         }
-
+        
         /// <summary>
         ///     Tests that test subtraction
         /// </summary>
@@ -268,14 +268,14 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureInt secureInt1 = new SecureInt(20);
             SecureInt secureInt2 = new SecureInt(10);
-
+            
             // Act
             SecureInt result = secureInt1 - secureInt2;
-
+            
             // Assert
             Assert.Equal(10, (int) result);
         }
-
+        
         /// <summary>
         ///     Tests that test multiplication
         /// </summary>
@@ -285,14 +285,14 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureInt secureInt1 = new SecureInt(10);
             SecureInt secureInt2 = new SecureInt(20);
-
+            
             // Act
             SecureInt result = secureInt1 * secureInt2;
-
+            
             // Assert
             Assert.Equal(200, (int) result);
         }
-
+        
         /// <summary>
         ///     Tests that test division
         /// </summary>
@@ -302,10 +302,10 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureInt secureInt1 = new SecureInt(20);
             SecureInt secureInt2 = new SecureInt(10);
-
+            
             // Act
             SecureInt result = secureInt1 / secureInt2;
-
+            
             // Assert
             Assert.Equal(2, (int) result);
         }

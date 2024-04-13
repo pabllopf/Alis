@@ -47,9 +47,9 @@ namespace Alis.Extension.Encode.FFMeg.Test
         public async Task LoadMetadataMp3()
         {
             AudioReader audio = new AudioReader(Res.GetPath(Res.Audio_Mp3));
-
+            
             await audio.LoadMetadataAsync();
-
+            
             Assert.True(audio.Metadata.Codec == "mp3");
             Assert.True(audio.Metadata.BitRate == 128000);
             Assert.True(audio.Metadata.SampleFormat == "fltp");
@@ -58,7 +58,7 @@ namespace Alis.Extension.Encode.FFMeg.Test
             Assert.True(audio.Metadata.Streams.Length == 1);
             Assert.True(Math.Abs(audio.Metadata.Duration - 1.549187) < 0.01);
         }
-
+        
         /// <summary>
         ///     Tests that load metadata ogg
         /// </summary>
@@ -66,9 +66,9 @@ namespace Alis.Extension.Encode.FFMeg.Test
         public async Task LoadMetadataOgg()
         {
             AudioReader audio = new AudioReader(Res.GetPath(Res.Audio_Ogg));
-
+            
             await audio.LoadMetadataAsync();
-
+            
             Assert.True(audio.Metadata.Codec == "vorbis");
             Assert.True(audio.Metadata.BitRate == 48000);
             Assert.True(audio.Metadata.SampleFormat == "fltp");

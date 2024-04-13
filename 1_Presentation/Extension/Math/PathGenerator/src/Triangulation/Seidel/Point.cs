@@ -38,18 +38,18 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         ///     The
         /// </summary>
         public readonly float X;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public readonly float Y;
-
+        
         // Pointers to next and previous points in Monotone Mountain
         /// <summary>
         ///     The prev
         /// </summary>
         public Point Next, Prev;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Point" /> class
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             Next = null;
             Prev = null;
         }
-
+        
         /// <summary>
         ///     operator negation
         /// </summary>
@@ -70,7 +70,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         /// <param name="p2"></param>
         /// <returns></returns>
         public static Point operator -(Point p1, Point p2) => new Point(p1.X - p2.X, p1.Y - p2.Y);
-
+        
         /// <summary>
         ///     operator positive
         /// </summary>
@@ -78,7 +78,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         /// <param name="p2"></param>
         /// <returns></returns>
         public static Point operator +(Point p1, Point p2) => new Point(p1.X + p2.X, p1.Y + p2.Y);
-
+        
         /// <summary>
         ///     operator negation
         /// </summary>
@@ -86,7 +86,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         /// <param name="f"></param>
         /// <returns></returns>
         public static Point operator -(Point p1, float f) => new Point(p1.X - f, p1.Y - f);
-
+        
         /// <summary>
         ///     operator positive
         /// </summary>
@@ -94,28 +94,28 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         /// <param name="f"></param>
         /// <returns></returns>
         public static Point operator +(Point p1, float f) => new Point(p1.X + f, p1.Y + f);
-
+        
         /// <summary>
         ///     Crosses the p
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The float</returns>
         public float Cross(Point p) => X * p.Y - Y * p.X;
-
+        
         /// <summary>
         ///     Dots the p
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The float</returns>
         public float Dot(Point p) => X * p.X + Y * p.Y;
-
+        
         /// <summary>
         ///     Describes whether this instance neq
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         public bool Neq(Point p) => System.Math.Abs(p.X - X) > 0.01f || System.Math.Abs(p.Y - Y) > 0.01f;
-
+        
         /// <summary>
         ///     Orients the 2 d using the specified pb
         /// </summary>

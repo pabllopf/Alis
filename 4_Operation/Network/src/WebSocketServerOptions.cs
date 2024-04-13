@@ -45,7 +45,7 @@ namespace Alis.Core.Network
             IncludeExceptionInCloseResponse = false;
             SubProtocol = "";
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="WebSocketServerOptions" /> class
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Core.Network
             IncludeExceptionInCloseResponse = includeExceptionInCloseResponse;
             SubProtocol = subProtocol;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="WebSocketServerOptions" /> class
         /// </summary>
@@ -71,7 +71,7 @@ namespace Alis.Core.Network
             IncludeExceptionInCloseResponse = false;
             SubProtocol = subProtocol;
         }
-
+        
         /// <summary>
         ///     How often to send ping requests to the Client
         ///     The default is 60 seconds
@@ -81,14 +81,14 @@ namespace Alis.Core.Network
         ///     If you do that it is advisable to set this KeepAliveInterval to zero in the WebSocketServerFactory
         /// </summary>
         public TimeSpan KeepAliveInterval { get; }
-
+        
         /// <summary>
         ///     Include the full exception (with stack trace) in the close response
         ///     when an exception is encountered and the WebSocket connection is closed
         ///     The default is false
         /// </summary>
         public bool IncludeExceptionInCloseResponse { get; }
-
+        
         /// <summary>
         ///     Specifies the sub protocol to send back to the client in the opening handshake
         ///     Can be null (the most common use case)

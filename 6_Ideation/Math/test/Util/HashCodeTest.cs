@@ -52,7 +52,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             int value6 = 6;
             int value7 = 7;
             int value8 = 8;
-
+            
             // Act
             int result1 = HashCode.Combine(value1);
             int result2 = HashCode.Combine(value1, value2);
@@ -62,7 +62,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             int result6 = HashCode.Combine(value1, value2, value3, value4, value5, value6);
             int result7 = HashCode.Combine(value1, value2, value3, value4, value5, value6, value7);
             int result8 = HashCode.Combine(value1, value2, value3, value4, value5, value6, value7, value8);
-
+            
             // Assert
             Assert.NotEqual(result1, result2);
             Assert.NotEqual(result1, result3);
@@ -93,7 +93,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             Assert.NotEqual(result6, result8);
             Assert.NotEqual(result7, result8);
         }
-
+        
         /// <summary>
         ///     Tests that add should calculate correctly for different input
         /// </summary>
@@ -109,9 +109,9 @@ namespace Alis.Core.Aspect.Math.Test.Util
             int value6 = 6;
             int value7 = 7;
             int value8 = 8;
-
+            
             HashCode hashCode = new HashCode();
-
+            
             // Act
             hashCode.Add(value1);
             int result1 = hashCode.ToHashCode();
@@ -129,7 +129,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             int result7 = hashCode.ToHashCode();
             hashCode.Add(value8);
             int result8 = hashCode.ToHashCode();
-
+            
             // Assert
             Assert.NotEqual(result1, result2);
             Assert.NotEqual(result1, result3);

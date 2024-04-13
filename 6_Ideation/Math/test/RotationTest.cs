@@ -45,16 +45,16 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float angle = 45;
-
+            
             // Act
             Rotation rotation = new Rotation(angle);
-
+            
             // Assert
             Assert.Equal(angle, rotation.Angle);
             Assert.Equal((float) System.Math.Sin(angle), rotation.Sine);
             Assert.Equal((float) System.Math.Cos(angle), rotation.Cosine);
         }
-
+        
         /// <summary>
         ///     Tests that set should set angle and calculate sine and cosine
         /// </summary>
@@ -64,16 +64,16 @@ namespace Alis.Core.Aspect.Math.Test
             // Arrange
             Rotation rotation = new Rotation();
             float angle = 45;
-
+            
             // Act
             rotation.Set(angle);
-
+            
             // Assert
             Assert.Equal(angle, rotation.Angle);
             Assert.Equal((float) System.Math.Sin(angle), rotation.Sine);
             Assert.Equal((float) System.Math.Cos(angle), rotation.Cosine);
         }
-
+        
         /// <summary>
         ///     Tests that set identity should set to identity
         /// </summary>
@@ -82,15 +82,15 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             Rotation rotation = new Rotation(45);
-
+            
             // Act
             rotation.SetIdentity();
-
+            
             // Assert
             Assert.Equal(0, rotation.Sine);
             Assert.Equal(1, rotation.Cosine);
         }
-
+        
         /// <summary>
         ///     Tests that get angle should return angle in radians
         /// </summary>
@@ -100,14 +100,14 @@ namespace Alis.Core.Aspect.Math.Test
             // Arrange
             float angle = 45;
             Rotation rotation = new Rotation(angle);
-
+            
             // Act
             float result = rotation.GetAngle();
-
+            
             // Assert
             Assert.Equal((float) System.Math.Atan2(rotation.Sine, rotation.Cosine), result);
         }
-
+        
         /// <summary>
         ///     Tests that get x axis should return x axis
         /// </summary>
@@ -117,14 +117,14 @@ namespace Alis.Core.Aspect.Math.Test
             // Arrange
             float angle = 45;
             Rotation rotation = new Rotation(angle);
-
+            
             // Act
             Vector2 result = rotation.GetXAxis();
-
+            
             // Assert
             Assert.Equal(new Vector2(rotation.Cosine, rotation.Sine), result);
         }
-
+        
         /// <summary>
         ///     Tests that get y axis should return y axis
         /// </summary>
@@ -134,14 +134,14 @@ namespace Alis.Core.Aspect.Math.Test
             // Arrange
             float angle = 45;
             Rotation rotation = new Rotation(angle);
-
+            
             // Act
             Vector2 result = rotation.GetYAxis();
-
+            
             // Assert
             Assert.Equal(new Vector2(-rotation.Sine, rotation.Cosine), result);
         }
-
+        
         /// <summary>
         ///     Tests that set should calculate correctly when angle is zero
         /// </summary>
@@ -150,16 +150,16 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float angle = 0;
-
+            
             // Act
             Rotation rotation = new Rotation();
             rotation.Set(angle);
-
+            
             // Assert
             Assert.Equal(0, rotation.Sine);
             Assert.Equal(1, rotation.Cosine);
         }
-
+        
         /// <summary>
         ///     Tests that set should calculate correctly when angle is not zero
         /// </summary>
@@ -168,11 +168,11 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             float angle = MathF.Pi / 2; // 90 degrees
-
+            
             // Act
             Rotation rotation = new Rotation();
             rotation.Set(angle);
-
+            
             // Assert
             Assert.Equal(1, rotation.Sine, 5);
             Assert.Equal(0, rotation.Cosine, 5);

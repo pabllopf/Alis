@@ -54,16 +54,16 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
     {
         /// <summary>Not use for Type.SeparationFunction.Points</summary>
         public Vector2 LocalNormal { get; set; }
-
+        
         /// <summary>Usage depends on manifold type</summary>
         public Vector2 LocalPoint { get; set; }
-
+        
         /// <summary>The number of manifold points</summary>
         public int PointCount { get; set; }
-
+        
         /// <summary>The points of contact</summary>
         public FixedArray2<ManifoldPoint> Points;
-
+        
         /// <summary>
         ///     The type
         /// </summary>

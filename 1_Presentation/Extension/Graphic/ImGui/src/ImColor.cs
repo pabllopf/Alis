@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The value
         /// </summary>
         public Vector4 Value;
-
+        
         /// <summary>
         ///     Destroys this instance
         /// </summary>
@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImColor_destroy(ref this);
         }
-
+        
         /// <summary>
         ///     Hsv the h
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.ImColor_HSV(out ImColor pOut, h, s, v, a);
             return pOut;
         }
-
+        
         /// <summary>
         ///     Hsv the h
         /// </summary>
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.ImGui
             ImGuiNative.ImColor_HSV(out ImColor pOut, h, s, v, a);
             return pOut;
         }
-
+        
         /// <summary>
         ///     Sets the hsv using the specified h
         /// </summary>
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.ImGui
             float a = 1.0f;
             ImGuiNative.ImColor_SetHSV(ref this, h, s, v, a);
         }
-
+        
         /// <summary>
         ///     Sets the hsv using the specified h
         /// </summary>

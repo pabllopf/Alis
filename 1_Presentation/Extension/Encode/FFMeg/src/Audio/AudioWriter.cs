@@ -48,18 +48,18 @@ namespace Alis.Extension.Encode.FFMeg.Audio
         ///     The ffmpeg
         /// </summary>
         private readonly string ffmpeg;
-
+        
         /// <summary>
         ///     The csc
         /// </summary>
         private CancellationTokenSource csc;
-
+        
         /// <summary>
         ///     The ffmpegp
         /// </summary>
         internal Process ffmpegp;
-
-
+        
+        
         /// <summary>
         ///     Used for encoding audio samples into a new audio file
         /// </summary>
@@ -76,28 +76,28 @@ namespace Alis.Extension.Encode.FFMeg.Audio
             {
                 throw new InvalidDataException("Channels/Sample rate have to be bigger than 0!");
             }
-
+            
             if ((bitDepth != 16) && (bitDepth != 24) && (bitDepth != 32))
             {
                 throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
             }
-
+            
             if (string.IsNullOrEmpty(filename))
             {
                 throw new NullReferenceException("Filename can't be null or empty!");
             }
-
+            
             UseFilename = true;
             ffmpeg = ffmpegExecutable;
-
+            
             Channels = channels;
             BitDepth = bitDepth;
             SampleRate = sampleRate;
-
+            
             Filename = filename;
             EncoderOptions = encoderOptions ?? new MP3Encoder().Create();
         }
-
+        
         /// <summary>
         ///     Used for encoding audio samples into a stream
         /// </summary>
@@ -114,63 +114,63 @@ namespace Alis.Extension.Encode.FFMeg.Audio
             {
                 throw new InvalidDataException("Channels/Sample rate have to be bigger than 0!");
             }
-
+            
             if ((bitDepth != 16) && (bitDepth != 24) && (bitDepth != 32))
             {
                 throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
             }
-
+            
             UseFilename = false;
             ffmpeg = ffmpegExecutable;
-
+            
             Channels = channels;
             BitDepth = bitDepth;
             SampleRate = sampleRate;
-
+            
             DestinationStream = destinationStream ?? throw new NullReferenceException("Stream can't be null!");
             EncoderOptions = encoderOptions ?? new MP3Encoder().Create();
         }
-
+        
         /// <summary>
         ///     Gets the value of the current f fmpeg process
         /// </summary>
         public Process CurrentFFmpegProcess => ffmpegp;
-
+        
         /// <summary>
         ///     Gets the value of the channels
         /// </summary>
         public int Channels { get; }
-
+        
         /// <summary>
         ///     Gets the value of the sample rate
         /// </summary>
         public int SampleRate { get; }
-
+        
         /// <summary>
         ///     Gets the value of the bit depth
         /// </summary>
         public int BitDepth { get; }
-
+        
         /// <summary>
         ///     Gets the value of the use filename
         /// </summary>
         public bool UseFilename { get; }
-
+        
         /// <summary>
         ///     Gets the value of the encoder options
         /// </summary>
         public EncoderOptions EncoderOptions { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the destination stream
         /// </summary>
         public Stream DestinationStream { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the output data stream
         /// </summary>
         public Stream OutputDataStream { get; private set; }
-
+        
         /// <summary>
         ///     Disposes this instance
         /// </summary>
@@ -180,11 +180,11 @@ namespace Alis.Extension.Encode.FFMeg.Audio
             {
                 CloseWrite();
             }
-
+            
             DestinationStream?.Dispose();
             csc?.Dispose();
         }
-
+        
         /// <summary>
         ///     Opens the write using the specified show f fmpeg output
         /// </summary>
@@ -196,31 +196,31 @@ namespace Alis.Extension.Encode.FFMeg.Audio
             {
                 throw new InvalidOperationException("File was already opened for writing!");
             }
-
+            
             string cmd = $"-f s{BitDepth}le -channels {Channels} -sample_rate {SampleRate} -i - " +
                          $"-c:a {EncoderOptions.EncoderName} {EncoderOptions.EncoderArguments} -f {EncoderOptions.Format}";
-
+            
             if (UseFilename)
             {
                 if (File.Exists(Filename))
                 {
                     File.Delete(Filename);
                 }
-
+                
                 InputDataStream = FfMpegWrapper.OpenInput(ffmpeg, $"{cmd} \"{Filename}\"", out ffmpegp, showFFmpegOutput);
             }
             else
             {
                 csc = new CancellationTokenSource();
-
+                
                 // using stream
                 (InputDataStream, OutputDataStream) = FfMpegWrapper.Open(ffmpeg, $"{cmd} -", out ffmpegp, showFFmpegOutput);
                 _ = OutputDataStream.CopyToAsync(DestinationStream, 81920, csc.Token); // 81920 is the default buffer size
             }
-
+            
             OpenedForWriting = true;
         }
-
+        
         /// <summary>
         ///     Closes output audio file.
         /// </summary>
@@ -230,18 +230,18 @@ namespace Alis.Extension.Encode.FFMeg.Audio
             {
                 throw new InvalidOperationException("File is not opened for writing!");
             }
-
+            
             try
             {
                 InputDataStream.Dispose();
                 ffmpegp.WaitForExit();
                 csc?.Cancel();
-
+                
                 if (!UseFilename)
                 {
                     OutputDataStream?.Dispose();
                 }
-
+                
                 try
                 {
                     if (ffmpegp?.HasExited == false)

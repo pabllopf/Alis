@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         ///     The none im plot scatter flags
         /// </summary>
         None = 0,
-
+        
         /// <summary>
         ///     The no clip im plot scatter flags
         /// </summary>

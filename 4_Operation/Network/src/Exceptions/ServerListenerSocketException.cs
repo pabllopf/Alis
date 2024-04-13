@@ -44,7 +44,7 @@ namespace Alis.Core.Network.Exceptions
         public ServerListenerSocketException()
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="ServerListenerSocketException" /> class
         /// </summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Network.Exceptions
         public ServerListenerSocketException(string message) : base(message)
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="ServerListenerSocketException" /> class
         /// </summary>

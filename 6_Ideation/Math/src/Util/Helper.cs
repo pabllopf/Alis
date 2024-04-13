@@ -50,7 +50,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <returns>Cartesian coordinate of the specified point with respect to the axis being used.</returns>
         public static float Barycentric(float value1, float value2, float value3, float amount1, float amount2) =>
             value1 + (value2 - value1) * amount1 + (value3 - value1) * amount2;
-
+        
         /// <summary>Performs a Catmull-Rom interpolation using the specified positions.</summary>
         /// <param name="value1">The first position in the interpolation.</param>
         /// <param name="value2">The second position in the interpolation.</param>
@@ -69,7 +69,7 @@ namespace Alis.Core.Aspect.Math.Util
                                    (2.0 * value1 - 5.0 * value2 + 4.0 * value3 - value4) * amountSquared +
                                    (3.0 * value2 - value1 - 3.0 * value3 + value4) * amountCubed));
         }
-
+        
         /// <summary>Restricts a value to be within a specified range.</summary>
         /// <param name="value">The value to clamp.</param>
         /// <param name="min">The minimum value. If <c>value</c> is less than <c>min</c>, <c>min</c> will be returned.</param>
@@ -79,20 +79,20 @@ namespace Alis.Core.Aspect.Math.Util
         {
             // First we check to see if we're greater than the max
             value = value > max ? max : value;
-
+            
             // Then we check to see if we're less than the min.
             value = value < min ? min : value;
-
+            
             // There's no check to see if min > max.
             return value;
         }
-
+        
         /// <summary>Calculates the absolute value of the difference of two values.</summary>
         /// <param name="value1">Source value.</param>
         /// <param name="value2">Source value.</param>
         /// <returns>Distance between the two values.</returns>
         public static float Distance(float value1, float value2) => System.Math.Abs(value1 - value2);
-
+        
         /// <summary>Performs a Hermite spline interpolation.</summary>
         /// <param name="value1">Source position.</param>
         /// <param name="tangent1">Source tangent.</param>
@@ -107,18 +107,18 @@ namespace Alis.Core.Aspect.Math.Util
             double v1 = value1, v2 = value2, t1 = tangent1, t2 = tangent2, s = amount;
             double sCubed = s * s * s;
             double sSquared = s * s;
-
+            
             double result = amount switch
             {
                 0f => value1,
                 1f => value2,
                 _ => (2 * v1 - 2 * v2 + t2 + t1) * sCubed + (3 * v2 - 3 * v1 - 2 * t1 - t2) * sSquared + t1 * s + v1
             };
-
+            
             return (float) result;
         }
-
-
+        
+        
         /// <summary>
         ///     Lerp the value 1
         /// </summary>
@@ -127,19 +127,19 @@ namespace Alis.Core.Aspect.Math.Util
         /// <param name="amount">The amount</param>
         /// <returns>The float</returns>
         public static float Lerp(float value1, float value2, float amount) => value1 + (value2 - value1) * amount;
-
+        
         /// <summary>Returns the greater of two values.</summary>
         /// <param name="value1">Source value.</param>
         /// <param name="value2">Source value.</param>
         /// <returns>The greater value.</returns>
         public static float Max(float value1, float value2) => value1 > value2 ? value1 : value2;
-
+        
         /// <summary>Returns the lesser of two values.</summary>
         /// <param name="value1">Source value.</param>
         /// <param name="value2">Source value.</param>
         /// <returns>The lesser value.</returns>
         public static float Min(float value1, float value2) => value1 < value2 ? value1 : value2;
-
+        
         /// <summary>Interpolates between two values using a cubic equation.</summary>
         /// <param name="value1">Source value.</param>
         /// <param name="value2">Source value.</param>
@@ -152,22 +152,22 @@ namespace Alis.Core.Aspect.Math.Util
             // If amount > 1, return value2
             float result = Clamp(amount, 0f, 1f);
             result = Hermite(value1, 0f, value2, 0f, result);
-
+            
             return result;
         }
-
+        
         /// <summary>Converts radians to degrees.</summary>
         /// <param name="radians">The angle in radians.</param>
         /// <returns>The angle in degrees.</returns>
         /// <remarks>This method uses double precission internally, though it returns single float Factor = 180 / pi</remarks>
         public static float ToDegrees(float radians) => (float) (radians * 57.295779513082320876798154814105);
-
+        
         /// <summary>Converts degrees to radians.</summary>
         /// <param name="degrees">The angle in degrees.</param>
         /// <returns>The angle in radians.</returns>
         /// <remarks>This method uses double precission internally, though it returns single float Factor = pi / 180</remarks>
         public static float ToRadians(float degrees) => (float) (degrees * 0.017453292519943295769236907684886);
-
+        
         /// <summary>Reduces a given angle to a value between π and -π.</summary>
         /// <param name="angle">The angle to reduce, in radians.</param>
         /// <returns>The new angle, in radians.</returns>
@@ -177,21 +177,21 @@ namespace Alis.Core.Aspect.Math.Util
             {
                 return angle;
             }
-
+            
             angle %= Constant.TwoPi;
             if (angle <= -Constant.Pi)
             {
                 return angle + Constant.TwoPi;
             }
-
+            
             if (angle > Constant.Pi)
             {
                 return angle - Constant.TwoPi;
             }
-
+            
             return angle;
         }
-
+        
         /// <summary>Determines if value is powered by two.</summary>
         /// <param name="value">A value.</param>
         /// <returns><c>true</c> if <c>value</c> is powered by two; otherwise <c>false</c>.</returns>

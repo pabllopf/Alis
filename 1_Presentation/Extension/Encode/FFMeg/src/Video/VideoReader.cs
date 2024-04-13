@@ -50,17 +50,17 @@ namespace Alis.Extension.Encode.FFMeg.Video
         ///     The compiled
         /// </summary>
         private static readonly Regex bitRateSimpleRgx = new Regex(@"\D(\d+?)[bl]e", RegexOptions.Compiled, TimeSpan.FromSeconds(10));
-
+        
         /// <summary>
         ///     The ffprobe
         /// </summary>
         private readonly string ffmpeg;
-
+        
         /// <summary>
         ///     The ffprobe
         /// </summary>
         private readonly string ffprobe;
-
+        
         /// <summary>
         ///     Used for reading metadata and frames from video files.
         /// </summary>
@@ -73,27 +73,27 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new FileNotFoundException($"File '{filename}' not found!");
             }
-
+            
             Filename = filename;
             ffmpeg = ffmpegExecutable;
             ffprobe = ffprobeExecutable;
         }
-
+        
         /// <summary>
         ///     Current frame position within the loaded video file
         /// </summary>
         public long CurrentFrameOffset { get; private set; }
-
+        
         /// <summary>
         ///     True if metadata loaded successfully
         /// </summary>
         public bool LoadedMetadata { get; private set; }
-
+        
         /// <summary>
         ///     Video metadata
         /// </summary>
         public VideoMetadata Metadata { get; private set; }
-
+        
         /// <summary>
         ///     Diposes the DataStream
         /// </summary>
@@ -101,12 +101,12 @@ namespace Alis.Extension.Encode.FFMeg.Video
         {
             DataStream?.Dispose();
         }
-
+        
         /// <summary>
         ///     Load video metadata into memory.
         /// </summary>
         public void LoadMetadata(bool ignoreStreamErrors = false) => LoadMetadataAsync(ignoreStreamErrors).Wait();
-
+        
         /// <summary>
         ///     Load video metadata into memory.
         /// </summary>
@@ -116,14 +116,14 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidOperationException("Video metadata is already loaded!");
             }
-
+            
             StreamReader r = new StreamReader(FfMpegWrapper.OpenOutput(ffprobe, $"-i \"{Filename}\" -v quiet -print_format json=c=1 -show_format -show_streams"));
-
+            
             try
             {
                 string metadataJson = await r.ReadToEndAsync();
                 VideoMetadata metadata = JsonSerializer.Deserialize<VideoMetadata>(metadataJson);
-
+                
                 try
                 {
                     MediaStream videoStream = metadata.Streams.Where(x => x.CodecType.ToLower().Trim() == "video").FirstOrDefault();
@@ -134,16 +134,16 @@ namespace Alis.Extension.Encode.FFMeg.Video
                         metadata.PixelFormat = videoStream.PixFmt;
                         metadata.Codec = videoStream.CodecName;
                         metadata.CodecLongName = videoStream.CodecLongName;
-
+                        
                         metadata.BitRate = videoStream.BitRate == null ? -1 : int.Parse(videoStream.BitRate);
-
+                        
                         metadata.BitDepth = videoStream.BitsPerRawSample == null ? TryParseBitDepth(videoStream.PixFmt) : int.Parse(videoStream.BitsPerRawSample);
-
+                        
                         metadata.Duration = videoStream.Duration == null ? double.Parse(metadata.Format.Duration ?? "0", CultureInfo.InvariantCulture) : double.Parse(videoStream.Duration, CultureInfo.InvariantCulture);
-
+                        
                         metadata.SampleAspectRatio = videoStream.SampleAspectRatio;
                         metadata.AvgFramerate = videoStream.AvgFrameRateNumber;
-
+                        
                         metadata.PredictedFrameCount = (int) (metadata.AvgFramerate * metadata.Duration);
                     }
                 }
@@ -155,7 +155,7 @@ namespace Alis.Extension.Encode.FFMeg.Video
                         throw new InvalidDataException("Failed to parse video stream data! " + ex.Message);
                     }
                 }
-
+                
                 LoadedMetadata = true;
                 Metadata = metadata;
             }
@@ -164,12 +164,12 @@ namespace Alis.Extension.Encode.FFMeg.Video
                 throw new InvalidOperationException("Failed to interpret ffprobe video metadata output! " + ex.Message);
             }
         }
-
+        
         /// <summary>
         ///     Load the video and prepare it for reading frames.
         /// </summary>
         public void Load() => Load(0);
-
+        
         /// <summary>
         ///     Load the video for reading frames and seeks to given offset in seconds.
         /// </summary>
@@ -180,25 +180,25 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidOperationException("Video is already loaded!");
             }
-
+            
             if (!LoadedMetadata)
             {
                 throw new InvalidOperationException("Please load the video metadata first!");
             }
-
+            
             if (Metadata.Width == 0 || Metadata.Height == 0)
             {
                 throw new InvalidDataException("Loaded metadata contains errors!");
             }
-
+            
             // we will be reading video in RGB24 format
             DataStream = FfMpegWrapper.OpenOutput(ffmpeg,
                 $"{(offsetSeconds <= 0 ? "" : $"-ss {offsetSeconds.ToString("0.00", CultureInfo.InvariantCulture)}")} -i \"{Filename}\"" +
                 " -pix_fmt rgb24 -f rawvideo -");
-
+            
             OpenedForReading = true;
         }
-
+        
         /// <summary>
         ///     Loads the next video frame into memory and returns it. This allocates a new frame.
         ///     Returns 'null' when there is no next frame.
@@ -208,7 +208,7 @@ namespace Alis.Extension.Encode.FFMeg.Video
             VideoFrame frame = new VideoFrame(Metadata.Width, Metadata.Height);
             return NextFrame(frame);
         }
-
+        
         /// <summary>
         ///     Loads the next video frame into memory and returns it. This overrides the given frame with no extra allocations.
         ///     Recommended for performance.
@@ -221,16 +221,16 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidOperationException("Please load the video first!");
             }
-
+            
             bool success = frame.Load(DataStream);
             if (success)
             {
                 CurrentFrameOffset++;
             }
-
+            
             return success ? frame : null;
         }
-
+        
         /// <summary>
         ///     Tries the parse bit depth using the specified pix fmt
         /// </summary>
@@ -243,7 +243,7 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 return int.Parse(match.Groups[1].Value);
             }
-
+            
             return -1;
         }
     }

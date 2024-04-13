@@ -47,22 +47,22 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     The density
         /// </summary>
         internal float DensityPrivate;
-
+        
         /// <summary>
         ///     The mass data
         /// </summary>
         internal MassData MassDataPrivate;
-
+        
         /// <summary>
         ///     The radius
         /// </summary>
         internal float RadiusPrivate;
-
+        
         /// <summary>
         ///     The shape type
         /// </summary>
         internal ShapeType ShapeTypePrivate;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Shape" /> class
         /// </summary>
@@ -73,20 +73,20 @@ namespace Alis.Core.Physic.Collision.Shapes
         {
             Debug.Assert(radius >= 0);
             Debug.Assert(density >= 0);
-
+            
             ShapeTypePrivate = type;
             RadiusPrivate = radius;
             DensityPrivate = density;
             MassDataPrivate = new MassData();
         }
-
+        
         /// <summary>Get the type of this shape.</summary>
         /// <value>The type of the shape.</value>
         public ShapeType ShapeType => ShapeTypePrivate;
-
+        
         /// <summary>Get the number of child primitives.</summary>
         public abstract int ChildCount { get; }
-
+        
         /// <summary>Radius of the Shape Changing the radius causes a recalculation of shape properties.</summary>
         public float Radius
         {
@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             set
             {
                 Debug.Assert(value >= 0);
-
+                
                 if (Math.Abs(RadiusPrivate - value) > 0.01F)
                 {
                     RadiusPrivate = value;
@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 }
             }
         }
-
+        
         //Velcro: Moved density to the base shape. Simplifies a lot of code everywhere else
         /// <summary>Gets or sets the density. Changing the density causes a recalculation of shape properties.</summary>
         /// <value>The density.</value>
@@ -112,7 +112,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             set
             {
                 Debug.Assert(value >= 0);
-
+                
                 if (Math.Abs(DensityPrivate - value) > 0.01F)
                 {
                     DensityPrivate = value;
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 }
             }
         }
-
+        
         /// <summary>
         ///     Contains the properties of the shape such as:
         ///     - Area of the shape
@@ -132,17 +132,17 @@ namespace Alis.Core.Physic.Collision.Shapes
         {
             massData = MassDataPrivate;
         }
-
+        
         /// <summary>Clone the concrete shape</summary>
         /// <returns>A clone of the shape</returns>
         public abstract Shape Clone();
-
+        
         /// <summary>Test a point for containment in this shape. Note: This only works for convex shapes.</summary>
         /// <param name="transform">The shape world transform.</param>
         /// <param name="point">A point in world coordinates.</param>
         /// <returns>True if the point is inside the shape</returns>
         public abstract bool TestPoint(ref Transform transform, ref Vector2 point);
-
+        
         /// <summary>Cast a ray against a child shape.</summary>
         /// <param name="input">The ray-cast input parameters.</param>
         /// <param name="transform">The transform to be applied to the shape.</param>
@@ -151,13 +151,13 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <returns>True if the ray-cast hits the shape</returns>
         public abstract bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
             out RayCastOutput output);
-
+        
         /// <summary>Given a transform, compute the associated axis aligned bounding box for a child shape.</summary>
         /// <param name="transform">The world transform of the shape.</param>
         /// <param name="childIndex">The child shape index.</param>
         /// <param name="aabb">The AABB results.</param>
         public abstract void ComputeAabb(ref Transform transform, int childIndex, out Aabb aabb);
-
+        
         /// <summary>
         ///     Compute the mass properties of this shape using its dimensions and density. The inertia tensor is computed
         ///     about the local origin, not the centroid.

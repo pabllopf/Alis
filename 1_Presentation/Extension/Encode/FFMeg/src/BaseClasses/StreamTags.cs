@@ -41,13 +41,13 @@ namespace Alis.Extension.Encode.FFMeg.BaseClasses
         /// </summary>
         [JsonPropertyName("creation_time")]
         public string CreationTime { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the language
         /// </summary>
         [JsonPropertyName("language")]
         public string Language { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the handler name
         /// </summary>

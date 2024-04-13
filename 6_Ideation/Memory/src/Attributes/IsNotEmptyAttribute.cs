@@ -51,7 +51,7 @@ namespace Alis.Core.Aspect.Memory.Attributes
                 case string str when string.IsNullOrEmpty(str):
                     throw new NotEmptyException($"{name} can't be null or empty");
             }
-
+            
             switch (value)
             {
                 case IDictionary {Count: 0}:
@@ -62,7 +62,7 @@ namespace Alis.Core.Aspect.Memory.Attributes
                     {
                         return;
                     }
-
+                    
                     throw new NotEmptyException($"{name} can't be null or empty");
                 }
             }

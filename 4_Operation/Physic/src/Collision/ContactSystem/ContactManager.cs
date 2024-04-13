@@ -49,17 +49,17 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     The contact list
         /// </summary>
         private readonly List<Contact> contactList = new List<Contact>();
-
+        
         /// <summary>
         ///     The contact
         /// </summary>
         public readonly Queue<Contact> ContactPool = new Queue<Contact>(256);
-
+        
         /// <summary>
         ///     The contact count
         /// </summary>
         private int contactCounter;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="ContactManager" /> class
         /// </summary>
@@ -70,45 +70,45 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             OnBroadPhaseCollision = AddPair;
             Current = this;
         }
-
+        
         /// <summary>Fires when the broadphase detects that two Fixtures are close to each other.</summary>
         public BroadPhaseHandler OnBroadPhaseCollision { get; }
-
+        
         /// <summary>Fires when a contact is created</summary>
         public BeginContactHandler BeginContact { get; }
-
+        
         /// <summary>The filter used by the contact manager.</summary>
         public CollisionFilterHandler ContactFilter { get; }
-
+        
         /// <summary>Fires when a contact is deleted</summary>
         public EndContactHandler EndContact { get; }
-
+        
         /// <summary>
         ///     The last min alpha
         /// </summary>
         public float LastMinAlpha { get; private set; }
-
+        
         /// <summary>Fires after the solver has run</summary>
         public PostSolveHandler PostSolve { get; set; }
-
+        
         /// <summary>Fires before the solver runs</summary>
         public PreSolveHandler PreSolve { get; }
-
+        
         /// <summary>
         ///     The dynamic tree broad phase
         /// </summary>
         public static ContactManager Current { get; private set; }
-
+        
         /// <summary>
         ///     Gets the value of the broad phase
         /// </summary>
         public IBroadPhase BroadPhase { get; }
-
+        
         /// <summary>
         ///     Gets the value of the contact count
         /// </summary>
         public int ContactCount => contactCounter;
-
+        
         /// <summary>
         ///     Adds the pair using the specified proxy a
         /// </summary>
@@ -118,58 +118,58 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         {
             Fixture fixtureA = proxyA.Fixture;
             Fixture fixtureB = proxyB.Fixture;
-
+            
             if (fixtureA == null || fixtureB == null)
             {
                 return;
             }
-
+            
             Body bodyA = fixtureA.Body;
             Body bodyB = fixtureB.Body;
-
+            
             // Are the fixtures on the same body?
             if (bodyA == bodyB)
             {
                 return;
             }
-
+            
             if (CheckExistingContact(bodyA, bodyB, fixtureA, fixtureB, proxyA.ChildIndex, proxyB.ChildIndex))
             {
                 return;
             }
-
+            
             // Does a joint override collision? Is at least one body dynamic?
             if (!bodyB.ShouldCollide(bodyA))
             {
                 return;
             }
-
+            
             //Check default filter
             if (!ShouldCollide(fixtureA, fixtureB))
             {
                 return;
             }
-
+            
             // Check user filtering.
             if ((ContactFilter != null) && !ContactFilter(fixtureA, fixtureB))
             {
                 return;
             }
-
+            
             //Velcro: BeforeCollision delegate
             if ((fixtureA.BeforeCollision != null) && !fixtureA.BeforeCollision(fixtureA, fixtureB))
             {
                 return;
             }
-
+            
             if ((fixtureB.BeforeCollision != null) && !fixtureB.BeforeCollision(fixtureB, fixtureA))
             {
                 return;
             }
-
+            
             CreateContact(fixtureA, proxyA.ChildIndex, fixtureB, proxyB.ChildIndex);
         }
-
+        
         /// <summary>
         ///     Describes whether this instance check existing contact
         /// </summary>
@@ -191,26 +191,26 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                     Fixture fB = edge.Contact.FixtureB;
                     int iA = edge.Contact.ChildIndexA;
                     int iB = edge.Contact.ChildIndexB;
-
+                    
                     if ((fA == fixtureA) && (fB == fixtureB) && (iA == indexA) && (iB == indexB))
                     {
                         // A contact already exists.
                         return true;
                     }
-
+                    
                     if ((fA == fixtureB) && (fB == fixtureA) && (iA == indexB) && (iB == indexA))
                     {
                         // A contact already exists.
                         return true;
                     }
                 }
-
+                
                 edge = edge.Next;
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Creates the contact using the specified fixture a
         /// </summary>
@@ -226,41 +226,41 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             {
                 return;
             }
-
+            
             fixtureA = c.FixtureA;
             fixtureB = c.FixtureB;
             Body bodyA = fixtureA.Body;
             Body bodyB = fixtureB.Body;
-
+            
             contactList.Add(c);
-
+            
             c.NodeA.Contact = c;
             c.NodeA.Other = bodyB;
-
+            
             c.NodeA.Prev = null;
             c.NodeA.Next = bodyA.ContactList;
             if (bodyA.ContactList != null)
             {
                 bodyA.ContactList.Prev = c.NodeA;
             }
-
+            
             bodyA.ContactList = c.NodeA;
-
+            
             // Connect to body B
             c.NodeB.Contact = c;
             c.NodeB.Other = bodyA;
-
+            
             c.NodeB.Prev = null;
             c.NodeB.Next = bodyB.ContactList;
             if (bodyB.ContactList != null)
             {
                 bodyB.ContactList.Prev = c.NodeB;
             }
-
+            
             bodyB.ContactList = c.NodeB;
             ++contactCounter;
         }
-
+        
         /// <summary>
         ///     Finds the new contacts
         /// </summary>
@@ -268,7 +268,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         {
             BroadPhase.UpdatePairs(OnBroadPhaseCollision);
         }
-
+        
         /// <summary>
         ///     Removes the c
         /// </summary>
@@ -279,81 +279,81 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             {
                 return;
             }
-
+            
             Fixture fixtureA = c.FixtureA;
             Fixture fixtureB = c.FixtureB;
-
+            
             //Velcro: When contacts are removed, we invoke OnSeparation
             if (c.IsTouching)
             {
                 //Report the separation to both participants:
                 fixtureA.OnSeparation?.Invoke(fixtureA, fixtureB, c);
-
+                
                 //Reverse the order of the reported fixtures. The first fixture is always the one that the user subscribed to.
                 fixtureB.OnSeparation?.Invoke(fixtureB, fixtureA, c);
-
+                
                 //The generic handler
                 EndContact?.Invoke(c);
             }
-
+            
             Body bodyA = fixtureA.Body;
             Body bodyB = fixtureB.Body;
-
+            
             // Remove from the world.
             /*
             if (c.Previous != null)
             {
                 c.Previous.Next = c.Next;
             }
-
+            
             if (c.Next != null)
             {
                 c.Next.Previous = c.Previous;
             }
-
+            
             if (c == ContactList)
             {
                 ContactList = c.Next;
             }*/
             contactList.Remove(c);
-
+            
             // Remove from body 1
             if (c.NodeA.Prev != null)
             {
                 c.NodeA.Prev.Next = c.NodeA.Next;
             }
-
+            
             if (c.NodeA.Next != null)
             {
                 c.NodeA.Next.Prev = c.NodeA.Prev;
             }
-
+            
             if (c.NodeA == bodyA.ContactList)
             {
                 bodyA.ContactList = c.NodeA.Next;
             }
-
+            
             // Remove from body 2
             if (c.NodeB.Prev != null)
             {
                 c.NodeB.Prev.Next = c.NodeB.Next;
             }
-
+            
             if (c.NodeB.Next != null)
             {
                 c.NodeB.Next.Prev = c.NodeB.Prev;
             }
-
+            
             if (c.NodeB == bodyB.ContactList)
             {
                 bodyB.ContactList = c.NodeB.Next;
             }
-
+            
             // Call the factory.
             c.Destroy();
             --contactCounter;
         }
-
+        
         /// <summary>
         ///     Collides this instance
         /// </summary>
@@ -362,23 +362,23 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             for (int i = 0; i < contactList.Count; i++)
             {
                 Contact c = contactList[i];
-
+                
                 if (!ShouldProcessContact(c))
                 {
                     continue;
                 }
-
+                
                 if (!ShouldPersistContact(c))
                 {
                     Remove(c);
                     continue;
                 }
-
+                
                 // The contact persists.
                 c.Update(this);
             }
         }
-
+        
         /// <summary>
         ///     Describes whether this instance should process contact
         /// </summary>
@@ -390,20 +390,20 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             Fixture fixtureB = c.FixtureB;
             Body bodyA = fixtureA.Body;
             Body bodyB = fixtureB.Body;
-
+            
             // Do not try to collide disabled bodies
             if (!bodyA.Enabled || !bodyB.Enabled)
             {
                 return false;
             }
-
+            
             bool activeA = bodyA.Awake && (bodyA.BodyType != BodyType.Static);
             bool activeB = bodyB.Awake && (bodyB.BodyType != BodyType.Static);
-
+            
             // At least one body must be awake and it must be dynamic or kinematic.
             return activeA || activeB;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance should persist contact
         /// </summary>
@@ -419,19 +419,19 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 {
                     return false;
                 }
-
+                
                 // Clear the filtering flag.
                 c.Flags &= ~ContactSetting.FilterFlag;
             }
-
+            
             int proxyIdA = c.FixtureA.Proxies[c.ChildIndexA].ProxyId;
             int proxyIdB = c.FixtureB.Proxies[c.ChildIndexB].ProxyId;
             bool overlap = BroadPhase.TestOverlap(proxyIdA, proxyIdB);
-
+            
             // Here we destroy contacts that cease to overlap in the broad-phase.
             return overlap;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance should bodies collide
         /// </summary>
@@ -443,27 +443,27 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             Fixture fixtureB = c.FixtureB;
             Body bodyA = fixtureA.Body;
             Body bodyB = fixtureB.Body;
-
+            
             if (!bodyB.ShouldCollide(bodyA))
             {
                 return false;
             }
-
+            
             // Check default filtering
             if (!ShouldCollide(fixtureA, fixtureB))
             {
                 return false;
             }
-
+            
             // Check user filtering.
             if ((ContactFilter != null) && !ContactFilter(fixtureA, fixtureB))
             {
                 return false;
             }
-
+            
             return true;
         }
-
+        
         /// <summary>
         ///     Gets the the min contact using the specified min alpha
         /// </summary>
@@ -477,37 +477,37 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 {
                     continue;
                 }
-
+                
                 AdjustSweeps(c);
-
+                
                 ToiOutput output = ComputeTimeOfImpact(c);
-
+                
                 UpdateContactToi(c, output);
-
+                
                 if (c.Toi < minAlpha)
                 {
                     LastMinAlpha = c.Toi;
                     return c;
                 }
             }
-
+            
             return null;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is valid cached toi
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
         private bool IsValidCachedToi(Contact c) => c.ToiFlag;
-
+        
         /// <summary>
         ///     Describes whether this instance is sensor contact
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
         private bool IsSensorContact(Contact c) => c.FixtureA.IsSensorPrivate || c.FixtureB.IsSensorPrivate;
-
+        
         /// <summary>
         ///     Describes whether this instance is active contact
         /// </summary>
@@ -517,13 +517,13 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         {
             Body bodyA = c.FixtureA.Body;
             Body bodyB = c.FixtureB.Body;
-
+            
             bool activeA = bodyA.Awake && (bodyA.BodyType != BodyType.Static);
             bool activeB = bodyB.Awake && (bodyB.BodyType != BodyType.Static);
-
+            
             return activeA || activeB;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is collidable contact
         /// </summary>
@@ -533,15 +533,15 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         {
             Body bodyA = c.FixtureA.Body;
             Body bodyB = c.FixtureB.Body;
-
+            
             bool collideA = (bodyA.IsBullet || bodyA.BodyType != BodyType.Dynamic) &&
                             ((c.FixtureA.IgnoreCcdWith & c.FixtureB.CollisionCategories) == 0) && !bodyA.IgnoreCcd;
             bool collideB = (bodyB.IsBullet || bodyB.BodyType != BodyType.Dynamic) &&
                             ((c.FixtureB.IgnoreCcdWith & c.FixtureA.CollisionCategories) == 0) && !bodyB.IgnoreCcd;
-
+            
             return collideA || collideB;
         }
-
+        
         /// <summary>
         ///     Adjusts the sweeps using the specified c
         /// </summary>
@@ -550,9 +550,9 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         {
             Body bodyA = c.FixtureA.Body;
             Body bodyB = c.FixtureB.Body;
-
+            
             float alpha0 = bodyA.Sweep.Alpha0;
-
+            
             if (bodyA.Sweep.Alpha0 < bodyB.Sweep.Alpha0)
             {
                 alpha0 = bodyB.Sweep.Alpha0;
@@ -564,7 +564,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 bodyB.Sweep.Advance(alpha0);
             }
         }
-
+        
         /// <summary>
         ///     Computes the time of impact using the specified c
         /// </summary>
@@ -580,12 +580,12 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 SweepB = c.FixtureB.Body.Sweep,
                 Max = 1.0f
             };
-
+            
             TimeOfImpact.CalculateTimeOfImpact(ref input, out ToiOutput output);
-
+            
             return output;
         }
-
+        
         /// <summary>
         ///     Updates the contact toi using the specified c
         /// </summary>
@@ -595,11 +595,11 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         {
             float beta = output.Property;
             float alpha = output.State == ToiOutputState.Touching ? Math.Min(c.FixtureA.Body.Sweep.Alpha0 + (1.0f - c.FixtureA.Body.Sweep.Alpha0) * beta, 1.0f) : 1.0f;
-
+            
             c.Toi = alpha;
             c.Flags &= ~ContactSetting.ToiFlag;
         }
-
+        
         /// <summary>
         ///     Describes whether should collide
         /// </summary>
@@ -613,23 +613,23 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             {
                 return fixtureA.CollisionGroup > 0;
             }
-
+            
             bool collide = ((fixtureA.CollidesWith & fixtureB.CollisionCategories) != 0) &&
                            ((fixtureA.CollisionCategories & fixtureB.CollidesWith) != 0);
-
+            
             return collide;
         }
-
+        
         /// <summary>
         ///     Clears the flags
         /// </summary>
         internal void ClearFlags() => contactList.ForEach(c => c.ClearFlags());
-
+        
         /// <summary>
         ///     Invalidates the toi
         /// </summary>
         public void InvalidateToi() => contactList.ForEach(i => i.InvalidateToi());
-
+        
         /// <summary>
         ///     Calculates the min alpha
         /// </summary>

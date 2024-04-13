@@ -34,23 +34,23 @@ using Alis.Core.Physic.Shared;
 
 namespace Alis.Core.Physic.Test.Samples
 {
-   /// <summary>
-   /// The my breakable body class
-   /// </summary>
-   /// <seealso cref="BreakableBody"/>
-   public class MyBreakableBody : BreakableBody
-{
     /// <summary>
-    /// Initializes a new instance of the <see cref="MyBreakableBody"/> class
+    ///     The my breakable body class
     /// </summary>
-    /// <param name="world">The world</param>
-    /// <param name="parts">The parts</param>
-    /// <param name="density">The density</param>
-    /// <param name="position">The position</param>
-    /// <param name="rotation">The rotation</param>
-    public MyBreakableBody(World world, ICollection<Vertices> parts, float density, Vector2 position, float rotation)
-        : base(world, parts, density, position, rotation)
+    /// <seealso cref="BreakableBody" />
+    public class MyBreakableBody : BreakableBody
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="MyBreakableBody" /> class
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <param name="parts">The parts</param>
+        /// <param name="density">The density</param>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
+        public MyBreakableBody(World world, ICollection<Vertices> parts, float density, Vector2 position, float rotation)
+            : base(world, parts, density, position, rotation)
+        {
+        }
     }
-}
 }

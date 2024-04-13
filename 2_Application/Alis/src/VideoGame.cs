@@ -64,13 +64,13 @@ namespace Alis
                 new NetworkManager(),
                 new ProfileManager()
             });
-
+            
             Logger.Trace();
-
+            
             Instance = this;
         }
-
-
+        
+        
         /// <summary>
         ///     Gets or sets the value of the instance
         /// </summary>
@@ -80,22 +80,22 @@ namespace Alis
         ///     Gets or sets the value of the audio manager
         /// </summary>
         public AudioManager AudioManager => Get<AudioManager>();
-
+        
         /// <summary>
         ///     Gets or sets the value of the graphic manager
         /// </summary>
         public GraphicManager GraphicManager => Get<GraphicManager>();
-
+        
         /// <summary>
         ///     Gets or sets the value of the input manager
         /// </summary>
         public InputManager InputManager => Get<InputManager>();
-
+        
         /// <summary>
         ///     Gets or sets the value of the network manager
         /// </summary>
         public NetworkManager NetworkManager => Get<NetworkManager>();
-
+        
         /// <summary>
         ///     Gets or sets the value of the physic manager
         /// </summary>
@@ -105,7 +105,7 @@ namespace Alis
         ///     Gets or sets the value of the profile manager
         /// </summary>
         public ProfileManager ProfileManager => Get<ProfileManager>();
-
+        
         /// <summary>
         ///     Gets or sets the value of the scene manager
         /// </summary>
@@ -115,13 +115,13 @@ namespace Alis
         ///     Gets or sets the value of the setting
         /// </summary>
         public Settings Settings { get; set; } = new Settings();
-
+        
         /// <summary>
         ///     Builders
         /// </summary>
         /// <returns>The video game builder</returns>
         public static VideoGameBuilder Builder() => new VideoGameBuilder();
-
+        
         /// <summary>
         ///     Exits this instance
         /// </summary>

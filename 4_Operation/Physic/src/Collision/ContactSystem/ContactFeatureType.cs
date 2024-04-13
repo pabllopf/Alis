@@ -38,7 +38,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     The vertex contact feature type
         /// </summary>
         Vertex = 0,
-
+        
         /// <summary>
         ///     The face contact feature type
         /// </summary>

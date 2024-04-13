@@ -42,177 +42,177 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The type
         /// </summary>
         public readonly EventType type;
-
+        
         /// <summary>
         ///     The timestamp
         /// </summary>
         public readonly uint timestamp;
-
+        
         /// <summary>
         ///     The window id
         /// </summary>
         public readonly uint windowID;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         private readonly byte byte0;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         private readonly byte byte1;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         private readonly byte byte2;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         private readonly byte byte3;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         private readonly byte byte4;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         private readonly byte byte5;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         private readonly byte byte6;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         private readonly byte byte7;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         private readonly byte byte8;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         private readonly byte byte9;
-
+        
         /// <summary>
         ///     The byte 10
         /// </summary>
         private readonly byte byte10;
-
+        
         /// <summary>
         ///     The byte 11
         /// </summary>
         private readonly byte byte11;
-
+        
         /// <summary>
         ///     The byte 12
         /// </summary>
         private readonly byte byte12;
-
+        
         /// <summary>
         ///     The byte 13
         /// </summary>
         private readonly byte byte13;
-
+        
         /// <summary>
         ///     The byte 14
         /// </summary>
         private readonly byte byte14;
-
+        
         /// <summary>
         ///     The byte 15
         /// </summary>
         private readonly byte byte15;
-
+        
         /// <summary>
         ///     The byte 16
         /// </summary>
         private readonly byte byte16;
-
+        
         /// <summary>
         ///     The byte 17
         /// </summary>
         private readonly byte byte17;
-
+        
         /// <summary>
         ///     The byte 18
         /// </summary>
         private readonly byte byte18;
-
+        
         /// <summary>
         ///     The byte 19
         /// </summary>
         private readonly byte byte19;
-
+        
         /// <summary>
         ///     The byte 20
         /// </summary>
         private readonly byte byte20;
-
+        
         /// <summary>
         ///     The byte 21
         /// </summary>
         private readonly byte byte21;
-
+        
         /// <summary>
         ///     The byte 22
         /// </summary>
         private readonly byte byte22;
-
+        
         /// <summary>
         ///     The byte 23
         /// </summary>
         private readonly byte byte23;
-
+        
         /// <summary>
         ///     The byte 24
         /// </summary>
         private readonly byte byte24;
-
+        
         /// <summary>
         ///     The byte 25
         /// </summary>
         private readonly byte byte25;
-
+        
         /// <summary>
         ///     The byte 26
         /// </summary>
         private readonly byte byte26;
-
+        
         /// <summary>
         ///     The byte 27
         /// </summary>
         private readonly byte byte27;
-
+        
         /// <summary>
         ///     The byte 28
         /// </summary>
         private readonly byte byte28;
-
+        
         /// <summary>
         ///     The byte 29
         /// </summary>
         private readonly byte byte29;
-
+        
         /// <summary>
         ///     The byte 30
         /// </summary>
         private readonly byte byte30;
-
+        
         /// <summary>
         ///     The byte 31
         /// </summary>
         private readonly byte byte31;
-
+        
         /// <summary>
         ///     Gets or sets the value of the text
         /// </summary>
@@ -255,7 +255,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
                     byte30,
                     byte31
                 };
-
+                
                 return textBytes;
             }
         }

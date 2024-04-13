@@ -40,40 +40,40 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         ///     The
         /// </summary>
         public readonly float B;
-
+        
         //  Mountain points
         /// <summary>
         ///     The points
         /// </summary>
         public readonly HashSet<Point> MPoints;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public readonly Point P;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public readonly Point Q;
-
+        
         // Slope of the line (m)
         /// <summary>
         ///     The slope
         /// </summary>
         public readonly float Slope;
-
+        
         // Pointers used for building trapezoidal map
         /// <summary>
         ///     The above
         /// </summary>
         public Trapezoid Above;
-
+        
         /// <summary>
         ///     The below
         /// </summary>
         public Trapezoid Below;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Edge" /> class
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         {
             P = p;
             Q = q;
-
+            
             if (q.X - p.X != 0)
             {
                 Slope = (q.Y - p.Y) / (q.X - p.X);
@@ -92,7 +92,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             {
                 Slope = 0;
             }
-
+            
             B = p.Y - p.X * Slope;
             Above = null;
             Below = null;
@@ -102,21 +102,21 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 q
             };
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is above
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
         public bool IsAbove(Point point) => P.Orient2D(Q, point) < 0;
-
+        
         /// <summary>
         ///     Describes whether this instance is below
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
         public bool IsBelow(Point point) => P.Orient2D(Q, point) > 0;
-
+        
         /// <summary>
         ///     Adds the point using the specified point
         /// </summary>
@@ -130,7 +130,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                     return;
                 }
             }
-
+            
             MPoints.Add(point);
         }
     }

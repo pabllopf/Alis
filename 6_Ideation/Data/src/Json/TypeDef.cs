@@ -651,7 +651,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        /// Describes whether should skip due to json attribute
+        ///     Describes whether should skip due to json attribute
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="info">The info</param>
@@ -672,28 +672,22 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        /// Describes whether should skip due to xml ignore attribute
+        ///     Describes whether should skip due to xml ignore attribute
         /// </summary>
         /// <param name="info">The info</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool ShouldSkipDueToXmlIgnoreAttribute(FieldInfo info, JsonOptions options)
-        {
-            return options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore) &&
-                   info.IsDefined(typeof(XmlIgnoreAttribute), true);
-        }
+        private static bool ShouldSkipDueToXmlIgnoreAttribute(FieldInfo info, JsonOptions options) => options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore) &&
+                                                                                                      info.IsDefined(typeof(XmlIgnoreAttribute), true);
         
         /// <summary>
-        /// Describes whether should skip due to script ignore attribute
+        ///     Describes whether should skip due to script ignore attribute
         /// </summary>
         /// <param name="info">The info</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool ShouldSkipDueToScriptIgnoreAttribute(FieldInfo info, JsonOptions options)
-        {
-            return options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore) &&
-                   JsonSerializer.HasScriptIgnore(info);
-        }
+        private static bool ShouldSkipDueToScriptIgnoreAttribute(FieldInfo info, JsonOptions options) => options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore) &&
+                                                                                                         JsonSerializer.HasScriptIgnore(info);
         
         /// <summary>
         ///     Creates the member definition using the specified serialization
@@ -862,5 +856,7 @@ namespace Alis.Core.Aspect.Data.Json
             
             return ma;
         }
+        
+        
     }
 }

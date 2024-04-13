@@ -52,13 +52,13 @@ namespace Alis.Core.Audio.OS.Players
             {
                 throw new ArgumentOutOfRangeException(nameof(percent), "Percent can't exceed 100");
             }
-
+            
             Process tempProcess = StartBashProcess($"osascript -e \"set volume output volume {percent}\"");
             tempProcess.WaitForExit();
-
+            
             return Task.CompletedTask;
         }
-
+        
         /// <summary>
         ///     Gets the bash command using the specified file name
         /// </summary>

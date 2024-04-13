@@ -41,7 +41,7 @@ namespace Alis.Core.Network
         /// </summary>
         /// <param name="payload">The pong payload must be 125 bytes or less (can be zero bytes)</param>
         public PongEventArgs(ArraySegment<byte> payload) => Payload = payload;
-
+        
         /// <summary>
         ///     The data extracted from a Pong WebSocket frame
         /// </summary>

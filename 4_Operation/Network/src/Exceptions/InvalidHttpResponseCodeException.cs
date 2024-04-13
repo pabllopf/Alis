@@ -44,7 +44,7 @@ namespace Alis.Core.Network.Exceptions
         public InvalidHttpResponseCodeException()
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="InvalidHttpResponseCodeException" /> class
         /// </summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Network.Exceptions
         public InvalidHttpResponseCodeException(string message) : base(message)
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="InvalidHttpResponseCodeException" /> class
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Core.Network.Exceptions
             ResponseDetails = responseDetails;
             ResponseHeader = responseHeader;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="InvalidHttpResponseCodeException" /> class
         /// </summary>
@@ -75,17 +75,17 @@ namespace Alis.Core.Network.Exceptions
         public InvalidHttpResponseCodeException(string message, Exception inner) : base(message, inner)
         {
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the response code
         /// </summary>
         public string ResponseCode { get; private set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the response header
         /// </summary>
         public string ResponseHeader { get; private set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the response details
         /// </summary>

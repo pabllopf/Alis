@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// </summary>
         /// <returns>The builder</returns>
         TBuilder IsTrigger();
-
+        
         /// <summary>
         ///     Ises the trigger using the specified value
         /// </summary>

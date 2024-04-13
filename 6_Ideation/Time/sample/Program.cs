@@ -46,28 +46,28 @@ namespace Alis.Core.Aspect.Time.Sample
             // Create a new Clock instance
             Clock clock = new Clock();
             clock.Start();
-
+            
             // Create a new TimeConfiguration instance
             TimeConfiguration timeConfig = new TimeConfiguration();
-
+            
             // Create a new TimeManager instance
             TimeManager timeManager = new TimeManager();
-
+            
             int i = 0;
             while (i < 1000)
             {
                 Thread.Sleep(1);
                 i++;
             }
-
+            
             // Stop the clock and print the elapsed time
             clock.Stop();
             Console.WriteLine($"Elapsed time: {clock.ElapsedMilliseconds} ms");
-
+            
             // Print some TimeManager properties
             Console.WriteLine($"DeltaTime: {timeManager.DeltaTime}");
             Console.WriteLine($"TimeScale: {timeConfig.TimeScale}");
-
+            
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }

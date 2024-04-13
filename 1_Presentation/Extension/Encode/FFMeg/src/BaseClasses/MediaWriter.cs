@@ -43,17 +43,17 @@ namespace Alis.Extension.Encode.FFMeg.BaseClasses
         ///     Output filename
         /// </summary>
         public virtual string Filename { get; protected set; }
-
+        
         /// <summary>
         ///     Input data stream
         /// </summary>
         public virtual Stream InputDataStream { get; protected set; }
-
+        
         /// <summary>
         ///     Is data stream opened for writing
         /// </summary>
         public virtual bool OpenedForWriting { get; protected set; }
-
+        
         /// <summary>
         ///     Writes frame to output. Make sure to call OpenWrite() before calling this.
         /// </summary>
@@ -64,11 +64,11 @@ namespace Alis.Extension.Encode.FFMeg.BaseClasses
             {
                 throw new InvalidOperationException("Media needs to be prepared for writing first!");
             }
-
+            
             byte[] data = frame.RawData;
             InputDataStream.Write(data, 0, data.Length);
         }
-
+        
         /// <summary>
         ///     Converts given input file to output file.
         /// </summary>
@@ -84,10 +84,10 @@ namespace Alis.Extension.Encode.FFMeg.BaseClasses
         {
             Process output = FfMpegWrapper.ExecuteCommand(ffmpegExecutable, $"{inputArguments} -i \"{inputFilename}\" " +
                                                                             $"-c:v {options.EncoderName} {options.EncoderArguments} -f {options.Format} \"{outputFilename}\"", showOutput);
-
+            
             process = output;
         }
-
+        
         /// <summary>
         ///     Opens output file for writing and returns the input stream.
         /// </summary>
@@ -102,10 +102,10 @@ namespace Alis.Extension.Encode.FFMeg.BaseClasses
         {
             Stream input = FfMpegWrapper.OpenInput(ffmpegExecutable, $"{inputArguments} -i - " +
                                                                      $"-c:v {options.EncoderName} {options.EncoderArguments} -f {options.Format} \"{outputFilename}\"", out process, showOutput);
-
+            
             return input;
         }
-
+        
         /// <summary>
         ///     Uses input file and returns the output stream. Make sure to use a streaming format (like flv).
         /// </summary>
@@ -120,10 +120,10 @@ namespace Alis.Extension.Encode.FFMeg.BaseClasses
         {
             Stream output = FfMpegWrapper.OpenOutput(ffmpegExecutable, $"{inputArguments} -i \"{inputFilename}\" " +
                                                                        $"-c:v {options.EncoderName} {options.EncoderArguments} -f {options.Format} -", out process, showOutput);
-
+            
             return output;
         }
-
+        
         /// <summary>
         ///     Opens output stream for writing and returns both the input and output streams. Make sure to use a streaming format
         ///     (like flv).
@@ -138,7 +138,7 @@ namespace Alis.Extension.Encode.FFMeg.BaseClasses
         {
             (Stream input, Stream output) = FfMpegWrapper.Open(ffmpegExecutable, $"{inputArguments} -i - " +
                                                                                  $"-c:v {options.EncoderName} {options.EncoderArguments} -f {options.Format} -", out process, showOutput);
-
+            
             return (input, output);
         }
     }

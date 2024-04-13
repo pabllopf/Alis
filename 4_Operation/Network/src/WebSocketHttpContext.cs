@@ -54,27 +54,27 @@ namespace Alis.Core.Network
             Path = path;
             Stream = stream;
         }
-
+        
         /// <summary>
         ///     True if this is a valid WebSocket request
         /// </summary>
         public bool IsWebSocketRequest { get; }
-
+        
         /// <summary>
         ///     Gets the value of the web socket requested protocols
         /// </summary>
         public IList<string> WebSocketRequestedProtocols { get; }
-
+        
         /// <summary>
         ///     The raw http header extracted from the stream
         /// </summary>
         public string HttpHeader { get; }
-
+        
         /// <summary>
         ///     The Path extracted from the http header
         /// </summary>
         public string Path { get; }
-
+        
         /// <summary>
         ///     The stream AFTER the header has already been read
         /// </summary>

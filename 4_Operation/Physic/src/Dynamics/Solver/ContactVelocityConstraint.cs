@@ -42,72 +42,72 @@ namespace Alis.Core.Physic.Dynamics.Solver
         ///     The max manifold points
         /// </summary>
         public readonly VelocityConstraintPoint[] Points = new VelocityConstraintPoint[Settings.ManifoldPoints];
-
+        
         /// <summary>
         ///     The contact index
         /// </summary>
         public int ContactIndex;
-
+        
         /// <summary>
         ///     The friction
         /// </summary>
         public float Friction;
-
+        
         /// <summary>
         ///     The index
         /// </summary>
         public int IndexA;
-
+        
         /// <summary>
         ///     The index
         /// </summary>
         public int IndexB;
-
+        
         /// <summary>
         ///     The inv ib
         /// </summary>
         public float InvIa, InvIb;
-
+        
         /// <summary>
         ///     The inv mass
         /// </summary>
         public float InvMassA, InvMassB;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public Matrix2X2 K;
-
+        
         /// <summary>
         ///     The normal
         /// </summary>
         public Vector2 Normal;
-
+        
         /// <summary>
         ///     The normal mass
         /// </summary>
         public Matrix2X2 NormalMass;
-
+        
         /// <summary>
         ///     The point count
         /// </summary>
         public int PointCount;
-
+        
         /// <summary>
         ///     The restitution
         /// </summary>
         public float Restitution;
-
+        
         /// <summary>
         ///     The tangent speed
         /// </summary>
         public float TangentSpeed;
-
+        
         /// <summary>
         ///     The threshold
         /// </summary>
         public float Threshold;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="ContactVelocityConstraint" /> class
         /// </summary>

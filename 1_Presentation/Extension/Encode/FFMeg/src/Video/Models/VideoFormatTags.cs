@@ -41,25 +41,25 @@ namespace Alis.Extension.Encode.FFMeg.Video.Models
         /// </summary>
         [JsonPropertyName("major_brand")]
         public string MajorBrand { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the minor version
         /// </summary>
         [JsonPropertyName("minor_version")]
         public string MinorVersion { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the compatible brands
         /// </summary>
         [JsonPropertyName("compatible_brands")]
         public string CompatibleBrands { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the creation time
         /// </summary>
         [JsonPropertyName("creation_time")]
         public string CreationTime { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the encoder
         /// </summary>

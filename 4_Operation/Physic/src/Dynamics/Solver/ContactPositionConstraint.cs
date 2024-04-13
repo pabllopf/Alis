@@ -42,72 +42,72 @@ namespace Alis.Core.Physic.Dynamics.Solver
         ///     The max manifold points
         /// </summary>
         public readonly Vector2[] LocalPoints = new Vector2[Settings.ManifoldPoints];
-
+        
         /// <summary>
         ///     The index
         /// </summary>
         public int IndexA { get; set; }
-
+        
         /// <summary>
         ///     The index
         /// </summary>
         public int IndexB { get; set; }
-
+        
         /// <summary>
         ///     The inv ib
         /// </summary>
         public float InvIa { get; set; }
-
+        
         /// <summary>
         ///     The inv ib
         /// </summary>
         public float InvIb { get; set; }
-
+        
         /// <summary>
         ///     The inv mass
         /// </summary>
         public float InvMassA { get; set; }
-
+        
         /// <summary>
         ///     The inv mass
         /// </summary>
         public float InvMassB { get; set; }
-
+        
         /// <summary>
         ///     The local center
         /// </summary>
         public Vector2 LocalCenterA { get; set; }
-
+        
         /// <summary>
         ///     The local center
         /// </summary>
         public Vector2 LocalCenterB { get; set; }
-
+        
         /// <summary>
         ///     The local normal
         /// </summary>
         public Vector2 LocalNormal { get; set; }
-
+        
         /// <summary>
         ///     The local point
         /// </summary>
         public Vector2 LocalPoint { get; set; }
-
+        
         /// <summary>
         ///     The point count
         /// </summary>
         public int PointCount { get; set; }
-
+        
         /// <summary>
         ///     The radius
         /// </summary>
         public float RadiusA { get; set; }
-
+        
         /// <summary>
         ///     The radius
         /// </summary>
         public float RadiusB { get; set; }
-
+        
         /// <summary>
         ///     The type
         /// </summary>

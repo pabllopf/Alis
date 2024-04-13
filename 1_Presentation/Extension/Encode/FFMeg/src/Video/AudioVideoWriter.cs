@@ -48,27 +48,27 @@ namespace Alis.Extension.Encode.FFMeg.Video
         ///     The ffmpeg
         /// </summary>
         private readonly string ffmpeg;
-
+        
         /// <summary>
         ///     The connected socket
         /// </summary>
         private Socket connected_socket;
-
+        
         /// <summary>
         ///     The csc
         /// </summary>
         private CancellationTokenSource csc;
-
+        
         /// <summary>
         ///     The ffmpegp
         /// </summary>
         internal Process ffmpegp;
-
+        
         /// <summary>
         ///     The socket
         /// </summary>
         private Socket socket;
-
+        
         /// <summary>
         ///     Used for encoding video and audio frames into a single file
         /// </summary>
@@ -92,43 +92,43 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidDataException("Video frame dimensions have to be bigger than 0 pixels!");
             }
-
+            
             if (video_framerate <= 0)
             {
                 throw new InvalidDataException("Video framerate has to be bigger than 0!");
             }
-
+            
             if (string.IsNullOrEmpty(filename))
             {
                 throw new NullReferenceException("Filename can't be null or empty!");
             }
-
+            
             if (audio_channels <= 0 || audio_sampleRate <= 0)
             {
                 throw new InvalidDataException("Channels/Sample rate have to be bigger than 0!");
             }
-
+            
             if ((audio_bitDepth != 16) && (audio_bitDepth != 24) && (audio_bitDepth != 32))
             {
                 throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
             }
-
+            
             Filename = filename;
             UseFilename = true;
-
+            
             VideoWidth = video_width;
             VideoHeight = video_height;
             VideoFramerate = video_framerate;
             VideoEncoderOptions = videoEncoderOptions;
-
+            
             AudioChannels = audio_channels;
             AudioSampleRate = audio_sampleRate;
             AudioBitDepth = audio_bitDepth;
             AudioEncoderOptions = audioEncoderOptions;
-
+            
             ffmpeg = ffmpegExecutable;
         }
-
+        
         /// <summary>
         ///     Used for encoding video and audio frames into a single stream
         /// </summary>
@@ -152,118 +152,118 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidDataException("Video frame dimensions have to be bigger than 0 pixels!");
             }
-
+            
             if (video_framerate <= 0)
             {
                 throw new InvalidDataException("Video framerate has to be bigger than 0!");
             }
-
+            
             if (audio_channels <= 0 || audio_sampleRate <= 0)
             {
                 throw new InvalidDataException("Channels/Sample rate have to be bigger than 0!");
             }
-
+            
             if ((audio_bitDepth != 16) && (audio_bitDepth != 24) && (audio_bitDepth != 32))
             {
                 throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
             }
-
+            
             DestinationStream = outputStream ?? throw new NullReferenceException("Stream can't be null!");
             UseFilename = false;
-
+            
             VideoWidth = video_width;
             VideoHeight = video_height;
             VideoFramerate = video_framerate;
             VideoEncoderOptions = videoEncoderOptions;
-
+            
             AudioChannels = audio_channels;
             AudioSampleRate = audio_sampleRate;
             AudioBitDepth = audio_bitDepth;
             AudioEncoderOptions = audioEncoderOptions;
-
+            
             ffmpeg = ffmpegExecutable;
         }
-
+        
         /// <summary>
         ///     Gets the value of the current f fmpeg process
         /// </summary>
         public Process CurrentFFmpegProcess => ffmpegp;
-
+        
         /// <summary>
         ///     Input video stream
         /// </summary>
         public Stream InputDataStreamVideo { get; private set; }
-
+        
         /// <summary>
         ///     Input audio stream
         /// </summary>
         public NetworkStream InputDataStreamAudio { get; private set; }
-
+        
         /// <summary>
         ///     Destination stream (when filename is not specified)
         /// </summary>
         public Stream DestinationStream { get; }
-
+        
         /// <summary>
         ///     FFmpeg output stream
         /// </summary>
         public Stream OutputDataStream { get; private set; }
-
+        
         /// <summary>
         ///     Output filename
         /// </summary>
         public string Filename { get; }
-
+        
         /// <summary>
         ///     Gets the value of the use filename
         /// </summary>
         public bool UseFilename { get; }
-
+        
         /// <summary>
         ///     Gets the value of the video width
         /// </summary>
         public int VideoWidth { get; }
-
+        
         /// <summary>
         ///     Gets the value of the video height
         /// </summary>
         public int VideoHeight { get; }
-
+        
         /// <summary>
         ///     Gets the value of the video framerate
         /// </summary>
         public double VideoFramerate { get; }
-
+        
         /// <summary>
         ///     Gets the value of the audio channels
         /// </summary>
         public int AudioChannels { get; }
-
+        
         /// <summary>
         ///     Gets the value of the audio sample rate
         /// </summary>
         public int AudioSampleRate { get; }
-
+        
         /// <summary>
         ///     Gets the value of the audio bit depth
         /// </summary>
         public int AudioBitDepth { get; }
-
+        
         /// <summary>
         ///     Is data stream opened for writing
         /// </summary>
         public virtual bool OpenedForWriting { get; protected set; }
-
+        
         /// <summary>
         ///     Gets the value of the audio encoder options
         /// </summary>
         public EncoderOptions AudioEncoderOptions { get; }
-
+        
         /// <summary>
         ///     Gets the value of the video encoder options
         /// </summary>
         public EncoderOptions VideoEncoderOptions { get; }
-
+        
         /// <summary>
         ///     Disposes this instance
         /// </summary>
@@ -273,11 +273,11 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 CloseWrite();
             }
-
+            
             DestinationStream?.Dispose();
             csc?.Dispose();
         }
-
+        
         /// <summary>
         ///     Prepares for writing.
         /// </summary>
@@ -292,9 +292,9 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidOperationException("File/Stream was already opened for writing!");
             }
-
+            
             ManualResetEvent manual = new ManualResetEvent(false);
-
+            
             socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
             socket.Bind(new IPEndPoint(IPAddress.Loopback, 0));
             socket.Listen(4);
@@ -305,7 +305,7 @@ namespace Alis.Extension.Encode.FFMeg.Video
                 InputDataStreamAudio = new NetworkStream(connected_socket);
                 manual.Set();
             }, null);
-
+            
             string cmd = $"-f s{AudioBitDepth}le -channels {AudioChannels} -sample_rate {AudioSampleRate} " +
                          $"-thread_queue_size {thread_queue_size} -i \"tcp://{IPAddress.Loopback}:{port}\" " +
                          $"-f rawvideo -video_size {VideoWidth}:{VideoHeight} -r {VideoFramerate} " +
@@ -313,29 +313,29 @@ namespace Alis.Extension.Encode.FFMeg.Video
                          $"-map 0 -c:a {AudioEncoderOptions.EncoderName} {AudioEncoderOptions.EncoderArguments} " +
                          $"-map 1 -c:v {VideoEncoderOptions.EncoderName} {VideoEncoderOptions.EncoderArguments} " +
                          $"-f {VideoEncoderOptions.Format}";
-
+            
             if (UseFilename)
             {
                 if (File.Exists(Filename))
                 {
                     File.Delete(Filename);
                 }
-
+                
                 InputDataStreamVideo = FfMpegWrapper.OpenInput(ffmpeg, $"{cmd} \"{Filename}\"", out ffmpegp, showFFmpegOutput);
             }
             else
             {
                 csc = new CancellationTokenSource();
-
+                
                 // using stream
                 (InputDataStreamVideo, OutputDataStream) = FfMpegWrapper.Open(ffmpeg, $"{cmd} -", out ffmpegp, showFFmpegOutput);
                 _ = OutputDataStream.CopyToAsync(DestinationStream, 81920, csc.Token);
             }
-
+            
             manual.WaitOne();
             OpenedForWriting = true;
         }
-
+        
         /// <summary>
         ///     Closes output video.
         /// </summary>
@@ -345,24 +345,24 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidOperationException("File is not opened for writing!");
             }
-
+            
             try
             {
                 InputDataStreamAudio?.Dispose();
                 InputDataStreamVideo?.Dispose();
-
+                
                 connected_socket?.Shutdown(SocketShutdown.Both);
                 connected_socket?.Close();
                 socket?.Close();
-
+                
                 ffmpegp.WaitForExit();
                 csc?.Cancel();
-
+                
                 if (!UseFilename)
                 {
                     OutputDataStream?.Dispose();
                 }
-
+                
                 try
                 {
                     if (ffmpegp?.HasExited == false)
@@ -379,7 +379,7 @@ namespace Alis.Extension.Encode.FFMeg.Video
                 OpenedForWriting = false;
             }
         }
-
+        
         /// <summary>
         ///     Writes audio frame to output. Make sure to call OpenWrite() before calling this.
         /// </summary>
@@ -390,11 +390,11 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidOperationException("Media needs to be prepared for writing first!");
             }
-
+            
             byte[] data = frame.RawData;
             InputDataStreamAudio.Write(data, 0, data.Length);
         }
-
+        
         /// <summary>
         ///     Writes video frame to output. Make sure to call OpenWrite() before calling this.
         /// </summary>
@@ -405,7 +405,7 @@ namespace Alis.Extension.Encode.FFMeg.Video
             {
                 throw new InvalidOperationException("Media needs to be prepared for writing first!");
             }
-
+            
             byte[] data = frame.RawData;
             InputDataStreamVideo.Write(data, 0, data.Length);
         }

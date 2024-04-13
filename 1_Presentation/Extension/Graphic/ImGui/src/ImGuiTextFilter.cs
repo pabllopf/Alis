@@ -38,12 +38,12 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The input buf
         /// </summary>
         public fixed byte InputBuf[256];
-
+        
         /// <summary>
         ///     The filters
         /// </summary>
         public ImVector Filters;
-
+        
         /// <summary>
         ///     The count grep
         /// </summary>
