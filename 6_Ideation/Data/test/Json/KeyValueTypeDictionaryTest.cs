@@ -358,5 +358,37 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Assert
             Assert.Null(ex);
         }
+        
+        /// <summary>
+        /// Tests that indexer getter throws not supported exception
+        /// </summary>
+        [Fact]
+        public void IndexerGetter_ThrowsNotSupportedException()
+        {
+            // Arrange
+            // Arrange
+            List<int> nonDisposableValue = new List<int> {1};
+            var dictionary = new KeyValueTypeDictionary(nonDisposableValue);
+            
+            // Act and Assert
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                var value = dictionary[new object()];
+            });
+        }
+        
+        /// <summary>
+        /// Tests that indexer setter throws not supported exception
+        /// </summary>
+        [Fact]
+        public void IndexerSetter_ThrowsNotSupportedException()
+        {
+            // Arrange
+            List<int> nonDisposableValue = new List<int> {1};
+            var dictionary = new KeyValueTypeDictionary(nonDisposableValue);
+            
+            // Act and Assert
+            Assert.Throws<NotSupportedException>(() => { dictionary[new object()] = new object(); });
+        }
     }
 }
