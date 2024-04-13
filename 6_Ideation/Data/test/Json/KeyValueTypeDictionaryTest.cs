@@ -368,12 +368,12 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             // Arrange
             List<int> nonDisposableValue = new List<int> {1};
-            var dictionary = new KeyValueTypeDictionary(nonDisposableValue);
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(nonDisposableValue);
             
             // Act and Assert
             Assert.Throws<NotSupportedException>(() =>
             {
-                var value = dictionary[new object()];
+                object value = dictionary[new object()];
             });
         }
         
@@ -385,7 +385,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             List<int> nonDisposableValue = new List<int> {1};
-            var dictionary = new KeyValueTypeDictionary(nonDisposableValue);
+            KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(nonDisposableValue);
             
             // Act and Assert
             Assert.Throws<NotSupportedException>(() => { dictionary[new object()] = new object(); });

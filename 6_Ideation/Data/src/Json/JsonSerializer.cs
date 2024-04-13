@@ -376,7 +376,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Creates the instance using the specified target
+        /// Creates the instance using the specified target
         /// </summary>
         /// <param name="target">The target</param>
         /// <param name="type">The type</param>
@@ -388,41 +388,87 @@ namespace Alis.Core.Aspect.Data.Json
         {
             try
             {
-                if (options.CreateInstanceCallback != null)
+                object instance = InvokeCreateInstanceCallback(target, type, elementsCount, options, value);
+                if (instance != null)
                 {
-                    Dictionary<object, object> og = new Dictionary<object, object>
-                    {
-                        ["elementsCount"] = elementsCount,
-                        ["value"] = value
-                    };
-                    
-                    JsonEventArgs e = new JsonEventArgs(null, type, og, options, null, target)
-                    {
-                        EventType = JsonEventType.CreateInstance
-                    };
-                    options.CreateInstanceCallback(e);
-                    if (e.Handled)
-                    {
-                        return e.Value;
-                    }
+                    return instance;
                 }
                 
                 if (type.IsArray)
                 {
-                    Type elementType = type.GetElementType();
-                    if (elementType != null)
-                    {
-                        return Array.CreateInstance(elementType, elementsCount);
-                    }
+                    return CreateArrayInstance(type, elementsCount);
                 }
                 
                 return Activator.CreateInstance(type);
             }
             catch (Exception e)
             {
-                HandleException(new JsonException("JSO0001: JSON error detected. Cannot create an instance of the '" + type.Name + "' type.", e), options);
-                return null;
+                return HandleCreationException(type, e, options);
             }
+        }
+        
+        /// <summary>
+        /// Invokes the create instance callback using the specified target
+        /// </summary>
+        /// <param name="target">The target</param>
+        /// <param name="type">The type</param>
+        /// <param name="elementsCount">The elements count</param>
+        /// <param name="options">The options</param>
+        /// <param name="value">The value</param>
+        /// <returns>The object</returns>
+        internal static object InvokeCreateInstanceCallback(object target, Type type, int elementsCount, JsonOptions options, object value)
+        {
+            if (options.CreateInstanceCallback != null)
+            {
+                Dictionary<object, object> og = new Dictionary<object, object>
+                {
+                    ["elementsCount"] = elementsCount,
+                    ["value"] = value
+                };
+                
+                JsonEventArgs e = new JsonEventArgs(null, type, og, options, null, target)
+                {
+                    EventType = JsonEventType.CreateInstance
+                };
+                options.CreateInstanceCallback(e);
+                
+                if (e.Handled)
+                {
+                    return e.Value;
+                }
+            }
+            
+            return null;
+        }
+        
+        /// <summary>
+        /// Creates the array instance using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="elementsCount">The elements count</param>
+        /// <returns>The array</returns>
+        internal static Array CreateArrayInstance(Type type, int elementsCount)
+        {
+            Type elementType = type.GetElementType();
+            if (elementType != null)
+            {
+                return Array.CreateInstance(elementType, elementsCount);
+            }
+            
+            return null;
+        }
+        
+        /// <summary>
+        /// Handles the creation exception using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="e">The </param>
+        /// <param name="options">The options</param>
+        /// <returns>The object</returns>
+        internal static object HandleCreationException(Type type, Exception e, JsonOptions options)
+        {
+            HandleException(new JsonException($"JSO0001: JSON error detected. Cannot create an instance of the '{type.Name}' type.", e), options);
+            return null;
         }
         
         /// <summary>
