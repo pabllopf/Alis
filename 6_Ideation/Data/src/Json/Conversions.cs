@@ -197,17 +197,17 @@ namespace Alis.Core.Aspect.Data.Json
             
             if (conversionType == typeof(Uri))
             {
-                return TryChangeToUri(input, provider, out value);
+                return TryConvertToUri(input.ToString(), out value);
             }
             
             if (conversionType == typeof(IntPtr))
             {
-                return TryChangeToIntPtr(input, provider, out value);
+                return TryChangeToIntPtr(input, out value);
             }
             
             if (IsNumericType(conversionType))
             {
-                return TryChangeToNumeric(input, conversionType, inputType, out value);
+                return TryChangeToNumeric(input, conversionType, out value);
             }
             
             if (IsDateTimeType(conversionType))
@@ -241,7 +241,7 @@ namespace Alis.Core.Aspect.Data.Json
                 return TryChangeWithIConvertible(convertible, conversionType, provider, out value);
             }
             
-            return TryChangeWithConverter(input, conversionType, provider, inputType, out value);
+            return TryConvert(input, conversionType, inputType, out value);
         }
         
         /// <summary>
@@ -259,29 +259,29 @@ namespace Alis.Core.Aspect.Data.Json
         internal static bool IsDateTimeType(Type conversionType) => conversionType == typeof(DateTime) || conversionType == typeof(DateTimeOffset);
         
         /// <summary>
-        ///     Describes whether try change to nullable
+        ///     Attempts to convert the input to a nullable type.
         /// </summary>
-        /// <param name="input">The input</param>
-        /// <param name="conversionType">The conversion type</param>
-        /// <param name="provider">The provider</param>
-        /// <param name="value">The value</param>
-        /// <returns>The bool</returns>
+        /// <param name="input">The input to convert.</param>
+        /// <param name="conversionType">The type to convert to.</param>
+        /// <param name="provider">The format provider to use for conversion.</param>
+        /// <param name="value">The converted value.</param>
+        /// <returns>True if the conversion was successful, otherwise false.</returns>
         internal static bool TryChangeToNullable(object input, Type conversionType, IFormatProvider provider, out object value)
         {
+            value = null;
+            
             if (input == null)
             {
-                value = null;
                 return true;
             }
             
-            Type underlyingType = Nullable.GetUnderlyingType(conversionType);
-            if (underlyingType != null)
+            Type nullableUnderlyingType = Nullable.GetUnderlyingType(conversionType);
+            if (nullableUnderlyingType != null)
             {
-                value = Convert.ChangeType(input, underlyingType, provider);
+                value = Convert.ChangeType(input, nullableUnderlyingType, provider);
                 return true;
             }
             
-            value = null;
             return false;
         }
         
@@ -343,32 +343,37 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Describes whether try change to uri
+        /// Describes whether try convert to uri
         /// </summary>
-        /// <param name="input">The input</param>
-        /// <param name="provider">The provider</param>
-        /// <param name="value">The value</param>
-        /// <returns>The bool</returns>
-        internal static bool TryChangeToUri(object input, IFormatProvider provider, out object value)
+        /// <param name="inputString">The input string</param>
+        /// <param name="result">The result</param>
+        /// <returns>The is uri created</returns>
+        internal static bool TryConvertToUri(string inputString, out object result)
         {
-            if (Uri.TryCreate(input.ToString(), UriKind.RelativeOrAbsolute, out Uri uri))
+            result = null;
+
+            if (string.IsNullOrEmpty(inputString))
             {
-                value = uri;
-                return true;
+                return false;
             }
             
-            value = null;
-            return false;
+            bool isUriCreated = Uri.TryCreate(inputString, UriKind.RelativeOrAbsolute, out Uri uri);
+            
+            if (isUriCreated)
+            {
+                result = uri;
+            }
+            
+            return isUriCreated;
         }
         
         /// <summary>
         ///     Describes whether try change to int ptr
         /// </summary>
         /// <param name="input">The input</param>
-        /// <param name="provider">The provider</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryChangeToIntPtr(object input, IFormatProvider provider, out object value)
+        internal static bool TryChangeToIntPtr(object input, out object value)
         {
             if (int.TryParse(input.ToString(), out int intResult))
             {
@@ -385,10 +390,9 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="conversionType">The conversion type</param>
-        /// <param name="inputType">The input type</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryChangeToNumeric(object input, Type conversionType, Type inputType, out object value)
+        internal static bool TryChangeToNumeric(object input, Type conversionType, out object value)
         {
             try
             {
@@ -528,25 +532,35 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Describes whether try change with converter
+        /// Tries to convert the input value to the target type.
         /// </summary>
-        /// <param name="input">The input</param>
-        /// <param name="conversionType">The conversion type</param>
-        /// <param name="provider">The provider</param>
-        /// <param name="inputType">The input type</param>
-        /// <param name="value">The value</param>
-        /// <returns>The bool</returns>
-        internal static bool TryChangeWithConverter(object input, Type conversionType, IFormatProvider provider, Type inputType, out object value)
+        /// <param name="value">The value to convert.</param>
+        /// <param name="target">The target type to convert to.</param>
+        /// <param name="source">The source type of the value.</param>
+        /// <param name="result">The result of the conversion.</param>
+        /// <returns>True if the conversion was successful, false otherwise.</returns>
+        internal static bool TryConvert(object value, Type target, Type source, out object result)
         {
-            TypeConverter converter = TypeDescriptor.GetConverter(conversionType);
-            if ((converter != null) && converter.CanConvertFrom(inputType))
+            TypeConverter converter = GetConverter(target);
+            
+            if (converter.CanConvertFrom(source))
             {
-                value = converter.ConvertFrom(input);
+                result = converter.ConvertFrom(value);
                 return true;
             }
             
-            value = null;
+            result = null;
             return false;
+        }
+        
+        /// <summary>
+        /// Gets the type converter for the specified type.
+        /// </summary>
+        /// <param name="type">The type to get the converter for.</param>
+        /// <returns>The type converter for the specified type.</returns>
+        private static TypeConverter GetConverter(Type type)
+        {
+            return TypeDescriptor.GetConverter(type);
         }
         
         /// <summary>
@@ -684,28 +698,27 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Describes whether try handle digit or sign start
+        ///     Checks if the input string starts with a digit or a sign and tries to convert it to the specified type.
         /// </summary>
-        /// <param name="type">The type</param>
-        /// <param name="input">The input</param>
-        /// <param name="value">The value</param>
-        /// <returns>The bool</returns>
+        /// <param name="type">The target type for the conversion</param>
+        /// <param name="input">The input string to convert</param>
+        /// <param name="value">The converted value if the conversion is successful, otherwise the default value of the target type</param>
+        /// <returns>True if the conversion is successful, otherwise false</returns>
         internal static bool TryHandleDigitOrSignStart(Type type, string input, out object value)
         {
-            if (char.IsDigit(input[0]) || input[0] == '-' || input[0] == '+')
+            bool startsWithDigitOrSign = char.IsDigit(input[0]) || input[0] == '-' || input[0] == '+';
+            
+            if (startsWithDigitOrSign)
             {
-                object obj = EnumToObject(type, input);
-                if (obj == null)
+                object convertedValue = EnumToObject(type, input);
+                if (convertedValue != null)
                 {
-                    value = Activator.CreateInstance(type);
-                    return false;
+                    value = convertedValue;
+                    return true;
                 }
-                
-                value = obj;
-                return true;
             }
             
-            value = null;
+            value = Activator.CreateInstance(type);
             return false;
         }
         
@@ -787,7 +800,7 @@ namespace Alis.Core.Aspect.Data.Json
         
         
         /// <summary>
-        ///     Describes whether enum try parse
+        /// Describes whether enum try parse
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="input">The input</param>
@@ -795,43 +808,79 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         internal static bool EnumTryParse(Type type, object input, out object value)
         {
-            if (!ValidateInput(type, input, out value))
+            if (!IsValidInput(type, input))
             {
+                value = null;
                 return false;
             }
             
             string stringInput = FormatInput(input);
             
-            if (TryParseHexadecimal(stringInput, type, out value))
+            if (IsHexadecimalAndCanBeParsed(stringInput, type, out value))
             {
                 return true;
             }
             
-            if (!TryGetEnumNamesAndValues(type, out string[] names, out Array values))
+            if (!CanGetEnumNamesAndValues(type, out string[] names, out Array values))
             {
+                value = null;
                 return false;
             }
             
-            return TryParseTokens(stringInput, type, names, values, out value);
+            return CanParseTokens(stringInput, type, names, values, out value);
         }
         
         /// <summary>
-        ///     Describes whether validate input
+        /// Describes whether is valid input
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="input">The input</param>
+        /// <returns>The bool</returns>
+        internal static bool IsValidInput(Type type, object input)
+        {
+            return type != null && input != null;
+        }
+        
+        
+        /// <summary>
+        /// Describes whether is hexadecimal and can be parsed
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="type">The type</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool ValidateInput(Type type, object input, out object value)
+        internal static bool IsHexadecimalAndCanBeParsed(string input, Type type, out object value)
         {
-            if (type == null || !type.IsEnum || input == null)
-            {
-                value = type is {IsEnum: true} ? Activator.CreateInstance(type) : null;
-                return false;
-            }
-            
             value = null;
-            return true;
+            return input.StartsWith("0x") && TryParseHexadecimal(input, type, out value);
+        }
+        
+        /// <summary>
+        /// Describes whether can get enum names and values
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="names">The names</param>
+        /// <param name="values">The values</param>
+        /// <returns>The bool</returns>
+        internal static bool CanGetEnumNamesAndValues(Type type, out string[] names, out Array values)
+        {
+            names = new string[] { };
+            values = null;
+            return type.IsEnum && TryGetEnumNamesAndValues(type, out names, out values);
+        }
+        
+        /// <summary>
+        /// Describes whether can parse tokens
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="type">The type</param>
+        /// <param name="names">The names</param>
+        /// <param name="values">The values</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        internal static bool CanParseTokens(string input, Type type, string[] names, Array values, out object value)
+        {
+            return TryParseTokens(input, type, names, values, out value);
         }
         
         /// <summary>
