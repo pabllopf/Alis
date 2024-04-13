@@ -3558,7 +3558,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse date time when text is null returns false
+        ///     Tests that try parse date time when text is null returns false
         /// </summary>
         [Fact]
         public void TryParseDateTime_WhenTextIsNull_ReturnsFalse()
@@ -3567,7 +3567,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse date time when text is date time with end z returns true
+        ///     Tests that try parse date time when text is date time with end z returns true
         /// </summary>
         [Fact]
         public void TryParseDateTime_WhenTextIsDateTimeWithEndZ_ReturnsTrue()
@@ -3576,7 +3576,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse date time when text is date time with specific format returns true
+        ///     Tests that try parse date time when text is date time with specific format returns true
         /// </summary>
         [Fact]
         public void TryParseDateTime_WhenTextIsDateTimeWithSpecificFormat_ReturnsTrue()
@@ -3585,7 +3585,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse date time when text is date time with ticks returns true
+        ///     Tests that try parse date time when text is date time with ticks returns true
         /// </summary>
         [Fact]
         public void TryParseDateTime_WhenTextIsDateTimeWithTicks_ReturnsTrue()
@@ -3594,7 +3594,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse date time when text is time span style returns false
+        ///     Tests that try parse date time when text is time span style returns false
         /// </summary>
         [Fact]
         public void TryParseDateTime_WhenTextIsTimeSpanStyle_ReturnsFalse()
@@ -3603,7 +3603,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse date time when text is standard date time returns true
+        ///     Tests that try parse date time when text is standard date time returns true
         /// </summary>
         [Fact]
         public void TryParseDateTime_WhenTextIsStandardDateTime_ReturnsTrue()
@@ -3612,7 +3612,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that update value based on context when context is null returns converted value
+        ///     Tests that update value based on context when context is null returns converted value
         /// </summary>
         [Fact]
         public void UpdateValueBasedOnContext_WhenContextIsNull_ReturnsConvertedValue()
@@ -3631,13 +3631,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that update value based on context when context is not null updates context and returns new converted value
+        ///     Tests that update value based on context when context is not null updates context and returns new converted value
         /// </summary>
         [Fact]
         public void UpdateValueBasedOnContext_WhenContextIsNotNull_UpdatesContextAndReturnsNewConvertedValue()
         {
             // Arrange
-            CustomListObject list = new CustomListObject() {Context = new Dictionary<string, object>()};
+            CustomListObject list = new CustomListObject
+                {Context = new Dictionary<string, object>()};
             Type itemType = typeof(int);
             int value = 1;
             int convertedValue = 2;
@@ -3650,7 +3651,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that update context when called updates context correctly
+        ///     Tests that update context when called updates context correctly
         /// </summary>
         [Fact]
         public void UpdateContext_WhenCalled_UpdatesContextCorrectly()
@@ -3666,7 +3667,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that update context when context is null throws exception
+        ///     Tests that update context when context is null throws exception
         /// </summary>
         [Fact]
         public void UpdateContext_WhenContextIsNull_ThrowsException()
@@ -3682,7 +3683,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read serializable when type name is null returns null
+        ///     Tests that read serializable when type name is null returns null
         /// </summary>
         [Fact]
         public void ReadSerializable_WhenTypeNameIsNull_ReturnsNull()
@@ -3691,7 +3692,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read serializable when type name is invalid throws exception
+        ///     Tests that read serializable when type name is invalid throws exception
         /// </summary>
         [Fact]
         public void ReadSerializable_WhenTypeNameIsInvalid_ThrowsException()
@@ -3700,7 +3701,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read dictionary value when called returns dictionary
+        ///     Tests that read dictionary value when called returns dictionary
         /// </summary>
         [Fact]
         public void ReadDictionaryValue_WhenCalled_ReturnsDictionary()
@@ -3715,7 +3716,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read dictionary value when serialization option is set calls deserialize
+        ///     Tests that read dictionary value when serialization option is set calls deserialize
         /// </summary>
         [Fact]
         public void ReadDictionaryValue_WhenSerializationOptionIsSet_CallsDeserialize()
@@ -3731,7 +3732,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read dictionary value when serialization option is not set does not call deserialize
+        ///     Tests that read dictionary value when serialization option is not set does not call deserialize
         /// </summary>
         [Fact]
         public void ReadDictionaryValue_WhenSerializationOptionIsNotSet_DoesNotCallDeserialize()
@@ -3747,7 +3748,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle default case returns int when text is int
+        ///     Tests that handle default case returns int when text is int
         /// </summary>
         [Fact]
         public void HandleDefaultCase_ReturnsInt_WhenTextIsInt()
@@ -3758,7 +3759,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle default case returns long when text is long
+        ///     Tests that handle default case returns long when text is long
         /// </summary>
         [Fact]
         public void HandleDefaultCase_ReturnsLong_WhenTextIsLong()
@@ -3769,7 +3770,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle default case returns decimal when text is decimal
+        ///     Tests that handle default case returns decimal when text is decimal
         /// </summary>
         [Fact]
         public void HandleDefaultCase_ReturnsDecimal_WhenTextIsDecimal()
@@ -3779,7 +3780,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle default case throws exception when text is not number
+        ///     Tests that handle default case throws exception when text is not number
         /// </summary>
         [Fact]
         public void HandleDefaultCase_ThrowsException_WhenTextIsNotNumber()
@@ -3788,7 +3789,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that apply to list target when list is null does nothing
+        ///     Tests that apply to list target when list is null does nothing
         /// </summary>
         [Fact]
         public void ApplyToListTarget_WhenListIsNull_DoesNothing()
@@ -3807,7 +3808,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that apply to list target when input is null clears list
+        ///     Tests that apply to list target when input is null clears list
         /// </summary>
         [Fact]
         public void ApplyToListTarget_WhenInputIsNull_ClearsList()
@@ -3826,7 +3827,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that apply to list target when input is not null processes input
+        ///     Tests that apply to list target when input is not null processes input
         /// </summary>
         [Fact]
         public void ApplyToListTarget_WhenInputIsNotNull_ProcessesInput()
@@ -3845,7 +3846,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that equals ignore case when both strings are null returns true
+        ///     Tests that equals ignore case when both strings are null returns true
         /// </summary>
         [Fact]
         public void EqualsIgnoreCase_WhenBothStringsAreNull_ReturnsTrue()
@@ -3856,7 +3857,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that equals ignore case when source is null and target is not null returns false
+        ///     Tests that equals ignore case when source is null and target is not null returns false
         /// </summary>
         [Fact]
         public void EqualsIgnoreCase_WhenSourceIsNullAndTargetIsNotNull_ReturnsFalse()
@@ -3867,7 +3868,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that equals ignore case when source is not null and target is null returns false
+        ///     Tests that equals ignore case when source is not null and target is null returns false
         /// </summary>
         [Fact]
         public void EqualsIgnoreCase_WhenSourceIsNotNullAndTargetIsNull_ReturnsFalse()
@@ -3878,7 +3879,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that equals ignore case when both strings are equal ignoring case returns true
+        ///     Tests that equals ignore case when both strings are equal ignoring case returns true
         /// </summary>
         [Fact]
         public void EqualsIgnoreCase_WhenBothStringsAreEqualIgnoringCase_ReturnsTrue()
@@ -3889,7 +3890,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that equals ignore case when both strings are not equal ignoring case returns false
+        ///     Tests that equals ignore case when both strings are not equal ignoring case returns false
         /// </summary>
         [Fact]
         public void EqualsIgnoreCase_WhenBothStringsAreNotEqualIgnoringCase_ReturnsFalse()
@@ -3900,29 +3901,31 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that equals ignore case when trim is true and both strings are equal ignoring case and white space returns true
+        ///     Tests that equals ignore case when trim is true and both strings are equal ignoring case and white space returns
+        ///     true
         /// </summary>
         [Fact]
         public void EqualsIgnoreCase_WhenTrimIsTrueAndBothStringsAreEqualIgnoringCaseAndWhiteSpace_ReturnsTrue()
         {
             string source = " test ";
             string target = " TEST ";
-            Assert.True(source.EqualsIgnoreCase(target, trim: true));
+            Assert.True(source.EqualsIgnoreCase(target, true));
         }
         
         /// <summary>
-        /// Tests that equals ignore case when trim is false and both strings are equal ignoring case but not white space returns false
+        ///     Tests that equals ignore case when trim is false and both strings are equal ignoring case but not white space
+        ///     returns false
         /// </summary>
         [Fact]
         public void EqualsIgnoreCase_WhenTrimIsFalseAndBothStringsAreEqualIgnoringCaseButNotWhiteSpace_ReturnsFalse()
         {
             string source = " test ";
             string target = " TEST ";
-            Assert.True(source.EqualsIgnoreCase(target, trim: false));
+            Assert.True(source.EqualsIgnoreCase(target, false));
         }
         
         /// <summary>
-        /// Tests that read new when reader contains close brace returns null
+        ///     Tests that read new when reader contains close brace returns null
         /// </summary>
         [Fact]
         public void ReadNew_WhenReaderContainsCloseBrace_ReturnsNull()
@@ -3932,7 +3935,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read new when reader contains comma returns null
+        ///     Tests that read new when reader contains comma returns null
         /// </summary>
         [Fact]
         public void ReadNew_WhenReaderContainsComma_ReturnsNull()
@@ -3942,7 +3945,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read new when reader contains close bracket sets array end to true
+        ///     Tests that read new when reader contains close bracket sets array end to true
         /// </summary>
         [Fact]
         public void ReadNew_WhenReaderContainsCloseBracket_SetsArrayEndToTrue()
@@ -3952,7 +3955,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read new when reader contains null returns null
+        ///     Tests that read new when reader contains null returns null
         /// </summary>
         [Fact]
         public void ReadNew_WhenReaderContainsNull_ReturnsNull()
@@ -3964,7 +3967,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read new when reader contains date returns date time
+        ///     Tests that read new when reader contains date returns date time
         /// </summary>
         [Fact]
         public void ReadNew_WhenReaderContainsDate_ReturnsDateTime()
@@ -3974,7 +3977,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read new when reader contains unexpected character throws json exception
+        ///     Tests that read new when reader contains unexpected character throws json exception
         /// </summary>
         [Fact]
         public void ReadNew_WhenReaderContainsUnexpectedCharacter_ThrowsJsonException()
@@ -3984,7 +3987,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get hex value when character is digit returns correct value
+        ///     Tests that get hex value when character is digit returns correct value
         /// </summary>
         [Fact]
         public void GetHexValue_WhenCharacterIsDigit_ReturnsCorrectValue()
@@ -3996,7 +3999,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get hex value when character is lower case letter returns correct value
+        ///     Tests that get hex value when character is lower case letter returns correct value
         /// </summary>
         [Fact]
         public void GetHexValue_WhenCharacterIsLowerCaseLetter_ReturnsCorrectValue()
@@ -4008,7 +4011,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get hex value when character is upper case letter returns correct value
+        ///     Tests that get hex value when character is upper case letter returns correct value
         /// </summary>
         [Fact]
         public void GetHexValue_WhenCharacterIsUpperCaseLetter_ReturnsCorrectValue()
@@ -4020,7 +4023,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get hex value when character is not hex throws exception
+        ///     Tests that get hex value when character is not hex throws exception
         /// </summary>
         [Fact]
         public void GetHexValue_WhenCharacterIsNotHex_ThrowsException()
@@ -4031,7 +4034,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse date time with specific format invalid format returns false
+        ///     Tests that try parse date time with specific format invalid format returns false
         /// </summary>
         [Fact]
         public void TryParseDateTimeWithSpecificFormat_InvalidFormat_ReturnsFalse()
@@ -4040,7 +4043,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse date time with specific format valid exact format returns true
+        ///     Tests that try parse date time with specific format valid exact format returns true
         /// </summary>
         [Fact]
         public void TryParseDateTimeWithSpecificFormat_ValidExactFormat_ReturnsTrue()
@@ -4049,7 +4052,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse date time with specific format valid format with time zone returns true
+        ///     Tests that try parse date time with specific format valid format with time zone returns true
         /// </summary>
         [Fact]
         public void TryParseDateTimeWithSpecificFormat_ValidFormatWithTimeZone_ReturnsTrue()
@@ -4058,7 +4061,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse date time with specific format valid format without time zone returns true
+        ///     Tests that try parse date time with specific format valid format without time zone returns true
         /// </summary>
         [Fact]
         public void TryParseDateTimeWithSpecificFormat_ValidFormatWithoutTimeZone_ReturnsTrue()
@@ -4067,7 +4070,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that try parse date time with specific format invalid format with time zone returns false
+        ///     Tests that try parse date time with specific format invalid format with time zone returns false
         /// </summary>
         [Fact]
         public void TryParseDateTimeWithSpecificFormat_InvalidFormatWithTimeZone_ReturnsFalse()
@@ -4076,7 +4079,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get stream reader position when stream reader has position returns position
+        ///     Tests that get stream reader position when stream reader has position returns position
         /// </summary>
         [Fact]
         public void GetStreamReaderPosition_WhenStreamReaderHasPosition_ReturnsPosition()
@@ -4093,7 +4096,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get stream reader position when stream reader position is updated returns updated position
+        ///     Tests that get stream reader position when stream reader position is updated returns updated position
         /// </summary>
         [Fact]
         public void GetStreamReaderPosition_WhenStreamReaderPositionIsUpdated_ReturnsUpdatedPosition()
@@ -4111,7 +4114,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get stream reader position when stream reader does not support seeking returns minus one
+        ///     Tests that get stream reader position when stream reader does not support seeking returns minus one
         /// </summary>
         [Fact]
         public void GetStreamReaderPosition_WhenStreamReaderDoesNotSupportSeeking_ReturnsMinusOne()
@@ -4127,7 +4130,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle object graph when object graph contains value writes null
+        ///     Tests that handle object graph when object graph contains value writes null
         /// </summary>
         [Fact]
         public void HandleObjectGraph_WhenObjectGraphContainsValue_WritesNull()
@@ -4146,7 +4149,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get object name returns object name when attribute has name
+        ///     Tests that get object name returns object name when attribute has name
         /// </summary>
         [Fact]
         public void GetObjectName_ReturnsObjectName_WhenAttributeHasName()
@@ -4163,7 +4166,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get object name returns default name when attribute has no name
+        ///     Tests that get object name returns default name when attribute has no name
         /// </summary>
         [Fact]
         public void GetObjectName_ReturnsDefaultName_WhenAttributeHasNoName()
@@ -4180,7 +4183,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get object name returns default name when no attributes
+        ///     Tests that get object name returns default name when no attributes
         /// </summary>
         [Fact]
         public void GetObjectName_ReturnsDefaultName_WhenNoAttributes()
@@ -4197,7 +4200,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle byte array returns byte array when string is base 64 and option is set
+        ///     Tests that handle byte array returns byte array when string is base 64 and option is set
         /// </summary>
         [Fact]
         public void HandleByteArray_ReturnsByteArray_WhenStringIsBase64AndOptionIsSet()
@@ -4215,7 +4218,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle byte array returns original string when option is not set
+        ///     Tests that handle byte array returns original string when option is not set
         /// </summary>
         [Fact]
         public void HandleByteArray_ReturnsOriginalString_WhenOptionIsNotSet()
@@ -4233,7 +4236,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle byte array returns null when string is not base 64 and option is set
+        ///     Tests that handle byte array returns null when string is not base 64 and option is set
         /// </summary>
         [Fact]
         public void HandleByteArray_ReturnsNull_WhenStringIsNotBase64AndOptionIsSet()
@@ -4247,7 +4250,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that calculate offset when ticks are negative should invert offset
+        ///     Tests that calculate offset when ticks are negative should invert offset
         /// </summary>
         [Fact]
         public void CalculateOffset_WhenTicksAreNegative_ShouldInvertOffset()
@@ -4265,7 +4268,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that calculate offset when ticks are positive should not invert offset
+        ///     Tests that calculate offset when ticks are positive should not invert offset
         /// </summary>
         [Fact]
         public void CalculateOffset_WhenTicksArePositive_ShouldNotInvertOffset()
@@ -4283,7 +4286,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that calculate offset when offset string is not parsable should set offset to zero
+        ///     Tests that calculate offset when offset string is not parsable should set offset to zero
         /// </summary>
         [Fact]
         public void CalculateOffset_WhenOffsetStringIsNotParsable_ShouldSetOffsetToZero()
@@ -4301,7 +4304,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that calculate offset when offset string is parsable should set offset to parsed value
+        ///     Tests that calculate offset when offset string is parsable should set offset to parsed value
         /// </summary>
         [Fact]
         public void CalculateOffset_WhenOffsetStringIsParsable_ShouldSetOffsetToParsedValue()
@@ -4319,7 +4322,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that update value based on context when context is null returns converted value v 2
+        ///     Tests that update value based on context when context is null returns converted value v 2
         /// </summary>
         [Fact]
         public void UpdateValueBasedOnContext_WhenContextIsNull_ReturnsConvertedValue_v2()
@@ -4338,7 +4341,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that update value based on context when context is not null and contains c value returns new converted value
+        ///     Tests that update value based on context when context is not null and contains c value returns new converted value
         /// </summary>
         [Fact]
         public void UpdateValueBasedOnContext_WhenContextIsNotNullAndContainsCValue_ReturnsNewConvertedValue()
@@ -4357,13 +4360,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that update value based on context when context is not null and does not contain c value returns converted value
+        ///     Tests that update value based on context when context is not null and does not contain c value returns converted
+        ///     value
         /// </summary>
         [Fact]
         public void UpdateValueBasedOnContext_WhenContextIsNotNullAndDoesNotContainCValue_ReturnsConvertedValue()
         {
             // Arrange
-            CustomListObject list = new CustomListObject() {Context = new Dictionary<string, object>()};
+            CustomListObject list = new CustomListObject
+                {Context = new Dictionary<string, object>()};
             Type itemType = typeof(int);
             int value = 1;
             int convertedValue = 2;
@@ -4376,13 +4381,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that update context if needed when list context is null does not throw exception
+        ///     Tests that update context if needed when list context is null does not throw exception
         /// </summary>
         [Fact]
         public void UpdateContextIfNeeded_WhenListContextIsNull_DoesNotThrowException()
         {
             // Arrange
-            ListObject list = new CustomListObject() {Context = null};
+            ListObject list = new CustomListObject
+                {Context = null};
             Type itemType = typeof(int);
             object value = new object();
             object convertedValue = new object();
@@ -4395,7 +4401,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that update context if needed when list context is not null calls update context
+        ///     Tests that update context if needed when list context is not null calls update context
         /// </summary>
         [Fact]
         public void UpdateContextIfNeeded_WhenListContextIsNotNull_CallsUpdateContext()
@@ -4414,7 +4420,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that get updated value when context contains c value returns c value
+        ///     Tests that get updated value when context contains c value returns c value
         /// </summary>
         [Fact]
         public void GetUpdatedValue_WhenContextContainsCValue_ReturnsCValue()
@@ -4424,11 +4430,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object defaultValue = new object();
             
             // Act
-            Assert.Throws<NullReferenceException>( () => JsonSerializer.GetUpdatedValue(list, defaultValue));
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.GetUpdatedValue(list, defaultValue));
         }
         
         /// <summary>
-        /// Tests that get updated value when context does not contain c value returns default value
+        ///     Tests that get updated value when context does not contain c value returns default value
         /// </summary>
         [Fact]
         public void GetUpdatedValue_WhenContextDoesNotContainCValue_ReturnsDefaultValue()
@@ -4438,21 +4444,22 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object defaultValue = new object();
             
             // Act
-            Assert.Throws<NullReferenceException>( () =>JsonSerializer.GetUpdatedValue(list, defaultValue));
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.GetUpdatedValue(list, defaultValue));
         }
         
         /// <summary>
-        /// Tests that get updated value when context is null returns default value
+        ///     Tests that get updated value when context is null returns default value
         /// </summary>
         [Fact]
         public void GetUpdatedValue_WhenContextIsNull_ReturnsDefaultValue()
         {
             // Arrange
-            ListObject list = new CustomListObject() {Context = null};
+            ListObject list = new CustomListObject
+                {Context = null};
             object defaultValue = new object();
             
             // Act
-            Assert.Throws<NullReferenceException>( () =>JsonSerializer.GetUpdatedValue(list, defaultValue));
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.GetUpdatedValue(list, defaultValue));
         }
     }
 }

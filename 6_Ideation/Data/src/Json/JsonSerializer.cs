@@ -602,7 +602,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        /// Applies the input to the list target using the specified target.
+        ///     Applies the input to the list target using the specified target.
         /// </summary>
         /// <param name="target">The target</param>
         /// <param name="input">The input</param>
@@ -621,7 +621,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        /// Processes the input based on condition using the specified target
+        ///     Processes the input based on condition using the specified target
         /// </summary>
         /// <param name="target">The target</param>
         /// <param name="input">The input</param>
@@ -640,7 +640,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        /// Clears the context if not null using the specified list
+        ///     Clears the context if not null using the specified list
         /// </summary>
         /// <param name="list">The list</param>
         internal static void ClearContextIfNotNull(ListObject list) => list.Context?.Clear();
@@ -728,67 +728,51 @@ namespace Alis.Core.Aspect.Data.Json
             }
         }
         
-       /// <summary>
-/// Updates the value based on context using the specified list.
-/// </summary>
-/// <param name="list">The list.</param>
-/// <param name="itemType">The item type.</param>
-/// <param name="value">The value.</param>
-/// <param name="convertedValue">The converted value.</param>
-/// <returns>The updated value.</returns>
-internal static object UpdateValueBasedOnContext(ListObject list, Type itemType, object value, object convertedValue)
-{
-    if (list.Context == null)
-    {
-        return convertedValue;
-    }
-
-    UpdateContextIfNeeded(list, itemType, value, convertedValue);
-
-    return GetUpdatedValue(list, convertedValue);
-}
-
-/// <summary>
-
-/// Updates the context if needed using the specified list
-
-/// </summary>
-
-/// <param name="list">The list</param>
-
-/// <param name="itemType">The item type</param>
-
-/// <param name="value">The value</param>
-
-/// <param name="convertedValue">The converted value</param>
-
-internal static void UpdateContextIfNeeded(ListObject list, Type itemType, object value, object convertedValue)
-{
-    if (list.Context != null)
-    {
-        UpdateContext(list, itemType, value, convertedValue);
-    }
-}
-
-/// <summary>
-
-/// Gets the updated value using the specified list
-
-/// </summary>
-
-/// <param name="list">The list</param>
-
-/// <param name="defaultValue">The default value</param>
-
-/// <returns>The object</returns>
-
-internal static object GetUpdatedValue(ListObject list, object defaultValue)
-{
-    return list.Context.TryGetValue("cvalue", out object updatedValue) ? updatedValue : defaultValue;
-}
+        /// <summary>
+        ///     Updates the value based on context using the specified list.
+        /// </summary>
+        /// <param name="list">The list.</param>
+        /// <param name="itemType">The item type.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="convertedValue">The converted value.</param>
+        /// <returns>The updated value.</returns>
+        internal static object UpdateValueBasedOnContext(ListObject list, Type itemType, object value, object convertedValue)
+        {
+            if (list.Context == null)
+            {
+                return convertedValue;
+            }
+            
+            UpdateContextIfNeeded(list, itemType, value, convertedValue);
+            
+            return GetUpdatedValue(list, convertedValue);
+        }
         
         /// <summary>
-        /// Updates the context using the specified list
+        ///     Updates the context if needed using the specified list
+        /// </summary>
+        /// <param name="list">The list</param>
+        /// <param name="itemType">The item type</param>
+        /// <param name="value">The value</param>
+        /// <param name="convertedValue">The converted value</param>
+        internal static void UpdateContextIfNeeded(ListObject list, Type itemType, object value, object convertedValue)
+        {
+            if (list.Context != null)
+            {
+                UpdateContext(list, itemType, value, convertedValue);
+            }
+        }
+        
+        /// <summary>
+        ///     Gets the updated value using the specified list
+        /// </summary>
+        /// <param name="list">The list</param>
+        /// <param name="defaultValue">The default value</param>
+        /// <returns>The object</returns>
+        internal static object GetUpdatedValue(ListObject list, object defaultValue) => list.Context.TryGetValue("cvalue", out object updatedValue) ? updatedValue : defaultValue;
+        
+        /// <summary>
+        ///     Updates the context using the specified list
         /// </summary>
         /// <param name="list">The list</param>
         /// <param name="itemType">The item type</param>
@@ -1365,7 +1349,7 @@ internal static object GetUpdatedValue(ListObject list, object defaultValue)
         }
         
         /// <summary>
-        /// Handles the byte array using the specified string.
+        ///     Handles the byte array using the specified string.
         /// </summary>
         /// <param name="base64String">The base64 string.</param>
         /// <param name="options">The JSON options.</param>
@@ -1533,15 +1517,10 @@ internal static object GetUpdatedValue(ListObject list, object defaultValue)
         }
         
         /// <summary>
-        
-        /// Gets the stream reader position using the specified sr
-        
+        ///     Gets the stream reader position using the specified sr
         /// </summary>
-        
         /// <param name="sr">The sr</param>
-        
         /// <returns>The long</returns>
-        
         internal static long GetStreamReaderPosition(StreamReader sr)
         {
             try
@@ -1555,15 +1534,10 @@ internal static object GetUpdatedValue(ListObject list, object defaultValue)
         }
         
         /// <summary>
-        
-        /// Gets the string reader position using the specified str
-        
+        ///     Gets the string reader position using the specified str
         /// </summary>
-        
         /// <param name="str">The str</param>
-        
         /// <returns>The long</returns>
-        
         internal static long GetStringReaderPosition(StringReader str)
         {
             FieldInfo fi = typeof(StringReader).GetField("_pos", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -1743,7 +1717,7 @@ internal static object GetUpdatedValue(ListObject list, object defaultValue)
         }
         
         /// <summary>
-        /// Reads the serializable using the specified reader
+        ///     Reads the serializable using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
@@ -1760,7 +1734,7 @@ internal static object GetUpdatedValue(ListObject list, object defaultValue)
         }
         
         /// <summary>
-        /// Gets the type from name using the specified reader
+        ///     Gets the type from name using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="typeName">The type name</param>
@@ -1780,7 +1754,7 @@ internal static object GetUpdatedValue(ListObject list, object defaultValue)
         }
         
         /// <summary>
-        /// Creates the serialization info using the specified type
+        ///     Creates the serialization info using the specified type
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="values">The values</param>
@@ -1797,7 +1771,7 @@ internal static object GetUpdatedValue(ListObject list, object defaultValue)
         }
         
         /// <summary>
-        /// Invokes the constructor using the specified type
+        ///     Invokes the constructor using the specified type
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="info">The info</param>
@@ -2241,7 +2215,7 @@ internal static object GetUpdatedValue(ListObject list, object defaultValue)
         internal static bool TryParseDateTime(string text, out DateTime dt) => TryParseDateTime(text, JsonOptions.DefaultDateTimeStyles, out dt);
         
         /// <summary>
-        /// Describes whether try parse date time
+        ///     Describes whether try parse date time
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="styles">The styles</param>
@@ -2265,9 +2239,8 @@ internal static object GetUpdatedValue(ListObject list, object defaultValue)
         }
         
         
-        
         /// <summary>
-        /// Describes whether try parse date time with standard format
+        ///     Describes whether try parse date time with standard format
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="styles">The styles</param>
@@ -2285,14 +2258,11 @@ internal static object GetUpdatedValue(ListObject list, object defaultValue)
         }
         
         /// <summary>
-        /// Describes whether is time span style
+        ///     Describes whether is time span style
         /// </summary>
         /// <param name="text">The text</param>
         /// <returns>The bool</returns>
-        internal static bool IsTimeSpanStyle(string text)
-        {
-            return text.Length == 8 && text[2] == ':' && text[5] == ':';
-        }
+        internal static bool IsTimeSpanStyle(string text) => (text.Length == 8) && (text[2] == ':') && (text[5] == ':');
         
         /// <summary>
         ///     Removes the quotes from text using the specified text
@@ -2557,51 +2527,39 @@ internal static object GetUpdatedValue(ListObject list, object defaultValue)
         }
         
         /// <summary>
-        /// Describes whether is negative
+        ///     Describes whether is negative
         /// </summary>
         /// <param name="ticks">The ticks</param>
         /// <param name="pos">The pos</param>
         /// <returns>The bool</returns>
-        internal static bool IsNegative(string ticks, int pos)
-        {
-            return ticks[pos] == '-';
-        }
+        internal static bool IsNegative(string ticks, int pos) => ticks[pos] == '-';
         
         /// <summary>
-        /// Gets the updated ticks using the specified ticks
+        ///     Gets the updated ticks using the specified ticks
         /// </summary>
         /// <param name="ticks">The ticks</param>
         /// <param name="pos">The pos</param>
         /// <returns>The string</returns>
-        internal static string GetUpdatedTicks(string ticks, int pos)
-        {
-            return ticks.Substring(0, pos).Trim();
-        }
+        internal static string GetUpdatedTicks(string ticks, int pos) => ticks.Substring(0, pos).Trim();
         
         /// <summary>
-        /// Gets the offset string using the specified ticks
+        ///     Gets the offset string using the specified ticks
         /// </summary>
         /// <param name="ticks">The ticks</param>
         /// <param name="pos">The pos</param>
         /// <returns>The string</returns>
-        internal static string GetOffsetString(string ticks, int pos)
-        {
-            return ticks.Substring(pos + 1).Trim();
-        }
+        internal static string GetOffsetString(string ticks, int pos) => ticks.Substring(pos + 1).Trim();
         
         /// <summary>
-        /// Describes whether try parse offset
+        ///     Describes whether try parse offset
         /// </summary>
         /// <param name="offsetString">The offset string</param>
         /// <param name="offsetValue">The offset value</param>
         /// <returns>The bool</returns>
-        internal static bool TryParseOffset(string offsetString, out int offsetValue)
-        {
-            return int.TryParse(offsetString, out offsetValue);
-        }
+        internal static bool TryParseOffset(string offsetString, out int offsetValue) => int.TryParse(offsetString, out offsetValue);
         
         /// <summary>
-        /// Inverts the offset using the specified offset hours
+        ///     Inverts the offset using the specified offset hours
         /// </summary>
         /// <param name="offsetHours">The offset hours</param>
         /// <param name="offsetMinutes">The offset minutes</param>
@@ -2690,24 +2648,18 @@ internal static object GetUpdatedValue(ListObject list, object defaultValue)
         }
         
         /// <summary>
-        /// Describes whether is hex character
+        ///     Describes whether is hex character
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        internal static bool IsHexCharacter(char c)
-        {
-            return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f');
-        }
+        internal static bool IsHexCharacter(char c) => ((c >= '0') && (c <= '9')) || ((c >= 'a') && (c <= 'f'));
         
         /// <summary>
-        /// Converts the hex character to byte using the specified c
+        ///     Converts the hex character to byte using the specified c
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The byte</returns>
-        internal static byte ConvertHexCharacterToByte(char c)
-        {
-            return c <= '9' ? (byte) (c - '0') : (byte) (c - 'a' + 10);
-        }
+        internal static byte ConvertHexCharacterToByte(char c) => c <= '9' ? (byte) (c - '0') : (byte) (c - 'a' + 10);
         
         /// <summary>
         ///     Reads the x 4 using the specified reader
@@ -2896,7 +2848,7 @@ internal static object GetUpdatedValue(ListObject list, object defaultValue)
         }
         
         /// <summary>
-        /// Handles the object graph using the specified writer
+        ///     Handles the object graph using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="value">The value</param>
@@ -2930,17 +2882,11 @@ internal static object GetUpdatedValue(ListObject list, object defaultValue)
         }
         
         /// <summary>
-        
-        /// Handles the object graph cycle using the specified writer
-        
+        ///     Handles the object graph cycle using the specified writer
         /// </summary>
-        
         /// <param name="writer">The writer</param>
-        
         /// <param name="value">The value</param>
-        
         /// <param name="options">The options</param>
-        
         internal static void HandleObjectGraphCycle(TextWriter writer, object value, JsonOptions options)
         {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.ContinueOnCycle))
@@ -4269,7 +4215,7 @@ internal static object GetUpdatedValue(ListObject list, object defaultValue)
         }
         
         /// <summary>
-        /// Determines if two strings are equal, ignoring case.
+        ///     Determines if two strings are equal, ignoring case.
         /// </summary>
         /// <param name="source">The source string.</param>
         /// <param name="target">The target string to compare with the source string.</param>
