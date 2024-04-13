@@ -34,6 +34,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
@@ -4827,6 +4828,172 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             // Act & Assert
             Assert.Throws<InvalidOperationException>(() => JsonSerializer.InvokeConstructor(type, info, options));
+        }
+        
+        /// <summary>
+        /// Tests that read array when reader is empty returns null
+        /// </summary>
+        [Fact]
+        public void ReadArray_WhenReaderIsEmpty_ReturnsNull()
+        {
+            TextReader reader = new StringReader("");
+            JsonOptions options = new JsonOptions();
+            object[] result = JsonSerializer.ReadArray(reader, options);
+            Assert.Null(result);
+        }
+        
+        /// <summary>
+        /// Tests that read array when reader contains empty array returns empty array
+        /// </summary>
+        [Fact]
+        public void ReadArray_WhenReaderContainsEmptyArray_ReturnsEmptyArray()
+        {
+            TextReader reader = new StringReader("[]");
+            JsonOptions options = new JsonOptions();
+            object[] result = JsonSerializer.ReadArray(reader, options);
+            Assert.NotNull(result);
+            Assert.Empty(result);
+        }
+        
+        /// <summary>
+        /// Tests that read array when reader contains single element array returns single element array
+        /// </summary>
+        [Fact]
+        public void ReadArray_WhenReaderContainsSingleElementArray_ReturnsSingleElementArray()
+        {
+            TextReader reader = new StringReader("[\"element\"]");
+            JsonOptions options = new JsonOptions();
+            object[] result = JsonSerializer.ReadArray(reader, options);
+            Assert.NotNull(result);
+            Assert.Single(result);
+            Assert.Equal("element", result[0]);
+        }
+        
+        /// <summary>
+        /// Tests that read array when reader contains multiple element array returns multiple element array
+        /// </summary>
+        [Fact]
+        public void ReadArray_WhenReaderContainsMultipleElementArray_ReturnsMultipleElementArray()
+        {
+            TextReader reader = new StringReader("[\"element1\", \"element2\"]");
+            JsonOptions options = new JsonOptions();
+            object[] result = JsonSerializer.ReadArray(reader, options);
+            Assert.NotNull(result);
+            Assert.Equal(2, result.Length);
+            Assert.Equal("element1", result[0]);
+            Assert.Equal("element2", result[1]);
+        }
+        
+        /// <summary>
+        /// Tests that read array when reader contains nested array returns nested array
+        /// </summary>
+        [Fact]
+        public void ReadArray_WhenReaderContainsNestedArray_ReturnsNestedArray()
+        {
+            TextReader reader = new StringReader("[\"element1\", [\"nested1\", \"nested2\"]]");
+            JsonOptions options = new JsonOptions();
+            object[] result = JsonSerializer.ReadArray(reader, options);
+            Assert.NotNull(result);
+            Assert.Equal(2, result.Length);
+            Assert.Equal("element1", result[0]);
+            Assert.IsType<object[]>(result[1]);
+            Assert.Equal("nested1", ((object[]) result[1])[0]);
+            Assert.Equal("nested2", ((object[]) result[1])[1]);
+        }
+        
+        /// <summary>
+        /// Tests that read array when reader contains invalid json throws exception
+        /// </summary>
+        [Fact]
+        public void ReadArray_WhenReaderContainsInvalidJson_ThrowsException()
+        {
+            TextReader reader = new StringReader("[\"element1\", \"element2\"");
+            JsonOptions options = new JsonOptions();
+            Assert.Throws<JsonException>(() => JsonSerializer.ReadArray(reader, options));
+        }
+        
+        /// <summary>
+        /// Tests that invoke constructor when constructor is null throws argument null exception
+        /// </summary>
+        [Fact]
+        public void InvokeConstructor_WhenConstructorIsNull_ThrowsArgumentNullException()
+        {
+            ConstructorInfo constructor = null;
+            SerializationInfo info = new SerializationInfo(typeof(object), new FormatterConverter());
+            StreamingContext context = new StreamingContext();
+            
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.InvokeConstructor(constructor, info, context));
+        }
+        
+        /// <summary>
+        /// Tests that invoke constructor when info is null throws argument null exception
+        /// </summary>
+        [Fact]
+        public void InvokeConstructor_WhenInfoIsNull_ThrowsArgumentNullException()
+        {
+            ConstructorInfo constructor = typeof(SampleClass).GetConstructor(new[] {typeof(SerializationInfo), typeof(StreamingContext)});
+            SerializationInfo info = null;
+            StreamingContext context = new StreamingContext();
+            
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.InvokeConstructor(constructor, info, context));
+        }
+        
+        /// <summary>
+        /// Tests that invoke constructor when constructor is not null and info is not null returns serializable
+        /// </summary>
+        [Fact]
+        public void InvokeConstructor_WhenConstructorIsNotNullAndInfoIsNotNull_ReturnsSerializable()
+        {
+            ConstructorInfo constructor = typeof(SampleClass).GetConstructor(new[] {typeof(SerializationInfo), typeof(StreamingContext)});
+            SerializationInfo info = new SerializationInfo(typeof(SampleClass), new FormatterConverter());
+            StreamingContext context = new StreamingContext();
+            
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.InvokeConstructor(constructor, info, context));
+        }
+        
+        /// <summary>
+        /// Tests that invoke constructor when constructor does not match throws argument exception
+        /// </summary>
+        [Fact]
+        public void InvokeConstructor_WhenConstructorDoesNotMatch_ThrowsArgumentException()
+        {
+            ConstructorInfo constructor = typeof(SampleClass).GetConstructor(Type.EmptyTypes);
+            SerializationInfo info = new SerializationInfo(typeof(SampleClass), new FormatterConverter());
+            StreamingContext context = new StreamingContext();
+            
+            Assert.Throws<TargetParameterCountException>(() => JsonSerializer.InvokeConstructor(constructor, info, context));
+        }
+        
+        /// <summary>
+        /// Tests that handle exception when throw exceptions is false adds exception to options
+        /// </summary>
+        [Fact]
+        public void HandleException_WhenThrowExceptionsIsFalse_AddsExceptionToOptions()
+        {
+            // Arrange
+            JsonOptions options = new JsonOptions {ThrowExceptions = false};
+            Exception exception = new Exception("Test exception");
+            
+            // Act
+            JsonSerializer.HandleException(exception, options);
+            
+            // Assert
+            Assert.Single(options.Exceptions);
+            Assert.Equal(exception, options.Exceptions.First());
+        }
+        
+        /// <summary>
+        /// Tests that handle exception when throw exceptions is true throws exception
+        /// </summary>
+        [Fact]
+        public void HandleException_WhenThrowExceptionsIsTrue_ThrowsException()
+        {
+            // Arrange
+            JsonOptions options = new JsonOptions {ThrowExceptions = true};
+            Exception exception = new Exception("Test exception");
+            
+            // Act & Assert
+            Assert.Throws<Exception>(() => JsonSerializer.HandleException(exception, options));
         }
     }
 }
