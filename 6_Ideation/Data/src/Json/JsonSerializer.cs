@@ -574,7 +574,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Processes the input using the specified target
+        /// Processes the input using the specified target
         /// </summary>
         /// <param name="target">The target</param>
         /// <param name="input">The input</param>
@@ -583,46 +583,73 @@ namespace Alis.Core.Aspect.Data.Json
         internal static void ProcessInput(object target, IEnumerable input, ListObject list, JsonOptions options)
         {
             Array array = list.List as Array;
-            int max = 0;
-            int i = 0;
+            Type itemType = GetItemType(list.List.GetType());
+            
             if (array != null)
             {
-                i = array.GetLowerBound(0);
-                max = array.GetUpperBound(0);
+                ProcessArrayInput(target, input, array, itemType, options);
             }
+            else
+            {
+                ProcessListInput(target, input, list, itemType, options);
+            }
+        }
+        
+        /// <summary>
+        /// Processes the array input using the specified target
+        /// </summary>
+        /// <param name="target">The target</param>
+        /// <param name="input">The input</param>
+        /// <param name="array">The array</param>
+        /// <param name="itemType">The item type</param>
+        /// <param name="options">The options</param>
+        internal static void ProcessArrayInput(object target, IEnumerable input, Array array, Type itemType, JsonOptions options)
+        {
+            int maxIndex = array.GetUpperBound(0);
+            int currentIndex = array.GetLowerBound(0);
             
-            Type itemType = GetItemType(list.List.GetType());
             foreach (object value in input)
             {
-                if (array != null)
+                if (currentIndex - 1 == maxIndex)
                 {
-                    if (i - 1 == max)
+                    break;
+                }
+                
+                object convertedValue = ChangeType(target, value, itemType, options);
+                array.SetValue(convertedValue, currentIndex++);
+            }
+        }
+        
+        /// <summary>
+        /// Processes the list input using the specified target
+        /// </summary>
+        /// <param name="target">The target</param>
+        /// <param name="input">The input</param>
+        /// <param name="list">The list</param>
+        /// <param name="itemType">The item type</param>
+        /// <param name="options">The options</param>
+        internal static void ProcessListInput(object target, IEnumerable input, ListObject list, Type itemType, JsonOptions options)
+        {
+            foreach (object value in input)
+            {
+                object convertedValue = ChangeType(target, value, itemType, options);
+                
+                if (list.Context != null)
+                {
+                    list.Context["action"] = "add";
+                    list.Context["itemType"] = itemType;
+                    list.Context["value"] = value;
+                    list.Context["cvalue"] = convertedValue;
+                    
+                    if (!list.Context.TryGetValue("cvalue", out object newConvertedValue))
                     {
-                        break;
+                        continue;
                     }
                     
-                    array.SetValue(ChangeType(target, value, itemType, options), i++);
+                    convertedValue = newConvertedValue;
                 }
-                else
-                {
-                    object cValue = ChangeType(target, value, itemType, options);
-                    if (list.Context != null)
-                    {
-                        list.Context["action"] = "add";
-                        list.Context["itemType"] = itemType;
-                        list.Context["value"] = value;
-                        list.Context["cvalue"] = cValue;
-                        
-                        if (!list.Context.TryGetValue("cvalue", out object newCValue))
-                        {
-                            continue;
-                        }
-                        
-                        cValue = newCValue;
-                    }
-                    
-                    list.Add(cValue, options);
-                }
+                
+                list.Add(convertedValue, options);
             }
         }
         
@@ -3980,5 +4007,7 @@ namespace Alis.Core.Aspect.Data.Json
             string t = str.Trim();
             return t.Length == 0 ? null : t;
         }
+        
+        
     }
 }
