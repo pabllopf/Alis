@@ -4317,5 +4317,62 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.NotEqual(0, offsetHours);
             Assert.NotEqual(0, offsetMinutes);
         }
+        
+        /// <summary>
+        /// Tests that update value based on context when context is null returns converted value v 2
+        /// </summary>
+        [Fact]
+        public void UpdateValueBasedOnContext_WhenContextIsNull_ReturnsConvertedValue_v2()
+        {
+            // Arrange
+            CustomListObject list = new CustomListObject {Context = null};
+            Type itemType = typeof(int);
+            int value = 1;
+            int convertedValue = 2;
+            
+            // Act
+            object result = JsonSerializer.UpdateValueBasedOnContext(list, itemType, value, convertedValue);
+            
+            // Assert
+            Assert.Equal(convertedValue, result);
+        }
+        
+        /// <summary>
+        /// Tests that update value based on context when context is not null and contains c value returns new converted value
+        /// </summary>
+        [Fact]
+        public void UpdateValueBasedOnContext_WhenContextIsNotNullAndContainsCValue_ReturnsNewConvertedValue()
+        {
+            // Arrange
+            CustomListObject list = new CustomListObject {Context = new Dictionary<string, object> {["cvalue"] = 3}};
+            Type itemType = typeof(int);
+            int value = 1;
+            int convertedValue = 2;
+            
+            // Act
+            object result = JsonSerializer.UpdateValueBasedOnContext(list, itemType, value, convertedValue);
+            
+            // Assert
+            Assert.NotEqual("Not 2", result);
+        }
+        
+        /// <summary>
+        /// Tests that update value based on context when context is not null and does not contain c value returns converted value
+        /// </summary>
+        [Fact]
+        public void UpdateValueBasedOnContext_WhenContextIsNotNullAndDoesNotContainCValue_ReturnsConvertedValue()
+        {
+            // Arrange
+            CustomListObject list = new CustomListObject() {Context = new Dictionary<string, object>()};
+            Type itemType = typeof(int);
+            int value = 1;
+            int convertedValue = 2;
+            
+            // Act
+            object result = JsonSerializer.UpdateValueBasedOnContext(list, itemType, value, convertedValue);
+            
+            // Assert
+            Assert.Equal(convertedValue, result);
+        }
     }
 }

@@ -728,30 +728,64 @@ namespace Alis.Core.Aspect.Data.Json
             }
         }
         
-        /// <summary>
-        ///     Updates the value based on context using the specified list
-        /// </summary>
-        /// <param name="list">The list</param>
-        /// <param name="itemType">The item type</param>
-        /// <param name="value">The value</param>
-        /// <param name="convertedValue">The converted value</param>
-        /// <returns>The converted value</returns>
-        internal static object UpdateValueBasedOnContext(ListObject list, Type itemType, object value, object convertedValue)
-        {
-            if (list.Context == null)
-            {
-                return convertedValue;
-            }
-            
-            UpdateContext(list, itemType, value, convertedValue);
-            
-            if (list.Context.TryGetValue("cvalue", out object newConvertedValue))
-            {
-                convertedValue = newConvertedValue;
-            }
-            
-            return convertedValue;
-        }
+       /// <summary>
+/// Updates the value based on context using the specified list.
+/// </summary>
+/// <param name="list">The list.</param>
+/// <param name="itemType">The item type.</param>
+/// <param name="value">The value.</param>
+/// <param name="convertedValue">The converted value.</param>
+/// <returns>The updated value.</returns>
+internal static object UpdateValueBasedOnContext(ListObject list, Type itemType, object value, object convertedValue)
+{
+    if (list.Context == null)
+    {
+        return convertedValue;
+    }
+
+    UpdateContextIfNeeded(list, itemType, value, convertedValue);
+
+    return GetUpdatedValue(list, convertedValue);
+}
+
+/// <summary>
+
+/// Updates the context if needed using the specified list
+
+/// </summary>
+
+/// <param name="list">The list</param>
+
+/// <param name="itemType">The item type</param>
+
+/// <param name="value">The value</param>
+
+/// <param name="convertedValue">The converted value</param>
+
+private static void UpdateContextIfNeeded(ListObject list, Type itemType, object value, object convertedValue)
+{
+    if (list.Context != null)
+    {
+        UpdateContext(list, itemType, value, convertedValue);
+    }
+}
+
+/// <summary>
+
+/// Gets the updated value using the specified list
+
+/// </summary>
+
+/// <param name="list">The list</param>
+
+/// <param name="defaultValue">The default value</param>
+
+/// <returns>The object</returns>
+
+private static object GetUpdatedValue(ListObject list, object defaultValue)
+{
+    return list.Context.TryGetValue("cvalue", out object updatedValue) ? updatedValue : defaultValue;
+}
         
         /// <summary>
         /// Updates the context using the specified list
