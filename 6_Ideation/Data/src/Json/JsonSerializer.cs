@@ -2567,36 +2567,40 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Gets the hex value using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
-        /// <param name="c">The </param>
+        /// <param name="c">The character to convert</param>
         /// <param name="options">The options</param>
         /// <returns>The byte</returns>
         internal static byte GetHexValue(TextReader reader, char c, JsonOptions options)
         {
             c = char.ToLower(c);
-            if (c < '0')
+            
+            if (!IsHexCharacter(c))
             {
                 HandleException(GetExpectedHexCharacterException(GetPosition(reader)), options);
                 return 0;
             }
             
-            if (c <= '9')
-            {
-                return (byte) (c - '0');
-            }
-            
-            if (c < 'a')
-            {
-                HandleException(GetExpectedHexCharacterException(GetPosition(reader)), options);
-                return 0;
-            }
-            
-            if (c <= 'f')
-            {
-                return (byte) (c - 'a' + 10);
-            }
-            
-            HandleException(GetExpectedHexCharacterException(GetPosition(reader)), options);
-            return 0;
+            return ConvertHexCharacterToByte(c);
+        }
+        
+        /// <summary>
+        /// Describes whether is hex character
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <returns>The bool</returns>
+        private static bool IsHexCharacter(char c)
+        {
+            return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f');
+        }
+        
+        /// <summary>
+        /// Converts the hex character to byte using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <returns>The byte</returns>
+        private static byte ConvertHexCharacterToByte(char c)
+        {
+            return c <= '9' ? (byte) (c - '0') : (byte) (c - 'a' + 10);
         }
         
         /// <summary>
