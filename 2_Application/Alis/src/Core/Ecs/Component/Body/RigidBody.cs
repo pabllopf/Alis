@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Component.Body
     ///     The rigid body class
     /// </summary>
     /// <seealso cref="Body" />
-    public class RigidBody : Body, IBuilder<RigidBodyBuilder>
+    public class RigidBody : Component, IBuilder<RigidBodyBuilder>
     {
         /// <summary>
         ///     Builders this instance
