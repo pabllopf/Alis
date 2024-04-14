@@ -76,11 +76,6 @@ namespace Alis.Core.Ecs.System.Setting
         public PhysicSetting Physic { get; set; } = new PhysicSetting();
         
         /// <summary>
-        ///     Gets or sets the value of the plugin
-        /// </summary>
-        public PluginSetting Plugin { get; set; } = new PluginSetting();
-        
-        /// <summary>
         ///     Gets or sets the value of the profile
         /// </summary>
         public ProfileSetting Profile { get; set; } = new ProfileSetting();
