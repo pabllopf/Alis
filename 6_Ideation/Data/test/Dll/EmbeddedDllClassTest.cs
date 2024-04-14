@@ -186,7 +186,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
             // Assert
             if (currentPlatform == OSPlatform.Windows)
             {
-                Assert.Equal(".dll", result);
+                Assert.Equal(".exe", result);
             }
             
             if (currentPlatform == OSPlatform.OSX || currentPlatform == OSPlatform.Create("IOS"))
