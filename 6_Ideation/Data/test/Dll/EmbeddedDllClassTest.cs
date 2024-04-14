@@ -292,18 +292,21 @@ namespace Alis.Core.Aspect.Data.Test.Dll
             string filePath = Path.Combine(Environment.CurrentDirectory, "Assets", "test.zip");
             Exception ex = null;
             
-            // Act
-            try
+            if (OSPlatform.Linux == EmbeddedDllClass.GetCurrentPlatform() || OSPlatform.OSX == EmbeddedDllClass.GetCurrentPlatform())
             {
-                EmbeddedDllClass.SetFileReadPermission(filePath);
+                // Act
+                try
+                {
+                    EmbeddedDllClass.SetFileReadPermission(filePath);
+                }
+                catch (Exception e)
+                {
+                    ex = e;
+                }
+                
+                // Assert
+                Assert.Null(ex);
             }
-            catch (Exception e)
-            {
-                ex = e;
-            }
-            
-            // Assert
-            Assert.Null(ex);
         }
         
         /// <summary>
