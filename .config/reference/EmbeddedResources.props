@@ -29,7 +29,7 @@
         '$(RuntimeIdentifier)' != '' AND 
         Exists('$(ProjectDir)/resources/') AND
         '$(DisableResources)' != 'true' AND
-        $(Configuration) == 'Release'">
+        ($(Configuration) == 'Release' OR $(Configuration) == 'Debug' ) ">
 
         <!-- Windows -->
         <EmbeddedResource Condition="$(IsARM) AND $(IsWindows)" Include="$(ProjectDir)/**/resources/**/win-arm/**/*win-arm*.zip"/>
