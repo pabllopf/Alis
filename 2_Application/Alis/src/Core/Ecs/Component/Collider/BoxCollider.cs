@@ -204,8 +204,8 @@ namespace Alis.Core.Ecs.Component.Collider
             Body.OnCollision += OnCollision;
             Body.OnSeparation += OnSeparation;
             
-            VideoGame.Instance.GraphicManager.Attach(this);
-            VideoGame.Instance.PhysicManager.Attach(Body);
+            VideoGame.GraphicManager.Attach(this);
+            VideoGame.PhysicManager.Attach(Body);
         }
         
         /// <summary>
@@ -324,8 +324,8 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnExit()
         {
-            VideoGame.Instance.GraphicManager.UnAttach(this);
-            VideoGame.Instance.PhysicManager.UnAttach(Body);
+            VideoGame.GraphicManager.UnAttach(this);
+            VideoGame.PhysicManager.UnAttach(Body);
         }
     }
 }

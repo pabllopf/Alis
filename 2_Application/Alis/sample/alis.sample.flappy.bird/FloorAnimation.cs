@@ -29,7 +29,6 @@
 
 using Alis.Core.Aspect.Math;
 using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.System;
 using Vector2 = Alis.Core.Aspect.Math.Vector.Vector2;
 
 namespace Alis.Sample.Flappy.Bird
@@ -70,7 +69,7 @@ namespace Alis.Sample.Flappy.Bird
             float y = GameObject.Transform.Position.Y;
             
             // get the velocity of game object:
-            float displace = Velocity * Game.TimeManager.DeltaTime;
+            float displace = Velocity * VideoGame.TimeManager.DeltaTime;
             
             // if the x position is less than -50.0f, then reset the x position to 0.0f
             Vector2 newPosition = x < -25.0f ? new Vector2(xOld, y) : new Vector2(x - displace, y);

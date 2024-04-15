@@ -99,7 +99,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnAwake()
         {
-            VideoGame.Instance.GraphicManager.Attach(this);
+            VideoGame.GraphicManager.Attach(this);
         }
         
         /// <summary>
@@ -107,7 +107,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnExit()
         {
-            VideoGame.Instance.GraphicManager.UnAttach(this);
+            VideoGame.GraphicManager.UnAttach(this);
         }
         
         /// <summary>

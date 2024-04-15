@@ -30,6 +30,7 @@
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Entity.GameObject;
+using Alis.Core.Ecs.System;
 
 namespace Alis.Core.Ecs.Component
 {
@@ -60,6 +61,11 @@ namespace Alis.Core.Ecs.Component
         ///     Gets or sets the value of the game object
         /// </summary>
         public IGameObject GameObject { get; set; } = new GameObject();
+        
+        /// <summary>
+        ///     Gets or sets the value of the game object
+        /// </summary>
+        public IGame Game{ get; set; }
         
         /// <summary>
         ///     Ons the enable
@@ -161,6 +167,8 @@ namespace Alis.Core.Ecs.Component
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public void Attach(IGameObject gameObject) => GameObject = gameObject;
+        
+        public void AttachGame<T>(T game) where T : IGame => Game = game;
         
         /// <summary>
         ///     Ons the press down key using the specified key

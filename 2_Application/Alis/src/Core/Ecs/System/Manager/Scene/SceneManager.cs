@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
     ///     The scene manager base class
     /// </summary>
     /// <seealso cref="Manager" />
-    public class SceneManager : Manager, ISceneManager
+    public class SceneManager : Manager
     {
         /// <summary>
         ///     Gets or sets the value of the current scene
@@ -48,6 +48,8 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         ///     Gets or sets the value of the scenes
         /// </summary>
         public List<IScene> Scenes { get; set; } = new List<IScene>();
+        
+        public new VideoGame VideoGame { get; set; }
         
         /// <summary>
         ///     Ons the enable
@@ -292,6 +294,10 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             CurrentScene.OnInit();
             CurrentScene.OnAwake();
             CurrentScene.OnStart();
+        }
+        
+        public SceneManager(IGame videoGame) : base(videoGame)
+        {
         }
     }
 }

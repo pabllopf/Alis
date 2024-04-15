@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using Alis.Core.Ecs.Entity.GameObject;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.Entity.Scene
 {
@@ -190,5 +191,12 @@ namespace Alis.Core.Ecs.Entity.Scene
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         public void Clear<T>() where T : IGameObject => GameObjects.Clear();
+        
+        /// <summary>
+        /// Finds
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The</returns>
+        public static T Find<T>() where T : IGameObject => throw new NotImplementedException();
     }
 }

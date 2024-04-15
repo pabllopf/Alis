@@ -32,6 +32,7 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.Entity.GameObject
 {

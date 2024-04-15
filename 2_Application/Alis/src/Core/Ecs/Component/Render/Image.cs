@@ -57,7 +57,7 @@ namespace Alis.Core.Ecs.Component.Render
             Logger.Trace();
             Path = path;
             
-            Texture = Sdl.CreateTextureFromSurface(VideoGame.Instance.GraphicManager.Renderer, Sdl.LoadBmp(path));
+            Texture = Sdl.CreateTextureFromSurface(VideoGame.GraphicManager.Renderer, Sdl.LoadBmp(path));
             
             // get the size of sprite.Image.Texture
             Sdl.QueryTexture(Texture, out _, out _, out int w, out int h);

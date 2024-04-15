@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
     ///     The graphic manager base class
     /// </summary>
     /// <seealso cref="Manager" />
-    public class GraphicManager : Manager, IGraphicManager
+    public class GraphicManager : Manager
     {
         /// <summary>
         ///     The box collider
@@ -83,6 +83,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         private static List<Camera> Cameras { get; } = new List<Camera>();
         
+        public new VideoGame VideoGame { get; set; }
+        
         /// <summary>
         ///     Ons the enable
         /// </summary>
@@ -98,7 +100,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
             Logger.Log("init::graphic:new");
             
-            defaultSize = new Vector2(VideoGame.Instance.Settings.Graphic.Window.Resolution.X, VideoGame.Instance.Settings.Graphic.Window.Resolution.Y);
+            defaultSize = new Vector2(VideoGame.Settings.Graphic.Window.Resolution.X, VideoGame.Settings.Graphic.Window.Resolution.Y);
             
             if (Sdl.Init(InitSettings.InitEverything) < 0)
             {
@@ -145,13 +147,13 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // create the window which should be able to have a valid OpenGL context and is resizable
             WindowSettings flags = WindowSettings.WindowShown;
             
-            if (VideoGame.Instance.Settings.Graphic.Window.IsWindowResizable)
+            if (VideoGame.Settings.Graphic.Window.IsWindowResizable)
             {
                 flags |= WindowSettings.WindowResizable;
             }
             
             // Creates a new SDL window at the center of the screen with the given width and height.
-            _window = Sdl.CreateWindow(VideoGame.Instance.Settings.General.Name, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, (int) defaultSize.X, (int) defaultSize.Y, flags);
+            _window = Sdl.CreateWindow(VideoGame.Settings.General.Name, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, (int) defaultSize.X, (int) defaultSize.Y, flags);
             
             // Check if the window was created successfully.
             Logger.Info(_window == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : "Window created");
@@ -231,9 +233,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Logger.Info($"Display {displayIndex} SELECTED Mode: {displayMode2.format}, {displayMode2.w}, {displayMode2.h}, {displayMode2.refresh_rate}");
             Sdl.SetWindowDisplayMode(_window, ref displayMode2);
             
-            if (!string.IsNullOrEmpty(VideoGame.Instance.Settings.General.Icon) && File.Exists(VideoGame.Instance.Settings.General.Icon))
+            if (!string.IsNullOrEmpty(VideoGame.Settings.General.Icon) && File.Exists(VideoGame.Settings.General.Icon))
             {
-                IntPtr icon = Sdl.LoadBmp(VideoGame.Instance.Settings.General.Icon);
+                IntPtr icon = Sdl.LoadBmp(VideoGame.Settings.General.Icon);
                 Sdl.SetWindowIcon(_window, icon);
             }
             
@@ -281,9 +283,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         private void SetWindowTitle()
         {
-            if (VideoGame.Instance.Settings.General.Debug)
+            if (VideoGame.Settings.General.Debug)
             {
-                Sdl.SetWindowTitle(_window, $"{VideoGame.Instance.Settings.General.Name} - FPS: {Game.TimeManager.AverageFrames}");
+                Sdl.SetWindowTitle(_window, $"{VideoGame.Settings.General.Name} - FPS: {VideoGame.TimeManager.AverageFrames}");
             }
         }
         
@@ -306,7 +308,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     sprite.Render(Renderer, camera);
                 }
                 
-                if (VideoGame.Instance.Settings.Physic.DebugMode)
+                if (VideoGame.Settings.Physic.DebugMode)
                 {
                     DrawDebugRectangles(camera);
                 }
@@ -334,7 +336,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         private void SetRenderColor()
         {
             // Sets color
-            Color color = VideoGame.Instance.Settings.Physic.DebugColor;
+            Color color = VideoGame.Settings.Physic.DebugColor;
             
             // render color
             Sdl.SetRenderDrawColor(Renderer, color.R, color.G, color.B, color.A);
@@ -458,6 +460,10 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         public void UnAttach(Camera camera)
         {
             Cameras.Remove(camera);
+        }
+        
+        public GraphicManager(VideoGame videoGame) : base(videoGame)
+        {
         }
     }
 }

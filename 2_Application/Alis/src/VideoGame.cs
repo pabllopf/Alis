@@ -27,9 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Alis.Builder.Core.Ecs.System;
-using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Time;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
 using Alis.Core.Ecs.System.Manager.Audio;
@@ -50,81 +49,64 @@ namespace Alis
     public class VideoGame : Game
     {
         /// <summary>
-        ///     Video game
+        /// Initializes a new instance of the <see cref="VideoGame"/> class
         /// </summary>
-        public VideoGame()
-        {
-            Managers = new List<IManager>(new List<Manager>
-            {
-                new AudioManager(),
-                new PhysicManager(),
-                new GraphicManager(),
-                new SceneManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new ProfileManager()
-            });
-            
-            Logger.Trace();
-            
-            Instance = this;
+        /// <param name="managers"></param>
+        public VideoGame(params IManager<IGame>[] managers) : base(managers)
+        {   
+            Settings = new Settings();
+            Add(new AudioManager(this));
         }
-        
-        
-        /// <summary>
-        ///     Gets or sets the value of the instance
-        /// </summary>
-        public static VideoGame Instance { get; private set; }
         
         /// <summary>
         ///     Gets or sets the value of the audio manager
         /// </summary>
-        public AudioManager AudioManager => Get<AudioManager>();
+        public AudioManager AudioManager => Find<AudioManager>();
         
         /// <summary>
         ///     Gets or sets the value of the graphic manager
         /// </summary>
-        public GraphicManager GraphicManager => Get<GraphicManager>();
+        public GraphicManager GraphicManager => Find<GraphicManager>();
         
         /// <summary>
         ///     Gets or sets the value of the input manager
         /// </summary>
-        public InputManager InputManager => Get<InputManager>();
+        public InputManager InputManager => Find<InputManager>();
         
         /// <summary>
         ///     Gets or sets the value of the network manager
         /// </summary>
-        public NetworkManager NetworkManager => Get<NetworkManager>();
+        public NetworkManager NetworkManager => Find<NetworkManager>();
         
         /// <summary>
         ///     Gets or sets the value of the physic manager
         /// </summary>
-        public PhysicManager PhysicManager => Get<PhysicManager>();
+        public PhysicManager PhysicManager => Find<PhysicManager>();
         
         /// <summary>
         ///     Gets or sets the value of the profile manager
         /// </summary>
-        public ProfileManager ProfileManager => Get<ProfileManager>();
+        public ProfileManager ProfileManager => Find<ProfileManager>();
         
         /// <summary>
         ///     Gets or sets the value of the scene manager
         /// </summary>
-        public SceneManager SceneManager => Get<SceneManager>();
+        public SceneManager SceneManager => Find<SceneManager>();
+        
+        /// <summary>
+        /// Get the time manager
+        /// </summary>
+        public new TimeManager TimeManager => base.TimeManager;
         
         /// <summary>
         ///     Gets or sets the value of the setting
         /// </summary>
-        public Settings Settings { get; set; } = new Settings();
+        public Settings Settings  { get; set; }
         
         /// <summary>
         ///     Builders
         /// </summary>
         /// <returns>The video game builder</returns>
-        public static VideoGameBuilder Builder() => new VideoGameBuilder();
-        
-        /// <summary>
-        ///     Exits this instance
-        /// </summary>
-        public void Exit() => IsRunning = false;
+        public VideoGameBuilder Builder() => new VideoGameBuilder();
     }
 }

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.System.Manager;
 using Alis.Core.Ecs.System.Property;
 
@@ -36,21 +36,16 @@ namespace Alis.Core.Ecs.System
     /// <summary>
     ///     The game interface
     /// </summary>
-    public interface IGame : ICrud<IManager>
+    public interface IGame : ICrud<IManager<IGame>>
     {
-        /// <summary>
-        ///     Gets or sets the value of the managers
-        /// </summary>
-        public List<IManager> Managers { get; set; }
-        
-        /// <summary>
-        ///     Gets or sets the value of the is running
-        /// </summary>
-        public bool IsRunning { get; set; }
-        
         /// <summary>
         ///     Runs this instance
         /// </summary>
         public void Run();
+        
+        /// <summary>
+        /// Exits this instance
+        /// </summary>
+        public void Exit();
     }
 }

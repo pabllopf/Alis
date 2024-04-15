@@ -29,7 +29,6 @@
 
 using Alis.Core.Aspect.Math;
 using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.System;
 using Vector2 = Alis.Core.Aspect.Math.Vector.Vector2;
 
 namespace Alis.Sample.Flappy.Bird
@@ -93,7 +92,7 @@ namespace Alis.Sample.Flappy.Bird
             
             if (goUp && !goDown)
             {
-                float displace = Velocity * Game.TimeManager.DeltaTime;
+                float displace = Velocity * VideoGame.TimeManager.DeltaTime;
                 newPosition = new Vector2(x, y - displace);
                 Transform transform = new Transform
                 {
@@ -106,7 +105,7 @@ namespace Alis.Sample.Flappy.Bird
             }
             else if (goDown && !goUp)
             {
-                float displace = Velocity * Game.TimeManager.DeltaTime;
+                float displace = Velocity * VideoGame.TimeManager.DeltaTime;
                 newPosition = new Vector2(x, y + displace);
                 Transform transform = new Transform
                 {

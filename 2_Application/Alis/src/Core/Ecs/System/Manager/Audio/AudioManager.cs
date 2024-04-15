@@ -33,7 +33,10 @@ namespace Alis.Core.Ecs.System.Manager.Audio
     ///     The audio manager base class
     /// </summary>
     /// <seealso cref="Manager" />
-    public class AudioManager : Manager, IAudioManager
+    public class AudioManager : Manager 
     {
+        public AudioManager(VideoGame videoGame) : base(videoGame)
+        {
+        }
     }
 }

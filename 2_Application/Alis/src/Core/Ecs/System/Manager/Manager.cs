@@ -35,8 +35,13 @@ namespace Alis.Core.Ecs.System.Manager
     ///     The manager class
     /// </summary>
     /// <seealso cref="IManager" />
-    public abstract class Manager : IManager
+    public abstract class Manager : IManager<IGame>
     {
+        public Manager(IGame videoGame)
+        {
+            VideoGame = videoGame;
+        }
+        
         /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
@@ -151,5 +156,7 @@ namespace Alis.Core.Ecs.System.Manager
         ///     Ons the destroy
         /// </summary>
         public virtual void OnDestroy() => Logger.Trace("Manager destroyed.");
+        
+        public IGame VideoGame { get; set; }
     }
 }
