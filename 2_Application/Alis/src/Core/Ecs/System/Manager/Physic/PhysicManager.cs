@@ -38,12 +38,14 @@ namespace Alis.Core.Ecs.System.Manager.Physic
     ///     The physic manager base class
     /// </summary>
     /// <seealso cref="Manager" />
-    public class PhysicManager : Manager, IPhysicManager
+    public class PhysicManager : Manager
     {
         /// <summary>
         ///     The vector
         /// </summary>
         private readonly World world = new World(new Vector2(0, 9.8f));
+        
+        public new VideoGame VideoGame { get; set; }
         
         /// <summary>
         ///     Ons the update
@@ -51,7 +53,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         public override void OnUpdate()
         {
             Logger.Trace();
-            world.Step(Game.TimeManager.Configuration.FixedTimeStep);
+            world.Step(VideoGame.TimeManager.Configuration.FixedTimeStep);
         }
         
         /// <summary>
@@ -70,6 +72,10 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         public void UnAttach(Body body)
         {
             world.RemoveBody(body);
+        }
+        
+        public PhysicManager(VideoGame videoGame) : base(videoGame)
+        {
         }
     }
 }

@@ -34,7 +34,6 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Ecs.System;
 using Alis.Core.Graphic.Sdl2.Enums;
 
 namespace Alis.Sample.King.Platform
@@ -105,7 +104,7 @@ namespace Alis.Sample.King.Platform
         /// </summary>
         public override void OnUpdate()
         {
-            coolDownJump -= 1 * Game.TimeManager.DeltaTime;
+            coolDownJump -= 1 * VideoGame.TimeManager.DeltaTime;
             
             if (isJumping)
             {

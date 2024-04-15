@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Ecs.System.Manager;
 
@@ -43,27 +42,52 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         ///     The time manager base
         /// </summary>
-        public static TimeManager TimeManager { get; } = new TimeManager();
+        protected TimeManager TimeManager { get; } = new TimeManager();
         
         /// <summary>
-        ///     Gets or sets the value of the managers
+        /// Gets or sets the value of the managers
         /// </summary>
-        public List<IManager> Managers { get; set; }
+        protected internal Dictionary<Type, IManager<IGame>> Managers { get; protected set; }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Game"/> class
+        /// </summary>
+        /// <param name="managers">The managers</param>
+        protected Game(params IManager<IGame>[] managers)
+        {
+            Managers = new Dictionary<Type, IManager<IGame>>();
+            foreach (IManager<IGame> manager in managers)
+            {
+                Managers.Add(manager.GetType(), manager);
+            }
+        }
         
         /// <summary>
         ///     Gets or sets the value of the is running
         /// </summary>
-        public bool IsRunning { get; set; } = true;
+        public static bool IsRunning { get; set; } = true;
         
         /// <summary>
         ///     Run program
         /// </summary>
-        [ExcludeFromCodeCoverage]
         public virtual void Run()
         {
-            Managers.ForEach(i => i.OnInit());
-            Managers.ForEach(i => i.OnAwake());
-            Managers.ForEach(i => i.OnStart());
+            Dictionary<Type, IManager<IGame>>.ValueCollection tempManagers = Managers.Values;
+            
+            foreach (IManager<IGame> manager in tempManagers)
+            {
+                manager.OnEnable();
+            }
+            
+            foreach (IManager<IGame> manager in tempManagers)
+            {
+                manager.OnAwake();
+            }
+            
+            foreach (IManager<IGame> manager in tempManagers)
+            {
+                manager.OnStart();
+            }
             
             double currentTime = TimeManager.Clock.Elapsed.TotalSeconds;
             double accumulator = 0;
@@ -121,12 +145,24 @@ namespace Alis.Core.Ecs.System
                 }
                 
                 // Dispatch Events
-                Managers.ForEach(i => i.OnDispatchEvents());
+                 foreach (IManager<IGame> manager in tempManagers)
+                {
+                    manager.OnDispatchEvents();
+                }
                 
                 // Update Scripts
-                Managers.ForEach(j => j.OnBeforeUpdate());
-                Managers.ForEach(j => j.OnUpdate());
-                Managers.ForEach(j => j.OnAfterUpdate());
+                 foreach (IManager<IGame> manager in tempManagers)
+                {
+                    manager.OnBeforeUpdate();
+                }
+                foreach (IManager<IGame> manager in tempManagers)
+                {
+                    manager.OnUpdate();
+                }
+                foreach (IManager<IGame> manager in tempManagers)
+                {
+                    manager.OnAfterUpdate();
+                }
                 
                 // Run fixed methods
                 while (accumulator >= TimeManager.Configuration.FixedTimeStep)
@@ -142,22 +178,40 @@ namespace Alis.Core.Ecs.System
                     TimeManager.FixedUnscaledTime += TimeManager.FixedUnscaledDeltaTime;
                     TimeManager.FixedUnscaledTimeAsDouble += TimeManager.FixedUnscaledDeltaTime;
                     
-                    Managers.ForEach(i => i.OnBeforeFixedUpdate());
-                    Managers.ForEach(i => i.OnFixedUpdate());
-                    Managers.ForEach(i => i.OnAfterFixedUpdate());
+                     foreach (IManager<IGame> manager in tempManagers)
+                    {
+                        manager.OnBeforeFixedUpdate();
+                    }
+                    foreach (IManager<IGame> manager in tempManagers)
+                    {
+                        manager.OnFixedUpdate();
+                    }
+                    foreach (IManager<IGame> manager in tempManagers)
+                    {
+                        manager.OnAfterFixedUpdate();
+                    }
                     accumulator -= TimeManager.Configuration.FixedTimeStep;
                     
                     TimeManager.InFixedTimeStep = false;
                 }
                 
                 // Calculate method to calculate math
-                Managers.ForEach(i => i.OnCalculate());
+                 foreach (IManager<IGame> manager in tempManagers)
+                {
+                    manager.OnCalculate();
+                }
                 
                 // Render Game
-                Managers.ForEach(j => j.OnDraw());
+                 foreach (IManager<IGame> manager in tempManagers)
+                {
+                    manager.OnDraw();
+                }
                 
                 // Render the Ui
-                Managers.ForEach(j => j.OnGui());
+                 foreach (IManager<IGame> manager in tempManagers)
+                {
+                    manager.OnGui();
+                }
                 
                 // Update SmoothDeltaTime
                 smoothDeltaTimeSum += TimeManager.DeltaTime - lastDeltaTime;
@@ -195,62 +249,69 @@ namespace Alis.Core.Ecs.System
                 }
             }
             
-            Managers.ForEach(i => i.OnStop());
-            Managers.ForEach(i => i.OnExit());
+            
+            foreach (IManager<IGame> manager in tempManagers)
+            {
+                manager.OnStop();
+            }
+            
+            foreach (IManager<IGame> manager in tempManagers)
+            {
+                manager.OnExit();
+            }
         }
         
         /// <summary>
-        ///     Adds the component
+        /// Exits this instance
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="component">The component</param>
-        public void Add<T>(T component) where T : IManager => Managers.Add(component);
-        
-        /// <summary>
-        ///     Removes the component
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="component">The component</param>
-        public void Remove<T>(T component) where T : IManager => Managers.Remove(component);
+        public void Exit() => IsRunning = false;
         
         /// <summary>
         ///     Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
-        public T Get<T>() where T : IManager => (T) Managers.Find(i => i.GetType() == typeof(T));
+        public virtual T Find<T>() where T : IManager<IGame> => (T) Managers[typeof(T)] ;
         
         /// <summary>
-        ///     Describes whether this instance contains
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <returns>The bool</returns>
-        public bool Contains<T>() where T : IManager => Get<T>() != null;
-        
-        /// <summary>
-        ///     Cleans this instance
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        public void Clear<T>() where T : IManager => Managers.Clear();
-        
-        /// <summary>
-        ///     Sets the component
+        /// Adds the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        [ExcludeFromCodeCoverage]
-        public void Set<T>(T component) where T : IManager
-        {
-            for (int i = 0; i < Managers.Count; i++)
-            {
-                if (Managers[i].GetType() == component.GetType())
-                {
-                    Managers[i] = component;
-                    return;
-                }
-            }
-            
-            Managers.Add(component);
-        }
+        public virtual void Add<T>(T component) where T :  IManager<IGame>  => Managers.Add(typeof(T), component);
+        
+        /// <summary>
+        /// Removes the component
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="component">The component</param>
+        public virtual void Remove<T>(T component) where T :  IManager<IGame>  => Managers.Remove(typeof(T));
+        
+        /// <summary>
+        /// Gets this instance
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The</returns>
+        public virtual T Get<T>() where T :  IManager<IGame>  => (T) Managers[typeof(T)];
+        
+        /// <summary>
+        /// Describes whether this instance contains
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The bool</returns>
+        public virtual bool Contains<T>() where T :  IManager<IGame>  => Managers.ContainsKey(typeof(T));
+        
+        /// <summary>
+        /// Clears this instance
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        public virtual void Clear<T>() where T : IManager<IGame> => Managers.Clear();
+        
+        /// <summary>
+        /// Sets the component
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="component">The component</param>
+        public virtual void Set<T>(T component) where T :  IManager<IGame>  => Managers[typeof(T)] = component;
     }
 }

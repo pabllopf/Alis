@@ -33,7 +33,6 @@ using Alis.Core.Ecs.System.Setting.Graphic;
 using Alis.Core.Ecs.System.Setting.Input;
 using Alis.Core.Ecs.System.Setting.Network;
 using Alis.Core.Ecs.System.Setting.Physic;
-using Alis.Core.Ecs.System.Setting.Plugin;
 using Alis.Core.Ecs.System.Setting.Profile;
 using Alis.Core.Ecs.System.Setting.Scene;
 

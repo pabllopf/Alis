@@ -32,6 +32,12 @@ using Alis.Builder.Core.Ecs.System.Manager.Scene;
 using Alis.Builder.Core.Ecs.System.Setting;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Ecs.System.Manager.Audio;
+using Alis.Core.Ecs.System.Manager.Graphic;
+using Alis.Core.Ecs.System.Manager.Input;
+using Alis.Core.Ecs.System.Manager.Network;
+using Alis.Core.Ecs.System.Manager.Physic;
+using Alis.Core.Ecs.System.Manager.Profile;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
 

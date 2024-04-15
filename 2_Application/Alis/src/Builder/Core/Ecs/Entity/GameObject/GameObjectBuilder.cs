@@ -61,6 +61,7 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
             Alis.Core.Ecs.Component.Component component = value.Invoke((T) Activator.CreateInstance(typeof(T)));
             gameObject.Add(component);
             component.Attach(gameObject);
+            component.AttachGame(
             return this;
         }
         

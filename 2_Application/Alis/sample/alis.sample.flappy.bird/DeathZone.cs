@@ -35,7 +35,6 @@ using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity.GameObject;
-using Alis.Core.Ecs.System;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Flappy.Bird
@@ -72,10 +71,10 @@ namespace Alis.Sample.Flappy.Bird
         {
             if (IsDeath)
             {
-                TimeDelta -= 1f * Game.TimeManager.DeltaTime;
+                TimeDelta -= 1f * VideoGame.TimeManager.DeltaTime;
                 if (TimeDelta <= 0.0f)
                 {
-                    VideoGame.Instance.SceneManager.LoadScene("Main Menu");
+                    VideoGame.SceneManager.LoadScene("Main Menu");
                     Logger.Info("RESET LEVEL");
                 }
             }

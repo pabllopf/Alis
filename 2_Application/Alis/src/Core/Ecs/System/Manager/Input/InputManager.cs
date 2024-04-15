@@ -43,8 +43,14 @@ namespace Alis.Core.Ecs.System.Manager.Input
     ///     The graphic manager base class
     /// </summary>
     /// <seealso cref="Manager" />
-    public class InputManager : Manager, IInputManager
+    public class InputManager : Manager
     {
+        public InputManager(VideoGame videoGame) : base(videoGame)
+        {
+        }
+        
+        public new VideoGame VideoGame { get; set; }
+        
         /// <summary>
         ///     The sdl game controller axis
         /// </summary>
@@ -100,7 +106,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         {
             if (sdlEvent.type == EventType.Quit)
             {
-                VideoGame.Instance.Exit();
+                VideoGame.Exit();
             }
         }
         
@@ -186,7 +192,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// <param name="key">The key</param>
         private void NotifyKeyPress(KeyCode key)
         {
-            foreach (GameObject currentSceneGameObject in VideoGame.Instance.SceneManager.CurrentScene.GameObjects.Cast<GameObject>())
+            foreach (GameObject currentSceneGameObject in VideoGame.SceneManager.CurrentScene.GameObjects.Cast<GameObject>())
             {
                 currentSceneGameObject.Components.ForEach(i => i.OnPressKey(key));
             }
@@ -198,7 +204,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// <param name="key">The key</param>
         private void NotifyKeyRelease(KeyCode key)
         {
-            foreach (GameObject currentSceneGameObject in VideoGame.Instance.SceneManager.CurrentScene.GameObjects.Cast<GameObject>())
+            foreach (GameObject currentSceneGameObject in VideoGame.SceneManager.CurrentScene.GameObjects.Cast<GameObject>())
             {
                 currentSceneGameObject.Components.ForEach(i => i.OnReleaseKey(key));
             }
@@ -210,10 +216,12 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// <param name="key">The key</param>
         private void NotifyKeyHold(KeyCode key)
         {
-            foreach (GameObject currentSceneGameObject in VideoGame.Instance.SceneManager.CurrentScene.GameObjects.Cast<GameObject>())
+            foreach (GameObject currentSceneGameObject in VideoGame.SceneManager.CurrentScene.GameObjects.Cast<GameObject>())
             {
                 currentSceneGameObject.Components.ForEach(i => i.OnPressDownKey(key));
             }
         }
+        
+        
     }
 }

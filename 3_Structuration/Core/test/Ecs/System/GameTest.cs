@@ -191,7 +191,7 @@ namespace Alis.Core.Test.Ecs.System
             game.Add(manager);
             
             // Act
-            ManagerSample retrievedManager = game.Get<ManagerSample>();
+            ManagerSample retrievedManager = game.Find<ManagerSample>();
             
             // Assert
             Assert.Equal(manager, retrievedManager);
@@ -377,7 +377,7 @@ namespace Alis.Core.Test.Ecs.System
             game.Add(manager);
             
             // Act
-            ManagerSample actualManager = game.Get<ManagerSample>();
+            ManagerSample actualManager = game.Find<ManagerSample>();
             
             // Assert
             Assert.Equal(manager, actualManager);
