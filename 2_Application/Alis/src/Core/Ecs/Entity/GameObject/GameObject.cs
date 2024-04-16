@@ -32,12 +32,12 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
-using NotImplementedException = System.NotImplementedException;
+using Alis.Core.Ecs.System.Property;
 
 namespace Alis.Core.Ecs.Entity.GameObject
 {
     /// <summary>Represent a object of the game.</summary>
-    public class GameObject : IGameObject
+    public class GameObject : IGameObject<Component.Component>, IHasContext<Context>
     {
         /// <summary>
         ///     Gets or sets the value of the is enable
@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Entity.GameObject
         /// <summary>
         ///     Gets or sets the value of the components
         /// </summary>
-        public List<IComponent> Components { get; set; } = new List<IComponent>();
+        public List<Component.Component> Components { get; set; } = new List<Component.Component>();
         
         /// <summary>
         ///     Gets or sets the value of the transform
@@ -74,34 +74,34 @@ namespace Alis.Core.Ecs.Entity.GameObject
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public void Add<T>(T component) where T : IComponent => Components.Add(component);
+        public void Add<T>(T component) where T : Component.Component => Components.Add(component);
         
         /// <summary>
         ///     Removes the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public void Remove<T>(T component) where T : IComponent => Components.Remove(component);
+        public void Remove<T>(T component) where T : Component.Component => Components.Remove(component);
         
         /// <summary>
         ///     Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
-        public T Get<T>() where T : IComponent => (T) Components.Find(i => i.GetType() == typeof(T));
+        public T Get<T>() where T : Component.Component => (T) Components.Find(i => i.GetType() == typeof(T));
         
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
-        public bool Contains<T>() where T : IComponent => Get<T>() != null;
+        public bool Contains<T>() where T : Component.Component => Get<T>() != null;
         
         /// <summary>
         ///     Clears this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        public void Clear<T>() where T : IComponent => Components.Clear();
+        public void Clear<T>() where T : Component.Component => Components.Clear();
         
         /// <summary>
         ///     Ons the enable
@@ -204,5 +204,16 @@ namespace Alis.Core.Ecs.Entity.GameObject
         ///     Ons the destroy
         /// </summary>
         public void OnDestroy() => Components.ForEach(i => i.OnDestroy());
+        
+        protected internal Context Context { get; private set; }
+        
+        public void SetContext(Context context)
+        {
+            Context = context;
+            foreach (Component.Component component in Components)
+            {
+                component.SetContext(context);
+            }
+        }
     }
 }

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.System;
-using Alis.Core.Aspect.Time;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
 using Alis.Core.Ecs.System.Manager.Audio;
@@ -46,67 +45,67 @@ namespace Alis
     ///     The video game class
     /// </summary>
     /// <seealso cref="Game" />
-    public class VideoGame : Game
+    public sealed class VideoGame : Game
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="VideoGame"/> class
-        /// </summary>
-        /// <param name="managers"></param>
-        public VideoGame(params IManager<IGame>[] managers) : base(managers)
-        {   
-            Settings = new Settings();
-            Add(new AudioManager(this));
+        public VideoGame(
+            Settings settings,
+            AudioManager audioManager,
+            GraphicManager graphicManager,
+            InputManager inputManager,
+            NetworkManager networkManager,
+            PhysicManager physicManager,
+            ProfileManager profileManager,
+            SceneManager sceneManager,
+            Context context = null,
+            params Manager[] managers) : base(managers)
+        {
+            context ??= new Context(this, settings);
+            this.Context = context;
+            audioManager.SetContext(context);
+            graphicManager.SetContext(context);
+            inputManager.SetContext(context);
+            networkManager.SetContext(context);
+            physicManager.SetContext(context);
+            profileManager.SetContext(context);
+            sceneManager.SetContext(context);
+            foreach (Manager manager in managers)
+            {
+                manager.SetContext(this.Context);
+            }
+            
+            Add(audioManager);
+            Add(graphicManager);
+            Add(inputManager);
+            Add(networkManager);
+            Add(physicManager);
+            Add(profileManager);
+            Add(sceneManager);
         }
         
-        /// <summary>
-        ///     Gets or sets the value of the audio manager
-        /// </summary>
-        public AudioManager AudioManager => Find<AudioManager>();
+        public AudioManager AudioManager => Context.AudioManager;
         
-        /// <summary>
-        ///     Gets or sets the value of the graphic manager
-        /// </summary>
-        public GraphicManager GraphicManager => Find<GraphicManager>();
+        public GraphicManager GraphicManager => Context.GraphicManager;
         
-        /// <summary>
-        ///     Gets or sets the value of the input manager
-        /// </summary>
-        public InputManager InputManager => Find<InputManager>();
+        public InputManager InputManager => Context.InputManager;
         
-        /// <summary>
-        ///     Gets or sets the value of the network manager
-        /// </summary>
-        public NetworkManager NetworkManager => Find<NetworkManager>();
+        public NetworkManager NetworkManager => Context.NetworkManager;
         
-        /// <summary>
-        ///     Gets or sets the value of the physic manager
-        /// </summary>
-        public PhysicManager PhysicManager => Find<PhysicManager>();
+        public PhysicManager PhysicManager => Context.PhysicManager;
         
-        /// <summary>
-        ///     Gets or sets the value of the profile manager
-        /// </summary>
-        public ProfileManager ProfileManager => Find<ProfileManager>();
+        public ProfileManager ProfileManager => Context.ProfileManager;
         
-        /// <summary>
-        ///     Gets or sets the value of the scene manager
-        /// </summary>
-        public SceneManager SceneManager => Find<SceneManager>();
+        public SceneManager SceneManager => Context.SceneManager;
         
-        /// <summary>
-        /// Get the time manager
-        /// </summary>
-        public new TimeManager TimeManager => base.TimeManager;
-        
-        /// <summary>
-        ///     Gets or sets the value of the setting
-        /// </summary>
-        public Settings Settings  { get; set; }
+        public Settings Settings
+        {
+            set => Context.Settings = value;
+            get => Context.Settings;
+        }
         
         /// <summary>
         ///     Builders
         /// </summary>
         /// <returns>The video game builder</returns>
-        public VideoGameBuilder Builder() => new VideoGameBuilder();
+        public static VideoGameBuilder Builder() => new VideoGameBuilder();
     }
 }

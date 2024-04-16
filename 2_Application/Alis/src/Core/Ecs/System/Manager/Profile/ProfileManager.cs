@@ -29,15 +29,7 @@
 
 namespace Alis.Core.Ecs.System.Manager.Profile
 {
-    /// <summary>
-    ///     The profile manager class
-    /// </summary>
-    /// <seealso cref="Manager" />
-    /// <seealso cref="IProfileManager" />
     public class ProfileManager : Manager
     {
-        public ProfileManager(VideoGame videoGame) : base(videoGame)
-        {
-        }
     }
 }

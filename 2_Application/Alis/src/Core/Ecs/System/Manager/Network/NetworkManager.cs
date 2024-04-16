@@ -36,8 +36,5 @@ namespace Alis.Core.Ecs.System.Manager.Network
     /// <seealso cref="INetworkManager" />
     public class NetworkManager : Manager
     {
-        public NetworkManager(VideoGame videoGame) : base(videoGame)
-        {
-        }
     }
 }

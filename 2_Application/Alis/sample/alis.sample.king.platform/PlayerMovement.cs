@@ -104,7 +104,7 @@ namespace Alis.Sample.King.Platform
         /// </summary>
         public override void OnUpdate()
         {
-            coolDownJump -= 1 * VideoGame.TimeManager.DeltaTime;
+            coolDownJump -= 1 * Context.TimeManager.DeltaTime;
             
             if (isJumping)
             {

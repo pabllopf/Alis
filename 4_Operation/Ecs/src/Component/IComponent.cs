@@ -36,18 +36,18 @@ namespace Alis.Core.Ecs.Component
     /// <summary>
     ///     The component interface
     /// </summary>
-    public interface IComponent : IEnabled, IIdentifier, IRuntime
+    public interface IComponent<T> : IEnabled, IIdentifier, IRuntime
     {
         /// <summary>
         ///     Gets or sets the value of the game object
         /// </summary>
-        public IGameObject GameObject { get; set; }
+        public T GameObject { get; set; }
         
         /// <summary>
         ///     Attaches the game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public void Attach(IGameObject gameObject);
+        public void Attach(T gameObject);
         
         /// <summary>
         ///     Ons the press down key using the specified key
@@ -71,12 +71,12 @@ namespace Alis.Core.Ecs.Component
         ///     Ons the collision enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public void OnCollisionEnter(IGameObject gameObject);
+        public void OnCollisionEnter(T gameObject);
         
         /// <summary>
         ///     Ons the collision exit using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public void OnCollisionExit(IGameObject gameObject);
+        public void OnCollisionExit(T gameObject);
     }
 }

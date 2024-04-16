@@ -71,10 +71,10 @@ namespace Alis.Sample.Flappy.Bird
         {
             if (IsDeath)
             {
-                TimeDelta -= 1f * VideoGame.TimeManager.DeltaTime;
+                TimeDelta -= 1f * Context.TimeManager.DeltaTime;
                 if (TimeDelta <= 0.0f)
                 {
-                    VideoGame.SceneManager.LoadScene("Main Menu");
+                    Context.SceneManager.LoadScene("Main Menu");
                     Logger.Info("RESET LEVEL");
                 }
             }
@@ -84,7 +84,7 @@ namespace Alis.Sample.Flappy.Bird
         ///     Ons the collision enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public override void OnCollisionEnter(IGameObject gameObject)
+        public override void OnCollisionEnter(GameObject gameObject)
         {
             if (gameObject.Tag == "Player")
             {

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.System.Manager;
 using Alis.Core.Ecs.System.Property;
 
@@ -36,7 +35,7 @@ namespace Alis.Core.Ecs.System
     /// <summary>
     ///     The game interface
     /// </summary>
-    public interface IGame : ICrud<IManager<IGame>>
+    public interface IGame 
     {
         /// <summary>
         ///     Runs this instance

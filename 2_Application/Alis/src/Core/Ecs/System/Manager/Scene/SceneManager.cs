@@ -42,14 +42,12 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// <summary>
         ///     Gets or sets the value of the current scene
         /// </summary>
-        public IScene CurrentScene { get; set; } = new Entity.Scene.Scene();
+        public Entity.Scene.Scene CurrentScene { get; set; } = new Entity.Scene.Scene();
         
         /// <summary>
         ///     Gets or sets the value of the scenes
         /// </summary>
-        public List<IScene> Scenes { get; set; } = new List<IScene>();
-        
-        public new VideoGame VideoGame { get; set; }
+        public List<Entity.Scene.Scene> Scenes { get; set; } = new List<Entity.Scene.Scene>();
         
         /// <summary>
         ///     Ons the enable
@@ -64,6 +62,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// </summary>
         public override void OnInit()
         {
+            Scenes.ForEach(i => i.SetContext(Context));
             CurrentScene.OnInit();
         }
         
@@ -208,9 +207,9 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public void Add<T>(T component) where T : IScene
+        public void Add<T>(T component) where T : Entity.Scene.Scene
         {
-            Scenes ??= new List<IScene>();
+            Scenes ??= new List<Entity.Scene.Scene>();
             Scenes.Add(component);
         }
         
@@ -219,7 +218,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public void Remove<T>(T component) where T : IScene
+        public void Remove<T>(T component) where T : Entity.Scene.Scene
         {
             Scenes.Remove(component);
         }
@@ -229,20 +228,20 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
-        public T Get<T>() where T : IScene => (T) Scenes.Find(i => i.GetType() == typeof(T));
+        public T Get<T>() where T : Entity.Scene.Scene => (T) Scenes.Find(i => i.GetType() == typeof(T));
         
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
-        public bool Contains<T>() where T : IScene => Get<T>() != null;
+        public bool Contains<T>() where T : Entity.Scene.Scene => Get<T>() != null;
         
         /// <summary>
         ///     Clears this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        public void Clear<T>() where T : IScene
+        public void Clear<T>() where T : Entity.Scene.Scene
         {
             Scenes.Clear();
         }
@@ -251,7 +250,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         ///     Loads the scene using the specified scene
         /// </summary>
         /// <param name="scene">The scene</param>
-        public void LoadScene(IScene scene)
+        public void LoadScene(Entity.Scene.Scene scene)
         {
             CurrentScene = scene;
         }
@@ -260,7 +259,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         ///     Reloads the scene using the specified scene
         /// </summary>
         /// <param name="scene">The scene</param>
-        public void ReloadScene(IScene scene)
+        public void ReloadScene(Entity.Scene.Scene scene)
         {
             CurrentScene = scene;
         }
@@ -294,10 +293,6 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             CurrentScene.OnInit();
             CurrentScene.OnAwake();
             CurrentScene.OnStart();
-        }
-        
-        public SceneManager(IGame videoGame) : base(videoGame)
-        {
         }
     }
 }
