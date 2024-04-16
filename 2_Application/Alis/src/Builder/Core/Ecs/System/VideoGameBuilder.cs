@@ -54,7 +54,16 @@ namespace Alis.Builder.Core.Ecs.System
     {
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
-        private readonly VideoGame videoGame = new VideoGame();
+        private readonly VideoGame videoGame = new VideoGame(
+            new Settings(),
+            new AudioManager(),
+            new GraphicManager(),
+            new InputManager(),
+            new NetworkManager(),
+            new PhysicManager(),
+            new ProfileManager(),
+            new SceneManager()
+            );
         
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>

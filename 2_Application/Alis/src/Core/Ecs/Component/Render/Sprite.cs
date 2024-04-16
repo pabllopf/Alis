@@ -89,7 +89,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             if (!string.IsNullOrEmpty(TexturePath))
             {
-                Image = new Image(TexturePath);
+                Image = new Image(TexturePath, Context);
                 Logger.Info($"Load sprite od '{TexturePath}'");
             }
         }
@@ -99,7 +99,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnAwake()
         {
-            VideoGame.GraphicManager.Attach(this);
+            Context.GraphicManager.Attach(this);
         }
         
         /// <summary>
@@ -107,7 +107,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnExit()
         {
-            VideoGame.GraphicManager.UnAttach(this);
+            Context.GraphicManager.UnAttach(this);
         }
         
         /// <summary>

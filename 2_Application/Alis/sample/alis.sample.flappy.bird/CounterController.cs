@@ -89,7 +89,7 @@ namespace Alis.Sample.Flappy.Bird
         ///     Ons the collision enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public override void OnCollisionEnter(IGameObject gameObject)
+        public override void OnCollisionEnter(GameObject gameObject)
         {
             if ((gameObject.Tag == "Player") && !isEnter)
             {
@@ -104,7 +104,7 @@ namespace Alis.Sample.Flappy.Bird
         ///     Ons the collision exit using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public override void OnCollisionExit(IGameObject gameObject)
+        public override void OnCollisionExit(GameObject gameObject)
         {
             if ((gameObject.Tag == "Player") && isEnter)
             {

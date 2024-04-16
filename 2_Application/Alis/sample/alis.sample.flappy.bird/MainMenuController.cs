@@ -46,7 +46,7 @@ namespace Alis.Sample.Flappy.Bird
         {
             if (key == KeyCode.Space)
             {
-                VideoGame.SceneManager.LoadScene("Game Scene");
+                Context.SceneManager.LoadScene("Game Scene");
             }
         }
     }

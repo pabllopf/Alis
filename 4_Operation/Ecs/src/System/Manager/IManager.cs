@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.System.Property;
 
 namespace Alis.Core.Ecs.System.Manager
@@ -35,11 +34,7 @@ namespace Alis.Core.Ecs.System.Manager
     /// <summary>
     ///     The manager interface
     /// </summary>
-    public interface IManager<T>:  IEnabled, IIdentifier, IRuntime
+    public interface IManager:  IEnabled, IIdentifier, IRuntime
     {
-        /// <summary>
-        /// Gets or sets the value of the game
-        /// </summary>
-        public T VideoGame { get; set; }
     }
 }

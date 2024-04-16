@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using Alis.Core.Ecs.Entity.GameObject;
+using Alis.Core.Ecs.System.Property;
 using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.Entity.Scene
@@ -36,7 +37,7 @@ namespace Alis.Core.Ecs.Entity.Scene
     /// <summary>
     ///     The scene class
     /// </summary>
-    public class Scene : IScene
+    public class Scene : IScene<GameObject.GameObject>, IHasContext<Context>
     {
         /// <summary>
         ///     Gets or sets the value of the is enable
@@ -61,7 +62,7 @@ namespace Alis.Core.Ecs.Entity.Scene
         /// <summary>
         ///     Gets or sets the value of the game objects
         /// </summary>
-        public List<IGameObject> GameObjects { get; set; } = new List<IGameObject>();
+        public List<GameObject.GameObject> GameObjects { get; set; } = new List<GameObject.GameObject>();
         
         /// <summary>
         ///     Ons the enable
@@ -163,40 +164,54 @@ namespace Alis.Core.Ecs.Entity.Scene
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public void Add<T>(T component) where T : IGameObject => GameObjects.Add(component);
+        public void Add<T>(T component) where T : GameObject.GameObject
+        {
+            GameObjects.Add(component);
+        }
         
         /// <summary>
         ///     Removes the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public void Remove<T>(T component) where T : IGameObject => GameObjects.Remove(component);
+        public void Remove<T>(T component) where T : GameObject.GameObject => GameObjects.Remove(component);
         
         /// <summary>
         ///     Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
-        public T Get<T>() where T : IGameObject => (T) GameObjects.Find(i => i.GetType() == typeof(T));
+        public T Get<T>() where T : GameObject.GameObject => (T) GameObjects.Find(i => i.GetType() == typeof(T));
         
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
-        public bool Contains<T>() where T : IGameObject => Get<T>() != null;
+        public bool Contains<T>() where T : GameObject.GameObject => Get<T>() != null;
         
         /// <summary>
         ///     Clears this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        public void Clear<T>() where T : IGameObject => GameObjects.Clear();
+        public void Clear<T>() where T : GameObject.GameObject => GameObjects.Clear();
         
         /// <summary>
         /// Finds
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
-        public static T Find<T>() where T : IGameObject => throw new NotImplementedException();
+        public static T Find<T>() where T : GameObject.GameObject => throw new NotImplementedException();
+        
+        protected internal Context Context { get; private set; }
+        
+        public void SetContext(Context context)
+        {
+            Context = context;
+            foreach (GameObject.GameObject gameObject in GameObjects)
+            {
+                gameObject.SetContext(context);
+            }
+        }
     }
 }

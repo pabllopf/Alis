@@ -39,11 +39,14 @@ namespace Alis.Core.Ecs.Component.Render
     /// </summary>
     public class Image
     {
+        private Context Context { get; set; }
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Image" /> class
         /// </summary>
-        public Image()
+        public Image(Context context)
         {
+            Context = context;
             Logger.Trace();
             Path = "";
         }
@@ -52,12 +55,14 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Initializes a new instance of the <see cref="Image" /> class
         /// </summary>
         /// <param name="path">The path</param>
-        public Image(string path)
+        /// <param name="context"></param>
+        public Image(string path, Context context)
         {
+            Context = context;
             Logger.Trace();
             Path = path;
             
-            Texture = Sdl.CreateTextureFromSurface(VideoGame.GraphicManager.Renderer, Sdl.LoadBmp(path));
+            Texture = Sdl.CreateTextureFromSurface(Context.GraphicManager.Renderer, Sdl.LoadBmp(path));
             
             // get the size of sprite.Image.Texture
             Sdl.QueryTexture(Texture, out _, out _, out int w, out int h);

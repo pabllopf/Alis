@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PhysicManager.cs
+//  File:IHasContext.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,49 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic;
-using Alis.Core.Physic.Dynamics;
-
-namespace Alis.Core.Ecs.System.Manager.Physic
+namespace Alis.Core.Ecs.System.Property
 {
-    /// <summary>
-    ///     The physic manager base class
-    /// </summary>
-    /// <seealso cref="Manager" />
-    public class PhysicManager : Manager
+    public interface IHasContext<in T>
     {
-        /// <summary>
-        ///     The vector
-        /// </summary>
-        private readonly World world = new World(new Vector2(0, 9.8f));
-        
-        /// <summary>
-        ///     Ons the update
-        /// </summary>
-        public override void OnUpdate()
-        {
-            Logger.Trace();
-            world.Step(Context.TimeManager.Configuration.FixedTimeStep);
-        }
-        
-        /// <summary>
-        ///     Attaches the body
-        /// </summary>
-        /// <param name="body">The body</param>
-        public void Attach(Body body)
-        {
-            world.AddBody(body);
-        }
-        
-        /// <summary>
-        ///     Uns the attach using the specified body
-        /// </summary>
-        /// <param name="body">The body</param>
-        public void UnAttach(Body body)
-        {
-            world.RemoveBody(body);
-        }
+        public void SetContext(T context);
     }
 }

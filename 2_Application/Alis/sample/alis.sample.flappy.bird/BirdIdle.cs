@@ -92,7 +92,7 @@ namespace Alis.Sample.Flappy.Bird
             
             if (goUp && !goDown)
             {
-                float displace = Velocity * VideoGame.TimeManager.DeltaTime;
+                float displace = Velocity * Context.TimeManager.DeltaTime;
                 newPosition = new Vector2(x, y - displace);
                 Transform transform = new Transform
                 {
@@ -105,7 +105,7 @@ namespace Alis.Sample.Flappy.Bird
             }
             else if (goDown && !goUp)
             {
-                float displace = Velocity * VideoGame.TimeManager.DeltaTime;
+                float displace = Velocity * Context.TimeManager.DeltaTime;
                 newPosition = new Vector2(x, y + displace);
                 Transform transform = new Transform
                 {

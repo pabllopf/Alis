@@ -89,8 +89,8 @@ namespace Alis.Core.Ecs.Component.Render
         public override void OnStart()
         {
             Viewport = new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, (int) Resolution.X, (int) Resolution.Y);
-            TextureTarget = Sdl.CreateTexture(VideoGame.GraphicManager.Renderer, Sdl.PixelFormatRgba8888, (int) TextureAccess.SdlTextureAccessTarget, Viewport.w, Viewport.h);
-            VideoGame.GraphicManager.Attach(this);
+            TextureTarget = Sdl.CreateTexture(Context.GraphicManager.Renderer, Sdl.PixelFormatRgba8888, (int) TextureAccess.SdlTextureAccessTarget, Viewport.w, Viewport.h);
+           Context.GraphicManager.Attach(this);
         }
         
         /// <summary>
@@ -107,7 +107,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnExit()
         {
-            VideoGame.GraphicManager.UnAttach(this);
+           Context.GraphicManager.UnAttach(this);
         }
     }
 }

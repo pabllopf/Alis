@@ -31,11 +31,13 @@ using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Entity.GameObject;
 using Alis.Core.Ecs.System;
+using Alis.Core.Ecs.System.Property;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.Component
 {
     /// <summary>Define a general component.</summary>
-    public abstract class Component : IComponent
+    public abstract class Component : IComponent<GameObject>, IHasContext<Context>
     {
         /// <summary>
         ///     Gets or sets the value of the is enable
@@ -60,12 +62,12 @@ namespace Alis.Core.Ecs.Component
         /// <summary>
         ///     Gets or sets the value of the game object
         /// </summary>
-        public IGameObject GameObject { get; set; } = new GameObject();
+        public GameObject GameObject { get; set; } = new GameObject();
         
         /// <summary>
         ///     Gets or sets the value of the game object
         /// </summary>
-        public IGame Game{ get; set; }
+        public Context Context{ get; set; }
         
         /// <summary>
         ///     Ons the enable
@@ -166,9 +168,7 @@ namespace Alis.Core.Ecs.Component
         ///     Attaches the game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public void Attach(IGameObject gameObject) => GameObject = gameObject;
-        
-        public void AttachGame<T>(T game) where T : IGame => Game = game;
+        public void Attach(GameObject gameObject) => GameObject = gameObject;
         
         /// <summary>
         ///     Ons the press down key using the specified key
@@ -192,13 +192,13 @@ namespace Alis.Core.Ecs.Component
         ///     Ons the collision enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public virtual void OnCollisionEnter(IGameObject gameObject) => Logger.Trace();
+        public virtual void OnCollisionEnter(GameObject gameObject) => Logger.Trace();
         
         /// <summary>
         ///     Ons the collision exit using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public virtual void OnCollisionExit(IGameObject gameObject) => Logger.Trace();
+        public virtual void OnCollisionExit(GameObject gameObject) => Logger.Trace();
         
         /// <summary>
         ///     Ons the collision stay using the specified game object
@@ -223,5 +223,7 @@ namespace Alis.Core.Ecs.Component
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public virtual void OnTriggerStay(GameObject gameObject) => Logger.Trace();
+        
+        public void SetContext(Context context) => Context = context;
     }
 }

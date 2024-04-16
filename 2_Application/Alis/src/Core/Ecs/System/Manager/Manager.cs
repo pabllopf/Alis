@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Ecs.System.Property;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.System.Manager
 {
@@ -35,13 +37,8 @@ namespace Alis.Core.Ecs.System.Manager
     ///     The manager class
     /// </summary>
     /// <seealso cref="IManager" />
-    public abstract class Manager : IManager<IGame>
+    public abstract class Manager : IManager, IHasContext<Context>
     {
-        public Manager(IGame videoGame)
-        {
-            VideoGame = videoGame;
-        }
-        
         /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
@@ -157,6 +154,8 @@ namespace Alis.Core.Ecs.System.Manager
         /// </summary>
         public virtual void OnDestroy() => Logger.Trace("Manager destroyed.");
         
-        public IGame VideoGame { get; set; }
+        protected Context Context { get; private set; }
+        
+        public  void SetContext(Context context) => this.Context = context;
     }
 }

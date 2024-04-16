@@ -30,6 +30,7 @@
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Property;
 
 namespace Alis.Core.Ecs.Entity.GameObject
@@ -37,12 +38,12 @@ namespace Alis.Core.Ecs.Entity.GameObject
     /// <summary>
     ///     The game object interface
     /// </summary>
-    public interface IGameObject : IEntity, ICrud<IComponent>
+    public interface IGameObject<T> : IEntity, ICrud<T>
     {
         /// <summary>
         ///     Gets or sets the value of the components
         /// </summary>
-        public List<IComponent> Components { get; set; }
+        public List<T> Components { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the transform
