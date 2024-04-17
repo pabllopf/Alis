@@ -28,192 +28,54 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.System.Property;
+using Alis.Core.Ecs.System;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.Entity.GameObject
 {
-    /// <summary>Represent a object of the game.</summary>
-    public class GameObject : IGameObject<Component.Component>, IHasContext<Context>
+    /// <summary>
+    /// The game object class
+    /// </summary>
+    /// <seealso cref="AGameObject"/>
+    public class GameObject : AGameObject
     {
-        /// <summary>
-        ///     Gets or sets the value of the is enable
-        /// </summary>
-        public bool IsEnable { get; set; } = true;
         
         /// <summary>
-        ///     Gets or sets the value of the name
-        /// </summary>
-        public string Name { get; set; } = "GameObject";
-        
-        /// <summary>
-        ///     Gets or sets the value of the id
-        /// </summary>
-        public string Id { get; set; } = "0";
-        
-        /// <summary>
-        ///     Gets or sets the value of the tag
-        /// </summary>
-        public string Tag { get; set; } = "Untagged";
-        
-        /// <summary>
-        ///     Gets or sets the value of the components
-        /// </summary>
-        public List<Component.Component> Components { get; set; } = new List<Component.Component>();
-        
-        /// <summary>
-        ///     Gets or sets the value of the transform
-        /// </summary>
-        public Transform Transform { get; set; } = new Transform(new Vector2(0, 0), new Rotation(0), new Vector2(1, 1));
-        
-        /// <summary>
-        ///     Adds the component
+        /// Adds the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public void Add<T>(T component) where T : Component.Component => Components.Add(component);
+        public override void Add<T>(T component) => Components.Add(component as Component.Component);
         
         /// <summary>
-        ///     Removes the component
+        /// Removes the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public void Remove<T>(T component) where T : Component.Component => Components.Remove(component);
-        
+        public override void Remove<T>(T component) => Components.Remove(component as Component.Component);
         /// <summary>
-        ///     Gets this instance
+        /// Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
-        public T Get<T>() where T : Component.Component => (T) Components.Find(i => i.GetType() == typeof(T));
+        public override T Get<T>() => Components.Find(component => component is T) as T;
         
         /// <summary>
-        ///     Describes whether this instance contains
+        /// Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
-        public bool Contains<T>() where T : Component.Component => Get<T>() != null;
+        public override bool Contains<T>() => Components.Exists(component => component is T);
         
         /// <summary>
-        ///     Clears this instance
+        /// Clears this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        public void Clear<T>() where T : Component.Component => Components.Clear();
+        public override void Clear<T>() => Components.RemoveAll(component => component is T);
         
         /// <summary>
-        ///     Ons the enable
+        /// Gets the value of the context
         /// </summary>
-        public void OnEnable() => Components.ForEach(i => i.OnEnable());
-        
-        /// <summary>
-        ///     Ons the init
-        /// </summary>
-        public void OnInit()
-        {
-            Logger.Info($" Init game object: '{Name}' with id: '{Id}' and tag: '{Tag}'");
-            Components.ForEach(i => i.OnInit());
-        }
-        
-        /// <summary>
-        ///     Ons the awake
-        /// </summary>
-        public void OnAwake() => Components.ForEach(i => i.OnAwake());
-        
-        /// <summary>
-        ///     Ons the start
-        /// </summary>
-        public void OnStart() => Components.ForEach(i => i.OnStart());
-        
-        /// <summary>
-        ///     Ons the before update
-        /// </summary>
-        public void OnBeforeUpdate() => Components.ForEach(i => i.OnBeforeUpdate());
-        
-        /// <summary>
-        ///     Ons the update
-        /// </summary>
-        public void OnUpdate() => Components.ForEach(i => i.OnUpdate());
-        
-        /// <summary>
-        ///     Ons the after update
-        /// </summary>
-        public void OnAfterUpdate() => Components.ForEach(i => i.OnAfterUpdate());
-        
-        /// <summary>
-        ///     Ons the before fixed update
-        /// </summary>
-        public void OnBeforeFixedUpdate() => Components.ForEach(i => i.OnBeforeFixedUpdate());
-        
-        /// <summary>
-        ///     Ons the fixed update
-        /// </summary>
-        public void OnFixedUpdate() => Components.ForEach(i => i.OnFixedUpdate());
-        
-        /// <summary>
-        ///     Ons the after fixed update
-        /// </summary>
-        public void OnAfterFixedUpdate() => Components.ForEach(i => i.OnAfterFixedUpdate());
-        
-        /// <summary>
-        ///     Ons the dispatch events
-        /// </summary>
-        public void OnDispatchEvents() => Components.ForEach(i => i.OnDispatchEvents());
-        
-        /// <summary>
-        ///     Ons the calculate
-        /// </summary>
-        public void OnCalculate() => Components.ForEach(i => i.OnCalculate());
-        
-        /// <summary>
-        ///     Ons the draw
-        /// </summary>
-        public void OnDraw() => Components.ForEach(i => i.OnDraw());
-        
-        /// <summary>
-        ///     Ons the gui
-        /// </summary>
-        public void OnGui() => Components.ForEach(i => i.OnGui());
-        
-        /// <summary>
-        ///     Ons the disable
-        /// </summary>
-        public void OnDisable() => Components.ForEach(i => i.OnDisable());
-        
-        /// <summary>
-        ///     Ons the reset
-        /// </summary>
-        public void OnReset() => Components.ForEach(i => i.OnReset());
-        
-        /// <summary>
-        ///     Ons the stop
-        /// </summary>
-        public void OnStop() => Components.ForEach(i => i.OnStop());
-        
-        /// <summary>
-        ///     Ons the exit
-        /// </summary>
-        public void OnExit()
-        {
-            Components.ForEach(i => i.OnExit());
-        }
-        
-        /// <summary>
-        ///     Ons the destroy
-        /// </summary>
-        public void OnDestroy() => Components.ForEach(i => i.OnDestroy());
-        
-        protected internal Context Context { get; private set; }
-        
-        public void SetContext(Context context)
-        {
-            Context = context;
-            foreach (Component.Component component in Components)
-            {
-                component.SetContext(context);
-            }
-        }
+        public new Context Context => (Context)base.Context;
     }
 }

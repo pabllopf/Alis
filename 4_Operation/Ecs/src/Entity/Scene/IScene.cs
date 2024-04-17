@@ -28,8 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Core.Ecs.Entity.GameObject;
-using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Property;
 
 namespace Alis.Core.Ecs.Entity.Scene

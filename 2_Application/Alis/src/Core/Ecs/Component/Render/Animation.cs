@@ -37,8 +37,7 @@ namespace Alis.Core.Ecs.Component.Render
     /// <summary>
     ///     The animation class
     /// </summary>
-    public class Animation :
-        IBuilder<AnimatorBuilder>
+    public class Animation : IBuilder<AnimatorBuilder>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animation" /> class

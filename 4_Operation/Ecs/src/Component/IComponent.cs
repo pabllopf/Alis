@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Data.Mapping;
-using Alis.Core.Ecs.Entity.GameObject;
 using Alis.Core.Ecs.System.Property;
 
 namespace Alis.Core.Ecs.Component

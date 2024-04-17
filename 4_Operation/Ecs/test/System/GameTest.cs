@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
 
 namespace Alis.Core.Ecs.Test.System
@@ -44,6 +43,14 @@ namespace Alis.Core.Ecs.Test.System
         ///     Gets or sets the value of the managers
         /// </summary>
         public List<IManager> Managers { get; set; } = new List<IManager>();
+        
+        /// <summary>
+        /// Exits this instance
+        /// </summary>
+        public void Exit()
+        {
+            IsRunning = false;
+        }
         
         /// <summary>
         ///     Gets or sets the value of the is running

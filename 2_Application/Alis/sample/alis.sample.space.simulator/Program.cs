@@ -30,6 +30,7 @@
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Entity.GameObject;
 using Alis.Core.Ecs.Entity.Scene;
@@ -75,8 +76,8 @@ namespace Alis.Sample.Space.Simulator
                         .Build())
                     .Build())
                 .World(sceneManager => sceneManager
-                    .Add<Scene>(gameScene => gameScene
-                        .Add<GameObject>(soundTrack => soundTrack
+                    .Add<AScene>(gameScene => gameScene
+                        .Add<AGameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
                             .AddComponent<AudioSource>(audioSource => audioSource
                                 .Builder()

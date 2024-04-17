@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Entity.GameObject;
@@ -186,7 +185,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// <param name="key">The key</param>
         private void NotifyKeyPress(KeyCode key)
         {
-            foreach (GameObject currentSceneGameObject in Context.SceneManager.CurrentScene.GameObjects.Cast<GameObject>())
+            foreach (GameObject currentSceneGameObject in Context.SceneManager.CurrentScene.GameObjects)
             {
                 currentSceneGameObject.Components.ForEach(i => i.OnPressKey(key));
             }
@@ -198,7 +197,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// <param name="key">The key</param>
         private void NotifyKeyRelease(KeyCode key)
         {
-            foreach (GameObject currentSceneGameObject in Context.SceneManager.CurrentScene.GameObjects.Cast<GameObject>())
+            foreach (AGameObject currentSceneGameObject in Context.SceneManager.CurrentScene.GameObjects)
             {
                 currentSceneGameObject.Components.ForEach(i => i.OnReleaseKey(key));
             }
@@ -210,7 +209,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// <param name="key">The key</param>
         private void NotifyKeyHold(KeyCode key)
         {
-            foreach (GameObject currentSceneGameObject in Context.SceneManager.CurrentScene.GameObjects.Cast<GameObject>())
+            foreach (AGameObject currentSceneGameObject in Context.SceneManager.CurrentScene.GameObjects)
             {
                 currentSceneGameObject.Components.ForEach(i => i.OnPressDownKey(key));
             }

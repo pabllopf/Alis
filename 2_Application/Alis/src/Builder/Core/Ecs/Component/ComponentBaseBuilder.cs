@@ -39,13 +39,13 @@ namespace Alis.Builder.Core.Ecs.Component
         /// <summary>
         ///     The component base
         /// </summary>
-        private readonly Alis.Core.Ecs.Component.Component component;
+        private readonly Alis.Core.Ecs.Component.AComponent component;
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="ComponentBaseBuilder" /> class
         /// </summary>
         /// <param name="component">The component base</param>
-        public ComponentBaseBuilder(Alis.Core.Ecs.Component.Component component) => this.component = component;
+        public ComponentBaseBuilder(Alis.Core.Ecs.Component.AComponent component) => this.component = component;
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="ComponentBaseBuilder" /> class
@@ -58,6 +58,6 @@ namespace Alis.Builder.Core.Ecs.Component
         ///     Builds this instance
         /// </summary>
         /// <returns>The component base</returns>
-        public Alis.Core.Ecs.Component.Component Build() => (Alis.Core.Ecs.Component.Component) Activator.CreateInstance(component.GetType());
+        public Alis.Core.Ecs.Component.AComponent Build() => (Alis.Core.Ecs.Component.AComponent) Activator.CreateInstance(component.GetType());
     }
 }

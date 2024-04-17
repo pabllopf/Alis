@@ -27,13 +27,62 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Entity.GameObject;
+using NotImplementedException = System.NotImplementedException;
+
 namespace Alis.Core.Test.Ecs.Entity.GameObject
 {
     /// <summary>
     ///     The game object sample class
     /// </summary>
-    /// <seealso cref="Core.Ecs.Entity.GameObject.GameObject" />
-    public class GameObjectSample : Core.Ecs.Entity.GameObject.GameObject
+    /// <seealso cref="AGameObject" />
+    public class GameObjectSample : Core.Ecs.Entity.GameObject.AGameObject
     {
+        
+        /// <summary>
+        /// Adds the component
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="component">The component</param>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Add<T>(T component)
+        {
+            throw new NotImplementedException();
+        }
+        
+        /// <summary>
+        /// Removes the component
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="component">The component</param>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Remove<T>(T component)
+        {
+            throw new NotImplementedException();
+        }
+        
+        /// <summary>
+        /// Gets this instance
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The</returns>
+        public override T Get<T>() => throw new NotImplementedException();
+        
+        /// <summary>
+        /// Describes whether this instance contains
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The bool</returns>
+        public override bool Contains<T>() => throw new NotImplementedException();
+        
+        /// <summary>
+        /// Clears this instance
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Clear<T>()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

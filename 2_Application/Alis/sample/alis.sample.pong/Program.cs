@@ -30,6 +30,7 @@
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
@@ -79,8 +80,8 @@ namespace Alis.Sample.Pong
                         .Build())
                     .Build())
                 .World(sceneManager => sceneManager
-                    .Add<Scene>(gameScene => gameScene
-                        .Add<GameObject>(mainCamera => mainCamera
+                    .Add<AScene>(gameScene => gameScene
+                        .Add<AGameObject>(mainCamera => mainCamera
                             .Name("Camera")
                             .WithTag("Camera")
                             .Transform(position => position
@@ -92,7 +93,7 @@ namespace Alis.Sample.Pong
                                 .BackgroundColor(Color.Black)
                                 .Build())
                             .Build())
-                        .Add<GameObject>(soundTrack => soundTrack
+                        .Add<AGameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
                             .AddComponent<AudioSource>(audioSource => audioSource
                                 .Builder()
@@ -103,7 +104,7 @@ namespace Alis.Sample.Pong
                                     .Build())
                                 .Build())
                             .Build())
-                        .Add<GameObject>(player => player
+                        .Add<AGameObject>(player => player
                             .Name("Player 1")
                             .Transform(transform => transform
                                 .Position(20, 320)
@@ -127,7 +128,7 @@ namespace Alis.Sample.Pong
                                 .Build())
                             .AddComponent(new PlayerController(1))
                             .Build())
-                        .Add<GameObject>(player => player
+                        .Add<AGameObject>(player => player
                             .Name("Player 2")
                             .Transform(transform => transform
                                 .Position(1000, 320)
@@ -151,7 +152,7 @@ namespace Alis.Sample.Pong
                                 .Build())
                             .AddComponent(new PlayerController(2))
                             .Build())
-                        .Add<GameObject>(ball => ball
+                        .Add<AGameObject>(ball => ball
                             .Name("Ball")
                             .Transform(transform => transform
                                 .Position(512, 320)
@@ -175,7 +176,7 @@ namespace Alis.Sample.Pong
                                 .GravityScale(0.0f)
                                 .Build())
                             .Build())
-                        .Add<GameObject>(downWall => downWall
+                        .Add<AGameObject>(downWall => downWall
                             .Name("downWall")
                             .Transform(transform => transform
                                 .Position(512, 635)
@@ -196,7 +197,7 @@ namespace Alis.Sample.Pong
                                 .GravityScale(0.0f)
                                 .Build())
                             .Build())
-                        .Add<GameObject>(upWall => upWall
+                        .Add<AGameObject>(upWall => upWall
                             .Name("upWall")
                             .Transform(transform => transform
                                 .Position(512, 0)
@@ -217,7 +218,7 @@ namespace Alis.Sample.Pong
                                 .GravityScale(0.0f)
                                 .Build())
                             .Build())
-                        .Add<GameObject>(leftWall => leftWall
+                        .Add<AGameObject>(leftWall => leftWall
                             .Name("leftWall")
                             .Transform(transform => transform
                                 .Position(0, 320)
@@ -238,7 +239,7 @@ namespace Alis.Sample.Pong
                                 .GravityScale(0.0f)
                                 .Build())
                             .Build())
-                        .Add<GameObject>(rightWall => rightWall
+                        .Add<AGameObject>(rightWall => rightWall
                             .Name("rightWall")
                             .Transform(transform => transform
                                 .Position(1024, 320)

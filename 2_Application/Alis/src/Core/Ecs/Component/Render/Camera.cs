@@ -41,9 +41,8 @@ namespace Alis.Core.Ecs.Component.Render
     /// <summary>
     ///     The camera class
     /// </summary>
-    /// <seealso cref="Component" />
-    public class Camera : Component,
-        IBuilder<CameraBuilder>
+    /// <seealso cref="AComponent" />
+    public class Camera : Component, IBuilder<CameraBuilder>
     {
         /// <summary>
         ///     The viewport

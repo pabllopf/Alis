@@ -39,14 +39,32 @@ using Alis.Core.Ecs.System.Manager.Profile;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
 
-namespace Alis
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The video game class
     /// </summary>
-    /// <seealso cref="Game" />
-    public sealed class VideoGame : Game
+    /// <seealso cref="AGame" />
+    public sealed class VideoGame : AGame
     {
+        /// <summary>
+        /// Gets or sets the value of the context
+        /// </summary>
+        private new Context Context { get => (Context)base.Context; set => base.Context = value; }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VideoGame"/> class
+        /// </summary>
+        /// <param name="settings">The settings</param>
+        /// <param name="audioManager">The audio manager</param>
+        /// <param name="graphicManager">The graphic manager</param>
+        /// <param name="inputManager">The input manager</param>
+        /// <param name="networkManager">The network manager</param>
+        /// <param name="physicManager">The physic manager</param>
+        /// <param name="profileManager">The profile manager</param>
+        /// <param name="sceneManager">The scene manager</param>
+        /// <param name="context">The context</param>
+        /// <param name="managers">The managers</param>
         public VideoGame(
             Settings settings,
             AudioManager audioManager,
@@ -60,7 +78,7 @@ namespace Alis
             params Manager[] managers) : base(managers)
         {
             context ??= new Context(this, settings);
-            this.Context = context;
+            Context = context;
             audioManager.SetContext(context);
             graphicManager.SetContext(context);
             inputManager.SetContext(context);
@@ -82,24 +100,20 @@ namespace Alis
             Add(sceneManager);
         }
         
-        public AudioManager AudioManager => Context.AudioManager;
+        /// <summary>
+        /// Gets or sets the value of the settings
+        /// </summary>
+        public Settings Settings { get => Context.Settings; set => Context.Settings = value; }
         
-        public GraphicManager GraphicManager => Context.GraphicManager;
-        
-        public InputManager InputManager => Context.InputManager;
-        
-        public NetworkManager NetworkManager => Context.NetworkManager;
-        
-        public PhysicManager PhysicManager => Context.PhysicManager;
-        
-        public ProfileManager ProfileManager => Context.ProfileManager;
-        
-        public SceneManager SceneManager => Context.SceneManager;
-        
-        public Settings Settings
+        /// <summary>
+        /// Sets the component
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="component">The component</param>
+        public new void Set<T>(T component) where T : Manager
         {
-            set => Context.Settings = value;
-            get => Context.Settings;
+            component.SetContext(Context);
+            Managers[typeof(T)] = component;
         }
         
         /// <summary>

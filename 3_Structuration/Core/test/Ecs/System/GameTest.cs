@@ -28,9 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using Alis.Core.Aspect.Time;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.Entity.GameObject;
-using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
 using Alis.Core.Test.Ecs.Component;
 using Alis.Core.Test.Ecs.System.Manager;
@@ -359,7 +360,7 @@ namespace Alis.Core.Test.Ecs.System
             game.Add(manager);
             
             // Act
-            List<IManager> actualManagers = game.Managers;
+            List<IManager> actualManagers = game.Managers.Values.ToList();
             
             // Assert
             Assert.Contains(manager, actualManagers);
@@ -408,7 +409,7 @@ namespace Alis.Core.Test.Ecs.System
         public void OnInit_CallsOnInitOnEachComponent()
         {
             // Arrange
-            GameObject gameObject = new GameObject();
+            AGameObject gameObject = new AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -429,7 +430,7 @@ namespace Alis.Core.Test.Ecs.System
         public void OnAwake_CallsOnAwakeOnEachComponent()
         {
             // Arrange
-            GameObject gameObject = new GameObject();
+            AGameObject gameObject = new AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -450,7 +451,7 @@ namespace Alis.Core.Test.Ecs.System
         public void OnStart_CallsOnStartOnEachComponent()
         {
             // Arrange
-            GameObject gameObject = new GameObject();
+            AGameObject gameObject = new AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -471,7 +472,7 @@ namespace Alis.Core.Test.Ecs.System
         public void OnBeforeUpdate_CallsOnBeforeUpdateOnEachComponent()
         {
             // Arrange
-            GameObject gameObject = new GameObject();
+            AGameObject gameObject = new AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -511,7 +512,7 @@ namespace Alis.Core.Test.Ecs.System
             // Arrange
             
             // Act
-            TimeManager timeManager = Game.TimeManager;
+            TimeManager timeManager = AGame.TimeManager;
             
             // Assert
             Assert.NotNull(timeManager);

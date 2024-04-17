@@ -30,6 +30,7 @@
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity.GameObject;
 using Alis.Core.Ecs.Entity.Scene;
@@ -76,8 +77,8 @@ namespace Alis.Sample.Rogue
                         .Build())
                     .Build())
                 .World(sceneManager => sceneManager
-                    .Add<Scene>(gameScene => gameScene
-                        .Add<GameObject>(gameObject => gameObject
+                    .Add<AScene>(gameScene => gameScene
+                        .Add<AGameObject>(gameObject => gameObject
                             .Name("Player")
                             .WithTag("Player")
                             .Transform(transform => transform
@@ -115,7 +116,7 @@ namespace Alis.Sample.Rogue
                             .Build())
                         
                         // Decoration tree-001
-                        .Add<GameObject>(gameObject => gameObject
+                        .Add<AGameObject>(gameObject => gameObject
                             .Name("tree-001")
                             .Transform(transform => transform
                                 .Position(100, 100)
@@ -128,7 +129,7 @@ namespace Alis.Sample.Rogue
                             .Build())
                         
                         // Decoration tree-001
-                        .Add<GameObject>(gameObject => gameObject
+                        .Add<AGameObject>(gameObject => gameObject
                             .Name("tree-002")
                             .Transform(transform => transform
                                 .Position(400, 400)
@@ -139,7 +140,7 @@ namespace Alis.Sample.Rogue
                                 .SetTexture(AssetManager.Find("tree-001.bmp"))
                                 .Build())
                             .Build())
-                        .Add<GameObject>(gameObject => gameObject
+                        .Add<AGameObject>(gameObject => gameObject
                             .Name("tree-001")
                             .Transform(transform => transform
                                 .Position(-100, -100)
@@ -150,7 +151,7 @@ namespace Alis.Sample.Rogue
                                 .SetTexture(AssetManager.Find("tree-001.bmp"))
                                 .Build())
                             .Build())
-                        .Add<GameObject>(gameObject => gameObject
+                        .Add<AGameObject>(gameObject => gameObject
                             .Name("tree-001")
                             .Transform(transform => transform
                                 .Position(-200, -200)

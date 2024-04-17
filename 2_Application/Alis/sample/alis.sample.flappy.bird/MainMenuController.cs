@@ -35,7 +35,7 @@ namespace Alis.Sample.Flappy.Bird
     /// <summary>
     ///     The main menu controller class
     /// </summary>
-    /// <seealso cref="Component" />
+    /// <seealso cref="AComponent" />
     public class MainMenuController : Component
     {
         /// <summary>

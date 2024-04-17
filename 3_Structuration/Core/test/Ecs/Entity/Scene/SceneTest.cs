@@ -46,9 +46,9 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnFixedUpdate_CallsOnFixedUpdateOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
-            Core.Ecs.Entity.GameObject.GameObject gameObject1 = new Core.Ecs.Entity.GameObject.GameObject();
-            Core.Ecs.Entity.GameObject.GameObject gameObject2 = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject1 = new Core.Ecs.Entity.GameObject.AGameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject2 = new Core.Ecs.Entity.GameObject.AGameObject();
             scene.Add(gameObject1);
             scene.Add(gameObject2);
             
@@ -72,7 +72,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnDispatchEvents_CallsOnDispatchEventsOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -98,7 +98,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnCalculate_CallsOnCalculateOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -124,7 +124,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnDraw_CallsOnDrawOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -150,7 +150,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnGui_CallsOnGuiOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -176,7 +176,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnReset_CallsOnResetOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -202,7 +202,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnStop_CallsOnStopOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -228,7 +228,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnExit_CallsOnExitOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -254,7 +254,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnDestroy_CallsOnDestroyOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -280,7 +280,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnEnable_CallsOnEnableOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -306,7 +306,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnInit_CallsOnInitOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -332,7 +332,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnAwake_CallsOnAwakeOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -358,7 +358,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnStart_CallsOnStartOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -384,7 +384,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnBeforeUpdate_CallsOnBeforeUpdateOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -410,7 +410,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnUpdate_CallsOnUpdateOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -436,7 +436,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnAfterUpdate_CallsOnAfterUpdateOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -462,7 +462,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnBeforeFixedUpdate_CallsOnBeforeFixedUpdateOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -488,7 +488,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnAfterFixedUpdate_CallsOnAfterFixedUpdateOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -514,7 +514,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnDispatchEvents_v2_CallsOnDispatchEventsOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -540,7 +540,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnCalculate_v2_CallsOnCalculateOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -566,7 +566,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void Remove_RemovesGameObjectFromScene()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject = new GameObjectSample();
             scene.Add(gameObject);
             
@@ -585,7 +585,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void Get_ReturnsGameObjectFromScene()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject = new GameObjectSample();
             scene.Add(gameObject);
             
@@ -604,7 +604,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void Contains_ReturnsTrueWhenGameObjectIsInScene()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject = new GameObjectSample();
             scene.Add(gameObject);
             
@@ -623,7 +623,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void Clear_RemovesAllGameObjectsFromScene()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -644,7 +644,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void IsEnable_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene
             {
                 // Act
                 IsEnable = false
@@ -661,7 +661,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void Name_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene
             {
                 // Act
                 Name = "TestScene"
@@ -678,7 +678,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void Id_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene
             {
                 // Act
                 Id = "123"
@@ -695,7 +695,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void Tag_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene
             {
                 // Act
                 Tag = "TestTag"
@@ -712,7 +712,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void OnDisable_CallsOnDisableOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject1 = new GameObjectSample();
             GameObjectSample gameObject2 = new GameObjectSample();
             scene.Add(gameObject1);
@@ -738,7 +738,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void GameObjects_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             List<IGameObject> gameObjectList = new List<IGameObject>
             {
                 new GameObjectSample(),
@@ -759,7 +759,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void GameObjects_AddGameObjectToList()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject = new GameObjectSample();
             
             // Act
@@ -776,7 +776,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void GameObjects_RemoveGameObjectFromList()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             GameObjectSample gameObject = new GameObjectSample();
             scene.GameObjects.Add(gameObject);
             
@@ -794,7 +794,7 @@ namespace Alis.Core.Test.Ecs.Entity.Scene
         public void GameObjects_ClearList()
         {
             // Arrange
-            Core.Ecs.Entity.Scene.Scene scene = new Core.Ecs.Entity.Scene.Scene();
+            Core.Ecs.Entity.Scene.AScene scene = new Core.Ecs.Entity.Scene.AScene();
             scene.GameObjects.Add(new GameObjectSample());
             scene.GameObjects.Add(new GameObjectSample());
             

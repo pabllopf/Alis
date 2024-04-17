@@ -31,34 +31,35 @@ using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Time;
+using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
 using Alis.Core.Ecs.System.Property;
 
-namespace Alis.Core.Ecs.System
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     Define a game.
     /// </summary>
-    public abstract class Game : IGame, ICrud<Manager.Manager>
+    public abstract class AGame : IGame, ICrud<AManager>, IHasContext<AContext>
     {
         /// <summary>
         ///     The time manager base
         /// </summary>
-        public TimeManager TimeManager { get; } = new TimeManager();
+        protected internal TimeManager TimeManager { get; } = new TimeManager();
         
         /// <summary>
         /// Gets or sets the value of the managers
         /// </summary>
-        protected internal Dictionary<Type, IManager> Managers { get; protected set; }
+        protected internal Dictionary<Type, AManager> Managers { get; set; }
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="Game"/> class
+        /// Initializes a new instance of the <see cref="AGame"/> class
         /// </summary>
         /// <param name="managers">The managers</param>
-        protected Game(params IManager[] managers)
+        protected AGame(params AManager[] managers)
         {
-            Managers = new Dictionary<Type, IManager>();
-            foreach (IManager manager in managers)
+            Managers = new Dictionary<Type, AManager>();
+            foreach (AManager manager in managers)
             {
                 Managers.Add(manager.GetType(), manager);
             }
@@ -67,26 +68,26 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         ///     Gets or sets the value of the is running
         /// </summary>
-        public static bool IsRunning { get; set; } = true;
+        public bool IsRunning { get; set; } = true;
         
         /// <summary>
         ///     Run program
         /// </summary>
         public virtual void Run()
         {
-            Dictionary<Type, IManager>.ValueCollection tempManagers = Managers.Values;
+            Dictionary<Type, AManager>.ValueCollection tempManagers = Managers.Values;
             
-            foreach (IManager manager in tempManagers)
+            foreach (AManager manager in tempManagers)
             {
                 manager.OnInit();
             }
             
-            foreach (IManager manager in tempManagers)
+            foreach (AManager manager in tempManagers)
             {
                 manager.OnAwake();
             }
             
-            foreach (IManager manager in tempManagers)
+            foreach (AManager manager in tempManagers)
             {
                 manager.OnStart();
             }
@@ -147,21 +148,21 @@ namespace Alis.Core.Ecs.System
                 }
                 
                 // Dispatch Events
-                 foreach (IManager manager in tempManagers)
+                 foreach (AManager manager in tempManagers)
                 {
                     manager.OnDispatchEvents();
                 }
                 
                 // Update Scripts
-                 foreach (IManager manager in tempManagers)
+                 foreach (AManager manager in tempManagers)
                 {
                     manager.OnBeforeUpdate();
                 }
-                foreach (IManager manager in tempManagers)
+                foreach (AManager manager in tempManagers)
                 {
                     manager.OnUpdate();
                 }
-                foreach (IManager manager in tempManagers)
+                foreach (AManager manager in tempManagers)
                 {
                     manager.OnAfterUpdate();
                 }
@@ -180,15 +181,15 @@ namespace Alis.Core.Ecs.System
                     TimeManager.FixedUnscaledTime += TimeManager.FixedUnscaledDeltaTime;
                     TimeManager.FixedUnscaledTimeAsDouble += TimeManager.FixedUnscaledDeltaTime;
                     
-                     foreach (IManager manager in tempManagers)
+                     foreach (AManager manager in tempManagers)
                     {
                         manager.OnBeforeFixedUpdate();
                     }
-                    foreach (IManager manager in tempManagers)
+                    foreach (AManager manager in tempManagers)
                     {
                         manager.OnFixedUpdate();
                     }
-                    foreach (IManager manager in tempManagers)
+                    foreach (AManager manager in tempManagers)
                     {
                         manager.OnAfterFixedUpdate();
                     }
@@ -198,19 +199,19 @@ namespace Alis.Core.Ecs.System
                 }
                 
                 // Calculate method to calculate math
-                 foreach (IManager manager in tempManagers)
+                 foreach (AManager manager in tempManagers)
                 {
                     manager.OnCalculate();
                 }
                 
                 // Render Game
-                 foreach (IManager manager in tempManagers)
+                 foreach (AManager manager in tempManagers)
                 {
                     manager.OnDraw();
                 }
                 
                 // Render the Ui
-                 foreach (IManager manager in tempManagers)
+                 foreach (AManager manager in tempManagers)
                 {
                     manager.OnGui();
                 }
@@ -252,12 +253,12 @@ namespace Alis.Core.Ecs.System
             }
             
             
-            foreach (IManager manager in tempManagers)
+            foreach (AManager manager in tempManagers)
             {
                 manager.OnStop();
             }
             
-            foreach (IManager manager in tempManagers)
+            foreach (AManager manager in tempManagers)
             {
                 manager.OnExit();
             }
@@ -273,14 +274,14 @@ namespace Alis.Core.Ecs.System
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
-        public T Find<T>() where T : IManager => (T) Managers[typeof(T)] ;
+        public T Find<T>() where T : AManager => (T) Managers[typeof(T)] ;
         
         /// <summary>
         /// Adds the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public virtual void Add<T>(T component) where T :  Manager.Manager
+        public virtual void Add<T>(T component) where T :  AManager
         {
             component.SetContext(Context);
             Managers.Add(typeof(T), component);
@@ -291,39 +292,48 @@ namespace Alis.Core.Ecs.System
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public virtual void Remove<T>(T component) where T :  Manager.Manager  => Managers.Remove(typeof(T));
+        public virtual void Remove<T>(T component) where T :  AManager  => Managers.Remove(typeof(T));
         
         /// <summary>
         /// Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
-        public virtual T Get<T>() where T :  Manager.Manager  => (T) Managers[typeof(T)];
+        public virtual T Get<T>() where T :  AManager  => (T) Managers[typeof(T)];
         
         /// <summary>
         /// Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
-        public virtual bool Contains<T>() where T :  Manager.Manager  => Managers.ContainsKey(typeof(T));
+        public virtual bool Contains<T>() where T :  AManager  => Managers.ContainsKey(typeof(T));
         
         /// <summary>
         /// Clears this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        public virtual void Clear<T>() where T : Manager.Manager => Managers.Clear();
+        public virtual void Clear<T>() where T : AManager => Managers.Clear();
         
         /// <summary>
         /// Sets the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public void Set<T>(T component) where T :  Manager.Manager
+        public void Set<T>(T component) where T :  AManager
         {
             component.SetContext(Context);
             Managers[typeof(T)] = component;
         }
         
-        internal Context Context { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the context
+        /// </summary>
+        protected AContext Context { get; set; }
+        
+        /// <summary>
+        /// Sets the context using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        public void SetContext(AContext context) => Context = context;
     }
 }
