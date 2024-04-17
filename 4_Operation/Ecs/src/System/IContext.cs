@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Ecs.System
 {
+    /// <summary>
+    /// The context interface
+    /// </summary>
     public interface IContext
     {
     }

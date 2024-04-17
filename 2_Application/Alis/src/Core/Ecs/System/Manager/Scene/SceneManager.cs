@@ -29,7 +29,6 @@
 
 using System.Collections.Generic;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Ecs.Entity.Scene;
 
 namespace Alis.Core.Ecs.System.Manager.Scene
 {

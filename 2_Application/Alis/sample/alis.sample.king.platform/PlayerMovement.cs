@@ -41,7 +41,7 @@ namespace Alis.Sample.King.Platform
     /// <summary>
     ///     The player movement class
     /// </summary>
-    /// <seealso cref="Component" />
+    /// <seealso cref="AComponent" />
     public class PlayerMovement : Component
     {
         /// <summary>

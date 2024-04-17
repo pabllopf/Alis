@@ -39,7 +39,7 @@ namespace Alis.Sample.Flappy.Bird
     /// <summary>
     ///     The bird controller class
     /// </summary>
-    /// <seealso cref="Component" />
+    /// <seealso cref="AComponent" />
     public class BirdController : Component
     {
         /// <summary>

@@ -27,15 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using Alis.Core.Ecs.System.Manager;
 using Alis.Core.Ecs.System.Property;
 
-namespace Alis.Core.Ecs.System
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The game interface
     /// </summary>
-    public interface IGame 
+    public interface IGame
     {
         /// <summary>
         ///     Runs this instance
@@ -46,5 +48,10 @@ namespace Alis.Core.Ecs.System
         /// Exits this instance
         /// </summary>
         public void Exit();
+        
+        /// <summary>
+        /// Gets or sets the value of the is running
+        /// </summary>
+        public bool IsRunning { get; set; }
     }
 }

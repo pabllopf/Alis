@@ -5,7 +5,4 @@
         <TargetFrameworks>$(TargetFramework1);$(TargetFramework2)</TargetFrameworks>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
     </PropertyGroup>
-    <ItemGroup>
-      <Folder Include="Ecs\Component\" />
-    </ItemGroup>
 </Project>

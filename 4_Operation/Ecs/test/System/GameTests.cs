@@ -29,7 +29,6 @@
 
 using System;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
 using Xunit;
 

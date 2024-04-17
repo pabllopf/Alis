@@ -127,7 +127,7 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             IComponent component = new ComponentSample();
-            IGameObject gameObject = new GameObject();
+            IGameObject gameObject = new AGameObject();
             
             // Act
             component.Attach(gameObject);
@@ -143,7 +143,7 @@ namespace Alis.Core.Test.Ecs.Component
         public void IsEnable_v2_DefaultValue_IsFalse()
         {
             // Arrange
-            Core.Ecs.Component.Component component = new ComponentSample();
+            Core.Ecs.Component.AComponent component = new ComponentSample();
             
             // Act
             bool isEnable = component.IsEnable;
@@ -159,7 +159,7 @@ namespace Alis.Core.Test.Ecs.Component
         public void Name_v2_DefaultValue_IsNull()
         {
             // Arrange
-            Core.Ecs.Component.Component component = new ComponentSample();
+            Core.Ecs.Component.AComponent component = new ComponentSample();
             
             // Act
             string name = component.Name;
@@ -175,7 +175,7 @@ namespace Alis.Core.Test.Ecs.Component
         public void Id_v2_DefaultValue_IsNull()
         {
             // Arrange
-            Core.Ecs.Component.Component component = new ComponentSample();
+            Core.Ecs.Component.AComponent component = new ComponentSample();
             
             // Act
             string id = component.Id;
@@ -191,7 +191,7 @@ namespace Alis.Core.Test.Ecs.Component
         public void Tag_v2_DefaultValue_IsNull()
         {
             // Arrange
-            Core.Ecs.Component.Component component = new ComponentSample();
+            Core.Ecs.Component.AComponent component = new ComponentSample();
             
             // Act
             string tag = component.Tag;
@@ -207,7 +207,7 @@ namespace Alis.Core.Test.Ecs.Component
         public void GameObject_v2_DefaultValue_IsNull()
         {
             // Arrange
-            Core.Ecs.Component.Component component = new ComponentSample();
+            Core.Ecs.Component.AComponent component = new ComponentSample();
             
             // Act
             IGameObject gameObject = component.GameObject;
@@ -223,8 +223,8 @@ namespace Alis.Core.Test.Ecs.Component
         public void Attach_v2_SetsGameObject()
         {
             // Arrange
-            Core.Ecs.Component.Component component = new ComponentSample();
-            IGameObject gameObject = new GameObject();
+            Core.Ecs.Component.AComponent component = new ComponentSample();
+            IGameObject gameObject = new AGameObject();
             
             // Act
             component.Attach(gameObject);
@@ -564,7 +564,7 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-            GameObject gameObject = new GameObject();
+            AGameObject gameObject = new AGameObject();
             
             // Act
             component.Attach(gameObject);
@@ -683,7 +683,7 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-            GameObject gameObject = new GameObject();
+            AGameObject gameObject = new AGameObject();
             
             // Act
             component.OnCollisionStay(gameObject);
@@ -701,7 +701,7 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-            GameObject gameObject = new GameObject();
+            AGameObject gameObject = new AGameObject();
             
             // Act
             component.OnTriggerEnter(gameObject);
@@ -719,7 +719,7 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-            GameObject gameObject = new GameObject();
+            AGameObject gameObject = new AGameObject();
             
             // Act
             component.OnTriggerExit(gameObject);
@@ -737,7 +737,7 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-            GameObject gameObject = new GameObject();
+            AGameObject gameObject = new AGameObject();
             
             // Act
             component.OnTriggerStay(gameObject);
@@ -809,7 +809,7 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-            IGameObject gameObject = new GameObject();
+            IGameObject gameObject = new AGameObject();
             
             // Act
             component.OnCollisionEnter(gameObject);
@@ -827,7 +827,7 @@ namespace Alis.Core.Test.Ecs.Component
         {
             // Arrange
             ComponentSample component = new ComponentSample();
-            IGameObject gameObject = new GameObject();
+            IGameObject gameObject = new AGameObject();
             
             // Act
             component.OnCollisionExit(gameObject);

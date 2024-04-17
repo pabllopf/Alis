@@ -42,7 +42,7 @@ namespace Alis.Sample.Flappy.Bird
     /// <summary>
     ///     The death zone class
     /// </summary>
-    /// <seealso cref="Component" />
+    /// <seealso cref="AComponent" />
     public class DeathZone : Component
     {
         /// <summary>
@@ -84,7 +84,7 @@ namespace Alis.Sample.Flappy.Bird
         ///     Ons the collision enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public override void OnCollisionEnter(GameObject gameObject)
+        public override void OnCollisionEnter(AGameObject gameObject)
         {
             if (gameObject.Tag == "Player")
             {

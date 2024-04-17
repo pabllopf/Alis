@@ -29,8 +29,15 @@
 
 namespace Alis.Core.Ecs.System.Property
 {
+    /// <summary>
+    /// The has context interface
+    /// </summary>
     public interface IHasContext<in T>
     {
+        /// <summary>
+        /// Sets the context using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
         public void SetContext(T context);
     }
 }

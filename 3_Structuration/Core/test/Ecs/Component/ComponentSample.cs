@@ -27,13 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Component;
+
 namespace Alis.Core.Test.Ecs.Component
 {
     /// <summary>
     ///     The component sample class
     /// </summary>
-    /// <seealso cref="Core.Ecs.Component.Component" />
-    public class ComponentSample : Core.Ecs.Component.Component
+    /// <seealso cref="AComponent" />
+    public class ComponentSample : Core.Ecs.Component.AComponent
     {
     }
 }

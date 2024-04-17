@@ -34,9 +34,9 @@ namespace Alis.Extension.Ads.GoogleAds
     /// <summary>
     ///     The ads manager class
     /// </summary>
-    /// <seealso cref="Manager" />
+    /// <seealso cref="AManager" />
     /// <seealso cref="IAdsManager" />
-    public class AdsManager : Manager
+    public class AdsManager : AManager
     {
     }
 }

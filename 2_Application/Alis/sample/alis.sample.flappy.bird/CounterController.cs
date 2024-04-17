@@ -37,7 +37,7 @@ namespace Alis.Sample.Flappy.Bird
     /// <summary>
     ///     The counter controller class
     /// </summary>
-    /// <seealso cref="Component" />
+    /// <seealso cref="AComponent" />
     public class CounterController : Component
     {
         /// <summary>
@@ -89,7 +89,7 @@ namespace Alis.Sample.Flappy.Bird
         ///     Ons the collision enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public override void OnCollisionEnter(GameObject gameObject)
+        public override void OnCollisionEnter(AGameObject gameObject)
         {
             if ((gameObject.Tag == "Player") && !isEnter)
             {
@@ -104,7 +104,7 @@ namespace Alis.Sample.Flappy.Bird
         ///     Ons the collision exit using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public override void OnCollisionExit(GameObject gameObject)
+        public override void OnCollisionExit(AGameObject gameObject)
         {
             if ((gameObject.Tag == "Player") && isEnter)
             {

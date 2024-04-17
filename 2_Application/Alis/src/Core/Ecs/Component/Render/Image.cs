@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.System;
 using Alis.Core.Graphic.Sdl2;
 
 namespace Alis.Core.Ecs.Component.Render
@@ -39,6 +40,9 @@ namespace Alis.Core.Ecs.Component.Render
     /// </summary>
     public class Image
     {
+        /// <summary>
+        /// Gets or sets the value of the context
+        /// </summary>
         private Context Context { get; set; }
         
         /// <summary>

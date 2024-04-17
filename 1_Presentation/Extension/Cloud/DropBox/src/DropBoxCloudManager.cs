@@ -34,9 +34,9 @@ namespace Alis.Extension.Cloud.DropBox
     /// <summary>
     ///     The cloud manager class
     /// </summary>
-    /// <seealso cref="Manager" />
+    /// <seealso cref="AManager" />
     /// <seealso cref="ICloudManager" />
-    public class DropBoxCloudManager : Manager, ICloudManager
+    public class DropBoxCloudManager : AManager, ICloudManager
     {
     }
 }

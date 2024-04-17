@@ -48,7 +48,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void Add_ShouldAddComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             IComponent component = new ComponentSample();
             
             // Act
@@ -65,7 +65,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void Remove_ShouldRemoveComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             IComponent component = new ComponentSample();
             gameObject.Add(component);
             
@@ -83,7 +83,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void Get_ShouldGetComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             IComponent component = new ComponentSample();
             gameObject.Add(component);
             
@@ -101,7 +101,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void Contains_ShouldReturnTrueIfComponentExists()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             IComponent component = new ComponentSample();
             gameObject.Add(component);
             
@@ -119,7 +119,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void Clear_ShouldRemoveAllComponents()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             IComponent component = new ComponentSample();
             gameObject.Add(component);
             
@@ -137,7 +137,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void OnStart_CallsOnStartOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -162,7 +162,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void OnUpdate_CallsOnUpdateOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -187,7 +187,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void OnFixedUpdate_CallsOnFixedUpdateOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -212,7 +212,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void OnAfterFixedUpdate_CallsOnAfterFixedUpdateOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -237,7 +237,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void OnDispatchEvents_CallsOnDispatchEventsOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -262,7 +262,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void OnCalculate_CallsOnCalculateOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -287,7 +287,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void OnDraw_CallsOnDrawOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -312,7 +312,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void OnGui_CallsOnGuiOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -337,7 +337,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void OnReset_CallsOnResetOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -362,7 +362,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void OnStop_CallsOnStopOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -387,7 +387,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void OnExit_CallsOnExitOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -412,7 +412,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void OnDestroy_CallsOnDestroyOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -437,7 +437,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void OnAfterUpdate_CallsOnAfterUpdateOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -462,7 +462,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void OnBeforeFixedUpdate_CallsOnBeforeFixedUpdateOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -487,7 +487,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void OnEnable_CallsOnEnableOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -512,7 +512,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void OnDisable_CallsOnDisableOnEachComponent()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             ComponentSample component1 = new ComponentSample();
             ComponentSample component2 = new ComponentSample();
             gameObject.Add(component1);
@@ -537,7 +537,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void IsEnable_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject
             {
                 // Act
                 IsEnable = false
@@ -554,7 +554,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void Name_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject
             {
                 // Act
                 Name = "TestGameObject"
@@ -571,7 +571,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void Id_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject
             {
                 // Act
                 Id = "123"
@@ -588,7 +588,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void Tag_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject
             {
                 // Act
                 Tag = "TestTag"
@@ -605,7 +605,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void Components_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             List<IComponent> componentList = new List<IComponent>
             {
                 new ComponentSample(),
@@ -626,7 +626,7 @@ namespace Alis.Core.Test.Ecs.Entity.GameObject
         public void Transform_GetSetPropertyWorks()
         {
             // Arrange
-            Core.Ecs.Entity.GameObject.GameObject gameObject = new Core.Ecs.Entity.GameObject.GameObject();
+            Core.Ecs.Entity.GameObject.AGameObject gameObject = new Core.Ecs.Entity.GameObject.AGameObject();
             Transform transform = new Transform(new Vector2(1, 1), new Rotation(1), new Vector2(2, 2));
             
             // Act

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Scene.cs
+//  File:Settings.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,54 +27,61 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using Alis.Core.Ecs.System;
-using NotImplementedException = System.NotImplementedException;
+using Alis.Core.Ecs.System.Setting.Audio;
+using Alis.Core.Ecs.System.Setting.General;
+using Alis.Core.Ecs.System.Setting.Graphic;
+using Alis.Core.Ecs.System.Setting.Input;
+using Alis.Core.Ecs.System.Setting.Network;
+using Alis.Core.Ecs.System.Setting.Physic;
+using Alis.Core.Ecs.System.Setting.Profile;
+using Alis.Core.Ecs.System.Setting.Scene;
 
-namespace Alis.Core.Ecs.Entity.Scene
+namespace Alis.Core.Ecs.System.Setting
 {
     /// <summary>
-    ///     The scene class
+    ///     The setting class
     /// </summary>
-    public class Scene : AScene
+    /// <seealso cref="ISetting" />
+    public abstract class ASettings : ISetting
     {
         /// <summary>
-        /// Adds the component
+        ///     Gets or sets the value of the general
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="component">The component</param>
-        public override void Add<T>(T component) => GameObjects.Add(component as GameObject.GameObject);
+        public IGeneralSetting General { get; set; } 
         
         /// <summary>
-        /// Removes the component
+        ///     Gets or sets the value of the audio
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="component">The component</param>
-        public override void Remove<T>(T component) => GameObjects.Remove(component as GameObject.GameObject);
+        public IAudioSetting Audio { get; set; } 
         
         /// <summary>
-        /// Gets this instance
+        ///     Gets or sets the value of the graphic
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <returns>The</returns>
-        public override T Get<T>() => GameObjects.Find(component => component is T) as T;
+        public IGraphicSetting Graphic { get; set; } 
         
         /// <summary>
-        /// Describes whether this instance contains
+        ///     Gets or sets the value of the input
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <returns>The bool</returns>
-        public override bool Contains<T>() => GameObjects.Exists(component => component is T);
+        public IInputSetting Input { get; set; } 
         
         /// <summary>
-        /// Clears this instance
+        ///     Gets or sets the value of the network
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        public override void Clear<T>() => GameObjects.RemoveAll(component => component is T);
+        public INetworkSetting Network { get; set; } 
         
         /// <summary>
-        /// Gets the value of the context
+        ///     Gets or sets the value of the physic
         /// </summary>
-        public new Context Context => (Context)base.Context;
+        public IPhysicSetting Physic { get; set; } 
+        
+        /// <summary>
+        ///     Gets or sets the value of the profile
+        /// </summary>
+        public IProfileSetting Profile { get; set; } 
+        
+        /// <summary>
+        ///     Gets or sets the value of the scene
+        /// </summary>
+        public ISceneSetting Scene { get; set; } 
     }
 }

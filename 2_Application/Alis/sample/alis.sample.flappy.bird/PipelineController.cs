@@ -40,7 +40,7 @@ namespace Alis.Sample.Flappy.Bird
     /// <summary>
     ///     The pipeline controller class
     /// </summary>
-    /// <seealso cref="Component" />
+    /// <seealso cref="AComponent" />
     public class PipelineController : Component
     {
         /// <summary>

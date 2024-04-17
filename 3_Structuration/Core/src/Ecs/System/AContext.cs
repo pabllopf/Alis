@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Manager.cs
+//  File:Context.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,20 +27,46 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Ecs.System.Property;
+using Alis.Core.Aspect.Time;
+using Alis.Core.Ecs.System.Setting;
 
-namespace Alis.Core.Ecs.System.Manager
+namespace Alis.Core.Ecs.System
 {
     /// <summary>
-    ///     The manager class
+    /// The context class
     /// </summary>
-    /// <seealso cref="IManager" />
-    public class Manager : AManager
+    /// <seealso cref="IContext"/>
+    public abstract class AContext : IContext
     {
         /// <summary>
-        /// Gets the value of the context
+        /// The video game
         /// </summary>
-        public new Context Context => (Context)base.Context;
+        private readonly AGame game;
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AContext"/> class
+        /// </summary>
+        /// <param name="videoGame">The video game</param>
+        /// <param name="settings">The settings</param>
+        protected AContext(AGame videoGame, ASettings settings)
+        {
+            game = videoGame;
+            Settings = settings;
+        }
+        
+        /// <summary>
+        /// Gets or sets the value of the settings
+        /// </summary>
+        public ASettings Settings { get; internal set; }
+        
+        /// <summary>
+        /// Gets the value of the time manager
+        /// </summary>
+        public TimeManager TimeManager => game.TimeManager;
+        
+        /// <summary>
+        /// Exits this instance
+        /// </summary>
+        public void Exit() => game.Exit();
     }
 }

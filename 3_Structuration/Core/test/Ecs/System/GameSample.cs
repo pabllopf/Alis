@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Core.Ecs.System;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.System.Manager;
 
 namespace Alis.Core.Test.Ecs.System
@@ -36,8 +36,8 @@ namespace Alis.Core.Test.Ecs.System
     /// <summary>
     ///     The game test class
     /// </summary>
-    /// <seealso cref="Game" />
-    internal class GameSample : Game
+    /// <seealso cref="AGame" />
+    internal class GameSample : AGame
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameSample" /> class
