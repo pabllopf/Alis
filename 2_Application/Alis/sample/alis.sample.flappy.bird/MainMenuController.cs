@@ -36,7 +36,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The main menu controller class
     /// </summary>
     /// <seealso cref="AComponent" />
-    public class MainMenuController : Component
+    public class MainMenuController : AComponent
     {
         /// <summary>
         ///     Ons the press key using the specified key

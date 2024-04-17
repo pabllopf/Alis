@@ -42,46 +42,46 @@ namespace Alis.Core.Ecs.System.Setting
     ///     The setting class
     /// </summary>
     /// <seealso cref="ISetting" />
-    public class Settings : ASettings
+    public class Settings : ISetting
     {
         /// <summary>
         ///     Gets or sets the value of the general
         /// </summary>
-        public new GeneralSetting General { get; set; } = new GeneralSetting();
+        public GeneralSetting General { get; set; } = new GeneralSetting();
         
         /// <summary>
         ///     Gets or sets the value of the audio
         /// </summary>
-        public new IAudioSetting Audio { get; set; } = new AudioSetting();
+        public IAudioSetting Audio { get; set; } = new AudioSetting();
         
         /// <summary>
         ///     Gets or sets the value of the graphic
         /// </summary>
-        public new GraphicSetting Graphic { get; set; } = new GraphicSetting();
+        public GraphicSetting Graphic { get; set; } = new GraphicSetting();
         
         /// <summary>
         ///     Gets or sets the value of the input
         /// </summary>
-        public new InputSetting Input { get; set; } = new InputSetting();
+        public InputSetting Input { get; set; } = new InputSetting();
         
         /// <summary>
         ///     Gets or sets the value of the network
         /// </summary>
-        public new NetworkSetting Network { get; set; } = new NetworkSetting();
+        public NetworkSetting Network { get; set; } = new NetworkSetting();
         
         /// <summary>
         ///     Gets or sets the value of the physic
         /// </summary>
-        public new PhysicSetting Physic { get; set; } = new PhysicSetting();
+        public PhysicSetting Physic { get; set; } = new PhysicSetting();
         
         /// <summary>
         ///     Gets or sets the value of the profile
         /// </summary>
-        public new ProfileSetting Profile { get; set; } = new ProfileSetting();
+        public ProfileSetting Profile { get; set; } = new ProfileSetting();
         
         /// <summary>
         ///     Gets or sets the value of the scene
         /// </summary>
-        public new SceneSetting Scene { get; set; } = new SceneSetting();
+        public SceneSetting Scene { get; set; } = new SceneSetting();
     }
 }

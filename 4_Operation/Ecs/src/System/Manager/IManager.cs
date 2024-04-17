@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Property;
+using Alis.Core.Ecs.Entity.Property;
 
 namespace Alis.Core.Ecs.System.Manager
 {

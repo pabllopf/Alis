@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GoogleDriveCloudManager.cs
+//  File:IEnabled.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,16 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Manager;
-
-namespace Alis.Extension.Cloud.GoogleDrive
+namespace Alis.Core.Ecs.Entity.Property
 {
     /// <summary>
-    ///     The cloud manager class
+    ///     The enabled interface
     /// </summary>
-    /// <seealso cref="AManager" />
-    /// <seealso cref="ICloudManager" />
-    public class GoogleDriveCloudManager : Manager, ICloudManager
+    public interface IEnabled
     {
+        /// <summary>
+        ///     Gets or sets the value of the is enable
+        /// </summary>
+        public bool IsEnable { get; set; }
     }
 }

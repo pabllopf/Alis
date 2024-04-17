@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Entity.GameObject;
+using Alis.Core.Ecs.Entity;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Figure;
@@ -216,16 +216,16 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <param name="contact">The contact</param>
         private void OnSeparation(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            AGameObject fixtureAGameObject = (AGameObject) fixtureA.Body.GameObject;
-            AGameObject fixtureBGameObject = (AGameObject) fixtureB.Body.GameObject;
+            GameObject fixtureGameObject = (GameObject) fixtureA.Body.GameObject;
+            GameObject fixtureBGameObject = (GameObject) fixtureB.Body.GameObject;
             
-            if (fixtureAGameObject.Equals(GameObject) && fixtureBGameObject.Contains<BoxCollider>())
+            if (fixtureGameObject.Equals(GameObject) && fixtureBGameObject.Contains<BoxCollider>())
             {
-                fixtureBGameObject.Components.ForEach(i => i.OnCollisionExit(GameObject as AGameObject));
+                fixtureBGameObject.Components.ForEach(i => i.OnCollisionExit(GameObject as GameObject));
             }
-            else if (fixtureBGameObject.Equals(GameObject) && fixtureAGameObject.Contains<BoxCollider>())
+            else if (fixtureBGameObject.Equals(GameObject) && fixtureGameObject.Contains<BoxCollider>())
             {
-                fixtureAGameObject.Components.ForEach(i => i.OnCollisionExit(GameObject as AGameObject));
+                fixtureGameObject.Components.ForEach(i => i.OnCollisionExit(GameObject as GameObject));
             }
         }
         
@@ -237,16 +237,16 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <param name="contact">The contact</param>
         private void OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            AGameObject fixtureAGameObject = (AGameObject) fixtureA.Body.GameObject;
-            AGameObject fixtureBGameObject = (AGameObject) fixtureB.Body.GameObject;
+            GameObject fixtureGameObject = (GameObject) fixtureA.Body.GameObject;
+            GameObject fixtureBGameObject = (GameObject) fixtureB.Body.GameObject;
             
-            if (fixtureAGameObject.Equals(GameObject) && fixtureBGameObject.Contains<BoxCollider>())
+            if (fixtureGameObject.Equals(GameObject) && fixtureBGameObject.Contains<BoxCollider>())
             {
-                fixtureBGameObject.Components.ForEach(i => i.OnCollisionEnter(GameObject as AGameObject));
+                fixtureBGameObject.Components.ForEach(i => i.OnCollisionEnter(GameObject as GameObject));
             }
-            else if (fixtureBGameObject.Equals(GameObject) && fixtureAGameObject.Contains<BoxCollider>())
+            else if (fixtureBGameObject.Equals(GameObject) && fixtureGameObject.Contains<BoxCollider>())
             {
-                fixtureAGameObject.Components.ForEach(i => i.OnCollisionEnter(GameObject as AGameObject));
+                fixtureGameObject.Components.ForEach(i => i.OnCollisionEnter(GameObject as GameObject));
             }
         }
         

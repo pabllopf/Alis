@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Component.Audio
     ///     The audio recorder class
     /// </summary>
     /// <seealso cref="IAudioRecorder" />
-    public class AudioRecorder : Component, IAudioRecorder, IBuilder<AudioRecorderBuilder>
+    public class AudioRecorder : AComponent, IAudioRecorder, IBuilder<AudioRecorderBuilder>
     {
         /// <summary>
         ///     Builders this instance

@@ -27,11 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using Alis.Core.Ecs.System.Manager;
-using Alis.Core.Ecs.System.Property;
-
 namespace Alis.Core.Ecs
 {
     /// <summary>

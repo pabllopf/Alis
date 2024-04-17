@@ -39,7 +39,7 @@ namespace Alis.Sample.Rogue
     ///     The player movement class
     /// </summary>
     /// <seealso cref="AComponent" />
-    public class PlayerMovement : Component
+    public class PlayerMovement : AComponent
     {
         /// <summary>
         ///     Ons the start

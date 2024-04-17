@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Component.Ui
     ///     The canvas class
     /// </summary>
     /// <seealso cref="AComponent" />
-    public class Canvas : Component,
+    public class Canvas : AComponent,
         IBuilder<CanvasBuilder>
     {
         /// <summary>

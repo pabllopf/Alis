@@ -43,7 +43,7 @@ namespace Alis.Extension.Plugin
     ///     The plugin manager class
     /// </summary>
     /// <seealso cref="IDisposable" />
-    public class PluginManager : AManager, IDisposable, IPluginManager
+    public class PluginManager : Manager, IDisposable, IPluginManager
     {
         /// <summary>
         ///     The loaded assemblies

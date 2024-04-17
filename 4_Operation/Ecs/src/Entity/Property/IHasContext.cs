@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GoogleDriveCloudManager.cs
+//  File:IHasContext.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,16 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Manager;
-
-namespace Alis.Extension.Cloud.GoogleDrive
+namespace Alis.Core.Ecs.Entity.Property
 {
     /// <summary>
-    ///     The cloud manager class
+    /// The has context interface
     /// </summary>
-    /// <seealso cref="AManager" />
-    /// <seealso cref="ICloudManager" />
-    public class GoogleDriveCloudManager : Manager, ICloudManager
+    public interface IHasContext<in T>
     {
+        /// <summary>
+        /// Sets the context using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        public void SetContext(T context);
     }
 }

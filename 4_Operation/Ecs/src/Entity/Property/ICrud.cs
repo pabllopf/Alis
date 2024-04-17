@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GoogleDriveCloudManager.cs
+//  File:ICrud.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,16 +27,45 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Manager;
-
-namespace Alis.Extension.Cloud.GoogleDrive
+namespace Alis.Core.Ecs.Entity.Property
 {
     /// <summary>
-    ///     The cloud manager class
+    ///     The crud interface
     /// </summary>
-    /// <seealso cref="AManager" />
-    /// <seealso cref="ICloudManager" />
-    public class GoogleDriveCloudManager : Manager, ICloudManager
+    public interface ICrud<in TItem>
     {
+        /// <summary>
+        ///     Adds the component
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="component">The component</param>
+        public void Add<T>(T component) where T : TItem;
+        
+        /// <summary>
+        ///     Removes the component
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="component">The component</param>
+        public void Remove<T>(T component) where T : TItem;
+        
+        /// <summary>
+        ///     Gets this instance
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The</returns>
+        public T Get<T>() where T : TItem;
+        
+        /// <summary>
+        ///     Describes whether this instance contains
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The bool</returns>
+        public bool Contains<T>() where T : TItem;
+        
+        /// <summary>
+        ///     Cleans this instance
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        public void Clear<T>() where T : TItem;
     }
 }

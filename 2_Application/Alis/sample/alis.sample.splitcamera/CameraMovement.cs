@@ -39,7 +39,7 @@ namespace Alis.Sample.SplitCamera
     ///     The camera movement class
     /// </summary>
     /// <seealso cref="AComponent" />
-    public class CameraMovement : Component
+    public class CameraMovement : AComponent
     {
         /// <summary>
         ///     The speed

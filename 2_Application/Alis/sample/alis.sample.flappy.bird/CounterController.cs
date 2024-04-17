@@ -30,7 +30,7 @@
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Audio;
-using Alis.Core.Ecs.Entity.GameObject;
+using Alis.Core.Ecs.Entity;
 
 namespace Alis.Sample.Flappy.Bird
 {
@@ -38,7 +38,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The counter controller class
     /// </summary>
     /// <seealso cref="AComponent" />
-    public class CounterController : Component
+    public class CounterController : AComponent
     {
         /// <summary>
         ///     The audio source
@@ -89,7 +89,7 @@ namespace Alis.Sample.Flappy.Bird
         ///     Ons the collision enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public override void OnCollisionEnter(AGameObject gameObject)
+        public override void OnCollisionEnter(GameObject gameObject)
         {
             if ((gameObject.Tag == "Player") && !isEnter)
             {
@@ -104,7 +104,7 @@ namespace Alis.Sample.Flappy.Bird
         ///     Ons the collision exit using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public override void OnCollisionExit(AGameObject gameObject)
+        public override void OnCollisionExit(GameObject gameObject)
         {
             if ((gameObject.Tag == "Player") && isEnter)
             {
