@@ -35,7 +35,7 @@ namespace Alis.Core.Ecs.Component.Light
     ///     The light class
     /// </summary>
     /// <seealso cref="AComponent" />
-    public abstract class Light : Component
+    public abstract class Light : AComponent
     {
         /// <summary>
         ///     Starts this instance

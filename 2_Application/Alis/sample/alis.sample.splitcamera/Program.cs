@@ -32,8 +32,7 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Ecs.Entity.GameObject;
-using Alis.Core.Ecs.Entity.Scene;
+using Alis.Core.Ecs.Entity;
 
 namespace Alis.Sample.SplitCamera
 {
@@ -77,8 +76,8 @@ namespace Alis.Sample.SplitCamera
                         .Build())
                     .Build())
                 .World(sceneManager => sceneManager
-                    .Add<AScene>(gameScene => gameScene
-                        .Add<AGameObject>(gameObject => gameObject
+                    .Add<Scene>(gameScene => gameScene
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Camera")
                             .AddComponent<Camera>(camera => camera.Builder()
                                 .Resolution(1024, 640)
@@ -88,7 +87,7 @@ namespace Alis.Sample.SplitCamera
                             .Build())
                         
                         // Decoration tree-001
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
                             .Transform(transform => transform
                                 .Position(100, 100)
@@ -101,7 +100,7 @@ namespace Alis.Sample.SplitCamera
                             .Build())
                         
                         // Decoration tree-001
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("tree-002")
                             .Transform(transform => transform
                                 .Position(400, 400)
@@ -112,7 +111,7 @@ namespace Alis.Sample.SplitCamera
                                 .SetTexture(AssetManager.Find("tree-001.bmp"))
                                 .Build())
                             .Build())
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
                             .Transform(transform => transform
                                 .Position(-100, -100)
@@ -123,7 +122,7 @@ namespace Alis.Sample.SplitCamera
                                 .SetTexture(AssetManager.Find("tree-001.bmp"))
                                 .Build())
                             .Build())
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
                             .Transform(transform => transform
                                 .Position(-200, -200)

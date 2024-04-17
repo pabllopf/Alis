@@ -38,7 +38,7 @@ namespace Alis.Sample.Pong
     /// <summary>
     ///     The player controller class
     /// </summary>
-    public class PlayerController : Component
+    public class PlayerController : AComponent
     {
         /// <summary>
         ///     The player id

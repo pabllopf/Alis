@@ -41,7 +41,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The pipeline controller class
     /// </summary>
     /// <seealso cref="AComponent" />
-    public class PipelineController : Component
+    public class PipelineController : AComponent
     {
         /// <summary>
         ///     The random height

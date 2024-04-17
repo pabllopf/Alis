@@ -37,7 +37,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The floor animation class
     /// </summary>
     /// <seealso cref="AComponent" />
-    public class FloorAnimation : Component
+    public class FloorAnimation : AComponent
     {
         /// <summary>
         ///     The velocity

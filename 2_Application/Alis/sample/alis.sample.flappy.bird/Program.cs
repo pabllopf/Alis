@@ -34,8 +34,7 @@ using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Component.Ui;
-using Alis.Core.Ecs.Entity.GameObject;
-using Alis.Core.Ecs.Entity.Scene;
+using Alis.Core.Ecs.Entity;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Flappy.Bird
@@ -81,9 +80,9 @@ namespace Alis.Sample.Flappy.Bird
                     ////////////////////////////////////////
                     // MAIN MENU SCENE:
                     ////////////////////////////////////////
-                    .Add<AScene>(gameScene => gameScene
+                    .Add<Scene>(gameScene => gameScene
                         .Name("Main Menu")
-                        .Add<AGameObject>(mainCamera => mainCamera
+                        .Add<GameObject>(mainCamera => mainCamera
                             .Name("Camera")
                             .WithTag("Camera")
                             .Transform(position => position
@@ -99,7 +98,7 @@ namespace Alis.Sample.Flappy.Bird
                         ////////////////////////////////////////
                         // MAIN MENU SCENE: BACKGROUND
                         ////////////////////////////////////////
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Background")
                             .Transform(transform => transform
                                 .Position(144, 256)
@@ -110,7 +109,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .Depth(0)
                                 .Build())
                             .Build())
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("UI")
                             .AddComponent<Canvas>(canvas => canvas
                                 .Builder()
@@ -120,7 +119,7 @@ namespace Alis.Sample.Flappy.Bird
                         ////////////////////////////////////////
                         // MAIN MENU SCENE: FLOOR
                         ////////////////////////////////////////
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Floor")
                             .Transform(transform => transform
                                 .Position(168, 456)
@@ -138,7 +137,7 @@ namespace Alis.Sample.Flappy.Bird
                         ////////////////////////////////////////
                         // MAIN MENU SCENE: MESSAGE MENU
                         ////////////////////////////////////////
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Message Menu")
                             .Transform(transform => transform
                                 .Position(140, 216.0f)
@@ -156,7 +155,7 @@ namespace Alis.Sample.Flappy.Bird
                         ////////////////////////////////////////
                         // MAIN MENU SCENE: COUNTER
                         ////////////////////////////////////////
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Counter")
                             .Transform(transform => transform
                                 .Position(132, 28f)
@@ -168,7 +167,7 @@ namespace Alis.Sample.Flappy.Bird
                         ////////////////////////////////////////
                         // MAIN MENU SCENE: BIRD
                         ////////////////////////////////////////
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Bird")
                             .Transform(transform => transform
                                 .Position(72, 270.0f)
@@ -202,7 +201,7 @@ namespace Alis.Sample.Flappy.Bird
                         ////////////////////////////////////////
                         // MAIN MENU SCENE: SOUNDTRACK
                         ////////////////////////////////////////
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Soundtrack")
                             .AddComponent<AudioSource>(audioSource => audioSource
                                 .Builder()
@@ -217,9 +216,9 @@ namespace Alis.Sample.Flappy.Bird
                     ////////////////////////////////////////
                     // GAME SCENE:
                     ////////////////////////////////////////
-                    .Add<AScene>(gameScene => gameScene
+                    .Add<Scene>(gameScene => gameScene
                         .Name("Game Scene")
-                        .Add<AGameObject>(mainCamera => mainCamera
+                        .Add<GameObject>(mainCamera => mainCamera
                             .Name("Camera")
                             .WithTag("Camera")
                             .Transform(position => position
@@ -235,7 +234,7 @@ namespace Alis.Sample.Flappy.Bird
                         ////////////////////////////////////////
                         // GAME SCENE: BACKGROUND
                         ////////////////////////////////////////
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Background")
                             .Transform(transform => transform
                                 .Position(144, 256)
@@ -250,7 +249,7 @@ namespace Alis.Sample.Flappy.Bird
                         ////////////////////////////////////////
                         // GAME SCENE: FLOOR
                         ////////////////////////////////////////
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Floor")
                             .Transform(transform => transform
                                 .Position(168, 456)
@@ -268,7 +267,7 @@ namespace Alis.Sample.Flappy.Bird
                         ////////////////////////////////////////
                         // GAME SCENE: FLOOR COLLISION
                         ////////////////////////////////////////
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Floor Collision")
                             .Transform(transform => transform
                                 .Position(100, 475)
@@ -296,7 +295,7 @@ namespace Alis.Sample.Flappy.Bird
                         ////////////////////////////////////////
                         // GAME SCENE: SKY COLLISION
                         ////////////////////////////////////////
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Sky Collision")
                             .Transform(transform => transform
                                 .Position(100, -25)
@@ -324,7 +323,7 @@ namespace Alis.Sample.Flappy.Bird
                         ////////////////////////////////////////
                         // GAME SCENE: COUNTER
                         ////////////////////////////////////////
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Counter")
                             .Transform(transform => transform
                                 .Position(132, 28f)
@@ -336,7 +335,7 @@ namespace Alis.Sample.Flappy.Bird
                         ////////////////////////////////////////
                         // GAME SCENE: PIPELINE UP
                         ////////////////////////////////////////
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Pipeline UP")
                             .Transform(transform => transform
                                 .Position(330, 0.0f)
@@ -369,7 +368,7 @@ namespace Alis.Sample.Flappy.Bird
                         ////////////////////////////////////////
                         // GAME SCENE: PIPELINE MIDDLE
                         ////////////////////////////////////////
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Pipeline Middle")
                             .Transform(transform => transform
                                 .Position(330, 225)
@@ -405,7 +404,7 @@ namespace Alis.Sample.Flappy.Bird
                         ////////////////////////////////////////
                         // GAME SCENE: PIPELINE DOWN
                         ////////////////////////////////////////
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Pipeline Down")
                             .Transform(transform => transform
                                 .Position(330, 450)
@@ -438,7 +437,7 @@ namespace Alis.Sample.Flappy.Bird
                         ////////////////////////////////////////
                         // GAME SCENE: BIRD
                         ////////////////////////////////////////
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Bird")
                             .WithTag("Player")
                             .Transform(transform => transform

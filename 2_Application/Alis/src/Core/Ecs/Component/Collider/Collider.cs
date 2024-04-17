@@ -35,7 +35,7 @@ namespace Alis.Core.Ecs.Component.Collider
     ///     The collider class
     /// </summary>
     /// <seealso cref="AComponent" />
-    public abstract class Collider : Component
+    public abstract class Collider : AComponent
     {
         /// <summary>
         ///     Starts this instance

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GoogleDriveCloudManager.cs
+//  File:IIdentifier.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,16 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Manager;
-
-namespace Alis.Extension.Cloud.GoogleDrive
+namespace Alis.Core.Ecs.Entity.Property
 {
     /// <summary>
-    ///     The cloud manager class
+    ///     The identifier interface
     /// </summary>
-    /// <seealso cref="AManager" />
-    /// <seealso cref="ICloudManager" />
-    public class GoogleDriveCloudManager : Manager, ICloudManager
+    public interface IIdentifier
     {
+        /// <summary>
+        ///     Gets or sets the value of the name
+        /// </summary>
+        public string Name { get; set; }
+        
+        /// <summary>
+        ///     Gets or sets the value of the id
+        /// </summary>
+        public string Id { get; set; }
+        
+        /// <summary>
+        ///     Gets or sets the value of the tag
+        /// </summary>
+        public string Tag { get; set; }
     }
 }

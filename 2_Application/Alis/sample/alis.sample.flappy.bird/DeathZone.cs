@@ -34,7 +34,7 @@ using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Ecs.Entity.GameObject;
+using Alis.Core.Ecs.Entity;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Flappy.Bird
@@ -43,7 +43,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The death zone class
     /// </summary>
     /// <seealso cref="AComponent" />
-    public class DeathZone : Component
+    public class DeathZone : AComponent
     {
         /// <summary>
         ///     The is death
@@ -84,7 +84,7 @@ namespace Alis.Sample.Flappy.Bird
         ///     Ons the collision enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public override void OnCollisionEnter(AGameObject gameObject)
+        public override void OnCollisionEnter(GameObject gameObject)
         {
             if (gameObject.Tag == "Player")
             {

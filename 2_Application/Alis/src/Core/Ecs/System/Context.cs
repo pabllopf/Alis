@@ -27,14 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Time;
 using Alis.Core.Ecs.System.Manager.Audio;
-using Alis.Core.Ecs.System.Manager.Graphic;
 using Alis.Core.Ecs.System.Manager.Input;
 using Alis.Core.Ecs.System.Manager.Network;
 using Alis.Core.Ecs.System.Manager.Physic;
 using Alis.Core.Ecs.System.Manager.Profile;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
+using Alis.Core.Ecs.System.Setting.Graphic;
 
 namespace Alis.Core.Ecs.System
 {
@@ -42,7 +43,7 @@ namespace Alis.Core.Ecs.System
     /// The context class
     /// </summary>
     /// <seealso cref="AContext"/>
-    public class Context : AContext
+    public class Context : IContext
     {
         /// <summary>
         /// The video game
@@ -54,7 +55,7 @@ namespace Alis.Core.Ecs.System
         /// </summary>
         /// <param name="videoGame">The video game</param>
         /// <param name="settings">The settings</param>
-        public Context(VideoGame videoGame, Settings settings) : base(videoGame, settings)
+        public Context(VideoGame videoGame, Settings settings)
         {
             this.videoGame = videoGame;
             Settings = settings;
@@ -91,13 +92,23 @@ namespace Alis.Core.Ecs.System
         public ProfileManager ProfileManager => videoGame.Find<ProfileManager>();
         
         /// <summary>
+        /// Gets the value of the time manager
+        /// </summary>
+        public TimeManager TimeManager => videoGame.TimeManager;
+        
+        /// <summary>
         /// The settings
         /// </summary>
-        public new Settings Settings { get; internal set; }
+        public Settings Settings { get; internal set; }
         
         /// <summary>
         /// Gets the value of the scene manager
         /// </summary>
         public SceneManager SceneManager => videoGame.Find<SceneManager>();
+        
+        /// <summary>
+        /// Exits this instance
+        /// </summary>
+        public void Exit() => videoGame.Exit();
     }
 }

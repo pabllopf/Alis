@@ -33,8 +33,7 @@ using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Ecs.Entity.GameObject;
-using Alis.Core.Ecs.Entity.Scene;
+using Alis.Core.Ecs.Entity;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.King.Platform
@@ -172,7 +171,7 @@ namespace Alis.Sample.King.Platform
                             .Build())
                         
                         // FLOOR
-                        .Add<AGameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Floor")
                             .WithTag("Floor Down")
                             .Transform(transform => transform

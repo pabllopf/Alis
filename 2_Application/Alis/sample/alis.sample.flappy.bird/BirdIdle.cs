@@ -37,7 +37,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The bird idle class
     /// </summary>
     /// <seealso cref="AComponent" />
-    public class BirdIdle : Component
+    public class BirdIdle : AComponent
     {
         /// <summary>
         ///     The range movement

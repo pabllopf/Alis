@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GoogleDriveCloudManager.cs
+//  File:IScene.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,16 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Manager;
+using System.Collections.Generic;
+using Alis.Core.Ecs.Entity.Property;
 
-namespace Alis.Extension.Cloud.GoogleDrive
+namespace Alis.Core.Ecs.Entity
 {
     /// <summary>
-    ///     The cloud manager class
+    ///     The scene interface
     /// </summary>
-    /// <seealso cref="AManager" />
-    /// <seealso cref="ICloudManager" />
-    public class GoogleDriveCloudManager : Manager, ICloudManager
+    public interface IScene<T> : IEnabled, IIdentifier, IRuntime, ICrud<T>
     {
+        /// <summary>
+        ///     Gets or sets the value of the game objects
+        /// </summary>
+        public List<T> GameObjects { get; set; }
     }
 }
