@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ProfileData.cs
+//  File:PairTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,21 +27,40 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Extension.Profile
+using Alis.Core.Physic.Collision.BroadPhase;
+using Xunit;
+
+namespace Alis.Core.Physic.Test.Collision.BroadPhase
 {
     /// <summary>
-    ///     The profile data class
+    /// The pair test class
     /// </summary>
-    public class ProfileData
+    public class PairTest
     {
         /// <summary>
-        ///     Gets or sets the value of the memory usage
+        /// Tests that test proxy id a
         /// </summary>
-        public long MemoryUsage { get; set; }
+        [Fact]
+        public void TestProxyIdA()
+        {
+            Pair pair = new Pair
+                {
+                    ProxyIdA = 1
+                };
+            Assert.Equal(1, pair.ProxyIdA);
+        }
         
         /// <summary>
-        ///     Gets or sets the value of the cpu usage
+        /// Tests that test proxy id b
         /// </summary>
-        public double CpuUsage { get; set; }
+        [Fact]
+        public void TestProxyIdB()
+        {
+            Pair pair = new Pair
+                {
+                    ProxyIdB = 2
+                };
+            Assert.Equal(2, pair.ProxyIdB);
+        }
     }
 }

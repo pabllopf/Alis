@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Profile
+namespace Alis.Extension.Profile
 {
     /// <summary>
     ///     The profiler class

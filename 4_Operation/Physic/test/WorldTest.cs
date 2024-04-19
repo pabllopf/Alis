@@ -259,9 +259,13 @@ namespace Alis.Core.Physic.Test
         public void Test_UpdateInvertedDeltaTime()
         {
             // Arrange
-            World world = new World(new Vector2(0, -9.8f));
-            world.TimeStepGlobal.DeltaTime = 0.5f;
-            world.TimeStepGlobal.InvertedDeltaTime = 2.0f;
+            World world = new World(new Vector2(0, -9.8f))
+                {
+                    TimeStepGlobal = {
+                        DeltaTime = 0.5f,
+                        InvertedDeltaTime = 2.0f
+                    }
+                };
             
             // Act
             world.UpdateInvertedDeltaTime();
