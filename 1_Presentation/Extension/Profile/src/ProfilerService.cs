@@ -29,7 +29,7 @@
 
 using System.Diagnostics;
 
-namespace Alis.Core.Profile
+namespace Alis.Extension.Profile
 {
     /// <summary>
     ///     The profiler service class

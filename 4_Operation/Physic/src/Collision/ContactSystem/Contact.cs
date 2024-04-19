@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="indexA">The index</param>
         /// <param name="fB">The </param>
         /// <param name="indexB">The index</param>
-        private Contact(Fixture fA, int indexA, Fixture fB, int indexB)
+        internal Contact(Fixture fA, int indexA, Fixture fB, int indexB)
         {
             Reset(fA, indexA, fB, indexB);
         }
@@ -271,7 +271,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="indexA">The index</param>
         /// <param name="fB">The </param>
         /// <param name="indexB">The index</param>
-        private void Reset(Fixture fA, int indexA, Fixture fB, int indexB)
+        internal void Reset(Fixture fA, int indexA, Fixture fB, int indexB)
         {
             Flags = ContactSetting.EnabledFlag;
             
