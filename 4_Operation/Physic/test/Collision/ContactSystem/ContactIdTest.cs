@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ShapeCastInput.cs
+//  File:ContactIdTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,48 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collision.ContactSystem;
+using Xunit;
 
-namespace Alis.Core.Physic.Collision.Distance
+namespace Alis.Core.Physic.Test.Collision.ContactSystem
 {
-    /// <summary>Input parameters for b2ShapeCast</summary>
-    public struct ShapeCastInput
+    /// <summary>
+    /// The contact id test class
+    /// </summary>
+    public class ContactIdTest
     {
         /// <summary>
-        ///     The proxy
+        /// Tests that test contact feature property
         /// </summary>
-        public DistanceProxy ProxyA { get; set; }
+        [Fact]
+        public void TestContactFeatureProperty()
+        {
+            // Arrange
+            ContactId contactId = new ContactId();
+            ContactFeature contactFeature = new ContactFeature();
+            
+            // Act
+            contactId.ContactFeature = contactFeature;
+            
+            // Assert
+            Assert.Equal(contactFeature, contactId.ContactFeature);
+        }
         
         /// <summary>
-        ///     The proxy
+        /// Tests that test key property
         /// </summary>
-        public DistanceProxy ProxyB { get; set; }
-        
-        /// <summary>
-        ///     The transform
-        /// </summary>
-        public Transform TransformA { get; set; }
-        
-        /// <summary>
-        ///     The transform
-        /// </summary>
-        public Transform TransformB { get; set; }
-        
-        /// <summary>
-        ///     The translation
-        /// </summary>
-        public Vector2 TranslationB { get; set; }
+        [Fact]
+        public void TestKeyProperty()
+        {
+            // Arrange
+            ContactId contactId = new ContactId();
+            uint key = 1;
+            
+            // Act
+            contactId.Key = key;
+            
+            // Assert
+            Assert.Equal(key, contactId.Key);
+        }
     }
 }

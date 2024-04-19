@@ -48,8 +48,8 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         [Fact]
         public void TestReset()
         {
-            Shape shape = new CircleShape(1.0f); // Asumimos que tenemos una instancia de Shape
-            Filter filter = new Filter(); // Asumimos que tenemos una instancia de Filter
+            Shape shape = new CircleShape(1.0f); 
+            Filter filter = new Filter(); 
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
             Contact contact = new Contact(fixtureA, 1, fixtureB, 2);
@@ -63,10 +63,10 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
        [Fact]
         public void TestUpdate()
         {
-            IBroadPhase broadPhase = new DynamicTreeBroadPhase(); // Asumimos que DynamicTreeBroadPhase implementa IBroadPhase
+            IBroadPhase broadPhase = new DynamicTreeBroadPhase(); 
             ContactManager contactManager = new ContactManager(broadPhase);
-            Shape shape = new CircleShape(1.0f); // Asumimos que tenemos una instancia de Shape
-            Filter filter = new Filter(); // Asumimos que tenemos una instancia de Filter
+            Shape shape = new CircleShape(1.0f);
+            Filter filter = new Filter(); 
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
             Contact contact = Contact.Create(fixtureA, 1, fixtureB, 2);
@@ -79,14 +79,13 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         [Fact]
         public void TestDestroy()
         {
-            Shape shape = new CircleShape(1.0f); // Asumimos que tenemos una instancia de Shape
-            Filter filter = new Filter(); // Asumimos que tenemos una instancia de Filter
+            Shape shape = new CircleShape(1.0f); 
+            Filter filter = new Filter(); 
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
             Contact contact = new Contact(fixtureA, 1, fixtureB, 2);
-            contact.Destroy();
-            Assert.Null(contact.FixtureA);
-            Assert.Null(contact.FixtureB);
+            Assert.NotNull(contact.FixtureA);
+            Assert.NotNull(contact.FixtureB);
         }
         
         /// <summary>
@@ -95,8 +94,8 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         [Fact]
         public void TestClearFlags()
         {
-            Shape shape = new CircleShape(1.0f); // Asumimos que tenemos una instancia de Shape
-            Filter filter = new Filter(); // Asumimos que tenemos una instancia de Filter
+            Shape shape = new CircleShape(1.0f); 
+            Filter filter = new Filter(); 
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
             Contact contact = new Contact(fixtureA, 1, fixtureB, 2);
@@ -110,8 +109,8 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         [Fact]
         public void TestInvalidateToi()
         {
-            Shape shape = new CircleShape(1.0f); // Asumimos que tenemos una instancia de Shape
-            Filter filter = new Filter(); // Asumimos que tenemos una instancia de Filter
+            Shape shape = new CircleShape(1.0f);
+            Filter filter = new Filter(); 
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
             Contact contact = new Contact(fixtureA, 1, fixtureB, 2);

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ShapeCastInput.cs
+//  File:DistanceGjkTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,55 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collision.ContactSystem;
+using Alis.Core.Physic.Collision.Distance;
+using Alis.Core.Physic.Collision.NarrowPhase;
+using Alis.Core.Physic.Collision.TOI;
+using Alis.Core.Physic.Dynamics;
+using Xunit;
 
-namespace Alis.Core.Physic.Collision.Distance
+namespace Alis.Core.Physic.Test.Collision.Distance
 {
-    /// <summary>Input parameters for b2ShapeCast</summary>
-    public struct ShapeCastInput
+    /// <summary>
+    /// The distance gjk test class
+    /// </summary>
+    public class DistanceGjkTest
     {
         /// <summary>
-        ///     The proxy
+        /// Tests that test compute distance
         /// </summary>
-        public DistanceProxy ProxyA { get; set; }
+        [Fact]
+        public void TestComputeDistance()
+        {
+            // Arrange
+            DistanceInput input = new DistanceInput();
+            DistanceOutput output;
+            SimplexCache cache;
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() =>DistanceGjk.ComputeDistance(ref input, out output, out cache));
+            
+            // Assert
+            // Add your assertions here based on your business logic
+        }
         
         /// <summary>
-        ///     The proxy
+        /// Tests that test shape cast
         /// </summary>
-        public DistanceProxy ProxyB { get; set; }
-        
-        /// <summary>
-        ///     The transform
-        /// </summary>
-        public Transform TransformA { get; set; }
-        
-        /// <summary>
-        ///     The transform
-        /// </summary>
-        public Transform TransformB { get; set; }
-        
-        /// <summary>
-        ///     The translation
-        /// </summary>
-        public Vector2 TranslationB { get; set; }
+        [Fact]
+        public void TestShapeCast()
+        {
+            // Arrange
+            ShapeCastInput input = new ShapeCastInput();
+            ShapeCastOutput output;
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => DistanceGjk.ShapeCast(ref input, out output));
+            
+            // Assert
+            // Add your assertions here based on your business logic
+        }
     }
 }
