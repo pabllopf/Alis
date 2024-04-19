@@ -45,7 +45,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The island
         /// </summary>
-        internal readonly Island island;
+        internal readonly Island Island;
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="World" /> class
@@ -55,7 +55,7 @@ namespace Alis.Core.Physic
         {
             Gravity = gravity;
             ContactManager = new ContactManager(new DynamicTreeBroadPhase());
-            island = new Island();
+            Island = new Island();
         }
         
         /// <summary>
@@ -192,7 +192,7 @@ namespace Alis.Core.Physic
             ContactManager.ClearFlags();
             
             // Island solving.
-            island.Solve(TimeStepGlobal, Gravity, true, ContactManager, Bodies);
+            Island.Solve(TimeStepGlobal, Gravity, true, ContactManager, Bodies);
             
             // Synchronize fixtures, check for out of range bodies.
             Bodies.ForEach(i => i.CheckOutRange());
@@ -243,7 +243,7 @@ namespace Alis.Core.Physic
                 }
                 
                 // Advance the bodies to the TOI.
-                Body[] bodies = BodyHelper.AdvanceBody(ContactManager, island, minContact, minAlpha);
+                Body[] bodies = BodyHelper.AdvanceBody(ContactManager, Island, minContact, minAlpha);
                 
                 // Solve the TOI island.
                 SolveToiIsland(minAlpha, bodies[0].IslandIndex, bodies[1].IslandIndex);
@@ -270,12 +270,12 @@ namespace Alis.Core.Physic
         /// <param name="minAlpha">The min alpha</param>
         /// <param name="islandIndexA">The island index</param>
         /// <param name="islandIndexB">The island index</param>
-        internal void SolveToiIsland(float minAlpha, int islandIndexA, int islandIndexB) => island.SolveToi(minAlpha, TimeStepGlobal, islandIndexA, islandIndexB, ContactManager);
+        internal void SolveToiIsland(float minAlpha, int islandIndexA, int islandIndexB) => Island.SolveToi(minAlpha, TimeStepGlobal, islandIndexA, islandIndexB, ContactManager);
         
         /// <summary>
         ///     Synchronizes the island bodies
         /// </summary>
-        internal void SynchronizeIslandBodies() => island.SynchronizeBodies();
+        internal void SynchronizeIslandBodies() => Island.SynchronizeBodies();
         
         /// <summary>
         ///     Clear all forces
