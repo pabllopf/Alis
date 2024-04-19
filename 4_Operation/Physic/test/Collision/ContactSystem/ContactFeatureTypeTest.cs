@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ShapeCastInput.cs
+//  File:ContactFeatureTypeTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collision.ContactSystem;
+using Xunit;
 
-namespace Alis.Core.Physic.Collision.Distance
+namespace Alis.Core.Physic.Test.Collision.ContactSystem
 {
-    /// <summary>Input parameters for b2ShapeCast</summary>
-    public struct ShapeCastInput
+    /// <summary>
+    /// The contact feature type test class
+    /// </summary>
+    public class ContactFeatureTypeTest
     {
         /// <summary>
-        ///     The proxy
+        /// Tests that test contact feature type values
         /// </summary>
-        public DistanceProxy ProxyA { get; set; }
-        
-        /// <summary>
-        ///     The proxy
-        /// </summary>
-        public DistanceProxy ProxyB { get; set; }
-        
-        /// <summary>
-        ///     The transform
-        /// </summary>
-        public Transform TransformA { get; set; }
-        
-        /// <summary>
-        ///     The transform
-        /// </summary>
-        public Transform TransformB { get; set; }
-        
-        /// <summary>
-        ///     The translation
-        /// </summary>
-        public Vector2 TranslationB { get; set; }
+        [Fact]
+        public void TestContactFeatureTypeValues()
+        {
+            // Assert
+            Assert.Equal(0, (int) ContactFeatureType.Vertex);
+            Assert.Equal(1, (int) ContactFeatureType.Face);
+        }
     }
 }

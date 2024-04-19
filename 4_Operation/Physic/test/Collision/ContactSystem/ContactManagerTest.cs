@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ShapeCastInput.cs
+//  File:ContactManagerTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,39 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collision.ContactSystem;
+using Alis.Core.Physic.Collision.Filtering;
+using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Dynamics;
+using Xunit;
 
-namespace Alis.Core.Physic.Collision.Distance
+namespace Alis.Core.Physic.Test.Collision.ContactSystem
 {
-    /// <summary>Input parameters for b2ShapeCast</summary>
-    public struct ShapeCastInput
+    /// <summary>
+    /// The contact manager test class
+    /// </summary>
+    public class ContactManagerTest
     {
         /// <summary>
-        ///     The proxy
+        /// Tests that test contact reset
         /// </summary>
-        public DistanceProxy ProxyA { get; set; }
-        
-        /// <summary>
-        ///     The proxy
-        /// </summary>
-        public DistanceProxy ProxyB { get; set; }
-        
-        /// <summary>
-        ///     The transform
-        /// </summary>
-        public Transform TransformA { get; set; }
-        
-        /// <summary>
-        ///     The transform
-        /// </summary>
-        public Transform TransformB { get; set; }
-        
-        /// <summary>
-        ///     The translation
-        /// </summary>
-        public Vector2 TranslationB { get; set; }
+        [Fact]
+        public void TestContactReset()
+        {
+            // Arrange
+            CircleShape shape = new CircleShape(1.0f);
+            Filter filter = new Filter();
+            
+            Fixture fixtureA = new Fixture(shape, filter);
+            Fixture fixtureB = new Fixture(shape, filter);
+            Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
+            
+            // Act
+            contact.Reset(fixtureA, 1, fixtureB, 1);
+            
+            // Assert
+            Assert.Equal(1, contact.ChildIndexA);
+            Assert.Equal(1, contact.ChildIndexB);
+        }
     }
 }
