@@ -115,7 +115,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets or sets the value of the enabled
         /// </summary>
-        public bool Enabled { get; private set; }
+        public bool Enabled { get; internal set; }
         
         /// <summary>Get the first body attached to this joint.</summary>
         public Body BodyA { get; set; }
@@ -169,7 +169,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Wakes the bodies
         /// </summary>
-        protected void WakeBodies()
+        protected internal void WakeBodies()
         {
             if (BodyA != null)
             {
