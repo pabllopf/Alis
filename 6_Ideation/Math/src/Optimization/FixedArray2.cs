@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FixedArray3.cs
+//  File:FixedArray2.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -31,12 +31,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Alis.Core.Physic.Shared.Optimization
+namespace Alis.Core.Aspect.Math.Optimization
 {
     /// <summary>
     ///     The fixed array
     /// </summary>
-    public struct FixedArray3<T> : IEnumerable<T>
+    public struct FixedArray2<T> : IEnumerable<T>
     {
         /// <summary>
         ///     The value
@@ -47,11 +47,6 @@ namespace Alis.Core.Physic.Shared.Optimization
         ///     The value
         /// </summary>
         public T Value1;
-        
-        /// <summary>
-        ///     The value
-        /// </summary>
-        public T Value2;
         
         /// <summary>
         ///     The index
@@ -66,8 +61,6 @@ namespace Alis.Core.Physic.Shared.Optimization
                         return Value0;
                     case 1:
                         return Value1;
-                    case 2:
-                        return Value2;
                     default:
                         throw new IndexOutOfRangeException(nameof(index));
                 }
@@ -81,9 +74,6 @@ namespace Alis.Core.Physic.Shared.Optimization
                         break;
                     case 1:
                         Value1 = value;
-                        break;
-                    case 2:
-                        Value2 = value;
                         break;
                     default:
                         throw new IndexOutOfRangeException(nameof(index));
@@ -110,7 +100,7 @@ namespace Alis.Core.Physic.Shared.Optimization
         /// <returns>The int</returns>
         public int IndexOf(T value)
         {
-            for (int i = 0; i < 3; ++i)
+            for (int i = 0; i < 2; ++i)
             {
                 if (this[i].Equals(value))
                 {
@@ -126,7 +116,7 @@ namespace Alis.Core.Physic.Shared.Optimization
         /// </summary>
         public void Clear()
         {
-            Value0 = Value1 = Value2 = default(T);
+            Value0 = Value1 = default(T);
         }
         
         /// <summary>
@@ -135,7 +125,7 @@ namespace Alis.Core.Physic.Shared.Optimization
         /// <returns>An enumerable of t</returns>
         private IEnumerable<T> Enumerate()
         {
-            for (int i = 0; i < 3; ++i)
+            for (int i = 0; i < 2; ++i)
             {
                 yield return this[i];
             }

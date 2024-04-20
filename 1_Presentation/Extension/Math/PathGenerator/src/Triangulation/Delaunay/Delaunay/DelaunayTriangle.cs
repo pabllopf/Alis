@@ -30,7 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Alis.Core.Physic.Shared.Optimization;
+using Alis.Core.Aspect.Math.Optimization;
 using Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Sweep;
 
 namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
