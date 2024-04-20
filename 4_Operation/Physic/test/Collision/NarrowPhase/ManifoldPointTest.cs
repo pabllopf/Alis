@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AngleJointTest.cs
+//  File:ManifoldPointTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,74 +29,82 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.ContactSystem;
-using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Dynamics.Joints;
-using Alis.Core.Physic.Test.Collision.BroadPhase.Sample;
+using Alis.Core.Physic.Collision.NarrowPhase;
 using Xunit;
 
-namespace Alis.Core.Physic.Test.Dynamics.Joints
+namespace Alis.Core.Physic.Test.Collision.NarrowPhase
 {
     /// <summary>
-    /// The angle joint test class
+    /// The manifold point test class
     /// </summary>
-    public class AngleJointTest
+    public class ManifoldPointTest
     {
         /// <summary>
-        /// Tests that angle joint constructor test
+        /// Tests that test local point property
         /// </summary>
         [Fact]
-        public void AngleJointConstructorTest()
+        public void Test_LocalPointProperty()
         {
-            ContactManager contactManager = new ContactManager(new BroadPhaseImplementation());
             // Arrange
-            Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
-            Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
+            ManifoldPoint manifoldPoint = new ManifoldPoint();
+            Vector2 expectedValue = new Vector2(1, 1);
             
             // Act
-            AngleJoint angleJoint = new AngleJoint(bodyA, bodyB);
+            manifoldPoint.LocalPoint = expectedValue;
             
             // Assert
-            Assert.Equal(bodyA, angleJoint.BodyA);
-            Assert.Equal(bodyB, angleJoint.BodyB);
+            Assert.Equal(expectedValue, manifoldPoint.LocalPoint);
         }
         
         /// <summary>
-        /// Tests that angle joint properties test
+        /// Tests that test normal impulse property
         /// </summary>
         [Fact]
-        public void AngleJointPropertiesTest()
+        public void Test_NormalImpulseProperty()
         {
             // Arrange
-            Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
-            Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
-            AngleJoint angleJoint = new AngleJoint(bodyA, bodyB)
-                {
-                    // Act
-                    TargetAngle = 0.5f
-                };
+            ManifoldPoint manifoldPoint = new ManifoldPoint();
+            float expectedValue = 1.5f;
+            
+            // Act
+            manifoldPoint.NormalImpulse = expectedValue;
             
             // Assert
-            Assert.Equal(0.5f, angleJoint.TargetAngle);
+            Assert.Equal(expectedValue, manifoldPoint.NormalImpulse);
         }
         
         /// <summary>
-        /// Tests that angle joint world anchor test
+        /// Tests that test tangent impulse property
         /// </summary>
         [Fact]
-        public void AngleJointWorldAnchorTest()
+        public void Test_TangentImpulseProperty()
         {
             // Arrange
-            Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
-            Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
-            AngleJoint angleJoint = new AngleJoint(bodyA, bodyB);
+            ManifoldPoint manifoldPoint = new ManifoldPoint();
+            float expectedValue = 1.5f;
             
             // Act
-            Vector2 worldAnchorA = angleJoint.WorldAnchorA;
-            Vector2 worldAnchorB = angleJoint.WorldAnchorB;
+            manifoldPoint.TangentImpulse = expectedValue;
             
             // Assert
-            Assert.Equal(bodyA.Position, worldAnchorA);
-            Assert.Equal(bodyB.Position, worldAnchorB);
+            Assert.Equal(expectedValue, manifoldPoint.TangentImpulse);
+        }
+        
+        /// <summary>
+        /// Tests that test id property
+        /// </summary>
+        [Fact]
+        public void Test_IdProperty()
+        {
+            // Arrange
+            ManifoldPoint manifoldPoint = new ManifoldPoint();
+            ContactId expectedValue = new ContactId();
+            
+            // Act
+            manifoldPoint.Id = expectedValue;
+            
+            // Assert
+            Assert.Equal(expectedValue, manifoldPoint.Id);
         }
     }
 }

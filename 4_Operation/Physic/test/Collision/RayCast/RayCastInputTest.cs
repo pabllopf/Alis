@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AngleJointTest.cs
+//  File:RayCastInputTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,75 +28,65 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision.ContactSystem;
-using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Dynamics.Joints;
-using Alis.Core.Physic.Test.Collision.BroadPhase.Sample;
+using Alis.Core.Physic.Collision.RayCast;
 using Xunit;
 
-namespace Alis.Core.Physic.Test.Dynamics.Joints
+namespace Alis.Core.Physic.Test.Collision.RayCast
 {
     /// <summary>
-    /// The angle joint test class
+    /// The ray cast input test class
     /// </summary>
-    public class AngleJointTest
+    public class RayCastInputTest
     {
         /// <summary>
-        /// Tests that angle joint constructor test
+        /// Tests that test fraction
         /// </summary>
         [Fact]
-        public void AngleJointConstructorTest()
+        public void Test_Fraction()
         {
-            ContactManager contactManager = new ContactManager(new BroadPhaseImplementation());
             // Arrange
-            Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
-            Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
+            RayCastInput rayCastInput = new RayCastInput();
+            float expected = 0.5f;
             
             // Act
-            AngleJoint angleJoint = new AngleJoint(bodyA, bodyB);
+            rayCastInput.Fraction = expected;
             
             // Assert
-            Assert.Equal(bodyA, angleJoint.BodyA);
-            Assert.Equal(bodyB, angleJoint.BodyB);
+            Assert.Equal(expected, rayCastInput.Fraction);
         }
         
         /// <summary>
-        /// Tests that angle joint properties test
+        /// Tests that test point 1
         /// </summary>
         [Fact]
-        public void AngleJointPropertiesTest()
+        public void Test_Point1()
         {
             // Arrange
-            Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
-            Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
-            AngleJoint angleJoint = new AngleJoint(bodyA, bodyB)
-                {
-                    // Act
-                    TargetAngle = 0.5f
-                };
+            RayCastInput rayCastInput = new RayCastInput();
+            Vector2 expected = new Vector2(1, 1);
+            
+            // Act
+            rayCastInput.Point1 = expected;
             
             // Assert
-            Assert.Equal(0.5f, angleJoint.TargetAngle);
+            Assert.Equal(expected, rayCastInput.Point1);
         }
         
         /// <summary>
-        /// Tests that angle joint world anchor test
+        /// Tests that test point 2
         /// </summary>
         [Fact]
-        public void AngleJointWorldAnchorTest()
+        public void Test_Point2()
         {
             // Arrange
-            Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
-            Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
-            AngleJoint angleJoint = new AngleJoint(bodyA, bodyB);
+            RayCastInput rayCastInput = new RayCastInput();
+            Vector2 expected = new Vector2(2, 2);
             
             // Act
-            Vector2 worldAnchorA = angleJoint.WorldAnchorA;
-            Vector2 worldAnchorB = angleJoint.WorldAnchorB;
+            rayCastInput.Point2 = expected;
             
             // Assert
-            Assert.Equal(bodyA.Position, worldAnchorA);
-            Assert.Equal(bodyB.Position, worldAnchorB);
+            Assert.Equal(expected, rayCastInput.Point2);
         }
     }
 }

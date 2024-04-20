@@ -62,24 +62,25 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         public void ContactVelocityConstraintPropertiesTest()
         {
             // Arrange
-            ContactVelocityConstraint contactVelocityConstraint = new ContactVelocityConstraint();
-            
-            // Act
-            contactVelocityConstraint.ContactIndex = 1;
-            contactVelocityConstraint.Friction = 0.5f;
-            contactVelocityConstraint.IndexA = 1;
-            contactVelocityConstraint.IndexB = 2;
-            contactVelocityConstraint.InvIa = 0.5f;
-            contactVelocityConstraint.InvIb = 0.5f;
-            contactVelocityConstraint.InvMassA = 0.5f;
-            contactVelocityConstraint.InvMassB = 0.5f;
-            contactVelocityConstraint.K = new Matrix2X2();
-            contactVelocityConstraint.Normal = new Vector2(1.0f, 1.0f);
-            contactVelocityConstraint.NormalMass = new Matrix2X2();
-            contactVelocityConstraint.PointCount = 1;
-            contactVelocityConstraint.Restitution = 0.5f;
-            contactVelocityConstraint.TangentSpeed = 0.5f;
-            contactVelocityConstraint.Threshold = 0.5f;
+            ContactVelocityConstraint contactVelocityConstraint = new ContactVelocityConstraint
+                {
+                    // Act
+                    ContactIndex = 1,
+                    Friction = 0.5f,
+                    IndexA = 1,
+                    IndexB = 2,
+                    InvIa = 0.5f,
+                    InvIb = 0.5f,
+                    InvMassA = 0.5f,
+                    InvMassB = 0.5f,
+                    K = new Matrix2X2(),
+                    Normal = new Vector2(1.0f, 1.0f),
+                    NormalMass = new Matrix2X2(),
+                    PointCount = 1,
+                    Restitution = 0.5f,
+                    TangentSpeed = 0.5f,
+                    Threshold = 0.5f
+                };
             
             // Assert
             Assert.Equal(1, contactVelocityConstraint.ContactIndex);

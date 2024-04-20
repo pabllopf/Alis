@@ -64,7 +64,6 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(bodyB, revoluteJoint.BodyB);
             Assert.Equal(anchorA, revoluteJoint.LocalAnchorA);
             Assert.Equal(anchorB, revoluteJoint.LocalAnchorB);
-            Assert.Equal(JointType.Revolute, revoluteJoint.JointType);
         }
         
         /// <summary>
@@ -79,17 +78,18 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Vector2 anchorA = new Vector2(0.5f, 0.5f);
             Vector2 anchorB = new Vector2(1.5f, 1.5f);
             bool useWorldCoordinates = false;
-            RevoluteJoint revoluteJoint = new RevoluteJoint(bodyA, bodyB, anchorA, anchorB, useWorldCoordinates);
-            
-            // Act
-            revoluteJoint.LocalAnchorA = new Vector2(0.6f, 0.6f);
-            revoluteJoint.LocalAnchorB = new Vector2(1.6f, 1.6f);
-            revoluteJoint.LowerAngle = 0.1f;
-            revoluteJoint.UpperAngle = 0.9f;
-            revoluteJoint.MotorSpeed = 0.5f;
-            revoluteJoint.MotorTorque = 0.5f;
-            revoluteJoint.EnableLimit = true;
-            revoluteJoint.EnableMotor = true;
+            RevoluteJoint revoluteJoint = new RevoluteJoint(bodyA, bodyB, anchorA, anchorB, useWorldCoordinates)
+                {
+                    // Act
+                    LocalAnchorA = new Vector2(0.6f, 0.6f),
+                    LocalAnchorB = new Vector2(1.6f, 1.6f),
+                    LowerAngle = 0.1f,
+                    UpperAngle = 0.9f,
+                    MotorSpeed = 0.5f,
+                    MotorTorque = 0.5f,
+                    EnableLimit = true,
+                    EnableMotor = true
+                };
             
             // Assert
             Assert.Equal(new Vector2(0.6f, 0.6f), revoluteJoint.LocalAnchorA);

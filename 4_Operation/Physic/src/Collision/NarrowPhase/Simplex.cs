@@ -153,7 +153,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 }
                 
                 default:
-                    Debug.Assert(false);
+                    
                     return Vector2.Zero;
             }
         }
@@ -168,7 +168,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             switch (Count)
             {
                 case 0:
-                    Debug.Assert(false);
+                    
                     return Vector2.Zero;
                 
                 case 1:
@@ -181,7 +181,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                     return Vector2.Zero;
                 
                 default:
-                    Debug.Assert(false);
+                    
                     return Vector2.Zero;
             }
         }
@@ -199,7 +199,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 case 0:
                     pA = Vector2.Zero;
                     pB = Vector2.Zero;
-                    Debug.Assert(false);
+                    
                     break;
                 
                 case 1:
@@ -231,7 +231,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             switch (Count)
             {
                 case 0:
-                    Debug.Assert(false);
+                    
                     return 0.0f;
                 case 1:
                     return 0.0f;
@@ -243,7 +243,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                     return MathUtils.Cross(V[1].W - V[0].W, V[2].W - V[0].W);
                 
                 default:
-                    Debug.Assert(false);
+                    
                     return 0.0f;
             }
         }

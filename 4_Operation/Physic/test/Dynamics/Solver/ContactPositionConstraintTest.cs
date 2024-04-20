@@ -46,23 +46,24 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         public void ContactPositionConstraintPropertiesTest()
         {
             // Arrange
-            ContactPositionConstraint contactPositionConstraint = new ContactPositionConstraint();
-            
-            // Act
-            contactPositionConstraint.IndexA = 1;
-            contactPositionConstraint.IndexB = 2;
-            contactPositionConstraint.InvIa = 0.5f;
-            contactPositionConstraint.InvIb = 0.5f;
-            contactPositionConstraint.InvMassA = 1.0f;
-            contactPositionConstraint.InvMassB = 1.0f;
-            contactPositionConstraint.LocalCenterA = new Vector2(1.0f, 1.0f);
-            contactPositionConstraint.LocalCenterB = new Vector2(2.0f, 2.0f);
-            contactPositionConstraint.LocalNormal = new Vector2(0.0f, 1.0f);
-            contactPositionConstraint.LocalPoint = new Vector2(1.5f, 1.5f);
-            contactPositionConstraint.PointCount = 1;
-            contactPositionConstraint.RadiusA = 1.0f;
-            contactPositionConstraint.RadiusB = 1.0f;
-            contactPositionConstraint.Type = ManifoldType.Circles;
+            ContactPositionConstraint contactPositionConstraint = new ContactPositionConstraint
+                {
+                    // Act
+                    IndexA = 1,
+                    IndexB = 2,
+                    InvIa = 0.5f,
+                    InvIb = 0.5f,
+                    InvMassA = 1.0f,
+                    InvMassB = 1.0f,
+                    LocalCenterA = new Vector2(1.0f, 1.0f),
+                    LocalCenterB = new Vector2(2.0f, 2.0f),
+                    LocalNormal = new Vector2(0.0f, 1.0f),
+                    LocalPoint = new Vector2(1.5f, 1.5f),
+                    PointCount = 1,
+                    RadiusA = 1.0f,
+                    RadiusB = 1.0f,
+                    Type = ManifoldType.Circles
+                };
             
             // Assert
             Assert.Equal(1, contactPositionConstraint.IndexA);

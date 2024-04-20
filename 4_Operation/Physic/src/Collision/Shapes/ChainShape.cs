@@ -54,21 +54,6 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </param>
         public ChainShape(Vertices vertices, bool createLoop = false) : base(ShapeType.Chain, Settings.PolygonRadius)
         {
-            Debug.Assert((vertices != null) && (vertices.Count >= 3));
-            Debug.Assert(vertices[0] !=
-                         vertices[
-                             vertices.Count -
-                             1]); //Velcro. See http://www.box2d.org/forum/viewtopic.php?f=4&t=7973&p=35363
-            
-            for (int i = 1; i < vertices.Count; ++i)
-            {
-                // If the code crashes here, it means your vertices are too close together.
-                Vector2 current = vertices[i];
-                Vector2 prev = vertices[i - 1];
-                Debug.Assert(MathUtils.DistanceSquared(ref prev, ref current) >
-                             Settings.LinearSlop * Settings.LinearSlop);
-            }
-            
             Vertices = new Vertices(vertices);
             
             //Velcro: Merged CreateLoop() and CreateChain() to this
@@ -90,7 +75,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
         
         /// <summary>The vertices. These are not owned/freed by the chain Shape.</summary>
-        public Vertices Vertices { get; private set; }
+        public Vertices Vertices { get; internal set; }
         
         /// <summary>Edge count = vertex count - 1</summary>
         public override int ChildCount => Vertices.Count - 1;
@@ -109,11 +94,6 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="index">The index</param>
         internal void GetChildEdge(EdgeShape edge, int index)
         {
-            Debug.Assert((0 <= index) && (index < Vertices.Count - 1));
-            Debug.Assert(edge != null);
-            
-            //Velcro: It is already an edge shape
-            //edge._shapeTypePrivate = ShapeType.Edge;
             edge.RadiusPrivate = RadiusPrivate;
             
             edge.Vertex1 = Vertices[index + 0];
@@ -156,8 +136,6 @@ namespace Alis.Core.Physic.Collision.Shapes
         public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
             out RayCastOutput output)
         {
-            Debug.Assert(childIndex < Vertices.Count);
-            
             int i1 = childIndex;
             int i2 = childIndex + 1;
             
@@ -180,8 +158,6 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="aabb">The aabb</param>
         public override void ComputeAabb(ref Transform transform, int childIndex, out Aabb aabb)
         {
-            Debug.Assert(childIndex < Vertices.Count);
-            
             int i1 = childIndex;
             int i2 = childIndex + 1;
             

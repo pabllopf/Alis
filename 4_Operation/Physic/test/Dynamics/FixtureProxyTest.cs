@@ -49,10 +49,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             // Arrange
             Aabb aabb = new Aabb(new Vector2(0, 0), new Vector2(1, 1));
-            FixtureProxy fixtureProxy = new FixtureProxy();
-            
-            // Act
-            fixtureProxy.Aabb = aabb;
+            FixtureProxy fixtureProxy = new FixtureProxy
+                {
+                    // Act
+                    Aabb = aabb
+                };
             
             // Assert
             Assert.Equal(aabb, fixtureProxy.Aabb);
@@ -66,10 +67,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             // Arrange
             int childIndex = 1;
-            FixtureProxy fixtureProxy = new FixtureProxy();
-            
-            // Act
-            fixtureProxy.ChildIndex = childIndex;
+            FixtureProxy fixtureProxy = new FixtureProxy
+                {
+                    // Act
+                    ChildIndex = childIndex
+                };
             
             // Assert
             Assert.Equal(childIndex, fixtureProxy.ChildIndex);
@@ -109,10 +111,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             // Arrange
             int proxyId = 1;
-            FixtureProxy fixtureProxy = new FixtureProxy();
-            
-            // Act
-            fixtureProxy.ProxyId = proxyId;
+            FixtureProxy fixtureProxy = new FixtureProxy
+                {
+                    // Act
+                    ProxyId = proxyId
+                };
             
             // Assert
             Assert.Equal(proxyId, fixtureProxy.ProxyId);
