@@ -267,10 +267,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public float UpperAngle { get; set; }
         
         /// <summary>The local anchor point on BodyA</summary>
-        public Vector2 LocalAnchorA { get; private set; }
+        public Vector2 LocalAnchorA { get; internal set; }
         
         /// <summary>The local anchor point on BodyB</summary>
-        public Vector2 LocalAnchorB { get; private set; }
+        public Vector2 LocalAnchorB { get; internal set; }
         
         /// <summary>
         ///     Gets or sets the value of the world anchor a

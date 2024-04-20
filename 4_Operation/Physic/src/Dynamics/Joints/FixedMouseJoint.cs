@@ -148,7 +148,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
         
         /// <summary>The local anchor point on BodyB</summary>
-        private Vector2 LocalAnchorA { get; set; }
+        internal Vector2 LocalAnchorA { get; set; }
         
         /// <summary>Use this to update the target point.</summary>
         public override Vector2 WorldAnchorA
