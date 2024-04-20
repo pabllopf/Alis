@@ -77,13 +77,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Vector2 anchorA = new Vector2(0.5f, 0.5f);
             Vector2 anchorB = new Vector2(1.5f, 1.5f);
             bool useWorldCoordinates = false;
-            DistanceJoint distanceJoint = new DistanceJoint(bodyA, bodyB, anchorA, anchorB, useWorldCoordinates);
-            
-            // Act
-            distanceJoint.LocalAnchorA = new Vector2(0.6f, 0.6f);
-            distanceJoint.LocalAnchorB = new Vector2(1.6f, 1.6f);
-            distanceJoint.Stiffness = 0.5f;
-            distanceJoint.Damping = 0.5f;
+            DistanceJoint distanceJoint = new DistanceJoint(bodyA, bodyB, anchorA, anchorB, useWorldCoordinates)
+                {
+                    // Act
+                    LocalAnchorA = new Vector2(0.6f, 0.6f),
+                    LocalAnchorB = new Vector2(1.6f, 1.6f),
+                    Stiffness = 0.5f,
+                    Damping = 0.5f
+                };
             
             // Assert
             Assert.Equal(new Vector2(0.6f, 0.6f), distanceJoint.LocalAnchorA);

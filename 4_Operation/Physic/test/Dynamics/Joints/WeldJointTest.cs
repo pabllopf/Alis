@@ -81,13 +81,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             float referenceAngle = 0.0f;
             float stiffness = 0.0f;
             float damping = 0.0f;
-            WeldJoint weldJoint = new WeldJoint(bodyA, bodyB, JointType.Weld, false, localAnchorA, localAnchorB, referenceAngle, stiffness, damping);
-            
-            // Act
-            weldJoint.LocalAnchorA = new Vector2(0.6f, 0.6f);
-            weldJoint.LocalAnchorB = new Vector2(1.6f, 1.6f);
-            weldJoint.Stiffness = 0.8f;
-            weldJoint.Damping = 0.7f;
+            WeldJoint weldJoint = new WeldJoint(bodyA, bodyB, JointType.Weld, false, localAnchorA, localAnchorB, referenceAngle, stiffness, damping)
+                {
+                    // Act
+                    LocalAnchorA = new Vector2(0.6f, 0.6f),
+                    LocalAnchorB = new Vector2(1.6f, 1.6f),
+                    Stiffness = 0.8f,
+                    Damping = 0.7f
+                };
             
             // Assert
             Assert.Equal(new Vector2(0.6f, 0.6f), weldJoint.LocalAnchorA);

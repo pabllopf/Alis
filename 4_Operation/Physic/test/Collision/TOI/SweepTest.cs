@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AngleJointTest.cs
+//  File:SweepTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,76 +27,89 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision.ContactSystem;
-using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Dynamics.Joints;
-using Alis.Core.Physic.Test.Collision.BroadPhase.Sample;
+using Alis.Core.Physic.Collision.TOI;
 using Xunit;
 
-namespace Alis.Core.Physic.Test.Dynamics.Joints
+namespace Alis.Core.Physic.Test.Collision.TOI
 {
     /// <summary>
-    /// The angle joint test class
+    /// The sweep test class
     /// </summary>
-    public class AngleJointTest
+    public class SweepTest
     {
         /// <summary>
-        /// Tests that angle joint constructor test
+        /// Tests that test advance
         /// </summary>
         [Fact]
-        public void AngleJointConstructorTest()
-        {
-            ContactManager contactManager = new ContactManager(new BroadPhaseImplementation());
-            // Arrange
-            Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
-            Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
-            
-            // Act
-            AngleJoint angleJoint = new AngleJoint(bodyA, bodyB);
-            
-            // Assert
-            Assert.Equal(bodyA, angleJoint.BodyA);
-            Assert.Equal(bodyB, angleJoint.BodyB);
-        }
-        
-        /// <summary>
-        /// Tests that angle joint properties test
-        /// </summary>
-        [Fact]
-        public void AngleJointPropertiesTest()
+        public void Test_Advance()
         {
             // Arrange
-            Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
-            Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
-            AngleJoint angleJoint = new AngleJoint(bodyA, bodyB)
+            Sweep sweep = new Sweep
                 {
-                    // Act
-                    TargetAngle = 0.5f
+                    Alpha0 = 0.5f,
+                    C0 = new Vector2(1, 1),
+                    C = new Vector2(2, 2),
+                    A0 = 0.5f,
+                    A = 1.0f
                 };
             
+            // Act
+            sweep.Advance(0.75f);
+            
             // Assert
-            Assert.Equal(0.5f, angleJoint.TargetAngle);
+            Assert.Equal(0.75f, sweep.Alpha0);
+            Assert.Equal(1.5f, sweep.C0.X);
+            Assert.Equal(1.5f, sweep.C0.Y);
+            Assert.Equal(0.75f, sweep.A0);
         }
         
         /// <summary>
-        /// Tests that angle joint world anchor test
+        /// Tests that test get transform
         /// </summary>
         [Fact]
-        public void AngleJointWorldAnchorTest()
+        public void Test_GetTransform()
         {
             // Arrange
-            Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
-            Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
-            AngleJoint angleJoint = new AngleJoint(bodyA, bodyB);
+            Sweep sweep = new Sweep
+                {
+                    C0 = new Vector2(1, 1),
+                    C = new Vector2(2, 2),
+                    A0 = 0.5f,
+                    A = 1.0f,
+                    LocalCenter = new Vector2(0.5f, 0.5f)
+                };
             
             // Act
-            Vector2 worldAnchorA = angleJoint.WorldAnchorA;
-            Vector2 worldAnchorB = angleJoint.WorldAnchorB;
+            sweep.GetTransform(out Transform transform, 0.5f);
             
             // Assert
-            Assert.Equal(bodyA.Position, worldAnchorA);
-            Assert.Equal(bodyB.Position, worldAnchorB);
+            Assert.Equal(1.47f, transform.Position.X, 0.1f);
+            Assert.Equal(0.79f, transform.Position.Y, 0.1f);
+            Assert.Equal(0.75f, transform.Rotation.GetAngle());
+        }
+        
+        /// <summary>
+        /// Tests that test normalize
+        /// </summary>
+        [Fact]
+        public void Test_Normalize()
+        {
+            // Arrange
+            Sweep sweep = new Sweep
+                {
+                    A0 = 7 * (float) Math.PI, // 3.5 full rotations
+                    A = 8 * (float) Math.PI // 4 full rotations
+                };
+            
+            // Act
+            sweep.Normalize();
+            
+            // Assert
+            Assert.Equal((float) Math.PI, sweep.A0, 0.1f);
+            Assert.Equal(6.28f, sweep.A, 0.1f);
         }
     }
 }

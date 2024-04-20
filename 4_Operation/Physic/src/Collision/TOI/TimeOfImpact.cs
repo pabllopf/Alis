@@ -45,31 +45,31 @@ namespace Alis.Core.Physic.Collision.TOI
         /// <summary>
         ///     The toi max root iter
         /// </summary>
-        [ThreadStatic] private static int _toiMaxRootIter;
+        [ThreadStatic] internal static int _toiMaxRootIter;
         
         /// <summary>
         ///     The toi max iter
         /// </summary>
         [field: ThreadStatic]
-        private static int ToiCalls { get; set; }
+        internal static int ToiCalls { get; set; }
         
         /// <summary>
         ///     The toi max iter
         /// </summary>
         [field: ThreadStatic]
-        private static int ToiIter { get; set; }
+        internal static int ToiIter { get; set; }
         
         /// <summary>
         ///     The toi max iter
         /// </summary>
         [field: ThreadStatic]
-        private static int ToiMaxIter { get; set; }
+        internal static int ToiMaxIter { get; set; }
         
         /// <summary>
         ///     The toi max root iter
         /// </summary>
         [field: ThreadStatic]
-        private static int ToiRootIter { get; set; }
+        internal static int ToiRootIter { get; set; }
         
         /// <summary>
         ///     Calculates the time of impact using the specified input
@@ -109,7 +109,7 @@ namespace Alis.Core.Physic.Collision.TOI
         /// </summary>
         /// <param name="input">The input</param>
         /// <returns>The toi output</returns>
-        private static ToiOutput InitializeOutput(ToiInput input) => new ToiOutput
+        internal static ToiOutput InitializeOutput(ToiInput input) => new ToiOutput
         {
             State = ToiOutputState.Unknown,
             Property = input.Max
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Collision.TOI
         /// </summary>
         /// <param name="sweepA">The sweep</param>
         /// <param name="sweepB">The sweep</param>
-        private static void NormalizeSweeps(ref Sweep sweepA, ref Sweep sweepB)
+        internal static void NormalizeSweeps(ref Sweep sweepA, ref Sweep sweepB)
         {
             sweepA.Normalize();
             sweepB.Normalize();
@@ -131,7 +131,7 @@ namespace Alis.Core.Physic.Collision.TOI
         /// </summary>
         /// <param name="input">The input</param>
         /// <returns>The distance input</returns>
-        private static DistanceInput PrepareDistanceInput(ToiInput input) => new DistanceInput
+        internal static DistanceInput PrepareDistanceInput(ToiInput input) => new DistanceInput
         {
             ProxyA = input.ProxyA,
             ProxyB = input.ProxyB,
@@ -151,7 +151,7 @@ namespace Alis.Core.Physic.Collision.TOI
         /// <param name="t1">The </param>
         /// <param name="iter">The iter</param>
         /// <param name="tMax">The max</param>
-        private static void ComputeSeparatingAxes(ref ToiInput input, ref ToiOutput output, ref DistanceInput distanceInput, ref Sweep sweepA, ref Sweep sweepB, float target, float tolerance, ref float t1, ref int iter, float tMax)
+        internal static void ComputeSeparatingAxes(ref ToiInput input, ref ToiOutput output, ref DistanceInput distanceInput, ref Sweep sweepA, ref Sweep sweepB, float target, float tolerance, ref float t1, ref int iter, float tMax)
         {
             for (;;)
             {
@@ -204,7 +204,7 @@ namespace Alis.Core.Physic.Collision.TOI
         /// <param name="tolerance">The tolerance</param>
         /// <param name="t1">The </param>
         /// <param name="tMax">The max</param>
-        private static void ResolveDeepestPoint(ref ToiInput input, ref ToiOutput output, ref Sweep sweepA, ref Sweep sweepB, ref Vector2 axis, ref Vector2 localPoint, SeparationFunctionType type, float target, float tolerance, ref float t1, float tMax)
+        internal static void ResolveDeepestPoint(ref ToiInput input, ref ToiOutput output, ref Sweep sweepA, ref Sweep sweepB, ref Vector2 axis, ref Vector2 localPoint, SeparationFunctionType type, float target, float tolerance, ref float t1, float tMax)
         {
             float t2 = tMax;
             int pushBackIter = 0;
@@ -267,7 +267,7 @@ namespace Alis.Core.Physic.Collision.TOI
         /// <param name="t2">The </param>
         /// <param name="s1">The </param>
         /// <param name="s2">The </param>
-        private static void ComputeRoot(ref ToiInput input, ref Sweep sweepA, ref Sweep sweepB, ref Vector2 axis, ref Vector2 localPoint, SeparationFunctionType type, float target, float tolerance, ref float t1, ref float t2, float s1, float s2)
+        internal static void ComputeRoot(ref ToiInput input, ref Sweep sweepA, ref Sweep sweepB, ref Vector2 axis, ref Vector2 localPoint, SeparationFunctionType type, float target, float tolerance, ref float t1, ref float t2, float s1, float s2)
         {
             int rootIterCount = 0;
             float a1 = t1, a2 = t2;

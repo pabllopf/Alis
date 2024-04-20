@@ -359,7 +359,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     Describes whether this instance is sensor contact
         /// </summary>
         /// <returns>The bool</returns>
-        private bool IsSensorContact() => FixtureA.IsSensor || FixtureB.IsSensor;
+        internal bool IsSensorContact() => FixtureA.IsSensor || FixtureB.IsSensor;
         
         /// <summary>
         ///     Describes whether this instance check sensor overlap

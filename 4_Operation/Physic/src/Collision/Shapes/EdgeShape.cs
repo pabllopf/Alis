@@ -115,7 +115,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="v1">The </param>
         /// <param name="v2">The </param>
         /// <param name="v3">The </param>
-        private void SetOneSided(Vector2 v0, Vector2 v1, Vector2 v2, Vector2 v3)
+        internal void SetOneSided(Vector2 v0, Vector2 v1, Vector2 v2, Vector2 v3)
         {
             Vertex0 = v0;
             Vertex1 = v1;
@@ -131,7 +131,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         /// <param name="start">The start</param>
         /// <param name="end">The end</param>
-        private void SetTwoSided(Vector2 start, Vector2 end)
+        internal void SetTwoSided(Vector2 start, Vector2 end)
         {
             Vertex1 = start;
             Vertex2 = end;
