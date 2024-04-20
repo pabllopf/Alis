@@ -30,10 +30,10 @@
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Optimization;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Distance;
-using Alis.Core.Physic.Shared.Optimization;
 
 namespace Alis.Core.Physic.Collision.NarrowPhase
 {

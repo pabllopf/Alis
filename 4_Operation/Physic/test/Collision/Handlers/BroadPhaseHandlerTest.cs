@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SimplexCache.cs
+//  File:BroadPhaseHandlerTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,25 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Optimization;
-
-namespace Alis.Core.Physic.Collision.NarrowPhase
+namespace Alis.Core.Physic.Test.Collision.Handlers
 {
-    /// <summary>Used to warm start ComputeDistance. Set count to zero on first call.</summary>
-    public struct SimplexCache
+    /// <summary>
+    /// The broad phase handler test class
+    /// </summary>
+    public class BroadPhaseHandlerTest
     {
-        /// <summary>Length or area</summary>
-        public ushort Count { get; set; }
         
-        /// <summary>Vertices on shape A</summary>
-        public FixedArray3<byte> IndexA;
-        
-        /// <summary>Vertices on shape B</summary>
-        public FixedArray3<byte> IndexB;
-        
-        /// <summary>
-        ///     The metric
-        /// </summary>
-        public float Metric { get; set; }
     }
 }

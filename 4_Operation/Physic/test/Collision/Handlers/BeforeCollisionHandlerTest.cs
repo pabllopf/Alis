@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SimplexCache.cs
+//  File:BeforeCollisionHandlerTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,25 +27,38 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Optimization;
+using System;
+using Alis.Core.Physic.Collision.Filtering;
+using Alis.Core.Physic.Collision.Handlers;
+using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Dynamics;
+using Xunit;
 
-namespace Alis.Core.Physic.Collision.NarrowPhase
+namespace Alis.Core.Physic.Test.Collision.Handlers
 {
-    /// <summary>Used to warm start ComputeDistance. Set count to zero on first call.</summary>
-    public struct SimplexCache
+    /// <summary>
+    /// The before collision handler test class
+    /// </summary>
+    public class BeforeCollisionHandlerTest
     {
-        /// <summary>Length or area</summary>
-        public ushort Count { get; set; }
-        
-        /// <summary>Vertices on shape A</summary>
-        public FixedArray3<byte> IndexA;
-        
-        /// <summary>Vertices on shape B</summary>
-        public FixedArray3<byte> IndexB;
-        
         /// <summary>
-        ///     The metric
+        /// Tests that before collision handler invocation test
         /// </summary>
-        public float Metric { get; set; }
+        [Fact]
+        public void BeforeCollisionHandlerInvocationTest()
+        {
+            // Arrange
+            bool isHandlerInvoked = false;
+            Action<Fixture, Fixture> handler = (fixtureA, fixtureB) => { isHandlerInvoked = true; };
+            
+            Fixture fixtureA =  new Fixture(new CircleShape(1, 1), new Filter(), 0.3f, 0.1f, 1.5f, true);
+            Fixture fixtureB =  new Fixture(new CircleShape(1, 1), new Filter(), 0.3f, 0.1f, 1.5f, true);
+            
+            // Act
+            handler(fixtureA, fixtureB);
+            
+            // Assert
+            Assert.True(isHandlerInvoked);
+        }
     }
 }

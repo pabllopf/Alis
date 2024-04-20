@@ -31,13 +31,13 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Optimization;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.NarrowPhase;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Shared.Optimization;
 
 namespace Alis.Core.Physic.Dynamics.Solver
 {
