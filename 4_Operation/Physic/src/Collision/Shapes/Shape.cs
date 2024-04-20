@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="type">The type</param>
         /// <param name="radius">The radius</param>
         /// <param name="density">The density</param>
-        protected Shape(ShapeType type, float radius = 0, float density = 0)
+        internal Shape(ShapeType type, float radius = 0, float density = 0)
         {
             Debug.Assert(radius >= 0);
             Debug.Assert(density >= 0);
