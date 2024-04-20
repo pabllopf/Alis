@@ -123,7 +123,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Gets the value of the main body
         /// </summary>
-        private Body MainBody { get; }
+        internal Body MainBody { get; }
         
         /// <summary>
         ///     Gets the value of the parts
@@ -135,7 +135,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="contact">The contact</param>
         /// <param name="impulse">The impulse</param>
-        private void PostSolve(Contact contact, ContactVelocityConstraint impulse)
+        internal void PostSolve(Contact contact, ContactVelocityConstraint impulse)
         {
             if (!Broken)
             {
@@ -192,7 +192,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Decomposes this instance
         /// </summary>
-        private void Decompose()
+        internal void Decompose()
         {
             world.ContactManager.PostSolve -= PostSolve;
             

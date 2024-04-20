@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Test.Collision.Filtering
         [Fact]
         public void DefaultConstructorTest()
         {
-            var filter = new Filter();
+            Filter filter = new Filter();
             Assert.Equal(Settings.DefaultCollisionGroup, filter.Group);
             Assert.Equal(Settings.DefaultFixtureCollisionCategories, filter.Category);
             Assert.Equal(Settings.DefaultFixtureCollidesWith, filter.CategoryMask);
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Collision.Filtering
         [InlineData(3, Category.Cat3, Category.Cat4)]
         public void ParameterizedConstructorTest(short group, Category category, Category mask)
         {
-            var filter = new Filter(group, category, mask);
+            Filter filter = new Filter(group, category, mask);
             Assert.Equal(group, filter.Group);
             Assert.Equal(category, filter.Category);
             Assert.Equal(mask, filter.CategoryMask);
