@@ -62,7 +62,7 @@ namespace Alis.Core.Aspect.Test
         /// <returns>The bool</returns>
         private static bool CheckNamespace(string namespaceToCheck)
         {
-            Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            Assembly[] assemblies = AppDomain.CurrentDomain.ReflectionOnlyGetAssemblies();
             return assemblies.Select(assembly => assembly.GetTypes().Where(t => string.Equals(t.Namespace, namespaceToCheck, StringComparison.Ordinal))).All(types => !types.Any());
         }
     }
