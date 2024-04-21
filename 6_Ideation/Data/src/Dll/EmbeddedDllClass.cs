@@ -207,20 +207,19 @@ namespace Alis.Core.Aspect.Data.Dll
                     continue;
                 }
                 
-                string fullFilePath = Path.Combine(fileDir, entry.FullName);
-                
-                string canonicalDestinationPath = Path.GetFullPath(fullFilePath);
+                string destinationPath = Path.Combine(fileDir, entry.FullName);
+                string canonicalDestinationPath = Path.GetFullPath(destinationPath);
                 
                 if (canonicalDestinationPath.StartsWith(fileDir, StringComparison.Ordinal))
                 {
                     // Extract the entry to the file
                     using Stream entryStream = entry.Open();
-                    using FileStream fs = File.Create(fullFilePath);
+                    using FileStream fs = File.Create(canonicalDestinationPath);
                     entryStream.CopyTo(fs);
                     
                     if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
                     {
-                        SetFileReadPermission(fullFilePath);
+                        SetFileReadPermission(canonicalDestinationPath);
                     }
                 }
             }
