@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Filtering;
@@ -38,26 +37,26 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.ContactSystem
 {
     /// <summary>
-    /// The contact edge test class
+    ///     The contact edge test class
     /// </summary>
     public class ContactEdgeTest
     {
         /// <summary>
-        /// Tests that test contact property
+        ///     Tests that test contact property
         /// </summary>
         [Fact]
         public void TestContactProperty()
         {
             // Arrange
             ContactEdge contactEdge = new ContactEdge();
-
+            
             // Create necessary objects for Contact constructor
             Shape shape = new CircleShape(1); // Or any other shape
             Filter filter = new Filter();
-
+            
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
-
+            
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
             
             // Act
@@ -66,9 +65,9 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Assert
             Assert.Equal(contact, contactEdge.Contact);
         }
-                
+        
         /// <summary>
-        /// Tests that test next property
+        ///     Tests that test next property
         /// </summary>
         [Fact]
         public void TestNextProperty()
@@ -85,7 +84,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test other property
+        ///     Tests that test other property
         /// </summary>
         [Fact]
         public void TestOtherProperty()
@@ -96,18 +95,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             Vector2 linearVelocity = new Vector2(0, 0);
             Body otherBody = new Body(
                 position,
-                linearVelocity,
-                BodyType.Static,
-                0F,
-                0F,
-                0F,
-                0F,
-                true,
-                true,
-                false,
-                false,
-                true,
-                1F
+                linearVelocity
             );
             
             // Act
@@ -118,7 +106,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test prev property
+        ///     Tests that test prev property
         /// </summary>
         [Fact]
         public void TestPrevProperty()

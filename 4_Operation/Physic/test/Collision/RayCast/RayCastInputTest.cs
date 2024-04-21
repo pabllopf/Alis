@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.RayCast
 {
     /// <summary>
-    /// The ray cast input test class
+    ///     The ray cast input test class
     /// </summary>
     public class RayCastInputTest
     {
         /// <summary>
-        /// Tests that test fraction
+        ///     Tests that test fraction
         /// </summary>
         [Fact]
         public void Test_Fraction()
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
         }
         
         /// <summary>
-        /// Tests that test point 1
+        ///     Tests that test point 1
         /// </summary>
         [Fact]
         public void Test_Point1()
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
         }
         
         /// <summary>
-        /// Tests that test point 2
+        ///     Tests that test point 2
         /// </summary>
         [Fact]
         public void Test_Point2()

@@ -4837,7 +4837,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read array when reader is empty returns null
+        ///     Tests that read array when reader is empty returns null
         /// </summary>
         [Fact]
         public void ReadArray_WhenReaderIsEmpty_ReturnsNull()
@@ -4849,7 +4849,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read array when reader contains empty array returns empty array
+        ///     Tests that read array when reader contains empty array returns empty array
         /// </summary>
         [Fact]
         public void ReadArray_WhenReaderContainsEmptyArray_ReturnsEmptyArray()
@@ -4862,7 +4862,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read array when reader contains single element array returns single element array
+        ///     Tests that read array when reader contains single element array returns single element array
         /// </summary>
         [Fact]
         public void ReadArray_WhenReaderContainsSingleElementArray_ReturnsSingleElementArray()
@@ -4876,7 +4876,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read array when reader contains multiple element array returns multiple element array
+        ///     Tests that read array when reader contains multiple element array returns multiple element array
         /// </summary>
         [Fact]
         public void ReadArray_WhenReaderContainsMultipleElementArray_ReturnsMultipleElementArray()
@@ -4891,7 +4891,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read array when reader contains nested array returns nested array
+        ///     Tests that read array when reader contains nested array returns nested array
         /// </summary>
         [Fact]
         public void ReadArray_WhenReaderContainsNestedArray_ReturnsNestedArray()
@@ -4908,7 +4908,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that read array when reader contains invalid json throws exception
+        ///     Tests that read array when reader contains invalid json throws exception
         /// </summary>
         [Fact]
         public void ReadArray_WhenReaderContainsInvalidJson_ThrowsException()
@@ -4919,7 +4919,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that invoke constructor when constructor is null throws argument null exception
+        ///     Tests that invoke constructor when constructor is null throws argument null exception
         /// </summary>
         [Fact]
         public void InvokeConstructor_WhenConstructorIsNull_ThrowsArgumentNullException()
@@ -4932,7 +4932,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that invoke constructor when info is null throws argument null exception
+        ///     Tests that invoke constructor when info is null throws argument null exception
         /// </summary>
         [Fact]
         public void InvokeConstructor_WhenInfoIsNull_ThrowsArgumentNullException()
@@ -4945,7 +4945,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that invoke constructor when constructor is not null and info is not null returns serializable
+        ///     Tests that invoke constructor when constructor is not null and info is not null returns serializable
         /// </summary>
         [Fact]
         public void InvokeConstructor_WhenConstructorIsNotNullAndInfoIsNotNull_ReturnsSerializable()
@@ -4958,7 +4958,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that invoke constructor when constructor does not match throws argument exception
+        ///     Tests that invoke constructor when constructor does not match throws argument exception
         /// </summary>
         [Fact]
         public void InvokeConstructor_WhenConstructorDoesNotMatch_ThrowsArgumentException()
@@ -4971,7 +4971,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle exception when throw exceptions is false adds exception to options
+        ///     Tests that handle exception when throw exceptions is false adds exception to options
         /// </summary>
         [Fact]
         public void HandleException_WhenThrowExceptionsIsFalse_AddsExceptionToOptions()
@@ -4989,7 +4989,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        /// Tests that handle exception when throw exceptions is true throws exception
+        ///     Tests that handle exception when throw exceptions is true throws exception
         /// </summary>
         [Fact]
         public void HandleException_WhenThrowExceptionsIsTrue_ThrowsException()

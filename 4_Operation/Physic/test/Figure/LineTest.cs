@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Figure
 {
     /// <summary>
-    /// The line test class
+    ///     The line test class
     /// </summary>
     public class LineTest
     {
         /// <summary>
-        /// Tests that distance between point and line segment test
+        ///     Tests that distance between point and line segment test
         /// </summary>
         [Fact]
         public void DistanceBetweenPointAndLineSegmentTest()
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Test.Figure
         }
         
         /// <summary>
-        /// Tests that line intersect 2 test
+        ///     Tests that line intersect 2 test
         /// </summary>
         [Fact]
         public void LineIntersect2Test()
@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Test.Figure
         }
         
         /// <summary>
-        /// Tests that line intersect test
+        ///     Tests that line intersect test
         /// </summary>
         [Fact]
         public void LineIntersectTest()
@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Test.Figure
         }
         
         /// <summary>
-        /// Tests that line segment vertices intersect test
+        ///     Tests that line segment vertices intersect test
         /// </summary>
         [Fact]
         public void LineSegmentVerticesIntersectTest()

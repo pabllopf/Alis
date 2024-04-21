@@ -27,23 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Filtering;
-using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Dynamics;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Collision.Filtering
 {
     /// <summary>
-    /// The filter test class
+    ///     The filter test class
     /// </summary>
     public class FilterTest
     {
         /// <summary>
-        /// Tests that default constructor test
+        ///     Tests that default constructor test
         /// </summary>
         [Fact]
         public void DefaultConstructorTest()
@@ -55,7 +51,7 @@ namespace Alis.Core.Physic.Test.Collision.Filtering
         }
         
         /// <summary>
-        /// Tests that parameterized constructor test
+        ///     Tests that parameterized constructor test
         /// </summary>
         /// <param name="group">The group</param>
         /// <param name="category">The category</param>

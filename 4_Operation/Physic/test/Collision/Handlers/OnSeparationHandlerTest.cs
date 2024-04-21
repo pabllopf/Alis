@@ -30,10 +30,9 @@
 namespace Alis.Core.Physic.Test.Collision.Handlers
 {
     /// <summary>
-    /// The on separation handler test class
+    ///     The on separation handler test class
     /// </summary>
     public class OnSeparationHandlerTest
     {
-        
     }
 }

@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision
 {
     /// <summary>
-    /// The test point helper test class
+    ///     The test point helper test class
     /// </summary>
     public class TestPointHelperTest
     {
         /// <summary>
-        /// Tests that test point circle test
+        ///     Tests that test point circle test
         /// </summary>
         [Fact]
         public void TestPointCircleTest()
@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Test.Collision
         }
         
         /// <summary>
-        /// Tests that test point polygon test
+        ///     Tests that test point polygon test
         /// </summary>
         [Fact]
         public void TestPointPolygonTest()

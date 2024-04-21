@@ -260,12 +260,13 @@ namespace Alis.Core.Physic.Test
         {
             // Arrange
             World world = new World(new Vector2(0, -9.8f))
+            {
+                TimeStepGlobal =
                 {
-                    TimeStepGlobal = {
-                        DeltaTime = 0.5f,
-                        InvertedDeltaTime = 2.0f
-                    }
-                };
+                    DeltaTime = 0.5f,
+                    InvertedDeltaTime = 2.0f
+                }
+            };
             
             // Act
             world.UpdateInvertedDeltaTime();

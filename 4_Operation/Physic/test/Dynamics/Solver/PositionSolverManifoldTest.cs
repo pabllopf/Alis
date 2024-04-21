@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics.Solver
 {
     /// <summary>
-    /// The position solver manifold test class
+    ///     The position solver manifold test class
     /// </summary>
     public class PositionSolverManifoldTest
     {
         /// <summary>
-        /// Tests that initialize circles test
+        ///     Tests that initialize circles test
         /// </summary>
         [Fact]
         public void InitializeCirclesTest()
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         }
         
         /// <summary>
-        /// Tests that initialize face a test
+        ///     Tests that initialize face a test
         /// </summary>
         [Fact]
         public void InitializeFaceATest()
@@ -106,7 +106,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         }
         
         /// <summary>
-        /// Tests that initialize face b test
+        ///     Tests that initialize face b test
         /// </summary>
         [Fact]
         public void InitializeFaceBTest()

@@ -64,7 +64,7 @@ namespace Alis.Builder.Core.Ecs.System
             new PhysicManager(),
             new ProfileManager(),
             new SceneManager()
-            );
+        );
         
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>

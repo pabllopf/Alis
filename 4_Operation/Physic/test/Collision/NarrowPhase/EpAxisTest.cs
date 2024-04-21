@@ -39,12 +39,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.NarrowPhase
 {
     /// <summary>
-    /// The ep axis test class
+    ///     The ep axis test class
     /// </summary>
     public class EpAxisTest
     {
         /// <summary>
-        /// Tests that test normal property
+        ///     Tests that test normal property
         /// </summary>
         [Fact]
         public void Test_NormalProperty()
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test index property
+        ///     Tests that test index property
         /// </summary>
         [Fact]
         public void Test_IndexProperty()
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test separation property
+        ///     Tests that test separation property
         /// </summary>
         [Fact]
         public void Test_SeparationProperty()
@@ -95,7 +95,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test type property
+        ///     Tests that test type property
         /// </summary>
         [Fact]
         public void Test_TypeProperty()
@@ -112,7 +112,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test contact constructor
+        ///     Tests that test contact constructor
         /// </summary>
         [Fact]
         public void Test_Contact_Constructor()
@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test contact reset
+        ///     Tests that test contact reset
         /// </summary>
         [Fact]
         public void Test_Contact_Reset()
@@ -145,7 +145,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test contact reset restitution
+        ///     Tests that test contact reset restitution
         /// </summary>
         [Fact]
         public void Test_Contact_ResetRestitution()
@@ -162,7 +162,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test contact reset restitution threshold
+        ///     Tests that test contact reset restitution threshold
         /// </summary>
         [Fact]
         public void Test_Contact_ResetRestitutionThreshold()
@@ -177,7 +177,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test contact reset friction
+        ///     Tests that test contact reset friction
         /// </summary>
         [Fact]
         public void Test_Contact_ResetFriction()
@@ -194,7 +194,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test fixture constructor
+        ///     Tests that test fixture constructor
         /// </summary>
         [Fact]
         public void Test_Fixture_Constructor()

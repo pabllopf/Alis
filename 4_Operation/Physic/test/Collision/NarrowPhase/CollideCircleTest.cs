@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.NarrowPhase
 {
     /// <summary>
-    /// The collide circle test class
+    ///     The collide circle test class
     /// </summary>
     public class CollideCircleTest
     {
         /// <summary>
-        /// Tests that test collide circles method
+        ///     Tests that test collide circles method
         /// </summary>
         [Fact]
         public void Test_CollideCirclesMethod()
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test collide polygon and circle method
+        ///     Tests that test collide polygon and circle method
         /// </summary>
         [Fact]
         public void Test_CollidePolygonAndCircleMethod()

@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics.Solver
 {
     /// <summary>
-    /// The solver data test class
+    ///     The solver data test class
     /// </summary>
     public class SolverDataTest
     {
         /// <summary>
-        /// Tests that solver data properties test
+        ///     Tests that solver data properties test
         /// </summary>
         [Fact]
         public void SolverDataPropertiesTest()

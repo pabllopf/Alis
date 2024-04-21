@@ -53,14 +53,14 @@ namespace Alis.Core.Ecs.System.Setting.Physic
         public Color DebugColor { get; set; }
         
         /// <summary>
+        ///     Gets or sets the value of the gravity
+        /// </summary>
+        public Vector2 Gravity { get; set; } = new Vector2(0.0f, 9.8f);
+        
+        /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The physic setting builder</returns>
         public PhysicSettingBuilder Builder() => new PhysicSettingBuilder();
-        
-        /// <summary>
-        ///     Gets or sets the value of the gravity
-        /// </summary>
-        public Vector2 Gravity { get; set; } = new Vector2(0.0f, 9.8f);
     }
 }

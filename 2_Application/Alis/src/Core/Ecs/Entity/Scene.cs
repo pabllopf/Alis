@@ -39,6 +39,24 @@ namespace Alis.Core.Ecs.Entity
     public class Scene : IScene<GameObject>, IHasContext<Context>
     {
         /// <summary>
+        ///     Gets or sets the value of the context
+        /// </summary>
+        protected internal Context Context { get; set; }
+        
+        /// <summary>
+        ///     Sets the context using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        public void SetContext(Context context)
+        {
+            Context = context;
+            foreach (GameObject gameObject in GameObjects)
+            {
+                gameObject.SetContext(context);
+            }
+        }
+        
+        /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
         public bool IsEnable { get; set; } = true;
@@ -191,23 +209,5 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         public virtual void Clear<T>() where T : GameObject => GameObjects.Clear();
-        
-        /// <summary>
-        /// Gets or sets the value of the context
-        /// </summary>
-        protected internal Context Context { get; set; }
-        
-        /// <summary>
-        /// Sets the context using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        public void SetContext(Context context)
-        {
-            Context = context;
-            foreach (GameObject gameObject in GameObjects)
-            {
-                gameObject.SetContext(context);
-            }
-        }
     }
 }

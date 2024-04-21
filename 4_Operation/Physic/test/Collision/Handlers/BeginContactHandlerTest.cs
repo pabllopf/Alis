@@ -30,10 +30,9 @@
 namespace Alis.Core.Physic.Test.Collision.Handlers
 {
     /// <summary>
-    /// The begin contact handler test class
+    ///     The begin contact handler test class
     /// </summary>
     public class BeginContactHandlerTest
     {
-        
     }
 }

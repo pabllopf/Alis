@@ -476,7 +476,5 @@ namespace Alis.Core.Aspect.Logging.Test
             
             Assert.Equal(log, Logger.LogLevel);
         }
-        
-        
     }
 }

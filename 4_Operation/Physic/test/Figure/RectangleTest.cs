@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Figure
 {
     /// <summary>
-    /// The rectangle test class
+    ///     The rectangle test class
     /// </summary>
     public class RectangleTest
     {
         /// <summary>
-        /// Tests that constructor test
+        ///     Tests that constructor test
         /// </summary>
         [Fact]
         public void ConstructorTest()
@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Test.Figure
         }
         
         /// <summary>
-        /// Tests that constructor throws exception when width is zero or negative
+        ///     Tests that constructor throws exception when width is zero or negative
         /// </summary>
         [Fact]
         public void ConstructorThrowsExceptionWhenWidthIsZeroOrNegative()
@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Test.Figure
         }
         
         /// <summary>
-        /// Tests that constructor throws exception when height is zero or negative
+        ///     Tests that constructor throws exception when height is zero or negative
         /// </summary>
         [Fact]
         public void ConstructorThrowsExceptionWhenHeightIsZeroOrNegative()

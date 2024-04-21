@@ -27,21 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision.ContactSystem;
-using Alis.Core.Physic.Collision.Distance;
-using Alis.Core.Physic.Collision.NarrowPhase;
-using Alis.Core.Physic.Collision.TOI;
-using Xunit;
-
 namespace Alis.Core.Physic.Test.Collision.TOI
 {
     /// <summary>
-    /// The separation function test class
+    ///     The separation function test class
     /// </summary>
     public class SeparationFunctionTest
     {
-        
     }
 }

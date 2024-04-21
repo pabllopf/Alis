@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IBroadPhaseTest.cs
+//  File:BroadPhaseTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -37,12 +37,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.BroadPhase
 {
     /// <summary>
-    /// The broad phase test class
+    ///     The broad phase test class
     /// </summary>
     public class BroadPhaseTest
     {
         /// <summary>
-        /// Tests that test proxy count
+        ///     Tests that test proxy count
         /// </summary>
         [Fact]
         public void TestProxyCount()
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         }
         
         /// <summary>
-        /// Tests that test update pairs
+        ///     Tests that test update pairs
         /// </summary>
         [Fact]
         public void TestUpdatePairs()
@@ -63,7 +63,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         }
         
         /// <summary>
-        /// Tests that test test overlap
+        ///     Tests that test test overlap
         /// </summary>
         [Fact]
         public void TestTestOverlap()
@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         }
         
         /// <summary>
-        /// Tests that test add proxy
+        ///     Tests that test add proxy
         /// </summary>
         [Fact]
         public void TestAddProxy()
@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         }
         
         /// <summary>
-        /// Tests that test remove proxy
+        ///     Tests that test remove proxy
         /// </summary>
         [Fact]
         public void TestRemoveProxy()
@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         }
         
         /// <summary>
-        /// Tests that test move proxy
+        ///     Tests that test move proxy
         /// </summary>
         [Fact]
         public void TestMoveProxy()
@@ -110,7 +110,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         }
         
         /// <summary>
-        /// Tests that test get proxy
+        ///     Tests that test get proxy
         /// </summary>
         [Fact]
         public void TestGetProxy()
@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         }
         
         /// <summary>
-        /// Tests that test touch proxy
+        ///     Tests that test touch proxy
         /// </summary>
         [Fact]
         public void TestTouchProxy()
@@ -132,7 +132,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         }
         
         /// <summary>
-        /// Tests that test get fat aabb
+        ///     Tests that test get fat aabb
         /// </summary>
         [Fact]
         public void TestGetFatAabb()
@@ -144,7 +144,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         }
         
         /// <summary>
-        /// Tests that test query
+        ///     Tests that test query
         /// </summary>
         [Fact]
         public void TestQuery()
@@ -156,7 +156,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         }
         
         /// <summary>
-        /// Tests that test ray cast
+        ///     Tests that test ray cast
         /// </summary>
         [Fact]
         public void TestRayCast()
@@ -168,7 +168,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         }
         
         /// <summary>
-        /// Tests that test shift origin
+        ///     Tests that test shift origin
         /// </summary>
         [Fact]
         public void TestShiftOrigin()

@@ -41,12 +41,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics
 {
     /// <summary>
-    /// The breakable body test class
+    ///     The breakable body test class
     /// </summary>
     public class BreakableBodyTest
     {
         /// <summary>
-        /// Tests that constructor test
+        ///     Tests that constructor test
         /// </summary>
         [Fact]
         public void ConstructorTest()
@@ -67,10 +67,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(rotation, breakableBody.MainBody.Rotation);
         }
         
-                /// <summary>
-                /// Tests that post solve test
-                /// </summary>
-                [Fact]
+        /// <summary>
+        ///     Tests that post solve test
+        /// </summary>
+        [Fact]
         public void PostSolveTest()
         {
             // Arrange
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Vector2 position = new Vector2(0, 0);
             float rotation = 0.0f;
             MyBreakableBody breakableBody = new MyBreakableBody(world, parts, density, position, rotation);
-
+            
             // Assuming you have shapes and filters available for the fixtures
             Shape shapeA = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterA = new Filter();
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdA = 1.5f;
             bool isSensorA = true;
             Fixture fixtureA = new Fixture(shapeA, filterA, frictionA, restitutionA, restitutionThresholdA, isSensorA);
-
+            
             Shape shapeB = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterB = new Filter();
             float frictionB = 0.3f;
@@ -97,11 +97,11 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdB = 1.5f;
             bool isSensorB = true;
             Fixture fixtureB = new Fixture(shapeB, filterB, frictionB, restitutionB, restitutionThresholdB, isSensorB);
-
+            
             int indexA = 0;
             int indexB = 0;
             Contact contact = new Contact(fixtureA, indexA, fixtureB, indexB);
-
+            
             ContactVelocityConstraint impulse = new ContactVelocityConstraint();
             
             // Act
@@ -112,7 +112,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
         
         /// <summary>
-        /// Tests that update test
+        ///     Tests that update test
         /// </summary>
         [Fact]
         public void UpdateTest()
@@ -133,7 +133,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
         
         /// <summary>
-        /// Tests that decompose test
+        ///     Tests that decompose test
         /// </summary>
         [Fact]
         public void DecomposeTest()
@@ -154,7 +154,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
         
         /// <summary>
-        /// Tests that break test
+        ///     Tests that break test
         /// </summary>
         [Fact]
         public void BreakTest()

@@ -28,23 +28,19 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math;
-using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Distance;
 using Alis.Core.Physic.Collision.NarrowPhase;
-using Alis.Core.Physic.Collision.TOI;
-using Alis.Core.Physic.Dynamics;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Collision.Distance
 {
     /// <summary>
-    /// The distance gjk test class
+    ///     The distance gjk test class
     /// </summary>
     public class DistanceGjkTest
     {
         /// <summary>
-        /// Tests that test compute distance
+        ///     Tests that test compute distance
         /// </summary>
         [Fact]
         public void TestComputeDistance()
@@ -55,14 +51,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             SimplexCache cache;
             
             // Act
-            Assert.Throws<NullReferenceException>(() =>DistanceGjk.ComputeDistance(ref input, out output, out cache));
+            Assert.Throws<NullReferenceException>(() => DistanceGjk.ComputeDistance(ref input, out output, out cache));
             
             // Assert
             // Add your assertions here based on your business logic
         }
         
         /// <summary>
-        /// Tests that test shape cast
+        ///     Tests that test shape cast
         /// </summary>
         [Fact]
         public void TestShapeCast()

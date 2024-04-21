@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics.Solver
 {
     /// <summary>
-    /// The position test class
+    ///     The position test class
     /// </summary>
     public class PositionTest
     {
         /// <summary>
-        /// Tests that position constructor test
+        ///     Tests that position constructor test
         /// </summary>
         [Fact]
         public void PositionConstructorTest()
@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         }
         
         /// <summary>
-        /// Tests that position default constructor test
+        ///     Tests that position default constructor test
         /// </summary>
         [Fact]
         public void PositionDefaultConstructorTest()
@@ -71,7 +71,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         }
         
         /// <summary>
-        /// Tests that position c property test
+        ///     Tests that position c property test
         /// </summary>
         [Fact]
         public void PositionCPropertyTest()
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         }
         
         /// <summary>
-        /// Tests that position a property test
+        ///     Tests that position a property test
         /// </summary>
         [Fact]
         public void PositionAPropertyTest()

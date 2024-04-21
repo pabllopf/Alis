@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics
 {
     /// <summary>
-    /// The body test class
+    ///     The body test class
     /// </summary>
     public class BodyTest
     {
         /// <summary>
-        /// Tests that constructor test
+        ///     Tests that constructor test
         /// </summary>
         [Fact]
         public void ConstructorTest()
@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             
             Assert.NotNull(body);
             Assert.Equal(position, body.Position);
-            Assert.Equal(new Vector2(0,0), body.LinearVelocity);
+            Assert.Equal(new Vector2(0, 0), body.LinearVelocity);
             Assert.Equal(bodyType, body.BodyType);
             Assert.Equal(angle, body.Rotation);
             Assert.Equal(angularVelocity, body.AngularVelocity);
@@ -77,7 +77,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
         
         /// <summary>
-        /// Tests that apply force test
+        ///     Tests that apply force test
         /// </summary>
         [Fact]
         public void ApplyForceTest()
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
         
         /// <summary>
-        /// Tests that apply torque test
+        ///     Tests that apply torque test
         /// </summary>
         [Fact]
         public void ApplyTorqueTest()
@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
         
         /// <summary>
-        /// Tests that apply linear impulse test
+        ///     Tests that apply linear impulse test
         /// </summary>
         [Fact]
         public void ApplyLinearImpulseTest()
@@ -119,7 +119,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
         
         /// <summary>
-        /// Tests that apply angular impulse test
+        ///     Tests that apply angular impulse test
         /// </summary>
         [Fact]
         public void ApplyAngularImpulseTest()
@@ -133,7 +133,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
         
         /// <summary>
-        /// Tests that reset mass data test
+        ///     Tests that reset mass data test
         /// </summary>
         [Fact]
         public void ResetMassDataTest()

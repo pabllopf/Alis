@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics.Joints
 {
     /// <summary>
-    /// The motor joint test class
+    ///     The motor joint test class
     /// </summary>
     public class MotorJointTest
     {
         /// <summary>
-        /// Tests that motor joint constructor test
+        ///     Tests that motor joint constructor test
         /// </summary>
         [Fact]
         public void MotorJointConstructorTest()
@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that motor joint world anchor a test
+        ///     Tests that motor joint world anchor a test
         /// </summary>
         [Fact]
         public void MotorJointWorldAnchorATest()
@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that motor joint world anchor b test
+        ///     Tests that motor joint world anchor b test
         /// </summary>
         [Fact]
         public void MotorJointWorldAnchorBTest()
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that motor joint force test
+        ///     Tests that motor joint force test
         /// </summary>
         [Fact]
         public void MotorJointForceTest()
@@ -113,7 +113,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
             float maxForce = 1.0f;
-            MotorJoint motorJoint = new MotorJoint(bodyA, bodyB, JointType.Motor, false, new Vector2(0.5f, 0.5f), 0.0f, maxForce, 1.0f, 0.3f);
+            MotorJoint motorJoint = new MotorJoint(bodyA, bodyB, JointType.Motor, false, new Vector2(0.5f, 0.5f), 0.0f, maxForce);
             
             // Act
             float force = motorJoint.Force;
@@ -123,7 +123,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that motor joint torque test
+        ///     Tests that motor joint torque test
         /// </summary>
         [Fact]
         public void MotorJointTorqueTest()
@@ -132,7 +132,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
             float maxTorque = 1.0f;
-            MotorJoint motorJoint = new MotorJoint(bodyA, bodyB, JointType.Motor, false, new Vector2(0.5f, 0.5f), 0.0f, 1.0f, maxTorque, 0.3f);
+            MotorJoint motorJoint = new MotorJoint(bodyA, bodyB, JointType.Motor, false, new Vector2(0.5f, 0.5f), 0.0f, 1.0f, maxTorque);
             
             // Act
             float torque = motorJoint.Torque;
@@ -142,7 +142,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that motor joint correction factor test
+        ///     Tests that motor joint correction factor test
         /// </summary>
         [Fact]
         public void MotorJointCorrectionFactorTest()

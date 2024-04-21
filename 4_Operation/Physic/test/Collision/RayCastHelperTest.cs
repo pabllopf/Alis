@@ -37,12 +37,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision
 {
     /// <summary>
-    /// The ray cast helper test class
+    ///     The ray cast helper test class
     /// </summary>
     public class RayCastHelperTest
     {
         /// <summary>
-        /// Tests that ray cast edge test
+        ///     Tests that ray cast edge test
         /// </summary>
         [Fact]
         public void RayCastEdgeTest()
@@ -63,7 +63,7 @@ namespace Alis.Core.Physic.Test.Collision
         }
         
         /// <summary>
-        /// Tests that ray cast circle test
+        ///     Tests that ray cast circle test
         /// </summary>
         [Fact]
         public void RayCastCircleTest()
@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Test.Collision
         }
         
         /// <summary>
-        /// Tests that ray cast polygon test
+        ///     Tests that ray cast polygon test
         /// </summary>
         [Fact]
         public void RayCastPolygonTest()

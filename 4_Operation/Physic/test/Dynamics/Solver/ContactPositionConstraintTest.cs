@@ -35,35 +35,35 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics.Solver
 {
     /// <summary>
-    /// The contact position constraint test class
+    ///     The contact position constraint test class
     /// </summary>
     public class ContactPositionConstraintTest
     {
         /// <summary>
-        /// Tests that contact position constraint properties test
+        ///     Tests that contact position constraint properties test
         /// </summary>
         [Fact]
         public void ContactPositionConstraintPropertiesTest()
         {
             // Arrange
             ContactPositionConstraint contactPositionConstraint = new ContactPositionConstraint
-                {
-                    // Act
-                    IndexA = 1,
-                    IndexB = 2,
-                    InvIa = 0.5f,
-                    InvIb = 0.5f,
-                    InvMassA = 1.0f,
-                    InvMassB = 1.0f,
-                    LocalCenterA = new Vector2(1.0f, 1.0f),
-                    LocalCenterB = new Vector2(2.0f, 2.0f),
-                    LocalNormal = new Vector2(0.0f, 1.0f),
-                    LocalPoint = new Vector2(1.5f, 1.5f),
-                    PointCount = 1,
-                    RadiusA = 1.0f,
-                    RadiusB = 1.0f,
-                    Type = ManifoldType.Circles
-                };
+            {
+                // Act
+                IndexA = 1,
+                IndexB = 2,
+                InvIa = 0.5f,
+                InvIb = 0.5f,
+                InvMassA = 1.0f,
+                InvMassB = 1.0f,
+                LocalCenterA = new Vector2(1.0f, 1.0f),
+                LocalCenterB = new Vector2(2.0f, 2.0f),
+                LocalNormal = new Vector2(0.0f, 1.0f),
+                LocalPoint = new Vector2(1.5f, 1.5f),
+                PointCount = 1,
+                RadiusA = 1.0f,
+                RadiusB = 1.0f,
+                Type = ManifoldType.Circles
+            };
             
             // Assert
             Assert.Equal(1, contactPositionConstraint.IndexA);

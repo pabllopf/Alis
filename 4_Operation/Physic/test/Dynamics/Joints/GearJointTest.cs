@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics.Joints
 {
     /// <summary>
-    /// The gear joint test class
+    ///     The gear joint test class
     /// </summary>
     public class GearJointTest
     {
         /// <summary>
-        /// Tests that gear joint constructor test
+        ///     Tests that gear joint constructor test
         /// </summary>
         [Fact]
         public void GearJointConstructorTest()
@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             float ratio = 1.0f;
             
             // Act
-           Assert.Throws<InvalidCastException>(() => new GearJoint(bodyA, bodyB, jointA, jointB, ratio));
+            Assert.Throws<InvalidCastException>(() => new GearJoint(bodyA, bodyB, jointA, jointB, ratio));
         }
     }
 }

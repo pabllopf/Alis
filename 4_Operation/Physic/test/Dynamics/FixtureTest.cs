@@ -39,12 +39,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics
 {
     /// <summary>
-    /// The fixture test class
+    ///     The fixture test class
     /// </summary>
     public class FixtureTest
     {
         /// <summary>
-        /// Tests that fixture constructor test
+        ///     Tests that fixture constructor test
         /// </summary>
         [Fact]
         public void FixtureConstructorTest()
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Fixture fixture = new Fixture(shape, filter, friction, restitution, restitutionThreshold, isSensor);
             
             // Assert
-            Assert.Equal(shape.ShapeType ,fixture.Shape.ShapeType);
+            Assert.Equal(shape.ShapeType, fixture.Shape.ShapeType);
             Assert.Equal(filter.CategoryMask, fixture.Filter.CategoryMask);
             Assert.Equal(friction, fixture.Friction);
             Assert.Equal(restitution, fixture.Restitution);
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
         
         /// <summary>
-        /// Tests that test point test
+        ///     Tests that test point test
         /// </summary>
         [Fact]
         public void TestPointTest()
@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
         
         /// <summary>
-        /// Tests that ray cast test
+        ///     Tests that ray cast test
         /// </summary>
         [Fact]
         public void RayCastTest()
@@ -100,11 +100,11 @@ namespace Alis.Core.Physic.Test.Dynamics
             int childIndex = 0;
             
             // ActA
-            Assert.Throws<NullReferenceException>(() =>fixture.RayCast(out output, ref input, childIndex));
+            Assert.Throws<NullReferenceException>(() => fixture.RayCast(out output, ref input, childIndex));
         }
         
         /// <summary>
-        /// Tests that get aabb test
+        ///     Tests that get aabb test
         /// </summary>
         [Fact]
         public void GetAabbTest()

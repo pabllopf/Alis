@@ -214,7 +214,5 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 currentSceneGameObject.Components.ForEach(i => i.OnPressDownKey(key));
             }
         }
-        
-        
     }
 }

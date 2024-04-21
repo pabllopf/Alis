@@ -27,22 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision.ContactSystem;
-using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Dynamics.Joints;
 using Alis.Core.Physic.Dynamics.Solver;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics.Solver
 {
     /// <summary>
-    /// The island test class
+    ///     The island test class
     /// </summary>
     public class IslandTest
     {
         /// <summary>
-        /// Tests that island constructor test
+        ///     Tests that island constructor test
         /// </summary>
         [Fact]
         public void IslandConstructorTest()

@@ -33,98 +33,98 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.BroadPhase
 {
     /// <summary>
-    /// The tree node test class
+    ///     The tree node test class
     /// </summary>
     public class TreeNodeTest
     {
         /// <summary>
-        /// Tests that test child 1
+        ///     Tests that test child 1
         /// </summary>
         [Fact]
         public void TestChild1()
         {
             TreeNode<int> treeNode = new TreeNode<int>
-                {
-                    Child1 = 1
-                };
+            {
+                Child1 = 1
+            };
             Assert.Equal(1, treeNode.Child1);
         }
         
         /// <summary>
-        /// Tests that test child 2
+        ///     Tests that test child 2
         /// </summary>
         [Fact]
         public void TestChild2()
         {
             TreeNode<int> treeNode = new TreeNode<int>
-                {
-                    Child2 = 2
-                };
+            {
+                Child2 = 2
+            };
             Assert.Equal(2, treeNode.Child2);
         }
         
         /// <summary>
-        /// Tests that test height
+        ///     Tests that test height
         /// </summary>
         [Fact]
         public void TestHeight()
         {
             TreeNode<int> treeNode = new TreeNode<int>
-                {
-                    Height = 3
-                };
+            {
+                Height = 3
+            };
             Assert.Equal(3, treeNode.Height);
         }
         
         /// <summary>
-        /// Tests that test moved
+        ///     Tests that test moved
         /// </summary>
         [Fact]
         public void TestMoved()
         {
             TreeNode<int> treeNode = new TreeNode<int>
-                {
-                    Moved = true
-                };
+            {
+                Moved = true
+            };
             Assert.True(treeNode.Moved);
         }
         
         /// <summary>
-        /// Tests that test parent or next
+        ///     Tests that test parent or next
         /// </summary>
         [Fact]
         public void TestParentOrNext()
         {
             TreeNode<int> treeNode = new TreeNode<int>
-                {
-                    ParentOrNext = 4
-                };
+            {
+                ParentOrNext = 4
+            };
             Assert.Equal(4, treeNode.ParentOrNext);
         }
         
         /// <summary>
-        /// Tests that test user data
+        ///     Tests that test user data
         /// </summary>
         [Fact]
         public void TestUserData()
         {
             TreeNode<int> treeNode = new TreeNode<int>
-                {
-                    UserData = 5
-                };
+            {
+                UserData = 5
+            };
             Assert.Equal(5, treeNode.UserData);
         }
         
         /// <summary>
-        /// Tests that test is leaf
+        ///     Tests that test is leaf
         /// </summary>
         [Fact]
         public void TestIsLeaf()
         {
             TreeNode<int> treeNode = new TreeNode<int>
-                {
-                    Child1 = DynamicTree<int>.NullNode
-                };
+            {
+                Child1 = DynamicTree<int>.NullNode
+            };
             Assert.True(treeNode.IsLeaf());
         }
     }

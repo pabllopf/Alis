@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Threading;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Dynamics;
@@ -38,12 +36,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.ContactSystem
 {
     /// <summary>
-    /// The contact feature test class
+    ///     The contact feature test class
     /// </summary>
     public class ContactFeatureTest
     {
         /// <summary>
-        /// Tests that test set transform
+        ///     Tests that test set transform
         /// </summary>
         [Fact]
         public void Test_SetTransform()
@@ -57,18 +55,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             Vector2 linearVelocity = new Vector2(0, 1);
             Body body = new Body(
                 position,
-                linearVelocity,
-                BodyType.Static,
-                0F,
-                0F,
-                0F,
-                0F,
-                true,
-                true,
-                false,
-                false,
-                true,
-                1F
+                linearVelocity
             );
             
             float rotation = 1.0f;
@@ -77,11 +64,11 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             body.SetTransform(position, rotation);
             
             // Assert
-            Assert.NotEqual(new Vector2(0,0), body.Position );
+            Assert.NotEqual(new Vector2(0, 0), body.Position);
         }
         
         /// <summary>
-        /// Tests that test apply force
+        ///     Tests that test apply force
         /// </summary>
         [Fact]
         public void Test_ApplyForce()
@@ -93,17 +80,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             Body body = new Body(
                 position,
                 linearVelocity,
-                BodyType.Dynamic,
-                0F,
-                0F,
-                0F,
-                0F,
-                true,
-                true,
-                false,
-                false,
-                true,
-                1F
+                BodyType.Dynamic
             );
             Vector2 force = new Vector2(1, 1);
             Vector2 point = new Vector2(1, 1);
@@ -116,7 +93,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test apply torque
+        ///     Tests that test apply torque
         /// </summary>
         [Fact]
         public void Test_ApplyTorque()
@@ -128,17 +105,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             Body body = new Body(
                 position,
                 linearVelocity,
-                BodyType.Dynamic,
-                0F,
-                0F,
-                0F,
-                0F,
-                true,
-                true,
-                false,
-                false,
-                true,
-                1F
+                BodyType.Dynamic
             );
             float torque = 1.0f;
             
@@ -150,7 +117,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test apply linear impulse
+        ///     Tests that test apply linear impulse
         /// </summary>
         [Fact]
         public void Test_ApplyLinearImpulse()
@@ -161,17 +128,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             Body body = new Body(
                 position,
                 linearVelocity,
-                BodyType.Dynamic,
-                0F,
-                0F,
-                0F,
-                0F,
-                true,
-                true,
-                false,
-                false,
-                true,
-                1F
+                BodyType.Dynamic
             );
             Vector2 impulse = new Vector2(1, 1);
             
@@ -183,7 +140,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test apply angular impulse
+        ///     Tests that test apply angular impulse
         /// </summary>
         [Fact]
         public void Test_ApplyAngularImpulse()
@@ -195,17 +152,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             Body body = new Body(
                 position,
                 linearVelocity,
-                BodyType.Dynamic,
-                0F,
-                0F,
-                0F,
-                0F,
-                true,
-                true,
-                false,
-                false,
-                true,
-                1F
+                BodyType.Dynamic
             );
             float impulse = 1.0f;
             
@@ -217,7 +164,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test index a property
+        ///     Tests that test index a property
         /// </summary>
         [Fact]
         public void TestIndexAProperty()
@@ -234,7 +181,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test index b property
+        ///     Tests that test index b property
         /// </summary>
         [Fact]
         public void TestIndexBProperty()
@@ -251,7 +198,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test type a property
+        ///     Tests that test type a property
         /// </summary>
         [Fact]
         public void TestTypeAProperty()
@@ -268,7 +215,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test type b property
+        ///     Tests that test type b property
         /// </summary>
         [Fact]
         public void TestTypeBProperty()

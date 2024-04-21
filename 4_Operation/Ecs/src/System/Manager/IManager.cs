@@ -34,7 +34,7 @@ namespace Alis.Core.Ecs.System.Manager
     /// <summary>
     ///     The manager interface
     /// </summary>
-    public interface IManager:  IEnabled, IIdentifier, IRuntime
+    public interface IManager : IEnabled, IIdentifier, IRuntime
     {
     }
 }

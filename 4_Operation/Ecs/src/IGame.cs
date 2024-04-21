@@ -35,18 +35,18 @@ namespace Alis.Core.Ecs
     public interface IGame
     {
         /// <summary>
+        ///     Gets or sets the value of the is running
+        /// </summary>
+        public bool IsRunning { get; set; }
+        
+        /// <summary>
         ///     Runs this instance
         /// </summary>
         public void Run();
         
         /// <summary>
-        /// Exits this instance
+        ///     Exits this instance
         /// </summary>
         public void Exit();
-        
-        /// <summary>
-        /// Gets or sets the value of the is running
-        /// </summary>
-        public bool IsRunning { get; set; }
     }
 }

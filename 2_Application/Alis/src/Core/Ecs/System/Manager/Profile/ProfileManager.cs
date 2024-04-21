@@ -30,9 +30,9 @@
 namespace Alis.Core.Ecs.System.Manager.Profile
 {
     /// <summary>
-    /// The profile manager class
+    ///     The profile manager class
     /// </summary>
-    /// <seealso cref="Manager"/>
+    /// <seealso cref="Manager" />
     public class ProfileManager : Manager
     {
     }

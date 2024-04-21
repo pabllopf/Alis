@@ -37,12 +37,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.RayCast
 {
     /// <summary>
-    /// The ray cast output test class
+    ///     The ray cast output test class
     /// </summary>
     public class RayCastOutputTest
     {
         /// <summary>
-        /// Tests that test contact constructor
+        ///     Tests that test contact constructor
         /// </summary>
         [Fact]
         public void Test_Contact_Constructor()
@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
         }
         
         /// <summary>
-        /// Tests that test contact reset
+        ///     Tests that test contact reset
         /// </summary>
         [Fact]
         public void Test_Contact_Reset()
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
         }
         
         /// <summary>
-        /// Tests that test contact is sensor contact
+        ///     Tests that test contact is sensor contact
         /// </summary>
         [Fact]
         public void Test_Contact_IsSensorContact()
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
         }
         
         /// <summary>
-        /// Tests that test contact enabled
+        ///     Tests that test contact enabled
         /// </summary>
         [Fact]
         public void Test_Contact_Enabled()
@@ -107,19 +107,19 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
         }
         
         /// <summary>
-        /// Tests that test contact reset restitution
+        ///     Tests that test contact reset restitution
         /// </summary>
         [Fact]
         public void Test_Contact_ResetRestitution()
         {
             Fixture fixtureA = new Fixture(new CircleShape(1), new Filter())
-                {
-                    Restitution = 0.5f
-                };
+            {
+                Restitution = 0.5f
+            };
             Fixture fixtureB = new Fixture(new CircleShape(1), new Filter())
-                {
-                    Restitution = 0.6f
-                };
+            {
+                Restitution = 0.6f
+            };
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
             
             contact.ResetRestitution();
@@ -128,19 +128,19 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
         }
         
         /// <summary>
-        /// Tests that test contact reset friction
+        ///     Tests that test contact reset friction
         /// </summary>
         [Fact]
         public void Test_Contact_ResetFriction()
         {
             Fixture fixtureA = new Fixture(new CircleShape(1), new Filter())
-                {
-                    Friction = 0.5f
-                };
+            {
+                Friction = 0.5f
+            };
             Fixture fixtureB = new Fixture(new CircleShape(1), new Filter())
-                {
-                    Friction = 0.6f
-                };
+            {
+                Friction = 0.6f
+            };
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
             
             contact.ResetFriction();
@@ -149,7 +149,7 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
         }
         
         /// <summary>
-        /// Tests that test contact reset restitution threshold
+        ///     Tests that test contact reset restitution threshold
         /// </summary>
         [Fact]
         public void Test_Contact_ResetRestitutionThreshold()

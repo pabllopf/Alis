@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.NarrowPhase
 {
     /// <summary>
-    /// The manifold point test class
+    ///     The manifold point test class
     /// </summary>
     public class ManifoldPointTest
     {
         /// <summary>
-        /// Tests that test local point property
+        ///     Tests that test local point property
         /// </summary>
         [Fact]
         public void Test_LocalPointProperty()
@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test normal impulse property
+        ///     Tests that test normal impulse property
         /// </summary>
         [Fact]
         public void Test_NormalImpulseProperty()
@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test tangent impulse property
+        ///     Tests that test tangent impulse property
         /// </summary>
         [Fact]
         public void Test_TangentImpulseProperty()
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test id property
+        ///     Tests that test id property
         /// </summary>
         [Fact]
         public void Test_IdProperty()

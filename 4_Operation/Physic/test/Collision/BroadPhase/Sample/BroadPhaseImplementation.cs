@@ -38,18 +38,18 @@ using Alis.Core.Physic.Shared;
 namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
 {
     /// <summary>
-    /// The broad phase implementation class
+    ///     The broad phase implementation class
     /// </summary>
-    /// <seealso cref="IBroadPhase"/>
+    /// <seealso cref="IBroadPhase" />
     public class BroadPhaseImplementation : IBroadPhase
     {
         /// <summary>
-        /// Gets or sets the value of the proxy count
+        ///     Gets or sets the value of the proxy count
         /// </summary>
         public int ProxyCount { get; private set; }
         
         /// <summary>
-        /// Updates the pairs using the specified callback
+        ///     Updates the pairs using the specified callback
         /// </summary>
         /// <param name="callback">The callback</param>
         public void UpdatePairs(BroadPhaseHandler callback)
@@ -58,19 +58,17 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
         }
         
         /// <summary>
-        /// Describes whether this instance test overlap
+        ///     Describes whether this instance test overlap
         /// </summary>
         /// <param name="proxyIdA">The proxy id</param>
         /// <param name="proxyIdB">The proxy id</param>
         /// <returns>The bool</returns>
-        public bool TestOverlap(int proxyIdA, int proxyIdB)
-        {
+        public bool TestOverlap(int proxyIdA, int proxyIdB) =>
             // Implement your logic here
-            return false;
-        }
+            false;
         
         /// <summary>
-        /// Adds the proxy using the specified proxy
+        ///     Adds the proxy using the specified proxy
         /// </summary>
         /// <param name="proxy">The proxy</param>
         /// <returns>The int</returns>
@@ -82,7 +80,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
         }
         
         /// <summary>
-        /// Removes the proxy using the specified proxy id
+        ///     Removes the proxy using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         public void RemoveProxy(int proxyId)
@@ -92,7 +90,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
         }
         
         /// <summary>
-        /// Moves the proxy using the specified proxy id
+        ///     Moves the proxy using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <param name="aabb">The aabb</param>
@@ -103,18 +101,16 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
         }
         
         /// <summary>
-        /// Gets the proxy using the specified proxy id
+        ///     Gets the proxy using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <returns>The fixture proxy</returns>
-        public FixtureProxy GetProxy(int proxyId)
-        {
+        public FixtureProxy GetProxy(int proxyId) =>
             // Implement your logic here
-            return new FixtureProxy();
-        }
+            new FixtureProxy();
         
         /// <summary>
-        /// Touches the proxy using the specified proxy id
+        ///     Touches the proxy using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         public void TouchProxy(int proxyId)
@@ -123,7 +119,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
         }
         
         /// <summary>
-        /// Gets the fat aabb using the specified proxy id
+        ///     Gets the fat aabb using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <param name="aabb">The aabb</param>
@@ -134,7 +130,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
         }
         
         /// <summary>
-        /// Queries the callback
+        ///     Queries the callback
         /// </summary>
         /// <param name="callback">The callback</param>
         /// <param name="aabb">The aabb</param>
@@ -144,7 +140,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
         }
         
         /// <summary>
-        /// Rays the cast using the specified callback
+        ///     Rays the cast using the specified callback
         /// </summary>
         /// <param name="callback">The callback</param>
         /// <param name="input">The input</param>
@@ -154,7 +150,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
         }
         
         /// <summary>
-        /// Shifts the origin using the specified new origin
+        ///     Shifts the origin using the specified new origin
         /// </summary>
         /// <param name="newOrigin">The new origin</param>
         public void ShiftOrigin(ref Vector2 newOrigin)

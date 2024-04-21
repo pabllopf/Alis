@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Category.cs
+//  File:CategoryTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -37,18 +37,18 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.Filtering
 {
     /// <summary>
-    /// The category test class
+    ///     The category test class
     /// </summary>
     public class CategoryTest
     {
         /// <summary>
-        /// Tests that destroy should enqueue contact
+        ///     Tests that destroy should enqueue contact
         /// </summary>
         [Fact]
         public void Destroy_ShouldEnqueueContact()
         {
             // Arrange
-            ContactManager contactManager = new ContactManager( new BroadPhaseImplementation());
+            ContactManager contactManager = new ContactManager(new BroadPhaseImplementation());
             Fixture fixtureA = new Fixture(new CircleShape(1), new Filter());
             Fixture fixtureB = new Fixture(new CircleShape(1), new Filter());
             Contact contact = Contact.Create(fixtureA, 0, fixtureB, 0);
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Collision.Filtering
         }
         
         /// <summary>
-        /// Tests that clear flags should clear flags
+        ///     Tests that clear flags should clear flags
         /// </summary>
         [Fact]
         public void ClearFlags_ShouldClearFlags()
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Test.Collision.Filtering
         }
         
         /// <summary>
-        /// Tests that invalidate toi should reset toi values
+        ///     Tests that invalidate toi should reset toi values
         /// </summary>
         [Fact]
         public void InvalidateToi_ShouldResetToiValues()

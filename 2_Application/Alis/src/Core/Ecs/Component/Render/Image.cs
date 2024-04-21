@@ -41,11 +41,6 @@ namespace Alis.Core.Ecs.Component.Render
     public class Image
     {
         /// <summary>
-        /// Gets or sets the value of the context
-        /// </summary>
-        private Context Context { get; set; }
-        
-        /// <summary>
         ///     Initializes a new instance of the <see cref="Image" /> class
         /// </summary>
         public Image(Context context)
@@ -73,6 +68,11 @@ namespace Alis.Core.Ecs.Component.Render
             
             Size = new Vector2(w, h);
         }
+        
+        /// <summary>
+        ///     Gets or sets the value of the context
+        /// </summary>
+        private Context Context { get; }
         
         /// <summary>
         ///     Gets or sets the value of the path

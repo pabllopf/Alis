@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.Distance
 {
     /// <summary>
-    /// The distance proxy test class
+    ///     The distance proxy test class
     /// </summary>
     public class DistanceProxyTest
     {
         /// <summary>
-        /// Tests that radius property test
+        ///     Tests that radius property test
         /// </summary>
         [Fact]
         public void RadiusPropertyTest()
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Test.Collision.Distance
         }
         
         /// <summary>
-        /// Tests that vertices property test
+        ///     Tests that vertices property test
         /// </summary>
         [Fact]
         public void VerticesPropertyTest()
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Collision.Distance
         }
         
         /// <summary>
-        /// Tests that get support test
+        ///     Tests that get support test
         /// </summary>
         [Fact]
         public void GetSupportTest()
@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Test.Collision.Distance
         }
         
         /// <summary>
-        /// Tests that get vertex test
+        ///     Tests that get vertex test
         /// </summary>
         [Fact]
         public void GetVertexTest()
