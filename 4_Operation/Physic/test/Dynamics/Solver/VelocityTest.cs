@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics.Solver
 {
     /// <summary>
-    /// The velocity test class
+    ///     The velocity test class
     /// </summary>
     public class VelocityTest
     {
         /// <summary>
-        /// Tests that velocity constructor test
+        ///     Tests that velocity constructor test
         /// </summary>
         [Fact]
         public void VelocityConstructorTest()
@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         }
         
         /// <summary>
-        /// Tests that velocity v property test
+        ///     Tests that velocity v property test
         /// </summary>
         [Fact]
         public void VelocityVPropertyTest()
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         }
         
         /// <summary>
-        /// Tests that velocity w property test
+        ///     Tests that velocity w property test
         /// </summary>
         [Fact]
         public void VelocityWPropertyTest()

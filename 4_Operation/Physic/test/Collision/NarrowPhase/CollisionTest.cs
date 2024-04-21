@@ -30,10 +30,9 @@
 namespace Alis.Core.Physic.Test.Collision.NarrowPhase
 {
     /// <summary>
-    /// The collision test class
+    ///     The collision test class
     /// </summary>
     public class CollisionTest
     {
-        
     }
 }

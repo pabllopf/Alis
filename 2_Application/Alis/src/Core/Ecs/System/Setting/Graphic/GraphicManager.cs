@@ -335,7 +335,7 @@ namespace Alis.Core.Ecs.System.Setting.Graphic
         private void SetRenderColor()
         {
             // Sets color
-            Color color =  Context.Settings.Physic.DebugColor;
+            Color color = Context.Settings.Physic.DebugColor;
             
             // render color
             Sdl.SetRenderDrawColor(Renderer, color.R, color.G, color.B, color.A);

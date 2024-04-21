@@ -45,12 +45,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics
 {
     /// <summary>
-    /// The body helper test class
+    ///     The body helper test class
     /// </summary>
     public class BodyHelperTest
     {
         /// <summary>
-        /// Tests that advance body test
+        ///     Tests that advance body test
         /// </summary>
         [Fact]
         public void AdvanceBodyTest()
@@ -82,11 +82,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             
             // Act
             Assert.Throws<NullReferenceException>(() => BodyHelper.AdvanceBody(contactManager, island, minContact, minAlpha));
-            
         }
         
         /// <summary>
-        /// Tests that advance bodies test
+        ///     Tests that advance bodies test
         /// </summary>
         [Fact]
         public void AdvanceBodiesTest()
@@ -119,7 +118,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
         
         /// <summary>
-        /// Tests that update contact test
+        ///     Tests that update contact test
         /// </summary>
         [Fact]
         public void UpdateContactTest()
@@ -148,14 +147,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             Contact minContact = new Contact(fixtureA, indexA, fixtureB, indexB);
             
             // Act
-            Assert.Throws<NullReferenceException>(() =>BodyHelper.UpdateContact(contactManager, minContact));
+            Assert.Throws<NullReferenceException>(() => BodyHelper.UpdateContact(contactManager, minContact));
             
             // Assert
             // Add assertions here based on the expected outcome of the UpdateContact method
         }
         
         /// <summary>
-        /// Tests that check contact solid test
+        ///     Tests that check contact solid test
         /// </summary>
         [Fact]
         public void CheckContactSolidTest()
@@ -187,11 +186,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             
             // Act
             Assert.Throws<NullReferenceException>(() => BodyHelper.CheckContactSolid(minContact, bodies, backup1, backup2));
-            
         }
         
         /// <summary>
-        /// Tests that build island test
+        ///     Tests that build island test
         /// </summary>
         [Fact]
         public void BuildIslandTest()
@@ -228,7 +226,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
         
         /// <summary>
-        /// Tests that get contacts test
+        ///     Tests that get contacts test
         /// </summary>
         [Fact]
         public void GetContactsTest()
@@ -260,7 +258,6 @@ namespace Alis.Core.Physic.Test.Dynamics
             Contact minContact = new Contact(fixtureA, indexA, fixtureB, indexB);
             
             
-            
             // Act
             Assert.Throws<NullReferenceException>(() => BodyHelper.GetContacts(contactManager, minAlpha, bodies, island, minContact));
             
@@ -268,23 +265,23 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Add assertions here based on the expected outcome of the GetContacts method
         }
         
-      /// <summary>
-      /// Tests that process body contacts test
-      /// </summary>
-      [Fact]
+        /// <summary>
+        ///     Tests that process body contacts test
+        /// </summary>
+        [Fact]
         public void ProcessBodyContactsTest()
         {
             // Arrange
             World world = new World(new Vector2(0, -9.8f));
-            Body body = new Rectangle(1.0f, 1.0f, 
-                new Vector2(0,0),
-                new Vector2(1,1), BodyType.Static,1.0f, 0, 0);
-
-
+            Body body = new Rectangle(1.0f, 1.0f,
+                new Vector2(0, 0),
+                new Vector2(1, 1), BodyType.Static, 1.0f);
+            
+            
             ContactManager contactManager = new ContactManager(new BroadPhaseImplementation());
-
+            
             Island island = new Island();
-
+            
             // Assuming you have fixtures available for the contact
             Shape shapeA = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterA = new Filter();
@@ -293,7 +290,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdA = 1.5f;
             bool isSensorA = true;
             Fixture fixtureA = new Fixture(shapeA, filterA, frictionA, restitutionA, restitutionThresholdA, isSensorA);
-
+            
             Shape shapeB = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterB = new Filter();
             float frictionB = 0.3f;
@@ -301,21 +298,21 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdB = 1.5f;
             bool isSensorB = true;
             Fixture fixtureB = new Fixture(shapeB, filterB, frictionB, restitutionB, restitutionThresholdB, isSensorB);
-
+            
             int indexA = 0;
             int indexB = 0;
             Contact minContact = new Contact(fixtureA, indexA, fixtureB, indexB);
-
+            
             // Act
             BodyHelper.ProcessBodyContacts(body, contactManager, 0.5f, island, minContact);
-
+            
             // Assert
             // Add assertions here based on the expected outcome of the ProcessBodyContacts method
             // For example, you might want to check if the body's contact list has been processed correctly
         }
-                
+        
         /// <summary>
-        /// Tests that post solve test
+        ///     Tests that post solve test
         /// </summary>
         [Fact]
         public void PostSolveTest()

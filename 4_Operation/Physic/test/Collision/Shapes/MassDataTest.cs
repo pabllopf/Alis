@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.Shapes
 {
     /// <summary>
-    /// The mass data test class
+    ///     The mass data test class
     /// </summary>
     public class MassDataTest
     {
         /// <summary>
-        /// Tests that test area property
+        ///     Tests that test area property
         /// </summary>
         [Fact]
         public void Test_AreaProperty()
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test centroid property
+        ///     Tests that test centroid property
         /// </summary>
         [Fact]
         public void Test_CentroidProperty()
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test inertia property
+        ///     Tests that test inertia property
         /// </summary>
         [Fact]
         public void Test_InertiaProperty()
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test mass property
+        ///     Tests that test mass property
         /// </summary>
         [Fact]
         public void Test_MassProperty()
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test equality operator
+        ///     Tests that test equality operator
         /// </summary>
         [Fact]
         public void Test_EqualityOperator()
@@ -124,7 +124,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test inequality operator
+        ///     Tests that test inequality operator
         /// </summary>
         [Fact]
         public void Test_InequalityOperator()

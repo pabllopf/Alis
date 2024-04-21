@@ -30,7 +30,6 @@
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Filtering;
 using Alis.Core.Physic.Collision.Handlers;
-using Alis.Core.Physic.Collision.NarrowPhase;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Solver;
@@ -39,12 +38,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.Handlers
 {
     /// <summary>
-    /// The after collision handler test class
+    ///     The after collision handler test class
     /// </summary>
     public class AfterCollisionHandlerTest
     {
         /// <summary>
-        /// Tests that after collision handler invocation test
+        ///     Tests that after collision handler invocation test
         /// </summary>
         [Fact]
         public void AfterCollisionHandlerInvocationTest()
@@ -53,8 +52,8 @@ namespace Alis.Core.Physic.Test.Collision.Handlers
             bool isHandlerInvoked = false;
             AfterCollisionHandler handler = (fixtureA, fixtureB, contact, impulse) => { isHandlerInvoked = true; };
             
-            Fixture fixtureA =  new Fixture(new CircleShape(1, 1), new Filter(), 0.3f, 0.1f, 1.5f, true);
-            Fixture fixtureB =  new Fixture(new CircleShape(1, 1), new Filter(), 0.3f, 0.1f, 1.5f, true);
+            Fixture fixtureA = new Fixture(new CircleShape(1, 1), new Filter(), 0.3f, 0.1f, 1.5f, true);
+            Fixture fixtureB = new Fixture(new CircleShape(1, 1), new Filter(), 0.3f, 0.1f, 1.5f, true);
             Contact contact = new Contact(fixtureA, 1, fixtureB, 1);
             ContactVelocityConstraint impulse = new ContactVelocityConstraint();
             
@@ -66,7 +65,7 @@ namespace Alis.Core.Physic.Test.Collision.Handlers
         }
         
         /// <summary>
-        /// Tests that after collision handler parameters test
+        ///     Tests that after collision handler parameters test
         /// </summary>
         [Fact]
         public void AfterCollisionHandlerParametersTest()

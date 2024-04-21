@@ -38,8 +38,13 @@ using Alis.Core.Ecs.System;
 namespace Alis.Core.Ecs.Entity
 {
     /// <summary>Represent a object of the game.</summary>
-    public class GameObject : IGameObject<Component.AComponent>, IHasContext<Context>
+    public class GameObject : IGameObject<AComponent>, IHasContext<Context>
     {
+        /// <summary>
+        ///     Gets or sets the value of the context
+        /// </summary>
+        protected internal Context Context { get; private set; }
+        
         /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
@@ -63,7 +68,7 @@ namespace Alis.Core.Ecs.Entity
         /// <summary>
         ///     Gets or sets the value of the components
         /// </summary>
-        public List<Component.AComponent> Components { get; set; } = new List<Component.AComponent>();
+        public List<AComponent> Components { get; set; } = new List<AComponent>();
         
         /// <summary>
         ///     Gets or sets the value of the transform
@@ -75,34 +80,34 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public  void Add<T>(T component) where T : Component.AComponent => Components.Add(component);
+        public void Add<T>(T component) where T : AComponent => Components.Add(component);
         
         /// <summary>
         ///     Removes the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public  void Remove<T>(T component) where T : Component.AComponent => Components.Remove(component);
+        public void Remove<T>(T component) where T : AComponent => Components.Remove(component);
         
         /// <summary>
         ///     Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
-        public  T Get<T>() where T : Component.AComponent => Components.Find(i => i is T) as T;
+        public T Get<T>() where T : AComponent => Components.Find(i => i is T) as T;
         
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
-        public  bool Contains<T>() where T : Component.AComponent => Components.Exists(i => i is T);
+        public bool Contains<T>() where T : AComponent => Components.Exists(i => i is T);
         
         /// <summary>
         ///     Clears this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        public void Clear<T>() where T : Component.AComponent => Components.Clear();
+        public void Clear<T>() where T : AComponent => Components.Clear();
         
         /// <summary>
         ///     Ons the enable
@@ -207,18 +212,13 @@ namespace Alis.Core.Ecs.Entity
         public void OnDestroy() => Components.ForEach(i => i.OnDestroy());
         
         /// <summary>
-        /// Gets or sets the value of the context
-        /// </summary>
-        protected internal Context Context { get; private set; }
-        
-        /// <summary>
-        /// Sets the context using the specified context
+        ///     Sets the context using the specified context
         /// </summary>
         /// <param name="context">The context</param>
         public void SetContext(Context context)
         {
             Context = context;
-            foreach (Component.AComponent component in Components)
+            foreach (AComponent component in Components)
             {
                 component.SetContext(context);
             }

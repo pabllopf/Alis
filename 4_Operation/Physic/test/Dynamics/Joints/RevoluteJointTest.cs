@@ -37,12 +37,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics.Joints
 {
     /// <summary>
-    /// The revolute joint test class
+    ///     The revolute joint test class
     /// </summary>
     public class RevoluteJointTest
     {
         /// <summary>
-        /// Tests that revolute joint constructor test
+        ///     Tests that revolute joint constructor test
         /// </summary>
         [Fact]
         public void RevoluteJointConstructorTest()
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that revolute joint properties test
+        ///     Tests that revolute joint properties test
         /// </summary>
         [Fact]
         public void RevoluteJointPropertiesTest()
@@ -79,17 +79,17 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Vector2 anchorB = new Vector2(1.5f, 1.5f);
             bool useWorldCoordinates = false;
             RevoluteJoint revoluteJoint = new RevoluteJoint(bodyA, bodyB, anchorA, anchorB, useWorldCoordinates)
-                {
-                    // Act
-                    LocalAnchorA = new Vector2(0.6f, 0.6f),
-                    LocalAnchorB = new Vector2(1.6f, 1.6f),
-                    LowerAngle = 0.1f,
-                    UpperAngle = 0.9f,
-                    MotorSpeed = 0.5f,
-                    MotorTorque = 0.5f,
-                    EnableLimit = true,
-                    EnableMotor = true
-                };
+            {
+                // Act
+                LocalAnchorA = new Vector2(0.6f, 0.6f),
+                LocalAnchorB = new Vector2(1.6f, 1.6f),
+                LowerAngle = 0.1f,
+                UpperAngle = 0.9f,
+                MotorSpeed = 0.5f,
+                MotorTorque = 0.5f,
+                EnableLimit = true,
+                EnableMotor = true
+            };
             
             // Assert
             Assert.Equal(new Vector2(0.6f, 0.6f), revoluteJoint.LocalAnchorA);
@@ -103,7 +103,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that revolute joint world anchor test
+        ///     Tests that revolute joint world anchor test
         /// </summary>
         [Fact]
         public void RevoluteJointWorldAnchorTest()

@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.ContactSystem
 {
     /// <summary>
-    /// The contact type test class
+    ///     The contact type test class
     /// </summary>
     public class ContactTypeTest
     {
         /// <summary>
-        /// Tests that test contact type not supported
+        ///     Tests that test contact type not supported
         /// </summary>
         [Fact]
         public void TestContactType_NotSupported()
@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test contact type polygon
+        ///     Tests that test contact type polygon
         /// </summary>
         [Fact]
         public void TestContactType_Polygon()
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test contact type polygon and circle
+        ///     Tests that test contact type polygon and circle
         /// </summary>
         [Fact]
         public void TestContactType_PolygonAndCircle()
@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test contact type circle
+        ///     Tests that test contact type circle
         /// </summary>
         [Fact]
         public void TestContactType_Circle()
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test contact type edge and polygon
+        ///     Tests that test contact type edge and polygon
         /// </summary>
         [Fact]
         public void TestContactType_EdgeAndPolygon()
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test contact type edge and circle
+        ///     Tests that test contact type edge and circle
         /// </summary>
         [Fact]
         public void TestContactType_EdgeAndCircle()
@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test contact type chain and polygon
+        ///     Tests that test contact type chain and polygon
         /// </summary>
         [Fact]
         public void TestContactType_ChainAndPolygon()
@@ -108,7 +108,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test contact type chain and circle
+        ///     Tests that test contact type chain and circle
         /// </summary>
         [Fact]
         public void TestContactType_ChainAndCircle()

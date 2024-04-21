@@ -36,25 +36,25 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.TOI
 {
     /// <summary>
-    /// The sweep test class
+    ///     The sweep test class
     /// </summary>
     public class SweepTest
     {
         /// <summary>
-        /// Tests that test advance
+        ///     Tests that test advance
         /// </summary>
         [Fact]
         public void Test_Advance()
         {
             // Arrange
             Sweep sweep = new Sweep
-                {
-                    Alpha0 = 0.5f,
-                    C0 = new Vector2(1, 1),
-                    C = new Vector2(2, 2),
-                    A0 = 0.5f,
-                    A = 1.0f
-                };
+            {
+                Alpha0 = 0.5f,
+                C0 = new Vector2(1, 1),
+                C = new Vector2(2, 2),
+                A0 = 0.5f,
+                A = 1.0f
+            };
             
             // Act
             sweep.Advance(0.75f);
@@ -67,20 +67,20 @@ namespace Alis.Core.Physic.Test.Collision.TOI
         }
         
         /// <summary>
-        /// Tests that test get transform
+        ///     Tests that test get transform
         /// </summary>
         [Fact]
         public void Test_GetTransform()
         {
             // Arrange
             Sweep sweep = new Sweep
-                {
-                    C0 = new Vector2(1, 1),
-                    C = new Vector2(2, 2),
-                    A0 = 0.5f,
-                    A = 1.0f,
-                    LocalCenter = new Vector2(0.5f, 0.5f)
-                };
+            {
+                C0 = new Vector2(1, 1),
+                C = new Vector2(2, 2),
+                A0 = 0.5f,
+                A = 1.0f,
+                LocalCenter = new Vector2(0.5f, 0.5f)
+            };
             
             // Act
             sweep.GetTransform(out Transform transform, 0.5f);
@@ -92,17 +92,17 @@ namespace Alis.Core.Physic.Test.Collision.TOI
         }
         
         /// <summary>
-        /// Tests that test normalize
+        ///     Tests that test normalize
         /// </summary>
         [Fact]
         public void Test_Normalize()
         {
             // Arrange
             Sweep sweep = new Sweep
-                {
-                    A0 = 7 * (float) Math.PI, // 3.5 full rotations
-                    A = 8 * (float) Math.PI // 4 full rotations
-                };
+            {
+                A0 = 7 * (float) Math.PI, // 3.5 full rotations
+                A = 8 * (float) Math.PI // 4 full rotations
+            };
             
             // Act
             sweep.Normalize();

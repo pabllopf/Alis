@@ -39,12 +39,12 @@ using MathF = Alis.Core.Aspect.Math.MathF;
 namespace Alis.Core.Physic.Test.Collision.Shapes
 {
     /// <summary>
-    /// The polygon shape test class
+    ///     The polygon shape test class
     /// </summary>
     public class PolygonShapeTest
     {
         /// <summary>
-        /// Tests that test vertices property
+        ///     Tests that test vertices property
         /// </summary>
         [Fact]
         public void Test_VerticesProperty()
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test normals property
+        ///     Tests that test normals property
         /// </summary>
         [Fact]
         public void Test_NormalsProperty()
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test child count property
+        ///     Tests that test child count property
         /// </summary>
         [Fact]
         public void Test_ChildCountProperty()
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test set as box method
+        ///     Tests that test set as box method
         /// </summary>
         [Fact]
         public void Test_SetAsBoxMethod()
@@ -108,7 +108,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test test point method
+        ///     Tests that test test point method
         /// </summary>
         [Fact]
         public void Test_TestPointMethod()
@@ -119,14 +119,14 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             Vector2 point = new Vector2(1, 1);
             
             // Act
-            Assert.Throws<NullReferenceException>(() =>polygonShape.TestPoint(ref transform, ref point));
+            Assert.Throws<NullReferenceException>(() => polygonShape.TestPoint(ref transform, ref point));
             
             // Assert
             // Add your assertions here based on what you expect from TestPoint
         }
         
         /// <summary>
-        /// Tests that test ray cast method
+        ///     Tests that test ray cast method
         /// </summary>
         [Fact]
         public void Test_RayCastMethod()
@@ -145,7 +145,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test compute aabb method
+        ///     Tests that test compute aabb method
         /// </summary>
         [Fact]
         public void Test_ComputeAabbMethod()
@@ -156,14 +156,14 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             Aabb aabb;
             
             // Act
-            Assert.Throws<NullReferenceException>(() =>polygonShape.ComputeAabb(ref transform, 0, out aabb));
+            Assert.Throws<NullReferenceException>(() => polygonShape.ComputeAabb(ref transform, 0, out aabb));
             
             // Assert
             // Add your assertions here based on what you expect from ComputeAabb
         }
         
         /// <summary>
-        /// Tests that test clone method
+        ///     Tests that test clone method
         /// </summary>
         [Fact]
         public void Test_CloneMethod()
@@ -172,7 +172,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             PolygonShape polygonShape = new PolygonShape(1.0f);
             
             // Act
-            Assert.Throws<ArgumentNullException>(() =>polygonShape.Clone());
+            Assert.Throws<ArgumentNullException>(() => polygonShape.Clone());
         }
     }
 }

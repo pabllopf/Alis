@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.NarrowPhase
 {
     /// <summary>
-    /// The simplex vertex test class
+    ///     The simplex vertex test class
     /// </summary>
     public class SimplexVertexTest
     {
         /// <summary>
-        /// Tests that test a property
+        ///     Tests that test a property
         /// </summary>
         [Fact]
         public void Test_AProperty()
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test index a property
+        ///     Tests that test index a property
         /// </summary>
         [Fact]
         public void Test_IndexAProperty()
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test index b property
+        ///     Tests that test index b property
         /// </summary>
         [Fact]
         public void Test_IndexBProperty()
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test w property
+        ///     Tests that test w property
         /// </summary>
         [Fact]
         public void Test_WProperty()
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test wa property
+        ///     Tests that test wa property
         /// </summary>
         [Fact]
         public void Test_WaProperty()
@@ -124,7 +124,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test wb property
+        ///     Tests that test wb property
         /// </summary>
         [Fact]
         public void Test_WbProperty()

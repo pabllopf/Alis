@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics.Solver
 {
     /// <summary>
-    /// The contact velocity constraint test class
+    ///     The contact velocity constraint test class
     /// </summary>
     public class ContactVelocityConstraintTest
     {
         /// <summary>
-        /// Tests that contact velocity constraint constructor test
+        ///     Tests that contact velocity constraint constructor test
         /// </summary>
         [Fact]
         public void ContactVelocityConstraintConstructorTest()
@@ -56,31 +56,31 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         }
         
         /// <summary>
-        /// Tests that contact velocity constraint properties test
+        ///     Tests that contact velocity constraint properties test
         /// </summary>
         [Fact]
         public void ContactVelocityConstraintPropertiesTest()
         {
             // Arrange
             ContactVelocityConstraint contactVelocityConstraint = new ContactVelocityConstraint
-                {
-                    // Act
-                    ContactIndex = 1,
-                    Friction = 0.5f,
-                    IndexA = 1,
-                    IndexB = 2,
-                    InvIa = 0.5f,
-                    InvIb = 0.5f,
-                    InvMassA = 0.5f,
-                    InvMassB = 0.5f,
-                    K = new Matrix2X2(),
-                    Normal = new Vector2(1.0f, 1.0f),
-                    NormalMass = new Matrix2X2(),
-                    PointCount = 1,
-                    Restitution = 0.5f,
-                    TangentSpeed = 0.5f,
-                    Threshold = 0.5f
-                };
+            {
+                // Act
+                ContactIndex = 1,
+                Friction = 0.5f,
+                IndexA = 1,
+                IndexB = 2,
+                InvIa = 0.5f,
+                InvIb = 0.5f,
+                InvMassA = 0.5f,
+                InvMassB = 0.5f,
+                K = new Matrix2X2(),
+                Normal = new Vector2(1.0f, 1.0f),
+                NormalMass = new Matrix2X2(),
+                PointCount = 1,
+                Restitution = 0.5f,
+                TangentSpeed = 0.5f,
+                Threshold = 0.5f
+            };
             
             // Assert
             Assert.Equal(1, contactVelocityConstraint.ContactIndex);

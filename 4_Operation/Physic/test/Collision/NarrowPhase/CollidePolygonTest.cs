@@ -30,10 +30,9 @@
 namespace Alis.Core.Physic.Test.Collision.NarrowPhase
 {
     /// <summary>
-    /// The collide polygon test class
+    ///     The collide polygon test class
     /// </summary>
     public class CollidePolygonTest
     {
-        
     }
 }

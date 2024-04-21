@@ -30,10 +30,9 @@
 namespace Alis.Core.Physic.Test.Collision.TOI
 {
     /// <summary>
-    /// The toi output state tets class
+    ///     The toi output state tets class
     /// </summary>
     public class ToiOutputStateTets
     {
-        
     }
 }

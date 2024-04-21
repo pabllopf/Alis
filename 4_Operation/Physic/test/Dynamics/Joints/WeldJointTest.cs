@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics.Joints
 {
     /// <summary>
-    /// The weld joint test class
+    ///     The weld joint test class
     /// </summary>
     public class WeldJointTest
     {
-         /// <summary>
-        /// Tests that weld joint constructor test
+        /// <summary>
+        ///     Tests that weld joint constructor test
         /// </summary>
         [Fact]
         public void WeldJointConstructorTest()
@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that weld joint properties test
+        ///     Tests that weld joint properties test
         /// </summary>
         [Fact]
         public void WeldJointPropertiesTest()
@@ -82,13 +82,13 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             float stiffness = 0.0f;
             float damping = 0.0f;
             WeldJoint weldJoint = new WeldJoint(bodyA, bodyB, JointType.Weld, false, localAnchorA, localAnchorB, referenceAngle, stiffness, damping)
-                {
-                    // Act
-                    LocalAnchorA = new Vector2(0.6f, 0.6f),
-                    LocalAnchorB = new Vector2(1.6f, 1.6f),
-                    Stiffness = 0.8f,
-                    Damping = 0.7f
-                };
+            {
+                // Act
+                LocalAnchorA = new Vector2(0.6f, 0.6f),
+                LocalAnchorB = new Vector2(1.6f, 1.6f),
+                Stiffness = 0.8f,
+                Damping = 0.7f
+            };
             
             // Assert
             Assert.Equal(new Vector2(0.6f, 0.6f), weldJoint.LocalAnchorA);
@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that weld joint world anchor test
+        ///     Tests that weld joint world anchor test
         /// </summary>
         [Fact]
         public void WeldJointWorldAnchorTest()

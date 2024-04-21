@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics.Joints
 {
     /// <summary>
-    /// The joint edge test class
+    ///     The joint edge test class
     /// </summary>
     public class JointEdgeTest
     {
         /// <summary>
-        /// Tests that joint edge constructor test
+        ///     Tests that joint edge constructor test
         /// </summary>
         [Fact]
         public void JointEdgeConstructorTest()
@@ -53,11 +53,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             // Act
             JointEdge jointEdge = new JointEdge();
             
-            Assert.Null( jointEdge.Other);
+            Assert.Null(jointEdge.Other);
         }
         
         /// <summary>
-        /// Tests that joint edge constructor test 2
+        ///     Tests that joint edge constructor test 2
         /// </summary>
         [Fact]
         public void JointEdgeConstructorTest2()
@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that joint edge constructor test 3
+        ///     Tests that joint edge constructor test 3
         /// </summary>
         [Fact]
         public void JointEdgeConstructorTest3()
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that joint edge constructor test 4
+        ///     Tests that joint edge constructor test 4
         /// </summary>
         [Fact]
         public void JointEdgeConstructorTest4()

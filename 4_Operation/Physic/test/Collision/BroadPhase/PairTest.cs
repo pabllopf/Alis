@@ -33,33 +33,33 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.BroadPhase
 {
     /// <summary>
-    /// The pair test class
+    ///     The pair test class
     /// </summary>
     public class PairTest
     {
         /// <summary>
-        /// Tests that test proxy id a
+        ///     Tests that test proxy id a
         /// </summary>
         [Fact]
         public void TestProxyIdA()
         {
             Pair pair = new Pair
-                {
-                    ProxyIdA = 1
-                };
+            {
+                ProxyIdA = 1
+            };
             Assert.Equal(1, pair.ProxyIdA);
         }
         
         /// <summary>
-        /// Tests that test proxy id b
+        ///     Tests that test proxy id b
         /// </summary>
         [Fact]
         public void TestProxyIdB()
         {
             Pair pair = new Pair
-                {
-                    ProxyIdB = 2
-                };
+            {
+                ProxyIdB = 2
+            };
             Assert.Equal(2, pair.ProxyIdB);
         }
     }

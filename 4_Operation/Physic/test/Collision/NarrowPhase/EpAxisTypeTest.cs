@@ -30,10 +30,9 @@
 namespace Alis.Core.Physic.Test.Collision.NarrowPhase
 {
     /// <summary>
-    /// The ep axis type test class
+    ///     The ep axis type test class
     /// </summary>
     public class EpAxisTypeTest
     {
-        
     }
 }

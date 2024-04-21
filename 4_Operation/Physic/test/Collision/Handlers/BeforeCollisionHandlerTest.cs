@@ -29,7 +29,6 @@
 
 using System;
 using Alis.Core.Physic.Collision.Filtering;
-using Alis.Core.Physic.Collision.Handlers;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
@@ -37,12 +36,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.Handlers
 {
     /// <summary>
-    /// The before collision handler test class
+    ///     The before collision handler test class
     /// </summary>
     public class BeforeCollisionHandlerTest
     {
         /// <summary>
-        /// Tests that before collision handler invocation test
+        ///     Tests that before collision handler invocation test
         /// </summary>
         [Fact]
         public void BeforeCollisionHandlerInvocationTest()
@@ -51,8 +50,8 @@ namespace Alis.Core.Physic.Test.Collision.Handlers
             bool isHandlerInvoked = false;
             Action<Fixture, Fixture> handler = (fixtureA, fixtureB) => { isHandlerInvoked = true; };
             
-            Fixture fixtureA =  new Fixture(new CircleShape(1, 1), new Filter(), 0.3f, 0.1f, 1.5f, true);
-            Fixture fixtureB =  new Fixture(new CircleShape(1, 1), new Filter(), 0.3f, 0.1f, 1.5f, true);
+            Fixture fixtureA = new Fixture(new CircleShape(1, 1), new Filter(), 0.3f, 0.1f, 1.5f, true);
+            Fixture fixtureB = new Fixture(new CircleShape(1, 1), new Filter(), 0.3f, 0.1f, 1.5f, true);
             
             // Act
             handler(fixtureA, fixtureB);

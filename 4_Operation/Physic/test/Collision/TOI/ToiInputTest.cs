@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.TOI
 {
     /// <summary>
-    /// The toi input test class
+    ///     The toi input test class
     /// </summary>
     public class ToiInputTest
     {
         /// <summary>
-        /// Tests that test toi input proxy a property
+        ///     Tests that test toi input proxy a property
         /// </summary>
         [Fact]
         public void TestToiInputProxyAProperty()
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Collision.TOI
         }
         
         /// <summary>
-        /// Tests that test toi input proxy b property
+        ///     Tests that test toi input proxy b property
         /// </summary>
         [Fact]
         public void TestToiInputProxyBProperty()
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Test.Collision.TOI
         }
         
         /// <summary>
-        /// Tests that test toi input sweep a property
+        ///     Tests that test toi input sweep a property
         /// </summary>
         [Fact]
         public void TestToiInputSweepAProperty()
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Collision.TOI
         }
         
         /// <summary>
-        /// Tests that test toi input sweep b property
+        ///     Tests that test toi input sweep b property
         /// </summary>
         [Fact]
         public void TestToiInputSweepBProperty()
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Test.Collision.TOI
         }
         
         /// <summary>
-        /// Tests that test toi input max property
+        ///     Tests that test toi input max property
         /// </summary>
         [Fact]
         public void TestToiInputMaxProperty()

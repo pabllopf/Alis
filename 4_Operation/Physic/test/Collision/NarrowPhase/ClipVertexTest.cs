@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.NarrowPhase
 {
     /// <summary>
-    /// The clip vertex test class
+    ///     The clip vertex test class
     /// </summary>
     public class ClipVertexTest
     {
         /// <summary>
-        /// Tests that test clip vertex id
+        ///     Tests that test clip vertex id
         /// </summary>
         [Fact]
         public void Test_ClipVertex_Id()
@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test clip vertex v
+        ///     Tests that test clip vertex v
         /// </summary>
         [Fact]
         public void Test_ClipVertex_V()
@@ -72,6 +72,5 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Assert
             Assert.Equal(expectedVector, clipVertex.V);
         }
-        
     }
 }

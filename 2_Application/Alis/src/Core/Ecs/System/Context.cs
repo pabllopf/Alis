@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GameContext.cs
+//  File:Context.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -40,18 +40,18 @@ using Alis.Core.Ecs.System.Setting.Graphic;
 namespace Alis.Core.Ecs.System
 {
     /// <summary>
-    /// The context class
+    ///     The context class
     /// </summary>
-    /// <seealso cref="AContext"/>
+    /// <seealso cref="AContext" />
     public class Context : IContext
     {
         /// <summary>
-        /// The video game
+        ///     The video game
         /// </summary>
         private readonly VideoGame videoGame;
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="Context"/> class
+        ///     Initializes a new instance of the <see cref="Context" /> class
         /// </summary>
         /// <param name="videoGame">The video game</param>
         /// <param name="settings">The settings</param>
@@ -62,52 +62,52 @@ namespace Alis.Core.Ecs.System
         }
         
         /// <summary>
-        /// Gets the value of the audio manager
+        ///     Gets the value of the audio manager
         /// </summary>
         public AudioManager AudioManager => videoGame.Find<AudioManager>();
         
         /// <summary>
-        /// Gets the value of the graphic manager
+        ///     Gets the value of the graphic manager
         /// </summary>
         public GraphicManager GraphicManager => videoGame.Find<GraphicManager>();
         
         /// <summary>
-        /// Gets the value of the input manager
+        ///     Gets the value of the input manager
         /// </summary>
         public InputManager InputManager => videoGame.Find<InputManager>();
         
         /// <summary>
-        /// Gets the value of the network manager
+        ///     Gets the value of the network manager
         /// </summary>
         public NetworkManager NetworkManager => videoGame.Find<NetworkManager>();
         
         /// <summary>
-        /// Gets the value of the physic manager
+        ///     Gets the value of the physic manager
         /// </summary>
         public PhysicManager PhysicManager => videoGame.Find<PhysicManager>();
         
         /// <summary>
-        /// Gets the value of the profile manager
+        ///     Gets the value of the profile manager
         /// </summary>
         public ProfileManager ProfileManager => videoGame.Find<ProfileManager>();
         
         /// <summary>
-        /// Gets the value of the time manager
+        ///     Gets the value of the time manager
         /// </summary>
         public TimeManager TimeManager => videoGame.TimeManager;
         
         /// <summary>
-        /// The settings
+        ///     The settings
         /// </summary>
         public Settings Settings { get; internal set; }
         
         /// <summary>
-        /// Gets the value of the scene manager
+        ///     Gets the value of the scene manager
         /// </summary>
         public SceneManager SceneManager => videoGame.Find<SceneManager>();
         
         /// <summary>
-        /// Exits this instance
+        ///     Exits this instance
         /// </summary>
         public void Exit() => videoGame.Exit();
     }

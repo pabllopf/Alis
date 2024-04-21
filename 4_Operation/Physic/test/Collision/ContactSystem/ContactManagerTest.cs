@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.ContactSystem
 {
     /// <summary>
-    /// The contact manager test class
+    ///     The contact manager test class
     /// </summary>
     public class ContactManagerTest
     {
         /// <summary>
-        /// Tests that test contact reset
+        ///     Tests that test contact reset
         /// </summary>
         [Fact]
         public void TestContactReset()

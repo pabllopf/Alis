@@ -41,7 +41,7 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
     public class GameObjectBuilder :
         IBuild<Alis.Core.Ecs.Entity.GameObject>,
         IName<GameObjectBuilder, string>,
-        IAddComponent<GameObjectBuilder, Alis.Core.Ecs.Component.AComponent>,
+        IAddComponent<GameObjectBuilder, AComponent>,
         ITransform<GameObjectBuilder, Func<TransformBuilder, Alis.Core.Aspect.Math.Transform>>,
         IWithTag<GameObjectBuilder, string>
     {
@@ -57,9 +57,9 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder AddComponent<T>(Func<T, Alis.Core.Ecs.Component.AComponent> value) where T : Alis.Core.Ecs.Component.AComponent
+        public GameObjectBuilder AddComponent<T>(Func<T, AComponent> value) where T : AComponent
         {
-            Alis.Core.Ecs.Component.AComponent aComponent = value.Invoke((T) Activator.CreateInstance(typeof(T)));
+            AComponent aComponent = value.Invoke((T) Activator.CreateInstance(typeof(T)));
             gameObject.Add(aComponent);
             aComponent.Attach(gameObject);
             return this;
@@ -71,7 +71,7 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder AddComponent<T>(T value) where T : Alis.Core.Ecs.Component.AComponent
+        public GameObjectBuilder AddComponent<T>(T value) where T : AComponent
         {
             gameObject.Add(value);
             value.Attach(gameObject);

@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Figure
 {
     /// <summary>
-    /// The polygon test class
+    ///     The polygon test class
     /// </summary>
     public class PolygonTest
     {
         /// <summary>
-        /// Tests that create rectangle test
+        ///     Tests that create rectangle test
         /// </summary>
         [Fact]
         public void CreateRectangleTest()
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Test.Figure
         }
         
         /// <summary>
-        /// Tests that create rounded rectangle test
+        ///     Tests that create rounded rectangle test
         /// </summary>
         [Fact]
         public void CreateRoundedRectangleTest()
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Test.Figure
         }
         
         /// <summary>
-        /// Tests that create line test
+        ///     Tests that create line test
         /// </summary>
         [Fact]
         public void CreateLineTest()
@@ -95,7 +95,7 @@ namespace Alis.Core.Physic.Test.Figure
         }
         
         /// <summary>
-        /// Tests that create circle test
+        ///     Tests that create circle test
         /// </summary>
         [Fact]
         public void CreateCircleTest()
@@ -112,7 +112,7 @@ namespace Alis.Core.Physic.Test.Figure
         }
         
         /// <summary>
-        /// Tests that create ellipse test
+        ///     Tests that create ellipse test
         /// </summary>
         [Fact]
         public void CreateEllipseTest()
@@ -130,7 +130,7 @@ namespace Alis.Core.Physic.Test.Figure
         }
         
         /// <summary>
-        /// Tests that create arc test
+        ///     Tests that create arc test
         /// </summary>
         [Fact]
         public void CreateArcTest()
@@ -148,7 +148,7 @@ namespace Alis.Core.Physic.Test.Figure
         }
         
         /// <summary>
-        /// Tests that create capsule test
+        ///     Tests that create capsule test
         /// </summary>
         [Fact]
         public void CreateCapsuleTest()
@@ -166,7 +166,7 @@ namespace Alis.Core.Physic.Test.Figure
         }
         
         /// <summary>
-        /// Tests that create gear test
+        ///     Tests that create gear test
         /// </summary>
         [Fact]
         public void CreateGearTest()

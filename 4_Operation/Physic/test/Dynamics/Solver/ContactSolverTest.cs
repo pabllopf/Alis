@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics.Solver
 {
     /// <summary>
-    /// The contact solver test class
+    ///     The contact solver test class
     /// </summary>
     public class ContactSolverTest
     {
         /// <summary>
-        /// Tests that reset test
+        ///     Tests that reset test
         /// </summary>
         [Fact]
         public void ResetTest()
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         }
         
         /// <summary>
-        /// Tests that initialize velocity constraints test
+        ///     Tests that initialize velocity constraints test
         /// </summary>
         [Fact]
         public void InitializeVelocityConstraintsTest()
@@ -71,7 +71,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         }
         
         /// <summary>
-        /// Tests that warm start test
+        ///     Tests that warm start test
         /// </summary>
         [Fact]
         public void WarmStartTest()
@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         }
         
         /// <summary>
-        /// Tests that solve velocity constraints test
+        ///     Tests that solve velocity constraints test
         /// </summary>
         [Fact]
         public void SolveVelocityConstraintsTest()
@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         }
         
         /// <summary>
-        /// Tests that store impulses test
+        ///     Tests that store impulses test
         /// </summary>
         [Fact]
         public void StoreImpulsesTest()
@@ -110,7 +110,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         }
         
         /// <summary>
-        /// Tests that solve position constraints test
+        ///     Tests that solve position constraints test
         /// </summary>
         [Fact]
         public void SolvePositionConstraintsTest()
@@ -123,7 +123,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         }
         
         /// <summary>
-        /// Tests that solve toi position constraints test
+        ///     Tests that solve toi position constraints test
         /// </summary>
         [Fact]
         public void SolveToiPositionConstraintsTest()

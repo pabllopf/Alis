@@ -38,18 +38,18 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.ContactSystem
 {
     /// <summary>
-    /// The contact test class
+    ///     The contact test class
     /// </summary>
     public class ContactTest
     {
         /// <summary>
-        /// Tests that test reset
+        ///     Tests that test reset
         /// </summary>
         [Fact]
         public void TestReset()
         {
-            Shape shape = new CircleShape(1.0f); 
-            Filter filter = new Filter(); 
+            Shape shape = new CircleShape(1.0f);
+            Filter filter = new Filter();
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
             Contact contact = new Contact(fixtureA, 1, fixtureB, 2);
@@ -57,30 +57,31 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             Assert.Equal(fixtureA, contact.FixtureA);
             Assert.Equal(fixtureB, contact.FixtureB);
         }
-       /// <summary>
-       /// Tests that test update
-       /// </summary>
-       [Fact]
+        
+        /// <summary>
+        ///     Tests that test update
+        /// </summary>
+        [Fact]
         public void TestUpdate()
         {
-            IBroadPhase broadPhase = new DynamicTreeBroadPhase(); 
+            IBroadPhase broadPhase = new DynamicTreeBroadPhase();
             ContactManager contactManager = new ContactManager(broadPhase);
             Shape shape = new CircleShape(1.0f);
-            Filter filter = new Filter(); 
+            Filter filter = new Filter();
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
             Contact contact = Contact.Create(fixtureA, 1, fixtureB, 2);
             Assert.Throws<NullReferenceException>(() => contact.Update(contactManager));
         }
-       
+        
         /// <summary>
-        /// Tests that test destroy
+        ///     Tests that test destroy
         /// </summary>
         [Fact]
         public void TestDestroy()
         {
-            Shape shape = new CircleShape(1.0f); 
-            Filter filter = new Filter(); 
+            Shape shape = new CircleShape(1.0f);
+            Filter filter = new Filter();
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
             Contact contact = new Contact(fixtureA, 1, fixtureB, 2);
@@ -89,13 +90,13 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test clear flags
+        ///     Tests that test clear flags
         /// </summary>
         [Fact]
         public void TestClearFlags()
         {
-            Shape shape = new CircleShape(1.0f); 
-            Filter filter = new Filter(); 
+            Shape shape = new CircleShape(1.0f);
+            Filter filter = new Filter();
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
             Contact contact = new Contact(fixtureA, 1, fixtureB, 2);
@@ -104,13 +105,13 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test invalidate toi
+        ///     Tests that test invalidate toi
         /// </summary>
         [Fact]
         public void TestInvalidateToi()
         {
             Shape shape = new CircleShape(1.0f);
-            Filter filter = new Filter(); 
+            Filter filter = new Filter();
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
             Contact contact = new Contact(fixtureA, 1, fixtureB, 2);

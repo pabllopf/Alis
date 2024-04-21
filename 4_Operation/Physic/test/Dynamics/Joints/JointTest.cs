@@ -27,18 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Dynamics.Joints;
-using Xunit;
-
 namespace Alis.Core.Physic.Test.Dynamics.Joints
 {
     /// <summary>
-    /// The joint test class
+    ///     The joint test class
     /// </summary>
     public class JointTest
     {
-      
     }
 }

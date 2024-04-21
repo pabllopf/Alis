@@ -30,19 +30,18 @@
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
-using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Collision
 {
     /// <summary>
-    /// The aabb helper test class
+    ///     The aabb helper test class
     /// </summary>
     public class AabbHelperTest
     {
         /// <summary>
-        /// Tests that test compute edge aabb
+        ///     Tests that test compute edge aabb
         /// </summary>
         [Fact]
         public void TestComputeEdgeAabb()
@@ -57,12 +56,12 @@ namespace Alis.Core.Physic.Test.Collision
             AabbHelper.ComputeEdgeAabb(ref start, ref end, ref transform, out aabb);
             
             // Assert
-            Assert.Equal(new Vector2(-0.01F,-0.01F), aabb.LowerBound);
-           Assert.Equal(new Vector2(0.01F,0.01F), aabb.UpperBound);
+            Assert.Equal(new Vector2(-0.01F, -0.01F), aabb.LowerBound);
+            Assert.Equal(new Vector2(0.01F, 0.01F), aabb.UpperBound);
         }
         
         /// <summary>
-        /// Tests that test compute circle aabb
+        ///     Tests that test compute circle aabb
         /// </summary>
         [Fact]
         public void TestComputeCircleAabb()
@@ -82,7 +81,7 @@ namespace Alis.Core.Physic.Test.Collision
         }
         
         /// <summary>
-        /// Tests that test compute polygon aabb
+        ///     Tests that test compute polygon aabb
         /// </summary>
         [Fact]
         public void TestComputePolygonAabb()
@@ -100,8 +99,8 @@ namespace Alis.Core.Physic.Test.Collision
             AabbHelper.ComputePolygonAabb(vertices, ref transform, out aabb);
             
             // Assert
-            Assert.Equal(new Vector2(-0.01F,-0.01F), aabb.LowerBound);
-            Assert.Equal(new Vector2(0.01F,0.01F), aabb.UpperBound);
+            Assert.Equal(new Vector2(-0.01F, -0.01F), aabb.LowerBound);
+            Assert.Equal(new Vector2(0.01F, 0.01F), aabb.UpperBound);
         }
     }
 }

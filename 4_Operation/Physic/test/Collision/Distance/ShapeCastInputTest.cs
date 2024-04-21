@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.Distance
 {
     /// <summary>
-    /// The shape cast input test class
+    ///     The shape cast input test class
     /// </summary>
     public class ShapeCastInputTest
     {
         /// <summary>
-        /// Tests that proxy a property test
+        ///     Tests that proxy a property test
         /// </summary>
         [Fact]
         public void ProxyAPropertyTest()
@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Test.Collision.Distance
         }
         
         /// <summary>
-        /// Tests that proxy b property test
+        ///     Tests that proxy b property test
         /// </summary>
         [Fact]
         public void ProxyBPropertyTest()
@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Test.Collision.Distance
         }
         
         /// <summary>
-        /// Tests that transform a property test
+        ///     Tests that transform a property test
         /// </summary>
         [Fact]
         public void TransformAPropertyTest()
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Test.Collision.Distance
         }
         
         /// <summary>
-        /// Tests that transform b property test
+        ///     Tests that transform b property test
         /// </summary>
         [Fact]
         public void TransformBPropertyTest()
@@ -108,7 +108,7 @@ namespace Alis.Core.Physic.Test.Collision.Distance
         }
         
         /// <summary>
-        /// Tests that translation b property test
+        ///     Tests that translation b property test
         /// </summary>
         [Fact]
         public void TranslationBPropertyTest()

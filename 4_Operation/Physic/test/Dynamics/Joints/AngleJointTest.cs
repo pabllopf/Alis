@@ -37,12 +37,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics.Joints
 {
     /// <summary>
-    /// The angle joint test class
+    ///     The angle joint test class
     /// </summary>
     public class AngleJointTest
     {
         /// <summary>
-        /// Tests that angle joint constructor test
+        ///     Tests that angle joint constructor test
         /// </summary>
         [Fact]
         public void AngleJointConstructorTest()
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that angle joint properties test
+        ///     Tests that angle joint properties test
         /// </summary>
         [Fact]
         public void AngleJointPropertiesTest()
@@ -70,17 +70,17 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
             AngleJoint angleJoint = new AngleJoint(bodyA, bodyB)
-                {
-                    // Act
-                    TargetAngle = 0.5f
-                };
+            {
+                // Act
+                TargetAngle = 0.5f
+            };
             
             // Assert
             Assert.Equal(0.5f, angleJoint.TargetAngle);
         }
         
         /// <summary>
-        /// Tests that angle joint world anchor test
+        ///     Tests that angle joint world anchor test
         /// </summary>
         [Fact]
         public void AngleJointWorldAnchorTest()

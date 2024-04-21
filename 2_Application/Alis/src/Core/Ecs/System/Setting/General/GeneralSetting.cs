@@ -48,12 +48,6 @@ namespace Alis.Core.Ecs.System.Setting.General
         public bool Debug { get; set; } = false;
         
         /// <summary>
-        ///     Builders this instance
-        /// </summary>
-        /// <returns>The graphic setting builder</returns>
-        public GeneralSettingBuilder Builder() => new GeneralSettingBuilder();
-        
-        /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; } = "Default Name";
@@ -82,5 +76,11 @@ namespace Alis.Core.Ecs.System.Setting.General
         ///     Gets or sets the value of the icon
         /// </summary>
         public string Icon { get; set; } = AssetManager.Find("app.bmp");
+        
+        /// <summary>
+        ///     Builders this instance
+        /// </summary>
+        /// <returns>The graphic setting builder</returns>
+        public GeneralSettingBuilder Builder() => new GeneralSettingBuilder();
     }
 }

@@ -30,10 +30,9 @@
 namespace Alis.Core.Physic.Test.Collision.NarrowPhase
 {
     /// <summary>
-    /// The manifold type test class
+    ///     The manifold type test class
     /// </summary>
     public class ManifoldTypeTest
     {
-        
     }
 }

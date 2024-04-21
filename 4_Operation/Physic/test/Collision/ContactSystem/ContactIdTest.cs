@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.ContactSystem
 {
     /// <summary>
-    /// The contact id test class
+    ///     The contact id test class
     /// </summary>
     public class ContactIdTest
     {
         /// <summary>
-        /// Tests that test contact feature property
+        ///     Tests that test contact feature property
         /// </summary>
         [Fact]
         public void TestContactFeatureProperty()
@@ -55,7 +55,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test key property
+        ///     Tests that test key property
         /// </summary>
         [Fact]
         public void TestKeyProperty()

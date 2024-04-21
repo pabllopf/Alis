@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.Distance
 {
     /// <summary>
-    /// The distance output test class
+    ///     The distance output test class
     /// </summary>
     public class DistanceOutputTest
     {
         /// <summary>
-        /// Tests that distance property test
+        ///     Tests that distance property test
         /// </summary>
         [Fact]
         public void DistancePropertyTest()
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Collision.Distance
         }
         
         /// <summary>
-        /// Tests that iterations property test
+        ///     Tests that iterations property test
         /// </summary>
         [Fact]
         public void IterationsPropertyTest()
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Test.Collision.Distance
         }
         
         /// <summary>
-        /// Tests that point a property test
+        ///     Tests that point a property test
         /// </summary>
         [Fact]
         public void PointAPropertyTest()
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Collision.Distance
         }
         
         /// <summary>
-        /// Tests that point b property test
+        ///     Tests that point b property test
         /// </summary>
         [Fact]
         public void PointBPropertyTest()

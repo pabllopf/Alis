@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Component.cs
+//  File:AComponent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -39,6 +39,11 @@ namespace Alis.Core.Ecs.Component
     public abstract class AComponent : IComponent<GameObject>, IHasContext<Context>
     {
         /// <summary>
+        ///     Gets or sets the value of the game object
+        /// </summary>
+        public Context Context { get; set; }
+        
+        /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
         public bool IsEnable { get; set; } = true;
@@ -62,11 +67,6 @@ namespace Alis.Core.Ecs.Component
         ///     Gets or sets the value of the game object
         /// </summary>
         public GameObject GameObject { get; set; }
-        
-        /// <summary>
-        ///     Gets or sets the value of the game object
-        /// </summary>
-        public Context Context{ get; set; }
         
         /// <summary>
         ///     Ons the enable
@@ -200,6 +200,12 @@ namespace Alis.Core.Ecs.Component
         public virtual void OnCollisionExit(GameObject gameObject) => Logger.Trace();
         
         /// <summary>
+        ///     Sets the context using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        public void SetContext(Context context) => Context = context;
+        
+        /// <summary>
         ///     Ons the collision stay using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
@@ -222,11 +228,5 @@ namespace Alis.Core.Ecs.Component
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public virtual void OnTriggerStay(GameObject gameObject) => Logger.Trace();
-        
-        /// <summary>
-        /// Sets the context using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        public void SetContext(Context context) => Context = context;
     }
 }

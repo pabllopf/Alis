@@ -33,39 +33,39 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.TOI
 {
     /// <summary>
-    /// The toi output test class
+    ///     The toi output test class
     /// </summary>
     public class ToiOutputTest
     {
         /// <summary>
-        /// Tests that test toi output state property
+        ///     Tests that test toi output state property
         /// </summary>
         [Fact]
         public void TestToiOutputStateProperty()
         {
             // Arrange
             ToiOutput toiOutput = new ToiOutput
-                {
-                    // Act
-                    State = ToiOutputState.Failed
-                };
+            {
+                // Act
+                State = ToiOutputState.Failed
+            };
             
             // Assert
             Assert.Equal(ToiOutputState.Failed, toiOutput.State);
         }
         
         /// <summary>
-        /// Tests that test toi output property property
+        ///     Tests that test toi output property property
         /// </summary>
         [Fact]
         public void TestToiOutputPropertyProperty()
         {
             // Arrange
             ToiOutput toiOutput = new ToiOutput
-                {
-                    // Act
-                    Property = 0.5f
-                };
+            {
+                // Act
+                Property = 0.5f
+            };
             
             // Assert
             Assert.Equal(0.5f, toiOutput.Property);

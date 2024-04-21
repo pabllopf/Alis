@@ -37,12 +37,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.Shapes
 {
     /// <summary>
-    /// The edge shape test class
+    ///     The edge shape test class
     /// </summary>
     public class EdgeShapeTest
     {
         /// <summary>
-        /// Tests that test child count property
+        ///     Tests that test child count property
         /// </summary>
         [Fact]
         public void Test_ChildCountProperty()
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test one sided property
+        ///     Tests that test one sided property
         /// </summary>
         [Fact]
         public void Test_OneSidedProperty()
@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test vertex 1 property
+        ///     Tests that test vertex 1 property
         /// </summary>
         [Fact]
         public void Test_Vertex1Property()
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test vertex 2 property
+        ///     Tests that test vertex 2 property
         /// </summary>
         [Fact]
         public void Test_Vertex2Property()
@@ -108,7 +108,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test set one sided method
+        ///     Tests that test set one sided method
         /// </summary>
         [Fact]
         public void Test_SetOneSidedMethod()
@@ -132,7 +132,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test set two sided method
+        ///     Tests that test set two sided method
         /// </summary>
         [Fact]
         public void Test_SetTwoSidedMethod()
@@ -152,7 +152,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test test point method
+        ///     Tests that test test point method
         /// </summary>
         [Fact]
         public void Test_TestPointMethod()
@@ -170,7 +170,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test ray cast method
+        ///     Tests that test ray cast method
         /// </summary>
         [Fact]
         public void Test_RayCastMethod()
@@ -189,7 +189,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test compute aabb method
+        ///     Tests that test compute aabb method
         /// </summary>
         [Fact]
         public void Test_ComputeAabbMethod()
@@ -207,7 +207,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         }
         
         /// <summary>
-        /// Tests that test clone method
+        ///     Tests that test clone method
         /// </summary>
         [Fact]
         public void Test_CloneMethod()

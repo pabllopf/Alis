@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.ContactSystem
 {
     /// <summary>
-    /// The contact setting test class
+    ///     The contact setting test class
     /// </summary>
     public class ContactSettingTest
     {
         /// <summary>
-        /// Tests that test contact setting none
+        ///     Tests that test contact setting none
         /// </summary>
         [Fact]
         public void TestContactSetting_None()
@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test contact setting island flag
+        ///     Tests that test contact setting island flag
         /// </summary>
         [Fact]
         public void TestContactSetting_IslandFlag()
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test contact setting touching flag
+        ///     Tests that test contact setting touching flag
         /// </summary>
         [Fact]
         public void TestContactSetting_TouchingFlag()
@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test contact setting enabled flag
+        ///     Tests that test contact setting enabled flag
         /// </summary>
         [Fact]
         public void TestContactSetting_EnabledFlag()
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test contact setting filter flag
+        ///     Tests that test contact setting filter flag
         /// </summary>
         [Fact]
         public void TestContactSetting_FilterFlag()
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test contact setting bullet hit flag
+        ///     Tests that test contact setting bullet hit flag
         /// </summary>
         [Fact]
         public void TestContactSetting_BulletHitFlag()
@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         }
         
         /// <summary>
-        /// Tests that test contact setting toi flag
+        ///     Tests that test contact setting toi flag
         /// </summary>
         [Fact]
         public void TestContactSetting_ToiFlag()

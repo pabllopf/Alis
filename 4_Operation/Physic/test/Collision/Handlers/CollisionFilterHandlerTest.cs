@@ -30,10 +30,9 @@
 namespace Alis.Core.Physic.Test.Collision.Handlers
 {
     /// <summary>
-    /// The collision filter handler test class
+    ///     The collision filter handler test class
     /// </summary>
     public class CollisionFilterHandlerTest
     {
-        
     }
 }

@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Shared
 {
     /// <summary>
-    /// The vertices test class
+    ///     The vertices test class
     /// </summary>
     public class VerticesTest
     {
         /// <summary>
-        /// Tests that point property test
+        ///     Tests that point property test
         /// </summary>
         [Fact]
         public void PointPropertyTest()
@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Test.Shared
         }
         
         /// <summary>
-        /// Tests that translate test
+        ///     Tests that translate test
         /// </summary>
         [Fact]
         public void TranslateTest()
@@ -67,23 +67,23 @@ namespace Alis.Core.Physic.Test.Shared
             Vector2 point = new Vector2(1, 1);
             vertices.Add(point);
             Vector2 translationVector = new Vector2(2, 2);
-
+            
             // Create a new Vertices object and add the translated vertices to it
             Vertices translatedVertices = new Vertices();
             foreach (Vector2 vertex in vertices)
             {
                 translatedVertices.Add(vertex + translationVector);
             }
-
+            
             // Act
             // vertices.Translate(translationVector); // Comment out this line
-
+            
             // Assert
             Assert.Contains(point + translationVector, translatedVertices);
         }
         
         /// <summary>
-        /// Tests that scale test
+        ///     Tests that scale test
         /// </summary>
         [Fact]
         public void ScaleTest()
@@ -93,23 +93,23 @@ namespace Alis.Core.Physic.Test.Shared
             Vector2 point = new Vector2(1, 1);
             vertices.Add(point);
             Vector2 scaleVector = new Vector2(2, 2);
-
+            
             // Create a new Vertices object and add the scaled vertices to it
             Vertices scaledVertices = new Vertices();
             foreach (Vector2 vertex in vertices)
             {
                 scaledVertices.Add(Vector2.Multiply(vertex, scaleVector));
             }
-
+            
             // Act
             // vertices.Scale(scaleVector); // Comment out this line
-
+            
             // Assert
             Assert.Contains(Vector2.Multiply(point, scaleVector), scaledVertices);
         }
         
         /// <summary>
-        /// Tests that rotate test
+        ///     Tests that rotate test
         /// </summary>
         [Fact]
         public void RotateTest()
@@ -135,13 +135,13 @@ namespace Alis.Core.Physic.Test.Shared
         }
         
 // Helper method to rotate a point
-        /// <summary>
-        /// Rotates the point using the specified point
-        /// </summary>
-        /// <param name="point">The point</param>
-        /// <param name="angle">The angle</param>
-        /// <returns>The vector</returns>
-        private Vector2 RotatePoint(Vector2 point, float angle)
+/// <summary>
+///     Rotates the point using the specified point
+/// </summary>
+/// <param name="point">The point</param>
+/// <param name="angle">The angle</param>
+/// <returns>The vector</returns>
+private Vector2 RotatePoint(Vector2 point, float angle)
         {
             float sin = (float) Math.Sin(angle);
             float cos = (float) Math.Cos(angle);
@@ -153,7 +153,7 @@ namespace Alis.Core.Physic.Test.Shared
         }
         
         /// <summary>
-        /// Tests that is convex test
+        ///     Tests that is convex test
         /// </summary>
         [Fact]
         public void IsConvexTest()
@@ -172,7 +172,7 @@ namespace Alis.Core.Physic.Test.Shared
         }
         
         /// <summary>
-        /// Tests that is counter clock wise test
+        ///     Tests that is counter clock wise test
         /// </summary>
         [Fact]
         public void IsCounterClockWiseTest()
@@ -191,7 +191,7 @@ namespace Alis.Core.Physic.Test.Shared
         }
         
         /// <summary>
-        /// Tests that is simple test
+        ///     Tests that is simple test
         /// </summary>
         [Fact]
         public void IsSimpleTest()
@@ -210,7 +210,7 @@ namespace Alis.Core.Physic.Test.Shared
         }
         
         /// <summary>
-        /// Tests that check polygon test
+        ///     Tests that check polygon test
         /// </summary>
         [Fact]
         public void CheckPolygonTest()

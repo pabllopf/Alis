@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.BroadPhase;
 using Alis.Core.Physic.Collision.RayCast;
@@ -38,12 +37,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.BroadPhase
 {
     /// <summary>
-    /// The dynamic tree broad phase test class
+    ///     The dynamic tree broad phase test class
     /// </summary>
     public class DynamicTreeBroadPhaseTest
     {
         /// <summary>
-        /// Tests that test add proxy
+        ///     Tests that test add proxy
         /// </summary>
         [Fact]
         public void TestAddProxy()
@@ -55,7 +54,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         }
         
         /// <summary>
-        /// Tests that test remove proxy
+        ///     Tests that test remove proxy
         /// </summary>
         [Fact]
         public void TestRemoveProxy()
@@ -64,11 +63,11 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             FixtureProxy proxy = new FixtureProxy();
             int proxyId = dynamicTreeBroadPhase.AddProxy(ref proxy);
             dynamicTreeBroadPhase.RemoveProxy(proxyId);
-            Assert.True(true); 
+            Assert.True(true);
         }
         
         /// <summary>
-        /// Tests that test get proxy
+        ///     Tests that test get proxy
         /// </summary>
         [Fact]
         public void TestGetProxy()
@@ -81,7 +80,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         }
         
         /// <summary>
-        /// Tests that test get fat aabb
+        ///     Tests that test get fat aabb
         /// </summary>
         [Fact]
         public void TestGetFatAabb()
@@ -95,7 +94,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         }
         
         /// <summary>
-        /// Tests that test query
+        ///     Tests that test query
         /// </summary>
         [Fact]
         public void TestQuery()
@@ -107,19 +106,19 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         }
         
         /// <summary>
-        /// Tests that test ray cast
+        ///     Tests that test ray cast
         /// </summary>
         [Fact]
         public void TestRayCast()
         {
             DynamicTreeBroadPhase dynamicTreeBroadPhase = new DynamicTreeBroadPhase();
             RayCastInput input = new RayCastInput();
-            dynamicTreeBroadPhase.RayCast((RayCastInput rayCastInput, int proxyId) => 0, ref input);
+            dynamicTreeBroadPhase.RayCast((rayCastInput, proxyId) => 0, ref input);
             Assert.True(true); // No exception means pass
         }
         
         /// <summary>
-        /// Tests that test shift origin
+        ///     Tests that test shift origin
         /// </summary>
         [Fact]
         public void TestShiftOrigin()

@@ -37,12 +37,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics.Joints
 {
     /// <summary>
-    /// The wheel joint test class
+    ///     The wheel joint test class
     /// </summary>
     public class WheelJointTest
     {
         /// <summary>
-        /// Tests that wheel joint constructor test
+        ///     Tests that wheel joint constructor test
         /// </summary>
         [Fact]
         public void WheelJointConstructorTest()
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that wheel joint properties test
+        ///     Tests that wheel joint properties test
         /// </summary>
         [Fact]
         public void WheelJointPropertiesTest()
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that wheel joint joint translation test
+        ///     Tests that wheel joint joint translation test
         /// </summary>
         [Fact]
         public void WheelJointJointTranslationTest()

@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.NarrowPhase
 {
     /// <summary>
-    /// The simplex cache test class
+    ///     The simplex cache test class
     /// </summary>
     public class SimplexCacheTest
     {
         /// <summary>
-        /// Tests that test count property
+        ///     Tests that test count property
         /// </summary>
         [Fact]
         public void Test_CountProperty()
@@ -56,14 +56,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test index a property
+        ///     Tests that test index a property
         /// </summary>
         [Fact]
         public void Test_IndexAProperty()
         {
             // Arrange
             SimplexCache simplexCache = new SimplexCache();
-            FixedArray3<byte> expectedValue = new FixedArray3<byte> ();
+            FixedArray3<byte> expectedValue = new FixedArray3<byte>();
             
             // Act
             simplexCache.IndexA = expectedValue;
@@ -73,14 +73,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test index b property
+        ///     Tests that test index b property
         /// </summary>
         [Fact]
         public void Test_IndexBProperty()
         {
             // Arrange
             SimplexCache simplexCache = new SimplexCache();
-            FixedArray3<byte> expectedValue = new FixedArray3<byte> ();
+            FixedArray3<byte> expectedValue = new FixedArray3<byte>();
             
             
             // Act
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test metric property
+        ///     Tests that test metric property
         /// </summary>
         [Fact]
         public void Test_MetricProperty()

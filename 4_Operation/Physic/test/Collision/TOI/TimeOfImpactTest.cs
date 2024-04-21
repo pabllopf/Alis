@@ -37,12 +37,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.TOI
 {
     /// <summary>
-    /// The time of impact test class
+    ///     The time of impact test class
     /// </summary>
     public class TimeOfImpactTest
     {
         /// <summary>
-        /// Tests that test reset restitution threshold
+        ///     Tests that test reset restitution threshold
         /// </summary>
         [Fact]
         public void TestResetRestitutionThreshold()
@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Test.Collision.TOI
         }
         
         /// <summary>
-        /// Tests that test reset friction
+        ///     Tests that test reset friction
         /// </summary>
         [Fact]
         public void TestResetFriction()
@@ -82,7 +82,7 @@ namespace Alis.Core.Physic.Test.Collision.TOI
         }
         
         /// <summary>
-        /// Tests that test reset
+        ///     Tests that test reset
         /// </summary>
         [Fact]
         public void TestReset()

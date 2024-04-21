@@ -39,6 +39,17 @@ namespace Alis.Core.Ecs.System.Manager
     public class Manager : IManager, IHasContext<Context>
     {
         /// <summary>
+        ///     Gets or sets the value of the context
+        /// </summary>
+        protected Context Context { get; private set; }
+        
+        /// <summary>
+        ///     Sets the context using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        public void SetContext(Context context) => Context = context;
+        
+        /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
         public bool IsEnable { get; set; }
@@ -152,16 +163,5 @@ namespace Alis.Core.Ecs.System.Manager
         ///     Ons the destroy
         /// </summary>
         public virtual void OnDestroy() => Logger.Trace("Manager destroyed.");
-        
-        /// <summary>
-        /// Gets or sets the value of the context
-        /// </summary>
-        protected Context Context { get; private set; }
-        
-        /// <summary>
-        /// Sets the context using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        public void SetContext(Context context) => Context = context;
     }
 }

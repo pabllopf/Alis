@@ -37,12 +37,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.NarrowPhase
 {
     /// <summary>
-    /// The simplex test class
+    ///     The simplex test class
     /// </summary>
     public class SimplexTest
     {
         /// <summary>
-        /// Tests that test count property
+        ///     Tests that test count property
         /// </summary>
         [Fact]
         public void Test_CountProperty()
@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test read cache method
+        ///     Tests that test read cache method
         /// </summary>
         [Fact]
         public void Test_ReadCacheMethod()
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test write cache method
+        ///     Tests that test write cache method
         /// </summary>
         [Fact]
         public void Test_WriteCacheMethod()
@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test get search direction method
+        ///     Tests that test get search direction method
         /// </summary>
         [Fact]
         public void Test_GetSearchDirectionMethod()
@@ -113,7 +113,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test get closest point method
+        ///     Tests that test get closest point method
         /// </summary>
         [Fact]
         public void Test_GetClosestPointMethod()
@@ -129,7 +129,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test get witness points method
+        ///     Tests that test get witness points method
         /// </summary>
         [Fact]
         public void Test_GetWitnessPointsMethod()
@@ -146,7 +146,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test solve 2 method
+        ///     Tests that test solve 2 method
         /// </summary>
         [Fact]
         public void Test_Solve2Method()
@@ -162,7 +162,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test solve 3 method
+        ///     Tests that test solve 3 method
         /// </summary>
         [Fact]
         public void Test_Solve3Method()

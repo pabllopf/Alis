@@ -37,12 +37,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics
 {
     /// <summary>
-    /// The fixture proxy test class
+    ///     The fixture proxy test class
     /// </summary>
     public class FixtureProxyTest
     {
         /// <summary>
-        /// Tests that aabb property test
+        ///     Tests that aabb property test
         /// </summary>
         [Fact]
         public void AabbPropertyTest()
@@ -50,17 +50,17 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Aabb aabb = new Aabb(new Vector2(0, 0), new Vector2(1, 1));
             FixtureProxy fixtureProxy = new FixtureProxy
-                {
-                    // Act
-                    Aabb = aabb
-                };
+            {
+                // Act
+                Aabb = aabb
+            };
             
             // Assert
             Assert.Equal(aabb, fixtureProxy.Aabb);
         }
         
         /// <summary>
-        /// Tests that child index property test
+        ///     Tests that child index property test
         /// </summary>
         [Fact]
         public void ChildIndexPropertyTest()
@@ -68,17 +68,17 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             int childIndex = 1;
             FixtureProxy fixtureProxy = new FixtureProxy
-                {
-                    // Act
-                    ChildIndex = childIndex
-                };
+            {
+                // Act
+                ChildIndex = childIndex
+            };
             
             // Assert
             Assert.Equal(childIndex, fixtureProxy.ChildIndex);
         }
         
         /// <summary>
-        /// Tests that fixture constructor test
+        ///     Tests that fixture constructor test
         /// </summary>
         [Fact]
         public void FixtureConstructorTest()
@@ -90,10 +90,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitution = 0.1f;
             float restitutionThreshold = 1.5f;
             bool isSensor = true;
-
+            
             // Act
             Fixture fixture = new Fixture(circle, filter, friction, restitution, restitutionThreshold, isSensor);
-
+            
             // Assert
             Assert.Equal(circle.ShapeType, fixture.Shape.ShapeType);
             Assert.Equal(filter.CategoryMask, fixture.Filter.CategoryMask);
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
         
         /// <summary>
-        /// Tests that proxy id property test
+        ///     Tests that proxy id property test
         /// </summary>
         [Fact]
         public void ProxyIdPropertyTest()
@@ -112,10 +112,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             int proxyId = 1;
             FixtureProxy fixtureProxy = new FixtureProxy
-                {
-                    // Act
-                    ProxyId = proxyId
-                };
+            {
+                // Act
+                ProxyId = proxyId
+            };
             
             // Assert
             Assert.Equal(proxyId, fixtureProxy.ProxyId);

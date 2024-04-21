@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics.Joints
 {
     /// <summary>
-    /// The prismatic joint test class
+    ///     The prismatic joint test class
     /// </summary>
     public class PrismaticJointTest
     {
         /// <summary>
-        /// Tests that prismatic joint constructor test
+        ///     Tests that prismatic joint constructor test
         /// </summary>
         [Fact]
         public void PrismaticJointConstructorTest()
@@ -63,7 +63,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that prismatic joint world anchor a test
+        ///     Tests that prismatic joint world anchor a test
         /// </summary>
         [Fact]
         public void PrismaticJointWorldAnchorATest()
@@ -85,7 +85,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that prismatic joint world anchor b test
+        ///     Tests that prismatic joint world anchor b test
         /// </summary>
         [Fact]
         public void PrismaticJointWorldAnchorBTest()
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that prismatic joint joint translation test
+        ///     Tests that prismatic joint joint translation test
         /// </summary>
         [Fact]
         public void PrismaticJointJointTranslationTest()

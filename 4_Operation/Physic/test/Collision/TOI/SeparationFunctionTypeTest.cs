@@ -30,10 +30,9 @@
 namespace Alis.Core.Physic.Test.Collision.TOI
 {
     /// <summary>
-    /// The separation function type test class
+    ///     The separation function type test class
     /// </summary>
     public class SeparationFunctionTypeTest
     {
-        
     }
 }

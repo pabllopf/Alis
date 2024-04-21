@@ -30,10 +30,9 @@
 namespace Alis.Core.Physic.Test.Collision.Handlers
 {
     /// <summary>
-    /// The broad phase handler test class
+    ///     The broad phase handler test class
     /// </summary>
     public class BroadPhaseHandlerTest
     {
-        
     }
 }

@@ -37,12 +37,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics.Joints
 {
     /// <summary>
-    /// The friction joint test class
+    ///     The friction joint test class
     /// </summary>
     public class FrictionJointTest
     {
         /// <summary>
-        /// Tests that friction joint constructor test
+        ///     Tests that friction joint constructor test
         /// </summary>
         [Fact]
         public void FrictionJointConstructorTest()
@@ -65,7 +65,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that friction joint world anchor a test
+        ///     Tests that friction joint world anchor a test
         /// </summary>
         [Fact]
         public void FrictionJointWorldAnchorATest()
@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
         
         /// <summary>
-        /// Tests that friction joint world anchor b test
+        ///     Tests that friction joint world anchor b test
         /// </summary>
         [Fact]
         public void FrictionJointWorldAnchorBTest()

@@ -30,7 +30,7 @@
 namespace Alis.Core.Ecs.System
 {
     /// <summary>
-    /// The context interface
+    ///     The context interface
     /// </summary>
     public interface IContext
     {

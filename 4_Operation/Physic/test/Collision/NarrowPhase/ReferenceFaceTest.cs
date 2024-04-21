@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collision.NarrowPhase
 {
     /// <summary>
-    /// The reference face test class
+    ///     The reference face test class
     /// </summary>
     public class ReferenceFaceTest
     {
         /// <summary>
-        /// Tests that test i 1 property
+        ///     Tests that test i 1 property
         /// </summary>
         [Fact]
         public void Test_I1Property()
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test i 2 property
+        ///     Tests that test i 2 property
         /// </summary>
         [Fact]
         public void Test_I2Property()
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test v 1 property
+        ///     Tests that test v 1 property
         /// </summary>
         [Fact]
         public void Test_V1Property()
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test v 2 property
+        ///     Tests that test v 2 property
         /// </summary>
         [Fact]
         public void Test_V2Property()
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test normal property
+        ///     Tests that test normal property
         /// </summary>
         [Fact]
         public void Test_NormalProperty()
@@ -124,7 +124,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test side normal 1 property
+        ///     Tests that test side normal 1 property
         /// </summary>
         [Fact]
         public void Test_SideNormal1Property()
@@ -141,7 +141,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test side offset 1 property
+        ///     Tests that test side offset 1 property
         /// </summary>
         [Fact]
         public void Test_SideOffset1Property()
@@ -158,7 +158,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test side normal 2 property
+        ///     Tests that test side normal 2 property
         /// </summary>
         [Fact]
         public void Test_SideNormal2Property()
@@ -175,7 +175,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         }
         
         /// <summary>
-        /// Tests that test side offset 2 property
+        ///     Tests that test side offset 2 property
         /// </summary>
         [Fact]
         public void Test_SideOffset2Property()
