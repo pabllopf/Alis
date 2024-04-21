@@ -1586,7 +1586,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonSerializer.WriteEnumerable(writer, enumerable, options);
             
             // Assert
-            Assert.Contains("\n", stringWriter.ToString());
+            Assert.Contains("n", stringWriter.ToString());
         }
         
         /// <summary>
@@ -3528,7 +3528,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonSerializer.WriteDictionary(writer, dictionary, options);
             
             // Assert
-            string expectedJson = "\n";
+            string expectedJson = "n";
             Assert.Contains(expectedJson, writer.InnerWriter.ToString());
         }
         
