@@ -51,16 +51,7 @@ namespace Alis.Core.Audio
         protected AudioClipBase(string fullPathAudio)
         {
             FullPathAudioFile = fullPathAudio;
-            AudioBackendType = AudioBackendType.Os;
-            switch (AudioBackendType)
-            {
-                case AudioBackendType.Os:
-                    player = new Player();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(fullPathAudio));
-            }
-            
+            player = new Player();
             Logger.Log($"Init music: '{fullPathAudio}'");
         }
         
@@ -69,16 +60,7 @@ namespace Alis.Core.Audio
         /// </summary>
         protected AudioClipBase()
         {
-            AudioBackendType = AudioBackendType.Os;
-            switch (AudioBackendType)
-            {
-                case AudioBackendType.Os:
-                    player = new Player();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(AudioBackendType));
-            }
-            
+            player = new Player();
             Logger.Log("Init music: 'null file'");
         }
         
@@ -91,15 +73,7 @@ namespace Alis.Core.Audio
         protected AudioClipBase(string fullPathAudio, AudioBackendType audioBackendType)
         {
             FullPathAudioFile = fullPathAudio;
-            AudioBackendType = audioBackendType;
-            switch (AudioBackendType)
-            {
-                case AudioBackendType.Os:
-                    player = new Player();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(audioBackendType));
-            }
+            player = new Player();
         }
         
         
@@ -139,11 +113,6 @@ namespace Alis.Core.Audio
         public string FullPathAudioFile { get; set; }
         
         /// <summary>
-        ///     Gets the value of the audio backend type
-        /// </summary>
-        private AudioBackendType AudioBackendType { get; }
-        
-        /// <summary>
         ///     Gets or sets the value of the is looping
         /// </summary>
         public bool IsLooping { get; set; }
@@ -163,17 +132,9 @@ namespace Alis.Core.Audio
             
             if (!string.IsNullOrEmpty(FullPathAudioFile))
             {
-                switch (AudioBackendType)
+                if (!player.Playing)
                 {
-                    case AudioBackendType.Os:
-                        if (!player.Playing)
-                        {
-                            Task.Run(() => player.Play(FullPathAudioFile).Wait());
-                        }
-                        
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                    Task.Run(() => player.Play(FullPathAudioFile).Wait());
                 }
             }
         }
@@ -186,17 +147,9 @@ namespace Alis.Core.Audio
         {
             if (!string.IsNullOrEmpty(FullPathAudioFile))
             {
-                switch (AudioBackendType)
+                if (player.Playing)
                 {
-                    case AudioBackendType.Os:
-                        if (player.Playing)
-                        {
-                            Task.Run(() => player.Stop());
-                        }
-                        
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                    Task.Run(() => player.Stop());
                 }
             }
         }
@@ -209,14 +162,7 @@ namespace Alis.Core.Audio
         {
             if (!string.IsNullOrEmpty(FullPathAudioFile))
             {
-                switch (AudioBackendType)
-                {
-                    case AudioBackendType.Os:
-                        Task.Run(() => player.Resume().Wait());
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+                Task.Run(() => player.Resume().Wait());
             }
         }
     }
