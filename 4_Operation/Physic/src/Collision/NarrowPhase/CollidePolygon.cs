@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 flip = false;
             }
             
-            FindIncidentEdge(out FixedArray2<ClipVertex> incidentEdge, poly1, ref xf1, edge1, poly2, ref xf2);
+            FindIncidentEdge(out ClipVertex[] incidentEdge, poly1, ref xf1, edge1, poly2, ref xf2);
             
             int count1 = poly1.VerticesPrivate.Count;
             Vertices vertices1 = poly1.VerticesPrivate;
@@ -123,7 +123,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             // Clip incident edge against extruded edge1 side edges.
             
             // Clip to box side 1
-            int np = Collision.ClipSegmentToLine(out FixedArray2<ClipVertex> clipPoints1, ref incidentEdge, -tangent,
+            int np = Collision.ClipSegmentToLine(out ClipVertex[] clipPoints1, ref incidentEdge, -tangent,
                 sideOffset1, iv1);
             
             if (np < 2)
@@ -132,7 +132,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             }
             
             // Clip to negative box side 1
-            np = Collision.ClipSegmentToLine(out FixedArray2<ClipVertex> clipPoints2, ref clipPoints1, tangent,
+            np = Collision.ClipSegmentToLine(out ClipVertex[] clipPoints2, ref clipPoints1, tangent,
                 sideOffset2, iv2);
             
             if (np < 2)
@@ -224,7 +224,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="edge1">The edge</param>
         /// <param name="poly2">The poly</param>
         /// <param name="xf2">The xf</param>
-        private static void FindIncidentEdge(out FixedArray2<ClipVertex> c, PolygonShape poly1, ref Transform xf1,
+        private static void FindIncidentEdge(out ClipVertex[] c, PolygonShape poly1, ref Transform xf1,
             int edge1, PolygonShape poly2, ref Transform xf2)
         {
             Vertices normals1 = poly1.NormalsPrivate;
@@ -255,18 +255,18 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             int i1 = index;
             int i2 = i1 + 1 < count2 ? i1 + 1 : 0;
             
-            c = new FixedArray2<ClipVertex>();
-            c.Value0.V = MathUtils.Mul(ref xf2, vertices2[i1]);
-            c.Value0.Id.ContactFeature.IndexA = (byte) edge1;
-            c.Value0.Id.ContactFeature.IndexB = (byte) i1;
-            c.Value0.Id.ContactFeature.TypeA = ContactFeatureType.Face;
-            c.Value0.Id.ContactFeature.TypeB = ContactFeatureType.Vertex;
+            c = new ClipVertex[2];
+            c[0].V = MathUtils.Mul(ref xf2, vertices2[i1]);
+            c[0].Id.ContactFeature.IndexA = (byte) edge1;
+            c[0].Id.ContactFeature.IndexB = (byte) i1;
+            c[0].Id.ContactFeature.TypeA = ContactFeatureType.Face;
+            c[0].Id.ContactFeature.TypeB = ContactFeatureType.Vertex;
             
-            c.Value1.V = MathUtils.Mul(ref xf2, vertices2[i2]);
-            c.Value1.Id.ContactFeature.IndexA = (byte) edge1;
-            c.Value1.Id.ContactFeature.IndexB = (byte) i2;
-            c.Value1.Id.ContactFeature.TypeA = ContactFeatureType.Face;
-            c.Value1.Id.ContactFeature.TypeB = ContactFeatureType.Vertex;
+            c[1].V = MathUtils.Mul(ref xf2, vertices2[i2]);
+            c[1].Id.ContactFeature.IndexA = (byte) edge1;
+            c[1].Id.ContactFeature.IndexB = (byte) i2;
+            c[1].Id.ContactFeature.TypeA = ContactFeatureType.Face;
+            c[1].Id.ContactFeature.TypeB = ContactFeatureType.Vertex;
         }
     }
 }

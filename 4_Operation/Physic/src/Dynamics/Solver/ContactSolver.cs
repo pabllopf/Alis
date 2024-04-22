@@ -273,7 +273,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 InitializeTransforms(aA, cA, localCenterA, aB, cB, localCenterB, out xfA, out xfB);
                 
                 Vector2 normal;
-                FixedArray2<Vector2> points;
+                Vector2[] points;
                 InitializeWorldManifold(ref manifold, ref xfA, radiusA, ref xfB, radiusB, out normal, out points);
                 
                 vc.Normal = normal;
@@ -318,7 +318,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="radiusB">The radius</param>
         /// <param name="normal">The normal</param>
         /// <param name="points">The points</param>
-        private void InitializeWorldManifold(ref Manifold manifold, ref Transform xfA, float radiusA, ref Transform xfB, float radiusB, out Vector2 normal, out FixedArray2<Vector2> points)
+        private void InitializeWorldManifold(ref Manifold manifold, ref Transform xfA, float radiusA, ref Transform xfB, float radiusB, out Vector2 normal, out Vector2[] points)
         {
             WorldManifold.Initialize(ref manifold, ref xfA, radiusA, ref xfB, radiusB, out normal, out points);
         }
@@ -339,7 +339,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="vB">The </param>
         /// <param name="wA">The </param>
         /// <param name="wB">The </param>
-        private void InitializeVelocityConstraintPoints(ContactVelocityConstraint vc, Vector2 cA, Vector2 cB, float mA, float mB, float iA, float iB, Vector2 normal, FixedArray2<Vector2> points, Vector2 vA, Vector2 vB, float wA, float wB)
+        private void InitializeVelocityConstraintPoints(ContactVelocityConstraint vc, Vector2 cA, Vector2 cB, float mA, float mB, float iA, float iB, Vector2 normal, Vector2[] points, Vector2 vA, Vector2 vB, float wA, float wB)
         {
             int pointCount = vc.PointCount;
             for (int j = 0; j < pointCount; ++j)

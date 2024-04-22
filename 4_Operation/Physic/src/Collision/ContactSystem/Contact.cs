@@ -88,7 +88,10 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     The manifold
         /// </summary>
-        private Manifold manifold;
+        private Manifold manifold = new Manifold()
+        {
+            Points = new ManifoldPoint[2]
+        };
         
         // World pool and list pointers.
         
@@ -252,7 +255,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
         
         /// <summary>Gets the world manifold.</summary>
-        public void GetWorldManifold(out Vector2 normal, out FixedArray2<Vector2> points)
+        public void GetWorldManifold(out Vector2 normal, out Vector2[] points)
         {
             Body bodyA = FixtureA.Body;
             Body bodyB = FixtureB.Body;

@@ -72,11 +72,11 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="state2">The state</param>
         /// <param name="manifold1">The manifold</param>
         /// <param name="manifold2">The manifold</param>
-        public static void GetPointStates(out FixedArray2<PointState> state1, out FixedArray2<PointState> state2,
+        public static void GetPointStates(out PointState[] state1, out PointState[] state2,
             ref Manifold manifold1, ref Manifold manifold2)
         {
-            state1 = new FixedArray2<PointState>();
-            state2 = new FixedArray2<PointState>();
+            state1 = new PointState[2];
+            state2 = new PointState[2];
             
             for (int i = 0; i < Settings.ManifoldPoints; ++i)
             {
@@ -126,27 +126,27 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="offset">The offset.</param>
         /// <param name="vertexIndexA">The vertex index A.</param>
         /// <returns></returns>
-        internal static int ClipSegmentToLine(out FixedArray2<ClipVertex> vOut, ref FixedArray2<ClipVertex> vIn,
+        internal static int ClipSegmentToLine(out ClipVertex[] vOut, ref ClipVertex[] vIn,
             Vector2 normal, float offset, int vertexIndexA)
         {
-            vOut = new FixedArray2<ClipVertex>();
+            vOut = new ClipVertex[2];
             
             // Start with no output points
             int count = 0;
             
             // Calculate the distance of end points to the line
-            float distance0 = Vector2.Dot(normal, vIn.Value0.V) - offset;
-            float distance1 = Vector2.Dot(normal, vIn.Value1.V) - offset;
+            float distance0 = Vector2.Dot(normal, vIn[0].V) - offset;
+            float distance1 = Vector2.Dot(normal, vIn[1].V) - offset;
             
             // If the points are behind the plane
             if (distance0 <= 0.0f)
             {
-                vOut[count++] = vIn.Value0;
+                vOut[count++] = vIn[0];
             }
             
             if (distance1 <= 0.0f)
             {
-                vOut[count++] = vIn.Value1;
+                vOut[count++] = vIn[1];
             }
             
             // If the points are on different sides of the plane
@@ -156,11 +156,11 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 float interp = distance0 / (distance0 - distance1);
                 
                 ClipVertex cv = vOut[count];
-                cv.V = vIn.Value0.V + interp * (vIn.Value1.V - vIn.Value0.V);
+                cv.V = vIn[0].V + interp * (vIn[1].V - vIn[0].V);
                 
                 // VertexA is hitting edgeB.
                 cv.Id.ContactFeature.IndexA = (byte) vertexIndexA;
-                cv.Id.ContactFeature.IndexB = vIn.Value0.Id.ContactFeature.IndexB;
+                cv.Id.ContactFeature.IndexB = vIn[0].Id.ContactFeature.IndexB;
                 cv.Id.ContactFeature.TypeA = ContactFeatureType.Vertex;
                 cv.Id.ContactFeature.TypeB = ContactFeatureType.Face;
                 vOut[count] = cv;

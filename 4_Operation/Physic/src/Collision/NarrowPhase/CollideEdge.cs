@@ -219,9 +219,9 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             manifold.Type = ManifoldType.Circles;
             manifold.LocalNormal = Vector2.Zero;
             manifold.LocalPoint = contactPoint;
-            manifold.Points.Value0.Id.Key = 0;
-            manifold.Points.Value0.Id.ContactFeature = cf;
-            manifold.Points.Value0.LocalPoint = circlePosition;
+            manifold.Points[0].Id.Key = 0;
+            manifold.Points[0].Id.ContactFeature = cf;
+            manifold.Points[0].LocalPoint = circlePosition;
         }
         
         /// <summary>
@@ -242,11 +242,11 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             manifold.Type = ManifoldType.FaceA;
             manifold.LocalNormal = edgeNormal;
             manifold.LocalPoint = edgeStart;
-            manifold.Points.Value0.Id.Key = 0;
+            manifold.Points[0].Id.Key = 0;
             cf.IndexB = 0;
             cf.TypeB = ContactFeatureType.Vertex;
-            manifold.Points.Value0.Id.ContactFeature = cf;
-            manifold.Points.Value0.LocalPoint = circlePosition;
+            manifold.Points[0].Id.ContactFeature = cf;
+            manifold.Points[0].LocalPoint = circlePosition;
         }
         
         /// <summary>
@@ -313,10 +313,10 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             ReferenceFace ref1 = GetReferenceFace(primaryAxis, tempPolygonB, v1, v2, edge1, ref manifold);
             
             // Define clipPoints before using it
-            FixedArray2<ClipVertex> clipPoints = new FixedArray2<ClipVertex>();
+            ClipVertex[] clipPoints = new ClipVertex[2];
             
             // Clip to side 1
-            int np = Collision.ClipSegmentToLine(out FixedArray2<ClipVertex> clipPoints1, ref clipPoints, ref1.SideNormal1, ref1.SideOffset1,
+            int np = Collision.ClipSegmentToLine(out ClipVertex[] clipPoints1, ref clipPoints, ref1.SideNormal1, ref1.SideOffset1,
                 ref1.I1);
             
             if (np < Settings.ManifoldPoints)
@@ -325,7 +325,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             }
             
             // Clip to side 2
-            np = Collision.ClipSegmentToLine(out FixedArray2<ClipVertex> clipPoints2, ref clipPoints1, ref1.SideNormal2, ref1.SideOffset2,
+            np = Collision.ClipSegmentToLine(out ClipVertex[] clipPoints2, ref clipPoints1, ref1.SideNormal2, ref1.SideOffset2,
                 ref1.I2);
             
             if (np < Settings.ManifoldPoints)
@@ -450,7 +450,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <returns>The ref</returns>
         private static ReferenceFace GetReferenceFace(EpAxis primaryAxis, TempPolygon tempPolygonB, Vector2 v1, Vector2 v2, Vector2 edge1, ref Manifold manifold)
         {
-            FixedArray2<ClipVertex> clipPoints = new FixedArray2<ClipVertex>();
+            ClipVertex[] clipPoints = new ClipVertex[2];
             ReferenceFace ref1 = new ReferenceFace();
             if (primaryAxis.Type == EpAxisType.EdgeA)
             {
@@ -472,17 +472,17 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 int i1 = bestIndex;
                 int i2 = i1 + 1 < tempPolygonB.Count ? i1 + 1 : 0;
                 
-                clipPoints.Value0.V = tempPolygonB.Vertices[i1];
-                clipPoints.Value0.Id.ContactFeature.IndexA = 0;
-                clipPoints.Value0.Id.ContactFeature.IndexB = (byte) i1;
-                clipPoints.Value0.Id.ContactFeature.TypeA = ContactFeatureType.Face;
-                clipPoints.Value0.Id.ContactFeature.TypeB = ContactFeatureType.Vertex;
+                clipPoints[0].V = tempPolygonB.Vertices[i1];
+                clipPoints[0].Id.ContactFeature.IndexA = 0;
+                clipPoints[0].Id.ContactFeature.IndexB = (byte) i1;
+                clipPoints[0].Id.ContactFeature.TypeA = ContactFeatureType.Face;
+                clipPoints[0].Id.ContactFeature.TypeB = ContactFeatureType.Vertex;
                 
-                clipPoints.Value1.V = tempPolygonB.Vertices[i2];
-                clipPoints.Value1.Id.ContactFeature.IndexA = 0;
-                clipPoints.Value1.Id.ContactFeature.IndexB = (byte) i2;
-                clipPoints.Value1.Id.ContactFeature.TypeA = ContactFeatureType.Face;
-                clipPoints.Value1.Id.ContactFeature.TypeB = ContactFeatureType.Vertex;
+                clipPoints[1].V = tempPolygonB.Vertices[i2];
+                clipPoints[1].Id.ContactFeature.IndexA = 0;
+                clipPoints[1].Id.ContactFeature.IndexB = (byte) i2;
+                clipPoints[1].Id.ContactFeature.TypeA = ContactFeatureType.Face;
+                clipPoints[1].Id.ContactFeature.TypeB = ContactFeatureType.Vertex;
                 
                 ref1.I1 = 0;
                 ref1.I2 = 1;
@@ -496,17 +496,17 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             {
                 manifold.Type = ManifoldType.FaceB;
                 
-                clipPoints.Value0.V = v2;
-                clipPoints.Value0.Id.ContactFeature.IndexA = 1;
-                clipPoints.Value0.Id.ContactFeature.IndexB = (byte) primaryAxis.Index;
-                clipPoints.Value0.Id.ContactFeature.TypeA = ContactFeatureType.Vertex;
-                clipPoints.Value0.Id.ContactFeature.TypeB = ContactFeatureType.Face;
+                clipPoints[0].V = v2;
+                clipPoints[0].Id.ContactFeature.IndexA = 1;
+                clipPoints[0].Id.ContactFeature.IndexB = (byte) primaryAxis.Index;
+                clipPoints[0].Id.ContactFeature.TypeA = ContactFeatureType.Vertex;
+                clipPoints[0].Id.ContactFeature.TypeB = ContactFeatureType.Face;
                 
-                clipPoints.Value1.V = v1;
-                clipPoints.Value1.Id.ContactFeature.IndexA = 0;
-                clipPoints.Value1.Id.ContactFeature.IndexB = (byte) primaryAxis.Index;
-                clipPoints.Value1.Id.ContactFeature.TypeA = ContactFeatureType.Vertex;
-                clipPoints.Value1.Id.ContactFeature.TypeB = ContactFeatureType.Face;
+                clipPoints[1].V = v1;
+                clipPoints[1].Id.ContactFeature.IndexA = 0;
+                clipPoints[1].Id.ContactFeature.IndexB = (byte) primaryAxis.Index;
+                clipPoints[1].Id.ContactFeature.TypeA = ContactFeatureType.Vertex;
+                clipPoints[1].Id.ContactFeature.TypeB = ContactFeatureType.Face;
                 
                 ref1.I1 = primaryAxis.Index;
                 ref1.I2 = ref1.I1 + 1 < tempPolygonB.Count ? ref1.I1 + 1 : 0;
@@ -535,7 +535,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="radius">The radius</param>
         /// <param name="xf">The xf</param>
         /// <param name="polygonB">The polygon</param>
-        private static void SetManifoldPoints(ref Manifold manifold, EpAxis primaryAxis, ReferenceFace ref1, FixedArray2<ClipVertex> clipPoints2, float radius, Transform xf, PolygonShape polygonB)
+        private static void SetManifoldPoints(ref Manifold manifold, EpAxis primaryAxis, ReferenceFace ref1, ClipVertex[] clipPoints2, float radius, Transform xf, PolygonShape polygonB)
         {
             // Now clipPoints2 contains the clipped points.
             if (primaryAxis.Type == EpAxisType.EdgeA)

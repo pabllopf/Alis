@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         {
             // Arrange
             Manifold manifold = new Manifold();
-            FixedArray2<ManifoldPoint> expectedValue = new FixedArray2<ManifoldPoint>();
+            ManifoldPoint[] expectedValue = new ManifoldPoint[2];
             
             // Act
             manifold.Points = expectedValue;
