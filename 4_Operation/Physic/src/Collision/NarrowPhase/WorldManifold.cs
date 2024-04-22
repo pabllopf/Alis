@@ -44,11 +44,11 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         ///     not change the point count, impulses, etc. The radii must come from the Shapes that generated the manifold.
         /// </summary>
         public static void Initialize(ref Manifold manifold, ref Transform xfA, float radiusA, ref Transform xfB,
-            float radiusB, out Vector2 normal, out FixedArray2<Vector2> points)
+            float radiusB, out Vector2 normal, out Vector2[] points)
         {
             normal = Vector2.Zero;
-            points = new FixedArray2<Vector2>();
-            FixedArray2<float> separations = new FixedArray2<float>();
+            points = new Vector2[2];
+            float[] separations = new float[2];
             
             if (manifold.PointCount == 0)
             {
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 {
                     normal = new Vector2(1.0f, 0.0f);
                     Vector2 pointA = MathUtils.Mul(ref xfA, manifold.LocalPoint);
-                    Vector2 pointB = MathUtils.Mul(ref xfB, manifold.Points.Value0.LocalPoint);
+                    Vector2 pointB = MathUtils.Mul(ref xfB, manifold.Points[0].LocalPoint);
                     if (Vector2.DistanceSquared(pointA, pointB) > Constant.Epsilon * Constant.Epsilon)
                     {
                         normal = pointB - pointA;
@@ -70,8 +70,8 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                     
                     Vector2 cA = pointA + radiusA * normal;
                     Vector2 cB = pointB - radiusB * normal;
-                    points.Value0 = 0.5f * (cA + cB);
-                    separations.Value0 = Vector2.Dot(cB - cA, normal);
+                    points[0] = 0.5f * (cA + cB);
+                    separations[0] = Vector2.Dot(cB - cA, normal);
                 }
                     break;
                 

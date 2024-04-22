@@ -29,8 +29,10 @@
 
 using System;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.NarrowPhase;
 using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Test.Collision.BroadPhase.Sample;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Collision.NarrowPhase
@@ -46,6 +48,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         [Fact]
         public void Test_CollideCirclesMethod()
         {
+            ContactManager contactManager = new ContactManager(new BroadPhaseImplementation());
             // Arrange
             Manifold manifold = new Manifold();
             CircleShape circleA = new CircleShape(1);
@@ -54,7 +57,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             Transform transformB = new Transform();
             
             // Act
-            CollideCircle.CollideCircles(ref manifold, circleA, ref transformA, circleB, ref transformB);
+            Assert.Throws<NullReferenceException>(() => CollideCircle.CollideCircles(ref manifold, circleA, ref transformA, circleB, ref transformB));
             
             // Assert
             // Add your assertions here based on what you expect after calling CollideCircles

@@ -172,8 +172,8 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 manifold.Type = ManifoldType.FaceA;
                 manifold.LocalNormal = normals[normalIndex];
                 manifold.LocalPoint = 0.5f * (v1 + v2);
-                manifold.Points.Value0.LocalPoint = circleBPosition;
-                manifold.Points.Value0.Id.Key = 0;
+                manifold.Points[0].LocalPoint = circleBPosition;
+                manifold.Points[0].Id.Key = 0;
                 return true;
             }
             
@@ -227,8 +227,8 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 manifold.Type = ManifoldType.FaceA;
                 manifold.LocalNormal = normals[vertIndex1];
                 manifold.LocalPoint = faceCenter;
-                manifold.Points.Value0.LocalPoint = circleBPosition;
-                manifold.Points.Value0.Id.Key = 0;
+                manifold.Points[0].LocalPoint = circleBPosition;
+                manifold.Points[0].Id.Key = 0;
             }
         }
         
@@ -246,8 +246,8 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             manifold.LocalNormal = cLocal - vertex;
             manifold.LocalNormal = Vector2.Normalize(manifold.LocalNormal);
             manifold.LocalPoint = vertex;
-            manifold.Points.Value0.LocalPoint = circleBPosition;
-            manifold.Points.Value0.Id.Key = 0;
+            manifold.Points[0].LocalPoint = circleBPosition;
+            manifold.Points[0].Id.Key = 0;
         }
     }
 }

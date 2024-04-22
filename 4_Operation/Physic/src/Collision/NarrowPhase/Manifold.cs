@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         public int PointCount { get; set; }
         
         /// <summary>The points of contact</summary>
-        public FixedArray2<ManifoldPoint> Points;
+        public ManifoldPoint[] Points;
         
         /// <summary>
         ///     The type
