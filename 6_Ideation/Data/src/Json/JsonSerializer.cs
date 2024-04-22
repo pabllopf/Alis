@@ -1976,30 +1976,59 @@ namespace Alis.Core.Aspect.Data.Json
             return s;
         }
         
-        /// <summary>
-        ///     Reads the dictionary value using the specified reader
-        /// </summary>
-        /// <param name="reader">The reader</param>
-        /// <param name="options">The options</param>
-        /// <returns>The dic</returns>
-        internal static Dictionary<string, object> ReadDictionaryValue(TextReader reader, JsonOptions options)
+       /// <summary>
+       /// Reads the dictionary value using the specified reader
+       /// </summary>
+       /// <param name="reader">The reader</param>
+       /// <param name="options">The options</param>
+       /// <returns>The dic</returns>
+       internal static Dictionary<string, object> ReadDictionaryValue(TextReader reader, JsonOptions options)
         {
             Dictionary<string, object> dic = ReadDictionary(reader, options);
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseISerializable))
-            {
-                if (dic.TryGetValue(SerializationTypeToken, out object o))
-                {
-                    string typeName = string.Format(CultureInfo.InvariantCulture, "{0}", o);
-                    if (!string.IsNullOrEmpty(typeName))
-                    {
-                        // omitted for brevity
-                    }
-                }
-            }
-            
+            ProcessSerializationOptions(dic, options);
             return dic;
         }
         
+          /// <summary>
+          /// Processes the serialization options using the specified dic
+          /// </summary>
+          /// <param name="dic">The dic</param>
+          /// <param name="options">The options</param>
+          internal static void ProcessSerializationOptions(Dictionary<string, object> dic, JsonOptions options)
+            {
+                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseISerializable))
+                {
+                    ProcessTypeName(dic);
+                }
+            }
+          
+          /// <summary>
+          /// Processes the type name using the specified dic
+          /// </summary>
+          /// <param name="dic">The dic</param>
+          internal static void ProcessTypeName(Dictionary<string, object> dic)
+        {
+            if (dic.TryGetValue(SerializationTypeToken, out object o))
+            {
+                string typeName = FormatTypeName(o);
+                if (!string.IsNullOrEmpty(typeName))
+                {
+                    dic.Remove(SerializationTypeToken);
+                    dic[SerializationTypeToken] = typeName;
+                }
+            }
+        }
+          
+          /// <summary>
+          /// Formats the type name using the specified o
+          /// </summary>
+          /// <param name="o">The </param>
+          /// <returns>The string</returns>
+          internal static string FormatTypeName(object o)
+        {
+            return string.Format(CultureInfo.InvariantCulture, "{0}", o);
+        }
+               
         /// <summary>
         ///     Reads the array value using the specified reader
         /// </summary>
