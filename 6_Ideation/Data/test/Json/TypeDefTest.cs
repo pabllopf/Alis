@@ -29,10 +29,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Reflection;
+using System.Text.Json.Serialization;
 using Alis.Core.Aspect.Data.Json;
 using Xunit;
+using JsonPropertyNameAttribute = Alis.Core.Aspect.Data.Json.JsonPropertyNameAttribute;
 
 namespace Alis.Core.Aspect.Data.Test.Json
 {
@@ -1307,6 +1310,515 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             // Act
             bool result = TypeDef.ShouldSkipField(serialization, info, options);
+            
+            // Assert
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that test enumerate definitions using reflection with serialization
+        /// </summary>
+        [Fact]
+        public void TestEnumerateDefinitionsUsingReflection_WithSerialization()
+        {
+            // Arrange
+            Type type = typeof(ConcreteListObject);
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            IEnumerable<MemberDefinition> result = TypeDef.EnumerateDefinitionsUsingReflection(true, type, options);
+            
+            // Assert
+            Assert.NotNull(result);
+            Assert.All(result, member => Assert.IsType<MemberDefinition>(member));
+        }
+        
+        /// <summary>
+        /// Tests that test enumerate definitions using reflection without serialization
+        /// </summary>
+        [Fact]
+        public void TestEnumerateDefinitionsUsingReflection_WithoutSerialization()
+        {
+            // Arrange
+            Type type = typeof(ConcreteListObject);
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            IEnumerable<MemberDefinition> result = TypeDef.EnumerateDefinitionsUsingReflection(false, type, options);
+            
+            // Assert
+            Assert.NotNull(result);
+            Assert.All(result, member => Assert.IsType<MemberDefinition>(member));
+        }
+        
+        /// <summary>
+        /// Tests that test enumerate definitions using reflection with serialize fields option
+        /// </summary>
+        [Fact]
+        public void TestEnumerateDefinitionsUsingReflection_WithSerializeFieldsOption()
+        {
+            // Arrange
+            Type type = typeof(ConcreteListObject);
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.SerializeFields};
+            
+            // Act
+            IEnumerable<MemberDefinition> result = TypeDef.EnumerateDefinitionsUsingReflection(true, type, options);
+            
+            // Assert
+            Assert.NotNull(result);
+            Assert.All(result, member => Assert.IsType<MemberDefinition>(member));
+        }
+        
+        /// <summary>
+        /// Tests that test enumerate definitions using reflection without serialize fields option
+        /// </summary>
+        [Fact]
+        public void TestEnumerateDefinitionsUsingReflection_WithoutSerializeFieldsOption()
+        {
+            // Arrange
+            Type type = typeof(ConcreteListObject);
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.None};
+            
+            // Act
+            IEnumerable<MemberDefinition> result = TypeDef.EnumerateDefinitionsUsingReflection(true, type, options);
+            
+            // Assert
+            Assert.NotNull(result);
+            Assert.All(result, member => Assert.IsType<MemberDefinition>(member));
+        }
+        
+        /// <summary>
+        /// Tests that handle write named value object callback with null callback returns expected values
+        /// </summary>
+        [Fact]
+        public void HandleWriteNamedValueObjectCallback_WithNullCallback_ReturnsExpectedValues()
+        {
+            // Arrange
+            StringWriter writer = new StringWriter();
+            object component = new object();
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions {WriteNamedValueObjectCallback = null};
+            MemberDefinition member = new MemberDefinition {WireName = "Test"};
+            bool first = true;
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TypeDef.HandleWriteNamedValueObjectCallback(writer, component, objectGraph, options, member, first));
+        }
+        
+        /// <summary>
+        /// Tests that handle write named value object callback with callback and handled event returns expected values
+        /// </summary>
+        [Fact]
+        public void HandleWriteNamedValueObjectCallback_WithCallbackAndHandledEvent_ReturnsExpectedValues()
+        {
+            // Arrange
+            StringWriter writer = new StringWriter();
+            object component = new object();
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions
+            {
+                WriteNamedValueObjectCallback = e => e.Handled = true
+            };
+            MemberDefinition member = new MemberDefinition
+            {
+                WireName = "Test"
+            };
+            bool first = true;
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TypeDef.HandleWriteNamedValueObjectCallback(writer, component, objectGraph, options, member, first));
+            
+        }
+        
+        /// <summary>
+        /// Tests that handle write named value object callback with callback and changed name returns expected values
+        /// </summary>
+        [Fact]
+        public void HandleWriteNamedValueObjectCallback_WithCallbackAndChangedName_ReturnsExpectedValues()
+        {
+            // Arrange
+            StringWriter writer = new StringWriter();
+            object component = new object();
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions
+            {
+                WriteNamedValueObjectCallback = e => e.Name = "Changed"
+            };
+            MemberDefinition member = new MemberDefinition {WireName = "Test"};
+            bool first = true;
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TypeDef.HandleWriteNamedValueObjectCallback(writer, component, objectGraph, options, member, first));
+            
+        }
+        
+        /// <summary>
+        /// Tests that check json attribute with serialization and ignore when serializing returns true
+        /// </summary>
+        [Fact]
+        public void CheckJsonAttribute_WithSerializationAndIgnoreWhenSerializing_ReturnsTrue()
+        {
+            // Arrange
+            PropertyDescriptor descriptor = TypeDescriptor.GetProperties(typeof(TestClass))["PropertyWithIgnoreWhenSerializing"];
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.UseJsonAttribute};
+            
+            // Act
+            bool result = TypeDef.CheckJsonAttribute(true, descriptor, options);
+            
+            // Assert
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that check json attribute without serialization and ignore when deserializing returns true
+        /// </summary>
+        [Fact]
+        public void CheckJsonAttribute_WithoutSerializationAndIgnoreWhenDeserializing_ReturnsTrue()
+        {
+            // Arrange
+            PropertyDescriptor descriptor = TypeDescriptor.GetProperties(typeof(TestClass))["PropertyWithIgnoreWhenDeserializing"];
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.UseJsonAttribute};
+            
+            // Act
+            bool result = TypeDef.CheckJsonAttribute(false, descriptor, options);
+            
+            // Assert
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that check json attribute without serialization and ignore when serializing returns false
+        /// </summary>
+        [Fact]
+        public void CheckJsonAttribute_WithoutSerializationAndIgnoreWhenSerializing_ReturnsFalse()
+        {
+            // Arrange
+            PropertyDescriptor descriptor = TypeDescriptor.GetProperties(typeof(TestClass))["PropertyWithIgnoreWhenSerializing"];
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.UseJsonAttribute};
+            
+            // Act
+            bool result = TypeDef.CheckJsonAttribute(false, descriptor, options);
+            
+            // Assert
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that check json attribute with serialization and ignore when deserializing returns false
+        /// </summary>
+        [Fact]
+        public void CheckJsonAttribute_WithSerializationAndIgnoreWhenDeserializing_ReturnsFalse()
+        {
+            // Arrange
+            PropertyDescriptor descriptor = TypeDescriptor.GetProperties(typeof(TestClass))["PropertyWithIgnoreWhenDeserializing"];
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.UseJsonAttribute};
+            
+            // Act
+            bool result = TypeDef.CheckJsonAttribute(true, descriptor, options);
+            
+            // Assert
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that check json attribute without json attribute returns false
+        /// </summary>
+        [Fact]
+        public void CheckJsonAttribute_WithoutJsonAttribute_ReturnsFalse()
+        {
+            // Arrange
+            PropertyDescriptor descriptor = TypeDescriptor.GetProperties(typeof(TestClass))["PropertyWithoutAttribute"];
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.UseJsonAttribute};
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TypeDef.CheckJsonAttribute(true, descriptor, options));
+        }
+        
+        /// <summary>
+        /// Tests that check json attribute without use json attribute option returns false
+        /// </summary>
+        [Fact]
+        public void CheckJsonAttribute_WithoutUseJsonAttributeOption_ReturnsFalse()
+        {
+            // Arrange
+            PropertyDescriptor descriptor = TypeDescriptor.GetProperties(typeof(TestClass))["PropertyWithIgnoreWhenSerializing"];
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.None};
+            
+            // Act
+            bool result = TypeDef.CheckJsonAttribute(true, descriptor, options);
+            
+            // Assert
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that check json attribute when serialization is true and ignore when serializing is true returns true
+        /// </summary>
+        [Fact]
+        public void CheckJsonAttribute_WhenSerializationIsTrueAndIgnoreWhenSerializingIsTrue_ReturnsTrue()
+        {
+            // Arrange
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.UseJsonAttribute};
+            PropertyInfo info = typeof(TestClass).GetProperty(nameof(TestClass.PropertyWithIgnoreWhenSerializing));
+            bool serialization = true;
+            
+            // Act
+            bool result = TypeDef.CheckJsonAttribute(serialization, info, options);
+            
+            // Assert
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that check json attribute when serialization is false and ignore when deserializing is true returns true
+        /// </summary>
+        [Fact]
+        public void CheckJsonAttribute_WhenSerializationIsFalseAndIgnoreWhenDeserializingIsTrue_ReturnsTrue()
+        {
+            // Arrange
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.UseJsonAttribute};
+            PropertyInfo info = typeof(TestClass).GetProperty(nameof(TestClass.PropertyWithIgnoreWhenDeserializing));
+            bool serialization = false;
+            
+            // Act
+            bool result = TypeDef.CheckJsonAttribute(serialization, info, options);
+            
+            // Assert
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that check json attribute when serialization is true and ignore when serializing is false returns false
+        /// </summary>
+        [Fact]
+        public void CheckJsonAttribute_WhenSerializationIsTrueAndIgnoreWhenSerializingIsFalse_ReturnsFalse()
+        {
+            // Arrange
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.UseJsonAttribute};
+            PropertyInfo info = typeof(TestClass).GetProperty(nameof(TestClass.PropertyWithoutIgnoreWhenSerializing));
+            bool serialization = true;
+            
+            // Act
+            bool result = TypeDef.CheckJsonAttribute(serialization, info, options);
+            
+            // Assert
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that check json attribute when serialization is false and ignore when deserializing is false returns false
+        /// </summary>
+        [Fact]
+        public void CheckJsonAttribute_WhenSerializationIsFalseAndIgnoreWhenDeserializingIsFalse_ReturnsFalse()
+        {
+            // Arrange
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.UseJsonAttribute};
+            PropertyInfo info = typeof(TestClass).GetProperty(nameof(TestClass.PropertyWithoutIgnoreWhenDeserializing));
+            bool serialization = false;
+            
+            // Act
+            bool result = TypeDef.CheckJsonAttribute(serialization, info, options);
+            
+            // Assert
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that check json attribute when use json attribute is not set returns false
+        /// </summary>
+        [Fact]
+        public void CheckJsonAttribute_WhenUseJsonAttributeIsNotSet_ReturnsFalse()
+        {
+            // Arrange
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.None};
+            PropertyInfo info = typeof(TestClass).GetProperty(nameof(TestClass.PropertyWithIgnoreWhenSerializing));
+            bool serialization = true;
+            
+            // Act
+            bool result = TypeDef.CheckJsonAttribute(serialization, info, options);
+            
+            // Assert
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that should skip field with json attribute and serialization returns true
+        /// </summary>
+        [Fact]
+        public void ShouldSkipField_WithJsonAttributeAndSerialization_ReturnsTrue()
+        {
+            // Arrange
+            FieldInfo fieldInfo = typeof(TestClass).GetField("FieldWithJsonAttribute");
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TypeDef.ShouldSkipField(true, fieldInfo, options));
+        }
+        
+        /// <summary>
+        /// Tests that should skip field with json attribute and deserialization returns false
+        /// </summary>
+        [Fact]
+        public void ShouldSkipField_WithJsonAttributeAndDeserialization_ReturnsFalse()
+        {
+            // Arrange
+            FieldInfo fieldInfo = typeof(TestClass).GetField("FieldWithJsonAttribute");
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TypeDef.ShouldSkipField(false, fieldInfo, options));
+            
+        }
+        
+        /// <summary>
+        /// Tests that should skip field with xml ignore attribute returns true
+        /// </summary>
+        [Fact]
+        public void ShouldSkipField_WithXmlIgnoreAttribute_ReturnsTrue()
+        {
+            // Arrange
+            FieldInfo fieldInfo = typeof(TestClass).GetField("FieldWithXmlIgnoreAttribute");
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TypeDef.ShouldSkipField(true, fieldInfo, options));
+        }
+        
+        /// <summary>
+        /// Tests that should skip field with script ignore attribute returns true
+        /// </summary>
+        [Fact]
+        public void ShouldSkipField_WithScriptIgnoreAttribute_ReturnsTrue()
+        {
+            // Arrange
+            FieldInfo fieldInfo = typeof(TestClass).GetField("FieldWithScriptIgnoreAttribute");
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TypeDef.ShouldSkipField(true, fieldInfo, options));
+        }
+        
+        /// <summary>
+        /// Tests that should skip field without any attributes returns false
+        /// </summary>
+        [Fact]
+        public void ShouldSkipField_WithoutAnyAttributes_ReturnsFalse()
+        {
+            // Arrange
+            FieldInfo fieldInfo = typeof(TestClass).GetField("FieldWithoutAnyAttributes");
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TypeDef.ShouldSkipField(true, fieldInfo, options));
+        }
+        
+        /// <summary>
+        /// Tests that check script ignore with script ignore returns true
+        /// </summary>
+        [Fact]
+        public void CheckScriptIgnore_WithScriptIgnore_ReturnsTrue()
+        {
+            // Arrange
+            JsonOptions options = new JsonOptions
+            {
+                SerializationOptions = JsonSerializationOptions.UseScriptIgnore
+            };
+            PropertyInfo propertyInfo = typeof(SampleClassWithScriptIgnore).GetProperty("PropertyWithScriptIgnore");
+            
+            // Act
+            bool result = TypeDef.CheckScriptIgnore(propertyInfo, options);
+            
+            // Assert
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that check script ignore without script ignore returns false
+        /// </summary>
+        [Fact]
+        public void CheckScriptIgnore_WithoutScriptIgnore_ReturnsFalse()
+        {
+            // Arrange
+            JsonOptions options = new JsonOptions
+            {
+                SerializationOptions = JsonSerializationOptions.UseScriptIgnore
+            };
+            PropertyInfo propertyInfo = typeof(SampleClassWithoutScriptIgnore).GetProperty("PropertyWithoutScriptIgnore");
+            
+            // Act
+            bool result = TypeDef.CheckScriptIgnore(propertyInfo, options);
+            
+            // Assert
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that check script ignore without use script ignore option returns false
+        /// </summary>
+        [Fact]
+        public void CheckScriptIgnore_WithoutUseScriptIgnoreOption_ReturnsFalse()
+        {
+            // Arrange
+            JsonOptions options = new JsonOptions
+            {
+                SerializationOptions = JsonSerializationOptions.None
+            };
+            PropertyInfo propertyInfo = typeof(SampleClassWithScriptIgnore).GetProperty("PropertyWithScriptIgnore");
+            
+            // Act
+            bool result = TypeDef.CheckScriptIgnore(propertyInfo, options);
+            
+            // Assert
+            Assert.False(result);
+        }
+        
+        [Fact]
+        public void ShouldIgnoreAttribute_WhenSerializationIsTrueAndIgnoreWhenSerializingIsTrue_ReturnsTrue()
+        {
+            // Arrange
+            var attribute = new JsonPropertyNameAttribute {IgnoreWhenSerializing = true};
+            
+            // Act
+            bool result = TypeDef.ShouldIgnoreAttribute(true, attribute);
+            
+            // Assert
+            Assert.True(result);
+        }
+        
+        [Fact]
+        public void ShouldIgnoreAttribute_WhenSerializationIsTrueAndIgnoreWhenSerializingIsFalse_ReturnsFalse()
+        {
+            // Arrange
+            var attribute = new JsonPropertyNameAttribute {IgnoreWhenSerializing = false};
+            
+            // Act
+            bool result = TypeDef.ShouldIgnoreAttribute(true, attribute);
+            
+            // Assert
+            Assert.False(result);
+        }
+        
+        [Fact]
+        public void ShouldIgnoreAttribute_WhenSerializationIsFalseAndIgnoreWhenDeserializingIsTrue_ReturnsTrue()
+        {
+            // Arrange
+            var attribute = new JsonPropertyNameAttribute {IgnoreWhenDeserializing = true};
+            
+            // Act
+            bool result = TypeDef.ShouldIgnoreAttribute(false, attribute);
+            
+            // Assert
+            Assert.True(result);
+        }
+        
+        [Fact]
+        public void ShouldIgnoreAttribute_WhenSerializationIsFalseAndIgnoreWhenDeserializingIsFalse_ReturnsFalse()
+        {
+            // Arrange
+            var attribute = new JsonPropertyNameAttribute {IgnoreWhenDeserializing = false};
+            
+            // Act
+            bool result = TypeDef.ShouldIgnoreAttribute(false, attribute);
             
             // Assert
             Assert.False(result);

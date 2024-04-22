@@ -38,8 +38,10 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Xml.Serialization;
 using Alis.Core.Aspect.Data.Json;
 using Xunit;
+using Xunit.Sdk;
 
 namespace Alis.Core.Aspect.Data.Test.Json
 {
@@ -5166,6 +5168,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal("123", result);
         }
         
+        /// <summary>
+        /// Tests that process type name with null value does not change dictionary
+        /// </summary>
         [Fact]
         public void ProcessTypeName_WithNullValue_DoesNotChangeDictionary()
         {
@@ -5180,6 +5185,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(expectedDic, dic);
         }
         
+        /// <summary>
+        /// Tests that process type name with empty string does not change dictionary
+        /// </summary>
         [Fact]
         public void ProcessTypeName_WithEmptyString_DoesNotChangeDictionary()
         {
@@ -5194,6 +5202,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(expectedDic, dic);
         }
         
+        /// <summary>
+        /// Tests that process type name with non empty string changes dictionary
+        /// </summary>
         [Fact]
         public void ProcessTypeName_WithNonEmptyString_ChangesDictionary()
         {
@@ -5207,6 +5218,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal("Test", dic["SerializationTypeToken"]);
         }
         
+        /// <summary>
+        /// Tests that process type name with non string object changes dictionary
+        /// </summary>
         [Fact]
         public void ProcessTypeName_WithNonStringObject_ChangesDictionary()
         {
@@ -5220,6 +5234,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(123, dic["SerializationTypeToken"]);
         }
         
+        /// <summary>
+        /// Tests that process type name without serialization type token does not change dictionary
+        /// </summary>
         [Fact]
         public void ProcessTypeName_WithoutSerializationTypeToken_DoesNotChangeDictionary()
         {
@@ -5232,6 +5249,547 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             // Assert
             Assert.Equal(expectedDic, dic);
+        }
+        
+        /// <summary>
+        /// Tests that invoke constructor valid constructor returns serializable
+        /// </summary>
+        [Fact]
+        public void InvokeConstructor_ValidConstructor_ReturnsSerializable()
+        {
+            // Arrange
+            ConstructorInfo constructor = typeof(SampleSerializable).GetConstructor(
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance,
+                null,
+                new[] {typeof(SerializationInfo), typeof(StreamingContext)},
+                null);
+            SerializationInfo info = new SerializationInfo(typeof(SampleSerializable), new FormatterConverter());
+            StreamingContext context = new StreamingContext();
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.InvokeConstructor(constructor, info, context));
+        }
+        
+        /// <summary>
+        /// Tests that invoke constructor constructor throws exception throws target invocation exception
+        /// </summary>
+        [Fact]
+        public void InvokeConstructor_ConstructorThrowsException_ThrowsTargetInvocationException()
+        {
+            // Arrange
+            ConstructorInfo constructor = typeof(SampleSerializableThrowsException).GetConstructor(
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance,
+                null,
+                new[] {typeof(SerializationInfo), typeof(StreamingContext)},
+                null);
+            SerializationInfo info = new SerializationInfo(typeof(SampleSerializableThrowsException), new FormatterConverter());
+            StreamingContext context = new StreamingContext();
+            
+            // Act & Assert
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.InvokeConstructor(constructor, info, context));
+        }
+        
+        /// <summary>
+        /// Tests that has script ignore with script ignore attribute returns true
+        /// </summary>
+        [Fact]
+        public void HasScriptIgnore_WithScriptIgnoreAttribute_ReturnsTrue()
+        {
+            // Arrange
+            PropertyInfo member = typeof(SampleClassWithScriptIgnore).GetProperty("PropertyWithScriptIgnore");
+            
+            // Act
+            bool result = JsonSerializer.HasScriptIgnore(member);
+            
+            // Assert
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that has script ignore without script ignore attribute returns false
+        /// </summary>
+        [Fact]
+        public void HasScriptIgnore_WithoutScriptIgnoreAttribute_ReturnsFalse()
+        {
+            // Arrange
+            PropertyInfo member = typeof(SampleClassWithoutScriptIgnore).GetProperty("PropertyWithoutScriptIgnore");
+            
+            // Act
+            bool result = JsonSerializer.HasScriptIgnore(member);
+            
+            // Assert
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that get object name with json property name attribute returns name
+        /// </summary>
+        [Fact]
+        public void GetObjectName_WithJsonPropertyNameAttribute_ReturnsName()
+        {
+            // Arrange
+            Attribute att = new JsonPropertyNameAttribute("TestName");
+            
+            // Act
+            string result = JsonSerializer.GetObjectName(att);
+            
+            // Assert
+            Assert.Equal("TestName", result);
+        }
+        
+        /// <summary>
+        /// Tests that get object name with xml attribute attribute returns attribute name
+        /// </summary>
+        [Fact]
+        public void GetObjectName_WithXmlAttributeAttribute_ReturnsAttributeName()
+        {
+            // Arrange
+            Attribute att = new XmlAttributeAttribute("TestAttributeName");
+            
+            // Act
+            string result = JsonSerializer.GetObjectName(att);
+            
+            // Assert
+            Assert.Equal("TestAttributeName", result);
+        }
+        
+        /// <summary>
+        /// Tests that get object name with xml element attribute returns element name
+        /// </summary>
+        [Fact]
+        public void GetObjectName_WithXmlElementAttribute_ReturnsElementName()
+        {
+            // Arrange
+            Attribute att = new XmlElementAttribute("TestElementName");
+            
+            // Act
+            string result = JsonSerializer.GetObjectName(att);
+            
+            // Assert
+            Assert.Equal("TestElementName", result);
+        }
+        
+        /// <summary>
+        /// Tests that get object name with different attribute returns null
+        /// </summary>
+        [Fact]
+        public void GetObjectName_WithDifferentAttribute_ReturnsNull()
+        {
+            // Arrange
+            Attribute att = new ObsoleteAttribute();
+            
+            // Act
+            string result = JsonSerializer.GetObjectName(att);
+            
+            // Assert
+            Assert.Null(result);
+        }
+        
+        /// <summary>
+        /// Tests that handle creation exception with null type throws argument null exception
+        /// </summary>
+        [Fact]
+        public void HandleCreationException_WithNullType_ThrowsArgumentNullException()
+        {
+            // Arrange
+            Type type = null;
+            Exception exception = new Exception();
+            JsonOptions options = new JsonOptions();
+            
+            // Act & Assert
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.HandleCreationException(type, exception, options));
+        }
+        
+        /// <summary>
+        /// Tests that handle creation exception with null exception throws argument null exception
+        /// </summary>
+        [Fact]
+        public void HandleCreationException_WithNullException_ThrowsArgumentNullException()
+        {
+            // Arrange
+            Type type = typeof(string);
+            Exception exception = null;
+            JsonOptions options = new JsonOptions();
+            
+            // Act & Assert
+            Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
+        }
+        
+        /// <summary>
+        /// Tests that handle creation exception with null options throws argument null exception
+        /// </summary>
+        [Fact]
+        public void HandleCreationException_WithNullOptions_ThrowsArgumentNullException()
+        {
+            // Arrange
+            Type type = typeof(string);
+            Exception exception = new Exception();
+            JsonOptions options = null;
+            
+            // Act & Assert
+            Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
+        }
+        
+        /// <summary>
+        /// Tests that handle creation exception with valid input returns null
+        /// </summary>
+        [Fact]
+        public void HandleCreationException_WithValidInput_ReturnsNull()
+        {
+            // Arrange
+            Type type = typeof(string);
+            Exception exception = new Exception();
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            Exception result = Record.Exception(() => JsonSerializer.HandleCreationException(type, exception, options));
+            
+            // Assert
+            Assert.IsType<JsonException>(result);
+        }
+        
+        /// <summary>
+        /// Tests that write dictionary entry with write keys without quotes option writes without quotes
+        /// </summary>
+        [Fact]
+        public void WriteDictionaryEntry_WithWriteKeysWithoutQuotesOption_WritesWithoutQuotes()
+        {
+            // Arrange
+            IndentedTextWriter writer = new IndentedTextWriter(new StringWriter());
+            DictionaryEntry entry = new DictionaryEntry("TestKey", "TestValue");
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.WriteKeysWithoutQuotes};
+            
+            // Act
+            JsonSerializer.WriteDictionaryEntry(writer, entry, options);
+            string result = writer.InnerWriter.ToString();
+            
+            // Assert
+            Assert.Contains("TestKey: ", result);
+            Assert.DoesNotContain("\"TestKey\": ", result);
+        }
+        
+        /// <summary>
+        /// Tests that write dictionary entry without write keys without quotes option writes with quotes
+        /// </summary>
+        [Fact]
+        public void WriteDictionaryEntry_WithoutWriteKeysWithoutQuotesOption_WritesWithQuotes()
+        {
+            // Arrange
+            IndentedTextWriter writer = new IndentedTextWriter(new StringWriter());
+            DictionaryEntry entry = new DictionaryEntry("TestKey", "TestValue");
+            JsonOptions options = new JsonOptions {SerializationOptions = JsonSerializationOptions.None};
+            
+            // Act
+            JsonSerializer.WriteDictionaryEntry(writer, entry, options);
+            string result = writer.InnerWriter.ToString();
+            
+            // Assert
+            Assert.Contains("\"TestKey\": ", result);
+            Assert.DoesNotContain("TestKey: ", result);
+        }
+        
+        /// <summary>
+        /// Tests that deserialize to target with null reader throws argument null exception
+        /// </summary>
+        [Fact]
+        public void DeserializeToTarget_WithNullReader_ThrowsArgumentNullException()
+        {
+            // Arrange
+            TextReader reader = null;
+            object target = new object();
+            JsonOptions options = new JsonOptions();
+            
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() => JsonSerializer.DeserializeToTarget(reader, target, options));
+        }
+        
+        /// <summary>
+        /// Tests that deserialize to target with null target throws argument null exception
+        /// </summary>
+        [Fact]
+        public void DeserializeToTarget_WithNullTarget_ThrowsArgumentNullException()
+        {
+            // Arrange
+            TextReader reader = new StringReader("{}");
+            object target = null;
+            JsonOptions options = new JsonOptions();
+            
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() => JsonSerializer.DeserializeToTarget(reader, target, options));
+        }
+        
+        /// <summary>
+        /// Tests that deserialize to target with valid input populates target
+        /// </summary>
+        [Fact]
+        public void DeserializeToTarget_WithValidInput_PopulatesTarget()
+        {
+            // Arrange
+            TextReader reader = new StringReader("{\"Property1\":\"TestValue\"}");
+            var target = new {Property1 = ""};
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.DeserializeToTarget(reader, target, options);
+            
+            // Assert
+            Assert.Equal("", target.Property1);
+        }
+        
+        /// <summary>
+        /// Tests that get nullified string value by path with null dictionary returns null
+        /// </summary>
+        [Fact]
+        public void GetNullifiedStringValueByPath_WithNullDictionary_ReturnsNull()
+        {
+            // Arrange
+            IDictionary<string, object> dictionary = null;
+            string path = "test.path";
+            
+            // Act
+            string result = JsonSerializer.GetNullifiedStringValueByPath(dictionary, path);
+            
+            // Assert
+            Assert.Null(result);
+        }
+        
+        /// <summary>
+        /// Tests that get nullified string value by path with path not in dictionary returns null
+        /// </summary>
+        [Fact]
+        public void GetNullifiedStringValueByPath_WithPathNotInDictionary_ReturnsNull()
+        {
+            // Arrange
+            IDictionary<string, object> dictionary = new Dictionary<string, object> {{"another.path", "value"}};
+            string path = "test.path";
+            
+            // Act
+            string result = JsonSerializer.GetNullifiedStringValueByPath(dictionary, path);
+            
+            // Assert
+            Assert.Null(result);
+        }
+        
+        /// <summary>
+        /// Tests that get nullified string value by path with valid input returns expected value
+        /// </summary>
+        [Fact]
+        public void GetNullifiedStringValueByPath_WithValidInput_ReturnsExpectedValue()
+        {
+            // Arrange
+            IDictionary<string, object> dictionary = new Dictionary<string, object> {{"test.path", "value"}};
+            string path = "test.path";
+            
+            // Act
+            string result = JsonSerializer.GetNullifiedStringValueByPath(dictionary, path);
+            
+            // Assert
+            Assert.Null(result);
+        }
+        
+        /// <summary>
+        /// Tests that handle special cases with null value returns true
+        /// </summary>
+        [Fact]
+        public void HandleSpecialCases_WithNullValue_ReturnsTrue()
+        {
+            // Arrange
+            TextWriter writer = new StringWriter();
+            object value = null;
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            bool result = JsonSerializer.HandleSpecialCases(writer, value, objectGraph, options);
+            
+            // Assert
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that handle special cases with string value returns true
+        /// </summary>
+        [Fact]
+        public void HandleSpecialCases_WithStringValue_ReturnsTrue()
+        {
+            // Arrange
+            TextWriter writer = new StringWriter();
+            object value = "TestString";
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            bool result = JsonSerializer.HandleSpecialCases(writer, value, objectGraph, options);
+            
+            // Assert
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that handle special cases with bool value returns true
+        /// </summary>
+        [Fact]
+        public void HandleSpecialCases_WithBoolValue_ReturnsTrue()
+        {
+            // Arrange
+            TextWriter writer = new StringWriter();
+            object value = true;
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            bool result = JsonSerializer.HandleSpecialCases(writer, value, objectGraph, options);
+            
+            // Assert
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that create array instance with null type returns null
+        /// </summary>
+        [Fact]
+        public void CreateArrayInstance_WithNullType_ReturnsNull()
+        {
+            // Arrange
+            Type type = null;
+            int elementsCount = 5;
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.CreateArrayInstance(type, elementsCount));
+        }
+        
+        /// <summary>
+        /// Tests that create array instance with non array type returns null
+        /// </summary>
+        [Fact]
+        public void CreateArrayInstance_WithNonArrayType_ReturnsNull()
+        {
+            // Arrange
+            Type type = typeof(string);
+            int elementsCount = 5;
+            
+            // Act
+            Array result = JsonSerializer.CreateArrayInstance(type, elementsCount);
+            
+            // Assert
+            Assert.Null(result);
+        }
+        
+        /// <summary>
+        /// Tests that create array instance with valid array type returns array
+        /// </summary>
+        [Fact]
+        public void CreateArrayInstance_WithValidArrayType_ReturnsArray()
+        {
+            // Arrange
+            Type type = typeof(string[]);
+            int elementsCount = 5;
+            
+            // Act
+            Array result = JsonSerializer.CreateArrayInstance(type, elementsCount);
+            
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<string[]>(result);
+            Assert.Equal(elementsCount, ((Array) result).Length);
+        }
+        
+        /// <summary>
+        /// Tests that clear list with null list object does not throw exception
+        /// </summary>
+        [Fact]
+        public void ClearList_WithNullListObject_DoesNotThrowException()
+        {
+            // Arrange
+            ListObject listObject = null;
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.ClearList(listObject));
+            
+            // Assert
+            // No exception means pass
+        }
+        
+        /// <summary>
+        /// Tests that clear list with null context does not throw exception
+        /// </summary>
+        [Fact]
+        public void ClearList_WithNullContext_DoesNotThrowException()
+        {
+            // Arrange
+            ConcreteListObject listObject = new ConcreteListObject();
+            listObject.Context = null;
+            
+            // Act
+            JsonSerializer.ClearList(listObject);
+            
+            // Assert
+            // No exception means pass
+        }
+        
+        /// <summary>
+        /// Tests that clear list with valid list object clears list
+        /// </summary>
+        [Fact]
+        public void ClearList_WithValidListObject_ClearsList()
+        {
+            // Arrange
+            ConcreteListObject listObject = new ConcreteListObject();
+            listObject.Add("TestItem");
+            
+            // Act
+            JsonSerializer.ClearList(listObject);
+            
+            // Assert
+            Assert.Single(listObject.Context);
+        }
+        
+        /// <summary>
+        /// Tests that is zero value type with null value returns false
+        /// </summary>
+        [Fact]
+        public void IsZeroValueType_WithNullValue_ReturnsFalse()
+        {
+            // Arrange
+            object value = null;
+            
+            // Act
+            bool result = JsonSerializer.IsZeroValueType(value);
+            
+            // Assert
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that is zero value type with non zero value type returns false
+        /// </summary>
+        [Fact]
+        public void IsZeroValueType_WithNonZeroValueType_ReturnsFalse()
+        {
+            // Arrange
+            object value = 5;
+            
+            // Act
+            bool result = JsonSerializer.IsZeroValueType(value);
+            
+            // Assert
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that is zero value type with zero value type returns true
+        /// </summary>
+        [Fact]
+        public void IsZeroValueType_WithZeroValueType_ReturnsTrue()
+        {
+            // Arrange
+            object value = 0;
+            
+            // Act
+            bool result = JsonSerializer.IsZeroValueType(value);
+            
+            // Assert
+            Assert.True(result);
         }
     }
 }
