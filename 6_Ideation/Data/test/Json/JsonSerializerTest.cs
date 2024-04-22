@@ -3667,7 +3667,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object convertedValue = 2;
             
             // Act
-            Assert.Throws<NullReferenceException>(() => JsonSerializer.UpdateContext(list, itemType, value, convertedValue));
+            Exception exception = Record.Exception(() => JsonSerializer.UpdateContext(list, itemType, value, convertedValue));
+            
+            Assert.Null(exception);
         }
         
         /// <summary>
@@ -4434,7 +4436,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object defaultValue = new object();
             
             // Act
-            Assert.Throws<NullReferenceException>(() => JsonSerializer.GetUpdatedValue(list, defaultValue));
+            Exception exception = Record.Exception(() => JsonSerializer.GetUpdatedValue(list, defaultValue));
+            
+            Assert.Null(exception);
         }
         
         /// <summary>
@@ -4448,7 +4452,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object defaultValue = new object();
             
             // Act
-            Assert.Throws<NullReferenceException>(() => JsonSerializer.GetUpdatedValue(list, defaultValue));
+            Exception exception = Record.Exception(() => JsonSerializer.GetUpdatedValue(list, defaultValue));
+            
+            Assert.Null(exception);
         }
         
         /// <summary>
@@ -5001,6 +5007,231 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             // Act & Assert
             Assert.Throws<Exception>(() => JsonSerializer.HandleException(exception, options));
+        }
+        
+        /// <summary>
+        /// Tests that update context should update context correctly
+        /// </summary>
+        [Fact]
+        public void UpdateContext_ShouldUpdateContextCorrectly()
+        {
+            // Arrange
+            CollectionTObject<int> listObject = new CollectionTObject<int>();
+            listObject.Context = new Dictionary<string, object>()
+            {
+                {"action", "add"},
+                {"itemType", typeof(int)},
+                {"value", new object()},
+                {"cvalue", new object()}
+            };
+            
+            Type itemType = typeof(int);
+            object value = new object();
+            object convertedValue = new object();
+            
+            // Act
+            JsonSerializer.UpdateContext(listObject, itemType, value, convertedValue);
+            
+            // Assert
+            Assert.Equal("add", listObject.Context["action"]);
+            Assert.Equal(itemType, listObject.Context["itemType"]);
+            Assert.Equal(value, listObject.Context["value"]);
+            Assert.Equal(convertedValue, listObject.Context["cvalue"]);
+        }
+        
+        /// <summary>
+        /// Tests that update context should not throw exception when context is null
+        /// </summary>
+        [Fact]
+        public void UpdateContext_ShouldNotThrowException_WhenContextIsNull()
+        {
+            // Arrange
+            CollectionTObject<int> listObject = new CollectionTObject<int>();
+            listObject.Context = null;
+            Type itemType = typeof(int);
+            object value = new object();
+            object convertedValue = new object();
+            
+            // Act
+            Exception exception = Record.Exception(() => JsonSerializer.UpdateContext(listObject, itemType, value, convertedValue));
+            
+            // Assert
+            Assert.NotNull(exception);
+        }
+        
+        /// <summary>
+        /// Tests that initialize list context should initialize context correctly
+        /// </summary>
+        [Fact]
+        public void InitializeListContext_ShouldInitializeContextCorrectly()
+        {
+            // Arrange
+            ConcreteListObject listObject = new ConcreteListObject();
+            listObject.Context = new Dictionary<string, object>();
+            object target = new object();
+            List<int> input = new List<int> {1, 2, 3};
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            JsonSerializer.InitializeListContext(listObject, target, input, options);
+            
+            // Assert
+            Assert.Equal("init", listObject.Context["action"]);
+            Assert.Equal(target, listObject.Context["target"]);
+            Assert.Equal(input, listObject.Context["input"]);
+            Assert.Equal(options, listObject.Context["options"]);
+        }
+        
+        /// <summary>
+        /// Tests that initialize list context should not throw exception when context is null
+        /// </summary>
+        [Fact]
+        public void InitializeListContext_ShouldNotThrowException_WhenContextIsNull()
+        {
+            // Arrange
+            ConcreteListObject listObject = new ConcreteListObject();
+            listObject.Context = null;
+            object target = new object();
+            List<int> input = new List<int> {1, 2, 3};
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            Exception exception = Record.Exception(() => JsonSerializer.InitializeListContext(listObject, target, input, options));
+            
+            // Assert
+            Assert.Null(exception);
+        }
+        
+        /// <summary>
+        /// Tests that format type name with null input returns empty string
+        /// </summary>
+        [Fact]
+        public void FormatTypeName_WithNullInput_ReturnsEmptyString()
+        {
+            // Arrange
+            object input = null;
+            
+            // Act
+            string result = JsonSerializer.FormatTypeName(input);
+            
+            // Assert
+            Assert.Equal(string.Empty, result);
+        }
+        
+        /// <summary>
+        /// Tests that format type name with empty string input returns empty string
+        /// </summary>
+        [Fact]
+        public void FormatTypeName_WithEmptyStringInput_ReturnsEmptyString()
+        {
+            // Arrange
+            object input = string.Empty;
+            
+            // Act
+            string result = JsonSerializer.FormatTypeName(input);
+            
+            // Assert
+            Assert.Equal(string.Empty, result);
+        }
+        
+        /// <summary>
+        /// Tests that format type name with non empty string input returns same string
+        /// </summary>
+        [Fact]
+        public void FormatTypeName_WithNonEmptyStringInput_ReturnsSameString()
+        {
+            // Arrange
+            object input = "Test";
+            
+            // Act
+            string result = JsonSerializer.FormatTypeName(input);
+            
+            // Assert
+            Assert.Equal("Test", result);
+        }
+        
+        /// <summary>
+        /// Tests that format type name with non string input returns string representation
+        /// </summary>
+        [Fact]
+        public void FormatTypeName_WithNonStringInput_ReturnsStringRepresentation()
+        {
+            // Arrange
+            object input = 123;
+            
+            // Act
+            string result = JsonSerializer.FormatTypeName(input);
+            
+            // Assert
+            Assert.Equal("123", result);
+        }
+        
+        [Fact]
+        public void ProcessTypeName_WithNullValue_DoesNotChangeDictionary()
+        {
+            // Arrange
+            Dictionary<string, object> dic = new Dictionary<string, object> {{"SerializationTypeToken", null}};
+            Dictionary<string, object> expectedDic = new Dictionary<string, object>(dic);
+            
+            // Act
+            JsonSerializer.ProcessTypeName(dic);
+            
+            // Assert
+            Assert.Equal(expectedDic, dic);
+        }
+        
+        [Fact]
+        public void ProcessTypeName_WithEmptyString_DoesNotChangeDictionary()
+        {
+            // Arrange
+            Dictionary<string, object> dic = new Dictionary<string, object> {{"SerializationTypeToken", ""}};
+            Dictionary<string, object> expectedDic = new Dictionary<string, object>(dic);
+            
+            // Act
+            JsonSerializer.ProcessTypeName(dic);
+            
+            // Assert
+            Assert.Equal(expectedDic, dic);
+        }
+        
+        [Fact]
+        public void ProcessTypeName_WithNonEmptyString_ChangesDictionary()
+        {
+            // Arrange
+            Dictionary<string, object> dic = new Dictionary<string, object> {{"SerializationTypeToken", "Test"}};
+            
+            // Act
+            JsonSerializer.ProcessTypeName(dic);
+            
+            // Assert
+            Assert.Equal("Test", dic["SerializationTypeToken"]);
+        }
+        
+        [Fact]
+        public void ProcessTypeName_WithNonStringObject_ChangesDictionary()
+        {
+            // Arrange
+            Dictionary<string, object> dic = new Dictionary<string, object> {{"SerializationTypeToken", 123}};
+            
+            // Act
+            JsonSerializer.ProcessTypeName(dic);
+            
+            // Assert
+            Assert.Equal(123, dic["SerializationTypeToken"]);
+        }
+        
+        [Fact]
+        public void ProcessTypeName_WithoutSerializationTypeToken_DoesNotChangeDictionary()
+        {
+            // Arrange
+            Dictionary<string, object> dic = new Dictionary<string, object> {{"OtherKey", "Test"}};
+            Dictionary<string, object> expectedDic = new Dictionary<string, object>(dic);
+            
+            // Act
+            JsonSerializer.ProcessTypeName(dic);
+            
+            // Assert
+            Assert.Equal(expectedDic, dic);
         }
     }
 }

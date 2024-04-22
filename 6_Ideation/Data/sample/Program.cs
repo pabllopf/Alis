@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Core.Aspect.Data.Sample
@@ -55,6 +56,7 @@ namespace Alis.Core.Aspect.Data.Sample
             
             // This will produce a copy of the instance you created earlier
             JsonSerializer.Deserialize<Music>(serialized2);
+            Console.WriteLine(serialized2);
         }
     }
 }
