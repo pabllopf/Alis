@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Optimization;
-
 namespace Alis.Core.Physic.Collision.NarrowPhase
 {
     /// <summary>Used to warm start ComputeDistance. Set count to zero on first call.</summary>
@@ -38,10 +36,10 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         public ushort Count { get; set; }
         
         /// <summary>Vertices on shape A</summary>
-        public FixedArray3<byte> IndexA;
+        public byte[] IndexA;
         
         /// <summary>Vertices on shape B</summary>
-        public FixedArray3<byte> IndexB;
+        public byte[] IndexB;
         
         /// <summary>
         ///     The metric

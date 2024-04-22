@@ -30,7 +30,6 @@
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Optimization;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Distance;
@@ -47,12 +46,10 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// </summary>
         internal int Count { get; set; }
         
-        
         /// <summary>
         ///     The
         /// </summary>
-        internal FixedArray3<SimplexVertex> V;
-        
+        internal SimplexVertex[] V;
         
         /// <summary>
         ///     Reads the cache using the specified cache
@@ -65,9 +62,6 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         internal void ReadCache(ref SimplexCache cache, ref DistanceProxy proxyA, ref Transform transformA,
             ref DistanceProxy proxyB, ref Transform transformB)
         {
-            Debug.Assert(cache.Count <= 3);
-            
-            
             Count = cache.Count;
             for (int i = 0; i < Count; ++i)
             {
@@ -262,7 +256,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             float d122 = -Vector2.Dot(w1, e12);
             if (d122 <= 0.0f)
             {
-                V.Value0.A = 1.0f;
+                V[0].A = 1.0f;
                 Count = 1;
                 return;
             }
@@ -271,16 +265,16 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             float d121 = Vector2.Dot(w2, e12);
             if (d121 <= 0.0f)
             {
-                V.Value1.A = 1.0f;
+                V[1].A = 1.0f;
                 Count = 1;
-                V.Value0 = V.Value1;
+                V[0] = V[1];
                 return;
             }
             
             
             float invD12 = 1.0f / (d121 + d122);
-            V.Value0.A = d121 * invD12;
-            V.Value1.A = d122 * invD12;
+            V[0].A = d121 * invD12;
+            V[1].A = d122 * invD12;
             Count = 2;
         }
         
@@ -325,7 +319,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             
             if ((d122 <= 0.0f) && (d132 <= 0.0f))
             {
-                V.Value0.A = 1.0f;
+                V[0].A = 1.0f;
                 Count = 1;
                 return;
             }
@@ -334,8 +328,8 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             if ((d121 > 0.0f) && (d122 > 0.0f) && (d1233 <= 0.0f))
             {
                 float invD12 = 1.0f / (d121 + d122);
-                V.Value0.A = d121 * invD12;
-                V.Value1.A = d122 * invD12;
+                V[0].A = d121 * invD12;
+                V[1].A = d122 * invD12;
                 Count = 2;
                 return;
             }
@@ -344,28 +338,28 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             if ((d131 > 0.0f) && (d132 > 0.0f) && (d1232 <= 0.0f))
             {
                 float invD13 = 1.0f / (d131 + d132);
-                V.Value0.A = d131 * invD13;
-                V.Value2.A = d132 * invD13;
+                V[0].A = d131 * invD13;
+                V[2].A = d132 * invD13;
                 Count = 2;
-                V.Value1 = V.Value2;
+                V[1] = V[2];
                 return;
             }
             
             
             if ((d121 <= 0.0f) && (d232 <= 0.0f))
             {
-                V.Value1.A = 1.0f;
+                V[1].A = 1.0f;
                 Count = 1;
-                V.Value0 = V.Value1;
+                V[0] = V[1];
                 return;
             }
             
             
             if ((d131 <= 0.0f) && (d231 <= 0.0f))
             {
-                V.Value2.A = 1.0f;
+                V[2].A = 1.0f;
                 Count = 1;
-                V.Value0 = V.Value2;
+                V[0] = V[2];
                 return;
             }
             
@@ -373,18 +367,18 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             if ((d231 > 0.0f) && (d232 > 0.0f) && (d1231 <= 0.0f))
             {
                 float invD23 = 1.0f / (d231 + d232);
-                V.Value1.A = d231 * invD23;
-                V.Value2.A = d232 * invD23;
+                V[1].A = d231 * invD23;
+                V[2].A = d232 * invD23;
                 Count = 2;
-                V.Value0 = V.Value2;
+                V[0] = V[2];
                 return;
             }
             
             
             float invD123 = 1.0f / (d1231 + d1232 + d1233);
-            V.Value0.A = d1231 * invD123;
-            V.Value1.A = d1232 * invD123;
-            V.Value2.A = d1233 * invD123;
+            V[0].A = d1231 * invD123;
+            V[1].A = d1232 * invD123;
+            V[2].A = d1233 * invD123;
             Count = 3;
         }
     }

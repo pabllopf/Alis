@@ -30,7 +30,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Alis.Core.Aspect.Math.Optimization;
 using Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Sweep;
 
 namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
@@ -41,18 +40,18 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
     internal class DelaunayTriangle
     {
         /// <summary>Neighbor pointers. Flags to determine if an edge is a edge</summary>
-        public FixedArray3<bool> EdgeIsConstrained;
+        public bool[] EdgeIsConstrained = new bool[3];
         
         /// <summary>Flags to determine if an edge is a Constrained edge</summary>
-        public FixedArray3<bool> EdgeIsDelaunay;
+        public bool[] EdgeIsDelaunay = new bool[3];
         
         /// <summary>
         ///     The neighbors
         /// </summary>
-        public FixedArray3<DelaunayTriangle> Neighbors;
+        public DelaunayTriangle[] Neighbors = new DelaunayTriangle[3];
         
         /// <summary>Has this triangle been marked as an interior triangle?</summary>
-        public FixedArray3<TriangulationPoint> Points;
+        public TriangulationPoint[] Points = new TriangulationPoint[3];
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="DelaunayTriangle" /> class
@@ -80,7 +79,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
         /// <returns>The </returns>
         public int IndexOf(TriangulationPoint p)
         {
-            int i = Points.IndexOf(p);
+            int i = Array.IndexOf(Points, p);
             if (i == -1)
             {
                 throw new Exception("Calling index with a point that doesn't exist in triangle");
@@ -253,21 +252,21 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The delaunay triangle</returns>
-        public DelaunayTriangle NeighborCw(TriangulationPoint point) => Neighbors[(Points.IndexOf(point) + 1) % 3];
+        public DelaunayTriangle NeighborCw(TriangulationPoint point) => Neighbors[(Array.IndexOf(Points, point) + 1) % 3];
         
         /// <summary>
         ///     Neighbors the ccw using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The delaunay triangle</returns>
-        public DelaunayTriangle NeighborCcw(TriangulationPoint point) => Neighbors[(Points.IndexOf(point) + 2) % 3];
+        public DelaunayTriangle NeighborCcw(TriangulationPoint point) => Neighbors[(Array.IndexOf(Points, point) + 2) % 3];
         
         /// <summary>
         ///     Neighbors the across using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The delaunay triangle</returns>
-        public DelaunayTriangle NeighborAcross(TriangulationPoint point) => Neighbors[Points.IndexOf(point)];
+        public DelaunayTriangle NeighborAcross(TriangulationPoint point) => Neighbors[Array.IndexOf(Points, point)];
         
         /// <summary>
         ///     Points the ccw using the specified point
@@ -409,8 +408,8 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay
         /// <returns>index of the shared edge or -1 if edge isn't shared</returns>
         public int EdgeIndex(TriangulationPoint p1, TriangulationPoint p2)
         {
-            int i1 = Points.IndexOf(p1);
-            int i2 = Points.IndexOf(p2);
+            int i1 = Array.IndexOf(Points, p1);
+            int i2 = Array.IndexOf(Points, p2);
             
             // Points of this triangle in the edge p1-p2
             bool a = i1 == 0 || i2 == 0;
