@@ -156,7 +156,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="member">The member</param>
         /// <param name="first">The first</param>
         /// <returns>The bool bool string object</returns>
-        internal (bool, bool, string, object) HandleWriteNamedValueObjectCallback(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options, MemberDefinition member, bool first)
+        internal static (bool, bool, string, object) HandleWriteNamedValueObjectCallback(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options, MemberDefinition member, bool first)
         {
             bool nameChanged = false;
             string name = member.WireName;
@@ -502,7 +502,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Describes whether check json attribute
+        /// Describes whether check json attribute
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="info">The info</param>
@@ -510,21 +510,34 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         internal static bool CheckJsonAttribute(bool serialization, PropertyInfo info, JsonOptions options)
         {
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
+            if (!IsUsingJsonAttribute(options))
             {
-                JsonPropertyNameAttribute ja = JsonSerializer.GetJsonAttribute(info);
-                if (ja != null)
-                {
-                    switch (serialization)
-                    {
-                        case true when ja.IgnoreWhenSerializing:
-                        case false when ja.IgnoreWhenDeserializing:
-                            return true;
-                    }
-                }
+                return false;
             }
             
-            return false;
+            JsonPropertyNameAttribute ja = JsonSerializer.GetJsonAttribute(info);
+            return ja != null && ShouldIgnoreAttribute(serialization, ja);
+        }
+        
+        /// <summary>
+        /// Describes whether is using json attribute
+        /// </summary>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        internal static bool IsUsingJsonAttribute(JsonOptions options)
+        {
+            return options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute);
+        }
+        
+        /// <summary>
+        /// Describes whether should ignore attribute
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="attribute">The attribute</param>
+        /// <returns>The bool</returns>
+        internal static bool ShouldIgnoreAttribute(bool serialization, JsonPropertyNameAttribute attribute)
+        {
+            return (serialization && attribute.IgnoreWhenSerializing) || (!serialization && attribute.IgnoreWhenDeserializing);
         }
         
         /// <summary>
@@ -640,14 +653,9 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>True if the field should be skipped, false otherwise.</returns>
         internal static bool ShouldSkipField(bool serialization, FieldInfo info, JsonOptions options)
         {
-            if (ShouldSkipDueToJsonAttribute(serialization, info, options) ||
-                ShouldSkipDueToXmlIgnoreAttribute(info, options) ||
-                ShouldSkipDueToScriptIgnoreAttribute(info, options))
-            {
-                return true;
-            }
-            
-            return false;
+            return ShouldSkipDueToJsonAttribute(serialization, info, options) ||
+                   ShouldSkipDueToXmlIgnoreAttribute(info, options) ||
+                   ShouldSkipDueToScriptIgnoreAttribute(info, options);
         }
         
         /// <summary>
@@ -775,14 +783,11 @@ namespace Alis.Core.Aspect.Data.Json
                 JsonPropertyNameAttribute ja = descriptor.GetAttribute<JsonPropertyNameAttribute>();
                 if (ja != null)
                 {
-                    if (serialization && ja.IgnoreWhenSerializing)
+                    switch (serialization)
                     {
-                        return true;
-                    }
-                    
-                    if (!serialization && ja.IgnoreWhenDeserializing)
-                    {
-                        return true;
+                        case true when ja.IgnoreWhenSerializing:
+                        case false when ja.IgnoreWhenDeserializing:
+                            return true;
                     }
                 }
             }

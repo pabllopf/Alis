@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ListObject.cs
+//  File:TestClass.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,41 +27,39 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
-namespace Alis.Core.Aspect.Data.Json
+namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    ///     Defines an object that handles list deserialization.
+    /// The test class
     /// </summary>
-    public abstract class ListObject
+    public class TestClass
     {
         /// <summary>
-        ///     Gets or sets the list object.
+        /// Gets or sets the value of the property with ignore when serializing
         /// </summary>
-        /// <value>
-        ///     The list.
-        /// </value>
-        public virtual object List { get; set; }
+        [JsonPropertyName("test")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public string PropertyWithIgnoreWhenSerializing { get; set; }
         
         /// <summary>
-        ///     Gets the current context.
+        /// Gets or sets the value of the property with ignore when deserializing
         /// </summary>
-        /// <value>
-        ///     The context. May be null.
-        /// </value>
-        public virtual IDictionary<string, object> Context { get; set; } = new Dictionary<string, object>();
+        [JsonPropertyName("test")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
+        public string PropertyWithIgnoreWhenDeserializing { get; set; }
         
         /// <summary>
-        ///     Clears the list object.
+        /// Gets or sets the value of the property without ignore when serializing
         /// </summary>
-        public abstract void Clear();
+        [JsonPropertyName("test")]
+        public string PropertyWithoutIgnoreWhenSerializing { get; set; }
         
         /// <summary>
-        ///     Adds a value to the list object.
+        /// Gets or sets the value of the property without ignore when deserializing
         /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="options">The options.</param>
-        public abstract void Add(object value, JsonOptions options = null);
+        [JsonPropertyName("test")]
+        public string PropertyWithoutIgnoreWhenDeserializing { get; set; }
     }
 }
