@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Optimization;
 using Alis.Core.Physic.Collision.NarrowPhase;
 using Xunit;
 
@@ -63,7 +62,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         {
             // Arrange
             SimplexCache simplexCache = new SimplexCache();
-            FixedArray3<byte> expectedValue = new FixedArray3<byte>();
+            byte[] expectedValue = new byte[3];
             
             // Act
             simplexCache.IndexA = expectedValue;
@@ -80,7 +79,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         {
             // Arrange
             SimplexCache simplexCache = new SimplexCache();
-            FixedArray3<byte> expectedValue = new FixedArray3<byte>();
+            byte[] expectedValue = new byte[3];
             
             
             // Act

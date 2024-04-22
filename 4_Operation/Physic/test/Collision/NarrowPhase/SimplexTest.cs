@@ -48,7 +48,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         public void Test_CountProperty()
         {
             // Arrange
-            Simplex simplex = new Simplex();
+             Simplex simplex = new Simplex()
+            {
+                V = new SimplexVertex[3],
+            };
             int expectedValue = 3;
             
             // Act
@@ -65,8 +68,15 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         public void Test_ReadCacheMethod()
         {
             // Arrange
-            Simplex simplex = new Simplex();
-            SimplexCache cache = new SimplexCache();
+             Simplex simplex = new Simplex()
+            {
+                V = new SimplexVertex[2],
+            };
+            SimplexCache cache = new SimplexCache()
+            {
+                IndexA = new byte[3],
+                IndexB = new byte[3]
+            };
             DistanceProxy proxyA = new DistanceProxy();
             Transform transformA = new Transform();
             DistanceProxy proxyB = new DistanceProxy();
@@ -86,7 +96,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         public void Test_WriteCacheMethod()
         {
             // Arrange
-            Simplex simplex = new Simplex();
+             Simplex simplex = new Simplex()
+            {
+                V = new SimplexVertex[3],
+            };
             SimplexCache cache = new SimplexCache();
             
             // Act
@@ -103,7 +116,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         public void Test_GetSearchDirectionMethod()
         {
             // Arrange
-            Simplex simplex = new Simplex();
+             Simplex simplex = new Simplex()
+            {
+                V = new SimplexVertex[3],
+            };
             
             // Act
             Vector2 result = simplex.GetSearchDirection();
@@ -119,7 +135,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         public void Test_GetClosestPointMethod()
         {
             // Arrange
-            Simplex simplex = new Simplex();
+            Simplex simplex = new Simplex()
+            {
+                V = new SimplexVertex[3],
+            };
             
             // Act
             Vector2 result = simplex.GetClosestPoint();
@@ -135,7 +154,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         public void Test_GetWitnessPointsMethod()
         {
             // Arrange
-            Simplex simplex = new Simplex();
+            Simplex simplex = new Simplex()
+            {
+                V = new SimplexVertex[3],
+            };
             Vector2 pA, pB;
             
             // Act
@@ -152,7 +174,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         public void Test_Solve2Method()
         {
             // Arrange
-            Simplex simplex = new Simplex();
+             Simplex simplex = new Simplex()
+            {
+                V = new SimplexVertex[3],
+            };
             
             // Act
             simplex.Solve2();
@@ -168,7 +193,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
         public void Test_Solve3Method()
         {
             // Arrange
-            Simplex simplex = new Simplex();
+             Simplex simplex = new Simplex()
+            {
+                V = new SimplexVertex[3],
+            };
             
             // Act
             simplex.Solve3();

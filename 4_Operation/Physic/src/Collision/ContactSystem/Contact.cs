@@ -30,7 +30,6 @@
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Optimization;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.NarrowPhase;
 using Alis.Core.Physic.Collision.Shapes;

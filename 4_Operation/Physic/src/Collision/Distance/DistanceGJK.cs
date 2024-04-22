@@ -30,7 +30,6 @@
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Optimization;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.NarrowPhase;
@@ -73,7 +72,11 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="cache">The cache</param>
         public static void ComputeDistance(ref DistanceInput input, out DistanceOutput output, out SimplexCache cache)
         {
-            cache = new SimplexCache();
+            cache = new SimplexCache()
+            {
+                IndexA = new byte[3],
+                IndexB = new byte[3]
+            };
             
             ++GjkCalls;
             
@@ -82,8 +85,8 @@ namespace Alis.Core.Physic.Collision.Distance
             
             // These store the vertices of the last simplex so that we
             // can check for duplicates and prevent cycling.
-            FixedArray3<int> saveA = new FixedArray3<int>();
-            FixedArray3<int> saveB = new FixedArray3<int>();
+            int[] saveA = new int[3];
+            int[] saveB = new int[3];
             
             // Main iteration loop.
             int iter = 0;
@@ -147,7 +150,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="simplex">The simplex</param>
         /// <param name="saveA">The save</param>
         /// <param name="saveB">The save</param>
-        private static void SaveSimplexVertices(Simplex simplex, ref FixedArray3<int> saveA, ref FixedArray3<int> saveB)
+        private static void SaveSimplexVertices(Simplex simplex, ref int[] saveA, ref int[] saveB)
         {
             int saveCount = simplex.Count;
             for (int i = 0; i < saveCount; ++i)
@@ -165,7 +168,10 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <returns>The simplex</returns>
         private static Simplex InitializeSimplex(ref SimplexCache cache, ref DistanceInput input)
         {
-            Simplex simplex = new Simplex();
+            Simplex simplex = new Simplex()
+            {
+                V = new SimplexVertex[3],
+            };
             simplex.ReadCache(ref cache, ref input.ProxyA, ref input.TransformA, ref input.ProxyB, ref input.TransformB);
             return simplex;
         }
@@ -221,7 +227,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="vertex">The vertex</param>
         /// <param name="saveCount">The save count</param>
         /// <returns>The bool</returns>
-        private static bool IsDuplicateSupportPoint(FixedArray3<int> saveA, FixedArray3<int> saveB, SimplexVertex vertex, int saveCount)
+        private static bool IsDuplicateSupportPoint(int[] saveA, int[] saveB, SimplexVertex vertex, int saveCount)
         {
             for (int i = 0; i < saveCount; ++i)
             {
@@ -357,7 +363,8 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <returns>The simplex</returns>
         private static Simplex InitializeSimplex() => new Simplex
         {
-            Count = 0
+            Count = 0,
+            V = new SimplexVertex[3],
         };
         
         /// <summary>
