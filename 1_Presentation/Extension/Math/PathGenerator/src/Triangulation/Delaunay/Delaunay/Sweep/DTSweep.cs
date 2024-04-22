@@ -754,7 +754,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                 edgeIndex = ot.EdgeIndex(p, op);
                 ot.EdgeIsDelaunay[edgeIndex] = true;
                 Legalize(tcx, ot);
-                ot.EdgeIsDelaunay.Clear();
+                Array.Clear(ot.EdgeIsDelaunay, 0, 2);
                 return t;
             }
             
@@ -762,7 +762,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             edgeIndex = t.EdgeIndex(p, op);
             t.EdgeIsDelaunay[edgeIndex] = true;
             Legalize(tcx, t);
-            t.EdgeIsDelaunay.Clear();
+            Array.Clear(t.EdgeIsDelaunay, 0, 2);
             return ot;
         }
         
@@ -1270,8 +1270,8 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             //      what side should be assigned to what neighbor after the 
             //      rotation. Now mark neighbor does lots of testing to find 
             //      the right side.
-            t.Neighbors.Clear();
-            ot.Neighbors.Clear();
+            Array.Clear(t.Neighbors, 0, 2);
+            Array.Clear(ot.Neighbors, 0, 2);
             if (n1 != null)
             {
                 ot.MarkNeighbor(n1);
