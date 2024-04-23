@@ -1776,7 +1776,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void ShouldIgnoreAttribute_WhenSerializationIsTrueAndIgnoreWhenSerializingIsTrue_ReturnsTrue()
         {
             // Arrange
-            var attribute = new JsonPropertyNameAttribute {IgnoreWhenSerializing = true};
+            JsonPropertyNameAttribute attribute = new JsonPropertyNameAttribute {IgnoreWhenSerializing = true};
             
             // Act
             bool result = TypeDef.ShouldIgnoreAttribute(true, attribute);
@@ -1789,7 +1789,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void ShouldIgnoreAttribute_WhenSerializationIsTrueAndIgnoreWhenSerializingIsFalse_ReturnsFalse()
         {
             // Arrange
-            var attribute = new JsonPropertyNameAttribute {IgnoreWhenSerializing = false};
+            JsonPropertyNameAttribute attribute = new JsonPropertyNameAttribute {IgnoreWhenSerializing = false};
             
             // Act
             bool result = TypeDef.ShouldIgnoreAttribute(true, attribute);
@@ -1802,7 +1802,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void ShouldIgnoreAttribute_WhenSerializationIsFalseAndIgnoreWhenDeserializingIsTrue_ReturnsTrue()
         {
             // Arrange
-            var attribute = new JsonPropertyNameAttribute {IgnoreWhenDeserializing = true};
+            JsonPropertyNameAttribute attribute = new JsonPropertyNameAttribute {IgnoreWhenDeserializing = true};
             
             // Act
             bool result = TypeDef.ShouldIgnoreAttribute(false, attribute);
@@ -1815,7 +1815,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void ShouldIgnoreAttribute_WhenSerializationIsFalseAndIgnoreWhenDeserializingIsFalse_ReturnsFalse()
         {
             // Arrange
-            var attribute = new JsonPropertyNameAttribute {IgnoreWhenDeserializing = false};
+            JsonPropertyNameAttribute attribute = new JsonPropertyNameAttribute {IgnoreWhenDeserializing = false};
             
             // Act
             bool result = TypeDef.ShouldIgnoreAttribute(false, attribute);
