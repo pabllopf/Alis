@@ -2961,5 +2961,53 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.False(result);
             Assert.Equal(0, value);
         }
+        
+        [Fact]
+        public void TestTryHandleDigitOrSignStart_WithDigitStart()
+        {
+            // Arrange
+            Type type = typeof(int);
+            string input = "123";
+            object value;
+            
+            // Act
+            bool result = Conversions.TryHandleDigitOrSignStart(type, input, out value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Equal(0, value);
+        }
+        
+        [Fact]
+        public void TestTryHandleDigitOrSignStart_WithSignStart()
+        {
+            // Arrange
+            Type type = typeof(int);
+            string input = "-123";
+            object value;
+            
+            // Act
+            bool result = Conversions.TryHandleDigitOrSignStart(type, input, out value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Equal(0, value);
+        }
+        
+        [Fact]
+        public void TestTryHandleDigitOrSignStart_WithNonDigitNonSignStart()
+        {
+            // Arrange
+            Type type = typeof(int);
+            string input = "abc";
+            object value;
+            
+            // Act
+            bool result = Conversions.TryHandleDigitOrSignStart(type, input, out value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Equal(0, value);
+        }
     }
 }
