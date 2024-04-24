@@ -110,7 +110,7 @@ namespace Alis.Core.Aspect.Data.Json
         {
             return _deserializationMembers.FirstOrDefault(def => CompareWireName(def, key));
         }
-
+        
         /// <summary>
         ///     Gets the deserialization member using the specified key
         /// </summary>
@@ -181,12 +181,12 @@ namespace Alis.Core.Aspect.Data.Json
             bool nameChanged = false;
             string name = member.WireName;
             object value = member.Accessor.Get(component);
-
+            
             return (nameChanged, name, value);
         }
-
+        
         /// <summary>
-        ///     Invokes the callback if present.
+        /// Creates the json event args using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="component">The component</param>
@@ -195,7 +195,38 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="first">The first</param>
         /// <param name="name">The name</param>
         /// <param name="value">The value</param>
-        /// <returns>The JsonEventArgs</returns>
+        /// <returns>The </returns>
+        internal static JsonEventArgs CreateJsonEventArgs(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options, bool first, string name, object value)
+        {
+            JsonEventArgs e = new JsonEventArgs(writer, value, objectGraph, options, name, component)
+            {
+                EventType = JsonEventType.WriteNamedValueObject,
+                First = first
+            };
+            return e;
+        }
+
+        /// <summary>
+        /// Invokes the callback using the specified options
+        /// </summary>
+        /// <param name="options">The options</param>
+        /// <param name="e">The </param>
+        internal static void InvokeCallback(JsonOptions options, JsonEventArgs e)
+        {
+            options.WriteNamedValueObjectCallback?.Invoke(e);
+        }
+
+        /// <summary>
+        /// Invokes the callback using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="component">The component</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <param name="first">The first</param>
+        /// <param name="name">The name</param>
+        /// <param name="value">The value</param>
+        /// <returns>The </returns>
         internal static JsonEventArgs InvokeCallback(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options, bool first, string name, object value)
         {
             if (options.WriteNamedValueObjectCallback == null)
@@ -203,59 +234,56 @@ namespace Alis.Core.Aspect.Data.Json
                 return null;
             }
             
-            JsonEventArgs e = new JsonEventArgs(writer, value, objectGraph, options, name, component)
-            {
-                EventType = JsonEventType.WriteNamedValueObject,
-                First = first
-            };
-            options.WriteNamedValueObjectCallback(e);
+            JsonEventArgs e = CreateJsonEventArgs(writer, component, objectGraph, options, first, name, value);
+            InvokeCallback(options, e);
             return e;
         }
-
-/// <summary>
-///     Handles the event and returns updated values.
-/// </summary>
-/// <param name="e">The JsonEventArgs</param>
-/// <param name="first">The first</param>
-/// <param name="name">The name</param>
-/// <param name="value">The value</param>
-/// <returns>The bool, bool, string and object</returns>
-internal static (bool, bool, string, object) HandleEvent(JsonEventArgs e, bool first, string name, object value)
-{
-    if (e != null)
-    {
-        first = e.First;
-        if (e.Handled)
+        
+        /// <summary>
+        ///     Handles the event and returns updated values.
+        /// </summary>
+        /// <param name="e">The JsonEventArgs</param>
+        /// <param name="first">The first</param>
+        /// <param name="name">The name</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool, bool, string and object</returns>
+        internal static (bool, bool, string, object) HandleEvent(JsonEventArgs e, bool first, string name, object value)
         {
+            if (e != null)
+            {
+                first = e.First;
+                if (e.Handled)
+                {
+                    return (first, false, name, value);
+                }
+                
+                bool nameChanged = name != e.Name;
+                name = e.Name;
+                value = e.Value;
+                return (first, nameChanged, name, value);
+            }
+            
             return (first, false, name, value);
         }
-
-        bool nameChanged = name != e.Name;
-        name = e.Name;
-        value = e.Value;
-        return (first, nameChanged, name, value);
-    }
-
-    return (first, false, name, value);
-}
-
-/// <summary>
-///     Handles the callback if present.
-/// </summary>
-/// <param name="writer">The writer</param>
-/// <param name="component">The component</param>
-/// <param name="objectGraph">The object graph</param>
-/// <param name="options">The options</param>
-/// <param name="first">The first</param>
-/// <param name="nameChanged">The name changed</param>
-/// <param name="name">The name</param>
-/// <param name="value">The value</param>
-/// <returns>The bool, bool, string and object</returns>
-internal static (bool, bool, string, object) HandleCallback(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options, bool first, bool nameChanged, string name, object value)
-{
-    JsonEventArgs e = InvokeCallback(writer, component, objectGraph, options, first, name, value);
-    return HandleEvent(e, first, name, value);
-}
+        
+        /// <summary>
+        ///     Handles the callback if present.
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="component">The component</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <param name="first">The first</param>
+        /// <param name="nameChanged">The name changed</param>
+        /// <param name="name">The name</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool, bool, string and object</returns>
+        internal static (bool, bool, string, object) HandleCallback(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options, bool first, bool nameChanged, string name, object value)
+        {
+            JsonEventArgs e = InvokeCallback(writer, component, objectGraph, options, first, name, value);
+            return HandleEvent(e, first, name, value);
+        }
+        
         /// <summary>
         ///     Handles the write named value object callback using the specified writer
         /// </summary>
@@ -268,7 +296,7 @@ internal static (bool, bool, string, object) HandleCallback(TextWriter writer, o
         /// <returns>The bool, bool, string and object</returns>
         internal static (bool, bool, string, object) HandleWriteNamedValueObjectCallback(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options, MemberDefinition member, bool first)
         {
-            var (nameChanged, name, value) = GetMemberValueAndName(member, component);
+            (bool nameChanged, string name, object value) = GetMemberValueAndName(member, component);
             return HandleCallback(writer, component, objectGraph, options, first, nameChanged, name, value);
         }
         
@@ -286,7 +314,7 @@ internal static (bool, bool, string, object) HandleCallback(TextWriter writer, o
                    ShouldSkipNullDateTimeValues(options, member, value) ||
                    ShouldSkipDefaultValues(options, member, value);
         }
-
+        
         /// <summary>
         /// Describes whether this instance should skip null property values
         /// </summary>
@@ -297,7 +325,7 @@ internal static (bool, bool, string, object) HandleCallback(TextWriter writer, o
         {
             return options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipNullPropertyValues) && value == null;
         }
-
+        
         /// <summary>
         /// Describes whether this instance should skip zero value types
         /// </summary>
@@ -309,7 +337,7 @@ internal static (bool, bool, string, object) HandleCallback(TextWriter writer, o
         {
             return options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipZeroValueTypes) && member.IsZeroValue(value);
         }
-
+        
         /// <summary>
         /// Describes whether this instance should skip null date time values
         /// </summary>
@@ -321,7 +349,7 @@ internal static (bool, bool, string, object) HandleCallback(TextWriter writer, o
         {
             return options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipNullDateTimeValues) && member.IsNullDateTimeValue(value);
         }
-
+        
         /// <summary>
         /// Describes whether this instance should skip default values
         /// </summary>
@@ -555,7 +583,7 @@ internal static (bool, bool, string, object) HandleCallback(TextWriter writer, o
         {
             return HandlePropertySerialization(serialization, type, options);
         }
-
+        
         /// <summary>
         ///     Enumerates the field definitions using reflection if SerializeFields option is enabled.
         /// </summary>
@@ -569,9 +597,10 @@ internal static (bool, bool, string, object) HandleCallback(TextWriter writer, o
             {
                 return HandleFieldSerialization(serialization, type, options);
             }
+            
             return Enumerable.Empty<MemberDefinition>();
         }
-
+        
         /// <summary>
         ///     Enumerates the definitions using reflection.
         /// </summary>
@@ -584,7 +613,7 @@ internal static (bool, bool, string, object) HandleCallback(TextWriter writer, o
             return EnumeratePropertyDefinitions(serialization, type, options)
                 .Concat(EnumerateFieldDefinitions(serialization, type, options));
         }
-                
+        
         /// <summary>
         ///     Gets the properties from the specified type.
         /// </summary>
@@ -594,9 +623,9 @@ internal static (bool, bool, string, object) HandleCallback(TextWriter writer, o
         {
             return type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
         }
-
+        
         /// <summary>
-        ///     Creates member definitions from the specified properties.
+        /// Creates the member definitions from properties using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="properties">The properties</param>
@@ -606,15 +635,13 @@ internal static (bool, bool, string, object) HandleCallback(TextWriter writer, o
         {
             foreach (PropertyInfo info in properties)
             {
-                if (ShouldSkipProperty(serialization, info, options))
+                if (!ShouldSkipProperty(serialization, info, options))
                 {
-                    continue;
+                    yield return CreateMemberDefinition(serialization, info);
                 }
-                
-                yield return CreateMemberDefinition(serialization, info);
             }
         }
-
+        
         /// <summary>
         ///     Handles the property serialization using the specified serialization
         /// </summary>
@@ -632,7 +659,7 @@ internal static (bool, bool, string, object) HandleCallback(TextWriter writer, o
             IEnumerable<PropertyInfo> properties = GetPropertiesFromType(type);
             return CreateMemberDefinitionsFromProperties(serialization, properties, options);
         }
-                
+        
         /// <summary>
         ///     Describes whether should skip property
         /// </summary>
@@ -766,7 +793,7 @@ internal static (bool, bool, string, object) HandleCallback(TextWriter writer, o
         {
             return type.GetFields(BindingFlags.Public | BindingFlags.Instance);
         }
-
+        
         /// <summary>
         ///     Creates a member definition for the specified field.
         /// </summary>
@@ -776,14 +803,9 @@ internal static (bool, bool, string, object) HandleCallback(TextWriter writer, o
         /// <returns>A member definition</returns>
         internal static MemberDefinition CreateMemberDefinitionForField(bool serialization, FieldInfo field, JsonOptions options)
         {
-            if (ShouldSkipField(serialization, field, options))
-            {
-                return null;
-            }
-
-            return CreateMemberDefinition(serialization, field);
+            return ShouldSkipField(serialization, field, options) ? null : CreateMemberDefinition(serialization, field);
         }
-
+        
         /// <summary>
         ///     Checks if a member definition should be created for the specified field.
         /// </summary>
@@ -796,26 +818,45 @@ internal static (bool, bool, string, object) HandleCallback(TextWriter writer, o
             MemberDefinition memberDefinition = CreateMemberDefinitionForField(serialization, field, options);
             return memberDefinition != null;
         }
-
+        
         /// <summary>
-        ///     Creates a member definition for the specified field if applicable.
+        /// Describes whether should create member definition
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="field">The field</param>
         /// <param name="options">The options</param>
-        /// <returns>A member definition if one should be created, null otherwise</returns>
-        internal static MemberDefinition CreateMemberDefinitionIfApplicable(bool serialization, FieldInfo field, JsonOptions options)
+        /// <returns>The bool</returns>
+        internal static bool ShouldCreateMemberDefinition(bool serialization, FieldInfo field, JsonOptions options)
         {
-            if (ShouldCreateMemberDefinitionForField(serialization, field, options))
-            {
-                return CreateMemberDefinitionForField(serialization, field, options);
-            }
-
-            return null;
+            return ShouldCreateMemberDefinitionForField(serialization, field, options);
         }
 
         /// <summary>
-        ///     Creates member definitions from the specified fields.
+        /// Creates the member definition using the specified serialization
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="field">The field</param>
+        /// <param name="options">The options</param>
+        /// <returns>The member definition</returns>
+        internal static MemberDefinition CreateMemberDefinition(bool serialization, FieldInfo field, JsonOptions options)
+        {
+            return CreateMemberDefinitionForField(serialization, field, options);
+        }
+
+        /// <summary>
+        /// Creates the member definition if applicable using the specified serialization
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="field">The field</param>
+        /// <param name="options">The options</param>
+        /// <returns>The member definition</returns>
+        internal static MemberDefinition CreateMemberDefinitionIfApplicable(bool serialization, FieldInfo field, JsonOptions options)
+        {
+            return ShouldCreateMemberDefinition(serialization, field, options) ? CreateMemberDefinition(serialization, field, options) : null;
+        }
+        
+        /// <summary>
+        /// Creates the member definitions using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="fields">The fields</param>
@@ -823,16 +864,10 @@ internal static (bool, bool, string, object) HandleCallback(TextWriter writer, o
         /// <returns>An enumerable of member definition</returns>
         internal static IEnumerable<MemberDefinition> CreateMemberDefinitions(bool serialization, IEnumerable<FieldInfo> fields, JsonOptions options)
         {
-            foreach (FieldInfo field in fields)
-            {
-                MemberDefinition memberDefinition = CreateMemberDefinitionIfApplicable(serialization, field, options);
-                if (memberDefinition != null)
-                {
-                    yield return memberDefinition;
-                }
-            }
+            return fields.Select(field => CreateMemberDefinitionIfApplicable(serialization, field, options))
+                         .Where(memberDefinition => memberDefinition != null);
         }
-
+        
         /// <summary>
         ///     Handles the field serialization using the specified serialization
         /// </summary>
@@ -846,7 +881,7 @@ internal static (bool, bool, string, object) HandleCallback(TextWriter writer, o
             {
                 return Enumerable.Empty<MemberDefinition>();
             }
-
+            
             IEnumerable<FieldInfo> fields = GetFieldsFromType(type);
             return CreateMemberDefinitions(serialization, fields, options);
         }
@@ -865,20 +900,20 @@ internal static (bool, bool, string, object) HandleCallback(TextWriter writer, o
                    ShouldSkipDueToScriptIgnoreAttribute(info, options);
         }
         
-      /// <summary>
-///     Describes whether should skip due to json attribute
-/// </summary>
-/// <param name="serialization">The serialization</param>
-/// <param name="info">The info</param>
-/// <param name="options">The options</param>
-/// <returns>The bool</returns>
-internal static bool ShouldSkipDueToJsonAttribute(bool serialization, FieldInfo info, JsonOptions options)
-{
-    JsonPropertyNameAttribute jsonAttribute = JsonSerializer.GetJsonAttribute(info);
-    return options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute) &&
-           jsonAttribute != null &&
-           (serialization ? jsonAttribute.IgnoreWhenSerializing : jsonAttribute.IgnoreWhenDeserializing);
-}
+        /// <summary>
+        ///     Describes whether should skip due to json attribute
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="info">The info</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        internal static bool ShouldSkipDueToJsonAttribute(bool serialization, FieldInfo info, JsonOptions options)
+        {
+            JsonPropertyNameAttribute jsonAttribute = JsonSerializer.GetJsonAttribute(info);
+            return options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute) &&
+                   jsonAttribute != null &&
+                   (serialization ? jsonAttribute.IgnoreWhenSerializing : jsonAttribute.IgnoreWhenDeserializing);
+        }
         
         /// <summary>
         ///     Describes whether should skip due to xml ignore attribute
@@ -887,7 +922,7 @@ internal static bool ShouldSkipDueToJsonAttribute(bool serialization, FieldInfo 
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
         internal static bool ShouldSkipDueToXmlIgnoreAttribute(FieldInfo info, JsonOptions options) => options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore) &&
-                                                                                                      info.IsDefined(typeof(XmlIgnoreAttribute), true);
+                                                                                                       info.IsDefined(typeof(XmlIgnoreAttribute), true);
         
         /// <summary>
         ///     Describes whether should skip due to script ignore attribute
@@ -896,38 +931,63 @@ internal static bool ShouldSkipDueToJsonAttribute(bool serialization, FieldInfo 
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
         internal static bool ShouldSkipDueToScriptIgnoreAttribute(FieldInfo info, JsonOptions options) => options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore) &&
-                                                                                                         JsonSerializer.HasScriptIgnore(info);
+                                                                                                          JsonSerializer.HasScriptIgnore(info);
         
         /// <summary>
-        ///     Creates the member definition using the specified serialization
+        /// Creates the member definition using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="info">The info</param>
-        /// <returns>The ma</returns>
+        /// <returns>The member definition</returns>
         internal static MemberDefinition CreateMemberDefinition(bool serialization, FieldInfo info)
         {
             string name = JsonSerializer.GetObjectName(info, info.Name);
-            
-            MemberDefinition ma = new MemberDefinition
+            MemberDefinition memberDefinition = CreateMemberDefinitionInstance(info, name);
+            SetWireNames(serialization, memberDefinition, name);
+            SetDefaultValue(memberDefinition, info);
+            return memberDefinition;
+        }
+        
+        /// <summary>
+        /// Creates the member definition instance using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="name">The name</param>
+        /// <returns>The member definition</returns>
+        internal static MemberDefinition CreateMemberDefinitionInstance(FieldInfo info, string name)
+        {
+            return new MemberDefinition
             {
                 Type = info.FieldType,
-                Name = info.Name
+                Name = info.Name,
+                WireName = name,
+                Accessor = (IMemberAccessor) Activator.CreateInstance(typeof(FieldInfoAccessor), info)
             };
+        }
+        
+        /// <summary>
+        /// Sets the wire names using the specified serialization
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="memberDefinition">The member definition</param>
+        /// <param name="name">The name</param>
+        internal static void SetWireNames(bool serialization, MemberDefinition memberDefinition, string name)
+        {
             if (serialization)
             {
-                ma.WireName = name;
-                ma.EscapedWireName = JsonSerializer.EscapeString(name);
+                memberDefinition.EscapedWireName = JsonSerializer.EscapeString(name);
             }
-            else
-            {
-                ma.WireName = name;
-            }
-            
-            ma.HasDefaultValue = JsonSerializer.TryGetObjectDefaultValue(info, out object defaultValue);
-            ma.DefaultValue = defaultValue;
-            ma.Accessor = (IMemberAccessor) Activator.CreateInstance(typeof(FieldInfoAccessor), info);
-            
-            return ma;
+        }
+        
+        /// <summary>
+        /// Sets the default value using the specified member definition
+        /// </summary>
+        /// <param name="memberDefinition">The member definition</param>
+        /// <param name="info">The info</param>
+        internal static void SetDefaultValue(MemberDefinition memberDefinition, FieldInfo info)
+        {
+            memberDefinition.HasDefaultValue = JsonSerializer.TryGetObjectDefaultValue(info, out object defaultValue);
+            memberDefinition.DefaultValue = defaultValue;
         }
         
         /// <summary>
@@ -939,7 +999,7 @@ internal static bool ShouldSkipDueToJsonAttribute(bool serialization, FieldInfo 
         {
             return TypeDescriptor.GetProperties(type).Cast<PropertyDescriptor>();
         }
-
+        
         /// <summary>
         ///     Creates member definitions from the specified property descriptors.
         /// </summary>
@@ -955,11 +1015,11 @@ internal static bool ShouldSkipDueToJsonAttribute(bool serialization, FieldInfo 
                 {
                     continue;
                 }
-
+                
                 yield return CreateMemberDefinition(serialization, descriptor);
             }
         }
-
+        
         /// <summary>
         ///     Enumerates the definitions using type descriptors using the specified serialization
         /// </summary>
@@ -969,7 +1029,7 @@ internal static bool ShouldSkipDueToJsonAttribute(bool serialization, FieldInfo 
         /// <returns>An enumerable of member definition</returns>
         internal static IEnumerable<MemberDefinition> EnumerateDefinitionsUsingTypeDescriptors(bool serialization, Type type, JsonOptions options)
         {
-            var descriptors = GetPropertiesFromTypeDescriptor(type);
+            IEnumerable<PropertyDescriptor> descriptors = GetPropertiesFromTypeDescriptor(type);
             return CreateMemberDefinitionsFromDescriptors(serialization, descriptors, options);
         }
         
@@ -992,7 +1052,7 @@ internal static bool ShouldSkipDueToJsonAttribute(bool serialization, FieldInfo 
             
             return false;
         }
-
+        
         /// <summary>
         ///     Describes whether check json attribute
         /// </summary>
@@ -1009,22 +1069,34 @@ internal static bool ShouldSkipDueToJsonAttribute(bool serialization, FieldInfo 
         }
         
         /// <summary>
-        ///     Describes whether check xml ignore attribute
+        /// Describes whether check xml ignore attribute
         /// </summary>
         /// <param name="descriptor">The descriptor</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
         internal static bool CheckXmlIgnoreAttribute(PropertyDescriptor descriptor, JsonOptions options)
         {
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore))
-            {
-                if (descriptor.GetAttribute<XmlIgnoreAttribute>() != null)
-                {
-                    return true;
-                }
-            }
-            
-            return false;
+            return IsXmlIgnoreOptionSet(options) && IsXmlIgnoreAttributePresent(descriptor);
+        }
+
+        /// <summary>
+        /// Describes whether is xml ignore option set
+        /// </summary>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        internal static bool IsXmlIgnoreOptionSet(JsonOptions options)
+        {
+            return options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore);
+        }
+
+        /// <summary>
+        /// Describes whether is xml ignore attribute present
+        /// </summary>
+        /// <param name="descriptor">The descriptor</param>
+        /// <returns>The bool</returns>
+        internal static bool IsXmlIgnoreAttributePresent(PropertyDescriptor descriptor)
+        {
+            return descriptor.GetAttribute<XmlIgnoreAttribute>() != null;
         }
         
         /// <summary>
