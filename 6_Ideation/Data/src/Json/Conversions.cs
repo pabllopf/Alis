@@ -613,7 +613,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static bool StringToEnum(Type type, string[] names, Array values, string input, out object value)
         {
             if (TryMatchNames(names, values, input, out value))
@@ -705,18 +705,21 @@ namespace Alis.Core.Aspect.Data.Json
         {
             bool startsWithDigitOrSign = char.IsDigit(input[0]) || input[0] == '-' || input[0] == '+';
             
-            if (startsWithDigitOrSign)
+            if (!startsWithDigitOrSign)
             {
-                object convertedValue = EnumToObject(type, input);
-                if (convertedValue != null)
-                {
-                    value = convertedValue;
-                    return true;
-                }
+                value = Activator.CreateInstance(type);
+                return false;
             }
             
-            value = Activator.CreateInstance(type);
-            return false;
+            object convertedValue = EnumToObject(type, input);
+            if (convertedValue == null)
+            {
+                value = Activator.CreateInstance(type);
+                return false;
+            }
+            
+            value = convertedValue;
+            return true;
         }
         
         /// <summary>
@@ -725,7 +728,6 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="enumType">The enum type</param>
         /// <param name="value">The value</param>
         /// <returns>The object</returns>
-        [ExcludeFromCodeCoverage]
         internal static object EnumToObject(Type enumType, object value)
         {
             if (enumType == null || value == null || !enumType.IsEnum)
