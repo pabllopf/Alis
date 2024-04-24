@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TestClass.cs
+//  File:DummyClass.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,39 +27,24 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Text.Json.Serialization;
+using System.ComponentModel;
 
-namespace Alis.Core.Aspect.Data.Test.Json
+namespace Alis.Core.Aspect.Data.Test.Json.Sample
 {
     /// <summary>
-    /// The test class
+    ///     The dummy class
     /// </summary>
-    public class TestClass
+    public class DummyClass
     {
         /// <summary>
-        /// Gets or sets the value of the property with ignore when serializing
+        ///     Gets or sets the value of the dummy property
         /// </summary>
-        [JsonPropertyName("test")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public string PropertyWithIgnoreWhenSerializing { get; set; }
+        [DefaultValue("DefaultValue")]
+        public string DummyProperty { get; set; }
         
         /// <summary>
-        /// Gets or sets the value of the property with ignore when deserializing
+        ///     Gets or sets the value of the another dummy property
         /// </summary>
-        [JsonPropertyName("test")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
-        public string PropertyWithIgnoreWhenDeserializing { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the property without ignore when serializing
-        /// </summary>
-        [JsonPropertyName("test")]
-        public string PropertyWithoutIgnoreWhenSerializing { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the property without ignore when deserializing
-        /// </summary>
-        [JsonPropertyName("test")]
-        public string PropertyWithoutIgnoreWhenDeserializing { get; set; }
+        public string AnotherDummyProperty { get; set; }
     }
 }

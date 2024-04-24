@@ -34,6 +34,7 @@ using System.IO;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Data.Test.Json.Sample;
 using Xunit;
 using JsonPropertyNameAttribute = Alis.Core.Aspect.Data.Json.JsonPropertyNameAttribute;
 
@@ -2301,6 +2302,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(e.First);
         }
         
+        /// <summary>
+        /// Tests that invoke callback returns null when callback is null
+        /// </summary>
         [Fact]
         public void InvokeCallback_ReturnsNull_WhenCallbackIsNull()
         {
@@ -2320,6 +2324,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Null(result);
         }
         
+        /// <summary>
+        /// Tests that invoke callback returns json event args when callback is not null
+        /// </summary>
         [Fact]
         public void InvokeCallback_ReturnsJsonEventArgs_WhenCallbackIsNotNull()
         {

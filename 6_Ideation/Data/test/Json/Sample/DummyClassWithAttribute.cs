@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:City.cs
+//  File:DummyClassWithAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,27 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Data.Test.Json
+namespace Alis.Core.Aspect.Data.Test.Json.Sample
 {
     /// <summary>
-    ///     The city class
+    ///     The dummy class with attribute class
     /// </summary>
-    public class City
+    public class DummyClassWithAttribute
     {
         /// <summary>
-        ///     Gets or sets the value of the name
+        ///     Gets or sets the value of the property with attribute
         /// </summary>
-        public string Name { get; set; }
-        
-        /// <summary>
-        ///     Gets or sets the value of the country
-        /// </summary>
-        public Country Country { get; set; }
-        
-        /// <summary>
-        ///     Returns the string
-        /// </summary>
-        /// <returns>The string</returns>
-        public override string ToString() => Name;
+        public string PropertyWithAttribute { get; set; }
     }
 }

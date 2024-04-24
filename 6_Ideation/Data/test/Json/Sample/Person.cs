@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SampleClass2.cs
+//  File:Person.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,19 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Data.Json;
-
-namespace Alis.Core.Aspect.Data.Test.Json
+namespace Alis.Core.Aspect.Data.Test.Json.Sample
 {
     /// <summary>
-    ///     The sample class class
+    ///     The person class
     /// </summary>
-    public class SampleClass2
+    internal class Person
     {
         /// <summary>
-        ///     Gets or sets the value of the sample property
+        ///     Gets or sets the value of the name
         /// </summary>
-        [JsonPropertyName("sample")]
-        public string SampleProperty { get; set; }
+        public string Name { get; set; }
     }
 }

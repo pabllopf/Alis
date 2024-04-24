@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CustomListObjectTest.cs
+//  File:Address.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,43 +27,27 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using Alis.Core.Aspect.Data.Json;
-using Xunit;
-
-namespace Alis.Core.Aspect.Data.Test.Json
+namespace Alis.Core.Aspect.Data.Test.Json.Sample
 {
     /// <summary>
-    ///     The custom list object test class
+    ///     The address class
     /// </summary>
-    public class CustomListObjectTest
+    public class Address
     {
         /// <summary>
-        ///     Tests that clear list is empty does not throw exception
+        ///     Gets or sets the value of the city
         /// </summary>
-        [Fact]
-        public void Clear_ListIsEmpty_DoesNotThrowException()
-        {
-            CustomListObject customListObject = new CustomListObject
-            {
-                List = new ArrayList()
-            };
-            customListObject.Clear();
-            Assert.Empty(customListObject.List as IList ?? throw new InvalidOperationException());
-        }
+        public City City { get; set; }
         
         /// <summary>
-        ///     Tests that clear list is not empty clears list
+        ///     Gets or sets the value of the zip code
         /// </summary>
-        [Fact]
-        public void Clear_ListIsNotEmpty_ClearsList()
-        {
-            CustomListObject customListObject = new CustomListObject();
-            customListObject.Clear();
-            customListObject.List = new ArrayList {1, 2, 3};
-            customListObject.Clear();
-            Assert.Empty(customListObject.List as IList ?? throw new InvalidOperationException());
-        }
+        public int ZipCode { get; set; }
+        
+        /// <summary>
+        ///     Returns the string
+        /// </summary>
+        /// <returns>The string</returns>
+        public override string ToString() => ZipCode.ToString();
     }
 }

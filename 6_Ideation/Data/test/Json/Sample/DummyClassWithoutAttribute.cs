@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Customer.cs
+//  File:DummyClassWithoutAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,44 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Aspect.Data.Test.Json
+namespace Alis.Core.Aspect.Data.Test.Json.Sample
 {
     /// <summary>
-    ///     The customer class
+    ///     The dummy class without attribute class
     /// </summary>
-    public class Customer
+    public class DummyClassWithoutAttribute
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Customer" /> class
+        ///     Gets or sets the value of the property without attribute
         /// </summary>
-        public Customer() => Id = Guid.NewGuid();
-        
-        /// <summary>
-        ///     Gets the value of the id
-        /// </summary>
-        public Guid Id { get; }
-        
-        /// <summary>
-        ///     Gets or sets the value of the index
-        /// </summary>
-        public int Index { get; set; }
-        
-        /// <summary>
-        ///     Gets or sets the value of the name
-        /// </summary>
-        public string Name { get; set; }
-        
-        /// <summary>
-        ///     Gets or sets the value of the addresses
-        /// </summary>
-        public Address[] Addresses { get; set; }
-        
-        /// <summary>
-        ///     Returns the string
-        /// </summary>
-        /// <returns>The string</returns>
-        public override string ToString() => Name;
+        public string PropertyWithoutAttribute { get; set; }
     }
 }
