@@ -27,7 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Text.Json.Serialization;
+
+using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Core.Aspect.Data.Test.Json.Sample
 {
@@ -40,14 +41,12 @@ namespace Alis.Core.Aspect.Data.Test.Json.Sample
         /// Gets or sets the value of the property with ignore when serializing
         /// </summary>
         [JsonPropertyName("test")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string PropertyWithIgnoreWhenSerializing { get; set; }
         
         /// <summary>
         /// Gets or sets the value of the property with ignore when deserializing
         /// </summary>
         [JsonPropertyName("test")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
         public string PropertyWithIgnoreWhenDeserializing { get; set; }
         
         /// <summary>
