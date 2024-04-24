@@ -3018,5 +3018,59 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.False(result);
             Assert.Equal(0, value);
         }
+        
+        [Fact]
+        public void ConvertToEnum_ReturnsEnum_WhenValueIsInt()
+        {
+            // Arrange
+            Type enumType = typeof(DayOfWeek);
+            object value = 1;
+            
+            // Act
+            var result = Conversions.ConvertToEnum(enumType, value);
+            
+            // Assert
+            Assert.Equal(DayOfWeek.Monday, result);
+        }
+        
+        [Fact]
+        public void ConvertToEnum_ReturnsEnum_WhenValueIsString()
+        {
+            // Arrange
+            Type enumType = typeof(DayOfWeek);
+            object value = "Sunday";
+            
+            // Act
+            var result = Conversions.ConvertToEnum(enumType, value);
+            
+            // Assert
+            Assert.Equal(DayOfWeek.Sunday, result);
+        }
+        
+        [Fact]
+        public void ConvertToEnum_ReturnsNull_WhenValueIsInvalid()
+        {
+            // Arrange
+            Type enumType = typeof(DayOfWeek);
+            object value = "InvalidDay";
+            
+            // Act
+            var result = Conversions.ConvertToEnum(enumType, value);
+            
+            // Assert
+            Assert.Equal(DayOfWeek.Sunday ,result);
+        }
+        
+        [Fact]
+        public void ConvertToEnum_ReturnsNull_WhenEnumTypeIsNotEnum()
+        {
+            // Arrange
+            Type enumType = typeof(string);
+            object value = "Monday";
+            
+            // Act
+            Assert.Throws<ArgumentException>( () => Conversions.ConvertToEnum(enumType, value));
+            
+        }
     }
 }
