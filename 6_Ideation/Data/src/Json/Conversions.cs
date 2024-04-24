@@ -613,7 +613,6 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        
         internal static bool StringToEnum(Type type, string[] names, Array values, string input, out object value)
         {
             if (TryMatchNames(names, values, input, out value))
@@ -722,12 +721,6 @@ namespace Alis.Core.Aspect.Data.Json
             return true;
         }
         
-        /// <summary>
-        ///     Enums the to object using the specified enum type
-        /// </summary>
-        /// <param name="enumType">The enum type</param>
-        /// <param name="value">The value</param>
-        /// <returns>The object</returns>
         internal static object EnumToObject(Type enumType, object value)
         {
             if (enumType == null || value == null || !enumType.IsEnum)
@@ -740,43 +733,23 @@ namespace Alis.Core.Aspect.Data.Json
                 return Enum.Parse(enumType, stringValue);
             }
             
-            Type underlyingType = Enum.GetUnderlyingType(enumType);
-            if (underlyingType == typeof(long))
+            return ConvertToEnum(enumType, value);
+        }
+
+        internal static object ConvertToEnum(Type enumType, object value)
+        {
+            return Type.GetTypeCode(Enum.GetUnderlyingType(enumType)) switch
             {
-                return Enum.ToObject(enumType, ChangeType<long>(value));
-            }
-            
-            if (underlyingType == typeof(ulong))
-            {
-                return Enum.ToObject(enumType, ChangeType<ulong>(value));
-            }
-            
-            if (underlyingType == typeof(int))
-            {
-                return Enum.ToObject(enumType, ChangeType<int>(value));
-            }
-            
-            if (underlyingType == typeof(uint))
-            {
-                return Enum.ToObject(enumType, ChangeType<uint>(value));
-            }
-            
-            if (underlyingType == typeof(short))
-            {
-                return Enum.ToObject(enumType, ChangeType<short>(value));
-            }
-            
-            if (underlyingType == typeof(ushort))
-            {
-                return Enum.ToObject(enumType, ChangeType<ushort>(value));
-            }
-            
-            if (underlyingType == typeof(byte))
-            {
-                return Enum.ToObject(enumType, ChangeType<byte>(value));
-            }
-            
-            return underlyingType == typeof(sbyte) ? Enum.ToObject(enumType, ChangeType<sbyte>(value)) : null;
+                TypeCode.Int32 => Enum.ToObject(enumType, ChangeType<int>(value)),
+                TypeCode.UInt32 => Enum.ToObject(enumType, ChangeType<uint>(value)),
+                TypeCode.Int64 => Enum.ToObject(enumType, ChangeType<long>(value)),
+                TypeCode.UInt64 => Enum.ToObject(enumType, ChangeType<ulong>(value)),
+                TypeCode.Int16 => Enum.ToObject(enumType, ChangeType<short>(value)),
+                TypeCode.UInt16 => Enum.ToObject(enumType, ChangeType<ushort>(value)),
+                TypeCode.Byte => Enum.ToObject(enumType, ChangeType<byte>(value)),
+                TypeCode.SByte => Enum.ToObject(enumType, ChangeType<sbyte>(value)),
+                _ => null
+            };
         }
         
         /// <summary>
