@@ -2018,11 +2018,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void ShouldCreateMemberDefinitionForField_WithValidField_ReturnsTrue()
         {
             // Arrange
-            var field = typeof(MyClass).GetField("myField");
-            var options = new JsonOptions();
+            FieldInfo field = typeof(MyClass).GetField("myField");
+            JsonOptions options = new JsonOptions();
             
             // Act
-            var result = TypeDef.ShouldCreateMemberDefinitionForField(true, field, options);
+            bool result = TypeDef.ShouldCreateMemberDefinitionForField(true, field, options);
             
             // Assert
             Assert.True(result);
@@ -2036,11 +2036,310 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             FieldInfo field = null; // Invalid field
-            var options = new JsonOptions();
+            JsonOptions options = new JsonOptions();
             
             // Act
             Assert.Throws<NullReferenceException>(() => TypeDef.ShouldCreateMemberDefinitionForField(true, field, options));
             
+        }
+        
+        /// <summary>
+        /// Tests that handle event when event is null returns input parameters
+        /// </summary>
+        [Fact]
+        public void HandleEvent_WhenEventIsNull_ReturnsInputParameters()
+        {
+            // Arrange
+            bool first = true;
+            string name = "TestName";
+            object value = new object();
+            
+            // Act
+            (bool, bool, string, object) result = TypeDef.HandleEvent(null, first, name, value);
+            
+            // Assert
+            Assert.Equal(first, result.Item1);
+            Assert.False(result.Item2);
+            Assert.Equal(name, result.Item3);
+            Assert.Equal(value, result.Item4);
+        }
+        
+        /// <summary>
+        /// Tests that handle event when event is null v 2 returns input parameters
+        /// </summary>
+        [Fact]
+        public void HandleEvent_WhenEventIsNull_v2_ReturnsInputParameters()
+        {
+            // Arrange
+            bool first = true;
+            string name = "TestName";
+            object value = new object();
+            StringWriter writer = new StringWriter();
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+            JsonEventArgs eventArgs = new JsonEventArgs(writer, value, objectGraph, options);
+            
+            // Act
+            (bool, bool, string, object) result = TypeDef.HandleEvent(eventArgs, first, name, value);
+            
+            // Assert
+            Assert.NotEqual(first, result.Item1);
+            Assert.True(result.Item2);
+            Assert.Null(result.Item3);
+            Assert.Equal(value, result.Item4);
+        }
+        
+        /// <summary>
+        /// Tests that handle event when event is handled returns input parameters
+        /// </summary>
+        [Fact]
+        public void HandleEvent_WhenEventIsHandled_ReturnsInputParameters()
+        {
+            // Arrange
+            bool first = true;
+            string name = "TestName";
+            object value = new object();
+            StringWriter writer = new StringWriter();
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+            JsonEventArgs eventArgs = new JsonEventArgs(writer, value, objectGraph, options) {Handled = true};
+            
+            // Act
+            (bool, bool, string, object) result = TypeDef.HandleEvent(eventArgs, first, name, value);
+            
+            // Assert
+            Assert.NotEqual(first, result.Item1);
+            Assert.False(result.Item2);
+            Assert.Equal(name, result.Item3);
+            Assert.Equal(value, result.Item4);
+        }
+        
+        /// <summary>
+        /// Tests that handle event when event is not handled returns event parameters
+        /// </summary>
+        [Fact]
+        public void HandleEvent_WhenEventIsNotHandled_ReturnsEventParameters()
+        {
+            // Arrange
+            bool first = false;
+            string name = "NewName";
+            object value = new object();
+            StringWriter writer = new StringWriter();
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+            JsonEventArgs eventArgs = new JsonEventArgs(writer, value, objectGraph, options) {First = first, Name = name, Value = value};
+            
+            // Act
+            (bool, bool, string, object) result = TypeDef.HandleEvent(eventArgs, true, "TestName", new object());
+            
+            // Assert
+            Assert.Equal(first, result.Item1);
+            Assert.True(result.Item2);
+            Assert.Equal(name, result.Item3);
+            Assert.Equal(value, result.Item4);
+        }
+        
+        /// <summary>
+        /// Tests that should create member definition for field returns true when member definition is not null
+        /// </summary>
+        [Fact]
+        public void ShouldCreateMemberDefinitionForField_ReturnsTrue_WhenMemberDefinitionIsNotNull()
+        {
+            // Arrange
+            bool serialization = true;
+            FieldInfo field = typeof(MyClass).GetField("myField");
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            bool result = TypeDef.ShouldCreateMemberDefinitionForField(serialization, field, options);
+            
+            // Assert
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that should create member definition returns true when member definition is not null
+        /// </summary>
+        [Fact]
+        public void ShouldCreateMemberDefinition_ReturnsTrue_WhenMemberDefinitionIsNotNull()
+        {
+            // Arrange
+            bool serialization = true;
+            FieldInfo field = typeof(MyClass).GetField("myField");
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            bool result = TypeDef.ShouldCreateMemberDefinition(serialization, field, options);
+            
+            // Assert
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that create member definition returns member definition when called
+        /// </summary>
+        [Fact]
+        public void CreateMemberDefinition_ReturnsMemberDefinition_WhenCalled()
+        {
+            // Arrange
+            bool serialization = true;
+            FieldInfo field = typeof(MyClass).GetField("myField");
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            MemberDefinition result = TypeDef.CreateMemberDefinition(serialization, field, options);
+            
+            // Assert
+            Assert.NotNull(result);
+        }
+        
+        /// <summary>
+        /// Tests that create member definition if applicable returns member definition when should create member definition is true
+        /// </summary>
+        [Fact]
+        public void CreateMemberDefinitionIfApplicable_ReturnsMemberDefinition_WhenShouldCreateMemberDefinitionIsTrue()
+        {
+            // Arrange
+            bool serialization = true;
+            FieldInfo field = typeof(MyClass).GetField("myField");
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            MemberDefinition result = TypeDef.CreateMemberDefinitionIfApplicable(serialization, field, options);
+            
+            // Assert
+            Assert.NotNull(result);
+        }
+        
+        /// <summary>
+        /// Tests that create member definitions returns member definitions when called
+        /// </summary>
+        [Fact]
+        public void CreateMemberDefinitions_ReturnsMemberDefinitions_WhenCalled()
+        {
+            // Arrange
+            bool serialization = true;
+            IEnumerable<FieldInfo> fields = typeof(MyClass).GetFields();
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            IEnumerable<MemberDefinition> result = TypeDef.CreateMemberDefinitions(serialization, fields, options);
+            
+            // Assert
+            Assert.NotEmpty(result);
+        }
+        
+        /// <summary>
+        /// Tests that create json event args returns json event args when called
+        /// </summary>
+        [Fact]
+        public void CreateJsonEventArgs_ReturnsJsonEventArgs_WhenCalled()
+        {
+            // Arrange
+            TextWriter writer = new StringWriter();
+            object component = new object();
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+            bool first = true;
+            string name = "TestName";
+            object value = new object();
+            
+            // Act
+            JsonEventArgs result = TypeDef.CreateJsonEventArgs(writer, component, objectGraph, options, first, name, value);
+            
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(JsonEventType.WriteNamedValueObject, result.EventType);
+            Assert.Equal(first, result.First);
+        }
+        
+        /// <summary>
+        
+        /// Tests that invoke callback invokes callback when callback is not null
+        
+        /// </summary>
+        
+        [Fact]
+        public void InvokeCallback_InvokesCallback_WhenCallbackIsNotNull()
+        {
+            // Arrange
+            JsonOptions options = new JsonOptions();
+            options.WriteNamedValueObjectCallback = e => { e.First = false; };
+            JsonEventArgs e = new JsonEventArgs(null, null, null, options, null, null)
+            {
+                First = true
+            };
+            
+            // Act
+            TypeDef.InvokeCallback(options, e);
+            
+            // Assert
+            Assert.False(e.First);
+        }
+        
+        /// <summary>
+        
+        /// Tests that invoke callback does not invoke callback when callback is null
+        
+        /// </summary>
+        
+        [Fact]
+        public void InvokeCallback_DoesNotInvokeCallback_WhenCallbackIsNull()
+        {
+            // Arrange
+            JsonOptions options = new JsonOptions();
+            options.WriteNamedValueObjectCallback = null;
+            JsonEventArgs e = new JsonEventArgs(null, null, null, options, null, null)
+            {
+                First = true
+            };
+            
+            // Act
+            TypeDef.InvokeCallback(options, e);
+            
+            // Assert
+            Assert.True(e.First);
+        }
+        
+        [Fact]
+        public void InvokeCallback_ReturnsNull_WhenCallbackIsNull()
+        {
+            // Arrange
+            TextWriter writer = new StringWriter();
+            object component = new object();
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+            bool first = true;
+            string name = "TestName";
+            object value = new object();
+            
+            // Act
+            JsonEventArgs result = TypeDef.InvokeCallback(writer, component, objectGraph, options, first, name, value);
+            
+            // Assert
+            Assert.Null(result);
+        }
+        
+        [Fact]
+        public void InvokeCallback_ReturnsJsonEventArgs_WhenCallbackIsNotNull()
+        {
+            // Arrange
+            TextWriter writer = new StringWriter();
+            object component = new object();
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+            options.WriteNamedValueObjectCallback = e => { e.First = false; };
+            bool first = true;
+            string name = "TestName";
+            object value = new object();
+            
+            // Act
+            JsonEventArgs result = TypeDef.InvokeCallback(writer, component, objectGraph, options, first, name, value);
+            
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(JsonEventType.WriteNamedValueObject, result.EventType);
+            Assert.False(result.First);
         }
     }
 }
