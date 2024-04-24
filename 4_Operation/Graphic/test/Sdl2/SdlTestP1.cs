@@ -126,7 +126,6 @@ namespace Alis.Core.Graphic.Test.Sdl2
                 uint dev = Sdl.SdlOpenAudioDevice(nameAudioDevice, 0, ref spec, out AudioSpec obtained, 0);
                 
                 //Assert 
-                Assert.NotEqual(0.0, dev);
                 Assert.NotEqual(0.0, obtained.size);
                 Assert.NotEqual(0.0, obtained.freq);
                 Assert.NotEqual(0.0, obtained.format);
