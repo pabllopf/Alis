@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Country.cs
+//  File:Customer.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,17 +27,39 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Data.Test.Json
+using System;
+
+namespace Alis.Core.Aspect.Data.Test.Json.Sample
 {
     /// <summary>
-    ///     The country class
+    ///     The customer class
     /// </summary>
-    public class Country
+    public class Customer
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Customer" /> class
+        /// </summary>
+        public Customer() => Id = Guid.NewGuid();
+        
+        /// <summary>
+        ///     Gets the value of the id
+        /// </summary>
+        public Guid Id { get; }
+        
+        /// <summary>
+        ///     Gets or sets the value of the index
+        /// </summary>
+        public int Index { get; set; }
+        
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; }
+        
+        /// <summary>
+        ///     Gets or sets the value of the addresses
+        /// </summary>
+        public Address[] Addresses { get; set; }
         
         /// <summary>
         ///     Returns the string

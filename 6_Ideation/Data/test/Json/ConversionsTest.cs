@@ -169,7 +169,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string input = "Monday";
             
             // Act
-            bool result = Conversions.StringToEnum(type, names, values, input, out object value);
+            bool result = Conversions.TryStringToEnum(type, names, values, input, out object value);
             
             // Assert
             Assert.True(result);
@@ -3019,6 +3019,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(0, value);
         }
         
+        /// <summary>
+        /// Tests that convert to enum returns enum when value is int
+        /// </summary>
         [Fact]
         public void ConvertToEnum_ReturnsEnum_WhenValueIsInt()
         {
@@ -3027,12 +3030,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object value = 1;
             
             // Act
-            var result = Conversions.ConvertToEnum(enumType, value);
+            object result = Conversions.ConvertToEnum(enumType, value);
             
             // Assert
             Assert.Equal(DayOfWeek.Monday, result);
         }
         
+        /// <summary>
+        /// Tests that convert to enum returns enum when value is string
+        /// </summary>
         [Fact]
         public void ConvertToEnum_ReturnsEnum_WhenValueIsString()
         {
@@ -3041,12 +3047,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object value = "Sunday";
             
             // Act
-            var result = Conversions.ConvertToEnum(enumType, value);
+            object result = Conversions.ConvertToEnum(enumType, value);
             
             // Assert
             Assert.Equal(DayOfWeek.Sunday, result);
         }
         
+        /// <summary>
+        /// Tests that convert to enum returns null when value is invalid
+        /// </summary>
         [Fact]
         public void ConvertToEnum_ReturnsNull_WhenValueIsInvalid()
         {
@@ -3055,12 +3064,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object value = "InvalidDay";
             
             // Act
-            var result = Conversions.ConvertToEnum(enumType, value);
+            object result = Conversions.ConvertToEnum(enumType, value);
             
             // Assert
             Assert.Equal(DayOfWeek.Sunday ,result);
         }
         
+        /// <summary>
+        /// Tests that convert to enum returns null when enum type is not enum
+        /// </summary>
         [Fact]
         public void ConvertToEnum_ReturnsNull_WhenEnumTypeIsNotEnum()
         {

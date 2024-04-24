@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Data.Test.Json.Sample;
 using Xunit;
 
 namespace Alis.Core.Aspect.Data.Test.Json

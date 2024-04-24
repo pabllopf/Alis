@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Address.cs
+//  File:SampleClass2.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,27 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Data.Test.Json
+using Alis.Core.Aspect.Data.Json;
+
+namespace Alis.Core.Aspect.Data.Test.Json.Sample
 {
     /// <summary>
-    ///     The address class
+    ///     The sample class class
     /// </summary>
-    public class Address
+    public class SampleClass2
     {
         /// <summary>
-        ///     Gets or sets the value of the city
+        ///     Gets or sets the value of the sample property
         /// </summary>
-        public City City { get; set; }
-        
-        /// <summary>
-        ///     Gets or sets the value of the zip code
-        /// </summary>
-        public int ZipCode { get; set; }
-        
-        /// <summary>
-        ///     Returns the string
-        /// </summary>
-        /// <returns>The string</returns>
-        public override string ToString() => ZipCode.ToString();
+        [JsonPropertyName("sample")]
+        public string SampleProperty { get; set; }
     }
 }

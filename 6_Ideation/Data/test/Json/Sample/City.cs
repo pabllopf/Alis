@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DummyClass.cs
+//  File:City.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,24 +27,27 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.ComponentModel;
-
-namespace Alis.Core.Aspect.Data.Test.Json
+namespace Alis.Core.Aspect.Data.Test.Json.Sample
 {
     /// <summary>
-    ///     The dummy class
+    ///     The city class
     /// </summary>
-    public class DummyClass
+    public class City
     {
         /// <summary>
-        ///     Gets or sets the value of the dummy property
+        ///     Gets or sets the value of the name
         /// </summary>
-        [DefaultValue("DefaultValue")]
-        public string DummyProperty { get; set; }
+        public string Name { get; set; }
         
         /// <summary>
-        ///     Gets or sets the value of the another dummy property
+        ///     Gets or sets the value of the country
         /// </summary>
-        public string AnotherDummyProperty { get; set; }
+        public Country Country { get; set; }
+        
+        /// <summary>
+        ///     Returns the string
+        /// </summary>
+        /// <returns>The string</returns>
+        public override string ToString() => Name;
     }
 }

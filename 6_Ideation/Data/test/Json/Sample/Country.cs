@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DummyClassWithoutAttribute.cs
+//  File:Country.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,16 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Data.Test.Json
+namespace Alis.Core.Aspect.Data.Test.Json.Sample
 {
     /// <summary>
-    ///     The dummy class without attribute class
+    ///     The country class
     /// </summary>
-    public class DummyClassWithoutAttribute
+    public class Country
     {
         /// <summary>
-        ///     Gets or sets the value of the property without attribute
+        ///     Gets or sets the value of the name
         /// </summary>
-        public string PropertyWithoutAttribute { get; set; }
+        public string Name { get; set; }
+        
+        /// <summary>
+        ///     Returns the string
+        /// </summary>
+        /// <returns>The string</returns>
+        public override string ToString() => Name;
     }
 }

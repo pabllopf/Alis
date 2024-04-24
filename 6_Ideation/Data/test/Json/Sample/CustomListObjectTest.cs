@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:MyClassSample.cs
+//  File:CustomListObjectTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,41 +27,43 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Data.Test.Json
+using System;
+using System.Collections;
+using Alis.Core.Aspect.Data.Json;
+using Xunit;
+
+namespace Alis.Core.Aspect.Data.Test.Json.Sample
 {
     /// <summary>
-    ///     The my class sample class
+    ///     The custom list object test class
     /// </summary>
-    public class MyClassSample
+    public class CustomListObjectTest
     {
         /// <summary>
-        ///     The my field
+        ///     Tests that clear list is empty does not throw exception
         /// </summary>
-        public readonly string MyField = "Sample";
+        [Fact]
+        public void Clear_ListIsEmpty_DoesNotThrowException()
+        {
+            CustomListObject customListObject = new CustomListObject
+            {
+                List = new ArrayList()
+            };
+            customListObject.Clear();
+            Assert.Empty(customListObject.List as IList ?? throw new InvalidOperationException());
+        }
         
         /// <summary>
-        ///     The my field
+        ///     Tests that clear list is not empty clears list
         /// </summary>
-        public string MyField2 = "Sample";
-        
-        /// <summary>
-        ///     The my field
-        /// </summary>
-        public int MyField3 = 10;
-        
-        /// <summary>
-        ///     Gets or sets the value of the my property
-        /// </summary>
-        public string MyProperty { get; set; } = "Sample";
-        
-        /// <summary>
-        ///     Gets or sets the value of the my property 2
-        /// </summary>
-        public string MyProperty2 { get; set; } = "Sample";
-        
-        /// <summary>
-        ///     Gets or sets the value of the my property 3
-        /// </summary>
-        public int MyProperty3 { get; set; } = 10;
+        [Fact]
+        public void Clear_ListIsNotEmpty_ClearsList()
+        {
+            CustomListObject customListObject = new CustomListObject();
+            customListObject.Clear();
+            customListObject.List = new ArrayList {1, 2, 3};
+            customListObject.Clear();
+            Assert.Empty(customListObject.List as IList ?? throw new InvalidOperationException());
+        }
     }
 }

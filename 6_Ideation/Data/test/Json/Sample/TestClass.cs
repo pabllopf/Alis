@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SampleClass.cs
+//  File:TestClass.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,29 +27,39 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Data.Json;
+using System.Text.Json.Serialization;
 
-namespace Alis.Core.Aspect.Data.Test.Json
+namespace Alis.Core.Aspect.Data.Test.Json.Sample
 {
     /// <summary>
-    ///     The sample class
+    /// The test class
     /// </summary>
-    public class SampleClass
+    public class TestClass
     {
         /// <summary>
-        ///     Gets or sets the value of the sample property
+        /// Gets or sets the value of the property with ignore when serializing
         /// </summary>
-        [JsonPropertyName("SamplePropertyName")]
-        public string SampleProperty { get; set; }
+        [JsonPropertyName("test")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public string PropertyWithIgnoreWhenSerializing { get; set; }
         
         /// <summary>
-        ///     Gets or sets the value of the property without name
+        /// Gets or sets the value of the property with ignore when deserializing
         /// </summary>
-        public string PropertyWithoutName { get; set; }
+        [JsonPropertyName("test")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
+        public string PropertyWithIgnoreWhenDeserializing { get; set; }
         
         /// <summary>
-        ///     Gets or sets the value of the property without attributes
+        /// Gets or sets the value of the property without ignore when serializing
         /// </summary>
-        public string PropertyWithoutAttributes { get; set; }
+        [JsonPropertyName("test")]
+        public string PropertyWithoutIgnoreWhenSerializing { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the property without ignore when deserializing
+        /// </summary>
+        [JsonPropertyName("test")]
+        public string PropertyWithoutIgnoreWhenDeserializing { get; set; }
     }
 }

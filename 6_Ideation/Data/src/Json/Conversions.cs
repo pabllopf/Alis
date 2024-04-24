@@ -605,27 +605,19 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Describes whether string to enum
+        /// Tries to convert a string to an enum value.
         /// </summary>
-        /// <param name="type">The type</param>
-        /// <param name="names">The names</param>
-        /// <param name="values">The values</param>
-        /// <param name="input">The input</param>
-        /// <param name="value">The value</param>
-        /// <returns>The bool</returns>
-        internal static bool StringToEnum(Type type, string[] names, Array values, string input, out object value)
+        /// <param name="type">The type of the enum.</param>
+        /// <param name="names">The names of the enum values.</param>
+        /// <param name="values">The values of the enum.</param>
+        /// <param name="input">The input string to convert.</param>
+        /// <param name="value">The converted enum value if the conversion is successful, otherwise the default value of the enum type.</param>
+        /// <returns>True if the conversion is successful, otherwise false.</returns>
+        internal static bool TryStringToEnum(Type type, string[] names, Array values, string input, out object value)
         {
-            if (TryMatchNames(names, values, input, out value))
-            {
-                return true;
-            }
-            
-            if (TryMatchValues(values, input, out value))
-            {
-                return true;
-            }
-            
-            if (TryHandleDigitOrSignStart(type, input, out value))
+            if (TryMatchNames(names, values, input, out value) ||
+                TryMatchValues(values, input, out value) ||
+                TryHandleDigitOrSignStart(type, input, out value))
             {
                 return true;
             }
@@ -721,21 +713,55 @@ namespace Alis.Core.Aspect.Data.Json
             return true;
         }
         
+        /// <summary>
+        /// Enums the to object using the specified enum type
+        /// </summary>
+        /// <param name="enumType">The enum type</param>
+        /// <param name="value">The value</param>
+        /// <returns>The object</returns>
         internal static object EnumToObject(Type enumType, object value)
         {
-            if (enumType == null || value == null || !enumType.IsEnum)
+            if (IsInvalid(enumType, value))
             {
                 return null;
             }
             
             if (value is string stringValue)
             {
-                return Enum.Parse(enumType, stringValue);
+                return ParseEnum(enumType, stringValue);
             }
             
             return ConvertToEnum(enumType, value);
         }
-
+        
+        /// <summary>
+        /// Describes whether is invalid
+        /// </summary>
+        /// <param name="enumType">The enum type</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        internal static bool IsInvalid(Type enumType, object value)
+        {
+            return enumType == null || value == null || !enumType.IsEnum;
+        }
+        
+        /// <summary>
+        /// Parses the enum using the specified enum type
+        /// </summary>
+        /// <param name="enumType">The enum type</param>
+        /// <param name="stringValue">The string value</param>
+        /// <returns>The object</returns>
+        internal static object ParseEnum(Type enumType, string stringValue)
+        {
+            return Enum.Parse(enumType, stringValue);
+        }
+        
+        /// <summary>
+        /// Converts the to enum using the specified enum type
+        /// </summary>
+        /// <param name="enumType">The enum type</param>
+        /// <param name="value">The value</param>
+        /// <returns>The object</returns>
         internal static object ConvertToEnum(Type enumType, object value)
         {
             return Type.GetTypeCode(Enum.GetUnderlyingType(enumType)) switch
@@ -906,7 +932,7 @@ namespace Alis.Core.Aspect.Data.Json
         {
             if (!type.IsDefined(typeof(FlagsAttribute), true) && (input.IndexOfAny(EnumSeparators) < 0))
             {
-                return StringToEnum(type, names, values, input, out value);
+                return TryStringToEnum(type, names, values, input, out value);
             }
             
             string[] tokens = input.Split(EnumSeparators, StringSplitOptions.RemoveEmptyEntries);
@@ -963,7 +989,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="token">The token</param>
         /// <param name="tokenValue">The token value</param>
         /// <returns>The bool</returns>
-        internal static bool TryConvertTokenToEnumValue(Type type, string[] names, Array values, string token, out object tokenValue) => StringToEnum(type, names, values, token, out tokenValue);
+        internal static bool TryConvertTokenToEnumValue(Type type, string[] names, Array values, string token, out object tokenValue) => TryStringToEnum(type, names, values, token, out tokenValue);
         
         /// <summary>
         ///     Converts the token value to ulong using the specified token value

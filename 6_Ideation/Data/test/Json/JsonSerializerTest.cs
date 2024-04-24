@@ -40,6 +40,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Xml.Serialization;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Data.Test.Json.Sample;
 using Xunit;
 using Xunit.Sdk;
 
@@ -5790,6 +5791,95 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             // Assert
             Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that format and set type name null object no changes to dictionary
+        /// </summary>
+        [Fact]
+        public void FormatAndSetTypeName_NullObject_NoChangesToDictionary()
+        {
+            // Arrange
+            Dictionary<string, object> dictionary = new Dictionary<string, object> {{"SerializationTypeToken", "InitialValue"}};
+            
+            // Act
+            JsonSerializer.FormatAndSetTypeName(dictionary, null);
+            
+            // Assert
+            Assert.Single(dictionary);
+            Assert.Equal("InitialValue", dictionary["SerializationTypeToken"]);
+        }
+        
+        /// <summary>
+        /// Tests that format and set type name non empty string changes to dictionary
+        /// </summary>
+        [Fact]
+        public void FormatAndSetTypeName_NonEmptyString_ChangesToDictionary()
+        {
+            // Arrange
+            Dictionary<string, object> dictionary = new Dictionary<string, object> {{"SerializationTypeToken", "InitialValue"}};
+            
+            // Act
+            JsonSerializer.FormatAndSetTypeName(dictionary, "NewValue");
+            
+            // Assert
+            Assert.Equal(2, dictionary.Count);
+            Assert.Equal("InitialValue", dictionary["SerializationTypeToken"]);
+        }
+        
+        /// <summary>
+        /// Tests that format and set type name empty string no changes to dictionary
+        /// </summary>
+        [Fact]
+        public void FormatAndSetTypeName_EmptyString_NoChangesToDictionary()
+        {
+            // Arrange
+            Dictionary<string, object> dictionary = new Dictionary<string, object> {{"SerializationTypeToken", "InitialValue"}};
+            
+            // Act
+            JsonSerializer.FormatAndSetTypeName(dictionary, "");
+            
+            // Assert
+            Assert.Single(dictionary);
+            Assert.Equal("InitialValue", dictionary["SerializationTypeToken"]);
+        }
+        
+        [Fact]
+        public void IsEscapeCharacter_ReturnsTrue_ForEscapeCharacters()
+        {
+            Assert.True(JsonSerializer.IsEscapeCharacter('/'));
+            Assert.True(JsonSerializer.IsEscapeCharacter('\\'));
+            Assert.True(JsonSerializer.IsEscapeCharacter('"'));
+        }
+        
+        [Fact]
+        public void IsEscapeCharacter_ReturnsFalse_ForNonEscapeCharacters()
+        {
+            Assert.False(JsonSerializer.IsEscapeCharacter('a'));
+            Assert.False(JsonSerializer.IsEscapeCharacter('1'));
+            Assert.False(JsonSerializer.IsEscapeCharacter(' '));
+        }
+        
+        [Fact]
+        public void IsUnicodeCharacter_ReturnsTrue_ForUnicodeCharacter()
+        {
+            Assert.True(JsonSerializer.IsUnicodeCharacter('u'));
+        }
+        
+        [Fact]
+        public void IsUnicodeCharacter_ReturnsFalse_ForNonUnicodeCharacter()
+        {
+            Assert.False(JsonSerializer.IsUnicodeCharacter('a'));
+            Assert.False(JsonSerializer.IsUnicodeCharacter('1'));
+            Assert.False(JsonSerializer.IsUnicodeCharacter(' '));
+        }
+        
+        [Fact]
+        public void AppendDefaultCharacter_AppendsCorrectly()
+        {
+            StringBuilder sb = new StringBuilder();
+            JsonSerializer.AppendDefaultCharacter(sb, 'a');
+            Assert.Equal("\\a", sb.ToString());
         }
     }
 }
