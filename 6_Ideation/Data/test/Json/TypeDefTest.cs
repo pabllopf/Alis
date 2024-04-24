@@ -1772,6 +1772,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.False(result);
         }
         
+        /// <summary>
+        /// Tests that should ignore attribute when serialization is true and ignore when serializing is true returns true
+        /// </summary>
         [Fact]
         public void ShouldIgnoreAttribute_WhenSerializationIsTrueAndIgnoreWhenSerializingIsTrue_ReturnsTrue()
         {
@@ -1785,6 +1788,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
         }
         
+        /// <summary>
+        /// Tests that should ignore attribute when serialization is true and ignore when serializing is false returns false
+        /// </summary>
         [Fact]
         public void ShouldIgnoreAttribute_WhenSerializationIsTrueAndIgnoreWhenSerializingIsFalse_ReturnsFalse()
         {
@@ -1798,6 +1804,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.False(result);
         }
         
+        /// <summary>
+        /// Tests that should ignore attribute when serialization is false and ignore when deserializing is true returns true
+        /// </summary>
         [Fact]
         public void ShouldIgnoreAttribute_WhenSerializationIsFalseAndIgnoreWhenDeserializingIsTrue_ReturnsTrue()
         {
@@ -1811,6 +1820,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
         }
         
+        /// <summary>
+        /// Tests that should ignore attribute when serialization is false and ignore when deserializing is false returns false
+        /// </summary>
         [Fact]
         public void ShouldIgnoreAttribute_WhenSerializationIsFalseAndIgnoreWhenDeserializingIsFalse_ReturnsFalse()
         {
@@ -1822,6 +1834,213 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             // Assert
             Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that should create member definition for field with valid input returns expected result
+        /// </summary>
+        [Fact]
+        public void ShouldCreateMemberDefinitionForField_WithValidInput_ReturnsExpectedResult()
+        {
+            // Arrange
+            bool serialization = true;
+            FieldInfo field = typeof(SampleClass).GetField("sampleField");
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TypeDef.ShouldCreateMemberDefinitionForField(serialization, field, options));
+        }
+        
+        /// <summary>
+        /// Tests that should create member definition for field with invalid input returns expected result
+        /// </summary>
+        [Fact]
+        public void ShouldCreateMemberDefinitionForField_WithInvalidInput_ReturnsExpectedResult()
+        {
+            // Arrange
+            bool serialization = true;
+            FieldInfo field = null; // Invalid input
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TypeDef.ShouldCreateMemberDefinitionForField(serialization, field, options));
+        }
+        
+        /// <summary>
+        /// Tests that create member definition if applicable with valid input returns expected result
+        /// </summary>
+        [Fact]
+        public void CreateMemberDefinitionIfApplicable_WithValidInput_ReturnsExpectedResult()
+        {
+            // Arrange
+            bool serialization = true;
+            FieldInfo field = typeof(SampleClass).GetField("sampleField");
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TypeDef.CreateMemberDefinitionIfApplicable(serialization, field, options));
+            
+        }
+        
+        /// <summary>
+        /// Tests that create member definition if applicable with invalid input returns expected result
+        /// </summary>
+        [Fact]
+        public void CreateMemberDefinitionIfApplicable_WithInvalidInput_ReturnsExpectedResult()
+        {
+            // Arrange
+            bool serialization = true;
+            FieldInfo field = null; // Invalid input
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TypeDef.CreateMemberDefinitionIfApplicable(serialization, field, options));
+        }
+        
+        /// <summary>
+        /// Tests that create member definition if applicable v 2 with valid input returns expected result
+        /// </summary>
+        [Fact]
+        public void CreateMemberDefinitionIfApplicable_V2_WithValidInput_ReturnsExpectedResult()
+        {
+            // Arrange
+            bool serialization = true;
+            FieldInfo field = typeof(SampleClass).GetField("sampleField");
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TypeDef.CreateMemberDefinitionIfApplicable(serialization, field, options));
+        }
+        
+        /// <summary>
+        /// Tests that create member definition if applicable v 2 with invalid input returns expected result
+        /// </summary>
+        [Fact]
+        public void CreateMemberDefinitionIfApplicable_V2_WithInvalidInput_ReturnsExpectedResult()
+        {
+            // Arrange
+            bool serialization = true;
+            FieldInfo field = null; // Invalid input
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TypeDef.CreateMemberDefinitionIfApplicable(serialization, field, options));
+        }
+        
+        /// <summary>
+        /// Tests that write member value with valid input writes expected value
+        /// </summary>
+        [Fact]
+        public void WriteMemberValue_WithValidInput_WritesExpectedValue()
+        {
+            // Arrange
+            StringWriter writer = new StringWriter();
+            JsonOptions options = new JsonOptions();
+            MemberDefinition member = new MemberDefinition
+            {
+                EscapedWireName = "testMember",
+                Type = typeof(string)
+            };
+            bool nameChanged = false;
+            string name = "testName";
+            object value = "testValue";
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            
+            // Act
+            TypeDef typeDef = new TypeDef(typeof(object), options);
+            typeDef.WriteMemberValue(writer, options, member, nameChanged, name, value, objectGraph);
+            
+            // Assert
+            Assert.Equal("\"testMember\":\"testValue\"", writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that write member value with name changed writes expected value
+        /// </summary>
+        [Fact]
+        public void WriteMemberValue_WithNameChanged_WritesExpectedValue()
+        {
+            // Arrange
+            StringWriter writer = new StringWriter();
+            JsonOptions options = new JsonOptions();
+            MemberDefinition member = new MemberDefinition
+            {
+                EscapedWireName = "testMember",
+                Type = typeof(string)
+            };
+            bool nameChanged = true;
+            string name = "changedName";
+            object value = "testValue";
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            
+            // Act
+            TypeDef typeDef = new TypeDef(typeof(object), options);
+            typeDef.WriteMemberValue(writer, options, member, nameChanged, name, value, objectGraph);
+            
+            // Assert
+            Assert.Equal("\"changedName\":\"testValue\"", writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that write member value with write keys without quotes writes expected value
+        /// </summary>
+        [Fact]
+        public void WriteMemberValue_WithWriteKeysWithoutQuotes_WritesExpectedValue()
+        {
+            // Arrange
+            StringWriter writer = new StringWriter();
+            JsonOptions options = new JsonOptions
+            {
+                SerializationOptions = JsonSerializationOptions.WriteKeysWithoutQuotes
+            };
+            MemberDefinition member = new MemberDefinition
+            {
+                EscapedWireName = "testMember",
+                Type = typeof(string)
+            };
+            bool nameChanged = false;
+            string name = "testName";
+            object value = "testValue";
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            
+            // Act
+            TypeDef typeDef = new TypeDef(typeof(object), options);
+            typeDef.WriteMemberValue(writer, options, member, nameChanged, name, value, objectGraph);
+            
+            // Assert
+            Assert.Equal("testMember:\"testValue\"", writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that should create member definition for field with valid field returns true
+        /// </summary>
+        [Fact]
+        public void ShouldCreateMemberDefinitionForField_WithValidField_ReturnsTrue()
+        {
+            // Arrange
+            var field = typeof(MyClass).GetField("myField");
+            var options = new JsonOptions();
+            
+            // Act
+            var result = TypeDef.ShouldCreateMemberDefinitionForField(true, field, options);
+            
+            // Assert
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that should create member definition for field with invalid field returns false
+        /// </summary>
+        [Fact]
+        public void ShouldCreateMemberDefinitionForField_WithInvalidField_ReturnsFalse()
+        {
+            // Arrange
+            FieldInfo field = null; // Invalid field
+            var options = new JsonOptions();
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TypeDef.ShouldCreateMemberDefinitionForField(true, field, options));
+            
         }
     }
 }

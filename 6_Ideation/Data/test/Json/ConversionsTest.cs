@@ -2962,6 +2962,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(0, value);
         }
         
+        /// <summary>
+        /// Tests that test try handle digit or sign start with digit start
+        /// </summary>
         [Fact]
         public void TestTryHandleDigitOrSignStart_WithDigitStart()
         {
@@ -2978,6 +2981,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(0, value);
         }
         
+        /// <summary>
+        /// Tests that test try handle digit or sign start with sign start
+        /// </summary>
         [Fact]
         public void TestTryHandleDigitOrSignStart_WithSignStart()
         {
@@ -2994,6 +3000,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(0, value);
         }
         
+        /// <summary>
+        /// Tests that test try handle digit or sign start with non digit non sign start
+        /// </summary>
         [Fact]
         public void TestTryHandleDigitOrSignStart_WithNonDigitNonSignStart()
         {

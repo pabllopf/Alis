@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -32,9 +32,15 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Data.Test.Json
 {
+    /// <summary>
+    /// The list object test class
+    /// </summary>
     public class ListObjectTest
     {
         
+        /// <summary>
+        /// Tests that test add method
+        /// </summary>
         [Fact]
         public void TestAddMethod()
         {
@@ -51,6 +57,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // The exact assertion will depend on how the Add method is implemented
         }
         
+        /// <summary>
+        /// Tests that test clear method
+        /// </summary>
         [Fact]
         public void TestClearMethod()
         {

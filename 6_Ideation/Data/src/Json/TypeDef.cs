@@ -91,11 +91,35 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
+        ///     Compares the wire name with the specified key.
+        /// </summary>
+        /// <param name="def">The member definition</param>
+        /// <param name="key">The key</param>
+        /// <returns>True if the wire name matches the key, false otherwise</returns>
+        internal static bool CompareWireName(MemberDefinition def, string key)
+        {
+            return string.Compare(def.WireName, key, StringComparison.OrdinalIgnoreCase) == 0;
+        }
+        
+        /// <summary>
+        ///     Finds the deserialization member using the specified key.
+        /// </summary>
+        /// <param name="key">The key</param>
+        /// <returns>The member definition</returns>
+        internal MemberDefinition FindDeserializationMember(string key)
+        {
+            return _deserializationMembers.FirstOrDefault(def => CompareWireName(def, key));
+        }
+
+        /// <summary>
         ///     Gets the deserialization member using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         /// <returns>The member definition</returns>
-        internal MemberDefinition GetDeserializationMember(string key) => key == null ? null : _deserializationMembers.FirstOrDefault(def => string.Compare(def.WireName, key, StringComparison.OrdinalIgnoreCase) == 0);
+        internal MemberDefinition GetDeserializationMember(string key)
+        {
+            return key == null ? null : FindDeserializationMember(key);
+        }
         
         /// <summary>
         ///     Applies the entry using the specified dictionary
@@ -147,6 +171,92 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
+        ///     Gets the member value and name.
+        /// </summary>
+        /// <param name="member">The member</param>
+        /// <param name="component">The component</param>
+        /// <returns>The bool, string and object</returns>
+        internal static (bool, string, object) GetMemberValueAndName(MemberDefinition member, object component)
+        {
+            bool nameChanged = false;
+            string name = member.WireName;
+            object value = member.Accessor.Get(component);
+
+            return (nameChanged, name, value);
+        }
+
+        /// <summary>
+        ///     Invokes the callback if present.
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="component">The component</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <param name="first">The first</param>
+        /// <param name="name">The name</param>
+        /// <param name="value">The value</param>
+        /// <returns>The JsonEventArgs</returns>
+        internal static JsonEventArgs InvokeCallback(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options, bool first, string name, object value)
+        {
+            if (options.WriteNamedValueObjectCallback == null)
+            {
+                return null;
+            }
+            
+            JsonEventArgs e = new JsonEventArgs(writer, value, objectGraph, options, name, component)
+            {
+                EventType = JsonEventType.WriteNamedValueObject,
+                First = first
+            };
+            options.WriteNamedValueObjectCallback(e);
+            return e;
+        }
+
+/// <summary>
+///     Handles the event and returns updated values.
+/// </summary>
+/// <param name="e">The JsonEventArgs</param>
+/// <param name="first">The first</param>
+/// <param name="name">The name</param>
+/// <param name="value">The value</param>
+/// <returns>The bool, bool, string and object</returns>
+internal static (bool, bool, string, object) HandleEvent(JsonEventArgs e, bool first, string name, object value)
+{
+    if (e != null)
+    {
+        first = e.First;
+        if (e.Handled)
+        {
+            return (first, false, name, value);
+        }
+
+        bool nameChanged = name != e.Name;
+        name = e.Name;
+        value = e.Value;
+        return (first, nameChanged, name, value);
+    }
+
+    return (first, false, name, value);
+}
+
+/// <summary>
+///     Handles the callback if present.
+/// </summary>
+/// <param name="writer">The writer</param>
+/// <param name="component">The component</param>
+/// <param name="objectGraph">The object graph</param>
+/// <param name="options">The options</param>
+/// <param name="first">The first</param>
+/// <param name="nameChanged">The name changed</param>
+/// <param name="name">The name</param>
+/// <param name="value">The value</param>
+/// <returns>The bool, bool, string and object</returns>
+internal static (bool, bool, string, object) HandleCallback(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options, bool first, bool nameChanged, string name, object value)
+{
+    JsonEventArgs e = InvokeCallback(writer, component, objectGraph, options, first, name, value);
+    return HandleEvent(e, first, name, value);
+}
+        /// <summary>
         ///     Handles the write named value object callback using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>
@@ -155,36 +265,15 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         /// <param name="member">The member</param>
         /// <param name="first">The first</param>
-        /// <returns>The bool bool string object</returns>
+        /// <returns>The bool, bool, string and object</returns>
         internal static (bool, bool, string, object) HandleWriteNamedValueObjectCallback(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options, MemberDefinition member, bool first)
         {
-            bool nameChanged = false;
-            string name = member.WireName;
-            object value = member.Accessor.Get(component);
-            if (options.WriteNamedValueObjectCallback != null)
-            {
-                JsonEventArgs e = new JsonEventArgs(writer, value, objectGraph, options, name, component)
-                {
-                    EventType = JsonEventType.WriteNamedValueObject,
-                    First = first
-                };
-                options.WriteNamedValueObjectCallback(e);
-                first = e.First;
-                if (e.Handled)
-                {
-                    return (first, false, name, value);
-                }
-                
-                nameChanged = name != e.Name;
-                name = e.Name;
-                value = e.Value;
-            }
-            
-            return (first, nameChanged, name, value);
+            var (nameChanged, name, value) = GetMemberValueAndName(member, component);
+            return HandleCallback(writer, component, objectGraph, options, first, nameChanged, name, value);
         }
         
         /// <summary>
-        ///     Describes whether this instance should skip value
+        /// Describes whether this instance should skip value
         /// </summary>
         /// <param name="options">The options</param>
         /// <param name="member">The member</param>
@@ -192,40 +281,57 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         internal bool ShouldSkipValue(JsonOptions options, MemberDefinition member, object value)
         {
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipNullPropertyValues))
-            {
-                if (value == null)
-                {
-                    return true;
-                }
-            }
-            
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipZeroValueTypes))
-            {
-                if (member.IsZeroValue(value))
-                {
-                    return true;
-                }
-            }
-            
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipNullDateTimeValues))
-            {
-                if (member.IsNullDateTimeValue(value))
-                {
-                    return true;
-                }
-            }
-            
-            bool skipDefaultValues = options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipDefaultValues);
-            if (skipDefaultValues && member.HasDefaultValue)
-            {
-                if (member.EqualsDefaultValue(value))
-                {
-                    return true;
-                }
-            }
-            
-            return false;
+            return ShouldSkipNullPropertyValues(options, value) ||
+                   ShouldSkipZeroValueTypes(options, member, value) ||
+                   ShouldSkipNullDateTimeValues(options, member, value) ||
+                   ShouldSkipDefaultValues(options, member, value);
+        }
+
+        /// <summary>
+        /// Describes whether this instance should skip null property values
+        /// </summary>
+        /// <param name="options">The options</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        internal bool ShouldSkipNullPropertyValues(JsonOptions options, object value)
+        {
+            return options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipNullPropertyValues) && value == null;
+        }
+
+        /// <summary>
+        /// Describes whether this instance should skip zero value types
+        /// </summary>
+        /// <param name="options">The options</param>
+        /// <param name="member">The member</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        internal bool ShouldSkipZeroValueTypes(JsonOptions options, MemberDefinition member, object value)
+        {
+            return options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipZeroValueTypes) && member.IsZeroValue(value);
+        }
+
+        /// <summary>
+        /// Describes whether this instance should skip null date time values
+        /// </summary>
+        /// <param name="options">The options</param>
+        /// <param name="member">The member</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        internal bool ShouldSkipNullDateTimeValues(JsonOptions options, MemberDefinition member, object value)
+        {
+            return options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipNullDateTimeValues) && member.IsNullDateTimeValue(value);
+        }
+
+        /// <summary>
+        /// Describes whether this instance should skip default values
+        /// </summary>
+        /// <param name="options">The options</param>
+        /// <param name="member">The member</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        internal bool ShouldSkipDefaultValues(JsonOptions options, MemberDefinition member, object value)
+        {
+            return options.SerializationOptions.HasFlag(JsonSerializationOptions.SkipDefaultValues) && member.HasDefaultValue && member.EqualsDefaultValue(value);
         }
         
         /// <summary>
@@ -439,7 +545,35 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Enumerates the definitions using reflection using the specified serialization
+        ///     Enumerates the property definitions using reflection.
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="type">The type</param>
+        /// <param name="options">The options</param>
+        /// <returns>An enumerable of member definition</returns>
+        internal static IEnumerable<MemberDefinition> EnumeratePropertyDefinitions(bool serialization, Type type, JsonOptions options)
+        {
+            return HandlePropertySerialization(serialization, type, options);
+        }
+
+        /// <summary>
+        ///     Enumerates the field definitions using reflection if SerializeFields option is enabled.
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="type">The type</param>
+        /// <param name="options">The options</param>
+        /// <returns>An enumerable of member definition</returns>
+        internal static IEnumerable<MemberDefinition> EnumerateFieldDefinitions(bool serialization, Type type, JsonOptions options)
+        {
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SerializeFields))
+            {
+                return HandleFieldSerialization(serialization, type, options);
+            }
+            return Enumerable.Empty<MemberDefinition>();
+        }
+
+        /// <summary>
+        ///     Enumerates the definitions using reflection.
         /// </summary>
         /// <param name="serialization">The serialization</param>
         /// <param name="type">The type</param>
@@ -447,30 +581,30 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>An enumerable of member definition</returns>
         internal static IEnumerable<MemberDefinition> EnumerateDefinitionsUsingReflection(bool serialization, Type type, JsonOptions options)
         {
-            foreach (MemberDefinition member in HandlePropertySerialization(serialization, type, options))
-            {
-                yield return member;
-            }
-            
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.SerializeFields))
-            {
-                foreach (MemberDefinition member in HandleFieldSerialization(serialization, type, options))
-                {
-                    yield return member;
-                }
-            }
+            return EnumeratePropertyDefinitions(serialization, type, options)
+                .Concat(EnumerateFieldDefinitions(serialization, type, options));
         }
-        
+                
         /// <summary>
-        ///     Handles the property serialization using the specified serialization
+        ///     Gets the properties from the specified type.
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <returns>An enumerable of PropertyInfo</returns>
+        internal static IEnumerable<PropertyInfo> GetPropertiesFromType(Type type)
+        {
+            return type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+        }
+
+        /// <summary>
+        ///     Creates member definitions from the specified properties.
         /// </summary>
         /// <param name="serialization">The serialization</param>
-        /// <param name="type">The type</param>
+        /// <param name="properties">The properties</param>
         /// <param name="options">The options</param>
         /// <returns>An enumerable of member definition</returns>
-        internal static IEnumerable<MemberDefinition> HandlePropertySerialization(bool serialization, Type type, JsonOptions options)
+        internal static IEnumerable<MemberDefinition> CreateMemberDefinitionsFromProperties(bool serialization, IEnumerable<PropertyInfo> properties, JsonOptions options)
         {
-            foreach (PropertyInfo info in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            foreach (PropertyInfo info in properties)
             {
                 if (ShouldSkipProperty(serialization, info, options))
                 {
@@ -480,7 +614,25 @@ namespace Alis.Core.Aspect.Data.Json
                 yield return CreateMemberDefinition(serialization, info);
             }
         }
-        
+
+        /// <summary>
+        ///     Handles the property serialization using the specified serialization
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="type">The type</param>
+        /// <param name="options">The options</param>
+        /// <returns>An enumerable of member definition</returns>
+        internal static IEnumerable<MemberDefinition> HandlePropertySerialization(bool serialization, Type type, JsonOptions options)
+        {
+            if (type == null)
+            {
+                return Enumerable.Empty<MemberDefinition>();
+            }
+            
+            IEnumerable<PropertyInfo> properties = GetPropertiesFromType(type);
+            return CreateMemberDefinitionsFromProperties(serialization, properties, options);
+        }
+                
         /// <summary>
         ///     Describes whether should skip property
         /// </summary>
@@ -490,15 +642,10 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         internal static bool ShouldSkipProperty(bool serialization, PropertyInfo info, JsonOptions options)
         {
-            if (CheckJsonAttribute(serialization, info, options) ||
-                CheckXmlIgnoreAttribute(info, options) ||
-                CheckScriptIgnore(info, options) ||
-                CheckSerialization(serialization, info))
-            {
-                return true;
-            }
-            
-            return false;
+            return CheckJsonAttribute(serialization, info, options) ||
+                   CheckXmlIgnoreAttribute(info, options) ||
+                   CheckScriptIgnore(info, options) ||
+                   CheckSerialization(serialization, info);
         }
         
         /// <summary>
@@ -575,21 +722,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         internal static bool CheckSerialization(bool serialization, PropertyInfo info)
         {
-            if (serialization)
-            {
-                if (!info.CanRead)
-                {
-                    return true;
-                }
-                
-                MethodInfo getMethod = info.GetGetMethod();
-                if (getMethod == null || getMethod.GetParameters().Length > 0)
-                {
-                    return true;
-                }
-            }
-            
-            return false;
+            return serialization && (!info.CanRead || info.GetGetMethod() == null || info.GetGetMethod().GetParameters().Length > 0);
         }
         
         /// <summary>
@@ -625,6 +758,82 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
+        ///     Gets the fields from the specified type.
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <returns>An enumerable of FieldInfo</returns>
+        internal static IEnumerable<FieldInfo> GetFieldsFromType(Type type)
+        {
+            return type.GetFields(BindingFlags.Public | BindingFlags.Instance);
+        }
+
+        /// <summary>
+        ///     Creates a member definition for the specified field.
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="field">The field</param>
+        /// <param name="options">The options</param>
+        /// <returns>A member definition</returns>
+        internal static MemberDefinition CreateMemberDefinitionForField(bool serialization, FieldInfo field, JsonOptions options)
+        {
+            if (ShouldSkipField(serialization, field, options))
+            {
+                return null;
+            }
+
+            return CreateMemberDefinition(serialization, field);
+        }
+
+        /// <summary>
+        ///     Checks if a member definition should be created for the specified field.
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="field">The field</param>
+        /// <param name="options">The options</param>
+        /// <returns>True if a member definition should be created, false otherwise</returns>
+        internal static bool ShouldCreateMemberDefinitionForField(bool serialization, FieldInfo field, JsonOptions options)
+        {
+            MemberDefinition memberDefinition = CreateMemberDefinitionForField(serialization, field, options);
+            return memberDefinition != null;
+        }
+
+        /// <summary>
+        ///     Creates a member definition for the specified field if applicable.
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="field">The field</param>
+        /// <param name="options">The options</param>
+        /// <returns>A member definition if one should be created, null otherwise</returns>
+        internal static MemberDefinition CreateMemberDefinitionIfApplicable(bool serialization, FieldInfo field, JsonOptions options)
+        {
+            if (ShouldCreateMemberDefinitionForField(serialization, field, options))
+            {
+                return CreateMemberDefinitionForField(serialization, field, options);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        ///     Creates member definitions from the specified fields.
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="fields">The fields</param>
+        /// <param name="options">The options</param>
+        /// <returns>An enumerable of member definition</returns>
+        internal static IEnumerable<MemberDefinition> CreateMemberDefinitions(bool serialization, IEnumerable<FieldInfo> fields, JsonOptions options)
+        {
+            foreach (FieldInfo field in fields)
+            {
+                MemberDefinition memberDefinition = CreateMemberDefinitionIfApplicable(serialization, field, options);
+                if (memberDefinition != null)
+                {
+                    yield return memberDefinition;
+                }
+            }
+        }
+
+        /// <summary>
         ///     Handles the field serialization using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
@@ -633,15 +842,13 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>An enumerable of member definition</returns>
         internal static IEnumerable<MemberDefinition> HandleFieldSerialization(bool serialization, Type type, JsonOptions options)
         {
-            foreach (FieldInfo info in type.GetFields(BindingFlags.Public | BindingFlags.Instance))
+            if (type == null)
             {
-                if (ShouldSkipField(serialization, info, options))
-                {
-                    continue;
-                }
-                
-                yield return CreateMemberDefinition(serialization, info);
+                return Enumerable.Empty<MemberDefinition>();
             }
+
+            IEnumerable<FieldInfo> fields = GetFieldsFromType(type);
+            return CreateMemberDefinitions(serialization, fields, options);
         }
         
         /// <summary>
@@ -658,26 +865,20 @@ namespace Alis.Core.Aspect.Data.Json
                    ShouldSkipDueToScriptIgnoreAttribute(info, options);
         }
         
-        /// <summary>
-        ///     Describes whether should skip due to json attribute
-        /// </summary>
-        /// <param name="serialization">The serialization</param>
-        /// <param name="info">The info</param>
-        /// <param name="options">The options</param>
-        /// <returns>The bool</returns>
-        private static bool ShouldSkipDueToJsonAttribute(bool serialization, FieldInfo info, JsonOptions options)
-        {
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
-            {
-                JsonPropertyNameAttribute ja = JsonSerializer.GetJsonAttribute(info);
-                if (ja != null)
-                {
-                    return serialization ? ja.IgnoreWhenSerializing : ja.IgnoreWhenDeserializing;
-                }
-            }
-            
-            return false;
-        }
+      /// <summary>
+///     Describes whether should skip due to json attribute
+/// </summary>
+/// <param name="serialization">The serialization</param>
+/// <param name="info">The info</param>
+/// <param name="options">The options</param>
+/// <returns>The bool</returns>
+internal static bool ShouldSkipDueToJsonAttribute(bool serialization, FieldInfo info, JsonOptions options)
+{
+    JsonPropertyNameAttribute jsonAttribute = JsonSerializer.GetJsonAttribute(info);
+    return options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute) &&
+           jsonAttribute != null &&
+           (serialization ? jsonAttribute.IgnoreWhenSerializing : jsonAttribute.IgnoreWhenDeserializing);
+}
         
         /// <summary>
         ///     Describes whether should skip due to xml ignore attribute
@@ -685,7 +886,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="info">The info</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool ShouldSkipDueToXmlIgnoreAttribute(FieldInfo info, JsonOptions options) => options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore) &&
+        internal static bool ShouldSkipDueToXmlIgnoreAttribute(FieldInfo info, JsonOptions options) => options.SerializationOptions.HasFlag(JsonSerializationOptions.UseXmlIgnore) &&
                                                                                                       info.IsDefined(typeof(XmlIgnoreAttribute), true);
         
         /// <summary>
@@ -694,7 +895,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="info">The info</param>
         /// <param name="options">The options</param>
         /// <returns>The bool</returns>
-        private static bool ShouldSkipDueToScriptIgnoreAttribute(FieldInfo info, JsonOptions options) => options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore) &&
+        internal static bool ShouldSkipDueToScriptIgnoreAttribute(FieldInfo info, JsonOptions options) => options.SerializationOptions.HasFlag(JsonSerializationOptions.UseScriptIgnore) &&
                                                                                                          JsonSerializer.HasScriptIgnore(info);
         
         /// <summary>
@@ -730,6 +931,36 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
+        ///     Gets the properties from the specified type using TypeDescriptor.
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <returns>An enumerable of PropertyDescriptor</returns>
+        internal static IEnumerable<PropertyDescriptor> GetPropertiesFromTypeDescriptor(Type type)
+        {
+            return TypeDescriptor.GetProperties(type).Cast<PropertyDescriptor>();
+        }
+
+        /// <summary>
+        ///     Creates member definitions from the specified property descriptors.
+        /// </summary>
+        /// <param name="serialization">The serialization</param>
+        /// <param name="descriptors">The property descriptors</param>
+        /// <param name="options">The options</param>
+        /// <returns>An enumerable of member definition</returns>
+        internal static IEnumerable<MemberDefinition> CreateMemberDefinitionsFromDescriptors(bool serialization, IEnumerable<PropertyDescriptor> descriptors, JsonOptions options)
+        {
+            foreach (PropertyDescriptor descriptor in descriptors)
+            {
+                if (ShouldSkipDescriptor(serialization, descriptor, options))
+                {
+                    continue;
+                }
+
+                yield return CreateMemberDefinition(serialization, descriptor);
+            }
+        }
+
+        /// <summary>
         ///     Enumerates the definitions using type descriptors using the specified serialization
         /// </summary>
         /// <param name="serialization">The serialization</param>
@@ -738,15 +969,8 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>An enumerable of member definition</returns>
         internal static IEnumerable<MemberDefinition> EnumerateDefinitionsUsingTypeDescriptors(bool serialization, Type type, JsonOptions options)
         {
-            foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(type).Cast<PropertyDescriptor>())
-            {
-                if (ShouldSkipDescriptor(serialization, descriptor, options))
-                {
-                    continue;
-                }
-                
-                yield return CreateMemberDefinition(serialization, descriptor);
-            }
+            var descriptors = GetPropertiesFromTypeDescriptor(type);
+            return CreateMemberDefinitionsFromDescriptors(serialization, descriptors, options);
         }
         
         /// <summary>
@@ -768,7 +992,7 @@ namespace Alis.Core.Aspect.Data.Json
             
             return false;
         }
-        
+
         /// <summary>
         ///     Describes whether check json attribute
         /// </summary>
@@ -778,21 +1002,10 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         internal static bool CheckJsonAttribute(bool serialization, PropertyDescriptor descriptor, JsonOptions options)
         {
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute))
-            {
-                JsonPropertyNameAttribute ja = descriptor.GetAttribute<JsonPropertyNameAttribute>();
-                if (ja != null)
-                {
-                    switch (serialization)
-                    {
-                        case true when ja.IgnoreWhenSerializing:
-                        case false when ja.IgnoreWhenDeserializing:
-                            return true;
-                    }
-                }
-            }
-            
-            return false;
+            JsonPropertyNameAttribute ja = descriptor.GetAttribute<JsonPropertyNameAttribute>();
+            return options.SerializationOptions.HasFlag(JsonSerializationOptions.UseJsonAttribute) &&
+                   ja != null &&
+                   (serialization ? ja.IgnoreWhenSerializing : ja.IgnoreWhenDeserializing);
         }
         
         /// <summary>
