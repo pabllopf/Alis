@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     <ItemGroup Condition="
-        $(AssemblyName.Contains('Sample')) OR
-        $(AssemblyName.Contains('Test')) OR 
-        $(AssemblyName.Contains('Benchmark'))">
+        $(AssemblyName.Contains('App')) == true OR
+        $(AssemblyName.Contains('Template')) == true OR
+        $(AssemblyName.Contains('Sample')) == true OR
+        $(AssemblyName.Contains('Test')) == true OR 
+        $(AssemblyName.Contains('Benchmark')) == true">
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
 </Project>
