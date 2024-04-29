@@ -39,6 +39,17 @@ jobs:
 
       - name: install dotnet 8
         run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 8.0.0 --channel LTS
+
+      - name: Setup dotnet
+        uses: actions/checkout@v4
+        with:
+          dotnet-version: |
+            3.0.x
+            3.1.x
+            5.0.x
+            6.0.x
+            7.0.x
+            8.0.x
         
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
