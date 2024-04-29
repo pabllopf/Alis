@@ -51,18 +51,12 @@ jobs:
             7.0.408
             8.0.202
 
-      - name: dotnet --info
-        run: dotnet tool uninstall dotnet-ef --global
-
-      - name: dotnet --info 2
-        run: dotnet tool install dotnet-ef --global -a arm64
-        
       - name: brew install icu4c
         run: brew install icu4c
 
       - name: brew install openssl
         run: brew install openssl
-        
+          
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
   
