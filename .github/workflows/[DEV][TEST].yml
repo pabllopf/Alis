@@ -25,10 +25,10 @@ jobs:
           dotnet-version: |
             3.0.x
             3.1.x
-            5.0.x
-            6.0.x
+            5.0.408
+            6.0.420
             7.0.x
-            8.0.x
+            8.0.202
           dotnet-quality: 'validated'
 
       - name: Dotnet test Debug
