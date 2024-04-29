@@ -18,19 +18,13 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: master
+          
+      - name: chmod
+        run: chmod +x dotnet-install.sh
 
-      - name: Setup dotnet
-        uses: actions/checkout@v4
-        with:
-          dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.408
-            6.0.420
-            7.0.x
-            8.0.202
-          dotnet-quality: 'validated'
-
+      - name: install dotnet
+        run: dotnet-install.sh --architecture x64 --runtime dotnet --version 6.0.420 --channel LTS
+        
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
   
