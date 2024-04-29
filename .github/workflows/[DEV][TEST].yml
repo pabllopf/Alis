@@ -44,12 +44,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
 
       - name: dotnet --info
         run: dotnet --info
