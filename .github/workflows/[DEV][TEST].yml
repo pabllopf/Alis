@@ -11,8 +11,7 @@ on:
 
 jobs:
   Run_Test_On_MacOs_Latest:
-    runs-on: macos-latest
-
+    runs-on: macos-12
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -67,7 +66,7 @@ jobs:
         run: brew install mono-libgdiplus
           
       - name: Dotnet test Debug
-        run: arch -x86_64 dotnet test alis.sln -c Debug
+        run: dotnet test alis.sln -c Debug
   
   Run_Test_On_Windows_Latest:
     runs-on: windows-latest
