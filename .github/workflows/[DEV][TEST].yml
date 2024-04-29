@@ -50,6 +50,15 @@ jobs:
             6.0.x
             7.0.x
             8.0.x
+
+      - name: dotnet --info
+        run: dotnet --info
+
+      - name: brew install icu4c
+        run: brew install icu4c
+
+      - name: brew install openssl
+        run: brew install openssl
         
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
