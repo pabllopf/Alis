@@ -47,7 +47,7 @@ namespace Alis.Core.Audio.Sample
             
             string fileName = Environment.CurrentDirectory + "/Assets/menu.wav";
             
-            AudioSource audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Os));
+            AudioSource audioSource = new AudioSource(new AudioClip(fileName));
             
             while (true)
             {
@@ -59,7 +59,7 @@ namespace Alis.Core.Audio.Sample
                     switch (os)
                     {
                         case "os":
-                            audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Os));
+                            audioSource = new AudioSource(new AudioClip(fileName));
                             break;
                     }
                 }
