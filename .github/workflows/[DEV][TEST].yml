@@ -40,6 +40,9 @@ jobs:
       - name: install dotnet 8
         run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 8.0.0 --channel LTS
 
+      - name: install dotnet 8
+        run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 8.0.0 --channel LTS
+
       - name: Setup dotnet
         uses: actions/checkout@v4
         with:
