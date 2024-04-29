@@ -65,19 +65,6 @@ namespace Alis.Core.Audio
         }
         
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AudioClipBase" /> class
-        /// </summary>
-        /// <param name="fullPathAudio">The full path audio</param>
-        /// <param name="audioBackendType">The audio backend type</param>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        protected AudioClipBase(string fullPathAudio, AudioBackendType audioBackendType)
-        {
-            FullPathAudioFile = fullPathAudio;
-            player = new Player();
-        }
-        
-        
-        /// <summary>
         ///     Gets or sets the value of the sample rate
         /// </summary>
         public int SampleRate { get; set; }

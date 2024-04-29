@@ -44,15 +44,6 @@ namespace Alis.Core.Audio.Sample
         }
         
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AudioClip" /> class
-        /// </summary>
-        /// <param name="fullPathAudio">The full path audio</param>
-        /// <param name="audioBackendType">The audio backend type</param>
-        public AudioClip(string fullPathAudio, AudioBackendType audioBackendType) : base(fullPathAudio, audioBackendType)
-        {
-        }
-        
-        /// <summary>
         ///     Plays this instance
         /// </summary>
         internal new void Play()
