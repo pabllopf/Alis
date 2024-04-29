@@ -38,6 +38,7 @@ namespace Alis.Core.Aspect.Data.Resource
     /// </summary>
     public static class AssetManager
     {
+        
         /// <summary>
         ///     Finds the asset name in the "assets" folder and its subdirectories.
         /// </summary>
