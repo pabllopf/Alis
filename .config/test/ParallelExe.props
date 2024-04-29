@@ -6,7 +6,9 @@
         $(AssemblyName.Contains('ImGui.Test')) OR
         $(AssemblyName.Contains('OpenGL.Test')) OR
         $(AssemblyName.Contains('FFMeg.Test')) OR
-        $(AssemblyName.Contains('Alis.Core.Aspect.Security'))">
+        $(AssemblyName.Contains('Alis.Core.Aspect.Security')) OR
+        $(AssemblyName.Contains('Alis.Core.Aspect.Time')) OR
+        $(AssemblyName.Contains('Alis.Core.Aspect.Thread'))">
         <Content
             Include="$(SolutionDir).config/xunit.runner.json"
             LinkBase="."
