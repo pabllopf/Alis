@@ -56,6 +56,12 @@ jobs:
 
       - name: brew install openssl
         run: brew install openssl
+
+      - name: update
+        run: brew update
+
+      - name: mono-libgdiplus
+        run: brew install mono-libgdiplus
           
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
