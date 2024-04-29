@@ -23,7 +23,7 @@ jobs:
         run: chmod +x dotnet-install.sh
 
       - name: install dotnet
-        run: dotnet-install.sh --architecture x64 --runtime dotnet --version 6.0.420 --channel LTS
+        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 6.0.420 --channel LTS
         
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
