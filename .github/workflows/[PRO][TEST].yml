@@ -244,6 +244,7 @@ jobs:
           name: Windows Test Report                  # Name of the check run which will be created
           path: '.test/**/**/*.trx'                     # Path to test results (inside artifact .zip)
           reporter: dotnet-trx              # Format of test results
+
   
   ubuntu_latest:
     runs-on: ubuntu-latest
