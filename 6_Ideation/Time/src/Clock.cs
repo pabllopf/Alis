@@ -37,6 +37,7 @@ namespace Alis.Core.Aspect.Time
     /// </summary>
     public class Clock
     {
+        
         /// <summary>
         ///     The stopwatch
         /// </summary>
