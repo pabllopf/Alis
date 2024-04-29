@@ -29,6 +29,7 @@ jobs:
             6.0.x
             7.0.x
             8.0.x
+          dotnet-quality: 'validated'
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
