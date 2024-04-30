@@ -13,14 +13,10 @@ jobs:
   macos_12_x64:
     runs-on: macos-12
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-          
       - name: Setup dotnet
         uses: actions/checkout@v4
         with:
+          ref: master
           dotnet-version: |
             3.0.103
             3.1.426
@@ -36,14 +32,10 @@ jobs:
     runs-on: windows-2022
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-
       - name: Setup dotnet
         uses: actions/checkout@v4
         with:
+          ref: master
           dotnet-version: |
             3.0.x
             3.1.x
@@ -59,14 +51,10 @@ jobs:
     runs-on: ubuntu-22.04
     
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-
       - name: Setup dotnet
         uses: actions/checkout@v4
         with:
+          ref: master
           dotnet-version: |
             3.0.x
             3.1.x
