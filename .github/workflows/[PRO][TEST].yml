@@ -206,6 +206,134 @@ jobs:
           path: '.test/**/**/*.trx'                     # Path to test results (inside artifact .zip)
           reporter: dotnet-trx              # Format of test results
 
+  macos_13_arm64:
+    runs-on: macos-13-xlarge
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: master
+          
+      - name: chmod
+        run: chmod +x dotnet-install.sh
+
+      - name: install dotnet 3.0
+        run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 3.0.0 --channel LTS
+
+      - name: install dotnet 3.1
+        run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 3.1.0 --channel LTS
+
+      - name: install dotnet 5
+        run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 5.0.0 --channel LTS
+        
+      - name: install dotnet 6
+        run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 6.0.0 --channel LTS
+
+      - name: install dotnet 7
+        run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 7.0.0 --channel LTS
+
+      - name: install dotnet 8
+        run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 8.0.0 --channel LTS
+        
+      - name: Setup dotnet
+        uses: actions/checkout@v4
+        with:
+          dotnet-version: |
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
+
+      - name: brew install icu4c
+        run: brew install icu4c
+
+      - name: brew install openssl
+        run: brew install openssl
+
+      - name: update
+        run: brew update
+
+      - name: mono-libgdiplus
+        run: brew install mono-libgdiplus
+
+      - name: Dotnet test Debug
+        run: dotnet test alis.sln -c Debug
+
+      - name: Dotnet test Release
+        run: dotnet test alis.sln -c Release
+
+      - uses: dorny/test-reporter@v1
+        with:
+          name: MacOs 13 arm64 Test Report                  # Name of the check run which will be created
+          path: '.test/**/**/*.trx'                     # Path to test results (inside artifact .zip)
+          reporter: dotnet-trx              # Format of test results
+
+  macos_14_arm64:
+    runs-on: macos-14-xlarge
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: master
+          
+      - name: chmod
+        run: chmod +x dotnet-install.sh
+
+      - name: install dotnet 3.0
+        run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 3.0.0 --channel LTS
+
+      - name: install dotnet 3.1
+        run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 3.1.0 --channel LTS
+
+      - name: install dotnet 5
+        run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 5.0.0 --channel LTS
+        
+      - name: install dotnet 6
+        run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 6.0.0 --channel LTS
+
+      - name: install dotnet 7
+        run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 7.0.0 --channel LTS
+
+      - name: install dotnet 8
+        run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 8.0.0 --channel LTS
+
+      - name: Setup dotnet
+        uses: actions/checkout@v4
+        with:
+          dotnet-version: |
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
+
+      - name: brew install icu4c
+        run: brew install icu4c
+
+      - name: brew install openssl
+        run: brew install openssl
+
+      - name: update
+        run: brew update
+
+      - name: mono-libgdiplus
+        run: brew install mono-libgdiplus
+
+      - name: Dotnet test Debug
+        run: dotnet test alis.sln -c Debug
+
+      - name: Dotnet test Release
+        run: dotnet test alis.sln -c Release
+
+      - uses: dorny/test-reporter@v1
+        with:
+          name: MacOs 14 arm64 Test Report                  # Name of the check run which will be created
+          path: '.test/**/**/*.trx'                     # Path to test results (inside artifact .zip)
+          reporter: dotnet-trx              # Format of test results
+
   windows_2022_x64:
     runs-on: windows-2022
 
