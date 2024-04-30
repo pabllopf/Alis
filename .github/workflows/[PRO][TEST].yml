@@ -8,38 +8,10 @@ jobs:
   macos_12_x64:
     runs-on: macos-12-large
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-          
-      - name: chmod
-        run: chmod +x dotnet-install.sh
-
-      - name: install dotnet 3.0
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 3.0.0 --channel LTS
-
-      - name: install dotnet 3.1
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 3.1.0 --channel LTS
-
-      - name: install dotnet 5
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 5.0.0 --channel LTS
-        
-      - name: install dotnet 6
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 6.0.0 --channel LTS
-
-      - name: install dotnet 7
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 7.0.0 --channel LTS
-
-      - name: install dotnet 8
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 8.0.0 --channel LTS
-
-      - name: install dotnet 8
-        run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 8.0.0 --channel LTS
-
       - name: Setup dotnet
         uses: actions/checkout@v4
         with:
+          ref: master
           dotnet-version: |
             3.0.103
             3.1.426
@@ -47,18 +19,6 @@ jobs:
             6.0.420
             7.0.408
             8.0.202
-
-      - name: brew install icu4c
-        run: brew install icu4c
-
-      - name: brew install openssl
-        run: brew install openssl
-
-      - name: update
-        run: brew update
-
-      - name: mono-libgdiplus
-        run: brew install mono-libgdiplus
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
@@ -75,38 +35,10 @@ jobs:
   macos_13_x64:
     runs-on: macos-13-large
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-          
-      - name: chmod
-        run: chmod +x dotnet-install.sh
-
-      - name: install dotnet 3.0
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 3.0.0 --channel LTS
-
-      - name: install dotnet 3.1
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 3.1.0 --channel LTS
-
-      - name: install dotnet 5
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 5.0.0 --channel LTS
-        
-      - name: install dotnet 6
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 6.0.0 --channel LTS
-
-      - name: install dotnet 7
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 7.0.0 --channel LTS
-
-      - name: install dotnet 8
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 8.0.0 --channel LTS
-
-      - name: install dotnet 8
-        run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 8.0.0 --channel LTS
-
       - name: Setup dotnet
         uses: actions/checkout@v4
         with:
+          ref: master
           dotnet-version: |
             3.0.103
             3.1.426
@@ -114,18 +46,6 @@ jobs:
             6.0.420
             7.0.408
             8.0.202
-
-      - name: brew install icu4c
-        run: brew install icu4c
-
-      - name: brew install openssl
-        run: brew install openssl
-
-      - name: update
-        run: brew update
-
-      - name: mono-libgdiplus
-        run: brew install mono-libgdiplus
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
@@ -142,38 +62,10 @@ jobs:
   macos_14_x64:
     runs-on: macos-14-large
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-          
-      - name: chmod
-        run: chmod +x dotnet-install.sh
-
-      - name: install dotnet 3.0
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 3.0.0 --channel LTS
-
-      - name: install dotnet 3.1
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 3.1.0 --channel LTS
-
-      - name: install dotnet 5
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 5.0.0 --channel LTS
-        
-      - name: install dotnet 6
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 6.0.0 --channel LTS
-
-      - name: install dotnet 7
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 7.0.0 --channel LTS
-
-      - name: install dotnet 8
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 8.0.0 --channel LTS
-
-      - name: install dotnet 8
-        run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 8.0.0 --channel LTS
-
       - name: Setup dotnet
         uses: actions/checkout@v4
         with:
+          ref: master
           dotnet-version: |
             3.0.103
             3.1.426
@@ -181,19 +73,7 @@ jobs:
             6.0.420
             7.0.408
             8.0.202
-
-      - name: brew install icu4c
-        run: brew install icu4c
-
-      - name: brew install openssl
-        run: brew install openssl
-
-      - name: update
-        run: brew update
-
-      - name: mono-libgdiplus
-        run: brew install mono-libgdiplus
-
+            
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
 
@@ -209,11 +89,6 @@ jobs:
   macos_13_arm64:
     runs-on: macos-13-xlarge
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-          
       - name: chmod
         run: chmod +x dotnet-install.sh
 
@@ -238,6 +113,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/checkout@v4
         with:
+          ref: master
           dotnet-version: |
             3.0.103
             3.1.426
@@ -273,11 +149,7 @@ jobs:
   macos_14_arm64:
     runs-on: macos-14-xlarge
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-          
+    
       - name: chmod
         run: chmod +x dotnet-install.sh
 
@@ -302,6 +174,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/checkout@v4
         with:
+          ref: master
           dotnet-version: |
             3.0.103
             3.1.426
@@ -338,21 +211,17 @@ jobs:
     runs-on: windows-2022
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Setup dotnet
+        uses: actions/checkout@v4
         with:
           ref: master
-
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v3
-        with:
           dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
@@ -371,21 +240,17 @@ jobs:
     runs-on: windows-2019
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Setup dotnet
+        uses: actions/checkout@v4
         with:
           ref: master
-
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v3
-        with:
           dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
@@ -403,10 +268,17 @@ jobs:
     runs-on: ubuntu-22.04
     
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Setup dotnet
+        uses: actions/checkout@v4
         with:
           ref: master
+          dotnet-version: |
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
 
       - name: free disk space
         run: |
@@ -415,17 +287,6 @@ jobs:
           sudo apt clean
           docker rmi $(docker image ls -aq)
           df -h
-
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
@@ -485,11 +346,6 @@ jobs:
     runs-on: ubuntu-20.04
     
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-
       - name: free disk space
         run: |
           sudo swapoff -a
@@ -499,15 +355,16 @@ jobs:
           df -h
 
       - name: Setup dotnet
-        uses: actions/setup-dotnet@v3
+        uses: actions/checkout@v4
         with:
+          ref: master
           dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
