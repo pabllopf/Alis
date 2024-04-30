@@ -10,7 +10,7 @@ on:
       - '.config/**'
 
 jobs:
-  Run_Test_On_MacOs_Latest:
+  macos_12_x64:
     runs-on: macos-12
     steps:
       - name: Checkout repository
@@ -18,30 +18,6 @@ jobs:
         with:
           ref: master
           
-      - name: chmod
-        run: chmod +x dotnet-install.sh
-
-      - name: install dotnet 3.0
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 3.0.0 --channel LTS
-
-      - name: install dotnet 3.1
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 3.1.0 --channel LTS
-
-      - name: install dotnet 5
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 5.0.0 --channel LTS
-        
-      - name: install dotnet 6
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 6.0.0 --channel LTS
-
-      - name: install dotnet 7
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 7.0.0 --channel LTS
-
-      - name: install dotnet 8
-        run: ./dotnet-install.sh --architecture x64 --runtime dotnet --version 8.0.0 --channel LTS
-
-      - name: install dotnet 8
-        run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 8.0.0 --channel LTS
-
       - name: Setup dotnet
         uses: actions/checkout@v4
         with:
@@ -52,24 +28,12 @@ jobs:
             6.0.420
             7.0.408
             8.0.202
-
-      - name: brew install icu4c
-        run: brew install icu4c
-
-      - name: brew install openssl
-        run: brew install openssl
-
-      - name: update
-        run: brew update
-
-      - name: mono-libgdiplus
-        run: brew install mono-libgdiplus
-          
+            
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
   
-  Run_Test_On_Windows_Latest:
-    runs-on: windows-latest
+  windows_2022_x64:
+    runs-on: windows-2022
 
     steps:
       - name: Checkout repository
@@ -91,8 +55,8 @@ jobs:
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
   
-  Run_Test_On_Ubuntu_Latest:
-    runs-on: ubuntu-latest
+  ubuntu_22_04_x64:
+    runs-on: ubuntu-22.04
     
     steps:
       - name: Checkout repository
