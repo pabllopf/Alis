@@ -96,7 +96,8 @@ namespace Alis.Core.Audio.Test
             {
                 Assert.False(player.Paused);
                 Assert.True(player.Playing);
-            }
+            } 
+            if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS()){}
         }
         
         [Fact]

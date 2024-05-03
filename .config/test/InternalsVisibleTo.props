@@ -3,4 +3,11 @@
     <ItemGroup Condition="$(AssemblyName.Contains('Test')) == False">
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
     </ItemGroup>
+    
+    <ItemGroup>
+        <None Condition="$(AssemblyName.Contains('Test')) == True"
+              Update="$(ProjectDir)**/*.dll"
+              CopyToOutputDirectory="Always"
+              CopyToPublishDirectory="Always"/>
+    </ItemGroup>
 </Project>
