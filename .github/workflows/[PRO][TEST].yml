@@ -13,12 +13,12 @@ jobs:
         with:
           ref: master
           dotnet-version: |
-            3.0.103
-            3.1.426
-            5.0.408
-            6.0.420
-            7.0.408
-            8.0.202
+            3.0.x
+            3.1.x
+            5.0.x
+            6.0.x
+            7.0.x
+            8.0.x
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
@@ -40,12 +40,12 @@ jobs:
         with:
           ref: master
           dotnet-version: |
-            3.0.103
-            3.1.426
-            5.0.408
-            6.0.420
-            7.0.408
-            8.0.202
+            3.0.x
+            3.1.x
+            5.0.x
+            6.0.x
+            7.0.x
+            8.0.x
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
@@ -67,12 +67,12 @@ jobs:
         with:
           ref: master
           dotnet-version: |
-            3.0.103
-            3.1.426
-            5.0.408
-            6.0.420
-            7.0.408
-            8.0.202
+            3.0.x
+            3.1.x
+            5.0.x
+            6.0.x
+            7.0.x
+            8.0.x
             
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
@@ -115,12 +115,12 @@ jobs:
         with:
           ref: master
           dotnet-version: |
-            3.0.103
-            3.1.426
-            5.0.408
-            6.0.420
-            7.0.408
-            8.0.202
+            3.0.x
+            3.1.x
+            5.0.x
+            6.0.x
+            7.0.x
+            8.0.x
 
       - name: brew install icu4c
         run: brew install icu4c
@@ -176,12 +176,12 @@ jobs:
         with:
           ref: master
           dotnet-version: |
-            3.0.103
-            3.1.426
-            5.0.408
-            6.0.420
-            7.0.408
-            8.0.202
+            3.0.x
+            3.1.x
+            5.0.x
+            6.0.x
+            7.0.x
+            8.0.x
 
       - name: brew install icu4c
         run: brew install icu4c
@@ -216,12 +216,12 @@ jobs:
         with:
           ref: master
           dotnet-version: |
-            3.0.103
-            3.1.426
-            5.0.408
-            6.0.420
-            7.0.408
-            8.0.202
+            3.0.x
+            3.1.x
+            5.0.x
+            6.0.x
+            7.0.x
+            8.0.x
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
@@ -245,12 +245,12 @@ jobs:
         with:
           ref: master
           dotnet-version: |
-            3.0.103
-            3.1.426
-            5.0.408
-            6.0.420
-            7.0.408
-            8.0.202
+            3.0.x
+            3.1.x
+            5.0.x
+            6.0.x
+            7.0.x
+            8.0.x
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
@@ -273,12 +273,12 @@ jobs:
         with:
           ref: master
           dotnet-version: |
-            3.0.103
-            3.1.426
-            5.0.408
-            6.0.420
-            7.0.408
-            8.0.202
+            3.0.x
+            3.1.x
+            5.0.x
+            6.0.x
+            7.0.x
+            8.0.x
 
       - name: free disk space
         run: |
@@ -359,12 +359,12 @@ jobs:
         with:
           ref: master
           dotnet-version: |
-            3.0.103
-            3.1.426
-            5.0.408
-            6.0.420
-            7.0.408
-            8.0.202
+            3.0.x
+            3.1.x
+            5.0.x
+            6.0.x
+            7.0.x
+            8.0.x
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
