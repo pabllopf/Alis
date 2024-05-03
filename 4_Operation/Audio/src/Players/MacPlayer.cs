@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FileUtilTest.cs
+//  File:MacPlayer.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,43 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using Alis.Core.Audio.Interfaces;
 
-namespace Alis.Core.Audio.Test.OS.Utils
+namespace Alis.Core.Audio.Players
 {
     /// <summary>
-    ///     The file util test class
+    ///     The mac player class
     /// </summary>
-    public class FileUtilTest
+    /// <seealso cref="UnixPlayerBase" />
+    /// <seealso cref="IPlayer" />
+    internal class MacPlayer : UnixPlayerBase, IPlayer
     {
         /// <summary>
-        ///     Tests that test method
+        ///     Sets the volume using the specified percent
         /// </summary>
-        [Fact]
-        public void TestMethod()
+        /// <param name="percent">The percent</param>
+        /// <exception cref="ArgumentOutOfRangeException">Percent can't exceed 100</exception>
+        public override Task SetVolume(byte percent)
         {
-            Assert.True(true);
+            if (percent > 100)
+            {
+                throw new ArgumentOutOfRangeException(nameof(percent), "Percent can't exceed 100");
+            }
+            
+            Process tempProcess = StartBashProcess($"osascript -e \"set volume output volume {percent}\"");
+            tempProcess.WaitForExit();
+            
+            return Task.CompletedTask;
         }
+        
+        /// <summary>
+        ///     Gets the bash command using the specified file name
+        /// </summary>
+        /// <param name="fileName">The file name</param>
+        /// <returns>The string</returns>
+        protected override string GetBashCommand(string fileName) => "afplay";
     }
 }

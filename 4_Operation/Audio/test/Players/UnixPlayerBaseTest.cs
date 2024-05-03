@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IPlayer.cs
+//  File:UnixPlayerBaseTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,56 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Threading.Tasks;
+using Xunit;
 
-namespace Alis.Core.Audio.OS.Interfaces
+namespace Alis.Core.Audio.Test.Players
 {
     /// <summary>
-    ///     The player interface
+    ///     The unix player base test class
     /// </summary>
-    public interface IPlayer
+    public class UnixPlayerBaseTest
     {
         /// <summary>
-        ///     Gets the value of the playing
+        ///     Tests that test method
         /// </summary>
-        bool Playing { get; }
-        
-        /// <summary>
-        ///     Gets the value of the paused
-        /// </summary>
-        bool Paused { get; }
-        
-        /// <summary>
-        ///     playback
-        /// </summary>
-        event EventHandler PlaybackFinished;
-        
-        /// <summary>
-        ///     Plays the file name
-        /// </summary>
-        /// <param name="fileName">The file name</param>
-        Task Play(string fileName);
-        
-        /// <summary>
-        ///     Pauses this instance
-        /// </summary>
-        Task Pause();
-        
-        /// <summary>
-        ///     Resumes this instance
-        /// </summary>
-        Task Resume();
-        
-        /// <summary>
-        ///     Stops this instance
-        /// </summary>
-        Task Stop();
-        
-        /// <summary>
-        ///     Sets the volume using the specified percent
-        /// </summary>
-        /// <param name="percent">The percent</param>
-        Task SetVolume(byte percent);
+        [Fact]
+        public void TestMethod()
+        {
+            Assert.True(true);
+        }
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IAudioRecorder.cs
+//  File:FileUtilTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,12 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Audio
+using Xunit;
+
+namespace Alis.Core.Audio.Test.Utils
 {
     /// <summary>
-    ///     The audio recorder interface
+    ///     The file util test class
     /// </summary>
-    public interface IAudioRecorder
+    public class FileUtilTest
     {
+        /// <summary>
+        ///     Tests that test method
+        /// </summary>
+        [Fact]
+        public void TestMethod()
+        {
+            Assert.True(true);
+        }
     }
 }

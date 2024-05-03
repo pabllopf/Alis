@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NoImplementationForCurrentOsException.cs
+//  File:LinuxPlayer.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,21 +28,51 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
+using System.IO;
+using System.Threading.Tasks;
+using Alis.Core.Audio.Interfaces;
 
-namespace Alis.Core.Audio.OS.Exceptions
+namespace Alis.Core.Audio.Players
 {
     /// <summary>
-    ///     The no implementation for current os class
+    ///     The linux player class
     /// </summary>
-    /// <seealso cref="System.Exception" />
-    public class NoImplementationForCurrentOsException : Exception
+    /// <seealso cref="UnixPlayerBase" />
+    /// <seealso cref="IPlayer" />
+    internal class LinuxPlayer : UnixPlayerBase, IPlayer
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="NoImplementationForCurrentOsException" /> class
+        ///     Sets the volume using the specified percent
         /// </summary>
-        /// <param name="message">The message</param>
-        public NoImplementationForCurrentOsException(string message) : base(message)
+        /// <param name="percent">The percent</param>
+        /// <exception cref="ArgumentOutOfRangeException">Percent can't exceed 100</exception>
+        public override Task SetVolume(byte percent)
         {
+            if (percent > 100)
+            {
+                throw new ArgumentOutOfRangeException(nameof(percent), "Percent can't exceed 100");
+            }
+            
+            Process tempProcess = StartBashProcess($"amixer -M set 'Master' {percent}%");
+            tempProcess.WaitForExit();
+            
+            return Task.CompletedTask;
+        }
+        
+        /// <summary>
+        ///     Gets the bash command using the specified file name
+        /// </summary>
+        /// <param name="fileName">The file name</param>
+        /// <returns>The string</returns>
+        protected override string GetBashCommand(string fileName)
+        {
+            if (Path.GetExtension(fileName).ToLower().Equals(".mp3"))
+            {
+                return "mpg123 -q";
+            }
+            
+            return "aplay -q";
         }
     }
 }

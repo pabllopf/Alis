@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Component.Audio
     ///     The audio clip class
     /// </summary>
     /// <seealso cref="AudioClipBase" />
-    public class AudioClip : AudioClipBase
+    public class AudioClip
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioClip" /> class
@@ -51,33 +51,38 @@ namespace Alis.Core.Ecs.Component.Audio
         ///     Initializes a new instance of the <see cref="AudioClip" /> class
         /// </summary>
         /// <param name="fullPathAudio">The full path audio</param>
-        public AudioClip(string fullPathAudio) : base(fullPathAudio)
+        public AudioClip(string fullPathAudio) 
         {
             Logger.Trace();
         }
         
+        public bool IsPlaying { get; set; }
+        public bool IsMute { get; set; }
+        public bool IsLooping { get; set; }
+        public float Volume { get; set; }
+        public string FullPathAudioFile { get; set; }
+        
         /// <summary>
         ///     Plays this instance
         /// </summary>
-        internal new void Play()
+        internal void Play()
         {
-            base.Play();
+            
         }
         
         /// <summary>
         ///     Stops this instance
         /// </summary>
-        internal new void Stop()
+        internal void Stop()
         {
-            base.Stop();
+           
         }
         
         /// <summary>
         ///     Resumes this instance
         /// </summary>
-        internal new void Resume()
+        internal void Resume()
         {
-            base.Resume();
         }
         
         /// <summary>

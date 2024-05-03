@@ -33,10 +33,10 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
-using Alis.Core.Audio.OS.Interfaces;
-using Alis.Core.Audio.OS.Utils;
+using Alis.Core.Audio.Interfaces;
+using Alis.Core.Audio.Utils;
 
-namespace Alis.Core.Audio.OS.Players
+namespace Alis.Core.Audio.Players
 {
     /// <summary>
     ///     The windows player class

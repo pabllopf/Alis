@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:MacPlayer.cs
+//  File:FileUtil.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,43 +27,48 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using Alis.Core.Audio.OS.Interfaces;
+using System.IO;
 
-namespace Alis.Core.Audio.OS.Players
+namespace Alis.Core.Audio.Utils
 {
     /// <summary>
-    ///     The mac player class
+    ///     The file util class
     /// </summary>
-    /// <seealso cref="UnixPlayerBase" />
-    /// <seealso cref="IPlayer" />
-    internal class MacPlayer : UnixPlayerBase, IPlayer
+    internal static class FileUtil
     {
         /// <summary>
-        ///     Sets the volume using the specified percent
+        ///     The temp dir name
         /// </summary>
-        /// <param name="percent">The percent</param>
-        /// <exception cref="ArgumentOutOfRangeException">Percent can't exceed 100</exception>
-        public override Task SetVolume(byte percent)
+        private const string TempDirName = "temp";
+        
+        /// <summary>
+        ///     Checks the file to play using the specified original file name
+        /// </summary>
+        /// <param name="originalFileName">The original file name</param>
+        /// <returns>The file name to return</returns>
+        public static string CheckFileToPlay(string originalFileName)
         {
-            if (percent > 100)
+            string fileNameToReturn = originalFileName;
+            if (originalFileName.Contains(" "))
             {
-                throw new ArgumentOutOfRangeException(nameof(percent), "Percent can't exceed 100");
+                Directory.CreateDirectory(TempDirName);
+                fileNameToReturn = TempDirName + Path.DirectorySeparatorChar +
+                                   Path.GetFileName(originalFileName).Replace(" ", "");
+                File.Copy(originalFileName, fileNameToReturn);
             }
             
-            Process tempProcess = StartBashProcess($"osascript -e \"set volume output volume {percent}\"");
-            tempProcess.WaitForExit();
-            
-            return Task.CompletedTask;
+            return fileNameToReturn;
         }
         
         /// <summary>
-        ///     Gets the bash command using the specified file name
+        ///     Clears the temp files
         /// </summary>
-        /// <param name="fileName">The file name</param>
-        /// <returns>The string</returns>
-        protected override string GetBashCommand(string fileName) => "afplay";
+        public static void ClearTempFiles()
+        {
+            if (Directory.Exists(TempDirName))
+            {
+                Directory.Delete(TempDirName, true);
+            }
+        }
     }
 }
