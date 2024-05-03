@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioClipBaseTest.cs
+//  File:LinuxPlayerTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,12 +29,12 @@
 
 using Xunit;
 
-namespace Alis.Core.Audio.Test
+namespace Alis.Core.Audio.Test.Players
 {
     /// <summary>
-    ///     The audio clip base test class
+    ///     The linux player test class
     /// </summary>
-    public class AudioClipBaseTest
+    public class LinuxPlayerTest
     {
         /// <summary>
         ///     Tests that test method

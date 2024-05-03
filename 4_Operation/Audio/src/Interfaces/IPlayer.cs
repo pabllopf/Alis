@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PlayerTest.cs
+//  File:IPlayer.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,56 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
+using System;
+using System.Threading.Tasks;
 
-namespace Alis.Core.Audio.Test.OS
+namespace Alis.Core.Audio.Interfaces
 {
     /// <summary>
-    ///     The player test class
+    ///     The player interface
     /// </summary>
-    public class PlayerTest
+    public interface IPlayer
     {
         /// <summary>
-        ///     Tests that test method
+        ///     Gets the value of the playing
         /// </summary>
-        [Fact]
-        public void TestMethod()
-        {
-            Assert.True(true);
-        }
+        bool Playing { get; }
+        
+        /// <summary>
+        ///     Gets the value of the paused
+        /// </summary>
+        bool Paused { get; }
+        
+        /// <summary>
+        ///     playback
+        /// </summary>
+        event EventHandler PlaybackFinished;
+        
+        /// <summary>
+        ///     Plays the file name
+        /// </summary>
+        /// <param name="fileName">The file name</param>
+        Task Play(string fileName);
+        
+        /// <summary>
+        ///     Pauses this instance
+        /// </summary>
+        Task Pause();
+        
+        /// <summary>
+        ///     Resumes this instance
+        /// </summary>
+        Task Resume();
+        
+        /// <summary>
+        ///     Stops this instance
+        /// </summary>
+        Task Stop();
+        
+        /// <summary>
+        ///     Sets the volume using the specified percent
+        /// </summary>
+        /// <param name="percent">The percent</param>
+        Task SetVolume(byte percent);
     }
 }

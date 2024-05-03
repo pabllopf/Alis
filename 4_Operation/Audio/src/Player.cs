@@ -30,11 +30,10 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Alis.Core.Audio.OS.Exceptions;
-using Alis.Core.Audio.OS.Interfaces;
-using Alis.Core.Audio.OS.Players;
+using Alis.Core.Audio.Interfaces;
+using Alis.Core.Audio.Players;
 
-namespace Alis.Core.Audio.OS
+namespace Alis.Core.Audio
 {
     /// <summary>
     ///     The player class
@@ -142,7 +141,7 @@ namespace Alis.Core.Audio.OS
                 return new MacPlayer();
             }
             
-            throw new NoImplementationForCurrentOsException("No implementation exist for the current OS");
+            return default(IPlayer);
         }
         
         /// <summary>

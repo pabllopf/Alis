@@ -30,9 +30,9 @@
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using Alis.Core.Audio.OS.Interfaces;
+using Alis.Core.Audio.Interfaces;
 
-namespace Alis.Core.Audio.OS.Players
+namespace Alis.Core.Audio.Players
 {
     /// <summary>
     ///     The unix player base class

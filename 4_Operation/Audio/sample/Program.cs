@@ -29,6 +29,7 @@
 
 using System;
 using System.Reflection;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Audio.Sample
@@ -43,32 +44,10 @@ namespace Alis.Core.Audio.Sample
         /// </summary>
         private static void Main(string[] args)
         {
-            Console.WriteLine($" Alis.Core.Audio.Sample {Assembly.GetExecutingAssembly()} with {args.Length} args");
-            
-            string fileName = Environment.CurrentDirectory + "/Assets/menu.wav";
-            
-            AudioSource audioSource = new AudioSource(new AudioClip(fileName));
+            Player player = new Player();
             
             while (true)
             {
-                Console.WriteLine("Select backend audio system ('os')");
-                string os = Console.ReadLine();
-                
-                try
-                {
-                    switch (os)
-                    {
-                        case "os":
-                            audioSource = new AudioSource(new AudioClip(fileName));
-                            break;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error in backend audio system", ex);
-                }
-                
-                
                 Console.WriteLine("Write command 'play' | 'stop' | 'resume' | exit ");
                 string command = Console.ReadLine();
                 try
@@ -76,13 +55,13 @@ namespace Alis.Core.Audio.Sample
                     switch (command)
                     {
                         case "play":
-                            audioSource.Play();
+                            _ = player.Play(AssetManager.Find("sample.wav"));
                             break;
                         case "stop":
-                            audioSource.Stop();
+                            _ = player.Stop();
                             break;
                         case "resume":
-                            audioSource.Resume();
+                            _ = player.Resume();
                             break;
                     }
                     
