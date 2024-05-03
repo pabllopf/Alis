@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-    <!-- Select projects to disable parallel execution -->
+    <!-- Select projects to disable parallel execution 
     <ItemGroup Condition="
         $(AssemblyName.Contains('Graphic.Test')) OR
         $(AssemblyName.Contains('ImGui.Test')) OR
@@ -16,6 +16,18 @@
             Visible="true"
             PackagePath=".">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>-->
+
+    <ItemGroup>
+        <Content
+            Include="$(SolutionDir).config/xunit.runner.json"
+            LinkBase="."
+            Pack="true"
+            Visible="true"
+            PackagePath=".">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
         </Content>
     </ItemGroup>
 </Project>
