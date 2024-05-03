@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -31,6 +31,10 @@ using Alis.Core.Ecs.System.Manager;
 
 namespace Alis.Test.Sample
 {
+    /// <summary>
+    /// The custom manager class
+    /// </summary>
+    /// <seealso cref="Manager"/>
     public class CustomManager: Manager
     {
     }

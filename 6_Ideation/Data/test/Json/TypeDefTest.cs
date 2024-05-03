@@ -32,7 +32,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Reflection;
-using System.Text.Json.Serialization;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Test.Json.Sample;
 using Xunit;

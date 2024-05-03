@@ -27,13 +27,29 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Builder.Core.Ecs.System.Setting.Input;
+using Alis.Core.Aspect.Fluent;
+
 namespace Alis.Core.Ecs.System.Setting.Input
 {
     /// <summary>
     ///     The input setting class
     /// </summary>
     /// <seealso cref="IInputSetting" />
-    public class InputSetting : IInputSetting
+    public class InputSetting : IInputSetting,
+        IBuilder<InputSettingBuilder>
     {
+        
+        /// <summary>
+        /// Gets or sets the value of the update mode
+        /// </summary>
+        public UpdateMode UpdateMode { get; set; } = UpdateMode.DynamicUpdate;
+        
+        
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The input setting builder</returns>
+        public InputSettingBuilder Builder() => new InputSettingBuilder();
     }
 }

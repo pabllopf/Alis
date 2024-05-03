@@ -42,7 +42,6 @@ using System.Xml.Serialization;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Test.Json.Sample;
 using Xunit;
-using Xunit.Sdk;
 
 namespace Alis.Core.Aspect.Data.Test.Json
 {
@@ -5844,6 +5843,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal("InitialValue", dictionary["SerializationTypeToken"]);
         }
         
+        /// <summary>
+        /// Tests that is escape character returns true for escape characters
+        /// </summary>
         [Fact]
         public void IsEscapeCharacter_ReturnsTrue_ForEscapeCharacters()
         {
@@ -5852,6 +5854,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(JsonSerializer.IsEscapeCharacter('"'));
         }
         
+        /// <summary>
+        /// Tests that is escape character returns false for non escape characters
+        /// </summary>
         [Fact]
         public void IsEscapeCharacter_ReturnsFalse_ForNonEscapeCharacters()
         {
@@ -5860,12 +5865,18 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.False(JsonSerializer.IsEscapeCharacter(' '));
         }
         
+        /// <summary>
+        /// Tests that is unicode character returns true for unicode character
+        /// </summary>
         [Fact]
         public void IsUnicodeCharacter_ReturnsTrue_ForUnicodeCharacter()
         {
             Assert.True(JsonSerializer.IsUnicodeCharacter('u'));
         }
         
+        /// <summary>
+        /// Tests that is unicode character returns false for non unicode character
+        /// </summary>
         [Fact]
         public void IsUnicodeCharacter_ReturnsFalse_ForNonUnicodeCharacter()
         {
@@ -5874,6 +5885,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.False(JsonSerializer.IsUnicodeCharacter(' '));
         }
         
+        /// <summary>
+        /// Tests that append default character appends correctly
+        /// </summary>
         [Fact]
         public void AppendDefaultCharacter_AppendsCorrectly()
         {

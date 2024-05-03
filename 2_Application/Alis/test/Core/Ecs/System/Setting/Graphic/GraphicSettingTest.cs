@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IGraphicSetting.cs
+//  File:GraphicSettingTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,12 +27,52 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ecs.System.Manager.Graphic
+using Alis.Builder.Core.Ecs.System.Setting.Graphic;
+using Alis.Core.Ecs.System.Setting.Graphic;
+using Alis.Core.Graphic;
+using Xunit;
+
+namespace Alis.Test.Core.Ecs.System.Setting.Graphic
 {
     /// <summary>
-    ///     The graphic setting interface
+    /// The graphic setting test class
     /// </summary>
-    public interface IGraphicSetting
+    public class GraphicSettingTest
     {
+        /// <summary>
+        /// Tests that test graphic setting window
+        /// </summary>
+        [Fact]
+        public void Test_GraphicSetting_Window()
+        {
+            // Arrange
+            GraphicSetting graphicSetting = new GraphicSetting();
+            
+            // Act
+            graphicSetting.Window = new Window();
+            IWindow result = graphicSetting.Window;
+            
+            // Assert
+            Assert.NotNull(graphicSetting);
+            Assert.NotNull(result);
+            Assert.IsType<Window>(result);
+        }
+        
+        /// <summary>
+        /// Tests that test graphic setting builder
+        /// </summary>
+        [Fact]
+        public void Test_GraphicSetting_Builder()
+        {
+            // Arrange
+            GraphicSetting graphicSetting = new GraphicSetting();
+            
+            // Act
+            GraphicSettingBuilder result = graphicSetting.Builder();
+            
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GraphicSettingBuilder>(result);
+        }
     }
 }

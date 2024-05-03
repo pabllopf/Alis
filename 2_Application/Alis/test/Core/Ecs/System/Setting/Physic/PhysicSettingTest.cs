@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PositionTest.cs
+//  File:PhysicSettingTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,83 +27,88 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Builder.Core.Ecs.System.Setting.Physic;
+using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Dynamics.Solver;
+using Alis.Core.Ecs.System.Setting.Physic;
 using Xunit;
 
-namespace Alis.Core.Physic.Test.Dynamics.Solver
+namespace Alis.Test.Core.Ecs.System.Setting.Physic
 {
     /// <summary>
-    ///     The position test class
+    /// The physic setting test class
     /// </summary>
-    public class PositionTest
+    public class PhysicSettingTest
     {
         /// <summary>
-        ///     Tests that position constructor test
+        /// Tests that test physic setting debug mode
         /// </summary>
         [Fact]
-        public void PositionConstructorTest()
+        public void Test_PhysicSetting_DebugMode()
         {
             // Arrange
-            Vector2 c = new Vector2(1.0f, 1.0f);
-            float a = 0.5f;
+            PhysicSetting physicSetting = new PhysicSetting();
             
             // Act
-            Position position = new Position(c, a);
+            physicSetting.DebugMode = true;
+            bool result = physicSetting.DebugMode;
             
             // Assert
-            Assert.Equal(c, position.C);
-            Assert.Equal(a, position.A);
+            Assert.NotNull(physicSetting);
+            Assert.True(result);
         }
         
         /// <summary>
-        ///     Tests that position default constructor test
+        /// Tests that test physic setting debug color
         /// </summary>
         [Fact]
-        public void PositionDefaultConstructorTest()
+        public void Test_PhysicSetting_DebugColor()
         {
+            // Arrange
+            PhysicSetting physicSetting = new PhysicSetting();
+            
             // Act
-            Position position = new Position();
+            physicSetting.DebugColor = Color.Red;
+            Color result = physicSetting.DebugColor;
             
             // Assert
-            Assert.Equal(Vector2.Zero, position.C);
-            Assert.Equal(0.0f, position.A);
+            Assert.NotNull(physicSetting);
+            Assert.Equal(Color.Red, result);
         }
         
         /// <summary>
-        ///     Tests that position c property test
+        /// Tests that test physic setting gravity
         /// </summary>
         [Fact]
-        public void PositionCPropertyTest()
+        public void Test_PhysicSetting_Gravity()
         {
             // Arrange
-            Vector2 c = new Vector2(1.0f, 1.0f);
-            Position position = new Position(c, 0.5f);
+            PhysicSetting physicSetting = new PhysicSetting();
             
             // Act
-            Vector2 newC = new Vector2(2.0f, 2.0f);
-            position.C = newC;
+            physicSetting.Gravity = new Vector2(0.0f, -9.8f);
+            Vector2 result = physicSetting.Gravity;
             
             // Assert
-            Assert.Equal(newC, position.C);
+            Assert.NotNull(physicSetting);
+            Assert.Equal(new Vector2(0.0f, -9.8f), result);
         }
         
         /// <summary>
-        ///     Tests that position a property test
+        /// Tests that test physic setting builder
         /// </summary>
         [Fact]
-        public void PositionAPropertyTest()
+        public void Test_PhysicSetting_Builder()
         {
             // Arrange
-            float a = 0.5f;
-            Position position = new Position(new Vector2(1.0f, 1.0f), a);
+            PhysicSetting physicSetting = new PhysicSetting();
             
             // Act
-            float newA = 1.0f;
-            position.A = newA;
+            PhysicSettingBuilder result = physicSetting.Builder();
             
             // Assert
-            Assert.Equal(newA, position.A);
+            Assert.NotNull(result);
+            Assert.IsType<PhysicSettingBuilder>(result);
         }
     }
 }

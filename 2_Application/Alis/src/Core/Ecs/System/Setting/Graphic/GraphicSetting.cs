@@ -29,7 +29,6 @@
 
 using Alis.Builder.Core.Ecs.System.Setting.Graphic;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.System.Manager.Graphic;
 using Alis.Core.Graphic;
 
 namespace Alis.Core.Ecs.System.Setting.Graphic

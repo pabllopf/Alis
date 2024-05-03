@@ -1775,6 +1775,13 @@ namespace Alis.Core.Aspect.Data.Json
             AppendEscapedCharacter(result, nextChar, reader, options);
         }
         
+        /// <summary>
+        /// Appends the escaped character using the specified result
+        /// </summary>
+        /// <param name="result">The result</param>
+        /// <param name="nextChar">The next char</param>
+        /// <param name="reader">The reader</param>
+        /// <param name="options">The options</param>
         internal static void AppendEscapedCharacter(StringBuilder result, char nextChar, TextReader reader, JsonOptions options)
         {
             if (IsSpecialCharacter(nextChar))
@@ -1795,11 +1802,21 @@ namespace Alis.Core.Aspect.Data.Json
             }
         }
         
+        /// <summary>
+        /// Describes whether is special character
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <returns>The bool</returns>
         internal static bool IsSpecialCharacter(char c)
         {
             return c == 'b' || c == 't' || c == 'n' || c == 'f' || c == 'r';
         }
         
+        /// <summary>
+        /// Appends the special character using the specified result
+        /// </summary>
+        /// <param name="result">The result</param>
+        /// <param name="c">The </param>
         internal static void AppendSpecialCharacter(StringBuilder result, char c)
         {
             switch (c)
@@ -1822,16 +1839,31 @@ namespace Alis.Core.Aspect.Data.Json
             }
         }
         
+        /// <summary>
+        /// Describes whether is escape character
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <returns>The bool</returns>
         internal static bool IsEscapeCharacter(char c)
         {
             return c == '/' || c == '\\' || c == '"';
         }
         
+        /// <summary>
+        /// Describes whether is unicode character
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <returns>The bool</returns>
         internal static bool IsUnicodeCharacter(char c)
         {
             return c == 'u';
         }
         
+        /// <summary>
+        /// Appends the default character using the specified result
+        /// </summary>
+        /// <param name="result">The result</param>
+        /// <param name="c">The </param>
         internal static void AppendDefaultCharacter(StringBuilder result, char c)
         {
             result.Append('\\');
@@ -2951,6 +2983,12 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         internal static bool ReadWhitespaces(TextReader reader) => ReadWhile(reader, char.IsWhiteSpace);
         
+        /// <summary>
+        /// Describes whether read while
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="cont">The cont</param>
+        /// <returns>The bool</returns>
         internal static bool ReadWhile(TextReader reader, Predicate<char> cont)
         {
             while (CanReadCharacter(reader))
@@ -2967,11 +3005,21 @@ namespace Alis.Core.Aspect.Data.Json
             return false;
         }
         
+        /// <summary>
+        /// Describes whether can read character
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <returns>The bool</returns>
         private static bool CanReadCharacter(TextReader reader)
         {
             return reader.Peek() >= 0;
         }
         
+        /// <summary>
+        /// Peeks the character using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <returns>The char</returns>
         private static char PeekCharacter(TextReader reader)
         {
             return (char) reader.Peek();
@@ -3726,6 +3774,13 @@ namespace Alis.Core.Aspect.Data.Json
             writer.Write(']');
         }
         
+        /// <summary>
+        /// Writes the dictionary using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="dictionary">The dictionary</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
         internal static void WriteDictionary(TextWriter writer, IDictionary dictionary, IDictionary<object, object> objectGraph, JsonOptions options = null)
         {
             ValidateWriterAndDictionary(writer, dictionary);
@@ -3737,6 +3792,13 @@ namespace Alis.Core.Aspect.Data.Json
             writer.Write('}');
         }
         
+        /// <summary>
+        /// Validates the writer and dictionary using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="dictionary">The dictionary</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
         internal static void ValidateWriterAndDictionary(TextWriter writer, IDictionary dictionary)
         {
             if (writer == null)
@@ -3750,6 +3812,12 @@ namespace Alis.Core.Aspect.Data.Json
             }
         }
         
+        /// <summary>
+        /// Sets the option using the specified object graph
+        /// </summary>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <returns>The options</returns>
         internal static JsonOptions SetOption(IDictionary<object, object> objectGraph, JsonOptions options)
         {
             options ??= new JsonOptions();
@@ -3758,6 +3826,13 @@ namespace Alis.Core.Aspect.Data.Json
             return options;
         }
         
+        /// <summary>
+        /// Writes the dictionary entries using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="dictionary">The dictionary</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
         internal static void WriteDictionaryEntries(TextWriter writer, IDictionary dictionary, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             bool first = true;
@@ -3772,6 +3847,14 @@ namespace Alis.Core.Aspect.Data.Json
             }
         }
         
+        /// <summary>
+        /// Writes the dictionary entry using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="entry">The entry</param>
+        /// <param name="first">The first</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
         internal static void WriteDictionaryEntry(TextWriter writer, DictionaryEntry entry, ref bool first, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             string entryKey = string.Format(CultureInfo.InvariantCulture, "{0}", entry.Key);
@@ -3789,6 +3872,12 @@ namespace Alis.Core.Aspect.Data.Json
             WriteValue(writer, entry.Value, objectGraph, options);
         }
         
+        /// <summary>
+        /// Writes the dictionary key using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="key">The key</param>
+        /// <param name="options">The options</param>
         internal static void WriteDictionaryKey(TextWriter writer, string key, JsonOptions options)
         {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.WriteKeysWithoutQuotes))

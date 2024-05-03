@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Data.Resource;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Render;
@@ -57,9 +56,6 @@ namespace Alis.Sample.Rogue
                         .Debug(true)
                         .License("GNU General Public License v3.0")
                         .Icon(AssetManager.Find("app.bmp"))
-                        .Build())
-                    .Profile(profile => profile
-                        .LogLevel(LogLevel.Critical)
                         .Build())
                     .Audio(audio => audio
                         .Build())

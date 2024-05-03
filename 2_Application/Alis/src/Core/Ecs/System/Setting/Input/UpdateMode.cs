@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SolverData.cs
+//  File:UpdateMode.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,29 +27,28 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using Alis.Core.Aspect.Time;
-
-namespace Alis.Core.Physic.Dynamics.Solver
+namespace Alis.Core.Ecs.System.Setting.Input
 {
     /// <summary>
-    ///     The solver data
+    /// The update mode enum
     /// </summary>
-    internal struct SolverData
+    public enum UpdateMode
     {
         /// <summary>
-        ///     The step
+        /// The default update mode
         /// </summary>
-        public TimeStep Step { get; set; }
-        
+        Default,
         /// <summary>
-        ///     The positions
+        /// The dynamic update update mode
         /// </summary>
-        public List<Position> Positions { get; set; }
-        
+        DynamicUpdate,
         /// <summary>
-        ///     The velocities
+        /// The fixed update update mode
         /// </summary>
-        public List<Velocity> Velocities { get; set; }
+        FixedUpdate,
+        /// <summary>
+        /// The manual update update mode
+        /// </summary>
+        ManualUpdate
     }
 }

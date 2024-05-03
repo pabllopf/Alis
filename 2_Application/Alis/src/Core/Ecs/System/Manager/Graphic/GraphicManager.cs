@@ -38,7 +38,6 @@ using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Ecs.System.Manager;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
@@ -46,13 +45,13 @@ using Alis.Core.Graphic.Sdl2.Structs;
 using Color = Alis.Core.Aspect.Math.Definition.Color;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
-namespace Alis.Core.Ecs.System.Setting.Graphic
+namespace Alis.Core.Ecs.System.Manager.Graphic
 {
     /// <summary>
     ///     The graphic manager base class
     /// </summary>
     /// <seealso cref="Manager" />
-    public class GraphicManager : Manager.Manager
+    public class GraphicManager : Manager
     {
         /// <summary>
         ///     The box collider

@@ -40,6 +40,17 @@ namespace Alis.Core.Ecs.System.Setting.Audio
     public class AudioSetting : IAudioSetting,
         IBuilder<AudioSettingBuilder>
     {
+        
+        /// <summary>
+        /// Gets or sets the value of the volume
+        /// </summary>
+        public int Volume { get; set; } = 100;
+        
+        /// <summary>
+        /// Gets or sets the value of the mute
+        /// </summary>
+        public bool Mute { get; set; } = false;
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>
