@@ -5,21 +5,4 @@
         <TargetFrameworks>$(TargetFramework1);$(TargetFramework2)</TargetFrameworks>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
     </PropertyGroup>
-    <ItemGroup>
-      <None Update="Assets\sample_2.wav">
-        <LinkBase>Assets/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="Assets\sample_3.wav">
-        <LinkBase>Assets/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="Assets\sample_4.wav">
-        <LinkBase>Assets/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-    </ItemGroup>
 </Project>
