@@ -29,20 +29,19 @@
 
 using Alis.Core.Aspect.Time;
 using Alis.Core.Ecs.System.Manager.Audio;
+using Alis.Core.Ecs.System.Manager.Graphic;
 using Alis.Core.Ecs.System.Manager.Input;
 using Alis.Core.Ecs.System.Manager.Network;
 using Alis.Core.Ecs.System.Manager.Physic;
-using Alis.Core.Ecs.System.Manager.Profile;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
-using Alis.Core.Ecs.System.Setting.Graphic;
 
 namespace Alis.Core.Ecs.System
 {
     /// <summary>
     ///     The context class
     /// </summary>
-    /// <seealso cref="AContext" />
+    /// <seealso />
     public class Context : IContext
     {
         /// <summary>
@@ -85,11 +84,6 @@ namespace Alis.Core.Ecs.System
         ///     Gets the value of the physic manager
         /// </summary>
         public PhysicManager PhysicManager => videoGame.Find<PhysicManager>();
-        
-        /// <summary>
-        ///     Gets the value of the profile manager
-        /// </summary>
-        public ProfileManager ProfileManager => videoGame.Find<ProfileManager>();
         
         /// <summary>
         ///     Gets the value of the time manager

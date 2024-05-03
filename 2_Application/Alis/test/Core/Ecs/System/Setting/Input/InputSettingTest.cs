@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ProfileSetting.cs
+//  File:InputSettingTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,24 +27,50 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
+using Alis.Builder.Core.Ecs.System.Setting.Input;
+using Alis.Core.Ecs.System.Setting.Input;
+using Xunit;
 
-namespace Alis.Core.Ecs.System.Setting.Profile
+namespace Alis.Test.Core.Ecs.System.Setting.Input
 {
     /// <summary>
-    ///     The profile setting class
+    /// The input setting test class
     /// </summary>
-    /// <seealso cref="IProfileSetting" />
-    public class ProfileSetting : IProfileSetting
+    public class InputSettingTest
     {
         /// <summary>
-        ///     Gets or sets the value of the log level
+        /// Tests that test input setting update mode
         /// </summary>
-        public LogLevel LogLevel { get; set; }
+        [Fact]
+        public void Test_InputSetting_UpdateMode()
+        {
+            // Arrange
+            InputSetting inputSetting = new InputSetting();
+            
+            // Act
+            inputSetting.UpdateMode = UpdateMode.DynamicUpdate;
+            UpdateMode result = inputSetting.UpdateMode;
+            
+            // Assert
+            Assert.NotNull(inputSetting);
+            Assert.Equal(UpdateMode.DynamicUpdate, result);
+        }
         
         /// <summary>
-        ///     Gets or sets the value of the detail level
+        /// Tests that test input setting builder
         /// </summary>
-        public DetailLevel DetailLevel { get; set; }
+        [Fact]
+        public void Test_InputSetting_Builder()
+        {
+            // Arrange
+            InputSetting inputSetting = new InputSetting();
+            
+            // Act
+            InputSettingBuilder result = inputSetting.Builder();
+            
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<InputSettingBuilder>(result);
+        }
     }
 }

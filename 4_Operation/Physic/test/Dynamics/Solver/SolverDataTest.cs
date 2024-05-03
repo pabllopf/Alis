@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Physic.Dynamics.Solver;
 using Xunit;

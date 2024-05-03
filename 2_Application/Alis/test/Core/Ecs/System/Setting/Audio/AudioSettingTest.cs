@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PositionTest.cs
+//  File:AudioSettingTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,83 +27,69 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Dynamics.Solver;
+using Alis.Builder.Core.Ecs.System.Setting.Audio;
+using Alis.Core.Ecs.System.Setting.Audio;
 using Xunit;
 
-namespace Alis.Core.Physic.Test.Dynamics.Solver
+namespace Alis.Test.Core.Ecs.System.Setting.Audio
 {
     /// <summary>
-    ///     The position test class
+    /// The audio setting test class
     /// </summary>
-    public class PositionTest
+    public class AudioSettingTest
     {
         /// <summary>
-        ///     Tests that position constructor test
+        /// Tests that test audio setting volume
         /// </summary>
         [Fact]
-        public void PositionConstructorTest()
+        public void Test_AudioSetting_Volume()
         {
             // Arrange
-            Vector2 c = new Vector2(1.0f, 1.0f);
-            float a = 0.5f;
+            AudioSetting audioSetting = new AudioSetting();
             
             // Act
-            Position position = new Position(c, a);
+            audioSetting.Volume = 80;
+            int result = audioSetting.Volume;
             
             // Assert
-            Assert.Equal(c, position.C);
-            Assert.Equal(a, position.A);
+            Assert.NotNull(audioSetting);
+            Assert.Equal(80, result);
         }
         
         /// <summary>
-        ///     Tests that position default constructor test
+        /// Tests that test audio setting mute
         /// </summary>
         [Fact]
-        public void PositionDefaultConstructorTest()
-        {
-            // Act
-            Position position = new Position();
-            
-            // Assert
-            Assert.Equal(Vector2.Zero, position.C);
-            Assert.Equal(0.0f, position.A);
-        }
-        
-        /// <summary>
-        ///     Tests that position c property test
-        /// </summary>
-        [Fact]
-        public void PositionCPropertyTest()
+        public void Test_AudioSetting_Mute()
         {
             // Arrange
-            Vector2 c = new Vector2(1.0f, 1.0f);
-            Position position = new Position(c, 0.5f);
+            AudioSetting audioSetting = new AudioSetting();
             
             // Act
-            Vector2 newC = new Vector2(2.0f, 2.0f);
-            position.C = newC;
+            audioSetting.Mute = true;
+            bool result = audioSetting.Mute;
             
             // Assert
-            Assert.Equal(newC, position.C);
+            Assert.NotNull(audioSetting);
+            Assert.True(result);
         }
         
+        
         /// <summary>
-        ///     Tests that position a property test
+        /// Tests that test audio setting builder
         /// </summary>
         [Fact]
-        public void PositionAPropertyTest()
+        public void Test_AudioSetting_Builder()
         {
             // Arrange
-            float a = 0.5f;
-            Position position = new Position(new Vector2(1.0f, 1.0f), a);
+            AudioSetting audioSetting = new AudioSetting();
             
             // Act
-            float newA = 1.0f;
-            position.A = newA;
+            AudioSettingBuilder result = audioSetting.Builder();
             
             // Assert
-            Assert.Equal(newA, position.A);
+            Assert.NotNull(result);
+            Assert.IsType<AudioSettingBuilder>(result);
         }
     }
 }

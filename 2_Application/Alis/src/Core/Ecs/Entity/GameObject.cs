@@ -37,7 +37,7 @@ using Alis.Core.Ecs.System;
 
 namespace Alis.Core.Ecs.Entity
 {
-    /// <summary>Represent a object of the game.</summary>
+    /// <summary>Represent object of the game.</summary>
     public class GameObject : IGameObject<AComponent>, IHasContext<Context>
     {
         /// <summary>
@@ -112,7 +112,11 @@ namespace Alis.Core.Ecs.Entity
         /// <summary>
         ///     Ons the enable
         /// </summary>
-        public void OnEnable() => Components.ForEach(i => i.OnEnable());
+        public void OnEnable()
+        {
+            IsEnable = true;
+            Components.ForEach(i => i.OnEnable());
+        }
         
         /// <summary>
         ///     Ons the init
@@ -186,7 +190,11 @@ namespace Alis.Core.Ecs.Entity
         /// <summary>
         ///     Ons the disable
         /// </summary>
-        public void OnDisable() => Components.ForEach(i => i.OnDisable());
+        public void OnDisable()
+        {
+            IsEnable = false;
+            Components.ForEach(i => i.OnDisable());
+        }
         
         /// <summary>
         ///     Ons the reset

@@ -27,13 +27,27 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Builder.Core.Ecs.System.Setting.Scene;
+using Alis.Core.Aspect.Fluent;
+
 namespace Alis.Core.Ecs.System.Setting.Scene
 {
     /// <summary>
     ///     The scene setting class
     /// </summary>
     /// <seealso cref="ISceneSetting" />
-    public class SceneSetting : ISceneSetting
+    public class SceneSetting : ISceneSetting,
+        IBuilder<SceneSettingBuilder>
     {
+        /// <summary>
+        /// Gets or sets the value of the max number of scenes
+        /// </summary>
+        public int MaxNumberOfScenes { get; set; } = 256;
+        
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The scene setting builder</returns>
+        public SceneSettingBuilder Builder() => new SceneSettingBuilder();
     }
 }

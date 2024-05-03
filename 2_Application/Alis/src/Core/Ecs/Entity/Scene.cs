@@ -84,7 +84,11 @@ namespace Alis.Core.Ecs.Entity
         /// <summary>
         ///     Ons the enable
         /// </summary>
-        public void OnEnable() => GameObjects.ForEach(i => i.OnEnable());
+        public void OnEnable()
+        {
+            IsEnable = true;
+            GameObjects.ForEach(i => i.OnEnable());
+        }
         
         /// <summary>
         ///     Ons the init
@@ -154,7 +158,11 @@ namespace Alis.Core.Ecs.Entity
         /// <summary>
         ///     Ons the disable
         /// </summary>
-        public void OnDisable() => GameObjects.ForEach(i => i.OnDisable());
+        public void OnDisable()
+        {
+            IsEnable = false;
+            GameObjects.ForEach(i => i.OnDisable());
+        }
         
         /// <summary>
         ///     Ons the reset

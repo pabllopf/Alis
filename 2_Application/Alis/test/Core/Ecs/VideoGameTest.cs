@@ -29,23 +29,25 @@
 
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.System.Manager.Audio;
+using Alis.Core.Ecs.System.Manager.Graphic;
 using Alis.Core.Ecs.System.Manager.Input;
 using Alis.Core.Ecs.System.Manager.Network;
 using Alis.Core.Ecs.System.Manager.Physic;
-using Alis.Core.Ecs.System.Manager.Profile;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
-using Alis.Core.Ecs.System.Setting.Graphic;
 using Alis.Test.Sample;
 using Xunit;
 
-namespace Alis.Test
+namespace Alis.Test.Core.Ecs
 {
     /// <summary>
     ///     The video game test class
     /// </summary>
     public class VideoGameTest
     {
+        /// <summary>
+        /// Tests that test add manager
+        /// </summary>
         [Fact]
         public void Test_Add_Manager()
         {
@@ -56,9 +58,8 @@ namespace Alis.Test
             InputManager inputManager = new InputManager();
             NetworkManager networkManager = new NetworkManager();
             PhysicManager physicManager = new PhysicManager();
-            ProfileManager profileManager = new ProfileManager();
             SceneManager sceneManager = new SceneManager();
-            VideoGame videoGame = new VideoGame(settings, audioManager, graphicManager, inputManager, networkManager, physicManager, profileManager, sceneManager);
+            VideoGame videoGame = new VideoGame(settings, audioManager, graphicManager, inputManager, networkManager, physicManager, sceneManager);
             
             CustomManager newManager = new CustomManager(); // Assuming CustomManager is a type of Manager
             
@@ -69,6 +70,9 @@ namespace Alis.Test
             Assert.True(videoGame.Contains<CustomManager>());
         }
         
+        /// <summary>
+        /// Tests that test remove manager
+        /// </summary>
         [Fact]
         public void Test_Remove_Manager()
         {
@@ -79,9 +83,8 @@ namespace Alis.Test
             InputManager inputManager = new InputManager();
             NetworkManager networkManager = new NetworkManager();
             PhysicManager physicManager = new PhysicManager();
-            ProfileManager profileManager = new ProfileManager();
             SceneManager sceneManager = new SceneManager();
-            VideoGame videoGame = new VideoGame(settings, audioManager, graphicManager, inputManager, networkManager, physicManager, profileManager, sceneManager);
+            VideoGame videoGame = new VideoGame(settings, audioManager, graphicManager, inputManager, networkManager, physicManager, sceneManager);
             
             // Act
             videoGame.Remove(audioManager);
@@ -90,6 +93,9 @@ namespace Alis.Test
             Assert.False(videoGame.Contains<AudioManager>());
         }
         
+        /// <summary>
+        /// Tests that test get manager
+        /// </summary>
         [Fact]
         public void Test_Get_Manager()
         {
@@ -100,9 +106,8 @@ namespace Alis.Test
             InputManager inputManager = new InputManager();
             NetworkManager networkManager = new NetworkManager();
             PhysicManager physicManager = new PhysicManager();
-            ProfileManager profileManager = new ProfileManager();
             SceneManager sceneManager = new SceneManager();
-            VideoGame videoGame = new VideoGame(settings, audioManager, graphicManager, inputManager, networkManager, physicManager, profileManager, sceneManager);
+            VideoGame videoGame = new VideoGame(settings, audioManager, graphicManager, inputManager, networkManager, physicManager, sceneManager);
             
             // Act
             AudioManager retrievedManager = videoGame.Get<AudioManager>();
@@ -111,6 +116,9 @@ namespace Alis.Test
             Assert.Equal(audioManager, retrievedManager);
         }
         
+        /// <summary>
+        /// Tests that test is running property
+        /// </summary>
         [Fact]
         public void Test_IsRunning_Property()
         {
@@ -121,9 +129,8 @@ namespace Alis.Test
             InputManager inputManager = new InputManager();
             NetworkManager networkManager = new NetworkManager();
             PhysicManager physicManager = new PhysicManager();
-            ProfileManager profileManager = new ProfileManager();
             SceneManager sceneManager = new SceneManager();
-            VideoGame videoGame = new VideoGame(settings, audioManager, graphicManager, inputManager, networkManager, physicManager, profileManager, sceneManager);
+            VideoGame videoGame = new VideoGame(settings, audioManager, graphicManager, inputManager, networkManager, physicManager, sceneManager);
             
             // Act
             videoGame.IsRunning = false;

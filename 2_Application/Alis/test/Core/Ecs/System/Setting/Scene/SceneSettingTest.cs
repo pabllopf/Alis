@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ProfileSettingBuilder.cs
+//  File:SceneSettingTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,53 +27,50 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Ecs.System.Setting.Profile;
+using Alis.Builder.Core.Ecs.System.Setting.Scene;
+using Alis.Core.Ecs.System.Setting.Scene;
+using Xunit;
 
-namespace Alis.Builder.Core.Ecs.System.Setting.Profile
+namespace Alis.Test.Core.Ecs.System.Setting.Scene
 {
     /// <summary>
-    ///     The audio setting builder class
+    /// The scene setting test class
     /// </summary>
-    public class ProfileSettingBuilder :
-        IBuild<ProfileSetting>,
-        ILogLevel<ProfileSettingBuilder, LogLevel>
+    public class SceneSettingTest
     {
         /// <summary>
-        ///     The audio setting
+        /// Tests that test scene setting max number of scenes
         /// </summary>
-        private readonly ProfileSetting profileSetting = new ProfileSetting();
-        
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The audio setting</returns>
-        public ProfileSetting Build() => profileSetting;
-        
-        /// <summary>
-        ///     Logs the level using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The profile setting builder</returns>
-        public ProfileSettingBuilder LogLevel(LogLevel value)
+        [Fact]
+        public void Test_SceneSetting_MaxNumberOfScenes()
         {
-            profileSetting.LogLevel = value;
-            Logger.LogLevel = value;
-            return this;
+            // Arrange
+            SceneSetting sceneSetting = new SceneSetting();
+            
+            // Act
+            sceneSetting.MaxNumberOfScenes = 500;
+            int result = sceneSetting.MaxNumberOfScenes;
+            
+            // Assert
+            Assert.NotNull(sceneSetting);
+            Assert.Equal(500, result);
         }
         
         /// <summary>
-        ///     Logs the detail using the specified value
+        /// Tests that test scene setting builder
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The profile setting builder</returns>
-        public ProfileSettingBuilder LogDetail(DetailLevel value)
+        [Fact]
+        public void Test_SceneSetting_Builder()
         {
-            profileSetting.DetailLevel = value;
-            Logger.DetailLevel = value;
-            return this;
+            // Arrange
+            SceneSetting sceneSetting = new SceneSetting();
+            
+            // Act
+            SceneSettingBuilder result = sceneSetting.Builder();
+            
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<SceneSettingBuilder>(result);
         }
     }
 }

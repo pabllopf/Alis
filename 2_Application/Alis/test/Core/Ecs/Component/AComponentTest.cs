@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ProfileManager.cs
+//  File:AComponent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,13 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ecs.System.Manager.Profile
+namespace Alis.Test.Core.Ecs.Component
 {
     /// <summary>
-    ///     The profile manager class
+    /// The component test class
     /// </summary>
-    /// <seealso cref="Manager" />
-    public class ProfileManager : Manager
+    public class AComponentTest
     {
+        
     }
 }

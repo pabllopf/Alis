@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IProfileSetting.cs
+//  File:IGraphicSetting.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ecs.System.Setting.Profile
+namespace Alis.Core.Ecs.System.Setting.Graphic
 {
     /// <summary>
-    ///     The profile setting interface
+    ///     The graphic setting interface
     /// </summary>
-    public interface IProfileSetting
+    public interface IGraphicSetting
     {
     }
 }

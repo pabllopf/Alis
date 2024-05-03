@@ -36,13 +36,12 @@ using Alis.Core.Ecs.Entity.Property;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
 using Alis.Core.Ecs.System.Manager.Audio;
+using Alis.Core.Ecs.System.Manager.Graphic;
 using Alis.Core.Ecs.System.Manager.Input;
 using Alis.Core.Ecs.System.Manager.Network;
 using Alis.Core.Ecs.System.Manager.Physic;
-using Alis.Core.Ecs.System.Manager.Profile;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
-using Alis.Core.Ecs.System.Setting.Graphic;
 
 namespace Alis.Core.Ecs
 {
@@ -74,7 +73,6 @@ namespace Alis.Core.Ecs
             InputManager inputManager,
             NetworkManager networkManager,
             PhysicManager physicManager,
-            ProfileManager profileManager,
             SceneManager sceneManager,
             Context context = null,
             params Manager[] managers)
@@ -87,7 +85,6 @@ namespace Alis.Core.Ecs
             inputManager.SetContext(context);
             networkManager.SetContext(context);
             physicManager.SetContext(context);
-            profileManager.SetContext(context);
             sceneManager.SetContext(context);
             
             foreach (Manager manager in managers)
@@ -105,7 +102,6 @@ namespace Alis.Core.Ecs
             Add(inputManager);
             Add(networkManager);
             Add(physicManager);
-            Add(profileManager);
             Add(sceneManager);
         }
         

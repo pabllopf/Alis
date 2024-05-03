@@ -33,7 +33,6 @@ using Alis.Core.Ecs.System.Setting.Graphic;
 using Alis.Core.Ecs.System.Setting.Input;
 using Alis.Core.Ecs.System.Setting.Network;
 using Alis.Core.Ecs.System.Setting.Physic;
-using Alis.Core.Ecs.System.Setting.Profile;
 using Alis.Core.Ecs.System.Setting.Scene;
 
 namespace Alis.Core.Ecs.System.Setting
@@ -73,11 +72,6 @@ namespace Alis.Core.Ecs.System.Setting
         ///     Gets or sets the value of the physic
         /// </summary>
         public PhysicSetting Physic { get; set; } = new PhysicSetting();
-        
-        /// <summary>
-        ///     Gets or sets the value of the profile
-        /// </summary>
-        public ProfileSetting Profile { get; set; } = new ProfileSetting();
         
         /// <summary>
         ///     Gets or sets the value of the scene

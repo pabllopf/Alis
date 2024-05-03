@@ -27,13 +27,42 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Builder.Core.Ecs.System.Setting.Network;
+using Alis.Core.Aspect.Fluent;
+
 namespace Alis.Core.Ecs.System.Setting.Network
 {
     /// <summary>
     ///     The network setting class
     /// </summary>
     /// <seealso cref="INetworkSetting" />
-    public class NetworkSetting : INetworkSetting
+    public class NetworkSetting : INetworkSetting,
+        IBuilder<NetworkSettingBuilder>
     {
+        /// <summary>
+        /// Gets or sets the value of the port
+        /// </summary>
+        public int Port { get; set; } = 8080;
+        
+        /// <summary>
+        /// Gets or sets the value of the ip
+        /// </summary>
+        public string Ip { get; set; } = "127.0.0.1";
+        
+        /// <summary>
+        /// Gets or sets the value of the host
+        /// </summary>
+        public string Host { get; set; } = "localhost";
+        
+        /// <summary>
+        /// Gets or sets the value of the protocol
+        /// </summary>
+        public string Protocol { get; set; } = "http";
+        
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The network setting builder</returns>
+        public NetworkSettingBuilder Builder() => new NetworkSettingBuilder();
     }
 }
