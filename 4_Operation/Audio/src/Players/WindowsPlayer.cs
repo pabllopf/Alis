@@ -164,6 +164,7 @@ namespace Alis.Core.Audio.Players
             return Task.CompletedTask;
         }
         
+        
         /// <summary>
         ///     Mcis the send string using the specified command
         /// </summary>
