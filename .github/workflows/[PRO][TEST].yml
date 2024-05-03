@@ -8,17 +8,21 @@ jobs:
   macos_12_x64:
     runs-on: macos-12-large
     steps:
-      - name: Setup dotnet
+      - name: Check
         uses: actions/checkout@v4
         with:
           ref: master
+
+      - name: setup
+        uses: actions/setup-dotnet@v4
+        with:
           dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
@@ -35,17 +39,21 @@ jobs:
   macos_13_x64:
     runs-on: macos-13-large
     steps:
-      - name: Setup dotnet
+      - name: Check
         uses: actions/checkout@v4
         with:
           ref: master
+
+      - name: setup
+        uses: actions/setup-dotnet@v4
+        with:
           dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
@@ -62,17 +70,21 @@ jobs:
   macos_14_x64:
     runs-on: macos-14-large
     steps:
-      - name: Setup dotnet
+      - name: Check
         uses: actions/checkout@v4
         with:
           ref: master
+
+      - name: setup
+        uses: actions/setup-dotnet@v4
+        with:
           dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
             
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
@@ -89,6 +101,22 @@ jobs:
   macos_13_arm64:
     runs-on: macos-13-xlarge
     steps:
+      - name: Check
+        uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: setup
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
+    
       - name: chmod
         run: chmod +x dotnet-install.sh
 
@@ -110,18 +138,6 @@ jobs:
       - name: install dotnet 8
         run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 8.0.0 --channel LTS
         
-      - name: Setup dotnet
-        uses: actions/checkout@v4
-        with:
-          ref: master
-          dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
-
       - name: brew install icu4c
         run: brew install icu4c
 
@@ -149,6 +165,22 @@ jobs:
   macos_14_arm64:
     runs-on: macos-14-xlarge
     steps:
+
+      - name: Check
+        uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: setup
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
     
       - name: chmod
         run: chmod +x dotnet-install.sh
@@ -170,18 +202,6 @@ jobs:
 
       - name: install dotnet 8
         run: ./dotnet-install.sh --architecture arm64 --runtime dotnet --version 8.0.0 --channel LTS
-
-      - name: Setup dotnet
-        uses: actions/checkout@v4
-        with:
-          ref: master
-          dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
 
       - name: brew install icu4c
         run: brew install icu4c
@@ -211,17 +231,21 @@ jobs:
     runs-on: windows-2022
 
     steps:
-      - name: Setup dotnet
+      - name: Check
         uses: actions/checkout@v4
         with:
           ref: master
+
+      - name: setup
+        uses: actions/setup-dotnet@v4
+        with:
           dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
@@ -240,17 +264,21 @@ jobs:
     runs-on: windows-2019
 
     steps:
-      - name: Setup dotnet
+      - name: Check
         uses: actions/checkout@v4
         with:
           ref: master
+
+      - name: setup
+        uses: actions/setup-dotnet@v4
+        with:
           dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
@@ -268,17 +296,21 @@ jobs:
     runs-on: ubuntu-22.04
     
     steps:
-      - name: Setup dotnet
+      - name: Check
         uses: actions/checkout@v4
         with:
           ref: master
+
+      - name: setup
+        uses: actions/setup-dotnet@v4
+        with:
           dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
 
       - name: free disk space
         run: |
@@ -354,17 +386,21 @@ jobs:
           docker rmi $(docker image ls -aq)
           df -h
 
-      - name: Setup dotnet
+      - name: Check
         uses: actions/checkout@v4
         with:
           ref: master
+
+      - name: setup
+        uses: actions/setup-dotnet@v4
+        with:
           dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
