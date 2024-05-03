@@ -54,7 +54,7 @@ namespace Alis.Core.Audio.Test
         {
             // Arrange
             Player player = new Player();
-            string fileName = AssetManager.Find("sample.wav"); // Replace with a valid audio file for testing
+            string fileName = AssetManager.Find("sample_1.wav"); // Replace with a valid audio file for testing
             
             // Act
             await player.Play(fileName);
@@ -69,7 +69,7 @@ namespace Alis.Core.Audio.Test
         {
             // Arrange
             Player player = new Player();
-            string fileName = AssetManager.Find("sample.wav"); // Replace with a valid audio file for testing
+            string fileName = AssetManager.Find("sample_2.wav"); // Replace with a valid audio file for testing
             await player.Play(fileName);
             
             // Act
@@ -84,7 +84,7 @@ namespace Alis.Core.Audio.Test
         {
             // Arrange
             Player player = new Player();
-            string fileName = AssetManager.Find("sample.wav"); // Replace with a valid audio file for testing
+            string fileName = AssetManager.Find("sample_3.wav"); // Replace with a valid audio file for testing
             await player.Play(fileName);
             await player.Pause();
             
@@ -105,7 +105,7 @@ namespace Alis.Core.Audio.Test
         {
             // Arrange
             Player player = new Player();
-            string fileName = AssetManager.Find("sample.wav"); // Replace with a valid audio file for testing
+            string fileName = AssetManager.Find("sample_4.wav"); // Replace with a valid audio file for testing
             await player.Play(fileName);
             
             // Act
