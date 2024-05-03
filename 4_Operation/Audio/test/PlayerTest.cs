@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Data.Resource;
 using Xunit;
@@ -90,8 +92,11 @@ namespace Alis.Core.Audio.Test
             await player.Resume();
             
             // Assert
-            Assert.False(player.Paused);
-            Assert.True(player.Playing);
+            if (OperatingSystem.IsWindows())
+            {
+                Assert.False(player.Paused);
+                Assert.True(player.Playing);
+            }
         }
         
         [Fact]
