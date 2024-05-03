@@ -19,7 +19,7 @@
         </Content>
     </ItemGroup>-->
 
-    <ItemGroup>
+    <ItemGroup Condition="$(AssemblyName.Contains('Test')) == true">
         <Content
             Include="$(SolutionDir).config/xunit.runner.json"
             LinkBase="."
