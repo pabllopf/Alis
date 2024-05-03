@@ -8,7 +8,7 @@
         $(AssemblyName.Contains('FFMeg.Test')) OR
         $(AssemblyName.Contains('Alis.Core.Aspect.Security')) OR
         $(AssemblyName.Contains('Alis.Core.Aspect.Time')) OR
-        $(AssemblyName.Contains('Alis.Core.Aspect.Thread'))">
+        $(AssemblyName.Contains('Alis.Core.Audio'))">
         <Content
             Include="$(SolutionDir).config/xunit.runner.json"
             LinkBase="."
