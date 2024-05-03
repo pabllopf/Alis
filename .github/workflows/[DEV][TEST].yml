@@ -13,10 +13,14 @@ jobs:
   macos_12_x64:
     runs-on: macos-12
     steps:
-      - name: Setup dotnet
+      - name: Check
         uses: actions/checkout@v4
         with:
           ref: master
+
+      - name: setup
+        uses: actions/setup-dotnet@v4
+        with:
           dotnet-version: |
             3.0.103
             3.1.426
@@ -32,17 +36,21 @@ jobs:
     runs-on: windows-2022
 
     steps:
-      - name: Setup dotnet
+      - name: Check
         uses: actions/checkout@v4
         with:
           ref: master
+
+      - name: setup
+        uses: actions/setup-dotnet@v4
+        with:
           dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
@@ -51,17 +59,21 @@ jobs:
     runs-on: ubuntu-22.04
     
     steps:
-      - name: Setup dotnet
+      - name: Check
         uses: actions/checkout@v4
         with:
           ref: master
+
+      - name: setup
+        uses: actions/setup-dotnet@v4
+        with:
           dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
