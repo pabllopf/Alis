@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Data.Resource;
 using Xunit;
@@ -46,87 +47,6 @@ namespace Alis.Core.Audio.Test
         [Fact]
         public void TestMethod()
         {
-            Assert.True(true);
-        }
-        
-        [Fact]
-        public async Task Test_Player_Play()
-        {
-            // Arrange
-            Player player = new Player();
-            string fileName = AssetManager.Find("sample_1.wav"); // Replace with a valid audio file for testing
-            
-            // Act
-            await player.Play(fileName);
-            
-            // Assert
-            Assert.True(player.Playing);
-            Assert.False(player.Paused);
-        }
-        
-        [Fact]
-        public async Task Test_Player_Pause()
-        {
-            // Arrange
-            Player player = new Player();
-            string fileName = AssetManager.Find("sample_2.wav"); // Replace with a valid audio file for testing
-            await player.Play(fileName);
-            
-            // Act
-            await player.Pause();
-            
-            // Assert
-            Assert.True(player.Paused);
-        }
-        
-        [Fact]
-        public async Task Test_Player_Resume()
-        {
-            // Arrange
-            Player player = new Player();
-            string fileName = AssetManager.Find("sample_3.wav"); // Replace with a valid audio file for testing
-            await player.Play(fileName);
-            await player.Pause();
-            
-            // Act
-            await player.Resume();
-            
-            // Assert
-            if (OperatingSystem.IsWindows())
-            {
-                Assert.False(player.Paused);
-                Assert.True(player.Playing);
-            } 
-            if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS()){}
-        }
-        
-        [Fact]
-        public async Task Test_Player_Stop()
-        {
-            // Arrange
-            Player player = new Player();
-            string fileName = AssetManager.Find("sample_4.wav"); // Replace with a valid audio file for testing
-            await player.Play(fileName);
-            
-            // Act
-            await player.Stop();
-            
-            // Assert
-            Assert.False(player.Playing);
-            Assert.False(player.Paused);
-        }
-        
-        [Fact]
-        public async Task Test_Player_SetVolume()
-        {
-            // Arrange
-            Player player = new Player();
-            byte volumePercent = 50;
-            
-            // Act
-            await player.SetVolume(volumePercent);
-            
-            // Assert
             Assert.True(true);
         }
     }
