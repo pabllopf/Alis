@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
@@ -114,18 +115,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         }
         
         /// <summary>Compute the height of the binary tree in O(N) time. Should not be called often.</summary>
-        public int Height
-        {
-            get
-            {
-                if (root == NullNode)
-                {
-                    return 0;
-                }
-                
-                return nodes[root].Height;
-            }
-        }
+        public int Height => root == NullNode ? 0 : nodes[root].Height;
         
         /// <summary>Get the ratio of the sum of the node areas to the root area.</summary>
         public float AreaRatio
@@ -157,7 +147,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         }
         
         /// <summary>
-        ///     Get the maximum balance of an node in the tree. The balance is the difference in height of the two children of
+        ///     Get the maximum balance of a node in the tree. The balance is the difference in height of the two children of
         ///     a node.
         /// </summary>
         public int Balance
@@ -379,7 +369,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
                     if (node.IsLeaf())
                     {
                         maxFraction = HandleLeafNode(callback, input, maxFraction, nodeId);
-                        if (maxFraction == 0.0f)
+                        if (MathF.Abs(maxFraction) < float.Epsilon)
                         {
                             return;
                         }

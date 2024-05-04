@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 

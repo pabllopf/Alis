@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
-
 namespace Alis.Core.Aspect.Security.Test
 {
     /// <summary>

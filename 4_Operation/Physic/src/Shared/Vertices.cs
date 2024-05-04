@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -510,7 +511,7 @@ namespace Alis.Core.Physic.Shared
         {
             Vector2 edge = p2 - p1;
             float area = MathUtils.Area(ref p1, ref p2, ref point);
-            return (area == 0f) && (Vector2.Dot(point - p1, edge) >= 0f) && (Vector2.Dot(point - p2, edge) <= 0f);
+            return (MathF.Abs(area) < float.Epsilon) && (Vector2.Dot(point - p1, edge) >= 0f) && (Vector2.Dot(point - p2, edge) <= 0f);
         }
         
         /// <summary>

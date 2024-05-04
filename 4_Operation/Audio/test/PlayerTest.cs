@@ -27,11 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Threading.Tasks;
-using Alis.Core.Aspect.Data.Resource;
 using Xunit;
 
 namespace Alis.Core.Audio.Test

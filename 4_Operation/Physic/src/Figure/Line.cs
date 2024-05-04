@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
@@ -202,7 +203,7 @@ namespace Alis.Core.Physic.Figure
                 return false;
             }
             
-            if (ua != 0f || ub != 0f)
+            if (MathF.Abs(ua) >= float.Epsilon || MathF.Abs(ub) >= float.Epsilon)
             {
                 intersectionPoint = CalculateIntersectionPoint(point1, ua, b, d);
                 return true;

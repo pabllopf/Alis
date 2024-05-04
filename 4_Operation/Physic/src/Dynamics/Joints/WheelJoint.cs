@@ -581,7 +581,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
-            SetInitialValues(ref data);
+            SetInitialValues();
             
             Vector2 d = CalculateDVector(data);
             
@@ -638,8 +638,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Sets the initial values using the specified data
         /// </summary>
-        /// <param name="data">The data</param>
-        private void SetInitialValues(ref SolverData data)
+        private void SetInitialValues()
         {
             indexA = BodyA.IslandIndex;
             indexB = BodyB.IslandIndex;
@@ -892,11 +891,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     c = MathUtils.Max(translationLocal - upperTranslation, 0.0f);
                 }
                 
-                if (c != 0.0f)
+                if (MathF.Abs(c) >= float.Epsilon)
                 {
                     float invMass = invMassA + invMassB + invIa * sAxLocal * sAxLocal + invIb * sBxLocal * sBxLocal;
                     float impulseLocal = 0.0f;
-                    if (invMass != 0.0f)
+                    if (MathF.Abs(invMass) >= float.Epsilon)
                     {
                         impulseLocal = -c / invMass;
                     }
@@ -931,7 +930,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float invMass = invMassA + invMassB + invIa * sAy * sAy + invIb * sBy * sBy;
                 
                 float impulseLocal = 0.0f;
-                if (invMass != 0.0f)
+                if (MathF.Abs(invMass) >= float.Epsilon)
                 {
                     impulseLocal = -c / invMass;
                 }

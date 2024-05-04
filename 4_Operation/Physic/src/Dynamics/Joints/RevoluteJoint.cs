@@ -533,7 +533,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;
             
-            bool fixedRotation = iA + iB == 0.0f;
+            bool fixedRotation = iA + MathF.Abs(iB) < float.Epsilon;
             
             // Solve motor constraint.
             if (enableMotor && (fixedRotation == false))
@@ -613,7 +613,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float angularError = 0.0f;
             float positionError;
             
-            bool fixedRotation = invIa + invIb == 0.0f;
+            bool fixedRotation = invIa + MathF.Abs(invIb) < float.Epsilon;
             
             // Solve angular limit constraint
             if (enableLimit && (fixedRotation == false))

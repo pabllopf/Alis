@@ -381,7 +381,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float crAu = MathUtils.Cross(rA, u);
             float crBu = MathUtils.Cross(rB, u);
             float invMass = invMassA + invIa * crAu * crAu + invMassB + invIb * crBu * crBu;
-            mass = invMass != 0.0f ? 1.0f / invMass : 0.0f;
+            mass = MathF.Abs(invMass) >= float.Epsilon ? 1.0f / invMass : 0.0f;
             
             if ((stiffness > 0.0f) && (minLength < maxLength))
             {
@@ -401,7 +401,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 bias = c * h * k * gamma;
                 
                 invMass += gamma;
-                softMass = invMass != 0.0f ? 1.0f / invMass : 0.0f;
+                softMass = MathF.Abs(invMass) >= float.Epsilon ? 1.0f / invMass : 0.0f;
             }
             else
             {
