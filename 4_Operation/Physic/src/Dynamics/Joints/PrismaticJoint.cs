@@ -557,7 +557,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float k11 = mA + mB + iA * s1 * s1 + iB * s2 * s2;
                 float k12 = iA * s1 + iB * s2;
                 float k22 = iA + iB;
-                if (k22 == 0.0f)
+                if (MathF.Abs(k22) < float.Epsilon)
                 {
                     k22 = 1.0f;
                 }
@@ -789,7 +789,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float k12 = iA * s1Local + iB * s2Local;
                 float k13 = iA * s1Local * a1Local + iB * s2Local * a2Local;
                 float k22 = iA + iB;
-                if (k22 == 0.0f)
+                if (MathF.Abs(k22) < float.Epsilon)
                 {
                     k22 = 1.0f;
                 }
@@ -821,7 +821,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float k11 = mA + mB + iA * s1Local * s1Local + iB * s2Local * s2Local;
                 float k12 = iA * s1Local + iB * s2Local;
                 float k22 = iA + iB;
-                if (k22 == 0.0f)
+                if (MathF.Abs(k22) < float.Epsilon)
                 {
                     k22 = 1.0f;
                 }

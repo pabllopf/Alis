@@ -261,7 +261,7 @@ namespace Alis.Core.Physic.Collision
         /// <returns>The bool</returns>
         private static bool ProcessDenominator(ref float lower, ref float upper, ref int index, int i, float numerator, float denominator)
         {
-            if ((denominator == 0.0f) && (numerator < 0.0f))
+            if ((MathF.Abs(denominator) < float.Epsilon) && (MathF.Abs(numerator) <= float.Epsilon))
             {
                 return false;
             }

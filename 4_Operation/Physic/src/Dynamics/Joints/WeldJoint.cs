@@ -360,17 +360,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 // magic formulas
                 float h = data.Step.DeltaTime;
                 gamma = h * (d + h * k);
-                gamma = gamma != 0.0f ? 1.0f / gamma : 0.0f;
+                gamma = MathF.Abs(gamma) >= float.Epsilon ? 1.0f / gamma : 0.0f;
                 bias = c * h * k * gamma;
                 
                 invM += gamma;
                 mass.Ez = new Vector3(
                     mass.Ez.X,
                     mass.Ez.Y,
-                    invM != 0.0f ? 1.0f / invM : 0.0f
+                    MathF.Abs(invM) >= float.Epsilon ? 1.0f / invM : 0.0f
                 );
             }
-            else if (kk.Ez.Z == 0.0f)
+            else if (MathF.Abs(kk.Ez.Z) < float.Epsilon)
             {
                 kk.GetInverse22(ref mass);
                 gamma = 0.0f;

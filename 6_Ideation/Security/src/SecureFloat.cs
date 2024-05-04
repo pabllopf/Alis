@@ -84,14 +84,14 @@ namespace Alis.Core.Aspect.Security
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static bool operator ==(SecureFloat a, SecureFloat b) => a.Value == b.Value;
+        public static bool operator ==(SecureFloat a, SecureFloat b) => SecureRandom.Abs(a.Value - b.Value) < 0.01f;
         
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static bool operator !=(SecureFloat a, SecureFloat b) => a.Value != b.Value;
+        public static bool operator !=(SecureFloat a, SecureFloat b) => SecureRandom.Abs(a.Value - b.Value) > 0.01f;
         
         /// <summary>
         /// </summary>

@@ -31,7 +31,6 @@ using System.Threading;
 using Alis.Builder.Core.Ecs.Component.Audio;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Audio;
 
 namespace Alis.Core.Ecs.Component.Audio
 {
