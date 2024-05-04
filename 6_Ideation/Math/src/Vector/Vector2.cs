@@ -187,8 +187,8 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <returns>The absolute value vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2 Abs(Vector2 value) => new Vector2(
-            MathF.Abs(value.X),
-            MathF.Abs(value.Y)
+            CustomMathF.Abs(value.X),
+            CustomMathF.Abs(value.Y)
         );
         
         /// <summary>Adds two vectors together.</summary>
@@ -216,7 +216,7 @@ namespace Alis.Core.Aspect.Math.Vector
         public static float Distance(Vector2 value1, Vector2 value2)
         {
             float distanceSquared = DistanceSquared(value1, value2);
-            return MathF.Sqrt(distanceSquared);
+            return CustomMathF.Sqrt(distanceSquared);
         }
         
         /// <summary>Returns the Euclidean distance squared between two specified points.</summary>
@@ -334,8 +334,8 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <returns>The square root vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2 SquareRoot(Vector2 value) => new Vector2(
-            MathF.Sqrt(value.X),
-            MathF.Sqrt(value.Y)
+            CustomMathF.Sqrt(value.X),
+            CustomMathF.Sqrt(value.Y)
         );
         
         /// <summary>Subtracts the second vector from the first.</summary>
@@ -476,7 +476,7 @@ namespace Alis.Core.Aspect.Math.Vector
         public readonly float Length()
         {
             float lengthSquared = LengthSquared();
-            return MathF.Sqrt(lengthSquared);
+            return CustomMathF.Sqrt(lengthSquared);
         }
         
         /// <summary>Returns the length of the vector squared.</summary>

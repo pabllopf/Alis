@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Math
         {
             Angle = angle;
             //Velcro: Optimization
-            if ((MathF.Abs(angle) < float.Epsilon) && (MathF.Abs(angle) > -float.Epsilon))
+            if ((CustomMathF.Abs(angle) < float.Epsilon) && (CustomMathF.Abs(angle) > -float.Epsilon))
             {
                 Sine = 0;
                 Cosine = 1;

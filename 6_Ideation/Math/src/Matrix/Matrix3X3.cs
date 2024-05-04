@@ -103,7 +103,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         public Vector3 Solve33(Vector3 b)
         {
             float det = Vector3.Dot(Ex, Vector3.Cross(Ey, Ez));
-            if (MathF.Abs(det) > Epsilon) // Use epsilon check instead of exact comparison
+            if (CustomMathF.Abs(det) > Epsilon) // Use epsilon check instead of exact comparison
             {
                 det = 1.0f / det;
             }
@@ -123,7 +123,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             float a11 = Ex.X, a12 = Ey.X, a21 = Ex.Y, a22 = Ey.Y;
             float det = a11 * a22 - a12 * a21;
             
-            if (MathF.Abs(det) > Epsilon) // Use epsilon check instead of exact comparison
+            if (CustomMathF.Abs(det) > Epsilon) // Use epsilon check instead of exact comparison
             {
                 det = 1.0f / det;
             }
@@ -141,7 +141,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
             float det = a * d - b * c;
             
-            if (MathF.Abs(det) > Epsilon) // Use epsilon check instead of exact comparison
+            if (CustomMathF.Abs(det) > Epsilon) // Use epsilon check instead of exact comparison
             {
                 det = 1.0f / det;
             }
@@ -173,7 +173,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         public void GetSymInverse33(ref Matrix3X3 m)
         {
             float det = Dot(Ex, Cross(Ey, Ez));
-            if (MathF.Abs(det) > Epsilon)
+            if (CustomMathF.Abs(det) > Epsilon)
             {
                 det = 1.0f / det;
             }

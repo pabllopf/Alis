@@ -34,7 +34,6 @@ using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Shared;
-using MathF = Alis.Core.Aspect.Math.MathF;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -86,7 +85,7 @@ namespace Alis.Core.Physic.Collision
             
             float denominator = Vector2.Dot(normal, d);
             
-            if (MathF.Abs(denominator) < float.Epsilon)
+            if (CustomMathF.Abs(denominator) < float.Epsilon)
             {
                 return false;
             }
@@ -103,7 +102,7 @@ namespace Alis.Core.Physic.Collision
             // s = dot(q - v1, r) / dot(r, r)
             Vector2 r = v2 - v1;
             float rr = Vector2.Dot(r, r);
-            if (MathF.Abs(rr) < float.Epsilon)
+            if (CustomMathF.Abs(rr) < float.Epsilon)
             {
                 return false;
             }
@@ -261,7 +260,7 @@ namespace Alis.Core.Physic.Collision
         /// <returns>The bool</returns>
         private static bool ProcessDenominator(ref float lower, ref float upper, ref int index, int i, float numerator, float denominator)
         {
-            if ((MathF.Abs(denominator) < float.Epsilon) && (MathF.Abs(numerator) <= float.Epsilon))
+            if ((CustomMathF.Abs(denominator) < float.Epsilon) && (CustomMathF.Abs(numerator) <= float.Epsilon))
             {
                 return false;
             }

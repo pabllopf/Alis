@@ -34,7 +34,6 @@ using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Shared;
 using Xunit;
-using MathF = Alis.Core.Aspect.Math.MathF;
 
 namespace Alis.Core.Physic.Test.Collision.Shapes
 {
@@ -98,7 +97,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             PolygonShape polygonShape = new PolygonShape(1.0f);
             float hx = 1.0f, hy = 2.0f;
             Vector2 center = new Vector2(1, 1);
-            float angle = MathF.Pi / 4;
+            float angle = CustomMathF.Pi / 4;
             
             // Act
             polygonShape.SetAsBox(hx, hy, center, angle);

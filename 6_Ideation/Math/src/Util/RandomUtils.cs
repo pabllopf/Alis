@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Math.Util
             Rng.GetBytes(buffer);
             int randomValue = BitConverter.ToInt32(buffer, 0);
             
-            return (int) (MathF.Abs(randomValue % (maxValue - minValue + 1)) + minValue);
+            return (int) (CustomMathF.Abs(randomValue % (maxValue - minValue + 1)) + minValue);
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace Alis.Core.Aspect.Math.Util
             Rng.GetBytes(buffer);
             int randomValue = BitConverter.ToInt32(buffer, 0);
             
-            return (int) MathF.Abs(randomValue % (value + 1));
+            return (int) CustomMathF.Abs(randomValue % (value + 1));
         }
     }
 }

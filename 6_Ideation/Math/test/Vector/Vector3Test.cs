@@ -134,7 +134,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector3 vector = new Vector3(2, 2, 1);
             
-            float expectedLength = MathF.Sqrt(2 * 2 + 2 * 2 + 1 * 1);
+            float expectedLength = CustomMathF.Sqrt(2 * 2 + 2 * 2 + 1 * 1);
             float actualLength = vector.Length();
             
             Assert.Equal(expectedLength, actualLength);
@@ -179,7 +179,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             float x = 4;
             
             // Act
-            float result = MathF.Sqrt(x);
+            float result = CustomMathF.Sqrt(x);
             
             // Assert
             Assert.Equal(2, result);
@@ -195,7 +195,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             float value = -5;
             
             // Act
-            float result = MathF.Abs(value);
+            float result = CustomMathF.Abs(value);
             
             // Assert
             Assert.Equal(5, result);
@@ -208,10 +208,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void Cos_ShouldCalculateCorrectly()
         {
             // Arrange
-            float x = MathF.Pi / 2;
+            float x = CustomMathF.Pi / 2;
             
             // Act
-            float result = MathF.Cos(x);
+            float result = CustomMathF.Cos(x);
             
             // Assert
             Assert.Equal(0, result, 5);
@@ -224,10 +224,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void Sin_ShouldCalculateCorrectly()
         {
             // Arrange
-            float x = MathF.Pi / 2;
+            float x = CustomMathF.Pi / 2;
             
             // Act
-            float result = MathF.Sin(x);
+            float result = CustomMathF.Sin(x);
             
             // Assert
             Assert.Equal(1, result, 5);
@@ -243,7 +243,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             float x = 1;
             
             // Act
-            float result = MathF.Acos(x);
+            float result = CustomMathF.Acos(x);
             
             // Assert
             Assert.Equal(1.53, result, 2);
@@ -260,7 +260,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             int val2 = 10;
             
             // Act
-            int result = MathF.Max(val1, val2);
+            int result = CustomMathF.Max(val1, val2);
             
             // Assert
             Assert.Equal(val2, result);

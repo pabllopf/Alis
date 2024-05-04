@@ -32,7 +32,7 @@ namespace Alis.Core.Aspect.Math
     /// <summary>
     ///     The math class
     /// </summary>
-    public static class MathF
+    public static class CustomMathF
     {
         /// <summary>Represents the natural logarithmic base, specified by the constant, <see langword="e" />.</summary>
         public const float E = 2.7182817f;
@@ -186,5 +186,11 @@ namespace Alis.Core.Aspect.Math
         /// <param name="val2">The val</param>
         /// <returns>The int</returns>
         public static int Max(int val1, int val2) => val1 >= val2 ? val1 : val2;
+        
+        public static int Min(int y3, int y4) => y3 <= y4 ? y3 : y4;
+        
+        public static float Max(float val1, float val2) => val1 >= val2 ? val1 : val2;
+        
+        public static float Min(float y3, float y4) => y3 <= y4 ? y3 : y4;
     }
 }

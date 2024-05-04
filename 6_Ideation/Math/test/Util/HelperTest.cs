@@ -209,7 +209,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         public void ToDegrees_ShouldCalculateCorrectly()
         {
             // Arrange
-            float radians = MathF.Pi;
+            float radians = CustomMathF.Pi;
             
             // Act
             float result = Helper.ToDegrees(radians);
@@ -231,7 +231,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float result = Helper.ToRadians(degrees);
             
             // Assert
-            Assert.Equal(MathF.Pi, result);
+            Assert.Equal(CustomMathF.Pi, result);
         }
         
         /// <summary>
@@ -241,13 +241,13 @@ namespace Alis.Core.Aspect.Math.Test.Util
         public void WrapAngle_ShouldCalculateCorrectly()
         {
             // Arrange
-            float angle = 3 * MathF.Pi;
+            float angle = 3 * CustomMathF.Pi;
             
             // Act
             float result = Helper.WrapAngle(angle);
             
             // Assert
-            Assert.Equal(MathF.Pi, result, 0.1);
+            Assert.Equal(CustomMathF.Pi, result, 0.1);
         }
         
         /// <summary>

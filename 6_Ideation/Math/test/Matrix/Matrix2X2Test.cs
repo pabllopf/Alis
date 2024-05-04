@@ -103,9 +103,9 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         [Fact]
         public void Matrix2X2_GetAngle_ShouldReturnCorrectAngle()
         {
-            Matrix2X2 matrix = new Matrix2X2(MathF.Pi / 4);
+            Matrix2X2 matrix = new Matrix2X2(CustomMathF.Pi / 4);
             
-            Assert.Equal(MathF.Pi / 4, -matrix.GetAngle(), 0.1f);
+            Assert.Equal(CustomMathF.Pi / 4, -matrix.GetAngle(), 0.1f);
         }
         
         /// <summary>
