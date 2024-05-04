@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Security.Cryptography;
 
 namespace Alis.Core.Aspect.Security
 {
@@ -36,9 +37,77 @@ namespace Alis.Core.Aspect.Security
     /// </summary>
     internal static class SecureRandom
     {
-        /// <summary>
-        ///     The random
-        /// </summary>
-        public static readonly Random Random = new Random();
+        public static int NextInt()
+        {
+            RandomNumberGenerator random = RandomNumberGenerator.Create();
+            byte[] bytes = new byte[sizeof(int)]; // 4 bytes
+            random.GetNonZeroBytes(bytes);
+            return BitConverter.ToInt32(bytes, 0);
+        }
+        
+        public static char NextChar()
+        {
+            RandomNumberGenerator random = RandomNumberGenerator.Create();
+            byte[] bytes = new byte[sizeof(char)]; // 2 bytes
+            random.GetNonZeroBytes(bytes);
+            return BitConverter.ToChar(bytes, 0);
+        }
+        
+        public static long NextLong()
+        {
+            RandomNumberGenerator random = RandomNumberGenerator.Create();
+            byte[] bytes = new byte[sizeof(long)]; // 8 bytes
+            random.GetNonZeroBytes(bytes);
+            return BitConverter.ToInt64(bytes, 0);
+        }
+        
+        public static double NextDouble(int i, int i1)
+        {
+            RandomNumberGenerator random = RandomNumberGenerator.Create();
+            byte[] bytes = new byte[sizeof(long)]; // 8 bytes
+            random.GetNonZeroBytes(bytes);
+            long randomLong = BitConverter.ToInt64(bytes, 0);
+            double range = i1 - i;
+            double randomDouble = i + (Math.Abs(randomLong) / (double)long.MaxValue) * range;
+            return randomDouble;
+        }
+        
+        public static decimal NextDecimal(int i, int i1)
+        {
+            RandomNumberGenerator random = RandomNumberGenerator.Create();
+            byte[] bytes = new byte[sizeof(int)]; // 4 bytes
+            random.GetNonZeroBytes(bytes);
+            int randomInt = BitConverter.ToInt32(bytes, 0);
+            decimal range = i1 - i;
+            decimal randomDecimal = i + (Math.Abs(randomInt) / (decimal)int.MaxValue) * range;
+            return randomDecimal;
+        }
+            
+        public static byte NextByte()
+        {
+            RandomNumberGenerator random = RandomNumberGenerator.Create();
+            byte[] bytes = new byte[sizeof(byte)]; // 1 byte
+            random.GetNonZeroBytes(bytes);
+            return bytes[0];
+        }
+        
+        public static int NextBool()
+        {
+            RandomNumberGenerator random = RandomNumberGenerator.Create();
+            byte[] bytes = new byte[sizeof(bool)]; // 1 byte
+            random.GetNonZeroBytes(bytes);
+            return BitConverter.ToBoolean(bytes, 0) ? 1 : 0;
+        }
+        
+        public static float NextFloat(int i, int i1)
+        {
+            RandomNumberGenerator random = RandomNumberGenerator.Create();
+            byte[] bytes = new byte[sizeof(int)]; // 4 bytes
+            random.GetNonZeroBytes(bytes);
+            int randomInt = BitConverter.ToInt32(bytes, 0);
+            float range = i1 - i;
+            float randomFloat = i + (Math.Abs(randomInt) / (float)int.MaxValue) * range;
+            return randomFloat;
+        }
     }
 }

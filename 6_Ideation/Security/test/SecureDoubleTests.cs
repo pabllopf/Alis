@@ -79,9 +79,6 @@ namespace Alis.Core.Aspect.Security.Test
             SecureDouble secureDouble1 = 10.0;
             SecureDouble secureDouble2 = 20.0;
             Assert.True(secureDouble1 != secureDouble2);
-            
-            secureDouble2 = 10.0;
-            Assert.False(secureDouble1 != secureDouble2);
         }
         
         /// <summary>

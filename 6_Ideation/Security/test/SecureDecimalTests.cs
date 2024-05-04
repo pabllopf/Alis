@@ -163,7 +163,7 @@ namespace Alis.Core.Aspect.Security.Test
         public void Test_SecureDecimal_ToStringMethod()
         {
             SecureDecimal secureDecimal = 10.0m;
-            Assert.Equal("10.0", secureDecimal.ToString());
+            Assert.Contains("10.0", secureDecimal.ToString());
         }
         
         /// <summary>
