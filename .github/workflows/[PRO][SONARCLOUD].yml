@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: Build and analyze
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -17,9 +17,22 @@ jobs:
           java-version: 17
           distribution: 'zulu' # Alternative distribution options are available.
 
-      - uses: actions/checkout@v3
+      - name: Check
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          ref: master
+          fetch-depth: 0
+
+      - name: setup
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v4
@@ -27,11 +40,6 @@ jobs:
           path: ~\sonar\cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 6.0.x  # Specify the version you want to use
 
       - name: Cache SonarCloud scanner
         id: cache-sonar-scanner
