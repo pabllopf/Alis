@@ -248,7 +248,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             set
             {
-                if (MathF.Abs(angularOffset - value) >= float.Epsilon)
+                if (CustomMathF.Abs(angularOffset - value) >= float.Epsilon)
                 {
                     WakeBodies();
                     angularOffset = value;

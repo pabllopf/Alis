@@ -511,7 +511,7 @@ namespace Alis.Core.Physic.Shared
         {
             Vector2 edge = p2 - p1;
             float area = MathUtils.Area(ref p1, ref p2, ref point);
-            return (MathF.Abs(area) < float.Epsilon) && (Vector2.Dot(point - p1, edge) >= 0f) && (Vector2.Dot(point - p2, edge) <= 0f);
+            return (CustomMathF.Abs(area) < float.Epsilon) && (Vector2.Dot(point - p1, edge) >= 0f) && (Vector2.Dot(point - p2, edge) <= 0f);
         }
         
         /// <summary>

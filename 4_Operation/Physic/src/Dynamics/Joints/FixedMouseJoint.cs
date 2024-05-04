@@ -234,7 +234,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // beta has units of inverse time.
             float h = data.Step.DeltaTime;
             gamma = h * (d + h * k);
-            if (MathF.Abs(gamma) >= float.Epsilon)
+            if (CustomMathF.Abs(gamma) >= float.Epsilon)
             {
                 gamma = 1.0f / gamma;
             }

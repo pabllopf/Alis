@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -276,14 +275,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public sealed override Vector2 WorldAnchorA
         {
             get => BodyA.GetWorldPoint(localAnchorA);
-            set => throw new ArgumentException(value.ToString());
+            set => throw new System.ArgumentException(value.ToString());
         }
         
         /// <summary>The anchor on <see cref="Joint.BodyB" /> in world coordinates</summary>
         public sealed override Vector2 WorldAnchorB
         {
             get => BodyB.GetWorldPoint(localAnchorB);
-            set => throw new ArgumentException(value.ToString());
+            set => throw new System.ArgumentException(value.ToString());
         }
         
         /// <summary>Set/get the linear stiffness in N/m</summary>
@@ -381,7 +380,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float crAu = MathUtils.Cross(rA, u);
             float crBu = MathUtils.Cross(rB, u);
             float invMass = invMassA + invIa * crAu * crAu + invMassB + invIb * crBu * crBu;
-            mass = MathF.Abs(invMass) >= float.Epsilon ? 1.0f / invMass : 0.0f;
+            mass = CustomMathF.Abs(invMass) >= float.Epsilon ? 1.0f / invMass : 0.0f;
             
             if ((stiffness > 0.0f) && (minLength < maxLength))
             {
@@ -401,7 +400,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 bias = c * h * k * gamma;
                 
                 invMass += gamma;
-                softMass = MathF.Abs(invMass) >= float.Epsilon ? 1.0f / invMass : 0.0f;
+                softMass = CustomMathF.Abs(invMass) >= float.Epsilon ? 1.0f / invMass : 0.0f;
             }
             else
             {
@@ -548,7 +547,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             
             float length = MathUtils.Normalize(ref uLocal);
             float c;
-            if (Math.Abs(minLength - maxLength) < 0.0001f)
+            if (CustomMathF.Abs(minLength - maxLength) < 0.0001f)
             {
                 c = length - minLength;
             }

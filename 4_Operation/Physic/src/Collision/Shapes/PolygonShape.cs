@@ -215,7 +215,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                         nextIndex = j;
                     }
                     
-                    if ((MathF.Abs(c) < float.Epsilon) && (v.LengthSquared() > r.LengthSquared()))
+                    if ((CustomMathF.Abs(c) < float.Epsilon) && (v.LengthSquared() > r.LengthSquared()))
                     {
                         nextIndex = j;
                     }

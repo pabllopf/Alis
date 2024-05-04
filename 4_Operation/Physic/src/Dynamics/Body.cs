@@ -1025,7 +1025,7 @@ namespace Alis.Core.Physic.Dynamics
             Vector2 localCenter = Vector2.Zero;
             foreach (Fixture f in FixtureList)
             {
-                if (MathF.Abs(f.Shape.DensityPrivate) < float.Epsilon)
+                if (CustomMathF.Abs(f.Shape.DensityPrivate) < float.Epsilon)
                 {
                     continue;
                 }

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics.Solver;
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2 WorldAnchorA
         {
             get => BodyA.Position;
-            set => throw new ArgumentException(value.ToString());
+            set => throw new System.ArgumentException(value.ToString());
         }
         
         /// <summary>
@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2 WorldAnchorB
         {
             get => BodyB.Position;
-            set => throw new ArgumentException(value.ToString());
+            set => throw new System.ArgumentException(value.ToString());
         }
         
         /// <summary>The desired angle between BodyA and BodyB</summary>
@@ -93,7 +93,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => targetAngle;
             set
             {
-                if (Math.Abs(targetAngle - value) > 0.01f)
+                if (CustomMathF.Abs(targetAngle - value) > 0.01f)
                 {
                     targetAngle = value;
                     WakeBodies();

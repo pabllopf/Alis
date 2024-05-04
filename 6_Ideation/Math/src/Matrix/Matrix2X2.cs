@@ -162,7 +162,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             {
                 float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
                 float det = a * d - b * c;
-                if (MathF.Abs(det) > float.Epsilon || MathF.Abs(det) < -float.Epsilon)
+                if (CustomMathF.Abs(det) > float.Epsilon || CustomMathF.Abs(det) < -float.Epsilon)
                 {
                     det = 1.0f / det;
                 }

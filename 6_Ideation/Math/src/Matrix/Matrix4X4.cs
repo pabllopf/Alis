@@ -253,8 +253,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <returns>The rotation matrix.</returns>
         public static Matrix4X4 CreateRotationZ(float radians)
         {
-            float c = MathF.Cos(radians);
-            float s = MathF.Sin(radians);
+            float c = CustomMathF.Cos(radians);
+            float s = CustomMathF.Sin(radians);
             
             // [  c  s  0  0 ]
             // [ -s  c  0  0 ]
@@ -314,8 +314,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <returns>The result</returns>
         public static Matrix4X4 CreateRotationX(float radians)
         {
-            float c = MathF.Cos(radians);
-            float s = MathF.Sin(radians);
+            float c = CustomMathF.Cos(radians);
+            float s = CustomMathF.Sin(radians);
             
             // [  1  0  0  0 ]
             // [  0  c  s  0 ]

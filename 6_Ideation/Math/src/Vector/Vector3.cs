@@ -277,7 +277,7 @@ namespace Alis.Core.Aspect.Math.Vector
         public readonly float Length()
         {
             float lengthSquared = LengthSquared();
-            return MathF.Sqrt(lengthSquared);
+            return CustomMathF.Sqrt(lengthSquared);
         }
         
         /// <summary>Returns the length of the vector squared.</summary>

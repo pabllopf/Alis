@@ -167,7 +167,7 @@ namespace Alis.Core.Aspect.Math.Test
         public void Set_ShouldCalculateCorrectly_WhenAngleIsNotZero()
         {
             // Arrange
-            float angle = MathF.Pi / 2; // 90 degrees
+            float angle = CustomMathF.Pi / 2; // 90 degrees
             
             // Act
             Rotation rotation = new Rotation();

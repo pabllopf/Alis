@@ -369,7 +369,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
                     if (node.IsLeaf())
                     {
                         maxFraction = HandleLeafNode(callback, input, maxFraction, nodeId);
-                        if (MathF.Abs(maxFraction) < float.Epsilon)
+                        if (CustomMathF.Abs(maxFraction) < float.Epsilon)
                         {
                             return;
                         }

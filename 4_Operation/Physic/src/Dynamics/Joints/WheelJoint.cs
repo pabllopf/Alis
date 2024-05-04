@@ -891,11 +891,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     c = MathUtils.Max(translationLocal - upperTranslation, 0.0f);
                 }
                 
-                if (MathF.Abs(c) >= float.Epsilon)
+                if (CustomMathF.Abs(c) >= float.Epsilon)
                 {
                     float invMass = invMassA + invMassB + invIa * sAxLocal * sAxLocal + invIb * sBxLocal * sBxLocal;
                     float impulseLocal = 0.0f;
-                    if (MathF.Abs(invMass) >= float.Epsilon)
+                    if (CustomMathF.Abs(invMass) >= float.Epsilon)
                     {
                         impulseLocal = -c / invMass;
                     }
@@ -930,7 +930,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float invMass = invMassA + invMassB + invIa * sAy * sAy + invIb * sBy * sBy;
                 
                 float impulseLocal = 0.0f;
-                if (MathF.Abs(invMass) >= float.Epsilon)
+                if (CustomMathF.Abs(invMass) >= float.Epsilon)
                 {
                     impulseLocal = -c / invMass;
                 }
