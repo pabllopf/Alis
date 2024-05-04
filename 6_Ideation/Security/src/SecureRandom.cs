@@ -68,9 +68,17 @@ namespace Alis.Core.Aspect.Security
             random.GetNonZeroBytes(bytes);
             long randomLong = BitConverter.ToInt64(bytes, 0);
             double range = i1 - i;
-            double randomDouble = i + (Math.Abs(randomLong) / (double)long.MaxValue) * range;
+            double randomDouble = i + (Abs(randomLong) / (double)long.MaxValue) * range;
             return randomDouble;
         }
+        
+        /// <summary>
+        ///     Abs the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The float</returns>
+        public static float Abs(float value) => value < 0f ? -value : value;
+
         
         public static decimal NextDecimal(int i, int i1)
         {
@@ -79,7 +87,7 @@ namespace Alis.Core.Aspect.Security
             random.GetNonZeroBytes(bytes);
             int randomInt = BitConverter.ToInt32(bytes, 0);
             decimal range = i1 - i;
-            decimal randomDecimal = i + (Math.Abs(randomInt) / (decimal)int.MaxValue) * range;
+            decimal randomDecimal = (decimal)(i + (Abs(randomInt) / (double)int.MaxValue) * (double)range);
             return randomDecimal;
         }
             
@@ -106,7 +114,7 @@ namespace Alis.Core.Aspect.Security
             random.GetNonZeroBytes(bytes);
             int randomInt = BitConverter.ToInt32(bytes, 0);
             float range = i1 - i;
-            float randomFloat = i + (Math.Abs(randomInt) / (float)int.MaxValue) * range;
+            float randomFloat = i + (Abs(randomInt) / int.MaxValue) * range;
             return randomFloat;
         }
     }
