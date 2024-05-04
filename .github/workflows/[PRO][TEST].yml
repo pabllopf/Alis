@@ -402,6 +402,9 @@ jobs:
             7.0.408
             8.0.202
 
+      - name: install sdl2
+        run: sudo apt-get install libsdl2-dev
+
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
 
@@ -410,14 +413,6 @@ jobs:
 
       - uses: dorny/test-reporter@v1
         with:
-          name: Ubuntu 20_04 x64 Test Report                  # Name of the check run which will be created
-          path: '.test/**/**/*.trx'                      # Path to test results (inside artifact .zip)
-          reporter: dotnet-trx              # Format of test results
-
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        id: test-results
-        if: always()
-        with:
-          files: |
-            .test/**/**/*.trx
+          name: Ubuntu 20_04 x64 Test Report                  
+          path: '.test/**/**/*.trx'                      
+          reporter: dotnet-trx              
