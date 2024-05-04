@@ -2,14 +2,40 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <Import Project="$(SolutionDir).config/Config.props"/>
     <PropertyGroup>
-        <TargetFrameworks>$(TargetFramework1);$(TargetFramework2)</TargetFrameworks>
+        <TargetFrameworks Condition="
+        $(AssemblyName.Contains('Test')) == false AND 
+        $(AssemblyName.Contains('App')) == false AND
+        $(AssemblyName.Contains('Template')) == false AND
+        $(AssemblyName.Contains('Sample')) == false AND
+        $(AssemblyName.Contains('Benchmark')) == false" >netcoreapp3.0;netcoreapp3.1;net5.0;net6.0;net7.0;net8.0;netstandard2.0;netstandard2.1</TargetFrameworks>
+        
+        <TargetFrameworks Condition="
+        $(AssemblyName.Contains('Template')) == true OR
+        $(AssemblyName.Contains('Sample')) == true OR
+        $(AssemblyName.Contains('Benchmark')) == true">net7.0;net8.0</TargetFrameworks>
+        
+        <TargetFrameworks Condition="
+        $(AssemblyName.Contains('App')) == true OR 
+        $(AssemblyName.Contains('Test')) == true">netcoreapp3.0;netcoreapp3.1;net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+
+        <TargetFramework Condition="
+        ( 
+        $(AssemblyName.Contains('App')) == true OR
+        $(AssemblyName.Contains('Template')) == true OR
+        $(AssemblyName.Contains('Sample')) == true OR
+        $(AssemblyName.Contains('Benchmark')) == true OR
+        $(AssemblyName.Contains('Test')) == true
+        ) 
+        AND $(Configuration) == 'Debug'">net6.0</TargetFramework>
+
+        <TargetFramework Condition="
+         $(AssemblyName.Contains('Test')) == false AND 
+        $(AssemblyName.Contains('App')) == false AND
+        $(AssemblyName.Contains('Template')) == false AND
+        $(AssemblyName.Contains('Sample')) == false AND
+        $(AssemblyName.Contains('Benchmark')) == false AND
+        '$(Configuration)' == 'Debug'">netstandard2.0</TargetFramework>
+        
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
     </PropertyGroup>
-    <ItemGroup>
-      <None Update="Assets\sample.wav">
-        <LinkBase>Assets/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-    </ItemGroup>
 </Project>

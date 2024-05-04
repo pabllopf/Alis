@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <!-- Import all the props files in the application folder -->
-    <Import Project="$(SolutionDir).config/application/TargetFrameworks.props"/>
     <Import Project="$(SolutionDir).config/application/Runtimes.props"/>
     <Import Project="$(SolutionDir).config/application/LangVersion.props"/>
     <Import Project="$(SolutionDir).config/application/Optimize.props"/>
