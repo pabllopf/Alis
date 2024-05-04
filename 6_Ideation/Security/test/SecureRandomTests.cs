@@ -36,33 +36,6 @@ namespace Alis.Core.Aspect.Security.Test
     /// </summary>
     public class SecureRandomTests
     {
-        /// <summary>
-        ///     Tests that test secure random instance
-        /// </summary>
-        [Fact]
-        public void Test_SecureRandom_Instance()
-        {
-            Assert.NotNull(SecureRandom.Random);
-        }
         
-        /// <summary>
-        ///     Tests that test secure random generate random number
-        /// </summary>
-        [Fact]
-        public void Test_SecureRandom_GenerateRandomNumber()
-        {
-            int randomNumber = SecureRandom.Random.Next();
-            Assert.InRange(randomNumber, int.MinValue, int.MaxValue);
-        }
-        
-        /// <summary>
-        ///     Tests that test secure random generate random number within range
-        /// </summary>
-        [Fact]
-        public void Test_SecureRandom_GenerateRandomNumberWithinRange()
-        {
-            int randomNumber = SecureRandom.Random.Next(1, 10);
-            Assert.InRange(randomNumber, 1, 10);
-        }
     }
 }

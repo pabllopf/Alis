@@ -67,7 +67,7 @@ namespace Alis.Core.Aspect.Security
             {
                 unchecked
                 {
-                    _randomValue = SecureRandom.Random.Next();
+                    _randomValue = SecureRandom.NextLong();
                     _value = value + _randomValue;
                 }
             }

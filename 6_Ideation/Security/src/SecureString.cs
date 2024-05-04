@@ -92,6 +92,6 @@ namespace Alis.Core.Aspect.Security
         ///     Generates the key
         /// </summary>
         /// <returns>The char</returns>
-        private static char GenerateKey() => (char) new Random().Next(1, 255);
+        private static char GenerateKey() => SecureRandom.NextChar();
     }
 }
