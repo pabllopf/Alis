@@ -396,7 +396,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 // gamma = 1 / (h * (d + h * k))
                 // the extra factor of h in the denominator is since the lambda is an impulse, not a force
                 gamma = h * (d + h * k);
-                gamma = gamma != 0.0f ? 1.0f / gamma : 0.0f;
+                gamma = CustomMathF.Abs(gamma) >= float.Epsilon ? 1.0f / gamma : 0.0f;
                 bias = c * h * k * gamma;
                 
                 invMass += gamma;
