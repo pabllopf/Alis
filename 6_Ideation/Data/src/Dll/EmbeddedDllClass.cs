@@ -50,7 +50,6 @@ namespace Alis.Core.Aspect.Data.Dll
         /// <param name="dllType"></param>
         /// <param name="dllBytes">The dll bytes</param>
         /// <param name="assembly">The assembly</param>
-        [ExcludeFromCodeCoverage]
         public static void ExtractEmbeddedDlls(string dllName, DllType dllType, Dictionary<PlatformInfo, string> dllBytes, Assembly assembly)
         {
             string extension = GetDllExtension(dllType);
@@ -78,7 +77,7 @@ namespace Alis.Core.Aspect.Data.Dll
         /// <param name="dllType"></param>
         /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
         /// <returns>The string</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static string GetDllExtension(DllType dllType)
         {
             OSPlatform currentPlatform = GetCurrentPlatform();
@@ -153,7 +152,7 @@ namespace Alis.Core.Aspect.Data.Dll
         /// </summary>
         /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
         /// <returns>The os platform</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static OSPlatform GetCurrentPlatform()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -190,7 +189,7 @@ namespace Alis.Core.Aspect.Data.Dll
         /// </summary>
         /// <param name="fileDir">The file dir</param>
         /// <param name="zipData">The zip data</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void ExtractZipFile(string fileDir, MemoryStream zipData)
         {
             using MemoryStream ms = zipData;
@@ -251,7 +250,7 @@ namespace Alis.Core.Aspect.Data.Dll
         /// <param name="resourceName">The resource name</param>
         /// <param name="assembly">The assembly</param>
         /// <returns>The memory stream</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static MemoryStream LoadResource(string resourceName, Assembly assembly)
         {
             using Stream stream = assembly.GetManifestResourceStream(resourceName);
