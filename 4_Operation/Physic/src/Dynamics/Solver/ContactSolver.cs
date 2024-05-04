@@ -123,12 +123,12 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 VelocityConstraints = new List<ContactVelocityConstraint>(countParam * 2);
                 positionConstraints = new List<ContactPositionConstraint>(countParam * 2);
                 
-                for (int i = 0; i < VelocityConstraints.Count; i++)
+                for (int i = 0; i < VelocityConstraints.Capacity; i++)
                 {
                     VelocityConstraints[i] = new ContactVelocityConstraint();
                 }
                 
-                for (int i = 0; i < positionConstraints.Count; i++)
+                for (int i = 0; i < positionConstraints.Capacity; i++)
                 {
                     positionConstraints[i] = new ContactPositionConstraint();
                 }
