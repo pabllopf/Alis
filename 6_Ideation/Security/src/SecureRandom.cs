@@ -37,6 +37,10 @@ namespace Alis.Core.Aspect.Security
     /// </summary>
     internal static class SecureRandom
     {
+        /// <summary>
+        /// Nexts the int
+        /// </summary>
+        /// <returns>The int</returns>
         public static int NextInt()
         {
             RandomNumberGenerator random = RandomNumberGenerator.Create();
@@ -45,6 +49,10 @@ namespace Alis.Core.Aspect.Security
             return BitConverter.ToInt32(bytes, 0);
         }
         
+        /// <summary>
+        /// Nexts the char
+        /// </summary>
+        /// <returns>The char</returns>
         public static char NextChar()
         {
             RandomNumberGenerator random = RandomNumberGenerator.Create();
@@ -53,6 +61,10 @@ namespace Alis.Core.Aspect.Security
             return BitConverter.ToChar(bytes, 0);
         }
         
+        /// <summary>
+        /// Nexts the long
+        /// </summary>
+        /// <returns>The long</returns>
         public static long NextLong()
         {
             RandomNumberGenerator random = RandomNumberGenerator.Create();
@@ -61,6 +73,12 @@ namespace Alis.Core.Aspect.Security
             return BitConverter.ToInt64(bytes, 0);
         }
         
+        /// <summary>
+        /// Nexts the double using the specified i
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <param name="i1">The </param>
+        /// <returns>The random double</returns>
         public static double NextDouble(int i, int i1)
         {
             RandomNumberGenerator random = RandomNumberGenerator.Create();
@@ -80,6 +98,12 @@ namespace Alis.Core.Aspect.Security
         public static float Abs(float value) => value < 0f ? -value : value;
 
         
+        /// <summary>
+        /// Nexts the decimal using the specified i
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <param name="i1">The </param>
+        /// <returns>The random decimal</returns>
         public static decimal NextDecimal(int i, int i1)
         {
             RandomNumberGenerator random = RandomNumberGenerator.Create();
@@ -91,6 +115,10 @@ namespace Alis.Core.Aspect.Security
             return randomDecimal;
         }
             
+        /// <summary>
+        /// Nexts the byte
+        /// </summary>
+        /// <returns>The byte</returns>
         public static byte NextByte()
         {
             RandomNumberGenerator random = RandomNumberGenerator.Create();
@@ -99,6 +127,10 @@ namespace Alis.Core.Aspect.Security
             return bytes[0];
         }
         
+        /// <summary>
+        /// Nexts the bool
+        /// </summary>
+        /// <returns>The int</returns>
         public static int NextBool()
         {
             RandomNumberGenerator random = RandomNumberGenerator.Create();
@@ -107,6 +139,12 @@ namespace Alis.Core.Aspect.Security
             return BitConverter.ToBoolean(bytes, 0) ? 1 : 0;
         }
         
+        /// <summary>
+        /// Nexts the float using the specified i
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <param name="i1">The </param>
+        /// <returns>The random float</returns>
         public static float NextFloat(int i, int i1)
         {
             RandomNumberGenerator random = RandomNumberGenerator.Create();
