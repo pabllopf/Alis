@@ -1,6 +1,13 @@
 name: "[PRO][TEST]"
 
 on:
+  push:
+    branches: [ master ]
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+      - '.git/**'
+      - '.config/**'
   schedule:
     - cron: '30 1 * * *'
 
