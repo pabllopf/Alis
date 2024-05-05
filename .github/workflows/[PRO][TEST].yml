@@ -1,6 +1,8 @@
 name: "[PRO][TEST]"
 
 on:
+  push:
+    branches: [ master ]
   schedule:
     - cron: '30 1 * * *'
 
