@@ -3,13 +3,7 @@ name: "[PRO][PUBLISH]"
 on:
   push:
     branches: [ master ]
-    paths-ignore:
-      - 'docs/**'
-      - '**.md'
-      - '.github/**'
-      - '.git/**'
-      - '.config/**'
-
+    
 jobs:
   
   Create_Packages:
