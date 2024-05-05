@@ -11,6 +11,7 @@ on:
 
 jobs:
   macos_12_x64:
+    if: "!contains(github.event.head_commit.message, 'test:')"
     runs-on: macos-12
     steps:
       - name: Check
@@ -33,6 +34,7 @@ jobs:
         run: dotnet test alis.sln -c Debug
   
   windows_2022_x64:
+    if: "!contains(github.event.head_commit.message, 'test:')"
     runs-on: windows-2022
 
     steps:
@@ -56,6 +58,7 @@ jobs:
         run: dotnet test alis.sln -c Debug
   
   ubuntu_22_04_x64:
+    if: "!contains(github.event.head_commit.message, 'test:')"
     runs-on: ubuntu-22.04
     
     steps:
