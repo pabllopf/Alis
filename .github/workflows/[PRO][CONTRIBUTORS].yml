@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "readme.md"
-        uses: akhilmhdh/contributors-readme-action@v2.3.8
+        uses: akhilmhdh/contributors-readme-action@v2.3.10
         with:
           image_size: 75
           readme_path: "readme.md"
