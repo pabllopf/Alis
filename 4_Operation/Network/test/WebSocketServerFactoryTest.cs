@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DefaultTest.cs
+//  File:WebSocketServerFactoryTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,31 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.IO;
+using System.Net.WebSockets;
+using System.Text;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Alis.Core.Network.Test
 {
     /// <summary>
-    ///     The default test class
+    /// The web socket server factory test class
     /// </summary>
-    public class DefaultTest
+    public class WebSocketServerFactoryTest
     {
         /// <summary>
-        ///     Tests that test
+        /// Tests that web socket server factory read http header from stream
         /// </summary>
         [Fact]
-        public void Test_Default()
+        public async Task WebSocketServerFactory_ReadHttpHeaderFromStreamAsync()
         {
-            Assert.True(true);
+            WebSocketServerFactory factory = new WebSocketServerFactory();
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes("GET / HTTP/1.1\r\nUpgrade: websocket\r\n\r\n"));
+            WebSocketHttpContext context = await factory.ReadHttpHeaderFromStreamAsync(stream);
+            Assert.NotNull(context);
+            Assert.True(context.IsWebSocketRequest);
         }
     }
 }

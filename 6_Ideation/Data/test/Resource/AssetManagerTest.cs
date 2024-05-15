@@ -548,5 +548,60 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Act & Assert
             Assert.Throws<ArgumentException>(() => AssetManager.Find(assetName.Trim()));
         }
+        
+        /// <summary>
+        /// Tests that validate asset name has no invalid chars with valid asset name does not throw exception
+        /// </summary>
+        [Fact]
+        public void ValidateAssetNameHasNoInvalidChars_WithValidAssetName_DoesNotThrowException()
+        {
+            // Arrange
+            string validAssetName = "ValidAssetName";
+            
+            // Act
+            Exception exception = Record.Exception(() => AssetManager.ValidateAssetNameHasNoInvalidChars(validAssetName));
+            
+            // Assert
+            Assert.Null(exception);
+        }
+        
+        /// <summary>
+        /// Tests that validate asset name has no invalid chars with invalid asset name throws argument exception
+        /// </summary>
+        [Fact]
+        public void ValidateAssetNameHasNoInvalidChars_WithInvalidAssetName_ThrowsArgumentException()
+        {
+            // Arrange
+            string invalidAssetName = "Invalid/Asset:Name";
+            
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => AssetManager.ValidateAssetNameHasNoInvalidChars(invalidAssetName));
+        }
+        
+        /// <summary>
+        /// Tests that validate asset name has no invalid chars with empty asset name throws argument exception
+        /// </summary>
+        [Fact]
+        public void ValidateAssetNameHasNoInvalidChars_WithEmptyAssetName_ThrowsArgumentException()
+        {
+            // Arrange
+            string emptyAssetName = string.Empty;
+            
+            // Act & Assert
+            AssetManager.ValidateAssetNameHasNoInvalidChars(emptyAssetName);
+        }
+        
+        /// <summary>
+        /// Tests that validate asset name has no invalid chars with null asset name throws argument exception
+        /// </summary>
+        [Fact]
+        public void ValidateAssetNameHasNoInvalidChars_WithNullAssetName_ThrowsArgumentException()
+        {
+            // Arrange
+            string nullAssetName = null;
+            
+            // Act & Assert
+            Assert.Throws<NullReferenceException>(() => AssetManager.ValidateAssetNameHasNoInvalidChars(nullAssetName));
+        }
     }
 }
