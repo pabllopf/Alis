@@ -175,7 +175,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Gets or sets a callback that is called before an object (not a value) is serialized.
         /// </summary>
         /// <value>The callback.</value>
-        public JsonCallback AfterWriteObjectCallback { get; private set; }
+        public JsonCallback AfterWriteObjectCallback { get; internal set; }
         
         /// <summary>
         ///     Gets or sets a callback that is called before an object field or property is serialized.

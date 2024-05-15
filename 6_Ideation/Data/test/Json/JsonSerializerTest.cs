@@ -5895,5 +5895,436 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonSerializer.AppendDefaultCharacter(sb, 'a');
             Assert.Equal("\\a", sb.ToString());
         }
+        
+        /// <summary>
+        /// Tests that is callback available returns true when callback is not null
+        /// </summary>
+        [Fact]
+        public void IsCallbackAvailable_ReturnsTrue_WhenCallbackIsNotNull()
+        {
+            JsonOptions options = new JsonOptions {AfterWriteObjectCallback = args => { }};
+            bool result = JsonSerializer.IsCallbackAvailable(options);
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that is callback available returns false when callback is null
+        /// </summary>
+        [Fact]
+        public void IsCallbackAvailable_ReturnsFalse_WhenCallbackIsNull()
+        {
+            JsonOptions options = new JsonOptions {AfterWriteObjectCallback = null};
+            bool result = JsonSerializer.IsCallbackAvailable(options);
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that create json event args after write object returns event args with correct properties
+        /// </summary>
+        [Fact]
+        public void CreateJsonEventArgsAfterWriteObject_ReturnsEventArgs_WithCorrectProperties()
+        {
+            StringWriter writer = new StringWriter();
+            object value = new object();
+            Dictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+            
+            JsonEventArgs eventArgs = JsonSerializer.CreateJsonEventArgsAfterWriteObject(writer, value, objectGraph, options);
+            
+            Assert.Equal(writer, eventArgs.Writer);
+            Assert.Equal(value, eventArgs.Value);
+            Assert.Equal(objectGraph, eventArgs.ObjectGraph);
+            Assert.Equal(options, eventArgs.Options);
+            Assert.Equal(JsonEventType.AfterWriteObject, eventArgs.EventType);
+        }
+        
+        /// <summary>
+        /// Tests that invoke callback invokes callback when called
+        /// </summary>
+        [Fact]
+        public void InvokeCallback_InvokesCallback_WhenCalled()
+        {
+            bool callbackInvoked = false;
+            JsonOptions options = new JsonOptions {AfterWriteObjectCallback = args => callbackInvoked = true};
+            JsonEventArgs eventArgs = new JsonEventArgs(null, null, null, null);
+            
+            JsonSerializer.InvokeCallback(options, eventArgs);
+            
+            Assert.True(callbackInvoked);
+        }
+        
+        /// <summary>
+        /// Tests that validate reader with valid reader no exception thrown
+        /// </summary>
+        [Fact]
+        public void ValidateReader_WithValidReader_NoExceptionThrown()
+        {
+            TextReader reader = new StringReader("valid string");
+            JsonSerializer.ValidateReader(reader); // No exception should be thrown
+        }
+        
+        /// <summary>
+        /// Tests that validate reader with null reader throws argument null exception
+        /// </summary>
+        [Fact]
+        public void ValidateReader_WithNullReader_ThrowsArgumentNullException()
+        {
+            TextReader reader = null;
+            Assert.Throws<ArgumentNullException>(() => JsonSerializer.ValidateReader(reader));
+        }
+        
+        /// <summary>
+        /// Tests that handle after write object callback when callback is not available does not throw exception
+        /// </summary>
+        [Fact]
+        public void HandleAfterWriteObjectCallback_WhenCallbackIsNotAvailable_DoesNotThrowException()
+        {
+            // Arrange
+            TextWriter writer = new StringWriter();
+            object value = new object();
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions {AfterWriteObjectCallback = null}; // Callback is not available
+            
+            // Act
+            JsonSerializer.HandleAfterWriteObjectCallback(writer, value, objectGraph, options);
+            
+            // Assert
+            // No exception is thrown
+        }
+        
+        /// <summary>
+        /// Tests that handle after write object callback when callback is available and does not invoke does not throw exception
+        /// </summary>
+        [Fact]
+        public void HandleAfterWriteObjectCallback_WhenCallbackIsAvailableAndDoesNotInvoke_DoesNotThrowException()
+        {
+            // Arrange
+            TextWriter writer = new StringWriter();
+            object value = new object();
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions {AfterWriteObjectCallback = args => { }}; // Callback is available but does not invoke
+            
+            // Act
+            JsonSerializer.HandleAfterWriteObjectCallback(writer, value, objectGraph, options);
+            
+            // Assert
+            // No exception is thrown
+        }
+        
+        /// <summary>
+        /// Tests that handle after write object callback when callback is available and invokes does not throw exception
+        /// </summary>
+        [Fact]
+        public void HandleAfterWriteObjectCallback_WhenCallbackIsAvailableAndInvokes_DoesNotThrowException()
+        {
+            // Arrange
+            TextWriter writer = new StringWriter();
+            object value = new object();
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions {AfterWriteObjectCallback = args => args.Writer.Write("Callback invoked")}; // Callback is available and invokes
+            
+            // Act
+            JsonSerializer.HandleAfterWriteObjectCallback(writer, value, objectGraph, options);
+            
+            // Assert
+            Assert.Contains("Callback invoked", writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that handle after write object callback when callback is available and throws exception propagates exception
+        /// </summary>
+        /// <exception cref="Exception">Callback exception</exception>
+        [Fact]
+        public void HandleAfterWriteObjectCallback_WhenCallbackIsAvailableAndThrowsException_PropagatesException()
+        {
+            // Arrange
+            TextWriter writer = new StringWriter();
+            object value = new object();
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions {AfterWriteObjectCallback = args => throw new Exception("Callback exception")}; // Callback is available and throws exception
+            
+            // Act & Assert
+            Assert.Throws<Exception>(() => JsonSerializer.HandleAfterWriteObjectCallback(writer, value, objectGraph, options));
+        }
+        
+        /// <summary>
+        /// Tests that handle after write object callback when callback is available and modifies event args modifies event args
+        /// </summary>
+        [Fact]
+        public void HandleAfterWriteObjectCallback_WhenCallbackIsAvailableAndModifiesEventArgs_ModifiesEventArgs()
+        {
+            // Arrange
+            TextWriter writer = new StringWriter();
+            object value = new object();
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions {AfterWriteObjectCallback = args => args.Writer.Write("Modified")}; // Callback is available and modifies EventArgs
+            
+            // Act
+            JsonSerializer.HandleAfterWriteObjectCallback(writer, value, objectGraph, options);
+            
+            // Assert
+            Assert.Contains("Modified", writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that handle after write object callback when callback is available and modifies options modifies options
+        /// </summary>
+        [Fact]
+        public void HandleAfterWriteObjectCallback_WhenCallbackIsAvailableAndModifiesOptions_ModifiesOptions()
+        {
+            // Arrange
+            TextWriter writer = new StringWriter();
+            object value = new object();
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions {AfterWriteObjectCallback = args => args.Options.ThrowExceptions = true}; // Callback is available and modifies Options
+            
+            // Act
+            JsonSerializer.HandleAfterWriteObjectCallback(writer, value, objectGraph, options);
+            
+            // Assert
+            Assert.True(options.ThrowExceptions);
+        }
+        
+        /// <summary>
+        /// Tests that handle after write object callback when callback is available and modifies writer modifies writer
+        /// </summary>
+        [Fact]
+        public void HandleAfterWriteObjectCallback_WhenCallbackIsAvailableAndModifiesWriter_ModifiesWriter()
+        {
+            // Arrange
+            TextWriter writer = new StringWriter();
+            object value = new object();
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions {AfterWriteObjectCallback = args => args.Writer.Write("Callback invoked")}; // Callback is available and modifies Writer
+            
+            // Act
+            JsonSerializer.HandleAfterWriteObjectCallback(writer, value, objectGraph, options);
+            
+            // Assert
+            Assert.Contains("Callback invoked", writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that handle stream value with null value returns false
+        /// </summary>
+        [Fact]
+        public void HandleStreamValue_WithNullValue_ReturnsFalse()
+        {
+            TextWriter writer = new StringWriter();
+            object value = null;
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+            
+            bool result = JsonSerializer.HandleStreamValue(writer, value, objectGraph, options);
+            
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that handle stream value with non stream value returns false
+        /// </summary>
+        [Fact]
+        public void HandleStreamValue_WithNonStreamValue_ReturnsFalse()
+        {
+            TextWriter writer = new StringWriter();
+            object value = new object(); // Not a Stream
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+            
+            bool result = JsonSerializer.HandleStreamValue(writer, value, objectGraph, options);
+            
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that handle stream value with empty stream returns true and writes empty string
+        /// </summary>
+        [Fact]
+        public void HandleStreamValue_WithEmptyStream_ReturnsTrueAndWritesEmptyString()
+        {
+            TextWriter writer = new StringWriter();
+            object value = new MemoryStream(); // Empty Stream
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+            
+            bool result = JsonSerializer.HandleStreamValue(writer, value, objectGraph, options);
+            
+            Assert.True(result);
+            Assert.Equal("", writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that handle stream value with non empty stream returns true and writes base 64 string
+        /// </summary>
+        [Fact]
+        public void HandleStreamValue_WithNonEmptyStream_ReturnsTrueAndWritesBase64String()
+        {
+            TextWriter writer = new StringWriter();
+            byte[] data = Encoding.UTF8.GetBytes("Test data");
+            object value = new MemoryStream(data); // Non-empty Stream
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+            
+            bool result = JsonSerializer.HandleStreamValue(writer, value, objectGraph, options);
+            
+            Assert.True(result);
+            Assert.Equal(Convert.ToBase64String(data), writer.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that handle stream value with stream that throws exception on read throws exception
+        /// </summary>
+        [Fact]
+        public void HandleStreamValue_WithStreamThatThrowsExceptionOnRead_ThrowsException()
+        {
+            TextWriter writer = new StringWriter();
+            object value = new MemoryStreamThrowingExceptionOnRead(); // Stream that throws exception on read
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+            
+            Exception result = Record.Exception(() => JsonSerializer.HandleStreamValue(writer, value, objectGraph, options));
+            
+            Assert.Null(result);
+        }
+        
+        /// <summary>
+        /// Tests that handle stream value with writer that throws exception on write throws exception
+        /// </summary>
+        [Fact]
+        public void HandleStreamValue_WithWriterThatThrowsExceptionOnWrite_ThrowsException()
+        {
+            TextWriter writer = new StringWriterThrowingExceptionOnWrite(); // Writer that throws exception on write
+            byte[] data = Encoding.UTF8.GetBytes("Test data");
+            object value = new MemoryStream(data);
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions();
+            
+            Exception result = Record.Exception(() => JsonSerializer.HandleStreamValue(writer, value, objectGraph, options));
+            
+            Assert.Null(result);
+        }
+        
+        /// <summary>
+        /// Tests that handle stream value with null object graph does not throw exception
+        /// </summary>
+        [Fact]
+        public void HandleStreamValue_WithNullObjectGraph_DoesNotThrowException()
+        {
+            TextWriter writer = new StringWriter();
+            byte[] data = Encoding.UTF8.GetBytes("Test data");
+            object value = new MemoryStream(data);
+            IDictionary<object, object> objectGraph = null; // Null objectGraph
+            JsonOptions options = new JsonOptions();
+            
+            JsonSerializer.HandleStreamValue(writer, value, objectGraph, options); // No exception should be thrown
+        }
+        
+        /// <summary>
+        /// Tests that handle stream value with non null object graph does not throw exception
+        /// </summary>
+        [Fact]
+        public void HandleStreamValue_WithNonNullObjectGraph_DoesNotThrowException()
+        {
+            TextWriter writer = new StringWriter();
+            byte[] data = Encoding.UTF8.GetBytes("Test data");
+            object value = new MemoryStream(data);
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>(); // Non-null objectGraph
+            JsonOptions options = new JsonOptions();
+            
+            JsonSerializer.HandleStreamValue(writer, value, objectGraph, options); // No exception should be thrown
+        }
+        
+        /// <summary>
+        /// Tests that handle stream value with null options does not throw exception
+        /// </summary>
+        [Fact]
+        public void HandleStreamValue_WithNullOptions_DoesNotThrowException()
+        {
+            TextWriter writer = new StringWriter();
+            byte[] data = Encoding.UTF8.GetBytes("Test data");
+            object value = new MemoryStream(data);
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = null; // Null options
+            
+            JsonSerializer.HandleStreamValue(writer, value, objectGraph, options); // No exception should be thrown
+        }
+        
+        /// <summary>
+        /// Tests that handle stream value with non null options does not throw exception
+        /// </summary>
+        [Fact]
+        public void HandleStreamValue_WithNonNullOptions_DoesNotThrowException()
+        {
+            TextWriter writer = new StringWriter();
+            byte[] data = Encoding.UTF8.GetBytes("Test data");
+            object value = new MemoryStream(data);
+            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
+            JsonOptions options = new JsonOptions(); // Non-null options
+            
+            JsonSerializer.HandleStreamValue(writer, value, objectGraph, options); // No exception should be thrown
+        }
+        
+        /// <summary>
+        /// Tests that handle creation exception valid type valid exception valid options returns null
+        /// </summary>
+        [Fact]
+        public void HandleCreationException_ValidTypeValidExceptionValidOptions_ReturnsNull()
+        {
+            // Arrange
+            Type type = typeof(string);
+            Exception exception = new Exception();
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
+        }
+        
+        /// <summary>
+        /// Tests that handle creation exception null type valid exception valid options returns null
+        /// </summary>
+        [Fact]
+        public void HandleCreationException_NullTypeValidExceptionValidOptions_ReturnsNull()
+        {
+            // Arrange
+            Type type = null;
+            Exception exception = new Exception();
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => JsonSerializer.HandleCreationException(type, exception, options));
+        }
+        
+        /// <summary>
+        /// Tests that handle creation exception valid type null exception valid options returns null
+        /// </summary>
+        [Fact]
+        public void HandleCreationException_ValidTypeNullExceptionValidOptions_ReturnsNull()
+        {
+            // Arrange
+            Type type = typeof(string);
+            Exception exception = null;
+            JsonOptions options = new JsonOptions();
+            
+            // Act
+            Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
+        }
+        
+        /// <summary>
+        /// Tests that handle creation exception valid type valid exception null options returns null
+        /// </summary>
+        [Fact]
+        public void HandleCreationException_ValidTypeValidExceptionNullOptions_ReturnsNull()
+        {
+            // Arrange
+            Type type = typeof(string);
+            Exception exception = new Exception();
+            JsonOptions options = null;
+            
+            // Act
+            Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
+            
+        }
+        
+        
     }
 }
