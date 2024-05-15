@@ -1629,11 +1629,11 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Reads the dictionary using the specified reader
+        /// Reads the dictionary using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
-        /// <returns>A dictionary of string and object</returns>
+        /// <returns>The dictionary</returns>
         internal static Dictionary<string, object> ReadDictionary(TextReader reader, JsonOptions options)
         {
             if (!ReadWhitespaces(reader))
@@ -1653,22 +1653,34 @@ namespace Alis.Core.Aspect.Data.Json
                     return dictionary;
                 }
                 
-                if (c == '"')
-                {
-                    ProcessString(reader, options, dictionary);
-                    continue;
-                }
-                
-                if (c == ',' || char.IsWhiteSpace(c))
-                {
-                    continue;
-                }
-                
-                HandleException(GetUnexpectedCharacterException(GetPosition(reader), c), options);
+                ProcessCharacter(c, reader, options, dictionary);
             }
             
             HandleException(GetEofException('}'), options);
             return dictionary;
+        }
+        
+        /// <summary>
+        /// Processes the character using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <param name="reader">The reader</param>
+        /// <param name="options">The options</param>
+        /// <param name="dictionary">The dictionary</param>
+        private static void ProcessCharacter(char c, TextReader reader, JsonOptions options, Dictionary<string, object> dictionary)
+        {
+            if (c == '"')
+            {
+                ProcessString(reader, options, dictionary);
+            }
+            else if (c == ',' || char.IsWhiteSpace(c))
+            {
+                return;
+            }
+            else
+            {
+                HandleException(GetUnexpectedCharacterException(GetPosition(reader), c), options);
+            }
         }
         
         /// <summary>
@@ -2199,7 +2211,7 @@ namespace Alis.Core.Aspect.Data.Json
         internal static object ReadNumberOrLiteralValue(TextReader reader, JsonOptions options, out bool arrayEnd) => ReadNumberOrLiteral(reader, options, out arrayEnd);
         
         /// <summary>
-        ///     Reads the new using the specified reader
+        /// Reads the new using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
@@ -2215,6 +2227,18 @@ namespace Alis.Core.Aspect.Data.Json
                 return null;
             }
             
+            return HandleTextProcessing(text, reader, options);
+        }
+        
+        /// <summary>
+        /// Handles the text processing using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="reader">The reader</param>
+        /// <param name="options">The options</param>
+        /// <returns>The object</returns>
+        private static object HandleTextProcessing(string text, TextReader reader, JsonOptions options)
+        {
             if (IsTextDateTime(text, out long ticks))
             {
                 return ConvertTicksToDateTime(ticks);
@@ -2873,7 +2897,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Describes whether try parse ticks
+        /// Describes whether try parse ticks
         /// </summary>
         /// <param name="ticks">The ticks</param>
         /// <param name="offsetHours">The offset hours</param>
@@ -2882,24 +2906,73 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         internal static bool TryParseTicks(string ticks, int offsetHours, int offsetMinutes, out DateTime dt)
         {
-            if (!string.IsNullOrEmpty(ticks) && long.TryParse(ticks, NumberStyles.Number, CultureInfo.InvariantCulture, out long l))
+            if (IsValidTicks(ticks, out long l))
             {
-                dt = new DateTime(l * 10000 + MinDateTimeTicks, DateTimeKind.Local);
-                if (offsetHours != 0)
-                {
-                    dt = dt.AddHours(offsetHours);
-                }
-                
-                if (offsetMinutes != 0)
-                {
-                    dt = dt.AddMinutes(offsetMinutes);
-                }
-                
+                dt = CalculateDateTime(l, offsetHours, offsetMinutes);
                 return true;
             }
             
             dt = DateTime.MinValue;
             return false;
+        }
+        
+        /// <summary>
+        /// Describes whether is valid ticks
+        /// </summary>
+        /// <param name="ticks">The ticks</param>
+        /// <param name="l">The </param>
+        /// <returns>The bool</returns>
+        private static bool IsValidTicks(string ticks, out long l)
+        {
+            l = 0;
+            return !string.IsNullOrEmpty(ticks) && long.TryParse(ticks, NumberStyles.Number, CultureInfo.InvariantCulture, out l);
+        }
+        
+        /// <summary>
+        /// Calculates the date time using the specified l
+        /// </summary>
+        /// <param name="l">The </param>
+        /// <param name="offsetHours">The offset hours</param>
+        /// <param name="offsetMinutes">The offset minutes</param>
+        /// <returns>The dt</returns>
+        private static DateTime CalculateDateTime(long l, int offsetHours, int offsetMinutes)
+        {
+            DateTime dt = new DateTime(l * 10000 + MinDateTimeTicks, DateTimeKind.Local);
+            dt = AddOffsetHours(dt, offsetHours);
+            dt = AddOffsetMinutes(dt, offsetMinutes);
+            return dt;
+        }
+        
+        /// <summary>
+        /// Adds the offset hours using the specified dt
+        /// </summary>
+        /// <param name="dt">The dt</param>
+        /// <param name="offsetHours">The offset hours</param>
+        /// <returns>The dt</returns>
+        private static DateTime AddOffsetHours(DateTime dt, int offsetHours)
+        {
+            if (offsetHours != 0)
+            {
+                dt = dt.AddHours(offsetHours);
+            }
+            
+            return dt;
+        }
+        
+        /// <summary>
+        /// Adds the offset minutes using the specified dt
+        /// </summary>
+        /// <param name="dt">The dt</param>
+        /// <param name="offsetMinutes">The offset minutes</param>
+        /// <returns>The dt</returns>
+        private static DateTime AddOffsetMinutes(DateTime dt, int offsetMinutes)
+        {
+            if (offsetMinutes != 0)
+            {
+                dt = dt.AddMinutes(offsetMinutes);
+            }
+            
+            return dt;
         }
         
         /// <summary>
@@ -3010,7 +3083,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <returns>The bool</returns>
-        private static bool CanReadCharacter(TextReader reader)
+        internal static bool CanReadCharacter(TextReader reader)
         {
             return reader.Peek() >= 0;
         }
@@ -3020,7 +3093,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <returns>The char</returns>
-        private static char PeekCharacter(TextReader reader)
+        internal static char PeekCharacter(TextReader reader)
         {
             return (char) reader.Peek();
         }
@@ -3503,14 +3576,33 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Writes a stream to a JSON writer.
+        /// Writes the base 64 stream using the specified writer
         /// </summary>
-        /// <param name="writer">The writer. May not be null.</param>
-        /// <param name="stream">The stream. May not be null.</param>
-        /// <param name="objectGraph">The object graph.</param>
-        /// <param name="options">The options to use.</param>
-        /// <returns>The number of written bytes.</returns>
+        /// <param name="writer">The writer</param>
+        /// <param name="stream">The stream</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <returns>The total</returns>
         internal static long WriteBase64Stream(TextWriter writer, Stream stream, IDictionary<object, object> objectGraph, JsonOptions options = null)
+        {
+            ValidateWriterAndStream(writer, stream);
+            InitializeOptionsAndObjectGraph(options, objectGraph);
+            
+            long total = HandleWriterCases(writer, stream, objectGraph, options);
+            
+            WriteStreamToWriter(writer, stream, options, ref total);
+            
+            return total;
+        }
+        
+        /// <summary>
+        /// Validates the writer and stream using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="stream">The stream</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        private static void ValidateWriterAndStream(TextWriter writer, Stream stream)
         {
             if (writer == null)
             {
@@ -3521,11 +3613,30 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 throw new ArgumentNullException(nameof(stream));
             }
-            
+        }
+        
+        /// <summary>
+        /// Initializes the options and object graph using the specified options
+        /// </summary>
+        /// <param name="options">The options</param>
+        /// <param name="objectGraph">The object graph</param>
+        private static void InitializeOptionsAndObjectGraph(JsonOptions options, IDictionary<object, object> objectGraph)
+        {
             options ??= new JsonOptions();
             objectGraph ??= options.FinalObjectGraph;
             SetOptions(objectGraph, options);
-            
+        }
+        
+        /// <summary>
+        /// Handles the writer cases using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="stream">The stream</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <returns>The total</returns>
+        private static long HandleWriterCases(TextWriter writer, Stream stream, IDictionary<object, object> objectGraph, JsonOptions options)
+        {
             long total = 0L;
             switch (writer)
             {
@@ -3537,6 +3648,18 @@ namespace Alis.Core.Aspect.Data.Json
                     return WriteBase64Stream(itw.InnerWriter, stream, objectGraph, options);
             }
             
+            return total;
+        }
+        
+        /// <summary>
+        /// Writes the stream to writer using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="stream">The stream</param>
+        /// <param name="options">The options</param>
+        /// <param name="total">The total</param>
+        private static void WriteStreamToWriter(TextWriter writer, Stream stream, JsonOptions options, ref long total)
+        {
             using MemoryStream ms = new MemoryStream();
             byte[] bytes = new byte[options.FinalStreamingBufferChunkSize];
             do
@@ -3554,7 +3677,6 @@ namespace Alis.Core.Aspect.Data.Json
             writer.Write('"');
             writer.Write(Convert.ToBase64String(ms.ToArray()));
             writer.Write('"');
-            return total;
         }
         
         /// <summary>
@@ -3601,36 +3723,50 @@ namespace Alis.Core.Aspect.Data.Json
             return total;
         }
         
-        /// <summary>
-        ///     Describes whether internal is key value pair enumerable
-        /// </summary>
-        /// <param name="type">The type</param>
-        /// <param name="keyType">The key type</param>
-        /// <param name="valueType">The value type</param>
-        /// <returns>The bool</returns>
         internal static bool InternalIsKeyValuePairEnumerable(Type type, out Type keyType, out Type valueType)
+{
+    keyType = null;
+    valueType = null;
+
+    foreach (Type t in type.GetInterfaces())
+    {
+        if (IsGenericEnumerable(t, out keyType, out valueType))
         {
-            keyType = null;
-            valueType = null;
-            foreach (Type t in type.GetInterfaces())
-            {
-                if (t.IsGenericType)
-                {
-                    if (typeof(IEnumerable<>).IsAssignableFrom(t.GetGenericTypeDefinition()))
-                    {
-                        Type[] args = t.GetGenericArguments();
-                        if ((args.Length == 1) && args[0].IsGenericType && (args[0].GetGenericTypeDefinition() == typeof(KeyValuePair<,>)))
-                        {
-                            keyType = args[0].GetGenericArguments()[0];
-                            valueType = args[0].GetGenericArguments()[1];
-                            return true;
-                        }
-                    }
-                }
-            }
-            
-            return false;
+            return true;
         }
+    }
+
+    return false;
+}
+
+private static bool IsGenericEnumerable(Type type, out Type keyType, out Type valueType)
+{
+    keyType = null;
+    valueType = null;
+
+    if (type.IsGenericType && typeof(IEnumerable<>).IsAssignableFrom(type.GetGenericTypeDefinition()))
+    {
+        return IsKeyValuePair(type, out keyType, out valueType);
+    }
+
+    return false;
+}
+
+private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueType)
+{
+    Type[] args = type.GetGenericArguments();
+
+    if (args.Length == 1 && args[0].IsGenericType && args[0].GetGenericTypeDefinition() == typeof(KeyValuePair<,>))
+    {
+        keyType = args[0].GetGenericArguments()[0];
+        valueType = args[0].GetGenericArguments()[1];
+        return true;
+    }
+
+    keyType = null;
+    valueType = null;
+    return false;
+}
         
         /// <summary>
         ///     Appends the time zone utc offset using the specified writer
@@ -3656,13 +3792,37 @@ namespace Alis.Core.Aspect.Data.Json
         internal static float Abs(float value) => value < 0f ? -value : value;
         
         /// <summary>
-        ///     Writes an enumerable to a JSON writer.
+        /// Writes the array using the specified writer
         /// </summary>
-        /// <param name="writer">The writer. May not be null.</param>
-        /// <param name="array">The array. May not be null.</param>
-        /// <param name="objectGraph">The object graph.</param>
-        /// <param name="options">The options to use.</param>
+        /// <param name="writer">The writer</param>
+        /// <param name="array">The array</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
         internal static void WriteArray(TextWriter writer, Array array, IDictionary<object, object> objectGraph, JsonOptions options = null)
+        {
+            ValidateWriterAndArray(writer, array);
+            
+            options ??= new JsonOptions();
+            objectGraph ??= options.FinalObjectGraph;
+            SetOptions(objectGraph, options);
+            
+            if (IsByteArrayAsBase64(options, array))
+            {
+                WriteBase64Stream(writer, array as byte[], objectGraph, options);
+                return;
+            }
+            
+            WriteArray(writer, array, objectGraph, options, Array.Empty<int>());
+        }
+        
+        /// <summary>
+        /// Validates the writer and array using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="array">The array</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        private static void ValidateWriterAndArray(TextWriter writer, Array array)
         {
             if (writer == null)
             {
@@ -3673,28 +3833,35 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 throw new ArgumentNullException(nameof(array));
             }
-            
-            options ??= new JsonOptions();
-            objectGraph ??= options.FinalObjectGraph;
-            SetOptions(objectGraph, options);
-            
-            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.ByteArrayAsBase64))
-            {
-                if (array is byte[] bytes)
-                {
-                    using MemoryStream ms = new MemoryStream(bytes);
-                    ms.Position = 0;
-                    WriteBase64Stream(writer, ms, objectGraph, options);
-                    
-                    return;
-                }
-            }
-            
-            WriteArray(writer, array, objectGraph, options, Array.Empty<int>());
         }
         
         /// <summary>
-        ///     Writes the array using the specified writer
+        /// Describes whether is byte array as base 64
+        /// </summary>
+        /// <param name="options">The options</param>
+        /// <param name="array">The array</param>
+        /// <returns>The bool</returns>
+        private static bool IsByteArrayAsBase64(JsonOptions options, Array array)
+        {
+            return options.SerializationOptions.HasFlag(JsonSerializationOptions.ByteArrayAsBase64) && array is byte[];
+        }
+        
+        /// <summary>
+        /// Writes the base 64 stream using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="bytes">The bytes</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        private static void WriteBase64Stream(TextWriter writer, byte[] bytes, IDictionary<object, object> objectGraph, JsonOptions options)
+        {
+            using MemoryStream ms = new MemoryStream(bytes);
+            ms.Position = 0;
+            WriteBase64Stream(writer, ms, objectGraph, options);
+        }
+        
+        /// <summary>
+        /// Writes the array using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="array">The array</param>
@@ -3703,33 +3870,79 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="indices">The indices</param>
         internal static void WriteArray(TextWriter writer, Array array, IDictionary<object, object> objectGraph, JsonOptions options, int[] indices)
         {
+            int[] newIndices = CreateNewIndices(indices);
+            
+            writer.Write('[');
+            WriteArrayElements(writer, array, objectGraph, options, indices, newIndices);
+            writer.Write(']');
+        }
+        
+        /// <summary>
+        /// Creates the new indices using the specified indices
+        /// </summary>
+        /// <param name="indices">The indices</param>
+        /// <returns>The new indices</returns>
+        private static int[] CreateNewIndices(int[] indices)
+        {
             int[] newIndices = new int[indices.Length + 1];
             for (int i = 0; i < indices.Length; i++)
             {
                 newIndices[i] = indices[i];
             }
             
-            writer.Write('[');
+            return newIndices;
+        }
+        
+        /// <summary>
+        /// Writes the array elements using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="array">The array</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <param name="indices">The indices</param>
+        /// <param name="newIndices">The new indices</param>
+        private static void WriteArrayElements(TextWriter writer, Array array, IDictionary<object, object> objectGraph, JsonOptions options, int[] indices, int[] newIndices)
+        {
             for (int i = 0; i < array.GetLength(indices.Length); i++)
             {
-                if (i > 0)
-                {
-                    writer.Write(',');
-                }
-                
+                WriteArrayElementSeparator(writer, i);
                 newIndices[indices.Length] = i;
-                
-                if (array.Rank == newIndices.Length)
-                {
-                    WriteValue(writer, array.GetValue(newIndices), objectGraph, options);
-                }
-                else
-                {
-                    WriteArray(writer, array, objectGraph, options, newIndices);
-                }
+                WriteArrayElement(writer, array, objectGraph, options, newIndices);
             }
-            
-            writer.Write(']');
+        }
+        
+        /// <summary>
+        /// Writes the array element separator using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="i">The </param>
+        private static void WriteArrayElementSeparator(TextWriter writer, int i)
+        {
+            if (i > 0)
+            {
+                writer.Write(',');
+            }
+        }
+        
+        /// <summary>
+        /// Writes the array element using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="array">The array</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <param name="newIndices">The new indices</param>
+        private static void WriteArrayElement(TextWriter writer, Array array, IDictionary<object, object> objectGraph, JsonOptions options, int[] newIndices)
+        {
+            if (array.Rank == newIndices.Length)
+            {
+                WriteValue(writer, array.GetValue(newIndices), objectGraph, options);
+            }
+            else
+            {
+                WriteArray(writer, array, objectGraph, options, newIndices);
+            }
         }
         
         /// <summary>
@@ -3891,7 +4104,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Writes the serializable using the specified writer
+        /// Writes the serializable using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="serializable">The serializable</param>
@@ -3899,34 +4112,88 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         internal static void WriteSerializable(TextWriter writer, ISerializable serializable, IDictionary<object, object> objectGraph, JsonOptions options)
         {
+            SerializationInfo info = GetSerializationInfo(serializable);
+            WriteEntries(writer, info, objectGraph, options);
+        }
+        
+        /// <summary>
+        /// Gets the serialization info using the specified serializable
+        /// </summary>
+        /// <param name="serializable">The serializable</param>
+        /// <returns>The info</returns>
+        private static SerializationInfo GetSerializationInfo(ISerializable serializable)
+        {
             SerializationInfo info = new SerializationInfo(serializable.GetType(), DefaultFormatterConverter);
             StreamingContext ctx = new StreamingContext(StreamingContextStates.Remoting, null);
             serializable.GetObjectData(info, ctx);
             info.AddValue(SerializationTypeToken, serializable.GetType().AssemblyQualifiedName);
-            
+            return info;
+        }
+        
+        /// <summary>
+        /// Writes the entries using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="info">The info</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        private static void WriteEntries(TextWriter writer, SerializationInfo info, IDictionary<object, object> objectGraph, JsonOptions options)
+        {
             bool first = true;
             foreach (SerializationEntry entry in info)
             {
-                if (!first)
-                {
-                    writer.Write(',');
-                }
-                else
-                {
-                    first = false;
-                }
-                
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.WriteKeysWithoutQuotes))
-                {
-                    writer.Write(EscapeString(entry.Name));
-                }
-                else
-                {
-                    WriteString(writer, entry.Name);
-                }
-                
-                writer.Write(':');
-                WriteValue(writer, entry.Value, objectGraph, options);
+                WriteEntry(writer, entry, ref first, objectGraph, options);
+            }
+        }
+        
+        /// <summary>
+        /// Writes the entry using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="entry">The entry</param>
+        /// <param name="first">The first</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        private static void WriteEntry(TextWriter writer, SerializationEntry entry, ref bool first, IDictionary<object, object> objectGraph, JsonOptions options)
+        {
+            WriteCommaIfNeeded(writer, ref first);
+            WriteEntryName(writer, entry, options);
+            writer.Write(':');
+            WriteValue(writer, entry.Value, objectGraph, options);
+        }
+        
+        /// <summary>
+        /// Writes the comma if needed using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="first">The first</param>
+        private static void WriteCommaIfNeeded(TextWriter writer, ref bool first)
+        {
+            if (!first)
+            {
+                writer.Write(',');
+            }
+            else
+            {
+                first = false;
+            }
+        }
+        
+        /// <summary>
+        /// Writes the entry name using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="entry">The entry</param>
+        /// <param name="options">The options</param>
+        private static void WriteEntryName(TextWriter writer, SerializationEntry entry, JsonOptions options)
+        {
+            if (options.SerializationOptions.HasFlag(JsonSerializationOptions.WriteKeysWithoutQuotes))
+            {
+                writer.Write(EscapeString(entry.Name));
+            }
+            else
+            {
+                WriteString(writer, entry.Name);
             }
         }
         
@@ -4033,7 +4300,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Handles the after write object callback using the specified writer
+        /// Handles the after write object callback using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="value">The value</param>
@@ -4041,14 +4308,47 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         internal static void HandleAfterWriteObjectCallback(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
         {
-            if (options.AfterWriteObjectCallback != null)
+            if (IsCallbackAvailable(options))
             {
-                JsonEventArgs e = new JsonEventArgs(writer, value, objectGraph, options)
-                {
-                    EventType = JsonEventType.AfterWriteObject
-                };
-                options.AfterWriteObjectCallback(e);
+                JsonEventArgs eventArgs = CreateJsonEventArgsAfterWriteObject(writer, value, objectGraph, options);
+                InvokeCallback(options, eventArgs);
             }
+        }
+        
+        /// <summary>
+        /// Describes whether is callback available
+        /// </summary>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
+        internal static bool IsCallbackAvailable(JsonOptions options)
+        {
+            return options.AfterWriteObjectCallback != null;
+        }
+        
+        /// <summary>
+        /// Creates the json event args after write object using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <returns>The json event args</returns>
+        internal static JsonEventArgs CreateJsonEventArgsAfterWriteObject(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+        {
+            return new JsonEventArgs(writer, value, objectGraph, options)
+            {
+                EventType = JsonEventType.AfterWriteObject
+            };
+        }
+        
+        /// <summary>
+        /// Invokes the callback using the specified options
+        /// </summary>
+        /// <param name="options">The options</param>
+        /// <param name="eventArgs">The event args</param>
+        internal static void InvokeCallback(JsonOptions options, JsonEventArgs eventArgs)
+        {
+            options.AfterWriteObjectCallback(eventArgs);
         }
         
         /// <summary>
@@ -4480,7 +4780,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Describes whether try get value by path
+        /// Describes whether try get value by path
         /// </summary>
         /// <param name="dictionary">The dictionary</param>
         /// <param name="path">The path</param>
@@ -4490,24 +4790,47 @@ namespace Alis.Core.Aspect.Data.Json
         {
             value = null;
             
-            if (string.IsNullOrEmpty(path) || dictionary == null)
+            if (IsInvalidPathOrDictionary(path, dictionary))
             {
                 return false;
             }
             
-            string[] pathSegments = path.Split('.');
+            return TryGetNestedValue(dictionary, path.Split('.'), out value);
+        }
+        
+        /// <summary>
+        /// Describes whether is invalid path or dictionary
+        /// </summary>
+        /// <param name="path">The path</param>
+        /// <param name="dictionary">The dictionary</param>
+        /// <returns>The bool</returns>
+        private static bool IsInvalidPathOrDictionary(string path, IDictionary<string, object> dictionary)
+        {
+            return string.IsNullOrEmpty(path) || dictionary == null;
+        }
+        
+        /// <summary>
+        /// Describes whether try get nested value
+        /// </summary>
+        /// <param name="dictionary">The dictionary</param>
+        /// <param name="pathSegments">The path segments</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        private static bool TryGetNestedValue(IDictionary<string, object> dictionary, string[] pathSegments, out object value)
+        {
             IDictionary<string, object> currentDictionary = dictionary;
+            value = null;
             
             foreach (string segment in pathSegments)
             {
-                if (!currentDictionary.TryGetValue(segment, out object element))
+                if (!TryGetElement(currentDictionary, segment, out object element))
                 {
                     return false;
                 }
                 
-                if (element is IDictionary<string, object> nextDictionary)
+                if (IsElementDictionary(element))
                 {
-                    currentDictionary = nextDictionary;
+                    currentDictionary = (IDictionary<string, object>) element;
                 }
                 else
                 {
@@ -4517,6 +4840,28 @@ namespace Alis.Core.Aspect.Data.Json
             }
             
             return false;
+        }
+        
+        /// <summary>
+        /// Describes whether try get element
+        /// </summary>
+        /// <param name="dictionary">The dictionary</param>
+        /// <param name="key">The key</param>
+        /// <param name="element">The element</param>
+        /// <returns>The bool</returns>
+        private static bool TryGetElement(IDictionary<string, object> dictionary, string key, out object element)
+        {
+            return dictionary.TryGetValue(key, out element);
+        }
+        
+        /// <summary>
+        /// Describes whether is element dictionary
+        /// </summary>
+        /// <param name="element">The element</param>
+        /// <returns>The bool</returns>
+        private static bool IsElementDictionary(object element)
+        {
+            return element is IDictionary<string, object>;
         }
         
         /// <summary>
