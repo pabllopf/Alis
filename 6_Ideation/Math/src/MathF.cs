@@ -187,10 +187,28 @@ namespace Alis.Core.Aspect.Math
         /// <returns>The int</returns>
         public static int Max(int val1, int val2) => val1 >= val2 ? val1 : val2;
         
+        /// <summary>
+        /// Mins the y 3
+        /// </summary>
+        /// <param name="y3">The </param>
+        /// <param name="y4">The </param>
+        /// <returns>The int</returns>
         public static int Min(int y3, int y4) => y3 <= y4 ? y3 : y4;
         
+        /// <summary>
+        /// Maxes the val 1
+        /// </summary>
+        /// <param name="val1">The val</param>
+        /// <param name="val2">The val</param>
+        /// <returns>The float</returns>
         public static float Max(float val1, float val2) => val1 >= val2 ? val1 : val2;
         
+        /// <summary>
+        /// Mins the y 3
+        /// </summary>
+        /// <param name="y3">The </param>
+        /// <param name="y4">The </param>
+        /// <returns>The float</returns>
         public static float Min(float y3, float y4) => y3 <= y4 ? y3 : y4;
     }
 }

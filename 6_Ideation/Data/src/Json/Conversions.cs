@@ -169,7 +169,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Describes whether try change type based on input type
+        /// Describes whether try change type based on input type
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="conversionType">The conversion type</param>
@@ -189,6 +189,20 @@ namespace Alis.Core.Aspect.Data.Json
                 return TryChangeFromEnum(conversionType, input, out value);
             }
             
+            return TryChangeBasedOnConversionType(input, conversionType, provider, inputType, out value);
+        }
+        
+        /// <summary>
+        /// Describes whether try change based on conversion type
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="conversionType">The conversion type</param>
+        /// <param name="provider">The provider</param>
+        /// <param name="inputType">The input type</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        internal static bool TryChangeBasedOnConversionType(object input, Type conversionType, IFormatProvider provider, Type inputType, out object value)
+        {
             if (conversionType == typeof(Guid))
             {
                 return TryChangeToGuid(input, provider, out value);
@@ -219,28 +233,85 @@ namespace Alis.Core.Aspect.Data.Json
                 return TryChangeToTimeSpan(input, provider, out value);
             }
             
-            Type elementType = null;
-            if (conversionType.IsArray || IsGenericList(conversionType, out elementType))
+            return TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out value);
+        }
+        
+        /// <summary>
+        /// Describes whether try change based on other types
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="conversionType">The conversion type</param>
+        /// <param name="provider">The provider</param>
+        /// <param name="inputType">The input type</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        internal static bool TryChangeBasedOnOtherTypes(object input, Type conversionType, IFormatProvider provider, Type inputType, out object value)
+        {
+            if (IsArrayOrGenericList(conversionType, out Type elementType))
             {
                 return TryChangeToCollection(input, conversionType, elementType, out value);
             }
             
-            if (conversionType == typeof(CultureInfo) || conversionType == typeof(IFormatProvider))
+            if (IsCultureInfoOrFormatProvider(conversionType))
             {
                 return TryChangeToCultureInfo(input, out value);
             }
             
-            if (conversionType == typeof(bool))
+            if (IsBool(conversionType))
             {
                 return TryChangeToBool(input, provider, out value);
             }
             
-            if (input is IConvertible convertible)
+            if (IsConvertible(input, out IConvertible convertible))
             {
                 return TryChangeWithIConvertible(convertible, conversionType, provider, out value);
             }
             
             return TryConvert(input, conversionType, inputType, out value);
+        }
+        
+        /// <summary>
+        /// Describes whether is array or generic list
+        /// </summary>
+        /// <param name="conversionType">The conversion type</param>
+        /// <param name="elementType">The element type</param>
+        /// <returns>The bool</returns>
+        internal static bool IsArrayOrGenericList(Type conversionType, out Type elementType)
+        {
+            elementType = null;
+            return conversionType.IsArray || IsGenericList(conversionType, out elementType);
+        }
+        
+        /// <summary>
+        /// Describes whether is culture info or format provider
+        /// </summary>
+        /// <param name="conversionType">The conversion type</param>
+        /// <returns>The bool</returns>
+        internal static bool IsCultureInfoOrFormatProvider(Type conversionType)
+        {
+            return conversionType == typeof(CultureInfo) || conversionType == typeof(IFormatProvider);
+        }
+        
+        /// <summary>
+        /// Describes whether is bool
+        /// </summary>
+        /// <param name="conversionType">The conversion type</param>
+        /// <returns>The bool</returns>
+        internal static bool IsBool(Type conversionType)
+        {
+            return conversionType == typeof(bool);
+        }
+        
+        /// <summary>
+        /// Describes whether is convertible
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="convertible">The convertible</param>
+        /// <returns>The bool</returns>
+        internal static bool IsConvertible(object input, out IConvertible convertible)
+        {
+            convertible = input as IConvertible;
+            return convertible != null;
         }
         
         /// <summary>
@@ -649,7 +720,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Describes whether try match values
+        /// Describes whether try match values
         /// </summary>
         /// <param name="values">The values</param>
         /// <param name="input">The input</param>
@@ -660,10 +731,9 @@ namespace Alis.Core.Aspect.Data.Json
             for (int i = 0; i < values.GetLength(0); i++)
             {
                 object valueI = values.GetValue(i);
-                if ((input.Length > 0) && (input[0] == '-'))
+                if (IsInputNegative(input))
                 {
-                    long ul = (long) EnumToUInt64(valueI);
-                    if (ul.ToString().EqualsIgnoreCase(input))
+                    if (MatchNegativeInput(input, valueI))
                     {
                         value = valueI;
                         return true;
@@ -671,8 +741,7 @@ namespace Alis.Core.Aspect.Data.Json
                 }
                 else
                 {
-                    ulong ul = EnumToUInt64(valueI);
-                    if (ul.ToString().EqualsIgnoreCase(input))
+                    if (MatchPositiveInput(input, valueI))
                     {
                         value = valueI;
                         return true;
@@ -685,31 +754,105 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Checks if the input string starts with a digit or a sign and tries to convert it to the specified type.
+        /// Describes whether is input negative
         /// </summary>
-        /// <param name="type">The target type for the conversion</param>
-        /// <param name="input">The input string to convert</param>
-        /// <param name="value">The converted value if the conversion is successful, otherwise the default value of the target type</param>
-        /// <returns>True if the conversion is successful, otherwise false</returns>
+        /// <param name="input">The input</param>
+        /// <returns>The bool</returns>
+        internal static bool IsInputNegative(string input)
+        {
+            return (input.Length > 0) && (input[0] == '-');
+        }
+        
+        /// <summary>
+        /// Describes whether match negative input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="valueI">The value</param>
+        /// <returns>The bool</returns>
+        internal static bool MatchNegativeInput(string input, object valueI)
+        {
+            long ul = (long) EnumToUInt64(valueI);
+            return ul.ToString().EqualsIgnoreCase(input);
+        }
+        
+        /// <summary>
+        /// Describes whether match positive input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="valueI">The value</param>
+        /// <returns>The bool</returns>
+        internal static bool MatchPositiveInput(string input, object valueI)
+        {
+            ulong ul = EnumToUInt64(valueI);
+            return ul.ToString().EqualsIgnoreCase(input);
+        }
+        
+        /// <summary>
+        /// Describes whether try handle digit or sign start
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="input">The input</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
         internal static bool TryHandleDigitOrSignStart(Type type, string input, out object value)
         {
-            bool startsWithDigitOrSign = char.IsDigit(input[0]) || input[0] == '-' || input[0] == '+';
-            
-            if (!startsWithDigitOrSign)
+            if (!StartsWithDigitOrSign(input))
             {
-                value = Activator.CreateInstance(type);
+                value = CreateInstance(type);
                 return false;
             }
             
-            object convertedValue = EnumToObject(type, input);
-            if (convertedValue == null)
+            return TryConvertToEnumAndAssignValue(type, input, out value);
+        }
+        
+        /// <summary>
+        /// Tries to convert the input to an enum and assign it to the value.
+        /// </summary>
+        /// <param name="type">The type to convert to.</param>
+        /// <param name="input">The input to convert.</param>
+        /// <param name="value">The output value.</param>
+        /// <returns>True if the conversion was successful, false otherwise.</returns>
+        internal static bool TryConvertToEnumAndAssignValue(Type type, string input, out object value)
+        {
+            value = ConvertToEnum(type, input);
+            if (value == null)
             {
-                value = Activator.CreateInstance(type);
+                value = CreateInstance(type);
                 return false;
             }
             
-            value = convertedValue;
             return true;
+        }
+        
+        /// <summary>
+        /// Describes whether starts with digit or sign
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <returns>The bool</returns>
+        internal static bool StartsWithDigitOrSign(string input)
+        {
+            return char.IsDigit(input[0]) || input[0] == '-' || input[0] == '+';
+        }
+        
+        /// <summary>
+        /// Creates the instance using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <returns>The object</returns>
+        internal static object CreateInstance(Type type)
+        {
+            return Activator.CreateInstance(type);
+        }
+        
+        /// <summary>
+        /// Converts the to enum using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="input">The input</param>
+        /// <returns>The object</returns>
+        internal static object ConvertToEnum(Type type, string input)
+        {
+            return EnumToObject(type, input);
         }
         
         /// <summary>
@@ -772,7 +915,6 @@ namespace Alis.Core.Aspect.Data.Json
                 TypeCode.Int16 => Enum.ToObject(enumType, ChangeType<short>(value)),
                 TypeCode.UInt16 => Enum.ToObject(enumType, ChangeType<ushort>(value)),
                 TypeCode.Byte => Enum.ToObject(enumType, ChangeType<byte>(value)),
-                TypeCode.SByte => Enum.ToObject(enumType, ChangeType<sbyte>(value)),
                 _ => null
             };
         }
@@ -945,28 +1087,21 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Attempts to parse token values.
+        /// Describes whether try parse token values
         /// </summary>
         /// <param name="tokens">The tokens</param>
         /// <param name="type">The type</param>
         /// <param name="names">The names</param>
         /// <param name="values">The values</param>
         /// <param name="value">The value</param>
-        /// <returns>True if parsing was successful, false otherwise</returns>
+        /// <returns>The bool</returns>
         internal static bool TryParseTokenValues(string[] tokens, Type type, string[] names, Array values, out object value)
         {
             ulong parsedValue = 0;
             
             foreach (string token in tokens)
             {
-                string sanitizedToken = token.Nullify();
-                
-                if (sanitizedToken == null)
-                {
-                    continue;
-                }
-                
-                if (!TryConvertTokenToEnumValue(type, names, values, sanitizedToken, out object tokenValue))
+                if (!TryParseToken(token, type, names, values, out object tokenValue))
                 {
                     value = Activator.CreateInstance(type);
                     return false;
@@ -977,6 +1112,48 @@ namespace Alis.Core.Aspect.Data.Json
             
             value = Enum.ToObject(type, parsedValue);
             return true;
+        }
+        
+        /// <summary>
+        /// Describes whether try parse token
+        /// </summary>
+        /// <param name="token">The token</param>
+        /// <param name="type">The type</param>
+        /// <param name="names">The names</param>
+        /// <param name="values">The values</param>
+        /// <param name="tokenValue">The token value</param>
+        /// <returns>The bool</returns>
+        internal static bool TryParseToken(string token, Type type, string[] names, Array values, out object tokenValue)
+        {
+            string sanitizedToken = SanitizeToken(token);
+            
+            if (IsTokenNull(sanitizedToken))
+            {
+                tokenValue = null;
+                return false;
+            }
+            
+            return TryConvertTokenToEnumValue(type, names, values, sanitizedToken, out tokenValue);
+        }
+        
+        /// <summary>
+        /// Sanitizes the token using the specified token
+        /// </summary>
+        /// <param name="token">The token</param>
+        /// <returns>The string</returns>
+        internal static string SanitizeToken(string token)
+        {
+            return token.Nullify();
+        }
+        
+        /// <summary>
+        /// Describes whether is token null
+        /// </summary>
+        /// <param name="sanitizedToken">The sanitized token</param>
+        /// <returns>The bool</returns>
+        internal static bool IsTokenNull(string sanitizedToken)
+        {
+            return sanitizedToken == null;
         }
         
         /// <summary>

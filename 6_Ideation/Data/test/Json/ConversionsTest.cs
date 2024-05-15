@@ -2866,10 +2866,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = typeof(int);
-            string input = null;
             
             // Act & Assert
-            Assert.Throws<NullReferenceException>(() => Conversions.TryHandleDigitOrSignStart(type, input, out object value));
+            Assert.Throws<NullReferenceException>(() => Conversions.TryHandleDigitOrSignStart(type, null, out object value));
         }
         
         /// <summary>
@@ -3067,7 +3066,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object result = Conversions.ConvertToEnum(enumType, value);
             
             // Assert
-            Assert.Equal(DayOfWeek.Sunday ,result);
+            Assert.Equal(DayOfWeek.Sunday, result);
         }
         
         /// <summary>
@@ -3081,8 +3080,1228 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object value = "Monday";
             
             // Act
-            Assert.Throws<ArgumentException>( () => Conversions.ConvertToEnum(enumType, value));
+            Assert.Throws<ArgumentException>(() => Conversions.ConvertToEnum(enumType, value));
             
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with int 32 enum returns correct enum
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithInt32Enum_ReturnsCorrectEnum()
+        {
+            object result = Conversions.ConvertToEnum(typeof(DayOfWeek), 1);
+            Assert.NotNull(result);
+            Assert.IsType<DayOfWeek>(result);
+            Assert.Equal(DayOfWeek.Monday, result);
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with invalid value returns null
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithInvalidValue_ReturnsNull()
+        {
+            Assert.Throws<ArgumentException>(() => Conversions.ConvertToEnum(typeof(DayOfWeek), "InvalidDay"));
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with int 32 enum returns correct enum v 2
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithInt32Enum_ReturnsCorrectEnum_v2()
+        {
+            object result = Conversions.ConvertToEnum(typeof(DayOfWeek), 1);
+            Assert.NotNull(result);
+            Assert.IsType<DayOfWeek>(result);
+            Assert.Equal(DayOfWeek.Monday, result);
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with u int 32 enum returns correct enum
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithUInt32Enum_ReturnsCorrectEnum()
+        {
+            
+            
+            object result = Conversions.ConvertToEnum(typeof(TestEnumuint), 1u);
+            Assert.NotNull(result);
+            Assert.IsType<TestEnumuint>(result);
+            Assert.Equal(TestEnumuint.Value1, result);
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with int 64 enum returns correct enum
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithInt64Enum_ReturnsCorrectEnum()
+        {
+            // Define a Int64 enum for testing
+            
+            object result = Conversions.ConvertToEnum(typeof(TestEnumuint), 1L);
+            Assert.NotNull(result);
+            Assert.IsType<TestEnumuint>(result);
+            Assert.Equal(TestEnumuint.Value1, result);
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with u int 64 enum returns correct enum
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithUInt64Enum_ReturnsCorrectEnum()
+        {
+            
+            object result = Conversions.ConvertToEnum(typeof(TestEnumuint), 1UL);
+            Assert.NotNull(result);
+            Assert.IsType<TestEnumuint>(result);
+            Assert.Equal(TestEnumuint.Value1, result);
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with int 16 enum returns correct enum
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithInt16Enum_ReturnsCorrectEnum()
+        {
+            
+            object result = Conversions.ConvertToEnum(typeof(TestEnumuint), (short) 1);
+            Assert.NotNull(result);
+            Assert.IsType<TestEnumuint>(result);
+            Assert.Equal(TestEnumuint.Value1, result);
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with u int 16 enum returns correct enum
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithUInt16Enum_ReturnsCorrectEnum()
+        {
+            
+            object result = Conversions.ConvertToEnum(typeof(TestEnumuint), (ushort) 1);
+            Assert.NotNull(result);
+            Assert.IsType<TestEnumuint>(result);
+            Assert.Equal(TestEnumuint.Value1, result);
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with byte enum returns correct enum
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithByteEnum_ReturnsCorrectEnum()
+        {
+            object result = Conversions.ConvertToEnum(typeof(TestEnumuint), (byte) 1);
+            Assert.NotNull(result);
+            Assert.IsType<TestEnumuint>(result);
+            Assert.Equal(TestEnumuint.Value1, result);
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with s byte enum returns correct enum
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithSByteEnum_ReturnsCorrectEnum()
+        {
+            object result = Conversions.ConvertToEnum(typeof(TestEnumSbyte), (sbyte) 1);
+            Assert.Null(result);
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with invalid value returns null v 1
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithInvalidValue_ReturnsNull_v1()
+        {
+            object result = Conversions.ConvertToEnum(typeof(TestEnumbyte), 1);
+            Assert.NotNull(result);
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with invalid value returns null v 3
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithInvalidValue_ReturnsNull_v3()
+        {
+            object result = Conversions.ConvertToEnum(typeof(TestEnumushort), 1);
+            Assert.NotNull(result);
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with invalid value returns null v 4
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithInvalidValue_ReturnsNull_v4()
+        {
+            object result = Conversions.ConvertToEnum(typeof(TestEnumulong), 1);
+            Assert.NotNull(result);
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with invalid value returns null v 5
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithInvalidValue_ReturnsNull_v5()
+        {
+            object result = Conversions.ConvertToEnum(typeof(TestEnumlong), 1);
+            Assert.NotNull(result);
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with invalid value returns null v 6
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithInvalidValue_ReturnsNull_v6()
+        {
+            object result = Conversions.ConvertToEnum(typeof(TestEnumshort), 1);
+            Assert.NotNull(result);
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with invalid value returns null v 7
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithInvalidValue_ReturnsNull_v7()
+        {
+            object result = Conversions.ConvertToEnum(typeof(TestEnumint), 1);
+            Assert.NotNull(result);
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with invalid value returns null v 2
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithInvalidValue_ReturnsNull_v2()
+        {
+            object result = Conversions.ConvertToEnum(typeof(DayOfWeek), "Monday");
+            Assert.NotNull(result);
+        }
+        
+        /// <summary>
+        /// Tests that convert to enum with non enum type throws argument exception v 1
+        /// </summary>
+        [Fact]
+        public void ConvertToEnum_WithNonEnumType_ThrowsArgumentException_v1()
+        {
+            Assert.Throws<ArgumentException>(() => Conversions.ConvertToEnum(typeof(int), 1));
+        }
+        
+        /// <summary>
+        /// Tests that enum to object with valid enum type and string value returns enum
+        /// </summary>
+        [Fact]
+        public void EnumToObject_WithValidEnumTypeAndStringValue_ReturnsEnum()
+        {
+            // Arrange
+            Type enumType = typeof(DayOfWeek);
+            object value = "Monday";
+            
+            // Act
+            object result = Conversions.EnumToObject(enumType, value);
+            
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<DayOfWeek>(result);
+            Assert.Equal(DayOfWeek.Monday, result);
+        }
+        
+        /// <summary>
+        /// Tests that enum to object with valid enum type and int value returns enum
+        /// </summary>
+        [Fact]
+        public void EnumToObject_WithValidEnumTypeAndIntValue_ReturnsEnum()
+        {
+            // Arrange
+            Type enumType = typeof(DayOfWeek);
+            object value = 1;
+            
+            // Act
+            object result = Conversions.EnumToObject(enumType, value);
+            
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<DayOfWeek>(result);
+            Assert.Equal(DayOfWeek.Monday, result);
+        }
+        
+        /// <summary>
+        /// Tests that enum to object with invalid enum type returns null
+        /// </summary>
+        [Fact]
+        public void EnumToObject_WithInvalidEnumType_ReturnsNull()
+        {
+            // Arrange
+            Type enumType = typeof(int);
+            object value = 1;
+            
+            // Act
+            object result = Conversions.EnumToObject(enumType, value);
+            
+            // Assert
+            Assert.Null(result);
+        }
+        
+        /// <summary>
+        /// Tests that enum to object with invalid value returns null
+        /// </summary>
+        [Fact]
+        public void EnumToObject_WithInvalidValue_ReturnsNull()
+        {
+            // Arrange
+            Type enumType = typeof(DayOfWeek);
+            object value = "Sunday";
+            
+            // Act
+            object result = Conversions.EnumToObject(enumType, value);
+            
+            // Assert
+            Assert.NotNull(result);
+        }
+        
+        /// <summary>
+        /// Tests that enum to object with null enum type returns null
+        /// </summary>
+        [Fact]
+        public void EnumToObject_WithNullEnumType_ReturnsNull()
+        {
+            // Arrange
+            Type enumType = null;
+            object value = "Monday";
+            
+            // Act
+            object result = Conversions.EnumToObject(enumType, value);
+            
+            // Assert
+            Assert.Null(result);
+        }
+        
+        /// <summary>
+        /// Tests that enum to object with null value returns null
+        /// </summary>
+        [Fact]
+        public void EnumToObject_WithNullValue_ReturnsNull()
+        {
+            // Arrange
+            Type enumType = typeof(DayOfWeek);
+            object value = null;
+            
+            // Act
+            object result = Conversions.EnumToObject(enumType, value);
+            
+            // Assert
+            Assert.Null(result);
+        }
+        
+        /// <summary>
+        /// Tests that try change type based on input type with enum conversion type returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeTypeBasedOnInputType_WithEnumConversionType_ReturnsTrue()
+        {
+            object input = "Monday";
+            Type conversionType = typeof(DayOfWeek);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            bool result = Conversions.TryChangeTypeBasedOnInputType(input, conversionType, provider, inputType, out object value);
+            Assert.True(result);
+            Assert.Equal(DayOfWeek.Monday, value);
+        }
+        
+        /// <summary>
+        /// Tests that try change type based on input type with enum input type returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeTypeBasedOnInputType_WithEnumInputType_ReturnsTrue()
+        {
+            object input = DayOfWeek.Monday;
+            Type conversionType = typeof(string);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(DayOfWeek);
+            bool result = Conversions.TryChangeTypeBasedOnInputType(input, conversionType, provider, inputType, out object value);
+            Assert.True(result);
+            Assert.Equal("Monday", value);
+        }
+        
+        /// <summary>
+        /// Tests that try change type based on input type with guid conversion type returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeTypeBasedOnInputType_WithGuidConversionType_ReturnsTrue()
+        {
+            object input = Guid.NewGuid().ToString();
+            Type conversionType = typeof(Guid);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            bool result = Conversions.TryChangeTypeBasedOnInputType(input, conversionType, provider, inputType, out object value);
+            Assert.True(result);
+            Assert.Equal(input, value.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that try change type based on input type with uri conversion type returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeTypeBasedOnInputType_WithUriConversionType_ReturnsTrue()
+        {
+            object input = "http://example.com/";
+            Type conversionType = typeof(Uri);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            bool result = Conversions.TryChangeTypeBasedOnInputType(input, conversionType, provider, inputType, out object value);
+            Assert.True(result);
+            Assert.Equal(input, value.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that try change type based on input type with int ptr conversion type returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeTypeBasedOnInputType_WithIntPtrConversionType_ReturnsTrue()
+        {
+            object input = "123";
+            Type conversionType = typeof(IntPtr);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            bool result = Conversions.TryChangeTypeBasedOnInputType(input, conversionType, provider, inputType, out object value);
+            Assert.True(result);
+            Assert.Equal(new IntPtr(123), value);
+        }
+        
+        /// <summary>
+        /// Tests that try change type based on input type with numeric conversion type returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeTypeBasedOnInputType_WithNumericConversionType_ReturnsTrue()
+        {
+            object input = "123";
+            Type conversionType = typeof(int);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            bool result = Conversions.TryChangeTypeBasedOnInputType(input, conversionType, provider, inputType, out object value);
+            Assert.True(result);
+            Assert.Equal(123, value);
+        }
+        
+        /// <summary>
+        /// Tests that try change type based on input type with date time conversion type returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeTypeBasedOnInputType_WithDateTimeConversionType_ReturnsTrue()
+        {
+            string input = DateTime.Now.ToString("o");
+            Type conversionType = typeof(DateTime);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            bool result = Conversions.TryChangeTypeBasedOnInputType(input, conversionType, provider, inputType, out object value);
+            Assert.True(result);
+            Assert.Equal(DateTime.Parse(input), value);
+        }
+        
+        /// <summary>
+        /// Tests that try change type based on input type with time span conversion type returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeTypeBasedOnInputType_WithTimeSpanConversionType_ReturnsTrue()
+        {
+            string input = "1.00:00:00";
+            Type conversionType = typeof(TimeSpan);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            bool result = Conversions.TryChangeTypeBasedOnInputType(input, conversionType, provider, inputType, out object value);
+            Assert.True(result);
+            Assert.Equal(TimeSpan.Parse(input), value);
+        }
+        
+        /// <summary>
+        /// Tests that try change type based on input type with culture info conversion type returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeTypeBasedOnInputType_WithCultureInfoConversionType_ReturnsTrue()
+        {
+            object input = "en-US";
+            Type conversionType = typeof(CultureInfo);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            bool result = Conversions.TryChangeTypeBasedOnInputType(input, conversionType, provider, inputType, out object value);
+            Assert.True(result);
+            Assert.Equal(new CultureInfo(input.ToString()), value);
+        }
+        
+        /// <summary>
+        /// Tests that try change type based on input type with bool conversion type returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeTypeBasedOnInputType_WithBoolConversionType_ReturnsTrue()
+        {
+            object input = "true";
+            Type conversionType = typeof(bool);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            bool result = Conversions.TryChangeTypeBasedOnInputType(input, conversionType, provider, inputType, out object value);
+            Assert.True(result);
+            Assert.Equal(true, value);
+        }
+        
+        /// <summary>
+        /// Tests that try change type based on input type with i convertible input returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeTypeBasedOnInputType_WithIConvertibleInput_ReturnsTrue()
+        {
+            object input = "123";
+            Type conversionType = typeof(int);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            bool result = Conversions.TryChangeTypeBasedOnInputType(input, conversionType, provider, inputType, out object value);
+            Assert.True(result);
+            Assert.Equal(123, value);
+        }
+        
+        /// <summary>
+        /// Tests that try change type based on input type with other conversion type returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeTypeBasedOnInputType_WithOtherConversionType_ReturnsTrue()
+        {
+            object input = "123";
+            Type conversionType = typeof(int);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(object);
+            bool result = Conversions.TryChangeTypeBasedOnInputType(input, conversionType, provider, inputType, out object value);
+            Assert.True(result);
+            Assert.Equal(123, value);
+        }
+        
+        /// <summary>
+        /// Tests that try change to enum valid enum returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeToEnum_ValidEnum_ReturnsTrue()
+        {
+            object input = "Monday";
+            Type conversionType = typeof(DayOfWeek);
+            bool result = Conversions.TryChangeToEnum(conversionType, input, out object value);
+            Assert.True(result);
+            Assert.Equal(DayOfWeek.Monday, value);
+        }
+        
+        /// <summary>
+        /// Tests that try parse token valid token returns true
+        /// </summary>
+        [Fact]
+        public void TryParseToken_ValidToken_ReturnsTrue()
+        {
+            string token = "Monday";
+            Type type = typeof(DayOfWeek);
+            string[] names = Enum.GetNames(type);
+            Array values = Enum.GetValues(type);
+            bool result = Conversions.TryParseToken(token, type, names, values, out object tokenValue);
+            Assert.True(result);
+            Assert.Equal(DayOfWeek.Monday, tokenValue);
+        }
+        
+        /// <summary>
+        /// Tests that try parse token invalid token returns false
+        /// </summary>
+        [Fact]
+        public void TryParseToken_InvalidToken_ReturnsFalse()
+        {
+            string token = "InvalidDay";
+            Type type = typeof(DayOfWeek);
+            string[] names = Enum.GetNames(type);
+            Array values = Enum.GetValues(type);
+            bool result = Conversions.TryParseToken(token, type, names, values, out object tokenValue);
+            Assert.False(result);
+            Assert.NotNull(tokenValue);
+        }
+        
+        /// <summary>
+        /// Tests that sanitize token valid token returns sanitized token
+        /// </summary>
+        [Fact]
+        public void SanitizeToken_ValidToken_ReturnsSanitizedToken()
+        {
+            string token = " Monday ";
+            string result = Conversions.SanitizeToken(token);
+            Assert.Equal("Monday", result);
+        }
+        
+        /// <summary>
+        /// Tests that sanitize token null token returns null
+        /// </summary>
+        [Fact]
+        public void SanitizeToken_NullToken_ReturnsNull()
+        {
+            string token = null;
+            string result = Conversions.SanitizeToken(token);
+            Assert.Null(result);
+        }
+        
+        /// <summary>
+        /// Tests that is token null null token returns true
+        /// </summary>
+        [Fact]
+        public void IsTokenNull_NullToken_ReturnsTrue()
+        {
+            string token = null;
+            bool result = Conversions.IsTokenNull(token);
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that is token null non null token returns false
+        /// </summary>
+        [Fact]
+        public void IsTokenNull_NonNullToken_ReturnsFalse()
+        {
+            string token = "Monday";
+            bool result = Conversions.IsTokenNull(token);
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types with array conversion type returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_WithArrayConversionType_ReturnsTrue()
+        {
+            object input = "1,2,3";
+            Type conversionType = typeof(int[]);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
+            Assert.False(result);
+            Assert.Null(value);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types with culture info conversion type returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_WithCultureInfoConversionType_ReturnsTrue()
+        {
+            object input = "en-US";
+            Type conversionType = typeof(CultureInfo);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
+            Assert.True(result);
+            Assert.Equal(new CultureInfo("en-US"), value);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types with bool conversion type returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_WithBoolConversionType_ReturnsTrue()
+        {
+            object input = "true";
+            Type conversionType = typeof(bool);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
+            Assert.True(result);
+            Assert.Equal(true, value);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types with convertible input returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_WithConvertibleInput_ReturnsTrue()
+        {
+            object input = "123";
+            Type conversionType = typeof(int);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
+            Assert.True(result);
+            Assert.Equal(123, value);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types with other conversion type returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_WithOtherConversionType_ReturnsTrue()
+        {
+            object input = "123";
+            Type conversionType = typeof(int);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(object);
+            bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
+            Assert.True(result);
+            Assert.Equal(123, value);
+        }
+        
+        /// <summary>
+        /// Tests that try convert token to enum value valid token returns true
+        /// </summary>
+        [Fact]
+        public void TryConvertTokenToEnumValue_ValidToken_ReturnsTrue()
+        {
+            // Arrange
+            Type type = typeof(DayOfWeek);
+            string[] names = Enum.GetNames(type);
+            Array values = Enum.GetValues(type);
+            string token = "Monday";
+            
+            // Act
+            bool result = Conversions.TryConvertTokenToEnumValue(type, names, values, token, out object tokenValue);
+            
+            // Assert
+            Assert.True(result);
+            Assert.Equal(DayOfWeek.Monday, tokenValue);
+        }
+        
+        /// <summary>
+        /// Tests that try convert token to enum value invalid token returns false
+        /// </summary>
+        [Fact]
+        public void TryConvertTokenToEnumValue_InvalidToken_ReturnsFalse()
+        {
+            // Arrange
+            Type type = typeof(DayOfWeek);
+            string[] names = Enum.GetNames(type);
+            Array values = Enum.GetValues(type);
+            string token = "InvalidDay";
+            
+            // Act
+            bool result = Conversions.TryConvertTokenToEnumValue(type, names, values, token, out object tokenValue);
+            
+            // Assert
+            Assert.False(result);
+            Assert.NotNull(tokenValue);
+        }
+        
+        /// <summary>
+        /// Tests that convert token value to ulong valid token returns ulong
+        /// </summary>
+        [Fact]
+        public void ConvertTokenValueToUlong_ValidToken_ReturnsUlong()
+        {
+            // Arrange
+            object tokenValue = 123;
+            
+            // Act
+            ulong result = Conversions.ConvertTokenValueToUlong(tokenValue);
+            
+            // Assert
+            Assert.Equal(123UL, result);
+        }
+        
+        /// <summary>
+        /// Tests that convert token value to ulong negative token returns ulong
+        /// </summary>
+        [Fact]
+        public void ConvertTokenValueToUlong_NegativeToken_ReturnsUlong()
+        {
+            // Arrange
+            object tokenValue = -123;
+            
+            // Act
+            ulong result = Conversions.ConvertTokenValueToUlong(tokenValue);
+            
+            // Assert
+            Assert.Equal(18446744073709551493UL, result); // This is the ulong representation of -123
+        }
+        
+        /// <summary>
+        /// Tests that convert token value to ulong non numeric token throws invalid cast exception
+        /// </summary>
+        [Fact]
+        public void ConvertTokenValueToUlong_NonNumericToken_ThrowsInvalidCastException()
+        {
+            // Arrange
+            object tokenValue = "InvalidToken";
+            
+            // Act & Assert
+            Assert.Throws<FormatException>(() => Conversions.ConvertTokenValueToUlong(tokenValue));
+        }
+        
+        /// <summary>
+        /// Tests that try parse token valid token returns true v 3
+        /// </summary>
+        [Fact]
+        public void TryParseToken_ValidToken_ReturnsTrue_v3()
+        {
+            string token = "Monday";
+            Type type = typeof(DayOfWeek);
+            string[] names = Enum.GetNames(type);
+            Array values = Enum.GetValues(type);
+            bool result = Conversions.TryParseToken(token, type, names, values, out object tokenValue);
+            Assert.True(result);
+            Assert.Equal(DayOfWeek.Monday, tokenValue);
+        }
+        
+        /// <summary>
+        /// Tests that try parse token invalid token returns false v 2
+        /// </summary>
+        [Fact]
+        public void TryParseToken_InvalidToken_ReturnsFalse_v2()
+        {
+            string token = "InvalidDay";
+            Type type = typeof(DayOfWeek);
+            string[] names = Enum.GetNames(type);
+            Array values = Enum.GetValues(type);
+            bool result = Conversions.TryParseToken(token, type, names, values, out object tokenValue);
+            Assert.False(result);
+            Assert.NotNull(tokenValue);
+        }
+        
+        /// <summary>
+        /// Tests that try parse token null token returns false
+        /// </summary>
+        [Fact]
+        public void TryParseToken_NullToken_ReturnsFalse()
+        {
+            string token = null;
+            Type type = typeof(DayOfWeek);
+            string[] names = Enum.GetNames(type);
+            Array values = Enum.GetValues(type);
+            bool result = Conversions.TryParseToken(token, type, names, values, out object tokenValue);
+            Assert.False(result);
+            Assert.Null(tokenValue);
+        }
+        
+        /// <summary>
+        /// Tests that try parse token empty token returns false
+        /// </summary>
+        [Fact]
+        public void TryParseToken_EmptyToken_ReturnsFalse()
+        {
+            string token = "";
+            Type type = typeof(DayOfWeek);
+            string[] names = Enum.GetNames(type);
+            Array values = Enum.GetValues(type);
+            bool result = Conversions.TryParseToken(token, type, names, values, out object tokenValue);
+            Assert.False(result);
+            Assert.Null(tokenValue);
+        }
+        
+        /// <summary>
+        /// Tests that try parse token token with spaces returns true
+        /// </summary>
+        [Fact]
+        public void TryParseToken_TokenWithSpaces_ReturnsTrue()
+        {
+            string token = " Monday ";
+            Type type = typeof(DayOfWeek);
+            string[] names = Enum.GetNames(type);
+            Array values = Enum.GetValues(type);
+            bool result = Conversions.TryParseToken(token, type, names, values, out object tokenValue);
+            Assert.True(result);
+            Assert.Equal(DayOfWeek.Monday, tokenValue);
+        }
+        
+        /// <summary>
+        /// Tests that try parse token mixed case token returns true
+        /// </summary>
+        [Fact]
+        public void TryParseToken_MixedCaseToken_ReturnsTrue()
+        {
+            string token = "monday";
+            Type type = typeof(DayOfWeek);
+            string[] names = Enum.GetNames(type);
+            Array values = Enum.GetValues(type);
+            bool result = Conversions.TryParseToken(token, type, names, values, out object tokenValue);
+            Assert.True(result);
+            Assert.Equal(DayOfWeek.Monday, tokenValue);
+        }
+        
+        /// <summary>
+        /// Tests that try parse token invalid enum type returns false
+        /// </summary>
+        [Fact]
+        public void TryParseToken_InvalidEnumType_ReturnsFalse()
+        {
+            string token = "Monday";
+            Type type = typeof(DayOfWeek); // Not an enum type
+            string[] names = Enum.GetNames(type);
+            Array values = Enum.GetValues(type);
+            bool result = Conversions.TryParseToken(token, type, names, values, out object tokenValue);
+            Assert.True(result);
+            Assert.NotNull(tokenValue);
+        }
+        
+        /// <summary>
+        /// Tests that try parse token null enum type returns false
+        /// </summary>
+        [Fact]
+        public void TryParseToken_NullEnumType_ReturnsFalse()
+        {
+            string token = "Monday";
+            Type type = null;
+            string[] names = Enum.GetNames(typeof(DayOfWeek)); // Using DayOfWeek as a placeholder
+            Array values = Enum.GetValues(typeof(DayOfWeek)); // Using DayOfWeek as a placeholder
+            bool result = Conversions.TryParseToken(token, type, names, values, out object tokenValue);
+            Assert.True(result);
+            Assert.NotNull(tokenValue);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types collection conversion type try change to collection returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_CollectionConversionType_TryChangeToCollectionReturnsTrue()
+        {
+            // Arrange
+            object input = "1,2,3";
+            Type conversionType = typeof(int[]);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            
+            // Act
+            bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Null(value);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types collection conversion type try change to collection returns false
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_CollectionConversionType_TryChangeToCollectionReturnsFalse()
+        {
+            // Arrange
+            object input = "invalid";
+            Type conversionType = typeof(int[]);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            
+            // Act
+            bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Null(value);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types culture info conversion type try change to culture info returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_CultureInfoConversionType_TryChangeToCultureInfoReturnsTrue()
+        {
+            // Arrange
+            object input = "en-US";
+            Type conversionType = typeof(CultureInfo);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            
+            // Act
+            bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
+            
+            // Assert
+            Assert.True(result);
+            Assert.Equal(new CultureInfo("en-US"), value);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types culture info conversion type try change to culture info returns false
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_CultureInfoConversionType_TryChangeToCultureInfoReturnsFalse()
+        {
+            // Arrange
+            object input = "invalid";
+            Type conversionType = typeof(CultureInfo);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            
+            // Act
+            bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Null(value);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types bool conversion type try change to bool returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_BoolConversionType_TryChangeToBoolReturnsTrue()
+        {
+            // Arrange
+            object input = "true";
+            Type conversionType = typeof(bool);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            
+            // Act
+            bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
+            
+            // Assert
+            Assert.True(result);
+            Assert.Equal(true, value);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types bool conversion type try change to bool returns false
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_BoolConversionType_TryChangeToBoolReturnsFalse()
+        {
+            // Arrange
+            object input = "invalid";
+            Type conversionType = typeof(bool);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            
+            // Act
+            bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Null(value);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types convertible input try change with i convertible returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_ConvertibleInput_TryChangeWithIConvertibleReturnsTrue()
+        {
+            // Arrange
+            object input = "123";
+            Type conversionType = typeof(int);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            
+            // Act
+            bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
+            
+            // Assert
+            Assert.True(result);
+            Assert.Equal(123, value);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types convertible input try change with i convertible returns false
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_ConvertibleInput_TryChangeWithIConvertibleReturnsFalse()
+        {
+            // Arrange
+            object input = "invalid";
+            Type conversionType = typeof(int);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            
+            // Act
+            bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Null(value);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types other conversion type try convert returns true
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_OtherConversionType_TryConvertReturnsTrue()
+        {
+            // Arrange
+            object input = "123";
+            Type conversionType = typeof(int);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(object);
+            
+            // Act
+            bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
+            
+            // Assert
+            Assert.True(result);
+            Assert.Equal(123, value);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types other conversion type try convert returns false
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_OtherConversionType_TryConvertReturnsFalse()
+        {
+            // Arrange
+            object input = "invalid";
+            Type conversionType = typeof(int);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(object);
+            
+            // Act
+            bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
+            
+            // Assert
+            Assert.False(result);
+            Assert.Null(value);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types null input returns false
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_NullInput_ReturnsFalse()
+        {
+            // Arrange
+            object input = null;
+            Type conversionType = typeof(int);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            
+            // Act
+            Assert.Throws<NotSupportedException>(() => Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value));
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types null conversion type returns false
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_NullConversionType_ReturnsFalse()
+        {
+            // Arrange
+            object input = "123";
+            Type conversionType = null;
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = typeof(string);
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value));
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types null provider returns false
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_NullProvider_ReturnsFalse()
+        {
+            // Arrange
+            object input = "123";
+            Type conversionType = typeof(int);
+            IFormatProvider provider = null;
+            Type inputType = typeof(string);
+            
+            // Act
+            bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
+            
+            // Assert
+            Assert.True(result);
+            Assert.NotNull(value);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types null input type returns false
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_NullInputType_ReturnsFalse()
+        {
+            // Arrange
+            object input = "123";
+            Type conversionType = typeof(int);
+            IFormatProvider provider = CultureInfo.InvariantCulture;
+            Type inputType = null;
+            
+            // Act
+            bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
+            
+            // Assert
+            Assert.True(result);
+            Assert.NotNull(value);
+        }
+        
+        /// <summary>
+        /// Tests that try change based on other types all parameters null returns false
+        /// </summary>
+        [Fact]
+        public void TryChangeBasedOnOtherTypes_AllParametersNull_ReturnsFalse()
+        {
+            // Arrange
+            object input = null;
+            Type conversionType = null;
+            IFormatProvider provider = null;
+            Type inputType = null;
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value));
+        }
+        
+        /// <summary>
+        /// Tests that try convert to enum and assign value valid enum value returns true
+        /// </summary>
+        [Fact]
+        public void TryConvertToEnumAndAssignValue_ValidEnumValue_ReturnsTrue()
+        {
+            bool result = Conversions.TryConvertToEnumAndAssignValue(typeof(DayOfWeek), "Monday", out object value);
+            Assert.True(result);
+            Assert.Equal(DayOfWeek.Monday, value);
+        }
+        
+        /// <summary>
+        /// Tests that try convert to enum and assign value invalid enum value returns false
+        /// </summary>
+        [Fact]
+        public void TryConvertToEnumAndAssignValue_InvalidEnumValue_ReturnsFalse()
+        {
+            Assert.Throws<ArgumentException>(() => Conversions.TryConvertToEnumAndAssignValue(typeof(DayOfWeek), "InvalidDay", out object value));
+        }
+        
+        /// <summary>
+        /// Tests that try convert to enum and assign value non enum type returns false
+        /// </summary>
+        [Fact]
+        public void TryConvertToEnumAndAssignValue_NonEnumType_ReturnsFalse()
+        {
+            Assert.Throws<MissingMethodException>(() => Conversions.TryConvertToEnumAndAssignValue(typeof(string), "Monday", out object value));
+        }
+        
+        /// <summary>
+        /// Tests that try convert to enum and assign value null type throws exception
+        /// </summary>
+        [Fact]
+        public void TryConvertToEnumAndAssignValue_NullType_ThrowsException()
+        {
+            Assert.Throws<ArgumentNullException>(() => Conversions.TryConvertToEnumAndAssignValue(null, "Monday", out object value));
+        }
+        
+        /// <summary>
+        /// Tests that try convert to enum and assign value null input returns false
+        /// </summary>
+        [Fact]
+        public void TryConvertToEnumAndAssignValue_NullInput_ReturnsFalse()
+        {
+            bool result = Conversions.TryConvertToEnumAndAssignValue(typeof(DayOfWeek), null, out object value);
+            Assert.False(result);
+            Assert.Equal(default(DayOfWeek), value);
+        }
+        
+        /// <summary>
+        /// Tests that try convert to enum and assign value empty input returns false
+        /// </summary>
+        [Fact]
+        public void TryConvertToEnumAndAssignValue_EmptyInput_ReturnsFalse()
+        {
+            Assert.Throws<ArgumentException>(() => Conversions.TryConvertToEnumAndAssignValue(typeof(DayOfWeek), "", out object value));
+        }
+        
+        /// <summary>
+        /// Tests that try convert to enum and assign value valid enum value different case returns true
+        /// </summary>
+        [Fact]
+        public void TryConvertToEnumAndAssignValue_ValidEnumValueDifferentCase_ReturnsTrue()
+        {
+            Assert.Throws<ArgumentException>(() => Conversions.TryConvertToEnumAndAssignValue(typeof(DayOfWeek), "monday", out object value));
+        }
+        
+        /// <summary>
+        /// Tests that try convert to enum and assign value string with spaces returns false
+        /// </summary>
+        [Fact]
+        public void TryConvertToEnumAndAssignValue_StringWithSpaces_ReturnsFalse()
+        {
+            bool result = Conversions.TryConvertToEnumAndAssignValue(typeof(DayOfWeek), " Monday ", out object value);
+            Assert.True(result);
+            Assert.Equal(DayOfWeek.Monday, value);
         }
     }
 }
