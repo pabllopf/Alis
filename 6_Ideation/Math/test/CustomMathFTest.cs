@@ -34,7 +34,7 @@ namespace Alis.Core.Aspect.Math.Test
     /// <summary>
     ///     The math test class
     /// </summary>
-    public class MathFTest
+    public class CustomMathFTest
     {
         /// <summary>
         ///     Tests that sqrt should calculate correctly
@@ -724,6 +724,58 @@ namespace Alis.Core.Aspect.Math.Test
             float result = CustomMathF.Sin(x);
             
             Assert.False(float.IsNaN(result));
+        }
+        
+        /// <summary>
+        /// Tests that min with first number less than second returns first number
+        /// </summary>
+        [Fact]
+        public void Min_WithFirstNumberLessThanSecond_ReturnsFirstNumber()
+        {
+            // Arrange
+            int num1 = 5;
+            int num2 = 10;
+            
+            // Act
+            int result = CustomMathF.Min(num1, num2);
+            
+            // Assert
+            Assert.Equal(num1, result);
+        }
+        
+        /// <summary>
+        /// Tests that min with first number greater than second returns second number
+        /// </summary>
+        [Fact]
+        public void Min_WithFirstNumberGreaterThanSecond_ReturnsSecondNumber()
+        {
+            // Arrange
+            int num1 = 10;
+            int num2 = 5;
+            
+            // Act
+            int result = CustomMathF.Min(num1, num2);
+            
+            // Assert
+            Assert.Equal(num2, result);
+        }
+        
+        /// <summary>
+        /// Tests that min with both numbers equal returns either number
+        /// </summary>
+        [Fact]
+        public void Min_WithBothNumbersEqual_ReturnsEitherNumber()
+        {
+            // Arrange
+            int num1 = 5;
+            int num2 = 5;
+            
+            // Act
+            int result = CustomMathF.Min(num1, num2);
+            
+            // Assert
+            Assert.Equal(num1, result);
+            Assert.Equal(num2, result);
         }
     }
 }
