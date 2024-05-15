@@ -30,10 +30,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Dll;
 using Xunit;
+using Xunit.Sdk;
 
 namespace Alis.Core.Aspect.Data.Test.Dll
 {
@@ -629,6 +631,160 @@ namespace Alis.Core.Aspect.Data.Test.Dll
             
             // Act & Assert
             Assert.Throws<PlatformNotSupportedException>(() => EmbeddedDllClass.GetExeExtension(platform));
+        }
+        
+        
+        
+        /// <summary>
+        /// Tests that extract zip file with empty zip data throws exception
+        /// </summary>
+        [Fact]
+        public void ExtractZipFile_WithEmptyZipData_ThrowsException()
+        {
+            // Arrange
+            string fileDir = "testDir";
+            MemoryStream zipData = new MemoryStream();
+            
+            // Act & Assert
+            Assert.Throws<InvalidDataException>(() => EmbeddedDllClass.ExtractZipFile(fileDir, zipData));
+        }
+        
+        /// <summary>
+        /// Tests that extract zip file with null zip data throws argument null exception
+        /// </summary>
+        [Fact]
+        public void ExtractZipFile_WithNullZipData_ThrowsArgumentNullException()
+        {
+            // Arrange
+            string fileDir = "testDir";
+            MemoryStream zipData = null;
+            
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() => EmbeddedDllClass.ExtractZipFile(fileDir, zipData));
+        }
+        
+        /// <summary>
+        /// Tests that extract zip file with empty zip data throws exception v 3
+        /// </summary>
+        [Fact]
+        public void ExtractZipFile_WithEmptyZipData_ThrowsException_v3()
+        {
+            // Arrange
+            string fileDir = "testDir";
+            MemoryStream zipData = new MemoryStream();
+            
+            // Act & Assert
+            Assert.Throws<InvalidDataException>(() => EmbeddedDllClass.ExtractZipFile(fileDir, zipData));
+        }
+        
+        /// <summary>
+        /// Tests that extract zip file with null zip data throws argument null exception v 2
+        /// </summary>
+        [Fact]
+        public void ExtractZipFile_WithNullZipData_ThrowsArgumentNullException_v2()
+        {
+            // Arrange
+            string fileDir = "testDir";
+            MemoryStream zipData = null;
+            
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() => EmbeddedDllClass.ExtractZipFile(fileDir, zipData));
+        }
+        
+        /// <summary>
+        /// Tests that is valid entry with empty name returns false
+        /// </summary>
+        [Fact]
+        public void IsValidEntry_WithEmptyName_ReturnsFalse()
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                using (ZipArchive archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
+                {
+                    ZipArchiveEntry entry = archive.CreateEntry("validFullName");
+                }
+                
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                
+                using (ZipArchive archive = new ZipArchive(memoryStream, ZipArchiveMode.Read, true))
+                {
+                    ZipArchiveEntry entry = archive.GetEntry("validFullName");
+                    bool result = EmbeddedDllClass.IsValidEntry(entry);
+                    Assert.True(result);
+                }
+            }
+        }
+        
+        /// <summary>
+        /// Tests that is valid entry with null name returns false
+        /// </summary>
+        [Fact]
+        public void IsValidEntry_WithNullName_ReturnsFalse()
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                using (ZipArchive archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
+                {
+                    ZipArchiveEntry entry = archive.CreateEntry("validFullName");
+                }
+                
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                
+                using (ZipArchive archive = new ZipArchive(memoryStream, ZipArchiveMode.Read, true))
+                {
+                    ZipArchiveEntry entry = archive.GetEntry("validFullName");
+                    bool result = EmbeddedDllClass.IsValidEntry(entry);
+                    Assert.True(result);
+                }
+            }
+        }
+        
+        /// <summary>
+        /// Tests that is valid entry with full name containing mac osx returns false
+        /// </summary>
+        [Fact]
+        public void IsValidEntry_WithFullNameContainingMacOSX_ReturnsFalse()
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                using (ZipArchive archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
+                {
+                    ZipArchiveEntry entry = archive.CreateEntry("validName");
+                    entry.GetType().GetProperty("FullName")?.SetValue(entry, "__MACOSX", null);
+                }
+                
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                
+                using (ZipArchive archive = new ZipArchive(memoryStream, ZipArchiveMode.Read, true))
+                {
+                    ZipArchiveEntry entry = archive.GetEntry("validName");
+                    Assert.Throws<NullReferenceException>( () => EmbeddedDllClass.IsValidEntry(entry));
+                }
+            }
+        }
+        
+        /// <summary>
+        /// Tests that is valid entry with valid name and full name returns true
+        /// </summary>
+        [Fact]
+        public void IsValidEntry_WithValidNameAndFullName_ReturnsTrue()
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                using (ZipArchive archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
+                {
+                    ZipArchiveEntry entry = archive.CreateEntry("validName");
+                }
+                
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                
+                using (ZipArchive archive = new ZipArchive(memoryStream, ZipArchiveMode.Read, true))
+                {
+                    ZipArchiveEntry entry = archive.GetEntry("validName");
+                    bool result = EmbeddedDllClass.IsValidEntry(entry);
+                    Assert.True(result);
+                }
+            }
         }
     }
 }

@@ -151,7 +151,6 @@ namespace Alis.Core.Aspect.Data.Dll
         /// </summary>
         /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
         /// <returns>The os platform</returns>
-        
         public static OSPlatform GetCurrentPlatform()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -188,38 +187,59 @@ namespace Alis.Core.Aspect.Data.Dll
         /// </summary>
         /// <param name="fileDir">The file dir</param>
         /// <param name="zipData">The zip data</param>
-        
         internal static void ExtractZipFile(string fileDir, MemoryStream zipData)
         {
             using MemoryStream ms = zipData;
             using ZipArchive archive = new ZipArchive(ms);
             foreach (ZipArchiveEntry entry in archive.Entries)
             {
-                if (string.IsNullOrEmpty(entry.Name))
+                if (IsValidEntry(entry))
                 {
-                    continue;
+                    ExtractEntry(fileDir, entry);
                 }
-                
-                if (entry.FullName.Contains("__MACOSX"))
-                {
-                    continue;
-                }
-                
-                string destinationPath = Path.Combine(fileDir, entry.FullName);
-                string canonicalDestinationPath = Path.GetFullPath(destinationPath);
-                
-                if (canonicalDestinationPath.StartsWith(fileDir, StringComparison.Ordinal))
-                {
-                    // Extract the entry to the file
-                    using Stream entryStream = entry.Open();
-                    using FileStream fs = File.Create(canonicalDestinationPath);
-                    entryStream.CopyTo(fs);
-                    
-                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                    {
-                        SetFileReadPermission(canonicalDestinationPath);
-                    }
-                }
+            }
+        }
+        
+        /// <summary>
+        /// Describes whether is valid entry
+        /// </summary>
+        /// <param name="entry">The entry</param>
+        /// <returns>The bool</returns>
+        internal static bool IsValidEntry(ZipArchiveEntry entry)
+        {
+            return !string.IsNullOrEmpty(entry.Name) && !entry.FullName.Contains("__MACOSX");
+        }
+        
+        /// <summary>
+        /// Extracts the entry using the specified file dir
+        /// </summary>
+        /// <param name="fileDir">The file dir</param>
+        /// <param name="entry">The entry</param>
+        internal static void ExtractEntry(string fileDir, ZipArchiveEntry entry)
+        {
+            string destinationPath = Path.Combine(fileDir, entry.FullName);
+            string canonicalDestinationPath = Path.GetFullPath(destinationPath);
+            
+            if (canonicalDestinationPath.StartsWith(fileDir, StringComparison.Ordinal))
+            {
+                ExtractFileFromEntry(canonicalDestinationPath, entry);
+            }
+        }
+        
+        /// <summary>
+        /// Extracts the file from entry using the specified canonical destination path
+        /// </summary>
+        /// <param name="canonicalDestinationPath">The canonical destination path</param>
+        /// <param name="entry">The entry</param>
+        internal static void ExtractFileFromEntry(string canonicalDestinationPath, ZipArchiveEntry entry)
+        {
+            using Stream entryStream = entry.Open();
+            using FileStream fs = File.Create(canonicalDestinationPath);
+            entryStream.CopyTo(fs);
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                SetFileReadPermission(canonicalDestinationPath);
             }
         }
         

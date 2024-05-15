@@ -44,61 +44,130 @@ namespace Alis.Core.Aspect.Data.Resource
         /// <returns>The full path of the asset if found; otherwise, an empty string.</returns>
         public static string Find(string assetName)
         {
-            // Check if the asset name is null
+            ValidateAssetName(assetName);
+            string assetsDirectory = GetAssetsDirectory();
+            string[] files = GetFilesInAssetsDirectory(assetsDirectory, assetName);
+            ValidateFileCount(files, assetName);
+            return GetFilePath(files);
+        }
+        
+        /// <summary>
+        /// Validates the asset name using the specified asset name
+        /// </summary>
+        /// <param name="assetName">The asset name</param>
+        internal static void ValidateAssetName(string assetName)
+        {
+            ValidateAssetNameIsNotNull(assetName);
+            ValidateAssetNameIsNotEmpty(assetName);
+            ValidateAssetNameHasNoInvalidChars(assetName);
+            ValidateAssetNameHasExtension(assetName);
+        }
+        
+        /// <summary>
+        /// Validates the asset name is not null using the specified asset name
+        /// </summary>
+        /// <param name="assetName">The asset name</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        internal static void ValidateAssetNameIsNotNull(string assetName)
+        {
             if (assetName == null)
             {
-                // Throw an exception
                 throw new ArgumentNullException(nameof(assetName));
             }
-            
-            // Check if the asset name is empty
+        }
+        
+        /// <summary>
+        /// Validates the asset name is not empty using the specified asset name
+        /// </summary>
+        /// <param name="assetName">The asset name</param>
+        /// <exception cref="ArgumentException">The asset name cannot be empty. </exception>
+        internal static void ValidateAssetNameIsNotEmpty(string assetName)
+        {
             if (string.IsNullOrWhiteSpace(assetName))
             {
-                // Throw an exception
                 throw new ArgumentException("The asset name cannot be empty.", nameof(assetName));
             }
-            
-            // Check if the asset name contains invalid characters
-            if (assetName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+        }
+        
+        /// <summary>
+        /// Validates the asset name has no invalid chars using the specified asset name
+        /// </summary>
+        /// <param name="assetName">The asset name</param>
+        /// <exception cref="ArgumentException">The asset name contains invalid characters. </exception>
+        internal static void ValidateAssetNameHasNoInvalidChars(string assetName)
+        {
+            if (IsInvalidAssetName(assetName))
             {
-                // Throw an exception
                 throw new ArgumentException("The asset name contains invalid characters.", nameof(assetName));
             }
-            
-            // check if file have extension:
+        }
+        
+        /// <summary>
+        /// Checks if the asset name has any invalid characters
+        /// </summary>
+        /// <param name="assetName">The asset name</param>
+        /// <returns>True if the asset name is invalid, false otherwise</returns>
+        internal static bool IsInvalidAssetName(string assetName)
+        {
+            return assetName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0;
+        }
+        
+        /// <summary>
+        /// Validates the asset name has extension using the specified asset name
+        /// </summary>
+        /// <param name="assetName">The asset name</param>
+        /// <exception cref="ArgumentException">The asset name must have extension. </exception>
+        internal static void ValidateAssetNameHasExtension(string assetName)
+        {
             if (!assetName.Contains("."))
             {
-                // Throw an exception
                 throw new ArgumentException("The asset name must have extension.", nameof(assetName));
             }
-            
-            // Get the base directory of the project (where the executable is located)
+        }
+        
+        /// <summary>
+        /// Gets the assets directory
+        /// </summary>
+        /// <returns>The string</returns>
+        internal static string GetAssetsDirectory()
+        {
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            
-            // Construct the full path of the "assets" folder
-            string assetsDirectory = Path.Combine(baseDirectory, "Assets");
-            
-            // Search for the file in the "assets" folder and its subdirectories
-            string[] files = Directory.GetFiles(assetsDirectory, assetName, SearchOption.AllDirectories);
-            
-            // Check if there is more than one file with the same name
+            return Path.Combine(baseDirectory, "Assets");
+        }
+        
+        /// <summary>
+        /// Gets the files in assets directory using the specified assets directory
+        /// </summary>
+        /// <param name="assetsDirectory">The assets directory</param>
+        /// <param name="assetName">The asset name</param>
+        /// <returns>The string array</returns>
+        internal static string[] GetFilesInAssetsDirectory(string assetsDirectory, string assetName)
+        {
+            return Directory.GetFiles(assetsDirectory, assetName, SearchOption.AllDirectories);
+        }
+        
+        /// <summary>
+        /// Validates the file count using the specified files
+        /// </summary>
+        /// <param name="files">The files</param>
+        /// <param name="assetName">The asset name</param>
+        /// <exception cref="InvalidOperationException">Multiple files with the name '{assetName}' were found. Unable to determine the correct file.</exception>
+        internal static void ValidateFileCount(string[] files, string assetName)
+        {
             if (files.Length > 1)
             {
-                // Throw a custom exception
                 throw new InvalidOperationException($"Multiple files with the name '{assetName}' were found. Unable to determine the correct file.");
             }
-            
-            // Check if the file was found
-            if (files.Length == 1)
-            {
-                // Return the only found file
-                return files[0];
-            }
-            
-            // You can handle the case where the asset is not found in a specific way
-            // For example, throwing an exception, logging a message, etc.
-            Console.WriteLine($"The asset '{assetName}' was not found in the 'assets' folder or its subdirectories.");
-            return string.Empty;
+        }
+        
+        /// <summary>
+        /// Gets the file path using the specified files
+        /// </summary>
+        /// <param name="files">The files</param>
+        /// <returns>The string</returns>
+        internal static string GetFilePath(string[] files)
+        {
+            return files.Length == 1 ? files[0] : string.Empty;
         }
     }
 }

@@ -1034,21 +1034,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        ///     Tests that test write base 64 stream v 2 null input stream throws exception
-        /// </summary>
-        [Fact]
-        public void TestWriteBase64Stream_V2_NullInputStream_ThrowsException()
-        {
-            // Arrange
-            StringWriter writer = new StringWriter();
-            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
-            JsonOptions options = new JsonOptions();
-            
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => JsonSerializer.WriteBase64Stream(writer, null, objectGraph, options));
-        }
-        
-        /// <summary>
         ///     Tests that test write base 64 stream null writer throws exception
         /// </summary>
         [Fact]

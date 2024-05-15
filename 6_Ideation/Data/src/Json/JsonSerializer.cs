@@ -882,23 +882,57 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         internal static void Apply(IEnumerable input, Array target, JsonOptions options)
         {
-            if (!(target is {Rank: 1}))
+            if (!IsValidTarget(target))
             {
                 return;
             }
             
             Type elementType = target.GetType().GetElementType();
-            int i = 0;
+            HandleInput(input, target, elementType, options);
+        }
+        
+        /// <summary>
+        /// Describes whether is valid target
+        /// </summary>
+        /// <param name="target">The target</param>
+        /// <returns>The bool</returns>
+        private static bool IsValidTarget(Array target)
+        {
+            return target is {Rank: 1};
+        }
+        
+        /// <summary>
+        /// Handles the input using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="target">The target</param>
+        /// <param name="elementType">The element type</param>
+        /// <param name="options">The options</param>
+        private static void HandleInput(IEnumerable input, Array target, Type elementType, JsonOptions options)
+        {
             if (input != null)
             {
-                foreach (object value in input)
-                {
-                    target.SetValue(ChangeType(target, value, elementType, options), i++);
-                }
+                SetValuesInTarget(input, target, elementType, options);
             }
             else
             {
                 Array.Clear(target, 0, target.Length);
+            }
+        }
+        
+        /// <summary>
+        /// Sets the values in target using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="target">The target</param>
+        /// <param name="elementType">The element type</param>
+        /// <param name="options">The options</param>
+        private static void SetValuesInTarget(IEnumerable input, Array target, Type elementType, JsonOptions options)
+        {
+            int i = 0;
+            foreach (object value in input)
+            {
+                target.SetValue(ChangeType(target, value, elementType, options), i++);
             }
         }
         
@@ -1575,7 +1609,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The json exception</returns>
         internal static JsonException GetEofException(char c) => new JsonException("JSO0012: JSON deserialization error detected at end of text. Expecting '" + c + "' character.");
         
-        /// <summary>
+        //// <summary>
         ///     Gets the position using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
@@ -1587,6 +1621,16 @@ namespace Alis.Core.Aspect.Data.Json
                 return -1;
             }
             
+            return GetPositionBasedOnReaderType(reader);
+        }
+        
+        /// <summary>
+        /// Gets the position based on reader type using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <returns>The long</returns>
+        private static long GetPositionBasedOnReaderType(TextReader reader)
+        {
             if (reader is StreamReader sr)
             {
                 return GetStreamReaderPosition(sr);
@@ -1667,19 +1711,26 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <param name="dictionary">The dictionary</param>
-        private static void ProcessCharacter(char c, TextReader reader, JsonOptions options, Dictionary<string, object> dictionary)
+        internal static void ProcessCharacter(char c, TextReader reader, JsonOptions options, Dictionary<string, object> dictionary)
         {
-            if (c == '"')
+            switch (c)
             {
-                ProcessString(reader, options, dictionary);
-            }
-            else if (c == ',' || char.IsWhiteSpace(c))
-            {
-                return;
-            }
-            else
-            {
-                HandleException(GetUnexpectedCharacterException(GetPosition(reader), c), options);
+                case '"':
+                    ProcessString(reader, options, dictionary);
+                    break;
+                case ',':
+                    break;
+                case ' ':
+                    break;
+                default:
+                {
+                    if (!char.IsWhiteSpace(c))
+                    {
+                        HandleException(GetUnexpectedCharacterException(GetPosition(reader), c), options);
+                    }
+                    
+                    break;
+                }
             }
         }
         
@@ -2237,7 +2288,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <returns>The object</returns>
-        private static object HandleTextProcessing(string text, TextReader reader, JsonOptions options)
+        internal static object HandleTextProcessing(string text, TextReader reader, JsonOptions options)
         {
             if (IsTextDateTime(text, out long ticks))
             {
@@ -2922,7 +2973,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="ticks">The ticks</param>
         /// <param name="l">The </param>
         /// <returns>The bool</returns>
-        private static bool IsValidTicks(string ticks, out long l)
+        internal static bool IsValidTicks(string ticks, out long l)
         {
             l = 0;
             return !string.IsNullOrEmpty(ticks) && long.TryParse(ticks, NumberStyles.Number, CultureInfo.InvariantCulture, out l);
@@ -2935,7 +2986,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="offsetHours">The offset hours</param>
         /// <param name="offsetMinutes">The offset minutes</param>
         /// <returns>The dt</returns>
-        private static DateTime CalculateDateTime(long l, int offsetHours, int offsetMinutes)
+        internal static DateTime CalculateDateTime(long l, int offsetHours, int offsetMinutes)
         {
             DateTime dt = new DateTime(l * 10000 + MinDateTimeTicks, DateTimeKind.Local);
             dt = AddOffsetHours(dt, offsetHours);
@@ -2949,7 +3000,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="dt">The dt</param>
         /// <param name="offsetHours">The offset hours</param>
         /// <returns>The dt</returns>
-        private static DateTime AddOffsetHours(DateTime dt, int offsetHours)
+        internal static DateTime AddOffsetHours(DateTime dt, int offsetHours)
         {
             if (offsetHours != 0)
             {
@@ -2965,7 +3016,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="dt">The dt</param>
         /// <param name="offsetMinutes">The offset minutes</param>
         /// <returns>The dt</returns>
-        private static DateTime AddOffsetMinutes(DateTime dt, int offsetMinutes)
+        internal static DateTime AddOffsetMinutes(DateTime dt, int offsetMinutes)
         {
             if (offsetMinutes != 0)
             {
@@ -3602,7 +3653,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="stream">The stream</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
-        private static void ValidateWriterAndStream(TextWriter writer, Stream stream)
+        internal static void ValidateWriterAndStream(TextWriter writer, Stream stream)
         {
             if (writer == null)
             {
@@ -3620,7 +3671,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="options">The options</param>
         /// <param name="objectGraph">The object graph</param>
-        private static void InitializeOptionsAndObjectGraph(JsonOptions options, IDictionary<object, object> objectGraph)
+        internal static void InitializeOptionsAndObjectGraph(JsonOptions options, IDictionary<object, object> objectGraph)
         {
             options ??= new JsonOptions();
             objectGraph ??= options.FinalObjectGraph;
@@ -3635,7 +3686,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
         /// <returns>The total</returns>
-        private static long HandleWriterCases(TextWriter writer, Stream stream, IDictionary<object, object> objectGraph, JsonOptions options)
+        internal static long HandleWriterCases(TextWriter writer, Stream stream, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             long total = 0L;
             switch (writer)
@@ -3658,7 +3709,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="stream">The stream</param>
         /// <param name="options">The options</param>
         /// <param name="total">The total</param>
-        private static void WriteStreamToWriter(TextWriter writer, Stream stream, JsonOptions options, ref long total)
+        internal static void WriteStreamToWriter(TextWriter writer, Stream stream, JsonOptions options, ref long total)
         {
             using MemoryStream ms = new MemoryStream();
             byte[] bytes = new byte[options.FinalStreamingBufferChunkSize];
@@ -3723,50 +3774,71 @@ namespace Alis.Core.Aspect.Data.Json
             return total;
         }
         
+        /// <summary>
+        /// Describes whether internal is key value pair enumerable
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="keyType">The key type</param>
+        /// <param name="valueType">The value type</param>
+        /// <returns>The bool</returns>
         internal static bool InternalIsKeyValuePairEnumerable(Type type, out Type keyType, out Type valueType)
-{
-    keyType = null;
-    valueType = null;
-
-    foreach (Type t in type.GetInterfaces())
-    {
-        if (IsGenericEnumerable(t, out keyType, out valueType))
         {
-            return true;
+            keyType = null;
+            valueType = null;
+            
+            foreach (Type t in type.GetInterfaces())
+            {
+                if (IsGenericEnumerable(t, out keyType, out valueType))
+                {
+                    return true;
+                }
+            }
+            
+            return false;
         }
-    }
-
-    return false;
-}
-
-private static bool IsGenericEnumerable(Type type, out Type keyType, out Type valueType)
-{
-    keyType = null;
-    valueType = null;
-
-    if (type.IsGenericType && typeof(IEnumerable<>).IsAssignableFrom(type.GetGenericTypeDefinition()))
-    {
-        return IsKeyValuePair(type, out keyType, out valueType);
-    }
-
-    return false;
-}
-
-private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueType)
-{
-    Type[] args = type.GetGenericArguments();
-
-    if (args.Length == 1 && args[0].IsGenericType && args[0].GetGenericTypeDefinition() == typeof(KeyValuePair<,>))
-    {
-        keyType = args[0].GetGenericArguments()[0];
-        valueType = args[0].GetGenericArguments()[1];
-        return true;
-    }
-
-    keyType = null;
-    valueType = null;
-    return false;
-}
+        
+        /// <summary>
+        /// Describes whether is generic enumerable
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="keyType">The key type</param>
+        /// <param name="valueType">The value type</param>
+        /// <returns>The bool</returns>
+        internal static bool IsGenericEnumerable(Type type, out Type keyType, out Type valueType)
+        {
+            keyType = null;
+            valueType = null;
+            
+            if (type.IsGenericType && typeof(IEnumerable<>).IsAssignableFrom(type.GetGenericTypeDefinition()))
+            {
+                return IsKeyValuePair(type, out keyType, out valueType);
+            }
+            
+            return false;
+        }
+        
+        /// <summary>
+        /// Describes whether is key value pair
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="keyType">The key type</param>
+        /// <param name="valueType">The value type</param>
+        /// <returns>The bool</returns>
+        internal static bool IsKeyValuePair(Type type, out Type keyType, out Type valueType)
+        {
+            Type[] args = type.GetGenericArguments();
+            
+            if (args.Length == 1 && args[0].IsGenericType && args[0].GetGenericTypeDefinition() == typeof(KeyValuePair<,>))
+            {
+                keyType = args[0].GetGenericArguments()[0];
+                valueType = args[0].GetGenericArguments()[1];
+                return true;
+            }
+            
+            keyType = null;
+            valueType = null;
+            return false;
+        }
         
         /// <summary>
         ///     Appends the time zone utc offset using the specified writer
@@ -3822,7 +3894,7 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         /// <param name="array">The array</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
-        private static void ValidateWriterAndArray(TextWriter writer, Array array)
+        internal static void ValidateWriterAndArray(TextWriter writer, Array array)
         {
             if (writer == null)
             {
@@ -3841,7 +3913,7 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         /// <param name="options">The options</param>
         /// <param name="array">The array</param>
         /// <returns>The bool</returns>
-        private static bool IsByteArrayAsBase64(JsonOptions options, Array array)
+        internal static bool IsByteArrayAsBase64(JsonOptions options, Array array)
         {
             return options.SerializationOptions.HasFlag(JsonSerializationOptions.ByteArrayAsBase64) && array is byte[];
         }
@@ -3853,7 +3925,7 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         /// <param name="bytes">The bytes</param>
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
-        private static void WriteBase64Stream(TextWriter writer, byte[] bytes, IDictionary<object, object> objectGraph, JsonOptions options)
+        internal static void WriteBase64Stream(TextWriter writer, byte[] bytes, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             using MemoryStream ms = new MemoryStream(bytes);
             ms.Position = 0;
@@ -3882,7 +3954,7 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         /// </summary>
         /// <param name="indices">The indices</param>
         /// <returns>The new indices</returns>
-        private static int[] CreateNewIndices(int[] indices)
+        internal static int[] CreateNewIndices(int[] indices)
         {
             int[] newIndices = new int[indices.Length + 1];
             for (int i = 0; i < indices.Length; i++)
@@ -3902,7 +3974,7 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         /// <param name="options">The options</param>
         /// <param name="indices">The indices</param>
         /// <param name="newIndices">The new indices</param>
-        private static void WriteArrayElements(TextWriter writer, Array array, IDictionary<object, object> objectGraph, JsonOptions options, int[] indices, int[] newIndices)
+        internal static void WriteArrayElements(TextWriter writer, Array array, IDictionary<object, object> objectGraph, JsonOptions options, int[] indices, int[] newIndices)
         {
             for (int i = 0; i < array.GetLength(indices.Length); i++)
             {
@@ -3917,7 +3989,7 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="i">The </param>
-        private static void WriteArrayElementSeparator(TextWriter writer, int i)
+        internal static void WriteArrayElementSeparator(TextWriter writer, int i)
         {
             if (i > 0)
             {
@@ -3933,7 +4005,7 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
         /// <param name="newIndices">The new indices</param>
-        private static void WriteArrayElement(TextWriter writer, Array array, IDictionary<object, object> objectGraph, JsonOptions options, int[] newIndices)
+        internal static void WriteArrayElement(TextWriter writer, Array array, IDictionary<object, object> objectGraph, JsonOptions options, int[] newIndices)
         {
             if (array.Rank == newIndices.Length)
             {
@@ -3946,13 +4018,30 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         }
         
         /// <summary>
-        ///     Writes an enumerable to a JSON writer.
+        /// Writes the enumerable using the specified writer
         /// </summary>
-        /// <param name="writer">The writer. May not be null.</param>
-        /// <param name="enumerable">The enumerable. May not be null.</param>
-        /// <param name="objectGraph">The object graph.</param>
-        /// <param name="options">The options to use.</param>
+        /// <param name="writer">The writer</param>
+        /// <param name="enumerable">The enumerable</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
         internal static void WriteEnumerable(TextWriter writer, IEnumerable enumerable, IDictionary<object, object> objectGraph, JsonOptions options = null)
+        {
+            ValidateWriterAndEnumerable(writer, enumerable);
+            
+            options = InitializeOptions(options);
+            objectGraph = InitializeObjectGraph(objectGraph, options);
+            
+            WriteEnumerableValues(writer, enumerable, objectGraph, options);
+        }
+        
+        /// <summary>
+        /// Validates the writer and enumerable using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="enumerable">The enumerable</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        internal static void ValidateWriterAndEnumerable(TextWriter writer, IEnumerable enumerable)
         {
             if (writer == null)
             {
@@ -3963,28 +4052,68 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
             {
                 throw new ArgumentNullException(nameof(enumerable));
             }
-            
-            options ??= new JsonOptions();
-            objectGraph ??= options.FinalObjectGraph;
-            SetOptions(objectGraph, options);
-            
+        }
+        
+        /// <summary>
+        /// Initializes the options using the specified options
+        /// </summary>
+        /// <param name="options">The options</param>
+        /// <returns>The json options</returns>
+        internal static JsonOptions InitializeOptions(JsonOptions options)
+        {
+            return options ??= new JsonOptions();
+        }
+        
+        /// <summary>
+        /// Initializes the object graph using the specified object graph
+        /// </summary>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        /// <returns>A dictionary of object and object</returns>
+        internal static IDictionary<object, object> InitializeObjectGraph(IDictionary<object, object> objectGraph, JsonOptions options)
+        {
+            return objectGraph ??= options.FinalObjectGraph;
+        }
+        
+        /// <summary>
+        /// Writes the enumerable values using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="enumerable">The enumerable</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        internal static void WriteEnumerableValues(TextWriter writer, IEnumerable enumerable, IDictionary<object, object> objectGraph, JsonOptions options)
+        {
             writer.Write('[');
             bool first = true;
             foreach (object value in enumerable)
             {
-                if (!first)
-                {
-                    writer.Write(',');
-                }
-                else
-                {
-                    first = false;
-                }
-                
-                WriteValue(writer, value, objectGraph, options);
+                WriteValueWithSeparator(writer, value, ref first, objectGraph, options);
             }
             
             writer.Write(']');
+        }
+        
+        /// <summary>
+        /// Writes the value with separator using the specified writer
+        /// </summary>
+        /// <param name="writer">The writer</param>
+        /// <param name="value">The value</param>
+        /// <param name="first">The first</param>
+        /// <param name="objectGraph">The object graph</param>
+        /// <param name="options">The options</param>
+        internal static void WriteValueWithSeparator(TextWriter writer, object value, ref bool first, IDictionary<object, object> objectGraph, JsonOptions options)
+        {
+            if (!first)
+            {
+                writer.Write(',');
+            }
+            else
+            {
+                first = false;
+            }
+            
+            WriteValue(writer, value, objectGraph, options);
         }
         
         /// <summary>
@@ -4121,7 +4250,7 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         /// </summary>
         /// <param name="serializable">The serializable</param>
         /// <returns>The info</returns>
-        private static SerializationInfo GetSerializationInfo(ISerializable serializable)
+        internal static SerializationInfo GetSerializationInfo(ISerializable serializable)
         {
             SerializationInfo info = new SerializationInfo(serializable.GetType(), DefaultFormatterConverter);
             StreamingContext ctx = new StreamingContext(StreamingContextStates.Remoting, null);
@@ -4137,7 +4266,7 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         /// <param name="info">The info</param>
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
-        private static void WriteEntries(TextWriter writer, SerializationInfo info, IDictionary<object, object> objectGraph, JsonOptions options)
+        internal static void WriteEntries(TextWriter writer, SerializationInfo info, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             bool first = true;
             foreach (SerializationEntry entry in info)
@@ -4154,7 +4283,7 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         /// <param name="first">The first</param>
         /// <param name="objectGraph">The object graph</param>
         /// <param name="options">The options</param>
-        private static void WriteEntry(TextWriter writer, SerializationEntry entry, ref bool first, IDictionary<object, object> objectGraph, JsonOptions options)
+        internal static void WriteEntry(TextWriter writer, SerializationEntry entry, ref bool first, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             WriteCommaIfNeeded(writer, ref first);
             WriteEntryName(writer, entry, options);
@@ -4167,7 +4296,7 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="first">The first</param>
-        private static void WriteCommaIfNeeded(TextWriter writer, ref bool first)
+        internal static void WriteCommaIfNeeded(TextWriter writer, ref bool first)
         {
             if (!first)
             {
@@ -4185,7 +4314,7 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         /// <param name="writer">The writer</param>
         /// <param name="entry">The entry</param>
         /// <param name="options">The options</param>
-        private static void WriteEntryName(TextWriter writer, SerializationEntry entry, JsonOptions options)
+        internal static void WriteEntryName(TextWriter writer, SerializationEntry entry, JsonOptions options)
         {
             if (options.SerializationOptions.HasFlag(JsonSerializationOptions.WriteKeysWithoutQuotes))
             {
@@ -4764,19 +4893,41 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         /// </returns>
         public static bool TryGetValueByPath<T>(this IDictionary<string, object> dictionary, string path, out T value)
         {
-            if (dictionary == null)
+            if (IsDictionaryNull(dictionary))
             {
                 value = default(T);
                 return false;
             }
             
-            if (!TryGetValueByPath(dictionary, path, out object obj))
+            if (!TryGetValue(dictionary, path, out object obj))
             {
                 value = default(T);
                 return false;
             }
             
             return Conversions.TryChangeType(obj, out value);
+        }
+        
+        /// <summary>
+        /// Describes whether is dictionary null
+        /// </summary>
+        /// <param name="dictionary">The dictionary</param>
+        /// <returns>The bool</returns>
+        internal static bool IsDictionaryNull(IDictionary<string, object> dictionary)
+        {
+            return dictionary == null;
+        }
+        
+        /// <summary>
+        /// Describes whether try get value
+        /// </summary>
+        /// <param name="dictionary">The dictionary</param>
+        /// <param name="path">The path</param>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
+        internal static bool TryGetValue(IDictionary<string, object> dictionary, string path, out object value)
+        {
+            return TryGetValueByPath(dictionary, path, out value);
         }
         
         /// <summary>
@@ -4804,7 +4955,7 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         /// <param name="path">The path</param>
         /// <param name="dictionary">The dictionary</param>
         /// <returns>The bool</returns>
-        private static bool IsInvalidPathOrDictionary(string path, IDictionary<string, object> dictionary)
+        internal static bool IsInvalidPathOrDictionary(string path, IDictionary<string, object> dictionary)
         {
             return string.IsNullOrEmpty(path) || dictionary == null;
         }
@@ -4816,7 +4967,7 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         /// <param name="pathSegments">The path segments</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        private static bool TryGetNestedValue(IDictionary<string, object> dictionary, string[] pathSegments, out object value)
+        internal static bool TryGetNestedValue(IDictionary<string, object> dictionary, string[] pathSegments, out object value)
         {
             IDictionary<string, object> currentDictionary = dictionary;
             value = null;
@@ -4849,7 +5000,7 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         /// <param name="key">The key</param>
         /// <param name="element">The element</param>
         /// <returns>The bool</returns>
-        private static bool TryGetElement(IDictionary<string, object> dictionary, string key, out object element)
+        internal static bool TryGetElement(IDictionary<string, object> dictionary, string key, out object element)
         {
             return dictionary.TryGetValue(key, out element);
         }
@@ -4859,7 +5010,7 @@ private static bool IsKeyValuePair(Type type, out Type keyType, out Type valueTy
         /// </summary>
         /// <param name="element">The element</param>
         /// <returns>The bool</returns>
-        private static bool IsElementDictionary(object element)
+        internal static bool IsElementDictionary(object element)
         {
             return element is IDictionary<string, object>;
         }
