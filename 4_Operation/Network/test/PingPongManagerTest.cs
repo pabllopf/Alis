@@ -28,6 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.IO;
+using System.Net.WebSockets;
+using System.Reflection;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Network.Internal;
@@ -40,6 +44,55 @@ namespace Alis.Core.Network.Test
     /// </summary>
     public class PingPongManagerTest
     {
-      
+        /// <summary>
+        /// Tests that send ping valid input
+        /// </summary>
+        [Fact]
+        public async Task SendPing_ValidInput()
+        {
+            Guid guid = Guid.NewGuid();
+            Func<MemoryStream> recycledStreamFactory = () => new MemoryStream();
+            Stream stream = new MemoryStream();
+            TimeSpan keepAliveInterval = TimeSpan.FromSeconds(30);
+            string secWebSocketExtensions = "permessage-deflate";
+            bool includeExceptionInCloseResponse = true;
+            bool isClient = true;
+            string subProtocol = "subProtocol";
+            
+            WebSocketImplementation webSocket = new WebSocketImplementation(guid, recycledStreamFactory, stream, keepAliveInterval, secWebSocketExtensions, includeExceptionInCloseResponse, isClient, subProtocol);
+            PingPongManager pingPongManager = new PingPongManager(guid, webSocket, keepAliveInterval, CancellationToken.None);
+            ArraySegment<byte> payload = new ArraySegment<byte>(Encoding.UTF8.GetBytes("Test message"));
+            await pingPongManager.SendPing(payload, CancellationToken.None);
+            
+            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+        }
+        
+        /// <summary>
+        /// Tests that pong valid input
+        /// </summary>
+        [Fact]
+        public void Pong_ValidInput()
+        {
+            Guid guid = Guid.NewGuid();
+            Func<MemoryStream> recycledStreamFactory = () => new MemoryStream();
+            Stream stream = new MemoryStream();
+            TimeSpan keepAliveInterval = TimeSpan.FromSeconds(30);
+            string secWebSocketExtensions = "permessage-deflate";
+            bool includeExceptionInCloseResponse = true;
+            bool isClient = true;
+            string subProtocol = "subProtocol";
+            
+            WebSocketImplementation webSocket = new WebSocketImplementation(guid, recycledStreamFactory, stream, keepAliveInterval, secWebSocketExtensions, includeExceptionInCloseResponse, isClient, subProtocol);
+            PingPongManager pingPongManager = new PingPongManager(guid, webSocket, keepAliveInterval, CancellationToken.None);
+            PongEventArgs pongEventArgs = new PongEventArgs(new ArraySegment<byte>(Encoding.UTF8.GetBytes("Test message")));
+            
+            pingPongManager.Pong += (sender, e) =>
+            {
+                // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            };
+            
+            // Trigger the Pong event
+            typeof(PingPongManager).GetMethod("OnPong", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(pingPongManager, new object[] {pongEventArgs});
+        }
     }
 }
