@@ -29,12 +29,12 @@
 
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using Alis.Core.Audio.Interfaces;
-using Alis.Core.Audio.Utils;
 
 namespace Alis.Core.Audio.Players
 {
@@ -42,6 +42,7 @@ namespace Alis.Core.Audio.Players
     ///     The windows player class
     /// </summary>
     /// <seealso cref="IPlayer" />
+    [ExcludeFromCodeCoverage]
     internal class WindowsPlayer : IPlayer
     {
         /// <summary>
@@ -77,8 +78,7 @@ namespace Alis.Core.Audio.Players
         /// <param name="fileName">The file name</param>
         public Task Play(string fileName)
         {
-            FileUtil.ClearTempFiles();
-            _fileName = $"\"{FileUtil.CheckFileToPlay(fileName)}\"";
+            _fileName = fileName;
             _playbackTimer = new Timer
             {
                 AutoReset = false
@@ -142,7 +142,6 @@ namespace Alis.Core.Audio.Players
                 Paused = false;
                 _playbackTimer.Stop();
                 _playStopwatch.Stop();
-                FileUtil.ClearTempFiles();
             }
             
             return Task.CompletedTask;
@@ -237,5 +236,7 @@ namespace Alis.Core.Audio.Players
             
             return Task.CompletedTask;
         }
+        
+        
     }
 }

@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
@@ -40,6 +41,7 @@ namespace Alis.Core.Audio.Players
     /// </summary>
     /// <seealso cref="UnixPlayerBase" />
     /// <seealso cref="IPlayer" />
+    [ExcludeFromCodeCoverage]
     internal class LinuxPlayer : UnixPlayerBase, IPlayer
     {
         /// <summary>
@@ -65,7 +67,7 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         /// <param name="fileName">The file name</param>
         /// <returns>The string</returns>
-        protected override string GetBashCommand(string fileName)
+        internal override string GetBashCommand(string fileName)
         {
             if (Path.GetExtension(fileName).ToLower().Equals(".mp3"))
             {

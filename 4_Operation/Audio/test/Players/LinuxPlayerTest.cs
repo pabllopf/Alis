@@ -27,6 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Threading.Tasks;
+using Alis.Core.Audio.Players;
+using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
@@ -39,10 +43,56 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that test method
         /// </summary>
-        [Fact]
+        [LinuxOnly]
         public void TestMethod()
         {
             Assert.True(true);
+        }
+        
+        /// <summary>
+        /// Tests that set volume valid input
+        /// </summary>
+        [LinuxOnly]
+        public async Task SetVolume_ValidInput()
+        {
+            LinuxPlayer player = new LinuxPlayer();
+            await player.SetVolume(50);
+            
+            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+        }
+        
+        /// <summary>
+        /// Tests that set volume invalid input
+        /// </summary>
+        [LinuxOnly]
+        public async Task SetVolume_InvalidInput()
+        {
+            LinuxPlayer player = new LinuxPlayer();
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => player.SetVolume(101));
+        }
+        
+        /// <summary>
+        /// Tests that get bash command valid input
+        /// </summary>
+        [LinuxOnly]
+        public void GetBashCommand_ValidInput()
+        {
+            LinuxPlayer player = new LinuxPlayer();
+            string command = player.GetBashCommand("test.mp3");
+            
+            Assert.Equal("mpg123 -q", command);
+        }
+        
+        /// <summary>
+        /// Tests that get bash command invalid input
+        /// </summary>
+        [LinuxOnly]
+        public void GetBashCommand_InvalidInput()
+        {
+            LinuxPlayer player = new LinuxPlayer();
+            string command = player.GetBashCommand("test.wav");
+            
+            Assert.Equal("aplay -q", command);
         }
     }
 }

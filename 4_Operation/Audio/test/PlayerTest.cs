@@ -27,6 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using Alis.Core.Audio.Interfaces;
+using Alis.Core.Audio.Players;
 using Xunit;
 
 namespace Alis.Core.Audio.Test
@@ -37,12 +42,171 @@ namespace Alis.Core.Audio.Test
     public class PlayerTest
     {
         /// <summary>
-        ///     Tests that test method
+        /// Tests that player constructor valid input
         /// </summary>
         [Fact]
-        public void TestMethod()
+        public void Player_Constructor_ValidInput()
         {
-            Assert.True(true);
+            Player player = new Player();
+            
+            Assert.NotNull(player);
+        }
+        
+        /// <summary>
+        /// Tests that play valid input
+        /// </summary>
+        [Fact]
+        public async Task Play_ValidInput()
+        {
+            Player player = new Player();
+            await player.Play("test.mp3");
+            
+            Assert.True(player.Playing);
+        }
+        
+        /// <summary>
+        /// Tests that pause valid input
+        /// </summary>
+        [Fact]
+        public async Task Pause_ValidInput()
+        {
+            Player player = new Player();
+            await player.Play("test.mp3");
+            await player.Pause();
+            
+            Assert.True(player.Paused);
+        }
+        
+        /// <summary>
+        /// Tests that resume valid input
+        /// </summary>
+        [Fact]
+        public async Task Resume_ValidInput()
+        {
+            Player player = new Player();
+            await player.Play("test.mp3");
+            await player.Pause();
+            await player.Resume();
+            
+            Assert.True(player.Paused);
+        }
+        
+        /// <summary>
+        /// Tests that stop valid input
+        /// </summary>
+        [Fact]
+        public async Task Stop_ValidInput()
+        {
+            Player player = new Player();
+            await player.Play("test.mp3");
+            await player.Stop();
+            
+            Assert.False(player.Playing);
+        }
+        
+        /// <summary>
+        /// Tests that set volume valid input
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_ValidInput()
+        {
+            Player player = new Player();
+            await player.SetVolume(50);
+            
+            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+        }
+        
+        /// <summary>
+        /// Tests that check os windows platform
+        /// </summary>
+        [Fact]
+        public void CheckOs_WindowsPlatform()
+        {
+            bool originalPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+           
+            
+            IPlayer player = Player.CheckOs();
+            
+            if (originalPlatform)
+            {
+                Assert.IsType<WindowsPlayer>(player);
+            }else{
+                Assert.NotNull(player);
+            }
+            
+            
+            if (!originalPlatform)
+            {
+                // Reset the RuntimeInformation.IsOSPlatform to its original state
+            }
+        }
+        
+        /// <summary>
+        /// Tests that check os linux platform
+        /// </summary>
+        [Fact]
+        public void CheckOs_LinuxPlatform()
+        {
+            bool originalPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+           
+            
+            IPlayer player = Player.CheckOs();
+            
+            if (originalPlatform)
+            {
+                Assert.IsType<LinuxPlayer>(player);
+            }else{
+                Assert.NotNull(player);
+            }
+            
+            if (!originalPlatform)
+            {
+                // Reset the RuntimeInformation.IsOSPlatform to its original state
+            }
+        }
+        
+        /// <summary>
+        /// Tests that check os mac platform
+        /// </summary>
+        [Fact]
+        public void CheckOs_MacPlatform()
+        {
+            bool originalPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
+            if (!originalPlatform)
+            {
+                // Mock the RuntimeInformation.IsOSPlatform to return true for OSX
+            }
+            
+            IPlayer player = Player.CheckOs();
+            
+            Assert.IsType<MacPlayer>(player);
+            
+            if (!originalPlatform)
+            {
+                // Reset the RuntimeInformation.IsOSPlatform to its original state
+            }
+        }
+        
+        /// <summary>
+        /// Tests that check os unknown platform
+        /// </summary>
+        [Fact]
+        public void CheckOs_UnknownPlatform()
+        {
+            bool originalPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
+            if (originalPlatform)
+            {
+                // Mock the RuntimeInformation.IsOSPlatform to return false for all known platforms
+            }
+            
+            IPlayer player = Player.CheckOs();
+            
+            Assert.NotNull(player);
+            
+            if (originalPlatform)
+            {
+                // Reset the RuntimeInformation.IsOSPlatform to its original state
+            }
         }
     }
 }

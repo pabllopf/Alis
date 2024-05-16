@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FileUtilTest.cs
+//  File:TestUnixPlayer.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,36 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
+using System.Threading.Tasks;
+using Alis.Core.Audio.Players;
 
-namespace Alis.Core.Audio.Test.Utils
+namespace Alis.Core.Audio.Test.Players
 {
     /// <summary>
-    ///     The file util test class
+    /// The test unix player class
     /// </summary>
-    public class FileUtilTest
+    /// <seealso cref="UnixPlayerBase"/>
+    public class TestUnixPlayer : UnixPlayerBase
     {
         /// <summary>
-        ///     Tests that test method
+        /// Sets the volume using the specified percent
         /// </summary>
-        [Fact]
-        public void TestMethod()
+        /// <param name="percent">The percent</param>
+        public override Task SetVolume(byte percent)
         {
-            Assert.True(true);
+            // Implement the method for testing purposes
+            return Task.CompletedTask;
+        }
+        
+        /// <summary>
+        /// Gets the bash command using the specified file name
+        /// </summary>
+        /// <param name="fileName">The file name</param>
+        /// <returns>The string</returns>
+        internal override string GetBashCommand(string fileName)
+        {
+            // Implement the method for testing purposes
+            return "bashCommand";
         }
     }
 }

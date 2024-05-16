@@ -122,27 +122,9 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     Checks the os
         /// </summary>
-        /// <exception cref="NoImplementationForCurrentOsException">No implementation exist for the current OS</exception>
+        /// <exception>No implementation exist for the current OS</exception>
         /// <returns>The player</returns>
-        private static IPlayer CheckOs()
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return new WindowsPlayer();
-            }
-            
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                return new LinuxPlayer();
-            }
-            
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                return new MacPlayer();
-            }
-            
-            return default(IPlayer);
-        }
+        internal static IPlayer CheckOs() => RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? new WindowsPlayer() : RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? new LinuxPlayer() : RuntimeInformation.IsOSPlatform(OSPlatform.OSX) ? new MacPlayer() : default(IPlayer);
         
         /// <summary>
         ///     Ons the playback finished using the specified sender

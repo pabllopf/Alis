@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FileUtil.cs
+//  File:RunnableInDebugOnlyAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,47 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.IO;
+using System.Runtime.InteropServices;
+using Xunit;
 
-namespace Alis.Core.Audio.Utils
+namespace Alis.Core.Audio.Test.Players.Attributes
 {
     /// <summary>
-    ///     The file util class
+    ///     The runnable in debug only attribute class
     /// </summary>
-    internal static class FileUtil
+    /// <seealso cref="FactAttribute" />
+    public class WindowsOnlyAttribute : FactAttribute
     {
         /// <summary>
-        ///     The temp dir name
+        ///     Initializes a new instance of the <see cref="WindowsOnlyAttribute" /> class
         /// </summary>
-        private const string TempDirName = "temp";
-        
-        /// <summary>
-        ///     Checks the file to play using the specified original file name
-        /// </summary>
-        /// <param name="originalFileName">The original file name</param>
-        /// <returns>The file name to return</returns>
-        public static string CheckFileToPlay(string originalFileName)
+        public WindowsOnlyAttribute()
         {
-            string fileNameToReturn = originalFileName;
-            if (originalFileName.Contains(" "))
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                Directory.CreateDirectory(TempDirName);
-                fileNameToReturn = TempDirName + Path.DirectorySeparatorChar +
-                                   Path.GetFileName(originalFileName).Replace(" ", "");
-                File.Copy(originalFileName, fileNameToReturn);
-            }
-            
-            return fileNameToReturn;
-        }
-        
-        /// <summary>
-        ///     Clears the temp files
-        /// </summary>
-        public static void ClearTempFiles()
-        {
-            if (Directory.Exists(TempDirName))
-            {
-                Directory.Delete(TempDirName, true);
+                Skip = "Only running in windows mode";
             }
         }
     }

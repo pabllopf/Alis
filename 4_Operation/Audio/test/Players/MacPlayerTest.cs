@@ -27,6 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Threading.Tasks;
+using Alis.Core.Audio.Players;
+using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
@@ -39,10 +43,45 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that test method
         /// </summary>
-        [Fact]
+        [MacOsOnly]
         public void TestMethod()
         {
             Assert.True(true);
         }
+        
+        /// <summary>
+        /// Sets the volume valid input
+        /// </summary>
+        [MacOsOnly]
+        public async Task SetVolume_ValidInput()
+        {
+            MacPlayer player = new MacPlayer();
+            await player.SetVolume(50);
+            
+            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+        }
+        
+        /// <summary>
+        /// Sets the volume invalid input
+        /// </summary>
+        [MacOsOnly]
+        public async Task SetVolume_InvalidInput()
+        {
+            MacPlayer player = new MacPlayer();
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => player.SetVolume(101));
+        }
+        
+        /// <summary>
+        /// Gets the bash command valid input
+        /// </summary>
+        [MacOsOnly]
+        public void GetBashCommand_ValidInput()
+        {
+            MacPlayer player = new MacPlayer();
+            string command = player.GetBashCommand("test.mp3");
+            
+            Assert.Equal("afplay", command);
+        }
+        
     }
 }
