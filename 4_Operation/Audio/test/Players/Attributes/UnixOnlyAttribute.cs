@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:UnixPlayerBaseTest.cs
+//  File:RunnableInDebugOnlyAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,38 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Threading.Tasks;
-using Alis.Core.Audio.Players;
-using Alis.Core.Audio.Test.Players.Attributes;
+using System.Runtime.InteropServices;
 using Xunit;
 
-namespace Alis.Core.Audio.Test.Players
+namespace Alis.Core.Audio.Test.Players.Attributes
 {
     /// <summary>
-    ///     The unix player base test class
+    /// The unix only attribute class
     /// </summary>
-    public class UnixPlayerBaseTest
+    /// <seealso cref="FactAttribute"/>
+    public class UnixOnlyAttribute : FactAttribute
     {
         /// <summary>
-        ///     Tests that test method
+        /// Initializes a new instance of the <see cref="UnixOnlyAttribute"/> class
         /// </summary>
-        [UnixOnly]
-        public void TestMethod()
+        public UnixOnlyAttribute()
         {
-            Assert.True(true);
-        }
-        
-        /// <summary>
-        /// Tests that play valid input
-        /// </summary>
-        [UnixOnly]
-        public async Task Play_ValidInput()
-        {
-            TestUnixPlayer player = new TestUnixPlayer();
-            await player.Play("test.mp3");
-            
-            Assert.True(player.Playing);
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && !RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                Skip = "Only running on unix systems mode";
+            }
         }
     }
 }

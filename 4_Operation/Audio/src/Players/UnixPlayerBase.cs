@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
 
@@ -38,7 +39,8 @@ namespace Alis.Core.Audio.Players
     ///     The unix player base class
     /// </summary>
     /// <seealso cref="IPlayer" />
-    internal abstract class UnixPlayerBase : IPlayer
+    [ExcludeFromCodeCoverage]
+    public abstract class UnixPlayerBase : IPlayer
     {
         /// <summary>
         ///     The pause process command
@@ -142,7 +144,7 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         /// <param name="fileName">The file name</param>
         /// <returns>The string</returns>
-        protected abstract string GetBashCommand(string fileName);
+        internal abstract string GetBashCommand(string fileName);
         
         /// <summary>
         ///     Starts the bash process using the specified command

@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
 
@@ -39,6 +40,7 @@ namespace Alis.Core.Audio.Players
     /// </summary>
     /// <seealso cref="UnixPlayerBase" />
     /// <seealso cref="IPlayer" />
+    [ExcludeFromCodeCoverage]
     internal class MacPlayer : UnixPlayerBase, IPlayer
     {
         /// <summary>
@@ -64,6 +66,6 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         /// <param name="fileName">The file name</param>
         /// <returns>The string</returns>
-        protected override string GetBashCommand(string fileName) => "afplay";
+        internal override string GetBashCommand(string fileName) => "afplay";
     }
 }
