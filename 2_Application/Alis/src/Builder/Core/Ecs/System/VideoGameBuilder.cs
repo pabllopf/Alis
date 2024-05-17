@@ -89,8 +89,5 @@ namespace Alis.Builder.Core.Ecs.System
             videoGame.Set(value.Invoke(new SceneManagerBuilder()));
             return this;
         }
-        
-        /// <summary>Runs this instance.</summary>
-        public void Run() => videoGame.Run();
     }
 }

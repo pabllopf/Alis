@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Logging;
+using Alis.Test.Core.Ecs.Component.Light.Sample;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.Component.Light

@@ -193,6 +193,7 @@ namespace Alis.Sample.King.Platform
                             .Build())
                         .Build())
                     .Build())
+                .Build()
                 .Run();
         }
     }

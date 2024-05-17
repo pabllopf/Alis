@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ComponentBaseBuilder.cs
+//  File:AudioSettingBuilderTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,39 +27,39 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Ecs.Component;
+using Alis.Builder.Core.Ecs.System.Setting.Audio;
+using Alis.Core.Ecs.System.Setting.Audio;
+using Xunit;
 
-namespace Alis.Builder.Core.Ecs.Component
+namespace Alis.Test.Builder.Core.Ecs.System.Setting.Audio
 {
     /// <summary>
-    ///     The component base builder class
+    /// The audio setting builder test class
     /// </summary>
-    public class ComponentBaseBuilder
+    public class AudioSettingBuilderTest
     {
         /// <summary>
-        ///     The component base
+        /// Tests that audio setting builder default constructor valid input
         /// </summary>
-        private readonly AComponent aComponent;
-        
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ComponentBaseBuilder" /> class
-        /// </summary>
-        /// <param name="aComponent>The component base
-        /// </param>
-        public ComponentBaseBuilder(AComponent aComponent) => this.aComponent = aComponent;
-        
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ComponentBaseBuilder" /> class
-        /// </summary>
-        public ComponentBaseBuilder()
+        [Fact]
+        public void AudioSettingBuilder_DefaultConstructor_ValidInput()
         {
+            AudioSettingBuilder audioSettingBuilder = new AudioSettingBuilder();
+            
+            Assert.NotNull(audioSettingBuilder);
         }
         
         /// <summary>
-        ///     Builds this instance
+        /// Tests that build valid input
         /// </summary>
-        /// <returns>The component base</returns>
-        public AComponent Build() => (AComponent) Activator.CreateInstance(aComponent.GetType());
+        [Fact]
+        public void Build_ValidInput()
+        {
+            AudioSettingBuilder audioSettingBuilder = new AudioSettingBuilder();
+            
+            AudioSetting audioSetting = audioSettingBuilder.Build();
+            
+            Assert.NotNull(audioSetting);
+        }
     }
 }

@@ -159,6 +159,7 @@ namespace Alis.Sample.Rogue
                             .Build())
                         .Build())
                     .Build())
+                .Build()
                 .Run();
         }
     }

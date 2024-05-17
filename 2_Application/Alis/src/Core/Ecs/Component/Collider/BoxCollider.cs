@@ -45,8 +45,8 @@ namespace Alis.Core.Ecs.Component.Collider
     /// <summary>
     ///     The box collider class
     /// </summary>
-    /// <seealso cref="Collider" />
-    public class BoxCollider : Collider, IBuilder<BoxColliderBuilder>
+    /// <seealso cref="ACollider" />
+    public class BoxCollider : ACollider, IBuilder<BoxColliderBuilder>
     {
         /// <summary>
         ///     The rectangle shape

@@ -85,6 +85,7 @@ namespace Alis.Sample.Dino
                             .Build())
                         .Build())
                     .Build())
+                .Build()
                 .Run();
         }
     }

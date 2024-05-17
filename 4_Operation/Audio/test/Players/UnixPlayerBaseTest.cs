@@ -31,6 +31,7 @@ using System;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Players;
 using Alis.Core.Audio.Test.Players.Attributes;
+using Alis.Core.Audio.Test.Players.Samples;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players

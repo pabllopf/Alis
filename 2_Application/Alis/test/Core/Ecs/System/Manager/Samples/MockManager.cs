@@ -29,7 +29,7 @@
 
 using Alis.Core.Ecs.System.Manager;
 
-namespace Alis.Test.Core.Ecs.System.Manager
+namespace Alis.Test.Core.Ecs.System.Manager.Samples
 {
     /// <summary>
     /// The mock manager class

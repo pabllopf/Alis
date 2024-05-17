@@ -131,6 +131,7 @@ namespace Alis.Sample.SplitCamera
                             .Build())
                         .Build())
                     .Build())
+                .Build()
                 .Run();
         }
     }
