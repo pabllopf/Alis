@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CustomManager.cs
+//  File:MockManager.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,13 +29,13 @@
 
 using Alis.Core.Ecs.System.Manager;
 
-namespace Alis.Test.Sample
+namespace Alis.Test.Core.Ecs.System.Manager
 {
     /// <summary>
-    /// The custom manager class
+    /// The mock manager class
     /// </summary>
     /// <seealso cref="AManager"/>
-    public class CustomManager: AManager
+    public class MockManager : AManager
     {
     }
 }

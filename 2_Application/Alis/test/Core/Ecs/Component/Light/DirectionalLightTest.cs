@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CustomManager.cs
+//  File:DirectionalLightTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,15 +27,36 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Manager;
+using Alis.Core.Ecs.Component.Light;
+using Xunit;
 
-namespace Alis.Test.Sample
+namespace Alis.Test.Core.Ecs.Component.Light
 {
     /// <summary>
-    /// The custom manager class
+    /// The directional light test class
     /// </summary>
-    /// <seealso cref="AManager"/>
-    public class CustomManager: AManager
+    public class DirectionalLightTest
     {
+        /// <summary>
+        /// Tests that directional light default constructor valid input
+        /// </summary>
+        [Fact]
+        public void DirectionalLight_DefaultConstructor_ValidInput()
+        {
+            DirectionalLight directionalLight = new DirectionalLight();
+            
+            Assert.NotNull(directionalLight);
+        }
+        
+        /// <summary>
+        /// Tests that on init valid input
+        /// </summary>
+        [Fact]
+        public void OnInit_ValidInput()
+        {
+            DirectionalLight directionalLight = new DirectionalLight();
+            
+            directionalLight.OnInit();
+        }
     }
 }

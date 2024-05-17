@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CustomManager.cs
+//  File:LightSample.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,15 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Manager;
+using Alis.Core.Ecs.Component.Light;
 
-namespace Alis.Test.Sample
+namespace Alis.Test.Core.Ecs.Component.Light
 {
     /// <summary>
-    /// The custom manager class
+    /// The light sample class
     /// </summary>
-    /// <seealso cref="AManager"/>
-    public class CustomManager: AManager
+    /// <seealso cref="ALight"/>
+    public class LightSample : ALight
     {
     }
 }

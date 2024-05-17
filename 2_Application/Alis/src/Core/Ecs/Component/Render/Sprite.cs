@@ -87,6 +87,11 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnInit()
         {
+            if (Context is null)
+            {
+                return;
+            }
+            
             if (!string.IsNullOrEmpty(TexturePath))
             {
                 Image = new Image(TexturePath, Context);
@@ -99,6 +104,10 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnAwake()
         {
+            if (Context is null)
+            {
+                return;
+            }
             Context.GraphicManager.Attach(this);
         }
         
@@ -107,6 +116,10 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnExit()
         {
+            if (Context is null)
+            {
+                return;
+            }
             Context.GraphicManager.UnAttach(this);
         }
         
@@ -117,6 +130,11 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="camera"></param>
         public void Render(IntPtr renderer, Camera camera)
         {
+            if (Context is null)
+            {
+                return;
+            }
+            
             Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
             
             RectangleI dstRect = new RectangleI(
@@ -134,6 +152,11 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="renderer">The renderer</param>
         public void Render(IntPtr renderer)
         {
+            if (Context is null)
+            {
+                return;
+            }
+            
             Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
             
             RectangleI dstRect = new RectangleI(

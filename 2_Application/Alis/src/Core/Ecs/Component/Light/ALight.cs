@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CustomManager.cs
+//  File:Light.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,15 +27,30 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Manager;
+using Alis.Core.Aspect.Logging;
 
-namespace Alis.Test.Sample
+namespace Alis.Core.Ecs.Component.Light
 {
     /// <summary>
-    /// The custom manager class
+    ///     The light class
     /// </summary>
-    /// <seealso cref="AManager"/>
-    public class CustomManager: AManager
+    /// <seealso cref="AComponent" />
+    public abstract class ALight : AComponent
     {
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        public override void OnStart()
+        {
+            Logger.Trace();
+        }
+        
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        public override void OnUpdate()
+        {
+            Logger.Trace();
+        }
     }
 }

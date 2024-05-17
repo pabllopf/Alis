@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AComponent.cs
+//  File:SceneManagerTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,15 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.System.Manager.Scene;
 using Xunit;
 
-namespace Alis.Test.Core.Ecs.Component
+namespace Alis.Test.Core.Ecs.System.Scene
 {
     /// <summary>
-    /// The component test class
+    /// The scene manager test class
     /// </summary>
-    public class AComponentTest
+    public class SceneManagerTest
     {
         /// <summary>
         /// Tests that on enable valid input
@@ -43,8 +43,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnEnable_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnEnable();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnEnable();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -55,8 +55,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnInit_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnInit();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnInit();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -67,8 +67,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnAwake_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnAwake();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnAwake();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -79,8 +79,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnStart_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnStart();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnStart();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -91,8 +91,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnBeforeUpdate_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnBeforeUpdate();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnBeforeUpdate();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -103,8 +103,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnUpdate_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnUpdate();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnUpdate();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -115,8 +115,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnAfterUpdate_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnAfterUpdate();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnAfterUpdate();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -127,8 +127,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnBeforeFixedUpdate_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnBeforeFixedUpdate();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnBeforeFixedUpdate();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -139,8 +139,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnFixedUpdate_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnFixedUpdate();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnFixedUpdate();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -151,8 +151,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnAfterFixedUpdate_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnAfterFixedUpdate();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnAfterFixedUpdate();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -163,8 +163,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnDispatchEvents_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnDispatchEvents();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnDispatchEvents();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -175,8 +175,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnCalculate_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnCalculate();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnCalculate();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -187,8 +187,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnDraw_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnDraw();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnDraw();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -199,8 +199,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnGui_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnGui();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnGui();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -211,8 +211,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnDisable_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnDisable();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnDisable();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -223,8 +223,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnReset_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnReset();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnReset();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -235,8 +235,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnStop_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnStop();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnStop();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -247,8 +247,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnExit_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnExit();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnExit();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -259,8 +259,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnDestroy_ValidInput()
         {
-            ComponentSample component = new ComponentSample();
-            component.OnDestroy();
+            SceneManager sceneManager = new SceneManager();
+            sceneManager.OnDestroy();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }

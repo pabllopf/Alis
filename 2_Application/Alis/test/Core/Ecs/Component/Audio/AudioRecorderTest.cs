@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CustomManager.cs
+//  File:AudioRecorderTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,15 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Manager;
-
-namespace Alis.Test.Sample
+namespace Alis.Test.Core.Ecs.Component.Audio
 {
     /// <summary>
-    /// The custom manager class
+    /// The audio recorder test class
     /// </summary>
-    /// <seealso cref="AManager"/>
-    public class CustomManager: AManager
+    public class AudioRecorderTest
     {
+        
     }
 }

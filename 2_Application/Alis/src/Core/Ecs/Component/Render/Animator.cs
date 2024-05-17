@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Gets or sets the value of the timer
         /// </summary>
-        private Stopwatch Timer { get; }
+        internal Stopwatch Timer { get; }
         
         /// <summary>
         ///     Gets or sets the value of the sprite

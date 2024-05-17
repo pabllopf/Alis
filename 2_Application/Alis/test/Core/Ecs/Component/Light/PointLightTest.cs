@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CustomManager.cs
+//  File:PointLightTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,15 +27,37 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Manager;
+using Alis.Core.Ecs.Component.Light;
+using Xunit;
 
-namespace Alis.Test.Sample
+namespace Alis.Test.Core.Ecs.Component.Light
 {
     /// <summary>
-    /// The custom manager class
+    /// The point light test class
     /// </summary>
-    /// <seealso cref="AManager"/>
-    public class CustomManager: AManager
+    public class PointLightTest
     {
+        /// <summary>
+        /// Tests that point light default constructor valid input
+        /// </summary>
+        [Fact]
+        public void PointLight_DefaultConstructor_ValidInput()
+        {
+            PointLight pointLight = new PointLight();
+            
+            Assert.NotNull(pointLight);
+        }
+        
+        /// <summary>
+        /// Tests that on init valid input
+        /// </summary>
+        [Fact]
+        public void OnInit_ValidInput()
+        {
+            PointLight pointLight = new PointLight();
+            
+            pointLight.OnInit();
+            
+        }
     }
 }

@@ -44,7 +44,6 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public Animation() => Frames = new List<Frame>();
         
-        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>

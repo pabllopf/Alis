@@ -34,8 +34,8 @@ namespace Alis.Core.Ecs.Component.Light
     /// <summary>
     ///     The spot light class
     /// </summary>
-    /// <seealso cref="Light" />
-    public class SpotLight : Light
+    /// <seealso cref="ALight" />
+    public class SpotLight : ALight
     {
         /// <summary>
         ///     Inits this instance

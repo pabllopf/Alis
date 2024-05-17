@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PhysicManager.cs
+//  File:CanvasTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,54 +27,65 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic;
-using Alis.Core.Physic.Dynamics;
+using Alis.Builder.Core.Ecs.Component.Ui;
+using Alis.Core.Ecs.Component.Ui;
+using Xunit;
 
-namespace Alis.Core.Ecs.System.Manager.Physic
+namespace Alis.Test.Core.Ecs.Component.Ui
 {
     /// <summary>
-    ///     The physic manager base class
+    /// The canvas test class
     /// </summary>
-    /// <seealso cref="AManager" />
-    public class PhysicManager : AManager
+    public class CanvasTest
     {
         /// <summary>
-        ///     The vector
+        /// Tests that canvas default constructor valid input
         /// </summary>
-        private readonly World world = new World(new Vector2(0, 9.8f));
-        
-        /// <summary>
-        ///     Ons the update
-        /// </summary>
-        public override void OnUpdate()
+        [Fact]
+        public void Canvas_DefaultConstructor_ValidInput()
         {
-            Logger.Trace();
-            if (Context is null)
-            {
-                return;
-            }
+            Canvas canvas = new Canvas();
             
-            world.Step(Context.TimeManager.Configuration.FixedTimeStep);
+            Assert.NotNull(canvas);
+            Assert.Equal(0, canvas.Width);
+            Assert.Equal(0, canvas.Height);
         }
         
         /// <summary>
-        ///     Attaches the body
+        /// Tests that canvas width property valid input
         /// </summary>
-        /// <param name="body">The body</param>
-        public void Attach(Body body)
+        [Fact]
+        public void Canvas_WidthProperty_ValidInput()
         {
-            world.AddBody(body);
+            Canvas canvas = new Canvas();
+            canvas.Width = 800;
+            
+            Assert.Equal(800, canvas.Width);
         }
         
         /// <summary>
-        ///     Uns the attach using the specified body
+        /// Tests that canvas height property valid input
         /// </summary>
-        /// <param name="body">The body</param>
-        public void UnAttach(Body body)
+        [Fact]
+        public void Canvas_HeightProperty_ValidInput()
         {
-            world.RemoveBody(body);
+            Canvas canvas = new Canvas();
+            canvas.Height = 600;
+            
+            Assert.Equal(600, canvas.Height);
+        }
+        
+        /// <summary>
+        /// Tests that canvas builder valid input
+        /// </summary>
+        [Fact]
+        public void Canvas_Builder_ValidInput()
+        {
+            Canvas canvas = new Canvas();
+            CanvasBuilder canvasBuilder = canvas.Builder();
+            
+            Assert.NotNull(canvasBuilder);
+            Assert.IsType<CanvasBuilder>(canvasBuilder);
         }
     }
 }

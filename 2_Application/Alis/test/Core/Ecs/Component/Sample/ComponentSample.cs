@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CustomManager.cs
+//  File:ComponentSample.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,15 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Manager;
+using Alis.Core.Ecs.Component;
 
-namespace Alis.Test.Sample
+namespace Alis.Test.Core.Ecs.Component
 {
     /// <summary>
-    /// The custom manager class
+    /// The component sample class
     /// </summary>
-    /// <seealso cref="AManager"/>
-    public class CustomManager: AManager
+    /// <seealso cref="AComponent"/>
+    public class ComponentSample : AComponent
     {
     }
 }

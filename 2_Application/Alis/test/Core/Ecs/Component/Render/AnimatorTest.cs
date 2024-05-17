@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Light.cs
+//  File:AnimatorTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,30 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
-
-namespace Alis.Core.Ecs.Component.Light
+namespace Alis.Test.Core.Ecs.Component.Render
 {
     /// <summary>
-    ///     The light class
+    /// The animator test class
     /// </summary>
-    /// <seealso cref="AComponent" />
-    public abstract class Light : AComponent
+    public class AnimatorTest
     {
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        public override void OnStart()
-        {
-            Logger.Trace();
-        }
         
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        public override void OnUpdate()
-        {
-            Logger.Trace();
-        }
     }
 }

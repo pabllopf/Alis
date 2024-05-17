@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PhysicManager.cs
+//  File:FrameTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,54 +27,63 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic;
-using Alis.Core.Physic.Dynamics;
+using Alis.Builder.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.Component.Render;
+using Xunit;
 
-namespace Alis.Core.Ecs.System.Manager.Physic
+namespace Alis.Test.Core.Ecs.Component.Render
 {
     /// <summary>
-    ///     The physic manager base class
+    /// The frame test class
     /// </summary>
-    /// <seealso cref="AManager" />
-    public class PhysicManager : AManager
+    public class FrameTest
     {
         /// <summary>
-        ///     The vector
+        /// Tests that frame default constructor valid input
         /// </summary>
-        private readonly World world = new World(new Vector2(0, 9.8f));
-        
-        /// <summary>
-        ///     Ons the update
-        /// </summary>
-        public override void OnUpdate()
+        [Fact]
+        public void Frame_DefaultConstructor_ValidInput()
         {
-            Logger.Trace();
-            if (Context is null)
-            {
-                return;
-            }
+            Frame frame = new Frame();
             
-            world.Step(Context.TimeManager.Configuration.FixedTimeStep);
+            Assert.NotNull(frame);
         }
         
         /// <summary>
-        ///     Attaches the body
+        /// Tests that frame constructor with parameters valid input
         /// </summary>
-        /// <param name="body">The body</param>
-        public void Attach(Body body)
+        [Fact]
+        public void Frame_ConstructorWithParameters_ValidInput()
         {
-            world.AddBody(body);
+            string filePath = "testFilePath";
+            Frame frame = new Frame(filePath);
+            
+            Assert.NotNull(frame);
         }
         
         /// <summary>
-        ///     Uns the attach using the specified body
+        /// Tests that frame file path property valid input
         /// </summary>
-        /// <param name="body">The body</param>
-        public void UnAttach(Body body)
+        [Fact]
+        public void Frame_FilePathProperty_ValidInput()
         {
-            world.RemoveBody(body);
+            string filePath = "testFilePath";
+            Frame frame = new Frame();
+            frame.FilePath = filePath;
+            
+            Assert.NotNull(frame);
+        }
+        
+        /// <summary>
+        /// Tests that frame builder valid input
+        /// </summary>
+        [Fact]
+        public void Frame_Builder_ValidInput()
+        {
+            Frame frame = new Frame();
+            FrameBuilder frameBuilder = frame.Builder();
+            
+            Assert.NotNull(frame);
         }
     }
 }

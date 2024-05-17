@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.System.Manager
     ///     The manager class
     /// </summary>
     /// <seealso cref="IManager" />
-    public class Manager : IManager, IHasContext<Context>
+    public abstract class AManager : IManager, IHasContext<Context>
     {
         /// <summary>
         ///     Gets or sets the value of the context

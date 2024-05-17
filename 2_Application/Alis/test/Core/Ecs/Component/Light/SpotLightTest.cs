@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CustomManager.cs
+//  File:SpotLightTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,15 +27,36 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Manager;
+using Alis.Core.Ecs.Component.Light;
+using Xunit;
 
-namespace Alis.Test.Sample
+namespace Alis.Test.Core.Ecs.Component.Light
 {
     /// <summary>
-    /// The custom manager class
+    /// The spot light test class
     /// </summary>
-    /// <seealso cref="AManager"/>
-    public class CustomManager: AManager
+    public class SpotLightTest
     {
+        /// <summary>
+        /// Tests that spot light default constructor valid input
+        /// </summary>
+        [Fact]
+        public void SpotLight_DefaultConstructor_ValidInput()
+        {
+            SpotLight spotLight = new SpotLight();
+            
+            Assert.NotNull(spotLight);
+        }
+        
+        /// <summary>
+        /// Tests that on init valid input
+        /// </summary>
+        [Fact]
+        public void OnInit_ValidInput()
+        {
+            SpotLight spotLight = new SpotLight();
+            
+            spotLight.OnInit();
+        }
     }
 }

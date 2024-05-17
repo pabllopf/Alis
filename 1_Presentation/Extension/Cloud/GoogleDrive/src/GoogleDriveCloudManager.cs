@@ -36,7 +36,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
     /// </summary>
     /// <seealso cref="AManager" />
     /// <seealso cref="ICloudManager" />
-    public class GoogleDriveCloudManager : Manager, ICloudManager
+    public class GoogleDriveCloudManager : AManager, ICloudManager
     {
     }
 }

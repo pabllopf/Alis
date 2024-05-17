@@ -35,8 +35,8 @@ namespace Alis.Core.Ecs.System.Manager.Scene
     /// <summary>
     ///     The scene manager base class
     /// </summary>
-    /// <seealso cref="Manager" />
-    public class SceneManager : Manager
+    /// <seealso cref="AManager" />
+    public class SceneManager : AManager
     {
         /// <summary>
         ///     Gets or sets the value of the current scene
