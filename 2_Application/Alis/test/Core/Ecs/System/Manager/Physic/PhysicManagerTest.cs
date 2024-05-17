@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AreaLight.cs
+//  File:PhysicManagerTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,58 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.System.Manager.Physic;
+using Alis.Core.Physic.Dynamics;
+using Xunit;
 
-namespace Alis.Core.Ecs.Component.Light
+namespace Alis.Test.Core.Ecs.System.Manager.Physic
 {
     /// <summary>
-    ///     The area light class
+    /// The physic manager test class
     /// </summary>
-    /// <seealso cref="ALight" />
-    public class AreaLight : ALight
+    public class PhysicManagerTest
     {
         /// <summary>
-        ///     Inits this instance
+        /// Tests that test on update
         /// </summary>
-        public override void OnInit()
+        [Fact]
+        public void Test_OnUpdate()
         {
-            Logger.Trace();
+            PhysicManager manager = new PhysicManager();
+            manager.OnUpdate();
+            // Asserts would go here
+        }
+        
+        /// <summary>
+        /// Tests that test attach
+        /// </summary>
+        [Fact]
+        public void Test_Attach()
+        {
+            PhysicManager manager = new PhysicManager();
+            Body body = new Body(
+                new Vector2(0, 0), // position
+                new Vector2(0, 0) // gravityScale
+            );
+            manager.Attach(body);
+            // Asserts would go here
+        }
+        
+        /// <summary>
+        /// Tests that test un attach
+        /// </summary>
+        [Fact]
+        public void Test_UnAttach()
+        {
+            PhysicManager manager = new PhysicManager();
+            Body body = new Body(
+                new Vector2(0, 0), // position
+                new Vector2(0, 0) // gravityScale
+            );
+            manager.Attach(body);
+            manager.UnAttach(body);
+            // Asserts would go here
         }
     }
 }

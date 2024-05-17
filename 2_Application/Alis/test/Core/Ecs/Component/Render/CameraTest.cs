@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CustomManager.cs
+//  File:CameraTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,15 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Manager;
-
-namespace Alis.Test.Sample
+namespace Alis.Test.Core.Ecs.Component.Render
 {
     /// <summary>
-    /// The custom manager class
+    /// The camera test class
     /// </summary>
-    /// <seealso cref="AManager"/>
-    public class CustomManager: AManager
+    public class CameraTest
     {
+        
     }
 }

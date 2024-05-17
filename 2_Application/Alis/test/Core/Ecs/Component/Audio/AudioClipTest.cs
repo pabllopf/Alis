@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioClip.cs
+//  File:AudioClipTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,83 +28,90 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.Component.Audio;
-using Alis.Core.Aspect.Logging;
+using Alis.Core.Ecs.Component.Audio;
+using Xunit;
 
-namespace Alis.Core.Ecs.Component.Audio
+namespace Alis.Test.Core.Ecs.Component.Audio
 {
     /// <summary>
-    ///     The audio clip class
+    /// The audio clip test class
     /// </summary>
-    /// <seealso cref="AudioClipBase" />
-    public class AudioClip
+    public class AudioClipTest
     {
-        
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AudioClip" /> class
+        /// Tests that audio clip default constructor valid input
         /// </summary>
-        public AudioClip()
+        [Fact]
+        public void AudioClip_DefaultConstructor_ValidInput()
         {
-            Logger.Trace();
-        }
-        
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="AudioClip" /> class
-        /// </summary>
-        /// <param name="fullPathAudio">The full path audio</param>
-        public AudioClip(string fullPathAudio) 
-        {
-            this.FullPathAudioFile = fullPathAudio;
-            Logger.Trace();
-        }
-        
-        /// <summary>
-        /// Gets or sets the value of the is playing
-        /// </summary>
-        public bool IsPlaying { get; set; }
-        /// <summary>
-        /// Gets or sets the value of the is mute
-        /// </summary>
-        public bool IsMute { get; set; }
-        /// <summary>
-        /// Gets or sets the value of the is looping
-        /// </summary>
-        public bool IsLooping { get; set; }
-        /// <summary>
-        /// Gets or sets the value of the volume
-        /// </summary>
-        public float Volume { get; set; }
-        /// <summary>
-        /// Gets or sets the value of the full path audio file
-        /// </summary>
-        public string FullPathAudioFile { get; set; }
-        
-        /// <summary>
-        ///     Plays this instance
-        /// </summary>
-        internal void Play()
-        {
+            AudioClip audioClip = new AudioClip();
             
+            Assert.NotNull(audioClip);
         }
         
         /// <summary>
-        ///     Stops this instance
+        /// Tests that audio clip constructor with full path valid input
         /// </summary>
-        internal void Stop()
+        [Fact]
+        public void AudioClip_ConstructorWithFullPath_ValidInput()
         {
-           
+            AudioClip audioClip = new AudioClip("testPath");
+            
+            Assert.NotNull(audioClip);
+            Assert.Equal("testPath", audioClip.FullPathAudioFile);
         }
         
         /// <summary>
-        ///     Resumes this instance
+        /// Tests that play valid input
         /// </summary>
-        internal void Resume()
+        [Fact]
+        public void Play_ValidInput()
         {
+            AudioClip audioClip = new AudioClip();
+            
+            audioClip.Play();
+            
+            Assert.False(audioClip.IsPlaying);
         }
         
         /// <summary>
-        ///     Builders
+        /// Tests that stop valid input
         /// </summary>
-        /// <returns>The audio clip builder</returns>
-        public static AudioClipBuilder Builder() => new AudioClipBuilder();
+        [Fact]
+        public void Stop_ValidInput()
+        {
+            AudioClip audioClip = new AudioClip();
+            
+            audioClip.Play();
+            audioClip.Stop();
+            
+            Assert.False(audioClip.IsPlaying);
+        }
+        
+        /// <summary>
+        /// Tests that resume valid input
+        /// </summary>
+        [Fact]
+        public void Resume_ValidInput()
+        {
+            AudioClip audioClip = new AudioClip();
+            
+            audioClip.Play();
+            audioClip.Stop();
+            audioClip.Resume();
+            
+            Assert.False(audioClip.IsPlaying);
+        }
+        
+        /// <summary>
+        /// Tests that builder valid input
+        /// </summary>
+        [Fact]
+        public void Builder_ValidInput()
+        {
+            AudioClipBuilder audioClipBuilder = AudioClip.Builder();
+            
+            Assert.NotNull(audioClipBuilder);
+        }
     }
 }

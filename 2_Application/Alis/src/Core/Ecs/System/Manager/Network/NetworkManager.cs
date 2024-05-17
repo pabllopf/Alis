@@ -32,9 +32,9 @@ namespace Alis.Core.Ecs.System.Manager.Network
     /// <summary>
     ///     The network manager class
     /// </summary>
-    /// <seealso cref="Manager" />
+    /// <seealso cref="AManager" />
     /// <seealso cref="INetworkManager" />
-    public class NetworkManager : Manager
+    public class NetworkManager : AManager
     {
     }
 }

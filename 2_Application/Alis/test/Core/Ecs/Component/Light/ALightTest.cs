@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CustomManager.cs
+//  File:LightTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,15 +27,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Manager;
+using Alis.Core.Aspect.Logging;
+using Xunit;
 
-namespace Alis.Test.Sample
+namespace Alis.Test.Core.Ecs.Component.Light
 {
     /// <summary>
-    /// The custom manager class
+    /// The light test class
     /// </summary>
-    /// <seealso cref="AManager"/>
-    public class CustomManager: AManager
+    public class ALightTest
     {
+        /// <summary>
+        /// Tests that light default constructor valid input
+        /// </summary>
+        [Fact]
+        public void Light_DefaultConstructor_ValidInput()
+        {
+            LightSample light = new LightSample();
+            
+            Assert.NotNull(light);
+        }
+        
+        /// <summary>
+        /// Tests that on start valid input
+        /// </summary>
+        [Fact]
+        public void OnStart_ValidInput()
+        {
+            LightSample light = new LightSample();
+            
+            light.OnStart();
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that on update valid input
+        /// </summary>
+        [Fact]
+        public void OnUpdate_ValidInput()
+        {
+            LightSample light = new LightSample();
+            
+            light.OnUpdate();
+            
+            
+        }
     }
 }

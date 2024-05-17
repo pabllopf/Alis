@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CustomManager.cs
+//  File:AreaLightTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,15 +27,37 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Manager;
+using Alis.Core.Aspect.Logging;
+using Alis.Core.Ecs.Component.Light;
+using Xunit;
 
-namespace Alis.Test.Sample
+namespace Alis.Test.Core.Ecs.Component.Light
 {
     /// <summary>
-    /// The custom manager class
+    /// The area light test class
     /// </summary>
-    /// <seealso cref="AManager"/>
-    public class CustomManager: AManager
+    public class AreaLightTest
     {
+        /// <summary>
+        /// Tests that area light default constructor valid input
+        /// </summary>
+        [Fact]
+        public void AreaLight_DefaultConstructor_ValidInput()
+        {
+            AreaLight areaLight = new AreaLight();
+            
+            Assert.NotNull(areaLight);
+        }
+        
+        /// <summary>
+        /// Tests that on init valid input
+        /// </summary>
+        [Fact]
+        public void OnInit_ValidInput()
+        {
+            AreaLight areaLight = new AreaLight();
+            
+            areaLight.OnInit();
+        }
     }
 }

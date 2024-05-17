@@ -34,8 +34,8 @@ namespace Alis.Core.Ecs.Component.Light
     /// <summary>
     ///     The directional light class
     /// </summary>
-    /// <seealso cref="Light" />
-    public class DirectionalLight : Light
+    /// <seealso cref="ALight" />
+    public class DirectionalLight : ALight
     {
         /// <summary>
         ///     Inits this instance

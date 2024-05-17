@@ -50,8 +50,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
     /// <summary>
     ///     The graphic manager base class
     /// </summary>
-    /// <seealso cref="Manager" />
-    public class GraphicManager : Manager
+    /// <seealso cref="AManager" />
+    public class GraphicManager : AManager
     {
         /// <summary>
         ///     The box collider
@@ -96,6 +96,11 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         public override void OnInit()
         {
+            if (Context is null)
+            {
+                return;
+            }
+            
             Logger.Log("init::graphic:new");
             
             defaultSize = new Vector2(Context.Settings.Graphic.Window.Resolution.X, Context.Settings.Graphic.Window.Resolution.Y);
@@ -260,6 +265,11 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         public override void OnUpdate()
         {
+            if (Context is null)
+            {
+                return;
+            }
+            
             SetWindowTitle();
             RenderSpritesAndDebugMode();
             DrawCameraTexture();

@@ -41,8 +41,8 @@ namespace Alis.Core.Ecs.System.Manager.Input
     /// <summary>
     ///     The graphic manager base class
     /// </summary>
-    /// <seealso cref="Manager" />
-    public class InputManager : Manager
+    /// <seealso cref="AManager" />
+    public class InputManager : AManager
     {
         /// <summary>
         ///     The sdl game controller axis
@@ -78,6 +78,11 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// </summary>
         public override void OnDispatchEvents()
         {
+            if (Context is null || Sdl.WasInit(InitSettings.InitEvents) == 0)
+            {
+                return;
+            }
+            
             Sdl.JoystickUpdate();
             
             while (Sdl.PollEvent(out sdlEvent) != 0)
