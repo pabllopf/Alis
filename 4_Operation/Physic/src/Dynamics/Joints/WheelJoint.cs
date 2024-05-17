@@ -731,7 +731,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     Applies the warm starting using the specified data
         /// </summary>
         /// <param name="data">The data</param>
-        private void ApplyWarmStarting(ref SolverData data)
+        internal void ApplyWarmStarting(ref SolverData data)
         {
             impulse *= data.Step.DeltaTimeRatio;
             springImpulse *= data.Step.DeltaTimeRatio;
