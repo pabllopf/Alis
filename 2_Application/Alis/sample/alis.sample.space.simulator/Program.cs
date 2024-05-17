@@ -85,6 +85,7 @@ namespace Alis.Sample.Space.Simulator
                             .Build())
                         .Build())
                     .Build())
+                .Build()
                 .Run();
         }
     }

@@ -34,8 +34,8 @@ namespace Alis.Core.Ecs.Component.Collider
     /// <summary>
     ///     The circle collider class
     /// </summary>
-    /// <seealso cref="Collider" />
-    public class CircleCollider : Collider
+    /// <seealso cref="ACollider" />
+    public class CircleCollider : ACollider
     {
         /// <summary>
         ///     Starts this instance

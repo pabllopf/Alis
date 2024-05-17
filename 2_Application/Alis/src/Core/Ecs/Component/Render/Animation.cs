@@ -75,7 +75,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Gets or sets the value of the textures
         /// </summary>
-        private List<Frame> Frames { get; }
+        internal List<Frame> Frames { get; }
         
         /// <summary>
         ///     Builders this instance

@@ -257,6 +257,7 @@ namespace Alis.Sample.Pong
                             .Build())
                         .Build())
                     .Build())
+                .Build()
                 .Run();
         }
     }

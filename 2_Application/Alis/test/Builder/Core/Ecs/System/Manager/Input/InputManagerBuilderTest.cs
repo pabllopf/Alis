@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Collider.cs
+//  File:InputManagerBuilderTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,30 +27,39 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
+using Alis.Builder.Core.Ecs.System.Manager.Input;
+using Alis.Core.Ecs.System.Manager.Input;
+using Xunit;
 
-namespace Alis.Core.Ecs.Component.Collider
+namespace Alis.Test.Builder.Core.Ecs.Manager.Input
 {
     /// <summary>
-    ///     The collider class
+    /// The input manager builder test class
     /// </summary>
-    /// <seealso cref="AComponent" />
-    public abstract class Collider : AComponent
+    public class InputManagerBuilderTest
     {
         /// <summary>
-        ///     Starts this instance
+        /// Tests that input manager builder default constructor valid input
         /// </summary>
-        public override void OnStart()
+        [Fact]
+        public void InputManagerBuilder_DefaultConstructor_ValidInput()
         {
-            Logger.Trace();
+            InputManagerBuilder inputManagerBuilder = new InputManagerBuilder();
+            
+            Assert.NotNull(inputManagerBuilder);
         }
         
         /// <summary>
-        ///     Updates this instance
+        /// Tests that build valid input
         /// </summary>
-        public override void OnUpdate()
+        [Fact]
+        public void Build_ValidInput()
         {
-            Logger.Trace();
+            InputManagerBuilder inputManagerBuilder = new InputManagerBuilder();
+            
+            InputManager inputManager = inputManagerBuilder.Build();
+            
+            Assert.NotNull(inputManager);
         }
     }
 }

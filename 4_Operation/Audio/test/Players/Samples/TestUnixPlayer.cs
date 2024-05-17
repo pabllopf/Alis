@@ -30,7 +30,7 @@
 using System.Threading.Tasks;
 using Alis.Core.Audio.Players;
 
-namespace Alis.Core.Audio.Test.Players
+namespace Alis.Core.Audio.Test.Players.Samples
 {
     /// <summary>
     /// The test unix player class

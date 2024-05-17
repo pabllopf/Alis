@@ -491,6 +491,7 @@ namespace Alis.Sample.Flappy.Bird
                             .Build()) // end bird 
                         .Build()) // end scene manager
                     .Build()) // end video game
+                .Build()
                 .Run();
         }
     }

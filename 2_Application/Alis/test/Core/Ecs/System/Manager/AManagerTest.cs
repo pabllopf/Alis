@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Test.Core.Ecs.System.Manager.Samples;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.System.Manager

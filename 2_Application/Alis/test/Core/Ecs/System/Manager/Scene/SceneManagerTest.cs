@@ -30,7 +30,7 @@
 using Alis.Core.Ecs.System.Manager.Scene;
 using Xunit;
 
-namespace Alis.Test.Core.Ecs.System.Scene
+namespace Alis.Test.Core.Ecs.System.Manager.Scene
 {
     /// <summary>
     /// The scene manager test class

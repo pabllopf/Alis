@@ -29,7 +29,7 @@
 
 using Alis.Core.Ecs.Component;
 
-namespace Alis.Test.Core.Ecs.Component
+namespace Alis.Test.Core.Ecs.Component.Sample
 {
     /// <summary>
     /// The component sample class
