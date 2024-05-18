@@ -6307,9 +6307,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             // Act
             Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
-            
         }
-        
         
     }
 }
