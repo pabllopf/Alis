@@ -30,6 +30,7 @@
 using Alis.Builder.Core.Ecs.System.Setting.Physic;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.System.Setting.Physic;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System.Setting.Physic
@@ -45,7 +46,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Physic
         [Fact]
         public void PhysicSettingBuilder_DefaultConstructor_ValidInput()
         {
-            var physicSettingBuilder = new PhysicSettingBuilder();
+            PhysicSettingBuilder physicSettingBuilder = new PhysicSettingBuilder();
             
             Assert.NotNull(physicSettingBuilder);
         }
@@ -56,9 +57,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Physic
         [Fact]
         public void Build_ValidInput()
         {
-            var physicSettingBuilder = new PhysicSettingBuilder();
+            PhysicSettingBuilder physicSettingBuilder = new PhysicSettingBuilder();
             
-            var physicSetting = physicSettingBuilder.Build();
+            PhysicSetting physicSetting = physicSettingBuilder.Build();
             
             Assert.NotNull(physicSetting);
         }
@@ -69,7 +70,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Physic
         [Fact]
         public void Debug_ValidInput()
         {
-            var physicSettingBuilder = new PhysicSettingBuilder();
+            PhysicSettingBuilder physicSettingBuilder = new PhysicSettingBuilder();
             
             physicSettingBuilder.Debug(true);
             
@@ -82,7 +83,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Physic
         [Fact]
         public void DebugColor_ValidInput()
         {
-            var physicSettingBuilder = new PhysicSettingBuilder();
+            PhysicSettingBuilder physicSettingBuilder = new PhysicSettingBuilder();
             
             physicSettingBuilder.DebugColor(new Color(255, 255, 255, 255));
             
@@ -95,7 +96,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Physic
         [Fact]
         public void Gravity_ValidInput()
         {
-            var physicSettingBuilder = new PhysicSettingBuilder();
+            PhysicSettingBuilder physicSettingBuilder = new PhysicSettingBuilder();
             
             physicSettingBuilder.Gravity(9.8f, -9.8f);
             

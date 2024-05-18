@@ -153,12 +153,33 @@ namespace Alis.Core.Network.Internal
         /// <param name="isLittleEndian">The is little endian</param>
         public static void WriteInt(int value, Stream stream, bool isLittleEndian)
         {
+            byte[] buffer = GetBytesInCorrectEndianness(value, isLittleEndian);
+            WriteToStream(buffer, stream);
+        }
+
+        /// <summary>
+        /// Gets the bytes in correct endianness using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <param name="isLittleEndian">The is little endian</param>
+        /// <returns>The buffer</returns>
+        private static byte[] GetBytesInCorrectEndianness(int value, bool isLittleEndian)
+        {
             byte[] buffer = BitConverter.GetBytes(value);
             if (BitConverter.IsLittleEndian && !isLittleEndian)
             {
                 Array.Reverse(buffer);
             }
-            
+            return buffer;
+        }
+
+        /// <summary>
+        /// Writes the to stream using the specified buffer
+        /// </summary>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="stream">The stream</param>
+        private static void WriteToStream(byte[] buffer, Stream stream)
+        {
             stream.Write(buffer, 0, buffer.Length);
         }
         

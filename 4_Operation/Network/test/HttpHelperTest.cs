@@ -32,6 +32,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Alis.Core.Network.Exceptions;
 using Xunit;
 
 namespace Alis.Core.Network.Test
@@ -131,6 +132,78 @@ namespace Alis.Core.Network.Test
             StreamReader reader = new StreamReader(stream);
             string header = await reader.ReadToEndAsync();
             Assert.Equal("HTTP/1.1 200 OK\r\n\r\n", header);
+        }
+        
+        /// <summary>
+        /// Tests that is web socket upgrade request should return true when web socket upgrade request
+        /// </summary>
+        [Fact]
+        public void IsWebSocketUpgradeRequest_ShouldReturnTrue_WhenWebSocketUpgradeRequest()
+        {
+            string header = "GET /chat HTTP/1.1\r\n" +
+                            "Host: server.example.com\r\n" +
+                            "Upgrade: websocket\r\n" +
+                            "Connection: Upgrade\r\n" +
+                            "Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==\r\n" +
+                            "Sec-WebSocket-Protocol: chat, superchat\r\n" +
+                            "Sec-WebSocket-Version: 13\r\n" +
+                            "Origin: http://example.com\r\n";
+            
+            bool result = HttpHelper.IsWebSocketUpgradeRequest(header);
+            
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that is web socket upgrade request should return false when not web socket upgrade request
+        /// </summary>
+        [Fact]
+        public void IsWebSocketUpgradeRequest_ShouldReturnFalse_WhenNotWebSocketUpgradeRequest()
+        {
+            string header = "GET /chat HTTP/1.1\r\n" +
+                            "Host: server.example.com\r\n" +
+                            "Connection: Upgrade\r\n" +
+                            "Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==\r\n" +
+                            "Sec-WebSocket-Protocol: chat, superchat\r\n" +
+                            "Sec-WebSocket-Version: 13\r\n" +
+                            "Origin: http://example.com\r\n";
+            
+            bool result = HttpHelper.IsWebSocketUpgradeRequest(header);
+            
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that get sub protocols should return correct protocols v 2
+        /// </summary>
+        [Fact]
+        public void GetSubProtocols_ShouldReturnCorrectProtocols_v2()
+        {
+            string header = "GET / HTTP/1.1\r\nSec-WebSocket-Protocol: protocol1, protocol2\r\n\r\n";
+            IList<string> protocols = HttpHelper.GetSubProtocols(header);
+            Assert.Contains("protocol1", protocols);
+            Assert.Contains("protocol2", protocols);
+        }
+        
+        /// <summary>
+        /// Tests that get sub protocols should return empty list when no protocols
+        /// </summary>
+        [Fact]
+        public void GetSubProtocols_ShouldReturnEmptyList_WhenNoProtocols()
+        {
+            string header = "GET / HTTP/1.1\r\n\r\n";
+            IList<string> protocols = HttpHelper.GetSubProtocols(header);
+            Assert.Empty(protocols);
+        }
+        
+        /// <summary>
+        /// Tests that get sub protocols should throw exception when header too large
+        /// </summary>
+        [Fact]
+        public void GetSubProtocols_ShouldThrowException_WhenHeaderTooLarge()
+        {
+            string header = "GET / HTTP/1.1\r\nSec-WebSocket-Protocol: " + new string('a', 2050) + "\r\n\r\n";
+            Assert.Throws<EntityTooLargeException>(() => HttpHelper.GetSubProtocols(header));
         }
     }
 }

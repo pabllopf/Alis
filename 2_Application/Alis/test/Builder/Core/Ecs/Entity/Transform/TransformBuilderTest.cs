@@ -45,7 +45,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Transform
         [Fact]
         public void TransformBuilder_DefaultConstructor_ValidInput()
         {
-            var transformBuilder = new TransformBuilder();
+            TransformBuilder transformBuilder = new TransformBuilder();
             
             Assert.NotNull(transformBuilder);
         }
@@ -56,9 +56,9 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Transform
         [Fact]
         public void Build_ValidInput()
         {
-            var transformBuilder = new TransformBuilder();
+            TransformBuilder transformBuilder = new TransformBuilder();
             
-            var transform = transformBuilder.Build();
+            Alis.Core.Aspect.Math.Transform transform = transformBuilder.Build();
         }
         
         /// <summary>
@@ -67,7 +67,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Transform
         [Fact]
         public void Position_ValidInput()
         {
-            var transformBuilder = new TransformBuilder();
+            TransformBuilder transformBuilder = new TransformBuilder();
             
             transformBuilder.Position(1.0f, 2.0f);
             
@@ -80,7 +80,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Transform
         [Fact]
         public void Rotation_ValidInput()
         {
-            var transformBuilder = new TransformBuilder();
+            TransformBuilder transformBuilder = new TransformBuilder();
             
             transformBuilder.Rotation(45.0f);
             
@@ -93,7 +93,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Transform
         [Fact]
         public void Scale_ValidInput()
         {
-            var transformBuilder = new TransformBuilder();
+            TransformBuilder transformBuilder = new TransformBuilder();
             
             transformBuilder.Scale(3.0f, 4.0f);
             
