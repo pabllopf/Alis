@@ -758,7 +758,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
                 using (ZipArchive archive = new ZipArchive(memoryStream, ZipArchiveMode.Read, true))
                 {
                     ZipArchiveEntry entry = archive.GetEntry("validName");
-                    Assert.Throws<NullReferenceException>( () => EmbeddedDllClass.IsValidEntry(entry));
+                    Assert.Throws<NullReferenceException>(() => EmbeddedDllClass.IsValidEntry(entry));
                 }
             }
         }
@@ -785,6 +785,111 @@ namespace Alis.Core.Aspect.Data.Test.Dll
                     Assert.True(result);
                 }
             }
+        }
+        
+        /// <summary>
+        /// Tests that extract entry should extract correctly
+        /// </summary>
+        [Fact]
+        public void ExtractEntry_ShouldExtractCorrectly()
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                using (ZipArchive archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
+                {
+                    ZipArchiveEntry entry = archive.CreateEntry("validName");
+                    
+                    string fileDir = "testDir";
+                    
+                    EmbeddedDllClass.ExtractEntry(fileDir, entry);
+                    
+                    Assert.False(Directory.Exists(fileDir));
+                }
+            }
+        }
+        
+        /// <summary>
+        /// Tests that extract file from entry should extract correctly
+        /// </summary>
+        [Fact]
+        public void ExtractFileFromEntry_ShouldExtractCorrectly()
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                using (ZipArchive archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
+                {
+                    ZipArchiveEntry entry = archive.CreateEntry("validName");
+                    string canonicalDestinationPath = "testPath";
+                    Assert.Throws<NotSupportedException>(() => EmbeddedDllClass.ExtractFileFromEntry(canonicalDestinationPath, entry));
+                }
+            }
+        }
+        
+        /// <summary>
+        /// Tests that get current platform should return correct platform
+        /// </summary>
+        [Fact]
+        public void GetCurrentPlatform_ShouldReturnCorrectPlatform()
+        {
+            OSPlatform result = EmbeddedDllClass.GetCurrentPlatform();
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                Assert.Equal(OSPlatform.Windows, result);
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                Assert.Equal(OSPlatform.OSX, result);
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                Assert.Equal(OSPlatform.Linux, result);
+            }
+            else if (EmbeddedDllClass.IsRunningOniOS())
+            {
+                Assert.Equal(OSPlatform.Create("IOS"), result);
+            }
+            else if (EmbeddedDllClass.IsRunningOnAndroid())
+            {
+                Assert.Equal(OSPlatform.Create("Android"), result);
+            }
+            else
+            {
+                Assert.Throws<PlatformNotSupportedException>(() => EmbeddedDllClass.GetCurrentPlatform());
+            }
+        }
+        
+        /// <summary>
+        /// Tests that extract zip file should extract correctly
+        /// </summary>
+        [Fact]
+        public void ExtractZipFile_ShouldExtractCorrectly()
+        {
+            string fileDir = "testDir";
+            MemoryStream zipData = new MemoryStream();
+            
+            using (ZipArchive archive = new ZipArchive(zipData, ZipArchiveMode.Create, true))
+            {
+                ZipArchiveEntry entry = archive.CreateEntry("testEntry");
+            }
+            
+            zipData.Seek(0, SeekOrigin.Begin);
+            
+            EmbeddedDllClass.ExtractZipFile(fileDir, zipData);
+            
+            Assert.False(Directory.Exists(fileDir));
+            Assert.False(File.Exists(Path.Combine(fileDir, "testEntry")));
+        }
+        
+        /// <summary>
+        /// Tests that get dll extension should return correct extension
+        /// </summary>
+        [Fact]
+        public void GetDllExtension_ShouldReturnCorrectExtension()
+        {
+            Assert.Equal("", EmbeddedDllClass.GetDllExtension(DllType.Exe));
+            Assert.Equal(".dylib", EmbeddedDllClass.GetDllExtension(DllType.Lib));
+            Assert.Throws<PlatformNotSupportedException>(() => EmbeddedDllClass.GetDllExtension((DllType) 999));
         }
     }
 }
