@@ -31,7 +31,7 @@ using Alis.Builder.Core.Ecs.System.Manager.Network;
 using Alis.Core.Ecs.System.Manager.Network;
 using Xunit;
 
-namespace Alis.Test.Builder.Core.Ecs.Manager.Network
+namespace Alis.Test.Builder.Core.Ecs.System.Manager.Network
 {
     /// <summary>
     /// The network manager builder test class

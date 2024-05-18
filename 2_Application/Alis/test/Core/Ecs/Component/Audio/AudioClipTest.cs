@@ -113,5 +113,44 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             
             Assert.NotNull(audioClipBuilder);
         }
+        
+        /// <summary>
+        /// Tests that set is playing should change value
+        /// </summary>
+        [Fact]
+        public void SetIsPlaying_ShouldChangeValue()
+        {
+            AudioClip audioClip = new AudioClip();
+            audioClip.IsPlaying = true;
+            Assert.True(audioClip.IsPlaying);
+            audioClip.IsPlaying = false;
+            Assert.False(audioClip.IsPlaying);
+        }
+        
+        /// <summary>
+        /// Tests that set is mute should change value
+        /// </summary>
+        [Fact]
+        public void SetIsMute_ShouldChangeValue()
+        {
+            AudioClip audioClip = new AudioClip();
+            audioClip.IsMute = true;
+            Assert.True(audioClip.IsMute);
+            audioClip.IsMute = false;
+            Assert.False(audioClip.IsMute);
+        }
+        
+        /// <summary>
+        /// Tests that set is looping should change value
+        /// </summary>
+        [Fact]
+        public void SetIsLooping_ShouldChangeValue()
+        {
+            AudioClip audioClip = new AudioClip();
+            audioClip.IsLooping = true;
+            Assert.True(audioClip.IsLooping);
+            audioClip.IsLooping = false;
+            Assert.False(audioClip.IsLooping);
+        }
     }
 }

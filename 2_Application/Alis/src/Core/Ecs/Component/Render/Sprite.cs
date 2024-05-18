@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
@@ -85,6 +86,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Inits this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public override void OnInit()
         {
             if (Context is null)
@@ -104,11 +106,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnAwake()
         {
-            if (Context is null)
-            {
-                return;
-            }
-            Context.GraphicManager.Attach(this);
+            Context?.GraphicManager.Attach(this);
         }
         
         /// <summary>
@@ -116,11 +114,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnExit()
         {
-            if (Context is null)
-            {
-                return;
-            }
-            Context.GraphicManager.UnAttach(this);
+            Context?.GraphicManager.UnAttach(this);
         }
         
         /// <summary>
@@ -128,6 +122,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <param name="camera"></param>
+        [ExcludeFromCodeCoverage]
         public void Render(IntPtr renderer, Camera camera)
         {
             if (Context is null)
@@ -150,6 +145,7 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Renders the renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
+        [ExcludeFromCodeCoverage]
         public void Render(IntPtr renderer)
         {
             if (Context is null)

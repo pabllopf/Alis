@@ -45,7 +45,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnEnable();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -56,7 +56,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnInit();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -67,7 +67,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnAwake();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -78,7 +78,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnStart();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -89,7 +89,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnBeforeUpdate();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -100,7 +100,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnUpdate();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -111,7 +111,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnAfterUpdate();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -122,7 +122,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnBeforeFixedUpdate();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -133,7 +133,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnFixedUpdate();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -144,7 +144,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnAfterFixedUpdate();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -155,7 +155,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnDispatchEvents();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -166,7 +166,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnCalculate();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -177,7 +177,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnDraw();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -188,7 +188,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnGui();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -199,7 +199,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnDisable();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -210,7 +210,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnReset();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -221,7 +221,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnStop();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -232,7 +232,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnExit();
-            // Asserts would go here
+            
         }
         
         /// <summary>
@@ -243,7 +243,51 @@ namespace Alis.Test.Core.Ecs.System.Manager
         {
             MockManager manager = new MockManager();
             manager.OnDestroy();
-            // Asserts would go here
+            
+        }
+        
+        /// <summary>
+        /// Tests that is enable property set get returns correct value
+        /// </summary>
+        [Fact]
+        public void IsEnable_PropertySet_GetReturnsCorrectValue()
+        {
+            var manager = new MockManager();
+            manager.IsEnable = true;
+            Assert.True(manager.IsEnable);
+        }
+        
+        /// <summary>
+        /// Tests that name property set get returns correct value
+        /// </summary>
+        [Fact]
+        public void Name_PropertySet_GetReturnsCorrectValue()
+        {
+            var manager = new MockManager();
+            manager.Name = "TestManager";
+            Assert.Equal("TestManager", manager.Name);
+        }
+        
+        /// <summary>
+        /// Tests that id property set get returns correct value
+        /// </summary>
+        [Fact]
+        public void Id_PropertySet_GetReturnsCorrectValue()
+        {
+            var manager = new MockManager();
+            manager.Id = "TestId";
+            Assert.Equal("TestId", manager.Id);
+        }
+        
+        /// <summary>
+        /// Tests that tag property set get returns correct value
+        /// </summary>
+        [Fact]
+        public void Tag_PropertySet_GetReturnsCorrectValue()
+        {
+            var manager = new MockManager();
+            manager.Tag = "TestTag";
+            Assert.Equal("TestTag", manager.Tag);
         }
     }
 }

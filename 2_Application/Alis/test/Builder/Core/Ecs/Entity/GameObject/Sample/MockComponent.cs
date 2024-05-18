@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GraphicManagerBuilderTest.cs
+//  File:MockComponent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,39 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System.Manager.Graphic;
-using Alis.Core.Ecs.System.Manager.Graphic;
-using Xunit;
+using Alis.Core.Ecs.Component;
 
-namespace Alis.Test.Builder.Core.Ecs.System.Manager.Graphic
+namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject.Sample
 {
     /// <summary>
-    /// The graphic manager builder test class
+    /// The mock component class
     /// </summary>
-    public class GraphicManagerBuilderTest
+    /// <seealso cref="AComponent"/>
+    public class MockComponent : AComponent
     {
-        /// <summary>
-        /// Tests that graphic manager builder default constructor valid input
-        /// </summary>
-        [Fact]
-        public void GraphicManagerBuilder_DefaultConstructor_ValidInput()
-        {
-            GraphicManagerBuilder graphicManagerBuilder = new GraphicManagerBuilder();
-            
-            Assert.NotNull(graphicManagerBuilder);
-        }
-        
-        /// <summary>
-        /// Tests that build valid input
-        /// </summary>
-        [Fact]
-        public void Build_ValidInput()
-        {
-            GraphicManagerBuilder graphicManagerBuilder = new GraphicManagerBuilder();
-            
-            GraphicManager graphicManager = graphicManagerBuilder.Build();
-            
-            Assert.NotNull(graphicManager);
-        }
     }
 }

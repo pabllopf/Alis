@@ -29,7 +29,7 @@
 
 using Alis.Core.Ecs.Component;
 
-namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
+namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject.Sample
 {
     /// <summary>
     /// The test component class

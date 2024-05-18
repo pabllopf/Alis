@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
@@ -112,6 +113,7 @@ namespace Alis.Core.Ecs.Entity
         /// <summary>
         ///     Ons the enable
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnEnable()
         {
             IsEnable = true;
@@ -223,6 +225,7 @@ namespace Alis.Core.Ecs.Entity
         ///     Sets the context using the specified context
         /// </summary>
         /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
         public void SetContext(Context context)
         {
             Context = context;

@@ -31,7 +31,7 @@ using Alis.Builder.Core.Ecs.System.Manager.Audio;
 using Alis.Core.Ecs.System.Manager.Audio;
 using Xunit;
 
-namespace Alis.Test.Builder.Core.Ecs.Manager.Audio
+namespace Alis.Test.Builder.Core.Ecs.System.Manager.Audio
 {
     /// <summary>
     /// The audio manager builder test class

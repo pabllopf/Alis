@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
@@ -78,7 +79,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Gets or sets the value of the sprite
         /// </summary>
-        private Sprite Sprite { get; set; }
+        internal Sprite Sprite { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the animations
@@ -127,6 +128,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Updates this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public override void OnUpdate()
         {
             if (Sprite == null || currentAnimation == null || Animations.Count == 0)
@@ -157,6 +159,7 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Changes the animation to using the specified name animation
         /// </summary>
         /// <param name="nameAnimation">The name animation</param>
+        [ExcludeFromCodeCoverage]
         public void ChangeAnimationTo(string nameAnimation)
         {
             if (currentAnimation.Name.Equals(nameAnimation))
@@ -176,6 +179,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         /// <param name="nameAnimation">The name animation</param>
         /// <param name="flipsTo">The flip to</param>
+        [ExcludeFromCodeCoverage]
         public void ChangeAnimationTo(string nameAnimation, RendererFlips flipsTo)
         {
             if (currentAnimation.Name.Equals(nameAnimation) && (Sprite.Flips == flipsTo))

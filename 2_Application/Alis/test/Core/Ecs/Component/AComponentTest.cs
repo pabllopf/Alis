@@ -27,7 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Data.Mapping;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.Entity;
+using Alis.Core.Ecs.System;
+using Alis.Core.Ecs.System.Manager.Audio;
+using Alis.Core.Ecs.System.Manager.Graphic;
+using Alis.Core.Ecs.System.Manager.Input;
+using Alis.Core.Ecs.System.Manager.Network;
+using Alis.Core.Ecs.System.Manager.Physic;
+using Alis.Core.Ecs.System.Manager.Scene;
+using Alis.Core.Ecs.System.Setting;
+using Alis.Test.Builder.Core.Ecs.Entity.GameObject.Sample;
 using Alis.Test.Core.Ecs.Component.Sample;
 using Xunit;
 
@@ -47,7 +59,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnEnable();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -59,7 +71,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnInit();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -71,7 +83,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnAwake();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -83,7 +95,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnStart();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -95,7 +107,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnBeforeUpdate();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -107,7 +119,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnUpdate();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -119,7 +131,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnAfterUpdate();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -131,7 +143,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnBeforeFixedUpdate();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -143,7 +155,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnFixedUpdate();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -155,7 +167,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnAfterFixedUpdate();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -167,7 +179,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnDispatchEvents();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -179,7 +191,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnCalculate();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -191,7 +203,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnDraw();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -203,7 +215,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnGui();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -215,7 +227,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnDisable();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -227,7 +239,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnReset();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -239,7 +251,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnStop();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -251,7 +263,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnExit();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -262,8 +274,157 @@ namespace Alis.Test.Core.Ecs.Component
         {
             ComponentSample component = new ComponentSample();
             component.OnDestroy();
-            
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+        }
+        
+        
+        /// <summary>
+        /// Tests that on press down key calls logger trace
+        /// </summary>
+        [Fact]
+        public void OnPressDownKey_CallsLoggerTrace()
+        {
+            MockComponent mockComponent = new MockComponent();
+            mockComponent.OnPressDownKey(KeyCode.A);
+        }
+        
+        /// <summary>
+        /// Tests that on release key calls logger trace
+        /// </summary>
+        [Fact]
+        public void OnReleaseKey_CallsLoggerTrace()
+        {
+            MockComponent mockComponent = new MockComponent();
+            mockComponent.OnReleaseKey(KeyCode.A);
+        }
+        
+        /// <summary>
+        /// Tests that on press key calls logger trace
+        /// </summary>
+        [Fact]
+        public void OnPressKey_CallsLoggerTrace()
+        {
+            MockComponent mockComponent = new MockComponent();
+            mockComponent.OnPressKey(KeyCode.A);
+        }
+        
+        /// <summary>
+        /// Tests that on collision enter calls logger trace
+        /// </summary>
+        [Fact]
+        public void OnCollisionEnter_CallsLoggerTrace()
+        {
+            MockComponent mockComponent = new MockComponent();
+            GameObject gameObject = new GameObject();
+            mockComponent.OnCollisionEnter(gameObject);
+        }
+        
+        /// <summary>
+        /// Tests that on collision exit calls logger trace
+        /// </summary>
+        [Fact]
+        public void OnCollisionExit_CallsLoggerTrace()
+        {
+            MockComponent mockComponent = new MockComponent();
+            GameObject gameObject = new GameObject();
+            mockComponent.OnCollisionExit(gameObject);
+        }
+        
+        /// <summary>
+        /// Tests that set context sets context
+        /// </summary>
+        [Fact]
+        public void SetContext_SetsContext()
+        {
+            MockComponent mockComponent = new MockComponent();
+            Context context = new Context(
+                new VideoGame(
+                    new Settings(),
+                    new AudioManager(),
+                    new GraphicManager(),
+                    new InputManager(),
+                    new NetworkManager(),
+                    new PhysicManager(),
+                    new SceneManager()),
+                new Settings());
+            mockComponent.SetContext(context);
+            Assert.Equal(context, mockComponent.Context);
+        }
+        
+        /// <summary>
+        /// Tests that on collision stay calls logger trace
+        /// </summary>
+        [Fact]
+        public void OnCollisionStay_CallsLoggerTrace()
+        {
+            MockComponent mockComponent = new MockComponent();
+            GameObject gameObject = new GameObject();
+            mockComponent.OnCollisionStay(gameObject);
+        }
+        
+        /// <summary>
+        /// Tests that on trigger enter calls logger trace
+        /// </summary>
+        [Fact]
+        public void OnTriggerEnter_CallsLoggerTrace()
+        {
+            MockComponent mockComponent = new MockComponent();
+            GameObject gameObject = new GameObject();
+            mockComponent.OnTriggerEnter(gameObject);
+        }
+        
+        /// <summary>
+        /// Tests that on trigger exit calls logger trace
+        /// </summary>
+        [Fact]
+        public void OnTriggerExit_CallsLoggerTrace()
+        {
+            MockComponent mockComponent = new MockComponent();
+            GameObject gameObject = new GameObject();
+            mockComponent.OnTriggerExit(gameObject);
+        }
+        
+        /// <summary>
+        /// Tests that on trigger stay calls logger trace
+        /// </summary>
+        [Fact]
+        public void OnTriggerStay_CallsLoggerTrace()
+        {
+            MockComponent mockComponent = new MockComponent();
+            GameObject gameObject = new GameObject();
+            mockComponent.OnTriggerStay(gameObject);
+        }
+        
+        /// <summary>
+        /// Tests that name property set get returns correct value
+        /// </summary>
+        [Fact]
+        public void Name_PropertySet_GetReturnsCorrectValue()
+        {
+            MockComponent component = new MockComponent();
+            component.Name = "TestComponent";
+            Assert.Equal("TestComponent", component.Name);
+        }
+        
+        /// <summary>
+        /// Tests that id property set get returns correct value
+        /// </summary>
+        [Fact]
+        public void Id_PropertySet_GetReturnsCorrectValue()
+        {
+            MockComponent component = new MockComponent();
+            component.Id = "1";
+            Assert.Equal("1", component.Id);
+        }
+        
+        /// <summary>
+        /// Tests that tag property set get returns correct value
+        /// </summary>
+        [Fact]
+        public void Tag_PropertySet_GetReturnsCorrectValue()
+        {
+            MockComponent component = new MockComponent();
+            component.Tag = "TestTag";
+            Assert.Equal("TestTag", component.Tag);
         }
     }
 }

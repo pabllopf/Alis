@@ -267,6 +267,9 @@ namespace Alis.Core.Network.Test.Internal
             Assert.Null(webSocket.CloseStatusDescription);
         }
         
+        /// <summary>
+        /// Tests that handle binary frame test
+        /// </summary>
         [Fact]
         public void HandleBinaryFrame_Test()
         {
@@ -286,6 +289,9 @@ namespace Alis.Core.Network.Test.Internal
             Assert.Equal(0, result.Count);
         }
         
+        /// <summary>
+        /// Tests that handle pong test
+        /// </summary>
         [Fact]
         public void HandlePong_Test()
         {
@@ -297,12 +303,15 @@ namespace Alis.Core.Network.Test.Internal
             WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.BinaryFrame, buffer.Count, buffer);
             
             // Act
-            var result = webSocket.HandlePong(frame, buffer);
+            WebSocketReceiveResult result = webSocket.HandlePong(frame, buffer);
             
             // Assert
             Assert.Null(result);
         }
         
+        /// <summary>
+        /// Tests that handle continuation frame test
+        /// </summary>
         [Fact]
         public void HandleContinuationFrame_Test()
         {
@@ -314,7 +323,7 @@ namespace Alis.Core.Network.Test.Internal
             WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.BinaryFrame, buffer.Count, buffer);
             
             // Act
-            var result = webSocket.HandleContinuationFrame(frame, true);
+            WebSocketReceiveResult result = webSocket.HandleContinuationFrame(frame, true);
             
             // Assert
             Assert.Equal(WebSocketMessageType.Binary, result.MessageType);

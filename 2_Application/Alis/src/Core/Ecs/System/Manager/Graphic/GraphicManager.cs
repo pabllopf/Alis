@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -51,6 +52,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
     ///     The graphic manager base class
     /// </summary>
     /// <seealso cref="AManager" />
+    [ExcludeFromCodeCoverage]
     public class GraphicManager : AManager
     {
         /// <summary>

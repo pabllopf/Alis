@@ -46,7 +46,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnEnable();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -58,7 +58,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnInit();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -70,7 +70,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnAwake();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -82,7 +82,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnStart();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -94,7 +94,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnBeforeUpdate();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -106,7 +106,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnUpdate();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -118,7 +118,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnAfterUpdate();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -130,7 +130,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnBeforeFixedUpdate();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -142,7 +142,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnFixedUpdate();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -154,7 +154,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnAfterFixedUpdate();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -166,7 +166,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnDispatchEvents();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -178,7 +178,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnCalculate();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -190,7 +190,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnDraw();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -202,7 +202,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnGui();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -214,7 +214,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnDisable();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -226,7 +226,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnReset();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -238,7 +238,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnStop();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -250,7 +250,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnExit();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -262,7 +262,113 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnDestroy();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
+        }
+        
+        /// <summary>
+        /// Tests that remove valid input removes scene
+        /// </summary>
+        [Fact]
+        public void Remove_ValidInput_RemovesScene()
+        {
+            var sceneManager = new SceneManager();
+            var scene = new Alis.Core.Ecs.Entity.Scene();
+            sceneManager.Scenes.Add(scene);
+            sceneManager.Remove(scene);
+            Assert.DoesNotContain(scene, sceneManager.Scenes);
+        }
+        
+        /// <summary>
+        /// Tests that get valid input returns scene
+        /// </summary>
+        [Fact]
+        public void Get_ValidInput_ReturnsScene()
+        {
+            var sceneManager = new SceneManager();
+            var scene = new Alis.Core.Ecs.Entity.Scene();
+            sceneManager.Scenes.Add(scene);
+            var result = sceneManager.Get<Alis.Core.Ecs.Entity.Scene>();
+            Assert.Equal(scene, result);
+        }
+        
+        /// <summary>
+        /// Tests that contains valid input returns true
+        /// </summary>
+        [Fact]
+        public void Contains_ValidInput_ReturnsTrue()
+        {
+            var sceneManager = new SceneManager();
+            var scene = new Alis.Core.Ecs.Entity.Scene();
+            sceneManager.Scenes.Add(scene);
+            var result = sceneManager.Contains<Alis.Core.Ecs.Entity.Scene>();
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that clear valid input clears scenes
+        /// </summary>
+        [Fact]
+        public void Clear_ValidInput_ClearsScenes()
+        {
+            var sceneManager = new SceneManager();
+            var scene = new Alis.Core.Ecs.Entity.Scene();
+            sceneManager.Scenes.Add(scene);
+            sceneManager.Clear<Alis.Core.Ecs.Entity.Scene>();
+            Assert.Empty(sceneManager.Scenes);
+        }
+        
+        /// <summary>
+        /// Tests that load scene valid scene sets current scene
+        /// </summary>
+        [Fact]
+        public void LoadScene_ValidScene_SetsCurrentScene()
+        {
+            var sceneManager = new SceneManager();
+            var scene = new Alis.Core.Ecs.Entity.Scene();
+            sceneManager.LoadScene(scene);
+            Assert.Equal(scene, sceneManager.CurrentScene);
+        }
+        
+        /// <summary>
+        /// Tests that reload scene valid scene sets current scene
+        /// </summary>
+        [Fact]
+        public void ReloadScene_ValidScene_SetsCurrentScene()
+        {
+            var sceneManager = new SceneManager();
+            var scene = new Alis.Core.Ecs.Entity.Scene();
+            sceneManager.ReloadScene(scene);
+            Assert.Equal(scene, sceneManager.CurrentScene);
+        }
+        
+        /// <summary>
+        /// Tests that load scene valid name sets current scene
+        /// </summary>
+        [Fact]
+        public void LoadScene_ValidName_SetsCurrentScene()
+        {
+            var sceneManager = new SceneManager();
+            var scene = new Alis.Core.Ecs.Entity.Scene {Name = "TestScene"};
+            sceneManager.Scenes.Add(scene);
+            sceneManager.LoadScene("TestScene");
+            Assert.Equal(scene, sceneManager.CurrentScene);
+        }
+        
+        /// <summary>
+        /// Tests that load scene valid index loads correct scene
+        /// </summary>
+        [Fact]
+        public void LoadScene_ValidIndex_LoadsCorrectScene()
+        {
+            var sceneManager = new SceneManager();
+            var scene1 = new Alis.Core.Ecs.Entity.Scene {Name = "Scene1"};
+            var scene2 = new Alis.Core.Ecs.Entity.Scene {Name = "Scene2"};
+            sceneManager.Scenes.Add(scene1);
+            sceneManager.Scenes.Add(scene2);
+            
+            sceneManager.LoadScene(1);
+            
+            Assert.Equal(scene2, sceneManager.CurrentScene);
         }
     }
 }

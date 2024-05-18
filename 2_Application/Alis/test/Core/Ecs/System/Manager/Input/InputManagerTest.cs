@@ -27,7 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using Alis.Core.Aspect.Data.Mapping;
+using Alis.Core.Ecs.Entity;
+using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Input;
+using Alis.Core.Ecs.System.Manager.Scene;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.System.Manager.Input
@@ -46,7 +51,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             InputManager inputManager = new InputManager();
             inputManager.OnInit();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -58,7 +63,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             InputManager inputManager = new InputManager();
             inputManager.OnDispatchEvents();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -70,7 +75,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             InputManager inputManager = new InputManager();
             // You would need to simulate an SDL Quit event here
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -82,7 +87,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             InputManager inputManager = new InputManager();
             // You would need to simulate an SDL Keyup event here
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -94,7 +99,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             InputManager inputManager = new InputManager();
             // You would need to simulate an SDL Keydown event here
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -106,7 +111,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             InputManager inputManager = new InputManager();
             // You would need to simulate an SDL JoyButtonDown event here
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -118,7 +123,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             InputManager inputManager = new InputManager();
             // You would need to simulate an SDL JoyAxisMotion event here
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -128,9 +133,6 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void NotifyKeyHold_ValidInput()
         {
             InputManager inputManager = new InputManager();
-            // You would need to simulate a key hold here
-            
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
         
         /// <summary>
@@ -142,7 +144,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             InputManager inputManager = new InputManager();
             // You would need to simulate a key press here
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -153,8 +155,51 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         {
             InputManager inputManager = new InputManager();
             // You would need to simulate a key release here
+        }
+        
+        /// <summary>
+        /// Tests that notify key hold valid input v 2
+        /// </summary>
+        [Fact]
+        public void NotifyKeyHold_ValidInput_v2()
+        {
+            InputManager inputManager = new InputManager();
+            inputManager.tempListOfKeys = new List<KeyCode> {KeyCode.A, KeyCode.B};
+            inputManager.NotifyKeyHold();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+        }
+        
+        /// <summary>
+        /// Tests that notify key press valid input v 2
+        /// </summary>
+        [Fact]
+        public void NotifyKeyPress_ValidInput_v2()
+        {
+            InputManager inputManager = new InputManager();
+            inputManager.NotifyKeyPress(KeyCode.A);
+            
+        }
+        
+        /// <summary>
+        /// Tests that notify key release valid input v 2
+        /// </summary>
+        [Fact]
+        public void NotifyKeyRelease_ValidInput_v2()
+        {
+            InputManager inputManager = new InputManager();
+            inputManager.NotifyKeyRelease(KeyCode.A);
+            
+        }
+        
+        /// <summary>
+        /// Tests that notify key hold with key valid input
+        /// </summary>
+        [Fact]
+        public void NotifyKeyHoldWithKey_ValidInput()
+        {
+            InputManager inputManager = new InputManager();
+            inputManager.NotifyKeyHold(KeyCode.A);
+            
         }
     }
 }

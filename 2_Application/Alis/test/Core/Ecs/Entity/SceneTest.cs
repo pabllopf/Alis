@@ -37,6 +37,7 @@ using Alis.Core.Ecs.System.Manager.Network;
 using Alis.Core.Ecs.System.Manager.Physic;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
+using Alis.Test.Core.Ecs.Entity.Sample;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.Entity
@@ -183,5 +184,217 @@ namespace Alis.Test.Core.Ecs.Entity
             Assert.True(containsAfterAdd);
             Assert.False(containsAfterRemove);
         }
+        
+        /// <summary>
+        /// Tests that set context should set context
+        /// </summary>
+        [Fact]
+        public void SetContext_ShouldSetContext()
+        {
+            Scene scene = new Scene();
+            Context context = new Context(
+                new VideoGame(
+                    new Settings(),
+                    new AudioManager(),
+                    new GraphicManager(),
+                    new InputManager(),
+                    new NetworkManager(),
+                    new PhysicManager(),
+                    new SceneManager()),
+                new Settings()
+            );
+            
+            scene.SetContext(context);
+            
+            Assert.Equal(context, scene.Context);
+        }
+        
+        /// <summary>
+        /// Tests that set context should set context in game objects
+        /// </summary>
+        [Fact]
+        public void SetContext_ShouldSetContextInGameObjects()
+        {
+            Scene scene = new Scene();
+            Context context = new Context(
+                new VideoGame(
+                    new Settings(),
+                    new AudioManager(),
+                    new GraphicManager(),
+                    new InputManager(),
+                    new NetworkManager(),
+                    new PhysicManager(),
+                    new SceneManager()),
+                new Settings()
+            );
+            GameObject gameObject = new GameObject();
+            scene.Add(gameObject);
+            
+            scene.SetContext(context);
+            
+            Assert.Equal(context, gameObject.Context);
+        }
+        
+        /// <summary>
+        /// Tests that context set value should change context
+        /// </summary>
+        [Fact]
+        public void Context_SetValue_ShouldChangeContext()
+        {
+            Scene scene = new Scene();
+            Context context = new Context(
+                new VideoGame(
+                    new Settings(),
+                    new AudioManager(),
+                    new GraphicManager(),
+                    new InputManager(),
+                    new NetworkManager(),
+                    new PhysicManager(),
+                    new SceneManager()),
+                new Settings()
+            );
+            
+            scene.Context = context;
+            
+            Assert.Equal(context, scene.Context);
+        }
+        
+        /// <summary>
+        /// Tests that id get set should get and set id
+        /// </summary>
+        [Fact]
+        public void Id_GetSet_ShouldGetAndSetId()
+        {
+            Scene scene = new Scene();
+            string expectedId = "1";
+            
+            scene.Id = expectedId;
+            
+            Assert.Equal(expectedId, scene.Id);
+        }
+        
+        /// <summary>
+        /// Tests that tag get set should get and set tag
+        /// </summary>
+        [Fact]
+        public void Tag_GetSet_ShouldGetAndSetTag()
+        {
+            Scene scene = new Scene();
+            string expectedTag = "TestTag";
+            
+            scene.Tag = expectedTag;
+            
+            Assert.Equal(expectedTag, scene.Tag);
+        }
+        
+        /// <summary>
+        /// Tests that clear should clear game objects
+        /// </summary>
+        [Fact]
+        public void Clear_ShouldClearGameObjects()
+        {
+            Scene scene = new Scene();
+            GameObject gameObject1 = new GameObject();
+            GameObject gameObject2 = new GameObject();
+            scene.Add(gameObject1);
+            scene.Add(gameObject2);
+            
+            scene.Clear<GameObject>();
+            
+            Assert.False(scene.Contains<GameObject>());
+        }
+        
+        /// <summary>
+        /// Tests that on init calls on init on all game objects
+        /// </summary>
+        [Fact]
+        public void OnInit_CallsOnInitOnAllGameObjects()
+        {
+            Scene scene = new Scene();
+            MockGameObject mockGameObject1 = new MockGameObject();
+            MockGameObject mockGameObject2 = new MockGameObject();
+            scene.GameObjects.Add(mockGameObject1);
+            scene.GameObjects.Add(mockGameObject2);
+            
+            scene.OnInit();
+        }
+        
+        /// <summary>
+        /// Tests that on awake calls on awake on all game objects
+        /// </summary>
+        [Fact]
+        public void OnAwake_CallsOnAwakeOnAllGameObjects()
+        {
+            Scene scene = new Scene();
+            MockGameObject mockGameObject1 = new MockGameObject();
+            MockGameObject mockGameObject2 = new MockGameObject();
+            scene.GameObjects.Add(mockGameObject1);
+            scene.GameObjects.Add(mockGameObject2);
+            
+            scene.OnAwake();
+        }
+        
+        /// <summary>
+        /// Tests that on reset calls on reset on all game objects
+        /// </summary>
+        [Fact]
+        public void OnReset_CallsOnResetOnAllGameObjects()
+        {
+            Scene scene = new Scene();
+            MockGameObject mockGameObject1 = new MockGameObject();
+            MockGameObject mockGameObject2 = new MockGameObject();
+            scene.GameObjects.Add(mockGameObject1);
+            scene.GameObjects.Add(mockGameObject2);
+            
+            scene.OnReset();
+        }
+        
+        /// <summary>
+        /// Tests that on stop calls on stop on all game objects
+        /// </summary>
+        [Fact]
+        public void OnStop_CallsOnStopOnAllGameObjects()
+        {
+            Scene scene = new Scene();
+            MockGameObject mockGameObject1 = new MockGameObject();
+            MockGameObject mockGameObject2 = new MockGameObject();
+            scene.GameObjects.Add(mockGameObject1);
+            scene.GameObjects.Add(mockGameObject2);
+            
+            scene.OnStop();
+        }
+        
+        /// <summary>
+        /// Tests that on exit calls on exit on all game objects
+        /// </summary>
+        [Fact]
+        public void OnExit_CallsOnExitOnAllGameObjects()
+        {
+            Scene scene = new Scene();
+            MockGameObject mockGameObject1 = new MockGameObject();
+            MockGameObject mockGameObject2 = new MockGameObject();
+            scene.GameObjects.Add(mockGameObject1);
+            scene.GameObjects.Add(mockGameObject2);
+            
+            scene.OnExit();
+        }
+        
+        /// <summary>
+        /// Tests that on destroy calls on destroy on all game objects
+        /// </summary>
+        [Fact]
+        public void OnDestroy_CallsOnDestroyOnAllGameObjects()
+        {
+            Scene scene = new Scene();
+            MockGameObject mockGameObject1 = new MockGameObject();
+            MockGameObject mockGameObject2 = new MockGameObject();
+            scene.GameObjects.Add(mockGameObject1);
+            scene.GameObjects.Add(mockGameObject2);
+            
+            scene.OnDestroy();
+            
+        }
+        
+        
     }
 }

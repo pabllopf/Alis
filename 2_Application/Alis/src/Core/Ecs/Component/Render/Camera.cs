@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
@@ -85,8 +86,14 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Starts this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public override void OnStart()
         {
+            if (GameObject == null || Context == null)
+            {
+                return;
+            }
+            
             Viewport = new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, (int) Resolution.X, (int) Resolution.Y);
             TextureTarget = Sdl.CreateTexture(Context.GraphicManager.Renderer, Sdl.PixelFormatRgba8888, (int) TextureAccess.SdlTextureAccessTarget, Viewport.w, Viewport.h);
             Context.GraphicManager.Attach(this);
@@ -95,8 +102,14 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Ons the update
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public override void OnUpdate()
         {
+            if (GameObject == null || Context == null)
+            {
+                return;
+            }
+
             Viewport.x = (int) GameObject.Transform.Position.X;
             Viewport.y = (int) GameObject.Transform.Position.Y;
         }

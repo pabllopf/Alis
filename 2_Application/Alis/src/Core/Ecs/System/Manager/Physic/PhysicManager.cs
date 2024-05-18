@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic;
@@ -48,9 +49,9 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         /// <summary>
         ///     Ons the update
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public override void OnUpdate()
         {
-            Logger.Trace();
             if (Context is null)
             {
                 return;

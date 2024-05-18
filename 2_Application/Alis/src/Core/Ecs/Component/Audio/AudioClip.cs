@@ -60,7 +60,8 @@ namespace Alis.Core.Ecs.Component.Audio
         /// <summary>
         /// Gets or sets the value of the is playing
         /// </summary>
-        public bool IsPlaying { get; set; }
+        public bool IsPlaying { get;  set; }
+        
         /// <summary>
         /// Gets or sets the value of the is mute
         /// </summary>
@@ -69,6 +70,7 @@ namespace Alis.Core.Ecs.Component.Audio
         /// Gets or sets the value of the is looping
         /// </summary>
         public bool IsLooping { get; set; }
+        
         /// <summary>
         /// Gets or sets the value of the volume
         /// </summary>

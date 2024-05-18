@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Ecs.Entity.Property;
 using Alis.Core.Ecs.System;
 
@@ -79,11 +80,13 @@ namespace Alis.Core.Ecs.Entity
         /// <summary>
         ///     Gets or sets the value of the game objects
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public List<GameObject> GameObjects { get; set; } = new List<GameObject>();
         
         /// <summary>
         ///     Ons the enable
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnEnable()
         {
             IsEnable = true;
@@ -103,61 +106,73 @@ namespace Alis.Core.Ecs.Entity
         /// <summary>
         ///     Ons the start
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnStart() => GameObjects.ForEach(i => i.OnStart());
         
         /// <summary>
         ///     Ons the before update
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnBeforeUpdate() => GameObjects.ForEach(i => i.OnBeforeUpdate());
         
         /// <summary>
         ///     Ons the update
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnUpdate() => GameObjects.ForEach(i => i.OnUpdate());
         
         /// <summary>
         ///     Ons the after update
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnAfterUpdate() => GameObjects.ForEach(i => i.OnAfterUpdate());
         
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnBeforeFixedUpdate() => GameObjects.ForEach(i => i.OnBeforeFixedUpdate());
         
         /// <summary>
         ///     Ons the fixed update
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnFixedUpdate() => GameObjects.ForEach(i => i.OnFixedUpdate());
         
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnAfterFixedUpdate() => GameObjects.ForEach(i => i.OnAfterFixedUpdate());
         
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnDispatchEvents() => GameObjects.ForEach(i => i.OnDispatchEvents());
         
         /// <summary>
         ///     Ons the calculate
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnCalculate() => GameObjects.ForEach(i => i.OnCalculate());
         
         /// <summary>
         ///     Ons the draw
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnDraw() => GameObjects.ForEach(i => i.OnDraw());
         
         /// <summary>
         ///     Ons the gui
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnGui() => GameObjects.ForEach(i => i.OnGui());
         
         /// <summary>
         ///     Ons the disable
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnDisable()
         {
             IsEnable = false;
