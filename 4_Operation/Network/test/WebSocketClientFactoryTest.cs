@@ -30,9 +30,11 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Net.Security;
 using System.Net.Sockets;
 using System.Net.WebSockets;
+using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Network.Exceptions;
 using Xunit;
@@ -291,5 +293,86 @@ namespace Alis.Core.Network.Test
             // Check if the length of the byte array is 16
             Assert.Equal(16, base64Bytes);
         }
+        
+        /// <summary>
+        /// Tests that tls authenticate as client test
+        /// </summary>
+        [Fact]
+        public void TlsAuthenticateAsClient_Test()
+        {
+            WebSocketClientFactory webSocketClientFactory = new WebSocketClientFactory();
+            string host = "localhost";
+            Assert.Throws<IOException>(() => webSocketClientFactory.TlsAuthenticateAsClient(new SslStream(new NetworkStream(new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))), host));
+        }
+        
+        /// <summary>
+        /// Tests that send handshake request test
+        /// </summary>
+        [Fact]
+        public async Task SendHandshakeRequest_Test()
+        {
+            WebSocketClientFactory webSocketClientFactory = new WebSocketClientFactory();
+            Guid guid = Guid.NewGuid();
+            string handshakeHttpRequest = "GET / HTTP/1.1\r\n" +
+                                          "Host: localhost:80\r\n" +
+                                          "Upgrade: websocket\r\n" +
+                                          "Connection: Upgrade\r\n" +
+                                          "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\n" +
+                                          "Origin: http://localhost:80\r\n" +
+                                          "Sec-WebSocket-Protocol: chat\r\n" +
+                                          "Sec-WebSocket-Version: 13\r\n\r\n";
+            MemoryStream stream = new MemoryStream();
+            
+            await webSocketClientFactory.SendHandshakeRequest(stream, handshakeHttpRequest, guid);
+            
+            stream.Position = 0;
+            StreamReader reader = new StreamReader(stream);
+            string result = await reader.ReadToEndAsync();
+            
+            Assert.Equal(handshakeHttpRequest, result);
+        }
+        
+        /// <summary>
+        /// Tests that build handshake request test
+        /// </summary>
+        [Fact]
+        public void BuildHandshakeRequest_Test()
+        {
+            WebSocketClientFactory webSocketClientFactory = new WebSocketClientFactory();
+            Uri uri = new Uri("http://localhost:80");
+            string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ=="; // Sample key
+            string secWebSocketProtocol = "chat";
+            string additionalHeaders = "Additional-Header: Value\r\n";
+            
+            string result = webSocketClientFactory.BuildHandshakeRequest(uri, secWebSocketKey, secWebSocketProtocol, additionalHeaders);
+            
+            string expected = "GET / HTTP/1.1\r\n" +
+                              "Host: localhost:80\r\n" +
+                              "Upgrade: websocket\r\n" +
+                              "Connection: Upgrade\r\n" +
+                              "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\n" +
+                              "Origin: http://localhost:80\r\n" +
+                              "Sec-WebSocket-Protocol: chat\r\n" +
+                              "Additional-Header: Value\r\n" +
+                              "Sec-WebSocket-Version: 13\r\n\r\n";
+            
+            Assert.Equal(expected, result);
+        }
+        
+        /// <summary>
+        /// Tests that perform handshake test
+        /// </summary>
+        [Fact]
+        public async Task PerformHandshake_Test()
+        {
+            WebSocketClientFactory webSocketClientFactory = new WebSocketClientFactory();
+            Guid guid = Guid.NewGuid();
+            Uri uri = new Uri("http://localhost:80");
+            MemoryStream stream = new MemoryStream();
+            WebSocketClientOptions options = new WebSocketClientOptions();
+            
+            await Assert.ThrowsAsync<InvalidHttpResponseCodeException>(() => webSocketClientFactory.PerformHandshake(guid, uri, stream, options, CancellationToken.None));
+        }
+        
     }
 }

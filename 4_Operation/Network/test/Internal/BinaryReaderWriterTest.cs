@@ -229,6 +229,38 @@ namespace Alis.Core.Network.Test.Internal
             Assert.True(result > 0);
         }
         
+        /// <summary>
+        /// Tests that reverse buffer test
+        /// </summary>
+        [Fact]
+        public void ReverseBuffer_Test()
+        {
+            byte[] initialArray = new byte[] {1, 2, 3, 4, 5, 6, 7, 8};
+            ArraySegment<byte> buffer = new ArraySegment<byte>(initialArray);
+            
+            BinaryReaderWriter.ReverseBuffer(buffer);
+            
+            byte[] expectedArray = new byte[] {8, 7, 6, 5, 4, 3, 2, 1};
+            Assert.Equal(expectedArray, buffer.Array);
+        }
         
+        /// <summary>
+        /// Tests that handle endianness test
+        /// </summary>
+        [Fact]
+        public void HandleEndianness_Test()
+        {
+            byte[] initialArray = new byte[] {1, 2, 3, 4, 5, 6, 7, 8};
+            ArraySegment<byte> buffer = new ArraySegment<byte>(initialArray);
+            
+            BinaryReaderWriter.HandleEndianness(false, buffer);
+            
+            byte[] expectedArray = new byte[] {8, 7, 6, 5, 4, 3, 2, 1};
+            Assert.Equal(expectedArray, buffer.Array);
+            
+            BinaryReaderWriter.HandleEndianness(true, buffer);
+            
+            Assert.Equal(initialArray, buffer.Array);
+        }
     }
 }

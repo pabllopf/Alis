@@ -44,17 +44,17 @@ namespace Alis.Core.Network
         /// <summary>
         ///     The buffer pool internal
         /// </summary>
-        private readonly BufferPool _bufferPoolInternal;
+        internal readonly BufferPool _bufferPoolInternal;
         
         /// <summary>
         ///     The buffer
         /// </summary>
-        private byte[] _buffer;
+        internal byte[] _buffer;
         
         /// <summary>
         ///     The ms
         /// </summary>
-        private MemoryStream _ms;
+        internal MemoryStream _ms;
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="PublicBufferMemoryStream" /> class
@@ -67,11 +67,6 @@ namespace Alis.Core.Network
             _buffer = buffer;
             _ms = new MemoryStream(buffer, 0, buffer.Length, true, true);
         }
-        
-        /// <summary>
-        ///     Gets the value of the length
-        /// </summary>
-        public override long Length => base.Length;
         
         /// <summary>
         ///     Gets the value of the can read
@@ -230,48 +225,117 @@ namespace Alis.Core.Network
         ///     Tried to create a buffer ({requiredSize:#,##0} bytes) that was
         ///     larger than the max allowed size ({int.MaxValue:#,##0})
         /// </exception>
-        private void EnlargeBufferIfRequired(int count)
+        internal void EnlargeBufferIfRequired(int count)
         {
-            // we cannot fit the data into the existing buffer, time for a new buffer
-            if (count > _buffer.Length - _ms.Position)
+            if (IsNewBufferRequired(count))
             {
-                int position = (int) _ms.Position;
-                
-                // double the buffer size
-                long newSize = (long) _buffer.Length * 2;
-                
-                // make sure the new size is big enough
-                long requiredSize = (long) count + _buffer.Length - position;
-                
-                if (requiredSize > int.MaxValue)
-                {
-                    throw new WebSocketBufferOverflowException(
-                        $"Tried to create a buffer ({requiredSize:#,##0} bytes) that was larger than the max allowed size ({int.MaxValue:#,##0})");
-                }
-                
-                if (requiredSize > newSize)
-                {
-                    // compute the power of two larger than requiredSize. so 40000 => 65536
-                    long candidateSize = (long) Math.Pow(2, Math.Ceiling(Math.Log(requiredSize) / Math.Log(2)));
-                    if (candidateSize > int.MaxValue)
-                    {
-                        newSize = requiredSize;
-                    }
-                    else
-                    {
-                        newSize = candidateSize;
-                    }
-                }
-                
-                byte[] newBuffer = new byte[newSize];
-                Buffer.BlockCopy(_buffer, 0, newBuffer, 0, position);
-                _ms = new MemoryStream(newBuffer, 0, newBuffer.Length, true, true)
-                {
-                    Position = position
-                };
-                
-                _buffer = newBuffer;
+                CreateNewBuffer(count);
             }
+        }
+        
+        /// <summary>
+        /// Describes whether this instance is new buffer required
+        /// </summary>
+        /// <param name="count">The count</param>
+        /// <returns>The bool</returns>
+        internal bool IsNewBufferRequired(int count)
+        {
+            return count > _buffer.Length - _ms.Position;
+        }
+        
+        /// <summary>
+        /// Creates the new buffer using the specified count
+        /// </summary>
+        /// <param name="count">The count</param>
+        internal void CreateNewBuffer(int count)
+        {
+            int position = (int) _ms.Position;
+            long newSize = CalculateNewSize(count, position);
+            byte[] newBuffer = new byte[newSize];
+            Buffer.BlockCopy(_buffer, 0, newBuffer, 0, position);
+            _ms = new MemoryStream(newBuffer, 0, newBuffer.Length, true, true)
+            {
+                Position = position
+            };
+            _buffer = newBuffer;
+        }
+        
+        /// <summary>
+        /// Calculates the new size using the specified count
+        /// </summary>
+        /// <param name="count">The count</param>
+        /// <param name="position">The position</param>
+        /// <exception cref="WebSocketBufferOverflowException">Tried to create a buffer ({requiredSize:#,##0} bytes) that was larger than the max allowed size ({int.MaxValue:#,##0})</exception>
+        /// <returns>The new size</returns>
+        internal long CalculateNewSize(int count, int position)
+        {
+            long newSize = CalculateInitialNewSize();
+            long requiredSize = CalculateRequiredSize(count, position);
+            
+            ValidateRequiredSize(requiredSize);
+            
+            if (IsNewSizeLessThanRequiredSize(newSize, requiredSize))
+            {
+                newSize = ComputeCandidateSize(requiredSize);
+            }
+            
+            return newSize;
+        }
+        
+        /// <summary>
+        /// Calculates the initial new size
+        /// </summary>
+        /// <returns>The long</returns>
+        internal long CalculateInitialNewSize()
+        {
+            return (long) _buffer.Length * 2;
+        }
+        
+        /// <summary>
+        /// Calculates the required size using the specified count
+        /// </summary>
+        /// <param name="count">The count</param>
+        /// <param name="position">The position</param>
+        /// <returns>The long</returns>
+        internal long CalculateRequiredSize(int count, int position)
+        {
+            return (long) count + _buffer.Length - position;
+        }
+        
+        /// <summary>
+        /// Validates the required size using the specified required size
+        /// </summary>
+        /// <param name="requiredSize">The required size</param>
+        /// <exception cref="WebSocketBufferOverflowException">Tried to create a buffer ({requiredSize:#,##0} bytes) that was larger than the max allowed size ({int.MaxValue:#,##0})</exception>
+        internal void ValidateRequiredSize(long requiredSize)
+        {
+            if (requiredSize > int.MaxValue)
+            {
+                throw new WebSocketBufferOverflowException(
+                    $"Tried to create a buffer ({requiredSize:#,##0} bytes) that was larger than the max allowed size ({int.MaxValue:#,##0})");
+            }
+        }
+        
+        /// <summary>
+        /// Describes whether this instance is new size less than required size
+        /// </summary>
+        /// <param name="newSize">The new size</param>
+        /// <param name="requiredSize">The required size</param>
+        /// <returns>The bool</returns>
+        internal bool IsNewSizeLessThanRequiredSize(long newSize, long requiredSize)
+        {
+            return requiredSize > newSize;
+        }
+        
+        /// <summary>
+        /// Computes the candidate size using the specified required size
+        /// </summary>
+        /// <param name="requiredSize">The required size</param>
+        /// <returns>The long</returns>
+        internal long ComputeCandidateSize(long requiredSize)
+        {
+            long candidateSize = (long) Math.Pow(2, Math.Ceiling(Math.Log(requiredSize) / Math.Log(2)));
+            return candidateSize > int.MaxValue ? requiredSize : candidateSize;
         }
         
         /// <summary>
@@ -308,13 +372,6 @@ namespace Alis.Core.Network
             EnlargeBufferIfRequired(count);
             return _ms.WriteAsync(buffer, offset, count);
         }
-        
-        /// <summary>
-        ///     Initializes the lifetime service
-        /// </summary>
-        /// <returns>The object</returns>
-        [Obsolete("Obsolete")]
-        public override object InitializeLifetimeService() => _ms.InitializeLifetimeService();
         
         /// <summary>
         ///     Reads the buffer
@@ -357,19 +414,6 @@ namespace Alis.Core.Network
         public override byte[] ToArray() =>
             // you should never call this
             _ms.ToArray();
-        
-#if !NET45
-        /// <summary>
-        ///     Describes whether this instance try get buffer
-        /// </summary>
-        /// <param name="buffer">The buffer</param>
-        /// <returns>The bool</returns>
-        public override bool TryGetBuffer(out ArraySegment<byte> buffer)
-        {
-            buffer = new ArraySegment<byte>(_buffer, 0, (int) _ms.Position);
-            return true;
-        }
-#endif
         
         /// <summary>
         ///     Writes the to using the specified stream

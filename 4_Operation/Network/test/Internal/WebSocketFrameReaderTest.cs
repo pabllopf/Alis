@@ -111,8 +111,8 @@ namespace Alis.Core.Network.Test.Internal
             MemoryStream stream = new MemoryStream();
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
             CancellationToken cancellationToken = new CancellationToken();
-
-            await Assert.ThrowsAsync<EndOfStreamException>( () => WebSocketFrameReader.ReadAsync(stream, buffer, cancellationToken));
+            
+            await Assert.ThrowsAsync<EndOfStreamException>(() => WebSocketFrameReader.ReadAsync(stream, buffer, cancellationToken));
             
             // Here you would assert that the properties of result have been set correctly.
         }
@@ -149,6 +149,146 @@ namespace Alis.Core.Network.Test.Internal
             WebSocketFrame result = WebSocketFrameReader.DecodeCloseFrame(isFinBitSet, opCode, count, buffer, maskKey);
             
             // Here you would assert that the properties of result have been set correctly.
+        }
+        
+        /// <summary>
+        /// Tests that read short length valid input
+        /// </summary>
+        [Fact]
+        public async Task ReadShortLength_ValidInput()
+        {
+            MemoryStream stream = new MemoryStream();
+            ArraySegment<byte> smallBuffer = new ArraySegment<byte>(new byte[8]);
+            CancellationToken cancellationToken = new CancellationToken();
+            
+            // Write ushort value to stream
+            ushort value = 12345;
+            byte[] bytes = BitConverter.GetBytes(value);
+            await stream.WriteAsync(bytes, 0, bytes.Length);
+            stream.Position = 0;
+            
+            uint result = await WebSocketFrameReader.ReadShortLength(stream, smallBuffer, cancellationToken);
+        }
+        
+        /// <summary>
+        /// Tests that read long length valid input
+        /// </summary>
+        [Fact]
+        public async Task ReadLongLength_ValidInput()
+        {
+            MemoryStream stream = new MemoryStream();
+            ArraySegment<byte> smallBuffer = new ArraySegment<byte>(new byte[8]);
+            CancellationToken cancellationToken = new CancellationToken();
+            
+            // Write ulong value to stream
+            ulong value = 4094698001;
+            byte[] bytes = BitConverter.GetBytes(value);
+            await stream.WriteAsync(bytes, 0, bytes.Length);
+            stream.Position = 0;
+            
+            uint result = await WebSocketFrameReader.ReadLongLength(stream, smallBuffer, cancellationToken);
+        }
+        
+        /// <summary>
+        /// Tests that read length initial length test
+        /// </summary>
+        [Fact]
+        public async Task ReadLength_InitialLength_Test()
+        {
+            byte byte2 = 125;
+            ArraySegment<byte> smallBuffer = new ArraySegment<byte>(new byte[8]);
+            MemoryStream fromStream = new MemoryStream(new byte[8]);
+            CancellationToken cancellationToken = new CancellationToken();
+            
+            uint result = await WebSocketFrameReader.ReadLength(byte2, smallBuffer, fromStream, cancellationToken);
+            
+            Assert.True(result > 0);
+        }
+        
+        /// <summary>
+        /// Tests that read length short length test
+        /// </summary>
+        [Fact]
+        public async Task ReadLength_ShortLength_Test()
+        {
+            byte byte2 = 126;
+            ArraySegment<byte> smallBuffer = new ArraySegment<byte>(new byte[8]);
+            MemoryStream fromStream = new MemoryStream(BitConverter.GetBytes((ushort) 500));
+            CancellationToken cancellationToken = new CancellationToken();
+            
+            uint result = await WebSocketFrameReader.ReadLength(byte2, smallBuffer, fromStream, cancellationToken);
+            
+            Assert.True(result > 0);
+        }
+        
+        /// <summary>
+        /// Tests that read length long length test
+        /// </summary>
+        [Fact]
+        public async Task ReadLength_LongLength_Test()
+        {
+            byte byte2 = 127;
+            ArraySegment<byte> smallBuffer = new ArraySegment<byte>(new byte[8]);
+            MemoryStream fromStream = new MemoryStream(BitConverter.GetBytes((ulong) 50000));
+            CancellationToken cancellationToken = new CancellationToken();
+            
+            uint result = await WebSocketFrameReader.ReadLength(byte2, smallBuffer, fromStream, cancellationToken);
+            
+            Assert.False(result > 0);
+        }
+        
+        /// <summary>
+        /// Tests that read length invalid length test
+        /// </summary>
+        [Fact]
+        public async Task ReadLength_InvalidLength_Test()
+        {
+            byte byte2 = 128;
+            ArraySegment<byte> smallBuffer = new ArraySegment<byte>(new byte[8]);
+            MemoryStream fromStream = new MemoryStream(new byte[8]);
+            CancellationToken cancellationToken = new CancellationToken();
+            
+            await WebSocketFrameReader.ReadLength(byte2, smallBuffer, fromStream, cancellationToken);
+        }
+        
+        /// <summary>
+        /// Tests that validate length valid length test
+        /// </summary>
+        [Fact]
+        public void ValidateLength_ValidLength_Test()
+        {
+            uint validLength = 2048;
+            WebSocketFrameReader.ValidateLength(validLength);
+        }
+        
+        /// <summary>
+        /// Tests that validate length invalid length test
+        /// </summary>
+        [Fact]
+        public void ValidateLength_InvalidLength_Test()
+        {
+            uint invalidLength = 2147483649;
+            Assert.Throws<ArgumentOutOfRangeException>(() => WebSocketFrameReader.ValidateLength(invalidLength));
+        }
+        
+        /// <summary>
+        /// Tests that calculate num bytes to read test
+        /// </summary>
+        [Fact]
+        public void CalculateNumBytesToRead_Test()
+        {
+            int bufferSize = 10;
+            int numBytesLeftToRead = 5;
+            
+            int result = WebSocketFrameReader.CalculateNumBytesToRead(numBytesLeftToRead, bufferSize);
+            
+            Assert.Equal(numBytesLeftToRead, result);
+            
+            numBytesLeftToRead = 15;
+            
+            result = WebSocketFrameReader.CalculateNumBytesToRead(numBytesLeftToRead, bufferSize);
+            
+            Assert.Equal(bufferSize - bufferSize % 4, result);
         }
     }
 }
