@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Tracing;
 using System.Net.Security;
 using System.Net.WebSockets;
@@ -39,6 +40,7 @@ namespace Alis.Core.Network.Internal
     ///     characters)
     /// </summary>
     [EventSource(Name = "Ninja-WebSockets", Guid = "7DE1A071-4F85-4DBD-8FB1-EE8D3845E087")]
+    [ExcludeFromCodeCoverage]
     internal sealed class Events : EventSource
     {
         /// <summary>

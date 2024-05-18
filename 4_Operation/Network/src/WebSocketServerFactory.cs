@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net.WebSockets;
 using System.Text.RegularExpressions;
@@ -47,12 +48,12 @@ namespace Alis.Core.Network
         /// <summary>
         ///     The buffer factory
         /// </summary>
-        private readonly Func<MemoryStream> _bufferFactory;
+        internal readonly Func<MemoryStream> _bufferFactory;
         
         /// <summary>
         ///     The buffer pool
         /// </summary>
-        private readonly IBufferPool _bufferPool;
+        internal readonly IBufferPool _bufferPool;
         
         /// <summary>
         ///     Initialises a new instance of the WebSocketServerFactory class without caring about internal buffers
@@ -62,12 +63,6 @@ namespace Alis.Core.Network
             _bufferPool = new BufferPool();
             _bufferFactory = _bufferPool.GetBuffer;
         }
-        
-        /// <summary>
-        ///     Initialises a new instance of the WebSocketClientFactory class with control over internal buffer creation
-        /// </summary>
-        /// <param name="bufferFactory"></param>
-        public WebSocketServerFactory(Func<MemoryStream> bufferFactory) => _bufferFactory = bufferFactory;
         
         /// <summary>
         ///     Reads a http header information from a stream and decodes the parts relating to the WebSocket protocot upgrade
@@ -104,6 +99,7 @@ namespace Alis.Core.Network
         /// <param name="options">The web socket options</param>
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket</returns>
+        [ExcludeFromCodeCoverage]
         public async Task<WebSocket> AcceptWebSocketAsync(WebSocketHttpContext context, WebSocketServerOptions options,
             CancellationToken token = default(CancellationToken))
         {
@@ -111,9 +107,8 @@ namespace Alis.Core.Network
             Events.Log.AcceptWebSocketStarted(guid);
             await PerformHandshakeAsync(guid, context.HttpHeader, options.SubProtocol, context.Stream, token);
             Events.Log.ServerHandshakeSuccess(guid);
-            string secWebSocketExtensions = null;
             return new WebSocketImplementation(guid, _bufferFactory, context.Stream, options.KeepAliveInterval,
-                secWebSocketExtensions, options.IncludeExceptionInCloseResponse, false, options.SubProtocol);
+                null, options.IncludeExceptionInCloseResponse, false, options.SubProtocol);
         }
         
         /// <summary>
@@ -122,26 +117,45 @@ namespace Alis.Core.Network
         /// <param name="httpHeader">The http header</param>
         /// <exception cref="WebSocketVersionNotSupportedException"></exception>
         /// <exception cref="WebSocketVersionNotSupportedException">Cannot find "Sec-WebSocket-Version" in http header</exception>
-        private static void CheckWebSocketVersion(string httpHeader)
+        internal static void CheckWebSocketVersion(string httpHeader)
+        {
+            var webSocketVersion = ExtractWebSocketVersion(httpHeader);
+            ValidateWebSocketVersion(webSocketVersion);
+        }
+        
+        /// <summary>
+        /// Extracts the web socket version using the specified http header
+        /// </summary>
+        /// <param name="httpHeader">The http header</param>
+        /// <exception cref="WebSocketVersionNotSupportedException">Cannot find "Sec-WebSocket-Version" in http header</exception>
+        /// <returns>The int</returns>
+        internal static int ExtractWebSocketVersion(string httpHeader)
         {
             Regex webSocketVersionRegex = new Regex("Sec-WebSocket-Version: (.*)", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
-            
-            // check the version. Support version 13 and above
-            const int webSocketVersion = 13;
             Match match = webSocketVersionRegex.Match(httpHeader);
-            if (match.Success)
-            {
-                int secWebSocketVersion = Convert.ToInt32(match.Groups[1].Value.Trim());
-                if (secWebSocketVersion < webSocketVersion)
-                {
-                    throw new WebSocketVersionNotSupportedException(string.Format(
-                        "WebSocket Version {0} not suported. Must be {1} or above", secWebSocketVersion,
-                        webSocketVersion));
-                }
-            }
-            else
+            
+            if (!match.Success)
             {
                 throw new WebSocketVersionNotSupportedException("Cannot find \"Sec-WebSocket-Version\" in http header");
+            }
+            
+            return Convert.ToInt32(match.Groups[1].Value.Trim());
+        }
+        
+        /// <summary>
+        /// Validates the web socket version using the specified sec web socket version
+        /// </summary>
+        /// <param name="secWebSocketVersion">The sec web socket version</param>
+        /// <exception cref="WebSocketVersionNotSupportedException"></exception>
+        internal static void ValidateWebSocketVersion(int secWebSocketVersion)
+        {
+            const int webSocketVersion = 13;
+            
+            if (secWebSocketVersion < webSocketVersion)
+            {
+                throw new WebSocketVersionNotSupportedException(string.Format(
+                    "WebSocket Version {0} not suported. Must be {1} or above", secWebSocketVersion,
+                    webSocketVersion));
             }
         }
         
@@ -154,46 +168,117 @@ namespace Alis.Core.Network
         /// <param name="stream">The stream</param>
         /// <param name="token">The token</param>
         /// <exception cref="SecWebSocketKeyMissingException">Unable to read "Sec-WebSocket-Key" from http header</exception>
-        private static async Task PerformHandshakeAsync(Guid guid, string httpHeader, string subProtocol, Stream stream,
+        [ExcludeFromCodeCoverage]
+        internal static async Task PerformHandshakeAsync(Guid guid, string httpHeader, string subProtocol, Stream stream,
             CancellationToken token)
         {
             try
             {
-                Regex webSocketKeyRegex = new Regex("Sec-WebSocket-Key: (.*)", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
-                CheckWebSocketVersion(httpHeader);
-                
-                Match match = webSocketKeyRegex.Match(httpHeader);
-                if (match.Success)
-                {
-                    string secWebSocketKey = match.Groups[1].Value.Trim();
-                    string setWebSocketAccept = HttpHelper.ComputeSocketAcceptString(secWebSocketKey);
-                    string response = "HTTP/1.1 101 Switching Protocols\r\n"
-                                      + "Connection: Upgrade\r\n"
-                                      + "Upgrade: websocket\r\n"
-                                      + (subProtocol != null ? $"Sec-WebSocket-Protocol: {subProtocol}\r\n" : "")
-                                      + $"Sec-WebSocket-Accept: {setWebSocketAccept}";
-                    
-                    Events.Log.SendingHandshakeResponse(guid, response);
-                    await HttpHelper.WriteHttpHeaderAsync(response, stream, token);
-                }
-                else
-                {
-                    throw new SecWebSocketKeyMissingException("Unable to read \"Sec-WebSocket-Key\" from http header");
-                }
+                await PerformHandshakeWithValidations(guid, httpHeader, subProtocol, stream, token);
             }
             catch (WebSocketVersionNotSupportedException ex)
             {
-                Events.Log.WebSocketVersionNotSupported(guid, ex.ToString());
-                string response = "HTTP/1.1 426 Upgrade Required\r\nSec-WebSocket-Version: 13" + ex.Message;
-                await HttpHelper.WriteHttpHeaderAsync(response, stream, token);
+                await HandleWebSocketVersionNotSupported(guid, ex, stream, token);
                 throw;
             }
             catch (Exception ex)
             {
-                Events.Log.BadRequest(guid, ex.ToString());
-                await HttpHelper.WriteHttpHeaderAsync("HTTP/1.1 400 Bad Request", stream, token);
+                await HandleBadRequest(guid, ex, stream, token);
                 throw;
             }
+        }
+        
+        /// <summary>
+        /// Performs the handshake with validations using the specified guid
+        /// </summary>
+        /// <param name="guid">The guid</param>
+        /// <param name="httpHeader">The http header</param>
+        /// <param name="subProtocol">The sub protocol</param>
+        /// <param name="stream">The stream</param>
+        /// <param name="token">The token</param>
+        internal static async Task PerformHandshakeWithValidations(Guid guid, string httpHeader, string subProtocol, Stream stream,
+            CancellationToken token)
+        {
+            string secWebSocketKey = ExtractWebSocketKey(httpHeader);
+            CheckWebSocketVersion(httpHeader);
+            string response = BuildHandshakeResponse(secWebSocketKey, subProtocol);
+            await SendHandshakeResponse(guid, response, stream, token);
+        }
+        
+        /// <summary>
+        /// Extracts the web socket key using the specified http header
+        /// </summary>
+        /// <param name="httpHeader">The http header</param>
+        /// <exception cref="SecWebSocketKeyMissingException">Unable to read "Sec-WebSocket-Key" from http header</exception>
+        /// <returns>The string</returns>
+        internal static string ExtractWebSocketKey(string httpHeader)
+        {
+            Regex webSocketKeyRegex = new Regex("Sec-WebSocket-Key: (.*)", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
+            Match match = webSocketKeyRegex.Match(httpHeader);
+            if (match.Success)
+            {
+                return match.Groups[1].Value.Trim();
+            }
+            else
+            {
+                throw new SecWebSocketKeyMissingException("Unable to read \"Sec-WebSocket-Key\" from http header");
+            }
+        }
+        
+        /// <summary>
+        /// Builds the handshake response using the specified sec web socket key
+        /// </summary>
+        /// <param name="secWebSocketKey">The sec web socket key</param>
+        /// <param name="subProtocol">The sub protocol</param>
+        /// <returns>The string</returns>
+        internal static string BuildHandshakeResponse(string secWebSocketKey, string subProtocol)
+        {
+            string setWebSocketAccept = HttpHelper.ComputeSocketAcceptString(secWebSocketKey);
+            return "HTTP/1.1 101 Switching Protocols\r\n"
+                   + "Connection: Upgrade\r\n"
+                   + "Upgrade: websocket\r\n"
+                   + (subProtocol != null ? $"Sec-WebSocket-Protocol: {subProtocol}\r\n" : "")
+                   + $"Sec-WebSocket-Accept: {setWebSocketAccept}";
+        }
+        
+        /// <summary>
+        /// Sends the handshake response using the specified guid
+        /// </summary>
+        /// <param name="guid">The guid</param>
+        /// <param name="response">The response</param>
+        /// <param name="stream">The stream</param>
+        /// <param name="token">The token</param>
+        internal static async Task SendHandshakeResponse(Guid guid, string response, Stream stream, CancellationToken token)
+        {
+            Events.Log.SendingHandshakeResponse(guid, response);
+            await HttpHelper.WriteHttpHeaderAsync(response, stream, token);
+        }
+        
+        /// <summary>
+        /// Handles the web socket version not supported using the specified guid
+        /// </summary>
+        /// <param name="guid">The guid</param>
+        /// <param name="ex">The ex</param>
+        /// <param name="stream">The stream</param>
+        /// <param name="token">The token</param>
+        internal static async Task HandleWebSocketVersionNotSupported(Guid guid, WebSocketVersionNotSupportedException ex, Stream stream, CancellationToken token)
+        {
+            Events.Log.WebSocketVersionNotSupported(guid, ex.ToString());
+            string response = "HTTP/1.1 426 Upgrade Required\r\nSec-WebSocket-Version: 13" + ex.Message;
+            await HttpHelper.WriteHttpHeaderAsync(response, stream, token);
+        }
+        
+        /// <summary>
+        /// Handles the bad request using the specified guid
+        /// </summary>
+        /// <param name="guid">The guid</param>
+        /// <param name="ex">The ex</param>
+        /// <param name="stream">The stream</param>
+        /// <param name="token">The token</param>
+        internal static async Task HandleBadRequest(Guid guid, Exception ex, Stream stream, CancellationToken token)
+        {
+            Events.Log.BadRequest(guid, ex.ToString());
+            await HttpHelper.WriteHttpHeaderAsync("HTTP/1.1 400 Bad Request", stream, token);
         }
     }
 }

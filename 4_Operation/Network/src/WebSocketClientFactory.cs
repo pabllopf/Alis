@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net;
 using System.Net.Security;
@@ -107,6 +108,7 @@ namespace Alis.Core.Network
         /// <param name="options">The WebSocket client options</param>
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket instance</returns>
+        [ExcludeFromCodeCoverage]
         public async Task<WebSocket> ConnectAsync(Uri uri, WebSocketClientOptions options,
             CancellationToken token = default(CancellationToken))
         {
@@ -132,6 +134,7 @@ namespace Alis.Core.Network
         /// <param name="options">The WebSocket client options</param>
         /// <param name="token">The optional cancellation token</param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         public async Task<WebSocket> ConnectAsync(Stream responseStream, string secWebSocketKey,
             WebSocketClientOptions options, CancellationToken token = default(CancellationToken))
         {
@@ -152,6 +155,7 @@ namespace Alis.Core.Network
         /// <param name="token">The token</param>
         /// <exception cref="WebSocketHandshakeFailedException">Handshake unexpected failure </exception>
         /// <returns>A task containing the web socket</returns>
+        [ExcludeFromCodeCoverage]
         internal async Task<WebSocket> ConnectAsync(Guid guid, Stream responseStream, string secWebSocketKey,
             TimeSpan keepAliveInterval, string secWebSocketExtensions, bool includeExceptionInCloseResponse,
             CancellationToken token)
@@ -224,6 +228,7 @@ namespace Alis.Core.Network
         /// <param name="responseHeader">The response header</param>
         /// <exception cref="InvalidHttpResponseCodeException"></exception>
         /// <exception cref="InvalidHttpResponseCodeException">null null </exception>
+        [ExcludeFromCodeCoverage]
         internal void ThrowIfInvalidResponseCode(string responseHeader)
         {
             string responseCode = HttpHelper.ReadHttpResponseCode(responseHeader);
@@ -258,6 +263,7 @@ namespace Alis.Core.Network
         ///     Override this if you need more fine grained control over the TLS handshake like setting the SslProtocol or adding a
         ///     client certificate
         /// </summary>
+        [ExcludeFromCodeCoverage]
         internal virtual void TlsAuthenticateAsClient(SslStream sslStream, string host)
         {
             sslStream.AuthenticateAsClient(host, null, SslProtocols.Tls12, true);
@@ -277,6 +283,7 @@ namespace Alis.Core.Network
         /// <param name="port">The destination port</param>
         /// <param name="cancellationToken">Used to cancel the request</param>
         /// <returns>A connected and open stream</returns>
+        [ExcludeFromCodeCoverage]
         internal virtual async Task<Stream> GetStream(Guid loggingGuid, bool isSecure, bool noDelay, string host,
             int port, CancellationToken cancellationToken)
         {
@@ -360,6 +367,7 @@ namespace Alis.Core.Network
         /// <param name="options">The options</param>
         /// <param name="token">The token</param>
         /// <returns>A task containing the web socket</returns>
+        [ExcludeFromCodeCoverage]
         internal async Task<WebSocket> PerformHandshake(Guid guid, Uri uri, Stream stream,
             WebSocketClientOptions options, CancellationToken token)
         {

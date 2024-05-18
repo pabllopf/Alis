@@ -51,7 +51,7 @@ namespace Alis.Core.Network.Test.Internal
             int port = 8080;
             
             Events.Log.ClientConnectingToIpAddress(guid, ipAddress, port);
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -65,7 +65,7 @@ namespace Alis.Core.Network.Test.Internal
             int port = 8080;
             
             Events.Log.ClientConnectingToHost(guid, host, port);
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -77,7 +77,7 @@ namespace Alis.Core.Network.Test.Internal
             Guid guid = Guid.NewGuid();
             
             Events.Log.AttemtingToSecureSslConnection(guid);
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -89,7 +89,7 @@ namespace Alis.Core.Network.Test.Internal
             Guid guid = Guid.NewGuid();
             
             Events.Log.ConnectionSecured(guid);
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -101,7 +101,7 @@ namespace Alis.Core.Network.Test.Internal
             Guid guid = Guid.NewGuid();
             
             Events.Log.ConnectionNotSecure(guid);
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -115,7 +115,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.CloseHandshakeComplete(guid);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -132,7 +132,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.CloseFrameReceivedInUnexpectedState(guid, webSocketState, closeStatus, statusDescription);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -147,7 +147,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.WebSocketDispose(guid, webSocketState);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -162,7 +162,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.WebSocketDisposeCloseTimeout(guid, webSocketState);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -178,7 +178,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.WebSocketDisposeError(guid, webSocketState, exception);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -193,7 +193,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.InvalidStateBeforeClose(guid, webSocketState);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -208,7 +208,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.InvalidStateBeforeCloseOutput(guid, webSocketState);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -223,7 +223,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.TryGetBufferNotSupported(guid, streamType);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -241,7 +241,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.SendingFrame(guid, webSocketOpCode, isFinBitSet, numBytes, isPayloadCompressed);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -258,7 +258,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.ReceivedFrame(guid, webSocketOpCode, isFinBitSet, numBytes);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -274,7 +274,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.CloseOutputNoHandshake(guid, closeStatus, statusDescription);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -290,7 +290,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.CloseHandshakeStarted(guid, closeStatus, statusDescription);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -306,7 +306,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.CloseHandshakeRespond(guid, closeStatus, statusDescription);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -320,7 +320,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.KeepAliveIntervalZero(guid);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -335,7 +335,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.PingPongManagerStarted(guid, keepAliveIntervalSeconds);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -349,7 +349,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.PingPongManagerEnded(guid);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -364,7 +364,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.KeepAliveIntervalExpired(guid, keepAliveIntervalSeconds);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -381,7 +381,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.CloseOutputAutoTimeout(guid, closeStatus, statusDescription, exception);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -399,7 +399,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.CloseOutputAutoTimeoutCancelled(guid, timeoutSeconds, closeStatus, statusDescription, exception);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -417,7 +417,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.CloseOutputAutoTimeoutError(guid, closeException, closeStatus, statusDescription, exception);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -431,7 +431,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.ServerHandshakeSuccess(guid);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -445,7 +445,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.AcceptWebSocketStarted(guid);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -460,7 +460,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.SendingHandshakeResponse(guid, response);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -475,7 +475,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.WebSocketVersionNotSupported(guid, exception);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -490,7 +490,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.BadRequest(guid, exception);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -504,7 +504,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.UsePerMessageDeflate(guid);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -518,7 +518,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.NoMessageCompression(guid);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -532,7 +532,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.SslCertificateError(sslPolicyErrors);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -547,7 +547,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.HandshakeSent(guid, httpHeader);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -561,7 +561,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.ReadingHttpResponse(guid);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -576,7 +576,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.ReadHttpResponseError(guid, exception);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -591,7 +591,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.InvalidHttpResponseCode(guid, response);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -606,7 +606,7 @@ namespace Alis.Core.Network.Test.Internal
             
             events.HandshakeFailure(guid, message);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -620,7 +620,690 @@ namespace Alis.Core.Network.Test.Internal
             
             events.ClientHandshakeSuccess(guid);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
+        }
+        
+        /// <summary>
+        /// Tests that client connecting to ip address test
+        /// </summary>
+        [Fact]
+        public void ClientConnectingToIpAddress_Test()
+        {
+            Guid guid = Guid.NewGuid();
+            string ipAddress = "127.0.0.1";
+            int port = 8080;
+            
+            Events.Log.ClientConnectingToIpAddress(guid, ipAddress, port);
+        }
+        
+        /// <summary>
+        /// Tests that web socket dispose error test
+        /// </summary>
+        [Fact]
+        public void WebSocketDisposeError_Test()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketState webSocketState = WebSocketState.Open;
+            string exception = "Test exception";
+            
+            Events.Log.WebSocketDisposeError(guid, webSocketState, exception);
+        }
+        
+        /// <summary>
+        /// Tests that invalid state before close test
+        /// </summary>
+        [Fact]
+        public void InvalidStateBeforeClose_Test()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketState webSocketState = WebSocketState.Open;
+            
+            Events.Log.InvalidStateBeforeClose(guid, webSocketState);
+        }
+        
+        /// <summary>
+        /// Tests that invalid state before close output test
+        /// </summary>
+        [Fact]
+        public void InvalidStateBeforeCloseOutput_Test()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketState webSocketState = WebSocketState.Open;
+            
+            Events.Log.InvalidStateBeforeCloseOutput(guid, webSocketState);
+        }
+        
+        /// <summary>
+        /// Tests that ping pong manager started test
+        /// </summary>
+        [Fact]
+        public void PingPongManagerStarted_Test()
+        {
+            Guid guid = Guid.NewGuid();
+            int keepAliveIntervalSeconds = 10;
+            
+            Events.Log.PingPongManagerStarted(guid, keepAliveIntervalSeconds);
+        }
+        
+        /// <summary>
+        /// Tests that ping pong manager ended test
+        /// </summary>
+        [Fact]
+        public void PingPongManagerEnded_Test()
+        {
+            Guid guid = Guid.NewGuid();
+            
+            Events.Log.PingPongManagerEnded(guid);
+        }
+        
+        /// <summary>
+        /// Tests that keep alive interval expired test
+        /// </summary>
+        [Fact]
+        public void KeepAliveIntervalExpired_Test()
+        {
+            Guid guid = Guid.NewGuid();
+            int keepAliveIntervalSeconds = 10;
+            
+            Events.Log.KeepAliveIntervalExpired(guid, keepAliveIntervalSeconds);
+        }
+        
+        /// <summary>
+        /// Tests that close output auto timeout test
+        /// </summary>
+        [Fact]
+        public void CloseOutputAutoTimeout_Test()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketCloseStatus closeStatus = WebSocketCloseStatus.EndpointUnavailable;
+            string statusDescription = "Test description";
+            string exception = "Test exception";
+            
+            Events.Log.CloseOutputAutoTimeout(guid, closeStatus, statusDescription, exception);
+        }
+        
+        /// <summary>
+        /// Tests that close output auto timeout cancelled test
+        /// </summary>
+        [Fact]
+        public void CloseOutputAutoTimeoutCancelled_Test()
+        {
+            Guid guid = Guid.NewGuid();
+            int timeoutSeconds = 10;
+            WebSocketCloseStatus closeStatus = WebSocketCloseStatus.EndpointUnavailable;
+            string statusDescription = "Test description";
+            string exception = "Test exception";
+            
+            Events.Log.CloseOutputAutoTimeoutCancelled(guid, timeoutSeconds, closeStatus, statusDescription, exception);
+        }
+        
+        /// <summary>
+        /// Tests that close output auto timeout error test
+        /// </summary>
+        [Fact]
+        public void CloseOutputAutoTimeoutError_Test()
+        {
+            Guid guid = Guid.NewGuid();
+            string closeException = "Test close exception";
+            WebSocketCloseStatus closeStatus = WebSocketCloseStatus.EndpointUnavailable;
+            string statusDescription = "Test description";
+            string exception = "Test exception";
+            
+            Events.Log.CloseOutputAutoTimeoutError(guid, closeException, closeStatus, statusDescription, exception);
+        }
+        
+        /// <summary>
+        /// Tests that test client connecting to ip address
+        /// </summary>
+        [Fact]
+        public void Test_ClientConnectingToIpAddress()
+        {
+            Guid guid = Guid.NewGuid();
+            string ipAddress = "127.0.0.1";
+            int port = 8080;
+            
+            Events.Log.ClientConnectingToIpAddress(guid, ipAddress, port);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test client connecting to host
+        /// </summary>
+        [Fact]
+        public void Test_ClientConnectingToHost()
+        {
+            Guid guid = Guid.NewGuid();
+            string host = "localhost";
+            int port = 8080;
+            
+            Events.Log.ClientConnectingToHost(guid, host, port);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test attemting to secure ssl connection
+        /// </summary>
+        [Fact]
+        public void Test_AttemtingToSecureSslConnection()
+        {
+            Guid guid = Guid.NewGuid();
+            
+            Events.Log.AttemtingToSecureSslConnection(guid);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test connection secured
+        /// </summary>
+        [Fact]
+        public void Test_ConnectionSecured()
+        {
+            Guid guid = Guid.NewGuid();
+            
+            Events.Log.ConnectionSecured(guid);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test connection not secure
+        /// </summary>
+        [Fact]
+        public void Test_ConnectionNotSecure()
+        {
+            Guid guid = Guid.NewGuid();
+            
+            Events.Log.ConnectionNotSecure(guid);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test ssl certificate error
+        /// </summary>
+        [Fact]
+        public void Test_SslCertificateError()
+        {
+            SslPolicyErrors sslPolicyErrors = SslPolicyErrors.RemoteCertificateChainErrors;
+            
+            Events.Log.SslCertificateError(sslPolicyErrors);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test handshake sent
+        /// </summary>
+        [Fact]
+        public void Test_HandshakeSent()
+        {
+            Guid guid = Guid.NewGuid();
+            string httpHeader = "Test header";
+            
+            Events.Log.HandshakeSent(guid, httpHeader);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test reading http response
+        /// </summary>
+        [Fact]
+        public void Test_ReadingHttpResponse()
+        {
+            Guid guid = Guid.NewGuid();
+            
+            Events.Log.ReadingHttpResponse(guid);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test read http response error
+        /// </summary>
+        [Fact]
+        public void Test_ReadHttpResponseError()
+        {
+            Guid guid = Guid.NewGuid();
+            string exception = "Test exception";
+            
+            Events.Log.ReadHttpResponseError(guid, exception);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test invalid http response code
+        /// </summary>
+        [Fact]
+        public void Test_InvalidHttpResponseCode()
+        {
+            Guid guid = Guid.NewGuid();
+            string response = "Test response";
+            
+            Events.Log.InvalidHttpResponseCode(guid, response);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test handshake failure
+        /// </summary>
+        [Fact]
+        public void Test_HandshakeFailure()
+        {
+            Guid guid = Guid.NewGuid();
+            string message = "Test message";
+            
+            Events.Log.HandshakeFailure(guid, message);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test client handshake success
+        /// </summary>
+        [Fact]
+        public void Test_ClientHandshakeSuccess()
+        {
+            Guid guid = Guid.NewGuid();
+            
+            Events.Log.ClientHandshakeSuccess(guid);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test server handshake success
+        /// </summary>
+        [Fact]
+        public void Test_ServerHandshakeSuccess()
+        {
+            Guid guid = Guid.NewGuid();
+            
+            Events.Log.ServerHandshakeSuccess(guid);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test accept web socket started
+        /// </summary>
+        [Fact]
+        public void Test_AcceptWebSocketStarted()
+        {
+            Guid guid = Guid.NewGuid();
+            
+            Events.Log.AcceptWebSocketStarted(guid);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test sending handshake response
+        /// </summary>
+        [Fact]
+        public void Test_SendingHandshakeResponse()
+        {
+            Guid guid = Guid.NewGuid();
+            string response = "Test response";
+            
+            Events.Log.SendingHandshakeResponse(guid, response);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test web socket version not supported
+        /// </summary>
+        [Fact]
+        public void Test_WebSocketVersionNotSupported()
+        {
+            Guid guid = Guid.NewGuid();
+            string exception = "Test exception";
+            
+            Events.Log.WebSocketVersionNotSupported(guid, exception);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test bad request
+        /// </summary>
+        [Fact]
+        public void Test_BadRequest()
+        {
+            Guid guid = Guid.NewGuid();
+            string exception = "Test exception";
+            
+            Events.Log.BadRequest(guid, exception);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test use per message deflate
+        /// </summary>
+        [Fact]
+        public void Test_UsePerMessageDeflate()
+        {
+            Guid guid = Guid.NewGuid();
+            
+            Events.Log.UsePerMessageDeflate(guid);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test no message compression
+        /// </summary>
+        [Fact]
+        public void Test_NoMessageCompression()
+        {
+            Guid guid = Guid.NewGuid();
+            
+            Events.Log.NoMessageCompression(guid);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test keep alive interval zero
+        /// </summary>
+        [Fact]
+        public void Test_KeepAliveIntervalZero()
+        {
+            Guid guid = Guid.NewGuid();
+            
+            Events.Log.KeepAliveIntervalZero(guid);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test ping pong manager started
+        /// </summary>
+        [Fact]
+        public void Test_PingPongManagerStarted()
+        {
+            Guid guid = Guid.NewGuid();
+            int keepAliveIntervalSeconds = 10;
+            
+            Events.Log.PingPongManagerStarted(guid, keepAliveIntervalSeconds);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test ping pong manager ended
+        /// </summary>
+        [Fact]
+        public void Test_PingPongManagerEnded()
+        {
+            Guid guid = Guid.NewGuid();
+            
+            Events.Log.PingPongManagerEnded(guid);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test keep alive interval expired
+        /// </summary>
+        [Fact]
+        public void Test_KeepAliveIntervalExpired()
+        {
+            Guid guid = Guid.NewGuid();
+            int keepAliveIntervalSeconds = 10;
+            
+            Events.Log.KeepAliveIntervalExpired(guid, keepAliveIntervalSeconds);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test close output auto timeout
+        /// </summary>
+        [Fact]
+        public void Test_CloseOutputAutoTimeout()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketCloseStatus closeStatus = WebSocketCloseStatus.EndpointUnavailable;
+            string statusDescription = "Test description";
+            string exception = "Test exception";
+            
+            Events.Log.CloseOutputAutoTimeout(guid, closeStatus, statusDescription, exception);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test close output auto timeout cancelled
+        /// </summary>
+        [Fact]
+        public void Test_CloseOutputAutoTimeoutCancelled()
+        {
+            Guid guid = Guid.NewGuid();
+            int timeoutSeconds = 10;
+            WebSocketCloseStatus closeStatus = WebSocketCloseStatus.EndpointUnavailable;
+            string statusDescription = "Test description";
+            string exception = "Test exception";
+            
+            Events.Log.CloseOutputAutoTimeoutCancelled(guid, timeoutSeconds, closeStatus, statusDescription, exception);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test close output auto timeout error
+        /// </summary>
+        [Fact]
+        public void Test_CloseOutputAutoTimeoutError()
+        {
+            Guid guid = Guid.NewGuid();
+            string closeException = "Test close exception";
+            WebSocketCloseStatus closeStatus = WebSocketCloseStatus.EndpointUnavailable;
+            string statusDescription = "Test description";
+            string exception = "Test exception";
+            
+            Events.Log.CloseOutputAutoTimeoutError(guid, closeException, closeStatus, statusDescription, exception);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test try get buffer not supported
+        /// </summary>
+        [Fact]
+        public void Test_TryGetBufferNotSupported()
+        {
+            Guid guid = Guid.NewGuid();
+            string streamType = "TestStreamType";
+            
+            Events.Log.TryGetBufferNotSupported(guid, streamType);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test sending frame
+        /// </summary>
+        [Fact]
+        public void Test_SendingFrame()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketOpCode webSocketOpCode = WebSocketOpCode.TextFrame;
+            bool isFinBitSet = true;
+            int numBytes = 1024;
+            bool isPayloadCompressed = true;
+            
+            Events.Log.SendingFrame(guid, webSocketOpCode, isFinBitSet, numBytes, isPayloadCompressed);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test received frame
+        /// </summary>
+        [Fact]
+        public void Test_ReceivedFrame()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketOpCode webSocketOpCode = WebSocketOpCode.TextFrame;
+            bool isFinBitSet = true;
+            int numBytes = 1024;
+            
+            Events.Log.ReceivedFrame(guid, webSocketOpCode, isFinBitSet, numBytes);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test close output no handshake
+        /// </summary>
+        [Fact]
+        public void Test_CloseOutputNoHandshake()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketCloseStatus? closeStatus = WebSocketCloseStatus.NormalClosure;
+            string statusDescription = "Test close";
+            
+            Events.Log.CloseOutputNoHandshake(guid, closeStatus, statusDescription);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test close handshake started
+        /// </summary>
+        [Fact]
+        public void Test_CloseHandshakeStarted()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketCloseStatus? closeStatus = WebSocketCloseStatus.NormalClosure;
+            string statusDescription = "Test close";
+            
+            Events.Log.CloseHandshakeStarted(guid, closeStatus, statusDescription);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test close handshake respond
+        /// </summary>
+        [Fact]
+        public void Test_CloseHandshakeRespond()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketCloseStatus? closeStatus = WebSocketCloseStatus.NormalClosure;
+            string statusDescription = "Test close";
+            
+            Events.Log.CloseHandshakeRespond(guid, closeStatus, statusDescription);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test close handshake complete
+        /// </summary>
+        [Fact]
+        public void Test_CloseHandshakeComplete()
+        {
+            Guid guid = Guid.NewGuid();
+            
+            Events.Log.CloseHandshakeComplete(guid);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test close frame received in unexpected state
+        /// </summary>
+        [Fact]
+        public void Test_CloseFrameReceivedInUnexpectedState()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketState webSocketState = WebSocketState.Open;
+            WebSocketCloseStatus? closeStatus = WebSocketCloseStatus.NormalClosure;
+            string statusDescription = "Test close";
+            
+            Events.Log.CloseFrameReceivedInUnexpectedState(guid, webSocketState, closeStatus, statusDescription);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test web socket dispose
+        /// </summary>
+        [Fact]
+        public void Test_WebSocketDispose()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketState webSocketState = WebSocketState.Open;
+            
+            Events.Log.WebSocketDispose(guid, webSocketState);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test web socket dispose close timeout
+        /// </summary>
+        [Fact]
+        public void Test_WebSocketDisposeCloseTimeout()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketState webSocketState = WebSocketState.Open;
+            
+            Events.Log.WebSocketDisposeCloseTimeout(guid, webSocketState);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test web socket dispose error
+        /// </summary>
+        [Fact]
+        public void Test_WebSocketDisposeError()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketState webSocketState = WebSocketState.Open;
+            string exception = "Test exception";
+            
+            Events.Log.WebSocketDisposeError(guid, webSocketState, exception);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test invalid state before close
+        /// </summary>
+        [Fact]
+        public void Test_InvalidStateBeforeClose()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketState webSocketState = WebSocketState.Open;
+            
+            Events.Log.InvalidStateBeforeClose(guid, webSocketState);
+            
+            
+        }
+        
+        /// <summary>
+        /// Tests that test invalid state before close output
+        /// </summary>
+        [Fact]
+        public void Test_InvalidStateBeforeCloseOutput()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketState webSocketState = WebSocketState.Open;
+            
+            Events.Log.InvalidStateBeforeCloseOutput(guid, webSocketState);
+            
+            
         }
     }
 }
