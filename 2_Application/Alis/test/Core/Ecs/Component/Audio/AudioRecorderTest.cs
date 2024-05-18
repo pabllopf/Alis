@@ -27,6 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Builder.Core.Ecs.Component.Audio;
+using Alis.Core.Ecs.Component.Audio;
+using Xunit;
+
 namespace Alis.Test.Core.Ecs.Component.Audio
 {
     /// <summary>
@@ -34,6 +38,16 @@ namespace Alis.Test.Core.Ecs.Component.Audio
     /// </summary>
     public class AudioRecorderTest
     {
-        
+        /// <summary>
+        /// Tests that builder should return audio recorder builder
+        /// </summary>
+        [Fact]
+        public void Builder_ShouldReturnAudioRecorderBuilder()
+        {
+            AudioRecorder audioRecorder = new AudioRecorder();
+            AudioRecorderBuilder result = audioRecorder.Builder();
+            Assert.NotNull(result);
+            Assert.IsType<AudioRecorderBuilder>(result);
+        }
     }
 }

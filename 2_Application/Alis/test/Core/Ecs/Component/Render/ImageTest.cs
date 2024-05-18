@@ -159,5 +159,29 @@ namespace Alis.Test.Core.Ecs.Component.Render
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
+        
+        /// <summary>
+        /// Tests that path set value should change value
+        /// </summary>
+        [Fact]
+        public void Path_SetValue_ShouldChangeValue()
+        {
+            Image image = new Image("oldPath", new Context(
+                new VideoGame(
+                    new Settings(),
+                    new AudioManager(),
+                    new GraphicManager(),
+                    new InputManager(),
+                    new NetworkManager(),
+                    new PhysicManager(),
+                    new SceneManager()
+                ),
+                new Settings()
+                ));
+            Assert.Equal("oldPath", image.Path);
+            
+            image.Path = "newPath";
+            Assert.Equal("newPath", image.Path);
+        }
     }
 }

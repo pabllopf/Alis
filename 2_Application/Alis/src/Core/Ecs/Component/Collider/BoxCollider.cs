@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Collider;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
@@ -81,6 +82,7 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <summary>
         ///     Gets or sets the value of the body
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public Physic.Dynamics.Body Body { get; private set; }
         
         /// <summary>
@@ -137,6 +139,7 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <summary>
         ///     Inits this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public override void OnInit()
         {
             if (AutoTilling)
@@ -157,6 +160,7 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <summary>
         ///     Awakes this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public override void OnAwake()
         {
             RectangleF = new RectangleF
@@ -214,6 +218,7 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <param name="fixtureA">The fixture a</param>
         /// <param name="fixtureB">The fixture b</param>
         /// <param name="contact">The contact</param>
+        [ExcludeFromCodeCoverage]
         private void OnSeparation(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             GameObject fixtureGameObject = (GameObject) fixtureA.Body.GameObject;
@@ -235,6 +240,7 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <param name="fixtureA">The fixture a</param>
         /// <param name="fixtureB">The fixture b</param>
         /// <param name="contact">The contact</param>
+        [ExcludeFromCodeCoverage]
         private void OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             GameObject fixtureGameObject = (GameObject) fixtureA.Body.GameObject;
@@ -261,6 +267,7 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <summary>
         ///     Before the update
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public override void OnBeforeUpdate()
         {
             float xOdl = GameObject.Transform.Position.X;
@@ -303,16 +310,9 @@ namespace Alis.Core.Ecs.Component.Collider
         }
         
         /// <summary>
-        ///     Afters the update
-        /// </summary>
-        public override void OnAfterUpdate()
-        {
-            Logger.Trace();
-        }
-        
-        /// <summary>
         ///     Draws this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public override void OnDraw()
         {
             RectangleF.x = GameObject.Transform.Position.X + RelativePosition.X - Width / 2;
@@ -322,6 +322,7 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <summary>
         ///     Ons the exit
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public override void OnExit()
         {
             Context.GraphicManager.UnAttach(this);

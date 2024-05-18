@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Component.Render;
 using Xunit;
 
@@ -130,6 +131,96 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Animation currentAnimation = animator.GetCurrentAnimation();
             
             Assert.Equal(animations[0], currentAnimation);
+        }
+        
+        /// <summary>
+        /// Tests that name property set get returns correct value
+        /// </summary>
+        [Fact]
+        public void Name_PropertySet_GetReturnsCorrectValue()
+        {
+            Animation animation = new Animation();
+            animation.Name = "TestAnimation";
+            Assert.Equal("TestAnimation", animation.Name);
+        }
+        
+        /// <summary>
+        /// Tests that order property set get returns correct value
+        /// </summary>
+        [Fact]
+        public void Order_PropertySet_GetReturnsCorrectValue()
+        {
+            Animation animation = new Animation();
+            animation.Order = 1;
+            Assert.Equal(1, animation.Order);
+        }
+        
+        /// <summary>
+        /// Tests that speed property set get returns correct value
+        /// </summary>
+        [Fact]
+        public void Speed_PropertySet_GetReturnsCorrectValue()
+        {
+            Animation animation = new Animation();
+            animation.Speed = 1.0f;
+            Assert.Equal(1.0f, animation.Speed);
+        }
+        
+        /// <summary>
+        /// Tests that has next when frames not empty returns true
+        /// </summary>
+        [Fact]
+        public void HasNext_WhenFramesNotEmpty_ReturnsTrue()
+        {
+            Animation animation = new Animation();
+            animation.AddFrame(new Frame());
+            Assert.True(animation.HasNext());
+        }
+        
+        /// <summary>
+        /// Tests that has next when frames empty returns false
+        /// </summary>
+        [Fact]
+        public void HasNext_WhenFramesEmpty_ReturnsFalse()
+        {
+            Animation animation = new Animation();
+            Assert.False(animation.HasNext());
+        }
+        
+        /// <summary>
+        /// Tests that next texture when called changes index
+        /// </summary>
+        [Fact]
+        public void NextTexture_WhenCalled_ChangesIndex()
+        {
+            Animation animation = new Animation();
+            Frame frame = new Frame();
+            animation.AddFrame(frame);
+            Frame result = animation.NextTexture();
+            Assert.Equal(frame, result);
+        }
+        
+        /// <summary>
+        /// Tests that add frame when called adds frame to frames
+        /// </summary>
+        [Fact]
+        public void AddFrame_WhenCalled_AddsFrameToFrames()
+        {
+            Animation animation = new Animation();
+            Frame frame = new Frame();
+            animation.AddFrame(frame);
+            Assert.Contains(frame, animation.Frames);
+        }
+        
+        /// <summary>
+        /// Tests that builder when called returns animator builder
+        /// </summary>
+        [Fact]
+        public void Builder_WhenCalled_ReturnsAnimatorBuilder()
+        {
+            Animation animation = new Animation();
+            AnimatorBuilder result = animation.Builder();
+            Assert.IsType<AnimatorBuilder>(result);
         }
     }
 }

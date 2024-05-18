@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SceneManagerBuilderTest.cs
+//  File:WindowTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,57 +27,71 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Builder.Core.Ecs.Entity.Scene;
-using Alis.Builder.Core.Ecs.System.Manager.Scene;
-using Alis.Core.Ecs.System.Manager.Scene;
+using Alis.Builder.Core.Graphic;
+using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Graphic;
 using Xunit;
 
-namespace Alis.Test.Builder.Core.Ecs.System.Manager.Scene
+namespace Alis.Test.Core.Graphic
 {
     /// <summary>
-    /// The scene manager builder test class
+    /// The window test class
     /// </summary>
-    public class SceneManagerBuilderTest
+    public class WindowTest
     {
         /// <summary>
-        /// Tests that scene manager builder default constructor valid input
+        /// Tests that background set value should change background
         /// </summary>
         [Fact]
-        public void SceneManagerBuilder_DefaultConstructor_ValidInput()
+        public void Background_SetValue_ShouldChangeBackground()
         {
-            SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder();
+            Window window = new Window();
+            Color color = new Color(255, 255, 255, 255);
             
-            Assert.NotNull(sceneManagerBuilder);
+            window.Background = color;
+            
+            Assert.Equal(color, window.Background);
         }
         
         /// <summary>
-        /// Tests that add valid input
+        /// Tests that resolution set value should change resolution
         /// </summary>
         [Fact]
-        public void Add_ValidInput()
+        public void Resolution_SetValue_ShouldChangeResolution()
         {
-            SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder();
-            Func<SceneBuilder, Alis.Core.Ecs.Entity.Scene> sceneFunc = sb => sb.Build();
+            Window window = new Window();
+            Vector2 resolution = new Vector2(1920, 1080);
             
-            sceneManagerBuilder.Add<SceneManagerBuilder>(sceneFunc);
+            window.Resolution = resolution;
             
-            SceneManager sceneManager = sceneManagerBuilder.Build();
-            Assert.Single(sceneManager.Scenes);
-            Assert.Equal(sceneManager.Scenes[0], sceneManager.CurrentScene);
+            Assert.Equal(resolution, window.Resolution);
         }
         
         /// <summary>
-        /// Tests that build valid input
+        /// Tests that is window resizable set value should change is window resizable
         /// </summary>
         [Fact]
-        public void Build_ValidInput()
+        public void IsWindowResizable_SetValue_ShouldChangeIsWindowResizable()
         {
-            SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder();
+            Window window = new Window();
             
-            SceneManager sceneManager = sceneManagerBuilder.Build();
+            window.IsWindowResizable = false;
             
-            Assert.NotNull(sceneManager);
+            Assert.False(window.IsWindowResizable);
+        }
+        
+        /// <summary>
+        /// Tests that builder call method should return window builder
+        /// </summary>
+        [Fact]
+        public void Builder_CallMethod_ShouldReturnWindowBuilder()
+        {
+            Window window = new Window();
+            
+            WindowBuilder result = window.Builder();
+            
+            Assert.IsType<WindowBuilder>(result);
         }
     }
 }

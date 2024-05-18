@@ -451,6 +451,12 @@ namespace Alis.Core.Network.Internal
             _isContinuationFrame = !endOfMessage;
         }
         
+        /// <summary>
+        /// Sends the ping using the specified payload
+        /// </summary>
+        /// <param name="payload">The payload</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <exception cref="InvalidOperationException">Cannot send Ping: Max ping message size {PingPongPayloadLen} exceeded: {payload.Count}</exception>
         [ExcludeFromCodeCoverage]
         public async Task SendPingAsync(ArraySegment<byte> payload, CancellationToken cancellationToken)
         {
@@ -478,6 +484,12 @@ namespace Alis.Core.Network.Internal
             _internalReadCts.Cancel();
         }
         
+        /// <summary>
+        /// Closes the close status
+        /// </summary>
+        /// <param name="closeStatus">The close status</param>
+        /// <param name="statusDescription">The status description</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         [ExcludeFromCodeCoverage]
         public override async Task CloseAsync(WebSocketCloseStatus closeStatus, string statusDescription,
             CancellationToken cancellationToken)
@@ -499,6 +511,12 @@ namespace Alis.Core.Network.Internal
         }
         
         
+        /// <summary>
+        /// Closes the output using the specified close status
+        /// </summary>
+        /// <param name="closeStatus">The close status</param>
+        /// <param name="statusDescription">The status description</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         [ExcludeFromCodeCoverage]
         public override async Task CloseOutputAsync(WebSocketCloseStatus closeStatus, string statusDescription,
             CancellationToken cancellationToken)

@@ -28,7 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Graphic.Sdl2.Enums;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.Component.Render
@@ -47,7 +49,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Sprite sprite = new Sprite("testTexturePath");
             sprite.OnInit();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -59,7 +61,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Sprite sprite = new Sprite("testTexturePath");
             sprite.OnAwake();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -71,7 +73,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Sprite sprite = new Sprite("testTexturePath");
             sprite.OnExit();
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -86,7 +88,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             
             sprite.Render(renderer, camera);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
         }
         
         /// <summary>
@@ -100,7 +102,63 @@ namespace Alis.Test.Core.Ecs.Component.Render
             
             sprite.Render(renderer);
             
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            
+        }
+        
+        /// <summary>
+        /// Tests that builder should return sprite builder
+        /// </summary>
+        [Fact]
+        public void Builder_ShouldReturnSpriteBuilder()
+        {
+            Sprite sprite = new Sprite();
+            SpriteBuilder result = sprite.Builder();
+            Assert.NotNull(result);
+            Assert.IsType<SpriteBuilder>(result);
+        }
+        
+        /// <summary>
+        /// Tests that render with renderer and camera should not throw exception
+        /// </summary>
+        [Fact]
+        public void Render_WithRendererAndCamera_ShouldNotThrowException()
+        {
+            Sprite sprite = new Sprite();
+            IntPtr renderer = IntPtr.Zero; // You would replace this with a valid renderer
+            Camera camera = new Camera(); // You would replace this with a valid camera
+            
+            Exception exception = Record.Exception(() => sprite.Render(renderer, camera));
+            Assert.Null(exception);
+        }
+        
+        /// <summary>
+        /// Tests that render with renderer should not throw exception
+        /// </summary>
+        [Fact]
+        public void Render_WithRenderer_ShouldNotThrowException()
+        {
+            Sprite sprite = new Sprite();
+            IntPtr renderer = IntPtr.Zero; // You would replace this with a valid renderer
+            
+            Exception exception = Record.Exception(() => sprite.Render(renderer));
+            Assert.Null(exception);
+        }
+        
+        /// <summary>
+        /// Tests that flips set value should change value
+        /// </summary>
+        [Fact]
+        public void Flips_SetValue_ShouldChangeValue()
+        {
+            Sprite sprite = new Sprite();
+            sprite.Flips = RendererFlips.FlipHorizontal;
+            Assert.Equal(RendererFlips.FlipHorizontal, sprite.Flips);
+            
+            sprite.Flips = RendererFlips.FlipVertical;
+            Assert.Equal(RendererFlips.FlipVertical, sprite.Flips);
+            
+            sprite.Flips = RendererFlips.None;
+            Assert.Equal(RendererFlips.None, sprite.Flips);
         }
     }
 }

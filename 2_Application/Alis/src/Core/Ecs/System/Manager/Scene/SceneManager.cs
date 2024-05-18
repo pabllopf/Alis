@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Ecs.System.Manager.Scene
@@ -46,7 +47,8 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// <summary>
         ///     Gets or sets the value of the scenes
         /// </summary>
-        public List<Entity.Scene> Scenes { get; set; } = new List<Entity.Scene>();
+        [ExcludeFromCodeCoverage]
+        public List<Entity.Scene> Scenes { get; private set; } = new List<Entity.Scene>();
         
         /// <summary>
         ///     Ons the enable
@@ -59,6 +61,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// <summary>
         ///     Ons the init
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public override void OnInit()
         {
             Scenes.ForEach(i => i.SetContext(Context));

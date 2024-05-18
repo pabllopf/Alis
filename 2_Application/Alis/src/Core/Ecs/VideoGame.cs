@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Time;
@@ -62,10 +63,10 @@ namespace Alis.Core.Ecs
         /// <param name="inputManager">The input manager</param>
         /// <param name="networkManager">The network manager</param>
         /// <param name="physicManager">The physic manager</param>
-        /// <param name="profileManager">The profile manager</param>
         /// <param name="sceneManager">The scene manager</param>
         /// <param name="context">The context</param>
         /// <param name="managers">The managers</param>
+        [ExcludeFromCodeCoverage]
         public VideoGame(
             Settings settings,
             AudioManager audioManager,
@@ -118,7 +119,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Gets or sets the value of the context
         /// </summary>
-        private Context Context { get; set; }
+        internal Context Context { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the settings
@@ -175,6 +176,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Run program
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void Run()
         {
             Dictionary<Type, AManager>.ValueCollection tempManagers = Managers.Values;

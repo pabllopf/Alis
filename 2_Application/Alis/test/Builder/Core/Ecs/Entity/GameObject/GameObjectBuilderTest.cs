@@ -27,7 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Builder.Core.Ecs.Entity.GameObject;
+using Alis.Builder.Core.Ecs.Entity.Transform;
+using Alis.Test.Builder.Core.Ecs.Entity.GameObject.Sample;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
@@ -109,6 +112,76 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
             gameObjectBuilder.AddComponent(new TestComponent());
             
             Assert.Single(gameObjectBuilder.Build().Components);
+        }
+        
+        /// <summary>
+        /// Tests that add component with func should add component to game object
+        /// </summary>
+        [Fact]
+        public void AddComponent_WithFunc_ShouldAddComponentToGameObject()
+        {
+            GameObjectBuilder builder = new GameObjectBuilder();
+            MockComponent component = new MockComponent();
+            
+            builder.AddComponent<MockComponent>(_ => component);
+            
+            Assert.Contains(component, builder.Build().Components);
+        }
+        
+        /// <summary>
+        /// Tests that add component with value should add component to game object
+        /// </summary>
+        [Fact]
+        public void AddComponent_WithValue_ShouldAddComponentToGameObject()
+        {
+            GameObjectBuilder builder = new GameObjectBuilder();
+            MockComponent component = new MockComponent();
+            
+            builder.AddComponent(component);
+            
+            Assert.Contains(component, builder.Build().Components);
+        }
+        
+        /// <summary>
+        /// Tests that name should set name of game object
+        /// </summary>
+        [Fact]
+        public void Name_ShouldSetNameOfGameObject()
+        {
+            GameObjectBuilder builder = new GameObjectBuilder();
+            string name = "TestName";
+            
+            builder.Name(name);
+            
+            Assert.Equal(name, builder.Build().Name);
+        }
+        
+        /// <summary>
+        /// Tests that transform should set transform of game object
+        /// </summary>
+        [Fact]
+        public void Transform_ShouldSetTransformOfGameObject()
+        {
+            GameObjectBuilder builder = new GameObjectBuilder();
+            Alis.Core.Aspect.Math.Transform transform = new TransformBuilder().Build();
+            
+            builder.Transform(_ => transform);
+            
+            Assert.Equal(transform, builder.Build().Transform);
+        }
+        
+        /// <summary>
+        /// Tests that with tag should set tag of game object
+        /// </summary>
+        [Fact]
+        public void WithTag_ShouldSetTagOfGameObject()
+        {
+            GameObjectBuilder builder = new GameObjectBuilder();
+            string tag = "TestTag";
+            
+            builder.WithTag(tag);
+            
+            Assert.Equal(tag, builder.Build().Tag);
         }
     }
 }

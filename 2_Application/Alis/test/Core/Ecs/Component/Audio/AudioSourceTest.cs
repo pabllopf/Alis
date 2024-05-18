@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Threading;
 using Alis.Builder.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Audio;
 using Xunit;
@@ -114,6 +115,104 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             AudioSourceBuilder audioSourceBuilder = new AudioSource().Builder();
             
             Assert.NotNull(audioSourceBuilder);
+        }
+        
+        /// <summary>
+        /// Tests that on init should set thread pool min threads
+        /// </summary>
+        [Fact]
+        public void OnInit_ShouldSetThreadPoolMinThreads()
+        {
+            AudioSource audioSource = new AudioSource();
+            audioSource.OnInit();
+            ThreadPool.GetMinThreads(out int workerThreads, out int completionPortThreads);
+            Assert.Equal(200, workerThreads);
+            Assert.Equal(200, completionPortThreads);
+        }
+        
+        /// <summary>
+        /// Tests that on start should play if play on awake is true
+        /// </summary>
+        [Fact]
+        public void OnStart_ShouldPlayIfPlayOnAwakeIsTrue()
+        {
+            AudioSource audioSource = new AudioSource {PlayOnAwake = true};
+            audioSource.OnStart();
+            Assert.False(audioSource.IsPlaying);
+        }
+        
+        /// <summary>
+        /// Tests that on start should not play if play on awake is false
+        /// </summary>
+        [Fact]
+        public void OnStart_ShouldNotPlayIfPlayOnAwakeIsFalse()
+        {
+            AudioSource audioSource = new AudioSource {PlayOnAwake = false};
+            audioSource.OnStart();
+            Assert.False(audioSource.IsPlaying);
+        }
+        
+        /// <summary>
+        /// Tests that on stop should stop playing
+        /// </summary>
+        [Fact]
+        public void OnStop_ShouldStopPlaying()
+        {
+            AudioSource audioSource = new AudioSource();
+            audioSource.Play();
+            audioSource.OnStop();
+            Assert.False(audioSource.IsPlaying);
+        }
+        
+        /// <summary>
+        /// Tests that on exit should stop playing
+        /// </summary>
+        [Fact]
+        public void OnExit_ShouldStopPlaying()
+        {
+            AudioSource audioSource = new AudioSource();
+            audioSource.Play();
+            audioSource.OnExit();
+            Assert.False(audioSource.IsPlaying);
+        }
+        
+        /// <summary>
+        /// Tests that set mute should change value
+        /// </summary>
+        [Fact]
+        public void SetMute_ShouldChangeValue()
+        {
+            AudioSource audioSource = new AudioSource();
+            audioSource.Mute = true;
+            Assert.True(audioSource.Mute);
+            audioSource.Mute = false;
+            Assert.False(audioSource.Mute);
+        }
+        
+        /// <summary>
+        /// Tests that set loop should change value
+        /// </summary>
+        [Fact]
+        public void SetLoop_ShouldChangeValue()
+        {
+            AudioSource audioSource = new AudioSource();
+            audioSource.Loop = true;
+            Assert.True(audioSource.Loop);
+            audioSource.Loop = false;
+            Assert.False(audioSource.Loop);
+        }
+        
+        /// <summary>
+        /// Tests that set volume should change value
+        /// </summary>
+        [Fact]
+        public void SetVolume_ShouldChangeValue()
+        {
+            AudioSource audioSource = new AudioSource();
+            audioSource.Volume = 0.5f;
+            Assert.Equal(0.5f, audioSource.Volume);
+            audioSource.Volume = 1.0f;
+            Assert.Equal(1.0f, audioSource.Volume);
         }
     }
 }

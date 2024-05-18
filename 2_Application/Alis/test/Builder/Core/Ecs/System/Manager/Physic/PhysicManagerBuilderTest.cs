@@ -31,7 +31,7 @@ using Alis.Builder.Core.Ecs.System.Manager.Physic;
 using Alis.Core.Ecs.System.Manager.Physic;
 using Xunit;
 
-namespace Alis.Test.Builder.Core.Ecs.Manager.Physic
+namespace Alis.Test.Builder.Core.Ecs.System.Manager.Physic
 {
     /// <summary>
     /// The physic manager builder test class

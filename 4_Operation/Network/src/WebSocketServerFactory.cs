@@ -119,7 +119,7 @@ namespace Alis.Core.Network
         /// <exception cref="WebSocketVersionNotSupportedException">Cannot find "Sec-WebSocket-Version" in http header</exception>
         internal static void CheckWebSocketVersion(string httpHeader)
         {
-            var webSocketVersion = ExtractWebSocketVersion(httpHeader);
+            int webSocketVersion = ExtractWebSocketVersion(httpHeader);
             ValidateWebSocketVersion(webSocketVersion);
         }
         

@@ -31,7 +31,7 @@ using Alis.Builder.Core.Ecs.System.Manager.Input;
 using Alis.Core.Ecs.System.Manager.Input;
 using Xunit;
 
-namespace Alis.Test.Builder.Core.Ecs.Manager.Input
+namespace Alis.Test.Builder.Core.Ecs.System.Manager.Input
 {
     /// <summary>
     /// The input manager builder test class
