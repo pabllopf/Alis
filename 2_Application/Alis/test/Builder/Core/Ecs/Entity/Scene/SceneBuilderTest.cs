@@ -43,7 +43,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
         [Fact]
         public void SceneBuilder_DefaultConstructor_ValidInput()
         {
-            var sceneBuilder = new SceneBuilder();
+            SceneBuilder sceneBuilder = new SceneBuilder();
             
             Assert.NotNull(sceneBuilder);
         }
@@ -54,9 +54,9 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
         [Fact]
         public void Build_ValidInput()
         {
-            var sceneBuilder = new SceneBuilder();
+            SceneBuilder sceneBuilder = new SceneBuilder();
             
-            var scene = sceneBuilder.Build();
+            Alis.Core.Ecs.Entity.Scene scene = sceneBuilder.Build();
             
             Assert.NotNull(scene);
         }
@@ -67,7 +67,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
         [Fact]
         public void Name_ValidInput()
         {
-            var sceneBuilder = new SceneBuilder();
+            SceneBuilder sceneBuilder = new SceneBuilder();
             
             sceneBuilder.Name("Test Name");
             
@@ -80,7 +80,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
         [Fact]
         public void Add_ValidInput()
         {
-            var sceneBuilder = new SceneBuilder();
+            SceneBuilder sceneBuilder = new SceneBuilder();
             
             sceneBuilder.Add<Alis.Core.Ecs.Entity.GameObject>(builder => builder.Name("Test GameObject").Build());
             

@@ -54,17 +54,17 @@ namespace Alis.Core.Network
         /// <summary>
         ///     The buffer factory
         /// </summary>
-        private readonly Func<MemoryStream> _bufferFactory;
+        internal readonly Func<MemoryStream> _bufferFactory;
         
         /// <summary>
         ///     The buffer pool
         /// </summary>
-        private readonly IBufferPool _bufferPool;
+        internal readonly IBufferPool _bufferPool;
         
         /// <summary>
         ///     The tcp client
         /// </summary>
-        private TcpClient tcpClient;
+        internal TcpClient tcpClient;
         
         /// <summary>
         ///     Initialises a new instance of the WebSocketClientFactory class without caring about internal buffers
@@ -152,7 +152,7 @@ namespace Alis.Core.Network
         /// <param name="token">The token</param>
         /// <exception cref="WebSocketHandshakeFailedException">Handshake unexpected failure </exception>
         /// <returns>A task containing the web socket</returns>
-        private async Task<WebSocket> ConnectAsync(Guid guid, Stream responseStream, string secWebSocketKey,
+        internal async Task<WebSocket> ConnectAsync(Guid guid, Stream responseStream, string secWebSocketKey,
             TimeSpan keepAliveInterval, string secWebSocketExtensions, bool includeExceptionInCloseResponse,
             CancellationToken token)
         {
@@ -181,18 +181,13 @@ namespace Alis.Core.Network
         /// </summary>
         /// <param name="response">The response</param>
         /// <returns>The string</returns>
-        private string GetSubProtocolFromHeader(string response)
+        internal string GetSubProtocolFromHeader(string response)
         {
             // make sure we escape the accept string which could contain special regex characters
             string regexPattern = "Sec-WebSocket-Protocol: (.*)";
             Regex regex = new Regex(regexPattern, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
             Match match = regex.Match(response);
-            if (match.Success)
-            {
-                return match.Groups[1].Value.Trim();
-            }
-            
-            return null;
+            return match.Success ? match.Groups[1].Value.Trim() : null;
         }
         
         /// <summary>
@@ -202,7 +197,7 @@ namespace Alis.Core.Network
         /// <param name="response">The response</param>
         /// <param name="secWebSocketKey">The sec web socket key</param>
         /// <exception cref="WebSocketHandshakeFailedException"></exception>
-        private void ThrowIfInvalidAcceptString(Guid guid, string response, string secWebSocketKey)
+        internal void ThrowIfInvalidAcceptString(Guid guid, string response, string secWebSocketKey)
         {
             // make sure we escape the accept string which could contain special regex characters
             string regexPattern = "Sec-WebSocket-Accept: (.*)";
@@ -229,7 +224,7 @@ namespace Alis.Core.Network
         /// <param name="responseHeader">The response header</param>
         /// <exception cref="InvalidHttpResponseCodeException"></exception>
         /// <exception cref="InvalidHttpResponseCodeException">null null </exception>
-        private void ThrowIfInvalidResponseCode(string responseHeader)
+        internal void ThrowIfInvalidResponseCode(string responseHeader)
         {
             string responseCode = HttpHelper.ReadHttpResponseCode(responseHeader);
             if (responseCode == null)
@@ -263,7 +258,7 @@ namespace Alis.Core.Network
         ///     Override this if you need more fine grained control over the TLS handshake like setting the SslProtocol or adding a
         ///     client certificate
         /// </summary>
-        protected virtual void TlsAuthenticateAsClient(SslStream sslStream, string host)
+        internal virtual void TlsAuthenticateAsClient(SslStream sslStream, string host)
         {
             sslStream.AuthenticateAsClient(host, null, SslProtocols.Tls12, true);
         }
@@ -282,7 +277,7 @@ namespace Alis.Core.Network
         /// <param name="port">The destination port</param>
         /// <param name="cancellationToken">Used to cancel the request</param>
         /// <returns>A connected and open stream</returns>
-        protected virtual async Task<Stream> GetStream(Guid loggingGuid, bool isSecure, bool noDelay, string host,
+        internal virtual async Task<Stream> GetStream(Guid loggingGuid, bool isSecure, bool noDelay, string host,
             int port, CancellationToken cancellationToken)
         {
             tcpClient = new TcpClient();
@@ -321,7 +316,7 @@ namespace Alis.Core.Network
         ///     Invoked by the RemoteCertificateValidationDelegate
         ///     If you want to ignore certificate errors (for debugging) then return true
         /// </summary>
-        private static bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain,
+        internal static bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain,
             SslPolicyErrors sslPolicyErrors)
         {
             if (sslPolicyErrors == SslPolicyErrors.None)
@@ -340,7 +335,7 @@ namespace Alis.Core.Network
         /// </summary>
         /// <param name="additionalHeaders">The additional headers</param>
         /// <returns>The string</returns>
-        private static string GetAdditionalHeaders(Dictionary<string, string> additionalHeaders)
+        internal static string GetAdditionalHeaders(Dictionary<string, string> additionalHeaders)
         {
             if (additionalHeaders == null || additionalHeaders.Count == 0)
             {
@@ -365,28 +360,61 @@ namespace Alis.Core.Network
         /// <param name="options">The options</param>
         /// <param name="token">The token</param>
         /// <returns>A task containing the web socket</returns>
-        private async Task<WebSocket> PerformHandshake(Guid guid, Uri uri, Stream stream,
+        internal async Task<WebSocket> PerformHandshake(Guid guid, Uri uri, Stream stream,
             WebSocketClientOptions options, CancellationToken token)
+        {
+            string secWebSocketKey = GenerateSecWebSocketKey();
+            string additionalHeaders = GetAdditionalHeaders(options.AdditionalHttpHeaders);
+            string handshakeHttpRequest = BuildHandshakeRequest(uri, secWebSocketKey, options.SecWebSocketProtocol, additionalHeaders);
+            
+            await SendHandshakeRequest(stream, handshakeHttpRequest, guid);
+            return await ConnectAsync(stream, secWebSocketKey, options, token);
+        }
+        
+        /// <summary>
+        /// Generates the sec web socket key
+        /// </summary>
+        /// <returns>The string</returns>
+        internal string GenerateSecWebSocketKey()
         {
             RandomNumberGenerator rand = RandomNumberGenerator.Create();
             byte[] keyAsBytes = new byte[16];
             rand.GetBytes(keyAsBytes);
-            string secWebSocketKey = Convert.ToBase64String(keyAsBytes);
-            string additionalHeaders = GetAdditionalHeaders(options.AdditionalHttpHeaders);
-            string handshakeHttpRequest = $"GET {uri.PathAndQuery} HTTP/1.1\r\n" +
-                                          $"Host: {uri.Host}:{uri.Port}\r\n" +
-                                          "Upgrade: websocket\r\n" +
-                                          "Connection: Upgrade\r\n" +
-                                          $"Sec-WebSocket-Key: {secWebSocketKey}\r\n" +
-                                          $"Origin: http://{uri.Host}:{uri.Port}\r\n" +
-                                          $"Sec-WebSocket-Protocol: {options.SecWebSocketProtocol}\r\n" +
-                                          additionalHeaders +
-                                          "Sec-WebSocket-Version: 13\r\n\r\n";
-            
+            return Convert.ToBase64String(keyAsBytes);
+        }
+        
+        /// <summary>
+        /// Builds the handshake request using the specified uri
+        /// </summary>
+        /// <param name="uri">The uri</param>
+        /// <param name="secWebSocketKey">The sec web socket key</param>
+        /// <param name="secWebSocketProtocol">The sec web socket protocol</param>
+        /// <param name="additionalHeaders">The additional headers</param>
+        /// <returns>The string</returns>
+        internal string BuildHandshakeRequest(Uri uri, string secWebSocketKey, string secWebSocketProtocol, string additionalHeaders)
+        {
+            return $"GET {uri.PathAndQuery} HTTP/1.1\r\n" +
+                   $"Host: {uri.Host}:{uri.Port}\r\n" +
+                   "Upgrade: websocket\r\n" +
+                   "Connection: Upgrade\r\n" +
+                   $"Sec-WebSocket-Key: {secWebSocketKey}\r\n" +
+                   $"Origin: http://{uri.Host}:{uri.Port}\r\n" +
+                   $"Sec-WebSocket-Protocol: {secWebSocketProtocol}\r\n" +
+                   additionalHeaders +
+                   "Sec-WebSocket-Version: 13\r\n\r\n";
+        }
+        
+        /// <summary>
+        /// Sends the handshake request using the specified stream
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        /// <param name="handshakeHttpRequest">The handshake http request</param>
+        /// <param name="guid">The guid</param>
+        internal async Task SendHandshakeRequest(Stream stream, string handshakeHttpRequest, Guid guid)
+        {
             byte[] httpRequest = Encoding.UTF8.GetBytes(handshakeHttpRequest);
-            stream.Write(httpRequest, 0, httpRequest.Length);
+            await stream.WriteAsync(httpRequest, 0, httpRequest.Length);
             Events.Log.HandshakeSent(guid, handshakeHttpRequest);
-            return await ConnectAsync(stream, secWebSocketKey, options, token);
         }
     }
 }

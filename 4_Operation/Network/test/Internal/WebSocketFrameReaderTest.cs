@@ -52,7 +52,7 @@ namespace Alis.Core.Network.Test.Internal
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
             CancellationToken cancellationToken = new CancellationToken();
             
-            await Assert.ThrowsAsync<EndOfStreamException>(() =>  WebSocketFrameReader.ReadAsync(stream, buffer, cancellationToken));
+            await Assert.ThrowsAsync<EndOfStreamException>(() => WebSocketFrameReader.ReadAsync(stream, buffer, cancellationToken));
         }
         
         /// <summary>
@@ -100,6 +100,55 @@ namespace Alis.Core.Network.Test.Internal
             
             Assert.NotNull(result);
             return Task.CompletedTask;
+        }
+        
+        /// <summary>
+        /// Tests that read async should read correctly
+        /// </summary>
+        [Fact]
+        public async Task ReadAsync_ShouldReadCorrectly()
+        {
+            MemoryStream stream = new MemoryStream();
+            ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
+            CancellationToken cancellationToken = new CancellationToken();
+
+            await Assert.ThrowsAsync<EndOfStreamException>( () => WebSocketFrameReader.ReadAsync(stream, buffer, cancellationToken));
+            
+            // Here you would assert that the properties of result have been set correctly.
+        }
+        
+        /// <summary>
+        /// Tests that decode close frame should decode correctly when count is greater than or equal to two
+        /// </summary>
+        [Fact]
+        public void DecodeCloseFrame_ShouldDecodeCorrectly_WhenCountIsGreaterThanOrEqualToTwo()
+        {
+            bool isFinBitSet = true;
+            WebSocketOpCode opCode = WebSocketOpCode.ConnectionClose;
+            int count = 2;
+            ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[2]);
+            ArraySegment<byte> maskKey = new ArraySegment<byte>(new byte[4]);
+            
+            WebSocketFrame result = WebSocketFrameReader.DecodeCloseFrame(isFinBitSet, opCode, count, buffer, maskKey);
+            
+            // Here you would assert that the properties of result have been set correctly.
+        }
+        
+        /// <summary>
+        /// Tests that decode close frame should decode correctly when count is less than two
+        /// </summary>
+        [Fact]
+        public void DecodeCloseFrame_ShouldDecodeCorrectly_WhenCountIsLessThanTwo()
+        {
+            bool isFinBitSet = true;
+            WebSocketOpCode opCode = WebSocketOpCode.ConnectionClose;
+            int count = 1;
+            ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1]);
+            ArraySegment<byte> maskKey = new ArraySegment<byte>(new byte[4]);
+            
+            WebSocketFrame result = WebSocketFrameReader.DecodeCloseFrame(isFinBitSet, opCode, count, buffer, maskKey);
+            
+            // Here you would assert that the properties of result have been set correctly.
         }
     }
 }

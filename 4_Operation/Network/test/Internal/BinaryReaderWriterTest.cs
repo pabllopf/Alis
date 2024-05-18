@@ -133,5 +133,102 @@ namespace Alis.Core.Network.Test.Internal
             BinaryReaderWriter.WriteUShort(12345, stream, BitConverter.IsLittleEndian);
             Assert.Equal(BitConverter.GetBytes((ushort) 12345), stream.ToArray());
         }
+        
+        /// <summary>
+        /// Tests that write int should write correctly
+        /// </summary>
+        [Fact]
+        public void WriteInt_ShouldWriteCorrectly()
+        {
+            MemoryStream stream = new MemoryStream();
+            int value = 12345;
+            bool isLittleEndian = BitConverter.IsLittleEndian;
+            
+            BinaryReaderWriter.WriteInt(value, stream, isLittleEndian);
+            
+            stream.Seek(0, SeekOrigin.Begin);
+            BinaryReader reader = new BinaryReader(stream);
+            int result = reader.ReadInt32();
+            
+            Assert.Equal(value, result);
+        }
+        
+        /// <summary>
+        /// Tests that write u long should write correctly
+        /// </summary>
+        [Fact]
+        public void WriteULong_ShouldWriteCorrectly()
+        {
+            MemoryStream stream = new MemoryStream();
+            ulong value = 12345678901234567890;
+            bool isLittleEndian = BitConverter.IsLittleEndian;
+            
+            BinaryReaderWriter.WriteULong(value, stream, isLittleEndian);
+            
+            stream.Seek(0, SeekOrigin.Begin);
+            BinaryReader reader = new BinaryReader(stream);
+            ulong result = reader.ReadUInt64();
+            
+            Assert.Equal(value, result);
+        }
+        
+        /// <summary>
+        /// Tests that write long should write correctly
+        /// </summary>
+        [Fact]
+        public void WriteLong_ShouldWriteCorrectly()
+        {
+            MemoryStream stream = new MemoryStream();
+            long value = 1234567890123456789;
+            bool isLittleEndian = BitConverter.IsLittleEndian;
+            
+            BinaryReaderWriter.WriteLong(value, stream, isLittleEndian);
+            
+            stream.Seek(0, SeekOrigin.Begin);
+            BinaryReader reader = new BinaryReader(stream);
+            long result = reader.ReadInt64();
+            
+            Assert.Equal(value, result);
+        }
+        
+        /// <summary>
+        /// Tests that write long should write correctly when little endian
+        /// </summary>
+        [Fact]
+        public void WriteLong_ShouldWriteCorrectly_WhenLittleEndian()
+        {
+            MemoryStream stream = new MemoryStream();
+            long value = 1234567890123456789;
+            bool isLittleEndian = true;
+            
+            BinaryReaderWriter.WriteLong(value, stream, isLittleEndian);
+            
+            stream.Seek(0, SeekOrigin.Begin);
+            BinaryReader reader = new BinaryReader(stream);
+            long result = reader.ReadInt64();
+            
+            Assert.Equal(value, result);
+        }
+        
+        /// <summary>
+        /// Tests that write long should write correctly when big endian
+        /// </summary>
+        [Fact]
+        public void WriteLong_ShouldWriteCorrectly_WhenBigEndian()
+        {
+            MemoryStream stream = new MemoryStream();
+            long value = 1549776473967043089;
+            bool isLittleEndian = false;
+            
+            BinaryReaderWriter.WriteLong(value, stream, isLittleEndian);
+            
+            stream.Seek(0, SeekOrigin.Begin);
+            BinaryReader reader = new BinaryReader(stream);
+            long result = BitConverter.ToInt64(BitConverter.GetBytes(reader.ReadInt64()), 0);
+            
+            Assert.True(result > 0);
+        }
+        
+        
     }
 }

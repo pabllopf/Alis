@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.System.Setting.General;
+using Alis.Core.Ecs.System.Setting.General;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System.Setting.General
@@ -43,7 +44,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.General
         [Fact]
         public void GeneralSettingBuilder_DefaultConstructor_ValidInput()
         {
-            var generalSettingBuilder = new GeneralSettingBuilder();
+            GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
             
             Assert.NotNull(generalSettingBuilder);
         }
@@ -54,9 +55,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.General
         [Fact]
         public void Build_ValidInput()
         {
-            var generalSettingBuilder = new GeneralSettingBuilder();
+            GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
             
-            var generalSetting = generalSettingBuilder.Build();
+            GeneralSetting generalSetting = generalSettingBuilder.Build();
             
             Assert.NotNull(generalSetting);
         }
@@ -67,7 +68,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.General
         [Fact]
         public void Author_ValidInput()
         {
-            var generalSettingBuilder = new GeneralSettingBuilder();
+            GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
             
             generalSettingBuilder.Author("Test Author");
             
@@ -80,7 +81,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.General
         [Fact]
         public void Debug_ValidInput()
         {
-            var generalSettingBuilder = new GeneralSettingBuilder();
+            GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
             
             generalSettingBuilder.Debug(true);
             
@@ -93,7 +94,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.General
         [Fact]
         public void Description_ValidInput()
         {
-            var generalSettingBuilder = new GeneralSettingBuilder();
+            GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
             
             generalSettingBuilder.Description("Test Description");
             
@@ -106,7 +107,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.General
         [Fact]
         public void Icon_ValidInput()
         {
-            var generalSettingBuilder = new GeneralSettingBuilder();
+            GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
             
             generalSettingBuilder.Icon("Test Icon");
             
@@ -119,7 +120,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.General
         [Fact]
         public void License_ValidInput()
         {
-            var generalSettingBuilder = new GeneralSettingBuilder();
+            GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
             
             generalSettingBuilder.License("Test License");
             
@@ -132,7 +133,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.General
         [Fact]
         public void Name_ValidInput()
         {
-            var generalSettingBuilder = new GeneralSettingBuilder();
+            GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
             
             generalSettingBuilder.Name("Test Name");
             
@@ -145,7 +146,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.General
         [Fact]
         public void Version_ValidInput()
         {
-            var generalSettingBuilder = new GeneralSettingBuilder();
+            GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
             
             generalSettingBuilder.Version("Test Version");
             

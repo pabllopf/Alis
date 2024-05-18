@@ -157,7 +157,7 @@ namespace Alis.Core.Network.Internal
         /// <summary>
         ///     Extracts close status and close description information from the web socket frame
         /// </summary>
-        private static WebSocketFrame DecodeCloseFrame(bool isFinBitSet, WebSocketOpCode opCode, int count,
+        internal static WebSocketFrame DecodeCloseFrame(bool isFinBitSet, WebSocketOpCode opCode, int count,
             ArraySegment<byte> buffer, ArraySegment<byte> maskKey)
         {
             WebSocketCloseStatus closeStatus;
@@ -203,30 +203,70 @@ namespace Alis.Core.Network.Internal
         private static async Task<uint> ReadLength(byte byte2, ArraySegment<byte> smallBuffer, Stream fromStream,
             CancellationToken cancellationToken)
         {
-            byte payloadLenFlag = 0x7F;
-            uint len = (uint) (byte2 & payloadLenFlag);
+            uint len = GetInitialLength(byte2);
             
-            // read a short length or a long length depending on the value of len
             if (len == 126)
             {
-                len = await BinaryReaderWriter.ReadUShortExactly(fromStream, false, smallBuffer, cancellationToken);
+                len = await ReadShortLength(fromStream, smallBuffer, cancellationToken);
             }
             else if (len == 127)
             {
-                len = (uint) await BinaryReaderWriter.ReadULongExactly(fromStream, false, smallBuffer,
-                    cancellationToken);
-                const uint
-                    maxLen = 2147483648; // 2GB - not part of the spec but just a precaution. Send large volumes of data in smaller frames.
-                
-                // protect ourselves against bad data
-                if (len > maxLen || len < 0)
-                {
-                    throw new ArgumentOutOfRangeException(
-                        $"Payload length out of range. Min 0 max 2GB. Actual {len:#,##0} bytes.");
-                }
+                len = await ReadLongLength(fromStream, smallBuffer, cancellationToken);
             }
             
+            ValidateLength(len);
+            
             return len;
+        }
+        
+        /// <summary>
+        /// Gets the initial length using the specified byte 2
+        /// </summary>
+        /// <param name="byte2">The byte</param>
+        /// <returns>The uint</returns>
+        private static uint GetInitialLength(byte byte2)
+        {
+            byte payloadLenFlag = 0x7F;
+            return (uint) (byte2 & payloadLenFlag);
+        }
+        
+        /// <summary>
+        /// Reads the short length using the specified from stream
+        /// </summary>
+        /// <param name="fromStream">The from stream</param>
+        /// <param name="smallBuffer">The small buffer</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns>A task containing the uint</returns>
+        private static async Task<uint> ReadShortLength(Stream fromStream, ArraySegment<byte> smallBuffer, CancellationToken cancellationToken)
+        {
+            return await BinaryReaderWriter.ReadUShortExactly(fromStream, false, smallBuffer, cancellationToken);
+        }
+        
+        /// <summary>
+        /// Reads the long length using the specified from stream
+        /// </summary>
+        /// <param name="fromStream">The from stream</param>
+        /// <param name="smallBuffer">The small buffer</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns>A task containing the uint</returns>
+        private static async Task<uint> ReadLongLength(Stream fromStream, ArraySegment<byte> smallBuffer, CancellationToken cancellationToken)
+        {
+            return (uint) await BinaryReaderWriter.ReadULongExactly(fromStream, false, smallBuffer, cancellationToken);
+        }
+        
+        /// <summary>
+        /// Validates the length using the specified len
+        /// </summary>
+        /// <param name="len">The len</param>
+        /// <exception cref="ArgumentOutOfRangeException">Payload length out of range. Min 0 max 2GB. Actual {len:#,##0} bytes.</exception>
+        private static void ValidateLength(uint len)
+        {
+            const uint maxLen = 2147483648; // 2GB - not part of the spec but just a precaution. Send large volumes of data in smaller frames.
+            
+            if (len > maxLen || len < 0)
+            {
+                throw new ArgumentOutOfRangeException($"Payload length out of range. Min 0 max 2GB. Actual {len:#,##0} bytes.");
+            }
         }
     }
 }

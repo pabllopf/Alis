@@ -96,5 +96,15 @@ namespace Alis.Core.Network.Test
             options.SecWebSocketProtocol = "test";
             Assert.Equal("test", options.SecWebSocketProtocol);
         }
+        
+        /// <summary>
+        /// Tests that sec web socket extensions get returns expected value
+        /// </summary>
+        [Fact]
+        public void SecWebSocketExtensions_Get_ReturnsExpectedValue()
+        {
+            WebSocketClientOptions webSocketClientOptions = new WebSocketClientOptions();
+            Assert.Null(webSocketClientOptions.SecWebSocketExtensions);
+        }
     }
 }

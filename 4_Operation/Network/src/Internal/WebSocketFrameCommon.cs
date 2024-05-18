@@ -51,10 +51,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="payload">The payload to mutate</param>
         public static void ToggleMask(ArraySegment<byte> maskKey, ArraySegment<byte> payload)
         {
-            if (maskKey.Count != MaskKeyLength)
-            {
-                throw new MaskKeyLengthException($"MaskKey key must be {MaskKeyLength} bytes");
-            }
+            ValidateMaskKey(maskKey);
             
             byte[] buffer = payload.Array;
             byte[] maskKeyArray = maskKey.Array;
@@ -62,13 +59,56 @@ namespace Alis.Core.Network.Internal
             int payloadCountPlusOffset = payload.Count + payloadOffset;
             int maskKeyOffset = maskKey.Offset;
             
-            // apply the mask key (this is a reversible process so no need to copy the payload)
+            ApplyMaskKey(buffer, maskKeyArray, payloadOffset, payloadCountPlusOffset, maskKeyOffset);
+        }
+        
+        /// <summary>
+        /// Validates the mask key using the specified mask key
+        /// </summary>
+        /// <param name="maskKey">The mask key</param>
+        /// <exception cref="MaskKeyLengthException">MaskKey key must be {MaskKeyLength} bytes</exception>
+        internal static void ValidateMaskKey(ArraySegment<byte> maskKey)
+        {
+            if (maskKey.Count != MaskKeyLength)
+            {
+                throw new MaskKeyLengthException($"MaskKey key must be {MaskKeyLength} bytes");
+            }
+        }
+        
+        /// <summary>
+        /// Applies the mask key using the specified buffer
+        /// </summary>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="maskKeyArray">The mask key array</param>
+        /// <param name="payloadOffset">The payload offset</param>
+        /// <param name="payloadCountPlusOffset">The payload count plus offset</param>
+        /// <param name="maskKeyOffset">The mask key offset</param>
+        internal static void ApplyMaskKey(byte[] buffer, byte[] maskKeyArray, int payloadOffset, int payloadCountPlusOffset, int maskKeyOffset)
+        {
             for (int i = payloadOffset; i < payloadCountPlusOffset; i++)
             {
-                int payloadIndex = i - payloadOffset; // index should start at zero
-                int maskKeyIndex = maskKeyOffset + payloadIndex % MaskKeyLength;
+                ApplyMaskKeyAtIndex(buffer, maskKeyArray, i, payloadOffset, maskKeyOffset);
+            }
+        }
+        
+        /// <summary>
+        /// Applies the mask key at index using the specified buffer
+        /// </summary>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="maskKeyArray">The mask key array</param>
+        /// <param name="i">The </param>
+        /// <param name="payloadOffset">The payload offset</param>
+        /// <param name="maskKeyOffset">The mask key offset</param>
+        internal static void ApplyMaskKeyAtIndex(byte[] buffer, byte[] maskKeyArray, int i, int payloadOffset, int maskKeyOffset)
+        {
+            int payloadIndex = i - payloadOffset; // index should start at zero
+            int maskKeyIndex = maskKeyOffset + payloadIndex % MaskKeyLength;
+            if (buffer != null && maskKeyArray != null)
+            {
                 buffer[i] = (byte) (buffer[i] ^ maskKeyArray[maskKeyIndex]);
             }
         }
+        
+        
     }
 }

@@ -43,7 +43,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         [Fact]
         public void GameObjectBuilder_DefaultConstructor_ValidInput()
         {
-            var gameObjectBuilder = new GameObjectBuilder();
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder();
             
             Assert.NotNull(gameObjectBuilder);
         }
@@ -54,9 +54,9 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         [Fact]
         public void Build_ValidInput()
         {
-            var gameObjectBuilder = new GameObjectBuilder();
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder();
             
-            var gameObject = gameObjectBuilder.Build();
+            Alis.Core.Ecs.Entity.GameObject gameObject = gameObjectBuilder.Build();
             
             Assert.NotNull(gameObject);
         }
@@ -67,7 +67,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         [Fact]
         public void Name_ValidInput()
         {
-            var gameObjectBuilder = new GameObjectBuilder();
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder();
             
             gameObjectBuilder.Name("Test Name");
             
@@ -80,7 +80,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         [Fact]
         public void Transform_ValidInput()
         {
-            var gameObjectBuilder = new GameObjectBuilder();
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder();
             
             gameObjectBuilder.Transform(builder => builder.Position(1.0f, 2.0f).Rotation(45.0f).Scale(3.0f, 4.0f).Build());
         }
@@ -91,7 +91,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         [Fact]
         public void WithTag_ValidInput()
         {
-            var gameObjectBuilder = new GameObjectBuilder();
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder();
             
             gameObjectBuilder.WithTag("Test Tag");
             
@@ -104,7 +104,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         [Fact]
         public void AddComponent_ValidInput()
         {
-            var gameObjectBuilder = new GameObjectBuilder();
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder();
             
             gameObjectBuilder.AddComponent(new TestComponent());
             

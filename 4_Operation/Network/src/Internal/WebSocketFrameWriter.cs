@@ -55,47 +55,105 @@ namespace Alis.Core.Network.Internal
         public static void Write(WebSocketOpCode opCode, ArraySegment<byte> fromPayload, MemoryStream toStream,
             bool isLastFrame, bool isClient)
         {
-            MemoryStream memoryStream = toStream;
             byte finBitSetAsByte = isLastFrame ? (byte) 0x80 : (byte) 0x00;
             byte byte1 = (byte) (finBitSetAsByte | (byte) opCode);
-            memoryStream.WriteByte(byte1);
+            toStream.WriteByte(byte1);
             
-            // NB, set the mask flag if we are constructing a client frame
-            byte maskBitSetAsByte = isClient ? (byte) 0x80 : (byte) 0x00;
+            WritePayloadLength(fromPayload, toStream, isClient);
             
-            // depending on the size of the length we want to write it as a byte, ushort or ulong
-            if (fromPayload.Count < 126)
+            if (isClient)
             {
-                byte byte2 = (byte) (maskBitSetAsByte | (byte) fromPayload.Count);
-                memoryStream.WriteByte(byte2);
-            }
-            else if (fromPayload.Count <= ushort.MaxValue)
-            {
-                byte byte2 = (byte) (maskBitSetAsByte | 126);
-                memoryStream.WriteByte(byte2);
-                BinaryReaderWriter.WriteUShort((ushort) fromPayload.Count, memoryStream, false);
+                WriteMaskedPayload(fromPayload, toStream);
             }
             else
             {
-                byte byte2 = (byte) (maskBitSetAsByte | 127);
-                memoryStream.WriteByte(byte2);
-                BinaryReaderWriter.WriteULong((ulong) fromPayload.Count, memoryStream, false);
+                toStream.Write(fromPayload.Array, fromPayload.Offset, fromPayload.Count);
             }
-            
-            // if we are creating a client frame then we MUST mack the payload as per the spec
-            if (isClient)
+        }
+        
+        /// <summary>
+        /// Writes the payload length using the specified from payload
+        /// </summary>
+        /// <param name="fromPayload">The from payload</param>
+        /// <param name="toStream">The to stream</param>
+        /// <param name="isClient">The is client</param>
+       internal static void WritePayloadLength(ArraySegment<byte> fromPayload, MemoryStream toStream, bool isClient)
+        {
+            byte maskBitSetAsByte = isClient ? (byte)0x80 : (byte)0x00;
+
+            if (fromPayload.Count < 126)
             {
-                byte[] maskKey = new byte[WebSocketFrameCommon.MaskKeyLength];
-                RandomNumberGenerator rand = RandomNumberGenerator.Create();
-                rand.GetBytes(maskKey);
-                memoryStream.Write(maskKey, 0, maskKey.Length);
-                
-                // mask the payload
-                ArraySegment<byte> maskKeyArraySegment = new ArraySegment<byte>(maskKey, 0, maskKey.Length);
-                WebSocketFrameCommon.ToggleMask(maskKeyArraySegment, fromPayload);
+                WriteByteWithPayloadCount(maskBitSetAsByte, fromPayload.Count, toStream);
             }
+            else
+            {
+                WriteByteWithPayloadCount(maskBitSetAsByte, DeterminePayloadCount(fromPayload), toStream);
+                WritePayloadData(fromPayload, toStream);
+            }
+        }
+
+        /// <summary>
+        /// Determines the payload count using the specified from payload
+        /// </summary>
+        /// <param name="fromPayload">The from payload</param>
+        /// <returns>The int</returns>
+        internal static int DeterminePayloadCount(ArraySegment<byte> fromPayload)
+        {
+            if (fromPayload.Count <= ushort.MaxValue)
+            {
+                return 126;
+            }
+            else
+            {
+                return 127;
+            }
+        }
+
+        /// <summary>
+        /// Writes the payload data using the specified from payload
+        /// </summary>
+        /// <param name="fromPayload">The from payload</param>
+        /// <param name="toStream">The to stream</param>
+        internal static void WritePayloadData(ArraySegment<byte> fromPayload, MemoryStream toStream)
+        {
+            if (fromPayload.Count <= ushort.MaxValue)
+            {
+                BinaryReaderWriter.WriteUShort((ushort)fromPayload.Count, toStream, false);
+            }
+            else
+            {
+                BinaryReaderWriter.WriteULong((ulong)fromPayload.Count, toStream, false);
+            }
+        }
+
+        /// <summary>
+        /// Writes the byte with payload count using the specified mask bit set as byte
+        /// </summary>
+        /// <param name="maskBitSetAsByte">The mask bit set as byte</param>
+        /// <param name="payloadCount">The payload count</param>
+        /// <param name="toStream">The to stream</param>
+        internal static void WriteByteWithPayloadCount(byte maskBitSetAsByte, int payloadCount, MemoryStream toStream)
+        {
+            byte byte2 = (byte)(maskBitSetAsByte | payloadCount);
+            toStream.WriteByte(byte2);
+        }
+        
+        /// <summary>
+        /// Writes the masked payload using the specified from payload
+        /// </summary>
+        /// <param name="fromPayload">The from payload</param>
+        /// <param name="toStream">The to stream</param>
+        internal static void WriteMaskedPayload(ArraySegment<byte> fromPayload, MemoryStream toStream)
+        {
+            byte[] maskKey = new byte[WebSocketFrameCommon.MaskKeyLength];
+            RandomNumberGenerator rand = RandomNumberGenerator.Create();
+            rand.GetBytes(maskKey);
+            toStream.Write(maskKey, 0, maskKey.Length);
             
-            memoryStream.Write(fromPayload.Array, fromPayload.Offset, fromPayload.Count);
+            ArraySegment<byte> maskKeyArraySegment = new ArraySegment<byte>(maskKey, 0, maskKey.Length);
+            WebSocketFrameCommon.ToggleMask(maskKeyArraySegment, fromPayload);
+            
+            toStream.Write(fromPayload.Array, fromPayload.Offset, fromPayload.Count);
         }
     }
 }

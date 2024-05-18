@@ -45,82 +45,82 @@ namespace Alis.Core.Network.Internal
         /// <summary>
         ///     The max ping pong payload len
         /// </summary>
-        private const int PingPongPayloadLen = 125;
+        internal const int PingPongPayloadLen = 125;
         
         /// <summary>
         ///     The guid
         /// </summary>
-        private readonly Guid _guid;
+        internal readonly Guid _guid;
         
         /// <summary>
         ///     The include exception in close response
         /// </summary>
-        private readonly bool _includeExceptionInCloseResponse;
+        internal readonly bool _includeExceptionInCloseResponse;
         
         /// <summary>
         ///     The internal read cts
         /// </summary>
-        private readonly CancellationTokenSource _internalReadCts = new CancellationTokenSource();
+        internal readonly CancellationTokenSource _internalReadCts = new CancellationTokenSource();
         
         /// <summary>
         ///     The is client
         /// </summary>
-        private readonly bool _isClient;
+        internal readonly bool _isClient;
         
         /// <summary>
         ///     The recycled stream factory
         /// </summary>
-        private readonly Func<MemoryStream> _recycledStreamFactory;
+        internal readonly Func<MemoryStream> _recycledStreamFactory;
         
         /// <summary>
         ///     The semaphore slim
         /// </summary>
-        private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1);
+        internal readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1);
         
         /// <summary>
         ///     The stream
         /// </summary>
-        private readonly Stream _stream;
+        internal readonly Stream _stream;
         
         /// <summary>
         ///     The use per message deflate
         /// </summary>
-        private readonly bool _usePerMessageDeflate;
+        internal readonly bool _usePerMessageDeflate;
         
         /// <summary>
         ///     The close status
         /// </summary>
-        private WebSocketCloseStatus? _closeStatus;
+        internal WebSocketCloseStatus? _closeStatus;
         
         /// <summary>
         ///     The close status description
         /// </summary>
-        private string _closeStatusDescription;
+        internal string _closeStatusDescription;
         
         /// <summary>
         ///     The binary
         /// </summary>
-        private WebSocketMessageType _continuationFrameMessageType = WebSocketMessageType.Binary;
+        internal WebSocketMessageType _continuationFrameMessageType = WebSocketMessageType.Binary;
         
         /// <summary>
         ///     The is continuation frame
         /// </summary>
-        private bool _isContinuationFrame;
+        internal bool _isContinuationFrame;
         
         /// <summary>
         ///     The read cursor
         /// </summary>
-        private WebSocketReadCursor _readCursor;
+        internal WebSocketReadCursor _readCursor;
         
         /// <summary>
         ///     The state
         /// </summary>
-        private WebSocketState _state;
+        internal WebSocketState _state;
         
         /// <summary>
         ///     The try get buffer failure logged
         /// </summary>
-        private bool _tryGetBufferFailureLogged;
+        internal bool _tryGetBufferFailureLogged;
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="WebSocketImplementation" /> class
@@ -228,7 +228,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="buffer">The buffer</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>A task containing the web socket frame</returns>
-        private async Task<WebSocketFrame> ReadWebSocketFrame(ArraySegment<byte> buffer, CancellationToken cancellationToken)
+        internal async Task<WebSocketFrame> ReadWebSocketFrame(ArraySegment<byte> buffer, CancellationToken cancellationToken)
         {
             try
             {
@@ -251,59 +251,134 @@ namespace Alis.Core.Network.Internal
         }
         
         /// <summary>
-        ///     Handles the web socket op codes using the specified frame
+        /// Handles the web socket op codes using the specified frame
         /// </summary>
         /// <param name="frame">The frame</param>
         /// <param name="buffer">The buffer</param>
         /// <param name="linkedCts">The linked cts</param>
         /// <param name="endOfMessage">The end of message</param>
-        /// <exception cref="InvalidOperationException"></exception>
         /// <returns>A task containing the web socket receive result</returns>
-        private async Task<WebSocketReceiveResult> HandleWebSocketOpCodes(WebSocketFrame frame, ArraySegment<byte> buffer, CancellationTokenSource linkedCts, bool endOfMessage)
+        internal async Task<WebSocketReceiveResult> HandleWebSocketOpCodes(WebSocketFrame frame, ArraySegment<byte> buffer, CancellationTokenSource linkedCts, bool endOfMessage)
         {
             switch (frame.OpCode)
             {
                 case WebSocketOpCode.ConnectionClose:
-                    return await RespondToCloseFrame(frame, buffer, linkedCts.Token);
+                    return await HandleConnectionClose(frame, buffer, linkedCts.Token);
                 case WebSocketOpCode.Ping:
-                    if (buffer.Array != null)
-                    {
-                        ArraySegment<byte> pingPayload = new ArraySegment<byte>(buffer.Array, buffer.Offset, _readCursor.NumBytesRead);
-                        await SendPongAsync(pingPayload, linkedCts.Token);
-                    }
-                    
-                    break;
+                    return await HandlePing(frame, buffer, linkedCts);
                 case WebSocketOpCode.Pong:
-                    if (buffer.Array != null)
-                    {
-                        ArraySegment<byte> pongBuffer = new ArraySegment<byte>(buffer.Array, _readCursor.NumBytesRead, buffer.Offset);
-                        Pong?.Invoke(this, new PongEventArgs(pongBuffer));
-                    }
-                    
-                    break;
+                    return HandlePong(frame, buffer);
                 case WebSocketOpCode.TextFrame:
-                    if (!frame.IsFinBitSet)
-                    {
-                        _continuationFrameMessageType = WebSocketMessageType.Text;
-                    }
-                    
-                    return new WebSocketReceiveResult(_readCursor.NumBytesRead, WebSocketMessageType.Text, endOfMessage);
+                    return HandleTextFrame(frame, endOfMessage);
                 case WebSocketOpCode.BinaryFrame:
-                    if (!frame.IsFinBitSet)
-                    {
-                        _continuationFrameMessageType = WebSocketMessageType.Binary;
-                    }
-                    
-                    return new WebSocketReceiveResult(_readCursor.NumBytesRead, WebSocketMessageType.Binary, endOfMessage);
+                    return HandleBinaryFrame(frame, endOfMessage);
                 case WebSocketOpCode.ContinuationFrame:
-                    return new WebSocketReceiveResult(_readCursor.NumBytesRead, _continuationFrameMessageType, endOfMessage);
+                    return HandleContinuationFrame(frame, endOfMessage);
                 default:
-                    Exception ex = new NotSupportedException($"Unknown WebSocket opcode {frame.OpCode}");
-                    await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.ProtocolError, ex.Message, ex);
-                    throw ex;
+                    return await HandleDefault(frame);
+            }
+        }
+        
+        /// <summary>
+        /// Handles the connection close using the specified frame
+        /// </summary>
+        /// <param name="frame">The frame</param>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="token">The token</param>
+        /// <returns>A task containing the web socket receive result</returns>
+        internal async Task<WebSocketReceiveResult> HandleConnectionClose(WebSocketFrame frame, ArraySegment<byte> buffer, CancellationToken token)
+        {
+            return await RespondToCloseFrame(frame, buffer, token);
+        }
+        
+        /// <summary>
+        /// Handles the ping using the specified frame
+        /// </summary>
+        /// <param name="frame">The frame</param>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="linkedCts">The linked cts</param>
+        /// <returns>A task containing the web socket receive result</returns>
+        internal async Task<WebSocketReceiveResult> HandlePing(WebSocketFrame frame, ArraySegment<byte> buffer, CancellationTokenSource linkedCts)
+        {
+            if (buffer.Array != null)
+            {
+                ArraySegment<byte> pingPayload = new ArraySegment<byte>(buffer.Array, buffer.Offset, _readCursor.NumBytesRead);
+                await SendPongAsync(pingPayload, linkedCts.Token);
             }
             
-            throw new InvalidOperationException();
+            return null;
+        }
+        
+        /// <summary>
+        /// Handles the pong using the specified frame
+        /// </summary>
+        /// <param name="frame">The frame</param>
+        /// <param name="buffer">The buffer</param>
+        /// <returns>The web socket receive result</returns>
+        internal WebSocketReceiveResult HandlePong(WebSocketFrame frame, ArraySegment<byte> buffer)
+        {
+            if (buffer.Array != null)
+            {
+                ArraySegment<byte> pongBuffer = new ArraySegment<byte>(buffer.Array, _readCursor.NumBytesRead, buffer.Offset);
+                Pong?.Invoke(this, new PongEventArgs(pongBuffer));
+            }
+            
+            return null;
+        }
+        
+        /// <summary>
+        /// Handles the text frame using the specified frame
+        /// </summary>
+        /// <param name="frame">The frame</param>
+        /// <param name="endOfMessage">The end of message</param>
+        /// <returns>The web socket receive result</returns>
+        internal WebSocketReceiveResult HandleTextFrame(WebSocketFrame frame, bool endOfMessage)
+        {
+            if (!frame.IsFinBitSet)
+            {
+                _continuationFrameMessageType = WebSocketMessageType.Text;
+            }
+            
+            return new WebSocketReceiveResult(_readCursor.NumBytesRead, WebSocketMessageType.Text, endOfMessage);
+        }
+        
+        /// <summary>
+        /// Handles the binary frame using the specified frame
+        /// </summary>
+        /// <param name="frame">The frame</param>
+        /// <param name="endOfMessage">The end of message</param>
+        /// <returns>The web socket receive result</returns>
+        internal WebSocketReceiveResult HandleBinaryFrame(WebSocketFrame frame, bool endOfMessage)
+        {
+            if (!frame.IsFinBitSet)
+            {
+                _continuationFrameMessageType = WebSocketMessageType.Binary;
+            }
+            
+            return new WebSocketReceiveResult(_readCursor.NumBytesRead, WebSocketMessageType.Binary, endOfMessage);
+        }
+        
+        /// <summary>
+        /// Handles the continuation frame using the specified frame
+        /// </summary>
+        /// <param name="frame">The frame</param>
+        /// <param name="endOfMessage">The end of message</param>
+        /// <returns>The web socket receive result</returns>
+        internal WebSocketReceiveResult HandleContinuationFrame(WebSocketFrame frame, bool endOfMessage)
+        {
+            return new WebSocketReceiveResult(_readCursor.NumBytesRead, _continuationFrameMessageType, endOfMessage);
+        }
+        
+        /// <summary>
+        /// Handles the default using the specified frame
+        /// </summary>
+        /// <param name="frame">The frame</param>
+        /// <returns>A task containing the web socket receive result</returns>
+        internal async Task<WebSocketReceiveResult> HandleDefault(WebSocketFrame frame)
+        {
+            Exception ex = new NotSupportedException($"Unknown WebSocket opcode {frame.OpCode}");
+            await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.ProtocolError, ex.Message, ex);
+            throw ex;
         }
         
         /// <summary>
@@ -311,7 +386,7 @@ namespace Alis.Core.Network.Internal
         /// </summary>
         /// <param name="catchAll">The catch all</param>
         /// <returns>A task containing the web socket receive result</returns>
-        private async Task<WebSocketReceiveResult> HandleExceptions(Exception catchAll)
+        internal async Task<WebSocketReceiveResult> HandleExceptions(Exception catchAll)
         {
             if (_state == WebSocketState.Open)
             {
@@ -482,7 +557,7 @@ namespace Alis.Core.Network.Internal
         ///     Called when a Pong frame is received
         /// </summary>
         /// <param name="e"></param>
-        private void OnPong(PongEventArgs e)
+        internal void OnPong(PongEventArgs e)
         {
             Pong?.Invoke(this, e);
         }
@@ -493,7 +568,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="closeStatus">The close status</param>
         /// <param name="statusDescription">Optional extra close details</param>
         /// <returns>The payload to sent in the close frame</returns>
-        private ArraySegment<byte> BuildClosePayload(WebSocketCloseStatus closeStatus, string statusDescription)
+        internal ArraySegment<byte> BuildClosePayload(WebSocketCloseStatus closeStatus, string statusDescription)
         {
             byte[] statusBuffer = BitConverter.GetBytes((ushort) closeStatus);
             Array.Reverse(statusBuffer); // network byte order (big endian)
@@ -510,9 +585,12 @@ namespace Alis.Core.Network.Internal
             return new ArraySegment<byte>(payload);
         }
         
-        /// NOTE: pong payload must be 125 bytes or less
-        /// Pong should contain the same payload as the ping
-        private async Task SendPongAsync(ArraySegment<byte> payload, CancellationToken cancellationToken)
+        /// <summary>
+        /// Sends the pong using the specified payload
+        /// </summary>
+        /// <param name="payload">The payload</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        internal async Task SendPongAsync(ArraySegment<byte> payload, CancellationToken cancellationToken)
         {
             // as per websocket spec
             if (payload.Count > PingPongPayloadLen)
@@ -546,7 +624,7 @@ namespace Alis.Core.Network.Internal
         ///     Called when a Close frame is received
         ///     Send a response close frame if applicable
         /// </summary>
-        private async Task<WebSocketReceiveResult> RespondToCloseFrame(WebSocketFrame frame, ArraySegment<byte> buffer,
+        internal async Task<WebSocketReceiveResult> RespondToCloseFrame(WebSocketFrame frame, ArraySegment<byte> buffer,
             CancellationToken token)
         {
             _closeStatus = frame.CloseStatus;
@@ -586,7 +664,7 @@ namespace Alis.Core.Network.Internal
         ///     You want to avoid a call to stream.ToArray to avoid extra memory allocation
         ///     MemoryStream can be configured to have its internal buffer accessible.
         /// </summary>
-        private ArraySegment<byte> GetBuffer(MemoryStream stream)
+        internal ArraySegment<byte> GetBuffer(MemoryStream stream)
         {
             // Avoid calling ToArray on the MemoryStream because it allocates a new byte array on tha heap
             // We avaoid this by attempting to access the internal memory stream buffer
@@ -612,7 +690,7 @@ namespace Alis.Core.Network.Internal
         /// </summary>
         /// <param name="stream">The stream to read data from</param>
         /// <param name="cancellationToken"></param>
-        private async Task WriteStreamToNetwork(MemoryStream stream, CancellationToken cancellationToken)
+        internal async Task WriteStreamToNetwork(MemoryStream stream, CancellationToken cancellationToken)
         {
             ArraySegment<byte> buffer = GetBuffer(stream);
             await _semaphore.WaitAsync(cancellationToken).ConfigureAwait(false);
@@ -630,7 +708,7 @@ namespace Alis.Core.Network.Internal
         /// <summary>
         ///     Turns a spec websocket frame opcode into a WebSocketMessageType
         /// </summary>
-        private WebSocketOpCode GetOppCode(WebSocketMessageType messageType)
+        internal WebSocketOpCode GetOppCode(WebSocketMessageType messageType)
         {
             if (_isContinuationFrame)
             {
@@ -658,7 +736,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="closeStatus">The close status to use</param>
         /// <param name="statusDescription">A description of why we are closing</param>
         /// <param name="ex">The exception (for logging)</param>
-        private async Task CloseOutputAutoTimeoutAsync(WebSocketCloseStatus closeStatus, string statusDescription,
+        internal async Task CloseOutputAutoTimeoutAsync(WebSocketCloseStatus closeStatus, string statusDescription,
             Exception ex)
         {
             TimeSpan timeSpan = TimeSpan.FromSeconds(5);

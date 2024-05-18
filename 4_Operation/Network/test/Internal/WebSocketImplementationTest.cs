@@ -82,7 +82,7 @@ namespace Alis.Core.Network.Test.Internal
             
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, recycledStreamFactory, stream, keepAliveInterval, secWebSocketExtensions, includeExceptionInCloseResponse, isClient, subProtocol);
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
-            await Assert.ThrowsAsync<EndOfStreamException>( () => webSocket.ReceiveAsync(buffer, CancellationToken.None));
+            await Assert.ThrowsAsync<EndOfStreamException>(() => webSocket.ReceiveAsync(buffer, CancellationToken.None));
         }
         
         /// <summary>
@@ -105,5 +105,7 @@ namespace Alis.Core.Network.Test.Internal
             
             Assert.Equal(WebSocketState.CloseSent, webSocket.State);
         }
+        
+        
     }
 }
