@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Config
         public const Category DefaultFixtureCollisionCategories = Category.Cat1;
         
         /// <summary>This is used by the Fixture constructor as the default value for Fixture.CollidesWith member.</summary>
-        public const Category DefaultFixtureCollidesWith = Category.All;
+        public const Category DefaultFixtureCollidesWith = (Category)int.MaxValue;
         
         /// <summary>This is used by the Fixture constructor as the default value for Fixture.IgnoreCCDWith member.</summary>
         public const Category DefaultFixtureIgnoreCcdWith = Category.None;

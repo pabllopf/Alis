@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
 namespace Alis.Core.Aspect.Data.Resource
@@ -68,6 +69,7 @@ namespace Alis.Core.Aspect.Data.Resource
         /// </summary>
         /// <param name="assetName">The asset name</param>
         /// <exception cref="ArgumentNullException"></exception>
+        [ExcludeFromCodeCoverage]
         internal static void ValidateAssetNameIsNotNull(string assetName)
         {
             if (assetName == null)
@@ -117,6 +119,7 @@ namespace Alis.Core.Aspect.Data.Resource
         /// </summary>
         /// <param name="assetName">The asset name</param>
         /// <exception cref="ArgumentException">The asset name must have extension. </exception>
+        [ExcludeFromCodeCoverage]
         internal static void ValidateAssetNameHasExtension(string assetName)
         {
             if (!assetName.Contains("."))

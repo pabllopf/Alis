@@ -104,6 +104,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Awakes this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public override void OnAwake()
         {
             Context?.GraphicManager.Attach(this);
@@ -112,6 +113,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Exits this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public override void OnExit()
         {
             Context?.GraphicManager.UnAttach(this);
