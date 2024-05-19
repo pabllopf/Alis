@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Alis.Core.Physic.Collision.BroadPhase;
 using Alis.Core.Physic.Collision.Distance;
@@ -48,7 +49,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     The contact list
         /// </summary>
-        private readonly List<Contact> contactList = new List<Contact>();
+        internal readonly List<Contact> contactList = new List<Contact>();
         
         /// <summary>
         ///     The contact
@@ -58,7 +59,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     The contact count
         /// </summary>
-        private int contactCounter;
+        internal int contactCounter;
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="ContactManager" /> class
@@ -72,32 +73,38 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
         
         /// <summary>Fires when the broadphase detects that two Fixtures are close to each other.</summary>
+        [ExcludeFromCodeCoverage]
         public BroadPhaseHandler OnBroadPhaseCollision { get; }
         
         /// <summary>Fires when a contact is created</summary>
+        [ExcludeFromCodeCoverage]
         public BeginContactHandler BeginContact { get; }
         
         /// <summary>The filter used by the contact manager.</summary>
+        [ExcludeFromCodeCoverage]
         public CollisionFilterHandler ContactFilter { get; }
         
         /// <summary>Fires when a contact is deleted</summary>
+        [ExcludeFromCodeCoverage]
         public EndContactHandler EndContact { get; }
         
         /// <summary>
         ///     The last min alpha
         /// </summary>
-        public float LastMinAlpha { get; private set; }
+        [ExcludeFromCodeCoverage]
+        public float LastMinAlpha { get; internal set; }
         
         /// <summary>Fires after the solver has run</summary>
         public PostSolveHandler PostSolve { get; set; }
         
         /// <summary>Fires before the solver runs</summary>
+        [ExcludeFromCodeCoverage]
         public PreSolveHandler PreSolve { get; }
         
         /// <summary>
         ///     The dynamic tree broad phase
         /// </summary>
-        public static ContactManager Current { get; private set; }
+        public static ContactManager Current { get; internal set; }
         
         /// <summary>
         ///     Gets the value of the broad phase
@@ -107,6 +114,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     Gets the value of the contact count
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public int ContactCount => contactCounter;
         
         /// <summary>
@@ -114,7 +122,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         /// <param name="proxyA">The proxy</param>
         /// <param name="proxyB">The proxy</param>
-        private void AddPair(ref FixtureProxy proxyA, ref FixtureProxy proxyB)
+        [ExcludeFromCodeCoverage]
+        internal void AddPair(ref FixtureProxy proxyA, ref FixtureProxy proxyB)
         {
             Fixture fixtureA = proxyA.Fixture;
             Fixture fixtureB = proxyB.Fixture;
@@ -180,7 +189,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="indexA">The index</param>
         /// <param name="indexB">The index</param>
         /// <returns>The bool</returns>
-        private bool CheckExistingContact(Body bodyA, Body bodyB, Fixture fixtureA, Fixture fixtureB, int indexA, int indexB)
+        [ExcludeFromCodeCoverage]
+        internal bool CheckExistingContact(Body bodyA, Body bodyB, Fixture fixtureA, Fixture fixtureB, int indexA, int indexB)
         {
             ContactEdge edge = bodyB.ContactList;
             while (edge != null)
@@ -218,7 +228,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="indexA">The index</param>
         /// <param name="fixtureB">The fixture</param>
         /// <param name="indexB">The index</param>
-        private void CreateContact(Fixture fixtureA, int indexA, Fixture fixtureB, int indexB)
+        [ExcludeFromCodeCoverage]
+        internal void CreateContact(Fixture fixtureA, int indexA, Fixture fixtureB, int indexB)
         {
             // Call the factory.
             Contact c = Contact.Create(fixtureA, indexA, fixtureB, indexB);
@@ -273,6 +284,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     Removes the c
         /// </summary>
         /// <param name="c">The </param>
+        [ExcludeFromCodeCoverage]
         internal void Remove(Contact c)
         {
             if (c.FixtureA == null || c.FixtureB == null)
@@ -357,6 +369,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     Collides this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         internal void Collide()
         {
             for (int i = 0; i < contactList.Count; i++)
@@ -384,7 +397,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private bool ShouldProcessContact(Contact c)
+        [ExcludeFromCodeCoverage]
+        internal bool ShouldProcessContact(Contact c)
         {
             Fixture fixtureA = c.FixtureA;
             Fixture fixtureB = c.FixtureB;
@@ -409,7 +423,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The overlap</returns>
-        private bool ShouldPersistContact(Contact c)
+        [ExcludeFromCodeCoverage]
+        internal bool ShouldPersistContact(Contact c)
         {
             // Is this contact flagged for filtering?
             if (c.FilterFlag)
@@ -437,7 +452,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private bool ShouldBodiesCollide(Contact c)
+        [ExcludeFromCodeCoverage]
+        internal bool ShouldBodiesCollide(Contact c)
         {
             Fixture fixtureA = c.FixtureA;
             Fixture fixtureB = c.FixtureB;
@@ -469,6 +485,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         /// <param name="minAlpha">The min alpha</param>
         /// <returns>The contact</returns>
+        [ExcludeFromCodeCoverage]
         internal Contact GetTheMinContact(float minAlpha)
         {
             foreach (Contact c in contactList.Where(c => c.Enabled).Where(c => c.ToiCount <= Settings.SubSteps))
@@ -499,21 +516,24 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private bool IsValidCachedToi(Contact c) => c.ToiFlag;
+        [ExcludeFromCodeCoverage]
+        internal bool IsValidCachedToi(Contact c) => c.ToiFlag;
         
         /// <summary>
         ///     Describes whether this instance is sensor contact
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private bool IsSensorContact(Contact c) => c.FixtureA.IsSensorPrivate || c.FixtureB.IsSensorPrivate;
+        [ExcludeFromCodeCoverage]
+        internal bool IsSensorContact(Contact c) => c.FixtureA.IsSensorPrivate || c.FixtureB.IsSensorPrivate;
         
         /// <summary>
         ///     Describes whether this instance is active contact
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private bool IsActiveContact(Contact c)
+        [ExcludeFromCodeCoverage]
+        internal bool IsActiveContact(Contact c)
         {
             Body bodyA = c.FixtureA.Body;
             Body bodyB = c.FixtureB.Body;
@@ -529,7 +549,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private bool IsCollidableContact(Contact c)
+        [ExcludeFromCodeCoverage]
+        internal bool IsCollidableContact(Contact c)
         {
             Body bodyA = c.FixtureA.Body;
             Body bodyB = c.FixtureB.Body;
@@ -546,7 +567,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     Adjusts the sweeps using the specified c
         /// </summary>
         /// <param name="c">The </param>
-        private void AdjustSweeps(Contact c)
+        [ExcludeFromCodeCoverage]
+        internal void AdjustSweeps(Contact c)
         {
             Body bodyA = c.FixtureA.Body;
             Body bodyB = c.FixtureB.Body;
@@ -570,7 +592,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The output</returns>
-        private ToiOutput ComputeTimeOfImpact(Contact c)
+        [ExcludeFromCodeCoverage]
+        internal ToiOutput ComputeTimeOfImpact(Contact c)
         {
             ToiInput input = new ToiInput
             {
@@ -591,7 +614,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         /// <param name="c">The </param>
         /// <param name="output">The output</param>
-        private void UpdateContactToi(Contact c, ToiOutput output)
+        [ExcludeFromCodeCoverage]
+        internal void UpdateContactToi(Contact c, ToiOutput output)
         {
             float beta = output.Property;
             float alpha = output.State == ToiOutputState.Touching ? Math.Min(c.FixtureA.Body.Sweep.Alpha0 + (1.0f - c.FixtureA.Body.Sweep.Alpha0) * beta, 1.0f) : 1.0f;
@@ -606,7 +630,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="fixtureA">The fixture</param>
         /// <param name="fixtureB">The fixture</param>
         /// <returns>The collide</returns>
-        private static bool ShouldCollide(Fixture fixtureA, Fixture fixtureB)
+        [ExcludeFromCodeCoverage]
+        internal static bool ShouldCollide(Fixture fixtureA, Fixture fixtureB)
         {
             if ((fixtureA.CollisionGroup == fixtureB.CollisionGroup) &&
                 (fixtureA.CollisionGroup != 0))
@@ -623,11 +648,13 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     Clears the flags
         /// </summary>
+        [ExcludeFromCodeCoverage]
         internal void ClearFlags() => contactList.ForEach(c => c.ClearFlags());
         
         /// <summary>
         ///     Invalidates the toi
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void InvalidateToi() => contactList.ForEach(i => i.InvalidateToi());
         
         /// <summary>

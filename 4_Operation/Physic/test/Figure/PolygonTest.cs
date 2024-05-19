@@ -344,7 +344,7 @@ namespace Alis.Core.Physic.Test.Figure
             float yRadius = 0.5f;
             int segments = 4;
             
-            var ex = Record.Exception(() => Polygon.ValidateRoundedRectangleParameters(width, height, xRadius, yRadius, segments));
+            Exception ex = Record.Exception(() => Polygon.ValidateRoundedRectangleParameters(width, height, xRadius, yRadius, segments));
             Assert.Null(ex);
         }
         
@@ -390,7 +390,7 @@ namespace Alis.Core.Physic.Test.Figure
             float bottomRadius = 0.5f;
             int bottomEdges = 4;
             
-            var ex = Record.Exception(() => Polygon.ValidateCapsuleParameters(height, topRadius, topEdges, bottomRadius, bottomEdges));
+            Exception ex = Record.Exception(() => Polygon.ValidateCapsuleParameters(height, topRadius, topEdges, bottomRadius, bottomEdges));
             Assert.Null(ex);
         }
         
@@ -479,7 +479,7 @@ namespace Alis.Core.Physic.Test.Figure
             float height = 2.0f;
             string position = "top";
             
-            var ex = Record.Exception(() => Polygon.ValidateRadius(radius, height, position));
+            Exception ex = Record.Exception(() => Polygon.ValidateRadius(radius, height, position));
             Assert.Null(ex);
         }
         

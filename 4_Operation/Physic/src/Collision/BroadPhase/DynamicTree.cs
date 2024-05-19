@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -55,37 +56,37 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <summary>
         ///     The stack
         /// </summary>
-        private readonly Stack<int> queryStack = new Stack<int>(256);
+        internal readonly Stack<int> queryStack = new Stack<int>(256);
         
         /// <summary>
         ///     The stack
         /// </summary>
-        private readonly Stack<int> rayCastStack = new Stack<int>(256);
+        internal readonly Stack<int> rayCastStack = new Stack<int>(256);
         
         /// <summary>
         ///     The free list
         /// </summary>
-        private int freeList;
+        internal int freeList;
         
         /// <summary>
         ///     The node capacity
         /// </summary>
-        private int nodeCapacity;
+        internal int nodeCapacity;
         
         /// <summary>
         ///     The node count
         /// </summary>
-        private int nodeCount;
+        internal int nodeCount;
         
         /// <summary>
         ///     The nodes
         /// </summary>
-        private TreeNode<T>[] nodes;
+        internal TreeNode<T>[] nodes;
         
         /// <summary>
         ///     The root
         /// </summary>
-        private int root;
+        internal int root;
         
         /// <summary>Constructing the tree initializes the node pool.</summary>
         public DynamicTree()
@@ -118,6 +119,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         public int Height => root == NullNode ? 0 : nodes[root].Height;
         
         /// <summary>Get the ratio of the sum of the node areas to the root area.</summary>
+        [ExcludeFromCodeCoverage]
         public float AreaRatio
         {
             get
@@ -150,6 +152,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         ///     Get the maximum balance of a node in the tree. The balance is the difference in height of the two children of
         ///     a node.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public int Balance
         {
             get
@@ -212,6 +215,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="aabb">The AABB.</param>
         /// <param name="displacement">The displacement.</param>
         /// <returns>true if the proxy was re-inserted.</returns>
+        [ExcludeFromCodeCoverage]
         public bool MoveProxy(int proxyId, ref Aabb aabb, Vector2 displacement)
         {
             Aabb fatAabb = new Aabb();
@@ -296,6 +300,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// </summary>
         /// <param name="callback">The callback.</param>
         /// <param name="aabb">The AABB.</param>
+        [ExcludeFromCodeCoverage]
         public void Query(Func<int, bool> callback, ref Aabb aabb)
         {
             queryStack.Clear();
@@ -337,6 +342,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// </summary>
         /// <param name="callback">A callback class that is called for each proxy that is hit by the ray.</param>
         /// <param name="input">The ray-cast input data. The ray extends from p1 to p1 + maxFraction * (p2 - p1).</param>
+        [ExcludeFromCodeCoverage]
         public void RayCast(Func<RayCastInput, int, float> callback, ref RayCastInput input)
         {
             Vector2 p1 = input.Point1;
@@ -389,7 +395,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="p1">The </param>
         /// <param name="p2">The </param>
         /// <returns>The vector</returns>
-        private Vector2 CalculateNormalizedRayDirection(Vector2 p1, Vector2 p2)
+        internal Vector2 CalculateNormalizedRayDirection(Vector2 p1, Vector2 p2)
         {
             Vector2 r = p2 - p1;
             return Vector2.Normalize(r);
@@ -400,7 +406,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// </summary>
         /// <param name="vector">The vector</param>
         /// <returns>The vector</returns>
-        private Vector2 CalculateAbsVector(Vector2 vector) => new Vector2(MathUtils.Abs(-vector.Y), MathUtils.Abs(vector.X));
+        internal Vector2 CalculateAbsVector(Vector2 vector) => new Vector2(MathUtils.Abs(-vector.Y), MathUtils.Abs(vector.X));
         
         /// <summary>
         ///     Calculates the segment aabb using the specified p 1
@@ -409,7 +415,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="p2">The </param>
         /// <param name="maxFraction">The max fraction</param>
         /// <returns>The aabb</returns>
-        private Aabb CalculateSegmentAabb(Vector2 p1, Vector2 p2, float maxFraction)
+        internal Aabb CalculateSegmentAabb(Vector2 p1, Vector2 p2, float maxFraction)
         {
             Vector2 t = p1 + maxFraction * (p2 - p1);
             return new Aabb
@@ -425,7 +431,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="aabb1">The aabb</param>
         /// <param name="aabb2">The aabb</param>
         /// <returns>The bool</returns>
-        private bool IsAabbOverlap(Aabb aabb1, Aabb aabb2) => Aabb.TestOverlap(ref aabb1, ref aabb2);
+        [ExcludeFromCodeCoverage]
+        internal bool IsAabbOverlap(Aabb aabb1, Aabb aabb2) => Aabb.TestOverlap(ref aabb1, ref aabb2);
         
         /// <summary>
         ///     Describes whether this instance is separation valid
@@ -434,7 +441,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="p1">The </param>
         /// <param name="aabb">The aabb</param>
         /// <returns>The bool</returns>
-        private bool IsSeparationValid(Vector2 r, Vector2 p1, Aabb aabb)
+        [ExcludeFromCodeCoverage]
+        internal bool IsSeparationValid(Vector2 r, Vector2 p1, Aabb aabb)
         {
             Vector2 c = aabb.Center;
             Vector2 h = aabb.Extents;
@@ -450,7 +458,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="maxFraction">The max fraction</param>
         /// <param name="nodeId">The node id</param>
         /// <returns>The max fraction</returns>
-        private float HandleLeafNode(Func<RayCastInput, int, float> callback, RayCastInput input, float maxFraction, int nodeId)
+        [ExcludeFromCodeCoverage]
+        internal float HandleLeafNode(Func<RayCastInput, int, float> callback, RayCastInput input, float maxFraction, int nodeId)
         {
             RayCastInput subInput = new RayCastInput
             {
@@ -474,7 +483,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         ///     Allocates the node
         /// </summary>
         /// <returns>The node id</returns>
-        private int AllocateNode()
+        [ExcludeFromCodeCoverage]
+        internal int AllocateNode()
         {
             if (freeList == NullNode)
             {
@@ -516,7 +526,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         ///     Frees the node using the specified node id
         /// </summary>
         /// <param name="nodeId">The node id</param>
-        private void FreeNode(int nodeId)
+        internal void FreeNode(int nodeId)
         {
             nodes[nodeId].ParentOrNext = freeList;
             nodes[nodeId].Height = -1;
@@ -528,7 +538,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         ///     Inserts the leaf using the specified leaf
         /// </summary>
         /// <param name="leaf">The leaf</param>
-        private void InsertLeaf(int leaf)
+        internal void InsertLeaf(int leaf)
         {
             if (root == NullNode)
             {
@@ -548,7 +558,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         ///     Sets the root leaf using the specified leaf
         /// </summary>
         /// <param name="leaf">The leaf</param>
-        private void SetRootLeaf(int leaf)
+        internal void SetRootLeaf(int leaf)
         {
             root = leaf;
             nodes[root].ParentOrNext = NullNode;
@@ -559,7 +569,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// </summary>
         /// <param name="leafAabb">The leaf aabb</param>
         /// <returns>The index</returns>
-        private int FindInsertionIndex(Aabb leafAabb)
+        [ExcludeFromCodeCoverage]
+        internal int FindInsertionIndex(Aabb leafAabb)
         {
             int index = root;
             while (!nodes[index].IsLeaf())
@@ -576,7 +587,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="index">The index</param>
         /// <param name="leafAabb">The leaf aabb</param>
         /// <returns>The int</returns>
-        private int FindBestFitChild(int index, Aabb leafAabb)
+        [ExcludeFromCodeCoverage]
+        internal int FindBestFitChild(int index, Aabb leafAabb)
         {
             int child1 = nodes[index].Child1;
             int child2 = nodes[index].Child2;
@@ -593,7 +605,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="leafAabb">The leaf aabb</param>
         /// <param name="childIndex">The child index</param>
         /// <returns>The float</returns>
-        private float CalculateCost(Aabb leafAabb, int childIndex)
+        [ExcludeFromCodeCoverage]
+        internal float CalculateCost(Aabb leafAabb, int childIndex)
         {
             if (nodes[childIndex].IsLeaf())
             {
@@ -617,7 +630,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="leaf">The leaf</param>
         /// <param name="index">The index</param>
         /// <param name="leafAabb">The leaf aabb</param>
-        private void CreateNewParentForLeaf(int leaf, int index, Aabb leafAabb)
+        [ExcludeFromCodeCoverage]
+        internal void CreateNewParentForLeaf(int leaf, int index, Aabb leafAabb)
         {
             int sibling = index;
             int oldParent = nodes[sibling].ParentOrNext;
@@ -651,7 +665,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="parentIndex">The parent index</param>
         /// <param name="oldChild">The old child</param>
         /// <param name="newChild">The new child</param>
-        private void ReplaceChild(int parentIndex, int oldChild, int newChild)
+        [ExcludeFromCodeCoverage]
+        internal void ReplaceChild(int parentIndex, int oldChild, int newChild)
         {
             if (nodes[parentIndex].Child1 == oldChild)
             {
@@ -667,7 +682,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         ///     Balances the tree from leaf to root using the specified leaf
         /// </summary>
         /// <param name="leaf">The leaf</param>
-        private void BalanceTreeFromLeafToRoot(int leaf)
+        internal void BalanceTreeFromLeafToRoot(int leaf)
         {
             int index = nodes[leaf].ParentOrNext;
             while (index != NullNode)
@@ -688,7 +703,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         ///     Removes the leaf using the specified leaf
         /// </summary>
         /// <param name="leaf">The leaf</param>
-        private void RemoveLeaf(int leaf)
+        [ExcludeFromCodeCoverage]
+        internal void RemoveLeaf(int leaf)
         {
             if (leaf == root)
             {
@@ -741,7 +757,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// </summary>
         /// <param name="iA">The </param>
         /// <returns>The </returns>
-        private int BalanceTo(int iA)
+        [ExcludeFromCodeCoverage]
+        internal int BalanceTo(int iA)
         {
             TreeNode<T> a = nodes[iA];
             if (a.IsLeaf() || a.Height < 2)
@@ -778,7 +795,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="iC">The </param>
         /// <param name="c">The </param>
         /// <returns>The int</returns>
-        private int BalanceRight(int iA, TreeNode<T> a, int iC, TreeNode<T> c)
+        [ExcludeFromCodeCoverage]
+        internal int BalanceRight(int iA, TreeNode<T> a, int iC, TreeNode<T> c)
         {
             int iF = c.Child1;
             int iG = c.Child2;
@@ -807,7 +825,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="iB">The </param>
         /// <param name="b">The </param>
         /// <returns>The int</returns>
-        private int BalanceLeft(int iA, TreeNode<T> a, int iB, TreeNode<T> b)
+        [ExcludeFromCodeCoverage]
+        internal int BalanceLeft(int iA, TreeNode<T> a, int iB, TreeNode<T> b)
         {
             int iD = b.Child1;
             int iE = b.Child2;
@@ -834,7 +853,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="oldChild">The old child</param>
         /// <param name="newChild">The new child</param>
         /// <param name="parent">The parent</param>
-        private void UpdateParent(int oldChild, int newChild, int parent)
+        [ExcludeFromCodeCoverage]
+        internal void UpdateParent(int oldChild, int newChild, int parent)
         {
             if (parent != NullNode)
             {
@@ -865,7 +885,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="iG">The </param>
         /// <param name="g">The </param>
         /// <returns>The </returns>
-        private int BalanceRightCase1(int iA, TreeNode<T> a, int iC, TreeNode<T> c, int iF, TreeNode<T> f, int iG, TreeNode<T> g)
+        [ExcludeFromCodeCoverage]
+        internal int BalanceRightCase1(int iA, TreeNode<T> a, int iC, TreeNode<T> c, int iF, TreeNode<T> f, int iG, TreeNode<T> g)
         {
             c.Child2 = iF;
             a.Child2 = iG;
@@ -891,7 +912,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="iG">The </param>
         /// <param name="g">The </param>
         /// <returns>The </returns>
-        private int BalanceRightCase2(int iA, TreeNode<T> a, int iC, TreeNode<T> c, int iF, TreeNode<T> f, int iG, TreeNode<T> g)
+        [ExcludeFromCodeCoverage]
+        internal int BalanceRightCase2(int iA, TreeNode<T> a, int iC, TreeNode<T> c, int iF, TreeNode<T> f, int iG, TreeNode<T> g)
         {
             c.Child2 = iG;
             a.Child2 = iF;
@@ -917,7 +939,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="iE">The </param>
         /// <param name="e">The </param>
         /// <returns>The </returns>
-        private int BalanceLeftCase1(int iA, TreeNode<T> a, int iB, TreeNode<T> b, int iD, TreeNode<T> d, int iE, TreeNode<T> e)
+        [ExcludeFromCodeCoverage]
+        internal int BalanceLeftCase1(int iA, TreeNode<T> a, int iB, TreeNode<T> b, int iD, TreeNode<T> d, int iE, TreeNode<T> e)
         {
             b.Child2 = iD;
             a.Child1 = iE;
@@ -943,7 +966,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="iE">The </param>
         /// <param name="e">The </param>
         /// <returns>The </returns>
-        private int BalanceLeftCase2(int iA, TreeNode<T> a, int iB, TreeNode<T> b, int iD, TreeNode<T> d, int iE, TreeNode<T> e)
+        [ExcludeFromCodeCoverage]
+        internal int BalanceLeftCase2(int iA, TreeNode<T> a, int iB, TreeNode<T> b, int iD, TreeNode<T> d, int iE, TreeNode<T> e)
         {
             b.Child2 = iE;
             a.Child1 = iD;
@@ -960,7 +984,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <summary>Compute the height of a sub-tree.</summary>
         /// <param name="nodeId">The node id to use as parent.</param>
         /// <returns>The height of the tree.</returns>
-        private int ComputeHeight(int nodeId)
+        [ExcludeFromCodeCoverage]
+        internal int ComputeHeight(int nodeId)
         {
             TreeNode<T> node = nodes[nodeId];
             
@@ -976,6 +1001,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         
         /// <summary>Compute the height of the entire tree.</summary>
         /// <returns>The height of the tree.</returns>
+        [ExcludeFromCodeCoverage]
         public int ComputeHeight()
         {
             int height = ComputeHeight(root);

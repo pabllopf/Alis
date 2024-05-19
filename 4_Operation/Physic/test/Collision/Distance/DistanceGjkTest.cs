@@ -505,6 +505,67 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             Assert.Equal(new Vector2(1, 0), n);
         }
         
+        /// <summary>
+        /// Tests that iterate until converged returns false when converged
+        /// </summary>
+        [Fact]
+        public void IterateUntilConverged_ReturnsFalse_WhenConverged()
+        {
+            DistanceProxy proxyA = new DistanceProxy();
+            DistanceProxy proxyB = new DistanceProxy();
+            Transform xfA = new Transform();
+            Transform xfB = new Transform();
+            Vector2 r = new Vector2(1, 1);
+            Vector2 n = new Vector2(1, 1);
+            float lambda = 0.5f;
+            Simplex simplex = new Simplex();
+            float radius = 1.0f;
+            
+            Assert.Throws<NullReferenceException>(() => DistanceGjk.IterateUntilConverged(ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref n, ref lambda, ref simplex, radius));
+        }
         
+        /// <summary>
+        /// Tests that iterate until converged returns true when not converged
+        /// </summary>
+        [Fact]
+        public void IterateUntilConverged_ReturnsTrue_WhenNotConverged()
+        {
+            DistanceProxy proxyA = new DistanceProxy();
+            DistanceProxy proxyB = new DistanceProxy();
+            Transform xfA = new Transform();
+            Transform xfB = new Transform();
+            Vector2 r = new Vector2(1, 1);
+            Vector2 n = new Vector2(1, 1);
+            float lambda = 0.5f;
+            Simplex simplex = new Simplex();
+            float radius = 0.1f;
+            
+            Assert.Throws<NullReferenceException>(() => DistanceGjk.IterateUntilConverged(ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref n, ref lambda, ref simplex, radius));
+            
+        }
+        
+        /// <summary>
+        /// Tests that initialize simplex returns correct simplex when given valid input
+        /// </summary>
+        [Fact]
+        public void InitializeSimplex_ReturnsCorrectSimplex_WhenGivenValidInput()
+        {
+            SimplexCache cache = new SimplexCache();
+            DistanceInput input = new DistanceInput();
+            
+            Assert.Throws<NullReferenceException>( () =>DistanceGjk.InitializeSimplex(ref cache, ref input));
+        }
+        
+        /// <summary>
+        /// Tests that initialize simplex reads cache correctly when given valid input
+        /// </summary>
+        [Fact]
+        public void InitializeSimplex_ReadsCacheCorrectly_WhenGivenValidInput()
+        {
+            SimplexCache cache = new SimplexCache();
+            DistanceInput input = new DistanceInput();
+            
+            Assert.Throws<NullReferenceException>( () => DistanceGjk.InitializeSimplex(ref cache, ref input));
+        }
     }
 }

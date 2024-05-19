@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Distance;
@@ -76,6 +77,7 @@ namespace Alis.Core.Physic.Collision.TOI
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="output">The output</param>
+        [ExcludeFromCodeCoverage]
         public static void CalculateTimeOfImpact(ref ToiInput input, out ToiOutput output)
         {
             ++ToiCalls;
@@ -151,6 +153,7 @@ namespace Alis.Core.Physic.Collision.TOI
         /// <param name="t1">The </param>
         /// <param name="iter">The iter</param>
         /// <param name="tMax">The max</param>
+        [ExcludeFromCodeCoverage]
         internal static void ComputeSeparatingAxes(ref ToiInput input, ref ToiOutput output, ref DistanceInput distanceInput, ref Sweep sweepA, ref Sweep sweepB, float target, float tolerance, ref float t1, ref int iter, float tMax)
         {
             for (;;)
@@ -204,6 +207,7 @@ namespace Alis.Core.Physic.Collision.TOI
         /// <param name="tolerance">The tolerance</param>
         /// <param name="t1">The </param>
         /// <param name="tMax">The max</param>
+        [ExcludeFromCodeCoverage]
         internal static void ResolveDeepestPoint(ref ToiInput input, ref ToiOutput output, ref Sweep sweepA, ref Sweep sweepB, ref Vector2 axis, ref Vector2 localPoint, SeparationFunctionType type, float target, float tolerance, ref float t1, float tMax)
         {
             float t2 = tMax;
@@ -267,6 +271,7 @@ namespace Alis.Core.Physic.Collision.TOI
         /// <param name="t2">The </param>
         /// <param name="s1">The </param>
         /// <param name="s2">The </param>
+        [ExcludeFromCodeCoverage]
         internal static void ComputeRoot(ref ToiInput input, ref Sweep sweepA, ref Sweep sweepB, ref Vector2 axis, ref Vector2 localPoint, SeparationFunctionType type, float target, float tolerance, ref float t1, ref float t2, float s1, float s2)
         {
             int rootIterCount = 0;

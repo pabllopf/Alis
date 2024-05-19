@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.NarrowPhase;
@@ -47,12 +48,12 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     The edge shape
         /// </summary>
-        private static readonly EdgeShape Edge = new EdgeShape();
+        internal static readonly EdgeShape Edge = new EdgeShape();
         
         /// <summary>
         ///     The not supported
         /// </summary>
-        private static readonly ContactType[,] Registers =
+        internal static readonly ContactType[,] Registers =
         {
             {
                 ContactType.Circle,
@@ -87,7 +88,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     The manifold
         /// </summary>
-        private Manifold manifold = new Manifold()
+        internal Manifold manifold = new Manifold()
         {
             Points = new ManifoldPoint[2]
         };
@@ -97,7 +98,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     The type
         /// </summary>
-        private ContactType type;
+        internal ContactType type;
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="Contact" /> class
@@ -159,6 +160,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         public float RestitutionThreshold { get; set; }
         
         /// <summary>Get or set the desired tangent speed for a conveyor belt behavior. In meters per second.</summary>
+        [ExcludeFromCodeCoverage]
         public float TangentSpeed { get; set; }
         
         /// <summary>
@@ -183,6 +185,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     Enable/disable this contact.The contact is only disabled for the current time step (or sub-step in continuous
         ///     collisions).
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public bool Enabled
         {
             get => (Flags & ContactSetting.EnabledFlag) == ContactSetting.EnabledFlag;
@@ -254,6 +257,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
         
         /// <summary>Gets the world manifold.</summary>
+        [ExcludeFromCodeCoverage]
         public void GetWorldManifold(out Vector2 normal, out Vector2[] points)
         {
             Body bodyA = FixtureA.Body;
@@ -316,6 +320,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     Updates the contact manager
         /// </summary>
         /// <param name="contactManager">The contact manager</param>
+        [ExcludeFromCodeCoverage]
         internal void Update(ContactManager contactManager)
         {
             if (FixtureA == null || FixtureB == null)
@@ -369,7 +374,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="xfA">The xf</param>
         /// <param name="xfB">The xf</param>
         /// <returns>The touching</returns>
-        private bool CheckSensorOverlap(ref Transform xfA, ref Transform xfB)
+        [ExcludeFromCodeCoverage]
+        internal bool CheckSensorOverlap(ref Transform xfA, ref Transform xfB)
         {
             AShape shapeA = FixtureA.Shape;
             AShape shapeB = FixtureB.Shape;
@@ -387,7 +393,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="xfB">The xf</param>
         /// <param name="oldManifold">The old manifold</param>
         /// <returns>The touching</returns>
-        private bool EvaluateAndCheckManifold(ref Transform xfA, ref Transform xfB, Manifold oldManifold)
+        [ExcludeFromCodeCoverage]
+        internal bool EvaluateAndCheckManifold(ref Transform xfA, ref Transform xfB, Manifold oldManifold)
         {
             Evaluate(ref manifold, ref xfA, ref xfB);
             bool touching = Manifold.PointCount > 0;
@@ -421,7 +428,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     Updates the touching flag using the specified touching
         /// </summary>
         /// <param name="touching">The touching</param>
-        private void UpdateTouchingFlag(bool touching)
+        [ExcludeFromCodeCoverage]
+        internal void UpdateTouchingFlag(bool touching)
         {
             if (touching)
             {
@@ -438,7 +446,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         /// <param name="contactManager">The contact manager</param>
         /// <param name="wasTouching">The was touching</param>
-        private void InvokeCollisionEvents(ContactManager contactManager, bool wasTouching)
+        [ExcludeFromCodeCoverage]
+        internal void InvokeCollisionEvents(ContactManager contactManager, bool wasTouching)
         {
             if (!wasTouching)
             {
@@ -456,7 +465,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     Invokes the separation events using the specified contact manager
         /// </summary>
         /// <param name="contactManager">The contact manager</param>
-        private void InvokeSeparationEvents(ContactManager contactManager)
+        [ExcludeFromCodeCoverage]
+        internal void InvokeSeparationEvents(ContactManager contactManager)
         {
             FixtureA.OnSeparation?.Invoke(FixtureA, FixtureB, this);
             FixtureB.OnSeparation?.Invoke(FixtureB, FixtureA, this);
@@ -471,7 +481,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="maniFold">The manifold.</param>
         /// <param name="transformA">The first transform.</param>
         /// <param name="transformB">The second transform.</param>
-        private void Evaluate(ref Manifold maniFold, ref Transform transformA, ref Transform transformB)
+        [ExcludeFromCodeCoverage]
+        internal void Evaluate(ref Manifold maniFold, ref Transform transformA, ref Transform transformB)
         {
             switch (type)
             {
@@ -543,7 +554,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="fixtureB">The fixture</param>
         /// <param name="indexB">The index</param>
         /// <returns>The contact</returns>
-        private static Contact GetContactFromPoolOrNew(ShapeType type1, ShapeType type2, Fixture fixtureA, int indexA, Fixture fixtureB, int indexB)
+        internal static Contact GetContactFromPoolOrNew(ShapeType type1, ShapeType type2, Fixture fixtureA, int indexA, Fixture fixtureB, int indexB)
         {
             Queue<Contact> pool = ContactManager.Current.ContactPool;
             if (pool.Count > 0)
@@ -565,7 +576,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="indexB">The index</param>
         /// <param name="pool">The pool</param>
         /// <returns>The </returns>
-        private static Contact GetContactFromPool(ShapeType type1, ShapeType type2, Fixture fixtureA, int indexA, Fixture fixtureB, int indexB, Queue<Contact> pool)
+        [ExcludeFromCodeCoverage]
+        internal static Contact GetContactFromPool(ShapeType type1, ShapeType type2, Fixture fixtureA, int indexA, Fixture fixtureB, int indexB, Queue<Contact> pool)
         {
             Contact c = pool.Dequeue();
             if (ShouldResetWithOriginalOrder(type1, type2))
@@ -590,7 +602,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="fixtureB">The fixture</param>
         /// <param name="indexB">The index</param>
         /// <returns>The </returns>
-        private static Contact GetNewContact(ShapeType type1, ShapeType type2, Fixture fixtureA, int indexA, Fixture fixtureB, int indexB)
+        [ExcludeFromCodeCoverage]
+        internal static Contact GetNewContact(ShapeType type1, ShapeType type2, Fixture fixtureA, int indexA, Fixture fixtureB, int indexB)
         {
             Contact c;
             if (ShouldResetWithOriginalOrder(type1, type2))
@@ -611,12 +624,13 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="type1">The type</param>
         /// <param name="type2">The type</param>
         /// <returns>The bool</returns>
-        private static bool ShouldResetWithOriginalOrder(ShapeType type1, ShapeType type2) => (type1 >= type2 || ((type1 == ShapeType.Edge) && (type2 == ShapeType.Polygon))) &&
+        internal static bool ShouldResetWithOriginalOrder(ShapeType type1, ShapeType type2) => (type1 >= type2 || ((type1 == ShapeType.Edge) && (type2 == ShapeType.Polygon))) &&
                                                                                               !((type2 == ShapeType.Edge) && (type1 == ShapeType.Polygon));
         
         /// <summary>
         ///     Destroys this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         internal void Destroy()
         {
             if ((Manifold.PointCount > 0) && !FixtureA.IsSensor && !FixtureB.IsSensor)

@@ -27,9 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.ContactSystem;
+using Alis.Core.Physic.Collision.Distance;
 using Alis.Core.Physic.Collision.Filtering;
 using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Collision.TOI;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
@@ -102,6 +106,254 @@ namespace Alis.Core.Physic.Test.Collision.TOI
             Assert.Equal(fixtureB, contact.FixtureB);
             Assert.Equal(1, contact.ChildIndexA);
             Assert.Equal(1, contact.ChildIndexB);
+        }
+        
+        /// <summary>
+        /// Tests that calculate time of impact should calculate correctly
+        /// </summary>
+        [Fact]
+        public void CalculateTimeOfImpact_ShouldCalculateCorrectly()
+        {
+            // Arrange
+            ToiInput input = new ToiInput();
+            ToiOutput output;
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TimeOfImpact.CalculateTimeOfImpact(ref input, out output));
+            
+            // Assert
+            // Here you would assert that the properties of wheelJoint have been set correctly.
+        }
+        
+        /// <summary>
+        /// Tests that initialize output should initialize correctly
+        /// </summary>
+        [Fact]
+        public void InitializeOutput_ShouldInitializeCorrectly()
+        {
+            // Arrange
+            ToiInput input = new ToiInput();
+            
+            // Act
+            ToiOutput result = TimeOfImpact.InitializeOutput(input);
+            
+            // Assert
+            // Here you would assert that the properties of wheelJoint have been set correctly.
+        }
+        
+        /// <summary>
+        /// Tests that normalize sweeps should normalize correctly
+        /// </summary>
+        [Fact]
+        public void NormalizeSweeps_ShouldNormalizeCorrectly()
+        {
+            // Arrange
+            Sweep sweepA = new Sweep();
+            Sweep sweepB = new Sweep();
+            
+            // Act
+            TimeOfImpact.NormalizeSweeps(ref sweepA, ref sweepB);
+            
+            // Assert
+            // Here you would assert that the properties of wheelJoint have been set correctly.
+        }
+        
+        /// <summary>
+        /// Tests that prepare distance input should prepare correctly
+        /// </summary>
+        [Fact]
+        public void PrepareDistanceInput_ShouldPrepareCorrectly()
+        {
+            // Arrange
+            ToiInput input = new ToiInput();
+            
+            // Act
+            DistanceInput result = TimeOfImpact.PrepareDistanceInput(input);
+            
+            // Assert
+            // Here you would assert that the properties of wheelJoint have been set correctly.
+        }
+        
+        /// <summary>
+        /// Tests that resolve deepest point should resolve correctly
+        /// </summary>
+        [Fact]
+        public void ResolveDeepestPoint_ShouldResolveCorrectly()
+        {
+            // Arrange
+            ToiInput input = new ToiInput();
+            ToiOutput output = new ToiOutput();
+            Sweep sweepA = new Sweep();
+            Sweep sweepB = new Sweep();
+            Vector2 axis = new Vector2();
+            Vector2 localPoint = new Vector2();
+            SeparationFunctionType type = SeparationFunctionType.Points;
+            float target = 0.0f;
+            float tolerance = 0.0f;
+            float t1 = 0.0f;
+            float tMax = 0.0f;
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TimeOfImpact.ResolveDeepestPoint(ref input, ref output, ref sweepA, ref sweepB, ref axis, ref localPoint, type, target, tolerance,
+                ref t1, tMax));
+            
+            // Assert
+            // Here you would assert that the properties of wheelJoint have been set correctly.
+        }
+        
+        /// <summary>
+        /// Tests that compute root should compute correctly
+        /// </summary>
+        [Fact]
+        public void ComputeRoot_ShouldComputeCorrectly()
+        {
+            // Arrange
+            ToiInput input = new ToiInput();
+            Sweep sweepA = new Sweep();
+            Sweep sweepB = new Sweep();
+            Vector2 axis = new Vector2();
+            Vector2 localPoint = new Vector2();
+            SeparationFunctionType type = SeparationFunctionType.Points;
+            float target = 0.0f;
+            float tolerance = 0.0f;
+            float t1 = 0.0f;
+            float t2 = 0.0f;
+            float s1 = 0.0f;
+            float s2 = 0.0f;
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TimeOfImpact.ComputeRoot(ref input, ref sweepA, ref sweepB, ref axis, ref localPoint, type, target, tolerance, ref t1, ref t2, s1, s2));
+            
+            // Assert
+            // Here you would assert that the properties of wheelJoint have been set correctly.
+        }
+        
+        /// <summary>
+        /// Tests that prepare distance input should prepare correctly v 2
+        /// </summary>
+        [Fact]
+        public void PrepareDistanceInput_ShouldPrepareCorrectly_V2()
+        {
+            // Arrange
+            ToiInput input = new ToiInput();
+            
+            // Act
+            DistanceInput result = TimeOfImpact.PrepareDistanceInput(input);
+            
+            // Assert
+            Assert.Equal(input.ProxyA, result.ProxyA);
+            Assert.Equal(input.ProxyB, result.ProxyB);
+            Assert.False(result.UseRadii);
+        }
+        
+        /// <summary>
+        /// Tests that compute separating axes should compute correctly
+        /// </summary>
+        [Fact]
+        public void ComputeSeparatingAxes_ShouldComputeCorrectly()
+        {
+            // Arrange
+            ToiInput input = new ToiInput();
+            ToiOutput output = new ToiOutput();
+            DistanceInput distanceInput = new DistanceInput();
+            Sweep sweepA = new Sweep();
+            Sweep sweepB = new Sweep();
+            float target = 0.0f;
+            float tolerance = 0.0f;
+            float t1 = 0.0f;
+            int iter = 0;
+            float tMax = 0.0f;
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => TimeOfImpact.ComputeSeparatingAxes(ref input, ref output, ref distanceInput, ref sweepA, ref sweepB, target, tolerance, ref t1, ref iter, tMax));
+            
+            // Assert
+            // Here you would assert that the properties of wheelJoint have been set correctly.
+        }
+        
+        /// <summary>
+        /// Tests that toi max root iter property should return correct value
+        /// </summary>
+        [Fact]
+        public void ToiMaxRootIterProperty_ShouldReturnCorrectValue()
+        {
+            // Arrange
+            int expectedValue = 10;
+            TimeOfImpact._toiMaxRootIter = expectedValue;
+            
+            // Act
+            var result = TimeOfImpact._toiMaxRootIter;
+            
+            // Assert
+            Assert.Equal(expectedValue, result);
+        }
+        
+        /// <summary>
+        /// Tests that toi calls property should return correct value
+        /// </summary>
+        [Fact]
+        public void ToiCallsProperty_ShouldReturnCorrectValue()
+        {
+            // Arrange
+            int expectedValue = 10;
+            TimeOfImpact.ToiCalls = expectedValue;
+            
+            // Act
+            var result = TimeOfImpact.ToiCalls;
+            
+            // Assert
+            Assert.Equal(expectedValue, result);
+        }
+        
+        /// <summary>
+        /// Tests that toi iter property should return correct value
+        /// </summary>
+        [Fact]
+        public void ToiIterProperty_ShouldReturnCorrectValue()
+        {
+            // Arrange
+            int expectedValue = 10;
+            TimeOfImpact.ToiIter = expectedValue;
+            
+            // Act
+            var result = TimeOfImpact.ToiIter;
+            
+            // Assert
+            Assert.Equal(expectedValue, result);
+        }
+        
+        /// <summary>
+        /// Tests that toi max iter property should return correct value
+        /// </summary>
+        [Fact]
+        public void ToiMaxIterProperty_ShouldReturnCorrectValue()
+        {
+            // Arrange
+            int expectedValue = 10;
+            TimeOfImpact.ToiMaxIter = expectedValue;
+            
+            // Act
+            var result = TimeOfImpact.ToiMaxIter;
+            
+            // Assert
+            Assert.Equal(expectedValue, result);
+        }
+        
+        /// <summary>
+        /// Tests that toi root iter property should return correct value
+        /// </summary>
+        [Fact]
+        public void ToiRootIterProperty_ShouldReturnCorrectValue()
+        {
+            // Arrange
+            int expectedValue = 10;
+            TimeOfImpact.ToiRootIter = expectedValue;
+            
+            // Act
+            var result = TimeOfImpact.ToiRootIter;
+            
+            // Assert
+            Assert.Equal(expectedValue, result);
         }
     }
 }

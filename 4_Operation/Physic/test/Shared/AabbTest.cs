@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 using Xunit;
@@ -47,7 +48,7 @@ namespace Alis.Core.Physic.Test.Shared
             Vector2 min = new Vector2(0, 0);
             Vector2 max = new Vector2(10, 10);
             
-            var ex = Record.Exception(() => new Aabb(min, max));
+            Exception ex = Record.Exception(() => new Aabb(min, max));
             Assert.Null(ex);
         }
         

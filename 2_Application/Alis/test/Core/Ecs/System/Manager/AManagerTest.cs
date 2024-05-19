@@ -252,7 +252,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void IsEnable_PropertySet_GetReturnsCorrectValue()
         {
-            var manager = new MockManager();
+            MockManager manager = new MockManager();
             manager.IsEnable = true;
             Assert.True(manager.IsEnable);
         }
@@ -263,7 +263,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Name_PropertySet_GetReturnsCorrectValue()
         {
-            var manager = new MockManager();
+            MockManager manager = new MockManager();
             manager.Name = "TestManager";
             Assert.Equal("TestManager", manager.Name);
         }
@@ -274,7 +274,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Id_PropertySet_GetReturnsCorrectValue()
         {
-            var manager = new MockManager();
+            MockManager manager = new MockManager();
             manager.Id = "TestId";
             Assert.Equal("TestId", manager.Id);
         }
@@ -285,7 +285,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Tag_PropertySet_GetReturnsCorrectValue()
         {
-            var manager = new MockManager();
+            MockManager manager = new MockManager();
             manager.Tag = "TestTag";
             Assert.Equal("TestTag", manager.Tag);
         }
