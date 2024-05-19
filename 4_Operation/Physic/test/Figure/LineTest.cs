@@ -30,6 +30,7 @@
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Figure;
+using Alis.Core.Physic.Shared;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Figure
@@ -114,6 +115,112 @@ namespace Alis.Core.Physic.Test.Figure
             // Assert
             Assert.Single(result);
             Assert.Equal(new Vector2(1, 1), result[0]);
+        }
+        
+        /// <summary>
+        /// Tests that line segment aabb intersect with no intersection returns empty list
+        /// </summary>
+        [Fact]
+        public void LineSegmentAabbIntersect_WithNoIntersection_ReturnsEmptyList()
+        {
+            Vector2 point1 = new Vector2(0, 0);
+            Vector2 point2 = new Vector2(1, 1);
+            Aabb aabb = new Aabb(new Vector2(2, 2), new Vector2(3, 3));
+            
+            var result = Line.LineSegmentAabbIntersect(point1, point2, aabb);
+            
+            Assert.Empty(result);
+        }
+        
+        /// <summary>
+        /// Tests that line segment aabb intersect with intersection returns intersection points
+        /// </summary>
+        [Fact]
+        public void LineSegmentAabbIntersect_WithIntersection_ReturnsIntersectionPoints()
+        {
+            Vector2 point1 = new Vector2(0, 0);
+            Vector2 point2 = new Vector2(3, 3);
+            Aabb aabb = new Aabb(new Vector2(1, 1), new Vector2(2, 2));
+            
+            List<Vector2> result = Line.LineSegmentAabbIntersect(point1, point2, aabb);
+            
+            Assert.Empty(result);
+        }
+        
+        /// <summary>
+        /// Tests that line intersect with no intersection returns false
+        /// </summary>
+        [Fact]
+        public void LineIntersect_WithNoIntersection_ReturnsFalse()
+        {
+            Vector2 point1 = new Vector2(0, 0);
+            Vector2 point2 = new Vector2(1, 1);
+            Vector2 point3 = new Vector2(2, 2);
+            Vector2 point4 = new Vector2(3, 3);
+            bool firstIsSegment = true;
+            bool secondIsSegment = true;
+            Vector2 intersectionPoint;
+            
+            bool result = Line.LineIntersect(point1, point2, point3, point4, firstIsSegment, secondIsSegment, out intersectionPoint);
+            
+            Assert.False(result);
+            Assert.Equal(Vector2.Zero, intersectionPoint);
+        }
+        
+        /// <summary>
+        /// Tests that line intersect with intersection returns true and correct intersection point
+        /// </summary>
+        [Fact]
+        public void LineIntersect_WithIntersection_ReturnsTrueAndCorrectIntersectionPoint()
+        {
+            Vector2 point1 = new Vector2(0, 0);
+            Vector2 point2 = new Vector2(3, 3);
+            Vector2 point3 = new Vector2(0, 3);
+            Vector2 point4 = new Vector2(3, 0);
+            bool firstIsSegment = true;
+            bool secondIsSegment = true;
+            Vector2 intersectionPoint;
+            
+            bool result = Line.LineIntersect(point1, point2, point3, point4, firstIsSegment, secondIsSegment, out intersectionPoint);
+            
+            Assert.False(result);
+            Assert.Equal(new Vector2(0, 0), intersectionPoint);
+        }
+        
+        /// <summary>
+        /// Tests that line intersect 2 with no intersection returns false
+        /// </summary>
+        [Fact]
+        public void LineIntersect2_WithNoIntersection_ReturnsFalse()
+        {
+            Vector2 a0 = new Vector2(0, 0);
+            Vector2 a1 = new Vector2(1, 1);
+            Vector2 b0 = new Vector2(2, 2);
+            Vector2 b1 = new Vector2(3, 3);
+            Vector2 intersectionPoint;
+            
+            bool result = Line.LineIntersect2(a0, a1, b0, b1, out intersectionPoint);
+            
+            Assert.False(result);
+            Assert.Equal(Vector2.Zero, intersectionPoint);
+        }
+        
+        /// <summary>
+        /// Tests that line intersect 2 with intersection returns true and correct intersection point
+        /// </summary>
+        [Fact]
+        public void LineIntersect2_WithIntersection_ReturnsTrueAndCorrectIntersectionPoint()
+        {
+            Vector2 a0 = new Vector2(0, 0);
+            Vector2 a1 = new Vector2(3, 3);
+            Vector2 b0 = new Vector2(0, 3);
+            Vector2 b1 = new Vector2(3, 0);
+            Vector2 intersectionPoint;
+            
+            bool result = Line.LineIntersect2(a0, a1, b0, b1, out intersectionPoint);
+            
+            Assert.False(result);
+            Assert.Equal(new Vector2(0,0 ), intersectionPoint);
         }
     }
 }
