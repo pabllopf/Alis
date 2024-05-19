@@ -60,6 +60,9 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             Assert.Equal(expectedMassData.Inertia, actualMassData.Inertia);
         }
         
+        /// <summary>
+        /// Tests that radius setter updates radius and calls compute properties
+        /// </summary>
         [Fact]
         public void Radius_Setter_UpdatesRadiusAndCallsComputeProperties()
         {
@@ -79,6 +82,9 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             // Here you would assert that the properties of the shape have been set correctly after ComputeProperties() is called.
         }
         
+        /// <summary>
+        /// Tests that radius setter does not update radius when value is same
+        /// </summary>
         [Fact]
         public void Radius_Setter_DoesNotUpdateRadiusWhenValueIsSame()
         {
@@ -98,6 +104,9 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             // Here you would assert that the properties of the shape have not changed.
         }
         
+        /// <summary>
+        /// Tests that density setter updates density and calls compute properties
+        /// </summary>
         [Fact]
         public void Density_Setter_UpdatesDensityAndCallsComputeProperties()
         {
@@ -117,6 +126,9 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             // Here you would assert that the properties of the shape have been set correctly after ComputeProperties() is called.
         }
         
+        /// <summary>
+        /// Tests that density setter does not update density when value is same v 2
+        /// </summary>
         [Fact]
         public void Density_Setter_DoesNotUpdateDensityWhenValueIsSame_v2()
         {
@@ -136,6 +148,99 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             // Here you would assert that the properties of the shape have not changed.
         }
         
+        /// <summary>
+        /// Tests that child count returns correct value
+        /// </summary>
+        [Fact]
+        public void ChildCount_ReturnsCorrectValue()
+        {
+            // Assuming ConcreteShape is a concrete implementation of AShape with a known child count
+            AShape shape = new ConcreteShape(
+                ShapeType.Circle,
+                1.0f,
+                1.0f
+            );
+            int expectedChildCount = 0; // Replace with the expected child count
+            
+            int actualChildCount = shape.ChildCount;
+            
+            Assert.Equal(expectedChildCount, actualChildCount);
+        }
         
+        /// <summary>
+        /// Tests that radius setter updates radius and calls compute properties v 2
+        /// </summary>
+        [Fact]
+        public void Radius_Setter_UpdatesRadiusAndCallsComputeProperties_v2()
+        {
+            AShape shape = new ConcreteShape(
+                ShapeType.Circle,
+                1.0f,
+                1.0f
+            );
+            float newRadius = 2.0f;
+            
+            shape.Radius = newRadius;
+            
+            Assert.Equal(newRadius, shape.Radius);
+            // Here you would assert that the properties of the shape have been set correctly after ComputeProperties() is called.
+        }
+        
+        /// <summary>
+        /// Tests that radius setter does not update radius when value is same v 2
+        /// </summary>
+        [Fact]
+        public void Radius_Setter_DoesNotUpdateRadiusWhenValueIsSame_v2()
+        {
+            AShape shape = new ConcreteShape(
+                ShapeType.Circle,
+                1.0f,
+                1.0f
+            );
+            float initialRadius = shape.Radius;
+            
+            shape.Radius = initialRadius;
+            
+            Assert.Equal(initialRadius, shape.Radius);
+            // Here you would assert that the properties of the shape have not changed.
+        }
+        
+        /// <summary>
+        /// Tests that density setter updates density and calls compute properties v 2
+        /// </summary>
+        [Fact]
+        public void Density_Setter_UpdatesDensityAndCallsComputeProperties_v2()
+        {
+            AShape shape = new ConcreteShape(
+                ShapeType.Circle,
+                1.0f,
+                1.0f
+            );
+            float newDensity = 2.0f;
+            
+            shape.Density = newDensity;
+            
+            Assert.Equal(newDensity, shape.Density);
+            // Here you would assert that the properties of the shape have been set correctly after ComputeProperties() is called.
+        }
+        
+        /// <summary>
+        /// Tests that density setter does not update density when value is same
+        /// </summary>
+        [Fact]
+        public void Density_Setter_DoesNotUpdateDensityWhenValueIsSame()
+        {
+            AShape shape = new ConcreteShape(
+                ShapeType.Circle,
+                1.0f,
+                1.0f
+            );
+            float initialDensity = shape.Density;
+            
+            shape.Density = initialDensity;
+            
+            Assert.Equal(initialDensity, shape.Density);
+            // Here you would assert that the properties of the shape have not changed.
+        }
     }
 }

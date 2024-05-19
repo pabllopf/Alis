@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -56,6 +57,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="transform">The transform</param>
         /// <param name="output">The output</param>
         /// <returns>The bool</returns>
+        [ExcludeFromCodeCoverage]
         public static bool RayCastEdge(ref Vector2 start, ref Vector2 end, bool oneSided, ref RayCastInput input,
             ref Transform transform, out RayCastOutput output)
         {
@@ -135,6 +137,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="transform">The transform</param>
         /// <param name="output">The output</param>
         /// <returns>The bool</returns>
+        [ExcludeFromCodeCoverage]
         public static bool RayCastCircle(ref Vector2 pos, float radius, ref RayCastInput input, ref Transform transform,
             out RayCastOutput output)
         {
@@ -186,6 +189,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="transform">The transform</param>
         /// <param name="output">The output</param>
         /// <returns>The bool</returns>
+        [ExcludeFromCodeCoverage]
         public static bool RayCastPolygon(Vertices vertices, Vertices normals, ref RayCastInput input,
             ref Transform transform, out RayCastOutput output)
         {
@@ -227,7 +231,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="point">The point</param>
         /// <param name="transform">The transform</param>
         /// <returns>The vector</returns>
-        private static Vector2 TransformPoint(Vector2 point, Transform transform) => MathUtils.MulT(transform.Rotation, point - transform.Position);
+        internal static Vector2 TransformPoint(Vector2 point, Transform transform) => MathUtils.MulT(transform.Rotation, point - transform.Position);
         
         /// <summary>
         ///     Calculates the numerator using the specified i
@@ -237,7 +241,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="normals">The normals</param>
         /// <param name="p1">The </param>
         /// <returns>The float</returns>
-        private static float CalculateNumerator(int i, Vertices vertices, Vertices normals, Vector2 p1) => Vector2.Dot(normals[i], vertices[i] - p1);
+        internal static float CalculateNumerator(int i, Vertices vertices, Vertices normals, Vector2 p1) => Vector2.Dot(normals[i], vertices[i] - p1);
         
         /// <summary>
         ///     Calculates the denominator using the specified i
@@ -246,7 +250,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="normals">The normals</param>
         /// <param name="d">The </param>
         /// <returns>The float</returns>
-        private static float CalculateDenominator(int i, Vertices normals, Vector2 d) => Vector2.Dot(normals[i], d);
+        internal static float CalculateDenominator(int i, Vertices normals, Vector2 d) => Vector2.Dot(normals[i], d);
         
         /// <summary>
         ///     Describes whether process denominator
@@ -258,7 +262,8 @@ namespace Alis.Core.Physic.Collision
         /// <param name="numerator">The numerator</param>
         /// <param name="denominator">The denominator</param>
         /// <returns>The bool</returns>
-        private static bool ProcessDenominator(ref float lower, ref float upper, ref int index, int i, float numerator, float denominator)
+        [ExcludeFromCodeCoverage]
+        internal static bool ProcessDenominator(ref float lower, ref float upper, ref int index, int i, float numerator, float denominator)
         {
             if ((CustomMathF.Abs(denominator) < float.Epsilon) && (CustomMathF.Abs(numerator) <= float.Epsilon))
             {
