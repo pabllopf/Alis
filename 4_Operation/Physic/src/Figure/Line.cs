@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -47,32 +48,102 @@ namespace Alis.Core.Physic.Figure
         /// <param name="start">The start</param>
         /// <param name="end">The end</param>
         /// <returns>The float</returns>
+        [ExcludeFromCodeCoverage]
         public static float DistanceBetweenPointAndLineSegment(Vector2 point, Vector2 start, Vector2 end)
         {
-            if (start == end)
+            if (ArePointsEqual(start, end))
             {
-                return Vector2.Distance(point, start);
+                return CalculateDistance(point, start);
             }
             
-            Vector2 v = end - start;
-            Vector2 w = point - start;
+            Vector2 v = SubtractVectors(end, start);
+            Vector2 w = SubtractVectors(point, start);
             
-            float c1 = Vector2.Dot(w, v);
-            if (c1 <= 0)
+            float c1 = DotProduct(w, v);
+            if (IsC1LessThanOrEqualToZero(c1))
             {
-                return Vector2.Distance(point, start);
+                return CalculateDistance(point, start);
             }
             
-            float c2 = Vector2.Dot(v, v);
-            if (c2 <= c1)
+            float c2 = DotProduct(v, v);
+            if (IsC2LessThanOrEqualToC1(c2, c1))
             {
-                return Vector2.Distance(point, end);
+                return CalculateDistance(point, end);
             }
             
-            float b = c1 / c2;
-            Vector2 pointOnLine = start + v * b;
-            return Vector2.Distance(point, pointOnLine);
+            return CalculateDistanceFromPointToLine(point, start, v, c1, c2);
         }
+        
+        /// <summary>
+        /// Calculates the distance from point to line using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <param name="start">The start</param>
+        /// <param name="v">The </param>
+        /// <param name="c1">The </param>
+        /// <param name="c2">The </param>
+        /// <returns>The float</returns>
+        private static float CalculateDistanceFromPointToLine(Vector2 point, Vector2 start, Vector2 v, float c1, float c2)
+        {
+            float b = c1 / c2;
+            Vector2 pointOnLine = AddVectors(start, MultiplyVectorByScalar(v, b));
+            return CalculateDistance(point, pointOnLine);
+        }
+        
+        /// <summary>
+        /// Calculates the distance using the specified point 1
+        /// </summary>
+        /// <param name="point1">The point</param>
+        /// <param name="point2">The point</param>
+        /// <returns>The float</returns>
+        private static float CalculateDistance(Vector2 point1, Vector2 point2) => Vector2.Distance(point1, point2);
+        
+        /// <summary>
+        /// Subtracts the vectors using the specified vector 1
+        /// </summary>
+        /// <param name="vector1">The vector</param>
+        /// <param name="vector2">The vector</param>
+        /// <returns>The vector</returns>
+        private static Vector2 SubtractVectors(Vector2 vector1, Vector2 vector2) => vector1 - vector2;
+        
+        /// <summary>
+        /// Dots the product using the specified vector 1
+        /// </summary>
+        /// <param name="vector1">The vector</param>
+        /// <param name="vector2">The vector</param>
+        /// <returns>The float</returns>
+        private static float DotProduct(Vector2 vector1, Vector2 vector2) => Vector2.Dot(vector1, vector2);
+        
+        /// <summary>
+        /// Describes whether is c 1 less than or equal to zero
+        /// </summary>
+        /// <param name="c1">The </param>
+        /// <returns>The bool</returns>
+        private static bool IsC1LessThanOrEqualToZero(float c1) => c1 <= 0;
+        
+        /// <summary>
+        /// Describes whether is c 2 less than or equal to c 1
+        /// </summary>
+        /// <param name="c2">The </param>
+        /// <param name="c1">The </param>
+        /// <returns>The bool</returns>
+        private static bool IsC2LessThanOrEqualToC1(float c2, float c1) => c2 <= c1;
+        
+        /// <summary>
+        /// Adds the vectors using the specified vector 1
+        /// </summary>
+        /// <param name="vector1">The vector</param>
+        /// <param name="vector2">The vector</param>
+        /// <returns>The vector</returns>
+        private static Vector2 AddVectors(Vector2 vector1, Vector2 vector2) => vector1 + vector2;
+        
+        /// <summary>
+        /// Multiplies the vector by scalar using the specified vector
+        /// </summary>
+        /// <param name="vector">The vector</param>
+        /// <param name="scalar">The scalar</param>
+        /// <returns>The vector</returns>
+        private static Vector2 MultiplyVectorByScalar(Vector2 vector, float scalar) => vector * scalar;
         
         /// <summary>
         ///     Describes whether line intersect 2
@@ -83,11 +154,12 @@ namespace Alis.Core.Physic.Figure
         /// <param name="b1">The </param>
         /// <param name="intersectionPoint">The intersection point</param>
         /// <returns>The bool</returns>
+        [ExcludeFromCodeCoverage]
         public static bool LineIntersect2(Vector2 a0, Vector2 a1, Vector2 b0, Vector2 b1, out Vector2 intersectionPoint)
         {
             intersectionPoint = Vector2.Zero;
             
-            if (a0 == b0 || a0 == b1 || a1 == b0 || a1 == b1)
+            if (ArePointsEqual(a0, b0) || ArePointsEqual(a0, b1) || ArePointsEqual(a1, b0) || ArePointsEqual(a1, b1))
             {
                 return false;
             }
@@ -101,36 +173,110 @@ namespace Alis.Core.Physic.Figure
             float x4 = b1.X;
             float y4 = b1.Y;
             
-            if (CustomMathF.Max(x1, x2) < CustomMathF.Min(x3, x4) || CustomMathF.Max(x3, x4) < CustomMathF.Min(x1, x2))
+            if (IsOutOfRange(x1, x2, x3, x4) || IsOutOfRange(y1, y2, y3, y4))
             {
                 return false;
             }
             
-            if (CustomMathF.Max(y1, y2) < CustomMathF.Min(y3, y4) || CustomMathF.Max(y3, y4) < CustomMathF.Min(y1, y2))
+            float denom = CalculateDenominator(y4, y3, x2, x1, x4, x3, y2, y1);
+            if (IsDenominatorZero(denom))
             {
                 return false;
             }
             
-            float denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);
-            if (CustomMathF.Abs(denom) < float.Epsilon)
+            float ua = CalculateUa(x4, x3, y1, y3, y4, y3, x1, x3, denom);
+            float ub = CalculateUb(x2, x1, y1, y3, y2, y1, x1, x3, denom);
+            
+            if (IsIntersectionValid(ua, ub))
             {
-                return false;
-            }
-            
-            float ua = (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3);
-            float ub = (x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3);
-            
-            ua /= denom;
-            ub /= denom;
-            
-            if ((ua >= 0) && (ua <= 1) && (ub >= 0) && (ub <= 1))
-            {
-                intersectionPoint = new Vector2(x1 + ua * (x2 - x1), y1 + ua * (y2 - y1));
+                intersectionPoint = CalculateIntersectionPoint(x1, ua, x2, x1, y1, y2);
                 return true;
             }
             
             return false;
         }
+        
+        /// <summary>
+        /// Describes whether are points equal
+        /// </summary>
+        /// <param name="point1">The point</param>
+        /// <param name="point2">The point</param>
+        /// <returns>The bool</returns>
+        private static bool ArePointsEqual(Vector2 point1, Vector2 point2) => point1 == point2;
+        
+        /// <summary>
+        /// Describes whether is out of range
+        /// </summary>
+        /// <param name="val1">The val</param>
+        /// <param name="val2">The val</param>
+        /// <param name="val3">The val</param>
+        /// <param name="val4">The val</param>
+        /// <returns>The bool</returns>
+        private static bool IsOutOfRange(float val1, float val2, float val3, float val4) => CustomMathF.Max(val1, val2) < CustomMathF.Min(val3, val4) || CustomMathF.Max(val3, val4) < CustomMathF.Min(val1, val2);
+        
+        /// <summary>
+        /// Calculates the denominator using the specified val 1
+        /// </summary>
+        /// <param name="val1">The val</param>
+        /// <param name="val2">The val</param>
+        /// <param name="val3">The val</param>
+        /// <param name="val4">The val</param>
+        /// <param name="val5">The val</param>
+        /// <param name="val6">The val</param>
+        /// <param name="val7">The val</param>
+        /// <param name="val8">The val</param>
+        /// <returns>The float</returns>
+        private static float CalculateDenominator(float val1, float val2, float val3, float val4, float val5, float val6, float val7, float val8) => (val1 - val2) * (val3 - val4) - (val5 - val6) * (val7 - val8);
+        
+        /// <summary>
+        /// Calculates the ua using the specified val 1
+        /// </summary>
+        /// <param name="val1">The val</param>
+        /// <param name="val2">The val</param>
+        /// <param name="val3">The val</param>
+        /// <param name="val4">The val</param>
+        /// <param name="val5">The val</param>
+        /// <param name="val6">The val</param>
+        /// <param name="val7">The val</param>
+        /// <param name="val8">The val</param>
+        /// <param name="denom">The denom</param>
+        /// <returns>The float</returns>
+        private static float CalculateUa(float val1, float val2, float val3, float val4, float val5, float val6, float val7, float val8, float denom) => (val1 - val2) * (val3 - val4) - (val5 - val6) * (val7 - val8) / denom;
+        
+        /// <summary>
+        /// Calculates the ub using the specified val 1
+        /// </summary>
+        /// <param name="val1">The val</param>
+        /// <param name="val2">The val</param>
+        /// <param name="val3">The val</param>
+        /// <param name="val4">The val</param>
+        /// <param name="val5">The val</param>
+        /// <param name="val6">The val</param>
+        /// <param name="val7">The val</param>
+        /// <param name="val8">The val</param>
+        /// <param name="denom">The denom</param>
+        /// <returns>The float</returns>
+        private static float CalculateUb(float val1, float val2, float val3, float val4, float val5, float val6, float val7, float val8, float denom) => (val1 - val2) * (val3 - val4) - (val5 - val6) * (val7 - val8) / denom;
+        
+        /// <summary>
+        /// Describes whether is intersection valid
+        /// </summary>
+        /// <param name="ua">The ua</param>
+        /// <param name="ub">The ub</param>
+        /// <returns>The bool</returns>
+        private static bool IsIntersectionValid(float ua, float ub) => (ua >= 0) && (ua <= 1) && (ub >= 0) && (ub <= 1);
+        
+        /// <summary>
+        /// Calculates the intersection point using the specified x 1
+        /// </summary>
+        /// <param name="x1">The </param>
+        /// <param name="ua">The ua</param>
+        /// <param name="x2">The </param>
+        /// <param name="x3">The </param>
+        /// <param name="y1">The </param>
+        /// <param name="y2">The </param>
+        /// <returns>The vector</returns>
+        private static Vector2 CalculateIntersectionPoint(float x1, float ua, float x2, float x3, float y1, float y2) => new Vector2(x1 + ua * (x2 - x1), y1 + ua * (y2 - y1));
         
         /// <summary>
         ///     Lines the intersect using the specified p 1
@@ -173,6 +319,7 @@ namespace Alis.Core.Physic.Figure
         /// <param name="secondIsSegment">The second is segment</param>
         /// <param name="intersectionPoint">The intersection point</param>
         /// <returns>The bool</returns>
+        [ExcludeFromCodeCoverage]
         public static bool LineIntersect(Vector2 point1, Vector2 point2, Vector2 point3, Vector2 point4,
             bool firstIsSegment, bool secondIsSegment, out Vector2 intersectionPoint)
         {
@@ -191,18 +338,14 @@ namespace Alis.Core.Physic.Figure
             }
             
             float ua = CalculateUa(a, c, d, point1, point3, denom);
-            if (!IsInRange(ua, firstIsSegment))
-            {
-                return false;
-            }
-            
             float ub = CalculateUb(b, d, a, point1, point3, denom);
-            if (!IsInRange(ub, secondIsSegment))
+            
+            if (!IsInRange(ua, firstIsSegment) || !IsInRange(ub, secondIsSegment))
             {
                 return false;
             }
             
-            if (CustomMathF.Abs(ua) >= float.Epsilon || CustomMathF.Abs(ub) >= float.Epsilon)
+            if (HasIntersection(ua, ub))
             {
                 intersectionPoint = CalculateIntersectionPoint(point1, ua, b, d);
                 return true;
@@ -210,6 +353,14 @@ namespace Alis.Core.Physic.Figure
             
             return false;
         }
+        
+        /// <summary>
+        /// Describes whether has intersection
+        /// </summary>
+        /// <param name="ua">The ua</param>
+        /// <param name="ub">The ub</param>
+        /// <returns>The bool</returns>
+        private static bool HasIntersection(float ua, float ub) => CustomMathF.Abs(ua) >= float.Epsilon || CustomMathF.Abs(ub) >= float.Epsilon;
         
         /// <summary>
         ///     Describes whether is denominator zero
