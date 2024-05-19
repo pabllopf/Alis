@@ -258,8 +258,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         {
             Body bodyA = FixtureA.Body;
             Body bodyB = FixtureB.Body;
-            Shape shapeA = FixtureA.Shape;
-            Shape shapeB = FixtureB.Shape;
+            AShape shapeA = FixtureA.Shape;
+            AShape shapeB = FixtureB.Shape;
             
             WorldManifold.Initialize(ref manifold, ref bodyA.Xf, shapeA.RadiusPrivate, ref bodyB.Xf,
                 shapeB.RadiusPrivate,
@@ -371,8 +371,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <returns>The touching</returns>
         private bool CheckSensorOverlap(ref Transform xfA, ref Transform xfB)
         {
-            Shape shapeA = FixtureA.Shape;
-            Shape shapeB = FixtureB.Shape;
+            AShape shapeA = FixtureA.Shape;
+            AShape shapeB = FixtureB.Shape;
             bool touching = NarrowPhase.Collision.TestOverlap(shapeA, ChildIndexA, shapeB, ChildIndexB, ref xfA, ref xfB);
             
             manifold.PointCount = 0;

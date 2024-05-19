@@ -97,7 +97,7 @@ namespace Alis.Extension.Math.PathGenerator
         /// <param name="copies">The copies.</param>
         /// <param name="userData"></param>
         /// <returns></returns>
-        public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, IEnumerable<Shape> shapes,
+        public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, IEnumerable<AShape> shapes,
             BodyType type, int copies, object userData = null)
         {
             List<Vector3> centers = path.SubdivideEvenly(copies);
@@ -114,7 +114,7 @@ namespace Alis.Extension.Math.PathGenerator
                 
                 world.AddBody(b);
                 
-                foreach (Shape shape in shapes)
+                foreach (AShape shape in shapes)
                 {
                     b.AddFixture(shape);
                 }
@@ -132,10 +132,10 @@ namespace Alis.Extension.Math.PathGenerator
         /// <param name="type">The type.</param>
         /// <param name="copies">The copies.</param>
         /// <param name="userData">The user data.</param>
-        public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, Shape shape, BodyType type,
+        public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, AShape shape, BodyType type,
             int copies, object userData = null)
         {
-            List<Shape> shapes = new List<Shape>(1)
+            List<AShape> shapes = new List<AShape>(1)
             {
                 shape
             };

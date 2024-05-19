@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
@@ -155,11 +156,200 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             ChainShape chainShape = new ChainShape(new Vertices {new Vector2(1, 1), new Vector2(2, 2)});
             
             // Act
-            Shape result = chainShape.Clone();
+            AShape result = chainShape.Clone();
             
             // Assert
             Assert.NotNull(result);
             Assert.IsType<ChainShape>(result);
+        }
+        
+        /// <summary>
+        /// Tests that ray cast returns false when ray does not intersect edge
+        /// </summary>
+        [Fact]
+        public void RayCast_ReturnsFalse_WhenRayDoesNotIntersectEdge()
+        {
+            ChainShape chainShape = new ChainShape(new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)}));
+            RayCastInput input = new RayCastInput {Point1 = new Vector2(-1, -1), Point2 = new Vector2(-2, -2)};
+            Transform transform = new Transform();
+            int childIndex = 0;
+            RayCastOutput output;
+            
+            bool result = chainShape.RayCast(ref input, ref transform, childIndex, out output);
+            
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that ray cast returns true when ray intersects edge
+        /// </summary>
+        [Fact]
+        public void RayCast_ReturnsTrue_WhenRayIntersectsEdge()
+        {
+            ChainShape chainShape = new ChainShape(new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)}));
+            RayCastInput input = new RayCastInput {Point1 = new Vector2(0, 0), Point2 = new Vector2(1, 1)};
+            Transform transform = new Transform();
+            int childIndex = 0;
+            RayCastOutput output;
+            
+            bool result = chainShape.RayCast(ref input, ref transform, childIndex, out output);
+            
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that ray cast sets output correctly when ray intersects edge
+        /// </summary>
+        [Fact]
+        public void RayCast_SetsOutputCorrectly_WhenRayIntersectsEdge()
+        {
+            ChainShape chainShape = new ChainShape(new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)}));
+            RayCastInput input = new RayCastInput {Point1 = new Vector2(0, 0), Point2 = new Vector2(1, 1)};
+            Transform transform = new Transform();
+            int childIndex = 0;
+            RayCastOutput output;
+            
+            bool result = chainShape.RayCast(ref input, ref transform, childIndex, out output);
+            
+            Assert.Equal(0, output.Fraction);
+            Assert.Equal(new Vector2(0, 0), output.Normal);
+        }
+        
+        /// <summary>
+        /// Tests that chain shape constructor sets vertices correctly
+        /// </summary>
+        [Fact]
+        public void ChainShape_Constructor_SetsVerticesCorrectly()
+        {
+            Vertices vertices = new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)});
+            ChainShape chainShape = new ChainShape(vertices);
+            
+            Assert.Equal(vertices, chainShape.Vertices);
+        }
+        
+        /// <summary>
+        /// Tests that chain shape constructor sets prev and next vertices correctly when create loop is true
+        /// </summary>
+        [Fact]
+        public void ChainShape_Constructor_SetsPrevAndNextVerticesCorrectly_WhenCreateLoopIsTrue()
+        {
+            Vertices vertices = new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)});
+            ChainShape chainShape = new ChainShape(vertices, true);
+            
+            Assert.Equal(new Vector2(0, 1), chainShape.PrevVertex);
+        }
+        
+        /// <summary>
+        /// Tests that chain shape constructor does not set prev and next vertices when create loop is false
+        /// </summary>
+        [Fact]
+        public void ChainShape_Constructor_DoesNotSetPrevAndNextVertices_WhenCreateLoopIsFalse()
+        {
+            Vertices vertices = new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)});
+            ChainShape chainShape = new ChainShape(vertices, false);
+            
+            Assert.Equal(Vector2.Zero, chainShape.PrevVertex);
+            Assert.Equal(Vector2.Zero, chainShape.NextVertex);
+        }
+        
+        /// <summary>
+        /// Tests that chain shape constructor calls compute properties
+        /// </summary>
+        [Fact]
+        public void ChainShape_Constructor_CallsComputeProperties()
+        {
+            Vertices vertices = new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)});
+            ChainShape chainShape = new ChainShape(vertices);
+            
+            // Here you would assert that the properties of chainShape have been set correctly.
+            // For example, if ComputeProperties sets a property called Area, you could do:
+            // Assert.Equal(expectedArea, chainShape.Area);
+        }
+        
+        /// <summary>
+        /// Tests that compute aabb sets aabb correctly when child index is less than vertices count minus one
+        /// </summary>
+        [Fact]
+        public void ComputeAabb_SetsAabbCorrectly_WhenChildIndexIsLessThanVerticesCountMinusOne()
+        {
+            ChainShape chainShape = new ChainShape(new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)}));
+            Transform transform = new Transform();
+            int childIndex = 0;
+            Aabb aabb;
+            
+            chainShape.ComputeAabb(ref transform, childIndex, out aabb);
+            
+            Assert.Equal(new Vector2(-0.01F, -0.01F), aabb.LowerBound);
+            Assert.Equal(new Vector2(0.01F, 0.01F), aabb.UpperBound);
+        }
+        
+        /// <summary>
+        /// Tests that compute aabb sets aabb correctly when child index is vertices count minus one
+        /// </summary>
+        [Fact]
+        public void ComputeAabb_SetsAabbCorrectly_WhenChildIndexIsVerticesCountMinusOne()
+        {
+            ChainShape chainShape = new ChainShape(new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)}));
+            Transform transform = new Transform();
+            int childIndex = chainShape.Vertices.Count - 1;
+            Aabb aabb;
+            
+            chainShape.ComputeAabb(ref transform, childIndex, out aabb);
+            
+            Assert.Equal(new Vector2(-0.01F, -0.01F), aabb.LowerBound);
+            Assert.Equal(new Vector2(0.01F, 0.01F), aabb.UpperBound);
+        }
+        
+        /// <summary>
+        /// Tests that ray cast returns false when ray does not intersect edge v 3
+        /// </summary>
+        [Fact]
+        public void RayCast_ReturnsFalse_WhenRayDoesNotIntersectEdge_V3()
+        {
+            ChainShape chainShape = new ChainShape(new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)}));
+            RayCastInput input = new RayCastInput {Point1 = new Vector2(-1, -1), Point2 = new Vector2(-2, -2)};
+            Transform transform = new Transform();
+            int childIndex = 0;
+            RayCastOutput output;
+            
+            bool result = chainShape.RayCast(ref input, ref transform, childIndex, out output);
+            
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that ray cast returns true when ray intersects edge v 3
+        /// </summary>
+        [Fact]
+        public void RayCast_ReturnsTrue_WhenRayIntersectsEdge_V3()
+        {
+            ChainShape chainShape = new ChainShape(new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)}));
+            RayCastInput input = new RayCastInput {Point1 = new Vector2(0, 0), Point2 = new Vector2(1, 1)};
+            Transform transform = new Transform();
+            int childIndex = 0;
+            RayCastOutput output;
+            
+            bool result = chainShape.RayCast(ref input, ref transform, childIndex, out output);
+            
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that ray cast sets output correctly when ray intersects edge v 2
+        /// </summary>
+        [Fact]
+        public void RayCast_SetsOutputCorrectly_WhenRayIntersectsEdge_V2()
+        {
+            ChainShape chainShape = new ChainShape(new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)}));
+            RayCastInput input = new RayCastInput {Point1 = new Vector2(0, 0), Point2 = new Vector2(1, 1)};
+            Transform transform = new Transform();
+            int childIndex = 0;
+            RayCastOutput output;
+            
+            bool result = chainShape.RayCast(ref input, ref transform, childIndex, out output);
+            
+            Assert.Equal(0f, output.Fraction);
+            Assert.Equal(new Vector2(0, 0), output.Normal);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Collision.Shapes
     ///     A line segment (edge) shape. These can be connected in chains or loops to other edge shapes. Edges created
     ///     independently are two-sided and do no provide smooth movement across junctions.
     /// </summary>
-    public class EdgeShape : Shape
+    public class EdgeShape : AShape
     {
         /// <summary>
         ///     The vertex
@@ -175,7 +175,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     Computes the properties
         /// </summary>
-        protected sealed override void ComputeProperties()
+        internal sealed override void ComputeProperties()
         {
             MassDataPrivate.Centroid = 0.5f * (Vertex1 + Vertex2);
         }
@@ -184,7 +184,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     Clones this instance
         /// </summary>
         /// <returns>The clone</returns>
-        public override Shape Clone()
+        public override AShape Clone()
         {
             EdgeShape clone = new EdgeShape
             {

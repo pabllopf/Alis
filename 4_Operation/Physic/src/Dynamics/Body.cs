@@ -775,7 +775,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     the mass of the body. Contacts are not created until the next time step. Warning: This function is locked during
         ///     callbacks.
         /// </summary>
-        public Fixture AddFixture(Shape shape) => AddFixture(new Fixture(shape, new Filter()));
+        public Fixture AddFixture(AShape shape) => AddFixture(new Fixture(shape, new Filter()));
         
         /// <summary>
         ///     Destroy a fixture. This removes the fixture from the broad-phase and destroys all contacts associated with

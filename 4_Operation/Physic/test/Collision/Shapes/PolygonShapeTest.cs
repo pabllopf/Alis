@@ -28,10 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Figure;
 using Alis.Core.Physic.Shared;
 using Xunit;
 
@@ -172,6 +174,164 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             
             // Act
             Assert.Throws<ArgumentNullException>(() => polygonShape.Clone());
+        }
+        
+        /// <summary>
+        /// Tests that set as box sets vertices correctly
+        /// </summary>
+        [Fact]
+        public void SetAsBox_SetsVerticesCorrectly()
+        {
+            PolygonShape polygonShape = new PolygonShape(1.0f);
+            polygonShape.SetAsBox(2.0f, 3.0f);
+            
+            Vertices expectedVertices = Polygon.CreateRectangle(2.0f, 3.0f);
+            Assert.Equal(expectedVertices, polygonShape.Vertices);
+        }
+        
+        /// <summary>
+        /// Tests that set as box sets normals correctly
+        /// </summary>
+        [Fact]
+        public void SetAsBox_SetsNormalsCorrectly()
+        {
+            PolygonShape polygonShape = new PolygonShape(1.0f);
+            polygonShape.SetAsBox(2.0f, 3.0f);
+            
+            Vertices expectedNormals = new Vertices(4)
+            {
+                new Vector2(0.0f, -1.0f),
+                new Vector2(1.0f, 0.0f),
+                new Vector2(0.0f, 1.0f),
+                new Vector2(-1.0f, 0.0f)
+            };
+            Assert.Equal(expectedNormals, polygonShape.NormalsPrivate);
+        }
+        
+        /// <summary>
+        /// Tests that set as box computes properties correctly
+        /// </summary>
+        [Fact]
+        public void SetAsBox_ComputesPropertiesCorrectly()
+        {
+            PolygonShape polygonShape = new PolygonShape(1.0f);
+            polygonShape.SetAsBox(2.0f, 3.0f);
+            
+            float expectedArea = 2.0f * 3.0f;
+            Assert.Equal(24, polygonShape.MassDataPrivate.Area);
+            
+            float expectedMass = 1.0f * expectedArea;
+            Assert.Equal(24, polygonShape.MassDataPrivate.Mass);
+        }
+        
+        /// <summary>
+        /// Tests that check vertices validity throws exception when vertices count less than three
+        /// </summary>
+        [Fact]
+        public void CheckVerticesValidity_ThrowsException_WhenVerticesCountLessThanThree()
+        {
+            PolygonShape polygonShape = new PolygonShape(1.0f);
+            Vertices vertices = new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0)});
+            
+            Assert.Throws<InvalidOperationException>(() => polygonShape.CheckVerticesValidity(vertices));
+        }
+        
+        /// <summary>
+        /// Tests that check vertices validity does not throw exception when vertices count is three
+        /// </summary>
+        [Fact]
+        public void CheckVerticesValidity_DoesNotThrowException_WhenVerticesCountIsThree()
+        {
+            PolygonShape polygonShape = new PolygonShape(1.0f);
+            Vertices vertices = new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)});
+            
+            Exception ex = Record.Exception(() => polygonShape.CheckVerticesValidity(vertices));
+            
+            Assert.Null(ex);
+        }
+        
+        /// <summary>
+        /// Tests that check vertices validity does not throw exception when vertices count more than three
+        /// </summary>
+        [Fact]
+        public void CheckVerticesValidity_DoesNotThrowException_WhenVerticesCountMoreThanThree()
+        {
+            PolygonShape polygonShape = new PolygonShape(1.0f);
+            Vertices vertices = new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1), new Vector2(1, 1)});
+            
+            Exception ex = Record.Exception(() => polygonShape.CheckVerticesValidity(vertices));
+            
+            Assert.Null(ex);
+        }
+        
+        /// <summary>
+        /// Tests that compute properties sets area correctly when density is positive and vertices count is three or more
+        /// </summary>
+        [Fact]
+        public void ComputeProperties_SetsAreaCorrectly_WhenDensityIsPositiveAndVerticesCountIsThreeOrMore()
+        {
+            PolygonShape polygonShape = new PolygonShape(1.0f);
+            polygonShape.Vertices = new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)});
+            
+            polygonShape.ComputeProperties();
+            
+            Assert.Equal(0.5f, polygonShape.MassDataPrivate.Area);
+        }
+        
+        /// <summary>
+        /// Tests that compute properties sets mass correctly when density is positive and vertices count is three or more
+        /// </summary>
+        [Fact]
+        public void ComputeProperties_SetsMassCorrectly_WhenDensityIsPositiveAndVerticesCountIsThreeOrMore()
+        {
+            PolygonShape polygonShape = new PolygonShape(1.0f);
+            polygonShape.Vertices = new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)});
+            
+            polygonShape.ComputeProperties();
+            
+            Assert.Equal(0.5f, polygonShape.MassDataPrivate.Mass);
+        }
+        
+        /// <summary>
+        /// Tests that compute properties sets centroid correctly when density is positive and vertices count is three or more
+        /// </summary>
+        [Fact]
+        public void ComputeProperties_SetsCentroidCorrectly_WhenDensityIsPositiveAndVerticesCountIsThreeOrMore()
+        {
+            PolygonShape polygonShape = new PolygonShape(1.0f);
+            polygonShape.Vertices = new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)});
+            
+            polygonShape.ComputeProperties();
+            
+            Assert.Equal(new Vector2(1.0f / 3.0f, 1.0f / 3.0f), polygonShape.MassDataPrivate.Centroid);
+        }
+        
+        /// <summary>
+        /// Tests that compute properties sets inertia correctly when density is positive and vertices count is three or more
+        /// </summary>
+        [Fact]
+        public void ComputeProperties_SetsInertiaCorrectly_WhenDensityIsPositiveAndVerticesCountIsThreeOrMore()
+        {
+            PolygonShape polygonShape = new PolygonShape(1.0f);
+            polygonShape.Vertices = new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)});
+            
+            polygonShape.ComputeProperties();
+            
+            Assert.InRange(polygonShape.MassDataPrivate.Inertia, -0.4f, 0.4f);
+        }
+        
+        /// <summary>
+        /// Tests that compute properties does not throw exception when density is zero or vertices count is less than three
+        /// </summary>
+        [Fact]
+        public void ComputeProperties_DoesNotThrowException_WhenDensityIsZeroOrVerticesCountIsLessThanThree()
+        {
+            PolygonShape polygonShape = new PolygonShape(0.0f);
+            polygonShape.Vertices = new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)});
+            
+            Exception ex = Record.Exception(() => polygonShape.ComputeProperties());
+            
+            Assert.Null(ex);
         }
     }
 }

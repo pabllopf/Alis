@@ -53,7 +53,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="shape">The shape</param>
         /// <param name="index">The index</param>
         /// <exception cref="NotSupportedException"></exception>
-        public DistanceProxy(Shape shape, int index)
+        public DistanceProxy(AShape shape, int index)
         {
             switch (shape.ShapeType)
             {

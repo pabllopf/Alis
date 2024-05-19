@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         [Fact]
         public void TestReset()
         {
-            Shape shape = new CircleShape(1.0f);
+            AShape shape = new CircleShape(1.0f);
             Filter filter = new Filter();
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         {
             IBroadPhase broadPhase = new DynamicTreeBroadPhase();
             ContactManager contactManager = new ContactManager(broadPhase);
-            Shape shape = new CircleShape(1.0f);
+            AShape shape = new CircleShape(1.0f);
             Filter filter = new Filter();
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         [Fact]
         public void TestDestroy()
         {
-            Shape shape = new CircleShape(1.0f);
+            AShape shape = new CircleShape(1.0f);
             Filter filter = new Filter();
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
@@ -95,7 +95,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         [Fact]
         public void TestClearFlags()
         {
-            Shape shape = new CircleShape(1.0f);
+            AShape shape = new CircleShape(1.0f);
             Filter filter = new Filter();
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
@@ -110,7 +110,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         [Fact]
         public void TestInvalidateToi()
         {
-            Shape shape = new CircleShape(1.0f);
+            AShape shape = new CircleShape(1.0f);
             Filter filter = new Filter();
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
