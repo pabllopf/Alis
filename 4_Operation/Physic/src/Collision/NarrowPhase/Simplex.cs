@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -58,6 +59,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="transformA">The transform</param>
         /// <param name="proxyB">The proxy</param>
         /// <param name="transformB">The transform</param>
+        [ExcludeFromCodeCoverage]
         internal void ReadCache(ref SimplexCache cache, ref DistanceProxy proxyA, ref Transform transformA,
             ref DistanceProxy proxyB, ref Transform transformB)
         {
@@ -109,6 +111,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         ///     Writes the cache using the specified cache
         /// </summary>
         /// <param name="cache">The cache</param>
+        [ExcludeFromCodeCoverage]
         internal void WriteCache(ref SimplexCache cache)
         {
             cache.Metric = GetMetric();
@@ -125,6 +128,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         ///     Gets the search direction
         /// </summary>
         /// <returns>The vector</returns>
+        [ExcludeFromCodeCoverage]
         internal Vector2 GetSearchDirection()
         {
             switch (Count)
@@ -156,6 +160,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         ///     Gets the closest point
         /// </summary>
         /// <returns>The vector</returns>
+        [ExcludeFromCodeCoverage]
         internal Vector2 GetClosestPoint()
         {
             switch (Count)
@@ -185,6 +190,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="pA">The </param>
         /// <param name="pB">The </param>
         /// <exception cref="Exception"></exception>
+        [ExcludeFromCodeCoverage]
         internal void GetWitnessPoints(out Vector2 pA, out Vector2 pB)
         {
             switch (Count)
@@ -219,6 +225,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         ///     Gets the metric
         /// </summary>
         /// <returns>The float</returns>
+        [ExcludeFromCodeCoverage]
         private float GetMetric()
         {
             switch (Count)
@@ -245,6 +252,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <summary>
         ///     Solves the 2
         /// </summary>
+        [ExcludeFromCodeCoverage]
         internal void Solve2()
         {
             Vector2 w1 = V[0].W;
@@ -281,6 +289,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <summary>
         ///     Solves the 3
         /// </summary>
+        [ExcludeFromCodeCoverage]
         internal void Solve3()
         {
             Vector2 w1 = V[0].W;

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -42,6 +43,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         ///     Evaluate the manifold with supplied transforms. This assumes modest motion from the original state. This does
         ///     not change the point count, impulses, etc. The radii must come from the Shapes that generated the manifold.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public static void Initialize(ref Manifold manifold, ref Transform xfA, float radiusA, ref Transform xfB,
             float radiusB, out Vector2 normal, out Vector2[] points)
         {

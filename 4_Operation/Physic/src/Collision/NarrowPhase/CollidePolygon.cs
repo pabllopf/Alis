@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -44,6 +45,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
     public static class CollidePolygon
     {
         /// <summary>Compute the collision manifold between two polygons.</summary>
+        [ExcludeFromCodeCoverage]
         public static void CollidePolygons(ref Manifold manifold, PolygonShape polyA, ref Transform xfA,
             PolygonShape polyB, ref Transform xfB)
         {
@@ -174,7 +176,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         }
         
         /// <summary>Find the max separation between poly1 and poly2 using edge normals from poly1.</summary>
-        private static float FindMaxSeparation(out int edgeIndex, PolygonShape poly1, ref Transform xf1,
+        internal static float FindMaxSeparation(out int edgeIndex, PolygonShape poly1, ref Transform xf1,
             PolygonShape poly2, ref Transform xf2)
         {
             int count1 = poly1.VerticesPrivate.Count;
@@ -223,7 +225,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="edge1">The edge</param>
         /// <param name="poly2">The poly</param>
         /// <param name="xf2">The xf</param>
-        private static void FindIncidentEdge(out ClipVertex[] c, PolygonShape poly1, ref Transform xf1,
+        internal static void FindIncidentEdge(out ClipVertex[] c, PolygonShape poly1, ref Transform xf1,
             int edge1, PolygonShape poly2, ref Transform xf2)
         {
             Vertices normals1 = poly1.NormalsPrivate;

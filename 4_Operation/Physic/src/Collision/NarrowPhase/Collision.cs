@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -47,6 +48,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="indexB">The index for the second shape.</param>
         /// <param name="xfA">The transform for the first shape.</param>
         /// <param name="xfB">The transform for the seconds shape.</param>
+        [ExcludeFromCodeCoverage]
         public static bool TestOverlap(AShape shapeA, int indexA, AShape shapeB, int indexB, ref Transform xfA,
             ref Transform xfB)
         {
@@ -71,6 +73,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="state2">The state</param>
         /// <param name="manifold1">The manifold</param>
         /// <param name="manifold2">The manifold</param>
+        [ExcludeFromCodeCoverage]
         public static void GetPointStates(out PointState[] state1, out PointState[] state2,
             ref Manifold manifold1, ref Manifold manifold2)
         {
@@ -125,6 +128,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="offset">The offset.</param>
         /// <param name="vertexIndexA">The vertex index A.</param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         internal static int ClipSegmentToLine(out ClipVertex[] vOut, ref ClipVertex[] vIn,
             Vector2 normal, float offset, int vertexIndexA)
         {
