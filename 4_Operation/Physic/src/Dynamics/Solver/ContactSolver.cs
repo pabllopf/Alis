@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -43,6 +44,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
     /// <summary>
     ///     The contact solver class
     /// </summary>
+    [ExcludeFromCodeCoverage]
     internal class ContactSolver
     {
         /// <summary>

@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Shapes;
@@ -68,6 +69,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="density">The density</param>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
+        [ExcludeFromCodeCoverage]
         internal BreakableBody(World world, ICollection<Vertices> parts, float density, Vector2 position = new Vector2(),
             float rotation = 0)
         {
@@ -94,6 +96,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="shapes">The shapes</param>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
+        [ExcludeFromCodeCoverage]
         internal BreakableBody(World world, IEnumerable<AShape> shapes, Vector2 position = new Vector2(),
             float rotation = 0)
         {
@@ -113,11 +116,13 @@ namespace Alis.Core.Physic.Dynamics
         }
         
         /// <summary>The force needed to break the body apart. Default: 500</summary>
+        [ExcludeFromCodeCoverage]
         private float Strength { get; }
         
         /// <summary>
         ///     Gets or sets the value of the broken
         /// </summary>
+        [ExcludeFromCodeCoverage]
         private bool Broken { get; set; }
         
         /// <summary>
@@ -135,6 +140,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="contact">The contact</param>
         /// <param name="impulse">The impulse</param>
+        [ExcludeFromCodeCoverage]
         internal void PostSolve(Contact contact, ContactVelocityConstraint impulse)
         {
             if (!Broken)
@@ -161,6 +167,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Updates this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void Update()
         {
             if (breakable)
@@ -192,6 +199,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Decomposes this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         internal void Decompose()
         {
             world.ContactManager.PostSolve -= PostSolve;

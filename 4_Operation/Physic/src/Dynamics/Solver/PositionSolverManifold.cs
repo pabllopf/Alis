@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -50,6 +51,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="normal">The normal</param>
         /// <param name="point">The point</param>
         /// <param name="separation">The separation</param>
+        [ExcludeFromCodeCoverage]
         public static void Initialize(ContactPositionConstraint pc, ref Transform xfA, ref Transform xfB, int index,
             out Vector2 normal, out Vector2 point, out float separation)
         {

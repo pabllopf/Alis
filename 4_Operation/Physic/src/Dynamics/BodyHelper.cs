@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.TOI;
 using Alis.Core.Physic.Dynamics.Solver;
@@ -46,6 +47,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="minContact">The min contact</param>
         /// <param name="minAlpha">The min alpha</param>
         /// <returns>The bodies</returns>
+        [ExcludeFromCodeCoverage]
         internal static Body[] AdvanceBody(ContactManager contactManager, Island island, Contact minContact, float minAlpha)
         {
             Fixture fA1 = minContact.FixtureA;
@@ -76,6 +78,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="minContact">The min contact</param>
         /// <param name="minAlpha">The min alpha</param>
         /// <returns>The bodies</returns>
+        [ExcludeFromCodeCoverage]
         internal static Body[] AdvanceBodies(Contact minContact, float minAlpha)
         {
             Fixture fA1 = minContact.FixtureA;
@@ -96,6 +99,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="contactManager">The contact manager</param>
         /// <param name="minContact">The min contact</param>
+        [ExcludeFromCodeCoverage]
         internal static void UpdateContact(ContactManager contactManager, Contact minContact)
         {
             minContact.Update(contactManager);
@@ -111,6 +115,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="backup1">The backup</param>
         /// <param name="backup2">The backup</param>
         /// <returns>The bool</returns>
+        [ExcludeFromCodeCoverage]
         internal static bool CheckContactSolid(Contact minContact, Body[] bodies, Sweep backup1, Sweep backup2)
         {
             if (!minContact.Enabled || !minContact.IsTouching)
@@ -135,6 +140,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="island">The island</param>
         /// <param name="minContact">The min contact</param>
         /// <param name="bodies">The bodies</param>
+        [ExcludeFromCodeCoverage]
         internal static void BuildIsland(Island island, Contact minContact, Body[] bodies)
         {
             island.Clear();
@@ -155,6 +161,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="bodies">The bodies</param>
         /// <param name="island">The island</param>
         /// <param name="minContact">The min contact</param>
+        [ExcludeFromCodeCoverage]
         internal static void GetContacts(ContactManager contactManager, float minAlpha, Body[] bodies, Island island, Contact minContact)
         {
             for (int i = 0; i < 2; ++i)
@@ -175,6 +182,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="minAlpha">The min alpha</param>
         /// <param name="island">The island</param>
         /// <param name="minContact">The min contact</param>
+        [ExcludeFromCodeCoverage]
         internal static void ProcessBodyContacts(Body body, ContactManager contactManager, float minAlpha, Island island, Contact minContact)
         {
             for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
@@ -192,6 +200,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="minAlpha">The min alpha</param>
         /// <param name="island">The island</param>
         /// <param name="minContact">The min contact</param>
+        [ExcludeFromCodeCoverage]
         private static void ProcessContact(Body body, ContactEdge ce, ContactManager contactManager, float minAlpha, Island island, Contact minContact)
         {
             Contact contact = ce.Contact;

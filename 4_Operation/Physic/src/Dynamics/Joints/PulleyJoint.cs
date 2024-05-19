@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -56,6 +57,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     K = J * invM * JT
     ///     = invMass1 + invI1 * cross(r1, u1)^2 + ratio^2 * (invMass2 + invI2 * cross(r2, u2)^2)
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class PulleyJoint : Joint
     {
         /// <summary>

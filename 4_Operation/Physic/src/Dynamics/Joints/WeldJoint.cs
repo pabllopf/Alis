@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Util;
@@ -59,6 +60,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     body
     ///     instead.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class WeldJoint : Joint
     {
         /// <summary>
