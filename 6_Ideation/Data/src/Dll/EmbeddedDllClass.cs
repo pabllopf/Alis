@@ -246,6 +246,7 @@ namespace Alis.Core.Aspect.Data.Dll
         ///     Sets the file read permission using the specified file path
         /// </summary>
         /// <param name="filePath">The file path</param>
+        [ExcludeFromCodeCoverage]
         internal static void SetFileReadPermission(string filePath)
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))

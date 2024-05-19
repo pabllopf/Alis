@@ -43,11 +43,6 @@ namespace Alis.Core.Physic.Collision.Filtering
         None = 0,
         
         /// <summary>
-        ///     The all category
-        /// </summary>
-        All = int.MaxValue,
-        
-        /// <summary>
         ///     The cat category
         /// </summary>
         Cat1 = 1,
