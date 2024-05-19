@@ -66,20 +66,28 @@ namespace Alis.Core.Physic.Figure
         public static Vertices CreateRectangle(float hx, float hy, Vector2 center, float angle)
         {
             Vertices vertices = CreateRectangle(hx, hy);
-            
+            TransformVertices(vertices, center, angle);
+            return vertices;
+        }
+        
+        /// <summary>
+        /// Transforms the vertices using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="center">The center</param>
+        /// <param name="angle">The angle</param>
+        internal static void TransformVertices(Vertices vertices, Vector2 center, float angle)
+        {
             Transform xf = new Transform
             {
                 Position = center
             };
             xf.Rotation.Set(angle);
             
-            
-            for (int i = 0; i < 4; ++i)
+            for (int i = 0; i < vertices.Count; ++i)
             {
                 vertices[i] = MathUtils.Mul(ref xf, vertices[i]);
             }
-            
-            return vertices;
         }
         
         
@@ -91,11 +99,37 @@ namespace Alis.Core.Physic.Figure
         /// <param name="xRadius">The radius</param>
         /// <param name="yRadius">The radius</param>
         /// <param name="segments">The segments</param>
-        /// <exception cref="Exception">Rounding amount can't be more than half the height and width respectively.</exception>
-        /// <exception cref="Exception">Segments must be zero or more.</exception>
+        /// <exception>Rounding amount can't be more than half the height and width respectively.</exception>
+        /// <exception>Segments must be zero or more.</exception>
         /// <returns>The vertices</returns>
-        public static Vertices CreateRoundedRectangle(float width, float height, float xRadius, float yRadius,
-            int segments)
+        public static Vertices CreateRoundedRectangle(float width, float height, float xRadius, float yRadius, int segments)
+        {
+            ValidateRoundedRectangleParameters(width, height, xRadius, yRadius, segments);
+            
+            Vertices vertices = new Vertices();
+            if (segments == 0)
+            {
+                CreateRectangleWithoutSegments(vertices, width, height, xRadius, yRadius);
+            }
+            else
+            {
+                CreateRectangleWithSegments(vertices, width, height, xRadius, yRadius, segments);
+            }
+            
+            return vertices;
+        }
+        
+        /// <summary>
+        /// Validates the rounded rectangle parameters using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="xRadius">The radius</param>
+        /// <param name="yRadius">The radius</param>
+        /// <param name="segments">The segments</param>
+        /// <exception cref="System.Exception">Rounding amount can't be more than half the height and width respectively.</exception>
+        /// <exception cref="System.Exception">Segments must be zero or more.</exception>
+        internal static void ValidateRoundedRectangleParameters(float width, float height, float xRadius, float yRadius, int segments)
         {
             if (yRadius > height / 2 || xRadius > width / 2)
             {
@@ -106,53 +140,62 @@ namespace Alis.Core.Physic.Figure
             {
                 throw new System.Exception("Segments must be zero or more.");
             }
-            
-            Vertices vertices = new Vertices();
-            if (segments == 0)
-            {
-                vertices.Add(new Vector2(width * .5f - xRadius, -height * .5f));
-                vertices.Add(new Vector2(width * .5f, -height * .5f + yRadius));
-                
-                vertices.Add(new Vector2(width * .5f, height * .5f - yRadius));
-                vertices.Add(new Vector2(width * .5f - xRadius, height * .5f));
-                
-                vertices.Add(new Vector2(-width * .5f + xRadius, height * .5f));
-                vertices.Add(new Vector2(-width * .5f, height * .5f - yRadius));
-                
-                vertices.Add(new Vector2(-width * .5f, -height * .5f + yRadius));
-                vertices.Add(new Vector2(-width * .5f + xRadius, -height * .5f));
-            }
-            else
-            {
-                int numberOfEdges = segments * 4 + 8;
-                
-                float stepSize = Constant.TwoPi / (numberOfEdges - 4);
-                int perPhase = numberOfEdges / 4;
-                
-                Vector2 posOffset = new Vector2(width / 2 - xRadius, height / 2 - yRadius);
-                vertices.Add(posOffset + new Vector2(xRadius, -yRadius + yRadius));
-                short phase = 0;
-                for (int i = 1; i < numberOfEdges; i++)
-                {
-                    if (i - perPhase == 0 || i - perPhase * 3 == 0)
-                    {
-                        posOffset = new Vector2(posOffset.X * -1, posOffset.Y);
-                        phase--;
-                    }
-                    /*else if (i - perPhase * 2 == 0)
-                    {
-                        posOffset = new Vector2F(posOffset.X, posOffset.Y * -1);
-                        phase--;
-                    }*/
-                    
-                    vertices.Add(posOffset + new Vector2(xRadius * (float) CustomMathF.Cos(stepSize * -(i + phase)),
-                        -yRadius * (float) CustomMathF.Sin(stepSize * -(i + phase))));
-                }
-            }
-            
-            return vertices;
         }
         
+        /// <summary>
+        /// Creates the rectangle without segments using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="xRadius">The radius</param>
+        /// <param name="yRadius">The radius</param>
+        internal static void CreateRectangleWithoutSegments(Vertices vertices, float width, float height, float xRadius, float yRadius)
+        {
+            vertices.Add(new Vector2(width * .5f - xRadius, -height * .5f));
+            vertices.Add(new Vector2(width * .5f, -height * .5f + yRadius));
+            
+            vertices.Add(new Vector2(width * .5f, height * .5f - yRadius));
+            vertices.Add(new Vector2(width * .5f - xRadius, height * .5f));
+            
+            vertices.Add(new Vector2(-width * .5f + xRadius, height * .5f));
+            vertices.Add(new Vector2(-width * .5f, height * .5f - yRadius));
+            
+            vertices.Add(new Vector2(-width * .5f, -height * .5f + yRadius));
+            vertices.Add(new Vector2(-width * .5f + xRadius, -height * .5f));
+        }
+        
+        /// <summary>
+        /// Creates the rectangle with segments using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="xRadius">The radius</param>
+        /// <param name="yRadius">The radius</param>
+        /// <param name="segments">The segments</param>
+        internal static void CreateRectangleWithSegments(Vertices vertices, float width, float height, float xRadius, float yRadius, int segments)
+        {
+            int numberOfEdges = segments * 4 + 8;
+            
+            float stepSize = Constant.TwoPi / (numberOfEdges - 4);
+            int perPhase = numberOfEdges / 4;
+            
+            Vector2 posOffset = new Vector2(width / 2 - xRadius, height / 2 - yRadius);
+            vertices.Add(posOffset + new Vector2(xRadius, -yRadius + yRadius));
+            short phase = 0;
+            for (int i = 1; i < numberOfEdges; i++)
+            {
+                if (i - perPhase == 0 || i - perPhase * 3 == 0)
+                {
+                    posOffset = new Vector2(posOffset.X * -1, posOffset.Y);
+                    phase--;
+                }
+                
+                vertices.Add(posOffset + new Vector2(xRadius * (float) CustomMathF.Cos(stepSize * -(i + phase)),
+                    -yRadius * (float) CustomMathF.Sin(stepSize * -(i + phase))));
+            }
+        }
         
         /// <summary>
         ///     Creates the line using the specified start
@@ -234,7 +277,7 @@ namespace Alis.Core.Physic.Figure
         /// <param name="height">The height</param>
         /// <param name="endRadius">The end radius</param>
         /// <param name="edges">The edges</param>
-        /// <exception cref="ArgumentException">
+        /// <exception>
         ///     The radius must be lower than height / 2. Higher values of radius would create a
         ///     circle, and not a half circle.
         /// </exception>
@@ -260,67 +303,138 @@ namespace Alis.Core.Physic.Figure
         /// <param name="topEdges">The top edges</param>
         /// <param name="bottomRadius">The bottom radius</param>
         /// <param name="bottomEdges">The bottom edges</param>
-        /// <exception cref="ArgumentException">Bottom edges must be more than 0 </exception>
-        /// <exception cref="ArgumentException">Height must be longer than 0 </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception>Bottom edges must be more than 0 </exception>
+        /// <exception>Height must be longer than 0 </exception>
+        /// <exception>
         ///     The bottom radius must be lower than height / 2. Higher values of bottom radius
         ///     would create a circle, and not a half circle.
         /// </exception>
-        /// <exception cref="ArgumentException">The bottom radius must be more than 0 </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception>The bottom radius must be more than 0 </exception>
+        /// <exception>
         ///     The top radius must be lower than height / 2. Higher values of top radius would
         ///     create a circle, and not a half circle.
         /// </exception>
-        /// <exception cref="ArgumentException">The top radius must be more than 0 </exception>
-        /// <exception cref="ArgumentException">Top edges must be more than 0 </exception>
+        /// <exception>The top radius must be more than 0 </exception>
+        /// <exception>Top edges must be more than 0 </exception>
         /// <returns>The vertices</returns>
-        public static Vertices CreateCapsule(float height, float topRadius, int topEdges, float bottomRadius,
-            int bottomEdges)
+        public static Vertices CreateCapsule(float height, float topRadius, int topEdges, float bottomRadius, int bottomEdges)
+        {
+            ValidateCapsuleParameters(height, topRadius, topEdges, bottomRadius, bottomEdges);
+            
+            Vertices vertices = new Vertices();
+            float newHeight = (height - topRadius - bottomRadius) * 0.5f;
+            
+            CreateCapsuleTop(vertices, topRadius, newHeight, topEdges);
+            CreateCapsuleBottom(vertices, bottomRadius, newHeight, bottomEdges);
+            
+            return vertices;
+        }
+        
+        /// <summary>
+        /// Validates the capsule parameters using the specified height
+        /// </summary>
+        /// <param name="height">The height</param>
+        /// <param name="topRadius">The top radius</param>
+        /// <param name="topEdges">The top edges</param>
+        /// <param name="bottomRadius">The bottom radius</param>
+        /// <param name="bottomEdges">The bottom edges</param>
+        /// <exception cref="System.ArgumentException">Bottom edges must be more than 0 </exception>
+        /// <exception cref="System.ArgumentException">Height must be longer than 0 </exception>
+        /// <exception cref="System.ArgumentException">The bottom radius must be lower than height / 2. Higher values of bottom radius would create a circle, and not a half circle. </exception>
+        /// <exception cref="System.ArgumentException">The bottom radius must be more than 0 </exception>
+        /// <exception cref="System.ArgumentException">The top radius must be lower than height / 2. Higher values of top radius would create a circle, and not a half circle. </exception>
+        /// <exception cref="System.ArgumentException">The top radius must be more than 0 </exception>
+        /// <exception cref="System.ArgumentException">Top edges must be more than 0 </exception>
+        internal static void ValidateCapsuleParameters(float height, float topRadius, int topEdges, float bottomRadius, int bottomEdges)
+        {
+            ValidateHeight(height);
+            ValidateRadius(topRadius, height, "top");
+            ValidateEdges(topEdges, "top");
+            ValidateRadius(bottomRadius, height, "bottom");
+            ValidateEdges(bottomEdges, "bottom");
+        }
+        
+        /// <summary>
+        /// Validates the height using the specified height
+        /// </summary>
+        /// <param name="height">The height</param>
+        /// <exception cref="System.ArgumentException">Height must be longer than 0 </exception>
+        internal static void ValidateHeight(float height)
         {
             if (height <= 0)
             {
                 throw new System.ArgumentException("Height must be longer than 0", nameof(height));
             }
-            
-            if (topRadius <= 0)
+        }
+        
+        /// <summary>
+        /// Validates the radius using the specified radius
+        /// </summary>
+        /// <param name="radius">The radius</param>
+        /// <param name="height">The height</param>
+        /// <param name="position">The position</param>
+        /// <exception cref="System.ArgumentException">The {position} radius must be lower than height / 2. Higher values of {position} radius would create a circle, and not a half circle. {position}Radius</exception>
+        /// <exception cref="System.ArgumentException">The {position} radius must be more than 0 {position}Radius</exception>
+        internal static void ValidateRadius(float radius, float height, string position)
+        {
+            ValidateRadiusIsPositive(radius, position);
+            ValidateRadiusIsLessThanHalfHeight(radius, height, position);
+        }
+        
+        /// <summary>
+        /// Validates the radius is positive using the specified radius
+        /// </summary>
+        /// <param name="radius">The radius</param>
+        /// <param name="position">The position</param>
+        /// <exception cref="System.ArgumentException">The {position} radius must be more than 0 {position}Radius</exception>
+        internal static void ValidateRadiusIsPositive(float radius, string position)
+        {
+            if (radius <= 0)
             {
-                throw new System.ArgumentException("The top radius must be more than 0", nameof(topRadius));
+                throw new System.ArgumentException($"The {position} radius must be more than 0", $"{position}Radius");
             }
-            
-            if (topEdges <= 0)
-            {
-                throw new System.ArgumentException("Top edges must be more than 0", nameof(topEdges));
-            }
-            
-            if (bottomRadius <= 0)
-            {
-                throw new System.ArgumentException("The bottom radius must be more than 0", nameof(bottomRadius));
-            }
-            
-            if (bottomEdges <= 0)
-            {
-                throw new System.ArgumentException("Bottom edges must be more than 0", nameof(bottomEdges));
-            }
-            
-            if (topRadius >= height / 2)
+        }
+        
+        /// <summary>
+        /// Validates the radius is less than half height using the specified radius
+        /// </summary>
+        /// <param name="radius">The radius</param>
+        /// <param name="height">The height</param>
+        /// <param name="position">The position</param>
+        /// <exception cref="System.ArgumentException">The {position} radius must be lower than height / 2. Higher values of {position} radius would create a circle, and not a half circle. {position}Radius</exception>
+        internal static void ValidateRadiusIsLessThanHalfHeight(float radius, float height, string position)
+        {
+            if (radius >= height / 2)
             {
                 throw new System.ArgumentException(
-                    "The top radius must be lower than height / 2. Higher values of top radius would create a circle, and not a half circle.",
-                    nameof(topRadius));
+                    $"The {position} radius must be lower than height / 2. Higher values of {position} radius would create a circle, and not a half circle.",
+                    $"{position}Radius");
             }
-            
-            if (bottomRadius >= height / 2)
+        }
+        
+        /// <summary>
+        /// Validates the edges using the specified edges
+        /// </summary>
+        /// <param name="edges">The edges</param>
+        /// <param name="position">The position</param>
+        /// <exception cref="System.ArgumentException">{position} edges must be more than 0 {position}Edges</exception>
+        internal static void ValidateEdges(int edges, string position)
+        {
+            if (edges <= 0)
             {
-                throw new System.ArgumentException(
-                    "The bottom radius must be lower than height / 2. Higher values of bottom radius would create a circle, and not a half circle.",
-                    nameof(bottomRadius));
+                throw new System.ArgumentException($"{position} edges must be more than 0", $"{position}Edges");
             }
-            
-            Vertices vertices = new Vertices();
-            
-            float newHeight = (height - topRadius - bottomRadius) * 0.5f;
-            
-            
+        }
+        
+        /// <summary>
+        /// Creates the capsule top using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="topRadius">The top radius</param>
+        /// <param name="newHeight">The new height</param>
+        /// <param name="topEdges">The top edges</param>
+        internal static void CreateCapsuleTop(Vertices vertices, float topRadius, float newHeight, int topEdges)
+        {
             vertices.Add(new Vector2(topRadius, newHeight));
             
             float stepSize = Constant.Pi / topEdges;
@@ -331,11 +445,20 @@ namespace Alis.Core.Physic.Figure
             }
             
             vertices.Add(new Vector2(-topRadius, newHeight));
-            
-            
+        }
+        
+        /// <summary>
+        /// Creates the capsule bottom using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="bottomRadius">The bottom radius</param>
+        /// <param name="newHeight">The new height</param>
+        /// <param name="bottomEdges">The bottom edges</param>
+        internal static void CreateCapsuleBottom(Vertices vertices, float bottomRadius, float newHeight, int bottomEdges)
+        {
             vertices.Add(new Vector2(-bottomRadius, -newHeight));
             
-            stepSize = Constant.Pi / bottomEdges;
+            float stepSize = Constant.Pi / bottomEdges;
             for (int i = 1; i < bottomEdges; i++)
             {
                 vertices.Add(new Vector2(-bottomRadius * (float) CustomMathF.Cos(stepSize * i),
@@ -343,8 +466,6 @@ namespace Alis.Core.Physic.Figure
             }
             
             vertices.Add(new Vector2(bottomRadius, -newHeight));
-            
-            return vertices;
         }
         
         
