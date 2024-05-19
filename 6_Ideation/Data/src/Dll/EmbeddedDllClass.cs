@@ -77,6 +77,7 @@ namespace Alis.Core.Aspect.Data.Dll
         /// <param name="dllType"></param>
         /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
         /// <returns>The string</returns>
+        [ExcludeFromCodeCoverage]
         internal static string GetDllExtension(DllType dllType)
         {
             OSPlatform currentPlatform = GetCurrentPlatform();

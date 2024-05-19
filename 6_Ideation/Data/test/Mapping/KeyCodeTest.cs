@@ -376,7 +376,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void Capslock_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodeCapslock | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.Capslock);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeCapslock | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Capslock);
         }
         
         /// <summary>
@@ -385,7 +385,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void F1_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodeF1 | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.F1);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeF1 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.F1);
         }
         
         /// <summary>
@@ -394,7 +394,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void F2_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodeF2 | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.F2);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeF2 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.F2);
         }
         
         /// <summary>
@@ -403,7 +403,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void F3_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodeF3 | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.F3);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeF3 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.F3);
         }
         
         /// <summary>
@@ -412,7 +412,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void F4_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodeF4 | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.F4);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeF4 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.F4);
         }
         
         /// <summary>
@@ -421,7 +421,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void F5_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodeF5 | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.F5);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeF5 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.F5);
         }
         
         /// <summary>
@@ -430,7 +430,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void F6_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodeF6 | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.F6);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeF6 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.F6);
         }
         
         /// <summary>
@@ -439,7 +439,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void F7_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodeF7 | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.F7);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeF7 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.F7);
         }
         
         /// <summary>
@@ -448,7 +448,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void F8_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodeF8 | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.F8);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeF8 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.F8);
         }
         
         /// <summary>
@@ -457,7 +457,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void F9_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodeF9 | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.F9);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeF9 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.F9);
         }
         
         /// <summary>
@@ -466,7 +466,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void F10_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodeF10 | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.F10);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeF10 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.F10);
         }
         
         /// <summary>
@@ -475,7 +475,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void F11_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodeF11 | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.F11);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeF11 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.F11);
         }
         
         /// <summary>
@@ -484,7 +484,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void F12_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodeF12 | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.F12);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeF12 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.F12);
         }
         
         /// <summary>
@@ -493,7 +493,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void Printscreen_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodePrintscreen | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.Printscreen);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodePrintscreen | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Printscreen);
         }
         
         /// <summary>
@@ -502,7 +502,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void Scrolllock_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodeScrolllock | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.Scrolllock);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeScrolllock | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Scrolllock);
         }
         
         /// <summary>
@@ -511,7 +511,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void Pause_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodePause | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.Pause);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodePause | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Pause);
         }
         
         /// <summary>
@@ -520,7 +520,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void Insert_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodeInsert | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.Insert);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeInsert | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Insert);
         }
         
         /// <summary>
@@ -529,7 +529,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void Home_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodeHome | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.Home);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeHome | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Home);
         }
         
         /// <summary>
@@ -538,7 +538,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void Pageup_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodePageup | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.Pageup);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodePageup | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Pageup);
         }
         
         /// <summary>
@@ -547,7 +547,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void Delete_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)127, KeyCode.Delete);
+            Assert.Equal((KeyCode) 127, KeyCode.Delete);
         }
         
         /// <summary>
@@ -556,7 +556,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         [Fact]
         public void End_ShouldBeCorrectValue()
         {
-            Assert.Equal((KeyCode)(SdlScancode.SdlScancodeEnd | (SdlScancode)SdlInputConst.KScancodeMask), KeyCode.End);
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeEnd | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.End);
         }
         
         /// <summary>
@@ -566,6 +566,195 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
         public void Pagedown_ShouldBeCorrectValue()
         {
             Assert.Equal((KeyCode) (SdlScancode.SdlScancodePagedown | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Pagedown);
+        }
+        
+        /// <summary>
+        /// Tests that right should be correct value
+        /// </summary>
+        [Fact]
+        public void Right_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeRight | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Right);
+        }
+        
+        /// <summary>
+        /// Tests that left should be correct value
+        /// </summary>
+        [Fact]
+        public void Left_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeLeft | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Left);
+        }
+        
+        /// <summary>
+        /// Tests that down should be correct value
+        /// </summary>
+        [Fact]
+        public void Down_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeDown | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Down);
+        }
+        
+        /// <summary>
+        /// Tests that up should be correct value
+        /// </summary>
+        [Fact]
+        public void Up_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeUp | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Up);
+        }
+        
+        /// <summary>
+        /// Tests that numlockclear should be correct value
+        /// </summary>
+        [Fact]
+        public void Numlockclear_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeNumlockclear | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Numlockclear);
+        }
+        
+        /// <summary>
+        /// Tests that kp divide should be correct value
+        /// </summary>
+        [Fact]
+        public void KpDivide_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeKpDivide | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.KpDivide);
+        }
+        
+        /// <summary>
+        /// Tests that kp multiply should be correct value
+        /// </summary>
+        [Fact]
+        public void KpMultiply_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeKpMultiply | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.KpMultiply);
+        }
+        
+        /// <summary>
+        /// Tests that kp minus should be correct value
+        /// </summary>
+        [Fact]
+        public void KpMinus_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeKpMinus | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.KpMinus);
+        }
+        
+        /// <summary>
+        /// Tests that kp plus should be correct value
+        /// </summary>
+        [Fact]
+        public void KpPlus_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeKpPlus | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.KpPlus);
+        }
+        
+        /// <summary>
+        /// Tests that kp enter should be correct value
+        /// </summary>
+        [Fact]
+        public void KpEnter_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeKpEnter | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.KpEnter);
+        }
+        
+        /// <summary>
+        /// Tests that kp 1 should be correct value
+        /// </summary>
+        [Fact]
+        public void Kp1_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeKp1 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Kp1);
+        }
+        
+        /// <summary>
+        /// Tests that kp 2 should be correct value
+        /// </summary>
+        [Fact]
+        public void Kp2_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeKp2 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Kp2);
+        }
+        
+        /// <summary>
+        /// Tests that kp 3 should be correct value
+        /// </summary>
+        [Fact]
+        public void Kp3_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeKp3 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Kp3);
+        }
+        
+        /// <summary>
+        /// Tests that kp 4 should be correct value
+        /// </summary>
+        [Fact]
+        public void Kp4_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeKp4 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Kp4);
+        }
+        
+        /// <summary>
+        /// Tests that kp 5 should be correct value
+        /// </summary>
+        [Fact]
+        public void Kp5_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeKp5 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Kp5);
+        }
+        
+        /// <summary>
+        /// Tests that kp 6 should be correct value
+        /// </summary>
+        [Fact]
+        public void Kp6_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeKp6 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Kp6);
+        }
+        
+        /// <summary>
+        /// Tests that kp 7 should be correct value
+        /// </summary>
+        [Fact]
+        public void Kp7_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeKp7 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Kp7);
+        }
+        
+        /// <summary>
+        /// Tests that kp 8 should be correct value
+        /// </summary>
+        [Fact]
+        public void Kp8_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeKp8 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Kp8);
+        }
+        
+        /// <summary>
+        /// Tests that kp 9 should be correct value
+        /// </summary>
+        [Fact]
+        public void Kp9_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeKp9 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Kp9);
+        }
+        
+        /// <summary>
+        /// Tests that kp 0 should be correct value
+        /// </summary>
+        [Fact]
+        public void Kp0_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeKp0 | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.Kp0);
+        }
+        
+        /// <summary>
+        /// Tests that kp period should be correct value
+        /// </summary>
+        [Fact]
+        public void KpPeriod_ShouldBeCorrectValue()
+        {
+            Assert.Equal((KeyCode) (SdlScancode.SdlScancodeKpPeriod | (SdlScancode) SdlInputConst.KScancodeMask), KeyCode.KpPeriod);
         }
     }
 }

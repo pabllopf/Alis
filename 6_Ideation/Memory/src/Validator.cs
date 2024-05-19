@@ -48,6 +48,7 @@ namespace Alis.Core.Aspect.Memory
         /// <param name="value">The value</param>
         /// <param name="name"></param>
         [Conditional("DEBUG")]
+        [ExcludeFromCodeCoverage]
         public static void Validate<T>(T value, string name)
         {
             StackTrace stackTrace = new StackTrace();

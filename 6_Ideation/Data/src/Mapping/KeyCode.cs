@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace Alis.Core.Aspect.Data.Mapping
 {
     /// <summary>
@@ -768,7 +766,7 @@ namespace Alis.Core.Aspect.Data.Mapping
         /// <summary>
         ///     The  sysreq sdl keycode
         /// </summary>
-        Sysreq = SdlScancode.SdlScancodeSysreq | SdlInputConst.KScancodeMask,
+        Syzsreq = SdlScancode.SdlScancodeSysreq | SdlInputConst.KScancodeMask,
         
         /// <summary>
         ///     The  cancel sdl keycode
