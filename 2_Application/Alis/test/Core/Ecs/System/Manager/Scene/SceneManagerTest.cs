@@ -271,8 +271,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void Remove_ValidInput_RemovesScene()
         {
-            var sceneManager = new SceneManager();
-            var scene = new Alis.Core.Ecs.Entity.Scene();
+            SceneManager sceneManager = new SceneManager();
+            Alis.Core.Ecs.Entity.Scene scene = new Alis.Core.Ecs.Entity.Scene();
             sceneManager.Scenes.Add(scene);
             sceneManager.Remove(scene);
             Assert.DoesNotContain(scene, sceneManager.Scenes);
@@ -284,10 +284,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void Get_ValidInput_ReturnsScene()
         {
-            var sceneManager = new SceneManager();
-            var scene = new Alis.Core.Ecs.Entity.Scene();
+            SceneManager sceneManager = new SceneManager();
+            Alis.Core.Ecs.Entity.Scene scene = new Alis.Core.Ecs.Entity.Scene();
             sceneManager.Scenes.Add(scene);
-            var result = sceneManager.Get<Alis.Core.Ecs.Entity.Scene>();
+            Alis.Core.Ecs.Entity.Scene result = sceneManager.Get<Alis.Core.Ecs.Entity.Scene>();
             Assert.Equal(scene, result);
         }
         
@@ -297,10 +297,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void Contains_ValidInput_ReturnsTrue()
         {
-            var sceneManager = new SceneManager();
-            var scene = new Alis.Core.Ecs.Entity.Scene();
+            SceneManager sceneManager = new SceneManager();
+            Alis.Core.Ecs.Entity.Scene scene = new Alis.Core.Ecs.Entity.Scene();
             sceneManager.Scenes.Add(scene);
-            var result = sceneManager.Contains<Alis.Core.Ecs.Entity.Scene>();
+            bool result = sceneManager.Contains<Alis.Core.Ecs.Entity.Scene>();
             Assert.True(result);
         }
         
@@ -310,8 +310,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void Clear_ValidInput_ClearsScenes()
         {
-            var sceneManager = new SceneManager();
-            var scene = new Alis.Core.Ecs.Entity.Scene();
+            SceneManager sceneManager = new SceneManager();
+            Alis.Core.Ecs.Entity.Scene scene = new Alis.Core.Ecs.Entity.Scene();
             sceneManager.Scenes.Add(scene);
             sceneManager.Clear<Alis.Core.Ecs.Entity.Scene>();
             Assert.Empty(sceneManager.Scenes);
@@ -323,8 +323,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void LoadScene_ValidScene_SetsCurrentScene()
         {
-            var sceneManager = new SceneManager();
-            var scene = new Alis.Core.Ecs.Entity.Scene();
+            SceneManager sceneManager = new SceneManager();
+            Alis.Core.Ecs.Entity.Scene scene = new Alis.Core.Ecs.Entity.Scene();
             sceneManager.LoadScene(scene);
             Assert.Equal(scene, sceneManager.CurrentScene);
         }
@@ -335,8 +335,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void ReloadScene_ValidScene_SetsCurrentScene()
         {
-            var sceneManager = new SceneManager();
-            var scene = new Alis.Core.Ecs.Entity.Scene();
+            SceneManager sceneManager = new SceneManager();
+            Alis.Core.Ecs.Entity.Scene scene = new Alis.Core.Ecs.Entity.Scene();
             sceneManager.ReloadScene(scene);
             Assert.Equal(scene, sceneManager.CurrentScene);
         }
@@ -347,8 +347,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void LoadScene_ValidName_SetsCurrentScene()
         {
-            var sceneManager = new SceneManager();
-            var scene = new Alis.Core.Ecs.Entity.Scene {Name = "TestScene"};
+            SceneManager sceneManager = new SceneManager();
+            Alis.Core.Ecs.Entity.Scene scene = new Alis.Core.Ecs.Entity.Scene {Name = "TestScene"};
             sceneManager.Scenes.Add(scene);
             sceneManager.LoadScene("TestScene");
             Assert.Equal(scene, sceneManager.CurrentScene);
@@ -360,9 +360,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void LoadScene_ValidIndex_LoadsCorrectScene()
         {
-            var sceneManager = new SceneManager();
-            var scene1 = new Alis.Core.Ecs.Entity.Scene {Name = "Scene1"};
-            var scene2 = new Alis.Core.Ecs.Entity.Scene {Name = "Scene2"};
+            SceneManager sceneManager = new SceneManager();
+            Alis.Core.Ecs.Entity.Scene scene1 = new Alis.Core.Ecs.Entity.Scene {Name = "Scene1"};
+            Alis.Core.Ecs.Entity.Scene scene2 = new Alis.Core.Ecs.Entity.Scene {Name = "Scene2"};
             sceneManager.Scenes.Add(scene1);
             sceneManager.Scenes.Add(scene2);
             

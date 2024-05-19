@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Test.Figure
             Vector2 point2 = new Vector2(1, 1);
             Aabb aabb = new Aabb(new Vector2(2, 2), new Vector2(3, 3));
             
-            var result = Line.LineSegmentAabbIntersect(point1, point2, aabb);
+            List<Vector2> result = Line.LineSegmentAabbIntersect(point1, point2, aabb);
             
             Assert.Empty(result);
         }

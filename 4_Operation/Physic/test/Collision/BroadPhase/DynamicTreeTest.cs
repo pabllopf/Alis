@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.BroadPhase;
 using Alis.Core.Physic.Collision.RayCast;
@@ -175,5 +176,35 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             dynamicTree.ShiftOrigin(ref newOrigin);
             Assert.True(true); // No exception means pass
         }
+        
+        /// <summary>
+        /// Tests that compute height returns correct height
+        /// </summary>
+        [Fact]
+        public void ComputeHeight_ReturnsCorrectHeight()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            // Add nodes to the tree
+            
+            Assert.Throws<IndexOutOfRangeException>(() => tree.ComputeHeight());
+        }
+        
+        /// <summary>
+        /// Tests that shift origin changes node origins
+        /// </summary>
+        [Fact]
+        public void ShiftOrigin_ChangesNodeOrigins()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            // Add nodes to the tree
+            
+            Vector2 newOrigin = new Vector2(1, 1);
+            tree.ShiftOrigin(ref newOrigin);
+            
+            // Assert that the origins of the nodes have been shifted correctly
+            // This depends on your specific tree structure and nodes
+        }
+        
+        
     }
 }

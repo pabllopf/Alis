@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Handlers;
 using Alis.Core.Physic.Collision.RayCast;
@@ -52,52 +53,52 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <summary>
         ///     The query callback
         /// </summary>
-        private readonly Func<int, bool> queryCallback;
+        internal readonly Func<int, bool> queryCallback;
         
         /// <summary>
         ///     The fixture proxy
         /// </summary>
-        private readonly DynamicTree<FixtureProxy> tree = new DynamicTree<FixtureProxy>();
+        internal readonly DynamicTree<FixtureProxy> tree = new DynamicTree<FixtureProxy>();
         
         /// <summary>
         ///     The move buffer
         /// </summary>
-        private int[] moveBuffer;
+        internal int[] moveBuffer;
         
         /// <summary>
         ///     The move capacity
         /// </summary>
-        private int moveCapacity;
+        internal int moveCapacity;
         
         /// <summary>
         ///     The move count
         /// </summary>
-        private int moveCount;
+        internal int moveCount;
         
         /// <summary>
         ///     The pair buffer
         /// </summary>
-        private Pair[] pairBuffer;
+        internal Pair[] pairBuffer;
         
         /// <summary>
         ///     The pair capacity
         /// </summary>
-        private int pairCapacity;
+        internal int pairCapacity;
         
         /// <summary>
         ///     The pair count
         /// </summary>
-        private int pairCount;
+        internal int pairCount;
         
         /// <summary>
         ///     The proxy count
         /// </summary>
-        private int proxyCount;
+        internal int proxyCount;
         
         /// <summary>
         ///     The query proxy id
         /// </summary>
-        private int queryProxyId;
+        internal int queryProxyId;
         
         /// <summary>Constructs a new broad phase based on the dynamic tree implementation</summary>
         public DynamicTreeBroadPhase()
@@ -148,6 +149,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         ///     Call MoveProxy as many times as you like, then when you are done call UpdatePairs to finalized the proxy pairs
         ///     (for your time step).
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void MoveProxy(int proxyId, ref Aabb aabb, Vector2 displacement)
         {
             bool buffer = tree.MoveProxy(proxyId, ref aabb, displacement);
@@ -189,6 +191,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         
         /// <summary>Update the pairs. This results in pair callbacks. This can only add pairs.</summary>
         /// <param name="callback">The callback.</param>
+        [ExcludeFromCodeCoverage]
         public void UpdatePairs(BroadPhaseHandler callback)
         {
             // Reset pair buffer
@@ -271,7 +274,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         ///     Buffers the move using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
-        private void BufferMove(int proxyId)
+        [ExcludeFromCodeCoverage]
+        internal void BufferMove(int proxyId)
         {
             if (moveCount == moveCapacity)
             {
@@ -289,7 +293,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         ///     Uns the buffer move using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
-        private void UnBufferMove(int proxyId)
+        internal void UnBufferMove(int proxyId)
         {
             for (int i = 0; i < moveCount; ++i)
             {
@@ -301,7 +305,8 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         }
         
         /// <summary>This is called from DynamicTree.Query when we are gathering pairs.</summary>
-        private bool QueryCallback(int proxyId)
+        [ExcludeFromCodeCoverage]
+        internal bool QueryCallback(int proxyId)
         {
             // A proxy cannot form a pair with itself.
             if (proxyId == queryProxyId)

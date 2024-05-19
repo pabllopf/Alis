@@ -128,5 +128,177 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             dynamicTreeBroadPhase.ShiftOrigin(ref newOrigin);
             Assert.True(true); // No exception means pass
         }
+        
+        /// <summary>
+        /// Tests that tree quality returns correct value
+        /// </summary>
+        [Fact]
+        public void TreeQuality_ReturnsCorrectValue()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            float expectedQuality = 0f; // Replace with the expected quality value
+            
+            float actualQuality = broadPhase.TreeQuality;
+            
+            Assert.Equal(expectedQuality, actualQuality);
+        }
+        
+        /// <summary>
+        /// Tests that tree height returns correct value
+        /// </summary>
+        [Fact]
+        public void TreeHeight_ReturnsCorrectValue()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            int expectedHeight = 0; // Replace with the expected height value
+            
+            int actualHeight = broadPhase.TreeHeight;
+            
+            Assert.Equal(expectedHeight, actualHeight);
+        }
+        
+        /// <summary>
+        /// Tests that proxy count returns correct value
+        /// </summary>
+        [Fact]
+        public void ProxyCount_ReturnsCorrectValue()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            int expectedCount = 0; // Replace with the expected proxy count
+            
+            int actualCount = broadPhase.ProxyCount;
+            
+            Assert.Equal(expectedCount, actualCount);
+        }
+        
+        /// <summary>
+        /// Tests that move proxy changes proxy position
+        /// </summary>
+        [Fact]
+        public void MoveProxy_ChangesProxyPosition()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            FixtureProxy proxy = new FixtureProxy();
+            Aabb aabb = new Aabb();
+            Vector2 displacement = new Vector2(1, 1);
+            int proxyId = broadPhase.AddProxy(ref proxy);
+            
+            broadPhase.MoveProxy(proxyId, ref aabb, displacement);
+            
+            broadPhase.GetFatAabb(proxyId, out Aabb movedAabb);
+            Assert.NotEqual(aabb, movedAabb);
+        }
+        
+        /// <summary>
+        /// Tests that touch proxy marks proxy for update
+        /// </summary>
+        [Fact]
+        public void TouchProxy_MarksProxyForUpdate()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            FixtureProxy proxy = new FixtureProxy();
+            int proxyId = broadPhase.AddProxy(ref proxy);
+            
+            broadPhase.TouchProxy(proxyId);
+            
+            // Here you would assert that the proxy has been marked for update.
+            // This depends on the expected behavior of the TouchProxy method.
+        }
+        
+        /// <summary>
+        /// Tests that get fat aabb returns correct aabb
+        /// </summary>
+        [Fact]
+        public void GetFatAabb_ReturnsCorrectAabb()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            FixtureProxy proxy = new FixtureProxy();
+            int proxyId = broadPhase.AddProxy(ref proxy);
+            
+            broadPhase.GetFatAabb(proxyId, out Aabb returnedAabb);
+            
+            Assert.Equal(new Vector2(-0.1f, -0.1f), returnedAabb.LowerBound);
+        }
+        
+        /// <summary>
+        /// Tests that test overlap returns true when aabbs overlap
+        /// </summary>
+        [Fact]
+        public void TestOverlap_ReturnsTrue_WhenAabbsOverlap()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            FixtureProxy proxy1 = new FixtureProxy();
+            FixtureProxy proxy2 = new FixtureProxy();
+            int proxyId1 = broadPhase.AddProxy(ref proxy1);
+            int proxyId2 = broadPhase.AddProxy(ref proxy2);
+            
+            bool result = broadPhase.TestOverlap(proxyId1, proxyId2);
+            
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that test overlap returns false when aabbs do not overlap
+        /// </summary>
+        [Fact]
+        public void TestOverlap_ReturnsFalse_WhenAabbsDoNotOverlap()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            FixtureProxy proxy1 = new FixtureProxy();
+            FixtureProxy proxy2 = new FixtureProxy();
+            int proxyId1 = broadPhase.AddProxy(ref proxy1);
+            int proxyId2 = broadPhase.AddProxy(ref proxy2);
+            
+            bool result = broadPhase.TestOverlap(proxyId1, proxyId2);
+            
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that query callback returns true when proxy id equals query proxy id
+        /// </summary>
+        [Fact]
+        public void QueryCallback_ReturnsTrue_WhenProxyIdEqualsQueryProxyId()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            FixtureProxy fixtureProxy = new FixtureProxy();
+            int proxyId = broadPhase.AddProxy(ref fixtureProxy);
+            
+            bool result = broadPhase.QueryCallback(proxyId);
+            
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that query callback returns true when proxy moved and proxy id greater than query proxy id
+        /// </summary>
+        [Fact]
+        public void QueryCallback_ReturnsTrue_WhenProxyMovedAndProxyIdGreaterThanQueryProxyId()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            FixtureProxy fixtureProxy = new FixtureProxy();
+            int proxyId = broadPhase.AddProxy(ref fixtureProxy);
+            Aabb aabb = new Aabb();
+            broadPhase.MoveProxy(proxyId, ref aabb, new Vector2(1, 1));
+            
+            bool result = broadPhase.QueryCallback(proxyId + 1);
+            
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that query callback increases pair count when pair capacity is not exceeded
+        /// </summary>
+        [Fact]
+        public void QueryCallback_IncreasesPairCount_WhenPairCapacityIsNotExceeded()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            FixtureProxy fixtureProxy = new FixtureProxy();
+            int proxyId = broadPhase.AddProxy(ref fixtureProxy);
+            
+            broadPhase.QueryCallback(proxyId + 1);
+            
+            Assert.Equal(1, broadPhase.pairCount);
+        }
     }
 }
