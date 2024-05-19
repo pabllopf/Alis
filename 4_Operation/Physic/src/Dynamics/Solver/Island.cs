@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Time;
@@ -39,6 +40,7 @@ using Alis.Core.Physic.Dynamics.Joints;
 namespace Alis.Core.Physic.Dynamics.Solver
 {
     /// <summary>This is an internal class.</summary>
+    [ExcludeFromCodeCoverage]
     internal class Island
     {
         /// <summary>

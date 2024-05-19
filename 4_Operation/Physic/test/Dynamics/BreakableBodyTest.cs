@@ -173,5 +173,106 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Assert
             // Add assertions here based on the expected outcome of the Break method
         }
+        
+        /// <summary>
+        /// Tests that breakable body constructor test
+        /// </summary>
+        [Fact]
+        public void BreakableBodyConstructorTest()
+        {
+            // Arrange
+            World world = new World( new Vector2(0, -9.8f));
+            List<AShape> shapes = new List<AShape>() {new CircleShape(1, 1.0f)};
+            Vector2 position = new Vector2();
+            float rotation = 0;
+            
+            // Act
+            BreakableBody breakableBody = new MyBreakableBody(
+                world,
+                new List<Vertices>(),
+                1.0f,
+                position,
+                rotation);
+            
+            // Assert
+            Assert.Equal(position, breakableBody.MainBody.Position);
+            Assert.Equal(rotation, breakableBody.MainBody.Rotation);
+            Assert.Equal(BodyType.Dynamic, breakableBody.MainBody.BodyType);
+        }
+        
+        /// <summary>
+        /// Tests that breakable body update test
+        /// </summary>
+        [Fact]
+        public void BreakableBodyUpdateTest()
+        {
+            // Arrange
+            World world = new World( new Vector2(0, -9.8f));
+            List<AShape> shapes = new List<AShape>() {new CircleShape(1, 1.0f)};
+            Vector2 position = new Vector2();
+            float rotation = 0;
+            BreakableBody breakableBody = new MyBreakableBody(
+                world,
+                new List<Vertices>(),
+                1.0f,
+                position,
+                rotation);
+            
+            // Act
+            breakableBody.Update();
+            
+            // Assert
+            // Here you would assert that the properties of wheelJoint have been set correctly.
+        }
+        
+        /// <summary>
+        /// Tests that breakable body decompose test
+        /// </summary>
+        [Fact]
+        public void BreakableBodyDecomposeTest()
+        {
+            // Arrange
+            World world = new World( new Vector2(0, -9.8f));
+            List<AShape> shapes = new List<AShape>() {new CircleShape(1, 1.0f)};
+            Vector2 position = new Vector2();
+            float rotation = 0;
+            BreakableBody breakableBody = new MyBreakableBody(
+                world,
+                new List<Vertices>(),
+                1.0f,
+                position,
+                rotation);
+            
+            // Act
+            breakableBody.Decompose();
+            
+            // Assert
+            // Here you would assert that the properties of wheelJoint have been set correctly.
+        }
+        
+        /// <summary>
+        /// Tests that breakable body break test
+        /// </summary>
+        [Fact]
+        public void BreakableBodyBreakTest()
+        {
+            // Arrange
+            World world = new World( new Vector2(0, -9.8f));
+            Vector2 position = new Vector2();
+            float rotation = 0;
+            BreakableBody breakableBody = new MyBreakableBody(
+                world,
+                new List<Vertices>(),
+                1.0f,
+                position,
+                rotation);
+            
+            
+            // Act
+            breakableBody.Break();
+            
+            // Assert
+            // Here you would assert that the properties of wheelJoint have been set correctly.
+        }
     }
 }

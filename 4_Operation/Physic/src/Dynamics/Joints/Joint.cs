@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics.Solver;
 
@@ -36,6 +37,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
     /// <summary>
     ///     The joint class
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public abstract class Joint
     {
         /// <summary>

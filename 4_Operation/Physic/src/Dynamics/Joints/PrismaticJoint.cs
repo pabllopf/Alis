@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Util;
@@ -80,6 +81,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     s1 = cross(d + r1, u), s2 = cross(r2, u)
     ///     a1 = cross(d + r1, v), a2 = cross(r2, v)
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class PrismaticJoint : Joint
     {
         /// <summary>

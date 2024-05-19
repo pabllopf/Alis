@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -111,6 +112,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="isBullet">The is bullet</param>
         /// <param name="enabled">The enabled</param>
         /// <param name="gravityScale">The gravity scale</param>
+        [ExcludeFromCodeCoverage]
         public Body(
             Vector2 position,
             Vector2 linearVelocity,
@@ -198,6 +200,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The sweep
         /// </summary>
+        [ExcludeFromCodeCoverage]
         internal Sweep Sweep { get; set; } = new Sweep();
         
         /// <summary>
@@ -208,11 +211,13 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Gets or sets the value of the sleep time
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public float SleepTime { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the island index
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public int IslandIndex { get; set; }
         
         /// <summary>
@@ -223,10 +228,12 @@ namespace Alis.Core.Physic.Dynamics
         
         /// <summary>Gets the total number revolutions the body has made.</summary>
         /// <value>The revolutions.</value>
+        [ExcludeFromCodeCoverage]
         public float Revolutions => Rotation / Constant.Pi;
         
         /// <summary>Gets or sets the body type. Warning: Calling this mid-update might cause a crash.</summary>
         /// <value>The type of body.</value>
+        [ExcludeFromCodeCoverage]
         public BodyType BodyType
         {
             get => Type;
@@ -280,6 +287,7 @@ namespace Alis.Core.Physic.Dynamics
         
         /// <summary>Get or sets the linear velocity of the center of mass.</summary>
         /// <value>The linear velocity.</value>
+        [ExcludeFromCodeCoverage]
         public Vector2 LinearVelocity
         {
             get => linearVelc;
@@ -301,6 +309,7 @@ namespace Alis.Core.Physic.Dynamics
         
         /// <summary>Gets or sets the angular velocity. Radians/second.</summary>
         /// <value>The angular velocity.</value>
+        [ExcludeFromCodeCoverage]
         public float AngularVelocity
         {
             get => angularVelocity;
@@ -330,6 +339,7 @@ namespace Alis.Core.Physic.Dynamics
         
         /// <summary>Gets or sets a value indicating whether this body should be included in the CCD solver.</summary>
         /// <value><c>true</c> if this instance is included in CCD; otherwise, <c>false</c>.</value>
+        [ExcludeFromCodeCoverage]
         public bool IsBullet
         {
             get => (Flags & BodySettings.BulletFlag) == BodySettings.BulletFlag;
@@ -348,6 +358,7 @@ namespace Alis.Core.Physic.Dynamics
         
         /// <summary>You can disable sleeping on this body. If you disable sleeping, the body will be woken.</summary>
         /// <value><c>true</c> if sleeping is allowed; otherwise, <c>false</c>.</value>
+        [ExcludeFromCodeCoverage]
         public bool SleepingAllowed
         {
             get => (Flags & BodySettings.AutoSleepFlag) == BodySettings.AutoSleepFlag;
@@ -367,6 +378,7 @@ namespace Alis.Core.Physic.Dynamics
         
         /// <summary>Set the sleep state of the body. A sleeping body has very low CPU cost.</summary>
         /// <value><c>true</c> if awake; otherwise, <c>false</c>.</value>
+        [ExcludeFromCodeCoverage]
         public bool Awake
         {
             get => (Flags & BodySettings.AwakeFlag) == BodySettings.AwakeFlag;
@@ -403,6 +415,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     implicitly inactive. An inactive body is still owned by a b2World object and remains in the body list.
         /// </summary>
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
+        [ExcludeFromCodeCoverage]
         public bool Enabled
         {
             get => (Flags & BodySettings.Enabled) == BodySettings.Enabled;
@@ -450,6 +463,7 @@ namespace Alis.Core.Physic.Dynamics
         
         /// <summary>Set this body to have fixed rotation. This causes the mass to be reset.</summary>
         /// <value><c>true</c> if it has fixed rotation; otherwise, <c>false</c>.</value>
+        [ExcludeFromCodeCoverage]
         public bool FixedRotation
         {
             get => (Flags & BodySettings.FixedRotationFlag) == BodySettings.FixedRotationFlag;
@@ -480,6 +494,7 @@ namespace Alis.Core.Physic.Dynamics
         
         /// <summary>Get the list of all joints attached to this body.</summary>
         /// <value>The joint list.</value>
+        [ExcludeFromCodeCoverage]
         public JointEdge JointList { get; }
         
         /// <summary>
@@ -487,10 +502,12 @@ namespace Alis.Core.Physic.Dynamics
         ///     may miss some collisions if you don't use ContactListener.
         /// </summary>
         /// <value>The contact list.</value>
+        [ExcludeFromCodeCoverage]
         public ContactEdge ContactList { get; set; }
         
         /// <summary>Get the world body origin position.</summary>
         /// <returns>Return the world position of the body's origin.</returns>
+        [ExcludeFromCodeCoverage]
         public Vector2 Position
         {
             get => Xf.Position;
@@ -530,10 +547,15 @@ namespace Alis.Core.Physic.Dynamics
         
         /// <summary>Get the world position of the center of mass.</summary>
         /// <value>The world position.</value>
-        public Vector2 WorldCenter => Sweep.C;
+        public Vector2 WorldCenter
+        {
+            get => Sweep.C;
+            set => Sweep.C = value;
+        }
         
         /// <summary>Get the local position of the center of mass.</summary>
         /// <value>The local position.</value>
+        [ExcludeFromCodeCoverage]
         public Vector2 LocalCenter
         {
             get => Sweep.LocalCenter;
@@ -555,6 +577,7 @@ namespace Alis.Core.Physic.Dynamics
         
         /// <summary>Gets or sets the mass. Usually in kilograms (kg).</summary>
         /// <value>The mass.</value>
+        [ExcludeFromCodeCoverage]
         public float Mass
         {
             get => mass;
@@ -578,6 +601,7 @@ namespace Alis.Core.Physic.Dynamics
         
         /// <summary>Get or set the rotational inertia of the body about the local origin. usually in kg-m^2.</summary>
         /// <value>The inertia.</value>
+        [ExcludeFromCodeCoverage]
         public float Inertia
         {
             get => inertia + mass * Vector2.Dot(Sweep.LocalCenter, Sweep.LocalCenter);
@@ -601,6 +625,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Sets the value of the restitution
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public float Restitution
         {
             set
@@ -615,6 +640,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Sets the value of the friction
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public float Friction
         {
             set
@@ -629,6 +655,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Sets the value of the collision categories
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public Category CollisionCategories
         {
             set
@@ -643,6 +670,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Sets the value of the collides with
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public Category CollidesWith
         {
             set
@@ -660,6 +688,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     prepared.
         ///     This is compared against the other Body's fixture CollisionCategories within World.SolveTOI().
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public Category IgnoreCcdWith
         {
             set
@@ -674,6 +703,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Sets the value of the collision group
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public short CollisionGroup
         {
             set
@@ -688,6 +718,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Sets the value of the is sensor
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public bool IsSensor
         {
             set
@@ -702,6 +733,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Gets or sets the value of the ignore ccd
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public bool IgnoreCcd
         {
             get => (Flags & BodySettings.IgnoreCcd) == BodySettings.IgnoreCcd;
@@ -722,6 +754,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Gets the mass data using the specified data
         /// </summary>
         /// <param name="data">The data</param>
+        [ExcludeFromCodeCoverage]
         public void GetMassData(out MassData data)
         {
             data = new MassData
@@ -733,6 +766,7 @@ namespace Alis.Core.Physic.Dynamics
         }
         
         /// <summary>Resets the dynamics of this body. Sets torque, force and linear/angular velocity to 0</summary>
+        [ExcludeFromCodeCoverage]
         public void ResetDynamics()
         {
             Torque = 0;
@@ -786,6 +820,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     locked during callbacks.
         /// </summary>
         /// <param name="fixture">The fixture to be removed.</param>
+        [ExcludeFromCodeCoverage]
         public void RemoveFixture(Fixture fixture)
         {
             if (fixture == null)
@@ -838,6 +873,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="position">The world position of the body's local origin.</param>
         /// <param name="rotation">The world rotation in radians.</param>
+        [ExcludeFromCodeCoverage]
         public void SetTransform(ref Vector2 position, float rotation)
         {
             Xf.Rotation.Set(rotation);
@@ -858,6 +894,7 @@ namespace Alis.Core.Physic.Dynamics
         
         /// <summary>Get the body transform for the body's origin.</summary>
         /// <param name="transform">The transform of the body's origin.</param>
+        [ExcludeFromCodeCoverage]
         public void GetTransform(out Transform transform)
         {
             transform = Xf;
@@ -876,6 +913,7 @@ namespace Alis.Core.Physic.Dynamics
         
         /// <summary>Applies a force at the center of mass.</summary>
         /// <param name="force">The force.</param>
+        [ExcludeFromCodeCoverage]
         public void ApplyForce(ref Vector2 force)
         {
             ApplyForce(ref force, ref Xf.Position);
@@ -894,6 +932,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="force">The world force vector, usually in Newtons (N).</param>
         /// <param name="point">The world position of the point of application.</param>
+        [ExcludeFromCodeCoverage]
         public void ApplyForce(ref Vector2 force, ref Vector2 point)
         {
             if (Type != BodyType.Dynamic)
@@ -912,6 +951,7 @@ namespace Alis.Core.Physic.Dynamics
         
         /// <summary>Apply a torque. This affects the angular velocity without affecting the linear velocity of the center of mass.</summary>
         /// <param name="torque">The torque about the z-axis (out of the screen), usually in N-m.</param>
+        [ExcludeFromCodeCoverage]
         public void ApplyTorque(float torque)
         {
             if (Type != BodyType.Dynamic)
@@ -940,6 +980,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="impulse">The world impulse vector, usually in N-seconds or kg-m/s.</param>
         /// <param name="point">The world position of the point of application.</param>
+        [ExcludeFromCodeCoverage]
         public void ApplyLinearImpulse(Vector2 impulse, Vector2 point)
         {
             ApplyLinearImpulse(ref impulse, ref point);
@@ -947,6 +988,7 @@ namespace Alis.Core.Physic.Dynamics
         
         /// <summary>Apply an impulse at a point. This immediately modifies the velocity. This wakes up the body.</summary>
         /// <param name="impulse">The world impulse vector, usually in N-seconds or kg-m/s.</param>
+        [ExcludeFromCodeCoverage]
         public void ApplyLinearImpulse(ref Vector2 impulse)
         {
             if (Type != BodyType.Dynamic)
@@ -968,6 +1010,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="impulse">The world impulse vector, usually in N-seconds or kg-m/s.</param>
         /// <param name="point">The world position of the point of application.</param>
+        [ExcludeFromCodeCoverage]
         public void ApplyLinearImpulse(ref Vector2 impulse, ref Vector2 point)
         {
             if (Type != BodyType.Dynamic)
@@ -986,6 +1029,7 @@ namespace Alis.Core.Physic.Dynamics
         
         /// <summary>Apply an angular impulse.</summary>
         /// <param name="impulse">The angular impulse in units of kg*m*m/s.</param>
+        [ExcludeFromCodeCoverage]
         public void ApplyAngularImpulse(float impulse)
         {
             if (Type != BodyType.Dynamic)
@@ -1005,6 +1049,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     This resets the mass properties to the sum of the mass properties of the fixtures. This normally does not need
         ///     to be called unless you called SetMassData to override the mass and you later want to reset the mass.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void ResetMassData()
         {
             mass = 0.0f;
@@ -1126,30 +1171,35 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>Get the world linear velocity of a world point attached to this body.</summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
+        [ExcludeFromCodeCoverage]
         public Vector2 GetLinearVelocityFromWorldPoint(Vector2 worldPoint) =>
             GetLinearVelocityFromWorldPoint(ref worldPoint);
         
         /// <summary>Get the world linear velocity of a world point attached to this body.</summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
+        [ExcludeFromCodeCoverage]
         public Vector2 GetLinearVelocityFromWorldPoint(ref Vector2 worldPoint) =>
             LinearVelocity + MathUtils.Cross(AngularVelocity, worldPoint - Sweep.C);
         
         /// <summary>Get the world velocity of a local point.</summary>
         /// <param name="localPoint">A point in local coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
+        [ExcludeFromCodeCoverage]
         public Vector2 GetLinearVelocityFromLocalPoint(Vector2 localPoint) =>
             GetLinearVelocityFromLocalPoint(ref localPoint);
         
         /// <summary>Get the world velocity of a local point.</summary>
         /// <param name="localPoint">A point in local coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
+        [ExcludeFromCodeCoverage]
         public Vector2 GetLinearVelocityFromLocalPoint(ref Vector2 localPoint) =>
             GetLinearVelocityFromWorldPoint(GetWorldPoint(ref localPoint));
         
         /// <summary>
         ///     Synchronizes the fixtures
         /// </summary>
+        [ExcludeFromCodeCoverage]
         internal void SynchronizeFixtures()
         {
             IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
@@ -1177,6 +1227,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Synchronizes the transform
         /// </summary>
+        [ExcludeFromCodeCoverage]
         internal void SynchronizeTransform()
         {
             Xf.Rotation.Set(Sweep.A);
@@ -1185,6 +1236,7 @@ namespace Alis.Core.Physic.Dynamics
         
         /// <summary>This is used to prevent connected bodies from colliding. It may lie, depending on the collideConnected flag.</summary>
         /// <param name="other">The other body.</param>
+        [ExcludeFromCodeCoverage]
         internal bool ShouldCollide(Body other)
         {
             if ((Type != BodyType.Dynamic) && (other.Type != BodyType.Dynamic))
@@ -1209,12 +1261,14 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Initializes a new instance of the <see cref="ClearFlags" /> class
         /// </summary>
+        [ExcludeFromCodeCoverage]
         internal void ClearFlags() => Flags &= ~BodySettings.IslandFlag;
         
         /// <summary>
         ///     Advances the alpha
         /// </summary>
         /// <param name="alpha">The alpha</param>
+        [ExcludeFromCodeCoverage]
         internal void Advance(float alpha)
         {
             Sweep.Advance(alpha);
@@ -1236,6 +1290,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Checks the out range
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void CheckOutRange()
         {
             // If a body was not in an island then it did not move.

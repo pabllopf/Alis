@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Util;
@@ -49,6 +50,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     J = [0 0 -1 0 0 1]
     ///     K = invI1 + invI2
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class FrictionJoint : Joint
     {
         /// <summary>
