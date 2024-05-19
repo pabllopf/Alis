@@ -434,5 +434,93 @@ namespace Alis.Core.Physic.Test
             // Assert
             Assert.NotNull(exception);
         }
+        
+        /// <summary>
+        /// Tests that update breakable bodies with empty list no exception thrown
+        /// </summary>
+        [Fact]
+        public void UpdateBreakableBodies_WithEmptyList_NoExceptionThrown()
+        {
+            World world = new World(new Vector2(0, -9.8f));
+            world.UpdateBreakableBodies(); // No exception should be thrown
+        }
+        
+        /// <summary>
+        /// Tests that update breakable bodies with non empty list calls update on each body
+        /// </summary>
+        [Fact]
+        public void UpdateBreakableBodies_WithNonEmptyList_CallsUpdateOnEachBody()
+        {
+            World world = new World(new Vector2(0, -9.8f));
+            MyBreakableBody breakableBodyMock1 = new MyBreakableBody(world, new List<Vertices>(), 1.0f, new Vector2(), 0.0f);
+            
+            MyBreakableBody breakableBodyMock2 = new MyBreakableBody(world, new List<Vertices>(), 1.0f, new Vector2(), 0.0f);
+            
+            world.AddBreakableBody(breakableBodyMock1);
+            world.AddBreakableBody(breakableBodyMock2);
+            
+            world.UpdateBreakableBodies();
+        }
+        
+        /// <summary>
+        /// Tests that set alpha to zero for fast moving bodies with empty list no change
+        /// </summary>
+        [Fact]
+        public void SetAlphaToZeroForFastMovingBodies_WithEmptyList_NoChange()
+        {
+            World world = new World(new Vector2(0, -9.8f));
+            world.SetAlphaToZeroForFastMovingBodies();
+            Assert.All(world.Bodies, body => Assert.Equal(-9.8f, body.GravityScale));
+        }
+        
+        /// <summary>
+        /// Tests that set alpha to zero for fast moving bodies with non empty list all bodies alpha set to zero
+        /// </summary>
+        [Fact]
+        public void SetAlphaToZeroForFastMovingBodies_WithNonEmptyList_AllBodiesAlphaSetToZero()
+        {
+            World world = new World(new Vector2(0, -9.8f));
+            Body body1 = new Body(
+                new Vector2(0, 0),
+                new Vector2(0, 0),
+                BodyType.Dynamic
+            );
+            Body body2 = new Body(
+                new Vector2(0, 0),
+                new Vector2(0, 0),
+                BodyType.Dynamic
+            );
+            world.Bodies.Add(body1);
+            world.Bodies.Add(body2);
+            
+            world.SetAlphaToZeroForFastMovingBodies();
+            
+            Assert.All(world.Bodies, body => Assert.Equal(1, body.GravityScale));
+        }
+        
+        /// <summary>
+        /// Tests that clear forces all bodies forces set to zero
+        /// </summary>
+        [Fact]
+        public void ClearForces_AllBodiesForcesSetToZero()
+        {
+            World world = new World(new Vector2(0, -9.8f));
+            Body body1 = new Body(
+                new Vector2(0, 0),
+                new Vector2(1, 1), // Non-zero force
+                BodyType.Dynamic
+            );
+            Body body2 = new Body(
+                new Vector2(0, 0),
+                new Vector2(2, 2), // Non-zero force
+                BodyType.Dynamic
+            );
+            world.Bodies.Add(body1);
+            world.Bodies.Add(body2);
+            
+            world.ClearForces();
+            
+            Assert.All(world.Bodies, body => Assert.Equal(new Vector2(0, 0), body.Force));
+        }
     }
 }
