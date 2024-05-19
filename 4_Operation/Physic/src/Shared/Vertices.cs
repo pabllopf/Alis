@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
@@ -73,7 +74,7 @@ namespace Alis.Core.Physic.Shared
         /// <summary>
         ///     Gets or sets the value of the attached to body
         /// </summary>
-        private bool AttachedToBody { get; } = true;
+        internal bool AttachedToBody { get; } = true;
         
         /// <summary>
         ///     You can add holes to this collection. It will get respected by some of the triangulation algorithm, but
@@ -91,7 +92,7 @@ namespace Alis.Core.Physic.Shared
         
         /// <summary>Gets the previous index. Used for iterating all the edges with wrap-around.</summary>
         /// <param name="index">The current index</param>
-        private int PreviousIndex(int index) => index - 1 < 0 ? Count - 1 : index - 1;
+        internal int PreviousIndex(int index) => index - 1 < 0 ? Count - 1 : index - 1;
         
         /// <summary>Gets the previous vertex. Used for iterating all the edges with wrap-around.</summary>
         /// <param name="index">The current index</param>
@@ -99,7 +100,7 @@ namespace Alis.Core.Physic.Shared
         
         /// <summary>Gets the signed area. If the area is less than 0, it indicates that the polygon is clockwise winded.</summary>
         /// <returns>The signed area</returns>
-        private float GetSignedArea()
+        internal float GetSignedArea()
         {
             //The simplest polygon which can exist in the Euclidean plane has 3 sides.
             if (Count < 3)
@@ -127,14 +128,17 @@ namespace Alis.Core.Physic.Shared
         
         /// <summary>Gets the area.</summary>
         /// <returns></returns>
-        private float GetArea()
+        internal float GetArea()
         {
             float area = GetSignedArea();
             return area < 0 ? -area : area;
         }
         
-        /// <summary>Gets the centroid.</summary>
-        /// <returns></returns>
+        
+        /// <summary>
+        /// Gets the centroid
+        /// </summary>
+        /// <returns>The </returns>
         public Vector2 GetCentroid()
         {
             //The simplest polygon which can exist in the Euclidean plane has 3 sides.
@@ -203,19 +207,9 @@ namespace Alis.Core.Physic.Shared
         }
         
         /// <summary>Translates the vertices with the specified vector.</summary>
-        /// <param name="value">The value.</param>
-        public void Translate(Vector2 value)
-        {
-            Translate(ref value);
-        }
-        
-        /// <summary>Translates the vertices with the specified vector.</summary>
         /// <param name="value">The vector.</param>
         public void Translate(ref Vector2 value)
         {
-            Debug.Assert(!AttachedToBody,
-                "Translating vertices that are used by a Body can result in unstable behavior. Use Body.Position instead.");
-            
             for (int i = 0; i < Count; i++)
             {
                 this[i] = Vector2.Add(this[i], value);
@@ -239,10 +233,9 @@ namespace Alis.Core.Physic.Shared
         
         /// <summary>Scale the vertices with the specified vector.</summary>
         /// <param name="value">The Value.</param>
-        private void Scale(ref Vector2 value)
+        [ExcludeFromCodeCoverage]
+        internal void Scale(ref Vector2 value)
         {
-            Debug.Assert(!AttachedToBody, "Scaling vertices that are used by a Body can result in unstable behavior.");
-            
             for (int i = 0; i < Count; i++)
             {
                 this[i] = Vector2.Multiply(this[i], value);
@@ -264,8 +257,6 @@ namespace Alis.Core.Physic.Shared
         /// <param name="value">The amount to rotate by in radians.</param>
         public void Rotate(float value)
         {
-            Debug.Assert(!AttachedToBody, "Rotating vertices that are used by a Body can result in unstable behavior.");
-            
             float num1 = (float) Math.Cos(value);
             float num2 = (float) Math.Sin(value);
             
@@ -291,44 +282,54 @@ namespace Alis.Core.Physic.Shared
         /// <returns><c>true</c> if it is convex; otherwise, <c>false</c>.</returns>
         public bool IsConvex()
         {
-            //The simplest polygon which can exist in the Euclidean plane has 3 sides.
             if (Count < 3)
             {
                 return false;
             }
             
-            //Triangles are always convex
             if (Count == 3)
             {
                 return true;
             }
             
-            // Checks the polygon is convex and the interior is to the left of each edge.
             for (int i = 0; i < Count; ++i)
             {
-                int next = i + 1 < Count ? i + 1 : 0;
-                Vector2 edge = this[next] - this[i];
-                
-                for (int j = 0; j < Count; ++j)
+                if (IsAnyEdgeIntersecting(i))
                 {
-                    // Don't check vertices on the current edge.
-                    if (j == i || j == next)
-                    {
-                        continue;
-                    }
-                    
-                    Vector2 r = this[j] - this[i];
-                    
-                    float s = edge.X * r.Y - edge.Y * r.X;
-                    
-                    if (s <= 0.0f)
-                    {
-                        return false;
-                    }
+                    return false;
                 }
             }
             
             return true;
+        }
+        
+        /// <summary>
+        /// Describes whether this instance is any edge intersecting
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <returns>The bool</returns>
+        internal bool IsAnyEdgeIntersecting(int i)
+        {
+            int next = i + 1 < Count ? i + 1 : 0;
+            Vector2 edge = this[next] - this[i];
+            
+            for (int j = 0; j < Count; ++j)
+            {
+                if (j == i || j == next)
+                {
+                    continue;
+                }
+                
+                Vector2 r = this[j] - this[i];
+                float s = edge.X * r.Y - edge.Y * r.X;
+                
+                if (s <= 0.0f)
+                {
+                    return true;
+                }
+            }
+            
+            return false;
         }
         
         /// <summary>
@@ -394,40 +395,53 @@ namespace Alis.Core.Physic.Shared
         ///     orientation, minimum angle, and volume. From Eric Jordan's convex decomposition library
         /// </summary>
         /// <returns>PolygonError.NoError if there were no error.</returns>
+        [ExcludeFromCodeCoverage]
         public PolygonError CheckPolygon()
         {
             if (!IsSimple())
-            {
                 return PolygonError.NotSimple;
-            }
             
-            if (GetArea() <= float.Epsilon)
-            {
+            if (IsAreaTooSmall())
                 return PolygonError.AreaTooSmall;
-            }
             
             if (!IsConvex())
-            {
                 return PolygonError.NotConvex;
-            }
             
-            //Check if the sides are of adequate length.
+            if (HasSideTooSmall())
+                return PolygonError.SideTooSmall;
+            
+            if (!IsCounterClockWise())
+                return PolygonError.NotCounterClockWise;
+            
+            return PolygonError.NoError;
+        }
+        
+        /// <summary>
+        /// Describes whether this instance is area too small
+        /// </summary>
+        /// <returns>The bool</returns>
+        internal bool IsAreaTooSmall()
+        {
+            return GetArea() <= float.Epsilon;
+        }
+        
+        /// <summary>
+        /// Describes whether this instance has side too small
+        /// </summary>
+        /// <returns>The bool</returns>
+        internal bool HasSideTooSmall()
+        {
             for (int i = 0; i < Count; ++i)
             {
                 int next = i + 1 < Count ? i + 1 : 0;
                 Vector2 edge = this[next] - this[i];
                 if (edge.LengthSquared() <= float.Epsilon * float.Epsilon)
                 {
-                    return PolygonError.SideTooSmall;
+                    return true;
                 }
             }
             
-            if (!IsCounterClockWise())
-            {
-                return PolygonError.NotCounterClockWise;
-            }
-            
-            return PolygonError.NoError;
+            return false;
         }
         
         /// <summary>Projects to axis.</summary>
@@ -477,7 +491,7 @@ namespace Alis.Core.Physic.Shared
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The winding number</returns>
-        private int CalculateWindingNumber(Vector2 point)
+        internal int CalculateWindingNumber(Vector2 point)
         {
             int windingNumber = 0;
             
@@ -507,7 +521,7 @@ namespace Alis.Core.Physic.Shared
         /// <param name="p1">The </param>
         /// <param name="p2">The </param>
         /// <returns>The bool</returns>
-        private bool IsPointOnEdge(Vector2 point, Vector2 p1, Vector2 p2)
+        internal bool IsPointOnEdge(Vector2 point, Vector2 p1, Vector2 p2)
         {
             Vector2 edge = p2 - p1;
             float area = MathUtils.Area(ref p1, ref p2, ref point);
@@ -521,7 +535,7 @@ namespace Alis.Core.Physic.Shared
         /// <param name="p1">The </param>
         /// <param name="p2">The </param>
         /// <returns>The bool</returns>
-        private bool IsEdgeIntersectingRay(Vector2 point, Vector2 p1, Vector2 p2)
+        internal bool IsEdgeIntersectingRay(Vector2 point, Vector2 p1, Vector2 p2)
         {
             if (p1.Y <= point.Y)
             {
@@ -538,7 +552,7 @@ namespace Alis.Core.Physic.Shared
         /// <param name="p1">The </param>
         /// <param name="p2">The </param>
         /// <returns>The int</returns>
-        private int DetermineWindingDirection(Vector2 point, Vector2 p1, Vector2 p2)
+        internal int DetermineWindingDirection(Vector2 point, Vector2 p1, Vector2 p2)
         {
             if (p1.Y <= point.Y)
             {
@@ -577,6 +591,7 @@ namespace Alis.Core.Physic.Shared
         
         /// <summary>Transforms the polygon using the defined matrix.</summary>
         /// <param name="transform">The matrix to use as transformation.</param>
+        [ExcludeFromCodeCoverage]
         public void Transform(ref Matrix4X4 transform)
         {
             // Transform main polygon
@@ -606,7 +621,7 @@ namespace Alis.Core.Physic.Shared
         /// <param name="sourceArray">The source array</param>
         /// <param name="matrix">The matrix</param>
         /// <param name="destinationArray">The destination array</param>
-        private static void Transform(
+        internal static void Transform(
             Vector2[] sourceArray,
             ref Matrix4X4 matrix,
             Vector2[] destinationArray)
@@ -627,10 +642,44 @@ namespace Alis.Core.Physic.Shared
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException">Destination array length is lesser than destinationIndex + length</exception>
         /// <exception cref="ArgumentException">Source array length is lesser than sourceIndex + length</exception>
-        private static void Transform(
+        internal static void Transform(
             Vector2[] sourceArray,
             int sourceIndex,
             ref Matrix4X4 matrix,
+            Vector2[] destinationArray,
+            int destinationIndex,
+            int length)
+        {
+            ValidateArrays(sourceArray, sourceIndex, destinationArray, destinationIndex, length);
+            
+            for (int x = 0; x < length; x++)
+            {
+                Vector2 position = sourceArray[sourceIndex + x];
+                Vector2 destination = new Vector2(
+                    position.X * matrix.M11 + position.Y * matrix.M21 + matrix.M41,
+                    position.X * matrix.M12 + position.Y * matrix.M22 + matrix.M42
+                );
+                
+                destinationArray[destinationIndex + x] = destination;
+            }
+        }
+        
+        /// <summary>
+        /// Validates the arrays using the specified source array
+        /// </summary>
+        /// <param name="sourceArray">The source array</param>
+        /// <param name="sourceIndex">The source index</param>
+        /// <param name="destinationArray">The destination array</param>
+        /// <param name="destinationIndex">The destination index</param>
+        /// <param name="length">The length</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException">Destination array length is lesser than destinationIndex + length</exception>
+        /// <exception cref="ArgumentException">Source array length is lesser than sourceIndex + length</exception>
+        [ExcludeFromCodeCoverage]
+        internal static void ValidateArrays(
+            Vector2[] sourceArray,
+            int sourceIndex,
             Vector2[] destinationArray,
             int destinationIndex,
             int length)
@@ -653,17 +702,6 @@ namespace Alis.Core.Physic.Shared
             if (destinationArray.Length < destinationIndex + length)
             {
                 throw new ArgumentException("Destination array length is lesser than destinationIndex + length");
-            }
-            
-            for (int x = 0; x < length; x++)
-            {
-                Vector2 position = sourceArray[sourceIndex + x];
-                Vector2 destination = new Vector2(
-                    position.X * matrix.M11 + position.Y * matrix.M21 + matrix.M41,
-                    position.X * matrix.M12 + position.Y * matrix.M22 + matrix.M42
-                );
-                
-                destinationArray[destinationIndex + x] = destination;
             }
         }
         
@@ -688,25 +726,6 @@ namespace Alis.Core.Physic.Shared
             {
                 this[i] = new Vector2(this[i].X, -1 * this[i].Y);
             }
-        }
-        
-        /// <summary>
-        ///     Returns the string
-        /// </summary>
-        /// <returns>The string</returns>
-        public override string ToString()
-        {
-            StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < Count; i++)
-            {
-                builder.Append(this[i]);
-                if (i < Count - 1)
-                {
-                    builder.Append(" ");
-                }
-            }
-            
-            return builder.ToString();
         }
     }
 }
