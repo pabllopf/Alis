@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
@@ -76,6 +77,38 @@ namespace Alis.Core.Physic.Test.Collision
             
             // Assert the result
             Assert.True(result); // Adjust this based on the expected result
+        }
+        
+        /// <summary>
+        /// Tests that test point polygon returns true when point is inside polygon
+        /// </summary>
+        [Fact]
+        public void TestPointPolygon_ReturnsTrue_WhenPointIsInsidePolygon()
+        {
+            Vertices vertices = new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)});
+            Vertices normals = new Vertices(new List<Vector2> {new Vector2(0, 1), new Vector2(-1, 0), new Vector2(0, -1)});
+            Vector2 point = new Vector2(0.5f, 0.5f);
+            Transform transform = new Transform();
+            
+            bool result = TestPointHelper.TestPointPolygon(vertices, normals, ref point, ref transform);
+            
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that test point polygon returns false when point is outside polygon
+        /// </summary>
+        [Fact]
+        public void TestPointPolygon_ReturnsFalse_WhenPointIsOutsidePolygon()
+        {
+            Vertices vertices = new Vertices(new List<Vector2> {new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1)});
+            Vertices normals = new Vertices(new List<Vector2> {new Vector2(0, 1), new Vector2(-1, 0), new Vector2(0, -1)});
+            Vector2 point = new Vector2(1.5f, 1.5f);
+            Transform transform = new Transform();
+            
+            bool result = TestPointHelper.TestPointPolygon(vertices, normals, ref point, ref transform);
+            
+            Assert.False(result);
         }
     }
 }
