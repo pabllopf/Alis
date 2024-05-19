@@ -36,6 +36,7 @@ namespace Alis.Core.Aspect.Data.Resource
     /// <summary>
     ///     The example class
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class AssetManager
     {
         /// <summary>

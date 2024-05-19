@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Alis.Core.Aspect.Memory.Attributes;
 
@@ -37,6 +38,7 @@ namespace Alis.Core.Aspect.Memory
     /// <summary>
     ///     The validator class
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class Validator
     {
         /// <summary>
