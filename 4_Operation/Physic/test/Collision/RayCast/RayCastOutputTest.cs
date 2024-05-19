@@ -27,8 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Filtering;
+using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Dynamics;
@@ -161,6 +163,30 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
             contact.ResetRestitutionThreshold();
             
             Assert.Equal(0, contact.RestitutionThreshold);
+        }
+        
+        /// <summary>
+        /// Tests that ray cast output fraction property set and get
+        /// </summary>
+        [Fact]
+        public void RayCastOutput_FractionProperty_SetAndGet()
+        {
+            RayCastOutput output = new RayCastOutput();
+            output.Fraction = 0.5f;
+            
+            Assert.Equal(0.5f, output.Fraction);
+        }
+        
+        /// <summary>
+        /// Tests that ray cast output normal property set and get
+        /// </summary>
+        [Fact]
+        public void RayCastOutput_NormalProperty_SetAndGet()
+        {
+            RayCastOutput output = new RayCastOutput();
+            output.Normal = new Vector2(1, 0);
+            
+            Assert.Equal(new Vector2(1, 0), output.Normal);
         }
     }
 }
