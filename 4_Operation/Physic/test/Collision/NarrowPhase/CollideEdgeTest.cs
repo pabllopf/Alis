@@ -27,6 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collision.NarrowPhase;
+using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Shared;
+using Xunit;
+
 namespace Alis.Core.Physic.Test.Collision.NarrowPhase
 {
     /// <summary>
@@ -34,5 +42,79 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
     /// </summary>
     public class CollideEdgeTest
     {
+        /// <summary>
+        /// Tests that collide edge and circle should collide correctly
+        /// </summary>
+        [Fact]
+        public void CollideEdgeAndCircle_ShouldCollideCorrectly()
+        {
+            // Arrange
+            Manifold manifold = new Manifold();
+            EdgeShape edgeA = new EdgeShape();
+            Transform transformA = new Transform();
+            CircleShape circleB = new CircleShape(
+                1, 1);
+            Transform transformB = new Transform();
+            
+            // Act
+            Assert.Throws<NullReferenceException>(() => CollideEdge.CollideEdgeAndCircle(ref manifold, edgeA, ref transformA, circleB, ref transformB));
+            
+            // Assert
+            
+        }
+        
+        /// <summary>
+        /// Tests that collide edge and polygon should collide correctly
+        /// </summary>
+        [Fact]
+        public void CollideEdgeAndPolygon_ShouldCollideCorrectly()
+        {
+            // Arrange
+            Manifold manifold = new Manifold();
+            EdgeShape edgeA = new EdgeShape();
+            Transform transformA = new Transform();
+            PolygonShape polygonB = new PolygonShape(
+                new Vertices()
+                {
+                    new Vector2(0, 0),
+                    new Vector2(1, 0),
+                    new Vector2(1, 1),
+                    new Vector2(0, 1)
+                }, 4);
+            Transform transformB = new Transform();
+            
+            // Act
+            CollideEdge.CollideEdgeAndPolygon(ref manifold, edgeA, ref transformA, polygonB, ref transformB);
+            
+            // Assert
+            
+        }
+        
+        /// <summary>
+        /// Tests that collide edge and polygon should collide correctly v 2
+        /// </summary>
+        [Fact]
+        public void CollideEdgeAndPolygon_ShouldCollideCorrectly_v2()
+        {
+            // Arrange
+            Manifold manifold = new Manifold();
+            EdgeShape edgeA = new EdgeShape();
+            Transform transformA = new Transform();
+            PolygonShape polygonB = new PolygonShape(
+                new Vertices()
+                {
+                    new Vector2(0, 0),
+                    new Vector2(1, 0),
+                    new Vector2(1, 1),
+                    new Vector2(0, 1)
+                }, 4);
+            Transform transformB = new Transform();
+            
+            // Act
+            CollideEdge.CollideEdgeAndPolygon(ref manifold, edgeA, ref transformA, polygonB, ref transformB);
+            
+            // Assert
+            // Replace this with actual assertions
+        }
     }
 }
