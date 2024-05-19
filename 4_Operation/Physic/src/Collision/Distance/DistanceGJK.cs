@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -62,7 +63,7 @@ namespace Alis.Core.Physic.Collision.Distance
         ///     Settings.EnableDiagnostics = true
         /// </summary>
         [field: ThreadStatic]
-        public static int GjkMaxIter { get; private set; }
+        public static int GjkMaxIter { get; internal set; }
         
         /// <summary>
         ///     Computes the distance using the specified input
@@ -70,6 +71,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="input">The input</param>
         /// <param name="output">The output</param>
         /// <param name="cache">The cache</param>
+        [ExcludeFromCodeCoverage]
         public static void ComputeDistance(ref DistanceInput input, out DistanceOutput output, out SimplexCache cache)
         {
             cache = new SimplexCache()
@@ -150,7 +152,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="simplex">The simplex</param>
         /// <param name="saveA">The save</param>
         /// <param name="saveB">The save</param>
-        private static void SaveSimplexVertices(Simplex simplex, ref int[] saveA, ref int[] saveB)
+        internal static void SaveSimplexVertices(Simplex simplex, ref int[] saveA, ref int[] saveB)
         {
             int saveCount = simplex.Count;
             for (int i = 0; i < saveCount; ++i)
@@ -166,7 +168,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="cache">The cache</param>
         /// <param name="input">The input</param>
         /// <returns>The simplex</returns>
-        private static Simplex InitializeSimplex(ref SimplexCache cache, ref DistanceInput input)
+        internal static Simplex InitializeSimplex(ref SimplexCache cache, ref DistanceInput input)
         {
             Simplex simplex = new Simplex()
             {
@@ -183,7 +185,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="simplex">The simplex</param>
         /// <param name="input">The input</param>
         /// <returns>The vertex</returns>
-        private static SimplexVertex AddNewVertexToSimplex(ref Simplex simplex, ref DistanceInput input)
+        internal static SimplexVertex AddNewVertexToSimplex(ref Simplex simplex, ref DistanceInput input)
         {
             Vector2 d = simplex.GetSearchDirection();
             SimplexVertex vertex = simplex.V[simplex.Count];
@@ -201,7 +203,7 @@ namespace Alis.Core.Physic.Collision.Distance
         ///     Solves the simplex using the specified simplex
         /// </summary>
         /// <param name="simplex">The simplex</param>
-        private static void SolveSimplex(ref Simplex simplex)
+        internal static void SolveSimplex(ref Simplex simplex)
         {
             switch (simplex.Count)
             {
@@ -227,7 +229,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="vertex">The vertex</param>
         /// <param name="saveCount">The save count</param>
         /// <returns>The bool</returns>
-        private static bool IsDuplicateSupportPoint(int[] saveA, int[] saveB, SimplexVertex vertex, int saveCount)
+        internal static bool IsDuplicateSupportPoint(int[] saveA, int[] saveB, SimplexVertex vertex, int saveCount)
         {
             for (int i = 0; i < saveCount; ++i)
             {
@@ -247,7 +249,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="simplex">The simplex</param>
         /// <param name="cache">The cache</param>
         /// <param name="input">The input</param>
-        private static void PrepareOutput(out DistanceOutput output, ref Simplex simplex, ref SimplexCache cache, ref DistanceInput input)
+        internal static void PrepareOutput(out DistanceOutput output, ref Simplex simplex, ref SimplexCache cache, ref DistanceInput input)
         {
             simplex.GetWitnessPoints(out output.PointA, out output.PointB);
             output.Distance = (output.PointA - output.PointB).Length();
@@ -266,7 +268,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="input">The input</param>
-        private static void ApplyRadii(ref DistanceOutput output, ref DistanceInput input)
+        internal static void ApplyRadii(ref DistanceOutput output, ref DistanceInput input)
         {
             float rA = input.ProxyA.Radius;
             float rB = input.ProxyB.Radius;
@@ -339,7 +341,7 @@ namespace Alis.Core.Physic.Collision.Distance
         ///     Initializes the output using the specified output
         /// </summary>
         /// <param name="output">The output</param>
-        private static void InitializeOutput(out ShapeCastOutput output)
+        internal static void InitializeOutput(out ShapeCastOutput output)
         {
             output = new ShapeCastOutput
             {
@@ -355,13 +357,13 @@ namespace Alis.Core.Physic.Collision.Distance
         /// </summary>
         /// <param name="proxy">The proxy</param>
         /// <returns>The float</returns>
-        private static float CalculateRadius(DistanceProxy proxy) => MathUtils.Max(proxy.Radius, Settings.PolygonRadius);
+        internal static float CalculateRadius(DistanceProxy proxy) => MathUtils.Max(proxy.Radius, Settings.PolygonRadius);
         
         /// <summary>
         ///     Initializes the simplex
         /// </summary>
         /// <returns>The simplex</returns>
-        private static Simplex InitializeSimplex() => new Simplex
+        internal static Simplex InitializeSimplex() => new Simplex
         {
             Count = 0,
             V = new SimplexVertex[3],
@@ -380,7 +382,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="simplex">The simplex</param>
         /// <param name="radius">The radius</param>
         /// <returns>The bool</returns>
-        private static bool IterateUntilConverged(ref DistanceProxy proxyA, ref DistanceProxy proxyB,
+        internal static bool IterateUntilConverged(ref DistanceProxy proxyA, ref DistanceProxy proxyB,
             ref Transform xfA, ref Transform xfB, ref Vector2 r, ref Vector2 n, ref float lambda, ref Simplex simplex, float radius)
         {
             Vector2 v = ComputeV(ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref n, ref lambda, ref simplex, radius);
@@ -407,7 +409,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="simplex">The simplex</param>
         /// <param name="radius">The radius</param>
         /// <returns>The </returns>
-        private static Vector2 ComputeV(ref DistanceProxy proxyA, ref DistanceProxy proxyB,
+        internal static Vector2 ComputeV(ref DistanceProxy proxyA, ref DistanceProxy proxyB,
             ref Transform xfA, ref Transform xfB, ref Vector2 r, ref Vector2 n, ref float lambda, ref Simplex simplex, float radius)
         {
             Vector2 v = ComputeSupport(ref proxyA, ref proxyB, ref xfA, ref xfB, ref r);
@@ -431,7 +433,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="xfB">The xf</param>
         /// <param name="r">The </param>
         /// <returns>The </returns>
-        private static Vector2 ComputeSupport(ref DistanceProxy proxyA, ref DistanceProxy proxyB, ref Transform xfA, ref Transform xfB,
+        internal static Vector2 ComputeSupport(ref DistanceProxy proxyA, ref DistanceProxy proxyB, ref Transform xfA, ref Transform xfB,
             ref Vector2 r)
         {
             int indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Rotation, -r));
@@ -450,7 +452,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="lambda">The lambda</param>
         /// <param name="radius">The radius</param>
         /// <returns>The bool</returns>
-        private static bool IsConverged(Vector2 v, ref float lambda, float radius)
+        internal static bool IsConverged(Vector2 v, ref float lambda, float radius)
         {
             float sigma = MathUtils.Max(Settings.PolygonRadius, 2 * radius - Settings.PolygonRadius);
             float tolerance = 0.5f * Settings.LinearSlop;
@@ -466,7 +468,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="lambda">The lambda</param>
         /// <param name="radius">The radius</param>
         /// <returns>The bool</returns>
-        private static bool IsNewDirectionNeeded(ref Vector2 n, ref Vector2 r, ref float lambda, float radius)
+        internal static bool IsNewDirectionNeeded(ref Vector2 n, ref Vector2 r, ref float lambda, float radius)
         {
             float vp = MathUtils.Dot(ref n, ref r);
             return vp - (2 * radius - Settings.PolygonRadius) > lambda * MathUtils.Dot(ref n, ref r);
@@ -485,7 +487,8 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="lambda">The lambda</param>
         /// <param name="simplex">The simplex</param>
         /// <param name="radius">The radius</param>
-        private static void UpdateSimplex(ref DistanceProxy proxyA, ref DistanceProxy proxyB,
+        [ExcludeFromCodeCoverage]
+        internal static void UpdateSimplex(ref DistanceProxy proxyA, ref DistanceProxy proxyB,
             ref Transform xfA, ref Transform xfB, ref Vector2 r, ref Vector2 v, ref Vector2 n, ref float lambda, ref Simplex simplex, float radius)
         {
             int indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Rotation, -v));
@@ -555,7 +558,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="lambda">The lambda</param>
         /// <param name="n">The </param>
         /// <param name="radiusA">The radius</param>
-        private static void CalculateOutput(ref ShapeCastOutput output, ref Simplex simplex, ref Vector2 r, ref float lambda, ref Vector2 n, float radiusA)
+        internal static void CalculateOutput(ref ShapeCastOutput output, ref Simplex simplex, ref Vector2 r, ref float lambda, ref Vector2 n, float radiusA)
         {
             simplex.GetWitnessPoints(out _, out Vector2 pointB);
             

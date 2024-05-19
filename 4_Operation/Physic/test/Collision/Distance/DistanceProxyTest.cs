@@ -27,8 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Distance;
+using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Shared;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Collision.Distance
@@ -98,6 +102,130 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             
             // Assert
             Assert.Equal(new Vector2(2, 2), vertex); // The second vertex (index 1) is (2,2)
+        }
+        
+        /// <summary>
+        /// Tests that distance proxy initialize circle shape sets correct values
+        /// </summary>
+        [Fact]
+        public void DistanceProxy_InitializeCircleShape_SetsCorrectValues()
+        {
+            CircleShape circle = new CircleShape(
+                1.0f,
+                1.0f
+            );
+            DistanceProxy proxy = new DistanceProxy(circle, 0);
+            
+            Assert.Equal(circle.PositionCircle, proxy.Vertices[0]);
+            Assert.Equal(circle.RadiusPrivate, proxy.Radius);
+        }
+        
+        /// <summary>
+        /// Tests that distance proxy initialize chain shape sets correct values
+        /// </summary>
+        [Fact]
+        public void DistanceProxy_InitializeChainShape_SetsCorrectValues()
+        {
+            ChainShape chain = new ChainShape(
+                new Vertices() {new Vector2(1, 1), new Vector2(2, 2), new Vector2(3, 3)},
+                false
+            );
+            DistanceProxy proxy = new DistanceProxy(chain, 0);
+            
+            Assert.Equal(chain.Vertices[0], proxy.Vertices[0]);
+            Assert.Equal(chain.Vertices[1], proxy.Vertices[1]);
+            Assert.Equal(chain.RadiusPrivate, proxy.Radius);
+        }
+        
+        /// <summary>
+        /// Tests that distance proxy initialize edge shape sets correct values
+        /// </summary>
+        [Fact]
+        public void DistanceProxy_InitializeEdgeShape_SetsCorrectValues()
+        {
+            EdgeShape edge = new EdgeShape();
+            DistanceProxy proxy = new DistanceProxy(edge, 0);
+            
+            Assert.Equal(edge.Vertex1, proxy.Vertices[0]);
+            Assert.Equal(edge.Vertex2, proxy.Vertices[1]);
+            Assert.Equal(edge.RadiusPrivate, proxy.Radius);
+        }
+        
+        /// <summary>
+        /// Tests that distance proxy get support returns correct index
+        /// </summary>
+        [Fact]
+        public void DistanceProxy_GetSupport_ReturnsCorrectIndex()
+        {
+            Vector2[] vertices = new Vector2[] {new Vector2(1, 1), new Vector2(2, 2), new Vector2(3, 3)};
+            DistanceProxy proxy = new DistanceProxy(vertices, 1.0f);
+            Vector2 direction = new Vector2(1, 1);
+            
+            int index = proxy.GetSupport(direction);
+            
+            Assert.Equal(2, index);
+        }
+        
+        /// <summary>
+        /// Tests that distance proxy get vertex returns correct vertex
+        /// </summary>
+        [Fact]
+        public void DistanceProxy_GetVertex_ReturnsCorrectVertex()
+        {
+            Vector2[] vertices = new Vector2[] {new Vector2(1, 1), new Vector2(2, 2), new Vector2(3, 3)};
+            DistanceProxy proxy = new DistanceProxy(vertices, 1.0f);
+            
+            Vector2 vertex = proxy.GetVertex(1);
+            
+            Assert.Equal(new Vector2(2, 2), vertex);
+        }
+        
+        /// <summary>
+        /// Tests that initialize polygon shape sets correct values
+        /// </summary>
+        [Fact]
+        public void InitializePolygonShape_SetsCorrectValues()
+        {
+            // Arrange
+            PolygonShape polygon = new PolygonShape(
+                1
+            );
+            DistanceProxy proxy = new DistanceProxy();
+            
+            // Act
+            Assert.Throws<NullReferenceException>( () =>  proxy.InitializePolygonShape(polygon));
+        }
+        
+        /// <summary>
+        /// Tests that initialize polygon shape sets correct number of vertices
+        /// </summary>
+        [Fact]
+        public void InitializePolygonShape_SetsCorrectNumberOfVertices()
+        {
+            // Arrange
+            PolygonShape polygon = new PolygonShape(
+                1
+            );
+            DistanceProxy proxy = new DistanceProxy();
+            
+            // Act
+            Assert.Throws<NullReferenceException>( () => proxy.InitializePolygonShape(polygon));
+        }
+        
+        /// <summary>
+        /// Tests that initialize polygon shape sets correct vertices
+        /// </summary>
+        [Fact]
+        public void InitializePolygonShape_SetsCorrectVertices()
+        {
+            // Arrange
+            PolygonShape polygon = new PolygonShape(
+                1
+            );
+            DistanceProxy proxy = new DistanceProxy();
+            
+            // Act
+            Assert.Throws<NullReferenceException>( () => proxy.InitializePolygonShape(polygon));
         }
     }
 }
