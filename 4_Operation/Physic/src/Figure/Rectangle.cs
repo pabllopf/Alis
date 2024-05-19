@@ -74,24 +74,53 @@ namespace Alis.Core.Physic.Figure
             bool enabled = true,
             float gravityScale = 1) : base(position, linearVelocity, bodyType, angle, angularVelocity, linearDamping, angularDamping, allowSleep, awake, fixedRotation, isBullet, enabled, gravityScale)
         {
+            ValidateWidth(width);
+            ValidateHeight(height);
+            
+            Vertices rectangleVertices = Polygon.CreateRectangle(width / 2, height / 2);
+            
+            ValidateVertices(rectangleVertices);
+            
+            AddFixture(new PolygonShape(rectangleVertices, 1));
+        }
+        
+        /// <summary>
+        /// Validates the width using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <exception cref="System.ArgumentOutOfRangeException">Width must be more than 0</exception>
+        internal void ValidateWidth(float width)
+        {
             if (width <= 0)
             {
                 throw new System.ArgumentOutOfRangeException(nameof(width), @"Width must be more than 0");
             }
-            
+        }
+        
+        /// <summary>
+        /// Validates the height using the specified height
+        /// </summary>
+        /// <param name="height">The height</param>
+        /// <exception cref="System.ArgumentOutOfRangeException">Height must be more than 0</exception>
+        internal void ValidateHeight(float height)
+        {
             if (height <= 0)
             {
                 throw new System.ArgumentOutOfRangeException(nameof(height), @"Height must be more than 0");
             }
-            
-            Vertices rectangleVertices = Polygon.CreateRectangle(width / 2, height / 2);
-            
-            if (rectangleVertices.Count <= 1)
+        }
+        
+        /// <summary>
+        /// Validates the vertices using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <exception cref="System.ArgumentOutOfRangeException">Too few points to be a polygon</exception>
+        internal void ValidateVertices(Vertices vertices)
+        {
+            if (vertices.Count <= 1)
             {
-                throw new System.ArgumentOutOfRangeException(nameof(rectangleVertices), "Too few points to be a polygon");
+                throw new System.ArgumentOutOfRangeException(nameof(vertices), "Too few points to be a polygon");
             }
-            
-            AddFixture(new PolygonShape(rectangleVertices, 1));
         }
     }
 }

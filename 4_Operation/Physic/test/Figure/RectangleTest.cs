@@ -31,6 +31,7 @@ using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Figure;
+using Alis.Core.Physic.Shared;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Figure
@@ -110,6 +111,86 @@ namespace Alis.Core.Physic.Test.Figure
             
             // Act & Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => new Rectangle(width, height, position, linearVelocity));
+        }
+        
+        /// <summary>
+        /// Tests that rectangle constructor throws exception for invalid width
+        /// </summary>
+        [Fact]
+        public void Rectangle_Constructor_ThrowsExceptionForInvalidWidth()
+        {
+            Assert.Throws<System.ArgumentOutOfRangeException>(() => new Rectangle(0, 1, new Vector2(0, 0), new Vector2(0, 0)));
+        }
+        
+        /// <summary>
+        /// Tests that rectangle constructor throws exception for invalid height
+        /// </summary>
+        [Fact]
+        public void Rectangle_Constructor_ThrowsExceptionForInvalidHeight()
+        {
+            Assert.Throws<System.ArgumentOutOfRangeException>(() => new Rectangle(1, 0, new Vector2(0, 0), new Vector2(0, 0)));
+        }
+        
+        /// <summary>
+        /// Tests that rectangle constructor throws exception for invalid vertices
+        /// </summary>
+        [Fact]
+        public void Rectangle_Constructor_ThrowsExceptionForInvalidVertices()
+        {
+            Rectangle rectangle = new Rectangle(0.5f, 0.5f, new Vector2(0, 0), new Vector2(0, 0));
+            Assert.Equal(0.00999999978F, rectangle.FixtureList[0].Shape.Radius, 0.1f);
+        }
+        
+        /// <summary>
+        /// Tests that rectangle constructor creates rectangle with correct properties
+        /// </summary>
+        [Fact]
+        public void Rectangle_Constructor_CreatesRectangleWithCorrectProperties()
+        {
+            Rectangle rectangle = new Rectangle(1, 1, new Vector2(0, 0), new Vector2(0, 0));
+            
+            Assert.Equal(new Vector2(0, 0), rectangle.Position);
+            Assert.Equal(new Vector2(0, 0), rectangle.LinearVelocity);
+        }
+        
+        /// <summary>
+        /// Tests that validate vertices with empty vertices throws exception
+        /// </summary>
+        [Fact]
+        public void ValidateVertices_WithEmptyVertices_ThrowsException()
+        {
+            Rectangle rectangle = new Rectangle(1, 1, new Vector2(0, 0), new Vector2(0, 0));
+            Vertices vertices = new Vertices();
+            
+            Assert.Throws<System.ArgumentOutOfRangeException>(() => rectangle.ValidateVertices(vertices));
+        }
+        
+        /// <summary>
+        /// Tests that validate vertices with single vertex throws exception
+        /// </summary>
+        [Fact]
+        public void ValidateVertices_WithSingleVertex_ThrowsException()
+        {
+            Rectangle rectangle = new Rectangle(1, 1, new Vector2(0, 0), new Vector2(0, 0));
+            Vertices vertices = new Vertices();
+            vertices.Add(new Vector2(0, 0));
+            
+            Assert.Throws<System.ArgumentOutOfRangeException>(() => rectangle.ValidateVertices(vertices));
+        }
+        
+        /// <summary>
+        /// Tests that validate vertices with multiple vertices no exception thrown
+        /// </summary>
+        [Fact]
+        public void ValidateVertices_WithMultipleVertices_NoExceptionThrown()
+        {
+            Rectangle rectangle = new Rectangle(1, 1, new Vector2(0, 0), new Vector2(0, 0));
+            Vertices vertices = new Vertices();
+            vertices.Add(new Vector2(0, 0));
+            vertices.Add(new Vector2(1, 0));
+            
+            Exception exception = Record.Exception(() => rectangle.ValidateVertices(vertices));
+            Assert.Null(exception);
         }
     }
 }
