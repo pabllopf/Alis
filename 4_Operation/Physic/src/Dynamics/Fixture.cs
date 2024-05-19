@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="restitutionThreshold">The restitution threshold</param>
         /// <param name="isSensor">The is sensor</param>
         public Fixture(
-            Shape shape,
+            AShape shape,
             Filter filter,
             float friction = 0.2f,
             float restitution = 0.0f,
@@ -232,7 +232,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     because this will crash some collision caching mechanisms.
         /// </summary>
         /// <value>The shape.</value>
-        public Shape Shape { get; internal set; }
+        public AShape Shape { get; internal set; }
         
         /// <summary>Gets or sets a value indicating whether this fixture is a sensor.</summary>
         /// <value><c>true</c> if this instance is a sensor; otherwise, <c>false</c>.</value>

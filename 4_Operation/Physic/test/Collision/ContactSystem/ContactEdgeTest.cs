@@ -51,7 +51,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             ContactEdge contactEdge = new ContactEdge();
             
             // Create necessary objects for Contact constructor
-            Shape shape = new CircleShape(1); // Or any other shape
+            AShape shape = new CircleShape(1); // Or any other shape
             Filter filter = new Filter();
             
             Fixture fixtureA = new Fixture(shape, filter);

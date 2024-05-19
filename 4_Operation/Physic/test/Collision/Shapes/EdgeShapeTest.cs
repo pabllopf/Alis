@@ -216,11 +216,46 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             EdgeShape edgeShape = new EdgeShape(new Vector2(1, 1), new Vector2(2, 2));
             
             // Act
-            Shape result = edgeShape.Clone();
+            AShape result = edgeShape.Clone();
             
             // Assert
             Assert.NotNull(result);
             Assert.IsType<EdgeShape>(result);
+        }
+        
+        /// <summary>
+        /// Tests that edge shape constructor sets one sided correctly
+        /// </summary>
+        [Fact]
+        public void EdgeShape_Constructor_SetsOneSidedCorrectly()
+        {
+            Vector2 v0 = new Vector2(0, 0);
+            Vector2 v1 = new Vector2(1, 0);
+            Vector2 v2 = new Vector2(0, 1);
+            Vector2 v3 = new Vector2(1, 1);
+            
+            EdgeShape edgeShape = new EdgeShape(v0, v1, v2, v3);
+            
+            Assert.True(edgeShape.OneSided);
+        }
+        
+        /// <summary>
+        /// Tests that edge shape constructor sets vertices correctly
+        /// </summary>
+        [Fact]
+        public void EdgeShape_Constructor_SetsVerticesCorrectly()
+        {
+            Vector2 v0 = new Vector2(0, 0);
+            Vector2 v1 = new Vector2(1, 0);
+            Vector2 v2 = new Vector2(0, 1);
+            Vector2 v3 = new Vector2(1, 1);
+            
+            EdgeShape edgeShape = new EdgeShape(v0, v1, v2, v3);
+            
+            Assert.Equal(v0, edgeShape.Vertex0);
+            Assert.Equal(v1, edgeShape.Vertex1);
+            Assert.Equal(v2, edgeShape.Vertex2);
+            Assert.Equal(v3, edgeShape.Vertex3);
         }
     }
 }

@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="indexB">The index for the second shape.</param>
         /// <param name="xfA">The transform for the first shape.</param>
         /// <param name="xfB">The transform for the seconds shape.</param>
-        public static bool TestOverlap(Shape shapeA, int indexA, Shape shapeB, int indexB, ref Transform xfA,
+        public static bool TestOverlap(AShape shapeA, int indexA, AShape shapeB, int indexB, ref Transform xfA,
             ref Transform xfB)
         {
             DistanceInput input = new DistanceInput

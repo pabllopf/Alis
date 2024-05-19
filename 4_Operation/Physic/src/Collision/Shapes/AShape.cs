@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Collision.Shapes
     ///     in World are created automatically when a Fixture is created. Shapes may encapsulate a one or more child shapes.
     ///     A shape is 2D geometrical object, such as a circle or polygon.
     /// </summary>
-    public abstract class Shape
+    public abstract class AShape
     {
         /// <summary>
         ///     The density
@@ -64,12 +64,12 @@ namespace Alis.Core.Physic.Collision.Shapes
         internal ShapeType ShapeTypePrivate;
         
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Shape" /> class
+        ///     Initializes a new instance of the <see cref="AShape" /> class
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="radius">The radius</param>
         /// <param name="density">The density</param>
-        internal Shape(ShapeType type, float radius = 0, float density = 0)
+        internal AShape(ShapeType type, float radius = 0, float density = 0)
         {
             Debug.Assert(radius >= 0);
             Debug.Assert(density >= 0);
@@ -135,7 +135,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         
         /// <summary>Clone the concrete shape</summary>
         /// <returns>A clone of the shape</returns>
-        public abstract Shape Clone();
+        public abstract AShape Clone();
         
         /// <summary>Test a point for containment in this shape. Note: This only works for convex shapes.</summary>
         /// <param name="transform">The shape world transform.</param>
@@ -162,6 +162,6 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     Compute the mass properties of this shape using its dimensions and density. The inertia tensor is computed
         ///     about the local origin, not the centroid.
         /// </summary>
-        protected abstract void ComputeProperties();
+        internal virtual void ComputeProperties() { }
     }
 }

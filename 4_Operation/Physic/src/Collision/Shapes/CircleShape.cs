@@ -36,7 +36,7 @@ using Alis.Core.Physic.Shared;
 namespace Alis.Core.Physic.Collision.Shapes
 {
     /// <summary>A circle shape.</summary>
-    public class CircleShape : Shape
+    public class CircleShape : AShape
     {
         /// <summary>
         ///     The position
@@ -124,7 +124,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     Computes the properties
         /// </summary>
-        protected sealed override void ComputeProperties()
+        internal override void ComputeProperties()
         {
             ComputeMass();
             ComputeInertia();
@@ -158,7 +158,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     Clones this instance
         /// </summary>
         /// <returns>The clone</returns>
-        public override Shape Clone()
+        public override AShape Clone()
         {
             CircleShape clone = new CircleShape
             {

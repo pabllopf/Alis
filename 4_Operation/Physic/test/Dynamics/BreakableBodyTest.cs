@@ -82,7 +82,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             MyBreakableBody breakableBody = new MyBreakableBody(world, parts, density, position, rotation);
             
             // Assuming you have shapes and filters available for the fixtures
-            Shape shapeA = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
+            AShape shapeA = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterA = new Filter();
             float frictionA = 0.3f;
             float restitutionA = 0.1f;
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             bool isSensorA = true;
             Fixture fixtureA = new Fixture(shapeA, filterA, frictionA, restitutionA, restitutionThresholdA, isSensorA);
             
-            Shape shapeB = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
+            AShape shapeB = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterB = new Filter();
             float frictionB = 0.3f;
             float restitutionB = 0.1f;

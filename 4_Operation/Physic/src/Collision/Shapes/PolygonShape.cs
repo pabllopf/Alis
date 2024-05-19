@@ -42,7 +42,7 @@ using Alis.Core.Physic.Shared;
 namespace Alis.Core.Physic.Collision.Shapes
 {
     /// <summary>Represents a simple non-self intersecting convex polygon. Create a convex hull from the given array of points.</summary>
-    public class PolygonShape : Shape
+    public class PolygonShape : AShape
     {
         /// <summary>
         ///     The normals
@@ -87,11 +87,6 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
         
         /// <summary>
-        ///     Gets the value of the normals
-        /// </summary>
-        public Vertices Normals => NormalsPrivate;
-        
-        /// <summary>
         ///     Gets the value of the child count
         /// </summary>
         public override int ChildCount => 1;
@@ -126,7 +121,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <exception cref="InvalidOperationException">You can't create a polygon with less than 3 vertices</exception>
-        private void CheckVerticesValidity(Vertices vertices)
+        internal void CheckVerticesValidity(Vertices vertices)
         {
             if (vertices.Count < 3)
             {
@@ -139,7 +134,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <returns>The vector array</returns>
-        private Vector2[] RemoveDuplicateVertices(Vertices vertices)
+        internal Vector2[] RemoveDuplicateVertices(Vertices vertices)
         {
             List<Vector2> cleanedVertices = new List<Vector2>();
             for (int i = 0; i < vertices.Count; i++)
@@ -315,71 +310,51 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
         
         /// <summary>
-        ///     Computes the properties
+        /// Computes the properties
         /// </summary>
-        protected sealed override void ComputeProperties()
+        internal override void ComputeProperties()
         {
-            // Polygon mass, centroid, and inertia.
-            // Let rho be the polygon density in mass per unit area.
-            // Then:
-            // mass = rho * int(dA)
-            // centroid.x = (1/mass) * rho * int(x * dA)
-            // centroid.y = (1/mass) * rho * int(y * dA)
-            // I = rho * int((x*x + y*y) * dA)
-            //
-            // We can compute these integrals by summing all the integrals
-            // for each triangle of the polygon. To evaluate the integral
-            // for a single triangle, we make a change of variables to
-            // the (u,v) coordinates of the triangle:
-            // x = x0 + e1x * u + e2x * v
-            // y = y0 + e1y * u + e2y * v
-            // where 0 <= u && 0 <= v && u + v <= 1.
-            //
-            // We integrate u from [0,1-v] and then v from [0,1].
-            // We also need to use the Jacobin of the transformation:
-            // D = cross(e1, e2)
-            //
-            // Simplification: triangle centroid = (1/3) * (p1 + p2 + p3)
-            //
-            // The rest of the derivation is handled by computer algebra.
-            
-            Debug.Assert(VerticesPrivate.Count >= 3);
-            
-            //Velcro: Early exit as polygons with 0 density does not have any properties.
-            if (DensityPrivate <= 0)
+            if (DensityPrivate <= 0 || VerticesPrivate.Count < 3)
             {
                 return;
             }
             
-            //Velcro: Consolidated the calculate centroid and mass code to a single method.
+            Vector2 s = VerticesPrivate[0];
+            int count = VerticesPrivate.Count;
+            
+            (float area, Vector2 center, float I) = ComputeAreaCenterAndInertia(s, count);
+            
+            Debug.Assert(area > Constant.Epsilon);
+            
+            MassDataPrivate.Area = area;
+            MassDataPrivate.Mass = DensityPrivate * area;
+            MassDataPrivate.Centroid = ComputeCentroid(center, area, s);
+            MassDataPrivate.Inertia = ComputeInertia(center, I);
+        }
+        
+        /// <summary>
+        /// Computes the area center and inertia using the specified s
+        /// </summary>
+        /// <param name="s">The </param>
+        /// <param name="count">The count</param>
+        /// <returns>The float area vector center float</returns>
+        private (float area, Vector2 center, float I) ComputeAreaCenterAndInertia(Vector2 s, int count)
+        {
+            const float inv3 = 1.0f / 3.0f;
             Vector2 center = Vector2.Zero;
             float area = 0.0f;
             float I = 0.0f;
             
-            // Get a reference point for forming triangles.
-            // Use the first vertex to reduce round-off errors.
-            Vector2 s = VerticesPrivate[0];
-            
-            const float inv3 = 1.0f / 3.0f;
-            
-            int count = VerticesPrivate.Count;
-            
             for (int i = 0; i < count; ++i)
             {
-                // Triangle vertices.
-                Vector2 e1 = VerticesPrivate[i] - s;
-                Vector2 e2 = i + 1 < count ? VerticesPrivate[i + 1] - s : VerticesPrivate[0] - s;
-                
-                float d = MathUtils.Cross(e1, e2);
+                (Vector2 e1, Vector2 e2, float d) = ComputeTriangleVerticesAndArea(s, i);
                 
                 float triangleArea = 0.5f * d;
                 area += triangleArea;
                 
-                // Area weighted centroid
                 center += triangleArea * inv3 * (e1 + e2);
                 
-                float ex1 = e1.X, ey1 = e1.Y;
-                float ex2 = e2.X, ey2 = e2.Y;
+                (float ex1, float ey1, float ex2, float ey2) = GetCoordinates(e1, e2);
                 
                 float intX2 = ex1 * ex1 + ex2 * ex1 + ex2 * ex2;
                 float intY2 = ey1 * ey1 + ey2 * ey1 + ey2 * ey2;
@@ -387,26 +362,65 @@ namespace Alis.Core.Physic.Collision.Shapes
                 I += 0.25f * inv3 * d * (intX2 + intY2);
             }
             
-            //The area is too small for the engine to handle.
-            Debug.Assert(area > Constant.Epsilon);
+            return (area, center, I);
+        }
+        
+        /// <summary>
+        /// Computes the triangle vertices and area using the specified s
+        /// </summary>
+        /// <param name="s">The </param>
+        /// <param name="i">The </param>
+        /// <returns>The vector vector float</returns>
+        private (Vector2 e1, Vector2 e2, float d) ComputeTriangleVerticesAndArea(Vector2 s, int i)
+        {
+            Vector2 e1 = VerticesPrivate[i] - s;
+            Vector2 e2 = i + 1 < VerticesPrivate.Count ? VerticesPrivate[i + 1] - s : VerticesPrivate[0] - s;
+            float d = MathUtils.Cross(e1, e2);
             
-            // We save the area
-            MassDataPrivate.Area = area;
+            return (e1, e2, d);
+        }
+        
+        /// <summary>
+        /// Gets the coordinates using the specified e 1
+        /// </summary>
+        /// <param name="e1">The </param>
+        /// <param name="e2">The </param>
+        /// <returns>The float ex float ey float ex float ey</returns>
+        private static (float ex1, float ey1, float ex2, float ey2) GetCoordinates(Vector2 e1, Vector2 e2)
+        {
+            float ex1 = e1.X;
+            float ey1 = e1.Y;
+            float ex2 = e2.X;
+            float ey2 = e2.Y;
             
-            // Total mass
-            MassDataPrivate.Mass = DensityPrivate * area;
-            
-            // Center of mass
+            return (ex1, ey1, ex2, ey2);
+        }
+        
+        /// <summary>
+        /// Computes the centroid using the specified center
+        /// </summary>
+        /// <param name="center">The center</param>
+        /// <param name="area">The area</param>
+        /// <param name="s">The </param>
+        /// <returns>The vector</returns>
+        private Vector2 ComputeCentroid(Vector2 center, float area, Vector2 s)
+        {
             center *= 1.0f / area;
-            MassDataPrivate.Centroid = center + s;
+            return center + s;
+        }
+        
+        /// <summary>
+        /// Computes the inertia using the specified center
+        /// </summary>
+        /// <param name="center">The center</param>
+        /// <param name="I">The </param>
+        /// <returns>The inertia</returns>
+        private float ComputeInertia(Vector2 center, float I)
+        {
+            float inertia = DensityPrivate * I;
+            inertia += MassDataPrivate.Mass * (MathUtils.Dot(MassDataPrivate.Centroid, MassDataPrivate.Centroid) - MathUtils.Dot(center, center));
             
-            // Inertia tensor relative to the local origin (point s).
-            MassDataPrivate.Inertia = DensityPrivate * I;
-            
-            // Shift to center of mass then to original body origin.
-            MassDataPrivate.Inertia += MassDataPrivate.Mass *
-                                       (MathUtils.Dot(MassDataPrivate.Centroid, MassDataPrivate.Centroid) -
-                                        MathUtils.Dot(center, center));
+            return inertia;
         }
         
         /// <summary>
@@ -443,7 +457,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     Clones this instance
         /// </summary>
         /// <returns>The clone</returns>
-        public override Shape Clone()
+        public override AShape Clone()
         {
             PolygonShape clone = new PolygonShape
             {

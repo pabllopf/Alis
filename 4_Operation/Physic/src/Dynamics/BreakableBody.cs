@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="shapes">The shapes</param>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
-        internal BreakableBody(World world, IEnumerable<Shape> shapes, Vector2 position = new Vector2(),
+        internal BreakableBody(World world, IEnumerable<AShape> shapes, Vector2 position = new Vector2(),
             float rotation = 0)
         {
             this.world = world;
@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Dynamics
             
             Parts = new List<Fixture>(8);
             
-            foreach (Shape part in shapes)
+            foreach (AShape part in shapes)
             {
                 Fixture fixture = MainBody.AddFixture(part);
                 Parts.Add(fixture);
@@ -200,7 +200,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 Fixture oldFixture = Parts[i];
                 
-                Shape shape = oldFixture.Shape.Clone();
+                AShape shape = oldFixture.Shape.Clone();
                 
                 MainBody.RemoveFixture(oldFixture);
                 

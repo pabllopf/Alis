@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
@@ -42,7 +43,7 @@ namespace Alis.Core.Physic.Collision.Shapes
     ///     are
     ///     self-intersections.
     /// </summary>
-    public class ChainShape : Shape
+    public sealed class ChainShape : AShape
     {
         /// <summary>Create a new ChainShape from the vertices.</summary>
         /// <param name="vertices">The vertices to use. Must contain 2 or more vertices.</param>
@@ -79,10 +80,10 @@ namespace Alis.Core.Physic.Collision.Shapes
         public override int ChildCount => Vertices.Count - 1;
         
         /// <summary>Establish connectivity to a vertex that precedes the first vertex. Don't call this for loops.</summary>
-        private Vector2 PrevVertex { get; set; }
+        internal Vector2 PrevVertex { get; set; }
         
         /// <summary>Establish connectivity to a vertex that follows the last vertex. Don't call this for loops.</summary>
-        private Vector2 NextVertex { get; set; }
+        internal Vector2 NextVertex { get; set; }
         
         //Velcro: The original code returned an EdgeShape for each call. To reduce garbage we merge the properties onto an existing EdgeShape
         /// <summary>
@@ -131,6 +132,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="childIndex">The child index</param>
         /// <param name="output">The output</param>
         /// <returns>The bool</returns>
+        [ExcludeFromCodeCoverage]
         public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
             out RayCastOutput output)
         {
@@ -171,18 +173,10 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
         
         /// <summary>
-        ///     Computes the properties
-        /// </summary>
-        protected sealed override void ComputeProperties()
-        {
-            //Does nothing. Chain shapes don't have properties.
-        }
-        
-        /// <summary>
         ///     Clones this instance
         /// </summary>
         /// <returns>The clone</returns>
-        public override Shape Clone()
+        public override AShape Clone()
         {
             ChainShape clone = new ChainShape
             {

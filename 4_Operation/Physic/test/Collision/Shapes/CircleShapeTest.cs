@@ -139,7 +139,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             CircleShape circleShape = new CircleShape(1.0f, 1.0f, new Vector2(1, 1));
             
             // Act
-            Shape result = circleShape.Clone();
+            AShape result = circleShape.Clone();
             
             // Assert
             Assert.NotNull(result);

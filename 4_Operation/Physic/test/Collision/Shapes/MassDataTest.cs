@@ -139,5 +139,175 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             // Assert
             Assert.True(areNotEqual);
         }
+        
+        /// <summary>
+        /// Tests that operator equal returns true when mass data are equal
+        /// </summary>
+        [Fact]
+        public void OperatorEqual_ReturnsTrue_WhenMassDataAreEqual()
+        {
+            MassData massData1 = new MassData(1.0f, 2.0f, 3.0f);
+            MassData massData2 = new MassData(1.0f, 2.0f, 3.0f);
+            
+            bool result = massData1 == massData2;
+            
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that operator equal returns false when mass data are not equal
+        /// </summary>
+        [Fact]
+        public void OperatorEqual_ReturnsFalse_WhenMassDataAreNotEqual()
+        {
+            MassData massData1 = new MassData(1.0f, 2.0f, 3.0f);
+            MassData massData2 = new MassData(4.0f, 5.0f, 6.0f);
+            
+            bool result = massData1 == massData2;
+            
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that operator not equal returns true when mass data are not equal
+        /// </summary>
+        [Fact]
+        public void OperatorNotEqual_ReturnsTrue_WhenMassDataAreNotEqual()
+        {
+            MassData massData1 = new MassData(1.0f, 2.0f, 3.0f);
+            MassData massData2 = new MassData(4.0f, 5.0f, 6.0f);
+            
+            bool result = massData1 != massData2;
+            
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that operator not equal returns false when mass data are equal
+        /// </summary>
+        [Fact]
+        public void OperatorNotEqual_ReturnsFalse_WhenMassDataAreEqual()
+        {
+            MassData massData1 = new MassData(1.0f, 2.0f, 3.0f);
+            MassData massData2 = new MassData(1.0f, 2.0f, 3.0f);
+            
+            bool result = massData1 != massData2;
+            
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that equals returns true when mass data are equal
+        /// </summary>
+        [Fact]
+        public void Equals_ReturnsTrue_WhenMassDataAreEqual()
+        {
+            MassData massData1 = new MassData(1.0f, 2.0f, 3.0f);
+            MassData massData2 = new MassData(1.0f, 2.0f, 3.0f);
+            
+            bool result = massData1.Equals(massData2);
+            
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that equals returns false when mass data are not equal
+        /// </summary>
+        [Fact]
+        public void Equals_ReturnsFalse_WhenMassDataAreNotEqual()
+        {
+            MassData massData1 = new MassData(1.0f, 2.0f, 3.0f);
+            MassData massData2 = new MassData(4.0f, 5.0f, 6.0f);
+            
+            bool result = massData1.Equals(massData2);
+            
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that get hash code returns same hash code when mass data are equal
+        /// </summary>
+        [Fact]
+        public void GetHashCode_ReturnsSameHashCode_WhenMassDataAreEqual()
+        {
+            MassData massData1 = new MassData(1.0f, 2.0f, 3.0f);
+            MassData massData2 = new MassData(1.0f, 2.0f, 3.0f);
+            
+            int hashCode1 = massData1.GetHashCode();
+            int hashCode2 = massData2.GetHashCode();
+            
+            Assert.Equal(hashCode1, hashCode2);
+        }
+        
+        /// <summary>
+        /// Tests that get hash code returns different hash code when mass data are not equal
+        /// </summary>
+        [Fact]
+        public void GetHashCode_ReturnsDifferentHashCode_WhenMassDataAreNotEqual()
+        {
+            MassData massData1 = new MassData(1.0f, 2.0f, 3.0f);
+            MassData massData2 = new MassData(4.0f, 5.0f, 6.0f);
+            
+            int hashCode1 = massData1.GetHashCode();
+            int hashCode2 = massData2.GetHashCode();
+            
+            Assert.NotEqual(hashCode1, hashCode2);
+        }
+        
+        /// <summary>
+        /// Tests that equals returns false when object is null
+        /// </summary>
+        [Fact]
+        public void Equals_ReturnsFalse_WhenObjectIsNull()
+        {
+            MassData massData = new MassData(1.0f, 2.0f, 3.0f);
+            object obj = null;
+            
+            bool result = massData.Equals(obj);
+            
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that equals returns false when object is not mass data
+        /// </summary>
+        [Fact]
+        public void Equals_ReturnsFalse_WhenObjectIsNotMassData()
+        {
+            MassData massData = new MassData(1.0f, 2.0f, 3.0f);
+            object obj = new object();
+            
+            bool result = massData.Equals(obj);
+            
+            Assert.False(result);
+        }
+        
+        /// <summary>
+        /// Tests that equals returns true when object is equal mass data
+        /// </summary>
+        [Fact]
+        public void Equals_ReturnsTrue_WhenObjectIsEqualMassData()
+        {
+            MassData massData1 = new MassData(1.0f, 2.0f, 3.0f);
+            object obj = new MassData(1.0f, 2.0f, 3.0f);
+            
+            bool result = massData1.Equals(obj);
+            
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Tests that equals returns false when object is different mass data
+        /// </summary>
+        [Fact]
+        public void Equals_ReturnsFalse_WhenObjectIsDifferentMassData()
+        {
+            MassData massData1 = new MassData(1.0f, 2.0f, 3.0f);
+            object obj = new MassData(4.0f, 5.0f, 6.0f);
+            
+            bool result = massData1.Equals(obj);
+            
+            Assert.False(result);
+        }
     }
 }
