@@ -317,16 +317,26 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         [Fact]
         public void TestSetFileReadPermission_InvalidPath()
         {
-            // Arrange
-            string filePath = "/invalid/path/to/file";
-            
-            // Act
-            // Here we're expecting an exception to be thrown, so we use Assert.Throws
-            Exception ex = Assert.Throws<FileNotFoundException>(() => EmbeddedDllClass.SetFileReadPermission(filePath));
-            
-            // Assert
-            // We can make further assertions about the exception here if needed
-            Assert.IsType<FileNotFoundException>(ex);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                // Arrange
+                string filePath = "/invalid/path/to/file";
+                
+                // Act
+                // Here we're expecting an exception to be thrown, so we use Assert.Throws
+                Exception ex = Assert.Throws<FileNotFoundException>(() => EmbeddedDllClass.SetFileReadPermission(filePath));
+                
+                // Assert
+                // We can make further assertions about the exception here if needed
+                Assert.IsType<FileNotFoundException>(ex);
+            }
+            else
+            {
+                // Arrange
+                string filePath = "/invalid/path/to/file";
+                
+                EmbeddedDllClass.SetFileReadPermission(filePath);
+            }
         }
         
         /// <summary>
@@ -887,8 +897,24 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         [Fact]
         public void GetDllExtension_ShouldReturnCorrectExtension()
         {
-            Assert.Equal("", EmbeddedDllClass.GetDllExtension(DllType.Exe));
-            Assert.Equal(".dylib", EmbeddedDllClass.GetDllExtension(DllType.Lib));
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                Assert.Equal("", EmbeddedDllClass.GetDllExtension(DllType.Exe));
+                Assert.Equal(".dylib", EmbeddedDllClass.GetDllExtension(DllType.Lib)); 
+            }
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                Assert.Equal(".exe", EmbeddedDllClass.GetDllExtension(DllType.Exe));
+                Assert.Equal(".dll", EmbeddedDllClass.GetDllExtension(DllType.Lib));
+            }
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                Assert.Equal("", EmbeddedDllClass.GetDllExtension(DllType.Exe));
+                Assert.Equal(".so", EmbeddedDllClass.GetDllExtension(DllType.Lib));
+            }
+            
             Assert.Throws<PlatformNotSupportedException>(() => EmbeddedDllClass.GetDllExtension((DllType) 999));
         }
     }

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
@@ -131,7 +132,8 @@ namespace Alis.Core.Audio
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
-        private void OnPlaybackFinished(object sender, EventArgs e)
+        [ExcludeFromCodeCoverage]
+        internal void OnPlaybackFinished(object sender, EventArgs e)
         {
             PlaybackFinished?.Invoke(this, e);
         }

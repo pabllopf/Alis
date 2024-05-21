@@ -36,7 +36,9 @@ using System.Net.Sockets;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Network.Exceptions;
+using Alis.Core.Network.Test.Samples;
 using Xunit;
 
 namespace Alis.Core.Network.Test
@@ -46,16 +48,42 @@ namespace Alis.Core.Network.Test
     /// </summary>
     public class WebSocketClientFactoryTest
     {
+        private IWebSocketServerFactory _webSocketServerFactory;
+        
         /// <summary>
         /// Tests that connect async valid input
         /// </summary>
         [Fact]
         public async Task ConnectAsync_ValidInput()
         {
-            WebSocketClientFactory factory = new WebSocketClientFactory();
-            Uri uri = new Uri("ws://localhost:8080");
+            CancellationTokenSource cts = new CancellationTokenSource();
+            _webSocketServerFactory = new WebSocketServerFactory();
+            StartWebServer(cts.Token);
+            Uri uri = new Uri("ws://localhost:27416");
             
-            await Assert.ThrowsAsync<SocketException>(() => factory.ConnectAsync(uri));
+            WebSocketClientFactory factory = new WebSocketClientFactory();
+            
+            
+           WebSocket result = await factory.ConnectAsync(uri);
+           
+           await result.CloseAsync(WebSocketCloseStatus.NormalClosure, "", new CancellationToken());
+        }
+        
+        private async void StartWebServer(CancellationToken ctsToken)
+        {
+            try
+            {
+                int port = 27416;
+                IList<string> supportedSubProtocols = new[] {"chatV1", "chatV2", "chatV3"};
+                using WebServer server = new WebServer(_webSocketServerFactory, supportedSubProtocols);
+                Logger.Log($"Listening on port {port}");
+                Logger.Log("Press any key to quit");
+                await server.Listen(port, ctsToken);
+            }
+            catch (Exception ex)
+            {
+                Logger.Exception(ex.ToString());
+            }
         }
         
         /// <summary>
@@ -64,10 +92,14 @@ namespace Alis.Core.Network.Test
         [Fact]
         public async Task ConnectAsync_WithCustomBufferFactory()
         {
-            WebSocketClientFactory factory = new WebSocketClientFactory(() => new MemoryStream());
-            Uri uri = new Uri("ws://localhost:8080");
+            CancellationTokenSource cts = new CancellationTokenSource();
+            _webSocketServerFactory = new WebSocketServerFactory();
+            StartWebServer(cts.Token);
+            Uri uri = new Uri("ws://localhost:27416");
             
-            await Assert.ThrowsAsync<SocketException>(() => factory.ConnectAsync(uri));
+            WebSocketClientFactory factory = new WebSocketClientFactory(() => new MemoryStream());
+            
+            await factory.ConnectAsync(uri);
         }
         
         /// <summary>

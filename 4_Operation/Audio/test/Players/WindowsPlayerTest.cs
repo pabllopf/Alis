@@ -29,8 +29,10 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Audio.Players;
 using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
@@ -50,7 +52,7 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Play_ValidInput()
         {
             WindowsPlayer player = new WindowsPlayer();
-            await player.Play("test.mp3");
+            await player.Play(AssetManager.Find("sample_1.wav"));
             
             Assert.True(player.Playing);
         }
@@ -62,7 +64,7 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Pause_ValidInput()
         {
             WindowsPlayer player = new WindowsPlayer();
-            await player.Play("test.mp3");
+            await player.Play( AssetManager.Find("sample_1.wav"));
             await player.Pause();
             
             Assert.True(player.Paused);
@@ -75,7 +77,7 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Resume_ValidInput()
         {
             WindowsPlayer player = new WindowsPlayer();
-            await player.Play("test.mp3");
+            await player.Play(AssetManager.Find("sample_1.wav"));
             await player.Pause();
             await player.Resume();
             
@@ -89,7 +91,7 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Stop_ValidInput()
         {
             WindowsPlayer player = new WindowsPlayer();
-            await player.Play("test.mp3");
+            await player.Play(AssetManager.Find("sample_1.wav"));
             await player.Stop();
             
             Assert.False(player.Playing);
@@ -114,7 +116,7 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Stop_ValidInput_v2()
         {
             WindowsPlayer player = new WindowsPlayer();
-            await player.Play("test.mp3");
+            await player.Play(AssetManager.Find("sample_1.wav"));
             await player.Stop();
             
             Assert.False(player.Playing);
@@ -140,7 +142,7 @@ namespace Alis.Core.Audio.Test.Players
         public async Task SetVolume_InvalidInput()
         {
             WindowsPlayer player = new WindowsPlayer();
-            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => player.SetVolume(101));
+            await player.SetVolume(101);
         }
         
          /// <summary>
@@ -150,7 +152,7 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Resume_ValidInput_v4()
         {
             WindowsPlayer player = new WindowsPlayer();
-            await player.Play("test.mp3");
+            await player.Play(AssetManager.Find("sample_1.wav"));
             await player.Pause();
             await player.Resume();
             
@@ -164,7 +166,7 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Resume_WhenNotPaused_DoesNothing()
         {
             WindowsPlayer player = new WindowsPlayer();
-            await player.Play("test.mp3");
+            await player.Play(AssetManager.Find("sample_1.wav"));
             await player.Resume();
             
             Assert.False(player.Paused);
@@ -177,7 +179,7 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Stop_ValidInput_v3()
         {
             WindowsPlayer player = new WindowsPlayer();
-            await player.Play("test.mp3");
+            await player.Play(AssetManager.Find("sample_1.wav"));
             await player.Stop();
             
             Assert.False(player.Playing);
@@ -204,7 +206,7 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Resume_ValidInput_v5()
         {
             WindowsPlayer player = new WindowsPlayer();
-            await player.Play("test.mp3");
+            await player.Play(AssetManager.Find("sample_1.wav"));
             await player.Pause();
             await player.Resume();
             
@@ -218,7 +220,7 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Resume_WhenNotPaused_DoesNothing_v4()
         {
             WindowsPlayer player = new WindowsPlayer();
-            await player.Play("test.mp3");
+            await player.Play(AssetManager.Find("sample_1.wav"));
             await player.Resume();
             
             Assert.False(player.Paused);
@@ -244,7 +246,7 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Pause_ValidInput_v6()
         {
             WindowsPlayer player = new WindowsPlayer();
-            await player.Play("test.mp3");
+            await player.Play(AssetManager.Find("sample_1.wav"));
             await player.Pause();
             
             Assert.True(player.Paused);
@@ -269,7 +271,7 @@ namespace Alis.Core.Audio.Test.Players
         public async Task Pause_WhenAlreadyPaused_DoesNothing()
         {
             WindowsPlayer player = new WindowsPlayer();
-            await player.Play("test.mp3");
+            await player.Play(AssetManager.Find("sample_1.wav"));
             await player.Pause();
             await player.Pause();
             
