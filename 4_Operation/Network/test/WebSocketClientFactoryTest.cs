@@ -102,6 +102,7 @@ namespace Alis.Core.Network.Test
             await factory.ConnectAsync(uri);
         }
         
+        
         /// <summary>
         /// Tests that dispose closes web socket
         /// </summary>
