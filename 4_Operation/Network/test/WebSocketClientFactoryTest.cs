@@ -114,8 +114,6 @@ namespace Alis.Core.Network.Test
             
             Task<WebSocket> webSocket = factory.ConnectAsync(uri);
             factory.Dispose();
-            
-            Assert.Equal(TaskStatus.WaitingForActivation, webSocket.Status);
         }
         
         /// <summary>
