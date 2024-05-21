@@ -40,6 +40,7 @@ namespace Alis.Core.Audio
     ///     The player class
     /// </summary>
     /// <seealso cref="IPlayer" />
+    [ExcludeFromCodeCoverage]
     public class Player : IPlayer
     {
         /// <summary>

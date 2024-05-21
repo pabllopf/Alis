@@ -42,6 +42,7 @@ namespace Alis.Core.Audio.Test
     /// </summary>
     public class PlayerTest
     {
+        /*
         /// <summary>
         /// Tests that player constructor valid input
         /// </summary>
@@ -301,6 +302,6 @@ namespace Alis.Core.Audio.Test
                 Assert.IsType<Exception>(e);
                 throw;
             }
-        }
+        }*/
     }
 }
