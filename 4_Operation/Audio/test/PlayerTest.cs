@@ -48,9 +48,16 @@ namespace Alis.Core.Audio.Test
         [Fact]
         public void Player_Constructor_ValidInput()
         {
-            Player player = new Player();
-            
-            Assert.NotNull(player);
+            try
+            {
+                Player player = new Player();
+                Assert.NotNull(player);
+            }
+            catch (Exception e)
+            {
+                Assert.IsType<Exception>(e);
+                throw;
+            }
         }
         
         /// <summary>
@@ -59,10 +66,18 @@ namespace Alis.Core.Audio.Test
         [Fact]
         public async Task Play_ValidInput()
         {
-            Player player = new Player();
-            await player.Play(AssetManager.Find("sample_1.wav"));
-            
-            Assert.True(player.Playing);
+            try
+            {
+                Player player = new Player();
+                await player.Play(AssetManager.Find("sample_1.wav"));
+                
+                Assert.True(player.Playing);
+            }
+            catch (Exception e)
+            {
+                Assert.IsType<Exception>(e);
+                throw;
+            }
         }
         
         /// <summary>
@@ -71,11 +86,19 @@ namespace Alis.Core.Audio.Test
         [Fact]
         public async Task Pause_ValidInput()
         {
-            Player player = new Player();
-            await player.Play(AssetManager.Find("sample_1.wav"));
-            await player.Pause();
-            
-            Assert.True(player.Paused);
+            try
+            {
+                Player player = new Player();
+                await player.Play(AssetManager.Find("sample_1.wav"));
+                await player.Pause();
+                
+                Assert.True(player.Paused);
+            }
+            catch (Exception e)
+            {
+                Assert.IsType<Exception>(e);
+                throw;
+            }
         }
         
         /// <summary>
@@ -84,37 +107,43 @@ namespace Alis.Core.Audio.Test
         [Fact]
         public async Task Resume_ValidInput()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            try
             {
-                Player player = new Player();
-                await player.Play(AssetManager.Find("sample_1.wav"));
-                await player.Pause();
-                await player.Resume();
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    Player player = new Player();
+                    await player.Play(AssetManager.Find("sample_1.wav"));
+                    await player.Pause();
+                    await player.Resume();
+                    
+                    Assert.True(player.Paused);
+                }
                 
-                Assert.True(player.Paused);
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    Player player = new Player();
+                    await player.Play(AssetManager.Find("sample_1.wav"));
+                    await player.Pause();
+                    await player.Resume();
+                    
+                    Assert.False(player.Paused);
+                }
+                
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    Player player = new Player();
+                    await player.Play(AssetManager.Find("sample_1.wav"));
+                    await player.Pause();
+                    await player.Resume();
+                    
+                    Assert.False(player.Paused);
+                }
             }
-            
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            catch (Exception e)
             {
-                Player player = new Player();
-                await player.Play(AssetManager.Find("sample_1.wav"));
-                await player.Pause();
-                await player.Resume();
-                
-                Assert.True(player.Paused);
+                Assert.IsType<Exception>(e);
+                throw;
             }
-            
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                Player player = new Player();
-                await player.Play(AssetManager.Find("sample_1.wav"));
-                await player.Pause();
-                await player.Resume();
-                
-                Assert.False(player.Paused);
-            }
-            
-            
         }
         
         /// <summary>
@@ -123,11 +152,19 @@ namespace Alis.Core.Audio.Test
         [Fact]
         public async Task Stop_ValidInput()
         {
-            Player player = new Player();
-            await player.Play(AssetManager.Find("sample_1.wav"));
-            await player.Stop();
-            
-            Assert.False(player.Playing);
+            try
+            {
+                Player player = new Player();
+                await player.Play(AssetManager.Find("sample_1.wav"));
+                await player.Stop();
+                
+                Assert.False(player.Playing);
+            }
+            catch (Exception e)
+            {
+                Assert.IsType<Exception>(e);
+                throw;
+            }
         }
         
         /// <summary>
@@ -136,10 +173,16 @@ namespace Alis.Core.Audio.Test
         [Fact]
         public async Task SetVolume_ValidInput()
         {
-            Player player = new Player();
-            await player.SetVolume(50);
-            
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            try
+            {
+                Player player = new Player();
+                await player.SetVolume(50);
+            }
+            catch (Exception e)
+            {
+                Assert.IsType<Exception>(e);
+                throw;
+            }
         }
         
         /// <summary>
@@ -148,22 +191,28 @@ namespace Alis.Core.Audio.Test
         [Fact]
         public void CheckOs_WindowsPlatform()
         {
-            bool originalPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-           
-            
-            IPlayer player = Player.CheckOs();
-            
-            if (originalPlatform)
+            try
             {
-                Assert.IsType<WindowsPlayer>(player);
-            }else{
-                Assert.NotNull(player);
+                
+                
+                bool originalPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+                
+                
+                IPlayer player = Player.CheckOs();
+                
+                if (originalPlatform)
+                {
+                    Assert.IsType<WindowsPlayer>(player);
+                }
+                else
+                {
+                    Assert.NotNull(player);
+                }
             }
-            
-            
-            if (!originalPlatform)
+            catch (Exception e)
             {
-                // Reset the RuntimeInformation.IsOSPlatform to its original state
+                Assert.IsType<Exception>(e);
+                throw;
             }
         }
         
@@ -173,21 +222,26 @@ namespace Alis.Core.Audio.Test
         [Fact]
         public void CheckOs_LinuxPlatform()
         {
-            bool originalPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
-           
-            
-            IPlayer player = Player.CheckOs();
-            
-            if (originalPlatform)
+            try
             {
-                Assert.IsType<LinuxPlayer>(player);
-            }else{
-                Assert.NotNull(player);
+                bool originalPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+                
+                
+                IPlayer player = Player.CheckOs();
+                
+                if (originalPlatform)
+                {
+                    Assert.IsType<LinuxPlayer>(player);
+                }
+                else
+                {
+                    Assert.NotNull(player);
+                }
             }
-            
-            if (!originalPlatform)
+            catch (Exception e)
             {
-                // Reset the RuntimeInformation.IsOSPlatform to its original state
+                Assert.IsType<Exception>(e);
+                throw;
             }
         }
         
@@ -197,23 +251,34 @@ namespace Alis.Core.Audio.Test
         [Fact]
         public void CheckOs_MacPlatform()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            
+            try
             {
-                IPlayer player = Player.CheckOs();
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    IPlayer player = Player.CheckOs();
+                    
+                    Assert.IsType<MacPlayer>(player);
+                }
                 
-                Assert.IsType<MacPlayer>(player);
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    IPlayer player = Player.CheckOs();
+                    
+                    Assert.IsType<WindowsPlayer>(player);
+                }
+                
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    IPlayer player = Player.CheckOs();
+                    
+                    Assert.IsType<LinuxPlayer>(player);
+                }
             }
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            catch (Exception e)
             {
-                IPlayer player = Player.CheckOs();
-                
-                Assert.IsType<WindowsPlayer>(player);
-            }
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                IPlayer player = Player.CheckOs();
-                
-                Assert.IsType<LinuxPlayer>(player);
+                Assert.IsType<Exception>(e);
+                throw;
             }
         }
         
@@ -223,19 +288,18 @@ namespace Alis.Core.Audio.Test
         [Fact]
         public void CheckOs_UnknownPlatform()
         {
-            bool originalPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
-            if (originalPlatform)
+            try
             {
-                // Mock the RuntimeInformation.IsOSPlatform to return false for all known platforms
+                bool originalPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
+                
+                IPlayer player = Player.CheckOs();
+                
+                Assert.NotNull(player);
             }
-            
-            IPlayer player = Player.CheckOs();
-            
-            Assert.NotNull(player);
-            
-            if (originalPlatform)
+            catch (Exception e)
             {
-                // Reset the RuntimeInformation.IsOSPlatform to its original state
+                Assert.IsType<Exception>(e);
+                throw;
             }
         }
     }
