@@ -173,19 +173,19 @@ namespace Alis.Core.Ecs.Component
         ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public virtual void OnPressDownKey(KeyCode key) => Logger.Trace();
+        public virtual void OnPressDownKey(KeyCodes key) => Logger.Trace();
         
         /// <summary>
         ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public virtual void OnReleaseKey(KeyCode key) => Logger.Trace();
+        public virtual void OnReleaseKey(KeyCodes key) => Logger.Trace();
         
         /// <summary>
         ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public virtual void OnPressKey(KeyCode key) => Logger.Trace();
+        public virtual void OnPressKey(KeyCodes key) => Logger.Trace();
         
         /// <summary>
         ///     Ons the collision enter using the specified game object

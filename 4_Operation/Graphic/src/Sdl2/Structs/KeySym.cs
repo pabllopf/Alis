@@ -47,7 +47,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The sym
         /// </summary>
-        public readonly KeyCode sym;
+        public readonly KeyCodes sym;
         
         /// <summary>
         ///     The mod

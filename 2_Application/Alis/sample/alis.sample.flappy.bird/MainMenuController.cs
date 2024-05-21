@@ -42,9 +42,9 @@ namespace Alis.Sample.Flappy.Bird
         ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnPressKey(KeyCode key)
+        public override void OnPressKey(KeyCodes key)
         {
-            if (key == KeyCode.Space)
+            if (key == KeyCodes.Space)
             {
                 Context.SceneManager.LoadScene("Game Scene");
             }

@@ -27,12 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Core.Aspect.Data.Mapping
 {
     /// <summary>
     ///     The sdl keycode enum
     /// </summary>
-    public enum KeyCode
+    public enum KeyCodes
     {
         /// <summary>
         ///     The  unknown sdl keycode

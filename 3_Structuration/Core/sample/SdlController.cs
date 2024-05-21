@@ -82,7 +82,7 @@ namespace Alis.Core.Sample
         /// <summary>
         ///     The sdl keycode
         /// </summary>
-        private static List<KeyCode> _keys = new List<KeyCode>((KeyCode[]) Enum.GetValues(typeof(KeyCode)));
+        private static List<KeyCodes> _keys = new List<KeyCodes>((KeyCodes[]) Enum.GetValues(typeof(KeyCodes)));
         
         /// <summary>
         ///     The blue
@@ -275,27 +275,27 @@ namespace Alis.Core.Sample
                             _running = false;
                             break;
                         case EventType.Keydown:
-                            if (_sdlEvent.key.keySym.sym == KeyCode.Escape)
+                            if (_sdlEvent.key.keySym.sym == KeyCodes.Escape)
                             {
                                 _running = false;
                             }
                             
-                            if (_sdlEvent.key.keySym.sym == KeyCode.Up)
+                            if (_sdlEvent.key.keySym.sym == KeyCodes.Up)
                             {
                                 rectBorder.y -= 10;
                             }
                             
-                            if (_sdlEvent.key.keySym.sym == KeyCode.Down)
+                            if (_sdlEvent.key.keySym.sym == KeyCodes.Down)
                             {
                                 rectBorder.y += 10;
                             }
                             
-                            if (_sdlEvent.key.keySym.sym == KeyCode.Left)
+                            if (_sdlEvent.key.keySym.sym == KeyCodes.Left)
                             {
                                 rectBorder.x -= 10;
                             }
                             
-                            if (_sdlEvent.key.keySym.sym == KeyCode.Right)
+                            if (_sdlEvent.key.keySym.sym == KeyCodes.Right)
                             {
                                 rectBorder.x += 10;
                             }

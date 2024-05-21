@@ -3388,7 +3388,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl keycode</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static KeyCode ScanCodeToKeyCode(SdlScancode x) => (KeyCode) ((int) x | KScancodeMask);
+        public static KeyCodes ScanCodeToKeyCode(SdlScancode x) => (KeyCodes) ((int) x | KScancodeMask);
         
         /// <summary>
         ///     Gets the keyboard focus
@@ -3433,7 +3433,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl keycode</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static KeyCode GetKeyFromScancode(SdlScancode scancode) => NativeSdl.InternalGetKeyFromScancode(scancode);
+        public static KeyCodes GetKeyFromScancode(SdlScancode scancode) => NativeSdl.InternalGetKeyFromScancode(scancode);
         
         /// <summary>
         ///     Gets the scancode from key using the specified key
@@ -3442,7 +3442,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl scancode</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlScancode GetScancodeFromKey(KeyCode key) => NativeSdl.InternalGetScancodeFromKey(key);
+        public static SdlScancode GetScancodeFromKey(KeyCodes key) => NativeSdl.InternalGetScancodeFromKey(key);
         
         /// <summary>
         ///     Sdl the get scancode name using the specified scancode
@@ -3475,7 +3475,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The string</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string SGetKeyName(KeyCode key)
+        public static string SGetKeyName(KeyCodes key)
         {
             Validator.Validate(key, nameof(key));
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetKeyName(key));
@@ -3490,7 +3490,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl keycode</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static KeyCode GetKeyFromName([IsNotNull] string name) => NativeSdl.InternalGetKeyFromName(name);
+        public static KeyCodes GetKeyFromName([IsNotNull] string name) => NativeSdl.InternalGetKeyFromName(name);
         
         /// <summary>
         ///     Starts the text input

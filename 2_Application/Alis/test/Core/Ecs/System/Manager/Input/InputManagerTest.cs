@@ -164,7 +164,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void NotifyKeyHold_ValidInput_v2()
         {
             InputManager inputManager = new InputManager();
-            inputManager.tempListOfKeys = new List<KeyCode> {KeyCode.A, KeyCode.B};
+            inputManager.tempListOfKeys = new List<KeyCodes> {KeyCodes.A, KeyCodes.B};
             inputManager.NotifyKeyHold();
             
         }
@@ -176,7 +176,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void NotifyKeyPress_ValidInput_v2()
         {
             InputManager inputManager = new InputManager();
-            inputManager.NotifyKeyPress(KeyCode.A);
+            inputManager.NotifyKeyPress(KeyCodes.A);
             
         }
         
@@ -187,7 +187,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void NotifyKeyRelease_ValidInput_v2()
         {
             InputManager inputManager = new InputManager();
-            inputManager.NotifyKeyRelease(KeyCode.A);
+            inputManager.NotifyKeyRelease(KeyCodes.A);
             
         }
         
@@ -198,7 +198,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void NotifyKeyHoldWithKey_ValidInput()
         {
             InputManager inputManager = new InputManager();
-            inputManager.NotifyKeyHold(KeyCode.A);
+            inputManager.NotifyKeyHold(KeyCodes.A);
             
         }
     }

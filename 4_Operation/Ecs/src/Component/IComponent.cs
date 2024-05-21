@@ -52,19 +52,19 @@ namespace Alis.Core.Ecs.Component
         ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public void OnPressDownKey(KeyCode key);
+        public void OnPressDownKey(KeyCodes key);
         
         /// <summary>
         ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public void OnReleaseKey(KeyCode key);
+        public void OnReleaseKey(KeyCodes key);
         
         /// <summary>
         ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public void OnPressKey(KeyCode key);
+        public void OnPressKey(KeyCodes key);
         
         /// <summary>
         ///     Ons the collision enter using the specified game object

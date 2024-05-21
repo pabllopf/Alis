@@ -63,9 +63,9 @@ namespace Alis.Sample.SplitCamera
         ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnPressDownKey(KeyCode key)
+        public override void OnPressDownKey(KeyCodes key)
         {
-            if (key == KeyCode.W)
+            if (key == KeyCodes.W)
             {
                 GameObject.Transform = new Transform
                 {
@@ -75,7 +75,7 @@ namespace Alis.Sample.SplitCamera
                 };
             }
             
-            if (key == KeyCode.S)
+            if (key == KeyCodes.S)
             {
                 GameObject.Transform = new Transform
                 {
@@ -85,7 +85,7 @@ namespace Alis.Sample.SplitCamera
                 };
             }
             
-            if (key == KeyCode.A)
+            if (key == KeyCodes.A)
             {
                 GameObject.Transform = new Transform
                 {
@@ -95,7 +95,7 @@ namespace Alis.Sample.SplitCamera
                 };
             }
             
-            if (key == KeyCode.D)
+            if (key == KeyCodes.D)
             {
                 GameObject.Transform = new Transform
                 {
