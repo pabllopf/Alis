@@ -70,7 +70,7 @@ namespace Alis.Sample.Pong
         ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnReleaseKey(KeyCode key)
+        public override void OnReleaseKey(KeyCodes key)
         {
             Vector2 velocity = boxCollider.Body.LinearVelocity;
             switch (playerId)
@@ -78,11 +78,11 @@ namespace Alis.Sample.Pong
                 case 1:
                     switch (key)
                     {
-                        case KeyCode.W:
+                        case KeyCodes.W:
                             velocity = new Vector2(velocity.X, 0);
                             boxCollider.Body.LinearVelocity = velocity;
                             return;
-                        case KeyCode.S:
+                        case KeyCodes.S:
                             velocity = new Vector2(velocity.X, 0);
                             boxCollider.Body.LinearVelocity = velocity;
                             break;
@@ -92,11 +92,11 @@ namespace Alis.Sample.Pong
                 case 2:
                     switch (key)
                     {
-                        case KeyCode.Up:
+                        case KeyCodes.Up:
                             velocity = new Vector2(velocity.X, 0);
                             boxCollider.Body.LinearVelocity = velocity;
                             return;
-                        case KeyCode.Down:
+                        case KeyCodes.Down:
                             velocity = new Vector2(velocity.X, 0);
                             boxCollider.Body.LinearVelocity = velocity;
                             break;
@@ -111,7 +111,7 @@ namespace Alis.Sample.Pong
         ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnPressDownKey(KeyCode key)
+        public override void OnPressDownKey(KeyCodes key)
         {
             Vector2 velocity = boxCollider.Body.LinearVelocity;
             
@@ -120,11 +120,11 @@ namespace Alis.Sample.Pong
                 case 1:
                     switch (key)
                     {
-                        case KeyCode.W:
+                        case KeyCodes.W:
                             velocity = new Vector2(velocity.X, -3);
                             boxCollider.Body.LinearVelocity = velocity;
                             return;
-                        case KeyCode.S:
+                        case KeyCodes.S:
                             velocity = new Vector2(velocity.X, 3);
                             boxCollider.Body.LinearVelocity = velocity;
                             break;
@@ -134,11 +134,11 @@ namespace Alis.Sample.Pong
                 case 2:
                     switch (key)
                     {
-                        case KeyCode.Up:
+                        case KeyCodes.Up:
                             velocity = new Vector2(velocity.X, -3);
                             boxCollider.Body.LinearVelocity = velocity;
                             return;
-                        case KeyCode.Down:
+                        case KeyCodes.Down:
                             velocity = new Vector2(velocity.X, 3);
                             boxCollider.Body.LinearVelocity = velocity;
                             break;

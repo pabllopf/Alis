@@ -64,7 +64,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// <summary>
         ///     Temp list of keys
         /// </summary>
-        internal List<KeyCode> tempListOfKeys = new List<KeyCode>();
+        internal List<KeyCodes> tempListOfKeys = new List<KeyCodes>();
         
         /// <summary>
         ///     Ons the init
@@ -72,7 +72,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         public override void OnInit()
         {
             Logger.Trace();
-            tempListOfKeys = new List<KeyCode>();
+            tempListOfKeys = new List<KeyCodes>();
         }
         
         /// <summary>
@@ -117,7 +117,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         {
             if (sdlEvent.type == EventType.Keyup)
             {
-                KeyCode indexUp = sdlEvent.key.keySym.sym;
+                KeyCodes indexUp = sdlEvent.key.keySym.sym;
                 
                 if (tempListOfKeys.Contains(indexUp))
                 {
@@ -134,7 +134,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         {
             if (sdlEvent.type == EventType.Keydown)
             {
-                KeyCode indexDown = sdlEvent.key.keySym.sym;
+                KeyCodes indexDown = sdlEvent.key.keySym.sym;
                 if (!tempListOfKeys.Contains(indexDown))
                 {
                     tempListOfKeys.Add(indexDown);
@@ -180,7 +180,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// </summary>
         internal void NotifyKeyHold()
         {
-            foreach (KeyCode key in tempListOfKeys)
+            foreach (KeyCodes key in tempListOfKeys)
             {
                 NotifyKeyHold(key);
             }
@@ -190,7 +190,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         ///     Notifies the key press using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        internal void NotifyKeyPress(KeyCode key)
+        internal void NotifyKeyPress(KeyCodes key)
         {
             if (Context == null)
             {
@@ -207,7 +207,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         ///     Notifies the key release using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        internal void NotifyKeyRelease(KeyCode key)
+        internal void NotifyKeyRelease(KeyCodes key)
         {
             if (Context == null)
             {
@@ -224,7 +224,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         ///     Notifies the key hold using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        internal void NotifyKeyHold(KeyCode key)
+        internal void NotifyKeyHold(KeyCodes key)
         {
             if (Context == null)
             {

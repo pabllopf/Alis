@@ -284,7 +284,7 @@ namespace Alis.Test.Core.Ecs.Component
         public void OnPressDownKey_CallsLoggerTrace()
         {
             MockComponent mockComponent = new MockComponent();
-            mockComponent.OnPressDownKey(KeyCode.A);
+            mockComponent.OnPressDownKey(KeyCodes.A);
         }
         
         /// <summary>
@@ -294,7 +294,7 @@ namespace Alis.Test.Core.Ecs.Component
         public void OnReleaseKey_CallsLoggerTrace()
         {
             MockComponent mockComponent = new MockComponent();
-            mockComponent.OnReleaseKey(KeyCode.A);
+            mockComponent.OnReleaseKey(KeyCodes.A);
         }
         
         /// <summary>
@@ -304,7 +304,7 @@ namespace Alis.Test.Core.Ecs.Component
         public void OnPressKey_CallsLoggerTrace()
         {
             MockComponent mockComponent = new MockComponent();
-            mockComponent.OnPressKey(KeyCode.A);
+            mockComponent.OnPressKey(KeyCodes.A);
         }
         
         /// <summary>

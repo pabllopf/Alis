@@ -475,7 +475,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl keycode</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyFromScancode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern KeyCode InternalGetKeyFromScancode(SdlScancode scancode);
+        internal static extern KeyCodes InternalGetKeyFromScancode(SdlScancode scancode);
         
         /// <summary>
         ///     Sdl the get scancode from key using the specified key
@@ -484,7 +484,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl scancode</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetScancodeFromKey", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern SdlScancode InternalGetScancodeFromKey(KeyCode key);
+        internal static extern SdlScancode InternalGetScancodeFromKey(KeyCodes key);
         
         /// <summary>
         ///     Internals the sdl get scancode name using the specified scancode
@@ -511,7 +511,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyName", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern IntPtr InternalGetKeyName(KeyCode key);
+        internal static extern IntPtr InternalGetKeyName(KeyCodes key);
         
         /// <summary>
         ///     Internals the sdl get key from name using the specified name
@@ -520,7 +520,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl keycode</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyFromName", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern KeyCode InternalGetKeyFromName([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string name);
+        internal static extern KeyCodes InternalGetKeyFromName([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string name);
         
         /// <summary>
         ///     Sdl the start text input

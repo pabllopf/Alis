@@ -70,9 +70,9 @@ namespace Alis.Sample.Flappy.Bird
         ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnPressKey(KeyCode key)
+        public override void OnPressKey(KeyCodes key)
         {
-            if (key == KeyCode.Space)
+            if (key == KeyCodes.Space)
             {
                 boxCollider.Body.LinearVelocity = new Vector2(0, -8f);
                 Logger.Info("Go up!");
