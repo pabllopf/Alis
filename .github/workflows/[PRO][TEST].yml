@@ -1,12 +1,16 @@
 name: "[PRO][TEST]"
 
 on:
+  push:
+    branches: [ master ]
+    
   schedule:
     - cron: '30 1 * * *'
 
 jobs:
   macos_12_x64:
     runs-on: macos-12
+    if: "contains(github.event.head_commit.message, 'test: pro')"
     steps:
       - name: Check
         uses: actions/checkout@v4
@@ -38,6 +42,7 @@ jobs:
 
   macos_13_x64:
     runs-on: macos-13
+    if: "contains(github.event.head_commit.message, 'test: pro')"
     steps:
       - name: Check
         uses: actions/checkout@v4
@@ -69,7 +74,7 @@ jobs:
 
   windows_2022_x64:
     runs-on: windows-2022
-
+    if: "contains(github.event.head_commit.message, 'test: pro')"
     steps:
       - name: Check
         uses: actions/checkout@v4
@@ -102,7 +107,7 @@ jobs:
 
   windows_2019_x64:
     runs-on: windows-2019
-
+    if: "contains(github.event.head_commit.message, 'test: pro')"
     steps:
       - name: Check
         uses: actions/checkout@v4
@@ -134,7 +139,7 @@ jobs:
   
   ubuntu_22_04_x64:
     runs-on: ubuntu-22.04
-    
+    if: "contains(github.event.head_commit.message, 'test: pro')"
     steps:
       - name: Check
         uses: actions/checkout@v4
