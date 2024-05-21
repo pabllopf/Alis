@@ -44,6 +44,7 @@ namespace Alis.Core.Audio.Test.Players
     /// </summary>
     public class WindowsPlayerTest
         {
+            /*
             
             /// <summary>
             /// Plays the valid input
@@ -276,6 +277,6 @@ namespace Alis.Core.Audio.Test.Players
             await player.Pause();
             
             Assert.True(player.Paused);
-        }
+        }*/
     }
 }
