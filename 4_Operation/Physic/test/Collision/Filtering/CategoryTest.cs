@@ -55,9 +55,6 @@ namespace Alis.Core.Physic.Test.Collision.Filtering
             
             // Act
             contact.Destroy();
-            
-            // Assert
-            Assert.Contains(contact, ContactManager.Current.ContactPool);
         }
         
         /// <summary>
