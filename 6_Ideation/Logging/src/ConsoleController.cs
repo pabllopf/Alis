@@ -28,12 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Logging
 {
     /// <summary>
     ///     The console controller class
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class ConsoleController
     {
         /// <summary>

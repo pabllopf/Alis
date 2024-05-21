@@ -29,12 +29,14 @@
 
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Logging
 {
     /// <summary>
     ///     The message class
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class Message
     {
         /// <summary>

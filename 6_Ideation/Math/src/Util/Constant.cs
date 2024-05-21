@@ -27,11 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Core.Aspect.Math.Util
 {
     /// <summary>
     ///     The math constants class
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class Constant
     {
         /// <summary>
