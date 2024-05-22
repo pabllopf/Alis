@@ -34,7 +34,7 @@ namespace Alis.Core.Aspect.Data.Mapping
     /// <summary>
     ///     The sdl keycode enum
     /// </summary>
-    public enum KeyCodes
+    public enum KeyCodes : int
     {
         /// <summary>
         ///     The  unknown sdl keycode
@@ -44,32 +44,32 @@ namespace Alis.Core.Aspect.Data.Mapping
         /// <summary>
         ///     The  return sdl keycode
         /// </summary>
-        Return = '\r',
+        Return = 13,
         
         /// <summary>
         ///     The  escape sdl keycode
         /// </summary>
-        Escape = 27, // '\033'
+        Escape = 27,
         
         /// <summary>
         ///     The  backspace sdl keycode
         /// </summary>
-        Backspace = '\b',
+        Backspace = 8,
         
         /// <summary>
         ///     The  tab sdl keycode
         /// </summary>
-        Tab = '\t',
+        Tab = 9,
         
         /// <summary>
         ///     The  space sdl keycode
         /// </summary>
-        Space = ' ',
+        Space = 32,
         
         /// <summary>
         ///     The  exclaim sdl keycode
         /// </summary>
-        Exclaim = '!',
+        Exclaim = 33,
         
         /// <summary>
         ///     The  quotedbl sdl keycode
