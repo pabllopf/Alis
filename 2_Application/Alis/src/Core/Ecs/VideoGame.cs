@@ -179,22 +179,9 @@ namespace Alis.Core.Ecs
         [ExcludeFromCodeCoverage]
         public void Run()
         {
-            Dictionary<Type, AManager>.ValueCollection tempManagers = Managers.Values;
-            
-            foreach (AManager manager in tempManagers)
-            {
-                manager.OnInit();
-            }
-            
-            foreach (AManager manager in tempManagers)
-            {
-                manager.OnAwake();
-            }
-            
-            foreach (AManager manager in tempManagers)
-            {
-                manager.OnStart();
-            }
+            OnInit();
+            OnAwake();
+            OnStart();
             
             double currentTime = TimeManager.Clock.Elapsed.TotalSeconds;
             double accumulator = 0;
@@ -251,27 +238,10 @@ namespace Alis.Core.Ecs
                     lastTime = newTime;
                 }
                 
-                // Dispatch Events
-                foreach (AManager manager in tempManagers)
-                {
-                    manager.OnDispatchEvents();
-                }
-                
-                // Update Scripts
-                foreach (AManager manager in tempManagers)
-                {
-                    manager.OnBeforeUpdate();
-                }
-                
-                foreach (AManager manager in tempManagers)
-                {
-                    manager.OnUpdate();
-                }
-                
-                foreach (AManager manager in tempManagers)
-                {
-                    manager.OnAfterUpdate();
-                }
+                OnDispatchEvents();
+                OnBeforeUpdate();
+                OnUpdate();
+                OnAfterUpdate();
                 
                 // Run fixed methods
                 while (accumulator >= TimeManager.Configuration.FixedTimeStep)
@@ -287,43 +257,18 @@ namespace Alis.Core.Ecs
                     TimeManager.FixedUnscaledTime += TimeManager.FixedUnscaledDeltaTime;
                     TimeManager.FixedUnscaledTimeAsDouble += TimeManager.FixedUnscaledDeltaTime;
                     
-                    foreach (AManager manager in tempManagers)
-                    {
-                        manager.OnBeforeFixedUpdate();
-                    }
-                    
-                    foreach (AManager manager in tempManagers)
-                    {
-                        manager.OnFixedUpdate();
-                    }
-                    
-                    foreach (AManager manager in tempManagers)
-                    {
-                        manager.OnAfterFixedUpdate();
-                    }
+                    OnBeforeFixedUpdate();
+                    OnFixedUpdate();
+                    OnAfterFixedUpdate();
                     
                     accumulator -= TimeManager.Configuration.FixedTimeStep;
                     
                     TimeManager.InFixedTimeStep = false;
                 }
                 
-                // Calculate method to calculate math
-                foreach (AManager manager in tempManagers)
-                {
-                    manager.OnCalculate();
-                }
-                
-                // Render Game
-                foreach (AManager manager in tempManagers)
-                {
-                    manager.OnDraw();
-                }
-                
-                // Render the Ui
-                foreach (AManager manager in tempManagers)
-                {
-                    manager.OnGui();
-                }
+                OnCalculate();
+                OnDraw();
+                OnGui();
                 
                 // Update SmoothDeltaTime
                 smoothDeltaTimeSum += TimeManager.DeltaTime - lastDeltaTime;
@@ -331,45 +276,230 @@ namespace Alis.Core.Ecs
                 TimeManager.SmoothDeltaTime = smoothDeltaTimeSum / smoothDeltaTimeCount;
                 lastDeltaTime = TimeManager.DeltaTime;
                 
-                // Log output every 1 second
-                if ((newTime - lastLogTime >= 0.5) && TimeManager.Configuration.LogOutput)
-                {
-                    Logger.Trace(
-                        " FrameCount: " + TimeManager.FrameCount +
-                        " TotalFrames: " + TimeManager.TotalFrames +
-                        " AverageFps: " + TimeManager.AverageFrames +
-                        " Time: " + TimeManager.DeltaTime +
-                        " Accumulator: " + accumulator +
-                        " FixedTimeStep: " + TimeManager.Configuration.FixedTimeStep +
-                        " FixedTime: " + TimeManager.FixedTime +
-                        " FixedUnscaledDeltaTime: " + TimeManager.FixedUnscaledDeltaTime +
-                        " FixedDeltaTime: " + TimeManager.FixedDeltaTime +
-                        " FixedTimeAsDouble: " + TimeManager.FixedTimeAsDouble +
-                        " FixedUnscaledTime: " + TimeManager.FixedUnscaledTime +
-                        " FixedUnscaledTimeAsDouble: " + TimeManager.FixedUnscaledTimeAsDouble +
-                        " InFixedTimeStep: " + TimeManager.InFixedTimeStep +
-                        " MaximumDeltaTime: " + TimeManager.MaximumDeltaTime +
-                        " RealtimeSinceStartup: " + TimeManager.RealtimeSinceStartup +
-                        " RealtimeSinceStartupAsDouble: " + TimeManager.RealtimeSinceStartupAsDouble +
-                        " SmoothDeltaTime: " + TimeManager.SmoothDeltaTime +
-                        " TimeAsDouble: " + TimeManager.TimeAsDouble +
-                        " TimeScale: " + TimeManager.TimeScale +
-                        " UnscaledDeltaTime: " + TimeManager.UnscaledDeltaTime +
-                        " UnscaledTime: " + TimeManager.UnscaledTime +
-                        " UnscaledTimeAsDouble: " + TimeManager.UnscaledTimeAsDouble);
-                    lastLogTime = newTime;
-                }
+                lastLogTime = LastLogTime(newTime, lastLogTime);
             }
             
-            
-            foreach (AManager manager in tempManagers)
+            OnStop();
+            OnExit();
+        }
+        
+        /// <summary>
+        /// Ons the exit
+        /// </summary>
+        [ExcludeFromCodeCoverage]
+        private void OnExit()
+        {
+            foreach (AManager manager in Managers.Values)
+            {
+                manager.OnExit();
+            }
+        }
+        
+        /// <summary>
+        /// Ons the stop
+        /// </summary>
+        [ExcludeFromCodeCoverage]
+        private void OnStop()
+        {
+            foreach (AManager manager in Managers.Values)
             {
                 manager.OnStop();
             }
-            
-            foreach (AManager manager in tempManagers)
+        }
+        
+        /// <summary>
+        /// Lasts the log time using the specified new time
+        /// </summary>
+        /// <param name="newTime">The new time</param>
+        /// <param name="lastLogTime">The last log time</param>
+        /// <returns>The last log time</returns>
+        [ExcludeFromCodeCoverage]
+        private double LastLogTime(double newTime, double lastLogTime)
+        {
+            // Log output every 1 second
+            if ((newTime - lastLogTime >= 0.5) && TimeManager.Configuration.LogOutput)
             {
-                manager.OnExit();
+                Logger.Trace(
+                    " FrameCount: " + TimeManager.FrameCount +
+                    " TotalFrames: " + TimeManager.TotalFrames +
+                    " AverageFps: " + TimeManager.AverageFrames +
+                    " Time: " + TimeManager.DeltaTime +
+                    " FixedTimeStep: " + TimeManager.Configuration.FixedTimeStep +
+                    " FixedTime: " + TimeManager.FixedTime +
+                    " FixedUnscaledDeltaTime: " + TimeManager.FixedUnscaledDeltaTime +
+                    " FixedDeltaTime: " + TimeManager.FixedDeltaTime +
+                    " FixedTimeAsDouble: " + TimeManager.FixedTimeAsDouble +
+                    " FixedUnscaledTime: " + TimeManager.FixedUnscaledTime +
+                    " FixedUnscaledTimeAsDouble: " + TimeManager.FixedUnscaledTimeAsDouble +
+                    " InFixedTimeStep: " + TimeManager.InFixedTimeStep +
+                    " MaximumDeltaTime: " + TimeManager.MaximumDeltaTime +
+                    " RealtimeSinceStartup: " + TimeManager.RealtimeSinceStartup +
+                    " RealtimeSinceStartupAsDouble: " + TimeManager.RealtimeSinceStartupAsDouble +
+                    " SmoothDeltaTime: " + TimeManager.SmoothDeltaTime +
+                    " TimeAsDouble: " + TimeManager.TimeAsDouble +
+                    " TimeScale: " + TimeManager.TimeScale +
+                    " UnscaledDeltaTime: " + TimeManager.UnscaledDeltaTime +
+                    " UnscaledTime: " + TimeManager.UnscaledTime +
+                    " UnscaledTimeAsDouble: " + TimeManager.UnscaledTimeAsDouble);
+                lastLogTime = newTime;
+            }
+            
+            return lastLogTime;
+        }
+        
+        /// <summary>
+        /// Ons the gui
+        /// </summary>
+        [ExcludeFromCodeCoverage]
+        private void OnGui()
+        {
+            foreach (AManager manager in Managers.Values)
+            {
+                manager.OnGui();
+            }
+        }
+        
+        /// <summary>
+        /// Ons the draw
+        /// </summary>
+        [ExcludeFromCodeCoverage]
+        private void OnDraw()
+        {
+            foreach (AManager manager in Managers.Values)
+            {
+                manager.OnDraw();
+            }
+        }
+        
+        /// <summary>
+        /// Ons the calculate
+        /// </summary>
+        [ExcludeFromCodeCoverage]
+        private void OnCalculate()
+        {
+            foreach (AManager manager in Managers.Values)
+            {
+                manager.OnCalculate();
+            }
+        }
+        
+        /// <summary>
+        /// Ons the after fixed update
+        /// </summary>
+        [ExcludeFromCodeCoverage]
+        private void OnAfterFixedUpdate()
+        {
+            foreach (AManager manager in Managers.Values)
+            {
+                manager.OnAfterFixedUpdate();
+            }
+        }
+        
+        /// <summary>
+        /// Ons the fixed update
+        /// </summary>
+        [ExcludeFromCodeCoverage]
+        private void OnFixedUpdate()
+        {
+            foreach (AManager manager in Managers.Values)
+            {
+                manager.OnFixedUpdate();
+            }
+        }
+        
+        /// <summary>
+        /// Ons the before fixed update
+        /// </summary>
+        [ExcludeFromCodeCoverage]
+        private void OnBeforeFixedUpdate()
+        {
+            foreach (AManager manager in Managers.Values)
+            {
+                manager.OnBeforeFixedUpdate();
+            }
+        }
+        
+        /// <summary>
+        /// Ons the after update
+        /// </summary>
+        [ExcludeFromCodeCoverage]
+        private void OnAfterUpdate()
+        {
+            foreach (AManager manager in Managers.Values)
+            {
+                manager.OnAfterUpdate();
+            }
+        }
+        
+        /// <summary>
+        /// Ons the update
+        /// </summary>
+        [ExcludeFromCodeCoverage]
+        private void OnUpdate()
+        {
+            foreach (AManager manager in Managers.Values)
+            {
+                manager.OnUpdate();
+            }
+        }
+        
+        /// <summary>
+        /// Ons the before update
+        /// </summary>
+        [ExcludeFromCodeCoverage]
+        private void OnBeforeUpdate()
+        {
+            foreach (AManager manager in Managers.Values)
+            {
+                manager.OnBeforeUpdate();
+            }
+        }
+        
+        /// <summary>
+        /// Ons the dispatch events
+        /// </summary>
+        [ExcludeFromCodeCoverage]
+        private void OnDispatchEvents()
+        {
+            foreach (AManager manager in Managers.Values)
+            {
+                manager.OnDispatchEvents();
+            }
+        }
+        
+        /// <summary>
+        /// Ons the start
+        /// </summary>
+        [ExcludeFromCodeCoverage]
+        private void OnStart()
+        {
+            foreach (AManager manager in Managers.Values)
+            {
+                manager.OnStart();
+            }
+        }
+        
+        /// <summary>
+        /// Ons the awake
+        /// </summary>
+        [ExcludeFromCodeCoverage]
+        private void OnAwake()
+        {
+            foreach (AManager manager in Managers.Values)
+            {
+                manager.OnAwake();
+            }
+        }
+        
+        /// <summary>
+        /// Ons the init
+        /// </summary>
+        [ExcludeFromCodeCoverage]
+        private void OnInit()
+        {
+            foreach (AManager manager in Managers.Values)
+            {
+                manager.OnInit();
             }
         }
         
