@@ -48,6 +48,9 @@ namespace Alis.Core.Network.Test
     /// </summary>
     public class WebSocketClientFactoryTest
     {
+        /// <summary>
+        /// The web socket server factory
+        /// </summary>
         private IWebSocketServerFactory _webSocketServerFactory;
         
         /// <summary>
@@ -69,6 +72,10 @@ namespace Alis.Core.Network.Test
            await result.CloseAsync(WebSocketCloseStatus.NormalClosure, "", new CancellationToken());
         }
         
+        /// <summary>
+        /// Starts the web server using the specified cts token
+        /// </summary>
+        /// <param name="ctsToken">The cts token</param>
         private async void StartWebServer(CancellationToken ctsToken)
         {
             try
