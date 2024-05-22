@@ -36,6 +36,7 @@ namespace Alis.Core.Aspect.Security.Test
     /// </summary>
     public class SecureBoolTests
     {
+        
         /// <summary>
         ///     Tests that test secure bool constructor
         /// </summary>
