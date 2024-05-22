@@ -13,8 +13,7 @@
         $(AssemblyName.Contains('Template')) == true OR
         $(AssemblyName.Contains('Benchmark')) == true">net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
 
-        <TargetFramework Condition="
-        $(AssemblyName.Contains('Sample')) == true">net8.0</TargetFramework>
+        <TargetFrameworks Condition="$(AssemblyName.Contains('Sample')) == true">net6.0;net7.0;net8.0</TargetFrameworks>
         
         <TargetFrameworks Condition="
         $(AssemblyName.Contains('App')) == true OR 
