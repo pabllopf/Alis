@@ -35,7 +35,7 @@ namespace Alis.Core.Ecs.Component.Audio
     /// <summary>
     ///     The audio clip class
     /// </summary>
-    /// <seealso cref="AudioClipBase" />
+    /// <seealso />
     public class AudioClip
     {
         
@@ -85,7 +85,7 @@ namespace Alis.Core.Ecs.Component.Audio
         /// </summary>
         internal void Play()
         {
-            
+            Logger.Trace();
         }
         
         /// <summary>
@@ -93,7 +93,7 @@ namespace Alis.Core.Ecs.Component.Audio
         /// </summary>
         internal void Stop()
         {
-           
+            Logger.Trace();
         }
         
         /// <summary>
@@ -101,6 +101,7 @@ namespace Alis.Core.Ecs.Component.Audio
         /// </summary>
         internal void Resume()
         {
+            Logger.Trace();
         }
         
         /// <summary>
