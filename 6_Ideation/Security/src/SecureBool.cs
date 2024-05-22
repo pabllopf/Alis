@@ -76,14 +76,41 @@ namespace Alis.Core.Aspect.Security
             }
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator SecureBool(bool value) => new SecureBool(value);
         
+        /// <summary>
+        /// /
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator bool(SecureBool value) => value.Value;
         
-        public static bool operator ==(SecureBool a, SecureBool b) => a.Value == b.Value;
+        /// <summary>
+        /// /
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static bool operator ==(SecureBool a, SecureBool b) => b != null && a != null && a.Value.Equals(b.Value);
         
-        public static bool operator !=(SecureBool a, SecureBool b) => a.Value != b.Value;
+        /// <summary>
+        /// /
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static bool operator !=(SecureBool a, SecureBool b) => b != null && a != null && a.Value != b.Value;
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static bool operator !(SecureBool a) => !a.Value;
         
         /// <summary>
