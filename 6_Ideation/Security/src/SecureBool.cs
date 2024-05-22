@@ -104,7 +104,7 @@ namespace Alis.Core.Aspect.Security
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static bool operator !=(SecureBool a, SecureBool b) => b != null && a != null && a.Value != b.Value;
+        public static bool operator !=(SecureBool a, SecureBool b) => b != null && a != null && !a.Value.Equals(b.Value);
         
         /// <summary>
         /// 
