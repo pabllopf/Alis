@@ -128,18 +128,6 @@ namespace Alis.Core.Aspect.Security
         }
         
         /// <summary>
-        /// Nexts the bool
-        /// </summary>
-        /// <returns>The int</returns>
-        public static int NextBool()
-        {
-            RandomNumberGenerator random = RandomNumberGenerator.Create();
-            byte[] bytes = new byte[sizeof(bool)]; // 1 byte
-            random.GetNonZeroBytes(bytes);
-            return BitConverter.ToBoolean(bytes, 0) ? 1 : 0;
-        }
-        
-        /// <summary>
         /// Nexts the float using the specified i
         /// </summary>
         /// <param name="i">The </param>
