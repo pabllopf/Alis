@@ -6,7 +6,6 @@ insert_final_newline = false
 indent_style = space
 indent_size = 4
 
-
 # Microsoft .NET properties
 csharp_new_line_before_members_in_object_initializers = false
 csharp_preferred_modifier_order = public, private, protected, internal, new, static, abstract, virtual, sealed, readonly, override, extern, unsafe, volatile, async
