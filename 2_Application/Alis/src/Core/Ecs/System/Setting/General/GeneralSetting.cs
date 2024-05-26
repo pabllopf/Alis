@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.System.Setting.General;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 
@@ -43,39 +44,89 @@ namespace Alis.Core.Ecs.System.Setting.General
         IBuilder<GeneralSettingBuilder>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="GeneralSetting"/> class
+        /// </summary>
+        public GeneralSetting()
+        {
+            Debug = false;
+            Name = "Default Name";
+            Description = "Default Description";
+            Version = "0.0.0";
+            Author = "Pablo Perdomo Falcón";
+            License = "GPL-3.0 license";
+            Icon = AssetManager.Find("app.bmp");
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GeneralSetting"/> class
+        /// </summary>
+        /// <param name="debug">The debug</param>
+        /// <param name="name">The name</param>
+        /// <param name="description">The description</param>
+        /// <param name="version">The version</param>
+        /// <param name="author">The author</param>
+        /// <param name="license">The license</param>
+        /// <param name="icon">The icon</param>
+        [JsonConstructor]
+        public GeneralSetting(
+            bool debug,
+            string name,
+            string description,
+            string version,
+            string author,
+            string license,
+            string icon)
+        {
+            Debug = debug;
+            Name = name;
+            Description = description;
+            Version = version;
+            Author = author;
+            License = license;
+            Icon = icon;
+        }
+        
+        /// <summary>
         ///     Gets or sets the value of the debug
         /// </summary>
-        public bool Debug { get; set; } = false;
+        [JsonPropertyName("_Debug_")]
+        public bool Debug { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
-        public string Name { get; set; } = "Default Name";
+        [JsonPropertyName("_Name_")]
+        public string Name { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the description
         /// </summary>
-        public string Description { get; set; } = "Default Description";
+        [JsonPropertyName("_Description_")]
+        public string Description { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the version
         /// </summary>
-        public string Version { get; set; } = "0.0.0";
+        [JsonPropertyName("_Version_")]
+        public string Version { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the author
         /// </summary>
-        public string Author { get; set; } = "Pablo Perdomo Falcón";
+        [JsonPropertyName("_Author_")]
+        public string Author { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the license
         /// </summary>
-        public string License { get; set; } = "GPL-3.0 license";
+        [JsonPropertyName("_License_")]
+        public string License { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the icon
         /// </summary>
-        public string Icon { get; set; } = AssetManager.Find("app.bmp");
+        [JsonPropertyName("_Icon_")]
+        public string Icon { get; set; }
         
         /// <summary>
         ///     Builders this instance

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.System.Setting.Scene;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 
 namespace Alis.Core.Ecs.System.Setting.Scene
@@ -36,13 +37,33 @@ namespace Alis.Core.Ecs.System.Setting.Scene
     ///     The scene setting class
     /// </summary>
     /// <seealso cref="ISceneSetting" />
-    public class SceneSetting : ISceneSetting,
+    public class SceneSetting : 
+        ISceneSetting,
         IBuilder<SceneSettingBuilder>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="SceneSetting"/> class
+        /// </summary>
+        public SceneSetting()
+        {
+            MaxNumberOfScenes = 256;
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SceneSetting"/> class
+        /// </summary>
+        /// <param name="maxNumberOfScenes">The max number of scenes</param>
+        [JsonConstructor]
+        public SceneSetting(int maxNumberOfScenes)
+        {
+            MaxNumberOfScenes = maxNumberOfScenes;
+        }
+        
+        /// <summary>
         /// Gets or sets the value of the max number of scenes
         /// </summary>
-        public int MaxNumberOfScenes { get; set; } = 256;
+        [JsonPropertyName("_MaxNumberOfScenes_")]
+        public int MaxNumberOfScenes { get; set; }
         
         /// <summary>
         /// Builders this instance

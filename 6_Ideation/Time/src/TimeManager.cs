@@ -27,12 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.Serialization;
+
 namespace Alis.Core.Aspect.Time
 {
     /// <summary>
     ///     Provides an interface to get time information.
     /// </summary>
-    public class TimeManager
+    [Serializable]
+    public class TimeManager : ISerializable
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="TimeManager" /> class
@@ -167,5 +171,72 @@ namespace Alis.Core.Aspect.Time
         ///     This is the time in seconds since the start of the game.
         /// </summary>
         public double UnscaledTimeAsDouble { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the is running
+        /// </summary>
+        public bool IsRunning { get; set; } = true;
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TimeManager"/> class
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        protected TimeManager(SerializationInfo info, StreamingContext context)
+        {
+            Configuration = (TimeConfiguration) info.GetValue("Configuration", typeof(TimeConfiguration));
+            Clock = (Clock) info.GetValue("Clock", typeof(Clock));
+            DeltaTime = info.GetSingle("DeltaTime");
+            FixedDeltaTime = info.GetSingle("FixedDeltaTime");
+            FixedTime = info.GetSingle("FixedTime");
+            FixedTimeAsDouble = info.GetDouble("FixedTimeAsDouble");
+            FixedUnscaledDeltaTime = info.GetSingle("FixedUnscaledDeltaTime");
+            FixedUnscaledTime = info.GetSingle("FixedUnscaledTime");
+            FixedUnscaledTimeAsDouble = info.GetDouble("FixedUnscaledTimeAsDouble");
+            FrameCount = info.GetSingle("FrameCount");
+            TotalFrames = info.GetInt32("TotalFrames");
+            AverageFrames = info.GetInt32("AverageFrames");
+            InFixedTimeStep = info.GetBoolean("InFixedTimeStep");
+            MaximumDeltaTime = info.GetSingle("MaximumDeltaTime");
+            SmoothDeltaTime = info.GetSingle("SmoothDeltaTime");
+            Time = info.GetSingle("Time");
+            TimeAsDouble = info.GetDouble("TimeAsDouble");
+            TimeScale = info.GetSingle("TimeScale");
+            UnscaledDeltaTime = info.GetSingle("UnscaledDeltaTime");
+            UnscaledTime = info.GetSingle("UnscaledTime");
+            UnscaledTimeAsDouble = info.GetDouble("UnscaledTimeAsDouble");
+            IsRunning = info.GetBoolean("IsRunning");
+        }
+        
+        /// <summary>
+        /// Gets the object data using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("Configuration", Configuration);
+            info.AddValue("Clock", Clock);
+            info.AddValue("DeltaTime", DeltaTime);
+            info.AddValue("FixedDeltaTime", FixedDeltaTime);
+            info.AddValue("FixedTime", FixedTime);
+            info.AddValue("FixedTimeAsDouble", FixedTimeAsDouble);
+            info.AddValue("FixedUnscaledDeltaTime", FixedUnscaledDeltaTime);
+            info.AddValue("FixedUnscaledTime", FixedUnscaledTime);
+            info.AddValue("FixedUnscaledTimeAsDouble", FixedUnscaledTimeAsDouble);
+            info.AddValue("FrameCount", FrameCount);
+            info.AddValue("TotalFrames", TotalFrames);
+            info.AddValue("AverageFrames", AverageFrames);
+            info.AddValue("InFixedTimeStep", InFixedTimeStep);
+            info.AddValue("MaximumDeltaTime", MaximumDeltaTime);
+            info.AddValue("SmoothDeltaTime", SmoothDeltaTime);
+            info.AddValue("Time", Time);
+            info.AddValue("TimeAsDouble", TimeAsDouble);
+            info.AddValue("TimeScale", TimeScale);
+            info.AddValue("UnscaledDeltaTime", UnscaledDeltaTime);
+            info.AddValue("UnscaledTime", UnscaledTime);
+            info.AddValue("UnscaledTimeAsDouble", UnscaledTimeAsDouble);
+            info.AddValue("IsRunning", IsRunning);
+        }
     }
 }

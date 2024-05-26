@@ -27,14 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 
 namespace Alis.Core.Aspect.Math.Util
 {
     /// <summary>
     ///     The quaternion
     /// </summary>
-    public struct Quaternion
+    [Serializable]
+    public struct Quaternion : ISerializable
     {
         /// <summary>
         ///     The hash code
@@ -52,6 +55,35 @@ namespace Alis.Core.Aspect.Math.Util
         
         /// <summary>The rotation component of the quaternion.</summary>
         public float W { get; private set; }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Quaternion"/> class
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        private Quaternion(SerializationInfo info, StreamingContext context)
+        {
+            X = info.GetSingle("X");
+            Y = info.GetSingle("Y");
+            Z = info.GetSingle("Z");
+            W = info.GetSingle("W");
+            hashCode = info.GetInt32("hashCode");
+        }
+        
+       
+        /// <summary>
+        /// Gets the object data using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("X", X);
+            info.AddValue("Y", Y);
+            info.AddValue("Z", Z);
+            info.AddValue("W", W);
+            info.AddValue("hashCode", hashCode);
+        }
         
         /// <summary>
         ///     The count

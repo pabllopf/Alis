@@ -28,150 +28,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Time;
-using Alis.Core.Ecs.Entity.Property;
 using Alis.Core.Ecs.System;
-using Alis.Core.Ecs.System.Manager;
-using Alis.Core.Ecs.System.Manager.Audio;
-using Alis.Core.Ecs.System.Manager.Graphic;
-using Alis.Core.Ecs.System.Manager.Input;
-using Alis.Core.Ecs.System.Manager.Network;
-using Alis.Core.Ecs.System.Manager.Physic;
-using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
 
 namespace Alis.Core.Ecs
 {
     /// <summary>
-    ///     The video game class
+    /// The video game class
     /// </summary>
-    /// <seealso cref="IGame" />
-    /// <seealso cref="ICrud{Manager}" />
-    /// <seealso cref="IHasContext{Context}" />
-    public sealed class VideoGame : IGame, ICrud<AManager>, IHasContext<Context>
+    /// <seealso cref="IGame"/>
+    public sealed class VideoGame : IGame
     {
+        [JsonPropertyName("_Instance_", true, true)]
+        private static VideoGame _instancie;
+        
         /// <summary>
-        ///     Initializes a new instance of the <see cref="VideoGame" /> class
+        /// Initializes a new instance of the <see cref="VideoGame"/> class
         /// </summary>
-        /// <param name="settings">The settings</param>
-        /// <param name="audioManager">The audio manager</param>
-        /// <param name="graphicManager">The graphic manager</param>
-        /// <param name="inputManager">The input manager</param>
-        /// <param name="networkManager">The network manager</param>
-        /// <param name="physicManager">The physic manager</param>
-        /// <param name="sceneManager">The scene manager</param>
-        /// <param name="context">The context</param>
-        /// <param name="managers">The managers</param>
         [ExcludeFromCodeCoverage]
-        public VideoGame(
-            Settings settings,
-            AudioManager audioManager,
-            GraphicManager graphicManager,
-            InputManager inputManager,
-            NetworkManager networkManager,
-            PhysicManager physicManager,
-            SceneManager sceneManager,
-            Context context = null,
-            params AManager[] managers)
+        public VideoGame()
         {
-            context ??= new Context(this, settings);
-            Managers = new Dictionary<Type, AManager>();
-            Context = context;
-            audioManager.SetContext(context);
-            graphicManager.SetContext(context);
-            inputManager.SetContext(context);
-            networkManager.SetContext(context);
-            physicManager.SetContext(context);
-            sceneManager.SetContext(context);
-            
-            foreach (AManager manager in managers)
-            {
-                Managers.Add(manager.GetType(), manager);
-            }
-            
-            foreach (AManager manager in managers)
-            {
-                manager.SetContext(Context);
-            }
-            
-            Add(audioManager);
-            Add(graphicManager);
-            Add(inputManager);
-            Add(networkManager);
-            Add(physicManager);
-            Add(sceneManager);
+            Context = new Context(new Settings());
+            _instancie = this;
         }
         
         /// <summary>
-        ///     The time manager base
+        /// Initializes a new instance of the <see cref="VideoGame"/> class
         /// </summary>
-        internal TimeManager TimeManager { get; } = new TimeManager();
-        
-        /// <summary>
-        ///     Gets or sets the value of the managers
-        /// </summary>
-        private Dictionary<Type, AManager> Managers { get; }
+        /// <param name="context">The context</param>
+        [JsonConstructor]
+        public VideoGame(Context context)
+        {
+            Context = context;
+            _instancie = this;
+        }
         
         /// <summary>
         ///     Gets or sets the value of the context
         /// </summary>
-        internal Context Context { get; set; }
-        
-        /// <summary>
-        ///     Gets or sets the value of the settings
-        /// </summary>
-        public Settings Settings
-        {
-            get => Context.Settings;
-            set => Context.Settings = value;
-        }
-        
-        /// <summary>
-        ///     Adds the component
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="component">The component</param>
-        public void Add<T>(T component) where T : AManager
-        {
-            component.SetContext(Context);
-            Managers.Add(typeof(T), component);
-        }
-        
-        /// <summary>
-        ///     Removes the component
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="component">The component</param>
-        public void Remove<T>(T component) where T : AManager => Managers.Remove(typeof(T));
-        
-        /// <summary>
-        ///     Gets this instance
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <returns>The</returns>
-        public T Get<T>() where T : AManager => (T) Managers[typeof(T)];
-        
-        /// <summary>
-        ///     Describes whether this instance contains
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <returns>The bool</returns>
-        public bool Contains<T>() where T : AManager => Managers.ContainsKey(typeof(T));
-        
-        /// <summary>
-        ///     Clears this instance
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        public void Clear<T>() where T : AManager => Managers.Clear();
-        
-        /// <summary>
-        ///     Gets or sets the value of the is running
-        /// </summary>
-        public bool IsRunning { get; set; } = true;
+        [JsonPropertyName("_Context_")]
+        public Context Context { get; set; }
         
         /// <summary>
         ///     Run program
@@ -183,14 +83,14 @@ namespace Alis.Core.Ecs
             OnAwake();
             OnStart();
             
-            double currentTime = TimeManager.Clock.Elapsed.TotalSeconds;
+            double currentTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
             double accumulator = 0;
             
             // Variables for calculating FPS
-            double lastTime = TimeManager.Clock.Elapsed.TotalSeconds;
-            TimeManager.FrameCount = 0;
-            TimeManager.TotalFrames = 0;
-            TimeManager.AverageFrames = 0;
+            double lastTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
+            Context.TimeManager.FrameCount = 0;
+            Context.TimeManager.TotalFrames = 0;
+            Context.TimeManager.AverageFrames = 0;
             
             // Variables for calculating average FPS
             double totalTime = 0;
@@ -201,40 +101,40 @@ namespace Alis.Core.Ecs
             int smoothDeltaTimeCount = 0;
             
             // Variable for log output
-            double lastLogTime = TimeManager.Clock.Elapsed.TotalSeconds;
+            double lastLogTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
             
             
-            while (IsRunning)
+            while (Context.TimeManager.IsRunning)
             {
-                double newTime = TimeManager.Clock.Elapsed.TotalSeconds;
-                TimeManager.DeltaTime = (float) (newTime - currentTime);
+                double newTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
+                Context.TimeManager.DeltaTime = (float) (newTime - currentTime);
                 
-                // Update TimeManager properties
-                TimeManager.UnscaledDeltaTime = (float) (newTime - currentTime);
-                TimeManager.UnscaledTime += TimeManager.UnscaledDeltaTime;
-                TimeManager.UnscaledTimeAsDouble += TimeManager.UnscaledDeltaTime;
-                TimeManager.Time = TimeManager.UnscaledTime * TimeManager.TimeScale;
-                TimeManager.TimeAsDouble = TimeManager.UnscaledTimeAsDouble * TimeManager.TimeScale;
+                // Update Context.TimeManager properties
+                Context.TimeManager.UnscaledDeltaTime = (float) (newTime - currentTime);
+                Context.TimeManager.UnscaledTime += Context.TimeManager.UnscaledDeltaTime;
+                Context.TimeManager.UnscaledTimeAsDouble += Context.TimeManager.UnscaledDeltaTime;
+                Context.TimeManager.Time = Context.TimeManager.UnscaledTime * Context.TimeManager.TimeScale;
+                Context.TimeManager.TimeAsDouble = Context.TimeManager.UnscaledTimeAsDouble * Context.TimeManager.TimeScale;
                 
                 // Update MaximumDeltaTime
-                TimeManager.MaximumDeltaTime = Math.Max(TimeManager.MaximumDeltaTime, TimeManager.DeltaTime);
+                Context.TimeManager.MaximumDeltaTime = Math.Max(Context.TimeManager.MaximumDeltaTime, Context.TimeManager.DeltaTime);
                 
                 currentTime = newTime;
-                accumulator += TimeManager.DeltaTime;
+                accumulator += Context.TimeManager.DeltaTime;
                 
                 // Increment frame counter
-                TimeManager.FrameCount++;
-                TimeManager.TotalFrames++;
+                Context.TimeManager.FrameCount++;
+                Context.TimeManager.TotalFrames++;
                 
                 // If a second has passed since the last FPS calculation
                 if (newTime - lastTime >= 1.0)
                 {
                     // Calculate average FPS
                     totalTime += newTime - lastTime;
-                    TimeManager.AverageFrames = (int) (TimeManager.TotalFrames / totalTime);
+                    Context.TimeManager.AverageFrames = (int) (Context.TimeManager.TotalFrames / totalTime);
                     
                     // Reset frame counter and update last time
-                    TimeManager.FrameCount = 0;
+                    Context.TimeManager.FrameCount = 0;
                     lastTime = newTime;
                 }
                 
@@ -244,26 +144,26 @@ namespace Alis.Core.Ecs
                 OnAfterUpdate();
                 
                 // Run fixed methods
-                while (accumulator >= TimeManager.Configuration.FixedTimeStep)
+                while (accumulator >= Context.TimeManager.Configuration.FixedTimeStep)
                 {
-                    TimeManager.InFixedTimeStep = true;
+                    Context.TimeManager.InFixedTimeStep = true;
                     
-                    TimeManager.FixedTime += TimeManager.Configuration.FixedTimeStep;
-                    TimeManager.FixedTimeAsDouble += TimeManager.Configuration.FixedTimeStep;
-                    TimeManager.FixedDeltaTime = TimeManager.Configuration.FixedTimeStep;
-                    TimeManager.FixedUnscaledDeltaTime = TimeManager.Configuration.FixedTimeStep / TimeManager.TimeScale;
+                    Context.TimeManager.FixedTime += Context.TimeManager.Configuration.FixedTimeStep;
+                    Context.TimeManager.FixedTimeAsDouble += Context.TimeManager.Configuration.FixedTimeStep;
+                    Context.TimeManager.FixedDeltaTime = Context.TimeManager.Configuration.FixedTimeStep;
+                    Context.TimeManager.FixedUnscaledDeltaTime = Context.TimeManager.Configuration.FixedTimeStep / Context.TimeManager.TimeScale;
                     
                     // Update FixedUnscaledTime and FixedUnscaledTimeAsDouble
-                    TimeManager.FixedUnscaledTime += TimeManager.FixedUnscaledDeltaTime;
-                    TimeManager.FixedUnscaledTimeAsDouble += TimeManager.FixedUnscaledDeltaTime;
+                    Context.TimeManager.FixedUnscaledTime += Context.TimeManager.FixedUnscaledDeltaTime;
+                    Context.TimeManager.FixedUnscaledTimeAsDouble += Context.TimeManager.FixedUnscaledDeltaTime;
                     
                     OnBeforeFixedUpdate();
                     OnFixedUpdate();
                     OnAfterFixedUpdate();
                     
-                    accumulator -= TimeManager.Configuration.FixedTimeStep;
+                    accumulator -= Context.TimeManager.Configuration.FixedTimeStep;
                     
-                    TimeManager.InFixedTimeStep = false;
+                    Context.TimeManager.InFixedTimeStep = false;
                 }
                 
                 OnCalculate();
@@ -271,10 +171,10 @@ namespace Alis.Core.Ecs
                 OnGui();
                 
                 // Update SmoothDeltaTime
-                smoothDeltaTimeSum += TimeManager.DeltaTime - lastDeltaTime;
+                smoothDeltaTimeSum += Context.TimeManager.DeltaTime - lastDeltaTime;
                 smoothDeltaTimeCount++;
-                TimeManager.SmoothDeltaTime = smoothDeltaTimeSum / smoothDeltaTimeCount;
-                lastDeltaTime = TimeManager.DeltaTime;
+                Context.TimeManager.SmoothDeltaTime = smoothDeltaTimeSum / smoothDeltaTimeCount;
+                lastDeltaTime = Context.TimeManager.DeltaTime;
                 
                 lastLogTime = LastLogTime(newTime, lastLogTime);
             }
@@ -289,10 +189,7 @@ namespace Alis.Core.Ecs
         [ExcludeFromCodeCoverage]
         private void OnExit()
         {
-            foreach (AManager manager in Managers.Values)
-            {
-                manager.OnExit();
-            }
+            Context.OnExit();
         }
         
         /// <summary>
@@ -301,10 +198,7 @@ namespace Alis.Core.Ecs
         [ExcludeFromCodeCoverage]
         private void OnStop()
         {
-            foreach (AManager manager in Managers.Values)
-            {
-                manager.OnStop();
-            }
+            Context.OnStop();
         }
         
         /// <summary>
@@ -317,30 +211,30 @@ namespace Alis.Core.Ecs
         private double LastLogTime(double newTime, double lastLogTime)
         {
             // Log output every 1 second
-            if ((newTime - lastLogTime >= 0.5) && TimeManager.Configuration.LogOutput)
+            if ((newTime - lastLogTime >= 0.5) && Context.TimeManager.Configuration.LogOutput)
             {
                 Logger.Trace(
-                    " FrameCount: " + TimeManager.FrameCount +
-                    " TotalFrames: " + TimeManager.TotalFrames +
-                    " AverageFps: " + TimeManager.AverageFrames +
-                    " Time: " + TimeManager.DeltaTime +
-                    " FixedTimeStep: " + TimeManager.Configuration.FixedTimeStep +
-                    " FixedTime: " + TimeManager.FixedTime +
-                    " FixedUnscaledDeltaTime: " + TimeManager.FixedUnscaledDeltaTime +
-                    " FixedDeltaTime: " + TimeManager.FixedDeltaTime +
-                    " FixedTimeAsDouble: " + TimeManager.FixedTimeAsDouble +
-                    " FixedUnscaledTime: " + TimeManager.FixedUnscaledTime +
-                    " FixedUnscaledTimeAsDouble: " + TimeManager.FixedUnscaledTimeAsDouble +
-                    " InFixedTimeStep: " + TimeManager.InFixedTimeStep +
-                    " MaximumDeltaTime: " + TimeManager.MaximumDeltaTime +
-                    " RealtimeSinceStartup: " + TimeManager.RealtimeSinceStartup +
-                    " RealtimeSinceStartupAsDouble: " + TimeManager.RealtimeSinceStartupAsDouble +
-                    " SmoothDeltaTime: " + TimeManager.SmoothDeltaTime +
-                    " TimeAsDouble: " + TimeManager.TimeAsDouble +
-                    " TimeScale: " + TimeManager.TimeScale +
-                    " UnscaledDeltaTime: " + TimeManager.UnscaledDeltaTime +
-                    " UnscaledTime: " + TimeManager.UnscaledTime +
-                    " UnscaledTimeAsDouble: " + TimeManager.UnscaledTimeAsDouble);
+                    " FrameCount: " + Context.TimeManager.FrameCount +
+                    " TotalFrames: " + Context.TimeManager.TotalFrames +
+                    " AverageFps: " + Context.TimeManager.AverageFrames +
+                    " Time: " + Context.TimeManager.DeltaTime +
+                    " FixedTimeStep: " + Context.TimeManager.Configuration.FixedTimeStep +
+                    " FixedTime: " + Context.TimeManager.FixedTime +
+                    " FixedUnscaledDeltaTime: " + Context.TimeManager.FixedUnscaledDeltaTime +
+                    " FixedDeltaTime: " + Context.TimeManager.FixedDeltaTime +
+                    " FixedTimeAsDouble: " + Context.TimeManager.FixedTimeAsDouble +
+                    " FixedUnscaledTime: " + Context.TimeManager.FixedUnscaledTime +
+                    " FixedUnscaledTimeAsDouble: " + Context.TimeManager.FixedUnscaledTimeAsDouble +
+                    " InFixedTimeStep: " + Context.TimeManager.InFixedTimeStep +
+                    " MaximumDeltaTime: " + Context.TimeManager.MaximumDeltaTime +
+                    " RealtimeSinceStartup: " + Context.TimeManager.RealtimeSinceStartup +
+                    " RealtimeSinceStartupAsDouble: " + Context.TimeManager.RealtimeSinceStartupAsDouble +
+                    " SmoothDeltaTime: " + Context.TimeManager.SmoothDeltaTime +
+                    " TimeAsDouble: " + Context.TimeManager.TimeAsDouble +
+                    " TimeScale: " + Context.TimeManager.TimeScale +
+                    " UnscaledDeltaTime: " + Context.TimeManager.UnscaledDeltaTime +
+                    " UnscaledTime: " + Context.TimeManager.UnscaledTime +
+                    " UnscaledTimeAsDouble: " + Context.TimeManager.UnscaledTimeAsDouble);
                 lastLogTime = newTime;
             }
             
@@ -353,10 +247,7 @@ namespace Alis.Core.Ecs
         [ExcludeFromCodeCoverage]
         private void OnGui()
         {
-            foreach (AManager manager in Managers.Values)
-            {
-                manager.OnGui();
-            }
+           Context.OnGui();
         }
         
         /// <summary>
@@ -365,10 +256,7 @@ namespace Alis.Core.Ecs
         [ExcludeFromCodeCoverage]
         private void OnDraw()
         {
-            foreach (AManager manager in Managers.Values)
-            {
-                manager.OnDraw();
-            }
+            Context.OnDraw();
         }
         
         /// <summary>
@@ -377,10 +265,7 @@ namespace Alis.Core.Ecs
         [ExcludeFromCodeCoverage]
         private void OnCalculate()
         {
-            foreach (AManager manager in Managers.Values)
-            {
-                manager.OnCalculate();
-            }
+            Context.OnCalculate();
         }
         
         /// <summary>
@@ -389,10 +274,7 @@ namespace Alis.Core.Ecs
         [ExcludeFromCodeCoverage]
         private void OnAfterFixedUpdate()
         {
-            foreach (AManager manager in Managers.Values)
-            {
-                manager.OnAfterFixedUpdate();
-            }
+            Context.OnAfterFixedUpdate();
         }
         
         /// <summary>
@@ -401,10 +283,7 @@ namespace Alis.Core.Ecs
         [ExcludeFromCodeCoverage]
         private void OnFixedUpdate()
         {
-            foreach (AManager manager in Managers.Values)
-            {
-                manager.OnFixedUpdate();
-            }
+            Context.OnFixedUpdate();
         }
         
         /// <summary>
@@ -413,10 +292,7 @@ namespace Alis.Core.Ecs
         [ExcludeFromCodeCoverage]
         private void OnBeforeFixedUpdate()
         {
-            foreach (AManager manager in Managers.Values)
-            {
-                manager.OnBeforeFixedUpdate();
-            }
+            Context.OnBeforeFixedUpdate();
         }
         
         /// <summary>
@@ -425,10 +301,7 @@ namespace Alis.Core.Ecs
         [ExcludeFromCodeCoverage]
         private void OnAfterUpdate()
         {
-            foreach (AManager manager in Managers.Values)
-            {
-                manager.OnAfterUpdate();
-            }
+            Context.OnAfterUpdate();
         }
         
         /// <summary>
@@ -437,10 +310,7 @@ namespace Alis.Core.Ecs
         [ExcludeFromCodeCoverage]
         private void OnUpdate()
         {
-            foreach (AManager manager in Managers.Values)
-            {
-                manager.OnUpdate();
-            }
+            Context.OnUpdate();
         }
         
         /// <summary>
@@ -449,10 +319,7 @@ namespace Alis.Core.Ecs
         [ExcludeFromCodeCoverage]
         private void OnBeforeUpdate()
         {
-            foreach (AManager manager in Managers.Values)
-            {
-                manager.OnBeforeUpdate();
-            }
+            Context.OnBeforeUpdate();
         }
         
         /// <summary>
@@ -461,10 +328,7 @@ namespace Alis.Core.Ecs
         [ExcludeFromCodeCoverage]
         private void OnDispatchEvents()
         {
-            foreach (AManager manager in Managers.Values)
-            {
-                manager.OnDispatchEvents();
-            }
+            Context.OnDispatchEvents();
         }
         
         /// <summary>
@@ -473,10 +337,7 @@ namespace Alis.Core.Ecs
         [ExcludeFromCodeCoverage]
         private void OnStart()
         {
-            foreach (AManager manager in Managers.Values)
-            {
-                manager.OnStart();
-            }
+            Context.OnStart();
         }
         
         /// <summary>
@@ -485,10 +346,7 @@ namespace Alis.Core.Ecs
         [ExcludeFromCodeCoverage]
         private void OnAwake()
         {
-            foreach (AManager manager in Managers.Values)
-            {
-                manager.OnAwake();
-            }
+            Context.OnAwake();
         }
         
         /// <summary>
@@ -497,45 +355,22 @@ namespace Alis.Core.Ecs
         [ExcludeFromCodeCoverage]
         private void OnInit()
         {
-            foreach (AManager manager in Managers.Values)
-            {
-                manager.OnInit();
-            }
+          Context.OnInit();
         }
         
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public void Exit() => IsRunning = false;
-        
-        /// <summary>
-        ///     Sets the context using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        public void SetContext(Context context) => Context = context;
-        
-        /// <summary>
-        ///     Gets this instance
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <returns>The</returns>
-        public T Find<T>() where T : AManager => (T) Managers[typeof(T)];
-        
-        /// <summary>
-        ///     Sets the component
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="component">The component</param>
-        public void Set<T>(T component) where T : AManager
-        {
-            component.SetContext(Context);
-            Managers[typeof(T)] = component;
-        }
+        public void Exit() => Context.TimeManager.IsRunning = false;
         
         /// <summary>
         ///     Builders
         /// </summary>
         /// <returns>The video game builder</returns>
         public static VideoGameBuilder Builder() => new VideoGameBuilder();
+        
+        public static Context GetContext() => _instancie.Context;
+        
+        public static void SetContext(Context context) => _instancie.Context = context;
     }
 }

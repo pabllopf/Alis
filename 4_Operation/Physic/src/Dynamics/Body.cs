@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -129,6 +130,70 @@ namespace Alis.Core.Physic.Dynamics
             float gravityScale = 1.0f
         )
         {
+            FixtureList = new List<Fixture>(1);
+            
+            if (isBullet)
+            {
+                Flags |= BodySettings.BulletFlag;
+            }
+            
+            if (fixedRotation)
+            {
+                Flags |= BodySettings.FixedRotationFlag;
+            }
+            
+            if (allowSleep)
+            {
+                Flags |= BodySettings.AutoSleepFlag;
+            }
+            
+            if (awake)
+            {
+                Flags |= BodySettings.AwakeFlag;
+            }
+            
+            if (enabled)
+            {
+                Flags |= BodySettings.Enabled;
+            }
+            
+            Xf.Position = position;
+            Xf.Rotation.Set(angle);
+            
+            Sweep.C0 = Xf.Position;
+            Sweep.C = Xf.Position;
+            Sweep.A0 = angle;
+            Sweep.A = angle;
+            
+            LinearVelocity = linearVelocity;
+            AngularVelocity = angularVelocity;
+            
+            LinearDamping = linearDamping;
+            AngularDamping = angularDamping;
+            GravityScale = gravityScale;
+            
+            Type = bodyType;
+            
+            mass = 0.0f;
+            InvMass = 0.0f;
+        }
+        
+        public Body()
+        {
+            Vector2 position = Vector2.Zero;
+            Vector2 linearVelocity = Vector2.Zero;
+            BodyType bodyType = BodyType.Static ;
+            float angle = 0.0f;
+            float angularVelocity = 0.0f;
+            float linearDamping = 0.0f;
+            float angularDamping = 0.0f;
+            bool allowSleep = true;
+            bool awake = true;
+            bool fixedRotation = false;
+            bool isBullet = false;
+            bool enabled = true;
+            float gravityScale = 1.0f;
+            
             FixtureList = new List<Fixture>(1);
             
             if (isBullet)

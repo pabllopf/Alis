@@ -27,11 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.Serialization;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math
 {
-    /// <summary>Rotation</summary>
+    /// <summary>
+    /// The rotation
+    /// </summary>
     public struct Rotation
     {
         /// Sine and cosine
@@ -43,7 +47,7 @@ namespace Alis.Core.Aspect.Math
         /// <summary>
         ///     The angle
         /// </summary>
-        public float Angle;
+        public float Angle { get; set; }
         
         /// <summary>Initialize from an angle in radians</summary>
         /// <param name="angle">Angle in radians</param>
@@ -52,6 +56,14 @@ namespace Alis.Core.Aspect.Math
             Angle = angle;
             Sine = (float) System.Math.Sin(angle);
             Cosine = (float) System.Math.Cos(angle);
+        }
+        
+        [JsonConstructor]
+        public Rotation(float sine, float cosine, float angle)
+        {
+            Sine = sine;
+            Cosine = cosine;
+            Angle = angle;
         }
         
         /// <summary>Set using an angle in radians.</summary>

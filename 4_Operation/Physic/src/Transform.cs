@@ -27,29 +27,37 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.Serialization;
+using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Aspect.Math
+namespace Alis.Core.Physic
 {
     /// <summary>
     ///     A transform contains translation and rotation. It is used to represent the position and orientation of rigid
     ///     frames.
     /// </summary>
-    public struct Transform
+    [Serializable]
+    public struct Transform : ISerializable
     {
         /// <summary>
         ///     The
         /// </summary>
+        [JsonPropertyName("_Position_")]
         public Vector2 Position;
         
         /// <summary>
         ///     The scale
         /// </summary>
+        [JsonPropertyName("_Scale_")]
         public Vector2 Scale;
         
         /// <summary>
         ///     The
         /// </summary>
+        [JsonPropertyName("_Rotation_")]
         public Rotation Rotation;
         
         /// <summary>
@@ -58,11 +66,27 @@ namespace Alis.Core.Aspect.Math
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
         /// <param name="scale">The scale</param>
+        [JsonConstructor]
         public Transform(Vector2 position, Rotation rotation, Vector2 scale)
         {
             Position = position;
             Rotation = rotation;
             Scale = scale;
+        }
+        
+        
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("_Position_", Position);
+            info.AddValue("_Scale_", Scale);
+            info.AddValue("_Rotation_", Rotation);
+        }
+
+        public Transform(SerializationInfo info, StreamingContext context)
+        {
+            Position = (Vector2)info.GetValue("_Position_", typeof(Vector2));
+            Scale = (Vector2)info.GetValue("_Scale_", typeof(Vector2));
+            Rotation = (Rotation)info.GetValue("_Rotation_", typeof(Rotation));
         }
         
         /// <summary>Set this to the identity transform.</summary>

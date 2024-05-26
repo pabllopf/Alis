@@ -167,6 +167,6 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     The default value.
         /// </summary>
-        Default = UseXmlIgnore | UseScriptIgnore | SerializeFields | AutoParseDateTime | UseJsonAttribute | SkipGetOnly | SkipDefaultValues | SkipZeroValueTypes | SkipNullPropertyValues | SkipNullDateTimeValues
+        Default = UseISerializable | UseXmlIgnore | UseScriptIgnore | SerializeFields | AutoParseDateTime | UseJsonAttribute | ContinueOnCycle
     }
 }

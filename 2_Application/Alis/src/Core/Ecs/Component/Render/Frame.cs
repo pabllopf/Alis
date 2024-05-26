@@ -28,8 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.Component.Render;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Ecs.Component.Render
 {
@@ -44,21 +44,23 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public Frame()
         {
-            Logger.Trace();
+            FilePath = "";
         }
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="Frame" /> class
         /// </summary>
         /// <param name="filePath">The file path</param>
+        [JsonConstructor]
         public Frame(string filePath)
         {
-            Logger.Trace();
+            FilePath = filePath;
         }
         
         /// <summary>
         ///     Gets or sets the value of the file path
         /// </summary>
+        [JsonPropertyName("_FilePath_")]
         public string FilePath { get; set; }
         
         /// <summary>

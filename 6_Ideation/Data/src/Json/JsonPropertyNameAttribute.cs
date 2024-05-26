@@ -51,6 +51,19 @@ namespace Alis.Core.Aspect.Data.Json
         public JsonPropertyNameAttribute(string name) => Name = name;
         
         /// <summary>
+        /// Initializes a new instance of the <see cref="JsonPropertyNameAttribute"/> class
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="ignoreWhenSerializing">The ignore when serializing</param>
+        /// <param name="ignoreWhenDeserializing">The ignore when deserializing</param>
+        public JsonPropertyNameAttribute(string name, bool ignoreWhenSerializing, bool ignoreWhenDeserializing)
+        {
+            Name = name;
+            IgnoreWhenSerializing = ignoreWhenSerializing;
+            IgnoreWhenDeserializing = ignoreWhenDeserializing;
+        }
+        
+        /// <summary>
         ///     Gets or sets the name to use for JSON serialization and deserialization.
         /// </summary>
         /// <value>

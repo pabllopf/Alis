@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Ecs.System.Setting.Audio;
 using Alis.Core.Ecs.System.Setting.General;
 using Alis.Core.Ecs.System.Setting.Graphic;
@@ -44,38 +45,81 @@ namespace Alis.Core.Ecs.System.Setting
     public class Settings : ISetting
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="Settings"/> class
+        /// </summary>
+        public Settings()
+        {
+            General = new GeneralSetting();
+            Audio = new AudioSetting();
+            Graphic = new GraphicSetting();
+            Input = new InputSetting();
+            Network = new NetworkSetting();
+            Physic = new PhysicSetting();
+            Scene = new SceneSetting();
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Settings"/> class
+        /// </summary>
+        /// <param name="general">The general</param>
+        /// <param name="audio">The audio</param>
+        /// <param name="graphic">The graphic</param>
+        /// <param name="input">The input</param>
+        /// <param name="network">The network</param>
+        /// <param name="physic">The physic</param>
+        /// <param name="scene">The scene</param>
+        [JsonConstructor]
+        public Settings(GeneralSetting general, AudioSetting audio, GraphicSetting graphic, InputSetting input, NetworkSetting network, PhysicSetting physic, SceneSetting scene)
+        {
+            General = general;
+            Audio = audio;
+            Graphic = graphic;
+            Input = input;
+            Network = network;
+            Physic = physic;
+            Scene = scene;
+        }
+        
+        /// <summary>
         ///     Gets or sets the value of the general
         /// </summary>
-        public GeneralSetting General { get; set; } = new GeneralSetting();
+        [JsonPropertyName("_General_")]
+        public GeneralSetting General { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the audio
         /// </summary>
-        public IAudioSetting Audio { get; set; } = new AudioSetting();
+        [JsonPropertyName("_Audio_")]
+        public AudioSetting Audio { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the graphic
         /// </summary>
-        public GraphicSetting Graphic { get; set; } = new GraphicSetting();
+        [JsonPropertyName("_Graphic_")]
+        public GraphicSetting Graphic { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the input
         /// </summary>
-        public InputSetting Input { get; set; } = new InputSetting();
+        [JsonPropertyName("_Input_")]
+        public InputSetting Input { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the network
         /// </summary>
-        public NetworkSetting Network { get; set; } = new NetworkSetting();
+        [JsonPropertyName("_Network_")]
+        public NetworkSetting Network { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the physic
         /// </summary>
-        public PhysicSetting Physic { get; set; } = new PhysicSetting();
+        [JsonPropertyName("_Physic_")]
+        public PhysicSetting Physic { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the scene
         /// </summary>
-        public SceneSetting Scene { get; set; } = new SceneSetting();
+        [JsonPropertyName("_Scene_")]
+        public SceneSetting Scene { get; set; }
     }
 }

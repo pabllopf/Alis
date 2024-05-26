@@ -50,10 +50,10 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Rectangle
             
             RectangleI rectangle = new RectangleI(x, y, w, h);
             
-            Assert.Equal(x, rectangle.x);
-            Assert.Equal(y, rectangle.y);
-            Assert.Equal(w, rectangle.w);
-            Assert.Equal(h, rectangle.h);
+            Assert.Equal(x, rectangle.X);
+            Assert.Equal(y, rectangle.Y);
+            Assert.Equal(w, rectangle.W);
+            Assert.Equal(h, rectangle.H);
         }
     }
 }

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.System.Setting.Graphic;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Graphic;
 
@@ -38,13 +39,31 @@ namespace Alis.Core.Ecs.System.Setting.Graphic
     /// </summary>
     /// <seealso cref="IGraphicSetting" />
     /// <seealso cref="IBuilder{GraphicSettingBuilder}" />
-    public class GraphicSetting : IGraphicSetting,
-        IBuilder<GraphicSettingBuilder>
+    public class GraphicSetting : IGraphicSetting, IBuilder<GraphicSettingBuilder>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GraphicSetting"/> class
+        /// </summary>
+        public GraphicSetting()
+        {
+            Window = new Window();
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GraphicSetting"/> class
+        /// </summary>
+        /// <param name="window">The window</param>
+        [JsonConstructor]
+        public GraphicSetting(Window window)
+        {
+            Window = window;
+        }
+        
         /// <summary>
         ///     Gets or sets the value of the window
         /// </summary>
-        public IWindow Window { get; set; } = new Window();
+        [JsonPropertyName("_Window_")]
+        public Window Window { get; set; }
         
         /// <summary>
         ///     Builders this instance

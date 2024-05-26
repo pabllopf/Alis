@@ -58,7 +58,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Transform
         {
             TransformBuilder transformBuilder = new TransformBuilder();
             
-            Alis.Core.Aspect.Math.Transform transform = transformBuilder.Build();
+            Alis.Core.Physic.Transform transform = transformBuilder.Build();
         }
         
         /// <summary>

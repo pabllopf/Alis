@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Graphic.Sdl2.Enums;
@@ -45,6 +46,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     The current animation
         /// </summary>
+        [JsonPropertyName("_CurrentAnimation_")]
         private Animation currentAnimation;
         
         /// <summary>
@@ -140,7 +142,7 @@ namespace Alis.Core.Ecs.Component.Render
             {
                 if (currentAnimation.HasNext())
                 {
-                    Sprite.Image = new Image(currentAnimation.NextTexture().FilePath, Context);
+                    Sprite.Image = new Image(currentAnimation.NextTexture().FilePath);
                 }
                 
                 Timer.Restart();

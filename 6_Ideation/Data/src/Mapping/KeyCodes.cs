@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace Alis.Core.Aspect.Data.Mapping
 {
     /// <summary>

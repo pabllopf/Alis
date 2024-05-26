@@ -36,6 +36,7 @@ using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Entity;
+using Alis.Core.Physic;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Figure;

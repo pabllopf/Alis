@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 
 namespace Alis.Core.Aspect.Math.Shape.Rectangle
 {
@@ -40,22 +42,22 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
         /// <summary>
         ///     The
         /// </summary>
-        public int x;
+        public int X { get; set; }
         
         /// <summary>
         ///     The
         /// </summary>
-        public int y;
+        public int Y { get; set; }
         
         /// <summary>
         ///     The
         /// </summary>
-        public int w;
+        public int W { get; set; }
         
         /// <summary>
         ///     The
         /// </summary>
-        public int h;
+        public int H { get; set; }
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="RectangleI" /> class
@@ -64,12 +66,13 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
         /// <param name="y">The </param>
         /// <param name="w">The </param>
         /// <param name="h">The </param>
+        [JsonConstructor]
         public RectangleI(int x, int y, int w, int h)
         {
-            this.x = x;
-            this.y = y;
-            this.h = h;
-            this.w = w;
+            this.X = x;
+            this.Y = y;
+            this.H = h;
+            this.W = w;
         }
     }
 }

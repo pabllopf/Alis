@@ -31,6 +31,7 @@ using System;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using System.Text;
 using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
 
@@ -40,7 +41,8 @@ namespace Alis.Core.Aspect.Math.Vector
     ///     The vector
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct Vector3 : IEquatable<Vector3>, IFormattable
+    [Serializable]
+    public struct Vector3 : IEquatable<Vector3>, IFormattable, ISerializable
     {
         /// <summary>
         ///     The hash code
@@ -86,6 +88,32 @@ namespace Alis.Core.Aspect.Math.Vector
             hash.Add(y);
             hash.Add(z);
             hashCode = hash.ToHashCode();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Vector3"/> class
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        private Vector3(SerializationInfo info, StreamingContext context)
+        {
+            X = info.GetSingle("X");
+            Y = info.GetSingle("Y");
+            Z = info.GetSingle("Z");
+            hashCode = info.GetInt32("hashCode");
+        }
+        
+        /// <summary>
+        /// Gets the object data using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("X", X);
+            info.AddValue("Y", Y);
+            info.AddValue("Z", Z);
+            info.AddValue("hashCode", hashCode);
         }
         
         /// <summary>Gets a vector whose 3 elements are equal to zero.</summary>

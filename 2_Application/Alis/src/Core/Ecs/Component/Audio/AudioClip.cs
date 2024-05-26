@@ -29,6 +29,7 @@
 
 using Alis.Builder.Core.Ecs.Component.Audio;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Audio;
 
 namespace Alis.Core.Ecs.Component.Audio
 {
@@ -38,7 +39,10 @@ namespace Alis.Core.Ecs.Component.Audio
     /// <seealso />
     public class AudioClip
     {
-        
+        /// <summary>
+        /// The player
+        /// </summary>
+        private Player player = new Player();
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioClip" /> class
         /// </summary>
@@ -85,7 +89,7 @@ namespace Alis.Core.Ecs.Component.Audio
         /// </summary>
         internal void Play()
         {
-            Logger.Trace();
+            _= player.Play(FullPathAudioFile);
         }
         
         /// <summary>
@@ -93,7 +97,7 @@ namespace Alis.Core.Ecs.Component.Audio
         /// </summary>
         internal void Stop()
         {
-            Logger.Trace();
+           _ = player.Stop();
         }
         
         /// <summary>
@@ -101,7 +105,7 @@ namespace Alis.Core.Ecs.Component.Audio
         /// </summary>
         internal void Resume()
         {
-            Logger.Trace();
+            _ = player.Resume();
         }
         
         /// <summary>
