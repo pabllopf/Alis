@@ -2485,10 +2485,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
             Sdl.RenderGetClipRect(renderer, out RectangleI rect);
             
             // Assert
-            Assert.Equal(0, rect.x);
-            Assert.Equal(0, rect.y);
-            Assert.Equal(0, rect.w);
-            Assert.Equal(0, rect.h);
+            Assert.Equal(0, rect.X);
+            Assert.Equal(0, rect.Y);
+            Assert.Equal(0, rect.W);
+            Assert.Equal(0, rect.H);
             
             // Cleanup
             Sdl.Quit();

@@ -522,12 +522,75 @@ namespace Alis.Core.Aspect.Data.Json
                     return CreateArrayInstance(type, elementsCount);
                 }
                 
+                if (!type.IsPrimitive && !type.IsInterface && !type.IsAbstract) // Check if type is a struct
+                {
+                   ConstructorInfo specialConstructor = type.GetConstructors()
+                       .FirstOrDefault(c => c.GetCustomAttributesData()
+                           .Any(a => a.AttributeType.Name.Contains("JsonConstructorAttribute")));
+                    if (specialConstructor != null)
+                    {
+                        ParameterInfo[] parameters = specialConstructor.GetParameters();
+                        object[] parameterValues = new object[parameters.Length];
+                        
+                        if (value is IDictionary dictionary)
+                        {
+                            for (int i = 0; i < parameters.Length; i++)
+                            {
+                                // Iterate over dictionary keys
+                                foreach (object key in dictionary.Keys)
+                                {
+                                    if (!key.ToString().Equals(SerializationTypeToken)  && key.ToString().ToLower().Contains(parameters[i].Name.ToLower()))
+                                    {
+                                        parameterValues[i] = CreateInstance(target, parameters[i].ParameterType, elementsCount, options, dictionary[key]);
+                                        break;
+                                    }
+                                }
+                            }
+                            
+                            return Activator.CreateInstance(type, parameterValues);
+                        }
+                    }
+                }
+                
+                // If the type is an interface or abstract class, get the __type and create an instance of the type
+                if (type.IsInterface || type.IsAbstract)
+                {
+                    if (options != null)
+                    {
+                        if (value is IDictionary dictionary)
+                        {
+                            string typeName = dictionary[SerializationTypeToken].ToString();
+                            Type typeFromName = GetTypeFromText(typeName);
+                            if (typeFromName != null)
+                            {
+                                return CreateInstance(target, typeFromName, elementsCount, options, dictionary);
+                            }
+                        }
+                    }
+                }
+                
+                if (type.IsPrimitive || type == typeof(string) || type == typeof(char))
+                {
+                    return value;
+                }
+             
+                
                 return Activator.CreateInstance(type);
             }
             catch (Exception e)
             {
                 return HandleCreationException(type, e, options);
             }
+        }
+        
+        /// <summary>
+        /// Gets the type from text using the specified type name
+        /// </summary>
+        /// <param name="typeName">The type name</param>
+        /// <returns>The type</returns>
+        private static Type GetTypeFromText(string typeName)
+        {
+            return  AppDomain.CurrentDomain.GetAssemblies().Select(assembly => assembly.GetType(typeName)).FirstOrDefault(type => type != null);
         }
         
         /// <summary>
@@ -1339,6 +1402,11 @@ namespace Alis.Core.Aspect.Data.Json
         [ExcludeFromCodeCoverage]
         public static object ChangeType(object target, object value, Type conversionType, JsonOptions options = null)
         {
+            if (value is int intValue && conversionType == typeof(byte) && intValue >= 0 && intValue <= 255)
+            {
+                return (byte) intValue;
+            }
+            
             if (conversionType == null)
             {
                 throw new ArgumentNullException(nameof(conversionType));
@@ -2552,6 +2620,11 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The object</returns>
         internal static object HandleDotCase(string text)
         {
+            if (float.TryParse(text, NumberStyles.Float, CultureInfo.InvariantCulture, out float fl))
+            {
+                return fl;
+            }
+            
             if (decimal.TryParse(text, NumberStyles.Float, CultureInfo.InvariantCulture, out decimal de))
             {
                 return de;
@@ -2578,6 +2651,11 @@ namespace Alis.Core.Aspect.Data.Json
             if (long.TryParse(text, NumberStyles.Integer, CultureInfo.InvariantCulture, out long l))
             {
                 return l;
+            }
+            
+            if (float.TryParse(text, NumberStyles.Number, CultureInfo.InvariantCulture, out float fl))
+            {
+                return fl;
             }
             
             if (decimal.TryParse(text, NumberStyles.Number, CultureInfo.InvariantCulture, out decimal de))
@@ -4324,7 +4402,7 @@ namespace Alis.Core.Aspect.Data.Json
             SerializationInfo info = new SerializationInfo(serializable.GetType(), DefaultFormatterConverter);
             StreamingContext ctx = new StreamingContext(StreamingContextStates.Remoting, null);
             serializable.GetObjectData(info, ctx);
-            info.AddValue(SerializationTypeToken, serializable.GetType().AssemblyQualifiedName);
+            //info.AddValue(SerializationTypeToken, serializable.GetType().FullName);
             return info;
         }
         
@@ -4358,6 +4436,7 @@ namespace Alis.Core.Aspect.Data.Json
             WriteEntryName(writer, entry, options);
             writer.Write(':');
             WriteValue(writer, entry.Value, objectGraph, options);
+            
         }
         
         /// <summary>
@@ -4417,6 +4496,11 @@ namespace Alis.Core.Aspect.Data.Json
             writer.Write('{');
             
             HandleBeforeWriteObjectCallback(writer, value, objectGraph, options);
+            
+            // Write the type of the object
+            writer.Write($"\"{SerializationTypeToken}\":");
+            writer.Write("\"" + value.GetType().FullName + "\"");
+            writer.Write(',');
             
             WriteSerializableOrValues(writer, value, objectGraph, options);
             
@@ -4496,6 +4580,13 @@ namespace Alis.Core.Aspect.Data.Json
                 // Otherwise, get the type definition and write the values
                 TypeDef typeDefinition = TypeDef.Get(value.GetType(), options);
                 typeDefinition.WriteValues(writer, value, objectGraph, options);
+
+                /*
+                // Write the type of the object
+                writer.Write(',');
+                writer.Write($"\"{SerializationTypeToken}\":");
+                writer.Write("\"" + value.GetType().FullName + "\"");*/
+                
             }
         }
         

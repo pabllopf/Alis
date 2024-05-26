@@ -30,6 +30,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
@@ -43,39 +44,64 @@ namespace Alis.Core.Ecs.Component.Render
     ///     The camera class
     /// </summary>
     /// <seealso cref="AComponent" />
-    public class Camera : AComponent, IBuilder<CameraBuilder>
+    public class Camera : 
+        AComponent,
+        IBuilder<CameraBuilder>
     {
-        /// <summary>
-        ///     The viewport
-        /// </summary>
-        public RectangleI Viewport;
-        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Camera" /> class
         /// </summary>
         public Camera()
         {
+            Viewport = new RectangleI(0, 0, 800, 600);
+            TextureTarget = IntPtr.Zero;
+            Resolution = new Vector2(800, 600);
+            BackgroundColor = Color.Black;
+            CameraBorder = 1f;
         }
+        
+        [JsonConstructor]
+        public Camera( string id, string name, string tag, bool isEnable, RectangleI viewport, Vector2 resolution, Color backgroundColor, float cameraBorder)
+        {
+            Id = id;
+            Name = name;
+            Tag = tag;
+            IsEnable = isEnable;
+            Viewport = viewport;
+            Resolution = resolution;
+            BackgroundColor = backgroundColor;
+            CameraBorder = cameraBorder;
+        }
+        
+        /// <summary>
+        ///     The viewport
+        /// </summary>
+        [JsonPropertyName("_Viewport_")]
+        public RectangleI Viewport { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the texture target
         /// </summary>
+        [JsonPropertyName("_TextureTarget_", true, true)]
         public IntPtr TextureTarget { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the resolution
         /// </summary>
-        public Vector2 Resolution { get; set; } = new Vector2(800, 600);
+        [JsonPropertyName("_Resolution_")]
+        public Vector2 Resolution { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the background color
         /// </summary>
-        public Color BackgroundColor { get; set; } = Color.Black;
+        [JsonPropertyName("_BackgroundColor_")]
+        public Color BackgroundColor { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the camera border
         /// </summary>
-        public static float CameraBorder { get; set; } = 1f;
+        [JsonPropertyName("_CameraBorder_")]
+        public float CameraBorder { get; set; }
         
         /// <summary>
         ///     Builders this instance
@@ -94,8 +120,13 @@ namespace Alis.Core.Ecs.Component.Render
                 return;
             }
             
-            Viewport = new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, (int) Resolution.X, (int) Resolution.Y);
-            TextureTarget = Sdl.CreateTexture(Context.GraphicManager.Renderer, Sdl.PixelFormatRgba8888, (int) TextureAccess.SdlTextureAccessTarget, Viewport.w, Viewport.h);
+            int x = (int) Math.Truncate(GameObject.Transform.Position.X);
+            int y = (int) Math.Truncate(GameObject.Transform.Position.Y);
+            int w = (int) Math.Truncate(Resolution.X);
+            int h = (int) Math.Truncate(Resolution.Y);
+            
+            Viewport = new RectangleI(x, y, w, h);
+            TextureTarget = Sdl.CreateTexture(Context.GraphicManager.Renderer, Sdl.PixelFormatRgba8888, (int) TextureAccess.SdlTextureAccessTarget, Viewport.W, Viewport.H);
             Context.GraphicManager.Attach(this);
         }
         
@@ -110,8 +141,7 @@ namespace Alis.Core.Ecs.Component.Render
                 return;
             }
 
-            Viewport.x = (int) GameObject.Transform.Position.X;
-            Viewport.y = (int) GameObject.Transform.Position.Y;
+            Viewport = new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, (int) Viewport.W, (int) Viewport.H);
         }
         
         /// <summary>

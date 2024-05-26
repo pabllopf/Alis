@@ -87,14 +87,7 @@ namespace Alis.Test.Core.Ecs.Entity
         public void Test_Context_Constructor()
         {
             // Arrange
-            VideoGame videoGame = new VideoGame(
-                new Settings(),
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager());
+            VideoGame videoGame = new VideoGame();
             Settings settings = new Settings();
             
             // Act
@@ -112,14 +105,7 @@ namespace Alis.Test.Core.Ecs.Entity
         public void Test_Context_AudioManager()
         {
             // Arrange
-            VideoGame videoGame = new VideoGame(
-                new Settings(),
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager());
+            VideoGame videoGame = new VideoGame();
             Settings settings = new Settings();
             Context context = new Context(videoGame, settings);
             

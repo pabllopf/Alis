@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Graphic;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
@@ -49,18 +50,45 @@ namespace Alis.Core.Graphic
         public WindowBuilder Builder() => new WindowBuilder();
         
         /// <summary>
+        /// Initializes a new instance of the <see cref="Window"/> class
+        /// </summary>
+        public Window()
+        {
+            Background = Color.Black;
+            Resolution = new Vector2(640, 480);
+            IsWindowResizable = true;
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Window"/> class
+        /// </summary>
+        /// <param name="background">The background</param>
+        /// <param name="resolution">The resolution</param>
+        /// <param name="isWindowResizable">The is window resizable</param>
+        [JsonConstructor]
+        public Window(Color background, Vector2 resolution, bool isWindowResizable)
+        {
+            Background = background;
+            Resolution = resolution;
+            IsWindowResizable = isWindowResizable;
+        }
+        
+        /// <summary>
         ///     Gets or sets the value of the background
         /// </summary>
-        public Color Background { get; set; } = Color.Black;
+        [JsonPropertyName("_Background_")]
+        public Color Background { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the resolution
         /// </summary>
-        public Vector2 Resolution { get; set; } = new Vector2(640, 480);
+        [JsonPropertyName("_Resolution_")]
+        public Vector2 Resolution { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the is window resizable
         /// </summary>
-        public bool IsWindowResizable { get; set; } = true;
+        [JsonPropertyName("_IsWindowResizable_")]
+        public bool IsWindowResizable { get; set; }
     }
 }

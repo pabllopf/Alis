@@ -27,54 +27,93 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Alis.Core.Aspect.Logging;
+using System.Runtime.Serialization;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.Entity.Property;
 using Alis.Core.Ecs.System;
+using Alis.Core.Physic;
 
 namespace Alis.Core.Ecs.Entity
 {
-    /// <summary>Represent object of the game.</summary>
-    public class GameObject : IGameObject<AComponent>, IHasContext<Context>
+  
+    /// <summary>
+    /// The game object class
+    /// </summary>
+    /// <seealso cref="IGameObject{AComponent}"/>
+    /// <seealso cref="ISerializable"/>
+    public class GameObject : IGameObject<AComponent>
     {
         /// <summary>
         ///     Gets or sets the value of the context
         /// </summary>
-        protected internal Context Context { get; private set; }
+        [JsonPropertyName("_Context_", true, true)]
+        public Context Context => VideoGame.GetContext();
         
         /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
-        public bool IsEnable { get; set; } = true;
+        [JsonPropertyName("_IsEnable_")]
+        public bool IsEnable { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
-        public string Name { get; set; } = "GameObject";
+        [JsonPropertyName("_Name_")]
+        public string Name { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the id
         /// </summary>
-        public string Id { get; set; } = "0";
+        [JsonPropertyName("_Id_")]
+        public string Id { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the tag
         /// </summary>
-        public string Tag { get; set; } = "Untagged";
+        [JsonPropertyName("_Tag_")]
+        public string Tag { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the components
         /// </summary>
-        public List<AComponent> Components { get; set; } = new List<AComponent>();
+        [JsonPropertyName("_Components_")]
+        public List<AComponent> Components { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the transform
         /// </summary>
-        public Transform Transform { get; set; } = new Transform(new Vector2(0, 0), new Rotation(0), new Vector2(1, 1));
+        [JsonPropertyName("_Transform_")]
+        public Transform Transform { get; set; }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameObject"/> class
+        /// </summary>
+        public GameObject()
+        {
+            IsEnable = true;
+            Name = GetType().Name;
+            Id = Guid.NewGuid().ToString();
+            Tag = GetType().Name;
+            Transform = new Transform(new Vector2(0, 0), new Rotation(0), new Vector2(1, 1));
+            Components = new List<AComponent>();
+            Components.ForEach(i => i.Attach(this));
+        }
+        
+        [JsonConstructor]
+        public GameObject(bool isEnable, string name, string id, string tag, Transform transform)
+        {
+            IsEnable = isEnable;
+            Name = name;
+            Id = id;
+            Tag = tag;
+            Transform = transform;
+            Components = new List<AComponent>();
+        }
         
         /// <summary>
         ///     Adds the component
@@ -125,7 +164,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnInit()
         {
-            Logger.Info($" Init game object: '{Name}' with id: '{Id}' and tag: '{Tag}'");
+            Components.ForEach(i => i.Attach(this));
             Components.ForEach(i => i.OnInit());
         }
         
@@ -211,28 +250,11 @@ namespace Alis.Core.Ecs.Entity
         /// <summary>
         ///     Ons the exit
         /// </summary>
-        public void OnExit()
-        {
-            Components.ForEach(i => i.OnExit());
-        }
+        public void OnExit() => Components.ForEach(i => i.OnExit());
         
         /// <summary>
         ///     Ons the destroy
         /// </summary>
         public void OnDestroy() => Components.ForEach(i => i.OnDestroy());
-        
-        /// <summary>
-        ///     Sets the context using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        [ExcludeFromCodeCoverage]
-        public void SetContext(Context context)
-        {
-            Context = context;
-            foreach (AComponent component in Components)
-            {
-                component.SetContext(context);
-            }
-        }
     }
 }

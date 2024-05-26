@@ -30,6 +30,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
@@ -38,27 +39,19 @@ using Alis.Core.Graphic.Sdl2.Enums;
 
 namespace Alis.Core.Ecs.Component.Render
 {
-    /// <summary>
-    ///     The sprite class
-    /// </summary>
-    /// <seealso cref="AComponent" />
-    public class Sprite : AComponent, IBuilder<SpriteBuilder>
+    public class Sprite : 
+        AComponent, 
+        IBuilder<SpriteBuilder>
     {
-        /// <summary>
-        ///     The image
-        /// </summary>
-        public Image Image;
-        
-        /// <summary>
-        ///     The texture path
-        /// </summary>
-        public string TexturePath;
-        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         public Sprite()
         {
+            Image = null;
+            TexturePath = string.Empty;
+            Depth = 0;
+            Flips = RendererFlips.None;
         }
         
         /// <summary>
@@ -67,14 +60,37 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="texturePath">The texture path</param>
         public Sprite(string texturePath) => TexturePath = texturePath;
         
+        [JsonConstructor]
+        public Sprite(Image image, string texturePath, int depth, RendererFlips flips)
+        {
+            Image = image;
+            TexturePath = texturePath;
+            Depth = depth;
+            Flips = flips;
+        }
+        
+        /// <summary>
+        ///     The image
+        /// </summary>
+        [JsonPropertyName("_Image_")]
+        public Image Image  { get; set; }
+        
+        /// <summary>
+        ///     The texture path
+        /// </summary>
+        [JsonPropertyName("_TexturePath_")]
+        public string TexturePath { get; set; }
+        
         /// <summary>
         ///     The level
         /// </summary>
+        [JsonPropertyName("_Depth_")]
         public int Depth { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the flip
         /// </summary>
+        [JsonPropertyName("_Flips_")]
         public RendererFlips Flips { get; set; }
         
         /// <summary>
@@ -96,7 +112,7 @@ namespace Alis.Core.Ecs.Component.Render
             
             if (!string.IsNullOrEmpty(TexturePath))
             {
-                Image = new Image(TexturePath, Context);
+                Image = new Image(TexturePath);
                 Logger.Info($"Load sprite od '{TexturePath}'");
             }
         }
@@ -135,8 +151,8 @@ namespace Alis.Core.Ecs.Component.Render
             Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
             
             RectangleI dstRect = new RectangleI(
-                (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2 - (camera.Viewport.x - camera.Viewport.w / 2) + Camera.CameraBorder),
-                (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2 - (camera.Viewport.y - camera.Viewport.h / 2) + Camera.CameraBorder),
+                (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2 - (camera.Viewport.X - camera.Viewport.W / 2) + camera.CameraBorder),
+                (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2 - (camera.Viewport.Y - camera.Viewport.H / 2) + camera.CameraBorder),
                 (int) (w * GameObject.Transform.Scale.X),
                 (int) (h * GameObject.Transform.Scale.Y));
             

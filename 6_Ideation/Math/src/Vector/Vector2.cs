@@ -42,13 +42,13 @@ namespace Alis.Core.Aspect.Math.Vector
     ///     The vector
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public readonly struct Vector2 : IEquatable<Vector2>, IFormattable
+    public struct Vector2 : IEquatable<Vector2>, IFormattable
     {
         /// <summary>The X component of the vector.</summary>
-        public readonly float X;
+        public float X { get; set; }
         
         /// <summary>The Y component of the vector.</summary>
-        public readonly float Y;
+        public float Y { get; set; }
         
         /// <summary>Creates a new <see cref="Vector2" /> object whose two elements have the same value.</summary>
         /// <param name="value">The value to assign to both elements.</param>
@@ -59,6 +59,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <summary>Creates a vector whose elements have the specified values.</summary>
         /// <param name="x">The value to assign to the <see cref="X" /> field.</param>
         /// <param name="y">The value to assign to the <see cref="Y" /> field.</param>
+        [JsonConstructor]
         public Vector2(float x, float y)
         {
             X = x;
@@ -424,7 +425,7 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     <paramref name="index" /> is greater than or equal to the array length.
         /// </exception>
         /// <exception cref="System.RankException"><paramref name="array" /> is multidimensional.</exception>
-        public readonly void CopyTo(float[] array, int index = 0)
+        public void CopyTo(float[] array, int index = 0)
         {
             if (array is null)
             {
@@ -457,23 +458,23 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     <see cref="Vector2" /> object and their <see cref="X" /> and <see cref="Y" /> elements are equal.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public readonly override bool Equals(object obj) => obj is Vector2 other && Equals(other);
+        public override bool Equals(object obj) => obj is Vector2 other && Equals(other);
         
         /// <summary>Returns a value that indicates whether this instance and another vector are equal.</summary>
         /// <param name="other">The other vector.</param>
         /// <returns><see langword="true" /> if the two vectors are equal; otherwise, <see langword="false" />.</returns>
         /// <remarks>Two vectors are equal if their <see cref="X" /> and <see cref="Y" /> elements are equal.</remarks>
-        public readonly bool Equals(Vector2 other) => this == other;
+        public bool Equals(Vector2 other) => this == other;
         
         /// <summary>Returns the hash code for this instance.</summary>
         /// <returns>The hash code.</returns>
-        public readonly override int GetHashCode() => HashCode.Combine(X, Y);
+        public override int GetHashCode() => HashCode.Combine(X, Y);
         
         /// <summary>Returns the length of the vector.</summary>
         /// <returns>The vector's length.</returns>
         /// <altmember cref="LengthSquared" />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public readonly float Length()
+        public float Length()
         {
             float lengthSquared = LengthSquared();
             return CustomMathF.Sqrt(lengthSquared);
@@ -484,7 +485,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <remarks>This operation offers better performance than a call to the <see cref="Length" /> method.</remarks>
         /// <altmember cref="Length" />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public readonly float LengthSquared() => Dot(this, this);
+        public float LengthSquared() => Dot(this, this);
         
         /// <summary>
         ///     Returns the string representation of the current instance using the specified format string to format
@@ -504,7 +505,7 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     Standard Numeric Format
         ///     Strings
         /// </related>
-        public readonly string ToString(string format, IFormatProvider formatProvider)
+        public string ToString(string format, IFormatProvider formatProvider)
         {
             StringBuilder sb = new StringBuilder();
             string separator = NumberFormatInfo.GetInstance(formatProvider).NumberGroupSeparator;

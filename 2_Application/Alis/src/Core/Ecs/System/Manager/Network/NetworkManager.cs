@@ -33,7 +33,6 @@ namespace Alis.Core.Ecs.System.Manager.Network
     ///     The network manager class
     /// </summary>
     /// <seealso cref="AManager" />
-    /// <seealso cref="INetworkManager" />
     public class NetworkManager : AManager
     {
     }

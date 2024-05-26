@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.System.Setting.Physic;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
@@ -39,23 +40,51 @@ namespace Alis.Core.Ecs.System.Setting.Physic
     /// </summary>
     /// <seealso cref="IPhysicSetting" />
     /// <seealso cref="IBuilder{PhysicSettingBuilder}" />
-    public class PhysicSetting : IPhysicSetting,
+    public class PhysicSetting : 
+        IPhysicSetting,
         IBuilder<PhysicSettingBuilder>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="PhysicSetting"/> class
+        /// </summary>
+        public PhysicSetting()
+        {
+            DebugMode = false;
+            DebugColor = new Color(255, 0, 0, 255);
+            Gravity = new Vector2(0.0f, 9.8f);
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PhysicSetting"/> class
+        /// </summary>
+        /// <param name="debugMode">The debug mode</param>
+        /// <param name="debugColor">The debug color</param>
+        /// <param name="gravity">The gravity</param>
+        [JsonConstructor]
+        public PhysicSetting(bool debugMode, Color debugColor, Vector2 gravity)
+        {
+            DebugMode = debugMode;
+            DebugColor = debugColor;
+            Gravity = gravity;
+        }
+        
+        /// <summary>
         ///     Gets or sets the value of the debug mode
         /// </summary>
-        public bool DebugMode { get; set; } = false;
+        [JsonPropertyName("_DebugMode_")]
+        public bool DebugMode { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the debug color
         /// </summary>
+        [JsonPropertyName("_DebugColor_")]
         public Color DebugColor { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the gravity
         /// </summary>
-        public Vector2 Gravity { get; set; } = new Vector2(0.0f, 9.8f);
+        [JsonPropertyName("_Gravity_")]
+        public Vector2 Gravity { get; set; }
         
         /// <summary>
         ///     Builders this instance

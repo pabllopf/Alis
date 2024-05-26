@@ -27,9 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Alis.Core.Ecs.Entity.Property;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Ecs.System;
 
 namespace Alis.Core.Ecs.Entity
@@ -37,51 +38,65 @@ namespace Alis.Core.Ecs.Entity
     /// <summary>
     ///     The scene class
     /// </summary>
-    public class Scene : IScene<GameObject>, IHasContext<Context>
+    public class Scene : IScene<GameObject>
     {
         /// <summary>
         ///     Gets or sets the value of the context
         /// </summary>
-        protected internal Context Context { get; set; }
-        
-        /// <summary>
-        ///     Sets the context using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        public void SetContext(Context context)
-        {
-            Context = context;
-            foreach (GameObject gameObject in GameObjects)
-            {
-                gameObject.SetContext(context);
-            }
-        }
+        [JsonPropertyName("_Context_", true, true)]
+        protected internal Context Context => VideoGame.GetContext();
         
         /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
-        public bool IsEnable { get; set; } = true;
+        [JsonPropertyName("_IsEnable_")]
+        public bool IsEnable { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
-        public string Name { get; set; } = "Scene";
+        [JsonPropertyName("_Name_")]
+        public string Name { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the id
         /// </summary>
-        public string Id { get; set; } = "0";
+        [JsonPropertyName("_Id_")]
+        public string Id { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the tag
         /// </summary>
-        public string Tag { get; set; } = "Untagged";
+        [JsonPropertyName("_Tag_")]
+        public string Tag { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the game objects
         /// </summary>
         [ExcludeFromCodeCoverage]
-        public List<GameObject> GameObjects { get; set; } = new List<GameObject>();
+        [JsonPropertyName("_GameObjects_")]
+        public List<GameObject> GameObjects { get; set; }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Scene"/> class
+        /// </summary>
+        public Scene()
+        {
+            IsEnable = true;
+            Name = GetType().Name;
+            Id = Guid.NewGuid().ToString();
+            Tag = GetType().Name;
+            GameObjects = new List<GameObject>();
+        }
+        
+        [JsonConstructor]
+        public Scene(bool isEnable, string name, string id, string tag)
+        {
+            IsEnable = isEnable;
+            Name = name;
+            Id = id;
+            Tag = tag;
+        }
         
         /// <summary>
         ///     Ons the enable

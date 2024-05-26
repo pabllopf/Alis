@@ -82,8 +82,8 @@ namespace Alis.Test.Core.Ecs.Component.Render
             camera.GameObject = new GameObject();
             camera.OnStart();
             camera.OnUpdate();
-            Assert.Equal(0, camera.Viewport.x);
-            Assert.Equal(0, camera.Viewport.y);
+            Assert.Equal(0, camera.Viewport.X);
+            Assert.Equal(0, camera.Viewport.Y);
         }
         
         /// <summary>

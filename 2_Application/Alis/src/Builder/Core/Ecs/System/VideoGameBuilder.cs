@@ -33,11 +33,6 @@ using Alis.Builder.Core.Ecs.System.Setting;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs;
-using Alis.Core.Ecs.System.Manager.Audio;
-using Alis.Core.Ecs.System.Manager.Graphic;
-using Alis.Core.Ecs.System.Manager.Input;
-using Alis.Core.Ecs.System.Manager.Network;
-using Alis.Core.Ecs.System.Manager.Physic;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
 
@@ -54,15 +49,7 @@ namespace Alis.Builder.Core.Ecs.System
     {
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
-        private readonly VideoGame videoGame = new VideoGame(
-            new Settings(),
-            new AudioManager(),
-            new GraphicManager(),
-            new InputManager(),
-            new NetworkManager(),
-            new PhysicManager(),
-            new SceneManager()
-        );
+        private readonly VideoGame videoGame = new VideoGame();
         
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>
@@ -75,7 +62,7 @@ namespace Alis.Builder.Core.Ecs.System
         /// <returns>The video game builder</returns>
         public VideoGameBuilder Settings(Func<SettingsBuilder, Settings> value)
         {
-            videoGame.Settings = value.Invoke(new SettingsBuilder());
+            VideoGame.GetContext().Settings = value.Invoke(new SettingsBuilder());
             return this;
         }
         
@@ -86,7 +73,7 @@ namespace Alis.Builder.Core.Ecs.System
         /// <returns>The video game builder</returns>
         public VideoGameBuilder World(Func<SceneManagerBuilder, SceneManager> value)
         {
-            videoGame.Set(value.Invoke(new SceneManagerBuilder()));
+            VideoGame.GetContext().SetSceneManager(value.Invoke(new SceneManagerBuilder()));
             return this;
         }
     }

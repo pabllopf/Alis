@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IHasContext.cs
+//  File:WindowSetting.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,17 +27,41 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ecs.Entity.Property
+using System;
+using System.Runtime.Serialization;
+using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Math;
+using Alis.Core.Graphic;
+
+namespace Alis.Sample.Flappy.Bird
 {
     /// <summary>
-    ///     The has context interface
+    /// The window setting class
     /// </summary>
-    public interface IHasContext<in T>
+    public class WindowSetting 
     {
         /// <summary>
-        ///     Sets the context using the specified context
+        /// Gets or sets the value of the window
         /// </summary>
-        /// <param name="context">The context</param>
-        public void SetContext(T context);
+        [JsonPropertyName("_Window_")]
+        public Window Window { get; set; }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WindowSetting"/> class
+        /// </summary>
+        public WindowSetting()
+        {
+            Window = new Window();
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WindowSetting"/> class
+        /// </summary>
+        /// <param name="window">The window</param>
+        [JsonConstructor]
+        public WindowSetting(Window window)
+        {
+            Window = window;
+        }
     }
 }

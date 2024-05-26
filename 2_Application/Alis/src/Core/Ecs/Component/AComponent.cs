@@ -27,45 +27,57 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.Serialization;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Entity;
-using Alis.Core.Ecs.Entity.Property;
 using Alis.Core.Ecs.System;
 
 namespace Alis.Core.Ecs.Component
 {
-    /// <summary>Define a general component.</summary>
-    public abstract class AComponent : IComponent<GameObject>, IHasContext<Context>
+    /// <summary>
+    /// The component class
+    /// </summary>
+    /// <seealso cref="IComponent{GameObject}"/>
+    /// <seealso cref="ISerializable"/>
+    public abstract class AComponent : IComponent<GameObject>
     {
         /// <summary>
         ///     Gets or sets the value of the game object
         /// </summary>
-        public Context Context { get; set; }
+        [JsonPropertyName("_Context_", true, true)]
+        public Context Context  => VideoGame.GetContext();
         
         /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
+        [JsonPropertyName("_IsEnable_")]
         public bool IsEnable { get; set; } = true;
         
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
-        public string Name { get; set; } = "Component";
+        [JsonPropertyName("_Name_")]
+        public string Name { get; set; } = string.Empty;
         
         /// <summary>
         ///     Gets or sets the value of the id
         /// </summary>
-        public string Id { get; set; } = "0";
+        [JsonPropertyName("_Id_")]
+        public string Id { get; set; } = Guid.NewGuid().ToString();
         
         /// <summary>
         ///     Gets or sets the value of the tag
         /// </summary>
-        public string Tag { get; set; } = "Untagged";
+        [JsonPropertyName("_Tag_")]
+        public string Tag { get; set; } = string.Empty;
         
         /// <summary>
         ///     Gets or sets the value of the game object
         /// </summary>
+        [JsonPropertyName("_GameObject_", true, true)]
         public GameObject GameObject { get; set; }
         
         /// <summary>
@@ -198,12 +210,6 @@ namespace Alis.Core.Ecs.Component
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public virtual void OnCollisionExit(GameObject gameObject) => Logger.Trace();
-        
-        /// <summary>
-        ///     Sets the context using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        public void SetContext(Context context) => Context = context;
         
         /// <summary>
         ///     Ons the collision stay using the specified game object

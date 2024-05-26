@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.System;
 using Alis.Core.Graphic.Sdl2;
@@ -43,10 +43,8 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Initializes a new instance of the <see cref="Image" /> class
         /// </summary>
-        public Image(Context context)
+        public Image()
         {
-            Context = context;
-            Logger.Trace();
             Path = "";
         }
         
@@ -54,11 +52,21 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Initializes a new instance of the <see cref="Image" /> class
         /// </summary>
         /// <param name="path">The path</param>
-        /// <param name="context"></param>
-        public Image(string path, Context context)
+        public Image(string path)
         {
-            Context = context;
-            Logger.Trace();
+            Path = path;
+            
+            Texture = Sdl.CreateTextureFromSurface(Context.GraphicManager.Renderer, Sdl.LoadBmp(path));
+            
+            // get the size of sprite.Image.Texture
+            Sdl.QueryTexture(Texture, out _, out _, out int w, out int h);
+            
+            Size = new Vector2(w, h);
+        }
+        
+        [JsonConstructor]
+        public Image(string path, IntPtr texture, Vector2 size)
+        {
             Path = path;
             
             Texture = Sdl.CreateTextureFromSurface(Context.GraphicManager.Renderer, Sdl.LoadBmp(path));
@@ -72,21 +80,25 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Gets or sets the value of the context
         /// </summary>
-        private Context Context { get; }
+        [JsonPropertyName("_Context_", true, true)]
+        private Context Context => VideoGame.GetContext();
         
         /// <summary>
         ///     Gets or sets the value of the path
         /// </summary>
+        [JsonPropertyName("_Path_")]
         public string Path { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the texture
         /// </summary>
+        [JsonPropertyName("_Texture_", true, true)]
         public IntPtr Texture { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the size
         /// </summary>
+        [JsonPropertyName("_Size_")]
         public Vector2 Size { get; set; }
     }
 }

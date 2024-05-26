@@ -32,27 +32,27 @@ namespace Alis.Core.Aspect.Math.Definition
     /// <summary>
     ///     The color
     /// </summary>
-    public struct Color
+    public struct Color 
     {
         /// <summary>
         ///     The
         /// </summary>
-        public byte R;
+        public byte R { get; set; }
         
         /// <summary>
         ///     The
         /// </summary>
-        public byte G;
+        public byte G  { get; set; }
         
         /// <summary>
         ///     The
         /// </summary>
-        public byte B;
+        public byte B  { get; set; }
         
         /// <summary>
         ///     The
         /// </summary>
-        public byte A;
+        public byte A  { get; set; }
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="Color" /> class
@@ -61,6 +61,7 @@ namespace Alis.Core.Aspect.Math.Definition
         /// <param name="g">The </param>
         /// <param name="b">The </param>
         /// <param name="a">The </param>
+        [JsonConstructor]
         public Color(byte r, byte g, byte b, byte a)
         {
             R = r;

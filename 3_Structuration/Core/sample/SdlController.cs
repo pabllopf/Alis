@@ -234,27 +234,27 @@ namespace Alis.Core.Sample
             // Rectangle to be drawn outline.
             RectangleI rectBorder = new RectangleI
             {
-                x = 0,
-                y = 0,
-                w = 50,
-                h = 50
+                X = 0,
+                Y = 0,
+                W = 50,
+                H = 50
             };
             
             // Rectangle to be drawn filled.
             RectangleI rectFilled = new RectangleI
             {
-                x = 200,
-                y = 200,
-                w = 100,
-                h = 100
+                X = 200,
+                Y = 200,
+                W = 100,
+                H = 100
             };
             
             RectangleI tileRectangleI = new RectangleI
             {
-                x = 0,
-                y = 0,
-                w = 32,
-                h = 64
+                X = 0,
+                Y = 0,
+                W = 32,
+                H = 64
             };
             
             // Load the image from the specified path.
@@ -282,22 +282,22 @@ namespace Alis.Core.Sample
                             
                             if (_sdlEvent.key.keySym.sym == KeyCodes.Up)
                             {
-                                rectBorder.y -= 10;
+                                rectBorder.Y -= 10;
                             }
                             
                             if (_sdlEvent.key.keySym.sym == KeyCodes.Down)
                             {
-                                rectBorder.y += 10;
+                                rectBorder.Y += 10;
                             }
                             
                             if (_sdlEvent.key.keySym.sym == KeyCodes.Left)
                             {
-                                rectBorder.x -= 10;
+                                rectBorder.X -= 10;
                             }
                             
                             if (_sdlEvent.key.keySym.sym == KeyCodes.Right)
                             {
-                                rectBorder.x += 10;
+                                rectBorder.X += 10;
                             }
                             
                             Logger.Info(_sdlEvent.key.keySym.sym + " was pressed");

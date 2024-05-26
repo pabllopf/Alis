@@ -33,7 +33,7 @@ using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Physic.Test.Collision.Shapes
+namespace Alis.Core.Physic.Test.Collision.Shapes.Sample
 {
     /// <summary>
     /// The concrete shape class

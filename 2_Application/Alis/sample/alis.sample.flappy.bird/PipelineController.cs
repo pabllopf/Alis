@@ -34,6 +34,7 @@ using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Collider;
+using Alis.Core.Physic;
 
 namespace Alis.Sample.Flappy.Bird
 {

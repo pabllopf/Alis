@@ -34,6 +34,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Dll;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
@@ -56,34 +57,64 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
     public class GraphicManager : AManager
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="GraphicManager"/> class
+        /// </summary>
+        public GraphicManager()
+        {
+            ColliderBases = new List<BoxCollider>();
+            Sprites = new List<Sprite>();
+            Cameras = new List<Camera>();
+            Window = IntPtr.Zero;
+            Renderer = IntPtr.Zero;
+            DefaultSize = new Vector2(640, 480);
+        }
+        
+        [JsonConstructor]
+        public GraphicManager(List<BoxCollider> colliderBases, IntPtr window, Vector2 defaultSize, IntPtr renderer, List<Sprite> sprites, List<Camera> cameras)
+        {
+            ColliderBases = colliderBases;
+            Window = window;
+            DefaultSize = defaultSize;
+            Renderer = renderer;
+            Sprites = sprites;
+            Cameras = cameras;
+        }
+        
+        /// <summary>
         ///     The box collider
         /// </summary>
-        private readonly List<BoxCollider> colliderBases = new List<BoxCollider>();
+        [JsonPropertyName("_ColliderBases_")]
+        public readonly List<BoxCollider> ColliderBases;
         
         /// <summary>
         ///     The window
         /// </summary>
-        private IntPtr _window;
+        [JsonPropertyName("_Window_", true, true)]
+        public IntPtr Window;
         
         /// <summary>
         ///     The default size
         /// </summary>
-        private Vector2 defaultSize;
+        [JsonPropertyName("_DefaultSize_")]
+        public Vector2 DefaultSize;
         
         /// <summary>
         ///     The renderWindow
         /// </summary>
+        [JsonPropertyName("_Renderer_", true, true)]
         public IntPtr Renderer;
         
         /// <summary>
         ///     Gets or sets the value of the sprites
         /// </summary>
-        private static List<Sprite> Sprites { get; set; } = new List<Sprite>();
+        [JsonPropertyName("_Sprites_")]
+        public List<Sprite> Sprites { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the cameras
         /// </summary>
-        private static List<Camera> Cameras { get; } = new List<Camera>();
+        [JsonPropertyName("_Cameras_")]
+        public List<Camera> Cameras { get; }
         
         /// <summary>
         ///     Ons the enable
@@ -105,7 +136,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             
             Logger.Log("init::graphic:new");
             
-            defaultSize = new Vector2(Context.Settings.Graphic.Window.Resolution.X, Context.Settings.Graphic.Window.Resolution.Y);
+            DefaultSize = new Vector2(Context.Settings.Graphic.Window.Resolution.X, Context.Settings.Graphic.Window.Resolution.Y);
             
             if (Sdl.Init(InitSettings.InitEverything) < 0)
             {
@@ -158,14 +189,14 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             }
             
             // Creates a new SDL window at the center of the screen with the given width and height.
-            _window = Sdl.CreateWindow(Context.Settings.General.Name, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, (int) defaultSize.X, (int) defaultSize.Y, flags);
+            Window = Sdl.CreateWindow(Context.Settings.General.Name, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, (int) DefaultSize.X, (int) DefaultSize.Y, flags);
             
             // Check if the window was created successfully.
-            Logger.Info(_window == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : "Window created");
+            Logger.Info(Window == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : "Window created");
             
             // Create the renderer
             Renderer = Sdl.CreateRenderer(
-                _window,
+                Window,
                 -1,
                 Renderers.SdlRendererAccelerated);
             
@@ -182,7 +213,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 
                 // GET DISPLAY BOUNDS
                 Sdl.GetDisplayBounds(i, out RectangleI displayBounds);
-                Logger.Info($"Display [{i}] Bounds: {displayBounds.x}, {displayBounds.y}, {displayBounds.w}, {displayBounds.h}");
+                Logger.Info($"Display [{i}] Bounds: {displayBounds.X}, {displayBounds.Y}, {displayBounds.W}, {displayBounds.H}");
             }
             
             int totalDrivers = Sdl.GetNumRenderDrivers();
@@ -215,13 +246,13 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Logger.Info($"Renderer Scale: {scaleX}, {scaleY}");
             
             
-            uint windowHandle = Sdl.GetWindowId(_window);
+            uint windowHandle = Sdl.GetWindowId(Window);
             Logger.Info($"Window Handle: {windowHandle}");
             
             int numberOfDisplays = Sdl.GetNumVideoDisplays();
             Logger.Info($"Number of Displays: {numberOfDisplays}");
             
-            int displayIndex = Sdl.GetWindowDisplayIndex(_window);
+            int displayIndex = Sdl.GetWindowDisplayIndex(Window);
             Logger.Info($"Display Index: {displayIndex}");
             
             int numOfTypeDisplaysModes = Sdl.GetNumDisplayModes(displayIndex);
@@ -236,12 +267,12 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // SET DISPLAY MODE
             Sdl.GetDisplayMode(displayIndex, 0, out DisplayMode displayMode2);
             Logger.Info($"Display {displayIndex} SELECTED Mode: {displayMode2.format}, {displayMode2.w}, {displayMode2.h}, {displayMode2.refresh_rate}");
-            Sdl.SetWindowDisplayMode(_window, ref displayMode2);
+            Sdl.SetWindowDisplayMode(Window, ref displayMode2);
             
             if (!string.IsNullOrEmpty(Context.Settings.General.Icon) && File.Exists(Context.Settings.General.Icon))
             {
                 IntPtr icon = Sdl.LoadBmp(Context.Settings.General.Icon);
-                Sdl.SetWindowIcon(_window, icon);
+                Sdl.SetWindowIcon(Window, icon);
             }
             
             // INIT SDL_TTF
@@ -284,7 +315,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         public override void OnExit()
         {
             Sdl.DestroyRenderer(Renderer);
-            Sdl.DestroyWindow(_window);
+            Sdl.DestroyWindow(Window);
             Sdl.Quit();
         }
         
@@ -295,7 +326,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
             if (Context.Settings.General.Debug)
             {
-                Sdl.SetWindowTitle(_window, $"{Context.Settings.General.Name} - FPS: {Context.TimeManager.AverageFrames}");
+                Sdl.SetWindowTitle(Window, $"{Context.Settings.General.Name} - FPS: {Context.TimeManager.AverageFrames}");
             }
         }
         
@@ -359,24 +390,24 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <returns>The rectangles</returns>
         private RectangleF[] CalculateRectangleDimensions(Camera camera)
         {
-            RectangleF[] rectangles = new RectangleF[colliderBases.Count];
+            RectangleF[] rectangles = new RectangleF[ColliderBases.Count];
             
             // Calculates rectangle dimensions:
-            for (int i = 0; i < colliderBases.Count; i++)
+            for (int i = 0; i < ColliderBases.Count; i++)
             {
-                if (colliderBases[i] != null)
+                if (ColliderBases[i] != null)
                 {
-                    rectangles[i] = colliderBases[i].RectangleF;
+                    rectangles[i] = ColliderBases[i].RectangleF;
                     
                     // Check if the rectangle at the current index is already set
                     if (!Equals(rectangles[i], default(RectangleF)))
                     {
                         rectangles[i] = new RectangleF(
-                            (int) (colliderBases[i].GameObject.Transform.Position.X - rectangles[i].w * colliderBases[i].GameObject.Transform.Scale.X / 2 - (camera.Viewport.x - camera.Viewport.w / 2) + Camera.CameraBorder),
-                            (int) (colliderBases[i].GameObject.Transform.Position.Y - rectangles[i].h * colliderBases[i].GameObject.Transform.Scale.Y / 2 - (camera.Viewport.y - camera.Viewport.h / 2) + Camera.CameraBorder),
+                            (int) (ColliderBases[i].GameObject.Transform.Position.X - rectangles[i].w * ColliderBases[i].GameObject.Transform.Scale.X / 2 - (camera.Viewport.X - camera.Viewport.W / 2) + camera.CameraBorder),
+                            (int) (ColliderBases[i].GameObject.Transform.Position.Y - rectangles[i].h * ColliderBases[i].GameObject.Transform.Scale.Y / 2 - (camera.Viewport.Y - camera.Viewport.H / 2) + camera.CameraBorder),
                             (int) rectangles[i].w,
                             (int) rectangles[i].h);
-                        if (colliderBases[i].GameObject.Contains<Camera>())
+                        if (ColliderBases[i].GameObject.Contains<Camera>())
                         {
                             rectangles[i].x += rectangles[i].w / 2;
                             rectangles[i].y += rectangles[i].h / 2;
@@ -404,13 +435,13 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
             foreach (Camera camera in Cameras)
             {
-                float pixelH = Sdl.GetWindowSize(_window).Y / camera.Viewport.h;
+                float pixelH = Sdl.GetWindowSize(Window).Y / camera.Viewport.H;
                 
                 RectangleI dstRect = new RectangleI(
-                    (int) (pixelH - pixelH * Camera.CameraBorder),
-                    (int) (pixelH - pixelH * Camera.CameraBorder),
-                    (int) (camera.Viewport.w * pixelH),
-                    (int) (camera.Viewport.h * pixelH));
+                    (int) (pixelH - pixelH * camera.CameraBorder),
+                    (int) (pixelH - pixelH * camera.CameraBorder),
+                    (int) (camera.Viewport.W * pixelH),
+                    (int) (camera.Viewport.H * pixelH));
                 
                 Sdl.RenderCopy(Renderer, camera.TextureTarget, IntPtr.Zero, ref dstRect);
             }
@@ -442,7 +473,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <param name="collider">The collider</param>
         public void Attach(BoxCollider collider)
         {
-            colliderBases.Add(collider);
+            ColliderBases.Add(collider);
         }
         
         /// <summary>
@@ -460,7 +491,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <param name="collider">The collider</param>
         public void UnAttach(BoxCollider collider)
         {
-            colliderBases.Remove(collider);
+            ColliderBases.Remove(collider);
         }
         
         /// <summary>

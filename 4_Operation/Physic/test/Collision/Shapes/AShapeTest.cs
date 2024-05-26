@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Test.Collision.Shapes.Sample;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Collision.Shapes

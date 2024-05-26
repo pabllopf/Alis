@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Ecs.System.Manager.Scene
@@ -42,13 +43,24 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// <summary>
         ///     Gets or sets the value of the current scene
         /// </summary>
-        public Entity.Scene CurrentScene { get; set; } = new Entity.Scene();
+        [JsonPropertyName("_CurrentScene_")]
+        public Entity.Scene CurrentScene { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the scenes
         /// </summary>
         [ExcludeFromCodeCoverage]
-        public List<Entity.Scene> Scenes { get; private set; } = new List<Entity.Scene>();
+        [JsonPropertyName("_Scenes_")]
+        public List<Entity.Scene> Scenes { get; private set; }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SceneManager"/> class
+        /// </summary>
+        public SceneManager()
+        {
+            Scenes = new List<Entity.Scene>();
+            CurrentScene = new Entity.Scene();
+        }
         
         /// <summary>
         ///     Ons the enable
@@ -64,7 +76,6 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         [ExcludeFromCodeCoverage]
         public override void OnInit()
         {
-            Scenes.ForEach(i => i.SetContext(Context));
             CurrentScene.OnInit();
         }
         
@@ -274,9 +285,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnStop();
             CurrentScene.OnExit();
-            Logger.Info($"ID={CurrentScene.GetHashCode()}");
             CurrentScene = Scenes.Find(i => i.Name == name);
-            Logger.Info($"ID={CurrentScene.GetHashCode()}");
             CurrentScene.OnInit();
             CurrentScene.OnAwake();
             CurrentScene.OnStart();

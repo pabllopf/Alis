@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.System.Setting.Network;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 
 namespace Alis.Core.Ecs.System.Setting.Network
@@ -36,28 +37,60 @@ namespace Alis.Core.Ecs.System.Setting.Network
     ///     The network setting class
     /// </summary>
     /// <seealso cref="INetworkSetting" />
-    public class NetworkSetting : INetworkSetting,
+    public class NetworkSetting : 
+        INetworkSetting,
         IBuilder<NetworkSettingBuilder>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="NetworkSetting"/> class
+        /// </summary>
+        public NetworkSetting()
+        {
+            Port = 8080;
+            Ip = "127.0.0.1";
+            Host = "localhost";
+            Protocol = "http";
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NetworkSetting"/> class
+        /// </summary>
+        /// <param name="port">The port</param>
+        /// <param name="ip">The ip</param>
+        /// <param name="host">The host</param>
+        /// <param name="protocol">The protocol</param>
+        [JsonConstructor]
+        public NetworkSetting(int port, string ip, string host, string protocol)
+        {
+            Port = port;
+            Ip = ip;
+            Host = host;
+            Protocol = protocol;
+        }
+        
+        /// <summary>
         /// Gets or sets the value of the port
         /// </summary>
-        public int Port { get; set; } = 8080;
+        [JsonPropertyName("_Port_")]
+        public int Port { get; set; }
         
         /// <summary>
         /// Gets or sets the value of the ip
         /// </summary>
-        public string Ip { get; set; } = "127.0.0.1";
+        [JsonPropertyName("_Ip_")]
+        public string Ip { get; set; }
         
         /// <summary>
         /// Gets or sets the value of the host
         /// </summary>
-        public string Host { get; set; } = "localhost";
+        [JsonPropertyName("_Host_")]
+        public string Host { get; set; }
         
         /// <summary>
         /// Gets or sets the value of the protocol
         /// </summary>
-        public string Protocol { get; set; } = "http";
+        [JsonPropertyName("_Protocol_")]
+        public string Protocol { get; set; }
         
         /// <summary>
         /// Builders this instance

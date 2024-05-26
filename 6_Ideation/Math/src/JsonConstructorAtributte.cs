@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:UpdateMode.cs
+//  File:JsonConstructorAtributte.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,31 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ecs.System.Setting.Input
+using System;
+
+namespace Alis.Core.Aspect.Math
 {
+    
     /// <summary>
-    /// The update mode enum
+    /// The json constructor attribute class
     /// </summary>
-    public enum UpdateMode
+    /// <seealso cref="Attribute"/>
+    [AttributeUsage(AttributeTargets.Constructor)]
+    internal class JsonConstructorAttribute : Attribute
     {
-        /// <summary>
-        /// The default update mode
-        /// </summary>
-        Default,
         
-        /// <summary>
-        /// The dynamic update update mode
-        /// </summary>
-        DynamicUpdate,
-        
-        /// <summary>
-        /// The fixed update update mode
-        /// </summary>
-        FixedUpdate,
-        
-        /// <summary>
-        /// The manual update update mode
-        /// </summary>
-        ManualUpdate
     }
 }

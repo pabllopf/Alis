@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
         [ExcludeFromCodeCoverage]
-        internal BreakableBody(World world, ICollection<Vertices> parts, float density, Vector2 position = new Vector2(),
+        internal BreakableBody(World world, ICollection<Vertices> parts, float density, Vector2 position = default(Vector2),
             float rotation = 0)
         {
             this.world = world;
@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
         [ExcludeFromCodeCoverage]
-        internal BreakableBody(World world, IEnumerable<AShape> shapes, Vector2 position = new Vector2(),
+        internal BreakableBody(World world, IEnumerable<AShape> shapes, Vector2 position = default(Vector2),
             float rotation = 0)
         {
             this.world = world;
