@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Ecs.System;
 
@@ -111,7 +112,10 @@ namespace Alis.Core.Ecs.Entity
         /// <summary>
         ///     Ons the init
         /// </summary>
-        public void OnInit() => GameObjects.ForEach(i => i.OnInit());
+        public void OnInit()
+        {
+            GameObjects.ForEach(i => i.OnInit());
+        }
         
         /// <summary>
         ///     Ons the awake
@@ -197,7 +201,9 @@ namespace Alis.Core.Ecs.Entity
         /// <summary>
         ///     Ons the reset
         /// </summary>
-        public void OnReset() => GameObjects.ForEach(i => i.OnReset());
+        public void OnReset()
+        {
+        }
         
         /// <summary>
         ///     Ons the stop

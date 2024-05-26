@@ -36,6 +36,7 @@ using Alis.Core.Ecs.System.Manager.Network;
 using Alis.Core.Ecs.System.Manager.Physic;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.System
 {
@@ -89,7 +90,7 @@ namespace Alis.Core.Ecs.System
             AudioManager = new AudioManager();
             GraphicManager = new GraphicManager();
             InputManager = new InputManager();
-            NetworkManager  = new NetworkManager();
+            NetworkManager = new NetworkManager();
             PhysicManager = new PhysicManager();
             SceneManager = sceneManager;
         }
@@ -134,7 +135,7 @@ namespace Alis.Core.Ecs.System
         ///     The settings
         /// </summary>
         [JsonPropertyName("_Settings_")]
-        public Settings Settings { get;  set; }
+        public Settings Settings { get; set; }
         
         /// <summary>
         ///     Gets the value of the scene manager
@@ -152,7 +153,7 @@ namespace Alis.Core.Ecs.System
             InputManager.OnExit();
             NetworkManager.OnExit();
             PhysicManager.OnExit();
-            SceneManager.OnExit();  
+            SceneManager.OnExit();
         }
         
         /// <summary>
@@ -347,5 +348,33 @@ namespace Alis.Core.Ecs.System
         /// </summary>
         /// <param name="sceneManager">The scene manager</param>
         public void SetSceneManager(SceneManager sceneManager) => SceneManager = sceneManager;
+        
+        public void Reset()
+        {
+            AudioManager = new AudioManager();
+            GraphicManager = new GraphicManager();
+            InputManager = new InputManager();
+            NetworkManager = new NetworkManager();
+            PhysicManager = new PhysicManager();
+            
+            AudioManager.OnInit();
+            GraphicManager.OnInit();
+            InputManager.OnInit();
+            NetworkManager.OnInit();
+            PhysicManager.OnInit();
+            
+            AudioManager.OnAwake();
+            GraphicManager.OnAwake();
+            InputManager.OnAwake();
+            NetworkManager.OnAwake();
+            PhysicManager.OnAwake();
+            
+            AudioManager.OnStart();
+            GraphicManager.OnStart();
+            InputManager.OnStart();
+            NetworkManager.OnStart();
+            PhysicManager.OnStart();
+            
+        }
     }
 }
