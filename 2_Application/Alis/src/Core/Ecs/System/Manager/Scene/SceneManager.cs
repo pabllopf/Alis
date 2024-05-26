@@ -27,8 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
 
@@ -38,12 +40,12 @@ namespace Alis.Core.Ecs.System.Manager.Scene
     ///     The scene manager base class
     /// </summary>
     /// <seealso cref="AManager" />
-    public class SceneManager : AManager
+    public class SceneManager : AManager 
     {
         /// <summary>
         ///     Gets or sets the value of the current scene
         /// </summary>
-        [JsonPropertyName("_CurrentScene_")]
+        [JsonPropertyName("_CurrentScene_", true, true)]
         public Entity.Scene CurrentScene { get; set; }
         
         /// <summary>
@@ -51,7 +53,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// </summary>
         [ExcludeFromCodeCoverage]
         [JsonPropertyName("_Scenes_")]
-        public List<Entity.Scene> Scenes { get; private set; }
+        public List<Entity.Scene> Scenes { get; set; }
         
         /// <summary>
         /// Initializes a new instance of the <see cref="SceneManager"/> class
@@ -76,6 +78,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         [ExcludeFromCodeCoverage]
         public override void OnInit()
         {
+            CurrentScene = Scenes[0];
             CurrentScene.OnInit();
         }
         
