@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Runtime.Serialization;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
@@ -40,7 +41,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
     ///     The scene manager base class
     /// </summary>
     /// <seealso cref="AManager" />
-    public class SceneManager : AManager 
+    public class SceneManager : AManager
     {
         /// <summary>
         ///     Gets or sets the value of the current scene
@@ -78,6 +79,18 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         [ExcludeFromCodeCoverage]
         public override void OnInit()
         {
+            foreach (Entity.Scene scene in Scenes)
+            {
+                string gameJson = JsonSerializer.Serialize(scene, new JsonOptions()
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
+                string file = Path.Combine(Environment.CurrentDirectory,  $"Scene_{scene.Name}.json");
+                
+                File.WriteAllText(file, gameJson);
+            }
+            
             CurrentScene = Scenes[0];
             CurrentScene.OnInit();
         }
@@ -288,12 +301,16 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnStop();
             CurrentScene.OnExit();
-            CurrentScene = Scenes.Find(i => i.Name == name);
+            
+            Context.Reset();
+            
+            //CurrentScene = Scenes.Find(i => i.Name == name);
+            CurrentScene = JsonSerializer.Deserialize<Entity.Scene>(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, $"Scene_{name}.json")));
+            
             CurrentScene.OnInit();
             CurrentScene.OnAwake();
             CurrentScene.OnStart();
         }
-        
         
         /// <summary>
         ///     Loads the scene using the specified index
