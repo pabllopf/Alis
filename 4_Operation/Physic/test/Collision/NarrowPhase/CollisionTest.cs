@@ -27,11 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math;
-using Alis.Core.Physic.Collision.NarrowPhase;
-using Alis.Core.Physic.Collision.Shapes;
-using Xunit;
-
 namespace Alis.Core.Physic.Test.Collision.NarrowPhase
 {
     /// <summary>

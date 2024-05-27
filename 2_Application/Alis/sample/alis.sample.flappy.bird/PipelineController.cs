@@ -30,7 +30,6 @@
 using System;
 using System.Security.Cryptography;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Collider;

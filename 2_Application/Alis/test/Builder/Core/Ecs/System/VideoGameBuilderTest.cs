@@ -64,7 +64,7 @@ namespace Alis.Test.Builder.Core.Ecs.System
             
             videoGameBuilder.Settings(s => settings);
             
-            Assert.Equal(settings, videoGameBuilder.Build().Settings);
+            Assert.Equal(settings, videoGameBuilder.Build().Context.Settings);
         }
         
         /// <summary>
@@ -78,7 +78,7 @@ namespace Alis.Test.Builder.Core.Ecs.System
             
             videoGameBuilder.World(s => sceneManager);
             
-            Assert.Equal(sceneManager, videoGameBuilder.Build().Get<SceneManager>());
+            Assert.Equal(sceneManager, videoGameBuilder.Build().Context.SceneManager);
         }
         
         /// <summary>
@@ -129,7 +129,7 @@ namespace Alis.Test.Builder.Core.Ecs.System
             
             videoGameBuilder.Settings(s => settingsBuilder.Build());
             
-            Assert.NotNull(videoGameBuilder.Build().Settings);
+            Assert.NotNull(videoGameBuilder.Build().Context.Settings);
         }
         
         /// <summary>
@@ -143,7 +143,7 @@ namespace Alis.Test.Builder.Core.Ecs.System
             
             videoGameBuilder.World(s => sceneManagerBuilder.Build());
             
-            Assert.NotNull(videoGameBuilder.Build().Get<SceneManager>());
+            Assert.NotNull(videoGameBuilder.Build().Context.SceneManager);
         }
     }
 }

@@ -30,7 +30,6 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Distance;
-using Alis.Core.Physic.Collision.NarrowPhase;
 using Alis.Core.Physic.Collision.TOI;
 using Xunit;
 

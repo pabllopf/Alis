@@ -27,10 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
-namespace Alis.Core.Aspect.Math.Test
+namespace Alis.Core.Physic.Test
 {
     /// <summary>
     ///     The transform test class

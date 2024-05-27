@@ -33,6 +33,12 @@ using Alis.Builder.Core.Ecs.System;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.System;
+using Alis.Core.Ecs.System.Manager.Audio;
+using Alis.Core.Ecs.System.Manager.Graphic;
+using Alis.Core.Ecs.System.Manager.Input;
+using Alis.Core.Ecs.System.Manager.Network;
+using Alis.Core.Ecs.System.Manager.Physic;
+using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
 
 namespace Alis.Core.Ecs
@@ -43,7 +49,10 @@ namespace Alis.Core.Ecs
     /// <seealso cref="IGame"/>
     public sealed class VideoGame : IGame
     {
-        [JsonPropertyName("_Instance_", true, true)]
+        /// <summary>
+        /// The instancie
+        /// </summary>
+        [JsonIgnore]
         private static VideoGame _instancie;
         
         /// <summary>
@@ -64,6 +73,32 @@ namespace Alis.Core.Ecs
         public VideoGame(Context context)
         {
             Context = context;
+            _instancie = this;
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VideoGame"/> class
+        /// </summary>
+        /// <param name="settings">The settings</param>
+        /// <param name="audioManager">The audio manager</param>
+        /// <param name="graphicManager">The graphic manager</param>
+        /// <param name="inputManager">The input manager</param>
+        /// <param name="networkManager">The network manager</param>
+        /// <param name="physicManager">The physic manager</param>
+        /// <param name="sceneManager">The scene manager</param>
+        public VideoGame(Settings settings, AudioManager audioManager, GraphicManager graphicManager, InputManager inputManager, NetworkManager networkManager, PhysicManager physicManager, SceneManager sceneManager)
+        {
+            Context = new Context
+            {
+                Settings = settings,
+                AudioManager = audioManager,
+                GraphicManager = graphicManager,
+                InputManager = inputManager,
+                NetworkManager = networkManager,
+                PhysicManager = physicManager,
+                SceneManager = sceneManager
+            };
+            
             _instancie = this;
         }
         
@@ -369,8 +404,16 @@ namespace Alis.Core.Ecs
         /// <returns>The video game builder</returns>
         public static VideoGameBuilder Builder() => new VideoGameBuilder();
         
+        /// <summary>
+        /// Gets the context
+        /// </summary>
+        /// <returns>The context</returns>
         public static Context GetContext() => _instancie.Context;
         
+        /// <summary>
+        /// Sets the context using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
         public static void SetContext(Context context) => _instancie.Context = context;
     }
 }

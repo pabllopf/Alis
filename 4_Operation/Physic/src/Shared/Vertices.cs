@@ -31,7 +31,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Text;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Util;

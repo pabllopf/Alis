@@ -93,17 +93,6 @@ namespace Alis.Test.Core.Ecs.Component.Render
         public void OnExit_DetachesFromGraphicManager()
         {
             Camera camera = new Camera();
-            camera.Context = new Context(
-                new VideoGame(
-                    new Settings(),
-                    new AudioManager(),
-                    new GraphicManager(),
-                    new InputManager(),
-                    new NetworkManager(),
-                    new PhysicManager(),
-                    new SceneManager()
-                ),
-                new Settings());
             camera.OnStart();
             camera.OnExit();
         }
@@ -136,8 +125,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void CameraBorder_PropertySet_GetReturnsCorrectValue()
         {
-            Camera.CameraBorder = 1f;
-            Assert.Equal(1f, Camera.CameraBorder);
+            Camera camera = new Camera();
+            camera.CameraBorder = 1f;
+            Assert.Equal(1f, camera.CameraBorder);
         }
         
         /// <summary>

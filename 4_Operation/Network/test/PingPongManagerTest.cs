@@ -29,7 +29,6 @@
 
 using System;
 using System.IO;
-using System.Net.WebSockets;
 using System.Reflection;
 using System.Text;
 using System.Threading;

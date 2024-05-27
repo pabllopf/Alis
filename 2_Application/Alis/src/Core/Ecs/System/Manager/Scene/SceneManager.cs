@@ -31,9 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Runtime.Serialization;
 using Alis.Core.Aspect.Data.Json;
-using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Ecs.System.Manager.Scene
 {
@@ -79,6 +77,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         [ExcludeFromCodeCoverage]
         public override void OnInit()
         {
+            /*
             foreach (Entity.Scene scene in Scenes)
             {
                 string gameJson = JsonSerializer.Serialize(scene, new JsonOptions()
@@ -89,7 +88,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
                 string file = Path.Combine(Environment.CurrentDirectory,  $"Scene_{scene.Name}.json");
                 
                 File.WriteAllText(file, gameJson);
-            }
+            }*/
             
             CurrentScene = Scenes[0];
             CurrentScene.OnInit();
@@ -299,6 +298,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// <param name="name">The name</param>
         public void LoadScene(string name)
         {
+            /*
             CurrentScene.OnStop();
             CurrentScene.OnExit();
             
@@ -309,7 +309,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             
             CurrentScene.OnInit();
             CurrentScene.OnAwake();
-            CurrentScene.OnStart();
+            CurrentScene.OnStart();*/
         }
         
         /// <summary>
@@ -318,12 +318,13 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// <param name="index">The index</param>
         public void LoadScene(int index)
         {
+            /*
             CurrentScene.OnStop();
             CurrentScene.OnExit();
             CurrentScene = Scenes[index];
             CurrentScene.OnInit();
             CurrentScene.OnAwake();
-            CurrentScene.OnStart();
+            CurrentScene.OnStart();*/
         }
     }
 }

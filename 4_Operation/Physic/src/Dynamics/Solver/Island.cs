@@ -30,7 +30,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Physic.Collision.ContactSystem;

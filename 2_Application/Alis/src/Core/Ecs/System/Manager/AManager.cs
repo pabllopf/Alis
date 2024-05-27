@@ -50,6 +50,13 @@ namespace Alis.Core.Ecs.System.Manager
             IsEnable = true;
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AManager"/> class
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="name">The name</param>
+        /// <param name="tag">The tag</param>
+        /// <param name="isEnable">The is enable</param>
         [JsonConstructor]
         protected AManager(string id, string name, string tag, bool isEnable)
         {

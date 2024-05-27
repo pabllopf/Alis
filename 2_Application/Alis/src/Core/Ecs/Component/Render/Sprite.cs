@@ -29,8 +29,10 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
@@ -39,32 +41,33 @@ using Alis.Core.Graphic.Sdl2.Enums;
 
 namespace Alis.Core.Ecs.Component.Render
 {
+    /// <summary>
+    /// The sprite class
+    /// </summary>
+    /// <seealso cref="AComponent"/>
+    /// <seealso cref="IBuilder{SpriteBuilder}"/>
     public class Sprite : 
         AComponent, 
         IBuilder<SpriteBuilder>
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Sprite" /> class
-        /// </summary>
         public Sprite()
         {
-            Image = null;
-            TexturePath = string.Empty;
+            Image = new Image();
             Depth = 0;
             Flips = RendererFlips.None;
         }
         
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Sprite" /> class
-        /// </summary>
-        /// <param name="texturePath">The texture path</param>
-        public Sprite(string texturePath) => TexturePath = texturePath;
-        
-        [JsonConstructor]
-        public Sprite(Image image, string texturePath, int depth, RendererFlips flips)
+        public Sprite(Image image)
         {
             Image = image;
-            TexturePath = texturePath;
+            Depth = 0;
+            Flips = RendererFlips.None;
+        }
+        
+        [JsonConstructor]
+        public Sprite(Image image, int depth, RendererFlips flips)
+        {
+            Image = image;
             Depth = depth;
             Flips = flips;
         }
@@ -74,12 +77,6 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         [JsonPropertyName("_Image_")]
         public Image Image  { get; set; }
-        
-        /// <summary>
-        ///     The texture path
-        /// </summary>
-        [JsonPropertyName("_TexturePath_")]
-        public string TexturePath { get; set; }
         
         /// <summary>
         ///     The level
@@ -105,16 +102,7 @@ namespace Alis.Core.Ecs.Component.Render
         [ExcludeFromCodeCoverage]
         public override void OnInit()
         {
-            if (Context is null)
-            {
-                return;
-            }
-            
-            if (!string.IsNullOrEmpty(TexturePath))
-            {
-                Image = new Image(TexturePath);
-                Logger.Info($"Load sprite od '{TexturePath}'");
-            }
+            Image.Load();
         }
         
         /// <summary>

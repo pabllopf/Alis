@@ -29,7 +29,6 @@
 
 using System;
 using Alis.Builder.Core.Ecs.Component.Collider;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Physic.Dynamics;

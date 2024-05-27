@@ -36,7 +36,6 @@ using Alis.Core.Ecs.System.Manager.Network;
 using Alis.Core.Ecs.System.Manager.Physic;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
-using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.System
 {
@@ -93,6 +92,27 @@ namespace Alis.Core.Ecs.System
             NetworkManager = new NetworkManager();
             PhysicManager = new PhysicManager();
             SceneManager = sceneManager;
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Context"/> class
+        /// </summary>
+        /// <param name="settings">The settings</param>
+        /// <param name="audioManager">The audio manager</param>
+        /// <param name="graphicManager">The graphic manager</param>
+        /// <param name="inputManager">The input manager</param>
+        /// <param name="networkManager">The network manager</param>
+        /// <param name="physicManager">The physic manager</param>
+        /// <param name="sceneManager">The scene manager</param>
+        public Context(Settings settings, AudioManager audioManager, GraphicManager graphicManager, InputManager inputManager, NetworkManager networkManager, PhysicManager physicManager, SceneManager sceneManager)
+        {
+           Settings = settings;
+           AudioManager = audioManager;
+           GraphicManager = graphicManager;
+           InputManager = inputManager;
+           NetworkManager = networkManager;
+           PhysicManager = physicManager;
+           SceneManager = sceneManager;
         }
         
         /// <summary>
@@ -349,6 +369,9 @@ namespace Alis.Core.Ecs.System
         /// <param name="sceneManager">The scene manager</param>
         public void SetSceneManager(SceneManager sceneManager) => SceneManager = sceneManager;
         
+        /// <summary>
+        /// Resets this instance
+        /// </summary>
         public void Reset()
         {
             AudioManager = new AudioManager();

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Component.Light;
 using Xunit;
 

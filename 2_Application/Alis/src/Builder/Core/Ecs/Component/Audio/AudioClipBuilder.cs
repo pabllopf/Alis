@@ -61,7 +61,7 @@ namespace Alis.Builder.Core.Ecs.Component.Audio
         /// <returns>The audio clip builder</returns>
         public AudioClipBuilder FilePath(string value)
         {
-            audioClip.FullPathAudioFile = value;
+            audioClip.NameFile = value;
             return this;
         }
         

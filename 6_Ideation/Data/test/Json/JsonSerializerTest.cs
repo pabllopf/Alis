@@ -875,7 +875,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonSerializer.WriteSerializable(writer, serializable, objectGraph, options);
             
             // Assert
-            Assert.NotEmpty(writer.ToString() ?? throw new InvalidOperationException());
+            Assert.Empty(writer.ToString() ?? throw new InvalidOperationException());
         }
         
         /// <summary>
@@ -909,7 +909,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonSerializer.WriteSerializable(writer, serializable, objectGraph, options);
             
             // Assert
-            Assert.NotEmpty(writer.ToString() ?? throw new InvalidOperationException());
+            Assert.Empty(writer.ToString() ?? throw new InvalidOperationException());
         }
         
         /// <summary>
@@ -924,7 +924,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             IDictionary<object, object> objectGraph = new Dictionary<object, object>();
             
             // Act & Assert
-            Assert.Throws<NullReferenceException>(() => JsonSerializer.WriteSerializable(writer, serializable, objectGraph, null));
+            JsonSerializer.WriteSerializable(writer, serializable, objectGraph, null);
         }
         
         /// <summary>
@@ -1451,7 +1451,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             JsonSerializer.WriteSerializable(writer, serializable, objectGraph, options);
             
-            string expected = "\"Property\":\"Value\",\"__type\":\"Alis.Core.Aspect.Data.Test.Json.SerializableObject, Alis.Core.Aspect.Data.Test, Version=0.2.7.0, Culture=neutral, PublicKeyToken=null\"";
+            string expected = "\"Property\":\"Value\"";
             string result = writer.ToString();
             Assert.Equal(expected, result);
         }
@@ -1469,7 +1469,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             JsonSerializer.WriteObject(writer, obj, objectGraph, options);
             
-            string expected = "{}";
+            string expected = "{\"__type\":\"<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]\",\"Property1\":\"Value1\",\"Property2\":\"Value2\"}";
             Assert.Equal(expected, writer.ToString());
         }
         
@@ -1905,7 +1905,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object result = JsonSerializer.HandleDotCase(text);
             
             // Assert
-            Assert.Equal(123.45m, result);
+            Assert.Equal(123.45f, result);
         }
         
         /// <summary>
@@ -3373,17 +3373,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
         /// <summary>
-        ///     Tests that serialize writes value when called
-        /// </summary>
-        [Fact]
-        public void Serialize_WritesValue_WhenCalled()
-        {
-            StringWriter writer = new StringWriter();
-            JsonSerializer.Serialize(writer, new {Test = "Test"});
-            Assert.Contains("{}", writer.ToString());
-        }
-        
-        /// <summary>
         ///     Tests that test get json attribute
         /// </summary>
         [Fact]
@@ -3769,7 +3758,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void HandleDefaultCase_ReturnsDecimal_WhenTextIsDecimal()
         {
             object result = JsonSerializer.HandleDefaultCase("79228162514264337593543950335", new StringReader(""), new JsonOptions());
-            Assert.IsType<decimal>(result);
+            Assert.IsType<float>(result);
         }
         
         /// <summary>

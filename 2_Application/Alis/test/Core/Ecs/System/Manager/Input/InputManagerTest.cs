@@ -29,10 +29,7 @@
 
 using System.Collections.Generic;
 using Alis.Core.Aspect.Data.Mapping;
-using Alis.Core.Ecs.Entity;
-using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Input;
-using Alis.Core.Ecs.System.Manager.Scene;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.System.Manager.Input

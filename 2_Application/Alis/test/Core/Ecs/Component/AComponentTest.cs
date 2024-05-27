@@ -29,7 +29,6 @@
 
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Ecs;
-using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Audio;
@@ -283,8 +282,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnPressDownKey_CallsLoggerTrace()
         {
-            MockComponent mockComponent = new MockComponent();
-            mockComponent.OnPressDownKey(KeyCodes.A);
+            Sample2Component sample2Component = new Sample2Component();
+            sample2Component.OnPressDownKey(KeyCodes.A);
         }
         
         /// <summary>
@@ -293,8 +292,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnReleaseKey_CallsLoggerTrace()
         {
-            MockComponent mockComponent = new MockComponent();
-            mockComponent.OnReleaseKey(KeyCodes.A);
+            Sample2Component sample2Component = new Sample2Component();
+            sample2Component.OnReleaseKey(KeyCodes.A);
         }
         
         /// <summary>
@@ -303,8 +302,8 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnPressKey_CallsLoggerTrace()
         {
-            MockComponent mockComponent = new MockComponent();
-            mockComponent.OnPressKey(KeyCodes.A);
+            Sample2Component sample2Component = new Sample2Component();
+            sample2Component.OnPressKey(KeyCodes.A);
         }
         
         /// <summary>
@@ -313,9 +312,9 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnCollisionEnter_CallsLoggerTrace()
         {
-            MockComponent mockComponent = new MockComponent();
+            Sample2Component sample2Component = new Sample2Component();
             GameObject gameObject = new GameObject();
-            mockComponent.OnCollisionEnter(gameObject);
+            sample2Component.OnCollisionEnter(gameObject);
         }
         
         /// <summary>
@@ -324,9 +323,9 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnCollisionExit_CallsLoggerTrace()
         {
-            MockComponent mockComponent = new MockComponent();
+            Sample2Component sample2Component = new Sample2Component();
             GameObject gameObject = new GameObject();
-            mockComponent.OnCollisionExit(gameObject);
+            sample2Component.OnCollisionExit(gameObject);
         }
         
         /// <summary>
@@ -335,19 +334,9 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void SetContext_SetsContext()
         {
-            MockComponent mockComponent = new MockComponent();
-            Context context = new Context(
-                new VideoGame(
-                    new Settings(),
-                    new AudioManager(),
-                    new GraphicManager(),
-                    new InputManager(),
-                    new NetworkManager(),
-                    new PhysicManager(),
-                    new SceneManager()),
-                new Settings());
-            mockComponent.SetContext(context);
-            Assert.Equal(context, mockComponent.Context);
+            Sample2Component sample2Component = new Sample2Component();
+            Context context = new Context(new Settings());
+            Assert.Equal(context, sample2Component.Context);
         }
         
         /// <summary>
@@ -356,9 +345,9 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnCollisionStay_CallsLoggerTrace()
         {
-            MockComponent mockComponent = new MockComponent();
+            Sample2Component sample2Component = new Sample2Component();
             GameObject gameObject = new GameObject();
-            mockComponent.OnCollisionStay(gameObject);
+            sample2Component.OnCollisionStay(gameObject);
         }
         
         /// <summary>
@@ -367,9 +356,9 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnTriggerEnter_CallsLoggerTrace()
         {
-            MockComponent mockComponent = new MockComponent();
+            Sample2Component sample2Component = new Sample2Component();
             GameObject gameObject = new GameObject();
-            mockComponent.OnTriggerEnter(gameObject);
+            sample2Component.OnTriggerEnter(gameObject);
         }
         
         /// <summary>
@@ -378,9 +367,9 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnTriggerExit_CallsLoggerTrace()
         {
-            MockComponent mockComponent = new MockComponent();
+            Sample2Component sample2Component = new Sample2Component();
             GameObject gameObject = new GameObject();
-            mockComponent.OnTriggerExit(gameObject);
+            sample2Component.OnTriggerExit(gameObject);
         }
         
         /// <summary>
@@ -389,9 +378,9 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void OnTriggerStay_CallsLoggerTrace()
         {
-            MockComponent mockComponent = new MockComponent();
+            Sample2Component sample2Component = new Sample2Component();
             GameObject gameObject = new GameObject();
-            mockComponent.OnTriggerStay(gameObject);
+            sample2Component.OnTriggerStay(gameObject);
         }
         
         /// <summary>
@@ -400,7 +389,7 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void Name_PropertySet_GetReturnsCorrectValue()
         {
-            MockComponent component = new MockComponent();
+            Sample2Component component = new Sample2Component();
             component.Name = "TestComponent";
             Assert.Equal("TestComponent", component.Name);
         }
@@ -411,7 +400,7 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void Id_PropertySet_GetReturnsCorrectValue()
         {
-            MockComponent component = new MockComponent();
+            Sample2Component component = new Sample2Component();
             component.Id = "1";
             Assert.Equal("1", component.Id);
         }
@@ -422,7 +411,7 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void Tag_PropertySet_GetReturnsCorrectValue()
         {
-            MockComponent component = new MockComponent();
+            Sample2Component component = new Sample2Component();
             component.Tag = "TestTag";
             Assert.Equal("TestTag", component.Tag);
         }

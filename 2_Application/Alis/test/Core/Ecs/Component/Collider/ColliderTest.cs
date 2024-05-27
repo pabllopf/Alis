@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
 using Alis.Test.Core.Ecs.Component.Collider.Sample;
 using Xunit;
 

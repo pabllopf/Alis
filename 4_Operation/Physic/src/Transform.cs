@@ -75,6 +75,11 @@ namespace Alis.Core.Physic
         }
         
         
+        /// <summary>
+        /// Gets the object data using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("_Position_", Position);
@@ -82,6 +87,11 @@ namespace Alis.Core.Physic
             info.AddValue("_Rotation_", Rotation);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Transform"/> class
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
         public Transform(SerializationInfo info, StreamingContext context)
         {
             Position = (Vector2)info.GetValue("_Position_", typeof(Vector2));

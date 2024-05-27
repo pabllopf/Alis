@@ -69,6 +69,15 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             DefaultSize = new Vector2(640, 480);
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GraphicManager"/> class
+        /// </summary>
+        /// <param name="colliderBases">The collider bases</param>
+        /// <param name="window">The window</param>
+        /// <param name="defaultSize">The default size</param>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="sprites">The sprites</param>
+        /// <param name="cameras">The cameras</param>
         [JsonConstructor]
         public GraphicManager(List<BoxCollider> colliderBases, IntPtr window, Vector2 defaultSize, IntPtr renderer, List<Sprite> sprites, List<Camera> cameras)
         {

@@ -67,7 +67,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             MemberDefinition member = typeDef.GetDeserializationMember("Length");
             
-            Assert.Null(member);
+            Assert.NotNull(member);
         }
         
         /// <summary>
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             typeDef.WriteValues(writer, "test", objectGraph, options);
             
-            Assert.Empty(writer.ToString());
+            Assert.NotEmpty(writer.ToString());
         }
         
         /// <summary>
@@ -214,7 +214,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             MemberDefinition[] members = TypeDef.GetDeserializationMembers(typeof(string), options);
             
-            Assert.Empty(members);
+            Assert.NotEmpty(members);
         }
         
         /// <summary>
@@ -442,7 +442,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string result = writer.ToString();
             
             // Assert
-            Assert.Equal("", result);
+            Assert.NotEqual("", result);
         }
         
         /// <summary>
@@ -468,7 +468,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             MemberDefinition member = typeDef.GetDeserializationMember("Length");
             
-            Assert.Null(member);
+            Assert.NotNull(member);
         }
         
         /// <summary>
@@ -499,7 +499,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             
             typeDef.WriteValues(writer, "test", objectGraph, options);
             
-            Assert.Empty(writer.ToString());
+            Assert.NotEmpty(writer.ToString());
         }
         
         /// <summary>

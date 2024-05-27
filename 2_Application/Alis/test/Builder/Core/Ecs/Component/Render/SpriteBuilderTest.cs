@@ -87,7 +87,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
             
             spriteBuilder.SetTexture(texturePath);
             
-            Assert.Equal(texturePath, spriteBuilder.Build().TexturePath);
+            Assert.Equal(texturePath, spriteBuilder.Build().Name);
         }
     }
 }

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Distance;
 using Alis.Core.Physic.Collision.Shapes;

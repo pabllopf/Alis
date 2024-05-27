@@ -60,6 +60,17 @@ namespace Alis.Core.Ecs.Component.Render
             CameraBorder = 1f;
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Camera"/> class
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="name">The name</param>
+        /// <param name="tag">The tag</param>
+        /// <param name="isEnable">The is enable</param>
+        /// <param name="viewport">The viewport</param>
+        /// <param name="resolution">The resolution</param>
+        /// <param name="backgroundColor">The background color</param>
+        /// <param name="cameraBorder">The camera border</param>
         [JsonConstructor]
         public Camera( string id, string name, string tag, bool isEnable, RectangleI viewport, Vector2 resolution, Color backgroundColor, float cameraBorder)
         {

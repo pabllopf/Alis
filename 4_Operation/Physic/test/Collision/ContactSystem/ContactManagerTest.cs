@@ -30,7 +30,6 @@
 using System;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Filtering;
-using Alis.Core.Physic.Collision.Handlers;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Collision.TOI;
 using Alis.Core.Physic.Dynamics;

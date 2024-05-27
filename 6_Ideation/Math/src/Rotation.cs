@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.Serialization;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math
@@ -58,6 +56,12 @@ namespace Alis.Core.Aspect.Math
             Cosine = (float) System.Math.Cos(angle);
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Rotation"/> class
+        /// </summary>
+        /// <param name="sine">The sine</param>
+        /// <param name="cosine">The cosine</param>
+        /// <param name="angle">The angle</param>
         [JsonConstructor]
         public Rotation(float sine, float cosine, float angle)
         {

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math;
 using Alis.Core.Physic.Collision.Distance;
 using Xunit;
 
