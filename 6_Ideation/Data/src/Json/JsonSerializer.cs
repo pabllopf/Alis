@@ -1320,6 +1320,27 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
+        /// Gets the json attribute ignore using the specified pi
+        /// </summary>
+        /// <param name="pi">The pi</param>
+        /// <returns>The json ignore attribute</returns>
+        [ExcludeFromCodeCoverage]
+        internal static JsonIgnoreAttribute GetJsonAttributeIgnore(MemberInfo pi)
+        {
+            object[] attributes = pi.GetCustomAttributes(true);
+            
+            foreach (object attribute in attributes)
+            {
+                if (attribute is JsonIgnoreAttribute jsonAttribute)
+                {
+                    return jsonAttribute;
+                }
+            }
+            
+            return null;
+        }
+        
+        /// <summary>
         ///     Gets the type of elements in a collection type.
         /// </summary>
         /// <param name="collectionType">The collection type.</param>

@@ -29,7 +29,6 @@
 
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -178,6 +177,9 @@ namespace Alis.Core.Physic.Dynamics
             InvMass = 0.0f;
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Body"/> class
+        /// </summary>
         public Body()
         {
             Vector2 position = Vector2.Zero;

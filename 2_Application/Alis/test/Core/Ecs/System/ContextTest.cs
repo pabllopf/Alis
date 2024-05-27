@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Time;
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Audio;
 using Alis.Core.Ecs.System.Manager.Graphic;
@@ -53,18 +52,10 @@ namespace Alis.Test.Core.Ecs.System
         public void Test_Context_Constructor()
         {
             // Arrange
-            VideoGame videoGame = new VideoGame(
-                new Settings(),
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager());
             Settings settings = new Settings();
             
             // Act
-            Context context = new Context(videoGame, settings);
+            Context context = new Context(settings);
             
             // Assert
             Assert.NotNull(context);
@@ -77,16 +68,8 @@ namespace Alis.Test.Core.Ecs.System
         public void Test_Context_AudioManager()
         {
             // Arrange
-            VideoGame videoGame = new VideoGame(
-                new Settings(),
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager());
             Settings settings = new Settings();
-            Context context = new Context(videoGame, settings);
+            Context context = new Context(settings);
             
             // Act
             AudioManager audioManager = context.AudioManager;
@@ -102,16 +85,8 @@ namespace Alis.Test.Core.Ecs.System
         public void Test_Context_Exit()
         {
             // Arrange
-            VideoGame videoGame = new VideoGame(
-                new Settings(),
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager());
             Settings settings = new Settings();
-            Context context = new Context(videoGame, settings);
+            Context context = new Context(settings);
             
             // Act
             context.Exit();
@@ -125,16 +100,8 @@ namespace Alis.Test.Core.Ecs.System
         public void Test_Context_GraphicManager()
         {
             // Arrange
-            VideoGame videoGame = new VideoGame(
-                new Settings(),
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager());
             Settings settings = new Settings();
-            Context context = new Context(videoGame, settings);
+            Context context = new Context(settings);
             
             // Act
             GraphicManager result = context.GraphicManager;
@@ -151,16 +118,8 @@ namespace Alis.Test.Core.Ecs.System
         public void Test_Context_InputManager()
         {
             // Arrange
-            VideoGame videoGame = new VideoGame(
-                new Settings(),
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager());
             Settings settings = new Settings();
-            Context context = new Context(videoGame, settings);
+            Context context = new Context(settings);
             
             // Act
             InputManager result = context.InputManager;
@@ -177,16 +136,8 @@ namespace Alis.Test.Core.Ecs.System
         public void Test_Context_NetworkManager()
         {
             // Arrange
-            VideoGame videoGame = new VideoGame(
-                new Settings(),
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager());
             Settings settings = new Settings();
-            Context context = new Context(videoGame, settings);
+            Context context = new Context(settings);
             
             // Act
             NetworkManager result = context.NetworkManager;
@@ -203,16 +154,8 @@ namespace Alis.Test.Core.Ecs.System
         public void Test_Context_PhysicManager()
         {
             // Arrange
-            VideoGame videoGame = new VideoGame(
-                new Settings(),
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager());
             Settings settings = new Settings();
-            Context context = new Context(videoGame, settings);
+            Context context = new Context(settings);
             
             // Act
             PhysicManager result = context.PhysicManager;
@@ -229,16 +172,8 @@ namespace Alis.Test.Core.Ecs.System
         public void Test_Context_TimeManager()
         {
             // Arrange
-            VideoGame videoGame = new VideoGame(
-                new Settings(),
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager());
             Settings settings = new Settings();
-            Context context = new Context(videoGame, settings);
+            Context context = new Context(settings);
             
             // Act
             TimeManager result = context.TimeManager;
@@ -255,16 +190,8 @@ namespace Alis.Test.Core.Ecs.System
         public void Test_Context_SceneManager()
         {
             // Arrange
-            VideoGame videoGame = new VideoGame(
-                new Settings(),
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager());
             Settings settings = new Settings();
-            Context context = new Context(videoGame, settings);
+            Context context = new Context(settings);
             
             // Act
             SceneManager result = context.SceneManager;

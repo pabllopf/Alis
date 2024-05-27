@@ -30,7 +30,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Ecs.System;
 
@@ -90,6 +89,13 @@ namespace Alis.Core.Ecs.Entity
             GameObjects = new List<GameObject>();
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Scene"/> class
+        /// </summary>
+        /// <param name="isEnable">The is enable</param>
+        /// <param name="name">The name</param>
+        /// <param name="id">The id</param>
+        /// <param name="tag">The tag</param>
         [JsonConstructor]
         public Scene(bool isEnable, string name, string id, string tag)
         {

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Shared

@@ -35,7 +35,6 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Dll;
 using Xunit;
-using Xunit.Sdk;
 
 namespace Alis.Core.Aspect.Data.Test.Dll
 {

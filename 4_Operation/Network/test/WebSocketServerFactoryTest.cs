@@ -30,12 +30,10 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Network.Exceptions;
-using Alis.Core.Network.Internal;
 using Xunit;
 
 namespace Alis.Core.Network.Test

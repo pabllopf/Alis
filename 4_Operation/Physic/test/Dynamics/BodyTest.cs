@@ -31,7 +31,6 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Filtering;
 using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Test.Collision.BroadPhase.Sample;
 using Xunit;
 

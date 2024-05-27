@@ -58,7 +58,7 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             AudioClip audioClip = new AudioClip("testPath");
             
             Assert.NotNull(audioClip);
-            Assert.Equal("testPath", audioClip.FullPathAudioFile);
+            Assert.Equal("testPath", audioClip.NameFile);
         }
         
         /// <summary>

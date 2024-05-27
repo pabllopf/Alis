@@ -46,7 +46,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void OnInit_ValidInput()
         {
-            Sprite sprite = new Sprite("testTexturePath");
+            Sprite sprite = new Sprite(new Image("testTexturePath"));
             sprite.OnInit();
             
             
@@ -58,7 +58,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void OnAwake_ValidInput()
         {
-            Sprite sprite = new Sprite("testTexturePath");
+            Sprite sprite = new Sprite(new Image("testTexturePath"));
             sprite.OnAwake();
             
             
@@ -70,7 +70,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void OnExit_ValidInput()
         {
-            Sprite sprite = new Sprite("testTexturePath");
+            Sprite sprite = new Sprite(new Image("testTexturePath"));
             sprite.OnExit();
             
             
@@ -82,7 +82,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void Render_ValidInput()
         {
-            Sprite sprite = new Sprite("testTexturePath");
+            Sprite sprite = new Sprite(new Image("testTexturePath"));
             IntPtr renderer = IntPtr.Zero; // You would need to initialize a valid renderer here
             Camera camera = new Camera(); // You would need to initialize a valid camera here
             
@@ -97,7 +97,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void RenderWithoutCamera_ValidInput()
         {
-            Sprite sprite = new Sprite("testTexturePath");
+            Sprite sprite = new Sprite(new Image("testTexturePath"));
             IntPtr renderer = IntPtr.Zero; // You would need to initialize a valid renderer here
             
             sprite.Render(renderer);

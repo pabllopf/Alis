@@ -27,10 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.Serialization;
 using Alis.Core.Aspect.Data.Json;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Graphic;
 
 namespace Alis.Sample.Flappy.Bird

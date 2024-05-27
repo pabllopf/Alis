@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Ecs.Entity.Property;
 
 namespace Alis.Core.Ecs.Entity

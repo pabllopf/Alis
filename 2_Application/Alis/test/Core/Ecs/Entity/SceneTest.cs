@@ -91,7 +91,7 @@ namespace Alis.Test.Core.Ecs.Entity
             Settings settings = new Settings();
             
             // Act
-            Context context = new Context(videoGame, settings);
+            Context context = new Context(settings);
             
             // Assert
             Assert.NotNull(context);
@@ -107,7 +107,7 @@ namespace Alis.Test.Core.Ecs.Entity
             // Arrange
             VideoGame videoGame = new VideoGame();
             Settings settings = new Settings();
-            Context context = new Context(videoGame, settings);
+            Context context = new Context(settings);
             
             // Act
             AudioManager audioManager = context.AudioManager;
@@ -178,20 +178,7 @@ namespace Alis.Test.Core.Ecs.Entity
         public void SetContext_ShouldSetContext()
         {
             Scene scene = new Scene();
-            Context context = new Context(
-                new VideoGame(
-                    new Settings(),
-                    new AudioManager(),
-                    new GraphicManager(),
-                    new InputManager(),
-                    new NetworkManager(),
-                    new PhysicManager(),
-                    new SceneManager()),
-                new Settings()
-            );
-            
-            scene.SetContext(context);
-            
+            Context context = new Context(new Settings());
             Assert.Equal(context, scene.Context);
         }
         
@@ -202,22 +189,9 @@ namespace Alis.Test.Core.Ecs.Entity
         public void SetContext_ShouldSetContextInGameObjects()
         {
             Scene scene = new Scene();
-            Context context = new Context(
-                new VideoGame(
-                    new Settings(),
-                    new AudioManager(),
-                    new GraphicManager(),
-                    new InputManager(),
-                    new NetworkManager(),
-                    new PhysicManager(),
-                    new SceneManager()),
-                new Settings()
-            );
+            Context context = new Context(new Settings());
             GameObject gameObject = new GameObject();
             scene.Add(gameObject);
-            
-            scene.SetContext(context);
-            
             Assert.Equal(context, gameObject.Context);
         }
         
@@ -228,20 +202,7 @@ namespace Alis.Test.Core.Ecs.Entity
         public void Context_SetValue_ShouldChangeContext()
         {
             Scene scene = new Scene();
-            Context context = new Context(
-                new VideoGame(
-                    new Settings(),
-                    new AudioManager(),
-                    new GraphicManager(),
-                    new InputManager(),
-                    new NetworkManager(),
-                    new PhysicManager(),
-                    new SceneManager()),
-                new Settings()
-            );
-            
-            scene.Context = context;
-            
+            Context context = new Context(new Settings());
             Assert.Equal(context, scene.Context);
         }
         

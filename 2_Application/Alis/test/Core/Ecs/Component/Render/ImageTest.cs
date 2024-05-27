@@ -55,16 +55,8 @@ namespace Alis.Test.Core.Ecs.Component.Render
         public void Image_DefaultConstructor_ValidInput()
         {
             Settings settings = new Settings();
-            Context context = new Context(new VideoGame(
-                settings,
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager()
-            ), settings);
-            Image image = new Image(context);
+            Context context = new Context(new Settings());
+            Image image = new Image();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -76,17 +68,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
         public void Image_ConstructorWithParameters_ValidInput()
         {
             Settings settings = new Settings();
-            Context context = new Context(new VideoGame(
-                settings,
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager()
-            ), settings);
+            Context context = new Context(new Settings());
             string path = "testImagePath";
-            Image image = new Image(path, context);
+            Image image = new Image(path);
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -98,17 +82,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
         public void Image_PathProperty_ValidInput()
         {
             Settings settings = new Settings();
-            Context context = new Context(new VideoGame(
-                settings,
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager()
-            ), settings);
+            Context context = new Context(new Settings());
             string path = "testImagePath";
-            Image image = new Image(context);
+            Image image = new Image();
             image.Path = path;
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
@@ -121,17 +97,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
         public void Image_TextureProperty_ValidInput()
         {
             Settings settings = new Settings();
-            Context context = new Context(new VideoGame(
-                settings,
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager()
-            ), settings);
+            Context context = new Context(new Settings());
             string path = "testImagePath";
-            Image image = new Image(path, context);
+            Image image = new Image(path);
             IntPtr texture = image.Texture;
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
@@ -144,17 +112,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
         public void Image_SizeProperty_ValidInput()
         {
             Settings settings = new Settings();
-            Context context = new Context(new VideoGame(
-                settings,
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager()
-            ), settings);
+            Context context = new Context(new Settings());
             string path = "testImagePath";
-            Image image = new Image(path, context);
+            Image image = new Image(path);
             Vector2 size = image.Size;
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
@@ -166,18 +126,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void Path_SetValue_ShouldChangeValue()
         {
-            Image image = new Image("oldPath", new Context(
-                new VideoGame(
-                    new Settings(),
-                    new AudioManager(),
-                    new GraphicManager(),
-                    new InputManager(),
-                    new NetworkManager(),
-                    new PhysicManager(),
-                    new SceneManager()
-                ),
-                new Settings()
-                ));
+            Image image = new Image("oldPath");
             Assert.Equal("oldPath", image.Path);
             
             image.Path = "newPath";

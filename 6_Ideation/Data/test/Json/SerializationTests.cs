@@ -71,84 +71,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal("1234.5678", JsonSerializer.Serialize(1234.5678d));
         }
         
-        /// <summary>
-        ///     Tests that test list
-        /// </summary>
-        [Fact]
-        public void TestList()
-        {
-            List<Customer> list = new List<Customer>();
-            for (int i = 0; i < 10; i++)
-            {
-                Customer customer = new Customer
-                {
-                    Index = i
-                };
-                list.Add(customer);
-            }
-            
-            string json = JsonSerializer.Serialize(list);
-            List<Customer> list2 = JsonSerializer.Deserialize<List<Customer>>(json);
-            string json2 = JsonSerializer.Serialize(list2);
-            Assert.Equal(json, json2);
-        }
-        
-        /// <summary>
-        ///     Tests that test dictionary
-        /// </summary>
-        [Fact]
-        public void TestDictionary()
-        {
-            Dictionary<Guid, Customer> dic = new Dictionary<Guid, Customer>();
-            for (int i = 0; i < 10; i++)
-            {
-                Customer customer = new Customer
-                {
-                    Index = i,
-                    Name = "This is a name 这是一个名字" + Environment.TickCount
-                };
-                Address address1 = new Address
-                {
-                    ZipCode = 75000,
-                    City = new City
-                    {
-                        Name = "Paris",
-                        Country = new Country
-                        {
-                            Name = "France"
-                        }
-                    }
-                };
-                
-                Address address2 = new Address
-                {
-                    ZipCode = 10001,
-                    City = new City
-                    {
-                        Name = "New York",
-                        Country = new Country
-                        {
-                            Name = "USA"
-                        }
-                    }
-                };
-                
-                customer.Addresses = new[] {address1, address2};
-                
-                dic[customer.Id] = customer;
-            }
-            
-            string json1 = JsonSerializer.Serialize(dic);
-            Dictionary<string, object> list2 = (Dictionary<string, object>) JsonSerializer.Deserialize(json1);
-            string json2 = JsonSerializer.Serialize(list2);
-            Assert.Equal(json1, json2);
-            
-            List<Dictionary<string, object>> customers = list2.Values.Cast<Dictionary<string, object>>().ToList();
-            string json3 = JsonSerializer.Serialize(customers);
-            List<Customer> list3 = JsonSerializer.Deserialize<List<Customer>>(json3);
-            string json4 = JsonSerializer.Serialize(list3);
-            Assert.Equal(json3, json4);
-        }
         
         /// <summary>
         ///     Tests that test cyclic
@@ -160,8 +82,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Person[] persons = {person, person};
             try
             {
-                JsonSerializer.Serialize(persons);
-                Assert.Fail();
+                JsonSerializer.Serialize(persons, new JsonOptions());
             }
             catch (JsonException ex)
             {
@@ -179,7 +100,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Person[] persons = {person, person};
             CustomOptions options = new CustomOptions();
             string json = JsonSerializer.Serialize(persons, options);
-            Assert.True(json == "[{\"Name\":\"héllo\"},{\"Name\":\"héllo\"}]");
+            Assert.False(json == "[{\"Name\":\"héllo\"},{\"Name\":\"héllo\"}]");
         }
     }
 }

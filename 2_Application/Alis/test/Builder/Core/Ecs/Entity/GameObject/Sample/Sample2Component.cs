@@ -35,7 +35,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject.Sample
     /// The mock component class
     /// </summary>
     /// <seealso cref="AComponent"/>
-    public class MockComponent : AComponent
+    public class Sample2Component : AComponent
     {
     }
 }

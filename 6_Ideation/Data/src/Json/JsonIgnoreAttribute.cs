@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RectangleI.cs
+//  File:JsonIgnore.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,50 +27,31 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
+using System;
 
-namespace Alis.Core.Aspect.Math.Shape.Rectangle
+namespace Alis.Core.Aspect.Data.Json
 {
     /// <summary>
-    ///     The sdl rect
+    /// The json ignore attribute class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct RectangleI : IShape
+    /// <seealso cref="Attribute"/>
+    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Struct | AttributeTargets.Class)]
+    public class JsonIgnoreAttribute : Attribute
     {
         /// <summary>
-        ///     The
+        ///     Gets or sets a value indicating whether to ignore this instance's owner when serializing.
         /// </summary>
-        public int X { get; set; }
+        /// <value>
+        ///     <c>true</c> if this instance's owner must be ignored when serializing; otherwise, <c>false</c>.
+        /// </value>
+        public bool IgnoreWhenSerializing { get; } = true;
         
         /// <summary>
-        ///     The
+        ///     Gets or sets a value indicating whether to ignore this instance's owner when deserializing.
         /// </summary>
-        public int Y { get; set; }
-        
-        /// <summary>
-        ///     The
-        /// </summary>
-        public int W { get; set; }
-        
-        /// <summary>
-        ///     The
-        /// </summary>
-        public int H { get; set; }
-        
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="RectangleI" /> class
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        [JsonConstructor]
-        public RectangleI(int x, int y, int w, int h)
-        {
-            this.X = x;
-            this.Y = y;
-            this.H = h;
-            this.W = w;
-        }
+        /// <value>
+        ///     <c>true</c> if this instance's owner must be ignored when deserializing; otherwise, <c>false</c>.
+        /// </value>
+        public bool IgnoreWhenDeserializing { get;  } = true;
     }
 }

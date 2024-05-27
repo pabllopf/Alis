@@ -29,7 +29,6 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.BroadPhase;
 using Alis.Core.Physic.Collision.ContactSystem;

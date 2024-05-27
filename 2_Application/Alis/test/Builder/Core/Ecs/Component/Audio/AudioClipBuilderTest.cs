@@ -73,7 +73,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Audio
             
             audioClipBuilder.FilePath(filePath);
             
-            Assert.Equal(filePath, audioClipBuilder.Build().FullPathAudioFile);
+            Assert.Equal(filePath, audioClipBuilder.Build().NameFile);
         }
         
         /// <summary>

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Builder.Core.Ecs.Entity.GameObject;
 using Alis.Builder.Core.Ecs.Entity.Transform;
 using Alis.Test.Builder.Core.Ecs.Entity.GameObject.Sample;
@@ -121,9 +120,9 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         public void AddComponent_WithFunc_ShouldAddComponentToGameObject()
         {
             GameObjectBuilder builder = new GameObjectBuilder();
-            MockComponent component = new MockComponent();
+            Sample2Component component = new Sample2Component();
             
-            builder.AddComponent<MockComponent>(_ => component);
+            builder.AddComponent<Sample2Component>(_ => component);
             
             Assert.Contains(component, builder.Build().Components);
         }
@@ -135,7 +134,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         public void AddComponent_WithValue_ShouldAddComponentToGameObject()
         {
             GameObjectBuilder builder = new GameObjectBuilder();
-            MockComponent component = new MockComponent();
+            Sample2Component component = new Sample2Component();
             
             builder.AddComponent(component);
             

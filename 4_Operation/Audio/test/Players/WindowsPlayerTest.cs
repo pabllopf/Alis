@@ -27,16 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
-using Alis.Core.Aspect.Data.Resource;
-using Alis.Core.Audio.Players;
-using Alis.Core.Audio.Test.Players.Attributes;
-using Xunit;
-
 namespace Alis.Core.Audio.Test.Players
 {
     /// <summary>

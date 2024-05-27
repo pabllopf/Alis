@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
@@ -40,7 +39,6 @@ using Alis.Core.Ecs.System.Manager.Network;
 using Alis.Core.Ecs.System.Manager.Physic;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
-using Alis.Test.Builder.Core.Ecs.Entity.GameObject;
 using Alis.Test.Builder.Core.Ecs.Entity.GameObject.Sample;
 using Xunit;
 
@@ -113,18 +111,6 @@ namespace Alis.Test.Core.Ecs.Entity
         {
             // Arrange
             GameObject gameObject = new GameObject();
-            Context context = new Context(new VideoGame(
-                new Settings(),
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager()
-            ), new Settings());
-            
-            // Act
-            gameObject.SetContext(context);
             
             // Assert
             Assert.NotNull(gameObject.Context);
@@ -138,8 +124,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnInit_ShouldCallOnInitOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnInit();
         }
@@ -151,8 +137,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnAwake_ShouldCallOnAwakeOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnAwake();
         }
@@ -164,8 +150,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnStart_ShouldCallOnStartOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnStart();
         }
@@ -177,8 +163,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnUpdate_ShouldCallOnUpdateOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnUpdate();
         }
@@ -190,8 +176,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnDisable_ShouldCallOnDisableOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnDisable();
         }
@@ -203,8 +189,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnReset_ShouldCallOnResetOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnReset();
         }
@@ -216,8 +202,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnStop_ShouldCallOnStopOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnStop();
         }
@@ -229,8 +215,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnExit_ShouldCallOnExitOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnExit();
         }
@@ -242,8 +228,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnDestroy_ShouldCallOnDestroyOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnDestroy();
         }
@@ -255,7 +241,7 @@ namespace Alis.Test.Core.Ecs.Entity
         public void SetContext_ShouldSetContext()
         {
             GameObject gameObject = new GameObject();
-            Context context = new Context(new VideoGame(
+            Context context = new Context(
                 new Settings(),
                 new AudioManager(),
                 new GraphicManager(),
@@ -263,9 +249,7 @@ namespace Alis.Test.Core.Ecs.Entity
                 new NetworkManager(),
                 new PhysicManager(),
                 new SceneManager()
-            ), new Settings());
-            
-            gameObject.SetContext(context);
+            );
             
             Assert.Equal(context, gameObject.Context);
         }
@@ -277,8 +261,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnAfterUpdate_ShouldCallOnAfterUpdateOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnAfterUpdate();
         }
@@ -290,8 +274,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnBeforeFixedUpdate_ShouldCallOnBeforeFixedUpdateOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnBeforeFixedUpdate();
         }
@@ -303,8 +287,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnFixedUpdate_ShouldCallOnFixedUpdateOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnFixedUpdate();
         }
@@ -316,8 +300,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnAfterFixedUpdate_ShouldCallOnAfterFixedUpdateOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnAfterFixedUpdate();
         }
@@ -329,8 +313,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnDispatchEvents_ShouldCallOnDispatchEventsOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnDispatchEvents();
         }
@@ -342,8 +326,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnCalculate_ShouldCallOnCalculateOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnCalculate();
         }
@@ -355,8 +339,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnDraw_ShouldCallOnDrawOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnDraw();
         }
@@ -368,8 +352,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnGui_ShouldCallOnGuiOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnGui();
         }
@@ -381,14 +365,14 @@ namespace Alis.Test.Core.Ecs.Entity
         public void Clear_ShouldClearComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent1 = new MockComponent();
-            MockComponent mockComponent2 = new MockComponent();
-            gameObject.Add(mockComponent1);
-            gameObject.Add(mockComponent2);
+            Sample2Component sample2Component1 = new Sample2Component();
+            Sample2Component sample2Component2 = new Sample2Component();
+            gameObject.Add(sample2Component1);
+            gameObject.Add(sample2Component2);
             
-            gameObject.Clear<MockComponent>();
+            gameObject.Clear<Sample2Component>();
             
-            Assert.False(gameObject.Contains<MockComponent>());
+            Assert.False(gameObject.Contains<Sample2Component>());
         }
         
         /// <summary>
@@ -398,14 +382,14 @@ namespace Alis.Test.Core.Ecs.Entity
         public void Get_ShouldReturnCorrectComponent()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
-            MockComponent result = gameObject.Get<MockComponent>();
+            Sample2Component result = gameObject.Get<Sample2Component>();
             
             Assert.NotNull(result);
-            Assert.IsType<MockComponent>(result);
-            Assert.Equal(mockComponent, result);
+            Assert.IsType<Sample2Component>(result);
+            Assert.Equal(sample2Component, result);
         }
         
         /// <summary>
@@ -415,8 +399,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void OnBeforeUpdate_ShouldCallOnBeforeUpdateOfComponents()
         {
             GameObject gameObject = new GameObject();
-            MockComponent mockComponent = new MockComponent();
-            gameObject.Add(mockComponent);
+            Sample2Component sample2Component = new Sample2Component();
+            gameObject.Add(sample2Component);
             
             gameObject.OnBeforeUpdate();
         }
@@ -443,7 +427,7 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Assert.Empty(gameObject.Components);
             
-            List<AComponent> componentList = new List<AComponent> {new MockComponent()};
+            List<AComponent> componentList = new List<AComponent> {new Sample2Component()};
             gameObject.Components = componentList;
             Assert.Equal(componentList, gameObject.Components);
         }

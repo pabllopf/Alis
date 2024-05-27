@@ -104,6 +104,14 @@ namespace Alis.Core.Ecs.Entity
             Components.ForEach(i => i.Attach(this));
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameObject"/> class
+        /// </summary>
+        /// <param name="isEnable">The is enable</param>
+        /// <param name="name">The name</param>
+        /// <param name="id">The id</param>
+        /// <param name="tag">The tag</param>
+        /// <param name="transform">The transform</param>
         [JsonConstructor]
         public GameObject(bool isEnable, string name, string id, string tag, Transform transform)
         {
