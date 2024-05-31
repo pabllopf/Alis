@@ -498,7 +498,7 @@ namespace Alis.Sample.Flappy.Bird
                     .Build()) // end video game
                 .Build();
             
-           //game.Run();
+           game.Run();
             
             string gameJson = JsonSerializer.Serialize(game, new JsonOptions()
             {

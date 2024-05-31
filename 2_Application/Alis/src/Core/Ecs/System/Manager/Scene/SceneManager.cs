@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Data.Resource;
 
 namespace Alis.Core.Ecs.System.Manager.Scene
 {
@@ -77,19 +78,6 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         [ExcludeFromCodeCoverage]
         public override void OnInit()
         {
-            /*
-            foreach (Entity.Scene scene in Scenes)
-            {
-                string gameJson = JsonSerializer.Serialize(scene, new JsonOptions()
-                {
-                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
-                    SerializationOptions = JsonSerializationOptions.Default
-                });
-                string file = Path.Combine(Environment.CurrentDirectory,  $"Scene_{scene.Name}.json");
-                
-                File.WriteAllText(file, gameJson);
-            }*/
-            
             CurrentScene = Scenes[0];
             CurrentScene.OnInit();
         }
@@ -108,6 +96,21 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         public override void OnStart()
         {
             CurrentScene.OnStart();
+            
+            if (!File.Exists(Environment.CurrentDirectory + "/Assets/Scene_" + CurrentScene.Name + ".json"))
+            {
+                foreach (Entity.Scene scene in Scenes)
+                {
+                    string gameJson = JsonSerializer.Serialize(scene, new JsonOptions()
+                    {
+                        DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                        SerializationOptions = JsonSerializationOptions.Default
+                    });
+                    string file = Environment.CurrentDirectory + "/Assets/Scene_" + scene.Name + ".json";
+                    
+                    File.WriteAllText(file, gameJson);
+                }
+            }
         }
         
         /// <summary>
@@ -298,18 +301,15 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// <param name="name">The name</param>
         public void LoadScene(string name)
         {
-            /*
+            
             CurrentScene.OnStop();
             CurrentScene.OnExit();
-            
-            Context.Reset();
-            
-            //CurrentScene = Scenes.Find(i => i.Name == name);
-            CurrentScene = JsonSerializer.Deserialize<Entity.Scene>(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, $"Scene_{name}.json")));
-            
+            Entity.Scene selectedScene = Scenes.Find(i => i.Name.Equals(name));
+            CurrentScene = JsonSerializer.Deserialize<Entity.Scene>(File.ReadAllText(AssetManager.Find("Scene_" + selectedScene.Name + ".json")));
             CurrentScene.OnInit();
             CurrentScene.OnAwake();
-            CurrentScene.OnStart();*/
+            CurrentScene.OnStart();
+            
         }
         
         /// <summary>

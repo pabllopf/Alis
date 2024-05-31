@@ -92,7 +92,7 @@ namespace Alis.Sample.Flappy.Bird
                 
                 if (gameObject.Contains<BirdController>() && !gameObject.Get<BirdController>().IsDead)
                 {
-                    gameObject.Get<AudioSource>().AudioClip = new AudioClip(AssetManager.Find("die.wav"));
+                    gameObject.Get<AudioSource>().AudioClip = new AudioClip("die.wav");
                     gameObject.Get<AudioSource>().Play();
                     
                     gameObject.Remove(gameObject.Get<BirdController>());
