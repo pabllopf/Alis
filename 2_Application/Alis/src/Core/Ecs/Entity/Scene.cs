@@ -105,6 +105,15 @@ namespace Alis.Core.Ecs.Entity
             Tag = tag;
         }
         
+        public Scene(bool isEnable, string name, string id, string tag, List<GameObject> gameObjects) : this()
+        {
+            IsEnable = isEnable;
+            Name = name;
+            Id = id;
+            Tag = tag;
+            GameObjects = gameObjects;
+        }
+        
         /// <summary>
         ///     Ons the enable
         /// </summary>

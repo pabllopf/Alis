@@ -121,6 +121,11 @@ namespace Alis.Core.Ecs.Component.Audio
         /// </summary>
         internal void Play()
         {
+            if (string.IsNullOrEmpty(FullPathAudioFile))
+            {
+                FullPathAudioFile = AssetManager.Find(NameFile);
+            }
+            
             if (!string.IsNullOrEmpty(FullPathAudioFile))
             {
                 _= player.Play(FullPathAudioFile); 

@@ -123,6 +123,16 @@ namespace Alis.Core.Ecs.Entity
             Components = new List<AComponent>();
         }
         
+        public GameObject(bool isEnable, string name, string id, string tag, Transform transform, List<AComponent> components) : this()
+        {
+            IsEnable = isEnable;
+            Name = name;
+            Id = id;
+            Tag = tag;
+            Transform = transform;
+            Components = components;
+        }
+        
         /// <summary>
         ///     Adds the component
         /// </summary>
