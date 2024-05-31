@@ -29,6 +29,7 @@
 
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 
 namespace Alis.Core.Ecs.Component.Render
@@ -44,23 +45,24 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public Frame()
         {
-            FilePath = "";
+            NameFile = string.Empty;
+            FilePath = string.Empty;
         }
         
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Frame" /> class
-        /// </summary>
-        /// <param name="filePath">The file path</param>
         [JsonConstructor]
-        public Frame(string filePath)
+        public Frame(string nameFile)
         {
-            FilePath = filePath;
+            NameFile = nameFile;
+            FilePath = AssetManager.Find(nameFile);
         }
+        
+        [JsonPropertyName("_NameFile_")]
+        public string NameFile { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the file path
         /// </summary>
-        [JsonPropertyName("_FilePath_")]
+        [JsonIgnore]
         public string FilePath { get; set; }
         
         /// <summary>

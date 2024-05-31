@@ -142,7 +142,7 @@ namespace Alis.Core.Ecs.Component.Render
             {
                 if (currentAnimation.HasNext())
                 {
-                    Sprite.Image = new Image(currentAnimation.NextTexture().FilePath);
+                    Sprite.Image = new Image(currentAnimation.NextTexture().NameFile);
                 }
                 
                 Timer.Restart();

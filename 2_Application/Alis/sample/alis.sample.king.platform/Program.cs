@@ -57,7 +57,7 @@ namespace Alis.Sample.King.Platform
                         .Description("King platform 2d game.")
                         .Debug(true)
                         .License("GNU General Public License v3.0")
-                        .Icon(AssetManager.Find("app.bmp"))
+                        .Icon("app.bmp")
                         .Build())
                     .Audio(audio => audio
                         .Build())
@@ -81,7 +81,7 @@ namespace Alis.Sample.King.Platform
                                 .Builder()
                                 .PlayOnAwake(true)
                                 .SetAudioClip(audioClip => audioClip
-                                    .FilePath(AssetManager.Find("World_Theme.wav"))
+                                    .FilePath("World_Theme.wav"))
                                     .Volume(100.0f)
                                     .Build())
                                 .Build())
@@ -99,7 +99,7 @@ namespace Alis.Sample.King.Platform
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
                                 .Depth(1)
-                                .SetTexture(AssetManager.Find("tile023.bmp"))
+                                .SetTexture("tile023.bmp")
                                 .Build())
                             .AddComponent<Animator>(animator => animator
                                 .Builder()
@@ -108,10 +108,10 @@ namespace Alis.Sample.King.Platform
                                     .Order(0)
                                     .Speed(1f)
                                     .AddFrame(frame1 => frame1
-                                        .FilePath(AssetManager.Find("tile023.bmp"))
+                                        .FilePath("tile023.bmp")
                                         .Build())
                                     .AddFrame(frame2 => frame2
-                                        .FilePath(AssetManager.Find("tile025.bmp"))
+                                        .FilePath("tile025.bmp")
                                         .Build())
                                     .Build())
                                 .AddAnimation(animation2 => animation2
@@ -119,13 +119,13 @@ namespace Alis.Sample.King.Platform
                                     .Order(1)
                                     .Speed(0.25f)
                                     .AddFrame(frame => frame
-                                        .FilePath(AssetManager.Find("tile036.bmp"))
+                                        .FilePath("tile036.bmp")
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(AssetManager.Find("tile038.bmp"))
+                                        .FilePath("tile038.bmp")
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(AssetManager.Find("tile039.bmp"))
+                                        .FilePath("tile039.bmp")
                                         .Build())
                                     .Build())
                                 .AddAnimation(animation2 => animation2
@@ -133,16 +133,16 @@ namespace Alis.Sample.King.Platform
                                     .Order(2)
                                     .Speed(0.25f)
                                     .AddFrame(frame => frame
-                                        .FilePath(AssetManager.Find("tile027.bmp"))
+                                        .FilePath("tile027.bmp")
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(AssetManager.Find("tile028.bmp"))
+                                        .FilePath("tile028.bmp")
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(AssetManager.Find("tile029.bmp"))
+                                        .FilePath("tile029.bmp")
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(AssetManager.Find("tile030.bmp"))
+                                        .FilePath("tile030.bmp")
                                         .Build())
                                     .Build())
                                 .Build())
