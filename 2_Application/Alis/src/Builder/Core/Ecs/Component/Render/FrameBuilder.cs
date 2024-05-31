@@ -58,7 +58,7 @@ namespace Alis.Builder.Core.Ecs.Component.Render
         /// <returns>The frame builder</returns>
         public FrameBuilder FilePath(string value)
         {
-            frame.FilePath = value;
+            frame.NameFile = value;
             return this;
         }
     }

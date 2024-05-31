@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs.Entity
         /// <summary>
         ///     Gets or sets the value of the context
         /// </summary>
-        [JsonPropertyName("_Context_", true, true)]
+        [JsonIgnore]
         public Context Context => VideoGame.GetContext();
         
         /// <summary>

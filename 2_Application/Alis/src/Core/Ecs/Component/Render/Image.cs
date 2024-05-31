@@ -52,7 +52,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             NameFile = nameFile;
             Path = AssetManager.Find(nameFile);
-            Size = new Vector2();
+            Load();
         }
         
         [JsonConstructor]
@@ -61,6 +61,7 @@ namespace Alis.Core.Ecs.Component.Render
             NameFile = nameFile;
             Path = AssetManager.Find(nameFile);
             Size = size;
+            Load();
         }
         
         /// <summary>
@@ -92,8 +93,10 @@ namespace Alis.Core.Ecs.Component.Render
         
         public void Load()
         {
-            if (!string.IsNullOrEmpty(NameFile) && !string.IsNullOrEmpty(Path))
+            if (!string.IsNullOrEmpty(NameFile))
             {
+                Path = AssetManager.Find(NameFile);
+                
                 Texture = Sdl.CreateTextureFromSurface(Context.GraphicManager.Renderer, Sdl.LoadBmp(Path));
                 
                 // get the size of sprite.Image.Texture
