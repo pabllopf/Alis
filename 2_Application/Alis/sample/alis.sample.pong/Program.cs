@@ -57,7 +57,7 @@ namespace Alis.Sample.Pong
                         .Author("Pablo Perdomo Falcón")
                         .Description("Pong game")
                         .License("GNU General Public License v3.0")
-                        .Icon(AssetManager.Find("app.bmp"))
+                        .Icon("app.bmp")
                         .Build())
                     .Audio(audio => audio
                         .Build())
@@ -94,7 +94,7 @@ namespace Alis.Sample.Pong
                                 .Builder()
                                 .PlayOnAwake(true)
                                 .SetAudioClip(audioClip => audioClip
-                                    .FilePath(AssetManager.Find("soundtrack.wav"))
+                                    .FilePath("soundtrack.wav")
                                     .Volume(100.0f)
                                     .Build())
                                 .Build())
