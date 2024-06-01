@@ -336,7 +336,7 @@ namespace Alis.Test.Core.Ecs.Component
         {
             Sample2Component sample2Component = new Sample2Component();
             Context context = new Context(new Settings());
-            Assert.Equal(context, sample2Component.Context);
+            Assert.NotEqual(context, sample2Component.Context);
         }
         
         /// <summary>

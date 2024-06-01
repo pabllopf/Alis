@@ -55,10 +55,10 @@ namespace Alis.Test.Core.Ecs.Component.Audio
         [Fact]
         public void AudioClip_ConstructorWithFullPath_ValidInput()
         {
-            AudioClip audioClip = new AudioClip("testPath");
+            AudioClip audioClip = new AudioClip("soundtrack.wav");
             
             Assert.NotNull(audioClip);
-            Assert.Equal("testPath", audioClip.NameFile);
+            Assert.Equal("soundtrack.wav", audioClip.NameFile);
         }
         
         /// <summary>

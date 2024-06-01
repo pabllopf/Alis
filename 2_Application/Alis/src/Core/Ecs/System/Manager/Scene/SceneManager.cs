@@ -78,8 +78,11 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         [ExcludeFromCodeCoverage]
         public override void OnInit()
         {
-            CurrentScene = Scenes[0];
-            CurrentScene.OnInit();
+            if (Scenes.Count > 0)
+            {
+                CurrentScene = Scenes[0];
+                CurrentScene.OnInit();
+            }
         }
         
         /// <summary>
@@ -318,13 +321,13 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// <param name="index">The index</param>
         public void LoadScene(int index)
         {
-            /*
             CurrentScene.OnStop();
             CurrentScene.OnExit();
-            CurrentScene = Scenes[index];
+            Entity.Scene selectedScene = Scenes[index];
+            CurrentScene = JsonSerializer.Deserialize<Entity.Scene>(File.ReadAllText(AssetManager.Find("Scene_" + selectedScene.Name + ".json")));
             CurrentScene.OnInit();
             CurrentScene.OnAwake();
-            CurrentScene.OnStart();*/
+            CurrentScene.OnStart();
         }
     }
 }

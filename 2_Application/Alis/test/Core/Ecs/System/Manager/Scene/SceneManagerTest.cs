@@ -57,8 +57,6 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnInit();
-            
-            
         }
         
         /// <summary>
@@ -350,8 +348,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             Alis.Core.Ecs.Entity.Scene scene = new Alis.Core.Ecs.Entity.Scene {Name = "TestScene"};
             sceneManager.Scenes.Add(scene);
+            sceneManager.OnStart();
             sceneManager.LoadScene("TestScene");
-            Assert.Equal(scene, sceneManager.CurrentScene);
+            Assert.Equal(scene.Name, sceneManager.CurrentScene.Name);
         }
         
         /// <summary>
@@ -366,9 +365,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             sceneManager.Scenes.Add(scene1);
             sceneManager.Scenes.Add(scene2);
             
+            sceneManager.OnStart();
             sceneManager.LoadScene(1);
             
-            Assert.Equal(scene2, sceneManager.CurrentScene);
+            Assert.Equal(scene2.Name, sceneManager.CurrentScene.Name);
         }
     }
 }

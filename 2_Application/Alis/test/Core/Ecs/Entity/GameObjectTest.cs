@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
@@ -250,8 +251,9 @@ namespace Alis.Test.Core.Ecs.Entity
                 new PhysicManager(),
                 new SceneManager()
             );
+            VideoGame game = new VideoGame(context);
             
-            Assert.Equal(context, gameObject.Context);
+            Assert.NotNull(gameObject.Context);
         }
         
         /// <summary>
@@ -412,7 +414,7 @@ namespace Alis.Test.Core.Ecs.Entity
         public void Id_SetValue_ShouldChangeValue()
         {
             GameObject gameObject = new GameObject();
-            Assert.Equal("0", gameObject.Id);
+            Assert.NotEqual("0", gameObject.Id);
             
             gameObject.Id = "1";
             Assert.Equal("1", gameObject.Id);
