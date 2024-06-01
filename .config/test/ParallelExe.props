@@ -6,6 +6,7 @@
         $(AssemblyName.Contains('OpenGL.Test')) OR
         $(AssemblyName.Contains('FFMeg.Test')) OR
         $(AssemblyName.Contains('Alis.Core.Aspect.Security.Test')) OR
+        $(AssemblyName.Contains('Alis.Core.Aspect.Data.Test')) OR
         $(AssemblyName.Contains('Alis.Core.Aspect.Time.Test')) OR
         $(AssemblyName.Contains('Alis.Core.Audio.Test')) OR
         $(AssemblyName.Contains('Alis.Core.Network.Test')) OR
