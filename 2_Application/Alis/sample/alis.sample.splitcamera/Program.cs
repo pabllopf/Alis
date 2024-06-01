@@ -55,7 +55,7 @@ namespace Alis.Sample.SplitCamera
                         .Description("Sample camera game.")
                         .Debug(true)
                         .License("GNU General Public License v3.0")
-                        .Icon(AssetManager.Find("app.bmp"))
+                        .Icon("app.bmp")
                         .Build())
                     .Audio(audio => audio
                         .Build())
@@ -91,7 +91,7 @@ namespace Alis.Sample.SplitCamera
                                 .Rotation(0)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture(AssetManager.Find("tree-001.bmp"))
+                                .SetTexture("tree-001.bmp")
                                 .Build())
                             .Build())
                         
@@ -104,7 +104,7 @@ namespace Alis.Sample.SplitCamera
                                 .Rotation(0)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture(AssetManager.Find("tree-001.bmp"))
+                                .SetTexture("tree-001.bmp")
                                 .Build())
                             .Build())
                         .Add<GameObject>(gameObject => gameObject
@@ -115,7 +115,7 @@ namespace Alis.Sample.SplitCamera
                                 .Rotation(0)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture(AssetManager.Find("tree-001.bmp"))
+                                .SetTexture("tree-001.bmp")
                                 .Build())
                             .Build())
                         .Add<GameObject>(gameObject => gameObject
@@ -126,7 +126,7 @@ namespace Alis.Sample.SplitCamera
                                 .Rotation(0)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture(AssetManager.Find("tree-001.bmp"))
+                                .SetTexture("tree-001.bmp")
                                 .Build())
                             .Build())
                         .Build())
