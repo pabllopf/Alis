@@ -27,11 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.IO;
 using System.Reflection;
-using Alis.Core.Aspect.Data.Json;
-using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Audio;
@@ -499,61 +495,6 @@ namespace Alis.Sample.Flappy.Bird
                 .Build();
             
            game.Run();
-            
-            string gameJson = JsonSerializer.Serialize(game, new JsonOptions()
-            {
-                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
-                SerializationOptions = JsonSerializationOptions.Default
-            });
-            
-            //Console.WriteLine(gameJson);
-            
-            // Save to file:
-            
-            
-            string file = Path.Combine(Environment.CurrentDirectory, "game.json");
-            
-            File.WriteAllText(file, gameJson);
-            
-            // Load from file:
-            
-            string gameJsonFromFile = File.ReadAllText(file);
-            
-            VideoGame gameFromFile = JsonSerializer.Deserialize<VideoGame>(gameJsonFromFile, new JsonOptions()
-            {
-                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
-                SerializationOptions = JsonSerializationOptions.Default
-            });
-            
-            
-            /*
-            WindowSetting windowSetting = new WindowSetting();
-            windowSetting.Window.Resolution = new Vector2(288, 512);
-            windowSetting.Window.Background = Color.Red;
-            windowSetting.Window.IsWindowResizable = true;
-            
-            string sampleJson =  JsonSerializer.Serialize(windowSetting, new JsonOptions()
-            {
-                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
-                SerializationOptions = JsonSerializationOptions.Default
-            });
-            
-            var result = JsonSerializer.Deserialize<WindowSetting>(sampleJson, new JsonOptions()
-            {
-                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
-                SerializationOptions = JsonSerializationOptions.Default
-            });
-            */
-            /*
-            Vector2 vector = new Vector2(288, 512);
-            string result = JsonSerializer.Serialize(vector);
-            
-            Vector2 verctorresult = JsonSerializer.Deserialize<Vector2>(result);
-            */
-            
-            //Console.WriteLine(result);
-           
-           gameFromFile.Run();
         }
     }
 }
