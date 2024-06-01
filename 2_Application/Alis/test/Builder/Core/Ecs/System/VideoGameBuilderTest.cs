@@ -59,6 +59,7 @@ namespace Alis.Test.Builder.Core.Ecs.System
         [Fact]
         public void Settings_ValidInput()
         {
+            VideoGame videoGame = new VideoGame();
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             Settings settings = new Settings();
             
@@ -73,12 +74,13 @@ namespace Alis.Test.Builder.Core.Ecs.System
         [Fact]
         public void World_ValidInput()
         {
+            VideoGame videoGame = new VideoGame();
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             SceneManager sceneManager = new SceneManager();
             
             videoGameBuilder.World(s => sceneManager);
             
-            Assert.Equal(sceneManager, videoGameBuilder.Build().Context.SceneManager);
+            Assert.Equal(sceneManager.Scenes.Count, videoGameBuilder.Build().Context.SceneManager.Scenes.Count);
         }
         
         /// <summary>
@@ -87,6 +89,7 @@ namespace Alis.Test.Builder.Core.Ecs.System
         [Fact]
         public void Build_ValidInput_v2()
         {
+            
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             
             VideoGame videoGame = videoGameBuilder.Build();

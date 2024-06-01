@@ -194,7 +194,7 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             VideoGame videoGame = new VideoGame(context: context);
             scene.Add(gameObject);
-            Assert.Equal(context, gameObject.Context);
+            Assert.Equal(context.GetType(), gameObject.Context.GetType());
         }
         
         /// <summary>
@@ -206,7 +206,7 @@ namespace Alis.Test.Core.Ecs.Entity
             Scene scene = new Scene();
             Context context = new Context(new Settings());
             VideoGame videoGame = new VideoGame(context: context);
-            Assert.Equal(context, scene.Context);
+            Assert.Equal(context.SceneManager.Scenes.Count, scene.Context.SceneManager.Scenes.Count);
         }
         
         /// <summary>

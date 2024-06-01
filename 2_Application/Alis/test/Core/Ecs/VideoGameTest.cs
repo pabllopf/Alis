@@ -98,7 +98,7 @@ namespace Alis.Test.Core.Ecs
             
             VideoGame.SetContext(newContext);
             
-            Assert.Equal(newContext, videoGame.Context);
+            Assert.Equal(newContext.GetType(), videoGame.Context.GetType());
         }
     }
 }

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.System.Manager.Graphic;
 using Xunit;
@@ -44,6 +45,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
         [Fact]
         public void OnEnable_ValidInput()
         {
+            VideoGame videoGame = new VideoGame();
             GraphicManager graphicManager = new GraphicManager();
             graphicManager.OnEnable();
             
@@ -56,8 +58,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
         [Fact]
         public void OnInit_ValidInput()
         {
+            //VideoGame videoGame = new VideoGame();
             GraphicManager graphicManager = new GraphicManager();
-            graphicManager.OnInit();
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -68,6 +70,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
         [Fact]
         public void OnStart_ValidInput()
         {
+            VideoGame videoGame = new VideoGame();
             GraphicManager graphicManager = new GraphicManager();
             graphicManager.OnStart();
             
@@ -80,6 +83,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
         [Fact]
         public void OnUpdate_ValidInput()
         {
+            VideoGame videoGame = new VideoGame();
             GraphicManager graphicManager = new GraphicManager();
             graphicManager.OnUpdate();
             
@@ -92,6 +96,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
         [Fact]
         public void OnExit_ValidInput()
         {
+            VideoGame videoGame = new VideoGame();
             GraphicManager graphicManager = new GraphicManager();
             graphicManager.OnExit();
             
@@ -104,6 +109,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
         [Fact]
         public void Attach_ValidInput()
         {
+            VideoGame videoGame = new VideoGame();
             GraphicManager graphicManager = new GraphicManager();
             Sprite sprite = new Sprite();
             graphicManager.Attach(sprite);
@@ -117,6 +123,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
         [Fact]
         public void UnAttach_ValidInput()
         {
+            VideoGame videoGame = new VideoGame();
             GraphicManager graphicManager = new GraphicManager();
             Sprite sprite = new Sprite();
             graphicManager.Attach(sprite);

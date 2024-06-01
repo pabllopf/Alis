@@ -334,6 +334,7 @@ namespace Alis.Test.Core.Ecs.Component
         [Fact]
         public void SetContext_SetsContext()
         {
+            VideoGame videoGame = new VideoGame();
             Sample2Component sample2Component = new Sample2Component();
             Context context = new Context(new Settings());
             Assert.NotEqual(context, sample2Component.Context);
