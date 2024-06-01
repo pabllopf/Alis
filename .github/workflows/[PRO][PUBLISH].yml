@@ -8,29 +8,29 @@ jobs:
   
   Create_Packages:
     if: "contains(github.event.head_commit.message, 'release:')"
-    runs-on: macos-latest
+    runs-on: macos-12
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Check
+        uses: actions/checkout@v4
         with:
           ref: master
 
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v3
+      - name: setup
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: |
-            3.0.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
+            
+      - name: Dotnet test Debug
+        run: dotnet test alis.sln -c Debug
 
-      - name: Dotnet test debug
-        run: dotnet test alis.sln --configuration Debug
-
-      - name: Dotnet test release
-        run: dotnet test alis.sln --configuration Release
+      - name: Dotnet test Release
+        run: dotnet test alis.sln -c Release
 
       - name: Define file name to update version
         run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
