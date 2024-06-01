@@ -36,7 +36,6 @@ select yn in "Yes" "No"; do
         dotnet build $i -r win-x64 -c Release;
         dotnet build $i -r win-arm64 -c Release;
         dotnet build $i -r win-x86 -c Release;
-        dotnet build $i -r win-arm -c Release;
         dotnet build $i -r osx-x64 -c Release;
         dotnet build $i -r osx-arm64 -c Release;
         dotnet build $i -r linux-x64 -c Release;
@@ -56,7 +55,6 @@ select yn in "Yes" "No"; do
             dotnet build $i -r win-x64 -c Debug;
             dotnet build $i -r win-arm64 -c Debug;
             dotnet build $i -r win-x86 -c Debug;
-            dotnet build $i -r win-arm -c Debug;
             dotnet build $i -r osx-x64 -c Debug;
             dotnet build $i -r osx-arm64 -c Debug;
             dotnet build $i -r linux-x64 -c Debug;
