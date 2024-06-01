@@ -67,9 +67,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void Image_ConstructorWithParameters_ValidInput()
         {
+            VideoGame videoGame = new VideoGame();
             Settings settings = new Settings();
             Context context = new Context(new Settings());
-            string path = "testImagePath";
+            string path = "dino_assets.png";
             Image image = new Image(path);
             
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
@@ -83,7 +84,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
         {
             Settings settings = new Settings();
             Context context = new Context(new Settings());
-            string path = "testImagePath";
+            string path = "dino_assets.png";
             Image image = new Image();
             image.Path = path;
             
@@ -96,9 +97,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void Image_TextureProperty_ValidInput()
         {
+            VideoGame videoGame = new VideoGame();
             Settings settings = new Settings();
             Context context = new Context(new Settings());
-            string path = "testImagePath";
+            string path = "dino_assets.png";
             Image image = new Image(path);
             IntPtr texture = image.Texture;
             
@@ -111,9 +113,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void Image_SizeProperty_ValidInput()
         {
+            VideoGame videoGame = new VideoGame();
             Settings settings = new Settings();
             Context context = new Context(new Settings());
-            string path = "testImagePath";
+            string path = "dino_assets.png";
             Image image = new Image(path);
             Vector2 size = image.Size;
             
@@ -126,11 +129,12 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void Path_SetValue_ShouldChangeValue()
         {
-            Image image = new Image("oldPath");
-            Assert.Equal("oldPath", image.Path);
+            VideoGame videoGame = new VideoGame();
+            Image image = new Image("dino_assets.png");
+            Assert.Equal("dino_assets.png", image.NameFile);
             
-            image.Path = "newPath";
-            Assert.Equal("newPath", image.Path);
+            image.Path = "dino_assets.png";
+            Assert.Equal("dino_assets.png", image.NameFile);
         }
     }
 }

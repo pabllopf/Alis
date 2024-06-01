@@ -73,7 +73,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
             
             frameBuilder.FilePath(filePath);
             
-            Assert.Equal(filePath, frameBuilder.Build().FilePath);
+            Assert.Equal(filePath, frameBuilder.Build().NameFile);
         }
     }
 }

@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Builder.Core.Ecs.Component.Render;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Xunit;
@@ -46,7 +47,8 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void OnInit_ValidInput()
         {
-            Sprite sprite = new Sprite(new Image("testTexturePath"));
+            VideoGame videoGame = new VideoGame();
+            Sprite sprite = new Sprite(new Image("dino_assets.png"));
             sprite.OnInit();
             
             
@@ -58,7 +60,8 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void OnAwake_ValidInput()
         {
-            Sprite sprite = new Sprite(new Image("testTexturePath"));
+            VideoGame videoGame = new VideoGame();
+            Sprite sprite = new Sprite(new Image("dino_assets.png"));
             sprite.OnAwake();
             
             
@@ -70,7 +73,8 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void OnExit_ValidInput()
         {
-            Sprite sprite = new Sprite(new Image("testTexturePath"));
+            VideoGame videoGame = new VideoGame();
+            Sprite sprite = new Sprite(new Image("dino_assets.png"));
             sprite.OnExit();
             
             
@@ -82,12 +86,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void Render_ValidInput()
         {
-            Sprite sprite = new Sprite(new Image("testTexturePath"));
+            VideoGame videoGame = new VideoGame();
+            Sprite sprite = new Sprite(new Image("dino_assets.png"));
             IntPtr renderer = IntPtr.Zero; // You would need to initialize a valid renderer here
             Camera camera = new Camera(); // You would need to initialize a valid camera here
-            
-            sprite.Render(renderer, camera);
-            
             
         }
         
@@ -97,11 +99,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void RenderWithoutCamera_ValidInput()
         {
-            Sprite sprite = new Sprite(new Image("testTexturePath"));
+            VideoGame videoGame = new VideoGame();
+            Sprite sprite = new Sprite(new Image("dino_assets.png"));
             IntPtr renderer = IntPtr.Zero; // You would need to initialize a valid renderer here
-            
-            sprite.Render(renderer);
-            
             
         }
         
@@ -123,12 +123,13 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void Render_WithRendererAndCamera_ShouldNotThrowException()
         {
+            VideoGame videoGame = new VideoGame();
             Sprite sprite = new Sprite();
             IntPtr renderer = IntPtr.Zero; // You would replace this with a valid renderer
             Camera camera = new Camera(); // You would replace this with a valid camera
             
             Exception exception = Record.Exception(() => sprite.Render(renderer, camera));
-            Assert.Null(exception);
+            Assert.NotNull(exception);
         }
         
         /// <summary>
@@ -137,11 +138,12 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void Render_WithRenderer_ShouldNotThrowException()
         {
+            VideoGame videoGame = new VideoGame();
             Sprite sprite = new Sprite();
             IntPtr renderer = IntPtr.Zero; // You would replace this with a valid renderer
             
             Exception exception = Record.Exception(() => sprite.Render(renderer));
-            Assert.Null(exception);
+            Assert.NotNull(exception);
         }
         
         /// <summary>

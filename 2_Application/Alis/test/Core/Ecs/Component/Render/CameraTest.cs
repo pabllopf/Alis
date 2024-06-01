@@ -92,6 +92,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void OnExit_DetachesFromGraphicManager()
         {
+            VideoGame videoGame = new VideoGame();
             Camera camera = new Camera();
             camera.OnStart();
             camera.OnExit();

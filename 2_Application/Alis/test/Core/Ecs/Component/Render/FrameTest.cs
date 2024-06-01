@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.Component.Render;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Render;
 using Xunit;
 
@@ -55,7 +56,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void Frame_ConstructorWithParameters_ValidInput()
         {
-            string filePath = "testFilePath";
+            VideoGame videoGame = new VideoGame();
+            
+            string filePath = "dino_assets.png";
             Frame frame = new Frame(filePath);
             
             Assert.NotNull(frame);
@@ -67,7 +70,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void Frame_FilePathProperty_ValidInput()
         {
-            string filePath = "testFilePath";
+            string filePath = "dino_assets.png";
             Frame frame = new Frame();
             frame.FilePath = filePath;
             
