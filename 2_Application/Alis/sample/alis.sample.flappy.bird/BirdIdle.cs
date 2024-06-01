@@ -45,6 +45,7 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         private const float RangeMovement = 10.0f;
         
+        
         /// <summary>
         ///     The velocity
         /// </summary>
