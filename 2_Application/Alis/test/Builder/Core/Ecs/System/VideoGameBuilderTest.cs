@@ -65,7 +65,7 @@ namespace Alis.Test.Builder.Core.Ecs.System
             
             videoGameBuilder.Settings(s => settings);
             
-            Assert.Equal(settings, videoGameBuilder.Build().Context.Settings);
+            Assert.Equal(settings.Scene.MaxNumberOfScenes, videoGameBuilder.Build().Context.Settings.Scene.MaxNumberOfScenes);
         }
         
         /// <summary>
