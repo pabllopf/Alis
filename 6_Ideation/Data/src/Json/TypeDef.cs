@@ -31,6 +31,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -41,6 +42,7 @@ namespace Alis.Core.Aspect.Data.Json
     /// <summary>
     ///     The type def class
     /// </summary>
+    [ExcludeFromCodeCoverage]
     internal sealed class TypeDef
     {
         /// <summary>

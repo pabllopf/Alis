@@ -41,8 +41,7 @@ namespace Alis.Core.Aspect.Math.Vector
     ///     The vector
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    [Serializable]
-    public struct Vector3 : IEquatable<Vector3>, IFormattable, ISerializable
+    public struct Vector3 : IEquatable<Vector3>, IFormattable
     {
         /// <summary>
         ///     The hash code
@@ -77,6 +76,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="x">The value to assign to the <see cref="Vector3.X" /> field.</param>
         /// <param name="y">The value to assign to the <see cref="Vector3.Y" /> field.</param>
         /// <param name="z">The value to assign to the <see cref="Vector3.Z" /> field.</param>
+        [JsonConstructor]
         public Vector3(float x, float y, float z)
         {
             X = x;
@@ -88,32 +88,6 @@ namespace Alis.Core.Aspect.Math.Vector
             hash.Add(y);
             hash.Add(z);
             hashCode = hash.ToHashCode();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3"/> class
-        /// </summary>
-        /// <param name="info">The info</param>
-        /// <param name="context">The context</param>
-        private Vector3(SerializationInfo info, StreamingContext context)
-        {
-            X = info.GetSingle("X");
-            Y = info.GetSingle("Y");
-            Z = info.GetSingle("Z");
-            hashCode = info.GetInt32("hashCode");
-        }
-        
-        /// <summary>
-        /// Gets the object data using the specified info
-        /// </summary>
-        /// <param name="info">The info</param>
-        /// <param name="context">The context</param>
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            info.AddValue("X", X);
-            info.AddValue("Y", Y);
-            info.AddValue("Z", Z);
-            info.AddValue("hashCode", hashCode);
         }
         
         /// <summary>Gets a vector whose 3 elements are equal to zero.</summary>

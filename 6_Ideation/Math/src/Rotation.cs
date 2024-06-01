@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math
@@ -63,6 +64,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="cosine">The cosine</param>
         /// <param name="angle">The angle</param>
         [JsonConstructor]
+        [ExcludeFromCodeCoverage]
         public Rotation(float sine, float cosine, float angle)
         {
             Sine = sine;

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Data.Json
 {
@@ -36,6 +37,7 @@ namespace Alis.Core.Aspect.Data.Json
     /// </summary>
     /// <seealso cref="Attribute"/>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Struct | AttributeTargets.Class)]
+    [ExcludeFromCodeCoverage]
     public class JsonIgnoreAttribute : Attribute
     {
         /// <summary>

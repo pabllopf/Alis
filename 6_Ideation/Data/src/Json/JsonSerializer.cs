@@ -47,6 +47,7 @@ namespace Alis.Core.Aspect.Data.Json
     /// <summary>
     ///     A utility class to serialize and deserialize JSON.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class JsonSerializer
     {
         /// <summary>
