@@ -5,30 +5,11 @@ select yn in "Yes" "No"; do
 
     cd ../../../
     
-    find . -type d -name "bin" -exec rm -Rf {} \;
-    find . -type d -name "obj" -exec rm -Rf {} \;
     find . -type d -name "publish" -exec rm -Rf {} \;
-    find . -type d -name "build" -exec rm -Rf {} \;
-    find . -type d -name "lib" -exec rm -Rf {} \;
-    find . -type d -name ".nuget" -exec rm -Rf {} \;
     find . -type d -name ".publish" -exec rm -Rf {} \;
     
-    find ./ -name ".DS_Store" -exec rm -f {} \; 
-    find ./ -name "*.so" -exec rm -f {} \; 
-    find ./ -name "*.a" -exec rm -f {} \; 
-    find ./ -name "*.o" -exec rm -f {} \;
-    find ./ -name "*.nupkg" -exec rm -f {} \;
-    find ./ -name "*.dylib" -exec rm -f {} \; 
-    find ./ -name "*.exe" -exec rm -f {} \; 
-    find ./ -name "*.pdb" -exec rm -f {} \; 
-    find ./ -name "*.mdb" -exec rm -f {} \; 
-    
-    dotnet test alis.sln --configuration Debug;
-    
-    dotnet test alis.sln --configuration Release;
-    
     for i in `find . -name "*.csproj" -type f`; 
-      do if [[ $i != *".Template."* && $i != *".App."* && $i != *".Test."* && $i != *".Benchmark."* && $i != *".Sample."* ]] ; 
+      do if [[ $i != *".Template."* && $i != *".App."* && $i != *".Test."* && $i != *".Benchmark."* && $i != *".Sample."* && $i != *".Extension."*  ]] ; 
       then 
         echo "Build project $i" ;
         dotnet restore $i;
@@ -47,7 +28,7 @@ select yn in "Yes" "No"; do
     fi;done
     
     for i in `find . -name "*.csproj" -type f`; 
-          do if [[ $i != *".Template."* && $i != *".App."* && $i != *".Test."* && $i != *".Benchmark."* && $i != *".Sample."* ]] ; 
+          do if [[ $i != *".Template."* && $i != *".App."* && $i != *".Test."* && $i != *".Benchmark."* && $i != *".Sample."* && $i != *".Extension."* ]] ; 
           then 
             echo "Build project $i" ;
             dotnet restore $i;
