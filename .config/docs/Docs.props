@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-    <ItemGroup Condition="$(Configuration) == 'Release'">
-        <None Remove="$(ProjectDir)/**/*.md"/>
-    </ItemGroup>
-
     <ItemGroup Condition="
         $(AssemblyName.Contains('Test')) == false AND 
         $(AssemblyName.Contains('Sample')) == false AND
