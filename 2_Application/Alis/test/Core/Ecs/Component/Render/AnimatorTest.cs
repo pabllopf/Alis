@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Alis.Builder.Core.Ecs.Component.Render;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Graphic.Sdl2.Enums;
@@ -98,6 +99,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void OnUpdate_ShouldChangeSpriteImage()
         {
+            VideoGame videoGame = new VideoGame();
             List<Animation> animations = new List<Animation> {new Animation(new List<Frame>())};
             Animator animator = new Animator(animations);
             animator.OnInit();

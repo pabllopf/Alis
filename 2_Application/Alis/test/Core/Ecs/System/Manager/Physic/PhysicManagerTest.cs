@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.System.Manager.Physic;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
@@ -45,6 +46,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Physic
         [Fact]
         public void Test_OnUpdate()
         {
+            VideoGame videoGame = new VideoGame();
             PhysicManager manager = new PhysicManager();
             manager.OnUpdate();
             // Asserts would go here
@@ -56,6 +58,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Physic
         [Fact]
         public void Test_Attach()
         {
+            VideoGame videoGame = new VideoGame();
             PhysicManager manager = new PhysicManager();
             Body body = new Body(
                 new Vector2(0, 0), // position
