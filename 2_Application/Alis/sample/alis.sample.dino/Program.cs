@@ -54,7 +54,7 @@ namespace Alis.Sample.Dino
                         .Author("Pablo Perdomo Falcón")
                         .Description("T-Rex Dino Game")
                         .License("GNU General Public License v3.0")
-                        .Icon(AssetManager.Find("app.bmp"))
+                        .Icon("app.bmp")
                         .Build())
                     .Audio(audio => audio
                         .Build())
@@ -78,7 +78,7 @@ namespace Alis.Sample.Dino
                                 .Builder()
                                 .PlayOnAwake(true)
                                 .SetAudioClip(audioClip => audioClip
-                                    .FilePath(AssetManager.Find("soundtrack.wav"))
+                                    .FilePath("soundtrack.wav")
                                     .Volume(100.0f)
                                     .Build())
                                 .Build())

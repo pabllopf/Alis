@@ -55,7 +55,7 @@ namespace Alis.Sample.Rogue
                         .Description("Sample of a rogue legacy game")
                         .Debug(true)
                         .License("GNU General Public License v3.0")
-                        .Icon(AssetManager.Find("app.bmp"))
+                        .Icon("app.bmp")
                         .Build())
                     .Audio(audio => audio
                         .Build())
@@ -82,7 +82,7 @@ namespace Alis.Sample.Rogue
                                 .Rotation(0)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture(AssetManager.Find("tile000.bmp"))
+                                .SetTexture("tile000.bmp")
                                 .Build())
                             .AddComponent<Animator>(animator => animator.Builder()
                                 .AddAnimation(animation => animation
@@ -90,16 +90,16 @@ namespace Alis.Sample.Rogue
                                     .Order(0)
                                     .Speed(0.2f)
                                     .AddFrame(frame => frame
-                                        .FilePath(AssetManager.Find("tile000.bmp"))
+                                        .FilePath("tile000.bmp")
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(AssetManager.Find("tile001.bmp"))
+                                        .FilePath("tile001.bmp")
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(AssetManager.Find("tile002.bmp"))
+                                        .FilePath("tile002.bmp")
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(AssetManager.Find("tile003.bmp"))
+                                        .FilePath("tile003.bmp")
                                         .Build())
                                     .Build())
                                 .Build())
@@ -119,7 +119,7 @@ namespace Alis.Sample.Rogue
                                 .Rotation(0)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture(AssetManager.Find("tree-001.bmp"))
+                                .SetTexture("tree-001.bmp")
                                 .Build())
                             .Build())
                         
@@ -132,7 +132,7 @@ namespace Alis.Sample.Rogue
                                 .Rotation(0)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture(AssetManager.Find("tree-001.bmp"))
+                                .SetTexture("tree-001.bmp")
                                 .Build())
                             .Build())
                         .Add<GameObject>(gameObject => gameObject
@@ -143,7 +143,7 @@ namespace Alis.Sample.Rogue
                                 .Rotation(0)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture(AssetManager.Find("tree-001.bmp"))
+                                .SetTexture("tree-001.bmp")
                                 .Build())
                             .Build())
                         .Add<GameObject>(gameObject => gameObject
@@ -154,7 +154,7 @@ namespace Alis.Sample.Rogue
                                 .Rotation(0)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture(AssetManager.Find("tree-001.bmp"))
+                                .SetTexture("tree-001.bmp")
                                 .Build())
                             .Build())
                         .Build())
