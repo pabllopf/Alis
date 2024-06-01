@@ -308,7 +308,13 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             CurrentScene.OnStop();
             CurrentScene.OnExit();
             Entity.Scene selectedScene = Scenes.Find(i => i.Name.Equals(name));
-            CurrentScene = JsonSerializer.Deserialize<Entity.Scene>(File.ReadAllText(AssetManager.Find("Scene_" + selectedScene.Name + ".json")));
+            CurrentScene = JsonSerializer.Deserialize<Entity.Scene>(
+                File.ReadAllText(AssetManager.Find("Scene_" + selectedScene.Name + ".json"))
+                , new JsonOptions()
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
             CurrentScene.OnInit();
             CurrentScene.OnAwake();
             CurrentScene.OnStart();

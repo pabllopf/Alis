@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math
@@ -35,7 +37,8 @@ namespace Alis.Core.Aspect.Math
     /// <summary>
     /// The rotation
     /// </summary>
-    public struct Rotation
+    [Serializable]
+    public struct Rotation : ISerializable
     {
         /// Sine and cosine
         public float Sine { get; set; }
@@ -63,7 +66,6 @@ namespace Alis.Core.Aspect.Math
         /// <param name="sine">The sine</param>
         /// <param name="cosine">The cosine</param>
         /// <param name="angle">The angle</param>
-        [JsonConstructor]
         [ExcludeFromCodeCoverage]
         public Rotation(float sine, float cosine, float angle)
         {
@@ -105,5 +107,19 @@ namespace Alis.Core.Aspect.Math
         
         /// <summary>Get the y-axis</summary>
         public Vector2 GetYAxis() => new Vector2(-Sine, Cosine);
+        
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("Sine", Sine);
+            info.AddValue("Cosine", Cosine);
+            info.AddValue("Angle", Angle);
+        }
+        
+        public Rotation(SerializationInfo info, StreamingContext context)
+        {
+            Sine = info.GetSingle("Sine");
+            Cosine = info.GetSingle("Cosine");
+            Angle = info.GetSingle("Angle");
+        }
     }
 }
