@@ -36,8 +36,7 @@ namespace Alis.Core.Aspect.Math.Util
     /// <summary>
     ///     The quaternion
     /// </summary>
-    [Serializable]
-    public struct Quaternion : ISerializable
+    public struct Quaternion 
     {
         /// <summary>
         ///     The hash code
@@ -57,35 +56,6 @@ namespace Alis.Core.Aspect.Math.Util
         public float W { get; private set; }
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="Quaternion"/> class
-        /// </summary>
-        /// <param name="info">The info</param>
-        /// <param name="context">The context</param>
-        private Quaternion(SerializationInfo info, StreamingContext context)
-        {
-            X = info.GetSingle("X");
-            Y = info.GetSingle("Y");
-            Z = info.GetSingle("Z");
-            W = info.GetSingle("W");
-            hashCode = info.GetInt32("hashCode");
-        }
-        
-       
-        /// <summary>
-        /// Gets the object data using the specified info
-        /// </summary>
-        /// <param name="info">The info</param>
-        /// <param name="context">The context</param>
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            info.AddValue("X", X);
-            info.AddValue("Y", Y);
-            info.AddValue("Z", Z);
-            info.AddValue("W", W);
-            info.AddValue("hashCode", hashCode);
-        }
-        
-        /// <summary>
         ///     The count
         /// </summary>
         internal const int Count = 4;
@@ -95,6 +65,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <param name="y">The value to assign to the Y component of the quaternion.</param>
         /// <param name="z">The value to assign to the Z component of the quaternion.</param>
         /// <param name="w">The value to assign to the W component of the quaternion.</param>
+       [JsonConstructor]
         public Quaternion(float x, float y, float z, float w)
         {
             X = x;

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Data.Json
 {
@@ -35,6 +36,7 @@ namespace Alis.Core.Aspect.Data.Json
     ///     Provides options for JSON.
     /// </summary>
     [AttributeUsage(AttributeTargets.All)]
+    [ExcludeFromCodeCoverage]
     public sealed class JsonPropertyNameAttribute : Attribute
     {
         /// <summary>
