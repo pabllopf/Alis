@@ -41,7 +41,8 @@ namespace Alis.Core.Aspect.Math.Vector
     ///     The vector
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct Vector3 : IEquatable<Vector3>, IFormattable
+    [Serializable]
+    public struct Vector3 : IEquatable<Vector3>, IFormattable, ISerializable
     {
         /// <summary>
         ///     The hash code
@@ -76,7 +77,6 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="x">The value to assign to the <see cref="Vector3.X" /> field.</param>
         /// <param name="y">The value to assign to the <see cref="Vector3.Y" /> field.</param>
         /// <param name="z">The value to assign to the <see cref="Vector3.Z" /> field.</param>
-        [JsonConstructor]
         public Vector3(float x, float y, float z)
         {
             X = x;
@@ -299,6 +299,26 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     separate each element.
         /// </remarks>
         public readonly override string ToString() => ToString("G", CultureInfo.CurrentCulture);
+        
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("X", X);
+            info.AddValue("Y", Y);
+            info.AddValue("Z", Z);
+        }
+        
+        public Vector3(SerializationInfo info, StreamingContext context)
+        {
+            X = info.GetSingle("X");
+            Y = info.GetSingle("Y");
+            Z = info.GetSingle("Z");
+            
+            HashCode hash = new HashCode();
+            hash.Add(X);
+            hash.Add(Y);
+            hash.Add(Z);
+            hashCode = hash.ToHashCode();
+        }
         
         /// <summary>
         ///     Returns the string representation of the current instance using the specified format string to format

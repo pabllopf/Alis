@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 
 namespace Alis.Core.Aspect.Math.Shape.Rectangle
 {
@@ -35,7 +37,8 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
     ///     The sdl rect
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct RectangleI : IShape
+    [Serializable]
+    public struct RectangleI : IShape, ISerializable
     {
         /// <summary>
         ///     The
@@ -64,13 +67,28 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
         /// <param name="y">The </param>
         /// <param name="w">The </param>
         /// <param name="h">The </param>
-        [JsonConstructor]
         public RectangleI(int x, int y, int w, int h)
         {
             this.X = x;
             this.Y = y;
             this.H = h;
             this.W = w;
+        }
+        
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("X", X);
+            info.AddValue("Y", Y);
+            info.AddValue("W", W);
+            info.AddValue("H", H);
+        }
+        
+        public RectangleI(SerializationInfo info, StreamingContext context)
+        {
+            X = info.GetInt32("X");
+            Y = info.GetInt32("Y");
+            W = info.GetInt32("W");
+            H = info.GetInt32("H");
         }
     }
 }

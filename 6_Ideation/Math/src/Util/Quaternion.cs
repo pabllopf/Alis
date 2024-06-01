@@ -65,7 +65,6 @@ namespace Alis.Core.Aspect.Math.Util
         /// <param name="y">The value to assign to the Y component of the quaternion.</param>
         /// <param name="z">The value to assign to the Z component of the quaternion.</param>
         /// <param name="w">The value to assign to the W component of the quaternion.</param>
-       [JsonConstructor]
         public Quaternion(float x, float y, float z, float w)
         {
             X = x;

@@ -37,7 +37,8 @@ namespace Alis.Core.Aspect.Math.Vector
     ///     The vector
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct Vector4 
+    [Serializable]
+    public struct Vector4 : ISerializable
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Vector4" /> class
@@ -46,7 +47,6 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="y">The </param>
         /// <param name="z">The </param>
         /// <param name="w">The </param>
-        [JsonConstructor]
         public Vector4(float x, float y, float z, float w)
         {
             X = x;
@@ -84,5 +84,21 @@ namespace Alis.Core.Aspect.Math.Vector
         
         /// <summary>Projective/Homogenous component of the vector</summary>
         public float W;
+        
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+             info.AddValue("X", X);
+                info.AddValue("Y", Y);
+                info.AddValue("Z", Z);
+                info.AddValue("W", W);
+        }
+        
+        public Vector4(SerializationInfo info, StreamingContext context)
+        {
+            X = info.GetSingle("X");
+            Y = info.GetSingle("Y");
+            Z = info.GetSingle("Z");
+            W = info.GetSingle("W");
+        }
     }
 }

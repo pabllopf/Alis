@@ -525,9 +525,9 @@ namespace Alis.Core.Aspect.Data.Json
                 
                 if (!type.IsPrimitive && !type.IsInterface && !type.IsAbstract) // Check if type is a struct
                 {
-                   ConstructorInfo specialConstructor = type.GetConstructors()
-                       .FirstOrDefault(c => c.GetCustomAttributesData()
-                           .Any(a => a.AttributeType.Name.Contains("JsonConstructorAttribute")));
+                    ConstructorInfo specialConstructor = type.GetConstructors()
+                        .FirstOrDefault(c => c.GetCustomAttributesData()
+                            .Any(a => a.AttributeType.Name.Contains("JsonConstructorAttribute")));
                     if (specialConstructor != null)
                     {
                         ParameterInfo[] parameters = specialConstructor.GetParameters();
@@ -540,7 +540,7 @@ namespace Alis.Core.Aspect.Data.Json
                                 // Iterate over dictionary keys
                                 foreach (object key in dictionary.Keys)
                                 {
-                                    if (!key.ToString().Equals(SerializationTypeToken)  && key.ToString().ToLower().Contains(parameters[i].Name.ToLower()))
+                                    if (!key.ToString().Equals(SerializationTypeToken) && key.ToString().ToLower().Contains(parameters[i].Name.ToLower()))
                                     {
                                         parameterValues[i] = CreateInstance(target, parameters[i].ParameterType, elementsCount, options, dictionary[key]);
                                         break;
@@ -574,7 +574,30 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     return value;
                 }
-             
+                
+                if (type.IsSerializable) // Check if type implements ISerializable
+                {
+                    ConstructorInfo serializationConstructor = type.GetConstructor(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance, null, new[] {typeof(SerializationInfo), typeof(StreamingContext)}, null);
+                    if (serializationConstructor != null)
+                    {
+                        // Create SerializationInfo and StreamingContext
+                        SerializationInfo serializationInfo = new SerializationInfo(type, new FormatterConverter());
+                        StreamingContext streamingContext = new StreamingContext(StreamingContextStates.All);
+                        
+                        // Populate SerializationInfo with data from the dictionary
+                        if (value is IDictionary dictionary)
+                        {
+                            dictionary.Remove(SerializationTypeToken);
+                            foreach (DictionaryEntry entry in dictionary)
+                            {
+                                serializationInfo.AddValue(entry.Key.ToString(), entry.Value);
+                            }
+                        }
+                        
+                        // Create the instance using the serialization constructor
+                        return serializationConstructor.Invoke(new object[] {serializationInfo, streamingContext});
+                    }
+                }
                 
                 return Activator.CreateInstance(type);
             }
