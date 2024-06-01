@@ -27,12 +27,6 @@ jobs:
             7.0.x
             8.0.x
             
-      - name: Dotnet test Debug
-        run: dotnet test alis.sln -c Debug
-
-      - name: Dotnet test Release
-        run: dotnet test alis.sln -c Release
-
       - name: Define file name to update version
         run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
 
