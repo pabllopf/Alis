@@ -50,6 +50,7 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         private const float Velocity = 55f;
         
+        
         /// <summary>
         ///     The default position
         /// </summary>
