@@ -5,6 +5,301 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.2.8] - 2024-06-01
+### :sparkles: New Features
+- [`97acd15`](https://github.com/pabllopf/Alis/commit/97acd1530d138733a4518bb5160230c238c11fa5) - create a simple sample to Alis.Core.Aspect.Sample *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8549ed4`](https://github.com/pabllopf/Alis/commit/8549ed4201a3aa2a1679f74d89018bf7e32abedc) - create simple sample of aspect module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0ee9a0b`](https://github.com/pabllopf/Alis/commit/0ee9a0bf9ea139a3ec90b85d5df6d6136e7e39f5) - add 2 new samples to the sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ae585ba`](https://github.com/pabllopf/Alis/commit/ae585bae1bd1f6f2299423ccd443061b57824f9a) - simple flip animation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`931c638`](https://github.com/pabllopf/Alis/commit/931c63864d9a73e386ad86a89487b3f173c1d5f4) - add simple transition to animations *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d8a378a`](https://github.com/pabllopf/Alis/commit/d8a378a761ac8abe2f2b4c9da68c09ebf0702551) - add new control player *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`169b9a2`](https://github.com/pabllopf/Alis/commit/169b9a26b2239dee9197d20cb2b8b474dacb3db5) - add simple camera system *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`323c986`](https://github.com/pabllopf/Alis/commit/323c986ce154d1a31ccf3eacde8cf73b5868539c) - add new type of extensions core of Alis, to do a core and core extension id needed *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`502adde`](https://github.com/pabllopf/Alis/commit/502adde4ea10ae6a408e2283ecb4f9e378613208) - create extension to imgui *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`57fa14b`](https://github.com/pabllopf/Alis/commit/57fa14bd8886062a653d0d75628b2398ed82197e) - Add simple Profiler to the framework *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b9057d9`](https://github.com/pabllopf/Alis/commit/b9057d9651b42012781f09ca5b62e0c8e2526cea) - optimice the modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`56f5e4e`](https://github.com/pabllopf/Alis/commit/56f5e4ed00668b74ebaef33d2f4c4ed4eff73c65) - add secure vars to include more security to the framework *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c1ff206`](https://github.com/pabllopf/Alis/commit/c1ff2066ca1e971b158c783f6b5a772c95bbc216) - delete all logger system when compile release mode *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3a154d8`](https://github.com/pabllopf/Alis/commit/3a154d8a69a4cd1e2a87d832a23b80e2ef8db6a0) - new atribute to skip test on mode release than only need execute on mode debug *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b603c1e`](https://github.com/pabllopf/Alis/commit/b603c1e8c0225e6f1cbdb0ca03900589a67444a8) - big refactor to move plugin system to extension and do optional to install to the game engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a1827cc`](https://github.com/pabllopf/Alis/commit/a1827cc3553652aecd0043692629725665d70654) - new extension with path generator *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4526235`](https://github.com/pabllopf/Alis/commit/45262353655889d1e6c924a34de9391cec519d17) - introduce the game context to delete the singletons of architecture *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`848150a`](https://github.com/pabllopf/Alis/commit/848150acb8c6b1f695fd713d56df3e7a55de3bb4) - add jsonignore *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`38f0b9a`](https://github.com/pabllopf/Alis/commit/38f0b9aabbb06942ad44cef6a41e962b78f3a26a) - implement the save/load scene controller. *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`aea5018`](https://github.com/pabllopf/Alis/commit/aea50186ff7ac65e91a56bd4fb0958829c31eef6) - the validator method on atributes code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`74bddbd`](https://github.com/pabllopf/Alis/commit/74bddbdfefc45263f1fb38e8b922709792e8375e) - NotEmptyException test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d1bc9fa`](https://github.com/pabllopf/Alis/commit/d1bc9fa8b094502492b62a57b8726aed1a484de1) - the test of memory module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`72562aa`](https://github.com/pabllopf/Alis/commit/72562aa4cee59cbe7cf8d34187dc3896fd33b708) - SYSLIB0050 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8df5567`](https://github.com/pabllopf/Alis/commit/8df55678decae33149a9cb5205984fda54436169) - format of BlendMode *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6eb3112`](https://github.com/pabllopf/Alis/commit/6eb3112657003f5569e5d0db796cdb9de0736711) - timemanager to do synch with real time *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`55f5cb0`](https://github.com/pabllopf/Alis/commit/55f5cb05f8f90f217972b6caa95de163dd23d7d2) - frames AverageFrame to int *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c562e9f`](https://github.com/pabllopf/Alis/commit/c562e9f4e7294fdac7367fc76642edbf81d1af0a) - size and type of files of samples *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6d8904e`](https://github.com/pabllopf/Alis/commit/6d8904ea1ace87b647838bd1cdb923bd90a4d511) - render sprite *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2fce3e6`](https://github.com/pabllopf/Alis/commit/2fce3e6facafe4eb1b9401486de8c7452aa1a015) - the sample of the network *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`331a877`](https://github.com/pabllopf/Alis/commit/331a877fc0357953b068c1eecab4ac1e7209832f) - the cancellation token *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dc7e933`](https://github.com/pabllopf/Alis/commit/dc7e93301b1fe787d28762f73c2e8d31da52986e) - refactor complex of methods. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7bd3bdb`](https://github.com/pabllopf/Alis/commit/7bd3bdb9be21e35c0bd9c89b6de112e47d025edf) - the TimeSpan serialize *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b5cc085`](https://github.com/pabllopf/Alis/commit/b5cc085d0a3d567b80e8cb490106df0719b1cc68) - the json serializer *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`111b4cb`](https://github.com/pabllopf/Alis/commit/111b4cbd5e2f8ab562f84373677f220f6b382bff) - the AdvancingFront *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e56b756`](https://github.com/pabllopf/Alis/commit/e56b756b3dd3be2529b06f0f9de5b62160ce2ef3) - delete the SimpleCombiner *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`08e85e4`](https://github.com/pabllopf/Alis/commit/08e85e43b526a1217665a71b6b391212d764ef82) - return the vertices method *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ac86f53`](https://github.com/pabllopf/Alis/commit/ac86f535cd29b6709089b907cd41075f68d83238) - the ProcessOutstandingVertex *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c6a9cb6`](https://github.com/pabllopf/Alis/commit/c6a9cb6d2683e909b3c47abbe6b6056ebcd97ffb) - Refactor this constructor to reduce its Cognitive Complexity from 18 to the 15 allowed. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`59562f8`](https://github.com/pabllopf/Alis/commit/59562f8010443b78de0089eacac62e1cca097e7c) - Refactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e65f266`](https://github.com/pabllopf/Alis/commit/e65f266640cd1ec2e61e7ea0bcaedb2fa7a5cfdd) - RayCastHelper *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`259e82c`](https://github.com/pabllopf/Alis/commit/259e82c19f2be3af77ec6553a3c51f18f06a1855) - the main style *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8c5594e`](https://github.com/pabllopf/Alis/commit/8c5594ef03717f01eef108dca8eb1b9dcb8ff825) - the epaxis fields *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0de717b`](https://github.com/pabllopf/Alis/commit/0de717bb734a2762556aa66363d7d5dede404523) - field names *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`35375f9`](https://github.com/pabllopf/Alis/commit/35375f9ff00e866deabeeae1be544b69b8be4d1e) - names of ContactId *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0c6850e`](https://github.com/pabllopf/Alis/commit/0c6850e23b91b8e667e257f6c54d9a217326b3fe) - the factory methods delete safely *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`373520a`](https://github.com/pabllopf/Alis/commit/373520a8f2df6096308d80626cacc869171b33b1) - names of idispose *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2e37aad`](https://github.com/pabllopf/Alis/commit/2e37aad01bb326f5f4ee19399acf826cc6407a73) - names of texts *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b8aa4e6`](https://github.com/pabllopf/Alis/commit/b8aa4e6e746a17389df63e805626f5b69ed34199) - names of class TimeOfImpact *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6131e69`](https://github.com/pabllopf/Alis/commit/6131e69f26a1631635cfd915369c2868a8221c94) - names and throw new NotImplementedException(); *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ff97283`](https://github.com/pabllopf/Alis/commit/ff972834e1f2200a704a9eb3ad9ace5f36c0e2b4) - code duplicated *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3e966e6`](https://github.com/pabllopf/Alis/commit/3e966e67e779c272c9b0060bc369483a68180fdd) - add trace to managers *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`180edf2`](https://github.com/pabllopf/Alis/commit/180edf22d0f5a5dcc8aff4a57730b7bff8b721ac) - for windows encode video *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`096ddc7`](https://github.com/pabllopf/Alis/commit/096ddc76d661cb1326080f32c22900448d5e3712) - the solution path *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4165980`](https://github.com/pabllopf/Alis/commit/416598024bb181c10a7d6ce0608a3d2c651370af) - add the module of external control of video and audio. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`eb0ee26`](https://github.com/pabllopf/Alis/commit/eb0ee26e73406fffea9f57cf97a2358048cd317e) - the conversion of json on ffmeg *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fec9895`](https://github.com/pabllopf/Alis/commit/fec989530f71b4626b4e10b105702c8737d2251b) - optimize space of dlls *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b9c0a87`](https://github.com/pabllopf/Alis/commit/b9c0a8721849f0de42c25ae60948db373e56b43d) - change the dlls *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8b32662`](https://github.com/pabllopf/Alis/commit/8b326620013b7b85c3dd9b4e6ca02a536f6178a1) - dll of macos on extension modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3299aef`](https://github.com/pabllopf/Alis/commit/3299aef9d4e537dfd7ad8ea9f212bfeccda39a51) - the Regex format *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2f30580`](https://github.com/pabllopf/Alis/commit/2f30580bc582e2015598eec23206b6136eba773c) - LangVersion to 8 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e6b920e`](https://github.com/pabllopf/Alis/commit/e6b920e0ecbced3e759b2fc01da0b7ef77b6fcfe) - 0 comparation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`60392fd`](https://github.com/pabllopf/Alis/commit/60392fdfa82219fcf3650b4c8f9ba35b2053a38c) - sample extension of alis *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b621bcc`](https://github.com/pabllopf/Alis/commit/b621bccde3ddd326ed99e0452be62815df2618bd) - the resources of extensions module. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8eb0725`](https://github.com/pabllopf/Alis/commit/8eb072569483b7f9ba2e8877d47d6dcf71744c06) - do readonly pointers of unsafe code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e2dc816`](https://github.com/pabllopf/Alis/commit/e2dc8163c4d91d14809b611e63b16ff7715774c4) - delete partial class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b16c9e3`](https://github.com/pabllopf/Alis/commit/b16c9e32c6d96f7a65cf8ff78502b9f81374bd0f) - delete StbTexteditStatePtr *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9454f72`](https://github.com/pabllopf/Alis/commit/9454f724961168dd7d3833c79a6757fc946a23db) - Alis.Core.Extension.ImGui *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`df14c32`](https://github.com/pabllopf/Alis/commit/df14c32762dd2977227fda867a19f6a9ee841658) - delete ImFontAtlasCustomRectPtr *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b7555b9`](https://github.com/pabllopf/Alis/commit/b7555b9feb4ce63eac0d5890aa78c9aa49b48063) - the extension *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`db2edf7`](https://github.com/pabllopf/Alis/commit/db2edf7ad65f5c5d4059bdb0de22e88bca143e63) - delete base projects and refactor math module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`489fe1f`](https://github.com/pabllopf/Alis/commit/489fe1fdb76f9a7820de07fd42aa3f964e7ad567) - the dll *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e9660ac`](https://github.com/pabllopf/Alis/commit/e9660ac17121d440667f29e8abaab70322d6c286) - cimgui dll on win x64 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6179108`](https://github.com/pabllopf/Alis/commit/617910895ac126fafc8148c13ed18469d4059a42) - comile config *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ffec233`](https://github.com/pabllopf/Alis/commit/ffec2336c79a6e9aa41e5070c6702f73761890a4) - delete ptr ImDrawDataPtr *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`00dc232`](https://github.com/pabllopf/Alis/commit/00dc23272089bd82178a6f4005ac291f6d97f9dc) - config and delete benchmark *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`47ce582`](https://github.com/pabllopf/Alis/commit/47ce5829d6f7e81179e82f75abd2e90106ffe9d0) - names of dlls on zip *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`305edc5`](https://github.com/pabllopf/Alis/commit/305edc50558659f9fc4229630210607940bb951f) - arm64 config *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9397981`](https://github.com/pabllopf/Alis/commit/93979818da703bf7d1493d8a4c2e2f51589a65dc) - dlls of encode and permissons *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`202d2e1`](https://github.com/pabllopf/Alis/commit/202d2e1dd341dfb46f0284cfacd34ef34b6f3b0d) - sln arquitecture *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`581119b`](https://github.com/pabllopf/Alis/commit/581119be979d348c5ecb93a994c547eba3912f01) - all dlls with names and space on disk *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9f12fd9`](https://github.com/pabllopf/Alis/commit/9f12fd9da6b223390cce4efe15f2a69d6ad77c72) - delete sensor methods and add new checks on decompress zip files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`40d507a`](https://github.com/pabllopf/Alis/commit/40d507a08ec499cbec12d6838bde5b1a25a2ca96) - delete useless methods of graphic module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8f6af1f`](https://github.com/pabllopf/Alis/commit/8f6af1f432005eff86a11f441a33f8f30ed0b63a) - sdl2 ttf build *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6360927`](https://github.com/pabllopf/Alis/commit/6360927ff6b5a3689b30d098ae6f0575a1c31535) - delete Joystick triggers *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bd3ac85`](https://github.com/pabllopf/Alis/commit/bd3ac8504d4108502f4369de85b27f9864b31003) - api graphic tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`671053e`](https://github.com/pabllopf/Alis/commit/671053ed5112262854f61df52bb7417c5b3af6eb) - delete useless methods and fix tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a5a4abc`](https://github.com/pabllopf/Alis/commit/a5a4abca3fa83544872266bbaba80d50fe80c78f) - Change this code to not construct the path from file name entry of an archive. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4660f65`](https://github.com/pabllopf/Alis/commit/4660f650f029d1590cc058abefd647f171ca3663) - delete the atributte ExcludeFromCodeCoverage from TypeDef *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d5a5f19`](https://github.com/pabllopf/Alis/commit/d5a5f19e2fed7f0fa5d576e8e13bba34ecc49c72) - Alis.Core.Aspect.Data.Test.Json *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f889a6c`](https://github.com/pabllopf/Alis/commit/f889a6ce81f2c433d9f833109616f3dfe4d87745) - the test of JsonSerializerTest *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b94cbc0`](https://github.com/pabllopf/Alis/commit/b94cbc034525ef7f5927d07eda4c135766d85a1d) - resources build on mode release *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f1065e5`](https://github.com/pabllopf/Alis/commit/f1065e51f84136e03d3e4bd8f87d5581baadef56) - resturation code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7ccca4b`](https://github.com/pabllopf/Alis/commit/7ccca4bcc0dfb61c866d26bb43f2a00b49d75334) - the path namespace *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`736bc56`](https://github.com/pabllopf/Alis/commit/736bc568ba8cf17f8b9d9b20ac5022bc2c8f3883) - delete PolyClipError *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3dda0f0`](https://github.com/pabllopf/Alis/commit/3dda0f0d9b9cc07cffeaae0bd8fb5835f74067c5) - delete KeyValueTypeDictionaryTest *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c73b064`](https://github.com/pabllopf/Alis/commit/c73b064551d1b026b4b1893c064499a1dc32766c) - automatic test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c0d0b30`](https://github.com/pabllopf/Alis/commit/c0d0b308208b576e0f741a34f669b595cf0d9fc4) - workflow *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b64e25d`](https://github.com/pabllopf/Alis/commit/b64e25dddb7497e3d267ce6311dceae5d5dd6c9e) - dll not found on windows test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d99b7fc`](https://github.com/pabllopf/Alis/commit/d99b7fc9d9d79dd3ba0f40caac479ca971c4a20f) - audio test on windows x64 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`517afa8`](https://github.com/pabllopf/Alis/commit/517afa8763a4d7515e021c21c98b9345fe9ed26b) - secuencial test of audio *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b50408a`](https://github.com/pabllopf/Alis/commit/b50408af936b2bc2b21336482d065dc606461389) - unit test of play module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`92c2303`](https://github.com/pabllopf/Alis/commit/92c2303d0b0431b4ef9a0e345521d5808afed20c) - Make sure that using this pseudorandom number generator is safe here *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`24c1b9b`](https://github.com/pabllopf/Alis/commit/24c1b9bbc687c6192d9780f4b2e50adccf787469) - the TargetFrameworks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5166145`](https://github.com/pabllopf/Alis/commit/5166145ea33095f5b7b3217f73f2e2b04fcf8ba2) - the 30 bugs of float compartion with 0 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b4f4ae0`](https://github.com/pabllopf/Alis/commit/b4f4ae0186e017999a3d10a62dd0d1ffc216cf52) - the target framework on samples *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`54bf301`](https://github.com/pabllopf/Alis/commit/54bf3012770780d2487138391f21427a9acb1a0b) - dont use math module of system *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c2528b6`](https://github.com/pabllopf/Alis/commit/c2528b692765866522bd697fc253a4d555b37416) - 3 issues with float comparation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`93b3bb1`](https://github.com/pabllopf/Alis/commit/93b3bb113a3e91ecbb949013ec80611e2bbe2b75) - bug on init VelocityConstraints *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fbe4118`](https://github.com/pabllopf/Alis/commit/fbe41183e3d6d65193dc9c153b3135604fbc8578) - 2 issues of async code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3df4ff9`](https://github.com/pabllopf/Alis/commit/3df4ff9a8f1c5df964026b951aabe571bc8b4e2a) - Add a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`430e356`](https://github.com/pabllopf/Alis/commit/430e356a91074c72e8782d512fd2d917cf92a141) - samples TargetFrameworks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`350ad4d`](https://github.com/pabllopf/Alis/commit/350ad4df3058eb63d9792ef77eb855b257761524) - delete SecureBool *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dc9dc74`](https://github.com/pabllopf/Alis/commit/dc9dc74f5f4a46016154305346bf5a1925a36b8d) - first version of json parser *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8797e2f`](https://github.com/pabllopf/Alis/commit/8797e2fd3428bed0d98aabe7f5c767b90671fe2f) - add new JsonIgnore to context vars. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`107faf8`](https://github.com/pabllopf/Alis/commit/107faf81bbc5eaac31c97a425b1f460dee3c0192) - add new control to create intancies on Deserialize *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`c92d1c4`](https://github.com/pabllopf/Alis/commit/c92d1c46a66fd5c2ef9a6b3b4d54f08c53940a0f) - add new 20 test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fcbfcb1`](https://github.com/pabllopf/Alis/commit/fcbfcb14bafb940c0dbff27b42b7f817b663caa6) - covert 100% memory module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a64610b`](https://github.com/pabllopf/Alis/commit/a64610b375836d633e2e3049fa5cb22907c51b13) - covert the 100% of cases of math module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2434ed0`](https://github.com/pabllopf/Alis/commit/2434ed04115605008275b24deeaea1658cdd6324) - covert 100% base module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8aef53f`](https://github.com/pabllopf/Alis/commit/8aef53f8e4f1bbae1881495fa51f0270784533a5) - covert the 50% of data module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ee55823`](https://github.com/pabllopf/Alis/commit/ee55823e6bbc2af59a819487d0e1d1d31ced410a) - add new test to JsonEventArgs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5ffc27f`](https://github.com/pabllopf/Alis/commit/5ffc27ff6032bdd2eb2001893f42ac79937851cc) - add 100 test to json *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9d2cfde`](https://github.com/pabllopf/Alis/commit/9d2cfde7cc97257638cf7cb7a0438e4c223f5f60) - fix some methods of covert test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6145e0c`](https://github.com/pabllopf/Alis/commit/6145e0cd85895a87d8667ba414775673bafd2d02) - covert 100% of json module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0d4b350`](https://github.com/pabllopf/Alis/commit/0d4b3503720b508065554b3976955c4585764983) - covert 100% of alis.core module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`03ec9fc`](https://github.com/pabllopf/Alis/commit/03ec9fc8b38fe88c586c465f76e6693a11a96883) - covert 100% of plugin module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2009521`](https://github.com/pabllopf/Alis/commit/2009521afa3e9bffc487420be9295ce7e21fd988) - create simple test of audio module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2f070f8`](https://github.com/pabllopf/Alis/commit/2f070f86ea4f93be37b1ac056613f0cdcabe586b) - covert 100% time module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a99e444`](https://github.com/pabllopf/Alis/commit/a99e44419d2525cc904c81b80e444beb93c7435a) - add new test for new colors *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`061ccf9`](https://github.com/pabllopf/Alis/commit/061ccf9ad61ab45f438812bf85aed1c99196dd14) - add all test of security module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`66551b5`](https://github.com/pabllopf/Alis/commit/66551b5dea5ddb848c8a748a0a73a909c552c4ae) - add covert 100% of security module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3e203f6`](https://github.com/pabllopf/Alis/commit/3e203f6714638fe42232dd4451ff083f7eeae2b7) - add new 10 test to json parser *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d9ba13b`](https://github.com/pabllopf/Alis/commit/d9ba13b1c28af488ef1b6d29ef7dc030060f8511) - add more than 50 testo to math module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aff49c6`](https://github.com/pabllopf/Alis/commit/aff49c6acf5327b0015670ed27cdc44597e12b09) - add 2 test to data module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`082dec4`](https://github.com/pabllopf/Alis/commit/082dec4666f5cf6b3f9150d5e634331b0cd18e83) - covert 100% plugin module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`527e142`](https://github.com/pabllopf/Alis/commit/527e14243db7e2e1bbc5e66393eeb0b090adbeee) - add 24 test to world class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0e8ef7b`](https://github.com/pabllopf/Alis/commit/0e8ef7b23368d3644c32c92bae5770385da92a05) - covert 100% of graphic *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`df48c71`](https://github.com/pabllopf/Alis/commit/df48c712f7f991ffdadbbd7a647b0bf2b40566da) - covert 100% dll static class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a180d90`](https://github.com/pabllopf/Alis/commit/a180d905c647d4b67deccdcc09192bfb516105fc) - 73% covert JsonSerializer class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d0cc831`](https://github.com/pabllopf/Alis/commit/d0cc831126d9c3b21999e3bfd0ac9140a95fb25e) - add new 20 test to key managers *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`eb19a07`](https://github.com/pabllopf/Alis/commit/eb19a07e6df4aff84d3c9f24779c3ebad9e4d2ef) - covert to 78% Conversions class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1de955a`](https://github.com/pabllopf/Alis/commit/1de955a5969590147c616b873e4c58ce2cad35fa) - covert 98% Conversions class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5b07b12`](https://github.com/pabllopf/Alis/commit/5b07b1202be28ef32fa52f17265793db6d4c76b0) - covert to 80% TypeDef class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b9ae7fc`](https://github.com/pabllopf/Alis/commit/b9ae7fc2b06535cdddab9883fef743a6f3c802c8) - 100% KeyValueTypeDictionary *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5051419`](https://github.com/pabllopf/Alis/commit/50514199c01ee5f761e2248bee731f1b61bc4170) - covert 80% JsonSerializer class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f10e73f`](https://github.com/pabllopf/Alis/commit/f10e73f9ee788427338967eeb65320477dfc6775) - covert 83% JsonSerializer *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`34ff013`](https://github.com/pabllopf/Alis/commit/34ff0133d21a897603b6389e8cae7d5ddb1eeba6) - add 10 more tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`103a8ff`](https://github.com/pabllopf/Alis/commit/103a8ff26371b1889138816754988b532579a02d) - add more 20 test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`27cd4b5`](https://github.com/pabllopf/Alis/commit/27cd4b570463786bfabec8137f9af070e91d92b4) - the GetHexValue *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8c1168c`](https://github.com/pabllopf/Alis/commit/8c1168c51b36a97948e9ac9c5c971c9041b446d5) - add test to ProcessInputBasedOnCondition *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`54958bc`](https://github.com/pabllopf/Alis/commit/54958bc41acf023f2bf2fa8d9febf5f483f41dac) - add new 30 test to UpdateValueBasedOnContext *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5b2c591`](https://github.com/pabllopf/Alis/commit/5b2c5919b0c1f2ed7e5554199280ff7e2637d294) - covert 88% of JsonSerializer class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5739e8b`](https://github.com/pabllopf/Alis/commit/5739e8bc4d0243e449c0698dcfff693a0fa5777f) - 800 test to json module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5190ba1`](https://github.com/pabllopf/Alis/commit/5190ba1ada73323b49e04d17c93117aeba02ad1d) - WriteValueCallback 5 test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e2d3b0b`](https://github.com/pabllopf/Alis/commit/e2d3b0ba968c0acaf3cbb948d02ac9fe66308a20) - covert 9% of Alis.Core.Physic module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`29ae730`](https://github.com/pabllopf/Alis/commit/29ae73006176835593bbe3ede88421a9a7db4509) - covert 11% Alis.Core.Physic module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f24f074`](https://github.com/pabllopf/Alis/commit/f24f074bbc88f5f4d5bf3036eb125d7be66ecad9) - add 19% Alis.Core.Physic *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c4dcd33`](https://github.com/pabllopf/Alis/commit/c4dcd333ce7e7890c6a23be0c5327ef247432669) - add the 23% Alis.Core.Physic *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fc5ef4d`](https://github.com/pabllopf/Alis/commit/fc5ef4d9c84378ff18af785659e0fde7f15eba4c) - add 26% covert Alis.Core.Physic module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2f155f0`](https://github.com/pabllopf/Alis/commit/2f155f05753b66c17b6c298b9e625d66f9546c5e) - add 28% test of Physic module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b60e5ec`](https://github.com/pabllopf/Alis/commit/b60e5ecfaedd74adbe036d7f86c427ef4dc31b34) - 91% json *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5e5a0a7`](https://github.com/pabllopf/Alis/commit/5e5a0a72a836b4cd158a763bfe951203091f0a6a) - 92% test json module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`425771d`](https://github.com/pabllopf/Alis/commit/425771d9ef08ce81ad05470647a19fd15bd669e7) - covert 100% ListObject *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0a3e0a3`](https://github.com/pabllopf/Alis/commit/0a3e0a35780c34f2b340728bd51c2f8237461dca) - add 3 test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7d6e4c2`](https://github.com/pabllopf/Alis/commit/7d6e4c213772bf02e4cb8ec7b8df43624c73e3c2) - add new 20 test to json module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a1c526d`](https://github.com/pabllopf/Alis/commit/a1c526d789fabf4287c69e751763832ba921b069) - covert 100% TypeDef *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`708c2d9`](https://github.com/pabllopf/Alis/commit/708c2d992d4e1ce70cd839026cf5138221669ea4) - add 5 test to ConvertToEnum *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8863996`](https://github.com/pabllopf/Alis/commit/88639961891b3eb027fd796e89ab535ae481dbbf) - covert 95% json module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2e0551b`](https://github.com/pabllopf/Alis/commit/2e0551b8e14662e095ba2a127640456f7c4b1b8b) - add 5 test to videogame class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`da3c81c`](https://github.com/pabllopf/Alis/commit/da3c81cecb2a4ff9692b1c95a201774ae8f6768e) - fix macos test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2d7ce71`](https://github.com/pabllopf/Alis/commit/2d7ce71f27788716e089a35fdd637ca7db8c9686) - add new 40 test to alis module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e1190e7`](https://github.com/pabllopf/Alis/commit/e1190e7cdb85f18ab835970da80eda6e09fe386e) - covert 100% of class Conversions *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`609948d`](https://github.com/pabllopf/Alis/commit/609948da7b0466d743a1648350151e1528f30652) - StringWriterThrowingExceptionOnWrite *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d54fa1a`](https://github.com/pabllopf/Alis/commit/d54fa1a3b924bb08e53959e91a68458414d0d649) - add new 50 test to network module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`918e1f5`](https://github.com/pabllopf/Alis/commit/918e1f5790317b48e74560c3b062e118d7d35503) - covert the 100% audio module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e650315`](https://github.com/pabllopf/Alis/commit/e6503153a24a0d49608fda6106cb89e8828b1622) - 50% of Network module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`319388f`](https://github.com/pabllopf/Alis/commit/319388fefaaca3ebfe56d4712d9d803e70f58537) - 55% of alis module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b0bb9fb`](https://github.com/pabllopf/Alis/commit/b0bb9fbec127ef6cf933b2db1d8dfed222b770ce) - add new 40 test to alis *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`797d8c2`](https://github.com/pabllopf/Alis/commit/797d8c2dfdc5ae16868c77bfb0b12b09494298c9) - add 5 test to Physic module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b0244bd`](https://github.com/pabllopf/Alis/commit/b0244bd35cd50407eefa819fb8d3cb3dfad90525) - covert 100% of ideation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8d9c55f`](https://github.com/pabllopf/Alis/commit/8d9c55f9d7f6382a929ae08ab8fb8ab9727393a1) - covert to 60% *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6f247ab`](https://github.com/pabllopf/Alis/commit/6f247abf8a8ac5e73f90b0f56f1d6b5fe24b67da) - covert 100% network module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4711edc`](https://github.com/pabllopf/Alis/commit/4711edc6abc32cd01f1603b4804b617ba66a01bf) - 100% alis module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`144736a`](https://github.com/pabllopf/Alis/commit/144736a837d5ec884de119f2c4d545b929d68296) - covert 100% of World *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b0b82bd`](https://github.com/pabllopf/Alis/commit/b0b82bd731eb8c4b1fb15e3e0e384e2b7045ab46) - covert 100% rectangle *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9c81946`](https://github.com/pabllopf/Alis/commit/9c819468eecef669539f46b7520b973a9f655b11) - covert 100% of lines *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2565da3`](https://github.com/pabllopf/Alis/commit/2565da3dee1352cd32080ec5b8664c48a5d61788) - figures class covert 100% *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`747cb73`](https://github.com/pabllopf/Alis/commit/747cb73b4ccff14f0cc6d03c1952e8be551d1934) - covert 100 % class Aabb *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ea92a64`](https://github.com/pabllopf/Alis/commit/ea92a64bcb92c28038df94b1f4e83365f3ffc914) - covert 100% Vertices *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`18b7bb1`](https://github.com/pabllopf/Alis/commit/18b7bb123f927214049b2525d476664c8f886a0b) - covert 100% raycast *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`917e065`](https://github.com/pabllopf/Alis/commit/917e0658ab0d89369635e30c220553699be5672a) - covert 100% of TestPointHelper *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`abdd9c5`](https://github.com/pabllopf/Alis/commit/abdd9c5b6c087726e161719a1c851173f4b66693) - covert 100% of shapes *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9d597cb`](https://github.com/pabllopf/Alis/commit/9d597cb4d3fed1b376db65d8cb329bb59adf88a8) - covert 100% of RayCastHelperTest *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5979e33`](https://github.com/pabllopf/Alis/commit/5979e33f15d72f0155a61005def29bc580364154) - covert 70% of alis *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7856748`](https://github.com/pabllopf/Alis/commit/785674801aabbbff172db94038447c7df1381721) - covert 100% Collision *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`331ab5c`](https://github.com/pabllopf/Alis/commit/331ab5c509a1b1e7bece81b26eb543ae4eb7c80e) - covert 100% of alis *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`55bc754`](https://github.com/pabllopf/Alis/commit/55bc7546fa8eafd6fff927a6422dd7af707f90de) - covert 100% alis *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`74a7ed8`](https://github.com/pabllopf/Alis/commit/74a7ed8959b1f471929687bd1b20afd39f14d747) - covert 100% logger *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`63ba886`](https://github.com/pabllopf/Alis/commit/63ba8865328b814fe893b650d28c4908d7c3da40) - covert all the keycode enum *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e0eba3f`](https://github.com/pabllopf/Alis/commit/e0eba3f6c123fee9b2145734cf62a16c88714a41) - Update KeyCodeTest.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f112e54`](https://github.com/pabllopf/Alis/commit/f112e54812d2f5bab0f009a0bbeb1e9558b1a6c0) - fix the network test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3910b09`](https://github.com/pabllopf/Alis/commit/3910b09b5b945d494ad51574d64f6ff62fb22610) - pro check *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`33584af`](https://github.com/pabllopf/Alis/commit/33584af209c92234acb40f11599d3f7416918b5c) - pro update the parallel exec *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ce2e159`](https://github.com/pabllopf/Alis/commit/ce2e159da91480d745f4bdc605b11933a19e4b92) - pro fix windows run *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b6070e9`](https://github.com/pabllopf/Alis/commit/b6070e91e9014b8f4b01b9cfa8b7e4ff8d483897) - pro check and fix windows tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0bd8150`](https://github.com/pabllopf/Alis/commit/0bd8150e893f12a6f7f92f4fe88687e356bb4872) - change names of keycode *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`155c95b`](https://github.com/pabllopf/Alis/commit/155c95b7a3995d877134b14699e619e8d6824dcf) - pro quit windows player tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2265ae2`](https://github.com/pabllopf/Alis/commit/2265ae2b0d5a5fbf8121c5dd869efcd24299b7a5) - pro fixed on macos *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`84d7d62`](https://github.com/pabllopf/Alis/commit/84d7d62eed8813d2117de8806650015abcf72f9f) - pro fix the spaces *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d99791b`](https://github.com/pabllopf/Alis/commit/d99791b338982fe93d243a704f81955a628325a2) - fix some keycodes *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0425b58`](https://github.com/pabllopf/Alis/commit/0425b585e89f84e7490bb61f430c56c532234a30) - SecureBoolTests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1d1b6d6`](https://github.com/pabllopf/Alis/commit/1d1b6d65c25da7fe0e68734b082cce2cd68ac0ac) - update secure bool *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9fd71fe`](https://github.com/pabllopf/Alis/commit/9fd71fe22570f3ab116e99c5ca2e75110d86d627) - fix all test of alis module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`77980dc`](https://github.com/pabllopf/Alis/commit/77980dc853f093863f9584657cf256790382cccf) - fix the parallel testing on alis module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b7531de`](https://github.com/pabllopf/Alis/commit/b7531dedab9bca42ce6d1ad85003a13d0fd30482) - fix and build with 100% covert *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9c110ac`](https://github.com/pabllopf/Alis/commit/9c110ac6c1324687302c692fff5a47e3d899807a) - pro fix all test *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :construction_worker: Build System
+- [`0634584`](https://github.com/pabllopf/Alis/commit/0634584a226b054fb21e5c66d1c0baf5ab7a8035) - **deps**: bump actions/dependency-review-action from 3 to 4 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`0e4f91a`](https://github.com/pabllopf/Alis/commit/0e4f91afe2c9cd5eda7e542bf0640766f2aa446b) - **deps**: bump actions/cache from 3 to 4 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`dfafeab`](https://github.com/pabllopf/Alis/commit/dfafeab34d9cbaf10ade2a3347ceaeda0d1aca39) - **deps**: bump emibcn/badge-action from 2.0.2 to 2.0.3 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`5172abc`](https://github.com/pabllopf/Alis/commit/5172abc68a4b4bf6406381b516eeb1460f1b6556) - **deps**: bump akhilmhdh/contributors-readme-action *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+
+### :memo: Documentation Changes
+- [`377bdb3`](https://github.com/pabllopf/Alis/commit/377bdb306c3b23e3071db6d3ec5c1002f33f5baa) - update the AssetManager md file *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fbf39e9`](https://github.com/pabllopf/Alis/commit/fbf39e9b5e363b57c9959e972b916ed046caf04b) - add .md files to `Alis.Core.Aspect.Fluent` *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6d2572b`](https://github.com/pabllopf/Alis/commit/6d2572bc6e0decbaf92bd8a0fd90d7de5f3cb8dd) - add xml comments to audio test module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`410f67c`](https://github.com/pabllopf/Alis/commit/410f67c7962fe806a673544c25b5bb70de8f0aa9) - add docs to math extension *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`790737a`](https://github.com/pabllopf/Alis/commit/790737a6408be9cc56406e5f70f6c84a926c7f69) - add xml syntax to security module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e75ec01`](https://github.com/pabllopf/Alis/commit/e75ec01fef1a705bfe8ab4c8e8b68ec5a1d57298) - add coments to class secure *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`17907a7`](https://github.com/pabllopf/Alis/commit/17907a72efb74875ae9228adf8b8e98c3cc09472) - refactor the json parser to reduce complexity of code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2223819`](https://github.com/pabllopf/Alis/commit/22238191675700c1d49e41861e70453df8d412d9) - refactor sln to fix spaces and tabs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`45771fe`](https://github.com/pabllopf/Alis/commit/45771fea2ec983eaf24ee67023f69a18332db530) - refactor name of vars to do more simple *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cd457f3`](https://github.com/pabllopf/Alis/commit/cd457f3f0124c4085d86af16f2344c59bcad0a73) - fix the names and class of json module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7aa27ab`](https://github.com/pabllopf/Alis/commit/7aa27abaac8eb1195808bc21eabcd07eb639a194) - delte sdlbool to use bool native *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`06c3c8e`](https://github.com/pabllopf/Alis/commit/06c3c8e734cd91222d83911274a09b5c040af00a) - delete sdl from init struct and enum of graphics module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0589217`](https://github.com/pabllopf/Alis/commit/058921794fc74f0953b566eec73ceda557ae475a) - change name of sample to do a split camera sample *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f5f68b4`](https://github.com/pabllopf/Alis/commit/f5f68b4161aec59bceaafa377c7309d4dc73cf15) - delete dont use methods on sprite *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fdd7a25`](https://github.com/pabllopf/Alis/commit/fdd7a25eb7891ae8e9bfcbf6e73afe1ebb2c433a) - refactor the init and update methods of GraphicManager *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`68eb2e1`](https://github.com/pabllopf/Alis/commit/68eb2e16077b6c6a35197e5f14615ec8da5e700c) - refactor to do more simple the input manager *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d8ffedb`](https://github.com/pabllopf/Alis/commit/d8ffedb2db26113bb13cfbec7dca78b04caf2822) - refactor and clean spaces and tans *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`beeeceb`](https://github.com/pabllopf/Alis/commit/beeeceb9285869c37da8132957ddc537b7d4f5f6) - delete coments and refactor texture converter *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`63c7a97`](https://github.com/pabllopf/Alis/commit/63c7a972006214288071ebced4d61f176c154ec7) - fields private *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3e5e347`](https://github.com/pabllopf/Alis/commit/3e5e3475aa5c44b4e62295973b6ce6aee595bff9) - refactor names *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6d2b46b`](https://github.com/pabllopf/Alis/commit/6d2b46b3a30933c03cce402fa6c6cb3129bd836d) - refactor spaces and tabs of sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4dad3ad`](https://github.com/pabllopf/Alis/commit/4dad3ad2aa4fe6ad77fcbb8d373f3a8ce19eb913) - refactor vector 2 struct *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3e3a5e3`](https://github.com/pabllopf/Alis/commit/3e3a5e39b48e0c9afb874347bb8341c7b9c8ac9b) - refactor the videoframe *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`203a29c`](https://github.com/pabllopf/Alis/commit/203a29c72252e99d4558a676de0cca73d3cb850c) - union ImDrawChannel *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`af9d3ef`](https://github.com/pabllopf/Alis/commit/af9d3ef55e917d070ef486cbd03c18448e77cf3e) - union ImDrawCmdHeader *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`72638dd`](https://github.com/pabllopf/Alis/commit/72638dd948888fdc4b72e1771981d01e58177868) - union ImDrawCmd *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`28b88bb`](https://github.com/pabllopf/Alis/commit/28b88bb8c2aeca1e2bc799993d15995017c24cf6) - delete useless NonVersionableAttribute *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`220da40`](https://github.com/pabllopf/Alis/commit/220da40e918daeb7217507acd2b9184528103e49) - refactor the spaces and tabs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`14e8102`](https://github.com/pabllopf/Alis/commit/14e810237574950be6695ae74c506e1a0ac8f801) - refactor all the props to do more clean *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3c665b3`](https://github.com/pabllopf/Alis/commit/3c665b30425da266d49098efbe59317b3908b093) - refactor the main EmbeddedResource method *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bcac326`](https://github.com/pabllopf/Alis/commit/bcac32635e82743b7f5688afaeba9ee558e296f6) - self conteined on sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b83ecd9`](https://github.com/pabllopf/Alis/commit/b83ecd914c8161673c8422d876a611d9e73f70ad) - refactor sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ce9368a`](https://github.com/pabllopf/Alis/commit/ce9368abdc4858e2d686ec93d8033588e6965677) - delete .md files of compilation when is release mode *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7baa107`](https://github.com/pabllopf/Alis/commit/7baa10791ad3188ef9ddd47bf871e55dcf7531ef) - delete all Console.WriteLine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0a7466d`](https://github.com/pabllopf/Alis/commit/0a7466daed27b355aa277709e0d3da85042e2f62) - delete console print and include logger *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`be2b9e0`](https://github.com/pabllopf/Alis/commit/be2b9e0b3da8699c62456ba0e1328788fe9f81cf) - delete console print and include logger *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d2f12ce`](https://github.com/pabllopf/Alis/commit/d2f12ceabca4c291f47721a8589ab26cd243e0da) - refactor the PointOnEdgeException *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`02c1cd2`](https://github.com/pabllopf/Alis/commit/02c1cd27f56c0e2547633146345a50265cd638b6) - delete console writeline *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fcf7f9f`](https://github.com/pabllopf/Alis/commit/fcf7f9f7aa4f6227ddd573a4520cc4fed685764e) - refactor the physic module to extract the path generator to extension *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`924de0a`](https://github.com/pabllopf/Alis/commit/924de0a04586ebdd0229b9f80796a4facbad54d2) - move tools of physic module to extension module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7ede7b3`](https://github.com/pabllopf/Alis/commit/7ede7b39d5160dc76d1d3b74a5a81e8b89e2cc63) - refactor the data module to do more simple *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`26c6485`](https://github.com/pabllopf/Alis/commit/26c6485ac8cd2570cf6206f4f66fc50cb17e67f0) - refactor internal methods of json *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d0cbaf2`](https://github.com/pabllopf/Alis/commit/d0cbaf2352acddb4ac84f57c70592e896f34355a) - refactor the json to to more simple Apply method *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b6f0f1d`](https://github.com/pabllopf/Alis/commit/b6f0f1dd9c102189fefcd954ddd2864658ee02a4) - do more simple InvokeCreateInstanceCallback *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6edeb6c`](https://github.com/pabllopf/Alis/commit/6edeb6c79d604e7e705da4b2841a3b1eab678f68) - refactor the ReadDictionary *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4699313`](https://github.com/pabllopf/Alis/commit/469931336e46ef7dc8e6b48504c17076016ffbed) - refactor and do more simple ListObject *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ad5f5b3`](https://github.com/pabllopf/Alis/commit/ad5f5b345c82f811f3d105d48aecf023dffbe091) - refactor and simple tje json serielizer *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`03950c4`](https://github.com/pabllopf/Alis/commit/03950c4cde6ba7500ead9b439b629fb890a819a1) - refactor the Serialize method *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`407d8cd`](https://github.com/pabllopf/Alis/commit/407d8cd84606d04ec7eec356e4aa97dca2d53359) - simple the GetConverter *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6c0e70e`](https://github.com/pabllopf/Alis/commit/6c0e70e6249eb8e0a86b2f966745735d0c707af0) - refactor the sln to adjust the space and tabs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b1509db`](https://github.com/pabllopf/Alis/commit/b1509db569f0e770911c223956670247b47ccbbb) - refactor spaces and tabs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0f04f46`](https://github.com/pabllopf/Alis/commit/0f04f465ef728dda01bb29fac0b0741ac98e09c2) - delete unless class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4b0ff9d`](https://github.com/pabllopf/Alis/commit/4b0ff9d2233dfbff0a6f3895365bb2713bb2c609) - big refactor to delete singletons *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c65b4ee`](https://github.com/pabllopf/Alis/commit/c65b4eee62abd40c33c39df48a78a6bdc5067add) - big refactor to do more simple Alis.Core module and create a real context game to do more flexible and delete singletons of arquitecture *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`812b0bc`](https://github.com/pabllopf/Alis/commit/812b0bce2d8fee8ddc74ef92e43b7bdfe53fb92d) - fix name on physic module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`91c1076`](https://github.com/pabllopf/Alis/commit/91c107613d8afdcf66d6f43557609636bfb3be12) - the refactor sln spaces and tabs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dbaeef5`](https://github.com/pabllopf/Alis/commit/dbaeef53241263d30b61877e553b3c577c628f6e) - delete FixedArray2 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`333c93a`](https://github.com/pabllopf/Alis/commit/333c93a78fcb53ab224a32ac090aa42fa73cfce5) - delete FixedArray3 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`49c812f`](https://github.com/pabllopf/Alis/commit/49c812f01362d2903e56a996b1daeb8ee671bfb3) - move position to math module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`42a0559`](https://github.com/pabllopf/Alis/commit/42a0559087786875d099f1db01c97f0c5f63d565) - delete AudioBackendType to select backend *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c626430`](https://github.com/pabllopf/Alis/commit/c62643046c1aa24028f2a867ebd0ef89dcc37191) - refactor the audio module and test the 50% *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.2.7] - 2024-02-01
 
 ### :sparkles: New Features
@@ -2226,3 +2521,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.2.6]: https://github.com/pabllopf/Alis/compare/v0.2.5...v0.2.6
 
 [v0.2.7]: https://github.com/pabllopf/Alis/compare/v0.2.6...v0.2.7
+[v0.2.8]: https://github.com/pabllopf/Alis/compare/v0.2.7...v0.2.8
