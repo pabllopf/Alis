@@ -29,7 +29,6 @@
 
 using System;
 using System.Security.Cryptography;
-using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
@@ -47,17 +46,17 @@ namespace Alis.Sample.Flappy.Bird
         /// <summary>
         ///     The random height
         /// </summary>
-        private  int _randomHeight;
+        private static int _randomHeight;
         
         /// <summary>
         ///     The random direction
         /// </summary>
-        private int _randomDirection;
+        private static int _randomDirection;
         
         /// <summary>
         ///     The generated
         /// </summary>
-        private bool _generated;
+        private static bool _generated;
         
         /// <summary>
         ///     The velocity
@@ -87,14 +86,14 @@ namespace Alis.Sample.Flappy.Bird
         /// <summary>
         ///     The pos origin
         /// </summary>
-        public Transform PosOrigin;
+        private Transform posOrigin;
         
         /// <summary>
         ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
-            PosOrigin = GameObject.Transform;
+            posOrigin = GameObject.Transform;
             boxCollider = GameObject.Get<BoxCollider>();
             
             Velocity = 3;
@@ -102,7 +101,7 @@ namespace Alis.Sample.Flappy.Bird
             
             boxCollider.LinearVelocity = new Vector2(-Velocity, 0);
             
-           
+            
             
             using (RandomNumberGenerator randomGenerator = RandomNumberGenerator.Create())
             {
@@ -145,14 +144,14 @@ namespace Alis.Sample.Flappy.Bird
                 {
                     case 0:
                     {
-                        Vector2 newPos = new Vector2(PosOrigin.Position.X, PosOrigin.Position.Y + _randomHeight);
+                        Vector2 newPos = new Vector2(posOrigin.Position.X, posOrigin.Position.Y + _randomHeight);
                         boxCollider.Body.Position = newPos;
                         boxCollider.LinearVelocity = new Vector2(-Velocity, 0);
                         break;
                     }
                     case 1:
                     {
-                        Vector2 newPos = new Vector2(PosOrigin.Position.X, PosOrigin.Position.Y - _randomHeight);
+                        Vector2 newPos = new Vector2(posOrigin.Position.X, posOrigin.Position.Y - _randomHeight);
                         boxCollider.Body.Position = newPos;
                         boxCollider.LinearVelocity = new Vector2(-Velocity, 0);
                         break;
