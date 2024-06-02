@@ -27,12 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Physic
+namespace Alis.Core.Aspect.Math
 {
     /// <summary>
     ///     The math utils class

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Ecs.System.Manager.Audio;
@@ -82,6 +83,7 @@ namespace Alis.Core.Ecs.System
         /// <param name="settings">The settings</param>
         /// <param name="sceneManager">The scene manager</param>
         [JsonConstructor]
+        [ExcludeFromCodeCoverage]
         public Context(Settings settings, SceneManager sceneManager)
         {
             Settings = settings;
@@ -104,6 +106,7 @@ namespace Alis.Core.Ecs.System
         /// <param name="networkManager">The network manager</param>
         /// <param name="physicManager">The physic manager</param>
         /// <param name="sceneManager">The scene manager</param>
+        [ExcludeFromCodeCoverage]
         public Context(Settings settings, AudioManager audioManager, GraphicManager graphicManager, InputManager inputManager, NetworkManager networkManager, PhysicManager physicManager, SceneManager sceneManager)
         {
            Settings = settings;
@@ -166,6 +169,7 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         /// Ons the exit
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnExit()
         {
             AudioManager.OnExit();
@@ -179,6 +183,7 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         /// Ons the stop
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnStop()
         {
             AudioManager.OnStop();
@@ -192,6 +197,7 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         /// Ons the init
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnInit()
         {
             AudioManager.OnInit();
@@ -205,6 +211,7 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         /// Ons the awake
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnAwake()
         {
             AudioManager.OnAwake();
@@ -218,6 +225,7 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         /// Ons the start
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnStart()
         {
             AudioManager.OnStart();
@@ -231,6 +239,7 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         /// Ons the dispatch events
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnDispatchEvents()
         {
             AudioManager.OnDispatchEvents();
@@ -244,6 +253,7 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         /// Ons the before update
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnBeforeUpdate()
         {
             AudioManager.OnBeforeUpdate();
@@ -257,6 +267,7 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         /// Ons the update
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnUpdate()
         {
             AudioManager.OnUpdate();
@@ -270,6 +281,7 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         /// Ons the after update
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnAfterUpdate()
         {
             AudioManager.OnAfterUpdate();
@@ -283,6 +295,7 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         /// Ons the before fixed update
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnBeforeFixedUpdate()
         {
             AudioManager.OnBeforeFixedUpdate();
@@ -296,6 +309,7 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         /// Ons the fixed update
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnFixedUpdate()
         {
             AudioManager.OnFixedUpdate();
@@ -309,6 +323,7 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         /// Ons the after fixed update
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnAfterFixedUpdate()
         {
             AudioManager.OnAfterFixedUpdate();
@@ -322,6 +337,7 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         /// Ons the draw
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnDraw()
         {
             AudioManager.OnDraw();
@@ -335,6 +351,7 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         /// Ons the gui
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnGui()
         {
             AudioManager.OnGui();
@@ -348,6 +365,7 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         /// Ons the calculate
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void OnCalculate()
         {
             AudioManager.OnCalculate();
@@ -361,43 +379,14 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         ///     Exits this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void Exit() => TimeManager.IsRunning = false;
         
         /// <summary>
         /// Sets the scene manager using the specified scene manager
         /// </summary>
         /// <param name="sceneManager">The scene manager</param>
+        [ExcludeFromCodeCoverage]
         public void SetSceneManager(SceneManager sceneManager) => SceneManager = sceneManager;
-        
-        /// <summary>
-        /// Resets this instance
-        /// </summary>
-        public void Reset()
-        {
-            AudioManager = new AudioManager();
-            GraphicManager = new GraphicManager();
-            InputManager = new InputManager();
-            NetworkManager = new NetworkManager();
-            PhysicManager = new PhysicManager();
-            
-            AudioManager.OnInit();
-            GraphicManager.OnInit();
-            InputManager.OnInit();
-            NetworkManager.OnInit();
-            PhysicManager.OnInit();
-            
-            AudioManager.OnAwake();
-            GraphicManager.OnAwake();
-            InputManager.OnAwake();
-            NetworkManager.OnAwake();
-            PhysicManager.OnAwake();
-            
-            AudioManager.OnStart();
-            GraphicManager.OnStart();
-            InputManager.OnStart();
-            NetworkManager.OnStart();
-            PhysicManager.OnStart();
-            
-        }
     }
 }

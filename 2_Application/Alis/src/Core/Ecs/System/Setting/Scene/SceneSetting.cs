@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Scene;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
@@ -44,6 +45,7 @@ namespace Alis.Core.Ecs.System.Setting.Scene
         /// <summary>
         /// Initializes a new instance of the <see cref="SceneSetting"/> class
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public SceneSetting()
         {
             MaxNumberOfScenes = 256;
@@ -54,6 +56,7 @@ namespace Alis.Core.Ecs.System.Setting.Scene
         /// </summary>
         /// <param name="maxNumberOfScenes">The max number of scenes</param>
         [JsonConstructor]
+        [ExcludeFromCodeCoverage]
         public SceneSetting(int maxNumberOfScenes)
         {
             MaxNumberOfScenes = maxNumberOfScenes;

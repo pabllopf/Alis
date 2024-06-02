@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.NarrowPhase;
 using Xunit;

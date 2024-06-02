@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -471,12 +472,24 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <returns>The hash code.</returns>
         public override int GetHashCode() => HashCode.Combine(X, Y);
         
+        /// <summary>
+        /// Gets the object data using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("X", X);
             info.AddValue("Y", Y);
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Vector2"/> class
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
         public Vector2(SerializationInfo info, StreamingContext context)
         {
             X = info.GetSingle("X");

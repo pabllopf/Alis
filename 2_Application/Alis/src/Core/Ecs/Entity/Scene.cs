@@ -105,6 +105,14 @@ namespace Alis.Core.Ecs.Entity
             Tag = tag;
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Scene"/> class
+        /// </summary>
+        /// <param name="isEnable">The is enable</param>
+        /// <param name="name">The name</param>
+        /// <param name="id">The id</param>
+        /// <param name="tag">The tag</param>
+        /// <param name="gameObjects">The game objects</param>
         public Scene(bool isEnable, string name, string id, string tag, List<GameObject> gameObjects) : this()
         {
             IsEnable = isEnable;

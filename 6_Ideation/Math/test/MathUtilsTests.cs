@@ -27,13 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
-namespace Alis.Core.Physic.Test
+namespace Alis.Core.Aspect.Math.Test
 {
     /// <summary>
     ///     The math utils tests class

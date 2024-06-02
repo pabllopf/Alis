@@ -42,7 +42,7 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
         IBuild<Alis.Core.Ecs.Entity.GameObject>,
         IName<GameObjectBuilder, string>,
         IAddComponent<GameObjectBuilder, AComponent>,
-        ITransform<GameObjectBuilder, Func<TransformBuilder, Alis.Core.Physic.Transform>>,
+        ITransform<GameObjectBuilder, Func<TransformBuilder, Alis.Core.Aspect.Math.Transform>>,
         IWithTag<GameObjectBuilder, string>
     {
         /// <summary>
@@ -100,7 +100,7 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder Transform(Func<TransformBuilder, Alis.Core.Physic.Transform> value)
+        public GameObjectBuilder Transform(Func<TransformBuilder, Alis.Core.Aspect.Math.Transform> value)
         {
             gameObject.Transform = value.Invoke(new TransformBuilder());
             return this;

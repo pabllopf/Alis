@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Physic;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
@@ -47,6 +48,7 @@ namespace Alis.Core.Ecs.System.Setting.Physic
         /// <summary>
         /// Initializes a new instance of the <see cref="PhysicSetting"/> class
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public PhysicSetting()
         {
             DebugMode = false;
@@ -61,6 +63,7 @@ namespace Alis.Core.Ecs.System.Setting.Physic
         /// <param name="debugColor">The debug color</param>
         /// <param name="gravity">The gravity</param>
         [JsonConstructor]
+        [ExcludeFromCodeCoverage]
         public PhysicSetting(bool debugMode, Color debugColor, Vector2 gravity)
         {
             DebugMode = debugMode;

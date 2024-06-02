@@ -28,12 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
-using Alis.Core.Aspect.Data.Json;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Physic
+namespace Alis.Core.Aspect.Math
 {
     /// <summary>
     ///     A transform contains translation and rotation. It is used to represent the position and orientation of rigid
@@ -45,19 +44,16 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The
         /// </summary>
-        [JsonPropertyName("_Position_")]
         public Vector2 Position;
         
         /// <summary>
         ///     The scale
         /// </summary>
-        [JsonPropertyName("_Scale_")]
         public Vector2 Scale;
         
         /// <summary>
         ///     The
         /// </summary>
-        [JsonPropertyName("_Rotation_")]
         public Rotation Rotation;
         
         /// <summary>
@@ -66,7 +62,6 @@ namespace Alis.Core.Physic
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
         /// <param name="scale">The scale</param>
-        [JsonConstructor]
         public Transform(Vector2 position, Rotation rotation, Vector2 scale)
         {
             Position = position;
@@ -74,17 +69,17 @@ namespace Alis.Core.Physic
             Scale = scale;
         }
         
-        
         /// <summary>
         /// Gets the object data using the specified info
         /// </summary>
         /// <param name="info">The info</param>
         /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("_Position_", Position);
-            info.AddValue("_Scale_", Scale);
-            info.AddValue("_Rotation_", Rotation);
+            info.AddValue("Position", Position);
+            info.AddValue("Scale", Scale);
+            info.AddValue("Rotation", Rotation);
         }
 
         /// <summary>
@@ -92,11 +87,12 @@ namespace Alis.Core.Physic
         /// </summary>
         /// <param name="info">The info</param>
         /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
         public Transform(SerializationInfo info, StreamingContext context)
         {
-            Position = (Vector2)info.GetValue("_Position_", typeof(Vector2));
-            Scale = (Vector2)info.GetValue("_Scale_", typeof(Vector2));
-            Rotation = (Rotation)info.GetValue("_Rotation_", typeof(Rotation));
+            Position = (Vector2)info.GetValue("Position", typeof(Vector2));
+            Scale = (Vector2)info.GetValue("Scale", typeof(Vector2));
+            Rotation = (Rotation)info.GetValue("Rotation", typeof(Rotation));
         }
         
         /// <summary>Set this to the identity transform.</summary>

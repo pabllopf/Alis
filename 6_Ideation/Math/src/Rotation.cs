@@ -108,6 +108,12 @@ namespace Alis.Core.Aspect.Math
         /// <summary>Get the y-axis</summary>
         public Vector2 GetYAxis() => new Vector2(-Sine, Cosine);
         
+        /// <summary>
+        /// Gets the object data using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("Sine", Sine);
@@ -115,6 +121,12 @@ namespace Alis.Core.Aspect.Math
             info.AddValue("Angle", Angle);
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Rotation"/> class
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
         public Rotation(SerializationInfo info, StreamingContext context)
         {
             Sine = info.GetSingle("Sine");

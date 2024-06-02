@@ -52,6 +52,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animator" /> class
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public Animator()
         {
             Animations = new List<Animation>();
@@ -62,6 +63,7 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Initializes a new instance of the <see cref="Animator" /> class
         /// </summary>
         /// <param name="animations">The animations</param>
+        [ExcludeFromCodeCoverage]
         public Animator(List<Animation> animations)
         {
             Animations = animations;

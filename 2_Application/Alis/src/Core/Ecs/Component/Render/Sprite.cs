@@ -50,6 +50,9 @@ namespace Alis.Core.Ecs.Component.Render
         AComponent, 
         IBuilder<SpriteBuilder>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Sprite"/> class
+        /// </summary>
         public Sprite()
         {
             Image = new Image();
@@ -57,6 +60,11 @@ namespace Alis.Core.Ecs.Component.Render
             Flips = RendererFlips.None;
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Sprite"/> class
+        /// </summary>
+        /// <param name="image">The image</param>
+        [ExcludeFromCodeCoverage]
         public Sprite(Image image)
         {
             Image = image;
@@ -64,7 +72,14 @@ namespace Alis.Core.Ecs.Component.Render
             Flips = RendererFlips.None;
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Sprite"/> class
+        /// </summary>
+        /// <param name="image">The image</param>
+        /// <param name="depth">The depth</param>
+        /// <param name="flips">The flips</param>
         [JsonConstructor]
+        [ExcludeFromCodeCoverage]
         public Sprite(Image image, int depth, RendererFlips flips)
         {
             Image = image;

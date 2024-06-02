@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Graphic;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
@@ -44,6 +45,7 @@ namespace Alis.Core.Ecs.System.Setting.Graphic
         /// <summary>
         /// Initializes a new instance of the <see cref="GraphicSetting"/> class
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public GraphicSetting()
         {
             Window = new Window();
@@ -54,6 +56,7 @@ namespace Alis.Core.Ecs.System.Setting.Graphic
         /// </summary>
         /// <param name="window">The window</param>
         [JsonConstructor]
+        [ExcludeFromCodeCoverage]
         public GraphicSetting(Window window)
         {
             Window = window;

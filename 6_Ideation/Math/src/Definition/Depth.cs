@@ -27,12 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
+
 namespace Alis.Core.Aspect.Math.Definition
 {
     /// <summary>
     ///     The depth
     /// </summary>
-    public struct Depth
+    [Serializable]
+    public struct Depth : ISerializable
     {
         /// <summary>
         ///     The value
@@ -44,5 +49,27 @@ namespace Alis.Core.Aspect.Math.Definition
         /// </summary>
         /// <param name="value">The value</param>
         public Depth(int value) => Value = value;
+        
+        /// <summary>
+        /// Gets the object data using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("Value", Value);
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Depth"/> class
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
+        public Depth(SerializationInfo info, StreamingContext context)
+        {
+            Value = info.GetInt32("Value");
+        }
     }
 }
