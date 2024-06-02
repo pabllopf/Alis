@@ -32,11 +32,11 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
     /// <summary>
     ///     The emulate three button mouse
     /// </summary>
-    public unsafe struct EmulateThreeButtonMouse
+    public struct EmulateThreeButtonMouse
     {
         /// <summary>
         ///     The modifier
         /// </summary>
-        public byte* Modifier;
+        public byte[] Modifier;
     }
 }

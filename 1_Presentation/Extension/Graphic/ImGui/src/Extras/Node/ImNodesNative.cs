@@ -43,14 +43,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void EmulateThreeButtonMouse_destroy(EmulateThreeButtonMouse* self);
+        public static extern void EmulateThreeButtonMouse_destroy(EmulateThreeButtonMouse self);
         
         /// <summary>
         ///     Emulates the three button mouse emulate three button mouse
         /// </summary>
         /// <returns>The emulate three button mouse</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern EmulateThreeButtonMouse* EmulateThreeButtonMouse_EmulateThreeButtonMouse();
+        public static extern EmulateThreeButtonMouse EmulateThreeButtonMouse_EmulateThreeButtonMouse();
         
         /// <summary>
         ///     Ims the nodes begin input attribute using the specified id
