@@ -865,6 +865,11 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             }
         }
         
+        /// <summary>
+        /// Saves the editor state to ini file using the specified editor
+        /// </summary>
+        /// <param name="editor">The editor</param>
+        /// <param name="fileName">The file name</param>
         public static void SaveEditorStateToIniFile(ImNodesEditorContext editor, string fileName)
         {
             if (fileName != null)
@@ -890,6 +895,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             return Encoding.UTF8.GetString(ret);
         }
         
+        /// <summary>
+        /// Saves the editor state to ini string using the specified native editor
+        /// </summary>
+        /// <param name="nativeEditor">The native editor</param>
+        /// <param name="dataSize">The data size</param>
+        /// <returns>The string</returns>
         public static string SaveEditorStateToIniString(ImNodesEditorContext nativeEditor, ref uint dataSize)
         {
             byte[] ret = ImNodesNative.ImNodes_SaveEditorStateToIniString(nativeEditor, dataSize);
