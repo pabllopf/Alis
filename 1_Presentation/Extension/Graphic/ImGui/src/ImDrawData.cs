@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -117,6 +118,6 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the cmd lists range
         /// </summary>
-        public RangePtrAccessor<ImDrawListPtr> CmdListsRange => new RangePtrAccessor<ImDrawListPtr>(CmdLists, CmdListsCount);
+        public RangePtrAccessor<ImDrawListPtr> CmdListsRange => new RangePtrAccessor<ImDrawListPtr>((IntPtr)CmdLists, CmdListsCount);
     }
 }
