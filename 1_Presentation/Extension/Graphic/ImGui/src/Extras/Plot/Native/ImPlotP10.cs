@@ -32,6 +32,9 @@ using System.Text;
 
 namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
 {
+    /// <summary>
+    /// The im plot class
+    /// </summary>
     public static unsafe partial class ImPlot
     {
         /// <summary>

@@ -27,10 +27,3064 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Extension.Graphic.ImGui
+using System.Reflection;
+using System.Text;
+using Alis.Core.Aspect.Data.Dll;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.ImGui.Properties;
+
+namespace Alis.Extension.Graphic.ImGui.Native
 {
-    public class ImGuiP5
+    /// <summary>
+    ///     The im gui class
+    /// </summary>
+    public static unsafe partial class ImGui
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ImGui" /> class
+        /// </summary>
+        static ImGui()
+        {
+            EmbeddedDllClass.ExtractEmbeddedDlls("cimgui", DllType.Lib, ImGuiDlls.ImGuiDllBytes, Assembly.GetExecutingAssembly());
+        }
+        
+        /// <summary>
+        ///     Accepts the drag drop payload using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <returns>The im gui payload ptr</returns>
+        public static ImGuiPayload AcceptDragDropPayload(string type)
+        {
+            byte* nativeType;
+            int typeByteCount = 0;
+            if (type != null)
+            {
+                typeByteCount = Encoding.UTF8.GetByteCount(type);
+                if (typeByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeType = Util.Allocate(typeByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeTypeStackBytes = stackalloc byte[typeByteCount + 1];
+                    nativeType = nativeTypeStackBytes;
+                }
+                
+                int nativeTypeOffset = Util.GetUtf8(type, nativeType, typeByteCount);
+                nativeType[nativeTypeOffset] = 0;
+            }
+            else
+            {
+                nativeType = null;
+            }
+            
+            ImGuiDragDropFlags flags = 0;
+            ImGuiPayload ret = ImGuiNative.igAcceptDragDropPayload(nativeType, flags);
+            if (typeByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeType);
+            }
+            
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Accepts the drag drop payload using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The im gui payload ptr</returns>
+        public static ImGuiPayload AcceptDragDropPayload(string type, ImGuiDragDropFlags flags)
+        {
+            byte* nativeType;
+            int typeByteCount = 0;
+            if (type != null)
+            {
+                typeByteCount = Encoding.UTF8.GetByteCount(type);
+                if (typeByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeType = Util.Allocate(typeByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeTypeStackBytes = stackalloc byte[typeByteCount + 1];
+                    nativeType = nativeTypeStackBytes;
+                }
+                
+                int nativeTypeOffset = Util.GetUtf8(type, nativeType, typeByteCount);
+                nativeType[nativeTypeOffset] = 0;
+            }
+            else
+            {
+                nativeType = null;
+            }
+            
+            ImGuiPayload ret = ImGuiNative.igAcceptDragDropPayload(nativeType, flags);
+            if (typeByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeType);
+            }
+            
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Aligns the text to frame padding
+        /// </summary>
+        public static void AlignTextToFramePadding()
+        {
+            ImGuiNative.igAlignTextToFramePadding();
+        }
+        
+        /// <summary>
+        ///     Describes whether arrow button
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <param name="dir">The dir</param>
+        /// <returns>The bool</returns>
+        public static bool ArrowButton(string strId, ImGuiDir dir)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            byte ret = ImGuiNative.igArrowButton(nativeStrId, dir);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The bool</returns>
+        public static bool Begin(string name)
+        {
+            byte* nativeName;
+            int nameByteCount = 0;
+            if (name != null)
+            {
+                nameByteCount = Encoding.UTF8.GetByteCount(name);
+                if (nameByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeName = Util.Allocate(nameByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
+                    nativeName = nativeNameStackBytes;
+                }
+                
+                int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
+                nativeName[nativeNameOffset] = 0;
+            }
+            else
+            {
+                nativeName = null;
+            }
+            
+            byte* pOpen = null;
+            ImGuiWindowFlags flags = 0;
+            byte ret = ImGuiNative.igBegin(nativeName, pOpen, flags);
+            if (nameByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeName);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="pOpen">The open</param>
+        /// <returns>The bool</returns>
+        public static bool Begin(string name, ref bool pOpen)
+        {
+            byte* nativeName;
+            int nameByteCount = 0;
+            if (name != null)
+            {
+                nameByteCount = Encoding.UTF8.GetByteCount(name);
+                if (nameByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeName = Util.Allocate(nameByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
+                    nativeName = nativeNameStackBytes;
+                }
+                
+                int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
+                nativeName[nativeNameOffset] = 0;
+            }
+            else
+            {
+                nativeName = null;
+            }
+            
+            byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
+            byte* nativePOpen = &nativePOpenVal;
+            ImGuiWindowFlags flags = 0;
+            byte ret = ImGuiNative.igBegin(nativeName, nativePOpen, flags);
+            if (nameByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeName);
+            }
+            
+            pOpen = nativePOpenVal != 0;
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="pOpen">The open</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool Begin(string name, ref bool pOpen, ImGuiWindowFlags flags)
+        {
+            byte* nativeName;
+            int nameByteCount = 0;
+            if (name != null)
+            {
+                nameByteCount = Encoding.UTF8.GetByteCount(name);
+                if (nameByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeName = Util.Allocate(nameByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
+                    nativeName = nativeNameStackBytes;
+                }
+                
+                int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
+                nativeName[nativeNameOffset] = 0;
+            }
+            else
+            {
+                nativeName = null;
+            }
+            
+            byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
+            byte* nativePOpen = &nativePOpenVal;
+            byte ret = ImGuiNative.igBegin(nativeName, nativePOpen, flags);
+            if (nameByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeName);
+            }
+            
+            pOpen = nativePOpenVal != 0;
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin child
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <returns>The bool</returns>
+        public static bool BeginChild(string strId)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            Vector2 size = new Vector2();
+            byte border = 0;
+            ImGuiWindowFlags flags = 0;
+            byte ret = ImGuiNative.igBeginChild_Str(nativeStrId, size, border, flags);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin child
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <param name="size">The size</param>
+        /// <returns>The bool</returns>
+        public static bool BeginChild(string strId, Vector2 size)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            byte border = 0;
+            ImGuiWindowFlags flags = 0;
+            byte ret = ImGuiNative.igBeginChild_Str(nativeStrId, size, border, flags);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin child
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <param name="size">The size</param>
+        /// <param name="border">The border</param>
+        /// <returns>The bool</returns>
+        public static bool BeginChild(string strId, Vector2 size, bool border)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            byte nativeBorder = border ? (byte) 1 : (byte) 0;
+            ImGuiWindowFlags flags = 0;
+            byte ret = ImGuiNative.igBeginChild_Str(nativeStrId, size, nativeBorder, flags);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin child
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <param name="size">The size</param>
+        /// <param name="border">The border</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool BeginChild(string strId, Vector2 size, bool border, ImGuiWindowFlags flags)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            byte nativeBorder = border ? (byte) 1 : (byte) 0;
+            byte ret = ImGuiNative.igBeginChild_Str(nativeStrId, size, nativeBorder, flags);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin child
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns>The bool</returns>
+        public static bool BeginChild(uint id)
+        {
+            Vector2 size = new Vector2();
+            byte border = 0;
+            ImGuiWindowFlags flags = 0;
+            byte ret = ImGuiNative.igBeginChild_ID(id, size, border, flags);
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin child
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="size">The size</param>
+        /// <returns>The bool</returns>
+        public static bool BeginChild(uint id, Vector2 size)
+        {
+            byte border = 0;
+            ImGuiWindowFlags flags = 0;
+            byte ret = ImGuiNative.igBeginChild_ID(id, size, border, flags);
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin child
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="size">The size</param>
+        /// <param name="border">The border</param>
+        /// <returns>The bool</returns>
+        public static bool BeginChild(uint id, Vector2 size, bool border)
+        {
+            byte nativeBorder = border ? (byte) 1 : (byte) 0;
+            ImGuiWindowFlags flags = 0;
+            byte ret = ImGuiNative.igBeginChild_ID(id, size, nativeBorder, flags);
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin child
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="size">The size</param>
+        /// <param name="border">The border</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool BeginChild(uint id, Vector2 size, bool border, ImGuiWindowFlags flags)
+        {
+            byte nativeBorder = border ? (byte) 1 : (byte) 0;
+            byte ret = ImGuiNative.igBeginChild_ID(id, size, nativeBorder, flags);
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin child frame
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="size">The size</param>
+        /// <returns>The bool</returns>
+        public static bool BeginChildFrame(uint id, Vector2 size)
+        {
+            ImGuiWindowFlags flags = 0;
+            byte ret = ImGuiNative.igBeginChildFrame(id, size, flags);
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin child frame
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="size">The size</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool BeginChildFrame(uint id, Vector2 size, ImGuiWindowFlags flags)
+        {
+            byte ret = ImGuiNative.igBeginChildFrame(id, size, flags);
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin combo
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="previewValue">The preview value</param>
+        /// <returns>The bool</returns>
+        public static bool BeginCombo(string label, string previewValue)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            byte* nativePreviewValue;
+            int previewValueByteCount = 0;
+            if (previewValue != null)
+            {
+                previewValueByteCount = Encoding.UTF8.GetByteCount(previewValue);
+                if (previewValueByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativePreviewValue = Util.Allocate(previewValueByteCount + 1);
+                }
+                else
+                {
+                    byte* nativePreviewValueStackBytes = stackalloc byte[previewValueByteCount + 1];
+                    nativePreviewValue = nativePreviewValueStackBytes;
+                }
+                
+                int nativePreviewValueOffset = Util.GetUtf8(previewValue, nativePreviewValue, previewValueByteCount);
+                nativePreviewValue[nativePreviewValueOffset] = 0;
+            }
+            else
+            {
+                nativePreviewValue = null;
+            }
+            
+            ImGuiComboFlags flags = 0;
+            byte ret = ImGuiNative.igBeginCombo(nativeLabel, nativePreviewValue, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            if (previewValueByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativePreviewValue);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin combo
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="previewValue">The preview value</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool BeginCombo(string label, string previewValue, ImGuiComboFlags flags)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            byte* nativePreviewValue;
+            int previewValueByteCount = 0;
+            if (previewValue != null)
+            {
+                previewValueByteCount = Encoding.UTF8.GetByteCount(previewValue);
+                if (previewValueByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativePreviewValue = Util.Allocate(previewValueByteCount + 1);
+                }
+                else
+                {
+                    byte* nativePreviewValueStackBytes = stackalloc byte[previewValueByteCount + 1];
+                    nativePreviewValue = nativePreviewValueStackBytes;
+                }
+                
+                int nativePreviewValueOffset = Util.GetUtf8(previewValue, nativePreviewValue, previewValueByteCount);
+                nativePreviewValue[nativePreviewValueOffset] = 0;
+            }
+            else
+            {
+                nativePreviewValue = null;
+            }
+            
+            byte ret = ImGuiNative.igBeginCombo(nativeLabel, nativePreviewValue, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            if (previewValueByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativePreviewValue);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Begins the disabled
+        /// </summary>
+        public static void BeginDisabled()
+        {
+            byte disabled = 1;
+            ImGuiNative.igBeginDisabled(disabled);
+        }
+        
+        /// <summary>
+        ///     Begins the disabled using the specified disabled
+        /// </summary>
+        /// <param name="disabled">The disabled</param>
+        public static void BeginDisabled(bool disabled)
+        {
+            byte nativeDisabled = disabled ? (byte) 1 : (byte) 0;
+            ImGuiNative.igBeginDisabled(nativeDisabled);
+        }
+        
+        /// <summary>
+        ///     Describes whether begin drag drop source
+        /// </summary>
+        /// <returns>The bool</returns>
+        public static bool BeginDragDropSource()
+        {
+            ImGuiDragDropFlags flags = 0;
+            byte ret = ImGuiNative.igBeginDragDropSource(flags);
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin drag drop source
+        /// </summary>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool BeginDragDropSource(ImGuiDragDropFlags flags)
+        {
+            byte ret = ImGuiNative.igBeginDragDropSource(flags);
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin drag drop target
+        /// </summary>
+        /// <returns>The bool</returns>
+        public static bool BeginDragDropTarget()
+        {
+            byte ret = ImGuiNative.igBeginDragDropTarget();
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Begins the group
+        /// </summary>
+        public static void BeginGroup()
+        {
+            ImGuiNative.igBeginGroup();
+        }
+        
+        /// <summary>
+        ///     Describes whether begin list box
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <returns>The bool</returns>
+        public static bool BeginListBox(string label)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            Vector2 size = new Vector2();
+            byte ret = ImGuiNative.igBeginListBox(nativeLabel, size);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin list box
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="size">The size</param>
+        /// <returns>The bool</returns>
+        public static bool BeginListBox(string label, Vector2 size)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            byte ret = ImGuiNative.igBeginListBox(nativeLabel, size);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin main menu bar
+        /// </summary>
+        /// <returns>The bool</returns>
+        public static bool BeginMainMenuBar()
+        {
+            byte ret = ImGuiNative.igBeginMainMenuBar();
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin menu
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <returns>The bool</returns>
+        public static bool BeginMenu(string label)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            byte enabled = 1;
+            byte ret = ImGuiNative.igBeginMenu(nativeLabel, enabled);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin menu
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="enabled">The enabled</param>
+        /// <returns>The bool</returns>
+        public static bool BeginMenu(string label, bool enabled)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            byte nativeEnabled = enabled ? (byte) 1 : (byte) 0;
+            byte ret = ImGuiNative.igBeginMenu(nativeLabel, nativeEnabled);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin menu bar
+        /// </summary>
+        /// <returns>The bool</returns>
+        public static bool BeginMenuBar()
+        {
+            byte ret = ImGuiNative.igBeginMenuBar();
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin popup
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <returns>The bool</returns>
+        public static bool BeginPopup(string strId)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            ImGuiWindowFlags flags = 0;
+            byte ret = ImGuiNative.igBeginPopup(nativeStrId, flags);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin popup
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool BeginPopup(string strId, ImGuiWindowFlags flags)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            byte ret = ImGuiNative.igBeginPopup(nativeStrId, flags);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin popup context item
+        /// </summary>
+        /// <returns>The bool</returns>
+        public static bool BeginPopupContextItem()
+        {
+            byte* nativeStrId = null;
+            ImGuiPopupFlags popupFlags = (ImGuiPopupFlags) 1;
+            byte ret = ImGuiNative.igBeginPopupContextItem(nativeStrId, popupFlags);
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin popup context item
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <returns>The bool</returns>
+        public static bool BeginPopupContextItem(string strId)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            ImGuiPopupFlags popupFlags = (ImGuiPopupFlags) 1;
+            byte ret = ImGuiNative.igBeginPopupContextItem(nativeStrId, popupFlags);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin popup context item
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <param name="popupFlags">The popup flags</param>
+        /// <returns>The bool</returns>
+        public static bool BeginPopupContextItem(string strId, ImGuiPopupFlags popupFlags)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            byte ret = ImGuiNative.igBeginPopupContextItem(nativeStrId, popupFlags);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin popup context void
+        /// </summary>
+        /// <returns>The bool</returns>
+        public static bool BeginPopupContextVoid()
+        {
+            byte* nativeStrId = null;
+            ImGuiPopupFlags popupFlags = (ImGuiPopupFlags) 1;
+            byte ret = ImGuiNative.igBeginPopupContextVoid(nativeStrId, popupFlags);
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin popup context void
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <returns>The bool</returns>
+        public static bool BeginPopupContextVoid(string strId)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            ImGuiPopupFlags popupFlags = (ImGuiPopupFlags) 1;
+            byte ret = ImGuiNative.igBeginPopupContextVoid(nativeStrId, popupFlags);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin popup context void
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <param name="popupFlags">The popup flags</param>
+        /// <returns>The bool</returns>
+        public static bool BeginPopupContextVoid(string strId, ImGuiPopupFlags popupFlags)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            byte ret = ImGuiNative.igBeginPopupContextVoid(nativeStrId, popupFlags);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin popup context window
+        /// </summary>
+        /// <returns>The bool</returns>
+        public static bool BeginPopupContextWindow()
+        {
+            byte* nativeStrId = null;
+            ImGuiPopupFlags popupFlags = (ImGuiPopupFlags) 1;
+            byte ret = ImGuiNative.igBeginPopupContextWindow(nativeStrId, popupFlags);
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin popup context window
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <returns>The bool</returns>
+        public static bool BeginPopupContextWindow(string strId)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            ImGuiPopupFlags popupFlags = (ImGuiPopupFlags) 1;
+            byte ret = ImGuiNative.igBeginPopupContextWindow(nativeStrId, popupFlags);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin popup context window
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <param name="popupFlags">The popup flags</param>
+        /// <returns>The bool</returns>
+        public static bool BeginPopupContextWindow(string strId, ImGuiPopupFlags popupFlags)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            byte ret = ImGuiNative.igBeginPopupContextWindow(nativeStrId, popupFlags);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin popup modal
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The bool</returns>
+        public static bool BeginPopupModal(string name)
+        {
+            byte* nativeName;
+            int nameByteCount = 0;
+            if (name != null)
+            {
+                nameByteCount = Encoding.UTF8.GetByteCount(name);
+                if (nameByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeName = Util.Allocate(nameByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
+                    nativeName = nativeNameStackBytes;
+                }
+                
+                int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
+                nativeName[nativeNameOffset] = 0;
+            }
+            else
+            {
+                nativeName = null;
+            }
+            
+            byte* pOpen = null;
+            ImGuiWindowFlags flags = 0;
+            byte ret = ImGuiNative.igBeginPopupModal(nativeName, pOpen, flags);
+            if (nameByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeName);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin popup modal
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="pOpen">The open</param>
+        /// <returns>The bool</returns>
+        public static bool BeginPopupModal(string name, ref bool pOpen)
+        {
+            byte* nativeName;
+            int nameByteCount = 0;
+            if (name != null)
+            {
+                nameByteCount = Encoding.UTF8.GetByteCount(name);
+                if (nameByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeName = Util.Allocate(nameByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
+                    nativeName = nativeNameStackBytes;
+                }
+                
+                int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
+                nativeName[nativeNameOffset] = 0;
+            }
+            else
+            {
+                nativeName = null;
+            }
+            
+            byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
+            byte* nativePOpen = &nativePOpenVal;
+            ImGuiWindowFlags flags = 0;
+            byte ret = ImGuiNative.igBeginPopupModal(nativeName, nativePOpen, flags);
+            if (nameByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeName);
+            }
+            
+            pOpen = nativePOpenVal != 0;
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin popup modal
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="pOpen">The open</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool BeginPopupModal(string name, ref bool pOpen, ImGuiWindowFlags flags)
+        {
+            byte* nativeName;
+            int nameByteCount = 0;
+            if (name != null)
+            {
+                nameByteCount = Encoding.UTF8.GetByteCount(name);
+                if (nameByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeName = Util.Allocate(nameByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeNameStackBytes = stackalloc byte[nameByteCount + 1];
+                    nativeName = nativeNameStackBytes;
+                }
+                
+                int nativeNameOffset = Util.GetUtf8(name, nativeName, nameByteCount);
+                nativeName[nativeNameOffset] = 0;
+            }
+            else
+            {
+                nativeName = null;
+            }
+            
+            byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
+            byte* nativePOpen = &nativePOpenVal;
+            byte ret = ImGuiNative.igBeginPopupModal(nativeName, nativePOpen, flags);
+            if (nameByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeName);
+            }
+            
+            pOpen = nativePOpenVal != 0;
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin tab bar
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <returns>The bool</returns>
+        public static bool BeginTabBar(string strId)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            ImGuiTabBarFlags flags = 0;
+            byte ret = ImGuiNative.igBeginTabBar(nativeStrId, flags);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin tab bar
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool BeginTabBar(string strId, ImGuiTabBarFlags flags)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            byte ret = ImGuiNative.igBeginTabBar(nativeStrId, flags);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin tab item
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <returns>The bool</returns>
+        public static bool BeginTabItem(string label)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            byte* pOpen = null;
+            ImGuiTabItemFlags flags = 0;
+            byte ret = ImGuiNative.igBeginTabItem(nativeLabel, pOpen, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin tab item
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="pOpen">The open</param>
+        /// <returns>The bool</returns>
+        public static bool BeginTabItem(string label, ref bool pOpen)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
+            byte* nativePOpen = &nativePOpenVal;
+            ImGuiTabItemFlags flags = 0;
+            byte ret = ImGuiNative.igBeginTabItem(nativeLabel, nativePOpen, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            pOpen = nativePOpenVal != 0;
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin tab item
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="pOpen">The open</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool BeginTabItem(string label, ref bool pOpen, ImGuiTabItemFlags flags)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
+            byte* nativePOpen = &nativePOpenVal;
+            byte ret = ImGuiNative.igBeginTabItem(nativeLabel, nativePOpen, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            pOpen = nativePOpenVal != 0;
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin table
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <param name="column">The column</param>
+        /// <returns>The bool</returns>
+        public static bool BeginTable(string strId, int column)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            ImGuiTableFlags flags = 0;
+            Vector2 outerSize = new Vector2();
+            float innerWidth = 0.0f;
+            byte ret = ImGuiNative.igBeginTable(nativeStrId, column, flags, outerSize, innerWidth);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin table
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <param name="column">The column</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool BeginTable(string strId, int column, ImGuiTableFlags flags)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            Vector2 outerSize = new Vector2();
+            float innerWidth = 0.0f;
+            byte ret = ImGuiNative.igBeginTable(nativeStrId, column, flags, outerSize, innerWidth);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin table
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <param name="column">The column</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="outerSize">The outer size</param>
+        /// <returns>The bool</returns>
+        public static bool BeginTable(string strId, int column, ImGuiTableFlags flags, Vector2 outerSize)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            float innerWidth = 0.0f;
+            byte ret = ImGuiNative.igBeginTable(nativeStrId, column, flags, outerSize, innerWidth);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether begin table
+        /// </summary>
+        /// <param name="strId">The str id</param>
+        /// <param name="column">The column</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="outerSize">The outer size</param>
+        /// <param name="innerWidth">The inner width</param>
+        /// <returns>The bool</returns>
+        public static bool BeginTable(string strId, int column, ImGuiTableFlags flags, Vector2 outerSize, float innerWidth)
+        {
+            byte* nativeStrId;
+            int strIdByteCount = 0;
+            if (strId != null)
+            {
+                strIdByteCount = Encoding.UTF8.GetByteCount(strId);
+                if (strIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeStrId = Util.Allocate(strIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeStrIdStackBytes = stackalloc byte[strIdByteCount + 1];
+                    nativeStrId = nativeStrIdStackBytes;
+                }
+                
+                int nativeStrIdOffset = Util.GetUtf8(strId, nativeStrId, strIdByteCount);
+                nativeStrId[nativeStrIdOffset] = 0;
+            }
+            else
+            {
+                nativeStrId = null;
+            }
+            
+            byte ret = ImGuiNative.igBeginTable(nativeStrId, column, flags, outerSize, innerWidth);
+            if (strIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeStrId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Begins the tooltip
+        /// </summary>
+        public static void BeginTooltip()
+        {
+            ImGuiNative.igBeginTooltip();
+        }
+        
+        /// <summary>
+        ///     Bullets
+        /// </summary>
+        public static void Bullet()
+        {
+            ImGuiNative.igBullet();
+        }
+        
+        /// <summary>
+        ///     Bullets the text using the specified fmt
+        /// </summary>
+        /// <param name="fmt">The fmt</param>
+        public static void BulletText(string fmt)
+        {
+            byte* nativeFmt;
+            int fmtByteCount = 0;
+            if (fmt != null)
+            {
+                fmtByteCount = Encoding.UTF8.GetByteCount(fmt);
+                if (fmtByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeFmt = Util.Allocate(fmtByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeFmtStackBytes = stackalloc byte[fmtByteCount + 1];
+                    nativeFmt = nativeFmtStackBytes;
+                }
+                
+                int nativeFmtOffset = Util.GetUtf8(fmt, nativeFmt, fmtByteCount);
+                nativeFmt[nativeFmtOffset] = 0;
+            }
+            else
+            {
+                nativeFmt = null;
+            }
+            
+            ImGuiNative.igBulletText(nativeFmt);
+            if (fmtByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeFmt);
+            }
+        }
+        
+        /// <summary>
+        ///     Describes whether button
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <returns>The bool</returns>
+        public static bool Button(string label)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            Vector2 size = new Vector2();
+            byte ret = ImGuiNative.igButton(nativeLabel, size);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether button
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="size">The size</param>
+        /// <returns>The bool</returns>
+        public static bool Button(string label, Vector2 size)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            byte ret = ImGuiNative.igButton(nativeLabel, size);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Calcs the item width
+        /// </summary>
+        /// <returns>The ret</returns>
+        public static float CalcItemWidth()
+        {
+            float ret = ImGuiNative.igCalcItemWidth();
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Describes whether checkbox
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <returns>The bool</returns>
+        public static bool Checkbox(string label, ref bool v)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            byte nativeVVal = v ? (byte) 1 : (byte) 0;
+            byte* nativeV = &nativeVVal;
+            byte ret = ImGuiNative.igCheckbox(nativeLabel, nativeV);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            v = nativeVVal != 0;
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether checkbox flags
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="flagsValue">The flags value</param>
+        /// <returns>The bool</returns>
+        public static bool CheckboxFlags(string label, ref int flags, int flagsValue)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            fixed (int* nativeFlags = &flags)
+            {
+                byte ret = ImGuiNative.igCheckboxFlags_IntPtr(nativeLabel, nativeFlags, flagsValue);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    Util.Free(nativeLabel);
+                }
+                
+                return ret != 0;
+            }
+        }
+        
+        /// <summary>
+        ///     Describes whether checkbox flags
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="flagsValue">The flags value</param>
+        /// <returns>The bool</returns>
+        public static bool CheckboxFlags(string label, ref uint flags, uint flagsValue)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            fixed (uint* nativeFlags = &flags)
+            {
+                byte ret = ImGuiNative.igCheckboxFlags_UintPtr(nativeLabel, nativeFlags, flagsValue);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    Util.Free(nativeLabel);
+                }
+                
+                return ret != 0;
+            }
+        }
+        
+        /// <summary>
+        ///     Closes the current popup
+        /// </summary>
+        public static void CloseCurrentPopup()
+        {
+            ImGuiNative.igCloseCurrentPopup();
+        }
+        
+        /// <summary>
+        ///     Describes whether collapsing header
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <returns>The bool</returns>
+        public static bool CollapsingHeader(string label)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            ImGuiTreeNodeFlags flags = 0;
+            byte ret = ImGuiNative.igCollapsingHeader_TreeNodeFlags(nativeLabel, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether collapsing header
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool CollapsingHeader(string label, ImGuiTreeNodeFlags flags)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            byte ret = ImGuiNative.igCollapsingHeader_TreeNodeFlags(nativeLabel, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether collapsing header
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="pVisible">The visible</param>
+        /// <returns>The bool</returns>
+        public static bool CollapsingHeader(string label, ref bool pVisible)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            byte nativePVisibleVal = pVisible ? (byte) 1 : (byte) 0;
+            byte* nativePVisible = &nativePVisibleVal;
+            ImGuiTreeNodeFlags flags = 0;
+            byte ret = ImGuiNative.igCollapsingHeader_BoolPtr(nativeLabel, nativePVisible, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            pVisible = nativePVisibleVal != 0;
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether collapsing header
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="pVisible">The visible</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool CollapsingHeader(string label, ref bool pVisible, ImGuiTreeNodeFlags flags)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            byte nativePVisibleVal = pVisible ? (byte) 1 : (byte) 0;
+            byte* nativePVisible = &nativePVisibleVal;
+            byte ret = ImGuiNative.igCollapsingHeader_BoolPtr(nativeLabel, nativePVisible, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            pVisible = nativePVisibleVal != 0;
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether color button
+        /// </summary>
+        /// <param name="descId">The desc id</param>
+        /// <param name="col">The col</param>
+        /// <returns>The bool</returns>
+        public static bool ColorButton(string descId, Vector4 col)
+        {
+            byte* nativeDescId;
+            int descIdByteCount = 0;
+            if (descId != null)
+            {
+                descIdByteCount = Encoding.UTF8.GetByteCount(descId);
+                if (descIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeDescId = Util.Allocate(descIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeDescIdStackBytes = stackalloc byte[descIdByteCount + 1];
+                    nativeDescId = nativeDescIdStackBytes;
+                }
+                
+                int nativeDescIdOffset = Util.GetUtf8(descId, nativeDescId, descIdByteCount);
+                nativeDescId[nativeDescIdOffset] = 0;
+            }
+            else
+            {
+                nativeDescId = null;
+            }
+            
+            ImGuiColorEditFlags flags = 0;
+            Vector2 size = new Vector2();
+            byte ret = ImGuiNative.igColorButton(nativeDescId, col, flags, size);
+            if (descIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeDescId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether color button
+        /// </summary>
+        /// <param name="descId">The desc id</param>
+        /// <param name="col">The col</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool ColorButton(string descId, Vector4 col, ImGuiColorEditFlags flags)
+        {
+            byte* nativeDescId;
+            int descIdByteCount = 0;
+            if (descId != null)
+            {
+                descIdByteCount = Encoding.UTF8.GetByteCount(descId);
+                if (descIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeDescId = Util.Allocate(descIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeDescIdStackBytes = stackalloc byte[descIdByteCount + 1];
+                    nativeDescId = nativeDescIdStackBytes;
+                }
+                
+                int nativeDescIdOffset = Util.GetUtf8(descId, nativeDescId, descIdByteCount);
+                nativeDescId[nativeDescIdOffset] = 0;
+            }
+            else
+            {
+                nativeDescId = null;
+            }
+            
+            Vector2 size = new Vector2();
+            byte ret = ImGuiNative.igColorButton(nativeDescId, col, flags, size);
+            if (descIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeDescId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether color button
+        /// </summary>
+        /// <param name="descId">The desc id</param>
+        /// <param name="col">The col</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="size">The size</param>
+        /// <returns>The bool</returns>
+        public static bool ColorButton(string descId, Vector4 col, ImGuiColorEditFlags flags, Vector2 size)
+        {
+            byte* nativeDescId;
+            int descIdByteCount = 0;
+            if (descId != null)
+            {
+                descIdByteCount = Encoding.UTF8.GetByteCount(descId);
+                if (descIdByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeDescId = Util.Allocate(descIdByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeDescIdStackBytes = stackalloc byte[descIdByteCount + 1];
+                    nativeDescId = nativeDescIdStackBytes;
+                }
+                
+                int nativeDescIdOffset = Util.GetUtf8(descId, nativeDescId, descIdByteCount);
+                nativeDescId[nativeDescIdOffset] = 0;
+            }
+            else
+            {
+                nativeDescId = null;
+            }
+            
+            byte ret = ImGuiNative.igColorButton(nativeDescId, col, flags, size);
+            if (descIdByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeDescId);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Colors the convert float 4 to u 32 using the specified in
+        /// </summary>
+        /// <param name="in">The in</param>
+        /// <returns>The ret</returns>
+        public static uint ColorConvertFloat4ToU32(Vector4 @in)
+        {
+            uint ret = ImGuiNative.igColorConvertFloat4ToU32(@in);
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Colors the convert hs vto rgb using the specified h
+        /// </summary>
+        /// <param name="h">The </param>
+        /// <param name="s">The </param>
+        /// <param name="v">The </param>
+        /// <param name="outR">The out</param>
+        /// <param name="outG">The out</param>
+        /// <param name="outB">The out</param>
+        public static void ColorConvertHsVtoRgb(float h, float s, float v, out float outR, out float outG, out float outB)
+        {
+            fixed (float* nativeOutR = &outR)
+            {
+                fixed (float* nativeOutG = &outG)
+                {
+                    fixed (float* nativeOutB = &outB)
+                    {
+                        ImGuiNative.igColorConvertHSVtoRGB(h, s, v, nativeOutR, nativeOutG, nativeOutB);
+                    }
+                }
+            }
+        }
+        
+        /// <summary>
+        ///     Colors the convert rg bto hsv using the specified r
+        /// </summary>
+        /// <param name="r">The </param>
+        /// <param name="g">The </param>
+        /// <param name="b">The </param>
+        /// <param name="outH">The out</param>
+        /// <param name="outS">The out</param>
+        /// <param name="outV">The out</param>
+        public static void ColorConvertRgBtoHsv(float r, float g, float b, out float outH, out float outS, out float outV)
+        {
+            fixed (float* nativeOutH = &outH)
+            {
+                fixed (float* nativeOutS = &outS)
+                {
+                    fixed (float* nativeOutV = &outV)
+                    {
+                        ImGuiNative.igColorConvertRGBtoHSV(r, g, b, nativeOutH, nativeOutS, nativeOutV);
+                    }
+                }
+            }
+        }
+        
+        /// <summary>
+        ///     Colors the convert u 32 to float 4 using the specified in
+        /// </summary>
+        /// <param name="in">The in</param>
+        /// <returns>The retval</returns>
+        public static Vector4 ColorConvertU32ToFloat4(uint @in)
+        {
+            Vector4 retval = new Vector4();
+            ImGuiNative.igColorConvertU32ToFloat4(out retval, @in);
+            return retval;
+        }
+        
+        /// <summary>
+        ///     Describes whether color edit 3
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="col">The col</param>
+        /// <returns>The bool</returns>
+        public static bool ColorEdit3(string label, ref Vector3 col)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            ImGuiColorEditFlags flags = 0;
+            fixed (Vector3* nativeCol = &col)
+            {
+                byte ret = ImGuiNative.igColorEdit3(nativeLabel, nativeCol, flags);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    Util.Free(nativeLabel);
+                }
+                
+                return ret != 0;
+            }
+        }
+        
+        /// <summary>
+        ///     Describes whether color edit 3
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="col">The col</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool ColorEdit3(string label, ref Vector3 col, ImGuiColorEditFlags flags)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            fixed (Vector3* nativeCol = &col)
+            {
+                byte ret = ImGuiNative.igColorEdit3(nativeLabel, nativeCol, flags);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    Util.Free(nativeLabel);
+                }
+                
+                return ret != 0;
+            }
+        }
+        
+        /// <summary>
+        ///     Describes whether color edit 4
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="col">The col</param>
+        /// <returns>The bool</returns>
+        public static bool ColorEdit4(string label, ref Vector4 col)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            ImGuiColorEditFlags flags = 0;
+            byte ret = ImGuiNative.igColorEdit4(nativeLabel, col, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether color edit 4
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="col">The col</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool ColorEdit4(string label, ref Vector4 col, ImGuiColorEditFlags flags)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            byte ret = ImGuiNative.igColorEdit4(nativeLabel, col, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether color picker 3
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="col">The col</param>
+        /// <returns>The bool</returns>
+        public static bool ColorPicker3(string label, ref Vector3 col)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            ImGuiColorEditFlags flags = 0;
+            fixed (Vector3* nativeCol = &col)
+            {
+                byte ret = ImGuiNative.igColorPicker3(nativeLabel, nativeCol, flags);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    Util.Free(nativeLabel);
+                }
+                
+                return ret != 0;
+            }
+        }
+        
+        /// <summary>
+        ///     Describes whether color picker 3
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="col">The col</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool ColorPicker3(string label, ref Vector3 col, ImGuiColorEditFlags flags)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            fixed (Vector3* nativeCol = &col)
+            {
+                byte ret = ImGuiNative.igColorPicker3(nativeLabel, nativeCol, flags);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    Util.Free(nativeLabel);
+                }
+                
+                return ret != 0;
+            }
+        }
+        
+        /// <summary>
+        ///     Describes whether color picker 4
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="col">The col</param>
+        /// <returns>The bool</returns>
+        public static bool ColorPicker4(string label, ref Vector4 col)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            ImGuiColorEditFlags flags = 0;
+            float* refCol = null;
+            byte ret = ImGuiNative.igColorPicker4(nativeLabel, col, flags, refCol);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether color picker 4
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="col">The col</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
+        public static bool ColorPicker4(string label, ref Vector4 col, ImGuiColorEditFlags flags)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            float* refCol = null;
+            byte ret = ImGuiNative.igColorPicker4(nativeLabel, col, flags, refCol);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeLabel);
+            }
+            
+            return ret != 0;
+        }
+        
+        /// <summary>
+        ///     Describes whether color picker 4
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="col">The col</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="refCol">The ref col</param>
+        /// <returns>The bool</returns>
+        public static bool ColorPicker4(string label, ref Vector4 col, ImGuiColorEditFlags flags, ref float refCol)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            fixed (float* nativeRefCol = &refCol)
+            {
+                byte ret = ImGuiNative.igColorPicker4(nativeLabel, col, flags, nativeRefCol);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    Util.Free(nativeLabel);
+                }
+                
+                return ret != 0;
+            }
+        }
+        
+        /// <summary>
+        ///     Columnses
+        /// </summary>
+        public static void Columns()
+        {
+            int count = 1;
+            byte* nativeId = null;
+            byte border = 1;
+            ImGuiNative.igColumns(count, nativeId, border);
+        }
+        
+        /// <summary>
+        ///     Columnses the count
+        /// </summary>
+        /// <param name="count">The count</param>
+        public static void Columns(int count)
+        {
+            byte* nativeId = null;
+            byte border = 1;
+            ImGuiNative.igColumns(count, nativeId, border);
+        }
+        
+        /// <summary>
+        ///     Columnses the count
+        /// </summary>
+        /// <param name="count">The count</param>
+        /// <param name="id">The id</param>
+        public static void Columns(int count, string id)
+        {
+            byte* nativeId;
+            int idByteCount = 0;
+            if (id != null)
+            {
+                idByteCount = Encoding.UTF8.GetByteCount(id);
+                if (idByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeId = Util.Allocate(idByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeIdStackBytes = stackalloc byte[idByteCount + 1];
+                    nativeId = nativeIdStackBytes;
+                }
+                
+                int nativeIdOffset = Util.GetUtf8(id, nativeId, idByteCount);
+                nativeId[nativeIdOffset] = 0;
+            }
+            else
+            {
+                nativeId = null;
+            }
+            
+            byte border = 1;
+            ImGuiNative.igColumns(count, nativeId, border);
+            if (idByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeId);
+            }
+        }
+        
+        /// <summary>
+        ///     Columnses the count
+        /// </summary>
+        /// <param name="count">The count</param>
+        /// <param name="id">The id</param>
+        /// <param name="border">The border</param>
+        public static void Columns(int count, string id, bool border)
+        {
+            byte* nativeId;
+            int idByteCount = 0;
+            if (id != null)
+            {
+                idByteCount = Encoding.UTF8.GetByteCount(id);
+                if (idByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeId = Util.Allocate(idByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeIdStackBytes = stackalloc byte[idByteCount + 1];
+                    nativeId = nativeIdStackBytes;
+                }
+                
+                int nativeIdOffset = Util.GetUtf8(id, nativeId, idByteCount);
+                nativeId[nativeIdOffset] = 0;
+            }
+            else
+            {
+                nativeId = null;
+            }
+            
+            byte nativeBorder = border ? (byte) 1 : (byte) 0;
+            ImGuiNative.igColumns(count, nativeId, nativeBorder);
+            if (idByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeId);
+            }
+        }
+        
+        /// <summary>
+        ///     Describes whether combo
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="currentItem">The current item</param>
+        /// <param name="items">The items</param>
+        /// <param name="itemsCount">The items count</param>
+        /// <returns>The bool</returns>
+        public static bool Combo(string label, ref int currentItem, string[] items, int itemsCount)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            int* itemsByteCounts = stackalloc int[items.Length];
+            int itemsByteCount = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                string s = items[i];
+                itemsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
+                itemsByteCount += itemsByteCounts[i] + 1;
+            }
+            
+            byte* nativeItemsData = stackalloc byte[itemsByteCount];
+            int offset = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                string s = items[i];
+                fixed (char* sPtr = s)
+                {
+                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeItemsData + offset, itemsByteCounts[i]);
+                    nativeItemsData[offset] = 0;
+                    offset += 1;
+                }
+            }
+            
+            byte** nativeItems = stackalloc byte*[items.Length];
+            offset = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                nativeItems[i] = &nativeItemsData[offset];
+                offset += itemsByteCounts[i] + 1;
+            }
+            
+            int popupMaxHeightInItems = -1;
+            fixed (int* nativeCurrentItem = &currentItem)
+            {
+                byte ret = ImGuiNative.igCombo_Str_arr(nativeLabel, nativeCurrentItem, nativeItems, itemsCount, popupMaxHeightInItems);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    Util.Free(nativeLabel);
+                }
+                
+                return ret != 0;
+            }
+        }
+        
+        /// <summary>
+        ///     Describes whether combo
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="currentItem">The current item</param>
+        /// <param name="items">The items</param>
+        /// <param name="itemsCount">The items count</param>
+        /// <param name="popupMaxHeightInItems">The popup max height in items</param>
+        /// <returns>The bool</returns>
+        public static bool Combo(string label, ref int currentItem, string[] items, int itemsCount, int popupMaxHeightInItems)
+        {
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            if (label != null)
+            {
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
+                }
+                
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
+            }
+            else
+            {
+                nativeLabel = null;
+            }
+            
+            int* itemsByteCounts = stackalloc int[items.Length];
+            int itemsByteCount = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                string s = items[i];
+                itemsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
+                itemsByteCount += itemsByteCounts[i] + 1;
+            }
+            
+            byte* nativeItemsData = stackalloc byte[itemsByteCount];
+            int offset = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                string s = items[i];
+                fixed (char* sPtr = s)
+                {
+                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeItemsData + offset, itemsByteCounts[i]);
+                    nativeItemsData[offset] = 0;
+                    offset += 1;
+                }
+            }
+            
+            byte** nativeItems = stackalloc byte*[items.Length];
+            offset = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                nativeItems[i] = &nativeItemsData[offset];
+                offset += itemsByteCounts[i] + 1;
+            }
+            
+            fixed (int* nativeCurrentItem = &currentItem)
+            {
+                byte ret = ImGuiNative.igCombo_Str_arr(nativeLabel, nativeCurrentItem, nativeItems, itemsCount, popupMaxHeightInItems);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    Util.Free(nativeLabel);
+                }
+                
+                return ret != 0;
+            }
+        }
+        
         
     }
 }
