@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the index advance x
         /// </summary>
-        public ImVector<float> IndexAdvanceX => new ImVector<float>(NativePtr->IndexAdvanceX);
+        public ImVectorG<float> IndexAdvanceX => new ImVectorG<float>(NativePtr->IndexAdvanceX);
         
         /// <summary>
         ///     Gets the value of the fallback advance x
@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the index lookup
         /// </summary>
-        public ImVector<ushort> IndexLookup => new ImVector<ushort>(NativePtr->IndexLookup);
+        public ImVectorG<ushort> IndexLookup => new ImVectorG<ushort>(NativePtr->IndexLookup);
         
         /// <summary>
         ///     Gets the value of the container atlas

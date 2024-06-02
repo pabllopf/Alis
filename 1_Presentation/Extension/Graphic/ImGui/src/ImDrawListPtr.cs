@@ -78,17 +78,17 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the cmd buffer
         /// </summary>
-        public ImVector<ImDrawCmd> CmdBuffer => new ImVector<ImDrawCmd>(NativePtr->CmdBuffer);
+        public ImVectorG<ImDrawCmd> CmdBuffer => new ImVectorG<ImDrawCmd>(NativePtr->CmdBuffer);
         
         /// <summary>
         ///     Gets the value of the idx buffer
         /// </summary>
-        public ImVector<ushort> IdxBuffer => new ImVector<ushort>(NativePtr->IdxBuffer);
+        public ImVectorG<ushort> IdxBuffer => new ImVectorG<ushort>(NativePtr->IdxBuffer);
         
         /// <summary>
         ///     Gets the value of the vtx buffer
         /// </summary>
-        public ImVector<ImDrawVert> VtxBuffer => new ImVector<ImDrawVert>(NativePtr->VtxBuffer);
+        public ImVectorG<ImDrawVert> VtxBuffer => new ImVectorG<ImDrawVert>(NativePtr->VtxBuffer);
         
         /// <summary>
         ///     Gets the value of the flags
@@ -127,17 +127,17 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the  cliprectstack
         /// </summary>
-        public ImVector<Vector4> ClipRectStack => new ImVector<Vector4>(NativePtr->ClipRectStack);
+        public ImVectorG<Vector4> ClipRectStack => new ImVectorG<Vector4>(NativePtr->ClipRectStack);
         
         /// <summary>
         ///     Gets the value of the  textureidstack
         /// </summary>
-        public ImVector<IntPtr> TextureIdStack => new ImVector<IntPtr>(NativePtr->TextureIdStack);
+        public ImVectorG<IntPtr> TextureIdStack => new ImVectorG<IntPtr>(NativePtr->TextureIdStack);
         
         /// <summary>
         ///     Gets the value of the  path
         /// </summary>
-        public ImVector<Vector2> Path => new ImVector<Vector2>(NativePtr->Path);
+        public ImVectorG<Vector2> Path => new ImVectorG<Vector2>(NativePtr->Path);
         
         /// <summary>
         ///     Gets the value of the  cmdheader

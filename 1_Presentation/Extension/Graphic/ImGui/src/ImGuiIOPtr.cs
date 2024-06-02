@@ -581,7 +581,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the input queue characters
         /// </summary>
-        public ImVector<ushort> InputQueueCharacters => new ImVector<ushort>(NativePtr->InputQueueCharacters);
+        public ImVectorG<ushort> InputQueueCharacters => new ImVectorG<ushort>(NativePtr->InputQueueCharacters);
         
         /// <summary>
         ///     Adds the focus event using the specified focused

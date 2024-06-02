@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im vector
     /// </summary>
-    public readonly struct ImVector
+    public readonly struct ImVectorG<T> where T : unmanaged
     {
         /// <summary>
         ///     The size
@@ -55,10 +55,21 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImVector" /> class
         /// </summary>
+        /// <param name="vector">The vector</param>
+        public ImVectorG(ImVector vector)
+        {
+            Size = vector.Size;
+            Capacity = vector.Capacity;
+            Data = vector.Data;
+        }
+        
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ImVector" /> class
+        /// </summary>
         /// <param name="size">The size</param>
         /// <param name="capacity">The capacity</param>
         /// <param name="data">The data</param>
-        public ImVector(int size, int capacity, IntPtr data)
+        public ImVectorG(int size, int capacity, IntPtr data)
         {
             Size = size;
             Capacity = capacity;
@@ -66,32 +77,24 @@ namespace Alis.Extension.Graphic.ImGui
         }
         
         /// <summary>
-        /// Refs the index
+        /// The free
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="index">The index</param>
-        /// <returns>The</returns>
-        public T Ref<T>(int index) where T : unmanaged
+        public T this[int index]
         {
-            byte[] bytes = new byte[Marshal.SizeOf<T>()];
-            Marshal.Copy(Data + index * Marshal.SizeOf<T>(), bytes, 0, bytes.Length);
-            GCHandle handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
-            try
+            get
             {
-                return (T)Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T));
-            }
-            finally
-            {
-                handle.Free();
+                byte[] bytes = new byte[Marshal.SizeOf<T>()];
+                Marshal.Copy(Data + index * Marshal.SizeOf<T>(), bytes, 0, bytes.Length);
+                GCHandle handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
+                try
+                {
+                    return (T) Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T));
+                }
+                finally
+                {
+                    handle.Free();
+                }
             }
         }
-        
-        /// <summary>
-        /// Addresses the index
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="index">The index</param>
-        /// <returns>The int ptr</returns>
-        public IntPtr Address<T>(int index) => Data + index * Marshal.SizeOf<T>();
     }
 }
