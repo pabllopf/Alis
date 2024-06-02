@@ -29,12 +29,9 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Data.Json;
-using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;

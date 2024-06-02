@@ -32,7 +32,6 @@ using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Physic;
 
 namespace Alis.Sample.SplitCamera
 {

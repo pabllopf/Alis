@@ -30,7 +30,6 @@
 using Alis.Builder.Core.Ecs.System;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.System;
-using Alis.Core.Ecs.System.Manager;
 using Alis.Core.Ecs.System.Manager.Audio;
 using Alis.Core.Ecs.System.Manager.Graphic;
 using Alis.Core.Ecs.System.Manager.Input;
@@ -38,8 +37,6 @@ using Alis.Core.Ecs.System.Manager.Network;
 using Alis.Core.Ecs.System.Manager.Physic;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
-using Alis.Test.Core.Ecs.System.Manager.Samples;
-using Alis.Test.Sample;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs
