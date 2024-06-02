@@ -73,6 +73,7 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Gets or sets the value of the file path
         /// </summary>
         [JsonIgnore]
+        [ExcludeFromCodeCoverage]
         public string FilePath { get; set; }
         
         /// <summary>

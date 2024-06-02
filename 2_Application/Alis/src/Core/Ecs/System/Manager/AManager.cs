@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
 
@@ -58,6 +59,7 @@ namespace Alis.Core.Ecs.System.Manager
         /// <param name="tag">The tag</param>
         /// <param name="isEnable">The is enable</param>
         [JsonConstructor]
+        [ExcludeFromCodeCoverage]
         protected AManager(string id, string name, string tag, bool isEnable)
         {
             Id = id;

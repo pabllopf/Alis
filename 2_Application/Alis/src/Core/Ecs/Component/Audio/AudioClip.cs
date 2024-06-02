@@ -136,6 +136,7 @@ namespace Alis.Core.Ecs.Component.Audio
         /// <summary>
         ///     Plays this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         internal void Play()
         {
             if (string.IsNullOrEmpty(FullPathAudioFile) && !string.IsNullOrEmpty(NameFile))
@@ -152,6 +153,7 @@ namespace Alis.Core.Ecs.Component.Audio
         /// <summary>
         ///     Stops this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         internal void Stop()
         {
             if (player.Playing)

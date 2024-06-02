@@ -396,6 +396,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Exits this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void Exit() => Context.TimeManager.IsRunning = false;
         
         /// <summary>
