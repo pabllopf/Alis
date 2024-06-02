@@ -150,7 +150,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the fonts
         /// </summary>
-        public ImVector<ImFontPtr> Fonts => new ImVector<ImFontPtr>(NativePtr->Fonts);
+        public ImVectorG<ImFontPtr> Fonts => new ImVectorG<ImFontPtr>(NativePtr->Fonts);
         
         /// <summary>
         ///     Gets the value of the custom rects

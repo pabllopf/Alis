@@ -196,7 +196,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the viewports
         /// </summary>
-        public ImVector<ImGuiViewportPtr> Viewports => new ImVector<ImGuiViewportPtr>(NativePtr->Viewports);
+        public ImVectorG<ImGuiViewportPtr> Viewports => new ImVectorG<ImGuiViewportPtr>(NativePtr->Viewports);
         
         /// <summary>
         ///     Destroys this instance
