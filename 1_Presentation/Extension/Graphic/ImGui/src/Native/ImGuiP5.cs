@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ConsoleWindow.cs
+//  File:ImGuiP5.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,29 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Extension.Graphic.ImGui;
-using Alis.Extension.Graphic.ImGui.Native;
-
-namespace Alis.App.Engine.Windows
+namespace Alis.Extension.Graphic.ImGui
 {
-    /// <summary>
-    ///     The console window class
-    /// </summary>
-    public class ConsoleWindow : IWindow
+    public class ImGuiP5
     {
-        /// <summary>
-        ///     The name window
-        /// </summary>
-        private const string NameWindow = "Console";
         
-        /// <summary>
-        ///     Renders this instance
-        /// </summary>
-        public void Render()
-        {
-            ImGui.Begin(NameWindow);
-            
-            ImGui.End();
-        }
     }
 }
