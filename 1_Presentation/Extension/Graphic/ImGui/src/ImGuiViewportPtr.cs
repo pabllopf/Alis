@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the draw data
         /// </summary>
-        public ImDrawDataPtr DrawData => new ImDrawDataPtr(NativePtr->DrawData);
+        public ImDrawData DrawData => new ImDrawData();
         
         /// <summary>
         ///     Gets or sets the value of the renderer user data
