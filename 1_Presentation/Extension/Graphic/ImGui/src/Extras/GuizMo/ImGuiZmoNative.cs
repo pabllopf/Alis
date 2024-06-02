@@ -31,7 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
+namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
 {
     /// <summary>
     ///     The im gui z mo native class
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         /// </summary>
         /// <param name="drawlist">The drawlist</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_SetDrawlist", CallingConvention = CallingConvention.Cdecl)]
-        public static extern unsafe void InternalSetDrawlist(ImDrawList* drawlist);
+        public static extern unsafe void InternalSetDrawlist(ImDrawList drawlist);
         
         /// <summary>
         ///     Ims the guizmo set gizmo size clip space using the specified value

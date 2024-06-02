@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
+namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
 {
     /// <summary>
     ///     The operation enum

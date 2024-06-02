@@ -41,7 +41,7 @@ using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Alis.Extension.Graphic.ImGui;
-using Alis.Extension.Graphic.ImGui.Extras.Guizmo;
+using Alis.Extension.Graphic.ImGui.Extras.GuizMo;
 using Alis.Extension.Graphic.ImGui.Extras.Node;
 using Alis.Extension.Graphic.ImGui.Extras.Plot;
 using Alis.Extension.Graphic.OpenGL;
@@ -286,7 +286,7 @@ namespace Alis.App.Engine
             
             ImNodes.CreateContext();
             ImPlot.CreateContext();
-            ImGuizmo.SetImGuiContext(_context);
+            ImGuizMo.SetImGuiContext(_context);
             ImGui.SetCurrentContext(_context);
             
             // REBUILD ATLAS

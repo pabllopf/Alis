@@ -30,12 +30,12 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
+namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
 {
     /// <summary>
     ///     The im guizmo class
     /// </summary>
-    public static unsafe class ImGuizmo
+    public static class ImGuizMo
     {
         /// <summary>
         ///     Allows the axis flip using the specified value
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         /// <summary>
         ///     Enables the enable
         /// </summary>
-        /// <param name="enable">The enable</param>
+        /// <param name="enable">To enable</param>
         public static void Enable(bool enable)
         {
             byte nativeEnable = enable ? (byte) 1 : (byte) 0;
@@ -242,22 +242,20 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         }
         
         /// <summary>
-        ///     Sets the drawlist
+        ///     Sets the draw list
         /// </summary>
-        public static void SetDrawlist()
+        public static void SetDrawList()
         {
-            ImDrawList* drawlist = null;
-            ImGuiZmoNative.InternalSetDrawlist(drawlist);
+            ImGuiZmoNative.InternalSetDrawlist(new ImDrawList());
         }
         
         /// <summary>
         ///     Sets the drawlist using the specified drawlist
         /// </summary>
-        /// <param name="drawlist">The drawlist</param>
-        public static void SetDrawlist(ImDrawListPtr drawlist)
+        /// <param name="drawList">The draw list</param>
+        public static void SetDrawList(ImDrawList drawList)
         {
-            ImDrawList* nativeDrawlist = drawlist.NativePtr;
-            ImGuiZmoNative.InternalSetDrawlist(nativeDrawlist);
+            ImGuiZmoNative.InternalSetDrawlist(drawList);
         }
         
         /// <summary>
@@ -310,7 +308,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Guizmo
         }
         
         /// <summary>
-        ///     Views the manipulate using the specified view
+        ///     Views to manipulate using the specified view
         /// </summary>
         /// <param name="view">The view</param>
         /// <param name="length">The length</param>
