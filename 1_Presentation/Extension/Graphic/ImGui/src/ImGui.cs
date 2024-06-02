@@ -2445,8 +2445,8 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The retval</returns>
         public static Vector4 ColorConvertU32ToFloat4(uint @in)
         {
-            Vector4 retval;
-            ImGuiNative.igColorConvertU32ToFloat4(&retval, @in);
+            Vector4 retval = new Vector4();
+            ImGuiNative.igColorConvertU32ToFloat4(out retval, @in);
             return retval;
         }
         
@@ -2570,16 +2570,13 @@ namespace Alis.Extension.Graphic.ImGui
             }
             
             ImGuiColorEditFlags flags = 0;
-            fixed (Vector4* nativeCol = &col)
+            byte ret = ImGuiNative.igColorEdit4(nativeLabel, col, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                byte ret = ImGuiNative.igColorEdit4(nativeLabel, nativeCol, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                return ret != 0;
+                Util.Free(nativeLabel);
             }
+            
+            return ret != 0;
         }
         
         /// <summary>
@@ -2614,16 +2611,13 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
             
-            fixed (Vector4* nativeCol = &col)
+            byte ret = ImGuiNative.igColorEdit4(nativeLabel, col, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                byte ret = ImGuiNative.igColorEdit4(nativeLabel, nativeCol, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                return ret != 0;
+                Util.Free(nativeLabel);
             }
+            
+            return ret != 0;
         }
         
         /// <summary>
@@ -2747,16 +2741,13 @@ namespace Alis.Extension.Graphic.ImGui
             
             ImGuiColorEditFlags flags = 0;
             float* refCol = null;
-            fixed (Vector4* nativeCol = &col)
+            byte ret = ImGuiNative.igColorPicker4(nativeLabel, col, flags, refCol);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                byte ret = ImGuiNative.igColorPicker4(nativeLabel, nativeCol, flags, refCol);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                return ret != 0;
+                Util.Free(nativeLabel);
             }
+            
+            return ret != 0;
         }
         
         /// <summary>
@@ -2792,16 +2783,13 @@ namespace Alis.Extension.Graphic.ImGui
             }
             
             float* refCol = null;
-            fixed (Vector4* nativeCol = &col)
+            byte ret = ImGuiNative.igColorPicker4(nativeLabel, col, flags, refCol);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                byte ret = ImGuiNative.igColorPicker4(nativeLabel, nativeCol, flags, refCol);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                return ret != 0;
+                Util.Free(nativeLabel);
             }
+            
+            return ret != 0;
         }
         
         /// <summary>
@@ -2837,18 +2825,15 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeLabel = null;
             }
             
-            fixed (Vector4* nativeCol = &col)
+            fixed (float* nativeRefCol = &refCol)
             {
-                fixed (float* nativeRefCol = &refCol)
+                byte ret = ImGuiNative.igColorPicker4(nativeLabel, col, flags, nativeRefCol);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
                 {
-                    byte ret = ImGuiNative.igColorPicker4(nativeLabel, nativeCol, flags, nativeRefCol);
-                    if (labelByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabel);
-                    }
-                    
-                    return ret != 0;
+                    Util.Free(nativeLabel);
                 }
+                
+                return ret != 0;
             }
         }
         
@@ -4800,21 +4785,18 @@ namespace Alis.Extension.Graphic.ImGui
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
-            fixed (Vector4* nativeV = &v)
+            byte ret = ImGuiNative.igDragFloat4(nativeLabel, v, vSpeed, vMin, vMax, nativeFormat, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                byte ret = ImGuiNative.igDragFloat4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
-                return ret != 0;
+                Util.Free(nativeLabel);
             }
+            
+            if (formatByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeFormat);
+            }
+            
+            return ret != 0;
         }
         
         /// <summary>
@@ -4867,21 +4849,18 @@ namespace Alis.Extension.Graphic.ImGui
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
-            fixed (Vector4* nativeV = &v)
+            byte ret = ImGuiNative.igDragFloat4(nativeLabel, v, vSpeed, vMin, vMax, nativeFormat, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                byte ret = ImGuiNative.igDragFloat4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
-                return ret != 0;
+                Util.Free(nativeLabel);
             }
+            
+            if (formatByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeFormat);
+            }
+            
+            return ret != 0;
         }
         
         /// <summary>
@@ -4934,21 +4913,18 @@ namespace Alis.Extension.Graphic.ImGui
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
-            fixed (Vector4* nativeV = &v)
+            byte ret = ImGuiNative.igDragFloat4(nativeLabel, v, vSpeed, vMin, vMax, nativeFormat, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                byte ret = ImGuiNative.igDragFloat4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
-                return ret != 0;
+                Util.Free(nativeLabel);
             }
+            
+            if (formatByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeFormat);
+            }
+            
+            return ret != 0;
         }
         
         /// <summary>
@@ -5001,21 +4977,18 @@ namespace Alis.Extension.Graphic.ImGui
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
-            fixed (Vector4* nativeV = &v)
+            byte ret = ImGuiNative.igDragFloat4(nativeLabel, v, vSpeed, vMin, vMax, nativeFormat, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                byte ret = ImGuiNative.igDragFloat4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
-                return ret != 0;
+                Util.Free(nativeLabel);
             }
+            
+            if (formatByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeFormat);
+            }
+            
+            return ret != 0;
         }
         
         /// <summary>
@@ -5077,21 +5050,18 @@ namespace Alis.Extension.Graphic.ImGui
             }
             
             ImGuiSliderFlags flags = 0;
-            fixed (Vector4* nativeV = &v)
+            byte ret = ImGuiNative.igDragFloat4(nativeLabel, v, vSpeed, vMin, vMax, nativeFormat, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                byte ret = ImGuiNative.igDragFloat4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
-                return ret != 0;
+                Util.Free(nativeLabel);
             }
+            
+            if (formatByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeFormat);
+            }
+            
+            return ret != 0;
         }
         
         /// <summary>
@@ -5153,21 +5123,18 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeFormat = null;
             }
             
-            fixed (Vector4* nativeV = &v)
+            byte ret = ImGuiNative.igDragFloat4(nativeLabel, v, vSpeed, vMin, vMax, nativeFormat, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                byte ret = ImGuiNative.igDragFloat4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
-                return ret != 0;
+                Util.Free(nativeLabel);
             }
+            
+            if (formatByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeFormat);
+            }
+            
+            return ret != 0;
         }
         
         /// <summary>
@@ -9547,9 +9514,9 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <returns>The ret</returns>
-        public static Vector4* GetStyleColorVec4(ImGuiCol idx)
+        public static Vector4 GetStyleColorVec4(ImGuiCol idx)
         {
-            Vector4* ret = ImGuiNative.igGetStyleColorVec4(idx);
+            Vector4 ret = ImGuiNative.igGetStyleColorVec4(idx);
             return ret;
         }
         
@@ -11183,21 +11150,18 @@ namespace Alis.Extension.Graphic.ImGui
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiInputTextFlags flags = 0;
-            fixed (Vector4* nativeV = &v)
+            byte ret = ImGuiNative.igInputFloat4(nativeLabel, v, nativeFormat, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                byte ret = ImGuiNative.igInputFloat4(nativeLabel, nativeV, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
-                return ret != 0;
+                Util.Free(nativeLabel);
             }
+            
+            if (formatByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeFormat);
+            }
+            
+            return ret != 0;
         }
         
         /// <summary>
@@ -11256,21 +11220,18 @@ namespace Alis.Extension.Graphic.ImGui
             }
             
             ImGuiInputTextFlags flags = 0;
-            fixed (Vector4* nativeV = &v)
+            byte ret = ImGuiNative.igInputFloat4(nativeLabel, v, nativeFormat, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                byte ret = ImGuiNative.igInputFloat4(nativeLabel, nativeV, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
-                return ret != 0;
+                Util.Free(nativeLabel);
             }
+            
+            if (formatByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeFormat);
+            }
+            
+            return ret != 0;
         }
         
         /// <summary>
@@ -11329,21 +11290,18 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeFormat = null;
             }
             
-            fixed (Vector4* nativeV = &v)
+            byte ret = ImGuiNative.igInputFloat4(nativeLabel, v, nativeFormat, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                byte ret = ImGuiNative.igInputFloat4(nativeLabel, nativeV, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
-                return ret != 0;
+                Util.Free(nativeLabel);
             }
+            
+            if (formatByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeFormat);
+            }
+            
+            return ret != 0;
         }
         
         /// <summary>
@@ -18157,21 +18115,18 @@ namespace Alis.Extension.Graphic.ImGui
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             ImGuiSliderFlags flags = 0;
-            fixed (Vector4* nativeV = &v)
+            byte ret = ImGuiNative.igSliderFloat4(nativeLabel, v, vMin, vMax, nativeFormat, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                byte ret = ImGuiNative.igSliderFloat4(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
-                return ret != 0;
+                Util.Free(nativeLabel);
             }
+            
+            if (formatByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeFormat);
+            }
+            
+            return ret != 0;
         }
         
         /// <summary>
@@ -18232,21 +18187,18 @@ namespace Alis.Extension.Graphic.ImGui
             }
             
             ImGuiSliderFlags flags = 0;
-            fixed (Vector4* nativeV = &v)
+            byte ret = ImGuiNative.igSliderFloat4(nativeLabel, v, vMin, vMax, nativeFormat, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                byte ret = ImGuiNative.igSliderFloat4(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
-                return ret != 0;
+                Util.Free(nativeLabel);
             }
+            
+            if (formatByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeFormat);
+            }
+            
+            return ret != 0;
         }
         
         /// <summary>
@@ -18307,21 +18259,18 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeFormat = null;
             }
             
-            fixed (Vector4* nativeV = &v)
+            byte ret = ImGuiNative.igSliderFloat4(nativeLabel, v, vMin, vMax, nativeFormat, flags);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                byte ret = ImGuiNative.igSliderFloat4(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
-                return ret != 0;
+                Util.Free(nativeLabel);
             }
+            
+            if (formatByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeFormat);
+            }
+            
+            return ret != 0;
         }
         
         /// <summary>

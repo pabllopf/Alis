@@ -1306,8 +1306,7 @@ namespace Alis.Extension.Graphic.ImGui
             
             byte* nativeTextEnd = null;
             float wrapWidth = 0.0f;
-            Vector4* cpuFineClipRect = null;
-            ImGuiNative.ImDrawList_AddText_FontPtr(NativePtr, nativeFont, fontSize, pos, col, nativeTextBegin, nativeTextEnd, wrapWidth, cpuFineClipRect);
+            ImGuiNative.ImDrawList_AddText_FontPtr(NativePtr, nativeFont, fontSize, pos, col, nativeTextBegin, nativeTextEnd, wrapWidth, new Vector4());
         }
     }
 }

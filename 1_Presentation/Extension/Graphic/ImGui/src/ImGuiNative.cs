@@ -421,7 +421,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="pOut">The out</param>
         /// <param name="in">The in</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorConvertU32ToFloat4")]
-        public static extern void igColorConvertU32ToFloat4(Vector4* pOut, uint @in);
+        public static extern void igColorConvertU32ToFloat4(out Vector4 pOut, uint @in);
         
         /// <summary>
         ///     Igs the color edit 3 using the specified label
@@ -441,7 +441,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorEdit4")]
-        public static extern byte igColorEdit4(byte* label, Vector4* col, ImGuiColorEditFlags flags);
+        public static extern byte igColorEdit4(byte* label, Vector4 col, ImGuiColorEditFlags flags);
         
         /// <summary>
         ///     Igs the color picker 3 using the specified label
@@ -462,7 +462,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="refCol">The ref col</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorPicker4")]
-        public static extern byte igColorPicker4(byte* label, Vector4* col, ImGuiColorEditFlags flags, float* refCol);
+        public static extern byte igColorPicker4(byte* label, Vector4 col, ImGuiColorEditFlags flags, float* refCol);
         
         /// <summary>
         ///     Igs the columns using the specified count
@@ -613,7 +613,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragFloat4")]
-        public static extern byte igDragFloat4(byte* label, Vector4* v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igDragFloat4(byte* label, Vector4 v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
         
         /// <summary>
         ///     Igs the drag float range 2 using the specified label
@@ -1272,7 +1272,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="idx">The idx</param>
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Vector4* igGetStyleColorVec4(ImGuiCol idx);
+        public static extern Vector4 igGetStyleColorVec4(ImGuiCol idx);
         
         /// <summary>
         ///     Igs the get text line height
@@ -1469,7 +1469,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igInputFloat4(byte* label, Vector4* v, byte* format, ImGuiInputTextFlags flags);
+        public static extern byte igInputFloat4(byte* label, Vector4 v, byte* format, ImGuiInputTextFlags flags);
         
         /// <summary>
         ///     Igs the input int using the specified label
@@ -2773,7 +2773,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igSliderFloat4(byte* label, Vector4* v, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igSliderFloat4(byte* label, Vector4 v, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
         
         /// <summary>
         ///     Igs the slider int using the specified label
@@ -3684,7 +3684,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="wrapWidth">The wrap width</param>
         /// <param name="cpuFineClipRect">The cpu fine clip rect</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddText_FontPtr(ImDrawList* self, ImFont* font, float fontSize, Vector2 pos, uint col, byte* textBegin, byte* textEnd, float wrapWidth, Vector4* cpuFineClipRect);
+        public static extern void ImDrawList_AddText_FontPtr(ImDrawList* self, ImFont* font, float fontSize, Vector2 pos, uint col, byte* textBegin, byte* textEnd, float wrapWidth, Vector4 cpuFineClipRect);
         
         /// <summary>
         ///     Ims the draw list add triangle using the specified self
@@ -5450,14 +5450,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImVec4_destroy(Vector4* self);
+        public static extern void ImVec4_destroy(Vector4 self);
         
         /// <summary>
         ///     Ims the vec 4 im vec 4 nil
         /// </summary>
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Vector4* ImVec4_ImVec4_Nil();
+        public static extern Vector4 ImVec4_ImVec4_Nil();
         
         /// <summary>
         ///     Ims the vec 4 im vec 4 float using the specified  x
@@ -5468,6 +5468,6 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="w">The </param>
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Vector4* ImVec4_ImVec4_Float(float x, float y, float z, float w);
+        public static extern Vector4 ImVec4_ImVec4_Float(float x, float y, float z, float w);
     }
 }
