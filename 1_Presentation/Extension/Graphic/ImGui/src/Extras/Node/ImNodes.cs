@@ -173,20 +173,18 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     Editors the context create
         /// </summary>
         /// <returns>The im nodes editor context ptr</returns>
-        public static ImNodesEditorContextPtr EditorContextCreate()
+        public static ImNodesEditorContext EditorContextCreate()
         {
-            ImNodesEditorContext* ret = ImNodesNative.ImNodes_EditorContextCreate();
-            return new ImNodesEditorContextPtr(ret);
+            return ImNodesNative.ImNodes_EditorContextCreate();
         }
         
         /// <summary>
         ///     Editors the context free using the specified noname 1
         /// </summary>
         /// <param name="noname1">The noname</param>
-        public static void EditorContextFree(ImNodesEditorContextPtr noname1)
+        public static void EditorContextFree(ImNodesEditorContext noname1)
         {
-            ImNodesEditorContext* nativeNoname1 = noname1.NativePtr;
-            ImNodesNative.ImNodes_EditorContextFree(nativeNoname1);
+            ImNodesNative.ImNodes_EditorContextFree(noname1);
         }
         
         /// <summary>
@@ -222,10 +220,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     Editors the context set using the specified noname 1
         /// </summary>
         /// <param name="noname1">The noname</param>
-        public static void EditorContextSet(ImNodesEditorContextPtr noname1)
+        public static void EditorContextSet(ImNodesEditorContext noname1)
         {
-            ImNodesEditorContext* nativeNoname1 = noname1.NativePtr;
-            ImNodesNative.ImNodes_EditorContextSet(nativeNoname1);
+            ImNodesNative.ImNodes_EditorContextSet(noname1);
         }
         
         /// <summary>
@@ -733,9 +730,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="editor">The editor</param>
         /// <param name="fileName">The file name</param>
-        public static void LoadEditorStateFromIniFile(ImNodesEditorContextPtr editor, string fileName)
+        public static void LoadEditorStateFromIniFile(ImNodesEditorContext editor, string fileName)
         {
-            ImNodesEditorContext* nativeEditor = editor.NativePtr;
             byte* nativeFileName;
             int fileNameByteCount = 0;
             if (fileName != null)
@@ -759,7 +755,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
                 nativeFileName = null;
             }
             
-            ImNodesNative.ImNodes_LoadEditorStateFromIniFile(nativeEditor, nativeFileName);
+            ImNodesNative.ImNodes_LoadEditorStateFromIniFile(editor, nativeFileName);
             if (fileNameByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFileName);
@@ -772,9 +768,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="editor">The editor</param>
         /// <param name="data">The data</param>
         /// <param name="dataSize">The data size</param>
-        public static void LoadEditorStateFromIniString(ImNodesEditorContextPtr editor, string data, uint dataSize)
+        public static void LoadEditorStateFromIniString(ImNodesEditorContext editor, string data, uint dataSize)
         {
-            ImNodesEditorContext* nativeEditor = editor.NativePtr;
             byte* nativeData;
             int dataByteCount = 0;
             if (data != null)
@@ -798,7 +793,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
                 nativeData = null;
             }
             
-            ImNodesNative.ImNodes_LoadEditorStateFromIniString(nativeEditor, nativeData, dataSize);
+            ImNodesNative.ImNodes_LoadEditorStateFromIniString(editor, nativeData, dataSize);
             if (dataByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeData);
@@ -1024,9 +1019,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="editor">The editor</param>
         /// <param name="fileName">The file name</param>
-        public static void SaveEditorStateToIniFile(ImNodesEditorContextPtr editor, string fileName)
+        public static void SaveEditorStateToIniFile(ImNodesEditorContext editor, string fileName)
         {
-            ImNodesEditorContext* nativeEditor = editor.NativePtr;
             byte* nativeFileName;
             int fileNameByteCount = 0;
             if (fileName != null)
@@ -1050,7 +1044,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
                 nativeFileName = null;
             }
             
-            ImNodesNative.ImNodes_SaveEditorStateToIniFile(nativeEditor, nativeFileName);
+            ImNodesNative.ImNodes_SaveEditorStateToIniFile(editor, nativeFileName);
             if (fileNameByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFileName);
@@ -1062,23 +1056,15 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="editor">The editor</param>
         /// <returns>The string</returns>
-        public static string SaveEditorStateToIniString(ImNodesEditorContextPtr editor)
+        public static string SaveEditorStateToIniString(ImNodesEditorContext editor)
         {
-            ImNodesEditorContext* nativeEditor = editor.NativePtr;
             uint* dataSize = null;
-            byte* ret = ImNodesNative.ImNodes_SaveEditorStateToIniString(nativeEditor, dataSize);
+            byte* ret = ImNodesNative.ImNodes_SaveEditorStateToIniString(editor, dataSize);
             return Util.StringFromPtr(ret);
         }
         
-        /// <summary>
-        ///     Saves the editor state to ini string using the specified editor
-        /// </summary>
-        /// <param name="editor">The editor</param>
-        /// <param name="dataSize">The data size</param>
-        /// <returns>The string</returns>
-        public static string SaveEditorStateToIniString(ImNodesEditorContextPtr editor, ref uint dataSize)
+        public static string SaveEditorStateToIniString(ImNodesEditorContext nativeEditor, ref uint dataSize)
         {
-            ImNodesEditorContext* nativeEditor = editor.NativePtr;
             fixed (uint* nativeDataSize = &dataSize)
             {
                 byte* ret = ImNodesNative.ImNodes_SaveEditorStateToIniString(nativeEditor, nativeDataSize);
