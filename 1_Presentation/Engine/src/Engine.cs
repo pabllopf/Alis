@@ -44,6 +44,7 @@ using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Extras.GuizMo;
 using Alis.Extension.Graphic.ImGui.Extras.Node;
 using Alis.Extension.Graphic.ImGui.Extras.Plot;
+using Alis.Extension.Graphic.ImGui.Extras.Plot.Native;
 using Alis.Extension.Graphic.OpenGL;
 using Alis.Extension.Graphic.OpenGL.Constructs;
 using Alis.Extension.Graphic.OpenGL.Enums;
