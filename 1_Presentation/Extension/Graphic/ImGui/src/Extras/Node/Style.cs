@@ -32,7 +32,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
     /// <summary>
     ///     The style
     /// </summary>
-    public unsafe struct Style
+    public struct Style
     {
         /// <summary>
         ///     The grid spacing
@@ -112,6 +112,6 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <summary>
         ///     The colors
         /// </summary>
-        public fixed uint Colors[16];
+        public uint[] Colors;
     }
 }
