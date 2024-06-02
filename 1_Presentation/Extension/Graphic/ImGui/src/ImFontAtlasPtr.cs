@@ -155,12 +155,12 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the custom rects
         /// </summary>
-        public ImPtrVector<ImFontAtlasCustomRect> CustomRects => new ImPtrVector<ImFontAtlasCustomRect>(NativePtr->CustomRects, Unsafe.SizeOf<ImFontAtlasCustomRect>());
+        public ImVectorG<ImFontAtlasCustomRect> CustomRects => new ImVectorG<ImFontAtlasCustomRect>(NativePtr->CustomRects);
         
         /// <summary>
         ///     Gets the value of the config data
         /// </summary>
-        public ImPtrVector<ImFontConfigPtr> ConfigData => new ImPtrVector<ImFontConfigPtr>(NativePtr->ConfigData, Unsafe.SizeOf<ImFontConfig>());
+        public ImVectorG<ImFontConfigPtr> ConfigData => new ImVectorG<ImFontConfigPtr>(NativePtr->ConfigData);
         
         /// <summary>
         ///     Gets the value of the tex uv lines
