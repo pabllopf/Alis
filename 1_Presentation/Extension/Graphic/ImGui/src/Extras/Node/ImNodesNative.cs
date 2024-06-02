@@ -139,14 +139,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <returns>The im nodes editor context</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImNodesEditorContext* ImNodes_EditorContextCreate();
+        public static extern ImNodesEditorContext ImNodes_EditorContextCreate();
         
         /// <summary>
         ///     Ims the nodes editor context free using the specified noname 1
         /// </summary>
         /// <param name="noname1">The noname</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_EditorContextFree(ImNodesEditorContext* noname1);
+        public static extern void ImNodes_EditorContextFree(ImNodesEditorContext noname1);
         
         /// <summary>
         ///     Ims the nodes editor context get panning using the specified p out
@@ -174,7 +174,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="noname1">The noname</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_EditorContextSet(ImNodesEditorContext* noname1);
+        public static extern void ImNodes_EditorContextSet(ImNodesEditorContext noname1);
         
         /// <summary>
         ///     Ims the nodes end input attribute
@@ -418,7 +418,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="editor">The editor</param>
         /// <param name="fileName">The file name</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_LoadEditorStateFromIniFile(ImNodesEditorContext* editor, byte* fileName);
+        public static extern void ImNodes_LoadEditorStateFromIniFile(ImNodesEditorContext editor, byte* fileName);
         
         /// <summary>
         ///     Ims the nodes load editor state from ini string using the specified editor
@@ -427,7 +427,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="data">The data</param>
         /// <param name="dataSize">The data size</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_LoadEditorStateFromIniString(ImNodesEditorContext* editor, byte* data, uint dataSize);
+        public static extern void ImNodes_LoadEditorStateFromIniString(ImNodesEditorContext editor, byte* data, uint dataSize);
         
         /// <summary>
         ///     Ims the nodes mini map using the specified minimap size fraction
@@ -524,7 +524,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="editor">The editor</param>
         /// <param name="fileName">The file name</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_SaveEditorStateToIniFile(ImNodesEditorContext* editor, byte* fileName);
+        public static extern void ImNodes_SaveEditorStateToIniFile(ImNodesEditorContext editor, byte* fileName);
         
         /// <summary>
         ///     Ims the nodes save editor state to ini string using the specified editor
@@ -533,7 +533,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="dataSize">The data size</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte* ImNodes_SaveEditorStateToIniString(ImNodesEditorContext* editor, uint* dataSize);
+        public static extern byte* ImNodes_SaveEditorStateToIniString(ImNodesEditorContext editor, uint* dataSize);
         
         /// <summary>
         ///     Ims the nodes select link using the specified link id
