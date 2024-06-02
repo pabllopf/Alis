@@ -112,6 +112,7 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="tag">The tag</param>
         /// <param name="transform">The transform</param>
         [JsonConstructor]
+        [ExcludeFromCodeCoverage]
         public GameObject(bool isEnable, string name, string id, string tag, Transform transform)
         {
             IsEnable = isEnable;
@@ -131,6 +132,7 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="tag">The tag</param>
         /// <param name="transform">The transform</param>
         /// <param name="components">The components</param>
+        [ExcludeFromCodeCoverage]
         public GameObject(bool isEnable, string name, string id, string tag, Transform transform, List<AComponent> components) : this()
         {
             IsEnable = isEnable;

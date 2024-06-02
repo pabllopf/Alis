@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Ecs.System.Setting.Audio;
 using Alis.Core.Ecs.System.Setting.General;
@@ -69,6 +70,7 @@ namespace Alis.Core.Ecs.System.Setting
         /// <param name="physic">The physic</param>
         /// <param name="scene">The scene</param>
         [JsonConstructor]
+        [ExcludeFromCodeCoverage]
         public Settings(GeneralSetting general, AudioSetting audio, GraphicSetting graphic, InputSetting input, NetworkSetting network, PhysicSetting physic, SceneSetting scene)
         {
             General = general;

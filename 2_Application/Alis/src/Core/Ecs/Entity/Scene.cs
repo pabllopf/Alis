@@ -113,6 +113,7 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="id">The id</param>
         /// <param name="tag">The tag</param>
         /// <param name="gameObjects">The game objects</param>
+        [ExcludeFromCodeCoverage]
         public Scene(bool isEnable, string name, string id, string tag, List<GameObject> gameObjects) : this()
         {
             IsEnable = isEnable;
