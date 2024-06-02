@@ -32,11 +32,11 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
     /// <summary>
     ///     The link detach with modifier click
     /// </summary>
-    public unsafe struct LinkDetachWithModifierClick
+    public struct LinkDetachWithModifierClick
     {
         /// <summary>
         ///     The modifier
         /// </summary>
-        public byte* Modifier;
+        public byte[] Modifier;
     }
 }

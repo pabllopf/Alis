@@ -36,7 +36,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
     /// <summary>
     ///     The imnodes native class
     /// </summary>
-    public static unsafe class ImNodesNative
+    public static class ImNodesNative
     {
         /// <summary>
         ///     Emulates the three button mouse destroy using the specified self
@@ -153,7 +153,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_EditorContextGetPanning(Vector2* pOut);
+        public static extern void ImNodes_EditorContextGetPanning(out Vector2 pOut);
         
         /// <summary>
         ///     Ims the nodes editor context move to node using the specified node id
@@ -232,7 +232,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="pOut">The out</param>
         /// <param name="id">The id</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_GetNodeDimensions(Vector2* pOut, int id);
+        public static extern void ImNodes_GetNodeDimensions(out Vector2 pOut, int id);
         
         /// <summary>
         ///     Ims the nodes get node editor space pos using the specified p out
@@ -240,7 +240,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="pOut">The out</param>
         /// <param name="nodeId">The node id</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_GetNodeEditorSpacePos(Vector2* pOut, int nodeId);
+        public static extern void ImNodes_GetNodeEditorSpacePos(out Vector2 pOut, int nodeId);
         
         /// <summary>
         ///     Ims the nodes get node grid space pos using the specified p out
@@ -248,7 +248,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="pOut">The out</param>
         /// <param name="nodeId">The node id</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_GetNodeGridSpacePos(Vector2* pOut, int nodeId);
+        public static extern void ImNodes_GetNodeGridSpacePos(out Vector2 pOut, int nodeId);
         
         /// <summary>
         ///     Ims the nodes get node screen space pos using the specified p out
@@ -256,21 +256,21 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="pOut">The out</param>
         /// <param name="nodeId">The node id</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_GetNodeScreenSpacePos(Vector2* pOut, int nodeId);
+        public static extern void ImNodes_GetNodeScreenSpacePos(out Vector2 pOut, int nodeId);
         
         /// <summary>
         ///     Ims the nodes get selected links using the specified link ids
         /// </summary>
         /// <param name="linkIds">The link ids</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_GetSelectedLinks(int* linkIds);
+        public static extern void ImNodes_GetSelectedLinks(int linkIds);
         
         /// <summary>
         ///     Ims the nodes get selected nodes using the specified node ids
         /// </summary>
         /// <param name="nodeIds">The node ids</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_GetSelectedNodes(int* nodeIds);
+        public static extern void ImNodes_GetSelectedNodes(int nodeIds);
         
         /// <summary>
         ///     Ims the nodes get style
@@ -285,7 +285,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="attributeId">The attribute id</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImNodes_IsAnyAttributeActive(int* attributeId);
+        public static extern byte ImNodes_IsAnyAttributeActive(int attributeId);
         
         /// <summary>
         ///     Ims the nodes is attribute active
@@ -309,7 +309,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="createdFromSnap">The created from snap</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImNodes_IsLinkCreated_BoolPtr(int* startedAtAttributeId, int* endedAtAttributeId, byte* createdFromSnap);
+        public static extern byte ImNodes_IsLinkCreated_BoolPtr(int startedAtAttributeId, int endedAtAttributeId, byte[] createdFromSnap);
         
         /// <summary>
         ///     Ims the nodes is link created int ptr using the specified started at node id
@@ -321,7 +321,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="createdFromSnap">The created from snap</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImNodes_IsLinkCreated_IntPtr(int* startedAtNodeId, int* startedAtAttributeId, int* endedAtNodeId, int* endedAtAttributeId, byte* createdFromSnap);
+        public static extern byte ImNodes_IsLinkCreated_IntPtr(int startedAtNodeId, int startedAtAttributeId, int endedAtNodeId, int endedAtAttributeId, byte createdFromSnap);
         
         /// <summary>
         ///     Ims the nodes is link destroyed using the specified link id
@@ -329,7 +329,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="linkId">The link id</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImNodes_IsLinkDestroyed(int* linkId);
+        public static extern byte ImNodes_IsLinkDestroyed(int linkId);
         
         /// <summary>
         ///     Ims the nodes is link dropped using the specified started at attribute id
@@ -338,7 +338,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="includingDetachedLinks">The including detached links</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImNodes_IsLinkDropped(int* startedAtAttributeId, byte includingDetachedLinks);
+        public static extern byte ImNodes_IsLinkDropped(int startedAtAttributeId, byte includingDetachedLinks);
         
         /// <summary>
         ///     Ims the nodes is link hovered using the specified link id
@@ -346,7 +346,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="linkId">The link id</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImNodes_IsLinkHovered(int* linkId);
+        public static extern byte ImNodes_IsLinkHovered(int linkId);
         
         /// <summary>
         ///     Ims the nodes is link selected using the specified link id
@@ -362,7 +362,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="startedAtAttributeId">The started at attribute id</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImNodes_IsLinkStarted(int* startedAtAttributeId);
+        public static extern byte ImNodes_IsLinkStarted(int startedAtAttributeId);
         
         /// <summary>
         ///     Ims the nodes is node hovered using the specified node id
@@ -370,7 +370,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="nodeId">The node id</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImNodes_IsNodeHovered(int* nodeId);
+        public static extern byte ImNodes_IsNodeHovered(int nodeId);
         
         /// <summary>
         ///     Ims the nodes is node selected using the specified node id
@@ -386,7 +386,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="attributeId">The attribute id</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImNodes_IsPinHovered(int* attributeId);
+        public static extern byte ImNodes_IsPinHovered(int attributeId);
         
         /// <summary>
         ///     Ims the nodes link using the specified id
@@ -402,7 +402,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="fileName">The file name</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_LoadCurrentEditorStateFromIniFile(byte* fileName);
+        public static extern void ImNodes_LoadCurrentEditorStateFromIniFile(byte[] fileName);
         
         /// <summary>
         ///     Ims the nodes load current editor state from ini string using the specified data
@@ -410,7 +410,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="data">The data</param>
         /// <param name="dataSize">The data size</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_LoadCurrentEditorStateFromIniString(byte* data, uint dataSize);
+        public static extern void ImNodes_LoadCurrentEditorStateFromIniString(byte[] data, uint dataSize);
         
         /// <summary>
         ///     Ims the nodes load editor state from ini file using the specified editor
@@ -418,7 +418,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="editor">The editor</param>
         /// <param name="fileName">The file name</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_LoadEditorStateFromIniFile(ImNodesEditorContext editor, byte* fileName);
+        public static extern void ImNodes_LoadEditorStateFromIniFile(ImNodesEditorContext editor, byte[] fileName);
         
         /// <summary>
         ///     Ims the nodes load editor state from ini string using the specified editor
@@ -427,7 +427,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="data">The data</param>
         /// <param name="dataSize">The data size</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_LoadEditorStateFromIniString(ImNodesEditorContext editor, byte* data, uint dataSize);
+        public static extern void ImNodes_LoadEditorStateFromIniString(ImNodesEditorContext editor, byte[] data, uint dataSize);
         
         /// <summary>
         ///     Ims the nodes mini map using the specified minimap size fraction
@@ -508,7 +508,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="fileName">The file name</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_SaveCurrentEditorStateToIniFile(byte* fileName);
+        public static extern void ImNodes_SaveCurrentEditorStateToIniFile(byte[] fileName);
         
         /// <summary>
         ///     Ims the nodes save current editor state to ini string using the specified data size
@@ -516,7 +516,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="dataSize">The data size</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte* ImNodes_SaveCurrentEditorStateToIniString(uint* dataSize);
+        public static extern byte[] ImNodes_SaveCurrentEditorStateToIniString(IntPtr dataSize);
         
         /// <summary>
         ///     Ims the nodes save editor state to ini file using the specified editor
@@ -524,7 +524,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="editor">The editor</param>
         /// <param name="fileName">The file name</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImNodes_SaveEditorStateToIniFile(ImNodesEditorContext editor, byte* fileName);
+        public static extern void ImNodes_SaveEditorStateToIniFile(ImNodesEditorContext editor, byte[] fileName);
         
         /// <summary>
         ///     Ims the nodes save editor state to ini string using the specified editor
@@ -533,7 +533,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="dataSize">The data size</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte* ImNodes_SaveEditorStateToIniString(ImNodesEditorContext editor, uint* dataSize);
+        public static extern byte[] ImNodes_SaveEditorStateToIniString(ImNodesEditorContext editor, uint dataSize);
         
         /// <summary>
         ///     Ims the nodes select link using the specified link id
@@ -656,27 +656,27 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void LinkDetachWithModifierClick_destroy(LinkDetachWithModifierClick* self);
+        public static extern void LinkDetachWithModifierClick_destroy(LinkDetachWithModifierClick self);
         
         /// <summary>
         ///     Links the detach with modifier click link detach with modifier click
         /// </summary>
         /// <returns>The link detach with modifier click</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern LinkDetachWithModifierClick* LinkDetachWithModifierClick_LinkDetachWithModifierClick();
+        public static extern LinkDetachWithModifierClick LinkDetachWithModifierClick_LinkDetachWithModifierClick();
         
         /// <summary>
         ///     Multiples the select modifier destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void MultipleSelectModifier_destroy(MultipleSelectModifier* self);
+        public static extern void MultipleSelectModifier_destroy(MultipleSelectModifier self);
         
         /// <summary>
         ///     Multiples the select modifier multiple select modifier
         /// </summary>
         /// <returns>The multiple select modifier</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern MultipleSelectModifier* MultipleSelectModifier_MultipleSelectModifier();
+        public static extern MultipleSelectModifier MultipleSelectModifier_MultipleSelectModifier();
     }
 }

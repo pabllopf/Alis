@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.ImGui.Extras.Node
@@ -34,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
     /// <summary>
     ///     The im nodes style
     /// </summary>
-    public unsafe struct ImNodesStyle
+    public struct ImNodesStyle
     {
         /// <summary>
         ///     The grid spacing
@@ -119,6 +120,6 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <summary>
         ///     The colors
         /// </summary>
-        public fixed uint Colors[29];
+        public uint[] Colors;
     }
 }

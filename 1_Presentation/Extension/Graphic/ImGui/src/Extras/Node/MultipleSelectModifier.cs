@@ -32,11 +32,11 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
     /// <summary>
     ///     The multiple select modifier
     /// </summary>
-    public unsafe struct MultipleSelectModifier
+    public struct MultipleSelectModifier
     {
         /// <summary>
         ///     The modifier
         /// </summary>
-        public byte* Modifier;
+        public byte[] Modifier;
     }
 }
