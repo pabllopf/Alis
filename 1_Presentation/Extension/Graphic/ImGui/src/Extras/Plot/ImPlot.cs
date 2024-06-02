@@ -2157,10 +2157,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         ///     Gets the input map
         /// </summary>
         /// <returns>The im plot input map ptr</returns>
-        public static ImPlotInputMapPtr GetInputMap()
+        public static ImPlotInputMap GetInputMap()
         {
-            ImPlotInputMap* ret = ImPlotNative.ImPlot_GetInputMap();
-            return new ImPlotInputMapPtr(ret);
+            return ImPlotNative.ImPlot_GetInputMap();
         }
         
         /// <summary>
@@ -2480,18 +2479,16 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         public static void MapInputDefault()
         {
-            ImPlotInputMap* dst = null;
-            ImPlotNative.ImPlot_MapInputDefault(dst);
+            ImPlotNative.ImPlot_MapInputDefault(new ImPlotInputMap());
         }
         
         /// <summary>
         ///     Maps the input default using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        public static void MapInputDefault(ImPlotInputMapPtr dst)
+        public static void MapInputDefault(ImPlotInputMap dst)
         {
-            ImPlotInputMap* nativeDst = dst.NativePtr;
-            ImPlotNative.ImPlot_MapInputDefault(nativeDst);
+            ImPlotNative.ImPlot_MapInputDefault(dst);
         }
         
         /// <summary>
@@ -2499,18 +2496,16 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         public static void MapInputReverse()
         {
-            ImPlotInputMap* dst = null;
-            ImPlotNative.ImPlot_MapInputReverse(dst);
+            ImPlotNative.ImPlot_MapInputReverse(new ImPlotInputMap());
         }
         
         /// <summary>
         ///     Maps the input reverse using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        public static void MapInputReverse(ImPlotInputMapPtr dst)
+        public static void MapInputReverse(ImPlotInputMap dst)
         {
-            ImPlotInputMap* nativeDst = dst.NativePtr;
-            ImPlotNative.ImPlot_MapInputReverse(nativeDst);
+            ImPlotNative.ImPlot_MapInputReverse(dst);
         }
         
         /// <summary>

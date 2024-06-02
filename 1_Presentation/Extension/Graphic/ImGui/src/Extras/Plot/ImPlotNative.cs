@@ -382,7 +382,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <returns>The im plot input map</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImPlotInputMap* ImPlot_GetInputMap();
+        public static extern ImPlotInputMap ImPlot_GetInputMap();
         
         /// <summary>
         ///     Ims the plot get last item color using the specified p out
@@ -526,14 +526,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="dst">The dst</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_MapInputDefault(ImPlotInputMap* dst);
+        public static extern void ImPlot_MapInputDefault(ImPlotInputMap dst);
         
         /// <summary>
         ///     Ims the plot map input reverse using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_MapInputReverse(ImPlotInputMap* dst);
+        public static extern void ImPlot_MapInputReverse(ImPlotInputMap dst);
         
         /// <summary>
         ///     Ims the plot next colormap color using the specified p out
@@ -4238,14 +4238,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlotInputMap_destroy(ImPlotInputMap* self);
+        public static extern void ImPlotInputMap_destroy(ImPlotInputMap self);
         
         /// <summary>
         ///     Ims the plot input map im plot input map
         /// </summary>
         /// <returns>The im plot input map</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImPlotInputMap* ImPlotInputMap_ImPlotInputMap();
+        public static extern ImPlotInputMap ImPlotInputMap_ImPlotInputMap();
         
         /// <summary>
         ///     Ims the plot point destroy using the specified self
