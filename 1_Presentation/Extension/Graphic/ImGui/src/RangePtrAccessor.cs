@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.ImGui.Utils;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -35,12 +36,12 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The range ptr accessor
     /// </summary>
-    public readonly unsafe struct RangePtrAccessor<T> where T : unmanaged
+    public readonly struct RangePtrAccessor<T> where T : unmanaged
     {
         /// <summary>
         ///     The data
         /// </summary>
-        public readonly void* Data;
+        public readonly IntPtr Data;
         
         /// <summary>
         ///     The count
@@ -52,23 +53,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="data">The data</param>
         /// <param name="count">The count</param>
-        public RangePtrAccessor(IntPtr data, int count) : this(data.ToPointer(), count)
-        {
-        }
-        
-        /// <summary>
-        ///     Initializes a new instance of the  class
-        /// </summary>
-        /// <param name="data">The data</param>
-        /// <param name="count">The count</param>
-        public RangePtrAccessor(void* data, int count)
+        public RangePtrAccessor(IntPtr data, int count)
         {
             Data = data;
             Count = count;
         }
         
         /// <summary>
-        ///     The index
+        /// The free
         /// </summary>
         public T this[int index]
         {
@@ -79,7 +71,17 @@ namespace Alis.Extension.Graphic.ImGui
                     throw new IndexOutOfRangeException();
                 }
                 
-                return Unsafe.Read<T>((byte*) Data + sizeof(void*) * index);
+                byte[] bytes = new byte[Marshal.SizeOf<T>()];
+                Marshal.Copy(Data + index * Marshal.SizeOf<T>(), bytes, 0, bytes.Length);
+                GCHandle handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
+                try
+                {
+                    return (T) Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T));
+                }
+                finally
+                {
+                    handle.Free();
+                }
             }
         }
     }
