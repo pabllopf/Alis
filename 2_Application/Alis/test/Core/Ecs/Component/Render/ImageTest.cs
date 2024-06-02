@@ -32,12 +32,6 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.System;
-using Alis.Core.Ecs.System.Manager.Audio;
-using Alis.Core.Ecs.System.Manager.Graphic;
-using Alis.Core.Ecs.System.Manager.Input;
-using Alis.Core.Ecs.System.Manager.Network;
-using Alis.Core.Ecs.System.Manager.Physic;
-using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
 using Xunit;
 

@@ -29,7 +29,6 @@
 
 using Alis.Core.Aspect.Math;
 using Alis.Core.Ecs.Component;
-using Alis.Core.Physic;
 using Vector2 = Alis.Core.Aspect.Math.Vector.Vector2;
 
 namespace Alis.Sample.Flappy.Bird
