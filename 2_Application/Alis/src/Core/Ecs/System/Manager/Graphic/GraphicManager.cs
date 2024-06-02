@@ -93,25 +93,25 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         ///     The box collider
         /// </summary>
         [JsonPropertyName("_ColliderBases_")]
-        public readonly List<BoxCollider> ColliderBases;
+        public List<BoxCollider> ColliderBases { get; set; }
         
         /// <summary>
         ///     The window
         /// </summary>
         [JsonPropertyName("_Window_", true, true)]
-        public IntPtr Window;
+        public IntPtr Window { get; set; }
         
         /// <summary>
         ///     The default size
         /// </summary>
         [JsonPropertyName("_DefaultSize_")]
-        public Vector2 DefaultSize;
+        public Vector2 DefaultSize { get; set; }
         
         /// <summary>
         ///     The renderWindow
         /// </summary>
         [JsonPropertyName("_Renderer_", true, true)]
-        public IntPtr Renderer;
+        public IntPtr Renderer { get; set; }
         
         /// <summary>
         ///     Gets or sets the value of the sprites
