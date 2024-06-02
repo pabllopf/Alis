@@ -185,43 +185,24 @@ namespace Alis.Core.Physic.Dynamics
             Vector2 position = Vector2.Zero;
             Vector2 linearVelocity = Vector2.Zero;
             BodyType bodyType = BodyType.Static ;
-            float angle = 0.0f;
-            float angularVelocity = 0.0f;
-            float linearDamping = 0.0f;
-            float angularDamping = 0.0f;
-            bool allowSleep = true;
-            bool awake = true;
-            bool fixedRotation = false;
-            bool isBullet = false;
-            bool enabled = true;
-            float gravityScale = 1.0f;
+             float angle = 0.0f;
+            LinearDamping = 0.0f;
+            AngularDamping = 0.0f;
+            GravityScale = 1.0f;
+            SleepingAllowed = true;
+            angularVelocity = 0.0f;
+            Awake = true;
+            IsBullet = false;
+            FixedRotation = false;
+            Enabled = true;
             
             FixtureList = new List<Fixture>(1);
             
-            if (isBullet)
-            {
-                Flags |= BodySettings.BulletFlag;
-            }
+            Flags |= BodySettings.AutoSleepFlag;
             
-            if (fixedRotation)
-            {
-                Flags |= BodySettings.FixedRotationFlag;
-            }
+            Flags |= BodySettings.AwakeFlag;
             
-            if (allowSleep)
-            {
-                Flags |= BodySettings.AutoSleepFlag;
-            }
-            
-            if (awake)
-            {
-                Flags |= BodySettings.AwakeFlag;
-            }
-            
-            if (enabled)
-            {
-                Flags |= BodySettings.Enabled;
-            }
+            Flags |= BodySettings.Enabled;
             
             Xf.Position = position;
             Xf.Rotation.Set(angle);
@@ -233,10 +214,6 @@ namespace Alis.Core.Physic.Dynamics
             
             LinearVelocity = linearVelocity;
             AngularVelocity = angularVelocity;
-            
-            LinearDamping = linearDamping;
-            AngularDamping = angularDamping;
-            GravityScale = gravityScale;
             
             Type = bodyType;
             
