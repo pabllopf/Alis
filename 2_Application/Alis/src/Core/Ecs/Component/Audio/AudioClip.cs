@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Audio;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
@@ -60,6 +61,10 @@ namespace Alis.Core.Ecs.Component.Audio
             Logger.Trace();
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioClip"/> class
+        /// </summary>
+        /// <param name="nameFile">The name file</param>
         public AudioClip(string nameFile)
         {
             NameFile = nameFile;
@@ -71,7 +76,16 @@ namespace Alis.Core.Ecs.Component.Audio
             Logger.Trace();
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioClip"/> class
+        /// </summary>
+        /// <param name="nameFile">The name file</param>
+        /// <param name="isPlaying">The is playing</param>
+        /// <param name="isMute">The is mute</param>
+        /// <param name="isLooping">The is looping</param>
+        /// <param name="volume">The volume</param>
         [JsonConstructor]
+        [ExcludeFromCodeCoverage]
         public AudioClip(string nameFile, bool isPlaying, bool isMute, bool isLooping, float volume)
         {
             NameFile = nameFile;
@@ -107,6 +121,9 @@ namespace Alis.Core.Ecs.Component.Audio
         [JsonPropertyName("_Volume_")]
         public float Volume { get; set; }
         
+        /// <summary>
+        /// Gets or sets the value of the name file
+        /// </summary>
         [JsonPropertyName("_NameFile_")]
         public string NameFile { get; set; }
         

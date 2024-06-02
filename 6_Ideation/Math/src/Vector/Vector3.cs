@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -300,6 +301,12 @@ namespace Alis.Core.Aspect.Math.Vector
         /// </remarks>
         public readonly override string ToString() => ToString("G", CultureInfo.CurrentCulture);
         
+        /// <summary>
+        /// Gets the object data using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("X", X);
@@ -307,6 +314,12 @@ namespace Alis.Core.Aspect.Math.Vector
             info.AddValue("Z", Z);
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Vector3"/> class
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
         public Vector3(SerializationInfo info, StreamingContext context)
         {
             X = info.GetSingle("X");

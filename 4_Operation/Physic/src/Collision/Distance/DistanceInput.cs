@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math;
+
 namespace Alis.Core.Physic.Collision.Distance
 {
     /// <summary>Input for Distance.ComputeDistance(). You have to option to use the shape radii in the computation.</summary>

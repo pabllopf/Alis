@@ -39,7 +39,7 @@ namespace Alis.Builder.Core.Ecs.Entity.Transform
     /// </summary>
     /// <seealso cref="IBuild{Transform}" />
     public class TransformBuilder :
-        IBuild<Alis.Core.Physic.Transform>,
+        IBuild<Alis.Core.Aspect.Math.Transform>,
         IPosition2D<TransformBuilder, float>,
         IRotation<TransformBuilder, float>,
         IScale2D<TransformBuilder, float>
@@ -47,13 +47,13 @@ namespace Alis.Builder.Core.Ecs.Entity.Transform
         /// <summary>
         ///     The transform
         /// </summary>
-        private Alis.Core.Physic.Transform transform = new Alis.Core.Physic.Transform(new Vector2(0, 0), new Rotation(0), new Vector2(1, 1));
+        private Alis.Core.Aspect.Math.Transform transform = new Alis.Core.Aspect.Math.Transform(new Vector2(0, 0), new Rotation(0), new Vector2(1, 1));
         
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The transform</returns>
-        public Alis.Core.Physic.Transform Build() => transform;
+        public Alis.Core.Aspect.Math.Transform Build() => transform;
         
         /// <summary>
         ///     Positions the x

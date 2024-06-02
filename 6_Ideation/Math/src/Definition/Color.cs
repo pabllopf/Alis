@@ -27,12 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
+
 namespace Alis.Core.Aspect.Math.Definition
 {
     /// <summary>
     ///     The color
     /// </summary>
-    public struct Color 
+    [Serializable]
+    public struct Color : ISerializable
     {
         /// <summary>
         ///     The
@@ -108,5 +113,33 @@ namespace Alis.Core.Aspect.Math.Definition
         ///     Gets or sets the value of the dark green
         /// </summary>
         public static Color DarkGreen { get; } = new Color(0, 100, 0, 255);
+        
+        /// <summary>
+        /// Gets the object data using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("R", R);
+            info.AddValue("G", G);
+            info.AddValue("B", B);
+            info.AddValue("A", A);
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Color"/> class
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
+        public Color(SerializationInfo info, StreamingContext context)
+        {
+            R = info.GetByte("R");
+            G = info.GetByte("G");
+            B = info.GetByte("B");
+            A = info.GetByte("A");
+        }
     }
 }

@@ -162,7 +162,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         public void Transform_ShouldSetTransformOfGameObject()
         {
             GameObjectBuilder builder = new GameObjectBuilder();
-            Alis.Core.Physic.Transform transform = new TransformBuilder().Build();
+            Alis.Core.Aspect.Math.Transform transform = new TransformBuilder().Build();
             
             builder.Transform(_ => transform);
             

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 
@@ -85,6 +86,12 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <summary>Projective/Homogenous component of the vector</summary>
         public float W;
         
+        /// <summary>
+        /// Gets the object data using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
              info.AddValue("X", X);
@@ -93,6 +100,12 @@ namespace Alis.Core.Aspect.Math.Vector
                 info.AddValue("W", W);
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Vector4"/> class
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
         public Vector4(SerializationInfo info, StreamingContext context)
         {
             X = info.GetSingle("X");

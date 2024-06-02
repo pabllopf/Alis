@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Fluent;
 
@@ -42,19 +43,20 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public Animation() => Frames = new List<Frame>();
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
         /// <param name="textures">The textures</param>
+        [ExcludeFromCodeCoverage]
         public Animation(List<Frame> textures) => Frames = textures;
         
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; } = "Default Animation";
-        
         
         /// <summary>
         ///     Gets or sets the value of the index

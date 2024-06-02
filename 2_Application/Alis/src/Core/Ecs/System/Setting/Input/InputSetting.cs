@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Input;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
@@ -44,6 +45,7 @@ namespace Alis.Core.Ecs.System.Setting.Input
         /// <summary>
         /// Initializes a new instance of the <see cref="InputSetting"/> class
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public InputSetting()
         {
             UpdateMode = UpdateMode.DynamicUpdate;
@@ -54,6 +56,7 @@ namespace Alis.Core.Ecs.System.Setting.Input
         /// </summary>
         /// <param name="updateMode">The update mode</param>
         [JsonConstructor]
+        [ExcludeFromCodeCoverage]
         public InputSetting(UpdateMode updateMode)
         {
             UpdateMode = updateMode;

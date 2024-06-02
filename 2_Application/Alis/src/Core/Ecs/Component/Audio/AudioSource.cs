@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using Alis.Builder.Core.Ecs.Component.Audio;
 using Alis.Core.Aspect.Data.Json;
@@ -45,6 +46,7 @@ namespace Alis.Core.Ecs.Component.Audio
         /// </summary>
         /// <param name="audioClip">The audio clip</param>
         [JsonConstructor]
+        [ExcludeFromCodeCoverage]
         public AudioSource(AudioClip audioClip)
         {
             AudioClip = audioClip;
@@ -54,6 +56,7 @@ namespace Alis.Core.Ecs.Component.Audio
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioSource" /> class
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public AudioSource()
         {
             AudioClip = new AudioClip();

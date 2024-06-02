@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Network;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
@@ -44,6 +45,7 @@ namespace Alis.Core.Ecs.System.Setting.Network
         /// <summary>
         /// Initializes a new instance of the <see cref="NetworkSetting"/> class
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public NetworkSetting()
         {
             Port = 8080;
@@ -60,6 +62,7 @@ namespace Alis.Core.Ecs.System.Setting.Network
         /// <param name="host">The host</param>
         /// <param name="protocol">The protocol</param>
         [JsonConstructor]
+        [ExcludeFromCodeCoverage]
         public NetworkSetting(int port, string ip, string host, string protocol)
         {
             Port = port;

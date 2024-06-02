@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 
@@ -75,6 +76,12 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
             this.W = w;
         }
         
+        /// <summary>
+        /// Gets the object data using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("X", X);
@@ -83,6 +90,12 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
             info.AddValue("H", H);
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RectangleI"/> class
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
         public RectangleI(SerializationInfo info, StreamingContext context)
         {
             X = info.GetInt32("X");

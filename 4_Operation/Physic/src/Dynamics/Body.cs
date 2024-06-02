@@ -180,6 +180,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         /// Initializes a new instance of the <see cref="Body"/> class
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public Body()
         {
             Vector2 position = Vector2.Zero;

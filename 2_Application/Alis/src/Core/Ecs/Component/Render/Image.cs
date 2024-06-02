@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Vector;
@@ -41,6 +42,9 @@ namespace Alis.Core.Ecs.Component.Render
     /// </summary>
     public class Image
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Image"/> class
+        /// </summary>
         public Image()
         {
             NameFile = string.Empty;
@@ -48,6 +52,11 @@ namespace Alis.Core.Ecs.Component.Render
             Size = new Vector2();
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Image"/> class
+        /// </summary>
+        /// <param name="nameFile">The name file</param>
+        [ExcludeFromCodeCoverage]
         public Image(string nameFile)
         {
             NameFile = nameFile;
@@ -55,7 +64,13 @@ namespace Alis.Core.Ecs.Component.Render
             Load();
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Image"/> class
+        /// </summary>
+        /// <param name="nameFile">The name file</param>
+        /// <param name="size">The size</param>
         [JsonConstructor]
+        [ExcludeFromCodeCoverage]
         public Image(string nameFile, Vector2 size)
         {
             NameFile = nameFile;
@@ -76,6 +91,9 @@ namespace Alis.Core.Ecs.Component.Render
         [JsonIgnore]
         public string Path { get; set; }
         
+        /// <summary>
+        /// Gets or sets the value of the name file
+        /// </summary>
         [JsonPropertyName("_NameFile_")]
         public string NameFile { get; set; }
         
@@ -91,6 +109,9 @@ namespace Alis.Core.Ecs.Component.Render
         [JsonPropertyName("_Size_")]
         public Vector2 Size { get; set; }
         
+        /// <summary>
+        /// Loads this instance
+        /// </summary>
         public void Load()
         {
             if (!string.IsNullOrEmpty(NameFile))
