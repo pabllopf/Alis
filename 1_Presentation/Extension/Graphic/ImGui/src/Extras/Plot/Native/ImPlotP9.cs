@@ -46,43 +46,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotLine(string labelId, ref int xs, ref int ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(int);
-            fixed (int* nativeXs = &xs)
-            {
-                fixed (int* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotLine_S32PtrS32Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, 0, 0, sizeof(int));
         }
         
         /// <summary>
@@ -95,42 +59,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotLine(string labelId, ref int xs, ref int ys, int count, ImPlotLineFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(int);
-            fixed (int* nativeXs = &xs)
-            {
-                fixed (int* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotLine_S32PtrS32Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, 0, sizeof(int));
         }
         
         /// <summary>
@@ -144,41 +73,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotLine(string labelId, ref int xs, ref int ys, int count, ImPlotLineFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(int);
-            fixed (int* nativeXs = &xs)
-            {
-                fixed (int* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotLine_S32PtrS32Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, sizeof(int));
         }
         
         /// <summary>
@@ -193,40 +88,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotLine(string labelId, ref int xs, ref int ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (int* nativeXs = &xs)
-            {
-                fixed (int* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotLine_S32PtrS32Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -238,43 +100,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotLine(string labelId, ref uint xs, ref uint ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(uint);
-            fixed (uint* nativeXs = &xs)
-            {
-                fixed (uint* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotLine_U32PtrU32Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, 0, 0, sizeof(uint));
         }
         
         /// <summary>
@@ -287,42 +113,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotLine(string labelId, ref uint xs, ref uint ys, int count, ImPlotLineFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(uint);
-            fixed (uint* nativeXs = &xs)
-            {
-                fixed (uint* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotLine_U32PtrU32Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, 0, sizeof(uint));
         }
         
         /// <summary>
@@ -336,41 +127,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotLine(string labelId, ref uint xs, ref uint ys, int count, ImPlotLineFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(uint);
-            fixed (uint* nativeXs = &xs)
-            {
-                fixed (uint* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotLine_U32PtrU32Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, sizeof(uint));
         }
         
         /// <summary>
@@ -385,40 +142,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotLine(string labelId, ref uint xs, ref uint ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (uint* nativeXs = &xs)
-            {
-                fixed (uint* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotLine_U32PtrU32Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -430,43 +154,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotLine(string labelId, ref long xs, ref long ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(long);
-            fixed (long* nativeXs = &xs)
-            {
-                fixed (long* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotLine_S64PtrS64Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(long));
         }
         
         /// <summary>
@@ -479,42 +167,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotLine(string labelId, ref long xs, ref long ys, int count, ImPlotLineFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(long);
-            fixed (long* nativeXs = &xs)
-            {
-                fixed (long* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotLine_S64PtrS64Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(long));
         }
         
         /// <summary>
@@ -528,41 +181,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotLine(string labelId, ref long xs, ref long ys, int count, ImPlotLineFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(long);
-            fixed (long* nativeXs = &xs)
-            {
-                fixed (long* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotLine_S64PtrS64Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(long));
         }
         
         /// <summary>
@@ -577,40 +196,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotLine(string labelId, ref long xs, ref long ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (long* nativeXs = &xs)
-            {
-                fixed (long* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotLine_S64PtrS64Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -622,43 +208,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotLine(string labelId, ref ulong xs, ref ulong ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(ulong);
-            fixed (ulong* nativeXs = &xs)
-            {
-                fixed (ulong* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotLine_U64PtrU64Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(ulong));
         }
         
         /// <summary>
@@ -671,42 +221,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotLine(string labelId, ref ulong xs, ref ulong ys, int count, ImPlotLineFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(ulong);
-            fixed (ulong* nativeXs = &xs)
-            {
-                fixed (ulong* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotLine_U64PtrU64Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(ulong));
         }
         
         /// <summary>
@@ -720,41 +235,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotLine(string labelId, ref ulong xs, ref ulong ys, int count, ImPlotLineFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(ulong);
-            fixed (ulong* nativeXs = &xs)
-            {
-                fixed (ulong* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotLine_U64PtrU64Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(ulong));
         }
         
         /// <summary>
@@ -769,40 +250,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotLine(string labelId, ref ulong xs, ref ulong ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (ulong* nativeXs = &xs)
-            {
-                fixed (ulong* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotLine_U64PtrU64Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -814,36 +262,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotLineG(string labelId, IntPtr getter, IntPtr data, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            void* nativeData = data.ToPointer();
-            ImPlotLineFlags flags = 0;
-            ImPlotNative.ImPlot_PlotLineG(nativeLabelId, getter, nativeData, count, flags);
-            if (labelIdByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeLabelId);
-            }
+            ImPlotNative.ImPlot_PlotLineG(Encoding.UTF8.GetBytes(labelId), getter, data, count, 0);
         }
         
         /// <summary>
@@ -856,35 +275,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotLineG(string labelId, IntPtr getter, IntPtr data, int count, ImPlotLineFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            void* nativeData = data.ToPointer();
-            ImPlotNative.ImPlot_PlotLineG(nativeLabelId, getter, nativeData, count, flags);
-            if (labelIdByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeLabelId);
-            }
+            ImPlotNative.ImPlot_PlotLineG(Encoding.UTF8.GetBytes(labelId), getter, data, count, flags);
         }
         
         /// <summary>
@@ -898,61 +289,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="radius">The radius</param>
         public static void PlotPieChart(string[] labelIds, ref float values, int count, double x, double y, double radius)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            labelFmtByteCount = Encoding.UTF8.GetByteCount("%.1f");
-            if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-            }
-            else
-            {
-                byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                nativeLabelFmt = nativeLabelFmtStackBytes;
-            }
-            
-            int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
-            nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            double angle0 = 90;
-            ImPlotPieChartFlags flags = 0;
-            fixed (float* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, ref values, count, x, y, radius, null, 90, 0);
         }
         
         /// <summary>
@@ -967,69 +309,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelFmt">The label fmt</param>
         public static void PlotPieChart(string[] labelIds, ref float values, int count, double x, double y, double radius, string labelFmt)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            double angle0 = 90;
-            ImPlotPieChartFlags flags = 0;
-            fixed (float* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
         }
         
         /// <summary>
@@ -1045,68 +330,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] labelIds, ref float values, int count, double x, double y, double radius, string labelFmt, double angle0)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            ImPlotPieChartFlags flags = 0;
-            fixed (float* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
         }
         
         /// <summary>
@@ -1123,67 +352,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotPieChart(string[] labelIds, ref float values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            fixed (float* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
         }
         
         /// <summary>
@@ -1197,61 +371,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="radius">The radius</param>
         public static void PlotPieChart(string[] labelIds, ref double values, int count, double x, double y, double radius)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            labelFmtByteCount = Encoding.UTF8.GetByteCount("%.1f");
-            if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-            }
-            else
-            {
-                byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                nativeLabelFmt = nativeLabelFmtStackBytes;
-            }
-            
-            int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
-            nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            double angle0 = 90;
-            ImPlotPieChartFlags flags = 0;
-            fixed (double* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, ref values, count, x, y, radius, null, 90, 0);
         }
         
         /// <summary>
@@ -1266,69 +391,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelFmt">The label fmt</param>
         public static void PlotPieChart(string[] labelIds, ref double values, int count, double x, double y, double radius, string labelFmt)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            double angle0 = 90;
-            ImPlotPieChartFlags flags = 0;
-            fixed (double* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
         }
         
         /// <summary>
@@ -1344,68 +412,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] labelIds, ref double values, int count, double x, double y, double radius, string labelFmt, double angle0)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            ImPlotPieChartFlags flags = 0;
-            fixed (double* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
         }
         
         /// <summary>
@@ -1422,67 +434,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotPieChart(string[] labelIds, ref double values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            fixed (double* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
         }
         
         /// <summary>
@@ -1496,61 +453,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="radius">The radius</param>
         public static void PlotPieChart(string[] labelIds, ref sbyte values, int count, double x, double y, double radius)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            labelFmtByteCount = Encoding.UTF8.GetByteCount("%.1f");
-            if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-            }
-            else
-            {
-                byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                nativeLabelFmt = nativeLabelFmtStackBytes;
-            }
-            
-            int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
-            nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            double angle0 = 90;
-            ImPlotPieChartFlags flags = 0;
-            fixed (sbyte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, ref values, count, x, y, radius, null, 90, 0);
         }
         
         /// <summary>
@@ -1565,69 +473,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelFmt">The label fmt</param>
         public static void PlotPieChart(string[] labelIds, ref sbyte values, int count, double x, double y, double radius, string labelFmt)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            double angle0 = 90;
-            ImPlotPieChartFlags flags = 0;
-            fixed (sbyte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
         }
         
         /// <summary>
@@ -1643,68 +494,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] labelIds, ref sbyte values, int count, double x, double y, double radius, string labelFmt, double angle0)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            ImPlotPieChartFlags flags = 0;
-            fixed (sbyte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
         }
         
         /// <summary>
@@ -1721,67 +516,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotPieChart(string[] labelIds, ref sbyte values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            fixed (sbyte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
         }
         
         /// <summary>
@@ -1795,61 +535,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="radius">The radius</param>
         public static void PlotPieChart(string[] labelIds, ref byte values, int count, double x, double y, double radius)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            labelFmtByteCount = Encoding.UTF8.GetByteCount("%.1f");
-            if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-            }
-            else
-            {
-                byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                nativeLabelFmt = nativeLabelFmtStackBytes;
-            }
-            
-            int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
-            nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            double angle0 = 90;
-            ImPlotPieChartFlags flags = 0;
-            fixed (byte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, ref values, count, x, y, radius, null, 90, 0);
         }
         
         /// <summary>
@@ -1864,69 +555,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelFmt">The label fmt</param>
         public static void PlotPieChart(string[] labelIds, ref byte values, int count, double x, double y, double radius, string labelFmt)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            double angle0 = 90;
-            ImPlotPieChartFlags flags = 0;
-            fixed (byte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
         }
         
         /// <summary>
@@ -1942,68 +576,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] labelIds, ref byte values, int count, double x, double y, double radius, string labelFmt, double angle0)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            ImPlotPieChartFlags flags = 0;
-            fixed (byte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
         }
         
         /// <summary>
@@ -2020,67 +598,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotPieChart(string[] labelIds, ref byte values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            fixed (byte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
         }
         
         /// <summary>
@@ -2094,61 +617,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="radius">The radius</param>
         public static void PlotPieChart(string[] labelIds, ref short values, int count, double x, double y, double radius)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            labelFmtByteCount = Encoding.UTF8.GetByteCount("%.1f");
-            if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-            }
-            else
-            {
-                byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                nativeLabelFmt = nativeLabelFmtStackBytes;
-            }
-            
-            int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
-            nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            double angle0 = 90;
-            ImPlotPieChartFlags flags = 0;
-            fixed (short* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, ref values, count, x, y, radius, null, 90, 0);
         }
         
         /// <summary>
@@ -2163,69 +637,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelFmt">The label fmt</param>
         public static void PlotPieChart(string[] labelIds, ref short values, int count, double x, double y, double radius, string labelFmt)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            double angle0 = 90;
-            ImPlotPieChartFlags flags = 0;
-            fixed (short* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
         }
         
         /// <summary>
@@ -2241,68 +658,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] labelIds, ref short values, int count, double x, double y, double radius, string labelFmt, double angle0)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            ImPlotPieChartFlags flags = 0;
-            fixed (short* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
         }
         
         /// <summary>
@@ -2319,67 +680,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotPieChart(string[] labelIds, ref short values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            fixed (short* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
         }
         
         /// <summary>
@@ -2393,62 +699,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="radius">The radius</param>
         public static void PlotPieChart(string[] labelIds, ref ushort values, int count, double x, double y, double radius)
         {
-            int* labelIdsByteCounts = stackalloc int[labelIds.Length];
-            int labelIdsByteCount = 0;
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
-                string s = labelIds[i];
-                labelIdsByteCounts[i] = Encoding.UTF8.GetByteCount(s);
-                labelIdsByteCount += labelIdsByteCounts[i] + 1;
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
-            byte* nativeLabelIdsData = stackalloc byte[labelIdsByteCount];
-            int offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                string s = labelIds[i];
-                fixed (char* sPtr = s)
-                {
-                    offset += Encoding.UTF8.GetBytes(sPtr, s.Length, nativeLabelIdsData + offset, labelIdsByteCounts[i]);
-                    nativeLabelIdsData[offset] = 0;
-                    offset += 1;
-                }
-            }
-            
-            byte** nativeLabelIds = stackalloc byte*[labelIds.Length];
-            offset = 0;
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = &nativeLabelIdsData[offset];
-                offset += labelIdsByteCounts[i] + 1;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            labelFmtByteCount = Encoding.UTF8.GetByteCount("%.1f");
-            if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-            }
-            else
-            {
-                byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                nativeLabelFmt = nativeLabelFmtStackBytes;
-            }
-            
-            int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
-            nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            double angle0 = 90;
-            ImPlotPieChartFlags flags = 0;
-            fixed (ushort* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotPieChart_U16Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotPieChart_U16Ptr(nativeLabelIds, ref values, count, x, y, radius, null, 90, 0);
         }
-        
     }
 }

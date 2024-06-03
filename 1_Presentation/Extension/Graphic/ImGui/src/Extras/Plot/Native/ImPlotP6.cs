@@ -48,37 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotInfLines(string labelId, ref byte values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (byte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_U8Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -89,40 +59,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotInfLines(string labelId, ref short values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotInfLinesFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(short);
-            fixed (short* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_S16Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, ImPlotInfLinesFlags.None, 0, sizeof(short));
         }
         
         /// <summary>
@@ -134,39 +71,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotInfLines(string labelId, ref short values, int count, ImPlotInfLinesFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(short);
-            fixed (short* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_S16Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, 0, sizeof(short));
         }
         
         /// <summary>
@@ -179,38 +84,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotInfLines(string labelId, ref short values, int count, ImPlotInfLinesFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(short);
-            fixed (short* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_S16Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, sizeof(short));
         }
         
         /// <summary>
@@ -224,37 +98,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotInfLines(string labelId, ref short values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (short* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_S16Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -265,40 +109,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotInfLines(string labelId, ref ushort values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotInfLinesFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(ushort);
-            fixed (ushort* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_U16Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, ImPlotInfLinesFlags.None, 0, sizeof(ushort));
         }
         
         /// <summary>
@@ -310,39 +121,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotInfLines(string labelId, ref ushort values, int count, ImPlotInfLinesFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(ushort);
-            fixed (ushort* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_U16Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, 0, sizeof(ushort));
         }
         
         /// <summary>
@@ -355,38 +134,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotInfLines(string labelId, ref ushort values, int count, ImPlotInfLinesFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(ushort);
-            fixed (ushort* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_U16Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, sizeof(ushort));
         }
         
         /// <summary>
@@ -400,37 +148,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotInfLines(string labelId, ref ushort values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (ushort* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_U16Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -441,40 +159,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotInfLines(string labelId, ref int values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotInfLinesFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(int);
-            fixed (int* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_S32Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, ImPlotInfLinesFlags.None, 0, sizeof(int));
         }
         
         /// <summary>
@@ -486,39 +171,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotInfLines(string labelId, ref int values, int count, ImPlotInfLinesFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(int);
-            fixed (int* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_S32Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, 0, sizeof(int));
         }
         
         /// <summary>
@@ -531,38 +184,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotInfLines(string labelId, ref int values, int count, ImPlotInfLinesFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(int);
-            fixed (int* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_S32Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, sizeof(int));
         }
         
         /// <summary>
@@ -576,37 +198,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotInfLines(string labelId, ref int values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (int* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_S32Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -617,40 +209,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotInfLines(string labelId, ref uint values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotInfLinesFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(uint);
-            fixed (uint* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_U32Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, ImPlotInfLinesFlags.None, 0, sizeof(uint));
         }
         
         /// <summary>
@@ -662,39 +221,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotInfLines(string labelId, ref uint values, int count, ImPlotInfLinesFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(uint);
-            fixed (uint* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_U32Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, 0, sizeof(uint));
         }
         
         /// <summary>
@@ -707,38 +234,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotInfLines(string labelId, ref uint values, int count, ImPlotInfLinesFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(uint);
-            fixed (uint* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_U32Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, sizeof(uint));
         }
         
         /// <summary>
@@ -752,37 +248,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotInfLines(string labelId, ref uint values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (uint* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_U32Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -793,40 +259,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotInfLines(string labelId, ref long values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotInfLinesFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(long);
-            fixed (long* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_S64Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, ImPlotInfLinesFlags.None, 0, sizeof(long));
         }
         
         /// <summary>
@@ -838,39 +271,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotInfLines(string labelId, ref long values, int count, ImPlotInfLinesFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(long);
-            fixed (long* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_S64Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, 0, sizeof(long));
         }
         
         /// <summary>
@@ -883,38 +284,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotInfLines(string labelId, ref long values, int count, ImPlotInfLinesFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(long);
-            fixed (long* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_S64Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, sizeof(long));
         }
         
         /// <summary>
@@ -928,37 +298,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotInfLines(string labelId, ref long values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (long* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_S64Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -969,40 +309,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotInfLines(string labelId, ref ulong values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotInfLinesFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(ulong);
-            fixed (ulong* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_U64Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, ImPlotInfLinesFlags.None, 0, sizeof(ulong));
         }
         
         /// <summary>
@@ -1014,39 +321,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotInfLines(string labelId, ref ulong values, int count, ImPlotInfLinesFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(ulong);
-            fixed (ulong* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_U64Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, 0, sizeof(ulong));
         }
         
         /// <summary>
@@ -1059,38 +334,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotInfLines(string labelId, ref ulong values, int count, ImPlotInfLinesFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(ulong);
-            fixed (ulong* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_U64Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, sizeof(ulong));
         }
         
         /// <summary>
@@ -1104,37 +348,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotInfLines(string labelId, ref ulong values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (ulong* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotInfLines_U64Ptr(nativeLabelId, nativeValues, count, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotInfLines_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -1145,42 +359,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotLine(string labelId, ref float values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double xscale = 1;
-            double xstart = 0;
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(float);
-            fixed (float* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_FloatPtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -1192,41 +371,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         public static void PlotLine(string labelId, ref float values, int count, double xscale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double xstart = 0;
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(float);
-            fixed (float* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_FloatPtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -1239,40 +384,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         public static void PlotLine(string labelId, ref float values, int count, double xscale, double xstart)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(float);
-            fixed (float* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_FloatPtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, 0);
         }
         
         /// <summary>
@@ -1286,39 +398,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotLine(string labelId, ref float values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(float);
-            fixed (float* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_FloatPtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, 0);
         }
         
         /// <summary>
@@ -1333,38 +413,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotLine(string labelId, ref float values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(float);
-            fixed (float* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_FloatPtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, 0);
         }
         
         /// <summary>
@@ -1380,37 +429,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotLine(string labelId, ref float values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (float* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_FloatPtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>
@@ -1421,42 +440,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotLine(string labelId, ref double values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double xscale = 1;
-            double xstart = 0;
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(double);
-            fixed (double* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_doublePtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -1468,41 +452,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         public static void PlotLine(string labelId, ref double values, int count, double xscale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double xstart = 0;
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(double);
-            fixed (double* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_doublePtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -1515,40 +465,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         public static void PlotLine(string labelId, ref double values, int count, double xscale, double xstart)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(double);
-            fixed (double* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_doublePtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, 0);
         }
         
         /// <summary>
@@ -1562,39 +479,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotLine(string labelId, ref double values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(double);
-            fixed (double* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_doublePtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, 0);
         }
         
         /// <summary>
@@ -1609,38 +494,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotLine(string labelId, ref double values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(double);
-            fixed (double* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_doublePtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, 0);
         }
         
         /// <summary>
@@ -1656,37 +510,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotLine(string labelId, ref double values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (double* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_doublePtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>
@@ -1697,42 +521,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotLine(string labelId, ref sbyte values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double xscale = 1;
-            double xstart = 0;
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(sbyte);
-            fixed (sbyte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_S8PtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -1744,41 +533,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         public static void PlotLine(string labelId, ref sbyte values, int count, double xscale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double xstart = 0;
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(sbyte);
-            fixed (sbyte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_S8PtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -1791,40 +546,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         public static void PlotLine(string labelId, ref sbyte values, int count, double xscale, double xstart)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(sbyte);
-            fixed (sbyte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_S8PtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, 0);
         }
         
         /// <summary>
@@ -1838,39 +560,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotLine(string labelId, ref sbyte values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(sbyte);
-            fixed (sbyte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_S8PtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, 0);
         }
         
         /// <summary>
@@ -1885,38 +575,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotLine(string labelId, ref sbyte values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(sbyte);
-            fixed (sbyte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_S8PtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, 0);
         }
         
         /// <summary>
@@ -1932,37 +591,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotLine(string labelId, ref sbyte values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (sbyte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_S8PtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>
@@ -1973,42 +602,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotLine(string labelId, ref byte values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double xscale = 1;
-            double xstart = 0;
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(byte);
-            fixed (byte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_U8PtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -2020,41 +614,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         public static void PlotLine(string labelId, ref byte values, int count, double xscale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double xstart = 0;
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(byte);
-            fixed (byte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_U8PtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -2067,40 +627,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         public static void PlotLine(string labelId, ref byte values, int count, double xscale, double xstart)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(byte);
-            fixed (byte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_U8PtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, 0);
         }
         
         /// <summary>
@@ -2114,39 +641,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotLine(string labelId, ref byte values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(byte);
-            fixed (byte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_U8PtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, 0);
         }
         
         /// <summary>
@@ -2161,38 +656,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotLine(string labelId, ref byte values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(byte);
-            fixed (byte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_U8PtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, 0);
         }
         
         /// <summary>
@@ -2208,37 +672,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotLine(string labelId, ref byte values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (byte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_U8PtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>
@@ -2249,42 +683,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotLine(string labelId, ref short values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double xscale = 1;
-            double xstart = 0;
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(short);
-            fixed (short* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_S16PtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -2296,41 +695,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         public static void PlotLine(string labelId, ref short values, int count, double xscale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double xstart = 0;
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(short);
-            fixed (short* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_S16PtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -2343,40 +708,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         public static void PlotLine(string labelId, ref short values, int count, double xscale, double xstart)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotLineFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(short);
-            fixed (short* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_S16PtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, 0);
         }
         
         /// <summary>
@@ -2390,39 +722,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotLine(string labelId, ref short values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(short);
-            fixed (short* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_S16PtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, 0);
         }
         
         /// <summary>
@@ -2437,39 +737,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotLine(string labelId, ref short values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(short);
-            fixed (short* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotLine_S16PtrInt(nativeLabelId, nativeValues, count, xscale, xstart, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotLine_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, 0);
         }
-        
     }
 }

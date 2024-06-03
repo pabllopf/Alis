@@ -49,40 +49,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref byte values, int count, int bins, double barScale, ImPlotRange range)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotHistogramFlags flags = 0;
-            fixed (byte* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, 0);
+            return ret;
         }
         
         /// <summary>
@@ -98,39 +66,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref byte values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (byte* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, flags);
+            return ret;
         }
         
         /// <summary>
@@ -142,43 +79,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref short values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int bins = (int) ImPlotBin.Sturges;
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (short* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1.0, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -191,42 +93,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref short values, int count, int bins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (short* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, 1.0, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -240,41 +108,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref short values, int count, int bins, double barScale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (short* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -289,40 +124,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref short values, int count, int bins, double barScale, ImPlotRange range)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotHistogramFlags flags = 0;
-            fixed (short* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, 0);
+            return ret;
         }
         
         /// <summary>
@@ -338,39 +141,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref short values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (short* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, flags);
+            return ret;
         }
         
         /// <summary>
@@ -382,43 +154,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref ushort values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int bins = (int) ImPlotBin.Sturges;
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (ushort* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1.0, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -431,42 +168,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref ushort values, int count, int bins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (ushort* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, 1.0, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -480,41 +183,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref ushort values, int count, int bins, double barScale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (ushort* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -529,40 +199,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref ushort values, int count, int bins, double barScale, ImPlotRange range)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotHistogramFlags flags = 0;
-            fixed (ushort* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, 0);
+            return ret;
         }
         
         /// <summary>
@@ -578,39 +216,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref ushort values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (ushort* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, flags);
+            return ret;
         }
         
         /// <summary>
@@ -622,43 +229,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref int values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int bins = (int) ImPlotBin.Sturges;
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (int* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1.0, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -671,42 +243,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref int values, int count, int bins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (int* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, 1.0, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -720,41 +258,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref int values, int count, int bins, double barScale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (int* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -769,40 +274,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref int values, int count, int bins, double barScale, ImPlotRange range)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotHistogramFlags flags = 0;
-            fixed (int* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, 0);
+            return ret;
         }
         
         /// <summary>
@@ -818,39 +291,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref int values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (int* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, flags);
+            return ret;
         }
         
         /// <summary>
@@ -862,43 +304,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref uint values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int bins = (int) ImPlotBin.Sturges;
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (uint* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1.0, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -911,42 +318,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref uint values, int count, int bins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (uint* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, 1.0, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -960,41 +333,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref uint values, int count, int bins, double barScale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (uint* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -1009,40 +349,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref uint values, int count, int bins, double barScale, ImPlotRange range)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotHistogramFlags flags = 0;
-            fixed (uint* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, 0);
+            return ret;
         }
         
         /// <summary>
@@ -1058,39 +366,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref uint values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (uint* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, flags);
+            return ret;
         }
         
         /// <summary>
@@ -1102,43 +379,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref long values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int bins = (int) ImPlotBin.Sturges;
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (long* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1.0, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -1151,42 +393,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref long values, int count, int bins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (long* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, 1.0, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -1200,41 +408,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref long values, int count, int bins, double barScale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (long* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -1249,40 +424,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref long values, int count, int bins, double barScale, ImPlotRange range)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotHistogramFlags flags = 0;
-            fixed (long* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, 0);
+            return ret;
         }
         
         /// <summary>
@@ -1298,39 +441,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref long values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (long* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, flags);
+            return ret;
         }
         
         /// <summary>
@@ -1342,43 +454,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref ulong values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int bins = (int) ImPlotBin.Sturges;
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (ulong* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1.0, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -1391,42 +468,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref ulong values, int count, int bins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (ulong* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, 1.0, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -1440,41 +483,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref ulong values, int count, int bins, double barScale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (ulong* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, new ImPlotRange(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -1489,40 +499,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref ulong values, int count, int bins, double barScale, ImPlotRange range)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotHistogramFlags flags = 0;
-            fixed (ulong* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, 0);
+            return ret;
         }
         
         /// <summary>
@@ -1538,39 +516,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref ulong values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (ulong* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, flags);
+            return ret;
         }
         
         /// <summary>
@@ -1583,46 +530,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref float xs, ref float ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int xBins = (int) ImPlotBin.Sturges;
-            int yBins = (int) ImPlotBin.Sturges;
-            ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = 0;
-            fixed (float* nativeXs = &xs)
-            {
-                fixed (float* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_FloatPtr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, new ImPlotRect(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -1636,45 +545,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref float xs, ref float ys, int count, int xBins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int yBins = (int) ImPlotBin.Sturges;
-            ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = 0;
-            fixed (float* nativeXs = &xs)
-            {
-                fixed (float* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_FloatPtr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, 0, new ImPlotRect(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -1689,44 +561,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref float xs, ref float ys, int count, int xBins, int yBins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = 0;
-            fixed (float* nativeXs = &xs)
-            {
-                fixed (float* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_FloatPtr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -1742,43 +578,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref float xs, ref float ys, int count, int xBins, int yBins, ImPlotRect range)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotHistogramFlags flags = 0;
-            fixed (float* nativeXs = &xs)
-            {
-                fixed (float* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_FloatPtr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
+            return ret;
         }
         
         /// <summary>
@@ -1795,42 +596,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref float xs, ref float ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (float* nativeXs = &xs)
-            {
-                fixed (float* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_FloatPtr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
+            return ret;
         }
         
         /// <summary>
@@ -1843,46 +610,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref double xs, ref double ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int xBins = (int) ImPlotBin.Sturges;
-            int yBins = (int) ImPlotBin.Sturges;
-            ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = 0;
-            fixed (double* nativeXs = &xs)
-            {
-                fixed (double* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_doublePtr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_doublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, new ImPlotRect(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -1896,45 +625,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref double xs, ref double ys, int count, int xBins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int yBins = (int) ImPlotBin.Sturges;
-            ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = 0;
-            fixed (double* nativeXs = &xs)
-            {
-                fixed (double* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_doublePtr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_doublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, 0, new ImPlotRect(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -1949,44 +641,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref double xs, ref double ys, int count, int xBins, int yBins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = 0;
-            fixed (double* nativeXs = &xs)
-            {
-                fixed (double* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_doublePtr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_doublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -2002,43 +658,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref double xs, ref double ys, int count, int xBins, int yBins, ImPlotRect range)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotHistogramFlags flags = 0;
-            fixed (double* nativeXs = &xs)
-            {
-                fixed (double* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_doublePtr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_doublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
+            return ret;
         }
         
         /// <summary>
@@ -2055,42 +676,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref double xs, ref double ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (double* nativeXs = &xs)
-            {
-                fixed (double* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_doublePtr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_doublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
+            return ret;
         }
         
         /// <summary>
@@ -2103,46 +690,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref sbyte xs, ref sbyte ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int xBins = (int) ImPlotBin.Sturges;
-            int yBins = (int) ImPlotBin.Sturges;
-            ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = 0;
-            fixed (sbyte* nativeXs = &xs)
-            {
-                fixed (sbyte* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_S8Ptr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, new ImPlotRect(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -2156,45 +705,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref sbyte xs, ref sbyte ys, int count, int xBins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int yBins = (int) ImPlotBin.Sturges;
-            ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = 0;
-            fixed (sbyte* nativeXs = &xs)
-            {
-                fixed (sbyte* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_S8Ptr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, 0, new ImPlotRect(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -2209,44 +721,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref sbyte xs, ref sbyte ys, int count, int xBins, int yBins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = 0;
-            fixed (sbyte* nativeXs = &xs)
-            {
-                fixed (sbyte* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_S8Ptr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -2262,43 +738,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref sbyte xs, ref sbyte ys, int count, int xBins, int yBins, ImPlotRect range)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotHistogramFlags flags = 0;
-            fixed (sbyte* nativeXs = &xs)
-            {
-                fixed (sbyte* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_S8Ptr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
+            return ret;
         }
         
         /// <summary>
@@ -2315,42 +756,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref sbyte xs, ref sbyte ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (sbyte* nativeXs = &xs)
-            {
-                fixed (sbyte* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_S8Ptr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
+            return ret;
         }
         
         /// <summary>
@@ -2363,46 +770,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref byte xs, ref byte ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int xBins = (int) ImPlotBin.Sturges;
-            int yBins = (int) ImPlotBin.Sturges;
-            ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = 0;
-            fixed (byte* nativeXs = &xs)
-            {
-                fixed (byte* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_U8Ptr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, new ImPlotRect(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -2416,45 +785,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref byte xs, ref byte ys, int count, int xBins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int yBins = (int) ImPlotBin.Sturges;
-            ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = 0;
-            fixed (byte* nativeXs = &xs)
-            {
-                fixed (byte* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_U8Ptr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, 0, new ImPlotRect(), 0);
+            return ret;
         }
         
         /// <summary>
@@ -2469,45 +801,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref byte xs, ref byte ys, int count, int xBins, int yBins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = 0;
-            fixed (byte* nativeXs = &xs)
-            {
-                fixed (byte* nativeYs = &ys)
-                {
-                    double ret = ImPlotNative.ImPlot_PlotHistogram2D_U8Ptr(nativeLabelId, nativeXs, nativeYs, count, xBins, yBins, range, flags);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                    
-                    return ret;
-                }
-            }
+            double ret = ImPlotNative.ImPlot_PlotHistogram2D_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
+            return ret;
         }
-        
     }
 }

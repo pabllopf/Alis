@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         /// </summary>
         /// <param name="drawlist">The drawlist</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_SetDrawlist", CallingConvention = CallingConvention.Cdecl)]
-        public static extern unsafe void InternalSetDrawlist(ImDrawList drawlist);
+        public static extern void InternalSetDrawlist(ImDrawList drawlist);
         
         /// <summary>
         ///     Ims the guizmo set gizmo size clip space using the specified value
