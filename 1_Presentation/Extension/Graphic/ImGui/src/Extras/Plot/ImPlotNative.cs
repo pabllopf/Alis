@@ -2132,7 +2132,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotLine_S64PtrInt(byte[] labelId, ref short values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride);
+        public static extern void ImPlot_PlotLine_S64PtrInt(byte[] labelId, ref long values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot line u 64 ptr int using the specified label id
