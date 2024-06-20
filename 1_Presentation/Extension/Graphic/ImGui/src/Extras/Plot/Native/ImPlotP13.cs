@@ -50,40 +50,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotStairs(string labelId, ref byte xs, ref byte ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (byte* nativeXs = &xs)
-            {
-                fixed (byte* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_U8PtrU8Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_U8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -95,43 +62,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotStairs(string labelId, ref short xs, ref short ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotStairsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(short);
-            fixed (short* nativeXs = &xs)
-            {
-                fixed (short* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_S16PtrS16Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, 0, 0, sizeof(short));
         }
         
         /// <summary>
@@ -144,42 +75,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotStairs(string labelId, ref short xs, ref short ys, int count, ImPlotStairsFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(short);
-            fixed (short* nativeXs = &xs)
-            {
-                fixed (short* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_S16PtrS16Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, 0, sizeof(short));
         }
         
         /// <summary>
@@ -193,41 +89,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotStairs(string labelId, ref short xs, ref short ys, int count, ImPlotStairsFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(short);
-            fixed (short* nativeXs = &xs)
-            {
-                fixed (short* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_S16PtrS16Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, sizeof(short));
         }
         
         /// <summary>
@@ -242,40 +104,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotStairs(string labelId, ref short xs, ref short ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (short* nativeXs = &xs)
-            {
-                fixed (short* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_S16PtrS16Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -287,43 +116,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotStairs(string labelId, ref ushort xs, ref ushort ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotStairsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(ushort);
-            fixed (ushort* nativeXs = &xs)
-            {
-                fixed (ushort* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_U16PtrU16Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(ushort));
         }
         
         /// <summary>
@@ -336,42 +129,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotStairs(string labelId, ref ushort xs, ref ushort ys, int count, ImPlotStairsFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(ushort);
-            fixed (ushort* nativeXs = &xs)
-            {
-                fixed (ushort* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_U16PtrU16Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(ushort));
         }
         
         /// <summary>
@@ -385,41 +143,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotStairs(string labelId, ref ushort xs, ref ushort ys, int count, ImPlotStairsFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(ushort);
-            fixed (ushort* nativeXs = &xs)
-            {
-                fixed (ushort* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_U16PtrU16Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(ushort));
         }
         
         /// <summary>
@@ -434,40 +158,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotStairs(string labelId, ref ushort xs, ref ushort ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (ushort* nativeXs = &xs)
-            {
-                fixed (ushort* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_U16PtrU16Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -479,43 +170,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotStairs(string labelId, ref int xs, ref int ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotStairsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(int);
-            fixed (int* nativeXs = &xs)
-            {
-                fixed (int* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(int));
         }
         
         /// <summary>
@@ -528,42 +183,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotStairs(string labelId, ref int xs, ref int ys, int count, ImPlotStairsFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(int);
-            fixed (int* nativeXs = &xs)
-            {
-                fixed (int* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(int));
         }
         
         /// <summary>
@@ -577,41 +197,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotStairs(string labelId, ref int xs, ref int ys, int count, ImPlotStairsFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(int);
-            fixed (int* nativeXs = &xs)
-            {
-                fixed (int* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(int));
         }
         
         /// <summary>
@@ -626,40 +212,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotStairs(string labelId, ref int xs, ref int ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (int* nativeXs = &xs)
-            {
-                fixed (int* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -671,43 +224,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotStairs(string labelId, ref uint xs, ref uint ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotStairsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(uint);
-            fixed (uint* nativeXs = &xs)
-            {
-                fixed (uint* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(uint));
         }
         
         /// <summary>
@@ -720,42 +237,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotStairs(string labelId, ref uint xs, ref uint ys, int count, ImPlotStairsFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(uint);
-            fixed (uint* nativeXs = &xs)
-            {
-                fixed (uint* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(uint));
         }
         
         /// <summary>
@@ -769,41 +251,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotStairs(string labelId, ref uint xs, ref uint ys, int count, ImPlotStairsFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(uint);
-            fixed (uint* nativeXs = &xs)
-            {
-                fixed (uint* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(uint));
         }
         
         /// <summary>
@@ -818,40 +266,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotStairs(string labelId, ref uint xs, ref uint ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (uint* nativeXs = &xs)
-            {
-                fixed (uint* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -863,43 +278,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotStairs(string labelId, ref long xs, ref long ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotStairsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(long);
-            fixed (long* nativeXs = &xs)
-            {
-                fixed (long* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_S64PtrS64Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(long));
         }
         
         /// <summary>
@@ -912,42 +291,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotStairs(string labelId, ref long xs, ref long ys, int count, ImPlotStairsFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(long);
-            fixed (long* nativeXs = &xs)
-            {
-                fixed (long* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_S64PtrS64Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(long));
         }
         
         /// <summary>
@@ -961,41 +305,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotStairs(string labelId, ref long xs, ref long ys, int count, ImPlotStairsFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(long);
-            fixed (long* nativeXs = &xs)
-            {
-                fixed (long* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_S64PtrS64Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(long));
         }
         
         /// <summary>
@@ -1010,40 +320,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotStairs(string labelId, ref long xs, ref long ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (long* nativeXs = &xs)
-            {
-                fixed (long* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_S64PtrS64Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -1055,43 +332,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotStairs(string labelId, ref ulong xs, ref ulong ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotStairsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(ulong);
-            fixed (ulong* nativeXs = &xs)
-            {
-                fixed (ulong* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_U64PtrU64Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(ulong));
         }
         
         /// <summary>
@@ -1104,42 +345,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotStairs(string labelId, ref ulong xs, ref ulong ys, int count, ImPlotStairsFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(ulong);
-            fixed (ulong* nativeXs = &xs)
-            {
-                fixed (ulong* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_U64PtrU64Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(ulong));
         }
         
         /// <summary>
@@ -1153,41 +359,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotStairs(string labelId, ref ulong xs, ref ulong ys, int count, ImPlotStairsFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(ulong);
-            fixed (ulong* nativeXs = &xs)
-            {
-                fixed (ulong* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_U64PtrU64Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(ulong));
         }
         
         /// <summary>
@@ -1202,40 +374,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotStairs(string labelId, ref ulong xs, ref ulong ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (ulong* nativeXs = &xs)
-            {
-                fixed (ulong* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotStairs_U64PtrU64Ptr(nativeLabelId, nativeXs, nativeYs, count, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotStairs_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -1247,36 +386,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotStairsG(string labelId, IntPtr getter, IntPtr data, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            void* nativeData = data.ToPointer();
-            ImPlotStairsFlags flags = 0;
-            ImPlotNative.ImPlot_PlotStairsG(nativeLabelId, getter, nativeData, count, flags);
-            if (labelIdByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeLabelId);
-            }
+            ImPlotNative.ImPlot_PlotStairsG(Encoding.UTF8.GetBytes(labelId), getter, data.ToPointer(), count, 0);
         }
         
         /// <summary>
