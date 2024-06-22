@@ -408,9 +408,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotStems(string labelId, ref float values, int count)
+        public static void PlotStems(string labelId, float[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(float));
+            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, sizeof(float));
         }
         
         /// <summary>
@@ -420,22 +420,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="ref">The ref</param>
-        public static void PlotStems(string labelId, ref float values, int count, double @ref)
+        public static void PlotStems(string labelId, float[] values, int count, double @ref)
         {
-            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, 1, 0, 0, 0, sizeof(float));
-        }
-        
-        /// <summary>
-        ///     Plots the stems using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="ref">The ref</param>
-        /// <param name="scale">The scale</param>
-        public static void PlotStems(string labelId, ref float values, int count, double @ref, double scale)
-        {
-            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, 0, 0, 0, sizeof(float));
+            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, 1, 0, 0, 0, sizeof(float));
         }
         
         /// <summary>
@@ -446,10 +433,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
-        public static void PlotStems(string labelId, ref float values, int count, double @ref, double scale, double start)
+        public static void PlotStems(string labelId, float[] values, int count, double @ref, double scale)
         {
-            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, 0, 0, sizeof(float));
+            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, 0, 0, 0, sizeof(float));
         }
         
         /// <summary>
@@ -461,10 +447,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotStems(string labelId, ref float values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
+        public static void PlotStems(string labelId, float[] values, int count, double @ref, double scale, double start)
         {
-            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, 0, sizeof(float));
+            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, 0, 0, sizeof(float));
         }
         
         /// <summary>
@@ -477,10 +462,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotStems(string labelId, ref float values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
+        public static void PlotStems(string labelId, float[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
-            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, offset, sizeof(float));
+            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, 0, sizeof(float));
         }
         
         /// <summary>
@@ -494,91 +478,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
-        public static void PlotStems(string labelId, ref float values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
+        public static void PlotStems(string labelId, float[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, offset, stride);
-        }
-        
-        /// <summary>
-        ///     Plots the stems using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        public static void PlotStems(string labelId, ref double values, int count)
-        {
-            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(double));
-        }
-        
-        /// <summary>
-        ///     Plots the stems using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="ref">The ref</param>
-        public static void PlotStems(string labelId, ref double values, int count, double @ref)
-        {
-            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, 1, 0, 0, 0, sizeof(double));
-        }
-        
-        /// <summary>
-        ///     Plots the stems using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="ref">The ref</param>
-        /// <param name="scale">The scale</param>
-        public static void PlotStems(string labelId, ref double values, int count, double @ref, double scale)
-        {
-            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, 0, 0, 0, sizeof(double));
-        }
-        
-        /// <summary>
-        ///     Plots the stems using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="ref">The ref</param>
-        /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
-        public static void PlotStems(string labelId, ref double values, int count, double @ref, double scale, double start)
-        {
-            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, 0, 0, sizeof(double));
-        }
-        
-        /// <summary>
-        ///     Plots the stems using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="ref">The ref</param>
-        /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotStems(string labelId, ref double values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
-        {
-            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, 0, sizeof(double));
-        }
-        
-        /// <summary>
-        ///     Plots the stems using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="ref">The ref</param>
-        /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotStems(string labelId, ref double values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, offset, sizeof(double));
+            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, sizeof(float));
         }
         
         /// <summary>
@@ -593,9 +495,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotStems(string labelId, ref double values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
+        public static void PlotStems(string labelId, float[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, stride);
         }
         
         /// <summary>
@@ -604,9 +506,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotStems(string labelId, ref sbyte values, int count)
+        public static void PlotStems(string labelId, double[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(sbyte));
+            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, sizeof(double));
         }
         
         /// <summary>
@@ -616,9 +518,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="ref">The ref</param>
-        public static void PlotStems(string labelId, ref sbyte values, int count, double @ref)
+        public static void PlotStems(string labelId, double[] values, int count, double @ref)
         {
-            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, 1, 0, 0, 0, sizeof(sbyte));
+            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, 1, 0, 0, 0, sizeof(double));
         }
         
         /// <summary>
@@ -629,9 +531,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
-        public static void PlotStems(string labelId, ref sbyte values, int count, double @ref, double scale)
+        public static void PlotStems(string labelId, double[] values, int count, double @ref, double scale)
         {
-            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, 0, 0, 0, sizeof(sbyte));
+            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, 0, 0, 0, sizeof(double));
         }
         
         /// <summary>
@@ -643,9 +545,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
-        public static void PlotStems(string labelId, ref sbyte values, int count, double @ref, double scale, double start)
+        public static void PlotStems(string labelId, double[] values, int count, double @ref, double scale, double start)
         {
-            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, 0, 0, sizeof(sbyte));
+            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, 0, 0, sizeof(double));
         }
         
         /// <summary>
@@ -658,9 +560,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
-        public static void PlotStems(string labelId, ref sbyte values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
+        public static void PlotStems(string labelId, double[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
-            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, 0, sizeof(sbyte));
+            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, 0, sizeof(double));
         }
         
         /// <summary>
@@ -674,9 +576,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        public static void PlotStems(string labelId, ref sbyte values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
+        public static void PlotStems(string labelId, double[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, offset, sizeof(sbyte));
+            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, sizeof(double));
         }
         
         /// <summary>
@@ -691,9 +593,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotStems(string labelId, ref sbyte values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
+        public static void PlotStems(string labelId, double[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, stride);
         }
         
         /// <summary>
@@ -702,9 +604,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotStems(string labelId, ref byte values, int count)
+        public static void PlotStems(string labelId, sbyte[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(byte));
+            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -714,9 +616,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="ref">The ref</param>
-        public static void PlotStems(string labelId, ref byte values, int count, double @ref)
+        public static void PlotStems(string labelId, sbyte[] values, int count, double @ref)
         {
-            ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, 1, 0, 0, 0, sizeof(byte));
+            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, 1, 0, 0, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -727,9 +629,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
-        public static void PlotStems(string labelId, ref byte values, int count, double @ref, double scale)
+        public static void PlotStems(string labelId, sbyte[] values, int count, double @ref, double scale)
         {
-            ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, 0, 0, 0, sizeof(byte));
+            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, 0, 0, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -741,9 +643,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
-        public static void PlotStems(string labelId, ref byte values, int count, double @ref, double scale, double start)
+        public static void PlotStems(string labelId, sbyte[] values, int count, double @ref, double scale, double start)
         {
-            ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, 0, 0, sizeof(byte));
+            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, 0, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -756,9 +658,107 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
-        public static void PlotStems(string labelId, ref byte values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
+        public static void PlotStems(string labelId, sbyte[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
-            ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, 0, sizeof(byte));
+            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, 0, sizeof(sbyte));
+        }
+        
+        /// <summary>
+        ///     Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotStems(string labelId, sbyte[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, sizeof(sbyte));
+        }
+        
+        /// <summary>
+        ///     Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
+        public static void PlotStems(string labelId, sbyte[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
+        {
+            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, stride);
+        }
+        
+        /// <summary>
+        ///     Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        public static void PlotStems(string labelId, byte[] values, int count)
+        {
+            ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, sizeof(byte));
+        }
+        
+        /// <summary>
+        ///     Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="ref">The ref</param>
+        public static void PlotStems(string labelId, byte[] values, int count, double @ref)
+        {
+            ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, 1, 0, 0, 0, sizeof(byte));
+        }
+        
+        /// <summary>
+        ///     Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        public static void PlotStems(string labelId, byte[] values, int count, double @ref, double scale)
+        {
+            ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, 0, 0, 0, sizeof(byte));
+        }
+        
+        /// <summary>
+        ///     Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        public static void PlotStems(string labelId, byte[] values, int count, double @ref, double scale, double start)
+        {
+            ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, 0, 0, sizeof(byte));
+        }
+        
+        /// <summary>
+        ///     Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotStems(string labelId, byte[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
+        {
+            ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, 0, sizeof(byte));
         }
     }
 }

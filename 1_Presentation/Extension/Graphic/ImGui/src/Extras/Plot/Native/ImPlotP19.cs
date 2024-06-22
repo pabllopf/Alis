@@ -45,9 +45,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
-        public static void PlotStairs(string labelId, ref byte values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
+        public static void PlotStairs(string labelId, byte[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
         {
-            ImPlotNative.ImPlot_PlotStairs_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, sizeof(byte));
+            ImPlotNative.ImPlot_PlotStairs_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, sizeof(byte));
         }
         
         /// <summary>
@@ -60,90 +60,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        public static void PlotStairs(string labelId, ref byte values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
+        public static void PlotStairs(string labelId, byte[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotStairs_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, sizeof(byte));
-        }
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
-        public static void PlotStairs(string labelId, ref byte values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
-        {
-            ImPlotNative.ImPlot_PlotStairs_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
-        }
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        public static void PlotStairs(string labelId, ref short values, int count)
-        {
-            ImPlotNative.ImPlot_PlotStairs_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, sizeof(short));
-        }
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotStairs(string labelId, ref short values, int count, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotStairs_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, sizeof(short));
-        }
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotStairs(string labelId, ref short values, int count, double xscale, double xstart)
-        {
-            ImPlotNative.ImPlot_PlotStairs_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, sizeof(short));
-        }
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotStairs(string labelId, ref short values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
-        {
-            ImPlotNative.ImPlot_PlotStairs_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, sizeof(short));
-        }
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotStairs(string labelId, ref short values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotStairs_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, sizeof(short));
+            ImPlotNative.ImPlot_PlotStairs_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, sizeof(byte));
         }
         
         /// <summary>
@@ -157,9 +76,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotStairs(string labelId, ref short values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
+        public static void PlotStairs(string labelId, byte[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotStairs_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotStairs_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>
@@ -168,21 +87,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotStairs(string labelId, ref ushort values, int count)
+        public static void PlotStairs(string labelId, short[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotStairs_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, sizeof(ushort));
-        }
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotStairs(string labelId, ref ushort values, int count, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotStairs_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, sizeof(ushort));
+            ImPlotNative.ImPlot_PlotStairs_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, sizeof(short));
         }
         
         /// <summary>
@@ -192,10 +99,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotStairs(string labelId, ref ushort values, int count, double xscale, double xstart)
+        public static void PlotStairs(string labelId, short[] values, int count, double xscale)
         {
-            ImPlotNative.ImPlot_PlotStairs_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, sizeof(ushort));
+            ImPlotNative.ImPlot_PlotStairs_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(short));
         }
         
         /// <summary>
@@ -206,10 +112,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotStairs(string labelId, ref ushort values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
+        public static void PlotStairs(string labelId, short[] values, int count, double xscale, double xstart)
         {
-            ImPlotNative.ImPlot_PlotStairs_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, sizeof(ushort));
+            ImPlotNative.ImPlot_PlotStairs_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(short));
         }
         
         /// <summary>
@@ -221,10 +126,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotStairs(string labelId, ref ushort values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
+        public static void PlotStairs(string labelId, short[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
         {
-            ImPlotNative.ImPlot_PlotStairs_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, sizeof(ushort));
+            ImPlotNative.ImPlot_PlotStairs_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, sizeof(short));
         }
         
         /// <summary>
@@ -237,76 +141,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
-        public static void PlotStairs(string labelId, ref ushort values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
+        public static void PlotStairs(string labelId, short[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotStairs_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
-        }
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        public static void PlotStairs(string labelId, ref int values, int count)
-        {
-            ImPlotNative.ImPlot_PlotStairs_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, sizeof(int));
-        }
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotStairs(string labelId, ref int values, int count, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotStairs_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, sizeof(int));
-        }
-        
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotStairs(string labelId, ref int values, int count, double xscale, double xstart)
-        {
-            ImPlotNative.ImPlot_PlotStairs_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, sizeof(int));
-        }
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotStairs(string labelId, ref int values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
-        {
-            ImPlotNative.ImPlot_PlotStairs_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, sizeof(int));
-        }
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotStairs(string labelId, ref int values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotStairs_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, sizeof(int));
+            ImPlotNative.ImPlot_PlotStairs_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, sizeof(short));
         }
         
         /// <summary>
@@ -320,9 +157,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotStairs(string labelId, ref int values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
+        public static void PlotStairs(string labelId, short[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotStairs_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotStairs_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>
@@ -331,21 +168,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotStairs(string labelId, ref uint values, int count)
+        public static void PlotStairs(string labelId, ushort[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotStairs_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, sizeof(uint));
-        }
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotStairs(string labelId, ref uint values, int count, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotStairs_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, sizeof(uint));
+            ImPlotNative.ImPlot_PlotStairs_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, sizeof(ushort));
         }
         
         /// <summary>
@@ -355,10 +180,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotStairs(string labelId, ref uint values, int count, double xscale, double xstart)
+        public static void PlotStairs(string labelId, ushort[] values, int count, double xscale)
         {
-            ImPlotNative.ImPlot_PlotStairs_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, sizeof(uint));
+            ImPlotNative.ImPlot_PlotStairs_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(ushort));
         }
         
         /// <summary>
@@ -369,10 +193,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotStairs(string labelId, ref uint values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
+        public static void PlotStairs(string labelId, ushort[] values, int count, double xscale, double xstart)
         {
-            ImPlotNative.ImPlot_PlotStairs_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, sizeof(uint));
+            ImPlotNative.ImPlot_PlotStairs_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(ushort));
         }
         
         /// <summary>
@@ -384,10 +207,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotStairs(string labelId, ref uint values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
+        public static void PlotStairs(string labelId, ushort[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
         {
-            ImPlotNative.ImPlot_PlotStairs_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, sizeof(uint));
+            ImPlotNative.ImPlot_PlotStairs_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, sizeof(ushort));
         }
         
         /// <summary>
@@ -400,75 +222,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
-        public static void PlotStairs(string labelId, ref uint values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
+        public static void PlotStairs(string labelId, ushort[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotStairs_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
-        }
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        public static void PlotStairs(string labelId, ref long values, int count)
-        {
-            ImPlotNative.ImPlot_PlotStairs_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, sizeof(long));
-        }
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotStairs(string labelId, ref long values, int count, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotStairs_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, sizeof(long));
-        }
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotStairs(string labelId, ref long values, int count, double xscale, double xstart)
-        {
-            ImPlotNative.ImPlot_PlotStairs_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, sizeof(long));
-        }
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotStairs(string labelId, ref long values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
-        {
-            ImPlotNative.ImPlot_PlotStairs_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, sizeof(long));
-        }
-        
-        /// <summary>
-        ///     Plots the stairs using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotStairs(string labelId, ref long values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotStairs_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, sizeof(long));
+            ImPlotNative.ImPlot_PlotStairs_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, sizeof(ushort));
         }
         
         /// <summary>
@@ -482,9 +238,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotStairs(string labelId, ref long values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
+        public static void PlotStairs(string labelId, ushort[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotStairs_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotStairs_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>
@@ -493,9 +249,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotStairs(string labelId, ref ulong values, int count)
+        public static void PlotStairs(string labelId, int[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotStairs_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, sizeof(ulong));
+            ImPlotNative.ImPlot_PlotStairs_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, sizeof(int));
         }
         
         /// <summary>
@@ -505,10 +261,11 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
-        public static void PlotStairs(string labelId, ref ulong values, int count, double xscale)
+        public static void PlotStairs(string labelId, int[] values, int count, double xscale)
         {
-            ImPlotNative.ImPlot_PlotStairs_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, sizeof(ulong));
+            ImPlotNative.ImPlot_PlotStairs_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(int));
         }
+        
         
         /// <summary>
         ///     Plots the stairs using the specified label id
@@ -518,9 +275,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
-        public static void PlotStairs(string labelId, ref ulong values, int count, double xscale, double xstart)
+        public static void PlotStairs(string labelId, int[] values, int count, double xscale, double xstart)
         {
-            ImPlotNative.ImPlot_PlotStairs_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, sizeof(ulong));
+            ImPlotNative.ImPlot_PlotStairs_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(int));
         }
         
         /// <summary>
@@ -532,9 +289,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
-        public static void PlotStairs(string labelId, ref ulong values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
+        public static void PlotStairs(string labelId, int[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
         {
-            ImPlotNative.ImPlot_PlotStairs_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, sizeof(ulong));
+            ImPlotNative.ImPlot_PlotStairs_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, sizeof(int));
         }
         
         /// <summary>
@@ -547,9 +304,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        public static void PlotStairs(string labelId, ref ulong values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
+        public static void PlotStairs(string labelId, int[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotStairs_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, sizeof(ulong));
+            ImPlotNative.ImPlot_PlotStairs_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, sizeof(int));
         }
         
         /// <summary>
@@ -563,9 +320,252 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotStairs(string labelId, ref ulong values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
+        public static void PlotStairs(string labelId, int[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotStairs_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotStairs_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        public static void PlotStairs(string labelId, uint[] values, int count)
+        {
+            ImPlotNative.ImPlot_PlotStairs_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, sizeof(uint));
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        public static void PlotStairs(string labelId, uint[] values, int count, double xscale)
+        {
+            ImPlotNative.ImPlot_PlotStairs_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(uint));
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        public static void PlotStairs(string labelId, uint[] values, int count, double xscale, double xstart)
+        {
+            ImPlotNative.ImPlot_PlotStairs_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(uint));
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotStairs(string labelId, uint[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
+        {
+            ImPlotNative.ImPlot_PlotStairs_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, sizeof(uint));
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotStairs(string labelId, uint[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotStairs_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, sizeof(uint));
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
+        public static void PlotStairs(string labelId, uint[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
+        {
+            ImPlotNative.ImPlot_PlotStairs_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        public static void PlotStairs(string labelId, long[] values, int count)
+        {
+            ImPlotNative.ImPlot_PlotStairs_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, sizeof(long));
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        public static void PlotStairs(string labelId, long[] values, int count, double xscale)
+        {
+            ImPlotNative.ImPlot_PlotStairs_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(long));
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        public static void PlotStairs(string labelId, long[] values, int count, double xscale, double xstart)
+        {
+            ImPlotNative.ImPlot_PlotStairs_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(long));
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotStairs(string labelId, long[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
+        {
+            ImPlotNative.ImPlot_PlotStairs_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, sizeof(long));
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotStairs(string labelId, long[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotStairs_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, sizeof(long));
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
+        public static void PlotStairs(string labelId, long[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
+        {
+            ImPlotNative.ImPlot_PlotStairs_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        public static void PlotStairs(string labelId, ulong[] values, int count)
+        {
+            ImPlotNative.ImPlot_PlotStairs_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, sizeof(ulong));
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        public static void PlotStairs(string labelId, ulong[] values, int count, double xscale)
+        {
+            ImPlotNative.ImPlot_PlotStairs_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(ulong));
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        public static void PlotStairs(string labelId, ulong[] values, int count, double xscale, double xstart)
+        {
+            ImPlotNative.ImPlot_PlotStairs_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(ulong));
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotStairs(string labelId, ulong[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
+        {
+            ImPlotNative.ImPlot_PlotStairs_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, sizeof(ulong));
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotStairs(string labelId, ulong[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotStairs_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, sizeof(ulong));
+        }
+        
+        /// <summary>
+        ///     Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
+        public static void PlotStairs(string labelId, ulong[] values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
+        {
+            ImPlotNative.ImPlot_PlotStairs_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>

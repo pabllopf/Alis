@@ -47,9 +47,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
         /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref byte values, int count, int bins, double barScale, ImPlotRange range)
+        public static double PlotHistogram(string labelId, byte[] values, int count, int bins, double barScale, ImPlotRange range)
         {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, 0);
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
             return ret;
         }
         
@@ -64,9 +64,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref byte values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
+        public static double PlotHistogram(string labelId, byte[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, flags);
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
             return ret;
         }
         
@@ -77,84 +77,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref short values, int count)
+        public static double PlotHistogram(string labelId, short[] values, int count)
         {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1.0, new ImPlotRange(), 0);
-            return ret;
-        }
-        
-        /// <summary>
-        ///     Plots the histogram using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="bins">The bins</param>
-        /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref short values, int count, int bins)
-        {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, 1.0, new ImPlotRange(), 0);
-            return ret;
-        }
-        
-        /// <summary>
-        ///     Plots the histogram using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="bins">The bins</param>
-        /// <param name="barScale">The bar scale</param>
-        /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref short values, int count, int bins, double barScale)
-        {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, new ImPlotRange(), 0);
-            return ret;
-        }
-        
-        /// <summary>
-        ///     Plots the histogram using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="bins">The bins</param>
-        /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The range</param>
-        /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref short values, int count, int bins, double barScale, ImPlotRange range)
-        {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, 0);
-            return ret;
-        }
-        
-        /// <summary>
-        ///     Plots the histogram using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="bins">The bins</param>
-        /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref short values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
-        {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, flags);
-            return ret;
-        }
-        
-        /// <summary>
-        ///     Plots the histogram using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref ushort values, int count)
-        {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1.0, new ImPlotRange(), 0);
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange(), 0);
             return ret;
         }
         
@@ -166,9 +91,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref ushort values, int count, int bins)
+        public static double PlotHistogram(string labelId, short[] values, int count, int bins)
         {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, 1.0, new ImPlotRange(), 0);
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange(), 0);
             return ret;
         }
         
@@ -181,9 +106,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref ushort values, int count, int bins, double barScale)
+        public static double PlotHistogram(string labelId, short[] values, int count, int bins, double barScale)
         {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, new ImPlotRange(), 0);
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange(), 0);
             return ret;
         }
         
@@ -197,9 +122,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
         /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref ushort values, int count, int bins, double barScale, ImPlotRange range)
+        public static double PlotHistogram(string labelId, short[] values, int count, int bins, double barScale, ImPlotRange range)
         {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, 0);
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
             return ret;
         }
         
@@ -214,9 +139,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref ushort values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
+        public static double PlotHistogram(string labelId, short[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, flags);
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
             return ret;
         }
         
@@ -227,84 +152,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref int values, int count)
+        public static double PlotHistogram(string labelId, ushort[] values, int count)
         {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1.0, new ImPlotRange(), 0);
-            return ret;
-        }
-        
-        /// <summary>
-        ///     Plots the histogram using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="bins">The bins</param>
-        /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref int values, int count, int bins)
-        {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, 1.0, new ImPlotRange(), 0);
-            return ret;
-        }
-        
-        /// <summary>
-        ///     Plots the histogram using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="bins">The bins</param>
-        /// <param name="barScale">The bar scale</param>
-        /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref int values, int count, int bins, double barScale)
-        {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, new ImPlotRange(), 0);
-            return ret;
-        }
-        
-        /// <summary>
-        ///     Plots the histogram using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="bins">The bins</param>
-        /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The range</param>
-        /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref int values, int count, int bins, double barScale, ImPlotRange range)
-        {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, 0);
-            return ret;
-        }
-        
-        /// <summary>
-        ///     Plots the histogram using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="bins">The bins</param>
-        /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref int values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
-        {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, flags);
-            return ret;
-        }
-        
-        /// <summary>
-        ///     Plots the histogram using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref uint values, int count)
-        {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1.0, new ImPlotRange(), 0);
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange(), 0);
             return ret;
         }
         
@@ -316,9 +166,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref uint values, int count, int bins)
+        public static double PlotHistogram(string labelId, ushort[] values, int count, int bins)
         {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, 1.0, new ImPlotRange(), 0);
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange(), 0);
             return ret;
         }
         
@@ -331,9 +181,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref uint values, int count, int bins, double barScale)
+        public static double PlotHistogram(string labelId, ushort[] values, int count, int bins, double barScale)
         {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, new ImPlotRange(), 0);
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange(), 0);
             return ret;
         }
         
@@ -347,9 +197,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
         /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref uint values, int count, int bins, double barScale, ImPlotRange range)
+        public static double PlotHistogram(string labelId, ushort[] values, int count, int bins, double barScale, ImPlotRange range)
         {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, 0);
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
             return ret;
         }
         
@@ -364,9 +214,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref uint values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
+        public static double PlotHistogram(string labelId, ushort[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, flags);
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
             return ret;
         }
         
@@ -377,84 +227,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref long values, int count)
+        public static double PlotHistogram(string labelId, int[] values, int count)
         {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1.0, new ImPlotRange(), 0);
-            return ret;
-        }
-        
-        /// <summary>
-        ///     Plots the histogram using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="bins">The bins</param>
-        /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref long values, int count, int bins)
-        {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, 1.0, new ImPlotRange(), 0);
-            return ret;
-        }
-        
-        /// <summary>
-        ///     Plots the histogram using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="bins">The bins</param>
-        /// <param name="barScale">The bar scale</param>
-        /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref long values, int count, int bins, double barScale)
-        {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, new ImPlotRange(), 0);
-            return ret;
-        }
-        
-        /// <summary>
-        ///     Plots the histogram using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="bins">The bins</param>
-        /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The range</param>
-        /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref long values, int count, int bins, double barScale, ImPlotRange range)
-        {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, 0);
-            return ret;
-        }
-        
-        /// <summary>
-        ///     Plots the histogram using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="bins">The bins</param>
-        /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref long values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
-        {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, flags);
-            return ret;
-        }
-        
-        /// <summary>
-        ///     Plots the histogram using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref ulong values, int count)
-        {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1.0, new ImPlotRange(), 0);
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange(), 0);
             return ret;
         }
         
@@ -466,9 +241,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref ulong values, int count, int bins)
+        public static double PlotHistogram(string labelId, int[] values, int count, int bins)
         {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, 1.0, new ImPlotRange(), 0);
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange(), 0);
             return ret;
         }
         
@@ -481,9 +256,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref ulong values, int count, int bins, double barScale)
+        public static double PlotHistogram(string labelId, int[] values, int count, int bins, double barScale)
         {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, new ImPlotRange(), 0);
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange(), 0);
             return ret;
         }
         
@@ -497,9 +272,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
         /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref ulong values, int count, int bins, double barScale, ImPlotRange range)
+        public static double PlotHistogram(string labelId, int[] values, int count, int bins, double barScale, ImPlotRange range)
         {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, 0);
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
             return ret;
         }
         
@@ -514,9 +289,234 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        public static double PlotHistogram(string labelId, ref ulong values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
+        public static double PlotHistogram(string labelId, int[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
-            double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, flags);
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
+        public static double PlotHistogram(string labelId, uint[] values, int count)
+        {
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange(), 0);
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <returns>The double</returns>
+        public static double PlotHistogram(string labelId, uint[] values, int count, int bins)
+        {
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange(), 0);
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="barScale">The bar scale</param>
+        /// <returns>The double</returns>
+        public static double PlotHistogram(string labelId, uint[] values, int count, int bins, double barScale)
+        {
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange(), 0);
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="barScale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
+        public static double PlotHistogram(string labelId, uint[] values, int count, int bins, double barScale, ImPlotRange range)
+        {
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="barScale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
+        public static double PlotHistogram(string labelId, uint[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
+        {
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
+        public static double PlotHistogram(string labelId, long[] values, int count)
+        {
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange(), 0);
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <returns>The double</returns>
+        public static double PlotHistogram(string labelId, long[] values, int count, int bins)
+        {
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange(), 0);
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="barScale">The bar scale</param>
+        /// <returns>The double</returns>
+        public static double PlotHistogram(string labelId, long[] values, int count, int bins, double barScale)
+        {
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange(), 0);
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="barScale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
+        public static double PlotHistogram(string labelId, long[] values, int count, int bins, double barScale, ImPlotRange range)
+        {
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="barScale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
+        public static double PlotHistogram(string labelId, long[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
+        {
+            double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
+        public static double PlotHistogram(string labelId, ulong[] values, int count)
+        {
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange(), 0);
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <returns>The double</returns>
+        public static double PlotHistogram(string labelId, ulong[] values, int count, int bins)
+        {
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange(), 0);
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="barScale">The bar scale</param>
+        /// <returns>The double</returns>
+        public static double PlotHistogram(string labelId, ulong[] values, int count, int bins, double barScale)
+        {
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange(), 0);
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="barScale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
+        public static double PlotHistogram(string labelId, ulong[] values, int count, int bins, double barScale, ImPlotRange range)
+        {
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
+            return ret;
+        }
+        
+        /// <summary>
+        ///     Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="barScale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
+        public static double PlotHistogram(string labelId, ulong[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
+        {
+            double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
             return ret;
         }
         

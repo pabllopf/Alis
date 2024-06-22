@@ -48,9 +48,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotScatter(string labelId, ref byte values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
+        public static void PlotScatter(string labelId, byte[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotScatter_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotScatter_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>
@@ -59,21 +59,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotScatter(string labelId, ref short values, int count)
+        public static void PlotScatter(string labelId, short[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotScatter_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, sizeof(short));
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotScatter(string labelId, ref short values, int count, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotScatter_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, sizeof(short));
+            ImPlotNative.ImPlot_PlotScatter_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, sizeof(short));
         }
         
         /// <summary>
@@ -83,10 +71,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotScatter(string labelId, ref short values, int count, double xscale, double xstart)
+        public static void PlotScatter(string labelId, short[] values, int count, double xscale)
         {
-            ImPlotNative.ImPlot_PlotScatter_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, sizeof(short));
+            ImPlotNative.ImPlot_PlotScatter_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(short));
         }
         
         /// <summary>
@@ -97,10 +84,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotScatter(string labelId, ref short values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
+        public static void PlotScatter(string labelId, short[] values, int count, double xscale, double xstart)
         {
-            ImPlotNative.ImPlot_PlotScatter_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, sizeof(short));
+            ImPlotNative.ImPlot_PlotScatter_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(short));
         }
         
         /// <summary>
@@ -112,10 +98,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotScatter(string labelId, ref short values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
+        public static void PlotScatter(string labelId, short[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
-            ImPlotNative.ImPlot_PlotScatter_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, sizeof(short));    
+            ImPlotNative.ImPlot_PlotScatter_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, sizeof(short));
         }
         
         /// <summary>
@@ -128,75 +113,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
-        public static void PlotScatter(string labelId, ref short values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
+        public static void PlotScatter(string labelId, short[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotScatter_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        public static void PlotScatter(string labelId, ref ushort values, int count)
-        {
-            ImPlotNative.ImPlot_PlotScatter_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, sizeof(ushort));
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotScatter(string labelId, ref ushort values, int count, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotScatter_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, sizeof(ushort));
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotScatter(string labelId, ref ushort values, int count, double xscale, double xstart)
-        {
-            ImPlotNative.ImPlot_PlotScatter_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, sizeof(ushort));
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotScatter(string labelId, ref ushort values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
-        {
-            ImPlotNative.ImPlot_PlotScatter_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, sizeof(ushort));
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotScatter(string labelId, ref ushort values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotScatter_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, sizeof(ushort));
+            ImPlotNative.ImPlot_PlotScatter_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, sizeof(short));    
         }
         
         /// <summary>
@@ -210,9 +129,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotScatter(string labelId, ref ushort values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
+        public static void PlotScatter(string labelId, short[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotScatter_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotScatter_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>
@@ -221,21 +140,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotScatter(string labelId, ref int values, int count)
+        public static void PlotScatter(string labelId, ushort[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotScatter_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, sizeof(int));
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotScatter(string labelId, ref int values, int count, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotScatter_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, sizeof(int));
+            ImPlotNative.ImPlot_PlotScatter_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, sizeof(ushort));
         }
         
         /// <summary>
@@ -245,10 +152,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotScatter(string labelId, ref int values, int count, double xscale, double xstart)
+        public static void PlotScatter(string labelId, ushort[] values, int count, double xscale)
         {
-            ImPlotNative.ImPlot_PlotScatter_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, sizeof(int));
+            ImPlotNative.ImPlot_PlotScatter_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(ushort));
         }
         
         /// <summary>
@@ -259,10 +165,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotScatter(string labelId, ref int values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
+        public static void PlotScatter(string labelId, ushort[] values, int count, double xscale, double xstart)
         {
-            ImPlotNative.ImPlot_PlotScatter_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, sizeof(int));
+            ImPlotNative.ImPlot_PlotScatter_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(ushort));
         }
         
         /// <summary>
@@ -274,10 +179,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotScatter(string labelId, ref int values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
+        public static void PlotScatter(string labelId, ushort[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
-            ImPlotNative.ImPlot_PlotScatter_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, sizeof(int));
+            ImPlotNative.ImPlot_PlotScatter_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, sizeof(ushort));
         }
         
         /// <summary>
@@ -290,75 +194,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
-        public static void PlotScatter(string labelId, ref int values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
+        public static void PlotScatter(string labelId, ushort[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotScatter_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        public static void PlotScatter(string labelId, ref uint values, int count)
-        {
-            ImPlotNative.ImPlot_PlotScatter_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, sizeof(uint));
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotScatter(string labelId, ref uint values, int count, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotScatter_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, sizeof(uint));
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotScatter(string labelId, ref uint values, int count, double xscale, double xstart)
-        {
-            ImPlotNative.ImPlot_PlotScatter_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, sizeof(uint));
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotScatter(string labelId, ref uint values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
-        {
-            ImPlotNative.ImPlot_PlotScatter_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, sizeof(uint));
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotScatter(string labelId, ref uint values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotScatter_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, sizeof(uint));
+            ImPlotNative.ImPlot_PlotScatter_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, sizeof(ushort));
         }
         
         /// <summary>
@@ -372,9 +210,171 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotScatter(string labelId, ref uint values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
+        public static void PlotScatter(string labelId, ushort[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotScatter_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotScatter_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        public static void PlotScatter(string labelId, int[] values, int count)
+        {
+            ImPlotNative.ImPlot_PlotScatter_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, sizeof(int));
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        public static void PlotScatter(string labelId, int[] values, int count, double xscale)
+        {
+            ImPlotNative.ImPlot_PlotScatter_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(int));
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        public static void PlotScatter(string labelId, int[] values, int count, double xscale, double xstart)
+        {
+            ImPlotNative.ImPlot_PlotScatter_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(int));
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotScatter(string labelId, int[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
+        {
+            ImPlotNative.ImPlot_PlotScatter_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, sizeof(int));
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotScatter(string labelId, int[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotScatter_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, sizeof(int));
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
+        public static void PlotScatter(string labelId, int[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
+        {
+            ImPlotNative.ImPlot_PlotScatter_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        public static void PlotScatter(string labelId, uint[] values, int count)
+        {
+            ImPlotNative.ImPlot_PlotScatter_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, sizeof(uint));
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        public static void PlotScatter(string labelId, uint[] values, int count, double xscale)
+        {
+            ImPlotNative.ImPlot_PlotScatter_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(uint));
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        public static void PlotScatter(string labelId, uint[] values, int count, double xscale, double xstart)
+        {
+            ImPlotNative.ImPlot_PlotScatter_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(uint));
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotScatter(string labelId, uint[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
+        {
+            ImPlotNative.ImPlot_PlotScatter_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, sizeof(uint));
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotScatter(string labelId, uint[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotScatter_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, sizeof(uint));
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
+        public static void PlotScatter(string labelId, uint[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
+        {
+            ImPlotNative.ImPlot_PlotScatter_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
             
         }
         
@@ -384,9 +384,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotScatter(string labelId, ref long values, int count)
+        public static void PlotScatter(string labelId, long[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotScatter_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, sizeof(long));
+            ImPlotNative.ImPlot_PlotScatter_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, sizeof(long));
         }
         
         /// <summary>
@@ -396,9 +396,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
-        public static void PlotScatter(string labelId, ref long values, int count, double xscale)
+        public static void PlotScatter(string labelId, long[] values, int count, double xscale)
         {
-            ImPlotNative.ImPlot_PlotScatter_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, sizeof(long));
+            ImPlotNative.ImPlot_PlotScatter_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(long));
         }
         
         /// <summary>
@@ -409,9 +409,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
-        public static void PlotScatter(string labelId, ref long values, int count, double xscale, double xstart)
+        public static void PlotScatter(string labelId, long[] values, int count, double xscale, double xstart)
         {
-            ImPlotNative.ImPlot_PlotScatter_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, sizeof(long));
+            ImPlotNative.ImPlot_PlotScatter_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(long));
             
         }
         
@@ -424,9 +424,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
-        public static void PlotScatter(string labelId, ref long values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
+        public static void PlotScatter(string labelId, long[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
-            ImPlotNative.ImPlot_PlotScatter_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, sizeof(long));
+            ImPlotNative.ImPlot_PlotScatter_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, sizeof(long));
         }
         
         /// <summary>
@@ -439,90 +439,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        public static void PlotScatter(string labelId, ref long values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
+        public static void PlotScatter(string labelId, long[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotScatter_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, sizeof(long));
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
-        public static void PlotScatter(string labelId, ref long values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
-        {
-            ImPlotNative.ImPlot_PlotScatter_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        public static void PlotScatter(string labelId, ref ulong values, int count)
-        {
-            ImPlotNative.ImPlot_PlotScatter_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, sizeof(ulong));
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotScatter(string labelId, ref ulong values, int count, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotScatter_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, sizeof(ulong));
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotScatter(string labelId, ref ulong values, int count, double xscale, double xstart)
-        {
-            ImPlotNative.ImPlot_PlotScatter_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, sizeof(ulong));
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotScatter(string labelId, ref ulong values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
-        {
-            ImPlotNative.ImPlot_PlotScatter_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, sizeof(ulong));
-        }
-        
-        /// <summary>
-        ///     Plots the scatter using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotScatter(string labelId, ref ulong values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotScatter_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, sizeof(ulong));
+            ImPlotNative.ImPlot_PlotScatter_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, sizeof(long));
         }
         
         /// <summary>
@@ -536,9 +455,90 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotScatter(string labelId, ref ulong values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
+        public static void PlotScatter(string labelId, long[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotScatter_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotScatter_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        public static void PlotScatter(string labelId, ulong[] values, int count)
+        {
+            ImPlotNative.ImPlot_PlotScatter_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, sizeof(ulong));
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        public static void PlotScatter(string labelId, ulong[] values, int count, double xscale)
+        {
+            ImPlotNative.ImPlot_PlotScatter_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(ulong));
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        public static void PlotScatter(string labelId, ulong[] values, int count, double xscale, double xstart)
+        {
+            ImPlotNative.ImPlot_PlotScatter_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(ulong));
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotScatter(string labelId, ulong[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
+        {
+            ImPlotNative.ImPlot_PlotScatter_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, sizeof(ulong));
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotScatter(string labelId, ulong[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotScatter_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, sizeof(ulong));
+        }
+        
+        /// <summary>
+        ///     Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
+        public static void PlotScatter(string labelId, ulong[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
+        {
+            ImPlotNative.ImPlot_PlotScatter_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>

@@ -287,14 +287,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <param name="radius">The radius</param>
-        public static void PlotPieChart(string[] labelIds, ref float values, int count, double x, double y, double radius)
+        public static void PlotPieChart(string[] labelIds, float[] values, int count, double x, double y, double radius)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, ref values, count, x, y, radius, null, 90, 0);
+            ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, values, count, x, y, radius, null, 90, 0);
         }
         
         /// <summary>
@@ -307,35 +307,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="y">The </param>
         /// <param name="radius">The radius</param>
         /// <param name="labelFmt">The label fmt</param>
-        public static void PlotPieChart(string[] labelIds, ref float values, int count, double x, double y, double radius, string labelFmt)
+        public static void PlotPieChart(string[] labelIds, float[] values, int count, double x, double y, double radius, string labelFmt)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the pie chart using the specified label ids
-        /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
-        public static void PlotPieChart(string[] labelIds, ref float values, int count, double x, double y, double radius, string labelFmt, double angle0)
-        {
-            byte[][] nativeLabelIds = new byte[labelIds.Length][];
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
-            }
-            ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
+            ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
         }
         
         /// <summary>
@@ -349,75 +328,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="radius">The radius</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotPieChart(string[] labelIds, ref float values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
+        public static void PlotPieChart(string[] labelIds, float[] values, int count, double x, double y, double radius, string labelFmt, double angle0)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
-        }
-        
-        /// <summary>
-        ///     Plots the pie chart using the specified label ids
-        /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
-        public static void PlotPieChart(string[] labelIds, ref double values, int count, double x, double y, double radius)
-        {
-            byte[][] nativeLabelIds = new byte[labelIds.Length][];
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
-            }
-            ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, ref values, count, x, y, radius, null, 90, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the pie chart using the specified label ids
-        /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
-        /// <param name="labelFmt">The label fmt</param>
-        public static void PlotPieChart(string[] labelIds, ref double values, int count, double x, double y, double radius, string labelFmt)
-        {
-            byte[][] nativeLabelIds = new byte[labelIds.Length][];
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
-            }
-            ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the pie chart using the specified label ids
-        /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
-        public static void PlotPieChart(string[] labelIds, ref double values, int count, double x, double y, double radius, string labelFmt, double angle0)
-        {
-            byte[][] nativeLabelIds = new byte[labelIds.Length][];
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
-            }
-            ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
+            ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
         }
         
         /// <summary>
@@ -432,14 +350,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
         /// <param name="flags">The flags</param>
-        public static void PlotPieChart(string[] labelIds, ref double values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
+        public static void PlotPieChart(string[] labelIds, float[] values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
+            ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
         }
         
         /// <summary>
@@ -451,34 +369,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <param name="radius">The radius</param>
-        public static void PlotPieChart(string[] labelIds, ref sbyte values, int count, double x, double y, double radius)
+        public static void PlotPieChart(string[] labelIds, double[] values, int count, double x, double y, double radius)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, ref values, count, x, y, radius, null, 90, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the pie chart using the specified label ids
-        /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
-        /// <param name="labelFmt">The label fmt</param>
-        public static void PlotPieChart(string[] labelIds, ref sbyte values, int count, double x, double y, double radius, string labelFmt)
-        {
-            byte[][] nativeLabelIds = new byte[labelIds.Length][];
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
-            }
-            ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
+            ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, values, count, x, y, radius, null, 90, 0);
         }
         
         /// <summary>
@@ -491,15 +389,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="y">The </param>
         /// <param name="radius">The radius</param>
         /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
-        public static void PlotPieChart(string[] labelIds, ref sbyte values, int count, double x, double y, double radius, string labelFmt, double angle0)
+        public static void PlotPieChart(string[] labelIds, double[] values, int count, double x, double y, double radius, string labelFmt)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
+            ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
         }
         
         /// <summary>
@@ -513,75 +410,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="radius">The radius</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotPieChart(string[] labelIds, ref sbyte values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
+        public static void PlotPieChart(string[] labelIds, double[] values, int count, double x, double y, double radius, string labelFmt, double angle0)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
-        }
-        
-        /// <summary>
-        ///     Plots the pie chart using the specified label ids
-        /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
-        public static void PlotPieChart(string[] labelIds, ref byte values, int count, double x, double y, double radius)
-        {
-            byte[][] nativeLabelIds = new byte[labelIds.Length][];
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
-            }
-            ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, ref values, count, x, y, radius, null, 90, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the pie chart using the specified label ids
-        /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
-        /// <param name="labelFmt">The label fmt</param>
-        public static void PlotPieChart(string[] labelIds, ref byte values, int count, double x, double y, double radius, string labelFmt)
-        {
-            byte[][] nativeLabelIds = new byte[labelIds.Length][];
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
-            }
-            ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the pie chart using the specified label ids
-        /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
-        public static void PlotPieChart(string[] labelIds, ref byte values, int count, double x, double y, double radius, string labelFmt, double angle0)
-        {
-            byte[][] nativeLabelIds = new byte[labelIds.Length][];
-            for (int i = 0; i < labelIds.Length; i++)
-            {
-                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
-            }
-            ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
+            ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
         }
         
         /// <summary>
@@ -596,14 +432,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
         /// <param name="flags">The flags</param>
-        public static void PlotPieChart(string[] labelIds, ref byte values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
+        public static void PlotPieChart(string[] labelIds, double[] values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
+            ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
         }
         
         /// <summary>
@@ -615,14 +451,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <param name="radius">The radius</param>
-        public static void PlotPieChart(string[] labelIds, ref short values, int count, double x, double y, double radius)
+        public static void PlotPieChart(string[] labelIds, sbyte[] values, int count, double x, double y, double radius)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, ref values, count, x, y, radius, null, 90, 0);
+            ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, values, count, x, y, radius, null, 90, 0);
         }
         
         /// <summary>
@@ -635,14 +471,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="y">The </param>
         /// <param name="radius">The radius</param>
         /// <param name="labelFmt">The label fmt</param>
-        public static void PlotPieChart(string[] labelIds, ref short values, int count, double x, double y, double radius, string labelFmt)
+        public static void PlotPieChart(string[] labelIds, sbyte[] values, int count, double x, double y, double radius, string labelFmt)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
+            ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
         }
         
         /// <summary>
@@ -656,14 +492,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="radius">The radius</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
-        public static void PlotPieChart(string[] labelIds, ref short values, int count, double x, double y, double radius, string labelFmt, double angle0)
+        public static void PlotPieChart(string[] labelIds, sbyte[] values, int count, double x, double y, double radius, string labelFmt, double angle0)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
+            ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
         }
         
         /// <summary>
@@ -678,14 +514,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
         /// <param name="flags">The flags</param>
-        public static void PlotPieChart(string[] labelIds, ref short values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
+        public static void PlotPieChart(string[] labelIds, sbyte[] values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, ref values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
+            ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
         }
         
         /// <summary>
@@ -697,14 +533,178 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <param name="radius">The radius</param>
-        public static void PlotPieChart(string[] labelIds, ref ushort values, int count, double x, double y, double radius)
+        public static void PlotPieChart(string[] labelIds, byte[] values, int count, double x, double y, double radius)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            ImPlotNative.ImPlot_PlotPieChart_U16Ptr(nativeLabelIds, ref values, count, x, y, radius, null, 90, 0);
+            ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, values, count, x, y, radius, null, 90, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="labelFmt">The label fmt</param>
+        public static void PlotPieChart(string[] labelIds, byte[] values, int count, double x, double y, double radius, string labelFmt)
+        {
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
+            for (int i = 0; i < labelIds.Length; i++)
+            {
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
+            }
+            ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
+        public static void PlotPieChart(string[] labelIds, byte[] values, int count, double x, double y, double radius, string labelFmt, double angle0)
+        {
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
+            for (int i = 0; i < labelIds.Length; i++)
+            {
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
+            }
+            ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotPieChart(string[] labelIds, byte[] values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
+        {
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
+            for (int i = 0; i < labelIds.Length; i++)
+            {
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
+            }
+            ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
+        }
+        
+        /// <summary>
+        ///     Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        public static void PlotPieChart(string[] labelIds, short[] values, int count, double x, double y, double radius)
+        {
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
+            for (int i = 0; i < labelIds.Length; i++)
+            {
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
+            }
+            ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, values, count, x, y, radius, null, 90, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="labelFmt">The label fmt</param>
+        public static void PlotPieChart(string[] labelIds, short[] values, int count, double x, double y, double radius, string labelFmt)
+        {
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
+            for (int i = 0; i < labelIds.Length; i++)
+            {
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
+            }
+            ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
+        public static void PlotPieChart(string[] labelIds, short[] values, int count, double x, double y, double radius, string labelFmt, double angle0)
+        {
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
+            for (int i = 0; i < labelIds.Length; i++)
+            {
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
+            }
+            ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotPieChart(string[] labelIds, short[] values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
+        {
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
+            for (int i = 0; i < labelIds.Length; i++)
+            {
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
+            }
+            ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
+        }
+        
+        /// <summary>
+        ///     Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        public static void PlotPieChart(string[] labelIds, ushort[] values, int count, double x, double y, double radius)
+        {
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
+            for (int i = 0; i < labelIds.Length; i++)
+            {
+                nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
+            }
+            ImPlotNative.ImPlot_PlotPieChart_U16Ptr(nativeLabelIds, values, count, x, y, radius, null, 90, 0);
         }
     }
 }

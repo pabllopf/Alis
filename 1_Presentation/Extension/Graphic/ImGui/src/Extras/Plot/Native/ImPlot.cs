@@ -1164,9 +1164,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="axis">The axis</param>
         /// <param name="values">The values</param>
         /// <param name="nTicks">The ticks</param>
-        public static void SetupAxisTicks(ImAxis axis, ref double values, int nTicks)
+        public static void SetupAxisTicks(ImAxis axis, double[] values, int nTicks)
         {
-            ImPlotNative.ImPlot_SetupAxisTicks_doublePtr(axis, ref values, nTicks, null, 0);
+            ImPlotNative.ImPlot_SetupAxisTicks_doublePtr(axis, values, nTicks, null, 0);
         }
         
         /// <summary>
@@ -1176,9 +1176,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="nTicks">The ticks</param>
         /// <param name="labels">The labels</param>
-        public static void SetupAxisTicks(ImAxis axis, ref double values, int nTicks, string[] labels)
+        public static void SetupAxisTicks(ImAxis axis, double[] values, int nTicks, string[] labels)
         {
-            ImPlotNative.ImPlot_SetupAxisTicks_doublePtr(axis, ref values, nTicks, null, 0);
+            ImPlotNative.ImPlot_SetupAxisTicks_doublePtr(axis, values, nTicks, null, 0);
         }
         
         /// <summary>
@@ -1189,9 +1189,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="nTicks">The ticks</param>
         /// <param name="labels">The labels</param>
         /// <param name="keepDefault">The keep default</param>
-        public static void SetupAxisTicks(ImAxis axis, ref double values, int nTicks, string[] labels, bool keepDefault)
+        public static void SetupAxisTicks(ImAxis axis, double[] values, int nTicks, string[] labels, bool keepDefault)
         {
-            ImPlotNative.ImPlot_SetupAxisTicks_doublePtr(axis, ref values, nTicks, null, 0);
+            ImPlotNative.ImPlot_SetupAxisTicks_doublePtr(axis, values, nTicks, null, 0);
         }
         
         /// <summary>
