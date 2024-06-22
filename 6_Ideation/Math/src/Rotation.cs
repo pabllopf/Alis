@@ -116,22 +116,9 @@ namespace Alis.Core.Aspect.Math
         [ExcludeFromCodeCoverage]
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("Sine", Sine);
-            info.AddValue("Cosine", Cosine);
-            info.AddValue("Angle", Angle);
-        }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Rotation"/> class
-        /// </summary>
-        /// <param name="info">The info</param>
-        /// <param name="context">The context</param>
-        [ExcludeFromCodeCoverage]
-        public Rotation(SerializationInfo info, StreamingContext context)
-        {
-            Sine = info.GetSingle("Sine");
-            Cosine = info.GetSingle("Cosine");
-            Angle = info.GetSingle("Angle");
+            info.AddValue("sine", Sine);
+            info.AddValue("cosine", Cosine);
+            info.AddValue("angle", Angle);
         }
     }
 }

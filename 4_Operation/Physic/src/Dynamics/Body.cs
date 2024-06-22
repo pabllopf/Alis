@@ -129,7 +129,7 @@ namespace Alis.Core.Physic.Dynamics
             float gravityScale = 1.0f
         )
         {
-            FixtureList = new List<Fixture>(1);
+             FixtureList = new List<Fixture>(1);
             
             if (isBullet)
             {
@@ -477,9 +477,12 @@ namespace Alis.Core.Physic.Dynamics
                     Flags |= BodySettings.Enabled;
                     
                     IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
-                    for (int i = 0; i < FixtureList.Count; i++)
+                    if (FixtureList != null)
                     {
-                        FixtureList[i].CreateProxies(broadPhase, ref Xf);
+                        for (int i = 0; i < FixtureList.Count; i++)
+                        {
+                            FixtureList[i].CreateProxies(broadPhase, ref Xf);
+                        }
                     }
                 }
                 else

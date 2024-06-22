@@ -84,24 +84,10 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
         [ExcludeFromCodeCoverage]
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("X", X);
-            info.AddValue("Y", Y);
-            info.AddValue("W", W);
-            info.AddValue("H", H);
-        }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RectangleI"/> class
-        /// </summary>
-        /// <param name="info">The info</param>
-        /// <param name="context">The context</param>
-        [ExcludeFromCodeCoverage]
-        public RectangleI(SerializationInfo info, StreamingContext context)
-        {
-            X = info.GetInt32("X");
-            Y = info.GetInt32("Y");
-            W = info.GetInt32("W");
-            H = info.GetInt32("H");
+            info.AddValue("x", X);
+            info.AddValue("y", Y);
+            info.AddValue("w", W);
+            info.AddValue("h", H);
         }
     }
 }

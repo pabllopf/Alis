@@ -497,7 +497,7 @@ namespace Alis.Core.Aspect.Data.Json
                 ApplyToListTarget(target, input, listObject, options);
             }
         }
-        
+
         /// <summary>
         ///     Creates the instance using the specified target
         /// </summary>
@@ -517,12 +517,12 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     return instance;
                 }
-                
+
                 if (type.IsArray)
                 {
                     return CreateArrayInstance(type, elementsCount);
                 }
-                
+
                 if (!type.IsPrimitive && !type.IsInterface && !type.IsAbstract) // Check if type is a struct
                 {
                     ConstructorInfo specialConstructor = type.GetConstructors()
@@ -532,7 +532,7 @@ namespace Alis.Core.Aspect.Data.Json
                     {
                         ParameterInfo[] parameters = specialConstructor.GetParameters();
                         object[] parameterValues = new object[parameters.Length];
-                        
+
                         if (value is IDictionary dictionary)
                         {
                             for (int i = 0; i < parameters.Length; i++)
@@ -547,12 +547,12 @@ namespace Alis.Core.Aspect.Data.Json
                                     }
                                 }
                             }
-                            
+
                             return Activator.CreateInstance(type, parameterValues);
                         }
                     }
                 }
-                
+
                 // If the type is an interface or abstract class, get the __type and create an instance of the type
                 if (type.IsInterface || type.IsAbstract)
                 {
@@ -569,36 +569,55 @@ namespace Alis.Core.Aspect.Data.Json
                         }
                     }
                 }
-                
+
                 if (type.IsPrimitive || type == typeof(string) || type == typeof(char))
                 {
                     return value;
                 }
-                
+
                 if (type.IsSerializable) // Check if type implements ISerializable
                 {
-                    ConstructorInfo serializationConstructor = type.GetConstructor(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance, null, new[] {typeof(SerializationInfo), typeof(StreamingContext)}, null);
-                    if (serializationConstructor != null)
+                   if (value is IDictionary dictionary)
                     {
-                        // Create SerializationInfo and StreamingContext
-                        SerializationInfo serializationInfo = new SerializationInfo(type, new FormatterConverter());
-                        StreamingContext streamingContext = new StreamingContext(StreamingContextStates.All);
+                        // Get all public constructors
+                        ConstructorInfo[] constructors = type.GetConstructors(BindingFlags.Public | BindingFlags.Instance);
                         
-                        // Populate SerializationInfo with data from the dictionary
-                        if (value is IDictionary dictionary)
+                        dictionary.Remove(SerializationTypeToken);
+                        // Find a constructor that has the same number of parameters as the dictionary
+                        foreach (ConstructorInfo constructor in constructors)
                         {
-                            dictionary.Remove(SerializationTypeToken);
-                            foreach (DictionaryEntry entry in dictionary)
+                            ParameterInfo[] parameters = constructor.GetParameters();
+                            if (parameters.Length == dictionary.Count)
                             {
-                                serializationInfo.AddValue(entry.Key.ToString(), entry.Value);
+                                // Create an array to hold the parameter values
+                                object[] parameterValues = new object[parameters.Length];
+
+                                // Try to populate the array with values from the dictionary
+                                for (int i = 0; i < parameters.Length; i++)
+                                {
+                                    if (dictionary.Contains(parameters[i].Name))
+                                    {
+                                        parameterValues[i] = CreateInstance(target, parameters[i].ParameterType, elementsCount, options, dictionary[parameters[i].Name]);
+                                        //parameterValues[i] = Convert.ChangeType(dictionary[parameters[i].Name], parameters[i].ParameterType);
+                                    }
+                                    else
+                                    {
+                                        // If a key in the dictionary does not match a parameter name, this is not the right constructor
+                                        parameterValues = null;
+                                        break;
+                                    }
+                                }
+
+                                // If the parameter values array was successfully populated, use this constructor
+                                if (parameterValues != null)
+                                {
+                                    return Activator.CreateInstance(type, parameterValues);
+                                }
                             }
                         }
-                        
-                        // Create the instance using the serialization constructor
-                        return serializationConstructor.Invoke(new object[] {serializationInfo, streamingContext});
                     }
                 }
-                
+
                 return Activator.CreateInstance(type);
             }
             catch (Exception e)
@@ -606,7 +625,7 @@ namespace Alis.Core.Aspect.Data.Json
                 return HandleCreationException(type, e, options);
             }
         }
-        
+
         /// <summary>
         /// Gets the type from text using the specified type name
         /// </summary>
